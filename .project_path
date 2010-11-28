@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Project-specific path setting. Add pathr commands to this file, to add specific path settings for the 
+# current project, e.g.:
+
+# pathr add -s project --end /this/is/an/executable/path
