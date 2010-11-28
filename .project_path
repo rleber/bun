@@ -4,3 +4,8 @@
 # current project, e.g.:
 
 # pathr add -s project --end /this/is/an/executable/path
+
+# VERY IMPORTANT:
+# If you use pathr to change paths, do not forget to uncomment the following
+
+# pathr make
