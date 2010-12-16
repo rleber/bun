@@ -4,8 +4,12 @@
 # current project, e.g.:
 
 # pathr add -s project --end /this/is/an/executable/path
+#
+# These commands should be inserted where shown
 
-# VERY IMPORTANT:
-# If you use pathr to change paths, do not forget to uncomment the following
-
-# pathr make
+project_dir = `dirname "$BASH_SOURCE"`
+pathr load
+pathr add -s project --end "$BASH_SOURCE/src"
+# <<---- Insert additional path preferences here
+pathr make
+pathr clean
