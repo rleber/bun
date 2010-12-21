@@ -8,8 +8,5 @@
 # These commands should be inserted where shown
 
 project_dir=`dirname "$BASH_SOURCE"`
-pathr load
 pathr add -s project --end "$project_dir/src"
 # <<---- Insert additional path preferences here
-pathr make
-pathr clean
