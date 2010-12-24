@@ -23,3 +23,19 @@ Dir['tasks/**/*.rake'].each { |t| load t }
 # TODO - want other tests/tasks run by default? Add them to the list
 # remove_task :default
 # task :default => [:spec, :features]
+
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec)
+
+require 'rdoc/task'
+if defined?(RDoc)
+  RDoc::Task.new do |rdoc|
+    rdoc.main     = 'README.rdoc'
+    rdoc.rdoc_dir = 'rdoc'
+    rdoc.title    = 'rleber-table'
+    rdoc.rdoc_files.include('README.rdoc', 'LICENSE', 'History.rdoc', 'Thorfile')
+    rdoc.rdoc_files.include('lib/**/*.rb')
+    rdoc.options << '--line-numbers' << '--inline-source'
+  end
+end
+
