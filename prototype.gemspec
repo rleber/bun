@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/#{github_username}/#{s.name}}
   s.rdoc_options = ['--charset=UTF-8', "--main", "README.rdoc"]
   s.rdoc_options << '--title' <<  s.name
+  s.rdoc_options << '--line-numbers' << '--inline-source'
   s.has_rdoc = true
   s.require_paths = ["lib"]
   s.rubyforge_project = s.name
