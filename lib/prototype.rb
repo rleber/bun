@@ -1,4 +1,4 @@
-$:.unshift(File.dirname(__FILE__)) unless
-  $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
+target = File.dirname(__FILE__)
+$:.unshift(target) unless $:.include?(target) || $:.include?(File.expand_path(target))
 
 require 'prototype/base'
