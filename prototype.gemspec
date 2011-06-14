@@ -1,5 +1,15 @@
 # -*- encoding: utf-8 -*-
 
+# File structure:
+# System-wide executables are in bin
+# Project_wide executables are in src
+# Library files are in lib
+# data is for data files
+# db is for db/configuration files
+# doc is for documentation files
+# log is for log files
+# spec is for RSpec (test) files
+
 require File.expand_path('../lib/prototype/version', __FILE__)
 
 extra_files = ['History.rdoc', 'LICENSE', 'README.rdoc', 'Rakefile']
@@ -16,7 +26,7 @@ Gem::Specification.new do |s|
   s.summary = s.description
   s.email = ["richard.leber@gmail.com"]
   s.extra_rdoc_files = extra_files
-  s.files = `git ls-files -- {bin,lib,spec,test}/*`.split("\n") + extra_files
+  s.files = `git ls-files -- {bin,lib,spec,src,test}/*`.split("\n") + extra_files
   s.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.test_files = `git ls-files -- {spec,test}/*`.split("\n")
   s.homepage = %q{http://github.com/#{github_username}/#{s.name}}
