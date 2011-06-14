@@ -9,4 +9,5 @@
 
 project_dir=`dirname "$BASH_SOURCE"`
 pathr add -s project --end "$project_dir/src"
+pathr add -s project --end "$project_dir/bin"
 # <<---- Insert additional path preferences here
