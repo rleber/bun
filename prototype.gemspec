@@ -19,16 +19,20 @@ Gem::Specification.new do |s|
   s.name = %q{prototype}
   s.version = Prototype::VERSION.dup
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 1.3.6") if s.respond_to? :required_rubygems_version=
+  if s.respond_to? :required_rubygems_version=
+    s.required_rubygems_version = Gem::Requirement.new(">= 1.3.6")
+  else
+    s.rubygems_version = %q{1.3.6}
+  end
   s.authors = ["Richard LeBer"]
   s.date = %q{Replace Me}
   s.description = %q{Replace Me}
   s.summary = s.description
   s.email = ["richard.leber@gmail.com"]
   s.extra_rdoc_files = extra_files
-  s.files = `git ls-files -- {bin,lib,spec,src,test}/*`.split("\n") + extra_files
+  s.files = `git ls-files -- {bin,lib,spec,src,test,features}/*`.split("\n") + extra_files
   s.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  s.test_files = `git ls-files -- {spec,test}/*`.split("\n")
+  s.test_files = `git ls-files -- {spec,test,features}/*`.split("\n")
   s.homepage = %q{http://github.com/#{github_username}/#{s.name}}
   s.rdoc_options = ['--charset=UTF-8', "--main", "README.rdoc"]
   s.rdoc_options << '--title' <<  s.name
@@ -36,8 +40,16 @@ Gem::Specification.new do |s|
   s.has_rdoc = true
   s.require_paths = ["lib"]
   s.rubyforge_project = s.name
-  s.rubygems_version = %q{1.3.6}
+
 
   # Add dependencies here, e.g.
-  # s.add_dependencey("foo", [">= 2.1.1"])
+  # s.add_dependency "foo", ">= 2.1.1"
+  
+  # Add development dependencies here
+  s.add_development_dependency "bundler", "~> 1.0"
+  s.add_development_dependency "rake", ">= 0.8"
+  s.add_development_dependency "rdoc", "~> 2.5"
+  s.add_development_dependency "rspec", "~> 2.3"
+  # s.add_development_dependency "fakeweb", "~> 1.3"
+  # s.add_development_dependency "simplecov", "~> 0.4"
 end
