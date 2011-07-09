@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+source "http://leber.me/gems/"
 
 gemspec
 
