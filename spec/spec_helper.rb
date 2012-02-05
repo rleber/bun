@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), '../lib/prototype')
+require File.join(File.dirname(__FILE__), '../lib/fass')
 
 def capture(*streams)
   streams.map! { |stream| stream.to_s }
