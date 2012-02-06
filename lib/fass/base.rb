@@ -1,2 +1,2 @@
-class Fass
-end
+require 'rubygems'
+require 'fass/bot'

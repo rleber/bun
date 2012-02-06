@@ -1,0 +1,8 @@
+<%
+    def scene(name, &block)
+        block = lambda(){} unless block_given?
+        Ember::Template.wrap_content_block(block) do
+            "*** SCENE #{name}***"
+        end
+    end
+%>
