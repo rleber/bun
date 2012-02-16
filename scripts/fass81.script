@@ -121,6 +121,7 @@
 #  Al:        Al Lert,            male,   played by Andrew Zador
 #  Alec:      Alec Trolysis,      male,   played by Brad Templeton
 #  Anna:      Anna Stesia,        female, played by Valerie Carr
+#  Blacky:    Blackie,            female, played by Linda Carson      #: Character is called "Blackie" in the program, "Blacky" in the script
 #  Boring:    I.M. Boring,        male,   played by Preston Gurd
 #  Charlotte: Charlotte Town,     female, played by Sandy Kemsley
 #  Chris:     Chrys Anthemum,     female, played by Marney Heatley    #: Character is named "Chris Anthemum" in the script
@@ -145,15 +146,88 @@
 #  Pierce:    Pierce Dearz                                            #: TODO Character name may have changed; it's not in the program
 #  Queen:     Queen Spark,        male,   played by Brian Martin
 #  Reg:       Reg Ina,            male,   played by Peter Scheffel
+#  Reggie:    Reggie Sturdnurse,  male,   played by Andrew Welch      #: Last name is "Sterdnurse" in the script
 #  Ringo:     Ringo Roundacollar, male,   played by John Ciessen      #: TODO "Ciessen" may be wrong -- it's illegible in the program
 #  Seymour:   Seymour Clearly,    male,   played by Andre Cyr
 #  Sven:      Sven Yearitch,      male,   played by Ian! Allen
 #  Tess:      Tess Tube,          female, played by Samm Ristich
 #  Trix:      Trix R. Forkids                                         #: TODO Character name may have changed; it's not in the program
 #  Vic:       Vic Toria,          male,   played by Derek Wilkinson
+#  Whitey:    Whitey,             male,   played by Ian! Allen
 #  Winnie:    Winnie Peg                                              #: TODO Character name may have changed; it's not in the program
 #  XRay:      Dr. X-Ray Tube,     female, played by Linda Ryall       #: Character is named "X Ray Tube" in the script
 #  Yves:      Yves Dropping,      male,   played by Glenn St. Germain
+
+Scene 1 - 0 : Here's Looking at you Kid
+
+<LIGHTS: House lights down. Follow spot up on stage to show Reggie talking into his microphone. Stage
+is set up with two safes set into the flats.>
+
+<As Reggie is talking, one spy all in white comes through the audiences from the direction of the sound booth.>
+
+Reggie: <In a soft voice> Yes ladies and gentlemen we're here for the first live coverage of the annual worldwide
+spy olympics. <Noticing Whitey> And I believe this is one of the contestants of today's first event, your favorite,
+the secret dossier stealing competition.
+
+<LIGHTS: As the rest of the lights come up, the spy in white pull a paper bag over his head. The interview continues
+with the spy hidden in this manner.>
+
+Reggie: Darling disguise, sir. Reminds me of a certain entertainment reviewer for the Imprint. Now tell me, are there 
+normally so few people at these contests? You seem to be the only contestant here today.
+
+Whitey: There aren't many spies who are interested in taking part in such a public event. I mean, spies prefer to work
+behind the scenes.
+
+<A thousand spy heads suddenly appear around the stage: from behind the piano, the trap door, the big doors at the 
+back, etc. They appear for two seconds, then disappear.>
+
+Reggie: So if every other spy avoided the contest because of publicity, why are you here?
+
+Whitey: There won't really be any publicity; this contest is being broadcast by CKMS. ## The University of Waterloo student radio station ##
+
+<Blacky enters, runs straight towards one of the safes, and begins to twirl the dial.>
+
+Reggie: Just a minute, ma'am, the contest hasn't quite started yet.
+
+Blacky: Oh. Sorry.
+
+Reggie: Would you mind joining us, ma'am?
+
+Blacky: Why, are you coming apart?
+
+Reggie: Very witty, ma'am. Well ladies and gentlemen, we've been talking with... <points microphone at Whitey>
+
+Whitey: John Smith.
+
+Reggie: ...and...<points microphone at Blacky>
+
+Blacky: John Smith.
+
+Reggie: I see. Well, we're about to start the contest, so good luck to you both and may the best spy win. All set? Then GO!
+
+<Reggie shoots starting pistol in air. There is a loud squawk and the famous rubber chicken falls from the canopy. The spies
+run to either side of the stage and pull out their tools. Blacky has a stethoscope and earmuffs. Whitey has a hand drill with
+a long extension cord on it. He plugs the extension cord into the outlet between the safes. While they prepare, Reggie goes on.>
+
+Reggie: The object of this contest is very simple, as are the contestants. The first spy to open the safe and steal its top-secret
+contents is the winner and folks, anything goes! And our contestants have selected their tools now. John Smith has chosen a drill.
+It looks like he's using the good old brute force and ignorance method. Beside him, John Smith is using a stethoscope. It's obvious
+that she likes to do things with style and finesse. I'm sure we'll see a real fight for the title tonight!
+
+<The two spies start to work on their respective safes. Whitey sets up his drill and starts to use it to drill around the safe.
+He makes a loud drill sound, BRRUMM, BRUMM. In a few moments, he sets down the drill, puts some dynamite against the door and runs to the front of the stage with a plunger. He hits the plunger and there is a loud explosion that knocks open both doors. The spies run inside.>
+
+Reggie: Ladies and gentlement, both spies have their safes open. All that remains is for them to steal the contents and reveal them here on stage. I wonder what they'll find.
+
+<Blacky comes out of her safe.>
+
+Reggie: Well, what was in there? Gold? Jewelry? Government Secrets?
+
+Blacky: ## Surely, this should be Whitey? ## <Leaping out of his door> It's...astounding.
+
+Whitey: ## And this should be Blacky ## Yes, it's FASS '81!
+
+<The doors swing open and the entire cast streams in for the Opening Song.>
 
   SONG: Opening Song
   (To the tune of Yankee Doodle Dandy)
@@ -195,7 +269,7 @@
   Hope that it will seize you
   Hope that it will entertain
   We want for it to please you...
-  
+    
 Scene 1 - 2 : Insurance Agents and Secret Agents
 
 <LIGHTS>
