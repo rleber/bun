@@ -83,7 +83,7 @@
 #    Past Technical Directors:     Scott Nicoll, John Primeau
 #    Honorary Member:              Doug Crichton
 #
-# Song List:
+# Song List: #: TODO Get songwriting credits
 #   Song:                                 To the Tune Of:
 #   This is the FASS Show (Opening Song)  Yankee Doodle Dandy
 #   A Bit Of Oil                          Wouldn't It Be Lovely
@@ -91,6 +91,7 @@
 #   The Bright Side Of Life               The Obvious Song
 #   Amputation                            Toucha-Toucha
 #   Mister Screw                          Mr. Kite
+#   War Games                             Sister Golden Hair                 #: TODO Not listed in program, was it cut?
 #   Lasers And Phasers                    Favorite Things
 #   The Canadian National Unity Song      Hallelujah Chorus
 #   Fassablanca Anthem                    Carling's Red Cap
@@ -117,24 +118,42 @@
 # All rights retained by the FASS Theatre Company, University of Waterloo
 
 #CAST:
-#  Al:     Al Lert,            male,   played by Andrew Zador
-#  Boring: I.M. Boring,        male,   played by Preston Gurd
-#  Chris:  Chrys Anthemum,     female, played by Marney Heatley    #: Character is named "Chris Anthemum" in the script
-#  Dinah:  Dinah Might,        female, played by Heather Lennox
-#  Hy:     Hy Pertension,      female, played by Sandy Kemsley
-#  Ima:    Ima Undercover,     female, played by Linda Carson
-#  Jenny:  Jenny Side,         female, played by Marianne Maltby
-#  Kaz:    Kaz Pajamas,        male,   played by Steve Maulsby
-#  Manuel: Manuel Life,        male,   played by Brian Martin
-#  Maude:  Maude Squade,       female, played by Joy A. Felton
-#  Patty:  Patty Cake                                              #: TODO Character name may have changed; it's not in the program
-#  Paula:  Paula C. Holder,    female, played by Gillian Teichert
-#  Pierce: Pierce Dearz                                            #: TODO Character name may have changed; it's not in the program
-#  Ringo:  Ringo Roundacollar, male,   played by John Ciessen      #: TODO "Ciessen" may be wrong -- it's illegible in the program
-#  Sven:   Sven Yearitch,      male,   played by Ian! Allen
-#  Trix:   Trix R. Forkids                                         #: TODO Character name may have changed; it's not in the program
-#  XRay:   Dr. X-Ray Tube,     female, played by Linda Ryall       #: Character is named "X Ray Tube" in the script
-#  Yves:   Yves Dropping,      male,   played by Glenn St. Germain
+#  Al:        Al Lert,            male,   played by Andrew Zador
+#  Alec:      Alec Trolysis,      male,   played by Brad Templeton
+#  Anna:      Anna Stesia,        female, played by Valerie Carr
+#  Boring:    I.M. Boring,        male,   played by Preston Gurd
+#  Charlotte: Charlotte Town,     female, played by Sandy Kemsley
+#  Chris:     Chrys Anthemum,     female, played by Marney Heatley    #: Character is named "Chris Anthemum" in the script
+#  Co-op:     Co-op Bullet Catchers,      played by Richard LeBer, Peter Scheffel, David Welbourn
+#  Dinah:     Dinah Might,        female, played by Heather Lennox
+#  Ed:        Ed Monton,          male,   played by David Kerr
+#  Fred:      Fred Ricton,        female, played by Gillian Teichert
+#  Hal:       Hal Ifax,           female, played by Katherine Hicks
+#  Hy:        Hy Pertension,      female, played by Sandy Kemsley
+#  Ima:       Ima Undercover,     female, played by Linda Carson
+#  Jenny:     Jenny Side,         female, played by Marianne Maltby
+#  John:      John Saint's,       male,   played by Roy Gilpin
+#  Kay:       Kay Beck,           female, played by Betsy Wimbs
+#  Kaz:       Kaz Pajamas,        male,   played by Steve Maulsby
+#  Les:       Les Dewitt,         male,   played by Bernie Roehl
+#  Manuel:    Manuel Life,        male,   played by Brian Martin
+#  Maude:     Maude Squade,       female, played by Joy A. Felton
+#  Patty:     Patty Cake                                              #: TODO Character name may have changed; it's not in the program
+#  Paula:     Paula C. Holder,    female, played by Gillian Teichert
+#  Polly:     Polly Sacharide,    female, played by Anna Lebo
+#  Phil:      Phil T. Rich,       male,   played by Andrew Forber
+#  Pierce:    Pierce Dearz                                            #: TODO Character name may have changed; it's not in the program
+#  Queen:     Queen Spark,        male,   played by Brian Martin
+#  Reg:       Reg Ina,            male,   played by Peter Scheffel
+#  Ringo:     Ringo Roundacollar, male,   played by John Ciessen      #: TODO "Ciessen" may be wrong -- it's illegible in the program
+#  Seymour:   Seymour Clearly,    male,   played by Andre Cyr
+#  Sven:      Sven Yearitch,      male,   played by Ian! Allen
+#  Tess:      Tess Tube,          female, played by Samm Ristich
+#  Trix:      Trix R. Forkids                                         #: TODO Character name may have changed; it's not in the program
+#  Vic:       Vic Toria,          male,   played by Derek Wilkinson
+#  Winnie:    Winnie Peg                                              #: TODO Character name may have changed; it's not in the program
+#  XRay:      Dr. X-Ray Tube,     female, played by Linda Ryall       #: Character is named "X Ray Tube" in the script
+#  Yves:      Yves Dropping,      male,   played by Glenn St. Germain
 
   SONG: Opening Song
   (To the tune of Yankee Doodle Dandy)
@@ -609,3 +628,324 @@ Coop2: _You've_ got a problem? We have to get a work report out of this.
 <The guards chase the Co-ops out, leaving Al still snoring in the middle of the stage.>
 
 <LIGHTS: Lights down.>
+
+Scene 1 - 5: The Name Of The Game Is Money
+
+<LIGHTS: Lights up to a table stage right with athe four scientists ##or maybe three: Polly Saccharide, Alex Trolysis, Tess Tube## in a huddle.
+They are sorting through blueprints and files marked Secret. Seymour enters with more files.>
+
+Seymour: Well, here's everything the last group brought in.
+
+Polly: Good. Then there are only three more groups of spies left to report.
+
+Alec: Finally! It's all beginning to pull together. You're doing a good job, team.
+
+<Tess has opened one of the files and looks astonished.>
+
+Tess: Hey boss, come look at this!
+
+<They all do as Phil, Anna, and Les Dewitt enter.>
+
+Phil: Well, Dewitt, your people better have something to report. It's been over a week now and I've been hearing a lot of complaints from Personnel. 
+The spies and the insurance agents have been turning in some pretty strange expense accounts.
+
+Les: I'm sure it's not that bad boss. After all, the spies can steal whatever they want. And what does an insurance agent need?
+
+Phil: Read the list, Anna.
+
+Anna: <Reading a list deadpan> Expense accounts: One large pizza with pepperoni, peanut butter, double banana, double anchovies, yogurt, 23
+frisbee guns, 2 boxes of ammunition, 36 pairs of boffer glasses, ##Okay, I'll bite -- what are boffer glasses?## 10 Tom Mix secret decoder
+rings, and 1389 co-op students, hold the engineers.
+
+Les: Um, well maybe some of those things are a little bizarre, but we hired the best agents and we'll get results.
+
+Phil: I want to see some results right now!
+
+Les: I brought you here so the R&D team could tell you personally what progress they've made.
+
+Anna: What! You let that group of morons work on this? They had absolutely no workable ideas before...
+
+Les: Well, they're a little like engineers -- they'll never come up with anything original, but if someone gives them an idea,
+they can follow it through to its logical conclusion.
+
+Phil: My logical conclusion would be to fire the lot of you if this doesn't work.
+
+Les: Well let's get on with it then. Alec!
+
+<Alec comes out of the huddle as though in a daze.>
+
+Alec: Oh hi Les. You should see some of the great stuff we've got already.
+
+Phil: All right, let's hear what you've got.
+
+<The following song is done with the use of visual aids: maps and so forth.>
+
+# This song does not appear in the program. It may have been cut.
+
+  SONG: War Games
+  (To the tune of Sister Golden Hair)
+  Scientists:
+  We began these plans last Sunday,
+  Working hard without a rest,
+  And we finished them on Monday,
+  So we hope that you're impressed,
+  We can go into production
+  If you give it your okay,
+  We can start our world destruction
+      schemes today...
+      
+  And the generals will order
+  Massive armies to alert
+  Those who don't have secret weapons
+  Will be sure to lose their shirt
+  Though they'll try to stop us
+  They're doomed to failure
+  They just can't top us...
+  
+  We have maps with secret bases
+  Marked in red and white and blue
+  Routes for submarine races
+  Marked on all the oceans too
+  We've got bombers filled with big ones
+  They are marked in purple ink
+  And all radar installations are in pink.
+  
+  They will fight out on the beaches
+  They will fight out in the air
+  They will hang on tight like leeches
+  Though they may not have a prayer,
+  If they find it thrilling
+  The cash will flow in
+  We'll make a killing...
+
+Phil: What about weapons?
+
+Polly: Well, we've got...
+
+  SONG: Lasers and Phasers
+  (To the tune of Favorite Things)
+  Polly:
+  Lasers and Phasers and nuclear weapons
+  Miniature landmines that you'll love to step on
+  Fiendish devices that blow you to bits
+  These are the things that we think will be hits.
+  
+  Robots and androids and sneaky torpedos
+  Hand grenades, light sabres, aren't they just neat-o?
+  Gadgets designed to go off with a bang
+  These are the things for which this song is sang
+  
+  When the bombs burst, and the guns fire
+  And we're feeling blue
+  We simply remember these devious things
+  And then we know what to do!
+
+Phil: Sounds good. Is that it?
+
+Alec: We're just waiting for the last three groups to report. After we incorporate their information, it should take about
+a month before the first units can be shipped out.
+
+Phil: Good, good.
+
+Alec: Oh, here comes one of the groups now.
+
+<Ten people enter wearing parkas with provincial tags ## This would be Vic Toria (British Columbia), Ed Monton (Alberta), 
+Reg Ina (Saskatchewan), Winnie Peg (Manitoba), Queen Spark (Ontario), Kay Beck (Quebec, of course), Fred Ricton (New Brunswick),
+Hal Ifax (Nova Scotia), Charlotte Town (Prince Edward Island), and John Saint's (Newfoundland). I can find no mention of Winnie
+in the program -- I wonder if that part was cut? ##>
+
+Phil: Where have you people been?
+
+Vic: We've been stealing state secrets from Canada.
+
+Ed: You'd be amazed what we've learned.
+
+Reg: For example, the country is run by P.E.T. ## This is a reference to Pierre Elliott Trudeau, Prime Minister at the time ##
+
+Winnie: It's a little confusing but we think it's a Commodore PET microcomputer.
+
+Seymour: They use a microbrain to run the country?
+
+Queen: Hard to believe, isn't it?
+
+Kay: Not only that but we couldn't find out who leads the opposition.
+
+Les: What do you mean?
+
+Fred: We were told that the leader of the Official Opposition was Joseph Who. ## A reference to Joe Clark, the previous Prime Minister
+and Leader of the Opposition in 1981. When Clark was elected PM, the Toronto Star famously ran the news under the headline "Joe Who?" ##
+
+Hal: And the country is ripping apart at the seams.
+
+Charlotte: Yah. It's constitutionally weak.
+
+John: Even their national anthem has ten different parts.
+
+<The following song may be doe in ten part harmony or East vs. West vs. Centre.>
+
+  SONG: The Canadian National Unity Song
+  (To the tune of the Hallelujah Chorus. Lyrics by Steve Hull)
+  Provinces:
+  Manitoba, Manitoba
+  Manitoba, Manitoba, Saskatchewan.
+  Nova Scotia, Nova Scotia
+  Nova Scotia, Nova Scotia, Newfoundland.
+  British Columbia and Alberta!
+    (Nova Scotia, Nova Scotia.
+     Manitoba, Manitoba.)
+  Prince Edward Island and New Brunswick!
+    (Manitoba, Manitoba.
+     Nova Scotia, Nova Scotia.)
+  Que-bec! ## Sung by Kay Beck, ala "Amen!" ##
+  Ontari-ari-ari-o. ## Queen Spark busts in, and signs this to the tune of "A Place To Stand", Ontario's anthem for Expo '67 ##
+
+<The various players pile on Ontario ## Queen Spark ## and pound him out as they go off stage.>
+
+Tess: How terribly provincial.
+
+<LIGHTS: Lights down on company people. The spies from scene 3A and 3B enter from opposite sides of the stage. The 3A folks look torn
+to shreds; the 3B folks look very cool.>
+
+Polly: You people look terrible! What happened?
+
+Yves: It was pretty rough dere. We got caught in da act and had to shot hour way hout.
+
+Trix: It was a good things those insurance agents showed up when the shooting started, or we'd look like swiss cheese.
+
+Maude: Insurance agents? What were they doing there?
+
+Kaz: It must have been something to do with the extended coverage policies they sold us. Anyway, they brought in some co-op bullet catchers
+and pulled us out.
+
+Chris: Bullet Catcher, that reminds me of some of the jobs I got when I was in Co-op Espionage Studies.
+
+Kaz: You were in Espionage Studies? I was in ES2.
+
+Ringo: You were in ES2? I didn't think it was built yet.
+
+Maude: How could you stand being inside that building?
+
+Kaz: I have nothing against ugly red monstrosities.
+
+Dinah: I remember my first job interview. The interview was hidden in a room somewhere in the northern hemisphere. The first one to find it got the job.
+
+Maude: I applied for that job, but didn't get it. The room was in the Psychology Building. They ended up hiring a monkey.
+
+Yves: Dat's standard university hiring policy.
+
+Kaz: And the school terms weren't any better than the jobs.
+
+Pierce: Our graduating class had an interesting assignment from the student government. We where hired to eliminate some fanatical left wing
+radicals who were publishing a silly newspaper. It wasn't hard, we just took them to the university cafeteria.
+
+Trix: We never studied Cruel and Unusual Punishment until Grad School.
+
+Pierce: Well we decided it was kind of rotten too, so we took them to Health Services to get their stomachs pumped.
+When the operation was finished, the radicals said they would only pay last year's medical fees, so the doctors pumped back 7 1/2%
+of what they'd taken out.
+
+Trix: As I said, we never studied Cruel and Unusual Punishment until Grad School.
+
+<LIGHTS: Lights up on Phil and company. Phil comes back to meet the spies.>
+
+Phil: So there you are. Do you have the information we asked you to steal?
+
+Chris: Right here.
+
+Pierce: And here's ours... you don't mind the pizza stains, do you?
+
+Phil: No problem. You people have done a fine job. A great job. Just wait out here and we'll give you everything you deserve.
+
+<LIGHTS: He walks bak to the Fassablanca folks. Lights down on the spies.>
+
+Phil: Okay, who's going to fire the spies? Anna?
+
+Anna: Why me? You're the boss.
+
+Phil: <Condescendingly> Didn't they teach you anything in Management school? The aide always does the dirty work, and the boss always gets the credit.
+
+Anna: Oh, all right.
+
+<LIGHTS: Anna goes to the spies. Lights up on spies, down on company folks.>
+
+Anna: I'd like to thank you for a job well done, but as of this moment you're fired.
+
+Chris: Don't we get a week's notice?
+
+Anna: Not at $500 a day.
+
+Ringo: But some of us gave up promising positions with our governments for this job. What will we do?
+
+Anna: Go home and apply for unemployment insurance, blackmail some government... it doesn't matter to us.
+
+Maude: There aren't going to be any governments to blackmail. With all that stuff we stole, you people are going to take over the world.
+
+Anna: Don't be silly, we have no interest in that.
+
+Dinah: Then why did you want all those plans?
+
+Anna: We're going to use them to make the best darned war game in the world.
+
+Pierce: War game?
+
+Chris: War game!
+
+Spies: War game!
+
+Ringo: What is this place, anyway?
+
+Anna: It's the Fassablanca Toy Company.
+
+<At this point a big, boffo banner saying Fassablanca appears from the light pipe back stage.>
+
+Chris: But all the secret weapons! The lasers and phasers and nuclear...
+
+Anna: Soon to be available in durable plastic, batteries not included and some assembly required.
+
+Kaz: We laid our lives on the line for a toy company.
+
+Anna: Yep, and we appreciate it. So will the little kiddies. But you're still fired.
+
+<She begins to herd them offstage.>
+
+Maude: You haven't heard the last of us, Fassablanca.
+
+Spies: Right!
+
+<LIGHTS: They exit. Lights up on full stage.>
+
+Anna: I did your dirty work for you, boss.
+
+Phil: <Holding a file> Right, now we have everything we need to make a really boffo game. These plans for the Avro Arrow
+## A failed high tech fighter project of Avro Aviation in Malton in the 1950s ## will help to add the necessary touch of realism.
+Alec, I want you to get started on the manufacture of this one right away.
+
+Alec: At once, sir.
+
+<He and the others begin to assemble the papers.>
+
+Les: Just think of the spinoffs we could get, boss. Toy cruise missiles! Nuclear Barbie! Atomic Ken!
+
+Phil: The Fassablanca Toy Company will make millions. All rise and sing the company anthem.
+
+  SONG: Fassablance
+  (To the tune of the Carling's Red Cap jingle)
+  All:
+  Toys and games and gadgets
+  Dolls and teddy bears
+  We love Fassablanca
+  We own all the shares
+  
+  Profit is our motto
+  Money is our goal
+  For a million dollars
+  We would sell our soul.
+  
+  ... Another verse or two ... ## It's not clear that any other verses were actually written ##
+  
+  Toys and games and gadgets
+  Dolls and GI Joe
+  We love Fassablanca
+  It rakes in the dough.
+  
+<LIGHTS: Lights down>
