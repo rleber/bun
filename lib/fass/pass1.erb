@@ -42,6 +42,10 @@
       end
     end
     
+    def rev(original, revised)
+        revised
+    end
+    
     def song(title, tune, &block)
       Ember::Template.wrap_content_block(block) do |content|
         ["Song: #{title}\n",
