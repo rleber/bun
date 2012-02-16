@@ -56,9 +56,13 @@
     end
     
     def characters
-      [
+      nickname_width = $characters.keys.map{|nick| nick.size}.max
+      table = [
           "Character List\n"
-      ] +
-          $characters.map{|nickname, values| "#{nickname}: #{$characters[nickname][:full_name]}\n"}
+      ]
+      $characters.keys.sort.each do |nick|
+        table << %Q{#{"%-#{nickname_width+1}s"%(nick+':')} #{$characters[nick][:full_name]}\n}
+      end
+      table
     end
 -%>
