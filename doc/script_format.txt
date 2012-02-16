@@ -1,0 +1,33 @@
+Scene 1 - 1 : How To Write A Conveniently Formatted Script
+
+
+<Stage directions are in pointy brackets. There should be one at the start to set the scene.>
+
+Character1: Egads! I am speaking a line of dialogue! How fortunate that it was clearly indicated by a character name, followed by a colon.
+
+Character2: Yes, quite fortunate! <gravely> But can we speak in unison?
+
+<Character1 and Character2 perform another action of some sort.>
+
+Character1, Character2: Yes, we can!
+
+
+    SONG: We Also Have A Song
+    (to the tune of 4:33 by John Cage)
+    
+    Character1:
+    I see that this verse
+    Is to be sung by me
+    For my name's indicated
+    At the start, with a colon
+    
+    Character1, Character2:
+    Together we sing
+    That's talking with pitches
+    And then if we're lucky
+    It sounds kind of good
+    
+
+Character2: Seems simple enough.
+
+<Blackout.>

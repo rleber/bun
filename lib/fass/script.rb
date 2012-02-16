@@ -59,7 +59,10 @@ class Fass
     end
     
     # TODO Preprocessing pass: make sure % line, etc. are properly defined
+    # TODO Preprocessing to allow explicit line breaks (or use double newlines?)
     # TODO Change so that pass 1 can change the text, which is then pass to pass2
+    # TODO Use different rendering engines for different formats
+    # TODO Revise input format to be closer to Henry Truong's?
     def render
       pass :prefix=>PASS1_INCLUDE
       check_acts
