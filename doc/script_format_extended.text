@@ -53,13 +53,15 @@ Character2: Seems simple enough.
 
 # 2. Extensions to stage directions
 
-# Stage directions may be coded to indicate major staging or lighting cues, as follows:
+# Stage directions may be coded to indicate sound or lighting cues, as follows:
 
 <This is a normal stage direction>
     
-<STAGE: This is a major staging cue.>
+<SOUND: This is a major sound cue.>
 
 <LIGHTS: This is a major lighting cue.>
+
+# Note the ":" and the subsequent notes are optional
 
 # -------------------------------------------------------------------------------------------------------------------
 
@@ -124,8 +126,11 @@ Character1: Mama's boy.
 
 Character2: Come here and say that.
 
+[revision: Character3 => Character1]: Cut it out.
+
 # The meaning of the above is: The first line was written "is stupid", but performed as "a dope." The next two
-# lines were written, but not performed. 
+# lines were written, but not performed. The final line was changed from a line for Character3, to a line for
+# Character1
 
 # Note that this is an exception to the general rule about annotations:
 # Revision annotations should never be completely omitted from the printed script. It's pretty important that at
