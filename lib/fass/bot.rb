@@ -24,6 +24,8 @@ rev
       END
     end
     
+    # TODO Add "as performed/as written" flag
+    # TODO Add "with notes" flag
     desc 'render FILE', "Render a script file"
     def render(file)
       file = "#{SCRIPTS_DIRECTORY}/#{file}" unless file =~ %r{^/}

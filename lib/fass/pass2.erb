@@ -1,6 +1,11 @@
+%# Change rendering output to a more flexible format, e.g. XML, YAML, etc.
 <%
     def err(message)
       raise Fass::Script::ScriptError, message
+    end
+    
+    def play(name)
+      "Play: #{name}"
     end
     
     def split_scene(number)
@@ -19,6 +24,8 @@
       [act, scene]
     end
     
+    # TODO Insert scene cast of characters
+    # TODO Insert scene summary
     def scene(number, &block)
       act, scene = split_scene(number)
       Ember::Template.wrap_content_block(block) do |content|
@@ -30,6 +37,7 @@
       # Do nothing
     end
     
+    # TODO Count and number lines
     def line(nickname, options={}, &block)
       err "Character #{nickname} not defined (in pass 2)" unless $characters[nickname]
       wrap = options.has_key?(:wrap) ? options[:wrap] : true
@@ -43,6 +51,7 @@
       end
     end
     
+    # TODO Count and number stage directions
     def direction(options={}, &block)
       wrap = options.has_key?(:wrap) ? options[:wrap] : true
       Ember::Template.wrap_content_block(block) do |content|
@@ -52,6 +61,18 @@
             content.join
         end
         "< #{text} > "
+      end
+    end
+
+    def note(options={}, &block)
+      wrap = options.has_key?(:wrap) ? options[:wrap] : true
+      Ember::Template.wrap_content_block(block) do |content|
+        text = if wrap
+            content.join.gsub(/\n/m,' ').gsub(/\s+/,' ').strip
+        else
+            content.join
+        end
+        "Note: #{text}\n"
       end
     end
     

@@ -1,4 +1,8 @@
 %# FASS 1981 Script: FASSified Information
+%= play "FASS 1981: FASSified Information"
+%| note :wrap=>false
+  Performed ? in 1981 at the University of Waterloo
+  All material (except tunes) created by members of the FASS community
 %| song "Opening Song", "Yankee Doodle Dandy"
   This is the one and only FASS show,
   It's sure to make you laugh or cry

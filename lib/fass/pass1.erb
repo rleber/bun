@@ -1,9 +1,21 @@
+%# TODO Add play name directive
+%# TODO Refactor out common code
+%# TODO Add Stage Directions
+%# TODO Add Lighting Directions
+%# TODO Add general notes
+
 <%
     $characters = {}
     $acts = []
+    $play = nil
     
     def err(message)
       raise Fass::Script::ScriptError, message
+    end
+    
+    def play(name)
+      err "Attempt to redefine play" unless $play.nil?
+      $play = name
     end
     
     def split_scene(number)
@@ -55,6 +67,12 @@
     end
     
     def direction(options={}, &block)
+      Ember::Template.wrap_content_block(block) do |content|
+          content
+      end
+    end
+    
+    def note(options={}, &block)
       Ember::Template.wrap_content_block(block) do |content|
           content
       end
