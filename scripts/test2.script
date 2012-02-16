@@ -1,0 +1,4 @@
+%+ "lib/fass/script.erb"
+This is a test script
+% scene 1.1 do
+  Stuff

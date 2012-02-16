@@ -1,0 +1,47 @@
+<%
+    def err(message)
+      raise Fass::Script::ScriptError, message
+    end
+    
+    def scene(number, &block)
+      Ember::Template.wrap_content_block(block) do |content|
+        "***SCENE #{number}***\n#{content.join}"
+      end
+    end
+    
+    def character(nickname, fullname)
+      # Do nothing
+    end
+    
+    def line(nickname, options={}, &block)
+      err "Character #{nickname} not defined (in pass 2)" unless $characters[nickname]
+      wrap = options.has_key?(:wrap) ? options[:wrap] : true
+      Ember::Template.wrap_content_block(block) do |content|
+        text = if wrap
+            content.join.gsub(/\n/m,' ').gsub(/\s+/,' ').strip
+        else
+            content.join
+        end
+        "#{$characters[nickname][:full_name]}: #{text}"
+      end
+    end
+    
+    def direction(options={}, &block)
+      wrap = options.has_key?(:wrap) ? options[:wrap] : true
+      Ember::Template.wrap_content_block(block) do |content|
+        text = if wrap
+            content.join.gsub(/\n/m,' ').gsub(/\s+/,' ').strip
+        else
+            content.join
+        end
+        "<\n#{text}\n>\n"
+      end
+    end
+    
+    def characters
+      [
+          "Character List\n"
+      ] +
+          $characters.map{|nickname, values| "#{nickname}: #{$characters[nickname][:full_name]}\n"}
+    end
+-%>

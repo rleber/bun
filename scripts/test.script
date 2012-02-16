@@ -1,2 +1,14 @@
+%= characters
 This is a test script
-% scene 1.1
+% scene 2.2 do
+  Stuff
+
+% character "Milo", "Milo Tindall"
+
+%| line "Milo"
+  Hi there, folks!
+  This is Milo's line.
+  
+%| direction
+  Here are some stage directions.
+  And some more.

@@ -13,6 +13,7 @@ class Fass
       file += '.script' unless file =~ /\.\w*$/
       abort "Script file #{file} does not exist" unless File.exists?(file)
       script = Script.new(File.read(file))
+      script.source_file = file
       puts script.render
     end
   end
