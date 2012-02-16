@@ -39,14 +39,22 @@ class Fass
     end
     
     def check_acts
+      missing_acts = []
+      missing_scenes = []
       (1...$acts.size).each do |a|
         if $acts[a]
           (1...$acts[a].size).each do |s|
-            warn "Warning: Missing Act #{a}, Scene #{s}" unless $acts[a][s]
+            missing_scenes << [a, s] unless $acts[a][s]
           end
         else 
-          warn "Warning: Missing Act #{a}"
+          missing_acts << a
         end
+      end
+      if missing_acts.size > 0
+        warn "Warning: Missing Act#{ missing_acts.size>1 ? 's' : ''} #{missing_acts.map{|a| a.to_s}.join(',')}"
+      end
+      if missing_scenes.size > 0
+        warn %Q{Warning: Missing Scene#{ missing_acts.size>1 ? 's' : ''} #{missing_scenes.map{|a,s| "#{a}.#{s}"}.join(',')}}
       end
     end
     

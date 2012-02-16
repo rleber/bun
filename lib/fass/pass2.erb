@@ -3,9 +3,26 @@
       raise Fass::Script::ScriptError, message
     end
     
+    def split_scene(number)
+      if number.is_a?(Numeric)
+        act, scene = number.divmod(1.0)
+        while (scene.to_i - scene).abs > 0.05
+          scene *= 10
+        end
+        scene = scene.to_i
+      else
+        err "Bad scene number #{number}" unless number =~ /^\s*(\d+)\s*(?:\.|:)\s*(\d+)\s*$/
+        act, scene = [$1, $2].map{|s| s.to_i}
+      end
+      err "Invalid act number #{act}" if act<=0
+      err "Invalid scene number #{scene}" if scene<=0
+      [act, scene]
+    end
+    
     def scene(number, &block)
+      act, scene = split_scene(number)
       Ember::Template.wrap_content_block(block) do |content|
-        "***SCENE #{number}***\n#{content.join}"
+        "*** Act #{act}, Scene #{scene} ***\n#{content.join}"
       end
     end
     
