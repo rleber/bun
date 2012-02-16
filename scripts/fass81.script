@@ -25,9 +25,9 @@
   Here's the lovely FASS sweethearts
   And the studs that make them sigh
   We've worked all year to perfect this show
-  Trying to make this verse rhyme
-  Our costumes now are finished
-  The props are in their proper place
+  <%= rev "And trying", "Trying" %> to make this verse rhyme
+  Our costumes <%= rev "have been completed", "now are finished" %>
+  The props are in their <%= rev "", "proper" %> place
   
   Love our techies, love them all
   They work so hard to make it
