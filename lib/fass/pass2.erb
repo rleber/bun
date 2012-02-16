@@ -51,7 +51,15 @@
         else
             content.join
         end
-        "<\n#{text}\n>\n"
+        "< #{text} > "
+      end
+    end
+    
+    def song(title, tune, &block)
+      Ember::Template.wrap_content_block(block) do |content|
+          ["Song: #{title}\n",
+          "To the tune of: #{tune}\n"] +
+          content
       end
     end
     

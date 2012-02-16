@@ -13,3 +13,7 @@ This is a test script
 %| direction
   Here are some stage directions.
   And some more.
+  
+%| song "Opening Song", "Yankee Doodle Dandy"
+  This is the one and only FASS show,
+  It's sure to make you laugh or cry.
