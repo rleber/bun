@@ -154,3 +154,12 @@ Character2: Come here and say that.
 
 # In all cases, the gender, "played by ..." and trailing comments are optional
 # Also, there might be more than one casting annotation in the script.
+
+# -------------------------------------------------------------------------------------------------------------------
+
+# 6. Noting the name of the play
+
+# It's useful (for page headings, etc.) to be able to annotate the title of the play. We use the special annotation
+# format which follows. Whether any fancy formatting is done with this, we leave to the formatter:
+
+[Title: FASS 1981, FASSified Information]

@@ -1,20 +1,34 @@
-%# FASS 1981 Script: FASSified Information
-%= play "FASS 1981: FASSified Information"
-%| note :wrap=>false
-  Performed 5 performances in February, 1981 at the University of Waterloo
-    Wednesday, February 4, 1981 8pm
-    Thursday, February 5, 1981 8pm
-    Friday, February 6, 1981 7pm and 10pm
-    Saturday, February 7, 1981 8pm
-  The original production was directed by Ian Chaprin
-  All material (except tunes) created by members of the FASS community
-  Additional photos and other information are available at
-    Photos https://plus.google.com/u/0/photos/103202787649310540802/albums/5424268703373360993
+# FASS 1981 Script: FASSified Information
+[Title: FASS 1981: FASSified Information]
+[
+This play was written and performed by the FASS (Faculty, Administration, Staff & Students) Theatre Company
+of the University of Waterloo in 1981. FASS is an all-amateur theatre company, founded in 1961, which produces
+a campus satirical review every February. The entire production is written and performed by amateur volunteers,
+drawn from the University of Waterloo community. Participation is open to all, and everyone who signs up is 
+guaranteed a role.
+
+FASSified information was performed 5 tims in February, 1981 in Theatre of the Arts at the University of Waterloo:
+
+    Wednesday, February 4, 1981: 8pm
+    Thursday, February 5, 1981:  8pm
+    Friday, February 6, 1981:    7pm and 10pm
+    Saturday, February 7, 1981:  8pm
+    
+The original production was directed by Ian Chaprin.
+
+Additional photos and other information are available at
+
+    Photos  https://plus.google.com/u/0/photos/103202787649310540802/albums/5424268703373360993
     Program http://www.templetons.com/brad/fass/programs-pdf/81-program.pdf
-  This script has be recreated from an archival copy of the script provided
-  by Marnie Heatley. Transcription by Richard LeBer, February 2012
-  All rights retained by the FASS Theatre Company, University of Waterloo
-%| song "Opening Song", "Yankee Doodle Dandy"
+
+This script has be recreated from an archival copy of the script provided by Marnie Heatley. It was transcribed 
+by Richard LeBer, in February 2012.
+
+All rights retained by the FASS Theatre Company, University of Waterloo
+]
+
+  SONG: Opening Song
+  (To the tune of Yankee Doodle Dandy)
   This is the one and only FASS show,
   It's sure to make you laugh or cry
   Don't waste your time on any drugs or booze
@@ -29,7 +43,7 @@
   We've got actors, singers, dancers,
   They'll make your senses start to spin
   A story written just with you in mind
-  Based <%= rev "on", "upon" %> sex, crime, and sin.
+  Based [revision: on => upon] sex, crime, and sin.
   Full of puns and silly satire
   Sure to make you lose your mind
   
@@ -40,9 +54,9 @@
   Here's the lovely FASS sweethearts
   And the studs that make them sigh
   We've worked all year to perfect this show
-  <%= rev "And trying", "Trying" %> to make this verse rhyme
-  Our costumes <%= rev "have been completed", "now are finished" %>
-  The props are in their <%= rev "", "proper" %> place
+  [revision: And trying => Trying] to make this verse rhyme
+  Our costumes [revision: have been completed => now are finished]
+  The props are in their [revision: => proper] place
   
   Love our techies, love them all
   They work so hard to make it
