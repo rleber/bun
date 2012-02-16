@@ -1,56 +1,54 @@
-# FASS 1981 Script: FASSified Information
-[Title: FASS 1981: FASSified Information]
-[
-This play was written and performed by the FASS (Faculty, Administration, Staff & Students) Theatre Company
-of the University of Waterloo in 1981. FASS is an all-amateur theatre company, founded in 1961, which produces
-a campus satirical review every February. The entire production is written and performed by amateur volunteers,
-drawn from the University of Waterloo community. Participation is open to all, and everyone who signs up is 
-guaranteed a role.
+#: FASS 1981 Script: FASSified Information
+#Title: FASS 1981: FASSified Information
+# This play was written and performed by the FASS (Faculty, Administration, Staff & Students) Theatre Company
+# of the University of Waterloo in 1981. FASS is an all-amateur theatre company, founded in 1961, which produces
+# a campus satirical review every February. The entire production is written and performed by amateur volunteers,
+# drawn from the University of Waterloo community. Participation is open to all, and everyone who signs up is 
+# guaranteed a role.
+#
+# FASSified information was performed 5 tims in February, 1981 in Theatre of the Arts at the University of Waterloo:
+#
+#    Wednesday, February 4, 1981: 8pm
+#    Thursday, February 5, 1981:  8pm
+#    Friday, February 6, 1981:    7pm and 10pm
+#    Saturday, February 7, 1981:  8pm
+#    
+# The original production was directed by Ian Chaprin.
+#
+# Additional photos and other information are available at
+#
+#    Photos  https://plus.google.com/u/0/photos/103202787649310540802/albums/5424268703373360993
+#    Program http://www.templetons.com/brad/fass/programs-pdf/81-program.pdf
+#
+# This script has been recreated from an archival copy of the script provided by Marnie Heatley, with casting information
+# from a scanned program provided by Brad Templeton. It was transcribed by Richard LeBer, in February 2012.
+#
+# As much as possible, the script has been transcribed as performed. Annotations are included where the "as performed"
+# script appears to differ from the "as written", based on manual notes and scribbles. Annotations are also provided for
+# other information which was interesting (at least to the transcriber). Depending on how this script is formatted and
+# printed, formatting, line numbers, etc. may differ from the original script.
+#
+# All rights retained by the FASS Theatre Company, University of Waterloo
 
-FASSified information was performed 5 tims in February, 1981 in Theatre of the Arts at the University of Waterloo:
-
-    Wednesday, February 4, 1981: 8pm
-    Thursday, February 5, 1981:  8pm
-    Friday, February 6, 1981:    7pm and 10pm
-    Saturday, February 7, 1981:  8pm
-    
-The original production was directed by Ian Chaprin.
-
-Additional photos and other information are available at
-
-    Photos  https://plus.google.com/u/0/photos/103202787649310540802/albums/5424268703373360993
-    Program http://www.templetons.com/brad/fass/programs-pdf/81-program.pdf
-
-This script has been recreated from an archival copy of the script provided by Marnie Heatley, with casting information
-from a scanned program provided by Brad Templeton. It was transcribed by Richard LeBer, in February 2012.
-
-As much as possible, the script has been transcribed as performed. Annotations are included where the "as performed"
-script appears to differ from the "as written", based on manual notes and scribbles. Annotations are also provided for
-other information which was interesting (at least to the transcriber). Depending on how this script is formatted and
-printed, formatting, line numbers, etc. may differ from the original script.
-
-All rights retained by the FASS Theatre Company, University of Waterloo
-]
-[CAST:
-  Al:     Al Lert,            male,   played by Andrew Zador
-  Boring: I.M. Boring,        male,   played by Preston Gurd
-  Chris:  Chrys Anthemum,     female, played by Marney Heatley    # Character is named "Chris Anthemum" in the script
-  Dinah:  Dinah Might,        female, played by Heather Lennox
-  Hy:     Hy Pertension,      female, played by Sandy Kemsley
-  Ima:    Ima Undercover,     female, played by Linda Carson
-  Jenny:  Jenny Side,         female, played by Marianne Maltby
-  Kaz:    Kaz Pajamas,        male,   played by Steve Maulsby
-  Manuel: Manuel Life,        male,   played by Brian Martin
-  Maude:  Maude Squade,       female, played by Joy A. Felton
-  Patty:  Patty Cake                                              # TODO Character name may have changed; it's not in the program
-  Paula:  Paula C. Holder,    female, played by Gillian Teichert
-  Pierce: Pierce Dearz                                            # TODO Character name may have changed; it's not in the program
-  Ringo:  Ringo Roundacollar, male,   played by John Ciessen      # TODO "Ciessen" may be wrong -- it's illegible in the program
-  Sven:   Sven Yearitch,      male,   played by Ian! Allen
-  Trix:   Trix R. Forkids                                         # TODO Character name may have changed; it's not in the program
-  XRay:   Dr. X-Ray Tube,     female, played by Linda Ryall       # Character is named "X Ray Tube" in the script
-  Yves:   Yves Dropping,      male,   played by Glenn St. Germain
-]
+#CAST:
+#  Al:     Al Lert,            male,   played by Andrew Zador
+#  Boring: I.M. Boring,        male,   played by Preston Gurd
+#  Chris:  Chrys Anthemum,     female, played by Marney Heatley    #: Character is named "Chris Anthemum" in the script
+#  Dinah:  Dinah Might,        female, played by Heather Lennox
+#  Hy:     Hy Pertension,      female, played by Sandy Kemsley
+#  Ima:    Ima Undercover,     female, played by Linda Carson
+#  Jenny:  Jenny Side,         female, played by Marianne Maltby
+#  Kaz:    Kaz Pajamas,        male,   played by Steve Maulsby
+#  Manuel: Manuel Life,        male,   played by Brian Martin
+#  Maude:  Maude Squade,       female, played by Joy A. Felton
+#  Patty:  Patty Cake                                              #: TODO Character name may have changed; it's not in the program
+#  Paula:  Paula C. Holder,    female, played by Gillian Teichert
+#  Pierce: Pierce Dearz                                            #: TODO Character name may have changed; it's not in the program
+#  Ringo:  Ringo Roundacollar, male,   played by John Ciessen      #: TODO "Ciessen" may be wrong -- it's illegible in the program
+#  Sven:   Sven Yearitch,      male,   played by Ian! Allen
+#  Trix:   Trix R. Forkids                                         #: TODO Character name may have changed; it's not in the program
+#  XRay:   Dr. X-Ray Tube,     female, played by Linda Ryall       #: Character is named "X Ray Tube" in the script
+#  Yves:   Yves Dropping,      male,   played by Glenn St. Germain
 
   SONG: Opening Song
   (To the tune of Yankee Doodle Dandy)

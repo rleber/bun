@@ -52,6 +52,8 @@
     end
     
     # TODO Allow for multiple characters to have the same lines
+    # TODO Allow for spaces in nicknames
+    # TODO Warn for unmatched names
     def line(nickname, options={}, &block)
       err "Character #{nickname} not defined" unless $characters[nickname]
       Ember::Template.wrap_content_block(block) do |content|
