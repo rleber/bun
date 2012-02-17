@@ -125,6 +125,7 @@
 #  Blacky:    Blackie,                female, played by Linda Carson      #: Character is called "Blackie" in the program, "Blacky" in the script
 #  Bjorn:     Bjorn Cyborg,           female, played by Deborah Maenpas   #: TODO "Maenpas" may be wrong -- it's illegible in the program
 #  Boring:    I.M. Boring,            male,   played by Preston Gurd
+#  Bud:       Bud Wiser,              male,   played by Jim Gardner
 #  Charlotte: Charlotte Town,         female, played by Sandy Kemsley
 #  Chris:     Chrys Anthemum,         female, played by Marney Heatley    #: Character is named "Chris Anthemum" in the script
 #  Co-op:     Co-op Bullet Catchers,  male,   played by Richard LeBer, Peter Scheffel, David Welbourn
@@ -634,11 +635,11 @@ Alec: Don't worry, kid. Always look on the bright side of life.
   Even though your boss may be quite a jerk.
   
 <LIGHTS: As the dulcet whistling fades, so do the lights.>
-    
+
 Scene 1 - 2 : Insurance Agents and Secret Agents
 
 <LIGHTS>
-<Scene opens with a long table with charis and no people on stage. Enter Pierce Dears; He
+<Scene opens with a long table with chairs and no people on stage. Enter Pierce Dears; He
 sneaks on stage and sits down. Ima Undercover does the same. Rest of spices enter in ones and twos.>
 
 [revision: Pierce => Dinah]: <Hushed> The cock crows at midnight.
@@ -684,7 +685,7 @@ You have all gone through a thorough selection process designed to find the best
 
 Dinah: What selection process?
 
-Ringo: Don't you remember sending in 5 Oh Henry wrappers and two Fruit Loops box tops?
+Ringo: Don't you remember sending in 5 Oh Henry wrappers and [revision: two Fruit Loops box tops => two arts degrees]?
 
 Dinah: I thought I was applying for grad school.
 
@@ -701,7 +702,7 @@ Set the derivative equal to zero and solve for x.
 This is multiplied by the Superfluous Multiplier Factor found in table 31C.
 Exchange with your neighbour and sign on the dotted line. Any questions?
 
-<All the actors hold up hands.>
+<All the spies hold up hands.>
 
 Boring: Good. Now there are some Life Insurance people who would like to talk to you.
 
@@ -716,7 +717,7 @@ Paula: Think of your children begging for OSAP grants in the streets... your mot
 Manuel: Why not provide for your loved ones in advance by buying a policy from the Expendable Life Insurance Company?
 
 Paula: Yes, at Expendable Life we offer complete coverage. You get both life and injury insurance
-for a mere $5000 a year, payable annually or in convenient daily installments.
+for a mere $50,000 a year, payable annually or in convenient daily installments.
 
 Manuel: You'll sleep easily in the knowledge that your family's fully cared for.
 
@@ -731,11 +732,21 @@ Kaz: Just what coverage would I get?
   Your policy will insure any part you injure
   Be it ankle, elbow, or middle fin-ger
   
+  [revision: 
   So if you lose a toe, let us know
   We'll pay you seven eighty-four
   And that's just one small fraction
   of your monetary satisfaction
   You get a thousand bucks if you're put in traction
+  =>
+  So if you sever a toe, let us know
+  Becoming less will earn you more
+  Spies: More, more, more...
+  Manuel, Paula:
+  You'll get more than you planned on
+  If you've no leg to stand on
+  You get a thousand bucks without a hand on.
+  ]
   
   Ampu-ampu-amputation
   Of any part of your anatomy
@@ -749,6 +760,14 @@ Kaz: Just what coverage would I get?
   We pay for everything when you bite the big one
   
   ....CHORUS....
+  
+  [revision:
+  =>
+  Spies: We'll be reimbursed?
+  Manuel, Paula: You'll be reimbursed.
+  Spies: We'll be reimbursed!
+  Manuel, Paula, You'll be reimbursed!!
+  ]
   
 Paula: <Passing out forms to spies> Now, if you'll just sign on the dotted line...
 
@@ -785,7 +804,11 @@ Note the working telephone and the embassy name, in this case "Embassy A".
 
 <The grips carry on the safe.>
 
+[revision:
 XRay: Note the standard computerized alarm panel beside the door on these safes.
+=>
+XRay: These of course are the standard FASS safes. You will see them in nearly every scene in this show. Note the security alarm panel beside the safe door.
+]
 
 Chris: What alarm panel?
 
@@ -866,7 +889,7 @@ Paula: Insurance makes strange bedfellows.
 
 <LIGHTS: Lights down.>
 
-Scene 1 - 3: A Tough Safe to Crack
+Scene 1 - 3A: A Tough Safe to Crack
 
 <LIGHTS>
 <Scene opens with desk downstage by trap and plants stage left and stage right. There is a guard, Al Lert, sleeping at the desk.
@@ -889,21 +912,13 @@ Yves: We find de plans, copy dem, and leave before de guards arrive.
 [revision: 
 Trix: <Cupping her hand to her ear> Eh?
 
-=>
-
-]
-
 Chris: <To Trix> Let's get started.
 
-[revision:
 Trix: Eh?
-=> ]
 
 Chris: <Shouting> Let's go!
 
-[revision: Trix => Kaz]: If you want, but we haven't got the plans yet.
-
-[revision:
+Trix: If you want, but we haven't got the plans yet.
 
 Kaz: Have you got your hearing aid turned down again?
 
@@ -928,6 +943,14 @@ Trix: <Reacting vigourously> You turned it on ful blast!! <Reacts to her own sho
 Kaz: Sorry about that!
 
 =>
+
+Chris: Right. Now, let's get started.
+
+Kaz: Eh?
+
+Chris: <Shouting> Let's go!
+
+Kaz: If you want, but we haven't got the plans yet.
 ]
 
 Chris: Can we just get on with cracking the safe?
@@ -963,23 +986,25 @@ Chris: We'll all go for a drink AFTER the job is done.
 
 Yves: Never mind, just keep copying.
 
-<Chris turns to help Trix as Yves turns to Kaz.>
+<Chris goes back to work as Yves turns to Kaz.>
 
 Yves: Look, dere is a jean hout dere in de hall. Just look hout for de guards and de alarms.
 
 Kaz: Oh thank you. Murky buckets. <Exits out vom.>
 
-Yves: Dat's merci beaucoup! Tete de cochon.
-
 [revision:
+
+Yves: Dat's merci beaucoup! Tete de cochon.
 
 Trix: <Shouting> Will you people be quiet! <She grabs her ear and whispers> I shouldn't have shouted.
 
+Yves: <To Chris> Finished yet?
+
 =>
 
-]
+Yves: Dat's merci beaucoup! Tete de cochon. <To Chris> Finished yet?
 
-Yves: Finished yet?
+]
 
 Chris: Yes: Let's put these back and get out of here. Where's Kaz?
 
@@ -1004,15 +1029,20 @@ Kaz: Are you ready to go now, boss? Ooops!
 
 Hy: I think we've just found our quicker picker-upper.
 
+[revision:
+=>
+Yves: <Suddenly> Hey look, it's Maurice Richard!
+]
+
 <Kaz dives for cover as the guards pull out their guns. As the shooting starts, the two insurance agents enter by the trap, leaving it open.>
 
-Paula: Stop! Stop! Don't shoot them pleases, we could lose our jobs.
+Paula: Stop! Stop! Don't shoot them please, we could lose our jobs.
 
 Manuel: Besides, you might get blood all over your carpet.
 
 Patty: This isn't carpet, it's parquet.
 
-<Optional voice over: Butter.>
+Voice over: Butter.
 
 Manuel: It would be such a pity to ruin it, whatever it is.
 
@@ -1052,9 +1082,15 @@ Paula: We hired a bunch of co-op students as bullet catchers.
 
 Manuel. Yes, they're in co-op Latin.
 
-Co-op: <Being shot> Et tu, Brute!
+Co-op1: <Being shot> Et tu, Brute!
 
+[revision:
 Other Co-ops: <Charging into bullets> Amo, amas, amat, amamus...
+=>
+Co-op2: E pluribus unum.
+
+Co-op3: Semper ubi, sub ubi.
+]
 
 Paula: Hey you spies, get your beautiful life-insured bods out of here.
 
@@ -1067,6 +1103,182 @@ Coop2: _You've_ got a problem? We have to get a work report out of this.
 <The guards chase the Co-ops out, leaving Al still snoring in the middle of the stage.>
 
 <LIGHTS: Lights down.>
+
+Scene 1 - 3B: Everybody Wants a Pizza the Action
+
+<LIGHTS: Scene fades open with Al Lert asleep at a desk centre stage. Lights are at about 50%. Spies enter lurking from the vom.
+Half go Stage Left and half go Stage Right, circling around the the desk and meeting at the point. Dinah wears a sign saying "Danger -- Explosives">
+
+Dinah: Okay men, ah, women, ah fellow associates. We all know our specific jobs, each vitally important to the ultimate success of this mission.
+Maude, you know what you have to do.
+
+Maude: Right, boss!
+
+<She goes to phone. Others watch with integers. ## That's what the script says: "Integers". I presume it should be "interest". ##>
+
+Maude: 9... 6... 7... 11... 11... ## The then-famous (is it still?) phone number from Pizza Pizza in Toronto. ## one ringy dingy. Two
+ringy dingies. Is the the party to whom I am speaking? Yes, I'd like a large pizza with double pepperoni, peanut butter, double bananas,
+double anchovies, and yogurt. Thank you very much... Okay, boss, it's done.
+
+Ringo, Dinah: <Wiping sweat from their brows> Whew.
+
+<Dinah and Ringo turn towards safe. Dinah puts tape around door and rushes everyone to the front of the desk.>
+
+Dinah: Take cover -- here she goes!
+
+<SOUND: She attaches the wires to a plunger. Just as she is about to push the plunger, the phone rings. Maude goes to phone.>
+
+Maude: Hello? Yes, we did order pizza. Thank you very much.
+
+Dinah: All right. Here we go again.
+
+<She pumps the plunger but nothing happens. Puzzled, she hands the plunger to Ringo.>
+
+Dinah: Hold this, Ringo.
+
+<He grabs the handle and the pump slides down.>
+
+Ringo: Uh-oh, I broke it.
+
+<He tries to put it back together as Dinah goes to the safe. She soon finds the problem>
+
+Dinah: Ah! Here's the problem.
+
+<She takes two wires and splices them. Meanwhile, Ringo is still fiddling with the plunger. The safe door blows on top of Dinah. The spies
+rush forward. As they reach the safe, Bud Wiser appears in the doorway.>
+
+Bud: Did someone here order pizza?
+
+Maude: <Looking puzzled> Yes, we did. But we didn't give you our address. How did you find us?
+
+Bud: You didn't give us your phone number either, but we managed to call you back. ## This was much funnier in the days before Caller ID. ##
+
+Maude: Good point. Just wait a second, okay? <She turns to Ringo for a friendly chat.> Now Ringo, listen very closely. I want you to go into
+the safe, get the papers, then take pictures of everything. Have you got all that?
+
+Ringo: Almost all.
+
+Maude: What didn't you get?
+
+Ringo: The part after "listen very closely".
+
+Maude: Get into that safe!
+
+<She cuffs Ringo towards safe. As he goes through the door, Dinah, still under the door, calls out.>
+
+Dinah: Would someone please get this door off me?
+
+Ringo: Sorry, I've got work to do.
+
+<Ringo vanishes into the safe.>
+
+Maude: <To Bud> How much for the pizza?
+
+Bud: Well that all depends on what you want on it.
+
+Maude: You mean you brought us this pizza and there's nothing on ti>
+
+Bud: That's right, but let me explain: you see I drive around a neighborhood with cooked pizza crusts in the back of my car and when a call
+comes in I just rush right over. Pizza Transworld Delivery, the Fastest Delivery on Earth... Now, what did you want on your pizza?
+
+Maude: We ordered double pepperoni...
+
+Bud: Right.
+
+<He pulls a huge sausage out of his coat, takes a bite, and spits it onto the pizza. He goes to put the sausage away, then stops.>
+
+Bud: Did you say _double_ pepperoni?
+
+Maude: Nope, just single.
+
+Bud: Okay, what else?
+
+Maude: Uhh, peanut butter.
+
+<Bud produces a jar of peanut butter and smears some on the crust.>
+
+Bud: Peanut butter.
+
+Dinah: Would someone please get this door off me!
+
+Maude: <Oblivious to Dinah> Double bananas.
+
+Bud: Double bananas.
+
+<He takes out a banana, cracks it like an egg on the side of the pizza box, and squeezes the mush out of the two halves. He then jams
+the two peels into the pizza like horns.>
+
+Maude: Double anchovies.
+
+Bud: _Double_ anchovies?
+
+<Anchovies, yuk! Anyway, Bud pulls a large fish from his coat and a small fish from deep down in his crotch. He flaps them both down on the pizza.>
+
+Bud: Double anchovies.
+
+Dinah: Would someone please get this door off of me?
+
+Maude: <Still oblivious> And yogurt.
+
+<Bud takes out a yogurt container. He wipes his nose with his hand, then stirs the yogurt with his finger.>
+
+Maude: Not with your finger!
+
+<Glaring, Bud pulls out his switch-blade comb, flicks it open, combs his greasy hair, then stirs the yogurt with the comb. When he's finished, he pours the yogurt all over everything in the box, on stage, etc.>
+
+Bud: Yogurt. That'll be ten bucks.
+
+<Maude hands him a 10 spot and takes pizza.>
+
+Maude: This pizza is cold.
+
+Bud: Oh yeah, I almost forgot. <He picks up box.> Here, hold this.
+
+<Maude holds pizza box on bottom. Bud takes out his Bic lighter and waves it under the box for a couple of seconds. Maude is browned off.>
+
+Maude: Ouch!
+
+Bud: Sorry. You'd better hold it this way.
+
+<Bud shows Maude how to hold box by the sides. He then runs his lighter around the box edges, burning her again.>
+
+Maude: Ouch!
+
+Bud: Okay, enjoy your pizza. And watch it, it's hot.
+
+<Bud exits. At the same time, Ringo comes out of the safe. He has the papers and some Polaroid negatives. ## See, there used to be these things called Polaroid cameras, and ... oh, never mind. ## >
+
+Ringo: I've got pictures of all the plans.
+
+<He comes to the desk and drops the papers when he sees the pizza.>
+
+Ringo: Mmmmm. PIZZA!
+
+Dinah: <Screaming> Will someone please get this door off me!!!
+
+<Maude goes to help Dinah. Ringo stays with the pizza>
+
+Ringo: I say, I wanted _double_ pepperoni... and there's no knife to cut it with.
+
+Maude: <Helping Dinah> All right... here goes.
+
+<She lifts the door and Dinah crawls out. Meanwhile, Ringo is still looking for a knife. He tries a drawer in the desk.>
+
+Ringo: Maybe there's a knife in the drawer.
+
+<He pulls the drawer right out of the desk. It falls with a clatter. Al Lert stirs.>
+
+Maude: Uh oh. Let's get out of here.
+
+<All three spies run out. The guard yawns and stretches, sees the drawer on the floor, and begins to put things back into it.>
+
+Al: Blast, that's always happening!
+
+<Suddenly, he double takes and sees the open safe. He pulls out his gun and begins running around the room, looking for the culprits and checking everything. Reluctantly he comes back to the desk and dials>
+
+Al: Hello chief. Ah, you're not going to believe this but I think we've had a break-in. <He thumbs through papers on desk> No, no, nothing appears to be stolen... but I think I have a clue.
+
+<LIGHTS: He picks up the pizza box as the lights fade.>
 
 Scene 1 - 5: The Name Of The Game Is Money
 
