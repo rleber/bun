@@ -122,19 +122,24 @@
 #  Al:        Al Lert,                male,   played by Andrew Zador
 #  Alec:      Alec Trolysis,          male,   played by Brad Templeton
 #  Anna:      Anna Stesia,            female, played by Valerie Carr
+#  Band:      Band Aide,              male,   played by Brian Beamish
 #  Blacky:    Blackie,                female, played by Linda Carson      #: Character is called "Blackie" in the program, "Blacky" in the script
 #  Bjorn:     Bjorn Cyborg,           female, played by Deborah Maenpas   #: TODO "Maenpas" may be wrong -- it's illegible in the program
 #  Boring:    I.M. Boring,            male,   played by Preston Gurd
 #  Bud:       Bud Wiser,              male,   played by Jim Gardner
+#  Buffers:   Fred Buffers,           female, played by Kim Beattie       #: I sure hope Kim is female. This name is a really obscure joke -- want a hint? See http://en.wikipedia.org/wiki/FRED_%28text_editor%29
 #  Charlotte: Charlotte Town,         female, played by Sandy Kemsley
 #  Chris:     Chrys Anthemum,         female, played by Marney Heatley    #: Character is named "Chris Anthemum" in the script
 #  Co-op:     Co-op Bullet Catchers,  male,   played by Richard LeBer, Peter Scheffel, David Welbourn
+#  Cool:      Cool Aide,              male,   played by Chris Dobbin
 #  Datanet:   Datanet Funicello,      female, played by Julie Pakalns
 #  Dewitt:    Les Dewitt,             male,   played by Bernie Roehl
 #  Dinah:     Dinah Might,            female, played by Heather Lennox
 #  Ed:        Ed Monton,              male,   played by David Kerr
 #  Fred:      Fred Ricton,            female, played by Gillian Teichert
-#  Buffers:   Fred Buffers,           female, played by Kim Beattie       #: I sure hope Kim is female. This name is a really obscure joke -- want a hint? See http://en.wikipedia.org/wiki/FRED_%28text_editor%29
+#  Gator:     Gator Aide,             male,   played by Peter Scheffel
+#  General:   General Degree,         male,   played by Richard LeBer
+#  Grovel:    Charles Grovel,         male,   played by Derek Wilkinson
 #  Hal:       Hal Ifax,               female, played by Katherine Hicks
 #  Hy:        Hy Pertension,          female, played by Sandy Kemsley
 #  Ima:       Ima Undercover,         female, played by Linda Carson
@@ -155,6 +160,7 @@
 #  Reg:       Reg Ina,                male,   played by Peter Scheffel
 #  Reggie:    Reggie Sturdnurse,      male,   played by Andrew Welch      #: Last name is "Sterdnurse" in the script
 #  Ringo:     Ringo Roundacollar,     male,   played by John Ciessen      #: TODO "Ciessen" may be wrong -- it's illegible in the program
+#  Screw:     Mortimer Screw,         male,   played by Preston Gurd
 #  Seymour:   Seymour Clearly,        male,   played by Andre Cyr
 #  Sven:      Sven Yearitch,          male,   played by Ian! Allen
 #  Tess:      Tess Tube,              female, played by Samm Ristich
@@ -1280,13 +1286,371 @@ Al: Hello chief. Ah, you're not going to believe this but I think we've had a br
 
 <LIGHTS: He picks up the pizza box as the lights fade.>
 
+Scene 1 - 4: ConFASSions of a Pizza Man
+
+<LIGHTS: Lights up on room for questioning of Bud Wiser. The aides ## Cool Aide, Band Aide, Gator Aide ## are deep in discussion. There is a shabby desk on stage with a plain black phone and beat-up typewriter on it.>
+
+Cool: What are we going to do? The general will be here any minute to ask us about the robbery, and what have we got?
+
+Band: <Proudly> I found these! <Holds up negatives> Negatives of the stolen plans.
+
+Gator: And I found this. <Holds up pizza box>
+
+Cool: <Sarcastically> Great! We go looking for thieves and bring back garbage. Did you find any fingerprints?
+
+Band, Gator: No, chief!
+
+Cool: Did you find any tracks?
+
+Band, Gator: No, chief.
+
+Cool: Did you find anything to tell us who the robbers are?
+
+Band: I found these. <Holds up Polaroids again>
+
+Gator: And I found this. <Holds up pizza box>
+
+Cool: Go and get the security guards from the embassy -- maybe they can give us a clue.
+
+<Band summons security guards from vom>
+
+Cool: Okay folks, let's go through this again. How many of them were there?
+
+Al: <Militarily> The guard at the gate let four people out, sir.
+
+Cool: And how many of you were there?
+
+Al: Eighteen, Sir!
+
+Cool: Then why did the guard let them out?
+
+Al: They might have had guns/
+
+Cool: Do you know that for sure?
+
+Hy: Well one of them gave me a nasty look, sir.
+
+Cool: What did it matter if they had guns, anyway? You had guns too!
+
+Hy: We weren't carrying our guns, sir.
+
+Cool: Why not?
+
+Hy: They weren't loaded, sir.
+
+Cool: Weren't loaded? Why weren't they loaded?
+
+Hy: <Reluctantly> Well, a loaded gun is dangerous.
+
+Cool: You're supposed to be dangerous. That's why you're guards.
+
+Hy: Oh, yeah, I hadn't thought of that. Well, anyway, we eventually got our guns and loaded them.
+
+Cool: And then what did you do?
+
+Hy: We fired at the enemy, sir.
+
+Cool: Why didn't you arrest the thieves before they had copied the plans?
+
+Jenny: If we had stopped them before they took anything, it would only have been breaking and entering.
+
+Cool: What of it?
+
+Jenny: If you stop a trespasser, they just sake your hand and give you a citation. But if you catch a thief, they give you a raise.
+
+Cool: But, they got away!
+
+Jenny: Well it was still a good plan.
+
+Band: The general's coming!
+
+Cool: Quick! You security guards get back to your posts!
+
+<Jenny and Hy leave as the General engers. Al Lert remains on stage>
+
+General: Well, what have you found out about the robbery?
+
+Cool: <Nervously> Well sir... ah our intelligence ah... has determined that ah... the people responsible for the... ah robbery are ah... the enemy, sir!
+
+General: So! THAT's their game, is it?
+
+Band: Does the enemy realize we have this information?
+
+Cool: Oh no! We've got them fooled. They think that we're the enemy.
+
+Band: What a perfect disguise!
+
+General: Anything else?
+
+Gator: Yes sir! <Comes forward with pizza box> We found this at the embassy. We think it might be a clue!
+
+<He hands the box to the General, printing down.>
+
+General: There's nothing here!
+
+Gator: <Coughs embarrassed> Sir, the printing's on the other side.
+
+General: <Reversing box> Oh! That's a clever idea. Why don't our lab boys ever come up with ideas like this? Now, let's see <reads aloud> Pizza Transworld Delivery ... Say It With Pizza. <pauses> Well, what does it mean?
+
+<Note the pizza box has a take off on the Florist's Transworld Delivery symbol with the slogan on it>
+
+Al: We believe that the man who delivered that pizza may know something about the robbery. We've had him brought here so we can question him.
+
+General: Good idea! Bring him in.
+
+<Hy and Jenny pull a struggling Bud Wiser onto the stage and throw him on the chair. Bud goes over the back of the chair and ends up on the floor.>
+
+General: What's his name?
+
+Gator: He says he's Bud Wiser, sir.
+
+General: Is that Bud Wiser Junior?
+
+Gator: No, I think it's the Older Bud Wiser.
+
+General: <To Bud> Wouldn't you be more comfortable sitting normally?
+
+Bud: <Adjusting self> Yes! That's better, but I warn you, you can't get on my good side that easily!
+
+General: All right, Bud Wiser. I think you'd better know who you're up against. I am General Degree, and these are my aides, Cool, Gator, and Band. <To Band and Gator> Go get my chief interrogator, you two.
+
+Bud: See you later, Band and Gator.
+
+<They exit>
+
+General: You won't be so crusty when we're through grilling you, pizza man.
+
+Bud: You don't scare me! I can see it now... You start small with beatings and cigarette burns to my body... then bamboo shoots under the finger nails... electric shocks... drugs... you won't let me sleep or eat for days... My mind will go numb from your endless questioning... my body will be wracked with pain... but I'll laugh and say "Is that the best you can do?"... then you'll get really nasty and try some of the old favorites... the rack... the thumb screws...
+
+General: Stop! Stop! I can't take it any more! I'll tell you everything you want to know! Stop!
+
+<He knocks Bud over and the two of them sprawl on the floor in a suggestive position.>
+
+Cool: General Degree! Get a hold on yourself! Remember, we still have our secret weapon.
+
+<The General gets a grip on himself and gets off Bud. Both Bud and the General zip up their flies.>
+
+General: Ah, yes! A torture so fiendish that the mere mention of it has turned iron men in iron maidens, begging to tell us all that they know. Yes, the ultimate in tortures... SEVEN STRAIGHT HOURS OF DISCO MUSIC!
+
+<SOUND: We hear "Staying Alive" played at high speed>
+
+Cool: How horrible!
+
+General: <Pondering> Well... we like to think so.
+
+<Screw enters with Gator and Band.>
+
+General: Ah! Mortimer Screw, my chief investigator.
+
+Screw: Good morning, General. Where is my prisoner?
+
+General: <Points to Bud> This Bud's for you.
+
+Bud: Happy to see you.
+
+Screw: You'll be sadder, Bud Wiser. I'll start out small with beatings and cigarette burns to your body. Then, bamboo under the finger nails, electric shocks, drugs. I won't let you sleep or eat for days. Your mind will go numb from my endless questioning. Your body will be wracked with pain. And then I'll get really nasty.
+
+Bud: <To General> I told you so.
+
+Screw: But, first I am required by the state to inform you of your rights. You have the right to remain silent. If you give up this right, we will be very grateful. You have the right to moan, vomit, and scream in agony, and you have the right to whatever medical attention is necessary to keep you alive and in pain for days. Do you understand these rights as I have explained them to you?
+
+Bud: <Yells> I'll never talk! <Sotto> Scream, maybel, but talk never. You can do your worst.
+
+Screw: Really? <Rubs hands gleefully>
+
+General: I warn you, we'll be watching you.
+
+Bud: <Flattered> Will you?
+
+General: Yes! It's not a pretty sight, but somebody's got to do it!
+
+Screw: And now General, may I introduce my apprentice?
+
+General: Go ahead.
+
+<LIGHTS: Lights go down on all but Screw>
+
+Screw: Ladies and Gentlemen. In this corner, weighing 143 pounds, holding the indoor record for world's messiest confession in the free-style events, winner of the Marquis deSade Memorial Cup for two years running, whipping all the competition, Charles - I can keep this up all night - Grovel.
+
+<Grovel enters to thunderous applause.>
+
+Screw: Charles?
+
+Grovel: <Igor-like> Yes, Master?
+
+Screw: You silly twisted boy. <Pauses> Now, I want you to show me just how much you've learned. See what you can find out.
+
+<LIGHTS: Grovel approaches Bud Wiser. A very bright spot comes up on Bud Wiser in tight focus. Bud takes sunglasses from pocket and puts them on.>
+
+Bud: All right! Let's get started. What are you going to do to me?
+
+Grovel: <Laughs evilly> Say, I'm glad you asked.
+
+  SONG: Mister Screw
+  (To the tune of Mister Kite)
+  Grovel:
+  For the benefit of Mister Screw
+  I have come to torture you
+  If it takes all night
+  
+  Screw:
+  The General is waiting there
+  As slowly we pull out your hair
+  What a sight
+  
+  Grovel, Screw:
+  And the thumbscrews to your fingers
+  We'll apply
+  With the greatest of delight
+  
+  In this way
+  You will pray
+  To tell all you know
+  
+  Bud:
+  It's only fair to warn you two
+  That you can scream until you're blue
+  But I won't talk
+  
+  The pain and death don't worry me
+  Since I've caught terminal V.D.
+  From a jock
+  
+  So you can do your best to torture me
+  And you will see
+  You'd get more out of a rock
+  
+  You can stay for the whole day
+  It'll do you no good
+  
+Grovel: Now first, what is your name?
+
+Bud: Bud Wiser, what's yours?
+
+Grovel: Charles Grovel, pleased to meet you. Permit me to introduce my associate, Mortimer Screw. We plan to got into business together someday.
+
+Bud: Grovel and Screw... reminds me of the last date I had with a KIN student.
+
+Screw: Look, hadn't we better get on with this?
+
+Grovel: Oh yes! Back to business! Now what is your name?
+
+Screw: Don't start that again!
+
+Grovel: What is your quest?
+
+All: Wrong script!!!
+
+Grovel: So-rry. What do you know about the robbery?
+
+Bud: What robbery?
+
+Grovel: Don't play games with us!!! We know that you were at the scene of the crime. We found this! <Holds up pizza box>
+
+Bud: I've never seen that pizza box before in my live!
+
+Grovel: Then how do you explain ... THIS?
+
+<He whips open box to reveal a message on the lid. He reads.>
+
+Grovel: "If lost, return to Mr. B. Wiser, 34 Carlsberg Avenue, Sudsbury"
+
+Bud: <Breaking down> All right, I'll confess!
+
+General: <To Gator> Quick! Get this down!
+
+<Gator begins to type furiously. All look at him curiously.>
+
+General: <Tiredly> Wait until he says something.
+
+<Gator stops and waits>
+
+Screw: So you've broken him. I'm proud of you.
+
+Grovel: Thank you -- I owe it all to degenerate habits and a basic personality flaw.
+
+Screw: You must have taken Engineering!
+
+Grovel: Yes, I spent the best twelve years of my life in systems design. First year isn't that easy you know.
+
+Screw: <To Bud> Now talk!
+
+Bud: I'm sorry, I've forgotten what the question was. Oh yes, the robbery.
+
+<SOUND, LIGHTS: Music from the Twilight Zone. Lights down on all but Bud. Bud rises from his chair and begins to ham it up, Rod Serling style.>
+
+Bud: Submitted for your approval. A cold night, a lonely stretch of road and a man with a mission. A mission to deliver pizza to paying customers.
+
+<SOUND: Phone ringing>
+
+Bud: Suddenly, the call comes through. Rising to the challenge, the lone pizza man begins his journey...
+
+<SOUND: Car driving>
+
+Bud: Eventually, he arrives at his destination, a seldom visited embassy on the outskirts of town. He pauses...
+
+<SOUND: Sounds of a car crashing. Bud looks up with distaste.>
+
+Bud: ...and then makes his delivery. One party sized pizza...
+
+<LIGHTS: Anchovies, yuk! Lights up quickly>
+
+Screw: Pizza! Is that all you deliver?
+
+Bud: Well no...
+
+<SOUND, LIGHTS: Lights down and Twilight Zone music starts again.>
+
+Bud: Driving through the vacant streets...
+
+General: Without the flashbacks!
+
+<SOUND, LIGHTS: Lights up quickly. Twilight Zone music cuts.>
+
+Bud: All right. I also deliver subs.
+
+General: Subs? Where? Where do you deliver subs?
+
+Bud: The last delivery I had was to a manhole cover downtown.
+
+General: <To aides> Did you hear that? There are submarines in the sewers of our city!
+
+Gator: Impossible! They'd never get past the albino alligators.
+
+Band: Not to mention the soiled budgies.
+
+General: That doesn't matter. Get me the President!
+
+<Cool pulls a phone out of his fly. His helmet lights up and its radar dish begins to rotate.>
+
+General: Hello, operator. Get me the President. This is a matter which could affect the sanctity of life in our country. What? <Down cast> Yes, I'll hold.
+
+<All personnel on stage except Bud crowd around to hear what the General is saying. Bud goes to the other phone and dials once. A section of the back wall opens and Bud walks out. The section closes behind him.>
+
+General: Hello, Mr. President. <Straightens visibly> Ah, Mr. President, sir, I believe that I have uncovered an enemy plot. I believe that there is a secret submarine pen in the sewers of our city. Yes sir, right under our noses. What? Oh, yes sir, I'll hold. <To aides> That jackass is probably asking his wife what to do... <Louder> Ah, yes sir. Oh you decided not to put me on hold after all. <Embarrassed> It was just a little humor to lighten the mood. Yes sir, you didn't find it funny... <Pauses> Yes sir I have a plan. I would like to have full military control on this one. Absolutely every weapon at our disposal. No nukes? <He snaps his fingers sadly> Right, sir. Thank you, sir. I'll get on it right away. <Hangs up> Okay Wiser... <Looks for Bud> Where did he go?
+
+Band: He's not here!
+
+General: He can't just disappear.
+
+Cool: Oh no! We left him here with an unguarded phone!
+
+All the rest: So what?
+
+Cool: He must have dialed nine to get out!
+
+General: Follow him!
+
+<LIGHTS: Everyone dives for the phone. The lights go down on the commotion.>
+
 Scene 1 - 5: The Name Of The Game Is Money
 
-<LIGHTS: Lights up to a table stage right with athe four scientists ##or maybe three: Polly Saccharide, Alex Trolysis, Tess Tube## in a huddle.
+<LIGHTS: Lights up to a table stage right with the four scientists ##or maybe three: Polly Saccharide, Alec Trolysis, Tess Tube## in a huddle.
 They are sorting through blueprints and files marked Secret. Seymour enters with more files.>
 
 Seymour: Well, here's everything the last group brought in.
 
+[revision:
 Polly: Good. Then there are only three more groups of spies left to report.
 
 Alec: Finally! It's all beginning to pull together. You're doing a good job, team.
@@ -1294,32 +1658,66 @@ Alec: Finally! It's all beginning to pull together. You're doing a good job, tea
 <Tess has opened one of the files and looks astonished.>
 
 Tess: Hey boss, come look at this!
+=>
+Polly: <Picking up some of the plans> Look at this -- plans for secret biological weapons.
+
+Alec: <Reading> A giant carnivorous mutant red worm.
+
+Tess: A vicious giant boar with skin like metal...
+
+Seymour: Oh, and here's a weapon that's capable of instantly putting huge crowds of people into a drug-like stupor.
+
+Polly: What's it called?
+
+Seymour: Statistics.
+
+Polly: This stuff sounds tremendous.
+
+Alec: And there are only three more groups of spies left to report.
+
+Tess: It's all beginning to pull together. You're doing a good job, team.
+
+<Alec has opened another one of the files. He looks astonished.>
+
+Alec: Hey boss, look at this!
+]
 
 <They all do as Phil, Anna, and Les Dewitt enter.>
 
-Phil: Well, Dewitt, your people better have something to report. It's been over a week now and I've been hearing a lot of complaints from Personnel. 
-The spies and the insurance agents have been turning in some pretty strange expense accounts.
+Phil: Well, Les, your people better have something to report. The personnel department has been having kittens over the expense reports from the insurance people and the spies.
 
-Dewitt: I'm sure it's not that bad boss. After all, the spies can steal whatever they want. And what does an insurance agent need?
+Dewitt: It can't be that bad, boss. After all, the spies can steal whatever they want. And what does an insurance agent need?
 
 Phil: Read the list, Anna.
 
 Anna: <Reading a list deadpan> Expense accounts: One large pizza with pepperoni, peanut butter, double banana, double anchovies, yogurt, 23
-frisbee guns, 2 boxes of ammunition, 36 pairs of boffer glasses, ##Okay, I'll bite -- what are boffer glasses?## 10 Tom Mix secret decoder
+frisbee guns, 2 boxes of ammunition, 36 pairs of boffer glasses, ## Reputable sources tell me that boffer glasses are those glasses with the nose, moustache, and eyebrows that make you look like Groucho Marx ## 10 Tom Mix secret decoder
 rings, and 1389 co-op students, hold the engineers.
 
+[revision:
 Dewitt: Um, well maybe some of those things are a little bizarre, but we hired the best agents and we'll get results.
 
 Phil: I want to see some results right now!
+=>
+Dewitt: Who would eat a pizza with 1389 co-op students on it?
 
-Dewitt: I brought you here so the R&D team could tell you personally what progress they've made.
+Phil: Dewitt, do you expect this company to pay for all that nonsense?
+
+Dewitt: Boss, if we want results, we have to put up with these little peculiarities.
+
+Phil: Are we getting results?
+]
+
+Dewitt: [revision: I => We ] brought you here so the R&D team could tell you personally what progress they've made.
 
 Anna: What! You let that group of morons work on this? They had absolutely no workable ideas before...
 
-Dewitt: Well, they're a little like engineers -- they'll never come up with anything original, but if someone gives them an idea,
+Dewitt: Well, [revision: they're => the team is ] a little like engineers -- they'll never come up with anything original, but if someone gives them an idea,
 they can follow it through to its logical conclusion.
 
 Phil: My logical conclusion would be to fire the lot of you if this doesn't work.
+
+[revision:
 
 Dewitt: Well let's get on with it then. Alec!
 
@@ -1370,6 +1768,15 @@ Phil: All right, let's hear what you've got.
   We'll make a killing...
 
 Phil: What about weapons?
+=>
+<The scientists snap to attention.>
+
+Dewitt: Are you ready to report on your progress?
+
+Team: Yes sir!
+
+Phil: Just get on with it; what have you got?
+]
 
 Polly: Well, we've got...
 
@@ -1388,8 +1795,13 @@ Polly: Well, we've got...
   
   When the bombs burst, and the guns fire
   And we're feeling blue
+  [revision:
   We simply remember these devious things
   And then we know what to do!
+  =>
+  We just design more of these devious things
+  And shoot them right off at you.
+  ]
 
 Phil: Sounds good. Is that it?
 
@@ -1419,12 +1831,16 @@ Seymour: They use a microbrain to run the country?
 
 Queen: Hard to believe, isn't it?
 
-Kay: Not only that but we couldn't find out who leads the opposition.
+Kay: Not only that but [revision: we couldn't find out who leads => there's a lot of doubt about who's leading ] the opposition.
 
 Dewitt: What do you mean?
 
+[revision:
 Fred: We were told that the leader of the Official Opposition was Joseph Who. ## A reference to Joe Clark, the previous Prime Minister
 and Leader of the Opposition in 1981. When Clark was elected PM, the Toronto Star famously ran the news under the headline "Joe Who?" ##
+=>
+Fred: When we asked "Who leads the Opposition?", they just said "Yes."
+]
 
 Hal: And the country is ripping apart at the seams.
 
@@ -1457,7 +1873,7 @@ Tess: How terribly provincial.
 <LIGHTS: Lights down on company people. The spies from scene 3A and 3B enter from opposite sides of the stage. The 3A folks look torn
 to shreds; the 3B folks look very cool.>
 
-Polly: You people look terrible! What happened?
+Polly: You people look [revised: terrible => awful ]! What happened?
 
 Yves: It was pretty rough dere. We got caught in da act and had to shot hour way hout.
 
@@ -1470,32 +1886,47 @@ and pulled us out.
 
 Chris: Bullet Catcher, that reminds me of some of the jobs I got when I was in Co-op Espionage Studies.
 
-Kaz: You were in Espionage Studies? I was in ES2.
+Kaz: You were in Espionage Studies? I was in ES too.
 
-Ringo: You were in ES2? I didn't think it was built yet.
+Ringo: You were in ES2? I didn't even think it was built yet.
 
 Maude: How could you stand being inside that building?
 
 Kaz: I have nothing against ugly red monstrosities.
 
-Dinah: I remember my first job interview. The interview was hidden in a room somewhere in the northern hemisphere. The first one to find it got the job.
+Dinah: I remember _my_ first job interview. [revision: The interview => All we knew was that the interviewer ] was hidden in a room somewhere in the northern hemisphere. The first one to find it got the job.
 
+[revision:
 Maude: I applied for that job, but didn't get it. The room was in the Psychology Building. They ended up hiring a monkey.
 
 Yves: Dat's standard university hiring policy.
+=>
+Maude: I applied for that job, but didn't get it. The room was in the Psychology Building.
+
+Yves: How did anytone find da room?
+
+Dinah: No one did. They ended up hiring a monkey.
+
+Maude: Right.
+
+Dinah: Wright? Yes, I believe that was the monkey's name.
+]
 
 Kaz: And the school terms weren't any better than the jobs.
 
 Pierce: Our graduating class had an interesting assignment from the student government. We where hired to eliminate some fanatical left wing
-radicals who were publishing a silly newspaper. It wasn't hard, we just took them to the university cafeteria.
+radicals who were publishing a silly newspaper. It wasn't hard, we just took them to the [revision: university => South Campus Hall ] cafeteria.
 
-Trix: We never studied Cruel and Unusual Punishment until Grad School.
+Trix: [revision: We never studied => Wow, we didn't study ] Cruel and Unusual Punishment until Grad School.
 
 Pierce: Well we decided it was kind of rotten too, so we took them to Health Services to get their stomachs pumped.
 When the operation was finished, the radicals said they would only pay last year's medical fees, so the doctors pumped back 7 1/2%
-of what they'd taken out.
+[revision: of what they'd taken out => ].
 
+[revision:
 Trix: As I said, we never studied Cruel and Unusual Punishment until Grad School.
+=>
+]
 
 <LIGHTS: Lights up on Phil and company. Phil comes back to meet the spies.>
 
@@ -1507,7 +1938,7 @@ Pierce: And here's ours... you don't mind the pizza stains, do you?
 
 Phil: No problem. You people have done a fine job. A great job. Just wait out here and we'll give you everything you deserve.
 
-<LIGHTS: He walks bak to the Fassablanca folks. Lights down on the spies.>
+<LIGHTS: He walks back to the Fassablanca folks. Lights down on the spies.>
 
 Phil: Okay, who's going to fire the spies? Anna?
 
@@ -1525,17 +1956,17 @@ Chris: Don't we get a week's notice?
 
 Anna: Not at $500 a day.
 
-Ringo: But some of us gave up promising positions with our governments for this job. What will we do?
+Ringo: But some of us gave up promising positions with [revision: our governments => other countries ] for this job. [revision: What will we do? => What are we going to do now? ]
 
 Anna: Go home and apply for unemployment insurance, blackmail some government... it doesn't matter to us.
 
 Maude: There aren't going to be any governments to blackmail. With all that stuff we stole, you people are going to take over the world.
 
-Anna: Don't be silly, we have no interest in that.
+Anna: Don't be silly, we have no interest in [revision: that => taking over the world].
 
 Dinah: Then why did you want all those plans?
 
-Anna: We're going to use them to make the best darned war game in the world.
+Anna: We're going to use them to make the best darned war game [revision: in the world => you've ever seen].
 
 Pierce: War game?
 
@@ -1547,15 +1978,29 @@ Ringo: What is this place, anyway?
 
 Anna: It's the Fassablanca Toy Company.
 
-<At this point a big, boffo banner saying Fassablanca appears from the light pipe back stage.>
+<At this point a [revision: big, boffo banner => big sign] saying Fassablanca appears from [revision: the light pipe => ] back stage. [revision: => In deference to people who do not like the word "boffo", we will refrain from pointing out what kind of sign this is.]>
 
-Chris: But all the secret weapons! The lasers and phasers and nuclear...
+Chris: But all the secret weapons! The lasers and phasers and [revision: nuclear => the]...
 
 Anna: Soon to be available in durable plastic, batteries not included and some assembly required.
 
+[revision:
 Kaz: We laid our lives on the line for a toy company.
 
 Anna: Yep, and we appreciate it. So will the little kiddies. But you're still fired.
+=>
+Yves: You mean we put in all dat work for some lousy stinking toys?
+
+Anna: Lousy? The plans you stole are going to make our war toys more authentic than anything on the market.
+
+Yves: But we laid our lives on da plane! ## I believe this may also be an oblique reference to Fantasy Island: "Boss, da plane, da plane!" ##
+
+Dinah: I believe the expression is "laid our lives on the the line".
+
+Yves: Nobody's dat thin!
+
+Anna: Look, we apreciate the trouble you've gone to and so will the little kiddies. But you're still fired.
+]
 
 <She begins to herd them offstage.>
 
@@ -1567,9 +2012,9 @@ Spies: Right!
 
 Anna: I did your dirty work for you, boss.
 
-Phil: <Holding a file> Right, now we have everything we need to make a really boffo game. These plans for the Avro Arrow
-## A failed high tech fighter project of Avro Aviation in Malton in the 1950s ## will help to add the necessary touch of realism.
-Alec, I want you to get started on the manufacture of this one right away.
+Phil: <Holding a file> Right, now we have everything we need to make a really boffo game. [revision: These plans for the Avro Arrow
+ will help to add the necessary touch of realism.
+Alec, => ] I want you to get started on the manufacture of this one right away.
 
 Alec: At once, sir.
 
@@ -1592,11 +2037,11 @@ Phil: The Fassablanca Toy Company will make millions. All rise and sing the comp
   For a million dollars
   We would sell our soul.
   
-  ... Another verse or two ... ## It's not clear that any other verses were actually written ##
-  
   Toys and games and gadgets
   Dolls and GI Joe
   We love Fassablanca
   It rakes in the dough.
+  
+      [revision: => A-men.]
   
 <LIGHTS: Lights down>
