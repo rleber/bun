@@ -107,56 +107,62 @@
 #    Photos  https://plus.google.com/u/0/photos/103202787649310540802/albums/5424268703373360993
 #    Program http://www.templetons.com/brad/fass/programs-pdf/81-program.pdf
 #
-# This script has been recreated from an archival copy of the script provided by Marnie Heatley, with credits and casting
-# information from a scanned program provided by Brad Templeton. It was transcribed by Richard LeBer, in February 2012.
+# This script has been recreated from an archival copy of the script provided by Marnie Heatley and scans provided by
+# Nadia Ursacki, with credits, casting, and other information from a scanned program provided by Brad Templeton. 
+# It was transcribed by Richard LeBer, in February 2012.
 #
 # As much as possible, the script has been transcribed as performed. Annotations are included where the "as performed"
 # script appears to differ from the "as written", based on manual notes and scribbles. Annotations are also provided for
-# other information which was interesting (at least to the transcriber). Depending on how this script is formatted and
-# printed, formatting, line numbers, etc. may differ from the original script.
+# other information which was interesting (at least to the transcriber) or explanatory. Depending on how this script is
+# formatted and printed, formatting, line numbers, etc. may differ from the original script.
 #
 # All rights retained by the FASS Theatre Company, University of Waterloo
 
 #CAST:
-#  Al:        Al Lert,            male,   played by Andrew Zador
-#  Alec:      Alec Trolysis,      male,   played by Brad Templeton
-#  Anna:      Anna Stesia,        female, played by Valerie Carr
-#  Blacky:    Blackie,            female, played by Linda Carson      #: Character is called "Blackie" in the program, "Blacky" in the script
-#  Boring:    I.M. Boring,        male,   played by Preston Gurd
-#  Charlotte: Charlotte Town,     female, played by Sandy Kemsley
-#  Chris:     Chrys Anthemum,     female, played by Marney Heatley    #: Character is named "Chris Anthemum" in the script
-#  Co-op:     Co-op Bullet Catchers,      played by Richard LeBer, Peter Scheffel, David Welbourn
-#  Dinah:     Dinah Might,        female, played by Heather Lennox
-#  Ed:        Ed Monton,          male,   played by David Kerr
-#  Fred:      Fred Ricton,        female, played by Gillian Teichert
-#  Hal:       Hal Ifax,           female, played by Katherine Hicks
-#  Hy:        Hy Pertension,      female, played by Sandy Kemsley
-#  Ima:       Ima Undercover,     female, played by Linda Carson
-#  Jenny:     Jenny Side,         female, played by Marianne Maltby
-#  John:      John Saint's,       male,   played by Roy Gilpin
-#  Kay:       Kay Beck,           female, played by Betsy Wimbs
-#  Kaz:       Kaz Pajamas,        male,   played by Steve Maulsby
-#  Les:       Les Dewitt,         male,   played by Bernie Roehl
-#  Manuel:    Manuel Life,        male,   played by Brian Martin
-#  Maude:     Maude Squade,       female, played by Joy A. Felton
-#  Patty:     Patty Cake                                              #: TODO Character name may have changed; it's not in the program
-#  Paula:     Paula C. Holder,    female, played by Gillian Teichert
-#  Polly:     Polly Sacharide,    female, played by Anna Lebo
-#  Phil:      Phil T. Rich,       male,   played by Andrew Forber
-#  Pierce:    Pierce Dearz                                            #: TODO Character name may have changed; it's not in the program
-#  Queen:     Queen Spark,        male,   played by Brian Martin
-#  Reg:       Reg Ina,            male,   played by Peter Scheffel
-#  Reggie:    Reggie Sturdnurse,  male,   played by Andrew Welch      #: Last name is "Sterdnurse" in the script
-#  Ringo:     Ringo Roundacollar, male,   played by John Ciessen      #: TODO "Ciessen" may be wrong -- it's illegible in the program
-#  Seymour:   Seymour Clearly,    male,   played by Andre Cyr
-#  Sven:      Sven Yearitch,      male,   played by Ian! Allen
-#  Tess:      Tess Tube,          female, played by Samm Ristich
-#  Trix:      Trix R. Forkids                                         #: TODO Character name may have changed; it's not in the program
-#  Vic:       Vic Toria,          male,   played by Derek Wilkinson
-#  Whitey:    Whitey,             male,   played by Ian! Allen
-#  Winnie:    Winnie Peg                                              #: TODO Character name may have changed; it's not in the program
-#  XRay:      Dr. X-Ray Tube,     female, played by Linda Ryall       #: Character is named "X Ray Tube" in the script
-#  Yves:      Yves Dropping,      male,   played by Glenn St. Germain
+#  Al:        Al Lert,                male,   played by Andrew Zador
+#  Alec:      Alec Trolysis,          male,   played by Brad Templeton
+#  Anna:      Anna Stesia,            female, played by Valerie Carr
+#  Blacky:    Blackie,                female, played by Linda Carson      #: Character is called "Blackie" in the program, "Blacky" in the script
+#  Bjorn:     Bjorn Cyborg,           female, played by Deborah Maenpas   #: TODO "Maenpas" may be wrong -- it's illegible in the program
+#  Boring:    I.M. Boring,            male,   played by Preston Gurd
+#  Charlotte: Charlotte Town,         female, played by Sandy Kemsley
+#  Chris:     Chrys Anthemum,         female, played by Marney Heatley    #: Character is named "Chris Anthemum" in the script
+#  Co-op:     Co-op Bullet Catchers,  male,   played by Richard LeBer, Peter Scheffel, David Welbourn
+#  Datanet:   Datanet Funicello,      female, played by Julie Pakalns
+#  Dewitt:    Les Dewitt,             male,   played by Bernie Roehl
+#  Dinah:     Dinah Might,            female, played by Heather Lennox
+#  Ed:        Ed Monton,              male,   played by David Kerr
+#  Fred:      Fred Ricton,            female, played by Gillian Teichert
+#  Buffers:   Fred Buffers,           female, played by Kim Beattie       #: I sure hope Kim is female. This name is a really obscure joke -- want a hint? See http://en.wikipedia.org/wiki/FRED_%28text_editor%29
+#  Hal:       Hal Ifax,               female, played by Katherine Hicks
+#  Hy:        Hy Pertension,          female, played by Sandy Kemsley
+#  Ima:       Ima Undercover,         female, played by Linda Carson
+#  Jenny:     Jenny Side,             female, played by Marianne Maltby
+#  John:      John Saint's,           male,   played by Roy Gilpin
+#  Kay:       Kay Beck,               female, played by Betsy Wimbs
+#  Kaz:       Kaz Pajamas,            male,   played by Steve Maulsby
+#  Manuel:    Manuel Life,            male,   played by Brian Martin
+#  Maude:     Maude Squade,           female, played by Joy A. Felton
+#  Nancy:     Nancy Standard Fortran, female, played by Lynn Fletcher     #: Okay, this is my favorite character name EVER. (I'm old.)
+#  Otto:      Otto Mation,            female, played by Maggie Varadi
+#  Patty:     Patty Cake                                                  #: TODO Character name may have changed; it's not in the program
+#  Paula:     Paula C. Holder,        female, played by Gillian Teichert
+#  Polly:     Polly Saccharide,       female, played by Anna Lebo         #: Various spellings "Sacharride", etc. This one's in the program
+#  Phil:      Phil T. Rich,           male,   played by Andrew Forber
+#  Pierce:    Pierce Dearz                                                #: TODO Character name may have changed; it's not in the program
+#  Queen:     Queen Spark,            male,   played by Brian Martin
+#  Reg:       Reg Ina,                male,   played by Peter Scheffel
+#  Reggie:    Reggie Sturdnurse,      male,   played by Andrew Welch      #: Last name is "Sterdnurse" in the script
+#  Ringo:     Ringo Roundacollar,     male,   played by John Ciessen      #: TODO "Ciessen" may be wrong -- it's illegible in the program
+#  Seymour:   Seymour Clearly,        male,   played by Andre Cyr
+#  Sven:      Sven Yearitch,          male,   played by Ian! Allen
+#  Tess:      Tess Tube,              female, played by Samm Ristich
+#  Trix:      Trix R. Forkids                                             #: TODO Character name may have changed; it's not in the program
+#  Vic:       Vic Toria,              male,   played by Derek Wilkinson
+#  Whitey:    Whitey,                 male,   played by Ian! Allen
+#  Winnie:    Winnie Peg                                                  #: TODO Character name may have changed; it's not in the program
+#  XRay:      Dr. X-Ray Tube,         female, played by Linda Ryall       #: Character is named "X Ray Tube" in the script
+#  Yves:      Yves Dropping,          male,   played by Glenn St. Germain
 
 Scene 1 - 0 : Here's Looking at you Kid
 
@@ -245,7 +251,7 @@ Whitey: ## And this should be Blacky ## Yes, it's FASS '81!
   We've got actors, singers, dancers,
   They'll make your senses start to spin
   A story written just with you in mind
-  Based [revision: on => upon] sex, crime, and sin.
+  Based upon sex, crime, and sin.
   Full of puns and silly satire
   Sure to make you lose your mind
   
@@ -256,9 +262,9 @@ Whitey: ## And this should be Blacky ## Yes, it's FASS '81!
   Here's the lovely FASS sweethearts
   And the studs that make them sigh
   We've worked all year to perfect this show
-  [revision: And trying => Trying] to make this verse rhyme
-  Our costumes [revision: have been completed => now are finished]
-  The props are in their [revision: => proper] place
+  Trying to make this verse rhyme
+  Our costumes now are finished
+  The props are in their proper place
   
   Love our techies, love them all
   They work so hard to make it
@@ -269,6 +275,365 @@ Whitey: ## And this should be Blacky ## Yes, it's FASS '81!
   Hope that it will seize you
   Hope that it will entertain
   We want for it to please you...
+  <...Repeat last line in conga-fashion exit...>
+
+<LIGHTS: Lights down when the song is finished.>
+
+Scene 1 - 1 : A Meeting of the Bored
+
+<LIGHTS: The scene opens in the boardroom of Fassablanca, Inc. There should be a sign with this name on it clearly visible. 
+Les Dewitt and Alec Trolysis are on stage looking nervous.>
+
+Dewitt: Where's the reset of the development team, Alec? I thought they were supposed to report on all the new gadgets they've been coming up with.
+
+Alec: They'll be here any second now, sir. Dr. Tube is busy working on the new company symbol.
+
+<SOUND: The sound of a cymbal>
+
+Alec: There it is now.
+
+Dewitt: Well, then where's Doctor Sacharride. ## As previously noted, spelling varies. ##
+
+Alec: She's busy testing out the new combination shower and gamma-ray chamber.
+
+Dewitt: A combination shower and gamma-ray chamber?
+
+Alec: Uh-huh. You see, gamma rays have the power to turn anyone into a super soldier.
+
+Dewitt: What does that mean?
+
+Alec: Gamma rays rot your brain and turn your skin khaki.
+
+Dewitt: Here's Dr. Saccharride now.
+
+<Polly Sacharride enters, wearing a bathrobe or perhaps only a towel. She is accompanied by Tess Tube.>
+
+Dewitt: It's about time you showed up. Did you try out that new gamma-ray chamber?
+
+Polly: Well, I was going to but I kept putting it off.
+
+Tess: You might say it was a shower stall.
+
+Polly: ... and by the time I finally got in, Seymour was already there.
+
+Dewitt: Seymour?
+
+Polly: I sure did!
+
+Tess: Seymour is the fourth member of our development team. He should be here any minute.
+
+Alec: In the meantime, we can show you some of the great new gadgets we've been coming up with. This, for example,
+is our new atomic hand grenade. It can destroy everything within a radius of 30 yards.
+
+Dewitt: That's great!
+
+Tess: Unfortunately, the average person can only throw it 15 feet.
+
+<At this point, Seymour walks in. He is dressed only in purple pants, a la Hulk. He is glowing a bright green.>
+
+Seymour: Hi, everybody.
+
+Polly: Hi, Seymour.
+
+Seymour: Hi, Polly.
+
+Dewitt: He ... he's green!
+
+Tess: Yes, it's a small side effect of the gamma ray chamber.
+
+Dewitt: That's awful!
+
+Tess: Oh it's not that bad. Think of all the advantages being green.
+
+Dewitt: Like what?
+
+Polly: You can get a job in movies as a stand-in for Lorne Green.
+
+Tess: No-one would know when ## sic ## if you accidentally sat on a caterpillar.
+
+Seymour: Hey, watch it! It's not easy being green, y'know.
+
+Dewitt: Well, the gamma ray chamber is no good to us if it has that kind of side effect. What else have you people come up with?
+
+Tess: Well, we do have a new Tommy gun...
+
+Dewitt: It only shoots blind pin-ball players, right?
+
+Tess: Hey, has there been a security leak?
+
+Dewitt: You people haven't come up with a single invention that works! What are you going to tell the big boss when he gets here?
+
+Tess: We could give Seymour a perm and tell everyone he's a broccoli.
+
+<Enter Phil T. Rich, a doddering old fool. He is accompanies by his (ahem) bride, Anna Stesia.>
+
+Anna: Hi, everybody! Sorry the boss and I are late, but our car broke down on the way over.
+
+Phil: Never mind that now; what are all these people doing here?
+
+Dewitt: They work here.
+
+Phil: Oh. And what are you doing here?
+
+Dewitt: I work here too. Don't you remember, I'm Les Dewitt. This is Dr. Tess Tube, Dr. Polly Saccharide, Alec Trolysis, and Seymour...
+
+<Seymour enters greenly>
+
+Dewitt: That's Seymour Clearly.
+
+Phil: Who does he think he is? Kermit the Frog?
+
+Anna; I'd say he's moure like The Incredible Hunk ...
+
+Phil: You say you people work here? Doing what?
+
+Dewitt: They're our R & D team.
+
+Phil: R & D? Relaxation and doodling?
+
+Dewitt: No, Razzle and Dazzle.
+
+Anna: Do any of them know how to fix cars?
+
+Alec: I can fix washing machines!
+
+Seymour: I can fix roulette wheels!
+
+Alec: I can fix card games!
+
+Seymour: I can fix cats!
+
+Dewitt: What part of the car is broken, Anna?
+
+Anna: The back seat.
+
+Dewitt: Why can't you use the front seat?
+
+Anna: There's a stick shift.
+
+Phil: We haven't got time to worry about the car now. If our company doesn't come up with some new gadgets and inventions soon, we'll be out of business. Now what have you got?
+
+Alec: Well, there's the tactile nuclear device.
+
+Anna: Tactile nuclear device?
+
+Alec: I'll show you.
+
+<He exits on the run.>
+
+Tess: Be careful, Alec.
+
+Phil: Did he really mean tactile? I thought the word was _tactical_.
+
+Polly: No, tactile. It only goes off when somebody strokes it.
+
+<SOUND: A small nuclear explosion, offstage left. Alec screams.>
+
+Tess: Aye, there's the rub.
+
+Anna: Poor Alec. Well, at least it was a touching finish.
+
+<Alec enters, somewhat the worse for wear>
+
+Alec: I feel like something I ate last night at the Village.
+
+Tess: Well sir, I'm afraid the tactile nuclear device is a bit of a bomb. But don't you worry, there's lots more where that came from.
+
+Phil: That's what I was afraid of. Haven't you got anything less... dramatic?
+
+Alec: Well, there are the musical robots...
+
+Phil: Musical robots?
+
+Seymour: Uh-huh. We call them the Alcan Can-Can Tin-cans.
+
+Polly: They're sort of electronic singing and dancing automatons.
+
+Phil: Dancing? Can the Alcan Can-Can Tin-cans Can-can?
+
+Polly: Can the Alcan Can-Can Tin-cans Can-can! The Alcan Can-Can Tin-cans can Can-can the cans of every can-canner in Canada.
+
+Phil: Then the Alcan Can-Can Tin-cans are really All-Can Can-Can Tin-cans.
+
+Anna: Can we can this can-can crap?
+
+All: Sure can!
+
+Tess: The robots also tell jokes. Sort of.
+
+Phil: Sort of? What do you mean, sort of?
+
+Alec: We can show you, sir. Bring out the Musical Robots!
+
+<SOUND: Enter the Musical Robots ## Bjorn Cyborg, Nancy Standard Fortran, Fred Buffers, Datanet Funicello, and Otto Mation ## to the tune of the Can-Can, of course.>
+
+Bjorn: What's green, has four legs, and will kill you if it falls out of a tree?
+
+Nancy: I don't know, what?
+
+Bjorn: A pool table.
+
+Buffers: Why do engineers make such good astronauts?
+
+Datanet: No, what happened? ## That's what the script says. Surely, it should be "I don't know. WHY do engineers make such good astronauts?" ##
+
+Fred: Because they took up space in school.
+
+Datanet: What about the girl whose padded bra caught fire?
+
+Otto: It was a falsie alarm.
+
+Nancy: Whatever happened to that Volkswagen you had?
+
+Otto: It broke down.
+
+Nancy: Well, what did you do with it?
+
+Otto: I took it to the Old Volks Home.
+
+Buffers: Is it true you're going out with a butcher?
+
+Datanet: Yup, I'm playing for big steaks.
+
+Phil: <To Tess> I think I know what you mean by sort of.
+
+Alec: Well, they have lots of other talents, too. For example, they sing.
+
+Phil: Do they have to?
+
+Seymour: Uh-huh. Just watch!
+
+  SONG: A Bit Of Oil
+  (To the tune of Wouldn't It Be Lovely)
+  Bjorn, Nancy, Buffers, Datanet, Otto:
+  All I want is a bit of fun
+  Some Brillo pads
+  And some Three-in-One
+  So I can jump and run
+  Oh, wouldn't it be love-ly
+  
+  Brand new fingers and brand new rears
+  Brand new circuits and brand new gears
+  And now and then some beers
+  Oh, wouldn't it be love-ly
+  
+<One of the Tin Cans steps forward as the music segues to the next number.>
+
+  SONG: Rhinestone Robot
+  (To the tune of Rhinestone Cowboy)
+  Robot:
+  Well, I've been oiling my gears so long
+  Singing this same old song
+  It feels like I don't belong
+  Outside of a junk heap
+  
+  But I'm not like these other jerks
+  I can do it if I try cuz I know I have my works
+     in a drawer
+     
+  I'll go through many a rubber gasket
+  'Fore they lay me in my casket
+  And I'm gonna have me a heck
+     of a robotic time
+     
+  I'm a Rhinestone Robot
+  Heading out on the road with a two-year warranty
+  A Rhinestone Robot
+  With two slipped disks and write only memory
+  And now I have an Arts degree...
+
+Phil: Enough of this! Where on earth do you people come up with these things, anyway? Musical robots! More like musical trash cans! Get out of here.
+
+<The robots exit.>
+
+Phil: NOw would somebody like to tell me where we're going to come up with all the new inventions this company needs? Hmm?
+
+Alec: Well sir, I've been meaning to address that very question. If you could just give us a bit more time...
+
+Polly: Yes, we should have something soon... just a few more days...
+
+Phil: You don't have a few more days. I want some action and I want it now.
+
+Anna: Now? Right here? In front of the scientists?
+
+Phil: Not that kind of action.
+
+Dewitt: Maybe we could just steal some ideas from someone else!
+
+Polly: That's silly!
+
+Alec: It's ridiculous!
+
+Tess: It's absurd.
+
+Seymour: It's just dumb.
+
+Phil: I like it.
+
+Others: Me too.
+
+Phil: Now where are you going to steal the ideas from?
+
+Dewitt: Well, maybe I have an idea. You know how governments spend billions of dollars coming up with all sorts of new gadgets and stuff?
+
+Polly: But everyone else finds out about things like that the same time we do.
+
+Dewitt: That's right, but half the stuff they come up with, no one ever finds out about because it's top secret. Maybe we could hire a bunch of spies to steal those secrets so we can come out with a line of products that will make us the envy of our competitions and make us rich beyond our wildest dreams!!!
+
+Tess: Hey, that's a good idea! And while they are at it, they might as well pick up any secret war plans they happen to run across, too.
+
+Phil: I like it! No government would ever believe anything but another government would dar eto steal its secrets.
+
+Alec: But sir, where on earth are we going to find a bunch of spies. We'd have better luck getting a bushel of MacIntoshes.
+
+Phil: Shut up, you fruit. Any ideas, gentlemen?
+
+Dewitt: We could get N.A.S.T.Y. !
+
+Polly, Alec, Tess, Seymour: Nasty?
+
+Polly: With whom?
+
+Dewitt: No, the National Albanian Spy Team Youth. I saw an add for them in the Chevron. Better yet, we could hire C.U.S.O. to do it.
+
+Phil: CUSO?
+
+Dewitt: The Canadian Union of Spies Overseas.
+
+Anna: I didn't know there were any Canadian spies overseas. I thought the only undercover agents we had were the Mounties.
+
+Dewitt: You can forget about them. They tried to handle a mission overseas once, and their horses drowned.
+
+Phil: Look, why don't we just take out an ad in the paper and be done with it?
+
+Dewitt: Right away, sir. But what paper? The Gazette? The Imprint? Enginews?
+
+Phil: <Beginning to exit> Who reads those rags? Go for te best: the Waterloo Chronicle.
+
+<Phil and Anna exit.>
+
+Tess: This is awful! If they get a bunch of spies to steal inventions, they don't need us anymore.
+
+Alec: Don't worry, kid. Always look on the bright side of life.
+
+  SONG: The Bright Side of Life
+  (To the tune of The Obvious Song)
+  All:
+  Always look on the bright side of life,
+  Always look on the right side of life.
+  
+  Alec:
+  I may lose my job,
+  (be) Put out with the mob.
+  No one hires a man with a degree.
+  I've so little skill,
+  That the only job I'd fill,
+  Is teaching at a university.
+  
+  But, <all join in> Always look on the bright side of work.
+  Even though your boss may be quite a jerk.
+  
+<LIGHTS: As the dulcet whistling fades, so do the lights.>
     
 Scene 1 - 2 : Insurance Agents and Secret Agents
 
@@ -723,7 +1088,7 @@ Tess: Hey boss, come look at this!
 Phil: Well, Dewitt, your people better have something to report. It's been over a week now and I've been hearing a lot of complaints from Personnel. 
 The spies and the insurance agents have been turning in some pretty strange expense accounts.
 
-Les: I'm sure it's not that bad boss. After all, the spies can steal whatever they want. And what does an insurance agent need?
+Dewitt: I'm sure it's not that bad boss. After all, the spies can steal whatever they want. And what does an insurance agent need?
 
 Phil: Read the list, Anna.
 
@@ -731,20 +1096,20 @@ Anna: <Reading a list deadpan> Expense accounts: One large pizza with pepperoni,
 frisbee guns, 2 boxes of ammunition, 36 pairs of boffer glasses, ##Okay, I'll bite -- what are boffer glasses?## 10 Tom Mix secret decoder
 rings, and 1389 co-op students, hold the engineers.
 
-Les: Um, well maybe some of those things are a little bizarre, but we hired the best agents and we'll get results.
+Dewitt: Um, well maybe some of those things are a little bizarre, but we hired the best agents and we'll get results.
 
 Phil: I want to see some results right now!
 
-Les: I brought you here so the R&D team could tell you personally what progress they've made.
+Dewitt: I brought you here so the R&D team could tell you personally what progress they've made.
 
 Anna: What! You let that group of morons work on this? They had absolutely no workable ideas before...
 
-Les: Well, they're a little like engineers -- they'll never come up with anything original, but if someone gives them an idea,
+Dewitt: Well, they're a little like engineers -- they'll never come up with anything original, but if someone gives them an idea,
 they can follow it through to its logical conclusion.
 
 Phil: My logical conclusion would be to fire the lot of you if this doesn't work.
 
-Les: Well let's get on with it then. Alec!
+Dewitt: Well let's get on with it then. Alec!
 
 <Alec comes out of the huddle as though in a daze.>
 
@@ -844,7 +1209,7 @@ Queen: Hard to believe, isn't it?
 
 Kay: Not only that but we couldn't find out who leads the opposition.
 
-Les: What do you mean?
+Dewitt: What do you mean?
 
 Fred: We were told that the leader of the Official Opposition was Joseph Who. ## A reference to Joe Clark, the previous Prime Minister
 and Leader of the Opposition in 1981. When Clark was elected PM, the Toronto Star famously ran the news under the headline "Joe Who?" ##
@@ -998,7 +1363,7 @@ Alec: At once, sir.
 
 <He and the others begin to assemble the papers.>
 
-Les: Just think of the spinoffs we could get, boss. Toy cruise missiles! Nuclear Barbie! Atomic Ken!
+Dewitt: Just think of the spinoffs we could get, boss. Toy cruise missiles! Nuclear Barbie! Atomic Ken!
 
 Phil: The Fassablanca Toy Company will make millions. All rise and sing the company anthem.
 
