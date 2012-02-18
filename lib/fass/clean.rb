@@ -1,3 +1,5 @@
+require 'fass/scene'
+
 class Fass
   class Script
     class Cleaner
@@ -23,15 +25,31 @@ class Fass
       
       def clean1
         content = text.split("\n")
-        new_content = []
-        title_line = content.find{|line| line =~ /Page\s+1/}
+        title = get_title(content)
+        content = clean_lines(content)                    # Clean up tabs, and garbage lines
+        content = clean_scenes(content)                   # Clean up scene casts of characters
+        content[0,0] = ["#Title: #{title}", ""] if title  # Insert the title, if any
+        text = content.join("\n")                         # Save the results
+      end
+      
+      def get_title(script)
+        script = script.split("\n") if script.is_a?(String)
+        title_line = script.find{|line| line =~ /Page\s+1/}
         title = nil
         if title_line
           title = title_line[/^.*?\t(.*?)\t/,1].strip if title_line =~ /\t.*\t/
           title = title.gsub(/\s+/,' ')
         end
-
-        content.each do |line|
+        title
+      end
+      
+      # Clean up lines a script:
+      # - Remove tabs and excess whitespace
+      # - Remove blank lines and page headers and footers
+      def clean_lines(script)
+        script = script.split("\n") if script.is_a?(String)
+        new_content = []
+        script.each do |line|
           line = line.gsub("\t",' ').gsub(/ {2,}/,' ').strip
           next unless line.size > 0
           next if line =~ /Page\s+\d+$/
@@ -39,81 +57,95 @@ class Fass
           next if line =~ /Page\s+\d+.*F\.A\.S\.S/
           new_content << line
         end
-
-        # Find ends of previous scenes
-        scene_ends = [0]
-        new_content.each_with_index do |line, i|
-          if line =~ SCENE_END
-            scene_ends << i+1
-          end
+        new_content
+      end
+      
+      # Clean up Scenes: Casts of Characters and scene names
+      def clean_scenes(script)
+        script = script.split("\n") if script.is_a?(String)
+        scenes = get_scenes(script)
+        content = []
+        scenes.each do |scene|
+          content += clean_scene(scene)
         end
-        scene_ends.pop # don't need the last one
-
-        # Find "cast of characters"
-        cast_starts = []
-        new_content.each_with_index do |line, i|
-          if line =~ CAST_OF_CHARACTERS
-            cast_starts << i
-          end
-        end
-
-        if scene_ends.size == cast_starts.size
-          old_content = new_content
-          new_content = []
-          cast_starts << old_content.size  # Add a sentinel to the end
-          scene_ends.each_with_index do |scene_end, scene_index|
-            scene_name = []
-            line_index = scene_end
-            if line_index == 0
-              # There may be garbage at the beginning of the file; ignore it
-              while old_content[line_index] !~ /[A-Za-z]/
-                line_index += 1
-              end
-              line_index += 1 # And ignore the name of the play
-            end
-            while line_index < cast_starts[scene_index]
-              scene_name << old_content[line_index]
-              line_index += 1
-            end
-            # Because sometime line breaks get missed:
-            scene_name << old_content[line_index].sub(CAST_OF_CHARACTERS,'') if line_index == cast_starts[scene_index]
-            scene_name = scene_name.join(' ').gsub(/\s+/, ' ')
-            new_content << "Scene ? - ? : #{scene_name}\n"
-            new_content << "#CAST FOR SCENE:"
-            line_index += 1
-            cast = []
-            while line_index < cast_starts[scene_index+1] && (old_content[line_index] =~ CAST_LIST || old_content =~ /^\s*$/)
-              new_cast = old_content[line_index].scan(CAST_MEMBER)
-              new_cast.each do |full, nick|
-                cast << [nick.strip, full.strip]
-              end
-              line_index += 1
-            end
-            if cast.size > 0
-              nickname_width = cast.map{|nick, full| nick.size}.max
-              cast.each do |nick, full|
-                new_content << %Q{#  #{"%#{-(nickname_width+1)}s"%(nick+':')}  #{full}}
-              end
-            end
-            new_content << ""
-            while line_index < cast_starts[scene_index+1]
-              break if old_content[line_index] =~ SCENE_END
-              new_content << old_content[line_index]
-              line_index += 1
-            end
-          end
+        content
+      end
+      
+      # Separate the scenes in the script
+      def get_scenes(script)
+        script = script.split("\n") if script.is_a?(String)
+        scene_starts = find_scene_starts(script)
+        scene_ends = find_scene_ends(script)
+        scene_starts.zip(scene_ends).map {|s, e| Fass::Script::Scene.new(script[s..e], s) }
+      end
+      
+      def clean_scene(scene)
+        content = []
+        content << "Scene ? - ? : #{scene.name}" if scene.name
+        cast = cleaned_cast(scene)
+        if cast.size > 0
+          content << "" if content.size > 0
+          content += cast
         else
-          warn "Scene endings (\"fin\") don't match up with casts of characters; unable to isolate scenes"
-          warn "  (There are #{scene_ends.size} scene endings, and #{cast_starts.size} casts of characters.)"
-          warn "  Scenes end on lines:                #{scene_ends.map{|e| e.to_s}.join(',')}"
-          warn "  Casts of characters start on lines: #{cast_starts.map{|e| e.to_s}.join(',')}"
+          warn "Unable to find Scene Cast of Characters for scene starting on line #{scene.start}"
         end
- 
-        # Insert the title, if any
-        new_content[0,0] = ["#Title: #{title}", ""] if title
-        
-        # Save the results
-        text = new_content.join("\n")
+        content << ""
+        action = scene.action
+        action.pop if action[-1] =~ SCENE_END # Don't include the final '- fin -'
+        content += scene.action
+        content
+      end
+      
+      # Find line numbers of the starts of scenes
+      #   Based on finding the ends of the scenes
+      def find_scene_starts(script)
+        script = script.split("\n") if script.is_a?(String)
+        scene_ends = find_scene_ends(script)
+        scene_starts = scene_ends.map{|e| e+1} # Point to the next line after the "- fin -" marker
+        scene_starts.unshift(start_of_first_scene(script))  # Add a scene start to the beginning
+        scene_starts.pop # don't need the last one
+        scene_starts
+      end
+      
+      # Find the line number of the start of the first scene, ignoring garbage
+      # that often exists at the start of the file, and the line with the title of the play
+      def start_of_first_scene(script)
+        script = script.split("\n") if script.is_a?(String)
+        line_index = 0
+        loop do
+          line = script[line_index]
+          break unless line
+          break if line =~ /[A-Za-z]/
+          line_index += 1
+        end
+        line_index += 1 if line_index < script.size # And ignore the name of the play
+        line_index
+      end
+      
+      # Find line numbers of the ends of scenes
+      #   Uses the '- fin -' markers to find them
+      def find_scene_ends(script)
+        script = script.split("\n") if script.is_a?(String)
+        scene_ends = []
+        script.each_with_index do |line, i|
+          if line =~ SCENE_END
+            scene_ends << i
+          end
+        end
+        scene_ends
+      end
+      
+      # Cleaned up cast listing for a scene
+      def cleaned_cast(scene)
+        cast = scene.cast
+        return [] if cast.size == 0
+        content = []
+        content << "#CAST FOR SCENE:"
+        nickname_width = cast.map{|member| member[:nickname].size}.max
+        cast.each do |member|
+          content << %Q{#  #{"%#{-(nickname_width+1)}s"%(member[:nickname]+':')}  #{member[:full_name]}}
+        end
+        content
       end
 
       # Second pass cleaning
