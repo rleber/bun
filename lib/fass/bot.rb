@@ -9,19 +9,7 @@ class Fass
     
     desc "describe", "Describe the scripting language"
     def describe
-      puts <<-END
-The script engine provides a simple text description language for entering and displaying scripts for
-plays. The syntax for this language is based on ERB and Ember. See http://snk.tuxfamily.org/lib/ember
-for additional details on the syntax.
-  
-The specific directives which this tool understands include:
-character
-characters
-scene
-direction
-song
-rev
-      END
+      puts File.read("doc/script_format_extended.text")
     end
     
     # TODO Add "as performed/as written" flag
@@ -34,6 +22,31 @@ rev
       script = Script.new(File.read(file))
       script.source_file = file
       puts script.render
+    end
+    
+    no_tasks do
+      def print_chunks(chunks, level=0)
+        return if level > 1
+        chunks.each do |chunk|
+          if chunk.is_a?(Array)
+            print_chunks(chunk, level+1)
+          else
+            i = chunk.inspect
+            prefix = '  '*level
+            if i.size>100
+              puts "#{prefix}#{i[0...50]}..#{i[-50..-1]}"
+            else 
+              puts "#{prefix}#{i}"
+            end
+          end
+        end
+      end
+    end
+
+    EXCERPT_SIZE = 100
+    desc "rtf FILE", "Read a script from an RTF format file"
+    def rtf(file)
+      system "rtf2text extract #{file.inspect}"
     end
   end
 end
