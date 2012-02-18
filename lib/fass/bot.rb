@@ -1,11 +1,21 @@
 require 'thor'
 require 'ember'
+require 'fass/rtf'
 require 'fass/script'
 
 class Fass
   class Bot < Thor
     
     SCRIPTS_DIRECTORY = 'scripts'
+    
+    no_tasks do
+      def fix_script_file(file, ext="script")
+        file = file.dup
+        file = "#{SCRIPTS_DIRECTORY}/#{file}" unless file =~ %r{^/}
+        file += ".#{ext}" unless file =~ /\.\w*$/
+        file
+      end
+    end
     
     desc "describe", "Describe the scripting language"
     def describe
@@ -16,8 +26,7 @@ class Fass
     # TODO Add "with notes" flag
     desc 'render FILE', "Render a script file"
     def render(file)
-      file = "#{SCRIPTS_DIRECTORY}/#{file}" unless file =~ %r{^/}
-      file += '.script' unless file =~ /\.\w*$/
+      file = fix_script_file(file)
       abort "Script file #{file} does not exist" unless File.exists?(file)
       script = Script.new(File.read(file))
       script.source_file = file
@@ -45,7 +54,9 @@ class Fass
 
     desc "rtf FILE", "Read a script from an RTF format file"
     def rtf(file)
-      system "rtf2text extract #{file.inspect}"
+      file = fix_script_file(file, 'rtf')
+      parser = RTF::Parser.new(File.read(file))
+      puts parser.text
     end
     
     
