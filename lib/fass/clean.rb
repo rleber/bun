@@ -23,14 +23,14 @@ class Fass
       
       def clean1
         content = text.split("\n")
-        title = content.find{|line| line =~ /Page\s+1/}
-        if title
-          title = title[/^.*?\t(.*?)\t/,1].strip if title =~ /\t.*\t/
-          title = title.gsub(/\s+/,' ')
-          puts "#Title: #{title}"
-          puts
-        end
         new_content = []
+        title_line = content.find{|line| line =~ /Page\s+1/}
+        title = nil
+        if title_line
+          title = title_line[/^.*?\t(.*?)\t/,1].strip if title_line =~ /\t.*\t/
+          title = title.gsub(/\s+/,' ')
+        end
+
         content.each do |line|
           line = line.gsub("\t",' ').gsub(/ {2,}/,' ').strip
           next unless line.size > 0
@@ -39,6 +39,7 @@ class Fass
           next if line =~ /Page\s+\d+.*F\.A\.S\.S/
           new_content << line
         end
+
         # Find ends of previous scenes
         scene_ends = [0]
         new_content.each_with_index do |line, i|
@@ -47,6 +48,7 @@ class Fass
           end
         end
         scene_ends.pop # don't need the last one
+
         # Find "cast of characters"
         cast_starts = []
         new_content.each_with_index do |line, i|
@@ -54,6 +56,7 @@ class Fass
             cast_starts << i
           end
         end
+
         if scene_ends.size == cast_starts.size
           old_content = new_content
           new_content = []
@@ -105,6 +108,11 @@ class Fass
           warn "  Scenes end on lines:                #{scene_ends.map{|e| e.to_s}.join(',')}"
           warn "  Casts of characters start on lines: #{cast_starts.map{|e| e.to_s}.join(',')}"
         end
+ 
+        # Insert the title, if any
+        new_content[0,0] = ["#Title: #{title}", ""] if title
+        
+        # Save the results
         text = new_content.join("\n")
       end
 

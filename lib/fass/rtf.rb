@@ -103,28 +103,28 @@ module RTF
       end
       return pos
     end
-  end
-  private :_parse
+    private :_parse
   
-  def print(&blk)
-    _print_code(parse(&blk))
-  end
+    def print(&blk)
+      _print_code(parse(&blk))
+    end
   
-  def _print_code(chunks, level=0)
-    return if level > 1
-    chunks.each do |chunk|
-      if chunk.is_a?(Array)
-        print_chunks(chunk, level+1)
-      else
-        i = chunk.inspect
-        prefix = '  '*level
-        if i.size>100
-          puts "#{prefix}#{i[0...50]}..#{i[-50..-1]}"
-        else 
-          puts "#{prefix}#{i}"
+    def _print_code(chunks, level=0)
+      return if level > 1
+      chunks.each do |chunk|
+        if chunk.is_a?(Array)
+          print_chunks(chunk, level+1)
+        else
+          i = chunk.inspect
+          prefix = '  '*level
+          if i.size>100
+            puts "#{prefix}#{i[0...50]}..#{i[-50..-1]}"
+          else 
+            puts "#{prefix}#{i}"
+          end
         end
       end
     end
+    private :_print_code
   end
-  private :_print_chunks
 end
