@@ -1769,9 +1769,9 @@
             ROGER:	     We can't     adjourn     yet, we haven't done anything.
      
         
-                             1:5	     An Association of Intrepid AstroNuts	     Paje 3
+                             1:5	     An Association of Intrepid AstroNuts	     Page 3
      
-                           1:5	     An Association of Intrepid AstroNuts	     Paje 3
+                           1:5	     An Association of Intrepid AstroNuts	     Page 3
      
                            1:5 Page      2      	     F.A.S.S. 1980	     80/03/20-19:22
      
@@ -1814,9 +1814,9 @@
         To start eating Egg Foo     Yung.
      
         
-                             1:5	     An Association of Intrepid AstroNuts	     Paje 3
+                             1:5	     An Association of Intrepid AstroNuts	     Page 3
      
-                           1:5	     An Association of Intrepid AstroNuts	     Paje 3
+                           1:5	     An Association of Intrepid AstroNuts	     Page 3
      
                            1:5 Page      44      	     F.A.S.S. 1980	     80/03/20-19:22
      
@@ -5267,7 +5267,7 @@
         PRG COMPUTER 	      (COMPUTER)
         SUE ZAFONE	     (SUE)
         TODD HOTTY 	      (TODD)
-        SUETONIUS 	  * 	     (SUETONIUS)
+        SUETONIUS 	   	     (SUETONIUS)
         [L-1] (MUSIC INTRO TO SCIENCE FICTION DOUBLE FEATURE.	     LIGHT
         UP ON PAIR OF LARGE	     FAKE RED LIPS.	     THE DIRECTOR'S HEAD
  APPEARS IN THE MOUTH, AND SINGS:)
