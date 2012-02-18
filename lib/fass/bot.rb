@@ -43,10 +43,176 @@ class Fass
       end
     end
 
-    EXCERPT_SIZE = 100
     desc "rtf FILE", "Read a script from an RTF format file"
     def rtf(file)
       system "rtf2text extract #{file.inspect}"
+    end
+    
+    
+    SCENE_END = /-\s*\bf\s*i\s*n\b\s*-/
+    CAST_OF_CHARACTERS = /cast\s+of\s+characters\s*:\s*$/i
+    
+    desc "clean1 FILE", "Clean an extracted text file (first pass)"
+    def clean1(file)
+      content = File.read(file)
+      content = content.split("\n")
+      title = content.find{|line| line =~ /Page\s+1/}
+      if title
+        title = title[/^.*?\t(.*?)\t/,1].strip if title =~ /\t.*\t/
+        title = title.gsub(/\s+/,' ')
+        puts "#Title: #{title}"
+        puts
+      end
+      new_content = []
+      content.each do |line|
+        line = line.gsub("\t",' ').gsub(/ {2,}/,' ').strip
+        next unless line.size > 0
+        next if line =~ /Page\s+\d+$/
+        next if line =~ /\d+\s+\d+\/\d+\/\s+\d+\s+-\d+:\d+$/
+        next if line =~ /Page\s+\d+.*F\.A\.S\.S/
+        new_content << line
+      end
+      # Find ends of previous scenes
+      scene_ends = [0]
+      new_content.each_with_index do |line, i|
+        if line =~ SCENE_END
+          scene_ends << i+1
+        end
+      end
+      scene_ends.pop # don't need the last one
+      # Find "cast of characters"
+      cast_starts = []
+      new_content.each_with_index do |line, i|
+        if line =~ CAST_OF_CHARACTERS
+          cast_starts << i
+        end
+      end
+      if scene_ends.size == cast_starts.size
+        old_content = new_content
+        new_content = []
+        cast_starts << old_content.size  # Add a sentinel to the end
+        scene_ends.each_with_index do |scene_end, scene_index|
+          scene_name = []
+          line_index = scene_end
+          if line_index == 0
+            # There may be garbage at the beginning of the file; ignore it
+            while old_content[line_index] !~ /[A-Za-z]/
+              line_index += 1
+            end
+            line_index += 1 # And ignore the name of the play
+          end
+          while line_index < cast_starts[scene_index]
+            scene_name << old_content[line_index]
+            line_index += 1
+          end
+          # Because sometime line breaks get missed:
+          scene_name << old_content[line_index].sub(CAST_OF_CHARACTERS,'') if line_index == cast_starts[scene_index]
+          scene_name = scene_name.join(' ').gsub(/\s+/, ' ')
+          new_content << "Scene ? - ? : #{scene_name}\n"
+          new_content << "#CAST FOR SCENE:"
+          line_index += 1
+          cast = []
+          while line_index < cast_starts[scene_index+1] && old_content[line_index] =~ /^\s*([a-z\s]+?)\s+\(\s*([a-z]+)\)$/i
+            cast << [$2, $1]
+            line_index += 1
+          end
+          if cast.size > 0
+            nickname_width = cast.map{|nick, full| nick.size}.max
+            cast.each do |nick, full|
+              new_content << %Q{#  #{"%#{-(nickname_width+1)}s"%(nick+':')}  #{full}}
+            end
+          end
+          new_content << ""
+          while line_index < cast_starts[scene_index+1]
+            break if old_content[line_index] =~ SCENE_END
+            new_content << old_content[line_index]
+            line_index += 1
+          end
+        end
+      else
+        warn "Scene endings (\"fin\") don't match up with casts of characters; unable to isolate scenes"
+        warn "  (There are #{scene_ends.size} scene endings, and #{cast_starts.size} casts of characters.)"
+        warn "  Scene endings: #{scene_ends.inspect}"
+        warn "  Casts of characters: #{cast_starts.inspect}"
+      end
+      puts new_content.join("\n")
+      warn "Please mark the end of each song with \"END OF SONG\" line."
+    end
+    
+    END_OF_SONG = /\bEND\s+OF\s+SONG\b/
+    desc "clean2 FILE", "Clean an extracted text file (Second pass)"
+    def clean2(file)
+      content = File.read(file).split("\n")
+      
+      # First, find and mark songs
+      in_song = false
+      new_content = []
+      content.each do |line|
+        if line=~/\*{5}/ .. line=~END_OF_SONG
+          new_content << "SONG:" unless in_song
+          new_content << "    #{line}" unless line =~ END_OF_SONG
+          in_song = true
+        else
+          if in_song
+            new_content << "END OF SONG"
+          end
+          in_song = false
+          new_content << line
+        end
+      end
+      
+      # Now, fix line endings and merge lines
+      old_content = new_content
+      new_content = []
+      preserve_breaks = false
+      old_content.each do |line|
+        new_content << "" if preserve_breaks ||
+                             new_content.size == 0 ||
+                             line =~ /^.[LS]-\d+(?:\]|$|.\s*\()/ ||
+                             line =~ /^\([A-Z]/ ||
+                             line =~ /^[A-Z][A-Z, ]+:\s/ ||
+                             line =~ /^Scene\s+\?\s+-\s+\?/ ||
+                             line =~ /^SONG:/ ||
+                             line =~ /^#/
+        case line
+        when /^SONG:/
+          preserve_breaks = true
+        when /^END OF SONG/
+          preserve_breaks = false
+        end
+        new_content[-1] += ' ' unless new_content[-1] =~ /^$|\s$/
+        new_content[-1] += line
+      end
+      
+      # Now, insert extra empty lines
+      old_content = new_content
+      new_content = []
+      extra_space = true
+      in_cast = false
+      in_song = false
+      
+      old_content.each do |line|
+        if line =~ /^#/
+          extra_space = false if in_cast
+        else
+          in_cast = false
+          extra_space = true
+        end
+        new_content << "" if extra_space && new_content.size > 0
+        new_content << line
+        case line
+        when /^#CAST FOR SCENE/
+          in_cast = true
+        when /^SONG:/
+          extra_space = false
+        when /^END OF SONG/
+          extra_space = true
+          new_content.pop     # Remove the end of song marker; we don't need it anymore
+        end
+      end
+      
+      # Output the results
+      puts new_content.join("\n")
     end
   end
 end
