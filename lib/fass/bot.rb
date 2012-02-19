@@ -3,7 +3,7 @@ require 'ember'
 require 'fass/rtf'
 require 'fass/script'
 require 'fass/clean'
-require 'net/http'
+require 'mechanize'
 
 class Fass
   class Bot < Thor
@@ -85,11 +85,10 @@ class Fass
     
     desc "idallen", "Fetch files from Ian! Allen's online repository"
     def idallen
-      Net::HTTP.start("idallen.com") do |http|
-        response = http.get('/fass/honeywell_archiver/')
-        puts "Code = #{response.code}"
-        puts "Message = #{response.message}"
-        puts response.body
+      agent = Mechanize.new
+      page = agent.get("http://idallen.com/fass/honeywell_archiver/")
+      page.links.each do |link|
+        puts link.text
       end
     end
   end
