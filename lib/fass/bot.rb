@@ -5,6 +5,7 @@ require 'fass/script'
 require 'fass/clean'
 require 'mechanize'
 require 'fileutils'
+require 'fass/decode'
 
 class Fass
   class Bot < Thor
@@ -84,6 +85,7 @@ class Fass
       write_file output_file, cleaner.clean2
     end
     
+    # TODO Move this to tools project; refactor
     no_tasks do
       def fetch(base_uri, destination)
         count = 0
@@ -146,6 +148,47 @@ class Fass
     def idallen
       agent = Mechanize.new
       fetch("http://idallen.com/fass/honeywell_archiver/", "data/idallen.com")
+    end
+    
+    ARCHIVE_LISTING = 'data/idallen.com/fass/honeywell_archiver/_misc/fass-index.txt'
+    no_tasks do
+      def archive_index
+        @index ||= _archive_index
+      end
+      
+      def _archive_index
+        File.read(ARCHIVE_LISTING).split("\n").map{|line| line.split(/\s+/)}
+      end
+      
+      def archive_file_name(name)
+        line = archive_index.find{|l| l[0] == name}
+        return nil unless line
+        line[-1]
+      end
+    end
+    
+    option "lines", :alias=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
+    DEFAULT_ARCHIVE_DIRECTORY = "data/idallen.com/fass/honeywell_archiver/_misc/36_bit_tape_files"
+    desc "dump FILE", "Dump a Honeywell file"
+    def dump(file)
+      limit = options[:lines]
+      file = DEFAULT_ARCHIVE_DIRECTORY + '/' + file unless file =~ /\//
+      decoder = Fass::Decoder.new(File.read(file))
+      archived_file = archive_file_name(File.basename(file))
+      archived_file = "--unknown--" unless archived_file
+      puts "Archive for file #{archived_file}:"
+      words = decoder.words
+      characters = decoder.characters
+      address_width = ('%o'%(words.size)).size
+      ((words.size+3).div 4).times do |i|
+        chunk = ((words[i*4, 4].map{|w| '%012o'%w }) + ([' '*12] * 4))[0,4]
+        chars = (characters[i*16, 16] + ' '*16)[0,16]
+        address = "%0#{address_width}o"%(i*4)
+        puts "#{address} #{chunk.join(' ')} #{chars}"
+        if limit
+          break if i >= (limit-1)
+        end
+      end
     end
   end
 end
