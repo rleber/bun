@@ -5,7 +5,8 @@ require 'fass/script'
 require 'fass/clean'
 require 'mechanize'
 require 'fileutils'
-require 'fass/decode'
+require 'fass/decoder'
+require 'fass/defroster'
 
 class Fass
   class Bot < Thor
@@ -153,7 +154,7 @@ class Fass
     ARCHIVE_LISTING = 'data/idallen.com/fass/honeywell_archiver/_misc/fass-index.txt'
     no_tasks do
       def archive_index
-        @index ||= _archive_index
+        @archive_index ||= _archive_index
       end
       
       def _archive_index
@@ -161,34 +162,75 @@ class Fass
       end
       
       def archive_file_name(name)
+        name = File.basename(name)
         line = archive_index.find{|l| l[0] == name}
         return nil unless line
         line[-1]
       end
+      
+      def frozen?(name)
+        fname = archive_file_name(name)
+        return nil unless fname
+        fname =~ /\.f$/
+      end
     end
     
-    option "lines", :alias=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
+    option "lines", :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
+    option "frozen", :aliases=>'-f', :type=>'boolean', :desc=>'Display characters in frozen format (i.e. 5 per word)'
     DEFAULT_ARCHIVE_DIRECTORY = "data/idallen.com/fass/honeywell_archiver/_misc/36_bit_tape_files"
     desc "dump FILE", "Dump a Honeywell file"
     def dump(file)
       limit = options[:lines]
       file = DEFAULT_ARCHIVE_DIRECTORY + '/' + file unless file =~ /\//
       decoder = Fass::Decoder.new(File.read(file))
-      archived_file = archive_file_name(File.basename(file))
+      archived_file = archive_file_name(file)
       archived_file = "--unknown--" unless archived_file
       puts "Archive for file #{archived_file}:"
       words = decoder.words
-      characters = decoder.characters
+      if options[:frozen]
+        characters = decoder.frozen_characters
+        character_block_size = 20
+      else
+        characters = decoder.characters
+        character_block_size = 16
+      end
       address_width = ('%o'%(words.size)).size
       ((words.size+3).div 4).times do |i|
         chunk = ((words[i*4, 4].map{|w| '%012o'%w }) + ([' '*12] * 4))[0,4]
-        chars = (characters[i*16, 16] + ' '*16)[0,16]
+        chars = characters[i*character_block_size, character_block_size].gsub(/[[:cntrl:]]/, '~')
+        chars = (chars + ' '*character_block_size)[0,character_block_size]
         address = "%0#{address_width}o"%(i*4)
         puts "#{address} #{chunk.join(' ')} #{chars}"
         if limit
           break if i >= (limit-1)
         end
       end
+    end
+    
+    option "lines", :alias=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
+    desc "thaw FILE NUMBER", "Uncompress a frozen Honeywell file"
+    def thaw(file, n)
+      limit = options[:lines]
+      file = DEFAULT_ARCHIVE_DIRECTORY + '/' + file unless file =~ /\//
+      archived_file = archive_file_name(file)
+      archived_file = "--unknown--" unless archived_file
+      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless frozen?(file)
+      decoder = Fass::Decoder.new(File.read(file))
+      # puts "Archive for file #{archived_file}:"
+      defroster = Fass::Defroster.new(decoder)
+      # puts "Last updated on #{defroster.update_date}"
+      # puts "Contains #{defroster.files} files"
+      # defroster.files.times do |i|
+      #   puts "File #{i}:"
+      #   descr = defroster.descriptor(i)
+      #   puts "  Name:        #{descr.file_name}"
+      #   puts "  Start:       #{descr.file_start}"
+      #   puts "  Words:       #{descr.file_words}"
+      #   puts "  Update date: #{descr.update_date}"
+      #   puts "  Check text:  #{descr.check_text}"
+      #   puts "  Check word:  #{'%o'%descr.check_word}"
+      # end
+      STDOUT.write defroster.content(n.to_i)
     end
   end
 end
