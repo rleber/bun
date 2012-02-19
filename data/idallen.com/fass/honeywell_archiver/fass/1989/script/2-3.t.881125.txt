@@ -1,0 +1,434 @@
+
+
+
+.......h
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1989/script/writmacr.t 
+.bs 2 3 "Take Me Out Of The Ballgame"   
+.na ju JUDGE JUDGE  
+.na ho NOAH~HOPE HOPE   
+.na li BILL~LIBERTY LIBERTY 
+.na ba BAILIFF BAILIFF  
+.na ro SAM~ROBIN ROBIN  
+.na fe FERGIE FERGIE
+.na bu BUCK BUCK
+.na hy HYPERACTIVE~YUPPIE YUPPIE
+.na m1 MAN~1 MAN~1  
+.na m2 MAN~2 MAN~2  
+.na tr TRANSLATOR TRANSLATOR
+.na go GOD GOD  
+.na rh ROUND~HEADED~KID ROUND   
+.na o1 OUTFIELDER~1 OUTFIELDER~1
+.na o2 OUTFIELDER~2 OUTFIELDER~2
+.na in INFIELDER INFIELDER  
+.na bn BUNTER BUNTER
+.na pl PLAYER~CAUGHT~STEALING PLAYER~STEALING   
+.na um UMPIRE UMPIRE
+.na mw MANAGER~WHEELER WHEELER  
+.na wb WATER~BOY WATER~BOY  
+.ld 
+(LIGHTS UP ON FERGIE AND BUCK, AND A TRANSLATOR FOR THE HEARING IMPAIRED.   
+NOTE THAT THE TRANSLATOR'S SIGNINGS SHOULD BE TIMED AS IF THE TRANSLATOR
+WAS ACTUALLY TRANSLATING WHAT IS BEING SAID)
+.ch bu  
+Welcome back, sports fans, to the Sports Network.   
+I'm Buck.   
+.ch tr  
+(SIGNING)   
+Welcome back, sports fans, to the Sports Network.   
+I'm Buck.   
+.ch fe  
+And I'm Fergie. 
+.ch tr  
+(SIGNING)   
+And I'm Fergie. 
+.ch fe  
+(READING FROM SCRIPT)   
+The sky is black, the rain is pouring,  
+and it's a beautiful day for baseball...
+.ch tr  
+(SIGNING, AND   
+LOOKING A LITTLE STARTLED AS THIS IS TRANSLATED)
+The sky is black, the rain is pouring,  
+and it's a beautiful day for baseball...
+.ch bu  
+(POINTING OUT THE WINDOW)   
+It's not raining.   
+.ch fe  
+Shhh.   
+.ch tr  
+(SIGNING)   
+Shhh.   
+.ch fe  
+(RESUMING)  
+The temperature is near-freezing, with a gale-force wind blowing from   
+the north-west...   
+.ad 
+(TRANSLATOR SHOULD NOW POSITION SELF SLIGHTLY BEHIND FERGIE AND 
+BUCK AS THE PRECEDING LINE IS TRANSLATED INTO SIGN LANGUAGE.
+THIS LEAVES TRANSLATOR IN PERFECT POSITION TO MAKE FACES AT FERGIE AND BUCK 
+AS THE FOLLOWING TRANSLATIONS ARE BEING PERFORMED.) 
+.ch tr  
+(SIGNING)   
+Fergie is a blithering idiot, and only those of us who know sign language   
+can understand this speech. 
+.ch bu  
+(POINTING OUT THE WINDOW)   
+It's not raining.   
+.ch fe  
+Just a minute.  
+I'm almost done.
+.ch tr  
+(SIGNING)   
+Wait!   
+.ch fe  
+(RESUMING READING FROM THE SCRIPT)  
+And yet, for some reason, the teams have not reappeared on the field.   red Buck, I 
+
+Buck, I don't understand.   
+.ch tr  
+(SIGNING)   
+Isn't it neat that we can say things that most of the audience can't hear?  
+.ch bu  
+Fergie, it's not raining.   
+We're in hell.  
+They can't play baseball until it starts raining again. 
+.ch tr  
+(SIGNING)   
+God, this dialogue is awful.
+Who wrote this crap anyway? 
+.ch fe  
+Oh. 
+.ch tr  
+(EXAGGERATED SIGNING)   
+Oh. 
+.ch bu  
+How long, O Lord, how long? 
+.ch go  
+(OFFSTAGE)  
+Until she gets it right!
+.ad 
+(FERGIE STARTS TO CRY)  
+.ch bu  
+Mother told me there would be day like this.
+.ch tr  
+(SIGNING)   
+How many sign language experts does it take to change a light bulb? 
+.ch bu  
+There, there, don't cry.
+.ch tr  
+(SIGNING)   
+One, as long as he doesn't talk!
+Ha! Ha! Ha! 
+.ch bu  
+(HANDING FERGIE A HANDKERCHIEF) 
+Here.   
+Fix your face.  
+Now repeat after me.
+.ch fe  
+After me.   
+.ch bu  
+In the beginning of this big inning,
+Bell's the batter and he's bitter about his bunting 
+because Bean Ball Bailey's the better bunter
+but with Brinkley Bass and Boss Bull on base,   
+Bell can't bet on anything but a bunt.  
+.ad 
+(TRANSLATOR GLARES THEN HOLDS UP SIGN WHICH SAYS 'I quit'   
+AND EXITS.  
+FERGIE BURSTS INTO TEARS.)  
+.ch bu  
+Take a deep breath. 
+.ad 
+(FERGIE TAKES AN EXAGGERATED DEEP BREATH)   
+.ex 
+Come with me over to the window.
+.ad 
+(BUCK AND FERGIE MOVE TO ONE SIDE OF THE STAGE  
+BUCK REALIZES THAT FERGIE IS STILL HOLDING BREATH   
+AND SLAMS FERGIE IN THE DIAPHRAGM.) 
+.ex 
+Look outside.   
+What do you see?
+.ch fe  
+I see Billy, and Betty, and Susie...
+.ch bu  
+Not that window.
+.ad 
+(BUCK TURNS FERGIE TO FACE A DIFFERENT WINDOW.) 
+.ch fe  
+I see... steam rising from the outfield.
+It's kind of romantic, in its own way.  
+.ch bu  
+I'm sure it is, Fergie. 
+Now, tell those good people in television land what's   
+happening in the ballgame.  
+.ch fe  
+Umm... it's the top of the seventh inning with two men on, two men out  
+and one finally extinguished.   
+.ch bu  
+There.  
+That wasn't so bad, was it? 
+.ch fe  
+No. 
+Thanks, Buck.   
+You're so good to me.   
+.ad 
+(FERGIE SMILES UP AT BUCK SWEETLY;  
+BUCK ELBOWS FERGIE SOMEPLACE SENSITIVE) 
+.ch bu  
+Let's take time out for these brief commercial messages.
+.ld 
+(LIGHTING CHANGE FOR COMMERCIALS)   
+.ch fe  
+That hurt!  
+.ch bu  
+Good!   
+.ch fe  
+But it was good pain, Buck. 
+.ch bu  
+Shut up.
+.ad 
+(ENTER A NERVOUS YUPPIE (OR WHITNEY HOUSTON LOOKALIKE). 
+HE GETS OUT A PIECE OF WAX PAPER AND PUTS IT ON THE FLOOR OR OTHER  
+SURFACE.
+THEN HE GETS OUT A ZIPLOC BAGGIE FILLED WITH AN ILLICIT WHITE POWDER.   
+GINGERLY, HE POURS A LARGE BUT MEASURED AMOUNT OF SAME ONTO THE WAX PAPER.  
+THEN, HE PRODUCES (FROM SOMEWHERE) A LARGE JAR LABELLED "LOW-CALORIE
+SWEETENER" (OR "ASPARTAME" OR "NUTRA-SWEET").   
+HE MIXES THIS IN WITH THE WHITE POWDER. 
+THEN, HE TAKES A GENEROUS SNORT, AFTER WHICH HE LOOKS UP
+AT THE AUDIENCE, NOSE COVERED IN WHITE POWDER, AND SAYS:)   
+.ch hy  
+Just for the fun of it -- Diet Coke.
+.ld 
+(LIGHT CHANGE FOR A DIFFERENT COMMERCIAL)   
+.ad 
+(LIGHTS ON A FOXHOLE.   
+TWO MEN ARE IN IT.  
+A CANADIAN FLAG WITH BULLET HOLES IN IT IS BESIDE THE FOXHOLE.) 
+.ch m1  
+George? 
+.ch m2  
+Yeah?   
+.ch m1  
+I think the coast is clear. 
+Take a look.
+.ch m2  
+No way, buddy.  
+You're not getting me to look this time.
+.ch m1  
+It's your turn, George. 
+.ch m2  
+Shit.   
+.ad 
+(SLOWLY, MAN 2 STICKS HIS HEAD OUT OF THE FOXHOLE.  
+WHEN HE DOES, THERE ARE LOUD CRIES FROM BOTH SIDES OF THE STAGE)
+.sd 
+(GUNFIRE, FIRST FROM ONE SIDE OF THE STAGE THEN THE OTHER, THEN SILENCE)
+.ex 
+God, I hate being part of a peacekeeping force. 
+.xx VOICEOVER   
+The Canadian Armed Forces -- there's no life like it.   
+.ld 
+(LIGHTS CHANGE BACK TO FERGIE AND BUCK.)
+.ch bu  
+Hello yet again, sports fans.   
+The field is being drenched by a torrential downpour,   
+so play will soon be resumed.   
+.ch fe  
+(CHILDISHLY)
+Buck, I know something you don't know.  
+.ch bu  
+Fergie, would you knock it off? 
+.ch fe  
+Promise not to tell anyone? 
+.ch bu  
+Fergie, stop acting like a child.   
+.ch fe  
+It's about Magnum P.I.  
+.ch bu  
+I don't care.   
+.ch fe  
+Higgins really is Robin Masters!
+.ch bu  
+I'm not listening...
+.ad 
+(BUCK PUTS HIS HANDS OVER HIS EARS AND BEGINS HUMMING TO HIMSELF)   
+.ch fe  
+Buck, that's not nice.  
+.ad 
+(BUCK CONTINUES HUMMING)
+.ex 
+You're being mean.  
+.ad 
+(MORE HUMMING)  
+.ex 
+Right.  
+I'm leaving.
+.ad 
+(HUMMING.   
+FERGIE STARTS TO WALK OFFSTAGE) 
+.ex 
+I'm going now.  
+Bye.
+.ch bu  
+
+(RESIGNEDLY, IN A MONOTONE) 
+No, Fergie. 
+Don't leave me. 
+I can't do this job by myself.  
+.ch fe  
+Say please. 
+.ch bu  
+Pretty please with maple sugar on it.   
+.ch fe  
+Oh... all right.
+.ch bu  
+Now, blow your nose while I read this promotional announcement. 
+(HANDS FERGIE A HANDKERCHIEF)   
+.ch fe  
+Okay.   
+.ch bu  
+Remember, fans, next Tuesday is Penthouse Split-Crotch Panty Day at the 
+ballpark!   
+All fans 14 and under will receive a free intimate undergarment...  
+.ch ju  
+(FROM WHEREVER THE TRIAL IS)
+Can we fast-food this a little? 
+.ch ro  
+No problem. 
+.ad 
+(THE REST OF THE HIGHLIGHTS ARE IN FAST FORWARD, WITH THE ACTORS
+TALKING IN HIGHSPEED GIBBERISH THROUGHOUT.  
+BUCK AND FERGIE TALK FOR A BIT, 
+THEN WE SEE HIGHLIGHTS OF THE GAME SO FAR:) 
+.ad 
+(1 -- TWO OUTFIELDERS AND AN INFIELDER COLLIDE GOING FOR A FLY BALL)
+.ad 
+(2 -- A MAN SQUARES TO BUNT, AND GETS HIT IN THE GROIN WITH THE PITCH)  
+.ad 
+(3 -- THE OUTFIELDERS AND INFIELDER GO FOR A BALL AGAIN, AND THIS TIME LET  
+IT DROP)
+.ad 
+(4 -- A PLAYER CAUGHT STEALING, FOLLOWED BY AN UNBELIEVABLY EXAGGERATED 
+ARGUMENT BETWEEN AN UMPIRE AND A MANAGER)   
+.ad 
+(5 -- THE OUTFIELDERS AND INFIELDER GO FOR ANOTHER BALL, AND GET HIT BY 
+EITHER A DROPPING SEAGULL OR SEAGULL DROPPINGS) 
+.ad 
+(6 -- THE PLAY DURING WHICH THE MURDER HAPPENS. 
+JUST AS THE BUCKET OF WATER IS ABOUT TO HIT THE PERSON BEING
+EXTINGUISHED, THE FOLLOWING HAPPENS:)   
+.ch li  
+Objection!  
+Stop the tape!  
+.ad 
+(THE TAPE IS STOPPED WITH THE BUCKET POISED OVER THE ACTOR'S HEAD)  
+.ex 
+Your Honour, is this relevant?  
+.ch ho  
+(AS CLARENCE DARROW IN 'INHERIT THE WIND', THE SPENCER TRACY VERSION)   
+Your honour, learned council, ladies and gentlemen of the jury: 
+I think what I have to say was best said by another man.
+A wise man. 
+A man I think we've all heard of.   
+The quality of mercy is not strained,   
+it droppeth as the gentle rain from heaven...   
+.ch li  
+If we run the tape, will you shut up?   
+.ch ho  
+Yes.
+.ch li  
+Objection withdrawn.
+.ch fe  
+...making the third out.
+.ad 
+(WE SEE THE WATER HIT THE ACTOR, AND WE SEE SATAN'S LEGS AND A TRIDENT, 
+STAGE LEFT) 
+.ch ho  
+Can we see that from another angle? 
+.ch ro  
+Certainly.  
+.ad 
+(ROBIN TURNS THE VCR.   
+RE-ENTER BUCK AND FERGIE)   
+.ch fe  
+...making the third out.
+
+.ad 
+(WE SEE THE SAME SCENE AS BEFORE (INCLUDING BUCKET  
+OF WATER) EXCEPT EVERYBODY IS ROTATED.  
+NOW WE SEE SATAN'S LEGS AND A TRIDENT STAGE RIGHT)  
+.ch ho  
+No, not that angle. 
+Try another one.
+.ch rh  
+Good Grief. 
+.ch ro  
+Let me try the centre field camera. 
+.ch fe  
+...making the third out.
+.ad 
+(WE SEE IT WITH THE ACTOR GETTING WET DOWNSTAGE.
+THIS TIME, THE WATER HITS THE ACTOR AND THE JUDGE (POSSIBLY).   
+WE ALSO SEE LISA GET HIT ON THE HEAD BY ABBY,   
+WHO TAKES THE TRIDENT AND STABS SATAN WITH IT)  
+.ch ho  
+There!  
+Run that back!  
+.ad 
+(THE STABBING IS REVERSED)  
+.ch fe  
+Tow drith eth g-ni-kam...   
+.ad 
+(THE STABBING IS REPLAYED)  
+.ex 
+...making the third out.
+.ad 
+(THE TAPE IS FROZEN)
+.ch ho  
+Notice that it is not my client that is stabbing Satan. 
+This is... you! 
+.ad 
+(POINTS AT ABBY.)   
+.md 
+(DRAMATIC CHORD)
+.ex 
+Hit the lights. 
+.sd 
+(CRASH) 
+.ld 
+(LIGHTS DOWN)   
+.ex 
+The defense rests, your Honour. 
+.ad 
+(PAUSE) 
+.ex 
+Damn, I'm good! 
+.es 
+
+

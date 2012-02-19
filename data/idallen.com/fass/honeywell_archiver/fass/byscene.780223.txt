@@ -1,0 +1,311 @@
+
+
+
+......
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ic^^   
+.af (mon) 01
+.af (day) 01
+.af (min) 01
+.af (hour) 01   
+.he "FASS 1978"PARTS BY SCENE"FASS 1978"
+.fo "F.A.S.S. 1978"Page %"^(day)/^(mon)/^(year) ^(hour):^(min)" 
+.tr~
+.nf 
+S => Singing involved.  
+D => Dancing involved.  
+A => Action involved, but no speaking.  
+B => Bit part.  
+P => Presence possible. 
+.sp 
+.sp 
+.in5
+.ne10   
+.ti0
+1-0 
+Stage Manager   
++   
+Cast for Act 1, Scene 1 
+.sp 
+.ne10   
+.ti0
+1-1 
+Gorgon Zola 
+Henri Mateus
+Madiera 
+Mott Zarella
+Parmesan
+Radio Announcer - S 
+Ricotta 
+Ruby Rouge  
+Val Veeta   
++   
+Whole Cast - SD 
+.sp 
+.ne10   
+.ti0
+1-2 
+Abbie Road  
+Blue Nun
+Charles U. Farley   
+Informer - A
+Jimmy Molson
+Jock Mulligan   
+Lotus Lane  
+Mott Zarella - A
+Obi-Don Cortisone   
+Orson Buggy 
+Shirley T. Goodness 
++   
+All Wines - A   
+All Cheezes - A 
+.sp 
+.ne10   
+.ti0
+1-3 
+Desk Sergeant   
+Helen Highwater 
+Jimmy Molson
+Lance Pincushion
+Lotus Lane  
+Mia Culpa   
+Sam Spade   
+Sgt. Friday 
+Spiro Keets 
++   
+Officer #1 - B  
+Officer #2 - B  
+.sp 
+.ne10   
+.ti0
+1-4 
+Assisant Director   
+Director
+Farrah Forcett  
+Gorgon Zola 
+Lee Major-Sevenths  
+Mott Zarella
+Obi-Don Cortisone   
+Parmesan
+Ricotta 
+Roquefort Vaselino  
+Stagehand   
+Val Veeta   
+Will the Cameraman  
++   
+Assorted Bodies - B 
+Gin Rummy Players - A   
+.sp 
+.ne10   
+.ti0
+1-5 
+Ann Chilada 
+Baby Duck Nelson - SD   
+Beefo Stroganoff
+Blue Nun - SD   
+Casino Singer #1 - SD   
+Casino Singer #2 - SD   
+Casino Singer #3 - SD   
+Casino Singer #4 - SD   
+Charles U. Farley   
+Chicken Cacciatore  
+Danielle Boom-Boom - SD 
+Esther Go   
+Feth Muscatel - SD  
+Helen Highwater 
+Henri Mateus - SD   
+Julius C. Salad 
+Lance Pincushion
+Lonesome Charlie - SD   
+Madiera - SD
+Mia Culpa   
+Nina Muscatel - SD  
+One Armed Bandit
+Patron  
+Patron #2   
+Pinta Muscatel - SD 
+Ruby Rouge - SD 
+Sam Spade   
+Spiro Keets 
+W.C. Fields 
++   
+Assorted Casino Patrons - B 
+.sp 
+.ne10   
+.ti0
+1-6 
+Abbie Road  
+Lonesome Charlie
+Orson Buggy 
+Roquefort Vaselino  
+Shirley T. Goodness 
++   
+Jock Mulligan - P   
+.sp 
+.ne10   
+.ti0
+1-7 
+Baby Duck Nelson
+
+Baby Duck Nelson - D
+Blue Nun - D
+Bolt Upright
+Centipede Stamper #1 - S
+Centipede Stamper #2 - S
+Centipede Stamper #3 - S
+Centipede Stamper #4 - S
+Clapboard Man   
+Director
+Farrah Forcett  
+Feth Muscatel - D   
+Henri Mateus - D
+Madiera - D 
+Nina Muscatel - D   
+Pinta Muscatel - D  
+Ruby Rouge - D  
+Stagehand - S   
++   
+Other Bodies
+.sp 
+.ne10   
+.ti0
+2-1 
+Baby Duck Nelson - S
+Blue Nun - S
+Charles U. Farley   
+Fake Barry  
+Fake Ken
+Feth Muscatel   
+Gorgon Zola 
+Henri Mateus
+Madiera 
+Mott Zarella
+Nina Muscatel   
+Obi-Don Cortisone - S   
+Parmesan
+Photographer
+Pinta Muscatel  
+Ricotta - S 
+Ruby Rouge  
+Val Veeta   
++   
+Hotel Maid - B  
+.sp 
+.ne10   
+.ti0
+2-2 
+Arlo Guthrie
+Baby Duck Nelson
+Drunk #1
+Drunk #2
+Father Rapper   
+Helen Highwater 
+Hooker #1   
+Hooker #2   
+Jailer  
+Jimmy Molson
+Lotus Lane  
+Mia Culpa   
+Mr. Bojangles   
+Ricotta 
+Sam Spade   
+Spiro Keets 
++   
+Assorted Reprobates - B 
+.sp 
+.ne10   
+.ti0
+2-3 
+Lonesome Charlie - S
+Orson Buggy 
+Roquefort Vaselino - S  
+Shirley T. Goodness 
+.sp 
+.ne10   
+.ti0
+2-4 
+Beauregard - SD 
+Jimmy Molson - S
+Lotus Lane - S  
+Madiera 
+Mott Zarella - S
+Stanislaus - SD 
+.sp 
+.ne10   
+.ti0
+2-5 
+Lonesome Charlie
+Orson Buggy 
+Roquefort Vaselino  
+Shirley T. Goodness 
+.sp 
+.ne10   
+.ti0
+2-6 
+Ann Chilada 
+Beefo Stroganoff
+Blue Nun
+Bolt Upright
+Charles U. Farley   
+Chicken Cacciatore  
+Director
+Esther Go   
+Farrah Forcett  
+Father Rapper   
+Feth Muscatel   
+Gorgon Zola 
+Helen Highwater 
+Henri Mateus
+Jimmy Molson
+Julius C. Salad 
+Lance Pincushion
+Lonesome Charlie
+Lotus Lane  
+Madiera 
+Mia Culpa   
+Mott Zarella
+Mr. Bojangles   
+Nina Muscatel   
+Obi-Don Cortisone   
+Orson Buggy 
+Parmesan
+Pinta Muscatel  
+Roquefort Vaselino  
+Ruby Rouge  
+Sam Spade   
+Shirley T. Goodness 
+Spiro Keets 
+Val Veeta   
+.sp 
+.ne10   
+.ti0
+2-7 
+Casino Singer #1 - S
+Casino Singer #2 - S
+Casino Singer #3 - S
+Casino Singer #4 - S
+Whole Cast - SD 

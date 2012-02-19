@@ -1,0 +1,185 @@
+==========================================
+Notes on decoding Honeywell Archiver files
+==========================================
+-Ian! D. Allen - idallen@idallen.ca - www.idallen.com
+
+====================
+Archiver File Format
+====================
+
+You have to stop reading the file when you see the EOF RCW (000000170000).
+The rest of the file is crap that was there from before.
+
+From: Alan Bowler <atbowler@thinkage.ca>
+Subject: RE: interesting dump files
+Date: Fri, 25 Jul 2008 12:39:29 -0400
+To: "Ian! D. Allen" <idallen@idallen.ca>
+
+> From: Ian! D. Allen [mailto:idallen@idallen.ca]
+> Sent: July 25, 2008 5:03 AM
+> To: Alan Bowler
+> Subject: interesting dump files
+>
+> Some of my files don't contain only my stuff.  Looks like part of a TSS
+> report of some sort:
+
+Not surprising.  Remember that the archiver saved all the disk space
+allocated to the file, but you may only have written part of it.
+Anything after the EOF RCW (000000170000) will have whatever was in
+it when the disk space was allocated to the file.
+
+==============
+Thinkage Tools
+==============
+
+From: Keith Dorken
+Subject: RE: tools for decoding Honeywell Archiver DVD
+Date: Mon, 23 Jan 2012 13:40:10 +0000                 
+To: "Ian! D. Allen" <idallen@idallen.ca>
+CC: Alan Bowler
+
+Perhaps;
+those tools use a C++ support library that provides 36 bit architecture support,
+ and a rudimentary 'blib' to 'read' 36 bit binary items and interrupt them as GF
+RC files (gcos_fdp and gcos_cat).
+
+The archive files themselves are just a collection of gcos files; I thought ther
+e was some problem of bits not being in the right place (bits are there, but not
+ decoded into the archive file sets ?) I can't remember the details; I can't eve
+n find the archive files at the moment (I am sure Alan has them somewhere).
+
+-----Original Message-----
+From: Ian! D. Allen
+Sent: 2012-Jan-22 1:17 AM
+To: Alan Bowler
+Cc: Keith Dorken
+Subject: tools for decoding Honeywell Archiver DVD
+
+I still haven't found time to decode the Archiver DVD (and the freeze
+files contained therein).  Are any of these tools useful, perhaps as
+models for handing the Archiver tape format?
+
+http://www.thinkage.ca/english/gcos/product-g8retrieval.shtml
+
+============
+FREEze Files
+============
+
+See the expl file:  http://www.thinkage.ca/english/gcos/expl/free.html
+
+
+From: Alan Bowler
+Organization: Thinkage Ltd.
+To: "Ian! D. Allen" <idallen@idallen.ca>
+Subject: RE: Honeywell Tapes
+Date: Tue, 08 Jul 2008 17:24:02 -0400
+
+We no longer have a working open reel tape drive.
+We I do have are a set of files that are supposed
+to be the images of the files archived on the tapes.
+
+What has been lost is software for decoding this.
+(the freeze command, and some other stuff)
+
+I did spend some time trying to decode some of this
+but didn't complete it.
+
+Anyway if you want to try you hand at writing your
+own decoding attached is one sample
+The index lists this as
+
+ar145.2694 881222 jagardner/fass/1980.f
+
+An FDP of the first llink looks like, note that the first few words are
+some info from the tape record from the archiver. I think the freeze
+file image starts at word 013.  I.e. the 0151016 is the length word
+and 015 is the number of directory entries.  FREEZE compressed
+ascii data by packing 5 ascii chars per 36 bit word.  The top bit
+of each word was not used.  The first word of a line had only 3
+characters in it since the upper 15 bits were uses as a length
+counter.  Lines also ended with a CR (015) instead of a NL (012)
+So at word 0226 we have 000364320323 which decodes as a length
+of 30 (036) and the character 'FAS'.
+
+/trans/xxx is 204 llinks, dumping for 1 llink
+Llink 0(0):
+000  000001007416 000001000017 000221005206 024756245142  ~~~~ ~~~~ ~~~~ ~~~b
+004  024726752017 000000000000 000001000313 152141147141  ~~~~ ~~~~ ~~~~ jaga
+010  162144156145 162000000000 000000000000 057146141163  rdne r~~~ ~~~~ /fas
+014  163057061071 070060056146 000000000000 000000151016  s/19 80.f ~~~~ ~~i~
+020  000000000015 060063057062 060057070060 041532275544  ~~~~ 03/2 0/80 !~~~
+024  164151164154 145040040040 060063057062 060057070060  titl e    03/2 0/80
+030  041034467344 141163143040 000000000000 000000000207  !~~~ asc  ~~~~ ~~~~
+034  000000000007 777777777777 061056061040 040040040040  ~~~~ ~~~~ 1.1
+040  060063057062 060057070060 041272036541 141163143040  03/2 0/80 !~~~ asc
+044  000000000000 000000000216 000000002455 777777777777  ~~~~ ~~~~ ~~~~ ~~~~
+050  061056062040 040040040040 060063057062 060057070060  1.2       03/2 0/80
+054  041272036541 141163143040 000000000001 000000002673  !~~~ asc  ~~~~ ~~~~
+060  000000012504 777777777777 061056063040 040040040040  ~~~~ ~~~~ 1.3
+064  060063057062 060057070060 041272036541 141163143040  03/2 0/80 !~~~ asc
+070  000000000002 000000015377 000000010344 777777777777  ~~~~ ~~~~ ~~~~ ~~~~
+074  061056064040 040040040040 060063057062 060057070060  1.4       03/2 0/80
+100  041272036541 141163143040 000000000003 000000025743  !~~~ asc  ~~~~ ~~~~
+104  000000012473 777777777777 061056065040 040040040040  ~~~~ ~~~~ 1.5
+110  060063057062 060057070060 041272036541 141163143040  03/2 0/80 !~~~ asc
+114  000000000004 000000040436 000000013367 777777777777  ~~~~ ~~ ~ ~~~~ ~~~~
+120  061056066040 040040040040 060063057062 060057070060  1.6       03/2 0/80
+124  041272036541 141163143040 000000000005 000000054025  !~~~ asc  ~~~~ ~~,~
+130  000000011505 777777777777 062056061040 040040040040  ~~~~ ~~~~ 2.1
+134  060063057062 060057070060 041532275544 141163143040  03/2 0/80 !~~~ asc
+140  000000000000 000000065532 000000007501 777777777777  ~~~~ ~~5~ ~~~~ ~~~~
+144  062056062040 040040040040 060063057062 060057070060  2.2       03/2 0/80
+150  041532275544 141163143040 000000000001 000000075233  !~~~ asc  ~~~~ ~~=~
+154  000000012562 777777777777 062056063040 040040040040  ~~~~ ~~~~ 2.3
+160  060063057062 060057070060 041532275544 141163143040  03/2 0/80 !~~~ asc
+164  000000000002 000000110015 000000007540 777777777777  ~~~~ ~~H~ ~~~~ ~~~~
+170  062056064040 040040040040 060063057062 060057070060  2.4       03/2 0/80
+174  041532275544 141163143040 000000000003 000000117555  !~~~ asc  ~~~~ ~~O~
+200  000000006617 777777777777 062056065040 040040040040  ~~~~ ~~~~ 2.5
+204  060063057062 060057070060 041532275544 141163143040  03/2 0/80 !~~~ asc
+210  000000000004 000000126374 000000010106 777777777777  ~~~~ ~~V~ ~~~F ~~~~
+214  062056066040 040040040040 060063057062 060057070060  2.6       03/2 0/80
+220  041532275544 141163143040 000000000005 000000136502  !~~~ asc  ~~~~ ~~^~
+224  000000012314 777777777777 000364320323   ~~~~ ~~~~ ~~~~ ~~.~
+230  140722021141 363632033746 101067275162 312404320323  `~~a ~~~~ A7~r ~~~~
+234  246150000000 000020603200 000754456461 100402010040  ~h~~ ~~~~ ~~~~ @~~
+240  100402010040 100402010040 100404230371 346406771440  @~~  @~~  @~~~ ~~~~
+244  215657235362 312404320323 246402010040 100402010040  ~~~~ ~~~~ ~~~  @~~
+250  100402010040 101206071745 100610640000 000010640000  @~~  A~9~ @~~~ ~~~~
+254  000010640000 001502010040 100402010040 100402010040  ~~~~ ~~~  @~~  @~~
+260  100402010040 100402024210 242105075210 352107271210  @~~  @~~~ ~E=~ ~G~~
+264  312106275210 352107271210 312106272210 322106473410  ~F~~ ~G~~ ~F~~ ~F~~
+270  334106731610 316106350115 021150423345 021450431240  ~F~~ ~F~M ~h~~ ~~~~
+274  246105142123 336106742157 314106302146 350107202164  ~EbS ~F~o ~F~f ~G~t
+300  330106602154 362107442171 032000000000 000010640000  ~F~l ~G~y ~~~~ ~~~~
+304  000010640000 001272010040 206104142103 302106042141  ~~~~ ~~~  ~DbC ~F"a
+310  346107142163 350107202164 101570433610 337460431410  ~Gbs ~G~t A~~~ ~~~~
+314  314404142103 021036402150 021506042141 021417102162  ~~bC ~~~h ~~"a ~~Br
+320  021626042141 021416142143 021437202164 021646242145  ~~"a ~~bc ~~~t ~~~e
+324  021457102162 021627142163 021633503200 000010640000  ~~Br ~~bs ~~~~ ~~~~
+330  000732010040 245174210123 251115124511 235072013440  ~~~  ~|~S ~MT~ ~:~~
+334  134402710056 100562013440 134402710056 100562013440  \~~. @~~~ \~~. @~~~
+340  134402710056 100562013440 134402710040 121224761051  \~~. @~~~ \~~  Q~~)
+344  032000000000 000732010040 215144764501 101204763111  ~~~~ ~~~  ~d~~ A~~I
+350  247102013440 134402710056 100562013440 134402710056  ~B~~ \~~. @~~~ \~~.
+354  100562013440 134402710056 100562013440 134402012106  @~~~ \~~. @~~~ \~~F
+360  231175120251 032000000000 000732010040 225015450103  ~}P~ ~~~~ ~~~  ~~~C
+364  231175222040 100562013440 134402710056 100562013440  ~}~  @~~~ \~~. @~~~
+370  134402710056 100562013440 134402710056 100562013440  \~~. @~~~ \~~. @~~~
+374  134402710040 121124066251 032000000000 000732010040  \~~  QT6~ ~~~~ ~~~
+400  257014625105 244405360314 230404160322 241055210056  ~~~E ~~~~ ~~p~ ~-~.
+404  100562013440 134402710056 100562013440 134402710056  @~~~ \~~. @~~~ \~~.
+410  100562013440 134402425701 231244264451 032000000000  @~~~ \~~~ ~~~~ ~~~~
+414  000732010040 235174062040 255014463040 100562013440  ~~~  ~|2  ~~~  @~~~
+420  134402710056 100562013440 134402710056 100562013440  \~~. @~~~ \~~. @~~~
+424  134402710056 100562013440 134402710050 235174062051  \~~. @~~~ \~~( ~|2)
+430  032000000000 000010640000 000725563055 143352012114  ~~~~ ~~~~ ~~~- c~~L
+434  223074425123 101255010117 234404050120 203115110117  ~<~S A~~O ~~(P ~MHO
+440  214405225711 247244463507 101235225304 213165210114  ~~~~ ~~~~ A~~~ ~u~L
+444  223164253325 241232712215 000010640000 000754323117  ~t~~ ~~~~ ~~~~ ~~~O
+450  245012024117 231115162072 100402022247 355452030545  ~~~O ~Mr: @~~~ ~~~~
+454  313562030364 101256732366 313627172364 362406333762  ~~~~ A~~~ ~~z~ ~~~~
+460  101646434545 312407471341 345632033557 356540640000  A~~~ ~~~~ ~~~~ ~~~~
+464  000572010040 303566210111 117666250156 313666274440  ~~~  ~~~I O~~n ~~~~
+470  347456273440 347656172040 351457134551 305546250154  ~~~~ ~~z  ~~\~ ~~~l
+474  323566253365 341632703200 000010640000 000754520331  ~~~~ ~~~~ ~~~~ ~~~~

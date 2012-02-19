@@ -1,0 +1,347 @@
+
+
+
+.. -....
+idallen.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ic^^   
+.tr~
+.hc`
+.qc"
+.pc@
+.fs '____________________________________________________________'  
+.pl 66  
+.in 0   
+.po 0   
+.ll 60  
+.ls 1   
+.m1 4   
+.m2 2   
+.m3 2   
+.m4 2   
+.hy 3   
+.fi 
+.ju 
+.ig(^(xxxx))
+.en(0)     *** ignore to here the first time             ***
+.an(xxxx)9999 *** skip all macro definitions all next times *** 
+.sy echo ">>> Writers' Macros. Use correct o= value for slis, otherwise klist <<<"  
+.at(titl)   
+Ships that FASS in the Night
+.en(titl)   
+.af (mon) 01
+.af (day) 01
+.af (min) 01
+.af (hour) 01   
+.at(sq) 
+.m4 -1  
+.sp 
+.m4 +1  
+.en(sq) 
+.at(ex) *** reset to normal *** 
+^(sq)   
+.fi 
+.in 3   
+.ne 2   
+.en(ex) 
+.at(ap) *** append to a macro ***   
+.ic``   
+.at(x)  
+`(@1)   
+@2  
+.en(x)  
+.at(@1) 
+`(x)
+.en(@1) 
+.ic^^^^ 
+.en(ap) 
+.at(if) *** a one-line conditional macro ***
+.an(x) @1   
+.ig(if^^(x))
+.en(if1)
+@2  
+.en(if0)
+.en(if) 
+.at(ad) *** actor direction *** 
+^(ex)   
+.in 0   
+.en(ad) 
+.at(na) *** Macro-Building Macro for character macros ***   
+
+
+
+.an(nact) +1
+.mg 
+         . . . . . . . . . . . . . . . . . . . . . . .  
+<@1>	^^(nact).	@2~	~(@3)	   
+.br 
+.mg 
+
+
+.at(@12)
+@2  
+.en(@12)
+.at(@13)
+@3  
+.en(@13)
+.an(@14)0   
+.an(x) "@3"<1   
+.ig (na1^^(x))  
+.en(na11)   
+.at(@13)
+@2  
+.en(@13)
+.sy echo "  *** WARNING - char '<@1> @2': no short name in .na macro ^^(actr):^^(scen)" 
+.en(na10)   
+.nx 1 (naen)
+.if "^^^^(@14)<1" "??\--\---\<@1>~@2~\~^^^^(@14)"   
+.en(naen)   
+.en(na) 
+.at(xx) *** one-use character macro *** 
+.at(##2)
+@1  
+.en(##2)
+.at(##3)
+__________'##'  
+.en(##3)
+.an(##4)0   
+.ch ##  
+.an(chct) -1
+.en(xx) 
+.at(star)   
+************************************************************
+.en(star)   
+.at(sb) *** song begin ***  
+.an(sbct) +1
+^(ex)   
+.in 0   
+.nf 
+.ne 12  
+^(star) 
+.mg 
+*****                                                  *****
+.ce 3   
+~@1~
+~(to the tune of:)~ 
+~@2~
+.mg 
+
+
+^(star) 
+.sp 
+.in 3   
+.nx 9   
+$*$song\^^(actr)-^^(scen)\^^(%)\^^(indx)\"@1"\"@2"\[^^(sbct)]   
+.en 
+.en(sb) 
+.at(ve) *** verse separator *** 
+^(ex)   
+.nf 
+.ne @1 5
+.en(ve) 
+.at(se) *** song end ***
+
+.sy echo "  *** WARNING: .se at song end should now be .ex macro in ^^(actr):^^(scen)"  
+.ex 
+.en(se) 
+.at(bs) *** begin a scene ***   
+.pa 1   
+.an(indx) 0 
+.an(nact) 0 
+.an(chct) 0 
+.an(sbct) 0 
+.an(ldct) 0 
+.an(sdct) 0 
+.an(act)@1  
+.an(actr)@1 
+.af(actr)II 
+.an(scen)@2 
+.fa 1 *@1-@2indx
+.at(nals) *** to contain list of used chars *** 
+.tc 
+.tc\
+.en(nals)   
+.sy echo ">>> Now roffing Act ^^(actr) Scene ^^(scen): @3 <<<"  
+.fa 9 *null 
+.nx 9   
+.pa 1   
+.he 1 '$*$xxxx <Act>-<Scene>~<Page>~<Speech>''INDEX Page %' 
+.fo 1 '$*$xxxx <Act>-<Scene>~<Page>~<Speech>''INDEX Page %' 
+.ic^^^^^^^^ 
+.tc 
+.tc\
+.pc@@   
+.tr~    
+.qc"
+.ll 85  
+.in 0   
+.nf 
+.ta 10L +5R +4R +2L +5L +20L +5L +5L
+________________________________________________________________________
+**** Act ^^(actr) Scene ^^(scen): @3
+------------------------------------------------------------------------
+.en 
+.he "^^(actr):^^(scen)"^^(titl)"Page %" 
+.fo "^^(actr):^^(scen) Page %"F.A.S.S. 1979"^(year)/^(mon)/^(day)-^(hour):^(min)"   
+.sp 
+.ce 
+.bf 
+@3  
+.sp2
+.he "^^(actr):^^(scen)"@3"Page %"   
+.in 3   
+.bf 
+Characters defined for this scene:  
+.sp 
+
+.ta 8R 10L 55R  
+.en(bs) 
+.at(es) *** end a scene *** 
+.m3 1   
+.m4 0   
+.sp 
+.in 0   
+.ce 
+-~fin~- 
+.br 
+.m3 2   
+.m4 2   
+.an(x) ^^(chct)=^^(nact)
+.ig(es^^(x))
+.en(es0)
+.sy echo "  *** WARNING: ^^(nact) Characters defined, but ^^(chct) used in scene."  
+.en(es1)
+.sy echo "  Pages=^^(%) Speeches=^^(indx) Characters=^^(chct) Songs=^^(sbct) Sound=^^(sdct) Light=^^(ldct)" 
+.nx 9   
+.in +5  
+^(sq)   
+Pages=^^(%) Speeches=^^(indx)   
+Characters defined=^^(nact) Characters used=^^(chct)
+Songs=^^(sbct) Sound Cues=^^(sdct) Light Cues=^^(ldct)  
+^(sq)   
+.ta 5R +5R +3L 55R  
+^^(nals)
+.cl 1   
+.so *^^(act)-^^(scen)indx   
+.fi 
+.in -5  
+.en 
+.an(x) ^^(%)
+.pa0
+.nf 
+.bf 
+.in +5  
+.sp 2   
+Statistics: Act ^^(actr) Scene ^^(scen) --- ^(year)/^(mon)/^(day)-^(hour):^(min)
+.sp 
+.ti 0   
+Line of first speech, and total lines:  
+.sp 
+.ta 5R +5R +3L 55R  
+.mg 
+             . . . . . . . . . . . . . . . . . . . . .  
+^^(nals)
+.so *^^(act)-^^(scen)indx   
+.mg 
+
+
+.sp 
+.ta 55R 
+======================================================= 
+Characters used: ^^(chct)\Characters defined: ^^(nact)  
+
+
+
+
+
+
+
+======================================================= 
+Lines: ^^(indx)\Sound cues: ^^(sdct)
+======================================================= 
+.ta 20L 55R 
+Pages: ^^(x)\Songs: ^^(sbct)\Light cues: ^^(ldct)   
+======================================================= 
+.fi 
+.in -5  
+.en(es) 
+.at(fini) *** end a scene ***   
+.sy echo "  *** WARNING: old macro ^^^^(fini) should be .es in ^^(actr):^^(scen)"   
+.es 
+.en(fini)   
+.at(ch) *** character macro *** 
+^(ex)   
+.ti0 10 
+.an(indx) +1
+.an(@14) +1 
+.an(x) ^^(@14)=1
+.ig(ch1^^(x))   
+.en(ch11)   
+.an(x) "^^(@12)"<2  
+.ig (ch2^^(x))  
+.en(ch21)   
+.sy echo "  *** WARNING - undefined char macro '@1' -in- ^^(actr):^^(scen) page ^^(%), speech ^^(indx)" 
+.bf 
+^^(indx)-__________'@1'(1): 
+.at(@13)
+__________'@1'  
+.en(@13)
+.ap nals "p.\^^(%)\#^^(indx)\<@1>~__________~\~^^^^(@14)"   
+.nx 9   
+$*$char\^^(actr)-^^(scen)\^^(%)\^^(indx)\"@1"\"UNDEFINED"\"UNDEFINED"\***   
+.en 
+.ig(chen)   
+.en(ch20)   
+.bf 
+^^(indx)-^^(@12)(1):
+.ap nals "p.\^^(%)\#^^(indx)\<@1>~^^(@12)~\~^^^^(@14)"  
+.an(chct)+1 
+.nx 9   
+$*$char\^^(actr)-^^(scen)\^^(%)\^^(indx)\"@1"\"^^(@12)"\"^^(@13)"   
+.en 
+
+
+.ig(chen)   
+.en(ch10)   
+^^(indx)-^^(@13)(^^(@14)):  
+.en(chen)   
+.ns 5   
+.en(ch) 
+.at(sd) *** sound direction *** 
+^(ad)   
+.an(sdct) +1
+[S-^^(sdct)]
+.nx 9   
+$*$soun\^^(actr)-^^(scen)\^^(%)\^^(indx)\[S-^^(sdct)]   
+.en 
+.en(sd) 
+.at(ld) *** lighting direction ***  
+^(ad)   
+.an(ldct) +1
+[L-^^(ldct)]
+.nx 9   
+$*$lite\^^(actr)-^^(scen)\^^(%)\^^(indx)\[L-^^(ldct)]   
+.en 
+.en(ld) 
+.en(9999) *** SKIP TO HERE: THIS IS LAST LINE OF MACRO FILE *** 

@@ -1,0 +1,302 @@
+
+
+
+.(.-.(.-
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.po10   
+.sp22   
+.ce 
+.ul 
+THE VECTOR MACHINE  
+.sp5
+.ce 
+.ul 
+Authors:
+.sp 
+.ce 
+Cal Blackshaw 73202658 Math 
+.ce 
+Ian Allen 74210779 Arts 
+.sp17   
+.nf 
+.ss 
+.ta 60R 
+COMPUTER SCIENCE	CAL BLACKSHAW  
+CS-342	IAN ALLEN
+OCTOBER 22, 1976	NORTH 5, VILLAGE 1 
+.m1+2   
+.pa1
+.fi 
+.in0
+.ds 
+.he ''- % -''   
+.sp2
+.ul 
+Representation of Vectors   
+.sp2
+.ne3
+.ti10   
+Vectors are defined in a separate location from the actual string of data.  
+The symbolic address of the vector is the address of this Vector Definition 
+Block (hereafter VDB) which consists of 3 consecutive words 
+containing 1) the length of the vector, 2) the offset of the vector (The offset 
+refers to the increment which must be added to a current element to find the
+next element. It is useful in array manipulation.), 3) the starting 
+address of the vector itself.   
+.ne3
+.ti10   
+Although the vector data elements are accessible directly, most 
+assembler instructions will depend on information contained in the VDB's
+of the respective vectors, and will use this information to manipulate  
+the data. This eliminates the need for the programmer to
+concern himself with remembering the characteristics of every vector in 
+core.   
+.ne3
+.ti10   
+The specific format of the VDB is as follows:   
+.in10   
+.ta 10L 16L 27L 
+.nf 
+.ul 
+label	mnemonic/operand  
+Vector1:	.VDB	Start	;defines 3-word VDB, puts   
+.ss 
+			;address of "Start" in last word 
+.sp 
+.ne3
+.ti10   
+This is equivalent to:  
+.sp 
+Vector1:	.WORD 	;word to hold length
+	.WORD		;word to hold offset
+	.WORD	Start	;holds address "Start" 
+.fi 
+.ds 
+.in0
+.ne3
+.ti10   
+The length and offset must be provided by the programmer for each   
+vector he wishes to manipulate.  In this example, "Start" is a  
+symbolic address which will be defined elsewhere to be a block  
+of words sufficiently long to hold the vector. To facilitate matrix 
+manipulation, several VDB's may be defined to point to one starting address.
+By judicious choice of offset, column and row access is simple. 
+Matrixes of higher dimension use an additional VDB per dimension.   
+.ne3
+.ti10   he rI/O will be designed to favour vectors, with one possible so
+
+I/O will be designed to favour vectors, with one possible solution being
+the replacement of the usual single-word i/o buffers with vectors of buffers.   
+Provision of of a MOVEV instruction of the type [MOVEV <start.addr>, <dest.addr>]   
+would permit moving entire vectors in one instruction.  
+Vector instructions use the VDB's to determine the offsets and lengths as   
+required. This may even be applicable to i/o, where the system may have 
+predefined VDB's for each i/o unit located in a protected area of core. 
+Data may then be moved from the i/o buffers to the program by   
+specifying the absoute address of the respective i/o buffer vector  
+needed. 
+.sp2
+.ne6
+.ul 
+Assembly
+.sp2
+.ne3
+.ti10   
+Being a machine which will deal with number data, a reasonable length   
+word was considered to be 32 bits (4 8-bit bytes). The length   
+of the word makes it important that instructions which can be   
+assembled into one word be done so. 
+We have chosen a two-address machine as most convenient for 
+manipulating two vectors.   
+It is unlikely, however, that   
+both addresses of a two-address machine could be placed in the same 
+word as the opcode, unless some restriction was made on the range over  
+which the instruction could operate.
+.ne3
+.ti10   
+In an attempt to save space, we will provide two forms of most two-address  
+instructions, the preferred form having a range restriction similar to  
+the PDP-11's use of the BRanch instruction, the longer form occupying   
+a full three words when assembled: opcode, address 1, address 2,
+but having access to the full range of memory (assuming 32 bits 
+can represent it!). Example: MOVEVS (short), MOVEVL (long). 
+In addition to the vector instructions, standard byte and word  
+instructions will be provided.  
+.sp2
+.ul 
+Decoding & Hardware: the ADDV example   
+.sp2
+.ne3
+.ti10   
+The vector add instructions ADDVS, ADDVL, use the VDB's in the  
+same manner as do all vector instructions.  
+Data from the VDB's is loaded into internal, programmer inaccessible
+registers: VR1<Start address of data in vector 1>, VR2<ditto, for   
+vector 2>, VOFR1<offset of vector 1>, VOFR2<ditto, for vector 2>,   
+and VLEN<length of the vectors - vectors must be the same length or the 
+program will interrupt and stop>.   ame This part of the micro-program coding will be the same for all v
+
+This part of the micro-program coding will be the same for all vector   
+instructions, and will be cued by a bit in the opcode which, when decoded,  
+will cause a branch to perform this "overhead" of loading the registers.
+.ne3
+.ti10   
+The essence of the micro-program sequence may be followed with reference
+to the chart showing the accessibility of each register to the data busses  
+and the bus structure itself.   
+.ss 
+.sp3
+.nf 
+.ta 3L +3L +3L +3L +3L +3L +3L +3L  
+.ul 
+	Decoding:	ADDVS - Add Vectors Short-address
+.ul 
+					ADDVL - Add Vectors Long-address   
+.sp 
+.fi 
+(the instruction has been fetched from memory using the PC, 
+placed in the IR, and the PC incremented by adding the constant +4) 
+.nf 
+.sp 
+1) Test IR for vector instruction, branch elsewhere if not. 
+.sp 
+2) Overhead - load registers
+.sp 
+	a) process first VDB   
+.sp 
+		A) if we are doing an ADDVS   
+		(assume mode of addressing is relative)   
+		 - offset of VDB is in one byte of IR 
+			1) mask IR to get byte,  
+			   move it to MAR but do not read
+			2) add PC to MAR to get absolute address,
+			   move it to MAR and read memory.   
+			3) put MDR (containing first 
+			   word of VDB, i.e. length) 
+			   into register VLEN.   
+.sp 
+.ne5
+		B) if we are doing an ADDVL   
+		(assume mode of addresing is relative)
+		 - offset of first word of VDB is in word 
+		   following instruction : use PC to access   
+			1) PC -> MAR, read (read offset of VDB)  
+			2) PC + 4 -> PC (increment PC)   
+			3) PC + MDR -> MAR, read (add offset to PC   
+			   to get absolute address, read vector length.  
+			4) MDR -> VLEN (store register in VLEN)  
+.sp 
+		C) MAR + 4 -> MAR, read (increment MAR
+		     to point to second word in VDB, read)
+		D) MDR -> VOFR1 (second word is vector offset)
+		E) MAR + 4 -> MAR, read (increment MAR)   
+		F) MDR -> VR1 (third word is start address)   
+.sp 
+.fi 
+(if the mode of addressing is other than relative, as indicated 
+by bits following the opcode in the instruction, this   
+sequence will be different!)
+.nf 
+.sp 
+	b) process second VDB  
+.sp 
+		A) if instruction is ADDVS
+		   --> similar to A)  (above) 
+.sp 
+		B) if instruction is ADDVL
+		   --> similar to B)  (above), except 
+		       omitting the MDR -> VLEN   
+.sp 
+		C) Compare VLEN to MDR - if not equal (vectors
+		   are of different lengths) then interrupt   
+.sp 
+		D) through F) --> similar to vector one (above)   
+.sp 
+.fi 
+(this completes the initialization of the vector
+registers. Most vector-manipulating instructions
+will use this code, e.g. MULV(S|L), DIVV(S|L), etc.)
+.sp 
+.ul 
+	Execute ADD
+.sp 
+3) Micro-code to perform addition of elements.  
+.sp 
+(Note that the feature of the addressable MAR will permit   
+fast single vector addressing, by permitting the offset of the next 
+element to be added directly to the previous address, without   
+going through another register. This is useful in summing   
+a vector, but in two-vector instructions such as ADDV is not
+as valuable.)   
+.sp2
+.nf 
+.ne5
+	LOOP: TEST VLEN,OUT (if VLEN is zero, go to OUT)   
+	      VR1 -> MAR, read (get a data element)
+	      MDR -> MDRSAVE (save data)   
+	      VR1 + VOFR1 -> VR1 (increment address)   
+	      VR2 -> MAR, read (get element of second vector)  
+	      MDR + MDRSAVE -> MDR, write (add elements and store) 
+.fi 
+.sp 
+(at this point, and overflow check could be performed;  
+however, since future adds may not overflow,
+the test bit would have to be saved or preserved such   s) t
+
+that it would not be reset by a subsequent valid add.)  
+.nf 
+.sp 
+	      VR2 + VOFR2 -> VR2 (increment address)   
+	      VLEN - 1 -> VLEN (decrement length)  
+	      TRA LOOP (repeat)
+	OUT:  TRA FETCH (we are done, get next instruction)
+.fi 
+.sp 
+.ds 
+.ne3
+.ti10   
+Referring to the diagram, note the provision of the usual complement
+of programmer-accessible registers (r0 - r5, PC, and SP).   
+Connection of each register to both input busses permits one-cycle  
+addition of registers. The PC, and MDR are gated in this
+fashion as well, to facilitate access by other registers connected  
+to only one input bus.  
+.ne3
+.ti10   
+In terms of structure, this is obviously a CPU oriented machine since   
+all data passes through the ALU.  This will prove slow, but is  
+much simpler to conceive and diagram.   
+.sp3
+.ss 
+.ul 
+NOTE:   
+.ne3
+.ti10   
+The basic design of this machine was arrived at by a conference of  
+four individuals (Karen Lo, DAvid Palmer, Cal Blackshaw, and
+Ian Allen). Having arrived at the basic concept (notably the
+VDB idea), we split into autonomus teams to work out the data flow  
+and other details.  

@@ -1,0 +1,46 @@
+
+
+
+.Bu@.Bu@
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/fasshole   
+.he 'FASS'- % -'ACT I SCENE VI' 
+.fo 'ACT I SCENE VI''FASS'  
+Act 1, Scene 6 - Slide Show 
+
+
+.nf 
+XX    XX   XXXXXX   XXXXXXX   XXXXXXXX  
+XXX   XX  XX    XX  XX    XX  XX
+XXXX  XX  XX    XX  XX    XX  XX
+XX XX XX  XX    XX  XXXXXXX   XXXXXX
+XX  XXXX  XX    XX  XX        XX
+XX   XXX  XX    XX  XX        XX
+XX    XX   XXXXXX   XX        XXXXXXXX  
+.fi 
+
+
+fin 

@@ -1,0 +1,54 @@
+
+
+
+.d...d..
+idallen.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"written by idallen summer 1979 
+"qed fassc <infile> <outfile>   
+"<infile> is roff source for fass castcrew list 
+"<outfile> defaults to *lab if not present  
+"<infile> is converted and output is written to <outfile> in aft
+oq b(outfile)*da *lab.  
+b0 nx:$ nx>0 jt b.4,7p je*** error - missing arg(s) 
+1m(infile)  
+nx>1 jf 1m(outfile) 
+nx>2 jf b.4,7p je*** error - too many args  
+b1 u1e r ..(infile) 
+jt je*** Read error from .(infile)  
+1,/^.cc..*xx.*name/d
+e1/ "[^"]*"/
+*s3/.1//
+*s1/ ""//   
+*s/^.xx{.1.1}1.*/1/ 
+*s/("$)|(^ ")// 
+*s/" "/	/   
+*s2/, /	/   
+*s/^{[^,]*}1, *{[^ ][^	]*}2	/2 1	/  
+*s/[	 ][	 ]*$// 
+u1e wx ..(outfile)  
+nxs nx>-1 j:at jm*** write error to .(outfile) - output put in *fassc   
+wx *fassc   
+b(outfile)*da *fassc.   
+@a q!aft .(outfile) 

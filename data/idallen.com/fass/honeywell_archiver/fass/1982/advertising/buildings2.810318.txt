@@ -1,0 +1,119 @@
+
+
+
+.....0s.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bp 
+.nf 
+.ul 
+Residences; 
+.sp 2   
+.in 4   
+Village One 
+Village Two 
+Hagey Residence 
+St. Jeromes 
+Notre Dame  
+Resurrection
+Rension 
+Conrad Grebel   
+St. Pauls   
+Philip St. Co-op
+University Ave Co-op
+.sp 2   
+.in -4  
+.ul 
+Engineering 
+.in 4   
+.sp 2   
+Engineering 1   
+Engineering 2   
+Engineering 3   
+Engineering Lecture 
+Carl Pollack Hall   
+.in -4  
+.sp 2   
+.ul 
+Science 
+.in 4   
+.sp 2   
+Physics 
+Earth Science & Chemistry   
+Chemistry 2 
+Biology 1   
+Biology 2   
+Optometry   
+.in -4  
+.sp 2   
+.ul 
+Mathematics 
+.in 4   
+.sp 2   
+Mathematics & Computer Centre   
+.in -4  
+.sp 2   
+HKLS
+.in 4   
+.sp 2   
+Physical Activities Complex 
+.in -4  
+.sp 2   
+.ul 
+Enviromental Studies
+.in 4   
+.sp 2   
+Enviromental Studies
+415 Philip St.  
+419 Philip St.  
+156 Columbia St.
+.in -4  
+.sp 2   
+.ul 
+Arts
+.in 4   
+.sp 2   
+Modern Languages
+Arts Lecture
+Psycology   
+Hagey Hall  
+Arts Library
+.in -4  
+.sp 2   
+.ul 
+Misc.   
+.in 4   
+.sp 2   
+
+South Campus Hall   
+Grad Club   
+Needles Hall
+Health Services 
+Campus Centre   
+Faculty Club
+Administrative Services 
+Central Services
+Security
+Maintenance 

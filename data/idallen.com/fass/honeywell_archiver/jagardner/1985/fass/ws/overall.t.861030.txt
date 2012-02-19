@@ -1,0 +1,192 @@
+
+
+
+..]....@
+jagardner...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.an (manu) 1
+.so expl/../macr.t  
+.fo ''- % -''   
+.tl 
+OVERALL COMMENTS
+.bt 
+The quality of these scenes was very high, significantly higher than usual  
+(as far as I remember what is usual for FASS scenes).   
+Most could go directly to a group edit with no difficulty whatsoever.   
+.bt 
+I am delighted with the many different directions that the scenes took. 
+Almost all of them took care of all the points laid down in the outline 
+and added good material besides.
+(This demonstrates an important point about plot: in itself, plot is only   
+a small part of what actually happens in a play.
+The 
+.ul 
+substance   
+of a show comes from many other things.)
+.bt 
+There is really only one problem that everybody shares and it's a problem   
+that plagues every writer: how much time do you spend on each part of the   
+scene?  
+This breaks down into two sub-problems -- "running past" and "spinning your 
+wheels".
+.bt 
+"Running past" is covering a piece of the scene too quickly.
+You have some important point to make and you zip by it without giving it   
+time to sink into the audience's minds. 
+
+This is really easy to do when you are writing, because you may sit and 
+think about the line for quite some time, so it 
+.ul 
+feels   
+as if you've dwelled on it long enough. 
+In the actual script, however, the thing doesn't take much time at all. 
+You don't have to spoonfeed the audience, but you do have to give them time 
+to pick up things that form the basis for further action.   
+.bt 
+One common source of running past is "delicacy".
+Instead of coming out and saying something directly, the writer tries to be 
+"delicate" and talk around a particular fact.   
+As an example, in Mike Upmalis's script, it's important that Maid Marian
+is miffed because Robin asks if she is having her period.   
+You don't have to beat the audience over the head with this point, but you  
+do have to understand what Robin is talking about.  
+If Robin's line is too delicate, the audience won't clue in to what he's
+saying and they'll be confused through the lines to come.   
+.bt 
+There are other reasons for circumlocution, and many are justified. 
+Nevertheless, you have to pay attention to the end result of not calling a  
+spade a spade.  
+The audience has to understand what you want them to understand.
+
+This means that you have to be direct, or you have to spend time being  
+indirect so they can figure out what you mean.  
+.bt 
+The other thing I mentioned was "spinning your wheels". 
+This is the opposite of "running past": belabouring a point that is 
+unimportant.
+A great deal of time goes by on stage without much happening.   
+I'm not necessarily talking about plot here -- a gigantically funny 
+bit of business is its own justification (most of the time).
+I'm talking about ho-hum passages that go on for too long without going in  
+any particular direction.   
+.bt 
+There are two ways to correct passages where you spin your wheels: cut  
+them down or punch them up. 
+Which you do depends on your situation and inspiration. 
+If you can think of stuff to make the material richer and more stageworthy, 
+add it. 
+On the other hand, it is no weakness just to trim things that are longer
+than they need to be.   
+.bt 
+Of course, the real trick lies in walking the middle ground betwen running  
+past and spinning your wheels.  
+It's often difficult to figure out how much to put in to avoid running  
+past and how much to leave out to avoid spinning your wheels.   you Reading your scene aloud can hel
+
+Reading your scene aloud can help.  
+Experience will also help.  
+An outside observer whom you trust is probably the best help of all.
+All the observer has to do is point out the areas where (s)he's confused
+or bored, and you can usually do the rest.  
+.bt 
+Another problem that showed up in several scripts is "hand-waving". 
+This is indicating a number of actions that should happen on stage without  
+showing how those things should actually be done.   
+More to the point, it's writing a lot of stage directions to describe an
+action without actually developing a picture of how the action should take  
+place.  
+.bt 
+You can certainly have a lot of action take place without dialogue, 
+especially if the whole point of the action is that there IS no dialogue
+(e.g. when person A is sneaking up on unsuspecting person B).   
+However, a number of people wrote sequences that I thought would require
+dialogue when they were actually played out on stage, but the writers did   
+not give any dialogue.  
+To me, this says that the writer didn't take the trouble to picture how 
+the piece would actually be performed.  
+.bt 
+Trite dialogue is better than silence if the silence would seem unusual loudin the c
+
+in the context of the scene.
+Of course, brilliant dialogue is to be preferred, and that's possible   
+if you put in the trite dialogue to begin with. 
+It's easier to improve something that is there than to come up with 
+brilliance off the cuff.
+.hd Trivia  
+These are just some points I left out of last week's write-up.  
+I'm working here at the computer reviewing everyone's scenes, and I'll  
+add to this list as I go.   
+.bt 
+Try to keep character names as different as possible.   
+If you have a Robin, Robert, and Richard all on stage at the same time, 
+the audience will have trouble keeping things straight. 
+.bt 
+One comedy gimmick you might consider is the use of tongue-twisters.
+Audiences are delighted when an actor gets all the way through a
+tongue-twister. 
+Series of tongue-twisters often work as well as series of puns, and are 
+put together in the same way.   
+.bt 
+In fact, verbal humour has a lot more to it than just puns. 
+Think of the famous "Who's on First Base" sketch.   
+As I recall it, it had nothing I would really call a pun, but it was chock  
+full of wordplay.   
+Perhaps we should call this Fast Talk; whatever it is, it often works.   wou(Repeated disclaimer: just b
+
+(Repeated disclaimer: just because I say Fast Talk works does   
+.ul 
+not 
+mean you should force it into a scene.  
+If you find an opportunity for Fast Talk and the Fast Talk delights you,
+put it in.  
+If you dispassionately invent some Fast Talk and jam it into your script
+because I said it was a good gimmick to use, it's going to die.)
+.bt 
+One of the most common lines in FASS is "Shut up".  
+It's essentially a way to brush off a gag-line that has just happened, so   
+that the action can take a new direction.   
+.bt 
+A past Chief Scriptwriter, Oscar Nierstasz, was violently opposed to
+"Shut ups". 
+They are, of course, weak rejoinders, especially if the preceding line  
+really was funny.   
+I agree that "Shut ups" are signals to look for in polishing.   
+Many times they aren't necessary.   
+Many times they are just attempts to get laughs through being nasty...but   
+let's face it, "Shut up" just isn't extreme enough to make much of  
+an impression on the audience -- a stronger put-down may work much better.  
+.bt 
+If you find you have a lot of "Shut ups" that you don't want to part with,  
+try making them into something more important, e.g. a running joke of   
+some sort.  st b
+
+.bt 
+The playwright Ibsen once said, "Never hang a gun on the wall in Act~One
+unless you intend to shoot someone by Act~Three."   
+In FASS terms, this means that you should never set something up without
+giving a pay-off.   
+A classic example of this is the Super-Snail business in 1-1 this year. 
+With two lines about Super-Snail almost reaching the stadium, we should 
+have had him or her show up...or else we should have cut the lines. 
+.bt 
+Lines often become cleaner if you replace "what for" with "why".

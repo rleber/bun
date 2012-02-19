@@ -1,0 +1,94 @@
+
+
+
+.......}
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.\" Macros for FASS programme insert (5 1/2 by 8 1/2)   
+.\" Reset page parameters   
+.de RE  
+.\" .pl 8.5i \" Don't use this -- make head and foot macros skip
+.\" space on 11 inch page to produce 8.5 inch usable page   
+.lt 4i  
+.ll 4i  
+.ta 4iR 
+.vs 12p 
+.ps 10p 
+.nf 
+.na 
+.hy 0   
+.in 0   
+.ft 1   
+..  
+.\" Between actor names 
+.de XX  
+.ne 3v  
+..  
+.\" Between tech names  
+.de ZZ  
+.br 
+.ne 3v  
+.ti |0  
+..  
+.\" Do a Heading for a section  
+.de HD  
+.RE 
+.sp 2v  
+.ne 15v 
+.ps 14  
+.ft 3   
+.ce 
+..  
+.\" Undo a Heading, set to normal   
+.de HE  
+.RE 
+.sp 0.5v
+.ns 
+..  
+.\" Header of page  
+.de H#  
+.sp |1i 
+.tl '|--- FASS 1982'-- % --'Programme ---|' 
+.sp |2i 
+.ns 
+..  
+.\" Footer of page  
+.de F#  
+.sp 1i  
+.tl '|--- FASS 1982'-- % --'Programme ---|' 
+.bp 
+..  
+.\" End Media tidy up   
+.de EM  
+.br 
+.tm Done -- \\n%  pages generated.  
+.sp 200v
+..  
+.\" 11i - 2i - 1.5i = 7.5i page length  
+.wh -1.5i F#
+.wh 0 H#
+.em EM  
+.RE 

@@ -1,0 +1,260 @@
+
+
+
+.   .I.f
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so jagardner/../fassmac.t  
+.bs 1 1 "By Frosh, By Golly"
+.na js JOE~SCHMOE JOE   
+.na pp PAUL~PLUMMER PAUL
+.na bc BARBIE~CUE BARBIE
+.na tt TINA~TURNOVER TINA   
+.na kd KENNY~DOIT KENNY 
+.na ja JERRY~ATRIC JERRY
+.ld 
+("LIGHTS UP" IN PAC.)   
+.ad 
+(UPBEAT INTRO MUSIC AS THE SIX CHARACTERS FIND THEIR
+WAY ONTO THE STAGE, SELECT THEIR MIKES AND GET INTO POSITIONS, IN CHARACTER.
+WE MEET JERRY AND KENNY AT ONE SIDE OF THE STAGE, BARBIE AND TINA AT THE
+OTHER.) 
+.ch kd  
+Oh boy! 
+They sure don't have anything   
+like this back home in Belleville!  
+.ch ja  
+From what I gather, they don't have anything like indoor plumbing   
+back in Belleville! 
+.ch kd  
+Oh yeah?
+So where are you from, hotshot? 
+.ch ja  
+Spadina and Dundas. 
+.ch kd  
+Whatsamatter?   
+Couldn't make up your mind? 
+.ad 
+(ENTER JOE, DISTRESSED) 
+.ch js  
+Help me!
+Hide me!
+.ch kd  
+What's wrong?   
+.ch js  
+I'll do anything: finish your calculus homework, write your English essays, 
+fill out your OSAP forms!   
+Just hide me from...    
+.bf 
+him!
+.ad 
+(JOE RUNS OFF, MAKING THE PATHETIC WHIMPERS OF  
+A HUNTED ANIMAL SEARCHING FOR COVER.
+ENTER PAUL, HUMMING THE FAMOUS THEME: "WE ARE,  
+WE ARE, WE ARE, WE ARE, WE ARE THE ENGINEERS".  
+PAUL SPEAKS IN AN ELMER FUDD VOICE.)
+.ch pp  
+Be vewwy, vewwy quiet!  
+I'm hunting...keeners!  
+.ch ja  
+An engineer!
+.ch kd  
+You know, they wear those hardhats to make you think they have brains   
+they want to protect.   
+.ch pp  
+Quiet!  
+Have you seen a keener go by here?  
+I need one for my scavenger hunt!   
+.ad 
+(THEY POINT AWAY FROM WHERE POOR JOE FLED.  
+PAUL PURSUES.   
+WE NOTICE BARBIE AND TINA, BECAUSE THEY NOTICE PAUL GO BY.  
+BARBIE NOTICES, ESPECIALLY.)
+.ch bc  
+Oh boy! 
+They sure don't have guys like that back home in Belleville!
+.ch tt  
+Score one for Belleville.   
+.ch bc  
+I am talking about all the hunks around here.   
+Did you know Waterloo has four males for every female?  
+.ch tt  
+No wonder the guys are chasing each other.  
+.ad 
+(ENTER JOE, WITH PAUL IN HOT PURSUIT)   
+.ch js  
+Help! Help! 
+.ch pp  
+Darn that wascally keener!  
+.ad 
+(EXIT PAUL & JOE)   
+.ch ja  
+So is that all people do for fun around here?   
+.ch tt  
+So if there are so many guys, how do I meet them all?   
+.xx BARBIE~AND~KEN  
+There are always the pubs...
+.xx JERRY~AND~TINA  
+Nineteen years old, and already I have to pick up people in bars?   
+.ch bc  
+Pubs aren't like that...pubs are fun.   
+.ch kd  
+If you don't like pubs, you can go for clubs.   
+.ch bc  
+Like Mathsoc, if you like playing bridge.   
+.ch kd  
+Or Engsoc, if you like Enginews.
+.ch bc  
+Or the Environmental Studies Society if you like...environmental studies.   
+.ch kd  
+Then there's the Imprint... 
+.ch bc  
+CKMS... 
+.ch kd  
+The Federation...   
+.ch bc  
+Federation clubs and societies...   
+.xx BARBIE~AND~KEN  
+And of course FASS. 
+.xx JERRY~AND~TINE  
+FASS?   
+.ch bc  
+A group of idiots who put on a comedy show every year.  
+.ch kd  
+Ignore them.
+.ad 
+(JOE RUNS IN AND HIDES BEHIND WOMEN.)   
+.ch js  
+Hide me!
+.ch tt  
+Nice opening line...
+.ad 
+(PAUL RUNS UP TO JERRY AND KEN, THEN STOPS.)
+.ch pp  
+I think I wost him. 
+.ch ja  
+So forget about him.
+We're just talking about the better things in life. 
+.ch pp  
+Beer?   
+.ch ja  
+Close...but think taller and warmer.
+.ch pp  
+Oh, women.  
+Hey, I'm an engineer, I know all about women.   
+.ch kd  
+Really. 
+.ch pp  
+Sure, just walk up to them and say, "Hi dollface, where have you been   
+all my life?"   
+.ch kd  
+That works? 
+.ch pp  
+Never failed for me.
+.ch ja  
+Have you ever tried it? 
+With women in earshot?  
+.ch pp  
+Thousands of times. 
+You just walk right up to them and say...   
+.ad 
+(HE SPINS ABOUT TO DRAMATIZE AND FINDS HIMSELF FACE TO FACE WITH TINA.  
+HE FREEZES, JAW OPEN.   
+KEN CLOSES PAUL'S MOUTH FOR HIM, THEN EDGES HIM OUT OF THE WAY.)
+.ch kd  
+Hi dollface, where have you been all my life?   
+.ch tt  
+Probably standing in line at the book store.
+.ch bc  
+Don't talk to me about line-ups!
+I waited at the Zehr's check-out so long yesterday that my eggs hatched!
+.ch ja  
+You think that's bad?   
+Try opening a bank account! 
+.ch js  
+Or getting a phone! 
+.ch pp  
+I know the  
+.bf 
+worst   
+line-up:
+.xx ALL 
+.bf 
+Registration!   
+.ad 
+(SING SONG ABOUT REGISTRATION!) 
+.sb "The Longest Line" "The Longest Time"   
+Ohhhh, oh, oh oh, In the longest line...
+.ve 5   
+I've been waiting here since Monday night.  
+Not long 'till I've finals I must write. (ah-ah-ah) 
+It's now September  
+I will be there by December 
+For now I'm waiting in longest line.
+.ve 5   
+Once I thought I'd make a class or two. 
+Now I know I've other things to do. 
+Oh my elation...
+Learning about registration,
+And that means waiting in the longest line. 
+.ve 2   
+Oh, oh, oh, oh, in the longest line...  
+Oh, oh, oh, in the longest line.
+.ve 5   
+I just love this waiting in the hall,   
+Just to change my courses for the fall. 
+And then rejection  
+When you ask for special sections.  
+Back to the last place in the longest line. 
+.ve 5   
+Maybe I'll get out by next week.
+I've not shaved in days, they think I'm a freak.
+I should bank somewhere else you know.. 
+Why should I wait an hour   
+Just to find I'm at zero
+.ve 5   
+Who knows how much further this goes on?
+When I get there all the books are gone.
+What are the chances,   
+I'll remember what romance is   
+When I have made it through the longest line.   
+.ve 5   
+I just bought three things at the mart  
+The woman ahead has got a full cart.
+Dozens are stuck in this bottleneck 
+We're in the express line,  
+and she's paying with a che -- que. 
+.ve 4   
+I don't care what consequence it brings.
+I will shoot her if when she buys those things. 
+I'm off the deep end, at least I know I won't spend 
+My whole life waiting in the longest line...
+.ve 1   
+CHORUS  
+.ex 
+.ld 
+(LIGHTS DOWN)   
+.es 

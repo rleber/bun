@@ -1,0 +1,316 @@
+
+
+
+.......<
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ic ^^  
+.tr ~   
+.hc `   
+.qc "   
+.pc @   
+.fs '____________________'''
+.pl 66  
+.in 0   
+.po 0   
+.ll 60  
+.ls 1   
+.m1 4   
+.m2 2   
+.m3 2   
+.m4 2   
+.hy 3   
+.fi 
+.ju 
+.id skip_all_macros skip_all_macros 
+.an skip_all_macros +1  
+.ic %%  
+.ze >>> Macro package used more than once.  Use #%(skip_all_macros) ignored. <<<
+.ic ^^  
+.el skip_all_macros 
+.an skip_all_macros 1   
+.ze >>> IDAllen's Macros. Use correct o= value for slis, otherwise klist <<<
+.af (mon) 01
+.af (day) 01
+.af (min) 01
+.af (hour) 01   
+.af (sec) 01
+.af (year) 01   
+.zz -- Do a proper stack save of a register, and apply a modify expr.   
+.at stack   
+.an silly 0^^(@1)   
+.sa @1  
+.an @1 0^^(silly)   
+.an @1 @2   
+.en stack   
+.zz -- Un-Stack a saved register, popping new value to top. 
+.at unstack 
+.zt @1  
+.en unstack 
+.zz -- Save a TF parameter corresponding to a request.  
+.at save
+.stack reg_@1 @2
+.@1 0^^(reg_@1) 
+.en save
+.zz -- Un-Save a saved TF parameter.
+.at unsave  
+.zt reg_@1  
+.@1 ^^(reg_@1)  
+.en unsave  
+.zz -- A Justification command that uses 0 (off) and 1 (on) 
+.at justify 
+.if @1=0 justifyit  
+.nj 
+.el justifyit   
+.ju 
+.en justifyit   
+.en justify 
+.zz -- A Fill command that uses 0 (off) and 1 (on)  
+.at fill
+.if @1=0 fillit 
+.nf 
+.el fillit  
+.fi 
+.en fillit  
+.en fill
+.zz -- Purge the stack of a saved TF parameter and set its value.   
+.at reset   
+.purge_stack reg_@1 
+.an reg_@1 0
+.save @1 @2 
+.en reset   
+.zz -- Purge the stack of a saved TF parameter. 
+.at purge_stack 
+.id @1 notdef   
+.zt @1  
+.purge_stack @1 
+.en notdef  
+.en purge_stack 
+.at no_margins  
+.save m1 0  
+.save m2 0  
+.save m3 0  
+.save m4 0  
+.save pl @1 
+.en no_margins  
+.zz -- Paragraph
+.at para
+.sq 
+.sp 
+.ne 4   
+.ti +8  
+.en para
+.zz -- XSpecial space   
+.at xs  
+.sq 
+.sp 
+.ne 3   
+.en xs  
+.zz -- Quote Begin  
+.at qb  
+.sq 
+.sp 
+.ne 5   
+.save ls 1  
+.save in +@1
+.save ll -@1
+.en qb  
+.zz -- Quote End
+.at qe  
+.sq 
+.sp 
+.unsave ls  
+.unsave in  
+.unsave ll  
+.ne 4   
+.en qe  
+.zz -- Bibliography Entry   
+.at bb  
+.sq 
+.sp 
+.ne 5   
+.an (inbb) +1   
+.ti -10 20  
+^^(inbb).   
+.ns 10  
+.en bb  
+.zz -- Heading  
+.at hx  
+.at titl
+@5  
+.en titl
+@1  
+@2  
+@3  
+@4  
+@5  
+@6  
+.di 
+@7@5~\~^^%  
+.en 
+.en hx  
+.zz -- Heading  
+.at hd  
+.sq 
+.ig (@1)
+.en 0   
+.hx ".sp 2" ".ne 14" .ce "@2" "@3" ".sp 2" ""   
+.ig (end)   
+.en 1   
+.hx ".sp 2" ".ne 10" ".ti 0" "@2" "@3" ".sp 2" "~~" 
+.ig (end)   
+.en 2   
+.hx .sp ".ne 7" ".ti 0" "@2" "@3" .sp "~~~~"
+.ig (end)   
+.en 3   
+.hx .sp ".ne 4" ".ti 0" "@2" "@3" ".ns 10" "~~~~~~" 
+.en end 
+.en hd  
+.zz -- Start List of points.
+.at list
+.sq 
+.sp 
+.ne 4   
+.if "@1">0 noargs   
+.save in @1 
+.sa open_char   
+.at open_char   
+@2  
+.en open_char   
+.sa close_char  
+.at close_char  
+@3  
+.en close_char  
+.sa list_index  
+.an list_index 0@4  
+.af list_index @5   
+.sa list_start  
+.an list_start 0@4  
+.en noargs  
+.en list
+.zz -- End list 
+.at listend 
+.sq 
+.sp 
+.ne 4   
+.unsave in  
+.zt open_char   
+.zt close_char  
+.zt list_index  
+.zt list_start  
+.en listend 
+.zz -- List item with prespace as arg1 and .ne as arg2  
+.at item
+.if ^^(list_index)>^^(list_start) itemskip  
+.sq 
+.sp @1 1
+.ne @2 3
+.en itemskip
+.ti -2-"^^(open_char)^^(list_index)^^(close_char)" 10   
+^^(open_char)^^(list_index)^^(close_char)~^^
+.ns 10  
+.an list_index +1   
+.en item
+.zz -- List item no number  
+.at point   
+.if ^^(list_index)>^^(list_start) pointskip 
+.sq 
+.sp @1 0
+.ne @2 2
+.en pointskip   
+.ti -1-"^^(open_char)" 10   
+^^(open_char)~^^
+.ns 10  
+.an list_index +1   
+.en point   
+.zz -- Save entire environment  
+.at ev  
+.sq 
+.save pl ^^(reg_pl) 
+.save in ^^(reg_in) 
+.save ll ^^(reg_ll) 
+.save po ^^(reg_po) 
+.save ls ^^(reg_ls) 
+.save m1 ^^(reg_m1) 
+.save m2 ^^(reg_m2) 
+.save m3 ^^(reg_m3) 
+.save m4 ^^(reg_m4) 
+.save hy ^^(reg_hy) 
+.save justify ^^(reg_justify)   
+.save fill ^^(reg_fill) 
+.ne 4   
+.en ev  
+.zz -- Restore entire environment   
+.at re  
+.sq 
+.unsave pl  
+.unsave in  
+.unsave ll  
+.unsave po  
+.unsave ls  
+.unsave m1  
+.unsave m2  
+.unsave m3  
+.unsave m4  
+.unsave hy  
+.unsave justify 
+.unsave fill
+.ne 4   
+.en re  
+.zz -- Reset all stacked parameters to defaults 
+.at reset_all   
+.reset pl 66
+.reset in 0 
+.reset po 0 
+.reset ll 60
+.reset ls 1 
+.reset m1 4 
+.reset m2 2 
+.reset m3 3 
+.reset m4 4 
+.reset hy 3 
+.reset fill 1   
+.reset justify 1
+.en reset_all   
+.zz -- Define how the index diversion will appear   
+.at index   
+.di 
+.so macros.t
+.tc \   
+.nf 
+.sp @1  
+.ls @2  
+.ce 
+.ul 
+Contents
+.sp 2   
+.ta R 54
+.mg 
+. . . . . . . . . . . . . . . . . . . . . . . . . . .   
+.en 
+.en index   
+.en skip_all_macros 
+.reset_all  

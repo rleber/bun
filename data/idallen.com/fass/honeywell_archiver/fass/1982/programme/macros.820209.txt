@@ -1,0 +1,95 @@
+
+
+
+.......v
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.\" Macros for outer FASS programme 
+.\" Reset global file font, format, etc.
+.de RE  
+.ll 6i  
+.lt \\n(.lu 
+.ta \\n(.luR
+.na 
+.fi 
+.hy 0   
+.in 0   
+.ps 10  
+.ft I   
+..  
+.\" Set up a scene, with title. 
+.de XX  
+.RE 
+.sp 5v  
+	\\$1   
+.sp 0.5v
+.ps 14  
+..  
+.\" Set up short description of scene.  
+.de YY  
+.sp 0.25v   
+.in +2m 
+.ll \\n(.lu*3u/4u   
+.ps 10  
+..  
+.\" Heading of section  
+.de HD  
+.RE 
+.sp 2v  
+.ne 5v  
+.ps 14  
+.ft I   
+.ce 
+..  
+.\" Reset after heading 
+.de HE  
+.RE 
+.sp 0.5v
+.ns 
+..  
+.\" Header of page  
+.de H#  
+.sp 0.1i
+.tl '|--- FASS 1982'-- % --'Programme ---|' 
+.sp |0.5i   
+.ns 
+..  
+.\" Footer of page  
+.de F#  
+.sp 0.4i
+.tl '|--- FASS 1982'-- % --'Programme ---|' 
+.bp 
+..  
+.\" End Media tidy up   
+.de EM  
+.br 
+.tm Done -- \\n%  pages generated.  
+.sp 200v
+..  
+.\" 11i page length 
+.wh -0.5i F#
+.wh 0 H#
+.em EM  
+.RE 

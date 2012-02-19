@@ -1,0 +1,439 @@
+
+
+
+.Bu..Bu.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/fasshole   
+.he 'FASS'- % -'ACT I SCENE XIII'   
+.FO 'ACT I SCENE XIII''FASS'
+Act 1, Scene 13 - Transporter Room  
+
+
+.rb 
+Blast, I thought that the transporter would be unguarded
+at this hour of the night.  You there, Yeoperson, what are you doing here?  
+
+
+.aa YEOPERSON   
+Waiting for the ship to come in line with Quinqus Senteria Iota 
+Gamma Four, sir.
+
+
+.rb 
+But that's in the next system - we won't reach that for another hour at least.  
+What do we want on that planet anyway?  
+
+
+.aa YEOPERSON   
+We're transporting up three hundred tons of Turkish Delight.
+
+
+.rb 
+That's ridiculous.  
+
+
+.aa YEOPERSON   
+Haven't you ever heard of transports of delight?
+
+
+.rb 
+I wish I hadn't.  Say, Yeoperson, you're looking a little peaked;   
+have you been taking all your space pills?  Have you had your   
+Gertrude Stein flu vaccination yet? 
+
+
+.aa YEOPERSON   
+Why no, sir, but I've had all the standard flu vaccinations. A  
+vaccination is a vaccination is a vaccination, sir. 
+
+
+.rb 
+I'm the doctor around here and I say it sounds like you need a  
+shot.   
+
+
+(HE LEAPS AND INJECTS THE YEOPERSON WITH HIS NEEDLE)
+
+
+.aa YEOPERSON   
+What...victory to the Icelandic people! 
+
+
+.rb 
+Maybe that batch should have been stirred up a little - 
+it seems as if it was a little impure.  
+
+
+.aa YEOPERSON   
+All hail the glorious revolution of Tonga.  
+
+
+.rb 
+Yes, yes, very well, why don't you come and help me bring   
+in the Boobies. 
+
+
+.aa YEOPERSON   
+I have nothing to lose but my brains.   
+
+
+.rb 
+Smashingly well said.   
+
+
+(THEY GO OFFSTAGE AND BRING ON THE BOOBIES.  THE BOOBIES
+ARE TIED UP VERY LOOSELY.  PRICE IS STILL SLEEPING, BUT 
+PRIDE IS WIDE AWAKE AND ANGRY. SHE IS GAGGED.)  
+
+
+.rb 
+Well, there they are.  They both played right into my   
+hands.  Now all I have to do is get them down to the    
+planet.  Tell me, are the co-ordinates for the  
+transporter set?
+
+
+.aa YEOPERSON   
+A glorious, victorious yes. 
+
+
+.rb 
+This babe is getting on my nerves.  Ah, Yeoperson, do you have  
+a phaser on you?  Could I borrow it for a second?   
+
+
+.aa YEOPERSON   
+Property is slavery.
+
+
+
+.rb 
+Don't break it, just give it to me.  All right. 
+Shall I factorial her or perhaps
+use a barrage of gamma functions?  No, she might turn green and start   
+jumping about shouting, "People Smash Puny Imperialists!"   
+Hyperbolic sine?  No, I'll just hit her with a cosh.
+
+
+(HE DOES SO AND THE YEOPERSON CRUMBLES)     
+
+
+All right, is that  
+everything?  We're over the planet now, and it should be
+easy to beam down.  Just one little problem.  I've got to   
+figure out some way that they won't be able to follow me.   
+Sabotage the transporter?  But then, how could I get down   
+to the planet after I sabotaged it?  I know!  I'll destroy the  
+ring modulator.  Yes, yes, my proud Boobie, what is it? 
+
+
+(HE REMOVES PRIDE'S GAG.)   
+
+
+.pd 
+What's a ring modulator?
+
+
+.rb 
+A lot of people were hoping you'd ask that.  You see,   
+that's the value of asking questions, because if there's
+something you don't know, the odds are good that half the   
+class wants to ask the same question but are too afraid 
+to do so.  Never be afraid of asking questions my dear. 
+
+
+.pd 
+What's a ring modulator?
+
+
+.rb 
+Don't repeat yourself, my dear , it's bad form. 
+
+
+
+.pd 
+But I want to know what a ring modulator is.
+
+
+.rb 
+A ring modulator is just an ideal little module designed
+to govern the fields of energy over the domain of   
+curved topological space through which the transported body 
+is sent.  I could explain it in more detail, but
+what does a Booby know about curvature? 
+
+
+.pd 
+That doesn't tell me a great deal.  
+
+
+.rb 
+What it boils down to is that this little baby was  
+installed so that a few minutes after it
+was destroyed it would be unsafe
+to transport anything bigger than a bread box.  
+
+
+.pd 
+Why a bread box?
+
+
+.rb 
+Don't ask such stupid questions.
+
+
+.pd 
+You remind me of a professor I had in...
+
+
+.rb 
+Quiet.  (HE PUTS THE GAG BACK ON HER.)  Too bad I used  
+the last of my MLM triple-T on that Yeoperson, or I'd   
+give you a shot too.  Okay, he said that everything 
+was set, so I guess I just pull the switch and go.  
+
+
+(ENTER JOCK)
+
+
+.jo 
+Not so fast, Macintosh. 
+
+
+.rb 
+What?   
+
+
+.jo 
+I'll make no bones about it. Macintosh, you're a spy.   
+
+
+.rb 
+All right, you've got me Jock, but you'll never 
+catch me.  My phaser is set on arctan and it will kill  
+you by degrees. 
+
+
+.jo 
+Do not be a fool, whoever you are.  You are acting most 
+illogically.
+
+
+.rb 
+I warn you, don't take another step.  Too bad for you.  
+Take that. And that.  And that.  And a couple more. 
+I don't understand, Mr. Jock.  Why didn't you intersect 
+the floor at an odd angle?  
+
+
+.jo 
+That's an acute question.   
+
+
+.rb 
+And that's an obtuse answer.
+
+
+.jo 
+I'm a Vulcan: nothing phases me.
+
+
+.rb 
+Then I guess I'd just better run for it.
+
+
+(HE FLICKS  
+A SWITCH ON THE CONTROL PANEL, KICKS JOCK OUT OF THE    
+WAY, AND JUMPS ON THE TRANSPORTER PLATFORM WITH THE 
+BOOBIES.  JOCK GETS UP OFF THE FLOOR, RUNS TO THE   
+CONTROL PANEL, AND GRABS A KNOB ON THE CONSOLE.     
+IT COMES OFF.   
+BRASSIERE AND THE BOOBIES DISAPPEAR.  JERK AND THE  
+REST OF THE LANDING CREW ENTER ALMOST IMMEDIATELY.) 
+
+
+.je 
+What is it, Jock?   
+
+
+.jo 
+As I expected, Dr. Macintosh was not the real McCoy.
+
+
+.je 
+An impostor?
+
+
+.cl 
+I thought that he had been slouching a little lately.   
+
+
+.je 
+Well, where is he now?  
+
+
+.jo 
+He attempted to beam down to the planet, but I was  
+able to change the co-ordinates of the transporter  
+to send him to the farm house we have in tow.   
+
+
+.je 
+Strapping good, Jock.  Torothy, is there by any chance an intergalactic 
+hyperspace Jammison-Freeby communications device    
+installed in the farm house?
+
+
+.ty 
+Uncle Ben has a CB. 
+
+
+.je 
+Same thing.  Lieutenant Huaryu, raise the farm house.   
+I want to talk to our impostor. 
+
+
+.hu 
+Yes, sir.  Breaker one-oh, breaker one-oh, this 
+is Foxy Lady. You got a copy on me, Appleseed, come on. 
+
+
+.rb 
+(VOICE OVER)  Blast it, how did you send me here?   
+
+
+.je 
+Jock was quick on the draw. 
+
+
+.hu 
+No names, Captain.  He means that you can chalk that one    
+up to Mr. Pointy-ears, good buddy.  
+
+
+.je 
+You can't get away now.  We can just leave you over 
+there and drag you to the nearest space station and 
+you couldn't do a thing about it.   
+
+
+.rb 
+Drat, you're right!  All right, we'll negotiate.
+
+
+.je 
+Negotiate!  What do you have for bargaining power?  
+
+
+.rb 
+Ahh, let me see.
+
+
+(A FLUSHING SOUND IS HEARD IN THE   
+BACKGROUND. SHUD
+
+BACKGROUND. SHUDDERS FROM THE CREW) 
+
+
+.je 
+What was that?  
+
+
+.rb 
+Oh, just one of the Boobies.  Look, I'm sure
+that I have something to bargain with.  
+
+
+.je 
+Was she...ah... flushing something? 
+
+
+.rb 
+Well, what do you think she was doing?  Look, I'm   
+sure there must be something  I have that I can trade,  
+at least for my freedom.
+
+
+.je 
+Ahhh, I don't know about that, but the Pederasty was
+founded on the principles of diplomacy, good will and   
+all that stuff. 
+I think that we can afford to talk.  I'll beam right    
+over.   
+
+
+.aa ALL 
+We'll go with you. (AND SIMILAR SOUNDS) 
+
+
+.je 
+Look, we'll have to - er - negotiate in shifts.  Jock,  
+due to your unusual biological makeup, you can remain   
+behind. 
+
+
+.su 
+Unusual biological makeup, Sir? 
+
+
+.je 
+Yes, Jock's intestines are in his head. (JOCK SPITS.)   
+Now, first off, I'll take Lieutenant Huaru, Lieutenant  
+Suru, Ensign Gogol- 
+
+
+.to 
+That's Tolstoy. 
+
+
+.je 
+Ensign Whatever and Nurse Chappedlips.  Oh, we'd better 
+take you along too, Torothy,  so that you can show us   
+the layout of the house.
+
+
+.ty 
+All right.  Can I bring Dodo?   
+
+
+.je 
+If you must, but you'll have to hold him - only six 
+transporter disks.  Mr. Jock?   
+
+
+.jo 
+Yes, sir.  Ready?   
+
+
+.je 
+Ready.  This shouldn't take long, Jock. We'll be back   
+in a flush - er - energize.     
+
+
+(THEY DISAPPEAR)
+
+
+fin 

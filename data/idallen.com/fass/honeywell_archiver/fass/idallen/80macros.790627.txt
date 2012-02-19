@@ -1,0 +1,248 @@
+
+
+
+.`...`..
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ic ^^  
+.tr~
+.hc`
+.qc"
+.pc@
+.fs '____________________________________________________________'  
+.pl 66  
+.in 0   
+.po 0   
+.ll 60  
+.ls 1   
+.m1 4   
+.m2 2   
+.m3 2   
+.m4 4   
+.hy 3   
+.fi 
+.ju 
+.ig(^(xxxx))
+.en(0)     *** ignore to here the first time             ***
+.an(xxxx)9999 *** skip all macro definitions all next times *** 
+.sy echo "*** Script Type="^(type)". Use correct o= value for slis, otherwise klist ***"
+.ix 
+.ic^^^^ 
+.pc@
+.tc\
+.tr~    
+.qc"
+.he 1 ''$*$xxxx <Act>-<Scene>~<Page>~<Speech>'' 
+.fo 1 ''$*$xxxx <Act>-<Scene>~<Page>~<Speech>'' 
+.ll 85  
+.in 0   
+.nf 
+.en 
+.so roff/month  
+.af (mon) 01
+.af (day) 01
+.af (min) 01
+.af (hour) 01   
+.at(sq) 
+.m3 -1  
+.m4 -1  
+.br 
+.m3 +1  
+.m4 +1  
+.en(sq) 
+.ig(^(type)) *** type diversion *** 
+.en(0) *** normal macro *** 
+.at(ch) *** std. char macro *** 
+^(sq)   
+.sp 
+.ne3
+.ti0 10 
+.an(indx) +1
+.an(@14) +1 
+.an(x) "^^(@12)"<2  
+.ig (ch1^^(x))  
+.en(ch11)   
+
+.sy echo "  *** ERROR - undefined char macro '@1' -in- ^^(actr):^^(scen) page ^^(%), speech ^^(indx)"   
+^^(indx)-__________'@1'(^^(@14)):   
+.no ????????????   
+.ix 
+$*$char~^^(actr)-^^(scen)~^^(%)~^^(indx)~"@1"~"UNDEFINED"~"UNDEFINED"~***   
+.en 
+.ig(chen)   
+.en(ch10)   
+.an(x) ^^(@14)=1
+.ig(ch2^^(x))   
+.en(ch21)   
+.ix 
+$*$char~^^(actr)-^^(scen)~^^(%)~^^(indx)~"@1"~"^^(@12)"~"^^(@13)"   
+.en 
+^^(indx)-^^(@12)(1):
+.ig(chen)   
+.en(ch20)   
+^^(indx)-^^(@13)(^^(@14)):  
+.en(chen)   
+.ns 10  
+.en(ch) 
+.en(tech) *** tech macro ***
+.en(type) *** end of type diverson ***  
+.at(ex) 
+^(sq)   
+.in 3   
+.ll 60  
+.sp 
+.ne3
+.en(ex) 
+.at(ad) *** actor direction *** 
+^(sq)   
+.in 0   
+.ll 60  
+.sp 
+.ne3
+.en(ad) 
+.ig(^(type)) *** type diversion *** 
+.en(0) *** normal macro *** 
+.at(sd) *** sound direction *** 
+^(ad)   
+.en(sd) 
+.at(ld) *** lighting direction ***  
+^(ad)   
+.en(ld) 
+.ig(type)   
+.en(tech) *** tech macro ***
+.at(sd) *** sound direction *** 
+^(ad)   
+.no ===>>> SSS
+.ix 
+$*$soun~^^(actr)-^^(scen)~^^(%)~^^(indx)
+.en 
+.en(sd) 
+.at(ld) *** lighting direction ***  
+^(ad)   
+
+
+.no ===>>> LLL
+.ix 
+$*$lite~^^(actr)-^^(scen)~^^(%)~^^(indx)
+.en 
+.en(ld) 
+.en(type) *** end of type diverson ***  
+.at(na) *** Macro-Building Macro for character macros ***   
+.in +2  
+.br 
+.mg 
+ . . . . . . . . . . . . . . . . . . . . . . . . . . .  
+<@1> @2	(@3)	   
+.br 
+.mg 
+
+
+.in -2  
+.at(@12)
+@2  
+.en(@12)
+.at(@13)
+@3  
+.en(@13)
+.an(@14)0   
+.en(na) 
+.at(xx) *** one-use character macro *** 
+.at(xx2)
+@1  
+.en(xx2)
+.at(xx3)
+__________'xx'  
+.en(xx3)
+.an(xx4)0   
+.ch xx  
+.en(xx) 
+.at(star)   
+*********************************************************   
+.en(star)   
+.at(sb) *** song begin ***  
+^(sq)   
+.sp 
+.nf 
+.ne12   
+^(star) 
+.mg 
+*****                                               *****   
+.ce 3   
+~@1~
+~(to the tune of:)~ 
+~@2~
+.mg 
+
+
+^(star) 
+.sp 
+.in +3  
+.ix 
+$*$song~^^(actr)-^^(scen)~^^(%)~^^(indx)~"@1"~"@2"  
+.en 
+.en(sb) 
+.at(se) *** song end ***
+^(sq)   
+.fi 
+.in -3  
+.sp 
+.en(se) 
+.at(bs) *** begin a scene ***   
+^(sq)   
+.an(indx) 0 
+.an(act)@1  
+.an(actr)@1 
+.af(actr)II 
+.an(scen)@2 
+.sy echo ">>> Now roffing Act ^^(actr) Scene ^^(scen): @3 <<<"  
+.ix 
+________________________________________________________________________
+**** Act ^^(actr) Scene ^^(scen): @3
+------------------------------------------------------------------------
+.en 
+.an(totl) +^^(%)
+.pa1
+.he "Act ^^(actr), Scene ^^(scen)"Page 1 (^^(totl))"F.A.S.S. 1980"  
+.fo "F.A.S.S. 1980"Act ^^(actr), Scene ^^(scen)  Page %"^(day)/^(mon)/^(year) ^(hour):^(min)"   
+.sp 
+.ce 
+.bf 
+@3  
+.sp2
+.he "^^(actr):^^(scen)"@3"Page %"   
+.in 3   
+.bf 
+Characters defined for this scene:  
+.sp 
+.ta 55R 
+.en(bs) 
+.at(fini) *** end a scene ***   
+^(sq)   
+.sp 
+.ce 
+-~fin~- 
+^(sq)   
+.en(fini)   
+.en(9999)   

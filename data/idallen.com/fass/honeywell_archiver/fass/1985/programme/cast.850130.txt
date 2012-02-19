@@ -1,0 +1,117 @@
+
+
+
+........
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{bl}{tp}{ps 10P}
+{bf}Cast in Order of Appearance{ro} 
+{br}
+{ps 8p} 
+{char "Dexter Keener" "Ken Jones"}  
+{char "Lenny R. Programming" "David Orth"}  
+{char "Wendy St. Skomarchingin" "Anna Raw"} 
+{char "Dug Wright" "Bernie Roehl"}  
+{char "Wanda Playdoctor" "Carol Williams"}  
+{char "Bessie Seventonne" "Elsie Arson"}
+{char "Tammy U. Luvmi" "Wendy Potter"}  
+{char "Brooke Trout" "Anne Fearnley"}   
+{char "B. Trudy Yourschool" "Paddi Gillard"}
+{char "Professor Rogers" "Gary C. Brown"}   
+{char "Mary Anne Hammerstein" "Heather Gurd"}   
+{char "Ray O\l\'Sunshine" "Steve Thomas"}   
+{char "Phil O\l\'Delphia" "Dave Shipley"}   
+{char "The Fly" "Gordo Broom"}  
+{char "Cockroach Man" "Ron Fritz"}  
+{char "Cockroach Men" "Randy Coates"}   
+{char "" "Richard Tummers, Gordon Douglas"} 
+{char "Wonder Broad" "Suzanne Langdon"} 
+{char "Super Chicken" "Tom Allison"}
+{char "Robin Hood" "Karl Wagner"}   
+{char "Prompter" "Don Heath"}   
+{char "Marg The Director" "Margaret Eaton"} 
+{char "Referee" "Don Heath"}
+{char "The Punster" "Jim Robertson"}
+{char "Captain University" "Duffy Knox"}
+{char "Snidely Whiplash" "Ken Jepson"}  
+{char "Slime Of The Streets" "Barbara McMullen"}
+{char "Wolfgang Von Hassenpfeffer" "John McMullen"} 
+{char "Jogger Nut" "Teresa Krutila"}
+{char "Sheena, Black Princess Of Guelph" "Lori Sargent"}
+{char "Bo Evil" "Ann Allen"}
+{char "Wizard Of Words" "Steve Thomas"} 
+{char "Frogman" "Charles Sisson"}   
+{char "Tadpole" "Mark Dutton"}  
+{char "Fass Gordon" "Bob Dietrich"} 
+{char "Man From Grad" "Dave Till"}  
+{char "Redundancy Man" "Peter Coo"} 
+{char "Darth Coordinator" "Craig Hubley"}   
+{char "Cabbage Patch Kid" "Dave Mackett"}   
+{char "Nasty Man" "Derek Wilkinson"}
+{char "Carla Chameleon" "Carolyn Burke"}
+{char "Insult Man" "Chuck Peeren"}  
+{char "Mime Man" "Dave Shipley"}
+{char "Tom Alligator" "Brian MacIsaac"} 
+{char "Bartender" "Ken Waterson"}   
+{char "Peggy Bank" "Bonnie Lynch"}  
+{char "Rick Shaw" "Dan Lyons"}  
+{char "Ben Dover" "Rob Skidmore"}   
+{char "Eileen Dover" "Carol Williams"}  
+{char "Jim Entonic" "Gordon Douglas"}   
+{char "Bradley Behaved" "James D. MacCallum"}   
+{char "Bruce Kyabuv" "Steve Hutton"}
+{char "Gin Collins" "Paddi Gillard"}
+{char "Ox E. Moron" "Larry Knight"} 
+{char "Quasi Static" "Ken Jepson"}  
+{char "Auntie Deluvian" "Wendy Potter"} 
+{char "Michael Rowyourboatashore" "Mike Upmalis"}   
+{char "Edmond Tellnotales" "Gordon Douglas"}
+{char "Marc O\l\'Zorro" "Phil Toy"} 
+{char "Auntie K\l\'furniture" "Carol Williams"} 
+{char "Byron Keener" "Ronald M. Green"} 
+{char "Melvin Keener" "Rod Currie"} 
+{char "Generic Man" "Drew Post"}
+{char "Super Hacker" "Phil Toy"}
+{char "Dudley Keener" "Neal Bonner"}
+{char "The Wright Guard" "Carlo Giuliani"}  
+{char "" "Kathy Hamilton, Ken Waterson"}
+{char "IBM Clones" "Terry Voth, Randy Coates"}  
+{char "" "Peter Coo, Lorne Bradt, Mark Hovey"}  
+{char "Sven Imcallingyou" "Carlo Giuliani"} 
+{char "Vikings" "Mike Upmalis, Peter Horner"}   
+{char "" "Tim Kent, Drew Post, Randy Coates"}   
+{char "Val Kyrie" "Tom Hocaliuk"}   
+{char "Eatons\l\' Delivery Man" "Richard Tummers"}  
+{char "St. Peter" "Jim Robertson"}  
+{char "Hal Fire" "Richard Tummers"} 
+{char "Dan Nation" "Dave Welbourne"}
+{char "Lucifer" "Derek Wilkinson"}  
+{char "Angela Mercy" "Bonnie Lynch"}
+{char "God 9000" "Ken Waterson"}
+{char "Jane Linkfents" "Barbara McMullen"}  
+{char "Sue D. Bastards" "Suzanne V. Langdon"}   ....{char "Lee Galea
+
+{char "Lee Galeagle" "Judy McMullan"}   

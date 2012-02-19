@@ -1,0 +1,572 @@
+
+
+
+.......K
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so macros.r
+.bs 0 0 "A Steve Hull Retrospective"
+.na ph PHONE PHONE  
+.na be BEAUREGARD BEAU  
+.na st STANISLAUS STAN  
+.na bf BADEN~FULL FULL  
+.na bj BADEN~JAPAN JAPAN
+.na hp HAILEY~PHILLIPS HAILEY   
+.na sm SMEDLEY~MERKIN SMEDLEY   
+.na hi HILDEGARDE HILDEGARDE
+.na so SOPHOCLES SOPHOCLES  
+.ad 
+(WE OPEN ON THE ACME INTERROGATION AGENCY.  
+THE PHONE IS RINGING.   
+IT IS A PERSON WITH HIS ARM WRAPPED OVER HIS HEAD.) 
+.ch ph  
+Ring.  Ring.  Ring.  I said, Ring!  
+.ad 
+(ENTER BEAUREGARD.  HE TAKES THE PHONE ARM  
+OFF ITS HEAD AND PUTS ITS FINGER IN HIS EAR.)   
+.ch be  
+Hello, Acme Interrogation Agency, Beauregard speaking.  
+You'r sending over a couple of spies for us?
+That's very nice of you, but I prefer Macintoshes.  
+Oh, those kind of spies.  You want us to interrogate them.  
+Break them down into moaning masses of mindlessness through 
+a series of threats and physical acts designed to undermine 
+their resistance and sanity, that sort of thing?
+Sounds lovely.  Bring them right over.  
+.ad 
+(HE HANGS UP THE PHONE BRIEFLY, THEN PICKS IT UP AGAIN. 
+HE DIALS ANOTHER NUMBER ON THE PHONE'S FACE.)   
+.ch ph  
+Beep-beep-beep-beep-beep-beep-beep. 
+.ch be  
+Hello, Stanislaus?  You'd better come down now, 
+we've got customers due any minute. 
+.ad 
+(ENTER TWO BOY SCOUTS.) 
+.ch bj  
+Is this the Acme Interrogation Agency?  
+.ch be  
+Yes, this is the AIA.  What do you two munchkins want?  
+.ch bf  
+We aren't munchkins, we're cub scouts.  I'm Baden Full. 
+.ch bj  
+I'm Baden Japan.
+.ch bf  
+And we've come to help you torture people.  
+.ch be  
+Pardon? 
+.ch bj  
+We're after our Torture Infliction merit badge. 
+It's a real pretty one. 
+.ch bf  
+It's got a little picture of a pair of thumbscrews on it.   
+.ch be  
+I wasn't aware that they gave out merit badges for torture. 
+.ch bj  
+They give out merit badges for everything.  
+Industrial espionage... 
+.ch bf  
+Mass homicide...
+.ch bj  
+Creating disasters at sea...
+.ch bf  
+Eating trucks...
+.ch bj  
+Organizing fee hike strikes...  
+.ch bf  
+(SADLY)  We didn't get that one though -- something went
+wrong.  
+.ch bj  
+Maybe we'll get it next year...now that we've had   
+some experience organizing a postal strike. 
+.ch bf  
+But in the meantime, we'd really like to get our
+Torture Infliction badge.   
+.ch be  
+I'm very sorry, but we've already got enough torturors  
+around here.
+.ch bf  
+Pretty please.  
+.ch bj  
+Pretty please with glucose on it?   
+.ch be  
+I'm sorry.  We've got plenty of full-time sadists on staff. 
+And this term we've even got a co-op torturor.  
+.ch bj  
+A co-op torturor.   
+.ch be  
+Yes, she's here to learn the ropes. 
+.ch bj  
+Oh poop!  I was really looking forward to earning   
+that badge. 
+.ch bf  
+I'm so depressed I could beat up a little old lady. 
+.ch bj  
+I'm so depressed I could torture a little old lady. 
+.ad 
+(PAUSE.  THEY LOOK AT EACH OTHER WITH SUDDEN GLEE.) 
+.xx BOTH
+Hey, yeah!  
+.ad 
+(THEY RUN OUT.  ALMOST IMMEDIATELY STANISLAUS   
+ENTERS FROM THE OTHER DIRECTION.)   
+.ch st  
+Are the new customers here yet, Beauregard? 
+.ch be  
+Any minute now, Stanislaus. 
+.ch st  
+I can hardly wait to turn them into blithering blobs
+of brainlessness.   
+.ch be  
+Shivering slobs of shamelessness.   
+.ch st  
+Withering wads of weightlessness.   
+.ad 
+(PAUSE OF ANTICIPATION) 
+.ch be  
+All those things, yeah. 
+.ch st  
+Who are we doing this interrogation for, anyway?
+.ch be  
+Some alien cat named Sophocles. 
+.ad 
+(ENTER SOPHOCLES WITH HAILEY AND SMEDLEY IN TOW.)   
+.ch so  
+All right, here we are at the Acme Interrogation Agency.
+.ch hp  
+They'll never make us talk. 
+.ch sm  
+Scream and moan maybe, but never talk.  
+.ch hp  
+We don't remember a thing.  We drank some   
+Milk of Amnesia before we came here.
+.ch so  
+Shut up or I'll cream you.  
+.ch hp  
+Not cream, milk.
+.ch so  
+I know what you said; but "Shut up or I'll milk you"
+sounds funny.   
+.ch be  
+I take it you're Sophocles. 
+.ch so  
+That's right.  And these are my prisoners,  
+Hailey Phillips and Smedley Merkin. 
+.ch st  
+Merkin, huh?  Well, we'll soon have you singing.
+.ch sm  
+"And sometimes when we touch, the honesty's too much..."
+.ch st  
+Okay, it might take a little longer than I thought. 
+.ch so  
+All right, now listen.  I represent a group of  
+invaders from the glorious planet Bonzo Cat.
+.ch ph  
+Meow, meow, meow.   
+.ch so  
+Thank you.  
+.ch be  
+Sounds like our phone is on the Fritz.  
+.ch so  
+Now, we're after a new secret weapon that will  
+enable us to conquer earth, and these two spies 
+know all about it.  I want you to get the secret
+out of them, any way you can.   
+.ch st  
+What kind of secret weapon is it?   
+.ch so  
+We don't really know.  We've just been told that
+it's something so mind-numbing that it can completely   
+destroy the brains of vast gatherings of people.
+.ch be  
+Like statistics.
+.ch st  
+Or disco.   
+.ch hp  
+Don't talk to me about discos -- that's where this  
+crummy cat took us prisoner.
+.ch so  
+Silence!  Now you interrogators, I want that information
+out of them within one hour, or else.   
+.ch be  
+Or else what?   
+.ch so  
+Or else I'll carve you into kitty litter with   
+one of our outer space heavy sabers.
+.ch st  
+Don't you mean light sabers?
+.ch so  
+Have you ever tried lugging one of those things around  
+all day?
+.ch hp  
+I'd think you would get used to carrying them around
+after a while.  
+.ch sm  
+Right.  In outer space, light sabers are a part of living.  
+.ch so  
+Laugh while you can, human.  Soon your earth will be
+ground under the paw of the glorious invaders from the  
+planet Bonzo Cat.   
+.ch ph  
+Meow, meow, meow.   
+.ch so  
+Thank you.  
+.ch be  
+(LOOKING AT PHONE)  Maybe it's a new kind of busy signal.   
+.ch so  
+And now it's time for me to go.  Miao, baby.
+.ch be  
+Have a mice day.
+.ad 
+(SOPHOCLES LEAVES)  
+.ch st  
+Well, let's get down to the interrogating, shall we Beauregard? 
+.ch be  
+I think we should call in our co-op torturor to work
+on these two.   
+.ch st  
+Hildegarde?  Do you think she can handle it?
+.ch be  
+I have high regard for Hildegarde.  
+.ch st  
+I have low regard, Beauregard.  
+.ch be  
+Low regard for Hildegarde?  
+.ch st  
+More like no regard for Hildegarde, Beauregard. 
+.ch hp  
+Hey, show some regard for Beauregard.   
+.ch sm  
+Right.  If you have high regard for Beauregard but low  
+regard for Hildegarde, show your regard for Beauregard and  
+disregard your nil regard for Hildegarde.   
+.ch st  
+All right!  But I still regard young Hildegarde with
+something less than high regard.
+.ch ph  
+Stop it!
+.ad 
+(A BRIEF SILENCE.)  
+.ch hp  
+Whew!  Saved by the Bell.   
+.ch be  
+Hildegarde! 
+.ad 
+(HILDEGARDE ENTERS.)
+.ch hi  
+Yes, Beauregard?
+.ch be  
+I want you to torture these two prisoners and get   ah. some information
+
+some information out of them.   
+.ch hi  
+Right!  Are these good guys or bad guys?
+.ch be  
+Well, how are any of us to judge really?
+I mean, good and bad are such indefinable terms,
+aren't they, subject to constant cultural bias and...   
+.ad 
+(STANISLAUS CLAPS HIS HAND OVER BEAUREGARD'S MOUTH.)
+.ch st  
+I've always said it's a mistake to let a mathie 
+take a philosophy elective. 
+.ch hp  
+We're really good guys.  Does that make a difference?   
+.ch hi  
+Of course.  You see, good guys and noble types like that
+are always capable of withstanding great physical torture   
+themselves, but they crumple when they see fellow human 
+beings in pain. 
+.ch sm  
+Really? 
+.ch hi  
+It's a well-known fact.  I could torture you with the most fiendish 
+agonies for days and you wouldn't tell us a thing.  
+.ch sm  
+I wouldn't? 
+.ch hi  
+No.  But you'll break almost instantly when you 
+realize that your silence is going to cause someone 
+else to suffer.  One last chance.  Are you going to talk?   
+.ch hp  
+No! 
+.ch hi  
+Okay, I'll have to get rough.   
+(SHE PUNCHES HERSELF IN THE STOMACH.)   
+Take that.  Not enough, eh?  All right then.
+(SHE PUNCHES HERSELF AGAIN.  WHEN SMEDLEY AND   
+HAILEY SAY NOTHING, HILDEGARDE SLAPS HERSELF
+TWICE ON THE FACE.) 
+I can keep this up all day, you know.   
+(SHE TORTURES HERSELF FOR FIFTEEN MORE SECONDS, 
+PULLING HER HAIR, KICKING HERSELF, AND OTHER
+CREATIVE MANEUVERS.)
+How can you let this suffering continue?
+.ch be  
+I'm beginning to have low regard for Hildegarde,
+Stanislaus. 
+.ch hi  
+All right, you two do-gooders, you asked for this!  
+.ad 
+(SHE PULLS OUT A GUN AND SHOOTS HERSELF.  SHE FALLS 
+TO THE FLOOR.)  
+.ch sm  
+Jeez, and I was just beginning to crack.
+.ch st  
+Enough of this lolly-gagging around!  It's time 
+we got down to some serious mayhem. 
+.ch be  
+Shall I bring out the thumbscrews?  
+(HE MAKES AN OBSCENE GESTURE WITH HIS THUMB.)   
+.ch st  
+No,. I think we'll start off with some ugly threats.
+.ch hp  
+You can't scare us. 
+.ch sm  
+Speak for yourself, Hailey. 
+.ch hp  
+Smedley, we can resist them together.   
+.ch sm  
+We can? 
+.ch hp  
+Sure.  Pain and death can't scare either of us. 
+.ad 
+(THE PHONE AND POSSIBLY PIANO BEGIN THE INTRO TO
+HEART AND SOUL.)
+.ch ph  
+Dupidoodoo, dupidoodoo, dupidoodoo, dupidoodoo...   
+.sb "PAIN AND DEATH" "HEART AND SOUL"   
+.ti-5   
+HAILEY AND SMEDLEY: 
+.br 
+Pain and death  
+Will never frighten us  
+Save your breath
+You're not excitin' us  
+Never will we reveal a thing.   
+.sp 
+.ti-5   
+BEAU AND STAN:  
+.br 
+Soon you'll sing, yes you'll sing,  
+Yes, you'll sing... 
+.sp 
+.ti-5   
+HAILEY AND SMEDLEY: 
+.br 
+Oh, pain and death  
+Will only make us sore  
+Yeth, yeth, yeth,   
+We'll just come back for more   
+Never will we reveal a thing.   
+.ex 
+.ch st  
+We haven't started yet; just listen to this...  
+.sb "DYNAMITE" "SILHOUETTES"
+.in1
+.nf 
+BEAU: We'll take a walk around your house   
+BOTH: Late some night.  
+BEAU: Keeping quiet as a mouse  
+BOTH: Out of sight. 
+BEAU: While you're sleeping we will plant   
+      Some dynamite at your door
+STAN: Terribly messy
+BEAU: Dynamite  
+STAN:          Dynamite 
+BOTH:                   At your door.   
+.sp 
+BEAU: We will ring the bell and then
+BOTH: Run and hide. 
+BEAU: You'll come down and pull your door   
+BOTH: Open wide.
+BEAU: Then we'll detonate and you'll
+      Be splattered across your door
+STAN: Terribly messy.   
+BEAU: Splattered a- 
+STAN:             Splattered a- 
+BOTH:                         Cross your door.  
+BEAU: Splattered a- 
+STAN:         Splattered a- 
+BEAU:                 Splattered a- 
+STAN:                         Splattered a- 
+BEAU: Splattered a- 
+STAN:         Splattered a- 
+BOTH:                  Cross your door. 
+STAN: Terribly messy.   
+BOTH: Splattered across your door.  
+.sp 
+HAIL:   We aren't scared we feel no fear
+BEAU:   We've got threats to last a year
+SMED:   You can't hurt us   
+BOTH:   Yes we ca-a-a-an!   
+.ex 
+.ad 
+(AND THE GLORIOUS REPRISE BEGINS.)  
+.ch st  
+This isn't getting us anywhere. 
+We'll have to try another approach. 
+(HE PULLS OUT A STANDARD UNIVERSITY EXAMINATION BOOKLET.)   
+Hablo Espanol?  
+.ch sm  
+What?   
+.ch st  
+Hablo Espanol?  That means, "Do you speak Spanish?" 
+.ch sm  
+Oh.  No.
+.ch st  
+Well you should have studied harder.
+(THROWING DOWN BOOKLET.)
+Honestly, coming to an interrogation so unprepared...   
+.ch sm  
+Well I'm sorry, but I didn't expect a Spanish Inquisition.  
+.xx THE~AUDIENCE
+No one expects the Spanish Inquisition! 
+.ch hp  
+(POINTING TO AUDIENCE)  
+They did.   
+.ch be  
+Look, let's just forget the fancy stuff and get 
+down to brass tacks.
+.ch sm  
+Ooo, where are you going to stick those?
+.ch st  
+Shut up and talk.   
+.ch sm  
+No! 
+.ch be  
+Talk!   
+.ch sm  
+No! 
+.xx BEAU~AND~STAN   
+Talk!   
+.ch sm  
+All right.  
+.ch hp  
+Smedley!
+.ch sm  
+(IN AN EMOTION-CHOKED VOICE)
+Hailey, I can't take it anymore.  I can't take  
+the threats!  I can't take the beatings!  I can't   
+take the harassment and the unrelenting psychological pressure. 
+(IN A TRIUMPHANT CHILDISH WAY)  
+Besides, this way   
+.ul 
+I   
+get to do the big breakdown scene and monopolize the stage. 
+(HE STICKS HIS TONGUE OUT AT HER.)  
+.ch hp  
+Oh pooh!  There goes my chance at the Oscar.
+(SHE POUTS) 
+.ch sm  
+What do you want to know?   
+.ch st  
+We want to know everything about this new secret weapon 
+of yours, the one that can turn human minds into rice pudding.  
+What's it called?   
+.ch sm  
+(WHISPERING)  FASS. 
+.xx STAN~AND~BEAU   
+(IN HORROR)  FASS?  
+.ch sm  
+Funnier than a rubber chicken...
+.ch hp  
+More powerful than a case of Brador...  
+.ch sm  
+Able to destroy whole audiences with a single pun...
+.ch hp  
+It's FASS!  
+.xx BEAU~AND~STAN   
+FASS!   
+.ch be  
+Never heard of it.  
+.ch st  
+Me neither. 
+.ch hp  
+We can show you if you'd like.  
+.ch st  
+How?
+.ch sm  
+Just put on these special glasses and you'll
+immediately see what we're talking about.   
+.ad 
+(HE BRINGS OUT TWO PAIRS OF BOFFER GLASSES. 
+IF THERE'S AN EXTRA PAIR, PUT THEM ON THE PHONE.)   
+.ch be  
+Well, what do we have to lose?  
+.ad 
+(HAILEY AND SMEDLEY CHUCKLE IN A SOMEWHAT EVIL FASHION. 
+BEAU AND STAN PUT ON THE GLASSES.  MUSIC STARTS.)   
+.ch hp  
+Do you see it?  
+.ch sm  
+Do you hear it? 
+.sb "THE PUNCHLINE" "THE TIME-WARP" 
+.in1
+.nf 
+BEAU: It's astounding!  
+STAN: Jokes are sounding.   
+BEAU: Humour takes its toll.
+SMED: But listen closely
+HAIL: Not for very much longer  
+STAN & BEAU: We've got to keep control. 
+.sp 
+SMED: I remember doing the FASS show
+      Telling a boffer when 
+      The laughter would hit me 
+      And the crowd would be calling
+ALL:  Let's try the punchline again!
+      Let's try the punchline again!
+.sp 
+CHORUS: First we fun of the left
+        And then we laugh at the right  
+        We tell political jokes 
+
+.......K
+
+
+        When others pick a fight
+        You need a sense of humour  
+        To understand us when we say
+      Let's try the punchline again!
+      Let's try the punchline again!
+.sp 
+STAN: First they relax you  
+      And then it attacks you   
+      And then it wracks you with fear and dread
+      First the lights will start dimming   
+      Then your mind begins swimming
+      As humour infests your head   
+.sp 
+HAIL: You may think that your mind's fine   
+SMED: Then we tell you the punchline
+      And slowly you'll start to go insane  
+      You'll start tearing your hair for
+STAN & BEAU: The words fill us with terror! 
+ALL:  Let's try the punchline again.
+      Let's try the punchline again!
+.ex 
+.ad 
+(THEY DO THE CHORUS ONCE AGAIN AND THEN FALL DOWN   
+TO TUMULTUOUS APPLAUSE.)
+.es 

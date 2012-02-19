@@ -1,0 +1,102 @@
+
+
+
+........
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{ke}
+{bl}{tp}{ps 10P}{bf}
+FASS Techies!   
+{br}{ro}
+{sp 1L} 
+{ps 8p} 
+{char "Technical Director," ""} 
+{char "Scenographer," ""}   
+{char "and All-Round Good Guy" "Quiv"}  
+{char "Stage Manager" "Ken Lynch"}  
+{char "Assistant Stage Managers" "Brenda Parsons"}  
+{char "" "Bernice Passchier"}   
+{char "Runner" "Alan Bowler"}   
+{char "Lighting Designer" "Sandor"} 
+{char "Sound Design and Operation" "Kevin P. Martin"}   
+{char "Costume Design and Construction" "Mary Toews"}   
+{char "Master Carpenter" "Paul Brennan"}
+{char "Master Electrician" "Peter B. Carette"}  
+{char "Lord of the Flies" "Jim Gardner"}
+{char "Propsmaster" "Rick Derbecker"}   
+{char "Make-Up Mistress" "Francine Wright"} 
+{char "Special Effects" "John Dubois"}  
+{char "Assistant Costume Mistress" "Carol Williams"}
+{char "Wardrobe Assistants" "Peggy Sellens"}
+{char "" "Lisa Voll"}   
+{char "Assistant Flyman" "TBA"} 
+{char "Fly Assistants - Up, Up, & Away" "TBA"}  
+{char "Sound Assistance" "Brad Templeton"}  
+{char "Follow Spots" "Peter Bain"}  
+{char "" "Lizanne Madigan"} 
+{char "Video" "Brad Templeton"} 
+{char "Biff, Bam, Boffo" "Lori Sargent"}
+{br}
+{ke_end}
+{sp 1L} 
+{ke}
+{lj}
+{it}{ps 8p} 
+FASS Technicians responsible for Set Construction, Painting, Props, Lighting,   
+and many other things too numerous to mention:  
+{br}
+{rj}{ro}
+Peter Bain, Alan Bowler, Irene Brennan, 
+Peter B. Carette, Tom Chmara, Paul Davie,   
+Rick Derbecker, John Dubois, David Fiander, 
+Peter Fraser, Jim Gardner, Ross Gibaut, 
+Carlo Giuliani, Erika Hocaliuk, Tom Hocaliuk,   
+William Hughes, Lisa Lambkin, Suzanne Langdon,  
+Carol Lynch, Ken Lynch, Karin Mann, 
+John McMullen, Lynn McRuer, Bruce McVittie, 
+Kevin P. Martin, Jennifer O\l\'Connor,  
+Ragnar Paulson, Gillian Teichert, Brad Templeton,   
+Mary Toews, Brian Trethewey, Barry Turner,  
+Jeff Voscamp, Karl Wagner, Ken Waterson,
+Mike Wevrick, Derek Wilkinson   
+{br}
+{ke_end}
+{sp 1L} 
+{ke}
+{nf}
+{char "Running Crew Chief" "Mike Wevrick"}  
+{it}
+Running Crew Stage Left:
+{rj}{ro}
+David Fiander, Bruce McVittie, Ragnar Paulson,  
+Gillian Teichert, Barry Turner  
+{sp .5L}
+{it}{nf}
+Running Crew Stage Right:   
+{rj}{ro}
+Tom Chmara, Paul Davie, John McMullen,  
+Jeff Voscamp
+{ke_end}

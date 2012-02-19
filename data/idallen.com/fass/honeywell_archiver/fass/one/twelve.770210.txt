@@ -1,0 +1,47 @@
+
+
+
+.Bu3.Bu3
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/fasshole   
+.he 'FASS'- % -'ACT I SCENE XII'
+.FO 'ACT I SCENE XII''FASS' 
+Act 1, Scene 12 - Cracker Jack Commercial   
+
+
+.nf 
+XX    XX   XXXXXX   XXXXXXX   XXXXXXXX  
+XXX   XX  XX    XX  XX    XX  XX
+XXXX  XX  XX    XX  XX    XX  XX
+XX XX XX  XX    XX  XXXXXXX   XXXXXX
+XX  XXXX  XX    XX  XX        XX
+XX   XXX  XX    XX  XX        XX
+XX    XX   XXXXXX   XX        XXXXXXXX  
+.fi 
+
+
+fin 

@@ -1,0 +1,36 @@
+
+
+
+..0W.T..
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+tf fass/1990/script/vig.t >fass/1990/script/tfed/vig
+tf fass/1990/script/1.1.t >fass/1990/script/tfed/1.1
+tf fass/1990/script/1.2.t >fass/1990/script/tfed/1.2
+tf fass/1990/script/1.3.t >fass/1990/script/tfed/1.3
+tf fass/1990/script/1.4.t >fass/1990/script/tfed/1.4
+tf fass/1990/script/2.1.t >fass/1990/script/tfed/2.1
+tf fass/1990/script/2.2.t >fass/1990/script/tfed/2.2
+tf fass/1990/script/2.3.t >fass/1990/script/tfed/2.3

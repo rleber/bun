@@ -1,0 +1,472 @@
+
+
+
+..]....+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so /../fassmac.t   
+.bs 1 1 Untitled
+.na g1 GUARD~1 GUARD~1  
+.na g2 GUARD~2 GUARD~2  
+.na g3 GUARD~3 GUARD~3  
+.na g4 GUARD~4 GUARD~4  
+.na sh SHERIFF SHERIFF  
+.na ma MARIAN MARIAN
+.na rh ROBIN~HOOD ROBIN 
+.na jo LITTLE~JOHN LITTLE~JOHN  
+.na wi WILL~SCARLET WILL
+.na al ALAN~A~DALE ALAN 
+.na tu FRIAR~TUCK TUCK  
+.na wo WOMAN WOMAN  
+.na go GOD GOD  
+.ld 
+(LIGHTS UP ON A ROOM IN THE CASTLE. 
+MARIAN IS LYING ASLEEP ON BED IN ONE CORNER.
+THREE OBVIOUSLY HUNGOVER GUARDS ARE AGAINST THE WALL OPPOSITE FROM MARIAN.  
+THEY ARE SURROUNDED BY EMPTY LIQUOR AND/OR BEER BOTTLES.
+IT IS EARLY MORNING.)   
+.sd 
+(ROOSTER CROWS LOUD AND LONG.   
+GUARD 3 TOSSES BOTTLE OFFSTAGE. 
+SOUND OF ROOSTER BEING HIT AND DYING.)  
+.ch g1  
+Ow! 
+My head hurts!  
+.ch g2  
+(WHISPER)   
+Why did we blow our reward money on a pub crawl?
+.ch g3  
+Shhh!   
+Don't talk so loud! 
+.ad 
+(GUARD 4 JOGS IN.)  
+.ch g4  
+Six o'clock!
+Wakey, wakey, rise and shine!   
+.ch g2  
+Shut up, nerd!  
+.ch g4  
+(TSKING)
+You've been drinking.   
+That's bad for your health. 
+.ch g3  
+Tell us something we don't know.
+.ch g4  
+Look at me. 
+Up at dawn, a cold shower, and then a 20 minute work-out.   
+.ch g1  
+I usually have a cold shower
+.ul 
+after   
+20 Minute Work-Out. 
+.ch g4  
+The last time you had a shower, King Richard's reign was a drizzle. 
+.ad 
+(GUARDS 1, 2 AND 3 ARE INSULTED, AND TRY TO RETALIATE BY USING  
+PHYSICAL FORCE, BUT ARE UNABLE TO GET UP DUE TO THE AFTER-EFFECTS   
+OF THEIR ALCOHOL CONSUMPTION.   
+THEY SINK BACK, CLUTCHING THEIR FOREHEADS.) 
+.xx GUARDS~1,~2,~AND~3  
+Ow! 
+My head hurts!  
+.ad 
+(ENTER SHERIFF.)
+.ch sh  
+On your feet, you lazy bums!
+.ad 
+(GUARDS 1, 2 AND 3 RISE, THIS TIME SUCCESSFULLY, AND FORM A RAGGED  
+LINE IN FRONT OF THE SHERIFF.)  
+.ex 
+Look at you!
+You're a mess!  
+.ad 
+(PUT ON A WHITE GLOVE, RUBS IT OVER A GUARD, LOOKS AT IT.)  
+.ex 
+Disgusting! 
+Don't you ever wash your uniform?   
+.ch g2  
+Once a year, whether it needs it or not.
+.ch sh  
+Do I smell alcohol? 
+Breathe out!
+.ad 
+(GUARD 1 BREATHES OUT.  
+GUARD 2 BREATHES OUT.   
+GUARD 3 BREATHES OUT.   
+SHERIFF GASPS.) 
+.ex 
+As I suspected, you're pissed.  
+.ch g4  
+Not I, sir! 
+.ch sh  
+Goody, goody.   
+(TO GUARDS 1, 2 AND 3)  
+How can you fight the Merry Men after drinking like engineers?  
+.ch g1  
+We can't fight them.
+They're strong. 
+.ch g2  
+They're armed.  
+.ch g3  
+They're trained.
+.ch g4  
+They're sober.  
+.ch sh  
+All right, then, cowards -- we'll trap them instead.
+.ch g3  
+How?
+.ch sh  
+Maid Marian is our prisoner; Robin and his men  
+are madly in love with her, right?  
+.xx GUARDS  
+Right!  
+.ch sh  
+If she writes each one a letter saying she loves him and him alone, 
+they'll believe her, right? 
+.xx GUARDS  
+Right!  
+.ch sh  
+And if the letters say to free her from the castle, they'll 
+show up and we'll kill them, right? 
+.xx GUARDS  
+Wrong!  
+.ch sh  
+What do you mean, wrong?
+.ch g4  
+They're nasty.  
+.ch g1  
+They're vicious.
+.ch g2  
+They'll kill us!
+.ch g3  
+Then we'll really be in trouble!
+.ch sh  
+They won't kill anybody.
+As a test of their courage, Marian will demand that they save her barehanded.   
+.ch g1  
+Without weapons...  
+.ch g2  
+They'll be defenseless...   
+.ch g3  
+We'll slaughter them!   
+.ch g4  
+Why, that's trickery! That's not nice!  
+.ch g1  
+Shut up, nerd.  
+.ch sh  
+Clean up while I wake Marian.   
+.sd 
+(SHERIFF WHEELS OUT LARGE GONG FROM OFFSTAGE.   
+ALL GUARDS COVER THEIR EARS AND BRACE THEMSELVES.   
+SHERIFF CRAWLS ON TOP OF BED, STRIKES GONG. 
+MARIAN SITS BOLT UPRIGHT, NOSE TO NOSE WITH SHERIFF.)   
+.ex 
+Did I wake you? 
+.ch ma  
+(LYING BACK)
+No, I had to get up to answer the gong. 
+.ch sh  
+I need a little favour. 
+.ch ma  
+(SITTING UP)
+I'm not that kind of girl.  
+.ch sh  
+It's not that kind of favour.   
+.ch ma  
+(SNAPPING FINGERS)  
+Damn!   
+.ch sh  
+(GETTING OFF HER)   
+We want you to write love letters to Robin and his men  
+to lure them to the castle. 
+.ch ma  
+I won't do it.  
+.ch sh  
+I'll pull out your fingernails one by one.  
+.ch ma  
+No. 
+.ch sh  
+I'll pluck out your eyebrows hair by hair.  
+.ch ma  
+No. 
+.ch sh  
+I'll have my guards breathe on you. 
+.ad 
+(GUARDS 1, 2 AND 3 ADVANCE FORWARD EAGERLY.)
+.ch ma  
+Got a pen?  
+.ad 
+(MARIAN GRABS PEN AND PAPER AND STARTS WRITING.)
+.ch sh  
+(TO GUARDS) 
+Stay here, boys.
+When Robin and his men show up, you know what to do.
+.ch g1  
+Kill them!  
+.ch g2  
+Slaughter them! 
+.ch g3  
+Hurt them a lot!
+.ch sh  
+Good lads!  
+.ad 
+(EXIT SHERIFF.) 
+.ch g4  
+I still think that's not nice.  
+.xx GUARDS~1,~2,~AND~3  
+Shut up, nerd.  
+.ad 
+(GUARDS 1, 2, 3 LOOK AROUND FURTIVELY, THEN PRODUCE BOTTLES FROM UNDER THEIR
+UNIFORMS AND HEAD OVER TO A CORNER OF THE ROOM, PRESUMABLY TO GET PISSED.   
+GUARD 4 LOOKS ON, DISAPPROVINGLY.)  
+.ld 
+(LIGHTS DOWN ON CASTLE, LIGHTS UP ON A CLEARING OUTSIDE THE CASTLE. 
+ALAN, TUCK AND WILL ARE STANDING AROUND.
+WILL IS OBVIOUSLY STONED.)  
+.ch al  
+Friar, I am the most fortunate men alive.   
+.ch tu  
+Yeah?   
+.ch al  
+Women all over England are madly in love with me.   
+.ch tu  
+Is that so? 
+.ch al  
+Can't say I blame them -- I'm a very handsome guy.  
+.ch tu  
+So you say. 
+.ad 
+(ENTER A PEASANT WOMAN.)
+.ch al  
+Watch me make this wench's day. 
+(TO WOMAN)  
+Picture this: you, me, and a night of endless passion.  
+.ad 
+(WOMAN PULLS OUT LARGE, POSSIBLY NON-MEDIEVAL, GUN AND POINTS IT AT 
+ALAN'S CROTCH.) 
+.ch wo  
+Picture yourself singing soprano.   
+.ad 
+(ALAN RETREATS NERVOUSLY.   
+WOMAN EYES TUCK LASCIVIOUSLY, AND SPEAKS A LA MAE WEST.)
+.ex 
+And you, is that a pickle in your pocket or are you just glad to see me?
+.ad 
+(TUCK PULLS OUT A PICKLE AND TAKES A BITE.) 
+.ex 
+(SNAPS FINGERS) 
+Damn!   
+.ad 
+(SHE EXITS. 
+ENTER ROBIN AND LITTLE JOHN.)   
+.ch rh  
+Gather round, men.  
+We have to figure out how to rescue Marian. 
+.ad 
+(ALL GATHER AROUND EXCEPT WILL.)
+.ex 
+You too, Will.  
+.ch wi  
+(LOOKING AT HIS GREEN CLOTHES)  
+Have you ever noticed how green is like blue, but yellower? 
+.ch rh  
+Into the magic mushrooms again! 
+Marian's been captured, the Sheriff wants us dead,  
+and you have to go and get stoned!  
+.ch wi  
+Okay.   
+(HE STARTS OFF.)
+.sd 
+(SOUNDS OF FIVE ARROWS HITTING SOMETHING.   
+MERRY MAN ENTERS WITH ARROWS IN BACK.)  
+.xx MERRY~MAN   
+Mail call!  
+.ad 
+(HE FALLS FACE FORWARD. 
+ROBIN, JOHN, TUCK, WILL, AND ALAN PICK UP LETTERS THAT ARE ON ARROWS, AND   
+WANDER OFF SEPARATELY WITH THEIR MESSAGES.  
+ROBIN, JOHN, ALAN AND TUCK OPEN THEIRS. 
+WILL JUST STARES VACANTLY AT HIS.)  
+.xx ROBIN,~ALAN,~AND~TUCK   
+(TO THEMSELVES) 
+It's from Marian!   
+.ad 
+(WHILE THE FOLLOWING DIALOGUE IS SPOKEN, JOHN TRIES TO READ HIS,
+TURNING IT UPSIDE DOWN AND RIGHT SIDE UP, BUT FAILS.
+WILL CONTINUES TO STARE VACANTLY AT HIS, AND EVENTUALLY 
+LIGHTS UP AND TOKES IT.)
+.ch rh  
+(READING)   
+"Darling, I love you and only you..."   
+.ch tu  
+(READING)   
+"Prove your courage by rescuing me barehanded..."   
+.ch al  
+(READING)   
+"And then, picture this..." 
+.ad 
+(ALL THOSE READING MESSAGES TURN THE PAPERS SIDEWAYS, REACT IN AMAZEMENT,   
+THEN TURN THE LETTERS STRAIGHT AGAIN.)  
+.ch rh  
+(READING)   
+"Yours sincerely, Marian."  
+.ad 
+(ROBIN, TUCK, AND ALAN SING.)   
+.sb "MARIAN LOVES ME" "JESUS LOVES ME"  
+ALL:   Marian loves me, this I know 
+       For the message tells me so. 
+       I'm the best of Sherwood's throng
+       They are weak but I am strong.   
+.ve 5   
+ROBIN: Yes, Marian loves me!
+ALAN:  Yes, Marian loves me!
+TUCK:  Yes, Marian loves me!
+ALL:   The message tells me so! 
+       A--men.  
+.ex 
+.ad 
+(EXIT ROBIN, ALAN AND TUCK, SEPARATELY. 
+LITTLE JOHN GIVES UP ON NOTE AND TRIES TO GET WILL TO READ IT TO HIM.)  
+.ch jo  
+Could you read this to me?  
+.ch wi  
+Read it?
+Man, I can't even see it!   
+.sd 
+(LOUD THUNDERCLAP.  
+PEOPLE ON STAGE LOOK UP AS IF THEY'RE SEEING GOD.)  
+.ch go  
+Will Scarlett!  
+Little John!
+.ch jo  
+Oh my God!  
+.ch go  
+Precisely.  
+.sd 
+(THUNDERCLAP.)  
+.ch wi  
+That's not God, it's a guy on a mike behind the curtain.
+.ch go  
+Pay no attention to the man behind the curtain! 
+.sd 
+(THUNDERCLAP.)  
+.ex 
+Go to the castle and rescue Marian. 
+.ch jo  
+But why, Lord?  
+.ch go  
+Because it's part of the plot.  
+.ch jo  
+Right.  
+.ch go  
+(TO WILL)   
+And for God's sake...er, my sake, sober up! 
+.sd 
+(THUNDERCLAP THAT HAS AN AIR OF FINALITY.)  
+.ch jo  
+We saw God! 
+.ch wi  
+If you eat  
+.ul 
+two 
+mushrooms, you see Elvis.   
+.ch jo  
+Let's go.   
+.ad 
+(EXIT WILL AND JOHN.)   
+.ld 
+(LIGHTS DOWN ON CLEARING, LIGHTS UP ON ROOM IN CASTLE.  
+GUARDS 1, 2 AND 3 HAVE PASSED OUT; THEY ARE SURROUNDED, AGAIN,  
+BY BOTTLES. 
+MARIAN IS LEFT WITH GUARD 4.)   
+.ch ma  
+(INDICATING COMATOSE GUARDS)
+God wouldn't like it!   
+.ch go  
+Shut up, nerd.  
+.sd 
+(THUNDERCLAP.   
+GUARD 4 FALLS FAINTS IN SHOCK.  
+ENTER ROBIN, WILL AND JOHN, AND TUCK FROM DIFFERENT DIRECTIONS. 
+ROBIN, JOHN AND TUCK ARE HOLDING THEIR NOTES.)  
+.xx ROBIN,~WILL,~TUCK~AND~JOHN  
+Marian, I've come to rescue you.
+(TO OTHERS, STILL TOGETHER) 
+What are you doing here?
+.ch ma  
+Shhh!   
+.ch rh  
+Wait a minute!  
+(HE GRABS THE NOTES FROM JOHN AND TUCK, THEN GLARES AT MARIAN.) 
+So you love them too, eh?   
+You two-timing bitch!   
+.ch ma  
+Robin, I can explain... 
+.ch rh  
+Explain all you want.   
+I won't believe you.
+.ch ma  
+Robin!  
+.ch rh  
+(ADVANCING ON HER THREATENINGLY)
+I'll have you drawn and quartered.  
+.ch ma  
+No! 
+.ad 
+(SHE FLEES TO THE DOOR AND OPENS IT.
+ALAN IS THERE WITH HIS NOTE.)   
+.ch al  
+Picture this: you, me, and a night of endless passion.  
+.ad 
+(MARIAN SCREAMS.
+THE GUARDS WAKE UP.)
+.ch g1  
+After them, boys!   
+.ad 
+(GUARDS 1, 2 AND 3 GRAB THEIR WEAPONS   
+AND PURSUE ROBIN, JOHN, WILL, TUCK AND ALAN, WHO FLEE.  
+GUARD 4 IN THE MEANTIME SLOWLY REGAINS CONSCIOUSNESS;   
+HE IS HOLDING HIS HEAD IN HIS HANDS.
+GUARD 4 AND MARIAN ARE LEFT ALONE.) 
+.ch g4  
+Ow! 
+My head hurts!  
+.ch ma  
+Oh, poor baby!  
+(MASSAGES HIS NECK AND SHOULDERS.)  
+I like you. 
+You're not like the others. 
+.ch g4  
+Marian? 
+.ch ma  
+Yes, dear?  
+.ch g4  
+Picture this: you, me, and a night...   
+.ad 
+(MARIAN ATTACKS HIM, PULLS HIS HAIR, AND KNOCKS HIM TO THE FLOOR.)  
+.ex 
+Damn!   
+.ld 
+(SNAPS HIS FINGERS, AS THE LIGHTS COME DOWN.)   
+.es 

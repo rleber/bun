@@ -1,0 +1,310 @@
+
+
+
+...J...^
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so ccmac.t 
+.zz The macro file is usually fass/addresses/ccmac.t  -IAN! 
+.zz .xx "name" "local addr" "phones" "perm.addr" "fass or tech duties" "cast parts" "Year" "Times Busy" 
+.xx "Acton, Craig" "" "886-2967 (416)823-8329 (416)272-0562" "105-2333 Truscott Ave. Mississauga, Ont. ___ ___" "" "" "" "" 
+.xx "Acton, Janet" "#1-300 Erb St. W., Waterloo, Ont. N2L 1W3" "886-2967 (416)823-8329 (416)272-0562" "105-2333 Truscott Ave. Mississauga, Ont. ___ ___" "TECH" "" "1983" ""
+.xx "Acton, Lee" "" "886-2967 (416)823-8329 (416)272-0562" "#912-3590 Kaneff Cresc., Mississauga, Ont. L5A 3X3" "" "" "" "" 
+.xx "Adelberg, Mike (Bits)" "" "745-1384" "193 Forest Hill Dr., Kitchener, Ont. ___ ___" "" "" "1980" ""
+.xx "Adkins, Kim" "10 B Kennedy Ave., Kitchener, Ont. ___ ___" "744-2577 744-1616 (416)639-0095" "925 Nora Dr., Burlington, Ont. L7T 3E7" "WRITER" "Evil Production # Dancer, Earl E. Debed" "1983" ""  
+.xx "Aleksic, Rose" "" "" "" "WRITER" "" "1983" ""  
+.xx "Allen, Ian!" "#10-326 Erb St. W., Waterloo, Ont. N2L 1W3" "886-6254 886-2967" "#705-50 Prince Arthur, Toronto, Ont. M5R 1B5" "TECH sound design" "The Great Librarian" "1983" ""   
+
+.xx "Allen, Tracey" "10-80 Churchill St., Waterloo, Ont. ___ ___" "886-3113" "139 Coronation Ave., Halifax, Nova Scotia ___ ___" "TECH" "" "1983" ""
+.xx "Anderson, John" "" "" "1316 Victoria Dr., London, Ont. N5Y 4E4" "" "" "1980" ""
+.xx "Anderson, Patricia" "280 Phillip St., B1-9, Waterloo, Ont. ___ ___" "885-2439 x3627" "" "" "" "1980" ""
+.xx "Arsenault, Mike" "" "893-7037" "32G Guerin Ave., Kitchener, Ont. ___ ___" "" "" "1980" ""  
+.xx "Ashdown, Brien" "7 Young St. West, Waterloo, Ont. N2L 2Y7" "886-8013 (416)685-1128" "265 Riverview Blvd., St. Catharines, Ont. L2T 3N3" "" "Sherriff of Nottingham, Quasimodo, Scott Towels" "1983" "" 
+.xx "Baerg, Eric" "#12-5 Amos Ave., Waterloo, Ont. ___ ___" "885-2092" "" "" "" "1980" ""   
+.xx "Bain, Peter" "524F Sunnydale, Waterloo, Ont. ___ ___" "885-0684 (416)489-9934" "" "TECH" "" "1983" ""  
+.xx "Bajer, Toni" "#1907-280 Wellesley St.E., Toronto, Ont. M4X 1G7" "apbajer (416)921-2802 wrk(416)963-0489" "183 The Greenway, Cambridge, Ont. N1R 6L6" "" "" "1981" ""   
+.xx "Baker, Alan" "" "469-1431" "45 Ravina Cres., Toronto, Ont. ___ ___" "" "" "1981" ""
+.xx "Barna, Terry" "" "579-2406" "1526 Queen's Blvd., Kitchener, Ont. N2M 1E4" "" "Benny Endejets, Jay Walker, Stan the Man, Merry Person" "1983" ""
+.xx "Bast, John W." "111 Mackay Cr., Waterloo, Ont. ___ ___" "885-3419 885-1660 x2332" "" "" "James Bond" "1983" "" 
+.xx "Bastedo, Juana" "" "885-2584 x3214" "293 Albert St., Waterloo, Ont. N2L 3T9" "" "" "1981" ""   
+.xx "Batten, Mark" "" "886-6222" "#11-437 Hazel St., Waterloo, Ont. N2L 3P7" "" "" "1982" ""
+.xx "Battista, Lou" "" "(416)233-8211" "12 Harrowby Crt., Islington, Ont. M9B 3H3" "" "" "1980" ""  
+.xx "Beamish, Brian" "" "(613)224-3440" "6 Apache Cres., Nepean, Ont. K2E 6H7" "" "" "1981" ""  
+.xx "Beattie, Kim" "" "" "#405-555 Brimorton Dr., Scarborough, Ont. M1H 2E9" "" "" "1981" ""
+.xx "Beckerle, Michael" "512F Albert St., Waterloo, Ont. ___ ___" "885-0586" "#2-305 Washington St., Cambridge, Mass. _____, U.S.A" "" "" "1982" "" 
+.xx "Bell, Robert" "#7-8 Amos Ave., Waterloo, Ont. ___ ___" "886-4659" "#308-10 Driveway, Waterloo, Ont. ___ ___" "" "" "1981" ""   
+.xx "Belliveau, Cindy Marie" "#1-100 Margaret Ave, Kitchener, Ont. ___ ___" "578-4017 271-1700" "82 Princess St. Stratford, Ont. ___ ___" "" "Ann Thrax" "1983" ""  
+.xx "Bielak, Alex" "1502-300 Regina St.N, Waterloo, Ont. ___ ___" "888-7797" "" "TECH Accent Consultant" "" "1983" ""   
+.xx "Birch, Simon" "East 5 Room 314, Village I, U of Waterloo" "884-9298" "" "" "" "1982" ""
+.xx "Bowler, Alan" "" "886-0835 x3907" "#11-601 Silverbirch Rd., Waterloo, Ont. ___ ___" "TECH" "" "1983" ""
+.xx "Browman, David" "#4-197 Strange St., Kitchener, Ont. ___ ___" "579-8892 886-2567 579-1111" "" "" "" "1980" ""  
+.xx "Brundrett, Lawrence" "" "" "" "WRITER" "" "1983" ""
+.xx "Buchanan, Jim" "372 Albert, Waterloo, Ont. ___ ___" "884-5095" "" "" "" "1980" ""  
+.xx "Burley, Angela" "North B Room 325, Village II, U of Waterloo" "884-7626 884-9698 884-5677" "53 Aberdeen St., P.O. Box 1208, Caledonia, Ont. N0A 1A0" "" "" "1982" ""   
+.xx "Butterworth, Ray" "" "885-2625" "B1-11 280 Phillip St., Waterloo, Ont. ___ ___" "TECH fly crew" "" "1983" ""   
+.xx "Byrd, Robert" "" "595-8221" "Milverton, Ont. ___ ___" "" "" "1981" ""  
+.xx "Cadell, Meryn" "" "885-0712" "174 Sunview St., Waterloo, Ont. N2L 3V6" "Choreographer" "Elena Dale, Jack the Stripper, Evil Production # Dancer, Merry Person" "1983" ""   
+.xx "Campbell, Neil" "" "884-6476" "10 Terrance Dr., Brantford, Ont. ___ ___" "" "" "1981" ""   
+
+.xx "Capstick, Rachel" "#807-285 Erb St. W., Waterloo, Ont. N2L 1W5" "886-1865 884-1970x517" "21 Maple St., Guelph, Ont. N1G 2G4" "" "Glinda the Good Witch" "1983" ""  
+.xx "Carette, Peter (Boom-Boom)" "" "x2128 x2126 745-9527" "Room 162/165 Humanities Theatre, U of Waterloo" "TECH, Light Design, Special Effects" "Ken Gineer, Caterpillar" "1983" ""   
+.xx "Carew, Elizabeth" "" "886-6222" "#11-437 Hazel St., Waterloo, Ont. N2L 3P7" "" "" "1982" ""
+.xx "Carr, Valerie" "" "" "77 Thorncrest Rd., Islington, Ont. M9A 1S8" "" "" "1980" ""  
+.xx "Carson, Linda" "168 King St. N. Apt 3, Waterloo, Ont. N2L 2Y3" "888-6913" "120 DeNiverville Dr., Ottawa, Ont. ___ ___" "<Past Director>" "Johnny Carson" "1983" "" 
+.xx "Carter, Roberta" "#42-51 Paulander Dr., Kitchener, Ont. ___ ___" "576-3214 885-4038" "304 Shakespeare Dr., Waterloo, Ont. N2L 2V1" "" "" "1982" "" 
+.xx "Chaprin, Ian" "#42-51 Paulander Dr., Kitchener, Ont. ___ ___" "(416)231-6487 576-3214" "17 Monkton Ave., Toronto, Ont. M8Z 4M9" "" "" "1982" ""
+.xx "Chmara, Tom" "524f Sunnydale Pl., Waterloo, Ont. ___ ___" "885-0684 705-472-9729" "185 Gordon Dr., North Bay, Ont. ___ ___" "TECH" "" "1983" ""
+.xx "Chong, Donna" "#A3-143 Columbia St. W., Waterloo, Ont. ___ ___" "884-2109" "" "" "" "" ""  
+.xx "Christensen, Mark" "North 3 Room 302, Village I, U of Waterloo" "884-9576" "10 Livonia Place #135, Westhill, Ont. ___ ___" "TECH" "" "1983" "" 
+.xx "Chu, Noreen" "" "" "" "" "" "" ""  
+.xx "Cole, Connie" "" "" "95 Nelson Ave., North Bay, Ont. P1A 1Z8" "" "" "1981" ""  
+.xx "Collard, John" "East 5 Room 305, Village I, U of Waterloo" "884-9228" "10 Duncan Drive, St. Catharines, Ont. L2N 3N9" "" "" "1982" ""  
+.xx "Coo, Peter" "Box 74, G-2 Hammar House, 139 University Ave., Waterloo, Ont. N2L 3E7" "886-0791 (416)365-9822" "171 1/2 King St. E., Apt. 2, Toronto, Ont. ___ ___" "WRITER" "Marvin the Paranoid Tin Man, Will Robinson" "1983" ""  
+.xx "Creech, Ken" "9 Pietz Ave., Waterloo, Ont. ___ ___" "886-1986" "" "" "" "" ""  
+.xx "Crichton, Doug" "" "576-4660(wrk) (519)622-2099" "12 Myrtle Ave., Cambridge, Ont. ___ ___" "<Honorary Member> "" "1972" "" 
+.xx "Crowther, Barb" "" "(416)363-4400" "#722-133 Wilton St., Toronto, Ont. ___ ___" "" "" "" ""
+.xx "Cunningham, Tracy" "" "" "14 Woodglen Way, Unionville, Ont. ___ ___" "" "" "1980" ""   atfo.xx "Currie, Rod" "" "884-8955" "#2-340 Erb St. W., Waterloo, Ont. N2L 1W6" "WRITER" "Marc A
+
+.xx "Currie, Rod" "" "884-8955" "#2-340 Erb St. W., Waterloo, Ont. N2L 1W6" "WRITER" "Marc Antony, Captain Hook, Yul B. Sorry, Wizard Troop" "1983" ""  
+.xx "Curtis, Catherine" "" "" "" "" "" "" ""
+.xx "Cyr, Andre" "" "" "45 Cedar Rd., Ottawa, Ont. K1J 6L5" "" "" "1981" "" 
+.xx "Dallan, Gene" "" " " "5 Ridgewood Ave., Guelph, Ont. N1H 6C3" "" "Lone Ranger" "1983" ""   
+.xx "Davidson, Tracy" "#712-285 Erb St. W., Waterloo, Ont. ___ ___" "884-2389" "" "" "" "" ""   
+.xx "Davies, Julian" "MC 5164, U of Waterloo" "x2721 884-5862" "" "" "" "1982" ""   
+.xx "Davies, Sandee" "" "886-8287" "2 Colchester Court, Islington, Ont. M9A 4S5" "TECH" "" "1983" ""
+.xx "De Rose, Mario" "60 McDougall Rd., Waterloo, Ont. N2L 2W5" "885-6791" "57 Pine Cres., Toronto, Ont. M4E 1L3" "" "" "1982" ""   
+.xx "Delton, Helen" "280 Phillip St., A1-341, Waterloo, Ont. ___ ___" "885-2312" "" "" "" "1981" "" 
+.xx "Dennis, Dave" "" "" "" "" "" "" "" 
+.xx "Dennis, Kathy" "44 Benfrisco Cr., Scarborough, Ont. M1H 1N1" "" "5812 Georgia St., Kalamazoo, Michigan, U.S.A. 49002" "" "" "1980" ""  
+.xx "DesRoches, Mary Lynn" "301-485 Parkside Dr., Waterloo, Ont. ___ ___" "886-3142" "" "" "Mrs. Robinson, Merry Person" "1983" ""  
+.xx "Dickey, Lee" "MC 5078, U of Waterloo" "884-0733 884-1987 x3727 x3484" "273 Lincoln Rd., Waterloo, Ont. N2J 2P6" "" "" "1982" ""
+.xx "Dobbin, Chris" "Chemistry Dept., U of Waterloo" "884-7874" "#1305-159 University Ave. W., Waterloo, Ont. ___ ___" "" "" "1982" ""  
+.xx "Doll, Carolyn" "" "" "25 Alamosa Ave., North York, Ont. M2N 2N6" "" "" "1980" ""   
+.xx "Domzella, Perry" "" "" "1040 Escarpement Dr., Lewiston, N.Y., U.S.A." "" "" "1980" ""  
+.xx "Dragushan, Ron" "" "886-6254 886-2967" "#10-326 Erb St. W., Waterloo, Ont. ___ ___" "" "" "1980" ""
+.xx "Drake, Lindsay" "Village I, East 6 #210" "884-9868 (416)653-6616" "136 Westmount Ave., Toronto" "TECH" "Hugh Manitease, Theodore Sports, Maureen Biology" "1983" ""
+.xx "Duncan, Roger" "" "" "4008 Crestview Rd. S.W., Calgary, Alberta T2T 2L4" "" "" "1980" ""   
+.xx "Duquette, Laurie" "" "" "6069 Atlas St., Niagara Falls, Ont. ___ ___" "" "" "1980" ""  
+.xx "Dyck, Nelson" "" "899-1743" "RR#3 Wainfleet, St. Catharines, Ont. L0S 1V0" "" "" "1980" "" 
+.xx "Dyck, Walter" "" "" "2141 Delmar Dr., Ottawa, Ont. K1H 5P6" "" "" "1980" ""
+.xx "Dykes, Ken G." "" "886-6569" "#1004-125 Lincoln Road, Waterloo, Ont. ___ ___" "TECH" "" "1982" ""  
+.xx "Dzur, Patricia" "" "" "" "" "" "" ""   
+.xx "Eastman, Phil" "Dept. of Physics, U of Waterloo" "" "" "" "" "" "" 
+.xx "Eaton, Margaret" "63 Braun St., Kitchener, Ont. ___ ___" "579-3604" "" "<Student Rep>" "Val E. Girl" "1983" "" 
+.xx "Eickmeier, Linda" "" "885-6710" "#4-350 Erb W., Waterloo, Ont. ___ ___" "<Past Producer>" "" "1981" "" 
+.xx "Ernst, Janet" "109-144 Lucan St., Waterloo, Ont. ___ ___" "578-6238 889-2788" "65 Quail Valley Lane" "TECH Costumes Mistress" "" "1983" "" 
+.xx "Evans, Cindy" "280 Phillip St., B2-2, Waterloo, Ont. ___ ___" "886-4368" "36 Brisco St., Brampton, Ont. ___ ___" "TECH" "" "1983" ""   
+.xx "Fenton, Joy A." "164 Herbert St., Waterloo, Ont. ___ ___" "576-9611 (416)877-8194" "51 Fagan Dr., Georgetown, Ont. L7G 4P4" "TECH" "Capt. Oneliner, Maxwell Silverhammer, Ed McMahon, Julienne Fries" "1983" ""
+.xx "Fezz, Mike" "274 Erb St. W., Waterloo, Ont. ___ ___" "886-3334" "" "" "" "" "" 
+.xx "Flanagan, Kevin" "" "" "143 Wycliffe Cres., Willowdale., Ont. M2K 1V7" "" "" "" "" 
+.xx "Fleischman, Jill" "280 Phillip St., Waterloo, Ont. N2L 3X1" "886-8947 728-0782" "562 Westminster Ave., Ottawa, Ont. K2A 2V3" "" "Ray Singstripes, Ray D. O'station, Merry Person, Roman, Witch" "1983" ""  
+.xx "Fleming, Louise" "#A3-113 280 Phillip St., Waterloo, Ont. N2L 3X1" "885-1199" "Box 64, Minden, Ont. K0M 2K0" "" "" "1982" ""   
+.xx "Fleming, Valerie E." "#108-1005 Seagram Dr., Waterloo, Ont. ___ ___" "884-6873" "" "" "" "" "" 
+.xx "Fletcher, Lynn" "" "885-5244 (416)823-9040 885-2288" "#305-285 Erb St. West, Waterloo, Ont. N2L 1W5" "" "" "1982" ""   
+.xx "Forber, Andrew" "212-444 Victoria Rd. N., Guelph, Ont. ___ ___" "836-0309" "50 Nanwood Dr., Brampton, Ont. ___ ___" "TECH" "" "1983" ""
+.xx "Forber, Chris" "#212-444 Victoria Rd. N., Guelph, Ont. ___ ___" "836-0309" "5044 Heather Ave., Niagara Falls, Ont. L2E 5J2" "TECH ass. sound" "" "1983" "" 
+.xx "Forbes, P. Jayne" "#1-9 High St., Waterloo, Ont. N2L 3X4" "886-0375" "" "" "Penny Smightier, Robot, Percussionist" "1983" ""   
+.xx "Foulis, Gay" "26 Young St. E., Waterloo, Ont. ___ ___" "884-4687" "" "" "" "" ""   
+.xx "Fraser, Elizabeth" "" "745-9542 x3488" "#315-57 Union St. E., Waterloo, Ont. ___ ___" "" "" "1980" ""  
+.xx "Fraser, Peter" "M.F.C.F., Math & Computer, U of Waterloo" "745-9542 x3488" "#315-57 Union St. E., Waterloo, Ont. ___ ___" "" "" "1980" ""  
+.xx "Fryer, Ken" "" "" "" "<Administration Rep>" "" "" ""    "19.xx "Gagne, Dot" "" "" "#914-501 Wilkins, Lo
+
+.xx "Gagne, Dot" "" "" "#914-501 Wilkins, London, Ont. N6A 3R3" "" "" "" "" 
+.xx "Gagnon, Claudette" "" "" "1022 Metcalf St., North Bay, Ont. P1B 2R3" "" "" "" ""   
+.xx "Galvin, Lorraine" "#208-394 Avenue Road, Toronto, Ont. M4V 2H4" "925-7801" "128 Wilson St.W., Perth, Ont. K7H 2P3" "" "" "1982" "" 
+.xx "Gardner, Deidrie (Didi)" "204 Bridge St., Waterloo, Ont. ___ ___" "885-4578" "" "" "" "" ""
+.xx "Gardner, Jim" "168 King St. N. Apt 3, Waterloo, Ont. N2L 2Y3" "888-6913 x2452 (519)426-2381" "18 Calvert Cr., Simcoe, Ont. N3Y 4E9" "" "" "1983" ""
+.xx "George, Dave" "" "(519)264-2972" "RR#2, Mt. Brydges, Ont. N0L 1W0" "" "" "" "" 
+.xx "Gibaut, Ross" "14-437 Hazel St., Waterloo" "742-2984" "22 Barrie St., Cambridge, N1S 3A5" "<Technical Director>" "" "1983" ""  
+.xx "Gibson, Wendy" "#E5-143 Columbia St. W., Waterloo, Ont. ___ ___" "886-7319" "" "" "" "" "" 
+.xx "Gilpin, Roy" "" "744-5314 886-6670(wrk)" "125 Trafalgar Ave., Kitchener, Ont. ___ ___" "" "" "1980" "" 
+.xx "Gimbel, Roxanne (Rocky)" "#915-401 Athabasca Ave., Fort McMurray, Alberta T9J lH4" "" "" "" "" "" ""   
+.xx "Goer, Wendy" "" "" "" "WRITER" "" "1983" ""
+.xx "Goodenough, Alan" "" "argoodenough 416-262-4686" "Box 189, Queenston, Ont. L0S 1L0" "" "" "1980" ""
+
+.xx "Goodman, Clifford A." "East E Room 124, Village II, U of Waterloo" "884-5808" "Box #7, Mountain, Ont. K0E 1S0" "" "" "1982" "" 
+.xx "Gore, Mike" "251 Erb St. W. #20" "884-4943" "#706-285 Erb St. West, Waterloo, Ont. ___ ___" "" "" "1983" ""
+.xx "Graham, Dave" "North 2 Room 308, Village I, U of Waterloo" "884-5986 (416)277-9106" "999 Baldwin Rd., Mississauga, Ont. ___ ___" "" "" "1982" ""   
+.xx "Green, Ronald M." "West A Room 208, Village II, U of Waterloo" "884-5305" "23 Austin Ave., Toronto, Ont. ___ ___" "WRITER" "" "1982" ""
+.xx "Grey, Mike" "" "" "" "" "" "" ""   
+.xx "Griffen, Kathlenen" "" "" "5398 Spruce Ave., Burlington, Ont. ___ ___" "" "" "1981" "" 
+.xx "Gross, John (Murray)" "" "" "32 Gordon Rd., Willowdale, Ont. M2P 1E1" "" "" "" ""  
+.xx "Guggi, Anita" "342 Westcourt Pl., Waterloo, Ont. ___ ___" "884-1649, 745-4187, 884-7212" "" "" "" "" ""
+.xx "Gurd, Preston" "" "885-4313" "B2-3 280 Phillip St., Waterloo, Ont. N2L 3X1" "" "" "1982" ""
+.xx "Guy, Paul" "" "" "" "" "" "" ""
+.xx "Hancock, Greg" "" "886-4006 wrk:885-1211x2345" "" "TECH Follow Spot" "" "1983" ""  
+.xx "Handa, Aruna" "" "579-4001" "24 Maple Hill Dr., Kitchener, Ont. ___ ___" "" "Earl E. Derise" "1983" "" 
+ .`	!y..AyY.....
+..'g`...
+
+..@......D.&.f..F...g..B.BB.BB.BB.BB.BB.BB.B@........D.'GF'f....ff...B.BB.BB.BcD".C....&..&...F........G.&...'..F.b........B.BB.BB.BB.BG.........D.'G.."..g....B.BB.BB.BB.E..d..'gb...F..bB.BB.C##.bB.BG.........D.'.f&.b..G...B.C..".".&.F.G..g.....'..F.................B.C....cC..B.BB.BB.BB.C##."B.B@........D.'&.b..F...B.BB.B..#.#.C....#.B.CB.F.'..&....'......'g..&.Fb...........eCbB.BB.BB.BB.B@........D..'.......&..B.BcC.....f..Ff.&...g.....'..F...........D..E.BB.C.....cC....#.#..b.cc#.B.C#Cc....F&...B.g.....&.GF.....b..'..F.b...B.%.bB.C..F...f.C.B.E..&..'..g.F.....f'..f...F..&b..F.fg"..&GF&..'BB.C##.bB.B@.`......D..'..."...'F.."B.BcCc..F.'F&...B.F.....'..F...........DB.$c"B.C.......bB.C."..F...F&fb.g....GF&..............".$..B.E..d.B.BB.C##.bB.B@.8......D.&fgb..f'...F&..B.Bcc.b.#."...'..Gf'.".'.........'..F...........D..d..B.C.......B...#.#.cb.c.."B.C..F.....G.G"..F'........g.&..........d..D."B.BB.BB.C##.BB.BG..(......D.&....F&...B.BcC.".C."...g.f..G....&f....'..F.................B.C.....C#bB.C#...f'GF...F.&....&..'......&..B.BB.BB.C##."B.BG...........D....&..&.B.CC.....&..'..g...Cb.b...'..F.................B.C....c#..B.BB.E..d.B.BB.C##.bB.B@........D..f&.'.b...F&f"B.C#c....F.&...&...gF.fb....'..F...........DB.$C.B.C........B.BB.E..d....&f....B.BB.C##.bB.BG...... ........D..f&.'.b.....B.C#c....F.&...&...gF.fb....'..F...........DB.$C.B.C........B.BB.C.....F'G"....F.C.....d.......%d.B.EF&.&....&f.B.C##.bB.BG....p......D.....&...f&..F"B.BB.BB.BB.BB.BB.BB.BG..........D....&.....&f.B.E.&..&..."....G......F..c."........'..F...B.C.....C....#...#..C#c.B.Cc...F.'.....gF.b.......'Ff................B.E..d.B.BB.C##.bB.B@.P......D.....b..F.F.G..".B.Bc...#c"...'..Gf'.".'.........'..F.................B.C.....C."B.BB.BB.BB.BB.BG..........D.....b...&..&&.B.C..#".'.g.&...F'.....'..F.................B.C...........#.#......CBB.EB.B..cB.'.F.F"..............B.E..d..G....B...D%..BB.BB.C##.bB.B@........D......g....B.Bc##.B.C.......g......F..................B.B..#.##......".......c.B.C...F'.........gF.fb...f'.f....B..............B.BB.BB.C##..B.BG.... ......D........g....B.BB.B..#.#.#b...#....#"#.c....#.B.C....GF&...g...................".d."B.C..'g....&...F'..C....D%..BB.BB.C##.bB.B@........D&..&...GF&&.B.Bc...C...'Fgf&....B....'..F.................B.C......."B.BB.BB.BB.BB.BG..........D'F'f.....F...B.BB.BB.C.#....F...b.g..b...f&.f................B.BB.BB.C##."B.BG.........D'G.&......'...BB.CC#.......fb.g.....'..F...........D..e..B.C....Cc.......C#.....b"B.BB.BB.D..Gf..f.'......&...F...b..&.f.B....GG"...Gf..B.C##.bB.BG........DF&fgf....F&f.'@.....x......DF&fgf....F&f.'F.B.BB.BB.BB.BB.BB.BB.BG.........DF&.&b..F...&..BB.BB.BB.BB.E..d.B.BB.C##.bB.BG..........DF'&'f.f.F"..F..&.B.BB.G.C.c.B.CC".f&.f........F.&...'..F.b........B.BB.BB.C##."B.B@........DF....G"..g.f&.B.BB.BB.C."...G..gF.g..F......g...........%B.%CbB.BB.BB.C##."B.B@........DF.F.&...F&.B.BB.BB.BB.E.D%..BB.BB.C##.bB.B@.P......Df..."...'..B.BB.BB.BB.BB.BB.BB.BG..........Df..f.."..f&.."B.BB.BB.Cc..&...'FF..B.F......g...........$..DC.B.BB.BB.C##."B.B@.......Df....."....&.B.BB.C....C.c.B.CC..".f&.&..".F.....'gb..........".DC"B.E..d.B.BB.C##.bB.BG...........Df......'F....B.BB.BB.Fb....&f.......&..&...ff.......&"..&......f'fb..c....c.B.BB.BB.BB.BG..........Df.GB...'.&.B.BB.C.....#.bB.C#...&....Gg...B...f'.f....B..............B.BB.BB.C##."B.BG.........Df'......f&.B.Cc#....g.f..G........'..F.................B.C....C#C....#.#.."..#C.B.BccC..c...'.&...".F.....&.&.............b...BB.BB.BB.C##.BB.BG...........Df.&F.ff.b....bB.BB.BB.Cb..'F&.&.......g...f'...F&..b..............B.BB.BB.BB.B@.@......Df..&......'f.B.BB.BB.BB.BB.BB.BB.B@........Df.&.....&.'f..B.BB.C........B.C......F..'...gF.b...f'.f....B........D...C"B.BB.D..F..."...b...'F&&.....&...F...g.&...b..&.f.BB.C##.bB.BG...........Df.&.....F...B.BB.C....#...B.CCcb...Gg'....B....'..F...........D..$ ............Df.&.....F...B.BB.C....#...B.CCcb...Gg'....B....'..F...........D..$#.B.BB.BB.C##.BB.BG..........Df........."B.BB.BB.BB.E.D%..BB.Df&F'F...f&...BB.C##.bB.BG...`......Df.F.&gb..&...B.Bc##B.#"....F.."..F'....f'.f....B..............B.C..B.C#....C#C.B.BB.E..d.B.BB.C##.bB.B@........DgF&f'B...'G".&..B.BB.BB.C##".F&...g.F.........&..........db..cBB.BB.BB.C##."B.BG....h......DgF....B....'f"B.C....&...g.....'..F.................B.C....C....cc..C.C.B.C...f&...g.....'GF'g.................B.BB.Df&..".f&......&...F...g.&...b..&.f.BB.C##.bB.BG.... ......Dg..'B..F&f.'F.B.BB.C......."...C...B.C#....F.B.g.......f'.f....B..............B.BB.BB.C##..B.B@........D.&F.....f.'.....'.F"B.C##...&ff.G".g.......'..F.................B.C......c...#....".#...B.C#...F&G.'".'.......F..................B.E..d.B.BB.C##.bB.BG.........D.&'g..B...&"B.BB.BB.C#.....'F.&...F.....&g.&.................B.BB.BB.C##."B.BG.........D.'.&.GF......B.C.....FB.g........'..F...........D..%..B.C......#B...#b##c".#.c.B.EB.B..c".f.F..&.........c....C.B.BB.D..g..B..df."B.C##.bB.BG..........D.'..&......'..B.C.b..'.F...g.....'..F.................B.C....cC..B.BB.BB.BB.BB.BG..........D..F.B..F&f.'F.B.BB.BB.Cc#..F...G..'......&.....&................B.BB.BB.C##..B.BG..........D.....F.BB.D.'g..b.F....C#....&..&... ..........D.....F.BB.D.'g..b.F....C#....&..&..."........'..F...B.C......#"B.C#".&F.F.....g....f&..g..........c...d."B.BB.BB.C##.BB.BG.........D.....f.'F..&.B.BB.BB.C.#...&...'...g........FF.F..................B.BB.BB.C##..B.B@........D......&.."B.BB.C....##..B.Bc#..cC...FB.g.......'..F.................B.BB.BB.C##."B.BG..........D..........'...BB.BB.C........B.C#.....g..f..G.......'..F...........D..EC.B.BB.BB.C##."B.BG.........D....."..F.BB.CC.....F'.&....F'....f'.f....B..............B.C...........C...B.BB.BB.BB.BB.B@.P......D...f..&....F&f.B.BB.B..#.#c...c...B.C......d.&ff&...g.....&&.'F"..&..b........DB.%..B.BB.BB.BB.BG..........D..ff...F.&...B.C#.B.g...&...g.....'..F...........D..e..B.C.....ccBB.BB.BB.BB.BB.BG.........D..ff...g......B.C#.B.g...&...g.....'..F...........D..e..B.C.....ccBB.BB.BB.BB.BB.B@.......D...&...f'.."B.BB.C........B.C#Cb...GF&&...'.....f'.f....B..............B.BB.BB.C##."B.BG....X......D......DBB.BB.BB.BB.BB.BB.C##..B.BG.........D.....&......&f.&..B.C##..f.'.b..'"...&f....'..F...........D....bB.C......C....#"".C.".c...B.EEBcB...gf.."...........%..B.BB.D......'....&.&....f'gf'.b..F&fb......'...BB.C##.bB.BG.........D.........'f.B.BcC.b..".&...&...B....F..................B.B..#.##...ccC"B.BB.BB.BB.C##..B.BG...b....D.&.f...F...&.B.E."....@.@. ........D.&.f...F...&.B.E."....F..C#.........'..F...........DB..C.B.C...........#.##....#..B.C#C...&f.f&....B....F&.fG"........d..D..B.E..d.B.E.&ff....'.f...........g............'.B.C##.bB.BG.........D.&.f...f'F..B.BB.C.....#..B.Bc..C...F..&."......'..F...........DB.dC"B.C..'g..f....f...'F.g..C.B.BB.C##.bB.BG..........D.&.f...f..B.BB.C.....#..B.Bc..C...F..&."......'..F...........DB.dC"B.C..F.f&.....B.D&.g..g..B.f...f.'...ff..."..f......F&g.."B.C##.bB.BG....`......D.&d.'........F...B.BB.BB.BB.BB.BB.BB.B@........D.&f..&...&&.B.BB.C........B.Cc......&f".gB...G.F.&................%C.B.BB.BB.C##..B.BG.........D.&.&.&....'F&...B.C..#....'F.'F...'.....f'.f....B..............B.C....#.#B..c..#.."B.Cc.B.'F.......g........................B.E..d.B.BB.C##.bB.BG..........D.&...&"....F.F&.B.BB.C.....CC"B.EEC"....G..&................d..B.BB.BB.C##."B.BG...........D.&...&"..F&..bB.BB.C....#.#.B.EEC"....G..&................d..B.BB.BB.C##."B.BG..x......D.&..F&.fg"......B.BB.BB.BB.BB.BB.BB.BG.........D.&..G"...'F&&...B.BB.C#c...#c.B.CB.f&...g.............&...............B.BB.BB.C##."B.B@. ......D.&......&..F..B.BB.C.#..#...#...B.C...F..F.F.....g.........F..................B.BB.BB.C##..B.BG........D.'G.&...GF&&.B.Bc....C....FB.g.......'..F...........D..%..B.C......C....#.#.....`..........D.'G.&...GF&&.B.Bc....C....FB.g.......'..F...........D..%..B.C......C....#.#........B.C##.b.f'.....&.....&g.&..............%..B.E..d....&...."..&.B.E.&..&&..f.&f.g..'F.B.C##.bB.BG.........D.'G.&...f.F'bB.E..'..C.b..#".#...&...F..'......'..F.................B.C....#...B.C##..F...b.g.......g.........GG..g.&fb........B.BB.BB.C##.BB.BG...........D.'G.&...f..&....B.Bc#"..."..'F...g.....'..F.................B.C....C.c........C.c.B.BB.E..d...&...&...F.'F.B.BB.C##.bB.BG..........D.'G.&..&.....'..B.BcC".c#...'.F&f&".g....f'.f....B..............B.C..B.#...B.EEBc"..&...&................B.BB.BB.C##."B.BG.........D.'..fG"..g....B.BB.BB.CCc..f....gF.b......'."..............B.BB.BB.C##."B.BG...........D.dGF&....f'.."B.BB.C......#......#.....Ccc"B.C....'..........&f...f'.f....B..............B.BB.BB.C##.BB.BG..`......D.dg....f....'....B.BB.BB.BB.BB.BB.BB.B@........D.d...&....f&..F..B.BB.C....C..B..cC."B.C#.....g.f..G....&f....'..F.................B.E..d.B.BB.C##..B.BG....H......D.d...&........"B.BB.C....C..BB.C#.....g.f..G....&f....'..F.................B.E..d.B.BB.C##."B.BG...........D.d...&....F&f.'F.B.C....f&...g.......f'.f....B..............B.C..".##C.B.BB.BB.BB.BB.BG..."....D.d.&.&....GF&.B.BB.C.....C."B.Bc#..#B.f.&....B..B...f'.f....B........D..$..B.BB.BB.C##
+..(......D.d.&.&....GF&.B.BB.C.....C."B.Bc#..#B.f.&....B..B...f'.f....B........D..$..B.BB.BB.C##.BB.BG...........D.d..."....F"......B.BB.C....C...B.C....&...g.....'..F.................B.E..d.B.Eg.f&..'......GG"...Gf......&...F...g.&...b..&.f.BB.C##.bB.BG....p......D.d....F...&...&..F"B.C##..f....F&".g.....'..F.................B.C......C....#.#.....C..B.C..".C...F...&......'.......F....B.BB.D'.g.&..g.&f.....GG"...Gf.....'."..'F"....&...F....b..&.f.BB.C##.bB.BG..........D.d&...f...&.&.B.BB.BB.C".&.&......gB.....F...............d..B.BB.BB.BB.BG..........D.d....&...&&.B.Df....B..F....c.b........'..F...B.BB.C"..&b.g....f'.f....B..............B.BB.BB.C##."B.BG...........D.d......f&..F"B.D.'g..b.F....#."...&..&..."........'..F...B.C.....cc"...#b#CC......B.CC".F.....B.'.........&........cD.....B.E..d.B.D.g...B...GF.g.F&&........f..g.....F&..".."..F.&.b....&...F....b..&.f.BB.C##.bB.BG..`......D.d....&...G.."B.BB.C......c"..C.#.B.Bc....C....FB.g.....g....'..F...........D..%..B.E..d.B.BB.C##.bB.B@........D.d........F'FF'F"B.BB.BB.C.c...&.f...g.....&.&...............%.BB.BB.BB.C##..B.BG...@......D.d........F...B.BB.C....c.....Ccc"B.C....'..&.....'.....f'.f....B........D..ec.B.C...&...F'..C....D%..BB.D..FF&..f&.....B.C##.bB.BG...B....D.eF&........B.BB.C..".#..BB.BB.E..`............D.eF&........B.BB.C..".#..BB.BB.E..d.B.BB.C##.bB.BG..(......D.eG..B...&..B.Bc....".&.F.G..g.....'..F.................B.C....###"..cB..c..B.EEB.cb..''B..............B.E..d.B.BB.C##.bB.BG...........D.e.&........B.BB.BB.BB.E..d.B.BB.C##.bB.BG.........D.&..........."B.CC.".F..&.".g......cB...'..F.................B.C......#".....#.CB.#.."B.C....f'..'F&...g..........B.F'"...........$c.B.C.g.&...F.......d....".gF..B.BB.C##.bB.BG....8......D.'.f.......&&..B.BB.B..#.##C".CCC.B.Cc".F.ff.&....gF.b.......&........cD.....B.BB.BB.C##..B.BG..h......D....'B..f'.."B.BB.BB.EEBcB.......&...........$".E.BB.BB.BB.C##..B.BG...........D....&....F&..B.BB.BB.CCCB.F.....'.....B.B.BB.BB.C##."B.BG...X......D...F....'.&.B.BB.BB.BB.BB.BB.BB.BG.........D..F'...B..f'..G&.B.BB.BB.CC...F..F.F......B.....F..................B.BB.BB.C##..B.BG...........D..F...'....G.."B.BB.BB.Ccc....'F&...'......&&.'F"..&..b..............B.BB.BB.C##."B.BG.........D...'...F.&.B.D.B..".cc#....'..F.................B.C.....CC....#"#c#.....BB.CC#....F...F&....gF.b...f&.f'F.&.............D..B.E..d.B.D.'.....F......'G....&..BB.C##.bB.BG...........D..'B...&..&.B.BB.C#c"...'..Gf'.".'......'..F.................B.BB.E..d.B.BB.C##.bB.BG...&......D......f.Gg.&.B.BB.BB.CC.b.F'Ff.&...F....ff'FF.F..................B
+.........D......f.Gg.&.B.BB.BB.CC.b.F'Ff.&...F....ff'FF.F..................B.BB.BB.C##."B.BG..P......D.'&.&...'F"B.BB.BB.BB.BB.BB.BB.BG...H......D...F.G"...F&.f&..B.B.BB.BB.C.C...'&......'Fb.....&.......f....fg"....b.".......B.BB.BB.C##..B.BG...........D.&ff.Gf....f...B.BB.BB.C....F&...g......G...F'"..............B.BB.BB.C##."B.BG..(......D.&f.....F&..bB.BB.C....c.#.B.CC.....G...&f...B....'..F.................B.E..d.B.BB.C##."B.BG...........D.&f.....ff...B.BB.C....##..B.EB.B.c".g..&.'..".........B.D..B.BB.BB.BB.BG..........D.&f.....g.....B.BB.C....CC..B.Bc..B.C....FB.g........'..F.................B.BB.BB.C##."B.B@.h......D.&.Gg.F'gB...ff'BB.BB.B..#.#.#......B.BcC..#.......'b.g.........F..................B.BB.BB.C##."B.BG...........D..GF'b..&....B.BB.BB.C.b..'.......F....f'.f....B..............B.BB.BB.C##."B.B@.H......D..G......'F&....B.E..g..B.F....c.B...&..&...$"........'..F...B.C.............c..B...#.#C....cC.B.Cc.C..f&.....gF.fb....'gf'gf'.."..............B.BB.BB.C##.BB.BG....8......D..GF&.....&f..&.B.E.&..&..."....G...b..F..c#B........'..F...B.C.......".cC..#.."B.C#.b...&.".g.....F&..&"B.E..d.B.BB.C##.bB.BG..8......D.G'f.....'F&.B.BB.C.#......C#.bB.C#."..F.f..".'.....ff'FF.F............$..e."B.BB.BB.C##..B.BG...B.....D.g..F.&....'.&.B.C.....&.'F&fb..B.....`.8......D.g..F.&....'.&.B.C.....&.'F&fb..B....'..F.................B.C......."...'..f.bB.BB.BB.BB.BB.BG.........E.&f&..b..G..&.B.BB.BB.C..f.&...F..f..G...ff'FF.F..................B.BB.BB.C##."B.B@.(......E.'Gf..b..GF..."B.BB.C..b.Ccc...cc.........BB.C#..b.#"....F.."..B..f'.f....B.........B.C..'g..f....f...'F.g..C.B.BB.C##.bB.BG...........E.'.....'f..bB.C.c.....F.'...c#c."B.C....c..BB.C"..&...'.&...gG........'b........$...#.B.E..d.B.BB.C##.bB.B@.H......E...F....f..fbB.Bc"."..&...g.....'..F...........D..e..B.C.....c..B.CC.#...'G........EBcB......&g.....B.b.B.BB.EF.F&.........&....g..F.....f..g...'F'F.B.C##.bB.BG....h......E..f&.'b..F'GG"B.BB.BB.BB.BB.BB.BB.BG....h......E..F..F.....'f.B.BB.BB.BB.BB.BB.BB.BG...........E..g....F..B.BB.C.."..#c...b"..c"..##......."B.C....f'.&.&.".gF.b...G.F.&.................C.B.BB.D.F&.f.&..g..&.B.C##.bB.BG.........E.F''F"..F...B.Cc.b...g..B.g.....'..F.................B.BB.C."..&.....gF.fb...F...&................B.BB.BB.C##.BB.B@.@......E.F&..'...F...B.BB.BB.BB.BB.BB.BB.B@........E....&fb..F&..bB.C.....&...g.......'..F.................B.C....C.#...FcC....#C#'.CC.bB.BB.E..d.B.BB.C##.bB.BG...........E'.&...B..&.&..'.'.B.CC.".g....&GF..b..B.B.C....C.CbB.BB.E..d...F..bB.BB.C##.bB.BG....BB....E'.&...B...B.B.CC.".g....&GF..b..B.B.C..............E'.&...B...B.B.CC.".g....&GF..b..B.B.C....C.CbB.BB.C..&g...".F...B.BB.BC##.bB.B@........EF........."B.BB.BB.Cc....f..g.'...&...F.......'gb..........".ECBB.BB.BB.BB.BG.........EF..'.....F.f..&.B.BB.C.#b..C......B.C#C.......F."..B.......&........cD...#.B.BB.BB.BB.BG...........EF&f..........B.C#.".#.....f&..g.....'..F.................B.C.....Cc...."...C"B.Cc.....&..F&..g.......F..&................B.E..d..f....B.BB.C##.bB.BG...........EF&.."...&.g"B.BB.BB.C#...&...&...'.......F...............D#bB.BB.BB.BB.BG..........EF'g.&f...f&..B.BB.BB.C#."......&....F......F...............E..B.BB.BB.C##..B.B@........EF.F.G.b..F.f.B.BB.C.....C..B.C.".F.".g....f'.f....B..............B.BB.BB.C##.BB.BG.........EF.F.G.f....F&.B.E."....F..#.....'..F...................B.C......#....#.#C#......B.C..F&..&....'......'Ff.&...............B.BB.DGG...b...&f....f.'....F&fb.......'...BB.C##.bB.BG...........EF.F&.f....&&.B.Ccb.f..Ff..g.......'F"..............B.C..".#cc....B.#..bB.C.....'F..&..F........................B.BB.DgF.......F.BB.C##.bB.BG.... ......EF.F&.f....B...&f.&..B.BcC.b......g.......B...f'.f....B..............B.C....CCC"B.BB.BB.BB.BB.BG........EF.F&.f....f'G&.B.C.B.f..Ff.&...g.....'..F.................B.C....CC......#.#Cc".....B.Ccb..&...F..F......F...............E
+ ..."...2',..'%/....
+
+
+.......^..........\.
+R.K.
+@D........X@.....D@Dnd@.........@..\X@........X@...\@...@...D@DpplZddnlX@PhblRdfbZjpnnD@Dff@.......@..\X@.......X@...\@.p.@d.dD@DD@DD@DbrpbD@DD...*.
+@D........X@......D@DD@DD@Dff@.......@..\X@.......X@...\@...@...D@DD@DD@DbrpbD@DD.4.
+@D.........X@.....D@DD@D.dffj@nhjZrlbl@nhjZpjjlD@Ddf@...@..\X@.........X@...\@...@...D@DD@DD@DD@DD....^.
+@D.....X@......D@DFf`bZbfn@..........@...\@.\X@........X@...\@.d.@f.lD@DpplZhpln@.dl`nD@Dj@b^d@........@......X@........X@....\@`brll@...D@Dx.........|X@......D@D..\......D@DbrpfD@DD....'.
+@D.....X@.....D@DD@DD@D..bX@.........X@...\@...@...D@D....D@DD@DbrpfD@DD..,.
+@D...X@........@P...RD@DD@DD@Djp@.....@..\X@.......X@...\@...@...D@DD@DD@DbrpbD@DD....0.
+@D........X@......D@DD@DPl`hR...Z....D@Df`nn@....@d`..@...\X@.........X@.\.\D@DD@DD@Dbrp`D@DD.S.
+@D.......X@....D@DFfbpZb`h@.......@..\X@........X@...\@...@...D@DpplZhllb@PjbrRphdZrfnrD@Df`@.....@..\@.\X@...........X@...\@...@...D@D....D@D......D@DbrpfD@DD...0.
+@D.......X@....D@DD@DPhblRlpfZfhbpD@Dfh@......@.....@....X@....X@...\@.b.@b.dD@DD@DD@DD@DD....4.
+@D........X@....D@DD@DjnlZlppd@nhdZnlbhD@Df``@........@...\X@.........X@...\@...@...D@DD@DD@Dbrp`D@DD....\..@D........X@.....D@DD@DnhdZn`fhD@Djn@.........@..\X@.........X@...\@...@...D@DD@D.4.|.1.
+@D........X@.....D@DD@DnhdZn`fhD@Djn@.........@..\X@.........X@...\@...@...D@DD@DD@DbrpbD@DD..*.
+@D........X@.....D@Dbln@.......@...\X@.......X@...\@...@...D@DD@DD@DD@DD@DD@DD....C.
+@D......X@.....D@Dbjl@........@..\X@........X@...\@.d.@d.nD@DppjZflrjD@DD@DD@D.....@......X@....@..........@F@......D@DbrpfD@DD...'.
+@D.....X@...D@DD@DD@Djdd@....@..\X@......X@...\@...@...D@DD@DD@DbrpbD@DD..6.
+@D....X@......D@DD@DPh`fRdhlZjrrrD@Dhjd`@.....@....@..\.\.\X@.......X@.......@.f.@h.rD@DD@DD@Dbrp`D@DD....L.
+@D.......X@.....D@Dfd@....@....@.....\X@.........X@...\@.d.@b.jD@DjnpZrljh@PlbfRdffZf`dpD@Ddn@......@.....\X@......X@...\@.b.@d.hD@DD@DD@DbrpdD@DD..../.
+@D.........X@....@.\D@DD@DD@Dbl@.......@...\X@..\@..........X@...\@...@...D@DD@DD@DD@DD...].
+@D.......X@....D@Dp`bZb`p@.......@..\X@........X@...\@...@...D@DpplZhllb@PjbrRphdZpnhpD@D...@dfrX@.........X@...\@...@...D@Dx.........|D@D.....@.........X@....@.........D@DbrpfD@DD..;.
+@D.......X@.....D@DD@DpplZlnlrX@pplZldjhD@DFfb`Zbfn@..........@...\@.\X@........X@...\@...@...D@DD@DD@Dbrp`D@DD.....
+@D.......X@.....D@DD@DD@DD@DD@DD@DD@DD....-.
+@D........X@...D@DD@DpplZlhrhD@Ddh`@......@..\X@........X@...\@...@...D@DD@DD@DD@DD.....
+@D......X@.......D@DD@DD@DD@D......D@DD@DbrpfD@DD...h.6.x.+.
+@D......X@.....D@DD@DD@Ddlpl@......@....\X@......X@...\@.b.@p.pD@DD@DD@DbrpbD@DD..M.
+@D.....X@......D@Dbff@..........@...\@....X@........X@...\@.d.@f.jD@DppjZ`b`pD@Dbr`@..........@...\X@.....@...\@.....X@...\@.l.@j.fD@DD@DD@DbrpdD@DD....
+@D.....X@.......@.\D@DD@DD@DD@DD@DD@DD@DD.C.
+@D....X@......D@Dpb@....@.....X@.........X@...\@...@...D@DnhhZhpflD@Dfp@.......@.....\X@........X@...\@.l.@f.pD@DD@DD@DbrpdD@DD...;.
+@D......X@.........@.\@P....RD@DD@DnhjZhjnhD@Dpl@....@..\X@.........X@...\@.d.@b.bD@DD@D....@.......D@DbrpfD@DD...8.
+@D.....X@.....@.\D@DD@DpphZr``lX@hblZddjZphn`D@Ddjh@......@...\X@..........X@...\@...@...D@DD@DD@Dbrp`D@DD....L.
+@D..........P...@......RX@.......D@D.....@........@....\X@.@..@........D@DpphZljnbX@.f`drD@DFrZhjn@......@..\X@........X@...\@.d.@j.nD@DD@DD@DD@DD....-.
+@D..........X@...D@DFl`jZb`p@.......@..\X@........X@...\@...@...D@DD@DD@DD@DD@DD@DD.....
+@D.......X@......D@DD@DD@DD@DD@DD@DD@DD.../.
+@D.........X@.....D@D.Zb@dp`@.......@..\X@........X@...\@...@...D@DD@DD@DD@DD@DbrpbD@DD...4.
+@D......X@.....D@DD@DPhblRdhdZjpfnD@DFdZl`l.@.........@..\X@.......X@...\@.l.@h.fD@DD@DD@Dbrp`D@DD....0.
+@D......X@.....D@DD@DPjbrRhjbZfdhjD@Df`pZbdrr@.....@..\X@......X@...\@.j.@h.bD@DD@DD@DD@DD...@...\..@D..Z.8.P.1.
+@D..Z.......X@.....D@DD@DD@D..@....X@..@...@j`rX@..@.....X@.......@.`.@d.`D@DD@DD@Dbrp`D@DD.....
+@D........X@.......D@DD@DD@DD@DD@DD@DD@DD...
+@D.........X@...D@DD@DD@DD@DD@DD@DD@DD......
+@D.........X@....D@DD@DD@DD@DD@DD@DD@DD.....
+@D........X@.....D@DD@DD@DD@DD@DD@DD@DD...q.
+@D.....X@.....D@D........Zfbj@......@..\X@.........X@...\@.d.@j.dD@DnhfZp`dn@PhblRhprZbdnbD@Dbfl@.........@.....\X@.......X@...\@.h.@b.pD@Dx....@.........|X@......D@D.....@........X@....@.....X@....@...@......D@DbrpfD@DD..K.
+@D.......X@......D@DFbbZhfn@.....@..\X@........X@...\@...@...D@DpplZlddd@nhdZpb`pD@Ddl@..........@....\X@.......X@...\@...@...D@DD@DD@DbrpdD@DD...-.
+@D........X@....D@DD@DD@Dldlp@.......@....\X@.......X@...\@.b.@b.nD@DD@DD@Dbrp`D@DD...E.
+@D......X@...D@DFf`fZdrh@........@.....X@.........X@...\@.d.@d.bD@DjnpZbln`D@Djl`@......@..\X@......X@...\@.b.@j.fD@DD@DD@Dbrp`D@DD...:.
+@D....X@...D@DD@DpphZhhndD@Dfbr@........@.....X@........X@...\@...@...D@DD@D......@..@..X@..@......D@DbrpfD@DD....N.
+@D......X@....D@Djd`@........@..\X@........X@...\@.d.@h.hD@DpphZphbj@PhblRndjZrfhbD@Dbb`@.........@..\X@......X@...\@.b.@h.lD@DD@D..\......D@DbrpfD@DD...D@DD\..@D........X@.......D@DFpbnZjn@.....@..\@.\X@........X@...\@.d.@b.rD@DnhhZdnfp@Pr`dRhd.:.j.w.
+@D........X@.......D@DFpbnZjn@.....@..\@.\X@........X@...\@.d.@b.rD@DnhhZdnfp@Pr`dRhddZjnjlD@Dbb`b@.......Z..Z...Z...X@.......X@.\......\@.f.@b.dD@Dx....@.........|X@....D@D.....@.....X@..\@.......@.....X@......@........D@DbrpfD@DD...w.
+@D.........X@....D@DFb`hZfp`@...@..\@.\X@........X@...\@.d.@b.lD@DpplZnf`h@pplZfbddt....@PhblRpddZffhh@.dnf`D@Dbhrf@.....@..\X@....\X@...\@.j.@f.fD@D....X@......D@D..........@............@.........X@.....@........X@......D@DbrpfD@DD..d.
+@D......X@.....D@DFdpZp`@.........@..\X@........X@...\@.d.@d.dD@DppjZ`fdp@PhblRdnpZjfp`D@Dbbb@..........@..\X@...........X@...\@.j.@f.fD@DD@D.....@...X@........@....X@....@....\@F@......D@DbrpfD@DD.1.
+@D.......X@.....D@DD@DjnrZ`frdD@Dj`@..........@..\X@.........X@...\@...@...D@DD@DD@Dbrp`D@DD..3.
+@D.......X@....D@DD@DD@Ddnl@...........@..\X@.......Z..Z...Z....X@...\@...@...D@DD@DD@DbrpbD@DD.....
+@D....X@.....D@DD@DD@DD@D......D@DD@DbrpfD@DD.*.
+@D....X@.....D@DD@DD@Dbn@........@..\X@...........X@...\@.bl@f.fD@DD@DD@DbrpbD@DD.6.
+@D....Z..Z.....X@....D@DFdnZfdh@......@..\@.\X@........X@...\@...@...D@DpplZbf`j@.fbhfD@DD@DD@DD@DD@DD......
+@D..........X@.....D@DD@DD@Dbp@........@...\.\X@..........X@...\@...@...D@DD@DD@DbrpbD@DD....\..@D.....X@.......D@DD@DD@DD@DD@DD@.<.8...
+@D.....X@.......D@DD@DD@DD@DD@DD@DD@DD......
+@D...@......X@........D@DD@DD@DD@DD@DD@DD@DD....
+@D...@.......X@....D@DD@DhblZllpZlr`dD@Dr`f@......@..\X@......X@...\@...@...D@DD@DD@DD@DD.J.
+@D..........X@......D@Dbbh@.....@...@..\X@........X@...\@...@...D@DpplZnndl@...tppjZbdbb.dfhjD@DD@D....@.....@...D@D....@.\@.......D@DbrpfD@DD......
+@D......X@......D@DD@DD@Dlfjf@......@..\X@.......@.....X@...\@.d.@d.pD@DD@DD@Dbrp`D@DD....0.
+@D...@.....X@...D@DD@DnhhZdhfhD@Dlp@.......@..\@....X@........X@...\@.d.@b.nD@DD@DD@DbrpdD@DD.e.
+@D......X@......D@DbZfbr@......@..\X@........X@...\@...@...D@DpppZlnnb@PhblRrfhZrrjjD@Dpp@........@..\X@..\@..........X@...\@...@...D@DD@D......@.....X@.....@......X@....@....\@F@......D@DbrpfD@DD..0.
+@D......X@...D@D....@fbhX@......@.....X@.@..@........D@D.dj`p@pphZnnplD@DD@DD@DD@DbrpdD@DD....'.
+@D.....X@...D@DD@DpplZrbnlD@D.\.\Fb@..\......X@...\@.`.@d.`D@DD@DD@DD@DD..f.
+@D........X@.....D@Dbfr@..........@...\@.\X@...@jd@..Z.rX@........X@...\@.n.@b.hD@DpplZr`dr@PhblRlfhZ`lljD@Ddj`@...@....\X@..........X@...\@.n.@b.hD@D....D@D.........X@......@...X@.....@....D@DbrpfD@DD....\..@D.....X@......@.\D@DFn`~Zdpj@...@..\@.\X@........X@...\@.d.@b.jD@DpppZljdj@Pr`dRhhfZrbjjD@Dnd`@.......@...\X@.......X@.\......@.f.@d.>.l.b.
+@D.....X@......@.\D@DFn`~Zdpj@...@..\@.\X@........X@...\@.d.@b.jD@DpppZljdj@Pr`dRhhfZrbjjD@Dnd`@.......@...\X@.......X@.\......@.f.@d.rD@Dx........|X....D@D..\.....X@.....@.......D@DbrpfD@DD....@.
+@D.......X@....D@DD@DjnpZffpdD@Dd`@.......@..\X@.........X@...\@...@...D@DD@D.....@......X@......X@...@........D@DbrpfD@DD....I.
+@D....X@......D@Db`n@.........@..\X@........X@...\@.d.@h.bD@DpplZrrpd@pplZ`jb`D@Dbb@.......@.....X@.........X@...\@.f.@j.nD@DD@DD@DbrpbD@DD...3.
+@D.......X@....D@Dhh@......@..\D@DpppZlprlD@Ddpb@.........X@......@.b.@j.hD@D....D@DD@DbrpfD@DD...0.
+@D.....X@....D@DFp`bZdpj@...@..\@.\X@........X@...\@...@...D@DppjZdbrjD@DD@DD@DD@Dbrp`D@DD....1.
+@D.........X@.....D@DD@DD@Djdn@..........@...\X@......X@...\@.d.@d.fD@D......D@DD@DbrpbD@DD.....
+@D..........X@....D@DD@DD@DD@D....D@DD@DbrpfD@DD....
+@D......X@....D@DD@DD@DD@DD@DD@DD@DD..5.
+@D.....X@.....D@DFf`fZblb@..........@...\@.\X@........X@...\@.d.@f.jD@DpphZj``dD@DD@DD@DD@DbrpdD@DD...3.
+@D.......X@....D@DD@DhblZhhjZdd`nD@Db@..........@...\X@...@.....X@...\@...@...D@DD@DD@Dbrp`D@DD...G.
+@D.........X@....@.\D@DD@DPhblRnjbZnfpp@...........^.......D@DFf`fZbnn`@........@......@....X@.....@....X@...\@.h.@d.bD@DD@DD@DbrpdD@DD.....X\..@D....X@....D@DD@DD@DD@DD@DD@.@.....
+@D....X@....D@DD@DD@DD@DD@DD@DD@DD....+.
+@D........X@....D@DD@DD@DFd``hZj`@.........X@.......X@...\@...@...D@DD@DD@DD@DD...G.
+@D.........X@...D@Dbbd`n@nnZ......X@........X@.......D@DpphZnpnhD@DFbf`jZbjr@..........@...\@.\X@........X@...\@...@...D@DD@DD@Dbrp`D@DD..-.
+@D....X@.....D@DF.pZbhf@........X@........X@...\@...@...D@DpplZnjdpD@DD@DD@DD@DD@DD...B.
+@D.....X@......D@D..\dfd@.......@....\X@.@..@.\D@DpphZfrfn@.ddbdD@DFd`bZhnn@........@..\X@........X@...\@...@...D@DD@DD@DbrpbD@DD.*.
+@D.......X@.....D@DD@DD@Dbhd@........@...\X@..........X@...\@.p.@d.dD@DD@DD@DD@DD./.
+@D....X@......D@DFnZjd`@........@..\X@........X@...\@...@...D@DpplZj``rD@DD@DD@DD@DD@DD...U.
+@D.......X@.....D@D..\@....N.@.......@..\dlX@.@..@........D@DpphZlfd`@hblZlfnZrdpbD@DjdfZfr`@......@....X@..........X@...\@...@...D@D....@......@....D@DD@DbrpfD@DD.....
+..D@DD@DD@DbrpbD@DD.....
+@D....X@.....D@DD@DD@DD@D......D@DD@DbrpfD@DD.*.
+@D....X@.....D@DD@DD@Dbn@........@..\X@...........X@...\@.bl@f.fD@DD@DD@DbrpbD@DD.6.
+@D....Z..Z.....X@....D@DFdnZfdh@......@..\@.\X@........X@...\@...@...D@DpplZbf`j@.fbhfD@DD@DD@DD@DD@DD......
+@D..........X@.....D@DD@DD@Dbp@........@...\.\X@..........X@...\@...@...D@DD@DD@DbrpbD@DD....\..@D.....X@.......D@DD@DD@DD@DD@DD@.B.|._.
+@D.....X@......@.\D@D.......@.......@....@bbrX@........X@...\@.d.@f.hD@DpphZhpjr@Pr`dRhhfZrbjjD@Dnd`@.......@...\X@.......X@.\......@.f.@d.rD@D....D@D..\.....X@.....@.......D@DbrpfD@DD..@.
+@D.......X@....D@DD@DjnpZffpdD@Dd`@.......@..\X@.........X@...\@...@...D@DD@D.....@......X@......X@...@........D@DbrpfD@DD....I.
+@D....X@......D@Db`n@.........@..\X@........X@...\@.d.@h.bD@DpplZrrpd@pplZ`jb`D@Dbb@.......@.....X@.........X@...\@.f.@j.nD@DD@DD@DbrpbD@DD...$.
+@D.......X@....D@Dhh@......@..\D@DpppZlprlD@DD@D....D@DD@DbrpfD@DD....0.
+@D.....X@....D@DFp`bZdpj@...@..\@.\X@........X@...\@...@...D@DppjZdbrjD@DD@DD@DD@Dbrp`D@DD....,.
+@D.........X@.....D@DD@DD@Djdn@..........@...\X@......X@...\@.d.@d.fD@DD@DD@DbrpbD@DD...
+@D......X@....D@DD@DD@DD@DD@DD@DD@DD..5.
+@D.....X@.....D@DFf`fZblb@..........@...\@.\X@........X@...\@.d.@f.jD@DpphZj``dD@DD@DD@DD@DbrpdD@DD...3.
+@D.......X@....D@DD@DhblZhhjZdd`nD@Db@..........@...\X@...@.....X@...\@...@...D@DD@DD@Dbrp`D@DD...G.
+@D.........X@....@.\D@DD@DPhblRnjbZnfpp@...........^.......D@DFf`fZbnn`@........@......@....X@.....@....X@...\@.h.@d.bD@DD@DD@DbrpdD@DD.....
+@D....X@....D@DD@DD@DD@DD@DD@DD@DD....+.
+@D........X@....D@DD@DD@DFd``hZj`@.........X@.......X@...\@...@...D@DD@DD@DD@DD...p`@.D.n.G.
+@D.........X@...D@Dbbd`n@nnZ......X@........X@.......D@DpphZnpnhD@DFbf`jZbjr@..........@...\@.\X@........X@...\@...@...D@DD@DD@Dbrp`D@DD..-.
+@D....X@.....D@DF.pZbhf@........X@........X@...\@...@...D@DpplZnjdpD@DD@DD@DD@DD@DD...B.
+@D.....X@......D@D..\dfd@.......@....\X@.@..@.\D@DpphZfrfn@.ddbdD@DFd`bZhnn@........@..\X@........X@...\@...@...D@DD@DD@DbrpbD@DD.*.
+@D.......X@.....D@DD@DD@Dbhd@........@...\X@..........X@...\@.p.@d.dD@DD@DD@DD@DD./.
+@D....X@......D@DFnZjd`@........@..\X@........X@...\@...@...D@DpplZj``rD@DD@DD@DD@DD@DD...U.
+@D.......X@.....D@D..\@....N.@.......@..\dlX@.@..@........D@DpphZlfd`@hblZlfnZrdpbD@DjdfZfr`@......@....X@..........X@...\@...@...D@D....@......@....D@DD@DbrpfD@DD.....
+DD@DD@DD@DD@DD......
+@D...@......X@........D@DD@DD@DD@DD@DD@DD@DD....
+@D...@.......X@....D@DD@DhblZllpZlr`dD@Dr`f@......@..\X@......X@...\@...@...D@DD@DD@DD@DD.C.
+@D..........X@......D@Dbbh@.....@...@..\X@........X@...\@...@...D@DpplZnndl@...tppjZbdbb.dfhjD@DD@D....@.....@...D@DD@DbrpfD@DD.....
+@D......X@......D@DD@DD@Dlfjf@......@..\X@.......@.....X@...\@.d.@d.pD@DD@DD@Dbrp`D@DD....0.
+@D...@.....X@...D@DD@DnhhZdhfhD@Dlp@.......@..\@....X@........X@...\@.d.@b.nD@DD@DD@DbrpdD@DD....\..@D......X@......D@DbZfbr@......@..\X@.F.|.V.
+@D.....X@......@.\D@D.......@.......@....@bbrX@........X@...\@.d.@f.hD@DpphZhpjr@Pr`dRhhfZrbjjD@Dnd`@.......@...\X@.......X@.\......@.f.@d.rD@D....D@D..\.....D@DbrpfD@DD._.
+@D.....X@......@.\D@D.......@.......@....@bbrX@........X@...\@.d.@f.hD@DpphZhpjr@Pr`dRhhfZrbjjD@Dnd`@.......@...\X@.......X@.\......@.f.@d.rD@D....D@D..\.....X@.....@.......D@DbrpfD@DD..1.
+@D.......X@....D@DD@DjnpZffpdD@Dd`@.......@..\X@.........X@...\@...@...D@DD@D~~~D@DbrpfD@DD...@.
+@D.......X@....D@DD@DjnpZffpdD@Dd`@.......@..\X@.........X@...\@...@...D@DD@D.....@......X@......X@...@........D@DbrpfD@DD....I.
+@D....X@......D@Db`n@.........@..\X@........X@...\@.d.@h.bD@DpplZrrpd@pplZ`jb`D@Dbb@.......@.....X@.........X@...\@.f.@j.nD@DD@DD@DbrpbD@DD...$.
+@D.......X@....D@Dhh@......@..\D@DpppZlprlD@DD@D....D@DD@DbrpfD@DD....0.
+@D.....X@....D@DFp`bZdpj@...@..\@.\X@........X@...\@...@...D@DppjZdbrjD@DD@DD@DD@Dbrp`D@DD....,.
+@D.........X@.....D@DD@DD@Djdn@..........@...\X@......X@...\@.d.@d.fD@DD@DD@DbrpbD@DD...
+@D......X@....D@DD@DD@DD@DD@DD@DD@DD..5.
+@D.....X@.....D@DFf`fZblb@..........@...\@.\X@........X@...\@.d.@f.jD@DpphZj``dD@DD@DD@DD@DbrpdD@DD...3.
+@D.......X@....D@DD@DhblZhhjZdd`nD@Db@..........@...\X@...@.....X@...\@...@...D@DD@DD@Dbrp`D@DD.....\.H...G.
+@D.........X@....@.\D@DD@DPhblRnjbZnfpp@...........^.......D@DFf`fZbnn`@........@......@....X@.....@....X@...\@.h.@d.bD@DD@DD@DbrpdD@DD.....
+@D....X@....D@DD@DD@DD@DD@DD@DD@DD....+.
+@D........X@....D@DD@DD@DFd``hZj`@.........X@.......X@...\@...@...D@DD@DD@DD@DD...G.
+@D.........X@...D@Dbbd`n@nnZ......X@........X@.......D@DpphZnpnhD@DFbf`jZbjr@..........@...\@.\X@........X@...\@...@...D@DD@DD@Dbrp`D@DD..-.
+@D....X@.....D@DF.pZbhf@........X@........X@...\@...@...D@DpplZnjdpD@DD@DD@DD@DD@DD...B.
+@D.....X@......D@D..\dfd@.......@....\X@.@..@.\D@DpphZfrfn@.ddbdD@DFd`bZhnn@........@..\X@........X@...\@...@...D@DD@DD@DbrpbD@DD.*.
+@D.......X@.....D@DD@DD@Dbhd@........@...\X@..........X@...\@.p.@d.dD@DD@DD@DD@DD./.
+@D....X@......D@DFnZjd`@........@..\X@........X@...\@...@...D@DpplZj``rD@DD@DD@DD@DD@DD...U.
+@D.......X@.....D@D..\@....N.@.......@..\dlX@.@..@........D@DpphZlfd`@hblZlfnZrdpbD@DjdfZfr`@......@....X@..........X@...\@...@...D@D....@......@....D@DD@DbrpfD@DD.....
+DD@Dbp@........@...\.\X@..........X@...\@...@...D@DD@DD@DbrpbD@DD...
+@D.....X@.......D@DD@DD@DD@DD@DD@DD@DD......
+@D...@......X@........D@DD@DD@DD@DD@DD@DD@DD....
+@D...@.......X@....D@DD@DhblZllpZlr`dD@Dr`f@......@..\X@......X@...\@...@...D@DD@DD@DD@DD.......z..@.@...B..	.......
+
+
+...N..N......N......
+$...0.......N.....	.M.......D..F..	MM...D	.L.OE..D.....N.N.........F......F................GG...........0.......L.N..	.OD.........GFF..........D....L.N..E.	....	..................... 0.......M...N....N.L....F.D.M.N.N..N.DN.E.........F...EJ.E...N.N.....	....	....I........GF..D...F.F...F...D....F.	.M...N....N..M......	....	....I.....H...........GG..........0.......M...N....N.L....F.D.M.N.N..N.DN.E.........F...EJ.E...N.N.....	....	....I........GF..D...F.F...F...D....F.	.M...N....N..M......	....	....I.....H.......N.L.....	.N...D..L....N..D	..L....GG........0.......M....M...N........M.N.......L.D....D.FGE...N.N.....	....	.............F..GD..F..F...GFFFD.......L.....	..E..	.M.L.O..	......LD..D...D...H.....N..........GG........0.......M....M...N........M.N.......L.D....D.FGE...N.N.....	....	.............F..GD..F..F...GFFFD.......L.....	..E..	.M.L.O..	......LD..D...D...H.....N........	.M..D	.L..M.....GG........ 0.......M..M...	..........F..F.........	.N..N.......	.N...M.N..	........................GG..........0.......M..M...	..........F..F.........	.N..N.......	.N...M.N..	..................LN..D..N.....	.N..N.........M..D...GG..........	........N...	..M..D...F....N.............N.N.....	....	....FD......GGG......F.FF....FD	M....N....L.E.....%.. 0.......N...	..M..D...F....N.............N.N.....	....	....FD......GGG......F.FF....FD	M....N....L.E...M.......	....	....HF..........GG.D........0.......N..L...	MM.D.........N...........F..F.......H........GG...........0.......L..E...L.......EF..DN............N.N.....	.................EF.GFD............GG...........0.......M..M......N.M..........F....M..N.LN.DN.E..	...N.E.	....	..D.............GG.D......0.......M..N....L...........................0.......ML....N..D.......FF.D.M.N.N..N.DN.E.......N.N.....	....	.....FD......FF...............GG.........`0.......M..N...	LN.........F.F..EF.......D	LN.....N.DN.E.....	MM....	.....................GG..........0.......M..N.....	..............F.F.FEF........M..N.........L.........FF...L..M....N.M.LDLN...	......M....	....	FD...D.........GG..........0.......N.E.	.L............................`0.......N.......	.MM...............FF.M.O.M..N...........	.............................0.......N......E.N.D...FF......HN.M.LE.L.M......M..N..D......F........F..EFFGD.M.N.N..N.DN.E.......N.N.....	.....................GG.........0............LM.D....G.FF.....ML.LE...N.N.....	..................F.F.....................D........L....M...N.....E.......N.L...N.....D............F.F......F.......EF.....N...L.D......@0.......L....M...N.....E.......N.L...N.....D............F.F......F.......EF.....N...L.D......N.N.....	.....................GG.D.....@0.......LL..N....L..D.........F...M......N.E..	.LMMM......	....	.	....................0.......M...	NN..OD.....FF....N...L.D......N.N.....	..................FF..D....................0.......N.N.M..	.M..D........NM.......L.D..E.....D.....N.N..........F......F.F...GF..D...F..F.F..LM...	.M.E..N..M......	...............H...................GG..........
+....M..M..N...	.M.L.D...FF.	.LN....OD.......N.N.....	..................F...........EFF.FO....D......H....L...J.D......GG..........0.......N.L.E.	LL..LD...........F.	NN..OD.....	.LL.N.D.M....	....	................GG...........0.........	.LL...N.D.........F...........M..LMD......N.....N.N.....	....	....I...........GG........0.......M..M.....N.M....EF.GD....L.D.......N.N.....	..................F...D...F.GF..GGFFD.......M..N............N..N.M.N..	........................GG.........0.......M..M.....N.M....EF.GD....L.D.......N.N.....	..................F...D...F.GF..GGFFD.......M..N............N..N.M.N..	...................N..LD.NLNLE.	LN..D..N.....N.M..........M..N....GG.........L.......N.....	.M.......D..F..	MM...D	.L.OE..D.....N.N.........F......F.................

@@ -1,0 +1,47 @@
+
+
+
+.Bu..Bu.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/fasshole   
+.he'FASS'- % -'ACT III SCENE IX'
+.fo'ACT III SCENE IX''FASS' 
+Act 3, Scene 9 - Chevron
+
+
+.nf 
+ XXXXXX    XXXXXX   XXXXXXX   XXXXXXX   XX    XX
+XX    XX  XX    XX  XX    XX  XX    XX  XX    XX
+XX        XX    XX  XX    XX  XX    XX   XX  XX 
+ XXXXXX   XX    XX  XXXXXXX   XXXXXXX     XXXX  
+      XX  XX    XX  XX    XX  XX    XX     XX   
+XX    XX  XX    XX  XX    XX  XX    XX     XX   
+ XXXXXX    XXXXXX   XX    XX  XX    XX     XX   
+.fi 
+
+
+fin 

@@ -1,0 +1,169 @@
+
+
+
+...L..b.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1989/script/bulkmacr.t 
+.bs 2 c "COURTING DISASTER" 
+.na ju JUDGE~SIMON~MALAPROP MALAPROP
+.na pa PAM~ASSONIC PAM  
+.na li BILL~LIBERTY BILL
+.na st KAY~STONE KAY
+.na ba BAILIFF~HAY BAILIFF  
+.na lg LISA~GRIEMENT~(VIGNETTE) LISA
+.na ro LUCAS~SPIELBERG SPIELBERG
+.na jj JOE~VIAL~(VIGNETTE) JOE  
+.ld 
+(LIGHTS UP ON THE TRIAL SPACE.  JUGHEAD IS ON THE WITNESS STAND.
+MALAPROP'S BENCH IS NOW SO SURROUNDED BY TOYS THAT HE CAN'T SEE OUT)
+.prip "WALL OF TOYS FOR JUDGE"  
+.ch ju  
+(TO PAM)
+Ms. Defensive Attorney, you may cross-pollinate the witless.
+.ch pa  
+No questions, your Honour.  
+.ch ju  
+(TO JOE)
+Mr. Vial, you may step down.
+Mr. Prosecutor, call the next witness.  
+.ch li  
+The prosecution arrests, your Honour.   
+I mean "rests". 
+.ad 
+(MALAPROP CLEARS AWAY HIS TOYS AND GLARES AT LIBERTY.)  
+.ch ju  
+Are you making fun of me?   
+.ch li  
+No, er...   
+.ch ju  
+I don't like it when people make fun of me. 
+Bailiff, haul this hooligan hurriedly to the hoosegow.  
+.ad 
+(BRIEF PAUSE.   
+EVERYONE LOOKS STUNNED) 
+.ex 
+How on earth did I manage to say that?  
+
+.ch ba  
+I'm sorry, sir. 
+I can't arrest this man.
+He is not a criminal, he's a lawyer.
+.ch jj  
+That's funny, I can't tell the difference.  
+.ch lg  
+Neither can I.  
+.ch jj  
+Is there a difference?  
+.ch ju  
+Oh, all right.  
+Mr. Prosecutor, please give your closing argument.  
+.ch li  
+Your Honour, I --   
+.ad 
+(KAY SHOULDERS HIM ASIDE)   
+.ch st  
+Out of my way!  I'm doing the closing argument. 
+.ch li  
+Who says?  I'm the lead lawyer, and I get to do the closing argument,   
+and you're not going to stop me.
+Besides, I'm a man, and I'm bigger and I'm stronger.
+.ch st  
+Yeah, but I'm meaner.   
+.ad 
+(STARES DOWN LIBERTY)   
+.ch st  
+Members of the jury: you have before you conclusive evidence that proves
+beyond a shadow of a doubt with no possibility of contradiction that the
+defendant who stands before you is a cold-blooded, heartless, ruthless, 
+scheming, conniving killer. 
+.ch ju  
+Thank you.  
+Does the defense wish to call any witnesses?
+.ch pa  
+Just one, your Honour.  
+The defense calls Lucas Spielberg to the stand. 
+.ad 
+(ENTER SPIELBERG)   
+.ch ro  
+(TO AUDIENCE, OR TO NO ONE IN PARTICULAR)   
+Hi, there.  
+Glad to see you.
+Hey, you're looking good.   
+Let's do lunch sometime.
+.ch ba  
+Do you swear to tell the truth, the whole truth, and nothing but the truth? 
+.ch ro  
+Hey, if I knew the whole truth, we wouldn't need a trial.   
+.ch ba  
+All right, then.  Do you swear to tell little bits of the truth?
+.ch ro  
+No problem. 
+.ch ba  
+Take the stand. 
+.ch ro  
+Where should I take it? 
+.ch ba  
+That's an old joke, sir.
+.ch ro  
+That's all right -- I'm an old witness. 
+.ch pa  
+Mr. Spielberg, state your occupation.   
+.ch ro  
+My name is Lucas Spielberg, producer of stage and screen extravaganzas. 
+My card.
+.prip "BUSINESS CARD"   
+.ch pa  
+And you produced the broadcast of the game at which 
+His Satanic Victimness was killed, right?   
+.ad 
+(NOTE:  AT THIS POINT, TECHIES ENTER AND MAKE THE STAGE LOOK LIKE A 
+GIANT TELEVISION SCREEN)
+.ch ro  
+(MODESTLY)  
+Well, an effort like this requires the work of several talented people; 
+I just happened to be the one whose name got on the credits first.  
+.ch st  
+In large pink letters that flashed. 
+.ch ro  
+Wait a minute here, campers.
+Are you accusing me of being an egotist?  Me, Lucas Spielberg, the  
+
+greatest television producer in all the known worlds?   
+Nonsense!   
+Fortunately, I am above such slights.   
+.ad 
+(HE SNIFFS.  TECHIES ARE DONE BY NOW)   
+.ch pa  
+With Your Honour's permission, I would like to show a portion of the
+taped broadcast of the game on this 536 inch living colour TV.  
+(TO SPIELBERG)  
+Can we take it from the beginning of the rain delay?
+.ch ro  
+Hey, I can dig it.  
+.ld 
+(PRESSES BUTTON.  LIGHTS CHANGE FOR 2:3)
+.prip "VCR CONTROL" 
+.es 

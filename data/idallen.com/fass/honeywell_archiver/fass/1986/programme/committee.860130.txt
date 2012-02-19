@@ -1,0 +1,52 @@
+
+
+
+.   .z..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{bl}{bf}{ps 8P} 
+{sy "echo Committee"}   
+And lastly to these, the members of the FASS '86 Committee, I leave 
+my guarantee that they won't have to babysit me or the show 
+after February 15.  
+{bl}{ro}
+{char "President" "Tom Hocaliuk"}   
+{char "Secretary" "Jennifer O\l\'Connor"}   
+{char "Treasurer" "Ken Jones"}  
+{char "Social Director" "Linda Carson"} 
+{char "Director" "Suzanne V. Langdon"}  
+{char "Technical Director" "Gillian Teichert"}  
+{char "Producer" "Lynn McRuer"} 
+{char "Chief Scriptwriter" "Linda Carson"}  
+{char "Stage Manager" "Brenda Parsons"} 
+{char "Reps" "Peter Carette, Peter Fraser,"}
+{char "" "Wendy Potter, Karl Wagner"}   
+{char "Past President" "Steve Hutton"}  
+{char "Past Director" "Margaret Eaton"} 
+{char "Past Producer" "Jennifer O\l\'Connor"}   
+{char "Past Tech Director" "Adam Qualter"}  
+{char "Past Chief Scriptwriter" "Tom Hocaliuk"} 
+{char "Honourary Members" "Ian! Allen, Doug Crichton"}  
+{char "" "Jim Gardner, Tom Hocaliuk"}   

@@ -1,0 +1,78 @@
+
+
+
+.......W
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.\" vtroff -F meteor -3 bocklin 
+.pn 11  
+.br 
+.ne 20v 
+\&  
+.sp 3v  
+.HD 
+.ce 
+Reviews of other books in this series.  
+.HZ 
+Although FASS itself has not changed all that much over the last
+seven or eight years, others' views of us certainly have... 
+.sp 0.5v
+.HZ 
+``FASS [1976] was nothing more than the ugly features of a dying social system  
+reflected in a thoroughly degraded culture -- a culture desperately 
+trying to prop up fascism as the only answer.'' 
+.br 
+.ta \n(.luR 
+	-- \f2the chevron,\f1 February 13, 1976
+.HZ 
+``[FASS 1975's The Peasants' Revolt] was blatantly sexist, intellectually   
+bankrupt -- with the multitude of cliches, and most of all the peasants lost
+the revolt, which is contradicted with the success students are having in   
+Quebec, and hopefully in Ontario, in opposing oppressive measures against   
+the students.'' 
+.br 
+	-- \f2the chevron,\f1 February 14, 1975
+.HZ 
+``Like Johnny Carson, FASS seems to be able to pick out the sacred cows of  
+the society we inhabit and exhibit them for public and healthy laughter.''  
+.br 
+
+
+
+
+
+
+
+
+	-- \f2Imprint,\f1 February 12, 1982
+.HZ 
+``FASS is a four letter word that starts with `F' and means the most fun
+thing you can do with other people.''   
+.br 
+	-- \f2Imprint,\f1 January 29, 1982 
+.HZ 
+.sp 1v  
+Be sure to collect the whole series.
+We'll see you again next year in FASS 1984! 

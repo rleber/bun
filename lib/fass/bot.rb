@@ -4,6 +4,7 @@ require 'fass/rtf'
 require 'fass/script'
 require 'fass/clean'
 require 'mechanize'
+require 'fileutils'
 
 class Fass
   class Bot < Thor
@@ -83,13 +84,68 @@ class Fass
       write_file output_file, cleaner.clean2
     end
     
+    no_tasks do
+      def fetch(base_uri, destination)
+        count = 0
+        agent = Mechanize.new
+        FileUtils::rm_rf(destination)
+        process(agent, base_uri) do |page|
+          relative_uri = page.uri.path.sub(/^#{Regexp.escape(base_uri)}/, '')
+          file_name = destination + relative_uri
+          dirname = File.dirname(file_name)
+          FileUtils::mkdir_p(dirname)
+          File.open(file_name, 'w') {|f| f.write page.body}
+          count += 1
+        end
+        puts "#{count} files retrieved"
+      end
+      
+      def process(parent, item, &blk)
+        uri = uri(parent, item)
+        page = get(parent, item)
+        if uri =~ /\/$/ # It's a directory; fetch it
+          page.links.each do |link|
+            next if IGNORE_LINKS.include?(link.text)
+            next if link.href =~ /^mailto:/i
+            process(page, link, &blk)
+          end
+        else # It's a leaf (page); process it
+          yield page
+        end
+      end
+
+      def uri(parent, item)
+        case parent
+        when Mechanize::Page
+          base_uri = parent.uri
+          raise "Unexpected link item from page #{item.inspect}" unless item.is_a?(Mechanize::Page::Link)
+          sub_uri = item.href
+          (base_uri + sub_uri).path
+        when Mechanize
+          item
+        else
+          raise "Unknown parent type #{parent.inspect}"
+        end
+      end
+      
+      def get(parent, item)
+        case parent
+        when Mechanize::Page
+          raise "Unexpected link item from page #{item.inspect}" unless item.is_a?(Mechanize::Page::Link)
+          item.click
+        when Mechanize
+          parent.get(item)
+        else
+          raise "Unknown parent type #{parent.inspect}"
+        end
+      end
+    end
+    
+    IGNORE_LINKS = ["Name", "Last modified", "Size", "Description", "Parent Directory"]
     desc "idallen", "Fetch files from Ian! Allen's online repository"
     def idallen
       agent = Mechanize.new
-      page = agent.get("http://idallen.com/fass/honeywell_archiver/")
-      page.links.each do |link|
-        puts link.text
-      end
+      fetch("http://idallen.com/fass/honeywell_archiver/", "data/idallen.com")
     end
   end
 end

@@ -1,0 +1,529 @@
+
+
+
+........
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1985/script/85macr.t   
+.bs 1 4 "Grad to See You"   
+.na we WENDY~ST.~SKOMARCHINGIN WENDY
+.na ln LENNY~R.~PROGRAMMING LENNY   
+.na fg FROG~MAN FROG
+.na td TADPOLE TADPOLE  
+.na gr MAN~FROM~GRAD GRAD   
+.na fa FASS~GORDON FASS 
+.na rd REDUNDANCY~MAN REDUNDANCY
+.na dk DARTH~COORDINATOR DARTH  
+.na cp CABBAGE~PATCH~KID CABBAGE
+.na ny NASTYMAN NASTY   
+.na cc CARLA~CHAMELEON CARLA
+.na rh ROBIN~HOOD ROBIN 
+.na pn THE~PUNSTER PUNSTER  
+.na im INSULT~MAN INSULT
+.na ss SLIME~OF~THE~STREETS SLIME   
+.ld 
+(LIGHTS UP) 
+.ad 
+(THIS PART OF THE SCENE SHOULD TAKE PLACE IN FRONT OF THE SCRIM.
+THE SCENE OPENS WITH WENDY SITTING IN AN ELECTRIC CHAIR.  LENNY ENTERS) 
+.ch we  
+(SCREAMS LOUD AND LONG) 
+.ch ln  
+Wendy!  
+.ad 
+(LENNY TURNS OFF THE POWER ON THE ELECTRIC CHAIR)   
+.ex 
+I know things are rough, but that's no reason to try to kill yourself.  
+.ch we  
+No, you nincompoop.  I was trying to get a superpower by having 
+a horrible freak accident.  
+.ch ln  
+It's not very accidental if you do it yourself. 
+.ch we  
+It doesn't have to be an accident; it only has to be
+terrible enough to kill any normal human being. 
+.ch ln  
+I've had CS assignments like that...  Did it work?  Do you  
+have a super power? 
+.ch we  
+
+
+No, you turned off the electricity. 
+.ch ln  
+Oh, sorry!  
+.ad 
+(LENNY TURNS ON THE POWER AGAIN)
+.ch we  
+(SCREAMS LOUD AND LONG) 
+.ch ln  
+(SOLILOQUY, AS WENDY SCREAMS IN THE BACKGROUND) 
+Girls: I'll never understand them.  
+I walk in and I see her screaming in pain.  I say to myself, "here's
+a damsel in distress; I'll save her".  I don't expect much in return.   
+A smile and "thank you", perhaps.  Some slight acknowledgement that 
+but for me she would be have died a horrible, gruesome death.   
+.ch we  
+TURN...OFF...THE...POWER!   
+.ch ln  
+This puts me in a dilemma.  On the one hand, she's enduring 
+a great deal of pain and asking me to relieve her suffering.  On the
+other hand, by turning off the power I deprive her of a chance to   
+become a super hero.
+.ch we  
+TURN...OFF...THE...POWER!   
+.ch ln  
+As I said, an acute moral dilemma.  
+.ad 
+(LENNY TAKES COIN OUT OF POCKET AND FLIPS IT)   
+.ex 
+Heads.  I save her! 
+.ad 
+(LENNY RUSHES TO THE MACHINE AND TURNS OFF THE POWER)   
+.ch ln  
+Are you all right?  
+.ch we  
+You idiot!  
+.ch ln  
+Oh no.  I did the wrong thing.  She wanted me to leave the power on.
+(MOVES HIS HANDS TOWARDS THE SWITCH)
+.ch we  
+NO!!!!!!!!  
+.ad 
+(LENNY MOVES AWAY FROM THE MACHINE) 
+.ex 
+How could anyone be such a fool?  I ask you to turn off the power.  
+You are an absolute imbecile.   
+.ch ln  
+Gosh, I'm sorry, Wendy.  Moral dilemmas have never been my strong suit. 
+.ch we  
+(BEGINNING TO REGAIN HER COMPOSURE) 
+That's eight tries at getting a super power.  Eight tries; eight    
+failures.   
+.ch ln  
+You know what I've heard, Wendy?  A lot of us have latent super 
+powers inside us, only we don't know about them.    
+.ch we  
+A lot of good it does me to have a super power and not know it. 
+.ch ln  
+Well, I could write a computer program to find out if you have  
+a latent super power.   
+.ch we  
+That would take years.  
+.ch ln  
+Not if I was writing it!
+I could do it in just a few minutes, for you, Wendy.
+.ch we  
+Really?  Oh, Lenny, if you found out that I had a super power   
+I'd be so grateful.  I'd do anything for you!   
+.ch ln  
+Even go out on a date with me?  
+.ch we  
+Don't push it.  
+.ch ln  
+I'll get on it right away.  
+.ad 
+(EXIT LENNY.  ENTER FROG MAN AND TADPOLE)   
+.ch we  
+Lenny, look who's here!  Oh, damn!  He's gone!  
+.ch fg  
+Calm down, Tadpole. 
+.ch td  
+But, Frog Man, she said you look like a toad and I look like
+a sperm cell!   
+.ch fg  
+She's just trying to get you upset. 
+The next time Carla Chameleon compares me to a toad, just tell her that 
+toads don't have webbed feet (HOLDS UP WEBBED HAND), frogs do.  
+.ch td  
+Holy catcher's mitt, Frog Man, you're right.
+.ch fg  
+And, as for sperm cells...(WHISPERS IN TADPOLE'S EAR)   
+.ch td  
+Really? 
+.ch fg  
+I'll show you sometime, little buddy.   
+.ch we  
+Excuse me.  I wonder if you two could help me.  I'm trying to get a 
+super power.
+.ch fg  
+Have you tried getting into a freak accident?   
+.ch we  
+Yes, eight times.  And each time I've failed.   
+.ch td  
+Holy Joe Clark, Frog Man, she's a loser!
+.ad 
+(WENDY STARTS TO CRY)   
+.ch fg  
+Don't cry, young lady.  I have something you can try.  A miniature  
+atomic powered exploding lily pad.  
+.ad 
+(FROG MAN GIVES HER THE EXPLODING LILY PAD) 
+.ch td  
+Holy hand grenade, Frog man!
+.ad 
+(WENDY SETS UP THE EXPLODING LILY PAD)  
+.ch we  
+Three, two, one...  
+.ld 
+(BRILLIANT FLASH OF LIGHT)  
+.sd 
+(BOOM!!!!)  
+.ad 
+(LENNY RUSHES IN)   
+.ch ln  
+I've found it!  Your latent superpower.  Wendy, you have nine lives!
+.ch we  
+(SLOWLY COUNTS TO NINE ON HER FINGERS AND FALLS DEAD)   
+.ch ln  
+Oh, Wendy!  
+(SOLILOQUY:)  I loved her more than anything else in the world. 
+I just know that in time she would have gone out with me.  I even   
+made up this costume for her.  (HOLDS UP CAT SUIT)  
+.ch td  
+Holy Heartbreak, Frog Man!  
+.ch ln  
+I was thinking maybe one day we could   
+settle down in Scarborough and have 2.4 kids and a dog  
+(LOOKS AT CAT SUIT)... scratch the dog. 
+.ch fg  
+We'll all miss her, Lenny. But the fight against evil must go on.   
+.ch td  
+She would have wanted it that way!  
+.ch ln  
+The program said that I have a super power, too.  I'll use my   
+power to fight evil, and I'll do it for you, Wendy! 
+.ad 
+(LENNY EXITS)   
+.ch fg  
+There's a lesson in this, Tadpole.  
+.ch td  
+That true love is stronger even than death? 
+.ch fg  
+No, that you can give someone a super power, but he'll still be a wimp. 
+.ad 
+(EXI
+
+(EXIT FROG MAN AND TADPOLE, CARRYING WENDY'S CORPSE)
+.ld 
+(LIGHTS UP BEHIND THE SCRIM, AS IT RISES)   
+.ad 
+(STAGE IS SPLIT, GOOD GUYS STAGE RIGHT, BAD GUYS STAGE LEFT.  BOTH SIDES
+SHOULD HAVE A SMALL TABLE WITH CHAIR, AND MORE CHAIRS FURTHER BACK, FOR THE 
+HEROES/VILLAINS ACCEPTED FOR THE RUMBLE.  EACH SIDE SHOULD BE MADE OUT TO   
+LOOK LIKE SOME SORT OF ADMINISTRATION OFFICE.   
+AS THE LIGHT COMES UP FASS GORDON IS PUSHING THE MAN FROM GRAD IN A 
+WHEELCHAIR TOWARDS THE TABLE.   
+THE MAN 
+FROM GRAD IS AN ANCIENT ORIENTAL WITH A LONG WHITE BEARD, SOMETHING LIKE THE
+MASTER ON KUNG FU, WITH A VOICE (AND ESPECIALLY A LAUGH) LIKE LIN YE TANG ON
+SECOND CITY...AHA AHA AHA!) 
+.ch fa  
+(IRONICALLY) I'm certainly glad that the
+recruitment for the rumble is being done by someone as wise and sage
+as you, Man from Grad.  
+.ch gr  
+You are not as Grad as I am! Aha aha aha!   
+Aha aha aha!
+.ch fa  
+Too true, what qualities are we looking for, sir?   
+.ch gr  
+We require those with courage, loyalty (royarty!), and a
+strong moral fibre. 
+.ch fa  
+Anything else?  
+.ch gr  
+Sexy tights and a set of knockers out   
+to here (HOLDS HANDS OUT FROM CHEST)!  Aha aha aha! 
+.ch fa  
+Yes, of course, I should have guessed.  
+Here comes the first group of candidates!   
+.ad 
+(MAN FROM GRAD SITS AT TABLE, FASS TO HIS SIDE, STANDING.  THE FIRST GROUP OF   
+APPLICANTS FORM A LINE IN FRONT OF THE RECRUITMENT TABLE.   
+AN ALL-PURPOSE HERO-TYPE STRIDES UP TO THE DESK AND 
+HANDS A RESUME TO THE MAN FROM GRAD)
+.ch rd  
+They call me Redundancy Man, because that's what my name is.
+I have a resume, which has my job history, where I used to work, previous   
+places I've been employed, and a list of my past jobs.  
+It also has some descriptive information which tells you who I am, Redundancy Man.  
+Uh, that's my name. 
+.ad 
+(THE MAN FROM GRAD STOPS CHORTLING SUDDENLY AND FURROWS HIS BROWS SOLEMNLY TO LOOK  
+DOWN AT THE RESUME) 
+.ch gr  
+Let me see.  You have the powers of an insect - 
+Cockroach Man has that.  You can run forever without tiring -   
+Jogger Nut has that.
+(SCANS PAGE)  I just don't  
+think we need you.  
+.ch fa  
+(CONSOLINGLY AGAIN)  Better luck next time. 
+.ch rd  
+But what about my ability to kick villains when they're down?!? 
+.ad 
+(FASS LEADS HIM OFF)
+.ad 
+(LENNY R.~PROGRAMMING STEPS FORWARD WEARING A T-SHIRT WITH A LARGE 'W' ON IT)   ETS .ch 
+
+.ch gr  
+Who are you?  (POINTING AT 'W')  Superwimp?  Aha aha aha!   
+.ch ln  
+(BOLDLY, IGNORING MAN FROM GRAD)  I call myself WILL POWER now! 
+My old name, Lenny R. Programming, was a bit too... 
+.xx ALL 
+Wimpy?  
+.ad 
+(LENNY GIVES FASS A DISPLEASED LOOK)
+.ch gr  
+What is your superpower, Will?  
+.ch ln  
+I can do an entire Stats assignment without falling asleep. 
+.ad 
+(EVERYONE ON STAGE DOES A DOUBLE TAKE IN AWE, PREFERABLY EXAGGERATED)   
+.xx ALL 
+Gasp!   
+.ch ln  
+And without a calculator.  I only use tables.   
+.ch gr  
+Don't you use a chair, too? Aha aha aha!
+.ad 
+(FASS LUNGES TO THROTTLE MAN FROM GRAD, SHAKING MAN FROM GRAD VIOLENTLY IN RAGE)
+.ex 
+(CHOKING)   
+.ex 
+Please Fass!  Please!  I make joke!     
+.ad 
+(FASS IMMEDIATELY LETS GO, STRAIGHTENS TIGHTS AND REGAINS FORMER COMPOSURE) 
+.ch gr  
+(IGNORING FASS AND REGAINING COMPOSURE) Will Power is certainly 
+welcome here.  You are accepted.
+.ad 
+(FASS STOPS JUMPING AND POINTS LENNY/WILL TO THE 'ACCEPTED' AREA)   
+.ch gr  
+Next!   
+.ld 
+(LIGHTS DOWN STAGE RIGHT, LIGHTS UP STAGE LEFT) 
+.ad 
+(THIS SIDE OF THE STAGE IS SET UP IDENTICALLY TO THE HEROES' SIDE, THOUGH   
+DECORATED SO
+
+DECORATED SOMEWHAT DIFFERENTLY.  THERE ARE NO CHAIRS FOR THE 'REJECTS'. 
+DARTH COORDINATOR STRIDES OUT.  
+WITH HIM IS CABBAGE PATCH KID,  
+PERHAPS CARRYING 'CABBAGE PLOT' DOLLS WITH THEIR VERY OWN DEATH 
+CERTIFICATES.  THEY ENTER AND DARTH COORDINATOR SITS DOWN AT THE CHAIR  
+WITH A GREAT FLOURISH OF HIS CAPE.  THERE IS NO LINE-UP AS YET) 
+.ch dk  
+Where are the applicants?   
+.ch cp  
+Here they come now, Darth Co-ordinator, sir!
+.ad 
+(THE APPLICANTS FILE FORWARD AND QUICKLY FORM A LINE.   
+THE FIRST APPLICANT IS WEARING A TYPICAL EVIL-TYPE UNIFORM WITH A LARGE 
+STYLIZED 'N' ON HIS CHEST)  
+.ch dk  
+So, you're Nasty Man.  What have you done that's so nasty?  
+.ch ny  
+I've taken candy from babies.   
+I've put blindfolds on seeing-eye dogs, and 
+sold my grandmother into slavery.  And run for the leadership of
+the NDP.
+.ch dk  
+That's not nasty, that's stupid.
+Close enough, you're in.
+.ad 
+(NASTYMAN HUSTLES OVER TO THE SIDE AS THE NEXT APPLICANT COMES IN.  
+CABBAGE PATCH IS
+MUNCHING AWAY ON CANDY STOLEN FROM NASTYMAN)
+.ch cp  
+Next!   
+.ad 
+(NEXT IN LINE IS CARLA CHAMELEON)   
+.ex 
+(LOOKING HER OVER)  Well now, what do you do?   
+.ch cc  
+I'm Carla Chameleon.  I can change into (EMPHASIZE) anything I choose.  
+.ch dk  
+Like what?  
+.ch cc  
+How about... something more comfortable?
+.ad 
+(PULLS FORTH A TINY, SLINKY NEGLIGEE
+FROM SOMEWHERE. 
+DARTH PERKS UP, LOOKS INTERESTED.  CABBAGE PATCH STARTS TO DROOL)   
+.ch dk  
+I'm sure we can fit you in ... somewhere.   
+.ad 
+(MOTIONS HER FORWARD WITH A WAVE
+OF HIS ARM. 
+CARLA SAUNTERS FORWARD SEXILY)  
+.ld 
+(LIGHTS DOWN STAGE LEFT, LIGHTS UP STAGE RIGHT) 
+.ad 
+(MEANWHILE ON THE GOOD SIDE, THE LINE CONTINUES TO MOVE FORWARD.  DIFFERENT 
+PEOPLE ARE STANDING IN LINE, ALL OF THE ORIGINAL ONES BEING SEATED EITHER   
+WITH THOSE ACCEPTED OR WITH THE REJECTS.  THIS INDICATES THAT THE LINE HAS  
+MOVED FORWARD, AND IT IS NOW NEARING THE END.  THREE REMAIN IN LINE)
+.ch gr  
+Who is next?
+.ad 
+(ROBIN HOOD STEPS FORWARD, CARRYING HIS BOW, WITH AN ARROW) 
+.ch rh  
+I am Robin Hood, champion of truth, justice, and puppy dogs 
+everywhere.  I stand for goodness, wholesomeness, quality,...   
+.ch gr  
+Yah, yah!  enough...
+.ch rh  
+...and my guarantee is sealed on every package. 
+.ad 
+(HOLDS UP   
+A PACKAGE OF ROBIN HOOD FLOUR)  
+.ch gr  
+I don't want to hear any flowery speeches!  
+Do I look like Johnny   
+Carson?!?   
+.ad 
+(FASS LAUGHS CONDESCENDINGLY)   
+.ex 
+Shut up, Alpo breath!   
+(LOOKING AT ROBIN HOOD) 
+What's with the 
+bow?
+.ch rh  
+(PULLING UP BOW)  I, Robin Hood, am the best archer on  
+the planet.  I never miss.  
+.ch fa  
+Prove it, hotshot!  
+.ch rh  
+(POINTING BOW OFFSTAGE, WHEREVER CONVENIENT)  See that fly? 
+.sd 
+(BUZZING SOUND EMANATES FROM WHEREVER, SHOULD BE VERY LOUD) 
+.ch fa  
+(SQUINTING)  No!  (CUPPING HAND TO EAR)  But I can hear it! 
+.ad 
+(ROBIN HOOD LETS ARROW FLY) 
+.sd 
+(BUZZING SOUND RISES SHARPLY IN PITCH)  
+.ch gr  
+Ooh!  Impressive!  We can use a man with your skill!
+.ad 
+(NEXT IN LINE IS THE INFAMOUS PUNSTER.  HE SHOULD BE CARRYING A 'GAG BAG')  
+.ch gr  
+So!  Who are you?   
+.ch pn  
+The Punster, at your service (BOWS).
+Look, man, no depravities.  
+.ch gr  
+Ahh, good!  Well then Punster, what kind of hero would you  
+make?   
+.ch pn  
+What kind of hero?  (REACHES INTO BAG) One with salami (PULLS OUT ITEMS 
+AS THEY ARE CALLED), lettuce, cheese, tomato... 
+.ch gr  
+Argh!  That's horrible!  Get out!   
+.ch pn  
+(PULLING A SUBMARINE BUN FROM A BAG)...but I was on a roll! 
+.ch gr  
+No!  Get out!  Fass, kick him out!  
+.ch pn  
+I'll get you for this, Grad!
+.ad 
+(FASS MOVES FORWARD TO EJECT PUNSTER, BUT PUNSTER BEANS HIM WITH THE BUN AND
+TAKES OFF BACKSTAGE.  FASS STANDS MOMENTARILY STUNNED WITH THE IMPACT)  
+.ch gr  
+Fass you ninny!  Get over here! 
+.ad 
+(FASS RECOVERS AND RETURNS TO HIS POSITION BESIDE THE MAN FROM GRAD)
+.ld 
+(LIGHTS DOWN STAGE RIGHT, LIGHTS UP STAGE LEFT) 
+.ad 
+(AS LIGHTS COME UP ON THE EVIL SIDE, THERE ARE FOUR CANDIDATES LEFT IN LINE.
+THE BODY HEAP CONTAINS EIGHT OR SO PEOPLE BY NOW, ENTANGLED IN RED TAPE.
+MIME MAN HAS BEEN ACCEPTED, AND IS BUSY WALKING AGAINST THE WIND OR 
+SOMETHING.  
+NEXT IN LINE IS INSULT MAN, WHO COMES FORWARD AND HANDS DARTH A 'RESUME')   
+.ch dk  
+(READING)  What?!?  This is nothing but insults!
+.ch im  
+Of course, carburator-face! 
+I'm Insult Man, and 
+I bet your REAL face is so scary you have   
+to sneak up on a glass of water!
+.ch dk  
+Hmmm... you have negative  potential.  A definite evil streak.  
+.ch im  
+Well, I guess that cape (POINTING) is to hide your  
+ ..~..Z/a   `.......&.'g`...
+
+..@..&......g.F.&b"."...F..&.F&&.......&.."..&.."......B..&f..&..Gb......f....@..f....'...".............'...".f&fgg.&.....&.....B.......'b.&......F&fb....h....B...fb.f..f....'b.....'...&f....'b.......b...$..D$de.%D..d...D$...$..b'....8...&...h....%E...D.$d..b...E.%D...%...d...d.....%e...d%.d.$...$.e.....$..%b.......g....P..D$de.%D........$.....b..%b..D%..$.....$..b.$.e.....$..$eD.eb.....D...'...P...f..g.......G.........f......D.$.."...g.&f&F.."...."..&..&........'......P...f...g...p.."..&......&f....'.....f&&..&F....."....."....P...f..g....X....'b....gb..&f..".F.B...B.....F.....&.'..8...&......."..D.....$......Eb..$...d..%Eb.%.%".....D..".........%b..%"..%.......D$..$d$.."...D$.......d...'....8...&...P........%e..$...$...%b........e..B...%.$...d..db.$...D...........B.d$..'...P...f...g..........d$.....B"................g..B.....'..'b.&..B.....C...P...f...........".....C...f'.."..'..b".......$.......$....E..B"....'..b.&..Gc...P...f...g......".....Gg.&...&....&.."...Fb...F..&..f.....&..F&f"....P...f.......(..&.b..G...".....".f.&...F.f...&.......P...f...g.........g..B"....'..b.&Gf......"...GF&F......&...F..&.'...8...&...0......$..b.....$dd.......d.%.b.$..........e..B..%..$.".de.ED$.b....'...8............$.........e.$..........$...b....e.$...D$...'...8...&....'@...`.....dd....d.$..b..........D..b.d$...$.$$.........$...D....D$..d%.b.%......d$..........e.$....... ...%eb...D....e.$..b...E...B....%D.b......D...........%..B.....e...d. .P...f...'...(.....f............g...F..F..b...&......(...'...F....f..f.........."...B.&..B..F.'...&....b..G...F.f'.f..&..........'...".F........&........8...&.......e......"....e..B.%...%Eb..D........D...$..D$dee.$..'....P...f..........".F.........".......&....&...'...'....'..G..Gg..#...".."'....8...&...@...$...B...%b.ED$...d..dd.......%E.b.%.%".....d....e...D..D..b..%d..$...B..$...E...e....%b....".d......b.........D....$..$.....x...$......%D..%.........B......"...D..%D.............%..B....d....D....$..b.$..D%.$..e.dd.ed$..'...P...f..............'..&f'.".......f...&..&&.b...G&&......g.".....b .P...f...............&.............g..B....%e..$.....$..".f'&&.....'..........GF&F......'....P...f...'............G...........F'..Gb...f&.....'..f&...F&........F....P...&..b'...8...&...X......E$.....%.d.b.d.$....".$..$...$$.d.'..P...f.......x...e.$..$.....".."....gb...."...F.....".F...'..8...&..........E$....e.%D.b..$......'...P...f...G... ..'b.&...f..........&..&&.b..'...f.&.........b...."..&.............'.
+..'......'B...g...&&F..&f&...&...b.'.......&.....&......&.....p..'F....&......$....."...g.......`......."...g......g.ff.....'......'B.....F.&.....ff....b.....P...f.......p...&f......&.......f&&...&..&..B..'f..&........P...f..F...........&...gF'G"......&..&..G...`..GG&.gF.&.....P...f.......X......&....8..F'FF....'F..&..&..B.....&.....gb............$..........%g....`.........F.gb .8............$...b................%b...$...b.......D$....%b'....8...&........$..$$.b..d$...$.$$....%....%E...d...D.$.%..B........d$...$........d$DD$....%.d..d$......D.......%..D$.......$..D.eb'...P...f..g..........f...........g...G.&..&&.b...&....'...F....f..f........@....."...B.&..B..F.'...&....b..G...F.f'.f..&...'F......F&.."...%.d.b.......(...%.....e.."...&.....&.....'..f.......g.&f&F..........b.d..d.....'....P...f..fg...P.....b.&...F&......F....$..$d%..b...%E.'...P...f...g......"..&....'..F.........P...f..g....X...d.DD$....%...D.""..&...F..&...f...&...&....'f..g.&......&f.......&.&.'.....".....B..&.......P...f...g...p....D....""....."..G..".'F.."..F..f....gF......P...f..........E.Ee.$...$...D......e.$.."...F..f....gF.....&.....'b..&.f&.........&F....."..&'Fg.......P...f...g... ....%.........d$.."..&.....g..B"........b.&F..........F..b.........&...P...f.................&....."..&.....f......."...F...f&...f.&ff..b .P...f...g.....B.e.$.b.$......b....e..B.$..e.D$.......Dd...@...@.....e.$.b.$......b....e..B.$..e.D$.......Dd...D%."..f'...&..G...X....GF&.....b...B.......F..b....'....b.".F...G.....D...%d.b..$..e......"'..P...f...........E.DD$.....D.%."..&.b....F..f...F.&.'..B......"....F........'.......&.........'B...&..B.'b..'gb.....Deb...".&...&g.....`....f...'gb...%E.....D.b.....e..B.d%.d..b..$.d...".......P...f...g...`...'gb...F.....P...f..g.........'...&.g"..'.......F'"......."....F'...&...........f.F..b..."....g.&fb.&Gf.FF&...GB..&...'b.F.ff.".f..G.b'....."......Ff...&......'.f.......'..F.....f.'F..".F.G..b'....P...f...g...@....'..b.....g.'F'.......f&....&...F.......f....B.....&....f.......g...&f..0..g.F........F..b...........&."....."...&...&...d................'.'...P...f..gg.......&f........&'..&...&...'......f....Ff..&......dc.....P...f..&..............'B.&.g.&F&.b.f'F.b...F.....".g.'f&.'G.....P...f..fg.......&f.......'..."...B..d%......P...f...g... ......&....&..""..G"...F.&.'.&.........P...f..g....X..&.......b....&'.&...&..&.G.f....B...........'.....F.."..'gf&gF..........f.'.....B....................'f...F.B..........%.d...........%..$..d.".."........'b.F.B .P...f...g..............'..'F......&'.&.....C......F..............&..'...P...f..&.... ..&.....&..&..'f...b..&.&f..&....F&....X......$....H......g...D$..&..'f...b..&.&f.. ...8..&..'f...b..&.&f..&....F&........""'..8..&..'f...b..&.&f..&....F&........""'..8..&..'f...b..&.&f..&....F&........""'..(...fB.E...F.........f............&..B.E...F.........f........'F'F.G....H................F.........f............&......(..f&.....&..'f...b..&.&f..&....F&.........'..b...&......F.."...fg.."...&f.....B......'.....b......'...&..'....H....g.'..........FF'.&...f.g.....F...'g....H.....F...'.."....g.........f'f..F.f'.f........F.f'.f...F.f'.f...F.f'.f...F.f'.f...F.f'.f.......P...f..&........."..&.....g.....&.....'......#..P...f..fg... .....F&'f.......F.g.&..........ff......P...f..gg...8......'....b.".......&f.......F........P...f..g.......e$.$d$..""....f'.'f."...........&.&&f&..gF'.&..b.........&.'....X......$........d...$..."".....F&...'...H......'....@..F.f'.f..&.'..&.....'......&..b........b .H......G.........F.........f............&......0..f&.....&..'f...b..&.&f..&....F&..'...8............$...b.....'....8....g......&...X......E$.....%.d.b.d.$....".$..$...$$.d.'..P...f.......x...e.$..$.....".."....gb...."...F.....".F...'..8...&..........E$....e.%D.b..$......'...P...f...G... ..'b.&...f..........&..&&.b..'...f.&.........b...."..&.............'.
+..'......'B...g...&&F..&f&...&...b.'.......&.....&......&.....p..'F....&......$....."...g.....@.`.@..F.f'.f..&.'..&.....'......&..b........b .H......G.........F.........f............&......0..f&.....&..'f...b..&.&f..&....F&..'...8............$...b.....'....8....g.....gb...."...F.....".F...'..8...&..........E$....e.%D.b..$......'...P...f...G... ..'b.&...f..........&..&&.b..'...f.&.........b...."..&.............'.
+..'......'B...g...&&F..&f&...&...b.'.......&.....&......&.......'F....&.....&.....g...&..........H...F............F...g..&.&.....B.F&...........&.......'......'B....&..g...........F.&.....ff....b .P...f.......p...&f......&.......f&&...&..&..B..'f..&........P...f..F.......B.....&...gF'G"......&..&..G.......&..F'.....b.f....&.......P...f.......p...B.....&.....8..F'FF....'F..&..&..B.....&.....gb............$..........%g....`.........F.gb .8............$...b................%b...$...b.......D$....%b'....8...&........$..$$.b..d$...$.$$....%....%E...d...D.$.%..B........d$...$........d$DD$....%.d..d$......D.......%..D$.......$..D.eb'...P...f..g..........f...........g...G.&..&&.b...&....'...F....f..f........@....."...B.&..B..F.'...&....b..G...F.f'.f..&...'F......F&.."...%.d.b.......(...%.....e.."...&.....&.....'..f.......g.&f&F..........b.d..d.....'....P...f..fg...P.....b.&...F&......F....$..$d%..b...%E.'...P...f...g......"..&....'..F.............`.......&f........&'..&...&...'......f....Ff..&......dc.....P...f...g.......&...&.."....&....&..""..G"...D.$.%.$.........F..b...P...f..g....H...f&.'.'.&...&...g."............b....&'.&...&..&.G.f....B.................X.....f'...."".'.....F.."..'gf&gF..........f.'.....B.........'..&.""............'f...F.B.........'.f...........'..&..f."."........'b.F.B'...P...f...g...H....'..b.'............&..&&.b.g.'G............&.....'..".G....."....."'....p....'.F..'F&..".....b.F..................F..........&..&&.b..G..F...".F'..'b...."...'.....B.....G..F...'.......fB.D..F..b..&..&&.b.'F......".&...F....&.B.EF&&..F..b.f.....&..&......."...&.G..P...f...'...H........... .....f...&..&&.b.'F......".&...F....&.....G.....'.....f......&..&.......".f.'f......&........&........F'f.&...b.......B..............."...f&..."...&......f..fb.......&...'....".F'".......H......g.......F.f'.f..".....'....".f...............&..&&.b.f.......f......b...............f...g.......'........F.........&....&..&&.b.......F...F........G....g....H...........@.....f...&..&&.b.'F..&...".G..f.....f...b.....&.."...F..&....&...F..f.."...........&f.........g..........f..&.......&.'..........."...f&..."...&......f..fb.......&...'....".F'".......H......'.......F.f'.f..".....'...............&..&&.b....F.'.........f.
+`.P...f..g....H...........0.....f....F..b.'F......".&...F....&.......&.b...'....&.b...........F'.....'B.'F.b.......f.'f.....'B...&.g........b....F.....&.....F..........."......."..'.........'F&.....F..b.....&.f.g..H......g.......F.f'.f.."...f&fb...".f................F..b.f........'.f................fgF'.f...........'........F.........&.....F..f.G.f.b.'F..&...'F...........H...........H.....f....F..b.'F..&...".G..f.....f...g.......&.."...F.."....."......"...........&f.........g........f..&.......&.'..........."......."..'.........'F&.....F..b.....&.f.g..H......'.......F.f'.f.."...f&fb......F.....F...F'....'G.....f&fb....`.........E$....8....g.....F...F.&.b'...8............$...b......e.$...D$......$...b....e.$.......'..8...&...p....$..$$.b..d$...$.$$....%........%E...d...D.$.%..B........d$...$...d%..$$.......d$DD$....%.d......D.......%..D$.......$..D.eb.'..P...f..g....P....'....&..'.""....f...........g...G.&..&&.b...&....'...F....f..f.........@....."...B.&..B..F.'...&....b..G...F.f'.f..&...'F......F&.."...'.f.b.......X...'.....g.."...&.....&....F....g.'...""...'..f.......g.&f&F.......g.'G.g..0.........f..f...........'Gb.&...&.b'...P...f..fg..........'..&f&..""....b.&...F&......B...$..$d%..b...%E. .P...f...g......"..&....'..F.........P...f..g......".f.FF&....'.............d.$..........e.D.........&f........&'..&...&...'......f....Ff..&......dc.....P...f...g.......&...&.."....&....&..""..G"...D.$.%.$.........F..b...P...f..g....H...f&.'.'.&...&...g."............b....&'.&...&..&.G.f....B.................X.....f'...."".'.....F.."..'gf&gF..........f.'.....B.........'..&.""............'f...F.B.........'.f...........'..&..f."."........'b.F.B'...P...f...g...H....'..b.'............&..&&.b.g.'G............&.....'..".G....."....."'....p....'.F..'F&..".....b.F..................F..........&..&&.b..G..F...".F'..'b...."...'.....B.....G..F...'.......fB.D..F..b..&..&&.b.'F......".&...F....&.B.EF&&..F..b.f.....&..&......."...&.G..P...f...'...H........... .....f...&..&&.b.'F......".&...F....&.....G.....'.....f......&..&.......".f.'f......&........&........F'f.&...b.......B..............."...f&..."...&......f..fb.......&...'....".F'".......H......g.......F.f'.f..".....'....".f...............&..&&.b.f.......f......b...............f...g.......'........F.........&....&..&&.b.......F...F........G....g....H...........@.....f...&..&&.b.'F..&...".G..f.....f...b.....&.."...F..&....&...F..f.."...........&f.........g..........f..&.......&.'..........."...f&..."...&......f..fb.......&...'....".F'".......H......'....&..F.f'.f..".....'................
+.F.f'.f..".....'...............&..&&.b....F.'.....P...f..g....H...........0.....f....F..b.'F......".&...F....&.......&.b...'....&.b...........F'.....'B.'F.b.......f.'f.....'B...&.g........b....F.....&.....F..........."......."..'.........'F&.....F..b.....&.f.g..H......g.......F.f'.f.."...f&fb...".f................F..b.f........'.f................fgF'.f...........'........F.........&.....F..f.G.f.b.'F..&...'F...........H...........H.....f....F..b.'F..&...".G..f.....f...g.......&.."...F.."....."......"...........&f.........g........f..&.......&.'..........."......."..'.........'F&.....F..b.....&.f.g..H......'.......F.f'.f.."...f&fb......F.....F...F'....'G.....f&fb....`.........E$....8....g....
+...........$...b......e.$...D$......$...b....e.$.......'..8...&...p....$..$$.b..d$...$.$$....%........%E...d...D.$.%..B........d$...$...d%..$$.......d$DD$....%.d......D.......%..D$.......$..D.eb.'..P...f..g....P....'....&..'.""....f...........g...G.&..&&.b...&....'...F....f..f.........@....."...B.&..B..F.'...&....b..G...F.f'.f..&...'F......F&.."...'.f.b.......X...'.....g.."...&.....&....F....g.'...""...'..f.......g.&f&F.......g.'G.g..0.........f..f...........'Gb.&...&.b'...P...f..fg..........'..&f&..""....b.&...F&......B...$..$d%..b...%E. .P...f...g......"..&...
+
+..f.FF&....'...F."".&...F..&...f...&...&....'f..g.&......&f.......&.&.'......".....B..&.......P...f...g...h....F....""...."..G..".'F.."..F..f....gF.......P...f.......P...g......"..G.Gg.&...&...F......g.&.."..F..f....gF.....&.....'b..&.f&........&F....."..&'Fg........&..b.....'b.f..G...&'B'....P...f...g...0....'.........f&..".&.....g..B".......b.&F..........F..b.........&.....P...f.................&....."..&.....f......."...F...f&...f.&ff..c..P...f...g...@...g.&.b.&......b....g..B.&..g.F&.......Ff...F'."..&...&.......".f'...&..@.P....GF&.....b...B.......F..b....'....b.".F...G....F...'f.b..&..g......"'...P...f...........G.FF&.....F.'.".&.b....F..f...F.&.'..B......".'F..f...&.....X........F..b.........&.........'B...&..B.'b..%eb.....Fgb...".&...&g.....g.....f...%eb...%Db...F.b.....g..B.f'.f..b..&.f..."........P...f...g.......f....""..'gb...F....P...f..g....P.......""...'...&.g"..'.......F'"...........&.....f'..."."....F'...&..........f.F..b..."....g.&fb.&Gf.FF&...GB..&...'b.F.ff.".f..G.b".."......Ff...&......'.f
+..'..F.....f.'F..".F.G..b'....P...f...g...X....'..b.....g.'F'.......f&....&...F.......f....B.....&...f.......g...&f...0..g.F........F..b...........&."....."...&...&...d................'b'..........d.$..........e.D.........&f........&'..&...&... .........&f........&'..&...&...'......f....Ff..&......dc.....P...f...g.......&...&.."....&....&..""..G"...D.$.%.$.........F..b...P...f..g....H...f&.'.'.&...&...g."............b....&'.&...&..&.G.f....B.................X.....f'...."".'.....F.."..'gf&gF..........f.'.....B.........'..&.""............'f...F.B.........'.f...........'..&..f."."........'b.F.B'...P...f...g...H....'..b.'............&..&&.b.g.'G............&.....'..".G....."....."'....p....'.F..'F&..".....b.F..................F..........&..&&.b..G..F...".F'..'b...."...'.....B.....G..F...'.......fB.D..F..b..&..&&.b.'F......".&...F....&.B.EF&&..F..b.f.....&..&......."...&.G..P...f...'...H........... .....f...&..&&.b.'F......".&...F....&.....G.....'.....f......&..&.......".f.'f......&........&........F'f.&...b.......B..............."...f&..."...&......f..fb.......&...'....".F'".......H......g.......F.f'.f..".....'....".f...............&..&&.b.f.......f......b...............f...g.......'........F.........&....&..&&.b.......F...F........G....g....H...........@.....f...&..&&.b.'F..&...".G..f.....f...b.....&.."...F..&....&...F..f.."...........&f.........g..........f..&.......&.'..........."...f&..."...&......f..fb.......&...'....".F'".......H......'.......F.f'.f..".....'...............&..&&.b....F.'.........f.
+...."....(.B.'.cv.......2.......
+
+pj^......^b\h^b\h...
+F...
+@.......
+@h......
+..@......@...@.....@...@..@.......!.
+@....@.....@..@...@..@...@.....@....@...@Z@.....@.....@.........
+.@..@.....@...@.........
+@.N.@.....@....@...@.......@......@..@..........
+@f......
+....@.N.@....@Z@.@..........
+@......@....@..@.....@..@...N.@....@.......@........
+...N.@..@....@N....@....@.......@...@...@......@........
+@h......
+..@......@...@...@.@.....@..@...........
+.@....@.@.....Z....@.@......N.@....@...@........
+......@...@.........
+@.N.@.....@....@...@.......@......@..@..........
+@b......
+....@.N.@....@Z@.....N..@..@.....Z....@..@....\\\...
+@...........
+....
+......R.....
+....
+....@....@.....@.....X@......@..@.....@....R....
+..&.
+......N@....@.....X@....@...@....@..Z.........@..@...@....@...@.............
+....@.....@..@.....@..........@...@.......\R....
+@.....%.
+..@.......R@.......@......@.............\@@...@....@....@......@......$.
+.@...@....@.....@.......X@...@.......@...@...@.........@P......X@.....%.
+.@.....R@....X@....X@P............R@.........X@..........\\\@P..........
+...@......@..\\\@.....@..@....R.....
+@.......
+..........R@....@...@.....@...\@P.........@.....R...
+@.......
+..@....@.......\....
+@.....@..P.......@......

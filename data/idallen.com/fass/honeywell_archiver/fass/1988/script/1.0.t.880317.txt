@@ -1,0 +1,211 @@
+
+
+
+.....z=.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1988/script/87macr.t   
+.bs 1 0 "We Aim To Please"  
+.na cu CUPID CUPID  
+.na ze JUPITER JUPITER  
+.ld 
+(LIGHTS UP ON FRONT OF STAGE.   
+(THE 1:1 SET SHOULD BE SET UP BEFOREHAND, BUT SHOULD NOT BE SEEN YET.)  
+CUPID IS STANDING THERE WITH A BOW AND ARROW.   
+HE CAREFULLY AIMS, THEN FIRES A SHOT OFFSTAGE)  
+.prip "BOW AND ARROWS"  
+.sd 
+(TWANG OF BOW)  
+.ch cu  
+(TO HIMSELF)
+Missed. 
+Let me try that again.  
+.ad 
+(CUPID RELOADS BOW, AIMS AND FIRES.  ALL SHOTS ARE IN THE SAME DIRECTION)   
+.sd 
+(TWANG OF BOW)  
+.sd 
+(SOUND OF GLASS BREAKING)   
+.ex 
+(TO HIMSELF)
+Whoops. 
+.ad 
+(CUPID RELOADS BOW AND AIMS AGAIN.  
+AS HE IS ABOUT TO FIRE, HE NOTICES AUDIENCE)
+.ex 
+Oh, hello.  
+Welcome to Mount Olympus.   
+.ad 
+(FIRES BOW) 
+.sd 
+(TWANG OF BOW)  
+.sd 
+(SOUND OF BIRD SQUAWKING)   
+.ex 
+(TO HIMSELF)
+Hmmm.   
+Not good.   
+(TO AUDIENCE, AS HE RELOADS AND AIMS)   
+Allow me to introduce myself.   
+My name is Cupid, the god of love.  
+I travel the Earth interfering in other people's business.  
+It's like working for the government, except    
+
+.ul 
+they
+get to wear suits   
+and ties instead of this stupid costume.
+.ad 
+(FIRES BOW) 
+.sd 
+(TWANG OF BOW)  
+.sd 
+(SOUND OF OUTRAGED COW) 
+.ex 
+This is hopeless.   
+(TO AUDIENCE, AS HE RELOADS AND AIMS YET AGAIN) 
+Right now, I'm getting in   
+some target practice.   
+Heaven knows I need it. 
+.ad 
+(FIRES BOW) 
+.sd 
+(TWANG OF BOW)  
+.ex 
+Oh, oh...   
+.ad 
+(ENTER JUPITER WITH AN ARROW THROUGH HIS HEAD, FRONT TO BACK)   
+.prip "ARROW THROUGH THE HEAD"  
+.ch ze  
+Is this one of yours?   
+.ch cu  
+I'm sorry... I didn't mean it...
+.ch ze  
+Do you realize what you've done?
+.ch cu  
+(KNEELING)  
+I beg forgiveness, almighty Jupiter!
+.ch ze  
+It's far too late for that. 
+Because of you and your stupid arrow, I have fallen 
+in love with a fullgrown Jersey cow!
+.sd 
+(SOUND OF LOVESICK COW) 
+.ex 
+(OFFSTAGE)  
+Coming, Bluebell.   
+(RESUMING SPEED)
+I have had it up to here (RAISES HAND, PALM DOWN, TO FOREHEAD, AND  
+ACCIDENTALLY HITS ARROW) with you!  
+.ch cu  
+But...  
+.ch ze  
+(LOUDLY)
+I shall banish you to a place where even you can do no damage!  
+Begone! 
+.sfx
+(FLASH POT. 
+CUPID DISAPPEARS.   
+
+JUPITER IS ALONE ON STAGE)  
+.sd 
+(SOUND OF UPSET COW)
+.ex 
+(OFFSTAGE)  
+Don't worry, snookums.  
+Daddy's here.   
+.ad 
+(IS ABOUT TO EXIT, THEN TURNS TO AUDIENCE)  
+.ex 
+What am I going to tell my wife?
+.ad 
+(EXIT JUPITER)  
+.ld 
+(LIGHTS ON 1:1 SET) 
+.ad 
+(CAST ENTERS FOR OPENING SONG)  
+.sb "Make A Date With FASS 88" "Jack's Original #1" 
+.ve 6   
+From the Gods above 
+To the earth below  
+Comes a tale of love
+Comes a tale of woe 
+An epic tale of "Man-meets-Mate"
+In the FASS show eighty-eight   
+.ve 6   
+Come and watch the folks
+Down in Waterloo
+All the guys are geeks  
+And the gals are few
+Romance won't be left to fate   
+In the FASS show eighty-eight   
+.ve 5   
+All the movie screens show countless scenes of  
+          love and romance  
+Where the hero always wins out in the end   
+But the lights come up and interrupt your fantasy land  
+You discover that it's all just pretend 
+.ve 6   
+If you're all alone 
+On a Friday night   
+No one left to phone
+No one else in sight
+Come on out and make a date 
+With the FASS show eighty-eight 
+.ve 4   
+Ever since the world began  
+Men and women have searched for love in vain
+
+Even Adam and Eve found it hard to conceive 
+That in the future they would raise cain    
+.ve 5   
+Time has changed the way we look
+But the things that we want are still the same  
+Some people want money  
+Some wanna be funny 
+But we all want to win the dating game, so  
+.ve 4   
+Let the show begin  
+Let the plot advance
+Let the spell of FASS   
+Put you in a trance 
+.ve 3   
+.ss GEEK~CHORUS 
+Maybe we will find a date   
+In the FASS show eighty-eight...
+.ve 3   
+.ss ALL 
+Come on out and make a date 
+With the FASS show eighty-eight 
+.ad 
+(EVERYONE EXITS, REVEALING CUPID, WHO WAS HIDDEN AT THE BACK.   
+HE IS WEARING AN "ARTS BY CHOICE" T-SHIRT, WITH "CHOICE" CROSSED
+OUT AND "DIVINE INTERVENTION" ADDED.
+HE IS CARRYING A FROSH KIT. 
+.prip "FROSH KIT"   
+THE WORKMEN FROM 1:1 ENTER. 
+EVENTUALLY, CUPID NOTICES THAT HE IS CONSPICUOUSLY VISIBLE, AND EXITS,  
+EMBARRASSED)
+.es 

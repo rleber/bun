@@ -1,0 +1,70 @@
+
+
+
+......s-
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.\" Macros for FASS Sign-In Sheet   
+.\" Reset page parameters   
+.de RE  
+.lt 6i  
+.ll 6i  
+.ta 6iR 
+.vs 12p 
+.ps 10p 
+.nf 
+.na 
+.hy 0   
+.in 0   
+.ft 1   
+..  
+.\" Between actor names 
+.de XX  
+.sp 1v  
+.ne 3v  
+..  
+.\" Header of page  
+.de H#  
+.sp |1v 
+.tl 'FASS 1982'-- % --'Sign-In Sheet'   
+.sp |4v 
+.ns 
+..  
+.\" Footer of page  
+.de F#  
+.sp 2v  
+.tl 'FASS 1982'-- % --'Sign-In Sheet'   
+.bp 
+..  
+.\" End Media tidy up   
+.de EM  
+.br 
+.tm Done -- \\n%  pages generated.  
+.sp 200v
+..  
+.wh -5v F#  
+.wh 0 H#
+.em EM  
+.RE 

@@ -1,0 +1,76 @@
+
+
+
+.".p.!V.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.if \n(XX .ig ...   
+.nr XX 1
+.de HH  
+.tm HH: "\\$1"  
+.sp 1l  
+.ne 6l  
+.ps 10p 
+.vs 12p 
+.ft B   
+.ce 
+\\$1
+.ft P   
+.sp 1l  
+.ps 8p  
+.vs 10p 
+..  
+.de CC  
+.ta \\n(.luR
+\fI\\$1\fP.\\$2 
+..  
+.de EM  
+.tm EM page \\n%
+.bp 
+..  
+.de NP  
+.tm NP page \\n%
+'tl '-''-'  
+'sp 0.4i
+'tl '\fBFASS\fPified Information Confidential page number %''Restricted Circulation'
+'sp 0.3i
+'ns 
+..  
+.de FT  
+.tm FT page \\n%
+'sp 0.3i
+'tl 'Your Eyes Only!'\- % \-'\fBFASS\fPified Information'   
+'bp 
+..  
+.ps 8p  
+.vs 10p 
+.ft R   
+.if t .pl 8.5i  
+.if t .ll 4.5i  
+.lt \n(.lu  
+.em EM  
+.wh 0 NP
+.wh -0.75i FT   
+... 

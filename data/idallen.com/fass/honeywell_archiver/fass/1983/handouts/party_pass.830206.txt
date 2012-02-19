@@ -1,0 +1,64 @@
+
+
+
+...'..;.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.wh -0.1v FO
+.de FO  
+.tm FO: end of page passed. 
+..  
+.ll 8i/2u   
+.hy 0   
+.nf 
+.ps 14  
+.vs 18  
+.de XX  
+.sp 1v  
+.po 0   
+.mk 
+.ce 5   
+FASS 1983   
+Closing Night Party 
+for 
+Cast, Crew and Volunteers   
+[ Admit One Deserving Soul ]
+.po 4.25i   
+.rt 
+.ce 5   
+FASS 1983   
+Closing Night Party 
+for 
+Cast, Crew and Volunteers   
+[ Admit One Deserving Soul ]
+.sp 1v  
+..  
+.XX 
+.XX 
+.XX 
+.XX 
+.XX 
+.XX 

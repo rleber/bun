@@ -1,0 +1,968 @@
+
+
+
+...L..a.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1989/script/bulkmacr.t 
+.bs 1 3 "TWIST AND SHOUT"   
+.na mo MOTHER~TONGUE MOTHER 
+.na nb NATASHA~BADENOV~(NOT~VEILED) NATASHA 
+.na jd JOHN~DRAKE DRAKE 
+.na js JOHN~STEED STEED 
+.na ns NAPOLEON~SOLO SOLO   
+.na ch COLONEL~HOGAN HOGAN  
+.na ms MAXWELL~SMART MAX
+.na ca CASSIUS~23 CASSIUS~23
+.na br BRUTUS~17 BRUTUS~17  
+.na sv SEVERIAN SEVERIAN
+.na do DO DO
+.na re1 RE-1 RE-1   
+.na re2 RE-2 RE-2   
+.na mi1 MI-1 MI-1   
+.na mi2 MI-2 MI-2   
+.na fa FA FA
+.na so SO SO
+.na la LA LA
+.na ti TI TI
+.na cc CHARGER~CASH CHARGER 
+.na lg LISA~GRIEMENT~(STAGE) LISA   
+.na sa SATAN~1:3 SATAN  
+.na ab ABBY~RHODES ABBY 
+.ld 
+(LIGHTS UP ON SOUL HQ.  
+THE STAGE IS DIVIDED INTO TWO AREAS:
+SOUL HEADQUARTERS AND THE GATES OF HELL.
+SOUL HQ IS A TYPICAL SECRET HQ SET COMPLETE WITH A LARGE SIGN THAT READS:   
+"SECRET ORGANISATION TO UNDERMINE LUCIFER". 
+MOTHER, A NUN, IS SEATED AT A CONFERENCE TABLE WITH NAPOLEON SOLO,  
+JOHN DRAKE, NATASHA, COLONEL HOGAN AND JOHN STEED.) 
+.ch mo  
+Welcome to the first meeting of the Secret Organisation 
+to Undermine Lucifer.   
+
+In life, each of you was a spy -- yes, Mr. Drake?   
+.ch jd  
+I wasn't a spy; I was a secret agent, ma'am.
+.ch mo  
+You must beware the seven deadly sins.  
+Mr. Drake, would you list them? 
+.ch jd  
+Anger, avarice, gluttony, envy, grumpy, dopey and sleepy.   
+.ad 
+(MOTHER HITS HIM WITH A RULER.) 
+.prip "RULER"   
+.ch js  
+Anger, avarice, envy, gluttony, lust, pride and sloth.  
+.ch mo  
+You must especially beware the trap of lust.
+Never, ever give in!
+You must purge yourselves of every carnal thought and vice. 
+You must especially avoid thinking about men with firm buttocks 
+and strong legs clad in Levis that cling to their every line and curve. 
+.ch ns  
+I think I'll be able to manage that.
+.ch mo  
+Our final recruit is late.  
+While we're waiting, why don't we pray? 
+Bow your heads. 
+Colonel Hogan, would you say Grace? 
+.ch ch  
+Grace.  
+(SHE HITS HIM WITH A RULER.)
+Sorry.  
+Dear Guh -- Dear Guh -- Big Guy, we, Your most obedient, repentant, 
+boot-licking children ask of You Your indulgence, Your aid, 
+and Your kindness.  
+Look upon us with mercy while we attempt to escape our just punishment, 
+overthrow Lucifer and grind our hobnailed boots into his crotch.
+We undertake this endeavour in Your name, whether You like it or not.   
+.ch mo  
+This we ask in the name of Your son, the Nazarene carpenter,
+who changed the water into wine and worked in the hot desert sun
+while the sawdust clung to his body, drops of sweat glistening  
+as they rolled down his manly chest, soaking his robe so that he
+had to toss it aside and work in the nude, like some magnificent
+jungle animal.  Amen.   
+.ch ch  
+(ASIDE TO SOLO) 
+What church did she belong to?  
+.ch ns  
+The Church of the Last Temptation of Christ.
+.ch mo  
+We can't wait any longer.   
+Let us start by introducing ourselves and the sins that 
+condemned us to perdition eternal.  
+.ch js  
+John Steed. 
+Anger, I'm afraid.  
+My partner was killed in a particularly gruesome manner and I   
+vowed to Avenger.   
+.ch jd  
+My name is Drake, John Drake.   
+My sin was envy.
+I was working the British Embassy when I met another spy.   
+His name was Bond, Stocksen Bond, Double-Oh-Seven.  
+I was immediately jealous.  
+They'd given him a number and let him keep his name.
+.ch ch  
+I'm Colonel Robert Hogan.   
+My downfall was gluttony.   
+I always wanted more.   
+.ch nb  
+More money? 
+.ch jd  
+More fame?  
+.ch ch  
+More ratings.   
+We should have asked Newkirk to wear the dress more often,  
+but it would only have caused a family feud.
+Anyway, I died and ended up here in the klink.  
+.ch ns  
+Napoleon Solo.  
+I really don't know what sin I'm in for.
+My theory is that heaven can't handle the competition.  
+.xx NATASHA,~HOGAN,~DRAKE~AND~STEED 
+Pride.  
+.ch nb  
+I was Badenov.  
+.ch mo  
+Obviously.  
+.ch nb  
+Natasha Badenov.
+I am here for lust. 
+.ad 
+(THE MEN STRAIGHTEN THEIR TIES, CHECK THEIR HAIR, ETC.) 
+.ch mo  
+(HITS HER WITH RULER)   
+We will  have no more talk about sins of the flesh. 
+We don't need to hear about hot bodies rubbing sensually together,  
+or wet probing tongues intertwining.
+.ch ns  
+(CLEARS THROAT) 
+Actually, I wouldn't mind.  
+.ch mo  
+All of us here desire one thing, and one thing only...  
+(LOOKING AT NATASHA)
+for most of us, that one thing is escape.   
+.ad 
+(ENTER MAXWELL SMART)   
+.ch ms  
+Maxwell Smart, Agent 86 of CONTROL. 
+.ch mo  
+You're late.
+Like the rest of us, you are condemned to spend eternity facing 
+damnation and demons who punish you with rawhide whips, again and   
+again and again until you weep with pain.   
+.ch ms  
+And... loving it.   
+.ch nb  
+And what was your sin, Mr. Smart?   
+.ch ms  
+mmflemarglup
+.ch ch  
+I didn't quite catch that.  
+.ch ms  
+I left the toilet seat up.  
+.ch mo  
+Very well.  
+Your mission, should you choose to accept it, is to make your way to
+the Gates of Hell and then escape.  
+If you or any of your SOUL mates are caught or killed in action,
+don't worry about it.   
+You can only truly be killed by Satan's trident.
+Good luck.  
+This nun will self-destruct in five seconds.
+.sfx
+(MOTHER SELF-DESTRUCTS) 
+.ch ns  
+I hate it when she does that.   
+.ch jd  
+Old habits die hard.
+.ld 
+(LIGHTS DOWN ON SOUL HQ.
+LIGHTS UP ON THE GATES OF HELL. 
+THERE IS A PIANO THERE THAT STRETCHES TO INFINITY.  
+THE PIANO KEYS ARE PEOPLE.  
+CASSIUS 23, A COCKNEY DRILL SERGEANT SORT OF DEMON, 
+IS THERE WITH BRUTUS 17 AND SEVERIAN.)  
+.ch ca  
+Stop that bloody chattering down there. 
+(KICKS A PIANO RE-2)
+.ch re2 
+mmmmmm  
+.ch ca  
+You're flat, too.    appAll righ
+
+All right you two.  
+Listen up.  
+You think you're hot stuff, gettin assigned to the daisy factory
+like a pair of Sloane Rangers, but don't get narky on me.   
+.ch sv  
+I don't understand him. 
+.ch br  
+He said, "Sure you've been assigned to the Gates of Hell,   
+you're still dirt." 
+You'll catch on once you've been here a while.  
+.ch sv  
+Thank you.  
+.ch ca  
+If I catch any of you kick-lizards doin' ace-the-piano-wire,
+then it's street-pizza with ya. 
+When you're here, you'll keep your tiny minds on work,  
+and not on a game of frog-in-the-pocket.
+.ch sv  
+Excuse me?  
+.ch br  
+Don't play with the prisoners and don't play with yourself. 
+.ch sv  
+Oh, I wouldn't, sir!
+I wouldn't think of it! 
+.ch ca  
+What you gobbin' on about?  
+.ch br  
+He says he's tick-tock Sanyo Seiko, sir.
+.ch ca  
+Whyn't he say so?   
+(CLUBS SEVERIAN ON THE SIDE OF THE HEAD)
+Of course you would.
+What kind of demon would you be if you weren't thinking 
+about messing around?   
+I mean, look at today:  
+the breeze smells like the inside of a goat's stomach,  
+the sky's the colour of a week-old bruise,  
+and someone's played poke-the-cat on your boots.
+Perfect day for a lark. 
+.ch sv  
+But I wouldn't, sir.
+.ch ca  
+Are you contradicting me, you little junior nog,
+you blob of malignant spittle?  
+You're saying you wouldn't have none?   
+.ch sv  
+No, sir.
+I mean, yes, sir.   
+.ch ca  
+We'll see about that.   
+Send in the nun!
+.ad 
+(ENTER MOTHER)  
+.ch mo  
+I will not submit under your tortures.  
+Not even if you beat me with long barbed whips and  
+force me to perform degrading acts upon you with my hands and mouth.
+.ch ca  
+Don't try and sweet-talk us, sister.
+Put 'er in the piano.   
+And mind none of you rips off 'er arm and beats 'er with the wet end.   
+I'm goin' off duty, so you narkies better tune the thing afore the  
+Major Ranger gets back or it's Jackie Frost nippin' 
+your chestnuts-roastin'-on-an-open-fire.
+.ad 
+(CASSIUS LEAVES)
+.ch br  
+He said--   
+.ch sv  
+I understood.   
+.ad 
+(THEY PUT MOTHER IN THE PIANO.) 
+.ld 
+(LIGHTS DOWN ON THE GATES OF HELL.  
+LIGHTS UP ON SOUL HQ.)  
+.ch ns  
+I really can't picture succeeding with you bozos.   
+I'm off to storm the Gates of Hell myself.  
+.ad 
+(EXIT SOLO) 
+.ch jd  
+Just like Solo to go off on his own.
+.ch js  
+Doesn't he understand that we must hang together,   
+or we shall hang separately?
+.ch nb  
+Darlink, if there is one thing I understand, it is how men are hung.
+All I must do is seduce guards at gate and I will be free.  
+I need no help from you.
+.ad 
+(EXIT NATASHA)  
+.ch ms  
+On a scale of one to a hundred, she's at least a 99.
+.ad 
+(EXIT MAXWELL SMART)
+.ch ch  
+Don't worry.
+I have another one of my brilliant plans.   
+.ad 
+(HE STARTS LEADING THEM OUT)
+.ex 
+We'll need parkas, a wood stove and a red Ferrari.  
+.ch jd  
+What's the Ferrari for? 
+.ch ch  
+I've always wanted a red Ferrari.   
+.ad 
+(EXIT HOGAN, STEED AND DRAKE)   
+.ld 
+(LIGHTS DOWN ON SOUL HQ.
+LIGHTS UP ON THE GATES OF HELL.)
+.ad 
+(BRUTUS AND SEVERIAN ARE TUNING THE PIANO)  
+.sd 
+(DOORBELL.  SOMETHING LIGHT AND CHEERFUL.)  
+.ch br  
+That'll be another load of damned souls.
+You keep tuning the piano.  
+That one's a little flat.   
+Tighten it. 
+.ad 
+(EXIT BRUTUS.   
+SEVERIAN GRABS THE HEAD OF RE-2 AND ROTATES IT 180 DEGREES, 
+THEN STOMPS ON THE BODY.)   
+.ch re2 
+MMMMMMM 
+.ch br  
+(OFFSTAGE)  
+A little higher.
+.ad 
+(TUNING PROCEDURE IS REPEATED)  
+.ch re2 
+MMMMMM  
+.ch br  
+Just a bit more.
+.sfx
+(THERE IS INCREDIBLE GORE AS THE BODY COMES APART.) 
+.ch sv  
+Too tight.  
+.ad 
+(RE-ENTER BRUTUS FOLLOWED BY CHARGER CASH AND LISA.)
+.ad 
+(BRUTUS STOMPS ON THE BROKEN RE-2.) 
+.ch re2 
+Mooosh  
+.ch br  
+It's not broken 
+.ul 
+that
+badly.  
+Look, his heart is still beating.   
+.ad 
+(LIFTS HEART OUT OF TORSO.) 
+.prip "BEATING HEART"   
+.ex 
+Let's just put everything back. 
+.ad 
+(THEY STUFF ENTRAILS, ETC., BACK.)  
+.prip "ENTRAILS"
+.ex 
+What's that?
+.ad 
+(HE PEERS IN TORSO.)
+.ex 
+Froggie!
+.ad 
+(SQUIRTS A BODY PART AT SEVERIAN.)  
+.prip "BODY PART THAT SQUIRTS"  
+.ch sv  
+Ag! Ag! 
+Get it off me!  
+.ch br  
+Where's your enthusiasm?
+You could be like me.   
+.ch sv  
+Do you really think I could?
+.ch br  
+Of course you can.  
+.sb "Dough, Ray, Me" "Doh, Re, Mi"  
+.ve 7   
+BRUTUS: 
+    (SPOKEN, IF NECESSARY, AS REX HARRISON) 
+    Let's start with Original Sinning,  
+    The very best place to start.   
+    When we first saw Eden there were   
+    Adam and Eve.   
+    Their first two sins were:  
+.ve 2   
+SEVERIAN:   
+    Lust and Greed? 
+.ve 5   
+BRUTUS: 
+    Greed and Lust. 
+    The first two sins are Greed and Lust.  
+    Greed and Lust. 
+    Greed Lust Pride Anger Envy Sloth Gluttony  
+.ve 3   
+  (MR. MUSIC, PLEASE)   
+    When you know what key it's in, 
+    You can sing each Deadly Sin.   
+.ve 2   
+  (STOMPING ON EACH KEY AND INDICATING  
+  THAT THE SIN IS THAT OF THE KEY'S INHABITANT) 
+.ve 8       
+    Dough, or cash, the sin of greed,   
+    Ray, a man to lust about,   
+    Me, myself, the sin of pride,   
+    Fu--, an angry word to shout.   
+    So much envy I can see, 
+    Lazy is a word for sloth,   
+    Tea, a drink with gluttony, 
+    And that brings us back to dough, or greed or ...   
+.ve 3   
+THE KEYS' INHABITANTS:  
+  (REPEATED AS IN DOH MI MI, MI SOH SOH...) 
+    Greed and Lust, Anger Pride, Envy Sloth, Gluttony   
+.ve 8   
+SEVERIAN:   
+  (SINGS VERSE AGAIN, OR JUST   
+  THE "When You Know..." PART.  
+  OR MAYBE THEY BOTH DO A REPRISE:  
+  ONE STOMPS THE MAIN NOTE, AND 
+  THE OTHER PLAYS THE MELODY THAT FOLLOWS.  
+  OR MAYBE I'LL JUST LEAVE IT TO
+  THE DIRECTOR'S DISCRETION)
+.ch br  
+All you have to do is look at a shade and you'll know what hurts them most. 
+Watch.  
+What's your name?   
+.ch cc  
+Charger Cash.   
+.ch br  
+I'll bet you're a credit to your family.
+.ad 
+(STARES AT CHARGER) 
+.ch cc  
+Yeah, they were pretty proud of me. 
+My dad was. 
+With good reason, I mean, I was a self-made man, did okay, you know,
+made a few million dollars, beautiful wife, and all on my own --
+honest -- don't look at me that way, a million dollars anyway...
+come on, I really did... my partner made the money, I stole it. 
+Hit him on the head, dropped him in the cement for the new squash court,
+no one ever knew, I swear it, stop looking at me!   
+Okay, I lied to my dad about being married, don't tell him, 
+I used a stand-in wife when I visited him, please don't tell,   
+I was broke, I'd gambled it all away... 
+.ch br  
+You have a big nose.
+.ad 
+(CHARGER COVERS HIS NOSE WITH ONE HAND) 
+.ex 
+You're lousy in bed.
+.ad 
+(OTHER HAND OVER GROIN) 
+.ex 
+Your father hates you.  
+.ad 
+(CHARGER SCREAMS AND RUNS OFFSTAGE) 
+.ex 
+It's easy.  
+You try it. 
+.ch sv  
+Hello, Miss.
+Welcome to Hell.
+What's your name?   
+.ch lg  
+Lisa Griement.  
+.ch sv  
+(STARES AT HER) 
+I'm not getting anything.   
+.ch br  
+Keep trying.
+.ad 
+(SEVERIAN KEEPS STARING AT HER, LISA STARES BACK.)  
+.ch lg  
+You blinked!
+.ch sv  
+Did not!
+.ch br  
+Severian!   
+Just try some simple physical torture.  
+.ch sv  
+Oh boy! 
+Indian rope burn.   
+.ch br  
+Not that simple.
+.ad 
+(SEVERIAN ATTEMPTS INDIAN ROPE BURN ON LISA, WHO IS OBLIVIOUS.) 
+.ch lg  
+You guys can't touch me, because I'm not dead.  
+.ad 
+(SEVERIAN AND BRUTUS LOOK AT EACH OTHER.)   
+.ch br  
+For this we need the boss.  
+.md 
+(SATAN'S THEME PLAYED BY A PICCOLO) 
+.ad 
+(ENTER SATAN AND ABBY)  
+.ch sa  
+What in Hell are you two doing? 
+(LOOKS AT THE PIANO)
+Not 
+.ul 
+another 
+piano key.  
+I don't believe this.   
+Get me a replacement and clean up this mess!
+(TO LISA)   
+Demons. Just like children. 
+I brought you flowers.  
+.ad 
+(ABBY HANDS LISA FLOWERS)   
+.prip "DEAD FLOWERS"
+.ch lg  
+They're dead.   
+.ch sa  
+Would you like a seat?  
+.ad 
+(ABBY GETS ON ALL FOURS BEHIND LISA.)   
+.ch lg  
+Thank you.  I'll stand. 
+.ad 
+(ABBY GETS UP.  
+ENTER HOGAN, STEED AND DRAKE.   
+THEY ARE ALL WEARING PARKAS.
+STEED AND DRAKE ARE CARRYING A  
+LARGE WOOD STOVE.)  
+
+...L..a.
+
+
+
+
+.prip "LARGE WOOD STOVE"
+.ch jd  
+I wish that we had waited until we put the stove down to light the fire.
+.ad 
+(THE GROUP APPROACHES ABBY.)
+.ch ab  
+What do you boys want?  
+.ch ch  
+Brrr.   
+Just wanted to thank Lucifer for turning down the heat. 
+.ad 
+(HOGAN AND STEED WARM THEMSELVES BY THE STOVE.) 
+.ch js  
+Thought you overdid it, but I did so enjoy skating on the frozen
+pools of lava.  
+.ad 
+(ABBY GOES OVER TO SATAN)   
+.ch ab  
+Sir?  It's escape plan 427-J.   
+.ad 
+(SATAN SNAPS FINGERS. ABBY EXITS. BRUTUS AND SEVERIAN BRING IN MI-2.)   
+.ch sa  
+Excuse me, dear.    
+Business, you know. 
+(TO HOGAN AND CO.)  
+You find it 
+.ul 
+cold?   
+.ad 
+(STEED LETS GO OF HIS END OF THE STOVE, LEAVING DRAKE STAGGERING,   
+TRYING TO HOLD UP THE STOVE BY HIMSELF.)
+.ch ch  
+You mean you can't feel it? 
+.ad 
+(HOGAN GOES TO FEEL SATAN'S FOREHEAD.)  
+.sd 
+(THERE IS A SIZZLING SOUND.)
+.ex 
+You're burning up with fever.   
+.ch sa  
+I am?  I don't feel sick.   
+In fact I feel wonderful!   
+.ch jd  
+That's the first sign.  
+.ch sa  
+The first sign of what? 
+.ch ch  
+Brimstone fever.
+Very deadly.
+Very rare.  
+Only appears when Hell freezes over.
+.ad 
+(DRAKE CANNOT HOLD THE STOVE UP ANY LONGER AND COLLAPSES BENEATH IT.)   
+.ch jd  
+Aaaiiieee!  
+.ch sa  
+Your friend screamed in pain.   
+I'm so glad.
+.ch ch  
+Screams?
+I didn't hear anything. 
+Did you hear anything, Steed?   
+.ch js  
+No. 
+.ch lg  
+I know some first aid.  
+.ch sa  
+Don't bother, dear. 
+He's piano wire.
+Hogan, let's not continue the charade any longer.   
+You tell me I have brimstone fever, I deny it.  
+Something like this:
+.ad 
+(SATAN ACTS OUT BOTH PARTS; HE TAKES HOGAN'S HAT FOR HOGAN'S PART.) 
+.prip "HOGAN'S HAT" 
+.ex 
+(AS HOGAN)  
+The last sign is a racing pulse, and you've got one.
+Respiration and thyroid are neck and neck, digestion is slow,   
+and it looks like pulse is coming ahead, pulse is really running now -- 
+.ex 
+(AS SATAN)  
+How horrible, can it be cured?  
+.ex 
+(AS HOGAN)  
+You'll have to open the doors for fresh air.
+.ex 
+(AS SATAN)  
+Do you really think I should?   
+.ex 
+(AS HOGAN)  
+Of course.  
+.ex 
+(AS SATAN)  
+And then I squash you like a bug.   
+Normally, it'd be fun, but I'm entertaining someone.
+So why don't I squash you now?  
+.ch js  
+(BRANDISHING UMBRELLA)  
+.prip "UMBRELLA"
+I'll hold him off.  
+Find the keys to the door.  
+I warn you, sir, I was the Sandhurst fencing champion of 1938.  
+.ch sa  
+Abby!  My sword.
+I'm sorry, Lisa, I'll just be a moment. 
+.ad 
+(ABBY ENTERS WITH A SWORD.  
+A BRIEF DUEL ENSUES. SATAN DISARMS STEED.)  
+.ex 
+Go ahead, Mr. Steed.
+Retrieve your sword.
+.ad 
+(STEED GIVES HIM A SLIGHT BOW, BENDS TO RETRIEVE HIS SWORD  
+AND SATAN STABS HIM.)   
+.ex 
+I cannot believe you fell for that. 
+.ad 
+(SATAN RETURNS HIS SWORD TO ABBY.   
+SEVERTIAN PICKS UP THE UMBRELLA.)   
+.ch jd  
+What now, Colonel?  
+.ch ch  
+Don't worry, Drake. 
+I have another plan.
+.ch jd  
+Which is?   
+.ch ch  
+Faint in abject terror. 
+.ad 
+(HE DOES SO.
+DRAKE LOOKS AT HIM FOR A MOMENT, THEN LOOKS AROUND, AND FAINTS. 
+SEVERIAN AND BRUTUS PUT STEED IN THE PIANO.)
+.ch lg  
+What do you want with me?   
+.ch sa  
+I thought that was obvious. 
+I want a date.  
+I want a relationship.  
+I want love, a wife, a family.  
+.ch lg  
+I'm having some kind of dream.  
+Any minute now, I'm going to wake up and go to my music class.  
+.ch sa  
+Think about it -- marriage, material wealth, a house with a pool.   
+Lava granted, but still a pool. 
+.ch lg  
+Live here?  
+This place smells like a war wound, 
+it's decorated in Early Maggot, 
+and people are screaming in agony as if this were a Liberal convention. 
+.ch sa  
+What's your point?  
+.ad 
+(ENTER SOLO, STEALTHILY.
+ABBY FOLLOWS HIM AT A DISCRETE DISTANCE.)   
+.ex 
+Excuse me again.
+.ad 
+(SOLO SNEAKS OVER TO THE DOOR.  
+HE ATTACHES 
+.prop "PLASTIC EXPLOSIVE"   
+TO THE DOOR. HE TAKES OUT A MATCH.  
+.prip "MATCHES" 
+ABBY IS NOW STANDING NEXT TO SOLO.  
+ABBY BLOWS MATCH OUT.   
+SOLO LIGHTS ANOTHER MATCH.  
+ABBY BLOWS IT OUT.) 
+.ch ab  
+Is that a stick of dynamite in your pocket, 
+or are you just glad to see me? 
+.ch ns  
+Plastique.  
+Care to help me escape from Hell?   
+.ch ab  
+Love to.
+Need a light, big boy?  
+.ch ns  
+Thanks. 
+.ad 
+(ABBY HANDS HIM A LIT STICK OF DYNAMITE.)   
+.prip "LIT STICK OF DYNAMITE."  
+.sfx
+(SOLO EXPLODES.)
+.ad 
+(ABBY BLOWS ONCE MORE; SOLO COLLAPSES.) 
+.ch lg  
+I'd be upset by that if this weren't a dream.   
+.ch sa  
+It's not a dream.   
+What do you think this is, Dallas?  
+.ch lg  
+
+No, it's cooler in Dallas.  
+Why date me?
+.ch sa  
+I like you. 
+You're attractive, you're intelligent,  
+you're a virgin but you're not fanatical about it.  
+.ch lg  
+This sex thing is important to you, isn't it?   
+.ch sa  
+I'm old fashioned.  
+.ch lg  
+Well, so am I.  
+I believe you shouldn't date any man with more than one horn.   
+.ch sa  
+Look, Lisa, if I wanted sluts, I've got a million of them.  
+.ad 
+(ENTER NATASHA) 
+.ch nb  
+Satan, darlink, forget red-headed bimbo,
+and experience night of ecstasy with Natasha.   
+Imagine what I can be doing to you. 
+.ad 
+(SHE WHISPERS IN HIS EAR; LISA STRAINS TO HEAR.)
+.ch lg  
+That's disgusting.  
+.ch sa  
+Done it.
+.ad 
+(MORE WHISPERS) 
+.ch lg  
+That's sickening.   
+.ch sa  
+Done it.
+.ad 
+(MORE WHISPERS) 
+.ch lg  
+That's repulsive!   
+.ch sa  
+That I could go for.
+.ad 
+(SATAN AND NATASHA EMBRACE AND SINK BEHIND SOMETHING... JUST SO 
+THEY'RE OUT OF SIGHT.)  
+.ex 
+Oh, darling, darling... 
+Your face.  
+It feels funny. 
+.ch nb  
+It is only the heat of passion you are feeling. 
+.ch sa  
+Natasha -- could this gorgeous face be yours?   
+Or are you wearing a mask?  
+.sd 
+(VELCRO TEARING SOUND)  
+.ad 
+(SATAN GETS UP, RED-HANDED, AND COMES TO LISA AGAIN.
+HE DISCARDS NATASHA'S FACE.)
+.prip "NATASHA'S FACE"  
+.ex 
+Nope.  No mask. 
+Clean that up boys. 
+.ad 
+(BRUTUS AND SEVERIAN SCURRY TO DO SO.)  
+.ch lg  
+Well, that's a great way to impress me. 
+I have to puke now. 
+.ad 
+(ENTER MAXWELL SMART)   
+.ch ms  
+Well, it looks like once again, it's Maxwell Smart alone against
+the legions of KAOS.
+I can handle you foul spawn of Hell!
+.ad 
+(MAX EXECUTES A HAIL OF USELESS MARTIAL ARTS ATTACKS AT SATAN.  
+HE STOPS AND PUTS ARM AROUND SATAN.)
+.ex 
+I hope I wasn't out of line with that   
+foul spawn of Hell crack.   
+.ch sa  
+(PUTS ARM AROUND MAX)   
+Max, Max, Max.  
+See that woman over there?  
+(POINTS TO LISA)
+I'm crazy about her.
+Gonna ask her to marry me.  
+I'm in love with her and I feel ... lenient.
+So I'll tell you what.  
+Why don't you just go?  
+.md 
+(THE CLOSING MUSIC TO "GET SMART".) 
+.ad 
+(MAX GOES TO THE GATES OF HELL. 
+THE GATES CLOSE CRUSHING HIM.)  
+.ch sa  
+(MAXWELL SMART ACCENT)  
+Sorry about that, chump.
+(GOES TO LISA, BENDS TO ONE KNEE AND IN NORMAL VOICE)   at hWill you marry me, L
+
+Will you marry me, Lisa?
+I'd ask your father for your hand, but I want all of you.   
+.ad 
+(HOGAN AND DRAKE HAVE AWAKENED AND ARE CRAWLING ACROSS STAGE.   
+THEY MEET SEVERIAN'S FEET.  
+THEY LOOK UP, WAY UP.   
+SEVERIAN HAS A UMBRELLA POINTED AT THEM.)   
+.ch sv  
+Your mother wears army boots.   
+.xx HOGAN~AND~DRAKE 
+Aaaagh! 
+.ad 
+(THEY FAINT AGAIN)  
+.ch sv  
+You're right, Brutus, it's easy!
+.ch sa  
+Hogan and Drake.
+String them up. 
+.ch lg  
+.ul 
+Stop!   
+.ch sa  
+I beg your pardon?  
+.ch lg  
+Dream or not, Hell or not, you will not.
+I can't let you kill them, too. 
+.ch sa  
+Listen, Lisa -- snookums -- these people are in Hell.   
+Every one of these people chose, in life, to sin and it is my job to
+punish them.
+Now, I happen to think they shouldn't be punished for these things, 
+but that's a policy decision made up There. 
+This is what I do.  
+This is what I am.  
+.ch lg  
+I won't let you.
+That is what
+.ul 
+I   
+do.  That is what   
+.ul 
+I   
+am. 
+.ch sa  
+I don't have to ask your permission, Lisa.  
+Not for anything.   
+.md 
+(HE WAVES HIS HAND. 
+SOME KIND OF VAMP AS SHE SLINKS OVER TO HIM 
+AND KISSES HIM THOROUGHLY.  
+MUSIC CUTS AND SHE BREAKS IT OFF, WIPING HER MOUTH AND SPITTING.)   
+.ch lg  
+Now I do have to puke.  
+No matter what, I will stop you, by God.
+(SATAN, ABBY AND DEMONS FLINCH.)
+You don't like that do you? 
+God. (FLINCH)   
+Gaw-awd (FLINCH)
+God God. (FLINCH FLINCH)
+.ch sa  
+Yeah-yeah.  
+And backwards it's "dog-dog".   
+Be reasonable, Lisa.
+I'm offering you a great deal here. 
+.ad 
+(BEHIND SATAN, ABBY IS MAKING GESTURES, INCLUDING ONE THAT LOOKS
+LIKE THROWING AND ANOTHER THAT LOOKS LIKE USING A BASEBALL BAT.)
+.ch lg  
+You want a deal?
+Okay, let's make a deal.
+We'll have a contest, a uh --   
+.ad 
+(ABBY MAKES FRANTIC GESTURES)   
+.ex 
+a baseball game.
+My team versus your team.   
+.ad 
+(ABBY LOOKS DISGUSTED)  
+.ch sa  
+Baseball?   
+.ch lg  
+Yeah, it's a simple game.   
+You throw the ball, you hit the ball, you catch the ball.   
+.ch sa  
+You've got lots of balls to challenge me to a game. 
+.ch lg  
+If my team wins, we walk from Hell. 
+Those two included. 
+.ch sa  
+And if you lose?
+.ch lg  
+You get me.  Body and soul. 
+.ch sa  
+Fair enough.
+You challenged, so I get to pick the teams. 
+.ch lg  
+
+No, I don't--   
+.ch sa  
+Abby, order flowers for the wedding.
+I'll get the teams myself.  
+.ad 
+(EXIT SATAN)
+.ch ab  
+A baseball game?
+.ch lg  
+That's what you were signaling, wasn't it?  
+.ch ab  
+A baseball game?
+I was signaling "Go way back there, that's where he left his trident,   
+it's the only thing that can kill him.  Then hit him with it."  
+.ch lg  
+I think that's rather a lot to expect from one charade. 
+.ch sa  
+(OFFSTAGE)  
+Abby, Hurry up! 
+.ch ab  
+Coming! 
+Baseball!   
+Sheesh! 
+.ch lg  
+(CHASES ABBY AND DEMONS OUT)
+God, God, God.  
+.ld 
+(LIGHTS DOWN)   
+.es 

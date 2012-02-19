@@ -1,0 +1,244 @@
+
+
+
+...L..bD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1989/script/bulkmacr.t 
+.bs 1 b "GOING TO HELL IN A HAND PROP"  
+.na wj DUMB~JAMES~BLONDE DUMB~JAMES 
+.na ma JUDGE~SIMON~MALAPROP MALAPROP
+.na pa PAM~ASSONIC PAM  
+.na li BILL~LIBERTY BILL
+.na ho NOAH~HOPE NOAH   
+.na lg LISA~GRIEMENT~(VIGNETTE) LISA
+.na lo MRS.~ELIZA~(VIGNETTE) ELIZA  
+.na st KAY~STONE KAY
+.na ba BAILIFF~HAY BAILIFF  
+.ld 
+(LIGHTS INTENSIFY ON COURTROOM) 
+.ch ho  
+Objection!  
+Prosecution is entertaining hearsay.
+.ad 
+(MALAPROP BANGS BENCH WITH A GAVEL) 
+.prip "GAVEL"   
+.ch ma  
+Overruled.  
+I have no objection to being entertained.   
+.ad 
+(MALAPROP BANGS CREATIVELY WITH THE GAVEL UNTIL IT IS CONFISCATED BY PAM.)  
+.ch li  
+No further questions, your Honour.  
+This man has proven beyond the shadow of a doubt that the accused was present   
+at the scene of the crime with the murder weapon in her hands.  
+.ch wj  
+What... oh yeah.
+.ch li  
+The defence may wish to cross-examine,  
+but with an unimpeachable, informed,
+and impartial witness such as Mr. Blonde,   
+any cross-examination would clearly be futile.  
+Your witness.   
+.ad 
+(BILL SITS DOWN.  NOAH STANDS UP TO CROSS-EXAMINE.  
+KAY PULLS OUT A WATER PISTOL AND AIMS IT AT HOPE.)  
+.prip "WATER PISTOL"
+.ch ho  
+Er...no questions, your Honour. 
+.ad 
+(NOAH SITS DOWN)
+.ch lg  
+Weenie. 
+.ch ma  
+Very well, Mr Bland.  You may withdraw. 
+.ch lg  
+(TO NOAH)   
+What's brown and black and looks good on a lawyer?  
+(BEAT)  
+A doberman. 
+.ch ba  
+Order, please!  Order in the court! 
+.ch wj  
+A shot of bourbon, straight up. 
+.ad 
+(BAILIFF THROWS A SHOTGLASS OF BOURBON AT DUMB BLONDE'S FACE,,  
+THEN SHOOTS HIM.
+MALAPROP LOOKS FOR HIS GAVEL, FAILING TO FIND IT.   
+KAY GIVES HIM THE WATER PISTOL WHICH HE STARTS PLAYING WITH.)   
+.prip "SHOTGLASS OF BOURBON"
+.prip "GUN" 
+.ch ma  
+If you're flight crew, Ms Griement, we could get on with your trial.
+Bailiff, would you cull the next witness.   
+.ch ba  
+I beg your pardon?  
+.ch ma  
+You heard me.   
+Cull the next witness!  
+.ch ba  
+If you insist.  
+.ad 
+(BAILIFF EXITS) 
+.ch ma  
+Was that the right word?
+.ch pa  
+No, I'm afraid not, your Honour.
+.ch ma  
+Oh, dear... 
+.sd 
+(A SHOT OFFSTAGE)   
+.ad 
+(BAILIFF REAPPEARS) 
+.ex 
+I hate it when that happ
+
+I hate it when that happens.
+.ch ba  
+What should I do now, your Honour?  
+.ch ma  
+(TO HIMSELF)
+Let me try that again.  
+.ad 
+(CLEARS THROAT) 
+.ex 
+Collate the next witness.   
+.ch ba  
+Your wish is my command, your Honour.   
+.sd 
+(SOUND OF ELABORATE PHOTOCOPYING MACHINE AND SCREAMS)   
+.ad 
+(BAILIFF REAPPEARS) 
+.ex 
+Would you like the witness laminated, your Honour?  
+.ch ma  
+No, no.  For crying out loud, I meant "call the next witness".  Why must
+you take everything I say so literally? 
+.ch ba  
+It's my job, your Honour.   
+.ch ma  
+I hate the civil service.  Mr. Prosecutor, let's mow the lawn.  
+.ch st  
+.ul 
+Mr. 
+Prosecutor?  What about me? 
+.ch li  
+You're not important.  You're just a woman. 
+.ch st  
+(HOLDING BILL'S HAND)   
+Did you know that there are 27 bones in the human hand? 
+.ch li  
+Mind you, women are important, too. 
+.ch st  
+Thank you.  
+.ch li  
+In their own little way.
+.ad 
+(KAY GIVES BILL A WEDGIE)   
+.ex 
+The prosecution calls Mrs. Eliza to the stand.  
+.ch ma  
+Call Mrs... 
+.ad 
+(BAILIFF PULLS OUT BULLHORN)
+.prip "BULLHORN"
+.ex 
+Bring in Mrs. Eliza.
+.ad 
+(BAILIFF EXITS.  KAY PULLS OUT A RUBIK'S CUBE AND PUTS IT ON THE BENCH. 
+MALAPROP BEGINS EXAMINING IT.)  
+.ad 
+(BAILIFF CARRIES IN MRS. ELIZA AND DEPOSITS HER IN THE WITNESS BOX.)
+.prip "RUBIK'S CUBE"
+.ch ba  
+Do you swear to tell those parts of the truth which can be printed in   
+tabloid newspapers? 
+.ch lo  
+I do.   
+.ch li  
+Please give your name and address.  
+.ch lo  
+My name's Mrs. Eliza, and here's a dress.   
+.ad 
+(SHE THROWS PAM A DRESS)
+.prip "DRESS"   
+.ch li  
+Mrs. Eliza:  am I correct in stating that you own thirteen of the most  
+roach-infested, rundown, poorly constructed apartment buildings in K-W? 
+.ch lo  
+Yes.  I provide affordable student housing. 
+.ch li  
+In your capacity as slumlord, have you ever met Ms. Griement, the accused?  
+.ch lo  
+Yes.
+.ch li  
+Do you know who she is? 
+.ch lo  
+Yes.
+.ch li  
+Of the people here, can you identify her?   
+.ch lo  
+Yes.
+(PAUSE) 
+.ch li  
+Is she present in the court?
+.ch lo  
+Yes.
+.ch li  
+Can you point her out?  
+.ch lo  
+Yes.
+.ch li  
+(EXASPERATED)   
+Where is she?!  
+.ch lo  
+(POINTING TO LISA)  
+There she is, the murderess!
+.ch ho  
+Objection!  
+.ch st  
+On what grounds?
+.ch ho  
+Um... it's not a very nice thing to say.
+.ch st  
+So what?
+.ad 
+(MALAPROP IS CONCENTRATING ON THE RUBIK'S CUBE AND ISN'T REALLY LISTENING)  
+.ch ma  
+Overruled.  
+.ch li  
+In your role of rent extortionist, you were present at the  
+first meeting of the accused and the Late Great Potentate,  
+were you not?   
+.ch lo  
+Yes.
+.ch li  
+Please describe, in your own words, how the accused first encountered Satan.
+.ch lo  
+Well, it was Thanksgiving, the beginning of Oktoberfest,
+and she appeared begging for a room...  
+.ld 
+(INTO 1-2.) 
+.es 

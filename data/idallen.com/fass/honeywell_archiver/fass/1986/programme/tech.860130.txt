@@ -1,0 +1,87 @@
+
+
+
+.   .z.Q
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{bl}{ps 8P}{bf} 
+{sy "echo tech"}
+For dealing with all the technical details surrounding my estate,   
+I bequeath the following people their proper allotment of Tim-Bits. 
+{br}{ro}
+{sp 1L} 
+{ps 8p} 
+{char "Tech Director" "Gillian Teichert"}   
+{char "Stage Manager" "Brenz"}  
+{char "Assistant Stage Manager" "Rob Ferguson"} 
+{char "" "Kevin Martin"}
+{char "Lighting Design Team" "Doug Delaney, Brian Luk,"}
+{char "" "John Sellens"}
+{char "Light Hanging Team" "Rob Ferguson, Chuck Peeren"}
+{char "Light Board Operator" "Doug Delaney"}
+{char "Follow Spot" "Ken Dykes"}
+{char "Sound Design Team" "John McGuire, Brian Stecher"}
+{char "Sound Board Operator" "Brian Stecher"}   
+{char "Make-up Mistress" "Francine Wright"} 
+{char "Make-up Assistants" "Susan Holden,"} 
+{char "" "Anne-Marie Kooiman, Rick Kuzell,"}
+{char "" "Monique Parent, Derek Wilkinson"} 
+{char "Costumes" "Tom and Erika Hocaliuk,"} 
+{char "" "Pat Dooley, Marie Hocaliuk, Anne-Marie Kooiman"}  
+{char "" "Donna Lynch, Paul McKone"}
+{char "Running Crew" "Greg Anglin, Alan Bowler,"}   
+{char "" "Edward Heffer, Bryan Hillier, William Hughes,"}   
+
+{char "" "Cathy McBride, John McGuire, Dave Parry,"}
+{char "" "Angus Rogerson, Gillian Teichert"}
+{br}
+{sp 1L} 
+{lj}
+{it}
+Set and Prop Design and Construction
+{br}
+{fi}{ro}{in 2S} 
+Greg Anglin, Alan Bowler, Peter B. Carette, 
+Linda Carson, Tom Chmara, Doug Delaney, 
+Rob Ferguson, Peter Fraser, Edward Heffer,  
+William Hughes, Neil Kennedy, Scott King,   
+Tim MacNeil, Dave Manning, Kevin Martin,
+Cathy McBride, John McGuire, Guy Middleton, 
+Ted Miller, Doug Moen, James Nicoll,
+Dave Parry, Chuck Peeren, Angus Rogerson,   
+John Sellens, Karen Seyffarth, Brian Stecher,   
+Brad Templeton, Tracy Tims, Karl Wagner 
+Eileen White, RJ White, Derek Wilkinson,
+and a cast of thousands 
+{bl}
+{ro}
+{char "Poster Design" "Dave Welbourn, Derek Wilkinson"} 
+{char "Publicity" "Eileen White"}   
+{char "Group Sales" "Willie"}   
+{char "Comps" "Peter B. Carette"}   
+{char "Program Cover" "Ramona Isaac"}   
+{char "Program Design" "Jim mostly, and Lynn"}  
+{bl}

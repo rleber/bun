@@ -1,0 +1,124 @@
+
+
+
+.......Y
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.\" vtroff -F meteor -3 bocklin 
+.br 
+.ne 25v 
+.HD 
+.ce 
+Chapter 1: THE PLAY 
+.HD 
+.ce 
+Act One 
+.HD 
+.ta \w'II:5  'u 
+I:0	Party of the First Part 
+.HX 
+Dedicated to the Evil Fairy, the Goddess of Discord, and
+all those others who never got invited to the party.
+.HD 
+I:1	Oz Well That Ends Well  
+.HX 
+Dedicated to the spirit of Saturday morning cartoons which  
+changed the Munchkins to Smurfs, Toto to Scrappy Doo, and the   
+Tin Woodsman to C3PO -- how hath the mighty fallen! 
+.HD 
+I:2	The Mourning After the Plight Before
+.HX 
+Dedicated to psychoanalysis, Peter Sellers, and the 
+Ontario Pork Marketing Board.   
+.HD 
+I:3	Space: Odd, I See   
+.HX 
+Dedicated to Gene Roddenberry and the far-sighted programming   
+executives of NBC.  
+.HD 
+I:4	A Forest Sher Wood Go Great Here
+.HX 
+Dedicated to Errol Flynn and Marvin Hamlisch, not necessarily   
+in that order.  
+.HD 
+I:5	There's No Place Like Rome  
+.HX 
+Dedicated to the diligent teachers of Latin who for ten 
+centuries have devoted themselves to the task of coming up  
+
+
+
+
+
+
+
+
+
+
+with a persuasive argument why Latin is not a dead language.
+.sp 0.5v
+.ne 25v 
+.HD 
+.ce 
+Intermission
+.HX 
+This is where the intermission should be, if the
+stage manager remembers.  We can but hope...
+.sp 0.5v
+.HD 
+.ce 
+Act Two 
+.HD 
+II:1	Herpes, the Love Bug   
+.HX 
+Dedicated to anyone who can figure out why we chose this title  
+for this scene (beyond the compulsion to make cheap but trendy  
+jokes). 
+.HD 
+II:2	Ape Up or Sheep Out
+.HX 
+Dedicated to Keith Johnstone, inventor of Theatresports, who knows  
+that theatre is not heroes being heroic or villains being villainous,   
+but people being human...or not.
+.HD 
+II:3	A Monkey Wench in the Works
+.HX 
+Dedicated to Herman Melville and those indefatigable monkeys who
+valiantly return to FASS year after year in the hope of finally 
+transcending their role as tired plot devices (better luck in '84, guys).   
+.HD 
+II:4	What's So Good About Being Bad?
+.HX 
+Dedicated to Ray Charles, the economists of Canada, and all 
+others who must work perpetually in the dark.   
+.HD 
+II:5	Life, the University and Everything
+.HX 
+Dedicated to the makers of dry ice, dry humour, and dry martinis,   
+
+
+
+shaken not stirred. 
+.HE 

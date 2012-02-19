@@ -1,0 +1,1013 @@
+
+
+
+........
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so roff/month  
+.an (manu) 1
+.so expl/../macr.r  
+.ix 
+.so roff/month  
+.an (manu) 1
+.so expl/../macr.r  
+.sp 8   
+.ce 2   
+The F.A.S.S. Theatre Company
+.sp 4   
+Principles and Guidelines   
+.sp 30  
+Prepared: ^(amon), 19^(year)
+.pa 1   
+.he 'F.A.S.S.'- % -'Principles and Guidelines'  
+.af % i 
+.sp 
+.ce 
+Table of Contents   
+.sp 
+.mg 
+     . . . . . . . . . . . . . . . . . . . . . . . . . . .  
+.nf 
+.ta 60R 
+.en 
+.he 'F.A.S.S.'- % -'Principles and Guidelines'  
+.fo ''^(amon), 19^(year)''  
+.ds 
+.se 1.0 INTRODUCTION Introduction   
+The principles and guidelines set down in this document have
+been prepared in order to make F.A.S.S. a success and enjoyable 
+time for everyone involved. 
+Some of the precepts discussed below are simply common sense;   
+some concern themselves with the various aspects of dealing with
+University administrative departments;  
+and some are simply outgrowths of that nebulous but important   
+entity known as "F.A.S.S. Tradition".   
+.tp 
+We wish to stress that these are simply guidelines, not "laws". 
+The circumstances of putting on F.A.S.S. will change from year to year, 
+and there may sometimes be good reasons for ignoring some of the
+suggestions given below.
+As time goes on, the F.A.S.S. Committee may also wish to modify some
+of these principles and guidelines because of changes in the
+University environment or simply because better ways of doing   
+things have been found. 
+However, we hope that future F.A.S.S. personnel will not ignore 
+or overrule what is written here without first giving serious   
+thought to the matter.  
+These policies are the result of many years of experience   
+working with F.A.S.S., and as such they can be of immense help in seeing
+that F.A.S.S. continues to enjoy the success it has earned since its inception. 
+.se 2.0 'CARE AND HANDLING OF THIS DOCUMENT' Care~and~Handling~of~this~Document 
+Since this document is expected to evolve with time, it will no 
+doubt be superseded by future Principles and Guidelines drafts. 
+However, in the interests of preserving information which might 
+become pertinent again at some time in the future, the Secretary
+should preserve copies of   
+.ul 
+all 
+drafts of this document.
+.tp 
+Changes may be made by the President in conjunction with the
+members of the Executive and anyone else who might be useful
+in an advisory capacity.
+People making changes in this handbook should bear in mind two  
+important principles:   
+.hb 3 8 (1) 
+The Constitution gives the "laws" of F.A.S.S.; the Principles   
+and Guidelines Handbook should give the spirit. 
+This is not the place to be dogmatic.   
+This is a place to give important details, things to think about,   
+and points to be observed in the interests of keeping F.A.S.S. fun. 
+.hb 3 8 (2) 
+This handbook should be kept complete and up to date.   
+Ideally it should be possible for complete strangers to pick up this
+document and recreate F.A.S.S. in all its glory.
+These Principles and Guidelines are intended to safeguard F.A.S.S.'s future 
+as well as its present. 
+.bl 
+.se 3.0 'CARE AND HANDLING OF PERSONNEL' Care~and~Handling~of~Personnel 
+F.A.S.S. can only continue to operate if it has a large number of   
+willing volunteer workers.  
+Working with volunteers forces those who are leaders in F.A.S.S. to 
+pay attention to several basic issues.  
+.oc 'Work vs. Play' 
+There is no ready answer to the question of whether F.A.S.S. is primarily   
+designed for social get-togethers or the business of putting on a show. 
+The important thing is that there must be a balance between the two.
+Too much emphasis on parties and those who are serious about putting
+on the show may be alienated; too much emphasis on business, and no one 
+will enjoy themselves at all.   
+.oc 'Commands vs. Requests' 
+Don't tell, ask.
+.oc 'Responsibility vs. Power'  
+Official positions in F.A.S.S. are  
+.ul 
+responsibilities.   
+Naturally they are accompanied with a certain amount of authority,  
+but power-tripping in any position leads to trouble.
+.oc 'Involvement vs. Attendance'
+People should care about F.A.S.S.; they should be involved with the 
+group, not just hangers on. 
+In connection with this, experienced F.A.S.S. personnel should do their 
+best to get newcomers involved in more than a minimal way.  
+We must train new blood so that there will be a constant in-flow
+of new energy, ideas, and enthusiasm.   
+.oc 'Cast vs. Crew' 
+Historically there has always been a lack of contact between those  
+on stage and those behind the scenes.   
+Every member of F.A.S.S. is important.  
+
+Those in positions of responsibility should make sure that no portion   
+of the F.A.S.S. Company feels like second class citizens.   
+.se 4.0 'FINDING THE RIGHT COMMITTEE' Finding~the~Right~Committee   
+One of the most important processes in F.A.S.S. is  
+choosing the F.A.S.S. Committee.
+The Committee must always have new blood on it to avoid stagnation; at  
+the same time, there is obviously a need for people with    
+experience, especially in such positions as Head Scriptwriter and   
+Technical Director. 
+Balancing these two factors is always going to be difficult.
+It can be made easier, though, if the Committee does everything it can  
+to find out whom they have to work with and to encourage people who seem
+to have potential.  
+.se 4.1 'THE CLOSING FORM' The~Closing~Form 
+The closing form is one way to find out who's interested
+in working on the Committee.
+It is also a good way of gathering suggestions for improving F.A.S.S..  
+The closing form is really a type of opinion poll filled out by the membership  
+each year at the end of the show.   
+.tp 
+We suggest that the form be passed out between Friday night shows   
+and collected the same night or on the Saturday.
+The form should ask for improvement suggestions in several areas,   
+e.g. publicity, social activities, conduct of rehearsals, conduct of shows, 
+relations between cast and crew, relations between Committee members and
+the company at large, comments on technical facilities and needs, and so on.
+This form is also a good place to get suggestions for the following 
+year's theme.   
+.tp 
+The second important function of the form is to find out who is 
+interested in being on the Committee in the following year. 
+Thus the form should ask a question like
+.to 6   
+Are you interested in any of the following jobs?
+   Director   ___   
+   Producer   ___   
+   President  ___   
+      etc.  
+.tn 
+Anyone who indicates an interest should be approached by a member   
+of the Committee and told more about what the job entails.  
+Committee members should actively encourage people to seek F.A.S.S. positions.  
+.tp 
+It should be made clear that this indication of interest is NOT 
+a firm commitment.  
+Persons wishing to apply for appointed positions must still write individual
+applications and persons wishing to fill elected positions must still   
+be nominated at the F.A.S.S. Annual Meeting.
+At the same time, the closing form gives some immediate indication of   
+who is interested in applying and who wants to be nominated.
+If it appears, for example, that no one is interested in being Producer,
+the Committee can begin using some gentle persuasion on suitable
+people to see if good candidates can be convinced to apply. 
+At the Annual Meeting, individual Committee members may also choose to  
+nominate people for positions they have said they were interested in;   
+with a bit of luck, this informal procedure will work better than a formal  
+"nominating committee" or a haphazard "nominate-everyone-in-the-room" approach. 
+.se 4.2 'THE APPLICATION LETTER' The~Application~Letter 
+Applicants for the positions of Producer, Director, Head Scriptwriter,  
+and Technical Director must submit a letter of application to the Committee.
+At one time, we considered having a formal "application form" that all  
+applicants would have to fill out; however, such rigidity seems contrary
+to the friendly spirit of F.A.S.S.. 
+Thus applicants may submit their applications in whatever written form  
+they choose, be it humourous, straightforward, or bizarre.  
+.tp 
+Despite this informality however, application letters should include a  
+variety of information about the applicant in order that the Committee  
+has everything it needs to make its decision.   
+Thus the Committee must see to it that potential applicants are given   
+a list of the information that it wants included in the application letter. 
+This kind of application guideline will help both the applicants
+and the people who must choose between applicants.  
+.tp 
+Below we list some of the items that we feel are important in an
+application letter. 
+Naturally each year's Committee should add to this list if other
+important considerations arise. 
+.to 
+Applicant's name, local address, permanent address  
+Past experience in F.A.S.S. 
+Past experience in direction, production, etc.  
+Past experience in related fields   
+Past leadership experience  
+Whether or not in co-op 
+Whether next year's schedule is likely to   
+   be busy during fall and F.A.S.S. 
+How many more years on campus?  
+Specialized knowledge that will be of use   
+   (e.g. computer experience for Scriptwriter)  
+A description of the way he or she will approach
+   the job  
+Other comments on F.A.S.S., life, etc.  
+.tn 
+.se 4.3 'JOINT APPLICATIONS' Joint~Applications 
+In the past, F.A.S.S. has allowed people to apply for positions jointly.
+Thus we have had co-scriptwriters, co-producers, co-tech directors, and so on.  
+Many people who don't want to take total responsibility for a particular
+job in F.A.S.S. are willing to share it with one or two other people.   
+Appointed F.A.S.S. positions take a good deal of work and often people  
+feel that they just don't have the time to do everything themselves;
+they want another person working with them. 
+.tp 
+While we understand such feelings, we must point out that there tend to 
+be a good many problems when authority and responsibility for a given   
+area are split between several people.  
+When there is no final arbiter, there is no good way of resolving the   
+inevitable disagreements.   
+The division of labour scarcely ever pleases everbody involved -- one   
+co-worker may resent another "not doing enough work", the other may 
+resent the first for "taking everything on himself".
+There are many potentially unpleasant situations that may arise in such cases.  
+.tp 
+Thus we recommend that the Committee avoid making co-appointments unless
+there is some overwhelming reason for doing so (e.g. nobody else applied).  
+If some people are worried that they won't be able to do everything by  
+themselves, point out that they aren't supposed to do everything by 
+themselves. 
+All appointed members of the F.A.S.S. Committee are supposed to select  
+a group of people to work under them.   
+There is really no point in making co-appointments when the same position   
+can be filled by one person who knows how to delegate work to   
+responsible subordinates.   
+.se 5.0 'CONSTITUTIONAL COMMENTARY' Constitutional~Commentary   
+In this section, we will discuss various points about the Constitution, 
+explaining some points in detail and telling why others were included.  
+.se 5.1 'THE PREAMBLE' The~Preamble 
+F.A.S.S. stands for Faculty, Administration, Staff, and Students, but   
+nowhere does it say that F.A.S.S. is restricted to these people.
+In particular, alumni have frequently played a strong role in F.A.S.S.  
+They should not be forgotten.   
+.tp 
+Of recent years, the number of active Faculty and Administration people 
+in F.A.S.S. has decreased.  
+A number of attempts have been made to encourage Faculty and Administration 
+to help with F.A.S.S. but these have not had very positive results. 
+The only advice we can give right now is to keep trying; the presence   
+of more senior people in F.A.S.S. can help greatly. 
+.se 5.2 'THE F.A.S.S. COMMITTEE' The~F.A.S.S.~Committee 
+Article two, section (10) (b) notes that the offices of Producer, Director, 
+Tech Director, Head Scriptwriter, and Treasurer are appointed at a meeting  
+of the F.A.S.S. Committee.  
+The selection process should use a secret ballot.   
+If there are more than two applicants for a position, several ballots   
+should be taken, each time eliminating the applicant(s) with the least  
+number of votes, until one applicant obtains a clear majority.  
+.tp 
+Section (11) (c) (iv) needs some background to justify it.  
+Several years ago, the Director who had been appointed in March failed to   
+reappear on campus in the fall. 
+No one knew where he was and no one knew if he was going to be available
+to direct in January.   
+It wasn't until after Christmas that someone managed to contact him, and
+that was only through a chance meeting on the street.   
+As it turned out, he had no intention of returning to Waterloo and was  
+uninterested in directing the show. 
+
+There was a mad scramble to find a suitable substitute at the last moment.  
+.tp 
+Consequently, it was made mandatory for all members of the Committee to 
+notify F.A.S.S. in the fall that they are still alive and eager to fulfill  
+their responsibilities. 
+It is not necessary for a member to be on campus in the fall; all that is   
+required is written or verbal notification of one's accessibility.  
+If someone does vanish, this clause gives the other members of the  
+Committee the right to replace the missing person in reasonable time.   
+.bt 
+Section (13) (h) gives the Committee the right to overrule MAJOR decisions  
+of F.A.S.S. personnel.  
+This should be used with discretion.
+Meddling with the decisions of individuals should only take place in dire   
+circumstances.  
+.bt 
+The F.A.S.S. Committee generally meets five times a year
+(although some years may require more or less). 
+Beginning at the Annual Meeting, the following Committee meetings are   
+usually required:   
+.bl 
+.hi 3 8 (1) 
+Soon after the Annual Meeting to discuss the financial status of
+the previous year's F.A.S.S. and to set a budget for the coming year's show.
+
+........
+
+
+This meeting also decides what to do with the profits from the previous 
+year's show.
+Generally, there is also some discussion about what activities should   
+take place in the summer.   
+.bl 
+.hi 3 8 (2) 
+Sometime early in the summer, there should be a meeting to co-ordinate  
+summer activities and to plan for the fall. 
+Early fall activities such as Orientation projects and the General Meeting  
+should begin planning at this time. 
+.bl 
+.hi 3 8 (3) 
+Sometime in late summer or early fall, there should be a meeting to 
+finalize plans about Orientation and the General meeting.   
+This is also a good time to begin discussion on Fall projects (parties, 
+a coffee house, etc.).  
+.bl 
+.hi 3 8 (4) 
+In late fall, a meeting to keep people informed on the state of the show
+is often useful.
+This might also be held in the first week of January.   
+.bl 
+.hi 3 8 (5) 
+After the show, the Committee must meet to appoint the Producer, Director,  
+Tech Director, Head Scriptwriter, and Treasurer for the next year.  
+This is a long meeting, closed to the general membership.   
+Applicants for the various positions are invited to the meeting, but they   ultywill naturally be asked to leave during 
+
+will naturally be asked to leave during the actual voting.  
+.bt 
+In addition to these, other meetings may become necessary throughout the
+year.   
+Because the F.A.S.S. Committee is such a large body (17 people plus 
+Honourary Members), it is difficult to hold quick meetings on short notice. 
+If decisions have to be made quickly (and of course, they shouldn't),   
+the matter is usually presented to the Executive.   
+.se 5.3 'THE F.A.S.S. EXECUTIVE' The~F.A.S.S.~Executive 
+The Executive seldom holds formal meetings (at least, this has been true
+in the past).   
+As was noted in the last section, the Executive is usually asked to make
+spur of the moment decisions which are too important to be made by a single 
+person. 
+.se 5.4 'RESPONSIBILITIES OF INDIVIDUAL MEMBERS' Responsibilities~of~Individual~Members 
+In this section, we will deal with the responsibilities of individual members   
+of the F.A.S.S. Committee as well as the duties of other important  
+non-Committee positions.
+.se 5.4.1 'THE PRESIDENT' The~President 
+There is a fine line between overseeing others' work and interfering with it.   
+The President must walk that line.  
+.tp 
+The President calls all the normal meetings of the Committee that were  
+outlined in Section 5.2.
+The President should also feel free to call meetings of other groups if 
+he or she feels it is necessary.
+For example, the Director, the Stage Manager, the Tech Director, and Producer   
+must communicate closely throughout the run of rehearsals and the show. 
+The President should make sure that these people are meeting together   
+regularly (and the President should attend such meetings).  
+.tp 
+More than anything else, it is the President's duty to make sure that   
+everyone is talking to everyone else.   
+Nothing endangers the success and good feeling of a show more than lack 
+of communication.   
+The President must know what is going on and must make sure that others know
+too.
+.se 5.4.1.1 'THE GENERAL MEETING' The~General~Meeting   
+The President organizes and hosts the General Meeting.  
+This meeting is held in the fall to drum up new recruits for F.A.S.S. and   
+to re-establish contact with old members.   
+It is usually held the second or third week in September (the earlier it
+is, the sooner the Head Scriptwriter can organize the people who will be
+writing the script).
+.tp 
+The General Meeting is one of the first chances for the new members of  
+the Committee to practise their responsibilities.   
+The Vice President is in charge of organizing the social aspects of 
+the evening.
+The Producer should book the room (in co-operation with the Vice President) 
+and see that the Meeting is properly advertised.
+The Secretary should make sure that some method is organized to obtain  
+names and addresses of the people who attend the meeting (usually sign-up   
+sheets).
+.tp 
+It is traditional for the meeting to have a skit which reflects 
+the current year's F.A.S.S. or previous years.  
+This skit is written under the direction of the Head Scriptwriter and   
+directed by the Director.   
+It is seldom ambitious, but it should make a good impression on first time  
+people. 
+.tp 
+The President hosts the night, introducing the members of the   
+F.A.S.S. Committee and explaining what F.A.S.S. is (if that's possible).
+.se 5.4.1.2 'THE ANNUAL MEETING' The~Annual~Meeting 
+At the other end of the year is the Annual Meeting, held sometime in
+early March.
+This too is organized and hosted by the President.  
+.tp 
+The Annual Meeting is much more business-like than the General Meeting. 
+Its business is the election of officers for F.A.S.S. and the selection 
+of a theme for the next year's show.
+Some social activities may be connected with the evening, but these are 
+usually on a fairly small scale.
+.tp 
+The election of officers may be done either by show of hands or secret  
+ballot (show of hands has usually been used in the past for the sake of 
+convenience).   
+We have found it useful to hold these elections in random order.
+This reduces the problem of people holding off on one position when they
+want to run for another.
+.tp 
+It is traditional for one year's Committee to step down as soon as the  
+next year's Committee has been elected. 
+Thus the new President chairs the meeting once the elections are over.  
+.tp 
+The process of selecting the next year's theme is usually superintended 
+by the next year's Head Scriptwriter.   
+It is helpful for the old Head Scriptwriter to call a meeting shortly   
+before the Annual Meeting in order to prepare a list of five or six 
+possible themes for the Annual Meeting to choose from.  
+Naturally other themes may be suggested at the Annual Meeting, but a
+small number of topics whose possibilities have been thought out will   
+make a good base from which to work.
+Anything to avoid theme debates that go on for hours... 
+.tp 
+The Annual Meeting is also the time for the public announcement of who  
+has been appointed to the positions of Producer, Director, Tech Director,   
+Head Scriptwriter, and Treasurer.   
+.se 5.4.1.3 'OTHER HINTS FOR PRESIDENTS' Other~Hints~for~Presidents 
+Delegate!   
+.tp 
+The President is in charge of collecting applications for the various   
+appointed offices.  
+This may mean some arm-twisting if suitable candidates don't come   
+forward immediately.
+.tp 
+The President of one year books the theatre for the next year.  
+Theatre bookings should be made at least a year in advance, so the President
+should book the theatre while the current year's show is still in production.   
+.tp 
+The keys to the F.A.S.S. office are signed out in the President's name. 
+Therefore, the old President should collect all the keys from those who 
+have them and arrange to go to Key Control with the new President so that   
+the keys may be signed over.
+Key Control will NOT sign the keys over to the new President until  
+all the keys are physically there in front of their noses.  
+.tp 
+Keys to the office are usually held by the  
+.to 
+President           Vice President  
+Producer            Director
+Treasurer           Head Scriptwriter   
+.tn 
+The Head Scriptwriter's key is given to the Tech Director in January.   
+.tp 
+The President should arrange for someone to visit the F.A.S.S. office once a
+week or so to pick up mail. 
+.tp 
+The President should back up the Treasurer. 
+Other members of the Committee frequently view the Treasurer as someone 
+who exists only to make life difficult. 
+It is up to the President to make sure that the Treasurer has some support  
+in the face of such opposition. 
+.tp 
+It is the privilege of the President to buy tokens of recognition for   
+those who have made great contributions to F.A.S.S. 
+An appropriate amount of money should be budgeted for this purpose as   
+the President's discretionary fund. 
+Significant gifts are usually bought for the Producer, Director, Tech   
+Director, Head Scriptwriter, and Stage Manager. 
+Smaller items are frequently given to others, e.g. Music Director,  
+Vice President, Treasurer, and people who have helped with the show above   
+
+and beyond the call of duty.
+.se 5.4.2 'VICE PRESIDENT' Vice~President   
+The Vice President's most important job is taking care of the social
+aspects of F.A.S.S. 
+The type of social activities should vary; no one wants the same sort of
+parties every time F.A.S.S. gets together.  
+.tp 
+The problem is that a "standard" sort of party is much easier to organize   
+than anything more ambitious.   
+It is certainly possible to poll the cast and crew for ideas, but for some  
+reason good suggestions are hard to come by.
+The Vice President just has to keep trying and to use a little originality. 
+.tp 
+Create a committee of people to help out.   
+The V.P. can't do everything alone. 
+It helps for someone on the Vice committee to have a car.   
+.tp 
+In 1981, the Coffee House held in the fall was financed as part of the  
+Vice President's budget.
+This worked out fairly well, but future Committees may decide to do things  
+differently, if the Coffee House is to become an annual event.  
+.tp 
+A general break-down of parties:
+.hb 3 8 (1) 
+Something in the summer, usually a camping weekend. 
+This must be planned over a month in advance, simply because of the 
+difficulties in contacting off-campus members of F.A.S.S. and getting   
+back responses (so you can plan how much supplies to buy).  
+In the past, F.A.S.S. buys a goodly supply of food and charges people who   
+come to the weekend enough to recover a good percentage of the cost.
+.tp 8   
+Summer barbecues (Bring your own meat) have also been popular, especially   
+with those who are around town throughout the summer.   
+Other summer activities include regular frisbee games out on the lawn   
+between Biology and the Math building.  
+.hb 3 8 (2) 
+The Vice President has a big role to play in organizing the General 
+Meeting in the fall.
+This is the first time many people are exposed to F.A.S.S. and they 
+should have a good time.
+The various licensed lounges on campus have been popular for this purpose.  
+They are:   
+.to 12  
+Math Building 5th Floor Lounge, MC 5136 
+Psychology Building Lounge  
+Humanities Grad Lounge  
+.tn 8   
+While we are listing licensed places on campus, we should mention the   
+Faculty Club and the Grad Club, though these are not usually suitable   
+for a crowd the size of the General Meeting (usually in excess of 120 people).  
+.hb 3 8 (3) 
+Something else in th
+
+Something else in the fall. 
+In the past we have had roller skating parties, hayrides, a "Beatles Theme  
+Party" and so on.   
+Some ideas work better than others. 
+.hb 3 8 (4) 
+There is often some sort of get together after each night of auditions  
+in January. 
+This can be along the lines of going to the Grad Club or something else,
+but it should be close to campus.   
+Remember that at this point you have a lot of people who are going to be
+too shy to mingle, so you don't want to ask too much of them.   
+People are more likely to tag along with a crowd going to the CC Pub
+than wander the streets of Waterloo to get to a private house.  
+.hb 3 8 (5) 
+Most weekends during rehearsals there is at least one party.
+In the past, we have booked some place on campus for a rehearsal/party  
+on one of the Friday nights close to the show.  
+.hb 3 8 (6) 
+The tech people frequently get together for breakfast together before   
+the tech rehearsals.
+Similarly, the cast often gets together for breakfast on the morning of 
+the Sunday tech rehearsal.  
+This doesn't take much preparation, but it should be publicized and the 
+restaurants involved should be warned that they will be invaded by large
+numbers of people.  
+.hb 3 8 (7) 
+The four nights of the show usually have parties to allow people the chance 
+to wind down.   
+The Wednesday and Thursday parties tend to be smaller than the Friday   
+one for obvious reasons, but all are well-attended. 
+The Saturday night party is traditionally somewhat dressier than
+other parties.  
+It is at this party that awards of various types are given out by the   
+President.  
+.tp 8   
+Finding a place for the Saturday party is one of the toughest problems  
+the V.P. faces. 
+Because it cannot begin until the show has been struck, it usually doesn't  
+get started until around one o'clock.   
+This implies that it has to be held in a "private residence".   
+Certain party rooms in the Villages are considered private for these
+purposes, and they can be booked if F.A.S.S. has someone with influence 
+at the Villages.
+Hammar House has also been willing to put up with us in the past.   
+If such places around campus cannot be booked, you have to start twisting   
+arms for people who own houses. 
+.hb 3 8 (8) 
+There are good excuses for parties after F.A.S.S.   
+If the show has been video-taped, people will want a party where they    in can watch the ta
+
+can watch the tapes.
+The Annual meeting is a natural excuse for some sort of social occasion.
+This is a chance for the V.P. to use up what's left of his/her budget.  
+.bt 
+The V.P. should make sure that people are informed of parties well in advance.  
+The Producer can help with publicity.   
+During the run of the show, make sure that BOTH cast and crew are told of   
+all social plans -- there is always the danger of talking to one group  
+and missing the other.  
+.tp 
+Do what you can for the writers.
+They're isolated because their work is done in fall when parties are few
+and far between.
+It is a friendly gesture to arrange with the Head Scriptwriter for  
+a trip over to the Grad Club, or to show up at a writers' meeting with  
+pop and munchies.   
+.se 5.4.3 'THE SECRETARY' The~Secretary 
+The Secretary has to keep good minutes. 
+The President will run Committee meetings informally if possible.   
+The Secretary must make sure that the informality does not lead to  
+total vagueness.
+.tp 
+When a motion is put before the Committee, pin down the wording before  
+it goes to a vote.  
+Write up the minutes and provide a copy to any Committee member who 
+requests them.  
+.tp 
+
+........
+
+
+If you have computer experience, it is useful to keep the minutes on
+the F.A.S.S. Honeywell account. 
+This account has been used for many other secretarial functions too.
+The MAIL system provides convenient access to a segment of the  
+F.A.S.S. membership; do not by any means ignore the rest of F.A.S.S. but
+do not ignore the tools available either.   
+The computer provides one of the easiest ways to maintain complete  
+address lists for all F.A.S.S. members. 
+If you do not have any Honeywell experience, an hour or two would be a  
+good long range investment. 
+.tp 
+Since the Secretary is in charge of keeping address lists, we might as  
+well mention our policy in connection with these lists. 
+The F.A.S.S. Committee is provided with address sheets. 
+We do not give out addresses to people who ask for them -- if someone   
+wishes to contact a F.A.S.S. member, take a message and pass it on to   
+the member yourself.
+Many people are sensitive about phone numbers, etc. and the Committee   
+should respect this.
+.se 5.4.4 'THE TREASURER' The~Treasurer 
+The overall duty of the F.A.S.S. Treasurer is to act as a watch-dog on  
+the F.A.S.S. budgets and accounts.  
+.hb 3 8 (a) 
+Keep all the books up to date.  
+.hb 3 8 (b) 
+Receive and maintain all receipts and bank statements.  
+.hb 3 8 (c) 
+Advise the appropriate individuals of the status of their budgets.  
+.hb 3 8 (d) 
+Make recommendations to the Committee as you see fit, in regard to  
+financial matters.  
+.hb 3 8 (e) 
+Draw up a tentative budget for the forthcoming year and present it to   
+the Committee in March. 
+This is done by the incoming Treasurer in collaboration with the Treasurer  
+of the previous year.   
+.hb 3 8 (f) 
+Pay all bills on time.  
+.hb 3 8 (g) 
+Obtain signing authority over all bank accounts.
+The proper forms should be obtained as soon as the new Treasurer is appointed.  
+The Treasurer shares signing authority with the President and the Producer. 
+.hb 3 8 (h) 
+The Treasurer should know where ALL monies are at ALL times.
+He/she is entitled to this knowledge and ALL members of the Committee   
+should co-operate in this matter.   
+.hb 3 8 (i) 
+Responsibility for ticket sales should be shared between the Treasurer  
+and the Producer.   
+If too many people become involed with sales, problems can arise
+(e.g. money and tickets being spread out and nobody knowing who has what when). 
+All cash for ticket sales should go directly to the Treasurer or to 
+the box office. 
+.tp 8   
+The Treasurer should be informed of all activities by the Producer  
+in regard to ticket sales, e.g. the size of block sales, the number of  
+complimentary tickets being distributed, and the number of tickets  
+for sale each night.
+The Treasurer should also be kept informed of the status of sales, as well  
+as this can be determined.  
+.tp 8   
+In the past, the Treasurer has not been a part of cast ticket sales.
+This should change. 
+.bt 
+All expenses by F.A.S.S. members should be explained and backed up by   
+receipts within a week of the expense.  
+Large financial demands by Committee members should be explained and
+justified, in writing if desired, before the allotment is given out.
+We are not saying that advances are bad, merely that they should not
+be given out carelessly.
+The Treasurer has the right to question any F.A.S.S. member about   
+F.A.S.S. financial matters. 
+.tp 
+The Treasurer should not be treated as a mere bookkeeper.   
+A large amount of money flows through F.A.S.S. coffers and the Treasurer
+
+has an important job keeping track of the money.
+.se 5.4.5 'THE REPS' The~Reps   
+The Faculty, Administration, Staff, and Student Representatives do not  
+have well-defined responsibilities. 
+Nevertheless, they have frequently played important roles in seeing 
+that F.A.S.S. unfolds as it should. 
+.tp 
+There are many little things in F.A.S.S. that are not specifically  
+in the province of any particular Committee member. 
+For example, Orientation activities are not precisely the responsibility
+of Vice President, Producer, or anyone else.
+Such areas are places in which the various reps can be of great help by 
+volunteering to supervise.  
+Reps are often active in social and production work as well.
+.tp 
+One of the most important functions of the Reps is to keep an eye on morale.
+During the show, other Committee members have a large number of duties in   
+many areas, and they can seem too busy (or too important) for the   
+membership to talk to.  
+The Reps are certainly not being asked to babysit anyone; but the Reps  
+should be sensitive to problems that might be brewing and they can help 
+to smooth things out before they get out of hand.   
+.se 5.4.6 'THE PRODUCER' The~Producer   
+.to 
+
+<<<<<STILL TO COME>>>>> 
+.tn 
+.se 5.4.7 'THE DIRECTOR' The~Director   
+.to 
+<<<<<STILL TO COME>>>>> 
+.tn 
+.se 5.4.8 'THE HEAD SCRIPTWRITER' The~Head~Scriptwriter 
+The Head Scriptwriter doesn't write the script alone.   
+He/she supervises a group of people who create the script over a
+course of many meetings.
+.se 5.4.8.1 Early~Meetings  
+A theme meeting should be called shortly before the F.A.S.S. Annual Meeting 
+where the actual theme will be chosen.  
+The theme meeting should be open to the public and should be announced  
+to all the members of F.A.S.S.  
+The purpose of the theme meeting is to propose and discuss possible 
+themes for the next year's show.
+The meeting should narrow the possible themes down to four or five ideas
+which are interesting to the group. 
+Once the themes have been decided upon, one person is selected to present   
+each theme and its merits and possibilities at the Annual Meeting.  
+.tp 
+The new Head Scriptwriter chairs the theme discussion at the Annual Meeting.
+Try not to let biases show too much.
+.tp 
+The first brainstorming session should occur within two weeks following 
+the Annual Meeting. 
+The purpose of this session is to take advantage of the enthusiasm  
+(we hope) was generated by the selection of the theme.  
+It is also an opportunity for graduating F.A.S.S. members to provide
+some input on the script.   
+.tp 
+It is a good idea to have one or two brainstorming sessions in the  
+summer term.
+This gives co-op students a chance to make suggestions, even if they
+won't be around in the fall.
+It is also an opportunity to gather a fund of ideas before plotting 
+begins in the fall. 
+These meetings might be held once a month or so; they help to keep  
+F.A.S.S. in the minds of prospective F.A.S.S. members.  
+.se 5.4.8.2 Fall~Meetings   
+The first writers' meeting in the fall should be scheduled as soon as   
+possible after the General Meeting. 
+The date, time, and place of the writers' meeting should be announced   
+at the General Meeting. 
+It is also useful to take a survey at the General Meeting to determine  
+the most convenient time for future writers' meetings.  
+Taking this into account, the Head Scriptwriter should be prepared at   
+the first writers' meeting to announce the time when meetings will  
+regularly occur from that point onward. 
+The regular meetings should be held at the same time, day and place each
+week if possible.   
+We have had problems in the past of people missing one meeting and never
+finding out where subsequent meetings are being held.   
+.tp 
+The Head Scriptwriter should examine the time available for writing and 
+set up a schedule of how each session should be spent.  
+In general, the month of December should be reserved for editing sessions,  
+and November for the actual writing of scenes.  
+Time before that should be divided accordingly into general brainstorming   
+sessions followed by more specific plotting sessions.   
+.tp 
+Usually four meetings are necessary to sort out specifics of the plot and   
+to get a good outline.  
+Any time above and beyond this at the beginning of the fall can be used 
+for brainstorming.  
+This usually means that only one or two sessions in the fall can be given   
+over to undirected brainstorming.   
+.se 5.4.8.3 Handling~Writers
+It is important to remember that many new writers are easily discouraged.   
+It is the duty of the Head Scriptwriter to prevent this if possible.
+New writers should be encouraged to tell ideas to the group and not 
+just the friends sitting beside them.   
+They should be encouraged and their contributions appreciated, even 
+if their first ideas are not what other people are looking for. 
+Newcomers will learn what works and what doesn't if they are given a
+chance to be heard. 
+.tp 
+Old writers should be discouraged from taking too high a profile, since 
+this is bound to intimidate new people. 
+They should also be discouraged from telling in-jokes unless they are   
+prepared to share the joke with newcomers.  
+If necessary, the Head Scriptwriter should talk to the old F.A.S.S. people  
+and ask them to make newcomers welcome and needed.  
+Fresh ideas are the most important thing in F.A.S.S.
+.se 5.4.8.4 Paper~Work  
+The Head Scriptwriter should write down as many of the ideas that come  
+up in sessions as possible. 
+Even ideas which do not seem to have any merit at the time should be noted  
+in case they prove interesting or pertinent later on.   
+(Even if they never prove interesting, people like to see that you're   
+writing down what they say.)
+.tp 
+In order that all ideas be heard by everyone, the group should be   
+guided to speak one at a time, although in periods of peak enthusiasm   dvanthis may
+
+this may be impossible to enforce.  
+Enforcement is probably the wrong word anyway -- no one wants to dampen 
+people's enthusiasm or spontaneity. 
+.tp 
+The ideas gathered by the Head Scriptwriter should be written up every  
+week and presented to each writer at the next meeting.  
+This assures that good ideas do not get lost or forgotten from one week 
+to the next.
+It is also helpful for people who have missed a meeting.
+The weekly idea sheets should be kept in a cumulative file for the benefit  
+of those who will later be writing the scenes.  
+The sheets are also useful for people who cannot attend writers' meetings   
+but who are interested in what's happening. 
+.se 5.4.8.5 Writing~The~Scenes  
+Writers who are interested will be invited to write individual scenes once  
+the plot outline is completed.  
+They may write the scene by themselves or in groups of two or three.
+On the day that scenes are distributed, the writers should be provided  
+with the following information. 
+.hb 3 8 (1) 
+A complete plot outline.
+.hi 3 8 (2) 
+A list of major characters with descriptions of their personalities.
+.hi 3 8 (3) 
+A list of F.A.S.S. names (i.e. funny ones). 
+.hi 3 8 (4) 
+A list of random funny thoughts gathered over the previous weeks.   
+.hi 3 8 (5) 
+Part of a sample scene. 
+.hi 3 8 (6) 
+Information on how to use the computer to enter scenes, if the writer   
+wishes to do this him/herself.  
+.bl 
+Whenever possible, the writer should be allowed to write the scene  
+he/she is most interested in.   
+The Head Scriptwriter should use discretion in assigning difficult  
+or complicated scenes to those who can handle them, and in resolving
+conflicts of several people wanting to do the same scene.   
+.tp 
+The writers should have two weeks during which to write their scenes.   
+Ten minutes is a good length for a scene, but this naturally depends on 
+how many scenes will be in the show.
+Our past experience has been that scripts run a little more than a  
+minute per page of computer output. 
+.tp 
+A writers' meeting should be held in the middle of the two week writing 
+period so that writers can report on their progress and get help with   
+problems which have arisen in the writing.  
+People who are not working on scenes should also attend this meeting
+to provide input for the actual writers.
+.tp 
+Any scenes which are not completed at the end of this two week period   
+should be reassigned to another writer. 
+The second writer should be someone dependable; he/she should be given  
+another two weeks to finish the scene.  
+The process used in the first two week writing period should be followed
+in this second period.  
+Editing can also begin once the first scenes are in.
+.tp 
+Some warnings: usually there are one, two, or three scenes which are
+unusable.   
+They will have to be re-written.
+If a scene has to be re-written, tell the original writer in as diplomatic  
+a way as possible; don't let him/her show up to auditions or editing
+sessions and find that his scene has quietly vanished.  
+.tp 
+Another warning: people will not follow the plot outline.   
+It seems a rather simple task to write a scene when you know what has to
+happen in it, you know what most of the characters are like, and you have   
+a list of jokes that you can use as you see fit.
+Nevertheless, you will find that important details are left out with
+abandon; you will hear "I couldn't write the character the way you  
+said so I did something else"; and you will find funny bits completely  
+disregarded in favour of unfunny oddities.  
+What you do with this problem depends on the situation; we just thought 
+we ought to warn you.   
+.se 5.4.8.6 Editing~Sessions
+Editing is a very long, tedious and boring process, but it is also essential
+to a good script.   
+Editing sessions should be held as often as necessary at whatever time  
+is convenient.  
+.tp 
+Editing is best done in small groups of no more than eight people.  
+The sessions should be arranged so that the writer of a particular  
+scene can be present at the editing of his/her scene if (s)he wants.
+.tp 
+The editing process is simple.  
+The lines of every scene are examined one by one and are changed if a   
+better line/wording/joke is suggested.  
+If a line or section does not work, it should be changed or cut.
+The important result of editing is that every word and action in the
+script has been agreed on by several people as good and appropriate,
+either amusing or necessary to plot or both.
+.tp 
+All editing of scenes should be completed before the end of December
+so that the script is completed in time for auditions during the
+first week in January.  
+
+........
+
+
+This means you should start early -- editing takes approximately three  
+times as long as you think it will. 
+.se 5.4.8.7 Other~Hints 
+Give the Tech Director a copy of the plot outline as soon as it's   
+available -- this helps him/her plan for problems.  
+Listen to any technical comments (s)he has about the script.
+The best idea in the world is useless if it's impossible to put on  
+stage, and it's easier to rewrite in November than the middle of January.   
+.tp 
+The Director should be involved with the scriptwriting process. 
+(S)he should come to writing meetings whenever possible.
+If the Director cannot go to meetings (e.g. (s)he is on work term), the 
+Head Scriptwriter should arrange for the Director to get regular updates
+on the status of the script.
+This includes providing the Director with the finished plot outline 
+and with edited scenes if possible. 
+Remember that the Director will ultimately have complete artistic control   
+over the script.
+Minor changes are certain during the rehearsal period but disruptive major  
+changes can be avoided if the Director and Head Scriptwriter work together  
+throughout the writing process. 
+.tp 
+Make yourself available for consultation about script changes throughout
+the rehearsal period.   
+If you will not be on campus in the winter term, consider appointing one
+of the other writers as deputy in your absence. 
+This assures that changes are made with the agreement of someone closely
+involved with the writing process and makes it unnecessary for the  
+Director to make changes without a writer's advice. 
+.se 5.4.9 'THE TECHNICAL DIRECTOR' The~Technical~Director   
+.to 
+<<<<<STILL TO COME>>>>> 
+.tn 
+.se 5.4.10 'THE STAGE MANAGER' The~Stage~Manager
+.to 
+<<<<<STILL TO COME>>>>> 
+.tn 
+.se 5.5 'FINANCIAL MATTERS' Financial~Matters   
+This section of the Constitution is fairly clear.   
+However there is one matter which ought to be mentioned.
+.tp 
+F.A.S.S. must remain a non-profit organization or we'll have all kinds  
+of problems if the Tax Department finds out about us.   
+Therefore we generally give away any surplus funds we have over and above   
+the float for production of the show.   
+(Sometimes we have kept money back for a year or two if there wasn't
+enough to buy anything significant for anyone, but we usually make a
+tidy profit these days and can afford to be generous
+
+tidy profit these days and can afford to be generous.)  
+In the distant past, F.A.S.S. gaves its money to worthy projects all
+over campus -- for example, the first piano in the Campus Centre was
+donated by F.A.S.S., as is noted in a plaque on the piano room door.
+Recently however, F.A.S.S. has given gifts to the theatre to show our   
+appreciation for the many things they do for us.
+.tp 
+We like giving something definite rather than a blank cheque -- it's more   
+satisfying to point to the headsets in T of A and say "We paid for those",  
+than to wave one's hands vaguely about in the direction of the Arts Centre. 
+There is often a good deal of problem in pinning down exactly what the  
+theatre needs or wants...speak to three people at the Arts Centre and you   
+will get three different answers.   
+Do what you can.
+Get suggestions from the membership.
+.se 5.6 PROCEDURES Procedures   
+The procedures for the conduct of meetings are described in the section 
+above describing the duties of the President.   
+.tp 
+The procedure for amending the Constitution is complicated  
+by the difficulty of determining the exact number of active members 
+of F.A.S.S. 
+It would be nice to say (for example) that amendments to the Constitution   
+must be accepted by two thirds of the active members of the Company.
+However, no one knows how to count who is in F.A.S.S. and who isn't.
+Therefore we have said that changes require two thirds of the people who
+show up at a meeting of all the membership of F.A.S.S.  
+.se 6.0 BENEDICTION Benediction 
+Go happily into the ways of F.A.S.S. and take what comfort you can  
+from the fact that your predecessors have survived the ridiculous hours,
+the thousands of crises, and the way people never see what you're doing 
+until you make a mistake.   
+Be cheered by the thought that F.A.S.S. continues to bring fun to UW because
+of people like you. 
+However rough it may look in the wee hours of dawn the night before the 
+show, no doubt F.A.S.S. is unfolding as it should.  

@@ -1,0 +1,765 @@
+
+
+
+........
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1989/script/writmacr.t 
+.bs 1 4 "A FASSball's Chance in Hell"   
+.na cs CHARLES~SCHULZ SCHULZ
+.na cb CHARLIE~BROWN CHARLIE~BROWN  
+.na lu LUCY~VAN~PELT LUCY   
+.na li LINUS~VAN~PELT LINUS 
+.na sn SNOOPY SNOOPY
+.na fr FRIEDA~DOOWATTIWANNADO FRIEDA
+.na vi VIOLET~EYESTODIEFOR VIOLET   
+.na sc SCHROEDER~SIXWHITEHORSES SCHROEDER   
+.na sh SHERMY~HEMLINESLY SHERMY 
+.na ms SATAN SATAN  
+.na ja JAKE JAKE
+.na ks KID~SATAN KID~SATAN  
+.ld 
+(SPOT UP ON A LONE DRAWING EASEL.   
+THE REST OF THE STAGE IS DARK.  
+ENTER SCHULZ.)  
+.ch cs  
+Here's the world-famous cartoonist coming to his easel. 
+(SITS)  
+Here's the world-famous cartoonist sitting down.
+(PICKS UP PEN)  
+Here's the world-famous cartoonist picking up his pen.  
+(PUTTING DOWN PEN)  
+Here's the world-famous cartoonist putting down his pen.
+(PAUSE) 
+Here's the world-famous cartoonist waiting for inspiration, for 
+the 263rd time this year.   
+*Sigh*. 
+.ld 
+(HE BEGINS TO SING HIS SONG.
+AS HE DOES, THE LIGHTS SLOWLY RISE ON THE REST OF THE STAGE, REVEALING  
+THE PEANUTS BALL PARK.  
+CHARLIE BROWN'S TEAM ENTERS AS SONG CONTINUES, EXCEPT FOR CHARLIE   
+BROWN HIMSELF, WHO ENTERS AFTERWARDS.)  
+.sb "Peanut Gall'ry" "Playground in my Mind"
+SCHULZ: 
+When I sit down at my stand 
+And I take my pen in hand   
+I close my eyes and soon I find 
+A Peanut Gall'ry in my mind 
+.ve 3   
+Where the children laugh
+And the children play,  
+And they sing a song all day-ay-ay-ay.  
+.ve 5   
+SCHROEDER:  
+My name is Schroeder.  I play piano.
+I played Beethoven when I was two.  
+When I get older, I'll spike my hair green. 
+(Play) Ramones and Motley Crue. 
+.ve 5   
+SCHULZ: 
+Comic strips I draw each day
+Showcase a moral play.  
+Charlie Brown will never win
+The kind of dough Snoopy rakes in.  
+.ve 3   
+Yet the children laugh, 
+And the children play,  
+And they sing a song all day-ay-ay. 
+.ve 5   
+LUCY:   
+My name is Lucy.  When we get married   
+We'll have a mansion in Malibu. 
+I'm gonna get me some alimony.  
+That's what I'm gonna do.   
+.ve 6   
+SCHULZ: 
+Living in a world that I made up blind. 
+Happiness is warm puppies and residuals signed. 
+See all the little Peanuts. 
+See how they prosper me in the bank vaults  
+          they have lined.  
+Wa-wa-wa-wa-wa-wa-wa-wa-... 
+.ex 
+.ad 
+(CHARLIE BROWN ENTERS.) 
+.ch cs  
+(BEGINNING TO DRAW) 
+All right team, listen up...
+.ch cb  
+All right team, listen up.  
+We have a brand new season ahead of us. 
+We have to concentrate and give this season everything we've got.   
+Baseball isn't just a game; it's a metaphor for life.   
+You run around in circles, you lose your edge when you get older,   
+and when it's all done, you get sent to the showers.
+.ad 
+(PAUSE) 
+.ch cs  
+Oops.   
+(ERASES STUFF)  
+.ch cb  
+Baseball isn't just a game; it's a metaphor for life.   
+The way a person performs upon the field may be the same way he performs
+in the game of life.
+.xx ENTIRE~TEAM 
+.ul 
+Don't say that! 
+.ch lu  
+Why do we even practise?
+What's the point?   
+We've never won a baseball game and we're never 
+.ul 
+going   
+to win a baseball game. 
+.ch sc  
+Yeah, what are we gonna do -- practise our losing?  
+.ch vi  
+And none of our games ever mean anything!   
+We play, we lose, we play, we lose...   
+.ch sh  
+If we had a reason for playing, it'd be different.  
+.xx VARIOUS~TEAM~MEMBERS
+Yeah!   
+Right!  
+If there was something important... 
+.sd 
+(WE HEAR KNOCKING AT A DOOR.
+JAKE ENTERS AND APPROACHES SCHULZ.) 
+.ch ja  
+Hi ya, Chuck.   
+How's it going? 
+.ch cs  
+Jake!   
+Just the man who can help me.   
+I'm starting another baseball sequence...   
+.ch ja  
+(LOOKING AT DRAWINGS)   
+Can't help you, Chuck.  
+.ch cs  
+You're the world's greatest catcher!
+.ch ja  
+That's my point.
+I always win.   
+Your team always loses. 
+.ch cs  
+But this time I'm going to do something new.
+.ch ja  
+You're gonna let them   
+.ul 
+win?
+.ch cs  
+Better than that.   
+I'm trying to think of a way to have the gang play an important game,   
+build up the excitement, and
+.ul 
+then
+lose.   
+.ch ja  
+Yeah Chuck, that's tons better than winning.
+Face it, guy, you either let them win one at long last, or  
+you're stuck with the same old thing as always. 
+.ch cs  
+I don't buy that.   
+There's got to be a new angle.  
+Boy, I'd give   
+.ul 
+anything
+for a new plotline. 
+.sfx
+(SATAN ENTERS VIA FLASHPOT.)
+.ch ms  
+Anything?   
+.ch ja  
+Um, I think I hear my mother calling.   
+.ch ms  
+Please allow me to introduce myself.
+Satan.  
+Lord of the Underworld. 
+Master of Misery.   
+Creator of "Mary Worth", "Nancy", and "Rex Morgan M.D." 
+.ch ja  
+This is me going now... 
+.ch cs  
+(GRABBING JAKE AND SITTING HIM DOWN)
+This is you staying put.
+(TO SATAN)  
+What do you want, hellspawn?
+.ch ms  
+I want your...baseball team.
+.xx SHULZ~AND~JAKE  
+Hunh?   
+.ch ms  
+I've got an upstart bit of ectoplasm
+downstairs who's getting on my nerves.  
+Doesn't like the food, doesn't like the weather, doesn't like third 
+degree burns, it's just bitch, bitch, bitch.
+So I said to it, I'll play you a baseball game, my team versus yours.   
+If you win, you're outta here.  
+If  
+.ul 
+I   
+win...if
+.ul 
+I   
+win...well, it's not entirely clear that anyone gains or loses  
+anything if 
+.ul 
+I   
+win, but that's not the point.  
+.ch ja  
+What
+.ul 
+is  
+the point?  
+.ch ms  
+The point is, I want this snotty little tart to be represented by   
+the worst team in all baseball history. 
+.ch cs  
+The Baltimore Orioles?  
+.ch ms  
+I   
+.ul 
+mean
+Charlie Brown's All Stars.  
+.ad 
+(PAUSE. 
+SCHULZ LOOKS EMBARRASSED.)  
+.ch cs  
+They're, uh, only cartoon characters, you know. 
+.ch ms  
+So? 
+.ch cs  
+Look, maybe in your field of expertise it's a little harder to draw 
+the line between fantasy and reality, but...
+.ch ms  
+You draw your lines, I'll draw mine.
+.ad 
+(SATAN WALKS INTO STRAIGHT INTO THE BALL GAME.) 
+.ex 
+Hey kids, how's it going?   
+.ch cs  
+He's in my comic strip! 
+.ch ms  
+Let's get some deals going here.
+You, Shermy, what do you want most in life? 
+.ch sh  
+A personality!  
+.ch ms  
+Frieda? 
+.ch fr  
+Something to talk about other than my naturally curly hair! 
+.ch ms  
+Violet? 
+.ch vi  
+I'd like Lucy to wither up and die so I can be the new  
+fussbudget. 
+I'm just as mean and nasty and spiteful 
+as she is, but she gets all the fun.
+(SINGSONG)  
+Lucy gets to jerk away the football.
+Lucy gets to psychoanalyze Charlie Brown.   
+Lucy gets to lean on the piano and say pig-ignorant things  
+to Schroeder.   
+.ch cs  
+Who does that Satan think he is, messing with my strip? 
+.ul 
+I'm 
+in charge here. 
+(HE BEGINS TO DRAW) 
+.ch cb  
+(LOUDLY)
+Can anybody tell me what baseball is all about? 
+.ch li  
+Sure, Charlie Brown.
+I can tell you. 
+(LOOKS UP)  
+Lights. 
+.ld 
+(SPOTLIGHT APPEARS ON LINUS.
+REST OF STAGE DIMS. 
+WHILE LINUS TALKS, THE REST OF THE TEAM LINK HANDS  
+AND QUIETLY SWAY BACK AND FORTH.)   
+.ex 
+"And there were in the city of Mudville nine players abiding in the 
+field; the score stood two to four, with but one inning left that night.
+Blakey was safe at second, and Flynn a-huggin' third.   
+And, lo, Casey, mighty Casey came upon them advancing to the bat: and   
+they were sore afraid.  
+And the umpire said unto them: 'Strike one,' and the crowd did shout,   
+'Kill him! Kill the ump!' 'til Casey did raise his hand.
+'Fear not,' said Casey; 'Strike two,' said the ump, and behold, tidings 
+of great 'Fraud' issued from the throats of all the people. 
+For unto them wast born such a blow this day in the city of Mudville
+which is -- Christ! the Mighty Casey has struck out."   
+.ld 
+(LINUS STEPS OUT OF THE SPOTLIGHT AND IT GOES OFF.  
+STAGE RETURNS TO NORMAL LIGHTING.)  
+.ex 
+And that's what baseball is all about, Charlie Brown.   
+.ad 
+(SATAN APPLAUDS WITH OSTENTATIOUS SARCASM.) 
+.ch ms  
+(TO SCHULZ) 
+Such a burst of inspiration.
+But I don't think you've got the will power to resist me.   
+.ad 
+
+(AS HE TALKS, SATAN WALKS OVER TO LINUS.)   
+.ex 
+You've been running on empty for a long time.   
+.ad 
+(LINUS GIVES HIM THE BLANKET.)  
+.ex 
+This strip isn't yours any longer.  
+.ul 
+I   
+am calling the shots here.  
+.ad 
+(SATAN BEGINS SUCKING HIS THUMB IN THE CLASSIC LINUS MANNER.)   
+.ex 
+I'm in charge now.  
+I can...
+.ad 
+(HE REALIZES WHAT HE IS DOING, AND DROPS THE BLANKET QUICKLY.)  
+.ex 
+Okay, you took me by surprise.  
+But now that I'm prepared, here's the World War I flying ace
+in search of the... 
+.ad 
+(SATAN COVERS HIS MOUTH WITH HIS HAND.  
+LIFTS IT OFF A CRACK.)  
+.ex 
+There really is a Great Pumpkin, and he searches out the most   
+sincere...  
+.ad 
+(SATAN COVERS HIS MOUTH WITH HIS HAND AGAIN.
+LIFTS IT OFF.)  
+.ex 
+(SINGING)   
+You're a good man...
+.ad 
+(COVERS HIS MOUTH AGAIN.
+SPEAKS THROUGH HIS HAND.)   
+.ex 
+You can't keep this up forever, you know.   
+.ch cs  
+Oh, get thee behind me, Satan!  
+.ad 
+(SATAN IS RAPIDLY DRAGGED BY AN UNSEEN FORCE OUT OF THE 
+CARTOON AND BACK OVER TO THE EASEL, BEHIND SCHULZ'S SHOULDER.)  
+.ch ms  
+Okay, so you know the magic words.  
+And you can control the little buggers from out here.   
+But we can still talk.  
+.ch cs  
+I don't have to listen. 
+.ch ms  
+Why am I getting all these negative vibes?  
+.ch cs  
+This is good vs. evil!  
+.ch ja  
+(SOTTO VOCE)
+Actually, it's mediocre vs. evil.   
+.ch ms  
+We're talking a single lousy ballgame here. 
+They come to Inquisition Stadium, they play, they lose, they
+go home.
+I'll pick 'em up right after the morning edition and have them  
+back in time for the afternoons.
+.ch cs  
+(FINGERS IN EARS)   
+I'm not listening.  
+.ch ms  
+Tell you what, for a limited time only, here's my offer.
+You lend me the team, and I give you a whole raft of new plotlines. 
+.ch cs  
+No! 
+.ch ms  
+Don't you want to be inspired again?
+How many times can you have Peppermint Patty fall asleep in school? 
+.ch ja  
+Six times a week and once in colour.
+.ch ms  
+Or Spike the Beagle talking to a cactus?
+Talk about combing a desert...  
+.ch cs  
+I'll show you I haven't lost it.
+(HE DRAWS ANOTHER STRIP.
+SATAN STARTS DRAWING FROM BEHIND HIM.   
+SCHULZ IS DRAWING DURING CHARLIE BROWN'S LINES, 
+AND SATAN IS DRAWING DURING THE OTHERS.)
+.ch cb  
+What's the matter, Violet?  
+Why don't you put on your glove?
+.ch vi  
+I'm scared of spiders, Charlie Brown.   
+What if a bug crawled in during the night?  
+Every day I worry whether there's a bug inside. 
+.ch cb  
+Oh, good grief. 
+What I have to go through for this team.
+(PUTS HAND IN A GLOVE)  
+Why you girls are so worried about bugs crawling into your...   
+.ul 
+AAARRRGGGHHH!!! 
+There was a bug!
+There was a bug in that glove!  
+.ch vi  
+(SINGSONG)  
+Thank you, Mister Manager.  
+.ch ja  
+Which one of you guys drew the bug? 
+.xx SATAN~AND~SCHULZ
+Uhhh... 
+.ch cs  
+Just sort of seemed natural, you know.  
+.ch ms  
+Yeah.   
+.ch ja  
+Are you sure you two have never collaborated before?
+.ch cs  
+Never!  
+(STARTS DRAWING AGAIN.  
+FRIEDA APPROACHES CHARLIE BROWN.)   
+.ch cb  
+Well?   
+.ch fr  
+How far out would you say centre field is?  
+.ch cb  
+About a hundred yards.  
+Why?
+.ch fr  
+From that distance, do you think people will be able to tell that   
+I have naturally curly hair?
+.ch cb  
+Frieda...   
+.ad 
+(SATAN STARTS DRAWING TOO)  
+.ch fr  
+From that distance, do you think anyone will really know I exist?   ave .ch 
+
+.ch cb  
+But--   
+.ch fr  
+How often does anyone ever  
+.ul 
+see 
+centre field?   
+I stand out there with this damned naturally curly hair that went out   
+of style twenty years ago and always looked like a Brillo pad anyway,   
+and what kind of fulfillment is there in that?  
+.ch sh  
+(APPROACHING CONVERSATION)  
+And what about me?  
+What about good ol' Shermy? 
+I am so 
+.ul 
+sick
+of being such white bread.  
+.ch fr  
+We had an offer from Doonesbury, you know.  
+We could have been those cute kids in Joanie Caucus's old   
+daycare centre. 
+.ch sh  
+I was going to be the little chauvinist pig...  
+.ch fr  
+And I was going to be the ignorant little Total Woman type in   
+need of transformation into a RadFem.   
+By now, I'd have a punk haircut and know about drugs.   
+.ch sh  
+I'd be sitting in Congress, and maybe even up for indictment!   
+.xx FRIEDA~AND~SHERMY   
+Charlie Brown...play us or trade us!
+.ad 
+(THEY STOMP OFF TO THEIR POSITIONS.)
+.ch ja  
+Wow, I haven't seen Frieda in ages. 
+How come you don't do the old characters like Frieda or Pig-pen any 
+more?   
+.ch cs  
+Well, they were kind of one-joke characters...  
+.ch ja  
+Even one joke isn't that bad a batting average, Chuck.  
+You know what I mean?   
+.ch cs  
+Are you saying I've lost it?
+.ch ja  
+I'm just saying that you shouldn't turn down inspiration
+when it's being offered.
+.ch cs  
+Watch this! 
+(BEGINS DRAWING)
+.ch cb  
+(ASIDE) 
+This is the one moment of the year I cherish.   
+The first time I climb onto that ol' pitcher's mound.   
+Yessir, this is the moment of moments.  
+A moment to savour. 
+A moment to remember.   
+A moment to--   
+.ch lu  
+Get up there and pitch, you blockhead!  
+.ch cb  
+(STEPPING ONTO MOUND)   
+*Sigh*  
+.ad 
+(PAUSE) 
+.ch ms  
+Yeah, that's really dynamite stuff there, Chuck.
+You know...fresh.   
+.ch cs  
+I'm not finished!   
+.ad 
+(CHARLIE BROWN PREPARES TO PITCH TO AN OPPONENT OFFSTAGE.)  
+.ch vi  
+C'mon, Charlie Brown!   
+We're not really expecting much, but we can hope!   
+.ch li  
+Pitch it to him, Charlie Brown! 
+He'll probably hit a home run, but pitch it to him anyway!  
+.ch lu  
+Hey, Charlie Brown! 
+We know you're no good, but we're right behind you anyway -- sort of.   
+.ad 
+(CHARLIE BROWN PITCHES THE BALL OFFSTAGE; A FLY BALL COMES BACK.
+
+........
+fass
+
+
+
+THE BALL FALLS A FOOT FROM LUCY, WHO DOESN'T
+EVEN ATTEMPT TO CATCH IT.)  
+.ch cb  
+What kind of outfielder are you?
+That ball only missed you by a foot!
+Why didn't you catch it?
+.ch lu  
+How can I play baseball when I'm worried about the Middle East? 
+.ad 
+(PAUSE) 
+.ch ja  
+That's the punchline?   
+.ch ms  
+Have you thought about introducing a new character? 
+Here... 
+.ad 
+(HE STARTS TO DRAW. 
+KID SATAN WALKS ON THE FIELD.   
+IT WOULD BE INTERESTING TO HAVE HIM LOOKING LIKE A COMBINATION  
+BETWEEN SATAN AND CHARLIE BROWN: HORNS, BUT WEARING THAT CHARLIE
+BROWN SWEATER WITH THE ZIG-ZAG, PERHAPS WITH THE COLOURS REVERSED.) 
+.ch ks  
+Hi. 
+I'm the new first baseman.  
+I'm evil.   
+.ch cb  
+(NERVOUSLY) 
+Schroeder, I think we should go over our signals.   
+.ad 
+(CHARLIE BROWN BEGINS TO CONFER WITH SCHROEDER. 
+KID SATAN COMES AT CHARLIE BROWN FROM BEHIND TO ATTACH WHATEVER ROPES,  
+THREADS, ETC. ARE NEEDED TO PRODUCE CHARLIE'S UPCOMING FLIP.)   
+.ex 
+One finger means a fast ball.   
+Two fingers mean a curve ball.  
+Three fingers mean a drop.  
+Four fingers mean a pitch-out.  
+.ch sc  
+One finger means a straight ball.   y caTwo fingers mean a strai
+
+Two fingers mean a straight ball.   
+Three fingers mean a straight ball. 
+Four fingers mean a straight ball.  
+.ad 
+(SCHROEDER RETURNS BEHIND PLATE.)   
+.ch cb  
+(ASIDE) 
+I have a very sarcastic catcher.
+.ad 
+(HE PITCHES OFFSTAGE AGAIN. 
+A LINE DRIVE COMES BACK.
+CHARLIE BROWN SPINS UPSIDE DOWN; HIS HAT, SHIRT,
+GLOVE, AND SHOES GO FLYING.)
+.ex 
+Aauugh! 
+.ch ja  
+That always happens to Charlie Brown anyway.
+What was the point of the evil kid? 
+.ch ms  
+The point, my dear man, is that the Satan kid is going to approach  
+the members of the team and sign them up for my game.   
+(POINTING TO SCHULZ)
+That way I cut out the middle man.  
+.ch cs  
+You can't cut me out.   
+I'm the cartoonist! 
+I'm in complete control of their world. 
+.ch ms  
+No one's in complete control of anything.   
+You write what they're going to say, but how do you know
+there isn't someone writing what
+.ul 
+you're  
+going to say?   
+.ch ja  
+Nobody's putting words in   
+.ul 
+my  
+mouth -- pineapple. 
+.ad 
+(HE COVERS HIS MOUTH IN HORROR. 
+SNOOPY APPROACHES CHARLIE AND LEANS HIS HEAD FORWARD.)  
+.ch cb  
+What, now?  
+In the middle of a ballgame?
+.ad 
+(SNOOPY SULKS)  
+.ex 
+Oh, very well, let's get it over with.  
+.sd 
+(CHARLIE SKRITCHES SNOOPY'S HEAD.)  
+.ex 
+I can't stand it.   
+.ch fr  
+Don't forget to wash your hands because you touched the dog.
+.ch cb  
+Oh, good grief! 
+.ch sn  
+"Touched the dog"?! 
+(SLOWLY I TURN...)  
+"Touched the dog"?!!
+.ch fr  
+Stay away from me!! 
+My hands are clean! 
+.ch sn  
+Look out!   
+I'm covered with disease!   
+I'm filthy dirty!   
+.ch fr  
+Stay away, I said!  
+.ch sn  
+Here comes the bubonic plague!  
+Pat my head and get a handful of germs! 
+Here comes the walking disease carrier! 
+Beware! 
+Beware! 
+Look out for me -- I'm diseased!
+I'm contaminated!   
+I'm--   
+.ch fr  
+(CORNERED) Help!
+.ch sn  
+(TURNING AWAY)  
+"Touched the dog"!  
+Good grief! 
+.ch ja  
+Good old Snoopy.
+I gotta admit, whenever you're dry, Chuck, Snoopy works.
+.ch cs  
+And watch this! 
+.ad 
+(SNOOPY SUDDENLY STEALS LINUS'S 
+EVERPRESENT BLANKET AND LINUS CHASES SNOOPY OFFSTAGE.   
+SILENCE.)   
+.ch ja  
+(SADLY) 
+Oh Chuck... 
+.ch cs  
+What?   
+.ch ja  
+Not the blanket.
+After 34 years, not the blanket again.  
+Everybody hates the blanket.
+
+I hate the blanket. 
+Teen-agers hate the blanket.
+Yuppies hate the blanket.   
+Even children who like Smurfs hate the blanket. 
+.ch ms  
+(PATTING HIS SHOULDER)  
+You blew it, Chuck. 
+.ch cs  
+You say you can give me...inspiration?  
+.ch ms  
+By hook or by crook, I will.
+Sign here.  
+.ad 
+(HE PRODUCES A CONTRACT.
+KID SATAN GOES TO CHARLIE BROWN.)   
+.ch ks  
+Hi. 
+Wanna play a game of baseball to save a little red-haired girl from 
+eternal damnation?  
+.ch cb  
+I'd do anything for 
+.ul 
+her.
+.ch ks  
+(PRODUCING INFERNAL DOCUMENTS AND A PEN)
+Sign right here.
+And here.   
+Initial there.  
+Press hard, you're making three copies. 
+Thank you.  
+.ad 
+(KID SATAN TAKES TOP TWO COPIES AND GIVES ONE COPY TO SATAN.
+THEY RUBBER STAMP EACH OTHER'S COPIES AND LEAVE IN OPPOSITE DIRECTIONS.)
+.ch cs  
+Tell me it was all a dream, Jake.   
+.ch ja  
+It was all a dream -- pineapple.
+(BRISKLY)   
+I'm leaving now.
+.ad 
+(HE LEAVES. 
+SCHULZ WEARILY GOES BACK TO THE DRAWING BOARD.  
+HE SINGS WISTFULLY.)
+.sb "Peanut Gall'ry" "Reprise"  
+When I sit down at my stand 
+And I take my pen in hand   
+I close my eyes and soon I find 
+A Peanut Gall'ry in my mind.
+.ve 3   
+Where the children laugh
+And the children play   
+And they sing a song all day-ay-ay-ay...
+.ch lu  
+Charlie Brown, you blockhead!   
+If we lose that ballgame, we'll suffer the torments of the damned for   
+eternity!   
+I might even miss dinner!   
+.ch fr  
+Will hellfire take the curl out of my naturally curly hair? 
+.ch sh  
+You're hopeless, Charlie Brown. 
+.ch vi  
+Completely hopeless.
+.ch cb  
+Rats!   
+.ld 
+(LIGHTS DOWN)   
+.es 

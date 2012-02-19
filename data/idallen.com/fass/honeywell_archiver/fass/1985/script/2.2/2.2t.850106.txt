@@ -1,0 +1,476 @@
+
+
+
+........
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1985/script/85macr.t   
+.bs 2 2 "Ready, Villain and Able"   
+.na cf THE~FLY FLY  
+.na co DARTH~CO-ORDINATOR DARTH 
+.na cp CABBAGE~PATCH~KID CABBAGE
+.na cq RACHEL~PREJUDICE RACHEL  
+.na mf MARY~ANNE~HAMMERSTEIN MARY~ANNE  
+.na mt AUNTIE~DELUVIAN DELUVIAN 
+.na ox OX~E.~MORON OX   
+.na qs QUASI~STATIC QUASI   
+.na ww WIZARD~OF~WORDS WIZARD   
+.na wp LENNY~R.~PROGRAMMING LENNY   
+.na wv WENDY~ST.~SKOMARCHINGIN WENDY
+.na g1 MICHAEL~ROWYOURBOATASHORE MICHAEL
+.na g2 EDMOND~TELLNOTALES EDMOND
+.na g3 MARC~O'ZORRO MARC
+.ad 
+(LIGHTS UP ON STAGE REVEALING A ROWDY EUCHRE GAME IN PROGRESS ON CENTER STAGE.  
+SEATED CLOCKWISE ABOUT THE TABLE ARE THE FLY, OX, RACHEL PREJUDICE, AND 
+THE WIZARD OF WORDS. FLY IS THE DEALER AND EVERYONE HAS THEIR FIRST 
+FIVE CARDS DEALT FOR THE NEXT ROUND.
+A SIGN NEAR THE TABLE INDICATES THAT THIS IS EVIL SOC B)
+.ld 
+(LIGHTS UP ON STAGE)
+.ch ox  
+Pass.   
+.ch cq  
+Pass.   
+.ch ww  
+Pass.   
+.ch cf  
+It's down.  
+.ch ox  
+What was it?
+.ch cf  
+Clubs.  
+.ch ww  
+It was spades.  
+.ch cf  
+Get out, it was clubs.  
+.ch ww  
+You lie like a rug. 
+.ch cf  
+You smell like a rug.   
+.ch ww  
+You wear a rug. 
+.ch cq  
+Boys, please.   
+.ch ox  
+Ox passes.  
+.ch cf  
+(ASIDE) Ox passes wind. 
+.ch ox  
+Ox heard that! (SWIPES AT FLY)  
+.ch cf  
+(GASPING AT RACHEL) Look at that cleavage! (OX AND WIZARD TURN TO LOOK AT   
+RACHEL; FLY SHOWS HIS HAND QUICKLY) 
+.ch cq  
+I call it Hearts.   
+.ch ww  
+You would, you tramp.   
+.ad 
+(RACHEL BANGS CARDS ON TABLE)   
+.ch cf  
+You better apologize to Rachel Prejudice, Wizard.   
+.ch ww  
+Fly, you are a cheat! (MEANWHILE, WIZARD HAS BEEN PASSING FOOT  
+SIGNALS TO OX UNDER THE TABLE)  
+.ch ox  
+Ox lead Ace of Clubs.   
+.ad 
+(EVERYONE QUICKLY FOLLOWS SUIT; OX TAKES THE TRICK) 
+.ex 
+Can I go alone? 
+.ch ww  
+No, you can't.  Just lead.  
+.ad 
+(OX LEADS ACE OF DIAMONDS, BUT RACHEL TRUMPS IT AND TAKE THE TRICK) 
+.ch cf  
+About time you took a trick.
+.ch ox  
+Yeah, Ox worried.  First trick Rachel has picked up all week.   
+.ch cq  
+Why, you animal! (SHE SLAPS HIM)
+.ad 
+(AS THE EUCHRE GAMES ERUPTS INTO NEAR CHAOS, THE SUPERVILLAINS THAT SURVIVED
+THE RUMBLE FROM THE LAST SCENE ENTER.  SPECIFICALLY, CABBAGE PATCH KID, 
+
+
+AUNTIE DELUVIAN, AUNTIE K'FURNITURE, QUASI STATIC (A HUNCHBACK), AND DARTH  
+CO-ORDINATOR)   
+.ch cq  
+(AGHAST AT THEIR DISHEVELED APPEARENCE.  TO CABBAGE PATCH KID)  
+Honey what happened?
+.ch cp  
+We had them, those arrogant do-gooders, we had them in our clutches!    
+They should have been killed!  Where the hell were you people?  
+Did you come and help fight?  Did you remember that unless we get rid   
+of those heroes, we'll lose our funding?  But no!  You had to play your 
+little game of cards.  Well, thanks a lot guys, really makes my day. (SULKS)
+.ch cq  
+(MOTHERING) Oh, don't be a blue baby. (SHE HUGS HIM AND TOSSLES HIS HAIR)   
+We'll get those nasty super-heroes someday. 
+.ch qs  
+Hey, Ox, you should have seen it.  Blood and guts and everything!   
+.ch mt  
+What are we going to do now?
+.ch co  
+(THINKING:) 
+Let's see...
+the key to this whole problem...
+The 
+.ul 
+machine 
+is the key to this whole problem.   
+We must 
+.ul 
+sabotage
+the coffee machine. 
+If we could learn more about that machine, we could ... 
+.ch cp  
+Say no more. Ox! Quasi! Go get us information on this machine.  
+(OX AND QUASI MAKE A MOTION OF ACKNOWLEDGEMENT, AND EXIT)   ....Dart
+
+Darth, this may be a good time to show us that secret weapon you've been
+working on.  We've got to wipe those
+goody-goody slime off the face of the earth!
+.ch co  
+Of course, Mister Patch.
+(CO-ORDINATOR EXITS OFF AT OTHER SIDE OF STAGE) 
+.ch cp  
+We need to learn about the Professor's machine. 
+(LOOKING ABOUT) Aren't those two clowns back yet?   
+.ad 
+(OX AND QUASI ENTER, DRAGGING A STRUGGLING AND GAGGED MARY ANNE BETWEEN THEM)   
+.ch ox  
+Ox here, boss. We brought girl. 
+.ch qs  
+She help Professor with machine. We do good, master?
+.ch cp  
+(UNGAGGING MARY ANNE) Talk, girl!   
+What do you know about the professor's machine? 
+.ch mf  
+(DEFIANTLY) Mary Anne Hammerstein. 3B Arts Major.   
+ID number eighty-one, thirty six, twenty-four, thirty-eight.
+.ch cf  
+(OGLING) Oh, I think I'm in love.   
+.ch cp  
+Playing hard to get, mmmh? Rachel, rough her up a bit.  
+See if you can -- indoctrinate her. 
+.ch cq  
+(PULLING OUT A PERFUME SPRAY BOTTLE FROM HER PURSE) 
+You should have talked, my pretty.  
+This is Niagara Perfume!
+.ch mf  
+What's it made of?  
+.ch cq  
+It's made of the mist.  
+(SPRAYS MARY ANNE WITH IT)  This will seep into your brain, 
+and you'll b
+
+and you'll be mine to command!  
+.ch mf  
+You and what army, powder-puff? 
+.ch cq  
+It's not working!   
+She must have natural psychic defenses! 
+.ch cf  
+(STILL OGLING)  What a mind, what a mind... 
+.ch mt  
+Talk, sweetie, or I'll turn the Punster loose on you.   
+.ch mf  
+Don't think for a moment that I will give in to your    
+feeble threats. 
+.ch mt  
+Punster, attack! And do your worst. 
+.ad     
+(PUNSTER CLOSES IN ON MARY ANN AND OPENS HIS BOOK OF TERRIBLE   
+PUNS. SHE SEES THE BOOK AND BEFORE PUNSTER CAN UTTER A WORD 
+SHE SCREAMS)
+.ch mf  
+I'll talk!  I'll talk!  
+.ch mt  
+You'll talk about the coffee machine?   
+.ch mf  
+I'll sing!  
+.sb "That's How it Percolates" "Hokey Pokey"
+.ve 6   
+You'll flip the back door up
+You turn the tread mill down
+You fill the hop with beans 
+and you bake them til they're brown 
+You fill the tank with water and you heat it til it's hot   
+That's how it percolates.   
+.ve 7   
+(FASTER:) You turn the grinder on   
+You twist the filter tight  
+You freeze it till it's froze,  
+then you dry it till it's right 
+You put it in a bucket  
+and you leave it over night 
+That's how it saturates.
+.ve 6   
+
+
+(FASTER STILL) You put the record on
+You turn the lights down low
+And then you tell it lies that you think it wants to know   
+You push it, then you pull it,  
+and you press the spot marked 'G'   
+That's how it forni... (SHE FAINTS AND COLLAPSES)   
+.ch mt  
+She's fainted!  She should be out for about 10 minutes. 
+.ch cp  
+That's okay, she was useless to us anyway.  
+.ad 
+(ENTER LENNY (AS WILL POWER))   
+.ch wp  
+Don't worry, Miss Hammerstein, I'll rescue you from the clutches of these   
+evil fiends.
+.ch mt  
+How will you do that?  There are eight of us, and only one of you.  
+.ch wp  
+I'll... I'll... Wendy!  What am I supposed to do now??? 
+.ch wv  
+Use the course, Lenny.  
+.ch wp  
+How could I forget?  I have my trusty Statistics book with me.  
+.ad 
+(TAKES OUT BOOK AND STARTS READING:)
+.ex 
+We must consider the mean, standard 
+deviation, and kurtosis of the independent bimodal distributions when testing   
+for statistical significance of...  
+.ad 
+(ALL FALL ASLEEP)   
+.ex 
+It worked!  I've really saved the day, thanks to you, Wendy.
+.ad 
+(WENDY, IN SPIRIT FORM, IS "FLOWN" IN.  SHE MAY DANCE WITH LENNY, OR JUST   
+BUZZ HIM)   AND .sb "Escape of M
+
+.sb "Escape of Mary Anne" "I Am Sixteen, Going on Seventeen"
+.ve 6   
+(LENNY:) I once was a man   
+        Who backed down from fights 
+        In short, a great big zero  
+        But now I'm a man   
+        Who wears sexy tights   
+        A real live super-hero (my hero)
+.ve 6   
+        I'm a good guy  
+        Do-what-I-should guy
+        Villains don't cross my path
+        Vicious young thugs 
+        And pushers of drugs
+        Recoil from my deadly Math  
+.ve 4   
+        Totally unprepared are they 
+        For probabalistic chats 
+        Listless and weak and tired are they
+        When I start reading Stats  
+.ve 4   
+        I'm a good guy, noble and daring
+        Loyal and good and true 
+        I fight crime and have a good time and  
+        Wendy, it's all for you 
+.ve 6   
+(WENDY:) I am Wendy 
+         Used to be trendy  
+         I know that I'm deceased   
+         Joints are all tighter 
+         Body is lighter
+         Someone should call a priest   
+.ve 4   
+         Totally unconcerned am I   
+         With eating daily bread
+         Lifeless and cold and stiff am I   
+         Because, you see, I'm dead 
+.ve 4   
+
+         Once I dreamed of fighting off bad guys
+         Setting the whole world free   
+         You're a good guy, do-what-you-should guy  
+         Won't you live for me? 
+.ad 
+(MUSIC ENDS.  SHORT PAUSE FOR APPLAUSE, THEN INTO "GHOSTBUSTERS" THEME AS   
+OUR GHOSTBUSTING TRIO ENTER)
+.ch g1  
+There she is -- get her!
+.ad 
+(THEY FIRE THEIR GHOST-GRABBING GUNS, AND IN A PUFF OF SMOKE WENDY IS   
+(THROUGH SHEER TECHNICAL WIZARDRY) SUCKED INTO THEIR
+GUNS, AND THENCE INTO THE SMALL STORAGE BOX.  (PERHAPS A PORTABLE VACUUM
+CLEANER TO SUCK UP THE SMOKE?)) 
+.ch wp  
+Wendy?!?
+(TO GHOSTBUSTING TRIO:) What have you done!!!   
+.ch g2  
+Oh, you don't have to thank us. 
+.ch wp  
+Thank you?!?!?  
+.ch g3  
+You're welcome. 
+.ch wp  
+What did you do to her???   
+.ch g1  
+"Her"?  Oh, you mean that ectoplasmic manifestation?
+.ch wp  
+Yeah, Wendy!
+.ch g2  
+Oh, she's in here.  
+.ad 
+(HOLDS UP BOX)  
+.ch wp  
+Wendy?  
+.ad 
+(LENNY TRIES TO TAKE THE BOX)   
+.ch g3  
+Woah, hang on a second.  We can't give you this.
+.ch wp  
+You can't?  
+.ch g1  
+No, but we'll sell it to you.   
+.ch wp  
+Sell it to me!?!?!  
+(PAUSE) How much?   
+.ad 
+(GHO
+
+(GHOSTBUSTERS CONFER, SETTLE ON PRICE)  
+.ch g2  
+Five bucks. 
+.ch wp  
+(HANDING OVER MONEY) Okay, here.
+.ch g3  
+Thank you, sir, it's been a pleasure doing business with you.   
+If there's ever anything else we can help you with, 
+just say the word.  
+.ad 
+(THEY EXIT, TO GHOSTBUSTERS THEME)  
+.ch wp  
+Don't worry, Wendy, I'll get you out of there... somehow... 
+.ad 
+(LENNY EXITS, CARRYING MARY ANNE IN THE BOX)
+.ad 
+(DARTH CO-ORDINATOR ENTERS CARRYING A BOTTLE OF COFFEE-MATE, LABELED
+"MULRONIUM")
+.ch co  
+Mr. Cabbage Patch, I have found it!     
+.ch mt  
+That's the big secret weapon?  That bottle of coffee-mate?  
+.ch co  
+Fool!  This is Mulronium, the most deadly substance in the  
+university. 
+.ch cf  
+What's so deadly about it?  
+.ch co  
+Ah yes!  It does appear harmless, doesn't it?  Well it'll do more than  
+just make your next cup of coffee taste great.  Just remember the   
+three rules:  you mustn't get it wet, or expose it to bright sunlight.  
+.ch ww  
+That's only two rules.  What's the third?   
+.ch co  
+You mustn't feed it after midnight. 
+.ch cq  
+(SHOCKED) Feed it?  You mean it's alive?!?  
+.ch co  
+Of course it is and it reproduces at
+a horrendous rate when exposed to liquids.  It can radiate explosive
+amounts of energy, throughout the entire electro-magnetic-spectrum. 
+Fortunately, it's harmless now.  It all happens instantly when  
+it dissolves into its component sub-atomic ion particles.   
+.ch ox  
+Duh...  Quasi know what Darth talking about?
+.ch qs  
+No, but I have a hunch! 
+.ch mt  
+We'll slip this into the professor's coffee machine.
+.ch cp  
+The coffee will become contaminated with radioactive waste. 
+The heroes will drink it, and the resultant discharge of pan-dimensional
+energies will wipe out their super powers.  We'll literally blast   
+them inside out!
+.ch co  
+And without their powers they'll be easy to kill off.   
+.ch cp  
+They're dead!  They're finished!  Now nothing can stand in our way of   
+University domination.  
+.sb "They're Milking us Dry" "Jesus must Die"   
+.ad 
+(SINGERS: THE BAD GUYS, FOUR OF WHOM HAVE SOLOS)
+.ve 1   
+(TENOR:) Now Cabbage Patch, this Rogers' jig is up! 
+.ve 1   
+(BASS:) We're losing dough, to fill his coffee cup! 
+(BARITONE:) You're right!  This new caffeine machine
+            Is a bitter pill to swallow 
+.ve 2   
+
+(SOPRANO:) What then to do about Professor Rogers?  
+           Filler of filters, king of the drips 
+.ve 1   
+(TENOR:) Those high-voltage grinders and platinum stir-sticks   
+.ve 1   
+(BARITONE:) Money for evil lost each time he sips!  
+.ve 2   
+(SOPRANO:) We cannot leave him to his own devices   
+Let's get that bean-brain and grind him to meat!
+.ve 1   
+(TENOR:) If we don't stop him, the faculty's busted 
+.ve 1   
+(BASS:) Heroes and villains, all out on the street! 
+.ve 4   
+(BARITONE:) I see the Bovine Commission 
+            Shooting the bull and milking us now
+            I see pasteurization
+            Our udder destruction, because of one cow.  
+.ve 1   
+(ALL:) One cow, one cow, a big one and how! 
+.ve 1   
+(BARITONE:) Our udder destruction, because of a cow!
+.ve 1   
+(ALL:) One cow, one cow, a big one and how! 
+.ve 2   
+(SOPRANO:) What then to do about Besse the Bovine?  
+           Milkable minister, queen of the herd 
+.ve 1   
+(TENOR:) We're losing blood money 'cause cows prefer coffee 
+.ve 1   
+(BASS:) Next we'll be shafted by beer-drinking birds!   
+.ve 4   
+(BARITONE:) I see villany dying 
+            Left to go begging for what we can get  
+
+            We must sabotage Rogers 
+            With stuff that's so scary, you'll get all upset
+.ve 1   
+.ve 1   
+(ALL:) Upset, upset, you've seen nothing yet!   
+.ve 1   
+(BARITONE:) With stuff that's so scary, you'll get all upset!   
+.ve 1   
+(ALL:) Upset, upset, you've seen nothing
+       Seen nothing, seen nothing yet!  
+.ld 
+(LIGHTS DOWN)   
+.es 

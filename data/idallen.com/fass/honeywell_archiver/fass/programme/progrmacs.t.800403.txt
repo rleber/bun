@@ -1,0 +1,119 @@
+
+
+
+......r:
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{dv 2}  
+{galley}
+{ds job_name "F.A.S.S. 1980 Programme --- Days of Future FASS"} 
+{if {_dv}=1 [   
+	{pl 66L}   
+	{ds ps ""} 
+	{ds tf_ ""}
+] [ 
+	{pl 7.25I} 
+	{ll 4.25I} 
+	{tf_ 2}
+	{ps 8p}
+	{ds DASH "\c130"}  
+]}  
+{if {_dv}=1 [{ty "" "dv=1(line printer)\n"}]}   
+{if {_dv}=2 [{ty "" "dv=2(econosetter)\n"}]}
+{if {_dv}=3 [{ty "" "dv=3(aps-v)\n"}]}  
+{if {_tf}=1 [{ty "" "tf=1(lineprinter roman)\n"}]}  
+{if {_tf}=2 [{ty "" "tf=2(times)\n"}]}  
+{ 'usage of ACT	  (ACT act#)'}  
+{ds ACT [   
+	{ty "" "starting act: {al 1}\n"}   
+	{ps 10p}   
+	{bf}   
+	{ce}   
+	ACT {al 1} 
+	{sp}   
+	{nf}   
+	{ro}   
+	{dn act_ 1}
+	{ds actstr "{al 1}"}   
+	{ps 8p}
+	]  
+}   
+{  'usage of SCENE:  (SCENE scene# title)'} 
+{ds SCENE [ 
+	{ty "" "start of scene: {al 2}\n"} 
+	{if {act_} [   
+		{dn act_ 0}   
+	] [
+		{sp}  
+		{ne 10L}  
+	]} 
+	{ps 10p}   
+	{bf}   
+	{ce}   
+	{actstr}:{al 1} {al 2} 
+	{sp}   
+	{ro}   
+	{nf}   
+	{ps 8p}
+	]  
+}   
+{  'usage of CHAR:   (CHAR charname personname)'}   
+{ds CHAR [  
+	{ty "" "-char\n"}  
+	{ne 4L}
+
+
+	{it "{al 1}"}  
+	{dots "{al 2}"}
+	]  
+}   
+{  'usage of BUNCH:   (BUNCH num_columns group_title)'} 
+{ds BUNCH [ 
+	{ty "" "-bunch\n"} 
+	{br}{ne 4L}
+	{it "{al 2}"}  
+	{tabson}   
+	{ta 0.25I 1.75I NF 1.75I 3.25I NF 3.25I 5.0I NF}   
+	]  
+}   
+{  'usage of HEAD:   (HEAD title_string)'}  
+{ds HEAD [  
+	{ty "" "starting {al 1}\n"}
+	{sp}   
+	{ne 6L}
+	{ev}   
+	{ps 10p}   
+	{bf}   
+	{ce}   
+	{al 1} 
+	{sp}   
+	{re}   
+	{ps 8p}
+	]  
+}   
+{ds BOX [   
+	{ev}{ts_ 3}\c110\|{re} 
+	]  
+}   

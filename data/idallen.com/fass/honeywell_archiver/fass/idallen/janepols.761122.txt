@@ -1,0 +1,462 @@
+
+
+
+.(.6.(.6
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.po10   
+.ix 
+.tr `   
+.po10   
+.sp5
+.ce 
+.ul 
+Table of Contents   
+.sp3
+.ls3
+.ta 55R 
+.nf 
+.mg 
+. . . . . . . . . . . . . . . . . . . . . . . . . . .   
+.en 
+.ic ^   
+.sp22   
+.ce 
+.ul 
+THE COUNCIL-MANAGER SYSTEM OF GOVERNMENT:   
+.CE 
+.UL 
+A CASE STUDY OF KITCHENER   
+.sp26   
+.nf 
+.ss 
+.ta 60R 
+Jane Cooper	73112839
+Honours Geography Year 4	Political Science 343  
+Prof. R. J. Williams	November 15,1976   
+.fi 
+.pa1
+.in0
+.ce 
+THE COUNCIL-MANAGER SYSTEM OF   
+.CE 
+MUNICIPAL GOVERNMENT : A CASE STUDY OF KITCHENER
+.SP5
+.UL 
+Introduction
+.ix 
+Introduction`	^%
+.en 
+.sp3
+.ds 
+.ne3
+.ti5
+The structure of Canadian municipal government is often seen as a blend of  
+British and 
+American ideas.  British tradition was followed in the early days of Canadian   
+municipal government as most of the inhabitants chose to remain loyal to    
+Britain rather than seek  independent status.  Gradually however, Canada
+came to depend on and was greatly influenced by the powerful neighbour to the   
+
+south.  The principle perhaps being "the people of that country more
+nearly resemble our own in urban and rural districts, and we may reasonably 
+conclude that whatever works satisfactorily amongst them is not wholly  
+unsuited to us". 1  
+.fs'____________________________________________________________''' 
+.fn 
+1 H. L. Brittain,   
+.ul 
+Local Government in Canada, 
+                  (Toronto:Ryerson, 1951), p. 13.   
+.en 
+.sp 
+.ne3
+.ti5
+Several American ideas of municipal government began to be adapted and  
+modified to meld with British tradition to suit Canadian needs.  Such   
+practices include the popular election of mayor, the council-commission system  
+of government and the council-manager form of government, among others. 
+.he''- % -''
+.sp 
+.ne3
+.ti5
+This paper is particularly concerned with the last of these - the   
+council-manager system of government.  The author is particularly interested in 
+tracing the development of the council-manager plan in the United   
+States to its development and adaptation to Canadian needs. Particular  
+emphasis will be placed on the process by which the plan came to the City   ur tof Kitchener. The author also intends to answerthe q
+
+of Kitchener. The author also intends to answerthe question why 
+the council-manager system was accepted in Kitchener.   
+.sp 
+.ul 
+Council-Manager System of Government - U. S. History
+.ix 
+Council-Manager`System`of`Government`-`U.`S.`History`	^%
+.en 
+.sp 
+.ne3
+.ti5
+Before the council-manager system can be fully understood in a  
+Canadian context it is necessary to examine the American origins
+of the system.  Council-manager government was first developed  
+in the United States during the early nineteen hundreds.
+Power in the municipal U. S. was often parcelled out among  
+elected administrative officials often of differing political   
+backgrounds.
+Different administrative groups were often set against one another  
+and there was no single person to manage or co-ordinate activities. 
+It was decided that a single concentration of administrative control
+would perhaps avoid the corruption of party politics and attract
+worthwhile candidates.  
+.sp 
+.ne3
+.ti5
+The council-manager system is based on the idea of running a city like  
+a business.  The manager, an appointed professional,  would be in charge
+of administering the city and would answer to the mayor and elected 
+councillors who would function as board members debating issues and 
+voting on policy.  In effect the system was based on the    
+separation of policy and administration.
+.sp 
+.ul 
+Duties of the City Manager  
+.ix 
+Duties`of`the`City`Manager`	^%  
+.en 
+.sp 
+.ne3
+.ti5
+The city manager as an administrative official generally has the following  
+duties: 
+.sp 
+.in10   
+.ll50   
+.ss 
+.ne3
+.ti-3   
+.tr `   
+1.`To see that all laws and ordinances are enforced;
+.sp 
+.ne3
+.ti-3   
+2.`To exercise control over all departments and in accordance with  
+civil service regulations appoint, supervise and remove department  
+heads and subordinate employees of the city;
+.sp 
+.ne3
+.ti-3   
+3.`To make such recommendations to the council concerning   
+the affairs of the city as may seem to him desirable;   
+.sp 
+.ne3
+.ti-3   
+4.`To keep the council advised of the financial condition and   
+future needs of the city;   
+.sp 
+.ne3
+.ti-3   
+5.`To prepare and submit the annual budget to the council;  
+.sp 
+.ne3
+.ti-3   
+6.`To prepare and submit to the council such reports as may be  
+required by that body;  
+.sp 
+.ne9
+.ti-3   ted 7.`T
+
+7.`To keep the public informed, through reports to the  
+council regarding the operations of the city government. 2  
+.fn 
+2 T. J. Plunkett,   
+.ul 
+Urban Canada and its Government:
+.ul 
+                 a study of municipal organization, 
+                 (Toronto:Macmillan,1968),p.37. 
+.en 
+.ds 
+.in0
+.ll60   
+.sp 
+.ne3
+.ti5
+The duties can be seen as strictly administrative with ease of  
+operation in the fact that one man, the city manager, will be fully 
+aware of the functions and jobs of each department.  He will be able
+to co-ordinate them to prevent overlap of programs and present all  
+information to the council. 
+.sp 
+.ul 
+Advantages and Disadvantages of the Council-Manager System  
+.ix 
+Advantages`and`Disadvantages`of`the```````````````````````````````````  
+.ss 
+``````````````````````Council-Manager`System`	^%
+.ls3
+.en 
+.sp 
+.ne3
+.ti5
+There are several basic advantages of the council-manager   
+system of government some of which have been mentioned above.   
+Another advantage of this system is that it leaves  
+council free for the formulation of policy rather than  
+worrying about collecting taxes, removing snow, preparing   ted the 
+
+the budget etc.  The city can be administered by someone
+trained in professional management.  In fact, there are 
+programs asociated with several universities to train officials 
+to be city managers and other administrative officials. 
+The author believes that one of the chief advantages of 
+an appointed manager rather than those previously elected   
+(U. S.) is the continuity of administration.
+A well-trained manager knowledgeable in the affairs of the city will
+be able to accurately present facts and figures to each new 
+council.  Long range planning will be equally feasible with a   
+manager who is employed for an indefinite period and is aware   
+of successive phases in the growth of a city.   
+.sp 
+.ne3
+.ti5
+The council-manager system as it stands in the U.`S., and to
+some extent in Canada, suffers from several blatant 
+deficiencies.  According to Thomas J. Plunkett: 
+.ss 
+.sp2
+.in10   
+.ll50   
+The principle defect in the council-manager plan is the 
+assumption upon which the whole scheme is based - that policy   
+and administration can somehow be completely separated. 
+Few will deny the desirability of making a partial  
+separation of these functions, but it is questionable if an 
+elected council of laymen can initiate mush in the way of policy
+without having some acquaintance with the problems of administration,   
+and these under the council-manager plan, are the exclusive 
+responsibility of the city-manager.  The manager may often be   
+in the position to suggest and initiate policy recommendations  
+with council being placed in the position of not being able to  
+fully evaluate the manager's recommendations. 3 
+.fn 
+3 T. J. Plunkett,   
+.ul 
+IBID,   
+p.39.   
+.en 
+.ds 
+.ll60   
+.in0
+.sp2
+.ul 
+Council-Manager System in Canada
+.ix 
+Council-Manager`System`in`Canada`	^%
+.en 
+.sp2
+.ne3
+.ti5
+There has been much criticism as to whether the council-manager 
+plan is necessary in Canada.  It was originally developed to meet   
+entirely different conditions from those found in Canada.  As was   
+noted earlier however, Canadians have often adapted various 
+aspects of British and American tradition to suit their needs.  
+The council commissioner form and the council-manager forms of  
+government are two of the ideas which have been adapted to  
+Canadian municipal government.  
+.sp 
+.ne3
+.ti5
+Unlike many of the larger cities in the U. S., Canadian 
+local government can be said to be relatively free from 
+corruption other than the occasional debatable case of  
+conflict of interest.  The absence of political parties 
+from local government also differs significantly from that  
+of the U. S.  Civic officials in Canada have always been
+appointed and this  
+.ul 
+generally   
+tends to avoid the election of incompetents.
+.sp 
+.ne3
+.ti5
+Many Canadian municipalities have already developed a close 
+approximation of the manager plan over the years without
+the need for any formal adoption at all!  The clerk or  
+clerk-treasurer, in many instances, often has to deal with the majority 
+of municipal departments and council committees may often go to this
+person for information and reports.  He is often recognized, by way of  
+tradition and custom as the chief administrative official.  If  
+the area and the council is small enough there should be little 
+difficulty in communication between various departments and the 
+council.
+.sp 
+.ne3
+.ti5
+In larger communities however, problems may often arise with the
+co-ordination and communication between the various departments and 
+council.  Some form of management to ensure both economic and   
+political efficiency is generally needed.  The budget totals of 
+a large city are often similar to those of a large corporate
+business and need to be handled as such by someone who can see  
+where all of the money is going and how to avoid extreme costs. 
+Council committee, council commission, board of control are some
+of the forms adopted by large cities as well as the council manager 
+system. 
+.sp 
+.ne3
+.ti5
+As discussed previously, one of the main problems with the council-manager  
+system of government is the separation of policy and
+administration.  This is not followed to such an extreme in Canada  
+as noted by Plunkett. 4 
+.fn 
+4 T. J. Plunkett,   
+.ul 
+IBID,   
+p.45
+.en 
+.sp 
+.ne3
+.ti5
+Committees of councillors and interested citizens are often formed to examine   
+specific issues and bring their recommendation to the full council.  Often  
+the city manager will be asked to prepare a report on a specific problem
+using administrative and department expertise.  
+.sp 
+.ne3
+.ti5
+The city manager plan was initially adapted in Canada in Quebec where   
+several medium-sized cities hired managers. 
+The plan has been extremely successful in Halifax as well as several
+cities in Ontario.  City manager government has been slow to develop
+in Canada principally because many cities already had the informal  
+arrangement of having the clerk-treasurer as chief-administrative   
+official. Many cities have always been governed by small councils and   
+a great deal of co-ordination has not been necessary.  The main point   
+to remember is the fact that in Canada the city manager system is not always
+undertaken in the same degree.  However, in all cases the manager is
+responsible to the council for the operation of the city and in turn
+the council is directly responsible to the electors.  This is an
+attempt to maintain democratic control and avoid the "rubber stamp" 
+appearance this system often has to the public. 
+.sp 
+.ne3
+.ti5
+We now turn to a specific city, the City of Kitchener to examine its
+system of council manager government to determine the changes and   
+modifications that have been made to make the system viable     
+in the City of Kitchener.   
+.sp 
+.ul 
+Council Manager Government in Kitchener 
+.ix 
+Council`Manager`Government`in`Kitchener`	^% 
+.en 
+.sp 
+.ne3
+.ti5
+The first discussions of council manager government in the City of  
+Kitchener began to take place in 1965 and continued for the next four   
+years.  The main discussion centred around the possibility of   
+hiring city manager as opposed to a Board of Control.  According
+.ne5
+to municipal law "a city reaching 100,000 in population must have a 
+board of control or by a 2/3 vote of council decide on another  
+system". 5  
+.fn 
+.ul 
+5 Kitchener - Waterloo Record,  
+July 22, 1965, p.3. 
+.en 
+.sp 
+.ne3
+.ti5
+Kitchener's population was rapidly approaching 100,000.  In October 1965
+census reports indicate the population was 86,959 an increase of 4.4%   
+over 1964 or double that of 1950.`6 
+.fn 
+.ul 
+6 IBID, 
+October,25, 1965, p.3.  
+.en 
+.sp 
+.ne3
+.ti5
+A Board of Control would be an elected board with the mayor as its  
+chairman and four controllers elected in a general vote.  This group is 
+in charge of administration while the entire council, controllers   
+included are involved with policy formulation.  Members of a Board of   
+Control hold a rather commanding position on city council.  
+.sp 
+.in10   
+.ll50   
+.ss 
+Recommendations from the board concerning  the budget, the letting of tenders,  
+and the appointment or dismissal of department heads can only be reversed   
+by a two-thirds majority of the full council, which includes the board of   
+control members.  7 
+.sp 
+.fn 
+7   
+T. J. Plunkett, p. 55.  
+.en 
+.ne3
+.ti5
+.ds 
+.ll60   
+.in0
+.ti5
+The Kitchener council decided that the city manager system would be best
+for the city.  Nine of the ten aldermen and the mayor, Keith Hymmen, were   
+in favour of the decision.  The opposing vote was from alderman who 
+felt the idea was undemocratic as it was not always possible to separate
+policy and administration.  
+.sp 
+.ne3
+.m3-2   
+.ti5
+One of the main questions usually asked is, why did Kitchener opt for the   
+city manager system rather than a   
+Board of Control as found in many other cities of Ontario?  The 
+main reason perhaps, is the strong influence of the Chamber of Commerce 
+which has long been instrumental in attracting industry to the area and they
+believed strongly in the power of the corporation.  The Chamber felt.. ...`,!B...B......
+..'g`...
+
+..0..'b..&...&."........f...f&...Gb.......F..G.f&..gf.......'......f'.'.....f.....F..G....&f..".G.f&..gb.....8...g...H....bcG.... .....`. ....#..X.....F...'b.g.&...f.....&..&g...".&....f&.&...........'F..".f'."..&.&..B.......&."........'.......&.&..B.f......F...&.&.&'B..'...f'.f....B.&..........Gg.&...'.b..F.F...b...&...g..F.B.'...'b...f&.......f......"
+...F....&..F.'F.....g...".....f'..'.&.....G...B...8...g... .....`. ....#..8.......'fg.gf&...f..f.F.&........'F&......".f'."..&.&..B....b......f... .....f...f&..b..&...&..##...&...##.............f.....&.....f'.f....B.`.H....&..&...F.'F......&..##.b............b....B.'b...&..&....'F.g..B...G...........F..&.......'..F..."..'...F...".g.F.....'&.B....'G.............&..f...'........B.......&.&..B.g'g......&...F&..b..'GF&........0..f'.".f..Fb..&....."..F'...'F'..........F'...'F'..........'.....F.....P.....'G........&.b.&...'.&....f'.&..b......8.......(.......8.......H..$D$.........F&..'G".#...##.......b...8.......8...g... .....`. ....#.....&...'Ff....'...f'."..&......'G........&.b...F..'ff........F..'...p..f...F.&.'.&...f...'.........'b..'b....F..".g....&...g.............'F&...........".f'."..&.&..B.......f...'.....f..f'g.................&..G...8...g...x....".#...c....8...gg...f.$F&..b..'GF&."..f.&'F.&...f'.".`.....H.
+..b..'GF&."..f.&'F.&...f'.".f..Fb'......
+.b..GF&... "..f'."....&...G.....
+.....G "..f'."..F.'g.F.G..0.
+........f.."....&..&....'F.g..G...X.
+.B..f... "..'gf'g.&...f'.".f..&f'..G.. ...g.@.8....g.. .....`. ....#.. ....... ......f.&.&F.B....f....Ff............'..".f'."..&.&..B.f......F...'F...H..&....&'...".&..........'..f...f&...'b.g.&..&......B.......f'f&.....'..... ...'b.......&.&........g.........f...f&...Gb.......B....'.....".f......(..f...&.....'...".g.F.&..&.......'G........&..f...'.........&..........8.....f.........f&......F......g...&.b...f...f&...Gb...'....&d&...f..................B.."..&.....&....'&.B.....G....B...F..&...'...B...........'F&..."..&.&..B.&....&'..."..'..8.......(..'....8.......H..$D$..............F.B....##.......b...8............'b...f'f&.........F..g.&........&............&...&.'B..&&..".F.f'.f............X......f'.&...&....F.F...b.&........&..f...f&.......F&.....&....B.....F.B...8...g... .....`. ....#..H......f.&.F.B....f....Ff..&.&&....f......B.".f'."..&.&..B..&"......F.gg....h..&...'.b..F.f&......f.'...g.&.F..B.......f.&.F.B....f....Ff.........'.........H..f'.".f......&...G.'f....B.".f'."..&.&..B..B.f...F.&.'..B.&....&'...".....P....'b...f'.&....'b..&...".F&ff...G".......8..........f'.f....B..'..F....F.f.F............'b.".F.g............F.gg.F...f...f&..............g..F&..b..'GF&...f.&'F.&........X......f...F.&.'.&....f...'...............f'.&......f'."..&.&..B.G".".......p.......b..#....8.......0..#....8.......H..$D$.........f.....F.B....##......b...8..................F....'gf....Gb....&......".'..F.........'GF&..........'........f'.&.........f.......'...F....&...G.'f....8...g... ....... ....#...........f'.&......f'."..&.&..B..'b..'..B.F..&....f'.".f...F.&.'..B....'b..'b."...F.....H......gF'.&b...F..&.......&.b........f...f&..&....&...F...&'....'...F...........'...........'....g.'..b....8...g... .....`. ....#.....'..f......F..........'.......f'.f....B...F.&.'F...'.b.f..&f....
+.f'.".f...F.&.'..B...&.&..B"......&..f..f.....B........f'.&.......'b.....f'.".f..Fb.."..&........&.&.&'B..'...f'.f....B............'b..'b...F.&.'F&..."..F......'..&.F.&."...'g..........&..f'.f....B.....P.......&&...&...F..f..F............'....&.....'G........&..f...'.....&..... ......f...F.&.'.&...f...'.....'b......&g....'..F&..b..'GF&..&.g..Gb...........f...f&..&..........'G........&.b.'F......g...G.'f...G".......(..f...F.&.'..B...'...'b........'..f...F.&.'.&...G"......&...'b...F.....p.....&f&.......8...g... .....`. ....#....%....f...F.&.'.&...f...'......'b.f.&.....f.....'..f&.f..'.b.&.f.
+`. ......f...F.&.'.&...f...'......'b.f.&.....f.....'..f&.f..'.b.&.f...&...0..&..##.........f...'........F.Gb.....f....b...F..F...f.........B.&....H.......'...f'..&.b.&..........".F....'B.F'f'b.....'fg.gb.'gg..b.&...&.'.... ...F.F...b...."...F...'.&...&...'F&..b....'G.....b........&F.B..F.F....X..'F.f.....B....f......&..b...'..&.............F.f..f..........F.gb........P..&...F.'.&....F......f......&..b..'b.......F...'f...G"......F.gb.F...F.... ..f...f&...&...&..".f.&.f......'fg.gb.'....'...'b........'........F.&`.X.........'........F....&..F.gf&...'b.........'b.&g..&..".G...&...f...f&....(......f...f&...Gb..&&..&&......'.....".g.&....&.......&.&..f'""..#'....8.......0..#'...8.......H..$D$.........G..".##."....b...8.......8...g... .....`. ....#..P..&."..F.F...b..'.......f...F.&.'..B..'.&.........f......B...F..F&.&.f........&.......'......b.&....'F."....b.G".....&......f...........&..&... ...'F.g..B.F&.......f.........f...'b."...&...B...'b.f..f.F.....'...&... ..'g..g.b....f'.f....B.&..........&...F.f......'.&..b....f...f&..&.....X...'....'GF&....&...&g........F.gb.....................&......f'.&......G..`..f....'gg..b..8...g... .....`. ....#..8......f..&......F..&..&......F......&..##.b.f.&.........f...F.&.'.&.....f.f...'.....&.&&....F&.......f...........F.f... .@....f...'.....&.&&....F&.......f...........F.f....F..&..&....&..&........'F.g..B.&............F..&.."...f'.&......'gf.G.........F....p..&......f..... .........F.Gf.'.........f...F.&.'.&...f...'......F......"....&.....f'
+.'b.....f'.".F.f&.....F.....'G.....&.'F...&......f..'...&........&f&&.g...0....F...'.........'.....f...'gf&...Gb....f......B..'GF&......F..&&.g..........f...F.&.'..B..... ...g.@. .......8.......x..f..f..f&..g..8...'......f..f..f&..f
+..8.......8...g... .....`. ....#....f&.&."..'b.&.'.........f...f&...&.&..B.g'g.......g.'..'.b........8......b...'...'b........'F.&.B.&....'b..'..B...'......f...f&...&.&..G..X..g'g....f&..F..f....'b..&&F...&..f&.&.".'b......'b.&.........b..&.........P..'..'b.......'F.......'......B.g'g...b...Fb.G.g..'b............f...f&.....0...&.&..B.g'g....&..F....f&.&.".&..........b..'b...f&.........F..&.....(..&..&.'g.F'.'.......G.'f....'..'b.&....&'...".'.&&.&F......f...f&.....H....F..........&.&..B..B.'b.&......f'f.....f'.f....B......f...F.&.'..B.....X..f&.&.".'..&.b..F.F...b..'.......f..'F'.&.........&g".&...&..&.'g.F'.&.......G"..'.&...f...'....b....f...f&...Gb.&...&...F.g....f'.'F..g.......Ff&....'....'F&..b....'G.....b....g..f&.&b.'gg..b..8...g... .....`. ....#.....f'.f....B.b....&f'.&......F......f&..F..f......
+..H..f'.f....B.b....&f'.&......F......f&..F..f.......F....G".....&F....'......h..'.b..&..&....gb........G.&f........F.b........F......g.f..'b.....f...f&......P...&.&..B.g'g....&...F..&..&......F..........&.......f.&.F.B....f....Ff....X....f......B.".g.F....&..&.'g.F'.'....&.&...........f...f&..F.&.'F.........(..&...F......'.b.&......g'g....&...f...F..'f....'...".f...F.&.'.&......h..f...'.....&...".f...F.&.'..B.....'b..'b...F.'.b.........F....F.....&f&.......@..........F..'.'..."..'F...f'F.....f'.f....B.&..........F.B.......'G.....`.X...........8...g... .....`. ....#..........&F.F'."....f...f&...Gb.'F..'.'F..........F.F.......F.f..&...P.."..G.FF.B.g.&....&....&f..'.....'B.G.f&..gb....F..'.'F.....&...'gg..b....h...&."........f...f&...Gb..'...f.G....f...F&....F.b.&.....&f..&......F...F.....x..f......F...&'F.".f........&F..........f'."...8...g... .....`. ....#.....f..fgb.&...F&.&.f.b.&......f'."....f'.f....B..'....F.............h..f...F.&.'..B..F...F.f..&...........F............F..B...&..&....'F.g..B.......@..F&.......f....'b..'F.&.B.......'b.".F&.&.f........F.f....f...'gf&...B....h....&..&....f&..f.'..&..'b.......'F.".'b.f...F...Gf&&.....&f.......b...........p..f..f..f&.....'....Gf..&.'.&.b.f&...'...".g.F....&......f...........f'.&......8...g... .....g......#..`... ....#..H..'..'b.....F..&........'b.'....B...'..f'.f....B..'b.&......."...Ff&F......h....F........&f'.&......F.......'...&...Gb.f.....'...F.....'............b......h..&........&..f.....'G.b....f&.&.".........B......&F&.'."....&.'...".g'g.............g.'..........b....&..&..'.&..&..f'.".......F.g...b.&..F....G..x......F........8...G...8.......8...'......F&F.&..F'..&.%...8.......8...gg.. ...g.`.8...f...8.......`..F&F.&..F'.. . ...g.`.H...&.#.....P....".#....8.......0..f'."....f'.f....B..&.&.f&&..F...G....p..##.".##...... ...g.@.P....".#....8..........f'.f....B..'..F....F.f.F........f.....F.B.##......'".##....f...g......'.&..b".... ...g.@.P....".#.......GF'..&&..........8............f&......F......&..f&.&."........F....B.G&.Gf....##."... ...g.@.P....".#.......b.'..B..B..D".g.G.."........f'."..&.&..B...&..&..f&.&.".B.&.....8..........f&.&.&&....F.&b.&..&.'g.F'.&............$$"..##........C#..CcB... ...g.@.P....".#...........f....."..B...8...........FF&..f&.&.".&...'.b.....F.....@.8.......0..".g...".......&f'.&...F.&.'F'.&...........F....B..&f.&..&...##....... ...g.@.P....".#....x..F..'......D................&.&..B...&..B.&...8..........f&.&.&&....F.&b.&..&.'g.F'.&............$$"..##.........B........ ...g.@.P....".#.......f&....F..........8.........e....f&. ...`.P......f&.&.&&.....&f'.&..&..&.'g.F'.&.B...........f&.&.&&..f...f&......FF&..&...F..&..&..F.f.'Ff...........F.B..##..... ...g.@.P....".#.......&.........Df&.&.&&....f&......F.................G.......f....'g..g.b........f...'gf&...B.&...f'."..&.&..B...F.b....&..&.'g.F'.&...B.&............&...........F&fb........8.......@.....'.&gb.&.......F..........FF&..f&.&.".. ....F....B..........##........C.B.C.... ...g.@.P....".#......
+..g.`.H...&.#.....P....".#....8.......0..f'."....f'.f....B..&.&.f&&..F...G....p..##.".##...... ...g.@.P....".#....8..........f'.f....B..'..F....F.f.F........f.....F.B.##......'".##....f...g......'.&..b".... ...g.@.P....".#.......GF'..&&..........8............f&......F......&..f&.&."........F....B.G&.Gf....##."... ...g.@.P....".#.......b.'..B..B..D".g.G.."........f'."..&.&..B...&..&..f&.&.".B.&.....8..........f&.&.&&....F.&b.&..&.'g.F'.&............$$"..##........C#..CcB... ...g.@.P....".#...........f....."..B...8...........FF&..f&.&.".&...'.b.....F.....@.8.......0..".g...".......&f'.&...F.&.'F'.&...........F....B..&f.&..&...##....... ...g.@.P....".#....x..F..'......D................&.&..B...&..B.&...8..........f&.&.&&....F.&b.&..&.'g.F'.&............$$"..##.........B........ ...g.@.P....".#.......f&....F..........8.........e....f&. ...

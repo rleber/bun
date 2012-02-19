@@ -1,0 +1,499 @@
+
+
+
+........
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1985/script/85macr.t   
+.bs 1 2 "Wok Like A Man"
+.na wl WENDY~ST.~SKOMARCHINGIN WENDY
+.na lf LENNY~R.~PROGRAMMING LENNY   
+.na dr MARG~THE~DIRECTOR DIRECTOR   
+.na cm COCKROACH~MAN COCKROACH  
+.na rh ROBIN~HOOD ROBIN 
+.na wb WONDER~BROAD WONDER  
+.na sc SUPER~CHICKEN CHICKEN
+.na pun PUNSTER PUNSTER 
+.na sw SNIDELY~WHIPLASH SNIDELY 
+.na ss SLIME~OF~THE~STREETS SLIME   
+.na she SHEENA,~BLACK~PRINCESS~OF~GUELPH SHEENA 
+.na cc BO~EVIL BO   
+.na pr PROFESSOR~ROGERS ROGERS  
+.na mh MARY~ANNE~HAMMERSTEIN MARY~ANNE  
+.na ww WIZARD~OF~WORDS WIZARD   
+.na cu CAPTAIN~UNIVERSITY CAPTAIN   
+.na wolf WOLFGANG~VON~HASENPFEFFER WOLFGANG 
+.na jn JOGGER~NUT JOGGER
+.ad 
+(SETTING:  A CLASSROOM. 
+A BLACKBOARD IS ON STAGE (USEFUL FOR SIGHT GAGS).   
+AT THE BACK IS A LARGE COUNTER/TABLE WITH AN IMITATION MICROWAVE AND
+STOVE AND ROOM FOR COOKING SPACE.   
+(THERE SHOULD BE ROOM BEHIND IT, SO THAT SOMEONE CAN USE IT AND STILL   
+FACE FORWARD).  
+SPACE FOR INGREDIENTS AND A 
+.ul 
+LARGE   
+WOK IS REQUIRED; IT CAN BE ANYWHERE 
+EASILY ACCESSIBLE FROM THE MOCK STOVE AS LONG AS IT IS HIDDEN.  
+SEATS WITH ARMRESTS (I.E., TYPICAL CLASSROOM SEATS) ARE NEEDED; ABOUT   
+20, IF POSSIBLE.  ANY   
+ARRANGEMENT OF SEATS WHICH PROVIDES A CLEAR VIEW IS ACCEPTABLE) 
+.ld 
+(LIGHTS UP AT START OF SCENE)   
+.ad 
+(TWO STUDENTS, LENNY AND WENDY, ENTER FROM SEPARATE ENTRANCES; WENDY IS 
+CARRYING ALL HER TEXTBOOKS, WHILE LENNY HAS A BELT CALCULATOR AND SOME  
+SORT OF CONTAINER SUITABLE FOR GEOMETRIC TOOLS LIKE RULERS) 
+.ch lf  
+(TO HIMSELF:)  Wow, that was some football game!  Zip!  Zoom!   
+.ad 
+(LENNY PRETENDS HE IS PLAYING FOOTBALL.  HE RUNS INTO WENDY, CAUSING
+HER TO DROP HER BOOKS.  HE HELPS HER PICK UP HER BOOKS) 
+.ch lf  
+Gee, I'm sorry, Miss.  Let me help you...   
+I'm Lenny R. Programming.   
+.ch wl  
+My name is Wendy.   
+.ch lf  
+Wendy what? 
+.ch wl  
+Wendy St. Skomarchingin.
+.ch lf  
+(PICKS UP BOOK) 
+Hmmm... "The Principles Of Superheroism, an Algorithmic Approach,"  
+by Hopcroft, Ullman, and Kent.  
+Oh, so you're studying to be a superhero!   
+.ch wl  
+Well, not yet - I'm in first year arts right now.   
+But I'm thinking of transferring.   
+I want to fight for freedom, justice, and democracy!
+Besides, I'd get to wear a neat looking 
+uniform with sexy tights!   
+.ch lf  
+Well, I'm a simple sort of person myself.   
+All I want is $60,000 a year, a turbocharged Porsche,   
+and a girl friend.  
+.ch wl  
+(SCORNFULLY)
+You must be in computer science.
+.ch lf  
+(FLARING UP) What's wrong with computer science!?   
+The world needs people like me! 
+Who eats 47% of the junk food in Canada?
+Who buys clothes that no one else would be caught dead wearing? 
+Who uses rulers (SHOWS RULER), that measure in  
+thirty-sevenths of an inch? 
+We do, that's who!  
+.ch wl  
+I still think you're a wimp!
+.ch lf  
+At least, I'm better off than you are.  
+(SNARKY) How do you expect to get into Superlative Studies? 
+You need a super power. 
+.ch wl  
+It's not hard to get a superpower.  
+All I need is some sort of freak accident, like in the  
+comic books.
+.ch lf  
+Good luck - you'll need it. 
+.ad 
+(ENTER COCKROACH MAN, DRESSED IN A BROWN SUPERHERO OUTFIT.  
+ON THE FRONT OF HIS UNIFORM IS A GIANT STYLIZED COCKROACH EMBLEM;   
+ON THE BACK IS A CAN OF RAID WITH A RED CIRCLE AROUND IT AND A  
+DIAGONAL RED LINE THROUGH IT.   
+HIS FEATURES SHOULD HAVE SOME OBVIOUS COCKROACH ATTRIBUTES - SIX LEGS,  
+MAYBE; ANTENNAE, DEFINITELY - AND HE SHOULD SPEAK HIS LINES IN A
+SLIGHTLY MELODRAMATIC TONE OF VOICE, SO AS TO SEEM SLIGHTLY 
+RIDICULOUS) 
+.ad 
+(THE COCKROACH THEME IS SUNG BY THREE SUPERHEROES WHO   
+ENTER WITH THE COCKROACH MAN)   
+.sb "COCKROACHMAN" "SPIDERMAN THEME"
+.ve 5   
+Cockroachman, Cockroachman  
+Eats whatever a cockroach can   
+He can go, anywhere 
+See him crawl over there
+Look out, here comes the Cockroachman.  
+.ve 4   
+In a garbage heap   
+At the scene of a crime,
+Like a crawling creep,  
+He'll arrive just in time.  
+.ve 5   
+Cockroachman, Cockroachman, 
+Lives inside of a garbage can,  
+Village food he can eat 
+This includes mystery meat. 
+Look out, here comes the Cockroachman!  
+.ch lf  
+(TO COCKROACH) Who are you? 
+.ch cm  
+I'm... Cockroach Man!   
+.ch wl  
+.ul 
+The 
+Cockroach Man?  
+.ch cm  
+Yes.  Once, I was a mild mannered student living in Waterloo Towers.    
+The cockroaches were so bad that the landlord experimented with 
+a radioactive insecticide.  
+.ch lf  
+Did it work?
+.ch cm  
+No. They mutated into   
+the most horrible things you could imagine. 
+.ch lf  
+Poli Sci grads? 
+.ch wl  
+The Federation Of Students? 
+.ch cm  
+No. 
+.ul 
+BIG 
+cockroaches.
+.xx LENNY~AND~WENDY 
+(TOGETHER) Gasp!
+.ch cm  
+One of them bit me. 
+Suddenly, I found I could eat   
+anything and survive.   
+.ch lf  
+Just like a cockroach.  
+.ch wl  
+Oh. How terrible!   
+.ch cm  
+Yes.
+But I get to wear a neat looking uniform with sexy tights.  
+.ch lf  
+Sir, I'm
+Lenny R. Programming, third year computer science.  
+.ad 
+(LENNY HOLDS OUT HAND WITH RULER TO SHAKE WITH COCKROACHMAN.
+HOWEVER, COCKROACHMAN TAKES RULER AND EATS PART OF IT)  
+.ch cm  
+Thanks Lenny, I missed lunch.   
+.ch wl  
+Wendy St. Skomarchingin, sir (ATTEMPTS TO SHAKE HIS HAND) first year Arts.  
+I really admired your work during the Etobicoke garbage strike. 
+I've always wanted to be a superhero too.   
+.ad 
+(ENTER SUPERCHICKEN, ROBIN HOOD, CAPTAIN UNIVERSITY,
+WONDER BROAD AND PUNSTER.   
+WONDER BROAD IS IN THE MIDDLE OF A SPEECH)  
+.ch wb  
+I tell you it's discrimination, that's what it is.  
+Do you know how hard it is for a woman to get to be a super hero?   
+Women make up 50 percent of the work force, but only 5 percent of   
+the super heroes.   
+.ch sc  
+You think that's bad?   
+
+How many chickens get to be super heroes?   
+.ch wb  
+No, I'm serious.  Why is it that women don't get to be super heroes 
+more often? 
+.ch rh  
+Because... (TO SIDE:) Line. 
+.xx PROMPTER
+Because men are superior.   
+.ch rh  
+Because men are superior.   
+.ch wb  
+Superior?  Superior?  ...Line   
+.xx PROMPTER
+Hah, women have more patience, stamina, and memory. 
+.ch wb  
+Hah!  Women have more patience, stamina, and ...Line
+.ad 
+(ENTER THE DIRECTOR)
+.ch dr  
+(BITCHILY) STOP, STOP, STOP!  Honestly, I would have    
+been better off casting myself in all the roles.  Actors!  I wanted 
+actors!  (POINTS TO LENNY)  You there.  
+What's your character's name?   
+.ch lf  
+Lenny R. Programming, Ma'am.
+.ch dr  
+(NAMBY PAMBY) Lenny R. Programming, ma'am. And you're a wimp, right?
+(HE NODS) But you're supposed to be acting!!!!! 
+Now get over there and emote.   
+And the rest of you aren't any better.  
+(TO WONDER BROAD:)  
+Listen, honey,  
+you're one of the stronger personalities in this whole mess.
+So let's see if we can't build on that. 
+(PUTS HER ARM AROUND WONDER BROAD'S WAIST AND TAKES HER FOR 
+A LEISURELY STROLL) 
+You're who? 
+.ch wb  
+Wonder Broad.   
+
+.ch dr  
+Good! And what does that mean to you?   
+.ch wb  
+That I don't take anything from anybody.
+.ch dr  
+Right.  But that's not coming through.  Remember, you're
+a gutsy woman trying to make it in a male-dominated profession. 
+Robin Hood, Super Chicken, you've got nice costumes; you don't  
+need to act.
+Punster, you're everything  
+that is good and predictable about FASS.  You're the backbone of
+the production.  Irreplaceably unique...
+.ch pun 
+Pun in a million.   
+.ch dr  
+Don't push it, buddy.   
+.ch lf  
+What's her theatrical background?   
+.ch pun 
+She once had her leg in a cast. 
+.ch wl  
+(TO THE DIRECTOR, DEFIANTLY:)   
+Just how did you get to be the director, anyway?
+.sb "THE DIRECTORS LAMENT" "1st ve Maria, Then Tonight Tonight" 
+.ve 3   
+Director
+I've just been acclaimed the director.  
+And suddenly I see Horizons spreading out for me!   
+.ve 6   
+Direct. Direct. 
+I've wanted to direct   
+And now I have my chance to do FASS 
+Direct, Direct. 
+To make it all correct, 
+To take charge, to make good, to kick ass.  
+.ve 3   
+The script is not what I had asked for, 
+The dialogue's not clever,  
+But neither is the cast.
+.ve 4   on O
+
+But all in all, 
+I'd say it's been a ball.   
+And if next year they ask me I will 
+DIRECT! 
+.ch dr  
+Well, so much for the entertainment.
+It's time to take up the plot again.
+(SHE EXITS, BUT WE HEAR FROM THE WINGS) 
+Get on with it!!!   
+.ch wl  
+Oh Mr. Robin Hood, sir, I hear you're the best shot around. 
+.ch rh  
+It's all in the shaft.  
+.ch pun 
+I wouldn't take him too seriously... he's got delusions of glandure.
+.ch lf  
+Do you rob from the rich and give to the poor?  
+.ch rh  
+Are you with the Chevron or something?  
+.ch wl  
+How did you get to be a superhero?  
+.ch rh  
+Well, one night I fell asleep at an Errol Flynn film festival.  
+The next morning, I felt compelled to dress up in sexy green tights and 
+buy an archery set. 
+I've never looked back. 
+.ch wl  
+Hmmm... 
+(WRITING) Bitten by mutant cockroaches...   
+watched Errol Flynn movies...   
+it's worth investigating.   
+(TO CHICKEN) And what about you?
+.ch sc  
+Well, uh... (LOOKS NERVOUS) I ate two Swanson's Hungry Man chicken  
+dinners in one sitting. 
+.ch wl  
+That's not too hard to do!  
+.ch sc  
+(STAGE WHISPER) 
+I know. 
+I'm not really a superhero - I've been faking it all this time. 
+.ch cu  
+These superhero classes have been killing him!  
+.ch sc  
+If I hadn't been  wearing a bullet proof vest   
+those speeding bullets would have turned me into chicken
+a la king.  And that locomotive dragged me half way to Elmira.  
+And when I tried to leap over the Arts Library...   
+.sd 
+(EXTREMELY NASTY FANFARE)   
+.ad 
+(ENTER THE 3B SUPERVILLAIN CLASS, "VADER'S RAIDERS".
+THIS CONSISTS OF FOUR PEOPLE:   
+SNIDELY WHIPLASH, SLIME OF THE STREETS, 
+SHEENA BLACK PRINCESS OF GUELPH,
+AND BO EVIL)
+.ch sw  
+Nyah-hah-hah!   
+(WALKS UP TO WENDY) 
+Ah-hah, a frosh!
+Just my type!   
+(GRABS HER) 
+.ch lf  
+Hey!
+.ch rh  
+Unhand that frosh, foul knave!  
+.ch sw  
+Make me.
+.ch rh  
+Don't let the tights give you the wrong impression. 
+.ch sw  
+Stand and deliver.  
+.ch rh  
+Excuse me while I whip this out.
+.ad 
+(SNIDELY AND ROBIN HOOD PRODUCE FLASHLIGHTS FROM WHEREVER FOR A FIGHT   
+TO THE FINISH)  
+.sb "Lightsabers" "Life Savers Commercial"  
+.ve 4   
+Tweet-Tweet Twiddle-Twiddle 
+There's gonna be a hero with a hole in the middle.  
+Tweet-Tweet Twiddle-Twiddle 
+We'll slice those heroes up and we'll chop 'em real little. 
+.ve 6   
+Light-sabers Yeah yeah yeah 
+There's gonna be
+There's gonna be
+There's gonna be a hero with a hole in his middle.  
+Light-sabers Yeah yeah yeah 
+Light-sabers.   
+.ad 
+(ENTER PROFESSOR ROGERS, MARY ANNE HAMMERSTEIN, AND PROFESSOR   
+WOLFGANG VON HASENPFEFFER)  
+.ch mh  
+Stop this unholy ruckus!
+.ch pr  
+Now, now, boys and girls - no fighting in class.
+You could hurt somebody. Come on now, let's be neighbours.  
+.ad 
+(THE SUPERVILLAINS START YELLING UNPLEASANT THINGS AT PROF ROGERS AS THE
+SUPERHEROES AND SUPERVILLAINS ARE RETURNING TO THEIR SEATS AFTER THE
+FIGHT.  
+THIS UPSETS MARY ANNE; SHE TAKES OUT A WHISTLE AND BLOWS IT LOUDLY) 
+.ch mh  
+All right, you slimy little lizards, listen up! 
+Shut your   
+filthy traps or I'll shut them for you. 
+(PAUSE.  SWEETLY:)  
+Go ahead, Professor.
+.ch pr  
+Thank you, Mary Anne.   
+Good morning, boys and girls, my name is Professor Rogers.  
+I was supposed to teach this course this term, but sadly I haven't got  
+enough time.
+I have been given   
+a special government grant to do important coffee research. 
+Can you say "deficit financing"?  The Conser
+
+Can you say "deficit financing"?  The Conservatives can.
+.ch ss  
+Clam up, you infantile nerd!
+.ad 
+(MARY ANNE PULLS OUT A GUN, WALKS OVER TO SLIME, AND POINTS IT BETWEEN  
+HER EYES.   
+NOT SURPRISINGLY, SLIME LOOKS NERVOUS)  
+.ch mh  
+Go ahead - make my day. 
+If you can shoot off your mouth so can I.   
+.ad 
+(SLIME SAYS NOTHING - AGAIN, NOT SURPRISINGLY.  
+MARY ANNE PUTS GUN AWAY AND RETURNS TO THE PROF'S SIDE) 
+.ch pr  
+Thank you, Mary Anne.   
+What would I do without you?
+(TO CLASS) I have brought a friend with me, boys and girls, and he will 
+be teaching the class for me.   
+His name is Herr Wolfgang von Hasenpfeffer. 
+Can you say "von Hasenpfeffer"? 
+.ad 
+(INCOHERENT MUMBLES FROM CLASS) 
+.ex 
+Well, that's not too bad for a first try.   
+So long boys and girls, see you later.  
+.ad 
+(EXIT PROFESSOR ROGERS AND MARY ANNE)   
+.ch wolf
+Good morning, students. 
+This is Cooking 101, an introductory course in food preparation and 
+nutrition.  
+We will start today's class by calling the roll.
+.ch pun 
+What do you want to call it, a Kaiser?  
+.ch wolf
+Don't make fun of the way I was bread.  
+.ch pun 
+Why not?  You're just a sub.
+.ch wolf
+I will have no loafing around in my class.  
+.ch pun 
+What do you care?  You're just in it for the dough. 
+.ad 
+(ENTER JOGGER NUT, RUNNING, CARRYING A SCHEDULE)
+.ch jn  
+Sorry I'm late, but I've been running around all day.   
+Could you sign this, please?
+I'm dropping the course.
+(RUNS ON SPOT WHILE WOLFGANG SIGNS FORM)
+Thanks, gotta go, bye.  
+.ad 
+(EXIT JOGGER NUT)   
+.ch wl  
+Who was that?   
+.ch cu  
+That's Jogger Nut.  
+He's totally invincible while running, but powerless when standing still.   
+.ch wolf
+All right, then.  The mark breakdown for this course is as follows:     
+assignments are worth 30%, the midterm is worth 30%, the final is worth 
+30%, and you have a major project worth 30%.
+.ch lf  
+Uh, sir...that adds up to 120%. 
+.ch wolf
+(FURIOUS:)  I don't care if it adds up to 1000%, you silly wimp!
+This is a cooking class, not a Math class.  
+One more remark like that and I'll beat you to within a 37th of 
+an inch of your life.  Is that clear?   
+.ch lf  
+Yes sir.
+.ch wolf
+Good.  As I was saying, there will be a project worth   
+(GLARING AT LENNY:) 25%.  You must each prepare your favourite  
+recipe.     
+(TO WENDY:) 
+What do 
+.ul 
+
+ ..~a.Z/a    .........'g`...
+
+.. ..&..
+..&f.....f..c.....P...f..........".....B.f..b.&.'..&....."....'.f.&...."..&..F....P...f..g..........F..&....'.f.&...'.....X...f..f..........b.'......F&fgc....@...f................f..b.&.'..&...#.......&F....&.....&.Gff........X...f..f.......'F..&...f&..&......."..&f..."...fF&...f..b...B.......@...f.......h......&.&......@....'..&........f.....&......f..b...B.&....X...f..f.... ..".F.'...&.....&.....g...b..&f&...'...@...f..........".......F..&......'b"....'.......8.......8..&........&f.....f..c.....P...f..F....h.........b'....P...f..gg...@..&.&........&.b.F.'g.......B.".f.....'F. .8...&.......$....$..$$.b..%......$.."'..@...f.......0..&...'F..&.......f...b".....'"........".F.f'......f.&ff...g.G.F'f........&....&f..".f.&ff........b....E.DD.B.d.$dd..".F.'..'.....".................'..&.."..'F.....b..&....&.......F.&..g.&.gb.......c...&...F......FGb.&...g.&f.b.......&....'g.....b.b....F..&....&&........'..&.......&gF..'......&....&'...'...f.f...b....X....$%.b..%...d.d...b..%....$d....$.....'..8...f.......".D.......b....'....8.......h..&......F..&....'...'....f.&ff...g.G.F'f.'....8...&...P........$.......b.".E.dd......d....de"..D$...d.$dd....D........$eD..%..'...P...f..gg...X..F.F&..'..P...f..fg...P...F'..'...8...&....".......$..$$.b.e.%E....D..$..... ..............$..$$.b.e.%E....D..$.....$..b.%.......$..@.....D%d.Eb.....d$.b....b'...@...f..........f...&...&...F&...ff...&.......&.....&.b.&...f&...F...f.....G"...F..&.....&..b...............&.b.&.&&.'.....".&........'...'........Gf..'....h..".&...&..&.&....".&..f&....".&...'..F........8...&.......d.$..."...%..%d....D..b.$.....D...b.e..%.%..%...$. .8...........&f....'b.&...fg.........8...&............$...e.%E.b...D..$........%.......$..$$.b......"......dd$....%B...e..b .8...&...h...D......B..D...ed.B.D...Eb.$....%E".$........ ...%E".$....%b.d%EE$$..."..$d.$...... .P...f...G......f.'gb..f.'gb.....8...&...@....%E".$.....%D.b..$d.$.......D.%e.....B....%B...$.b..d$...d$......E$... .8............&.b.&.....'G".&........x......d.%ecB'..@.."...f.GG"....&...GG....&..B.f.'gb..G..."......f............Gb................'....".F.f.'Ff....................&f..............&.........F..g..g......f..........8...&...h...d$...d.'....8.......8..'........b.........&..B..F&.fgF'.....8...&...h...d$...d.'....8.......0..&......f......&...b.&...g.'".f&..'...8...&...h...d$...d.'....8............'..&..".........'G".&......P...f.............$..b....d....".......B.ED.$...d%..$$....%..Ed%.".$...D.'.....&....&....&...&...&................B...F.............F...gf.B.....b.........Gb.&...........`.........F...gf.B.....b.........Gb.&..........b.........'....P...f..........G........G.......P...f.......@..f...... ......%..b..$d.$.......%......" ...........B...F.'...h...e....."'..........F..&........F...gf.B..P...f...G..........b....F.'b.&....'F.b..8...&.........%...D...ed.B.D...Eb...%E".$.....d....".......B.ED.$...D...$......d%..$$....%..Ed%."'..8...&...X....%D%D.......D.b.$...D....B.........B..D.......d%...d$..b........e.$..'..P...f..........f.&..."..f.&.......B...F.'...P...f..F....8.........'b.....B...F............F..'..P...f.......0.."..'...f......G".F&.....b...B.&......P...f..F.......&...F........&......F..&....'....P...f............B.....&....'b.F....g.......P...f..F..........G"..&.."...Ff.....&...'...&....f....F....&.&.'....f........"..P...f..gg...........F......&.....&.b....P...f..g............F...'f'.b........f.&..F...&.......G..&.&........P...f..g............F....'f.....f&.."...B.....f.&..F...&.......G..&.&.......P...f..fg...........F......&...F.&..........&gF.gb.....g.F..........P...f..gg...........F..g.....F&b.&f&.....F.&...........'........(..G....."..&.....".g.....B.....&.......P...f............."...g...'....'............"........g...B..&..&&.....'G........P...f..g.........."...g...'....'............"........g...B...F..b....'...'..f.....
+.......'..f...............P...f..f....@.....f......'...".f'B..'f.....F&'f......"..P...f..gg...(........f.&..................'b....".G..F.......f..........&.&.'...................f&.........'B.....&.....0...fB.Df..fb........f...B.E......&.G...H...........h....$..$$.cB"....f......'..'b.......g..........h..............'..b.GF.&f&.........b....&.b.....X..............&g.&....&f..'.&.."..........................&......&.'.&..... ..............f.....F..f.&.....&...&...0.................".f..fb.......&..........................&.....F..B.&....................'.......&......&.....H......g..........f..........F....."..........&f.....".F......'F....`..f&fb.........F.....'B...&f.b..&.......&...B.....f.fb......F..fb......f..fb......f..fb.........f......H...........X.....D..b..d....#B"...F..b............&....h....................&......".'F......B.F&......x....................&.....F..b.....B..G..F.....p....................f&.f......F.".....G...b..............................g.......&....&.......b.............................&.......G..F...............H......'........$....%b...Ed........D..b.....$..D$.B.$...$..D$.B'...H...........X....$..$$.cB".F..'.......&...F...F...&.....@...............f'.f......&...GF&...".F..B.................&...&..&...'GF'......F.......'......... . .............................'...'.....(..............G...&.........f.......... ...............f'.f..&....'.........b..8..............&.........f'"...'..&..G..8...................Gb.&.....F..f...b...H......g.........D..cB"....f..........F....."..........&f.....".F......'F...................f&fb.........F.....'B...&f.b..&.......&...B.......$..B"....f.fb......F..fb......f..fb......f..fb.........f........8............$...b.....'....8....g....
+."......dd$....%B...e..b .8...&...h...D......B..D...ed.B.D...Eb.$....%E".$........ ...%E".$....%b.d%EE$$..."..$d.$...... .P...f...G......f.'gb..f.'gb.....8...&...@....%E".$.....%D.b..$d.$.......D.%e.....B....%B...$.b..d$...d$......E$... .8............&.b.&.....'G".&........x......d.%ecB'..@.."...f.GG"....&...GG....&..B.f.'gb..G..."......f............Gb................'....".F.f.'Ff....................&f..............&.........F..g..g......f..........8...&...h...d$...d.'....8.......8..'........b.........&..B..F&.fgF'.....8...&...h...d$...d.'....8.......0..&......f......&...b.&...g.'".f&..'...8...&...h...d$...d.'....8............'..&..".........'G".&......P...f.............$..b....d....".......B.ED.$...d%..$$....%..Ed%.".$...D.'.....&....&....&...&...&................B...F.............F...gf.B.....b.........Gb.&.........@.`........b....F.'b.&....'F.b..8...&..........%...D...ed.B.D...Eb...%E".$.............."..F...$.......d%..$$....%..Ed%.". .@...f..................F....F.......@......&.b..8...&...8.........$....%.d.b.........D..b........D...b..$..d%..B.%.."..$..$$........%b.D.e.%E.b...........$........0.......$..$$.b.$........$...d...$...........D..$.....$..b.%...$d......B.'..8.......x.....$............%b......$...$...d...$...b.'..8....g....
+...$....$..$$.b..%......$..".'....P...f..F....h.........b'....h...f...........@..&.&........&.b.F.'g.......B.".f.....'F. .8...&...8....$....$..$$.b..%......$..".$.$$..'..P...f.......h..GF...&.b'....P...f..g....8........."..F...B..'F....&..b..'f...'..8...&...X....$....$..$$.b..%......$..".$...$.$$..'..P...f..fg......&'F..'Fb..'..B..'...g.&.&f. .8...&...........E$D.."..D.$.b.$...%d..e..'..@...f............$....$....$...................'b.ff..'gb.&.F.&."'........'".."..&...f..b...B.&.....g...B.f.&ff...g.G.F'f. .P...f.........."......&...'...'b.".F'F..f..Gf. .@...f.......h..f....................&.....B.'..g.&..G...P.....f..b.g...B.f.&ff...g.G.F'f.....'..'b......'Gg....&.....'..&...........8...&........d.......$.e..EcG......D".e..$.d......@....E.......b.......%...b.G.....D.%e.....b.b....D..$....$$.B.'...@...f.......`...F....&.&&.'.......`.`.@........%...D...ed.B.D...Eb...%E".$.............."..F...$.......d%..$$....%..Ed%.". .@...f..................F....F.......@......&.b..8...&...8.........$....%.d.b.........D..b........D...b..$..d%..B.%.."..$..$$........%b.D.e.%E.b...........$........0.......$..$$.b.$........$...d...$...........D..$.....$..b.%...$d......B.'..8.......x.....$............%b......$...$...d...$...b.'..8....g.....g....8........."..F...B..'F....&..b..'f...'..8...&...X....$....$..$$.b..%......$..".$...$.$$..'..P...f..fg......&'F..'Fb..'..B..'...g.&.&f. .8...&...........E$D.."..D.$.b.$...%d..e..'..@...f............$....$....$...................'b.ff..'gb.&.F.&."'........'".."..&...f..b...B.&.....g...B.f.&ff...g.G.F'f. .P...f.........."......&...'...'b.".F'F..f..Gf. .@...f.......h..f....................&.....B..'..g.&..G..P.....f..b.g...B.f.&ff...g.G.F'f.....'..'b......'Gg....&.....'..&...........8...&........d.......$.e..EcG......D".e..$.d......@....E.......b.......%...b.G.....D.%e.....b.b....D..$....$$.B.'...@...f.......`...F....&.&&. .@.....d...`....&........".f.&ff..'...........b......$..d.$dd...$...d..b.%......$D...'...@...&f..&..B.f.&ff...&...g.....'..&.."...b..0.....D...d.b....D...b...b.....b.%.....e......e.%E.b..$.d$....%e..B.'....D........D$Eb.$..D..$...b....ed.b......$....E@.....0.......$..$$.b.$........$...d...$...........D..$.....$..b.%...$d......B.'..8.......x.....$............%b......$...$...d...$...b.'..8....g.......F...B..'F....&..b..'f...'..8...&...X....$....$..$$.b..%......$..".$...$.$$..'..P...f..fg......&'F..'Fb..'..B..'...g.&.&f. .8...&...........E$D.."..D.$.b.$...%d..e..'..@...f............$....$....$...................'b.ff..'gb.&.F.&."'........'".."..&...f..b...B.&.....g...B.f.&ff...g.G.F'f. .P...f.........."......&...'...'b.".F'F..f..Gf. .@...f.......h..f....................&.....B..'..g.&..G..P.....f..b.g...B.f.&ff...g.G.F'f.....'..'b......'Gg....&.....'..&...........8...&........d.......$.e..EcG......D".e..$.d......@....E.......b.......%...b.G.....D.%e.....b.b....D..$....$$.B.'...@...f.......`...F....&.&&. .@.....d...`....&........".f.&ff..'...........b......$..d.$dd...$...d..b.%......$D...'...@...&f..&..B.f.&ff...&...g.....'..&.."...b..0.....D...d.b....D...b...b.....b.%.....e......e.%E.b..$.d$....%e..B.'............D$Eb.$..D..$...b....ed.b......$....ED$...""..&..."........P.....'...b.."..'f......&.......f....F.&....H..g.&.gb..&...&...................F........@.."...'.....f&.....&..F...'...f.."..&...b.....&'F..'Fb..'..B..'...g.&.&f...`..GF.f.....'gg....'F....&.&..b......'g.....b.b....F.......&&.......'.........
+

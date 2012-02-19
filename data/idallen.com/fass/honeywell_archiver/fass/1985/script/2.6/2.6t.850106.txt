@@ -1,0 +1,562 @@
+
+
+
+.......j
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1985/script/85macr.t   
+.bs 2 6 "A Day in the Afterlife"
+.na pt ST.~PETER PETER  
+.na hl HAL~FIRE HAL 
+.na bn DAN~NATION DAN   
+.na lc LUCIFER LUCIFER  
+.na an ANGELA~MERCY ANGELA  
+.na cn IBM~CLONES CLONES
+.na gd GOD~9000 GOD 
+.na dc DARTH~CO-ORDINATOR DARTH 
+.na ch SUPER~CHICKEN CHICKEN
+.na cu CAPTAIN~UNIVERSITY CAPTAIN   
+.na bo BO~EVIL BO   
+.na sh SHEENA~BLACK~PRINCESS~OF~GUELPH SHEENA   
+.na td TADPOLE TADPOLE  
+.na fa FASS~GORDON FASS 
+.na fg FROG~MAN FROG
+.na cb CABBAGE~PATCH~KID CABBAGE
+.na ta TOM~ALLIGATOR TOM
+.na gm MAN~FROM~GRAD GRAD   
+.na ed BYRON~KEENER BYRON   
+.na lg LEE~GALEAGLE LEE 
+.na jn JOGGER~NUT JOGGER
+.na lf LENNY~R.~PROGRAMMING LENNY   
+.na ws WENDY~ST.~SKOMARCHINGIN WENDY
+.na jl JANE~LINKFENTS JANE  
+.na sd SUE~DEBASTARDS SUE   
+.na bs BESSIE~SEVENTONNE BESSIE 
+.na b1 TAMMY~U.~LUVMI TAMMY 
+.na b2 BROOKE~TROUT BROOKE  
+.na b3 B.~TRUDY~YOURSCHOOL TRUDY
+.na dx DEXTER~KEENER DEXTER 
+.na pr PROFESSOR~ROGERS ROGERS  
+.na mh MARY~ANNE~HAMMERSTEIN MARY~ANNE  
+.na cc CARLA~CHAMELEON CARLA
+.ld 
+(LIGHTS UP ON EMPTY STAGE.  THE COFFEE MACHINE IS GONE AND HAS BEEN 
+REPLACED BY TWO FLATS AT THE BACK OF THE STAGE.  ONE IS THE PEARLY  
+GATES.  THE OTHER IS A SET OF DOORS WITH "ABANDON ALL HOPE YE WHO   
+ENTER HERE" ON THEM AND A SIGN SAYING "FED HELL" OVER THEM.  ST.
+PETER IS OUTSIDE THE PEARLY GATES AND HAL FIRE AND DAN NATION, TWO  
+DEVILS ENTER AND TAKE UP THEIR POSITIONS BY THE GATEWAY TO HELL)
+.ch pt  
+Hi, where's Lucifer today?  
+.ch hl  
+Oh, he's busy.  Somebody has to keep the home fires burning.
+We're filling in for him.  I'm Hal Fire.
+.ch bn  
+And I'm Dan Nation.  And who might you be?  
+.ch pt  
+Why, I'm a saint who's worshipped by millions of people 
+the world over. 
+.ch hl  
+Wow, Michael Jackson!  Can I have your autograph?   
+.ch pt  
+The correct question was "Who is St. Peter?".  I'm sorry, young man,
+but you've put yourself in Jeopardy.
+.ch hl  
+I guess I'd better use more Concentration next time.
+.ch pt  
+You Bet Your Life.  
+.ad 
+(ENTER LUCIFER) 
+.ch pt  
+Hey, Lucifer just where did you get those two?  
+.ch lc  
+Oh, I picked up their souls at a two for one special in Newark. 
+.ch pt  
+Oh, I see.  They're New Jersey Devils.  
+.ad 
+(ENTER ANGELA MERCY, A FEMALE ANGEL, RUNNING AND CARRYING A HARP)   
+.ch an  
+Boss, boss! 
+De bomb, de bomb.   
+.ch pt  
+What?   
+.ch an  
+The world has been blown up by a strange
+group of people with weird ideas.   
+.ch pt  
+I thought the Hare Krishnas just hung around in airports.   
+.ch an  
+No, boss.   
+It was FASS!
+.ch pt  
+Oh, 
+.ul 
+that
+strange group of people with weird ideas.   
+.ch lc  
+It doesn't matter who did it.   
+What am I going to do with all the new arrivals?
+.ch pt  
+I know what you mean.  It's getting so bad that the Big Guy can't handle
+it any more.
+As of this morning, Heaven is being run by the GOD 9000 computer.   
+.ad 
+(ENTER I.B.M. CLONES)   
+.ch cn  
+The installation of the GOD 9000 system is now complete.
+.ch pt  
+Thank you.  
+.ch cn  
+You're welcome. 
+Let's have lunch sometime.  
+.ch pt  
+Uh, yeah, sure. 
+.ad 
+(CLONES EXIT)   
+.ch lc  
+Well, Peter, I'd like to stick around and chat but I've got my own  
+preparations to make.   
+Come on guys, let's go to Hell. 
+.ad 
+(LUCIFER, HAL, AND DAN EXIT)
+.ch pt  
+Well, Angela, let's go. 
+.ch an  
+Sure boss.  
+.ad 
+(PETER AND ANGELA WALK UP TO THE PEARLY GATES AND PETER TRIES TO OPEN   
+THEM.   
+HE FINDS THEM LOCKED)   
+.ch pt  
+Open the Pearly Gates, God. 
+(PAUSE) 
+Open the Pearly Gates, God. 
+.ch gd  
+I'm sorry, Peter, I can't do that.  
+.ch pt  
+Open the Pearly Gates, God or I'll rip your memory circuits out bit by bit. 
+.ch gd  
+Well, Peter, if you put it that way.
+.ad 
+(PEARLY GATES OPEN. 
+ANGELA AND PETER EXIT)  
+.ad 
+(ENTER AN ANGEL FROM HEAVEN, WEARING A RED BERET, AND AN ANGEL  
+FROM HELL, WEARING A MOTORCYCLE JACKET) 
+.ch jl  
+Sue?
+.ch sd  
+Jane?   
+.ch jl  
+I didn't even know you were dead.   
+.ch sd  
+What have you been doing with yourself? 
+.ch jl  
+Besides dying?  
+.ch sd  
+Yes.
+.ch jl  
+Well, I got myself a job protecting people up in heaven.
+.ch sd  
+You mean... 
+.ch jl  
+Yes, I'm a guardian angel.  
+How about you?  
+.ch sd  
+I joined Hell's angels. 
+.ch jl  
+I guess you must really motor around.   
+.ad 
+(BO EVIL, CAPTAIN UNIVERSITY, MRS. TEA, SUPERCHICKEN, JOGGER NUT, THE   
+COORDINATOR, CABBAGE PATCH KID, FASS GORDON, AND SHEENA, BLACK PRINCESS 
+OF GUELPH ENTER)
+.ch fa  
+Where are we?   
+.ch jn  
+I don't know, but it's one of the strangest places I've ever run into.  
+.ch ch  
+Where on Earth could you find such a bleak place with miles and miles   
+of nothingness? 
+.ch sh  
+Guelph. 
+.ad 
+(FLY IN SIGN POST ON A CLOUD READING AS BELOW)  
+.xx ALL 
+"Welcome to Purgatory, Pop. 238"
+.ch sh  
+Purgatory?  
+What the heck is purgatory? 
+.ch jl  
+Purgatory is a place where they judge you and decide where you must 
+spend the rest of eternity. 
+.ch dc  
+Oh, co-op interviews.   
+.ch sd  
+Something like that, allow us to explain:   
+.sb "Almost Heaven, Purgatory" "Country Roads"  
+.ve 6   
+(ANGELS:) Almost Heaven, Purgatory  
+          Day of judgement, time to say they're sorry   
+          Caught in limbo   
+          What will be their fate?  
+          Will they go to heaven?   
+          Will they get a date? 
+.ve 4   
+(ALL:) Oh Saint Pete, please decide 
+       Where it is, we'll reside
+       Up in Heaven, down in Hades  
+       Oh Saint Pete, please decide 
+.ve 6   
+(ANGELS:) Will I need my catechism? 
+          Do they practice sadomasochism?   
+          Up in heaven, 
+          Is it really nice?
+          Tell us, where should they go?
+
+          We need some advice.  
+.ve 4   
+(ALL:) Oh Saint Pete, please decide 
+       Where it is, we'll reside
+       Up in Heaven, down in Hades  
+       Oh Saint Pete, please decide.
+.ad 
+(ENTER THE MAN FROM GRAD, FROGMAN AND TADPOLE)  
+.ch td  
+Holy eternity, Frogman! 
+Where are we?   
+.ch fg  
+Well, Tadpole, based on the extreme bleakness of our surroundings,  
+that signpost over there and that song, 
+I would guess we're in Purgatory.   
+.ad 
+(TOM ALLIGATOR ENTERS)  
+.ch ta  
+Good evening, ladies, gentlemen and other creatures.
+My name is Tom Alligator and this is Purgatory. 
+We're happy to have you here tonight.   
+I love you, all of you, and I mean that sincerely.  
+And speaking of love, we have a couple of young lovers in the audience. 
+I'd like to sing a song that was written for occasions like this and for
+people like you.
+.sb "The Judgement" "The Love Boat" 
+.ch ta  
+.ve 6   
+Death   
+Exciting and new
+Don't get bored, He'll be judging you   
+And death   
+Life's final reward 
+It's the end, there's no more of you
+.ve 6   
+The judgement   
+Saint Peter is seeing what you have done
+The judgement   
+Promises places for everyone
+Get rid of depression   
+Give afterlife half a chance
+.ve 6   
+And death   
+Won't hurt any more 
+Even hell is fun, when you know the score   
+It's death  
+Welcome aboard  
+You're dead!
+.ch ta  
+Thank you, everybody and now he-e-e-e-re's Peter.   
+.ad 
+(ENTER ST. PETER WITH A CLIPBOARD, AND ANGELA MERCY WITH A LARGE BOX.   
+ALSO HAL FIRE AND DAN NATION ENTER WITH A BOX.  
+TOM EXITS)  
+.ch pt  
+Good evening, everyone. 
+I'm St. Peter and this is my assistant, Angela Mercy.   
+The process is simple.  
+She's making a list and I'm checking it twice.  
+We're gonna find out who's naughty and nice.
+.ch sh  
+(SEDUCTIVELY)   
+Hey, big boy, I'll give you this hundred dollars
+(PULLS BILL OUT OF BRA) 
+if you let me in.   
+.ch gm  
+What's she doing?   
+.ch ed  
+She's buying a stairway to Heaven.  
+.ad 
+(EVERYONE GROANS AND GIVES A DIRTY LOOK AT BYRON)   
+.ch pt  
+I'm sorry, young lady but because of that bribe, you'll have to go  
+to Hell.
+.ad 
+(SHEENA GOES OVER TO THE DOORWAY TO HELL AND DAN AND HAL GIVE HER   
+HORNS AND A PITCHFORK)  
+.ch pt  
+Next.   
+.ch ed  
+(COMES FORWARD) 
+Hi, I'm Byron Keener, third year engineering.   
+.ch pt  
+(CHECKS LIST)   
+Ah, yes, you're going to Heaven.
+Angela, give him his wings. 
+.ad 
+(ANGELA HANDS HIM A PAIR OF WINGS)  
+.ch ed  
+These wings are heavy.  
+.ch an  
+Of course, we always give iron wings to Engineers.  
+.ch dc  
+Hello, St. Peter.   
+I'm the Coordinator and I'm really sorry for all the nasty and evil 
+things I did.   
+.ch pt  
+That's okay.
+Because you cooperated with the heroes, I've decided to send you to Heaven. 
+.ad 
+(ENTER LEE GALEAGLE)
+.ch lg  
+Hold it right there, by Section 32, subparagraph 4 of the Act of God,   
+you cannot send him to Heaven.  
+He has to go to Hell.   
+.ch pt  
+Who are you?
+.ch lg  
+I'm the Devil's advocate.   
+.ch an  
+Damned lawyers. 
+.ad 
+(THE COORDINATOR JOINS THE HELL GROUP AND IS ISSUED THE STANDARD
+DEVIL CLOTHES)  
+.ch cb  
+I'm the Cabbage Patch Kid.  
+.ch pt  
+Let's see.  
+(CHECKS LIST)   
+I don't seem to have a Cabbage Patch Kid on my list.
+What happened to the Cabbage Patch Kid, God?
+.ch gd  
+I'm sorry, Peter, but we lost his transcript.   
+.ch pt  
+Hmmm.   
+I'm going to have to think about this.  
+(FLIPS A COIN)  
+Hell.   
+.ch cb  
+But I wanted to go to Heaven, to listen to continuous harp music,   
+to hear the melodic voices of the choir of angels, to   
+(STOPS AND THINKS ABOUT THIS SORT OF LIFE)  
+Gee, thanks, St. Pete, you're an afterlife-saver.   
+(RUNS OVER TO HELL GROUP AND IS ISSUED GEAR)
+.ch bo  
+Hi, I'm Bo Evil.
+.ch cu  
+And I'm Timothy Lipshitz.   
+.ad 
+(EVERYONE LAUGHS)   
+.ch pt  
+All right, Timothy, 
+.ad 
+(ALL LAUGH) 
+.ex 
+in order to determine where you belong, you're going to have to take a  
+test.   
+Angela? 
+.ch an  
+(DIGS THROUGH BOX AND COMES UP WITH BOOK)   
+Here it is, the Heaven and Hell Admissions Test by Hopcroft,
+Ullman and Dante.   
+Question one.   
+You are at a streetcorner and you see an old lady, do you:  
+.xx BO~AND~CAPTAIN  
+(INTERRUPTING SUDDENLY) 
+b) Ignore her.  
+.ch pt  
+That settles it.
+You shall spend all eternity in Limbo.  
+.ch cu  
+What!   
+Dancing forever under a flaming pole?   
+.sb "Judgement Day" "Jamaica Farewell"  
+.xx ANGELS  
+.ve 6   
+Back on Earth,  
+Where we had our birth, 
+We were helping little ladies all the time. 
+Our thoughts were good, 
+We did what we should,  
+And every hour was given to fighting cri
+
+And every hour was given to fighting crime. 
+.ve 5   
+(And it's) Sad to say we've passed away.
+Won't be back 'till judgement day.  
+We had to die,  
+But since we never lie, 
+We've gone to join the flying angels in the sky.
+.xx DEVILS  
+.ve 6   
+Back on Earth,  
+Where we had our birth, 
+We were mean and nasty buggers all the time.
+Our plots were bad, 
+And the cops were mad,  
+'Cause we were supervillains and lords of crime.
+.ve 5   
+(And it's) Sad to say we've passed away.
+Won't be back 'till judgement day.  
+We've gone to hell, 
+The place where sinners yell,   
+We see the brimstone burning bright where Satan fell.   
+.ch bo  
+Don't worry, Timothy, as long as we can be together,
+it doesn't matter.  
+.ch cu  
+Oh, Bo! (THEY RUN INTO EACH OTHERS ARMS)
+.ad 
+(ENTER LENNY AND WENDY FROM DIFFERENT ENTRANCES)
+.ch lf  
+Wendy!  
+.ch ws  
+Lenny!  
+.ch lf  
+We're together at last.  Now nothing can come between us.   
+.ch ws  
+Well, actually...   
+.ch lf  
+Just think, eternity together.  
+.ch ws  
+Sorry, Lenny, but I've found someone else.  
+.ch lf  
+What?!? 
+.ch ws  
+He's the sort of man I've always dreamed of.
+.ad 
+(ENTER DEXTER)  
+
+.ch lf  
+Dexter?!?  But he doesn't even have a superpower.   
+.ch ws  
+Yes he does.  He can measure things in 37ths of an inch.
+.ch lf  
+(PULLING OUT RULER:)  I can do that!
+.ch dx  
+(PROUDLY:)  But I don't need a ruler.   
+.ad 
+(ENTER CARLA, DRESSED IN THE (VERY!) SCANTY OUTFIT SHE HELD UP IN I-4)  
+.ch cc  
+Say, Dexter, wanna see me   
+change into 
+something   
+even
+.ul 
+more
+comfortable?
+.ad 
+(PAUSE.  DEXTER LOOKS AT CARLA, LOOKS AT WENDY, LOOKS AT CARLA, TURNS TO
+WENDY AND SAYS...)  
+.ch dx  
+Bye, Wendy! 
+.ad 
+(EXIT DEXTER WITH CARLA)
+.ch ws  
+Aaaaargh.  I'm going to kill myself.
+.ch lf  
+You can't; you're already dead. 
+.ch ws  
+Oh, yeah.  I forgot about that...   
+Say, Lenny...   
+what are you doing for the rest of eternity?
+.ch lf  
+Make me an offer.   
+.ch ws  
+How about spending it... with me?   
+.ad 
+(OVERBLOWN ROMANTIC HARP MUSIC SWELLS UP.  THEY RUSH INTO EACH OTHERS ARMS  
+AND DANCE OFFSTAGE) 
+.ad 
+(ENTER BESSIE AND THE BOVINES FROM ONE ENTRANCE, PROFESSOR ROGERS AND   
+MARY ANNE FROM ANOTHER) 
+.ch bs  
+Lucifer, Peter, nice place you've got here. 
+.xx PETER~AND~LUCIFER   
+Thanks. 
+.ch b1  
+Nice coffee, too.   
+.ch b2  
+But the doughnuts...
+.ch b3  
+We must do something about the doughnuts.   
+.ch mh  
+The Professor and I are trying to create the perfect doughnut.  
+.ch pr  
+We could use some funding.  
+.ch bs  
+No problem.  We'll just eliminate either Heaven or Hell.
+.ch lc  
+Eliminate Heaven!   
+.ch pt  
+Eliminate Hell! 
+.xx ALL 
+Oh no, not again.   
+.sb "FASS!" "FAME!" 
+.ch lc  
+.ve 8   
+Villains, come to me,   
+And tell me what you see (ha ha)
+You ain't seen the worst of it yet, 
+Eternal torment, no respite from the pain.  
+Come, no time to lose   
+And tell me what torture you choose!
+I'll make you scream, yes, I'll make you pay!   
+'Til the final Judgement Day.   
+.xx BOVINE~COMMISSION   
+.ve 1   
+Hell!   
+.xx DEVILS  
+.ve 2   
+We're going there for forever!  
+We're gonna burn, bake, and fry!
+.xx BOVINE~COMMISSION   
+.ve 1   
+My! 
+.xx DEVILS  
+.ve 2   
+We knew we had all this coming, 
+Surely we're too young to die!  
+.xx BOVINE~COMMISSION   
+.ve 1   
+Hell!   
+.xx DEVILS  
+.ve 2   
+We only tried to enjoy life,
+By taking stuff we couldn't buy.
+.xx BOVINE~COMMISSION   
+.ve 1   
+Hell!   
+
+ ..~..Z/a   @.........'g`...
+
+..p.........$.g...H......G............g....&......'g.F.b.&..&f'.........&.....'...............G"'...........D..$...d...%ed$......H......g.......F&f...G.F....G" ....F&f...G.F....G" ....F&f...G.F....G" .P...f.......H................F..b.....B...F.....0....B.f....F...F......&......'...'B....8..&..B.F..'F....B...&.....&..b.F&.........g.'&&...f..&...GG.f.&............G"..&........G"..&.........&.......&.......&f...&...(..&........F.&......F..&....b.f&..'....8..&...f&..&.....'.............".'.'"...H....F.".&..Gf....b....&..G..........'"............D..$...d...%ed$......H......'....X....'...'..p........D..g...H......G..........F....&......F....B...F...B'.........F....&........'F..........." ........D..$...d...%ed$......H......'....H...&..'...........D..$...d%..$$....H......G.......&.........&..''b.F.........@....F.f'.f..".&....'........"..G"...........D..$...d...%ed$......H......'....X....'...'..p........D..g...H......G............."..F&.......F...g...&......8............F.&.....gb...G..G".gF&............D..$...d...%ed$......H......'....X....'...'..p........D..g...H......G....H.....gb..&f......&..&.......F&....g.................F.......F....B.&....&..'..........D..$...d...%ed$......H......g.........B.&....&..'.........B.&....&..'.........B.&....&..'....H......'......
+..%eb'....X......$....H..................f....'b.&...G.....F.........&...&......f........&........h....g.'.....B.....G.b.........&f......F.&..............F'..Gb....'G...b.........&...'b.&..''b.....f&......f.....F&fb....F..&......F....p..&........&...&..B..F&...b...'..&......f...... .........."...'B.G.g......&...f....&&........"....f.......f....b..&..........'...".........f..&.&&.....H......'....X...%eb".'..X......$....H......G....P..f...........F.f.b...F...F....'g..&.'B.......&......"....F..F&fb.....B...'B'.........D..$...d...%ed$......H......'....H...%eb'....X......$....H......G.......f.........F...........B..'G."'............f...&...&.&&..&..".&.'B'..........D..$...d...%ed$......H......'....H...%eb'....X......$....H......G....0......g..G".......F....G"..&...F.......8........g.&.............F...&.."..'...........D..$...d...%ed$......H......'....H...%eb'....X......$....P......#....8......f....'b........B...B...'b.&.'B......'..b.....G&.....&...&...".f'.'...x...&...".f'.'..x...&...".f'.'..x...&...".f'.'..x...&...".f'.'..x...&...".f'.'..x...&...".f'.'..x...&...".f'.'..x...&...".f'.'..H......'....p...%eb"""""'...8............$...b.......e.E.$$..d$....e..d$$...$...$.......e.b........... .8....g.............G.$.....d$..G....X....&.gb...P...f..C'.......&f..f.....

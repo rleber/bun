@@ -1,0 +1,106 @@
+
+
+
+.".p.!Ve
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so tmacs.t 
+.HH "What to Expect in Act II"  
+.fi 
+If you have trouble understanding the standard  
+\fBFASS\fP character naming scheme, try saying the name out loud
+a few times.
+Try lisping.
+Gargle it.  
+You won't be disappointed.  
+.nf 
+.sp 0.4l
+.CC "Scene 1" "Jolly Old St. Nicholas"  
+.CC "Scene 2" "All's FASS in Love and War"  
+.CC "Scene 3" "Not a GO-ST of a Chance" 
+.CC "Scene 4" "As the Fuse Burns"   
+.CC "Scene 5" "Once More, With Fooling" 
+.HH "Act II: Alphabetic Cast of Characters" 
+.CC "Sven Yearitch" "Ian! Allen"
+.CC "Sergeant Sunoco" "Toni Bajer"  
+.CC "Harvey Wall Anger" "Alan Baker"
+.CC "The Tooth Fairy" "John W. Bast"
+.CC "Band Aide" "Brian Beamish" 
+.CC "Fred Buffers (Can-Can)" "Kim Beattie"  
+.CC "Max Milk" "Neil Campbell"  
+.CC "SuperMoron" "Peter (Boom-Boom) Carette"
+.CC "Anna Stesia" "Valerie Carr"
+.CC "Ima Undercover" "Linda Carson" 
+.CC "Polski O'Gorki" "Ian Chaprin"  
+.CC "P.Lee Bargaining" "Ian Chaprin"
+.CC "Seymour Clearly" "Andre Cyr"   
+.CC "Cool Aide" "Chris Dobbin"  
+.CC "Stan Stureason" "Ron Dragushan"
+.CC "Maude Squade" "Joy A. Fenton"  
+.CC "Nancy Standard Fortran (Can-Can)" "Lynn Fletcher"  
+.CC "Phil T. Rich" "Andrew Forber"  
+.CC "Bud Wiser" "Jim Gardner"   
+.CC "Santa Claus" "Roy Gilpin"  
+.CC "Private Parts" "Clifford Goodman"  
+.CC "Mortimer Screw" "Preston Gurd" 
+.CC "Chrys Anthenum" "Marney Heatley"   
+.CC "Soldier" "Marney Heatley"  
+.CC "Argbargle" "Katherine Hicks"   
+.CC "Ricky T. Split" "Katherine Hicks"  
+.CC "Frank Lee Speaking" "Chris Joselin"
+.CC "Hy Pertension" "Sandy Kemsley" 
+.CC "Major Exxon" "Neil Kennedy"
+.CC "Grinchley" "David Kerr"
+.CC "General Degree" "Richard LeBer"
+.CC "Polly Saccharide" "Anna Lehn"  
+.CC "Dinah Might" "Heather Lennox"  
+.CC "Jean Jacket" "Cathy Logan" 
+.CC "Freida Hostages appears as Toto" "Louise Love" 
+.CC "Bjorn Cybjorg (Can-Can)" "Deborah Maenpaa" 
+.CC "Rick O'Shay" "James Maenpaa"   
+.CC "Jenny Side" "Marianne Maltby"  
+.CC "Manuel Life" "Brian Martin"
+.CC "Pierre Acceptance" "Dave Martindale"   
+.CC "Kaz Pyjamas" "Steve Maulsby"   
+.CC "Will Probate" "Kent Nickerson" 
+.CC "Datanet Funicello (Can-Can)" "Julie Pakalns"   
+.CC "Corporal Punishment" "Chuck Peeren"
+.CC "Tess Tube" "Samm Ristich"  
+.CC "Les Dewitt" "Bernie Roehl" 
+.CC "Gator Aide" "Peter Scheffel"   
+.CC "Lickspittle" "David Schreier"  
+.CC "Millie Terry" "Lynne Slater"   
+.CC "Yves Dropping" "Glenn St-Germain"  
+.CC "Private Pleasure" "Glenn St-Germain"   
+.CC "Paula C. Holder" "Gillian Teichert"
+.CC "Alec Trolysis" "Brad Templeton"
+.CC "Ringo Roundacollar" "John Tiessen" 
+.CC "Otto Mation (Can-Can)" "Maggie Varadi" 
+.CC "Beeblebrox" "David Welbourn"   
+.CC "Reggie Sturdnurse" "Andrew Welch"  
+.CC "Crumhorn" "Joanne West"
+.CC "Charles Grovel" "Derek Wilkinson"  
+.CC "Kitty Claus" "Betsy Wimbs" 
+.CC "Rasputin" "Mark Winnett"   

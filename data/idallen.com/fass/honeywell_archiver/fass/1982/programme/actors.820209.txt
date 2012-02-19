@@ -1,0 +1,189 @@
+
+
+
+.......l
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.HD 
+Cast of Characters  
+.HE 
+.nf 
+.XX 
+\f2Kim Adkins\fP.Alice Aforethought 
+	Claudius   
+.XX 
+\f2Ian! Allen\fP.King of Hearts 
+.XX 
+\f2Brien Ashdown\fP.Drinks Machine  
+	Calvin Amity   
+	Stud Tires 
+.XX 
+\f2Terry Barna\fP.Hamilton Ahnreye  
+	Johnny Oldson  
+	Rosencrantz
+.XX 
+\f2Mark Batten\fP.Tweedle-Incredibly-Stupid 
+.XX 
+\f2Michael Beckerle\fP.Chuck O'Loto 
+.XX 
+\f2Simon Birch\fP.Lurch the Butler  
+.XX 
+\f2Angela Burley\fP.June Bug
+	Donna DeDead   
+.XX 
+\f2Rachel Capstick\fP.April Showers 
+.XX 
+\f2Peter Carette\fP.Caterpillar 
+.XX 
+\f2Elizabeth Carew\fP.Londonderry Hare  
+	Bunny Bam  
+	Lizzie Boredom 
+.XX 
+\f2Roberta Carter\fP.Eva Destruction
+	Gertrude   
+.XX 
+\f2Ian Chaprin\fP.Jacques Rabbitte  
+.XX 
+\f2John Collard\fP.Iris Mycase  
+	Harry Fitzlykagluv 
+.XX 
+\f2Peter Coo\fP.Tweedle-Dum 
+.XX 
+\f2Mario De Rose\fP.Karen Carpenter 
+.XX 
+\f2Chris Dobbin\fP.Gus DeFax
+.XX 
+\f2Lindsay Drake\fP.Madame Brenda Butterfly 
+.XX 
+\f2Joy A. Fenton\fP.Squeaky Fromme  
+.XX 
+\f2Lynn Fletcher\fP.Ms. Marple  
+	Anita Break
+
+.XX 
+\f2P. Jayne Forbes\fP.Penny Loafer  
+	Jill O'Pudding 
+	Marcellus  
+.XX 
+\f2Lorraine Galvin\fP.Angela Foodcake   
+.XX 
+\f2Jim Gardner\fP.Luke Alike
+	C.B. MacTruck  
+.XX 
+\f2Clifford A. Goodman\fP.Oscar Nominee 
+	Guildenstern   
+.XX 
+\f2Mike Gore\fP.Tennis the Menace   
+.XX 
+\f2Dave Graham\fP.Sum Won Hoo   
+	Stud E. Baker  
+.XX 
+\f2Ronald M. Green\fP.Ross Horizon  
+	Doug Leedoo Right  
+	Bernardo   
+.XX 
+\f2Preston Gurd\fP.Better Holmes
+.XX 
+\f2Marney Heatley\fP.Dinah the Cat  
+.XX 
+\f2Katherine Hicks\fP.Snapper Mocky 
+.XX 
+\f2William Hughes\fP.Dick Tutorial  
+.XX 
+\f2Steve Hutton\fP.Claude Dumbo 
+.XX 
+\f2Kim Kippen\fP.Fearless Fawcett   
+.XX 
+\f2Jeff Knight\fP.Count Paul Bearer 
+.XX 
+\f2Elisa Kreller\fP.Deb U. Thant
+.XX 
+\f2Don Lapierre\fP.Jack of Clubs
+	Stud Up
+	Egbert McMuffin
+.XX 
+\f2Rob Lee\fP.Matt Hatter   
+.XX 
+\f2Brian Martin\fP.Perry Keet   
+.XX 
+\f2Chris Martin\fP.General Woundwort
+.XX 
+\f2Cathy McBride\fP.Queen of Hearts 
+.XX 
+\f2Brad McFadyen\fP.Felix Symbol
+	Omelette   
+.XX 
+\f2Sandra McLeod\fP.Patty Morebucks 
+.XX 
+\f2Judy McMullan\fP.Speaker in Green
+.XX 
+
+
+
+
+\f2John McMullen\fP.Rock Hopster
+.XX 
+\f2MarieLou Norton\fP.May Flowers   
+	Mimi O'Graff   
+.XX 
+\f2Chuck Peeren\fP.Colonel Fluff
+	Philip Miscenses   
+	Joe King   
+	Horatio
+.XX 
+\f2Jeff Prayra\fP.Kodak Chrome  
+.XX 
+\f2Rose Roberts\fP.Jane Stitch  
+	Ophelia
+.XX 
+\f2Bernie Roehl\fP.Bugs Bunny   
+.XX 
+\f2David Shipley\fP.Prudence Juris  
+	Arthur Mometer 
+.XX 
+\f2Martin Smith\fP.Cheshire Cat 
+	Stud Services  
+	Robin Peter
+.XX 
+\f2Edmund Smyk\fP.Byron Getwonfrie  
+	Stud E. Hall   
+.XX 
+\f2Chris Stone\fP.Bunny Wham
+.XX 
+\f2Adrian Stonell\fP.Stage Manager  
+	Freddy Ornot   
+.XX 
+\f2Gillian Teichert\fP.Hops To Trotsky  
+.XX 
+\f2Brad Templeton\fP.Humpty Dumpty  
+	Polonius   
+.XX 
+\f2Ewa Von Hueck\fP.Mome Rath   
+.XX 
+\f2Ken Watson\fP.Hank the Herald
+.XX 
+\f2Andrew P. Welch\fP.Marvin Gardens
+.XX 
+\f2Betsy Wimbs\fP.Princess Dixie

@@ -1,0 +1,468 @@
+
+
+
+...J.p..
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so 84macr.t
+.bs 2 n "That Was No Lady, That Was My Strife"  
+.na da DAN~KEW DAN  
+.na rb R.B.~LUST R.B.   
+.na cl CLAUDE~TODEATH CLAUDE
+.na fe FELIPPE~MYTANK FELIPPE   
+.na ar ARMAND~DILLO ARMAND  
+.na jd JUANITA~DRINK JUANITA
+.na jf JUAN~FORALL JUAN 
+.na ml MANUEL~LABOUR MANUEL 
+.na wl WANDA~LUST WANDA 
+.ad 
+(SCENE TAKES PLACE IN THE HORMONE E LUNCH, A SLEAZY LITTLE RESTARAUNT IN THE
+COUNTRY RULED BY MONTY ZUMA.  THERE ARE ABOUT SIX PEOPLE IN THERE, AT TABLES.   
+FELIPPE MYTANK IS THERE, AND JUANITA DRINK IS SITTING BY THE BAR...IF WE CAN    
+HAVE ONE.  SHE IS A WOMAN OF EASY VIRTUE.  BUT CUTE.)   
+.ld 
+(THIS SET IS DIMLY LIT.  A SINGLE SPOT COMES UP ON THE STAGE LEFT SLOT, AND 
+WE SEE DAN KEW, R.B. LUST AND CLAUDE TODEATH THERE.  ALL THREE ARE DRESSED  
+AS MERCENARIES AND LOOK EXTREMELY UNCOMFORTABLE.  R.B. IS CARRYING A SUBMACHINE 
+GUN, DAN HAS A KNIFE AND A RIFLE, AND CLAUDE IS CARRYING EVERY OTHER WEAPON 
+THAT PROPS CAN COME UP WITH:  GUNS, KNIVES, SLINGSHOTS, KLINGON WAR DILDOES,
+BROKEN BOTTLES, A LAWN CHAIR (JUST BECAUSE), AMMO BELTS, MAP CASES, BINOCULARS, 
+AND MORE.  A BAZOOKA WOULD BE NICE.  HE CAN BARELY MOVE.)   
+.ch cl  
+M'sieur, I do not wish to complain, since you are paying me to be your native   
+bearer, but it seems to me that this is, how you say, a silly idea. 
+Anyone can see that you are not mercenaries.
+.ch da  
+Oh, yeah?  Watch this.  
+.ad 
+(DAN BEGINS A SERIES OF FAKE MOVES, TRYING HIS BEST TO BE A COOL, VICIOUS   
+MERCENARY.  FIRST HE FEINTS, THEN HE STANDS, STARING AND SNEERING AT AN 
+UNSEEN ENEMY.  HE STARTS PASSING THE KNIFE BACK AND FORTH BETWEEN HANDS.
+THEN HE BEGINS MOCK ATTACKS AGAIN.  THE OTHERS WATCH HIM FOR A MOMENT AND   
+THEN CARRY ON WITH THEIR CONVERSATION.) 
+.ch rb  
+Look, Claude, I'll explain this just once for you and that guy in the fourth
+seat in the third row who went to the bathroom. 
+We're pretty sure that the rebels have taken Mary and the rest to their 
+headquarters.   
+We should be able to get the location of their headquarters here.   
+(REASSURING) And don't worry about us; we've been in some pretty tough  
+places and come out alive.  
+.ad 
+(DAN IS NOW MAKING "NOW TAKE THIS, SLIME" NOISES)   
+.ch da  
+Yeah, we've eaten at South Campus Hall.  Hah, communist running dog!
+.ch rb  
+Everythi
+
+Everything's under control, Claude. 
+.ch cl  
+Oui, M'sieur.   
+.ch rb  
+Are you sure you're a faithful native bearer?   
+.ch cl  
+Si, M'sieur.
+.ch rb  
+Right.  
+.sd 
+(SOUND OF KNOCKING, SINCE HE KNOCKS AT THAT MOMENT, AND R.B. STEPS BACK.)   
+.AD 
+(FELIPPE MYTANK COMES TO THE "DOOR", JUST AT THE MOMENT THAT DAN EXECUTES   
+A SPIN THAT BRINGS HIM FACE-TO-CHEST WITH FELIPPE.) 
+.ch da  
+Die, pinko libertarian Rec student!  (A MOMENT'S PAUSE AS HIS GAZE TRAVELS  
+UP TO FELIPPE'S FACE)  Uh...  (BEGINS DUSTING HIM OFF)  Listen, I hope you  
+didn't take me seriously about calling you a Rec student... 
+.ch fe  
+May I help you? 
+.ch da  
+(TO R.B.)  Can he help us?  
+.ch rb  
+We're a trio of mercenaries.  That's Scar, I'm Gat, and this is, uh...  
+.ch cl  
+Claude. 
+.ch rb  
+Right.  
+.ch fe  
+Yes?
+.ch rb  
+We'd like the sleaziest table in the joint.  We're rough and mean and tough 
+and we don't compromise with anyone.
+.ch fe  
+Our sleaziest table is booked.  May I offer you one in our Riffraff Room?   
+.ch rb  
+(INSTANTLY AGREEABLE)  Sure.
+.ad 
+(THEY WALK OVER TO ONE OF THE TABLES.  DAN BEGINS TO GET CONFIDENT AGAIN,   PPE SNEERING AT THE OTHER PATRON
+
+SNEERING AT THE OTHER PATRONS.  HE THINKS HE'S PRETTY COOL AGAIN BY THE 
+TIME THEY SIT DOWN.)
+.ld 
+(SPOT DIES, MAIN STAGE LIGHTING COMES UP)   
+.ch fe  
+Here you are.   
+.ch rb  
+Just a minute.  Why is this place called the Hormone E?  I thought it was   
+a vitamin.  
+.ch fe  
+Do you know the difference? 
+.ch rb  
+No. 
+.ch fe  
+You can't hear a vitamin.  (HE LEAVES.) 
+.ad 
+(CLAUDE CANNOT SIT DOWN, HE HAS TOO MUCH CRAP HANGING ABOUT HIM.  WHEN  
+HE FINALLY MANAGES TO GET INTO THE CHAIR, HE IS RIGID, STILL HELD PERFECTLY 
+STRAIGHT.)  
+.ch rb  
+Relax, Claude.  
+.ch cl  
+Ja, mein herr.  
+.ch rb  
+Are you sure you're a faithful native bearer?   
+.ch cl  
+Si, mein herr.  
+If it is all the same to you, I would rather stand. 
+.ch rb  
+All right.  Now we have to make some contacts.  
+.ch da  
+Already have.  See that cute one, over there by the bar?
+She wants it.   
+.ch rb  
+What?   
+.ch da  
+Me. 
+.ad 
+(DAN AND THE WOMAN (JUANITA DRINK) BEGIN A SINGLES BAR-TYPE EXCHANGE.  FIRST
+HE SMILES AT HER.  SHE SMILES BACK.  HE INVITES HER OVER.  SHE IS COY.  HE IS   
+CONFIDENT.  HE BEGINS TO TIP HIS CHAIR BACK.  THERE IS A LITTLE MORE COYNESS,   E NITHEN
+
+THEN SHE COMES OVER.  ARMAND, FURTHER UPSTAGE, NOTICES THIS.)   
+.ch da  
+Hi, sweetheart, I'm a mercenary and a Virgo.  I'm a modern guy, I believe   
+in women's lib. 
+I think women should be allowed to kill, just like men. 
+I have my own apartment, I'm rough and I'm tough, but most important of all,
+I'm strong enough to be vulnerable. 
+I go to encounter sessions. 
+What say you and me talk for a few minutes, get to know each other and  
+then go someplace for a meaningless sexual encounter?   
+.ch jd  
+Buenos noches, Virgo mercenary.  My name is Juanita Drink, and I think that 
+would be fine.  
+.ad 
+(DAN FALLS BACKWARDS.)  
+.ch cl  
+(TO DAN)  Do not trust this woman, M'sieur.  She has a certain je ne sais   
+quois...what we in this country refer to as Concordia cum veritate. 
+.ch da  
+(GETTING UP)  What does that mean?  
+.ch cl  
+Go out, but leave your wallet with friends. 
+.ch da  
+Are you realyy sure you're a friendly native bearer?
+.ch cl  
+Da, tovarisch.  
+.ch rb  
+You wouldn't happen to have a friend for me, would you? 
+A Norte Americano woman named....Mary Quitecontrary?
+.ch jd  
+Why do you ask? 
+.ad 
+(SHE SIGNALS ARMAND SO THAT OUR TRIO CANNOT SEE IT.)
+
+.ch rb  
+(COOLLY)  Oh, no reason at all, really. 
+.ad 
+(ARMAND COMES UP BEHIND THEM.  HE IS BIG.  REALLY BIG.  HE'S AN OX.)
+.ch ar  
+Are you bothering the senhorita?
+You are nothing but (THIS MUST GO FAST SO IT SOUNDS FILTHY AND SPANISH) 
+il jalapena taco guadalupe! Es Granada universitat Ricardo Montalban!   
+Si non nyquil testosterone cojones! 
+.ch da  
+(TO CLAUDE)  What did he say?   
+.ch cl  
+I don't speak Spanish.  
+.ch rb  
+Well, we've made a mistake.  I guess we'll be going now.
+It was lovely, even if I didn't understand about the vitamin and the hormone.   
+.ad 
+(THEY GET UP AND BEGIN TO BACK AWAY FROM ARMAND.  THEY BACK INTO FELIPPE.)  
+.ch da  
+We're trapped!  
+.ad 
+(EVERYONE IN THE CAFE IS FACING THEM, ALL OF THEM LOOK HOSTILE.)
+.ch da  
+This is hopeless!   
+.ch rb  
+Much like my marriage.  
+.ch cl  
+What is your stand on prisoners?
+.ch ar  
+All other lands are our enemies.
+.ch cl  
+Oh. 
+.ch jd  
+Well, Armand, that's not strictly true.  You know that we have nothing  
+formally against India. 
+.ch cl  
+(WITH INDIAN ACCENT)  Well it just so happens-- 
+.ch ar  
+But Juanita, can we really overlook their political stand on the entire 
+
+beef issue? 
+.ch jd  
+No, you're right.   
+.ch cl  
+(FRENCH AGAIN) Certainly not.   
+.ch jf  
+On the other hand, Armand, I consider your opinion of England far too   
+harsh.  
+.ch cl  
+(COCKNEY ACCENT)  Crikey, there's been a bloody mistake here, you see-- 
+.ch ml  
+No, I agree with Armand.  England is too socialist.  And they do not pay
+enough attention to the four basic food groups. 
+Myself, I favour Albania.   
+.ch cl  
+(NORTH AMERICAN)  Forget it, I can't talk with a Chevron accent.
+.ch wl  
+(FROM OFF-STAGE)  Quiet, all of you!
+.ch rb  
+I know that voice.  
+.ch da  
+You do? 
+.ad 
+(WANDA LUST ENTERS.  SHE IS RICHLY, PERHAPS OVER, DRESSED, AND BEHIND HER   
+ARE TWO GUARDS WHO HAVE THE REST OF THE AD AGENCY TIED UP.) 
+.ch rb  
+Did I ever talk about my ex-wife?   
+.ch da  
+Endlessly.  Why?
+.ch wl  
+R.B.!  It's so absolutely loathesome to see you again!  
+.ch rb  
+(TO DAN)  I'd like you to meet her. 
+.ch da  
+Oh, where is she?   
+.ch cl  
+She is the overdressed lady in charge, you ninny.   
+.ch da  
+You know, you don't talk like a faithful native bearer. 
+.ch rb  
+So, Wanda, how's it going?  
+.ad 
+(HE TRIES TO MOVE FORWARD, BUT ARMAND MOTIONS HIM BACK AND TAKES HIS    
+SUBMACHINE GUN.)
+.ch rb  
+Met your friends.  They're, uh, nice.   
+.ch wl  
+And who are your friends?   
+.ch da  
+Dan.  Dan Kew.  
+.ch wl  
+You're welcome. 
+.ch da  
+No, no.  Kew.  Kew!  (PRONOUNCED LIKE "CUE" OR "KYEW")  
+.ch wl  
+(WITH A SIGH)  Line seventy-five.   
+I say, "You're welcome," then you say,  
+"She's far more attractive than you said, R.B.  
+She doesn't in the least resemble a barracuda." 
+.ch rb  
+Except around the eyes. 
+.ch da  
+Can we accept it as said?   
+.ch ar  
+Let's have a vote on that.  
+.ch jd  
+I agree.  All right.  In favour?  Against?  Abstentions?
+(THEY ARE, OF COURSE, VOTING.)  
+.ch ar  
+It passes, six in favour, one against, one abstention.  
+.ch rb  
+(TRYING TO GO ON)  What are you doing to do--   
+.ch ar  
+Hold on, that was just the vote to see if we
+would vote on it.  Now, all those in favour of accepting it as said--   
+.ch jf  
+Shouldn't it be by secret ballot?   
+.ch ml  
+He's right, you know.   
+.ch wl  
+Quiet!  (TO R.B.)  It's so difficult to take over the world 
+under these kind of conditions.  (TO ARMAND AND FELIPPE)  Tie them up!  
+.ad 
+(ARMAND AND FELIPPE DO SO.  THEY SET CLAUDE ASIDE BECAUSE DISARMING HIM 
+WILL TAKE HOURS.)   
+.ch rb  
+Is that what you want to do?
+.ch wl  
+Yes.
+.ch rb  
+But why?
+.ch wl  
+Richard, ever since I was a little girl, I've looked up at the stars at 
+night--I don't think I told you this when we were married.  
+Did I?  
+.ch rb  
+If it has nothing to do with your desire to grind me into the ground, no.   
+Go on.  
+.ch wl  
+I've looked up at the stars at night, and the....   
+They look so beautiful that you feel that you can just reach out and    
+touch them, shining diamonds in the night sky, and to me, they were 
+the symbol of everything I never had, a poor girl growing up in Oshawa. 
+.ch rb  
+Oh, for God's sake, Wanda, you grew up in Montreal's Westmount Heights, 
+and your parents had enough money to choke a tyrannosaurus.  God knows  
+ your mother was on a first-name basis with some.   
+.ch wl  
+It looks good on a resume:  February 1984--August 1985, took over free  
+world;  September through December, established control over iron   
+curtain countries.  
+.ch da  
+Sounds like you'd be taking a tremendous Risk.  
+.ch wl  
+Well, it's not a Trivial Pursuit.   
+.ch cl  
+Do you think she can do it? 
+.ch rb  
+I'd say it depends on her skill at Diplomacy.   
+.ch da  
+I'd say we're in Trouble.   
+.xx VOICEOVER   
+A Milton-Bradley Game.  
+.ch wl  
+Enough of this gay banter.Time runs apace, and my life is not without its limits.   
+.ch rb  
+(TO DAN)  She stole that line.  
+.ch wl  
+Quiet!   Now, Richard, what I'm going to do is have Armand, here, torture-- 
+.ad 
+(FELIPPE HAS HIS HAND UP IN A ME! ME! SORT OF GESTURE.  FANS OF ARNOLD  
+HORSCHAK WILL REMEMBER IT.)	
+.ch wl  
+Armand and Felippe, then, torture you and record it all so that I can   
+enjoy it later. 
+Right now, I have a world to conquer!   
+.ch rb  
+Wait!  You haven't told us the details of your plan!  (TO AUDIENCE)     
+It's obligatory.  Otherwise, no one would know what was going on.   
+And even that may not be enough to help.
+.sb "I'm Glad Our Marriage Failed Because You're a Creep" "Superstar"   
+.ve 7   
+WANDA:  
+Everytime I look at you I don't understand  
+Why I married someone who was not a real man
+I've managed so much better since our marriage was canned   
+
+When I married you I must have been a psychotic 
+Now you want the details of what makes the FASS plot tick   
+.ve 6   
+R.B.:   
+Don't you get me wrong--I only want to know 
+Wanda Lust, Wanda Lust  
+How can you claim that your cause is just   
+I hate you, heaps and heaps 
+Give me your plan, I'm falling asleep   
+.ve 7   
+First I'm gonna rule this insignificant land
+That will put a large narcotic stash in my hand 
+When I sell it round the world the people will fall 
+Everyone will watch TV while I take over all
+They'll be watching Happy Days or maybe Fam'ly Ties 
+Or any one of sixteen shows that all star private eyes  
+.ve 6   
+R.B.:   
+Don't you get me wrong--I've just gotta say 
+Wanda Lust, my ex-wife  
+That is the dumbest scheme of your life 
+Married you, just my luck   
+All we could do as a pair was-- 
+.ch wl  
+Quiet!  Well, this is the final straw.  The sentence is death.  
+.ch rb  
+That's not even a phrase!   
+.ch wl  
+Death!  Death to your friends as well.  (TO CLAUDE, WHO IS NOW DISARMED)
+Are you a friend of his?
+.ch cl  
+I've never seen this man before in my life.  Or him either (POINTING TO DAN).   
+.ch da  
+Claude!  How could you do that, you, our faithful native bearer.
+.ch cl  
+I have never been faithful, I'm giving up the job of bearer, and I was  
+never a native. 
+.ch da  
+You mean you lied to us?
+.ch wl  
+Well, you cringe well.  All right, you can come with us.    
+Felippe, Armand, kill them all. 
+.ad 
+(ALL EXIT EXCEPT AD AGENCY, DAN, R.B., FELIPPE AND ARMAND.) 
+(FELIPPE CAREFULLY TAKES OUT A TAPE RECORDER.)  
+.ch fe  
+Testing, one, two, three.   
+(TO DAN)  Would you mind screaming into the microphone, please? 
+.ch da  
+No.  I mean, yes, I would mind. 
+.ch fe  
+(BRANDISHES KNIFE)  Please? 
+.ch da  
+No. 
+.ch fe  
+Pretty please?  I've got some bamboo splinters. 
+.ch da  
+Uh-uh.  
+.ch fe  
+Come on, just a teensy-weensy scream?  I'll go get the red-hot poker....
+.ch da  
+I wouldn't dream of it. 
+.sb "Why Won't You Scream, Dan?" "Why Won't You Write Me?"  
+.ve 7   
+FELIPPE:
+Why won't you scream, Dan   
+I'm trying to torture   
+I'm hungry to hear you  
+Must I use force?   
+I am waiting so hard
+just to hear you
+.ve 3   
+ARMAND: 
+(La, la, la)
+Why won't you scream?   
+.ve 12  
+DAN:
+You guys are creeps .. ...`.!y..Aw.. ...
+..'g`...
+
+
+.&...".f....&....&........G...........'&F.."......G......G........&&...&f.b..................."...F....&......x..".......gG'..8..gG'..8..gG'..x....'..'b...'..8....'..8....'..H...........X..%D.$..G.......".......&...fgF.&....&........".......&.."...&........"......."......&.................&...f'"..........'.."...G..F.B.b..'".g.....f..G.......F.&.......H......G....@.....%...@.`...."..."..." .H......'..........%......%D.$..G....0......'"...F.&....f'..&...&......g.....`...&'.&...&....F.gf&.....B.....fgF.&.b....f.... .....f.'"......B....."...F....F...&.. . .......f.'".....Gf.'"..F&fb.&..B.g.&...x..g.F..f..&....&.........&...&..".ff&.."..&........F&.'"......'b.&.....@......"..'..&..B.F.."..'...f....gF'G"...........".......&...fgF.&....&.....P...f.......x.....F....&.......'......f..g.........'b.......8...&.........."...............d$..........e.$...$...D..$..$..$.$.%.....d$......%de.ed$..'..P...f..FG...`.."....F.......&.....&....&....&......'...&...........B.......F.'.......G..F...P...f...'...p......f.....".............'..".f&....fgF.&.....P...f..FG........'..b.g...&.....P...f...'......f...........f&....f&....f...........f&....fgF.&........"...G.g............f.............P...f..FG..........'.......ff'.....&.".&..'c....P...f...'..........G...f.....&....&................G...f.....&....&.....F.......'..&..''b....b..8...&...........B.d.%.....eD...$...$...D..........D$.d....%...$..".$...........Eb......E"'..P...f..f......."....f.&......"..&....."....f............&....ff'....P...f...'...8.."......&...f.....&.........f.........8...&...@...d.%.......$.b........%b....%b...$...d. .P...f..FG......."..&..&...f.&....&..B..&.......P...f..f.......f...g........&f&....".gF&..&....f.."........B."...f...........F....B...G..F......P...f..FG......f...F..&.......'.....P...f..f........."..".....&.....'b....F..&...."..'b."..'.'...F.'F.B.....8...&...@......"..$d...$db....".d.$%B.$...d..$b..........%....$...%D.$......$...%.`.........B.B..........B......%....$...%D.$.............$d.. .P...f..FG..............%..$..d."..F.'B..'....b.....'b..'"..&f.."...&...............d.%..."..&...F.......&'.......'.'...F.'F.B..&........'b..P...f..f....X..............f&..B..&...'F......GF'....'Ff........'b..'F.......f.."...g...@....f.&....8...&...P...B.B..d.E..b.$....$..$.......%.....%....$...%D.$...$.$$...........e..'...P...f..'G...p..'f....'...'F.".&......&.'B...B...g'.'...c....P...f.......x.."...&.b.f....P...f..FG...@...&'.."..&....b."........&..&..".........$.b..$..D$db.......D....."...D........%e..Eb.....$....B."........$.......B"..'F.........&....f.
+..P...f...'...@..'F.......P...f..FG...@..'F.......8...&...@......".D..$..............B.$...e.%E....d.$....$d......B....$.$.."....%....(..$...%D.$......$d..$...d.......B.'....P...f............'..b..F........P...f..FG...@....'b.F.Fb.f.&&.b...'......F...b.&.......&....b..'...'F.....g.F.........
+.........".F&.&...G.........&....&...".f'"....".'F....P...f..'G......f".....".'F......P...f.......X..&..B.GF&&.b..'...F.f....fgF&.F.....&f.......'Gg..ff...........F..'g.F'G......F&..b..........".'F.........P...f..FG..................."...&.........'b....g.F.'..'.........F&.........P...f.......h......'..........&.".F&.&...G.........&..b.....P...f..FG...X.."..'b.f&........&.f&......&.......'......P...f.............%...D.."...".....&.b.&....P...f..FG...H....F......8...&...@......e...b............D...b...$d..$...B.$...%D......$$....$..$."...D..$...0...$.b....%....$...%D.$..........B.'...P...f..FG.........b...'.......f.g.F.....P...f.......H..f".......P...f...'...H......b.'........F.."...GF&F.....&...&..........F&.......F..&..&.&.'.......X..F.f'.f......f...b.f.'...............'....P...f..'G......&...'F..f.GF.g...P...f..FG...`...f'"..&.......G.g........&f..F&.&...G.........&..b..&.........f...&..&...f&.....GF.&b.....F...b....f'".............%......%D.$...H..g.F.....&....f.
+..P...f..FG...p...f'"....%b.$..E.e..D.$.%D$.......$...e"......."..&...........&...F..&........H...'"........&.................G.g......&.............'B..'"...............H...&.............."....$......$..$...e"'...P...f..'G......'F..&...F.&.".....'......P...f.......x..f"..'F.&.....8...&..........".D..$......... .........%E".%.%..d...D%E'..............'.....b.&...f........P...f...'...p......f...b....@.......%E .8......'......g......B..&...f......'....P...f..FG......F&......&..f......b....F..G...B..........F....f......g.....'&&...x.....&.&..."...8.......0.....%.....E$......d.......%......%D.$..........$...b.D..$......$..'...P...f..'G...8.."......&......"...F..g.F.............P...f................&..&.....F......&...&..B...&.......f.....GF.&b.........P...f..'G......".......f.&ff&...........P...f.......@..'F.......P...f..'G...X..&........P...f.......h..'F...........8............$...b......'...8....g....
+."....F.......&.....&....&....&......'...&...........B.......F.'.......G..F...P...f...'...p......f.....".............'..".f&....fgF.&.....P...f..FG........'..b.g...&.....P...f...'......f...........f&....f&....f...........f&....fgF.&........"...G.g............f.............P...f..FG..........'.......ff'.....&.".&..'c....P...f...'..........G...f.....&....&.......

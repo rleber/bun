@@ -1,0 +1,48 @@
+
+
+
+........
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{ke}
+{bl}{tp}{ps 10P}{bf}
+Production Crew 
+{br}{ro}
+{ps 8p} 
+{char "Producer" "Jennifer O\l\'Connor"}
+{char "Poster Design" "Linda Carson"}   
+{char "Program Design" "Linda Carson"}  
+{char "" "Jennifer O\l\'Connor"}
+{char "Creative Input" "Peter Bain"}
+{char "" "Jim Gardner, Tom Hocaliuk, Craig Hubley"} 
+{char "" "Suzanne Langdon, Brian MacIsaac, Brenda Parsons"} 
+{char "" "Charles Sisson, Ken Waterson, David Welbourne"}   
+{char "" "Derek Wilkinson"} 
+{char "Photographers" "Judy McMullan"}  
+{char "" "Tom Chmara"}  
+{char "Graphics Consultant" "Karen Fletcher"}   
+{char "Imprint Liaison" "Mike Upmalis"} 
+{ke_end}

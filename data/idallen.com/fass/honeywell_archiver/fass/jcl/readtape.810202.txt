@@ -1,0 +1,36 @@
+
+
+
+.".p.![~
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##a,j   
+$      ident   FASS,TAPEJOB 
+$      msg2    1,need tape SCRPT no ring
+$      program acl  
+$      prmfl   **,r,r,./batchacl
+$      tape    t0,x1d,,12427,,SCRPT,,den8   
+copy at:t0(ebcdic,fb=132,blksize=1320) to fass/check
+end 

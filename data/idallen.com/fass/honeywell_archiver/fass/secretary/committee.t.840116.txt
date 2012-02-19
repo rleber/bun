@@ -1,0 +1,50 @@
+
+
+
+...J....
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so commac.t
+.zz The macro file is usually fass/addresses/ccmac.t  -IAN! 
+.zz .xx "name" "local addr" "phones" "perm.addr" "fass or tech duties" "cast parts" "Year" "Times Busy" 
+.xx "Carson, Linda" "168 King St. N. Apt 3, Waterloo, Ont. N2L 2Y3" "888-6913" "120 DeNiverville Dr., Ottawa, Ont. ___ ___" "<Past Director>" "Johnny Carson" "1983" "" 
+.xx "Crichton, Doug" "" "576-4660(wrk) (519)622-2099" "12 Myrtle Ave., Cambridge, Ont. ___ ___" "<Honorary Member> "" "1972" "" 
+.xx "Eaton, Margaret" "" "579-3604" "" "<Student Rep>" "Val E. Girl" "1983" ""  
+.xx "Eickmeier, Linda" "" "885-6710" "#4-350 Erb W., Waterloo, Ont. ___ ___" "<Past Producer>" "" "1981" "" 
+.xx "Donaldson, Dan" "" "" "" "<Administration Rep>" "" "" ""   
+.xx "Gibaut, Ross" "14-437 Hazel St., Waterloo" "742-2984" "22 Barrie St., Cambridge, N1S 3A5" "<Technical Director>" "" "1983" ""  
+.xx "Heath, Donald" "#28-80 Churchill St., Waterloo, Ont. N2L 2X2" "746-1995 (514)683-3315" "12388 Granger St., Pierrefonds, Quebec H8Z 1V3" "<Producer>" "Phillip Street, Kit Sophrenic, Rocky Gibraltar" "1983" ""
+.xx "Hocaliuk, Tom" "" "886-6644" "137 Morningdale Cresc., Waterloo, Ont. N2J 1B7" "<Honorary Member>" "" "1983" "" 
+.xx "Hutton, Steve" "" "(416)493-0615 " "704 Brant St., London, Ont. N5Y 3N1" "<Past Head Writer>" "" "1983" "" 
+.xx "Martin, Kevin" "" "" "" "<STAFF REP>" "" "1983" "" 
+.xx "Lynch, Carol" "" "886-0188" "#5-265 Regina N., Waterloo, Ont. N2J 3B9" "<Past Co-Tech Director>" "" "1983" ""  
+.xx "Lynch, Ken" "" "886-0188" "#5-265 Regina N., Waterloo, Ont. N2J 3B9" "<President>" "Inspector Clouseau, Scotty, Count Dracula" "1983" ""   
+.xx "McMullen, John" "" "745-3858 x2331" "56 Pattandon Ave., Kitchener, Ont. N2M 3S5" "<Head Writer>" "Herbie Simplex" "1983" ""
+.xx "Parsons, Brenda" "" "886-0442 x335 744-3027" "1-608 Silverbirch Rd Waterloo N2L 4R3" "<Vice-President>" "" "1983" ""   
+.xx "Qualter, Dr." "" "744-2423" "249 Stoneybrook Dr." "" "<Faculty Rep>" "" ""1963" "" 
+.xx "Roehl, Bernie" "#301-137 University Ave. W., Waterloo, Ont. N2L 3E6" "886-4867 x2607" "5 1/2 Prospect Street, Rockport, Mass. 01966 USA" "<Secretary>" "Dr.Watson" "1983" ""    ___.xx "Simmons, Barb" "801-108 Seagram Dr., Waterloo, Ont. ___ ___" "886-4661 (519)842-8748" "Box 239, Courtland, Ont. ___ ___" "<Treasurer>" "Roget Thesaurus, Matt Mattition
+
+.xx "Simmons, Barb" "801-108 Seagram Dr., Waterloo, Ont. ___ ___" "886-4661 (519)842-8748" "Box 239, Courtland, Ont. ___ ___" "<Treasurer>" "Roget Thesaurus, Matt Mattition" "1983" "" 
+.xx "Welch, Andrew P." "#1-300 Erb St. W., Waterloo, Ont. N2L 1W3" "886-2967 (902)443-9155" "720 Bedford Hwy., Halifax, N.Scotia B3M 2L9" "<Director>" "Mr.Spock, Henry Higgins" "1983" ""  

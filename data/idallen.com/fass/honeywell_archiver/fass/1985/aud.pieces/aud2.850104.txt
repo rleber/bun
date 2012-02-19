@@ -1,0 +1,124 @@
+
+
+
+......q.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1985/script/85macr.t   
+.bs 1 4 "They Also Serve ..."   
+.na ln LON~FUNCTION LON 
+.na gr MAN~FROM~GRAD GRAD   
+.na fa FASS~GORDON FASS 
+.na rd REDUNDANCY~MAN REDUN 
+.ld 
+(LIGHTS UP) 
+.ad 
+(FASS GORDON SOUNDS LIKE A TYPICAL ROGER-RAMJET STYLE SUPERHERO, BUT THE MAN
+FROM GRAD IS AN ANCIENT ORIENTAL WITH A LONG WHITE BEARD, SOMETHING LIKE THE
+MASTER ON KUNG FU, WITH A VOICE (AND ESPECIALLY A LAUGH) LIKE LIN YE TANG ON
+SECOND CITY...AHA AHA AHA!) 
+.ch fa  
+I sure am glad that the 
+recruitment for the rumble is being done by someone as wise and sage
+as you, Man from Grad.  
+.ch gr  
+You are not as Grad as I am! aha aha aha!   
+.ch fa  
+What qualities are we looking for, master?  
+.ch gr  
+We require those with courage, loyalty (royarty!), and a
+strong moral fibre. 
+.ch fa  
+Anything else?  
+.ch gr  
+Sexy tights and a set of knockers out   
+to here (HOLDS HANDS OUT FROM CHEST)!  Aha aha aha! 
+.ch fa  
+Um...right.  Here   
+come the first group of apricots-appricants-candidates! 
+.ad 
+(MAN FROM GRAD SITS AT TABLE, FASS TO HIS SIDE, STANDING.  THE FIRST GROUP OF   
+
+APPLICANTS FORM A LINE IN FRONT OF THE RECRUITMENT TABLE.   
+AN ALL-PURPOSE HERO-TYPE STRIDES UP TO THE DESK AND 
+HANDS A RESUME TO THE MAN FROM GRAD)
+.ch rd  
+They call me redundancy man that's my name. Here's my resume, with my job   
+history, and where I used to work.  
+.ad 
+(THE MAN FROM GRAD STOPS CHORTLING SUDDENLY AND FURROWS HIS BROWS SOLEMNLY TO LOOK  
+DOWN AT THE RESUME) 
+.ch gr  
+Let me see.  You have the powers of an insect - 
+Cockroach Man has that.  You can run forever without tiring -   
+Jogger Nut has that.
+(SCANS PAGE)  I just don't  
+think we need you.  
+.ch fa  
+(CONSOLINGLY AGAIN)  Sorry, sorry...
+.ch rd  
+But what about my ability to kick villains when they're down?!? 
+.ad 
+(FASS LEADS HIM OFF)
+.ad 
+(LON FUNCTION STEPS FORWARD WEARING A T-SHIRT WITH A LARGE 'W' ON IT)   
+.ch gr  
+Who are you?  (POINTING AT 'W')  Superwimp?  Aha aha aha!   
+.ch ln  
+(BOLDLY, IGNORING MAN FROM GRAD)  I call myself WILL POWER now! 
+My old name, Lon Function, was a bit too... 
+.xx ALL 
+Wimpy?  
+.ad 
+(LON GIVES FASS A DISPLEASED LOOK)  
+.ch gr  
+What is your superpower, Will?  
+.ch ln  
+I can do an entire Stats assignment without falling asleep. 
+.ad 
+(EVERYONE ON STAGE DOES A DOUBLE TAKE IN AWE, PREFERABLY EXAGGERATED)   
+.xx ALL 
+Gasp
+.ch ln  
+And without a calculator.  I only use tables.   
+.ch gr  
+Don't you use a chair, too? Aha aha aha!
+.ad 
+(LUNGES TO THROTTLE MAN FROM GRAD, SHAKING MAN FROM GRAD VIOLENTLY IN RAGE) 
+.ex 
+(CHOKING)  Please FASS!  Please!  I make joke!  (ROLLS  
+WHEELCHAIR BACKWARD TO RUN OVER FASS'S FOOT)
+.ad 
+(FASS IMMEDIATELY LETS GO AND JUMPS UP AND DOWN, HOLDING FOOT IN PAIN)  
+.ch gr  
+(IGNORING FASS AND REGAINING COMPOSURE) Will Power is certainly 
+welcome here.  You are accepted.
+.ad 
+(FASS STOPS JUMPING AND POINTS LON/WILL TO THE 'ACCEPTED' AREA) 
+.ch gr  
+Next!   
+.ld 
+(LIGHTS DOWN)   
+.es 

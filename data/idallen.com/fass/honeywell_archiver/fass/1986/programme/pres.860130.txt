@@ -1,0 +1,44 @@
+
+
+
+.   .z..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{bl}{ps 10P}{bf}
+{sy "echo president"}   
+The Mourners Speak: 
+{bl}{ps 8P}{ro} 
+President's Message:
+{tp}
+Let me take this moment to say thanks to all of you.
+To all who lent their talent and support to this year's show, there 
+is no need to emphasize how much your contributions have meant. 
+It is the goal and purpose of FASS to provide a meeting place for   
+people of different backgrounds and interests.  
+In this vein, I feel that this year has been an overwhelming success.   
+I'm sure that all of us will carry in our hearts some of the
+magic moments that have made this year so memorable and special.
+{bl}

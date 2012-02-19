@@ -1,0 +1,73 @@
+
+
+
+...!...=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.\" vtroff -F meteor -3 bocklin 
+.pn 0   
+.br 
+.ne 10v 
+.af PN 1
+\&  
+.sp 5v  
+.HD 
+.ce 
+Notice  
+.HE 
+.fi 
+.ti 2m  
+You can't smoke in the theatre because the fire marshal doesn't want
+to be responsible if you get lung cancer.  You can't eat or drink   
+refreshments in the theatre because the theatre management doesn't  
+want to contribute to anyone's obesity.  You can't use cameras  
+during the performance lest you disturb the Gzorninplatz.   
+You can't use a tape recorder either, the   
+script is copyrighted by the people \f2we\f1 stole it from. 
+Thank you for observing these rules.
+Violators will be fined and have their borrowing privileges revoked.
+.sp 2v  
+.nf 
+Copyright 1983, by The FASS Theatre Company.
+All Rights Reserved.
+.sp 1v  
+.fi 
+No part of this performance may be reproduced, stored in a retrieval
+system, or transmitted, in any form or by any means, electronic,
+mechanical, photocopying, recording or otherwise, unless you really want to.
+.sp 2v  
+Twenty-First Printing, 1983 
+.sp 1v  
+Library of Humour Catalogue Number SCH-234B 
+.sp 1v  
+
+
+
+
+CR Subject Classification F-unn-y   
+.sp 2v  
+Printing and Binding: Graphic Services  
+.sp 1v  
+This book is typeset in Meteor 10 point type, with Bocklin headings.

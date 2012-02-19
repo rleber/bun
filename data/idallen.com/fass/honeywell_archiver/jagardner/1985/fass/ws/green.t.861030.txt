@@ -1,0 +1,461 @@
+
+
+
+..]....=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so /../fassmac.t   
+.bs 1 1 "Not the Marion Kind"   
+.na rh ROBIN~HOOD ROBIN 
+.na ft FRIAR~TUCK TUCK  
+.na lj LITTLE~JOAN JOAN 
+.na ws WILL~SCARLET WILL
+.na al ALANA~DALE ALANA 
+.na sb SINGLE~BOWPERSON SINGLE  
+.na mm MAID~MARION MARION   
+.na sh SHERIFF SHERIFF  
+.na el ELMIRA ELMIRA
+.na ca CAPTAIN CAPTAIN  
+.na rm ROYAL~MESSENGER MESSENGER
+.na w1 WISE~MAN~1 WISE~1
+.na w2 WISE~MAN~2 WISE~2
+.na w3 WISE~MAN~3 WISE~3
+.na g1 GUARD~1 GUARD~1  
+.na g2 GUARD~2 GUARD~2  
+.na g3 GUARD~3 GUARD~3  
+.na g4 GUARD~4 GUARD~4  
+.na g5 GUARD~5 GUARD~5  
+.na g6 GUARD~6 GUARD~6  
+.ld 
+(LIGHTS UP ON THE TUNNELS UNDER SHERIFF'S CASTLE.   
+THE MARRIED MEN AND WOMEN ENTER.)   
+.ch rh  
+We're almost there, men.
+.ch al  
+People! 
+.ch rh  
+People. 
+.ch ft  
+Finally!
+After all the time we've spent wandering around in these hidden tunnels.
+Turns and twists, dead ends, confusing offshoots... 
+.ch ws  
+I told you, we left the Arts quadrangle hours ago.  
+.ch ft  
+Even so, Will, I can't go on much longer.   
+.ch rh  
+Relax.  
+The Sheriff's audience chamber is just beyond the panel at the top of   
+(POINTING OFFSTAGE) those stairs.   
+.ch sb  
+Are you sure?   
+.ch rh  
+Positive.   
+It's just a narrow flight away. 
+.ch sb  
+I doubt it. 
+.ad 
+(AN ARROW APPEARS IN THE SINGLE BOWPERSON'S CHEST.) 
+.ex 
+I hate it when you're always right. 
+.ad 
+(HE/SHE DIES.)  
+.ch rh  
+Get that bowman!
+.ad 
+(ALL IMMEDIATELY BEGIN TO STRING THE BOWPERSON FOR LOOT.)   
+.ex 
+I meant the guard on the stairs.
+Quick, before they sound an alarm.  
+.ad 
+(ALL RUN QUICKLY OFFSTAGE.) 
+.ld 
+(SWITCH TO THE SHERIFF'S AUDIENCE CHAMBER.  
+IT HAS ONLY ONE VISIBLE ENTRANCE, ALTHOUGH THERE IS A "SECRET" ONE. 
+THE ROOM SHOULD LOOK MODERATELY ORNATE. 
+THE SCENE OPENS WITH THE SHERIFF, THE WISE MEN, AND THE GUARDS  
+WITH THEIR CAPTAIN ON STAGE.)   
+.ch sh  
+No, no, no! 
+This will not do.   
+.ad 
+(HE THROWS THE LETTERS HE IS HOLDING ONTO THE GROUND.)  
+.ex 
+I need an excuse that will keep King Richard from returning for as long as  
+possible.   
+Why oh why did he have to win the Crusades so quickly?  
+.ch g1  
+I guess somebody up there likes him.
+.ch sh  
+(TO CAPTAIN)
+Kill him, will you? 
+.ch ca  
+Right.  
+.ad 
+(HE DOES SO.)   
+.ch sh  
+Thanks. 
+Now, I need an idea to keep Richard away... 
+.ch w1  
+The weather is terrible.
+.ch w2  
+You want to borrow some money.  
+.ch w3  
+You want him to meet your sister.   
+.ch sh  
+Hmm.
+They all have their merits, but I need something big.   
+.ch w3  
+I already mentioned your sister.
+.ch sh  
+Aha, I have it! 
+I will inform him of another Crusade.   
+He has a thing about them, you know.
+.ch w1  
+Where?  
+The Holy Land is secured.   
+.ch w2  
+Europe is peaceful. 
+.ch w3  
+And nobody cares about Village Two. 
+.ch sh  
+Elmira! 
+.ad 
+(ENTER ELMIRA, THE SHERIFF'S SISTER.)   
+.ch el  
+Yes, brother?   
+.ch sh  
+No, no, no! 
+I meant the town of Elmira. 
+Not only will Richard have to cross the Atlantic to get to it, it won't 
+even exist for at least another four hundred years. 
+Perfect!
+.ch g2  
+I like it.  
+.ch g3  
+Me too! 
+.ch g4  
+I'm not so sure...  
+.ad 
+(THE SHERIFF SIGNALS TO THE CAPTAIN, WHO KILLS GUARD~4.)
+.ch sh  
+Well?   
+.ch g5  
+Fine with me.   
+.ch g6  
+Sure.   
+.ch sh  
+Good, it's settled then.
+I'll send a royal messenger to bear word of these "tragic developments" 
+to Richard. 
+That will give me all the time I need to implement my master plan, to   
+rid me of Robin Hood and his Married Men... 
+.ch el  
+And women...
+.ch sh  
+And women, once and for all!
+.ch ca  
+How will you do that?   
+.ch sh  
+As you will recall, all of my previous plans have failed.   
+.ch w1  
+I remember those 16-ton weight traps... 
+.ch w2  
+Most tragic.
+And then there was the garrison armed with various fruits...
+.ch w3  
+As well as the ambush using that Trojan rabbit...   
+.ch sh  
+Enough! 
+My plan takes an entirely new approach. 
+Instead of trying to capture them all, we wait until the next time the  
+guards encounter them, and then...  
+.ch ca  
+Yes?
+Yes?
+.ch sh  
+We shoot them full of arrows until they drop dead!  
+.ad 
+(SILENCE ON STAGE FOR A MOMENT, THEN...)
+.xx ALL 
+Brilliant!!!
+.ch sh  
+Thank you, thank you.   
+And now, the first stage of the plan: the phony Crusade.
+.ad 
+(HE QUICKLY WRITES OUT A NOTE.) 
+.ex 
+There!  
+But I need an official witness to this note.
+Someone Richard will trust. 
+Hmmm...bring me Maid Marion.
+.ad 
+(ENTER THE ROYAL MESSENGER WITH MAID MARION.)   
+.ch mm  
+I overheard your fiendish plot. 
+I will sign no such thing!  
+.ch sh  
+I'll lock you in the dungeons.  
+.ch mm  
+You'll never have my help!  
+.ch sh  
+I'll chop off your fingers. 
+.ch mm  
+Then I definitely won't sign!   
+.ch sh  
+I'll serve budgie wings for dinner again.   
+.ch mm  
+Got a quill?
+.ad 
+(SHE SIGNS THE NOTE.)   
+.ch sh  
+Excellent.  
+Elmira, take her back to her quarters.  
+.ad 
+(EXIT ELMIRA WITH MARION.   
+THE SHERIFF HANDS THE NOTE TO THE MESSENGER.)   
+.ex 
+Here, take this to the king as quickly as possible, and let nothing stand   
+in your way!
+.ch rm  
+Right!  
+.sd 
+(HE EXITS, RUNNING. 
+CRASHING AND CRUMBLING NOISES ARE HEARD OFFSTAGE.)  
+.ch sh  
+I meant no living thing, you fool!  
+My poor walls...oh well, at least the rest of the castle is still intact.   
+.ad 
+(HE CASUALLY LEANS AGAINST A PANEL, WHICH FALLS ON TOP OF HIM AS THE
+MARRIED MEN -- AND WOMEN -- COME CHARGING IN.   
+THE WISE MEN RUN OFF.)  
+.ex 
+Umph!?  
+.ch rh  
+See, I told you -- the audience chamber.
+.ch ws  
+(LOOKING AT THE AUDIENCE)   
+Can't argue with the man.   
+.ch al  
+
+Shut up, Will!  
+It's the enemy! 
+Let's get them! 
+.ad 
+(THE GUARDS AND ROBIN'S BAND CHARGE EACH OTHER, ENDING UP UPSTAGE.  
+SOME DISTANCE DOWNSTAGE ARE WILL SCARLET, GUARD 3, AND THE CAPTAIN.)
+.ch ca  
+We've been breached.
+Fire at will!   
+.ad 
+(HE MOVES TOWARDS WILL.)
+.ch ws  
+No, don't kill me!  
+I have a family to support, kids... 
+.ch ca  
+Frankly, Scarlet, I don't give a damn.  
+.ad 
+(HE STABS WILL. 
+WILL DIES.) 
+.ch g3  
+But all he ever did was tell stupid jokes and sing dumb songs.  
+FASS will never forgive us! 
+.ad 
+(THE PEOPLE UPSTAGE DRIFT BACK AND SEE THIS AS THE MELEE PAUSES A MOMENT.   
+SEVERAL OF ROBIN AND HIS BAND HAVE KNIVES AND ARROWS STUCK IN THEM. 
+FRIAR TUCK IS THE WORST BY FAR.)
+.ch rh  
+They've stabbed Will!   
+.ch ft  
+They've stabbed Will, he says!  
+If it weren't for the fact that I've got enough fat to compete with 
+Food Services...
+.ch al  
+Forget that!
+They've killed Will, and I demand a retributive strike! 
+.ch lj  
+Spare them no mercy!
+.ch ca  
+Let's split, guys.  
+.ad 
+(THE CAPTAIN AND THE GUARDS EXIT QUICKLY.)  
+.ch al  
+They aren't getting away!   
+After them! 
+.ad 
+(ALANA AND JOAN RUN OFF AFTER THEM.)
+.ch ft  
+Well, Robin, what's wrong?  
+.ch rh  
+It was too easy.
+And I don't like the fact that the Sheriff is nowhere to be seen.   
+.ch sh  
+Urgle?? 
+.ch ft  
+You hear something? 
+.ch rh  
+Only a faint "Urgle??". 
+Probably some techie bumping into something.
+.ad 
+(THE SHERIFF HEAVES OFF THE PANEL AND STANDS UP.)   
+.ch sh  
+That does it!   
+I am mad!   
+I don't mind you putting more holes in my castle -- it's tax-deductible.
+I don't even mind that you hunt down and kill off most of my guards -- I
+do it all the time. 
+But when you refer to me as a techie... 
+.ch rh  
+Gee, I'm sorry. 
+.ch sh  
+I am an antagonist! 
+I go around doing nasty things like killing people and kidnapping supporting
+characters like Maid Marion!
+And another thing...
+.ad 
+(ENTER ELMIRA WITH MAID MARION.)
+.ch el  
+You want Maid Marion?   
+.ch sh  
+Usually, but not right now. 
+I'm in the middle of a dramatic confrontation.  
+.ch rh  
+Oh, vision of loveliness... 
+.ad 
+(HE RUNS TOWARDS MARION AND ELMIRA.)
+.ch sh  
+So much for dramatic confrontation. 
+.ch mm  
+Oh Robin... 
+.ad 
+(ROBIN RUNS PAST MARION AND STOPS IN FRONT OF ELMIRA)   
+.ch el  
+Oh Robin... 
+.ch rh  
+I've dreamed of meeting a woman like you all my life.   
+.ch el  
+Really? 
+Oh Robin... 
+.ad 
+(THEY EMBRACE.) 
+.ch mm  
+(DISGUSTED) 
+Oh Robin... 
+.ad 
+(ELMIRA PULLS BACK AFTER A MOMENT.) 
+.ch el  
+Robin, you have to stop the messenger headed for King Richard, or the   
+Sheriff will kill your entire band! 
+.ch rh  
+I thought they played too loudly anyway.
+.ad 
+(THE SHERIFF, IGNORED, MAKES A MOTION OFFSTAGE. 
+THE DROP BEGINS TO COME DOWN OVER ROBIN, FRIAR TUCK, AND ALANA DALE, WHO HAS
+JUST COME BACK ON STAGE.)   
+.ch el  
+No Robin, I mean
+.ul 
+your
+band.   
+.ch rh  
+Oh, that band.  
+Right, we'll just...zounds! 
+.sd 
+(THE DROP PAUSES JUST ABOVE THE HEADS OF ROBIN, TUCK, AND ALANA.
+VARIOUS STRANGE SOUND EFFECTS COME FROM OFFSTAGE AND ABOVE.)
+.ex 
+Zounds, not "sounds"!   
+.sd 
+(THE SOUND EFFECTS STOP.)   
+.ex 
+What's going on?
+.ch sh  
+At last, I have the drop on you and your companions.
+You are all at my mercy, so tell me where your collected loot is, or I'll   
+have you boiled alive.  
+.ch ft  
+You can't do that!  
+I'm not a boiler, I'm a Friar!  
+.ad 
+(LITTLE JOAN ENTERS.)   
+.ch rh  
+Little Joan!
+Quick, kill the lights! 
+.ad 
+(WHIPPING OUT A TWO-HANDED SWORD, JOAN PROCEEDS TO ANNIHILATE ANYTHING IN   
+THE ROOM WHICH IS A LIGHT SOURCE: TORCHES, CANDLESTICKS, THE CHANDELIERS,   
+AND LAMPS, ANYTHING.
+THE SIGHT IS UTTERLY RIDICULOUS.)   
+.ch sh  
+Ha, ha, ha! 
+Ah, ha, ha, ha...   
+.ad 
+(SWINGING WILDLY, JOAN STRIKES THE SHERIFF WITHOUT REALIZING IT.
+HE FALL UNCONSCIOUS.
+ELMIRA HELPS ROBIN, TUCK, AND ALANA OUT FROM UNDER THE DROP.)   
+.ch el  
+There, you're free. 
+.ch rh  
+Oh Elmira, I will never be free now that I have seen you.   
+.ad 
+(AT THIS POINT, THERE SHOULD BE A ROMANTIC DUET BETWEEN ROBIN AND ELMIRA,   
+WITH MAYBE THE OTHERS SINGING BACK-UP.) 
+.ch mm  
+I've had enough of this.
+At least the Sheriff paid me some attention.
+Robin, look at me.  
+.ch rh  
+Hmm.
+Do I know you, miss?
+.ch mm  
+Argh!   
+Get out, get out this instant!  
+.ch rh  
+But...Elmira... 
+.ch el  
+Robin!  
+.ch mm  
+(PICKING UP A SWORD)
+Get out, Get Out, GET OUT!!!
+.ch ft  
+Uh Robin, we really should stop that messenger. 
+.ch rh  
+All right.  
+Let's go, men.  
+
+.ch al  
+People! 
+.ch rh  
+People. 
+.ad 
+(ROBIN, TUCK, ALANA, AND JOAN EXIT THROUGH THE SECRET PANEL.)   
+.ch el  
+Until we meet again!
+.ch mm  
+(GLARING AFTER THEM)
+Until we meet again.
+.ld 
+(SHE THROWS THE SWORD TO THE GROUND AND TURNS TO FACE ELMIRA.   
+LIGHTS DOWN.)   
+.es 

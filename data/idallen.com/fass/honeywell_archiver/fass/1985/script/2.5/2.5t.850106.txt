@@ -1,0 +1,660 @@
+
+
+
+.......f
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1985/script/85macr.t   
+.bs 2 5 "Bjorn Ahead of his Time"   
+.na pr PROFESSOR~ROGERS PROF
+.na sv SVEN~IMCALLINGYOU SVEN   
+.na bs BESSIE~SEVENTONNE BESSIE 
+.na lc TAMMY~U.~LUVMI TAMMY 
+.na fb BROOKE~TROUT BROOKE  
+.na hf B.~TRUDY~YOURSCHOOL TRUDY
+.na bk BYRON~KEENER BYRON   
+.na mk MELVIN~KEENER MELVIN 
+.na duk DUDLEY~KEENER DUDLEY
+.na dx DEXTER~KEENER DEXTER 
+.na v1 VIKING~1 VIKING1 
+.na v2 VIKING~2 VIKING2 
+.na v3 VIKING~3 VIKING3 
+.na v4 VIKING~4 VIKING4 
+.na v5 VIKING~5 VIKING5 
+.na mh MARY~ANNE~HAMMERSTEIN MARY~ANNE  
+.na mg MAN~FROM~GRAD GRAD   
+.na dc DARTH~COORDINATOR DARTH  
+.na fm FROGMAN FROG 
+.na tp TAD~POLE TADPOLE 
+.na jn JOGGER~NUT JOGGER
+.na ck CABBAGE~PATCH~KID CABBAGE
+.na vk VAL~KYRIE VAL
+.na bo BO~EVIL BO   
+.na cr COCKROACH~MAN COCKROACH  
+.na cu CAPTAIN~UNIVERSITY CAPTAIN   
+.na ed EATONS'~DELIVERY~MAN EATONS  
+.ld 
+(LIGHTS UP ON ROGERS' LAB)  
+.ch pr  
+Welcome to my laboratory, It's a beautiful laboratory.  
+.ch bs  
+(IN A DEEP SINISTER VOICE)  
+I hope you have completed the machine.  
+.ch pr  
+My students and I have worked around the clock. 
+.ch bs  
+Be glad that I am overseeing this project...
+the Premier is not as forgiving as I.   
+Now,
+would you please explain exactly    
+how your machine works? 
+.ch pr  
+Well you see boys and girls, the machine maximizes the potential
+impact of the solution on the homo sapiens palate by adjusting  
+the thermal level of the primary infusion of the organic matter 
+with the hydrogen-hydroxide. Then the organic matter
+is particularized with extreme prejudice to those particles 
+which will result in maximum benefit before the infusion
+process.
+.ch bs  
+I see, but there is one part we didn't quite understand.
+.ch pr  
+Which part was that?
+.xx all 
+The part after "Well, you see boys and girls."  
+.ch bk  
+What the professor said was that it makes great coffee. 
+.ch bs  
+That's for us to decide.
+I suppose your machine requires the pushing of a button?
+.ch pr  
+Why, of course. What's a machine without a button?  
+.ch bs  
+Good, that is why we brought Sven (INDICATING THE STUDENT   
+WITH THE HIDDEN HAND) He's our Co-op button-pusher. 
+Sven come here, Sven...(HE IS DISTRACTED BY MARY ANNE)  
+Sven I'm calling Yo-o-o-o-u 
+
+.ad 
+(AT THIS POINT THE STUDENT REVEALS THE HIDDEN HAND. IT HAS AN EXTREMELY 
+LONG FOREFINGER.  HE STEPS OVER TO BESSIE)  
+.ch sv  
+Yumpin Yimminy, you don't have to yell!  (NOTE THE SWEDISH  
+ACCENT) 
+.ch pr  
+All you have to do is put a quarter in the machine and then 
+press the button.   
+.ad 
+(SVEN PUTS A QUARTER IN THE MACHINE AND THEN PRESSES THE BUTTON.  A 
+FLASH-POT GOES OFF AND WHEN SVEN REMOVES HIS FINGER FROM THE BUTTON,
+THE END OF IT IS GLOWING)   
+.ch sv  
+(IN AN E.T. VOICE) Youch!   
+.ch pr  
+Naughty, naughty, you tried to use a slug. One more time.   
+.ad 
+(SVEN TRIES THE MACHINE AGAIN BUT WHEN HE PRESSES THE BUTTON    
+A MARCHING BAND STARTS UP, CONFETTI FLIES OUT, AND TWO FLAGS    
+POP OUT AND WAVE IN THE AIR 
+FROM THE MIDDLE OF THE MACHINE A BALLOON SLOWLY INFLATES    
+UNTIL IT POPS)  
+.ch pr  
+I think it needs some minor adjustments.
+.ad 
+(HE THEN STEPS UP TO THE MACHINE AND GIVES IT A GOOD SWIFT KICK)
+.ld 
+(LIGHTS FLASH)  
+.sd 
+(SOME STRANGE MACHINE TYPE SOUND)   
+.ad 
+(SMOKE POURS FROM MACHINE AND SVEN DISAPPEARS AND VIKING #1 APPEARS)
+.ch bs  
+Where is Sven? And who are you? 
+.ch v1  
+I'm Eric The Blue.  
+.ch bs  
+I thought it was Eric The Red.  
+.ch v1  
+No I'm a Norse of a different colour.   
+.ch pr  
+Well, it appears that a discontinuity in the temporal feedback  
+characteristic has caused a localized spatial distortion, resulting 
+in chronological inversion with corporeal replication. Can you  
+say corporeal replication?  
+.ch bk  
+(KEENER ENGINEERING TYPE) What it means is that the 
+coffee machine has turned into a combination time transporter   
+and Xerox copier. We learned that in Systems Design 161.
+.ch duk 
+Sven has been turned into a Viking and is being duplicated! 
+(INDICATES VIKING 1)
+.ad 
+(ENTER VIKING #2)   
+.ch v2  
+Yo! 
+.ad 
+(ENTER VIKING #3)   
+.ch v3  
+Yo! 
+.ch fb  
+Well, his mother always wanted twins... 
+.ad 
+(ENTER VIKING #4)   
+.ch v4  
+Yo! 
+.ch hf  
+triplets... 
+.ad 
+(ENTER VIKING #5)   
+.ch v5  
+Yo! 
+.ch dx  
+...a BIG family.
+.ch bs  
+Let's stop this cloning around. 
+.ch pr  
+(TO VIKING #1)  
+No which one of you is in charge here?  
+.ch v1  
+Our leader was Vickie Viking.   
+.ad 
+(ALL VIKINGS PLACE HANDS ON HEARTS AND SING TO "MICKEY MOUSE"   
+"V-I-C K-I-E V-I-K-I-N" PAUSE "G")  
+.ch v1  
+...but she has gone to Valhalla.
+.ch lc  
+Yes?
+.ch v1  
+The Holiday Inn was closed. But her cousin, 
+Val Kyrie, is here. 
+.ld 
+(STRANGE LIGHTING EFFECTS)  
+.sd 
+(STRANGE SOUND EFFECTS) 
+.ad 
+(COFFEE MACHINE BURPS, AND SPITS OUT VAL)   
+.ch vk  
+We're Vikings! We want wine, women, and song!   
+.ch bk  
+If you want to drink, you will have to go to the Fed Hall.  
+But they only serve Anchovy Daquiries.  
+.ch dx  
+And there's no music allowed in the Fed Hall.   
+.ch mk  
+And there aren't any women, either. 
+But my cousin   
+in Fergus has a sheep farm. 
+.ad 
+(VIKINGS VISIBLY UPSET) 
+.sb "Viking Just Wanna Have Fun" "Girls Just Wanna Have Fun"
+.ve 5   
+(VAL:) We set sail, we went out to sea  
+       In our Viking ship, just my accountants and me.  
+       We were so bored and so we sought out the sun
+       Cause Vikings, they wanna have fun   
+(ALL VIKINGS:) Yo! Vikings just wanna have fun. 
+.ve 5   
+(VAL:) Book-keeping, it wasn't for us,  
+       We work nine to five and then we get on the bus. 
+       We'd rather drink and we have more than just one 
+       Cause Vikings they wanna have fun
+(ALL VIKINGS:) Yo! Vikings just wanna have ...  
+.ve 5   
+(VAL:) Oh do you wanna know 
+       Why we're so?
+       It's very simple, the worst of your fears
+       Cause, Vikings are all engineers 
+(ALL VIKINGS:) Yes Vikings are all engineers.   
+.ve 5   
+(VAL:) Late at night, when you are asleep   
+       We'll raid all your pastures and molest all your sheep.  
+       There'll be no virgin wool when we are all done  
+       Cause Vikings they wanna have fun
+(ALL VIKINGS:) Yo! Vikings just wanna have ...  
+.ve 5   
+(VAL:) Oh do you wanna know-oh-oh   
+       Why were so oh-oh-oh 
+       It's very simple, the worst of your fears
+       Cause Vikings are all engineers  
+(ALL VIKINGS:) Yes Vikings are all engineers.   
+.ch mk  
+If they get out of here, it will be worse than a Village
+2 Floor Party. We've got to stop them!  
+.ch lc  
+How?
+.ch duk 
+we can organize a kamikaze squad of Laurel Creek ducks! 
+.ch bs  
+No no. We can't kill the Vikings - we have to get them into the 
+coffee machine so we can get Sven back. 
+.ad 
+(ENTER EATONS DELIVERY MAN) 
+.ch ed  
+Eatons delivery. Who ordered the Viking 
+vacuum cleaner? 
+.ch dx  
+Excuse me, sir, but 
+are your vacuum cleaners any good?  
+.ch ed  
+You bet, they really suck!  
+.ch bs  
+I've got it!
+.ch fb  
+If she's got it, we've all got it!  
+.ch bs  
+No, we'll suck the vikings into the vacuum cleaner. 
+.ad 
+(TURNS ON VACUUM CLEANER, AND THE VIKINGS DISAPPEAR INTO IT.    
+DEXTER PLUGS VACUUM CLEANER INTO COFFEE MACHINE)
+.ld 
+(STRANGE LIGHTS)
+.sd 
+(STRANGE SOUND) 
+.ad 
+(SVEN APPEARS OUT OF COFFEE MACHINE)
+.ad 
+(THE HEROES AND VILLAINS ENTER THE ACTION FROM EITHER   
+SIDE OF THE STAGE)  
+.ch bs  
+I think we have to face the truth, Professor.   
+.ad 
+(THE GROUP OF SUPER BEINGS BEGIN TO SMILE   
+AS THEY REALIZE THAT BESSIE IS DISPLEASED AND THAT MAY MEAN 
+AN END TO THE PROFESSOR'S COFFEE PROJECT)   
+.ch pr  
+You're right.   
+.ch bs  
+We have given you millions of dollars in funding.   
+.ch pr  
+I know you're disappointed but...   
+.ch bs  
+(INTERRUPTING)  
+And it appears that you have failed, using up all   
+your funds, and so we have no choice but to...  
+.ch pr  
+Of course.  
+.ch bs  
+...Double your funding  
+.ch pr  
+I suppose you must... Double my funding?
+.ch bs  
+The money will have to come from some other source. 
+Any ideas, Tammy?   
+.ch lc  
+Well the Faculty of Applied Superlative Studies is a ready source.  
+.ch mh  
+Good old Bessie took her axe... 
+.ch mg  
+And gave our Budget Forty whacks... 
+.ch pr  
+Now she's seen what I have done...  
+.ch dc  
+She'll give our budget forty-one.   
+.ch bs  
+That's quite correct,   
+and with that cut the entire faculty will have to be eliminated.
+.ch tp  
+Holy Holstein, Frogman, that cow is going to milk us dry.   
+.ch fm  
+That's right tadpole... 
+udder destruction.  
+.ch dc  
+You cannot interfere in our destiny.
+.ch mg  
+You have no right to do this.   
+.ch bs  
+Oh, really?  And
+what are you going to do about it?  
+.ch dc  
+We will stand together, and thrash you to within
+1/37th of an inch of your lives.
+.ch bs  
+Not if we mutate first!  Quickly, into the machine. 
+.sb "Three Commissioners" "Three Little Maids"  
+.ve 4   
+(ALL:) Three Commissioners are we,  
+       Dumb as Bureaucrats can be,  
+       Practiced in Redundancy! 
+       Three Commissioners! 
+.ve 1   
+(TAMMY:) We'll decide if you get the money!  (CHUCKLE)  
+.ve 1   
+(BROOKE:) We might cut your faculty!  (CHUCKLE) 
+.ve 1   
+(TRUDY:) We might cut your faculty!  (CHUCKLE)  
+
+.ve 4   
+(ALL:) Three Commissioners  
+       (DANCING:) Three Commisssioners undaunted
+       By the fact that we're not wanted
+       (EVILLY:) We control what funds are granted! 
+.ve 1   
+(QUIETLY:) Three Commissioners! 
+.ve 1   
+(LOUDLY:) Three Commissioners!  
+.ve 1   
+(TAMMY:) Our leader's Bessie Seventonne!  (ASIDE TO AUDIENCE)   
+.ve 1   
+(BROOKE:) Because she's the largest one!  (ASIDE TO AUDIENCE)   
+.ve 1   
+(TRUDY:) Not to mention the most dumb!  (ASIDE TO AUDIENCE) 
+.ve 1   
+(ALL:) Three Commissioners! 
+.ve 1   
+(TAMMY:) From ten little schools take funds away!   
+.ve 1   
+(BROOKE:) Six survive but we know they  
+.ve 1   
+(TRUDY:) Can't survive very long this way   
+.ve 1   
+(ALL:) If we take their funds!  
+.ve 3   
+Three Commissioners uncaring
+Of the reports you're preparing!  (INDICATING AUDIENCE) 
+Of the sexy tights you're wearing!  (INDICATING SH & VS)
+.ve 1   
+(QUIETLY:) Three Commissioners! 
+.ve 1   
+(LOUDLY:) Three Commissioners!  
+.ad 
+(BESSIE AND HER COHORTS JUMP INTO THE MACHINE.  WEIRD SOUNDS ARE HEARD, 
+AND THEN THE MACHINE BELCHES OUT A HUGE, UGLY, MOSTLY GREEN MOUND   are THAT GROWLS AND STARTS TO ADVANCE ON THE SUPER BEING
+
+THAT GROWLS AND STARTS TO ADVANCE ON THE SUPER BEINGS)  
+.ch jn  
+Great Adidas!  They've been changed into a huge mass of radioactive 
+village food!   
+.ch ck  
+No, not the inedible bulk!  
+.ch mg  
+We've got to stop it,   
+before it spreads all over the campus!  
+.ad 
+(EVERYONE TRIES TO KILL IT, BUT ALL 
+ARE UNSUCCESSFUL)   
+.ch dc  
+Is there no way to eliminate this vile substance?   
+.ch cu  
+I've eaten village food before....  
+Give me that knife and fork.
+.ad 
+(CABBAGE PATCH KID HANDS HIM A KNIFE AND FORK)  
+.ch bo  
+Wait, Timmy. I can't let you do this alone. 
+Give me that fork.  
+(SHE STEPS UP BESIDE HIM)   
+We'll dine and die together!
+.ch dc  
+What an example to us all.  
+.ch mg  
+(TAKING AND SHAKING DARTH'S HAND)   
+We can do it together.  
+.xx ALL 
+Food Fight! 
+.ad 
+(THEY ALL CHARGE IN AND THE MOUND IS QUICKLY DEVOURED)  
+.ch ck                  
+Yuk. That was horrible. 
+.ad 
+(OBVIOUSLY ILL AS IS EVERYONE ELSE, BUT ...)
+.ch cr  
+Tasted great to me. 
+.xx ALL 
+(BUT COCKROACH MAN) 
+Ah shut-up. 
+(AS THEY CONTINUE TO MOAN IN PAIN)  
+.ch bo  
+Timothy, that was so very brave of you! 
+We can all live together in peac
+
+We can all live together in peace and harmony now that Bessie's gone.   
+.sb "Bessie's Gone" "For the Longest Time"  
+.ve 5   
+(ALL:)  
+Oh, oh, oh, oh, 
+Now that Bessie's Gone  
+Oh, oh, oh, oh, 
+Now that Bessie's gone. 
+.ve 5   
+They were going to take away our funds  
+For the plans of Bessie Seventonne  
+And then we just knew   
+We decided what we must do  
+We're very happy now that Bessie's gone 
+.ve 5   
+They tried to protect their vicious brood   
+By mutating into Village food   
+We made our mind up 
+We showed them how they would wind up   
+We're very happy now that Bessie's gone 
+.ve 1   
+----------REPEAT CHORUS----------   
+.ve 5   
+Good and evil work together now 
+After knocking off that ugly cow
+No lack of money
+Everything is milk and honey
+We're very happy now that Bessie's gone 
+.ve 6   
+Funding will concern us no more 
+We're all in the black  
+We've settled the score 
+Now we'll work together as one  
+We'll work as a team
+And no more will we make war
+.ve 5   
+(BO:) I have tried to think of what was right   
+      I tried to be good with all my might  
+      But now it's over 
+      We'll live in a land of clover
+      I'm very happy now that Bessie's gone 
+.ve 6   
+(CAPT:) Being good is so very nice  
+        I like being good   
+        We are men not mice 
+        Maybe I can do nothing wrong
+        But now I have you  
+        And it's more than I hoped for  
+.ve 5   
+(BO, CAPT:) We'll hold on together to the end   
+            No matter what's coming round the bend  
+            We'll take our chances  
+            We discovered what romance is   
+            We'll work together now that Bessie's gone  
+.ve 1   
+(ALL, FADING) Oh, Oh, Oh, Oh,   
+.ad 
+(DURING THE SONG BO AND THE CAPTAIN HAVE COME TOGETHER AND ARE  
+NOW HOLDING HANDS. THE REST OF THE CHARACTERS ARE FORMED IN THE 
+BACK AS THE CHORUS. 
+SMOKE STARTS BILLOWING FROM THE COFFEE MACHINE) 
+.ch cu  
+Oh Bo, you're number one on my list.
+.ch bo  
+I know we have so many differences....  
+.ch cu  
+....but I know we can work them out.  Would you.. Could you...  
+Will you......  
+.ch bo  
+...Be your wife? I would, I can, and I will.
+.ad 
+(THEY ENTWINE THEIR BODIES ON STAGE IN THE WORLD'S  
+MOST PASSIONATE KISS ((SMAKEROO)).  MEANWHILE IN THIS   
+MOMENT OF COMPLETE SILENCE WE HEAR THE TICKING OF    SUPTHE GREA
+
+ ..~a.Z/a   ..........'g`...
+
+..........D.%..D..B...d.......$d.$..""...%..%b.$D...
+....D.......E%..$......d$......d...'..8...f...0....$db...$db...$db..D...."""""""""'...8............$...b.....'....8....g.................&...&F...G..b'...P...f.......................g....'......P..F...F..'..g.F.&.b.&......B.....f&...b'...8...&...8......E$.....D$.b....d$...%...E...$.......%D....e.dd.ed...'....P...f...g......'b....F......'"......&.&.'.....'b..&...g.Gg.&.f......P...f..g....0..".....'.....&..&........F...F............'........'..f.&...&.....Fb..8...&.......d$DD$....%.d..d$...$..b..$..".d.$...$.....Db'...P...f..F....x...&'....&.."..".f&........&........'b.&...........'........'....Fb........d...e...b....D.d$....$.'..............&...&....&.........B .P...f...g........'..&....&.........b.&......P...f.......(....$d$...$...d.$d$....%E...b..$..'..........f&.....'.........B....X......$....x........&...'..8...&..........".$...d.%D...$..$.............%b.%.$dd."......D..'.......f..fb.................
+.'.b....'...'b...GF&F.....8...&...`....E.$..d.".$...%b.%b....E$......d...E...... .P...f..gG.......'g.....F.'..........X......$........E...d.deD.$d...$.'..`..&..f.......
+..%b....".d...$.........$..$...$$.'...P...f..F....X...&...."....'...'b.f....G".GF'......&..'........f&..&....'..........B.&....&`.........B.D.ed$..#.#B....&...G...&.."..&...'..'...'Gb...'..&....'..........&&.......f&......&...&..B......b...&....f........'.............f..&f..G..........(...........b..D...#.#B.....f..Gf...(.............D.ed$..#.#B......&.gF.'f..&..B.....&...#......(..............D...#.#B..."..g....f..&.....g........F.&.'F&..".&.gF.'f.........".....&......(.............D.ed$..#.#B..........&....&.....'........f......F....f....x.........B.f..Ff.......f..Gf...&.".&..'b...b...(...............b...#B............&g..."....'...&...g...F.'.'...g...&.`.......'b.".F.&.".f..Ff..(.................
+..... . .%@.@.D . .$ . .$..................... . .$...............@.@.E`.`.e..... . .$........... . ."#B....b...F.F........b....B...'ff&........'.............(............... . ."...... . .$...........@.@.D................@.@.D . .$...... . ."#B........'.........B.....G............G. ........&ff.b................(..............D...#.#B......f...b.f......'.."..'...................(.......8....... . ."...... . .%@.@.E.....
+..`.`.d..........@.@.D..... . .$..... . .%..........@.@.B. . ."#B......f.......'...'....G.".......(...........B.D.ed$..#.#B....'..b.'.'...f.GF.g...&....'.....'..g........p........'F...&g..."..&....'.........&.&.'......(.........
+
+
+
+
+
+
+
+
+
+
+......`.`.b...... . .$......
+................. . ."#B......"..&'G"....F...&.....'..f...'b...&..............g.F."..b....(....... ..................@.@.D............... . .$...... . ."#B....'..b.F&.....&..................B....g.G.b..@......&....(.......(.......(.......(..........$#C...&..................".b.b..##...............#".C..CcC. .(.
+..(.......(..........$#C...............FF.F..&..&......'b..&................&...
+.............D$..$..B#B..&....'......F&............'b.....(..............%E...B#B..&...f&.....&...F..F..&....B...g.&."....(.............D.ed$..#"#B..."..f&...."..'....&..."..&.....&...G.g....'........'F..&.....&.........&F....'...(..............D$..$..b#B...'G...&..."..'...&..''b...Ff...&.&&.g....&f
+........B....&.........'g...G........'........B..&g...".'b.'..h.....g.&f......(..........."..%E...b#B.........B......&....g.&....&......F'f...&.......h......'..&..".c.......&..&.f.....&..B..'..g....(.............D.ed$..C.#B........&..........'....'Gg...'.&ff.".&........x......&f.&.....(..........D.ed$..$.....B.d...E.b.E....$.........$d.$.......%D...d....`....%D.....%D...$................$d.$...D..d..b.....".........".......e.."..D.............%...D...b.$...e.%E.b....$..$.d.........`..e...B.D.$..`.(.........
+
+
+
+
+
+.......... . .".@.@.D....................@.@.D..... . .%........... . ."#B....F.'....$d......"....F....f.&.....&.... .@...........'gb....F&.&.&g.'....&..&........(...............@.@.B.`.`.d . .$@.@.D@.@.D . .$...........
+. . .%.....`.`.d
+..`.`.d . .$...... . ."#B.............&...&F...G..b...(...........b..D$..$...#B.....G&......f..&..B.....Gb.&.&&.g..'.......................g....'....F...F..'..g.F.&.b.&......B.....f&...b....(.............E$......D$.b......d.....%B.....Eb....d$...%...E...$...%D..x....e.dd.d.....(..............%E....#B......&...f...b....g....'...'b....F.......'".....0........&.&.'.....'b..&...g.Gg.&.f.....(.......`.............`.`.d . .%..
+.... . .$ . .$................ . .%..........@.@.E`.`.d . .%..... . .". . ."#B....&'..."......'......&..&...............F...F....G...&...'...&...'b..&f.....f&fb.....'&F..."..f&..p......'..'.....(..........ED%...".....$.......".d.$...$.....Db....e...b...E.%D.....(....... .............@.@.D..................... . .$...... . ."#B......."..f&..........&..........'b.&....... .................'...&...F.&........&........&......B..'b.....' ...........f.........B..F..........B...G.......".f......f&....F`..............B....'........'....Fb..f...g...b......F.f&.....&. ..............&...&....&.........G.....
+`.(..............%E....#B..........."..'".F....&...".f&..f........&.......x..................'b.F..&....&.........b.&.....(..............D$..$...#B....&f&...&...f.&f&....'G...b..&.."....f&............'.........B...(.......(.......(.......(..........$#C...&..................".b.b..##...............#".C..CcC. .(.
+..(.......(..........$#C...............FF.F..&..&......'b..&................&... .(............... . .". . .$........... . ."#B........&...'..(.............".$...d.%D...$..$.............%b.%.$dd."......D.......(.......X..#..d$DD$...B#B..'.b....'...'b...GF&F.....(...........E.$..d.".$...%b.%b....E$......d...E.............(.......(..#".d$..".B#B...'g.....F.'............(.......... . .#@.@.B. . .$........... . ."#B....G....f.fgF.&f..&."..&..f..........'b....".f...........&.........&..&...&&..'...(..........#b.D..B#B...&...."....'...'b.f....G".GF'.......&........F'f`.......&..B....G"...'g....G..b......B...B.g.G.'.&.......f&...'...`............B.&....&f........'..F.gf&..b.......(..........BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB@....BBBBB...................F.gf&.b........................BBBB@....BBBBB................................B"................BBBB@....BBBBB.................B..........g...&.................BBBB@...
+
+
+.....BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB@.(.......(.......0.. . .#...... . .$........... . ."#G...(...........................................'..F.gf&..b.............................................'..F.gf&..b.........(.......0.. . .#...... . .$........... . ."#G...(.......h........"...F....&.......&f..'.'"...B.....g....P.......B.......&.b....F.gf&..f.........g.........g......B.....&.....................F.&....G.g....'........p........F....G"..'..".......'..F.gf&..b........(.......0.. . .#...... . .$........... . ."#G...(.......0..........&.....&....Fb........B.......8.....&...B.f..ff&.........'.....".f.................'..."..'G.'.............G'..&...'b..&.b.&.......'..............F....G"..'..".......'..F.gf&..b.........(.......0.. . .#...... . .$........... . ."#G...(....... ...............D...%..d..E.b...........(.......h..#..D..b#G....(.......(.......(.......(.......(..........$#C...&..."..............".b.b..##...............#".C..CcC. .(.
+..(.......(..........$#C...............FF.F..&..&......'b..&...............&...#
+......X.....".....&f...........&..b...'..'F..F&...8.....&..''b...F.&....&f&..........f&.........G........".....&............f...........&.b......'........@.....".....G"..'..".......'..F.gf&..b......(.........
+..h..#".D...#G....(..............&...'b."...&..."...F.&............"..&f..F.&...F&.........."..F..b.".&...&.............'&F.....F.......'b.....'F..........G..."....f......'b..'G....(.....&...'..b...F....&..".........G....(..........#...d%....B#G....(.......p.....&..''b..F&........&.b......'...'b.F&......0.....&..''b.&.&&.g....&.."..&...&............G........".....&............f...........&.b......'........@.....".....G"..'..".......'..F.gf&..b......(..........#.".d%....b#G....(............F.&........'b.f....G"..&f..........."..&f..F.&.................'F...........&f...........'&F..".f&...........&...F&.........G..."....f......'b..'G....(.....&...'..b...F....&..".........G....(.......... . .#..
+.@.B.@.@.D........`.`.d . .%
+........ . ."#G...(....... ..........................B............h.........f...b...'..'b.'F..............F....................&f....B.f.&.f.g....0............f.........&f..F..&.f..'g...............F....G"..'..".......'..F.gf&..b.........(............D$.......d....D..$...d%......%...d...........B.$...%D.............$....$..b......D.e.........d.%D$e..Eb.%D....D....$..........D$db.%b.....d..E.b...(..........#.b.d%.....#B.....F...&...F.....F.B........."..'g....(..........#...D....B.B#B.......".f....'b.&..''b.".#......"...g...&.......
+..@......'g...(..........#...d%.....#B..".f........'...f...&."..&...F..f.b........(.......0..#...D....B.b#B...'.".."..&...F..f....(..........#...d%.....#B......G...".f.......f&....Fb....................H.....&.....f.....&........&...&............(.......(..........$#C...&...#..............".b.b..##...............#".C..CcC. .(.
+..(.......(..........$#C...............FF.F..&..&......'b..&...............&...# .(..........#...D...#B.....F..&..B..&...."........".f&...&..."..&....(.......(...............................&.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(..........$#C...&...#".............".b.b..##...............#".C..CcC. .(.
+..(.......(..........$#C...............FF.F..&..&......'b..&................&...
+......(.......(.........
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+............`.`.g..... . .'..... . .'`.`.g..... . .&`.`.g`.`.cB. . .&`.`.g...... . .$ . .".`.`.f`.`.f..................................... . .# . .".@.@.C..
+@.@.C`.`.cC..... . . .(...........'g.......f.'F&g..Gb...'......&.....F.B....g...f..b.&....&.........F.B.....'Gg..g...f.G..(.............."....C......F...gf.B.F...Gb.................#.......G...........B...f......d$.."......B......................B......'...........b...g......g....&.f&..&..&...................b.....#................Gc.....F.gf&..f.......b.................C.......g................c.......b..F.F................................c.................C.......F.&.&......G....................B.....cG...............Fc.....G'F...f....B............................#................FC.....F.&..GF&&...............................C............"..............".B...F..F&..&................b......'..........#.....#......&f&..."................................c...........#"....C......&f&...B..........................".....c'..........#B....c......&f&...b..........................".....cg..........#b...........&f&..............................".....c...........#............&f&............................$..b............#............'F&&.....&...Gg.&................".............
+
+
+
+
+
+
+@.......#............$...D....D$.............................'..........#.....c......%E...d..D.$.%..B........................'..........#............D...$............................".................#"...........$................................"......g..........C....F......F....F.'..........................b......'..........C"...fc.....f&FF&....'.f..f&..................B......G..........CB....c......&..g'F&........................$..b............Cb...F......D.....&.............................................C....gC.....f.fgF.&f...&....................$..b............C....g......f'..&&....'..Gf'."..................................C............'...b.....'..G"..&..............."...........(........................................................................................f.'F&g..Gb....&.....f..B.C....Cb.............................................................................................&..g...f..cB.#...........fgF'....&..cB.#"....................f.....g..cB.b...&....g..cB..........f...cB.B.........................................................................(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.......(.........
+
+
+
+
+
+
+
+
+
+
+
+`....$#C...&..................".b.b..##...............#".C..CcC. .(.
+....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

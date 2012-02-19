@@ -1,0 +1,96 @@
+
+
+
+..o...L.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so 84macr.t
+.bs 1 1 Ginsu   
+.na hu HUSBAND HUSBAND  
+.na wi WIFE WIFE
+.na kk KIDS KIDS
+.ld 
+(LIGHTS UP ON HUSBAND AND WIFE.  HUSBAND IS IN SUIT PANTS AND UNDERSHIRT,   
+WIFE IS DOWDY IN FUZZY SLIPPERS AND HOUSECOAT.  
+THEY HAVE A TABLE WITH SOME BREAKFAST IMPLEMENTS ON IT) 
+.ch hu  
+Sweetheart, I'm afraid that I've got ring around the collar.
+.sd 
+(FIRST LITTLE BIT FROM THE RIDE OF THE VALKYRIES)   
+.ch wi  
+No!  (SHE GRABS SHIRT)  It's true!  Oh, lord help me, it's true!
+(SHE BEGINS TO WEEP)  Where did I go wrong?  Why didn't I see it coming?
+The man came to me in the laundromat, he said, "I'll give you fifty dollars 
+for that shirt," but no, I didn't listen.  And then, even after he'd told me
+they were taking the bluing out of Final Touch, I didn't listen--   
+.ch hu  
+Darling?
+.ch wi  
+No, no, don't try to forgive me!  My crime is too great for that.  I must...
+I must be brave.  I must be banished to the Home For Poor Housewives.   
+.ch hu  
+Dear--  
+.ch wi  
+Where the floors are never quite bright enough, where the rug always smells of  
+the dog smoking cigars, where people never look at themselves in their plates-- 
+.ch hu  
+For goodness' sake, Arlene--
+.ch wi  
+Billy!  Suzie!  
+.ad 
+(TWO CUTE MOPPETS COME OUT. 
+THEY STAND BEFORE HER, PERHAPS ONE WITH A FINGER UP HIS OR HER NOSE.
+PERHAPS BILLY HAS HIS FINGER UP SUZIE'S NOSE)   
+.ex 
+Now Billy and Suzie, Mommy has to go away for a while... not long, thirteen 
+or fourteen years, probably... because she's been bad.  Now, I want you to  
+take care of yourselves and don't fight with each other, and never stick
+the Q-tip right into your ear because if you sneeze you'll push it into 
+your brain.  No, don't cry.  Now, Daddy's probably going to lose his job
+because of Mommy's mistake, and you'll all be in the poorhouse. 
+.ch kk  
+(TOGETHER)  
+Oh, Mommy, please don't go!  Please stay.   
+.ch wi  
+No, kids.  Mommy has sinned, and must be punished.  
+.ch hu  
+Oh come 
+.ul 
+on, 
+Arlene, aren't you taking this too far? 
+.ch wi  
+You're right!  I don't deserve to live.  I must die.
+.ad 
+(SHE GRABS A KNIFE AND STABS HERSELF)   
+.ex 
+(TO HER HUSBAND)
+... I'm sorry... you were a good man... to come home to...  
+.ad 
+(THE HUSBAND TAKES THE KNIFE, TURNS TO FACE THE CAMERA, AND SAYS...)
+.ch hu  
+Yes, even after cutting through skin, bone and a layer of subcutaneous fat, 
+the incredible Ginsu knife can still slice through this tomato. 
+.ad 
+(CUT TO BLACK AND CREDITS GIVING SILLY ORDERING INFORMATION)
