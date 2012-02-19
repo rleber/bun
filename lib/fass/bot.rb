@@ -3,6 +3,7 @@ require 'ember'
 require 'fass/rtf'
 require 'fass/script'
 require 'fass/clean'
+require 'net/http'
 
 class Fass
   class Bot < Thor
@@ -80,6 +81,16 @@ class Fass
       input_file = fix_script_file(input_file, 'rtf')
       cleaner = Fass::Script::Cleaner.new(File.read(input_file))
       write_file output_file, cleaner.clean2
+    end
+    
+    desc "idallen", "Fetch files from Ian! Allen's online repository"
+    def idallen
+      Net::HTTP.start("idallen.com") do |http|
+        response = http.get('/fass/honeywell_archiver/')
+        puts "Code = #{response.code}"
+        puts "Message = #{response.message}"
+        puts response.body
+      end
     end
   end
 end
