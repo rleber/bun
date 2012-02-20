@@ -18,6 +18,11 @@ class Fass
     
     SCRIPTS_DIRECTORY = 'scripts'
     
+    desc "readme", "Display helpful information for beginners"
+    def readme
+      STDOUT.write File.read("doc/readme.md")
+    end
+    
     no_tasks do
       def fix_script_file(file, *exts)
         exts = ['.script'] if exts.size == 0
@@ -328,6 +333,6 @@ class Fass
       File.open(to,'w') {|f| f.write lines.map{|l| lines[:content]}.join("\n") }
     end
 
-    register Fass::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files"
+    register Fass::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files (Type \"fass freezer\" for more details)"
   end
 end
