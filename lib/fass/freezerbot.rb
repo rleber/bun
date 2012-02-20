@@ -8,7 +8,7 @@ class Fass
 
     option "long", :aliases=>'-l', :type=>'boolean', :desc=>"Display listing in long format"
     option "descr", :aliases=>'-d', :type=>'boolean', :desc=>"Display the file descriptor for each file (in octal)"
-    desc "ls FILE", "List contents of a frozen Honeywell file"
+    desc "ls ARCHIVE", "List contents of a frozen Honeywell file"
     def ls(file)
       file = Archive.default_directory + '/' + file unless file =~ /\//
       archived_file = Archive.file_name(file)
@@ -38,13 +38,15 @@ class Fass
     
     no_tasks do
       def index_for(defroster, n)
-        if n.to_s !~ /^\d+$/
+        if n.to_s !~ /^-?\d+$/
           name = n
           n = defroster.file_index(name)
           abort "Frozen file does not contain a file #{name}" unless n
         else
+          orig_n = n
           n = n.to_i
-          abort "Frozen file does not contain file number #{n}" if n<1 || n>defroster.files
+          n += defroster.files+1 if n<0
+          abort "Frozen file does not contain file number #{orig_n}" if n<1 || n>defroster.files
           n -= 1
         end
         n
@@ -57,7 +59,7 @@ class Fass
       end
     end
 
-    desc "thaw FILE FILE_NAME_OR_NUMBER", "Uncompress a frozen Honeywell file"
+    desc "thaw ARCHIVE FILE", "Uncompress a frozen Honeywell file"
     def thaw(file, n)
       file = Archive.default_directory + '/' + file unless file =~ /\//
       archived_file = Archive.file_name(file)
@@ -68,7 +70,7 @@ class Fass
       STDOUT.write defroster.content(index_for(defroster,n))
     end
     
-    desc "recover FILE FILE_NAME_OR_NUMBER TO_FILE", "Attempt to recover a frozen Honeywell file"
+    desc "recover ARCHIVE FILE TO_FILE", "Attempt to recover a frozen Honeywell file"
     def recover(file, n, to)
       file = Archive.default_directory + '/' + file unless file =~ /\//
       archived_file = Archive.file_name(file)
@@ -159,7 +161,7 @@ class Fass
     option "offset", :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lines'
     option "escape", :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
     option "thawed", :aliases=>'-t', :type=>'boolean', :desc=>'Display the file in partially thawed format'
-    desc "dump FILE FILE_NAME_OR_NUMBER", "Uncompress a frozen Honeywell file"
+    desc "dump ARCHIVE FILE", "Uncompress a frozen Honeywell file"
     def dump(file, n)
       limit = options[:lines]
       file = Archive.default_directory + '/' + file unless file =~ /\//
@@ -175,7 +177,7 @@ class Fass
         offset_width = ('%o'%lines[-1][:offset]).size
         lines.each do |l|
           offset = '0' + ("%0#{offset_width}o" % l[:offset])
-          puts "#{offset} #{l[:content].inspect}"
+          puts "#{offset} #{'%012o'%l[:descriptor]} #{l[:raw].inspect[1..-2]}"
         end
       else
         content = defroster.file_words(file_index)
@@ -183,7 +185,8 @@ class Fass
       end
     end
     
-    desc 'preamble FILE', "Show the preamble (the stuff that precedes any file)"
+    # TODO Is this useful? I suspect not. If not, remove it
+    desc 'preamble ARCHIVE', "Show the preamble (the stuff that precedes any file)"
     def preamble(file)
       file = Archive.default_directory + '/' + file unless file =~ /\//
       archived_file = Archive.file_name(file)

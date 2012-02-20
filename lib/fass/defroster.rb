@@ -217,12 +217,13 @@ class Fass
       line_offset = 0
       lines = []
       while line_offset < words.size
-        line_length = (words[line_offset] & 0xfffe00000) >> 21
-        # top_bits = (words[line_offset] & 0xff0000000) >> 28
+        descriptor = words[line_offset]
+        line_length = (descriptor & 0xfffe00000) >> 21
+        # top_bits = (descriptor & 0xff0000000) >> 28
         # puts "Non-zero top bits (#{top_bits}) at offset #{line_offset}" unless top_bits == 0
         puts "New line: length = #{line_length}" if trace
         word_offset = 0
-        word = words[line_offset] & 0x1fffff
+        word = descriptor & 0x1fffff
         puts "word: #{word.inspect} at offset #{line_offset}" if trace
         line = ""
         ch_count = 3
@@ -241,8 +242,10 @@ class Fass
           puts "word: #{word.inspect} at offset #{line_offset} + #{word_offset}" if trace
           ch_count = 5
         end
+        raw_line = line
         line = line[0, line_length].gsub(/\r/,"\n")
-        lines << {:content=>line, :offset=>line_offset}
+        lines << {:content=>line, :offset=>line_offset, :descriptor=>descriptor, 
+                  :words=>words[line_offset..word_offset], :raw=>raw_line}
         trace = true if TRACE_ENABLED && line =~ /It sure is great to be here, Jack/
         trace_count += 1 if trace
         exit if trace && trace_count > 50

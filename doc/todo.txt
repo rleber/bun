@@ -1,5 +1,6 @@
-Separate clean and dirty files
+Fix thawing glitches
 Mass archive extraction
+Separate clean and dirty files
 Create file format notes
 Find frozen files, even if extension isn't ".f"
 Make independent of index file
