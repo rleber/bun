@@ -1,4 +1,3 @@
-Extract file preamble (e.g. File name etc.)
 Separate clean and dirty files
 Mass archive extraction
 Create file format notes
