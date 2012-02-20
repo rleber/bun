@@ -3,24 +3,34 @@ class Fass
     attr_reader :decoder
     
     class Descriptor
-      attr_reader :decoder, :number
+      attr_reader :defroster, :decoder, :number
       
       DESCRIPTOR_OFFSET = 5
       DESCRIPTOR_SIZE = 10
       BLOCK_SIZE = 64  # 36-bit words
+      DESCRIPTOR_END_MARKER = 0777777777777
+      
+      def self.offset
+        DESCRIPTOR_OFFSET
+      end
       
       def self.size
         DESCRIPTOR_SIZE
       end
       
-      def initialize(decoder, number)
-        @decoder = decoder
+      def self.end_marker
+        DESCRIPTOR_END_MARKER
+      end
+      
+      def initialize(defroster, number)
+        @defroster = defroster
+        @decoder = defroster.decoder
         @number = number
         raise "Bad descriptor block #{dump}" unless verify
       end
       
       def offset # Offset from the beginning of the file content, in words
-        Defroster.offset + DESCRIPTOR_OFFSET + number*DESCRIPTOR_SIZE
+        defroster.offset + DESCRIPTOR_OFFSET + number*DESCRIPTOR_SIZE
       end
       
       def characters(start, length)
@@ -36,7 +46,7 @@ class Fass
       end
       
       def file_name
-        characters(0,8)
+        characters(0,8).strip
       end
       
       def update_date
@@ -64,7 +74,7 @@ class Fass
       end
       
       def verify
-        (check_text == 'asc ') && (check_word == 0777777777777)
+        (check_text == 'asc ') && (check_word == DESCRIPTOR_END_MARKER)
       end
       
       def check_text
@@ -80,11 +90,15 @@ class Fass
       end
     end
     
-    FILE_OFFSET = 15
-    FROZEN_CHARACTERS_PER_WORD = 5
+    def offset
+      @offset ||= _offset
+    end
     
-    def self.offset
-      FILE_OFFSET
+    def _offset
+      index = 0
+      decoder.words.each_with_index {|word, index| break if word == Descriptor.end_marker }
+      raise "No descriptor end markers found" if index > decoder.words.size
+      index - Descriptor.offset - Descriptor.size + 1
     end
     
     def initialize(decoder)
@@ -96,7 +110,7 @@ class Fass
     end
     
     def _words
-      decoder.words[FILE_OFFSET..-1]
+      decoder.words[offset..-1]
     end
     private :_words
     
@@ -131,13 +145,19 @@ class Fass
     
     def _descriptors
       (0...files).map do |i|
-        Descriptor.new(decoder, i)
+        Descriptor.new(self, i)
       end
     end
     private :_descriptors
     
     def descriptor(n)
       descriptors[n]
+    end
+    
+    def file_name(n)
+      d = descriptor(n)
+      return nil unless d
+      d.file_name
     end
     
     def contents
@@ -149,16 +169,33 @@ class Fass
     end
     private :_contents
     
+    def file_index(name)
+      descr = descriptors.find {|d| d.file_name == name}
+      if descr
+        index = descr.number
+      else
+        index = nil
+      end
+      index
+    end
+    
+    def file_words(n)
+      d = descriptor(n)
+      return nil unless d
+      words[d.file_start, d.file_blocks*Descriptor.block_size]
+    end
+    
     def content(n)
       @contents ||= []
       @contents[n] ||= _content(n)
     end
     
+    TRACE_ENABLED = false
     def _content(n)
       trace = false
       trace_count = 0
       d = descriptor(n)
-      words = decoder.words[d.file_start + FILE_OFFSET, d.file_words]
+      words = decoder.words[d.file_start + offset, d.file_words]
       line_offset = 0
       text = ""
       while line_offset < words.size
@@ -185,14 +222,11 @@ class Fass
           ch_count = 5
         end
         line = line[0, line_length].gsub(/\r/,"\n")
-        trace = true if line =~ /SMEDLEY:\s+What does what do/
+        trace = true if TRACE_ENABLED && line =~ /SMEDLEY:\s+What does what do/
         trace_count += 1 if trace
-        puts trace_count
-        exit if trace_count > 2
         line_offset += word_offset + 1
         text += line
       end
-      exit
       text
     end
     private :_content

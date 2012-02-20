@@ -23,7 +23,21 @@ class Fass
     end
     
     def initialize(raw)
+      self.raw = raw
+    end
+    
+    def raw=(raw)
+      clear
       @raw = raw
+    end
+    
+    def clear
+      @raw = nil
+      @hex = nil
+      @words = nil
+      @bytes = nil
+      @character = nil
+      @frozen_characters = nil
     end
     
     # Raw data from file in hex; cached
@@ -37,9 +51,17 @@ class Fass
     end
     private :_hex
     
+    def hex=(hex)
+      self.raw = [hex].pack('H*')
+    end
+    
     # Raw data from file in 36-bit words (cached)
     def words
       @words ||= _words
+    end
+    
+    def words=(words)
+      self.hex = words.map{|w| '%09x' % w }.join
     end
     
     # Raw data from file in 36-bit words
