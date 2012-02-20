@@ -85,8 +85,12 @@ class Fass
         word(9)
       end
       
-      def dump
-        @decoder.hex[offset*(decoder.bits_per_word/4), DESCRIPTOR_SIZE*2]
+      def hex
+        @decoder.hex[offset*(decoder.bits_per_word/4), DESCRIPTOR_SIZE*decoder.bits_per_word/4]
+      end
+
+      def octal
+        @decoder.octal[offset*(decoder.bits_per_word/3), DESCRIPTOR_SIZE*decoder.bits_per_word/3]
       end
     end
     
@@ -160,15 +164,6 @@ class Fass
       d.file_name
     end
     
-    def contents
-      @contents ||= contents
-    end
-    
-    def _contents
-      (0...files).map {|i| _content(i)}
-    end
-    private :_contents
-    
     def file_index(name)
       descr = descriptors.find {|d| d.file_name == name}
       if descr
@@ -182,24 +177,56 @@ class Fass
     def file_words(n)
       d = descriptor(n)
       return nil unless d
-      words[d.file_start, d.file_blocks*Descriptor.block_size]
+      if n == files-1
+        words[d.file_start..-1]
+      else
+        words[d.file_start, d.file_words]
+      end
     end
+    
+    def contents
+      @contents ||= _contents
+    end
+    
+    def _contents
+      (0...files).map {|i| _content(i)}
+    end
+    private :_contents
     
     def content(n)
       @contents ||= []
       @contents[n] ||= _content(n)
     end
     
-    TRACE_ENABLED = false
     def _content(n)
+      lines(n).map{|l| l[:content]}.join
+    end
+    
+    def lineset
+      @lineset ||= _lineset
+    end
+    
+    def _lineset
+      (0...files).map {|i| _lines(i)}
+    end
+    private :_contents
+    
+    def lines(n)
+      @lineset ||= []
+      @lineset[n] ||= self.class.defrost(file_words(n))
+    end
+    
+    TRACE_ENABLED = false
+    def self.defrost(words)
       trace = false
       trace_count = 0
-      d = descriptor(n)
-      words = decoder.words[d.file_start + offset, d.file_words]
+      # d = descriptor(n)
       line_offset = 0
-      text = ""
+      lines = []
       while line_offset < words.size
         line_length = (words[line_offset] & 0xfffe00000) >> 21
+        # top_bits = (words[line_offset] & 0xff0000000) >> 28
+        # puts "Non-zero top bits (#{top_bits}) at offset #{line_offset}" unless top_bits == 0
         puts "New line: length = #{line_length}" if trace
         word_offset = 0
         word = words[line_offset] & 0x1fffff
@@ -222,12 +249,13 @@ class Fass
           ch_count = 5
         end
         line = line[0, line_length].gsub(/\r/,"\n")
-        trace = true if TRACE_ENABLED && line =~ /SMEDLEY:\s+What does what do/
+        lines << {:content=>line, :offset=>line_offset}
+        trace = true if TRACE_ENABLED && line =~ /It sure is great to be here, Jack/
         trace_count += 1 if trace
+        exit if trace && trace_count > 50
         line_offset += word_offset + 1
-        text += line
       end
-      text
+      lines
     end
     private :_content
   end

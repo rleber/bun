@@ -51,6 +51,17 @@ class Fass
     end
     private :_hex
     
+    # Raw data from file in octal; cached
+    def octal
+      @octal ||= _octal
+    end
+    
+    # Raw data from file in octal
+    def _octal
+      raw.unpack('B*').first.scan(/.../).map{|o| '%o'%eval('0b'+o)}.join
+    end
+    private :_octal
+    
     def hex=(hex)
       self.raw = [hex].pack('H*')
     end
