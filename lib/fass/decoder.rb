@@ -5,6 +5,53 @@ class Fass
     EOF_MARKER = 0x00000f000 # Octal 000000170000 or 0b000000000000000000001111000000000000
     CHARACTERS_PER_WORD = 4
     BITS_PER_WORD = 36
+    ARCHIVE_NAME_POSITION = 7 # words
+    SPECIFICATION_POSITION = 11 # words
+    
+    def zstring(offset)
+      start = offset
+      ch = characters
+      loop do
+        break if offset > ch.size
+        break if ch[offset,1] == "\0"
+        offset += 1
+      end
+      ch[start...offset]
+    end
+    
+    def file_specification
+      zstring SPECIFICATION_POSITION*CHARACTERS_PER_WORD
+    end
+    
+    def file_archive_name
+      zstring ARCHIVE_NAME_POSITION*CHARACTERS_PER_WORD
+    end
+    
+    DESCRIPTION_PATTERN = /\s+==>\s+(.*?)\s*$/
+    def file_subpath
+      file_specification.sub(DESCRIPTION_PATTERN,'').sub(/^\//,'')
+    end
+    
+    FILE_NAME_PATTERN = /\/([^\/]*)$/
+    def file_subdirectory
+      file_subpath.sub(FILE_NAME_PATTERN,'')
+    end
+
+    def file_name
+      file_subpath[FILE_NAME_PATTERN,1] || ""
+    end
+    
+    def file_description
+      file_specification[DESCRIPTION_PATTERN,1] || ""
+    end
+    
+    def file_path
+      file_archive_name + '/' + file_subpath
+    end
+    
+    def file_content_start
+      SPECIFICATION_POSITION + (file_specification.size + 4)/4
+    end
     
     def self.characters_per_word
       CHARACTERS_PER_WORD
@@ -36,6 +83,7 @@ class Fass
       @hex = nil
       @words = nil
       @bytes = nil
+      @octal = nil
       @character = nil
       @frozen_characters = nil
     end

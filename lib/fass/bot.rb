@@ -196,7 +196,7 @@ environment variable. If this environment variable is not set, the URL is mandat
       Dump.dump(words, options)
     end
     
-    FILE_CONTENT_OFFSET = 11
+    UNPACK_OFFSET = 22
     option "inspect", :aliases=>'-i', :type=>'boolean', :desc=>"Display long format details for each line"
     option "deleted", :aliases=>'-d', :type=>'boolean', :desc=>"Display deleted lines (only with --inspect)"
     desc "unpack", "Unpack a file (Not frozen files -- use freezer subcommands for that)"
@@ -206,17 +206,7 @@ environment variable. If this environment variable is not set, the URL is mandat
       archived_file = Archive.file_name(file)
       abort "Can't unpack file. It's a frozen file #{archived_file}" if Archive.frozen?(file)
       words = decoder.words
-      
-      offset = FILE_CONTENT_OFFSET
-      loop do # look for a nul ending the file description
-        break if offset > words.size
-        word = words[offset]
-        chs = ('%012o'%word).scan(/.{3}/)
-        break if chs.include?('000')
-        offset += 1
-      end
-      # Skip forward
-      offset += 2
+      offset = decoder.file_content_start + UNPACK_OFFSET
       offset_width = ('%o'%(words.size)).size
       line_count = 0
       loop do
@@ -240,13 +230,11 @@ environment variable. If this environment variable is not set, the URL is mandat
             end
           end
         else
-          if line_count > 0 # Skip the first line; it's always nulls
-            line = decoder.characters[(offset+1)*decoder.characters_per_word, line_length*decoder.characters_per_word].sub(/\x7f*$/,'')
-            if options[:inspect]
-              puts %Q{0#{"%0#{offset_width}o"%offset} #{'%012o'%words[offset]} #{'%06o'%line_length} #{'%06o'%lower_bits}   #{line.inspect[1..-2]}}
-            else
-              puts line
-            end
+          line = decoder.characters[(offset+1)*decoder.characters_per_word, line_length*decoder.characters_per_word].sub(/\x7f*$/,'')
+          if options[:inspect]
+            puts %Q{0#{"%0#{offset_width}o"%offset} #{'%012o'%words[offset]} #{'%06o'%line_length} #{'%06o'%lower_bits}   #{line.inspect[1..-2]}}
+          else
+            puts line
           end
           line_count += 1
           offset += line_length+1
@@ -265,7 +253,7 @@ environment variable. If this environment variable is not set, the URL is mandat
       lines = nil
       loop do
         lines = []
-        offset = FILE_CONTENT_OFFSET
+        offset = decoder.file_content_start + UNPACK_OFFSET
         d = Decoder.new(nil)
         d.words = content
         loop do
@@ -380,6 +368,27 @@ environment variable. If this environment variable is not set, the URL is mandat
       else
         puts "File is dirty"
       end
+    end
+    
+    desc "describe FILE", "Display description information for a file"
+    def describe(file)
+      file = Archive.default_directory + '/' + file unless file =~ /\//
+      decoder = Fass::Decoder.new(File.read(file))
+      archived_file = Archive.file_name(file)
+      archive = decoder.file_archive_name
+      subdirectory = decoder.file_subdirectory
+      specification = decoder.file_specification
+      description = decoder.file_description
+      name = decoder.file_name
+      path = decoder.file_path
+      description = decoder.file_description
+      puts "Archive of file #{archived_file}"
+      puts "Archive         #{archive}"
+      puts "Subdirectory    #{subdirectory}"
+      puts "Name            #{name}"
+      puts "Path            #{path}"
+      puts "Description     #{description}"
+      puts "Specification   #{specification}"
     end
 
     register Fass::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files (Type \"fass freezer\" for more details)"

@@ -1,16 +1,16 @@
+Extract file preamble (e.g. File name etc.)
+Separate clean and dirty files
+Mass archive extraction
 Create file format notes
-Revise installation readme
-Clean code
+Find frozen files, even if extension isn't ".f"
+Make independent of index file
+Move files to Dropbox
 Separate 80/81 script stuff from archival, etc.
 Rename GECOS
 Separate Archive, File, and Freezer
 Standardize Decode and Defrost interfaces
 Refactor repair
+Clean code
 Build as a gem
+Revise installation readme
 Upload to Github
-Move files to Dropbox
-Separate clean and dirty field
-Mass archive extraction
-Find frozen files, even if extension isn't ".f"
-Exract file preamble (e.g. File name etc.)
-Make independent of index file

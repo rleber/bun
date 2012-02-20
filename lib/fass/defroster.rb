@@ -95,14 +95,7 @@ class Fass
     end
     
     def offset
-      @offset ||= _offset
-    end
-    
-    def _offset
-      index = 0
-      decoder.words.each_with_index {|word, index| break if word == Descriptor.end_marker }
-      raise "No descriptor end markers found" if index > decoder.words.size
-      index - Descriptor.offset - Descriptor.size + 1
+      decoder.file_content_start
     end
     
     def initialize(decoder)
