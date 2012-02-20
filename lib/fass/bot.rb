@@ -266,7 +266,7 @@ environment variable. If this environment variable is not set, the URL is mandat
         end
         flawed_line = lines.find {|l| l[:content].gsub(/\t/,' ') =~ /[[:cntrl:]]/}
         break unless flawed_line
-        flaw_location = flawed_line[:content].gsub(/\t/,' ').sub(/[[:cntrl:]].*/m, '').size
+        flaw_location = Decoder.find_flaw(flawed_line[:content])
         puts "Found a suspect line at #{'%o' % flawed_line[:offset]}: #{flawed_line[:content][0, flaw_location+5+1].inspect}"
         d1 = Decoder.new(nil)
         d1.words = content[flawed_line[:offset]..-1]
@@ -351,13 +351,8 @@ environment variable. If this environment variable is not set, the URL is mandat
     end
     
     no_tasks do
-      def clean?(text)
-        bad_characters = text.gsub(/[^[:cntrl:]]|[\r\t\n]/,'')
-        bad_characters.size == 0
-      end
-      
       def clean_file?(file)
-        clean? File.read(file)
+        Decoder.clean? File.read(file)
       end
     end
     

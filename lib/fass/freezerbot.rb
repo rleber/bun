@@ -87,7 +87,7 @@ class Fass
         break unless flawed_line
         offset = '0' + ('%o'%flawed_line[:offset])
         offset = '0' if offset == '00'
-        flaw_location = flawed_line[:content].sub(/[[:cntrl:]].*/m, '').size
+        flaw_location = Decoder.find_flaw(flawed_line[:content])
         STDERR.puts "Found a bad line at #{offset}: #{flawed_line[:content][0, flaw_location+5+1].inspect}"
         d1 = Decoder.new(nil)
         d1.words = content[flawed_line[:offset]..-1]
@@ -170,6 +170,7 @@ class Fass
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = Fass::Decoder.new(File.read(file))
       defroster = Fass::Defroster.new(decoder)
+      defroster.options = {:warn=>true}
       file_index = index_for(defroster, n)
       puts "Archive for file #{defroster.file_name(file_index)}:"
       if options[:thawed]
@@ -177,7 +178,14 @@ class Fass
         offset_width = ('%o'%lines[-1][:offset]).size
         lines.each do |l|
           offset = '0' + ("%0#{offset_width}o" % l[:offset])
-          puts "#{offset} #{'%012o'%l[:descriptor]} #{l[:raw].inspect[1..-2]}"
+          descriptor = l[:descriptor]
+          top_bits = Fass::Defroster.top_descriptor_bits(descriptor)
+          clipped_length = Fass::Defroster.clipped_line_length(descriptor)
+          bottom_bits = Fass::Defroster.bottom_descriptor_bits(descriptor)
+          flag = Fass::Defroster::good_descriptor?(descriptor) ? ' ' : '!'
+          puts "#{offset} #{'%012o'%descriptor} " + 
+               "#{'%03o'%top_bits}|#{'%03o'%clipped_length} #{flag} " +
+               "#{l[:raw].inspect[1..-2]}"
         end
       else
         content = defroster.file_words(file_index)

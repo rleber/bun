@@ -60,6 +60,17 @@ class Fass
     def characters_per_word
       self.class.characters_per_word
     end
+
+    def self.clean?(text)
+      bad_characters = text.gsub(/[^[:cntrl:]]|[\r\t\n]/,'')
+      bad_characters.size == 0
+    end
+    
+    def self.find_flaw(text)
+      pos = text.gsub(/[\r\t\n]/,'').sub(/[[:cntrl:]].*/m, '').size
+      return nil if pos >= text.size
+      pos
+    end
     
     def self.bits_per_word
       BITS_PER_WORD
