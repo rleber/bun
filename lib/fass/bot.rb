@@ -164,6 +164,16 @@ class Fass
     
     IGNORE_LINKS = ["Name", "Last modified", "Size", "Description", "Parent Directory"]
     desc "fetch [URL]", "Fetch files from an online repository"
+    long_desc <<-EOT
+Fetches all the files and subdirectories of the specified online url to the data directory.
+
+Fetched files are copied to subdirectories of the data directory. So, for instance, fetching
+"http://example.com/in/a/subdirectory/" will cause files to be copied to the directory
+data/example.com/in/a/subdirectory and its subdirectories, mirroring the structure online.
+
+If no URL is provided, this command will use the location specified in the FASS_ARCHIVE_URL
+environment variable. If this environment variable is not set, the URL is mandatory.
+    EOT
     def fetch(url=nil)
       agent = Mechanize.new
       url ||= ENV["FASS_ARCHIVE_URL"]

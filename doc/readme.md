@@ -30,6 +30,9 @@ At the moment, you will have to take the following steps to install the software
 4. Try running it (see below)
 5. Install any missing Ruby Gem dependencies (you'll know them from the error messages)
 
+Also note: if you would like to set a default URL for retrieving archived files (i.e. using "fass fetch"),
+you can do so by setting the "FASS_ARCHIVE_URL" environment variable.
+
 _Running this software_
 
 There is one primary executable src/fass. Assuming that the src directory is in your load path, it should
