@@ -361,6 +361,26 @@ environment variable. If this environment variable is not set, the URL is mandat
         puts %Q{#{"%-#{file_name_width}s"%entry[0]} #{'%-s'%entry[-1]}}
       end
     end
+    
+    no_tasks do
+      def clean?(text)
+        bad_characters = text.gsub(/[^[:cntrl:]]|[\r\t\n]/,'')
+        bad_characters.size == 0
+      end
+      
+      def clean_file?(file)
+        clean? File.read(file)
+      end
+    end
+    
+    desc "test FILE", "Test a file for cleanness -- i.e. does it contain non-printable characters?"
+    def test(file)
+      if clean_file?(file)
+        puts "File is clean"
+      else
+        puts "File is dirty"
+      end
+    end
 
     register Fass::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files (Type \"fass freezer\" for more details)"
   end

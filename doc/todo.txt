@@ -1,4 +1,3 @@
-Move Ian's URL to a system environment variable; add it to CONFIG
 Create file format notes
 Revise installation readme
 Clean code
