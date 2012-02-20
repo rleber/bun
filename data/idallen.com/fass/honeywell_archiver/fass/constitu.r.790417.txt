@@ -1,0 +1,670 @@
+
+
+
+.I1..I1.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so macros.r
+.cc. free x idallen/fz macros.r 
+.hy 2   
+.nj 
+.he ""- % -""   
+.fo "F.A.S.S."^(amon) ^(day), 19^(year)"Constitution"   
+.at(arti)   
+.in0
+.sp 
+.ne 15  
+.ce 2   
+.ul 
+@1  
+.sp 
+@2  
+.en(arti)   
+^(arti "Article~One" "STATEMENT~OF~PURPOSE~AND~OBJECTIVES") 
+.lt +5 ( ) 1 1  
+.it 
+This organization shall be known as F.A.S.S.
+.it 
+This organization is intended to provide a means of social contact  
+between members of the Faculty, Administration, Staff and Students  
+of the University.  
+.it 
+Any person participating in the production of the F.A.S.S. show shall   
+be a voting member of the F.A.S.S. company. 
+.it 
+The F.A.S.S. committee and executive will be chosen from among the members  
+of the company. 
+.it 
+The F.A.S.S. company shall remain an autonomous group existing for the  
+purpose of producing a show in the first full week of February each 
+year.   
+.le 
+^(arti "Article~Two" "COMMITTEE")   
+.lt +5 ( ) 1 1  
+.it 
+The committee shall be chaired by the F.A.S.S. President who will   
+have a vote only in the case of a tie.  
+.it 
+Voting members of the committee will be;
+.lt +3 "" ) 1 a 
+.xt 
+Vice President  
+.xt 
+Secretary   
+.xt 
+Treasurer   
+.xt 
+Faculty Representative  
+.xt 
+Administration Representative   
+.xt 
+Staff Representative
+.xt 
+Student Representative  
+.xt 
+Producer
+.xt 
+Director
+.xt 
+Technical Director  
+.xt 
+Head Scriptwriter   
+.xt 
+Past President  
+.xt 
+Past Producer   
+.xt 
+Past Director   
+.xt 
+Past Technical Director 
+.xt 
+Past Head Scriptwriter  
+.xt 
+Honourary Member
+.xt 
+Any other person the committee deems advisable or necessary 
+.le 
+.it 
+One half of the membership of the committee will constitute a quorum
+for the purpose of conducting business. 
+.it 
+The Chairman may at any time invite guests to attend committee  
+meetings or the committee may elect a non-voting member to the committee
+if they feel such a move would aid their deliberations. 
+.it 
+Committee meetings will be considered open to all members of the F.A.S.S.   
+unless declared closed by the Chairman. 
+.it 
+Selection of Members;   
+.lt +3 "" ) 1 a 
+.it 
+All members of the Committee must have been active members  
+of the F.A.S.S. Company and of the University. Exceptions may be
+made with the unanimous consent of the Committee.   
+.it 
+The Producer, Director, Technical Director, Head Scriptwriter   
+and Treasurer will be appointed by the F.A.S.S. Committee   
+as soon  as possible following the final performance of the F.A.S.S.
+show and before the end of the winter term. 
+The closing date for acceptance of applications for   these 
+positions will be publically announced during the two week  
+period following the final show. All applications must be   
+submitted to the F.A.S.S. President before the stated   
+deadline.   
+.it 
+The President, Vice President, Secretary, Faculty, Administration   
+Staff and Student Representatives will be elected annually at the   
+General Meeting following the selection of the Producer, Director,  
+Technical Director, Head Scriptwriter and Treasurer and before the end  
+of the winter term. 
+.it 
+Honourary Life Members will be members who, in the opinion of the   
+committee have substantially contributed to the operation of F.A.S.S.   
+for a period of 4 years or more. The Honourary Members shall
+select one of their number to serve as their committee representative.  
+.le 
+.it 
+Dismissal or Replacement of Members of the F.A.S.S. Committee   
+.lt +3 "" ) 1 a 
+.it 
+All dismissal proceedings must be handled through the F.A.S.S.  
+Committee.  
+.it 
+The person being considered for dismissal loses all 
+voting rights at the meeting called to discuss his/her case,
+he/she may, however, present a defence at that time.
+.it 
+Reasons for Dismissal;  
+.lt +5 "" ) 1 i 
+.ne 5   
+.xt 
+Violation of the Constitution   
+.xt 
+Neglect of Duties   
+.xt 
+Failure to notify the President within 30 days of the   
+beginning of the fall term, of a continuing interest
+in their position.  
+.le 
+.it 
+A three-quarters majority of the committee will be necessary
+for removal.
+.le 
+.it 
+A three-quarters majority of the Committee will be required to fill 
+any vacancy on the committee other than a vacancy caused by the 
+unavailability of the Past President, Past Producer, Past Director, 
+Past Head Scriptwriter or Past Technical Director.  
+.it 
+Responsibilities of the F.A.S.S. Committee; 
+.lt +3 "" ) 1 a 
+.it 
+Approval of the number, dates and location of performances  
+and the admission prices.   
+.it 
+Be available during the year to give advice, as required,   
+pertaining to the production of a successful show.  
+.it 
+Select a purpose for any funds remaining in the F.A.S.S. accounts   
+after budgeting for the following years show.   
+.it 
+Consider and, if it is deemed advisable, recommend any changes  
+in this Constitution to the F.A.S.S. Company.   
+.it 
+Select the Producer, Director, Technical Director, Head Scriptwriter
+and Treasurer for the following year from applications received.
+.it 
+Be available to arbitrate any conflict between members of the   
+F.A.S.S. Company.   
+.it 
+Approve the current budget. 
+.it 
+The Committee reserves the right to overrule any major policy   
+decision of the Production staff.   
+.le 
+.le 
+^(arti "Article~Three" "EXECUTIVE") 
+.lt +5 ( ) 1 1  
+.it 
+The Members of the Executive of the F.A.S.S. Company will be;   
+.lt +3 "" ) 1 a 
+.ne 6   
+.xt 
+President   
+.xt 
+Vice President  
+.xt 
+Secretary   
+.xt 
+Treasurer   
+.xt 
+Past President  
+.xt 
+Producer
+.le 
+.it 
+Responsibilities of the F.A.S.S. Executive; 
+.lt +3 "" ) 1 a 
+.it 
+Oversee the Financial affairs of the F.A.S.S. Company.  
+.it 
+
+Ensure the decisions of the F.A.S.S. Committee are carried out. 
+.it 
+Act on behalf of the Committee when there is insufficient time  
+for Committee meetings  
+.it 
+Any other duties assigned by the F.A.S.S. Committee.
+.le 
+.it 
+The President will have no vote on the Executive except in the  
+event of a tie when the President will cast the deciding vote.  
+.it 
+At any time the majority of the executive may refer any matter  
+to the Committee for a decision.
+.it 
+Quorum for executive meetings will be three members.
+.le 
+^(arti "Article~Four" "RESPONSIBILITY~OF~INDIVIDUAL~MEMBERS")   
+.lt +5 ( ) 1 1  
+.it 
+President;  
+.lt +3 "" ) 1 a 
+.it 
+Act as Chairman for all meetings of the F.A.S.S. Executive, 
+Committee and Company.  
+.it 
+Call sufficient meetings of the Company, Committee and Executive
+to prepare for the successful production of the F.A.S.S. show.  
+.it 
+Call meetings of the F.A.S.S. Committee or Executive, through   
+the Secretary when requested by the Producer, Director or   
+two Committee members   
+.it 
+Inform all members of the F.A.S.S. Committee or Executive,  
+through the Secretary, as to the time and place of all  
+meetings.   
+.it 
+Prepare an agenda for all Committee and Executive meetings. 
+.it 
+Ensure bookings are made for all F.A.S.S. events.   
+.it 
+Ensure liaison is maintained with all other groups  
+.it 
+Ensure the duties of the Committee and Executive are properly   
+performed.  
+.it 
+Date closure for applications for all appointed positions.  
+.it 
+Act as liaison between the various groups and committees of 
+F.A.S.S.
+.it 
+Assume signing authority over all F.A.S.S. bank accounts.   
+.it 
+In consultation with the Executive, prepare and submit a budget 
+to the F.A.S.S. Committee.  
+.le 
+.it 
+Vice President  
+.lt +3 "" ) 1 a 
+.it 
+Assume the responsibilities of the President in the event the   
+President is unable to fulfill his/her duties.  
+.it 
+Act as social convenor for the F.A.S.S. Company, including the planning 
+of all F.A.S.S. Company social events and the booking of areas for  
+such events.
+.it 
+In conjuction with the President, maintain a liaison with all other 
+groups concerning facilities for social events. 
+.it 
+Maintain a record of all expenses resulting from social events. 
+and submit all receipts relating to these expenses to the Treasurer 
+.it 
+Communicate to the President the status of all activities.  
+.le 
+.it 
+Secretary   
+.lt +3 "" ) 1 a 
+.it 
+Record and maintain all minutes of F.A.S.S. Company, Committee and  
+Executive meetings. 
+.it 
+Assist the F.A.S.S. President.  
+.it 
+Send a newsletter to all members of the F.A.S.S. Company when   
+necessary under the direction of the President. 
+.it 
+Book meeting halls for all F.A.S.S. Company, Committee and  
+Executive meetings. 
+.it 
+Maintain an up-to-date address list of all current members of the   
+F.A.S.S. Company.   
+.it 
+Distribute a copy of the constitution to all committee members  
+at their first meeting after election or appointment.   
+.it 
+Communicate to the President the status of all activities.  
+.le 
+.it 
+Treasurer   
+.lt +3 "" ) 1 a 
+.it 
+Assume signing authority on all F.A.S.S. bank accounts  
+.it 
+Receive and maintain all receipts relating to expenditures of   
+the Company 
+.it 
+Maintain a complete record of all F.A.S.S. financial matters
+.it 
+Distribute to all pertinent parties a budget for expenditures for   
+the production of the F.A.S.S. show and receive expenditure 
+statements at the conclusion of the show.   
+
+.it 
+Present a financial statement to the F.A.S.S. Committee and 
+general meeting prior to the end of the winter term.
+.it 
+Communicate to the President the status of all activities.  
+.le 
+.it 
+Faculty, Administration, Staff and Student Representatives  
+.lt +3 "" ) 1 a 
+.it 
+Act as liaison with the F.A.S.S. Company
+.le 
+.it 
+Producer
+.lt +3 "" ) 1 a 
+.it 
+Assume signing authority over all F.A.S.S. bank accounts
+.it 
+Advertising and Promotion   
+.it 
+Ticket Production and Sales.
+.it 
+Preparation and Production of Programs  
+.it 
+Maintain a summary of all production expenses   
+.it 
+Co-ordinate all front of house activities, including
+liaison with the theatre house manager and Arts Centre staff,   
+and, in conjuction with the President, maintain liaison with all
+other groups concerning production facilities.  
+.it 
+Supervise all members of the Production staff   
+.it 
+Communicate the status of all production activities to the President.   
+.le 
+.it 
+Director
+.lt +3 "" ) 1 a 
+.it 
+Select the Stage Manager, Choreographer, Music Director and 
+Choral Director.
+.it 
+Conduct auditions and select cast members   
+.it 
+Set dates and location of rehearsals and assume responsibility  
+for their conduct   
+.it 
+Direct the F.A.S.S. Show
+.it 
+Assume responsibility for the artistic content of the show  
+.it 
+Make clear to the Technical Director the technical requirements 
+of the show, as they pertain to the artistic content of the show.   
+.it 
+Communicate to the President the status of the show 
+.le 
+.it 
+Head Scriptwriters  
+.lt +3 "" ) 1 a 
+.it 
+Present possible themes for the show to the general meeting 
+.it 
+Supervise the writing of the script and ensure the script   
+is maintained at a reasonable length.   
+.it 
+Call and supervise writers meetings to discuss and prepare  
+the script  
+.it 
+Submit a complete copy of the script to the committee two   
+weeks before the auditions. 
+.it 
+Call a meeting to consider ideas for the theme of the next  
+years show  
+.it 
+Communicate the status of the script to the President   
+.le 
+.it 
+Technical Director  
+.lt +3 "" ) 1 a 
+.it 
+Appoint and Supervise all Production Department Heads   
+under the supervision of the Producer   
+Department heads should be appointed to be responsible  
+for all aspects of; 
+.lt +5 "" ) 1 i 
+.ne 7   
+.xt 
+lighting
+.xt 
+sound   
+.xt 
+special effects 
+.xt 
+sets
+.xt 
+props   
+.xt 
+costumes
+.xt 
+make-up 
+.le 
+.it 
+Assume responsibility, in consultation with the director, for   
+either designing the sets, lighting and costumes or appointing  
+a designer. 
+.it 
+Assume responsibility for all expenditures of technical departments 
+and presents a financial statement to the Producer. 
+.it 
+Communicate the status of all technical activities to the Producer and Director.
+.le 
+.it 
+Stage Manager   
+.lt +3 "" ) 1 a 
+.it 
+Inform cast and crew of time and place of every rehearsal, and insure   
+that rehearsals start on time and cast members are prompt, present and prepared.
+.it 
+See that an up-to-date list of all cast and crew members and their addresses and
+phone numbers is available at all times.
+.it 
+Note all cues and the location and storage of all materials between rehearsals and shows.   
+.it 
+Note all additions and changes in the script or any other technical or artistic area and inform the 
+proper personnel.   
+.it 
+Obtain as many assistants as are necessary to aid in the    
+
+prompting, and preparing the cast and making such production notes as   
+are necessary.  
+.it 
+Assume responsibility along with assistants, for opening and locking all
+facilities and returning borrowed equipment, storing props, clearing out personnel  
+and cleaning up after rehearsals in conjunction with theatre staff. 
+.it 
+Assumes full responsibility for the performances of the F.A.S.S. show, to be overruled only by the committee.   
+.it 
+Communicate the status of all activities to the Director.   
+.le 
+.it 
+Production Department Heads 
+.lt +3 "" ) 1 a 
+.it 
+Appoint and Supervise all personnel in their particular department, under the   
+supervision of the Technical Director.  
+.it 
+All Production Department Heads must obtain authorization from the Technical
+Director for all expenditures.  
+.it 
+Communicate to the Technical Director on the status of all matters within their 
+respective departments. 
+.le 
+.it 
+Past President, Past Producer, Past Director, Past Head Scriptwriters and Past Technical Director.  
+.lt +3 "" ) 1 a 
+.it 
+Be available to give advice to members of the committee as necessary.   
+.le 
+.le 
+^(arti "Article Five" "FINANCIAL MATTERS")  
+ . 4.T#8!T#8 ...
+
+
+.........c....".".'...8...'...x........".b.b..f...&.".f.&...F...&.&.f&&..".&..............&....F.&.'F'.&..b...p.......&...&..'..F.f...b...f.gf'G".....G.&&...&.&.f&&..'gf'g.&.f...F.......G.......F.&.'F'.&..b.....f...F.&.'F'.&..b.f.&...F.....'........&.g..g.......&.&.f&&........F.f.F.b........f...&."...8...'......&."...f'f&.......G.&&..&..'.&..&......b..F......f&.......f...&."...g..F..'..F...........G".......'F.b..B.b"..........".b.b..f...'.......'...&...&..''b.F......&&...........".b.b........f...&."....F..'".g.f....&.b.'.......'F.&.g..f.....&..f...8...'......&..&..........F.&....G".......".b.b..f...'......&...F.......&........".b.b..f...&.'.....&ff.....'..................F...g.&...&.'B.'b."....'....B.....f..&...&.'B.b.f.....8..&.".....b.&....f.gb......'b.&......f.&...F..f&.....Gg.G...b.....bB...8...'...H..'..F..&....B...Ff.'f.b.G".......".b.b..f...&."..'".F...G.&&.....F...G...........cb.BB.".".'..H...........8..............F...f.B.....B.&."..'...G....8.......X.......&f...F.f&.........B.f.f&&..&..&'Gg..8................f..&f&...'F.g..B.....B...f..&f&.......f.g..8...............F.f&.........B.&."..'...G...8.......8...'..........f&..&...'....F'."...B.&.....".b.b..f...&.".f..'..b.&...'&..............'..F.g....`..f.&....&..&...f'f.b..F..B..............&...G......	.........cb.BB.".".'..H......g....8...............F.f&........8.......@...F...f.@.8.......h...F.'g.F.G....8.......8...'.......F.f...F....B..G.&&.&.....F.'gf&.....B...Ff.'f.`........cb.BB.".".'..8...'......&.....f..&f&.....'G........&.b......B......'F.g.&............f..&f&...'F.g..B....g.......G.&&..'....F'F'.&....F.........f..&f&...'F.g..B...B.&........f.b.&.g.GF...G"....'B..'G.&g..'G...x.....'G........8...'......".F.f.'......fgF&F&.......'.......g..F...G.&&......B..&f....Ff.'f..&...F...F.........H......'....F'F&....'G.".....".b.b.....b.......'F&.....F.&.G.Gf........G.........'....F'F.........'..F.b....8.......8.........
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+....

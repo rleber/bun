@@ -1,0 +1,573 @@
+
+
+
+.....bf.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1988/script/87macr.t   
+.bs 1 2 "Methinks Thou Doth Protest Too Much"   
+.na sa BELLA~COSE BELLA 
+.na er ED~NAUSEUM ED
+.na tm TOM~FOOLERY TOM  
+.na g1 RALPH~ALPHA RALPH
+.na g2 NORTON~SOUTH NORTON  
+.na tu TRISHA~DEKAPHOBIA TRISHA 
+.na pa TYRONE~SHOELACE TYRONE   
+.na ed IRMA~GEDDON IRMA 
+.na ga HARRY~KRISHNA HARRY  
+.na mu MUFFY~FORNOTHING MUFFY   
+.na ep HOWARD~E.~WIFUNKIDS HOWARD   
+.ld 
+(LIGHTS UP.  BELLA, ED AND TOM ARE FINISHING BUILDING A COMPLICATED 
+TRAP ON STAGE.  THIS SHOULD BE A REAL RUBE GOLDBERG DEVICE. PICTURE 
+A LARGE SCALE MODEL OF THE MOUSETRAP GAME AND YOU'VE GOT THE IDEA.  
+THE TRAP SHOULD HAVE SOME VERY OBVIOUS FINAL ACTION, I.E. A NET OR  
+CAGE SUSPENDED ABOVE THE STAGE, OR PERHAPS LARGE STEEL JAWS.
+BELLA AND ED ARE WORKING QUICKLY AND COMPETENTLY.  TOM IS QUITE 
+HOPELESS.  TOM SHOULD ACT LIKE BELLA'S PUPPYDOG.  BELLA SHOULD  
+TAKE NO SPECIAL NOTICE OF THIS.  ED SHOULD BE HUMMING TO HIMSELF
+AND LOOKING IDIOTICALLY SELF-SATISFIED.  SUDDENLY, HIS MOOD CHANGES 
+AND HE LOOKS UPSET.  HE BEGINS TO SING) 
+.sb "Bittersweet Love" "To A Wild Rose" 
+.ve 2   
+
+CHORUS:  Magical, wonderful, terrible obsession 
+ 	 Marvelous, hopeless, bittersweet love.   
+.ve 5   
+When I saw her face                 
+ my world became enchanted  
+My soul's deepest wish              
+ would finally be granted   
+If she were mi-ine  
+.ve 1   
+(CHORUS)
+.ve 6   
+But ere it began
+ our love it was blighted   
+Fate has intervened 
+ we cannot be united
+My heart is filled with pain
+ for I love in vain.
+.ve 1   
+(CHORUS)
+.ch er  
+CUPID, bah! 
+Love shouldn't be dictated by a computer.   
+People should be free to choose their heart's desire.   
+.ch tm  
+Darn right! 
+(OVEREMPHASIZED)
+It must be hard on anyone who is in love with one of the CUPID volunteers.  
+.ad 
+(ALL FREEZE.  ENTER HOWARD, AN ENGLISH PROF)
+.ch ep  
+Good evening, class.
+The preceding speech was an example of dramatic irony.  Dramatic
+irony occurs when a character's speech sounds ironic to the audience
+because of something they know but the character doesn't.   
+.ad 
+(EXIT HOWARD.  ACTION RESUMES)  
+.ch sa  
+(DERISIVELY) Love, who needs it?  I don't have time 
+for that sort of nonsense.  
+I do, however, object to paying 
+for a service we never wanted, don't need and can't use.
+.ch tm  
+Darn right! 
+.ch sa  
+So, Ed, who have you fallen in love with?   
+.ch er  
+(UNCONVINCINGLY) No one.
+.ad 
+(BELLA GIVES ED A "TELL ME ANOTHER ONE" LOOK)   
+.ch sa  
+Right.  
+.ch er  
+Don't you believe in love, Bella?   
+.ch sa  
+Yeah, I suppose so.  I just have more important things on my
+mind at the moment. (STRIKES POSE)  
+But if I ever do decide to fall 
+in love the decision will be mine and mine alone!   
+.ad 
+(ALL FREEZE.  ENTER HOWARD) 
+.ch ep  
+The preceding speech was an example of foreshadowing, a reference within
+a story to events that will happen later.  In this case, Bella says she 
+will make her own decisions about love, whereas later on in the play
+decisions are imposed upon her by an outside force.  Oh dear, I just gave   
+it away, didn't I?  The preceding speech is no longer an example of 
+foreshadowing; it is now an example of dramatic irony.  
+.ad 
+(HOWARD EXITS, ACTION RESUMES)  
+.ch tm  
+Why do they call it falling in love anyway? 
+.ch sa  
+Because "falling in like" sounds silly, and "falling in lust" is
+illegal in Ontario. 
+.ad 
+(BELLA, ED AND TOM FINISH INSTALLING THE TRAP BY THIS POINT)
+.ex 
+Did you bring the bait? 
+.ch er  
+Yep.
+One bottle of Coke Classic and one bag of corn chips.   
+.ad 
+(ED PRODUCES A LARGE BOTTLE OF COKE AND A LARGE BAG OF  
+CORN CHIPS.  HE PLACES THEM ON THE "TRIGGER" OF THE TRAP
+AND STANDS BACK.  TOM GOES OVER TO LOOK AT THEM.  HE IS ABOUT   
+TO DO THE "WHAT HAPPENS IF I PICK THIS UP" BIT WHEN BELLA   
+GRABS HIM BY THE SCRUFF OF THE NECK AND PULLS HIM ASIDE INTO
+THE SHADOWS. ED FOLLOWS)
+.prip "BOTTLE OF COKE CLASSIC"  
+.prip "CORN CHIPS"  
+.ch sa  
+One a.m.   They should be out any time now.  Give the call. 
+.ch er  
+(GEEK VOICE) Computer's up! Computer's up!  
+.ad 
+(RALPH AND NORTON, TWO GEEKS, POKE THEIR HEADS OUT OF THE WINGS AND PEEK AROUND.
+THEIR MOTIONS SHOULD BE MOUSE LIKE.)
+.xx RALPH~AND~NORTON
+Computer's up?  
+.ad 
+(THEY SCURRY AROUND THE STAGE FURTIVELY UNTIL THEY NOTICE THE COKE  
+AND CHIPS)  
+.ch g1  
+Coke!   
+.ch g2  
+Corn chips! 
+.xx RALPH~AND~NORTON
+Sustenance! 
+.ad 
+(THEY RUN FORWARD AND GRAB FOOD.  THE TRAP OPERATES THEN FAILS, 
+SPECTACULARLY, AT THE LAST MOMENT)  
+.ch g2  
+(IN BETWEEN MOUTHFULS OF CORN CHIPS) What do you suppose that is?   
+(INDICATES TRAP)
+.ch g1  
+I'd hypothesize some sort of apparatus for obtaining wild animals.  
+Lions or tigers or bears.   
+.ch g2  
+Oh my!  
+.ch g1  
+It seems to have malfunctioned.  Maybe we should try to effect repairs. 
+.ad 
+(RALPH AND NORTON EXAMINE MACHINE)  
+.ch g2  
+Here's the problem.  They neglected to engage the grapplegrommet with   
+the filbert flange. 
+.ad 
+(BELLA LOOKS DAGGERS AT TOM WHO LOOKS BACK SHEEPISHLY.  RALPH AND NORTON REPAIR 
+MACHINE.  WHUMP.    
+RALPH AND NORTON ARE CAPTURED.  
+BELLA, ED AND TOM GO OUT TO EXAMINE THEM)   
+.ch sa  
+Measure them.   
+.ad 
+(ED LAYS RALPH AND NORTON OUT FLAT AND TOM TAKES A RULER FROM   
+NORTON'S POCKET.  HE MEASURES THE GAP BETWEEN THE CUFF AND  
+SHOE)   
+.prip "RULER"   
+.ch tm  
+(MEASURING NORTON)  Two and a half inches.  
+.ch sa  
+Too short.  Tag him and throw him back. 
+.ad 
+(ED TAKES OUT A LARGE STAPLE GUN AND STAPLES A TAG TO NORTON'S EAR. 
+NORTON RUNS OFF SCREAMING)  
+.prip "LARGE STAPLE GUN"
+.prip "TAG" 
+.ch tm  
+(MEASURING RALPH)  Four inches. 
+.ch sa  
+Perfect! (TO TOM) Go tell the rest of the group at the Campus Centre
+that we'll be there soon.   
+.ad 
+(TOM LEAVES.
+ED AND BELLA START TO TIE UP RALPH) 
+.ex 
+Okay, this is how I want the meeting to go...   
+.ld 
+(LIGHT DOWN FOR SET CHANGE) 
+.ad 
+(ENTER HOWARD)  
+.ld 
+(SPOT ON HOWARD)
+.ch ep  
+This present speech is an example of self reference.
+Self reference occurs when  
+a character within a play makes reference to the play itself.   
+Self reference can be clever and subtle but at other times it can be
+nothing more than a cheap device to cover an awkward transition.
+When indulging in self reference be sure never to mention 16 ton
+weights falling out of nowhere...   
+.ad 
+(WHUMP.  TECHIES APPEAR AND CLEAR UP THE MESS.  PERHAPS THE 
+SAME ONES WHO HAVE JUST COMPLETED THE SET CHANGE)   
+.prip "16 TON WEIGHT"   
+.ld 
+(SPOT OUT.  LIGHTS UP)  
+.ad 
+(LIGHTS UP ON A CIRCLE OF FOUR CHAIRS AROUND A CIRCULAR 
+TABLE IN THE CAMPUS CENTRE.  TYRONE IS SLEEPING IN ONE OF THE CHAIRS WITH   
+HIS HEAD BACK AND MOUTH OPEN.  HE WEARS A VEST COVERED IN BUTTONS SUCH  
+AS "SAVE THE WHALES" AND "NO NUKES".
+SOMEWHERE ELSE ON STAGE, CUPID, DISGUISED AS A STUDENT, IS SITTING AND  
+READING A BOOK.  HIS BOW AND ARROWS ARE BESIDE HIM, VISIBLE TO THE  
+AUDIENCE.   
+HE TAKES NOTES OCCASIONALLY THROUGHOUT THE REST OF THE SCENE.   
+IRMA ENTERS AS THE OFFSTAGE VOICE SPEAKS.   
+SHE IS CARRYING TWO TEXTBOOKS)  
+.prip "TEXTBOOKS"   
+.ch tu  
+(OFFSTAGE)  
+The last Safety Van is now leaving. 
+.ad 
+(IRMA QUIETLY WALKS UP BEHIND TYRONE AND SLAMS THE BOOKS TOGETHER.  
+TYRONE JUMPS UP.)   
+.ch pa  
+Don't shoot!  For crying out loud, Irma, why did you do that?   
+.ch ed  
+You've got to keep alert.   
+If that had been an AK47 assault rifle, you'd be toast. 
+.ad 
+(IRMA DROPS HER BOOKS ON THE TABLE AND SITS DOWN.  TYRONE SITS DOWN, PICKS UP   
+A BOOK, AND READS THE TITLE)
+.ch pa  
+"The Molotov Cocktail and its   
+Social Impact".  Irma, are you serious? 
+.ch ed  
+Honestly, I don't know why I go out with a gutless wimp like you.   
+.ch pa  
+Because I don't phone the cops when you hit me. 
+.ad 
+(ENTER HARRY AND MUFFY.  HARRY LOOKS LIKE A HIPPIE.  MUFFY IS VERY PREP)
+.ch ga  
+Hi guys.  Peace.  This is Muffy.
+.ad 
+(TYRONE'S MOUTH DROPS OPEN AT THE SIGHT OF MUFFY)   
+.ch pa  
+Hello, I'm Tyrone.  
+.ad 
+(TYRONE STANDS UP AND FALLS OVER THE TABLE TRYING TO SHAKE MUFFY'S HAND)
+.ex 
+Welcome to our protest meeting. 
+.ch mu  
+Hi. 
+.ad 
+(MUFFY SITS AWAY FROM TYRONE BUT NEXT TO HARRY) 
+.ch ed  
+Wonderful.  So you unilaterally decided to risk the security of our operation   
+by bringing in an outsider. 
+.ch ga  
+Chill out, babe.  The cause 
+reached out to her and she felt touched.
+.ch ed  
+She looks touched, all right.   
+.ch pa  
+Don't mind Irma.  She's a little paranoid.  
+.ch ed  
+Paranoid!?  
+Is that what they're saying about me now?   
+.ad 
+(IRMA INFLICTS PHYSICAL PAIN ON TYRONE) 
+.ch pa  
+So how did you get interested in
+our movement?   
+.ch mu  
+The latest issue of People magazine mentioned that pointless
+protest groups are in this year.
+.ad 
+(TYRONE TAKES OUT A CIGARETTE)  
+.ch pa  
+Mind if I smoke?
+.ad 
+(TYRONE LIGHTS UP A CIGARETTE.  
+ENTER TRISHA WITH LARGE FIRE EXTINGUISHER.  
+SHE SPRITZES TYRONE WITH IT)
+.ch tu  
+Thank you for not smoking.  
+.ad 
+(EXIT TRISHA)   
+.prip "CIGARETTE AND MATCHES"   
+.prip "FIRE EXTINGUISHER"   
+.ch ed  
+I like her style.   
+.ch mu  
+So why are we protesting?   
+.ch pa  
+To convey to the administration our deep concern over the mandatory 
+CUPID fee.  
+.ch ga  
+To show the establishment pigs  
+that the people cannot be pushed around.
+.ch ed  
+To kick some ass.   
+.ad 
+(ENTER TOM) 
+.ch tm  
+I'm glad to see so many of you could make it at such a late hour.   
+Do you have any concerns you would like to raise before the 
+meeting actually begins?
+.ad 
+(TOM IS IGNORED BY EVERYONE.  THE OTHERS TALK AMONGST THEMSELVES.   
+TYRONE IS TRYING TO PICK UP 
+MUFFY)  
+.ch ga  
+Yeah, man.  We're short some chairs.  Go find some. 
+.ch tm  
+Right on, brother.  
+.ad 
+(TOM GOES TO GET CHAIR.  ENTER BELLA AND ED)
+.ch sa  
+All right, what have we got?
+.ch pa  
+We've come up with a name.  
+Students for Termination of the Undergraduate Program for Intelligent   
+Dating. 
+.ch sa  
+But that's STUPID!  
+.ch pa  
+Exactly!
+.ad 
+(BELLA RAISES HER EYES UNTO THE HEAVENS)
+.ch ga  
+I've drawn up a preliminary resolution. 
+.ad 
+(TAKES OUT LARGE SHEAF OF PAPER)
+.prip "LARGE SHEAF OF PAPER"
+.ex 
+Whereas the fascist imperialist oppressors have committed atrocities
+against the free peoples of the world including, but not restricted to, 
+
+the Roman invasion of Britain in 54 B.C.... 
+.ch sa  
+Get to the point!   
+.ch ga  
+(STARTS TO SKIM)  Attila the Hun... 
+the Spanish Inquisition...  
+invention of chastity belts...  
+cruise missiles...  
+manufacture of inferior cosmetics...
+.ch mu  
+That's mine.
+.ad 
+(WHILE THIS IS GOING ON TOM ARRIVES WITH CHAIR) 
+.ch sa  
+No.  Really? (SITS DOWN)
+.ad 
+(TOM GOES OFF AND GETS ANOTHER CHAIR)   
+.ch ga  
+...McDonald's...
+...and penguin lust.
+.ad 
+(STOPS SKIMMING)
+.ex 
+Therefore, be it resolved that we don't like CUPID. 
+.ch sa  
+(SARCASTICALLY) Wonderful.  Has anyone done anything useful?
+.ad 
+(SHORT SILENCE.  BELLA NODS AT ED)  
+.ch er  
+We have to do something to stop CUPID.  
+.ch ga  
+We can organize a sit-in... 
+.ch ed  
+...blow the damn thing up!...   
+.ad 
+(ENTER TOM STRUGGLING WITH CHAIR)   
+.ch tm  
+...throw another pie?   
+.ad 
+(ALL TURN AND STARE UNSYMPATHETICALLY AT TOM WHO WILTS AND  
+DROPS CHAIR, NARROWLY MISSING TYRONE'S FOOT.  ED SITS DOWN. 
+TOM GOES AND GETS ANOTHER CHAIR)
+.ch ed  
+A few kilos of TNT and bang, end of problem.
+.ch mu  
+Oooh, yuck.  Bombs are messy and inherently dangerous.  
+.ch ed  
+(TAKING PAPER BAG FROM UNDER CHAIR)  Nah, they're perfectly safe.  I've got 
+one right here. 
+.ad 
+(TYRONE SHRIEKS AND HIDES BEHIND MUFFY'S CHAIR.  IRMA TAKES SANDWICH OUT
+OF BAG, GRINS AT TYRONE AND TAKES LARGE BITE.   
+TYRONE RESUMES HIS SEAT)
+.prip "PAPER BAG WITH SANDWICH" 
+.ch sa  
+All those in favour of explosives?  
+.ad 
+(IRMA RAISES HAND)  
+.ex 
+All opposed?
+.ad 
+(BELLA, ED, MUFFY, HARRY AND TYRONE RAISE HANDS.  TOM ARRIVES WITH  
+ANOTHER CHAIR,  
+SEES BELLA'S HAND RAISED, AND RAISES HIS OWN.  THIS ACTION CAUSES HIM   
+TO DROP A CHAIR ON TYRONE'S FOOT. TOM SITS DOWN)
+.ch ed  
+All right, wimps, what now? 
+.ad 
+(BELLA NODS AT ED)  
+.ch er  
+Why don't we sabotage the machine without using explosives? 
+.ch sa  
+Hmm, not bad.   
+.ch tm  
+Darn right! 
+.ch pa  
+But how?
+.ch er  
+We could capture a computer geek and force him to destroy CUPID.
+.ch pa  
+But where are we going to get a computer geek?  
+.ad 
+(BELLA SIGNALS TO ED, WHO LEAVES.  BELLA TAKES OUT PEN  
+AND MAKES OBVIOUS SHOW OF DROPPING IT)  
+.prip "PEN" 
+.ch sa  
+Whoops. 
+.ch tm  
+Let me get that for you.
+.ad 
+(TOM GETS UP TO GET PEN AND HANDS IT TO BELLA.  
+ENTER ED WITH RALPH.  HE HAS HIS HANDS TIED IN FRONT OF HIM AND 
+IS CLUTCHING A HALF-EMPTY BAG OF CORN CHIPS.  HE LOOKS SCARED AND   
+IS TREMBLING.   
+ED PLACES HIM IN CHAIR TOM HAS JUST VACATED.
+TOM, FINDING ALL CHAIRS OCCUPIED, IS MOMENTARILY AT A LOSS THEN 
+ASSUMES POSITION OF INTERROGATOR OF RALPH)  
+.prip "HALF-EMPTY BAG OF CORN CHIPS"
+.ch tm  
+(MENACINGLY)  All right, geek, I'm going to ask you some questions  
+and you're going to give me some answers!  Get it?  
+.ad 
+(RALPH NODS AND TREMBLES)   
+.ex 
+And if you don't cooperate we'll do something real nasty
+like... like... 
+.ch ed  
+Like stuffing your navel full of nitroglycerine and sending you 
+on a bike ride behind Waterloo Square.  
+.ch mu  
+Hey!  Can't you see the poor little fella is scared out 
+of his wits?  Have some compassion. 
+.ad 
+(MUFFY GOES TO RALPH, KNEELS AND PATS HIM ON THE ARM.  HE LEANS CLOSER TO HER)  
+.ch ed  
+Give me a break.
+.ch sa  
+(GLARING AT COMPANY)
+Can we get on with this?
+.ch tm  
+OK, geek, talk now! 
+.ch g1  
+Wh-wh-what about?   
+.ch mu  
+What's your name?   
+.ch g1  
+Ralph.  What's yours?   
+.ch mu  
+Muffy.  
+.ch g1  
+
+.....bf.
+fass
+
+
+
+That's a very pretty name for a very pretty lady.   
+.ch mu  
+Why, thank you. 
+.ch pa  
+Wonderful.  We get the Cyrano of geeks. 
+.ch sa  
+Enough. 
+What do you know about CUPID, geek? 
+.ch mu  
+(INDIGNANT) Ralph.  
+.ch sa  
+OK, Ralph.  
+.ch g1  
+Cupid is the Roman analogue of the Greek god of love, Eros.  Eros was   
+the progeny of Aphrodite and -- 
+.ch tm  
+Not that Cupid.  CUPID the computer.
+.ch g1  
+I've never heard of it.  Is that the new IBM mainframe? 
+.ch sa  
+The computer on campus that's doing the dating matches. 
+.ch g1  
+(CONDESCENDINGLY)  Oh!  That's not a computer.  That's just software.   
+You see, the word "computer" designates a hardware configuration,   
+whereas software -- 
+.ch sa  
+Fine.  We want to sabotage CUPID, and you're going to do it for us. 
+.ch g1  
+Why?
+.ch sa  
+(CONVERSATIONALLY)  
+Because if you don't we'll tie you to a lawn chair and leave you out to 
+watch the sun rise. 
+.ch g1  
+(TERRIFIED) No. Not the sun. (SIBILANT) It hurts us. It hurts us.   
+.ch mu  
+(LOOKING DEEP INTO RALPH'S EYES) Ralph, do it for me.   
+.ch g1  
+OK. 
+.ad 
+(ED UNTIES RALPH)   
+.ch sa  
+What will you need? 
+.ch g1  
+A terminal, a modem and a six pack of Coke Classic. 
+.ch sa  
+Tom.
+.ad 
+(BELLA POINTS OFFSTAGE.  TOM EXITS) 
+.ex 
+(TO RALPH)  
+Now here's what I want you to do... 
+.ld 
+(LIGHTS DOWN)   
+.ad 
+(ENTER HOWARD (POSSIBLY BANDAGED))  
+.ld 
+(SPOT ON HOWARD)
+.ch ep  
+This present speech is an example of reincorporation.   
+Reincorporation occurs when the writers bring back something
+that got a laugh before in the hope that it will get a laugh again. 
+.ad 
+(HOWARD THEN REALIZES WHAT THIS MEANS.  
+HE FLINCHES, THEN HOLDS UP A SIGN READING "OH NO, NOT AGAIN".   
+THE 16 TON WEIGHT FALLS ON HIM AGAIN.   
+WHUMP)  
+.prip "'OH NO, NOT AGAIN' SIGN" 
+.prip "ANOTHER 16 TON WEIGHT"   
+.ld 
+(SPOT OUT)  
+.es 

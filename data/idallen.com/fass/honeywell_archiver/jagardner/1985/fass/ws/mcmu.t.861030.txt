@@ -1,0 +1,434 @@
+
+
+
+..]....k
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so jagardner/../fassmac.t  
+.bs 1 1 "Duel Personalities"
+.na rh ROBIN~HOOD ROBIN 
+.na lj LITTLE~JOHN JOHN 
+.na mm MAID~MARIAN MARIAN   
+.na ft FRIAR~TUCK TUCK  
+.na ws WILL~SCARLET WILL
+.na sn SHERIFF~OF~NOTTINGHAM SHERIFF
+.na ad ALAN-A-DALE ALAN 
+.na cf FRANCOIS FRANCOIS
+.na ca ARMAND ARMAND
+.na fi FIFI FIFI
+.na cr RENEE RENEE  
+.na cg GASTON GASTON
+.na g1 GUARD1 GUARD1
+.na g2 GUARD2 GUARD2
+.na cs CASSANDRA~THE~WITCH CASSANDRA
+.ld 
+(LIGHTS UP ON A CLEARING IN THE FOREST. GASTON AND RENEE, A WAITER AND WAITRESS ARE THERE. ENTER FRANCOIS, A CHEF.) 
+.ch cr  
+Bon jour, Francois. Did you find the way to the Sheriff's castle?   
+.ch cf  
+No. We must find it if we are going to cater his banquet. Has Fifi come back yet?   
+.ch cg  
+No. Neither has Armand. 
+.ch cf  
+If you are implying that they are together, I laugh at that. (HE LAUGHS) Fifi is totally faithful to me.
+.ch cr  
+Oh, really? 
+.ch cf  
+All right--one.  She's had one affair.  
+.ch cg  
+One?
+.ch cf  
+Ten.  She's had ten affairs. Fifteen at the most.  Maybe twenty.
+.ad 
+(THEY WAIT A SECOND)
+.ex 
+A year.  Twenty a year. But I want you to know that I am not taking this lying down.
+.ch cr  
+Fifi is.
+.ch cf  
+I challenged her last lover to a duel to the death. 
+.ch cg  
+Who won?
+.ch cf  
+Moi, of course. 
+.ch cr  
+By default. He didn't tell the other man where it was.  
+.ad 
+(ENTER FIFI AND ARMAND, BOTH CATERERS, BOTH DISHEVELLED)
+.ch fi  
+Francois! I am sorry we are late, but Armand's horse broke down and we had to spend the night in the forest. You do believe me, don't you?  
+.ch cr  
+His 
+.ul 
+horse   
+broke down? 
+.ch ca  
+A hoof went flat.   
+.ch fi  
+We had to wait all night for someone with a foot pump.  
+.ch ca  
+I hope you don't mind.  
+.ch cf  
+Mind? Why should I mind if you are the latest in a seemingly endless stream of my wife's lovers?
+Why should I mind that Fifi prefers great hulking apes with the mental capacities of trees? 
+.ad 
+(WITH AN INARTICULATE CRY OF RAGE ARMAND GRABS FRANCOIS)
+.ch cf  
+I hope you didn't take that personally, big fella.  
+.ad 
+(ENTER ROBIN HOOD, LITTLE JOHN, FRIAR TUCK, ALAN-A-DALE AND WILL SCARLET)   
+.ch rh  
+We have to find a way into the castle to rescue Marian. 
+.ch ft  
+It's too risky. The place is loaded with guards.
+.ch cf  
+No, really, Armand, I would love to fight you--to the death. But I think we are 
+forced to set aside our personal differences until we find the way to the castle.   
+.ch cg  
+Look. Maybe these people know the way to the castle.
+.ch cf  
+Thanks, Gaston. It's too bad that we are French and they are English. We do not 
+speak the same language; they will not understand us.   
+.ch cr  
+Fortunately, I speak the English language.  
+.ch cf  
+I'm gonna die.  
+.ad 
+(RENEE GOES OVER TO ROBIN & CO. AND SPEAKS TO THEM IN AN INCREDIBLY EXAGGERATED 
+ENGLISH ACCENT.)
+.ch cr  
+Cheerio, hello, what-ho. I say, smashing good day, isn't it? Better than a poke in the eye with a sharp stick, eh what? 
+.ad 
+(ROBIN LOOKS AT LITTLE JOHN. LITTLE JOHN TWIRLS A FOREFINGER NEXT TO HIS TEMPLE.)   
+.ex 
+We're lost, don't you know. Bit of astray and all that. Not quite got our bearings, you understand  
+. Eh, eh, eh what, eh?  
+.ch ft  
+Where are you trying to go? 
+.ch cr  
+Go? Go? Why--to the castle. The palace, citadel, hold, keep, all of that.   
+We are caterers, here to "do up", as you English say, the wedding of the Sheriff
+of Nottingham to some young maiden. Dame. Broad. Tart. Piece of.... 
+.ch rh  
+I know what you mean. (SNAPS HIS FINGERS) I think I've found us a way into the castle.  
+(TO CATERERS) Why don't you just follow us? 
+.ad 
+(EACH MERRY MAN TAKES ONE OF THE CATERERS AND THEY EXIT)
+.sd 
+(FIVE RAPID THUMPS) 
+.ld 
+(LIGHTS UP ON THE REST OF THE STAGE. WE ARE LOOKING AT THE MAIN BANQUET HALL OF 
+THE CASTLE. THE SHERIFF IS THERE. MARIAN IS BROUGHT INTO THE ROOM BY TWO GUARDS.)   
+.ch mm  
+You loathesome slug. You despicable slime-dwelling parasite.... 
+.ch sn  
+(ELMER FUDD VOICE) Quiet! This is just my job. Do you think I would muwdew, wape and piwwage if I didn't
+.ul 
+have
+to? 
+.ch mm  
+Yes.
+.ch sn  
+Cowwect. But enough small talk. No doubt you want to know what my nefawious pwan
+is? 
+.ch mm  
+No. 
+.ch sn  
+It's a weawwy good pwan.
+.ch mm  
+Whom did you steal it from? 
+.ch sn  
+It's all a twap for Wobin.  
+.ch mm  
+The old "Use Marian as Bait for Robin" trick. That's the fourth time this year. 
+Let's save time; I'll escape now!   
+.ch sn  
+On our wedding day? 
+.ch mm  
+Our what?   
+.ch sn  
+You and I are getting married, my dawwing Mawian.   
+.ad 
+
+(MARIAN LAUGHS) 
+.ex 
+I am quite sewious. This will bwing Wobin to me.
+.ch mm  
+And what makes you think I'll co-operate?   
+.ch sn  
+I'd like you to meet: Cassandwa!
+.sd 
+(THUNDER AND LIGHTNING. ENTER CASSANDRA)
+.ch cs  
+You called me, shorty?  
+.ch sn  
+No, I called you Cassandwa. 
+.sd 
+(THUNDER AND LIGHTNING) 
+.ex 
+I want you to make Mawian   
+.ex 
+wove
+me. 
+.ad 
+(CASSANDRA LAUGHS)  
+.ch cs  
+No way. It can't be done. You're just too much of a.... 
+.ch mm  
+Sawed-off two-bit vile dung-eating son of a syphilitic whore!   
+.ch cs  
+That's it.  
+.ch sn  
+Guards, gag Mawian. 
+.ch g1  
+I know a man with a wooden leg named Smith. 
+.ch g2  
+What's the name of his other leg?   
+.ch mm  
+(LOWER VOLUME) You rodent! You worm! You engineer!  
+.ch g1  
+Why was Helen Keller's leg yellow?  
+.ch g2  
+Her dog is blind, too.  
+.ch mm  
+(WHISPER)   
+I'll get you for this....   
+.ch g1  
+What do you call a guy who turns into a building when there's a full moon?  
+.ch g2  
+A warehouse?
+.ad 
+(MARIAN OPENS HER MOUTH, BUT NO SOUND COMES OUT)
+.ch cs  
+I can't make Marian love you. But I can put in a new personality, one that might love you.  
+.ch sn  
+How much would it cost? 
+.ch cs  
+Twenty-five gold pieces.
+.ch sn  
+Too much.   
+.ch cs  
+Look, shorty:   
+.ch sn  
+Don't call me that! 
+.ch cs  
+Look, stupid: I can use a cheaper spell, but there will be side effects. Any little sound could cause her personality to change again.  
+.ch sn  
+I'll be quiet.  
+.ch cs  
+Not only that, I can't guarantee that the new personality won't break down. You 
+could end up with twenty or twenty-five personalities all sharing her body. 
+.ch sn  
+Just so wong as I get to shawe her body.
+.ch cs  
+You're a sick man.  
+.ch sn  
+I know. 
+.ad 
+(CASSANDRA GOES OVER TO MARIAN, MESMERIZES HER WITH A FEW HAND PASSES. THE GUARDS   
+LET GO. THE FOLLOWING INCANTATION SHOULD BE READ WITH INCREASING SPEED.)
+.ch cs  
+.ve 4   
+Eye of newt and wool of bat 
+Village food and Garfield cat   
+Lizard sneeze and claw of bear  
+Phyllis Schlaffly's underwear   
+.ve 4   
+Marian was feministic   
+But now you'll be anachronistic 
+Cooking, cleaning, doing dishes 
+Following your husband's wishes 
+.ve 4   
+Engineers will all adore you
+
+I.S. students will abhor you
+It's a matter of degree 
+And all you've got's a B.Sc.
+.ex 
+.ad 
+(SHE SNAPS HER FINGERS; MARIAN COMES OUT OF IT AS SUZIE HOMEMAKER)  
+.ch sn  
+Mawian? How do you feel?
+.ch mm  
+This room is going to have to be redone! First we'll change those tapestries
+for something a little less--   
+.ul 
+kitsch. 
+Then, I think, new furniture.   
+.ch cs  
+(TO AUDIENCE) Isn't it disgusting what we'll to do people for money?
+.ch mm  
+You will get me new furniture, won't you, Notty-wotty? Because if you don't,
+I'll be ever so cross with you. No more snuggle-bunny.  
+.ch cs  
+Pay me. Before I vomit. 
+.ch sn  
+All wight. I'll have someone take you to the tweasuwy, Cassandwa.   
+.sd 
+(THUNDER AND LIGHTNING. IN FEAR, MARIAN CLINGS TO SHERIFF)  
+.ch mm  
+Oh, Notty-wotty, you're so big and strong.  
+.ch sn  
+Guard!  
+.ad 
+(HE SNAPS HIS FINGERS. MARIAN CHANGES BACK TO HERSELF, FINDS SHE'S CLINGING 
+TO THE SHERIFF AND KNEES HIM IN THE GROIN.) 
+.ch sn  
+(FALSETTO)  
+Stop her!   
+.ad 
+(THE GUARDS GRAB MARIAN)
+.ch cs  
+I warned him.  (SNAPS FINGERS) What a jerk. What a maroon.  
+.ad 
+(NOW IS PROBABLY A GOOD TIME TO POINT OUT THAT EACH OF MARIAN'S PERSONALITIES SHOULD
+HAVE A DIFFERENT POSTURE, SO THAT WHEN THE SIGNAL IS GIVEN, MARIAN IS JERKED AROUND 
+LIKE A PUPPET)  
+.ch mm  
+(SUZIE) Those nasty stains will come out of your doublet and hose if we just soak   
+them overnight in cold water and then hand-wash them.   
+.ch sn  
+(TO GUARDS) You, take Cass--
+.ld 
+(LIGHTNING) 
+.ch cs  
+Wait for it!
+.ch sn  
+--Andwa 
+.sd 
+(THUNDER)   
+.ex 
+to the Tweasuwy, and you take Mawian to her chambews to put on her wedding gown.
+.sd 
+(HUGE DOORBELL) 
+.ex 
+And I'll get the door.  
+.ad 
+(GUARDS EXIT WITH CASSANDRA AND MARIAN. SHERIFF OPENS DOOR; ENTER ROBIN AND WILL
+AS WAITERS, TUCK AS CHEF AND LITTLE JOHN AND ALAN-A-DALE AS WAITRESSES. LITTLE  
+JOHN'S OUTFIT IS FAR TOO SMALL FOR HIM; HE IS NOT PLEASED.) 
+.ch rh  
+Hi. We're the caterers. We're from France.  
+.ch sn  
+Good. You're just in time. What are your names? 
+.ch rh  
+Roderick Lawford, Bradley Bradford, Rowena Richards, Lorelei Mullally and I'm   
+Llewellyn Lowell.   
+.ch sn  
+Wodewick Wawfowd, Bwadwey Bwadfowd, Wowena Wichawds, Wowewei Muwwawwy and   
+Wwewewwyn Woweww. Wight. Awe you suwe you'we fwom Fwance?   
+.ch rh  
+Absolutely. Je suis voulez-vous coucher avec moi ce soir.   
+.ch ft  
+Crepes suzette. 
+.ch ws  
+Rene Levesque.  
+.ch ad  
+(SINGS) Neuf-six-sept, onze, onze.  
+.ch sn  
+(TO LITTLE JOHN) Awen't you going to say something Fwench?  
+.ch lj  
+Bug me and I'll break your face.
+.ch sn  
+Cwose enough.   
+.ad 
+(ENTER MARIAN, IN WEDDING GOWN) 
+.ex 
+Ah, there you are, deaw. You wook absowutewy wadiant. Would you wike to give
+instwuctions to the catewews?   
+.ch mm  
+Of course, sweetheart. Now, what entrees-- Oh, this will never do. (SHE TAKES   
+LITTLE JOHN ASIDE) Dear, you should never come to an affair like this with  
+torn nylons.
+.ch lj  
+I'm leaving.
+.ad 
+(MARIAN STOPS HIM)  
+.ch mm  
+It's not that bad, I think we can find a pair in the castle to fit you--and if  
+you put them in the freezer they'll last longer. Don't forget to shave your legs.   
+.ch ws  
+Marian! Don't you recognize us? 
+.ch mm  
+Of course. You're the caterers. Now, should the hors d'eouvres be pate de foie  
+gras or goose liver? I can never keep those two straight.   
+.ch ws  
+Maybe she's under a spell.  
+.ch rh  
+Of course! (SNAPS HIS FINGERS)  
+.ch mm  
+Robin! you're here! Watch out, it's a trap! 
+.ch sn  
+So, Wobin Hood, we meet again. Guards! (FINGERSNAP) 
+.ch mm  
+(VALLEY GIRL) Oh, wow. Like, is there going to be a fight? 'Coz, like I just
+did my nails with this really gnarly polish. (POINTS TO LITTLE JOHN) Who's the  
+space cadet?
+.ch lj  
+I'm leaving.
+.ch rh  
+Wait, Little John, this fight will be a (FINGERSNAP).   
+.ad 
+(MARIAN IS CAUGHT BETWEEN ROBIN AND THE SHERIFF. AS A COMMUNIST)
+.ch mm  
+We must overthrow the bourgeoisie slumlords amd make the rich pay!  
+.ch sn  
+Guards! (FINGERSNAP)
+.AD 
+(ENTER GUARDS. LOTS OF GUARDS)  
+.ex 
+Don't attack them yet. I want Mawian!   
+.ch mm  
+(SEXPOT) I  
+(SEXPOT) And I want you...all of you.   
+.ad 
+(ROBIN AND THE SHERIFF BEGIN "DUELING FINGERSNAPS"; MARIAN SWITCHES PERSONALITIES.  "DUELING FINGERSNAPS" LEADS INTO:   
+.SB "THE SYBIL STRUT" "THE ADDAMS FAMILY THEME" 
+MARIAN:   I've got more selves than Sybil'd 
+          And all of them have quibbled 
+          Like Romeo and Tybalt 
+          Why can't they let me be? 
+.ve 3   
+MARIAN:   Sweet 
+SUZIE:    Neat  
+SEXPOT:   In heat   
+.ve 4   ACH 
+
+VALLEY:   Fer shure like really bitchin'
+SUZIE:    My place is in the kitchen
+MARIAN:   My IDs keep on switchin'  
+          There's more than one of me   
+.ve 3   
+          Strange   
+          Changed   
+          Deranged  
+.es 
+.ch g1  
+.ad 
+(MARIAN COLLAPSES.) 
+.ch g1  
+She's out of the way. Get them! 
+.ad 
+(AS ROBIN AND HIS MEN FLEE FOR THEIR LIVES, 
+.ld 
+(THE LIGHTS COME DOWN.) 

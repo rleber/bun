@@ -1,0 +1,464 @@
+
+
+
+...J..x.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so 84macr.t
+.bs 3 0 "COMMERCIALS"   
+.na v1 VOICE~OVER~1 VOICE~1 
+.na v2 VOICE~OVER~2 VOICE~2 
+.na v3 VOICE~OVER~3 VOICE~3 
+.na pd PRESTON~DIGITATION PRESTON   
+.na sd SARAH~DOCTORINDEHOUSE SARAH  
+.na am ANNOUNCER ANNOUNCER  
+.na jm JEWISH~MOTHER MOTHER 
+.na mp MILK~PERSON MILK 
+.na ep EGGS~PERSON EGGS 
+.na bp BUTTER~PERSON BUTTER 
+.na bf BEEF~PERSON BEEF 
+.na cp CHEESE~PERSON CHEESE 
+.na lb LITTLE~BOY BOY   
+.na yw BUFFY~LOWE BUFFY 
+.na ym MEL~LOWE MEL 
+.na no NORTON~NASH~THE~SEWER-WORKER NORTON  
+.na ne DEBORAH~LIVE DEBORAH 
+.na bk PENNY~FARTHING PENNY 
+.na ss SUZANNE~SUZANNABANANA SUZANNE
+.na we ERIC~WEASEL ERIC 
+.na gu DAN~NUISANCE DAN 
+.na gi HEATHER~GEORGIEGIRL HEATHER  
+.na ph PHYLLIS~SANDFLEA PHYLLIS 
+.na hu JAY~CLOTH JAY
+.na wi TERRI~CLOTH TERRI
+.na kk BILLY~&~SUZIE~CLOTH BILLY~&~SUZIE
+.na wo WANDA~OSTLANDER WANDA
+.na ft FRITZ~DE~REALTHING FRITZ 
+.ad 
+(BEFORE ACT I, SCENE 0:)
+.ld 
+(IN DARKNESS)   
+.ch v1  
+They laughed when I sat down to play the piano. 
+.ld 
+(PIANIST COMES OUT, SITS AT PIANO STOOL, STOOL COLLAPSES.)  
+.ex 
+.sp 3   
+.ad 
+***   CRAPPER COMMERCIAL   ***  
+.ad 
+(BEFORE ACT I, SCENE 1:)
+.ld 
+(THE ONLY LIGHT USED IN THIS COMMERCIAL IS A SINGLE, TIGHT SPOT ON ONE OF   
+OF THE SLOTS.  THE SEQUENCE FOLLOWED FOR THE BLACKOUTS IS AS FOLLOWS:  LIGHTS   
+OUT, THEN SOUND OF TOILET FLUSHING AS CLOSE AFTER AS POSSIBLE)  
+.ad 
+(LITTLE BOY.  HE LOOKS LOST)
+.ch lb  
+Mommy?  What happened to my baby alligator? 
+.ld 
+(LIGHT OUT) 
+.sd 
+(TOILET FLUSHING.   
+ANNOUNCER COMES ON OVER SPEAKERS)   
+.ch v2  
+From America's greatest living horror writer, Stephen King. 
+The man who brought you Carrie...The Shining...and Christine...comes his
+most frightening novel yet--
+.ld 
+(SPOT UP ON BUFFY LOWE FUSSING WITH HAIR)   
+.ch yw  
+I'll be with you in a minute dear.  I just have to fix my hair. 
+.ld 
+(SPOT OUT)  
+.sd 
+(TOILET FLUSHING)   
+.ch v2  
+Stephen King presents...Crapper.
+.ld 
+(SPOT UP, TIGHT ON HEAD AND SHOULDERS OF MEL LOWE)  
+.ch ym  
+Buffy?  What's taking you so long...Buffy--?
+.ad 
+(HE LOOKS DOWN, RECOILS IN SHOCK AND HORROR)
+.ex 
+Oh my god....   
+.ld 
+(SPOT OUT)  
+.sd 
+(TOILET FLUSHING)   
+.ch v2  
+A novel of terror...and of the brave sewerworker who tried to fight it....  
+.ld 
+(SPOT UP ON NORTON, FROM "THE HONEYMOONERS.")   
+.ch no  
+Hey, Ralphie boy, you there?  Hey, hey, Ralph, don't try to kid me...you there  
+Ralph?  
+.ld 
+(SPOT OUT)  
+.sd 
+(TOILET FLUSHING)   
+.ch v2  
+Crapper...by Stephen King. You won't be able to sit for a month.
+.ld 
+(LIGHTS DOWN.)  
+.ex 
+.sp 3   
+.ad 
+***   SUZANNE COMMERCIAL   ***  
+.ad 
+(BEFORE ACT I, SCENE 2:)
+.ld 
+(LIGHTS UP ON SUZANNE.) 
+.ch ss  
+Hello, I, Suzanne Suzannabanana, am here to talk to you about personal hygiene. 
+You've prawbly never seen a real live celebrity like me, Suzanne Suzannabanana  
+talking about these things but believe me, hygiene can be really important. 
+Like the other week I, Suzanne Suzannabanana, went on a date with a 
+guy named Richard Feeder from New Jersey.  So I went to my apartment and I  
+washed and I put on my clean clothes and I made myself just so cute that I  
+almost couldn't stand it and I waited for this guy to show up.  
+.ti +5  
+Well, he finally shows up and we go out in his car, which prawbly wasn't
+his car but he borrowed it from somebody and as soon as we get in the car I 
+
+start to notice it. 
+Something smells bad.   
+So we're ridin' along and I don't wanna 
+say nothin' cause this guy is takin' me out to dinner and a movie   
+which we never got to because I was sitting there in his car, and he was just   
+a talkin' away like he wasn't noticin' nothing and I was looking around for 
+whatever smelled bad.   
+.ti +5  
+So the first thing I do is I lift my arms real subtle like and checked my   
+armpits just to make sure that my deodorant hadn't burned out but I was still   
+as fresh.   
+So I knew it had to be him. 
+So I, Suzanne Suzannabanana, was sitting
+there and the smell was getting worse and worse until I figured that maybe  
+this guy, Richard Feeder from New Jersey, had a dead animal in his clothes. 
+I couldn't stand it.
+So finally he tells me again that he's from New Jersey and I said to
+him, "If you're from New Jersey, how come you smell like you're from Guelph?"   
+.ti +5  
+So it just goes to show you -- personal hygiene is important so that people 
+won't think you're from Guelph. 
+.ld 
+(LIGHTS DOWN, THEN TO NEXT PIANIST GAG.)
+.ch v1  
+They laughed when I sat down to play the piano. 
+.ad 
+(PIANIST ENTERS AND SITS CAUTIOUSLY ON THE STOOL.   
+
+ONCE HE IS DOWN, A FLASHPOT GOES OFF SOMEWHERE CLOSE TO HIM.)   
+.ex 
+.sp 3   
+.ad 
+***   EXPIRER COMMERCIAL   ***  
+.ad 
+(BEFORE ACT I, SCENE 3:)
+.ld 
+(LIGHTS UP.  SOMEONE COMES IN CARRYING A NEWSPAPER WHOSE FRONT PAGE SHOWS   
+A COFFIN AND THE HEADLINE "IS THERE DEATH AFTER LIFE?") 
+.ch ne  
+The National Expirer!  The paper that tells you the real facts  
+about dead people you admire.   
+In this week's issue, find out why John Belushi wasn't stuffed! 
+Learn new and amazing facts about home embalmings.  
+Read the in-depth real-death atheist's story, "All Dressed Up   
+with No Place to Go."   
+Order a five year subscription now, and receive your free gift of an
+autographed picture of Freddie Prinz in his casket. 
+You say, "How can we afford to give all this to you for only twelve dollars 
+per issue?"  But wait, there's more.
+This week begins a five part expose on the question, "Did Howard Hughes 
+Really Take it With Him?"   
+Try out the Mama Cass Diet Plan.
+Consider the thought-provoking question, "How long until Reagan's one of us?"   
+Or how about "Is Elvis  
+.ul 
+still   
+dead?"  
+Order your subscription buy phoning this toll-free number: 1-800-555-1234,  
+or pick it up at your local funeral home.   
+That's: 1-800-555-1234.  Operator's are standing by.
+Read the National Expirer -- the newspaper for expiring people. 
+.ad 
+(THE MAN FALLS DEAD IN A COLOURFUL WAY.)
+.ld 
+(LIGHTS DOWN.  LIGHTS UP ON BURGER KING AD.)
+.sp 2   
+.ad 
+***   BURGER KING COMMERCIAL   ***  
+.ad 
+(CHORUS SINGING)
+.xx CHORUS  
+   We don't let McDonalds get us
+   Quarter Pounders don't upset us  
+   They use polyester lettuce   
+   Some people say. 
+ (CHORUS CONTINUES IN BACKGROUND WITH)  
+      Have it your way  
+      Have it your way  
+      Have it your way at Burger King...
+.ch bk  
+At Burger King, we flame-broil  
+.ul 
+our 
+burgers, and you select the delicious toppings yourself.
+Oh, about McDonalds?
+We don't want to say anything, but no one ever got cancer   
+eating at Burger King.  
+.ld 
+(BIG SMILES, LIGHTS DOWN.)  
+.ex 
+.sp 3   
+.ad 
+(BEFORE ACT I, SCENE 4:)
+.ld 
+(LIGHTS UP ON SARAH DOCTORINDEHOUSE SITTING IN AN ARMCHAIR. 
+SHE IS WATCHING TV, THE BLUE LIGHT SHINING IN HER FACE.)
+.ch v1  
+Chore laundry detergent!
+It makes your wash smell like a crate of fresh lemons, prevents static  
+cling, and won't hurt the environment.  
+.ch v2  
+Sunspots laundry detergent! 
+It makes your wash smell like two crates of fresh lemons, grounds your  
+clothes in the event of lightning, and won't disturb the natural
+balance fo soil distribution in your clothing's environment.
+.ch v3  
+XYZ laundry detergent!  
+It substitutes as a vitamin-enriched lemonade, turns off your lights to 
+conserve electricity, and assassinates all strip miners within twenty miles.
+.ad 
+(SARAH BREAKS DOWN AT THE INANITIES.)   
+.ch pd  
+Yes, it's getting harder all the time to choose among the wide variety of   
+products available in today's marketplace.  
+What with subliminal messages, promises of bizarre sexual opportunities,
+and endorsements from respected public figures for everything from tampons  
+to tympanis, it's become impossible for the average consumer to make
+intelligent purchasing decisions.   
+.ti +5  
+Well weep no more!  We've just developed an amazing product that will   
+relieve you of the burden of making those painful decisions.
+(HOLDING UP BOX)  It's called Docylenol.
+Just one of these pills each morning and you'll find shopping   .ad immeasurably easier.  Why?  Because we make your decisio
+
+immeasurably easier.  Why?  Because we make your decisions for you. 
+.ti +5  
+Our specially prepared chemical formula ensures that you buy the correct
+products by removing all trace of troublesome personal volition.
+And there's no need to worry -- the package is double-sealed for your   
+protection. 
+Remember Docylenol -- just look for the Obeyer Cross.   
+.ad 
+(PRESTON TURNS TO SARAH WHO NOW RISES TO SING.) 
+.ch sd  
+.sb "DOCYLENOL" "MEMORY"
+Each night I stare into the blue light  
+And I witness a strange sight   
+That creeps into my home.   
+With its glamour, this vision casts me under a spell
+And a voice begins to drone.
+.ve 5   
+"Mem'rex, is it live, is it Mem'rex?"   
+I've developed a complex
+I'm unable to choose
+I remember the time I had the power to decide   
+Now I'm easy to confuse.
+.ve 4   
+Each ad tells me different things   
+It's left me in a quandry   
+I never dreamt that I could have such trouble   
+Just doing my bloody laundry
+.ve 5   
+Save me from this damn television   
+I have reached my decision  
+And I have to give in   
+When the dawn comes my plight will be a memory too  
+And a new day will begin.   
+.ve 4   r: 1You might feel such mind
+
+You might feel such mind control
+Is rather controversial 
+I don't care just as long as I can  
+Survive the next commercial 
+.ve 5   
+Teach me, it's so easy to lead me   
+When this pill that you feed me 
+Takes my freedom of choice  
+If you tell us exactly what you'd like us to buy
+We will answer with one voice.  
+.ch pd  
+Docylenol -- a doubleplusgood way to start your day.
+.ld 
+(LIGHTS DOWN, LIGHTS UP ON THE PIANIST.)
+.ch v1  
+They laughed when I sat down to play the piano. 
+.ad 
+(PIANIST COMES OUT CAUTIOUSLY, FINALLY MANAGES TO SIT DOWN. 
+HE GETS HIT BY A BUCKET OF WATER THROWN FROM THE SLOT.) 
+.ex 
+.sp 3   
+.ad 
+***   PAIN COMMERCIAL   *** 
+.ad 
+(BEFORE ACT I, SCENE 5:)
+.ld 
+(LIGHTS UP ON A SINGING AND DANCING NUMBER.)
+.sb "PAIN" "GENTLEMEN PREFER PAIN"  
+When your sex life is a loss
+Show your lover who's the boss  
+    Gentlemen prefer pain.  
+When the hot tub seems old hat  
+Discipline him with a bat:  
+    Gentlemen prefer pain.  
+.ve 5   
+         You can dominate your husband, 
+         Bind and gag him   
+Whips and leather high-heeled shoes 
+Give your man the black-and-blues   
+    Gentlemen prefer pain.  
+.xx VOICE~OVER  
+Available in fine sporting goods stores everywhere. 
+.ld 
+(LIGHTS DOWN, AND UP ON PIANIST.)   
+.ch v1  
+They laughed when I sat down to play the piano. 
+.ad 
+(PARANOID, THE PIANIST COMES OUT, MAKING SURE THERE IS NO ONE BEHIND HIM,   
+THE STOOL IS OKAY, AND THE COAST IS CLEAR.  
+HE GETS A BATCH OF FLOUR POURED ON HIM FROM ABOVE.) 
+.ex 
+.sp 3   
+.ad 
+***   DENSEPACMAN COMMERCIAL   ***  
+.ad 
+(BEFORE ACT 2, SCENE 1:)
+.sd 
+(FLIGHT OF THE VALKURIES)   
+.ch v1  
+And now, a brand new video game from Dammerung for your Safari computer.  You've
+played PAC-MAN, you've played Ms. PAC-MAN and you've played Baby PAC-MAN.   
+But have you got what it takes for....  
+.ce 
+DENSE PAC-MAN!! 
+Now Dammerung adds a new dimension to video games by combining  
+TWO popular games, PAC-MAN and Missile Command, into one.   
+In DENSE PAC-MAN, you get 100, count 'em, 100 Power Pills.  But!  They're   
+all in one place.  And any attempt to use them blows up the video game. 
+It's tough, but exciting.  Get DENSE PAC-MAN wherever land-based video  
+games are sold. 
+Remember...when you want the Apocalypse now, we say, "Go ter Dammerung!"
+.ld 
+(LIGHTS DOWN)   
+.ex 
+.sp 3   
+.ad 
+***   WEASEL COMMERCIAL   ***   
+.ad 
+(BEFORE ACT 2, SCENE 2:)
+.ld 
+(LIGHTS UP ON ERIC WEASEL.) 
+.ad 
+ON ONE SIDE IS ERIC WEASEL, A GUY IN A LEISURE SUIT AND A SLEAZEMEISTER.
+ON THE OTHER IS AN AVERAGE GUY) 
+.ch we  
+Is this you, sitting at home alone even though fifty percent of the world's 
+population is waiting for you to come out and grant them paradise?  
+Well worry no more because I, Eric Weasel, author of the awesome best-seller
+How To Pick Up Girls, have just put together Eric Weasel's Love Connection (no  
+relation to the TV show of the same name).  Yes, Eric Weasel's Love Connection  
+is guaranteed to end your dating blues forever. 
+You get my famous book, How To Pick Up Girls with its hundreds  
+of helpful hints and pickup lines.  I'll bet you approach women like this.  
+.ad 
+(WOMAN WALKS OUT OF SLOT)   
+.ch gu  
+Hi.  You don't want to go out with me, huh? 
+.ad 
+(SHE DOESN'T NOTICE HIM AT ALL.  THEY FREEZE)   
+.ch we  
+You can be absolutely sure that won't warm the sheets.  
+My book will give you lines like these--
+.ad 
+(BACK TO GUY AND WOMAN. 
+SHE IS WEARING A MOTORCYCLE JACKET WITH MANY ZIPPERS ON IT) 
+.ch gu  
+Hi.  Is this where they keep the frozen 
+
+Hi.  Is this where they keep the frozen racoon? 
+.ch gi  
+No. 
+.ch gu  
+Have you ever wrestled a yeti on national television?   
+.ch gi  
+No. 
+.ch gu  
+Got a zipper fetish?
+.ch gi  
+No. 
+.ch gu  
+Well, I do. 
+.ch we  
+But wait!  There's more.  You'll also get my other famous bestseller, How To
+Make It With A Single Woman.
+.ad 
+(GUY IS READING FROM BOOK AS GIRL IS CONSTRUCTING SOMETHING FROM CARDBOARD.)
+.ch gu  
+Insert Tab A Into Slot D And Fasten Securely.   
+.ad 
+(SHE HOLDS UP A LARGE CARDBOARD SIGN THAT SAYS "IT")
+.ch we  
+But wait!  There's even more than that. 
+You'll also get my other other book, How To Avoid A Woman With Brains.  
+.ch gu  
+Excuse me, miss--?  
+.ch gi  
+Yes?
+.ch gu  
+(TO HIMSELF)
+Damn!  She can talk!
+.ch we  
+How much would you say that's worth: the three books, all bound in genuine  
+soft-grain paper?   
+But wait!  There's more.
+.ad 
+(OUT STEPS PHYLLIS SANDFLEA.  SHE IS DRESSED IN PINK)   
+.ch ph  
+That's right, Eric.  I'm Phyllis Sandflea, activist against women's rights, 
+and you'll also receive a copy of   
+.ul 
+my  
+books, "Special Sex Positions So You Won't Know It's Happening", and
+ .`	Ay..AyG	....
+&.'g`...
+
+ ....."..&...g..G"..D...f......f..&.f.Gb.f'....."..'GF&&..B...P...f.......H..&.......f.g..'b.....f'......F.......'Gb..............F.......'Gb.........H..f'.."..&.......'Gb..G......"..&........&..."..'...&..&....F..B.F...F........F&..'G"..'Gg..............$d.....G......f&.&.&&...F..Gb.&...f'..".....'Gb.&....F..&.f&&..f&..b..'....8............$...b......'...8.......H...g..g....8...&.....BBB...d...%B.d....Dd$$....BBG....8...&.......D...D..$e..B..dd....cB .8.......h....$...b.........dD$...$....$.......dD$...%b.$..e.%...$..b.$.......Ed.%E..........$...%b.....".$....EE".d.%...Eb.$......d.d.%..........."..%..."..$D....%...d....ED.$d.%e..$........b....%.'..P...f..........g......'G..."...&.F&&....'.."........F&...'F.........f...'B..8...f........%Ee...%.....D%...D.......D$...........$.e%D$.b.'...P...f...'........"...d....D$Eb.d.%E."..'..b..G.."........F...........'..b..G.. .@...d...D..$.b........".....F...&..".....F........"..&.....".f...'..f..&....x.......&..f&.........&.......'...F..'......f&&...D".....'...&....&..".....'Gg..`....B...'..f.'G..B.G......."..&......'g......&..............&...B..............(....."...F...&f&.......F..&...........&.&.....f..."..&......'g.........P...f.......@...'F.&....P...f...'.....................G"......F.'....."...".gF&...'b......@...
+................G"......F.'....."...".gF&...'b......F.'....B...'...."...g.....H.."...g..F..GF'....."...g..F..F&.'f..................B....B....f..'..b.....P...f.......P....'B.....P...f...'.........F..........Gb.'F......B.'.'...GF&...............F......G...&..''b.f....b.................f..f&...f&.'Gb.....F.............B....b.'......f....b.&.....'B...'..b....P...f............B.......gb..f&f...'F.......P...f...'......F&..""..g.F&.'...8...&...........e..........b.d.......... .....".e.$...D...D....B....D.%.b......%..."..$...B.....%b..B...B...d........D.%.b.D$.."..%b..%b..$...B....e.D$..b...d.'....8.......x......F&..".&...g.F&......."..'b.......'.'"...B."...&..................'G......x...B....G.....&.'Gb...F.F&F."....F.f'.f..f...b.F....F&........."..&...&........@...&f..f'F.....&..Gf....b.&..........&.....'....&f......B..&.......B.g.&f`.X......"..'..F&....&....&..B..'B.F.f'.f..&..&...f...F..&........f..'..&.....@..&..B.GF&&..............gG".........&..".b..F.F&F."...&........f...'b.F.@....F.f'.f.........".b..'g.&f...&...&......&...F..&.........F...f....P...f..fg...p..........B'...h..........".....'f..........".....'f..g.'".....P...f...'..........f&.b......."..'b.f&......&.....g..F.....'f.......P...f.......X.....f.....8.......8..........'F......'F.....&....&f&......X..'F......'F.....&....&f&.....'b......'C...P...f...'......&...F..F&..."..".........f.G.......'....."...g...&....&....&.....8...&...`...d....D$Eb.".E....B.d.$...$...e.$Eb...Ed... .8................B...dD$.. ........"...f.GG"....&.....F..".......&.........&f...........8............$...b......'...8.......H...g..g....8...&.......D...D..$e..B..dd.....B .8............$...b........$$.....d..$.$$.. .P...f...'........."..'...........".f'............'"......&&.....8...&........$$.%e......Eb.$..d.D..b.......d.......eD.ed.b........%D..e.$...d%EE$$..."..$......E.e..D...D......$.b......$$.%e........$$.%e...$.b..$..'..H...g..g....8...&......BBB....$..B.d....Dd$$....BB@.8.......x....$...b...'..8...&......."..$D................d%D.b..%......"..$..B.....B.....'..P...f.......P.....'ff....Gb...&.."..g..&...B...&f........f.........".f.....&....&..Gg......f....F...GF......P...f.......@.."...&.b."..&f....'b.......'..b..&....B..&.....'..b..".f........&....F.f
+.&...f..&....&.f..'...'b.....B.f&..F&.b.&........F&.g.Gg.&..&'.&......f.......p..'GF'.'....".g...&f...&f....'......B..&..B....P...f.................Gb...g..&...B..&......G.g..f..f...f'....&f'f......P...f.......X......"........&..''b.F....&...&f&.b..G..."....gb......g...'".......F..'...H...'gb.....P...f......."....'..b.@.....`....'..b.F&......Gb...g..&...B....F..&.....F.........'F..f...f&...f'....&f'f...@.........".F..&.&....'........F&.&.&..f&...`.....&f&&..g....&.B........##.....&..&b..&..b..8............$...b.....'....H...g..g....8...&......BBB........d....Dd$$....BBG..8...&...p...".d...D....".$...$...b.D$dd.D...........%.....d$.b..%.....deb.....dd$.Eb....`......$.........b...E.e..".d.......d......... .8.......x....$...b...'..P...f..&....p....B.&.'Gb............'b.F....F.f...'F...'b.&...gf...&&...'G.....&..B..&......`..G....'..."....F..b.F..."..'g..FF&....F.......'F....&F....&...F...g.b...''.&..`...F...&...&..b.&....F.f.gb.f...f..g.F.&.b...&...'F.g..F..&.&'.&..........'....h........'Ff..&...F.'F.b.......'F&.........&f.........B...........&.............h..F..&...CG....8...&...........B.D..%d.......B...d...$..D.ed.b.....%..$..d.'...P...f..F....h...'."..&...F&.....GF.&b.&..B......B.b...'G....G........&...f...'.f..&............g.F....&......"..&f..&............g.'.&..&...f...&..B..F'&.......G..'B..............f....&&..........p...fB.E.....F.'............"B.D.....F&....bG.......$.cB..g......"........."..F..g.. .........&.....&..b.F.f....'.'...f..'@.p............F..b................F..&..F.gf...............&.......&.............'G..............&.b.&.....G"...f....&.`.@...D...%. . `.H......G..........cB...'......b.&.g..&..@...D...%. .H..............D...B..F....f....b................&."..'".&...f.&f..'.................F....f....b.......@...D...%. .H......G.......E....CB..G....B..&f.b.'...'g.....f..F....B..'..F&.. .@...D...%. .H......g....P..d...d.B..f....&..B.f....'B...F...'F......x............&f..'..............F&....F.........@...D...%. .P...f..&....x..F....F.B..&..&........'.......&....'..'...'..b.........F.f......'b."...F.&g.....f.G.&f..G".......'..........'Ff..&...F.'F.b.......'F&....8............$...b.....'....8....g.....%.b.D$.."..%b..%b..$...B....e.D$..b...d.'....8.......x......F&..".&...g.F&......."..'b.......'.'"...B."...&..................'G......x...B....G.....&.'Gb...F.F&F."....F.f'.f..f...b.F....F&........."..&...&........@...&f..f'F.....&..Gf....b.&..........&.....'....&f......B..&.......B.g.&f`.X......"..'..F&....&....&..B..'B.F.f'.f..&..&...f...F..&........f..'..&.....@..&..B.GF&&..............gG".........&..".b..F.F&F."...&........f...'b.F.@....F.f'.f.........".b..'g.&f...&...&......&...F..&.........F...f....P...f..fg...p..........B'...h..........".....'f..........".....'f..g.'".....P...f...'..........f&.b......."..'b.f&......&.....g..F.....'f.......P...f.......X.....f.....8.......8..........'F......'F.....&....&f&....

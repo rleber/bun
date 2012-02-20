@@ -1,0 +1,39 @@
+
+
+
+.".p.![.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##a,j n 
+$:ident:FASS,TAPECHECK  
+$:utility   
+$:msg2:1,please mount tape BJSUM no ring
+$:ffile:in,asa9,phyrec  
+$:tape:in,x1d,,12598,,BJSUM,,den8   
+$:futil:in,,rew/in/,
+$:etc:rpt/2p,87t/,adump/1r,/,skip/1f/   
+$:endjob
+$:msg2:1,abort job on i/o error 

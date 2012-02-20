@@ -1,0 +1,577 @@
+
+
+
+.Bup.Bup
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/fasshole   
+.he 'FASS'- % -'ACT III SCENE I'
+.fo 'ACT III SCENE I''FASS' 
+Act 3, Scene 1 - On the Planet  
+
+
+(WE BEGIN WITH A FROZEN REPLAY OF THE LAST SCENE OF ACT I.  
+VOICE OVER.)
+
+
+.je 
+Captain's log, suppository - er...  
+Captain's log, supplemental.
+We have crashed down onto this planet, unknown, uncharted, uncivilized, unprotected.
+Even now,   
+we can see in the distance a horde of what appears to be humanoids, 
+armed with colossal weapons,
+although it is hard to say exactly how far away.
+It is impossible to beam up to the ship;
+we have only a few weapons with which to protect ourselves. 
+Having forgotten to bring along any expendable crew members to  
+throw at the enemy, 
+we can only await our sure fate.
+(HE BOWS HIS HEAD)  
+
+
+.to 
+(COMES RUNNING OUT OF THE FARMHOUSE, LOOKS OUT AT THE WINGS) :  
+Keptain, Keptain, what is it?   
+
+
+.je 
+Weren't you listening just now? 
+It's an alien horde.
+
+
+.to 
+Are they friendly aliens?   
+
+
+.je 
+They might be inclined to be,   
+but somehow I don't think they'll take kindly to us landing 
+on top of one of their people there.
+(HE POINTS TO THE HEAD STICKING OUT FROM UNDER THE HOUSE.)  
+
+
+.to 
+Lenin's pajamas!
+(HE GOES OVER TO EXAMINE THE HEAD AND SHOES.)   
+Well, I guess there's nothing we can do for her now;
+she's certainly dead.   
+
+
+.ga 
+AbI'm nabot dabead! 
+
+
+.to 
+Keptain, Keptain, it talked.
+
+
+.je 
+What are you talking about, Ensign? 
+She's dead, the poor devil. 
+
+
+.ga 
+AbI'm nabot dabead! 
+
+
+.to 
+She's saying something  
+in some sort of strange foreign tongue. 
+
+
+.ga 
+That's no strange foreign tongue, that's High Munchkin. 
+
+
+.hu 
+Captain, she's alive!   
+
+
+.su 
+But how can she survive with her body crushed under that house? 
+
+
+.cl 
+Oh, it's likely not all that hard.  
+
+
+.je 
+Quiet, Nurse, or I'll box your ears.
+All right, you there,   
+where are we,   
+what are you
+and why can you speak English like every other creature 
+that we meet out here in space? 
+
+
+.ga 
+It's not English, it's low munchkin.
+
+
+.je 
+Munchkin?   
+
+
+.ga 
+Yes, this is the planet of Fed, 
+inhabited entirely by Munchkins.
+
+
+.je 
+Munchkins? Fed? What a stupid name for a planet!
+
+
+.ga 
+Yeah, we get fed up with it too from time to time.  
+
+
+.je 
+And who are you?
+
+
+.hu 
+Yes Captain?
+
+
+.ga 
+Her name's Yes? 
+
+
+.hu 
+No, no, no, you've got it all wrong.
+
+
+.ga 
+Well, Miss Wrong then.  
+What negative names you people have.
+
+
+.hu 
+No, no, no: Huaryu. 
+
+
+.ga 
+My name's Gabandabalf.  
+Oh, I get it,   
+your first name is nonono,  
+and your last name is Wrong.
+It must have been hell for you when they took roll call 
+in public school.   
+
+
+.je 
+Gabandabalf...? 
+
+
+.ga 
+Or in high Munchkin,
+Gabababandabababalf.
+
+
+.je 
+Whatever.   
+Why couldn't you have a simple name to remember like Smith or Tolstoy or-   
+
+
+.to 
+Yes?
+
+
+.je 
+I wasn't talking to you, Tchaikovsky.   
+Now Ms. Smith-  
+
+
+.su 
+That's Gabandabalf, Captain.
+
+
+.je 
+All right. Ms. Captain, what are you doing under our house? 
+
+
+.ga 
+Pretending I'm a Foundation?
+
+
+.je 
+Don't be flippant with me; besides, Asimov did that years ago.  
+
+
+.ga 
+All right, all right,   
+I was just sleeping for a while 
+
+I was just sleeping for a while when all of a sudden I woke up  
+and there you were. 
+
+
+.ty 
+Do you hurt anywhere?   
+
+
+.ga 
+Not particularly, why?  
+
+
+.to 
+Well, you are under the house and all, and it must have hurt a little.  
+
+
+.ga 
+I'm not under the house; it just missed me. 
+
+
+.je 
+Then, ahhh, ahhh, where's the rest of you?  
+
+
+.ga 
+This is all of me.  
+
+
+.su 
+You mean you're a head? 
+
+
+.je 
+We were looking for one of those a few hours ago.   
+
+
+.ty 
+How did that happen, Mr. Gabandabalf?   
+
+
+.ga 
+All this family planning business.  
+My parents thought it would be wise to plan a head, 
+and that's what they got.   
+
+
+.ty 
+That's terrible!
+
+
+.ga 
+Oh, not so bad really.  
+The munchkins are so dumb that they elected me Head Munchkin
+because they thought I was the only possible candidate. 
+
+
+.hu 
+The Munchkins are not very bright?  
+
+
+.ga 
+Bright? They don't have the brains of a scriptwriter!   
+
+
+(ALL GASP)  
+
+
+.to 
+And they're coming over the hills now.  
+To attack us?   
+
+
+.ga 
+Yes, if they're in a nasty mood today.  
+
+
+.to 
+
+Can't you do anything?  
+
+
+.ga 
+I'd like to help you, but as you can see I'm unarmed.   
+
+
+.je 
+Well, they're a long way off yet.   
+We've got time to hide. 
+
+
+.ga 
+They aren't a long way off - they just look that way.   
+In fact, they're here now.  
+
+
+(ENTER THE MUNCHKINS DOWN THE AISLES OF THE THEATRE)
+
+
+.aa ALL~ERICS   
+.nf 
+.in+5   
+*********************************************** 
+***to the tune of "Pomp and Circumstance #1"*** 
+*********************************************** 
+We are the Munchkins,   
+This is Munchkinland.   
+We think we're exciting,
+Others think us bland.  
+
+
+We are the Munchkins,   
+This is Munchkinland.   
+We don't move at random,
+Most of this is planned;
+We've a slightly imbalanced 
+Pi-tu-I-ta-ry gland.
+.in8
+.fi 
+
+
+.ga 
+Needless to say,
+they aren't the greatest poets in the world either. 
+And there's nothing wrong with their glands;
+it's a long story that they don't like to be reminded of.   
+
+
+(HUARYU IS BEING FELT UP BY THOUSANDS OF LITTLE MUNCHKINS)  
+
+
+.hu 
+Well, at least they appear friendly.
+
+
+.ga 
+Frisky. 
+Ah, here is my right
+hand man, Frabodabo;
+you can call him Lefty for short.   
+
+
+(MURMERING AMONG THE MUNCHKINS.)
+
+
+Sorry, sorry.   
+
+
+(LEFTY SHAKES HANDS WITH EVERYONE.) 
+
+
+.ty 
+How did he come to be like that?
+
+
+.ga 
+Well, you see, his mother was warned during her pregnancy   
+that the child might not turn out quite right.  
+And as you know, forewarned is forearmed.   
+When the kid came out with four arms,   
+she threw two away, 
+and that's how Lefty and his brother set out in the world.  
+
+
+.su 
+Where's his brother?
+
+
+.ga 
+In the armed forces - a yardarm in the Navy. Real handsome kid. 
+
+
+.su 
+I see.  
+
+
+.ga 
+Now if you'll just wait for a minute, I'll talk to the Munchkins and tell   
+them why you're here.   
+Abattabentabion, aball yabou pabeopable.
+
+
+.aa ALL~ERICS   
+Rhabubabarb, rhabubabarb.   
+
+
+.ga 
+Thabese abare thabe vaboyabagabeurs abof thabe stabarshabip ....
+excuse me, what is the name of your starship?   
+
+
+.je 
+How did you know we were from a starship?   
+
+
+.ga 
+Don't bog down the action, Bill.
+Never mind, I can see the name on the side of your craft.   my r.... abof thabe stabarshabip
+
+.... abof thabe stabarshabip Crabad Habouse, abits fabive yabear mabissabion ...
+
+
+.er 
+Say it in low munchkin! 
+
+
+.er 
+Yeah, low munchkin. 
+
+
+.ga 
+Labow Mabunchkabin? 
+Ahh, forget it. 
+These people crashed here and you should be friendly to them.   
+Got that, Eric? 
+
+
+.aa ALL~ERICS   
+Yabes.  
+
+
+.je 
+Why did they all answer to the name Eric?   
+
+
+.ga 
+That's their name.  
+
+
+.hu 
+They're all called Eric?
+
+
+.ga 
+What's wrong with Eric? 
+
+
+.hu 
+Nothing, I guess.   
+
+
+.ga 
+Yes, this is Eric the Tall, Eric the Fair, Eric the Red ... 
+
+
+.er 
+I'm not Red!
+
+
+.je 
+Enough of this. 
+It's all well and good to sit around here chewing the fat with Eric,
+but what we've got to do is find some way of getting a ring modulator for the transporter.  
+
+
+.ga 
+Well, if you want something like that on Fed, you'll likely have to see the winkle. 
+
+
+.to 
+The Vinkle? 
+
+
+.ga 
+The Wonderful Winkle of Fed.
+
+
+.je 
+I knew this was going to be a bad day.  
+
+
+.ga 
+The winkle is the only man on the planet who can find a ring modulator for you. 
+
+
+.je 
+Well, if he's our only hope, I guess we go to see the Winkle.   
+
+
+.ga 
+Look, you'll never get an audience with him 
+unless I go with you.   
+He's very choosy in his audiences.  
+
+
+.er 
+(LOOKS AT AUDIENCE) Coulda fooled me!   
+
+
+.aa ALL~ERICS   
+Fool me!
+
+
+.je 
+All right then, will you and your assistant join our party? 
+
+
+.ga 
+The Fellowship of the Ring Modulator?   
+
+
+.je 
+Something like that.
+
+
+.ga 
+Come on, Lefty. We'll take them to the Wiz. 
+
+
+.aa ALL~ERICS   
+Take.....Wiz.....   
+
+
+.su 
+Enthusiastic bunch. Reminds me of the Satirize. 
+
+
+.je 
+Are we ready, people?   
+
+
+.ty 
+Don't you think that we should sing a song while we're  
+going off to see the Winkle?
+
+
+.je 
+What would you suggest? 
+
+
+.ty 
+Weeeeeeeee'rrrrrrrreeee......   
+
+
+.aa ALL 
+Weeeeeeeee'rrrrrrreeeee......   
+
+
+.nf 
+.in+5   
+Fixing a hole where the rain gets in
+And stops my mind from wandering
+Where it will go....
+.fi 
+.in8
+
+
+(EXEUNT AND BLACKOUT)   
+
+
+fin 

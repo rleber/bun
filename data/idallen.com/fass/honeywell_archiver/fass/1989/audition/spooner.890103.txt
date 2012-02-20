@@ -1,0 +1,98 @@
+
+
+
+...H...-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1989/script/bulkmacr.t 
+.bs a 12 "SKETCHERISM SPOON by Dick Vosburgh"   
+.na wi WIFE WIFE
+.na rb SPOONER SPOONER  
+.ch wi  
+Ah, there you are, William. 
+Beautiful day, isn't it?
+.ch rb  
+Quite so -- the shine is sunning, the chirds are burping -- 
+lovers are killing and booing... it makes one glide to be a lav!
+.ch wi  
+It's just as well you're in a good mood.  Because look what the 
+laundry did to your best shirt. 
+.ch rb  
+Good Heavens.  They've freed the slaves!
+.ch wi  
+Frayed the sleeves, dear.   
+.ch rb  
+I did that, saidn't I?  
+.ch wi  
+They've also torn the collar and smashed all the buttons.   
+.ch rb  
+Quite so!  It never pains but it roars.  Buttons, collar and
+sleeves at one swell foop!  Well, I'll fight them nooth and tail!   
+Naith and tool!  I'll go down and smith them to smashereens.  I'm   
+going to tump in a jaxi!
+.ch wi  
+William -- wait!  Surely such a scene would be unseemly for a man   
+of your calling?
+.ch rb  
+You're quite right, my dear.  After all, I  
+.ul 
+am  
+a clan of the moth.  Better to let sleeping logs die.  To hue is
+ermine. 
+
+.ch wi  
+That's better.  Do you feel like some breakfast?
+.ch rb  
+Indood I dee!  A suggestion to warm the hartles of my -- cockles
+of my heart.  I rather fancy some hot toatered bust, a rasher of
+strakey beacon, and some of that cereal that goes pap, snockle  
+and crap.   
+.ch wi  
+Very well, William.  And while you're eating it, I shall be 
+packing my trunk.   
+.ch rb  
+Tracking your punk? 
+.ch wi  
+Yes, William, you see, I'm leaving you. 
+.ch rb  
+Leaving me after 20 years of bedded wiss?  This must be some
+rather jathetic poke.  You can't mean suddenly to destroy my
+entire lay of wife! 
+.ch wi  
+I'm quite serious, William.  I'm leaving and I'm not coming back.   
+.ch rb  
+But my dear, consider the word of the Highly Boble:  "What God  
+hath joined together, let no son put Amanda."  Er... "Let no pan
+soot amunder"... Dear me, I'm getting my tang all tungled!  
+.ch wi  
+Exactly.
+That's why I'm leaving you. 
+.ch rb  
+What do you mean?   
+.ch wi  
+It's quite simple, William.  I can't spoon any more Standerisms!
+.ad 
+(SHE REALIZES WHAT SHE'S SAID AND SCREAMS SHRILLY)  
+.es 

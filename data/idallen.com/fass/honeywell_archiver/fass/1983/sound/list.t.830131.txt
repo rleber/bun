@@ -1,0 +1,223 @@
+
+
+
+...'..6!
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.zz Use the SMACRO.T macro file  -IAN!  
+.so smacro.t
+.title "Opening Music"  
+Oxygene, Popcorn, Alan Parsons, Philip Glass, Spike Jones...
+.scene "1-0"
+.effect 
+	0	Light background party music: Star Wars Cantina Band 
+.effect 
+	25	Library doorbell
+.effect 
+	37	People sent into books; four major groups; accompanying flashes 
+of light
+.scene "1-1"
+.effect 
+	0	Rooster crow; morning music: William Tell after storm
+.effect 
+	1	Ken-meets-Val boy-meets-girl music: Also Sprach Zarathustra  
+.effect 
+	31	Toto roar #1   (STAGE LEFT SPEAKER) 
+.effect 
+	37	Toto roar #2   (STAGE LEFT SPEAKER) 
+.effect 
+	38	Toto roar #3   (STAGE LEFT SPEAKER) 
+.effect 
+	41	Toto puppy sounds   (STAGE LEFT SPEAKER)
+.effect 
+	53	Toto roar #4 with crunch    (STAGE LEFT SPEAKER)
+.effect 
+	68	Toto roar #5 with crunch    (STAGE LEFT SPEAKER)
+.effect 
+	79	Toto roar #6 with crunch    (STAGE LEFT SPEAKER)
+.effect 
+	80	Toto belch   (STAGE LEFT SPEAKER)   
+.effect 
+	80	Squeal, crash, and hubcap rolling  (STAGE RIGHT SPEAKER)
+.effect 
+	95	Wizard fight music to scene end: Sorceror's Apprentice  
+.effect 
+
+	96	Toto roar #7 with crunch    (STAGE LEFT SPEAKER)
+.scene "1-2"
+.effect 
+	54	Bond Theme #1   
+.effect 
+	57	Bond Electromechanical Device  (STAGE LEFT SPEAKER) 
+.effect 
+	91	Dante's Inferno scream and splash (man and pig)  (STAGE LEFT SPEAKER)   
+.effect 
+	96	Star Trek communicator bleep
+.effect 
+	96	Star Trek transporter sounds
+.scene "1-3"
+.effect 
+	0	Star Trek opening music intro  #1
+.effect 
+	11	Bond Theme #2   
+.effect 
+	30	Flicker in the space-time continuum 
+.effect 
+	37	AIA Computer unphasing  
+.effect 
+	47	Star Trek action music: The Planets: Mars   
+.effect 
+	54	William Tell theme #1   
+.effect 
+	70	William Tell theme #2   
+.effect 
+	97	Radio Voice: Tom Hocaliuk on microphone stage left  
+.effect 
+	100	Library Voice: microphone in booth 
+.effect 
+	102	Library Voice: microphone in booth 
+.effect 
+	108	William Tell theme #3  
+.effect 
+	112	SCTV music for 3-D 
+.effect 
+	124	Star Trek closing music to end of scene
+.scene "1-4"
+.effect 
+	0	Musty Mediaeval Singer & Lute music intro
+.effect 
+	34	Three materializations  
+.effect 
+	39	Bond theme #3 (rather short)
+.effect 
+	43	Tchaicowsky Love Theme (Bond & Marian) #1   
+.effect 
+	52	Twang of bow   (STAGE LEFT SPEAKER) 
+.effect 
+	52	Thud of arrow into tree   (STAGE RIGHT SPEAKER) 
+.effect 
+	80	Pac-Man game noises go until... 
+.effect 
+	85	Death cry of Pac-Man (ends Pac-Man game noises) 
+.effect 
+	93	Duelling music: Troika  
+.scene "1-5"
+.effect 
+	0	Roman Introduction music: The Planets: Jupiter   
+.effect 
+	71	Carson's Tonight Show opening theme 
+.effect 
+	75	(emergency only) canned applause
+.effect 
+	77	(emergency only) canned applause
+.effect 
+	77	Tonight Show commercial music   
+.effect 
+	78	Tonight Show return-to-program music
+.effect 
+	79	(emergency only) canned applause
+.effect 
+	103	(emergency only) canned applause   
+.effect 
+	112	Tonight Show closing music (play under her speech) 
+.title "Intermission Music" 
+About 20 minutes should be enough.  
+.bp 
+.scene "2-1"
+.effect 
+	0	Poppins Nursery: baby cry and baby cooing  #1
+.effect 
+	106	Telepathy Helmet wand bleep #1 
+.effect 
+	108	Telepathy Helmet wand bleep #2 
+.effect 
+	111	several more bleeps, as each character tries Helmet
+.effect 
+	119	Telepathy Helmet wand bleep with library sinking   
+and Engineering Lecture Hall rising 
+.scene "2-2"
+.effect 
+	0	Star Trek opening music intro  #2
+.effect 
+	25	vanishing crew sound followed by re-appearing crew sound #1 
+.effect 
+	28	Mr. Scott on microphone stage left  
+.effect 
+	30	Mr. Scott on microphone stage left  
+.effect 
+	34	vanishing crew sound followed by re-appearing crew sound #2 
+.effect 
+	53	Tchaikowsky Love Theme (Ape & Spock) #2 
+.effect 
+	59	Star Trek red-alert sirens  
+.effect 
+	63	Star Trek fight music: The Planets: Mars
+.effect 
+	69	Library Voice: microphone in booth  
+.effect 
+	71	Library Voice: microphone in booth  
+.effect 
+	73	Library Voice: microphone in booth  
+.effect 
+	75	Library Voice: microphone in booth  
+.scene "2-3"
+.effect 
+	0	multiple typewriters intro   
+.effect 
+	3	infinite amount of monkey screeches; one screech louder; thud; silence   
+.effect 
+	8	something disintegrates and collapses: glass crashing
+.effect 
+	25	three characters pop out of a book  
+.effect 
+	36	William Tell theme #4   
+.effect 
+	38	William Tell theme #5   
+.effect 
+	49	William Tell, overcome by Bond theme.   
+.effect 
+
+	52	single typewriter (typewriter scene)
+.scene "2-4"
+.effect 
+	0	Poppins Nursery: baby cooing and baby laughing  #2   
+.scene "2-5"
+.effect 
+	0	Water dripping intro  #1 
+.effect 
+	2	echo of BE QUIET 
+.effect 
+	45	more water dripping  #2 
+.effect 
+	45	Holy Grail choir of angels #1   
+.effect 
+	48	reverb/echo on bookmark to end of scene (one line exception is #54) 
+.effect 
+	63	person being electrocuted by high-voltage   
+.effect 
+	69	Holy Grail choir of angels #2   
+.title "Closing Music"  
+Cartoon music?  

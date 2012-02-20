@@ -1,0 +1,129 @@
+
+
+
+.".p.!V.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so tmacs.t 
+.HH "Technical and Stage Wizards"   
+.nf 
+.ta 0.25i \n(.lu/2u \n(.lu/2u+0.25i 
+.sp 0.25l   
+\fITechnical Director	Stage Manager\fP  
+.sp 0.2l
+	Joe Supple		Tom Hocaliuk   
+.sp 0.25l   
+\fIAssistant Stage Managers\fP  
+.sp 0.2l
+	Karyl Robinson		Mark Christensen   
+.sp 0.25l   
+\fIGrips (quiet, efficient folk in black shirts)\fP 
+.sp 0.2l
+.ta 0.25i 1.75i 3.25i   
+	Kerstin Muth	James Nicoll	Krisit Robinson  
+	Tracy Tims	Craig Acton	Steve Nicoll
+	Brenda Parsons 
+.sp 0.25l   
+\fILighting\fP  
+.sp 0.2l
+.ta 0.25i \n(.lu/2u \n(.lu/2u+0.25i 
+	Peter Carette (design)		Carol Wood (booth) 
+.sp 0.25l   
+\fISound\fP 
+.sp 0.2l
+.ta 0.25i 1.75i 3.25i   
+	Judy McMullan (booth)	Brad Templeton	Ian! Allen
+.sp 0.25l   
+.ta 0.25i \n(.lu/2u \n(.lu/2u+0.25i 
+\fISpecial Effects	Runner\fP
+.sp 0.2l
+	Peter (Boom-Boom) Carette		Erika Hocaliuk  
+.sp 0.25l   
+\fICo-Ordination and Placement (Choreography)\fP
+.sp 0.2l
+	betsy wimbs
+.sp 0.25l   
+\fIProperty Master	Master Carpenter\fP  
+.sp 0.2l
+	Richard Kular		Ian McLennan
+.sp 0.25l   
+\fIMakeup\fP
+.sp 0.2l
+	Janet Acton
+.sp 0.25l   
+\fIMakeup Assistants\fP 
+.sp 0.2l
+.ta 0.25i 1.75i 3.25i   
+	Juana Bastedo	Linda Carson	Elisabeth Fraser
+	Preston Gurd	Steve Hull	Chris Joselin  
+	Mary Ann Krakar	Holly McDonald	Judy McMullan   
+	Steven Nicoll	Samm Ristich	Gillian Teichert
+	Maggie Varadi	Kay Weber
+.sp 0.25l   
+\fICostumes\fP  
+.sp 0.2l
+	Linda Carson   
+.sp 0.25l   
+\fICostume Assistants\fP
+.sp 0.2l
+	Janet Acton	Juana Bastedo	Cindy Evans  
+	Lorraine Galvin	Marney Heatley	Katherine Hicks 
+	Erika Hocaliuk	Steve Hull	Louise Klein 
+	Mary Ann Krakar	Anna Lehn	Brian Martin 
+	Holly McDonald	Judy McMullan	Judy Morellato
+	Kerstin Muth	Lise Permezel	Karen Rooke 
+	Marnie Shaw	Maggie Varadi	Joanne West  
+.sp 0.25l   
+\fISets and Props: Construction, Destruction, Design and Repair\fP  
+.sp 0.2l
+	Tracey Allen	Peter Bain	Alan Bowler
+	Ray Butterworth	Helen Delton	Cindy Evans   
+	Elisabeth Fraser	Peter Fraser	Roy Gilpin   
+	Ruth Hawkins	Gordon Irish	Mary Ann Krakar  
+	Richard Kular	J.J. Long	Ken Lynch  
+	Cameron McDonald	Grant Montag	Kerstin Muth 
+	James Nicoll	Scott Nicoll	Brenda Parsons   
+	Krisit Robinson	Steve Southcott	Tracy Tims 
+	Kay Weber	Carol Wood   
+.sp 0.25l   
+
+\fIVideotape Crew\fP
+.sp 0.2l
+	Ashok Patel	Gord Irish	Ralph Hill  
+	Rohan Jayasekera   
+.sp 0.25l   
+\fIPhotography\fP   
+.sp 0.2l
+	Chris Dobbin	Preston Gurd	J.W.B.   
+.sp 0.25l   
+\fIArtwork and Graphics\fP  
+.sp 0.2l
+	Earl Stieler	Elisabeth Fraser	Andrew Zador 
+	Maggie Varadi	Scott Nicoll	Ian! Allen  
+.sp 0.25l   
+\fISpecial Thanks from the Tech Crew to:\fP 
+.sp 0.2l
+	Earl Stieler	Peter Carette	Alex Kordics
+	Ken Lynch	Scott Nicoll	Peter Fraser

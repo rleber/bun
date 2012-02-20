@@ -1,0 +1,134 @@
+
+
+
+......."
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hy 0   
+.nf 
+.ft 3   
+.ps 28  
+.vs 36  
+.ce 5   
+IMPORTANT NOTICE
+FOR 
+ALL STUDENTS
+AT THE  
+UNIVERSITY OF WATERLOO  
+.fi 
+.ps 10  
+.vs 12  
+.ft 1   
+.sp 3v  
+In an emergency meeting of the UW senate and the Board of Directors,
+neither of which took place, a motion was passed making a new Winter
+term course \f2COMPULSORY\fP for \f2ALL\fP undergraduate students,  
+graduate students, faculty members, staff, and administration,  
+both on-campus and off. 
+.sp 0.5v
+Due to a gross oversight by university officials, the following 
+entry is conspicuously and quite rightly missing from the 1982-83   
+Undergraduate and Graduate Calendars.   
+.in 1i  
+.sp 1.5v
+.nf 
+.ft 1   
+FASS 101     W     5C,0L      \(mi0.5   
+FASS 799     W     0C,5L      \(mi9.5      (Graduate Level) 
+.sp 0.2v
+.ft 3   
+Faculty, Administration, Staff and Students 
+.ft 1   
+.sp 0.5v
+.fi 
+.na 
+A funny, musical, satirical, satyrical, boisterous introduction to  
+life at the University of Waterloo, as seen through the eyes of 
+the University's own FASS Theatre Company.  
+.sp 0.5v
+
+
+
+The course will be taught by about fifty enthusiastic instructors,  
+in what must be the most severe abuse of ``team teaching'' this 
+side of Guelph. 
+.sp 0.5v
+A partial list of   
+topics to be covered include Ancient\ Rome, in the words of 
+Johnny\ Carson; 
+the Emerald\ City, in the words of Marvin the Paranoid Tin\ Man;
+the Starship\ Enterprise, in the words of James\ Bond;  
+and Sherwood\ Forest, in the words of your favourite Valley\ Girl.  
+.sp 0.5v
+Persons attending lectures should ensure that their library fines are   
+paid up.
+.sp 0.5v
+.ft 2   
+Prereq: Psych 271 or permission of parent or librarian. 
+.br 
+Evening course only.
+.br 
+Not offered by correspondence.  
+.sp 1v  
+.ft 1   
+.in 0   
+There will be five (5) lectures:
+.sp 0.5v
+.in 1.25i   
+.nf 
+.ta +6n +4n +15mR +4n +5n   
+Feb.	2	Humanities Theatre	8:00pm	W  
+Feb.	3	Humanities Theatre	8:00pm	R  
+Feb.	4	Humanities Theatre	7:00pm	F  
+Feb.	4	Humanities Theatre	10:00pm	F	Advanced Class  
+Feb.	5	Humanities Theatre	8:00pm	S	Advanced Class   
+.sp	0.5v
+.fi 
+.ad 
+.in 0   
+All lectures, labs, and performances are in the 
+Humanities Theatre. 
+.sp	0.5v
+
+
+
+
+
+
+
+
+
+Tuition is the cheapest on campus: $3.00 for each regular class and $3.50   
+for each advanced class.
+.sp 0.5v
+So whether you are an old FASSite or a  
+starting-this-year-er, whether on-campus or flying in from that Whitehorse  
+work term, FASS '83 guarantees you'll make the grade (we get the credit 
+though).  Just to make things more difficult, this compulsory course has very   
+limited class sizes so register SOON.  The registrar's office has been moved
+to the Humanities Box Office to handle the rush.  See you at FASS '83!  
+.sp 1v  
+.ta 6iR 
+	Fellows of the Aurum Stage Statue  

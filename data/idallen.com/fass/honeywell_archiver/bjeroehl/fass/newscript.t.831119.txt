@@ -1,0 +1,2297 @@
+
+
+
+.zA..q.<
+bjeroehl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so 83macr.t
+.bs 1 1 "For Art's Sake"
+.na th "TEDDY~ANDERSON" "TEDDY" 
+.na lo "LORRAINE~MACINTOSH" "LORRAINE"  
+.na jo "JOE~MACINTOSH" "JOE"
+.na be "BEATRICE~ANDERSON" "BEATRICE"   
+.na ar "ARTHUR~BOGWHITTLE" "ARTHUR" 
+.na qu "QUIGLEY" "QUIGLEY"  
+.ld 
+(THE LIGHTS COME UP ON A ROOM IN THE ESTATE OF ARTHUR BOGWHITTLE, A WEALTHY AND 
+AGING ART COLLECTOR.
+THERE IS A COUCH
+WITH SOME PILLOWS ON IT,
+A TABLE WITH SOME KNICKNACKS ON IT, 
+A SMALL WOODEN CHAIR,   
+AN IMPRESSIVE-LOOKING OLDER CHAIR, AND AN UGLY PAINTING HANGING CROOKED ON THE  
+WALL.   
+THERE ARE TWO DOORS, ONE THAT LEADS TO AN ENTRANCE HALL, AND ONE
+LEADING TO THE REST OF THE HOUSE.   
+ENTER FROM THE VOM TEDDY ANDERSON AND HIS WIFE, BEATRICE.   
+SHE IS WEARING AN EXTREMELY UNATTRACTIVE DRESS, AND IS CHEWING GUM. 
+SHE WILL CONTINUE TO CHEW GUM THROUGHOUT.   
+TEDDY IS CARRYING A LARGE BOUQUET OF CHEAP FLOWERS, WHICH HE PUTS IN A VASE.
+THEY ARE BOTH IN THEIR MID-TWENTIES)
+.ch th  
+I'm telling you, it was just some kind of fish. 
+.ch be  
+But...  
+.ch th  
+There is no such thing as a sea serpent.  They simply don't exist.  
+Beatrice,   
+repeat after me... "there is no such thing as a sea serpent".   
+.ch be  
+"There is no such thing as a sea serpent".  
+.ch th  
+Good.   
+.ch be  
+But Teddy, it was fifty feet long.  
+.ch th  
+It was just some kind of eel, that's all.   
+.ch be  
+But it stuck its head out of the water and roared.  
+.ch th  
+I didn't see it stick its head out of the water.
+And that roar was probably just a passing car.  
+.ch be  
+But we're in the middle of nowhere... there aren't any cars around. 
+.ch th  
+Well, whatever it was it certainly wasn't a sea serpent.
+.ch be  
+(WHINING:) Oh, Teddy, let's just go home.   
+.ad 
+(SHE POPS HER GUM)  
+.ch th  
+I told you not to call me Teddy.
+As long as we're here, call me "Theodore".  
+.ch be  
+All right.  
+(WHINING:)  
+"Theodore", let's just go home. 
+.ch th  
+Don't be silly. 
+We didn't come all this way for nothing.
+.ch be  
+(TAKING OUT GUM AND PUTTING IT IN PURSE)
+It wouldn't have taken so long if we had a car that worked. 
+.ch th  
+I'm waiting for the Gulf Winter Tune-up Special.
+.ch be  
+But I ruined my heels walking those last five miles.
+.ch th  
+It's not my fault that Mr. Bogwhittle doesn't live near the bus station.
+Just have a seat somewhere until he arrives.
+.ad 
+(BEATRICE IS SCARED OF DAMAGING SOMETHING, AND SITS ON THE WOODEN CHAIR)
+.ch be  
+Where's all the art that this Mr. Bogwhittle is supposed to have?   
+.ch th  
+Didn't you see the tapestries in the entrance hall? 
+.ch be  
+You mean those rugs on the wall?
+.ch th  
+"Those rugs" are more than 800 years old.   
+.ch be  
+You'd think someone as rich as Mr. Bogwhittle could afford new rugs.
+.ch th  
+(PAUSE) Chew, Beatrice. 
+.ad 
+(HE HANDS HER A PIECE OF GUM WHICH SHE BEGINS CHEWING)  
+.ex 
+(EXPLAINING:)   
+Those rugs are art. 
+These chairs are art.   
+Over five million dollars... of art.
+And soon it will be ours.   
+.ch be  
+How do ya know? 
+.ch th  
+Why else would Mr. Bogwhittle invite us here when he's practically on his deathbed? 
+.ch be  
+But he didn't say anything about it in his letter...
+.ch th  
+(PULLING OUT LETTER)
+Not in so many words.  But he did say "...I'll have a pleasant suprise  
+for you this weekend".  
+Obviously he meant  
+he was going to give us his collection. 
+.ch be  
+(STANDING)  
+How could he afford to buy all that stuff, anyway?  
+.ch th  
+He made a fortune in the stock market.  
+He bought shares in General Motors when it was just starting out.   
+.ch be  
+I guess that would have made it Sargeant Motors.
+.ad 
+(SHE LAUGHS AT HER OWN (WEAK) JOKE.  HER LAUGH SOUNDS LIKE A DONKEY IN HEAT.
+TEDDY GIVES HER A WITHERING LOOK.  SHE WITHERS) 
+.ch th  
+The fact is, he has more money than you or I could earn in a lifetime.  
+.ch be  
+And he spent it all buying old rugs?
+.ch th  
+Not just old rugs, but sculptures and paintings too.
+You should see some of the stuff he's got...
+.ch be  
+Why's he gonna give it to you?  
+.ch th  
+I was his prize pupil back in art school.  One of them, anyway, and the other one doesn't count.
+.ch be  
+Why not?
+.ch th  
+Because she's a woman.  
+.ch be  
+(VERY MEEKLY:) Oh.  Of course.  
+You must mean   
+Lorraine, your sweetheart from art school.  
+.ch th  
+She was not my sweetheart.  
+I only went out with her for six months.
+.ch be  
+Then why did she write all those nice things in your yearbook?  
+.ch th  
+What "nice things"? 
+.ch be  
+She called you her "Little Dick".  Funny, though, your name's Theodore. 
+
+.ch th  
+(PAUSE) Chew, Beatrice. 
+I'm going   
+to look for Mr. Bogwhittle. 
+Now sit down and relax. 
+.ad 
+(BEATRICE FINALLY DECIDES TO SIT DOWN IN A LARGE OLD CHAIR) 
+.ex 
+Not there!  
+.ad 
+(BEATRICE LEAPS TO HER FEET)
+.ex 
+That's a Princess Mariana the Second parlour chair!  It's priceless!
+.ch be  
+Oh, Teddy,  
+everything in this room is priceless.   
+.ch th  
+You're right.  You'd better come with me so you don't damage anything.  
+.ch be  
+Oh, I wish we were back in Guelph...
+.ad 
+(THEY EXIT STAGE LEFT, TEDDY DRAGGING BEATRICE BY THE ARM.  
+THROUGH THE VOM ENTER LORRAINE MACINTOSH AND HER HUSBAND, JOE.  
+LORRAINE IS CARRYING A LARGE BOUQUET OF CHEAP FLOWERS, WHICH SHE PUTS IN A VASE.
+THEY ARE BOTH IN THEIR MID-TWENTIES)
+.ch jo  
+(WHISTLES)  This has got to be the ritziest place I ever seen!  
+You sure we're s'posed to be here?  
+.ch lo  
+I have a handwritten invitation from Mr. Bogwhittle himself.
+.ch jo  
+Yeah, but I don't feel right about this place.  
+What
+.ul 
+was 
+that thing in the moat, anyway? 
+.ch lo  
+Oh, just some kind of alligator or something.   
+.ch jo  
+Still, I don't like being here. 
+Everything's so fancy.  
+.ch lo  
+It ought to be, considering what Mr. Bogwhittle paid for it.
+.ad 
+(JOE STARTS TO LEAN ON CHAIR)   
+.ex 
+Don't touch that chair!  It's a genuine King Rupert III; it must be worth   
+a fortune!  
+You will be careful, won't you Joe?  If we damage anything, Mr. Bogwhittle  
+might change his mind about giving us his collection.   
+.ch jo  
+You mean he's gonna give away   
+the whole kit 'n kaboodle?  
+.ch lo  
+According to his letter,
+he has a "big surprise" set up.  He must mean he's giving   
+away his collection.
+.ch jo  
+And he's really gonna give it to us?
+.ch lo  
+Well, I 
+always  
+.ul 
+was 
+his star
+pupil.  
+I'm the ideal person to give all that lovely artwork a good home.   
+.ch jo  
+(STRAIGHTENING THE WALL PAINTING)   
+Gee, I dunno where we'd put all this stuff. 
+.ch lo  
+On the auction block.   
+.ch jo  
+Huh?
+.ch lo  
+We certainly aren't going to keep it;   
+it'll bring in a fortune.   
+(RUNNING HER FINGERS ACROSS SOME ARTWORK)   
+Think of five million dollars, all mine.  Uh, ours. 
+.ch jo  
+What do we need five million dollars for?   
+We've got everything we need.  A nice farm, a few cows, lots of pigs,   d heand genuine 
+
+and genuine indoor plumbing.
+.ch lo  
+Yes, I know... what else could a girl want? 
+Joe,
+there are finer things in life...   
+filet mignon, champagne, caviar...  
+.ch jo  
+What's caviar?  
+.ch lo  
+Fish eggs.  
+.ch jo  
+Fish eggs?  
+What do we need fish eggs for?  We got real chickens out back.  
+.ch lo  
+Joe, don't you understand?  I'm tired of the farm, and the  
+pigs, and the chickens. 
+I want to get back to civilization, and soon.   
+This art
+collection could be our ticket to the good life.
+.ch jo  
+Gee, Lorraine, it sounds like you've got the money spent already.   
+What if this Mr. Bogwhittle gives that art collection of his to 
+somebody else?  
+.ch lo  
+There's nobody else he could give it to.  Except... well, there is  
+Teddy, but he   
+doesn't count.  
+.ch jo  
+Why not?
+.ch lo  
+Because he's a man. 
+.ch jo  
+Oh, I get it.  (PUZZLED LOOK)   
+Teddy?  Isn't he that guy you went to school with?  
+.ch lo  
+Yes, I showed you his picture in the yearbook.  
+.ch jo  
+Wasn't he a football player?
+.ch lo  
+No, Teddy wasn't much of an athlete.
+.ch jo  
+Oh.  Why did he 
+write in your yearbook  
+that you were "the easiest tackle on the football team"?
+.ch lo  
+(EMBARRASSED:) He just meant that I liked... team sports.   
+.ad 
+(THROUGH THE STAGE RIGHT DOOR, TEDDY AND
+BEATRICE
+RE-ENTER)   
+.ch th  
+And I tell you there is no chance that  
+sleazy tart 
+will show up here and try to claim Bogwhittle's loot.   
+.ad 
+(HE NOTICES LORRAINE, LOSES HIS COMPOSURE FOR AN INSTANT, AND THEN RECOVERS)
+.ch th  
+Oh, Lorraine... we were just talking about you. 
+.ch be  
+Oh, you mean this is the sleazy...  
+.ad 
+(THEODORE JABS HER) 
+.ex 
+Nice to meet you.   
+.ch lo  
+Yes.  Teddy, if you're here for the reason I think you're here...   
+.ch th  
+(HOLDING BEATRICE IN FRONT OF HIM LIKE A SHIELD)
+... and this is my wife, Beatrice.  
+.ch lo  
+Your wife.  How charming.   
+This is my husband, Joseph. 
+.ad 
+(JOE LOOKS AROUND FOR 'JOSEPH') 
+.ch jo  
+Joseph? ...Oh! ...me!   
+.ch th  
+Nice to meet you, Joseph.   
+.ch jo  
+Hi Teddy.  You can call me Joe. 
+.ad 
+(JOE GIVES TEDDY A "NORMAL FARMER'S" HANDSHAKE.  TEDDY FINDS IT CRUSHING.)  
+.ch th  
+You can call me Theodore.   
+.ch lo  
+"Theodore"? 
+Moving up in the world, are we? 
+.ch be  
+Oh yes.  Ted... I mean Theodore... is very successful.  
+He's the assistant undersecretary of the Guelph 
+Artistic Society.   
+And we own several antique automobiles. 
+One of them dates all the way back to 1968. 
+.ch lo  
+Really?  Quite the jet-setter.  
+.ch th  
+I get around.   
+Not as much as you used to, though...   
+still following football?   
+.ch lo  
+Every now and then. 
+It's nice to see a man who can make a complete pass.
+.ch th  
+Yes.  You always were very... athletic. 
+(GLANCES AT JOE)  Getting lots of exercise these days?  
+.ch lo  
+Oh yes. 
+Much more than when I was dating you.   
+.ch be  
+So, Joe, what do you do for a living?   
+.ch lo  
+Joseph's an agricultural technician.
+.ch th  
+"Agricultural technician"?  Makes him sound like he's a farmer or something.
+(HE CHUCKLES LIGHTLY)   
+.ad 
+(JOE LAUGHS TOO)
+.ch lo  
+Tell me, Beatrice, where did you get that dress?
+.ch be  
+I made it myself.   
+.ch lo  
+My, my, beautiful and talented too. 
+.ad 
+(BEATRICE TRIES TO LOOK MODEST) 
+.ex 
+Quite the prize package, Teddy...   
+.ch th  
+(IGNORING HER)  Joe,
+what
+.ul 
+is  
+that after-shave you're wearing?
+It smells so... 
+
+It smells so... earthy. 
+.ch jo  
+Shucks, that ain't no after-shave.  
+I just didn't have a chance to shower after cleaning the pig sty.   
+I'll do it soon as I get home.  
+(TELLING A JOKE:)   
+Figure I'll wash off the horse at the same time... sort of a bridle shower. 
+.ad 
+(JOE LAUGHS AT THIS.  BEATRICE AGAIN DOES HER DONKEY IMPRESSION)
+.ch th  
+Intelligent and funny too.  Quite a winner, Lorraine.   
+.ch lo  
+He has other virtues.   
+.ch th  
+I'll just bet he does.  
+Make sure you get the right one when he and the horse come out of the shower.   
+.ch lo  
+I'd rather have a stallion than a gelding...
+.ad 
+(BY THIS TIME, TEDDY AND LORRAINE ARE ALMOST AT EACH OTHER'S THROATS.   
+THE SOUND OF A MOTORCYCLE PULLING UP IS HEARD.  BRIEF PAUSE)
+.ad 
+(FROM THE VOM ENTER ARTHUR  
+BOGWHITTLE.  HE IS IN HIS MID-EIGHTIES, 
+AND IS WEARING A BIKER'S JACKET, BOOTS, GLOVES, AND A HELMET WITH A 
+TINTED VISOR THAT OBSCURES HIS IDENTITY)
+.ad 
+(PAUSE AS EVERYONE IN THE ROOM SEES HIM STANDING IN THE DOORWAY.
+JOE AND BEATRICE ABRUPTLY REGAIN THEIR SELF-CONTROL.
+ARTHUR REMOVES THE HELMET)  
+.xx LORRAINE~AND~TEDDY  
+Mr. Bogwhittle! 
+.ch ar  
+Hi! 
+.ad 
+(ARTHUR GOES TO BIG EXPENSIVE CHAIR, WIPES HIS SHOES ON IT, THEN CROSSES
+TO THE COUCH
+AND STARTS TO REMOVE MOTORCYCLE GEAR.  UNDER IT HE IS WEARING A SMOKING 
+JACKET AND PAJAMAS.)
+.ch th  
+You're looking very well sir.   
+.ch ar  
+What's that?
+.ch lo  
+(LOUD:) You're looking very well, sir.  
+.ch ar  
+I'm looking like hell?  
+See how you look when you get to the end of the road.   
+(HE PULLS SOME SLIPPERS OUT OF A POCKET AND PUTS THEM ON.)  
+.ch th  
+Oh, I'm sure you've got years ahead of you sir. 
+.ch ar  
+Yes, and then it fell over. 
+.ch lo  
+Here, let me help you sit down. 
+.ch th  
+No, let me...   
+.ad 
+(THEY STRUGGLE TO BE THE ONE TO SIT HIM DOWN.  ARTHUR, HOWEVER, DOESN'T 
+WISH TO SIT DOWN AND SHAKES THEM OFF.)  
+.ch lo  
+Can you read my lips, Arthur?   
+.ch ar  
+Yes, you've got great hips. 
+Wouldn't you say so, Ted?   
+.ch th  
+Well, I don't know...   
+.ch ar  
+Yeah, they're pretty good too.  
+.ad 
+(ENTER QUIGLEY THROUGH THE STAGE LEFT DOOR. 
+HE IS ARTHUR'S MIDDLE-AGED, BUT SPRY BUTLER.)   
+.ch qu  
+I brought you those fresh batteries you asked for, sir. 
+.ch ar  
+(TAKING THE BATTERIES AND PUTTING THEM IN HIS HEARING AID)  
+Don't be ridiculous, Quigley, these are batteries.  
+.ch qu  
+A sound observation.  How foolish of me.
+.ch th  
+(LOUDLY:) CAN YOU HEAR ME NOW?  
+.ch ar  
+(TAKING A SWIPE AT TEDDY) People in Africa can hear you now!
+.ch lo  
+Teddy can be so thoughtless sometimes, Arthur.  
+.ad 
+(SHE DRAPES HERSELF AROUND ARTHUR)  
+.ch be  
+But he means well, Mr. Bogwhittle.  
+.ch ar  
+Call me Arthur. 
+.ch qu  
+Will you be wanting anything else, sir? 
+.ch ar  
+Yes.  Go order some dinner for our guests.  The usual.  
+And make sure that its fresh.   
+Oh, and go feed Dostoevsky. 
+.sd 
+(LOUD ROAR OFFSTAGE)
+.ch qu  
+Right away, sir.
+.ad 
+(QUIGLEY EXITS VIA STAGE LEFT DOOR.)
+.ch lo  
+"Dostoevsky"?   
+.ch ar  
+Yes, my sea serpent.
+.ad 
+(BEATRICE GIVES TEDDY AN "I-TOLD-YOU-SO" LOOK.  TEDDY INDICATES THAT
+ARTHUR IS CRAZY.)   
+.ex 
+(TO LORRAINE:)  
+So this must be your husband, ...Joe isn't it?  
+.ch jo  
+Yes, sir.   
+.ch ar  
+Pleased to meet you.
+(TURNING TO BEATRICE:)  
+And... Beatrice?
+(SHAKES HER HAND)   
+You know, it's a funny thing... (WANDERING UP-STAGE LEFT)  I always thought 
+that Lorraine and Ted would've tied the 
+knot.   
+.ch lo  
+
+
+.zA..q.<
+bjeroehl
+
+
+(UNDER HER BREATH:) There isn't any rope strong enough. 
+.ch ar  
+What's that?
+.ch lo  
+Oh, nothing.
+.ch ar  
+(ALMOST TO HIMSELF:)
+Shame you two broke up... you looked so good together...
+.ch be  
+(FOLLOWING ARTHUR BEHIND THE COUCH:)
+Mr. Bogwhittle, can I ask a silly question? 
+.ad 
+(ARTHUR MAKES WALL PAINTING CROOOKED AGAIN.)
+.ch ar  
+Of course, and call me Arthur.  
+.ch be  
+Well, Mr. Bogwhittle, what exactly do you   
+.ul 
+do  
+with that art collection of yours,  
+just look at it all day?
+.ch ar  
+No, dear girl, I hardly ever look at it any more.  In fact, lately I've been
+giving some of it away. 
+.ch th  
+G- g- giving it away?  To whom? 
+.ch ar  
+Oh, friends mostly.  A young couple was by just the other day admiring the  
+Delmadge sculpture.  They'd 
+just gotten married,
+and I thought it would make a grand 
+wedding present.
+.ch th  
+But the Delmadge sculpture is worth...  
+.ch lo  
+...is a very beautiful piece of art.
+I hope the people you gave it to were able to fully appreciate its beauty.  
+.ch ar  
+Oh they were, they were...  
+you might know them... the Abercrombies?  They're both art collectors too.  
+That's the nice thing about being on one's way out the exit door of life... 
+you can get such pleasure from giving things to people who really deserve   
+them, young couples just starting out...
+Not like those money-grubbers from the old days.  As soon as they got   
+word I was dying, they started sending me cheap flowers, hoping I'd leave   
+them something. 
+.xx LORRAINE~AND~TEDDY  
+Really? 
+.ad 
+(BOTH TEDDY AND LORRAINE EDGE TOWARDS THE FLOWERS   
+THEY'VE BROUGHT IN, DUMP THEM ONTO THE FLOOR, AND KICK THEM UNDER THE   
+COUCH - ALL UNNOTICED BY ARTHUR, OF COURSE.)
+.ad 
+(ONCE AGAIN, BEATRICE PUTS HER GUM IN HER PURSE.)   
+.ch ar  
+By now you must all be wondering why I invited you here.
+.ad 
+(EXPECTANT PAUSE)   
+.ex 
+As I mentioned in my letter, I have a surprise for you. 
+(GIGGLES)  One which I'm sure you'll enjoy. 
+.ad 
+(BY THIS TIME, TEDDY AND LORRAINE ARE ON THE FIGURATIVE EDGES OF THEIR  
+SEATS)  
+.ex 
+I invited you all here this weekend for...  
+an Easter egg hunt. 
+.ad 
+(PAUSE) 
+.xx TEDDY~AND~LORRAINE  
+A what? 
+.ch ar  
+(GLEEFULLY:)  I knew you'd be surprised.
+.ch lo  
+But... but...   
+.ch th  
+It's not even Easter.   
+.ch ar  
+That's half the surprise.   
+.ch be  
+An Easter egg hunt in the middle of July?   
+.ch ar  
+What better time?   
+.ch lo  
+How about Easter?   
+.ch ar  
+Poppycock.  
+Everyone has Easter egg hunts then. 
+I celebrate 
+Easter in July, 
+Halloween in March, 
+and Christmas whenever Canada Post delivers the cards.  
+.ch th  
+How sad... a year without Christmas.
+.ch be  
+(TO TEDDY:) 
+Just like last year, when you said Christmas trees were too expensive.  
+.ch th  
+(QUIETLY HANDING HER ANOTHER PIECE OF GUM:) 
+Chew, Beatrice. 
+.ch ar  
+Quigley has been hiding eggs all over the house.
+Even I don't know where they are.   
+And we get to spend the whole day looking for them. 
+.ch lo  
+(UNCONVINCINGLY:)   
+What fun.   
+.ch jo  
+(EXCITED:)  Yeah, this sounds exciting! 
+.ch ar  
+I'm going to search the greenhouse; who wants to come with me?  
+.ch be  
+I do.   
+.ch jo  
+You know, I've always wanted to have a green house...   
+.ch be  
+Me too, but Teddy said white paint is cheaper.  
+Bye, Ted.   
+(ON HER WAY OUT THE DOOR:) I mean Theodore...   
+.ad 
+(JOE, BEATRICE, AND ARTHUR ALL EXIT THROUGH THE STAGE RIGHT DOOR,   ied LEAVING TEDDY AND LORRAINE A
+
+LEAVING TEDDY AND LORRAINE ALONE
+ON STAGE)   
+.ch lo  
+"Theodore"???   
+.ch th  
+"Agricultural technician"???
+.ch lo  
+Antique automobiles?
+.ch th  
+Well, Beatrice finds it impressive. 
+.ch lo  
+Beatrice would find linoleum impressive.
+.ch th  
+Joe couldn't spell linoleum.
+.ch lo  
+At least he knows how to dress himself. 
+That outfit Beatrice is wearing looks like a tie-dyed parachute.
+.ch th  
+She made it herself.  She makes all her own clothes.
+.ch lo  
+Probably because you're too cheap to buy her any.   
+You always were a real tightwad...  
+like that first time you asked me out to dinner.
+.ch th  
+Didn't you find it romantic?
+.ch lo  
+Romantic, no.  Novel, yes... candlelight and Big Macs...
+.ch th  
+I was just trying to be frugal. 
+.ch lo  
+"Frugal"?  You made 
+.ul 
+me  
+pay for dessert!
+.ch th  
+Well, the next time was better, wasn't it?  
+.ch lo  
+You call dinner at your uncle Fred's place romantic?
+If he told one more gynecologist joke, I swear I would have 
+punched him out.
+And aunt Myrtle, with her pet parakeet that whistled "76 Trombones" 
+while swinging upside-down on its perch.  Teddy, your family is 
+.ul 
+weird.  
+
+.ch th  
+What about  
+.ul 
+your
+family? 
+Your mother, for example?   
+Every night she sets an extra place at the table in case
+someone from
+outer space drops by.   
+.ch lo  
+You can never be too sure...
+.ch th  
+...and your sister Lucretia, with her chemistry set.
+.ch lo  
+Lots of people have chemistry sets. 
+.ch th  
+Yes, but how many   
+have 'goats liver' and 'eye of newt'?   
+Face it, Lorraine, your sister's a witch.   
+.ch lo  
+(DEFENSIVELY:)  
+Everyone ought to have a hobby. 
+.ch th  
+Yes, I can just imagine what Joe's hobby is.
+.ch lo  
+At least Joe doesn't fall asleep after Johnny Carson.   
+.ch th  
+At least Beatrice doesn't socialize with the Merchant Marine.   
+.ch lo  
+We were just good friends.  
+(PAUSE) 
+We played cards.
+.ch th  
+Yes, you played a lot of cards. 
+Every night.
+Lunch, sometimes.   
+.ch lo  
+At least I was playing with a full deck.
+.ch th  
+All hands on deck, you mean.
+.ch lo  
+What about you? 
+You and 
+Sally Krelhorn? 
+.ch th  
+What's wrong with Sally Krelhorn?   
+.ch lo  
+Oh, nothing.
+If she were just a little brighter, she could be a toaster. 
+.ch th  
+And what about the football team?   
+.ch lo  
+I was their mascot. 
+.ch th  
+Most teams have a stuffed animal.   
+The Wigby Wolverines had you.   
+Constantly, from what I heard.  
+.ch lo  
+You shouldn't believe everything you hear.  
+For example, I heard you were   
+fun to be with. 
+.ch th  
+According to the washroom wall, so were you.
+.xx TEDDY~AND~LORRAINE  
+.ad 
+(A SHORT, SIMULTANEOUS IMPROV TIRADE BETWEEN THE TWO OF THEM, WHICH ABRUPTLY STOPS AS   
+THEY RUN OUT OF BREATH AND REALIZE THAT THERE'S NO POINT IN YELLING AT EACH 
+OTHER AT THE SAME TIME) 
+.ad 
+(A BRIEF PAUSE) 
+.ch lo  
+Are you going Easter egg hunting?   
+.ch th  
+Of course not.  Are you?
+.ch lo  
+Don't be ridiculous.
+We both know the real reason he invited us down here was to give away   
+his collection. 
+.ch th  
+We've got to find some way to make sure we get it.  
+.ch lo  
+What do you mean "we"?  I'm the one who's going to get it.  
+.ch th  
+Look, if we keep fighting, he's going to give   
+the collection to someone else. 
+If we co-operate, we might each get half of it. 
+.ch lo  
+What do you mean 'co-operate'?  
+.ch th  
+You heard what he said about how glad he was to see us together again.  
+.ch lo  
+So? 
+.ch th  
+If he thinks there's a chance we may become a couple, we'll each
+get a piece of his collection.  
+.ch lo  
+That's the most ridiculous thing I've ever heard!   
+.ch th  
+Look, can't you see he was dropping hints?  
+He invited us both down on the same weekend.  He kept saying how we 
+"looked good together" and how "it was a shame we broke up".
+Not only that, but he's been giving away art to young   
+.ul 
+couples.
+Don't you see where it's leading?   
+.ch lo  
+You're imagining things;
+besides, how could I pretend I was love with you?   
+.ch th  
+You loved me once.  
+.ch lo  
+Everyone's entitled to a few mistakes.  
+(PAUSE) 
+Yours was marrying Beatrice.
+.ch th  
+Yours was marrying 'Lil Abner.  
+.ad 
+(SHE STARTS TO THROW A SMALL STATUETTE AT HIM.  ENTER ARTHUR FROM STAGE 
+RIGHT DOOR.)
+.ch ar  
+You two getting along?  
+.ch lo  
+Yes, just looking for Easter eggs...
+.ad 
+(TEDDY AND LORRAINE SEARCH UNCONVINCINGLY FOR EGGS.)
+.ad 
+(ARTHUR CROSSES TO CENTRE STAGE AND NOTICES THAT THEY DON'T HAVE ANY.)  
+.ch ar  
+Don't seem to have found many...
+Beatrice and Joe should be along in a moment.  They were just   
+watching Quigley blow-dry my magazine.  
+Darn paperboy threw it in the moat again.   
+.ch th  
+Lucky the serpent didn't eat it.
+.ch lo  
+Why 
+.ul 
+do  
+you keep a serpent in your moat?
+.ad 
+(ARTHUR CROSSES BEHIND COUCH, FOLLOWED CLOSELY BY LORRAINE.)
+.ch ar  
+It took up too much room in the pool.   
+.ch lo  
+(SHE STOPS, PUZZLED:)   
+Oh...   
+.sd 
+(SOUND OF A BLOW-DRYER SOMEWHERE BACK-STAGE LEFT)   
+.ch ar  
+It's nice to see you two again. 
+You were such a cute
+couple. 
+Can't imagine what came between you.
+.ch th  
+The Wigby Wolverines.   
+.ad 
+(LORRAINE MOVES BETWEEN THEM, BRUSHING TEDDY ASIDE. 
+TEDDY SITS IN WOODEN CHAIR.)
+.ch lo  
+What he means is, we each went our separate ways.  I went on a Carribean cruise,
+and Teddy went to Guelph.   
+.ad 
+(LORRAINE CROSSES TO BIG CHAIR AND SITS DOWN.)  
+.ch ar  
+Well, it's a shame.  You two would have been a great husband and wife team  
+of art collectors.  
+(SIGH)  But what's done is done...  
+(SITTING ON THE COUCH)  
+.sd 
+(THE SOUND OF THE BLOW-DRYER STOPS.)
+.ad 
+(QUIGLEY ENTERS FROM THE STAGE LEFT DOOR, CARRYING A NOW UNPLUGGED BLOW-DRYER   
+AND A SLIGHTY SOGGY COPY OF "THE VILLAGE VOICE".)   
+.ch qu  
+Your magazine, sir. 
+.ch ar  
+Thank you, Quigley. 
+.ch qu  
+Shall I give the paperboy a tip?
+.ch ar  
+Yes, tell him to watch out for the serpent. 
+.ch qu  
+Yes, sir.   
+.ad 
+(EXIT QUIGLEY,  
+THROUGH THE STAGE RIGHT DOOR.   
+ENTER JOE STAGE LEFT, LIGHTLY COVERED IN SOOT, CARRYING A BASKET OF EGGS.)  
+.ch jo  
+Hey, Lorraine,  
+you'll never guess how many eggs I found.   
+.ch lo  
+You're right.   
+.ch ar  
+What happened to you?   
+.ch jo  
+Well, this one egg was hidden way up top the chimney.  Took a bit a doin',  
+but I finally got 'er down. 
+.ad 
+(ENTER BEATRICE VIA STAGE LEFT DOOR, CARRYING A VERY UGLY OBJET D'ART)  
+.ch be  
+Oh, Teddy... I mean Theodore... 
+there's a room just down the hall that's filled with all kinds of neat  
+paintings and things.   
+.ch ar  
+Ah yes, the gallery.
+.ch be  
+I found this little statue there, on a pedestal all by  
+itself. 
+.xx TEDDY~AND~LORRAINE  
+(STANDING SUDDENLY) 
+The Aphrodite de Lyon!  
+.ch be  
+It's real pretty, isn't it Theodore?
+It reminds me of Aunt Gertrude. 
+.ch jo  
+I think it's beautiful. 
+.ch th  
+It's not supposed to be beautiful, it's a work of art.  
+.ch be  
+Well,   
+.ul 
+I   
+like it.
+.ch ar  
+Then you shall have it, my dear.
+.ch be  
+You mean it?  For keeps?
+.ad 
+(LORRAINES SLUMPS BACK INTO THE BIG CHAIR, STUNNED.)
+.ch ar  
+(CHUCKLES) Yes, dear, for keeps.
+.ch be  
+Oh, I have just the place for it.   
+On the front lawn, next to the flamingos.   
+.ad 
+(TEDDY SLUMPS INTO THE WOODEN CHAIR, SHOCKED.)  
+.ch jo  
+Gee.  I always wanted one of them flamingos.
+.ch lo  
+Maybe if you're good, Joe, I'll get you one for Christmas.  
+.ch ar  
+Have you found any eggs yet, Beatrice?  
+.ch be  
+(HOLDING UP HER EASTER EGG BASKET:) 
+Just these fifteen from the gallery Mr. Bogwhittle, but I'll keep looking.  
+.ch jo  
+Hey, I just thought of a great place to look for eggs.  
+.ch ar  
+Where's that?   
+.ch jo  
+(AS A "JOKE":)  Zehrs.  
+.ad 
+(LORRAINE STANDS.)  
+.ch ar  
+A little far afield, Joe... Quigley hid them all on the estate. 
+.ch be  
+I bet I know where there's some eggs... the henhouse!   
+.ad 
+(EXIT BEATRICE DOWN THE VOM.)   
+.ch ar  
+(TO LORRAINE AND TEDDY:)
+Why are you two standing around doing nothing?  
+There's eggs to be found!   
+.ch th  
+But we don't... 
+.ch ar  
+Look, if you don't get going now, there won't be any left.  Move it!
+.ad 
+(ARTHUR PUSHES THEM OUT THE STAGE LEFT DOOR)
+.ex 
+(TO JOE:)   
+That's the trouble with young people these days...no initiative.
+Why, when I was their age I was travelling all over the world.  
+.ch jo  
+Really? 
+What sort of things did you do? 
+.ch ar  
+Well Joe,   
+I've scaled the 
+Matterhorn; I've kayaked down the Amazon River; I've even hunted
+Bengal tigers.  
+But, you know,  
+nothing can quite match the excitement of   
+a good old fashioned Easter egg hunt.   
+.ch jo  
+So you don't travel anymore?
+.ch ar  
+Not since I found Dostoevsky.  I wanted to give him a good home.
+The travelling life is no life for a sea serpent.   
+.ch jo  
+Where did you find him? 
+.ch ar  
+Well, a couple of years ago I was doing some fishing up in Scotland 
+when I stopped at a place called 'Loch Ness'.   
+A guy there was selling sea serpents by the dozen.  
+He claimed the lake was full of them.   
+.ch jo  
+But, what do you feed a sea serpent?
+.ch ar  
+Whatever he wants.  
+Cows, sheep, encyclopedia salesmen. 
+He doesn't go hungry.   
+.ch jo  
+Gosh, I'd sure like to see him up close.
+.ch ar  
+(CHECKING POCKETWATCH) Well, it's just about time for Dostoevsky's dessert; 
+why don't you come watch me feed him?   
+.ch jo  
+That would be great, Mr. Bogwhittle.
+.ch ar  
+Fine.  And call me Arthur.  We can search for Easter eggs along the way...  
+.ad 
+(EXIT ARTHUR AND JOE OUT THE VOM.)  
+.ad 
+(QUIGLEY PEAKS THROUGH THE STAGE RIGHT DOOR AND SEES THAT THE ROOM IS EMPTY.
+A MOMENT LATER, HE ENTERS, WEARING BUNNY EARS.  HE SNEAKS AROUND THE
+ROOM, HIDING ONE OR TWO EGGS AND THEN EXITS OUT THE SAME DOOR.) 
+.ad 
+(ENTER TEDDY AND LORRAINE THROUGH THE STAGE LEFT DOOR.) 
+.ch lo  
+I told you we wouldn't find any eggs
+in the gallery. 
+.ch th  
+Well, it doesn't matter.  The main thing is that we got a chance to see all the stuff   
+Bogwhittle's got sitting in there... it must be worth a fortune.
+.ad 
+(TEDDY SMILES SMUGLY AT LORRAINE AND LEANS ON THE   
+APHRODITE)  
+.ch lo  
+You know, maybe you were right. 
+.ch th  
+Go on.  
+.ch lo  
+He did mention how cute we used to look together.   , isAnd how we would have made a great h
+
+
+.zA..q.<
+bjeroehl
+
+
+And how we would have made a great husband and wife team of art collectors...   
+maybe faking an affair isn't such a bad idea after all. 
+.ch th  
+Really? 
+.ch lo  
+Oh, I think 
+idea's revolting, but I'll do anything for a buck.  
+.ch th  
+So I've heard.  
+.ch lo  
+...and if pandering to the fantasies of a deluded old man who keeps sea 
+serpents as pets will help me get what I want, then so be it.   
+.ch th  
+Why should I bother?
+I mean, 
+all I have to do is get Beatrice
+to fall in love with, say,  
+the Hobart watercolour and next thing you know it'll be mine.   
+.ad 
+(TEDDY SITS ON THE COUCH.)  
+.ch lo  
+And Beatrice will keep it on the lawn, right next to the the flamingos. 
+.ch th  
+But at least I'll have it.  
+Eventually I'll have the whole collection.  
+.ch lo  
+You might not.  
+The way Arthur's been acting lately, he could give it all to his sea serpent.   
+.ch th  
+Still, I think my odds are better than yours, so
+the deal's off. 
+.ch lo  
+Think about it, "Theodore", he's left a lot of things to
+.ul 
+couples 
+who are art collectors.  Beatrice getting the Aphrodite was just a fluke.   
+.ch th  
+I'm not so sure, and I'd rather take my chances with Beatrice   
+than fake an affair with you.   
+.ch lo  
+(PAUSE) 
+Who says we'd have to fake it?  
+.ch th  
+Go on.  
+.ch lo  
+(WITH SOME HESITATION AND ONLY MODERATE CONVICTION:)
+You're still a very... attractive man, "Theodore".  
+.ad 
+(SHE SITS NEXT TO HIM ON THE COUCH.  HE SMILES SMUGLY)  
+.ch th  
+Yes?
+.ad 
+(LORRAINE RUNS HER FINGERS OVER HIS SHOULDERS)  
+.ch lo  
+You must know the effect you have on women...   
+you arouse certain... passions...   
+.ch th  
+Um. 
+.ch lo  
+Arthur isn't the only one who'd 
+find an affair between us... satisfying.
+.ad 
+(SHE KISSES HIM LIGHTLY)
+.ex 
+What do you say, "Theodore"?
+.ch th  
+What
+.ul 
+can 
+I say, darling?  Except... 'no'.
+.ad 
+(LORRAINE IS FURIOUS)   
+.ch lo  
+What?!? 
+.ch th  
+You didn't really think I'd fall for that old seduction routine, did you?   
+.ad 
+(SHE THROWS SOMETHING SMALL AT HIM) 
+.ex 
+I mean, it may work on Joe and the Wigby Wolverines...  
+.ad 
+(SHE THROWS SOMETHING SLIGHTLY LARGER AT HIM)   
+.ex 
+...and of course the Naval Cadets at Brewster's Point...
+.ad 
+(SHE HURLS A VERY LARGE OBJECT AT HIM, AND MISSES)  
+.ch lo  
+You little creep!   
+You good-for-nothing, arrogant...!  
+You made me go through all that...  
+.ch th  
+Actually, it was kind of fun... 
+.ad 
+(SHE PICKS UP THE LARGEST OBJECT SHE CAN FIND, WHICH HAPPENS TO BE  
+THE WOODEN CHAIR AND IS ABOUT TO THROW IT AT TEDDY) 
+.ad 
+(QUIGLEY ENTERS THROUGH THE STAGE LEFT DOOR.
+HE IS CARRYING A WATERCOLOUR WITH ITS BACK TO THE TEDDY AND LORRAINE.)  
+.ad 
+(QUIGLEY TAKES IN THE SCENE)
+.ch qu  
+Would madame care for a whip, as well?  
+.ad 
+(LORRAINE FEELS A BIT FOOLISH AND SETS THE CHAIR BACK DOWN) 
+.ad 
+(TEDDY STANDS UP.)  
+.ch th  
+Quigley, what are you doing with that painting? 
+.ch qu  
+I'm taking it out to the Sandersons.
+.ad 
+(LORRAINE AND TEDDY EXCHANGE HORRIFIED LOOKS)   
+.ch th  
+The Sandersons? 
+.ch qu  
+Some friends of the family. 
+.ch lo  
+(RECOVERING:) Do you think we could see it? 
+.ch qu  
+(SIGHING)  I suppose so.
+.ad 
+(QUIGLEY TURNS THE PAINTING AROUND SO THEY CAN SEE IT)  
+.ad 
+(TEDDY AND LORRAINE PAUSE)  
+.ch lo  
+The Hobart watercolour. 
+.ch qu  
+(DRIPPING WITH DISDAIN) 
+Now if you'll be so good as to excuse me, the Sandersons are waiting.   
+.ad 
+(QUIGLEY EXITS OUT THE VOM.  LORRAINE AND TEDDY FOLLOW THE PAINTING AS IT   
+DISAPPEARS OUT THE DOOR WITH QUIGLEY)   
+.ad 
+(A PAUSE)   
+.ch th  
+It was inches away. 
+.ch lo  
+You could almost touch it.  
+.ad 
+(PAUSE) 
+.ch th  
+Remember what you were saying about having an affair?   
+.ch lo  
+Hmm?
+Oh yes, I almost forgot.
+.ad 
+(LORRAINE RAISES WOODEN CHAIR AGAIN.)   
+.ch th  
+Hang on a second.   
+(TAKES THE CHAIR AND SETS IT DOWN.) 
+Maybe   
+.ul 
+faking  
+an affair isn't such a bad idea after all.  
+.ch lo  
+.ul 
+Oh, 
+no...   
+.ch th  
+Look, at the rate Arthur's giving stuff away, we've got to do something 
+or we'll
+.ul 
+both
+wind up empty-handed.   
+.ch lo  
+Well... 
+(SHE LOOKS AT THE DOOR THE HOBART WATERCOLOUR DISAPPEARED THROUGH)  
+.ex 
+Okay.   
+But we're just faking it, right?
+.ch th  
+Right.  
+.ch lo  
+We'll keep this above-board and businesslike.   
+.ch th  
+Agreed. 
+(PUTTING AN ARM AROUND HER WAIST)   
+You know, you're cute   
+when you're businesslike.   
+.ad 
+(SHE ELBOWS HIM)
+.ch lo  
+Hands off.  This is strictly for Arthur's benefit.  
+And next time, I'll aim lower.  
+.ch th  
+Don't worry, I'll keep my distance when Arthur's not around.
+Maybe we should let Joe and Beatrice in on this.
+I mean, it'll make things a lot easier on us if we don't have to
+hide it from them.  
+.ch lo  
+Are you kidding?  Joe's compulsively honest.
+On the way here he drove through a red light.  He spent twenty minutes  
+trying to find a police station to turn himself in. 
+.ch th  
+I know what you mean.   
+Beatrice doesn't even lie about her age.
+.ch lo  
+It'll have to be only when they're not around.  
+.ch th  
+Right.  
+So, what do we do now?  
+.ch lo  
+Simple.  Whenever Arthur comes in, he'll find us wrapped in each others'
+arms.   
+He may be a little eccentric... 
+.ch th  
+A   
+.ul 
+little  
+eccentric?  
+.ch lo  
+...but he's not blind.  
+He'll catch on. 
+.ch th  
+Listen!  Here he comes now! 
+.ad 
+(TEDDY GRABS LORRAINE AND KISSES HER PASSIONATELY.  THEY REMAIN LOCKED  
+LIKE THIS FOR A MOMENT, THEN LORRAINE BREAKS THE EMBRACE)   
+.ch lo  
+I didn't hear anything! 
+.ch th  
+I could've sworn I heard him coming...  
+.ch lo  
+You were just taking advantage of this whole situation. 
+.ch th  
+I was not!  
+.ch lo  
+You try a stunt like that again, Teddy my dear, and 
+Arthur's serpent may have a new playmate.   
+.ch th  
+You know, we'd better get this place tidied up before Arthur gets here. 
+.ad 
+(THEY START GETTING THINGS BACK IN ORDER AGAIN) 
+.ch lo  
+(STRAIGHTENING STUFF ON STAGE LEFT END TABLE.)  
+What are you planning to do with your share of the money?   
+.ch th  
+I'm going to buy a yacht, and sail around the world.
+(LOOKING OFF, WISHFULLY.)   
+.ch lo  
+I can just see you as a skipper.
+Remind me to stay out of the shipping lanes.
+.ad 
+(LORRAINE SITS ON THE COUCH.)   
+.ch th  
+The Sixth Fleet will be heartbroken.
+.ch lo  
+(JUMPING UP AGAIN:) 
+You never stop, do you? 
+I go out with two sailors on a blind date and suddenly it's the Sixth Fleet.
+.ch th  
+(CROSSING TO BEHIND THE COUCH:) 
+You know what those sailors are like... 
+.ch lo  
+.ul 
+You're  
+the one who set them up with me!
+Not only that, but you charged them twenty bucks apiece.
+.ad 
+(SHE THROWS SOMETHING AT HIM.  HE DUCKS BEHIND THE COUCH.)  
+.ch th  
+(POPPING HIS HEAD UP:)  
+I gave you ten percent...   
+.ch lo  
+Two bucks?!?!   
+.ad 
+(SHE THROWS SOMETHING ELSE. HE DUCKS AGAIN, THIS TIME STAYING DOWN.)
+.ad 
+(LORRAINE THINKS SHE HEARS SOMEONE COMING.  
+SHE JUMPS OVER THE COUCH AND KISSES HIM PASSIONATELY.  WE SEE LEGS, ETC.)   
+.ad 
+(THE KISS ENDS.  LORRAINE COMES UP AND LOOKS AROUND FOR SOMEONE.)   
+.ch lo  
+(SHEEPISHLY:) I... uh... thought I heard Arthur coming. 
+.ad 
+(SHE CROSSES DOWN-STAGE LEFT.)  
+.ch th  
+(PULLING HIMSELF UP:)   
+Sure you did.   
+.ch lo  
+I did!  
+.ch th  
+Uh-huh. 
+So  
+.ul 
+now 
+who's   
+taking advantage of the situation?  
+.ch lo  
+Theodore Anderson, I was
+.ul 
+not...  
+.ad 
+(THE SOUND OF APPROACHING FOOTSTEPS FROM OFFSTAGE.  
+TEDDY AND LORRAINE LOOK AT EACH OTHER, THEN TOWARDS THE DOOR, THEN  
+TOWARDS EACH OTHER AND ATTEMPT TO RUN INTO EACH OTHERS' ARMS.   
+TEDDY SLIPS ON THE CARPET AND LANDS AT LORRAINE'S FEET) 
+.ad 
+(QUIGLEY ENTERS FROM THE STAGE RIGHT DOOR.) 
+.ch qu  
+I see the lion has been tamed.  
+.ad 
+(TEDDY AND LORRAINE LOOK EMBARRASSED.   
+THEY QUICKLY SIT DOWN, TEDDY IN THE WOODEN CHAIR AND LORRAINE IN THE
+BIG CHAIR.) 
+.ad 
+(ENTER ARTHUR FROM THE VOM.)
+.ch ar  
+So, how are you young people doing? 
+.ad 
+(TEDDY AND LORRAINE RUSH TOWARDS EACH OTHER, TEDDY BEING CAREFUL OF THE 
+CARPET, 
+AND SIT CLOSE TOGETHER ON THE COUCH.  THEY ARE VERY AFFECTIONATE TOWARDS
+EACH OTHER) 
+.ch lo  
+Oh, fine.   
+.ch th  
+Yes, fine.  
+.ch qu  
+(CROSSING BEHIND THE TWO OF THEM:)  
+Yes, just fine. 
+.ad 
+(QUIGLEY EXITS BY THE STAGE LEFT DOOR.) 
+.ch ar  
+Ah, seeing you together again takes me back to the old days.
+.ad 
+(ENTER BEATRICE FROM THE VOM.  SHE IS COVERED IN LITTLE CHICKEN FEATHERS, BUT IS
+TRIUMPHANTLY HOLDING A BUSHEL BASKET FULL OF EGGS.  
+LORRAINE AND TEDDY RUSH GUILTILY AWAY FROM EACH OTHER)  
+.ch be  
+I   
+.ul 
+knew
+they'd have eggs in that henhouse!  
+.ad 
+(JOE ENTERS, CARRYING A LARGE   
+AND UNAPPEALING WORK OF 'ART')  
+.ch jo  
+Gol-lee, this is the biggest house I ever been in.  
+.ch lo  
+Joe, what   
+.ul 
+is  
+that thing you're carrying? 
+.ch jo  
+I dunno.  Quigley asked me if I would carry out to the front for him.   
+.ad 
+(JOE HEADS FOR THE VOM.)
+.ch th  
+I've seen it somewhere before...
+.ad 
+(JOE STOPS.)
+.ch ar  
+I'm ashamed of you two, not recognizing 
+Scarpada's 'Wild Bull'. 
+.ch th  
+The 'Wild Bull'!?!  But I thought it was in the Royal Museum!   
+.ch ar  
+It's one of my more recent acquisitions.
+.ch lo  
+What, the 'Wild Bull'?  
+.ch ar  
+No, the Royal Museum.   
+.ch th  
+It must have cost...
+.ad 
+(TEDDY PULLS OUT HIS CALCULATOR AND ATTEMPTS TO ESTIMATE THE COST.) 
+.ch ar  
+Oh, don't be silly.  What's money to a man my age, eh?  
+.ch jo  
+Y'know, this 'Wild Bull' thing is sorta neat lookin'.   
+.ch be  
+I kind of like it too.  
+.ch lo  
+Remind you of Aunt Gertrude, dear?  
+.ch jo  
+It sure would look great
+out in the cow shed.  Old Hazel's been a little 
+lonely ever since her calf died.
+.ch ar  
+Has she indeed? 
+Well, she won't be lonely any more. 
+.ch jo  
+Huh?
+.ch ar  
+The sculpture's yours, Joe. 
+Tell Hazel I hope she enjoys it.
+.ch jo  
+Gee, thanks Mr. Bogwhittle. 
+.ch ar  
+You're welcome.  And call me Arthur.
+.ad 
+(ENTER QUIGLEY THROUGH THE STAGE RIGHT DOOR.)   
+.ch qu  
+Morning mail has arrived, sir.  
+.ch ar  
+Ah, splendid.   
+Anything interesting?   
+.ch qu  
+You might say so.   
+Some more letters from former students, hoping  
+to get a piece of your collection.  One of them even wrote  
+a brief ode to you. 
+.ch jo  
+A brief 
+.ul 
+'ode'   
+ ... what's that?   
+.ch qu  
+A poem, of sorts.   
+.ch ar  
+I'd like to hear it.
+.ch qu  
+Very well, sir. 
+.ad 
+(QUIGLEY TAKES OUT ODE AND BEGINS TO READ)  
+.ex 
+.nf 
+"Arthur Bogwhittle, Arthur Bogwhittle,  
+You remind me of a hog middle   
+A belly that's round
+A soul that's profound  
+And a heart that's as warm as fresh dog piddle" 
+.fi 
+.ex 
+Would you like me to continue, sir? 
+.ch ar  
+Does it get any better? 
+.ch qu  
+Not significantly, sir. 
+.ch ar  
+Was there anything else?
+.ch qu  
+Yes, the pizza, subs and chicken wings you ordered have arrived.
+.ch ar  
+Where's the delivery boy?   
+.ch qu  
+There was a slight mishap with the serpent. 
+.ch ar  
+Oh dear.  That's the third time this week.  Remind me to leave  
+the family something.  Is the food at least fresh this time?
+.ch qu  
+Some of it is still moving...   
+.ch jo  
+Sounds good to me!  
+.ch ar  
+Let's go, then. 
+.ch lo  
+I think I'll pass, thanks.  
+.ch th  
+Me too. 
+.ch ar  
+Suit yourselves.
+.ad 
+(ALL BUT TEDDY AND LORRAINE EXIT VIA THE STAGE RIGHT DOOR.) 
+.ch lo  
+Turning down free food?  You must be on a diet. 
+.ch th  
+As a matter of fact, I'm in perfect physical condition. 
+.ch lo  
+Oh? That's a switch.
+I remember back in art school I used to be able to take you two 
+falls out of three. 
+.ch th  
+Never.  
+.ch lo  
+Oh yeah?
+Bet I could still beat you at arm wrestling.
+.ch th  
+Bet you couldn't.   
+.ch lo  
+How much?   
+.ch th  
+Ten bucks?  
+.ch lo  
+Twenty? 
+.ch th  
+(PAUSE) Fifty dollars.  
+.ch lo  
+Hmm.  (PAUSE)   
+You're on.  
+.ad 
+(THEY CLEAR SOME ROOM DOWNSTAGE OF THE SOFA, LIE ON THE FLOOR FACING EACH   
+OTHER AND BEGIN TO ARM WRESTLE.  TEDDY CHEATS BY USING HIS OTHER ARM AS WELL;   
+IT DOESN'T SEEM TO HELP HIM MUCH.)  
+.ad 
+(ENTER QUIGLEY THROUGH THE STAGE RIGHT DOOR.  HE IS CARRYING A RATHER   
+LARGE SCULPTURE THAT OBSCURES HIS VISION.   
+HE HEARS THE SOUNDS OF THEIR STRUGGLE BUT CANNOT SEE THEM.  
+NATURALLY HE GETS THE WRONG IDEA.   
+.ch qu  
+Hello?  Is anyone there?
+.ad 
+(TEDDY IS MOMENTARILY DISTRACTED, RELEASES HIS SECOND ARM,  
+AND LORRAINE WINS THE ARM WRESTLE.  
+SHE LEAPS TO HER FEET, VICTORIOUS.  
+SHE THEN SPOTS QUIGLEY, AND IS SLIGHTLY EMBARASSED) 
+.ch lo  
+Uh, hi Quigley. 
+.ch qu  
+Greetings, madame.  
+(WITH DRY SARCASM:) 
+I trust I'm not interrupting anything.  
+.ch lo  
+Oh, no... not a thing.  
+.ad 
+(QUIGLEY WALKS ACROSS STAGE TOWARDS THE STAGE LEFT DOOR.  EN ROUTE HE SPOTS 
+AN EXHAUSTED TEDDY, LYING ON THE FLOOR BREATHING HEAVILY)   
+.ch qu  
+Ah, to be young again.  
+.ad 
+(EXIT QUIGLEY BY STAGE LEFT DOOR.)  
+.ch th  
+(RECOVERING:) What happened?
+.ch lo  
+Quigley came by with another priceless work of art. 
+Remember?  It was right after you   
+.ul 
+lost
+the arm wrestle.
+By the way, you owe me fifty bucks. 
+.ch th  
+Now wait a minute... that wasn't fair.  I was distracted when Quigley   
+came in.
+.ch lo  
+Just like old times... making excuses for poor performance. 
+.ul 
+And 
+weasling out of a bet.  
+.ch th  
+Weasling out of a bet?!?
+.ad 
+(THE STAGE LEFT DOOR OPENS AGAIN AND QUIGLEY COMES THROUGH IT, PUSHING  
+SOME KIND OF CART OR WHEELBARROW FULL OF ALL DIFFERENT SORTS OF ARTWORK.
+THE SCULPTURE THAT HE HAD JUST CARRIED ACROSS THE STAGE IS ON THE TOP   
+OF THE CART-LOAD.  QUIGLEY WHEELS IT TO STAGE-CENTRE AND THEN RETURNS TO
+
+.zA..q.<
+bjeroehl
+
+
+CLOSE THE DOOR. 
+.ad 
+LORRAINE TRYS TO SEE EXACTLY WHAT ARTWORK IS ON ITS WAY OUT, WHILE TEDDY
+ATTEMPTS TO CALCULATE ITS VALUE ON HIS CALCULATOR.  
+.ad 
+QUIGLEY CLOSES THE DOOR, RETURNS TO THE CART, AND TAKES IT OUT THE VOM.)
+.ch th  
+You know, that artwork's disappearing faster and faster all the time.   
+.ch lo  
+I'll say.   
+If this keeps up, neither of us will get a thing.   
+.ch th  
+We've got   
+to convince Arthur that we're madly in love and are getting together again..
+.ch lo  
+Right.  
+No holds barred.
+The next time Bogwhittle comes through that door, we're going to
+show him what passion is all about. 
+.ch th  
+Right.  
+.ad 
+(THEY SHAKE HANDS)  
+.sd 
+(SOUND OF APPROACHING FOOTSTEPS FROM BACK-STAGE.)   
+.ch lo  
+All right, into position.   
+.ad 
+(ARTHUR ENTERS THROUGH THE STAGE ???? DOOR.)
+.ex 
+(WHISPERING:) GO!   
+.ad 
+(THEY INSTANTLY EMBRACE.
+THEY ARE KISSING AND FONDLING WITH GREAT ARDOUR AS  
+HE WALKS ACROSS STAGE,  
+EMPTIES HIS PIPE, AND LEAVES THROUGH THE OPPOSITE   
+DOOR)   
+.ex 
+Whew!  What 
+.ul 
+is  
+that cologne you're wearing?
+.ch th  
+It's called "Thug". 
+It was a gift.  
+.ch lo  
+It makes you smell like 
+someone you'd meet in a dark alley. 
+.ch th  
+You ought to know...
+.ch lo  
+Don't you start that again...   
+.ad 
+(ARTHUR ENTERS, AND TEDDY GRABS LORRAINE.  THEY CONTINUE THEIR  
+PASSIONATE ENCOUNTER AS ARTHUR COMES IN,
+FINDS AN EASTER EGG,
+AND EXITS)  
+.ex 
+I swear, that man is
+.ul 
+dense.  
+He doesn't even notice us.  
+Maybe we should be more... vocal.   
+.ch th  
+Anything you say.   
+.ad 
+(ARTHUR ENTERS AGAIN.  THIS TIME HE'S PUTTING ON A WALKMAN. 
+HE WANDERS IN, OBLIVIOUS TO THE COUPLE, AND LOOKS FOR SOME EGGS.
+TEDDY AND LORRAINE DO NOT NOTICE THE WALKMAN, AND ARE BUSY MAKING   
+PASSIONATE SOUNDS HOPING TO GET HIS ATTENTION.  
+THROUGHOUT THIS SCENE, THEIR SOUNDS OF PASSION ARE ENTIRELY UNCONVINCING,   
+AS IF DONE BY NON-ACTORS DELIVERING LINES.  
+TEDDY IS FACING THE RIGHT DIRECTION TO NOTICE THE WALKMAN, AND DOES)
+.ch lo  
+<MISCELLANEOUS SOUNDS OF PASSION>   
+.ch th  
+(UNDER HIS BREATH:) Don't bother.   
+.ch lo  
+Hmm?
+.ch th  
+He's wearing a walkman. 
+.ch lo  
+What?!? 
+.ch th  
+He can't hear a thing we say.   
+.ch lo  
+Maybe if we were louder...  
+OH, DARLING...  
+.ch th  
+This is a stupid idea...
+
+.ad 
+(SHE JABS HIM IN THE RIBS)  
+.ex 
+OH, DARLING...  
+he isn't even noticing us.  
+.ch lo  
+He will if we just keep at it...
+YOU'RE FANTASTIC... 
+that cologne is killing me. 
+"Thug".  Hah!   
+.ch th  
+Beatrice bought it for me...
+DON'T STOP...   
+she says it makes me macho. 
+.ch lo  
+Macho?  You?  That's a hot one...   
+OH BABY, I'M BURNING UP...  
+.ch th  
+At least I don't smell like a pig...
+.ch lo  
+OH, YOU'RE SUCH AN ANIMAL!...   
+I think Joe smells just fine, thank you.
+.ch th  
+AHHHHHHHHHHH!   
+.ch lo  
+Hey let's not over do it!   
+.ch th  
+You jabbed me with your brooch! 
+.ch lo  
+Sorry.  
+DO IT, LOVER... 
+I'll take it off.   
+.ad 
+(SHE TRIES TO TAKE OFF HER BROOCH, HAS TO TAKE OFF A SCARF TO GET RID OF
+IT. SHE GETS AN IDEA AND FLINGS THE SCARF IN ARTHUR'S DIRECTION.)   
+.ch th  
+That's better... TAKE IT OFF, BABY... the catch was digging into my chest...
+.ch lo  
+(SARCASTICALLY:) Poor dear... WHAT A STUD... take off your tie. 
+.ch th  
+Huh?
+.ch lo  
+Take off your tie, it might get his attention.  
+.ad 
+(TEDDY TAKES OFF HIS TIE AND FLINGS IT AT ARTHUR, MISSING.  
+TEDDY AND LORRAINE THEN STAND AND TAKE MORE OF THEIR CLOTHES OFF,   
+SYSTEMATICALLY THROWING THEM IN ARTHUR'S DIRECTION AND THEN GRABBING
+EACH OTHER IN CASE THE LAST PIECE CAUGHT HIS ATTENTION. 
+.ad 
+TEDDY FINALLY FLINGS HIS TROUSERS AT ARTHUR AS ARTHUR EXITS THROUGH THE 
+STAGE LEFT DOOR.
+.ad 
+TEDDY AND LORRAINE PAUSE TO CATCH THEIR BREATH AND BEGIN PICKING UP 
+THEIR CLOTHING.)
+.ch lo  
+So much for that idea.  
+.sd 
+(SOUND OF FOOTSTEPS IS HEARD AT STAGE LEFT DOOR.)   
+.ch th  
+Here he comes!  
+.ad 
+(THEY LEAP ONTO THE COUCH.) 
+.ad 
+(JOE AND BEATRICE ENTER THROUGH THE STAGE LEFT DOOR, LEAVING IT OPEN.)  
+.ad 
+(TEDDY AND LORRAINE LEAP UP, BOTH AS SCANTILY CLAD AS CAN BE GOTTEN 
+AWAY WITH)  
+.ch jo  
+(PAUSE) What's going on here?   
+.ch th  
+It's not what it looks like, really...  
+.ch lo  
+Yes, we can explain all of this...  
+.ch be  
+That's okay... it seems kind of obvious.
+.ch jo  
+Theodore, I think maybe you and me should step outside. 
+.ch th  
+Oh, I don't think that's really necessary...
+.ad 
+(JOE PHYSICALLY PICKS UP TEDDY AND CARRIES HIM TOWARDS THE STAGE LEFT DOOR. 
+TEDDY IS TRYING TO EXPLAIN AS THEY EXIT)
+.ex 
+There's a perfectly reasonable explanation for all of this...   
+you see, Lorraine just wanted to see my tattoo...   
+.ad 
+(EXIT TEDDY OVER JOE'S SHOULDER THROUGH THE OPEN STAGE LEFT DOOR.)  
+.ad 
+(DURING THIS NEXT SEQUENCE, LORRAINE IS STRUGGLING VERY UNGRACEFULLY
+TO GET DRESSED, FIX UP HER HAIR, ETC)   
+.ch lo  
+Beatrice... 
+.ch be  
+You don't have to say anything...   
+.ch lo  
+Teddy and I were just...
+.ch be  
+I know what you were doing.  I read books.  
+.ch lo  
+But...  
+.ch be  
+I don't blame you, or Theodore... it's all my fault.
+I tried... lord knows, I tried... but it just wasn't enough.
+.ch lo  
+Oh, Beatrice... 
+.ch be  
+I told him  
+how "his touch drove me wild with desire", and how he was "the best I'd 
+ever known".
+Teddy   
+.ul 
+was 
+the first... still, I wasn't lying. 
+.ch lo  
+Beatrice... 
+.ch be  
+I tried all the things they said to do in that book.  The candlelight dinner,   
+the fishnet stockings, the saran wrap...
+.ad 
+(LORRAINE IS SUDDENLY MORE INTERESTED THAT SYMPATHETIC) 
+.ch lo  
+Saran-wrap? 
+.ch be  
+...but it just wasn't enough for him.   
+...I know you can give him things that I never could.   
+.ch lo  
+
+Beatrice, listen to me.  You can
+.ul 
+have
+Theodore.   
+.ch be  
+No, I don't want your pity... I wanted Teddy's love, but now it's too   
+late.   
+(PUTTING A HAND ON LORRAINE'S SHOULDER) 
+I hope the two of you (SOB) will be (SOB) very happy together...
+.ad 
+(SHE RUNS OUT THE VOM IN TEARS) 
+.ch lo  
+Beatrice, wait...!  
+.ad 
+(LORRAINE RUSHES OUT THE VOM AFTER BEATRICE,
+STILL GETTING THE LAST OF HER CLOTHING IN PLACE)
+.ad 
+(ENTER JOE AND TEDDY THROUGH THE STAGE LEFT DOOR.  JOE HAS CALMED   
+DOWN CONSIDERABLY.  DURING THIS SCENE, TEDDY STARTS GETTING HIS 
+CLOTHES BACK ON)
+.ch th  
+...and that's all there was to it.  
+.ch jo  
+I still don't understand the part about the aliens landing...   
+.ch th  
+(PULLING UP HIS TROUSERS:)  
+Oh, that's easy.  You see...
+.ad 
+(QUIGLEY COMES THROUGH THE STAGE RIGHT DOOR IN TIME TO SEE TEDDY PULLING
+UP HIS TROUSERS.)   
+.ch qu  
+(SLIGHTLY SURPRISED:)   
+Boys will be boys.  
+.ad 
+(QUIGLEY BACKS OUT THE SAME DOOR AS IF HE DIDN'T WANT TO DISTURB ANYTHING.) 
+.ch jo  
+What did he mean?   
+.ch th  
+Oh, nothing.
+.ch jo  
+You know, I'm real sorry about that misunderstandin' we had earlier.
+I just completely got the wrong idea about what was happenin'.  
+.ch th  
+Oh, that's all right.  I forgive you... 
+it was an honest mistake.   
+.ch jo  
+Yeah, but I feel I gotta make it up to you.  What say we head out to my 
+farm tomorrow and go pig wrassling together?
+(SLAPPING TEDDY ON THE BACK.)   
+.ch th  
+Uh, sounds like fun.
+.ad 
+(TEDDY CHECKS HIS APPOINTMENT CALENDAR) 
+.ex 
+Gosh darn, I forgot I'm already going pig-wrassling tomorrow.  Sorry.   
+.ch jo  
+That's okay, Ted.  We got the whole summer ahead of us. 
+.ch th  
+Right.  
+So, what's it like to be married to Lorraine?   
+.ch jo  
+It's okay, I guess. 
+It can be real confusing, though.   
+.ch th  
+Confusing?  
+.ch jo  
+Yeah, like when she wants me to 
+play doctor with her... 
+.ch th  
+That's normal enough... even little kids play doctor.   
+.ch jo  
+Yeah, but   
+the pharmacy won't fill any of the prescriptions that I write for her.  
+.ad 
+(TEDDY LOOKS VERY PUZZLED AT THIS.  
+.ad 
+LORRAINE ENTERS FROM THE VOM DURING THIS LAST LINE, AND IS SHOCKED  
+TO HEAR WHAT
+JOE IS TALKING ABOUT)   
+.ch lo  
+Joe!
+.ch jo  
+Oh, hi Lorraine.
+I was just telling Theodore about...
+.ch lo  
+I   
+.ul 
+know
+what you were telling him about.
+Joe,
+sometimes you can be a little   
+.ul 
+too 
+honest. 
+.ch jo  
+Sorry, Lorraine.
+.ch th  
+Where's Beatrice?  I thought she was with you?  
+.ch lo  
+She just took off... I tried to catch her, but she got away.
+.ch jo  
+Say Ted, do you think we should go look for her?
+.ch th  
+No. 
+.ch jo  
+But she could hurt herself.  She could fall in the moat and drown, or get   
+eaten up by that serpent.   
+.ch th  
+.ul 
+That
+hardly seems likely to me.  
+Besides Arthur will be back soon.   
+.sd 
+(LOUD ROAR OFF-STAGE)   
+.ch lo  
+If you're concerned, Joe, why don't you go look for her yourself?   
+.ch jo  
+Alright.
+.ad 
+(JOE EXITS OUT THE VOM.)
+.ad 
+(PAUSE) 
+.ch th  
+Playing doctor? 
+.ch lo  
+(TAUNTING HIM BACK:) Saran-wrap?
+.ch th  
+(EMBARRASSED:)  
+Beatrice told you?  
+.ch lo  
+Oh, yes.
+.ch th  
+It's not what you think.
+I came home one day and found Beatrice had put saran-wrap on
+.ul 
+everything. 
+The furniture, the television set, the dog, everything. 
+Said she read it in some book or something. 
+.ch lo  
+Sounds like quite the little homemaker. 
+
+.ch th  
+I want to hear more about   
+Joe.  Or should I say, "Dr. Kildare"?   
+.ch lo  
+Look, we have much more important things to talk about. 
+Arthur will be  
+making his decision 
+soon, and this may be our last chance at the collection.
+We had better continue with our 'affair' real soon. 
+.ch th  
+Are you out of your mind?   
+What, with Joe and Beatrice thinking what they do?  
+Even Joe's not going to buy another story about alien chiropractors.
+.ch lo  
+Well then, what?
+.ch th  
+I don't know.   
+.ch lo  
+(PAUSE) Why don't we just steal it? 
+.ch th  
+What?   
+.ch lo  
+Look, they're all occupied, right?  
+We could just grab all the artwork and drive away.  We'd be long gone   
+by the time they notice anything's up.  
+.ch th  
+You've been hanging around Joe too long.
+As if we could sneak off with a whole houseful of art.  
+.ch lo  
+All right, if you're so clever why don't you come up with something?
+.ad 
+(PAUSE.  THEY PACE BACK AND FORTH)  
+.ch th  
+(SNAPPING HIS FINGERS:) I've got it!  Hypnosis. 
+.ch lo  
+Hypnosis?   
+.ch th  
+We put Arthur into a hypnotic trance
+and order to him to give all that lovely artwork to us. 
+.ch lo  
+That's got to be the stupidest idea I've ever heard.
+How are we going to hypnotize him?  
+.ch th  
+I've read a lot of books about hypnotism... I'll bet I could put him under  
+in no time.  Here, let me try it on you.
+.ch lo  
+On me?  
+.ch th  
+Sure.  Sit down here and relax. 
+.ad 
+(SHE SITS ON THE COUCH.  TEDDY TAKES OFF HIS WRISTWATCH AND BEGINS SWINGING 
+IT IN FRONT OF HER FACE.  HE SPEAKS IN SONOROUS TONES)  
+.ex 
+Now concentrate on this watch.  
+.ad 
+(SHE STARES AT THE SWINGING WATCH)  
+.ex 
+You are getting very sleepy.  Your head is light, your eyelids are heavy.   
+You are slipping into a deep trance.
+.ad 
+(LORRAINE CLOSES HER EYES)  
+.ex 
+What do you know?  It worked!   
+(TO LORRAINE:) When I count to three, you will  
+put your arms around me, tell me I'm
+rugged, virile and incredibly sexy, and gently nibble on my ear.
+One... two... three!
+.ad 
+(LORRAINE RISES AND PUTS HER ARMS AROUND HIM)   
+.ch lo  
+You're rugged, virile and incredibly sexy.  
+.ad 
+(SHE BITES HIS EAR, HARD)   
+.ch th  
+Ow!!!   
+.ch lo  
+You're also the worst hypnotist I've ever seen. 
+You didn't honestly believe I would go under for "The Great Teddy, Master   
+Hypnotist", did you?
+.ch th  
+Well, it was worth a try.   
+Look, we're running out of ideas.  Is there any other way we can convince Arthur
+to leave us his fortune?
+.ch lo  
+Wait a minute!  
+Arthur doesn't have any children, does he?  
+.ch th  
+Not that I know of. 
+.ch lo  
+And not that
+.ul 
+he  
+knows of.   
+.ch th  
+What are you getting at?
+.ch lo  
+What if we convince him we're his long-lost children?   
+.ch th  
+(SARCASTICALLY:) Sure.  Why don't we just tell him we were carried off by Gypsies?  
+.ch lo  
+(ENTHUSIASTICALLY:) Hey, great idea.
+.ch th  
+Lorraine... 
+.ch lo  
+He fooled around a lot when he was young... who knows how many  
+illegitimate children he has out there? 
+.ch th  
+Get serious, Lorraine.  There's no way Arthur would fall for a story like that. 
+.ch lo  
+Well it's better than your cheap Svengali routine.  
+.ch th  
+Cheap Svengali routine?  The only reason I couldn't hypnotize you is that   
+you're too stubborn and pigheaded to pay attention to my watch. 
+.ch lo  
+Stubborn and pigheaded? 
+You're the one who  
+kept insisting that we fake an affair.  
+.ch th  
+And you're the reason it didn't work.  You just weren't convincing enough.  
+.ch lo  
+Convincing? 
+With you?   
+That's just too much of a challenge.
+.ch th  
+Oh, I forgot, it takes the whole Wigby Wolverines football team to  
+get you excited.
+.ad 
+(THE FOLLOWING SHOULD ESCALATE GRADUALLY)   
+.ch lo  
+At least they're romantic.  
+I like men who bring flowers.   
+.ch th  
+By now you could have your own Rose Bowl parade.
+.ch lo  
+I guess it's too much to expect romance from a man who wears
+"Thug". 
+.ch th  
+At least I don't smell like something the pig dragged in.   
+.ch lo  
+At least Joe's not a cheapskate.
+.ch th  
+Oh, I forgot... Joe's an "agricultural technician". 
+.ch lo  
+And Beatrice is 
+a regular fashion plate.
+.ch th  
+What about  
+(SNIDELY:)  
+the men's wrestling team?   
+.ch lo  
+What about (SNIDELY:) the "Guelph Artistic Society"?
+.ch th  
+Merchant Marine!
+.ch lo  
+Candlelight and Big Macs!   
+.ch th  
+Naval Cadets!   
+.ch lo  
+Saran wrap! 
+.ch th  
+Playing doctor! 
+.ch lo  
+"Little Dick"!  
+.ch th  
+Sixth Fleet!
+.ad 
+(ENTER JOE AND BEATRICE FROM THE VOM.   
+HE IS NOW CHEWING GUM, AND SHE ISN'T;   
+
+
+.zA..q.<
+bjeroehl
+
+
+THEY ARE CARRYING A HUGE EGG)   
+.ch lo  
+Joe!
+.ch th  
+Beatrice!   
+.ch lo  
+You found her!  
+.ch be  
+Actually, we've found each other.   
+.ch jo  
+Yeah, and this real big egg too.
+It was just lying on the ground beside the moat out front.  
+.ch be  
+Theodore, I have something to tell you. 
+Joe and I have been talking...  
+.ch jo  
+Yeah, she told me what was really going on between you and Lorraine...  
+.ch th  
+She... she did? 
+.ch jo  
+And the way I figure it, it's okay. 
+.ch lo  
+It is?  
+.ch be  
+Joe and I... we realize that
+you and Lorraine belong together.   
+And we've realized something else.  
+.ch jo  
+Yeah.   
+Me and Beatrice... we   
+belong together too.
+.ch be  
+When Joe came along and rescued me from that serpent, I knew it was 
+true love.  
+.ch th  
+Wait a minute... the serpent?  You fell into the moat?  
+.ch lo  
+You're not even damp.   
+.sd 
+(THE SOUND OF QUIGLEY BLOW-DRYING SOMETHING IS HEARD IN THE VOM.)   
+.sd 
+(THE BLOW-DRYING STOPS.)
+.ad 
+(ENTER QUIGLEY FROM THE VOM, CARRYING THE BLOW-DRYER AND BEATRICE'S HAT)
+.ch qu  
+Your hat, madame.   
+.ch be  
+Thanks, Quigley.
+.ch jo  
+Yeah, and thanks for pushing that wheelbarrow of artwork into the moat  
+to distract the sea serpent while I hauled out Beatrice.
+.ch qu  
+At your service.
+.ch be  
+You should've seen Arthur's face when we told him   
+about the wedding.  
+.ch lo  
+Wedding?
+.ch jo  
+Well, jeez, Lorraine... there ain't no earthly reason that me and Beatrice  
+should come between you two.
+.ch be  
+So we'll give you the divorces you want, and Joe and I will marry each other.   
+.ch th  
+Divorce?  But what about the children???
+.ch be  
+We don't have any children. 
+.ch th  
+(PAUSE)  Good point.
+.ad 
+(ENTER ARTHUR FROM THE VOM, THROWING RICE   
+AND HUMMING THE WEDDING MARCH OFF-KEY)  
+.ch ar  
+You should've seen that rescue in the moat... spectacular!  Absolutely  
+spectacular!
+Risking life and limb like that... now that's true love.
+And to top it all off, you two managed to find the biggest egg I've ever seen.  
+Joe and Beatrice, congratulations!  
+You've won the Easter egg hunt. 
+.ch th  
+(ASIDE TO LORRAINE) 
+Good.  Now that that's out of the way, maybe he'll make up his mind about   
+who gets his collection.
+.ch ar  
+I heard that!  And I'll have you know I made up my mind long before any 
+of you got here.
+I decided that my collection belonged with couples who have a sense of  
+adventure, a sense of fun; what better way to find out who had that wonderful   
+sense than... an Easter egg hunt.   
+.xx TEDDY~AND~LORRAINE  
+What?!? 
+.ch ar  
+That's right.  My entire remaining collection will go to    
+Joe and Beatrice.   
+.ad 
+(ARTHUR PULLS OUT SOME LEGAL-LOOKING PAPERS)
+.ex 
+Think of it as a
+wedding present.
+.ch be  
+We would've been happy with just a blender...   
+.ch jo  
+Gol-lee!  That sure is nice of you, Mr. Bogwhittle. 
+.ch ar  
+Don't mention it.  And call me Arthur.  
+.ch th  
+Wait a minute... you've been giving away pieces of art to all kinds of people.  
+The Sandersons, the Abercrombies... 
+.ch ar  
+Quigley, read the list. 
+.ch qu  
+Yes, sir.   
+The Sandersons, fifteen eggs.   
+The Abercrombies, twenty-two eggs.  
+Joe and Beatrice, one hundred and thirty-five eggs. 
+.ch ar  
+So you see, it's all quite fair.
+.ch lo  
+But... but what about us?   
+.ch th  
+Yes, your favourite students?   
+.ch ar  
+Well, you two have changed a lot since Art School.  
+
+
+.ch lo  
+We have?
+.ch ar  
+I didn't want to say anything, but lately you two have been acting rather   
+strange.
+However, you still seem to share a lot of feelings for one another, and 
+I didn't want to leave you out in the cold.  So I'm leaving you my  
+house.  Just finished putting it in my will... when I'm gone (which should  
+be any time now), (GLANCING AT HIS POCKET WATCH), this entire estate
+will be yours.  
+The moat, the serpent, the bats, the dungeon, the taxes, the mortgage,  
+(PAUSE) and Quigley.
+.ad 
+(QUIGLEY BEAMS) 
+.ch th  
+Uh...   
+.ch lo  
+Ah...   
+.ch ar  
+I can tell you're pleased.  However, there is one condition.  The house 
+will be yours provided you get married and live in it for the rest of your  
+lives.  
+That way I know you'll always be happy. 
+.ad 
+(LORRAINE AND TEDDY LOOK AT EACH OTHER) 
+.ex 
+Joe, Beatrice... come along and I'll show you some of your new collection.  
+.ch be  
+Lead the way, Mr. Bogwhittle.   
+.ch ar  
+Alright.  And PLEASE... call me Arthur. 
+.xx JOE~AND~BEATRICE
+Arthur. 
+.ad 
+(ARTHUR IS OVERJOYED.)  
+.ch th  
+But... but...   
+.ch be  
+(HANDING THEODORE A STICK OF GUM:) Chew, Teddy. 
+.ad 
+(EXIT ARTHUR, JOE AND BEATRICE THROUGH STAGE LEFT DOOR) 
+.ch th  
+This house? 
+.ch lo  
+Married?
+.ch th  
+Together?   
+.ch lo  
+Forever?
+.ad 
+(THEY ARE HORRIFIED AT THE PROSPECT.)   
+.ch th  
+Well you really did it this time... 
+.ch lo  
+Me?!?  Why you...   
+.ad 
+(LORRAINE THROWS SOMETHING AT HIM.  HE RUNS OUT THE STAGE RIGHT DOOR.   
+SHE CHASES AFTER HIM, BOTH OF THEM YELLING AT EACH OTHER, LEAVING   
+QUIGLEY ALONE ON STAGE. 
+.ad 
+QUIGLEY SIGHS.) 
+.sd 
+(THE SOUND OF A LARGE EGG CRACKING.  QUIGLEY TURNS TO LOOK AT THE EGG THAT JOE  
+AND BEATRICE BROUGHT IN.
+THE LIGHTS FADE LEAVING ONE SPOT ON THE EGG, AS WE  
+HEAR THE ROAR OF THE SERPENT OFF-STAGE) 
+.ld 
+(BLACK OUT) 
+.es 

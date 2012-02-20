@@ -1,0 +1,564 @@
+
+
+
+.q...JoC
+bjeroehl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so macs
+.bs 1 1 "Doug Wright and the Seven Doors"   
+.na dl LEFT~NEEDLESS~HALL~DOOR LEFTDOOR 
+.na dr RIGHT~NEEDLESS~HALL~DOOR RIGHTDOOR   
+.na ud U~&~D~SECRETARY UDSECRETARY  
+.na sd STUART~DENT STU  
+.na sm SOPHIA~MOORE SOPHIE  
+.na cr COAT~RACK RACK   
+.na dw DOUGLAS~LEEDO~WRIGHT DOUG
+.na d1 SCIENCE/ENGINEERING~DOOR SCI-ENGDOOR 
+.na ct CYRUS~TOLOGY CY  
+.na rt REGINALD~TOOLE REGGIE
+.na sh SHEEP SHEEP  
+.na d2 ENVIRONMENTAL~STUDIES~DOOR ESDOOR
+.na at ARCHIBALD~TEXTURE ARCHIE 
+.na d3 MATHEMATICS~DOOR MATHDOOR
+.na cv CRAIG~VOLKER CRAIG   
+.na d4 HKLS~DOOR HKLSDOOR   
+.na ka KIM~'EASY'~ALLERGY KIM   
+.na d5 ARTS~DOOR ARTSDOOR   
+.na ml MAUDE~N.~LANGUAGES MAUDE 
+.na d6 FASS~DOOR FASSDOOR   
+.na sf THE~SPIRIT~OF~FASS FASS  
+.ad 
+(THERE IS A SIGN ON THE BAR WHERE THE UDSECRETARY   
+WILL BE STANDING, WHICH SAYS "UNCO-ORDINATION AND DISPLACEMENT".
+THERE IS A SIGN 
+NEAR THE POP MACHINE WHICH SAYS "THIS COAT RACK FOR FACULTY 
+MEMBERS ONLY", BESIDE WHICH STANDS A CO-OP COAT RACK.   
+DOWNSTAGE STAND THE TWO NEEDLESS HALL DOORS SIDE BY SIDE,   
+
+FACING OUT.  THE STAGE LEFT DOOR IS HOLDING A SIGN SAYING   
+"NEEDLESS HALL".)   
+.ad 
+(NOTE FOR ALL DOORS:
+ALL DOORS HOLD THEIR SIGNS AGAINST THEIR CHESTS 
+AND PIVOT ON THEIR RIGHT FOOT.  THEIR LEFT ARMS WILL BE USED AS 
+DOOR HANDLES.  THE STAGE LEFT NEEDLESS HALL DOOR, HOWEVER, PIVOTS ON HIS LEFT FOOT) 
+.ad 
+(THE UDSECRETARY APPROACHES THE TWO DOORS AND STOPS 
+SHORT WHEN SHE NOTICES THAT THEY ARE CO-OP STUDENTS)
+.ch dl  
+Good afternoon!!
+.ch ud              
+What on earth are you two doing??   
+.ch dr  
+This is our co-op job.  
+.ch ud          
+As a couple of doors?   
+.ch dl  
+Sure!  We're in Civil Engineering.  Our co-ordinator said our entire
+future careers hinged upon this job.
+.ch ud  
+Aw, go on!  
+.ch dr  
+It's true.  This is a key position. 
+.ch ud  
+That's the most ridiculous thing I've ever heard!   
+.ad 
+(SHE ENTERS THROUGH RIGHTDOOR, USING THE DOOR'S FACE TO OPEN IT,
+AND GOES TO HER SPOT BEHIND THE BAR.  THE RIGHTDOOR DOES NOT LOOK   
+PLEASED.  ALL OTHER MEMBERS OF THE CAST FOLLOW, ALWAYS ENTERING 
+THROUGH THE RIGHT DOOR IN A VARIETY OF UNCOMFORTABLE (FOR THE DOOR) 
+WAYS.  LEFTDOOR FINDS THIS QUITE HUMOROUS.  SOPHIE MOORE IS THE SECOND-LAST TO GO THROUGH, AND STU DENT 
+IS THE LAST.  EACH STUDENT JOINS THE LINE-UP FORMING IN FRONT OF    
+THE SECRETARY, AND THE STUDENTS IN TURN FILL OUT FORMS THAT THE 
+SECRETARY HANDS THEM)   
+.ad 
+(STU IS OBVIOUSLY ABOUT TO USE THE RIGHTDOOR)   
+.ch dr  
+(IN EXASPERATION) Please use other door!!!!!!!!!
+.ad 
+(STU BACKS THROUGH THE LEFTDOOR.  THE RIGHTDOOR HAS THE LAST LAUGH  
+AS THE LEFTDOOR DOUBLES UP IN PAIN.)
+.ad 
+(IF OUR STU CAN MAKE IT LOOK FUNNY, WE HAVE HIM ENCOUNTER THE   
+NEEDLES HALL STAIRCASE FOR THE FIRST TIME (DESCENDING THEM).
+HE SAYS SOMETHING TO THE EFFECT OF 'WHO BUILT THESE STAIRS?'
+HE THEN JOINS THE END OF THE LINE-UP)   
+.ch sd  
+Oh no -- not another line-up!  I've been standing in line all day!  
+.ch sm  
+I know -- first we line up to register, then to get our i.d. cards, then
+to get our books, and now this! 
+.ch sd  
+I just can't take these line-ups anymore.  By the way, my name's Stu.   
+(WITH DISTASTE) Stu Dent.   
+.ch sm  
+I see.  My name's Sophie.  (WITH DISGUST) Sophie Moore. 
+.ad 
+(THEY SHAKE HANDS)  
+.ch sd  
+Say, are you the Sophie Moore who lived in East Six last year?  
+.ch sm  
+That's right.   
+.ch sd  
+Really?  I hear you fool around...  
+.ch sm  
+I'm sorry, I'll try to be more quiet next time. 
+.ch sd  
+(CHANGING THE SUBJECT SLIGHTLY) Well, I'm a frosh and don't 
+really know my way around.  I wonder if you could help me...?   
+.ch sm  
+Depends on what you have in mind.   
+.ch sd  
+Well, my schedule says that next week I'm supposed to write something called
+an "ELP Test".  What does "ELP" stand for?  
+.ch sm  
+Extremely Long and Pointless.  It's to get you ready for the next four years
+.   
+.ch sd  
+I see.  
+.ch sm  
+What faculty are you going into?
+.ch sd  
+I'm still not sure.  Whichever one has the shortest line-up at registration...  
+.ch sm  
+You mean you're still not registered?  You'd better hurry -- if you don't   
+register by the deadline they make you go off on a work term!   
+.ch sd  
+But how can they make you go on a work term if you don't have any training? 
+.ch cr  
+They have their ways.   
+.ch sd  
+Who said that?  
+.ch sm  
+The coat rack.  
+.ch sd  
+The coat rack?  
+.ch sm  
+Uh-huh.  If you don't get registered before Oktoberf
+
+Uh-huh.  If you don't get registered before Oktoberfest they make you into  
+co-op furniture.
+.ch sd  
+How horrible.   
+.ch sm  
+Oh, it's not that bad.  I once spent a work term as a co-op elevator.   
+.ch sd  
+I'm almost afraid to ask.  How was the job? 
+.ch sm  
+It had its ups and downs... 
+.ad 
+(GROAN!)
+.ad 
+(JUST THEN A VERY DISTINGUISHED-LOOKING MAN WITH WHITE  
+HAIR AND BEARD(?) ENTERS.  HE WALKS OVER TO THE COAT RACK   
+AND PUTS A SIGN JUST BELOW THE OLD ONE WHICH READS  
+"MAY ALSO BE USED FOR HATS AND COATS".  HE PROCEEDS TO TAKE OFF 
+HIS HAT AND COAT AND HANG THEM THERE)   
+.ch sd  
+Who's that? 
+.ch sm  
+That's the university president, Doug L. Wright.
+.ch sd  
+What does the "L" stand for?
+.ch sm  
+Leedo.  
+.ch sd  
+(TO HIMSELF) Doug Leedo Wright.  I see. 
+.ad 
+(DOUG HAS WANDERED WITHIN HEARING DISTANCE OF STU)  
+.ex 
+Anyway, I still have no idea what faculty I want to register in.
+I don't even know what I want out of university!
+.ch dw  
+Excuse me, I couldn't help overhearing you.  I'm just about to tour 
+the faculties myself, being the new president and all, and I was    
+thinking that such a tour might help you come to some decision. 
+
+Why don't you come along?   
+.ch sd  
+(TO SOPHIE) I'm game if you are.
+.ch sm  
+I wouldn't say that too loudly.  My ex-boyfriend's a hunter, and you might  
+wind up getting stuffed and mounted.  (RUEFULLY) Although not   
+necessarily in that order.  
+.ch sd  
+Well, we're ready.  
+.ch dw  
+Then follow me.  (APPEARS LOST)  Now where was that science office? 
+.ch sd  
+What's wrong with him?  
+.ch sm  
+Oh, it's not at all uncommon for university presidents to lose their
+faculties.  
+.ch dw  
+Ah, here we are!
+.ad 
+(THEY APPROACH AND ENTER THROUGH A DOOR HOLDING A SIGN SAYING   
+"SCIENCE  CY TOLOGY".  CY IS BEHIND THE BAR, ABSORBED IN SOME   
+UNSEEN WORK.  HE IS SOMETHING OF THE MAD SCIENTIST.  HE NOTICES 
+THEM AND COMES OUT FROM BEHIND.)
+.ch ct  
+Hello, what brings you here today?  
+.ch dw  
+Cy, I'd like you to meet Stu.  He's trying to decide on a   
+faculty to register in. 
+.ch ct  
+Hello, Stu.  What can I tell you?   
+.ch sd  
+What were you working on when we came in?   
+.ch ct  
+Oh, I was setting up the equipment I use to demonstrate what I'm doing  
+with my government grant.   
+.ch sd  
+Really? What does it do?
+.ch ct  
+It regulates the flow of irrelevent ions through the photosynthetic 
+gamma ray chamber and calculates the number of electric impulses    
+present in 20 kilopascals of cow dung.  
+.ch sd  
+That's amazing!! Can you really make that machine do all that?  
+.ch ct  
+Well, I've only been working on it for two years, but I have
+figured out how to make coffee on this little burner here.  
+.ch sd  
+Well, I'm not all that interested in Physics.   
+.ch ct  
+No?  How about Earth Sciences (HANDS HIM A HUGE ROCK), or Optometry 
+(HANDS HIM AN EYE CHART), or Chemistry (HANDS HIM A RACK OF TEST TUBES) 
+or Biology? (HANDS HIM THE FAMOUS RUBBER CHICKEN)   
+.ch sd  
+Actually, I was thinking of something more practical.   
+.ch ct  
+Oh, you want engineering then.  Just a second while I mix up something  
+that I learned from this grad student over in Biology...
+.ad 
+(MIXES SOME STUFF FROM THE TUBES)   
+.ch sd  
+What is it? 
+.ch ct  
+This potion causes the drinker to temporarily revert to the most
+primitive form of homo sapiens.  Watch! 
+.ad 
+(QUAFFS THE POTION) 
+.ex 
+Aaagh!  Urggh!  
+.ad 
+(STAGGERS, FALLS OUT OF SIGHT)  
+.ad 
+(SCI-ENGDOOR FLIPS SIGN OVER, WHICH NOW READS   berf
+
+"ENGINEERING   REGGIE TOOLE")   
+.ch sd  
+My God, what's happening!?!?
+.ad 
+(A HAND WITH A BEER BOTTLE APPEARS OVER THE EDGE OF THE BAR,    
+FOLLOWED BY REGGIE, WHO THEN COMES AROUND FROM BEHIND IT.   
+HE IS HUNGOVER, AND WEARING AN ENGINEERING HARD HAT)
+.ch rt  
+Uh, hello, welcome to engineering. (HOLDS HAND TO FOREHEAD, SHAKES HEAD)
+.ch sd  
+Who are you?
+.ch rt  
+I'm Reggie Toole, your Engsoc representative. 'Scuse me a moment.   
+.ad 
+(TAKES A LONG PULL ON THE BOTTLE)   
+.ex 
+Ahhhhhh! Nothing like the hair of the dog...  I guess you want to be an 
+engineer, eh?   
+.ch sd  
+I don't know.  I haven't made up my mind.   
+.ch rt  
+Well, we have five departments.  You could choose from Chemical,
+Electrical, Mechanical...   
+.ch sh  
+(FROM BEHIND THE BAR) Baaaa!  Baaaaa!!  
+.ad 
+(REGGIE, OF COURSE, SMILES SHEEPISHLY AND GLANCES BACK) 
+.ch rt  
+...uh, civil or systems design...   
+.ch sh  
+Baaaa!  
+.ch sm  
+(ARCHLY) What's wrong, Reggie?  You're looking awfully sheepish.
+.ch sh  
+Baaaaa! 
+.ch sd  
+I was thinking of a career in Chemical Engineering...   
+.ch rt  
+(LAUGHS NERVOUSLY) Well, er, I'm in systems, myself, but I hear those guys in   
+Chemical have a lot of fun with red plastic explosives...   
+.ch sh  
+Baaaaa!  R-r-e-e-j-j-y-y!!  Baaaaa!!!   
+.ch rt  
+Uh, I gotta go now! 
+.ad 
+(HE RUNS BEHIND BAR AND DISAPPEARS) 
+.ch sd  
+Whew!  Let's get out of here!   
+.ch dw  
+Yes, let's go, Stuart.  
+.ad 
+(THEY LEAVE)
+.ad 
+(WE ARRIVE AT E.S., STILL RECOVERING FROM OUR LAST ENCOUNTER.  THE ESDOOR   
+HOLDS A SIGN SAYING "ENVIRONMENTAL STUDIES  ARCHIE TEXTURE")
+.ch sd  
+What's this place?  
+.ch sm  
+Oh, this is ES2.
+.ch sd  
+ES2?  You mean there's more than one of these ugly red monstrosities
+around????  
+.ch dw  
+Why don't we ask the ES people themselves?  
+.ad 
+(THEY ENTER)
+.ex 
+Good day, Archie, how are things?   
+.ch at  
+Oh fine.  I was just touching up the plans for the new ES3 building.
+.ch sm  
+ES3 building?   
+.ch at  
+Oh, yes.  We were so proud of the job we did with ES2, (INDICATING THE  
+THE BUILDING THEY'RE IN) we thought we'd design another one.
+.ch dw  
+I remember the last time I was here, almost a year  
+ago.  Back then it was just a hole. 
+.ch sm  
+It still is.
+.ch dw  
+Do you know the workmen actually tried to throw me into the 
+hole, just before they p
+
+hole, just before they poured the concrete? 
+.ch sd  
+Why would they do a horrible thing like that?   
+.ch at  
+They wanted to make sure the foundation was Doug Wright.
+.ch sd  
+So what will the new building look like?
+.ch at  
+I've got the design right here.  Now if you thought ES2 was a   
+work of art, take a look at this!!  
+.ad 
+(HE HOLDS UP A SKETCH OF THE RED WORM WITH ES2-TYPE ROWS OF 
+WINDOWS, ARRAY OF GLASS BLOCKS, AND AN EXPLOSION HOLE.  THE 
+OTHER THREE ARE REVOLTED.)  
+.ch sd  
+My, that's one dynamite design you've got there.  (HE IS NOT IMPRESSED) 
+Shouldn't we be moving along, sir?  
+.ch dw  
+Certainly.  I believe the Math office is our next stop. 
+.ad 
+(THEY LEAVE)
+.ad 
+(THEY APPROACH AND ENTER A DOOR HOLDING A SIGN SAYING   
+"MATHEMATICS   CRAIG VOLKER".  WE SEE A COMPUTER HACK   
+PRESUMABLY TYPING AWAY AT A TERMINAL WITH HIS BACK TO   
+OUR HEROES, PLAYING ROGUE.  HE IS STARTLED BY THEIR 
+ENTRANCE.)  
+.ch dw  
+Excuse me, I have a student here who would like to...   
+.ch cv  
+(PULLING OUT A SWORD) Aha!! A couple of zombies and 
+a hobgoblin!!  Easily disposed of!! 
+.ad 
+(HE BEGINS TO SWING AT THE THREE OF THEM)   
+.ch sm  
+Is this guy crazy?!?
+.ch dw  
+I'm afraid we seem to have interrupted a Dungeons and Dragons   
+freak!  (HE IS CRINGING BEHIND THE OTHER TWO, WHO ARE   
+DODGING BLOWS)  
+.ch sm  
+Can't you do something??
+.ch dw  
+Quick, Stu, read this!! (PULLS SCROLL FROM POCKET, THRUSTS IT   
+TOWARD STU) 
+.ch sd  
+What is it?!?!? 
+.ch dw  
+It's a magic scroll of sleep!   
+.ch sd  
+(READS) "Course Notes for Stats 231 - Consider an experiment for which  
+a probability model has been formulated.  We wish to determine how well 
+the model agrees with data obtained from n independent repetitions of the   
+experiment...   
+.ad 
+(CRAIG FIRST FALTERS, APPEARS CONFUSED, SWAYS, AND FALLS TO THE FLOOR   
+ASLEEP) 
+.ch sm  
+That's a mighty effective weapon you have there!
+.ch dw  
+Sophie, one statistics scroll has been known to fell 30 students
+at a blow.  Now, I doubt we'll be getting much out of him, so   
+perhaps we'd best be moving along.  
+.ad 
+(STU PUTS THE SCROLL IN A FRONT POCKET, AND THEY LEAVE) 
+.ad 
+(THEY ENTER THROUGH A DOOR WITH A SIGN SAYING   
+"HUMAN KINETICS AND LEISURE STUDIES   KIM 'EASY' ALLERGY")  
+.ch ka  
+(IN A LOW, SULTRY VOICE - SHE IS QUITE THE TEMPTRESS)   
+
+Yes, may I help you?
+.ch dw  
+This is Stuart Dent, and he'd like to find out something about  
+your faculty.   
+.ch ka  
+(TO STUART) Hi there.  Is that a magic scroll of statistics in your 
+pocket, or are you just happy to see me?    
+.ch sd  
+Well, actually, I, uh...
+.ch ka  
+Never mind now.  The best way to explain our programs is to show you
+a sample of what we do.  I'm just now working on a Kinesiology project  
+which requires measuring heart beat patterns in volunteers.  Would you  
+like to volunteer?  
+.ch sd  
+Sure!  Should I do some bike pedalling or something?
+.ch ka  
+Well, I don't have the equipment handy.  Why not just start with some...
+(SHE DRAWS HIM CLOSE AND LEANS BACK) ...'push-ups'??
+.ch sd  
+Uh, sure!  (HE DOES SOME LIMBERING UP MOTIONS)  
+.ch ka  
+Oh, I'm sorry, I first have to take your pulse. (SHE DOES SO IN A VERY  
+SEDUCTIVE MANNER)   
+.ch sm  
+(GRABS KIM'S HAND TO STOP HER) I don't think Stu's ready to handle that in  
+his first year! 
+.ch ka  
+Oh, I think Stu could handle it quite well. 
+.ch sm  
+Come on, Stu!!  
+.ad 
+(SOPHIE GRABS STU, DRAGS HIM OUT OF THE OFFICE AGAINST HIS FEEBLE PROTESTS, DOUG FOLLOWS)   
+.ch sd  
+
+.q...JoC
+bjeroehl
+
+
+But, but... 
+.ch dw  
+Well, we only have one faculty left.  You're running out of choices.
+.ad 
+(THEY ENTER THROUGH A DOOR WITH A SIGN SAYING "ARTS   MAUDE N. LANGUAGES"   
+MAUDE IS SITTING WEAVING A BASKET, BUT QUICKLY HIDES IT AND STRAIGHTENS 
+HERSELF EMBARASSEDLY WHEN THEY ENTER)   
+.ch ml  
+Uh, yes, what can I do for you? 
+.ch dw  
+I have a student here who's interested in finding out what the Arts 
+faculty has to offer him.   
+.ch ml  
+Why, I'd be glad to explain...  
+.ad 
+(SHE POSES DRAMATICALLY AND RECITES THIS IN A PSEUDO-SHAKESPEAREAN MANNER)  
+.ex 
+Mondays, and Wednesdays, and Fridays,   
+Arts creeps in this petty pace from day to day, 
+to the last syllable of the 5000-word essay that was due two weeks ago; 
+.ad 
+(THIS LAST LINE BREAKS FROM THE SHAKESPEAREAN MANNER AND IS SAID AS AN ASIDE
+IN AN ANXIOUS TONE) 
+.ex 
+And all our lecture notes have lighted fools
+the way to dusty thoughts.  Spout, spout; We ramble!
+Arts is but a talking shadow, a poor professor  
+that struts and frets his 50 minutes on the dais,   
+and then is heard no more;  It is a course taught by an idiot,  
+full of sound and fury, signifying nothing. 
+.ad 
+(OUR HEROES HAVE BEEN LISTEN
+
+(OUR HEROES HAVE BEEN LISTENING TO THIS QUITE DUBIOUSLY, GIVING 
+EACH OTHER KNOWING LOOKS.  THE ARTS DOOR APPLAUDS WILDLY, AND MAUDE BOWS DRAMATICALLY)  
+.ch dw  
+Very nice.  
+.ad 
+(HE GRABS STU AND SOPHIE, AND THEY TURN TO LEAVE)   
+.ch ml  
+Wait!  I'm not finished yet!  Don't you want to hear the rest?  
+.ch dw  
+No, no, not likely, no...   
+.ad 
+(THEY HURRIEDLY ESCAPE) 
+.ch sm  
+Well, I don't think Stu's been terribly impressed by any of the faculties.  
+.ch sd  
+Yeah, something's missing!  NOone of the faculties seem to have a sense 
+of humour, life, spirit!!!  
+.ch dw  
+There is one last possibility that might be just what you're after.  But I  
+must warn you, these guys are a little weird.   
+.ch sm  
+They can't be any worse than the ones we've just seen.  
+.ch dw  
+True.  Here we are. 
+.ad 
+(THEY ENTER THROUGH A DOOR WEARING BOFFER GLASSES AND HOLDING A SIGN
+SAYING "FASS!"  THE SPIRIT OF FASS IS STANDING IN A RITUALISTIC POSE
+OF SOME SORT, AND BEGINS SOMBERLY SINGING THE FASS HYMN: )  
+.sb "Prepare Ye / Year By Year" "Prepare Ye / Day By Day"   
+.ve 5   
+Prepare ye the way of the Fass, 
+Prepare ye the way of the Fass, 
+.ad 
+(STU IS SO MOVED THAT HE SITS AT THE HANDY PIANO
+AND BEGINS TO PLAY WITH GLEE)   
+.ex 
+Prepare ye the way of the Fass, 
+Prepare ye the way of the Fass. 
+.ad 
+(PIANO SPEEDS UP, COMPLETE CAST RUNS ON,    
+CLAPPING ON OFF-BEAT)   
+.ex 
+.ve 6   
+Prepare ye the way of the Fass, 
+Prepare ye the way of the Fass, 
+Prepare ye the way of the Fass, 
+                      (Long live Fass, long live Fass,)         
+Prepare ye the way of the Fass, 
+                      (Long live Fass, long live Fass,) 
+Prepare ye the way of the Fass, 
+                      (Long live Fass, long live Fass,) 
+Prepare ye the way of the Fass. 
+                     (Long live Fass, long live Fass.)  
+.ve 6   
+Year by year, year by year,           Year by year, 
+Oh dear Fass, three things I fear,    Three things I fear,  
+The script is misbegotten,            Year by Year, 
+All our lines forgotten,              Year by year, 
+The whole show is rotten,               
+Year by year.                         Year by year. 
+.ad 
+(REPEAT THE LAST VERSE) 
+.ad 
+(SUDDEN RITARD ON THIS LAST LINE, PIANO CUTS OUT)   
+.ex 
+Year by year by year by year by year!!!!!!  
+.es 

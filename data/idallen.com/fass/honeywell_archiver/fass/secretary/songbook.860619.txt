@@ -1,0 +1,5591 @@
+
+
+
+......r.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so /songmacr.t 
+.bs 0 1975 SONGS
+.sb "Love Me Tender" "Love Me Tender" "1975"
+.ve 5   
+I love you, Gloria  
+I really do 
+I love your face, it's true 
+I love your bidy, it's so nice. 
+Won't you love me too?  
+.ve 5   
+Love me, Gloria 
+Please love me  
+I'm really stuck on you 
+For, dear Gloria, I love you
+And I always will.  
+.sb "Freedom Song" "Freedom Song" "1975"
+.ve 4   
+Now, freedom is for everyone
+A right that with democracy comes.  
+We shall win this fight 
+In time I know, you'll see. 
+.ve 4   
+So now our show is at an end
+We trust that we need not defend
+We've had alot af fun   
+This time, we know, you see.
+.bs 0 1978 SONGS
+.sb "Opening Song" "The Muppets Theme" "1978"   
+It's time to put on make-up 
+It's time to light the lights   
+It's time to raise the curtain  
+On the FASS show tonight.   
+.ve 5   
+This year the script's all written - WOW!   
+This year the work's all done - Uh-Huh  
+This year the songs are easy
+So we're out to have some fun.  
+.ve 5   
+The folks have paid their money 
+The lights are going down   
+The ushers block the doors  
+
+As the treasurer blows town.
+.ve 5   
+Let's knock up all the sets now 
+Let's knock up all the cast 
+Let's take it from the bottom   
+And take the money fast.
+.ve 5   
+Can't say we didn't warn you.   
+Can't say the time's not right. 
+Can't say it isn't worth it 
+On the FASS show tonight!!!!!!  
+.ex 
+.sb "Sargeant Friday's Cement Galashes Gang" "Sargeant Pepper's" "1978" 
+It was twenty years ago today   
+Prohibition in the U.S.A.   
+Gave all the gangs their winning style  
+And the morals of a crocodile   
+So let us entertain for you,
+The Thugs you've known for all these years  
+Sergeant Friday's Cement Galoshes Gang!!!   
+.ve 6   
+We're Sergeant Friday's Cement Galoshes Gang
+We hope you will enjoy the show 
+Sergeant Friday's Intransigent Cement Galoshes Gang 
+We hope that you have lots of dough 
+Sergeant Friday's Cement, Sergeant Friday's Cement  
+Sergeant Friday's Cement Galoshes Gang. 
+.ve 3   
+  It's wonderful to be here, it's certainly a gas   
+  We hope you play the tables   
+  And we hope you lose your ass...ets   
+.ve 6   
+We're Sergeant Friday's Cement Galoshes Gang
+We rape and steal and loot and kill 
+We're Sergeant Friday's Cement Galoshes Gang
+
+Our good points...are practically nil;  
+Sergeant Friday's Cement, Sergeant Friday's Cement, 
+Sergeant Friday's Cement Galoshes Gaaaaannnnnngggggg!!!!
+.ex 
+.sb "Shine on Harvest Moon" "Every Disco Song in the World" "1978"  
+Shine on, Shine on, Shine on harvest moon,  
+(Up in the sky) Shine on, Shine on harvest moon 
+(For me and my gal) 
+.ve 5   
+I ain't had no lovin'   
+(He ain't had no lovin')
+I ain't had no lovin'   
+Since January February June or July 
+(Come on baby and shine on) 
+.ve 5   
+Ahh, shine on, shine on, shine on,  
+Shine on, shine on tonight Harvest Moon (dooo, dooo)
+Get up and Shine on, get up and shine on
+Shine shine shine; shine shine shine,   
+Shine on Moonie, Shine on Moonie,   
+.ve 7   
+Shine on, shine on, shine on Harvest Moon   
+Ain't no, ain't no, ain't no time to spoon  
+(Or knife and fork) 
+Shine on, shine on Harvest Moon 
+Shine on (STAR WARS) Harvest moon....   
+Shine shine shine shine shine shine shine   
+Harvest Moon.   
+.ex 
+.sb "Get Down Funky Mama" "Something Barbershoppish" "1978" 
+I had a teddy bear  
+His name was Funky Wunky.   
+But one day Mama, you put him away, 
+You said he was too junky.  
+.ve 5   d toI saw him in
+
+I saw him in the closet 
+As high as he could be  
+Oh Mama, I miss Funky   
+Please get him down for me, me, meeeeee 
+(Get him down for me)   
+.ve 4   
+  Oh get down Funky, Mama   
+  From that high old, high old shelf,   
+  Please get down Funky, Mama   
+  Or I'll try to do it myself.  
+.ve 4   
+I climbed a rocking chair   
+The hall door open wide 
+I'd get down Funky myself Mama  
+So I'd be satisfied.
+.ve 5   
+I knew that I could do it   
+Could do it, do it, do it,  
+Yes, do it, do it, do it,   
+Till I was satisfied....
+(Oh so very very satisfied) 
+.ve 1   
+   CHORUS   
+.ex 
+.sb "I Love Rolling in the Scum" "I Love Little Baby Ducks" "1978"  
+I love rolling in the scum  
+Staring at the sun  
+Burning out my eyes 
+And flies.  
+.ve 5   
+I love eating ciggie butts  
+Puking up my guts   
+Punching out my mom 
+And bombs.  
+But I sure hate you.
+.ve 4   
+I love wearing bits of junk 
+Being called a punk 
+Slashing up my wrists   
+And fists.  
+.ve 5   
+I love eating squirmy frogs,
+Maiming puppy dogs, 
+Hitting folks with eggs 
+And Plagues.
+But I sure hate you.
+.ve 4   
+I love telling awful puns   
+Making fun of nuns  
+Pounding out the pope   
+And dope.   
+.ve 5   
+I love setting fire to cats 
+Squashing ladies' hats  
+Looking really sleazy   
+And cheesies.   
+But I sure hate you.
+.ex 
+.sb "Thights and White Satin" "Nights in White Satin" "1978"
+Tights and White Satin  
+Never seeming to yield  
+Twirling my baton   
+Playing the field   
+.ve 6   
+Beauties I envy 
+Because I'm a bore  
+Just what my gender is  
+I can't say anymore.... 
+  'Cause I'm ugly....   
+  Yes I'm ugly, Oh how I'm ugly.....
+.ex 
+.sb "Danielle Boomboom" "Daniel Boone" "1978"   
+Danielle Boomboom was a man,
+But a cute man, 
+With a face like a beagle   
+And a nose like a fountain was he.  
+.ve 6   
+  From the coonskin wig 
+  On the top of old Dan 
+  To the tip of his high-heeled shoes   
+  He's the bounciest, flounciest,   
+  Jounciest man,
+  The casino ever knew...   
+.ex 
+.sb "I'm a Great Big Centipede" "Nothing Could Be Finer" "1978" 
+I'm a great big centipede   
+And I'm about to have a feed
+In Oshawa   
+Stomping down the 401   
+To Oshawa to have some fun  
+Name's Joshua   
+I'll tromp all over GM  
+And then I'll do it again   
+I'll knock down all the steeples
+And I'll pulverise the people   
+There in Oshawa.
+.ex 
+.sb "Who's Afraid of a Little Beer" "Who's Afraid of the Big Bad Wolf" "1978"   
+Who's afraid of a little beer   
+A little beer, a little beer
+I'm as good as an engineer  
+An engineer or worse
+.ve 4   
+The studio's filling quickly
+But I don't care no more
+'cause this will make it easy   
+I can drink it off the floor
+.ve 4   
+I think I must be German
+I can really hold my beer   
+I'm certain that I'm German 
+Or else an engineer 
+.ve 4   
+I know it's not October 
+But this could be handled best  
+If we play like it's October
+And hold Oktoberfest
+.ve 4   
+There's going to be a flood soon
+That'll make a sticky mess  
+We all may end up drowned then  
+But we'll die in happiness  
+.ve 4   
+.ve 4   
+I tried to warn him early   
+But he wouldn't listen to me
+It's too late to escape now 
+But at least the beer is free   
+.ve 1   
+CHORUS  
+.ex 
+.sb "Scarborough Fair/Debacle" "Scarborough Fair/Canticle" "1978"   
+Obi: Do you want to do it or not?   
+     You had best respond with a yes
+     Remember we don't tolerate failure 
+     Louse this up, and You'll be a mess.   
+.ve 9   I saNun: We'
+
+Nun: We've decided to give you a job
+Ric: (There won't be a foul-up) 
+Nun: Do it right, and you will be praised   
+Ric: (I'll free them then lead them to Acme's back room)
+Nun: But do it wrong, and Babe it's so long 
+Ric: (There their two necromancers  
+      Will drag from them some answers) 
+Nun: Down so low, you'll never be raised.   
+Ric: (Give us the info on their expose) 
+.ve 10  
+N&O: Leave us now, and follow the plan  
+R&B: (Yes sir boss, sure thing boss, right boss)
+N&O: Do it fast, we haven't much thyme  
+R&B: (Yes sir boss, sure thing  
+      the mission's accomplished before it's begun) 
+N&O: Just free the two, you know what to do 
+R&B: (We'll free the two, yes we know just exactly, 
+      we know just what to do ...)  
+N&O: Else this job will be your last crime  
+R&B: (Breakouts from prison are oodles of fun)  
+.ex 
+.sb "You Mess Up My Life" "You Light Up My Life"
+Rocko: Just when I think everything's rosy, 
+       You come along and screw up the works.   
+Chuck: Time after time, I go off on a mission,  
+       Only to find, that you got there first.  
+.ve 4   
+Both : Oh, you mess up my life, 
+       You make me want to call it quits.   un o       You are a
+
+       You are a blight,
+       And fill my nights with fits.
+.ve 4   
+Rocko: Thinking of you, always butt-ing in, 
+       is almost enough to make me choke.   
+Chuck: Rage overcomes me, and I blow my cool,   
+       You make me want to give you a poke. 
+.ve 4   
+Both:  Oh, you mess up my life, 
+       You make me want to call it quits.   
+       You are a blight,
+       And fill my nights with fits.
+.ve 7   
+       Yes, you mess up my life,
+       You make me want to call it quits.   
+       You are a blight,
+       And fill my nights with fits.
+       It can't be right when it feels so wrong,
+       Cause, you___
+       You mess up my life. 
+.ex 
+.sb "Answer-the-door Song" "Toreador Song"  
+STAN: Answer the door, Beauregard!  
+      Answer the door,  
+      Answer the door.      
+.ve 4   
+BEAU: I'm coming, hold your horses, I implore!  
+      Please don't break down the door! 
+      I'm trying to open it, just wait a bit;   
+      I'm trying to o-pen it.   
+.ex 
+.sb "Mozzarella Rockefeller" "Cinderella Rockefeller"   
+MOTT: Mozzarella, Mozzarella is my name.
+BEAU: Pleased to meet ya, Mozzarella.   
+MOTT: Have a crack at interrogatin' this dame.  
+BEAU: Sure thing fella, Mozzarella. 
+.ve 6   
+MOTT: My name's Mozzarella. 
+BEAU: Pleased to meet ya, fella.
+BOTH: Oh, o-o-oh.   
+MOTT: I gotta split,
+      Back in a bit,
+      I gotta split.
+.ex 
+.sb "Who's Knocking?" "Barnacle Bill" "1978"
+STAN: Who's that knocking at my door?   
+      Who's that knocking at my door?   
+      Who's that knocking at my door?   
+.ex 
+(MADEIRA TEARS OPEN THE DOOR, ABRUPTLY ENDING THE SONG. NO GREAT LOSS.  
+.sb "Interrogation Song" "Typewriter Song"  
+.in -5  
+BEAU: We've - got - sev'ral little questions
+          that we'd like to ask of you, 
+      Sev'ral questions that we'd like some answers for.
+.ve 3   
+STAN: Your cooperation's needed,
+          we'll make sure you're not mistreated;
+      Information's what we want and nothing more.  
+.ve 3   
+BEAU: If you're not exactly willing,
+          we've got ways, bizarre and thrilling 
+      Of convincing you with methods you'll deplore:
+.ve 7   
+STAN: First we'll hit you and we'll beat you
+      Then we'll smash you and mistreat you 
+      Then we'll fight you and defeat you   
+      We'll ignite you and we'll cheat you  
+      We will shake your hands and greet you
+      Then we'll rape you and we'll eat you -   
+      You won't like it much, of that I'm very sure.
+.ex 
+.sb "Waiting for Godot" "America" "1978"
+.in -5  
+STAN: Pass me a torniquet; (PRONOUNCED "TUR-NI-KET")
+      I think there's one on the table. 
+BEAU: Can't find a thing, could we do it with string?   
+.ve 5   
+STAN: This kid's got no vessels.
+BEAU:                        His arm is a mess. 
+BOTH:                                       And we're   
+      Searching in vain for an artery.  
+      Searching in vain for an artery.  
+.ex 
+.sb "I'll Beat Up Your Wife" "You Light Up My Life" 
+.in -5  
+BEAU: So many times we've asked you to help us, 
+      Giving you questions whose answers we lack.   
+.ve 3   
+STAN: So many threats we haven't tried using;   
+      We've been holding back,  
+                     now it's time to attack.   
+.ve 5   
+BEAU: And we'll beat up your wife.  
+STAN: we'll make her wish she'd never been born.
+BEAU: We'll louse up her days   
+      And fill her nights   
+BOTH:                     With pain.
+.ex 
+.sb "Nail and Tooth" "Heart and Soul"   
+      Nail and tooth,   
+      We fought to finish it
+      Nail and tooth,   ou a    
+
+      You won't diminish it.
+      Never 
+      Will we confide in you.   
+.ex 
+.sb "Play it again" "Sam"   
+      Nail and tooth,   
+      That's what the lady said.
+      Vile and ruth-
+      less villains we won't dread  
+      Ever. 
+      We'll not reveal a word.  
+.ex 
+.sb "Dynamite" "Silhouettes"
+.in -5  
+BEAU: We'll take a walk around your house   
+BOTH: Late some night.  
+BEAU: Keeping quiet as a mouse. 
+BOTH: Out of sight. 
+.ve 6   
+BEAU: While you're sleeping we will plant   
+      Some dynamite at your door.   
+STAN: Terribly messy.   
+BEAU: Dynamite  
+STAN:          Dynamite 
+BOTH:                   At your door.   
+.ve 10  
+BEAU: We will ring the bell and then
+BOTH: Run and hide. 
+BEAU: You'll come down and pull your door   
+BOTH: Open wide.
+BEAU: Than we'll detonate and you'll
+      Be splattered across your door.   
+STAN: Terribly messy.   
+BEAU: Splattered a- 
+STAN:               Splattered a-   
+BOTH:                             Cross your door.  
+.ve 10  
+BEAU: Splattered a- 
+STAN:         Splattered a- 
+BEAU:                 Splattered a- 
+STAN:                         Splattered a- 
+BEAU: Splattered a- 
+STAN
+
+STAN:         Splattered a- 
+BOTH:                             Cross your door.  
+STAN: Terribly messy.   
+BOTH: Splattered across your door.  
+.ve 6   
+LOTUS:We aren't scared, we feel no fear.
+BEAU: We've got threats to last a year. 
+JIMMY:You can't hurt us.
+STAN:                     Yes, we   
+S & B:                            Ca - a - a - an!  
+.ex 
+.sb "What a friend we have in Hitler" "Gotterdammerung" 
+    REPRISE 
+.ex 
+.sb "Logoff" "Little Darlin'"   
+STAN: Boom,boom,boom,boom she ronna-ronna (etc) 
+BEAU: When-a,   
+      When-a are-a you-a,   
+      Gonna tell-a  
+      All-a you-a can?  
+.ve 5   
+      If-a you-a wait-a 
+      Too-a much-a longer   
+      I'll become   
+      A vis-a-cious-a man.  
+STAN: A-oo-a-oo-a-oo-a  
+.ve 9   
+BEAU: You'll-a find-a   
+      That-a my-a partner   
+      Can be
+      A-vis-a-cious-a too,  
+      And-a I-a 
+      Can-a guar-a-an-a-tee-a   
+      You-a won't-a like
+      The things-a we'll-a do.  
+BOTH: Oo-oo,oo-oo-ooooh.
+.ve 10  
+BEAU: (SPOKEN)  
+      Now, Lotus and Jimmy, 
+        I think we've been too kind.
+      Soon things will be unpleasant,   l sh        As I'm sure you'll shortly f
+
+
+......r.
+fass
+
+
+
+        As I'm sure you'll shortly find.
+      You see, we took it easy, 
+        Though now I wonder why,
+      For now, my poor unfortunates,
+        The jokes are gonna fly.
+      The jokes are gonna fly.  
+.ex 
+.sb "The Punchline" "The Time Warp" 
+STAN: It's astounding.  
+      Jokes are sounding.   
+      Humour takes its toll.
+      So listen closely,
+BEAU: Not for very much longer. 
+STAN: I've got to keep control. 
+.ve 5   
+      I remember
+      Wearing the pork pie, 
+      Telling a boffer when 
+      The laughter would hit me 
+      And my partner'd be calling   
+.ve 2   
+BOTH: Let's try the punchline again!
+      Let's try the punchline again!
+.ve 6   
+BEAU: We'll relax you   
+      Until it attacks you, 
+      Then it wracks you with fear and dread.   
+      First the lights will start dimming,  
+      Soon your minds will be swimming  
+      As humour infests your head.  
+.ve 5   
+STAN: You may think that your mind's fine,  
+BEAU: Then we'll tell you the punchline,
+      And slowly you'll start to go insane. 
+      You'll start tearing your hair for
+STAN: These words fill you with terror: 
+.ve 2   
+BOTH: Let's try the punchline ag
+
+BOTH: Let's try the punchline again!
+      Let's try the punchline again!
+.ve 8   
+      CHORUS: First we make fun of the left,
+              And then we laugh at the right.   
+              We tell political jokes   
+              Where others pick a fight.
+              You need a sense of humour
+              To understand us when we say  
+              Let's try the punchline again!
+              Let's try the punchline again!
+.ve 12  
+STAN: Well I was talkin' to a real  
+           revolutionary
+      'Cause I was tired of chattin'
+           with the bourgeoise. 
+      He lectured a while,  
+           he sounded mighty wise,  
+      I said, "Well, thank you, Sir!"   
+           and got a big surprise:  
+      The strangest thing,  
+           it's one of Nature's quirks; 
+      His ears don't hear,  
+           it's just his mouth that works!  
+.ve 2   
+BOTH: Let's try the punchline again!
+      Let's try the punchline again!
+.ex 
+.sb "Closing Song" "Brother Love's Travelling Salvation Show" "1978"
+Soooo   
+We say good-bye with a tear in our eye  
+As we watch them all die on the stage.  
+The ex....  
+..pose was a fake, was a fatal mistake, 
+But 
+
+But they're certain to make the front page. 
+.ve 4   
+Well, it's sad to see   
+But that's how things go
+We've got no one left   
+So that's it for the show   
+.ve 5   
+And it's been FASS, yes it has, and what a gas  
+This is the end of our show 
+It's time for the curtain and you can be certain
+We're sorry to go, but we have to you know  
+That's it for the show. 
+.ve 6   
+Lights .....
+Coming down and they turn down the sound
+And we all go downtown for a beer   
+Stage...
+Crew calls it a day, with the props put away
+In the places they'll stay for a year.  
+.ve 4   
+But when winter comes   
+Around next time
+We'll be back again 
+With FASS seventy-nine! 
+.ve 5   
+And it's been FASS, yes it has, and what a gas  
+This is the end of our show 
+It's time for the curtain and you can be certain
+We're sorry to go, but we have to you know, 
+That's it for the show. 
+.ex 
+.bs 0 1979 SONGS
+.sb "An Ocean Cruise" "The North Atlantic Squadron" "1979"  
+Chorus: 
+Away, away on an ocean cruise   
+Full of booze, what can we lose?
+We don't know our lines and we'll miss all our cues,
+But that's the way that FASS goes.  
+.sp 
+.ne 5   
+Farewell to all our writers 
+
+That stupid bunch of blighters  
+After four months of thought
+They wrote up this plot 
+Last week in three all-nighters.
+.sp 
+.ne 5   
+Farewell to our producer
+Our harmony inducer.
+When an actress in rage 
+Wouldn't go on the stage,   
+Our inducer producer would goose her.   
+.sp 
+.ne 5   
+Farewell to all our tech crew   
+They sure make a competent deck crew.   
+And on make-up and  lights  
+And sewing our tights   
+They're great but they just don't rhyme.
+.sp 
+.ne 5   
+In days of old when knights were bold   
+And FASS was not invented   
+The people sighed, the children cried,  
+And all were discontented.  
+.sp 
+.ne 5   
+But now there's FASS, a worse disas...  
+...ter than five tornadoes. 
+It should be fun for everyone,  
+So please don't throw tomatoes. 
+.ex 
+.sb "HAROLD MALLARD" "RUBBER DUCKIE"
+Harold Mallard, he's the man
+Who keeps his spare change in a van.
+Harold Mallard owns everything on earth.
+.sp 
+.ne 4   
+Harold Mallard owns this boat,  
+He makes sure our assets float. 
+Harold Mallard owns everything on earth.
+.sp 
+.ne 4   
+.ne 6   
+Anything you see,   
+Chances are that
+He owns it! 
+If a charity
+Needs some money,   
+He loans it!
+.sp 
+.ne 4   
+Harold Mallard, yeah - he's rich.   
+He's got palms that always itch!
+Harold Mallard owns everything on earth!
+.ex 
+.sb "Albania the Beautiful" "America the Beautiful" "1979"  
+Oh beautiful, progressive land, 
+Where sex is clean and free.
+Where democratic principles 
+Denounce Impotency. 
+.sp 
+.ne 6   
+Albania, Albania,   
+You've brought us all this far. 
+And someday soon,   
+We'll hang a moon   
+To show just what we are.   
+.ex 
+.sb "DRINK, DRINK, DRINK YOUR BEER" "ROW, ROW, ROW YOUR BOAT"   
+Drink, Drink, Drink your beer,  
+Smoothly down the hatch.
+Drunkenly, drunkenly, drunkenly, drunkenly, 
+Brew another batch. 
+.ex 
+.sb "I'LL BE MASTER OF THE PLANET" "IF I ONLY HAD A BRAIN"  
+I'll be master of the planet,   
+With fools like Sam and Janet,  
+And no-one will attack. 
+All my enemies will cower   
+When they see the endless power 
+Of my aphrodisiac.  
+.ex 
+.sb "IF I DIDN'T HAVE A HUNCH" "IF I ONLY HAD A HEART"  
+I could walk the straight and narrow,   
+Or shoot a bow and arrow,   
+Or eat a stand-up lunch.
+I could be my own master
+Instead of working for this bastard 
+If I didn't have a hunch.   
+.ex 
+.sb "JUST TO GET ANOTHER BADGE" "IF I ONLY HAD THE NERVE"   
+I would sell my younger brother 
+Or rape and kill my mother  
+I'd borrow, steal or cadge. 
+I would deal with the devil,
+I would sink to any level   
+Just to get another badge.  
+.ex 
+.sb HOW~I'D~LIKE~TO~END~THE~SCENE IF~I~ONLY~HAD~A~BRAIN 
+.ne 6   
+WHOM:  When my plan's at last unfurled  
+       I'll soon control the world, 
+       I'll never want for more.
+SCOUTS:  I've no thought of retirin'
+       'Til I get what I'm desirin':
+       Merit badges by the score!   
+.sp 
+.ne 5   
+PSEUD: Oh, I
+       Could see the sky
+       While standing on my feet.   
+WHOM:  I'd never know the meaning of defeat.
+SCOUTS:  I'd help a turd across the street. 
+.sp 
+.ne 12  
+SCOUTS:  If I got what I was after  
+WHOM:  My belly'd fill with laughter,   
+PSEUD: My pawnts would fill with awnts. 
+SCOUTS:  I could think of nothing keener.   
+WHOM:  Be a King and get a Queen-a. 
+S&W:   We could end this bloody scene-a!
+PSEUD: I could be a ballerina   
+       Of the dawnce.   
+       If I'd only get de-hunched.  
+WHOM:  The world.   
+SCOUTS:  A badge.   
+ALL:   Our wants.   
+
+.ex 
+.sb THE~WONDER~OF~BRAS THE~WIZARD~OF~OZ 
+.ne 6   
+We're   
+Off to be malicious,
+Deliciously vicious and bad.
+We'll be the wors-  
+test passengers 
+This boat has ever had. 
+.sp 
+.ne 4   
+If ever a horrible crowd there was  
+You're looking at them because, because 
+Because, because, because, because, because,
+Because we are very barbarious! 
+.sp 
+.ne 2   
+We're off to be malicious,  
+Deliciously vicious and bad!
+.ex 
+.sb "MEOP BLUES" "C C7 F7 C G7 F7 C"
+Went to bed last evening / Feeling mighty drunk 
+Woke up this morning / And I'd heaved all over my bunk  
+It's been one of those days 
+When it pays not to put on your shoes...aahhhh, no...   
+I got those Mexican Evangelical Optometry Pirate blues. 
+.sp 
+.ne 7   
+First it's Hey gringo...
+Then repentance time
+Then it's all of those eye tests
+That almost drive me blind  
+It's a bad dream
+A nightmare, and I'd like to know whose 
+I got those Mexican Evangelical Optometry Pirate blues. 
+.sp 
+.ne 7   
+I'm all at sea  
+Out of key  
+And I wish I was dead   
+And I feel so tight 
+From the booze last night   
+I know I'm gonna explode if I don't find the head   
+.sp 
+.ne 5   s soPira
+
+Pirate life is rotten / And so is the pay   
+But what else could I do with / A general B.A.  
+Well some people win
+But all I ever do is lose   
+I got those Mexican Evangelical Optometry Pirate blues. 
+.ex 
+.sb "IT IS A CUSTOM TO GIVE LEIS" "I'VE GROWN ACCUSTOMED TO HER FACE"   
+It is a custom to give leis 
+We welcome visitors this way
+.sp 
+.ne 6   
+The isle of Tongo Tongo bids you welcome day or night   
+We'd offer more than welcome
+Except everything's on strike   
+Still, it's a custom to give leis   
+A custom we can't break 
+A custom to give leis   
+.sp 
+.ne 4   
+It is a custom to give lays 
+I think that we are going to stay   
+.sp 
+.ne 6   
+The isle of Tongo Tongo is an engineer's delight
+As long as there is custom  
+We don't care who is on strike  
+Since it's a custom to give lays
+A custom that we praise 
+A custom to give lays   
+.ex 
+.sb LIFE~IS~GRAND I'VE~GOT~SPURS
+.ne 4   
+Life is grand on Tongo-Tongo-Tongo, 
+If you visit, you'll surely want to stay.   
+Not a thing is wrongo-wrongo-wrongo 
+If your income is fifty grand a day.
+.sp 
+.ne 8   
+Oh, buccaneers! 
+   (Oh, buccaneers!)
+Let's give three cheers!
+   (And four more beers!
+
+   (And four more beers!)   
+Surely this would be a heaven   
+If there were no engineers. 
+.sp 
+.ne 5   
+Yes, it's great on Tongo-Tongo-Tongo,   
+You can find all the pleasures that you seek.   
+And the beer is strongo-strongo-strongo:
+Half a case and you're pissed for half a week,  
+Half a case and you're pissed for half a week!  
+.ex 
+.sb "PARDON ME, HON" "PARDON ME, MISS, BUT I'VE NEVER DONE THIS.."  
+Pardon me, hon  
+Would you like to have fun, 
+With a love machine ?   
+.sp 
+.ne 3   
+Here on the floor,  
+I can't wait any more,  
+I'm a love machine. 
+.sp 
+.ne 6   
+If only you knew
+How excited I've felt   
+You make me so hot  
+That my circuits all melt.  
+All of my software is turning to hardware - 
+You know what that means,   
+I'm a love machine. 
+.ex 
+.sb "WE ARE MEANPEACE" "WE WILL ROCK YOU"   
+Buddy we're aboard - but we're real bored   
+Playin' on the deck - gonna have a big fight some day   
+Gonna beat up the crew  
+Clobber you 
+Really enjoy everything that we do -
+.ne 2   
+We are we are Meanpeace 
+We are we are Meanpeace 
+.sp 
+.ne 7   
+Now that we're on deck - make a big wreck   SCOUPlayin' with the bomb - gonna blow up th
+
+Playin' with the bomb - gonna blow up this ship some day
+Gonna blow up the crew  
+And you too 
+Get a real bang out of all that we do - 
+We are we are Meanpeace 
+We are we are Meanpeace 
+.sp 
+.ne 9   
+Buddy we're annoyed - MAKE A BIG NOISE  
+Gonna have some fun - gonna club a few seals some day   
+Gonna harpoon a whale   
+Go to jail  
+Kick your cans clean over the rail  
+We will we will munch you   
+We will we will crunch you  
+We will we will mash you
+We will we will bash you
+.ex 
+.sb "WE WANT THE BOMB" "WE WANT THE BUMP"   
+We want the bomb
+gotta have the bomb - oh baby   
+We want the bomb
+gotta have the bomb - oh baby   
+etc.
+.ex 
+.sb "NUKE THE WORLD" "DUKE OF EARL" 
+Nuke, nuke, nuke, nuke the world
+Nuke, nuke, nuke the world, 
+Nuke, nuke, nuke the world...   
+.ex 
+.sb "BIG DISASTER" "MORNING AFTER"  
+.ne 4   
+There's going to be a big disaster...   
+The boys won't need to use the bomb 
+We'll fill the air with cheers and laughter 
+We'll watch the ship go down the tubes. 
+.sp 
+.ne 5   
+And though the warning's rather cryptic 
+I know the fun has just begun   
+Today will be Apocalyptic   
+At last the day of judgement
+At last the Gottadamerung!!!
+.ex 
+.sb "HOO IS WHOM?" "FOX IN SOCKS"   
+Hoo; Whom.  
+Whom; Hoo.  
+.sp 
+.ne 2   
+Whom, is this man;  
+Hoo,  is this man.  
+.sp 
+.ne 2   
+Hoo is his man; (POINTS TO HOO, COUSTEAU)   
+He is Whom's man. (POINTS TO PSEUDOMOTO, DR. WHOM)  
+.sp 
+.ne 2   
+Who is this man? (POINTS TO COUSTEAU)   
+Who is this runt? (POINTS TO PSEUDOMOTO)
+.sp 
+.ne 2   
+This is Whom's, not Hoo's, as-sis-tant! 
+.sp 
+.ne 2   
+Now that you have got it, nearly;   
+I can show you much more clearly:   
+.sp 
+.ne 3   
+Whose boss? (COUSTEAU)  
+Hoo's boss. (COUSTEAU & HOO)
+Poor Chou Hoo's boss. (COUSTEAU & HOO)  
+.sp 
+.ne 3   
+Whose boss? (CAPTAIN HORNBLOWER)
+Crew's boss! (LIGHT ON CREW & HORNBLOWER)   
+Ship's crew's cruise boss! (DITTO)  
+.sp 
+.ne 4   
+See the crew's boss cruise the seas now; (HORNBLOWER)   
+See Chou Hoo's boss start to sneeze now. (COUSTEAU) 
+Can the crew's boss snooze and cruise now? (HORNBLOWER) 
+Can Chou Hoo's boss set us loose now? (COUSTEAU)
+.ex 
+.sb "APHRODISIAC" "THE MONSTER MASH"
+.ne 4   
+I was working in the lab late one night 
+When I gave myself an awful fright, 
+For my potion didn't work as I'd surmised,  
+And suddenly I realized 
+.sp 
+.ne 8   
+(He'd made an Ac)   
+An aphrodisiac  
+(Phrodisiac)
+To get you in the sack. 
+(Phrodisiac)
+You can't halt the attack   
+(Phrodisiac)
+Of my aphrodisiac!  
+.sp 
+.ne 4   
+I sat and pondered what to do   
+With my baby-making magic brew  
+When I realized its real worth: 
+With an aphrodisiac I could control the earth!  
+.sp 
+.ne 11  
+(Controlled by Ac)  
+An aphrodisiac  
+(Phrodisiac)
+To take up your slack.  
+(Phrodisiac)
+You'll end up on your back  
+(Phrodisiac)
+With my aphrodisiac!
+.sp 
+(Aph-ro----disiac, Aph-ro----disiac,
+etc. as the Singing Waiters depart.)
+.ex 
+.sb "MA BELL" "MICHELLE"
+Me and, Ma Bell 
+These are words that go together well, me and Ma Bell   
+ACDCO, Ma Bell  
+Count our love in hexadecimal, me and Ma Bell   
+.ne 5   
+I love her, I love her, I love her! 
+And though she's far a-way  
+I feel compelled to say 
+Long Distance is the next best thing,   
+to being there. 
+.sp 
+.ne 4   
+A-C, M-B
+Who'll deny we're matched peripherally, even at sea.
+M-B, A-C
+Bells start ringing when you call up me, even at three. 
+.ne 6   p th
+
+
+......r.
+fass
+
+
+
+A princess, a touch-tone,  Contempra!   
+With matching cord, to boot;
+You swallow all my loot.
+When my last dime's dropped,
+The dialling's stopped  
+You'll know what I mean.
+.sp 
+.ne 5   
+Ma Bell, It's Hell, 
+Night-time calls when no one seems to care, 
+                          lines aren't there.   
+It's Hell, Ma Bell  
+One A. M. and I can't phone down stairs, for repairs
+.ne 7   
+The kitchen, the bedroom, the bathroom! 
+I see you every where,  
+You're not becoming rare.   
+Though you're all amiss 
+Long distance is the next   
+Best thing to   
+Being there.
+.ex 
+.sb CLOSING~SONG LIBERTY~BELL~MARCH 
+.ne 10  
+Well,   
+That's the end of our FASS this year,   
+We're glad you came to see. 
+It had a measure of class this year,
+We hope you will agree. 
+With lots of humourous songs this year  
+For music-loving folks, 
+And lots of titters 
+And lots of tatters 
+And lots of dirty jokes.
+.sp 
+.ne 4   
+Yes, this is the end of FASS for sev'nty-nine;  
+We hope that you all come around next time. 
+We'd like to finish the show with something witty and smart-
+Instead we'll end it all with one big   
+.ex 
+.bs 0 1980 SONGS
+.sb This~is~the~FASS~Show You~Are~My~Sunshine   
+This is the FASS show, the unsurpassed show,
+Maybe the last show you'll ever see,
+If we're not cautious, you'll all be nauseous,  
+At our scenes of depravity. 
+.ve 4   
+So please stay seated, please don't feel cheated,   
+And you'll be treated to some great times,  
+We all have terrors of making errors,   
+As we lose our cues and our lines.  
+.ve 5   
+(SUNG WITH 1980 OVERTURE HARMONY)   
+Some jokes are new, dear, some come from last year, 
+If you think that's weird, what you don't know, 
+We've block the exits, there's lots of sex, it's
+Time for FASS, so here we go.   
+.ex 
+.sb University~Bookstore Winchester~Cathedral   
+University Bookstore, you're bringing me down,  
+Your prices are high
+Your line-ups surround, the building
+.ve 3   
+University Bookstore overcharges and then   
+The University Bookstore
+Overcharges again   
+.ve 6   
+If a course needs a book
+Take a look 
+They know what to do:   
+They handle them all
+Large or small  
+By ordering 27 too few. 
+.ve 3   
+Overcharges on paper, overcharges on books  
+The University Bookstore
+I think that they're crooks!
+.ve 4   otioThe students are shocked
+
+The students are shocked by, the money they owes
+At University Bookstore 
+You pay through the nose!   
+.ve 5   
+(WHILE HOLDING THEIR NOSES:)
+Fo-doh-de-doh-doh   
+Fo-doh-de-doh-doh   
+Fo-doh-de-doh-doh   
+De-doh-doh! 
+.ex 
+.sb Hey,~Food Hey,~Jude 
+Hey, Food... don't crawl away...
+Why don't you stay  
+A little longer?
+Starvation is really making me ill  
+Eating this swill   
+Make me feel better.
+.ve 2   
+CHORUS: 
+Better, better, better, better...   
+.sb "Food Services' Food" Food,~Glorious~Food   
+Food, Glorious Food 
+There's nothing can beat it 
+Food Services food  
+Nobody can eat it   
+.ve 4   
+Murder burgers and onion rings  
+(Edible if you're lucky)
+Deep-fried Colonel's budgie wings   
+From Ken-tucky  
+.ve 4   
+Food glorious food  
+Bacterial cultures  
+Food Services food  
+Fit eating for vultures.
+.ve 4   
+Rice pudding and mystery meat   
+Brown beans from the Navy   
+Stale cornflakes and graham wheat   
+What's in the Gravy?
+.ex 
+.sb In~The~Gravy In~The~Navy
+In the Gravy, you can see things swim around
+In the Gravy, germs and viruses abound  
+In the Gravy, come and see just what we've caught   n atIn the Gravy, in the Gra
+
+In the Gravy, in the Gravy  
+.ve 2   
+They've got stew, they've got stew  
+They've got stew down at Village Two
+.ve 2   
+They've got stew, they've got stew  
+They've got stew down at Village Two
+.sb South~Campus~Hall YMCA  
+South Campus Hall, it's fun to eat at the   
+South Campus Hall...
+.ex 
+.sb I~Want~To~Be~A~Superhero Just~An~Old-Fashioned~Love~Song
+SMED:~I want to be a superhero  
+~~~~~~Flying 'bout and changing wrong to right  
+~~~~~~I want to be a superhero  
+~~~~~~Fighting all the villains of the night
+.ve 4   
+~~~~~~I know I've said it before
+~~~~~~And the countless times I've tried
+~~~~~~But I know I'll do it this time   
+~~~~~~If you'll be by my side   
+.ve 4   
+~~~~~~I want to be a superhero  
+~~~~~~Chasing after villain, thief and crook
+~~~~~~I want to be a superhero  
+~~~~~~And maybe I'd get my own comic book.  
+.ve 4   
+LOIS:~Oh, Smedley what can I say
+~~~~~~I'll love you all the time
+~~~~~~Yes, I will be by your side   
+~~~~~~As you go fighting crime  
+.ve 4   
+~~~~~~I know that you can do it Smedley 
+~~~~~~Know that you can do it if you try
+~~~~~~I know you'll be a superhero  
+~~~~~~And I'll be there to watch you as you fly 
+.ve 4   
+BOTH: (You're/I'm) going to be a superhero  
+LOIS: You could take me flying through the air  
+BOTH: (You're/I'm) going to be a superhero  
+SMED: Dressing up in coloured underwear.
+.ex 
+.sb "Plato's Retreat" "Lollipop Guild"  
+We represent,   
+~~~The Faculty Club 
+~~~The Faculty Club 
+~~~The Faculty Club.
+We represent,   
+~~~The Faculty Club,
+And we thought that we'd come in to kiss your   
+~~~(PREGNANT PAUSE)... hand!
+.ex 
+.sb 50~Ways~To~Screw~The~Students 50~Ways~To~Leave~Your~Lover   
+Think up some creative tricks   
+~~~to get them where it hurts   
+A skillful way to make sure they
+~~~will quickly lose their shirts   
+A little thought should surely help us  
+~~~to get our unjust desserts   
+There must be, fifty ways to screw the students.
+.ve 8   
+Just treat them like mud, Jud,  
+Give them an exam, Sam. 
+Tow their buggies away, Ray.
+But make sure they pay. 
+Lower their loans, Joan.
+Make'm pay through the nose, Rose.  
+You can charge by the day, Gay. 
+But make sure they pay. 
+.ex 
+.sb COAL TANG-SPAM  
+Coal Coal Coal Coal 
+Coal Coal Coal Coal 
+Stupid coal, ridiculous coal,   
+Nasty coal, detestable coal 
+Coal Coal Coal  
+Coal Coal Coal Coal 
+Coallll...  
+.sb Our~Hearth Our~House
+Our Hearth, is a very-very-very fine Hearth.
+With coal bins and a flue;  
+We work from dawn 'til two; 
+Shaking and raking and baking Food Services' stew...
+.ex 
+.sb NEIL~YOUNG~EAT~YOUR~HEARTH~OUT HEART~OF~GOLD
+We want to think, we want to drink  
+We want to get out of this stinking hole
+This job's a write-off, we want a night off 
+But still we're filling up this hearth with coal
+And we're getting old...
+.ex 
+.sb INTREPID~ASTROS JUNIOR~BIRDMEN  
+Up in the air, intrepid astros  
+Up in the air, upside down  
+Up in the air, intrepid astros  
+Get your astros off the ground. 
+.ve 4   
+And when you hear the great announcement
+That the meeting's just begun, gun, gun 
+Then you know, intrepid astros, 
+To start eating Egg Foo Yung.   
+.ve 5   
+It takes five gold rings
+Four calling birds  
+Three french hens   
+Two turtle doves
+And one... thin... partridge in a pear tree.
+.ex 
+.sb SUPERHERO RED~RUBBER~BALL   
+Some day I'll know  
+Just what I can do  
+It's a lesson I must learn  
+In a day or three or two
+Can I fly beyond the sky
+Or swim beneath the sea 
+Can I get a decent-paying job    theDesp
+
+Despite my Ph.D.
+.ve 4   
+Yes, I'm gonna find out soon
+Just what kind of powers I have 
+And then I'll get a TV show 
+Like Hulk or Superman.  
+.ex 
+.sb SUPERHERO~REPRISE RED~RUBBER~BALL   
+I've always known   
+That Smedley's sort of weird
+But what he's up to now 
+Is worse than I had feared  
+Someone has to stop him fast
+Before he breaks his neck   
+Because the guy is playing now  
+With only half a deck   
+.ve 4   
+Yes, I've gotta find him soon   
+Cuz he's gonna hurt himself 
+By doing things that should be left 
+To Hulk or Superman.
+.ex 
+.sb A~SPACESHIP ACH~DU~LIEBER~AUGUSTINE 
+We will build a spaceship, a spaceship, a spaceship,
+We will build a spaceship to fly up the stack.  
+.ve 2   
+With fuel cells and windows and no navigation   
+With paraphenalia we ain't thought of yet.  
+.ve 2   
+Off to the disco, disco, disco, 
+Off to the disco to find us some help.  
+.ex 
+.sb STUDIO~/360 PUFF~THE~MAGIC~DISCO
+Studio /360, you're our favourite place 
+To drink and disco dance till dawn  
+In vinyl pants and lace 
+Studio /360, who could ask for more?
+We'll shake our precious booties till   
+We crash right through the---   
+.ve 4    as Through the floo
+
+Through the floor, through the floor
+Stamp your feet right through the floor 
+Through the floor, through the floor
+Ahh---- 
+.ve 4   
+Studio /360, we come here to dance  
+And we also come to get inside each other's pants   
+Studio /360, we just have to smile  
+At the way you cater to our vacuous life--- 
+.ve 4   
+Vacuous, vacuous,   
+Just don't think or raise a fuss,   
+Vacuous, vacuous,   
+Ahh---- 
+.ve 4   
+Studio /360, we don't care a bit,   
+If we wake some monster up and it gets in a snit,   
+Studio /360, even if you're doomed, 
+Satisfaction will be ours because we'll die well--- 
+.ve 4   
+Die well-groomed, die well-groomed, 
+Collapse the roof and be entombed,  
+Die well-groomed, die well-groomed, 
+Ahh---- 
+.ex 
+.sb "WIDJET" "A Bicycle Built for Two"  
+WIDJET, WIDJET, 
+Give me your answer, do.
+I just fidget,  
+Waiting in queue for you.   
+As soon as my bug's detected,   
+My job can be corrected;
+But I'll be here
+At least a year,
+At queue number ninety-two! 
+.ex 
+.sb I~FORGET~WITH~YOU~MILK THANK~YOU~VERY~MUCH~MILK 
+Suddenly the memory stops   
+My mind is wiped quite clear
+There's nothing left inside my head 
+It's like back in first year
+.ve 2   
+~~~I forget with you (ahhh...) Milk.
+.ve 7   
+Thoroughly this memory soap 
+Goes rinsing through my brain   
+And all the things I thought I knew 
+Are washed right down the drain 
+.ve 2   
+~~~I forget with you (ahhh...) Milk.
+~~~La la la la la (uhhh...) la. 
+.ex 
+.sb HEY~SUE OCTOPUS'S~GARDEN
+Hello there, Sue.   
+We'd like to do 
+Delicious and delightful things for you.
+.ve 3   
+We'll bring you flowers 
+Or whiskey sours
+A case of Fifty or a case of Blue.  
+.ve 2   
+If you will let us have our kicks   
+We'll even take you to Fed Flicks   
+.ve 3   
+We love you so. 
+Please don't say no.
+Oh let us do delightful things for you. 
+.ex 
+.sb HI~HO HI~HO 
+Hi ho, hi ho, we're off to face the foe 
+If they've got guns we'll lose our buns 
+We know, we know
+And yet we go, hi ho,   
+We're off to face the foe,  
+If they shoot us, we'll raise a fuss,   
+Hi ho, hi ho, hi ho, hi ho... etc.  
+.ex 
+.sb "Over At The PRG Place" "Over At The Frankenstein Place"
+In subterranean darkness,   
+We are filled with fright: Then a sight.
+Turns our night to dawn 
+Although we still can not, find the john.   
+.ve 5   
+CHORUS: 
+
+There's a light~... (over at the PRG place) 
+There's a light~... (burning up Food Services' waste)   
+There's a light, a light,   
+At the end of the tunnel tonight.   
+.ve 8   
+The Aliens must go, 
+Home again to their own galaxy. 
+We shall get free,  
+So we can save the University.  
+We will foil their plan;
+We'll foil their plan.  
+.sp 
+CHORUS  
+.ex 
+.sb No~Way,~Jose Scarborough~Fair   
+We're not going to tell you a thing 
+The idea's completely absurd
+You will never get us to sing   
+No, we'll not reveal a word 
+.sb Torn~Between~Two~Tow-Trucks Torn~Between~Two~Lovers 
+Torn between two tow-trucks 
+That's what you will be 
+If you choose   
+Not to give 
+The formula to me   
+.ex 
+.sb You~Can't~Do~Anything Anything~You~Can~Do   
+Aliens: 
+You can't do anything better than us cats   
+You guys are hopeless, you haven't a chance,
+.ve 6   
+All~Co-ops: Yes we do   
+All~Aliens: No you don't
+All~Co-ops: Yes we do   
+All~Aliens: No you don't
+All~Co-ops: Yes we do   
+All~Aliens: No you don't, no you don't  
+.ve 3   
+All~Co-ops: 
+Your team has lost it before you've begun, cats 
+Right from the start you can see we will win.   
+.ve 6   ugh All~Alie
+
+All~Aliens: No you won't
+All~Co-ops: Yes we will 
+All~Aliens: No you won't
+All~Co-ops: Yes we will 
+All~Aliens: No you won't
+All~Co-ops: Yes we will, yes we will
+.ex 
+.sb "Sergeant Peppers Band" "Close Encounters Theme"
+Ser-geant Pep-pers Band.
+.ex 
+.sb You~Funded~Me You~Needed~Me 
+I scraped and starved,  
+I paid my dues: 
+Cold lonely nights, 
+Kraft dinner blues. 
+.ve 5   
+My every cent   
+Went for tuition fees,  
+I only bought   
+The bare necessities:   
+Sex, drugs and downhill skis.   
+.sb Sex~&~Drugs~&~Downhill~Skis Sex~&~Drugs~&~Rock'n'roll   
+Sex and drugs and downhill skis,
+Are what my student loan is for.
+Sex and drugs and downhill skis,
+.sp 
+And good times by the score.
+.ve 4   
+If you think my life is frugal, prim and prudent,   
+Then you've never met an av'rage co-op student, 
+Firebirds and dope, beer and getting screwed, ent-  
+irely devoid of morals, this is the life for me.
+.ve 3   
+Sex and drugs and downhill skis,
+Enough to last for thirty years.
+Sex and drugs and downhill skis,
+.sp 
+And now and then some beer. 
+.ve 4   
+I did not come here to fill my head with knowledge, 
+But to flush it out through excess alcoholage,  
+
+After which I'll need a mental overhaul, a j-   
+olly good vacation, one which I don't intend to end.
+.ex 
+.sb The~Banana~Blitz~Song The~Banana~Splits~Song
+One banana, two banana, three banana, four, 
+Stuff bananas in your face 'til you can stuff no more.  
+Five banana, six banana, sev'n banana, eight,   
+Afterwards I'm sure that you will not be feeling great. 
+.ve 2   
+La la la, la la la la;  
+La la la, la la la la.  
+.ex 
+.sb "The Show So Far" "Science Fiction Double Feature"  
+Cy Nusitis was ill from eating Village 2 swill  
+Prof L.Lactic found out he was canned   
+And Smedley Merkin was there, in Velcro underwear   
+Clogged Drains was the big problem at hand  
+.ve 4   
+Well, the Aliens tried, yes they cheated and lied   
+As the humans made their final stand
+And while the AIA crashed, and the co-ops were trashed  
+Administration hides in the can 
+.ve 4   
+At the...university in commotion
+The Mad Professor will brew a potion
+See Aliens fighting co-op students  
+The campus crawls with hairy mutants
+.ve 5   
+Woh oh oh oh ooh
+Here at the nineteen-eighty FASS show   
+I paid my dough 
+Woh oh oh oh ooh
+To the nineteen-eighty FASS show.   
+.ex 
+.sb The~Bonz
+
+
+......r.
+fass
+
+
+
+.sb The~Bonzo~Cat~In~The~Hat~Comes~Back The~Rain~In~Spain   
+SOP:Now it should be apparent   
+~~~~That our problem is inherent-   
+~~~~ly quite simple, I am sure you will concur: 
+~~~~When the suds go down the spout 
+~~~~We need a way to let them out   
+~~~~Or else we'll soon possess the filthiest of fur.
+.ve 6   
+~~~~But there's another little extra
+~~~~If our sewers run unvexed, a
+~~~~Side-effect which I expect will bring good cheer:   
+~~~~For when your sink's correctly used 
+~~~~It helps the Bonzo Cats get boozed  
+~~~~Thanks to a method which I hope to make quite clear.
+.ve 3   
+SOP:Care to describe what you see, Euripides?   
+EUR:It's plain the drain is mainly filled with rain.
+SOP:Once again. 
+.ve 5   
+EUR:It's plain the drain is mainly filled with rain.
+SOP:I think you've got it. I think you've got it.   
+EUR:The stained drain rain drain's main drains  
+~~~~~~~on the pane. 
+SOP:By George, you've got it. By George, you've got it. 
+.ve 4   
+M&F:The pane rain hits the reigning Dane.   
+ARI:Hits his brain, wets his mane.  
+M&F:The rain's his bane, so he's profane.   
+ABS:Not Jane, nor Cain, nor Thane ordained. 
+.ve 4    seeA&A:The rained Dane lifts his cane and h
+
+A&A:The rained Dane lifts his cane and hits the vane,   
+MOR:The weathervane, 'cause he's profane,   
+A&A:The Dane's cane hits the crane and causes pain, 
+FEL:Not sprain nor strain, not slain but pained.
+.ve 4   
+SOP:The crane exclaims, and hails the plane,
+ALL:Holding grain for the train,
+SOP:The crane-hailed plane then finds the train,
+ALL:With the grain the plane obtained.  
+.ve 4   
+ALL:The train collects the grain dropped from the plane,
+M&F:The plane-dropped grain rains on the train, 
+ALL:And takes the grain contained across the plain, 
+A&A:The rain train grain across the plain.  
+.ve 2   
+EUR:Whilst winnowing week-old wheat whisky will wesult. 
+ABS:We use the booze to make us snooze. 
+.ve 4   
+SOP:So tell me plain, where goes the train's grain? 
+EUR:It is drained from the train
+ARI:To comfort pain so cats won't wane; 
+ABS:If they abstain they are insane.
+.ve 7   
+SOP:Explain the chain!  
+.sp 
+ALL:The maned Dane's stained drain pane rain
+~~~~~~~makes crane pain.
+~~~~Main rain wets brain, profane lane cane.
+~~~~The trained plain grain train drains
+~~~~~~~the grain contained! 
+.ex 
+.sb "I Want To Be A Superhero (Reprise)" "Just An Old-Fashioned Love Song"  
+
+He got to be a super hero   
+Guess the earth has really had some luck.   
+And now that he's a super hero  
+He and Lois can go home and 
+~~~(muck around the house a bit and...) 
+.ex 
+.sb "Bye Bye Earth"  "Bye Bye Love" 
+Bye bye world   
+Hello oblivion, 
+We're tired of liv-i-on 
+And so we're gonna die, 
+Bye bye the earth, goodbye. 
+.ve 4   
+There goes the planet to Bonzo Cat, 
+And we'll be killed now, imagine that.  
+Oh yes, the world's in an awful way,
+We wish that someone would save the day.
+.ex 
+.sb "Bye Bye FASS" "Bye Bye Love"   
+Bye bye FASS, this is the closing song, 
+It won't take very long, and then we'll say goodbye 
+Bye bye FASS, goodbye.  
+.ve 3   
+Bye bye FASS, it's time for us to go,   
+Hope you enjoyed the show, endings make us cry, 
+Bye bye FASS, goodbye.  
+.ve 4   
+Our show is done, but, don't lose your cheer.   
+We'll have more fun, just, this time next year. 
+There's a quotation, we used to know:   
+If there's no au-dience, there ain't no show!   
+.ve 3   
+Bye bye FASS, this is the closing song, 
+It won't take very long, and then we'll say goodbye 
+Bye bye FASS, goodbye.  
+.ve 4   
+(SANS MUSIC, WITH CLAPPING, TWICE: )
+Bye bye FASS, it's been a lot of fun,   
+See you in Eighty-One, now we say goodbye,  
+Bye bye FASS, goodbye.  
+.ex 
+.bs 0 1981 SONGS
+.sb "OPENING SONG" "YANKEE DOODLE DANDY"
+This is the one and only FASS show  
+It's sure to make you laugh or cry  
+Don't waste your time on any drugs or booze 
+We're bound to give you a high  
+We've got talent yet still hidden   
+We want to show it all to you   
+.ve 4   
+Take your seats and clap your hands 
+Get in with the rhythm  
+We want to share it all with you.   
+.ve 6   
+We've got actors, singers, dancers, 
+They'll make your senses start to spin  
+A story written just with you in mind   
+Based upon sex, crime, and sin. 
+Full of puns and silly satire   
+Sure to make you lose your mind 
+.ve 3   
+Got your money, too late now
+You will have to suffer 
+Na Na, Na, Na, Na Na, Na, Na.   
+.ve 6   
+Here's the lovely FASS sweethearts  
+And the studs that make them sigh   
+We've worked all year to perfect this show  
+Trying to make this verse rhyme 
+All our costumes now are finished   
+The props are in their proper place 
+.ve 4   
+Love our techies, love them all 
+They work so hard to make it
+When you get them into bed  
+
+All they do is fake it. 
+.ve 5   
+Let's go on now with the show   
+Hope that it will seize you 
+Hope that we will entertain 
+We want for it to please you... 
+.ex 
+.sb "A BIT OF OIL" "WOULDN'T IT BE LOVELY"  
+All I want is a bit of fun  
+Some Brillo pads
+And some Three-in-One   
+So I can jump and run   
+Oh, wouldn't it be love-ly  
+.ve 4   
+Brand new fingers and brand new rears   
+Brand new circuits and brand new gears  
+And now and then some beers 
+Oh, wouldn't it be love-ly. 
+.ex 
+.sb "RHINESTONE ROBOT" "RHINESTONE COWBOY"  
+Well, I've been oiling my gears so long 
+Singing this same old song  
+It feels like I don't belong
+Outside of a junk heap  
+.ve 4   
+But I'm not like these other jerks  
+I can do it if I try cuz I know I have my works 
+    in a drawer 
+.ve 4   
+I'll go through many a rubber gasket
+'Fore they lay me in my casket  
+And I'm gonna have me a heck
+    of a robotic time   
+.ve 5   
+I'm a Rhinestone Robot  
+Heading out on the road with a two-year warranty
+A Rhinestone Robot  
+With two slipped disks and write only memory
+And now I have an Arts degree...
+.ex 
+.sb "THE BRIGHT SIDE OF LIFE" "THE OBVIOUS SONG"
+Always look on the bright side of life, 
+Always look on the right side of life.  
+.ve 7   
+ALEC:   
+I may lose my job,  
+(be) Put out with the mob.  
+No one hires a man with a degree.   
+I've so little skill,   
+That the only job I'd fill, 
+Is teaching at a university.
+.ve 2   
+But, (ALL JOIN IN) Always look on the bright side of work.  
+Even though your boss may be quite a jerk.  
+.ex 
+.sb AMPUTATION TOUCHA-TOUCHA
+If you're pinkie's cut off...don't scoff
+You'll get a dollar forty-nine...   
+(You mean me?  Uh-huh.) 
+Your policy will insure any part you injure 
+Be it ankle, elbow, or middle fin-ger   
+.ve 
+So if you sever a toe, let us know  
+Becoming less will earn you more
+SPIES: More, more, more...  
+M&P: You'll get more than you planned on
+If you've no leg to stand on
+You get a thousand bucks without a hand on. 
+.ve 
+Ampu-ampu-amputation
+Of any part of your anatomy 
+Just name it, maim it, then claim it
+You'll be reimbursed
+.ve 
+So if you happen to die, no need to cry 
+We'll handle every last detail  
+You need a grave, we'll dig one 
+You want a wake, we'll rig one  
+We pay for everything when  
+You bite the big one... 
+.ve 
+     ....CHORUS.... 
+.ve 
+SPIES: We'll be reimbursed? 
+M&P:   You'll be reimbursed.
+SPIES: We'll be reimbused!  
+M&P:   You'll be reimbursed!!   
+.ex 
+.sb "MISTER SCREW" "MISTER KITE"
+.ti 0   
+CHARLES:
+For the benefit of Mister Screw 
+I have come to torture you  
+If it takes all night   
+.ve 4   
+.ti 0   
+SCREW:  
+The general is waiting there
+As slowly we pull out your hair 
+What a sight
+.ve 4   
+.ti 0   
+GROVEL AND SCREW:   
+And the thumbscrews to your fingers 
+We'll apply 
+With the greatest of delight
+.ve 3   
+In this way 
+You will pray   
+To tell all you know
+.ve 4   
+.ti 0   
+WISER:  
+It's only fair to warn you two  
+That you can scream until you're blue   
+But I won't talk
+.ve 3   
+The pain and death don't worry me   
+Since I've caught terminal V.D. 
+From a jock 
+.ve 3   
+So you can do your best to torture me   
+And you will see
+You'd get more out of a rock
+.ve 3   
+You can stay for the whole day  
+It'll do you no good
+.ex 
+.sb "LASERS AND PHASERS" "FAVORITE THINGS"  
+Lasers and Phasers and nuclear weapons  
+Miniature landmines that you'll love to step on 
+Fiendish devices that blow you to bits  
+These are the things that we think will be hits 
+.ve 4   
+Robots and androids and sneaky torpedoes
+Hand grenades, light sabres, aren't they just neat-o?   
+Gadgets designed to go off with a bang  
+These are the things for which this song is sang
+.ve 4   
+When the bombs burst, and the guns fire 
+And we're feeling blue  
+We just design more of these devious things 
+And shoot them off right at you.
+.ex 
+.sb "THE CANADIAN NATIONAL UNITY SONG" "HALLELUJAH CHORUS"  
+Manitoba, Manitoba, 
+Manitoba, Manitoba, Saskatchewan.   
+Nova Scotia, Nova Scotia,   
+Nova Scotia, Nova Scotia, Newfoundland. 
+British Columbia and Alberta!   
+  (Nova Scotia, Nova Scotia.
+   Manitoba, Manitoba.) 
+Prince Edward Island and New Brunswick! 
+  (Manitoba, Manitoba.  
+   Nova Scotia, Nova Scotia.)   
+Que-bec!
+Ontari-ari-ari-o.   
+.ex 
+.sb "FASSABLANCA" "CARLING'S RED CAP"   
+Toys and games and gadgets  
+Dolls and teddy bears   
+We love Fassablanca 
+We own all the shares   
+.ve 4   
+Profit is our motto 
+Money is our goal   
+For a million dollars   
+We would sell our soul. 
+.ve 4   
+Toys and games and gadgets  
+Dolls and GI Joe
+We love Fassablanca 
+It rakes in the dough.  
+.sp 
+      A-men.
+.ex 
+.sb "Happy Elves" "Jingle Bells"
+Happy elves, happy elves,   
+Happy elves are we  
+Making toys for girls and boys  
+For a dollar thirty-three   
+   AN HOUR! 
+.sp 
+Happy elves, happy elves,   
+Happy, yes indeed,  
+All day long we sing our song   
+'Cuz we're all high on speed!   
+.sp 
+  Snorting up the snow, we'll keep our spirits high 
+  On and on we go, working till we die. 
+  Grossly underpaid and tyrannized as well  
+  By ho-ho-hoing Santa Claus,   
+  But we still think he's swell,
+.sp 
+Oh, happy elves, happy elves,   
+Our bliss is not a fluke,   
+We'll laugh and sing at anything
+It's enough to make you puke,   
+.sp 
+Oh, happy elves, happy elves,   
+We're devoid of wit,
+Lobotomized above our eyes, 
+But we don't give a...  
+.ex 
+.sb "BLCRA" "SUPERCALIFRAGILISTICEXPIALIDOCIOUS"
+Beeblebrox, Lickspittle, Crumhorn, Rasputin, Argbargle, 
+Even though it sounds like someone dying
+      trying to gargle  
+If you shout it loud in someone's ear   
+      it's sure to startle  
+Beeblebrox, Lickspittle, Crumhorn, Rasputin, Argbargle. 
+ (Humdiddle-iddle-iddle, umdiddle-ay)   
+.ve 
+MAN: I think that we have come here 
+     To a North Pole booby hatch
+PAU: Let's get out very quickly 
+     And make sure to lock the latch
+BOTH: In situations such as this
+      We must protect ourselves 
+      Surrounded here by lunatics   
+      Who think that they are elves 
+      Named...  
+.ex 
+.sb "A SPOONFUL OF SLANDER" "A SPOONFUL OF SUGAR"   
+If you would like to make some dough
+You must be ruthless, even though   
+People in the competition might complain
+The folks in business know it's wise
+To slander enemies with lies
+With dirt, with muck,   
+Anything to make a buck...  
+.ve 
+  Cuz a spoonful of slander keeps the competition down  
+  The competition down, competition down
+  Just a spoonful of slander keeps the competition down 
+  In a very spiteful way.   
+.ve 
+Well if your products aren't so good
+Made out of plastic and plywood 
+That doesn't mean you can't come out on top 
+A bit of falsehood here and there   
+Gets other folks out of your hair   
+And then... you're free...  
+With a monopoly...  
+.ve 
+  And a spoonful of slander keeps the competition down, 
+  The competition down, competition down,   Fien  Just a spoonful of slander keeps the c
+
+  Just a spoonful of slander keeps the competition down,
+  In a very spiteful way.   
+.ex 
+.sb "SMEAR THEM" "BOTH SIDES"   
+Spread tales of blackest infamy 
+About that rotten company   
+Go visit every embassy  
+And fink on Fassablanc...   
+A lie or two in every ear   
+Will fill the generals with fear
+They'll mount attacks so they can smear 
+The folks at Fassablanc...  
+.ve 4   
+Denounce the scum to both sides, Grinch 
+To East and West, so they will lynch
+The competition we both hate
+Arrange a very gruesome fate.   
+.ve 9   
+.ti 0   
+GRINCHLEY:  
+I'll grab the next reindeer express 
+And spread my lies from East to West
+I'll cause a most unholy mess   
+For those at Fassablanc...  
+A little dirt will smear their name 
+Their protests all will be in vain  
+For they will lose but we will gain 
+By trashing Fassablanc...   
+.ve 5   
+.ti 0   
+KITTY:  
+Denounce the scum to both sides, Grinch,
+To North and South, so they will lynch  
+The competition we both hate
+Arrange a very gruesome fate.   
+.ex 
+.sb "DOWN WITH THE ARMY" "BALLS TO YOUR PARTNER"
+Down with the army, ask me if I care,   
+If I hadn't enlisted I wouldn't be here 
+With people who aren't all there.   
+.ve 5   
+      The generals, the generals
+      They order us to fight
+      But whenever the enemy
+      Comes into view   
+      The generals aren't in sight. 
+      Right!
+.sp 
+  ...CHORUS...  
+.ve 5   
+      The sergeants, the sergeants, 
+      They teach us to survive, it's
+      So good for morale
+      To show he's your pal 
+      The sarge plays with his privates.
+.sp 
+  ...CHORUS...  
+.ve 5   
+      The cooking staff, the cooking staff, 
+      They're said to be the best,  
+      But they hired them all   
+      From South Campus Hall
+      And so our food's a mess! 
+      Yes!  
+.sp 
+  ...CHORUS...  
+.ve 7   
+SOLDIER:
+      The cabin boy, the cabin boy, 
+      The dirty little nipper...
+GENERAL:
+      He doesn't belong 
+      In an army song   
+      And neither does the skipper! 
+      Arrr! 
+.sp 
+  ...CHORUS...  
+.ve 5   
+      We hate the army  
+      We hate it quite a lot
+      But we'll certainly stay  
+      If we run away
+      They're sure to have us shot. 
+      Oh!   
+.ve 3   
+Down with the army, ask me if I care,   
+If I hadn't enlisted I wouldn't be here 
+
+
+......r.
+fass
+
+
+
+With people who aren't all there!   
+If I hadn't enlisted I wouldn't be here 
+With people who aren't all there!   
+If I hadn't enlisted I wouldn't be here 
+With people who aren't... ALL THERE!!   
+.ex 
+.sb "CLOSING SONG" "OBLADI-OBLADA"  
+Santa wants a corner on the market place,   
+But Fassablanca's doing very well   
+Their patent on the war has saved the human race
+And so we're all alive and fit enough to yell   
+.sp 
+.in 5   
+This was FASS, but it's through 
+Yes it's over!  
+We're closing down for eighty-one.  
+F-A-S, F-A-S, F-A-S-S!  
+We hope you've had a lot of fun.
+.ve 4   
+.in 3   
+The generals will go back to their swaggering   
+The life insurance folks back to the sub
+The spies will go on with their cloak and daggering 
+And the pizza man will go out to the pub.   
+.in 5   
+.sp 
+     ....CHORUS.... 
+.sp 
+In a couple of days, we will all forget our lines   
+Assuming we don't mess things up
+And forget them ahead of time   
+(Ho, Ho, Ho, Ho)
+.sp 
+.in 3   
+Happy ever after 'cuz the show is done  
+We'll take off all our make-up and our shoes
+You will leave the theatre and you'll head for home,
+We will head out to the party and the booze.
+.sp 
+.in 5   
+     ....CHORUS...  
+.sp 
+And if you want more giggles
+Come back in eighty-two.  Wooh! 
+.ex 
+.bs 0 1982 SONGS
+.sb "Alice in Wonderloo" "Aquarius" 
+When the cast gets into costume 
+And all our techies are prepared
+Then FASS will have you rolling 
+And fun will fill the air   
+.ve 3   
+This is the story of Alice in Wonderloo 
+Alice in Wonderloo, 
+In Wonderloo, in Wonderloo...   
+.ve 7   
+Sexual insinuation  
+Very tired jokes abounding  
+All our props are made of plastic   
+Though we might be rather spastic   
+We are still enthusiastic   
+You'll find life is quite fantastic 
+In Wonderloo, in Wonderloo...   
+.ve 4   
+When the show is in the second act  
+The plot appears a bit contrived
+We'll add a somewhat pointless scene
+To keep your interest alive.
+.ve 5   
+This is the story of Alice in Wonderloo 
+Alice in Wonderloo, 
+In Wonderloo, in Wonderloo  
+In Wonderloo!   
+.ex 
+.sb "I Mock Turtles" "I Love Onions"
+We don't mock folks with pretty smiles  
+Or paraplegic crocodiles
+But mmmm, we mock turtles.  
+We don't mock folks who carry guns  
+Or anyone who's good with puns  
+But mmmm, we mock turtles.  
+.ve 4   ple Turtles,
+
+Turtles, turtles in their shell 
+Turtles, turtles always smell   
+Turtles all can go to hell  
+See if we care...   
+.ve 6   
+We don't mock people eating cheese  
+Or armadillos cursed with fleas 
+But mmmm, we mock turtles.  
+We don't mock persons who have gas  
+Or even people watching FASS
+But mmmm, we mock turtles.  
+.ve 4   
+Turtles, turtles move so slow   
+Turtles, turtles weep with woe  
+Turtles haven't much to show
+For pathetic lives...   
+.ex 
+.sb "At ALICE's Restaurant" "Sesame Street Theme"   
+Myst'ry meat, and a few 
+Budgie feet,
+Look brand new when hidden in the stew. 
+Every meal is a surprise
+Here at ALICE's Restaurant. 
+.ve 6   
+Soggy toast, a-and charred  
+Horseflesh roast,   
+Grace the dish with tiny greasy fish.   
+Cover everything with sauce 
+Here at ALICE's Restaurant. 
+Here at ALICE's Restaurant. 
+  (REPEAT AD LIB.)  
+.ex 
+.sb "Foods" "Campbell Soup Song"
+There's turnip hearts in walrus blood   
+And butterflies sauteed in mud  
+Reptile organs served with gorgons  
+  garnished well with Holstein cud. 
+There's jellied brain of loup-garrou
+And tons and tonnes of doggie-do
+These are all the gourmet meals 
+  we'd like to cook for you!
+.ve 4   
+  Wolf pus au jus,  
+  Dingo's kidney stuffed with weeds 
+  Gorilla hands and monkey glands   
+    and vegetables with bugs!   
+.ve 7   
+Flies and gnats and thighs of bats  
+And donkey entrails cooked with cats
+And sweat and spit and just a bit   
+  of little yummy slugs 
+Yes lots of juicy slugs, those tasty tiny slugs,
+These are all the gourmet meals 
+  we'd like to cook for you!
+.ex 
+.sb "Hank the Herald" "Hark, the Herald Angels Sing"
+.ve 10  
+Hank the Herald, page boy sings 
+Declarations from your king.
+Count Paul Bearer's statue, golden, 
+Just this hour has been stolen. 
+If you catch this unjust thief --   
+All he left were these false teeth --   
+You will get your just reward:  
+Knightship from his vorpal sword.   
+Riches, titles offers he.   
+And a Loblaws' shopping spree.  
+.ex 
+.sb "How Can You Mend a Broken Egg" "How Can You Mend a Broken Heart"   
+.ve 6   
+I can think of younger days 
+When searching for a chick  
+I'd set down certain qualities required 
+So beautiful with glowing cheeks a rosy red 
+But a feeling prompted me to have eggs instead  
+Ehhhhh..... 
+.ve 4    to How can you mend a broken eg
+
+How can you mend a broken egg   
+It won't be easy, I can see 
+How can you halt coagulation
+I guess the yolk's on me (LOOKING AT HANDS) 
+.ve 6   
+I remember lovers past  
+Some slow and some were fast
+But no one holds a candle to him
+Now I'm a bird who's led a life of thrills galore   
+But I've never had a chance to lay an egg before
+Ehhhhh..... 
+.ve 5   
+How can you mend this shell of a man
+All the king's horses and his men   
+Can't help me mend this broken egg (HARMONY WITH HUMPTY)
+And let him live again. 
+Da da da da da...   
+.ex 
+.sb "Higher Education" "Stairway to Heaven/Gilligan's Island"   
+(BEGINS WITH STAIRWAY TO HEAVEN TUNE)   
+C. B.:  Just sit right back and you'll hear a tale  
+Of a student's four fateful years   
+An attempt at increasing the power of his mind  
+While surrounded by engineers   
+Ooh, oo-ooh, oo-oo-oo-oo-ooh,   
+And they call it Higher Education.  
+.ve 4   
+OYSTERS: (NOW WITH G'S.I. TUNE) 
+The student and the Registrar   
+Were walking close at hand  
+The student wept for he had to take 
+Six courses rather bland, that he couldn't understand.  
+.ve 4   
+He skipped his lectures frequently  
+No skipper could surpass
+The lengths 
+
+The lengths to which he'd go to miss
+A three-hour class, a three-hour class. 
+.ve 4   
+His courses started getting rough   
+His tiny mind was tossed
+If not for the courage of a couple of beers 
+His credits would be lost, at a rather dreadful cost.   
+.ve 7   
+He barely passed his final year 
+And soon forgot it all  
+But it is said quite frequently 
+That those who can't, teach instead 
+So he became
+A professor now lecturing   
+At U. of Wonderloo!!
+.ex 
+.sb "The Safety Song" "Yellow Submarine"
+When you use a loaded gun,  
+Just make sure it points away from you. 
+When you grasp a nasty knife,   
+Use the handle, or you'll be through.   
+.ve 4   
+So we tell you this advice. 
+Don't drink milk that's coloured green, 
+Or jump off the CN Tower,   
+Or breathe canisters of chlorine.   
+.ve 3   
+This warning is from Safety Wonderloo.  
+It will get you through,
+If it's what you do. (REPEAT)   
+.ve 4   
+If you want a life of ease, 
+Don't bang baseball bats against your knees.
+If it's blood that you can't stand, 
+Do not lick the lids of old tin cans.   
+.ve 6   
+This warning is from Safety Wonderloo,  
+It will get you through,
+If it's what you do,
+Otherwise you'll be dead in Wonderloo,  
+Cooked into a stew, 
+And served in Village Two!  
+.ex 
+.sb WHEN~WE'RE~ON~THE~THRONE WHEN~I'M~64
+GENERAL:
+When the production proves it's a bomb, 
+Just a day from now,
+Heirs to claim the throne will be extremely few,
+The suc-ces-sion passes to you. 
+And when we're finished cutting the deck
+Everyone will groan,
+I'll have it my way 
+They'll do what I say   
+.ne 3   
+DIX: When I'm on the    GEN: When we're on the  
+     throne!                  throne!   
+.ve 3   
+DIX:  Every summer I will sharpen axes, 
+      Raise the taxes,  
+      And increase the price of beer... 
+GEN:  I will rule with you, 
+BOTH: Just like Pierre Trudeau, 
+      We'll be tyrants too! 
+.ve 12  
+DIXIE:  
+I will be happy chopping off heads, 
+Just like dear old mum. 
+I can roast the dormouse by the fireside,   
+Mock turtle soup and Dinah surprise.
+And for the Tweedles, a quick slimming plan 
+Trim them to the bone,  
+Mix the mad hatter into a batter,   
+DIX: When I'm on the    GEN: When we're on the  
+     throne!                  throne!   
+.ex 
+.sb "Hasenpfeffer" "Hey, Big Spender"   
+The minute you hopped in the joint  
+I could tell you were a hare of distinction 
+A real contender,   
+Good-looking, a handsome buck   
+You have no need of rabbit's feet   
+  to add to your luck,  
+So let me get right to the point
+If you think you'd like a cottontail flambe,
+Hasenpfeffer,   
+Toss a little carrot my way.
+.ve 4   
+Do you wanna have fun, fun, fun,
+How about a few laughs, laughs, 
+I can show you a...good time.   
+Let me show you a...good time.  
+.ve 2   
+  (REPEAT VERSE AND CHORUS AD LIB.) 
+(SPOKEN)  How about it, bunny boy?  
+.ex 
+.sb "OPERA'S A BORE" "TOREADOR from CARMEN" 
+QUEEN: Opera's a bore and architecture's dull.  
+KING:  Cubism stinks.   
+DIXIE: Bach and Brahms were dinks.  
+.ne 2   
+STUDS: Dickens, Jane Austen, Colerige, all three
+       Fill me with deep apathy.
+.ne 3   
+ALL:   Oh, Wuthering Heights, Macbeth,  
+       Bleak House, and Tess,   
+       Fill me with listlessness.   
+.sp 
+.ne 3   
+KING:  I wouldn't wait three seconds for Godot. 
+QUEEN: Dostoevski sucks.
+DIXIE: Shaw and Hesse were schmucks.
+STUDS: Down with Fitzgerald, Faulkner, Hemingway,   
+       And cinema verite!   
+ALL:   When we hear Wagner played   
+       Or hear him sung 
+       We shout out Gott-dammerung. 
+.sp 
+.ne 3   
+STUDS: Stockhausen, Mozart, Mendelssohn, Satie, 
+       Their orchestral works   
+       Prove they all were jerks.   
+KING:  Sculpture is such a mind-bewildering bore.   
+QUEEN: But ballet bores me more!
+ALL:   Say that we're Philistines,  
+       Say that we're crass,
+       But art's a pain in the--
+.ex 
+.sb "It's Called University" "It's Still Rock & Roll to Me" 
+MH: Talk about the funny clothes you were wearin'   
+AL: Can't you tell that I'm not from here?  
+MH: Don't you come from a land of fairies?  
+AL: No, I come from a land of queers.   
+MH: What about the place where you come from Alice, 
+    Has it got a king and a queen and a palace? 
+AL: You don't learn 
+    Don't earn  
+    You just yearn  
+    For work term.  
+ALL:It's called university. 
+.ve 7   
+MH: What's the matter with the CS programme?
+    They say there will be jobs for all.
+AL: You can go out there and get the money, 
+    If you like writing in COBOL.   
+MH: What about a job in mech engineering?   
+AL: That's not a life that I'd call endearing.  
+ALL: CHORUS 
+.ve 5   
+COUNT:  
+    It doesn't matter what courses you enroll in,   
+
+    Or the lectures that you attend.
+    You can write every sound that the prof utters down,
+    But you'll fail them all in the end.
+    Driving you around the bend, oooo-ooh!  
+.ve 7   
+MH: Talk a bit about the crowd you come from.   
+AL: They are fun, but they have no class.   
+MH: Did they happen to be straight A students?  
+AL: Well they were, but they all joined FASS.   
+MH: The crown's logic is a little bit silty,
+    She's not from here, so she can not be guilty.  
+ALL:It's a big zoo  
+    Thank-you   
+    That'll do  
+    Waterloo
+    It's called University  
+MH: She didn't plan it, 
+    Drop the charges now and can it.
+    She's from university.  
+.ex 
+.sb "SENTIMENTAL COP-OUT ENDING" "OZ MEDLEY"
+Follow the yellow ring road,
+Follow the yellow ring road,
+Park on the road and you'll be towed,   
+So follow the yellow ring road. 
+.ve 8   
+We're off to have a party,  
+It's time to go out for an ale. 
+It's been a night, let's all get tight, 
+And get ourselves thrown in jail.   
+Wherever, wherever a crowd can be   
+We'll put on a show for all to see. 
+To see, to see, to see, to see, to see. 
+To see for a really quite minimal fee.  
+.ve 5   uld (TO 
+
+(TO THE TUNE OF: SOMEWHERE OVER THE RAINBOW)
+Some time, early next year, folks,  
+We'll return.   
+We'll tell all of the same jokes,   
+Some people never learn.
+.ve 5   
+It's time to leave the Hagey Hall   
+And put this stupid story all behind us 
+As soon as we get out of here   
+Beneath a table drenched in beer
+That's where you'll find us.
+.ve 4   
+All our problems were tied up,  
+With one ring.  
+It's great how we can get a-
+Way with that kind of thing.
+.ve 5   
+(BACK TO: WE'RE OFF TO SEE THE WIZARD)  
+We're off to close our show now.
+There's all kinds of work to be done.   
+The story is that in show biz   
+You never have any fun. 
+.ve 5   
+But when you're FASS that's never true; 
+We get off on entertaining you. 
+We do, we do, we do, we do, we do!  
+We do it for you here in Wonderloo. 
+.ve 2   
+We're off to have our party.
+We'll see you at FASS '83!  
+.ex 
+.bs 0 1983 SONGS
+.sb "Opening Song" "Danny's Song"   
+.ve 6   
+Party singing and dancing is a lot of fun   
+And it's just begun 
+Soon we're gonna tell a pun.
+We are gonna celebrate till the cows come home  
+Gonna move from tome to tome
+Robin Hood to Ancient Rome...   
+.ve 8      W
+
+So settle down and watch our labours
+Don't whisper loud to your neighbours   
+The plot's already hard enough for them 
+to keep track.  
+And even if our jokes aren't funny  
+We've still collected your money
+And we refuse to give   
+a single cent of it back.   
+.ve 6   
+Literary characters right off the page  
+Heroes of another age   
+Villains being bad on-stage 
+All in all we hope we are a lively crew 
+It's a bit of a zoo 
+It's like that backstage too
+.ve 6   
+And even if we ain't got talent 
+The cast and techies are gallant
+The writers and production types
+are starting to weep.   
+And even if our actors blow it  
+We're sure you never will know it   
+Cuz you all will be 
+Fassed asleep...
+.ex 
+.sb "Wicked" "Sweet Revenge (by John Prine)"
+I'm as wicked as I can be,  
+And no one here likes to see
+The terrible things I like to do and like to say.   
+And now the party has just begun
+I'm going to ruin their party fun   
+I'm going to get revenge
+   and I'm going to make them pay.  
+.ve 7   
+CHORUS: 
+   I'll give him a zap and a whack, 
+   Oh don't try to hold me back 
+   I'll make sure he's dead or in jail  
+   The Librarian's time has come
+
+......r.
+fass
+
+
+
+   I've got him under my thumb  
+   Sweet revenge, sweet revenge, will prevail.  
+.ve 6   
+I'll tear him limb from limb
+I'll tar and feather his skin   
+I'll make him pay for the way he's treated me.  
+He can't escape me now, 
+He can take his final bow.  
+As the curtain falls and he becomes history.
+.ve 7   
+   I'll give him a zap and a whack  
+   Oh don't try to hold me back 
+   I'll make sure he's dead or in jail  
+   The Librarian's time has come
+   I've got him under my thumb  
+   Sweet revenge, sweet revenge will prevail
+   Without fail.
+.ex 
+.sb "He's Always a Puppy" "She's Always a Woman"
+.ve 5   
+He can kill with his smile  
+He can wound with his claws 
+He can flatten a house with his gigantic paws   
+With one wag of his tail he can knock down a tree   
+He's built like a tank, but he's always a puppy to me   
+.ve 6   
+Though you lead him to food 
+He might still try to eat you   
+You lose half your face 
+When his tongue tries to greet you  
+So if you like living then from him you'll flee 
+He's killed fifteen men but he's always a puppy to me   
+.ve 6   
+Yeah, he takes care of himself  
+He can fly if he wants  
+He's got sixty foot wings   (TO 
+
+Oh, and he likes to steal gold  
+And he's quite fond of jewels   
+And of hobbits with rings   
+.ve 6   
+He's always unkind  
+And he's quite often cruel  
+He got a D plus in obedience school 
+His breath is so bad it sets fire to trees  
+And the worst he will do is incinerate you  
+But he's always a puppy to me   
+.ex 
+.sb "Take me Home, Ruby Shoes" "Take me Home, Country Roads"
+.ve 5   
+(VAL:) Almost heaven, Waterloo-oo   
+I'm in hist'ry, on my skis for Reading Week 
+Profs are old here, older than the trees
+Younger are the tutors  
+They're the ones I tease
+.ve 5   
+(ALL:) Ruby shoes, take me home 
+to the page, I belong   
+(WATSON:) London England
+(RANGER:) Hi-ho, Silver 
+(ALL:) Take me home, Ruby shoes 
+.ve 5   
+(KEN:) I hear the noise of a beer lid snapping open,
+The sound of it reminds me of a 2-4 in my fridge,   
+And thoughts of all that brew give me the feeling   
+That I've got to go right away, right away  
+(KEN RUNS OFF STAGE)
+.ve 5   
+(ALL:) Ruby shoes, take me home 
+To the page, I belong   
+(GLINDA:) Emerald City  
+(ROGET:) Village, hamlet
+(ALL:) Take me home, Ruby shoes 
+.ex 
+.sb "Nightmare Believer" "Daydream Believer"
+.ve 6      W
+
+GLINDA: 
+Oh yes I know that your head
+Came from someone lately dead   
+I don't mind, you hardly even smell 
+I promise never to whine
+That you were made by Frankenstein  
+I could make you every bit as well. 
+.ve 8   
+   Oh my monster dear   
+   Put aside your fear  
+   I'm a nightmare believer 
+   And I'm glad to have you here.   
+   Come and take my hands   
+   As my heart expands  
+   I don't care who they came from  
+   Just as long as you have glands. 
+.ve 7   
+FRANK:  
+Oh Glinda, pardon my doubt  
+I don't think you've thought this out   
+Our two books reside on different shelves   
+We can't resolve all of these   
+Incompatibilities   
+We are stuck with living by ourselves.  
+.ve 9   
+GLINDA: 
+  Oh you monstrous dope 
+  You know we can cope  
+  I'm a nightmare believer  
+  I refuse to give up hope. 
+  If you go away
+  I'll write you every day  
+  And I'll send all my loving to you
+  If there is a way.
+.ex 
+.sb "On the Star Ship Enterprise" "On the Good Ship Lollypop"   
+.ve 4   
+(SPOCK:) On the star ship Enterprise
+On a Star Trek, flying through the skies
+From place to place...  
+Through the reaches of outer space  
+.ve 4      I
+
+(CREW:) At warp speed, we travel far
+Every show we go from star to star  
+On a five year trip 
+In this godforsaken ship
+.ve 4   
+(SPOCK:) And then when our journey's done   
+We can all go and have some fun 
+Then with a snap... 
+Cut the Shirley Temple crap.
+.ve 1   
+(CREW:) Boop boop be doop!  
+.ex 
+.sb "The Crew in the Bright White Spaceship" "The Boys in the Bright White Sportscar"   
+.ve 4   
+Here we come, the crew in the bright white spaceship
+Warping our way through space   
+Hopping from start to star  
+And how did we get this far?
+.ve 4   
+Trouble now, our engines are over-loading   
+Attackers on every side 
+And soon we expect to be
+Cancelled by NBC.   
+.ve 2   
+La, la la la, la, la la la, la...   
+La, la la la, la, la la la, la...   
+.ex 
+.sb "Sherwood Forest" "Oklahoma"
+.ve 3   
+Sherrrrrrrrwood forest is the home of Robin's merry men.
+Where we singing bards evade the guards 
+that the Sheriff sends from Nottingham. 
+.ve 3   
+Robin Hood, yes he's the leader of our merry band   
+So we all cavort, in lustful sport  
+but we stay away from Marian.   
+.ve 2   
+For she is our dear Robin's maid
+so we know we cannot get her laid.  
+.ve 5   
+
+We raise a hoooo-oooot  
+For Robin and his loooo-oooot   
+But when it comes down to sharing his maiden,   
+Robin Hood is a self-centred, egotistical, possessive,  
+imbicilic, arrogant, scum and jerk......to boot!
+.ex 
+.sb "BOND" "ONE"
+.ve 4   
+Bond, he's the secret agent 
+Baby, baby, he's the best.  
+Bond, he's got all the gadgets  
+and a bullet-proof vest.
+.ve 2   
+The bad guys know him as super-spy O-O-seven
+And if Bo Derek's a ten, then he's eleven.  
+.ve 4   
+Bond, never plays it dirty, 
+though he must know all the tricks. 
+Bond, pushing over thirty,  
+he just does it for kicks.  
+.ve 2   
+One smile and suddenly women all start to dance 
+They know they'll never be lonely inside his pants. 
+.ve 3   
+Bond, never missed a target 
+when he's on or off the job 
+Never dresses like a slob, you know, so 
+.ve 5   
+(WITH FEELING:) OOOh, sigh  
+Give me your attention. 
+Do I
+Really need to mention...   
+He's James Bond.
+.ex 
+.sb "On The Cover Of The Roman Tome" "On The Cover Of The Rolling Stone"
+.ve 6   
+BRUTUS:  Well, we're big politicians,   
+         We got big ambitions   
+         And we plot everywhere we go.  
+         We plot about treason  
+         And we plot about coups,   
+         And soon we'll be running the show.
+.ve 6   
+OTHERS:  We plot all kinds of kills 
+         To give us all kinds of thrills,   
+         But the biggest thrill in Rome 
+         Is the thrill that'll hitcha   
+         When they carve your picture   
+         On the cover of The Roman Tome.
+OTHERS: Roman Tome  
+BRUTUS:   Gonna see my picture on the cover 
+OTHERS: Tome
+BRUTUS:   Gonna buy V copies for my mother  
+OTHERS: Tome
+BRUTUS:   Gonna see my smilin' face 
+OTHERS:   On the cover of The Roman Tome
+.ve 5   
+CASSIUS: In the grand ol' tradition 
+         Of crime and sedition, 
+         We're knockin' off the boss of Rome.   
+         We've got good ol' noble Brutus
+         Driving the dagger home.   
+.ve 6   
+OTHERS:  That should give indeed,   
+         The high we need,  
+         But that high won't really hit home
+         Like the high that'll hitcha   
+         When they carve your picture   
+         On the cover of The Roman Tome.
+OTHERS: Roman Tome  
+CASSIUS:  Gonna see my picture on the cover 
+OTHERS: Tome
+CASSIUS:  Gonna buy V copies for my mother  
+OTHERS: Tome
+
+CASSIUS:  Gonna see my smilin' face 
+          On the cover of The Roman Tome
+ALL:      On the cover of The Roman Tome.   
+.ex 
+.sb "Look What FASS Did To My Play" "Look What They've Done To My Song" 
+.ve 5   
+Look what FASS did to my play, ma   
+Why did they do it that way 
+They condensed it down to a single scene
+So I'll make those writers pay, ma  
+For what FASS did to my play.   
+.ve 5   
+Look how FASS shows Ancient Rome, ma
+Would Caesar call this place home?  
+There was no Tonight Show goin' on  
+And there was no Roman Tome, ma 
+When I portrayed Ancient Rome   
+.sq 
+.sp 
+.fi 
+(AT THIS POINT, CASSIUS, BRUTUS AND TITUS ENTER BACKSTAGE LEFT  
+WITH DAGGERS AND APPROACH THE GREAT LIBRARIAN FROM BEHIND)  
+.sq 
+.nf 
+.ve 6   
+(NEXT VERSE SUNG BY CONSPIRATORS)   
+They make us talk in blank verse, ma
+It makes us all sound much worse
+Well, you go on and on to say one thing 
+And it's God damned hard to curse, ma   
+When you must talk in blank verse.  
+.sq 
+.sp 
+.fi 
+(THE CONSPIRATORS LOOK AT THE GREAT LIBRARIAN AND THEN AT SHAKESPEARE.  
+THEY LOOK AT EACH OTHER AND NOD.  THEY NOW APPROACH SHAKESPEARE FROM BEHIND)
+.sq 
+.nf 
+.ve 5   d.  Look what FA
+
+Look what FASS did to my play, ma   
+Why did they do it that way?
+They condensed it down to a single scene
+So I'll make those writers pay, ma  
+For what FASS did to my play.   
+.ex 
+.sb "Modern Great Librarian" "Modern Major-General" 
+I am the very model of a modern Great Librarian 
+I know the authors African and Russian and Hungarian
+I've met the kings of England   
+And I've seen the Delphi Oracle 
+While visiting books fictional  
+And volumes quite historical
+.ve 7   
+I've learned to overcome, as well,  
+  a character's suspiciousness  
+And most now treat me kindly where they used to 
+  use maliciousness 
+From book to book I travel, in a process analytical 
+While making many searches for mistakes I feel are  
+  critical. 
+.ve 4   
+  I'm very good at Physics and all matters biological   
+  I comprehend the Zodiac and all signs astrological
+  In short, in matters Scorpion or Tauran or Aquarian   
+  I am the very model of a modern Great Librarian.  
+.ve 5   
+I am also quite familiar with many great Canadians  
+From Templeton and Burton all the way to the Acadians   
+I love the works of Shakespeare too especially the histories
+And also books more modern like the thrillers and   
+  the mysteries.
+.ve 4   
+I'm very well acquainted too with textbooks economical  
+I often find the theories both ridiculous and comical   
+About library practice I have knowledge infin'tesimal   
+With many cheerful facts about the system Dewey Decimal.
+.ve 5   
+  I'm very nice to animals and always give to charity   
+  I understand this kindness really makes me quite a rarity 
+  In short, in matters when we need "A Great
+     Humanitarian"  
+  I am the very model of a modern Great Librarian.  
+.ex 
+.sb "Judgement Day" "Jamaica Farewell"  
+.xx ANGELS  
+.ve 6   
+Back on Earth,  
+Where we had our birth, 
+We were helping little ladies all the time. 
+Our thoughts were good, 
+We did what we should,  
+And every hour was given to fighting crime. 
+.ve 5   
+(And it's) Sad to say we've passed away.
+Won't be back 'till judgement day.  
+We had to die,  
+But since we never lie, 
+We've gone to join the flying angels in the sky.
+.xx DEVILS  
+.ve 6   
+Back on Earth,  
+Where we had our birth, 
+We were mean and nasty buggers all the time.
+Our plots were bad, 
+And the cops were mad,  
+'Cause we were supervillains and lords of crime.
+.ve 5   
+(And it's) Sad to say we've passed away.
+Won't be back 'till judgement day.  
+We've gone to hell, 
+The place where sinners yell,   
+We see the brimstone burning bright where Satan fell.   
+.sb "Evil Coordinator's Song" "Who Put The Bomp"
+.ve 4   
+Who gave you jobs in Mississaug-aug-a   
+Who made you work for forty cents an hour   
+Who said to write those work repo-o-orts
+Who put the un in the unemploy-oyment   
+.ve 3   
+We were those guys  
+I hope you realize  
+We made your life so miserable for you  
+.ve 6   
+When you got your job   
+     Far to the north of Elliot Lake
+Where the nights are forty four below   
+And you heard them saying   
+     That you would be chopping ice until December  
+You told us where we ought to go
+.ve 4   
+Who gave you jobs in Mississaug-aug-a   
+Who made you work for forty cents an hour   
+Who said to write those work repo-o-orts
+Who put the un in the unemploy-oyment   
+.ve 3   
+We were those guys  
+I hope you realize  
+We made your life so miserable for you  
+.ve 6   
+Last time you came to us
+     When there were no jobs around 
+You were asking which way to go 
+
+But every time you tried to 
+     Find a job that was in your area   
+We told you that the word was "no". 
+.ve 4   
+Who gave you jobs in Mississaug-aug-a   
+Who made you work for forty cents an hour   
+Who said to write those work repo-o-orts
+Who put the un in the unemploy-oyment   
+.ve 3   
+We were those guys  
+I hope you realize  
+We made your life so miserable for you. 
+.ex 
+.sb "The Book Warp" "The Time Warp" 
+.ve 6   
+It's astounding 
+Books are changing  
+Chaos takes control 
+So let me tell you  
+My intentions are evil  
+Destruction is my goal. 
+.ve 6   
+I remember doing the Book Warp  
+Setting the power high  
+The books started changing  
+And our allies were calling 
+Let's do the Book Warp again.   
+Let's do the Book Warp again.   
+.ve 8   
+  It's just a chapter ahead 
+  And then a page to the right  
+  Then you play with the dial   
+  And watch the flashing light  
+  And the char'cter switches
+  Drive the readers insane  
+  Let's do the Book Warp again  
+  Let's do the Book Warp again. 
+.ve 12  
+I'm ecstatic, the books are erratic 
+It's emphatic-cally deranged
+We take Bartlett's quotations   
+Send them off on gyrations  
+And by magic history is changed 
+To the Merchant of Venice   
+Add Dennis the Menace   
+To Conan add Mar'lyn Monroe 
+To geography text books 
+Add pornography sex books   
+Let's do the Book Warp again.   
+Let's do the Book Warp again.   
+.ve 7   
+MARY:  I was working as a drudge in the Nursery 
+       When this guy held a bash in the Library 
+       He sent out the call to every other book 
+       But when he got to mine he left me out,  
+              the schnook   
+       I paid him back for that social slight   
+       Then fell Caesar and it served him right.
+ALL: Let's do the Book Warp again!  
+Let's do the Book Warp again!   
+.ex 
+.sb "SENTIMENTAL UNREQUITED LOVE SONG" "I AM A ROCK"
+CHAPEL: A doctor's nurse in a big and lonely starship.  
+.ve 4   
+        I am in love
+        Show me how to please you.  
+        I only want to know 
+        How to show you that I truly love you so.   
+.ve 2   
+        I am in love,   
+SPOCK:                 I am a Vulcan.   
+.ve 6   
+        My thoughts are alien   
+        My heart is never open. 
+        And none may see my soul.   
+        I have no sense of humour.  
+           I can feel no pain.  
+
+......r.
+fass
+
+
+
+        I only have pure logic in my brain. 
+.ve 2   
+CHAPEL: I am in love,   
+SPOCK:                 I am a Vulcan.   
+.ve 6   
+CHAPEL: I speak of love 
+        And you've heard the word before.   
+        It's sleeping in your memory
+        Yes, I could make you happy 
+        And laugh and sing and dance
+        If you'd just relax and give me half a chance.  
+.ve 2   
+        I am in love,   
+SPOCK:                 I am a Vulcan.   
+.ve 6   
+        I can not smile 
+        Or return your heart-felt emotions. 
+        I am shielded from your feelings.   
+        You have loved in vain; 
+        Save yourself some pain;
+        I love no one and no one should love me.
+.ve 2   
+CHAPEL: I am in love,   
+SPOCK:                 I am a Vulcan.   
+.ve 2   
+CHAPEL: Sometimes love turns to pain.   
+SPOCK:  But a Vulcan never cries.   
+.ex 
+.sb "CO-OP MONKEYS" "WE'RE THE MONKEES" 
+.ve 4   
+	Here we come.  
+	Walkin' down the street.   
+	We get the funniest looks from,
+	Everyone we meet.  
+BOND: (SPOKEN) Just who are these people?   
+MONKEYS: (SINGING)  
+.ve 4   
+	Hey, we're co-op monkeys.  
+	Taking anthropology
+	Graduated with honours.
+	Now we're out of our tree. 
+.ex 
+.sb "BALLAD OF MOBY DICK" "BALLAD OF JED CLAMPET"   
+Let me tell you all a story 
+I'm a man named Ish 
+About Ahab  
+Who was looking for a fish. 
+Then one day,   
+Moby Dick comes into view.  
+Says Captain Ahab:  
+I'm a gonna get you.
+
+
+(FRANK:) Moby Dick. 
+	Great White Whale. 
+.ve 8   
+Next thing you know 
+The crew's a mutinyin'  
+The whale hits the ship 
+And lets all the sea in.
+Last thing you see  
+Is Ahab wavin' bye! 
+Call me Ishmael,
+I'm the one who didn't die. 
+
+
+(FRANK:) American Classic.  
+	Herman Melville
+	Boooring.  
+.ex 
+.sb "Generic FASS Song" "The Rainbow Connection"
+Why are there so many   
+Songs in a FASS show
+And why are they all so blah?   
+They may be stolen  
+From Broadway or movies.
+We know it's against the law.   
+.ve 4   
+Someday they'll find us, the copyright people.  
+They will complain to the cops. 
+Then they'll commit us to penal correction  
+And they will impound all our props.
+.ex 
+.sb "I TURNED TO EVIL" "I'M GETTING MARRIED"
+I turned to evil out of boredom 
+Goodness was numbing up my mind 
+Virtue was dreary   
+It made me weary
+But evil makes me feel just fine.   
+.ve 2   
+   I love marauding, I love to bash!
+   I love defrauding widows of their cash!  
+.ve 5   
+When I was good I felt temptation   
+Urges to evil that I braved 
+Good deeds engendered   
+Then I surrendered  
+And now my thoughts are all depraved.   
+.ve 2   
+   I think of looting, I think of sex   
+   I think of wringing cocker spaniel necks.
+.ve 4   
+I have no use for human goodness
+But evil makes me feel  
+Evil makes me feel  
+Wicked, sinful, awful, bad, and fine!   
+.sb "NO EVIL" "NO BUSINESS" 
+EVERYONE:   
+   There's no evil like our evil
+   Like no evil we know 
+   We think that our evil is quite chilling.
+   We think that our lifestyle is so grand. 
+   I don't think there's anything as thrilling  
+   As when we're killing the folks at hand. 
+.ve 6   
+   There's no murder like mass murder   
+   Like no murder we've known   
+   Line them up against the wall and mow 'em down   
+   Rat tat tat tat, they hit the ground 
+   Next day at the station house your name is down  
+   Beside Reverend Jim Jones.   
+.ve 1   
+(EVIL PRODUCTION DANCERS)   
+.ve 6   
+   The rapists, the muggers, dictators and thugs
+   The criminals you find in every town 
+   The lawyers, the doctors, the pushers of drugs   
+   Who do their dirty work without a sound. 
+   Our work ranks with the best and you can tell
+   You'll never trace our victims by the smell. 
+.ve 8   
+   There's no meanies like us meanies   
+   Like no meanies around   
+   We're the worstest meanies and you can tell  
+   Cuz we can't spell   
+   Or rhyme too good
+   So why don't you join up, my child,  
+      and be a hood?
+   And kill and maim like you should!   
+.ex 
+.sb "Bye, Bye Mary" "Herod's Song"  
+.ve 5   
+HERBIE: 
+Bookmark, I am overjoyed to have you under arm  
+Now I know the library will come to no more harm
+Mmm, I can send you back where you belong   
+Even get the kind of guts it takes to sing this song:   
+.ve 5   
+Oh now I'm in charge, yes, I'm truly in charge. 
+I can read a teacher's scrawl,  
+Find my way through Hagey Hall  
+Now I can rule, have my own Ridgid Tool,
+So now, Mary watch out! 
+.ve 6   
+MARY:   
+Herbert, I just can't believe   
+      the things that you have said.
+Suddenly, I come to think that you may want me dead.
+There must be something on which we can agree.  
+Maybe I can bribe you with an honours Arts degree!  
+.ve 6   
+You should stay in your place,  
+Learn to stay in your place.
+Get back at my elbow here, grovel like an engineer. 
+Do as I say, and I'll give you an 'A'!  
+Herbert, do as you're told! 
+(HEADS OFF BUT SUDDENLY STOPS FROZEN)   
+.ve 7   
+HERBIE: 
+Hey! Stop right there in your tracks,   
+Ugly old battle axe!
+You have had your way with me!  
+Lock her up and lose the key.   
+Take her away, it's a wonderful day.
+Get out you rotten old, get out you rotten old, 
+Get out you rotten old bitch!   
+.ex 
+.sb "Closing Song" "Cabaret Medley" 
+(WILKOMMEN) 
+It's time to close the show, sadly  
+We'd like to stay a while, gladly   
+But we can't do this and earn a degree  
+We all have midterms and we have to pee 
+We hope you had some fun, here at   
+FASS 83, FASS 83, FASS 83.  
+.ve 8   
+(TWO LADIES)
+Dee-dee-dee-dee-dee-dee, Cadabra.   
+Dee-dee-dee-dee-dee-dee, And abra.  
+Dee-dee-dee-dee-dee-dee, These are the magic words, ya! 
+Dee-dee-dee-dee-dee-dee, A Hocus!   
+Dee-dee-dee-dee-dee-dee, A Pocus!   
+Dee-dee-dee-dee-dee-dee, To send us back!   
+.ve 5   
+(TOMORROW BELONGS TO ME)
+Oh, Library, Library charges us fines   
+Pay up or you lose your degree  
+You don't get it back if you cry and whine  
+Tomorrow they're after me.  
+.ve 10  
+(CABARET - ELSIE PART)  
+We once had a villain known as Mary 
+She messed things up and it got rather scary
+On choosing help she wasn't very prudent
+In fact it seems she chose a co-op student  
+Now she's gone and soon will be forgotten   
+Her hired hand is not so mean and rotten
+But something that he said fills us with fear   
+We recall that he was an engineer!  
+.ve 5   
+Time to get up now, get off of the floor!   
+We can't go on you see. 
+That's it for eighty-three, dear friends.   
+That's it for eighty-three. 
+.ve 4   
+And as for we, as for we... 
+We'll go back to our books like Mary
+You'll find us in the library!  
+We will return, yes, in FASS eighty-four
+Just you come back and see. 
+.ve 4   
+Time for a party, and a beer
+So long, we'll see you back next year   
+That's it for '83!!!!   
+.ex 
+.bs 0 1984 SONGS
+.sb "Fed Hall Song" "Meaning of Life Universe Song" 
+Just remember that you're standing  
+On a campus that's expanding
+And is growing by a building every year.
+It's second home to 13,000 scholars and their dollars   
+Mostly go towards the purchasing of beer.   
+The profs and you and me
+And all the students you can see
+Voted me to get a pub without a catch.  
+But with the plans selected 
+Adding doors had been neglected,
+And so the architects must start from scratch.  
+.ve 12  
+The hall is nicer yet   
+Than the 'Loo or Coronet
+And certainly less tacky than the Kent  
+For dancing space the hall  
+Will make the Motor Inn look small  
+And best of all we will not pay a cent of rent. 
+The area was scanned
+To find the perfect piece of land;  
+I suggested north of U. of Waterloo.
+But then Administration 
+Built a rink on my location.
+Surprise, surprise - you pay for that one too.  
+.ve 12  
+Your Federation Hall
+Will be completed in the fall,  
+That's September 7th, 1994. 
+Let me make all decisions,  
+Choose the architect's revisions.   
+The budget's set, we can't afford the floor.
+The students will adore it  
+You've already voted for it 
+You support it but the soil structure won't.
+And so your mezzanine   
+Will be the best you've ever seen,  
+Or maybe not, well now you see it, now you don't.   
+.ex 
+.sb "Putting on a Show" "Singin' in the Rain"   
+We're putting on a show 
+Just putting on a show  
+What a glorious feel....
+.ex 
+.sb "I Would Travel" "If I Only Had"
+I would travel any vector   
+Or sleep with the director  
+To get a part in FASS.  
+I would sing the songs in showers   
+Memorize my lines for hours 
+If I had a part in FASS.
+.ex 
+.sb "FASS" "Hair"   
+DIR:   She asked me why 
+       I'm such a harried guy   
+       I'm harried noon and night   
+       FASS is my plight
+       I'm in a theatre show
+       Don't ask me why --  
+ALL:               Don't know.  
+DIR:   It's not for lack of work
+       I must be a jerk.
+.ve 4   
+SOLO1: Please sir,                       (LIGHTS BUILD.)
+ALL:   Give me a part in FASS,  
+       Any part in FASS 
+       Bit part, silent,
+       Speakin' singin' dancin' 
+SOLO2: Gimme a role with class --   
+ALL:                             FASS!   (TRAYS UP) 
+SOLO2: Half a page or longer
+GRP-A: Here laughter!                    (LIGHTS FOR
+GRP-B:                There singing!      GROUPS)   
+ALL:   Everywhere entertainment!
+SOLOS:                           FASS!   (SUSTAINED)
+GRP-A: FASS,     FASS,     FASS,         (FLASH TRAYS)  
+GRP-B:      FASS,     FASS,     FASS.    (  "     "  )  
+ALL:   Lectures, midterms,  
+       Nothing matters once I'm in FASS 
+.ve 4   
+ALL:   You've got me down on my knees   
+       And I'm caught in a squeeze  
+       I'm beggin' you please   
+       Give me FASS.
+.ve 4   
+       I'll pay all my fees,
+       I'll learn my soliloquys,
+       I sing on key, so please pick me.
+       For singin', actin', backstage work in FASS!   (SUSTAINED)   
+GRP-A: FASS,     FASS,     FASS,         (FLASH TRAYS)  
+GRP-B:      FASS,     FASS,     FASS.    (  "     "  )  
+ALL:   Lectures, midterms,  
+       Nothing matters once I'm in FASS.
+.ve 4   
+ALL:   I'll make it fast, slow, 
+       Hairy, scary, shifty, nifty, 
+       Punny, funny, silly, 
+       Dicey, spicy, dancing,   
+       Moving, grooving, energetic, 
+       Comic, gastronomic,  
+       Drastic, plastic, spastic,   
+       Witty, pretty, prehistoric,  
+       Plotless, thoughtless,   
+       Spotless, sophomoric!
+.ve 3   
+TECH:  Oh say, can you see  
+       All the cast?  If you can
+       Then our lights too bright   
+.ve 4    secALL:   Bring them do
+
+ALL:   Bring them down, 
+       Down to here, down to there, 
+       Down to where it gets very dark  
+       Doodle loo doo doo, doodle loo doo doo   
+       Doodle loo doo doo, doodle loo doo doo   
+       All my lines I will be botching, 
+       And my parents will be watching, 
+       My friends will laugh at me as I miss all of my lines.   
+       An audience before me
+       Hallejujah, they adore me
+       Hallejujah, now I'm in the show  
+       Why isn't FASS on Broadway?  
+SOLOS:                             FASS!
+GRP-A: FASS,     FASS,     FASS,
+GRP-B:      FASS,     FASS,     FASS,   
+ALL:   Lectures, midterms,  
+       Nothing matters once I'm in FASS.
+GRP-A: FASS,     FASS,     FASS,
+GRP-B:      FASS     FASS     FASS  
+ALL:   FASS!
+.ex 
+.sb "Costa Living" "One Way Or Another" 
+.ve 6   
+Here in Costa Living-- on the ocean 
+    There's lots of beaches beaches beaches beaches 
+Come on a safari-- in the jungle
+    And you'll see creatures creatures creatures creatures  
+Then go to our farms and-- our plantations  
+   Where they grow peaches peaches peaches peaches  
+.ve 3   
+Life is so much fun here
+Gaze at the ocean so clear  
+While drinking cheap beer   
+.ve 6   
+People are so happy-- and contented 
+   And life is pleasant pleasant pleasant pleasant  
+All day work the fields and-- earn two dollars  
+   If you're a peasant peasant peasant peasant  
+But if you own land and-- you are wealthy   
+   Then you eat pheasant pheasant pheasant pheasant 
+.ve 3   
+This is a true paradise 
+Come here where everything's nice   
+Except for the lice 
+.ex 
+.sb "I Got Flu, Babe" "I Got You, Babe" 
+.ve 4   
+(SUNNY:) You say I'm sick and I'm not well  
+(FAIR:)  And that contagion's shot our love to hell 
+(SUNNY:) Well I guess I know that all that's true   
+         But you've got me, and me, I've got the flu... 
+.ve 2   
+(FAIR:)  Babe, you've got flu, babe...  
+(SUNNY:) Yes, the flu, babe...  
+.ex 
+.sb "Raw-nold Ray-gan!" "New York, New York"
+.ve 4   
+Start testing the cruise,   
+Start laying the plans, 
+It's time to re-elect the man,  
+Raw-nold Ray-gan!   
+.ve 4   
+Keep piling up arms,
+Destruction for all,
+He is a great Republican,   
+Raw-nold Ray-gan!   
+.ve 5   
+CHORUS: 
+He wants to govern in a country reduced to ash! 
+At a loss of thousands of years,
+Millions of lives,  
+Billions in cash!   
+.ve 4   
+Keep nuking those Reds! 
+Wherever they are!  
+He's going to put an end to them,   
+Raw-nold Ray-gan!   
+.ve 5   
+FINALE: 
+If we're to be the best,
+We've got to nuke the rest, 
+We've got the man,  
+Raw-nold Ray-gan!   
+.ex 
+.sb "This Gland is Your Gland" "This Land is Your Land" 
+This gland is your gland, this gland is my gland
+We'll take your skin too, because it's sun tanned.  
+.ex 
+.sb "Monty's Duet" "Various Tunes"  
+MONTY:  I'm a testament to failing mental health,   
+        When I woke up today, I wasn't just myself. 
+PUPPET: You bet -- I'm here to stay!
+MONTY:  You're the outcome of a mental overload 
+        You're an entire psychotic episode. 
+        Let's face it, it's true:   
+        I'm just crazy about you.   
+.ve 2   
+MONTY:  Care to dance?  
+PUPPET: Love to.
+.sp 
+(MONTY AND PUPPET DO SOFT-SHOE TO THE TUNE OF TEA FOR TWO)  
+.ve 8   
+MONTY:  Time
+PUPPET: (Time)  
+MONTY:      af- 
+PUPPET:    (af-)
+MONTY:         ter  
+PUPPET:       (ter) 
+MONTY:              time,   
+.ve 8   
+MONTY:  I'm 
+PUPPET: (I'm)   
+MONTY:     of   
+PUPPET:   (of)  
+MONTY:        two   
+PUPPET:      (two)  
+
+
+......r.
+fass
+
+
+
+MONTY:           minds  
+.ve 8   
+PUPPET: Anything you can do, I can do better
+        I can do anything better than you   
+MONTY:  No you can't
+PUPPET: Yes, I can  
+MONTY:  No you can't
+PUPPET: Yes I can   
+MONTY:  No you can't
+PUPPET: Yes, I can  
+(TANGO RIFF)
+.ve 2   
+MONTY:  Why are you so overbearing and competitive? 
+PUPPET: I'm number two, so I try harder.
+.ve 8   
+MONTY:  I was lonely
+PUPPET: (He was lonely) 
+MONTY:  Now I'm never alone.
+        I'm going to get a party line for my telephone. 
+        I believe you're more than just a toy   
+        And frankly, I'm beside myself, 
+        I'm just beside myself, 
+        Siegfried, I'm beside myself with joy.  
+.ex 
+.sb "GRENAYDA/GRENAHDA" "LET'S CALL THE WHOLE THING OFF"
+E:   I say Grenayda and you say Grenahda
+M:   I say Bahaymas and you say Bahahmas
+E:   Grenayda   
+M:   Grenahda   
+E:   Bahaymas   
+M:   Bahahmas   
+ALL: Let's call the whole thing off.
+.ex 
+.sb "POWER TO THE PEOPLE" "CONSIDER YOURSELF"   
+.ve 4   
+Consider yourself set free. 
+Consider yourself not under tyranny.
+We've taken complete control,   
+And healthy food is our only goal.  
+.ve 4   WhilWe've taken away
+
+We've taken away junk food. 
+We've given you kelp and multivitamins. 
+We want you to all eat right,   
+And get eight hours of sleep each night.
+.ve 4   
+And if you take a bucket full of niacin,
+Add some thiamin, and stir, 
+Then you add a pinch of citrate-bufferred iodine,   
+It will make you gag for sure.  
+.ve 4   
+We're doing it all for you, 
+There's no need to swear or cuss,   
+And if an all-granola menu suits your taste,
+Consider yourself one of us.
+.ex 
+.sb "In the Subway" "Feelin' Groovy"
+.ve 4   
+Watch out, the mugger's slick   
+He gonna cut you to the quick   
+Lose your guts and leave you lay
+Life ain't easy in the subway.  
+.ve 4   
+Blood is spurting, heads are rolling
+Deathwatch beetles come a-strolling 
+Rigor mortis and decay  
+It's just what happens in the subway.   
+.ex 
+.sb "OUR PLOT" "CAPTAIN OF THE QUEEN'S NAVY"
+.ve 4   
+Once I was the man who ruled this land  
+And ruled it all with an iron hand  
+I drugged your junk food by the ton 
+And then I was evicted by a re-bell-yun 
+.ve 2   
+(PUPPETS SING)  
+(The people who ate health food had a re-bell-yun)  
+.ve 5   
+(MONTY) 
+While I was off in a foreign land,  
+The health food people hatched a fiendish plan. 
+But their regime wasn't too much fun,   
+So I became the leader of a rebell-yun. 
+.ve 5   
+(PUPPETS)   
+(So the peasants wanted aiding  
+Food was all bio-degrading, 
+And he came to lead the peasants
+In their re-bell-yun)   
+.ex 
+.sb "ANOTHER FRUITCAKE" "DON'T CRY FOR ME"  
+SGT:  It won't be easy, you'll think it strange 
+      When I try to explain to you all  
+      How a lowly drill sergeant could foil all your plans  
+      You won't believe me  
+      You'll grill me to find out my partners in fraud  
+      But I'll gladly meet death face to face   
+      In front of a firing squad.   
+.ve 7   
+      I had to help the rebels, I had to fight  
+      Couldn't stay all my life at your heels   
+      Watching all of my countrymen die by your hands   
+      So I chose freedom
+      Dreaming the day your regime's overthrown 
+      But I can't share the blame for my crimes 
+      I acted entirely alone.   
+.ve 4   
+VIC:  Don't lie for me, Sergeant Tina,  
+      The truth is, we worked together  
+      Though we were comrades in the resistance 
+      To avoid suspicion we kept our distance.  
+.ve 8   ET:       And wh
+
+      And while we're on the subject, I have to say 
+      I've never known any so brave 
+      And I've fallen in love with you head over heels  
+SGT:  My dear Victoria  
+      My feelings for you are exactly the same  
+      I dream of your kiss all the time.
+      (SOBBING) 
+      I love you and I'm thrilled you love me.  
+.ve 4   
+VIC:  Don't cry for me, Sergeant Tina,  
+      If we must die, we die together   
+      The grand finales of all creation 
+      Shall never rival our consummation
+      Have I said too much? 
+      There's nothing more I can think of to say to you.
+.ve 2   
+BOTH: But all you have to do is look at us to know  
+      That our love is true.
+.ex 
+.sb "BACKSLIDING ANTHEM" "TOMORROW" 
+MONTY:  
+The gun will come out tomorrow  
+PETTY & CO: 
+We'll be back in business by tomorrow, don't be glum
+COMMERCIALS UNLTD.: 
+We won't do without, tomorrow   
+We won't have to beg and scrounge and borrow like we're scum
+REBELS: 
+If the government tries more lies and tyranny   
+We can say go to hell   
+And rebel   
+Again   
+ALL:
+The fun will come out tomorrow  
+We'll go back to causing pain and sorrow and dismay 
+Tomorrow, tomorrow, we'll backslide tomorrow
+And it's only a day away.   
+.ex 
+.sb "RESOLUTION" "REVOLUTION"   
+You say you want a resolution   
+Well you know   
+We all want to end the play 
+You say that there's no real solution   
+Well you know   
+There is truth in what you say  
+But if you want meaning and purpose, a touch of class,  
+Brother, you shouldn't have ever come out to FASS.  
+.ex 
+.sb "FASSDANCE" "WHAT A FEELING"
+First he was nothing but a guy with a dream 
+To be loved by the one who had captured his heart   
+All alone Reggie planned to secure Vicki's hand 
+And to show he's a hunk made of steel   
+.ve 4   
+What a hero!  Used to be zero!  
+In the violent fray now his life means so much more 
+He is smashin' and heads he's bashin'   
+He can hack and slay like a maniac on the floor 
+.ve 2   
+  (He's a maniac, maniac on the floor   
+   And he's fightin' like he's never fought before) 
+.ve 2   
+Now Reggie has pride, he's a champion inside
+Oh in FASS anyone can get lucky like him
+.ve 7   
+What a hero!  (Reggie's cuter now)  
+Not a zero!   (Not a neuter now)
+Now he's come alive and he's fightin' for his life  
+He is smashin'  (Not a relic now)   ood 
+
+Heads he's bashin'  (A Tom Selleck now) 
+He's a superman unless cut off by a knife   
+    What a hero...  
+.ex 
+.sb "CIA SONG" "UNION LABEL"
+So look for the covert agent
+When you are touring a small foreign land   
+Remember somewhere, someone is spying-- 
+.ex 
+.sb "FUN" "TOMORROW"
+The fun will come out tomorrow  
+And erase the memory of sorrow from today   
+Tomorrow, tomorrow, elation tomorrow
+It's only a day awimbaway   
+.ve 3   
+  Awimbaway, awimbaway, awimbaway   
+  Awimbaway, awimbaway, awimbaway, awimbaway
+.sb "MORE" "SWEET GEORGIA BROWN"
+Nothing to look forward to but FASS '85.
+Nothing lights our appetites like FASS '85. 
+More laughs, more songs 
+However will we get along   
+Until the thrill that gives us chills,  
+That's FASS '85.
+.ve 2   
+Ba da-ba-ba ba-ba-ba
+Ba-ba-ba ba-da-ba   
+.ve 2   
+Ba ba-ba-ba ba-ba-ba
+Ba-ba-ba ba-da-ba   
+.sb "MORE" "IN THE JUNGLE"  
+Bring the lights down and drop the curtain  
+On 1984 
+We've been better, but we've been worse than
+In 1984.
+.ve 2   
+We'll keep trying till we get it right. 
+We'll expect you here one year tonight. 
+.ve 4   
+Here's the ending, the big FASS ending  
+The hero gets the girl  
+
+In the ending like all FASS endings 
+We've overthrown the world. 
+.ve 2   
+We've been waiting for Act II Scene 5   
+We'll be back in 1985.  
+.ve 2   
+The closing song, the closing song, 
+The closing song, the closing song...   
+.ex 
+.sb "Memorex" "Memories"
+Memorex,
+Is it live, is it memorex?  
+Am I just on your tape deck?
+Am I here in the room?  
+If you buy one you'll understand what happiness is  
+Then a new life will begin. 
+.ex 
+.sb "PAIN" "GENTLEMEN PREFER PAIN"  
+When your sex life is a loss
+Show your lover who's the boss  
+    Gentlemen prefer pain.  
+When the hot tub seems old hat  
+Discipline him with a bat:  
+    Gentlemen prefer pain.  
+.ve 5   
+         You can dominate your husband, 
+         Bind and gag him   
+Whips and leather high-heeled shoes 
+Give your man the black-and-blues   
+    Gentlemen prefer pain.  
+.ex 
+.bs 0 1985 SONGS
+.sb "Opening Song" "Washington Post"
+Dum da-dah, da-dum-da,  
+Dum da-dah, da-dum-da,  
+Dum da-dah da-dah da-dah da-dah da-dum Dah! 
+.ve 6   
+Oh, this is the FASS show, FASS show, FASS show,
+And, really, we hope you think it's good,   
+Although it goes longer than it should. 
+'Cause this is the FASS show, FASS show, FASS show, 
+We're doing in Nineteen Eighty-five!
+.ve 11  
+We're glad that we finally got the chance,  
+.ti 5   
+(MaybeWe'reGoodAndYetMaybeWe'reBad) 
+.ti 5   
+(AndYetMaybeNobodyCanTell)  
+To sing you a song, 
+.ti 5   
+(MaybeNobodyCanTell)
+Or do you a dance.  
+.ti 5   
+(MaybeNobodyCanTell)
+We hope that you'll get the jokes and laugh,
+.ti 5   
+(MaybeWe'reGoodAndYetMaybeWe'reBad) 
+.ti 5   
+(AndYetMaybeNobodyCanTell)  
+Because, you see, this is the point of a FASS show. 
+.ve 6   
+And now it's time to introduce the characters,  
+Because, without them, we would have no show.   
+.ti 5   
+(WithoutThemWeCouldn'tPresentTheShow)   
+And if we may, we'd like to say,
+We're going to rhyme their names off,   
+Just because we thought you'd like to know! 
+.ve 4   
+(Oh no they don't!) Oh yes they do! 
+(Oh no they don't!) Oh yes they do! 
+(Oh no they don't!) They do! (They don't!)  
+They do! (They don't!) DO!  
+.ve 10  
+The Superheroes are all here to do good deeds,  
+.ti 5   
+(Please pay no heed--, anything they have to say,)  
+Upholding Truth and Mom and Apple Pie!  
+.ti 5   
+(Not even worth-- all-the-air they'll us
+
+(Not even worth-- all-the-air they'll use)  
+So never mind the other slime,  
+They're here to practice evil   
+.ti 5   
+(We are the best, forget the rest,) 
+.ti 5   
+(We've got the whole thing sewn up,)
+Keep your eyes on us, we're gonna fly!  
+.ti 5   
+(Never mind those guys, they're going to lose!) 
+.ve 1   
+Together: FASS! 
+.ex 
+.sb "Into the End Zone" "Laverne & Shirley Theme"   
+.ve 1   
+We're gonna do it!  
+.ve 4   
+(HEROES:) Give us any ground, we'll take it!
+          Show us any leg, we'll break it!  
+          We're gonna walk all over you,
+          Into the end zone!
+.ve 4   
+(VILLAINS:) Gettin' ready for the sack now, 
+            Gonna kill your quarterback now,
+            And punt the pieces back to you,
+            Into the end zone!  
+.ve 4   
+(ALL:) There is nothing we won't try!   
+       Never heard the word "unethical"!
+       This time, there's no stopping us!   
+       Go for the end zone! 
+.ve 2   
+(HEROES:) Electrocute the forward tackle!   
+          Listen to the current crackle!
+.ve 1   
+(VILLAINS:) Turn their defensive line to stew   
+.ve 6   
+(ALL:) Let's get to it! 
+       Fighting, and biting,
+       First down and ninety-two,   
+       Then watch the slow-motion replay
+       Makin' our dreams come true  
+       Here at FASS U. !
+.ex 
+.sb "COCKROACHMAN" "SPIDERMAN THEME"
+.ve 5   
+Cockroachman, Cockroachman  
+Eats whatever a cockroach can   
+He can go, anywhere 
+See him crawl over there
+Look out, here comes the Cockroachman.  
+.ve 4   
+In a garbage heap   
+At the scene of a crime,
+Like a crawling creep,  
+He'll arrive just in time.  
+.ve 5   
+Cockroachman, Cockroachman, 
+Lives inside of a garbage can,  
+Village food he can eat 
+This includes mystery meat. 
+Look out, here comes the Cockroachman!  
+.ex 
+.sb "THE DIRECTORS LAMENT" "1st ve Maria, Then Tonight Tonight" 
+.ve 3   
+Director
+I've just been acclaimed the director.  
+And suddenly I see Horizons spreading out for me!   
+.ve 6   
+Direct. Direct. 
+I've wanted to direct   
+And now I have my chance to do FASS 
+Direct, Direct. 
+To make it all correct, 
+To take charge, to make good, to kick ass.  
+.ve 3   
+The script is not what I had asked for, 
+The dialogue's not clever,  
+But neither is the cast.
+.ve 4   
+But all in all, 
+I'd say it's been a ball.   'CauAnd if next 
+
+And if next year they ask me I will 
+DIRECT! 
+.ex 
+.sb "Lightsabers" "Life Savers Commercial"  
+.ve 4   
+Tweet-Tweet Twiddle-Twiddle 
+There's gonna be a hero with a hole in the middle.  
+Tweet-Tweet Twiddle-Twiddle 
+We'll slice those heroes up and we'll chop 'em real little. 
+.ve 6   
+Light-sabers Yeah yeah yeah 
+There's gonna be
+There's gonna be
+There's gonna be a hero with a hole in his middle.  
+Light-sabers Yeah yeah yeah 
+Light-sabers.   
+.ex 
+.sb "Knock'em Out Cold" "Tell Him"  
+.ve 8   
+(VILLAINS:) We know what is the most fun,   
+            It's breaking peoples' heads,   
+            Acting like Atilla the Hun, 
+            And mutilating. 
+            So we're challenging you
+            To a knock-down fight.  
+            We will murder you  
+            At Fed Hall tonight.
+.ve 3   
+Punch them where they'll feel like they're on fire, 
+Kick them where their voices will go higher,
+Sock 'em, block 'em, shock 'em, knock 'em out cold. 
+.ve 6   
+(HEROES, SMUGLY:) Heroes don't get mad, 
+                  And they are never bad,   
+                  And heroes never grumble. 
+                  Since we obey the rules,  
+                  We must not fight you fools,  
+                  We will not rumble.  Oh, no...
+.ve 1   
+(IN THIS VERSE THE HEROES GET ANGRIER AND ANGRIER)  
+.ve 8   
+(VILLAINS:) Be at Fed Hall before eight 
+            'Cause we will bring a bomb.
+            And if you arrive there too late,   
+            We'll detonate it.  
+            But you won't show up   
+            'Cause you have no guts.
+            And we'll say that your 
+            Mothers all were sluts. 
+.ve 3   
+(HEROES:) Punch them where they'll feel like they're on fire,   
+          Kick them where their voices will go higher,  
+(ALL:)    Sock 'em, block 'em, shock 'em, knock 'em out cold.   
+.ex 
+.sb "All I Want is a Liberal Arts Degree" "All I Want is a Room in Bloomsbury"  
+.ad 
+(THIS IS A GOOD SONG FOR A TAP DANCE ROUTINE)   
+.ve 2   
+(CAPTAIN:) A life of strife does not appeal to me at all.   
+           Do you agree at all? 
+.ve 1   
+(BO:) I do  
+.ve 2   
+(CAPTAIN:) The mere idea of being a world saviour is,   
+           So very dangerous.   
+.ve 1   
+(BO:) That's true.  
+.ve 3   
+(CAPTAIN:) I've got a rather safer sort of life in mind 
+
+......r.
+fass
+
+
+
+           It's something more refined, to do.  
+           Would you care to hear about it dear?
+.ve 1   
+(BO:) Would I care to, can you doubt it dear?   
+.ve 6   
+(CAPTAIN:) All I want is a lib-ral arts degree  
+           It's devoid of all prac-tical-ity
+           I'll study literature
+           And I'll understand Freud
+           I'll be quite scholarly  
+           Though I may be unemployed.  
+.ve 8   
+(CAPTAIN:) I will quote from Shakespeare
+           To pass the time 
+           While I am waiting in
+           The welfare line.
+           I'll wait on tables  
+           Or clean out stables 
+           But oh how happy I'll be 
+           With my dear little liberal arts degree  
+.ne 5   
+.ve 6   
+(BO:) All I want is a lib-ral arts degree   
+      I will major in Greek philosophy. 
+      I'll study the arcane 
+      The obscure and abstruse  
+      I'll treat with high distain  
+      Anything of any use.  
+.ve 4   
+      I will read all the works 
+      Of Socrates   
+      While my OSAP provides
+      A life of ease.   
+.ve 4   
+(BOTH:) We'll seek enjoyment
+        In unemployment 
+        And contemplation when we   And         
+
+        Graduate with a liberal arts degree 
+.ex 
+.sb "We're off to see the Fed Hall" "We're off to see the Wizard"   
+.ve 7   
+We're off to see the Fed Hall   
+Called Allison's Palace and Grill   
+It's going to be a heckuva place
+Or when it gets done it will!   
+Despite the exorbitant cost there was   
+We're happy to spend the cash because   
+Because, Because, Because, Because, Because...  
+.xx INSULT~MAN  
+Why did we spend all that money?
+.xx CARLA~CHAMELEON 
+To raise the prestige of the school.
+.xx SLIME~OF~THE~STREETS
+To give us a new place to throw up. 
+.xx CABBAGE~PATCH~KID   
+(CYNICALLY) To satisfy the meglomaniacal cravings of one man!   
+.xx ALL 
+(KNOWINGLY) Oh, Right!  
+.ve 1   
+Because anything that he wants, he does!
+.ve 2   
+We're off to see the Fed Hall   
+Called Allison's Palace and Grill!  
+.ex 
+.sb "SUPERHEROS GONNA RUMBLE TONIGHT" "BETTY-LOU'S GETTING OUT TONIGHT" 
+.xx All~Supers  
+.ve 6   
+Have you heard the news, it's all over the school,  
+Those supervillains, they've broken the rule,   
+Sent us a message, be here by eight,
+So now we're here, today is the date.   
+They want to rumble, they want to fight!
+Superheroes are gonna ru
+
+Superheroes are gonna rumble tonight!   
+.ve 6   
+They got a message that Bessie won't pay,   
+They've lost their funding, it's taken away.
+So now they're finished, they're out on the street, 
+Holes in the pockets, nothing to eat.   
+They want to rumble, they want to fight 
+Superheroes gonna rumble tonight!   
+.ve 6   
+Superheroes gonna rumble tonight! (Sing with us)
+Superheroes gonna rumble tonight!   
+They is bad,
+Big Bessie got mad! 
+Now rumour has it, that they're uptight.
+All the school is getting ready to fight,   
+Superheroes gonna rumble tonight!   
+.ve 6   
+Beat em up! 
+Knock em down!  
+Beat em up! 
+Knock em down!  
+They want to rumble, they want to fight!
+Superheroes gonna rumble tonight!   
+.ve 6   
+Know what you're thinking, it comes in quite clear. 
+Who's going to watch them, when we're stuck in here.
+Well don't you worry, we'll get them today, 
+Beat them so bad, they won't move 'til May. 
+They want to rumble, they want to fight!
+Superheroes gonna rumble tonight!   
+.sb "WITH BAT LIKE TREAD" "WITH CAT LIKE TREAD" 
+.ad 
+(THE SONG BEGINS WITH THE VILLAINS SINGING OFF-STAGE)   
+.ve 4   
+(SUPERVILLAINS:) A disgruntled band of villains we, 
+                 Who have no more a faculty,
+                 Are coming to set our anger free,  
+                 And kill off all the good guys.
+.ve 4   
+(FASS:)          Hush, Hush, I hear them,   
+                 On the Fed Hall poaching,  
+                 With ragged song,  
+                 The villains are approaching.  
+.ve 4   
+(SUPERVILLAINS:) We'll make you quail, we'll make you run,  
+                 We'll zap with you with our disrupter gun, 
+                 Then send you off to kingdom come  
+                 And thus get all our funding.  
+.ve 1   
+(SUPERHEROES:) They'll send us off to Kingdom Come! 
+.ve 1   
+(SUPERVILLAINS:) We'll send you off to Kingdom Come!
+.ve 3   
+(BOTH:) We'll send you off to Kingdom Come! 
+        And thus will get the funding!  
+.ve 5   
+(FASS GORDON:) They come in force,  
+               So let us hide,  
+               We'll get them once  
+               They are inside. 
+.ve 8   
+(SUPERVILLAINS:) With Rat-like tread,   
+                 Upon our foes we creep.
+                 To get our bread,  
+                 And make their loved ones weep.
+                 No quarter give,   cont                 We'll beat them
+
+                 We'll beat them black and blue.
+                 They won't live,   
+                 When we are through!   
+.ve 1   
+(SUPERHEROES:) To Kingdom Come, to Kingdom Come.
+.ve 2   
+(SUPERVILLAINS:) So wickedly the villains plot, 
+                 So we can get what we have not.
+.ve 5   
+                 Come friends in villainy   
+                 Let's steal children's candy,  
+                 Wouldn't it be dandy?  
+                 And with our evil deeds,   
+                 Convince them of our funding needs.
+.ve 8   
+(DARTH CO-ORD.:) Here's your Brass Knuckles 
+                 And your Bo Stick  
+                 The Croaking Device,   
+                 To make the Frog man sick. 
+                 Your special ray gun,  
+                 Your dark glasses seize
+                 Take your Bolo,
+                 To bring them to their knees.  
+.ve 1   
+(SUPERHEROES:) To Kingdom Come, 
+.ve 1   
+(SUPERVILLAINS:) With Bat-like tread,   
+.ve 1   
+(SUPERHEROES:) To Kingdom Come, 
+.ve 1   
+(SUPERVILLAINS:) With Bat-like tread,   
+.ve 8   
+(SUPERVILLAINS:) With Bat-like tread,   
+                 About Fed Hall we glide.   rher                
+
+                 Searching all, 
+                 The places heroes hide!
+                 We want to fight,  
+                 For that'a our evil plot.  
+                 We'll kill to gain 
+                 The funding they have got  
+.ve 5   
+                 Come friends of villainy,  
+                 Let's kick little puppies, 
+                 Then be cruel to guppies.  
+                 And with our evil deeds,   
+                 Convince them of our funding needs.
+.ve 4   
+(SUPERVILLAINS:) With Bat-like tread,   
+                 About Fed Hall we glide.   
+                 Searching all, 
+                 The places heroes hide!
+.ve 5   
+                 Come friends of villainy,  
+                 Let's kick little puppies, 
+                 Then be cruel to guppies.  
+                 And with our evil deeds,   
+                 Convince them of our funding needs.
+.ve 4   
+.ve 4   
+(SUPERVILLAINS:) With Bat-like tread,   
+                 About Fed Hall we glide.   
+                 Searching all, 
+                 The places heroes hide!
+.ad 
+(THE FIGHT BEGINS)  
+.sb "We Are The Pros" "Anything Goes"   
+.ve 1   
+(GOOD GUYS:)
+.ve 4   
+If those villains think that they're the best,  
+Tell them to just compare the rest, 
+'Cause it shows,
+We are the pros.
+.ve 4   
+Villains acting reprehensible,  
+Will find they're indefensible, 
+We suppose. 
+We are the pros.
+.ve 6   
+They'll find we're here tonight 
+Cause it's clear tonight
+That good's good tonight
+As it should tonight
+And we will fight tonight   
+To make it right tonight
+And the problem we will close   
+.ve 4   
+So come on all you damn misanthropists  
+We're gonna fight you and throw fists   
+At your nose
+We are the pros!
+.sb "Beating up the Twits" "Putting on the Ritz"
+.ve 1   
+(BAD GUYS:) 
+.ve 3   
+If you're rude and superheroes you exclude  
+Come out with us and join the blitz 
+Beating up the twits.   
+.ve 3   
+We use words those superheroes never heard  
+We dug them out of our Berlitz  
+Beating up the twits.   
+.ve 3   
+We will beat and kick the superheroes.  
+We will try to make them disappear, Oh! 
+    They'll be zeroes!  
+.ve 3   
+Those good guys are gonna get a big surprise
+When we kill off Timmy Lipshitz,
+Beating up the twits.   
+.ex 
+.sb "That's How it Percolates" "Hokey Pokey"
+.ve 6   ll bYou'll f
+
+You'll flip the back door up
+You turn the tread mill down
+You fill the hop with beans 
+and you bake them til they're brown 
+You fill the tank with water and you heat it til it's hot   
+That's how it percolates.   
+.ve 7   
+(FASTER:) You turn the grinder on   
+You twist the filter tight  
+You freeze it till it's froze,  
+then you dry it till it's right 
+You put it in a bucket  
+and you leave it over night 
+That's how it saturates.
+.ve 6   
+(FASTER STILL) You put the record on
+You turn the lights down low
+And then you tell it lies that you think it wants to know   
+You push it, then you pull it,  
+and you press the spot marked 'G'   
+That's how it forni... (SHE FAINTS AND COLLAPSES)   
+.ex 
+.sb "Escape of Mary Anne" "I Am Sixteen, Going on Seventeen"
+.ve 6   
+(LENNY:) I once was a man   
+        Who backed down from fights 
+        In short, a great big zero  
+        But now I'm a man   
+        Who wears sexy tights   
+        A real live super-hero (my hero)
+.ve 6   
+        I'm a good guy  
+        Do-what-I-should guy
+        Villains don't cross my path
+        Vicious young thugs 
+        And pushers of drugs
+        Recoil from my deadly Math  
+.ve 4   
+        Totally unprepared are they 
+        For probabalistic chats 
+        Listless and weak and tired are they
+        When I start reading Stats  
+.ve 4   
+        I'm a good guy, noble and daring
+        Loyal and good and true 
+        I fight crime and have a good time and  
+        Wendy, it's all for you 
+.ve 6   
+(WENDY:) I am Wendy 
+         Used to be trendy  
+         I know that I'm deceased   
+         Joints are all tighter 
+         Body is lighter
+         Someone should call a priest   
+.ve 4   
+         Totally unconcerned am I   
+         With eating daily bread
+         Lifeless and cold and stiff am I   
+         Because, you see, I'm dead 
+.ve 4   
+         Once I dreamed of fighting off bad guys
+         Setting the whole world free   
+         You're a good guy, do-what-you-should guy  
+         Won't you live for me? 
+.ex 
+.sb "They're Milking us Dry" "Jesus must Die"   
+.ad 
+(SINGERS: THE BAD GUYS, FOUR OF WHOM HAVE SOLOS)
+.ve 1   
+(TENOR:) Now Cabbage Patch, this Rogers' jig is up! 
+.ve 1   
+(BASS:) We're losing dough, to fill his coffee cup! 
+(BARITONE:) You're right!  This new caffeine machine
+            Is a bitter pill to swallow 
+.ve 2   
+(SOPRANO:) What then to do about Professor Rogers?  
+           Filler of filters, king of the drips 
+.ve 1   
+(TENOR:) Those high-voltage grinders and platinum stir-sticks   
+.ve 1   
+(BARITONE:) Money for evil lost each time he sips!  
+.ve 2   
+(SOPRANO:) We cannot leave him to his own devices   
+Let's get that bean-brain and grind him to meat!
+.ve 1   
+(TENOR:) If we don't stop him, the faculty's busted 
+.ve 1   
+(BASS:) Heroes and villains, all out on the street! 
+.ve 4   
+(BARITONE:) I see the Bovine Commission 
+            Shooting the bull and milking us now
+            I see pasteurization
+            Our udder destruction, because of one cow.  
+.ve 1   
+(ALL:) One cow, one cow, a big one and how! 
+.ve 1   
+(BARITONE:) Our udder destruction, because of a cow!
+.ve 1   
+(ALL:) One cow, one cow, a big one and how! 
+.ve 2   
+(SOPRANO:) What then to do about Besse the Bovine?  
+           Milkable minister, queen of the herd 
+.ve 1   
+(TENOR:) We're losing blood money 'cause cows prefer coffee 
+.ve 1   it P(BASS:) Next we'll be shafted by beer-drinking b
+
+(BASS:) Next we'll be shafted by beer-drinking birds!   
+.ve 4   
+(BARITONE:) I see villany dying 
+            Left to go begging for what we can get  
+            We must sabotage Rogers 
+            With stuff that's so scary, you'll get all upset
+.ve 1   
+.ve 1   
+(ALL:) Upset, upset, you've seen nothing yet!   
+.ve 1   
+(BARITONE:) With stuff that's so scary, you'll get all upset!   
+.ve 1   
+(ALL:) Upset, upset, you've seen nothing
+       Seen nothing, seen nothing yet!  
+.ex 
+.sb "I Don't Know How To End It" "I Don't Know How To Love Him" 
+(CAPTAIN:) I don't know how to end it.  
+           I don't know what can harm me.   
+           I only want  
+           To kill myself,  
+           But Damn it all, I still survive 
+           No matter what I try,
+           I just don't die!
+.ld 
+(SECOND SPOT ON BO) 
+.ve 7   
+(BO:) I don't know how to be good   
+      I have always been so evil.   
+      When I was small  
+      I took a match
+      And cremated my puppy dog 
+      And then I torched the cat.   
+      I was a brat. 
+.ve 7   
+(BO:) Should I make a stand 
+      Fight for human rights?   
+      Should I be opposed   il f      To wearing
+
+      To wearing sexy tights?   
+      It's hard to steer a proper course!   
+      What am I to do?  
+      What am I to do?  
+.ve 7   
+(CAPTAIN:) I tried to use explosives
+           To put an end to my existence.   
+           I took out half  
+           A city block,
+           And gave myself a small headache,
+           And slightly bruised my thigh.   
+           I just won't die!
+.ve 7   
+(CAPTAIN:) Tried to stab myself 
+           Barely felt a prick. 
+           I ate village food   
+           But I just got sick! 
+           I even have a Supergut   
+           And I'm still alive  
+           Yes I'm still alive  
+.ve 6   
+(BO:) But if I learn to behave  
+      Maybe we can be together  
+      All I want
+      Is Timothy
+      And I will end, my life of crime  
+      Just to let him know  
+.ve 3   
+(BOTH:) I want him/her so.  
+        I need him/her so.  
+        I love him/her so.  
+.ex 
+.sb "If I Only Had the Ring" "If I Only Had a Brain"
+.ad 
+(GENERIC MAN:)  
+.ve 6   
+Oh, you could say I'm aspirin'  
+To be a Man of Iron,
+It makes my heart go ping!  
+Though my marks have dropped to zero,   
+I could be a Super-hero 
+
+......r.
+fass
+
+
+
+If I only had the ring. 
+.ve 6   
+If my failures turn to passes   
+And I don't skip my classes,
+To have a drinking fling,   
+I'll get credits for my courses 
+And I'll battle evil forces,
+If I only get the ring. 
+.ve 4   
+Oh, I could even fly
+From hilltops or from tree to tree  
+Leaping from sea to shining sea,
+Oh, what a treat, that trip would be!   
+.ve 6   
+I could utilize my powers,  
+Go on for hours and hours,  
+Just think the cheers I'd bring.
+I'll be rich, I'll be famous
+And you'll know what my name is 
+When I finally get the ring!
+.ex 
+.sb "Viking Just Wanna Have Fun" "Girls Just Wanna Have Fun"
+.ve 5   
+(VAL:) We set sail, we went out to sea  
+       In our Viking ship, just my accountants and me.  
+       We were so bored and so we sought out the sun
+       Cause Vikings, they wanna have fun   
+(ALL VIKINGS:) Yo! Vikings just wanna have fun. 
+.ve 5   
+(VAL:) Book-keeping, it wasn't for us,  
+       We work nine to five and then we get on the bus. 
+       We'd rather drink and we have more than just one 
+       Cause Vikings they wanna have fun
+(ALL VIKINGS:) Yo! Vikings just wanna have ...  
+.ve 5   
+(VAL:) Oh do you wanna know 
+       Why we're so?
+       It's very simple, the worst of your fears
+       Cause, Vikings are all engineers 
+(ALL VIKINGS:) Yes Vikings are all engineers.   
+.ve 5   
+(VAL:) Late at night, when you are asleep   
+       We'll raid all your pastures and molest all your sheep.  
+       There'll be no virgin wool when we are all done  
+       Cause Vikings they wanna have fun
+(ALL VIKINGS:) Yo! Vikings just wanna have ...  
+.ve 5   
+(VAL:) Oh do you wanna know-oh-oh   
+       Why were so oh-oh-oh 
+       It's very simple, the worst of your fears
+       Cause Vikings are all engineers  
+(ALL VIKINGS:) Yes Vikings are all engineers.   
+.ex 
+.sb "Three Commissioners" "Three Little Maids"  
+.ve 4   
+(ALL:) Three Commissioners are we,  
+       Dumb as Bureaucrats can be,  
+       Practiced in Redundancy! 
+       Three Commissioners! 
+.ve 1   
+(TAMMY:) We'll decide if you get the money!  (CHUCKLE)  
+.ve 1   
+(BROOKE:) We might cut your faculty!  (CHUCKLE) 
+.ve 1   
+(TRUDY:) We might cut your faculty!  (CHUCKLE)  
+.ve 4   
+(ALL:) Three Commissioners  
+       (DANCING:) Three Commisssioners undaunted
+       By the fact that we're not wanted
+       (EVILLY:) We control what funds are granted! 
+.ve 1   
+(QUIETLY:) Three Commissioners! 
+.ve 1   
+(LOUDLY:) Three Commissioners!  
+.ve 1   
+(TAMMY:) Our leader's Bessie Seventonne!  (ASIDE TO AUDIENCE)   
+.ve 1   
+(BROOKE:) Because she's the largest one!  (ASIDE TO AUDIENCE)   
+.ve 1   
+(TRUDY:) Not to mention the most dumb!  (ASIDE TO AUDIENCE) 
+.ve 1   
+(ALL:) Three Commissioners! 
+.ve 1   
+(TAMMY:) From ten little schools take funds away!   
+.ve 1   
+(BROOKE:) Six survive but we know they  
+.ve 1   
+(TRUDY:) Can't survive very long this way   
+.ve 1   
+(ALL:) If we take their funds!  
+.ve 3   
+Three Commissioners uncaring
+Of the reports you're preparing!  (INDICATING AUDIENCE) 
+Of the sexy tights you're wearing!  (INDICATING SH & VS)
+.ve 1   
+(QUIETLY:) Three Commissioners! 
+.ve 1   
+(LOUDLY:) Three Commissioners!  
+.ex 
+.sb "Bessie's Gone" "For the Longest Time"  
+.ve 5   
+(ALL:)  
+Oh, oh, oh, oh, 
+Now that Bessie's Gone  
+Oh, oh, oh, oh, 
+Now that Bessie's gone. 
+.ve 5   
+They were going to take away our funds  
+For the plans of Bessie Seventonne  
+And then we just knew   
+We decided what we must do  
+We're very happy now that Bessie's gone 
+.ve 5   
+They tried to protect their vicious brood   
+By mutating into Village food   
+We made our mind up 
+We showed them how they would wind up   
+We're very happy now that Bessie's gone 
+.ve 1   
+----------REPEAT CHORUS----------   
+.ve 5   
+Good and evil work together now 
+After knocking off that ugly cow
+No lack of money
+Everything is milk and honey
+We're very happy now that Bessie's gone 
+.ve 6   
+Funding will concern us no more 
+We're all in the black  
+We've settled the score 
+Now we'll work together as one  
+We'll work as a team
+And no more will we make war
+.ve 5   
+(BO:) I have tried to think of what was right   
+      I tried to be good with all my might  
+      But now it's over 
+      We'll live in a land of clover
+      I'm very happy now that Bessie's gone 
+.ve 6   
+(CAPT:) Being good is so very nice  
+        I like being good   
+        We are men not mice 
+        Maybe I can do nothing wrong
+        But now I have you  
+        And it's more than I hoped for  
+.ve 5   
+(BO, CAPT:) We'll hold on together to the end   
+            No matter what's coming round the bend  
+            We'll take our chances  
+            We discovered what romance is   
+            We'll work together now that Bessie's gone  
+.ve 1   
+(ALL, FADING) Oh, Oh, Oh, Oh... 
+.ex 
+.sb "Almost Heaven, Purgatory" "Country Roads"  
+.ve 6   
+(ANGELS:) Almost Heaven, Purgatory  
+          Day of judgement, time to say they're sorry   
+          Caught in limbo   
+          What will be their fate?  
+          Will they go to heaven?   
+          Will they get a date? 
+.ve 4   
+(ALL:) Oh Saint Pete, please decide 
+       Where it is, we'll reside
+       Up in Heaven, down in Hades  
+       Oh Saint Pete, please decide 
+.ve 6   
+(ANGELS:) Will I need my catechism? 
+          Do they practice sadomasochism?   
+          Up in heaven, 
+          Is it really nice?
+          Tell us, where should they go?
+          We need some advice.  
+.ve 4   
+(ALL:) Oh Saint Pete, please decide 
+       Where it is, we'll reside
+       Up in Heaven, down in Hades  
+       Oh Saint Pete, please decide.
+.ex 
+.sb "The Judgement" "The Love Boat" 
+.ve 6   
+Death   
+Exciting and new
+Don't get bored, He'll be judging you   
+And death   
+Life's final reward 
+It's the end, there's no more of you
+.ve 6   
+The judgement   
+Saint Peter is seeing what you have done
+The judgement   
+Promises places for everyone
+Get rid of depression   
+Give afterlife half a chance
+.ve 6   
+And death   
+Won't hurt any more 
+Even hell is fun, when you know the score   
+It's death  
+Welcome aboard  
+You're dead!
+.ex 
+.sb "Judgement Day" "Jamaica Farewell"  
+.xx ANGELS  
+.ve 6   
+Back on Earth,  
+Where we had our birth, 
+We were helping little ladies all the time. 
+Our thoughts were good, 
+We did what we should,  
+And every hour was given to fighting crime. 
+.ve 5   
+(And it's) Sad to say we've passed away.
+Won't be back 'till judgement day.  
+We had to die,  
+But since we never lie, 
+We've gone to join the flying angels in the sky.
+.xx DEVILS  
+.ve 6   
+Back on Earth,  
+Where we had our birth, 
+We were mean and nasty buggers all the time.
+Our plots were bad, 
+And the cops were mad,  
+'Cause we were supervillains and lords of crime.
+.ve 5   
+(And it's) Sad to say we've passed away.
+Won't be back 'till judgement day.  
+We've gone to hell, 
+The place where sinners yell,   hat We see the brimstone burning bri
+
+We see the brimstone burning bright where Satan fell.   
+.ex 
+.sb "FASS!" "FAME!" 
+LUCIFER:
+.ve 8   
+Villains, come to me,   
+And tell me what you see (ha ha)
+You ain't seen the worst of it yet, 
+Eternal torment, no respite from the pain.  
+Come, no time to lose   
+And tell me what torture you choose!
+I'll make you scream, yes, I'll make you pay!   
+'Til the final Judgement Day.   
+BOVINE COMMISSION:  
+.ve 1   
+Hell!   
+DEVILS: 
+.ve 2   
+We're going there for forever!  
+We're gonna burn, bake, and fry!
+BOVINE COMMISSION:  
+.ve 1   
+My! 
+DEVILS: 
+.ve 2   
+We knew we had all this coming, 
+Surely we're too young to die!  
+BOVINE COMMISSION:  
+.ve 1   
+Hell!   
+DEVILS: 
+.ve 2   
+We only tried to enjoy life,
+By taking stuff we couldn't buy.
+BOVINE COMMISSION:  
+.ve 1   
+Hell!   
+DEVILS: 
+.ve 2   
+We tested all pleasures illicit,
+Nothing that we wouldn't try!   
+BOVINE COMMISSION:  
+.ve 3   
+Bake, Burn, Fry!
+Bake, Burn, Fry!
+Bake, Burn, Fry!
+SAINT PETER:
+.ve 8   
+Heroes, over here,  
+For soon before God you'll appear.  
+Your reward for doing things right, 
+Staying clean, brushing teeth every night, every night  
+And now you'll take wing
+Into the realm where Angels sing!   
+You can all leave, go on, fly away. 
+Enjoy yourselves until Judgement Day.   
+BOVINE COMMISSION:  
+.ve 1   
+Heaven! 
+HEROES: 
+.ve 2   
+We're going there for forever!  
+We're going to learn how to fly!
+BOVINE COMMISSION:  
+.ve 1   
+High!   
+BO & CAPTAIN:   
+.ve 2   
+And we'll always be together
+Because I/you gave good a try.  
+BOVINE COMMISSION:  
+.ve 1   
+Heaven! 
+HEROES: 
+.ve 2   
+We only tried to protect life,  
+To help normal folks hurt by crime. 
+BOVINE COMMISSION:  
+.ve 1   
+Heaven! 
+HEROES: 
+.ve 2   
+Looks like we did all the right stuff   
+We'll be up here for all time!  
+BOVINE COMMISSION:  
+.ve 3   
+For all time!   
+For all time!   
+For all time!   
+.ve 1   
+FASS!   
+ALL:
+.ve 8   
+The show is all but through 
+And you've seen nothing new 
+Despite our efforts, we'll take the blame   
+The writers thwart us, the ending is always the same
+So go back where you've been
+And tell all your friends what you've seen  
+When they hear just how you complain
+They'll come to see us, and we'll have a full house again.  
+.ve 1   
+FASS! ! 
+ALL:
+.ve 2   
+Some of the jokes were from last year.  
+And they'll be back never fear! 
+BOVINE COMMISSION:  
+.ve 1   
+FASS!   
+ALL:
+.ve 2   
+So now we're off to our party!  
+We'll see you again in a year!  
+BOVINE COMMISSION:  
+.ve 1   
+FASS!   
+ALL:
+.ve 2   
+The story won't be very different.  
+We'll still get the world in a fix. 
+BOVINE COMMISSION:  
+.ve 1   
+FASS!   
+ALL:
+.ve 10  
+The show is now over for this year. 
+It's goodbye until eighty-six!  
+Eighty-six! 
+Eighty-six! 
+Eighty-six! 
+Eighty-six! 
+Eighty-six! 
+Eighty-six! 
+Eighty-six! 
+Eighty-six! 
+.ve 1   
+FASS!!!!!!  
+.ex 
+.bs 0 1986 SONGS
+.sb "FIRE'S BURNING" "FIRE'S BURNING"   
+JASON:  
+    Fire's burning, fire's burning, 
+    Draw nearer, draw nearer,   
+    In the gloaming, in the gloaming,   
+    Come sing and be merry. 
+.ex 
+.sb "MYSTERY TONIGHT" "COMEDY TONIGHT"  
+Something revealing, something revolting,   
+Something for everyone, a Mystery tonight!  
+Something suspicious, something pernicious, 
+Something for everyone, a Mystery tonight!  
+     Drop off your woes, drop off your cares,   
+     Capture the music, laughter, and scares!   
+We've got detectives, and their perspectives,   
+Hoping to make the whole thing right!   
+Clarity tomorrow, Mystery tonight!  
+.ve 1   
+(KEY CHANGE!)   
+.ve 7   
+Something exciting, or self-igniting,   
+Something for everyone, a Mystery tonight!  
+Something delightful, scarey and frightful, 
+Something for everyone, a Mystery tonight!  
+     Ready for tricks, ready for treats,
+     We'll have you on the edge of your seats!  
+No more rehearsing, chapter and versing!
+Come on, let's get on with the show!
+Tragedy and sorrow, 
+Beg, steal or borrow,   
+Clarity tomorrow!   
+Mystery (mystery! mystery!! mystery!!! mystery!!!!) 
+TONIGHT!
+.ex 
+.sb "LUCKY IN LOVE" "RAINBOW CONNECTION"
+CARRIE: 
+Why are there so many love songs for winners?   
+Why can't the losers sing too?  
+Fat people fall in love,
+Jinxes get lucky.   
+Maybe our dreams can come true. 
+Surely my birthday was Friday the thirteenth
+An unlucky star was above   
+But now that I've found you 
+I have a suspicion  
+That maybe I'm lucky in love.   
+.ve 11  
+JAWS:   
+I've had a life that is heavily laden   
+
+My problems are weighty indeed. 
+Friendships were rarities   
+School was just rotten  
+But I had more food than I need.
+Now I'm expressing things I was suppressing 
+It's taken a load off my mind   
+Cuz now that I've found you 
+I have a suspicion  
+You're what I was "weighting" to find.  
+.ve 11  
+TOGETHER:   
+Why are there so many love songs for winners?   
+When you're in love it's so clear:  
+JAWS:   
+You have provided a taste of good fortune   
+CARRIE: 
+I'm lucky whenever you're near. 
+JAWS:   
+Your kisses so tender   
+Make me feel more slender   
+CARRIE: 
+You're the fat chance that I need.  
+BOTH:   
+Cuz now that I've found you 
+I have a suspicion  
+That love's made a winner of me.
+.ex 
+.sb "IT'S GOT TO BE A COMMUNIST PLOT" "YOU'VE GOT TO PICK A POCKET OR TWO"  
+.ve 6   
+The whole world is afraid,  
+For the plans that they've laid.
+Anything wrong, they sing this song:
+"It's got to be a Communist Plot!"  
+It's got to be a Communist Plot, Com-rades! 
+Gotta be a Communist Plot!  
+.ve 2   
+     They decide without much thought:  
+     "It's got to be a Communist Plot!" 
+.ve 6   
+Price of stock, cost of beef,    to We're the cause of their
+
+We're the cause of their grief. 
+The U. S. is quite a mess:  
+"It's got to be a Communist Plot!"  
+It's got to be a Communist Plot, Com-rades! 
+Gotta be a Communist Plot!  
+.ve 2   
+     When the Dow Jones starts to drop: 
+     "It's got to be a Communist Plot!" 
+.ve 6   
+Fire or flood, rain or shine,   
+Whether foul, whether fine. 
+All the same we'll take the blame:  
+"It's got to be a Communist Plot!"  
+It's got to be a Communist Plot, Com-rades! 
+Gotta be a Communist Plot.  
+.ve 2   
+     We make weather cold or hot:   
+     "It's got to be a Communist Plot!" 
+.ve 6   
+Never mind what the crime,  
+We're at fault half the time.   
+Pravda too declares it's true:  
+"It's got to be a Communist Plot!"  
+It's got to be a Communist Plot, Com-rades! 
+Gotta be a Communist Plot!  
+.ve 2   
+     Children everywhere are taught:
+     "It's got to be a Communist Plot!" 
+.ex 
+.sb "POOR HARRIET'S DEAD" "DO-RE-MI AND GOODNIGHT, FAREWELL"
+(LIESL SINGS THIS LINE WHILE THE OTHERS FILL IN WITH
+DO-MI-MI, MI-SO-FA'S, ETC)  
+.sp 
+When you know the notes to sing,
+There's no news you cannot bring!   
+.ve 7   
+(NOW WE CHANGE TUNES)   
+HANS:     I'm Hans, 
+
+......r.
+fass
+
+
+
+FRANZ:    I'm Franz,
+LIESL:    I'm Liesl,
+LAURIE:   and I'm Laurie!   
+ALL:      We're here, it's clear,   
+          to tell a little story.   
+.ve 2   
+(BUCKET IS PASSED IN MUSICAL BRIDGE)
+.ve 2   
+LIESL:  We're sad we have to relay information, 
+        Because a life has met with cancellation.   
+.ve 1   
+(THAT CRAZY MUSICAL BRIDGE) 
+.ve 2   
+HANS:   The news we bring concerns the Jekyll mansion.  
+        The owner's death requires your attention.  
+.ve 1   
+(T.C.M.B)   
+.ve 4   
+LAURIE: She's cold, she's stiff,
+        You know you can't deny it, 
+        You knew that soon  
+        She'd find the farm and buy it. 
+.ve 1   
+(T.C.M.B)   
+.ve 7   
+FRANZ:  She's passed away,  
+        You knew that she would snuff it.   
+        And now it seems,   
+        She's fin'lly kicked the bucket.
+LIESL:  She's dead. 
+HANS:   She's dead. 
+ALL:    She's dead! 
+.ex 
+.sb "IF YOU LOVE ME, MORT" "STRANGERS IN THE NIGHT" 
+(ELVIRA SINGS)  
+If you love me, Mort,   
+Do me this favour   
+If you love me, Mort,   
+You must not waver  
+If you love me, Mort,   
+You'll kill them all for me.
+.ve 4   
+I just want to own this mausoleum   ily You can 
+
+You can kill them slow and make them scre-um,   
+If you love me, Mort,   
+You'll kill them all for me.
+.ve 6   
+(MORT RESPONDS) 
+I do love you so, my dear Elvira,   
+My heart is made of coal, my soul's on fi-ruh   
+How can I refuse, what option can I choose  
+Loving you is such a pleasure   
+You can have the family treasure
+.ve 7   
+(ELVIRA)
+So if you love me, Mort,
+Do me this favour,  
+If you love me, Mort,   
+You must not waver, 
+If you love me, Mort,   
+You'll kill them all for me.
+.ex 
+.sb "ONE NIGHT IN HELLHOUSE" "ONE NIGHT IN BANGKOK" 
+WINTHROP:   
+Hell house, horrible setting
+And the victims don't know  
+What the victims are getting.   
+The creme de la creme of spooks in a zany   
+Mansion with everything but Lon Chaney  
+.ve 7   
+Time flies, been over twenty years  
+Since a Jekyll guest spent a full night here.   
+Give up, anyone alive'll
+Find in the house, there's no chance of survival
+It's gunshots...or poison...or impaling...or...or...
+    (HORRIBLE ROAR) 
+The cats.   
+.ve 6   
+ALL:
+One night in Hell House and your doom is certain
+Your very life is hanging by a thread   
+You'll find a corpse behind each dusty curtain  
+And if you're lucky then the corpse stays dead  
+All the other options fill my soul with dread.  
+.ve 3   
+WINTHROP:   
+One corpse is very like another 
+After fifteen years in the coffin, brother. 
+.sp 
+(EXCITING MUSICAL BRIDGE)   
+.ve 5   
+WINTHROP:   
+This night is going to dictate  
+Who'll finally be heirs to the Jekyll estate.   
+But I present you with a warning
+You'd best not stick around till morning.   
+.ve 2   
+(SPOKEN) At dawn each of you will receive an equal  
+share of the Jekyll fortune if you're still alive.  
+.ve 4   
+I can't see you surviving   
+The kind of night that's now arriving   
+I'll let you stay, I'll not refuse you  
+But the sights you see will not amuse you.  
+.ve 2   
+So you'd better get back to your bars,  
+Your dachas, your two car garage... 
+.ve 6   
+ALL:
+One night in Hell House and the brave men shiver
+Before the dawn you'll meet your destiny
+One night in Hell House makes the heroes quiver 
+When they find a wraith to keep them company
+I can feel the terror washing over me.  
+.ex 
+.sb "ZOMBIES" "WHEN JOHNNY COMES MARCHING HOME" 
+When zombies come marching out of tombs 
+We're here, we're here  
+When voices are heard in empty rooms
+We're here, we're here  
+When the werewolves howl
+And the vampires bite   
+And the weather's foul  
+And the moon is right   
+Then the ghosts carouse 
+With a moan and a groan and a cheer.
+.ve 11  
+When visitors step on Jekyll land   
+They're here, they're here  
+Disturbing the sleep of our spectral band   
+They're here, they're here  
+When the omens bristle  
+And portents fly
+And the candles fizzle  
+And strangely die   
+You'll be left in the park  
+In the dark with the mark   
+Of a person whose death is near.
+.ve 11  
+When earth is swallowed by night's domain   
+You're here, you're here
+You may never see the light again   
+You're here, you're here
+We're desperadoes...
+Hearts black as soot... 
+So beware of shadows... 
+The game's afoot... 
+When the graves rip open
+Abandon hopin'  
+All ye who enter here!  
+.ex 
+.sb "IMMATERIAL GIRL" "MATERIAL GIRL"   
+NORMA JEAN: 
+Can't you see we can't be seen? 
+And nobody can hear us? 
+No one knows that we're around  
+And no one can get near us! 
+Everything's invisible; 
+No mortal man can view it!  
+Everything is insubstantial:
+Put your hand right through it! 
+
+   Because we live in an immaterial world   
+   And I'm an immaterial girl.  
+   Oh can't you see we live in an immaterial world, 
+   And I'm an immaterial girl?  
+.ve 9   
+Some folks fear me, some folks jeer me  
+Saying I'm not there.   
+But I don't mind 'cause 
+Skeptics are the easiest to scare   
+Some folks try to contact me
+By holding a seance 
+If I don't like their rituals   
+I'll offer no response. 
+    CHORUS  
+.ve 6   
+I know I am dead and gone   
+But that's all right you see
+Eventually those still alive
+Will all be joining me  
+    CHORUS  
+.ex 
+.sb "DEATH IS ALL FOR THE BEST" "YES, IT'S ALL FOR THE BEST"
+When you are dead   
+There's plenty to do
+Don't shake your head!  
+We're talkin' to you!   
+If you find haunting
+Daunting
+Try to strut your stuff; start flaunting!   
+Try to get into it  
+There is no sin to it   
+When you begin to go "Boo"! 
+.ve 
+Bone up on your bones   
+And practise your screams   
+You'll find that a moan's   
+Not hard as it seems!   
+Don't forget when you're deceased's 
+No time to be depressed!
+Death is all for the best!  
+.ve 
+It's clear that when you are a shade
+You have got it made
+And that bei
+
+And that being laid 
+In your coffin  
+Will help you get ahead,
+No one ever said
+Just because you're dead
+You're nowhere! 
+You face it with a smirk
+Never have to work  
+Don't even get hurt very often  
+You've nothing to lose now  
+So what do you care?
+You can look into bathroom stalls   
+Get to walk through walls   
+Make telephone calls without money  
+See the show for free   
+Come through a TV   
+Generally be a real pest!   
+.ve 3   
+(ALL:)  
+Don't let it get to you 
+That folks can see through you  
+'Cause Death
+Is all for the --   
+Death is all for the--  
+Death is all for the--  
+Death is all for the best!  
+.sb "THE OBJECTIONABLE PHILOSOPHY" "HUSH HUSH"  
+When Rant received her inspiration  
+She conceived of a wondrous plan.   
+A way to build a perfect nation,
+A sort of political fantasy land.   
+.ve 4   
+"At last," she thought, "I know for certain 
+How to insure efficiency.   
+I'll soon lift off the government burden.   
+Soon reduce bureaucracy."   
+.ve 4   
+But all that you'll receive from her freedoms,  
+Much to your chagrin and dismay,
+Is a rather redundant set of reasons
+Why you must do whatever we say.
+.ve 8   are Work at 
+
+Work at any factory 
+We'll own it
+Buy your food at the grocery
+We'll own it
+If when you receive your pay,   
+You would like it stored away,  
+Visit your bank without delay,  
+We'll own it.   
+.ve 4   
+We'll own every oil lease,  
+And we'll own all the politicians.  
+We'll control the local police, 
+And all the sporting competitions.  
+.ve 4   
+Try to avoid us if you can, 
+It doesn't matter what you plan,
+You can move to Afghanistan,
+We'll own it.   
+.ve 8   
+From the moment of your birth   
+We'll own it
+To your last day on this earth  
+We'll own it
+If you decide that you don't care,  
+And you refuse to pay your fare,
+Don't you dare take a breath of air!
+We'll own it.   
+.ex 
+.sb "A CURSE ON YOU" "ALAS FOR YOU" 
+A curse, a curse on you, strangers and relatives,   
+Hypocrites that you be. 
+When I was old and tired and lonely,
+You were too busy to visit me.  
+But now you're all here while my death is only  
+A few hours old 
+I'm not even cold   
+.ve 7   
+A curse, a curse on you, strangers and relatives,   
+It's your turn to lament.   
+So sure that you'd get your hands on my savings 
+You won't inherit half a cent.  
+And I tell you now to banish your cravings  
+You won't leave alive   
+You will not survive
+.ve 5   
+Weak fools and greedy wives,
+You cannot escape from this murderous hive. 
+Call in the police, or call in detectives,  
+Boozers and losers and mental defectives,   
+They will not save your lives   
+.ve 4   
+All those, Now here,
+This bloody curse on you will fall. 
+The dawning of this coming morning. 
+Will mark the death of you all  
+.ve 2   
+A curse, a curse, a curse, on you!  
+(DEMONIC LAUGHTER)  
+.ex 
+.sb "C'EST MOI" "C'EST MOI" 
+Criminals, criminals,   
+We know they are a cowardly lot 
+They are terrified, terrified   
+Of Hercules Parrot. 
+They know I'll destroy every logical defense
+Because my great deductions don't make sense.   
+.ve 6   
+A private detective has no need of witnesses
+Of physical evidence or other clues 
+With no knowledge about the crime   
+He can solve it in record time, 
+He can point at the guilty man  
+And shout "J'accuse" (I accuse) 
+.ve 4   
+The secret of crime detection lies in witlessness   
+Ignoring the silly details that distract
+But where in the world is there in the world
+A man so divorced from fact?
+.ve 4   thatC'es
+
+C'est moi (it's me) whose brain is so fine  
+I spit on the urge to be shy
+My head it swells with little grey cells
+C'est moi (it's me), 'tis I.
+.ve 4   
+I've never failed to finger the crook   
+No matter whom I indict 
+I make a guess at the end of the book   
+And yes, the guess is right.
+.ve 4   
+C'est moi (it's me) bull-headedly blind 
+For facts I wholly deny 
+A man whose gall is sure to appall  
+C'est moi (it's me), 'tis I.
+.ex 
+.sb "HERBIE" "OSCAR MEYER"  
+My Herbie is infested   
+With several kinds of fleas 
+The insects all are vectors 
+Of terminal disease 
+Of measles, chickenpox, and flu 
+And mutant strains of typhoid too...
+Genetic research has a way  
+With recombinant DNA.   
+.ex 
+.sb "JUST A SCIENTIST" "JUST A GIGOLO/I AIN'T GOT NOBODY"   
+CEDRIC: 
+I'm just a scientist
+A mad biologist 
+And I find the part delighting  
+.ve 3   
+Cloning every day   
+Splicing DNA
+Ooo...how exciting! 
+.ve 3   
+Went to school it's true
+At U of Waterloo
+Money's really hard to come by  
+.ve 3   
+Until it came into my head  
+I should try to raise the dead  
+And canvass the alumni. 
+.ve 4   
+Cuz 
+I....just love dead bodies  
+Dead bodies,
+
+Dead bodies, they thrill me 
+Dead bodies, fulfill me 
+.ve 4   
+I'm so mad and lonely   
+Mad and lonely, mad and lonely  
+Want some sweet research grant  
+To come and take a chance on me 
+Cuz I ain't so bad...   
+.ve 7   
+MONSTER:
+I'm just a Frankenstein 
+With many parts combined
+And I find this fact distressing
+Pieces, like my head,   
+Come from people dead   
+Ooo..how depressing.
+.ve 6   
+If there was a day  
+When loved ones passed away 
+And if they weren't cremated
+There's a possibility   
+That is very clear to me
+We might be related.
+.ve 4   
+Cuz 
+I'm...made from dead bodies...  
+Dead bodies, they thrill me 
+Dead bodies, fulfill me 
+.ve 5   
+I'm so mad and lonely   
+Mad and lonely, mad and lonely, 
+Want some sweet research grant  
+To come and take a chance on me 
+Cuz I ain't so bad...   
+.ex 
+.sb "I'M GETTING BURIED" "I'M GETTIED MARRIED IN THE MORNING"   
+I'm getting buried in the morning   
+Ding dong the bells are gonna chime 
+Send lots of flowers
+Eulogize for hours  
+But get me to the hearse on time!   
+.ve 5   
+Everyone will be there in the morning   
+Spruced up and looking mighty fine  
+There'll be fun and laughter
+
+In the everafter
+So get me to the hearse on time.
+.ve 4   
+    I've lived a long life  
+    I've no regrets 
+    To my relations 
+    I leave all of my debts.
+.ve 7   
+I'm getting buried in the morning   
+Say good-bye to all that once was mine  
+I'm really quite excited
+For soon I'll be ignited
+You'd better not delay  
+I'm starting to decay   
+For your sakes get me to the hearse on time!
+.ex 
+.sb "I KILLED ELVIRA" "MY WAY"  
+.ve 8   
+And now, it seems so clear, 
+My heart feels like it won't stop hurting.  
+I loved you so my dear, 
+That you loved me is not so certain.
+You were so beautiful,  
+Those eyes, that face, who could deny ya?   
+And now you're dead for I   
+Have killed Elvira. 
+.ve 8   
+I loved her all through school, 
+Despite her lust for others riches. 
+She was my precious jewel,  
+Though she outdid the world's great bitches.
+The best, by far the best,  
+Of all the women in Elmira. 
+And now she's dead for I
+Have killed Elvira. 
+.ve 6   
+At her request I planted bombs, 
+Blew people up, committed wrongs.   
+But through it all, she picked on me.   
+She held me in her tyranny. 
+Now she is dead and I am free;  
+I killed Elvira.
+
+.ve 8   
+She once could do no wrong, 
+When she was here, my eyes were blinded.
+And now, that she is gone,  
+Of liberty, I am reminded.  
+For truth and love and hope 
+And all those things that I admir-uh,   
+Oh yes, I'm glad to say 
+I killed Elvira.
+.ve 6   
+I played the pawn in her foul plot. 
+I was a stu-pid idiot.  
+But then she drank from poisoned cup,   
+Her own petard did hoist her up.
+Now I am free, I paid my fee,   
+I killed Elvira.
+.ex 
+.sb "JEKYLL HOUSE CATS" "JELLICLE CATS" 
+Are you able to kill?   
+And with nary a thought?
+Can you murder a houseguest?
+And never get caught?   
+Can you baffle detectives?  
+Who haven't a clue? 
+If you can and you have 
+You're a Jekyll Cat too.
+.ve 5   
+Because Jekyll Cats are and Jekyll Cats do, 
+Jekyll Cats do and Jekyll Cats would,   
+Jekyll Cats would and Jekyll Cats can,  
+Jekyll Cats can and Jekyll Cats do, 
+Jekyll Cats can and Jekyll Cats do. 
+.ve 8   
+Can you poison the food 
+With untraceable drugs? 
+Are you able to shoot,  
+Skewer, strangle, and slay? 
+And exterminate humans  
+As if they were bugs?   
+Fin'lly do you believe  
+"Where there's a will, there's a way?"  
+.ve 5    bodBeca
+
+
+......r.
+fass
+
+
+
+Because Jekyll Cats can and Jekyll Cats do, 
+Jekyll Cats do and Jekyll Cats can, 
+Jekyll Cats can and Jekyll Cats do, 
+Jekyll Cats do and Jekyll Cats can, 
+Jekyll Cats can and Jekyll Cats do. 
+.ad 
+(DANCE NUMBER BETWEEN TWO SONGS)
+.sb "HAUNTED HOUSE" "THE OLD GUMBIE CAT"
+I have a haunted house in mind  
+It's filled with very scary scenes  
+And if by chance these scenes you find, 
+You'll find out what disaster means.
+A presence permeates each room, 
+The flame of life it hopes to douse.
+It thinks and knows and hopes and kills 
+And that's what makes a haunted house,  
+    That's what makes a haunted house.  
+.ve 8   
+'Cause when the night's murder and mayhem is done,  
+The Jekyll Cat's battle is practically won. 
+And now that Madam Harriet is dead and gone,
+The work of the Cats has a chance to go on. 
+We are deeply concerned with the terms of the will  
+Especially the part about the codicil.  
+There's plenty of money, but rather than share it,  
+We're killing you off so that we can inherit.   
+.ad 
+(ONE MINUTE, SEVEN SECONDS OF BRILLIANT DANCE)  
+.sb "JEKYLL HOUSE" "SKIMBLESHANKS"  
+.ve 2   
+Jekyll House! Oh! Jekyll House! 
+The home of the Jekyll Cats!
+.ve 6   
+
+There's a rumour in the air,
+That we started this affair,
+And in case you may have wondered why,  
+Although you may find it rash,  
+We were running short of cash,  
+And decided you must die!   
+.ve 6   
+We have always liked to nibble, 
+On our catnip flavoured kibble, 
+That we supplement with mice.   
+And because we acted sooner,
+We have lots and lots of tuna,  
+Which admittedly is nice.   
+.ve 6   
+But although we are well off,   
+We have found it's not enough,  
+And we often dream of dining on a chicken.  
+And although it seems absurd,   
+To be lusting for a bird,   
+We need cash to catch the kind that's finger-licken.
+.ve 6   
+So we formed a cat alliance,
+And decided in defiance,
+That the relatives must expire. 
+And so now you're up to date,   
+On the reasons for our hate,
+And the happenings that happened to transpire.  
+.ve 2   
+Jekyll House! Oh! Jekyll House! 
+The home of the Jekyll Cats!
+.ex 
+.sb "COMPUTER FEES" "DANCIN' IN THE STREET" 
+CULTISTS:   
+Co-op! Imprint! 
+Athletics! Federation Hall! 
+.ve 4   
+CLAIRE: 
+Callin' out around the school   
+Are you ready for a brand-new fee?  
+Doug is here and his name is Wright 
+He says computing isn't free.   
+.ve 3   
+  Pay in Computer Science   
+  Pay in Psychology 
+  Pay in Engineering
+.ve 4   
+Oh they want your money, sweet money
+And they're putting on the squeeze  
+It's the latest charge by the registrar 
+So pay computer fees!   
+.ve 4   
+  Oh! It doesn't matter what you take   
+  Or what faculty you're in 
+  Hit a key on the CRT  
+  Take the system for a spin
+.ve 4   
+You'll be payin'
+You'll pay computer fees!   
+This is a requisition   
+That's not tuition  
+So your OSAP will not pay   
+There'll be moanin', groanin', but no student loanin'   
+And you dare not disobey!   
+.ve 6   
+Mathematics, E.S.   
+Science, H.K.L.S.   
+Don't forget old Engineering
+Oh they want your money 
+Sweet money 
+Go and hock your underwear...   
+.sb "BEELZEBUB" "DA-DOO-RON-RON"
+ZELDA:  
+I met him on a Monday at the CC Pub 
+Demonus Vene, Beelzebub 
+He asked me out on Tuesday to the Faculty Club  
+Demonus Vene, Beelzebub 
+.ve 5   
+Ooo, his name was Bill  
+I was on the pill   
+So when he asked me home
+MUSTARD:
+Da-doo-ron-ron-ron, Va-va-va-voom.  
+.ve 4   
+He vanished early Wednesday but he left me cash 
+Demonus Vene, Beelzebub 
+I broke out Thursday morning in an itchy rash   
+Demonus Vene, Beelzebub 
+.ve 5   
+Friday my M.D.  
+Said it was Herpes B
+On the weekend I stayed home
+MUSTARD:
+Da-doo-ron-ron-ron, Va-va-va-voom.  
+.sb "KILLER" "THRILLER" 
+CLAIRE: 
+Eleven thirty   
+You show up at a class just for the kick
+You're topsy-turvy  
+Last night you guzzled beer till you were sick  
+The prof comes in   
+He's carrying a stack of paper booklets 
+He starts to grin   
+And gleefully he looks you in the eyes  
+You realize 
+.ve 6   
+  That it's a killer midterm test   
+  It wholly slipped your mind   
+  And now you're really gonna pay   
+  Yes it's a killer midterm test
+  The shit has hit the fan  
+  Yes it's a killer midterm today.  
+.ve 9   
+You feel the sweat spout
+You wonder if there's time to run away  
+The tests are passed out
+You close your eyes and quickly start to pray   
+You bow your head   
+And hope the quiz will only be "short answer"   
+But to your dread   
+You find the prof has proved that he is slime   
+It's essay time!
+.ve 6   
+  And it's a killer midterm test
+  Your lack of useful knowledge 
+  Fills your heart with grim dismay 
+
+  And it's not even multiple guess  
+  You're really up the creek
+  Upon the killer midterm today.
+.ve 5   
+    Eight questions waiting 
+    On subjects you haven't a clue about
+    No way of faking
+    The facts a response should include 
+    You are right royally screwed.  
+.ve 9   
+But pick a question 
+One that seems a little less obscure
+Fight your depression   
+Dig right in, start shovellin' manure   
+There's one slim hope   
+To salvage partial marks from this disaster 
+Don't groan and mope
+Your grade may not turn out to be that bad  
+If you can pad  
+.ve 7   
+  So write some filler, filler now  
+  A flood of purple prose might fool
+  An overworked T.A.
+  Just be a filler spiller now  
+  Perhaps you'll save your tush 
+  Churn out some killer diller midterm filler   
+  Here today!   
+.ve 6   
+  Keep spouting filler, never rest  
+  And don't forget your Webster's   
+  Or your Bartlett's or Roget   
+  'Cause it's a killer diller test  
+  Your ass is in a sling
+  And it's a killer midterm...  
+.ve 5   
+MASTER: 
+  Darkness falls across the land
+  The witching hour is close at hand
+  Heavens split in mortal fear  
+  As the summoning draws near.  
+.ve 4   
+  And whomsoever shall be found 
+  Upon the Jekyll's curs-ed ground  
+  Must stand and face a fiend from hell 
+  And die like any infidel. 
+.ve 4   
+  For deep beneath this rotting soil
+  Enfettered in a magic coil
+  There lurks a force of rav'nous doom  
+  Imprisoned in a ghastly tomb. 
+.ve 4   
+  Now by the power of evil hand,
+  By gifts of incense, fire, and blood  
+  I break the chains with one command   
+  Demonus Vene, Beelzebub!  
+.ex 
+.sb "THAT WAS THE PLAY" "THOSE WERE THE DAYS"   
+We started with a mansion in the country,   
+To which some frightened teen-agers did run.
+We added in some loud obnoxious tourists,   
+And spying Russians just to have more fun.  
+.ve 4   
+After that things start to get confusing,   
+As crooks and family and cultists mix.  
+All out to get a rich old lady's fortune
+Using a variety of tricks.  
+.ve 5   
+Then the detectives came,   
+But they all fared the same,
+Ran here and there and wasted all their time.   
+They had no chance really to solve the mystery. 
+They did their best but could not solve the crime.  
+.ve 4   
+That was the play my friend, we're sad it had to end.   , Be
+
+We sang and danced from dusk to break of day.   
+We did our best for you, and we enjoyed it too. 
+That was the play, oh yes, that was the play.   
+.ve 4   
+Now it's time to take off all our make-up.  
+We'll hang our costumes on the racks and then,  
+We'll strike the sets and head off to the party,
+And sing all of our favourite songs again.  
+.ve 4   
+If you're depressed because the play is over,   
+Raise up your head and wipe away that tear. 
+Make plans to come to FASS in Eighty-seven. 
+We reach a quarter century next year.   
+.ve 4   
+That was the play, adieu.   
+We'll take our leave of you.
+But we'll be back, along with all the jokes.
+It's been a slice you know, 
+Hope you enjoyed the show.  
+That was the play, oh yes that was the play.
+.ex 

@@ -1,0 +1,57 @@
+
+
+
+..o...a3
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so 84macr.t
+.bs 1 1 "National Expirer"  
+.ld 
+(LIGHTS UP) 
+.xx AD~PERSON   
+The National Expirer - the paper that tells you real facts  
+about dead people you admire.   
+Learn new and amazing facts about home embalmings.  
+Read the in-depth real-death atheist's story, "All Dressed Up   
+with No Place to Go."   
+Try out the Mama Cass diet plan!
+Order a five year subscription now, and receive absolutely free 
+an autographed picture of Elvis in his casket!  
+.ad 
+(PICTURE OF ELVIS IN HIS CASKET 
+(WITH GUITAR), AS INVISIBLE PEN WRITES "ELVIS") 
+.ex 
+Order your subscription today by dialing this toll-free number: 1-800-555-3323, 
+or pick it up at your local funeral home.   
+Thats: 1-800-555-D.E.A.D.   
+Cancel your subscription at any time, but keep the photograph of Elvis  
+as our gift.
+The National Expirer -- for expiring minds... like mine.
+.sd 
+(A LOUD GUN SHOT)   
+.ad 
+(THE AD PERSON FALLS INTO A CONVENIENTLY WAITING CASKET)
+.ld 
+(LIGHTS DOWN)   

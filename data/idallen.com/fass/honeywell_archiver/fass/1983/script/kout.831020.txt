@@ -1,0 +1,37 @@
+
+
+
+.n...g..
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*clear  
+*free fass/1983/script/formatted.f extract=1.0,1.1,1.2,1.3,1.4,1.5,2.1,2.2,2.3,2.4,2.5  
+*klis +sepfile o=3 g=0 1.0 1.1 1.2 1.3 1.4 1.5 2.1 2.2 2.3 2.4 2.5 >*klis   
+*get fass/1983/script/..media7klis"fc*bd",w 
+*slis b="83/10/20 9.507"  *klis 
+SLIS: Backdoor file not temporary   
+*remo fc*bd 
+*if ( Drun() == "" ) "cpos ;$..EXIT"
+*setc fass/1983/script  

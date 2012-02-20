@@ -1,0 +1,80 @@
+
+
+
+.[!.....
+bjeroehl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.zz Macro file for FASS Cast/Crew list. 
+.tr ~   
+.ic ^^  
+.qc "   
+.pc @   
+.af day 01  
+.af mon 01  
+.af min 01  
+.af hour 01 
+.he 'F.A.S.S.'Cumulative Cast & Crew List'F.A.S.S.' 
+.fo '^(year)/^(mon)/^(day)'-%-'^(year)/^(mon)/^(day)-^(hour):^(min)'
+.ig EXPLANATION 
+By changing the value in the .if clause, you can select records which   
+have a certain field filled.
+Normally, this is the "duty;part" field (field @5).  -IAN!, Bernie  
+.en EXPLANATION 
+.at xx  
+.if "@1">0 endif0   
+.ti 0   
+.ne 5   
+____________________________________________________________
+.ti 0   
+.if "@3">0 endif1   
+.if "@6">0 endif5   
+@1 (@6)	@3  
+.el endif5  
+@1	@3   
+.en endif5  
+.el endif1  
+@1 (@6)	Tele?_______________
+.en endif1  
+.ti 3   
+.if "@2">0 endif2   
+Locl: @2
+.en endif2  
+.ti 3   
+.if "@4">0 endif3   
+Perm: @4
+.el endif3  
+Perm? *** Need Permanent Address ***
+.en endif3  
+.ti 3   
+.if "@5">0 endif4   
+INVOLVMENT: @5  
+.en endif4  
+.en endif0  
+.sq 
+.en xx  
+.nj 
+.hy 0   
+.ta R 60
+.in 3+"Locl: "  
+.zz .xx "name" "local addr" "phones" "perm.addr" "INVOLVMENT" "Year"

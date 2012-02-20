@@ -1,0 +1,655 @@
+
+
+
+.....z>g
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1988/script/87macr.t   
+.bs 1 4 "Missed It By That Match"   
+.na ra RALPH~ALPHA RALPH
+.na no NORTON~SOUTH NORTON  
+.na gr PENNY~LANE PENNY 
+.na jo AVERY~CLOUD AVERY
+.na ja SYLVIA~LINING SYLVIA 
+.na ga GAYLE~FORCE GAYLE
+.na pr PRISCILLA~CHARYBDIS PRISCILLA
+.na bd BULL~DOZER BULL  
+.na wa WALTER~SOLUBLE WALTER
+.na co CRAIG~FOOYUNG CRAIG  
+.na eu EUSTACE~CLARENCE~SCRUBB EUSTACE  
+.na se HERB~N.~BLIGHT HERB  
+.na la LANCE~A.~BOYLE LANCE 
+.na va JOHNSON~N.~JOHNSON JOHNSON   
+.na fl FLORENCE~F.~ARABIA FLORENCE  
+.na ed IRMA~GEDDON IRMA 
+.na be BELLA~COSE BELLA 
+.na gy HARRY~KRISHNA HARRY  
+.na pa TYRONE~SHOELACE TYRONE   
+.na mu MUFFY~FORNOTHING MUFFY   
+.na kn ED~NAUSEUM ED
+.na to TOM~FOOLERY TOM  
+.na mo MOLLY~CODDLE MOLLY   
+.na cs TERRY~YAKI TERRY 
+.na sd SANDY~BEACH SANDY
+.na cu CUPID CUPID  
+.na si SID~AUSTRALIA SID
+.na na NANCY~STORMTROOPERS NANCY
+.ld 
+(SETTING FOR THIS SCENE:  A WALL, ON WHICH CUPID MATCHINGS ARE POSTED,  
+AND AN OFFICE, BOTH REMINISCENT OF NEEDLES HALL.
+LIGHTS UP ON WALL (OFFICE IS DARK).  PEOPLE ARE MILLING 
+ABOUT, CHECKING POSTINGS, AND TALKING TO EACH OTHER.
+INCLUDED IN THIS GROUP OF PEOPLE ARE:  RALPH, PENNY (AND HORDE), WALTER,
+MOLLY, GAYLE AND PRISCILLA.  TERRY AND SANDY, DISGUISED AS CO-ORDINATORS,   
+ARE WANDERING AROUND TAKING NOTES)  
+.ad 
+(ENTER NORTON)  
+.ch no  
+So, did it work... did it work? 
+.ch ra  
+(MATTER OF FACTLY)  
+Of course it worked.
+(POINTING AT BOARD) 
+I'm matched with Muffy, exactly as I planned it.
+What about you? 
+.ch no  
+I haven't looked yet.  What if it didn't work?  What if I didn't get -- 
+.ul 
+her?
+.ch ra  
+Of course you got her.  
+We  
+sabotaged the computer. 
+.ch no  
+Oh, yeah.   
+.ad 
+(PENNY IS AT THE BOARD. AS USUAL, THE HORDE IS CROWDED AROUND HER. SHE IS   
+POINTING TO THE LIST OF NAMES AND SLOWLY READING THEM TO HERSELF, TRYING
+TO FIND HERS)   
+.ch gr  
+Here I am!  
+.ad 
+(TURNS TO HORDE)
+.ex 
+Which one of you is Norton South?   
+.ad 
+(HORDE COLLAPSES IN DISAPPOINTMENT) 
+.ex 
+Come on now, don't be shy.  
+.ch no  
+Hi, Penny.  
+.ch gr  
+Oh, you're Norton... there must be some mistake.
+.md 
+(CLOYING SONG INTRO)
+.ad 
+(ENTER SYLVIA AND AVERY, FLAMBOYANTLY.  
+THEY ARE DRESSED THE SAME)  
+
+.ch ja  
+But what if we don't get matched together, darling? 
+.ch jo  
+Nonsense, sweetheart.  We're perfect for each other.
+.ad 
+(THEY SIGH IN UNISON)   
+.sb "I'm Glad You're Mine" "A Job Well Done"
+.ve 11  
+AVERY:   I'm yours               SYLVIA:   I'm yours
+         You're mine                       You're mine  
+AVERY:   Together we're the perfect couple  
+SYLVIA:  I'm yours               AVERY:    I'm yours
+         You're mine                       You're mine  
+SYLVIA:  We're twice the fun and half the trouble   
+AVERY:   I'm yours               SYLVIA:   I'm yours
+         You're mine                       You're mine  
+AVERY:   Though people think they're seeing double  
+SYLVIA:  And that is why I'm glad to say you're mine
+AVERY:   I'm glad you're mine   
+.ad 
+(EXIT SYLVIA AND AVERY. 
+GAYLE, PRISCILLA AND MOLLY MOVE FORWARD)
+.ch ga  
+I don't know about this CUPID thing.  None of these matches seem    
+appropriate.
+.ch pr  
+Now, stop that!  I'm sure the computer system is infallible.
+These people were matched on their hidden qualities.
+.ch mo  
+Who did you get matched with?   
+.ch pr  
+(WINSOMELY) 
+His name is Bull.   
+I'm sure he's tall, has 
+chestnut hair, and deep blue eyes.  
+.ad 
+(ENTER BULL.  HE IS A BIKER)
+.ch bd  
+Which one of youse is Priscilla?
+.ch pr  
+(JAW DROPS) 
+Aah.
+(RECOVERS)  
+Oh well, at least he's tall.
+.ad 
+(EXIT BULL AND PRISCILLA.  WALTER MOVES TOWARDS 
+GAYLE)  
+.ch wa  
+(TO GAYLE) Would you happen to know Gayle Force?
+.ch ga  
+Who wants to know?  
+.ch wa  
+My name is Walter.  The computer says that Gayle and I have been matched
+together and I am trying to find her.   
+.ch ga  
+(TO MOLLY) Maybe these computer matchings will work out 
+after all. (TO WALTER) Hi, Walter.  I'm Gayle.  
+.ch wa  
+Pleased to meet you.  I guess we should decide where to go on our first 
+date.   
+.ch ga  
+Why don't we go to a Leafs game?  They're playing Detroit tomorrow night.   
+We could go and toss back a few brews.  What do you say?
+.ch wa  
+Uhhh -- who are the Leafs?  
+.ch ga  
+Oh. 
+.ch wa  
+And what are brews? 
+.ch ga  
+Oh dear.
+.ch wa  
+I know!  Armenian is conducting a performance of Verdi's La Traviata    
+at the Centre in the Square on Thursday.  Would you care to join me?
+.ch ga  
+(PRONOUNCING IT INCORRECTLY)
+Who's Verdi?
+.ch wa  
+Oh. 
+.ch ga  
+And what's a Traviata?  
+.ch wa  
+Oh dear.
+.ch ga  
+(TO MOLLY) Maybe I spoke too soon.  
+.ld 
+(LIGHTS DOWN ON WALL.  LIGHTS GO UP IN THE OFFICE.  
+AVERY, SYLVIA AND CRAIG, A CO-ORDINATOR, ARE THERE) 
+.ch co  
+I'm sorry, there's nothing that anyone in this department   
+can do for you. 
+.xx AVERY~AND~SYLVIA
+But we're perfect for each other.   
+.ch jo  
+We like the same movies...  
+.ch ja  
+We eat the same foods...
+.ch jo  
+We have the same allergies...   
+.xx AVERY~AND~SYLVIA
+We were meant to be together.   
+.ch co  
+Not according to CUPID. 
+.ch jo  
+Well, we don't want to be part of this ridiculous program anymore.  
+.ch co  
+I'm sorry, but you'll have to complete your two date commitment.
+.xx AVERY~AND~SYLVIA
+Awwwww! 
+.ch co  
+Now run along and find your matches.
+.ad 
+(AVERY AND SYLVIA LEAVE CRAIG'S OFFICE.  SID AND NANCY --   
+AVERY AND SYLVIA'S MATCHES -- COME FORWARD FROM CROWD)  
+.ld 
+(SPOT ON AVERY AND SYLVIA)  
+.ch ja  
+Don't worry, darling - it's just for two dates. 
+.ad 
+(THEY SING AGAIN:  SLOWER, IN A MINOR KEY?) 
+.sb "It's Just Two Dates" "A Job Well Done" 
+.ve 11  
+SYLVIA:  You're hers                 AVERY:   I'm hers  
+         I'm his                              You're his
+SYLVIA:  Our plans are turning topsy-turvy  
+AVERY:   You're his                 SYLVIA:   I'm his   
+         I'm hers                             You're hers   
+AVERY:   She lacks your form so soft and curvy  
+SYLVIA:  You're hers                 AVERY:   I'm hers  
+         I'm his                              You're his
+SYLVIA:  One date with him will give me scurvy  
+AVERY:   But if we must, I know it's just two dates 
+SYLVIA:  It's just two dates
+.ad 
+(AVERY AND SYLVIA EXIT WITH THEIR COMPUTER MATCHES) 
+.ld 
+(SPOT OUT.  LIGHTS ON WALL) 
+.ad 
+(ENTER EUSTACE AND HERB)
+.ch eu  
+Relax, Herb.  It's not the end of the world.
+.ch se  
+I don't understand.  Who wouldn't want the sultan of sex for a date?
+.ch eu  
+Don't worry.
+You can always go through second rounds.
+.ad 
+(A SHOUT FROM CRAIG'S OFFICE)   
+.ch la  
+SECOND ROUNDS!!!!   
+.ld 
+(LIGHTS OFF WALL AS LANCE SPEAKS.  LIGHTS ON OFFICE)
+.ad 
+(LANCE, JOHNSON AND CRAIG   
+ARE THERE)  
+.ex 
+(TO JOHNSON)
+Impossible!  Did you hear him, Johnson - second rounds? 
+(TO CRAIG)  Indeed! 
+.ld 
+
+(LIGHTS OFF OFFICE.  LIGHTS ON WALL)
+.ch se  
+So who gets to adore your tanned Adonis body?   
+.ch eu  
+Some fabulous babe named Molly Coddle.  
+.ch se  
+What's she like?
+.ch eu  
+I don't know.  But she's supposed to be five foot nine, 
+with blonde hair, blue eyes and tremendous hooters! 
+.xx HERB~AND~EUSTACE
+(MALE CHAUVINIST PIGS)  
+Woah!   
+.ld 
+(LIGHTS OFF WALL.  LIGHTS ON OFFICE)
+.ad 
+(LANCE IS SPRAWLED OVER A CHAIR THEATRICALLY)   
+.ch la  
+(IN PAIN)   
+Woe is me!  
+.ch va  
+Calm down, sir.  Think of your heart.   
+.ch la  
+My heart!  My heart has been torn asunder.  Oh the shame, the disgrace -
+how could I not have been matched?  If this had been left up to nature  
+I would have beautiful women crawling all over me this second.  Why,
+just look at my credentials:  Johnson, show him my press release.   
+.ch va  
+Yes, sir.   
+.ad 
+(JOHNSON GIVES CRAIG A LARGE MANILA ENVELOPE)   
+.prip "LARGE MANILA ENVELOPE"   
+.ch co  
+Are you Johnson?
+.ch va  
+Why yes, sir.   
+.ch co  
+There's a girl named Florence looking for you -- she's your match.  
+.ch la  
+What!  I don't remember giving  
+you permission to volunteer, Johnson!   
+.ch va  
+
+No, sir.
+.ch la  
+You must surrender your matching to me.  From now on I will be Johnson. 
+.ad 
+(HE TURNS AWAY BASICALLY TALKING TO 
+HIMSELF.
+FLORENCE ENTERS DURING NEXT SPEECH; JOHNSON SEES HER, LANCE DOESN'T.
+FLORENCE IS RATHER DISGUSTING)  
+.ex 
+Since I am your employer and I haven't been matched,
+it's only proper
+that you should give me your date.  After all, what girl wouldn't rather have   
+a man of my distinguished caliber instead of a mere valet?  
+.ch fl  
+Excuse me, I'm Florence.  (SPITS)  Are you Johnson? 
+.ch va  
+No... he is.
+.ch la  
+Good man!  (TURNING AROUND)  Good day, fair Florence, my... gasp!   
+.ld 
+(LIGHTS OFF OFFICE) 
+.ad 
+(ENTER BELLA, ED, MUFFY, HARRY, TYRONE, TOM, AND IRMA   
+SHOUTING USUAL PROTEST BANTER.  
+ED IS PROTESTING HALF-HEARTEDLY, SINCE HE IS LOOKING FOR MOLLY. 
+THE FOLLOWING PROTEST LINES ARE SAID ALMOST TOGETHER)   
+.ch be  
+No to CUPID!
+.ch gy  
+Death to CUPID! 
+.ch pa  
+Have a brain, not a VAX!
+.ch to  
+Down with CUPID!
+.ad 
+(THEN...)   
+.ch ed  
+(SHOUTING) Bomb the Vatican!
+.ad 
+(THE OTHER PROTESTORS TURN TO IRMA, STARTLED.   
+THEY MOUTH "BOMB THE VATICAN?" INCREDULOUSLY.   
+
+RALPH RUNS TO MEET MUFFY)   
+.ch ra  
+Hi, Muffy!  Guess what -- the computer matched us up.  Isn't that   
+wonderful?  
+.ad 
+(PROTESTERS LOOK AT MUFFY)  
+.ch be  
+How could you possibly get matched?  You're one of  
+the protesters! 
+.ch mu  
+I volunteered.  
+.ch ed  
+I knew it.  She's a spy.
+.ch gy  
+How could you?  What about us, babe?
+.ch pa  
+Look what you ended up with!
+Why did you do it?  
+.ch mu  
+Well, People magazine said that computer dating was the single most 
+popular introduction service in North America.  
+Besides, I needed a date for Friday.
+.ad 
+(EVERYONE REACTS.  ED FINDS MOLLY)  
+.ch kn  
+Hi there... fancy meeting you here. 
+.ch mo  
+Yes... small world, isn't it?   
+.ch kn  
+So... what are you doing around here?   
+.ch mo  
+Well... I'm a volunteer and --  
+.ch kn  
+A volunteer?  For the CUPID project?
+.ch mo  
+The matchings went up today.    
+.ch kn  
+And you've been matched?
+.ch mo  
+To somebody named Eustace Scrubb.  Do you know him? 
+.ch eu  
+(WHO WAS CONVENIENTLY STANDING BY)  
+Did you say Eustace Scrubb?  Are
+you Molly Coddle?   
+.ch mo  
+(IGNORING ED)   
+Are you Eustace?
+.ch eu  
+That's me, but you don't look anything like Molly Coddle.  You're supposed  
+to be five foot nine, with blonde hair, blue eyes, and tremendous --
+.ch mo  
+I'm sorry.  
+I'll dye my hair and get blue contact lenses if you like.   
+.ad 
+(EUSTACE AND MOLLY STAND TOGETHER TALKING WHILE THE SCENE CONTINUES)
+.ch kn  
+How could you?  
+You know nothing about each other!  You're trusting some
+machine to decide who's right for whom!  You should be free to date     
+whoever you want to!
+You should be able to go out with me... if you wanted to... for instance.   
+.ch be  
+(JOINING IN THE FRAY)   
+And you shouldn't have to pay for a decision you could make yourself.   
+.ch to  
+Darn right! 
+.ad 
+(ENTER CUPID, INVISIBLE TO ALL EXCEPT THE AUDIENCE.  HE IS WIELDING HIS 
+BOW, AND IS AIMING AN ARROW TOWARDS MOLLY, BUT CAN'T GET A CLEAR SHOT)  
+.prip "BOW" 
+.prip "ARROWS"  
+.ch kn  
+You are paying for something that nature has taken care of for  
+thousands of years! 
+.ch se  
+And men and women have been paying for nature's mistakes for
+thousands of years! 
+.ch pa  
+(INDICATING THE GROUP)  
+And I suppose the computer hasn't made any mistakes?
+.ad 
+(SILENT ARGUING CONTINUES DURING NEXT SECTION)  
+.ch sd  
+Are you getting any interesting results?
+.ch cs  
+(COLDLY)
+Yes.
+I'm going to get quite a good research paper out of this.   
+What about you? 
+.ch sd  
+No problem. 
+.ad 
+(SANDY LOOKS OVER TERRY'S SHOULDER AND STARTS COPYING HIS RESULTS)  
+.ch cs  
+No way. 
+You're not stealing my work this time!  
+Get away from me!   
+I'm never going to speak to you again!  
+.ad 
+(CUPID LETS 
+AN ARROW FLY TOWARDS MOLLY) 
+.sd 
+(LOUD TWANG OF BOW BEING FIRED) 
+.sfx
+(ARROWS SHOULD MOVE IN SLOW MOTION, IF POSSIBLE)
+.md 
+(WHENEVER ONE OF CUPID'S
+ARROWS HITS SOMEONE THE LOVE SONG FROM ROMEO AND JULIET OR SOMETHING LIKE THAT  
+SHOULD BE PLAYED)   
+.ad 
+(MOLLY STEPS ASIDE AND THE ARROW HITS TERRY.
+WHEN CUPID SEES THAT THE ARROW HAS MISSED THE INTENDED TARGET,  
+HE EXPRESSES HIS FRUSTRATION BY HITTING HIS HEAD WITH HIS HAND) 
+.ex 
+(LOVESTRUCK) Has anyone ever told you that you have beautiful eyes? 
+.ch sd  
+What!?  
+.ch cs  
+Your hair doth shine like the moon on a clear summer's eve. 
+.ad 
+(SANDY REACTS APPROPRIATELY.  CUPID FIRES ANOTHER ARROW AT MOLLY)   
+.sd 
+(TWANG OF BOW)  
+.sfx
+(ARROW SPECIAL EFFECT)  
+.md 
+(LOVE THEME AS ARROW IS FIRED)  
+.ad 
+(ARROW MISSES MOLLY AND HITS SANDY. 
+AFTER IT HITS, CUPID PRAYS TO HIS PAGAN GODS:  "WHY ME?")   
+.ch sd  
+(LOVESTRUCK) Do you really think so?
+.ch cs  
+From the depths of my heart.
+.ad 
+(OOOOOH, DOESN'T IT MAKE YOU WANT TO VOMIT.  THEY DROP THEIR CLIPBOARDS 
+AND SWOON.  ONE SWEEPS THE OTHER OFF HIS OR HER FEET AND
+CARRIES HIM OR HER OFF STAGE.  CUPID IS EXAMINING HIS BOW AND ARROWS,   
+TRYING TO FIGURE
+OUT WHAT IS WRONG.  THE ARGUMENT NOW CAN BE HEARD AGAIN)
+.prip "CLIPBOARDS"  
+.ch be  
+(YELLING AT MOLLY) This program is taking away your 
+freedom of choice, your self-respect, and our money.
+.ch kn  
+(ALSO YELLING AT MOLLY) What about men like us, who are not part of the 
+volunteer group... who would love to go out with you.   
+.ch be  
+Ed! How can you be concerned with your love-life at 
+a time like this?  There are larger issues at stake and besides...  
+.ad 
+(CUPID ACCIDENTALLY LETS AN ARROW FLY)  
+.sd 
+(TWANG OF ARROW)
+.sfx
+(ARROW SPECIAL EFFECT)  
+.md 
+(LOVE THEME AS BEFORE)  
+.ad 
+(ARROW HITS BELLA)  
+.ex 
+...you have such lovely eyes.   
+.ch to  
+
+.....z>g
+fass
+
+
+
+Darn right!  (DOUBLE TAKE)  
+.ad 
+(CUPID SEES WHAT HE HAS DONE AND BEGINS TO BANG HIS HEAD AGAINST THE WALL.  
+ED STARES INCREDUOUSLY AT BELLA.  OTHER PROTESTORS AND VOLUNTEERS   
+GATHER AROUND WHERE THE ARGUMENT STARTED.  EVERYONE IS SHOUTING, TALKING AT 
+ONCE.  AT THE HEIGHT OF THE HYSTERIA THE MUSIC STARTS.  
+.sp 
+VOLUNTEERS SINGING:  PENNY, AVERY, SYLVIA, GAYLE, PRISCILLA, BULL,  
+WALTER, EUSTACE, HERB, LANCE, JOHNSON, FLORENCE;
+PROTESTORS SINGING:  IRMA, BELLA, HARRY, TYRONE, MUFFY, ED, TOM)
+.sb "Darn Right" "Quintet"  
+.ve 5   
+.ss VOLUNTEERS  
+The CUPID matchings have been done, it works
+The game is over and we've won, you jerks   
+Irrational decisions fall flat  
+So digital precision is now where it's at!  
+.ve 5   
+.ss PROTESTORS  
+You keeners think that you have won, no way 
+This fight has only just begun, today   
+You haven't found perfection, surprise! 
+Your logical selection's someone you despise.   
+.ve 1   
+TOM:  Darn right!   
+.ve 3   
+.ss VOLUNTEERS  
+We're gonna standardize love,   
+We're gonna spruce it up and you're gonna pay   
+.ve 3   
+.ss PROTESTORS  
+We'll fight for old-fashioned love  
+You're gonna realize that it's the best way.
+.ve 4   
+VOLUNTEERS:  Well, CUPID's modern!  
+PROTESTORS:  Well, CUPID's useless! 
+BOTH: And now it's time to end this once
+      and for all, darn right!  
+.ve 11  
+.sl no  
+Penny's going to be my date,
+.sl ra  
+It's set.   
+These CUPID matchings turned out great. 
+.sl no  
+You bet.
+.ss BOTH
+We're terrible romantics, real hicks
+But electronic antics,  
+Have gotten us chicks.  
+.ve 10  
+.sl be  
+(PURSUING AND CAPTURING ED) 
+In love, in love,   
+I finally fell in love, 
+I see you through a pink tinted mist
+.sl kn  
+That may be true
+But my advice to you
+Is to contact an optometrist
+(ESCAPING FROM BELLA)   
+.ve 8   
+.sl cs  
+My love, to think that just this morning
+I thought that you were lazy
+.sl sd  
+I thought you were a schmoo.
+.ss BOTH
+Sweet cakes, num-nums   
+I want to tell the world I love you!
+.ve 15  
+BELLA:  In love, in love
+     VOLUNTEERS:  We're giving love new panache, right! 
+BELLA:  I finally fell in love  
+     PROTESTORS:  But you are using our cash.   
+     TOM:  Right!   
+BELLA:  I see you through a pink tinted mist
+     PROTESTORS:  CU-PID sucks!  CU-PID sucks!  
+     RALPH AND NORTON:  
+        We're gonna meet us some girls, right!  
+ED: That may be true
+     VOLUNTEERS: We're gonna standardize love.  
+ED: But my advice to you
+     PROTESTORS: We'll fight for old-fashioned love.
+ED: Is to contact an optometrist
+     EUSTACE AND HERB: We're gonna get laid at last.
+.ve 16  
+TERRY:  My love,
+     VOLUNTEERS: Up with CUPID! 
+TERRY:  To think that just this morning 
+     PROTESTORS:  Down with CUPID!  
+TERRY:  I thought that you were lazy
+     VOLUNTEERS: CUPID's modern!
+SANDY:  I thought you were a schmoo.
+     PROTESTORS:  CUPID's useless!  
+     VOLUNTEERS: To end it once and for all 
+     PROTESTORS: To end it once and for all 
+BOTH:  Sweet cakes, num-nums
+     VOLUNTEERS: The game is over and we've won 
+BOTH:  I want to tell the world 
+     PROTESTORS: The fight has only just begun  
+BOTH:  I love you!  
+     ALL: We're gonna fight for our love
+.ve 2   
+.ss EVERYBODY   
+Darn right! 
+.ad 
+(THE ARGUMENT CONTINUES.  CAMPUS COPS SHOW UP TO DISPERSE THE CROWD.  IN
+THE COMMOTION CUPID FINDS A CLEAR SPACE, TAKES OUT HIS LAST ARROW, LOOKS AT 
+IT, SIGHS, AND WITH A RESIGNED LOOK TURNS AROUND, AIMS BACK OVER HIS SHOULDER   
+AND LETS FLY)   
+.sd 
+
+
+(TWANG OF ARROW)
+.sfx
+(ARROW SPECIAL EFFECT)  
+.md 
+(LOVE THEME AS BEFORE)  
+.ad 
+(THE ARROW SOARS UP INTO THE AIR AND LANDS AMONG THE MILLING THRONG.
+CUPID TURNS - AFRAID TO LOOK.   
+ALL EXIT, DISPERSED BY CAMPUS COPS, EXCEPT MOLLY, ED AND CUPID. 
+AS THE CROWD DISPERSES WE SEE MOLLY AND ED EMBRACING - CUPID'S ARROW
+STRAIGHT THROUGH MOLLY'S HEART. 
+CUPID, WITH A SELF-SATISFIED SMILE, GIVES HIMSELF A 
+POINT AND SAUNTERS OFF) 
+.ld 
+(LIGHTS DOWN)   
+.es 

@@ -1,0 +1,87 @@
+
+
+
+...L..b.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1989/script/bulkmacr.t 
+.bs 1 e "ANOTHER DAMNED COURT SCENE"
+.na jm JUDGE~SIMON~MALAPROP MALAPROP
+.na li BILL~LIBERTY BILL
+.na st KAY~STONE KAY
+.na ho NOAH~HOPE NOAH   
+.na lg LISA~GRIEMENT~(VIGNETTE) LISA
+.na pa PAM~ASSONIC PAM  
+.na ba BAILIFF~HAY BAILIFF  
+.na ja JAKE~SLOBOTNIK~(VIGNETTE) JAKE   
+.ld 
+(FADE IN FROM 1:4.  
+MORE TOYS ON THE JUDGE'S BENCH, OF COURSE)  
+.prip "MORE TOYS"   
+.ch li  
+So Satan picked Charlie Brown's team to represent him in the    
+baseball game?  
+.ch ja  
+No. 
+To represent
+.ul 
+her.
+.ch st  
+Why was Satan picking her team? 
+Isn't that rather unfair?   
+.ch ja  
+Who said the game was supposed to be fair?  
+His Magnificent Mephistophelean Majesty is after all
+known far and wide as the Master of Mischief.   
+.ch st  
+No further questions, your Honour.  
+My esteemed friend here can now start his cross-examination.
+.ch ho  
+Thank you, your Honour. 
+Mr. Slobotnik-- 
+.ch st  
+(INTERRUPTING)  
+But first, your Honour, I think we should call for a recess here.   
+
+To give my learned colleague a better chance to prepare his miserable case. 
+.ch ho  
+But, your Honour, quick cross-examination is essential since
+it ensures that the facts are still fresh in everyone's mind.   
+.ch st  
+Exactly.
+But is it not also essential to be properly preprared so as to better   
+exploit any weaknesses which may have come up in your opponent's case?  
+.ch ho  
+Well, yes.  
+.ch jm  
+Very well.  
+Ten minute recession.   
+.xx ALL~EXCEPT~MALAPROP 
+(GRABBING PHONES)   
+Sell!   
+Sell!   
+.ld 
+(LIGHTS DOWN.)  
+.es 

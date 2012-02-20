@@ -1,0 +1,167 @@
+
+
+
+......y.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FASS 1985 Script Notebook   
+------------------------------------------------------- 
+Monday, December 17 
+
+
+Today, I made the changes we agreed to on Sunday.   
+All scenes have been updated.   
+
+
+I had volunteered to shrink down the first four pages   
+of I:4 to two pages.  I made the changes, but it turns  
+out that my rewrite of that section doesn't make it 
+any shorter (but I think it's a lot better).  In any
+case, I:4 without my rewrite of the opening is saved
+in a file called "1.4safe".  I:4 with my rewrite is 
+saved in "1.4t".    
+
+
+There are sections in I:2 that we were going to 
+shorten.  I plan to do this tomorrow.  (And I really
+will shorten these sections, honest!)   
+
+
+...Steve
+------------------------------------------------------  
+Tuesday, December 18
+
+
+I shortened several sections of I:2.  The new version   
+is saved as "1.2t", the old one as "1.2safe".  The  
+new version really is shorter.  
+
+
+I "tf"ed I:2 and I:4.  1.2.out and 1.4.out are the  
+changed versions.  I didn't tf any of the other 
+scenes.     
+
+
+
+We still need to write the Punster into II:2 (torture). 
+I thought I'd leave that for you.   
+
+
+...Steve
+----------------------------------------------------
+Tuesday December 18 Evening 
+
+
+I have tf'd all the scenes to there output files __.out 
+Yes the punster will be added but have not done it yet. 
+thank-you steve for the adds and changes.   
+PLease contact margaret and tell her that Thursday has  
+become a bad evening to meet to discuss the script. 
+Would it be possible to do it on sunday evening or  
+perhaps thursday evening of the next week.(27th)
+I'm sorry for the inconvience but some of us do have
+wives and children. 
+I tried to phone but was unsuccessful.  
+Thanx           
+                                       Tom. 
+________________________________________________________
+-----------------------------------------------------   
+Wednesday December 19   
+
+
+I'm printing off 4 copies of the script -- one for  
+me, one for Margaret, one for Steve Hayman (the 
+music director), and one for Bernie.  (Bernie offered   
+to look at the script over the holidays and it seemed   
+like a good idea to me.)    
+
+es. I'll talk to Margaret about moving our meeting. 
+
+I'll talk to Margaret about moving our meeting.  Next   
+Thursday is OK for me, as is Sunday evening.
+
+
+...Steve
+-----------------------------------------------------   
+
+
+Dec 29  
+
+
+In 2.3 the song "I don't know how to end it" still  
+has Captain University singing  
+"To put an end to my existence" 
+I changed this at one point to  
+"To end my sad existence"   
+which fits the scansion (sp?) much better.  
+Was this ever changed and if so was it changed back?
+I have not changed the file but would suggest the change be 
+made.  (I changed line 27 in 2.1 from grad man to cockroach 
+man.)   
+Also in 2.3, answere (b) and (c) to the first question  
+(Old Lady at corner) should be switched (and appropriate
+changes made in the next couple of lines).  Or if   
+not 2.7 should be changed to be consistent with this scene  
+
+
+                         William Hughes 
+------------------------------------------------------- 
+
+
+Dec 31  
+
+
+One major point, two minor points, one flame
+
+
+1.1  Why is the rumble no longer associated with the spending cuts. 
+     This makes hash of what little was left of the plot.  In   ....     particular 2.1 now makes no sense w
+
+     particular 2.1 now makes no sense whatsoever   
+
+
+2.1  Changing the ending to get rid of Shit is inane.  Also 
+     if Captain University is so strong and macho why in the
+     hell does he attempt suicide.  
+
+
+        ******   FLAME ON  ******** 
+
+
+2.4   The Angela Mercy sledgehammer sucks moonrocks through a straw 
+      badly.  This point was discussed at great length during the   
+      plotting of the show.  We agreed that it was possible, in 
+      fact not that difficult, to turn the coffee machine into  
+      a bomb in such an obvious manner that even a moron in the 
+      last row of the balcony would know what was going on. 
+      This idiotic device adds nothing and detracts seriously   
+      from the flow of the play.  Please reconsider 
+
+
+                                William Hughes  
+------------------  
+The files in the 2.7 catalog are now renamed and moved to 2.6, and the  
+old 2.6 is sitting under /script.   
+                            Steve   

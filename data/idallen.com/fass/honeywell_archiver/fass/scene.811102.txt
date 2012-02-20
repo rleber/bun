@@ -1,0 +1,183 @@
+
+
+
+.|...{V 
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so 82macros
+.bs 2 1 "Starsky's Hutch: The Bunny Club"   
+.na wa WAITER WAITER
+.na md MAITRE'D MAITRE'D
+.na fl FLOPSY~PARTON FLOPSY 
+.na mo MOPSY~FLOOR MOPSY
+.na br BRUCE~COTTONTAIL BRUCE   
+.na ca CARPENTER CARPENTER  
+.na va VAMPIRE~WALRUS VAMPIRE   
+.na pr PRINCESS PRINCESS
+.na ea EASTER~BUNNY EASTER  
+.ld 
+(THE SCENE OPENS IN STARSKY'S HUTCH, A BUNNY CLUB.  
+THERE IS A  
+WAITER WANDERING AROUND PUTTING CANDLES ON THE TABLES OR SOME SUCH  
+THING.  
+A MAITRE D' ENTERS) 
+.ch md  
+Where are the waitresses?   
+.ch wa  
+They're all in the kitchen, Sir.
+.ch md  
+What are they doing there?  
+.ch wa  
+I think they're putting raisons in the salad.   
+.ch md  
+That's not their job.   
+Get them out here, on the double.   
+.ch wa  
+Right Sir!  
+(HE TURNS TO THE KITCHEN AND CALLS) 
+Flopsy! 
+.ad 
+(A BUNNY WITH HUGE EARS AND DRESSED IN TIGHT PANTS, RUNS OUT)   
+.ex 
+Mopsy!  
+.ad 
+(A BUNNY SAUNTERS OUT OF THE KITCHEN.   
+SHE IS DRESSED LIKE THE FIRST BUNNY)
+.ex 
+Bruce!  
+.ad 
+(A MALE BUNNY RUSHES OUT.   
+HE IS DRESSED LIKE THE OTHER TWO)   
+.ch md  
+A - ten - hutch!
+.ad 
+(THE BUNNIES LEAP TO ATTENTION) 
+.ex 
+Okay Bunnies, you all know what to do, right?   
+.ch fl  
+Right.  
+.ch br  
+Right.  
+.ch mo  
+What?   
+.ch md  
+You're going to take customers orders, right?   
+.ch fl  
+Right!  
+.ch md  
+You're going to serve the drinks, right?
+.ch mo  
+Right!  
+.ch md  
+You're going to let the customers pinch your tails, right?  
+.ch br  
+(WITH A SMILE ON HIS FACE)  
+Right!  
+.ch md  
+Now, roll call. 
+(HE PRODUCES A CLIPBOARD)   
+Bunny Flopsy Parton?
+.ch fl  
+Here.   
+.ch md  
+Bunny Mopsy Floor?  
+.ch mo  
+Here.   
+.ch md  
+Bunny Bruce Cottontail? 
+.ch br  
+Here.   
+.ch md  
+Bunny Laurel Lake?  
+(PAUSE) 
+Bunny Lake? 
+(PAUSE) 
+.ch fl  
+Bunny Lake is missing, Sir. 
+.ch md  
+Why is she missing? 
+.ch fl  
+Well, she was moonlighting in a pregnancy testing clinic
+and well... 
+.ch md  
+I think I understand.   
+.ch fl  
+The funeral is next week.   
+.ch md  
+I feel we should do something, play taps maybe...   
+.ch br  
+Why don't we play backgammon instead?   
+.ch wa  
+Haven't you got any respect?
+Now be quiet.   
+.ad 
+(THE WAITER PROCEEDS TO PLAY TAPS BY BLOWING INTO HIS HANDS.
+IT SOUNDS AWFUL)
+.ex 
+And now for my next number...   
+(HE BEGINS) 
+.ch md  
+Enough! 
+(ASIDE) 
+Gosh, he's a dumb waiter!   
+Now, it's   
+time for inspection.
+(HE LOOKS THEM OVER)
+Bunny Cottontail,   
+I can see your tail.
+.ch br  
+Well, it seems such a shame to hide it. 
+Customers like to see a nice piece of tail. 
+.ch md  
+The policy of this club is touch, don't look.   
+(HE MOVES ON)   
+Bunny Parton, you haven't got your ears rolled up.  
+.ch fl  
+Oh Sir, you can't imagine how difficult it is to get our ears   
+to fit under these fake human ears. 
+It's practically impossible.
+.ch md  
+Excuses excuses, Straighten up, here come some customers.   
+.ad 
+(THE EASTER BUNNY, THE VAMPIRIC WALRUS, THE CARPENTER AND THE   
+PRINCESS COME IN.   
+THE MAITRE D' SHOWS THEM TO A TABLE.
+MOPSY   
+GOES TO TAKE THEIR ORDER)   
+.ch mo  
+Would you like something to drink?  
+.ch ca  
+I'd like a rusty nail.  
+.ch va  
+I'd like a bloody mary. 
+.ch pr  
+I'd like a molotov cocktail.
+.ch ea  
+Forget all that.
+We'll have carrot juice all around. 
+.ld 
+(A GIANT 16 TONNE WEIGHT COMES CRASHING DOWN ON THE HUMANITIES  
+STAGE, AND THE SCENE ENDS WITH SPLITTING HARES.)
+.es 

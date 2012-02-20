@@ -1,0 +1,84 @@
+
+
+
+..o...a.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so 84macr.t
+.bs 1 1 Crapper 
+.ld 
+(THE ONLY LIGHT USED IN THIS COMMERCIAL IS A SINGLE, TIGHT SPOT ON ONE OF   
+OF THE SLOTS.  THE SEQUENCE FOLLOWED FOR THE BLACKOUTS IS AS FOLLOWS:  LIGHTS   
+OUT, THEN SOUND OF TOILET FLUSHING AS CLOSE AFTER AS POSSIBLE)  
+.ad 
+(LITTLE BOY.  HE LOOKS LOST)
+.xx LITTLE~BOY  
+Mommy?  What happened to my baby alligator? 
+.ld 
+(LIGHT OUT) 
+.sd 
+(TOILET FLUSHING.   
+ANNOUNCER COMES ON OVER SPEAKERS)   
+.xx VOICE~OVER  
+From America's greatest living horror writer, Stephen King. 
+The man who brought you Carrie...The Shining...and Christine...comes his
+most frightening novel yet--
+.ld 
+(SPOT UP ON BUFFY LOWE FUSSING WITH HAIR)   
+.xx YOUNG~WOMAN 
+I'll be with you in a minute dear.  I just have to fix my hair. 
+.ld 
+(SPOT OUT)  
+.sd 
+(TOILET FLUSHING)   
+.xx VOICE~OVER  
+Stephen King presents...Crapper.
+.ld 
+(SPOT UP, TIGHT ON HEAD AND SHOULDERS OF MEL LOWE)  
+.xx YOUNG~MAN   
+Buffy?  What's taking you so long...Buffy--?
+.ad 
+(HE LOOKS DOWN, RECOILS IN SHOCK AND HORROR)
+.ex 
+Oh my god....   
+.ld 
+(SPOT OUT)  
+.sd 
+(TOILET FLUSHING)   
+.xx VOICE~OVER  
+A novel of terror...and of the brave sewerworker who tried to fight it....  
+.ld 
+(SPOT UP ON NORTON, FROM "THE HONEYMOONERS.")   
+.xx NORTON  
+Hey, Ralphie boy, you there?  Hey, hey, Ralph, don't try to kid me...you there  
+Ralph?  
+.ld 
+(SPOT OUT)  
+.sd 
+(TOILET FLUSHING)   
+.xx VOICE~OVER  
+Crapper...by Stephen King. You won't be able to sit for a month.
+.ld 
+(LIGHTS DOWN)   

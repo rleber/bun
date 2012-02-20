@@ -1,0 +1,348 @@
+
+
+
+...L..b.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1989/script/bulkmacr.t 
+.bs 2 d "ALL'S SWELL THAT RENDS HELL"   
+.na ju JUDGE~SIMON~MALAPROP MALAPROP
+.na sa SATAN~2:3 SATAN  
+.na ab ABBY~RHODES ABBY 
+.na lg LISA~GRIEMENT~(STAGE) LISA   
+.na rh CHARLIE~BROWN CHARLIE~BROWN  
+.na o1 LUCY~VAN~PELT LUCY   
+.na o2 VIOLET~EYESTODIEFOR VIOLET   
+.na in SNOOPY SNOOPY
+.na bn SHERMY~HEMLINESLY SHERMY 
+.na pl LINUS~VAN~PELT LINUS 
+.na um UMPIRE UMPIRE
+.na wb JAKE~SLOBOTNIK~(STAGE) JAKE  
+.na pa PAM~ASSONIC PAM  
+.na li BILL~LIBERTY BILL
+.na ba BAILIFF~HAY BAILIFF  
+.na ro LUCAS~SPIELBERG SPIELBERG
+.na gd GOD GOD  
+.na ab ABBY~RHODES ABBY 
+.na lg LISA~GRIEMENT~(STAGE) LISA   
+.na fe FERGIE FERGIE
+.na ow OSKAR~WARNER OSKAR   
+.na ch CHEERLEADERS CHEERLEADERS
+.na sn SNOOPY SNOOPY
+.na ar ARCHIE~ANDREWS ARCHIE
+.na ve VERONICA VERONICA
+.na be BETTY BETTY  
+.na el MRS.ELIZA~(STAGE) MRS.~ELIZA 
+.na lf LUCY~FUR LUCY
+.na td TED TED  
+.na fd FRED FRED
+.na sl SALLY SALLY  
+.na mc JOE~BOB~HATFIELD-McCOY McCOY 
+.na bl HEROIC~JAMES~BLONDE HEROIC~BLONDE
+.na sa ALL~SATANS SATANS
+.ad 
+(STRAIGHT FROM 2:3) 
+.ch ju  
+(FROM WHEREVER THE TRIAL IS)
+Can we fast-food this a little? 
+.ch ro  
+No problem. 
+.ld 
+(LIGHTING CHANGE TO FAST FORWARD SECTION.   
+THE REST OF THE HIGHLIGHTS ARE IN FAST FORWARD, WITH THE ACTORS 
+TALKING IN HIGHSPEED GIBBERISH THROUGHOUT.  
+BUCK AND FERGIE TALK FOR A BIT, 
+THEN WE SEE HIGHLIGHTS OF THE GAME SO FAR:) 
+.ad 
+(1 -- TWO OUTFIELDERS AND AN INFIELDER COLLIDE GOING FOR A FLY BALL)
+.ad 
+(2 -- A MAN SQUARES TO BUNT, AND GETS HIT IN THE GROIN WITH THE PITCH)  
+.ad 
+(3 -- THE OUTFIELDERS AND INFIELDER GO FOR A BALL AGAIN, AND THIS TIME LET  
+IT DROP)
+.ad 
+(4 -- A PLAYER CAUGHT STEALING, FOLLOWED BY AN UNBELIEVABLY EXAGGERATED 
+ARGUMENT BETWEEN AN UMPIRE AND A MANAGER)   
+.ad 
+(5 -- THE OUTFIELDERS AND INFIELDER GO FOR ANOTHER BALL, AND GET HIT BY 
+A DROPPING SEAGULL) 
+.ld 
+(6 -- THE PLAY DURING WHICH THE MURDER HAPPENS. 
+AT THE PLATE, CHARLIE BROWN IS SMOLDERING, AND LISA IS STRUGGLING   
+WITH ABBY WHO STABS SATAN 2:3.  
+JUST AS THE BUCKET OF WATER IS ABOUT TO HIT THE PERSON BEING
+EXTINGUISHED, THE LIGHTING CHANGES BACK TO THE COURTROOM.)  
+.prip "BASEBALLS"   
+.prip "BASEBALL BAT"
+.prip "DEAD SEAGULL"
+.prip "BUCKET OF WATER (3)" 
+.ch li  
+Objection!  
+Stop the tape!  
+.ad 
+(THE TAPE IS STOPPED WITH THE BUCKET POISED OVER THE ACTOR'S HEAD)  
+.ex 
+Your Honour, is this relevant?  
+.ch pa  
+(AS CLARENCE DARROW IN 'INHERIT THE WIND', THE SPENCER TRACY VERSION)   
+Your honour, learned council, ladies and gentlemen of the jury: 
+I think what I have to say was best said by a wise man. 
+A man I think we've all heard of.   
+The quality of mercy is not strained,   
+it droppeth as the gentle rain from heaven...   
+.ch li  
+If we run the tape, will you shut up?   
+.ch pa  
+Yes.
+.ch li  
+Objection withdrawn.
+.ch fe  
+...making the third out.
+.ld 
+(LIGHTING SHIFT FOR VIDEO.  
+WE SEE THE WATER HIT THE ACTOR, AND WE SEE SATAN'S LEGS AND A TRIDENT,  
+STAGE LEFT) 
+.ch pa  
+Can we see that from another angle? 
+.ch ro  
+Certainly.  
+.ad 
+(SPIELBERG TURNS THE VCR.   
+RE-ENTER BUCK AND FERGIE)   
+.ch fe  
+...making the third out.
+.ad 
+(WE SEE THE SAME SCENE AS BEFORE (INCLUDING BUCKET  
+OF WATER) EXCEPT EVERYBODY IS ROTATED.  
+NOW WE SEE SATAN'S LEGS AND A TRIDENT STAGE RIGHT)  
+.ch pa  
+No, not that angle. 
+Try another one.
+.ch rh  
+Good Grief. 
+.ch ro  
+Let me try the centre field camera. 
+.ch fe  
+...making the third out.
+.ad 
+(WE SEE IT WITH THE ACTOR GETTING WET DOWNSTAGE.
+THIS TIME, THE WATER HITS THE ACTOR AND THE JUDGE (POSSIBLY).   
+WE ALSO SEE LISA GET HIT ON THE HEAD BY ABBY,   
+WHO TAKES THE TRIDENT AND STABS SATAN WITH IT)  
+.ch pa  
+There!  
+Run that back!  
+.ad 
+(THE STABBING IS REVERSED)  
+.ch fe  
+Tow drith eth g-ni-kam...   
+.ad 
+(THE STABBING IS REPLAYED)  
+.ex 
+...making the third out.
+.ad 
+(THE TAPE IS FROZEN)
+.ch pa  
+Notice that it is not my client stabbing Satan. 
+The murderer is...you!  
+.ad 
+(POINTS AT ABBY WHO IS STABBING SATAN.) 
+.md 
+(DRAMATIC CHORD)
+.ex 
+Hit the lights. 
+.sd 
+(CRASH) 
+.ld 
+(LIGHTS BACK TO COURTROOM)  
+Your Honour, based on this witness's testimony, I move for  
+summary dismissal.  
+.ch ju  
+Very well.  
+Case sera sera. 
+.ch pa  
+Damn, I'm good! 
+.ld 
+(STAGE IS DARK DURING THIS SCENE.   
+LIGHTS COME UP IN SPOTS ONLY ON THE CHARACTER(S) BEING  
+DISCUSSED BY GOD.)  
+.sd 
+(DRAGNET THEME.)
+.ld 
+(LIGHTS UP ON ABBY.)
+.ch gd  
+Abby Rhodes, former executive assistant, was indicted   remeand tried for the murder of Sata
+
+and tried for the murder of Satan.  
+Hell Supreme Court found Rhodes guilty  
+and sentenced her to be put to life.
+.ld 
+(LIGHTS DOWN ON ABBY.   
+LIGHTS UP ON LISA AND OSKAR.)   
+.ex 
+Lisa Griement married Oskar Warner. 
+Together, they founded a Department of Modern Polka 
+at the University of Waterloo.  
+.ld 
+(LIGHTS DOWN ON LISA AND OSKAR, UP  
+ON TOM, JERRY, McCOY, AND HEROIC BLONDE.)   
+.ex 
+Tom and Jerry, Inquisition Stadium radio announcers,
+were later found brutally murdered in their booth.  
+.ch bl  
+Any ideas on the cause of death?
+.ch mc  
+I'd say they were bludgeoned to death with a large  
+blunt instrument...something like a typewriter. 
+.ch bl  
+Yeah.   
+Right, McCoy.   
+.ld 
+(LIGHTS DOWN ON McCOY ET AL, UP ON TED AND FRED AND SALLY.) 
+.ch gd  
+Ted and Fred reformed and become televangelists.
+.ch td  
+Be healed!  
+.ad 
+(WHAPS SALLY IN A HEALING FASHION.  
+TED AND FRED EXCHANGE HIGH FIVES.)  
+.xx TED~AND~FRED
+Whoa!   
+First base! 
+.ld 
+(LIGHTS DOWN ON TED, FRED, SALLY)   
+.ch gd  
+Satan's Cheerleaders moved to the Playboy mansion to
+await careers as serious actresses. 
+.ld 
+(LIGHTS UP ON CHEERLEADERS AND SNOOPY.  
+SNOOPY IS DRESSED AS JOE COOL.) 
+.ex 
+While there, they met the man of their dreams.  
+.ch sn  
+Touched the dog!
+.ld 
+(LIGHTS DOWN ON CHEERLEADERS AND SNOOPY.
+LIGHTS UP ON ARCHIE, BETTY, AND VERONICA.)  
+.ch gd  
+Archie, Betty, and Veronica overcame their reality impairment   
+and went on to star with Mrs. Eliza in a major ABC sitcom.  
+.ch be  
+Jack, Janet, quick, find Mr. Roper's pants which he tore
+while trying to fix the toilet when he came up to get rent, 
+which I didn't have so all we have to do is give the puppy  
+to Mrs. Roper.  
+And you thought I was stupid.   
+.ld 
+(LIGHTS DOWN ON ALL.
+LIGHTS UP ON SATANS, WHO ARE LYING TOGETHER IMPALED ON  
+THE GROUND.)
+.md 
+(SATAN'S THEME PLAYED BY THE FULL BAND) 
+.ch gd  
+And Lucifer the Archangel...
+.ad 
+(LUCY FUR GETS UP)  
+.ex 
+Also known as Satan...  
+.ad 
+(ANOTHER SATAN STANDS UP)   
+.ex 
+Beelzebub...
+.ad 
+(ANOTHER SATAN STANDS UP)   
+.ex 
+Old Nick... 
+.ad 
+(ANOTHER SATAN STANDS UP)   
+.ex 
+The Prince of Darkness...   
+.ad 
+(ANOTHER SATAN STANDS UP)   
+.ex 
+Father of Lies...   
+.ad 
+(ANOTHER SATAN STANDS UP)   
+.ex 
+Old Scratch...  
+.ad 
+(ANOTHER SATAN STANDS UP)   
+.ex 
+The Adversary...
+.ad 
+(THE FINAL SATAN STANDS)
+.ex 
+...remained dead.   
+.ad 
+(ALL SATANS COLLAPSE LIKE DOMINOES.)
+.sb "TO HELL AND BACK, JUST FOR YOU" "PUT A LITTLE LOVE IN YOUR HEART"  
+That's it for '89   
+Had a hell of a time
+Giving the devil his due!   
+Joking at hell's expense
+To thrill our audience  
+To Hell and back just for you!  
+.ve 8   
+     Life is swell  
+     At U. of Waterloo  
+     Life is hell   
+     At U. of Waterloo  
+     We want
+     To be  
+     At U.  
+     Of T.! 
+.ve 6   
+Confronted omniscience  
+With damned impertinence
+Speak of the devil...we do! 
+Then in our quest for grins,
+Tried all the deadly sins   
+To Hell and back just for you!  
+.ve 8   
+     Life is grand  
+     At U. of Waterloo  
+     Life is bland  
+     At U. of Waterloo  
+     We could   
+     Have been  
+     At Brock   
+     Or Queen's!
+.ve 6   
+(Good)bye to rehearsal noise
+Adieu to Satan's choice 
+That's it for learning our lines
+Aloha to dev'lish jokes 
+Auf wiedersehn, dear folks  
+Au revoir FASS '89. 
+.ve 8   
+     Guess we're stuck  
+     At U. of Waterloo  
+     Out of luck
+     At U. of Waterloo  
+     But we 
+     Won't cry. 
+     It's not   
+     De Vrie!   
+.es 

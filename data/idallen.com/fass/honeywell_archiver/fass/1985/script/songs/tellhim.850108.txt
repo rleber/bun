@@ -1,0 +1,67 @@
+
+
+
+........
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1985/script/bulkmacr.t 
+.sb "Knock'em Out Cold" "Tell Him"  
+.ve 8   
+(VILLAINS:) We know what is the most fun,   
+            It's breaking peoples' heads,   
+            Acting like Atilla the Hun, 
+            And mutilating. 
+            So we're challenging you
+            To a knock-down fight.  
+            We will murder you  
+            At Fed Hall tonight.
+.ve 3   
+Punch them where they'll feel like they're on fire, 
+Kick them where their voices will go higher,
+Sock 'em, block 'em, shock 'em, knock 'em out cold. 
+.ve 6   
+(HEROES, SMUGLY:) Heroes don't get mad, 
+                  And they are never bad,   
+                  And heroes never grumble. 
+                  Since we obey the rules,  
+                  We must not fight you fools,  
+                  We will not rumble.  Oh, no...
+.ve 1   
+(IN THIS VERSE THE HEROES GET ANGRIER AND ANGRIER)  
+.ve 8   
+(VILLAINS:) Be at Fed Hall before eight 
+            'Cause we will bring a bomb.
+            And if you arrive there too late,   
+            We'll detonate it.  
+            But you won't show up   
+
+            'Cause you have no guts.
+            And we'll say that your 
+            Mothers all were sluts. 
+.ve 3   
+(HEROES:) Punch them where they'll feel like they're on fire,   
+          Kick them where their voices will go higher,  
+(ALL:)    Sock 'em, block 'em, shock 'em, knock 'em out cold.   
+.es 

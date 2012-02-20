@@ -1,0 +1,112 @@
+
+
+
+......s.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hy 0   
+.nf 
+.ft 3   
+.ps 28  
+.vs 36  
+.ce 5   
+IMPORTANT NOTICE
+FOR 
+ALL STUDENTS
+AT THE  
+UNIVERSITY OF WATERLOO  
+.fi 
+.ps 10  
+.vs 12  
+.ft 1   
+.sp 3v  
+In an emergency meeting of the UW senate and the Board of Directors,
+neither of which took place, a motion was passed making a new Winter
+term course \f2COMPULSORY\fP for \f2ALL\fP undergraduate students,  
+graduate students, faculty members, staff, and administration,  
+both on-campus and off. 
+Due to a gross oversight by university officials, the following 
+entry is conspicuously and quite rightly missing from the 1981-82   
+Undergraduate Calendar. 
+.in 1i  
+.sp 1v  
+.nf 
+.ft 1   
+FASS 101    W   3C,1L    -0.5   
+.ft 3   
+Faculty, Administration, Staff and Students 
+.ft 1   
+.sp 0.5v
+.fi 
+.na 
+Topics uncovered in this course include a vampiric      
+walrus, Hamlet in 3 1/2 minutes, the unfailing logic of 
+a detective who failed \f3Phil 140\fP, turtle auctions, and 
+the homosexuality of an egg who comes out of the props  
+closet. 
+.sp 0.5v
+.ft 2   
+
+
+
+
+
+
+
+
+
+
+
+Prereq: Psych 271 or permission of parent or legal guardian.
+.br 
+Not offered by correspondence.  
+.sp 1v  
+.ft 1   
+.in 0   
+There will be five (5) lectures:
+.in 2i  
+.nf 
+.ta +6n +3n +10m +8nR +1m +2m   
+Feb.	3	Humanities Theatre	8:00	W
+Feb.	4	Humanities Theatre	8:00	R
+Feb.	5	Humanities Theatre	7:00	F
+Feb.	5	Humanities Theatre	10:00	F	Advanced Class
+Feb.	6	Humanities Theatre	8:00	S	Advanced Class 
+.sp	1v  
+.in 0   
+.fi 
+.ad 
+Tuition is the cheapest on campus: $3.00 for each regular class and $3.50   
+for each advanced class.  All lectures, labs, and performances are in the   
+Humanities Theatre.  So whether you are an old FASSite or a 
+starting-this-year-er, whether on-campus or flying in from that Whitehorse  
+work term, FASS '82 guarantees you'll make the grade (we get the credit 
+though).  Just to make things more difficult, this compulsory course has very   
+limited class sizes so register SOON.  The registrar's office has been moved
+to the Humanities Box Office to handle the rush.  See you at FASS '82!  
+.sp 3v  
+.ta 6iR 
+	Fellows of the Aurum Stage Statue  

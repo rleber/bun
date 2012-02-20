@@ -1,0 +1,409 @@
+
+
+
+......
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ic^^   
+.af (mon) 01
+.af (day) 01
+.af (min) 01
+.af (hour) 01   
+.he "FASS 1978"CAST by SCENE"FASS 1978" 
+.fo "F.A.S.S. 1978"Page %"^(day)/^(mon)/^(year) ^(hour):^(min)" 
+.tr~
+.pc#
+.nf 
+.at(dots)   
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . .   
+.en(dots)   
+.ta 60r 
+.sp3
+.ne15   
+.ce 
+.ul 
+Scene~I-1~-~Grand~Opening   
+.sp 
+.mg 
+^(dots) 
+Gorgon~Zola	Wendy~Bush  
+Henri~Mateus	Lorne~Crozon   
+Madeira	Monica~Weidneck 
+Mott~Zarella	Doug~Thompson  
+Parmesan	Sondra~Vaughan 
+Radio~Announcer	Tom~Hocaliuk
+Ricotta	Brian~McManus   
+Ruby~Rouge	Bev~Roberton 
+Val~Veeta	Darlene~Friesen   
+Piano~Player	Murray~Chown   
+.sp3
+.ne15   
+.mg 
+
+
+.ce 
+.ul 
+Scene~I-2~-~Pandemonium~in~the~Newspaper~Office 
+.sp 
+.mg 
+^(dots) 
+Abbie~Road	Eva~Witkowski
+Blue~Nun	Gillian~Teichert   
+Charles~U.Farley	Wayne~Sprung   
+Informer	Graham~Davies  
+Jimmy~Molson	Rick~Cameron   
+Jock~Mulligan	Steve~Webb
+Lotus~Lane	Samm~Ristich 
+Parmesan	Sondra~Vaughan 
+Obi-don~Cortisone	Mark~Winnett  
+Orson~Buggy	Preston~Gurd
+Shirley~T.Goodness	Gay~Foulis   
+
+.mg 
+
+
++   
+.mg 
+^(dots) 
+Lonesome~Charlie	Jim~Gardner
+Henri~Mateus	Lorne~Crozon   
+Ruby~Rouge	Bev~Roberton 
+Baby~Duck~Nelson	Neil~Kennedy   
+Val~Veeta	Darlene~Friesen   
+Ricotta	Brian~McManus   
+Gorgon~Zola	Wendy~Bush  
+Roquefort~Vaselino	Nelson~Dyck  
+.sp3
+.ne15   
+.mg 
+
+
+.ce 
+.ul 
+Scene~I-3~-~Cop~Shop:~The~Reporters~Get~Arrested
+.sp 
+.mg 
+^(dots) 
+Desk~Sergeant	Oscar~Nierstrasz  
+Helen~Highwater	Liz~Krakana 
+Jimmy~Molson	Rick~Cameron   
+Lance~Pincushion	Chris~Dobbin   
+Lotus~Lane	Samm~Ristich 
+Mia~Culpa	Christine~Mueller 
+Sam~Spade	Scott~McAthey 
+Sgt.Friday	Scott~Nicoll 
+Spiro~Keets	John~Sirett 
+Officer~#1	Bob~Bieszka  
+Officer~#2	Jack~Cole
+.sp3
+.ne15   
+.mg 
+
+
+.ce 
+.ul 
+Scene~I-4~-~Tarzan~Skit~and~Introduction~to~Joke~Books  
+.sp 
+.mg 
+^(dots) 
+Assistant~Director	Dave~Gouthro 
+Director	Joe~Supple 
+Farrah~Forcett	Cathy~Curtis 
+Gorgon~Zola	Wendy~Bush  
+Lee~Major-Sevenths	Jim~Campbell 
+Mott~Zarella	Doug~Thompson  
+Obi-don~Cortisone	Mark~Winnett  
+Parmesan	Sondra~Vaughan 
+Ricotta	Brian~McManus   
+Roquefort~Vaselino	Nelson~Dyck  
+Stage~Hand	Warren~Christiani
+Val~Veeta	Darlene~Friesen   
+Will~the~Cameraman	Roger~Puttock
+Helen~Highwater	Liz~Krakana 
+Mia~Culpa	Christine~Mueller 
+Sam~Spade	Scott~McAthey 
+Spiro~Keets	John~Sirett 
+.sp3
+.ne15   
+.mg 
+
+
+.ce 
+.ul 
+Scene~I-5~-~The~Casino~Scene
+.sp 
+.mg 
+^(dots) 
+Ann~Chilada	Eva~Witkowski   
+Baby~Duck~Nelson	Neil~Kennedy   
+Beefo~Stroganoff	Phil~Eastman   
+Blue~Nun	Gillian~Teichert   
+Casino~Singer~#1	Eric~Baerg 
+Casino~Singer~#2	Warren~Christiani  
+Casino~Singer~#3	Steve~Hull 
+Casino~Singer~#4	Kevin~Flanagan 
+Casino~Ingenue	Frances~Graham   
+Charles~U.Farley	Wayne~Sprung   
+Chicken~Cacciatore	Duncan~Stanners  
+Danielle~BoomBoom	John~Lounds   
+Esther~Go	Dot~Gagne 
+Feth~Muscatel	M.M.Frezell   
+Helen~Highwater	Liz~Krakana 
+Henri~Mateus	Lorne~Crozon   
+Julius~C.Salad	Graham~Davies
+Lance~Pincushion	Chris~Dobbin   
+Lonesome~Charlie	Jim~Gardner
+Madeira	Monica~Weidneck 
+Mia~Culpa	Christine~Mueller 
+Nina~Muscatel	Marney~Heatley
+One~Armed~Bandit	Bill~Pearson~&~Bob~Farvolden   
+Patron~#1	Jim~Bakker
+Patron~#2	Steve~Coates  
+Pinta~Muscatel	Ron~Dragushan
+Ruby~Rouge	Bev~Roberton 
+Sam~Spade	Scott~McAthey 
+Spiro~Keets	John~Sirett 
+W.C.Fields	Paul~Saunders
+.sp3
+.ne15   
+.mg 
+
+
+.ce 
+.ul 
+Scene~I-6~-~Rocko~Tries,~Shirley~Succeeds,~Lonesome~Isn't   
+.sp 
+.mg 
+^(dots) 
+Abbie~Road	Eva~Witkowski
+Lonesome~Charlie	Jim~Gardner
+Orson~Buggy	Preston~Gurd
+Roquefort~Vaselino	Nelson~Dyck  
+Shirley~T.Goodness	Gay~Foulis   
+.sp3
+.ne15   
+.mg 
+
+
+.ce 
+.ul 
+Scene~I-7~-~Wood~Nymphs~In~The~Movie~Studio 
+.sp 
+.mg 
+^(dots) 
+Baby~Duck~Nelson	Neil~Kennedy   
+Blue~Nun	Gillian~Teichert   
+Bolt~Upright	Bernie~Roehl   
+Clapboard~Man	Ian~Kakoschke 
+Director	Joe~Supple 
+Farrah~Forcett	Cathy~Curtis 
+Feth~Muscatel	M.M.Frezell   
+Henri~Mateus	Lorne~Crozon   
+Madeira	Monica~Weidneck 
+Nina~Muscatel	Marney~Heatley
+Pinta~Muscatel	Ron~Dragushan
+Ruby~Rouge	Bev~Roberton 
+Stage~Hand	Warren~Christiani
+Centipede~Stamper~#1	Andrew~Zador   
+Centipede~Stamper~#2	Wendy~Middaugh 
+Centipede~Stamper~#3	Liz~Krakana
+Centipede~Stamper~#4	Dot~Gagne  
+.sp3
+.ne15   
+.mg 
+
+
+.ce 
+.ul 
+Scene~II-1~-~Hold~It
+.sp 
+.mg 
+^(dots) 
+Baby~Duck~Nelson	Neil~Kennedy   
+Blue~Nun	Gillian~Teichert   
+Charles~U.Farley	Wayne~Sprung   
+Feth~Muscatel	M.M.Frezell   
+Gorgon~Zola	Wendy~Bush  
+Henri~Mateus	Lorne~Crozon   
+Madeira	Monica~Weidneck 
+Mott~Zarella	Doug~Thompson  
+Nina~Muscatel	Marney~Heatley
+Obi-don~Cortisone	Mark~Winnett  
+Parmesan	Sondra~Vaughan 
+Photographer	Dave~Gouthro   
+Pinta~Muscatel	Ron~Dragushan
+Preston~Cleaned	Steve~Coates
+Ricotta	Brian~McManus   
+Ruby~Rouge	Bev~Roberton 
+Val~Veeta	Darlene~Friesen   
+Warren~Factions	Bernie~Roehl
+.sp3
+.ne15   
+.mg 
+
+
+.ce 
+.ul 
+Scene~II-2~-~The~Gaol~Scene~with~Rover  
+.sp 
+.mg 
+^(dots) 
+Arlo~Guthrie	Ian~Allen  
+Baby~Duck~Nelson	Neil~Kennedy   
+Drunk~#1	Ralph~Granz
+Drunk~#2	Andy~Mueller   
+Father~Rapper	Paul~Saunders 
+Helen~Highwater	Liz~Krakana 
+Hooker~#1	Marney~Heatley
+Hooker~#2	Wendy~Middaugh
+Jailer	Jack~Cole
+Jimmy~Molson	Rick~Cameron   
+Mia~Culpa	Christine~Mueller 
+Mr.Bojangles	Rich~Willms
+Ricotta	Brian~McManus   
+Sam~Spade	Scott~McAthey 
+Lotus~Lane	Samm~Ristich 
+Spiro~Keets	John~Sirett 
+Mott~Zarella	Doug~Thompson  
+Madeira	Monica~Weidneck 
+.sp3
+.ne15   
+.mg 
+
+
+.ce 
+.ul 
+Scene~II-3~-~Shirley~Gets~The~Monkeys   
+.sp 
+.mg 
+^(dots) 
+Lonesome~Charlie	Jim~Gardner
+Orson~Buggy	Preston~Gurd
+Roquefort~Vaselino	Nelson~Dyck  
+Shirley~T.Goodness	Gay~Foulis   
+.sp3
+.ne15   
+.mg 
+
+
+.ce 
+.ul 
+Scene~II-4~-~The~Famous~and~Much~Anticipated~AIA~Scene  
+.sp 
+.mg 
+^(dots) 
+Beauregard	Roger~Puttock
+Jimmy~Molson	Rick~Cameron   
+Lotus~Lane	Samm~Ristich 
+Madeira	Monica~Weidneck 
+Mott~Zarella	Doug~Thompson  
+Stanislaus	Steve~Hull   
+.sp3
+.ne15   
+.mg 
+
+
+.ce 
+.ul 
+Scene~II-5~-~One~Small~Step:~They~Find~The~Monkeys  
+.sp 
+.mg 
+^(dots) 
+Lonesome~Charlie	Jim~Gardner
+Orson~Buggy	Preston~Gurd
+Roquefort~Vaselino	Nelson~Dyck  
+Shirley~T.Goodness	Gay~Foulis   
+.sp3
+.ne15   
+.mg 
+
+
+.ce 
+.ul 
+Scene~II-6~-~The~Gala~Cecil~B.DeMille~Type~Ending   
+.sp 
+.mg 
+^(dots) 
+Ann~Chilada	Eva~Witkowski   
+Beefo~Stroganoff	Phil~Eastman   
+Blue~Nun	Gillian~Teichert   
+Bolt~Upright	Bernie~Roehl   
+Charles~U.Farley	Wayne~Sprung   
+Chicken~Cacciatore	Duncan~Stanners  
+Director	Joe~Supple 
+Esther~Go	Dot~Gagne 
+Farrah~Forcett	Cathy~Curtis 
+Father~Rapper	Paul~Saunders 
+Feth~Muscatel	M.M.Frezell   
+Gorgon~Zola	Wendy~Bush  
+Helen~Highwater	Liz~Krakana 
+Henri~Mateus	Lorne~Crozon   
+Jimmy~Molson	Rick~Cameron   eforJuli
+
+Julius~C.Salad	Graham~Davies
+Lance~Pincushion	Chris~Dobbin   
+Lonesome~Charlie	Jim~Gardner
+Lotus~Lane	Samm~Ristich 
+Madeira	Monica~Weidneck 
+Mia~Culpa	Christine~Mueller 
+Mott~Zarella	Doug~Thompson  
+Mr.Bojangles	Rich~Willms
+Nina~Muscatel	Marney~Heatley
+Obi-don~Cortisone	Mark~Winnett  
+Orson~Buggy	Preston~Gurd
+Parmesan	Sondra~Vaughan 
+Pinta~Muscatel	Ron~Dragushan
+Roquefort~Vaselino	Nelson~Dyck  
+Ruby~Rouge	Bev~Roberton 
+Sam~Spade	Scott~McAthey 
+Shirley~T.Goodness	Gay~Foulis   
+Spiro~Keets	John~Sirett 
+Val~Veeta	Darlene~Friesen   
+.sp3
+.ne15   
+.mg 
+
+
+.ce 
+.ul 
+Scene~II-7~-~Closing~Song   
+.sp 
+.mg 
+^(dots) 
+Casino~Singer~#1	Eric~Baerg 
+Casino~Singer~#2	Warren~Christiani  
+Casino~Singer~#3	Steve~Hull 
+Casino~Singer~#4	Kevin~Flanagan 
+Casino~Ingenue	Frances~Graham   
+.mg 
+
+
++   
+.ul 
+THE~ENTIRE~CAST 
+.sp 
+.mg 
+^(dots) 
+>>>>>Piano~Player	Murray~Chown  

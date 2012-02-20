@@ -1,0 +1,139 @@
+
+
+
+.   .r..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so expl/../manmac.t
+.tr @'  
+.fo ''- % -''   
+.s1 Act~I   
+.s2 Scene~1 
+.s3 'FIRE@S BURNING/FIRE@S BURNING' 
+Singing: Jason, Christine, Willard, Cast.   
+.tp_
+Also present: none. 
+.s3 'MYSTERY TONIGHT/COMEDY TONIGHT'
+Singing: Cast.  
+.s2 Scene~2 
+No songs.   
+.s2 Scene~3 
+.s3 'LUCKY IN LOVE/RAINBOW CONNECTION'  
+Singing: Carrie, Jaws.  
+.tp_
+Also present: none. 
+.s3 'IT@S GOT TO BE A COMMUNIST PLOT/YOU@VE GOT TO PICK A POCKET OR TWO'
+Singing: Boris, Natasha, Vladimir, Dimitri. 
+.tp_
+Also present: Billy, Susie, Winthrop.   
+.s2 Scene~4 
+.s3 'POOR HARRIET@S DEAD/DO-RE-MI AND GOODNIGHT, FAREWELL'  
+Singing: Hans, Franz, Liesl, Laurie.
+.tp_
+Also present: Terry, Harry, Diane.  
+.s2 Scene~5 
+.s3 'IF YOU LOVE ME, MORT/STRANGERS IN THE NIGHT'   
+Singing: Elvira, Mortimer.  
+.tp_
+Also present: none. 
+.s3 'ONE NIGHT IN HELLHOUSE/ONE NIGHT IN BANGKOK'   
+Singing: Winthrop (solo).   
+On chorus: Billy, Susie, Boris, Vladimir, Dimitri, Natasha, Colonel Mustard,
+Claire, Elvira, Harry, Mortimer, Peacock, Porky, Polly, Rosemary,   
+Prof Plum, Rhett, Scarlett. 
+.tp_
+Also present: none. 
+.s2 Scene~6 
+.s3 'ZOMBIES/WHEN JOHNNY COMES MARCHING HOME'   
+Singing: Kim, Bing, King, Norma Jean, Paul, Hector, Dee, other ghosts.  
+.tp_
+Also present: None. 
+.s3 'IMMATERIAL GIRL/MATERIAL GIRL' 
+Singing: Norma Jean.
+.tp_
+Also present: Ghosts, Max, Grim Reaper. 
+.s3 'DEATH IS ALL FOR THE BEST/YES, IT@S ALL FOR THE BEST'  
+Singing: Max, Bing, King.   
+.tp_
+Also present: Other ghosts. 
+.s2 Scene~7 
+.s3 'THE OBJECTIONABLE PHILOSOPHY/HUSH HUSH'
+Singing: Master, Other Cultists.
+.tp_
+Also present: None. 
+.s3 'A CURSE ON YOU/ALAS FOR YOU'   
+Singing: Disembodied Head.  
+.tp_
+Also present: Boris, Natasha, Claire, Carrie, Diane, Dimitri, Elvira,   
+Grasshopper, Jason, Lionel, Mortimer, Master, Meiosis, Sinister,
+Mitosis, Osmosis, Other cultists, Scarlett, Susie, Terry, Vladimir, 
+Willard, Winthrop.  
+.s1 Act~II  
+.s2 Scene~1 
+.s3 'C@EST MOI/C@EST MOI'   
+Singing: Hercules Parrot.   
+.tp_
+Also present: Sinister. 
+.s2 Scene~2 
+.s3 'HERBIE/OSCAR MEYER'
+Singing: Billy. 
+.tp_
+Also present: Monster, Herbie, Harry, Sweeney.  
+.s3 'JUST A SCIENTIST/JUST A GIGOLO/I AIN@T GOT NOBODY' 
+Singing: Cedric, Monster.   
+.tp_
+Also present: Harry, Sweeney, Billy, Igor.  
+.s2 Scene~3 
+.s3 'I KILLED ELVIRA/MY WAY'
+Singing: Mort.  
+.tp_
+Also present: Norman, Lionel, Willard, Colonel Mustard, Winthrop, Natasha,  
+Carrie, Jaws, Peacock, Prof Plum, Polly, Terry, Diane.  
+.s2 Scene~4 
+.s3 'THE SEVENTEEN MURDERS OF JEKYLL HOUSE/THE TWELVE DAYS OF CHRISTMAS'
+Singing: Frank, Joe.
+.tp_
+Also present: None. 
+.s3 'JEKYLL HOUSE CATS/JELLICLE CATS'   
+Singing: Cats.  
+.tp_
+Also present: Winthrop, Spam, Frank, Joe, Steele, Colt, Grebs,  
+Parrot, Doghouse, Holmes.   
+.s3 'HAUNTED HOUSE/THE OLD GUMBIE CAT'  
+Singing: Cats.  
+.tp_
+Also present: Winthrop, Spam, Frank, Joe, Steele, Colt, Grebs,  
+Parrot, Doghouse, Holmes.   
+.s3 'JEKYLL HOUSE/SKIMBLESHANKS'
+Singing: Cats.  
+.tp_
+Also present: Winthrop, Spam, Frank, Joe, Steele, Colt, Grebs,  
+Parrot, Doghouse, Holmes.   
+.s3 'VIDEO/SOMETHING NEAT'  
+Singing: Claire, Living Dead (?), Cultists. 
+.tp_
+Also present: Optional. 
+.s3 'CLOSING SONG/CLOSING TUNE' 
+Singing: Cast.  

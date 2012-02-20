@@ -1,0 +1,58 @@
+
+
+
+........
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.HD 
+The Script Writers  
+.HE 
+.fi 
+.ti 2m  
+The following cheerful folk spent most of the past fall term
+telling each other jokes and thinking up bad puns.  
+Some of this material ended up in our script.   
+The remainder, well,
+try us again next year! 
+.nf 
+.sp 0.5v
+.in +2m 
+.ll -4m 
+.ta \n(.lu/2u   
+Kim Adkins	Julian Davies
+Joy Fenton	Jim Gardner  
+Brad Gorzitza	Preston Gurd  
+David Haynes	William Hughes 
+Brian Martin	Ashok Patel
+Bernie Roehl	Adrian Stonell 
+Brad Templeton	David Welbourn   
+John Winterton  
+.HD 
+People Seen at Writer's Meetings
+.HE 
+.fi 
+Danny Barfield, Ken Dykes, Steve Hull, David Leibold, Dick McMurray,
+Martin McPhee, Blair Powell, David Shipley, David Till, 
+Alan Williams, Paul Wilson  

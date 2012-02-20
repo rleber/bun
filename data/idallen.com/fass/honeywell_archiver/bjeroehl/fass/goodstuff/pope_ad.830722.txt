@@ -1,0 +1,54 @@
+
+
+
+.J.".J..
+bjeroehl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.in 3   
+.ls 2   
+.nj 
+.ce 
+TITLE   
+.sp 
+.ul 
+.ti -3  
+POPE :  
+Do you know which Pope I am?  Neither does he. [INDICATES WAITER]. Most 
+people can't count that high anyway.  That's why I always carry Vatican 
+Express Traveller's Cheques.  If they're ever betrayed or   
+foresaken, they can be resurrected -- usually by monday.  It' heavenly. 
+.ul 
+.ti -3  
+WAITER :
+OK -- pay up, dead beat [KNOCKS OVER SALT? POPE HANDS CARD TO WAITER, NUDGE,
+WINK]  Oh, sorry sir.  Thank
+.ul 
+you,    
+sir.
+.ul 
+.ti -3  
+POPE :  
+You're welcome.  Cross my heart [CROSSES HEART], it's great!  God knows what
+I'd do without my Vatican Express Traveller's Cheques.  Don't leave Rome without
+them.   

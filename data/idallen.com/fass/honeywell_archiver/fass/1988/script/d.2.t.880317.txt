@@ -1,0 +1,219 @@
+
+
+
+.....z>M
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1988/script/87macr.t   
+.bs d 2 "Your Planet Or Mine?"  
+.na ba SCOTT~SHAWN~DEROXE SCOTT 
+.na a2 MAXIE~ZOOM~DWEEB MAXIE   
+.na a1 GLEEP~BRECKLE GLEEP  
+.na wa GINA~TONIC GINA  
+.ld 
+(LIGHTS UP. 
+THE SETTING IS A SIMPLE BAR WITH A SIGN SAYING  
+"MILKY WAY BAR".
+THERE ARE BLOOD BAGS ON STAGE, AND  
+IT SHOULD BE CLEAR THAT THE PATRONS' FAVOURITE DRINK IS BLOOD.  
+(POSSIBILITY:  A SIGN READING "DRINK 'RED CROSS':  A CUT ABOVE".)   
+TWO ALIENS (MAXIE AND GLEEP) ARE AT THE BAR.
+MAXIE IS BEING SERVED BY SCOTT, A BARTENDER)
+.ch ba  
+What'll it be?  
+.ch a2  
+I'll have a Cronenberg Cocktail.
+.ad 
+(SCOTT GETS GLASS, POURS SHOT OF BLOOD INTO GLASS, ADDS FIZZY STUFF,
+THEN GETS OUT A HIDDEN FLY SWATTER. 
+HE LISTENS INTENTLY FOR A MOMENT)   
+.prip "GLASS"   
+.prip "FIZZY STUFF" 
+.prip "BLOOD (or substitute, for the squeamish)"
+.prip "FLY SWATTER" 
+.sd 
+(SOUND OF LOUD BUZZ IS HEARD)   
+.ad 
+(SCOTT SWATS FLY, PICKS IT UP, PUTS IT IN GLASS, ADDS A TWIST OF
+LEMON, AND SERVES THE DRINK)
+.prip "TWIST OF LEMON"  
+.ch a2  
+Women.  
+.ch ba  
+Mmph.   
+.ch a2  
+Earth women, to be exact.   
+All I want is a little company and conversation, and what do I get? 
+.ch ba  
+What?   
+.ad 
+(GINA ENTERS, SPOTS MAXIE, SCREAMS, DROPS TRAY, AND FAINTS) 
+.prip "TRAY"
+.ch a2  
+That.   
+.ch a1  
+Excuse me.  
+(INDICATES GINA)
+I couldn't help overhearing.
+Some beings have no taste.  
+.ch a2  
+You don't think I'm gruesome?   
+.ch a1  
+No. 
+I think you're cute.
+.ch a2  
+Thank you.  
+May I buy you a drink?  
+.ad 
+(MAXIE POINTS TO RACK OF BLOOD BAGS)
+.ch a1  
+Sure.   
+I'll have a pint of AB. 
+.ch a2  
+Positive?   
+.ch a1  
+Absolutely!  (A BEAT)  What are 
+.ul 
+you 
+having? 
+.ch a2  
+'A'.
+.ch a1  
+I said, what are    
+.ul 
+you 
+having? 
+.ch a2  
+I said, I'm having type 'A'!
+.ch a1  
+Oh! 
+.ch a2  
+No, A!  
+.ch a1  
+I see.  
+.ch a2  
+(CONFUSED)  Look, how about we have something a little different?   
+A couple of shots of B? 
+.ch a1  
+(TO SCOTT)  Well, have you got two B or not?
+.ch ba  
+That's a good question. 
+.ad 
+(SCOTT FINDS TWO DRINKS AND SERVES THEM)
+.prip "TWO MORE DRINKS" 
+.ch a2  
+So, what's a nice girl-being like you doing in a place like this?   
+
+.ch a1  
+Listening to very old pick-up lines.
+.ch a2  
+Kinda lame, huh?
+.ch a1  
+Not the worst I've heard.   
+They've tried everything from   
+"Didn't I see you in the last Lucas film?"  
+to  
+"Gosh, you don't sweat much for a Denebian Slime Devil!".   
+.ch a2  
+I guess you just want to be left alone. 
+.ad 
+(MAXIE GETS UP TO GO BUT GLEEP STOPS HIM)   
+.ch a1  
+No, wait.   
+You're the only decent guy-being I've met in weeks. 
+.ad 
+(MAXIE SITS BACK DOWN)  
+.ex 
+Besides, my biological clock is ticking.
+.ch a2  
+What do you mean?   
+.ch a1  
+I've got to mate in three days or I'll explode! 
+.ch a2  
+I wouldn't want that on my conscience.  
+.ch ba  
+I wouldn't want that on my bar. 
+.ch a1  
+Say, do you like kids?  
+.ch a2  
+I love the pitter-patter of little tentacles.   
+Why?
+.ch a1  
+If I do find a mate, I'll give birth to hundreds of ravenous
+little beasties.
+.ch a2  
+What do they eat?   
+.ch a1  
+Pit bull terriers.  
+.ch a2  
+How cute!   
+.ad 
+(MAXIE MOVES CLOSER TO GLEEP)   
+.ex 
+Tell you what --
+I like you, babe.   
+Like you a lot. 
+Let's get a quick marriage on the planet Vegus, and then invade some
+primitive world and pig out!
+.ch a1  
+Sounds great, handsome. 
+You just name the planet!   
+.ch a2  
+Let's make it Earth.
+.ch a1  
+A little continental breakfast? 
+.ch a2  
+Why not?
+.sb "We'll Dine Out Together" "Happy Together"  
+.ve 5   
+MAXIE:  
+I'll find a hapless soul, and sap his life  
+You feast upon the girl next door, my lovely wife   
+But human flesh is hard to chew, so bring a knife   
+We'll dine out together 
+.ve 5   
+GLEEP:  
+We'll cook Niagara Falls for our honeymoon  
+The screams of pain will harmonize a lovely tune
+You'll want to take in every drop, so use a spoon   
+We'll dine out together 
+.ve 5   
+MAXIE:  
+Take a herd of humans,  
+collect all the blood that you can drain
+Add some sparkling water,   
+and you've got a flood of pink champagne
+.ve 5   
+GLEEP:  
+And when we get a visit from the stork  
+I'll raise a toast to happiness, you pop the cork   
+Each hungry tot provided with a little fork 
+We'll dine out together 
+.ve 2   
+BOTH:   
+Ba ba ba ba etc.
+.ld 
+(LIGHTS DOWN)   
+.es 

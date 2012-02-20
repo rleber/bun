@@ -1,0 +1,36 @@
+
+
+
+..\..\
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##drun.out;res;600  
+remo clearfiles 
+roff fass/techpref+fass/scripsrc >asdfghjk  
+slis "dump" asdfghjk
+len asdfghjk
+perm asdfghjk;fass/roffedsc 
+logo

@@ -1,0 +1,227 @@
+
+
+
+...H....
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1989/script/bulkmacr.t 
+.bs a 11 "SLUMBER PARTY by Marilyn Suzanne Miller"  
+.na mo MOTHER MOTHER
+.na ma MADELINE MADELINE
+.na gi GILDA GILDA  
+.na la LARAINE LARAINE  
+.na ja JANE JANE
+.ch ma  
+...so then, the man gets bare naked in bed with you and you both
+go to sleep which is why they call it sleeping together.  Then  
+you both wake up and the man says, "Why don't you slip into 
+something more comfortable?" -- no, wait, maybe that comes before   
+-- it's not important -- and then the man says...   
+.ch mo  
+Gilda, it's five A.M.  When does the noise stop?
+.ch gi  
+We're just going to sleep, Mother.  
+.ch mo  
+What are you talking about at this hour?
+.ch gi  
+School! 
+.ch mo  
+Well, save it for the morning.  
+.ch ja  
+And then the man... 
+.ch mo  
+Anyway... then the man... (WHISPERS) ...in you and then you 
+scream and then he screams and then it's over.  
+.ch la  
+That's disgusting!  
+.ch gi  
+You lie, Madeline.  
+.ch ma  
+Cross my heart and hope to die.  My brother told me in my   
+driveway.   
+.ch gi  
+Your brother lies, Madeline.
+.ch ma  
+No, sir.
+.ch ja  
+Come on.  Isn't he the one who said if you chew your nails and  
+swallow them, a hand will grow in your stomach? 
+.ch ma  
+Well, it's also true because I read it in this book.
+.ch ja  
+What'd it say?  
+.ch ma  
+It said, "The first step in human reproduction is... the man... 
+(WHISPERS)  
+.ch la  
+It's disgusting!
+.ad 
+(LARAINE, GILDA, AND JANE ALL DO FAKE THROWING UP)  
+.ch ma  
+It's true.  
+.ch ja  
+Well, I just know it can't be true, because nothing that
+sickening is true.  
+.ch ma  
+Boogers are true.   
+.ch gi  
+Well, I mainly don't believe it because I heard from my sister  
+about this girl who this guy jumped out from the bushes and 
+forced to have a baby.  
+.ch ma  
+How?
+.ch gi  
+I don't know.  I think he just said, "Have a baby right now."   
+.ch ma  
+Oh, sure, Gilda.  And you think that would work if I tried it on
+you?
+.ch gi  
+Hey, don't.  O.K.?  
+.ch ma  
+Well, don't worry.  It wouldn't because that's not how it's done.   
+How it's done is... the man...  
+.ch la  
+Don't say it again, O.K.?  I just ate half a pizza, O.K.?   
+.ch gi  
+So that's why people were born naked.   
+.ch ja  
+Yeah.   
+
+.ch la  
+But how could you face the man after?  Wouldn't you be  
+.ul 
+so embarrassed? 
+.ch ja  
+I'd have to kill myself right after.  I mean, I get embarrassed 
+when I think how people standing next to me can see inside my   
+ear.
+.ch ma  
+Well, that's why you should only do it after you're married.
+Because then you won't be so embarrassed in front of your husband   
+after, because you're in the same   
+.ul 
+family. 
+.ch la  
+Oh, well, I really want to get married now. 
+.ul 
+Not!
+.ch ma  
+But the worst thing is -- your  
+.ul 
+parents 
+do it, you know?
+.ch gi  
+Come on!
+.ch ma  
+Gilda, think:  none of us would be here unless our parents did it   
+.ul 
+at least once.  
+.ch ja  
+My parents did it at least twice.  I have a sister. 
+.ch gi  
+And my parents did it at least three times.  I have a sister
+.ul 
+and 
+a brother.  
+But, like, I know they didn't do it because they
+.ul 
+wanted  
+to.  They did it because they   
+.ul 
+had 
+to. 
+To have children.   
+.ch ma  
+They could have adopted children.   
+.ch gi  
+Yeah, but adopted children are a pain.  You have to teach them  
+how to look like you.   
+.ch la  
+Well, my father would never do anything like that to my mother. 
+He's too polite.
+.ch ma  
+My father's polite, and we have six kids.   
+.ch la  
+He's obviously not as polite as you think.  
+.ch ja  
+I wonder whose idea this was.   
+.ch ma  
+God's.  
+.ch ja  
+Oh, come on.  God doesn't go around thinking up sickening things
+like this for people to do. 
+.ch gi  
+Maybe God just wants you to do it so you'll appreciate how good 
+the 
+.ul 
+rest
+of your life is.
+.ch ja  
+Maybe.  
+.ch la  
+How long does it take?  
+.ch ma  
+Stupid!  That depends on how big the girl's stomach is and how  
+fast she can digest.
+.ch gi  
+Oh. 
+.ch ja  
+Can you talk during it? 
+.ch ma  
+You have to hold your breath or else it doesn't work.   
+.ch ja  
+Well, I'm just telling my husband I'm not going to do it.   
+Tough beansies. 
+.ch ma  
+What if he says he'll get divorced from you if you didn't do it?
+.ch ja  
+I would never marry someone like that.  
+.ch ma  
+What if you did by accident?  What if... you met him in a war and   
+married him real fast because you felt sorry for him since he'd 
+probably get killed only he didn't and you were stuck with him? 
+.ch gi  
+Look -- let's make this pact right now that after we get married,   
+if our husbands make us do it, we'll call each other on the phone   
+every day and talk a lot to help keep our minds off it, like our
+mothers do. 
+.ch ja  
+Right.  
+.ch ma  
+Right.  
+.ch la  
+Right, because it's 
+.ul 
+disgusting. 
+.ch ja  
+Well, don't worry, we'll never have to keep this pact, because  
+I'll never do it.   
+.ch gi  
+Me, neither.
+.ch ma  
+Me, neither.
+.ch la  
+I might.
+.es 

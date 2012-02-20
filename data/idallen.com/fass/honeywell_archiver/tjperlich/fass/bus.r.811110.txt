@@ -1,0 +1,154 @@
+
+
+
+.....~..
+tjperlich...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sp 
+.ss 
+.nf 
+.in +4  
+.ul 
+.ce 
+             "Bussing"  
+.sp 
+.sp 
+The scene is set in a bus, at approx. 4:30 p.m. on a Tuesday
+afternoon just after classes have finished.  The three characters   
+are first, a typical male, second year university student, possibly 
+in Computer Science. The second character is a beautiful,   
+voluptous female dressed accordingly.                       
+The third character is a clean-cut, preppy-looking, male    
+"Moonie" in his mid twenties.   
+.sp 
+As the scene opens, the female is sitting alone on a double 
+seat.  There are other people lying on the floor as if dead.
+A numerous amount of potatoes are scattered on the floor and
+over the bodies.  Every dead person is clutching  a potato  
+or has one somewhere on his person. 
+.sp 
+.sp 
+ENTER student carrying a binder finishing a bag of "Hostess"
+      potato chips.  He appears confused as he oversteps the
+      strewn bodies to make his way to an open seat.
+.sp 
+.ti +2  
+STUDENT (to girl) : Excuse me, is this seat taken?  
+.sp 
+girl looks down at seat then breaks plane above seat by waving hand.
+
+.sp 
+.ti +2  
+GIRL: Negative. 
+.sp 
+the student takes another sweeping look at the bodies and potatoes  
+as he crumples his now empty bag of chips, tosses it aside and  
+proceeds to slide in close to the female on the seat.   
+.sp 
+.ti +2  
+GIRL: Do you participate in mass sub-urban transit frequently?  
+.sp 
+student looks behind him as if to check if he is the person being   
+addressed. He then stares at the girl with a short pause.   
+.sp 
+.ti +2  
+STUDENT (with slight smile): Ya, uh, I "participate" now and then.  
+.sp 
+girl nods as if to take mental note.
+.sp 
+.ti +2  
+STUDENT: Say, do you go to the University?  
+.sp 
+.ti +2  
+Girl: Affirmative.  
+.sp 
+.ti +2  
+STUDENT: Do you live off campus?
+.sp 
+.ti +2  
+GIRL: Negative.  I inhabit a single compartment in a series of  
+        inter-connected domiciles.  
+.sp 
+.ti +2  
+STUDENT: Oh, the Village, eh?   
+.sp 
+girl is taken aback and bears a furrowed brow.  
+.sp 
+.ti +2  
+STUDENT: Then you don't really live in the Village? 
+.sp 
+.ti +2  
+GIRL: Negative  
+.sp 
+.ti +2  
+STUDENT: Well anyway, what faculty are you in?  
+.sp 
+.ti +2  
+GIRL: Inter-planetary Studies of Classical Civilizations.   
+.sp 
+.ti +2  
+STUDENT: Oh, an Artsie. 
+.sp 
+.ti +2  
+GIRL (confused): Negative.  
+.sp 
+student appears aprehensive.  He rises and reaches for bell cord.   
+.sp 
+.ti +2  
+STUDENT: Well this is my stop.  I've gotta be going now,
+           but just one more thing, are you really a student?   
+.sp 
+.ti +2  
+GIRL: Could I interest you in a carbon-based, vegetable matter  
+      orb? (presents a potato to student)   
+.sp 
+.ti +2  
+STUDENT (pauses and looks once more at the dead bodies and  
+         potatoes): Er, No thanks, I just ate a big bag of  
+         carbon-based, vegetable matter orb chips.  
+.sp 
+EXIT student
+.sp 
+ENTER Moonie who oversteps the dead bodies and sits down
+beside the girl.
+.sp 
+.ti +2  
+GIRL (to Moonie): Would you like a carbon-based, vegetable  
+       matter orb?  
+.sp 
+.ti +2  
+MOONIE (politely): No thank you, but the Unification Fellowship of the          
+         Christian Brotherhood is having a meeting tonight. We will 
+         be showing "Rock 'n' Roll for Christ's Sake" starring  
+         Adam and the Cain Raisers.  It would be nice if you could join 
+         our family sister..... 
+(lights fade as he continues pitch) 
+         ....why don't you bring a friend.  Could I interest
+         you in some literature?
+.sp 
+.sp 
+.sp 
+.ce 
+       - END -  
+.ti +40 
+Tim J. Perlich  

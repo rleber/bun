@@ -1,0 +1,118 @@
+
+
+
+.....bf.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1988/script/87macr.t   
+.bs 2 0 "Not Easily Cowed"  
+.na jp JUPITER JUPITER  
+.na jn JUNO JUNO
+.ld 
+(LIGHTS UP. 
+THE SCENE IS THE NORMAN ROCKWELL VERSION OF OLYMPUS.
+BOTH JUPITER AND JUNO, HIS WIFE, ARE PRESENT.   
+JUPITER IS READING A NEWSPAPER, WHILE JUNO IS READING A BOOK
+(THE JOY OF COOKING))   
+.prip "NEWSPAPER"   
+.prip "BOOK"
+.ch jp  
+(RUSTLING NEWSPAPER)
+Says here Venus is pregnant again.  
+.ch jn  
+(COMPLETE DISINTEREST)  
+That's nice.
+.ad 
+(A BRIEF PAUSE AS JUNO LETS THE CONVERSATIONAL GAMBIT DIE.  
+JUPITER FLIPS TO ANOTHER PAGE OF THE NEWSPAPER) 
+.ch jp  
+Now that's interesting. 
+Pluto's still trying to sue Walt Disney for trade mark infringement.
+.ch jn  
+(POORLY CONCEALING A YAWN)  
+How fascinating.
+.ch jp  
+(STILL FLIPPING)
+Hmmph.  
+Hercules is having a sex change operation.  
+He wants to undergo a 13th labour.  
+.ch jn  
+Really. 
+.ad 
+(A PAUSE)   
+.ch jp  
+By Jove, Juno, I swear I never saw the cow before!  
+.ad 
+(DURING THE REST OF THIS SCENE JUNO CONTINUES READING HER BOOK, NEVER   
+
+GIVING JUPITER THE SATISFACTION OF HAVING HER COMPLETE ATTENTION)   
+.ch jn  
+I never mentioned the cow.  
+.ch jp  
+You were thinking about it. 
+I admit that I've had the occasional indiscretion --
+.ch jn  
+One hundred and sixty-two.  
+But who's counting? 
+.ch jp  
+...the occasional indiscretion, but this time, I'm innocent.
+It's not my fault!  
+Cupid was practicing and he hit me and this Jersey cow. 
+By accident.
+You know what an awful shot he is!  
+.ch jn  
+What a pity he just happens to be away right now, so I can't ask him
+about it myself.
+How dreadfully inconvenient for you.
+.ch jp  
+Juno, darling, you know I would never lie to you.   
+I always tell you the complete truth about all my affairs, after
+you find out.   
+.ch jn  
+Did I say I didn't believe you? 
+I just find it interesting that the one time you claim to be innocent,  
+the only witness is off on Earth, where 
+.ul 
+you 
+sent him.   
+.ch jp  
+You 
+.ul 
+don't   
+believe me! 
+I'll show you.  
+I'll go get Cupid myself and he'll prove I am telling the complete truth.   
+.ad 
+(HE PREPARES TO EXIT IN A HUFF (INSERT MANDATORY HUFF JOKE))
+.ch jn  
+Try to be inconspicuous this time.  
+And darling?
+.ch jp  
+Yes, dear?  
+.ch jn  
+Pick up some steak sauce.   
+.ld 
+(LIGHTS DOWN)   
+.es 

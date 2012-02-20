@@ -1,0 +1,38 @@
+
+
+
+...J..R.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+tf fass/1984/script/commercials/crapper >adsout 
+tf fass/1984/script/commercials/hygiene >>adsout
+tf fass/1984/script/commercials/medley >>adsout 
+tf fass/1984/script/commercials/pain >>adsout   
+tf fass/1984/script/commercials/payradio >>adsout   
+tf fass/1984/script/commercials/reno >>adsout   
+tf fass/1984/script/commercials/vatican >>adsout
+tf fass/1984/script/commercials/wafers >>adsout 
+tf fass/1984/script/commercials/weasel >>adsout 
+tf fass/1984/script/commercials/weekends >>adsout   

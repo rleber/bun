@@ -1,0 +1,35 @@
+
+
+
+.......k
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pn 1   
+.br 
+.ne 25v 
+.af PN 1
+.so table   
+.so writers 

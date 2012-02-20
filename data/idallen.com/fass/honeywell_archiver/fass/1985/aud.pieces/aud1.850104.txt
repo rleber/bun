@@ -1,0 +1,217 @@
+
+
+
+......q.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1985/script/85macr.t   
+.bs 1 4 "They Also Serve ..."   
+.na we WENDY~LOTTERY WENDY  
+.na ln LON~FUNCTION LON 
+.na fg FROG~MAN FROG
+.na td THE~TADPOLE TADPOLE  
+.ld 
+(LIGHTS UP ON STAGE APRON)  
+.ad 
+(THIS PART OF THE SCENE SHOULD TAKE PLACE IN FRONT OF THE CURTAIN.  
+THE SCENE OPENS WITH WENDY SITTING IN AN ELECTRIC CHAIR.  LON ENTERS)   
+.ch we  
+(SCREAMS LOUD AND LONG) 
+.ch ln  
+Wendy!  
+.ad 
+(LON TURNS OFF THE POWER ON THE ELECTRIC CHAIR) 
+.ex 
+I know things are rough, but that's no reason to try to kill yourself.  
+.ch we  
+No, you nincompoop.  I was trying to get a superpower by having 
+a horrible freak accident.  
+.ch ln  
+It's not very accidental if you do it yourself. 
+.ch we  
+It doesn't have to be an accident; it only has to be
+terrible enough to kill any normal human being. 
+.ch ln  
+I've had CS assignments like that...  Did it work?  Do you  
+have a super power? 
+.ch we  
+No, you turned off the electric chair.  
+.ch ln  
+Oh, sorry!  
+.ad 
+(LON TURNS ON THE POWER AGAIN)  
+.ch we  
+(SCREAMS LOUD AND LONG) 
+.ch ln  
+(SOLILOQUY, AS WENDY SCREAMS IN THE BACKGROUND) 
+Girls:  I never will understand them.   
+I walk in and I see her screaming in pain.  I say to myself, "here's
+a damsel in distress; I'll save her".  I don't expect much in return.   
+A smile and "thank you", perhaps.  Some slight acknowledgement that 
+but for me she would be have died a horrible, gruesome death.   
+.ch we  
+TURN...OFF...THE...POWER!   
+.ch ln  
+This puts me in a dilemma.  On the one hand, she's enduring 
+a great deal of pain and asking me to relieve her suffering.  On the
+other hand, by turning off the power I deprive her of a chance to   
+become a super hero.
+.ch we  
+TURN...OFF...THE...POWER!   
+.ch ln  
+As I said, an acute moral dilemma.  
+.ad 
+(LON TAKES COIN OUT OF POCKET AND FLIPS IT) 
+.ex 
+Heads.  I save her! 
+.ad 
+(LON RUSHES TO THE MACHINE AND TURNS OFF THE POWER) 
+.ch ln  
+Are you all right?  
+.ch we  
+You idiot!  
+.ch ln  
+Oh no.  I did the wrong thing.  She wanted me to leave the power on.
+(MOVES HIS HANDS TOWARDS THE SWITCH)
+.ch we  
+NO!!!!!!!!  
+.ad 
+(LON MOVES AWAY FROM THE MACHINE)   
+.ex 
+How could anyone be such a fool?  I ask you to turn off the power.  
+Twice.  And what do you do?  You flip a coin to see if you should.  
+You are an absolute imbecile.   
+.ch ln  
+Gosh, I'm sorry, Wendy.  Moral dilemmas have never been my strong suit. 
+.ch we  
+(BEGINNING TO REGAIN HER COMPOSURE) 
+That's eight tries at getting a super power.  Eight tries; eight    
+failures.   
+.ch ln  
+You know what I've heard, Wendy?  A lot of us have latent super 
+powers inside us, only we don't know about them.    
+.ch we  
+A lot of good it does me to have a super power and not know it. 
+.ch ln  
+Well, I could write a computer program to find out if you have  
+a latent super power.   
+.ch we  
+That would take years.  
+.ch ln  
+Not if I was writing it!
+I could do it in just a few minutes, for you, Wendy.
+.ch we  
+Really?  Oh, Lon, if you found out that I had a super power 
+I'd be so grateful.  I'd do anything for you!   
+.ch ln  
+Even go on a date with me?  
+.ch we  
+Don't push it.  
+.ch ln  
+I'll get on it right away.  
+.ad 
+(EXIT LON.  ENTER FROG MAN AND TADPOLE) 
+.ch we  
+Lon, look who's here!  Oh, damn!  He's gone!
+.ch fg  
+Calm down, Tadpole. 
+.ch td  
+But, Frog Man, she said you look like a toad and I look like
+a sp
+
+a sperm cell!   
+.ch fg  
+She's just trying to get you upset. 
+The next time Bo Evil compares me to a toad, just tell her that 
+toads don't have webbed feet (HOLDS UP WEBBED HAND), frogs do.  
+.ch td  
+Holy catcher's mit, Frog Man, you're right. 
+.ch fg  
+And, as for sperm cells...(WHISPERS IN TADPOLE'S EAR)   
+.ch td  
+Really? 
+.ch fg  
+One of these days I'll show you, little buddy.  
+.ch we  
+Excuse me.  I wonder if you two could help me.  I'm trying to get a 
+super power.
+.ch fg  
+Have you tried getting into a freak accident?   
+.ch we  
+Yes, eight times.  And each time I've failed.   
+.ch td  
+Holy Joe Clark, Frog Man, she's a loser!
+.ad 
+(WENDY STARTS TO CRY)   
+.ch fg  
+Don't cry, young lady.  I have something you can try.  A miniature  
+atomic powered exploding lily pad.  
+.ad 
+(FROG MAN GIVES HER THE EXPLODING LILY PAD) 
+.ch td  
+Holy hand grenade, Frog man!
+.ad 
+(WENDY SETS UP THE EXPLODING LILY PAD)  
+.ch we  
+Five, four, three, two, one...  
+.ld 
+(BRILLIANT FLASH OF LIGHT)  
+.sd 
+(BOOM!!!!)  
+.ad 
+(LON RUSHES IN) 
+.ch ln  
+I've found it!  Your latent superpower.  Wendy, you have nine lives!
+.ch we  
+(SLOWLY COUNTS TO NINE ON HER FINGERS AND FALLS DEAD)   
+.ch ln  
+Oh, Wendy!  
+(SOLILOQUY:)  I loved her more than anything else in the world. 
+I just know that in time she would have gone out with me.  I even   
+made up this costume for her.  (HOLDS UP CAT SUIT)  
+.ch td  
+Holy Heartbreak, Frog Man!  
+.ch ln  
+I was thinking maybe one day we could   
+settle down in  Scarborough and have 2.4 kids and a dog 
+(LOOKS AT CAT SUIT)... scratch the dog. 
+.ch fg  
+We'll all miss her, Lon. But the fight against evil must go on. 
+.ch td  
+She would have wanted it that way!  
+.ch ln  
+The program said that I have a super power, too.  I'll use my   
+power to fight evil, and I'll do it for you, Wendy! 
+.ad 
+(LON EXITS) 
+.ch fg  
+There's a lesson in this, Tadpole.  
+.ch td  
+That true love is stronger even than death? 
+.ch fg  
+No, that you can give someone a super power, but he'll still be a wimp. 
+.ad 
+(EXIT FROG MAN AND TADPOLE, CARRYING WENDY'S CORPSE)
+.es 

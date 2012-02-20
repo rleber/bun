@@ -1,0 +1,187 @@
+
+
+
+......L.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{dv 2}  
+{tf_ 2} 
+{dn _hy 3}  
+{dn _wsmax 50}  
+{colwidth 3.25I}
+{gutter .35I}   
+{col 2} 
+{pl 11I}
+{if {_dv}=1 [{ty "" "dv=1(line printer)\n"}]}   
+{if {_dv}=2 [{ty "" "dv=2(econosetter)\n"}]}
+{if {_dv}=3 [{ty "" "dv=3(aps-v)\n"}]}  
+{if {_tf}=0 [{ty "" "tf=0(?????)\n"}]}  
+{if {_tf}=1 [{ty "" "tf=1(lineprinter roman)\n"}]}  
+{if {_tf}=2 [{ty "" "tf=2(times)\n"}]}  
+{if {_dv}=2 [{po -0.3I}{ty "" "econosetter: po -0.3i\n"}]}  
+{hc "`"}
+{qc "\l""}  
+{pc "@"}
+{fs "____________________________________________________________"} 
+{in 0}  
+{po 0}  
+{ll 6i} 
+{ls 1}  
+{m1 3.0L}   
+{m2 2.0L}   
+{m3 2.0L}   
+{m4 2.0L}   
+{fi}
+{ju}
+{ty "" ">>> Bulk-Script Typeset Macs"}  
+{af (mon) 01}   
+{af (day) 01}   
+{af (min) 01}   
+{af (hour) 01}  
+{ds sq [
+	{m4 -1}
+	{sp}   
+	{m4 +1}
+]}  
+{ds ex [
+	{sq}   
+	{fi}   
+	{in 3s}
+	{need 2L}  
+]}  
+{  'actor direction'}   
+{ds ad [
+	{ex}   
+	{in 0} 
+]}  
+{ds na [
+	{mg ". . . . . . . . . . . . . . . . . . . . . . . . . ."} 
+	{ti +2s}   
+	{ar 2}({ar 3}) 
+	{br}   
+	{mg " "}   
+]}  
+{ds {ar 1}2 [   
+	{ar 2} 
+]}  
+{ds {ar 1}3 [   
+	{ar 3} 
+]}  
+{dn {ar 1}40 0} 
+{ds xx [
+	{ds #2 [   
+		{ar 1}
+	]} 
+	{dn ##40}  
+	{ch ##}
+]}  
+{ds star [  
+************************************************************
+]}  
+{ds sb [
+	{ex}   
+	{in 0} 
+	{nf}   
+	{need 12L} 
+	{star} 
+	{mg "****                                                ****"}
+	{ce 3L}
+	{ar 1} 
+	(to the tune of:)  
+	{ar 2} 
+	{mg " "}   
+	{star} 
+	{sp}   
+	{in 3s}
+]}  
+{ds ve [
+	{ex}   
+	{nf}   
+	{need {ar 1} 5}
+]}  
+{ds se [
+	{ex}   
+]}  
+{ds bs [
+	{pa 1} 
+	{dn indx 0}
+	{dn ldct 0}
+	{dn sdct 0}
+	{dn act{ar 1}} 
+	{dn actr{ar 1}}
+	{af (actr) II} 
+	{dn scen{ar 2}}
+	{ty "" ">>> Now setting Act {actr} Scene {scen}: {ar 3} <<<"}  
+	{he "{actr}:{scen}" "" "Page %"}   
+	{ef "{actr}:{scen}" "- % -" "F.A.S.S. 1980"}   
+	{of "F.A.S.S. 1980" "- % -" "{actr}:{scen}"}   
+	{sp}   
+	{ce}   
+	{bf}   
+	{ar 3} 
+	{sp 2L}
+	{he "{actr}:{scen}" "{ar 3}" "Page %"} 
+	{in 3s}
+	{bf}   
+Characters defined for this scene:  
+	{sp}   
+	{ta 55R}   
+]}  
+{ds es [
+	{m3 1L}
+	{m4 0L}
+	{sp}   
+	{in 0} 
+	{ce}   
+
+	-fin-  
+	{br}   
+	{m3 2L}
+	{m4 2L}
+	{ty "" "    Pages=^{%} Speeches=^{indx}"}  
+	{bp}   
+]}  
+{  ' end a scene'}  
+{ds fini [  
+	{es}   
+]}  
+{ds ch [
+	{ex}   
+	{ti 10}
+	{dn indx +1}   
+	{dn {ar 1}4 +1}
+	{bf}   
+	{ns 5} 
+]}  
+{ds sd [
+	{ad}   
+	{dn sdct +1}   
+	[S-^{sdct}]
+]}  
+{ds ld [
+	{ad}   
+	{dn ldct +1}   
+	[L-^{ldct}]
+]}  

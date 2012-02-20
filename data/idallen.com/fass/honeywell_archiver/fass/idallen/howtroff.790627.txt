@@ -1,0 +1,432 @@
+
+
+
+.`...`..
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sy ./if ! -r macros.r free x idallen/fz macros.r   
+.so macros.r
+.ii 5 3 
+.at(x1) 
+^(sq)   
+.sp 
+.ne6
+.sa in +2   
+.sa if 0
+.tr~~   
+.ic 
+.cc:
+.en(x1) 
+.at(x2) 
+:cc.
+.ic^^^^ 
+.tr~    
+^(sq)   
+.us if  
+.us in  
+.ne3
+.en(x2) 
+.at(foot)   
+.fo "F.A.S.S. 1979"^^(titl)"^(year)/^(mon)/^(day) ^(hour):^(min)"   
+.en(foot)   
+.he "=========="- % -"=========="   
+.hd 0 ".ul" Basic~ROFF~Information  
+^(foot) 
+.pb 
+Roff is a text formatting program that allows you to type in text (in the   
+case of FASS, your scene) without regard to the final format it will have.  
+You simply include a one-line character abbreviation before each character's
+speech and before and after all sound effects, lighting effects and stage   
+directions.  Roff does the rest.
+.pb 
+Roff takes care of things like margins, page headings and footings, page
+numbering, and all the other details involved.  Most of these things are
+not important if you're just writing an individual scene, and so this explain   
+will not be very detailed.  
+For a full story on ROFF, see the ROFF tutorial and manual (explain 
+roff manual).   
+.pb 
+There is a macro which lets you abbreviate character names to two letters,  
+and other abbreviations for things like songs, stage directions, special sound and  
+lighting cues.  
+Each abbreviation is placed on a line by itself immediately 
+above the line or lines it refers to.   
+Each of these abbreviation lines
+begins with a period (to distinguish it from the text of the scene).
+The pertinent abbreviations are as follows: 
+.ne15   
+.x1 
+.so insert an external file, such as the file 80macros  
+.bs begin scene (this is the second line of every scene)
+.na define a character macro for use by .ch 
+.ch start speech by a character, character defined by .na   
+.xx give name for a one-use-only character or combination   
+.bf next line of input is to be set in boldface 
+.ul next line of input is to be underlined  
+.sp skip one blank line on output   
+.ne make sure a group of lines doesn't split over page  
+.sd begin a sound direction 
+.ld begin a lighting direction  
+.ad begin an acting direction   
+.ex end a sound, light, acting direction
+.sb begin a song (see below)
+.se end a song  
+:x2 
+
+.xs 
+Note that many of the formatting commands have "arguments" which must or
+may be supplied on the same line as the command.
+These arguments are separated by blanks.
+If you want to give an argument to a macro, but the argument itself 
+contains blanks, replace the blanks in the argument with tildes.
+(This will be demonstrated later on.)   
+See below for descriptions  
+of exactly what arguments must be given to each ROFF macro. 
+.pb 
+A file containing formatting commands such as those above can be expanded   
+into a fully formatted document by simply typing "roff filename" at system  
+level, where "filename" is the file in which the text and commands are. The 
+formatted text may be placed in a file by typing "roff filename >file2" 
+where "file2" is the place where the formatted (or "roffed") document is to 
+be placed.  If it does not already exist it will be created as a temporary  
+file.  You may obtain a printed copy by typing "klist file2"  at system level   
+(Note that you may also use slist (and Not tlist) to print it.  
+Klist should normally be used, to save paper).  
+.hd 0 ".ul" Three~Types~Of~Scripts  
+^(foot) 
+.pb 
+Scripts may be produced, from the same macro file, in any one of three  
+formats: Normal, Technical, or Good.
+Each format is tailored to suit those who will use it.  
+Actors use the Normal format, the Director and Technical Crew use the   
+Technical format, and the script can be formatted for printing using
+Good format.
+.pb 
+How the script appears is a function of the value of register "TYPE",   
+which may have the value "0" for Normal, "TECH" for Technical, or "GOOD"
+for Good.  Note that Normal is the default, since if the "TYPE" register
+is undefined ROFF gives it the value 0.  To produce either of the other 
+formats, preface the macro file with a file which sets the "TYPE" register: 
+.x1 
+.at(type)   
+good
+.en(type)   
+:x2 
+.xs 
+The file that sets the "TYPE" register should be the very first file
+given to ROFF:  
+.x1 
+*roff settype+one1+one2+one3+one4 >goodout  
+:x2 
+.xs 
+The first time a character appears in a scene, their full name  
+(as declared by you when you define the character with the .na macro)   
+will be used;   
+thereafter, the shorter version of their name (as given to the .na macro
+at the start of the scene) will be used.
+.br 
+.ne10   
+
+.hd 3 ".ul" Differences~in~the~three~Formats
+.lt +3 "" ")" 1 1   
+.it 
+Normal Format:  
+.lt +3 "" ")" 1 a   
+.xt 
+Every speech in a scene numbered, starting with 1.  
+.xt 
+Speeches separated by one blank line.   
+.xt 
+Speeches indented 3 spaces. 
+.le 
+.it 
+Technical Format:   
+.lt +3 "" ")" 1 a   
+.xt 
+Every speech in a scene numbered, starting with 1.  
+.xt 
+Speeches separated by two blank lines.  
+.xt 
+Speeches indented 3 spaces. 
+.le 
+.it 
+Good Format:
+.lt +3 "" ")" 1 a   
+.xt 
+For proof copies - no numbering.
+.xt 
+Speeches separated by one blank line.   
+.xt 
+Speeches indented 5 spaces. 
+.xt 
+Character name underlined.  
+.le 
+.le 
+.ne33   
+.hd 0 ".ul" Entering~a~Scene
+^(foot) 
+A scene has the following format:   
+.x1 
+.so 80macros
+.bs 1 1 This~is~the~Title   
+.na c1 Full~Name~of~Character1 Short~Name   
+.na c2 Full~Name~of~Character2 Short~Name   
+.na c3 Full~Name~of~Character3 Short~Name   
+     .  
+     .  
+     .  
+.sd 
+...first sound direction... 
+.ex 
+.ld 
+...first lighting direction...  
+.ex 
+.ad 
+...first actor (stage) direction... 
+.ex 
+.ch c1  
+Speech by character1.   
+
+.ch c2  
+Speech by character2
+     .  
+     .  
+     .  
+^(fini) 
+:x2 
+.hd 3 ".ul" "Notes:"
+.lt +3 "" ")" 1 1   
+.it 
+.li 
+.so 80macros
+.br 
+This inserts the main macro file of macro definitions and   
+makes sure that a consistent environment is set up in terms of line 
+length, justification, etc. 
+.it 
+.li 
+.bs 
+.br 
+Begin a scene.  The first argument is either 1 or 2 for Act I or
+Act II. 
+The second argument is the scene number.
+Both arguments, unlike previous years, must be numbers and not letters. 
+The last argument is the title of the scene, which must be less than
+50 characters long! 
+Join the words with tildes, so that there are no intervening blanks.
+.it 
+.li 
+.na <2chars> <full-name> <abbrev.-name> 
+.br 
+This creates for you a ROFF macro for your character.   
+The two character   
+macro name must not be 'xx', and must be different for each character   
+in the scene.   
+Unlike previous years, the macro can be any two characters (even a ROFF 
+command), except 'xx' is not allowed.   
+The character macro is used by typing:  
+.x1 
+.ch <2chars>
+This is said by the character.  
+:x2 
+.xs 
+The <2chars> are the same as you used in defining the macro with ".na". 
+.pb 
+The <full-name> is the full name of the character, which will   
+appear the first time the character is used in a scene. 
+After this first appearance, the <abbrev.-name> will be used.   
+Join each word in either name with tildes, so that there are no blanks  
+in the name.
+(The tildes will vanish on output.) 
+.it 
+.li 
+.ad, .sd, .ld, .ex  
+.br 
+These surround Acting (stage) Directions, Sound Directions, and 
+Lighting Directions.
+These are described elswhere in this document.  
+.it 
+.li 
+.ch c1  
+.br 
+This is an example of how to use your character macro.  
+"c1" was defined using the .na macro.   
+The argument to .ch must be the exact two characters you used in the .na macro. 
+.it 
+.li 
+^^(fini)
+.br 
+This is the LAST line of a scene.   
+Please remember it! 
+.le 
+.ne6
+.pb 
+In some cases, you want to have two characters talk at once, or you may 
+have a character who isn't really worth a macro to her/him self.
+Use the construction:   
+.x1 
+.xx Character~1~&~Character~2   
+:x2 
+.xs 
+This will format the following speech by the character in the same way  
+as if you had a macro defined for her/him.  
+It is the only way to have two names appear heading one speech. 
+Make sure to use tildes to join the words together. 
+.hd 0 ".ul" Entering~Songs  
+^(foot) 
+Songs are surrounded by "environment control" macros which set up the   
+correct indents and lack of fill and justification: 
+.br 
+.ne14   
+.x1 
+.sb I'm~Dreaming~of~a~White~Lemming  White~Christmas
+I'm dreaming of a white 
+Lemming.
+Just like the mice I used to know   
+.sp 
+.ne4
+When the days seem  
+chilly and bright.  
+May all your shirt collars  
+Be white.   
+.se 
+:x2 
+.hd 3 ".ul" "Notes:"
+.lt +3 "" ")" 1 1   
+.it 
+.tr~~   
+.li 
+.sb <Our~Song~Title> <The~REAL~Song~Title>  
+.tr~    
+.br 
+This sets the titles in a nice box of asterisks, with our song title
+first, and the real song title following the words "to the tune of:".   
+Both titles must be less than 45 characters long.   
+.it 
+.li 
+.sp 
+.br 
+This puts a blank line between verses 1 and 2.  
+.it 
+.li 
+.ne4
+.br 
+This is needed to make sure that a song is not split in the middle of   
+a verse.  Replace the number "4" by the number of lines up to the next  
+".sp" or ".se".  This will have ROFF start a new page if it can't fit   
+the specified number of lines onto the current page; hence, the verse   
+will be kept together and will start the new page.  
+Use .sp followed by .ne<nn> to preceed and separate each verse. 
+.it 
+.li 
+.se 
+.br 
+Song End.  This cancels the environments set up by the preceeding ".sb",
+and restores the previous environment.  
+REMEMBER TO END WITH ".se". 
+.le 
+.hd 0 ".ul" Technical~and~Stage~Directions  
+^(foot) 
+This year, stage directions and technical directions for sound and  
+light are each being kept distinct.  This should help our over-worked   
+technical staff and at the same time make our authors conscious about   
+the demands they are placing.   
+These directions are very important!
+Any sound which must be produced over the P.A. system in the Theatre
+must be surrounded by the ".sd~-~.ex" pair; 
+Any lighting changes (including lights up and lights down at the beginning  
+and end of your scene!) must be surrounded by the ".ld~-~.ex" pair. 
+.pb 
+Actor (stage) directions, sound directions, and lighting directions 
+must be surrounded by "environment control" macros, in a similar manner 
+to songs.   
+
+
+.br 
+.ne 19  
+This is the format: 
+.x1 
+.ld 
+(THIS IS AN UPPER-CASE LIGHTING-DIRECTION   
+WHICH MAY COVER SEVERAL LINES.  
+IT IS SURROUNDED BY PARENTHESES,
+AND MUST END WITH '.EX'.)   
+.ex 
+.sd 
+(THIS IS A SOUND-DIRECTION, USING THE SAME FORMAT.  
+IT MUST END IN '.EX' ALSO.) 
+.ex 
+.ad 
+(THIS IS AN ACTOR-DIRECTION 
+{FOR ACTION ON STAGE} USING THE SAME FORMAT.
+IT, TOO, MUST END IN '.EX'.)
+.ex 
+:x2 
+.hd 3 ".ul" "Notes:"
+.lt +3 "" ")" 1 1   
+.it 
+.ld, .sd, .ad   
+.br 
+These begin lighting, sound, and actor directions respectively. 
+Each ends with the ".ex" terminator (DO NOT FORGET IT!).
+These directions are upper case and surrounded by parentheses, to   
+distinguish them from actors' speeches. 
+.it 
+.ex 
+.br 
+Exit.  This cancels the environment set up by the preceeding
+.ld, .sd, or .ad and restores the previous environment. 
+PLEASE REMEMBER IT! 
+.le 
+.pb 
+For simple directions to the actors, place the short direction in   
+parentheses in the actor's speech.  Keep such directions upper case!
+.br 
+.ne8
+Example:
+.x1 
+.ch fh  
+(MOVES LEFT) I'm the captain around here! (COUGHS)  
+Where's Dave?   
+:x2 
+.xs 
+Light and sound cues should really be surrounded by their macros, no
+matter how trivial.  This will mean splitting some speeches around  
+these directons:
+.ne 8   
+.x1 
+.ch fh  
+(MOVES TO TELEPHONE) I wonder what will happen next.
+.sd 
+(TELEPHONE RINGS)   
+.ex 
+I might have known.  (ANSWERS PHONE) Hello? 
+:x2 
+.xs 
+Note that another ".ch~fh" is not necessary after the sound direction.  
+The actor will skip the sound direction and continue afterward. 
+An exception to this rule may occur if the direction is very long,  
+in which case you should repeat the character macro (e.g. ".ch~fh") after   
+the direction's ending ".ex".   

@@ -1,0 +1,194 @@
+
+
+
+......B.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1989/script/writmacr.t 
+.bs 1 c zzz 
+.na ma JUDGE~MALAPROP MALAPROP  
+.na pa PAM~ASSONIC ASSONIC  
+.na li BILL~LIBERTY LIBERTY 
+.na ho NOAH~HOPE HOPE   
+.na na NATASHA~BADANOV NATASHA  
+.na ba BAILIFF BAILIFF  
+.na lg LISA~GRIEMENT LISA   
+.na lo ELIZA~LOTT ELIZA 
+.na st KAY~STONE STONE  
+.na rp REPORTER REPORTER
+.ld 
+(THE COURTROOM IS REDISCOVERED POLKA-ING TO OSKAR WERNER TUNES. 
+ELIZA LOTT AND LIBERTY ARE POLKA-ING TOGETHER.) 
+.ch ho  
+Objection!  
+Prosecution is leading the witness. 
+.ch lo  
+Party Pooper!   
+.ch ma  
+I'm confused.   
+Isn't the man   
+.ul 
+supposed
+to lead?
+.ch ho  
+But that's sexist, your Honour. 
+.ch ma  
+Overruled.  
+.ch li  
+So Satan tricked Ms Griement in their first meeting?
+.ch lo  
+Yes, he always did enjoy acquiring souls through elocutionary agreements.   
+.ch pa  
+What?   
+.ch ba  
+Elocutionary agreements...fancy word games, 
+like when people interpret figures of speech literally. 
+.ch pa  
+I know that!
+How do you spell it?
+.ch ba  
+I. T.   
+.ch pa  
+Cut it out. 
+.ad 
+(BAILIFF PRODUCES A PAIR OF SCISSORS AND A PIECE OF PAPER   
+WITH THE WORD "IT" ON IT.   
+HE CUTS "IT" OUT.)  
+.ex 
+Arrrrgh ... Go jump in the lake!
+.ad 
+(BAILIFF LEAVES.
+WE HEAR A LOUD SPLASH.  
+BAILIFF LATER RETURNS SOAKING WET.) 
+.ch li  
+And did Ms. Griement appreciate Satan's little joke?
+.ch lo  
+No. 
+She said she was mad as Hell and wasn't going to take it any more.  
+.ch li  
+Thank you, Mrs Lott.
+Your Honour, as this witness has clearly shown, Ms Griement obviously   
+had a motive to dispatch the Supreme Sleazy Slumlord.   
+.ch ho  
+(JUMPING IN QUICKLY BEFORE HE IS BROWBEATEN)
+Now Mrs. ELIZA, you are also a slumlord--   
+.ch lo  
+I'm 
+.ul 
+not 
+a slumlord. 
+I'm a Student Domicile Optimization Engineer.   
+.ch ho  
+Very well.  
+As a Student Domicile Optimization Engineer, you have encountered   
+many potential tenants, have you not?   
+.ch lo  
+(LEERY) 
+Yes.
+.ch ho  
+And where you have more applicants than vacancies, you must choose  
+who will become the new tenant, must you not??  
+.ch lo  
+Yes.
+.ch ho  
+(RHETORICALLY)  
+And how do you do this? 
+.ch lo  
+Well, first I see who can pay the rather exorbitant rent... 
+.ch ho  
+(CONTINUES WITHOUT HEARING A WORD ELIZA SAYS)   
+Of course, you make snap decisions, do you not, Mrs Lott... 
+.ch lo  
+Then I find out what indignations they're willing to suffer to get the  
+apartment...
+.ch ho  
+In other words, ten 
+seconds of meaningless conversation, and boom, it's tenant or bum...
+.ch lo  
+Finally I see how many twisted perverted lurid sexual acts they can perform.
+.ch ho  
+In short you... 
+(DOUBLE TAKE)   
+...perform twisted perverted sexual acts??  
+You devil, you harlot, you painted Jezebel. 
+I have only one thing to say to someone of your ilk...  
+.ch rp  
+Any vacancies?  
+.ch li  
+I take it your cross-examination is finished?   
+.ch ma  
+Very well, Mrs Lott, you are misdissed...dismissed. 
+.ad 
+(ELIZA AND REPORTER LEAVE, TALKING TO EACH OTHER)   
+.ch ho  
+Your Honour, bail for my client has not been set, and she is currently  
+in captivity in a cell that makes Mrs Eliza's place look like the   
+Taj Mahal.  
+.ch st  
+Your Honour, prosecution requests that bail be denied for this fiery,   
+deranged, hot-headed murderess. 
+.ch ma  
+What grounds do you have to flake maiming accusations?  
+.ch li  
+We have a witness who will show that the accused cannot be  
+trusted to comply with the terms of her bail agreement. 
+.ch ma  
+Very well, summon your witness. 
+.ch st  
+Summon Natasha Badanov to the stand.
+.ch ba  
+(PULLS OUT A CRYSTAL BALL)  
+Abracadabra Kalamazoo, Natasha Badanov, we summon you.  
+.ad 
+(NATASHA TAKES STAND)   
+.ch st  
+Please state your name and occupation.  
+.ch na  
+Natasha Badanov, spy, and one of founding members of SOUL.  
+.ch st  
+What is SOUL?   
+.ch na  
+Sort of a religious type music, but more of pop orientation.
+.ch st  
+What is the SOUL of which you are a founding member?
+.ch na  
+Is underground conspiracy.  
+SOUL stands for Secret Organization to Undermine Lucifer.   
+.ch st  
+And this conspiracy is where you first encountered the accused, Ms Griement?
+.ch na  
+Yes, darlink.   
+.ch st  
+You have been called here to testify to the character of the accused.   
+Could you please identify the accused for us?   
+.ch na  
+Over there, the scarlet lady.   
+.ch st  
+Tell us about the night you met the scarlet lady.   
+.ch na  
+Was evenink of SOUL secret meetink...   
+.ld 
+(INTO 1-1.) 
+.es 

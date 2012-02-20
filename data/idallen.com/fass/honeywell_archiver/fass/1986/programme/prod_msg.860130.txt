@@ -1,0 +1,58 @@
+
+
+
+.   .z..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{bl}{ps 8P}{ro} 
+{sy "echo producer"}
+Producer's Message: 
+{ps 8P}{tp} 
+"You're the Producer.   
+So...produce!"  
+{it}
+(Paul McKone, 1986) 
+{ro}
+Famous last words.  
+They told me that a good Producer delegates, so I did.  
+(I'd have done it alone, but "Nobody could have survived that!")
+And now, to those dedicated and loyal delegates, thank you. 
+{to 2S} 
+To Derek and Karl and Victoria  
+To Dave and Derek and Linda 
+To Ramona   
+To Jennifer 
+To Eileen and Bill  
+To John (for National Hug Week) 
+To Ken and Tom (meet me in Hawaii)  
+To Suzanne  
+And to Peter!   
+{tn}
+From advertising and producing and hugs and massages to the 
+late nights at the club, you've helped make my job less frenzied
+and most wonderfully FASS!  
+Love, Lynn. 
+{bl}

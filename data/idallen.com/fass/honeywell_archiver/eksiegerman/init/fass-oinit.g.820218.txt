@@ -1,0 +1,337 @@
+
+
+
+.6MS....
+eksiegerman.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	editp	on   
+*   
+* !asm init.g l=b/blib  
+*   
+* Bits set: 
+*    54 always (for qed)
+*    55 if remote cpu (eg. UNIX)
+*    56 if drun 
+*    57 & 58 if 2741
+ckstty	set	0	if non-zero, don't stty to backspace   
+debug	set	0	if non-zero, abort rather than disconnect on break  
+phone	set	0	if non-zero, include phone code 
+query	set	1	if non-zero, find out who's on  
+
+
+uasci	opsyn	ascii   
+
+
+	symdef	main
+	ife	phone,1,2  
+	symdef	.10001,.10000   
+	symref	datesi  
+	lodm	.g3tsm
+	.ssust 
+
+
+ASCTRM	equ	1
+
+
+	ine	query,0,%endnam
+user	macro	name,code,cat
+	crsm	save,off  
+	use	names  
+	ascii	3,#1 
+	tra	#2 
+	ascii	1,#3 
+	use
+	crsm	restore   
+	endm	user  
+	use	names  
+names	null  
+	use
+	user	eks,eks   
+	user	zigg,quick
+	user	madeline,y.stty,lmc   
+	user	maryann,y.stty,mak
+	use	names  
+	zero   
+	use
+endnam	mark 
+
+
+main	null   
+	lda	break-1
+	sta	.lbrk  
+	stca	.lwrap,70 
+	ldx6	0,du  
+	ife	phone,1,%phone1
+	eax7	bstack	set up B stack for datesi  
+	drl	time   
+drltim	zero	dayt
+	eaa	dayt   
+	arl	18 
+
+
+
+	tsx1	datesi,*  
+	zero	2,1   
+	div	7,dl	remainder goes in a   
+	cmpa	2,dl	if Wednesday 
+	tnz	tty
+	prntty	3,plc	issue reminder
+phone1	mark 
+
+
+tty	drl	termtp  
+	lrl	12	put tty type in al, lineid in ql
+	qrl	24 
+	eax2	,al   
+	eax3	,ql   
+	cmpx3	=o2020,du	drun?  
+	tnz	nodrun 
+	ldq	=o500000,dl
+	drl	setswh,*   
+	drl	return 
+
+
+nodrun	null 
+	cmpx2	3,du	remote cpu? 
+	tnz	nrmote 
+	ldq	=o200000,dl
+	tra	doit   
+nrmote	cmpx2	=o20,du	2741?  
+	tnz	ascii  
+	ldq	=o060000,dl
+	tra	doit   
+ascii	ldq	=o010000,du	LUCID bit (no nulls on <cr><lf>)  
+	drl	setswh 
+	orx6	ASCTRM,du 
+	tra	*+2
+doit	drl	setswh,*   
+	ine	query,0,%endqry
+	ldaq	qrytal
+ask	null
+	staq	qrytal
+	drl	koutn  
+	zero	qrytal
+	drl	kin
+	zero	qrytal+1,qrytal   
+	zero	stat  
+	lxl7	qrytal
+	sbx7	1,du  
+	tmoz	ask	he didn't say anything
+	mlr	(,1,,),(,,,),040   
+	adsc9	qrytal+1,,7  
+	adsc9	echo,,40 
+
+
+	eaa	chgno  
+	ora	=o1440,dl  
+	sta	outtal 
+	lda	qrytal 
+	als	6  
+	ora	=o40,dl
+	ora	qrytal+1,du
+	sta	intal  
+cploop	null 
+	lda	intal,sc   
+	ttn	pad
+	cmpa	=o10,dl   
+	tnz	*+3
+	nop	outtal,scr 
+	tra	cploop 
+	cmpa	=o100,dl  
+
+
+	tze	*-3
+	tmi	store  
+	cmpa	=o133,dl  
+	tpl	store  
+	ora	=o40,dl
+store	sta	outtal,sc 
+	ttn	lookup 
+	tra	cploop 
+pad	lda	=o40,dl 
+	sta	outtal,sc  
+	ttf	*-1
+
+
+lookup	null 
+	awdx	names-5,,0	         ignore this flag; the code is correct.
+look	awd	5,,0   
+	szn	,,0
+	tze	defalt 
+	cmpc	(1,,,),(,,,),040  
+	adsc9	0,,12,0  
+	adsc9	chgno,,12
+	tze	3,*,0  
+	tra	look   
+
+
+defalt	tsx1	stty
+	tra	crun   
+
+
+n.stty	drl	kout 
+	zero	bdstty
+	tra	ec 
+
+
+y.stty	tsx1	stty
+ec	lda	4,,0 
+	stba	ectal+2,70
+	drl	pseudo 
+	zero	ectal 
+	drl	callss 
+	ascii	1,ec 
+	tra	crun   
+
+
+quick	null  
+	ldq	=o400000,dl
+	drl	setswh,*   
+	ife	ckstty,0   
+	tsx1	stty  
+	drl	return 
+endqry	mark 
+
+
+eks	null
+	ldq	=o400000,dl
+	drl	setswh,*   
+	ife	ckstty,0   
+	tsx1	stty  
+	drl	pseudo 
+	zero	news,stat 
+	drl	callss 
+	ascii	1,qed
+
+
+	ine	query,0,%endcrn
+crun	null   
+	drl	pseudo 
+	zero	crntal
+	drl	callss 
+	ascii	1,crun   
+cfloop	null 
+	drl	koutn  
+	zero	,percnt   
+	drl	kin
+	zero	qrytal+1,qrytal   
+	zero	stat  
+	ldq	qrytal 
+	qls	6  
+	orq	=o40,dl
+	orq	qrytal+1,du
+	stq	qrytal 
+
+	drl	pseudo 
+	zero	qrytal
+	ldq	qrytal+1   
+	stq	drl+1  
+drl	drl	callss  
+	ascii	1,** 
+	ldq	qrytal+1   
+	orq	=o040040040040 
+	cmpq	cout  
+	tnz	cfloop 
+endcrn	mark 
+	drl	return	for when the "crun newu" isn't there
+
+
+stty	null   
+	canx6	ASCTRM,du
+	tze	0,1
+	ldq	linlen 
+	drl	t.linl 
+	cmpa	4,dl  
+	tze	*+3
+	eaa	bdstty 
+	sta	*+2
+	drl	kout   
+	zero	sttyms
+	tra	0,1
+
+
+	tra	break  
+	ife	debug,0
+break	drl	drldsc
+	ine	debug,0,2  
+break	stz	.lwrap
+	drl	abort  
+news	tallyb	*+1,10  
+	microp	8aqed logi,an,o015  
+sttyms	tally	*+1,1  
+	tallyb	*+1,11  
+	oct	012147162164,163057163164,164171015000 
+linlen	zero	159/4,159   
+bdstty	tally	*+1
+	tallyb	*+1,10  
+	oct	012116117040,123124124131,041015000000 
+stat	bss	2  
+lineid	bss	1
+	ife	phone,1,%phone2
+dayt	bss	4  
+	odd
+bstack	dec	0,0,0,0,0,0,0,0,0,0  
+
+
+	even   
+.10001	adx7	,1  
+	stx1	,7
+
+
+.10000	ldx1	,7  
+	sbx7	,1
+	qls	0  
+	tra	1,1
+phone2	mark 
+	ine	query,0,%endqry
+	odd
+	even   
+qrytal	tally	*+1,1  
+	tallyb	*+1,17  
+	oct	015012177177   
+	ascii	4,who are you?   
+	bss	34 
+	odd
+crntal	tallyb	*+1,107   
+
+
+
+
+
+
+	ascii	3,crun "newu     
+chgno	ascii	3,************  
+	ascii	6,\date >>/etc/log\echo  
+echo	ascii	10,**
+	microp	8a >>/etc/,8alog";*nu,2all,o015 
+cout	ascii	1,cout   
+percnt	oct	015012045040 
+
+
+
+
+intal	bss	1 
+outtal	bss	1
+ectal	tallyb	*+1,13 
+	microp	4aec /,3a***,5a/init,o015   
+	end

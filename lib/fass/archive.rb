@@ -1,3 +1,4 @@
+# TODO Either remove this entirely and retrieve index information from the individual files, or remove idallen references
 class Fass
   class Archive
 

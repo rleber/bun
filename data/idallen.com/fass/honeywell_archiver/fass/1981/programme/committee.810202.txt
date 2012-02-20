@@ -1,0 +1,56 @@
+
+
+
+.".p.!Vt
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so tmacs.t 
+.nf 
+.HH "The FASS Committee"
+.CC "President" "Chris Dobbin"  
+.CC "Vice-President" "Peter Carette"
+.CC "Secretary" "Maggie Varadi" 
+.CC "Treasurer" "Tom Hocaliuk"  
+.sp 0.5L
+.ne 4l  
+.CC "Director" "Ian Chaprin"
+.CC "Producer" "Bernie Roehl"   
+.CC "Head Scriptwriter" "Dave Spence"   
+.CC "Technical Director" "Joe Supple"   
+.sp 0.5L
+.ne 4l  
+.CC "Faculty Rep" "Phil Eastman"
+.CC "Administration Rep" "Peter Fraser" 
+.CC "Staff Rep" "Alex Kordics"  
+.CC "Student Rep" "Claudette Gagnon"
+.sp 0.5L
+.ne 5l  
+.CC "Past President" "Preston Gurd" 
+.CC "Past Director" "Jim Gardner"   
+.CC "Past Producer" "Ron Dragushan" 
+.CC "Past Scriptwriter" "Ian! Allen"
+.CC "Past Technical Directors" "Scott Nicoll, John Primeau" 
+.sp 0.5l
+.CC "Honourary Member" "Doug Crichton"  

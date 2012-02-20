@@ -1,0 +1,233 @@
+
+
+
+.....bf.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1988/script/87macr.t   
+.bs d 3 "La Glace Menagerie"
+.na ca CAT CAT  
+.na ja JAMMER JAMMER
+.ld 
+(LIGHTS UP. 
+THIS VIGNETTE MAKES USE OF THE SPACE IN FRONT OF THE CURTAIN, WHERE IT IS   
+TWILIGHT OF A NOVEMBER EVENING. 
+A LARGE (PERSON-SIZED) WICKER BASKET IS SITTING AT CENTER STAGE, WITH   
+A BLANKET INSIDE WHICH IS OBVIOUSLY COVERING SOMETHING. 
+SUDDENLY, CAT AND JAMMER (A DOG) ENTER, THE LATTER IN FURIOUS PURSUIT OF
+THE FORMER. 
+BOTH SHOULD APPEAR TO BE STRAYS OF THEIR RESPECTIVE SPECIES, YET NOT BE TOO 
+SCRUFFY.
+AS THEY PASS THE BASKET, CAT DUCKS BEHIND IT AND TRIPS JAMMER;  
+AS THE DOG PICKS HIMSELF UP FROM HIS DRAMATIC PRATFALL, CAT BLINDLY LEAPS   
+INTO THE BASKET AND VANISHES.   
+AND THERE WE START THE SCENE)   
+.ch ca  
+Mrreoww!
+What's this?
+.ch ja  
+(RISING)
+Hey, Cat... 
+.ad 
+(PAUSE) 
+.ex 
+(LOOKING AROUND)
+Cat...? 
+.ad 
+(ANOTHER PAUSE) 
+.ex 
+You're not supposed to disappear, Cat.  
+You're supposed to run down to the corner and climb up on Mr. Wilson's  
+roof.   
+And then he'll come out and --  
+.ch ca  
+(HUSHED)
+Quiet, Jammer.  
+You'll wake it! 
+.ch ja  
+(IDLING OVER)   
+Wake what?  
+What's in the basket?   
+.ch ca  
+Take a look.
+.ad 
+(CAT FOLDS BACK THE BLANKET)
+.ch ja  
+Hey!
+It's a human pup!   
+.ch ca  
+Boy, are you ignorant, Jammer.  
+It's a human kitten.
+.ch ja  
+Pup.
+.ch ca  
+Kitten. 
+.ch ja  
+No, I --
+Wait, I remember now.   
+It's a human
+.ul 
+baby.   
+.ch ca  
+Baby, hmmm? 
+Well, it looks cute enough --   
+Hey!
+There's a bottle of milk in here!   
+.ad 
+(CAT DOES APPROPRIATE THINGS WITH THE BABY'S BOTTLE.
+CAT IS NOT STUPID, BUT  
+.ul 
+IS  
+HUNGRY) 
+.ch ja  
+Uh, Cat...  
+.ad 
+(CAT IGNORES JAMMER, INTENT ON THE MILK)
+.ex 
+Cat, I don't think this is right.   
+I've been on the street six years, and I've never seen a baby alone before. 
+Not 
+.ul 
+ever.   
+And it's gonna get dark and cold soon.  
+.ch ca  
+Oh, all right.  
+I'm finished with the milk anyway.  
+.ad 
+(CAT RECOILS, AS IF POKED BY THE BABY)  
+.ex 
+Ow! 
+Take it easy!   
+Jammer, how do you tame one of these things?
+I don't think cuffing it will work. 
+.ch ja  
+Uh...   
+well, I know you don't growl at a baby, 'cause Rex did that once and
+the big humans took him away.   
+I think you're supposed to act nice to it.  
+Maybe.  
+.ch ca  
+Nice, huh?  
+Okay, I'll try butting it a little. 
+.ad 
+(CAT STICKS UPPER BODY FURTHER INTO BASKET, AS IF BUTTING)  
+.ch ja  
+Well?   
+.ch ca  
+I'm not sure... 
+it looks a bit confused.
+(LAUGHTER)  
+Wait a minute -- I think it's going to butt me baaack!  
+.ad 
+(CAT FLIES OUT OF THE BASKET AND LANDS WITH A DISTINCT LACK OF CATLIKE  
+GRACE)  
+.ch ja  
+Strong little baby, isn't it?   
+.ch ca  
+(DAZED) 
+Ooooh -- my head.   
+(RECOVERING)
+That didn't work too well, did it?  
+.ch ja  
+Uh-uh.  
+Hey, why don't I go down to the corner and bark until Mr. Wilson
+comes out?  
+Then I'll --
+.ch ca  
+Catch a shoe in the face, and you know it.  
+You're an okay animal for a dog, Jammer, but -- 
+.ad 
+(CAT IS INTERRUPTED BY THE BABY CRYING) 
+.ex 
+You know, I'm starting to like this little human.   
+It could teach me some new yowling tricks.  
+.ch ja  
+Well, at least it can't get any worse.  
+.ad 
+(IT BEGINS TO SNOW, AND THE BABY IS DISTRACTED ENOUGH TO STOP CRYING.   
+ALL LOOK UP, AND THE NEXT THREE LINES ARE SAID FROM THIS POSTURE)   
+.ch ca  
+Jammer? 
+.ch ja  
+Yeah?   
+.ch ca  
+Shut up.
+.ch ja  
+We gotta do something soon, Cat.
+It hasn't got any fur, and it'll freeze out here.   
+.ch ca  
+Hmmm.   
+Heck, Jammer,   
+.ul 
+we've   
+been through winters before.
+How did we keep warm when our fur wasn't good enough?   
+.ch ja  
+Um...   
+we found nice humans.   
+.ch ca  
+It's getting dark.  
+No humans around.   
+.ch ja  
+We slept over sewer vents or in doorways.   
+.ch ca  
+The basket's too big for us to move.
+.ch ja  
+We cuddled up together. 
+.ad 
+(JAMMER PAUSES AS CAT GETS INTO BASKET) 
+.ex 
+Oh, hey, think that would work? 
+.ch ca  
+Jammer, get in here.
+.ad 
+(JAMMER JOINS CAT AND THE BABY IN THE BASKET.   
+AS THE SNOW CONTINUES TO FALL AND DARKNESS SETTLES, THE TWO ANIMALS 
+SNUGGLE FIRMLY BESIDE THE BABY) 
+.ch ja  
+It's still pretty open here, Cat.   
+We might freeze too.
+.ch ca  
+Shut up, Jammer.
+.ad 
+(PAUSE) 
+.ch ja  
+I have a question.  
+.ch ca  
+What?   
+.ch ja  
+Well, I'm here because I'm a dog, and dogs like humans. 
+But I know that you don't care much for humans yourself.
+.ch ca  
+So? 
+.ch ja  
+So why are you here?
+.ad 
+(PAUSE) 
+.ch ca  
+Because maybe I like some dogs. 
+.ld 
+(LIGHTS DOWN)   
+.es 

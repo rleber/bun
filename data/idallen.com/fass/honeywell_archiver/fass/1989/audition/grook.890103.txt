@@ -1,0 +1,37 @@
+
+
+
+...H....
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1989/script/bulkmacr.t 
+.bs a 4 "AN ETHICAL GROOK by Piet Hein" 
+.ve 4   
+I see and I hear and I speak no evil;   
+I carry no malice within my breast; 
+yet quite without wishing a man to the Devil
+one may be permitted to hope for the best.  
+.es 

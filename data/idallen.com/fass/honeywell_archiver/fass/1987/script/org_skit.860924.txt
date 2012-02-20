@@ -1,0 +1,354 @@
+
+
+
+..!...Y.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1987/script/writmacr.t 
+.bs Organizational Meeting "Introductory Skit"  
+.na gi GILLIGAN GILLIGAN
+.na sk SKIPPER SKIPPER  
+.na pr PROFESSOR PROFESSOR  
+.na df DOCTOR~FASSTUS FASSTUS   
+.na gn GINGER GINGER
+.na ma MARY-ANN MARY-ANN
+.na mr MR-HOWE MR_HOWE  
+.na mrs MRS-HOWE MRS-HOWE   
+.na of OTTO~FASSINDER OTTO  
+.na fd FASS~DIRECTOR DIRECTOR   
+.ad 
+(THE SCENE OPENS WITH ALL CHARACTERS ONSTAGE,   
+SINGING THE OPENING SONG.)  
+.sb "Opening Song" "The Ballad of Gilligan's Isle"  
+.ve 5   
+Just sit right back while we sing about 
+A group twenty-five years old,  
+With tacky play, and stupid jokes,  
+And actors all quite bold.  
+     (Or so we have been told.) 
+.ve 5   
+The cast is an eager, rag-tag lot,  
+The techies, brave and pure;
+One hundred oor more come each year 
+Drawn to the stage's lure.  
+     (Though why, we aren't quite sure.)
+.ve 5   
+The play is the thing, or so we say,
+All schoolwork cast aside;  
+Just jion up now and you will see:  
+Your marks will start to slide. 
+     (A roller-coaster ride.)   
+.ve 9   
+The show this year's amid T of A's  
+Narrow and dim-lit aisles;  
+With eagerness  
+The cast and crew   
+Will meet and put   
+On a play.  
+All of them stars   
+Better than you'll see on TV
+Everyone with a smile!  
+.ad 
+(AS THE SNG ENDS, MOST OF THE CAST WANDERS OFF, 
+LEAVING ONLY THE PROFESSOR AND THE SKIPPER ON STAGE.)   
+.ch sk  
+So, Professor, what you're saying is that we can use
+those coconut shells you've been collecting 
+and a few parts from the radio  
+to develop a crude faster-than-light drive  
+that can get us off the island! 
+.ch pr  
+Yes, that's right, Skipper. 
+As soon as Gilligan brings me the last of those 
+very fragile radio parts I need, we'll...   
+.sd 
+(SOUNDS FROM STAGE LEFT,
+AS OF VERY FRAGILE RADIO PARTS  CEASING TO BE.  
+ENTER GILLIGAN FROM STAGE LEFT, RUNNING.)   
+.ch gi  
+Skipper! Skipper!!  
+.ch sk  
+What is it, little buddy?   
+.ch gi  
+There's a moat in the balloon!  
+I mean a goat in the baboon!
+I mean...   
+.ch pr  
+Calm down, Gilligan.
+What I think you're trying to say is
+that there's a boat in the lagoon.  
+.ch gi  
+Right.  There's a boat in the lagoon.   
+.ch sk  
+There now, that wasn't so hard to say, was  
+- (DOUBLE TAKE) -   y jua bo
+
+a boat in the lagoon!   
+I can't believe it! 
+.ch pr  
+Neither can I.  
+We normally average only two boats in the   
+lagoon a week.  
+This makes the fourth in five days. 
+.ch sk  
+I'll go get the others. 
+You two see who's on that boat. 
+.ad 
+(LOUD FANFARE FROM STAGE LEFT,  
+AS THE EVIL DOCTOR FASSTUS ENTERS.  
+THE REST OF THE CASTAWAYS ARE IN A ROW BEHIND HIM, ZOMBIE-LIKE. 
+WHEN THE OTHER CASTAWAYS SPEAK IT WILL BE AS ONE
+ZOMBIE-LIKE UNIT.)  
+.ch df  
+There is noo need for that! 
+.ch gi  
+Okay then,  
+.ul 
+I'll
+get the others and  
+.ul 
+you all see who's on the boat.  
+.ch sk  
+Shut up, Gilligan.  
+.ch pr  
+Who are you?
+And what have you done to Ginger, Mary-Ann and the Howes?   
+.ch df  
+The young ladies are under my hypnotic control. 
+The Howes are also my slaves, except for Gordie,
+who retired from pro hockey some years ago. 
+As for your first question, 
+I am The Evil Doctor FASStus!   
+.ch gi  
+Doctor FASStus? 
+.ch df  
+No, you fools, "The Evil Doctor FASStus"!   
+Get it straight!
+.ad 
+(THE HYPNOTIZED CASTAWAYS VISIBLY STRAIGHTEN THEIR LINE.)   
+.ex 
+Not 
+.ul 
+you 
+fools.  
+.ul 
+Those   
+fools.  
+.xx OTHER~CASTAWAYS 
+Oh. Sorry.  
+.ch sk  
+But what do you want here?  
+.ad 
+(FASSTUS SNAPS HIS FINGERS. 
+GINGER AND MARY-ANN STEP UP TO EITHER SIDE OF HIM.) 
+.ex 
+Oh, I see.  
+Thank you.  
+(DOUBLE TAKE)   
+Now hold on a second!   
+This is a family show - seven castaways 
+and their adventures on a mysterious island.
+.ch df  
+You mean you don't know where you are!? 
+.ch pr  
+No.  The only clue we have is some sort of  
+proimative tribal chanting we hear occasionally.  Listen.   
+.sd 
+(FROM OFFSTAGE WE FAINTLY HEAR THE FIRST FEW LINES OF "I'SE THE B'Y".)  
+.ex 
+Any ideas?  
+.ch df  
+You don't want to know. 
+Now if you'll excuse me,
+I must procede with my plan for global domination!  
+.ch gi  
+Can we watch?   
+.ch sk  
+Shut up, Gilligan.  
+What are you going to do?   
+.ch df  
+I am going to sacrifice hese four   
+(INDICATING THE OTHER CASTAWAYS)
+to the dark one, that I might obtain unspeakable power. 
+After a traditional rite of drinking and debauchery,
+they will lose their souls forever! 
+.ch pr  
+Sounds a bit like Octoberfest.  
+.ch of  
+(FROMM OFFSTAGE RIGHT)  
+Octoberfest!  Then I've found it!   
+.ad 
+(ENTER OTTO FASSBINDER FROM STAGE RIGHT.)   
+.ch gi  
+Whoo's he?  
+.ch sk  
+Shut up, Gilligan.  
+I'll handel this.   
+(TO FASSBINDER) Who are you?
+.ch of  
+I am the great director, Otto FASSbinder!   
+.ch sk  
+Well, I'm the Skipper   
+.ch gi  
+And I'm Gilligan.   
+.ch pr  
+And I'm the Professor, and the rest of our party
+is standing behind Doctor FASStus there.
+.ch df  
+That's "The Evil Doctor FASStus"!   
+I say again, get it straight
+.ad 
+(ONCE AGAIN, THE ZOMBIE CASTAWAYS TRY TO STRAIGHTEN THEIR LINE, 
+BUT FASSTUS INTERUPTS THEIR EFFORT WITH:)   
+.ex 
+Don't even think it.
+.xx OTHER~CASTAWAYS 
+Wouldn't dream of it,   
+O Load and Master.  
+.ch pr  
+(TO FASSBINDER) 
+Are you here to take part in FASStus'...
+.ch df  
+That's "The Evil... 
+.ch pr  
+Whatever!   
+Are you here to take part in
+.ul 
+his 
+rite of drunkenness and debauchery too? 
+.ch of  
+Oh, ya! 
+A truly good Fassnacht is so hard to find anymore - I   
+certainly intend to enjoy this one! 
+.ch gi  
+Fassnacht?  Is that what they call an attempt   
+to take over the universe?  
+.ch of  
+No, no. 
+A Fassnacht is an old German tradition - one huge   KE) party just p
+
+party just prior to the religious season of Lent.   
+The word itself is derived from 'night', 'nacht', and   
+'barrel' or 'keg', 'fass'!  
+.ch fd  
+(FROM OFFSTAGE LEFT)
+FASS! Then I've found it!   
+.ad 
+(ENTER DIRECTOR FROM STAGE LEFT.)   
+.ex 
+Right.  So, what are we all standing around for?
+I want the cast assembled here in five minutes! 
+.ch of  
+Uh... I think we have a little bit of confusion here.   
+.ch df  
+.ul 
+You 
+should talk.
+.xx OTHER~CASTAWAYS 
+You tell 'im, O Lord and Master.
+.ch fd  
+O...kay.
+You mean this isn't where FASS is?  
+.ch df  
+This is where The Evil Doctor FASStus is.   
+.ch of  
+Und this is where we are going to have a Fassnacht. 
+.ch fd  
+But nor FASS, the University of Waterloo's annual   
+musical/comedy, put on by a talented assortment 
+of amateur performers to capacity crowds?   
+.ch df  
+No. 
+.xx OTHER~CASTAWAYS 
+Aw, come on, The Evil Doctor FASStus!   
+.ch df  
+Absolutely not. 
+.xx OTHER~CASTAWAYS 
+Awww... 
+.ch fd  
+Who are you guys?   
+.xx OTHER~CASTAWAYS 
+We are zombies, thank you for asking.   
+.ch sk  
+I'm the Skipper...  
+.ch df  
+Oh,no.  Personal introductions would keep us busy all day.  
+(POINTING)  
+He's the Skipper,   
+he's Gilligan, he's the Professor, they are my zombies, 
+he is Otto FASSbinder, you are apparently the director of FASS, 
+and I am Doctor FASStus!
+.xx ALL~EXCEPT~FASSTUS  
+That's The Evil Doctor FASStus! 
+.ch df  
+Arrgggh!
+Right, just for that -  
+.ul 
+no  
+rite of drunkenness and debauchery! 
+.ad 
+(EVERYONE GROANS, SAYS 'AWW', WHATEVER.)
+.ch gi  
+Well, what are we going to do now?  
+.ch fd  
+How about a two-and-a-half hour extravaganza,   
+with fantastic technical effects,   
+to be put on in February?   
+ch of   
+Und I could direct! 
+.ch fd  
+Uh...we'll talk about that later, Otto. 
+.ch gi  
+We could have Ginger coach the actors...
+.ch pr  
+And I could work up some technical effects...   
+.ch df  
+And I could take over the universe! 
+.xx OTHER~CASTAWAYS 
+Oh, lay off it, Doc!
+.ch df  
+That's The Evil... Oh, the heck with it.
+Call me Fred.   
+.ch sk  
+QUIET, PLEASE!  
+.xx ALL~EXCEPT~SKIPPER  
+Thank you.  
+.ch fd  
+That's the spirit!  
+Now what we need is a good song...  
+.ch gi  
+For an opening song?
+.ch fd  
+Actually, for a closing song!   
+.ad 
+(ALL THE CAST BELT INTO THE CLOSING SONG WHICH IS JUST  
+THE LAST FOUR LINES OF THE "GILLIGAN'S ISLAND" CLOSING THEME.)  
+.sb "Closing Song" "see opening song"   
+.ve 4   
+So join us every year, my friends,  
+You're sure to get some smiles. 
+Just help us all put on a play  
+In the T of A's aisles! 
+.es 

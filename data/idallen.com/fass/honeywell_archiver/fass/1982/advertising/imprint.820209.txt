@@ -1,0 +1,75 @@
+
+
+
+......j.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ll 64  
+.ce 
+FASS Presents its Twentieth Show:   
+.ce 
+"Alice in Wonderloo"
+.sp 4   
+.ds 
+.in 5   
+Someone once said that FASS is a four letter word that started with "F" 
+that meant the most fun thing you could do with other people.   
+However, unless you are one of the lucky few, you didn't audition for   
+the show and so are already missing out on all that fun.
+All is not lost, though, because you can still see the twentieth production 
+of FASS entitled "Alice in Wonderloo or Through the Looking FASS".  
+.sp.in 5
+In case you were wondering, FASS stands for Faculty, Administration, Staff  
+and Students.  Each year the members of FASS write, produce, direct and act 
+in a live theatre show that pokes fun at life in general and life at the UW 
+campus in particular.  Throughout the first week of February, you can thrill
+to the adventures of Waterloo co-op student Alice Aforethought as she travels   
+through the mysterious land known as Wonderloo. 
+.sp 
+.in 5   
+FASS has it all this year:  eggs, bunnies, vampires, generals, royalty, and 
+of course bad jokes.  As an added attraction, this year's show will be  
+shown in 3-D sound!  You thrilled to 3-D pictures in "The Creature From 
+the Black Lagoon", and now you can wonder at the realism provided by    
+three dimensional sound.  Each audience member will be issued red and green     
+ears so that they can pick up the full effect from our specially designed   
+3-D sound system.   
+.sp.in 5
+FASS has five shows this year.  Showtimes and prices are as follows:
+.nf.po 15   
+Wednesday, February 3    8:00     $3.00 
+Thursday, February 4     8:00     $3.00 
+Friday, February 5       7:00     $3.00 
+                        10:00     $3.50 
+Saturday, February 6     8:00     $3.50 
+.fi 
+Tickets are available at the Humanities box office. 
+They go quickly as a rule, so you had better hurry.         
+.sp 
+.in 5   
+FASS is a live show done by and aimed right at the people here at Waterloo. 
+For only $3.00 (or $3.50), you can't find a better entertainment value. 
+See you at the show.

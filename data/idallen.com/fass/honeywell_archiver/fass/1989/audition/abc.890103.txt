@@ -1,0 +1,52 @@
+
+
+
+...H...g
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1989/script/bulkmacr.t 
+.bs a 1 "from UNCLE SHELBY'S ABZ BOOK by Shel Silverstein"  
+.na na NARRATOR NARRATOR
+.ch na  
+D is for Daddy.  See Daddy.  See Daddy sleeping on the couch?   
+See Daddy's hair.  Daddy needs a haircut.  Poor Daddy.  Daddy has   
+no money for a haircut.  Daddy spends all his money to buy you  
+toys and oatmeal.  Poor Daddy.  Daddy can not have a haircut.   
+Poor poor Daddy.  See the scissors...  Poor poor poor poor Daddy.   
+.ch na  
+K is for Kidnapper.  See the nice kidnapper.  The kidnapper has a   
+lollipop.  The kidnapper has a keen car.  The car can go fast.  
+Tell the nice kidnapper that your Daddy has lots of money.  Then
+maybe he will let you ride in his car.  
+.ch na  
+O is for Oz.  Do you want to visit the wonderful far-off land of
+oz, where the wizard lives and scarecrows can dance and the road
+is made of yellow bricks and everything is emerald green?   
+Well, you   
+.ul 
+can't   
+because there is no land of Oz and there is no tin woodsman and 
+there is no Santa Claus!  Maybe someday you can go to Detroit.  
+.es 

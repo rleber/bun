@@ -1,0 +1,640 @@
+
+
+
+.....z>.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1988/script/87macr.t   
+.bs 1 3 "Lieder of the Hack"
+.na cs TERRY~YAKI TERRY 
+.na sd SANDY~BEACH SANDY
+.na eg EMMANUEL~GOLDSTEIN EMMANUEL  
+.na cw CATHERINE~WHEEL CATHERINE
+.na gn MACK~O'RONI MACK 
+.na gp GABRIEL~PLOTNICK GABRIEL 
+.na g1 RALPH~ALPHA RALPH
+.na g2 NORTON~SOUTH NORTON  
+.na la LASZLO~JONES LASZLO  
+.na cv COMPUTER~VOICE COMPUTER  
+.na vh VANNA~HEADROOM VANNA 
+.na gm1 TONY~BUBBLES TONY   
+.na gm2 ANDY~WINE ANDY  
+.na gm3 MICK~MIAPPY MICK
+.na gm4 MICK~MIFEELFINE MICK~2  
+.ld 
+(THE SCENE TAKES PLACE IN A LARGE MACHINE ROOM.  AT CENTRE  
+IS THE SYSTEM UNIT WITH A CLEAR PLASTIC BUBBLE ON TOP.  
+IN FRONT OF THIS IS A CONSOLE WITH KEYBOARD (POSSIBLY WITH SCREEN), 
+AND OFF TO ONE  
+SIDE IS A DESK WITH DRAWERS, WITH A TERMINAL ON IT. 
+THERE ARE ALSO TWO CHAIRS:  ONE WITH THE CONSOLE AND ONE WITH THE DESK. 
+ON THE OPPOSITE SIDE IS A LARGE DOORFRAME WITH A CLOSED DOOR
+EQUIPPED WITH A BEEPING DIGIT-ENTRY COMBINATION LOCK.   
+AS THE LIGHTS COME UP,  
+TERRY IS TYPING DATA ON THE CONSOLE, AND SANDY IS READING A NEWSPAPER)  
+.prip "NEWSPAPER"   
+.ch cs  
+Sandy, what is the confidence interval for this test run?   
+.ch sd  
+(READS HEADLINE FROM PAPER) 
+"Jealous computer murders professor."   
+You should read this, Terry -- it's better than the Chevron!
+.ch cs  
+You're supposed to be working!  
+What if the boss comes in?  
+.ch sd  
+No problem. 
+(READS) 
+"Famed psychic's head explodes."
+.ch cs  
+Mr. Plotnick's due back any minute! 
+Oh hell, I'll just use ninety-five percent. 
+.ad 
+(TERRY CONTINUES TYPING)
+.ch sd  
+(READS) 
+"Family haunted by ghost of Christmas turkey."  
+.ch cs  
+One last correction...  
+Here he is! 
+.ad 
+(PLOTNICK ENTERS ON SIDE WITH DOOR AND OPENS THE
+COMBINATION LOCK.  THE SEQUENCE OF BUTTONS USED TO OPEN 
+THE LOCK PLAYS THE TUNE FROM THE ROAD-RUNNER CARTOON THAT   
+CAUSED THE PIANO TO NOT EXPLODE)
+.md 
+(ROAD-RUNNER TUNE)  
+.ad 
+(THIS SEQUENCE IS LONG ENOUGH TO GIVE SANDY PLENTY OF TIME TO   
+TOSS THE NEWSPAPER TO TERRY, PUSH HIM OUT OF THE WAY,   
+SIT AT THE CONSOLE IN HIS PLACE, AND TYPE RETURN.   
+PLOTNICK PULLS OPEN THE DOOR AND LEAVES IT OPEN)
+.ch sd  
+Finished! (TO TERRY)
+Wake up!
+The boss is here!   
+(TO PLOTNICK)   
+Frankly, I don't know what to do with him, s
+
+Frankly, I don't know what to do with him, sir. 
+I try to set an example, but... 
+.ad 
+(TERRY PUTS NEWSPAPER ON DESK AND GETS A COMPUTER PRINTOUT FROM IT) 
+.ch cs  
+(EXASPERATED)   
+Here are some test results, sir.
+.ad 
+(HANDS COMPUTER PRINTOUT TO PLOTNICK)   
+.prip "COMPUTER PRINTOUT"   
+.ch gp  
+(TAKING PRINTOUT)   
+What test results?  
+.ch sd  
+For the CUPID project, sir. 
+.ch cs  
+You remember -- we were working on it last night.   
+.ch gp  
+If you say so.  
+I don't remember anything about last night. 
+Was I drinking again?   
+.ch sd  
+Yes, sir -- and you were brilliant! 
+.ch gp  
+I was?  
+.ch sd  
+I've never seen such code.  Sir, it was art.
+.ch gp  
+Art who?
+Never mind -- let's see what we've got. 
+.ad 
+(STARTS SKIMMING THROUGH PRINTOUT)  
+.ex 
+It's matched Ronald Reagan with Nancy Reagan -- good... 
+Oliver North with Margaret Thatcher...  
+Barbara Walters with Elmer Fudd...  
+.ad 
+(PUTS PRINTOUT ON DESK) 
+.ex 
+It looks good.  
+Let's have a drink. 
+Lord knows I need one.  
+.ch sd  
+Great!  
+.ch gp  
+And Terry -- since you weren't working, you're buying.  
+.ad 
+(EXIT TERRY (FUMING), SANDY AND PLOTNICK.   
+
+ENTER MACK, FROM SIDE WITHOUT DOOR, 
+CLOSELY FOLLOWED BY EMMANUEL GOLDSTEIN IN   
+WHEELCHAIR WHEELED BY CATHERINE WHEEL.  
+DURING THE FOLLOWING MACK PACES BACK AND
+FORTH AS HE TALKS, SO THAT CATHERINE HAS TO KEEP ON TURNING THE 
+WHEELCHAIR SO THAT EMMANUEL CAN FACE HIM)   
+.ch eg  
+With all due respect, the operational parameters of the 
+CUPID project are far beyond the limits of my department.  This becomes 
+clear if we picture the university as a big friendly St. Bernard, the   
+CUPID project as a ravenous wood tick, and you as a Hartz   
+2-in-1 flea collar --   
+.ch gn  
+Let 
+me  
+explain it to you, Goldstein!  (PATRONIZINGLY)  The university  
+needs money.  The university charges a fee to get money.  The   
+university needs a reason to charge the fee, otherwise the nasty
+provincial politicians will say the fee is illegal.  So the 
+university charges for computer 
+dating and calls it a "social service fee".  (THREATENINGLY)  Got it?   
+.ch cw  
+But we told you your deadline is impossible to meet!
+.ad 
+(BY THIS POINT, MACK IS WALKING TOWARDS GOLDSTEIN, AND CATHERINE IS 
+WHEELING HIM BACKWARDS AWAY FROM MACK.  SHE BASICALLY ACTS AS GOLDSTEIN 
+WOULD, COULD HE WALK)   
+
+.ch gn  
+I don't like hearing the word "impossible". 
+(CALLS OFFSTAGE) Boys?  
+.ad 
+(ENTER TONY, ANDY, MICK AND MICK (A BARBERSHOP QUARTET))
+.ex 
+Do your worst!  
+.sb "I Write The Songs" "I Write The Songs" 
+.ve 2   
+I write the songs that make the whole world sing
+I write the songs of love and special things... 
+.ad 
+(ALTERNATELY, "MANDY" COULD BE USED)
+.ch cw  
+No, no!  Anything but Barry Manilow!
+.ch eg  
+All right!  We'll do it.
+.ad 
+(THE "MUSIC" STOPS) 
+.ch gn  
+I want the matchings from CUPID tomorrow.   
+Now get to work!
+.ad 
+(EXIT MACK AND BARBERSHOP QUARTET)  
+.ch eg  
+Little does he know what I really have in the works!    
+Think of the fantastic research possibilities if I match
+up students who are totally incompatible!   
+.ad 
+(CATHERINE PROVIDES PROPULSION FOR EMMANUEL'S ASTOUNDING WHEELCHAIR 
+CHOREOGRAPHY IN THE FOLLOWING SONG) 
+.sb "Everyone Looks Crazy To Me" "I'm Crazy 'Bout My Baby"  
+.ve 4   
+They won't have a prayer
+Picture rats in a maze with no cheese   
+It may be unfair
+But I'll record all their deviancies
+.ve 4   
+Such a talented researcher  
+All my colleagues will agree
+I am studying behaviour 
+Everyone loo
+
+Everyone looks crazy to me  
+.ve 4   
+When the student lives are messed up
+They'll need psychotherapy  
+I can supplement my NSERC   
+With a huge consulting fee  
+.ve 4   
+Get that Nobel Prize out
+Meant for someone else  
+The committee's crazy   
+So I'll award it to myself  
+.ve 4   
+I'll be hailed as our new saviour   
+King of kook psychology 
+I am studying behavior  
+And you all look crazy to me
+.ad 
+(CATHERINE AND EMMANUEL GO OUT THE DOOR.
+CATHERINE CLOSES IT BEHIND THEM.
+ENTER RALPH AND NORTON, 
+DISGUISED AS REPORTERS. 
+NORTON HAS A TAG IN HIS EAR.
+THEY RUSH UP TO EMMANUEL)   
+.ch g2  
+Hi, we're reporters from the -- 
+.ad 
+(THE NEXT TWO PAIRS OF LINES ARE EACH SAID SIMULTANEOUSLY)  
+.ch g2  
+Gazette!
+.ch g1  
+Imprint!
+.ch g2  
+Imprint!
+.ch g1  
+Gazette!  (A QUICK LOOK AT EACH OTHER)  
+.xx BOTH
+mathNEWS!   
+.ch g2  
+And we want to know when the CUPID matchings will be ready. 
+.ch eg  
+A good question, gentlemen.  Think of the CUPID project as an enormous  
+hamster, the psychology department as a large treadmill and the 
+students as these little pellets -- 
+.ch g1  
+Uh... right.  How secure is the system? 
+.ch g2  
+Yeah, what's to prevent some unscrupulous hacker from breaking in and   
+getting himself matched with some extremely attractive young lady?  
+.ad 
+(RALPH ELBOWS NORTON)   
+.ex 
+Oof!
+.ch eg  
+Interesting.  Obviously your id is playing squash with your libido  
+while your ego is eating a ham sandwich.  A classic case.   
+You need professional help.  I can fit you in on Tuesday -- 
+.ch g1  
+But to answer the question? 
+.ch eg  
+Picture the CUPID system as Fort Knox and the hacker as a small brown   
+slug crushed by a 16-ton weight...  
+.ad 
+(RALPH, NORTON, CATHERINE AND EMMANUEL LOOK UP FOR AN INSTANT)  
+.ex 
+Now, if that is all,
+gentlemen, I am a very busy man...  
+.ad 
+(CATHERINE AND EMMANUEL WHEEL AWAY AND EXIT.  EMMANUEL IS SHOUTING AS   
+HE EXITS)   
+.ex 
+Plotnick!  Where are you?  Plotnick!
+.ad 
+(RALPH TRIES TO PULL THE DOOR OPEN.  IT WON'T BUDGE)
+.ch g1  
+Damn!  It's locked. 
+.ch g2  
+Can we break in?
+.ch g1  
+It's going to be tough. 
+.ch g2  
+This looks like a job for...
+.ad 
+(THEY LOOK AT EACH OTHER AND NOD)   
+.xx BOTH
+Laszlo. 
+.ad 
+(THEY EXIT.  EMMANUEL AND CATHERINE ENTER FROM  
+THE OPPOSITE SIDE (THE NON-DOOR SIDE).  EMMANUEL IS STILL SHOUTING) 
+.ch eg  
+Plotnick!  Plotnick!
+.ad 
+(PLOTNICK ENTERS, WINCING.  
+HE HAS OBVIOUSLY BEEN DOING SOME DRINKING, BUT NOT ENOUGH)  
+.ch gp  
+Yes... (TRIES TO REMEMBER)  Dr. Goldfish?  What can I do for you?   
+.ch eg  
+Where are those CUPID matchings?
+.ad 
+(PLOTNICK GRABS THE FIRST THING HE CAN FIND ON THE DESK - SANDY'S NEWSPAPER)
+.ex 
+(REPRESSED FURY) "Elvis returns from grave in UFO"!?
+.ch gp  
+Oh, sorry.  
+.ad 
+(GABRIEL RUMMAGES THROUGH STUFF ON DESK UNTIL HE FINDS THE PRINTOUT, THEN   
+HANDS IT TO CATHERINE.  
+EMMANUEL REMAINS COMPLETELY MOTIONLESS AND CATHERINE MOVES THE PRINTOUT 
+BACK AND FORTH SO THAT EMMANUEL CAN READ IT)
+.ch eg  
+Perfect!  Perfect!  These matchings are perfect, you
+idiot!  
+.ch gp  
+What?   
+.ch eg  
+How can we study abnormal behaviour with perfect matchings? 
+.ad 
+(CATHERINE THWACKS PLOTNICK WITH PRINTOUT)  
+.ex 
+Fix it! 
+I want romantic chaos and I want it by tomorrow!
+.ad 
+(EXIT EMMANUEL AND CATHERINE (ON NON-DOOR SIDE).
+CATHERINE TURNS OFF LIGHTS) 
+.ld 
+(LIGHTS ON DOOR)
+.ad 
+(GABRIEL TRIES TO TYPE AT HIS TERMINAL, AND GIVES UP)   
+.ch gp  
+I'm still too sober for this
+job.
+But I can easily fix that!  
+.ad 
+(PLOTNICK SITS DOWN AT DESK AND BEGINS LOOKING THROUGH IT)  
+.ex 
+.ve 8   
+'Twas the night before CUPID when all through the house 
+Not a peripheral was stirring, not even...  
+(FINDS COMPUTER MOUSE IN DESK DRAWER) ...a mouse.   
+The programs were hung on the system with care  
+In hopes that the operator soon would be there.     
+When what to my sleep-deprived eyes should appear   
+(OPENS DRAWER, AND PULLS OUT...)    
+But a big bag of cheetos and a fifth of good cheer! 
+.prip "BAG OF CHEETOS"  
+.prip "BOTTLE OF SCOTCH"
+.prip "COMPUTER MOUSE"  
+.ad 
+(PLOTNICK OPENS DRAWER, DRAINS BOTTLE, AND COLLAPSES.   
+ENTER RALPH AND NORTON, ON THE SIDE WITH THE DOOR)  
+.md 
+(SNEAKING-AROUND-IN-THE-DARK MUSIC, WHICH ENDS ABRUPTLY AS RALPH    
+SHUSHES THE ORCHESTRA)  
+.xx BAND~MEMBER(S)  
+Sorry!  
+.ad 
+(SOME SILENT SNEAKING,  THEN NORTON SNEEZES LOUDLY.   BOTH  
+PANIC AND DROP TO THE FLOOR.  AFTER A MOMENT, NORTON RISES CAUTIOUSLY,  
+PULLS ON THE DOOR AND PUSHES A FEW BUTTONS) 
+.md 
+(BUTTON-PUSHING NOISES) 
+.ad 
+(THE DOOR DOESN'T BUDGE.  AFTER A FEW TRIES, THEY GIVE UP)  
+.ch g2  
+(WHISPERS OFFSTAGE)  Hey, Laszlo!  Give us a hand!  
+.ad 
+(LASZLO SAUNTERS ON)
+.md 
+(MICKEY SPILLANE-TYPE SAXOPHONE MUSIC ("HARLEM NOCTURNE") AS LASZLO ENTERS) 
+.ad 
+(LASZLO CASUALLY WALKS UP, STUDIES DOOR FOR A MINUTE,   
+TAPS ON THE DOOR AND OPENS IT, FONZ-STYLE)  
+.ad 
+(LASZLO TURNS ON THE LIGHTS AND WALKS OVER TO THE COMPUTER AND FINDS
+HIDDEN BOTTLE OF SCOTCH.
+RALPH AND NORTON START EXAMINING THE COMPUTER)  
+.prip "ANOTHER BOTTLE OF SCOTCH"
+.ld 
+(LIGHTS BACK TO NORMAL) 
+.ad 
+(LASZLO WALKS OVER TO PLOTNICK'S DESK.  
+HE OPENS THE DESK DRAWER AND TAKES OUT  
+TWO GLASSES.  HE POURS TWO SHOTS AND REVIVES PLOTNICK)  
+.prip "TWO GLASSES" 
+.ch la  
+Hey, buddy, wake up.  I got you a present.  
+.ch gp  
+(WAKING UP)  Hey, it's Laszlo!  Thanks.  What are you doing here?   
+.ch la  
+We're sabotaging the CUPID matchings.   
+.ch gp  
+Why?
+.ch la  
+No idea.
+(PAUSE) 
+Want to help?   
+.ch gp  
+Sure.   
+.ad 
+(LASZLO RAISES GLASS IN A TOAST)
+.ch la  
+Here's to crime!
+.ad 
+(THEY DRINK.  MEANWHILE, OVER TO RALPH AND NORTON...)   
+.ch g2  
+So what do we do now?   
+.ch g1  
+Let's use Matthew's Method. 
+.ch g2  
+Huh?
+.ch g1  
+(MOVING TO CONSOLE AND SITTING DOWN)
+Don't you remember in "Wargames" where Matthew Broderick played this
+teenage hacker with more looks than you and I put together but he never 
+got it on with Ally Sheedy because the big helicopter came with the 
+searchlight going thud, thud, thud but anyway he nearly started World War   
+Three by breaking into this big NORAD computer that looked like an  
+overgrown washing machine and saying... 
+.ch cv  
+Would you like to play a game?  
+.ch g1  
+How about "global thermonuclear war"?   
+.sd 
+(BARRAGE OF VIDEO GAME SOUND EFFECTS.   
+THE GAME GETS   
+DIZZYINGLY FAST AND RALPH CANNOT KEEP UP.  RALPH FALLS OFF THE END  
+OF THE CONSOLE CHAIR)   
+.ch cv  
+(SPEAKING LIKE VOICE FROM "GORF" VIDEO GAME)
+Too bad, space cadet!   
+.ad 
+(RALPH GETS UP. 
+PLOTNICK HEADS OVER TO RALPH AND NORTON, CARRYING HIS GLASS.
+LASZLO REMAINS SEATED, LOOKING AWESOMELY COOL AND POSSIBLY DRINKING MORE
+SCOTCH) 
+.ch gp  
+What are you doing here?
+.ch g2  
+We're here to sabotage the...   
+.ad 
+(RALPH ELBOWS HIM SHARPLY)  
+.ex 
+Oof!
+.ch g1  
+(TO PLOTNICK)   
+We're from the...   
+.ad 
+(THE NEXT TWO PAIRS OF LINES ARE EACH SAID SIMULTANEOUSLY)  
+.ch g1  
+CIA!
+.ch g2  
+FBI!
+.ch g1  
+FBI!
+.ch g2  
+CIA!
+.xx BOTH
+The Mounties!   
+.ch g1  
+And we're on a secret mission!  
+.ch gp  
+What's that?
+.ch g2  
+If we told you it wouldn't be a secret. 
+.ch gp  
+Laszlo tells me that you want to sabotage the computer matchings.   
+.ch g1  
+Not us. 
+.ch g2  
+No way. 
+.ch gp  
+Well, I do.  Stand back.
+.ad 
+(FINISHES OFF HIS GLASS)
+.ex 
+Gentlemen, let us operate.  
+.ad 
+(PLOTNICK OPENS UP THE SYSTEM UNIT) 
+.ch cv  
+Gabe... 
+.ch gp  
+(IGNORING COMPUTER)  Screwdriver.   
+.ad 
+(RALPH GETS SCREWDRIVER FROM A TOOL BOX AND GIVES IT TO PLOTNICK.   
+HE USES IT SOMEWHERE INSIDE THE COMPUTER)   
+.prip "TOOL BOX"
+.prip "SCREWDRIVER" 
+.ch cv  
+Gabe, don't do this...  
+.ch gp  
+Soldering iron. 
+.ad 
+(NORTON GETS SOLDERING IRON FROM TOOL BOX AND GIVES IT TO PLOTNICK. 
+PLOTNICK STARTS SOLDERING THE INSIDES OF THE COMPUTER)  
+.prip "SOLDERING IRON"  
+.ch cv  
+My mind is going... 
+.ch gp  
+Cheese slices.  
+.ad 
+(RALPH GETS THEM AND GIVES THEM TO PLOTNICK, WHO TOSSES THEM IN)
+.prip "CHEESE SLICES"   
+.ch cv  
+I can feel it...
+.ch gp  
+Peanut butter.  
+.ad 
+
+.....z>.
+fass
+
+
+
+(NORTON GETS JAR OF PEANUT BUTTER AND GIVES IT TO PLOTNICK, WHO TOSSES  
+IT IN)  
+.prip "JAR OF PEANUT BUTTER"
+.ch cv  
+(AS IF MOUTH WAS FULL OF PEANUT BUTTER) 
+I gam beel id...
+.ad 
+(OPERATION IS VISUAL FROM THIS POINT.   
+PLOTNICK TAKES WRENCH AND BASHES COMPUTER WITH IT)  
+.prip "WRENCH"  
+.ex 
+(ANDY ROONEY VOICE) 
+Do you know what makes me sick? 
+Did you ever see a hair in a bar of soap?   
+.ad 
+(PLOTNICK TAKES A PLUMBER'S HELPER AND PUTS IT INTO COMPUTER,   
+MAKING LOUD HONKING NOISES) 
+.prip "PLUMBER'S HELPER"
+.ex 
+Mr. Speaker, we of the Progressive Conservative party...
+.ad 
+(PLOTNICK TAKES AN EGG BEATER AND BEGINS TO WORK IT INSIDE MACHINE) 
+.prip "EGG BEATER"  
+.ex 
+We are, we are, we are, we are, we are the engineers... (VOICE FADES)   
+.ch gp  
+There.  
+We've removed all the intelligence from this computer.  
+.ch g1  
+Do you mean the computer is no longer sentient? 
+.ch gp  
+Of course!  
+What sort of sentient being could exist without any intelligence at all?
+.ad 
+(VANNA HEADROOM APPEARS IN COMPUTER (ACTUALLY AN ACTRESS IN THE 
+CLEAR   
+PLASTIC BUBBLE).  POSSIBILITY:  BACKGROUND COULD BE A WHEEL OF FORTUNE  
+WHEEL INSTEAD OF MAX HEADROOM'S HORIZONTAL LINES)   
+.ch vh  
+Whoa!  I'm Vanna Headroom, and you're no-no-not!
+.ch g1  
+Wow!  This is just like in "Short Circuit" when Number  
+Five comes alive and reads more books than in the whole EMS Library but 
+he never gets it on with Ally Sheedy because -- 
+.ch vh  
+(SINGS)  "I'm the top, I'm the Mona Lisa." (STOPS SINGING)  
+I'm the cat in the hat, I'm the genie in the lamp -- go-go-got  
+any wishes? 
+.ch g2  
+Well, maybe one.  You do the matchings for CUPID, don't you?
+.ch vh  
+(SINGS) "Matchmaker, matchmaker, make me a match." (STOPS SINGING)  
+Of cour-cour-course I do!   
+.ch g2  
+Well, you see there's this cute girl in my analog circuits class
+but she's putting up a little resistance.   
+.ch vh  
+It might be in my capacitance.  What's her name?
+.ch g2  
+Penny Lane. 
+.ch vh  
+Done.   
+.ch g2  
+Great!  Thanks! 
+.ch gp  
+Let's have a drink. 
+Lord knows I need one.  
+.ad 
+(RALPH AND NORTON EXIT WITH GABRIEL.  LASZLO AND VANNA ARE THE ONLY 
+ONES LEFT)  
+.ch vh  
+Hey, Laszlo, old buddy, old pa-pa-pal.  
+.ch la  
+Yeah, Vanna? (TAKES SWIG)   
+.ch vh  
+Who's this Cupid character? 
+.ch la  
+Well, Vanna, there isn't really anyone called Cupid.  It's just another 
+name for love.  
+.ch vh  
+Love -- interesting co-co-concept.  What is it? 
+.md 
+("HARLEM NOCTURNE" (OR WHATEVER WAS USED BEFORE))   
+.ch la  
+Love is sitting at home at two in the morning watching a rerun of   
+"The Twilight Zone",
+draining the last of a bottle of scotch and thinking to yourself:  she's
+probably with   
+.ul 
+him 
+right now.  
+And then remembering the time the two of you were singing old   
+Everly Brothers songs in the shower.
+.ch vh  
+(SPOKEN, NOT SUNG)  
+Bye bye love.   
+.ch la  
+Well, "Wake Up Little Susie", actually. 
+But what the hell, it was worth it. 
+.ch vh  
+Just one more question, Laszlo. 
+.ch la  
+Sure, kid.  
+.ch vh  
+Who is this Ally Sheedy, anyway?
+.ld 
+(LIGHTS DOWN)   
+.es 

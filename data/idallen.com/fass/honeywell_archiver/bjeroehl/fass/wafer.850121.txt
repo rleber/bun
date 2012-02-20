@@ -1,0 +1,59 @@
+
+
+
+.[!.....
+bjeroehl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so 84macr.t
+.bs 1 1 "Wafers"
+.na ft INTERVIEWER INTERVIEWER  
+.na wo WOMAN WOMAN  
+.na vo VOICE~OVER VOICE 
+.ld 
+(LIGHTS UP) 
+.ad 
+(A TABLE.  TWO FOLDED CARDS WITH HOLY WAFER UNDER THEM) 
+.ch ft  
+We asked Mrs. Wanda Ostlander which of these two holy communion wafers  
+she preferred.  
+.ch wo  
+I think I like this one.  It's lighter, and leaves my soul feeling fresh
+and clean.  
+Also it tastes more like the body of Christ,
+and the transubstantiation doesn't  
+irritate my stomach like that other wafer.  
+.ch ft  
+Well, Mrs. Ostlander, you've just chosen (LIFTS COVER) Catholicism. 
+.ch wo  
+Oh my, we've always been Anglicans, but I guess next Sunday we'll be at 
+Mass.   
+.ch ft  
+That's right, Mrs. Ostlander, more and more people are choosing Catholicism,
+the only religion with the original sin.
+.ld 
+(FADE TO PROMO SHOT OF WAFERS)  
+.ch vo  
+Catholicism -- the official religion of the 1984 Olympic games. 
+.ld 
+(LIGHTS DOWN)   

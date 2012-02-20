@@ -1,0 +1,167 @@
+
+
+
+.......K
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1985/script/bulkmacr.t 
+.sb "FASS!" "FAME!" 
+.xx LUCIFER 
+.ve 8   
+Villains, come to me,   
+And tell me what you see (ha ha)
+You ain't seen the worst of it yet, 
+Eternal torment, no respite from the pain.  
+Come, no time to lose   
+And tell me what torture you choose!
+I'll make you scream, yes, I'll make you pay!   
+'Til the final Judgement Day.   
+.xx BOVINE~COMMISSION   
+.ve 1   
+Hell!   
+.xx DEVILS  
+.ve 2   
+We're going there for forever!  
+We're gonna burn, bake, and fry!
+.xx BOVINE~COMMISSION   
+.ve 1   
+My! 
+.xx DEVILS  
+.ve 2   
+We knew we had all this coming, 
+Surely we're too young to die!  
+.xx BOVINE~COMMISSION   
+.ve 1   
+Hell!   
+.xx DEVILS  
+.ve 2   
+We only tried to enjoy life,
+By taking stuff we couldn't buy.
+.xx BOVINE~COMMISSION   
+.ve 1   
+Hell!   
+.xx DEVILS  
+.ve 2   
+We tested all pleasures illicit,
+Nothing that we wouldn't try!   
+.xx BOVINE~COMMISSION   
+.ve 3   
+Bake, Burn, Fry!
+Bake, Burn, Fry!
+Bake, Burn, Fry!
+.xx ST.~PETER   
+.ve 8   
+Heroes, over here,  
+For soon before God you'll appear.  
+
+Your reward for doing things right, 
+Staying clean, brushing teeth every night, every night  
+And now you'll take wing
+Into the realm where Angels sing!   
+You can all leave, go on, fly away. 
+Enjoy yourselves until Judgement Day.   
+.xx BOVINE~COMMISSION   
+.ve 1   
+Heaven! 
+.xx HEROES  
+.ve 2   
+We're going there for forever!  
+We're going to learn how to fly!
+.xx BOVINE~COMMISSION   
+.ve 1   
+High!   
+.xx BO~AND~CAPTAIN  
+.ve 2   
+And we'll always be together
+Because I/you gave good a try.  
+.xx BOVINE~COMMISSION   
+.ve 1   
+Heaven! 
+.xx HEROES  
+.ve 2   
+We only tried to protect life,  
+To help normal folks hurt by crime. 
+.xx BOVINE~COMMISSION   
+.ve 1   
+Heaven! 
+.xx HEROES  
+.ve 2   
+Looks like we did all the right stuff   
+We'll be up here for all time!  
+.xx BOVINE~COMMISSION   
+.ve 3   
+For all time!   
+For all time!   
+For all time!   
+.ve 1   
+FASS!   
+.xx ALL 
+.ve 8   
+The show is all but through 
+And you've seen nothing new 
+Despite our efforts, we'll take the blame   
+The writers thwart us, the ending is always the same
+So go back where you've been
+And tell all your friends what you've seen  
+When they hear just how you complain
+They'll come to see us, and we'll have a full house again.  
+.ve 1   
+FASS! ! 
+.xx ALL 
+.ve 2   
+Some of the jokes were from last year.  
+And they'll be back never fear! 
+.xx BOVINE~COMMISSION   
+.ve 1   
+FASS!   
+.xx ALL 
+.ve 2   
+So now we're off to our party!  
+We'll see you again in a year!  
+.xx BOVINE~COMMISSION   
+.ve 1   
+FASS!   
+.xx ALL 
+.ve 2   
+The story won't be very different.  
+We'll still get the world in a fix. 
+.xx BOVINE~COMMISSION   
+.ve 1   
+FASS!   
+.xx ALL 
+.ve 10  
+The show is now over for this year. 
+It's goodbye until eighty-six!  
+Eighty-six! 
+Eighty-six! 
+Eighty-six! 
+Eighty-six! 
+Eighty-six! 
+Eighty-six! 
+Eighty-six! 
+Eighty-six! 
+.ve 1   
+FASS!!!!!!  
+.es 

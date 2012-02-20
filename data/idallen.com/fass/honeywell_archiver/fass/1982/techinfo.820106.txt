@@ -1,0 +1,169 @@
+
+
+
+......Y~
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.m1 3   
+.m4 3   
+.tr~
+.ic^^   
+.hy 2   
+.ls 1   
+.he "FASS 1982"Tech Information Sheet"FASS 1982"
+.fo "FASS 1982"Please Give to the Director"FASS 1982"   
+.fi 
+.sp 2   
+.bf 4   
+If you want to have an acting part, give this sheet to the Director,
+BRIAN-G MARTIN, before you go on stage to audition. 
+If you want to do technical ONLY, give this sheet to the Technical Director,
+ALEX KORDICS.   
+.br 
+Your phone numbers and addresses are especially important as they are the only  
+way we have of contacting you.  
+.nf 
+.sp 
+.at (undr)  
+____________________________________________________________
+.en(undr)   
+.mg 
+^(undr) 
+.ta 35l +10l
+NAME:	GENDER:	 HEIGHT:  
+.sp 
+LOCAL~ADDRESS:  
+.sp 
+^(undr) 
+.sp 
+PERMANENT~ADDRESS:  
+.sp 
+^(undr) 
+.sp 
+.ta 25l +15l
+TELEPHONE:	OR:	OR:  
+.sp 
+HONEYWELL~USERID:   
+.sp 
+.ig 
+PROGRAMME~OF~STUDY: 
+.en 
+ARE~YOU~FACULTY,~ADMIN,~STAFF~OR~STUDENT?   
+.sp 
+.ta 0l +15l 
+.ig 
+YEAR:	CO-OP~OR~REGULAR?:
+.en 
+IF~A~STUDENT,~THEN:~YEAR:        ~CO-OP~OR~REGULAR?:
+.sp 
+.mg 
+
+
+.fi 
+IS YOUR PLACE SUITABLE AND AVAILABLE FOR A FASS PARTY  (80~PEOPLE OR
+MORE)? YES______   NO______ 
+.sp 
+The number of nights a week that you can attend rehearsals and/or   
+tech meetings determines to some extent how big a part we can give you. 
+Please indicate the number of nights in a week that you are willing 
+to give up for FASS.
+.nf 
+.sp 
+.mg 
+^(undr) 
+.ta 60R 
+I~CAN~PARTICIPATE~(1~TO~7)	NIGHTS~PER~WEEK. 
+.mg 
+
+
+.sp 
+.nf 
+For the entire month of January, I will be (check one): 
+(~~)AVAILABLE / (~~)UNAVAILABLE at: 
+.mg 
+^(undr) 
+.sp 
+SUNDAY:~
+.sp 
+MONDAY:~
+.sp 
+TUESDAY:~   
+.sp 
+WEDNESDAY:~ 
+.sp 
+THURSDAY:~  
+.sp 
+FRIDAY:~
+.sp 
+SATURDAY:~  
+.sp 
+This~schedule~is~for~times~I~am~~(~~~)AVAILABLE~/~(~~~)BUSY.
+.sp 
+.mg 
+
+
+.he "FASS 1982"Tech~Information~Sheet"FASS 1982"
+.fo "FASS 1982"Please Give to the Director"FASS 1982"   
+.sp 
+.ce 
+.bf 
+THINGS THE TECH DIRECTOR WANTS TO KNOW  
+.sp 
+.fi 
+Check off which of the following you are interested in. 
+.sp 
+.nf 
+.sp 
+Lighting       ____         Sound            ____   
+.sp 
+Make-up        ____         Props            ____   
+.sp 
+Costumes       ____         Carpentry        ____   
+.sp 
+Painting       ____         Set Construction ____   
+.sp 
+.sp 
+.fi 
+DO YOU HAVE ACCESS TO A CAR OR TRUCK THAT COULD BE USED FOR 
+TRANSPORTATION OF MATERIALS?  (YES OR NO)  _______  
+.sp 
+.sp 
+.nf 
+ANYTHING ELSE WE SHOULD KNOW?   
+.sp 
+^(undr) 
+.sp 
+^(undr) 
+.sp 
+TECH~DIRECTOR'S~NOTES:  
+.sp 
+^(undr) 
+.sp 
+^(undr) 
+.sp 
+^(undr) 
+.sp 
+^(undr) 

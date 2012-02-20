@@ -1,0 +1,637 @@
+
+
+
+.J.".JoG
+bjeroehl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pc @   
+.qc "   
+.ic^^   
+.he "F.A.S.S. 1980"- % -"F.A.S.S. 1980" 
+.fo "F.A.S.S. 1980"- % -"F.A.S.S. 1980" 
+.in 3   
+.at(ch) 
+.sp 
+.ne3
+.ti 0 10
+@1: 
+.ns 10  
+.en(ch) 
+.ch Matt
+Let's get out of here, please.  
+.ch Announcer   
+Welcome to the adventures of FASS WORLD, a shocking 
+new adventure in a very strange place. We find ourselves walking
+through a very odd kind of cave with two fantasy adventurers,   
+Mona Nucleosis and Matt Burthews who are following their faithful   
+leader and guide Count Backwards.   
+Let's follow our friends as they proceed west through a gloomy  
+passageway filled with eerie masks and spider-web covered paintings of jesters. 
+.ch Voice   
+You are now proceeding west through a gloomy passageway filled  
+with eerie masks and spider-web covered paintings of jesters.   
+A large poster on the wall says "Welcome to FASS
+WORLD where life is a FASSing dream."   
+.ch Mona
+This place is really creepy Matt. I wish we hadn't come 
+here.   
+.ch Matt
+Well Mona, it was your fantasy. 
+.ch Mona
+What do you mean, my fantasy? I thought it was your fantasy.
+.ch Matt
+Why would I fantasize about coming to a place like FASS WORLD?  
+I've got better things to dream about. I'm an engineer, remember?   
+.ch Mona
+Well, if it wasn't your fantasy and it isn't my fantasy,
+what are we doing here? 
+.ch Matt
+There must be some mistake. The Count must have got us mixed up 
+with someone else.  
+.ch Mona
+Speaking of The Count,  
+where has he gone?  
+.ch Matt
+I don't know. It's so dark in here I can't see my hand in front of your face.   
+.ch Mona
+Just a minute; I'll get the solar powered flashlight out
+of your pocket. 
+.ch Matt
+There's no flashlight in my pocket. 
+.ch Mona
+Then what ... oh!   
+.ch Matt
+It doesn't matter. A solar powered flashlight wouldn't  
+be much good down in this dungeon anyway.   
+.ch Mona
+That's true.
+.ch Matt
+Don't worry. I may not have a flashlight, but I do have 
+an electric sundial.
+I found it in a box back there labelled "FASSACRE 78".  
+.ch Mona
+But it's too dark here to see what time it is.  
+.ch Matt
+Oh, don't worry about that! 
+This sundial has a night light. See?
+.ch Mona
+Look! There's The Count, just ahead of us. Count Backwards! 
+.ch "Count Backwards"   
+
+Ten, nine, eight, seven, .... Oh, sorry.  Hi kids.  
+Are you two enjoying your little adventure? 
+.ch Matt
+That's what we want to talk to you about, Count.
+I think there has been a little mistake.
+.ch "Count Backwards"   
+Mistake?
+.ch Mona
+Yes, this isn't the fantasy Matt and I asked for.   
+.ch "Count Backwards"   
+Of course not. It's my fantasy. 
+.ch "Matt & Mona"   
+What??  
+.ch "Count Backwards"   
+I brought you down to FASS WORLD so I could indulge in  
+my favourite fantasy - watching people suffer at the mercy  
+of old FASS jokes.  
+.ch Matt
+Hey, Count, that's not fair.
+Let us out of here. 
+.ch "Count Backwards"   
+You can find your own way out if you are clever enough. 
+.ch Matt
+How do you ever expect us to be clever enough to get
+out of a maze of twisty little passages like this?  
+.ch Mona
+Yeah, Matt's an Engineer and I'm in Arts.   
+We wasted all of our undergrad years working with   
+FASS and never got any education.   
+(ELBOW FROM MATT)   
+Sorry, I mean "never got no education". 
+.ch "Count Backwards"   
+That's why this fantasy of mine is particularly 
+appropriate for you.
+It's now your turn to suffer, just as your audiences have suffered  
+
+through over a decade of obscure puns, oblique references, and  
+ostentatious staging.   
+.ch Matt
+Count! Please! Anything but that!   
+.ch Mona
+I don't want to be trapped in FASS WORLD!   
+.ch "Count Backwards"   
+It is your only fitting destiny.
+Have a nice time, kids. 
+.ch Mona
+Oh Matt! What are we going to do?   
+.ch Matt
+Try to get out, I guess.
+.ch Mona
+Which way should we go? 
+.ch Matt
+East. That's the way we came. I think...
+.ch Voice   
+You are now entering a large room filled with hordes of steaming little 
+munchkins. Only visitors who have the name Eric will escape 
+their massed attack.
+.ch Matt
+But our names are Matt and Mona. Neither of us are named
+Eric.   
+.ch Voice   
+Too bad for you. In a second, thousands of knee-high munchkins  
+will charge out of the shadows and apply the famous munchkin
+death grip. 
+.ch Mona
+Run Matt!   
+.ch Matt
+Which way?  
+.ch Mona
+I don't know. East again.   
+.ch Voice   
+You are now entering a long narrow hallway. It is   
+dimly lit, but on the floor you can see the stretched out,  
+sleeping body of the Great Red Tundra Worm blocking your path.  
+.ch Mona
+What's a great red tundra worm? 
+.ch Voice   
+By speaking in such ignorance, you have awakened the
+beast who has now coiled up into his characteristic position
+which makes him resemble red dinosaur dung. 
+.ch Matt
+That reminds me of a joke, Mona; what's brown and rings like a bell?
+.ch Mona
+Not now, Matt!  
+Do you think the worm is dangerous? 
+.ch Preston 
+No, no, not likely, no.  Yes! A bit, but not much.  
+.ch Voice   
+Of course the Tundra Worm is dangerous. Do you think we'd go to 
+all the trouble and expense of moving him into the cave if  
+he wasn't dangerous?
+.ch Matt
+I hadn't thought of that.   
+.ch Mona
+What will he do to us?  
+.ch Voice   
+You must get past the beast to escape. That wouldn't
+be such a problem except that he is filled with high explosives 
+and the least little thing will cause him to blow up and splatter   
+you all over the walls of the cave. 
+.ch Matt
+That's terrible!
+.ch Voice   
+I'll say.   
+Who do you think has to clean up the mess?  
+Some people just got no respect for...  
+.ch Mona
+Matt, how will we ever get out? 
+.ch Matt
+Maybe we could convince him to leave.   
+.ch Mona
+How?
+.ch Matt
+Tell him jokes. That always works on our friends.   
+
+.ch Mona
+What friends?   
+.ch Matt
+See how well it works?  
+Okay, worm; what's red  
+and green and goes two hundred miles per hour?  
+.ch Voice   
+I'm sorry, but you have just made things worse. By  
+using miles per hour instead of kilometers per hectagram, you have aroused  
+the anger of the Sisters of Celcius.
+The Sisters are armed with sharp wooden meter sticks which might well   
+cut you to ribbons. 
+Your only defence are some seven inch MathSoc rulers lying on the floor 
+near one of Billy Gram's sermons.   
+.ch Matt
+If they attack, the worm will explode.  
+.ch Mona
+Oh, let me out of here. 
+.ch Matt
+Wait for me!
+.ch Voice   
+KAPOWIE! The tremor caused by Matt and Mona's escape
+has caused the worm to explode and cover the walls with the 
+Sisters of Celcius. 
+.ch Matt
+I can't see! I can't see!   
+.ch Mona
+Why not?
+.ch Matt
+I have my eyes closed.  
+.ch Mona
+That's just stupid! 
+.ch Voice   
+You are in a small room with staircases leading up on   
+all sides. I'm not going to tell you what lurks at the top of   
+any of them, but I will mention that Matt won't be able to get  
+up the stairs if he carries that sundial. Besides, the batteries
+in the night light are about to wear out.   
+.ch Matt
+I knew I should have brought my Mickey Mouse flashlight.
+.ch Mona
+Should we go up?
+.ch Matt
+It seems like the only way out. 
+Quick, up these stairs. 
+.ch Voice   
+You have scrambled up a flight of stairs. Matt has  
+dropped the sundial, as predicted, and it has shattered into
+a million pieces.   
+At the top of the stairs is a beautiful woman tied to a stake.  
+.ch Woman   
+Help! Help! Untie me from this terrible steak!  
+.ch Matt
+Why?
+.ch Woman   
+I'm a vegetarian!   
+.ch Mona
+Come on, Matt, let's try a different stairway.  
+.ch Voice   
+You have just come to the top of the next   
+stairway. There is the distinct smell of seaweed and you can
+feel the spray in the air. There is the sound of rhythmic clapping  
+as Meanpeace sails their Trojan Whale into the cave.
+.ch Matt
+Meanpeace?  
+.ch Mona
+You remeber, Matt. They're the group who sails the world
+in their Trojan Whale and beat people with seals.   
+.ch Matt
+Well at least we're safe. We don't have any seals.  
+.ch Mona
+I mean they hit people over the head with seals.
+If we're not careful, they could seal our fate as well. 
+.ch Matt
+Why do they do it?  
+.ch Mona
+It's their contribution to the environment. 
+.ch Matt
+Oh. 
+Hey, I just thought of something.   
+.ch Mona
+Are you okay? Was the strain too  much? 
+.ch Matt
+Don't be so stupid, Mona. I just thought, if
+Meanpeace is sailing into the cave, we could get out the
+same way they came in.  
+.ch Mona
+But we don't have a boat.   
+.ch Matt
+We could play like pirates and high jack the Trojan Whale.  
+Now quit complaining and get ready to punch out these   
+Meanpeacers when they arrive.   
+.ch Mona
+Look, there's the Trojan Whale. 
+But there's only one
+person on it.   
+.ch Matt
+And he's only got one hand. 
+.ch Mona
+What was all that clapping then?
+.ch Matt
+I guess what we heard was the sound of one hand clapping.   
+.ch Meanpeacer  
+Ahoy there. Get out of the way or I'll be forced
+to hit you with my seal.
+.ch Mona
+We're not afraid of you.
+.ch Matt
+Speak for yourself, Mona. I'm scared to death.  
+.ch Mona
+We're going to take over that Trojan Whale and sail it  
+out of here.
+.ch Meanpeacer  
+That's what you think. One quick swipe with my trusty   
+seal and it will be curtains for both of you.   
+.ch Matt
+I think we ought to get out of here.
+.ch Mona
+We can win for sure. It's two against one.  
+.ch Matt
+That's right. I'm leaving, so it's you against him  
+and that seal.  
+.ch Mona
+Matt! Come back! This is our only chance of escape. 
+.ch Voice   
+Don't feel badly Mona. I assure you, you wouldn't   
+have won anyway. The next staircse has led the two of you into a room   
+filled with gold and jewels. There is a door that has an exit   
+sign above it and a window through which you can see the real   
+world, or at least the University.  
+The window is open. So is the door. You are free to 
+gather all the riches that you want and leave if you hurry. 
+.ch Matt
+Look at this Mona! I can't believe it. We will be   
+forever rich.   
+.ch Mona
+WOW!
+.ch Voice   
+You aren't fast enough. The cave is now closing. You
+have until the gong sounds to escape or you will be trapped 
+forever in the repository of FASS WORLD.
+.ch Matt
+Quick, take these rubies.   
+.ch Mona
+I haven't got any more pockets. 
+.ch Matt
+I can't move.   
+.ch Mona
+You're carrying too many things.
+Drop something. 
+.ch Matt
+What happens if the gong sounds before we get out?  
+.ch Mona
+You heard him. It means we'll be trapped forever in 
+the repository of FASS WORLD.   
+.ch Matt
+What does that mean?
+.ch Mona
+A repository is a place where you put things for storage.   
+.ch Matt
+No, I mean what does "forever" mean?
+.ch Mona
+Bloody Engineer.
+.ch Voice   
+GONG    POOF!   
+.ch Matt
+Where are we?   
+.ch Mona
+It looks like some kind of a stage props cupboard or something. 
+It's full of all kinds of junk. 
+.ch Voice   
+This is the repository of FASS WORLD. You have not passed   
+the test. This cave is really a maze that has been used for years   
+on rats in the psychology department. In keeping with the lower 
+standards of students being admitted to the University, we have 
+replaced the English Language Proficiency test with this maze test. 
+Ninety percent of rats tested, find their way out. So far, no student   
+has. You had your chance. In punishment for submitting your audiences   
+to pain and torture year after year, FASS WORLD has created the repository  
+where you will be tortured forever with memories of FASS.   
+.ch Matt
+Please, anything but that!  
+.ch Voice   
+Sorry, but you deserve it. Bye. 
+.ch Mona
+There must be some way out. 
+.ch Matt
+Yes, there must be some way out.
+.ch Mona
+Look there's a dwarf over there, sleeping on the floor. 
+Maybe he can tell us how to get out.
+.ch Matt
+There's a sign over his head. What does it say? 
+.ch Mona
+I don't know.   
+.ch Matt
+Maybe it's in German. I took German in first year, so   
+I should be able to read it. Hmm, it doesn't look like German.  
+.ch Mona
+It's English, you dipstick! 
+.ch Matt
+How do you expect me to know. I'm an Engineer.  
+What does it say?   
+.ch Mona
+I said it was English. I didn't 
+say that I could read it.   
+.ch Matt
+If neither of us can read, how will we ever know what   
+it says.
+.ch Mona
+Maybe we could wake up the dwarf and ask him what it says.  
+.ch Matt
+That's a great idea. You wake up the dwarf. 
+.ch Mona
+Why me? 
+.ch Matt
+Because you are the girl. Everyone knows that the beautiful 
+girl kisses the dwarf and awakens him.  
+.ch Mona
+I thought that it was the other way around. 
+.ch Matt
+Details, details.   
+.ch Mona
+If I kiss him, he might get violent.
+.ch Matt
+Why?
+.ch Mona
+Well, with a name like Mona Nucliosis, no one wants 
+to be near me. If I try to kiss the dwarf he might get mad and do   
+something we'll regret. 
+.ch Matt
+Just kiss the dwarf, Mona. You don't have to introduce yourself,
+so he'll never know your name.  
+.ch Mona
+I don't even kiss on the first date, let alone without an introduction. 
+.ch Matt
+Just wake up the dwarf. 
+.ch Mona
+All right. (SHE KISSES THE DWARF WHO JUMPS UP FROM BENEATH THE  
+SIGN THAT SAYS "DO NOT WAKE UP THE DWARF OR YOU WILL BE SORRY" HE IS
+NOT IN A VERY GOOD MOOD.)   
+.ch Dwarf   
+You're so ugly your mother had to tie a bone around your neck   
+so the dog would play with you. 
+.ch Mona
+Ouch!   
+I think he's going to try and kill us with insults! 
+.ch Matt
+Be thankful. They're easier to dodge than puns. 
+.ch Dwarf   
+You're so stupid that when your father wanted you to climb a
+ladder, he had to put a stop sign at the top.   
+.ch Matt
+That one hit me. OHHH!  
+.ch Mona
+Matt!   
+.ch Dwarf   
+You're so ugly, your mother had to feed you with a slingshot.   
+.ch Mona
+Don't die Matt. Give me some ammunition. Tell me some puns I
+can use.
+.ch Matt
+GASP!   
+.ch Dwarf   
+You're so stupid you think microscope is a mouthwash for midgets.   
+
+
+
+.J.".JoG
+bjeroehl
+
+
+
+.ch Matt
+AHHH!   
+.ch Mona
+You're so dumb, you think ashphalt is a guy with a birth defect.
+.ch Dwarf   
+AHHH! AHHHHH!   
+.ch Matt
+Is he dead? 
+.ch Mona
+I think so. 
+Are you okay, Matt? 
+.ch Matt
+Sure, I'm fine. I was just faking.  
+.ch Mona
+What!   
+.ch Matt
+If he thought I was dead, he'd leave me alone and go for you.   
+.ch Mona
+Why you.... 
+.ch Matt
+No time for that now, Mona. We've got to find a way 
+out of here.
+.ch Mona
+You're right.   
+.ch Matt
+Look, there's a poor little cubscout over there all tied
+up and gagged.  
+.ch Mona
+Let's untie him. Maybe he can help. 
+.ch Matt
+What's your name kid?   
+.ch Baden   
+Baden Full, Baden Japan, Baden Suit, and Baden New-Hamburg. 
+.ch Mona
+How can you be four people all at the same time?
+.ch Baden   
+I work through my coffee breaks?
+.ch Matt
+Maybe he's schizoid.
+.ch Baden   
+I'm a leftover from FASS 79. They had to put something  
+in here to torture you, and what more fitting torture than to   
+be trapped with four merit badge hungry boy scouts. They were going 
+to send Mrs. TeleVision, but no one is that heartless.  
+.ch Matt
+But there's only one of you.
+.ch Baden   
+
+
+Budget cuts. They're affecting everything. FASS figured 
+that since we were all equally nasty and all virtually the same,
+they could save some cash by only putting one of us in here.
+.ch Matt
+Why did they tie you up?
+.ch Baden   
+One of my knots backfired unexpectedly. 
+.ch Mona
+You poor little thing.  
+.ch Baden   
+It's okay. I'll just stay here and work out my formula for  
+deadly rat poison or practice my knots. I've just learned how to
+do a hangman's noose.   
+.ch Matt
+I think it's time to leave. 
+.ch Baden   
+You can't escape. Besides, if you leave, I'll have no one   
+to practice my knots on, or try for my rape, murder and pillage badge.  
+.ch Mona
+How are we ever going to get out of here?   
+.ch Matt
+Look. There's a hole in the wall.   
+.ch Mona
+I hope it leads to the outside world.   
+.ch Voice   
+You have just entered a long narrow room walled with
+chairs placed in careful rows. There is a stage at the far end  
+of the room with a screen on it. In front of the screen is a
+familiar figure, barely visible in the dim light.   
+.ch Mona
+Count Backwards!
+.ch "Count Backwards"   
+Ten, nine, eight, seven, ... Oh, sorry. 
+Enjoying my little fantasy, I see.  
+.ch Matt
+You let us out of here you creep. We paid for our   
+fantasies, not yours.   
+.ch "Count Backwards"   
+I'm sorry, but your fantasies were eliminated by the
+censorship board.   
+.ch Mona
+What! Your fantasy ought to be censored, not ours. We   
+didn't dream about tortures like this.  
+.ch "Count Backwards"   
+Well, that's the way censorship is. Violence is okay,   
+but what you two wanted seemed like Close Encounters of the Worst Kind. 
+.ch Mona
+It's all your fault Matt.   
+.ch Matt
+Me? You were the one who wanted the whips and...
+.ch "Count Backwards"   
+It doesn't matter who is at fault does it? You may have 
+noticed that the hole in the wall that you came through has now 
+been sealed off.
+.ch "Matt & Mona"   
+What!   
+.ch "Count Backwards"   
+That's right. You're trapped in here forever.   
+.ch Mona
+Forever!?   
+.ch "Count Backwards"   
+Yes, forever, but don't you worry. There'll 
+be plenty to entertain you. 
+.ch Matt
+Like what.  
+.ch "Count Backwards"   
+My fantasy picture show. Sit down, make yourself comfortable,   
+it's a long movie.  
+.ch Mona
+Movie?  
+.ch "Count Backwards"   
+
+Something I'm sure you'll enjoy. Video tapes of FASS rerun  
+again and again.
+And again.  
+.ch Matt
+No, No, Please! 
+.ch Mona
+Anything but that!  
+.ch "Count Backwards"   
+Bye, bye my pretty ones. Enjoy the show.
+.ch "EVERYONE"  
+(MATT & MONA & EVERYONE ELSE SING THE FINAL SONG TO THE TUNE OF 
+GOD SAVE THE QUEEN) 
+.sp2
+.ne 10  
+.nf 
+       God save our minds from FASS 
+       The show which has no class  
+       Or decency.  
+
+
+       We like the parties there
+       Acting fun we can share  
+       But, these tapes we can't bear   
+       And so we die!   
+.sp 
+(AND EVERYONE DIES HORRIBLY  - THE END.)

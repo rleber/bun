@@ -1,0 +1,524 @@
+
+
+
+.......4
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.zz Get the macros.t file into your aft before tfing
+.zz *get fass/<somepath>/macros.t,q 
+.zz This macro package is truly baroque, thanks to IAN! 
+.so macros.t
+.index 5 3  
+.at setout  
+.sq 
+.sp 
+.ne 6   
+.save in +4 
+.save fill 0
+.ic 
+.cc :   
+.en setout  
+.at setin   
+:cc .   
+.ic ^^^^
+.sq 
+.sp 
+.unsave fill
+.unsave in  
+.ne 3   
+.en setin   
+.at foot
+.fo "F.A.S.S. 1984"^^(titl)"^(year)/^(mon)/^(day) ^(hour):^(min)"   
+.en foot
+.at fmt 
+.sq 
+.sp 
+.ne 3   
+.ti 0   
+.li 
+@1  
+.br 
+.en fmt 
+.at quote   
+"   
+.en quote   
+.he ""- % -""   
+.tr @~  
+.hd 0 ".ul" Introduction~to~TF  
+^(foot) 
+.para   
+Tf is a text formatting program that allows you to type in text (in the 
+case of FASS, your scene) without regard to the final format it will have.  
+Lines don't have to line up nicely, 
+you simply insert some TF commands and some special formatting commands,
+called macros, into the scene as you type it into the computer. 
+When you let TF process your text, it will use the formatting commands  
+.ne 4   
+to format the scene.(1) 
+.fn (foot)  
+1.  
+For a full story on TF, see the TF tutorial and manual (explain tf manual). 
+For details on using a text editor to type your scene into the  
+computer, see the Tutorial on the Fred text editor (explain fred tutorial). 
+.en (foot)  
+.para   
+Tf takes care of things like margins, page headings and footings,   
+and page numbering. 
+The macros let you use abbreviations for character names, instead of having 
+to type in the full character name for each line of dialogue.   
+Songs get nice boxes of asterisks around the titles.
+.hd 0 ".ul" Macros~and~Format~Commands  
+^(foot) 
+.para   
+The TF formatting commands and macros that you will need to use are lines of
+text that start with a period (".").
+The formatting command lines are interspersed (in the right places) 
+with your scene text.   
+(See the Sample Scene at the end of this document for an idea of how the
+formatting commands and text look together.)
+.para   
+Here are some examples of formatting commands:  
+.setout 
+.so 84macr.t
+.bs 1 1 "A Title for Act 1 Scene 1" 
+.na mm MARTHA@AND@THE@MUFFINS MARTHA
+.ch mm  
+:setin  
+Each command starts right at the beginning of the line; 
+no spaces or tabs are allowed.  
+In fact,
+TF thinks that every line starting with a period ought to be a command line.
+A period at the beginning of a line tells TF that the line is a TF command, 
+and it will try to find and use a command named by the letters following
+the period. 
+.para   
+If it can't identify the characters following the period,   
+TF complains and just treats the line as regular text to be printed.
+You don't have to worry about lines that start with "...";  
+TF treats "..." as regular text to be printed.  
+.para   
+Once TF recognizes the name of a formatting command, it looks at the
+rest of the command line.   
+It takes the text it finds on the command line, splits it up delimited  
+by spaces, and passes the split-up line to the formatting command.  
+For example, the command line   
+.setout 
+.na mm MARTHA@AND@THE@MUFFINS MARTHA
+:setin  
+is known as the ".na" macro, and after TF splits it, it has three   
+.ul 
+arguments:  
+"mm", "MARTHA@AND@THE@MUFFINS", and "MARTHA".   
+Many TF formatting commands need one or more arguments, as will be seen.
+.hd 0 ".ul" Description~of~TF~Commands  
+^(foot) 
+.para   ....This is a detailed description of the TF commands an
+
+This is a detailed description of the TF commands and macros you need   
+to format a scene.  
+The first few commands are always used at the beginning of a scene; 
+they are given in order.
+.para   
+The macros are shown with typical arguments;
+replace the arguments with your own, as required.   
+A summary of these commands and macros appears at the end of this document. 
+.save in +4 
+.fmt ".so 84macr.t" 
+Get the macros. 
+This must be the first line of a scene. 
+It inserts the main macro file of macro definitions and 
+makes sure that a consistent environment is set up in terms of line 
+length, justification, etc. 
+The argument file name must be "84macr.t".  
+.para   
+The file named in this command must be accessible before you use TF;
+see the section on using TF for details on finding the file.
+.fmt ".bs 1 1 ^^(quote)This is the scene title^^(quote)"
+Begin a scene.  
+This must be the second line of a scene.
+It prints the title of the scene and sets a line counter to zero.   
+.para   
+The first argument is either "1" or "2" for Act I or Act II.
+The second argument is the scene number.
+Both arguments must be numbers, not letters.
+The last argument is the title of the scene.
+Keep the title less than about 50 characters in length, 
+and remember to put double quotes around it.
+.fmt ".na abbrev FULL@NAME@OF@CHARACTER SHORT@NAME" 
+Define an abbreviation. 
+A set of several of these lines (one for each character in the scene)   
+comes after the ".bs" macro.
+.para   
+This identifies to TF a character name abbreviation, "abbrev",  
+for the name of your character. 
+The abbreviation must be different for each character in the scene. 
+The abbreviation can be any string of 1 to 10 letters or digits 
+(or any combination) that you wish to use in the ".ch" macro
+to indicate dialogue for that character.
+You'll probably want to keep the abbreviation short;
+you'll be typing it for every character's speech.   
+.para   
+The FULL@NAME@OF@CHARACTER is the full name of the character.   
+It will appear, in bold-face print, 
+the first time the character is used in a scene.
+After this first appearance, the shorter SHORT@NAME will be used.   
+Join each word in each name with tildes, so that there are no blanks
+in the name;
+do not use double quotes.   
+The tildes will vanish on output.   
+Both the full and the short names should be UPPER CASE, to set them 
+off from the rest of the text.  
+.fmt ".ch abbrev"   
+Character "abbrev" speaks.  
+This sort of line precedes a speech by a character. 
+.para   
+The "abbrev" is the same as the first argument to the ".na" macro   
+that corresponds to the character.  
+For example, to define and use names for Glinda the Good Witch  
+and The Wizard of Oz:   
+.setout 
+.so 84macr.t
+.bs 1 5 "Sample Scene"  
+.na ggw GLINDA@THE@GOOD@WITCH GLINDA
+.na wiz THE@WIZARD@OF@OZ WIZARD 
+.ch ggw 
+This is said by Glinda. 
+.ch wiz 
+This is said by the Wizard. 
+.ch ggw 
+This is said by Glinda. 
+:setin  
+Note that the abbreviation you choose is up to you. 
+Keep it less than about ten characters. 
+.fmt ".es"  
+End a scene.
+This must be the LAST line of a scene.  
+Please remember it! 
+.unsave in  
+.hd 1 ".ul" Talking~in~Unison   
+^(foot) 
+In some cases, you may want to have two characters talk in unison, or you may   
+have a single-use character who isn't really worth the bother of using  
+the ".na" macro to create an abbreviation.  
+You can specify any name to be used just like the regular character macro   
+would use it by doing:  
+.setout 
+.xx CHARACTER1@&@CHARACTER2 
+This text is said by both characters.   
+.xx PARLOUR@MAID
+The Parlour Maid only has one speech
+and isn't worth an abbreviation.
+.xx ALL 
+Everyone says this speech.  
+:setin  
+.para   
+The ".xx" macro will format the following speech by the character(s) in the 
+same way as if you had used ".na" and ".ch".
+It is the only way to have two names appear heading one speech. 
+As with the ".na" macro, keep the names all UPPER CASE. 
+Make sure you use tildes to join the words together;
+don't use quotes!   
+.hd 1 ".ul" Entering~Songs  
+^(foot) 
+Songs start with a ".sb" macro, and have ".ve" macros interspersed to   
+keep the verses tidy.   
+.setout 
+.sb "I'm Dreaming of a White Lemming"  "White Christmas"
+I'm dreaming of a white 
+Lemming.
+Just like the mice I used to know   
+.ve 4   
+When the days seem  
+chilly and bright.  
+May all your shirt collars  
+Be white.   
+.ch ggw 
+Did you like my song, Wiz?  
+:setin  
+If the first verse of a song gets separated from its title when you 
+see the formatted output,   
+see a TF expert and have a ".ne" command added in front of the song.
+.hd 2 ".ul" The~Song~Macros 
+.save in +4 
+.fmt ".sb ^^(quote)Our Song Title^^(quote) ^^(quote)The REAL Song Title^^(quote)"   
+This sets the titles in a nice box of asterisks, with our song title
+first, and the real song title following the words "to the tune of:".   
+Both titles must be less than 48 characters long.   
+Make sure that each title is enclosed in a set of double quotes.
+.fmt ".ve 4"
+This is needed to make sure that a song is not split in the middle of   
+a verse.  Replace the number "4" by the number of lines up to the next  
+".ve" or ".se".  This will have TF start a new page if it can't fit 
+the specified number of lines onto the current page; hence, the verse   
+will be kept together and will start the new page.  
+Use ".ve~<nn>" to preceed and separate each verse.  
+.unsave in  
+.hd 1 ".ul" Technical~and~Stage~Directions  
+^(foot) 
+.para   
+Stage directions and technical directions for sound and 
+light must be kept distinct.
+This should help our over-worked
+technical staff and at the same time make our authors conscious about   
+the technical demands they are placing. 
+These directions are very important!
+.para   
+All stage, light, and sound directions should be typed in all in
+UPPER CASE, surrounded by one set of parentheses "()".  
+Keeping all non-spoken text in the script in UPPER CASE makes it
+easier for actors to skip over it.  
+Each different type of direction is preceded by its own macro.  
+.para   
+Any sound which must be produced over the P.A. sound system in the Theatre  
+must be identified by preceding the direction by a ".sb" macro. 
+Noises made by the actors or crew on stage  
+without the use of the sound system 
+are 
+.ul 
+not 
+sound directions, but are ACTOR directions (use~".ad"). 
+The piano and other musical sounds do not   
+constitute sound directions either. 
+.para   
+Any lighting changes (including lights up and lights down at the beginning  
+and end of your scene) must start with the ".ld" macro. 
+.para   
+Actor (stage) directions
+must start with the ".ad" macro.
+.para   
+Here are some sample sound, light, and actor directions:
+.setout 
+.ld 
+(THIS IS AN UPPER-CASE LIGHTING-DIRECTION   
+WHICH MAY COVER SEVERAL LINES.  
+IT IS SURROUNDED BY PARENTHESES.)   
+.sd 
+(THIS IS A SOUND-DIRECTION, USING THE SAME FORMAT.) 
+.ad 
+(THIS IS AN ACTOR-DIRECTION,
+FOR ACTION ON STAGE, USING THE SAME FORMAT.)
+.ch ggw 
+There, I said so.   
+:setin  
+.para   
+For simple directions to a specific actor,  
+place the direction in  
+parentheses in the actor's speech.  Keep such directions upper case.
+.sp 
+Example:
+.setout 
+.ch wiz 
+(MOVES LEFT) I'm the Wizard around here! (COUGHS)   
+Where's Dave?  (SITS DOWN)  
+.ch ggw 
+(SCREAMING DELERIOUSLY:) Don't sit on that! 
+.ad 
+(HUGE EXPLOSION.)   
+:setin  
+Note that only directions to the one
+.ul 
+speaking
+actor should be placed in-line. 
+General directions to other actors or   
+to more than one actor must use ".ad".  
+.para   
+Light and sound cues should really be set off by their macros, no   
+matter how trivial.  This will mean splitting some speeches around  
+these directons:
+.setout 
+.ch ggw 
+(MOVES TO TELEPHONE) I wonder what will happen next.
+.sd 
+(TELEPHONE RINGS)   
+.ex 
+I might have known.  (ANSWERS PHONE) Hello? 
+.ch wiz 
+(OVER P.A. SYSTEM:) Hello!  It's me.
+:setin  
+Note that another ".ch~ggw" is not necessary after the sound direction. 
+We use the ".ex" macro to indicate that the actor keeps talking.
+The actor will skip the sound direction and continue the dialogue afterward.
+An exception to this rule may occur if the direction is very long,  
+in which case you should repeat the character macro (e.g. ".ch~ggw")
+instead of using the ".ex". 
+.para   
+Description of items on stage, such as at the beginning of a scene, is  
+considered an Actor Direction, to be started by the ".ad" macro.
+.hd 0 ".ul" Using~TF~on~a~File  
+.para   
+TF needs a macro file to process a scene.   
+(This file is used by the ".so" command.)   
+Normally the macro file is found
+somewhere under the FASS account.   
+It must be in your AFT before your try to use TF to format anything.
+To put it there before you use TF, try: 
+.setout 
+*get fass/1984/script/84macr.t,q
+- or, if that doesn't work try -
+*free fass/1984/script/script.f extract=84macr.t
+:setin  
+Once the macro file is in your AFT, you may use TF to format a scene
+as many times as you like.  
+.para   
+A file containing formatting commands and text can be expanded  
+into a fully formatted document by simply typing    
+.setout 
+tf filename >file2  
+:setin  
+at system   
+level, where "filename" is the file containing the text and TF commands.
+"File2" is the name of some output file 
+where the formatted document is to be placed.   
+(Make sure it is not the name of any file you want to keep!)
+If "file2" does not already exist it will be created as a temporary file.   
+Temporary files disappear when you sign off, but that's usually okay
+because we don't need to keep the formatted output around.  
+.para   
+You may obtain several printed copies of your formatted output by typing    
+.setout 
+klist file2 file2 file2 file2   
+:setin  
+at system level.
+Make sure you use KLIST on the  
+.ul 
+formattted  
+output from TF! 
+Don't try to use KLIST on the TF input file.
+.bp 
+.hd 0 ".ul" Summary~of~TF~Commands  
+^(foot) 
+.para   
+The formatting commands you need to know are summarized here.   
+Argument types are listed, enclosed in angle brackets ("<>").   
+.sp 
+.ne 10  
+.save in +4 
+.fmt ".so <file>"   
+Insert another TF text file.
+.fmt ".bs <act#> <scene#> <^^(quote)Title of scene^^(quote)>"   
+Begin a scene.  
+.fmt ".na <abbrev> <FULL@LONG@NAME@OF@CHARACTER> <SHORT@NAME>"  
+Define an abbreviation for a character name.
+.fmt ".ch <abbrev>" 
+This starts a speech by a character.
+.fmt ".xx <NAME@OF@CHARACTERS>" 
+
+.......4
+fass
+
+
+
+A one-use-only character or combination.
+.fmt ".ex"  
+End any macro; reset to .ch mode.   
+.fmt ".sb <^^(quote)Our song title^^(quote)> <^^(quote)Real song title or tune^^(quote)>"   
+Begin a song.   
+.fmt ".ve <#lines>" 
+Start another verse of song.
+.fmt ".sd"  
+Begin a sound direction.
+.fmt ".ld"  
+Begin a lighting direction. 
+.fmt ".ad"  
+Begin an acting (stage) direction.  
+.fmt ".es"  
+End a scene (this is the last line of every scene). 
+.fmt ".bf <#lines>" 
+Next line(s) of input to be overstruck three times. 
+.fmt ".ul <#lines>" 
+Next line(s) of input to be underlined. 
+.fmt ".sp <#lines>" 
+Skip blank line(s) on output.   
+.fmt ".ne <#lines>" 
+Make sure a group of lines doesn't split over page. 
+.unsave in  
+.para   
+Note that many of the macros have "arguments" that must or  
+may be supplied on the same line as the macro.  
+These arguments are separated by blanks.
+If you want to give an argument to a macro, but the argument itself 
+contains blanks, replace the blanks in the argument with tildes:
+.setout 
+.bs 1 2 This@Is@Act@One@Scene@Two   
+:setin  
+In most cases, you may also surround the argument with double quotes:   
+.setout 
+.bs 1 2 "This Is Also Act One Scene Two"
+:setin  
+For some macros (notably the ".na" and ".xx" macros), you   
+.ul 
+must use the tildes.
+.bp 
+.hd 0 ".ul" Sample~Scene
+^(foot) 
+The following is a sample of how your scene should look:
+.setout 
+.so 84macr.t
+.bs 1 1 "This is The Title of the Scene"
+.na c1 FULL@NAME@OF@CHARACTER1 SHORT@NAME1  
+.na c2 FULL@NAME@OF@CHARACTER2 SHORT@NAME2  
+.na c3 FULL@NAME@OF@CHARACTER3 SHORT@NAME3  
+     .  
+     .  
+     .  
+.na cn FULL@NAME@OF@LAST@CHARACTER LAST@SHORT@NAME  
+.ld 
+(LIGHTS UP AT START OF SCENE.   
+ALSO, SOME DESCRIPTION OF WHAT THE STAGE IS LIKE.)  
+.sd 
+(YOU MAY ALSO NEED A SOUND DIRECTION,   
+IF THERE ARE SOUND EFFECTS OR MUSIC TO START THE SCENE.)
+.ch c1  
+This is said by character one.  
+.ch c2  
+And this is said by character two.  
+.sd 
+(THIS IS ANOTHER SOUND DIRECTION.)  
+.ld 
+(HERE IS ANOTHER LIGHTING DIRECTION.)   
+.ad 
+(THIS IS AN ACTOR DIRECTION.)   
+.ch c1  
+Second speech by character one. 
+.ch c2  
+Second speech by character two. 
+.sb "O Khan-a-Da" "O Canada"
+This is a song. 
+Here are
+some song   
+verses. 
+.ve 3   
+This verse has  
+three lines, so we start
+it with ".ve 3".
+.ch c1  
+And character one talks again.  
+     .  
+     .  
+     .  
+.ld 
+(LIGHTS DOWN AT END OF SCENE.)  
+.es 
+:setin  

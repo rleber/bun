@@ -1,0 +1,104 @@
+
+
+
+..o...a
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so 84macr.t
+.bs 1 1 "Eric Weasel"   
+.na we ERIC~WEASEL ERIC 
+.na gu GUY GUY  
+.na gi GIRL GIRL
+.na ph PHYLLIS~SANDFLEA PHYLLIS 
+.na vo VOICE~OVER VOICE~OVER
+.ld 
+(LIGHTS UP ON ERIC WEASEL, WEARING A LEISURE SUIT)  
+.ch we  
+Is this you, sitting at home alone even though fifty percent of the world's 
+population is waiting for you to come out and grant them paradise?  
+Well worry no more because I, Eric Weasel   
+have just put together the awesome best-seller  
+How To Pick Up Girls.   
+It has hundreds 
+of helpful hints and pickup lines.  I'll bet you approach women like this.  
+.ad 
+(AN AVERAGE, THOUGH SLIGHTLY WIMPY GUY COMES UP TO AN ATTRACTIVE WOMAN) 
+.ch gu  
+Hi.  You don't want to go out with me, huh? 
+.ad 
+(SHE DOESN'T NOTICE HIM AT ALL.  THEY FREEZE)   
+.ch we  
+You can be absolutely sure that won't warm the sheets.  
+My book will give you lines like these--
+.ad 
+(BACK TO GUY AND WOMAN. 
+SHE IS WEARING A MOTORCYCLE JACKET WITH MANY ZIPPERS ON IT) 
+.ch gu  
+Hi.  Is this where they keep the frozen racoon? 
+.ch gi  
+No. 
+.ch gu  
+Have you ever wrestled a yeti on national television?   
+.ch gi  
+No. 
+.ch gu  
+Got a zipper fetish?
+.ch gi  
+No. 
+.ch gu  
+Well, I do. 
+.ch we  
+But wait!  There's more!
+You'll also get my other other book, How To Avoid Women With Brains.
+.ch gu  
+Excuse me, miss--?  
+.ch gi  
+Yes?
+.ch gu  
+(TO HIMSELF:)   
+Damn!  She can talk!
+.ch we  
+But wait!  There's even more.   
+.ad 
+(OUT STEPS PHYLLIS SANDFLEA.  SHE IS DRESSED IN PINK)   
+.ch ph  
+That's right, Eric.  I'm Phyllis Sandflea, activist against women's rights, 
+and you'll also receive a copy of   
+.ul 
+my  
+books, "Special Sex Positions So You Won't Know It's Happening", and
+my life story, "Household Cleansers Saved My Marriage". 
+.ad 
+(ERIC HAS COME OVER TO PHYLLIS AND SAYS)
+.ch we  
+Hi.  Is this where they keep the frozen racoon? 
+.sd 
+(SWELLING OF ROMANTIC MUSIC.  THEY LOOK INTO EACH OTHERS' EYES, EMBRACE,
+AND WE FADE TO BLACK)   
+.ch vo  
+Available wherever frozen raccoons are sold.
+.ld 
+(LIGHTS DOWN)   
+.es 

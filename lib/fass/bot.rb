@@ -355,6 +355,11 @@ environment variable. If this environment variable is not set, the URL is mandat
     
     desc "index", "Display an index of archived files"
     def index
+      ix = Archive.index
+      file_name_width = ix.map{|entry| entry.first.size}.max
+      ix.each do |entry|
+        puts %Q{#{"%-#{file_name_width}s"%entry[0]} #{'%-s'%entry[-1]}}
+      end
     end
 
     register Fass::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files (Type \"fass freezer\" for more details)"

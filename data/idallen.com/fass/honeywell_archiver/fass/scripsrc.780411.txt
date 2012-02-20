@@ -1,0 +1,55 @@
+
+
+
+........
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sy echo "*** This file must be roffed from 0 or 1 level deep!!! ***"   
+.sy free x fass/scripfrz 1-0 1-1 1-2 1-3 1-4 1-5 1-6 1-7
+.ic^^   
+.ig(^(type))
+.en(good) *** good format ***   
+.sy free x fass/scripfrz titlpage   
+.so titlpage
+.en(0) *** normal format ***
+.en(tech) *** technical format ***  
+.so 1-0 
+.so 1-1 
+.so 1-2 
+.so 1-3 
+.so 1-4 
+.so 1-5 
+.so 1-6 
+.so 1-7 
+.sy remo titlpage;1-0;1-1;1-2;1-3;1-4;1-5;1-6;1-7   
+.sy free x fass/scripfrz 2-0 2-1 2-2 2-3 2-4 2-5 2-6
+.so 2-0 
+.so 2-1 
+.so 2-2 
+.so 2-3 
+.so 2-4 
+.so 2-5 
+.so 2-6 
+.sy remo 2-0;2-1;2-2;2-3;2-4;2-5;2-6

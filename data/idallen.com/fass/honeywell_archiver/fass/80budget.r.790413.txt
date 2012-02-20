@@ -1,0 +1,66 @@
+
+
+
+.G.L.G.L
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.po 6   
+.ll 66  
+.sp 2   
+.in 40  
+April 10, 1979. 
+.in 0   
+.sp 5   
+.ce 
+FASS '80 Budget 
+.sp 2   
+.ta 25c 37c 49c 61c 
+	'80	'79	'79 est.	Budget
+	budget	budget	actual	change
+.sp 
+.ta 25r 37r 49r 61r 
+Social	1300	950	1025	+350   
+.sp 
+Producer	900	800	900	+100   
+.sp 
+Technical   
+  Makeup	200	100	145	+100   
+  Sets	120	100	100	+20  
+  Props	70	50	50	+20
+  Costumes	175	150	130	+25  
+  Boom-boom	100	25	80	+75   
+  Stage	25	25	25	+0 
+	---	---	---	---
+	690	450	530	+240   
+.sp 
+Expenses	50	50	0	+0 
+.sp 
+	----	----	----	----
+total	3000	2250	2455	+750   
+.sp 5   
+.fi 
+As amended by the FASS Committee, April 9, 1979,
+to cover the cost of an extra show  
+and the addition of one more paid party.

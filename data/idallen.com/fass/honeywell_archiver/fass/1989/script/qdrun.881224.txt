@@ -1,0 +1,30 @@
+
+
+
+...L.. J
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+tf fass/1989/script/2-3.t >fass/1989/script/tfed/2.3
+tf fass/1989/script/2-d.t >fass/1989/script/tfed/2.d

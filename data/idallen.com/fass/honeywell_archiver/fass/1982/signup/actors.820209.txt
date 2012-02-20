@@ -1,0 +1,193 @@
+
+
+
+......s(
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nf 
+.ne 30v 
+============================================================
+*** ACTORS  ACTORS       A C T O R S      ACTORS  ACTORS ***
+============================================================
+.sp 1v  
+.XX 
+_______________ Kim Adkins.Alice Aforethought   
+	Claudius   
+.XX 
+_______________ Ian! Allen.King of Hearts   
+.XX 
+_______________ Brien Ashdown.Drinks Machine
+	Calvin Amity   
+	Stud Tires 
+.XX 
+_______________ Terry Barna.Hamilton Ahnreye
+	Johnny Oldson  
+	Rosencrantz
+.XX 
+_______________ Mark Batten.Tweedle-Incredibly-Stupid   
+.XX 
+_______________ Michael Beckerle.Chuck O'Loto   
+.XX 
+_______________ Simon Birch.Lurch the Butler
+.XX 
+_______________ Angela Burley.June Bug  
+	Donna DeDead   
+.XX 
+_______________ Rachel Capstick.April Showers   
+.XX 
+_______________ Peter Carette.Caterpillar   
+.XX 
+_______________ Elizabeth Carew.Londonderry Hare
+	Bunny Bam  
+	Lizzie Boredom 
+.XX 
+_______________ Roberta Carter.Eva Destruction  
+	Gertrude   
+.XX 
+_______________ Ian Chaprin.Jacques Rabbitte
+.XX 
+_______________ John Collard.Iris Mycase
+
+	Harry Fitzlykagluv 
+.XX 
+_______________ Peter Coo.Tweedle-Dum   
+.XX 
+_______________ Mario De Rose.Karen Carpenter   
+.XX 
+_______________ Chris Dobbin.Gus DeFax  
+.XX 
+_______________ Lindsay Drake.Madame Brenda Butterfly   
+.XX 
+_______________ Joy A. Fenton.Squeaky Fromme
+.XX 
+_______________ Lynn Fletcher.Ms. Marple
+	Anita Break
+.XX 
+_______________ P. Jayne Forbes.Penny Loafer
+	Jill O'Pudding 
+	Marcellus  
+.XX 
+_______________ Lorraine Galvin.Angela Foodcake 
+.XX 
+_______________ Jim Gardner.Luke Alike  
+	C.B. MacTruck  
+.XX 
+_______________ Clifford A. Goodman.Oscar Nominee   
+	Guildenstern   
+.XX 
+_______________ Mike Gore.Tennis the Menace 
+.XX 
+_______________ Dave Graham.Sum Won Hoo 
+	Stud E. Baker  
+.XX 
+_______________ Ronald M. Green.Ross Horizon
+	Doug Leedoo Right  
+	Bernardo   
+.XX 
+_______________ Preston Gurd.Better Holmes  
+.XX 
+_______________ Marney Heatley.Dinah the Cat
+.XX 
+_______________ Katherine Hicks.Snapper Mocky   
+.XX 
+_______________ William Hughes.Dick Tutorial
+.XX 
+_______________ Steve Hutton.Claude Dumbo   
+.XX 
+_______________ Kim Kippen.Fearless Fawcett 
+.XX 
+
+
+
+
+_______________ Jeff Knight.Count Paul Bearer   
+.XX 
+_______________ Elisa Kreller.Deb U. Thant  
+.XX 
+_______________ Don Lapierre.Jack of Clubs  
+	Stud Up
+	Egbert McMuffin
+.XX 
+_______________ Rob Lee.Matt Hatter 
+.XX 
+_______________ Brian Martin.Perry Keet 
+.XX 
+_______________ Chris Martin.General Woundwort  
+.XX 
+_______________ Cathy McBride.Queen of Hearts   
+.XX 
+_______________ Brad McFadyen.Felix Symbol  
+	Omelette   
+.XX 
+_______________ Sandra McLeod.Patty Morebucks   
+.XX 
+_______________ Judy McMullan.Speaker in Green  
+.XX 
+_______________ John McMullen.Rock Hopster  
+.XX 
+_______________ MarieLou Norton.May Flowers 
+	Mimi O'Graff   
+.XX 
+_______________ Chuck Peeren.Colonel Fluff  
+	Philip Miscenses   
+	Joe King   
+	Horatio
+.XX 
+_______________ Jeff Prayra.Kodak Chrome
+.XX 
+_______________ Rose Roberts.Jane Stitch
+	Ophelia
+.XX 
+_______________ Bernie Roehl.Bugs Bunny 
+.XX 
+_______________ David Shipley.Prudence Juris
+	Arthur Mometer 
+.XX 
+_______________ Martin Smith.Cheshire Cat   
+	Stud Services  
+	Robin Peter
+.XX 
+_______________ Edmund Smyk.Byron Getwonfrie
+	Stud E. Hall   
+.XX 
+
+
+_______________ Chris Stone.Bunny Wham  
+.XX 
+_______________ Adrian Stonell.Stage Manager
+	Freddy Ornot   
+.XX 
+_______________ Gillian Teichert.Hops To Trotsky
+.XX 
+_______________ Brad Templeton.Humpty Dumpty
+	Polonius   
+.XX 
+_______________ Ewa Von Hueck.Mome Rath 
+.XX 
+_______________ Ken Watson.Hank the Herald  
+.XX 
+_______________ Andrew P. Welch.Marvin Gardens  
+.XX 
+_______________ Betsy Wimbs.Princess Dixie  

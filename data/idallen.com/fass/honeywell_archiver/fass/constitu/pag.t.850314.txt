@@ -1,0 +1,727 @@
+
+
+
+.f.....Z
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so tf/month
+.an (manu) 1
+.so expl/../macr.t  
+.di 
+.so tf/month
+.an (manu) 1
+.so expl/../macr.t  
+.sp 8   
+.ce 2   
+The F.A.S.S. Theatre Company
+.sp 4   
+Principles and Guidelines   
+.sp 30  
+Prepared: ^(amon), 19^(year)
+.pa 1   
+.he 'F.A.S.S.'- % -'Principles and Guidelines'  
+.af % i 
+.sp 
+.ce 
+Table of Contents   
+.sp 
+.mg 
+     . . . . . . . . . . . . . . . . . . . . . . . . . . .  
+.nf 
+.ta R 60
+.en 
+.he 'F.A.S.S.'- % -'Principles and Guidelines'  
+.fo ''^(amon), 19^(year)''  
+.se 1.0 INTRODUCTION Introduction   
+The principles and guidelines set down in this document have
+been prepared in order to make F.A.S.S. a success and enjoyable 
+time for everyone involved. 
+Some of the precepts discussed below are simply common sense;   
+some concern themselves with the various aspects of dealing with
+University administrative departments;  
+and some are simply outgrowths of that nebulous but important   
+entity known as "F.A.S.S. Tradition".   
+.tp 
+We wish to stress that these are simply guidelines, not "laws". 
+The circumstances of putting on F.A.S.S. will change from year to year, 
+and there may sometimes be good reasons for ignoring some of the
+suggestions given below.
+As time goes on, the F.A.S.S. Committee may also wish to modify some
+of these principles and guidelines because of changes in the
+University environment or simply because better ways of doing   
+things have been found. 
+However, we hope that future F.A.S.S. personnel will not ignore 
+or overrule what is written here without first giving serious   
+thought to the matter.  
+These policies are the result of many years of experience   
+working with F.A.S.S., and as such they can be of immense help in seeing
+that F.A.S.S. continues to enjoy the success it has earned since its inception. 
+.se 2.0 'CARE AND HANDLING OF THIS DOCUMENT' Care~and~Handling~of~this~Document 
+Since this document is expected to evolve with time, it will no 
+doubt be superseded by future Principles and Guidelines drafts. 
+However, in the interests of preserving information which might 
+become pertinent again at some time in the future, the Secretary
+should preserve copies of   
+.ul 
+all 
+drafts of this document.
+.tp 
+Changes may be made by the President in conjunction with the
+members of the Executive and anyone else who might be useful
+in an advisory capacity.
+People making changes in this handbook should bear in mind two  
+important principles:   
+.hb 3 8 (1) 
+The Constitution gives the "laws" of F.A.S.S.; the Principles   
+and Guidelines Handbook should give the spirit. 
+This is not the place to be dogmatic.   
+This is a place to give important details, things to think about,   
+and points to be observed in the interests of keeping F.A.S.S. fun. 
+.hb 3 8 (2) 
+This handbook should be kept complete and up to date.   
+Ideally it should be possible for complete strangers to pick up this
+document and recreate F.A.S.S. in all its glory.
+These Principles and Guidelines are intended to safeguard F.A.S.S.'s future 
+as well as its present. 
+.bl 
+.se 3.0 'CARE AND HANDLING OF PERSONNEL' Care~and~Handling~of~Personnel 
+F.A.S.S. can only continue to operate if it has a large number of   
+willing volunteer workers.  
+Working with volunteers forces those who are leaders in F.A.S.S. to 
+pay attention to several basic issues.  
+.oc 'Work vs. Play' 
+There is no ready answer to the question of whether F.A.S.S. is primarily   
+designed for social get-togethers or the business of putting on a show. 
+The important thing is that there must be a balance between the two.
+Too much emphasis on parties and those who are serious about putting
+on the show may be alienated; too much emphasis on business, and no one 
+will enjoy themselves at all.   
+.oc 'Commands vs. Requests' 
+Don't tell, ask.
+.oc 'Responsibility vs. Power'  
+Official positions in F.A.S.S. are  
+.ul 
+responsibilities.   
+Naturally they are accompanied with a certain amount of authority,  
+but power-tripping in any position leads to trouble.
+.oc 'Involvement vs. Attendance'
+People should care about F.A.S.S.; they should be involved with the 
+group, not just hangers on. 
+In connection with this, experienced F.A.S.S. personnel should do their 
+best to get newcomers involved in more than a minimal way.  
+We must train new blood so that there will be a constant in-flow
+of new energy, ideas, and enthusiasm.   
+.oc 'Cast vs. Crew' 
+Historically there has always been a lack of contact between those  
+on stage and those behind the scenes.   
+Every member of F.A.S.S. is important.  
+
+Those in positions of responsibility should make sure that no portion   
+of the F.A.S.S. Company feels like second class citizens.   
+.se 4.0 'FINDING THE RIGHT COMMITTEE' Finding~the~Right~Committee   
+One of the most important processes in F.A.S.S. is  
+choosing the F.A.S.S. Committee.
+The Committee must always have new blood on it to avoid stagnation; at  
+the same time, there is obviously a need for people with    
+experience, especially in such positions as Head Scriptwriter and   
+Technical Director. 
+Balancing these two factors is always going to be difficult.
+It can be made easier, though, if the Committee does everything it can  
+to find out whom they have to work with and to encourage people who seem
+to have potential.  
+.se 4.1 'THE CLOSING FORM' The~Closing~Form 
+The closing form is one way to find out who's interested
+in working on the Committee.
+It is also a good way of gathering suggestions for improving F.A.S.S..  
+The closing form is really a type of opinion poll filled out by the membership  
+each year at the end of the show.   
+.tp 
+We suggest that the form be passed out between Friday night shows   
+and collected the same night or on the Saturday.
+The form should ask for improvement suggestions in several areas,   
+e.g. publicity, social activities, conduct of rehearsals, conduct of shows, 
+relations between cast and crew, relations between Committee members and
+the company at large, comments on technical facilities and needs, and so on.
+This form is also a good place to get suggestions for the following 
+year's theme.   
+.tp 
+The second important function of the form is to find out who is 
+interested in being on the Committee in the following year. 
+Thus the form should ask a question like
+.to 6   
+Are you interested in any of the following jobs?
+   Director   ___   
+   Producer   ___   
+   President  ___   
+      etc.  
+.tn 
+Anyone who indicates an interest should be approached by a member   
+of the Committee and told more about what the job entails.  
+Committee members should actively encourage people to seek F.A.S.S. positions.  
+.tp 
+It should be made clear that this indication of interest is NOT 
+a firm commitment.  
+Persons wishing to apply for appointed positions must still write individual
+applications and persons wishing to fill elected positions must still   
+be nominated at the F.A.S.S. Annual Meeting.
+At the same time, the closing form gives some immediate indication of   
+who is interested in applying and who wants to be nominated.
+If it appears, for example, that no one is interested in being Producer,
+the Committee can begin using some gentle persuasion on suitable
+people to see if good candidates can be convinced to apply. 
+At the Annual Meeting, individual Committee members may also choose to  
+nominate people for positions they have said they were interested in;   
+with a bit of luck, this informal procedure will work better than a formal  
+"nominating committee" or a haphazard "nominate-everyone-in-the-room" approach. 
+.se 4.2 'THE APPLICATION LETTER' The~Application~Letter 
+Applicants for the positions of Producer, Director, Head Scriptwriter,  
+and Technical Director must submit a letter of application to the Committee.
+At one time, we considered having a formal "application form" that all  
+applicants would have to fill out; however, such rigidity seems contrary
+to the friendly spirit of F.A.S.S.. 
+Thus applicants may submit their applications in whatever written form  
+they choose, be it humourous, straightforward, or bizarre.  
+.tp 
+Despite this informality however, application letters should include a  
+variety of information about the applicant in order that the Committee  
+has everything it needs to make its decision.   
+Thus the Committee must see to it that potential applicants are given   
+a list of the information that it wants included in the application letter. 
+This kind of application guideline will help both the applicants
+and the people who must choose between applicants.  
+.tp 
+Below we list some of the items that we feel are important in an
+application letter. 
+Naturally each year's Committee should add to this list if other
+important considerations arise. 
+.to 
+Applicant's name, local address, permanent address  
+Past experience in F.A.S.S. 
+Past experience in direction, production, etc.  
+Past experience in related fields   
+Past leadership experience  
+Whether or not in co-op 
+Whether next year's schedule is likely to   
+   be busy during fall and F.A.S.S. 
+How many more years on campus?  
+Specialized knowledge that will be of use   
+   (e.g. computer experience for Scriptwriter)  
+A description of the way he or she will approach
+   the job  
+Other comments on F.A.S.S., life, etc.  
+.tn 
+.se 4.3 'JOINT APPLICATIONS' Joint~Applications 
+In the past, F.A.S.S. has allowed people to apply for positions jointly.
+Thus we have had co-scriptwriters, co-producers, co-tech directors, and so on.  
+Many people who don't want to take total responsibility for a particular
+job in F.A.S.S. are willing to share it with one or two other people.   
+Appointed F.A.S.S. positions take a good deal of work and often people  
+feel that they just don't have the time to do everything themselves;
+they want another person working with them. 
+.tp 
+While we understand such feelings, we must point out that there tend to 
+be a good many problems when authority and responsibility for a given   
+area are split between several people.  
+When there is no final arbiter, there is no good way of resolving the   
+inevitable disagreements.   
+The division of labour scarcely ever pleases everybody involved -- one  
+co-worker may resent another "not doing enough work", the other may 
+resent the first for "taking everything on himself".
+There are many potentially unpleasant situations that may arise in such cases.  
+.tp 
+Thus we recommend that the Committee avoid making co-appointments unless
+there is some overwhelming reason for doing so (e.g. nobody else applied).  
+If some people are worried that they won't be able to do everything by  
+themselves, point out that they aren't supposed to do everything by 
+themselves. 
+All appointed members of the F.A.S.S. Committee are supposed to select  
+a group of people to work under them.   
+There is really no point in making co-appointments when the same position   
+can be filled by one person who knows how to delegate work to   
+responsible subordinates.   
+.se 5.0 'CONSTITUTIONAL COMMENTARY' Constitutional~Commentary   
+In this section, we will discuss various points about the Constitution, 
+explaining some points in detail and telling why others were included.  
+.se 5.1 'THE PREAMBLE' The~Preamble 
+F.A.S.S. stands for Faculty, Administration, Staff, and Students, but   
+nowhere does it say that F.A.S.S. is restricted to these people.
+In particular, alumni have frequently played a strong role in F.A.S.S.  
+They should not be forgotten.   
+.tp 
+Of recent years, the number of active Faculty and Administration people 
+in F.A.S.S. has decreased.  
+A number of attempts have been made to encourage Faculty and Administration 
+to help with F.A.S.S. but these have not had very positive results. 
+The only advice we can give right now is to keep trying; the presence   
+of more senior people in F.A.S.S. can help greatly. 
+.se 5.2 'THE F.A.S.S. COMMITTEE' The~F.A.S.S.~Committee 
+Article two, section (10) (b) notes that the offices of Producer, Director, 
+Tech Director, Head Scriptwriter, and Treasurer are appointed at a meeting  
+of the F.A.S.S. Committee.  
+The selection process should use a secret ballot.   
+If there are more than two applicants for a position, several ballots   
+should be taken, each time eliminating the applicant(s) with the least  
+number of votes, until one applicant obtains a clear majority.  
+.tp 
+Section (11) (c) (iv) needs some background to justify it.  
+Several years ago, the Director who had been appointed in March failed to   
+reappear on campus in the fall. 
+No one knew where he was and no one knew if he was going to be available
+to direct in January.   
+It wasn't until after Christmas that someone managed to contact him, and
+that was only through a chance meeting on the street.   
+As it turned out, he had no intention of returning to Waterloo and was  
+uninterested in directing the show. 
+
+There was a mad scramble to find a suitable substitute at the last moment.  
+.tp 
+Consequently, it was made mandatory for all members of the Committee to 
+notify F.A.S.S. in the fall that they are still alive and eager to fulfill  
+their responsibilities. 
+It is not necessary for a member to be on campus in the fall; all that is   
+required is written or verbal notification of one's accessibility.  
+If someone does vanish, this clause gives the other members of the  
+Committee the right to replace the missing person in reasonable time.   
+.bt 
+Section (13) (h) gives the Committee the right to overrule MAJOR decisions  
+of F.A.S.S. personnel.  
+This should be used with discretion.
+Meddling with the decisions of individuals should only take place in dire   
+circumstances.  
+.bt 
+The F.A.S.S. Committee generally meets five times a year
+(although some years may require more or less). 
+Beginning at the Annual Meeting, the following Committee meetings are   
+usually required:   
+.bl 
+.hi 3 8 (1) 
+Soon after the Annual Meeting to discuss the financial status of
+the previous year's F.A.S.S. and to set a budget for the coming year's show... ....Z...}....@.........'g`...
+
+..X....'b.....&...&.f....f&..b...'.........'........F..'.b..F........F..&..g..`..&.'B.b.f.....H......F&..".....F..'b.&.f..f.....'fg.gf&...&F......'..&g.'.'.&.b.f.............&f....&f..&......g....B.....8...F...x....".b....B'..P..f....&....'F.".&......g....B.....F..f......F..".....&......f...F.&.'.....x..g....B.&g.'.'.&.b.&........&....B......&.....p...'F."..&...&g.'.'.&.b.g.f..'b..F&...'.&....F.F.g.b.&...........F&......&.....8..f......F..&....&..&...'....'b..&.....8...F...x....".b....b'..8..f....&...&...'...g....B..B..'F."..&.......F..f......F..".....&...........&.&.'F....&.b.&F.....F&...'.&...&...........F&......&.......X....'b.'b.&.f..".......&......F..&...'fg.gf&.......&....F.F.g.b...'G.&.b......".f.........f.....b."....8...F...x....".b.....'..@..&...'....&....".....&......f...........&...F...........g.'..........f.......'b........f...........'b..&....&.f..F.......&.......'Gg.....b....F&..'G".....8...F...x....".b.....'..p..&...B.....f.........f...'.......g..........'...&........F...f.B...'F.g..B....0....f...'F.g..B....&..fgF'...F'..B..&....F.'g.F.B...B..........&.'B.........'b.'b."..........&....f..f..............F&.....F.Gf.'......h..'...&f&..b...B......'F&..b...f'.&..b.'F..&..'...............&....G......'......'.&....'..F&..".F..'ff........'.....F&..
+ .....&....'..F&..".F..'ff........'.....F&.......&g..&.....&......8...G...@..&..&..'.&.........f.......B.....&..b..'".F.f......f.gf'G"...F............H..&.'B.....8..F.f'.f........".b.b..f...'.....'b.g.f.."..'F...F.."..#............g..x.......F'G"....F.Gb"..'..'b..&..&g............'.&fb.....&..b....f..G.....&f....H..&....f'f&..b..'......F...&...'.&ff."..&......f..Gf......".f........".............'...B.'b..g.&.."..F.f................g..'...........f....b........".b.b.....e..%..........".b.b.....g..'....@.........g..'...f..........b...F.&......&..b..'....'g.....'b..'b.F.....G......&.......'g.".....@..'b..'b.......&.......'g..f.g.&...........g..'...'b..g.&..".'ff.......&f..x..g..B.................f'f&..b...&f..'F......&...G.&......F...&...G".".f&......X....Gf.........f.......D.e...d$D$.%.$.b....$..%.$..$.....D.Eb..F.g...f&F&.'.&.g....&..'.&..&.....F.Gg.....&....'b.f.g.&........&.....&...'.......F.g...f&F&.'.&.b....&..'.&..&.....F.Gg....0...........".b.b..f...'.....'b......'b........&.b........B.&...G.&............f...'.......f'.&..b..X...f......".......D.d$...........F.f&............F..'b."..&....&...F..........Gf..&.......Gb....Fb.&...&...F..F&....'...'......0.......F.f&.......g...&.b...'...&......8........F......F.f&.....f&..b.&.........F.&......&..b........`.....P.......F.f&.....f&..b.&.........F.&......&..b........f...'.......'....F...........&....&..f.g.&.....B..X.......F.f&.....f......&.f........F......f&.......&..b........B..F...b.&..........B.f.......b.'..'b...f.gf'G".......B...&...........'F.g..B......g.&....&.&..B........f...'F.g..B..&....F...f.G....X....g..f.....&f'...f..f.."...F............G......F...'Gf&.b.&.......f......H.......F.f&.....f.......&f..g.F....'.....f.........'F......&..........G.......F....'F."..&........F.f&.....f......'......g.f......&..b"....8.......H....F....&..&.'..&.....f...'..'b......F.f&.....b....".....&f..g.F....'.....H.....G&....'b..&.f&.........G&......f......X......&......&...Gb.....g.ff.gb.&............&......".f......F....&...&fg........f.....&f'.&.......`.......F.f&.......g..f......'..'b...&......&.....g...&f..g.F....'......Gb.f.... ...........f......"."..........D$......$............F&......&..............F.f&......F.&.'F.b.&.....g.b.........F&......&......h....'b.....&...'b......&.......&.......G..........F.gG.'.b...B...".b.b..&......h.....F...g.&F.'f..f...&g...'..........F.Gb.....@..'..'b..g.&.."..........f.f.....B...'F.....b.&..f.....F.B.......'F.&.B.'..@..'b......f....B.......&..fgF'...F'..B.f&...F.&.'F..................&...F......F'.&.......fgF'.."..8.......................P..........F&......&...'b.............'Gg..f.&.f.b...B............F.Gb.............f...'.........F&g.'f.....'B.F.g...f&F&.'.&.b.....8.......&f...F.f&.....'b.&..f.'F.......F.&.'F&.......f.f&&..'g..g.b.....`..........&....x.......F...f.B.f......F..b.....F.....&..f.....F'.&....'........&f...F.f&....'.....&...f.....'..........&...'b..F...F.".&...G.'f....P......f.gF..'G".f.......&f..g.F....'..f...........'b..F.&.'F.......G.&&....h...&..b.&...&..F.gf.b...................'..............&.....g.&..".f&.........@..f....b"..8..........'..'b..F&.'.&..&....B.........&.......'...".ff'....&f..F....g.g.........g.GF....&.'B.b...".b.b...B..F..&..b.&.'Gb....H....'b.ff'..'b..F'.........B......'F.g.&............&..fgF'...F'..B.&..........'F.g....G"......'F.g..B.....p..'..'b.f......&.F'.&..b..G...'..f.......&f.."......&..F.gf&.......'Gg...&.....X...........8..............F.f&.......g.b......&.....&..F...f&..........F.Gb...........@....".b.b..f...'.....&.......&&.&.....'....".b.b..'b..&....'..b...gf&F.."......f......".B......$...$......$........&...&......&.... ..'..........B............&.'B.'b.....&...&......&.........f....&...&..`...'F."..'Ff........'b.....'b..F.&.'F...&.....g....G"......F.f&........8..............&...&......&...'b...f....F..G.f&..gb..&f....&..........F&.... ...X......&...&......&...'b...f....F..G.f&..gb..&f....&..........F&......&.....X..'.b.G.f&..gb.'b........g.&.........&f.Gb...B...".b.b..&.......f...g.&.... .....".........B..........&.'B.b.f.....X..f....f.f&&..&g.'.'.&.b..'".F..f....g.....'...........&....G......f..'F.......g.&.."...."..&'F.".f.&...ff&....8.......P.........g.&.........&f.Gb..'".F........'...B.G".f........&..b..B.f.gF.....X..F&......f........&..b..'b..g.&..".F.....f...&.......'g....B.....f&f.........f.....&..f."............'.........'...f................f.....g.&..b.&..F&......F..B..@....'b.F...f.b......F.F..................&................f'.&........... .....&......G.....B.&.....B..8.......P..'..'b..F&.'.&..&....B.....&.'B.b.f...'........g.........'b.f....'b.......X.......&.'B.b.f...'......'b.F.......g......P.....b..........F.f&.....f.&'Gb.........&.....f.........g.&..b.'F.....B....8.......X.......F.f.gb....f...g.&............&.'B.b.......'b..g.&..".g...F&.........H..G"..........&.'B.b...&..fgF'...F'..B.....H..'..'b...........B...........&..fgF'...F'..B....f&...".....&...f..G..'....8..F...F......&...&......&...&...F..B.....F..'F.."..'g......'....B.f'........gf&F........b...B.....&...&......&......f...f...F...... ...'..F&..".....B......b..'".F..g....g....'......&...&......&....G...'....f.&..@...H..f.&......F.B.......&gb....f....gf&F&.'.&.b..'...F.................&...... ...&f.."......F'f...F.....&f.......Fb.....&.'..&......'..&..........F'..b...'..........B....Gb.....8.......P......&...&......&...'b.&.f.......&.....B.......F.&b.&.....f...............h...'b.F....'...&..............f'.&..b.....F...f.B...'F.g..B....f...'F.g..B.....(....&..fgF'...F'..B..&....F.'g.F.B.....8...f......".b......B..$..b...B..D.d$....b......G..&..g...G..F.f&....g..h.......'..'....8.......H.......F.f&.....'b.&..f.'F......f....g.&...'...&f'.&..b...B......'F&..g.......'...&........&f.b....(....'b..'"...&..f....'F....'g.&...&..g.'.&F...f&..&.'..b.......f............G.'F..&....&'..."..8...............F.f&............&.'B.F..gb........'.F....B..........&.'B....`.....'.F..F..f&..b.f......F...&...'....'g..".&.'B.&..&..&.f...f.......F.f&........f......F..b........'.F....&.......g.GF....&.'B.b.f....'b.g.&...&...F...g.&.......8.......`.......F.f&............g.GF....&.'B.f&..b.....f...F&g....B........'.F.......'..`..'b..F'......G".....'G.b.f...F...G.....'b.'b..g.&..".............&...&...&....8.......X......f.'b..........".b.b.....&f..'F..f&.........&.......F.f&.....b..&.....X.....F...F............F.f&.....f......f....g..&.......f.'b..F......f...........'........&...'GF&.............`.`.@.h...'........&...'GF&.............f.".f...F....'............F.f&.....f....'............f.'b..'".F..f&........B..0..f.".f...F....&.......f&.......f.'b....B.............F.f&........&.......&.......f.'b.'F....'f&f&.."....F..&...F..........'B...f.b....8.......p..f.'b...........&f..'F...g.&.."......G".......8.......0...F.f&................&f...F.f&...........F...f.B.............'F.g..@.H...F.'g.F.B.............&..fgF'...F'..G....8.......H........&..fgF'...F'..B.b.f.".'b..'.............f...'F.g..B.&..F&..'G".....8.......`.......F.f&.....f......'GF&......B.f...........'f'........".b.b.....&f....f.. .......b..B.f......&fb.....&&....8.......x.......F.f&.....f......F&fb.........F.'g.F.B...X......B....F.Gb........f...'......F.'....."..&........F.'g.F.B.'b.f........X........'g.b....".....&f...&....&..&g......p..'..'b............F.f&.........&f..g.F....'.......F.'g.F.B..'b.f....g....G.......&.......&f.....g.f......f'.&.....8.......H..'..'b......F'.&.............F.f&........G."...f..b....F.f...'.&.....G..........f.......'....&....F.'..f...F&G..&..b......".b.b...H..&..'..F..F&'...&.............".f......F..G..........B...'b...G..f..'g....8.......F.f&.....b..'fgF..&..'G"........H..f&..&.&f&....&..b.'F...g.&..".F........B......F...f.B...'F.g..B....f.........'F.g..B....&..`...
+..'F.g..B....&..fgF'...F'..B..&...g.&....&.&..B...0..f.&...B.'...b.'F...F.'....."..'...........Gb.........f&b..'F.g..B....h...&f...F.f&.......F.'g.F.B..&...............'...........'.......f....&F..........&...F.&........f&........."..h...f......B...$d...D.d$.......&f...F.f&........P.......&f...F.f&.....&....".b.b....F..F.b...g.........g.&..'F.....&.b........."..&f...F.f&.........@...b&...'gg...b.....F.g...f&F&.'.&.b.........F.f&.....f...........F.f&........F..&.f'.&f'.'......B.&.".f&..&.&f&..............&.... ...b&...f......'gf'g..&......f.....&f'.&..b......Fb..g.&F.'f....G".....P...F.f&.....&............&&..&&..".f......G...&...f...'.....&...f...&."....8................B.......&f...F.f&.....b...g..&...G.&...F.B.'b..&f&...f'F.........f.f&&........'g..g.b......".b.b...0.......&f...F.f&.....'b.......Gf.......&g.b.'b..'.f.........&f..g.F.........'....Fb.&.....'".'F..F&.&.f.....F............&.'B..P...&.".'G.'g.&b..........f..f&...........F...B.'g..g..........F...g.&......X......B........&......B.f...'.......f'.&..b..'"...f......f...&."......Fb...P....Fb....Fb.&...F..B...........&..&..b....8..'..'b......&f...F.f&.....b...."......g.F....'..F....'B..'G.&.b..&f...(....&f..&.....'......f...&.".'b..F..&.....'...&.........G...'."...G......'F..'.'.&...&...B.F...'G`........F..'.'.&...&...B.F...'Gf&.b.&.....Fb.f.....&.....8.......@.......'......f.f&&..&g.'.'.&.b.f.......'G#b.........&..b.....f&...f.G.....p...'G.&.b....G"..&.....".b.b.....b........B....h.......F.F....'b...'..".Gg.&..'F.B.f.G......'G.".'b...f...'f&.B.....F.&.'F.........&..&.'..&.....F..&.F'.&..b.....p..'..'b.f.G.&&.."...gf&F...............f'g..&...gF.....B.&..'b..G.....B.f......`..F.'f........g....g.&..b.'F...'F.....f....G"..x.......&f...F.f&.....G.g...'b....f.....G&&...&.......f.."..'......F&.&.&.'."...h...G"....'ff.G.&&....'......B.........&............f.G.....f.f&&...'...F&...........'..&....F...B..8.......h..gF.'...".f...'...............................8...........f&..........G'..&...&....... ..".f."..F............B...F............B...F..&..&...f&...&.......".'`...."...f.gf'."...B.G...&..........F.B.........b...'..'b.g.g...'G"......'......b...B.f............'b..&f..f...'.........'...".f'B....8.......8..&....&...&...'.&F."..&...&...g.&....'...&..'..............Fb......g......F&..&...F.'B.'......8..........f.......&..B.f.f&&.......b..'".....F.......F.f.'....G"....G&........&....'.......'....'.....'b...x..f.G.&&.."..&...f......f.....'..&...f&.......B....f.............&f.......'....(............G...&....'......f'..B.........&F.F'."...g..........&.........`... .h...&f....'....B.f..g.G.g.'...gF'.&f'f..&...F.f.'....&...f.G...........F.g..........f......B."....$..b....%..$.....&..g....'..&.....X...&...&...f...f...'G.&.b.'F...........f'.......gb......'G."....Gb.g....'..h.......&.......8......f&.......b...B..'G.&.b..'...&.f......F..&.....F........gb.'..'g.....f...&..".......&.........f......8.......P...........FG."........B......&.&...'G.".&...F........F&.'"..&....f...b......."......G...........B.'b....&...f'........&........".................B...Gf.......H....'b.'...&.b....F......'..&...f...f...f.......&........"..........&..................&..........'..&........&........f...f."........F....F.B...'...'G.&.b.'F....'..........&f........8...........&....F&.b...g..F...&.'.....G.........'G.&.b.......f...&..........B....Gb.&...B.....g....&.b..'....'f'...'F......8.............f..'G".f...f&...F&.'.&....'b.'.b........&..b.&...'.b.F&......h....B..'g..F&f&..&...F.g.......&..........'..'...'b..g.&F.'f....&..##...&......0..GF.........'.b...F..g.&...&..##......(..&........'...'b..'..F.......f.....'...'..'b.g.&...&.'...&............ ..'..b.".......'".....'gb....f...b.&............f..f.....'...g....g.... ....'.........f..................'.....&.......&.&.....b....'..&...'g`....f&ff..gb...F&.......f......................B..&.......... .............B..&......"..'".'.....&.......'..f....F&&b.....".....&.c..`..f...G".'.'" .h...f......B.B..d.........d.b..f.........f.g....P..&..##."......f.........f.......&.......&....'b..&.&.f...'b..'G...............&f...F.f&.....b.G.......p....'b...Ff........&'F.".......G.......F..f...'....b..'"...f&...........&..g.......&...F...."..&......f.........f..'b....F.f....&..&...&...............f......B.b..e..d$.$b......b..g..f&.&g......g.... ....F..'b."...G".....F&..GF.&f............G...'.&.b...B.f.f&&.......b..x....B.b...."'.....f.....&...&......g....B...g.&..".".f&..&......f......8....'b...g..F....&........B.".......&..&..&.f...f&...".F.f'.f..........H...&..&g...&.b.&..f...&g.&.......f&...b....F.Gb......".b.b..&.......&.........F&fb.F.g...f.b..f..&...f&....&........f..g....&.b....G.""....h..&.......'g.....".b.b..G.'b."......".g....".........&...f.'F..b............... ..f..............f..............F.f...B."........Ff...&..........f.g...H...........h..g....B.F'FF.g..b..GF&...&..B.......'."..'...&.f..F.........'B...g..f&&..'........'......f......'F..'F............F............g....B.....H......B.g....B.&g.'.'.&.b.&.f.....F....'B..F'fF....&..b.............'......P..F.......F&....".&........'...G.&..&......x....B.b....B'...'......&f...F.f&......'b.".F&..F.........
+......&f...F.f&......'b.".F&..F.........'".&...F.&.'F&...........F&..........&...&.......&....8....'b.'b......'Gg...&....&."........'F......f........".b.b..&......'.....f.......'...".......&....p.......'F&..b..&f..f.........b....f&...b..'...F.........'B...B...'b...G..f.....h.....".'F.G....P......#G...X...'...G.&..&...........B..........b..#c.......g&f.....".G.&..&..................&.'.&.b..F&...........H...........H....&......'F...'g.&....&f..f.....&f.b....f&...b.....f..........&..........H...&g...".f..B.&........F&..f..B............f..'F.......g.&..".g.'.&F...........B.".gF........f'F.............F&......&.....g.&..".&....f.gb....#C........"....x....B.b....b'.....f.....&.....f..&.......&.....p..&.......'g......'....&..F....B.ff'.&....'G.&.b...''F&..b..".DF.'...b.............'G."B.&...f.........8..f....&..'b...Fb.F....B...&......Gb...x....B.b.....'..P.....F..'b.......f....f.G................B.&...B..&f...&.......'..'.&..g...x..&..F&..'G"...@....'b.f&..F..&..........&..b......&...........F&..f..B..B.f.....&.....f...(..G...'..f......F..f..f.....f&...b.....@..F....F.B...'..'....'b...&...&....'..."...................'F....&......F........f.".....&......f..&..........&......'fb.......f...............&........'F....F...&f..".....&..&......'...".gF......&...............N(...( .................
+
+......^...\.
+v.".
+...@...@....@......@..@...@.....@....@.@.....@.....@..@...@..@....!.
+.@......@...@.......@..@........@..@...@..@.@.......@.....\.....
+@f@p@PjR....
+.@........@......@..........@.....@..@..@.....@...@.....\.%.
+...@....X@..@....@......@....@.....@..@......@...@.@.........^..........
+...@..@...@......@......@.....@..@...@....\.....
+@f@p@PlR..$.
+@....@......@..........@...@........@...@.........@........@............
+@....@..........\.%.
+......X@...@....@.....@....@........@...@.........@..@...@.......@......
+@......@....@.........\...%.
+.@.....N.@....@....@...........X@...@..@......@..@..........@...@.....$.
+........@........@......@..@......@....@....@....@..@.......@..@........
+....@..@......\.....
+@f@p@PnR..'.
+@....@......@..@...@....@.......@....@.......@..@.....@......@...@.........
+....@....\....$.
+@.........@...@........@.......@....@..@..@.......@....@...@............
+@...@.......@.......X@...@...@...@....Z........\....
+@p....%.
+..@..........@....@...@......@...Z.....@.....@....@.......@.............
+@......@....@........@.....@..@.\.\.\.\.....
+...@....@.@......@....@......@...@...........\....#.
+..@....@..@.........@..@.......X@..@...@.........@....@....@.......@....@.....@...4.f.".
+@.....@..@..........@..@......@.......@..@.\.\.\.\v@....Z...@.......
+.@..@....@..@..@....@....@.....@....@....\......
+.@....@....@...........@..@....Z..........@..@.......\......
+@p.... .
+@........@.....@.....@..@.............@........@........@.....	.
+..@.......\...$.
+..@..@....@.....@....@......@..@.......@.....@...@.....@...@..@.........
+......\.....
+@p....%.
+....@.@.....@...@...@........@.....@..@...@..@...@........@...........	.
+@.\.\@.....\..'.
+....@..@......@.....@.....@...@....@...@....@......X@..@.......@.....N......
+@.......@.....@......@...@.N.....\.... .
+.@.......@....@..@...@..@..@....@..@.@D.......@.........D\....".
+....@.....@.....@..@...@........@...@..........@.......@...@......%.
+.....X@...@....@...@..@......@..@.\.\.\.\@...@.......@....@............
+...@........\.".
+...@.....@...@....@....@.......@..@...@..@....@..@..@...@....\....&.
+....@......@......@......@......@..@......X@...@....@..@.....@..............
+.@...@......@...@...@......\....
+@p......
+......@...@...@......@......@..@...@........@.....@.....\.&.
+...@....@....X@..@..@.......@..@....@....Z.......@.\.\.\.\@......@..........
+....X@...\@....@....@..@....\...@....@D.....Z..........D@........@......@..@..6.^.$.
+.@D.....Z..........D@........@......@..@..........@.....@P..@.........$.
+.@.........R@...@.@.....@...@....@..@.....@........@...@....X@...\....#.
+.@...........@......@..@......@..........@..@....@....@...@.........
+.@..@.......@..@...@.....@....\...&.
+@.\.\@....@....@..@..@.....@...@....@....@..@.....@........@...@........\.(.
+..@...@....@.........N.@...........@..@......@...@....@..@...@...@.....N.\......
+@f@p@PpR....
+..@...@....@.......@...@.......@.....@.\.\.\.\....$.
+...@....@...@....@.....Z.....X@......@....@....@.@.....@.....@..........
+@.....@...@.....\.$.
+@......@.......@..@.@.......@......@...@....@....@..@......@........\.%.
+.@..@.@......@...@...@.\.\@..@...@..@....N.@....@..@...^...@......\.....
+..).
+@.\.\@......@....@....@....@......@...@........@..@.......@....@..@.......\.....
+@........@...@....@....@.........\....&.
+...@...@...@..@...@....X@....@....@....@....@....@...@....@...@....@......%.
+@......@.....@ZZ@.....@..@......@...@......@..@.......@..@...@..........
+@.......@...@.....\.....
+....
+....@...@...@...@...@.......\.$.
+.N..@........@.......@.....@....@..@....@..@....@....@.......@...@.....
+@...@.......\......@..@.@........@.......@..@.......@....@...@....@...........8.j.#.
+..@.@........@.......@..@.......@....@...@....@............@......%.
+...@....@..@...@....@....X@..@..@....@..@..@.@.......N@.......@.........
+@...@........\......
+@j\h\f@N...@.........N@.................
+@.........@...@..@....@....@.......\..".
+@.........@....@...@.........@........@..........@..@........\....#.
+@.........@....@....@....@....@...@...........@....@...@....@......
+..@.........\...
+..%.
+.@.@......@..@...@......@...@.........X@...@....@...@.......@...........
+....@..@.@....\...#.
+..@..@...@.......@...@.......@.@....@..@...@.........@......@.....	.
+.....@....\.....
+..".
+...@....@........@..........X@..@..@......@..@....@...@.......@.....
+@.\.\.\.\@.........@.......\..".
+.@.......@...@....@....@...@....@.....@...........@.........@...\.!.
+@....@......@........@..........@......@..@.@.......@..@......$.
+\.\.\@..........v@..@...@..@...@.....@......@...@....@..@.\.\.\.\@......
+...@......@...@.....@.........@......\....#.
+@........@........@...@..@...@.......@....@..@........@.............
+....@.....@...@...@.\.\.\.\@.......\..%.
+...@..@...@....@...@.........@..........X@..@....@..@...@.....@..@......
+.@....@.....@..........\....
+..........@...@.........@..@..@......@..@.:.p.%.
+..@...@.........@..@..@......@..@.......@.......@.....X@..@.....@.......
+.@.......@...@......@..@..........@....@.....@.....\....
+@.\.\.\.\@.........@..@........@....@.......@......\..$.
+..@...@....@...@.........@..@......@...@...@...@....@ZZ@..@...........$.
+...@..@.......@.@.\.\.\.\@......X@....@.@.......@...@....@..@..@........
+@......@........\.$.
+.@......@...@.........@.....@.....@.......X@...\@...@...@...............
+...@.......@....\...
+@j\h\h@N...@.........N@...............%.
+@.......@....@..@...@.\.\.\.\@.........@..@..@...@..@.@.....Z...@.......
+@.\.\.\.\@.......@...@........\.....
+@f@p@P.R....
+.@...@...@.....@..@..@....\.....
+@f@p@P.R....
+....@...@........@...@........@...@....@..........\.....
+@f@p@P.R..#.
+...@...@...........@...........@..@...@......@..@.....@.......\.....
+@f@p@P.R..#.
+.@...............@..@...@.........@..@...@...@...X@..@......@.......
+......@.......\.....
+@f@p@P.R..$.
+.@..@.@.........@......@...@...@...........@....@...@.......@..@........
+@.........@..@.....\..'.
+.@..@....@..@...@........@.........@..@.............@....@...@..............
+...@........@....\......
+@f@p@P.R....
+@...@.....@..@....\.....
+@f@p@P.R...........@.......@..........<.v...
+...@.......@.........@....@...@....@........\.).
+@......@.....@......@..@........@..@....@..@...@...@.........@..@.........\...'.
+@.........@......@.......@.........@....@...@.........@...@...@........\....
+@f@p@P.R....
+@.........@......@....@.....@...@......@...@..@...@.....\.$.
+...@..@........@..@....@.........@...@...@.......@..@...@...............
+...@..Z.......@..@....@......\......
+@f@p@P.R..%.
+...........@...@......@.....@......@..@......@.......@...@..............
+@...@........\....".
+...@....@......@......@........@....@.....X@........@...@.........).
+.\@.....@...@.......@.....@......@...@...@......@.......@...@...@....@....R\..#.
+@....@...@......@.....@......@..@........@..@...@.........@..@....	.
+@...@......\....
+@p....#.
+@.........@......@..@........@..@...@..........@..@...@...........%.
+......@..@......@.....X@.\.\@...@....@..@.....@.....X@...@......@.....#.
+..........@.......@.....@...........X@...@...@......@..@............
+@....@....@.....\.'.
+@.........@......@....@..@....@........@..@...@......@..@.....X@..@.........
+....@...@..@..........\.....
+@p....".
+...@....X@...@.........@...@...@....@.@....@..@....@......@.....\...
+.@......@......\....
+........@.........>.z.$.
+@........@..@.\.\.\.\@.......@......@..@.........@...@......@..@........
+.....@......@.@....@..@...@.......\...".
+..@.........@.......@..@.........@.......@......@..@.........@....".
+......X@..@.......@..@.......X@......@...@.........@..@.....@...\.".
+...@...@......@....@........@...@...X@......@....@....@......@......
+.....@...@..........\.".
+@.........@...@...@.....@..@........@...@.\.\.\.\@......@...........
+\.\.\@.........@.......\....
+....
+@.........@......@...@..@.......@..@.@....@..........\....$.
+....@......@..@.....@.....@.......@.\.\.\.\@.......@...@...@............
+@..@.........@...@.......@.....@..@...@.....\...
+@j\h\j@N...@....N@............%.
+@.......X@..............X@.....X@...@.......@...............@..@........
+.@....Z.......@................\..#.
+.........X@....@....@..........@......@.........@.....@..@..........
+.@.\.\.\.\@.......@..@..@......\....
+..#.
+..@...@....@......@......@..@.\.\.\.\@....@...@...@.................
+...@........@..@...@..........@.........@......\..$.
+@.......X@...........@..........@...@...@.........@...@.................
+....@.........X@........X@..@......@....\.%.
+.@.....@...@......@..@.....@...@.......@....@...@..@..@.....@....@............@.h...
+.........@..@.........\.....
+.@...@.....@......@..@......@...@..........@....@..@....\...
+..&.
+@..@...@....@.........@.........@..@...@....@..@..@....@..@...@..@......\.&.
+...@...@....X@.....@.........@.......@....@.@.....@......@..@......@......".
+.@.....X@...@....@...@....@...@....@P..@...@.........R@...@.........
+.......@..@....@..\...%.
+@....@...@.........@...@.....@.....@..@.......@......v@...@...@.......%.
+...@..@.........@..@........@....@.....@..@.......@...@....@...@........
+......@......@...@......@....@...@...@..@....\......
+@j\h\l@N...@........N@................$.
+@........@..@...........@...@..........@....@...N.@....@..@...@..@......
+..@.........@.........@..@....@........\....
+......X@.^..@..@.@....@...%.
+..Z...v@...@......@..@...@........@...@.......@...@.....@.........\.....
+@j\h\l\b@......@............
+@...@......@..@.....@.@........@..@..@........\... .
+.......@..@...@.......@..@.......@...@....@..@.....@............
+@......@....@....@..@....\......
+@.....@....@..@.....@..@..@.....@.....@.............
+.@.....@....@..@......@..@....@..@.......@....\...&.
+.@....@...@....@....@...@......@....@....@...@...@...@......@.....@..\......
+.@.....@....@...X@...@.....@......@...B.`.$.
+.@.....@....@...X@...@.....@......@...@........@...@..............@...&.
+.@...@...@..@....v@....@.....@...@....@....@...@...@..@.......@....@......	.
+..@........\....
+...@......@...@....@...........X@............@..............
+@...@....X@...@...N.@...@...@...@..@....@..@..@...@....\....
+...@..@............@...@....@....@...N..@............\......
+.. .
+..@....@..@....@......@....@...@...@.........@..@........\......
+..@...@....@..@........X@...@..N.@.@....@....@..@...@.......
+.@..@....@..@........\....).
+..........X@...@..@...@..@....@....@..@...@....@....@..@........X@.....@......'.
+...@....@....@..@....@....@......@P...@...@.....X@...@....@..@....@.......(.
+.......@...@..........X@..@...@...N.@....@....@....@...@..........Z.............
+.......R\...
+..#.
+@.....@.....@...@......@..@....@...@....@...@....@...N..@.........".
+.....@...@.\.\.\.\@..@..@.....@.......@...@......@..@....@...\......
+..@....@......@...@....@....@.\.\.\.\@..@.....X@...@........
+....@...@.....@..@....\...'.
+N.@.....@.....@.......@...@....@..@.....v@...@.........@.....@..@..@......%.
+......@..@...@..@.....@......@...@...@.......@..@......@..........\.....
+.......@......@........X@...@....@....@..@.........@.@D.......D.~.'.
+......@........X@...@....@....@..@.........@.@D..........@.........DX@....".
+..@..@......@...@....@....@....@..............@...@....@......@.....
+.......\..#.
+.....@........@..@...@.........@..@.........@P...@...@.....BR@......
+....@.....@...@....@.........@.....@..@....N.@.........\....
+........@..@....X@..@..@.@.....\....
+..&.
+@......@....@.....@.@......@....@.......@..@....@...@.......@......@......'.
+@..........@...........X@............@.....@...@...@....@..@.......@......	.
+..@.....@..\....
+....@........@...@...@......@..@........X@...@...@......X...
+@.......@........\......
+@..@....@...@..@.......@..@..Z......@.....\...'.
+@..@......@.@..........@.........@.........@....@......@..@...@....@......%.
+@........@.......v@...@...@......@..@......@.....@D....@......DX@.......
+@.......@....@...N..@..@..........@...(.
+@..@...@.......@..@...@....@..@...@....@P......@.............R@......@..........
+@.....@..@...@....@P...........R\.&.
+@......@....@...@...@.......@...@...@....X@...@.......@....@..@...@.........
+...X@...@.......@...@...@.......\...
+...@...@........@...@..@......@.@.............!.
+......@.........@...@.@......@..@.....X@..@....@...@......\.....
+@j\h\l\d@........@............F.b...
+@....@..@...........@...@.......@...@.....@...$.
+..@...@...@.....@..@......@..........@....@...@....@...@......@.....\.#.
+.@...@....@.......@......@.......@..@...@....@....@..@....@.......).
+@.....v@...@.......X@...@...@....@.........@..@.^..@.....@..@....@..Z...........
+..@......@..@.....@......@....@...@..@..\...
+...@....@..@...@..@.......@..@........\.....
+..$.
+@.....@...@....@.......@..@...@......@..@...@.....v@......@...........&.
+..@..@.......@..@........@.....@..@......@..@....@.@.....@..........R@....).
+.@....@...@j..@.....@....@......v@....X@.......X@....@....@...@..@..............
+....\. .
+@......@....@..@.....@...@.....@..@...@........v@....@..X@......
+...@....@..@..@........@...@..@.....@..@........\...
+..'.
+..@......@..Z......@....@...@.....@......@...@...b`hX@....@.....@..@......%.
+....@......@....@..@...@......@.........@........@P....@......@D........
+..@....D@..@.......@.\.\.\.\@......R@...@...@...............
+@....@.......@..@..........\..'.
+..@..@...@......@......@...@...@.....X@...@....@..@..@...@.....@...@........
+\.\.\...
+.......@......@.....@..........@..@.........@........\......
+.@...@....@.....@...\...
+........@....@........@...@....@..@.....@.....@.......@...H.t.&.
+@....@........@...@....@..@.....@.....@.......@.......@....v@...@...@.......
+@...@..X@....@....@....@.......@....@....\....'.
+@.........@.....@...@.......@...@...@....@.........@....@....@..@......\....
+....X@...@........@....@......@...@...@..@....@.......!.
+@....Z........@...@..........@..@...@.....@.....@..@.......\....
+..!.
+@..@.....@..........@.@.......@....@...N..@....@..v@.......X....
+.@......@..@......@....@..@......@...@....@..\......
+...@....@......@...@....@...@....@......@.....@.........
+.....@....@..@.........@..@........\....
+....
+...@...@.....@......X@...@........$.
+....@.@.....@......@.......@............@....v@.....@....@..............
+..@....@..@...@...N.@.......@..@..@...@...@..@...@.....\.. .
+@....@..@..........@....@..@...@.\.\.\.\@......X@....dfh.\....(.
+.@....@..@............@..@...@.....@...@.....@....@.....@....@....@......\....".
+.....@..@.....@....@..@.@....@....@..@........@......@..............
+@......@...@..@...@....\....
+..&.
+...@...@.....@.@....@..@.....@..@.@........@....@....@..@......@..@.......%.
+.@...@...@..@P...@.......X@.@......@..@...@..........@........@..@....".
+....RX@.....@....@........@......@.......@.....@..@....@....@............@...@.............@................
+...N....
+
+....N.E..L..
+&...0........D..MM..M...N...N....L......D...M.......0N..MLD...OD...............0	L....OD.........N.D...MD.....L......M...........N.D...D..MLD.M.....L.E...0.D..L.D......ME..p0.......0	L..M.D.....M...D....D.....MM..M.......L....M....L.N.N.D.M...N.....MD......M...0.N......M.E....0.D...N..M.N...O...MM......M.D.N.D.M....M.....MD...N.....M.......@0......M.D...D..MM..M.....M....D...M...p0......`0	M......L.MN.N....L.N...N.D.D...LM.NN....N..D.N....LN.L...N.....ME....00....M.....M....M...M.D.L..N....N.......MN..D..M...M.D...D..M......0	N.........D....N......F.......0	LM.D..N.D.M.D..LN.D.D...L.D.M....D.....N.M...M.D...M...N.O...@0	N..N..M.N...N.....L.M.N.D....M..N.D...N..D...L.D.N...L......N..D.M...P0..LN..L..N...E.......N...LM......L...N...M......LMM..MM....D..........0..N.N.N.M.....N...E.......N...L.......LN.M...N.....L.N..M...........N.M......00...D.E........H.	H.J.D..L..L.N.O...0.D..N....D.M....MN....M...N..L......M.N......N......L.N..N..L..N..N.M.....O...0...........0	L..M.D.....N..........D....D...........N....D......MN....M..L..M...MLE....0......M..N....LD....N...OE..N....D.MM.....N.N......G..L..M.D........L..L.O.O..p0...D......M..L.........D..M.....LD.M....LD.N...D	HI.....N.N......EE...p0.............M.N.M.E..M.D.....N.D...............M.N.LN.......L..@..%@..0....M.N.M.E..M.D.....N.D...............M.N.LN.......L..N.D..L..L.O.M.....M........0...M........D......N..M........0	M....D..N.....N...LM........D..M....N.E...E.......M..... 0..D..N.M...M.	...M.O.N.M..M.	LLN.M.......L..MN...N...LN.....N..L.M.N..D.....E....00N.....D..E........N.L.M.....M..M.....N.D....D..M....N........O...0....E..M...LM.D...LD.....N.....0...D.....N.D.M..D.....OD.L..N......N....N.N....E...0..L..MN....LD..M...D........N....D..MN.N...L.MM...M..D.L..N....N...N.N.E..p0.......0	L...E.......L.L.N......N.D.M.	M....LN.M.........M....D.MN.N..M...O.... 0......L..D.D......L.LED.M.D..M..N.D.N......L..L.O.D...D	...M.O.N.M..M.	LLN.M......@0	M....D..N....D..D..L............LD..M...D..N..M...N...0...D.......N..M.D..N.M...MLE......M........L..N.N......N.........M....N.M.....00..N...N.D...M.....M.D..N......M.....OMM....N.......0..D.M.....N..N..D.............N....N....M.M.....D........M......M...N.D..LM....0.M...M.N.LM...M............D...D..........N...OE..p0.......0M........N...N..M....N.M..	..LM..N.M....LM....0.M......M....D...M...M.N.L......L.....D.L.N.N.M........L.M............M.O.O..@0	..LM..N.M...N.M...E.. 0	M...N..L.M.N.....D........M....D.MN.N..M...D.N.D.N..M..L...O....D...D.L.....N.....M..N..MM.LM....MN..N........N..LOE.....N.N.....@..&...0...D.L.....N.....M..N..MM.LM....MN..N........N..LOE.....N.N.....M..D....@..0...D.LLN.......D..O.......p0.......0.N.M..M..........LM.D..M...D.M.D..M....M...N....N..LN..D.M....D..N.E..M.......0.....ML.N.M.N..M.D..D..LM.M....M.D.LOD..M.........`0...D...LD....N....LM..N.M...N.M........0M.N..M...........D...E..N.......N..M.D........N....M...D.........p0...... 0N....D	...M.O.N.M..M.	LLN.M.....D...N.N.L.....LM.D.D...LL...O...MM.M.......M.O...@0.N.D.M.....N..M.D.....p0M....N.D...D.LLN.M........N....N..M....L..MN.....N..L.M.N..D..M...O...0..N...N..N..L..L.M.N.D.M....M...D.....M...D...N.M.....M......L...N....N............0...D	MN..M...M...O.N..EE.....p0...D.....N....MD.....L...D..N........LN..M......N.D.LOD..N.D..M....O...0..L..NN....LN........LN.L.....M...N..M...M.N.OE..M....L....N.O.....0.M.D....M...LM.D..N.D...N.D.N.D.....L..M..N.M.N.L....M.......N.E.. 0...D.....N..M....L....N.....N.D..M...D..N..L.LM..D...D...N........@0...M..L..M...N.LN..L.......MN.....N.@..0..N..M..D..LM.............D.LLN.M........M....N....N....MN...MLD.N...M.D.......0.M....D..M...M....M..N...N.N..M.......N....MD......M.D..D...L....OD..D.N..M.......p0.......0.D..N.D.....LN..D..N.......MLN..M.......D..ML.N....M....D.N.N.D...N....O.....ML.N...LOD...M..D....D...D..M....N.D......D..M...&...0..ML.N...LOD...M..D....D...D..M....N.D......D..M..N...N.E......0..........N...M..M...D.LLN.M...M..N...M.D..N....N....N.D...M..D.........M.....0.M.D....L.....p0.......0L..N....D	...M.O.N.M..M.	LLN.M......N.D.N.D...D...N.N....`0	LLN.M........L...N....D..M....N.E.... 0...D	.LL.....N....N.N.....M....M...M.D...M..M.....N.D....D...M....M.D...ME..M.....00.M.D..M....M.....M.LL..M..........D....E..D.M.....N.N.D.....N.....p0.......0...D..O...LM.....L..L.N.D..N...N...L..L.O.M...NL.N.M......00...N.D.N.D..M.N.M..D..M.....D..L..N..OE....N...OE..M....L.OD......0...D..N.....LM.......N..N..M.	.M.LN.E......0...N..LLM.....N..M.D....M....N.D...LD.....N...N...M....L...D...N..LN......0......N...M...D..N.D.D...M..D.....LD...ME......0.M.D.LOD.M.....M.......N..N..D..L......N......D..N.....OD.........	.M.LN.O.....0..M..D.....N....M.......N..............N....D...N..LN....LM......p0.......0...N.N.M...M....N...L.N.M...D.....N........0.D..N..L.M.N..N.M.......N.........N....L.N.....0..........EO...0..M..M....N.......L.L.M..D...M..M.....N.D...D.N.M....M....G....0...D.......O...0..M..M.....LM..D.....N.L.....D.....N......N....0...D.......O..00..M.M.....D.....N...N.L.....N......N..L...N..L.N........M..M......0...D.......O......M..M....M...D.....N....D.....N...N..M....L.N....N.D...@.@'@..0..M..M....M...D.....N....D.....N...N..M....L.N....N.D...OD..M....D..N.L..E....p0.......0...D..N......N..N..LN.G...N.......L......N.N..N..M....N..D......D.N.M......0......D	...M.O.N.M..M.	LLN.M........L.....D...N.L.M..........D...N.N.....@0.LLN.M.........L.....D	.LL.....N....N.N.......NL.N.M....M.....D........0.....L.....D.N.L..........0...M..M.D..D.....L..M.....ME..N.....MD....LD.NLN..M.......M....D.N.M....M....O.... 0..M......N.D...OD...M....M.D.N...M.....N...M..N..N.D....L.N.E..M.....N..N....OO....0..M...M.D...........D....D....L....OD...M.....L.N........N....MN.M..N.....p0.......0N.LL...N.....N..M....LN.M.............L...M.N...N..........M..LN...M......0..M.....LD..M.M..L.....LN.N.E..N..N..L...N.....M...N....ME..N......N.L...M.....0...N....D.....N......M.E..@0..M.....MD......M.M..L.....LN.N.E..M...N..N..L....OD.N.D.ED.N...M......0.M.D.LOD......D.L..D.....M.....LM..D.....N...M..M.......N.L...D.....N..... 0...N..M.D.LOD..M...N....LM..D........N....N.M....L..N.N..M.....LM..D.....M...N....@0...M....N..N.M........L..D..M..L..N..D......LD..L..E...0	M.....L.D...MD....LL......N......p0......@0....N.....D.N..M..D......D..N.LN.M....@0............L...D.N...L..LN..N..M.....0..M..D.N.N.N..M....M....M.D..N......N....M..MN..N..M.D......OD...M...N...M......	.N.@..'...0	.N.D...MD......M.D...D.....N.......M.M..N.....M.....M...M.D.N....N........0..N..L...N..L.N..M....M.....MD...N..M.D..M.......p0......P0.D..N.D..L.D.....N..L...N..L.N....M..D...OD.N.D..N.D..L.D....N.......0O...MM......M.D.N.E....N..M.D..M....M...N.....MD.....L..L.E..p0.....D.D..N.N........M......LN....N..N...MN.L..D.......N..M.D..M......0	.LN..M..MM.....N...........N...N.D..N..M..D.MN....M.....M..M.N..M...M..E......0.M.....M..M.N......N...L..N..L.....M...E..p0...... 0..N..L...N..L.N...M...N...M.D.......D..E......L...M....ML.N......0.N....N.....D...D...N.L.M...M....LN..N.....M.N..M....N......D....D........0..N..L...N..L.N...N....N....LM..D...MMMM.......D....D..E.......LM..D.N......p0...... 0....M.N.M.	LLN.M.......N......EL....N..M......D...EL....N......N.........M.......0	N...M...D..MN..D...LN.........M...D..M.....D..N...M...L.....M....D...M..E.....0.	..D...M.D.....N....NNMN.M...M..D...M....D.....N..NN....D....D.N.M...LN.M....0...N.N.....L...N.D.NL...M..D.O..M..N.D...M...N.N....N.N...p0.M.D....M...M.M.....N..MM..D.N.D..N.N....N.N......N.N.N..M....N....O...0..........N..N..M.....M..D....D...D..........N..N...M.M.D.....D.NM..EL....N.E.....p0.......0NL.N.M.......N...N.D.NL.....D..MLD.N..M.N.M.	LLN.M.......N.....N.....M......M...LN.N.D.D..L..N...&...0..LN.N.D.D..L..N.M....N.L......LN..M...N......LN.D......D........M....D..L.EE.....`0...N.N...	LLN.M.......N......M....D.N....LN..N......L..G..M.D.ML.......0.....N.M...M..........N...N....N..L...N..L.N....M..D.M.D..M...M....M.........@0....D.N..N...N.......O..........M....@0	L..M.D..............N..D.N..N...N..N...N...M.D..L..N.N.D.....MN.N...p0.......0...D..........N..N...D..N....D.M....MN....M........0	N.....M....D..L.L.L........D.M....N.D.N...LN...........N......0	N.....M....N.D.D.....N..N..M...N...M.....D........J.......M....@..0..LN.N.L.....MM.M...E......0	.N..N.....N..M..M.....L...N.D.M..D.....N...LM..N...E.....@0..E........N...M..D..M...D...M..M.D....N..M.N.N..N.@. 0.....L..M.....MN..D..D..N..LD.....MM....E........p0...D..L.....N..N.....E......N....N....0...M.....M...D.....LD.N...N..L.LM..D..M...D..............LM..D..LD.........0...D..N..D......D......M...M.....D....N..M....LN.M...L..N..N..N...N..MM..O....`0.MN....M.....N..L...D.M...M..D.M.D....M...LM.D..N.O... 0..M...D........N..N.....E........p0...... 0...D..MLN....N.N..M.....L.E..D......D......NN....D.LM..M..L...M......N....L..N.... 0...L.N........D..N.M.N...L.........0	LM..M.....N...L..N...N.D.N.MM.L..D.N....D.J.........L.E..M.....N.D...N..N....p0........D...N.N....N..L.......D.....N..@..&@..0D...N.N....N..L.......D.....N..N....N.L.M....`0.M.D.LOD..M.......M..D.....N.........D..N....N.L...... 0	.LN..M..MM.....N....D..MLD..N.L....M...D.N.L........D..N..N......00.M...M.D....N..L..N..N.M...M.D.LOD......D..........0...LN..M....MN..D.M...M...N..N.L..N...N.......p0......00.....N...N...L.N.M....M.N..LM....N...........N....@0L.MM....N......M.N...N..........M..LN...M...N.....M@..0.....M...M.D..N.......N.M......0...N.N.D.D..N......M.....D..MM..M........MN.N...M...L.M.....N........L.N..M...00...D..M..L.N..M..	LN..LL....L.M....M....N.N........N...M.....M..N.....LN...M......0M.....MLML.N....N....N.D.N.D....LD..LM.......M...M.........MN.N.....D.M...0............D	LN....MM..M......D..LN....D.H.........D..M....L.D.M.....O...0..N..LM....N.L...M.....DN...	.L..N.E.....p0......`0	...M.N...N.......MM..M.....M...L.D...D..ML.N.........N....N.L.M..O....0..NNMN.L........D..MM..M.......0.N.D...D....M.....N....N..LL.D.N..D.....N..MLN.D......D..ML.N......0.....N...M.D....L..LM..D..LL......`0	.......N...ML.N...L...D...M.......N..L...N..L.N.O...p0.......0.N...M...D......MMN....MN.M..N.........N..L.M.N...MM..M.....M...MN...L....0.M.D..D.....D..........MEE..M.............L.......LM.D..N.D.N.....N..M......E....N..	.N.D..M...D..L....N...N..L.M.N...ML.N..........N.....@'...0	.N.D..M...D..L....N...N..L.M.N...ML.N..........N....L.....D.....N.D...MD.O....0..M..D.....N.....L.M.N.E...0.N.D..M...D.D..LN...L..D.MM.M.......MLD.........D........p0.......0..MMM....M...D...N....LD..M..N.M....N....N.D...L.LM...M....0..NNMN.D...L.LM..N.....M.....D..N.M.N...M...E......0LL....M..N.M....N......M....N.D.D...M..M.L.M...L.M..L.LN..M....D.N..N.....0..L..M.M.......N....OMM..............D...N.....0.....N....N..M.L........N......N...OD...L.N.N.M........L.M..........MO.....0	JJ....N.D..LM....MN.L...D...D.L.N.N.M....L..N.N.E.......OD..M....D..MM..L.@.00...D..MLD...N.....	LN......M.......L..D....N....L.M......LN.LN....P0...OD...LM...D..N.....N.D....N....M.............N.......MN....N.......P0..N...N..N.....M......p0......00......D..........N...M.D.LOD..M......LM.D......N..N.....D..L.......D.....N..L.O.. 0.M.D...N.......N..L.......L..N....D..N......EE.....0.M.D.LOD..M.......L.L.D...D.....N......L..LN.D...D..M.M.M........N....MM.......0.....M......M..D.N..L...N......0...D..M..N.M....N.....N........M............L..L.M..N..N.MM..D...N..N......0.....N...N.L.D.....D.....N.D..N..M...N....D.....N......D..LN.M....N....M...0....LN...L...L..N..F........D..ML.N.........N...M.D....N..M....N.D...D..N.....00.LL...LML.N.......D..N...M.....N..N..D...N.M.N.....N...'..p0......p0...N..N....M....D.M.........N...D....OD.M..ON..N.EE....0..M...D....M...MN..N...N...D...MN..........M...N..N.N.M......M.....D..L..M....@0...MD..N.....D...D...L.M......LN.LN...P0...D.E.........	J.H..J.	J.I...	...N..L..N..N.M.......0...D	MN..M...M.....D.O.N..D.N.D..........D.M....L..L..N.D.LLM.......LL..M...O.....0..N..D..ML.N......M...D.NML...D.M...LN.M.E....P0.....M...D..L.D..LL.N...N......MN.N..M........N.D.LL.N......N.........0......M.....N..M.M...N..J.....p0.......0...N.D.N.D......N.M.N.......MN...N.....D..MN.N...N.N......`0	..D.N....N....OD...M.D.M.....M..L..LL.LED..N.D.D..L..L.L.M.....LL.....0..MLD..M....N.N.M...D.....E....0...OD.......L..N......D..LM..D..N.N...M.....N..N.......M.M.D......M..G.....0...MN...LL..M.N..LOD..N.D....D.LLN.....LLN......M.D....M...LM.D.D...M.....p0........L..M.....MD..M...M..L..M..D.M....M..M....N....M..M.D..N.D......0..N.D.M....LN.M........ME.....p0.......0	...D...N....N.D.N.D.....N.N...LN..D.M.	.M.LN.D....LN..D.M...N..ML.N...M.......0...N....D..N....N.N...L...D...N..LN..LOD..D..N..LN..D....LOD..D...N..L....0	L..M.D..M.....LN..M...M.......N..ML.N.......L.....MD.M.	.M.D...M..D......D...`0.N..M...M.NL.N..E....p0...... 0....LL........D.LM....N.M....LM..M..L..LN..LN...M.D....M....N....D..N.D..LN..O....D..N.D.D....&..p0..N.D.D..LM.....N...M....D....MM...N.M......L..M......`0...N.D.N.D...L.L.L...LL..M.N........N.E....L...M.D....M....M....N......0M....LM..D...N.N....LLN.M.......M....D.LM..M..L..M....D....MM...N.M.......0..L..M..@..0..M...D.....M.........LN..M............D..N..L.M.N..N.M.M......0..M......M.........N.D..N.....p0.......0MN..N...........N.N...LOD..D..M..M.......M......LN.......00..E.............LN....L...N.D..E.....N.M.N.L.....0	N.....N..N..L....OD...LD.N...N.....D.L.LD.M...N....L...M.E...M..D...OD..N.O..00.D......L.LD......N....MN...LL...N.D.M...N.N.......L.D.M....MLE... 0	.LN..M....L....N.....MD.M....MLMM....LM...D.EO....0.M.D..D..N......N.....D.........M..N..MM....L.M....M.....OD..O.....0.LL.N......M.....D...L.M....M.D.O.N.......p0......00..E......N......M..N.M...D..N.......E.....N.N....p0..M.....LN..M.....N..N...N.L..D.M...M..N.N..M....M.......L..D.LN.N....0.N...LN...D..N..M...LM..M...M..MN..N...............D..N.N.....D...LN.N.E..p0.......0M....MN....M...N...J.....0	.N...MN.N...L.M....N.M...N.....M......M.......M..N.N..M.....M.....0.....M.....D.MN..N.N...M.....L...L..N...E.......N.....D..M........0...MN..LM.........L.N.M...N..N.LM..D.D.....N....M....L.....O@.`0....N....N..MLM..N.D..E.......L..N.......M...D........N..M..M...N..D..MN..D...L.L.....'...0..M..M...N..D..MN..D...L.L...N..D..MN..ED...M..N.N..M...NLN..M.....0...N..L..O.MN..N........N...N.LL..M...M.....00...L....M......N..N..M.N...N...N.D.....N.....M.D.M...N..N......L.........N..EEE....0..J...M.N.M..D..M......M....M....N.M.....M........MD.N...LN...D..LM..M....0.L..M..E..M...L.M..L.LL....LN..D.N....MM......D..E........0	LM.D...M.....J.D...LN..ED..J....LMN.......MMLN....N.D.D..N.N.N.M.........0...M.M...N..N.M....D..MN..N....MMML........0	L..M.D.N.D..N.M...N.OD..L..N....LM.D..N.D...D......MMLN...N.D.............0...D..M..N....M....L...N....D..L..N...M.....N...L.......D..L..N...N.D.........p0......@0	L..M.D.N.....MD..L.M.E...J..LOD..N..M.D...N.N.D.D..N........E......p0.D...N....N..D.....M.M.N.M......N.O...0..N...L..E....L....M...D.....L..M....D......M.....OLL..NN..LN.L.M..D...M.D.M...0...LMN.......MMLN..N...MM...N..D..L..........M........D..M.E...0.N.......M....D..LN...L..D.......M...M..N..MM.M....N......0..J......L..L.D.M....N.MM.....0...N..N..M.....MN.L..D......L..L.O.M.....D......N..M......p0.......0.D..N....D.M........LL..L..N.D.LLM......L..N..N.M...N..........M.N........0..M...N.N.M..D.....M...N.N.M..D.M..D.L..N..N.N.N..M........0	L..N.N.M..D.M....D..N...M.....N...M.........M...D.L..N....D.........N.....0.....M..D..L..N.............8..
+..P..pPA>h..
+
+....
+
+...................L..$....................................................................................................7..<....................................................7..4....................................................G......................................................................................P$.,.PL.P......../..P............................................................................................................................................................................................................1...................................................6.......................................................&.......................................@.........................................L................................................N..P................................................................................................................>...............................................................8..P................................................................................?..P............................................................E.......................................................................Q............................................................................................................... ...................................K..P........................................................................-.......................................................1..P................................................J..$........................................................................9...........................................................7...$...............................................................................6..P....................................................J...........................................................................,.......................................................0..@................................................N..P............................................$...............................O..P............................................................................".................................../.....................L.........................G......$................................................................O..4............................................................................................I....................<.....................................................N..............................................P................................................................D...............................................................................#..P................................'..P....................................K..........................................................................?...............................................................L.......................................................................................(..P........................................1..d................................................R..<................................................................................................K..4........................................................................)...........................................7...............................................................K..........L................................................................Q..4........................................................................................................0..P................................................5.......................................................L...............................................................................G..P....................................................................3.......................................................................M...............................................................................................................H..L........................................................................................................,..H....................................................#...................................M...............................................................................N.....................4TLP......................................................@...............................\...................................M.......................................................................................S...................................................................................................................4.......................................................<...............................................................8..$..............................\.........................&.......................................S...$..................................................L.L..................................E.......................................................................E..$..............................<80d.........\........................4..0............................................................................N...............................................................................-...........................L.L.................3..,................................................K............................................................L.L............!...........................................M..P........................................................L...................1...................@................T..............$.......................................K..P........................................................................J.......................................................................................................K..$........................................................................O.................................................................................................L.L...<..\....................................................................H..$........................................................................G..$.................8<P................................................O..P............................................................................>.....\.........................................................K...................................................................................8.........L.L.............................................../..8...........................................................@H<.H.4.@........0..@................................................O..P............................................................................H...........................................................................#...........................................J.......................L...................................................O..P............................................................................-...............................................1..P...P............................................R...........................................................................................!..P................................5..$....................................................#......................................$............................................R.................................................................................../...............................................J..$..................................................@............................ ....L...............@..$............................................................................................................................N...............................................................................<..$............................................................H...........................................................................L..........L......................4............................................3...................................................A..$................................................................Q..$....................................................................................................................5.......................................................I..$........................................................................>...............................................................%.......................................3.........................................L......... ...................................<..$..............................................8<P...........O...............................................................................N.......................................................................................................L..P................................$...........................................Q...............................................................................................J..$.........................................................4..............3...................................................)..$........................................)...........................................O..H............................................................................-...............................................Q...................L.....4...................................P.............................................=..@............................................................M...............................................................................M...............................................................................!..............P.L $HPL.P.L.........K......L.L..P...............................................................?...............................................................(...........................................F..$....................................................................H...........................................................................Q..$............................................................................................O..d............................................................................!...................................................L.. ............................................................................................................5..P...P................................................8...........................................................R..L................................................................................L...............................................................................K..,........................................................................8...H.......................................................D..$...............................................................................,............................................/...............................................*..d........................................9...........................................................J..d......................................................................../...............................................D..$............................................................................I..L........................................................................ ................................................................P..........G..$........................P...................................................P..............T....................)..T.................P......................O..4............................................................................B...........................................................................)..L........................................K..4........................................................................;...........................................................R...................................................................................8..L............ ....L......................................K..@.............. ....L....................................................I.................................P............................................................./................H<8P.<.. <TL............ ......Q..P................................................................................/...............................................5..P..............<....................................F..T....................................................................E..H........................................................................................!...............$8.8..L.....................(........P..........................................B...................$8..P<.P $L..<.T4.8P...............................................E.......................L.L............................................8...........................................................Q..@................................................................................"...................................E..P...................................................@................I...................................................................................O..............................................................................H.....................................................................L.L...).............P ...$H..P<H..P...............N..............LL............................................................... ...................................K...........................................................................N...............................................................................D.......................................................................K...............................................................................................J..P........................................................................2...................................................)..............P...4....$.........P............P..........................LL............................L..P..........................LL................................................O...............................................................................3..............L.....4.......................4......L...........@...................................................................H...........................................................................0...............................................LL..........O..........................................LL...................................I...................................................................................................................................G..........(......................$......................... ..........J...........................................................................O...............................................................................K..P........................................................................-...............................................*..............P.................@..........O..<............................................................................L...................................................................................................LL..1..P.............................................................
+8...3...
+
+....
+
+.................K...`.......`......@`......................................................................
+........``.....................................................................``.......................................................................`.............. `.........................................................`..............................
+.....................................................................`.......`................................................................ `............................................`................................................................ `.........................................`.................................................................
+............................
+...................................................................@`.....................................................................`...............................................................`..........................................................................`..............@`......................................
+............................................................................................................
+``.......................................................................`.................................... `.................................................................... `.........................``.....................................................................`...................................................................`..............................@`.........................@`.....................................................................`...........................................................................`........................................................................`.......`.......	..............`...... `..........@`..............................................................................@`...................`......
+........``......................................................................`......................................................................`..................................................@`..........................	..................................	........
+...........................................................`......
+................................................................O..
+..................................................................`...................... `..................................................................@`....................................................................``................................................................. `...................................................................
+.........`...... `................................``....................... `....................................................................`.......`......
+.................................................................`.....................................
+............................................................`........................................................................@`..................................................................@`....................................................................`...............`......................................`......................................................................``.....................................................................`......................`..............@`.........................
+``...................................................................``.....................................................................@`...................................................................``.........................................................................`........................................................................`.......`..........................................................................`........................................................`.........................................................................@`.............................................................@`...	.................................................. `...	.......`.......`...... `..................@`.................................................................... `..................`..............`.......`..........................................................................`.........................................................................`.............................................................................`.........	.........................................
+...............................................	...........L...`...................................................`........................................................................`.................................................................`..............................`..........	.......................................................`.............................`...... `.............................................................. `..............................................................................``..............................................................`....................................................................`........................................................................``........................
+.................................................................``..............................................`......
+................................................................`............................@`....................................................................``......................................`........................................................................
+.......................................................................
+ `.....................................................................`.....................
+.........................................`...........................................................`.........................................................................`......@`......................................................................
+...................................................................`...............`.......................................................................``.................
+..............................`...................................	................. `.......................................................................``..................................................................``............................................... `....................................................................`..............``......................................................................
+................`......``........................`.......`......@`.......... `.................................................................. `.....................................................@`..........................O...`.........................................................................`...................................................................`.......`..........................................................................`...........................................................................`........................................................................`.........................	..................`.....................
+................................................................... `......................................................................`..........................................`.......`.......`.......................................................................`...	..................................................................`............................`.................................................................
+...............``...................................................................... `...........	.....................`.......`............................................................`..........................................................................@`..........................	..........
+.`............................@`...............	............................................@`....................................................................
+.....................................................................
+.........`..................................................................``.................................................`......	..........................................................`..............................`............................. `..........................``......................................................................
+.....................................................................@`......................................................................`..........................................@`......................................................................`...................................................`......@`.................................................................. `.......................................................`.......`...............`...............................`..........................................................................................................N..@`.............................................
+.....................................................................`......................`............................................................`.......`......@`................................`..................................................................`...............`......``...................................`.....................................................................
+.............................................................`........................................................................`......................`.................................................................`..............................`....................................................................`............................................`..................................................................... `................................................@`.......................................................................`......................................................................... `............................................................................`.......`........................
+``.......................................................``.......................................................................`.....................``......................................................................``.....................	................`.......`.................................... `.....................................................................`..........................................................................`.................................................................`..............	..............................``....................................................................@`....................................................................`..............................`.......`..............`...	.....................................................................`.......`........................................................``.....................................................................`..........................................``.................................................................... `.......................................................................................................N...`.................................................. `................................`......................
+............... `.........``......................................................................`...............`............................`.......`......
+................................	................................``................................`...... `............................................................................`..............................``.......................................................................`....................................................................`................................................................@`........................`......
+........................................`........................................................................@`................................................`.......`..........................................@`.............................................................................``.......................................................................
+............................................................................................
+
+....................................@`..................`.......`...... `............................... `..........................................	.......................``............................................................`...................................................`......	..........................................................`......................................`.......`..............	...............................	................... `...............................................................`.......................................................................`........................................................................... `..........``..................................	.............`....................................................................`.....................................`..........................................................`.......`....................................``.........................................................`............................................................`...... `.......................... `..........................................
+.........	...............................8<p..x...8.3....}..
+
+	...
+
+.yq..I..y.	8q...H.......(...I.(..A	..A).(`.qy..1y...y...).).`..).	..(..(.Yqy...A	...A(.a	.......AIq8..y...Ia`..	q...x.!x.I...	aX..x..A(.	..y...	.y....A)I..	.!I.Iyq............qy...y...	p..)a`..A)h..A	...A(...Iq.I.a)..	q .9.I!)aIq)...).yii)q!...(...A	...y..Y))....I).p.$..Ay.(.I..A)a..	......q.(..p.p.p...	..Iq9..V...	..Iq8.I..qy..	...	 .	..I..iI9A...))hq..T..y.9	qI.	.Iyp.I...A(.Y)...x.).)...AIq8q.......y....y...	.!I.Iyp.Iq1y.i	.Iyp.yp..yi).AIq8.A1I....q	i(`.a	...q	i(`..yay........y0..AI..`.	q..AIq8H..x..y...	p...I.Ya..1Iq .	p.	..y...y.9.(....Iq8..y........)i)i.).q....$..A	.(..aI...y1......q.a.....).)..........A	.	..)..Ip..A(..Ay.`.Iq.a.!Iq8.!	q.)..`..	aXiyq.`.	q ..yI.(iy.)...hh.I1........y...	p.9)...y...A)	 ....I....I.)...x.!x.iy...y0..A(..y.X.yp..AI.`..y.9.).......	A)	 .y0..A(.9	i(`......y.9.(.9yIq8..x.A	.(..x.!x..yi(..y.X..yy..f..A(q8p.!).I!Iq8.Q....Ay..i	q...)y.a(..y..q)) .Iq..@....	..I..a	....y!...Iyp.q.i.).Hp.....y....A	.	..)..aI....Ay.a .Iq.a.!(..A(.q.i.)..y0.aIq)..1y..)	.@..A	.	..).a.......A(...)q)..Ip..AI.@..A)..	..)	.`...).I	`..	a)q....)..I.) 
+.a.!Iq8..yI.)......	q .!	q.(H`.	q ..yi(.Iq!I.	.Iyp.y0.9)q!).
+....(.i	a(`.i.....(.1)i	a(`.&...	p..(.)I.A).Hq..~..	9	Ip`..A(.A)	 ....I....I.)..i	...(.	.a(..x.A)a...I.@..AI.q.....q........A)pa.......q.a.......	....	..Iq8..@.P...@....	....	..Iq8..A(.y..Iy....ya).p.....A).(..Ia`..(..Iq9)....Ax.	.(..a)	.a....I.) ..x..A(.i	Qy...yay.`.	q ..yiI........	a)q....Ax..)ayq8.Ip.yq(.y....x.y...A.)(.1)	...) ...y..`.	q ..)y.a(..Ax.J...	p.!x..	..I..a	..Ii.)..yq	.Iyq.q........	....A(..	a`..)y.a(..y..q)) `..	....A(..a.i..yq).`..	....A(...y..)..........I.@.iIqIi.h..	a)q..	q .i	.Ii.h..Ii(.Ip..Ay.(..I...	.....I.@..I8.!)	.A...B....)q)...	.A)...A	p..A	.	..).q...."...	...!	q.)..q.......q....T...A(..Aya(.Y)..I...x..	....A(.yq)...A	.......q.a....i........(..	...Ip...	..I..a	...ya(.A.yax..yI.).`.!	q.)..`..I9A..9	9.H`.	q ..A)q....*..ayyX.	...A(..)..q........y..	.(.a)1...I.@.	a`..A(.i)!I.h..)y.a(.	q .i)!I.h..ya).`.	q ..y...	p9...j..9x..).Iy..a....yq8.qx.i	..)..Ay...y...	....AIq9.q....x...x..)..	.y......Iq8..x.9I.(.)	.@.y0..A)h.yq(.qI.(..yi).AIq8p....q....L...AI..I...A(..).yq .Y)...x..	..Iq8q.......A)p..y..1	.(..A).(..)y.a(..yiIq8..x..I9p....1y...A)I...ya).`..y..q))!.......x..(.	.a(..x..)a`..A)h.Ayq)..a...A	...A(..ya(.A	...yi).AIq8.1.p.y...H..)..I.Iq8`..yi).AIq8..).	.!Iq8..x.I.p.....	.A)...A	p..yi..yiI.(..y...Iiiy..	`..y.`....a.Iq8`..	....A(..Ay...x.>...A	...A(...	.)i)q..I.....(q.....	q .I0..y.......q.a.....!y......A	.(..1)..q).)..	....ay.i	!.	q.Iq8..... i.i`i`..ya).`.i	Y(..A	...yi)yq(9....9.y.AI. ..	....X.......AI. ..	...	q ....)....A	...y..Yqy..I.9...A	qYa)..`......A	...y.9.).....9.	.)1.`..A	...y..A	.(....x..x..	Y(.I..yp.	...1	.y...	q ..	p..A)...N..A	q!a(..A(.i	Y(i..y.y...i(..A	q9)........(.	.(.qy...	aYIq8.	.y...i	qI..a	.Iq8..yi)yq(.A).(...(.	.(..	aYIq8.	.y.......)Iq8.Ayq)....I.@..yi)yq(.	q .i	YIq8....(..A	...A)..!yp9....	...y....I.@.d...q)9	.I.(.	..I..!(..y.	.!....	..I..a	...	..q......q....R..	.yI ..))Iq8.	q.yq(.y.)...A(..))Y)q q........y...	p9..!x..A	.`..).	..(..A).(..Ia`.aIY)a...(.1	....y.I	`.).)q...9yIq8.2..yp.	q ..y...Ay.a .9xq.......Ay.).).`..y...Ay.a .	.yI ...)i	...(.!I.....Iyq..y0..Ax.9y...A	...	..`.y..:...Ax..	q....A	...	..`.)..q....z..!)q...A	...y..A	.(..	.....AIq8`.).)p.I0..y..A	.(..x.aI(q.......q........y..y...!).I9q	.) .AI..)..i......)q .	a`.!	..iyq!	..)..a	IqIq8..x..)y.a)........A	..I...).	.!Iq8.	.y...)	.@..ya(.	...A)...yi(..x..I9p....1y...A)I...	...q.......yi(..)y.a(..Ia`.qy..9)..	.y.q ..x..I9qIq8.....q.I`..A	..).)qIq8..A)p..y.....x..	.(...)..i	.a..!yIq8..A(.1I.....)	!.A.y.9@.A.)(..)A)	..	a.Hp.....AI..I...)	.yq	.a(q.....Ay.).).`.I0..y..A	.)p9..A)	. .1.yh..A)h.Ip...x.!	..`.I..I..qy.a..V...).)	..qy.`..A(..Ii(..x.A.q...A)h.!y.pq......A)..!yp9...	q....	...	q ..y...Ay.a .9x.	.y....A(....Iq)...y0..).	..Iq8....Iii)!I	.)a.p....q......I.yi(..)x.`...V...yi(..)y.a(..Ia`.qy...I9p....1y...	...q......yi(..)y.a(..Ia`.qy...	q...A(.yq(..A)..9).`.	q ..yi(..Ia`..	q..	qy.A).q......yi(..Ia`...Iq8.1.I)q!...Ax9 .aIY(..x..(.Ip..A(..Ay..	q .iI..) .	.!I.Iyq.q...l..	..a)	...yq(..Ia`..I9p....	q .q).)...(..))p.	9	Ipq...t...)aaIq8..y...AI..!y).p9..A)a..y...A	q9(..A(..I..	.Iypq.......y...Ay.a ..(...).	.) ..x..	Y(.I..	a`.Ip....I!(.	q ...I.(.!y.p.).)...q	i)....`..y0.).)..yq(..Ax..	q...	qy.A)..y..!I11).)q...ya(p.....y.9a`.q)) ..x.Yqy...A	...y....).	..Iq8.y..Iyq..	.(..I9A...A.y.9@..x.4...A(.qI9A..y0..A(..Ay.q...^..	q .a)	.p.)	.@..ya(.Ip..A(....I....y...)a0q.....q....t......A(..	.`.1	...!I.)..y...	.(.y1.)p..	...1	...	..y..q...l...AI..!y)..qy..A	.(..x..(..A(..)	...y....I..	..Iq8q......yp..A(..yq..	..`.iy...y0....A	.(..	...y...)a.)..1y...aI..a(..yi).AIq8...).I	`q..B..i	Y(.I...yi).AIq8..y...	p.!xq....@..!yp9..i	Y(.I......	..Iq8...ya(p....iy...Ii.y..	q.`.!yp9..i	Y(.I...yi).AIq8..A	...)..I.)...y...x..).....q.a.....Iq...b...)A)	..	`..ay...A)p..y...Ay.a ..(.!I.)..Iq8q....4..q.(..p.p.p...)A)	..	a........A).(.I.....	!I.Iyq	`..)..)q.(.y0..)A)	..	a..1I..) .Iq.x..A(
+.	`I........A.)(i.))X...	p.y0.1	.....(i..y!...Iyp`.	q .I..i	Y)...9yy .!)	`.y0..)q.(q.......y..i	Y(.....A(..)A)	..	`...A)!.a(.A.y..I.a..Ip..yq..a.	.Iyp..I.@..A)...8..@.h........	9(.i	q	9).H.	q ..A(...	9(.i	q	9)...yyY...yyi..	..q).)..	..q.......y..Yqy...A	...y...	q...)A)	..	a..).)...qI9A..y0.Q	q.	..`..x..yyX..)a`.Iq.......	!.	q.(p....a)...A(...	9(.i	q	9)..Yqy..I0..y...	..I..a	.a..aIY(.y..!I.aIY(..)A)	..Iq9....J..Ip....).I1I...yyh.A(q8p.i`....Hq............x.Y))...)A)	..	a..Ip..A(..	i(..a	.(.	..i..@.	...y..I.a(..x.	.yI!........yq1..Iq8..A(..	..q.....q....n..iyq!	..y0..))Y.yq(`.	..y....I9p....1y...A)I...	...q......A	..qI9A.`..A(.)q.I.(..	...i))...1y...1.a`..)	!.A.y.9@.y0..A(....I..q.....1.p`..	..	``.	q ..y.9@`..AI..I...A(.1I.....Ii(..A(..	...A	..A)	. ..A)....4.....I...	q .)	.@.y.A).q......i	Y(.I..1.p`.	q ......x.9I.(.).)..yq(...A	q.(..x.!x.	..i..@.y0..A)I...ya)...z..	...y..I.a(.AIq.a.!Iq8..yI.(iy.)..`...)q(.1Iaa)..`.)..pHq.......i	..(..A(.i..I..!I.)..y...y.a ...p..A.y.9@..A(..yq9..1y..).)..yq(
+........)y.a(.!yp9...	q...x..).1y.h.i..I.	aa...I.Ay....)A)	..	``.	q ..A(.yq)....l...Ax.!x..	q...x..yi).Ii)...Ay.a!p9...(.	aay.) ..xHq.......A(.!I.)..y...Ay.a ..)	 ..A(...	9(.!I.)..Iyq...A	..A)a...a	.I1...A	.9.......A	..)qIq8q......iy....)y.a(..yp9..A	.(.....I...1y...A(...)q(..)Iq8..)	 .	q ..Ia`.q))!......A)a...x..q!)...	q q......AI..I...A(.1I.....Ii(..A(..	....).1y.i..1y..yq(.	qy.A).`.	q ..A)...Ay.a!.....yi	a`.9)....A	q.(..x.1))`.p......	a`.9)....A	q.(..x.1))`.Ii.y..	q.`.1.qq.`.	q ..)..)..) ..yx	.......q....v....).!	.`..))X.yq(`..(..yi).Ii)..!x.	qy.A)...)	!.A.y.9@q.....1.	qYa.`.Ay.).).`.iy....)y.a(.	.(..A).(.iyq!	..	q .I.9..Q....qy..	...D..1.qq...A(..).yq ..Ii(..A.y.9@q...d...y..i	...)a`..	q...x...	....)A)	..	a..Iq..)	 q......q........	p..y..i	q	9(..x.	qqy.q.(..A(.)q.I.(..))X9...)A)	..	`...A)!.a(.	...A).......)9IqqIq8.y0.)	.@..))X`.	q .a)	.(.I...y..) .Ip..).).	`..yq.)qI)q..ay.	.Iyq......).)..yq(..Ia`..(.A	..I).`...yi..).`.	q ..)..).i.)..) .I0..A)..Yqy..Iq....^..	!.	q.(.Ay..i..@.y0..A)I...Ii(..y...)..I.(q......A(.1	...y11I.(.!yy..i	...(.	a`..I9A.`.....I.9...aI..a(.y10..A(.t...)	.)p...	.X`..x......x..y....AIq9..Ip..).).	`..a	.).q......q.......).)qIq8..)A)	..	a..	.(.	aiy....A(.yqa..	q..).`......y.9a`.1I9..(..A	.....V..y....A)p..y...)(..A(.	..y..8...A)!.a).q..........x.a)	.(..A(.1I.....))Y)q .A	1.)...A(.iyq!	...I9pi..H.1.)(.	....yY)q....h..9)....(..y.	. .qy..!I.....Iq8..A(.aI.)..y0..A(..	..p.....y.9a`.q)) ..A)I..a	.)...))Y)q!..1y.....(`..x.i	Y(...yIq..	.y....AI.q......q........))X.yq(`.	p.)..I.) ..	....)A)	..(...)q)...I.@.9.Ii.....I....Ip.A	q a.......1	iIaI	.I.(..A)i.)a.)...I.@..A(.QyY)..	q ..A(..ay.`.	q .A	.(..9yy ..Ii(.T..9)..Iq8..x.Yqy...A(..)...y0..A(.9.y..q.......A)....	.X......x.......A)....	.X.....ay.`.9yy0.y10.1.)..)q.a.`.	q .A	.(.qx..I....(.y0..A	...AI....0...Ia`.ayyX.aIY(.yp...	9(p.X...)A)	..(.).).....)q(.yq.(.y.`..a)	.(`...I.(p....	..	q9(.i..I...)A)	..	a..1y..).)..yq(..Ax..Iq9..	q..AIq8..AI...))X`..x..A	...B...A)..a)	.p.Ay...A(..yq8.9y).q.......)..)..Iyq...y.)qIq8.	q ..ay.Iq8..yq8`.	q .	q..y.A)...Aya(i.	...q.i.).q...(...(9a`.)..a	Ip.a	.).p....q.... ...))Y)q .yq(.y10p.....a)	.(......q........))X...xq....$..a)	qIq8.aIq).	......I.9......x..y.`..y..`..x..Ayy.(..A(.!	...A)p..A)..	...	aa..9x..I.Ay............I...`......y....y.	.a...	q...x..Y)..@.y....A(..	.I....ay.YIq8.
+y.......yi)..Ip.1.yh..AI.@..I!(`..A).(..A(..	.a(.I.H..)1y.(..A)..!xq........A)p..A)...	p...I.(..A).(.iy.)..yp..A(....I...	q ..)1)...	.X..x..A)I.....I.......H..1y....AIa(..)1y.(..A)..9x.I..	ayq(p....qy...A	...A)..A	.(..A(.9I...y0..A(..yq9..1.yh.i..I...)A)	..	a.`..y.9aa...Z...	q...A)h..x...	...a)	.qIq8..Ay.)y9.	.A.q........)i)i.)...A	..a)	.qIq8.	q..AIq8.AaIq).`..yq9.`.y..!	q.).H.I..qy...A(.`...	i(.	...)A)	..Iq8..A)h.1y...).1y.i	q.(...	aI..p.@..a)	.qIq8..yi)...)1y.(..yaI.AIq8p.B..a)	.(..Ii(.1y...A(...x...)..q.......q...........A(.)q .y0..))X...x`..A)...Ay.a ..(..)	!..1y...A(.A..	!I.Iyq	`I......I.	aI	p...pp.d..a).9..!I......I.	aI	p..)A)	..	a..1y....).yq q.......AI......d...AI..I...qI.Yq	i(.1y....qqIq8..A.y.9@....)q)......q.a.....1	..a.......	q .I..i)	q...A	...y..!x.I...I.Ay....A(....	`.)...)..Iyp.y...IiIq8.Ip.1	.y...j..y0.a)	.Iq8.Ip.Iii)!I	.)a..yp..A(.)q .y0..y.....(q.......I0..A).(..)A)	..	a..	.(..)a`.!yq(`..y...Ia`.1Iq ..A)h.	p.Iq.	a.	.a(..yy`.,..1.yh..AI...))X.ypq......	a.	...A	.(..yi)yq(..yp..yyX..Ip..)A)	..	`..x...yi..`.	q .i	Y(.I...a)	...D...x.	..y....A	...AIa(..AI...Iaa......q.a.....q).)........A	..)p.Ip..).1y.i	q.(`.Ip..)A)	..	`..A)...Ay.a .9)....) ..x..	.Iq8a..@...aIq(`...A)q).)...A)...a	qX.y..p.^...A)...Ay.a .qy......(.y..i...)..y..1	Y(.I.q..8..Ip..)...p`..A(...yi..)...Ia`....q.a.....qy......y11)..aIq)...x..A(.	..y...Ax.I.....	IqIq8.AI.yA)..i)iy....x.9)..I....L...I9A..	q .!y).p9...	q...AIq...).q......q.........	!I.Iyq	aa.`..A(.1.I!	..y0..))X...x`..(.!x....p.y0..A(.)q.I.(..Ay.a...:...y..I.a..	..I.	aI	p..	.(q....t...(.!x..AI...yi).a	.(..I8.	q ..yi1.`..A)p.Aya ...	...q......A......I.9...))p...x..))Y...Iq.(..A).9.(.A)	. ..A(.)q.I.(..Ay.`.	q .I..9I.).....n...A)h...)q.(`.	9	Ip`..A	...A)..	.(..	...y0...Aya(q..f..I...)iIq!...A)h..A	...A(..Ay..I..1.p.	q .1.qq.q.....I...Ay....A)h..A	...A(....i.aIq8......).Iq8..ay!...	....I.@..A)h.A	.)....z.....q) .Iq.x.aI.)a...	a)q.) ..)y.a(..Iq.(..A(..)	!.A.y.9@q...	q.)I..9I.).........I..9I.)...A)h..A(..yq9.`.	a.	.....y. i.a)	.)....A	..!yp9...).)I.(..A)I......!.(.Ip.1I.....)	!.A.y.9A..qx.i	..)..Ay..9yy ..y...i..I..!I.)..y..I...n..A	q .H.qy.(..A	...y...i..I..!I.)..y....y.	.a...yp9......q.a.....	q..N...x..(..yx.9yy .Ip..A	...).1y.i	q.(q..2...Ax9...A(.	..y..A).(.....>...A....)	`.AI.yA)...A.q!)..I......AI...)A)	..	`.9)....A(.)q.I.(..	...Iq.x.yq(..yyh`..9yy ..y.I	`..AIq8q......A(..).AI)...	p.9)....A	q.(..x.A)	...A(..Ay...yx`.	q .)q.y..	9(..A(.>..	..y....I.@.1.).@.a	.9A.).q.....q.a.....	q!.....I.	aI	q..	.(..9yy ..AIq8..A)p..A(.	..y....)..yq ..x..A(..A	aa)q9(.y1.......Y)).Iq8.......)	Yq).X..	.(...A).9a`.!x..A	...A)p..).1y.iIq8.1y...A(..)......2..y0..A(..	...	q ...).q.......AIi.y..	q..qy.(..9)...yi)yq(.aIY(..A(...).I!)q...x.	..	q9(.1y....I	qy..."..Ip..A(..yyhpI.......q.......qy.(...qaIY(.y.A)..I.	aI	q.`..AI....pi.A.y.9@..Ay.a ..(..	.Y) ..I.@.)iy.Iyq.....	q .	..Iypq......A(..I.	aI	p...	...I...x.Y))...A(..)i.x...`......A(.9y	`.I...x.9yy1..n..y10.	q .A	.(..9yy ..Ii(.9)..Iq8..y.I.I.(.1))!.	.Xq.....q........))Y)q ...x.I...9yy ..Ii(.1y...A(.y.)qIq8.	q ..ay.Iq8..yq8..)A)	..	a.q......A(..))Y)q .I...A(.)	.I)....Ii(..x.9)..).)..yq(..y9).A).`.	q ..y..q))!......q.a.....).)..yq(q....R...A..qy..!x..AI...))Y)q .yq(`..y..	.X.........).	..(..A(..	...........).	..(..A(..	...q))!...yi).AIq8.q)..	q .)..I.Iq8..x.ayyX.1y..	. ..xq.......a)	.qIq8..A(..yq9..i	Y)...qI.(...)	X.	...AI...yIq.`.	...A(...)q)....	..."...x.9)....	a(q.......q........))X..A.)(..y.9a`...	.....qqIq8.1.a`.	...`..I.@..ay.YIq8`..I.Ay......I...q...T...Ii(..A(...)q)...Yqy...A(..y....)	.a.q...L.......1.a`...p.y0..A(..Ay..1.I!	.q......q....\..H..yp9..).)p......x..	aX.	.y.....	9(..Ii(q...0...A)p..y..9)..I.`...(.I.p.........x.i	Y(....(..y..!yp9..1y.9)...x.!x..A(..Ay.)y9.	.A..yq..	9(q.......q........))Y)q ..A.)(.I...A(..).@..))Y)q `.	q ..A(..I..	`.I...I...	aa..)q9.	.)!..z..yp...yq(..).	..(.I..I...)..)..	.) .....y.@..	...	q ...).q.......A).(9..Ay..I..9y).q.....q....t..).)..yq(.	..).....A	...A(..Aya(..))Y)q .I....I.(iy..q.......y.9a`.!x.1.a`..).@...q.`.	q ...(i.xi..(..)A)	..	a....y...)..yq	aa...Ia`.....I..Ip..!Ih..A)	..(..AIa(..A(..).AI)...Ay...y..aI9A..a).)a...	q .1.	qYa.a...@..).)..yq(..Ia`.9)...)	aa...I..A.p.....A(...).I1I...y0..AI.@..)A)	..	a..	.(.A)a ..A)p.	.(.!).I!) ..)..))q.....q.y......A(.!I.)..y..*...A(...	9(.i	q	9).....*...A(..).@.!I.)..y........q.q..p..	q ..y..I.a..y.A)...).AI)..A(q8p..A(.aI9A.Iq8.!).I9q).Hp.:...y..i....!).I!(.yp..AIq9........q.a......y9).A).a....n..y...)y.a(..Ia`.Ay.`.1.yh.A	.Iq8..A)I...y)....yi.) q......(..)	aa..!yp9...........(..)	aa..!yp9...	q...x.Yqy..Ay...y...y.X..A(...A)!.a(.y.....y.9.(..qaIY)a...R...x..(..A.Iaa) ..I.@..A	.).)..A	..)q.q.......q.......i	Y(....(..A	...y..y...A(...y!..)..y...A(...	9(.i	q	9)..	..	q9)..ay...y0.t..9.))p..yyh...	.(.1y...y.) .	..y....x..A	.`..a	...	.!.a......q.a........!.a......	q!.....q.a......)A)	..(q.......9)...yi)yq(..y.........x...p.I.	aI	q...AIa(..y.9.(......Ip..A(..A)	..(q..F...A)....Ia`.q)) .I.`.!yp9...A).......q........ay..y0..A(..)q.Iyp.	q .1.I..Iyp.y0..A(..).@..))Y)q ..	p..(.)aIiIq	.)!........i	YIq8....(..A(.	..y...	a.	...Yqy...A	.9..A	..)qIq8.	.y.q ..A)hq......)	aa.q.....I0..y.9.(.!yIq8....q.A.y.9@.	q .A	.(..x...y...A(..Ay..1y....).yq `.....)a`..A(..)y.a(.yp...	9(`
+a .yp`..(9.(.9yIq8..x.1I!!a(..I.@..A(.aI9A..p......I0.	..y...	.(...)	.) .	..Ii.y..	q...	..I.I.	q..`..A)...Ia`..(..xiy.).	.I.(q.....I0..A)..	.(...)	.) .	...AIa!.)p..Ax..Ay.a .Y))....I)...q.I`..ya ..A	...x.!x`.n...A(..)A)	..	a...Ia`..(.1	...y..(.1y..	a`..yq.).q) q.....q....<..qy...yi)...A(...I.Y...	..q......).)p.	...AI..I....I..)p`..A(..y..Iq(.1y...A(..))X.y0..A(..).1y.i	q.(.I.......A	q9Iq8q........(.i	...(.iy.Iq8..	.X..x..A(..A)	..(.y0..A(.	.....AI...)	.`.	q ..x..).......Ayq)..`.y...	.!I)q.(.I..Q.....yx..I8..x.1I..Ip..1I.(i.Ay....A)!.a(..A).(q....9A.AI..i)	q...A	...........AI..i)	q...A	...(9a`.A	.(..x.ay.(.......)y.a(.1.yh.y......	`.	.!I)q.(a..n..y...A(...A)!.a(.y0..).1y.i	q.)..I..9yIq8..x..A	q9(q......A(.1yaay.Iq8..AIq9..!x.qy...A	q9(.....xiAy....	a`.1y..!.)....)A)	..	a..b..	q ..).1y.i	q.)..I....	!I.Iyq	`.	q .	!)..	.(q....v...y.....	9(.i	q	9)...Ay.a .	q ..Ia`.)q1y..(...q...	aI..q.....	q.yq(..Ax.A	..).)..A	 ..x..	Y(...ya(.	...A(.a	...iIq..(..Ia`..)	aI.(..A	...r...A(..Ay...)..I.)...A(..yq.I!).	.Iyp.y0..)Iq8.yp..Ii(q.......Ay...	p..(..)a`.	..I!)q..y1	.	`.Iaaq)..).y.y.	`.	iq).I.1.yh..A(..	..	``.l....)a``..Ax9a`.iI...i(.I0.H9h...)q...iIq..)..a	.(........q.......!.)....)A)	..	a...Ay.a ..(.!)...I.) .	q ...)	.) .aIY(.1.a`..).1y.i	q.).p.J......	Ip..	aa...Ay.a ..(...).	.) q.......qy..)q.y.).p....q.........x..Ay...yp.1.I!	..qI9A..i	Y(.1y...!.	IqIq8.)..).I)q.(`.	q .I..I...qaIY)a..Z...A	...AI...Ia`..A	q9(.Ip..A(.q)	..1....(q........)iIq ..)y.a(..A	...A)I...	a`.I..)	.aI).`.	q ..A)I..qI9A...y.9A).q...D.....)....a))..	q .y.	q9(.Q.I.(q......q........)9IqqIq8..I.@..A(..).@..))Y)q .	q .)q!Iq8.y.)qIq8.qI9A.`..A(..Ay...aI......y...y0..y...A	q!..	...y...	....y....	....x..y....)....	.	.a(...	9(.i	q	9).q..D..!yp9..Q....!x.I.`.	qqy.q.(.I.q......	..)i..`..x..A(..)...y0..y...	.IaI..`..x..	....A(.	..)q!	q...)..)...	q!......)..yq.I.IaI....A	.......
+;...3q..g..
+
+099.
+
+1779:4::.803.:..*......929877941464:<.:40:.40;2.3772.;4:4.<7:9.571....*42.):032.&070329.409.402.6299.:462.:7.2097.4:..072.72229.4:.6792.??.
+:8?.	..,7:9.267:47706.9762.09.07.0::4794:<.343:92.072.0914:29.409.77:.;0749422..	@.97.12.0;092.:40:.:42.109:.9:466.67759.:7.<7:.379.08897;06.072.02;412.???.	.."2329.:7.:42.):032.&070329.;427.088978940:2..1::.5228.3222473.:42.01:799....:42.9:8879:.:42<.7222..066.:497:34.:42.829379607129..
+:6?....&" ".+ )&.*().??.	..$3.07<772.947:62.12.47.0.8794:477.:7.1:462.98494:.379.:42.947;.2014.7434:.??..@.4:.9.<7:.???.
+:8?.	..,7:9.34706.329::92.73.0::4794:<.2:9473.:42.947;.947:62.12.:7.6052.9:92??.	..:40:.:42.01:799.092.47;76;22.47.:42.):9452.:7.:42.129:.73.:4249.01464:<..... 72.67;473.4:.??.....92...........'7:29?...*449.0886429.:7.066.9242099069..97.;2.;2.90;22.:449.:466.609:.??..@.,7:.6:9:.34;2.77:29.03:29.2014.924209906.???...+2.9:3329:.<7:.;94:2.:426.27;7..072.;2.47949:.:40:.<7:.62097.:7.9202..@.<7:9.7;7.;94:473.???....#4;2.:42.3772.77:29.09.;266.09.:42.102..072?.
+:6?..@.72;29???....62:.07.01:79.37.07.27:492.924209906.;4:47::.9762.77:2.??...)762.73.:42.129:.01:799.620;2.924209906.39:9:90:22.1210:92.:42??...."4921:79.2427.:.17:429.:7.34;2.77:29.379.27473.4:.066.9434:..
+:8???6."77.:.62:.01:799.;09:2.772.077:429.9.:462.;4:4.2491:.+...	.."77.:.62:.01:799.;09:2.772.077:429.9.:462.;4:4.2491:99477.2:9473.77:29.?....$:.97:729.:72267190:41..1::.90;2.066.2491:99477.379?.
+:6?..@.03:29???....924209906.??.	..$:.9.060=473.47;.607<.:44739.121762.6299.46879:07:.;4:47::.07.0:242712.?..@.79.;427.<7:.92.:42.776<.772.942473.:42.60:2.1:9.4762.???....*42.92066<.46879:07:.8747:9.;466.12.;79:4.9:0<473.379.??.
+:8?....+0:14.379.2;29<:4473....4:.9.
+:6?.
+66?..@.<7:9.571.???.	..*42.6052.:8.829977.60<.:4475.<7:.277.:.6472.4:.:40:.;0<..;427.<7:.;292??....099:6473.42.942.17:62.:266.4:.;09.066.;9773.....!::.298214066<.;0:14.379.01:473?.
+:6?..@.# !$'#.#)''*.???..@.98205473.;4:4???.
+:6?....+'&*&"??.
+72?.
+:6?...."$!*$''..	@.,7:.107.9192;.:8.07<:4473.072.2;29<:4473.2692.47.:42.947;..1::.43.:42???...01:799.107.:.12.9227..42092..072.:72299:772..<7:.92.0.102."4921:79.?....2;27.1<.# )).9:0720929.?.....92...........+096.*89??...."7.:426...@..92...........)675473???....&052.87641<.77.:449.772.2096<.??.	@.*4292.9.77.14073473.:42.301:.:40:.:4292.49.77.9675473.47.:42.:420:92.???....,7:.947:62.221422.43.9242099069.092.733.6464:9.:77.?..@.$3.<7:.92.0.777.967529..:449.49.209429.:7.221422.???....$3.<7:??.
+:6?.
+7??...96752..862092.17794229.:42.87:27:406.89716269.73.827862.;4:4.177:01:???9627929.072.7.+......627929.072.79.066293429..@.+2.9:3329:.9675473.192059..5:9:.6452.192059.379.294759.072.87::<.???.....92...........,7:9?*214?!92;...&07<.# ))."4921:799.577;.72<:.:7.77:4473.017::.:42.:21474106.9422.73....:420:92....."77.:.;799<.....*42.:214.192;.2729.?.	@. 72.:42.067:7:.73.177:976.072.47:2901:477.<7:.40;2.;4:4.:42.:21474106???...229437.49.9762:4473.<7:.072.<7:9.*214."4921:79.;466.;795.7::.2096<.?....+77.:.<7:.??.
+:8?.	..'72.73.<7:9.679:.46879:07:.97629.49.:7.1762.:7.9762.979:.73.03922627:.017::?....92:.2294379....$:.49.:8.:7.:42.*214."4921:79.:7.922.:40:.92:.2294379.32:.2772.?..@.$3.<7:.40;2.07<.9821406.:44739.<7:.;07:.:40:.092.77:.71;47:9.3976.:42.91948:.???....:266.:42.*214."4921:79??.
+:6?....09.9777.09.87994162..	.. 3:29.066..:42.*214."4921:79.32:9.:42.91948:.:42.9062.:462.<7:.27.072.;466??....;07:.:7.9:09:.229437473.4662240:26<....."77.:.1762.:8.;4:4.0.67:.73.9821406.:44739??.
+:6?..@.03:29???...:42.8926464709<.2294379.092.6022..79.<7:.66.2097.:42.*".9.;90:4..	@.$:.42689.:7.94:.27;7.;4:4.:42.*".072.37.7;29.:42.91948:.91272.1<.91272.:7???....6052.9:92.42.942.:72299:0729.;40:.<7:.092.6775473.379.??.
+:8?.	..)4646096<..4:.49.<7:9.929877941464:<.:7.14215.7;29.:42.92:.2294379.09.9777???80909.:42<.092.2772..072.:7.08897;2.2014.772.79.095.379.,.....09.:42<.092.2772..072.:7.08897;2.2014.772.79.095.379.67243410:4779.?.	..$3.<7:.;07:.9762:4473.:40:.:42.*".90<9.107.:.12.2772..221422.47;.46879:07:??.	..4:.49.:7.<7:..79.:42.91948:...43.4:.49.46879:07:..2<86047.4:.:7.:42.*".072??..@.095.446.429.:7.:9<.:7.34;2.<7:.9762:4473.???.	..%:9:.09.<7:.107.2717:9032.:42.109:.:7.143329.072.12::29.:44739..<7:.107?.	..2717:9032.:42.:214429.:77..897;4222.:40:.<7:.092.7827.:7.:4249.478::.072....;466473.:7.;795.:732:429.:7;0929.0.34706.976::477.??.
+:8?...*;7.9:629.73.:4:61.017::.5228473.77.:42.3772.9422.73.:42.192;.??.	.."77.:.37932:.:7.47;4:2.:426.:7.809:429..2;27.:42.9877:0727:9...&2:.9.32:....:732:429.03:29.9242099069..:<82.809:429..... 72.;427.<7:.40;2.34749422.9242099473.77.9:032..32:.733.....$3.87994162..37.:7.077:429.9776.379.77:29.??...*42.:214429.:92.:42.9:032.:77.072.:;7.47:99.73.77:29.77.9:032.49.:;7....47:99.6299.379.92:.1:462473..	...*42.01:799..1<.:42.;0<..;466.08892140:2.:42.;065.072.:42.140712.:7.9:78..@.733.0:.:42.;0949776..???.....92.........(09:429?.... ::272.809:429.?.	@.$3.72129909<..86202.30:43:2.072.37.4762.2096<..1::.27.0::272.809:429.???..@.*449.49.29927:406.:7.109:.679062..;2.9:9821:.???.	@.*42.929:.73.:42.17664::22.17:62.27.;7992.:407.:7.37667;.<7:9.2<06862.???.
+:8???.9$:.49.:42.+412.(.,...	..$:.49.:42.+412.(9294227:.9.929877941464:<.:7.221422.;40:.809:429.:052.86012.....1::.<7:.107.177:941::2.0.3920:.2206.:7.:42.22149477...@.*9<.:7.2717:9032.809:429.2;29<.;225..298214066<.03:29.4092.;795.47.924209906.???.
+:8?....*42.92127:6<.29:01649422.'7.*0627:.'434:.49?.
+:6?.
+7:?....0.928:492627:.??.	@.$7;2;29..;2.947:62.2<86047.:40:.4:.9:09:22.09.07.78879::74:<.379.:42.109:???.
+:6?....072.192;...:7.27:29:047.772.077:429..379:29473.3772.9260:4779.072.929821:.?....$:.947:62.77:.12.5:9:.:497;7.:732:429.??....):09:.:;49:473.0969.2096<.??.
+:8?...*42.92127:.(9789.&49:.)10;27329.$:7:..2:9473.109:473.;225272..49.77:....928:4922.24:429..	..*42.7943470:799.73.:449.2;27:.;7:62.6452.:42.177128:9.:7.12.929821:22.277:34.	..379.827862.:7.8928092.;266.379.:426.072.:7.89767:2.:426.47.:42.<2099.<7:....221422.:7.:9<.:426.?...!<.:42.;0<..8099.77.:7.:42.*214."4921:79.:40:.42.942.947:62.8::?.
+:6?.
+66?.	@.:42.72129909<.89789.77.:42.649:..77:.5:9:.:42.20946<.0112994162.7729.???.	..*"9.40;2.0.:272271<.:7.:722929:460:2.:42.9197:73473.01464:429.73....# ))429...@.#4;473.0.;0:2922.27;7.649:.5:9:.60529.6792.;795.379.:42.89789829977.60:29.77.???.
+:8?.	..+2.0927.:.:42.809:4299.;2.:922.:7.12..072.:42."4921:79.947:62.2717:9032???2.066.17664::22.6261299.:7.426.-...	..066.17664::22.6261299.:7.4268.:42.+412.(9294227:.9225.7::.72;.072.;09422....9:<629.73.809:429.379.2014.72;.<209.73.# ))......92.........':429?'7:29?.@.,7:.277.:.7222.24921:473.2<82942712.:7.32:.79.:7.27.:449.571.???.
+:8?....&452.<7:9.:214.192;..	@.*42<.092.37473.:7.90;2.<7:9.1:::.6792.:407.7712..072.:42<.92.37473.:7???....6052.<7:.897:2.?.	..+4462.<7:.092.92987794162.379.:42.6775.73.:42.947;..9217374=2.:40:.:42<?.	..98272.6792.:462.:4475473.017::.:42.:21474106.09821:9.:407.<7:.27.072.:4249??....:47:34:3:6.479434:9.107.12.;06:0162..
+:8?...."717:9032.3772.9260:4779.12:;227.:42.109:.072.192;.?...)217374=2.:40:.:42.:;7.926276.622:..072.:40:..109:.:206.98494:..072?....192;.:206.98494:..092.09.46879:07:.09..# )).98494:...1::.:4292.092?..@.12::29.<2099.379.7;29066.10609022942.:407.7:4299.???.	@.&052.9:92.:40:.<7:9.01:799.929821:.:44739.6452..9:629.73.:42.9478..79???..@.:42<.66.6052.:42.:214429.602.???.
+:8?..@.*065.:7.:42.(972:129.???.	..$7.809:41:609..<7:.60<.;07:.:7.40;2.9762.478::.017::.:42.947;.9.897390662.??.	..,7:.092.:42..;7412..73.:42.109:.072.40;2.0.6234:460:2.9434:.:7.6052.928:29:9....072.9:3329:4779..	.. :.:42.9062.:462..9:14.:44739.092.:42.(972:129.9.929877941464:<.072.<7:?..@.947:62.929821:.449.429.0::4794:<.???97;2 9.06;0<9..43.<7:.24.-...	.. 9.06;0<9..43.<7:.2491:99.:44739.;4:4.9762772.;266.47.02;0712..<7:.;466?....64526<.3472.:426.17.78290:4;2.??.	..$3.<7:.2<821:.:42.(972:129.:7.9202.<7:9.6472..277.:.3226.62:.27;7.;427??..@.9762:4473.497.:.:42.;0<.<7:.6452.???..@.&052.3942729.;4:4???.
+:6?....2;29<772..@.072.5228.64729.73.1766:7410:477.7827.???.
+:8?.	..*42."4921:79.072.:42.929:.73.:42.17664::22.8972:1:477.9:033.40;2.0.2::<?....:7.12.9:8879:4;2.072.8794:4;2.:7.2014.7:429...@.&79062.447329.77.<7:.???...(:1641.3434:9..894;0:2.10159:011473..072.71;47:9.24990:49301:477.092.
+:6?....)$#$*.'**.??....$3.<7:.40;2.0.8971626..92::62.4:.;4:4.:42.829977..@.47;76;22.124472.167922.27799.???.	@.$:.27297.:.60::29.;47.<7:.40:2.79.;47.40:29.<7:....;427.:42.947;.49.7;29.???....<7:.947:62.12.129:047.:40:.:42.109:.72;29.77:4122.0.:4473.??.....92..........!9205?0?&23.	.."4921:473.# )).49.09.209<.79.243341:6:..09.60932.79.96066..09.92;092473.79??..@.39:9:90:473.0.571.09.<7:.;07:.:7.6052.4:.???....%:9:.:9<.:7?.
+:6?....221422??...;40:.<7:.;07:.:7.6052.4:..90:429.:407.40;2.4:.066.5:9:.408827.??...."4921:473.49.9762:4473.947:62.27..77:.40;2.2772.:7.<7:.?.
+:8?....!9205.0.623...@.";29<."4921:79.;7:62.27.4:.066.03047.43.4:.;292.87994162.???....+2.4782.<7:.66.12.0162.:7.90<.:42.9062.0.<209.3976.77;.???.(......@..:7..???..@..12..???..@..:6..???....$3.<7:.277.:.577;..5:9:.095...@.*4292.092.67:9.73.827862.:7.4268.???.
+:7?.....92........*$".$" ".)!)$(*+)$*")..*42?$202?)1948:;94:29?..@.*42.$202.)1948:;94:29.27297.:.;94:2.:42.91948:.06772.???...$2.942.9:829;4929.0.397:8.73.827862.;47.1920:2.:42.91948:.7;29.0....17:992.73.607<.622:4739......92........."096<?&22:4739??.	.. .:4262.622:473.947:62.12.106622.9479:6<.123792.:42.#. .).).. 77:06.&22:473?....;4292.:42.01::06.:4262.;466.12.147927.??.	..*42.:4262.622:473.947:62.12.7827.:7.:42.8:1641.072.947:62.12.0777:7122??....:7.066.:42.6261299.73.#. .).).??...*42.8:98792.73.:42.:4262.622:473.49.:7.8978792.072.2491:99.87994162?....:42629.379.:42.72<:.<209.9.947;..	..*42.622:473.947:62.70997;.:42.87994162.:42629.27;7.:7.37:9.79.34;2.42209....;4414.092.47:2929:473.:7.:42.397:8.?.	@.'712.:42.:42629.40;2.1227.2214222.:877..772.829977.49.92621:22.:7.892927:???...2014.:4262.072.4:9.6294:9.072.879941464:429.0:.:42. 77:06.&22:473.??.
+:8?.	..*42.72;.$202.)1948:;94:29.140499.:42.:4262.2491:99477.0:.:42. 77:06.&22:473.....*9<.77:.:7.62:.140929.947;.:77.6:14..
+:8?.	..*42.3499:.190479:796473.9299477.947:62.711:9.;4:447.:;7.;2259.37667;473?....:42. 77:06.&22:473.???:4*42.8:98792.73.:449.9299477.49.:7.:052.02;07:032.73.:42.27:4.......*42.8:98792.73.:449.9299477.49.:7.:052.02;07:032.73.:42.27:4:94096??.....;2.4782..;09.327290:22.1<.:42.92621:477.73.:42.:4262.??...$:.49.0697.07.78879::74:<.379.3902:0:473.#. .).)..6261299.:7.897;422..@.9762.478::.77.:42.91948:.???.
+:8?...$:.49.0.3772.4220.:7.40;2.772.79.:;7.190479:796473.92994779.47.:42??....9:6629.:296....*449.34;29.17.78.9::227:9.0.140712.:7.6052.9:3329:4779..2;27.43.:42<....;77.:.12.097:72.47.:42.3066....$:.49.0697.07.78879::74:<.:7.30:429.0.3:72.73.42209.123792.867::473?....123479.47.:42.3066.?...*4292.622:4739.6434:.12.4262.7712.0.677:4.79.97..:42<.4268.:7.5228??....#. .).)..47.:42.64729.73.8979821:4;2.#. .).)..6261299.??..@..92.........#066?&22:4739???.	@.*42.3499:.;94:299..622:473.47.:42.3066.947:62.12.91422:622.09.9777.09???....87994162.03:29.:42.#272906.&22:473.?.	@.*42.20:2..:462..072.86012.73.:42.;94:299..622:473.947:62.12.0777:7122???....0:.:42.#272906.&22:473.?.	..$:.49.0697.:923:6.:7.:052.0.9:9;2<.0:.:42.#272906.&22:473.:7.22:296472??....:42.679:.177;27427:.:462.379.3:::92.;94:299..622:4739.??.	@.*05473.:449.47:7.0117:7:..:42.$202.)1948:;94:29.947:62.12.89280922.0:???...:42.3499:.;94:299..622:473.:7.0777:712.:42.:462.;427.622:4739.;466??....923:6096<.711:9.3976.:40:.8747:.77;092.???:<*42.923:609.622:4739.947:62../...	..*42.923:609.622:4739.947:62.12.4262.0:.:42.9062.:462..20<.072.86012.2014..@.;225.43.87994162.???.	..+2.40;2.402.89716269.47.:42.809:.73.827862.6499473.772.622:473.072.72;29..@.3472473.7::.;4292.9:1928:27:.622:4739.092.12473.4262.???.
+:8?.	..*42.$202.)1948:;94:29.947:62.2<06472.:42.:462.0;0460162.379.;94:473.072?....92:.:8.0.91422:62.73.47;.2014.9299477.947:62.12.9827:.??.	..$7.3272906..:42.677:4.73."2126129.947:62.12.92929;22.379.224:473.92994779.??....072.'7;26129.379.:42.01::06.;94:473.73.912729.??.	@.*462.123792.:40:.947:62.12.24;4222.0117924736<.47:7.3272906.190479:796473???..@.92994779.37667;22.1<.6792.98214341.867::473.92994779.???.
+:8?.	@.*9:066<.37:9.622:4739.092.72129909<.:7.979:.7::.982143419.73.:42.867:.072???....:7.32:.0.3772.7::6472.??.	.. 7<.:462.017;2.072.12<772.:449.0:.:42.123477473.73.:42.3066.107.12.:922?....379.190479:796473.??.	@.*449.:9:066<.62079.:40:.776<.772.79.:;7.92994779.47.:42.3066.107.12.34;27???..@.7;29.:7.:724921:22.190479:796473.???.....92.........$0726473?+94:299.	@.$:.49.46879:07:.:7.92626129.:40:.607<.72;.;94:299.092.20946<.24917:90322.???...$:.49.:42.2::<.73.:42.$202.)1948:;94:29.:7.892;27:.:449.43.87994162....'2;.;94:299.947:62.12.2717:90322.:7.:266.42209.:7.:42.397:8.072.77:???:45:9:.:42.3942729.94::473.129./....@.5:9:.:42.3942729.94::473.129422.:426.???...*42<.947:62.12.2717:90322.072.:4249.177:941::4779.08892140:22..2;27?...43.:4249.3499:.42209.092.77:.;40:.7:429.827862.092.6775473.379.?...'2;176299.;466.62097.;40:.;7959.072.;40:.27297.:.43.:42<.092.34;27.0....140712.:7.12.42092.?.
+:8?.	..'62.;94:299.947:62.12.24917:90322.3976.:05473.:77.4434.0.8973462..94712?....:449.49.17:72.:7.47:46420:2.72;.827862.?.	@.*42<.947:62.0697.12.24917:90322.3976.:266473.47.57529.:76299.:42<.092???....89280922.:7.94092.:42.5752.;4:4.72;176299.??.	..$3.72129909<..:42.$202.)1948:;94:29.947:62.:065.:7.:42.762.#. .).)..827862??....072.095.:426.:7.6052.72;176299.;261762.072.722222.??....#9294.42209.092.:42.679:.46879:07:.:4473.47.#. .).)......92.........(0829?+795??.	..*42.$202.)1948:;94:29.947:62.;94:2.27;7.09.607<.73.:42.42209.:40:.1762??....:8.47.92994779.09.87994162.?.	..";27.42209.;4414.27.77:.9226.:7.40;2.07<.6294:.0:.:42.:462.947:62.12.77:22??..@.47.1092.:42<.897;2.47:2929:473.79.829:4727:.60:29.77.???.	@..";27.43.:42<.72;29.897;2.47:2929:473..827862.6452.:7.922.:40:.<7:.92???....;94:473.27;7.;40:.:42<.90<...
+:8?.@.$7.79229.:40:.066.42209.12.42092.1<.2;29<772..:42.397:8.947:62.12???.	@.3:4222.:7.98205.772.0:.0.:462..06:47:34.47.8294729.73.8205.27:4:94096???.73.:449.60<.0......:449.60<.12.4687994162.:7.2737912.??.	.."737912627:.49.8971016<.:42.;9773.;792.07<;0<....77.772.;07:9.:7.206827?....827862.9.27:4:94096.79.9877:0724:<.?.
+:8?.	..*42.42209.30:42922.1<.:42.$202.)1948:;94:29.947:62.12.;94::27.:8.2;29<??....;225.072.892927:22.:7.2014.;94:29.0:.:42.72<:.622:473.??.	..*449.099:929.:40:.3772.42209.27.77:.32:.679:.79.37937::27.3976.772.;225?....:7.:42.72<:.....$:.49.0697.42683:6.379.827862.;47.40;2.649922.0.622:473..	..*42.;2256<.4220.9422:9.947:62.12.528:.47.0.1:6:60:4;2.3462.379.:42.127234:??....73.:4792.;47.;466.60:29.12.;94:473.:42.912729.??.	@.*42.9422:9.092.0697.:923:6.379.827862.;47.10777:.0::272.;94:299..622:4739???....1::.;47.092.47:2929:22.47.;40:.9.408827473.?.....92.........+94:473?*42?)12729??.	..+94:299.;47.092.47:2929:22.;466.12.47;4:22.:7.;94:2.4724;42:06.912729.7712??....:42.867:.7::6472.49.176862:22.??...*42<.60<.;94:2.:42.91272.1<.:426926;29.79.47.397:89.73.:;7.79.:4922..	..'7.:42.20<.:40:.912729.092.249:941::22..:42.;94:299.947:62.12.897;4222??....;4:4.:42.37667;473.4737960:477.?.....41........?.... .176862:2.867:.7::6472......44........?... .649:.73.60579.140901:299.;4:4.2291948:4779.73.:4249.829977064:429......44........?.... .649:.73.#. .).)..70629..4.2..3:77<.7729..?.....44........???2: .649:.73.90.

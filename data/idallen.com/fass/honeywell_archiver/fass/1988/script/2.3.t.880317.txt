@@ -1,0 +1,605 @@
+
+
+
+.....z> 
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1988/script/87macr.t   
+.bs 2 3 "Gurus Just Wanna Have Fun" 
+.na tom TOM~FOOLERY TOM 
+.na bel BELLA~COSE BELLA
+.na ed ED~NAUSEUM ED
+.na ir IRMA~GEDDON IRMA 
+.na ml BENTON~DESTRUCTION BENTON
+.na m1 WAYNE~DOE WAYNE  
+.na m2 IKE~IDO IKE  
+.na m3 TY~KWONDOE TY
+.na m4 JUDE~O'CHOP JUDE 
+.na ha HARRY~KRISHNA HARRY  
+.na rama RAMA-LAMA-DING-DONG RAMA   
+.na muf MUFFY~FORNOTHING MUFFY  
+.na tyr TYRONE~SHOELACE TYRONE  
+.na ag DAWN~CALLUSWELLCALLYOU DAWN  
+.na mol MOLLY~CODDLE MOLLY  
+.na op ESTHER~LYFAFTERDEATH ESTHER  
+.ld 
+(LIGHTS UP ON A ROOM IN THE CAMPUS CENTRE.  
+THERE ARE CHAIRS AROUND A CIRCULAR TABLE WITH A DOOR AT THE BACK
+OF THE STAGE.   
+OFF TO ONE SIDE IS ANOTHER TABLE WITH A PHONE AND A PHONE BOOK ON IT.   
+TOM AND HARRY ARE IN THE ROOM.  
+SUDDENLY,   
+A FRAZZLED ED BURSTS THROUGH THE DOOR, CLOSES THE DOOR, AND DIVES   
+UNDER THE TABLE)
+.prip "PHONE AND BOOK"  
+.ch bel 
+(AS SHE ENTERS) 
+Eddie?  
+Eddie, where are you?   
+.ad 
+(SEES TOM)  
+.ex 
+Tom, where is Ed?   
+.ch tom 
+He's, uh... 
+.ad 
+(HARRY CLAMPS HAND OVER TOM'S MOUTH)
+.ch ha  
+...not here.
+.ad 
+(BELLA STARTS FOR THE DOOR. 
+ED CRAWLS OUT FROM UNDER THE TABLE. 
+BELLA CHANGES HER MIND AND ED DIVES BACK UNDER THE TABLE)   
+.ch bel 
+Do you know where he is?
+.ch ha  
+Do any of us really know where we are?  
+.ch bel 
+Never mind. 
+.ad 
+(BELLA EXITS, SLAMMING DOOR.
+ED CRAWLS OUT AGAIN)
+.ch tom 
+(TO ED) 
+You don't like Bella very much, do you? 
+.ch ed  
+Would you like it if she was chasing you all over campus like a 
+lovesick giraffe?   
+.ch tom 
+Darn right! 
+(SHEEPISHLY)
+I mean, I wouldn't object...
+.ch ed  
+You're welcome to her.  
+She's gone batty.   
+.ad 
+(ENTER MUFFY, IRMA AND TYRONE)  
+.ch muf 
+Crackers.   
+.ch ir  
+One patty shy of a Big Mac. 
+.ch tyr 
+Without Bella, the protest group's falling apart.   
+We've got to do something.  
+.ch ha  
+What we need is... inspired leadership. 
+.ch muf 
+I know! 
+I'll look it up in the Yellow Pages!
+.ch ir  
+(SARCASTICALLY) 
+Oh, sure.   
+That'll work.   
+.ad 
+(MUFFY LOOKS IN YELLOW PAGES)   
+.ch muf 
+Hmmm... 
+Industrial waste... 
+insect control...   
+insemination service... 
+Ah. 
+Here we are.
+Inspired leadership.
+.ad 
+(MUFFY DIALS AND CARRIES ON A MUTED PHONE CONVERSATION THROUGH THE  
+NEXT BIT)   
+.ch tom 
+(TO HARRY)  
+Thanks for booking the room.
+.ch ha  
+Huh?
+.ch ir  
+Don't tell me neither of you idiots booked the room!
+.xx TOM~AND~HARRY   
+(LOOKING AT EACH OTHER) 
+Okay.   
+.ch tyr 
+I wonder if anyone was supposed to be here? 
+.ad 
+(WAYNE, IKE, TY AND JUDE (MARTIAL ARTISTS) BLAST THROUGH A WALL, KNOCKING OVER  
+TYRONE IN THE PROCESS.  
+BENTON, THEIR LEADER, ENTERS THROUGH THE DOOR)  
+.ch ml  
+Today, locusts, we will learn patience. 
+.ch m4  
+How long will that take?
+.ch ml  
+Silence!
+Dragonfly, punish that disciple.
+.ch m3  
+Oh, goody.  
+.ad 
+(TY TRIES TO PUNISH JUDE BY EXECUTING   
+AN IMPRESSIVE MOVE. 
+HE FAILS MISERABLY, AND IS BADLY HURT)  
+.ch ml  
+Impressive. 
+Terrible, but impressive.   
+.ad 
+(BENTON BOWS TO PROTESTERS) 
+.ex 
+Greetings, honoured ones.   
+We are the Guy Ding Society of Waterloo.
+.ch tom 
+The Guy Ding Society?   
+.ch m1  
+Yes.
+We are followers of the Guy Ding Light. 
+.ch m2  
+3:00 weekdays on CBS.   
+.ch m4  
+We seek enlightenment through meditation and self-discipline.   
+.ch m3  
+And, when all else fails, gratuitous violence.  
+.ch ml  
+Allow me to explain.
+.sb "Meditate" "Shall We Dance?"
+.ve 4   
+If this is what you seek, a life of inner calm  
+You might be wise to turn your eyes to things Confucius said
+But if someone intrudes and disturbs your peace of mind 
+I would suggest - it might be best - to give a boot to the head.
+.ve 9   
+Meditate!  You know I'd never harm a tiny fly   
+Meditate!  But it's not in my karma to deny 
+That it's great to attack and disarm a passerby 
+As you contemplate your navel   
+Just be damn sure that you save a   
+Little thought for the folks you hate,  
+While you're yinning and you're yanging 
+Keep account of heads you're banging
+Meditate, meditate, meditate!   
+.ve 10  
+.ss ALL~MARTIAL~ARTISTS 
+Meditate!  Keep those thoughts transcendental in your mind  
+Meditate!  If your soul's orientally inclined   
+Mutilate!  Never acting too gentle or too kind  
+Pay attention to the master 
+Or he'll use your guts for plaster  
+You can put it down to fate,
+He'll consult the book of changes   
+As your face he rearranges, 
+Meditate, meditate, meditate!   
+.ad 
+(DURING THE SONG,   .ex THE MARTIAL ARTISTS ATTACK EACH OTHE
+
+THE MARTIAL ARTISTS ATTACK EACH OTHER IN TYPICAL MARTIAL ARTS STYLE 
+AND MANAGE TO KNOCK EACH OTHER OUT  
+IN RECORD TIME. 
+ONLY BENTON IS CONSCIOUS DURING IRMA'S NEXT SPEECH; 
+THE OTHERS MANAGE TO REVIVE IN TIME FOR THE SILENT DRILL)   
+.ch ml  
+Most impressive, no?
+Now please leave this room, so that we may leap about and shout in private. 
+.ch ir  
+(TO BENTON) No way! 
+We were here first, and our meeting is more 
+important than yours, so if I hear one word from you oversized  
+occidental accident-prone developmental deviants, you'll all need   
+supplemental superficial orthodontal therapy.   
+.ch ml  
+Say what?   
+.ch ir  
+I'll kick your teeth in.
+.ch ml  
+Oh. (WHISPERING TO HIS GROUP) Silent drill -- begin!
+.ad 
+(SILENT BATTLE BEGINS.  
+EVERYONE IS KNOCKED OUT AGAIN EXCEPT BENTON, WHO SURVEYS THE CARNAGE.   
+IRMA WALKS UP CASUALLY BEHIND BENTON AND FELLS HIM WITH A KARATE CHOP)  
+.ch ir  
+Let's get on with the meeting.  
+.ad 
+(ENTER RAMA-LAMA-DING-DONG. 
+HE IS A TIBETAN GURU AND IS DRESSED ACCORDINGLY)
+.ch rama
+Sorry I am late.
+I got caught in a yak jam.  
+.ch tyr 
+Who are you?
+.ch muf 
+You must be the inspired leadership I phoned for!   
+
+.ch rama
+Yes, that is correct.   
+I am the great Tibetan guru, Rama-lama-ding-dong.   
+.ch tom 
+Who?
+.ch rama
+Only twice before have I journeyed down from my mountain top.   
+Once was to visit my good friend and fellow guru, Shooby-dooby-do-wop.  
+.ch ha  
+And the other?  
+.ch rama
+Was to see a Bee Gees concert in Buffalo.   
+.ad 
+(DOES A QUICK SATURDAY NIGHT FEVER ROUTINE AS HE SINGS) 
+.ex 
+Stayin' alive, stayin' alive, oo-oo-oo-oo, stayin' alive!   
+.ch ir  
+Can we get on with the damn meeting?
+.ad 
+(PEOPLE BEGIN TO SIT DOWN FOR MEETING.  
+ENTER BELLA.
+ED DIVES BACK UNDER THE TABLE AGAIN)
+.ch bel 
+Where's Ed? 
+.ch tyr 
+He  
+popped in and said he'd be late but that he'd support anything anyone put   
+on the table.   
+.ch tom 
+Okay -- let us begin.   
+The project to effect the sabotage of the main CUPID installation   
+must be considered a complete success.  
+.ch tyr 
+Except that the administration still hasn't dropped the CUPID program.  
+.ch ha  
+Or the fee. 
+.ch muf 
+What else can we do?
+.ch rama
+May a great Tibetan guru make a suggestion? 
+.ch ha  
+Sure, go ahead. 
+.ch rama
+The administration will not admit the CUPID prog
+
+The administration will not admit the CUPID program is a failure unless 
+we rub their noses in it.   
+I could contact an omnipresent, omniscient entity who could guide us
+in this venture.
+.ch muf 
+Sounds good to me.  
+Spiritual encounters were number 3 on   
+David Letterman's Top Ten list of meaningless endeavours.   
+.ch ir  
+And number one was trying to get you to say something intelligent.  
+.ch tyr 
+Do you really think some primitive ritualistic exercise will
+help us?
+.ch muf 
+No, but I read in the Enquirer that dabbling in mysticism improves  
+your sex life.  
+.ch rama
+Not when you're in Tibet, surrounded only by mountain goats.
+.ch muf 
+Oh. 
+.ch rama
+First of all, it shall be necessary for us to get in touch with our 
+inner selves, to seek out new life and new civilizations, to boldly 
+go where no one has gone before...  
+.ch ha  
+Rama!   
+.ch rama
+So sorry.   
+I got carried away. 
+Now listen carefully.   
+Give me a B!
+.xx EVERYONE~BUT~ED 
+B!  
+.ch rama
+Give me a second B! 
+.xx EVERYONE~BUT~ED 
+B!  
+.ch rama
+Give me a third B!  
+.xx EVERYONE~BUT~ED 
+B!  
+.ch rama
+What have you got?  
+.ad 
+(PUZZLED SILENCE)   
+.ex 
+
+(MOTORBOAT-LIKE NOISE) Bbbbbbbb!
+.ad 
+(RAMA LAUGHS UPROARIOUSLY)  
+.ex 
+It is a very funny joke, is it not? 
+.ch tom 
+It's a very old joke, Rama. 
+.ch rama
+When you live your whole life on a Tibetan mountaintop, you do not hear 
+many good jokes.
+Except, of course, the one about the travelling salesman and the
+farmer's daughter --
+.ch ha  
+Can you get serious?
+.ch rama
+No, but on a clear night I can get Alpha Centauri.  
+.ch ir  
+Rama!   
+.ch rama
+Oh, very well.  
+Now that you have revealed your innermost feelings, let us proceed. 
+.ad 
+(EVERYONE PLACES HANDS ON THE TABLE)
+.ld 
+(LIGHTS DIM TO CREATE AN APPROPRIATE ATMOSPHERE)
+.ad 
+(ED IS GETTING SLIGHTLY CRAMPED UNDER THE TABLE AND TRIES TO
+REARRANGE HIMSELF.  
+AS HE DOES SO, HE LIFTS THE TABLE)  
+.ch tyr 
+The table is rising!
+.ch rama
+Oh boy! 
+This has never happened before! 
+.ch ed  
+(FROM UNDER TABLE, DISGUISING VOICE BADLY)  
+Bella, forget Ed!   
+Tom is your one true love.  
+.ad 
+(IRMA KICKS UNDER TABLE)
+.ex 
+Ow! 
+.ad 
+(TABLE FALLS AGAIN) 
+.ch bel 
+What was that?  
+.ch ed  
+(FROM UNDER TABLE)  
+Nothing.
+.ch rama
+Let me try again.   tyr Everyone concent
+
+Everyone concentrate.   
+.sd 
+(TOUCHTONE BEEPING SOUNDS, THEN 
+SOUND OF PHONE RINGING) 
+.ex 
+Ah! 
+We are about to come into contact with the astral plane!
+.sd 
+(SOUND OF PHONE BEING ANSWERED BY ESTHER, AN OPERATOR)  
+.ch op  
+(VOICEOVER) 
+Mount Olympus switchboard.  
+What deity, please? 
+.ch rama
+I would like to talk to Cupid, the god of love. 
+.ch op  
+(VOICEOVER) 
+I'll connect you.   
+One moment, please. 
+.sd 
+(ELECTRONIC BEEPING SOUNDS) 
+.ex 
+(GOSSIPING WITH A FRIEND)   
+So, Ethel, Bacchus told me this great joke the other day... 
+Why is Jupiter like a football player?  
+.ad 
+(PAUSE) 
+.ex 
+They both fit into a jersey...  
+Whoops! 
+.sd 
+(ESTHER ABRUPTLY CUTS TO THE SOUND OF MUZAK)
+.ch rama
+Great.  
+I am on hold.   
+.ad 
+(MEANWHILE, THE MARTIAL ARTISTS HAVE STRUGGLED TO THEIR FEET)   
+.ch m2  
+Truly, I am in intense pain.
+.ch m1  
+Medic!  
+.ch ml  
+You lack inner discipline.  
+True masters know how to transcend suffering.   
+.ch m3  
+Oh, yeah?   
+(TO WAYNE, IKE AND JUDE) Banzai!
+.ad 
+(THEY BEAT UP ON BENTON)
+.ch ml  
+True masters also lie a lot.
+.ad 
+(BENTON COLLAPSES IN PAIN.  
+OTHER MARTIAL ARTISTS COLLAPSE, EXHAUSTED FROM EFFORT)  
+.sd 
+(MUZAK ENDS)
+.ch rama
+Ah! 
+Here we go! 
+.ld 
+(LIGHTS ON DAWN AT SIDE OF STAGE WITH CELLULAR PHONE.   
+SHE SHOULD BE SITTING WITH HIS FEET ON A DESK, OR SOMETHING LIKE THAT)  
+.prip "CELLULAR PHONE"  
+.ch ag  
+Cupid's office. 
+Talk to me, baby.   
+.ch rama
+Cupid?  
+You've changed most dramatically!   
+.ch ag  
+He's on assignment. 
+I'm handling the affairs around here.   
+.ch rama
+I am Rama-lama-ding-dong, the great Tibetan guru,   
+seeking spiritual guidance for a group of students who wish to  
+be free of the CUPID program.   
+.ch ag  
+Did you say guru?   
+From Tibet? 
+.ch rama
+That is correct.
+.ch ag  
+Gurus are hot, baby -- hot! 
+I can make you famous!  
+Picture this:   
+Bright lights!  
+Thousands of screaming fans!
+Interviews with Phil Donahue!   
+Teenagers sneaking into your hotel room!
+.ch rama
+Oh, boy!
+.ch ag  
+You got charisma, you got poise, you got pizzazz... 
+you got an agent?   
+.ch rama
+No...   
+.ch ag  
+Fabulous!   
+We can do business. 
+Have your spirit contact my spirit. 
+We'll do the soul food thing.   
+.sd 
+(SOUND OF DAWN HANGING UP PHONE)
+.ld 
+(LIGHTS BACK TO NORMAL) 
+.ch rama
+(TO HIMSELF)
+Look out, Hollywood!
+(TO OTHERS) 
+Sorry, my friends -- I must be going.   
+My karma is double-parked.  
+.ch tom 
+Wait!   
+Come back!  
+.ad 
+(EXIT RAMA) 
+.ch ha  
+Great!  
+What are we going to do now?
+.ad 
+(ENTER MOLLY, FLUSTERED)
+.ch mol 
+Everybody stop what you're doing!   
+I have important news!  
+.ch ed  
+(BURSTING OUT FROM UNDER TABLE, THROWING IT ASIDE AND RUNNING TO MOLLY) 
+Molly, dearest -- what is it?   
+.ch bel 
+Oh, Eddie!  
+(THROWS ARMS AROUND ED AND KISSES HIM)  
+.ch ed  
+Bella!  
+(PUSHES HER AWAY)   
+Go on, Molly.   
+.ch mol 
+The volunteers for the dating program are going to ambush you at the Alumni 
+Fundraising Dance at Fed Hall.  
+It might even get violent!  
+.ch tyr 
+The nerve of them!  
+If anyone's going to get violent at Fed Hall, it should be the bouncers!
+.ch ir  
+Those gutless CUPID wimps!  
+Let's shed some neo-conservative yuppie blood!  
+.ch tom 
+Darn right! 
+.ch ha  
+Oh, wow!
+A major protest!
+I can dig it!   
+.ch ir  
+Death to the volunteers!
+Kill them all!  
+.ad 
+(MARTIAL ARTISTS COME TO AGAIN) 
+.ch ml  
+Did someone say kill?   
+.ch tom 
+Darn right! 
+.ch ml  
+Then we'll help you kill them!  
+(TO TOM)
+Uh, who are we going to kill?   
+.ch m3  
+Does it matter? 
+.ch bel 
+(TO ED) 
+Come on, Ed, we have a battle to fight. 
+.ch ed  
+No, Bella, you go on ahead with Tom and the others. 
+I have to talk to Molly.
+.ch bel 
+Break it to her gently, Eddie.  
+.ad 
+(EXIT ALL BUT ED AND MOLLY) 
+.ch mol 
+Oh, Ed, don't go -- they're going to be anti-social.
+.ch ed  
+But I'll have to be there -- I can't let my friends down.   
+You know I'd rather 
+spend eternity in your arms, but duty calls.
+.ch mol 
+I think this is where I gaze soulfully into your deep blue eyes 
+and inspire you to resolve everything with a flash of brilliant insight.
+.ad 
+(PAUSE) 
+.ex 
+Or not. 
+.sb "Tomorrow" "Jack's Original #2" 
+.ve 5   
+MOLLY:  There is gonna be a showdown come tomorrow  
+        When the protestors and volunteers arrive   
+BOTH:   Tomorrow compassion 
+        Will weather the thrashin'  
+MOLLY:  Come tomorrow, our spirit will survive. 
+.ve 5   
+ED:     When the fists are flyin' and the blood's a-flowin' 
+
+.....z> 
+fass
+
+
+
+        I will think of you and I won't be afraid   
+BOTH:   Tomorrow the rumble 
+        Won't cause us to crumble   
+ED:     Come tomorrow, our love will never fade.
+.ve 6   
+BOTH:   Through the broken bones and carnage we will travel 
+        With our hearts a-glow and with our chins held high 
+        Tomorrow's collision
+        Won't stifle our vision 
+        Come tomorrow, our dreams will never die
+        Never die, never die, never die.	   
+.ad 
+(EXIT MOLLY AND ED) 
+.es 

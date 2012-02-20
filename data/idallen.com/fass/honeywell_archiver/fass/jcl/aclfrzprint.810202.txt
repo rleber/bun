@@ -1,0 +1,39 @@
+
+
+
+.".p.![.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##a     
+$      ident   FASS,PRNTJOB 
+$      program acl  
+$      prmfl   **,r,r,./batchacl
+copy fass/ideas.f;first to lp(bksp,prnt)
+copy fass/ideas.f;capsize to lp(bksp,prnt)  
+copy fass/ideas.f;jrg.song to lp(bksp,prnt) 
+copy fass/ideas.f;jrg.horr to lp(bksp,prnt) 
+copy fass/ideas.f;songs to lp(bksp,prnt)
+end 
+$      endjob   

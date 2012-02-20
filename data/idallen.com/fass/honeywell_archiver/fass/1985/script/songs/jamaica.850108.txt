@@ -1,0 +1,59 @@
+
+
+
+.......6
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1985/script/bulkmacr.t 
+.sb "Judgement Day" "Jamaica Farewell"  
+.xx ANGELS  
+.ve 6   
+Back on Earth,  
+Where we had our birth, 
+We were helping little ladies all the time. 
+Our thoughts were good, 
+We did what we should,  
+And every hour was given to fighting crime. 
+.ve 5   
+(And it's) Sad to say we've passed away.
+Won't be back 'till judgement day.  
+We had to die,  
+But since we never lie, 
+We've gone to join the flying angels in the sky.
+.xx DEVILS  
+.ve 6   
+Back on Earth,  
+Where we had our birth, 
+We were mean and nasty buggers all the time.
+Our plots were bad, 
+And the cops were mad,  
+'Cause we were supervillains and lords of crime.
+.ve 5   
+(And it's) Sad to say we've passed away.
+Won't be back 'till judgement day.  
+We've gone to hell, 
+The place where sinners yell,   
+We see the brimstone burning bright where Satan fell.   
+.es 

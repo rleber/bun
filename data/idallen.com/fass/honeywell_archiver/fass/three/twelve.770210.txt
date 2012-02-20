@@ -1,0 +1,795 @@
+
+
+
+.Bu..Bu.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/fasshole   
+.he 'FASS'- % -'ACT III SCENE XII'  
+.fo 'ACT III SCENE XII''FASS'   
+Act 3, Scene 12 - PBDG  
+
+
+(ENTER BRASSIERE. THE OFFICE IS EMPTY)  
+
+
+.rb 
+All right, where is everyone? Boy, you leave them alone for a week and they all skip out    
+on you. What a crew this is!
+Maybe I should just lock the doors and publish the blasted thing myself.
+
+
+(PHONE RINGS)   
+
+
+People's Bilingual Daily Gazette, Brassiere speaking. What? Just
+hold it a minute and let me get this down. Okay, spell that. Z-I-M-...  
+Yeah, okay, I've got it. And what happened there? Nothing!? 
+Well, what are you calling in about... oh, just the name change!
+Well why in heaven's name couldn't they call it something   
+easier like Smith? Smithgenstein?   
+All right, we'll try to run some thing on it anyway.
+Yeah, goodbye. All power to you, too. (HANGS UP)
+Where is everyone? Matilda! Woundwort! You just can't get good help 
+these days. 
+
+
+.wo 
+(ENTERING)  
+Yesssss, masssster? 
+
+
+.rb 
+Ah yes, Woundwort. Where is everyone? I get back and the office 
+is empty.   
+
+
+.wo 
+Just putting the finishing touches on this week's edition. It'sss   
+a goodie.   
+
+
+.rb 
+Well, look, I can't stay here. There have been a few complications in this  
+operation. I've got to get back to the palace now.  
+The Winkle has sent the members of the Satirize crew out to find the
+one true page. If they succeed, then all the dissent that we have   
+been sowing for the past few months will have gone to waste, and
+we'll be no closer to taking over this planet than we were before.  
+
+
+.wo 
+The massster is a massster of disssguisssesss.  
+Why does he not take the place of the Winkle and imprison the   
+Satirize people if and when they return to the palace?  
+
+
+.rb 
+Just what I was thinking, Woundwort.
+
+
+.wo 
+I had a hunch you would be. 
+
+
+.rb 
+Back to that old line again, eh? Poor taste, old boy.   
+
+
+.wo 
+Yesss, masster. 
+
+
+.rb 
+Well, I have to get there and take the Winkle's place before any of 
+the party return. The Boobies are just outside the door, and I expect   
+they should be waking up any time now. Hold 
+them here while I get my disguise.  
+
+
+.wo 
+Yesss, masster. 
+
+
+.rb 
+And do something about that lisp.   
+
+
+.wo 
+Lissssp?
+
+
+.rb 
+Never mind. Just keep the Boobies here until I get back. Now that Brassiere has them in his 
+grasp, he will not let them go. 
+
+
+.wo 
+Trust me, massster, I will make ssure that they do not essscape.
+
+
+.rb 
+Cross your heart?   
+
+
+(WOUNDWORT DOES SO IN THE APPROPRIATE MANNER)   
+
+
+Good, I'm off.  
+
+
+.wo 
+Yesss, masster. 
+
+
+(BRASSIERE EXITS. WOUNDWORT GOES OFF STAGE AND DRAGS THE BOOBIES ON STAGE   
+ONE AT A TIME, PROPPING THEM UP AGAINST TWO DESKS THAT ARE ON THE STAGE.
+HE MUTTERS TO HIMSELF ALL THE TIME THAT HE DOES THIS, IN TYPICAL IGOR   
+FASHION. WHEN THEY ARE BOTH ON STAGE, HE TRIES TO WAKE THEM UP WITH LITTLE  
+PATS ON THE CHEEK. EITHER TYPE OF CHEEK - TAKE YOUR PICK. THEY START
+TO COME TO.)
+
+
+.pd 
+Where are we? What's happening? 
+
+
+.pz 
+Ohhh, Brian turn off the lights and come back to ...
+
+
+.pd 
+Who is Brian?   
+
+
+.wo 
+I'm Woundwort.  
+
+
+.pd 
+So? 
+
+
+.wo 
+(SNIVELLING A LITTLE AT THIS REBUKE)
+Welcome to the People's Bilingual Daily Gazette offices. You are our
+guests. 
+
+
+.pd 
+Is this one of Jerk's little jokes? Maybe he had the doctor 
+fill me full of some sort of joy-juice? 
+I bet you're really Jerk, but I'm so full of
+Dexelexedrine, you look different. Vast improvement.
+
+
+.pz 
+What are you talking about? Who are you talking to? 
+
+
+.pd 
+Jerk. He's doped us up so that he can take advantage of us. 
+
+
+.pz 
+How like a man. 
+
+
+.pd 
+Indeed. Well, it won't work, let me assure you. Boobies are 
+noted for the utmost of restraint, even 
+when they're in their cups. 
+
+
+.pz 
+Unless it's already worked. 
+
+
+.pd 
+Right, unless it has already ... oh boy. Pig. You didn't even let   
+us have a part of it. Don't try to deny it. I can tell by that hump on  
+your back that you 've got one on your mind as well.
+
+
+.wo 
+I do not underssstand what you are talking about ladiesss. Thiss isss   
+the People's Bilingual Daily Gazette.   
+
+
+.pd 
+Which is?   
+
+
+.wo 
+A publisssher of pagesss.   
+
+
+.pz 
+Bilingual and daily no doubt.   
+
+
+.wo 
+Actually they only come out once a week, and entirely in low munchkin, or as you would call it, English.
+
+
+.pd 
+Then why do you call yourselves that?   
+
+
+
+.wo 
+We liked the name.  
+
+
+.pz 
+What do you want from us?  Why are we all tied up like this?  Say are   
+you guys bondage.....nahh.  
+
+
+.wo 
+We want you for the same reason the Federation does.  We want your  
+silicon.
+
+
+.pd 
+Now what on earth.....  
+
+
+.wo 
+Fed.  The name of the planet is Fed.
+
+
+.pd 
+What on Fed would you people want with silicon? 
+The Pederasty needs it for their starships, but you... Pride,   
+do you know of any Fed starships?   
+
+
+.pz 
+No Fed starships that I've heard of. Ped yes.   
+Klingsons.  Romulans and their allies, the McLaughlin Planetarians. 
+The Jeffersons.  No Fed starships.  
+
+
+.pd 
+There. You see? 
+
+
+.wo 
+We do not want the silicon for power.  We want it for injections.   
+
+
+(PRIZE TURNS TO PRIDE.  THEY LOOK AT EACH OTHER, AND RAISE THEIR
+EYEBROWS.)  
+
+
+.pz 
+Injections? 
+
+
+.wo 
+Yes, in the soles of our feet.  We want to be the same size as the  
+other humanoids of the galaxy.  We want enough silicon to make  
+every munchkin on Fed seven foot five.  
+
+
+.pd 
+Why seven foot five?
+
+
+.wo 
+It seemed like a nice round number. 
+
+?   
+
+.pz 
+Have you tried elevator shoes?  
+
+
+.wo 
+Too obvious.
+
+
+.pz 
+I don't know what would be so subtle about feet that had a depth
+of a yard and a half.   
+
+
+.wo 
+(WHISPERING)
+I know that, but the others haven't thought of it yet.  
+The moment they fill up their feet with silicon, I'll sort of feel  
+that they've joined the club.   
+
+
+.pd 
+As it were. 
+
+
+(ENTER MATILDA. ON THE RUN.)
+
+
+.wm 
+Get back, get back, oh you devils, auggh they're all over the   
+floor.  
+
+
+.wo 
+Allow me massster.  
+
+
+(WOUNDWORT RUNS ABOUT THE FLOOR STANPING ON INVISIBLE CREATURES 
+WHILE MATILDA DCOES THE SAME.  THEY SCREAM FROM TIME TO TIME    
+THINGS LIKE "TAKE THAT, " AND "GET THAT ONE BEFORE HE GETS  
+UNDER THE CHAIR," AND "WHY DO THEY TORMENT ME?"  PRIZE AND PRIDE TRY TO 
+SEE WHAT IT IS THAT THEY'RE ATTACKING, AND LOOK ABOUT THE FLOOR 
+UNEASILY.)  
+
+
+
+
+.pd 
+What is it? 
+
+
+.wo 
+(WHISPERING WHILE MATILDA BOUNCES MERRILY ABOUT STAMPING)   
+
+
+We're not quite sure.  She said once that they were black   
+and about ten inches high, but that's as far as she would go.   
+We help her when she sees them, to quiet her dow
+
+We help her when she sees them, to quiet her down.  
+
+
+.pz 
+Who is that?
+
+
+.wo 
+Wahlsten Matilda, our assistant editor. 
+
+
+.pd 
+Bit of a psycho.
+
+
+.wo 
+You might say that. (SCREAMING IN BOTH THEIR EARS.) 
+Got you, you little bandit.  AAAAIIIII! 
+
+
+.wm 
+That's the last of them. Hoooo.  That was close.  Well, we're safe  
+until they regroup. (NOTICES BOOBIES)  Who are they?
+
+
+.wo 
+They're Boobies.
+
+
+.wm 
+What about them?
+
+
+.wo 
+No, they
+.ul 
+are 
+Boobies.
+
+
+.wm 
+Oh.  Oh, those Boobies.  The silicon girls. 
+
+
+.pd 
+Hmmph.  
+
+
+.wm 
+So Brassiere is back?   
+
+
+.wo 
+Back and gone again. It seems that  
+the people from the Satirize have landed on the planet and  
+are looking for the true page. As a result he's off to the palace to
+impersonate the Winkle and make sure that they never find out   
+we have the true page.  
+
+
+.wm 
+If in fact we do.  No one knows what the true page looks like.  
+
+
+.wo 
+I thought you said that that was the true page back in the storeroom.   
+
+
+.wm 
+Well, he says he's the true page. But then, they all do, don't they?
+Still, we figured that we'd better not have him wandering about 
+among the people when we are so close to starting the Revolution.   
+
+
+.pd 
+Revolution? 
+
+
+.wm 
+Yes, revolution.  Where were these people in scene two?     
+
+
+.wo 
+Under the influence of a sssedative, massster.  
+
+
+.wm 
+Another opiate of the masses.  All right you two, I'll explain  
+once more, just in case there's someone else who was out-   
+(SIDEWAYS GLANCE AT AUDIENCE)   
+-when this was explained the first time.  We have been formenting dissent   
+around the land for some time, turning the munchkins against    
+the Winkle, promising them that they can be tall once again if  
+they follow our leader Robert Brasieree.
+
+
+.pd 
+Once again. You mean that they were tall once?  
+
+
+.wm 
+At one time the average height of a munchkin was six foot   
+three and a half.   
+
+
+.pz 
+What happened?  
+
+
+.wm 
+A group of travelling players came by the planets to put on a   
+show.  Starvie Harvie and company, featuring the incomparable   
+ChiChi la Cheek.  They hit every city in the country and so 
+aroused the populace that they fell to vice.  In time the   't tplayers left and the
+
+players left and the people went back to the drab normal way of life.   
+But it stunted their growth permanently. It's a 
+good thing they didn't go blind as well.
+
+
+.wo 
+(DROOLING)  
+I went to every show.   
+
+
+.pd 
+So it appears.  
+
+
+.wm 
+The few of us who were out peddling pages in the streets during 
+the show were saved from this fate worse than death.
+
+
+.pz 
+Someone tell you to go peddle your pages?   
+
+
+.wm 
+I wouldn't say that it was worse than death.
+
+
+.wm 
+You wouldn't. Anyway, that's the reason that    
+the munchkins want to have silicon and that's the reason that we
+can stir them up against the Winkle in these troubled   
+times.  
+
+
+
+
+.pd 
+Why?
+
+
+.wm 
+Because he's still tall.  He was busy performing his own
+act while the players-  
+
+
+.wo 
+- and the people -  
+
+
+.wm 
+- were performing theirs.  For a while they looked up to him
+because of his height - 
+
+
+(WOUNDWORT LOOKS UP AT MATILDA) 
+
+
+but it wasn't too hard for the paper to turn respect into jealousy. 
+
+
+.pd 
+And now the people are ready to revolt. 
+
+
+.wm 
+Yes, as soon as we tell them that the silicon is at hand we 
+have nothing to worry about.  We will be able to lead them on the   
+palace any time we feel like it.  Hmmmmm.....   
+
+
+.wo 
+Yesss, massster?
+
+
+.wm 
+You say that Brassiere has gone to the palace to take the   
+place of the Winkle.
+
+
+.wo 
+Yesss, massster.
+
+
+.wm 
+That's interesting.  Suppose that the revolt came while Brassiere   
+was still disguised as the Winklke.  His disguises are always   
+so foolproof that the revolting munchkins could never tell  
+that it wasn't the real Winkle.  Hmmmmmm.  Woundwort take the   
+Boobies into the next room and get them ready to go to court.   
+
+
+.wo 
+How massster?   
+
+
+.wm 
+Oh, freshen up their ropes or something. Don't bother me with   
+details. And hurry. I'll be back in a second.   
+
+
+.wo 
+Yesss, massster.
+
+
+(EXIT MATILDA)  
+
+
+(ENTER BRASSIERE)   
+
+
+.rb 
+You're not going to believe this, but I almost forgot the boobies.  
+I'm off!
+
+
+(EXEUNT BRASSIERE AND BOOBIES)  
+
+
+.wo 
+Yessssss, massssster.   
+
+
+(ENTER MATILDA) 
+
+
+.wm 
+Where are the boobies?  
+
+
+.wo 
+You're not going to believe this, but-  
+
+
+.wm 
+In tnis show I'd believe anything. Get the true page, I feel a  
+soliliquy coming on.
+Now let me see. All I have to do
+is lead the munchkins against   
+the palace while Brassiere is still on the throne, and kill 
+him fast before he can prove that he isn't  
+the Winkle.  I'll be the leader of the revolution.  
+I'll have the Boobies, I'll have the silicon, and the   
+munchkins will have no one else to choose as leader except  
+me.  Leader.  Emperor.  Dictator.  Yes.  It's perfect.  
+
+
+.je 
+(CRASHING THROUGH THE DOOR WITH NURSE CHAPPEDLIPS UNDER HIS 
+ARMS)  Not so fast, Brassiere!  
+
+
+.wm 
+I'm not Brassiere. I'm Wahlsten  Matilda,   
+his assistant and usurper-elect.
+
+
+.je 
+Well, whoever you are, I heard you say that you had the true page,  
+and I'm here for it.
+
+
+.wm 
+You can't take him he's........wauggh! There's one by your foot.
+
+
+(MATILDA LUNGES FOR THE CREEPY-CRAWLY AND JERK JUMPS BACK.  
+MATILDA WRENCHES THE PHASER FROM JERK'S HAND AND LEVELS IT ON   
+HIM.  SHE CRUSHES THE FLOOR WITH HER FOOT WITH FINALITY.)   
+
+
+.wm 
+It seems the shoe is on the other foot now, Captain Jerk.   re n
+
+
+
+.je 
+You know me?
+
+
+.wm 
+Doesn't everyone?   
+Ahh, here's my true page.   
+
+
+(ENTER PAGE, LOOKING SUSPICIOUSLY LIKE WOUNDWORT).  
+
+
+.aa PAGE
+Yesss, massster.
+
+
+.je 
+Are you the true page?  
+
+
+.aa PAGE
+Yesss, massster.
+
+
+.wm 
+He's not your master; I'm your master.  
+
+
+.aa PAGE
+Yesss, massster.
+
+
+.je 
+Shifts his loyalties quickly.   
+
+
+.wm 
+Yes, it's so hard getting good help these... enough of this.
+It's time for you to die, Jerk. 
+
+
+.je 
+(SLYLY) 
+If I have to die, I suppose I have to.  But surely you  
+wouldn't want me to go on an empty stomach.  I've been carrying this pizza  
+around with me for hours now, just waiting for a good spot to eat it, and now...
+
+
+.wm 
+I don't care about your greedy stomach. Don't you realize that there
+are people starving in Zim.....Zim.... oh, blast, what is that name?
+Well, who cares.  Give ne that pizza. I could   
+use something to eat now.   
+
+
+.je 
+Now, Nurse Chappedlips!!
+
+
+(SHE LEAPS OUT OF THE BOX INTO MATILDA'S FACE, WHILE JERK QUICKLY GRABS 
+THE PHASER FROM MATILDA.)   
+
+ shoOkay, Page, you're coming with me back to the pa
+
+
+.Bu..Bu.
+fass
+
+
+
+Okay, Page, you're coming with me back to the palace pronto. I've   
+got to tell the Winkle that the plot is almost boiling over.  You keep him  
+busy 'till we're out of here, Nurse.
+
+
+.wm 
+Mnnnnn, MMMMMM, MMMMMMMMMMMMMMMM!   
+
+
+.je 
+Face it, Matilda, you're licked.  Come on, Page.
+
+
+.aa PAGE
+Yesss, massster.
+
+
+(THEY EXIT. MATILDA STRUGGLES FOR A TIME UNTIL SHE THROWS DOWN THE PIZZA
+AND SHOVES IT IN ITS BOX)   
+
+
+.wm 
+(PANTING) Wheww, I thought she had me.  She knew Karate.
+Woundwort!  
+
+
+(WOUNDWORT ENTERS FROM THE WRONG SIDE OF THE STAGE, THE SIDE THAT   
+JERK AND THE PAGE LEFT ON, RATHER THAN THE SIDE WHERE HE WENT   
+OFF.)   
+
+
+.wo 
+Yesss, Massster.
+(HE IS BEGINNING TO SOUND A LITTLE TIRED.)  
+
+
+.wm 
+Get the Boobies and notify everyone. We're storming 
+the palace now. 
+
+
+.wo 
+But -   
+
+
+.wm 
+No buts.  The time is now or never. 
+
+
+.wo 
+Yeah, okay, I got you.  Oh, sorry.  Yesss, massster.
+(EXIT WOUNDWORT)
+
+
+.wm 
+.nf 
+.in+2   
+So.   Now the hour draws near   
+When man has darkened destiny doth confront 
+Black-hearted as the mouth of the grave 
+And nations borning, crying with the pain of birth  
+Will come this day to stretch o'er all the.......   
+
+
+.fi 
+.in8
+Get off me!  Oh, Oh, there's goes another one, Oh,  
+oh, Woundwort, Woundwort, bring the elephant gun quick. 
+
+
+fin 

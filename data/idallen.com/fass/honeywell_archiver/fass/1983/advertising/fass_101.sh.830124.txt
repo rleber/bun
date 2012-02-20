@@ -1,0 +1,31 @@
+
+
+
+.......$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# How to do the fass_101 sheet. 
+vtroff -F nonie fass_101 # to get the boldface  
+vtroff -F none -3 bocklin fass_101 # to get the title   

@@ -1,0 +1,85 @@
+
+
+
+......q.
+fass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.so fass/1985/script/85macr.t   
+.bs 1 4 "They Also Serve ..."   
+.na dk DARTH~COORDINATOR DARTH  
+.na cp CABBAGE~PATCH~KID KID
+.na cc CARLA~CHAMELEON CARLA
+.na pn THE~PUNSTER PUNSTER  
+.ld 
+(LIGHTS UP) 
+.ch cp  
+Welcome fellow supervillains.  You have been chosen not 
+only for your great talents, but because you are generally (PAUSES, THEN
+WITH GUSTO) mean, evil, loathsome, despicable... (GETS CHOKED UP)   
+.ch cc  
+Gets you right her. (INDICATES HEART)   
+.ch dk  
+I had that removed. 
+.ch cp  
+(SOBBING WITH JOY)  You're all so vile and disgusting - like the family 
+I never had...  
+.ch dk  
+(PROUDLY)  They truly are a wretched crew.  
+.ch pn  
+(BURSTING IN FROM OFFSTAGE)  Wretched crew?  You guys talking   
+about my haircut?   
+.ch dk  
+(WITHOUT LOOKING)  Ah Punster!  Tell us about the heroes' foul plan.
+.ch pn  
+Foul plan... I didn't know they were using chickens!
+.ch dk  
+(SPINS AND PUTS PUNSTER IN STRANGLE FORCE-GRIP)  Save your  
+horrid puns for the heroes.  Give us a report.  (RELEASES HIM SUDDENLY) 
+.ch pn  
+(RUBBING THROAT)  Yes, Lord Co-Ordinator.  They are sending 
+
+ten heroes to Fed Hall... their leader is FASS, (PERKS UP) in fact he's 
+so FASS (DARTH TURNS, PUNSTER CATCHES HIMSELF) ...  
+.ch dk  
+FASS Gordon.
+.ch cp  
+That pansy with the ray gun?  I'll rip him to   
+shreds.  I'll stick Absorbine Jr. in his jockey shorts! 
+I'll force him to watch 
+Laverne & Shirley reruns!   
+.ch dk  
+That's the spirit.  We can't afford to lose our funding so we must make 
+sure the heroes don't get any money.  And you KNOW how we do this!  
+.xx SLIME~OF~THE~STREET 
+Make them wait in line at the Commerce in the CC?   
+.ch dk  
+No, you ninny!  By terminating the heroes.  
+.ch cp  
+Eleven of us - waiting in ambush for ten of them.   
+It'll be a massacre.  We'll slaughter 'em.  We'll   
+dismember them.  (PAUSE, THEN TO AUDIENCE)  I love this job!
+.ld 
+(LIGHTS DOWN)   
+.es 
