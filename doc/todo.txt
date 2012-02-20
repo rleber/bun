@@ -1,9 +1,12 @@
+Move Ian's URL to a system environment variable; add it to CONFIG
+Create file format notes
+Revise installation readme
 Clean code
+Separate 80/81 script stuff from archival, etc.
 Rename GECOS
 Separate Archive, File, and Freezer
 Standardize Decode and Defrost interfaces
 Refactor repair
-Move Ian's URL to a system environment variable
 Build as a gem
 Upload to Github
 Move files to Dropbox
@@ -12,7 +15,3 @@ Mass archive extraction
 Find frozen files, even if extension isn't ".f"
 Exract file preamble (e.g. File name etc.)
 Make independent of index file
-Separate 80/81 script stuff from archival, etc.
-Create file format notes
-Create installation readme
-Create readme command

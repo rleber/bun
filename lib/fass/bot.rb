@@ -98,13 +98,21 @@ class Fass
     
     # TODO Move this to tools project; refactor
     no_tasks do
-      def fetch(base_uri, destination)
+      # Fetch all files and subdirectories of a uri to a destination folder
+      # The destination folder will have subfolders created, based on the structure of the uri
+      # For example, fetching "http://example.com/in/a/directory/" to "data" will create a
+      # copy of the contents at the uri into "data/example.com/in/a/directory"
+      def _fetch(base_uri, destination)
+        destination.sub!(/\/$/,'') # Remove trailing slash from destination, if any
+        destination = destination + '/' + base_uri.sub(/^http:\/\//,'')
+        destination.sub!(/\/$/,'') # Remove trailing slash from destination, if any
+        uri_sub_path = base_uri.sub(/http:\/\/[^\/]*/,'')
         count = 0
         agent = Mechanize.new
         FileUtils::rm_rf(destination)
         process(agent, base_uri) do |page|
-          relative_uri = page.uri.path.sub(/^#{Regexp.escape(base_uri)}/, '')
-          file_name = destination + relative_uri
+          relative_uri = page.uri.path.sub(/^#{Regexp.escape(uri_sub_path)}/, '')
+          file_name = destination + '/' + relative_uri
           dirname = File.dirname(file_name)
           FileUtils::mkdir_p(dirname)
           File.open(file_name, 'w') {|f| f.write page.body}
@@ -155,10 +163,12 @@ class Fass
     end
     
     IGNORE_LINKS = ["Name", "Last modified", "Size", "Description", "Parent Directory"]
-    desc "fetch", "Fetch files from Ian! Allen's online repository"
-    def fetch
+    desc "fetch [URL]", "Fetch files from an online repository"
+    def fetch(url=nil)
       agent = Mechanize.new
-      fetch("http://idallen.com/fass/honeywell_archiver/", "data/idallen.com")
+      url ||= ENV["FASS_ARCHIVE_URL"]
+      abort "No url provided" unless url
+      _fetch(url, "data")
     end
     
     option "lines", :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
@@ -331,6 +341,10 @@ class Fass
         decoder.words = content
       end
       File.open(to,'w') {|f| f.write lines.map{|l| lines[:content]}.join("\n") }
+    end
+    
+    desc "index", "Display an index of archived files"
+    def index
     end
 
     register Fass::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files (Type \"fass freezer\" for more details)"
