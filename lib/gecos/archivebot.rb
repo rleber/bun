@@ -24,8 +24,12 @@ class GECOS
           relative_uri = page.uri.path.sub(/^#{Regexp.escape(uri_sub_path)}/, '')
           file_name = destination + '/' + relative_uri
           dirname = File.dirname(file_name)
-          FileUtils::mkdir_p(dirname)
-          File.open(file_name, 'w') {|f| f.write page.body}
+          if @dryrun
+            puts "Fetch #{file_name}"
+          else
+            FileUtils::mkdir_p(dirname)
+            File.open(file_name, 'w') {|f| f.write page.body}
+          end
           count += 1
         end
         puts "#{count} files retrieved"
@@ -74,6 +78,7 @@ class GECOS
     
     IGNORE_LINKS = ["Name", "Last modified", "Size", "Description", "Parent Directory"]
     desc "fetch [URL] [TO]", "Fetch files from an online repository"
+    option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Do a dry run only; show what would be fetched, but don't save it"
     long_desc <<-EOT
 Fetches all the files and subdirectories of the specified online url to the data directory.
 
@@ -93,6 +98,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       archive_location  ||= Archive.location
       abort "No url provided" unless url
       abort "No archive location provided" unless archive_location
+      @dryrun = options[:dryrun]
       _fetch(url, archive_location)
     end
     
