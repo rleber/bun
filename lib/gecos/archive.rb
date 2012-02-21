@@ -3,6 +3,9 @@ require 'yaml'
 class GECOS
   class Archive
     
+    INDEX_FILE = '.index'
+    LOG_FILE   = '.log'
+    
     def self.location
       config['archive'].sub(/^~/,ENV['HOME'])
     end
@@ -12,11 +15,21 @@ class GECOS
     end
     
     def self.index_file
-      config['index_file'].sub(/^~/,ENV['HOME'])
+      File.join(raw_directory, INDEX_FILE)
     end
     
     def self.repository
       config['repository']
+    end
+    
+    def self.load_config(config_file="data/archive_config.yml")
+      @config = YAML.load(File.read(config_file))
+      @config['repository'] ||= ENV['GECOS_REPOSITORY']
+      @config
+    end
+    
+    def self.config
+      @config ||= load_config
     end
     
     attr_reader :location
@@ -41,19 +54,12 @@ class GECOS
       line[-1]
     end
     
-    def self.load_config(config_file="data/archive_config.yml")
-      @config = YAML.load(File.read(config_file))
-      @config['repository'] ||= ENV['GECOS_REPOSITORY']
-      @config
-    end
-    
-    def self.config
-      @config ||= load_config
-    end
-    
     def config
       self.class.config
     end
+    
+    def log(message)
+      
   end
 end
 
