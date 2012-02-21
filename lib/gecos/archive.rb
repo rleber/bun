@@ -59,7 +59,8 @@ class GECOS
     end
     
     def log(message)
-      
+      warn message
+    end
   end
 end
 
