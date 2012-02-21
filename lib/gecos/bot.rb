@@ -1,14 +1,14 @@
 require 'thor'
 require 'mechanize'
 require 'fileutils'
-require 'fass/archive'
-require 'fass/decoder'
-require 'fass/defroster'
-require 'fass/freezerbot'
-require 'fass/dump'
+require 'gecos/archive'
+require 'gecos/decoder'
+require 'gecos/defroster'
+require 'gecos/freezerbot'
+require 'gecos/dump'
 require 'rleber-interaction'
 
-class Fass
+class GECOS
   class Bot < Thor
     include Interaction
     
@@ -97,7 +97,7 @@ class Fass
     end
     
     IGNORE_LINKS = ["Name", "Last modified", "Size", "Description", "Parent Directory"]
-    desc "fetch [URL]", "Fetch files from an online repository"
+    desc "fetch [URL] [TO]", "Fetch files from an online repository"
     long_desc <<-EOT
 Fetches all the files and subdirectories of the specified online url to the data directory.
 
@@ -105,14 +105,19 @@ Fetched files are copied to subdirectories of the data directory. So, for instan
 "http://example.com/in/a/subdirectory/" will cause files to be copied to the directory
 data/example.com/in/a/subdirectory and its subdirectories, mirroring the structure online.
 
-If no URL is provided, this command will use the location specified in the FASS_ARCHIVE_URL
-environment variable. If this environment variable is not set, the URL is mandatory.
+If no URL is provided, this command will use the location specified in the data/archive_config.yml
+file or the GECOS_REPOSITORY environment variable. If neither is set, the URL is mandatory.
+
+If no "to" location is provided, this command will use the archive location specified in
+data/archive_config.yml. Usually, this is ~/gecos_archive
     EOT
-    def fetch(url=nil)
+    def fetch(url=nil, to=nil)
       agent = Mechanize.new
-      url ||= ENV["FASS_ARCHIVE_URL"]
+      url ||= Archive.repository
+      to  ||= Archive.location
       abort "No url provided" unless url
-      _fetch(url, "data")
+      abort "No \"to\" location provided" unless to
+      _fetch(url, to)
     end
     
     option "lines", :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
@@ -122,7 +127,7 @@ environment variable. If this environment variable is not set, the URL is mandat
     desc "dump FILE", "Dump a Honeywell file"
     def dump(file)
       file = Archive.default_directory + '/' + file unless file =~ /\//
-      decoder = Fass::Decoder.new(File.read(file))
+      decoder = GECOS::Decoder.new(File.read(file))
       archived_file = Archive.file_name(file)
       archived_file = "--unknown--" unless archived_file
       puts "Archive for file #{archived_file}:"
@@ -136,7 +141,7 @@ environment variable. If this environment variable is not set, the URL is mandat
     desc "unpack", "Unpack a file (Not frozen files -- use freezer subcommands for that)"
     def unpack(file)
       file = Archive.default_directory + '/' + file unless file =~ /\//
-      decoder = Fass::Decoder.new(File.read(file))
+      decoder = GECOS::Decoder.new(File.read(file))
       archived_file = Archive.file_name(file)
       abort "Can't unpack file. It's a frozen file #{archived_file}" if Defroster.frozen?(file)
       words = decoder.words
@@ -180,7 +185,7 @@ environment variable. If this environment variable is not set, the URL is mandat
     desc "repair FILE TO", "Repair a file (Not frozen files -- use freezer subcommands for that)"
     def repair(file, to)
       file = Archive.default_directory + '/' + file unless file =~ /\//
-      decoder = Fass::Decoder.new(File.read(file))
+      decoder = GECOS::Decoder.new(File.read(file))
       archived_file = Archive.file_name(file)
       abort "Can't unpack file. It's a frozen file #{archived_file}" if Defroster.frozen?(file)
       content = decoder.words
@@ -314,7 +319,7 @@ environment variable. If this environment variable is not set, the URL is mandat
     desc "describe FILE", "Display description information for a file"
     def describe(file)
       file = Archive.default_directory + '/' + file unless file =~ /\//
-      decoder = Fass::Decoder.new(File.read(file))
+      decoder = GECOS::Decoder.new(File.read(file))
       archived_file = Archive.file_name(file)
       archive = decoder.file_archive_name
       subdirectory = decoder.file_subdirectory
@@ -350,14 +355,14 @@ environment variable. If this environment variable is not set, the URL is mandat
           defroster.files.times do |i|
             descr = defroster.descriptor(i)
             subfile_name = descr.file_name
-            puts "fass freeze thaw -r #{file_name} #{subfile_name} >#{to + '/' + file_name + '/' + file_path + '/' + subfile_name}"
+            puts "gecos freeze thaw -r #{file_name} #{subfile_name} >#{to + '/' + file_name + '/' + file_path + '/' + subfile_name}"
           end
         else
-          puts "fass unpack -r #{file_name} >#{to + '/' + file_name + '/' + file_path}"
+          puts "gecos unpack -r #{file_name} >#{to + '/' + file_name + '/' + file_path}"
         end
       end
     end
 
-    register Fass::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files (Type \"fass freezer\" for more details)"
+    register GECOS::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files (Type \"gecos freezer\" for more details)"
   end
 end

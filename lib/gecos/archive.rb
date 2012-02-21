@@ -9,6 +9,10 @@ class Fass
       config['archive']
     end
     
+    def self.repository
+      config['repository']
+    end
+    
     def self.index
       @archive_index ||= _index
     end
