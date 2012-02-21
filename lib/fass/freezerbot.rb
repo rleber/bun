@@ -60,6 +60,10 @@ class Fass
     end
 
     desc "thaw ARCHIVE FILE", "Uncompress a frozen Honeywell file"
+    option "repair", :aliases=>"-r", :type=>"boolean", :desc=>"Attempt to repair damage in the file"
+    option "strict", :aliases=>"-s", :type=>"boolean", :desc=>"Check for bad data. Abort if found"
+    option "trace", :aliases=>"-t", :type=>"boolean", :desc=>"Print debugging trace information"
+    option "warn", :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
     def thaw(file, n)
       file = Archive.default_directory + '/' + file unless file =~ /\//
       archived_file = Archive.file_name(file)
@@ -67,6 +71,7 @@ class Fass
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = Fass::Decoder.new(File.read(file))
       defroster = Fass::Defroster.new(decoder)
+      Fass::Defroster.options = options
       STDOUT.write defroster.content(index_for(defroster,n))
     end
     
