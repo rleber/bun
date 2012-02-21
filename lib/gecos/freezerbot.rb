@@ -8,6 +8,14 @@ class GECOS
 
     TIMESTAMP_FORMAT = "%m/%d/%Y %H:%M:%S"
 
+    no_tasks do
+      def get_regexp(pattern)
+        Regexp.new(pattern)
+      rescue
+        nil
+      end
+    end
+
     DEFAULT_WIDTH = 120
     SORT_VALUES = %w{order name size update}
     option "long", :aliases=>'-l', :type=>'boolean', :desc=>"Display listing in long format"
@@ -15,9 +23,12 @@ class GECOS
     option "descr", :aliases=>'-d', :type=>'boolean', :desc=>"Display the file descriptor for each file (in octal)"
     option "width", :aliases=>'-w', :type=>'numeric', :default=>DEFAULT_WIDTH, :desc=>"Width of display (for short format only)"
     option "sort", :aliases=>"-s", :type=>'string', :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
+    option "files", :aliases=>"-f", :type=>'string', :default=>'.*', :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
     desc "ls ARCHIVE", "List contents of a frozen Honeywell file"
     def ls(file)
       abort "Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
+      file_pattern = get_regexp(options[:files])
+      abort "Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
       archived_file = archive.file_path(file)
@@ -38,6 +49,7 @@ class GECOS
       file_info = []
       defroster.files.times do |i|
         descr = defroster.descriptor(i)
+        next unless descr.file_name=~file_pattern
         file_info << {'order'=>i, 'update'=>descr.update_time, 'size'=>descr.file_words, 'name'=>descr.file_name}
       end
       sorted_order = file_info.sort_by{|fi| [fi[options[:sort]], fi['name']]}.map{|fi| fi['order']} # Sort it in order
