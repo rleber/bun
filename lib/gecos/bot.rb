@@ -35,9 +35,10 @@ class GECOS
     option "offset", :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lines'
     desc "dump FILE", "Dump a Honeywell file"
     def dump(file)
-      file = Archive.default_directory + '/' + file unless file =~ /\//
+      archive = Archive.new
+      file = archive.qualified_tape_file_name(file)
       decoder = GECOS::Decoder.new(File.read(file))
-      archived_file = Archive.file_name(file)
+      archived_file = archive.file_name(file)
       archived_file = "--unknown--" unless archived_file
       puts "Archive for file #{archived_file}:"
       words = decoder.words
@@ -49,9 +50,10 @@ class GECOS
     option "deleted", :aliases=>'-d', :type=>'boolean', :desc=>"Display deleted lines (only with --inspect)"
     desc "unpack", "Unpack a file (Not frozen files -- use freezer subcommands for that)"
     def unpack(file)
-      file = Archive.default_directory + '/' + file unless file =~ /\//
+      archive = Archive.new
+      file = archive.qualified_tape_file_name(file)
       decoder = GECOS::Decoder.new(File.read(file))
-      archived_file = Archive.file_name(file)
+      archived_file = archive.file_name(file)
       abort "Can't unpack file. It's a frozen file #{archived_file}" if Defroster.frozen?(file)
       words = decoder.words
       offset = decoder.file_content_start + UNPACK_OFFSET
@@ -93,9 +95,10 @@ class GECOS
     option "inspect", :aliases=>'-i', :type=>'boolean', :desc=>"Display long format details for each line"
     desc "repair FILE TO", "Repair a file (Not frozen files -- use freezer subcommands for that)"
     def repair(file, to)
-      file = Archive.default_directory + '/' + file unless file =~ /\//
+      archive = Archive.new
+      file = archive.qualified_tape_file_name(file)
       decoder = GECOS::Decoder.new(File.read(file))
-      archived_file = Archive.file_name(file)
+      archived_file = archive.file_name(file)
       abort "Can't unpack file. It's a frozen file #{archived_file}" if Defroster.frozen?(file)
       content = decoder.words
       lines = nil
@@ -206,9 +209,10 @@ class GECOS
     
     desc "describe FILE", "Display description information for a file"
     def describe(file)
-      file = Archive.default_directory + '/' + file unless file =~ /\//
+      archive = Archive.new
+      file = archive.qualified_tape_file_name(file)
       decoder = GECOS::Decoder.new(File.read(file))
-      archived_file = Archive.file_name(file)
+      archived_file = archive.file_name(file)
       archive = decoder.file_archive_name
       subdirectory = decoder.file_subdirectory
       specification = decoder.file_specification

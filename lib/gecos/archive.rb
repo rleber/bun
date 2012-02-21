@@ -41,25 +41,29 @@ class GECOS
     def index
       @archive_index ||= _index
     end
+    
+    def raw_directory
+      self.class.raw_directory
+    end
 
     def _index(index_file=nil)
       index_file ||= self.class.index_file
       File.read(File.join(location,index_file)).split("\n").map{|line| line.split(/\s+/)}
     end
 
-    def file_name(name)
-      name = File.basename(name)
-      line = index.find{|l| l[0] == name}
+    def file_name(tape_name)
+      tape_basename = File.basename(tape_name)
+      line = index.find{|l| l[0] == tape_basename}
       return nil unless line
       line[-1]
     end
     
-    def config
-      self.class.config
+    def qualified_tape_file_name(file_name)
+      file_name =~ /^\// ? file_name : File.join(location, raw_directory, file_name)
     end
     
-    def log(message)
-      warn message
+    def config
+      self.class.config
     end
   end
 end
