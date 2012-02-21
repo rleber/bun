@@ -102,16 +102,30 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       _fetch(url, archive_location)
     end
     
+    no_tasks do
+      def get_regexp(pattern)
+        Regexp.new(pattern)
+      rescue
+        nil
+      end
+    end
+    
     SORT_VALUES = %w{tape file type}
     TYPE_VALUES = %w{all frozen normal}
     desc "ls [ARCHIVE]", "Display an index of archived files"
     option "long", :aliases=>"-l", :type=>'boolean', :desc=>"Display long format (incl. normal vs. frozen)"
     option "sort", :aliases=>"-s", :type=>'string', :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
-    option "type", :aliases=>"-t", :type=>'string', :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
+    option "type", :aliases=>"-T", :type=>'string', :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
+    option "tapes", :aliases=>"-t", :type=>'string', :default=>'.*', :desc=>"Show only tapes that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
+    option "files", :aliases=>"-f", :type=>'string', :default=>'.*', :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
     def ls(archive_location=nil)
       abort "Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
       abort "Unknown --type setting. Must be one of #{TYPE_VALUES.join(', ')}" unless TYPE_VALUES.include?(options[:type])
       type_pattern = options[:type]=='all' ? /.*/ : /^#{Regexp.escape(options[:type])}$/i
+      file_pattern = get_regexp(options[:files])
+      abort "Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
+      tape_pattern = get_regexp(options[:tapes])
+      abort "Invalid --tapes pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless tape_pattern
       archive = Archive.new(archive_location)
       ix = archive.tapes
       directory = archive.location
@@ -128,7 +142,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         tape_name = fi
         file_name = archive.file_path(fi)
         friz = Archive.frozen?(archive.qualified_tape_file_name(tape_name)) ? 'Frozen' : 'Normal'
-        next unless friz =~ type_pattern
+        next unless friz =~ type_pattern && tape_name=~tape_pattern && file_name=~file_pattern
         file_info << {'tape'=>tape_name, 'type'=>friz, 'file'=>file_name}
       end
       sorted_info = file_info.sort_by{|fi| [fi[options[:sort]], fi['file'], fi['tape']]} # Sort it in order
