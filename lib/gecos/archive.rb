@@ -1,12 +1,12 @@
-# TODO Either remove this entirely and retrieve index information from the individual files, or remove idallen references
 class Fass
   class Archive
 
-    ARCHIVE_LISTING = 'data/idallen.com/fass/honeywell_archiver/_misc/fass-index.txt'
-    DEFAULT_ARCHIVE_DIRECTORY = "data/idallen.com/fass/honeywell_archiver/_misc/36_bit_tape_files"
+    INDEX_FILE = 'fass-index.txt'
+    DEFAULT_ARCHIVE_DIRECTORY = "_misc/36_bit_tape_files"
 
-    def self.default_directory
-      DEFAULT_ARCHIVE_DIRECTORY
+    
+    def self.location
+      config['archive']
     end
     
     def self.index
@@ -14,7 +14,7 @@ class Fass
     end
 
     def self._index
-      File.read(ARCHIVE_LISTING).split("\n").map{|line| line.split(/\s+/)}
+      File.read(File.join(location,INDEX_FILE).split("\n").map{|line| line.split(/\s+/)}
     end
 
     def self.file_name(name)
@@ -22,6 +22,20 @@ class Fass
       line = index.find{|l| l[0] == name}
       return nil unless line
       line[-1]
+    end
+    
+    def self.load_config(config_file="data/archive_config.yml")
+      @config = YAML.load(File.read(config_file))
+      @config['repository'] ||= ENV['GECOS_REPOSITORY']
+      @config
+    end
+    
+    def self.config
+      @config ||= load_config
+    end
+    
+    def config
+      self.class.config
     end
   end
 end
