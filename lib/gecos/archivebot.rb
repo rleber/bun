@@ -101,36 +101,52 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       _fetch(url, archive_location)
     end
     
-    desc "index [ARCHIVE]", "Display an index of archived files"
+    SORT_VALUES = %w{tape file type}
+    TYPE_VALUES = %w{all frozen normal}
+    desc "ls [ARCHIVE]", "Display an index of archived files"
     option "long", :aliases=>"-l", :type=>'boolean', :desc=>"Display long format (incl. normal vs. frozen)"
-    def index(archive_location=nil)
+    option "sort", :aliases=>"-s", :type=>'string', :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
+    option "type", :aliases=>"-t", :type=>'string', :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
+    def ls(archive_location=nil)
+      abort "Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
+      abort "Unknown --type setting. Must be one of #{TYPE_VALUES.join(', ')}" unless TYPE_VALUES.include?(options[:type])
+      type_pattern = options[:type]=='all' ? /.*/ : /^#{Regexp.escape(options[:type])}$/i
       archive = Archive.new(archive_location)
       ix = archive.index
       directory = archive.location
-      file_name_width = ix.map{|entry| entry.first.size}.max
-      ix.each do |entry|
-        file_name = entry[0]
-        if options[:long]
-          if Defroster::frozen?(directory + '/' + file_name)
-            typ = 'Frozen '
-          else
-            typ = 'Normal '
-          end
-        else
-          typ = ''
-        end
-        puts %Q{#{"%-#{file_name_width}s" % file_name} #{typ}#{'%-s' % entry[-1]}}
+      puts "Archive at #{directory}:"
+      tape_name_width = ix.map{|entry| entry.first.size}.max
+      if options[:long]
+        puts "%-#{tape_name_width}s" % 'Tape' + '  Type    File'
+      else
+        puts "%-#{tape_name_width}s" % 'Tape' + '  File'
+      end
+      # Retrieve file information
+      file_info = []
+      ix.each_with_index do |fi, i|
+        tape_name = fi[0]
+        file_name = fi[-1]
+        friz = Archive.frozen?(archive.qualified_tape_file_name(tape_name)) ? 'Frozen' : 'Normal'
+        next unless friz =~ type_pattern
+        file_info << {'tape'=>tape_name, 'type'=>friz, 'file'=>file_name}
+      end
+      sorted_info = file_info.sort_by{|fi| [fi[options[:sort]], fi['file'], fi['tape']]} # Sort it in order
+      # Display it
+      sorted_info.each do |entry|
+        typ = options[:long] ? '%-8s'% entry['type'] : ""
+        puts %Q{#{"%-#{tape_name_width}s" % entry['tape']}  #{typ}#{'%-s' % entry['file']}}
       end
     end
     
     desc "extract [ARCHIVE] [TO]", "Extract all the files in the archive"
     def extract(archive_location=nil, to=nil)
       directory = archive_location || Archive.location
+      archive = Archive.new(directory)
       to ||= "output"
       ix = Archive.index
       ix.each do |entry|
         file_name = entry[0]
-        extended_file_name = directory + '/' + file_name
+        extended_file_name = archive.qualified_tape_file_name(file_name)
         frozen = Defroster::frozen?(extended_file_name)
         decoder = Decoder.new(File.read(extended_file_name))
         file_path = decoder.file_path

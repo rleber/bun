@@ -31,6 +31,7 @@ class GECOS
     # Is the given file frozen?
     # Yes, if and only if it has a valid descriptor
     def self.frozen?(file_name)
+      raise "File #{file_name} doesn't exist" unless File.exists?(file_name)
       return nil unless File.exists?(file_name)
       decoder = Decoder.new(File.read(file_name, 300))
       defroster = Defroster.new(decoder)

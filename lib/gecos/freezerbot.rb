@@ -9,7 +9,6 @@ class GECOS
     TIMESTAMP_FORMAT = "%m/%d/%Y %H:%M:%S"
 
     DEFAULT_WIDTH = 120
-    DEFAULT_SORT = 'number'
     SORT_VALUES = %w{order name size update}
     option "long", :aliases=>'-l', :type=>'boolean', :desc=>"Display listing in long format"
     option "one", :aliases=>'-1', :type=>'boolean', :desc=>"Display one file per line (implied by --long or --descr)"
@@ -41,7 +40,8 @@ class GECOS
         descr = defroster.descriptor(i)
         file_info << {'order'=>i, 'update'=>descr.update_time, 'size'=>descr.file_words, 'name'=>descr.file_name}
       end
-      sorted_order = file_info.sort_by{|fi| [fi[options[:sort]], fi['name']]}.map{|fi| fi['order']}
+      sorted_order = file_info.sort_by{|fi| [fi[options[:sort]], fi['name']]}.map{|fi| fi['order']} # Sort it in order
+      # Accumulate the display
       sorted_order.each do |i|
         descr = defroster.descriptor(i)
         if options[:long]
