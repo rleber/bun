@@ -50,7 +50,23 @@ class GECOS
       end
       
       def update_date
+        Decoder.date(_update_date)
+      end
+      
+      def _update_date
         characters(8,8)
+      end
+      
+      def update_time_of_day
+        Decoder.time_of_day(_update_time_of_day)
+      end
+      
+      def _update_time_of_day
+        word(4)
+      end
+      
+      def update_time
+        Decoder.time(_update_date, _update_time_of_day)
       end
       
       def file_blocks
@@ -124,16 +140,28 @@ class GECOS
     end
     
     def _characters
-      decoder.characters[(FILE_OFFSET*Decoder.characters_per_word)..-1]
+      decoder.characters[(offset*Decoder.characters_per_word)..-1]
     end
     private :_characters
-    
+      
     def update_date
+      Decoder.date(_update_date)
+    end
+  
+    def _update_date
       characters[2*Decoder.characters_per_word, 8]
     end
     
-    def update_time
+    def update_time_of_day
+      Decoder.time_of_day(_update_time_of_day)
+    end
+    
+    def _update_time_of_day
       words[4]
+    end
+    
+    def update_time
+      Decoder.time(_update_date, _update_time_of_day)
     end
     
     def descriptors

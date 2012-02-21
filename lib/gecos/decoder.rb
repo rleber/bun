@@ -19,6 +19,42 @@ class GECOS
       ch[start...offset]
     end
     
+    # Convert an eight-character GECOS date "mm/dd/yy" to a Ruby Date
+    def self.date(date)
+      Date.strptime(date,"%m/%d/%y")
+    end
+    
+    # Convert two's complement encoded word to signed value
+    def self.make_signed(word)
+      if word & 0x800000000 > 0
+        # Negative number
+        -((~word)+1)
+      else
+        word
+      end
+    end
+    
+    # Convert a GECOS timestamp to the time of day in hours (24 hour clock)
+    # Returns a three item array: hour, minutes, seconds (with embedded fractional seconds)
+    TIME_SUM = 1620000 # additive offset for converting GECOS times
+    TIME_DIV = 64000.0 # division factor for converting GECOS ticks to seconds
+    def self.time_of_day(timestamp)
+      timestamp = make_signed(timestamp)
+      seconds = (timestamp + TIME_SUM) / TIME_DIV
+      minutes, seconds = seconds.divmod(60.0)
+      hours, minutes = minutes.divmod(60.0)
+      [hours, minutes, seconds]
+    end
+    
+    # Convert a GECOS date and time into a Ruby Time
+    def self.time(date, timestamp)
+      hours, minutes, seconds = time_of_day(timestamp)
+      seconds, frac = seconds.divmod(1.0)
+      micro_seconds = (frac*1000000).to_i
+      date = self.date(date)
+      Time.local(date.year, date.month, date.day, hours, minutes, seconds, micro_seconds)
+    end
+    
     def file_specification
       zstring SPECIFICATION_POSITION*CHARACTERS_PER_WORD
     end
