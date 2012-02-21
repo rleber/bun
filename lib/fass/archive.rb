@@ -23,12 +23,6 @@ class Fass
       return nil unless line
       line[-1]
     end
-
-    def self.frozen?(name)
-      fname = file_name(name)
-      return nil unless fname
-      fname =~ /\.f$/
-    end
   end
 end
 

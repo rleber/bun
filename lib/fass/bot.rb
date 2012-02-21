@@ -204,7 +204,7 @@ environment variable. If this environment variable is not set, the URL is mandat
       file = Archive.default_directory + '/' + file unless file =~ /\//
       decoder = Fass::Decoder.new(File.read(file))
       archived_file = Archive.file_name(file)
-      abort "Can't unpack file. It's a frozen file #{archived_file}" if Archive.frozen?(file)
+      abort "Can't unpack file. It's a frozen file #{archived_file}" if Defroster.frozen?(file)
       words = decoder.words
       offset = decoder.file_content_start + UNPACK_OFFSET
       offset_width = ('%o'%(words.size)).size
@@ -248,7 +248,7 @@ environment variable. If this environment variable is not set, the URL is mandat
       file = Archive.default_directory + '/' + file unless file =~ /\//
       decoder = Fass::Decoder.new(File.read(file))
       archived_file = Archive.file_name(file)
-      abort "Can't unpack file. It's a frozen file #{archived_file}" if Archive.frozen?(file)
+      abort "Can't unpack file. It's a frozen file #{archived_file}" if Defroster.frozen?(file)
       content = decoder.words
       lines = nil
       loop do
@@ -342,11 +342,23 @@ environment variable. If this environment variable is not set, the URL is mandat
     end
     
     desc "index", "Display an index of archived files"
+    option "type", :aliases=>"-t", :type=>'boolean', :desc=>"Include the file type (normal vs. frozen)"
     def index
       ix = Archive.index
+      directory = Archive.default_directory
       file_name_width = ix.map{|entry| entry.first.size}.max
       ix.each do |entry|
-        puts %Q{#{"%-#{file_name_width}s"%entry[0]} #{'%-s'%entry[-1]}}
+        file_name = entry[0]
+        if options[:type]
+          if Defroster::frozen?(directory + '/' + file_name)
+            typ = 'Frozen '
+          else
+            typ = 'Normal '
+          end
+        else
+          typ = ''
+        end
+        puts %Q{#{"%-#{file_name_width}s" % file_name} #{typ}#{'%-s' % entry[-1]}}
       end
     end
     
@@ -377,13 +389,39 @@ environment variable. If this environment variable is not set, the URL is mandat
       name = decoder.file_name
       path = decoder.file_path
       description = decoder.file_description
-      puts "Archive of file #{archived_file}"
-      puts "Archive         #{archive}"
-      puts "Subdirectory    #{subdirectory}"
-      puts "Name            #{name}"
-      puts "Path            #{path}"
-      puts "Description     #{description}"
-      puts "Specification   #{specification}"
+      frozen = Defroster::frozen?(file)
+      puts "Archive of file  #{archived_file}"
+      puts "Archive          #{archive}"
+      puts "Subdirectory     #{subdirectory}"
+      puts "Name             #{name}"
+      puts "Path             #{path}"
+      puts "Description      #{description}"
+      puts "Specification    #{specification}"
+      puts "Type:            #{frozen ? 'Frozen' : 'Normal'}"
+    end
+    
+    desc "extract [ARCHIVE] [TO]", "Extract all the files in the archive"
+    def extract(archive=nil, to=nil)
+      directory = archive || Archive.default_directory
+      to ||= "output"
+      ix = Archive.index
+      ix.each do |entry|
+        file_name = entry[0]
+        extended_file_name = directory + '/' + file_name
+        frozen = Defroster::frozen?(extended_file_name)
+        decoder = Decoder.new(File.read(extended_file_name))
+        file_path = decoder.file_path
+        if frozen
+          defroster = Defroster.new(decoder)
+          defroster.files.times do |i|
+            descr = defroster.descriptor(i)
+            subfile_name = descr.file_name
+            puts "fass freeze thaw -r #{file_name} #{subfile_name} >#{to + '/' + file_name + '/' + file_path + '/' + subfile_name}"
+          end
+        else
+          puts "fass unpack -r #{file_name} >#{to + '/' + file_name + '/' + file_path}"
+        end
+      end
     end
 
     register Fass::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files (Type \"fass freezer\" for more details)"

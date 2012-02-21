@@ -22,11 +22,11 @@ class Fass
         DESCRIPTOR_END_MARKER
       end
       
-      def initialize(defroster, number)
+      def initialize(defroster, number, options={})
         @defroster = defroster
         @decoder = defroster.decoder
         @number = number
-        raise "Bad descriptor block #{dump}" unless verify
+        raise "Bad descriptor block #{dump}" unless options[:allow] || valid?
       end
       
       def offset # Offset from the beginning of the file content, in words
@@ -73,7 +73,7 @@ class Fass
         word(8)
       end
       
-      def verify
+      def valid?
         (check_text == 'asc ') && (check_word == DESCRIPTOR_END_MARKER)
       end
       
@@ -92,6 +92,16 @@ class Fass
       def octal
         @decoder.octal[offset*(decoder.bits_per_word/3), DESCRIPTOR_SIZE*decoder.bits_per_word/3]
       end
+    end
+    
+    # Is the given file frozen?
+    # Yes, if and only if it has a valid descriptor
+    def self.frozen?(file_name)
+      return nil unless File.exists?(file_name)
+      decoder = Decoder.new(File.read(file_name, 300))
+      defroster = new(decoder)
+      descriptor = Descriptor.new(defroster, 0, :allow=>true)
+      descriptor.valid?
     end
     
     def offset
