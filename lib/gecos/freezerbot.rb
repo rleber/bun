@@ -10,8 +10,9 @@ class GECOS
     option "descr", :aliases=>'-d', :type=>'boolean', :desc=>"Display the file descriptor for each file (in octal)"
     desc "ls ARCHIVE", "List contents of a frozen Honeywell file"
     def ls(file)
-      file = Archive.location + '/' + file unless file =~ /\//
-      archived_file = Archive.file_name(file)
+      archive = Archive.new
+      file = archive.qualified_tape_file_name(file)
+      archived_file = archive.file_name(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
@@ -65,8 +66,9 @@ class GECOS
     option "trace", :aliases=>"-t", :type=>"boolean", :desc=>"Print debugging trace information"
     option "warn", :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
     def thaw(file, n)
-      file = Archive.location + '/' + file unless file =~ /\//
-      archived_file = Archive.file_name(file)
+      archive = Archive.new
+      file = archive.qualified_tape_file_name(file)
+      archived_file = archive.file_name(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
@@ -77,8 +79,9 @@ class GECOS
     
     desc "recover ARCHIVE FILE TO_FILE", "Attempt to recover a frozen Honeywell file"
     def recover(file, n, to)
-      file = Archive.location + '/' + file unless file =~ /\//
-      archived_file = Archive.file_name(file)
+      archive = Archive.new
+      file = archive.qualified_tape_file_name(file)
+      archived_file = archive.file_name(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
@@ -169,8 +172,9 @@ class GECOS
     desc "dump ARCHIVE FILE", "Uncompress a frozen Honeywell file"
     def dump(file, n)
       limit = options[:lines]
-      file = Archive.location + '/' + file unless file =~ /\//
-      archived_file = Archive.file_name(file)
+      archive = Archive.new
+      file = archive.qualified_tape_file_name(file)
+      archived_file = archive.file_name(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
@@ -201,8 +205,9 @@ class GECOS
     # TODO Is this useful? I suspect not. If not, remove it
     desc 'preamble ARCHIVE', "Show the preamble (the stuff that precedes any file)"
     def preamble(file)
-      file = Archive.location + '/' + file unless file =~ /\//
-      archived_file = Archive.file_name(file)
+      archive = Archive.new
+      file = archive.qualified_tape_file_name(file)
+      archived_file = archive.file_name(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))

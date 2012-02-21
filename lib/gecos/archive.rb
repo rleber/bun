@@ -28,6 +28,16 @@ class GECOS
       @config
     end
     
+    # Is the given file frozen?
+    # Yes, if and only if it has a valid descriptor
+    def self.frozen?(file_name)
+      return nil unless File.exists?(file_name)
+      decoder = Decoder.new(File.read(file_name, 300))
+      defroster = Defroster.new(decoder)
+      descriptor = Defroster::Descriptor.new(defroster, 0, :allow=>true)
+      descriptor.valid?
+    end
+    
     def self.config
       @config ||= load_config
     end

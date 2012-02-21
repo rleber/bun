@@ -54,7 +54,7 @@ class GECOS
       file = archive.qualified_tape_file_name(file)
       decoder = GECOS::Decoder.new(File.read(file))
       archived_file = archive.file_name(file)
-      abort "Can't unpack file. It's a frozen file #{archived_file}" if Defroster.frozen?(file)
+      abort "Can't unpack file. It's a frozen file #{archived_file}" if Archive.frozen?(file)
       words = decoder.words
       offset = decoder.file_content_start + UNPACK_OFFSET
       offset_width = ('%o'%(words.size)).size
@@ -99,7 +99,7 @@ class GECOS
       file = archive.qualified_tape_file_name(file)
       decoder = GECOS::Decoder.new(File.read(file))
       archived_file = archive.file_name(file)
-      abort "Can't unpack file. It's a frozen file #{archived_file}" if Defroster.frozen?(file)
+      abort "Can't unpack file. It's a frozen file #{archived_file}" if Archive.frozen?(file)
       content = decoder.words
       lines = nil
       loop do

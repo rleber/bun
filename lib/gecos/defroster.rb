@@ -94,16 +94,6 @@ class GECOS
       end
     end
     
-    # Is the given file frozen?
-    # Yes, if and only if it has a valid descriptor
-    def self.frozen?(file_name)
-      return nil unless File.exists?(file_name)
-      decoder = Decoder.new(File.read(file_name, 300))
-      defroster = new(decoder)
-      descriptor = Descriptor.new(defroster, 0, :allow=>true)
-      descriptor.valid?
-    end
-    
     def offset
       decoder.file_content_start
     end
