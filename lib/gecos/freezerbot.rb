@@ -1,7 +1,7 @@
-require 'fass/archive'
+require 'gecos/archive'
 require 'rleber-interaction'
 
-class Fass
+class GECOS
 
   class FreezerBot < Thor
     include Interaction
@@ -14,9 +14,9 @@ class Fass
       archived_file = Archive.file_name(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
-      decoder = Fass::Decoder.new(File.read(file))
+      decoder = GECOS::Decoder.new(File.read(file))
       # puts "Archive for file #{archived_file}:"
-      defroster = Fass::Defroster.new(decoder)
+      defroster = GECOS::Defroster.new(decoder)
       # puts "Last updated on #{defroster.update_date}"
       # puts "Contains #{defroster.files} files"
       if options[:long]
@@ -55,7 +55,7 @@ class Fass
     
     no_tasks do
       def defrost(content)
-        Fass::Defroster.defrost(content)
+        GECOS::Defroster.defrost(content)
       end
     end
 
@@ -69,9 +69,9 @@ class Fass
       archived_file = Archive.file_name(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
-      decoder = Fass::Decoder.new(File.read(file))
-      defroster = Fass::Defroster.new(decoder)
-      Fass::Defroster.options = options
+      decoder = GECOS::Decoder.new(File.read(file))
+      defroster = GECOS::Defroster.new(decoder)
+      GECOS::Defroster.options = options
       STDOUT.write defroster.content(index_for(defroster,n))
     end
     
@@ -81,8 +81,8 @@ class Fass
       archived_file = Archive.file_name(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
-      decoder = Fass::Decoder.new(File.read(file))
-      defroster = Fass::Defroster.new(decoder)
+      decoder = GECOS::Decoder.new(File.read(file))
+      defroster = GECOS::Defroster.new(decoder)
       file_index = index_for(defroster, n)
       content = defroster.file_words(file_index)
       lines = nil
@@ -173,8 +173,8 @@ class Fass
       archived_file = Archive.file_name(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
-      decoder = Fass::Decoder.new(File.read(file))
-      defroster = Fass::Defroster.new(decoder)
+      decoder = GECOS::Decoder.new(File.read(file))
+      defroster = GECOS::Defroster.new(decoder)
       defroster.options = {:warn=>true}
       file_index = index_for(defroster, n)
       puts "Archive for file #{defroster.file_name(file_index)}:"
@@ -184,10 +184,10 @@ class Fass
         lines.each do |l|
           offset = '0' + ("%0#{offset_width}o" % l[:offset])
           descriptor = l[:descriptor]
-          top_bits = Fass::Defroster.top_descriptor_bits(descriptor)
-          clipped_length = Fass::Defroster.clipped_line_length(descriptor)
-          bottom_bits = Fass::Defroster.bottom_descriptor_bits(descriptor)
-          flag = Fass::Defroster::good_descriptor?(descriptor) ? ' ' : '!'
+          top_bits = GECOS::Defroster.top_descriptor_bits(descriptor)
+          clipped_length = GECOS::Defroster.clipped_line_length(descriptor)
+          bottom_bits = GECOS::Defroster.bottom_descriptor_bits(descriptor)
+          flag = GECOS::Defroster::good_descriptor?(descriptor) ? ' ' : '!'
           puts "#{offset} #{'%012o'%descriptor} " + 
                "#{'%03o'%top_bits}|#{'%03o'%clipped_length} #{flag} " +
                "#{l[:raw].inspect[1..-2]}"
@@ -205,8 +205,8 @@ class Fass
       archived_file = Archive.file_name(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
-      decoder = Fass::Decoder.new(File.read(file))
-      defroster = Fass::Defroster.new(decoder)
+      decoder = GECOS::Decoder.new(File.read(file))
+      defroster = GECOS::Defroster.new(decoder)
       puts "Preamble for archived file #{archived_file}:"
       preamble_content = decoder.words[0,defroster.offset]
       Dump.dump(preamble_content)

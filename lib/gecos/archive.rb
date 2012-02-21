@@ -1,7 +1,7 @@
-class Fass
+class GECOS
   class Archive
 
-    INDEX_FILE = 'fass-index.txt'
+    INDEX_FILE = 'gecos-index.txt'
     DEFAULT_ARCHIVE_DIRECTORY = "_misc/36_bit_tape_files"
 
     

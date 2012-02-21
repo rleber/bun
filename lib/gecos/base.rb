@@ -1,2 +1,2 @@
 require 'rubygems'
-require 'fass/bot'
+require 'gecos/bot'

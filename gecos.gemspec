@@ -10,14 +10,14 @@
 # log is for log files
 # spec is for RSpec (test) files
 
-require File.expand_path('../lib/fass/version', __FILE__)
+require File.expand_path('../lib/gecos/version', __FILE__)
 
 extra_files = ['History.rdoc', 'LICENSE', 'README.rdoc', 'Rakefile']
 github_username = 'rleber'
 
 Gem::Specification.new do |s|
-  s.name = %q{fass}
-  s.version = Fass::VERSION.dup
+  s.name = %q{gecos}
+  s.version = GECOS::VERSION.dup
 
   if s.respond_to? :required_rubygems_version=
     s.required_rubygems_version = Gem::Requirement.new(">= 1.3.6")

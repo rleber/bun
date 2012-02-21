@@ -1,4 +1,4 @@
-class Fass
+class GECOS
   class Defroster
     attr_reader :decoder
     

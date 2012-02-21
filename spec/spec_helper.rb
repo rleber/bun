@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), '../lib/fass')
+require File.join(File.dirname(__FILE__), '../lib/gecos')
 
 def capture(*streams)
   streams.map! { |stream| stream.to_s }

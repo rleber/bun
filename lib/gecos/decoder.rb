@@ -1,4 +1,4 @@
-class Fass
+class GECOS
   class Decoder
     attr_reader :raw
     

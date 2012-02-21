@@ -37,6 +37,6 @@ At the moment, you will have to take the following steps to install the software
 
 _Running this software_
 
-There is one primary executable src/fass. Assuming that the src directory is in your load path, it should
-be pretty simple to run the software from the command line, by typing the command "fass". Without any
+There is one primary executable src/gecos. Assuming that the src directory is in your load path, it should
+be pretty simple to run the software from the command line, by typing the command "gecos". Without any
 parameters, the command should provide you with a helpful summary of all the available subcommands.

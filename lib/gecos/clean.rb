@@ -1,6 +1,6 @@
-require 'fass/scene'
+require 'gecos/scene'
 
-class Fass
+class GECOS
   class Script
     class Cleaner
       SCENE_END = /-\s*\bf\s*i\s*n\b\s*-/
@@ -76,7 +76,7 @@ class Fass
         script = script.split("\n") if script.is_a?(String)
         scene_starts = find_scene_starts(script)
         scene_ends = find_scene_ends(script)
-        scene_starts.zip(scene_ends).map {|s, e| Fass::Script::Scene.new(script[s..e], s) }
+        scene_starts.zip(scene_ends).map {|s, e| GECOS::Script::Scene.new(script[s..e], s) }
       end
       
       def clean_scene(scene)

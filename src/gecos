@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-require File.dirname(__FILE__) + '/../lib/fass'
+require File.dirname(__FILE__) + '/../lib/gecos'
 
 if __FILE__ == $0
-  Fass::Bot.start
+  GECOS::Bot.start
 end
