@@ -20,7 +20,7 @@ class GECOS
       abort "Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
-      archived_file = archive.file_name(file)
+      archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
@@ -101,7 +101,7 @@ class GECOS
     def thaw(file, n)
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
-      archived_file = archive.file_name(file)
+      archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
@@ -114,7 +114,7 @@ class GECOS
     def recover(file, n, to)
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
-      archived_file = archive.file_name(file)
+      archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
@@ -207,7 +207,7 @@ class GECOS
       limit = options[:lines]
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
-      archived_file = archive.file_name(file)
+      archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
@@ -240,7 +240,7 @@ class GECOS
     def preamble(file)
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
-      archived_file = archive.file_name(file)
+      archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))

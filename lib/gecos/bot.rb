@@ -38,7 +38,7 @@ class GECOS
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
       decoder = GECOS::Decoder.new(File.read(file))
-      archived_file = archive.file_name(file)
+      archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
       puts "Archive for file #{archived_file}:"
       words = decoder.words
@@ -53,7 +53,7 @@ class GECOS
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
       decoder = GECOS::Decoder.new(File.read(file))
-      archived_file = archive.file_name(file)
+      archived_file = archive.file_path(file)
       abort "Can't unpack file. It's a frozen file #{archived_file}" if Archive.frozen?(file)
       words = decoder.words
       offset = decoder.file_content_start + UNPACK_OFFSET
@@ -98,7 +98,7 @@ class GECOS
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
       decoder = GECOS::Decoder.new(File.read(file))
-      archived_file = archive.file_name(file)
+      archived_file = archive.file_path(file)
       abort "Can't unpack file. It's a frozen file #{archived_file}" if Archive.frozen?(file)
       content = decoder.words
       lines = nil
@@ -212,7 +212,7 @@ class GECOS
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
       decoder = GECOS::Decoder.new(File.read(file))
-      archived_file = archive.file_name(file)
+      archived_file = archive.file_path(file)
       archive = decoder.file_archive_name
       subdirectory = decoder.file_subdirectory
       specification = decoder.file_specification
@@ -220,12 +220,11 @@ class GECOS
       name = decoder.file_name
       path = decoder.file_path
       description = decoder.file_description
-      frozen = Defroster::frozen?(file)
-      puts "Archive of file  #{archived_file}"
+      frozen = Archive.frozen?(file)
+      puts "Path             #{path}"
       puts "Archive          #{archive}"
       puts "Subdirectory     #{subdirectory}"
       puts "Name             #{name}"
-      puts "Path             #{path}"
       puts "Description      #{description}"
       puts "Specification    #{specification}"
       puts "Type:            #{frozen ? 'Frozen' : 'Normal'}"

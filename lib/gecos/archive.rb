@@ -3,8 +3,7 @@ require 'yaml'
 class GECOS
   class Archive
     
-    INDEX_FILE = '.index'
-    LOG_FILE   = '.log'
+    # INDEX_FILE = '.index'
     
     def self.location
       config['archive'].sub(/^~/,ENV['HOME'])
@@ -14,9 +13,9 @@ class GECOS
       config['raw_directory'].sub(/^~/,ENV['HOME'])
     end
     
-    def self.index_file
-      File.join(raw_directory, INDEX_FILE)
-    end
+    # def self.index_file
+    #   File.join(raw_directory, INDEX_FILE)
+    # end
     
     def self.repository
       config['repository']
@@ -49,24 +48,17 @@ class GECOS
       @location = location || self.class.location
     end
     
-    def index
-      @archive_index ||= _index
+    def tapes
+      Dir.entries(File.join(location, raw_directory)).reject{|f| f=~/^\./}
     end
     
     def raw_directory
       self.class.raw_directory
     end
 
-    def _index(index_file=nil)
-      index_file ||= self.class.index_file
-      File.read(File.join(location,index_file)).split("\n").map{|line| line.split(/\s+/)}
-    end
-
-    def file_name(tape_name)
-      tape_basename = File.basename(tape_name)
-      line = index.find{|l| l[0] == tape_basename}
-      return nil unless line
-      line[-1]
+    def file_path(tape_name)
+      decoder = Decoder.new(File.read(qualified_tape_file_name(tape_name),300))
+      decoder.file_path
     end
     
     def qualified_tape_file_name(file_name)

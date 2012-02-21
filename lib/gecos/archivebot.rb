@@ -6,11 +6,6 @@ require 'gecos/archive'
 class GECOS
   class ArchiveBot < Thor
     
-    desc "readme", "Display helpful information for beginners"
-    def readme
-      STDOUT.write File.read("doc/readme.md")
-    end
-    
     # TODO Move this to tools project; refactor
     no_tasks do
       # Fetch all files and subdirectories of a uri to a destination folder
@@ -112,7 +107,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       abort "Unknown --type setting. Must be one of #{TYPE_VALUES.join(', ')}" unless TYPE_VALUES.include?(options[:type])
       type_pattern = options[:type]=='all' ? /.*/ : /^#{Regexp.escape(options[:type])}$/i
       archive = Archive.new(archive_location)
-      ix = archive.index
+      ix = archive.tapes
       directory = archive.location
       puts "Archive at #{directory}:"
       tape_name_width = ix.map{|entry| entry.first.size}.max
@@ -124,8 +119,8 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       # Retrieve file information
       file_info = []
       ix.each_with_index do |fi, i|
-        tape_name = fi[0]
-        file_name = fi[-1]
+        tape_name = fi
+        file_name = archive.file_path(fi)
         friz = Archive.frozen?(archive.qualified_tape_file_name(tape_name)) ? 'Frozen' : 'Normal'
         next unless friz =~ type_pattern
         file_info << {'tape'=>tape_name, 'type'=>friz, 'file'=>file_name}
