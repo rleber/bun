@@ -1,12 +1,14 @@
+require 'yaml'
+
 class GECOS
   class Archive
 
-    INDEX_FILE = 'gecos-index.txt'
+    INDEX_FILE = '.index'
     DEFAULT_ARCHIVE_DIRECTORY = "_misc/36_bit_tape_files"
 
     
     def self.location
-      config['archive']
+      config['archive'].sub(/^~/,ENV['HOME'])
     end
     
     def self.repository
@@ -18,7 +20,7 @@ class GECOS
     end
 
     def self._index
-      File.read(File.join(location,INDEX_FILE).split("\n").map{|line| line.split(/\s+/)}
+      File.read(File.join(location,INDEX_FILE)).split("\n").map{|line| line.split(/\s+/)}
     end
 
     def self.file_name(name)
