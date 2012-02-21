@@ -2,28 +2,39 @@ require 'yaml'
 
 class GECOS
   class Archive
-
-    INDEX_FILE = '.index'
-    DEFAULT_ARCHIVE_DIRECTORY = "_misc/36_bit_tape_files"
-
     
     def self.location
       config['archive'].sub(/^~/,ENV['HOME'])
+    end
+    
+    def self.raw_directory
+      config['raw_directory'].sub(/^~/,ENV['HOME'])
+    end
+    
+    def self.index_file
+      config['index_file'].sub(/^~/,ENV['HOME'])
     end
     
     def self.repository
       config['repository']
     end
     
-    def self.index
+    attr_reader :location
+    
+    def initialize(location=nil)
+      @location = location || self.class.location
+    end
+    
+    def index
       @archive_index ||= _index
     end
 
-    def self._index
-      File.read(File.join(location,INDEX_FILE)).split("\n").map{|line| line.split(/\s+/)}
+    def _index(index_file=nil)
+      index_file ||= self.class.index_file
+      File.read(File.join(location,index_file)).split("\n").map{|line| line.split(/\s+/)}
     end
 
-    def self.file_name(name)
+    def file_name(name)
       name = File.basename(name)
       line = index.find{|l| l[0] == name}
       return nil unless line

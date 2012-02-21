@@ -92,20 +92,21 @@ file or the GECOS_REPOSITORY environment variable. If neither is set, the URL is
 If no "to" location is provided, this command will use the archive location specified in
 data/archive_config.yml. Usually, this is ~/gecos_archive
     EOT
-    def fetch(url=nil, to=nil)
+    def fetch(url=nil, archive_location=nil)
       agent = Mechanize.new
       url ||= Archive.repository
-      to  ||= Archive.location
+      archive_location  ||= Archive.location
       abort "No url provided" unless url
-      abort "No \"to\" location provided" unless to
-      _fetch(url, to)
+      abort "No archive location provided" unless archive_location
+      _fetch(url, archive_location)
     end
     
-    desc "index", "Display an index of archived files"
+    desc "index [ARCHIVE]", "Display an index of archived files"
     option "long", :aliases=>"-l", :type=>'boolean', :desc=>"Display long format (incl. normal vs. frozen)"
-    def index
-      ix = Archive.index
-      directory = Archive.location
+    def index(archive_location=nil)
+      archive = Archive.new(archive_location)
+      ix = archive.index
+      directory = archive.location
       file_name_width = ix.map{|entry| entry.first.size}.max
       ix.each do |entry|
         file_name = entry[0]
@@ -123,8 +124,8 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     end
     
     desc "extract [ARCHIVE] [TO]", "Extract all the files in the archive"
-    def extract(archive=nil, to=nil)
-      directory = archive || Archive.default_directory
+    def extract(archive_location=nil, to=nil)
+      directory = archive_location || Archive.location
       to ||= "output"
       ix = Archive.index
       ix.each do |entry|
