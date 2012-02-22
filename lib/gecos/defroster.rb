@@ -116,6 +116,7 @@ class GECOS
     def _content(n)
       lines(n).map{|l| l[:content]}.join
     end
+    private :_content
     
     def lineset
       @lineset ||= _lineset
@@ -124,7 +125,7 @@ class GECOS
     def _lineset
       (0...files).map {|i| _lines(i)}
     end
-    private :_contents
+    private :_lineset
     
     def lines(n)
       @lineset ||= []
@@ -202,11 +203,13 @@ class GECOS
         warn "Characters: #{chs.inspect}" if options[:trace]
         offset += 1
         break if line.size >= line_length
+        break if (!Decoder.clean?(line) || line =~ /\r/) && !options[:strict]
         word = words[offset]
         break unless word
         warn "Word (defrost_line): #{'%012o'%word} at #{'%o'%offset}" if options[:trace]
         ch_count = 5
       end
+      line = line.sub(/[[:cntrl]].*/,"\r")
       warn "Defrosted line at #{'%o'%line_offset}-#{'%o'%(offset-1)}: #{line.inspect}" if options[:trace]
       [line_offset, offset-1, line]
     end
@@ -256,50 +259,28 @@ class GECOS
       lines = []
       while line_offset < words.size
         success = false
-        _, last_line_word, line = defrost_line(words, line_offset, options)
-        warn "Line retrieved at #{'%o'%line_offset}-#{'%o'%last_line_word}: #{line.inspect}" if options[:trace]
-        next_line_offset = last_line_word + 1
-        if !Decoder.clean?(line.sub(/\0+$/,''))
-          abort "Bad line at #{'%o'%line_offset}: #{line.inspect}" if options[:strict]
-          warn "Bad line at #{'%o'%line_offset}: #{line.inspect}" if options[:repair] || options[:warn]
-          if options[:repair]
-            # Attempt to repair the line
-            # Truncate this line at the first bad character
-            flaw_location = Decoder.find_flaw(line)
-            warn "Bad character in position #{flaw_location}" if options[:trace]
-            line = line[0...flaw_location] + "\r"
-            warn "Repaired line (#{words_required(line)} words): #{line.inspect}" if options[:trace]
-            last_line_word = line_offset + words_required(line) - 1
-            # Look for a possible next line
-            next_line_offset, next_line_end, next_line = find_good_line(words, last_line_word + 1, options)
-            if next_line_offset
-              # Cause the stub of the last line to be inserted, and restart with the new line
-              abort "Next line isn't clean: #{next_line.inspect}" unless Decoder.clean?(next_line)
-              warn "Found clean line at #{'%o'%next_line_offset}: #{next_line.inspect}" if options[:trace]
-              frozen_line = freeze(next_line)
-              abort "Frozen line incorrect: It unfreezes to #{defrost_line(frozen_line, 0).last.inspect} (vs. #{next_line.inspect})" \
-                unless defrost_line(frozen_line, 0).last.sub(/\0+$/,'') == next_line
-              words[(last_line_word+1)..next_line_end] = frozen_line
-              next_line_offset = last_line_word+1
-            else
-              warn "Unable to find any more good data. Terminating"
-              next_line_offset = words.size # Force termination of the loop
-            end
+        check, last_line_word, line = defrost_line(words, line_offset, options)
+        if !check
+          line_offset += 1
+        else
+          warn "Line retrieved at #{'%o'%line_offset}-#{'%o'%last_line_word}: #{line.inspect}" if options[:trace]
+          if good_characters?(line) 
+            raw_line = line
+            line.sub!(/\r\0*$/,"\n")
+            lines << {:content=>line, :offset=>line_offset, :descriptor=>words[line_offset], 
+                      :words=>words[line_offset..last_line_word], :raw=>raw_line}
+            options[:trace] = true if options[:sentinel] && line =~ options[:sentinel]
+            trace_count += 1 if options[:trace]
+            exit if options[:trace] && options[:trace_limit] && trace_count > options[:trace_limit]
+          else
+            abort "Bad line at #{'%o'%line_offset}: #{line.inspect}" if options[:strict]
+            warn "Bad line at #{'%o'%line_offset}: #{line.inspect}" if options[:repair] || options[:warn]
           end
+          line_offset = last_line_word + 1
         end
-        raw_line = line
-        line.sub!(/\r\0*$/,"\n")
-        lines << {:content=>line, :offset=>line_offset, :descriptor=>words[line_offset], 
-                  :words=>words[line_offset..last_line_word], :raw=>raw_line}
-        options[:trace] = true if options[:sentinel] && line =~ options[:sentinel]
-        trace_count += 1 if options[:trace]
-        exit if options[:trace] && options[:trace_limit] && trace_count > options[:trace_limit]
-        line_offset = next_line_offset
-        break unless line_offset < words.size
       end
       lines
     end
-    private :_content
     
     # Find a possible good line of text
     # Look for a sequence of consecutive words that could be a line:
