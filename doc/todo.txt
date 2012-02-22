@@ -1,8 +1,8 @@
 Check -- does a "type" code other than "asc" ever appear in freeze files?
+Mass archive extraction
 Simplify thaw (and repair, unpack): simply try to unbundle a line at each location
 Archive: retrieve, extract, list, xref, classify
-Create /archive directory. Sub /raw (/gecos), /clean, /dirty, /extracted, /xref
-Mass archive extraction
+Sub directories /clean, /dirty, /extracted, /xref
 Separate clean and dirty files
 Create file format notes
 Find frozen files, even if extension isn't ".f"

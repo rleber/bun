@@ -91,7 +91,7 @@ Freeze files have the following format:
     - Words 0 and 1: The name of the archived file, in 9-bit ASCII characters, padded with spaces
     - Words 2 and 3: The date of last update of the archived file
     - Word 4: The time of last update of the archived file
-    - Word 5: Always the ASCII characters 'asc '. (Could this have allowed for 'bin '?)
+    - Word 5: Always the ASCII characters 'asc '
     - Word 6: According to free.b.txt, "The number of 64-word blocks contained in the file."
         I can find no evidence of this being the case, nor have I found it necessary to use
         this data.
