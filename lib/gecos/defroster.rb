@@ -184,34 +184,27 @@ class GECOS
     
     def self.defrost_line(words, line_offset, options={})
       warn "In defrost_line: line_offset=#{'%o'%line_offset}" if options[:trace]
-      descriptor = words[line_offset]
-      return nil unless descriptor
-      line_length = line_length(descriptor)
-      top_bits = top_descriptor_bits(descriptor)
-      warn "Non-zero top bits (#{'%03o'%top_bits}) at #{'%o'%line_offset}" if options[:warn] && top_bits!=0
-      warn "New line: length = #{line_length}" if options[:trace]
-      word = bottom_descriptor_bits(descriptor)
-      warn "First word: #{word.inspect} at #{'%o'%line_offset}" if options[:trace]
       line = ""
-      ch_count = 3
+      line_length = words.size
       offset = line_offset
       loop do
-        warn "Non-zero top bit in character word at #{'%o'%offset}: #{'%o'%word}" \
-            if options[:warn] && !zero_top_bit?(word)
-        chs = extract_characters(word, ch_count)
-        line += chs
-        warn "Characters: #{chs.inspect}" if options[:trace]
-        offset += 1
-        break if line.size >= line_length
-        break if (!Decoder.clean?(line) || line =~ /\r/) && !options[:strict]
         word = words[offset]
         break unless word
-        warn "Word (defrost_line): #{'%012o'%word} at #{'%o'%offset}" if options[:trace]
         ch_count = 5
+        if line==""
+          if good_descriptor?(word)
+            line_length = line_length(word)
+            ch_count = 3
+          end
+        end
+        chs = extract_characters(word, ch_count)
+        line += chs.sub(/[[:cntrl:]].*/){|s| s[/^\r?/]} # Remove control characters (except trailing \r) and all following letters
+        break if chs=~/\r/ || !good_characters?(chs) || line.size >= line_length
+        offset += 1
       end
-      line = line.sub(/[[:cntrl:]].*/,"\r")
+      return [line_offset, offset, nil] unless line =~ /\r/
       warn "Defrosted line at #{'%o'%line_offset}-#{'%o'%(offset-1)}: #{line.inspect}" if options[:trace]
-      [line_offset, offset-1, line]
+      [line_offset, offset, line]
     end
     
     def self.freeze(line)
@@ -257,25 +250,24 @@ class GECOS
       trace_count = 0
       line_offset = 0
       lines = []
+      warned = false
       while line_offset < words.size
         success = false
-        check, last_line_word, line = defrost_line(words, line_offset, options)
-        if !check
+        _, last_line_word, line = defrost_line(words, line_offset, options)
+        if !line
+          abort "Bad line at #{'%o'%line_offset}: #{line.inspect}" if options[:strict]
+          warn "Bad lines corrected" if !warned && options[:warn]
+          warned = true
           line_offset += 1
         else
           warn "Line retrieved at #{'%o'%line_offset}-#{'%o'%last_line_word}: #{line.inspect}" if options[:trace]
-          if good_characters?(line) 
-            raw_line = line
-            line.sub!(/\r\0*$/,"\n")
-            lines << {:content=>line, :offset=>line_offset, :descriptor=>words[line_offset], 
-                      :words=>words[line_offset..last_line_word], :raw=>raw_line}
-            options[:trace] = true if options[:sentinel] && line =~ options[:sentinel]
-            trace_count += 1 if options[:trace]
-            exit if options[:trace] && options[:trace_limit] && trace_count > options[:trace_limit]
-          else
-            abort "Bad line at #{'%o'%line_offset}: #{line.inspect}" if options[:strict]
-            warn "Bad line at #{'%o'%line_offset}: #{line.inspect}" if options[:repair] || options[:warn]
-          end
+          raw_line = line
+          line.sub!(/\r\0*$/,"\n")
+          lines << {:content=>line, :offset=>line_offset, :descriptor=>words[line_offset], 
+                    :words=>words[line_offset..last_line_word], :raw=>raw_line}
+          options[:trace] = true if options[:sentinel] && line =~ options[:sentinel]
+          trace_count += 1 if options[:trace]
+          exit if options[:trace] && options[:trace_limit] && trace_count > options[:trace_limit]
           line_offset = last_line_word + 1
         end
       end
