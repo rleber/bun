@@ -64,7 +64,7 @@ class GECOS
       zstring ARCHIVE_NAME_POSITION*CHARACTERS_PER_WORD
     end
     
-    DESCRIPTION_PATTERN = /\s+==>\s+(.*?)\s*$/
+    DESCRIPTION_PATTERN = /\s*=+>\s*(.*?)\s*$/
     def file_subpath
       file_specification.sub(DESCRIPTION_PATTERN,'').sub(/^\//,'')
     end
