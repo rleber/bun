@@ -196,6 +196,20 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       end
     end
     
+    no_tasks do
+      def create_index(index, from, to)
+        index.reject!{|e| e[:from] == from || e[:to] == to}
+        index << {:from => from, :to => to }
+      end
+      
+      def find_index(index, spec={})
+        spec = {:from=>//, :to=>//}.merge(spec)
+        index.select do |e|
+          e[:from]=~ spec[:from] && e[:to]=~spec[:to]
+        end
+      end
+    end
+    
     # Cross-reference the extracted files:
     # Create one directory per file, as opposed to one directory per tape
     desc "xref [ARCHIVE] [FROM] [TO]", "Create cross-reference by file name"
@@ -213,6 +227,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       file_index = Hash.new([])
       
       # Create cross-reference
+      # TODO Simplify -- build an index in memory; only write it out at the end
       ex "rm -rf #{to}"
       warn "from=#{from}"
       Dir.glob(File.join(from,'**','*')).each do |old_file|
@@ -221,14 +236,13 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         if f !~ /^([^\/]+)\/(.*)$/
           warn "File #{f} does not have a tape name and file name"
         else
-          # TODO Maintain an .index file
           tape = $1
           file = $2
-          file_index[File.join(to, file)] << tape
+          file_index[File.join(to, file)] += [tape]
           new_file = File.join(to, file, tape)
           dir = File.dirname(new_file)
           index[old_file] = new_file
-          reverse_index[new_file] << old_file
+          reverse_index[new_file] += [old_file]
           ex "mkdir -p #{shell_quote(dir)}"
           if options[:copy]
             ex "cp #{shell_quote(old_file)} #{shell_quote(new_file)}"
@@ -237,7 +251,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
           end
         end
       end
-
+      
       # Collapse directories where there's only one file, or where they're all identical
       file_index.each do |file, tapes|
         first_tape = tapes.pop
@@ -251,15 +265,14 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
             if content == other_content
               match = other_tape
               break
-            end
-              break
             else
-              contents[]
+              contents[other_tape] = other_content
+            end
           end
           if match
             match_file = File.join(file, match)
             abort "Reverse index [#{file_name}] has no entries" if reverse_index[file_name].size == 0
-            abort "Reverse index [#{file_name}] has > 1 entry: #{reverse_index[file_name].inspect}" \ 
+            abort "Reverse index [#{file_name}] has > 1 entry: #{reverse_index[file_name].inspect}" \
               if reverse_index[file_name].size > 1
             index[reverse_index[file_name].first] = match_file
             reverse_index[match_file] += reverse_index[file_name]
@@ -268,10 +281,15 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
           end
         end
         if contents.size == 1
-          temp_file = file + '.temp'
-          ex "cp #{shell_quote(first_file)} #{shell_quote(temp_file)}"
-          ex "rm -rf #{shell_quote(file)}"
-          ex "mv #{shell_quote(temp_file)} #{shell_quote(file)}"
+          if options[:copy]
+            temp_file = file + '.temp'
+            ex "cp #{shell_quote(first_file)} #{shell_quote(temp_file)}"
+            ex "rm -rf #{shell_quote(file)}"
+            ex "mv #{shell_quote(temp_file)} #{shell_quote(file)}"
+          else
+            ex "rm -rf #{shell_quote(file)}"
+            ex "ln -s #{shell_quote(reverse_index[first_file].first)} #{shell_quote(file)}"
+          end
           reverse_index[first_file].each do |linked_file|
             index[linked_file] = file
           end
