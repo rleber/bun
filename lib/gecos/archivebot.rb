@@ -180,14 +180,14 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
             subfile_name = descr.file_name
             f = File.join(to, tape_name, file_path, subfile_name)
             dir = File.dirname(f)
-            ex "mkdir -p #{dir}"
-            ex "gecos freezer thaw #{tape_name} #{subfile_name} >#{f}"
+            ex "mkdir -p #{dir.inspect}"
+            ex "gecos freezer thaw #{tape_name} #{subfile_name} >#{f.inspect}"
           end
         else
           f = File.join(to, tape_name, file_path)
           dir = File.dirname(f)
-          ex "mkdir -p #{dir}"
-          ex "gecos unpack #{tape_name} >#{f}"
+          ex "mkdir -p #{dir.inspect}"
+          ex "gecos unpack #{tape_name} >#{f.inspect}"
         end
       end
     end
