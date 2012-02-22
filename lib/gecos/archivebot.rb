@@ -181,7 +181,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
             f = File.join(to, tape_name, file_path, subfile_name)
             dir = File.dirname(f)
             ex "mkdir -p #{dir}"
-            ex "gecos freeze thaw #{tape_name} #{subfile_name} >#{f}"
+            ex "gecos freezer thaw #{tape_name} #{subfile_name} >#{f}"
           end
         else
           f = File.join(to, tape_name, file_path)
