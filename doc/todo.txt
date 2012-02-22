@@ -1,4 +1,5 @@
 Simplify thaw (and repair, unpack): simply try to unbundle a line at each location
+Fix =+> syntax if file descriptions
 Mass archive extraction
 Archive: retrieve, extract, list, xref, classify
 Sub directories /clean, /dirty, /extracted, /xref
