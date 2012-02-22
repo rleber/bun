@@ -167,6 +167,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       archive = Archive.new(directory)
       to ||= File.join(archive.location, archive.extract_directory)
       ix = archive.tapes
+      ex "rm -rf #{to}"
       ix.each do |tape_name|
         extended_file_name = archive.qualified_tape_file_name(tape_name)
         frozen = Archive.frozen?(extended_file_name)
@@ -177,10 +178,14 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
           defroster.files.times do |i|
             descr = defroster.descriptor(i)
             subfile_name = descr.file_name
-            ex "gecos freeze thaw #{tape_name} #{subfile_name} >#{to + '/' + tape_name + '/' + file_path + '/' + subfile_name}"
+            dir = File.join(to, tape_name, file_path)
+            ex "mkdir -p #{dir}"
+            ex "gecos freeze thaw #{tape_name} #{subfile_name} >#{File.join(dir,subfile_name)}"
           end
         else
-          ex "gecos unpack #{tape_name} >#{to + '/' + tape_name + '/' + file_path}"
+          dir = File.join(to, tape_name)
+          ex "mkdir -p #{dir}"
+          ex "gecos unpack #{tape_name} >#{File.join(dir, file_path)}"
         end
       end
     end
