@@ -81,29 +81,6 @@ class GECOS
         end
       end
     end
-    
-    no_tasks do
-      def index_for(defroster, n)
-        if n.to_s !~ /^-?\d+$/
-          name = n
-          n = defroster.file_index(name)
-          abort "Frozen file does not contain a file #{name}" unless n
-        else
-          orig_n = n
-          n = n.to_i
-          n += defroster.files+1 if n<0
-          abort "Frozen file does not contain file number #{orig_n}" if n<1 || n>defroster.files
-          n -= 1
-        end
-        n
-      end
-    end
-    
-    no_tasks do
-      def defrost(content)
-        GECOS::Defroster.defrost(content)
-      end
-    end
 
     desc "thaw ARCHIVE FILE", "Uncompress a frozen Honeywell file"
     option "repair", :aliases=>"-r", :type=>"boolean", :desc=>"Attempt to repair damage in the file"
@@ -118,95 +95,7 @@ class GECOS
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
       defroster = GECOS::Defroster.new(decoder, :options=>options)
-      STDOUT.write defroster.content(index_for(defroster,n))
-    end
-    
-    desc "recover ARCHIVE FILE TO_FILE", "Attempt to recover a frozen Honeywell file"
-    def recover(file, n, to)
-      archive = Archive.new
-      file = archive.qualified_tape_file_name(file)
-      archived_file = archive.file_path(file)
-      archived_file = "--unknown--" unless archived_file
-      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
-      decoder = GECOS::Decoder.new(File.read(file))
-      defroster = GECOS::Defroster.new(decoder)
-      file_index = index_for(defroster, n)
-      content = defroster.file_words(file_index)
-      lines = nil
-      loop do
-        lines = defrost(content)
-        flawed_line = lines.find {|l| l[:content].chomp =~ /[[:cntrl:]]/}
-        break unless flawed_line
-        offset = '0' + ('%o'%flawed_line[:offset])
-        offset = '0' if offset == '00'
-        flaw_location = Decoder.find_flaw(flawed_line[:content])
-        STDERR.puts "Found a bad line at #{offset}: #{flawed_line[:content][0, flaw_location+5+1].inspect}"
-        d1 = Decoder.new(nil)
-        d1.words = content[flawed_line[:offset]..-1]
-        remaining_characters = d1.frozen_characters
-        search_start = flaw_location
-        limit = nil
-        start_location = nil
-        end_location = nil
-        next_line_end = nil
-        from_text = nil
-        to_text = nil
-        loop do
-          loop do
-            if remaining_characters[(search_start+2)..-1] =~ /\r/m # +2 for the line length characters
-              last_line_end = $`.size
-              limit = (search_start + last_line_end + 1 + 19)/20 + 1 # Final +1 to show an extra line of context
-            else
-              abort "Unable to find a later line ending."
-            end
-            Dump.dump(content, :offset=>flawed_line[:offset], :lines=>limit, :frozen=>true)
-            break unless get_logical("Need to see more? ", :prompt_on=>STDERR)
-            search_start += last_line_end + 1
-          end
-          clipped_section = content[flawed_line[:offset], limit*4]
-          d = Decoder.new(nil)
-          d.words = clipped_section
-          chars = d.frozen_characters
-          start_location = nil
-          loop do
-            start_clip = Regexp.new(get_prompted("Clip from (regex) ", :prompt_on=>STDERR))
-            start_location = chars =~ start_clip
-            if start_location
-              start_location += $&.length
-              break
-            end
-            STDERR.puts "That does not match the text. Please try again."
-          end
-          end_location = nil
-          loop do
-            end_clip = Regexp.new(get_prompted("Clip to (regex) ", :prompt_on=>STDERR))
-            end_location = chars =~ end_clip
-            break if end_location
-            STDERR.puts "That does not match the text. Please try again."
-          end
-          next_line_end = remaining_characters[end_location..-1] =~ /\r/m 
-          abort "Can't find the end of the clipped line" unless next_line_end
-          next_line_end += end_location
-          from_text = remaining_characters[2..next_line_end]
-          to_text = remaining_characters[2...start_location] + remaining_characters[end_location, next_line_end+1 - end_location]
-          STDERR.puts "Line after clipping:  #{to_text.inspect}"
-          break if get_logical("Is this correct? ", :prompt_on=>STDERR)
-        end
-        before_words = ((2+from_text.size)+4)/5
-        after_words = ((2+to_text.size)+4)/5
-        packed_line = [to_text.size]
-        chs = 2
-        to_text.unpack('C*').each do |c|
-          if chs >= 5
-            packed_line << 0
-            chs = 0
-          end
-          packed_line[-1] = (packed_line[-1]<<7) + (c & 0x7f)
-          chs += 1
-        end
-        content[flawed_line[:offset], before_words] = packed_line
-      end
-      File.open(to,'w') {|f| f.write lines.map{|l| l[:content]}.join}
+      STDOUT.write defroster.content(defroster.fn(n))
     end
 
     option "lines", :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
@@ -222,9 +111,8 @@ class GECOS
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
-      defroster = GECOS::Defroster.new(decoder)
-      defroster.options = {:warn=>true}
-      file_index = index_for(defroster, n)
+      defroster = GECOS::Defroster.new(decoder, :warn=>true)
+      file_index = defroster.fn(n)
       puts "Archive for file #{defroster.file_name(file_index)}:"
       if options[:thawed]
         lines = defroster.lines(file_index)
@@ -244,21 +132,6 @@ class GECOS
         content = defroster.file_words(file_index)
         Dump.dump(content, options.merge(:frozen=>true))
       end
-    end
-    
-    # TODO Is this useful? I suspect not. If not, remove it
-    desc 'preamble ARCHIVE', "Show the preamble (the stuff that precedes any file)"
-    def preamble(file)
-      archive = Archive.new
-      file = archive.qualified_tape_file_name(file)
-      archived_file = archive.file_path(file)
-      archived_file = "--unknown--" unless archived_file
-      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
-      decoder = GECOS::Decoder.new(File.read(file))
-      defroster = GECOS::Defroster.new(decoder)
-      puts "Preamble for archived file #{archived_file}:"
-      preamble_content = decoder.words[0,defroster.offset]
-      Dump.dump(preamble_content)
     end
   end
 end

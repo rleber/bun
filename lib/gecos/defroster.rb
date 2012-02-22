@@ -80,6 +80,22 @@ class GECOS
       return nil unless d
       d.file_name
     end
+
+    # Convert a file name to an index number; also convert negative indexes
+    def fn(n)
+      if n.to_s !~ /^-?\d+$/
+        name = n
+        n = file_index(name)
+        abort "Frozen file does not contain a file #{name}" unless n
+      else
+        orig_n = n
+        n = n.to_i
+        n += files+1 if n<0
+        abort "Frozen file does not contain file number #{orig_n}" if n<1 || n>files
+        n -= 1
+      end
+      n
+    end
     
     def file_index(name)
       descr = descriptors.find {|d| d.file_name == name}
