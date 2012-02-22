@@ -152,8 +152,17 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       end
     end
     
+    no_tasks do
+      def ex(task)
+        warn task
+        system(task) unless @dryrun
+      end
+    end
+    
     desc "extract [ARCHIVE] [TO]", "Extract all the files in the archive"
+    option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
     def extract(archive_location=nil, to=nil)
+      @dryrun = options[:dryrun]
       directory = archive_location || Archive.location
       archive = Archive.new(directory)
       to ||= File.join(archive.location, archive.extract_directory)
@@ -168,10 +177,10 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
           defroster.files.times do |i|
             descr = defroster.descriptor(i)
             subfile_name = descr.file_name
-            puts "gecos freeze thaw -r #{tape_name} #{subfile_name} >#{to + '/' + tape_name + '/' + file_path + '/' + subfile_name}"
+            ex "gecos freeze thaw #{tape_name} #{subfile_name} >#{to + '/' + tape_name + '/' + file_path + '/' + subfile_name}"
           end
         else
-          puts "gecos unpack -r #{tape_name} >#{to + '/' + tape_name + '/' + file_path}"
+          ex "gecos unpack #{tape_name} >#{to + '/' + tape_name + '/' + file_path}"
         end
       end
     end
