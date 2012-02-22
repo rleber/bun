@@ -1,18 +1,10 @@
-Check -- does a "type" code other than "asc" ever appear in freeze files?
-Mass archive extraction
 Simplify thaw (and repair, unpack): simply try to unbundle a line at each location
+Mass archive extraction
 Archive: retrieve, extract, list, xref, classify
 Sub directories /clean, /dirty, /extracted, /xref
 Separate clean and dirty files
-Create file format notes
-Find frozen files, even if extension isn't ".f"
-Make independent of index file
-Move files to Dropbox
-Separate 80/81 script stuff from archival, etc.
-Rename GECOS
-Separate Archive, File, and Freezer
+Refactor repair (and thaw/unpack?): create parent class or mixin, and combine common code
 Standardize Decode and Defrost interfaces
-Refactor repair
 Clean code
 Build as a gem
 Revise installation readme
