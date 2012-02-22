@@ -156,7 +156,6 @@ class GECOS
       lines = []
       warned = false
       while line_offset < words.size
-        success = false
         _, last_line_word, line = defrost_line(words, line_offset)
         if !line
           abort "Bad line at #{'%o'%line_offset}: #{line.inspect}" if options[:strict]
