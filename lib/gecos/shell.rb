@@ -37,7 +37,7 @@ class GECOS
     end
     private :_run
 
-    def rf_rm(file)
+    def rm_rf(file)
       _run "rm -rf", file
     end
     
