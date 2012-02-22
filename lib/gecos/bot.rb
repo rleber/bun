@@ -37,9 +37,9 @@ class GECOS
     option "deleted", :aliases=>'-d', :type=>'boolean', :desc=>"Display deleted lines (only with --inspect)"
     desc "unpack FILE [TO]", "Unpack a file (Not frozen files -- use freezer subcommands for that)"
     def unpack(file, to=nil)
-      abort "Can't unpack file. It's a frozen file #{archived_file}" if Archive.frozen?(file)
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
+      abort "Can't unpack file. It's a frozen file #{archived_file}" if Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
       archived_file = archive.file_path(file)
       content = decoder.content

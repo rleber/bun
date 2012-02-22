@@ -30,9 +30,9 @@ class GECOS
       abort "Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
+      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
-      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
       defroster = GECOS::Defroster.new(decoder)
       print "Frozen archive for directory #{archived_file}"
@@ -85,9 +85,9 @@ class GECOS
     option "strict", :aliases=>"-s", :type=>"boolean", :desc=>"Check for bad data. Abort if found"
     option "warn", :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
     def thaw(file, n, out=nil)
-      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
+      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
       decoder = GECOS::Decoder.new(File.read(file))
@@ -105,9 +105,9 @@ class GECOS
       limit = options[:lines]
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
+      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
-      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
       defroster = GECOS::Defroster.new(decoder, :warn=>true)
       file_index = defroster.fn(n)
