@@ -157,6 +157,10 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         warn task
         system(task) unless @dryrun
       end
+      
+      def shell_quote(f)
+        f.inspect
+      end
     end
     
     desc "extract [ARCHIVE] [TO]", "Extract all the files in the archive"
@@ -180,15 +184,29 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
             subfile_name = descr.file_name
             f = File.join(to, tape_name, file_path, subfile_name)
             dir = File.dirname(f)
-            ex "mkdir -p #{dir.inspect}"
-            ex "gecos freezer thaw #{tape_name} #{subfile_name} >#{f.inspect}"
+            ex "mkdir -p #{shell_quote(dir)}"
+            ex "gecos freezer thaw #{shell_quote(tape_name)} #{subfile_name} >#{shell_quote(f)}"
           end
         else
           f = File.join(to, tape_name, file_path)
           dir = File.dirname(f)
-          ex "mkdir -p #{dir.inspect}"
-          ex "gecos unpack #{tape_name} >#{f.inspect}"
+          ex "mkdir -p #{shell_quote(dir)}"
+          ex "gecos unpack #{shell_quote(tape_name)} >#{shell_quote(f)}"
         end
+      end
+    end
+    
+    desc "xref [ARCHIVE] [FROM] [TO]", "Create cross-reference by file name"
+    def xref(archive_location=nil, from=nil, to=nil)
+      @dryrun = options[:dryrun]
+      directory = archive_location || Archive.location
+      archive = Archive.new(directory)
+      from ||= File.join(archive.location, archive.extract_directory)
+      to ||= File.join(archive.location, archive.xref_directory)
+      ex "rm -rf #{to}"
+      warn "from=#{from}"
+      Dir.glob(File.join(from,'**')).each do |f|
+        warn f
       end
     end
   end

@@ -1,4 +1,5 @@
 archive: ~/gecos_archive
 raw_directory: raw
-extract_directory: extracted
+xref_directory: files
+extract_directory: tapes
 repository: 

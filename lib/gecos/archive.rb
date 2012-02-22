@@ -3,16 +3,24 @@ require 'yaml'
 class GECOS
   class Archive
     
+    def self.config_dir(name)
+      config[name].sub(/^~/,ENV['HOME'])
+    end
+    
     def self.location
-      config['archive'].sub(/^~/,ENV['HOME'])
+      config_dir('archive')
     end
     
     def self.raw_directory
-      config['raw_directory'].sub(/^~/,ENV['HOME'])
+      config_dir('raw_directory')
     end
     
     def self.extract_directory
-      config['extract_directory'].sub(/^~/,ENV['HOME'])
+      config_dir('extract_directory')
+    end
+    
+    def self.xref_directory
+      config_dir('xref_directory')
     end
     
     def self.repository
@@ -56,6 +64,10 @@ class GECOS
     
     def extract_directory
       self.class.extract_directory
+    end
+    
+    def xref_directory
+      self.class.xref_directory
     end
 
     def file_path(tape_name)
