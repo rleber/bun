@@ -3,13 +3,15 @@ require 'gecos/freezer_descriptor'
 class GECOS
   class Defroster
     attr_reader :decoder
+    attr_accessor :options
     
     def offset
       decoder.file_content_start
     end
     
-    def initialize(decoder)
+    def initialize(decoder, options={})
       @decoder = decoder
+      @options = options
     end
     
     def words
@@ -129,30 +131,22 @@ class GECOS
     
     def lines(n)
       @lineset ||= []
-      @lineset[n] ||= self.class.defrost(file_words(n))
+      @lineset[n] ||= defrost(n)
     end
     
-    def self.line_length(word)
-      (word & 0xfffe00000) >> 21
-    end
-    
-    def self.clipped_line_length(word)
+    def line_length(word)
       (word & 0x00fe00000) >> 21
     end
     
-    def self.top_descriptor_bits(word)
+    def top_descriptor_bits(word)
       (word & 0xff0000000) >> 28
     end
     
-    def self.bottom_descriptor_bits(word)
-      word & 0x1fffff
-    end
-    
-    def self.good_descriptor?(word)
+    def good_descriptor?(word)
       top_descriptor_bits(word) == 0
     end
     
-    def self.extract_characters(word, n=5)
+    def extract_characters(word, n=5)
       chs = []
       n.times do |i|
         chs.unshift((word & 0x7f).chr)
@@ -161,19 +155,11 @@ class GECOS
       chs.join
     end
     
-    def self.good_characters?(text)
+    def good_characters?(text)
       Decoder.clean?(text.sub(/\0*$/,'')) && (text !~ /\0+$/ || text =~ /\r\0*$/) && text !~ /\n/
     end
     
-    def self.line_ended?(text)
-      text =~ /\r\0*$/
-    end
-    
-    def self.zero_top_bit?(word)
-      (word & 0x800000000)==0
-    end
-    
-    def self.defrost_line(words, line_offset, options={})
+    def defrost_line(words, line_offset, options={})
       line = ""
       line_length = words.size
       offset = line_offset
@@ -196,31 +182,9 @@ class GECOS
       [line_offset, offset, line]
     end
     
-    def self.words_required(line)
-      line = line.sub(/\0+$/,'')
-      return 2 if line.size < 3
-      2 + (line.size - 3 + 4)/5
-    end
-    
-    def self.options
-      @options
-    end
-    
-    def self.options=(options)
-      @options=options
-    end
-    
-    def options=(options)
-      self.class.options=options
-    end
-    
-    def options
-      self.class.options
-    end
-    
-    # TODO Should this not be a class method?
-    def self.defrost(words, options={})
+    def defrost(n, options={})
       options = self.options.merge(options)
+      words = file_words(n)
       trace_count = 0
       line_offset = 0
       lines = []

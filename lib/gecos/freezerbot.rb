@@ -117,8 +117,7 @@ class GECOS
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
-      defroster = GECOS::Defroster.new(decoder)
-      GECOS::Defroster.options = options
+      defroster = GECOS::Defroster.new(decoder, :options=>options)
       STDOUT.write defroster.content(index_for(defroster,n))
     end
     
