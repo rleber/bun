@@ -161,15 +161,6 @@ class GECOS
       chs.join
     end
     
-    def self.freeze_characters(chs)
-      word = 0
-      chs.unpack('c*').each do |c|
-        word <<= 7
-        word |= (c & 0x7f)
-      end
-      word
-    end
-    
     def self.good_characters?(text)
       Decoder.clean?(text.sub(/\0*$/,'')) && (text !~ /\0+$/ || text =~ /\r\0*$/) && text !~ /\n/
     end
@@ -183,7 +174,6 @@ class GECOS
     end
     
     def self.defrost_line(words, line_offset, options={})
-      warn "In defrost_line: line_offset=#{'%o'%line_offset}" if options[:trace]
       line = ""
       line_length = words.size
       offset = line_offset
@@ -203,23 +193,7 @@ class GECOS
         offset += 1
       end
       return [line_offset, offset, nil] unless line =~ /\r/
-      warn "Defrosted line at #{'%o'%line_offset}-#{'%o'%(offset-1)}: #{line.inspect}" if options[:trace]
       [line_offset, offset, line]
-    end
-    
-    def self.freeze(line)
-      line = line.chomp + "\r"
-      line_length = line.size
-      words = []
-      chs = 3
-      while line.size > 0
-        chunk = (line[0,chs] + "\0"*chs)[0,chs]
-        line = line[chs..-1]||""
-        words << freeze_characters(chunk)
-        chs = 5
-      end
-      words[0] |= (line_length << 21)
-      words
     end
     
     def self.words_required(line)
@@ -260,78 +234,14 @@ class GECOS
           warned = true
           line_offset += 1
         else
-          warn "Line retrieved at #{'%o'%line_offset}-#{'%o'%last_line_word}: #{line.inspect}" if options[:trace]
           raw_line = line
           line.sub!(/\r\0*$/,"\n")
           lines << {:content=>line, :offset=>line_offset, :descriptor=>words[line_offset], 
                     :words=>words[line_offset..last_line_word], :raw=>raw_line}
-          options[:trace] = true if options[:sentinel] && line =~ options[:sentinel]
-          trace_count += 1 if options[:trace]
-          exit if options[:trace] && options[:trace_limit] && trace_count > options[:trace_limit]
           line_offset = last_line_word + 1
         end
       end
       lines
-    end
-    
-    # Find a possible good line of text
-    # Look for a sequence of consecutive words that could be a line:
-    #   - Every word has a zero top bit
-    #   - First word is possibly 0b00000000lllllll<ch1><ch2><ch3> (bit pattern /$0{8}.{7}.{21}$/)
-    #   - Every character in each word is not a control character (excluding tabs)
-    #   - Last word is in the form /\r\0*$/
-    def self.find_good_line(words, search_offset, options={})
-      warn "Looking for a good line at #{'%o'%search_offset}: options=#{options.inspect}" if options[:trace]
-      line = ""
-      start_offset = search_offset
-      offset = nil
-      loop do
-        # See if there's a valid line, starting at start_offset
-        offset = start_offset
-        line = ""
-        warn "Looking for a match at #{'%o'%offset}" if options[:trace]
-        success = true
-        return [nil, nil, nil] unless words[offset]
-        if good_descriptor?(words[offset])
-          warn "Possible descriptor at #{'%o'%offset}: #{'%012o'%words[offset]}" if options[:trace]
-          chars = extract_characters(words[offset],3)
-          if good_characters?(chars) # Good descriptor
-            warn "Good descriptor at #{'%o'%offset}: chars=#{chars.inspect}" if options[:trace]
-            line += chars
-            offset += 1
-          else # Bad descriptor; also a bad "characters" word (because of the zero top bits)
-            warn "Bad descriptor at #{'%o'%offset}" if options[:trace]
-            start_offset += 1
-            next
-          end
-        end
-        loop do
-          warn "Looking for characters at #{'%o'%offset}; #{'%012o'%words[offset]}" if options[:trace]
-          break if line_ended?(line) # Found the end of the line
-          warn "  Not at line end" if options[:trace]
-          # Look for a sequence of good "character" words
-          word = words[offset]
-          offset += 1
-          unless zero_top_bit?(word)
-            warn "  Bad top bit" if options[:trace]
-            success = false
-            break
-          end
-          chars = extract_characters(word, 5)
-          unless good_characters?(chars)
-            warn "  Bad characters" if options[:trace]
-            success = false
-            break
-          end
-          warn "  Good characters: #{chars.inspect}" if options[:trace]
-          line += chars
-        end
-        break if success
-        start_offset = offset
-      end
-      line.sub!(/\0+$/,'')
-      warn "Found clean line at #{'%o'%start_offset}-#{'%o'%(offset-1)}: #{line.inspect}" if options[:trace]
-      [start_offset, offset-1, line]
     end
   end
 end
