@@ -83,9 +83,7 @@ class GECOS
     end
 
     desc "thaw ARCHIVE FILE", "Uncompress a frozen Honeywell file"
-    option "repair", :aliases=>"-r", :type=>"boolean", :desc=>"Attempt to repair damage in the file"
     option "strict", :aliases=>"-s", :type=>"boolean", :desc=>"Check for bad data. Abort if found"
-    option "trace", :aliases=>"-t", :type=>"boolean", :desc=>"Print debugging trace information"
     option "warn", :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
     def thaw(file, n)
       archive = Archive.new
