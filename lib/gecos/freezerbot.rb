@@ -1,10 +1,9 @@
 require 'gecos/archive'
-require 'rleber-interaction'
+require 'gecos/shell'
 
 class GECOS
 
   class FreezerBot < Thor
-    include Interaction
 
     TIMESTAMP_FORMAT = "%m/%d/%Y %H:%M:%S"
 
@@ -82,18 +81,19 @@ class GECOS
       end
     end
 
-    desc "thaw ARCHIVE FILE", "Uncompress a frozen Honeywell file"
+    desc "thaw ARCHIVE FILE [TO]", "Uncompress a frozen Honeywell file"
     option "strict", :aliases=>"-s", :type=>"boolean", :desc=>"Check for bad data. Abort if found"
     option "warn", :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
-    def thaw(file, n)
+    def thaw(file, n, out=nil)
+      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
       archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
-      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
       defroster = GECOS::Defroster.new(decoder, :options=>options)
-      STDOUT.write defroster.content(defroster.fn(n))
+      content = defroster.content(defroster.fn(n))
+      Shell.new.write out, content, :timestamp=>defroster.update_time
     end
 
     option "lines", :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'

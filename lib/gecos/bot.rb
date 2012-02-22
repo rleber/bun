@@ -7,26 +7,13 @@ require 'gecos/defroster'
 require 'gecos/archivebot'
 require 'gecos/freezerbot'
 require 'gecos/dump'
-require 'rleber-interaction'
 
 class GECOS
   class Bot < Thor
-    include Interaction
     
     desc "readme", "Display helpful information for beginners"
     def readme
       STDOUT.write File.read("doc/readme.md")
-    end
-    
-    no_tasks do
-      # Write text to the file, unless file == '-', in which case, write to STDOUT
-      def write_file(file_name, text)
-        if file_name == '-'
-          puts text
-        else
-          File.open(file_name, 'w') {|f| f.write(text)}
-        end
-      end
     end
     
     option "lines", :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
@@ -48,14 +35,15 @@ class GECOS
     UNPACK_OFFSET = 22
     option "inspect", :aliases=>'-i', :type=>'boolean', :desc=>"Display long format details for each line"
     option "deleted", :aliases=>'-d', :type=>'boolean', :desc=>"Display deleted lines (only with --inspect)"
-    desc "unpack", "Unpack a file (Not frozen files -- use freezer subcommands for that)"
-    def unpack(file)
+    desc "unpack FILE [TO]", "Unpack a file (Not frozen files -- use freezer subcommands for that)"
+    def unpack(file, to=nil)
+      abort "Can't unpack file. It's a frozen file #{archived_file}" if Archive.frozen?(file)
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
       decoder = GECOS::Decoder.new(File.read(file))
       archived_file = archive.file_path(file)
-      abort "Can't unpack file. It's a frozen file #{archived_file}" if Archive.frozen?(file)
-      STDOUT.write decoder.content
+      content = decoder.content
+      Shell.new.write to, content
     end
     
     no_tasks do

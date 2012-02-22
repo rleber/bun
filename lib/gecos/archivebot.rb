@@ -2,6 +2,7 @@ require 'thor'
 require 'mechanize'
 require 'fileutils'
 require 'gecos/archive'
+require 'gecos/shell'
 
 class GECOS
   class ArchiveBot < Thor
@@ -152,17 +153,6 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       end
     end
     
-    no_tasks do
-      def ex(task)
-        warn task
-        system(task) unless @dryrun
-      end
-      
-      def shell_quote(f)
-        f.inspect
-      end
-    end
-    
     desc "extract [ARCHIVE] [TO]", "Extract all the files in the archive"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
     def extract(archive_location=nil, to=nil)
@@ -171,7 +161,8 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       archive = Archive.new(directory)
       to ||= File.join(archive.location, archive.extract_directory)
       ix = archive.tapes
-      ex "rm -rf #{to}"
+      shell = Shell.new(:dryrun=>@dryrun)
+      shell.rm_rf to
       ix.each do |tape_name|
         extended_file_name = archive.qualified_tape_file_name(tape_name)
         frozen = Archive.frozen?(extended_file_name)
@@ -184,14 +175,14 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
             subfile_name = descr.file_name
             f = File.join(to, tape_name, file_path, subfile_name)
             dir = File.dirname(f)
-            ex "mkdir -p #{shell_quote(dir)}"
-            ex "gecos freezer thaw #{shell_quote(tape_name)} #{subfile_name} >#{shell_quote(f)}"
+            shell.mkdir_p dir
+            shell.thaw tape_name, subfile_name, f
           end
         else
           f = File.join(to, tape_name, file_path)
           dir = File.dirname(f)
-          ex "mkdir -p #{shell_quote(dir)}"
-          ex "gecos unpack #{shell_quote(tape_name)} >#{shell_quote(f)}"
+          shell.mkdir_p dir
+          shell.unpack tape_name, f
         end
       end
     end
@@ -280,12 +271,13 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       end
       
       # Create cross-reference files
-      ex "rm -rf #{to}"
-      command = options[:copy] ? 'cp' : 'ln -s'
+      shell = Shell.new(:dryrun=>@dryrun)
+      shell.rm_rf to
+      command = options[:copy] ? :cp : :ln_s
       index.sort_by{|e| e[:from]}.each do |spec|
         dir = File.dirname(spec[:to])
-        ex "mkdir -p #{shell_quote(dir)}"
-        ex "#{command} #{shell_quote(spec[:from])} #{shell_quote(spec[:to])}"
+        shell.mkdir_p dir
+        shell.invoke command, from, to
       end
 
       # Create index file of cross-reference
@@ -316,17 +308,18 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       clean = File.join(archive.location, archive.clean_directory)
       dirty ||= archive.xref_directory
       dirty = File.join(archive.location, archive.dirty_directory)
-      ex "rm -rf #{clean}"
-      ex "rm -rf #{dirty}"
-      command = options[:copy] ? 'cp' : 'ln -s'
+      shell = Shell.new(:dryrun=>@dryrun)
+      shell.rm_rf clean
+      shell.rm_rf dirty
+      command = options[:copy] ? :cp : :ln_s
       Dir.glob(File.join(from,'**','*')).each do |old_file|
         next if File.directory?(old_file)
         f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
         destination = Decoder.clean?(old_file) ? clean : dirty
         new_file = File.join(destination, f)
         dir = File.dirname(new_file)
-        ex "mkdir -p #{shell_quote(dir)}"
-        ex "#{command} #{shell_quote(old_file)} #{shell_quote(new_file)}"
+        shell.mkdir_p dir
+        shell.invoke command, old_file, new_file
       end
     end
   end
