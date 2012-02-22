@@ -196,7 +196,10 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       end
     end
     
+    # Cross-reference the extracted files:
+    # Create one directory per file, as opposed to one directory per tape
     desc "xref [ARCHIVE] [FROM] [TO]", "Create cross-reference by file name"
+    option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to xref (instead of symlink)"
     def xref(archive_location=nil, from=nil, to=nil)
       @dryrun = options[:dryrun]
       directory = archive_location || Archive.location
@@ -206,9 +209,13 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       to ||= archive.xref_directory
       to = File.join(archive.location, archive.xref_directory)
       index = {}
+      reverse_index = Hash.new([])
+      file_index = Hash.new([])
+      
+      # Create cross-reference
       ex "rm -rf #{to}"
       warn "from=#{from}"
-      Dir.glob(File.join(from,'**/*')).each do |old_file|
+      Dir.glob(File.join(from,'**','*')).each do |old_file|
         next if File.directory?(old_file)
         f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
         if f !~ /^([^\/]+)\/(.*)$/
@@ -217,14 +224,63 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
           # TODO Maintain an .index file
           tape = $1
           file = $2
+          file_index[File.join(to, file)] << tape
           new_file = File.join(to, file, tape)
           dir = File.dirname(new_file)
           index[old_file] = new_file
+          reverse_index[new_file] << old_file
           ex "mkdir -p #{shell_quote(dir)}"
-          ex "ln -s #{shell_quote(old_file)} #{shell_quote(new_file)}"
+          if options[:copy]
+            ex "cp #{shell_quote(old_file)} #{shell_quote(new_file)}"
+          else
+            ex "ln -s #{shell_quote(old_file)} #{shell_quote(new_file)}"
+          end
         end
       end
-      # TODO: Collapse directories where there's only one file, or where they're all identical
+
+      # Collapse directories where there's only one file, or where they're all identical
+      file_index.each do |file, tapes|
+        first_tape = tapes.pop
+        first_file = File.join(file, first_tape)
+        contents = {first_tape => File.read(first_file)}
+        tapes.each do |tape| # Look for duplicates of other files
+          file_name = File.join(file, tape)
+          content = File.read(file_name)
+          match = nil
+          contents.each do |other_tape, other_content|
+            if content == other_content
+              match = other_tape
+              break
+            end
+              break
+            else
+              contents[]
+          end
+          if match
+            match_file = File.join(file, match)
+            abort "Reverse index [#{file_name}] has no entries" if reverse_index[file_name].size == 0
+            abort "Reverse index [#{file_name}] has > 1 entry: #{reverse_index[file_name].inspect}" \ 
+              if reverse_index[file_name].size > 1
+            index[reverse_index[file_name].first] = match_file
+            reverse_index[match_file] += reverse_index[file_name]
+            reverse_index.delete(file_name)
+            ex "rm #{shell_quote(file_name)}"
+          end
+        end
+        if contents.size == 1
+          temp_file = file + '.temp'
+          ex "cp #{shell_quote(first_file)} #{shell_quote(temp_file)}"
+          ex "rm -rf #{shell_quote(file)}"
+          ex "mv #{shell_quote(temp_file)} #{shell_quote(file)}"
+          reverse_index[first_file].each do |linked_file|
+            index[linked_file] = file
+          end
+          reverse_index[file] += reverse_index[first_file]
+          reverse_index.delete(first_file)
+        end
+      end
+      
+      # Create index of cross-reference
       unless @dryrun
         index_file = File.join(to, '.index')
         File.open(index_file, 'w') do |f|
