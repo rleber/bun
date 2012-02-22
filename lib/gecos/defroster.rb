@@ -5,13 +5,13 @@ class GECOS
     attr_reader :decoder
     attr_accessor :options
     
-    def offset
-      decoder.file_content_start
-    end
-    
     def initialize(decoder, options={})
       @decoder = decoder
       @options = options
+    end
+    
+    def offset
+      decoder.file_content_start
     end
     
     def words
