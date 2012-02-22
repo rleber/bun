@@ -209,7 +209,7 @@ class GECOS
         warn "Word (defrost_line): #{'%012o'%word} at #{'%o'%offset}" if options[:trace]
         ch_count = 5
       end
-      line = line.sub(/[[:cntrl]].*/,"\r")
+      line = line.sub(/[[:cntrl:]].*/,"\r")
       warn "Defrosted line at #{'%o'%line_offset}-#{'%o'%(offset-1)}: #{line.inspect}" if options[:trace]
       [line_offset, offset-1, line]
     end
