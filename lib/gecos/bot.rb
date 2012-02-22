@@ -55,41 +55,7 @@ class GECOS
       decoder = GECOS::Decoder.new(File.read(file))
       archived_file = archive.file_path(file)
       abort "Can't unpack file. It's a frozen file #{archived_file}" if Archive.frozen?(file)
-      words = decoder.words
-      offset = decoder.file_content_start + UNPACK_OFFSET
-      offset_width = ('%o'%(words.size)).size
-      line_count = 0
-      loop do
-        break if offset >= words.size
-        break if words[offset] == 0170000
-        line_length = (words[offset] & 0xffffc0000) >> 18
-        lower_bits = words[offset] & 0x3ffff
-        if line_length > 0x1ff # Deleted text; look for a word starting in 0x000 in the upper 9 bits
-          original_offset = offset
-          loop do
-            offset += 1
-            break if offset >= words.size
-            # puts '%012o'%(words[offset]) + ':' + '%012o'%(words[offset] & 0xff1000000)
-            if (words[offset] & 0xff1000000) == 0
-              if options[:inspect] && options[:deleted]
-                line = decoder.characters[(original_offset+1)*decoder.characters_per_word...offset*decoder.characters_per_word].sub(/\x7f*$/,'')
-                puts %Q{0#{"%0#{offset_width}o"%original_offset} #{'%012o'%words[original_offset]} #{'%06o'%line_length} #{'%06o'%lower_bits} D #{line.inspect[1..-2]}}
-              end
-              offset += 1
-              break
-            end
-          end
-        else
-          line = decoder.characters[(offset+1)*decoder.characters_per_word, line_length*decoder.characters_per_word].sub(/\x7f*$/,'')
-          if options[:inspect]
-            puts %Q{0#{"%0#{offset_width}o"%offset} #{'%012o'%words[offset]} #{'%06o'%line_length} #{'%06o'%lower_bits}   #{line.inspect[1..-2]}}
-          else
-            puts line
-          end
-          line_count += 1
-          offset += line_length+1
-        end
-      end
+      STDOUT.write decoder.content
     end
 
     option "inspect", :aliases=>'-i', :type=>'boolean', :desc=>"Display long format details for each line"

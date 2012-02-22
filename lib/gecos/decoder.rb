@@ -7,6 +7,7 @@ class GECOS
     BITS_PER_WORD = 36
     ARCHIVE_NAME_POSITION = 7 # words
     SPECIFICATION_POSITION = 11 # words
+    UNPACK_OFFSET = 22
     
     def zstring(offset)
       start = offset
@@ -219,5 +220,85 @@ class GECOS
       end.join
     end
     private :_frozen_characters
+    
+    def content
+      @content ||= _content
+    end
+    
+    def _content
+      lines.map{|l| l[:content]}.join
+    end
+    private :_content
+    
+    def lines
+      @lines ||= decode
+    end
+    
+    def decode
+      line_offset = file_content_start + UNPACK_OFFSET
+      lines = []
+      warned = false
+      while line_offset < words.size
+        _, last_line_word, line = decode_line(words, line_offset)
+        if line
+          raw_line = line
+          line.sub!(/\r\0*$/,"\n")
+          lines << {:content=>line, :offset=>line_offset, :descriptor=>words[line_offset], 
+                    :words=>words[line_offset..last_line_word], :raw=>raw_line}
+        end
+        line_offset = last_line_word + 1
+      end
+      lines
+    end
+    
+    def decode_line(words, line_offset)
+      line = ""
+      descriptor = words[line_offset]
+      return [line_offset, words.size, nil] if descriptor == EOF_MARKER
+      deleted = deleted_line?(descriptor)
+      line_length = line_length(descriptor)
+      offset = line_offset+1
+      loop do
+        word = words[offset]
+        break if !word || word == EOF_MARKER
+        chs = extract_characters(word)
+        clipped_chs = chs.sub(/(?!\t)[[:cntrl:]].*/,'') # Remove control characters and all following letters
+        line += clipped_chs
+        break if clipped_chs != chs || clipped_chs.size==0 || !good_characters?(chs) || (offset-line_offset) >= line_length
+        offset += 1
+      end
+      return [line_offset, offset, nil] if deleted
+      line += "\n"
+      [line_offset, offset, line]
+    end
+    
+    def line_length(word)
+      (word & 0777777000000) >> 18
+    end
+    
+    def byte(word, n)
+      extract_bytes(word)[n]
+    end
+    
+    def deleted_line?(word)
+      byte(word,0) != 0
+    end
+    
+    def extract_characters(word, n=5)
+      extract_bytes(word).map{|c| (c & 0600) > 0 ? 0 : c.chr }.join
+    end
+    
+    def extract_bytes(word)
+      chs = []
+      4.times do |i|
+        chs.unshift(word & 0777)
+        word >>= 9
+      end
+      chs
+    end
+    
+    def good_characters?(text)
+      Decoder.clean?(text.gsub(/\t/,'').sub(/\177*$/,'')) && (text !~ /\177/ || text =~ /[^\177]+\177+$/) && text !~ /[\n\r]/
+    end
   end
 end
