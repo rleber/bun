@@ -178,14 +178,16 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
           defroster.files.times do |i|
             descr = defroster.descriptor(i)
             subfile_name = descr.file_name
-            dir = File.join(to, tape_name, file_path)
+            f = File.join(to, tape_name, file_path, subfile_name)
+            dir = File.dirname(f)
             ex "mkdir -p #{dir}"
-            ex "gecos freeze thaw #{tape_name} #{subfile_name} >#{File.join(dir,subfile_name)}"
+            ex "gecos freeze thaw #{tape_name} #{subfile_name} >#{f}"
           end
         else
-          dir = File.join(to, tape_name)
+          f = File.join(to, tape_name, file_path)
+          dir = File.dirname(f)
           ex "mkdir -p #{dir}"
-          ex "gecos unpack #{tape_name} >#{File.join(dir, file_path)}"
+          ex "gecos unpack #{tape_name} >#{f}"
         end
       end
     end
