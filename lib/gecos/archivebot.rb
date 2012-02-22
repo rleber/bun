@@ -230,6 +230,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     def xref(archive_location=nil, from=nil, to=nil)
       @dryrun = options[:dryrun]
       @trace = options[:trace]
+      archive_location = nil if archive_location == '-'
       directory = archive_location || Archive.location
       archive = Archive.new(directory)
       from ||= archive.extract_directory
@@ -280,14 +281,11 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       
       # Create cross-reference files
       ex "rm -rf #{to}"
+      command = options[:copy] ? 'cp' : 'ln -s'
       index.sort_by{|e| e[:from]}.each do |spec|
         dir = File.dirname(spec[:to])
         ex "mkdir -p #{shell_quote(dir)}"
-        if options[:copy]
-          ex "cp #{shell_quote(spec[:from])} #{shell_quote(spec[:to])}"
-        else
-          ex "ln -s #{shell_quote(spec[:from])} #{shell_quote(spec[:to])}"
-        end
+        ex "#{command} #{shell_quote(spec[:from])} #{shell_quote(spec[:to])}"
       end
 
       # Create index file of cross-reference
@@ -299,6 +297,36 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
             ixf.puts %Q{#{"%-#{from_width}s" % spec[:from]} => #{spec[:to]}}
           end
         end
+      end
+    end
+    
+    desc "classify", "Classify files based on whether they're clean or not"
+    option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to xref (instead of symlink)"
+    option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
+    option 'trace', :aliases=>'-t', :type=>'boolean', :desc=>"Debugging trace"
+    def classify(archive_location=nil, from=nil, clean=nil, dirty=nil)
+      @dryrun = options[:dryrun]
+      @trace = options[:trace]
+      archive_location = nil if archive_location == '-'
+      directory = archive_location || Archive.location
+      archive = Archive.new(directory)
+      from ||= archive.xref_directory
+      from = File.join(archive.location, from)
+      clean ||= archive.xref_directory
+      clean = File.join(archive.location, archive.clean_directory)
+      dirty ||= archive.xref_directory
+      dirty = File.join(archive.location, archive.dirty_directory)
+      ex "rm -rf #{clean}"
+      ex "rm -rf #{dirty}"
+      command = options[:copy] ? 'cp' : 'ln -s'
+      Dir.glob(File.join(from,'**','*')).each do |old_file|
+        next if File.directory?(old_file)
+        f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
+        destination = Decoder.clean?(old_file) ? clean : dirty
+        new_file = File.join(destination, f)
+        dir = File.dirname(new_file)
+        ex "mkdir -p #{shell_quote(dir)}"
+        ex "#{command} #{shell_quote(old_file)} #{shell_quote(new_file)}"
       end
     end
   end

@@ -2,4 +2,6 @@ archive: ~/gecos_archive
 raw_directory: raw
 xref_directory: files
 extract_directory: tapes
+clean_directory: clean
+dirty_directory: dirty
 repository: 

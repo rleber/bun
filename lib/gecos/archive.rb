@@ -23,6 +23,14 @@ class GECOS
       config_dir('xref_directory')
     end
     
+    def self.clean_directory
+      config_dir('clean_directory')
+    end
+    
+    def self.dirty_directory
+      config_dir('dirty_directory')
+    end
+    
     def self.repository
       config['repository']
     end
@@ -68,6 +76,14 @@ class GECOS
     
     def xref_directory
       self.class.xref_directory
+    end
+
+    def clean_directory
+      self.class.clean_directory
+    end
+
+    def dirty_directory
+      self.class.dirty_directory
     end
 
     def file_path(tape_name)
