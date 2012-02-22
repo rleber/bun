@@ -3,8 +3,6 @@ require 'yaml'
 class GECOS
   class Archive
     
-    # INDEX_FILE = '.index'
-    
     def self.location
       config['archive'].sub(/^~/,ENV['HOME'])
     end
@@ -13,9 +11,9 @@ class GECOS
       config['raw_directory'].sub(/^~/,ENV['HOME'])
     end
     
-    # def self.index_file
-    #   File.join(raw_directory, INDEX_FILE)
-    # end
+    def self.extract_directory
+      config['extract_directory'].sub(/^~/,ENV['HOME'])
+    end
     
     def self.repository
       config['repository']
@@ -54,6 +52,10 @@ class GECOS
     
     def raw_directory
       self.class.raw_directory
+    end
+    
+    def extract_directory
+      self.class.extract_directory
     end
 
     def file_path(tape_name)

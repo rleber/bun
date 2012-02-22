@@ -138,9 +138,8 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       end
       # Retrieve file information
       file_info = []
-      ix.each_with_index do |fi, i|
-        tape_name = fi
-        file_name = archive.file_path(fi)
+      ix.each_with_index do |tape_name, i|
+        file_name = archive.file_path(tape_name)
         friz = Archive.frozen?(archive.qualified_tape_file_name(tape_name)) ? 'Frozen' : 'Normal'
         next unless friz =~ type_pattern && tape_name=~tape_pattern && file_name=~file_pattern
         file_info << {'tape'=>tape_name, 'type'=>friz, 'file'=>file_name}
@@ -157,12 +156,11 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     def extract(archive_location=nil, to=nil)
       directory = archive_location || Archive.location
       archive = Archive.new(directory)
-      to ||= "output"
-      ix = Archive.index
-      ix.each do |entry|
-        file_name = entry[0]
-        extended_file_name = archive.qualified_tape_file_name(file_name)
-        frozen = Defroster::frozen?(extended_file_name)
+      to ||= File.join(archive.location, archive.extract_directory)
+      ix = archive.tapes
+      ix.each do |tape_name|
+        extended_file_name = archive.qualified_tape_file_name(tape_name)
+        frozen = Archive.frozen?(extended_file_name)
         decoder = Decoder.new(File.read(extended_file_name))
         file_path = decoder.file_path
         if frozen
@@ -170,10 +168,10 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
           defroster.files.times do |i|
             descr = defroster.descriptor(i)
             subfile_name = descr.file_name
-            puts "gecos freeze thaw -r #{file_name} #{subfile_name} >#{to + '/' + file_name + '/' + file_path + '/' + subfile_name}"
+            puts "gecos freeze thaw -r #{tape_name} #{subfile_name} >#{to + '/' + tape_name + '/' + file_path + '/' + subfile_name}"
           end
         else
-          puts "gecos unpack -r #{file_name} >#{to + '/' + file_name + '/' + file_path}"
+          puts "gecos unpack -r #{tape_name} >#{to + '/' + tape_name + '/' + file_path}"
         end
       end
     end

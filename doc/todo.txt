@@ -1,4 +1,3 @@
-Fix =+> syntax if file descriptions
 Mass archive extraction
 Archive: retrieve, extract, list, xref, classify
 Sub directories /clean, /dirty, /extracted, /xref

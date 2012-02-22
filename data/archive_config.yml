@@ -1,3 +1,4 @@
 archive: ~/gecos_archive
 raw_directory: raw
+extract_directory: extracted
 repository: 
