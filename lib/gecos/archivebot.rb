@@ -201,12 +201,38 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       @dryrun = options[:dryrun]
       directory = archive_location || Archive.location
       archive = Archive.new(directory)
-      from ||= File.join(archive.location, archive.extract_directory)
-      to ||= File.join(archive.location, archive.xref_directory)
+      from ||= archive.extract_directory
+      from = File.join(archive.location, from)
+      to ||= archive.xref_directory
+      to = File.join(archive.location, archive.xref_directory)
+      index = {}
       ex "rm -rf #{to}"
       warn "from=#{from}"
-      Dir.glob(File.join(from,'**')).each do |f|
-        warn f
+      Dir.glob(File.join(from,'**/*')).each do |old_file|
+        next if File.directory?(old_file)
+        f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
+        if f !~ /^([^\/]+)\/(.*)$/
+          warn "File #{f} does not have a tape name and file name"
+        else
+          # TODO Maintain an .index file
+          tape = $1
+          file = $2
+          new_file = File.join(to, file, tape)
+          dir = File.dirname(new_file)
+          index[old_file] = new_file
+          ex "mkdir -p #{shell_quote(dir)}"
+          ex "ln -s #{shell_quote(old_file)} #{shell_quote(new_file)}"
+        end
+      end
+      # TODO: Collapse directories where there's only one file, or where they're all identical
+      unless @dryrun
+        index_file = File.join(to, '.index')
+        File.open(index_file, 'w') do |f|
+          old_file_width = index.keys.map{|old_file| old_file.size}.max
+          index.keys.sort.each do |old_file|
+            f.puts %Q{#{"%-#{old_file_width}s" % old_file} => #{index[old_file]}}
+          end
+        end
       end
     end
   end

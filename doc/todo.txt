@@ -1,7 +1,9 @@
 Mass archive extraction
 Archive: retrieve, extract, list, xref, classify
 Sub directories /clean, /dirty, /extracted, /xref
+Set file creation dates based on gecos data (for freeze files; there doesn't appear to be equivalent data for normal files)
 Separate clean and dirty files
+Look for Huffman-coded files
 Refactor repair (and thaw/unpack?): create parent class or mixin, and combine common code
 Standardize Decode and Defrost interfaces
 Clean code
