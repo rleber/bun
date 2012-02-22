@@ -26,7 +26,7 @@ class GECOS
     def _run(command, *files)
       files = files.map do |f| 
         redir = ''
-        if f =~ /^([\d?><|&?])(.*)$/
+        if f =~ /^(\d?[><|&?])(.*)$/
           redir = $1
           f = $2
         end
