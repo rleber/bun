@@ -262,12 +262,12 @@ class GECOS
     
     def unpack_line(words, line_offset)
       line = ""
+      okay = true
       descriptor = words[line_offset]
-      return [line_offset, words.size, nil] if descriptor == EOF_MARKER
+      return [words.size, nil, okay] if descriptor == EOF_MARKER
       deleted = deleted_line?(descriptor)
       line_length = line_length(descriptor)
       offset = line_offset+1
-      okay = true
       loop do
         word = words[offset]
         break if !word || word == EOF_MARKER
