@@ -40,15 +40,15 @@ class GECOS
     desc "unpack FILE [TO]", "Unpack a file (Not frozen files -- use freezer subcommands for that)"
     def unpack(file, to=nil)
       archive = Archive.new
-      file = archive.expanded_tape_path(file)
-      abort "Can't unpack file. It's a frozen file #{archived_file}" if Archive.frozen?(file)
-      decoder = GECOS::Decoder.new(File.read(file))
-      archived_file = archive.file_path(file)
+      expanded_file = archive.expanded_tape_path(file)
+      decoder = GECOS::Decoder.new(File.read(expanded_file))
+      archived_file = archive.file_path(expanded_file)
+      abort "Can't unpack #{file}. It contains a frozen file: #{archived_file}" if Archive.frozen?(expanded_file)
       content = decoder.content
       shell = Shell.new
       shell.write to, content
       warn "Unpacked with #{decoder.errors} errors" if options[:warn] && decoder.errors > 0
-      shell.log options[:log], "unpack #{to.inspect}: #{decoder.errors} errors" if options[:log]
+      shell.log options[:log], "unpack #{to.inspect} from #{file.inspect} with #{decoder.errors} errors" if options[:log]
     end
     
     no_tasks do

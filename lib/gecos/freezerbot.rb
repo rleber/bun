@@ -93,17 +93,17 @@ whatever its name.
     EOT
     def thaw(file, n, out=nil)
       archive = Archive.new
-      file = archive.expanded_tape_path(file)
-      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
-      archived_file = archive.file_path(file)
+      expanded_file = archive.expanded_tape_path(file)
+      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(expanded_file)
+      archived_file = archive.file_path(expanded_file)
       archived_file = "--unknown--" unless archived_file
-      decoder = GECOS::Decoder.new(File.read(file))
+      decoder = GECOS::Decoder.new(File.read(expanded_file))
       defroster = GECOS::Defroster.new(decoder, :options=>options)
       content = defroster.content(defroster.fn(n))
       shell = Shell.new
       shell.write out, content, :timestamp=>defroster.update_time, :quiet=>true
       warn "Thawed with #{defroster.errors} decoding errors" if options[:warn] && defroster.errors > 0
-      shell.log options[:log], "thaw #{out.inspect}: #{defroster.errors} errors" if options[:log]
+      shell.log options[:log], "thaw #{out.inspect} from #{file.inspect} with #{defroster.errors} errors" if options[:log]
     end
 
     option "lines", :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'

@@ -170,7 +170,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       directory = options[:archive] || Archive.location
       archive = Archive.new(directory)
       pattern = get_regexp(pattern)
-      ix = archive.contents
+      ix = archive.contents.select{|c| c[:path] =~ pattern }
       # TODO This is a recurring pattern; refactor it
       tape_and_file_width = ix.map{|item| item[:tape_and_file].size}.max
       ix.each do |item|
@@ -242,7 +242,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       end
     end
     
-    EXTRACT_LOG_PATTERN = /\"([^\"]*)\".*?(\d+)\s+errors/
+    EXTRACT_LOG_PATTERN = /\"([^\"]*)\"(.*?)(\d+)\s+errors/
     
     no_tasks do
       def read_log(log_file_name)
@@ -256,11 +256,11 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       
       def parse_log_entry(log_entry)
         raise "Bad log file line: #{log_entry.inspect}" unless log_entry =~ EXTRACT_LOG_PATTERN
-        {:prefix=>$`, :suffix=>$', :entry=>log_entry, :file=>$1, :errors=>$2.to_i}
+        {:prefix=>$`, :suffix=>$', :middle=>$2, :entry=>log_entry, :file=>$1, :errors=>$3.to_i}
       end
       
       def alter_log(log_entry, new_file)
-        log_entry.merge(:file=>new_file, :entry=>"#{log_entry[:prefix]}#{new_file.inspect} #{log_entry[:errors]} errors #{log_entry[:suffix]}")
+        log_entry.merge(:file=>new_file, :entry=>"#{log_entry[:prefix]}#{new_file.inspect}#{log_entry[:middle]}#{log_entry[:errors]} errors #{log_entry[:suffix]}")
       end
     end
     
