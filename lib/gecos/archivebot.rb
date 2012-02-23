@@ -333,7 +333,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       end
     end
     
-    desc "classify", "Classify files based on whether they're clean or not"
+    desc "classify", "Classify files based on whether they're clean or not. WARNING THIS DOESN'T REALLY DO MUCH"
     option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to xref (instead of symlink)"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
     option 'trace', :aliases=>'-t', :type=>'boolean', :desc=>"Debugging trace"
