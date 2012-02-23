@@ -3,6 +3,7 @@ require 'mechanize'
 require 'fileutils'
 require 'gecos/archive'
 require 'gecos/shell'
+require 'pp'
 
 class GECOS
   class ArchiveBot < Thor
@@ -15,15 +16,13 @@ class GECOS
       # copy of the contents at the uri into "data/example.com/in/a/directory"
       def _fetch(base_uri, destination)
         destination.sub!(/\/$/,'') # Remove trailing slash from destination, if any
-        destination = destination + '/' + base_uri.sub(/^http:\/\//,'')
-        destination.sub!(/\/$/,'') # Remove trailing slash from destination, if any
         uri_sub_path = base_uri.sub(/http:\/\/[^\/]*/,'')
         count = 0
         agent = Mechanize.new
         FileUtils::rm_rf(destination)
         process(agent, base_uri) do |page|
           relative_uri = page.uri.path.sub(/^#{Regexp.escape(uri_sub_path)}/, '')
-          file_name = destination + '/' + relative_uri
+          file_name = File.join(destination, relative_uri)
           dirname = File.dirname(file_name)
           if @dryrun
             puts "Fetch #{file_name}"
@@ -301,18 +300,42 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         end
       end
       
+      # Read in log information
+      # TODO Refactor this and combine with similar code in classify
+      log = {}
+      old_log_file = File.join(from, archive.log_file)
+      File.read(old_log_file).split("\n").each do |line|
+        abort "Bad log file line: #{line.inspect}" unless line =~ /\"([^\"]*)\".*(\d+)\s+errors/
+        log[$1] = {:entry=>line, :file=>$1, :errors=>$2.to_i}
+      end
+      
+      new_log = {}
+      
       # Create cross-reference files
       shell = Shell.new(:dryrun=>@dryrun)
       shell.rm_rf to
       command = options[:copy] ? :cp : :ln_s
+      processed = {}
       index.sort_by{|e| e[:from]}.each do |spec|
+        next if processed[spec[:to]]
+        processed[spec[:to]] = true   # Only need to copy or link identical files to the new location once
         dir = File.dirname(spec[:to])
         shell.mkdir_p dir
-        warn "#{from} => #{to}" unless @dryrun
-        shell.invoke command, from, to
+        warn "link #{spec[:from]} => #{spec[:to]}" unless @dryrun
+        shell.invoke command, spec[:from], spec[:to]
+        abort "No log entry for #{spec[:from]}" unless log[spec[:from]]
+        new_log[spec[:to]] = log[spec[:from]]
       end
       
-      # TODO Copy log information
+      # Write new log
+      unless @dryrun
+        new_log_file = File.join(to, archive.log_file)
+        File.open(new_log_file, 'w') do |f|
+          new_log.keys.sort.each do |file|
+            f.puts new_log[file][:entry]
+          end
+        end
+      end
 
       # Create index file of cross-reference
       unless @dryrun
@@ -331,14 +354,16 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
     option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to xref (instead of symlink)"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
-    option 'threshold', :aliases=>'-t', :type=>'numeric', :default=>DEFAULT_THRESHOLD,
-      :desc=>"Set a threshold: how many errors before a file is 'dirty'?"
+    option 'threshold', :aliases=>'-t', :type=>'numeric',
+      :desc=>"Set a threshold: how many errors before a file is 'dirty'? (default #{DEFAULT_THRESHOLD})"
     def classify(from=nil, clean=nil, dirty=nil)
       @dryrun = options[:dryrun]
       directory = options[:archive] || Archive.location
+      threshold = options[:threshold] || DEFAULT_THRESHOLD
       archive = Archive.new(directory)
       from ||= archive.xref_directory
       from = File.join(archive.location, from)
+      log_file = File.join(from, archive.log_file)
       clean ||= archive.xref_directory
       clean = File.join(archive.location, archive.clean_directory)
       dirty ||= archive.xref_directory
@@ -356,7 +381,8 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       Dir.glob(File.join(from,'**','*')).each do |old_file|
         next if File.directory?(old_file)
         f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
-        okay = log[old_file] < options[:threshold]
+        abort "Missing log entry for #{old_file}" unless log[old_file]
+        okay = log[old_file] < threshold
         destination = okay ? clean : dirty
         new_file = File.join(destination, f)
         dir = File.dirname(new_file)

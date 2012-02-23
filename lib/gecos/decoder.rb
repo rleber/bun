@@ -66,16 +66,17 @@ class GECOS
     
     DESCRIPTION_PATTERN = /\s+(.*)/
     def file_subpath
-      file_specification.sub(DESCRIPTION_PATTERN,'').sub(/^\//,'')
+      File.expand_path(file_specification.sub(DESCRIPTION_PATTERN,'').sub(/^\//,''))
     end
     
-    FILE_NAME_PATTERN = /\/([^\/]*)$/
     def file_subdirectory
-      file_subpath.sub(FILE_NAME_PATTERN,'')
+      d = File.dirname(file_subpath)
+      d = "" if d == "."
+      d
     end
 
     def file_name
-      file_subpath[FILE_NAME_PATTERN,1] || ""
+      File.basename(file_subpath)
     end
     
     def file_description
@@ -83,7 +84,7 @@ class GECOS
     end
     
     def file_path
-      file_archive_name + '/' + file_subpath
+      File.expand_path(File.join(file_archive_name, file_subpath))
     end
     
     def file_content_start

@@ -125,7 +125,7 @@ class GECOS
     end
     
     def qualified_tape_file_name(file_name)
-      file_name =~ /^\// ? file_name : File.join(location, raw_directory, file_name)
+      file_name =~ /^\// ? file_name : File.expand_path(File.join(location, raw_directory, file_name))
     end
     
     def config
