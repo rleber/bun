@@ -93,10 +93,35 @@ class GECOS
     def log_file
       self.class.log_file
     end
+    
+    def frozen?(file)
+      self.class.frozen?(file)
+    end
 
     def file_path(tape_name)
       decoder = Decoder.new(File.read(qualified_tape_file_name(tape_name),300))
       decoder.file_path
+    end
+    
+    def contents
+      tapes = self.tapes
+      contents = []
+      tapes.each do |tape_name|
+        extended_file_name = qualified_tape_file_name(tape_name)
+        if frozen?(extended_file_name)
+          decoder = Decoder.new(File.read(extended_file_name))
+          defroster = Defroster.new(decoder)
+          defroster.file_paths.each_with_index do |path, i|
+            file = defroster.file_name(i)
+            contents << {:tape=>tape_name, :file=>file, :tape_and_file=>"#{tape_name}:#{file}", :path=>path}
+          end
+        else
+          decoder = Decoder.new(File.read(extended_file_name))
+          path = decoder.file_path
+          contents << {:tape=>tape_name, :tape_and_file=>tape_name, :path=>path}
+        end
+      end
+      contents
     end
     
     def qualified_tape_file_name(file_name)

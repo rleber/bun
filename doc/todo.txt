@@ -1,3 +1,4 @@
+Add extension (.txt ?) to files on extract
 Look for Huffman-coded files
 Refactor repair (and thaw/unpack?): create parent class or mixin, and combine common code
 Standardize Decode and Defrost interfaces

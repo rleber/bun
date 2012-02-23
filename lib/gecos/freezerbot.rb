@@ -101,7 +101,10 @@ whatever its name.
       defroster = GECOS::Defroster.new(decoder, :options=>options)
       content = defroster.content(defroster.fn(n))
       shell = Shell.new
+      warn "Thaw to #{out}"
+      exit
       shell.write out, content, :timestamp=>defroster.update_time, :quiet=>true
+      warn "Thawed with #{defroster.errors} decoding errors" if options[:warn] && defroster.errors > 0
       shell.log options[:log], "thaw #{out.inspect}: #{defroster.errors} errors" if options[:log]
     end
 

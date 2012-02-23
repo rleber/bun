@@ -164,27 +164,18 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     end
     
     # TODO Is there a lot of preamble code to these methods that could be refactored away?
-    desc "find PATTERN", "List tapes containing files matching a specified pattern"
+    desc "files [PATTERN]", "List tapes containing file paths matching a specified pattern"
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
     long_desc "PATTERN may be any Ruby regular expression (without the delimiting '/'s)"
-    def find(pattern)
+    def files(pattern=//)
       directory = options[:archive] || Archive.location
       archive = Archive.new(directory)
       pattern = get_regexp(pattern)
-      ix = archive.tapes
-      ix.each do |tape_name|
-        extended_file_name = archive.qualified_tape_file_name(tape_name)
-        if Archive.frozen?(extended_file_name)
-          decoder = Decoder.new(File.read(extended_file_name))
-          defroster = Defroster.new(decoder)
-          defroster.file_paths.each_with_index do |f, i|
-            puts "#{tape_name}:#{defroster.file_name(i)} => #{f}" if f=~pattern
-          end
-        else
-          decoder = Decoder.new(File.read(extended_file_name))
-          f = decoder.file_path
-          puts "#{tape_name} => #{f}" if f=~pattern
-        end
+      ix = archive.contents
+      # TODO This is a recurring pattern; refactor it
+      tape_and_file_width = ix.map{|item| item[:tape_and_file].size}.max
+      ix.each do |item|
+        puts %Q{#{"%-#{tape_and_file_width}s" % item[:tape_and_file]}  #{item[:path]}}
       end
     end
     
@@ -199,7 +190,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       log_file = File.join(to, archive.log_file)
       ix = archive.tapes
       shell = Shell.new(:dryrun=>@dryrun)
-      shell.rm_rf to
+      # shell.rm_rf to
       ix.each do |tape_name|
         extended_file_name = archive.qualified_tape_file_name(tape_name)
         frozen = Archive.frozen?(extended_file_name)
