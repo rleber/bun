@@ -167,7 +167,7 @@ class GECOS
         last_line_word, line, okay = thaw_line(words, line_offset)
         if !line
           abort "Bad line at #{'%o'%line_offset}: #{line.inspect}" if @strict
-          warn "Bad lines corrected" if !warned && @warn
+          Kernel.warn "Bad lines corrected" if !warned && @warn
           warned = true
           line_offset += 1
         else
@@ -203,8 +203,10 @@ class GECOS
         chs = extract_characters(word, ch_count)
         line += chs.sub(/[[:cntrl:]].*/){|s| s[/^\r?/]} # Remove control characters (except trailing \r) and all following letters
         break if chs=~/\r/
-        okay = false
-        break if !good_characters?(chs) || line.size >= line_length
+        if !good_characters?(chs) || line.size >= line_length
+          okay = false
+          break
+        end
         offset += 1
       end
       return [offset, nil, false] unless line =~ /\r/
