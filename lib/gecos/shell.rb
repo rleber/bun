@@ -18,7 +18,10 @@ class GECOS
       quiet = options.has_key?(:quiet) ? options[:quiet] : @quiet
       dryrun = options.has_key?(:dryrun) ? options[:dryrun] : @dryrun
       warn task unless quiet
-      system(task) unless dryrun
+      res = true
+      res = system(task) unless dryrun
+      abort "Command #{task} failed" unless options[:allow]
+      res
     end
     private :_ex
 
