@@ -46,7 +46,7 @@ class GECOS
       content = decoder.content
       shell = Shell.new
       shell.write to, content
-      shell.log options[:log], "unpack #{out.inspect}: #{decoder.errors} errors" if options[:log]
+      shell.log options[:log], "unpack #{to.inspect}: #{decoder.errors} errors" if options[:log]
     end
     
     no_tasks do
