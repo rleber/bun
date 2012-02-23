@@ -171,7 +171,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       log_file = File.join(to, archive.log_file)
       ix = archive.tapes
       shell = Shell.new(:dryrun=>@dryrun)
-      shell.rm_rf to, :quiet=>!@dryrun
+      shell.rm_rf to
       ix.each do |tape_name|
         extended_file_name = archive.qualified_tape_file_name(tape_name)
         frozen = Archive.frozen?(extended_file_name)
@@ -184,17 +184,17 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
             subfile_name = descr.file_name
             f = File.join(to, tape_name, file_path, subfile_name)
             dir = File.dirname(f)
-            shell.mkdir_p dir, :quiet=>!@dryrun
+            shell.mkdir_p dir
             subfile_name = '\\' + subfile_name if subfile_name =~ /^#/ # Watch out -- '#' has a special meaning to thaw
             warn "thaw #{tape_name} #{subfile_name}" unless @dryrun
-            shell.thaw tape_name, subfile_name, f, :log=>log_file, :quiet=>!@dryrun
+            shell.thaw tape_name, subfile_name, f, :log=>log_file
           end
         else
           f = File.join(to, tape_name, file_path)
           dir = File.dirname(f)
-          shell.mkdir_p dir, :quiet=>!@dryrun
+          shell.mkdir_p dir
           warn "unpack #{tape_name}" unless @dryrun
-          shell.unpack tape_name, f, :log=>log_file, :quiet=>!@dryrun
+          shell.unpack tape_name, f, :log=>log_file
         end
       end
     end
@@ -284,13 +284,13 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       
       # Create cross-reference files
       shell = Shell.new(:dryrun=>@dryrun)
-      shell.rm_rf to, :quiet=>!@dryrun
+      shell.rm_rf to
       command = options[:copy] ? :cp : :ln_s
       index.sort_by{|e| e[:from]}.each do |spec|
         dir = File.dirname(spec[:to])
-        shell.mkdir_p dir, :quiet=>!@dryrun
+        shell.mkdir_p dir
         warn "#{from} => #{to}" unless @dryrun
-        shell.invoke command, from, to, :quiet=>!@dryrun
+        shell.invoke command, from, to
       end
       
       # TODO Copy log information
@@ -324,8 +324,8 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       dirty ||= archive.xref_directory
       dirty = File.join(archive.location, archive.dirty_directory)
       shell = Shell.new(:dryrun=>@dryrun)
-      shell.rm_rf clean, :quiet=>!@dryrun
-      shell.rm_rf dirty, :quiet=>!@dryrun
+      shell.rm_rf clean
+      shell.rm_rf dirty
       command = options[:copy] ? :cp : :ln_s
       Dir.glob(File.join(from,'**','*')).each do |old_file|
         next if File.directory?(old_file)
@@ -335,9 +335,9 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         destination = okay ? clean : dirty
         new_file = File.join(destination, f)
         dir = File.dirname(new_file)
-        shell.mkdir_p dir, :quiet=>!@dryrun
+        shell.mkdir_p dir
         warn "#{f} is #{okay ? 'clean' : 'dirty'}"
-        shell.invoke command, old_file, new_file, :quiet=>!@dryrun
+        shell.invoke command, old_file, new_file
       end
     end
   end

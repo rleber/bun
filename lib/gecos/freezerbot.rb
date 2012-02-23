@@ -100,7 +100,8 @@ whatever its name.
       decoder = GECOS::Decoder.new(File.read(file))
       defroster = GECOS::Defroster.new(decoder, :options=>options)
       content = defroster.content(defroster.fn(n))
-      Shell.new.write out, content, :timestamp=>defroster.update_time, :quiet=>true
+      shell = Shell.new
+      shell.write out, content, :timestamp=>defroster.update_time, :quiet=>true
       shell.log options[:log], "thaw #{out.inspect}: #{defroster.errors} errors" if options[:log]
     end
 

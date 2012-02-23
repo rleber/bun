@@ -15,8 +15,9 @@ class GECOS
     end
       
     def _ex(task, options={})
-      quiet = options.has_key?(:quiet) ? options[:quiet] : @quiet
       dryrun = options.has_key?(:dryrun) ? options[:dryrun] : @dryrun
+      quiet = options.has_key?(:quiet) ? options[:quiet] : @quiet
+      quiet = quiet.nil? ? !dryrun : (quiet && !dryrun)
       warn task unless quiet
       res = true
       res = system(task) unless dryrun
