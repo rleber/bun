@@ -121,8 +121,16 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     option "files", :aliases=>"-f", :type=>'string', :default=>'.*', :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
     def ls(archive_location=nil)
       abort "Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
-      abort "Unknown --type setting. Must be one of #{TYPE_VALUES.join(', ')}" unless TYPE_VALUES.include?(options[:type])
-      type_pattern = options[:type]=='all' ? /.*/ : /^#{Regexp.escape(options[:type])}$/i
+      type_pattern = case options[:type].downcase
+        when 'f', 'frozen'
+          /^frozen$/i
+        when 'n', 'normal'
+          /^normal$/i
+        when '*','a','all'
+          //
+        else
+          abort "Unknown --type setting. Should be one of #{TYPE_VALUES.join(', ')}"
+        end
       file_pattern = get_regexp(options[:files])
       abort "Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
       tape_pattern = get_regexp(options[:tapes])

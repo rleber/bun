@@ -3,19 +3,22 @@
 
 class GECOS
   class Shell
-    attr_accessor :dryrun
+    attr_accessor :dryrun, :quiet
     
     def initialize(options={})
       @dryrun = options[:dryrun]
+      @quiet = options[:quiet]
     end
     
     def invoke(command, *args)
       self.send(command, *args)
     end
       
-    def _ex(task)
-      warn task
-      system(task) unless @dryrun
+    def _ex(task, options={})
+      quiet = options.has_key?(:quiet) ? options[:quiet] : @quiet
+      dryrun = options.has_key?(:dryrun) ? options[:dryrun] : @dryrun
+      warn task unless quiet
+      system(task) unless dryrun
     end
     private :_ex
 
@@ -23,8 +26,10 @@ class GECOS
       f.inspect
     end
 
-    def _run(command, *files)
-      files = files.map do |f| 
+    def _run(command, *args)
+      options = {}
+      options = args.pop if args.last.is_a?(Hash)
+      files = args.map do |f| 
         redir = ''
         if f =~ /^(\d?[><|&?])(.*)$/
           redir = $1
@@ -33,24 +38,24 @@ class GECOS
         redir + shell_quote(f)
       end
       cmd = command + ' ' + files.join(' ')
-      _ex cmd
+      _ex cmd, options
     end
     private :_run
 
-    def rm_rf(file)
-      _run "rm -rf", file
+    def rm_rf(file, options={})
+      _run "rm -rf", file, options
     end
     
-    def mkdir_p(file)
-      _run 'mkdir -p', file
+    def mkdir_p(file, options={})
+      _run 'mkdir -p', file, options
     end
     
-    def ln_s(from, to)
-      _run "ln -s", from, to
+    def ln_s(from, to, options={})
+      _run "ln -s", from, to, options
     end
     
-    def cp(from, to)
-      _run "cp", from, to
+    def cp(from, to, options={})
+      _run "cp", from, to, options
     end
     
     def thaw(*args)
@@ -61,8 +66,8 @@ class GECOS
       _run "gecos unpack", *args
     end
     
-    def set_timestamp(file, timestamp)
-      _run "touch -t", timestamp.strftime('%Y%m%d%H%M.%S'), file
+    def set_timestamp(file, timestamp, options={})
+      _run "touch -t", timestamp.strftime('%Y%m%d%H%M.%S'), file, options
     end
     
     def write(file, content, options={})
@@ -70,10 +75,7 @@ class GECOS
         STDOUT.write content
       else
         File.open(file, 'w') {|f| f.write content}
-        if options[:timestamp]
-          shell = Shell.new
-          shell.set_timestamp(file, options[:timestamp])
-        end
+        set_timestamp(file, options[:timestamp], options) if options[:timestamp]
       end
     end
   end

@@ -93,7 +93,7 @@ class GECOS
       decoder = GECOS::Decoder.new(File.read(file))
       defroster = GECOS::Defroster.new(decoder, :options=>options)
       content = defroster.content(defroster.fn(n))
-      Shell.new.write out, content, :timestamp=>defroster.update_time
+      Shell.new.write out, content, :timestamp=>defroster.update_time, :quiet=>true
     end
 
     option "lines", :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
