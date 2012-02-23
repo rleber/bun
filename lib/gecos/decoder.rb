@@ -66,7 +66,7 @@ class GECOS
     
     DESCRIPTION_PATTERN = /\s+(.*)/
     def file_subpath
-      File.expand_path(file_specification.sub(DESCRIPTION_PATTERN,'').sub(/^\//,''))
+      Shell.relative_path(file_specification.sub(DESCRIPTION_PATTERN,'').sub(/^\//,''))
     end
     
     def file_subdirectory
@@ -84,7 +84,7 @@ class GECOS
     end
     
     def file_path
-      File.expand_path(File.join(file_archive_name, file_subpath))
+      Shell.relative_path(file_archive_name, file_subpath)
     end
     
     def file_content_start

@@ -29,7 +29,7 @@ class GECOS
       file_pattern = get_regexp(options[:files])
       abort "Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
       archive = Archive.new
-      file = archive.qualified_tape_file_name(file)
+      file = archive.expanded_tape_path(file)
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
@@ -93,7 +93,7 @@ whatever its name.
     EOT
     def thaw(file, n, out=nil)
       archive = Archive.new
-      file = archive.qualified_tape_file_name(file)
+      file = archive.expanded_tape_path(file)
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
@@ -101,8 +101,6 @@ whatever its name.
       defroster = GECOS::Defroster.new(decoder, :options=>options)
       content = defroster.content(defroster.fn(n))
       shell = Shell.new
-      warn "Thaw to #{out}"
-      exit
       shell.write out, content, :timestamp=>defroster.update_time, :quiet=>true
       warn "Thawed with #{defroster.errors} decoding errors" if options[:warn] && defroster.errors > 0
       shell.log options[:log], "thaw #{out.inspect}: #{defroster.errors} errors" if options[:log]
@@ -116,7 +114,7 @@ whatever its name.
     def dump(file, n)
       limit = options[:lines]
       archive = Archive.new
-      file = archive.qualified_tape_file_name(file)
+      file = archive.expanded_tape_path(file)
       archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)

@@ -150,7 +150,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       file_info = []
       ix.each_with_index do |tape_name, i|
         file_name = archive.file_path(tape_name)
-        friz = Archive.frozen?(archive.qualified_tape_file_name(tape_name)) ? 'Frozen' : 'Normal'
+        friz = Archive.frozen?(archive.expanded_tape_path(tape_name)) ? 'Frozen' : 'Normal'
         next unless friz =~ type_pattern && tape_name=~tape_pattern && file_name=~file_pattern
         file_info << {'tape'=>tape_name, 'type'=>friz, 'file'=>file_name}
       end
@@ -189,9 +189,9 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       log_file = File.join(to, archive.log_file)
       ix = archive.tapes
       shell = Shell.new(:dryrun=>@dryrun)
-      # shell.rm_rf to
+      shell.rm_rf to
       ix.each do |tape_name|
-        extended_file_name = archive.qualified_tape_file_name(tape_name)
+        extended_file_name = archive.expanded_tape_path(tape_name)
         frozen = Archive.frozen?(extended_file_name)
         decoder = Decoder.new(File.read(extended_file_name))
         file_path = decoder.file_path

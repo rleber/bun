@@ -29,6 +29,14 @@ class GECOS
     def shell_quote(f)
       f.inspect
     end
+    
+    def self.relative_path(*f)
+      File.expand_path(File.join(*f), ENV['HOME']).sub(/^#{Regexp.escape(ENV['HOME'])}\//,'')
+    end
+    
+    def relative_path(f)
+      self.class.relative_path(f)
+    end
 
     def _run(command, *args)
       options = {}

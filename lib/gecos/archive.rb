@@ -99,7 +99,7 @@ class GECOS
     end
 
     def file_path(tape_name)
-      decoder = Decoder.new(File.read(qualified_tape_file_name(tape_name),300))
+      decoder = Decoder.new(File.read(expanded_tape_path(tape_name),300))
       decoder.file_path
     end
     
@@ -107,7 +107,7 @@ class GECOS
       tapes = self.tapes
       contents = []
       tapes.each do |tape_name|
-        extended_file_name = qualified_tape_file_name(tape_name)
+        extended_file_name = expanded_tape_path(tape_name)
         if frozen?(extended_file_name)
           decoder = Decoder.new(File.read(extended_file_name))
           defroster = Defroster.new(decoder)
@@ -124,8 +124,8 @@ class GECOS
       contents
     end
     
-    def qualified_tape_file_name(file_name)
-      file_name =~ /^\// ? file_name : File.expand_path(File.join(location, raw_directory, file_name))
+    def expanded_tape_path(file_name)
+      File.expand_path(file_name, File.expand_path(raw_directory, location))
     end
     
     def config

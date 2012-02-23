@@ -91,7 +91,7 @@ class GECOS
       return decoder.file_path if n.nil?
       d = descriptor(n)
       return nil unless d
-      File.expand_path(File.join(decoder.file_path, d.file_name))
+      Shell.relative_path(decoder.file_path, d.file_name)
     end
     
     def file_paths
