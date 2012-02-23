@@ -164,7 +164,6 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     end
     
     # TODO Is there a lot of preamble code to these methods that could be refactored away?
-    # TODO Should standardize around an --archive parameter
     desc "find PATTERN", "List tapes containing files matching a specified pattern"
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
     long_desc "PATTERN may be any Ruby regular expression (without the delimiting '/'s)"
