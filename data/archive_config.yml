@@ -4,4 +4,5 @@ xref_directory: files
 extract_directory: tapes
 clean_directory: clean
 dirty_directory: dirty
+log_file: .log
 repository: 

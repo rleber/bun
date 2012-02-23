@@ -35,6 +35,7 @@ class GECOS
     UNPACK_OFFSET = 22
     option "inspect", :aliases=>'-i', :type=>'boolean', :desc=>"Display long format details for each line"
     option "deleted", :aliases=>'-d', :type=>'boolean', :desc=>"Display deleted lines (only with --inspect)"
+    option "log", :aliases=>'-l', :type=>'string', :desc=>"Log status to specified file"
     desc "unpack FILE [TO]", "Unpack a file (Not frozen files -- use freezer subcommands for that)"
     def unpack(file, to=nil)
       archive = Archive.new
@@ -43,7 +44,9 @@ class GECOS
       decoder = GECOS::Decoder.new(File.read(file))
       archived_file = archive.file_path(file)
       content = decoder.content
-      Shell.new.write to, content
+      shell = Shell.new
+      shell.write to, content
+      shell.log options[:log], "unpack #{out.inspect}: #{decoder.errors} errors" if options[:log]
     end
     
     no_tasks do

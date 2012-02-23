@@ -1,7 +1,6 @@
 class GECOS
   class Decoder
-    attr_reader :raw
-    attr_accessor :log
+    attr_reader :raw, :errors
     
     EOF_MARKER = 0x00000f000 # Octal 000000170000 or 0b000000000000000000001111000000000000
     CHARACTERS_PER_WORD = 4
@@ -118,9 +117,8 @@ class GECOS
       self.class.bits_per_word
     end
     
-    def initialize(raw, options={})
+    def initialize(raw)
       self.raw = raw
-      @log = options[:log]
     end
     
     def raw=(raw)
@@ -236,15 +234,11 @@ class GECOS
       @lines ||= unpack
     end
     
-    def log(message)
-      Shell.new.log(@log, message) if @log
-    end
-    
     def unpack
       line_offset = file_content_start + UNPACK_OFFSET
       lines = []
       warned = false
-      bad_line_count = 0
+      errors = 0
       while line_offset < words.size
         last_line_word, line, okay = unpack_line(words, line_offset)
         if line
@@ -253,10 +247,10 @@ class GECOS
           lines << {:content=>line, :offset=>line_offset, :descriptor=>words[line_offset], 
                     :words=>words[line_offset..last_line_word], :raw=>raw_line}
         end
-        bad_line_count += 1 unless okay
+        errors += 1 unless okay
         line_offset = last_line_word + 1
       end
-      log "unpack: #{bad_line_count} bad lines"
+      @errors = errors
       lines
     end
     

@@ -168,6 +168,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       directory = archive_location || Archive.location
       archive = Archive.new(directory)
       to ||= File.join(archive.location, archive.extract_directory)
+      log_file = File.join(to, archive.log_file)
       ix = archive.tapes
       shell = Shell.new(:dryrun=>@dryrun)
       shell.rm_rf to, :quiet=>!@dryrun
@@ -185,13 +186,13 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
             dir = File.dirname(f)
             shell.mkdir_p dir, :quiet=>!@dryrun
             subfile_name = '\\' + subfile_name if subfile_name =~ /^#/ # Watch out -- '#' has a special meaning to thaw
-            shell.thaw tape_name, subfile_name, f
+            shell.thaw tape_name, subfile_name, f, :log=>log_file
           end
         else
           f = File.join(to, tape_name, file_path)
           dir = File.dirname(f)
           shell.mkdir_p dir, :quiet=>!@dryrun
-          shell.unpack tape_name, f
+          shell.unpack tape_name, f, :log=>log_file
         end
       end
     end

@@ -2,12 +2,11 @@ require 'gecos/freezer_descriptor'
 
 class GECOS
   class Defroster
-    attr_reader :decoder
-    attr_accessor :options, :log, :strict, :warn
+    attr_reader :decoder, :errors
+    attr_accessor :strict, :warn
     
     def initialize(decoder, options={})
       @decoder = decoder
-      @log = options[:log]
       @strict = options[:strict]
       @warn = options[:warn]
     end
@@ -157,19 +156,13 @@ class GECOS
       @lineset ||= []
       @lineset[n] ||= thaw(n)
     end
-    
-    def log(message)
-      Shell.new.log(@log, message) if @log
-    end
-    
-    # TODO Track bad line count
-    # TODO Log thaw status
+
     def thaw(n)
       words = file_words(n)
       line_offset = 0
       lines = []
       warned = false
-      bad_line_count = 0
+      errors = 0
       while line_offset < words.size
         last_line_word, line, okay = thaw_line(words, line_offset)
         if !line
@@ -184,9 +177,9 @@ class GECOS
                     :words=>words[line_offset..last_line_word], :raw=>raw_line}
           line_offset = last_line_word + 1
         end
-        bad_line_count += 1 unless okay
+        errors += 1 unless okay
       end
-      log("thaw: #{bad_line_count} bad lines")
+      @errors = errors
       lines
     end
     

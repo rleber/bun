@@ -11,6 +11,10 @@ class GECOS
       config_dir('archive')
     end
     
+    def self.log_file
+      config_dir('log_file')
+    end
+    
     def self.raw_directory
       config_dir('raw_directory')
     end
@@ -84,6 +88,10 @@ class GECOS
 
     def dirty_directory
       self.class.dirty_directory
+    end
+    
+    def log_file
+      self.class.log_file
     end
 
     def file_path(tape_name)

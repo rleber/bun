@@ -84,6 +84,7 @@ class GECOS
     desc "thaw ARCHIVE FILE [TO]", "Uncompress a frozen Honeywell file"
     option "strict", :aliases=>"-s", :type=>"boolean", :desc=>"Check for bad data. Abort if found"
     option "warn", :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
+    option "log", :aliases=>'-l', :type=>'string', :desc=>"Log status to specified file"
     long_desc <<-EOT
 FILE may have some special formats: '#nnn' (where nnn is an integer) denotes file number nnn. '#-nnn' denotes the nnnth
 file from the end of the archive. Anything else denotes the name of a file. A backslash character is ignored at the
@@ -100,6 +101,7 @@ whatever its name.
       defroster = GECOS::Defroster.new(decoder, :options=>options)
       content = defroster.content(defroster.fn(n))
       Shell.new.write out, content, :timestamp=>defroster.update_time, :quiet=>true
+      shell.log options[:log], "thaw #{out.inspect}: #{defroster.errors} errors" if options[:log]
     end
 
     option "lines", :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'

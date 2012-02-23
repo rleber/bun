@@ -31,11 +31,15 @@ class GECOS
       options = args.pop if args.last.is_a?(Hash)
       files = args.map do |f| 
         redir = ''
-        if f =~ /^(\d?[><|&?])(.*)$/
+        if f=~/^-.*/
+          f             # Do not do shell quoting on --options
+        else            # Do shell quoting
+          if f =~ /^(\d?[><|&?])(.*)$/ # Watch out for redirection
           redir = $1
           f = $2
+          end
+          redir + shell_quote(f)
         end
-        redir + shell_quote(f)
       end
       cmd = command + ' ' + files.join(' ')
       _ex cmd, options
@@ -59,10 +63,20 @@ class GECOS
     end
     
     def thaw(*args)
+      if args.last.is_a?(Hash)
+        if args.last[:log]
+          args.unshift "--log #{shell_quote(args.last[:log])}"
+        end
+      end
       _run "gecos freezer thaw", *args
     end
     
     def unpack(*args)
+      if args.last.is_a?(Hash)
+        if args.last[:log]
+          args.unshift "--log #{shell_quote(args.last[:log])}"
+        end
+      end
       _run "gecos unpack", *args
     end
     
