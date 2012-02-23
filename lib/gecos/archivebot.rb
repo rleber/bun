@@ -170,7 +170,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       to ||= File.join(archive.location, archive.extract_directory)
       ix = archive.tapes
       shell = Shell.new(:dryrun=>@dryrun)
-      shell.rm_rf to
+      shell.rm_rf to, :quiet=>!@dryrun
       ix.each do |tape_name|
         extended_file_name = archive.qualified_tape_file_name(tape_name)
         frozen = Archive.frozen?(extended_file_name)
@@ -183,14 +183,14 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
             subfile_name = descr.file_name
             f = File.join(to, tape_name, file_path, subfile_name)
             dir = File.dirname(f)
-            shell.mkdir_p dir
+            shell.mkdir_p dir, :quiet=>!@dryrun
             subfile_name = '\\' + subfile_name if subfile_name =~ /^#/ # Watch out -- '#' has a special meaning to thaw
             shell.thaw tape_name, subfile_name, f
           end
         else
           f = File.join(to, tape_name, file_path)
           dir = File.dirname(f)
-          shell.mkdir_p dir
+          shell.mkdir_p dir, :quiet=>!@dryrun
           shell.unpack tape_name, f
         end
       end
@@ -281,11 +281,11 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       
       # Create cross-reference files
       shell = Shell.new(:dryrun=>@dryrun)
-      shell.rm_rf to
+      shell.rm_rf to, :quiet=>!@dryrun
       command = options[:copy] ? :cp : :ln_s
       index.sort_by{|e| e[:from]}.each do |spec|
         dir = File.dirname(spec[:to])
-        shell.mkdir_p dir
+        shell.mkdir_p dir, :quiet=>!@dryrun
         shell.invoke command, from, to
       end
 
@@ -318,8 +318,8 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       dirty ||= archive.xref_directory
       dirty = File.join(archive.location, archive.dirty_directory)
       shell = Shell.new(:dryrun=>@dryrun)
-      shell.rm_rf clean
-      shell.rm_rf dirty
+      shell.rm_rf clean, :quiet=>!@dryrun
+      shell.rm_rf dirty, :quiet=>!@dryrun
       command = options[:copy] ? :cp : :ln_s
       Dir.glob(File.join(from,'**','*')).each do |old_file|
         next if File.directory?(old_file)
@@ -327,7 +327,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         destination = Decoder.clean?(old_file) ? clean : dirty
         new_file = File.join(destination, f)
         dir = File.dirname(new_file)
-        shell.mkdir_p dir
+        shell.mkdir_p dir, :quiet=>!@dryrun
         shell.invoke command, old_file, new_file
       end
     end
