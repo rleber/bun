@@ -185,7 +185,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
             f = File.join(to, tape_name, file_path, subfile_name)
             dir = File.dirname(f)
             shell.mkdir_p dir
-            subfile_name = '\\' + subfile_name if subfile_name =~ /^#/ # Watch out -- '#' has a special meaning to thaw
+            subfile_name = '\\' + subfile_name if subfile_name =~ /^\+/ # Watch out -- '+' has a special meaning to thaw
             warn "thaw #{tape_name} #{subfile_name}" unless @dryrun
             shell.thaw tape_name, subfile_name, f, :log=>log_file
           end

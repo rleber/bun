@@ -248,6 +248,7 @@ class GECOS
                     :words=>words[line_offset..last_line_word], :raw=>raw_line}
         end
         errors += 1 unless okay
+        warn "unpack: Error in #{line.inspect}" unless okay
         line_offset = last_line_word + 1
       end
       @errors = errors
@@ -269,8 +270,10 @@ class GECOS
         clipped_chs = chs.sub(/(?!\t)[[:cntrl:]].*/,'') # Remove control characters and all following letters
         line += clipped_chs
         break if (offset-line_offset) >= line_length
-        okay = false
-        break if clipped_chs != chs || clipped_chs.size==0 || !good_characters?(chs)
+        if clipped_chs != chs || clipped_chs.size==0 || !good_characters?(chs)
+          okay = false
+          break
+        end
         offset += 1
       end
       return [offset, nil, okay] if deleted

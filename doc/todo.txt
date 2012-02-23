@@ -1,5 +1,5 @@
-Better --strict mode
-Logging thaw and unpack status in log file
+Improved logging -- measure errors vs. size, or amount of data transcribed
+Improved logging -- one entry per file
 Look for Huffman-coded files
 Refactor repair (and thaw/unpack?): create parent class or mixin, and combine common code
 Standardize Decode and Defrost interfaces

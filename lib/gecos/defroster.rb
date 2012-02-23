@@ -85,14 +85,14 @@ class GECOS
     # Convert a file name to an index number; also convert negative indexes
     # Allowed formats:
     # Numeric: Any integer. 1..<# files> or -<# files>..-1 (counting backwards)
-    # String:  #-?\d+ : same as an Integer (Use leading '#' to ensure non-ambiguity -- '#1' is the
-    #                   first file, '1' is the file named '1')
-    #          Other:   Name of file. Ignore leading '\\' if any -- this allows a way to specify
-    #                   a file name starting with '#', as for instance '#ofBeersOnTheWall'
+    # String:  [+-]\d+ : same as an Integer (Use leading '+' to ensure non-ambiguity -- '+1' is the
+    #                    first file, '1' is the file named '1')
+    #          Other:    Name of file. Ignore leading '\\' if any -- this allows a way to specify
+    #                    a file name starting with '+', as for instance '+OneForParty'
     def fn(n)
-      if n.is_a?(Numeric) || n.to_s =~ /^#-?\d+$/
+      if n.is_a?(Numeric) || n.to_s =~ /^[+-]\d+$/
         orig_n = n
-        n = n.sub(/^#/,'').to_i if n.is_a?(String)
+        n = n.to_i if n.is_a?(String)
         n += files+1 if n<0
         abort "Frozen file does not contain file number #{orig_n}" if n<1 || n>files
         n -= 1

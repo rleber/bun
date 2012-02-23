@@ -89,16 +89,21 @@ class GECOS
     end
     
     def write(file, content, options={})
-      if file.nil? || file == '-'
+      case file
+      when nil, '-'
         STDOUT.write content
+      when IO
+        file.write content
       else
-        File.open(file, 'w') {|f| f.write content}
+        mode = options[:mode] || 'w'
+        File.open(file, mode) {|f| f.write content}
         set_timestamp(file, options[:timestamp], options) if options[:timestamp]
       end
     end
     
     def log(file, message)
-      File.open(file, 'a') {|f| f.puts Time.now.strftime('%Y/%m/%d %H:%M:%s') + ' ' + message.to_s }
+      file = STDERR if file == '-'
+      write file, "#{Time.now.strftime('%Y/%m/%d %H:%M:%S')} #{message}\n", :mode=>'a'
     end
   end
 end
