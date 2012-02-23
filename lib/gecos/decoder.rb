@@ -248,7 +248,6 @@ class GECOS
                     :words=>words[line_offset..last_line_word], :raw=>raw_line}
         end
         errors += 1 unless okay
-        warn "unpack: Error in #{line.inspect}" unless okay
         line_offset = last_line_word + 1
       end
       @errors = errors
