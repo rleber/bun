@@ -186,13 +186,15 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
             dir = File.dirname(f)
             shell.mkdir_p dir, :quiet=>!@dryrun
             subfile_name = '\\' + subfile_name if subfile_name =~ /^#/ # Watch out -- '#' has a special meaning to thaw
-            shell.thaw tape_name, subfile_name, f, :log=>log_file
+            warn "thaw #{tape_name} #{subfile_name}" unless @dryrun
+            shell.thaw tape_name, subfile_name, f, :log=>log_file, :quiet=>!@dryrun
           end
         else
           f = File.join(to, tape_name, file_path)
           dir = File.dirname(f)
           shell.mkdir_p dir, :quiet=>!@dryrun
-          shell.unpack tape_name, f, :log=>log_file
+          warn "unpack #{tape_name}" unless @dryrun
+          shell.unpack tape_name, f, :log=>log_file, :quiet=>!@dryrun
         end
       end
     end
@@ -287,8 +289,11 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       index.sort_by{|e| e[:from]}.each do |spec|
         dir = File.dirname(spec[:to])
         shell.mkdir_p dir, :quiet=>!@dryrun
-        shell.invoke command, from, to
+        warn "#{from} => #{to}" unless @dryrun
+        shell.invoke command, from, to, :quiet=>!@dryrun
       end
+      
+      # TODO Copy log information
 
       # Create index file of cross-reference
       unless @dryrun
@@ -325,11 +330,14 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       Dir.glob(File.join(from,'**','*')).each do |old_file|
         next if File.directory?(old_file)
         f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
-        destination = Decoder.clean?(old_file) ? clean : dirty
+        # TODO Change this to use logs, where available
+        okay = Decoder.clean?(old_file)
+        destination = okay ? clean : dirty
         new_file = File.join(destination, f)
         dir = File.dirname(new_file)
         shell.mkdir_p dir, :quiet=>!@dryrun
-        shell.invoke command, old_file, new_file
+        warn "#{f} is #{okay ? 'clean' : 'dirty'}"
+        shell.invoke command, old_file, new_file, :quiet=>!@dryrun
       end
     end
   end
