@@ -242,6 +242,28 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       end
     end
     
+    EXTRACT_LOG_PATTERN = /\"([^\"]*)\".*?(\d+)\s+errors/
+    
+    no_tasks do
+      def read_log(log_file_name)
+        log = {}
+        File.read(log_file_name).split("\n").each do |line|
+          entry = parse_log_entry(line)
+          log[entry[:file]] = entry
+        end
+        log
+      end
+      
+      def parse_log_entry(log_entry)
+        raise "Bad log file line: #{log_entry.inspect}" unless log_entry =~ EXTRACT_LOG_PATTERN
+        {:prefix=>$`, :suffix=>$', :entry=>log_entry, :file=>$1, :errors=>$2.to_i}
+      end
+      
+      def alter_log(log_entry, new_file)
+        log_entry.merge(:file=>new_file, :entry=>"#{log_entry[:prefix]}#{new_file.inspect} #{log_entry[:errors]} errors #{log_entry[:suffix]}")
+      end
+    end
+    
     # Cross-reference the extracted files:
     # Create one directory per file, as opposed to one directory per tape
     desc "xref [ARCHIVE] [FROM] [TO]", "Create cross-reference by file name"
@@ -301,14 +323,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       end
       
       # Read in log information
-      # TODO Refactor this and combine with similar code in classify
-      log = {}
-      old_log_file = File.join(from, archive.log_file)
-      File.read(old_log_file).split("\n").each do |line|
-        abort "Bad log file line: #{line.inspect}" unless line =~ /\"([^\"]*)\".*(\d+)\s+errors/
-        log[$1] = {:entry=>line, :file=>$1, :errors=>$2.to_i}
-      end
-      
+      log = read_log(File.join(from, archive.log_file))
       new_log = {}
       
       # Create cross-reference files
@@ -321,10 +336,10 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         processed[spec[:to]] = true   # Only need to copy or link identical files to the new location once
         dir = File.dirname(spec[:to])
         shell.mkdir_p dir
-        warn "link #{spec[:from]} => #{spec[:to]}" unless @dryrun
+        warn "xref #{spec[:from]} => #{spec[:to]}" unless @dryrun
         shell.invoke command, spec[:from], spec[:to]
         abort "No log entry for #{spec[:from]}" unless log[spec[:from]]
-        new_log[spec[:to]] = log[spec[:from]]
+        new_log[spec[:to]] = alter_log(log[spec[:from]], spec[:to])
       end
       
       # Write new log
@@ -368,27 +383,32 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       clean = File.join(archive.location, archive.clean_directory)
       dirty ||= archive.xref_directory
       dirty = File.join(archive.location, archive.dirty_directory)
+      destinations = {:clean=>clean, :dirty=>dirty}
       shell = Shell.new(:dryrun=>@dryrun)
-      shell.rm_rf clean
-      shell.rm_rf dirty
-      command = options[:copy] ? :cp : :ln_s
-      # Read in log file
-      log = {}
-      File.read(log_file).split("\n").each do |line|
-        abort "Bad log file line: #{line.inspect}" unless line =~ /\"([^\"]*)\".*(\d+)\s+errors/
-        log[$1] = $2.to_i
+      destinations.each do |status, destination|
+        shell.rm_rf destination
+        shell.mkdir_p destination
       end
+      command = options[:copy] ? :cp : :ln_s
+
+      log = read_log(log_file)
+
+      new_logs = {:clean=>[], :dirty=>[]}
       Dir.glob(File.join(from,'**','*')).each do |old_file|
         next if File.directory?(old_file)
         f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
         abort "Missing log entry for #{old_file}" unless log[old_file]
-        okay = log[old_file] < threshold
-        destination = okay ? clean : dirty
-        new_file = File.join(destination, f)
+        okay = log[old_file][:errors] < threshold
+        status = okay ? :clean : :dirty
+        new_file = File.join(destinations[status], f)
         dir = File.dirname(new_file)
         shell.mkdir_p dir
-        warn "#{f} is #{okay ? 'clean' : 'dirty'}"
+        warn "#{f} is #{status}"
         shell.invoke command, old_file, new_file
+        new_logs[status] << alter_log(log[old_file], new_file)
+      end
+      new_logs.each do |status, log|
+        File.open(File.join(destinations[status],archive.log_file),'w') {|f| f.puts log.map{|log_entry| log_entry[:entry]}.join("\n") }
       end
     end
   end
