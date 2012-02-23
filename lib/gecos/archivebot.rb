@@ -333,13 +333,14 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       end
     end
     
-    desc "classify", "Classify files based on whether they're clean or not. WARNING THIS DOESN'T REALLY DO MUCH"
+    DEFAULT_THRESHOLD = 20
+    desc "classify", "Classify files based on whether they're clean or not."
     option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to xref (instead of symlink)"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
-    option 'trace', :aliases=>'-t', :type=>'boolean', :desc=>"Debugging trace"
+    option 'threshold', :aliases=>'-t', :type=>'numeric', :default=>DEFAULT_THRESHOLD,
+      :desc=>"Set a threshold: how many errors before a file is 'dirty'?"
     def classify(archive_location=nil, from=nil, clean=nil, dirty=nil)
       @dryrun = options[:dryrun]
-      @trace = options[:trace]
       archive_location = nil if archive_location == '-'
       directory = archive_location || Archive.location
       archive = Archive.new(directory)
@@ -353,11 +354,16 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       shell.rm_rf clean
       shell.rm_rf dirty
       command = options[:copy] ? :cp : :ln_s
+      # Read in log file
+      log = {}
+      File.read(log_file).split("\n").each do |line|
+        abort "Bad log file line: #{line.inspect}" unless line =~ /\"([^\"]*)\".*(\d+)\s+errors/
+        log[$1] = $2.to_i
+      end
       Dir.glob(File.join(from,'**','*')).each do |old_file|
         next if File.directory?(old_file)
         f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
-        # TODO Change this to use logs, where available
-        okay = Decoder.clean?(old_file)
+        okay = log[old_file] < options[:threshold]
         destination = okay ? clean : dirty
         new_file = File.join(destination, f)
         dir = File.dirname(new_file)
