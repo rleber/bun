@@ -117,6 +117,7 @@ class GECOS
       self.class.bits_per_word
     end
     
+    # TODO do we ever instantiate a Decoder without reading a file? If not, refactor
     def initialize(raw)
       self.raw = raw
     end

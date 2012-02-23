@@ -161,6 +161,32 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       end
     end
     
+    # TODO Is there a lot of preamble code to these methods that could be refactored away?
+    # TODO Should standardize around an --archive parameter
+    desc "find PATTERN", "List tapes containing files matching a specified pattern"
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    long_desc "PATTERN may be any Ruby regular expression (without the delimiting '/'s)"
+    def find(pattern)
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
+      pattern = get_regexp(pattern)
+      ix = archive.tapes
+      ix.each do |tape_name|
+        extended_file_name = archive.qualified_tape_file_name(tape_name)
+        if Archive.frozen?(extended_file_name)
+          decoder = Decoder.new(File.read(extended_file_name))
+          defroster = Defroster.new(decoder)
+          defroster.file_paths.each_with_index do |f, i|
+            puts "#{tape_name}:#{defroster.file_name(i)} => #{f}" if f=~pattern
+          end
+        else
+          decoder = Decoder.new(File.read(extended_file_name))
+          f = decoder.file_path
+          puts "#{tape_name} => #{f}" if f=~pattern
+        end
+      end
+    end
+    
     desc "extract [ARCHIVE] [TO]", "Extract all the files in the archive"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
     def extract(archive_location=nil, to=nil)

@@ -114,9 +114,9 @@ whatever its name.
       limit = options[:lines]
       archive = Archive.new
       file = archive.qualified_tape_file_name(file)
-      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
+      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       decoder = GECOS::Decoder.new(File.read(file))
       defroster = GECOS::Defroster.new(decoder, :warn=>true)
       file_index = defroster.fn(n)

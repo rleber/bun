@@ -5,6 +5,7 @@ class GECOS
     attr_reader :decoder, :errors
     attr_accessor :strict, :warn
     
+    # TODO do we ever instantiate a Defroster without a new Decoder? If not, refactor
     def initialize(decoder, options={})
       @decoder = decoder
       @strict = options[:strict]
@@ -80,6 +81,21 @@ class GECOS
       d = descriptor(n)
       return nil unless d
       d.file_name
+    end
+    
+    def file_names
+      (0...files).map{|n| file_name(n)}
+    end
+    
+    def file_path(n=nil)
+      return decoder.file_path if n.nil?
+      d = descriptor(n)
+      return nil unless d
+      decoder.file_path + '/' + d.file_name
+    end
+    
+    def file_paths
+      (0...files).map{|n| file_path(n)}
     end
 
     # Convert a file name to an index number; also convert negative indexes
