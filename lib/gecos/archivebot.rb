@@ -80,6 +80,7 @@ class GECOS
     IGNORE_LINKS = ["Name", "Last modified", "Size", "Description", "Parent Directory"]
     desc "fetch [URL] [TO]", "Fetch files from an online repository"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Do a dry run only; show what would be fetched, but don't save it"
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
     long_desc <<-EOT
 Fetches all the files and subdirectories of the specified online url to the data directory.
 
@@ -93,10 +94,10 @@ file or the GECOS_REPOSITORY environment variable. If neither is set, the URL is
 If no "to" location is provided, this command will use the archive location specified in
 data/archive_config.yml. Usually, this is ~/gecos_archive
     EOT
-    def fetch(url=nil, archive_location=nil)
+    def fetch(url=nil)
       agent = Mechanize.new
       url ||= Archive.repository
-      archive_location  ||= Archive.location
+      archive_location = options[:archive] || Archive.location
       abort "No url provided" unless url
       abort "No archive location provided" unless archive_location
       @dryrun = options[:dryrun]
@@ -119,7 +120,8 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     option "type", :aliases=>"-T", :type=>'string', :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
     option "tapes", :aliases=>"-t", :type=>'string', :default=>'.*', :desc=>"Show only tapes that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
     option "files", :aliases=>"-f", :type=>'string', :default=>'.*', :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
-    def ls(archive_location=nil)
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    def ls
       abort "Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
       type_pattern = case options[:type].downcase
         when 'f', 'frozen'
@@ -135,9 +137,9 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       abort "Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
       tape_pattern = get_regexp(options[:tapes])
       abort "Invalid --tapes pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless tape_pattern
-      archive = Archive.new(archive_location)
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
       ix = archive.tapes
-      directory = archive.location
       puts "Archive at #{directory}:"
       tape_name_width = ix.map{|entry| entry.first.size}.max
       if options[:long]
@@ -187,11 +189,12 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       end
     end
     
-    desc "extract [ARCHIVE] [TO]", "Extract all the files in the archive"
+    desc "extract [TO]", "Extract all the files in the archive"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
-    def extract(archive_location=nil, to=nil)
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    def extract(to=nil)
       @dryrun = options[:dryrun]
-      directory = archive_location || Archive.location
+      directory = options[:archive] || Archive.location
       archive = Archive.new(directory)
       to ||= File.join(archive.location, archive.extract_directory)
       log_file = File.join(to, archive.log_file)
@@ -256,11 +259,11 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to xref (instead of symlink)"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
     option 'trace', :aliases=>'-t', :type=>'boolean', :desc=>"Debugging trace"
-    def xref(archive_location=nil, from=nil, to=nil)
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    def xref(from=nil, to=nil)
       @dryrun = options[:dryrun]
       @trace = options[:trace]
-      archive_location = nil if archive_location == '-'
-      directory = archive_location || Archive.location
+      directory = options[:archive] || Archive.location
       archive = Archive.new(directory)
       from ||= archive.extract_directory
       from = File.join(archive.location, from)
@@ -335,14 +338,14 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     
     DEFAULT_THRESHOLD = 20
     desc "classify", "Classify files based on whether they're clean or not."
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
     option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to xref (instead of symlink)"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
     option 'threshold', :aliases=>'-t', :type=>'numeric', :default=>DEFAULT_THRESHOLD,
       :desc=>"Set a threshold: how many errors before a file is 'dirty'?"
-    def classify(archive_location=nil, from=nil, clean=nil, dirty=nil)
+    def classify(from=nil, clean=nil, dirty=nil)
       @dryrun = options[:dryrun]
-      archive_location = nil if archive_location == '-'
-      directory = archive_location || Archive.location
+      directory = options[:archive] || Archive.location
       archive = Archive.new(directory)
       from ||= archive.xref_directory
       from = File.join(archive.location, from)
