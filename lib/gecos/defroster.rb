@@ -3,11 +3,13 @@ require 'gecos/freezer_descriptor'
 class GECOS
   class Defroster
     attr_reader :decoder
-    attr_accessor :options
+    attr_accessor :options, :log, :strict, :warn
     
     def initialize(decoder, options={})
       @decoder = decoder
-      @options = options
+      @log = options[:log]
+      @strict = options[:strict]
+      @warn = options[:warn]
     end
     
     def offset
@@ -147,19 +149,26 @@ class GECOS
     
     def lines(n)
       @lineset ||= []
-      @lineset[n] ||= defrost(n)
+      @lineset[n] ||= thaw(n)
     end
     
-    def defrost(n)
+    def log(message)
+      Shell.new.log(@log, message) if @log
+    end
+    
+    # TODO Track bad line count
+    # TODO Log thaw status
+    def thaw(n)
       words = file_words(n)
       line_offset = 0
       lines = []
       warned = false
+      bad_line_count = 0
       while line_offset < words.size
-        _, last_line_word, line = defrost_line(words, line_offset)
+        last_line_word, line, okay = thaw_line(words, line_offset)
         if !line
-          abort "Bad line at #{'%o'%line_offset}: #{line.inspect}" if options[:strict]
-          warn "Bad lines corrected" if !warned && options[:warn]
+          abort "Bad line at #{'%o'%line_offset}: #{line.inspect}" if @strict
+          warn "Bad lines corrected" if !warned && @warn
           warned = true
           line_offset += 1
         else
@@ -169,14 +178,17 @@ class GECOS
                     :words=>words[line_offset..last_line_word], :raw=>raw_line}
           line_offset = last_line_word + 1
         end
+        bad_line_count += 1 unless okay
       end
+      log("thaw: #{bad_line_count} bad lines")
       lines
     end
     
-    def defrost_line(words, line_offset)
+    def thaw_line(words, line_offset)
       line = ""
       line_length = words.size
       offset = line_offset
+      okay = true
       loop do
         word = words[offset]
         break unless word
@@ -185,15 +197,19 @@ class GECOS
           if good_descriptor?(word)
             line_length = line_length(word)
             ch_count = 3
+          else
+            okay = false
           end
         end
         chs = extract_characters(word, ch_count)
         line += chs.sub(/[[:cntrl:]].*/){|s| s[/^\r?/]} # Remove control characters (except trailing \r) and all following letters
-        break if chs=~/\r/ || !good_characters?(chs) || line.size >= line_length
+        break if chs=~/\r/
+        okay = false
+        break if !good_characters?(chs) || line.size >= line_length
         offset += 1
       end
-      return [line_offset, offset, nil] unless line =~ /\r/
-      [line_offset, offset, line]
+      return [offset, nil, false] unless line =~ /\r/
+      [offset, line, okay]
     end
     
     def line_length(word)

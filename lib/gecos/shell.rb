@@ -78,5 +78,9 @@ class GECOS
         set_timestamp(file, options[:timestamp], options) if options[:timestamp]
       end
     end
+    
+    def log(file, message)
+      File.open(file, 'a') {|f| f.puts Time.now.strftime('%Y/%m/%d %H:%M:%s') + ' ' + message.to_s }
+    end
   end
 end

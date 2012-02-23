@@ -1,6 +1,7 @@
 class GECOS
   class Decoder
     attr_reader :raw
+    attr_accessor :log
     
     EOF_MARKER = 0x00000f000 # Octal 000000170000 or 0b000000000000000000001111000000000000
     CHARACTERS_PER_WORD = 4
@@ -117,8 +118,9 @@ class GECOS
       self.class.bits_per_word
     end
     
-    def initialize(raw)
+    def initialize(raw, options={})
       self.raw = raw
+      @log = options[:log]
     end
     
     def raw=(raw)
@@ -231,45 +233,55 @@ class GECOS
     private :_content
     
     def lines
-      @lines ||= decode
+      @lines ||= unpack
     end
     
-    def decode
+    def log(message)
+      Shell.new.log(@log, message) if @log
+    end
+    
+    def unpack
       line_offset = file_content_start + UNPACK_OFFSET
       lines = []
       warned = false
+      bad_line_count = 0
       while line_offset < words.size
-        _, last_line_word, line = decode_line(words, line_offset)
+        last_line_word, line, okay = unpack_line(words, line_offset)
         if line
           raw_line = line
           line.sub!(/\r\0*$/,"\n")
           lines << {:content=>line, :offset=>line_offset, :descriptor=>words[line_offset], 
                     :words=>words[line_offset..last_line_word], :raw=>raw_line}
         end
+        bad_line_count += 1 unless okay
         line_offset = last_line_word + 1
       end
+      log "unpack: #{bad_line_count} bad lines"
       lines
     end
     
-    def decode_line(words, line_offset)
+    def unpack_line(words, line_offset)
       line = ""
       descriptor = words[line_offset]
       return [line_offset, words.size, nil] if descriptor == EOF_MARKER
       deleted = deleted_line?(descriptor)
       line_length = line_length(descriptor)
       offset = line_offset+1
+      okay = true
       loop do
         word = words[offset]
         break if !word || word == EOF_MARKER
         chs = extract_characters(word)
         clipped_chs = chs.sub(/(?!\t)[[:cntrl:]].*/,'') # Remove control characters and all following letters
         line += clipped_chs
-        break if clipped_chs != chs || clipped_chs.size==0 || !good_characters?(chs) || (offset-line_offset) >= line_length
+        break if (offset-line_offset) >= line_length
+        okay = false
+        break if clipped_chs != chs || clipped_chs.size==0 || !good_characters?(chs)
         offset += 1
       end
-      return [line_offset, offset, nil] if deleted
+      return [offset, nil, okay] if deleted
       line += "\n"
-      [line_offset, offset, line]
+      [offset, line, okay]
     end
     
     def line_length(word)
