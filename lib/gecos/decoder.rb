@@ -8,7 +8,7 @@ class GECOS
     BITS_PER_WORD = 36
     ARCHIVE_NAME_POSITION = 7 # words
     SPECIFICATION_POSITION = 11 # words
-    UNPACK_OFFSET = 22
+    UNPACK_OFFSET = 1
     
     def zstring(offset)
       start = offset
@@ -171,6 +171,10 @@ class GECOS
       @octal ||= _octal
     end
     
+    def word_count
+      [(words[0] & 0777777)+1, words.size].min
+    end
+    
     # Raw data from file in octal
     def _octal
       raw.unpack('B*').first.scan(/.../).map{|o| '%o'%eval('0b'+o)}.join
@@ -254,51 +258,82 @@ class GECOS
     end
     
     def unpack
-      line_offset = file_content_start + UNPACK_OFFSET
+      # line_offset = file_content_start + UNPACK_OFFSET
+      line_offset = file_content_start + 22
       lines = []
       warned = false
       errors = 0
-      while line_offset < words.size
+      n = 0
+      while line_offset < word_count
         line = unpack_line(words, line_offset)
+        line[:status] = :ignore if n == 0
         case line[:status]
         when :eof     then break
         when :okay    then lines << line
+        when :delete  then lines << line if @keep_deletes
+        when :ignore  then # do nothing
         else               errors += 1
         end
         line_offset = line[:finish]+1
+        n += 1
       end
       @errors = errors
       lines
     end
     
+    BLOCK_SIZE = 0500
     def unpack_line(words, line_offset)
+      # puts "  unpack at #{'%06o' % line_offset}"
       line = ""
       raw_line = ""
       okay = true
       descriptor = words[line_offset]
+      if descriptor == 0
+        current_block = (line_offset - file_content_start).div(BLOCK_SIZE)
+        first_word_in_next_block = (current_block + 1)*BLOCK_SIZE + file_content_start + UNPACK_OFFSET - 1
+        # puts "  skip to block #{current_block + 1} at #{'%06o' % first_word_in_next_block}"
+        return {:status=>:ignore, :start=>line_offset, :finish=>first_word_in_next_block, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
+      end
       if descriptor == EOF_MARKER
-        return {:status=>:eof, :start=>line_offset, :finish=>words.size, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
-      elsif descriptor & 0777 != 0
-        
-      line_length = line_length(descriptor)
+        return {:status=>:eof, :start=>line_offset, :finish=>word_count, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
+      elsif (descriptor >> 27) & 0777 == 0177
+        # puts "  deleted (descriptor[0] == 0177)"
+        deleted = true
+        line_length = word_count
+      elsif (descriptor >> 27) & 0777 == 0
+        # if descriptor & 0777 == 0600
+          # puts "  normal (descriptor[0] == 0 && descriptor[3] == 0600): line_length = #{line_length}"
+          line_length = line_length(descriptor)
+        # else
+        #   raise "Unexpected line descriptor (byte 3). Descriptor=#{'%012o' % descriptor} at #{'%06o' % line_offset}" unless descriptor & 0777 == 0
+        #   return {:status=>:delete, :start=>line_offset, :finish=>line_offset+1, :content=>line, :raw=>raw_line, :words=>words[line_offset, 2], :descriptor=>descriptor}
+        # end
+      else # Sometimes, there is ASCII in the descriptor word; In that case, capture it, and look for terminating "\177"
+        # puts "  indeterminate ASCII"
+        line_length = word_count
+        chs = extract_characters(descriptor)
+        line += chs
+        raw_line += chs
+      end
       offset = line_offset+1
       loop do
         word = words[offset]
         break if !word || word == EOF_MARKER
         chs = extract_characters(word)
+        # puts "  at #{'%06o' % offset}: descriptor=#{'%012o' % descriptor}, line_length=#{'%06o' % line_length}, word=#{'%012o' % word}, chs=#{chs.inspect}"
         raw_line += chs
         clipped_chs = chs.sub(/#{INVALID_CHARACTER_REGEXP}.*/,'') # Remove control characters and all following letters
         line += clipped_chs
         break if (offset-line_offset) >= line_length
+        break if chs =~ /\177+$/
         if clipped_chs != chs || clipped_chs.size==0 || !good_characters?(chs)
           okay = false
           break
         end
         offset += 1
       end
-      line[0,0] = extract_characters(descriptor) if oddball_line?(descriptor)
-      line.sub!(/\r\0*$/,"\n")
-      line += "\n"
+      # puts "  emit"
+       line += "\n"
       {:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>offset, :content=>line, :raw=>raw_line, :words=>words[line_offset..offset], :descriptor=>descriptor}
     end
     

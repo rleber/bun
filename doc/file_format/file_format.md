@@ -38,6 +38,8 @@ _All Files_
 
 All files have a "preamble", which includes general information about its name, format, description, etc.
 I will write more details later, but for now, I suggest you refer to the source in lib/decoder.rb.
+- The first byte of the file contains 01 in the upper half-word, and the number of words in the file in
+  the lower half-word.
 
 Some other conventions:
 - Unless otherwise noted, characters are stored one per 9-bit byte, left-to-right, in ASCII.
@@ -59,17 +61,31 @@ be useful for exploring files.
 _Normal Archive Files_
 
 Archive files have the following format:
-- They are encoded line by line, beginning after the preamble
+- They follow the file size shown in word 0 of the file -- that is, data after that may be ignored
+- Data may also be terminated by an end of file marker at any time. This is a word containing 0170000
+- Following the preamble, as described above, the file is organized as a sequence of 320-word blocks
+  - Each block starts with a block length word:
+    - The upper half word is the block number (starting at 1 for the first block)
+    - The lower half word is the number of bytes used in the block. That is, if a block starts at
+      word w, and has a size marker s, then word w+s is the last used word in the block. Words after
+      this word (i.e. words w+s+1... w+319) should be ignored
+- The data of the file is encoded within the used words in the sequence of blocks. It may be
+  conceptually simpler to think of the used words of each block running into the used words of the
+  next block (i.e. ignoring the block descriptor word and any unused words at the end of blocks).
+- The contents is encoded as a series of lines of ASCII text.
+- Lines do not cross block boundaries, and always take an integral number of words.
 - Each line is prefixed with descriptor word that includes:
-  - Byte 0: Usually zero. If not, the subsequent line has been deleted.
-  - Upper half-word: The length of the subsequent block of characters _words_
-  - Lower half-word: Appears to be some flag information I have yet to decipher
-- In the case of a deleted line, the length information should be ignored. The end of the deleted
-  data is marked by a word with 000 in byte 0. The next word contains the start of the next line.
-- For non-deleted lines, the descriptor word is followed by the character data for the line:
+  - Byte 0: Always 0
+  - Byte 1: The length of the data in the line in words (not including the descriptor word)
+  - Byte 2: A flag word. The valid values seem to be 000, 0200, 0400, and 0600. I have no idea
+            what these flag bits signify
+  - Byte 3: Always 0600
+- The descriptor word is followed by the character data for the line:
   - The number of words of character data is specified in the length field of the line descriptor
+  - Characters are packed 4 to a word, one per byte. No more than 7 bits/character are used.
   - No CR or LF characters are included; they are assumed
   - The end of the line may be padded with bytes containing 0177
+  - Some control characters may be found, e.g. backspace, tab
 - The first line always appears to be a descriptor plus 20 words of 000s. It is ignored.
 - End of file markers are optional, but do apply if found. (See above.)
 
@@ -113,6 +129,8 @@ Freeze files have the following format:
     - Bits 8-14: The length of the line, in characters, including the final LF
     - Bits 9-35: The first 3 characters of the line, encoded as described above
   - Subsequent words contain the successive characters for the remainder of the line
+- Frozen files don't seem to pay attention to the file size data in word 0 of the file
+- They also don't appear to use the end of file marker
 
 For additional clues, see doc/file_format/decode_help.txt, the source file lib/defroster.rb or 
 run "gecos dump" or "gecos freezer dump".
