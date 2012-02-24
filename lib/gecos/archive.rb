@@ -125,7 +125,12 @@ class GECOS
     end
     
     def expanded_tape_path(file_name)
-      File.expand_path(file_name, File.expand_path(raw_directory, location))
+      if file_name =~ /^\.\//
+        rel = `pwd`.chomp
+      else
+        rel = File.expand_path(raw_directory, location)
+      end
+      File.expand_path(file_name, rel)
     end
     
     def config

@@ -98,16 +98,31 @@ class GECOS
     def characters_per_word
       self.class.characters_per_word
     end
-
+    
+    VALID_CONTROL_CHARACTERS = '\r\t\n\b'
+    VALID_CONTROL_CHARACTER_STRING = eval("\"#{VALID_CONTROL_CHARACTERS}\"")
+    VALID_CONTROL_CHARACTER_REGEXP = /[#{VALID_CONTROL_CHARACTERS}]/
+    INVALID_CHARACTER_REGEXP = /(?!(?>#{VALID_CONTROL_CHARACTER_REGEXP}))[[:cntrl:]]/
+    VALID_CHARACTER_REGEXP = /(?!(?>#{INVALID_CHARACTER_REGEXP}))./
+    
+    def self.valid_control_character_regexp
+      VALID_CONTROL_CHARACTER_REGEXP
+    end
+    
+    def self.invalid_character_regexp
+      INVALID_CHARACTER_REGEXP
+    end
+    
+    def self.valid_character_regexp
+      VALID_CHARACTER_REGEXP
+    end
+    
     def self.clean?(text)
-      bad_characters = text.gsub(/[^[:cntrl:]]|[\r\t\n]/,'')
-      bad_characters.size == 0
+      find_flaw(text).nil?
     end
     
     def self.find_flaw(text)
-      pos = text.gsub(/[\r\t\n]/,'').sub(/[[:cntrl:]].*/m, '').size
-      return nil if pos >= text.size
-      pos
+      text =~ INVALID_CHARACTER_REGEXP
     end
     
     def self.bits_per_word
@@ -242,15 +257,14 @@ class GECOS
       warned = false
       errors = 0
       while line_offset < words.size
-        last_line_word, line, okay = unpack_line(words, line_offset)
-        if line
-          raw_line = line
-          line.sub!(/\r\0*$/,"\n")
-          lines << {:content=>line, :offset=>line_offset, :descriptor=>words[line_offset], 
-                    :words=>words[line_offset..last_line_word], :raw=>raw_line}
+        line = unpack_line(words, line_offset)
+        case line[:status]
+        when :eof     then break
+        when :okay    then lines << line
+        when :deleted then # Ignore the line
+        else               errors += 1
         end
-        errors += 1 unless okay
-        line_offset = last_line_word + 1
+        line_offset = line[:finish]+1
       end
       @errors = errors
       lines
@@ -258,9 +272,12 @@ class GECOS
     
     def unpack_line(words, line_offset)
       line = ""
+      raw_line = ""
       okay = true
       descriptor = words[line_offset]
-      return [words.size, nil, okay] if descriptor == EOF_MARKER
+      if descriptor == EOF_MARKER
+        return {:status=>:eof, :start=>line_offset, :finish=>words.size, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
+      end
       deleted = deleted_line?(descriptor)
       line_length = line_length(descriptor)
       offset = line_offset+1
@@ -268,7 +285,8 @@ class GECOS
         word = words[offset]
         break if !word || word == EOF_MARKER
         chs = extract_characters(word)
-        clipped_chs = chs.sub(/(?!\t)[[:cntrl:]].*/,'') # Remove control characters and all following letters
+        raw_line += chs
+        clipped_chs = chs.sub(/#{INVALID_CHARACTER_REGEXP}.*/,'') # Remove control characters and all following letters
         line += clipped_chs
         break if (offset-line_offset) >= line_length
         if clipped_chs != chs || clipped_chs.size==0 || !good_characters?(chs)
@@ -277,13 +295,20 @@ class GECOS
         end
         offset += 1
       end
-      return [offset, nil, okay] if deleted
+      line.sub!(/\r\0*$/,"\n")
+      if deleted
+        return {:status=>:deleted, :start=>line_offset, :finish=>offset, :content=>line, :raw=>raw_line, :words=>words[line_offset..offset], :descriptor=>descriptor}
+      end
       line += "\n"
-      [offset, line, okay]
+      {:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>offset, :content=>line, :raw=>raw_line, :words=>words[line_offset..offset], :descriptor=>descriptor}
     end
     
     def line_length(word)
       (word & 0777777000000) >> 18
+    end
+    
+    def line_flags(word)
+      word & 0777777
     end
     
     def byte(word, n)
