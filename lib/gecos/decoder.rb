@@ -1,6 +1,7 @@
 class GECOS
   class Decoder
     attr_reader :raw, :errors
+    attr_accessor :keep_deletes
     
     EOF_MARKER = 0x00000f000 # Octal 000000170000 or 0b000000000000000000001111000000000000
     CHARACTERS_PER_WORD = 4
@@ -134,8 +135,9 @@ class GECOS
     end
     
     # TODO do we ever instantiate a Decoder without reading a file? If not, refactor
-    def initialize(raw)
+    def initialize(raw, options={})
       self.raw = raw
+      @keep_deletes = options[:keep_deletes]
     end
     
     def raw=(raw)
@@ -261,7 +263,7 @@ class GECOS
         case line[:status]
         when :eof     then break
         when :okay    then lines << line
-        when :deleted then # Ignore the line
+        when :deleted then lines << line if @keep_deletes
         else               errors += 1
         end
         line_offset = line[:finish]+1
