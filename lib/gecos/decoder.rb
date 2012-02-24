@@ -263,7 +263,6 @@ class GECOS
         case line[:status]
         when :eof     then break
         when :okay    then lines << line
-        when :deleted then lines << line if @keep_deletes
         else               errors += 1
         end
         line_offset = line[:finish]+1
@@ -279,8 +278,8 @@ class GECOS
       descriptor = words[line_offset]
       if descriptor == EOF_MARKER
         return {:status=>:eof, :start=>line_offset, :finish=>words.size, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
-      end
-      deleted = deleted_line?(descriptor)
+      elsif descriptor & 0777 != 0
+        
       line_length = line_length(descriptor)
       offset = line_offset+1
       loop do
@@ -297,10 +296,8 @@ class GECOS
         end
         offset += 1
       end
+      line[0,0] = extract_characters(descriptor) if oddball_line?(descriptor)
       line.sub!(/\r\0*$/,"\n")
-      if deleted
-        return {:status=>:deleted, :start=>line_offset, :finish=>offset, :content=>line, :raw=>raw_line, :words=>words[line_offset..offset], :descriptor=>descriptor}
-      end
       line += "\n"
       {:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>offset, :content=>line, :raw=>raw_line, :words=>words[line_offset..offset], :descriptor=>descriptor}
     end
@@ -317,7 +314,7 @@ class GECOS
       extract_bytes(word)[n]
     end
     
-    def deleted_line?(word)
+    def oddball_line?(word)
       byte(word,0) != 0
     end
     
