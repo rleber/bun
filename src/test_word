@@ -28,82 +28,101 @@ end
 WORD_FORMAT = '%012o'
 DEFAULT_FORMAT = '%p'
 
-def format_array(obj, name, options={})
-  format_hash(obj, name, options)
-  # format = options[:format] || DEFAULT_FORMAT
-  # name = name.to_s.downcase
-  # array = obj.send(name)
-  # (0...array.size).map {|n| format % (array[n]) }
-end
-
-def format_hash(obj, name, options={})
+def format_collection(obj, name, options={})
   format = options[:format] || DEFAULT_FORMAT
   name = name.to_s.downcase
-  hash = obj.send(name)
-  new_obj = hash.class.new
-  indexes = hash.is_a?(Hash) ? hash.keys : (0...hash.size)
-  indexes.inject(new_obj) do |hsh, key|
-    hsh[key] = format % [hash[key]]
-    hsh
+  collection = protected_send(obj, name)
+  new_obj = collection.class.new
+  indexes = collection.is_a?(Hash) ? collection.keys : (0...collection.size)
+  indexes.inject(new_obj) do |coll, index|
+    coll[index] = format % [collection[index]]
+    coll
   end
 end
 
-def dump_array(obj, name, options={})
-  name = name.to_s.downcase
-  format_array(obj, name, options).each_with_index do |s, n|
-    puts "#{name}[#{n}] = #{s}"
-  end
-end
-
-def format_method(obj, name, size, options={})
+def format_method(obj, name, options={})
   format = options[:format] || DEFAULT_FORMAT
   name = name.to_s.downcase
-  (0...size).map {|n| format % [obj.send(name, n)] }
-end
-
-def format_method_hash(obj, name, keys, options={})
-  format = options[:format] || DEFAULT_FORMAT
-  name = name.to_s.downcase
-  keys.inject({}) do |hsh, key|
-    hsh[key] = format % [obj.send(name, key)]
-    hsh
+  collection = protected_send(obj, name + 's')
+  new_obj = collection.class.new
+  indexes = collection.is_a?(Hash) ? collection.keys : (0...collection.size)
+  indexes.inject(new_obj) do |coll, index|
+    value = protected_send(obj, name, index)
+    coll[index] = format % [value]
+    coll
   end
 end
 
-def dump_method(obj, name, size, options={})
-  name = name.to_s.downcase
-  format_method(obj, name, size, options).each_with_index do |s, n|
-    puts "#{name}(#{n}) = #{s}"
+def format_collection_table(obj, name, options={})
+  options= options.merge(:both=>true) unless verify_collection_and_method(obj, name)
+  options = options.merge(:collection=>true) unless options[:collection] || options[:method]
+  collection = format_collection(obj, name+"s", options)
+  size = collection.size
+  indexes = collection.is_a?(Hash) ? collection.keys.sort_by{|k| k.to_s} : (0...size)
+  methods = format_method(obj, name, options)
+  table = indexes.map do |k| 
+    row = [k.inspect]
+    row << collection[k] if options[:collection] || options[:both]
+    row << methods[k]    if options[:method] || options[:both]
+    row
   end
+  key_heading = collection.is_a?(Hash) ? 'key' : 'n'
+  heading = [key_heading]
+  heading << name+"s[#{key_heading}]" if options[:collection] || options[:both]
+  heading << name+"(#{key_heading})"  if options[:method] || options[:both]
+  table.unshift(heading)
+  table.justify_rows
 end
 
-def dump_array_parameter(obj, name, options={})
-  array = format_array(obj, name+"s", options)
-  size = array.size
-  ns = (0...size).to_a
-  methods = format_method(obj, name, size, options)
-  table = ns.zip(array, methods)
-  table.unshift(["n", name+'s[n]', name+'(n)']) # Add heading
-  table = table.justify_rows
-  table.each {|row| puts row.join("  ")}
+def protected_send(obj, *args, &blk)
+  meth = args.shift
+  obj.send(meth, *args, &blk)
+rescue => e
+  raise RuntimeError, "Unable to retrieve #{meth}(#{args.map{|a| a.inspect}.join(',')}) for #{obj.inspect}: #{e}"
 end
 
-def dump_hash_parameter(obj, name, options={})
-  hash = format_hash(obj, name+"s", options)
-  size = hash.size
-  keys = hash.keys
-  methods = format_method_hash(obj, name, keys, options)
-  table = keys.sort_by{|key| key.to_s}.map {|k| [k.inspect, hash[k], methods[k]] }
-  table.unshift(["key", name+'s[key]', name+'(key)']) # Add heading
-  table = table.justify_rows
-  table.each {|row| puts row.join("  ")}
+def protected_eval(*args)
+  code = args.first
+  eval(*args)
+rescue => e
+  raise RuntimeError, "Unable to eval #{code}: #{e}"
 end
 
-def dump_slice_array_parameter(word, slice, parameter, options={})
-  size = word.send("#{slice}s_per_word")
+def verify_collection_and_method(obj, name, options={})
+  return true if format_collection(obj, name+'s', :format=>'%p') == format_method(obj, name, :format=>'%p')
+  puts "*** #{obj.inspect} #{name} collection != method results" unless options[:quiet]
+  return false
+end
+
+# Move this table stuff to a separate Gem
+def put_table(table)
+  table.each {|row| puts row.join('  ') }
+end
+
+# Splice two tables side-by-side
+def splice_table(*tables)
+  table = tables.shift
+  tables.each do |new_table|
+    table.each_with_index do |row, i|
+      table[i] = row + new_table[i]
+    end
+  end
+  table
+end
+
+def shift_table(table)
+  table.map{|row| row.shift; row}
+end
+
+def dump_collection(obj, name, options={})
+  put_table format_collection_table(obj, name, options)
+end
+
+def dump_slice_collection(word, slice, parameter, options={})
+  size = protected_send(word, "#{slice}s_per_word")
   puts "#{slice}s_per_word = #{size.inspect}"
   name = [slice, parameter].join('_')
-  dump_array_parameter(word, name, options)
+  dump_collection(word, name, options)
 end
 
 def dump_value(expression, options={})
@@ -111,11 +130,7 @@ def dump_value(expression, options={})
   format = options[:format] || '%p'
   STDOUT.flush
   STDERR.flush
-  val = begin
-    eval(expression, binding)
-  rescue => e
-    raise RuntimeError, "dump_value failed: #{e}"
-  end
+  val = protected_eval(expression, binding)
   puts "#{expression} => #{format % [val]}"
 end
 
@@ -142,7 +157,8 @@ def get_slice_class_parameter(slice, parameter, options={})
     slice_class_parameter = parameter
   end
   format = options[:format] || '%p'
-  [Gecos::Word.send(word_class_parameter), eval(klass_name).send(slice_class_parameter)].map{|e| format % [e]}
+  klass = protected_eval(klass_name)
+  [protected_send(Gecos::Word, word_class_parameter), protected_send(klass, slice_class_parameter)].map{|e| format % [e]}
 end
 
 def class_name(slice)
@@ -162,52 +178,94 @@ def dump_slice_class_parameters(slice, parameter_list, options={})
   end
   puts klass_name + ":"
   table.unshift ["Parameter", "Gecos::Word", klass_name]
-  table.justify_rows.each do |row|
-    puts row.join('  ')
-  end
+  table = table.justify_rows
+  put_table table
 end
 
-def dump_class_array_parameter(name, options={})
+def format_class_collection(name, options={})
+  format_collection_table(Gecos::Word, name, options)
+end
+
+def dump_class_collection(name, options={})
   puts "Gecos::Word.#{name}:"
-  dump_array_parameter(Gecos::Word, name, options)
+  table = format_class_collection(name, options)
+  put_table table
 end
 
-def dump_slice_class_array_parameter(slice, name, options={})
+def format_slice_class_collection(slice, name, options={})
   klass_name = class_name(slice)
-  klass = eval(klass_name)
-  dump_array_parameter(klass, name, options)
+  klass = protected_eval(klass_name)
+  format_collection_table(klass, name, options)
 end
 
-def dump_slice_class_hash_parameter(slice, name, options={})
+def dump_slice_class_collection(slice, name, options={})
+  put_table format_slice_class_collection(slice, name, options)
+end
+
+def dump_word_slice(word, slice, options={})
+  binding = options[:binding] || binding
   klass_name = class_name(slice)
-  klass = eval(klass_name)
-  dump_hash_parameter(klass, name, options)
+  has_string = protected_eval("#{klass_name}.string?")
+  dump_value "#{word}.#{slice}s", :binding=>binding
+  collection = protected_eval("#{word}.#{slice}s", binding)
+  dump_value "#{word}.#{slice}s.merge", :binding=>binding if has_string
+  table = []
+  formats = protected_eval("#{klass_name}.format_types")
+  heading = ["n", "value"] + formats.map{|f| f.inspect }
+  heading << "string" if has_string
+  table << heading
+  collection.each_with_index do |byte, n|
+    value = protected_eval("#{word}.#{slice}(#{n}).value", binding)
+    row = [n, WORD_FORMAT % [value]]
+    row += formats.map do |format|
+      protected_eval("#{word}.#{slice}(#{n}).format(#{format.inspect})", binding)
+    end
+    row << protected_eval("#{word}.#{slice}(#{n}).string.inspect", binding) if has_string
+    table << row
+  end
+  table = table.justify_rows
+  table.each {|row| puts row.join('  ')}
 end
 
 dump_value "Gecos::Word.size"
 dump_value "Gecos::Word.all_ones", :format=>WORD_FORMAT
-dump_class_array_parameter "single_bit_mask",    :format=>WORD_FORMAT
-dump_class_array_parameter "preceding_bit_mask", :format=>WORD_FORMAT
-dump_class_array_parameter "following_bit_mask", :format=>WORD_FORMAT
-dump_class_array_parameter "n_bit_mask",         :format=>WORD_FORMAT
-dump_class_array_parameter "lower_bit_mask",     :format=>WORD_FORMAT
-dump_class_array_parameter "upper_bit_mask",     :format=>WORD_FORMAT
+puts "Gecos::Word:"
+single_bit_mask_table    = format_class_collection "single_bit_mask",    :collection=>true, :format=>WORD_FORMAT
+preceding_bit_mask_table = format_class_collection "preceding_bit_mask", :collection=>true, :format=>WORD_FORMAT
+following_bit_mask_table = format_class_collection "following_bit_mask", :collection=>true, :format=>WORD_FORMAT
+n_bit_mask_table         = format_class_collection "n_bit_mask",         :collection=>true, :format=>WORD_FORMAT
+lower_bit_mask_table     = format_class_collection "lower_bit_mask",     :collection=>true, :format=>WORD_FORMAT
+upper_bit_mask_table     = format_class_collection "upper_bit_mask",     :collection=>true, :format=>WORD_FORMAT
+put_table splice_table(single_bit_mask_table, 
+  shift_table(preceding_bit_mask_table), 
+  shift_table(following_bit_mask_table), 
+  shift_table(n_bit_mask_table),
+  shift_table(lower_bit_mask_table),
+  shift_table(upper_bit_mask_table)
+)
 puts
 
-%w{half_word byte character packed_character}.each do |slice|
-  dump_slice_class_parameters slice, %w{size offset (s_)per_word clipping_mask(0%3o)}
-  dump_slice_class_array_parameter slice, "start_bit"
-  dump_slice_class_array_parameter slice, "end_bit"
-  dump_slice_class_array_parameter slice, "shift"
-  dump_slice_class_array_parameter slice, "mask", :format=>WORD_FORMAT
-  dump_slice_class_hash_parameter slice, "format_string"
+Gecos::Word.slice_names.each do |slice|
+  dump_slice_class_parameters slice, %w{size offset (s_)per_word significant_bits clipping_mask(%#012o) string?(%p)}
+  puts
+  
+  start_bit_table  = format_slice_class_collection slice, "start_bit"
+  end_bit_table    = format_slice_class_collection slice, "end_bit"
+  shift_bits_table = format_slice_class_collection slice, "shift"
+  mask_table       = format_slice_class_collection slice, "mask", :format=>WORD_FORMAT
+  put_table splice_table(start_bit_table, shift_table(end_bit_table), shift_table(shift_bits_table), shift_table(mask_table))
+  puts
+  
+  format_type_table = format_slice_class_collection slice, "format_type"
+  format_string_table = format_slice_class_collection slice, "format_string"
+  format_width_table  = format_slice_class_collection slice, "format_width"
+  put_table splice_table(format_type_table, format_string_table, shift_table(format_width_table))
   puts
 end
 
-bytes = Gecos::Word.new(0111222333444)
-dump_value "bytes.value", :binding=>binding, :format=>WORD_FORMAT
-puts "bytes.bytes is a #{bytes.bytes.class}"
-dump_value "bytes.bytes", :binding=>binding
-bytes.bytes.each_with_index do |byte, n|
-  dump_value "bytes.byte(#{n}).value", :binding=>binding, :format=>WORD_FORMAT
+$bytes = Gecos::Word.new(0111222333444)
+dump_value "$bytes.value", :format=>WORD_FORMAT
+Gecos::Word.slice_names.each do |slice|
+  dump_word_slice "$bytes", slice
+  puts
 end
