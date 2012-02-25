@@ -1,7 +1,7 @@
 require 'gecos/machine_word'
 
 class Gecos
-  class Word < MachineWord
+  class Word < Machine::Word
     define_size 36
     # Define signed integer (useful for time values)
     define_slice :half_word, :size=>18

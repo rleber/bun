@@ -78,14 +78,14 @@ def protected_send(obj, *args, &blk)
   meth = args.shift
   obj.send(meth, *args, &blk)
 rescue => e
-  raise RuntimeError, "Unable to retrieve #{meth}(#{args.map{|a| a.inspect}.join(',')}) for #{obj.inspect}: #{e}"
+  raise RuntimeError, "Unable to retrieve #{meth}(#{args.map{|a| a.inspect}.join(',')}) for #{obj.inspect}: #{e}\n#{e.backtrace.join("\n")}"
 end
 
 def protected_eval(*args)
   code = args.first
   eval(*args)
 rescue => e
-  raise RuntimeError, "Unable to eval #{code}: #{e}"
+  raise RuntimeError, "Unable to eval #{code}: #{e}\n#{e.backtrace.join("\n")}"
 end
 
 def verify_collection_and_method(obj, name, options={})
@@ -264,8 +264,18 @@ Gecos::Word.slice_names.each do |slice|
 end
 
 $bytes = Gecos::Word.new(0111222333444)
+
 dump_value "$bytes.value", :format=>WORD_FORMAT
 Gecos::Word.slice_names.each do |slice|
   dump_word_slice "$bytes", slice
   puts
 end
+
+# Does arithmetic work?
+dump_value "$bytes-5", :format=>WORD_FORMAT
+dump_value "3+$bytes", :format=>WORD_FORMAT
+
+# Does string manipulation work?
+dump_value "'First character: '+($bytes.character(0))"
+dump_value "$bytes.character(0)+': is here'"
+dump_value "$bytes.character(0).add(2)"
