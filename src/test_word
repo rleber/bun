@@ -14,7 +14,7 @@ class Array
     end
     justified = []
     self.each_with_index do |column, column_number|
-      justified << column.map{|entry| "%-#{widths[column_number]}s" % entry }
+      justified << column.map{|entry| "%-#{widths[column_number]}s" % [entry] }
     end
     justified
   end
@@ -29,18 +29,21 @@ WORD_FORMAT = '%012o'
 DEFAULT_FORMAT = '%p'
 
 def format_array(obj, name, options={})
-  format = options[:format] || DEFAULT_FORMAT
-  name = name.to_s.downcase
-  array = obj.send(name)
-  (0...array.size).map {|n| format % (array[n]) }
+  format_hash(obj, name, options)
+  # format = options[:format] || DEFAULT_FORMAT
+  # name = name.to_s.downcase
+  # array = obj.send(name)
+  # (0...array.size).map {|n| format % (array[n]) }
 end
 
 def format_hash(obj, name, options={})
   format = options[:format] || DEFAULT_FORMAT
   name = name.to_s.downcase
   hash = obj.send(name)
-  hash.keys.inject({}) do |hsh, key|
-    hsh[key] = format % hash[key]
+  new_obj = hash.class.new
+  indexes = hash.is_a?(Hash) ? hash.keys : (0...hash.size)
+  indexes.inject(new_obj) do |hsh, key|
+    hsh[key] = format % [hash[key]]
     hsh
   end
 end
@@ -55,14 +58,14 @@ end
 def format_method(obj, name, size, options={})
   format = options[:format] || DEFAULT_FORMAT
   name = name.to_s.downcase
-  (0...size).map {|n| format % (obj.send(name, n)) }
+  (0...size).map {|n| format % [obj.send(name, n)] }
 end
 
 def format_method_hash(obj, name, keys, options={})
   format = options[:format] || DEFAULT_FORMAT
   name = name.to_s.downcase
   keys.inject({}) do |hsh, key|
-    hsh[key] = format % (obj.send(name, key))
+    hsh[key] = format % [obj.send(name, key)]
     hsh
   end
 end
@@ -113,7 +116,7 @@ def dump_value(expression, options={})
   rescue => e
     raise RuntimeError, "dump_value failed: #{e}"
   end
-  puts "#{expression} => #{format % val}"
+  puts "#{expression} => #{format % [val]}"
 end
 
 def dump_slice_parameter(word, slice, parameter)
@@ -139,7 +142,7 @@ def get_slice_class_parameter(slice, parameter, options={})
     slice_class_parameter = parameter
   end
   format = options[:format] || '%p'
-  [Gecos::Word.send(word_class_parameter), eval(klass_name).send(slice_class_parameter)].map{|e| format % e}
+  [Gecos::Word.send(word_class_parameter), eval(klass_name).send(slice_class_parameter)].map{|e| format % [e]}
 end
 
 def class_name(slice)
@@ -203,6 +206,7 @@ end
 
 bytes = Gecos::Word.new(0111222333444)
 dump_value "bytes.value", :binding=>binding, :format=>WORD_FORMAT
+puts "bytes.bytes is a #{bytes.bytes.class}"
 dump_value "bytes.bytes", :binding=>binding
 bytes.bytes.each_with_index do |byte, n|
   dump_value "bytes.byte(#{n}).value", :binding=>binding, :format=>WORD_FORMAT

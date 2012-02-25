@@ -25,7 +25,7 @@ class Class
     value
   end
   
-  def define_array_parameter(name, value=nil, &blk)
+  def define_collection(name, value=nil, &blk)
     name = name.to_s.downcase
     value = define_parameter(name+"s", value, &blk)
     define_method name do |n|
@@ -34,10 +34,6 @@ class Class
     singleton_class.instance_eval do
       define_method(name.to_s.downcase) {|n| self.send(name+"s")[n] }
     end
-  end
-  
-  def define_hash_parameter(name, value=nil, &blk)
-    define_array_parameter(name, value, &blk)
   end
   
   def define_class(name)
@@ -62,15 +58,17 @@ class MachineWord < GenericNumeric
   
   FORMAT_WIDTH_WILDCARD = /<width>/
   define_parameter :formats, {
-    :binary=>  "%0<width>#b", 
-    :octal=>   "%0<width>#o", 
+    :binary=>  "%0#<width>b", 
+    :octal=>   "%0#<width>o", 
     :decimal=> "%<width>d",
-    :hex=>     "%0<width>#x",
+    :hex=>     "%0#<width>x",
   }
   
   def self.define_size(word_size)
     ones = eval('0b' + ('1'*word_size))
-    single_bit_masks    = (0...word_size).map {|n| 1<<n }.reverse
+    # Has an extra entry, for consistency with other collections
+    single_bit_masks    = (0..word_size).map {|n| 1<<n }.reverse
+    # Note that the following collections all have one extra entry
     preceding_bit_masks = (0..word_size).map {|n| ones>>n }
     following_bit_masks = (0..word_size).map {|n| ones & (ones << n) }
     lower_bit_masks     = preceding_bit_masks.reverse
@@ -80,12 +78,12 @@ class MachineWord < GenericNumeric
     define_parameter :size, word_size
     define_parameter :all_ones, ones
     
-    define_array_parameter :single_bit_mask,    single_bit_masks
-    define_array_parameter :preceding_bit_mask, preceding_bit_masks
-    define_array_parameter :following_bit_mask, following_bit_masks
-    define_array_parameter :n_bit_mask,         n_bit_masks
-    define_array_parameter :lower_bit_mask,     lower_bit_masks
-    define_array_parameter :upper_bit_mask,     upper_bit_masks
+    define_collection :single_bit_mask,    single_bit_masks
+    define_collection :preceding_bit_mask, preceding_bit_masks
+    define_collection :following_bit_mask, following_bit_masks
+    define_collection :n_bit_mask,         n_bit_masks
+    define_collection :lower_bit_mask,     lower_bit_masks
+    define_collection :upper_bit_mask,     upper_bit_masks
   end
   
   def self.bit_mask(from, to)
@@ -112,6 +110,10 @@ class MachineWord < GenericNumeric
     (size - offset).div(slice_size)
   end
   
+  # TODO Define :sign option: :none, :ones_complement, :twos_complement
+  # TODO Define fields (i.e. non-repeating parts of a word)
+  # TODO Define structures (i.e. a sequence of fields -- possibly multiword?)
+  # TODO Define bit and byte order (i.e. LR, RL)
   def self.define_slice(slice_name, options={})
     slice_name = slice_name.to_s.downcase
     slice_size = options[:size]
@@ -119,9 +121,6 @@ class MachineWord < GenericNumeric
     bits = options[:bits] || slice_size
     clipping_mask = options[:mask] || n_bit_masks[bits]
     default_format = options[:format] || :octal
-    # TODO Define :sign option: :none, :ones_complement, :twos_complement
-    # TODO Define fields (i.e. non-repeating parts of a word)
-    # TODO Define structures (i.e. a sequence of fields -- possibly multiword?)
     
     class_name = slice_name.gsub(/(^|_)(.)/) {|match| $2.upcase}
     slice_class = Class.new(GenericNumeric)
@@ -147,26 +146,26 @@ class MachineWord < GenericNumeric
     slice_class.define_parameter "per_word",          per_word
     slice_class.define_parameter "clipping_mask",     clipping_mask
     
-    define_array_parameter "#{slice_name}_end_bit",   end_bits
-    define_array_parameter "#{slice_name}_start_bit", start_bits
-    define_array_parameter "#{slice_name}_shift",     shifts
-    define_array_parameter "#{slice_name}_mask",      masks
+    define_collection "#{slice_name}_end_bit",   end_bits
+    define_collection "#{slice_name}_start_bit", start_bits
+    define_collection "#{slice_name}_shift",     shifts
+    define_collection "#{slice_name}_mask",      masks
 
-    slice_class.define_array_parameter "end_bit",     end_bits
-    slice_class.define_array_parameter "start_bit",   start_bits
-    slice_class.define_array_parameter "shift",       shifts
-    slice_class.define_array_parameter "mask",        masks
+    slice_class.define_collection "end_bit",     end_bits
+    slice_class.define_collection "start_bit",   start_bits
+    slice_class.define_collection "shift",       shifts
+    slice_class.define_collection "mask",        masks
     
     slice_formats = formats.dup
     slice_formats.each do |format, definition|
       sample_definition = definition.gsub(FORMAT_WIDTH_WILDCARD, '')
-      sample_text = sample_definition % n_bit_masks[bits]
+      sample_text = sample_definition % [n_bit_masks[bits]]
       width = sample_text.size
       definition = definition.gsub(FORMAT_WIDTH_WILDCARD, width.to_s)
       slice_formats[format] = definition
       slice_class.define_parameter "#{format}_format_string", definition
       slice_class.send(:define_method, format.to_s) do
-        definition % self
+        definition % [self.value]
       end
     end
     slice_formats[:default] = slice_formats[default_format]
@@ -176,14 +175,17 @@ class MachineWord < GenericNumeric
     else
       slice_formats[:inspect] = slice_formats[:default]
     end
-    slice_class.define_hash_parameter "format_string", slice_formats
+    slice_class.define_collection "format_string", slice_formats
     
     slice_class.send(:define_method, :format) do |*args|
-      (args[0] || slice_formats[:default]) % self
+      format = args[0] || :default
+      format = slice_formats[format] if format.is_a?(Symbol)
+      values = [self.value] * (format.gsub(/[^%]/,'').size)
+      format % values
     end
     
     slice_class.send(:define_method, :inspect) do
-      slice_formats[:inspect] % self
+      format(:inspect)
     end
     
     unshifted_method_name = "unshifted_#{slice_name}"
@@ -222,8 +224,14 @@ class MachineWord < GenericNumeric
     value & bit_mask(from, to)
   end
   
+  # TODO Allow negative indexing
+  # TODO Consider a change which would permit indexing a la Array[]
   def bits(from, to)
     unshifted_bits(from, to) >> (size - to)
+  end
+  
+  def bit(at)
+    bits(at, at)
   end
   
   def slice(n, size, offset=0)
