@@ -1,0 +1,858 @@
+Dynamically defining instance method Machine::Word#formats
+Dynamically defining instance method #formats
+Dynamically defining instance method Gecos::Word#size
+Dynamically defining instance method #size
+Dynamically defining instance method Gecos::Word#all_ones
+Dynamically defining instance method #all_ones
+Dynamically defining instance method Gecos::Word#single_bit_masks
+Dynamically defining instance method #single_bit_masks
+Dynamically defining instance method Gecos::Word#single_bit_mask
+Dynamically defining instance method #single_bit_mask
+Dynamically defining instance method Gecos::Word#preceding_bit_masks
+Dynamically defining instance method #preceding_bit_masks
+Dynamically defining instance method Gecos::Word#preceding_bit_mask
+Dynamically defining instance method #preceding_bit_mask
+Dynamically defining instance method Gecos::Word#following_bit_masks
+Dynamically defining instance method #following_bit_masks
+Dynamically defining instance method Gecos::Word#following_bit_mask
+Dynamically defining instance method #following_bit_mask
+Dynamically defining instance method Gecos::Word#n_bit_masks
+Dynamically defining instance method #n_bit_masks
+Dynamically defining instance method Gecos::Word#n_bit_mask
+Dynamically defining instance method #n_bit_mask
+Dynamically defining instance method Gecos::Word#lower_bit_masks
+Dynamically defining instance method #lower_bit_masks
+Dynamically defining instance method Gecos::Word#lower_bit_mask
+Dynamically defining instance method #lower_bit_mask
+Dynamically defining instance method Gecos::Word#upper_bit_masks
+Dynamically defining instance method #upper_bit_masks
+Dynamically defining instance method Gecos::Word#upper_bit_mask
+Dynamically defining instance method #upper_bit_mask
+n=0, slice_size=36, slice_offset=0
+start=0
+end=35
+mask=777777777777 (slice_mask)
+mask=777777777777
+masks defined
+Dynamically defining instance method Gecos::Word#word_size
+Dynamically defining instance method #word_size
+Dynamically defining instance method Gecos::Word#word_offset
+Dynamically defining instance method #word_offset
+Dynamically defining instance method Gecos::Word#words_per_word
+Dynamically defining instance method #words_per_word
+Dynamically defining instance method Gecos::Word#word_significant_bits
+Dynamically defining instance method #word_significant_bits
+Dynamically defining instance method Gecos::Word#word_string?
+Dynamically defining instance method #word_string?
+Dynamically defining instance method Gecos::Word#word_clipping_mask
+Dynamically defining instance method #word_clipping_mask
+Dynamically defining instance method Gecos::Word::Word#size
+Dynamically defining instance method #size
+Dynamically defining instance method Gecos::Word::Word#offset
+Dynamically defining instance method #offset
+Dynamically defining instance method Gecos::Word::Word#per_word
+Dynamically defining instance method #per_word
+Dynamically defining instance method Gecos::Word::Word#significant_bits
+Dynamically defining instance method #significant_bits
+Dynamically defining instance method Gecos::Word::Word#string?
+Dynamically defining instance method #string?
+Dynamically defining instance method Gecos::Word::Word#clipping_mask
+Dynamically defining instance method #clipping_mask
+Dynamically defining instance method Gecos::Word#word_end_bits
+Dynamically defining instance method #word_end_bits
+Dynamically defining instance method Gecos::Word#word_end_bit
+Dynamically defining instance method #word_end_bit
+Dynamically defining instance method Gecos::Word#word_start_bits
+Dynamically defining instance method #word_start_bits
+Dynamically defining instance method Gecos::Word#word_start_bit
+Dynamically defining instance method #word_start_bit
+Dynamically defining instance method Gecos::Word#word_shifts
+Dynamically defining instance method #word_shifts
+Dynamically defining instance method Gecos::Word#word_shift
+Dynamically defining instance method #word_shift
+Dynamically defining instance method Gecos::Word#word_masks
+Dynamically defining instance method #word_masks
+Dynamically defining instance method Gecos::Word#word_mask
+Dynamically defining instance method #word_mask
+Dynamically defining instance method Gecos::Word::Word#end_bits
+Dynamically defining instance method #end_bits
+Dynamically defining instance method Gecos::Word::Word#end_bit
+Dynamically defining instance method #end_bit
+Dynamically defining instance method Gecos::Word::Word#start_bits
+Dynamically defining instance method #start_bits
+Dynamically defining instance method Gecos::Word::Word#start_bit
+Dynamically defining instance method #start_bit
+Dynamically defining instance method Gecos::Word::Word#shifts
+Dynamically defining instance method #shifts
+Dynamically defining instance method Gecos::Word::Word#shift
+Dynamically defining instance method #shift
+Dynamically defining instance method Gecos::Word::Word#masks
+Dynamically defining instance method #masks
+Dynamically defining instance method Gecos::Word::Word#mask
+Dynamically defining instance method #mask
+Dynamically defining instance method Gecos::Word::Word#decimal_format_string
+Dynamically defining instance method #decimal_format_string
+Dynamically defining instance method Gecos::Word::Word#decimal
+Dynamically defining instance method Gecos::Word::Word#hex_format_string
+Dynamically defining instance method #hex_format_string
+Dynamically defining instance method Gecos::Word::Word#hex
+Dynamically defining instance method Gecos::Word::Word#binary_format_string
+Dynamically defining instance method #binary_format_string
+Dynamically defining instance method Gecos::Word::Word#binary
+Dynamically defining instance method Gecos::Word::Word#octal_format_string
+Dynamically defining instance method #octal_format_string
+Dynamically defining instance method Gecos::Word::Word#octal
+Dynamically defining instance method Gecos::Word::Word#format_definitions
+Dynamically defining instance method #format_definitions
+Dynamically defining instance method Gecos::Word::Word#format_definition
+Dynamically defining instance method #format_definition
+Dynamically defining instance method Gecos::Word::Word#format_strings
+Dynamically defining instance method #format_strings
+Dynamically defining instance method Gecos::Word::Word#format_string
+Dynamically defining instance method #format_string
+Dynamically defining instance method Gecos::Word::Word#format_widths
+Dynamically defining instance method #format_widths
+Dynamically defining instance method Gecos::Word::Word#format_width
+Dynamically defining instance method #format_width
+Dynamically defining instance method Gecos::Word::Word#format_types
+Dynamically defining instance method #format_types
+Dynamically defining instance method Gecos::Word::Word#format_type
+Dynamically defining instance method #format_type
+Dynamically defining instance method Gecos::Word::Word#format
+Dynamically defining instance method Gecos::Word::Word#inspect
+Dynamically defining instance method Gecos::Word#unshifted_word
+Dynamically defining instance method Gecos::Word#word
+Dynamically defining instance method Gecos::Word#words
+n=0, slice_size=18, slice_offset=0
+start=0
+end=17
+mask=777777000000 (slice_mask)
+mask=777777000000
+n=1, slice_size=18, slice_offset=0
+start=18
+end=35
+mask=000000777777 (slice_mask)
+mask=000000777777
+masks defined
+Dynamically defining instance method Gecos::Word#half_word_size
+Dynamically defining instance method #half_word_size
+Dynamically defining instance method Gecos::Word#half_word_offset
+Dynamically defining instance method #half_word_offset
+Dynamically defining instance method Gecos::Word#half_words_per_word
+Dynamically defining instance method #half_words_per_word
+Dynamically defining instance method Gecos::Word#half_word_significant_bits
+Dynamically defining instance method #half_word_significant_bits
+Dynamically defining instance method Gecos::Word#half_word_string?
+Dynamically defining instance method #half_word_string?
+Dynamically defining instance method Gecos::Word#half_word_clipping_mask
+Dynamically defining instance method #half_word_clipping_mask
+Dynamically defining instance method Gecos::Word::HalfWord#size
+Dynamically defining instance method #size
+Dynamically defining instance method Gecos::Word::HalfWord#offset
+Dynamically defining instance method #offset
+Dynamically defining instance method Gecos::Word::HalfWord#per_word
+Dynamically defining instance method #per_word
+Dynamically defining instance method Gecos::Word::HalfWord#significant_bits
+Dynamically defining instance method #significant_bits
+Dynamically defining instance method Gecos::Word::HalfWord#string?
+Dynamically defining instance method #string?
+Dynamically defining instance method Gecos::Word::HalfWord#clipping_mask
+Dynamically defining instance method #clipping_mask
+Dynamically defining instance method Gecos::Word#half_word_end_bits
+Dynamically defining instance method #half_word_end_bits
+Dynamically defining instance method Gecos::Word#half_word_end_bit
+Dynamically defining instance method #half_word_end_bit
+Dynamically defining instance method Gecos::Word#half_word_start_bits
+Dynamically defining instance method #half_word_start_bits
+Dynamically defining instance method Gecos::Word#half_word_start_bit
+Dynamically defining instance method #half_word_start_bit
+Dynamically defining instance method Gecos::Word#half_word_shifts
+Dynamically defining instance method #half_word_shifts
+Dynamically defining instance method Gecos::Word#half_word_shift
+Dynamically defining instance method #half_word_shift
+Dynamically defining instance method Gecos::Word#half_word_masks
+Dynamically defining instance method #half_word_masks
+Dynamically defining instance method Gecos::Word#half_word_mask
+Dynamically defining instance method #half_word_mask
+Dynamically defining instance method Gecos::Word::HalfWord#end_bits
+Dynamically defining instance method #end_bits
+Dynamically defining instance method Gecos::Word::HalfWord#end_bit
+Dynamically defining instance method #end_bit
+Dynamically defining instance method Gecos::Word::HalfWord#start_bits
+Dynamically defining instance method #start_bits
+Dynamically defining instance method Gecos::Word::HalfWord#start_bit
+Dynamically defining instance method #start_bit
+Dynamically defining instance method Gecos::Word::HalfWord#shifts
+Dynamically defining instance method #shifts
+Dynamically defining instance method Gecos::Word::HalfWord#shift
+Dynamically defining instance method #shift
+Dynamically defining instance method Gecos::Word::HalfWord#masks
+Dynamically defining instance method #masks
+Dynamically defining instance method Gecos::Word::HalfWord#mask
+Dynamically defining instance method #mask
+Dynamically defining instance method Gecos::Word::HalfWord#decimal_format_string
+Dynamically defining instance method #decimal_format_string
+Dynamically defining instance method Gecos::Word::HalfWord#decimal
+Dynamically defining instance method Gecos::Word::HalfWord#hex_format_string
+Dynamically defining instance method #hex_format_string
+Dynamically defining instance method Gecos::Word::HalfWord#hex
+Dynamically defining instance method Gecos::Word::HalfWord#binary_format_string
+Dynamically defining instance method #binary_format_string
+Dynamically defining instance method Gecos::Word::HalfWord#binary
+Dynamically defining instance method Gecos::Word::HalfWord#octal_format_string
+Dynamically defining instance method #octal_format_string
+Dynamically defining instance method Gecos::Word::HalfWord#octal
+Dynamically defining instance method Gecos::Word::HalfWord#format_definitions
+Dynamically defining instance method #format_definitions
+Dynamically defining instance method Gecos::Word::HalfWord#format_definition
+Dynamically defining instance method #format_definition
+Dynamically defining instance method Gecos::Word::HalfWord#format_strings
+Dynamically defining instance method #format_strings
+Dynamically defining instance method Gecos::Word::HalfWord#format_string
+Dynamically defining instance method #format_string
+Dynamically defining instance method Gecos::Word::HalfWord#format_widths
+Dynamically defining instance method #format_widths
+Dynamically defining instance method Gecos::Word::HalfWord#format_width
+Dynamically defining instance method #format_width
+Dynamically defining instance method Gecos::Word::HalfWord#format_types
+Dynamically defining instance method #format_types
+Dynamically defining instance method Gecos::Word::HalfWord#format_type
+Dynamically defining instance method #format_type
+Dynamically defining instance method Gecos::Word::HalfWord#format
+Dynamically defining instance method Gecos::Word::HalfWord#inspect
+Dynamically defining instance method Gecos::Word#unshifted_half_word
+Dynamically defining instance method Gecos::Word#half_word
+Dynamically defining instance method Gecos::Word#half_words
+n=0, slice_size=9, slice_offset=0
+start=0
+end=8
+mask=777000000000 (slice_mask)
+mask=777000000000
+n=1, slice_size=9, slice_offset=0
+start=9
+end=17
+mask=000777000000 (slice_mask)
+mask=000777000000
+n=2, slice_size=9, slice_offset=0
+start=18
+end=26
+mask=000000777000 (slice_mask)
+mask=000000777000
+n=3, slice_size=9, slice_offset=0
+start=27
+end=35
+mask=000000000777 (slice_mask)
+mask=000000000777
+masks defined
+Dynamically defining instance method Gecos::Word#byte_size
+Dynamically defining instance method #byte_size
+Dynamically defining instance method Gecos::Word#byte_offset
+Dynamically defining instance method #byte_offset
+Dynamically defining instance method Gecos::Word#bytes_per_word
+Dynamically defining instance method #bytes_per_word
+Dynamically defining instance method Gecos::Word#byte_significant_bits
+Dynamically defining instance method #byte_significant_bits
+Dynamically defining instance method Gecos::Word#byte_string?
+Dynamically defining instance method #byte_string?
+Dynamically defining instance method Gecos::Word#byte_clipping_mask
+Dynamically defining instance method #byte_clipping_mask
+Dynamically defining instance method Gecos::Word::Byte#size
+Dynamically defining instance method #size
+Dynamically defining instance method Gecos::Word::Byte#offset
+Dynamically defining instance method #offset
+Dynamically defining instance method Gecos::Word::Byte#per_word
+Dynamically defining instance method #per_word
+Dynamically defining instance method Gecos::Word::Byte#significant_bits
+Dynamically defining instance method #significant_bits
+Dynamically defining instance method Gecos::Word::Byte#string?
+Dynamically defining instance method #string?
+Dynamically defining instance method Gecos::Word::Byte#clipping_mask
+Dynamically defining instance method #clipping_mask
+Dynamically defining instance method Gecos::Word#byte_end_bits
+Dynamically defining instance method #byte_end_bits
+Dynamically defining instance method Gecos::Word#byte_end_bit
+Dynamically defining instance method #byte_end_bit
+Dynamically defining instance method Gecos::Word#byte_start_bits
+Dynamically defining instance method #byte_start_bits
+Dynamically defining instance method Gecos::Word#byte_start_bit
+Dynamically defining instance method #byte_start_bit
+Dynamically defining instance method Gecos::Word#byte_shifts
+Dynamically defining instance method #byte_shifts
+Dynamically defining instance method Gecos::Word#byte_shift
+Dynamically defining instance method #byte_shift
+Dynamically defining instance method Gecos::Word#byte_masks
+Dynamically defining instance method #byte_masks
+Dynamically defining instance method Gecos::Word#byte_mask
+Dynamically defining instance method #byte_mask
+Dynamically defining instance method Gecos::Word::Byte#end_bits
+Dynamically defining instance method #end_bits
+Dynamically defining instance method Gecos::Word::Byte#end_bit
+Dynamically defining instance method #end_bit
+Dynamically defining instance method Gecos::Word::Byte#start_bits
+Dynamically defining instance method #start_bits
+Dynamically defining instance method Gecos::Word::Byte#start_bit
+Dynamically defining instance method #start_bit
+Dynamically defining instance method Gecos::Word::Byte#shifts
+Dynamically defining instance method #shifts
+Dynamically defining instance method Gecos::Word::Byte#shift
+Dynamically defining instance method #shift
+Dynamically defining instance method Gecos::Word::Byte#masks
+Dynamically defining instance method #masks
+Dynamically defining instance method Gecos::Word::Byte#mask
+Dynamically defining instance method #mask
+Dynamically defining instance method Gecos::Word::Byte#decimal_format_string
+Dynamically defining instance method #decimal_format_string
+Dynamically defining instance method Gecos::Word::Byte#decimal
+Dynamically defining instance method Gecos::Word::Byte#hex_format_string
+Dynamically defining instance method #hex_format_string
+Dynamically defining instance method Gecos::Word::Byte#hex
+Dynamically defining instance method Gecos::Word::Byte#binary_format_string
+Dynamically defining instance method #binary_format_string
+Dynamically defining instance method Gecos::Word::Byte#binary
+Dynamically defining instance method Gecos::Word::Byte#octal_format_string
+Dynamically defining instance method #octal_format_string
+Dynamically defining instance method Gecos::Word::Byte#octal
+Dynamically defining instance method Gecos::Word::Byte#format_definitions
+Dynamically defining instance method #format_definitions
+Dynamically defining instance method Gecos::Word::Byte#format_definition
+Dynamically defining instance method #format_definition
+Dynamically defining instance method Gecos::Word::Byte#format_strings
+Dynamically defining instance method #format_strings
+Dynamically defining instance method Gecos::Word::Byte#format_string
+Dynamically defining instance method #format_string
+Dynamically defining instance method Gecos::Word::Byte#format_widths
+Dynamically defining instance method #format_widths
+Dynamically defining instance method Gecos::Word::Byte#format_width
+Dynamically defining instance method #format_width
+Dynamically defining instance method Gecos::Word::Byte#format_types
+Dynamically defining instance method #format_types
+Dynamically defining instance method Gecos::Word::Byte#format_type
+Dynamically defining instance method #format_type
+Dynamically defining instance method Gecos::Word::Byte#format
+Dynamically defining instance method Gecos::Word::Byte#inspect
+Dynamically defining instance method Gecos::Word#unshifted_byte
+Dynamically defining instance method Gecos::Word#byte
+Dynamically defining instance method Gecos::Word#bytes
+n=0, slice_size=9, slice_offset=0
+start=0
+end=8
+mask=777000000000 (slice_mask)
+mask=777000000000
+n=1, slice_size=9, slice_offset=0
+start=9
+end=17
+mask=000777000000 (slice_mask)
+mask=000777000000
+n=2, slice_size=9, slice_offset=0
+start=18
+end=26
+mask=000000777000 (slice_mask)
+mask=000000777000
+n=3, slice_size=9, slice_offset=0
+start=27
+end=35
+mask=000000000777 (slice_mask)
+mask=000000000777
+masks defined
+Dynamically defining instance method Gecos::Word#character_size
+Dynamically defining instance method #character_size
+Dynamically defining instance method Gecos::Word#character_offset
+Dynamically defining instance method #character_offset
+Dynamically defining instance method Gecos::Word#characters_per_word
+Dynamically defining instance method #characters_per_word
+Dynamically defining instance method Gecos::Word#character_significant_bits
+Dynamically defining instance method #character_significant_bits
+Dynamically defining instance method Gecos::Word#character_string?
+Dynamically defining instance method #character_string?
+Dynamically defining instance method Gecos::Word#character_clipping_mask
+Dynamically defining instance method #character_clipping_mask
+Dynamically defining instance method Gecos::Word::Character#size
+Dynamically defining instance method #size
+Dynamically defining instance method Gecos::Word::Character#offset
+Dynamically defining instance method #offset
+Dynamically defining instance method Gecos::Word::Character#per_word
+Dynamically defining instance method #per_word
+Dynamically defining instance method Gecos::Word::Character#significant_bits
+Dynamically defining instance method #significant_bits
+Dynamically defining instance method Gecos::Word::Character#string?
+Dynamically defining instance method #string?
+Dynamically defining instance method Gecos::Word::Character#clipping_mask
+Dynamically defining instance method #clipping_mask
+Dynamically defining instance method Gecos::Word#character_end_bits
+Dynamically defining instance method #character_end_bits
+Dynamically defining instance method Gecos::Word#character_end_bit
+Dynamically defining instance method #character_end_bit
+Dynamically defining instance method Gecos::Word#character_start_bits
+Dynamically defining instance method #character_start_bits
+Dynamically defining instance method Gecos::Word#character_start_bit
+Dynamically defining instance method #character_start_bit
+Dynamically defining instance method Gecos::Word#character_shifts
+Dynamically defining instance method #character_shifts
+Dynamically defining instance method Gecos::Word#character_shift
+Dynamically defining instance method #character_shift
+Dynamically defining instance method Gecos::Word#character_masks
+Dynamically defining instance method #character_masks
+Dynamically defining instance method Gecos::Word#character_mask
+Dynamically defining instance method #character_mask
+Dynamically defining instance method Gecos::Word::Character#end_bits
+Dynamically defining instance method #end_bits
+Dynamically defining instance method Gecos::Word::Character#end_bit
+Dynamically defining instance method #end_bit
+Dynamically defining instance method Gecos::Word::Character#start_bits
+Dynamically defining instance method #start_bits
+Dynamically defining instance method Gecos::Word::Character#start_bit
+Dynamically defining instance method #start_bit
+Dynamically defining instance method Gecos::Word::Character#shifts
+Dynamically defining instance method #shifts
+Dynamically defining instance method Gecos::Word::Character#shift
+Dynamically defining instance method #shift
+Dynamically defining instance method Gecos::Word::Character#masks
+Dynamically defining instance method #masks
+Dynamically defining instance method Gecos::Word::Character#mask
+Dynamically defining instance method #mask
+Dynamically defining instance method Gecos::Word::Character#decimal_format_string
+Dynamically defining instance method #decimal_format_string
+Dynamically defining instance method Gecos::Word::Character#decimal
+Dynamically defining instance method Gecos::Word::Character#string_format_string
+Dynamically defining instance method #string_format_string
+Dynamically defining instance method Gecos::Word::Character#string
+Dynamically defining instance method Gecos::Word::Character#hex_format_string
+Dynamically defining instance method #hex_format_string
+Dynamically defining instance method Gecos::Word::Character#hex
+Dynamically defining instance method Gecos::Word::Character#binary_format_string
+Dynamically defining instance method #binary_format_string
+Dynamically defining instance method Gecos::Word::Character#binary
+Dynamically defining instance method Gecos::Word::Character#octal_format_string
+Dynamically defining instance method #octal_format_string
+Dynamically defining instance method Gecos::Word::Character#octal
+Dynamically defining instance method Gecos::Word::Character#format_definitions
+Dynamically defining instance method #format_definitions
+Dynamically defining instance method Gecos::Word::Character#format_definition
+Dynamically defining instance method #format_definition
+Dynamically defining instance method Gecos::Word::Character#format_strings
+Dynamically defining instance method #format_strings
+Dynamically defining instance method Gecos::Word::Character#format_string
+Dynamically defining instance method #format_string
+Dynamically defining instance method Gecos::Word::Character#format_widths
+Dynamically defining instance method #format_widths
+Dynamically defining instance method Gecos::Word::Character#format_width
+Dynamically defining instance method #format_width
+Dynamically defining instance method Gecos::Word::Character#format_types
+Dynamically defining instance method #format_types
+Dynamically defining instance method Gecos::Word::Character#format_type
+Dynamically defining instance method #format_type
+Dynamically defining instance method Gecos::Word::Character#format
+Dynamically defining instance method Gecos::Word::Character#inspect
+Dynamically defining instance method Gecos::Word#unshifted_character
+Dynamically defining instance method Gecos::Word#character
+Dynamically defining instance method Gecos::Word#characters
+Dynamically defining instance method Gecos::Word::Character#string
+Dynamically defining instance method Gecos::Word::Character#string_inspect
+Dynamically defining instance method Gecos::Word#character_string
+n=0, slice_size=7, slice_offset=1
+start=1
+end=7
+mask=376000000000 (slice_mask)
+mask=376000000000
+n=1, slice_size=7, slice_offset=1
+start=8
+end=14
+mask=001770000000 (slice_mask)
+mask=001770000000
+n=2, slice_size=7, slice_offset=1
+start=15
+end=21
+mask=000007740000 (slice_mask)
+mask=000007740000
+n=3, slice_size=7, slice_offset=1
+start=22
+end=28
+mask=000000037600 (slice_mask)
+mask=000000037600
+n=4, slice_size=7, slice_offset=1
+start=29
+end=35
+mask=000000000177 (slice_mask)
+mask=000000000177
+masks defined
+Dynamically defining instance method Gecos::Word#packed_character_size
+Dynamically defining instance method #packed_character_size
+Dynamically defining instance method Gecos::Word#packed_character_offset
+Dynamically defining instance method #packed_character_offset
+Dynamically defining instance method Gecos::Word#packed_characters_per_word
+Dynamically defining instance method #packed_characters_per_word
+Dynamically defining instance method Gecos::Word#packed_character_significant_bits
+Dynamically defining instance method #packed_character_significant_bits
+Dynamically defining instance method Gecos::Word#packed_character_string?
+Dynamically defining instance method #packed_character_string?
+Dynamically defining instance method Gecos::Word#packed_character_clipping_mask
+Dynamically defining instance method #packed_character_clipping_mask
+Dynamically defining instance method Gecos::Word::PackedCharacter#size
+Dynamically defining instance method #size
+Dynamically defining instance method Gecos::Word::PackedCharacter#offset
+Dynamically defining instance method #offset
+Dynamically defining instance method Gecos::Word::PackedCharacter#per_word
+Dynamically defining instance method #per_word
+Dynamically defining instance method Gecos::Word::PackedCharacter#significant_bits
+Dynamically defining instance method #significant_bits
+Dynamically defining instance method Gecos::Word::PackedCharacter#string?
+Dynamically defining instance method #string?
+Dynamically defining instance method Gecos::Word::PackedCharacter#clipping_mask
+Dynamically defining instance method #clipping_mask
+Dynamically defining instance method Gecos::Word#packed_character_end_bits
+Dynamically defining instance method #packed_character_end_bits
+Dynamically defining instance method Gecos::Word#packed_character_end_bit
+Dynamically defining instance method #packed_character_end_bit
+Dynamically defining instance method Gecos::Word#packed_character_start_bits
+Dynamically defining instance method #packed_character_start_bits
+Dynamically defining instance method Gecos::Word#packed_character_start_bit
+Dynamically defining instance method #packed_character_start_bit
+Dynamically defining instance method Gecos::Word#packed_character_shifts
+Dynamically defining instance method #packed_character_shifts
+Dynamically defining instance method Gecos::Word#packed_character_shift
+Dynamically defining instance method #packed_character_shift
+Dynamically defining instance method Gecos::Word#packed_character_masks
+Dynamically defining instance method #packed_character_masks
+Dynamically defining instance method Gecos::Word#packed_character_mask
+Dynamically defining instance method #packed_character_mask
+Dynamically defining instance method Gecos::Word::PackedCharacter#end_bits
+Dynamically defining instance method #end_bits
+Dynamically defining instance method Gecos::Word::PackedCharacter#end_bit
+Dynamically defining instance method #end_bit
+Dynamically defining instance method Gecos::Word::PackedCharacter#start_bits
+Dynamically defining instance method #start_bits
+Dynamically defining instance method Gecos::Word::PackedCharacter#start_bit
+Dynamically defining instance method #start_bit
+Dynamically defining instance method Gecos::Word::PackedCharacter#shifts
+Dynamically defining instance method #shifts
+Dynamically defining instance method Gecos::Word::PackedCharacter#shift
+Dynamically defining instance method #shift
+Dynamically defining instance method Gecos::Word::PackedCharacter#masks
+Dynamically defining instance method #masks
+Dynamically defining instance method Gecos::Word::PackedCharacter#mask
+Dynamically defining instance method #mask
+Dynamically defining instance method Gecos::Word::PackedCharacter#decimal_format_string
+Dynamically defining instance method #decimal_format_string
+Dynamically defining instance method Gecos::Word::PackedCharacter#decimal
+Dynamically defining instance method Gecos::Word::PackedCharacter#string_format_string
+Dynamically defining instance method #string_format_string
+Dynamically defining instance method Gecos::Word::PackedCharacter#string
+Dynamically defining instance method Gecos::Word::PackedCharacter#hex_format_string
+Dynamically defining instance method #hex_format_string
+Dynamically defining instance method Gecos::Word::PackedCharacter#hex
+Dynamically defining instance method Gecos::Word::PackedCharacter#binary_format_string
+Dynamically defining instance method #binary_format_string
+Dynamically defining instance method Gecos::Word::PackedCharacter#binary
+Dynamically defining instance method Gecos::Word::PackedCharacter#octal_format_string
+Dynamically defining instance method #octal_format_string
+Dynamically defining instance method Gecos::Word::PackedCharacter#octal
+Dynamically defining instance method Gecos::Word::PackedCharacter#format_definitions
+Dynamically defining instance method #format_definitions
+Dynamically defining instance method Gecos::Word::PackedCharacter#format_definition
+Dynamically defining instance method #format_definition
+Dynamically defining instance method Gecos::Word::PackedCharacter#format_strings
+Dynamically defining instance method #format_strings
+Dynamically defining instance method Gecos::Word::PackedCharacter#format_string
+Dynamically defining instance method #format_string
+Dynamically defining instance method Gecos::Word::PackedCharacter#format_widths
+Dynamically defining instance method #format_widths
+Dynamically defining instance method Gecos::Word::PackedCharacter#format_width
+Dynamically defining instance method #format_width
+Dynamically defining instance method Gecos::Word::PackedCharacter#format_types
+Dynamically defining instance method #format_types
+Dynamically defining instance method Gecos::Word::PackedCharacter#format_type
+Dynamically defining instance method #format_type
+Dynamically defining instance method Gecos::Word::PackedCharacter#format
+Dynamically defining instance method Gecos::Word::PackedCharacter#inspect
+Dynamically defining instance method Gecos::Word#unshifted_packed_character
+Dynamically defining instance method Gecos::Word#packed_character
+Dynamically defining instance method Gecos::Word#packed_characters
+Dynamically defining instance method Gecos::Word::PackedCharacter#string
+Dynamically defining instance method Gecos::Word::PackedCharacter#string_inspect
+Dynamically defining instance method Gecos::Word#packed_character_string
+n=0, slice_size=1, slice_offset=0
+start=0
+end=0
+mask=400000000000 (slice_mask)
+mask=400000000000
+n=1, slice_size=1, slice_offset=0
+start=1
+end=1
+mask=200000000000 (slice_mask)
+mask=200000000000
+n=2, slice_size=1, slice_offset=0
+start=2
+end=2
+mask=100000000000 (slice_mask)
+mask=100000000000
+n=3, slice_size=1, slice_offset=0
+start=3
+end=3
+mask=040000000000 (slice_mask)
+mask=040000000000
+n=4, slice_size=1, slice_offset=0
+start=4
+end=4
+mask=020000000000 (slice_mask)
+mask=020000000000
+n=5, slice_size=1, slice_offset=0
+start=5
+end=5
+mask=010000000000 (slice_mask)
+mask=010000000000
+n=6, slice_size=1, slice_offset=0
+start=6
+end=6
+mask=004000000000 (slice_mask)
+mask=004000000000
+n=7, slice_size=1, slice_offset=0
+start=7
+end=7
+mask=002000000000 (slice_mask)
+mask=002000000000
+n=8, slice_size=1, slice_offset=0
+start=8
+end=8
+mask=001000000000 (slice_mask)
+mask=001000000000
+n=9, slice_size=1, slice_offset=0
+start=9
+end=9
+mask=000400000000 (slice_mask)
+mask=000400000000
+n=10, slice_size=1, slice_offset=0
+start=10
+end=10
+mask=000200000000 (slice_mask)
+mask=000200000000
+n=11, slice_size=1, slice_offset=0
+start=11
+end=11
+mask=000100000000 (slice_mask)
+mask=000100000000
+n=12, slice_size=1, slice_offset=0
+start=12
+end=12
+mask=000040000000 (slice_mask)
+mask=000040000000
+n=13, slice_size=1, slice_offset=0
+start=13
+end=13
+mask=000020000000 (slice_mask)
+mask=000020000000
+n=14, slice_size=1, slice_offset=0
+start=14
+end=14
+mask=000010000000 (slice_mask)
+mask=000010000000
+n=15, slice_size=1, slice_offset=0
+start=15
+end=15
+mask=000004000000 (slice_mask)
+mask=000004000000
+n=16, slice_size=1, slice_offset=0
+start=16
+end=16
+mask=000002000000 (slice_mask)
+mask=000002000000
+n=17, slice_size=1, slice_offset=0
+start=17
+end=17
+mask=000001000000 (slice_mask)
+mask=000001000000
+n=18, slice_size=1, slice_offset=0
+start=18
+end=18
+mask=000000400000 (slice_mask)
+mask=000000400000
+n=19, slice_size=1, slice_offset=0
+start=19
+end=19
+mask=000000200000 (slice_mask)
+mask=000000200000
+n=20, slice_size=1, slice_offset=0
+start=20
+end=20
+mask=000000100000 (slice_mask)
+mask=000000100000
+n=21, slice_size=1, slice_offset=0
+start=21
+end=21
+mask=000000040000 (slice_mask)
+mask=000000040000
+n=22, slice_size=1, slice_offset=0
+start=22
+end=22
+mask=000000020000 (slice_mask)
+mask=000000020000
+n=23, slice_size=1, slice_offset=0
+start=23
+end=23
+mask=000000010000 (slice_mask)
+mask=000000010000
+n=24, slice_size=1, slice_offset=0
+start=24
+end=24
+mask=000000004000 (slice_mask)
+mask=000000004000
+n=25, slice_size=1, slice_offset=0
+start=25
+end=25
+mask=000000002000 (slice_mask)
+mask=000000002000
+n=26, slice_size=1, slice_offset=0
+start=26
+end=26
+mask=000000001000 (slice_mask)
+mask=000000001000
+n=27, slice_size=1, slice_offset=0
+start=27
+end=27
+mask=000000000400 (slice_mask)
+mask=000000000400
+n=28, slice_size=1, slice_offset=0
+start=28
+end=28
+mask=000000000200 (slice_mask)
+mask=000000000200
+n=29, slice_size=1, slice_offset=0
+start=29
+end=29
+mask=000000000100 (slice_mask)
+mask=000000000100
+n=30, slice_size=1, slice_offset=0
+start=30
+end=30
+mask=000000000040 (slice_mask)
+mask=000000000040
+n=31, slice_size=1, slice_offset=0
+start=31
+end=31
+mask=000000000020 (slice_mask)
+mask=000000000020
+n=32, slice_size=1, slice_offset=0
+start=32
+end=32
+mask=000000000010 (slice_mask)
+mask=000000000010
+n=33, slice_size=1, slice_offset=0
+start=33
+end=33
+mask=000000000004 (slice_mask)
+mask=000000000004
+n=34, slice_size=1, slice_offset=0
+start=34
+end=34
+mask=000000000002 (slice_mask)
+mask=000000000002
+n=35, slice_size=1, slice_offset=0
+start=35
+end=35
+mask=000000000001 (slice_mask)
+mask=000000000001
+masks defined
+Dynamically defining instance method Gecos::Word#bit_size
+Dynamically defining instance method #bit_size
+Dynamically defining instance method Gecos::Word#bit_offset
+Dynamically defining instance method #bit_offset
+Dynamically defining instance method Gecos::Word#bits_per_word
+Dynamically defining instance method #bits_per_word
+Dynamically defining instance method Gecos::Word#bit_significant_bits
+Dynamically defining instance method #bit_significant_bits
+Dynamically defining instance method Gecos::Word#bit_string?
+Dynamically defining instance method #bit_string?
+Dynamically defining instance method Gecos::Word#bit_clipping_mask
+Dynamically defining instance method #bit_clipping_mask
+Dynamically defining instance method Gecos::Word::Bit#size
+Dynamically defining instance method #size
+Dynamically defining instance method Gecos::Word::Bit#offset
+Dynamically defining instance method #offset
+Dynamically defining instance method Gecos::Word::Bit#per_word
+Dynamically defining instance method #per_word
+Dynamically defining instance method Gecos::Word::Bit#significant_bits
+Dynamically defining instance method #significant_bits
+Dynamically defining instance method Gecos::Word::Bit#string?
+Dynamically defining instance method #string?
+Dynamically defining instance method Gecos::Word::Bit#clipping_mask
+Dynamically defining instance method #clipping_mask
+Dynamically defining instance method Gecos::Word#bit_end_bits
+Dynamically defining instance method #bit_end_bits
+Dynamically defining instance method Gecos::Word#bit_end_bit
+Dynamically defining instance method #bit_end_bit
+Dynamically defining instance method Gecos::Word#bit_start_bits
+Dynamically defining instance method #bit_start_bits
+Dynamically defining instance method Gecos::Word#bit_start_bit
+Dynamically defining instance method #bit_start_bit
+Dynamically defining instance method Gecos::Word#bit_shifts
+Dynamically defining instance method #bit_shifts
+Dynamically defining instance method Gecos::Word#bit_shift
+Dynamically defining instance method #bit_shift
+Dynamically defining instance method Gecos::Word#bit_masks
+Dynamically defining instance method #bit_masks
+Dynamically defining instance method Gecos::Word#bit_mask
+Dynamically defining instance method #bit_mask
+Dynamically defining instance method Gecos::Word::Bit#end_bits
+Dynamically defining instance method #end_bits
+Dynamically defining instance method Gecos::Word::Bit#end_bit
+Dynamically defining instance method #end_bit
+Dynamically defining instance method Gecos::Word::Bit#start_bits
+Dynamically defining instance method #start_bits
+Dynamically defining instance method Gecos::Word::Bit#start_bit
+Dynamically defining instance method #start_bit
+Dynamically defining instance method Gecos::Word::Bit#shifts
+Dynamically defining instance method #shifts
+Dynamically defining instance method Gecos::Word::Bit#shift
+Dynamically defining instance method #shift
+Dynamically defining instance method Gecos::Word::Bit#masks
+Dynamically defining instance method #masks
+Dynamically defining instance method Gecos::Word::Bit#mask
+Dynamically defining instance method #mask
+Dynamically defining instance method Gecos::Word::Bit#decimal_format_string
+Dynamically defining instance method #decimal_format_string
+Dynamically defining instance method Gecos::Word::Bit#decimal
+Dynamically defining instance method Gecos::Word::Bit#hex_format_string
+Dynamically defining instance method #hex_format_string
+Dynamically defining instance method Gecos::Word::Bit#hex
+Dynamically defining instance method Gecos::Word::Bit#binary_format_string
+Dynamically defining instance method #binary_format_string
+Dynamically defining instance method Gecos::Word::Bit#binary
+Dynamically defining instance method Gecos::Word::Bit#octal_format_string
+Dynamically defining instance method #octal_format_string
+Dynamically defining instance method Gecos::Word::Bit#octal
+Dynamically defining instance method Gecos::Word::Bit#format_definitions
+Dynamically defining instance method #format_definitions
+Dynamically defining instance method Gecos::Word::Bit#format_definition
+Dynamically defining instance method #format_definition
+Dynamically defining instance method Gecos::Word::Bit#format_strings
+Dynamically defining instance method #format_strings
+Dynamically defining instance method Gecos::Word::Bit#format_string
+Dynamically defining instance method #format_string
+Dynamically defining instance method Gecos::Word::Bit#format_widths
+Dynamically defining instance method #format_widths
+Dynamically defining instance method Gecos::Word::Bit#format_width
+Dynamically defining instance method #format_width
+Dynamically defining instance method Gecos::Word::Bit#format_types
+Dynamically defining instance method #format_types
+Dynamically defining instance method Gecos::Word::Bit#format_type
+Dynamically defining instance method #format_type
+Dynamically defining instance method Gecos::Word::Bit#format
+Dynamically defining instance method Gecos::Word::Bit#inspect
+Dynamically defining instance method Gecos::Word#unshifted_bit
+Dynamically defining instance method Gecos::Word#bit
+Dynamically defining instance method Gecos::Word#bits
+n=0, slice_size=36, slice_offset=0
+start=0
+end=35
+/Users/richard/projects/gecos/src/../lib/gecos/machine_word.rb:41: warning: multiple values for a block parameter (2 for 1)
+	from /Users/richard/projects/gecos/src/../lib/gecos/machine_word.rb:237
+/Users/richard/projects/gecos/src/../lib/gecos/machine_word.rb:41:in `[]': can't convert Array into Integer (TypeError)
+	from /Users/richard/projects/gecos/src/../lib/gecos/machine_word.rb:41:in `bit_mask'
+	from /Users/richard/projects/gecos/src/../lib/gecos/machine_word.rb:237:in `slice_mask'
+	from /Users/richard/projects/gecos/src/../lib/gecos/machine_word.rb:292:in `define_slice'
+	from /Users/richard/projects/gecos/src/../lib/gecos/machine_word.rb:193:in `map'
+	from /Users/richard/projects/gecos/src/../lib/gecos/machine_word.rb:290:in `each'
+	from /Users/richard/projects/gecos/src/../lib/gecos/machine_word.rb:290:in `map'
+	from /Users/richard/projects/gecos/src/../lib/gecos/machine_word.rb:290:in `define_slice'
+	from /Users/richard/projects/gecos/src/../lib/gecos/word.rb:12
+	from /Users/richard/projects/gecos/src/test_word:5:in `require'
+	from /Users/richard/projects/gecos/src/test_word:5

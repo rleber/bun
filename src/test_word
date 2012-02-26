@@ -150,10 +150,10 @@ end
 def get_slice_class_parameter(slice, parameter, options={})
   klass_name = class_name(slice)
   if parameter =~ /^\((.*)\)/
-    word_class_parameter = "#{slice}#{$1}#{$'}"
+    word_class_parameter = "#{slice}_slice#{$1}#{$'}"
     slice_class_parameter = $'
   else
-    word_class_parameter = "#{slice}_#{parameter}"
+    word_class_parameter = "#{slice}_slice_#{parameter}"
     slice_class_parameter = parameter
   end
   format = options[:format] || '%p'

@@ -8,19 +8,25 @@ end
 
 class Class
   def define_class_method(name, &block)
+    warn "Dynamically defining class method #{self.class}.#{name}" if $trace
     singleton_class.instance_eval do
       define_method(name) do
         yield
       end
     end
   end
+  
+  def def_method(name, &blk)
+    warn "Dynamically defining instance method #{self.name}##{name}" if $trace
+    define_method(name, &blk)
+  end
 
   def define_parameter(name, value=nil, &blk)
     value = yield if block_given?
     const_set name.to_s.upcase.sub(/[?!]?$/,''), value
-    define_method(name.to_s.downcase) { value }
+    def_method(name.to_s.downcase) { value }
     singleton_class.instance_eval do
-      define_method(name.to_s.downcase) { value }
+      def_method(name.to_s.downcase) { value }
     end
     value
   end
@@ -28,14 +34,15 @@ class Class
   def define_collection(name, value=nil, &blk)
     name = name.to_s.downcase
     value = define_parameter(name+"s", value, &blk)
-    define_method name do |n|
+    def_method name do |n|
       self.send(name+"s")[n]
     end
     singleton_class.instance_eval do
-      define_method(name.to_s.downcase) {|n| self.send(name+"s")[n] }
+      def_method(name.to_s.downcase) {|n| self.send(name+"s")[n] }
     end
   end
   
+  # TODO Remove this
   def define_class(name)
   end
 end
@@ -262,7 +269,7 @@ module Machine
       const_set(class_name, slice_class)
       add_slice(slice_name, options.merge(:class=>slice_class))
 
-      # slice_class.send(:define_method, :initialize) do |value|
+      # slice_class.send(:def_method, :initialize) do |value|
       #   @value = value
       # end
       # slice_class.send(:attr_accessor, :value)
@@ -272,14 +279,19 @@ module Machine
       start_bits = (0...per_word).map{|n| slice_start_bit(n, slice_size, slice_offset) }
       end_bits = (0...per_word).map{|n| slice_end_bit(n, slice_size, slice_offset) }
       shifts = end_bits.map{|end_bit| size - end_bit - 1 }
-      masks = (0...per_word).map {|n| slice_mask(n, slice_size, slice_offset) & (clipping_mask << (size - end_bits[n] - 1)) }
+      
+      masks = (0...per_word).map do |n|
+        mask = slice_mask(n, slice_size, slice_offset)
+        clip_to = (clipping_mask << (size - end_bits[n] - 1))
+        res = mask & clip_to
+      end
     
-      define_parameter "#{slice_name}_size",             slice_size
-      define_parameter "#{slice_name}_offset",           slice_offset
-      define_parameter "#{slice_name}s_per_word",        per_word
-      define_parameter "#{slice_name}_significant_bits", bits
-      define_parameter "#{slice_name}_string?",          !!is_string
-      define_parameter "#{slice_name}_clipping_mask",    clipping_mask
+      define_parameter "#{slice_name}_slice_size",             slice_size
+      define_parameter "#{slice_name}_slice_offset",           slice_offset
+      define_parameter "#{slice_name}_slices_per_word",        per_word
+      define_parameter "#{slice_name}_slice_significant_bits", bits
+      define_parameter "#{slice_name}_slice_string?",          !!is_string
+      define_parameter "#{slice_name}_slice_clipping_mask",    clipping_mask
     
       slice_class.define_parameter  "size",              slice_size
       slice_class.define_parameter  "offset",            slice_offset
@@ -288,10 +300,10 @@ module Machine
       slice_class.define_parameter  "string?",           is_string
       slice_class.define_parameter  "clipping_mask",     clipping_mask
     
-      define_collection "#{slice_name}_end_bit",   end_bits
-      define_collection "#{slice_name}_start_bit", start_bits
-      define_collection "#{slice_name}_shift",     shifts
-      define_collection "#{slice_name}_mask",      masks
+      define_collection "#{slice_name}_slice_end_bit",   end_bits
+      define_collection "#{slice_name}_slice_start_bit", start_bits
+      define_collection "#{slice_name}_slice_shift",     shifts
+      define_collection "#{slice_name}_slice_mask",      masks
 
       slice_class.define_collection "end_bit",     end_bits
       slice_class.define_collection "start_bit",   start_bits
@@ -312,7 +324,7 @@ module Machine
         definition = definition.gsub(FORMAT_WIDTH_WILDCARD, width.to_s)
         slice_formats[format] = {:name=>format, :string=>definition, :max_width=>width}
         slice_class.define_parameter "#{format}_format_string", definition[:string]
-        slice_class.send(:define_method, format.to_s) do
+        slice_class.send(:def_method, format.to_s) do
           definition % [self.value]
         end
       end
@@ -333,7 +345,7 @@ module Machine
       slice_class.define_collection "format_width",  format_widths
       slice_class.define_collection "format_type",   slice_formats.keys.sort_by{|f| f.to_s}
     
-      slice_class.send(:define_method, :format) do |*args|
+      slice_class.send(:def_method, :format) do |*args|
         format = args[0] || :default
         format_string = format
         format_string = slice_formats[format][:string] if format.is_a?(Symbol)
@@ -343,32 +355,32 @@ module Machine
         format_string % values
       end
     
-      slice_class.send(:define_method, :inspect) do
+      slice_class.send(:def_method, :inspect) do
         format(:inspect)
       end
     
       unshifted_method_name = "unshifted_#{slice_name}"
-      define_method unshifted_method_name do |n|
+      def_method unshifted_method_name do |n|
         value & masks[n]
       end
     
-      define_method slice_name do |n|
+      def_method slice_name do |n|
         slice_class.new(:unsigned_value=>self.send(unshifted_method_name, n) >> shifts[n])
       end
-      define_method "#{slice_name}s" do
+      def_method "#{slice_name}s" do
         ary = Slice::Array.new
         (0...per_word).each {|n| ary << self.send(slice_name, n) }
         ary
       end
 
       if is_string
-        slice_class.send(:define_method, :string) do
+        slice_class.send(:def_method, :string) do
           self.chr
         end
-        slice_class.send(:define_method, :string_inspect) do
+        slice_class.send(:def_method, :string_inspect) do
           self.string.inspect
         end
-        define_method "#{slice_name}_string" do |n|
+        def_method "#{slice_name}_string" do |n|
           (0...per_word).map {|n| self.send(slice_name, n).string }
         end
       end
