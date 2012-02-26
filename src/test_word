@@ -250,9 +250,9 @@ Gecos::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
   show_collections class_name(slice), MASKS, :format=>WORD_FORMAT
   
   format_type_table = format_slice_class_collection slice, "format_type"
-  format_string_table = format_slice_class_collection slice, "format_string"
+  format_definition_table = format_slice_class_collection slice, "format_definition"
   format_width_table  = format_slice_class_collection slice, "format_width"
-  put_table splice_table(format_type_table, format_string_table, shift_table(format_width_table))
+  put_table splice_table(format_type_table, format_definition_table, shift_table(format_width_table))
   puts
 end
 

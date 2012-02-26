@@ -47,9 +47,12 @@ class Class
   end
 
   def define_parameter(name, value=nil, &blk)
+    class_name = self.name
     name = name.to_s.downcase
     value = yield if block_given?
-    const_set name.to_s.upcase.sub(/[?!]?$/,''), value
+    const_name = name.to_s.upcase.sub(/[?!]?$/,'')
+    raise NameError, "Attempt to redefine parameter constant #{class_name}::#{const_name}" if self.const_defined?(const_name)
+    const_set const_name, value
     # TODO Do argument count checking
     def_method(name) {|| value }
     def_class_method(name) {|| value }
@@ -233,12 +236,14 @@ module Machine
   
     FORMAT_WIDTH_WILDCARD = /<width>/
     # TODO Could this be improved using the '*' sprintf flag?
+    # TODO Generalize the inspect thing
     define_parameter :formats, {
-      :binary=>  "%0#<width>b", 
-      :octal=>   "%0#<width>o", 
-      :decimal=> "%<width>d",
-      :hex=>     "%0#<width>x",
-      :string=>  "%-<width>s"
+      :binary=>         "%0#<width>b", 
+      :octal=>          "%0#<width>o", 
+      :decimal=>        "%<width>d",
+      :hex=>            "%0#<width>x",
+      :string=>         "%-<width>s",
+      :string_inspect=> "%-<width>s",
     }
   
     def self.define_size(word_size)
@@ -304,9 +309,9 @@ module Machine
       slice_offset = options[:offset] || 0
       nbits = options[:bits] || slice_size
       clipping_mask = options[:mask] || n_bit_masks[nbits]
-      default_format = options[:default_format] || :octal
       is_string = !!options[:string]
       sign = options[:sign] || :none
+      default_format = options[:default_format] || (is_string ? :string_inspect : (sign == :none ? :octal : :decimal))
       format_overrides = options[:format] || {}
       slice_gap = options[:gap] || 0
     
@@ -375,53 +380,52 @@ module Machine
       # TODO This method is too long. Refactor it
       slice_formats = {}
       formats.each do |format, definition|
-        next if format==:string && !is_string
+        format_string = format.to_s
+        string_format = format_string =~ /string/
+        next if string_format && !is_string
         definition = format_overrides[format] if format_overrides[format]
         sample_values = [n_bit_masks[nbits], n_bit_masks[nbits-1]||0, n_bit_masks[0], 0]
-        if format!=:string && nbits == 1 # Special case for single bits (binary, octal, decimal, and hex representations are all the same)
+        if !string_format && nbits == 1 # Special case for single bits (binary, octal, decimal, and hex representations are all the same)
           definition = definition.gsub(/%.*(?:#{FORMAT_WIDTH_WILDCARD})?.*?([a-z])/, '%\1')
         end
         sample_definition = definition.gsub(FORMAT_WIDTH_WILDCARD, '')
-        sample_values = sample_values.map{|v| v.chr } if format == :string && is_string
+        sample_values = sample_values.map{|v| v.chr } if string_format && is_string
         sample_texts = sample_values.map{|v| sample_definition % [v] }
         width = sample_texts.map{|t| t.size}.max
         definition = definition.gsub(FORMAT_WIDTH_WILDCARD, width.to_s)
-        slice_formats[format] = {:name=>format, :string=>definition, :max_width=>width}
-        slice_class.define_parameter "#{format}_format_string", definition[:string]
+        format_spec = {:name=>format, :definition=>definition, :max_width=>width}
+        format_spec[:inspect] = true if format_string =~ /inspect/
+        format_spec[:string_format] = string_format
+        slice_formats[format] = format_spec
+        slice_class.define_parameter "#{format}_format_definition", definition[:definition]
         slice_class.send(:def_method, format.to_s) do ||
           definition % [self.value]
         end
       end
-      slice_formats[:default] = slice_formats[default_format]
-    
-      if is_string
-        slice_formats[:inspect] = {
-          :name=>:inspect, :string=>slice_formats[:octal][:string] + '::' + slice_formats[:string][:string], 
-          :max_width=>slice_formats[:octal][:max_width] + 2 + slice_formats[:string][:max_width]
-        }
-      else
-        slice_formats[:inspect] = slice_formats[:default]
-      end
-      format_strings = slice_formats.inject({}){|hsh, kv| key, value = kv; hsh[key] = value[:string]; hsh}
+      slice_formats[:inspect] = slice_formats[default_format].merge(:name=>:inspect, :inspect=>true)
+      slice_formats[:default] = slice_formats[default_format].merge(:name=>:default)
+
+      format_definitions = slice_formats.inject({}){|hsh, kv| key, value = kv; hsh[key] = value[:definition]; hsh}
       format_widths  = slice_formats.inject({}){|hsh, kv| key, value = kv; hsh[key] = value[:max_width]; hsh}
-      slice_class.define_collection "format_definition", slice_formats
-      slice_class.define_collection "format_string", format_strings
+      slice_class.define_collection "format_specification", slice_formats
+      slice_class.define_collection "format_definition", format_definitions
       slice_class.define_collection "format_width",  format_widths
       slice_class.define_collection "format_type",   slice_formats.keys.sort_by{|f| f.to_s}
     
       # TODO: Allow for unpadded formatting, and types which are unpadded by default
+      # TODO: Base inspect formatting on Class statically-defined inspect method?
       slice_class.send(:def_method, :format) do |*args|
-        format = args[0] || :default
-        format_string = format
-        format_string = slice_formats[format][:string] if format.is_a?(Symbol)
-        v = self.value
-        v = v.chr if format==:string && is_string
-        values = if format==:inspect && is_string
-          [v, self.string.inspect]
+        format_defn = args[0] || :default
+        format = slice_formats[format_defn] if format_defn.is_a?(Symbol)
+        if format
+          format_definition = format[:definition]
+          v = format[:string_format] ? self.string : self.value
+          v = v.inspect if format[:inspect]
         else
-          [v] * (format_string.gsub(/[^%]/,'').size)
+          format_definition = format_defn || word_default_format # TODO '%p' would be better, but would cause endless recursion currently
+          v = self.value
         end
-        format_string % values
+        format_definition % [v]
       end
     
       slice_class.send(:def_method, :inspect) do ||
