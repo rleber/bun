@@ -105,6 +105,7 @@ module Machine
       end
   
       def initialize(options={})
+        # TODO Improve which exceptions are raised
         raise RuntimeError, "#{self.class} does not understand signed values" if options[:signed]
         raise RuntimeError, "No value provided for #{self.class}" unless val=options[:unsigned]
         raise RuntimeError, "Cannot initialize #{self.class} with a negative value" unless val >= 0

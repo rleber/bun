@@ -140,6 +140,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       archive = Archive.new(directory)
       ix = archive.tapes
       puts "Archive at #{directory}:"
+      # TODO Refactor using Array#justify_rows
       tape_name_width = ix.map{|entry| entry.first.size}.max
       if options[:long]
         puts "%-#{tape_name_width}s" % 'Tape' + '  Type    File'
@@ -171,7 +172,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       archive = Archive.new(directory)
       pattern = get_regexp(pattern)
       ix = archive.contents.select{|c| c[:path] =~ pattern }
-      # TODO This is a recurring pattern; refactor it
+      # TODO Refactor using Array#justify_rows
       tape_and_file_width = ix.map{|item| item[:tape_and_file].size}.max
       ix.each do |item|
         puts %Q{#{"%-#{tape_and_file_width}s" % item[:tape_and_file]}  #{item[:path]}}
@@ -355,6 +356,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       # Create index file of cross-reference
       unless @dryrun
         index_file = File.join(to, '.index')
+        # TODO Refactor using Array#justify_rows
         from_width = index.froms.map{|old_file| old_file.size}.max
         File.open(index_file, 'w') do |ixf|
           index.sort_by{|e| e[:from]}.each do |spec|

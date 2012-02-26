@@ -8,7 +8,7 @@ class Array
     end
     justified = []
     self.each_with_index do |column, column_number|
-      justified << column.map{|entry| "%-#{widths[column_number]}s" % [entry] }
+      justified << column.map{|entry| "%-*s" % [widths[column_number], entry] }
     end
     justified
   end
