@@ -273,29 +273,28 @@ module Machine
       all_ones ^ make_bit_mask(from, to)
     end
   
-    def self.slice_start_bit(n, size, offset=0)
-      n*size + offset
+    def self.slice_start_bit(n, size, offset=0, gap=0)
+      n*(size+gap) + offset
     end
   
-    def self.slice_end_bit(n, size, offset=0)
-      slice_start_bit(n+1, size, offset) - 1
+    def self.slice_end_bit(n, size, offset=0, gap=0)
+      slice_start_bit(n+1, size, offset, gap) - gap - 1
     end
   
-    def self.slice_mask(n, size, offset)
-      make_bit_mask(slice_start_bit(n, size, offset), slice_end_bit(n, size, offset))
+    def self.slice_mask(n, size, offset=0, gap=0)
+      make_bit_mask(slice_start_bit(n, size, offset, gap), slice_end_bit(n, size, offset, gap))
     end
   
-    def self.slices_per_word(slice_size, offset)
-      (size - offset).div(slice_size)
+    def self.slices_per_word(slice_size, offset=0, gap=0)
+      available_bits = size - offset
+      bits_per_slice = [slice_size+gap, available_bits].min
+      available_bits.div(bits_per_slice)
     end
   
     VALID_SIGNS = [:none, :ones_complement, :twos_complement]
-    # TODO Should be able to say word.integer and have it mean word.integer(0)
     # TODO Should word.byte mean word.byte(0) or word.byte(n)?
     # TODO Should be able to say word.integer.unsigned.octal
     # TODO Should be recursive -- i.e. Should be able to say word.half_word(0).byte(2)
-    # TODO Define fields (i.e. non-repeating parts of a word)
-    # TODO Define structures (i.e. a sequence of fields -- possibly multiword?)
     # TODO Define bit and byte order (i.e. LR, RL)
     # TODO Define signs other than at the beginning of a slice
     def self.define_slice(slice_name, options={})
@@ -309,6 +308,7 @@ module Machine
       is_string = !!options[:string]
       sign = options[:sign] || :none
       format_overrides = options[:format] || {}
+      slice_gap = options[:gap] || 0
     
       class_name = slice_name.gsub(/(^|_)(.)/) {|match| $2.upcase}
       if is_string
@@ -326,13 +326,14 @@ module Machine
       const_set(class_name, slice_class)
       add_slice(slice_name, options.merge(:class=>slice_class))
       
-      per_word = slices_per_word(slice_size, slice_offset)
-      start_bits = (0...per_word).map{|n| slice_start_bit(n, slice_size, slice_offset) }
-      end_bits = (0...per_word).map{|n| slice_end_bit(n, slice_size, slice_offset) }
+      # TODO Refactor this stuff as a slice specification (size, gap, offset, etc.)
+      per_word = slices_per_word(slice_size, slice_offset, slice_gap)
+      start_bits = (0...per_word).map{|n| slice_start_bit(n, slice_size, slice_offset, slice_gap) }
+      end_bits = (0...per_word).map{|n| slice_end_bit(n, slice_size, slice_offset, slice_gap) }
       shifts = end_bits.map{|end_bit| size - end_bit - 1 }
       
       masks = (0...per_word).map do |n|
-        mask = slice_mask(n, slice_size, slice_offset)
+        mask = slice_mask(n, slice_size, slice_offset, slice_gap)
         clip_to = (clipping_mask << (size - end_bits[n] - 1))
         res = mask & clip_to
       end
@@ -375,7 +376,6 @@ module Machine
       slice_formats = {}
       formats.each do |format, definition|
         next if format==:string && !is_string
-        # TODO: Allow for unpadded formatting, and types which are unpadded by default
         definition = format_overrides[format] if format_overrides[format]
         sample_values = [n_bit_masks[nbits], n_bit_masks[nbits-1]||0, n_bit_masks[0], 0]
         if format!=:string && nbits == 1 # Special case for single bits (binary, octal, decimal, and hex representations are all the same)
@@ -409,13 +409,18 @@ module Machine
       slice_class.define_collection "format_width",  format_widths
       slice_class.define_collection "format_type",   slice_formats.keys.sort_by{|f| f.to_s}
     
+      # TODO: Allow for unpadded formatting, and types which are unpadded by default
       slice_class.send(:def_method, :format) do |*args|
         format = args[0] || :default
         format_string = format
         format_string = slice_formats[format][:string] if format.is_a?(Symbol)
         v = self.value
         v = v.chr if format==:string && is_string
-        values = [v] * (format_string.gsub(/[^%]/,'').size)
+        values = if format==:inspect && is_string
+          [v, self.string.inspect]
+        else
+          [v] * (format_string.gsub(/[^%]/,'').size)
+        end
         format_string % values
       end
     
@@ -461,6 +466,13 @@ module Machine
           (0...per_word).map {|n| self.send(slice_name, n).string }
         end
       end
+    end
+    
+    # A field only occurs once in a word
+    # TODO Keep separate track of fields, vs. slices?
+    # TODO Define structures (i.e. a sequence of fields -- possibly multiword?)
+    def self.define_field(name, options={})
+      define_slice(name, {:gap=>size-options[:size]}.merge(options))
     end
 
     def clip(value)

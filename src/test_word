@@ -256,13 +256,19 @@ Gecos::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
   puts
 end
 
-$byte_test_word = Gecos::Word.new(0111222333444)
-
-show_value "$byte_test_word.value", :format=>WORD_FORMAT
-Gecos::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
-  show_word_slice "$byte_test_word", slice
-  puts
+def show_word(expr)
+  show_value "#{expr}.value", :format=>WORD_FORMAT
+  Gecos::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
+    show_word_slice expr, slice
+    puts
+  end
 end
+
+$byte_test_word = Gecos::Word.new(0111222333444)
+$negative = Gecos::Word.new(0777777777777)
+
+show_word "$byte_test_word"
+show_word "$negative"
 
 # Does arithmetic work?
 show_value "$byte_test_word-5", :format=>WORD_FORMAT
@@ -275,7 +281,6 @@ show_value "$byte_test_word.character(0)+': is here'"
 show_value "$byte_test_word.character(0).add(2)"
 
 # Test signed integers
-$negative = Gecos::Word.new(0777777777777)
 show_value "$negative.integer(0).signed"
 show_value "$negative.integer(0).unsigned", :format=>'%012o'
 
