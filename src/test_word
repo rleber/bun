@@ -64,14 +64,14 @@ def protected_send(obj, *args, &blk)
   meth = args.shift
   obj.send(meth, *args, &blk)
 rescue => e
-  raise RuntimeError, "Unable to retrieve #{meth}(#{args.map{|a| a.inspect}.join(',')}) for #{obj.inspect}: #{e}\n#{e.formatted_trace}\n\n"
+  raise e.class, "Unable to retrieve #{meth}(#{args.map{|a| a.inspect}.join(',')}) for #{obj.inspect}: #{e}\n#{e.formatted_trace}\n\n"
 end
 
 def protected_eval(*args)
   code = args.first
   eval(*args)
 rescue => e
-  raise RuntimeError, "Unable to eval #{code}: #{e}\n#{e.formatted_trace}\n\n"
+  raise e.class, "Unable to eval #{code}: #{e}\n#{e.formatted_trace}\n\n"
 end
 
 def verify_collection_and_method(obj, name, options={})

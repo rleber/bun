@@ -67,10 +67,6 @@ class Class
     end
     def_class_method(name.to_s.downcase) {|n| self.send(name+"s")[n] }
   end
-  
-  # TODO Remove this
-  def define_class(name)
-  end
 end
 
 class GenericNumeric
@@ -112,10 +108,9 @@ module Machine
       end
   
       def initialize(options={})
-        # TODO Improve which exceptions are raised
-        raise RuntimeError, "#{self.class} does not understand signed values" if options[:signed]
-        raise RuntimeError, "No value provided for #{self.class}" unless val=options[:unsigned]
-        raise RuntimeError, "Cannot initialize #{self.class} with a negative value" unless val >= 0
+        raise ArgumentError, "#{self.class} does not understand signed values" if options[:signed]
+        raise ArgumentError, "No value provided for #{self.class}" unless val=options[:unsigned]
+        raise RangeError, "Cannot initialize #{self.class} with a negative value" unless val >= 0
         super(val)
       end
   
@@ -137,9 +132,9 @@ module Machine
       class TwosComplement < Numeric
         
         class << self 
-          def complement(nbits)
-            raise RuntimeError, "Can't take complement of a negative number (#{nbits})" unless nbits >= 0
-            unprotected_complement(nbits)
+          def complement(value)
+            raise RangeError, "Can't take complement of a negative number (#{value})" unless value >= 0
+            unprotected_complement(value)
           end
           
           def sign_bit
@@ -316,7 +311,7 @@ module Machine
         when :ones_complement then Slice::Signed::OnesComplement
         when :twos_complement then Slice::Signed::TwosComplement
         else  
-          raise RuntimeError, "Bad value for :sign (#{sign.inspect}). Should be one of #{VALID_SIGNS.inspect}"
+          raise ArgumentError, "Bad value for :sign (#{sign.inspect}). Should be one of #{VALID_SIGNS.inspect}"
         end
       end
       slice_class = Class.new(parent)
