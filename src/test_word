@@ -105,8 +105,9 @@ def show_collection(obj, name, options={})
 end
 
 def show_slice_collection(word, slice, parameter, options={})
-  size = protected_send(word, "#{slice}s_per_word")
-  puts "#{slice}s_per_word = #{size.inspect}"
+  slices = slice.pluralize
+  size = protected_send(word, "#{slices}_per_word")
+  puts "#{slices}_per_word = #{size.inspect}"
   name = [slice, parameter].join('_')
   show_collection(word, name, options)
 end
@@ -188,12 +189,13 @@ def show_slice_class_collection(slice, name, options={})
 end
 
 def show_word_slice(word, slice, options={})
+  slices = slice.to_s.pluralize
   binding = options[:binding]
   klass_name = class_name(slice)
   has_string = protected_eval("#{klass_name}.string?")
-  show_value "#{word}.#{slice}s", :binding=>binding
-  collection = protected_eval("#{word}.#{slice}s", binding)
-  show_value "#{word}.#{slice}s.string", :binding=>binding if has_string
+  show_value "#{word}.#{slices}", :binding=>binding
+  collection = protected_eval("#{word}.#{slices}", binding)
+  show_value "#{word}.#{slices}.string", :binding=>binding if has_string
   table = []
   formats = protected_eval("#{klass_name}.format_types")
   heading = ["n", "value"] + formats.map{|f| f.inspect }
@@ -254,25 +256,31 @@ Gecos::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
   puts
 end
 
-$bytes = Gecos::Word.new(0111222333444)
+$byte_test_word = Gecos::Word.new(0111222333444)
 
-show_value "$bytes.value", :format=>WORD_FORMAT
+show_value "$byte_test_word.value", :format=>WORD_FORMAT
 Gecos::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
-  show_word_slice "$bytes", slice
+  show_word_slice "$byte_test_word", slice
   puts
 end
 
 # Does arithmetic work?
-show_value "$bytes-5", :format=>WORD_FORMAT
-show_value "3+$bytes", :format=>WORD_FORMAT
-show_value "$bytes.packed_characters.string"
+show_value "$byte_test_word-5", :format=>WORD_FORMAT
+show_value "3+$byte_test_word", :format=>WORD_FORMAT
+show_value "$byte_test_word.packed_characters.string"
 
 # Does string manipulation work?
-show_value "'First character: '+($bytes.character(0))"
-show_value "$bytes.character(0)+': is here'"
-show_value "$bytes.character(0).add(2)"
+show_value "'First character: '+($byte_test_word.character(0))"
+show_value "$byte_test_word.character(0)+': is here'"
+show_value "$byte_test_word.character(0).add(2)"
 
 # Test signed integers
 $negative = Gecos::Word.new(0777777777777)
 show_value "$negative.integer(0).signed"
 show_value "$negative.integer(0).unsigned", :format=>'%012o'
+
+# Formatting methods
+show_value "$byte_test_word.byte(2).octal"
+show_value "$negative.integer(0).decimal"
+show_value "$negative.integer.decimal"
+# show_value "$negative.integer(0).unsigned.octal"

@@ -9,6 +9,6 @@ class Gecos
     define_slice :character, :size=>9, :bits=>7, :string=>true
     define_slice :packed_character, :size=>7, :offset=>1, :string=>true
     define_slice :bit, :size=>1
-    define_slice :integer, :size=>size, :sign=>:twos_complement
+    define_slice :integer, :size=>size, :sign=>:twos_complement, :format=>{:decimal=>'%d'}, :default_format=>:decimal
   end
 end  

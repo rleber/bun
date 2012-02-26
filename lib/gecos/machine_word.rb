@@ -69,6 +69,12 @@ class Class
   end
 end
 
+class String
+  def pluralize
+    self+'s'
+  end
+end
+
 class GenericNumeric
 
   def initialize(value)
@@ -284,8 +290,8 @@ module Machine
     end
   
     VALID_SIGNS = [:none, :ones_complement, :twos_complement]
-    # TODO Define :sign option: :none, :ones_complement, :twos_complement
-    # TODO Should be able to say word.integer and have it mean word.integer(0). Should word.byte mean word.byte(0) or word.byte(n)?
+    # TODO Should be able to say word.integer and have it mean word.integer(0)
+    # TODO Should word.byte mean word.byte(0) or word.byte(n)?
     # TODO Should be able to say word.integer.unsigned.octal
     # TODO Should be recursive -- i.e. Should be able to say word.half_word(0).byte(2)
     # TODO Define fields (i.e. non-repeating parts of a word)
@@ -294,13 +300,15 @@ module Machine
     # TODO Define signs other than at the beginning of a slice
     def self.define_slice(slice_name, options={})
       slice_name = slice_name.to_s.downcase
+      slices_name = slice_name.pluralize
       slice_size = options[:size]
       slice_offset = options[:offset] || 0
       nbits = options[:bits] || slice_size
       clipping_mask = options[:mask] || n_bit_masks[nbits]
-      default_format = options[:format] || :octal
+      default_format = options[:default_format] || :octal
       is_string = !!options[:string]
       sign = options[:sign] || :none
+      format_overrides = options[:format] || {}
     
       class_name = slice_name.gsub(/(^|_)(.)/) {|match| $2.upcase}
       if is_string
@@ -328,11 +336,10 @@ module Machine
         clip_to = (clipping_mask << (size - end_bits[n] - 1))
         res = mask & clip_to
       end
-
     
       define_parameter "#{slice_name}_size",              slice_size
       define_parameter "#{slice_name}_offset",            slice_offset
-      define_parameter "#{slice_name}s_per_word",         per_word
+      define_parameter "#{slices_name}_per_word",         per_word
       define_parameter "#{slice_name}_significant_bits",  nbits
       define_parameter "#{slice_name}_string?",           is_string
       define_parameter "#{slice_name}_clipping_mask",     clipping_mask
@@ -369,7 +376,8 @@ module Machine
       formats.each do |format, definition|
         next if format==:string && !is_string
         # TODO: Allow for unpadded formatting, and types which are unpadded by default
-        sample_values = [n_bit_masks[nbits], n_bit_masks[nbits-1]||0, 0]
+        definition = format_overrides[format] if format_overrides[format]
+        sample_values = [n_bit_masks[nbits], n_bit_masks[nbits-1]||0, n_bit_masks[0], 0]
         if format!=:string && nbits == 1 # Special case for single bits (binary, octal, decimal, and hex representations are all the same)
           definition = definition.gsub(/%.*(?:#{FORMAT_WIDTH_WILDCARD})?.*?([a-z])/, '%\1')
         end
@@ -419,12 +427,27 @@ module Machine
       def_method unshifted_method_name do |n|
         value & masks[n]
       end
-    
-      def_method slice_name do |n|
-        slice_class.new(:unsigned=>self.send(unshifted_method_name, n) >> shifts[n])
+      
+      if per_word == 1
+        def_method slice_name do |*args|
+          case args.size
+          when 0
+            n = 0
+          when 1
+            n = args.first
+          else
+            raise ArgumentError, "Wrong number of arguments for #{self.class}##{slice_name}() (#{args.size} of 0 or 1)"
+          end
+          slice_class.new(:unsigned=>self.send(unshifted_method_name, n) >> shifts[n])
+        end
+      else
+        def_method slice_name do |n|
+          raise ArgumentError, "Nil index or wrong number of arguments for #{self.class}##{slice_name} (0 of 1)" if n.nil?
+          slice_class.new(:unsigned=>self.send(unshifted_method_name, n) >> shifts[n])
+        end
       end
-      def_method "#{slice_name}s" do ||
-        # puts %Q{In #{self.name}##{slice_name}s: self=#{self.inspect}\nCaller:\n#{caller.map{|s| "  "+s}.join("\n")}}
+      def_method slices_name do ||
+        # puts %Q{In #{self.name}##{slices_name}: self=#{self.inspect}\nCaller:\n#{caller.map{|s| "  "+s}.join("\n")}}
         ary = Slice::Array.new
         (0...per_word).each {|n| ary << self.send(slice_name, n) }
         ary
