@@ -115,37 +115,18 @@ module Machine
       def self.clip(value)
         all_ones & value
       end
-  
-      def initialize(options={})
-        raise ArgumentError, "#{self.class} does not understand signed values" if options[:signed]
-        raise ArgumentError, "No value provided for #{self.class}" unless val=options[:unsigned]
-        raise RangeError, "Cannot initialize #{self.class} with a negative value" unless val >= 0
-        super(val)
-      end
-  
-      def unsigned
-        self.value
-      end
-      
-      def signed
-        self.value
-      end
     end
     
 
-    class Numeric < Base; end
+    class Numeric < Slice::Base; end
     
-    class Unsigned < Numeric; end
+    class Unsigned < Slice::Numeric
+    end
 
     module Signed
-      class TwosComplement < Numeric
+      class TwosComplement < Slice::Numeric
         
         class << self 
-          def complement(value)
-            raise RangeError, "Can't take complement of a negative number (#{value})" unless value >= 0
-            unprotected_complement(value)
-          end
-          
           def sign_bit
             0
           end
@@ -153,56 +134,74 @@ module Machine
           def sign_mask
             single_bit_mask(sign_bit)
           end
+          
+          def sign(val)
+            val & sign_mask
+          end
 
-          def unprotected_complement(value)
+          def complement(value)
             clip( ~value + 1)
           end
-          private :unprotected_complement
         end
     
-        def initialize(options={})
-          if val=options[:signed]
-            super(:unsigned=>complement(val))
-          else
-            super
-          end
+        attr_reader :ignore_sign
+        
+        def initialize(val, options={})
+          super(val)
+          @ignore_sign = options[:ignore_sign]
+          puts "In #{self.class}.new(#{val.inspect}): internal_value=#{internal_value.inspect}"
         end
         
         def value
-          signed
+          _signed
         end
     
         def sign
-          unsigned & self.class.sign_mask
+          (@ignore_sign ? 0 : self.class.sign(internal_value)) >> (size-self.class.sign_bit-1)
         end
 
         def complement
-          self.class.complement(unsigned)
+          self.class.new(_complement, :ignore_sign=>@ignore_sign)
         end
+
+        def _complement
+          self.class.complement(internal_value)
+        end
+        private :_complement
       
         def signed
-          sign==0 ? unsigned : negative_value
+          self.class.new(_signed, :ignore_sign=>false)
         end
+    
+        def _signed
+          sign==0 ? _unsigned : -_abs
+        end
+        private :_signed
         
         def unsigned
+          self.class.new(_unsigned, :ignore_sign=>true)
+        end
+        
+        def _unsigned
           internal_value
         end
+        private :_unsigned
       
-        def negative_value
-          -absolute_value
+        def abs
+          self.class.new(_abs, :ignore_sign=>@ignore_sign)
         end
-      
-        def absolute_value
-          sign==0 ? unsigned : complement
+        
+        def _abs
+          sign==0 ? _unsigned : _complement
         end
+        private :_abs
       end
       
       class OnesComplement < TwosComplement
         class << self 
-          def unprotected_complement(value)
+          def complement(value)
             clip( ~value)
           end
-          private :unprotected_complement
         end
       end
     end
@@ -298,7 +297,6 @@ module Machine
   
     VALID_SIGNS = [:none, :ones_complement, :twos_complement]
     # TODO Should word.byte mean word.byte(0) or word.byte(n)?
-    # TODO Should be able to say word.integer.unsigned.octal
     # TODO Should be recursive -- i.e. Should be able to say word.half_word(0).byte(2)
     # TODO Define bit and byte order (i.e. LR, RL)
     # TODO Define signs other than at the beginning of a slice
@@ -447,12 +445,12 @@ module Machine
           else
             raise ArgumentError, "Wrong number of arguments for #{self.class}##{slice_name}() (#{args.size} of 0 or 1)"
           end
-          slice_class.new(:unsigned=>self.send(unshifted_method_name, n) >> shifts[n])
+          slice_class.new(self.send(unshifted_method_name, n) >> shifts[n])
         end
       else
         def_method slice_name do |n|
           raise ArgumentError, "Nil index or wrong number of arguments for #{self.class}##{slice_name} (0 of 1)" if n.nil?
-          slice_class.new(:unsigned=>self.send(unshifted_method_name, n) >> shifts[n])
+          slice_class.new(self.send(unshifted_method_name, n) >> shifts[n])
         end
       end
       def_method slices_name do ||
