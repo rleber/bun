@@ -1,5 +1,11 @@
 # Class for defining generic machine words
 
+# TODO Write API documentation
+# TODO Significant refactoring to get rid of all the dynamic method definitions. For instance, could the 
+# API change to word.byte.clipping_mask, and could the slice classes be largely statically defined, and then instantiated
+# with a Slice::Definition object?
+
+# TODO Either get rid of this trace stuff, or make it better
 $trace = false
 
 class Object
@@ -17,6 +23,7 @@ class Class
     singleton_class.instance_eval do
       define_method(name) do |*args|
         # puts "In #{class_name}.#{name}(#{args.map{|a| a.inspect}.join(',')})" if $trace
+        # TODO Encapsulate parameter checking in a method, and use it everywhere: e.g. check_args(actual_arg_count, expected_arg_count)
         raise ArgumentError, "Incorrect number of arguments in #{class_name}.#{name}: #{args.size} for #{expected_arguments}" unless [nil, args.size].include?(expected_arguments)
         yield(*args)
       end
@@ -58,17 +65,7 @@ class Class
     def_method name do |n|
       self.send(name+"s")[n]
     end
-    # TODO This is redundant with def_class_method, but I can't figure out how to do the argument count checking there
-    puts "Dynamically defining class method (collection) #{class_name}.#{name}" if $trace
-    raise NameError, "Attempt to redefine class method #{class_name}.#{name}" if self.methods.include?(name)
-    singleton_class.instance_eval do
-      define_method(name) do |*args|
-        puts "In #{class_name}.#{name}(#{args.map{|a| a.inspect}.join(',')})" if $trace
-        raise ArgumentError, "Incorrect number of arguments in #{class_name}##{name}: #{args.size} for 1" unless args.size == 1
-        self.send(name+"s")[args.first]
-      end
-    end
-    # def_class_method(name.to_s.downcase) {|n| self.send(name+"s")[n] }
+    def_class_method(name.to_s.downcase) {|n| self.send(name+"s")[n] }
   end
   
   # TODO Remove this
