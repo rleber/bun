@@ -1,4 +1,7 @@
 # Class for defining generic machine words
+
+$trace = false
+
 class Object
   def singleton_class
     class << self; self; end
@@ -6,22 +9,34 @@ class Object
 end
 
 class Class
-  def def_class_method(name, &block)
+  def def_class_method(name, &blk)
     class_name = self.name
-    warn "Dynamically defining class method #{class_name}.#{name}" if $trace
     raise NameError, "Attempt to redefine class method #{class_name}.#{name}" if self.methods.include?(name)
+    puts "Dynamically defining class method #{class_name}.#{name}" if $trace
+    expected_arguments = blk.arity < 0 ? nil : blk.arity
     singleton_class.instance_eval do
       define_method(name) do |*args|
-        puts "In #{class_name}.#{name}(#{args.map{|a| a.inspect}.join(',')})" if $trace
-        yield
+        # puts "In #{class_name}.#{name}(#{args.map{|a| a.inspect}.join(',')})" if $trace
+        raise ArgumentError, "Incorrect number of arguments in #{class_name}.#{name}: #{args.size} for #{expected_arguments}" unless [nil, args.size].include?(expected_arguments)
+        yield(*args)
       end
     end
   end
   
   def def_method(name, &blk)
-    warn "Dynamically defining instance method #{self.name}##{name}" if $trace
-    raise NameError, "Attempt to redefine class method #{self.name}.#{name}" if self.instance_methods.include?(name)
+    class_name = self.name
+    raise NameError, "Attempt to redefine class method #{class_name}.#{name}" if self.instance_methods.include?(name)
+    puts "Dynamically defining instance method #{class_name}##{name}" if $trace
     define_method(name, &blk)
+    
+    # TODO Figure out why the following doesn't work -- it seems to bind block to the context of the class, rather than the instance:
+    # Based on http://blog.sidu.in/2007/11/ruby-blocks-gotchas.html, I think this MIGHT work in Ruby 1.9 with explicit block passing. I don't think it will work in Ruby 1.8
+    # expected_arguments = blk.arity < 0 ? nil : blk.arity
+    # define_method(name) do |*args|
+    #   # puts "In #{class_name}.#{name}(#{args.map{|a| a.inspect}.join(',')})" if $trace
+    #   raise ArgumentError, "Incorrect number of arguments in #{class_name}##{name}: #{args.size} for #{expected_arguments}" unless [nil, args.size].include?(expected_arguments)
+    #   blk.call(*args)
+    # end
   end
 
   def define_parameter(name, value=nil, &blk)
@@ -29,31 +44,22 @@ class Class
     value = yield if block_given?
     const_set name.to_s.upcase.sub(/[?!]?$/,''), value
     # TODO Do argument count checking
-    def_method(name) { value }
-    # TODO This is redundant with def_class_method, but I can't figure out how to do the argument count checking there
-    class_name = self.name
-    warn "Dynamically defining class method #{class_name}.#{name}" if $trace
-    raise NameError, "Attempt to redefine class method #{class_name}.#{name}" if self.methods.include?(name)
-    singleton_class.instance_eval do
-      define_method(name) do |*args|
-        puts "In #{class_name}.#{name}(#{args.map{|a| a.inspect}.join(',')})" if $trace
-        raise ArgumentError, "Incorrect number of arguments in #{class_name}##{name}: #{args.size} for 0" unless args.size == 0
-        value
-      end
-    end
+    def_method(name) {|| value }
+    def_class_method(name) {|| value }
     value
   end
   
   def define_collection(name, value=nil, &blk)
     name = name.to_s.downcase
+    class_name = self.name
     value = define_parameter(name+"s", value, &blk)
     # TODO Do argument count checking
+    puts "Dynamically defining instance method (collection) #{class_name}.#{name}" if $trace
     def_method name do |n|
       self.send(name+"s")[n]
     end
     # TODO This is redundant with def_class_method, but I can't figure out how to do the argument count checking there
-    class_name = self.name
-    warn "Dynamically defining class method #{class_name}.#{name}" if $trace
+    puts "Dynamically defining class method (collection) #{class_name}.#{name}" if $trace
     raise NameError, "Attempt to redefine class method #{class_name}.#{name}" if self.methods.include?(name)
     singleton_class.instance_eval do
       define_method(name) do |*args|
@@ -89,6 +95,10 @@ class GenericNumeric
     @n
   end
   protected :internal_value
+  
+  def inspect
+    "<#{self.class}: #{internal_value.inspect}>"
+  end
   
   def method_missing(name, *args, &blk)
     ret = @n.send(name, *args, &blk)
@@ -361,6 +371,7 @@ module Machine
       slice_class.define_collection "shift",       shifts
       slice_class.define_collection "mask",        masks
     
+      # TODO This method is too long. Refactor it
       slice_formats = {}
       formats.each do |format, definition|
         next if format==:string && !is_string
@@ -376,7 +387,7 @@ module Machine
         definition = definition.gsub(FORMAT_WIDTH_WILDCARD, width.to_s)
         slice_formats[format] = {:name=>format, :string=>definition, :max_width=>width}
         slice_class.define_parameter "#{format}_format_string", definition[:string]
-        slice_class.send(:def_method, format.to_s) do
+        slice_class.send(:def_method, format.to_s) do ||
           definition % [self.value]
         end
       end
@@ -407,7 +418,7 @@ module Machine
         format_string % values
       end
     
-      slice_class.send(:def_method, :inspect) do
+      slice_class.send(:def_method, :inspect) do ||
         format(:inspect)
       end
     
@@ -419,17 +430,19 @@ module Machine
       def_method slice_name do |n|
         slice_class.new(:unsigned=>self.send(unshifted_method_name, n) >> shifts[n])
       end
-      def_method "#{slice_name}s" do
+      def_method "#{slice_name}s" do ||
+        # puts %Q{In #{self.name}##{slice_name}s: self=#{self.inspect}\nCaller:\n#{caller.map{|s| "  "+s}.join("\n")}}
         ary = Slice::Array.new
         (0...per_word).each {|n| ary << self.send(slice_name, n) }
         ary
       end
 
       if is_string
-        slice_class.send(:def_method, :string) do
+        # TODO Why the send? Fix block arity
+        slice_class.send(:def_method, :string) do ||
           self.chr
         end
-        slice_class.send(:def_method, :string_inspect) do
+        slice_class.send(:def_method, :string_inspect) do ||
           self.string.inspect
         end
         def_method "#{slice_name}_string" do |n|

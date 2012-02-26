@@ -112,11 +112,10 @@ def show_slice_collection(word, slice, parameter, options={})
 end
 
 def show_value(expression, options={})
-  binding = options[:binding] || self.send(:binding)
   format = options[:format] || '%p'
   STDOUT.flush
   STDERR.flush
-  val = protected_eval(expression, binding)
+  val = protected_eval(expression, options[:binding]||binding)
   puts "#{expression} => #{format % [val]}"
 end
 
@@ -242,6 +241,8 @@ Gecos::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
   put_table splice_table(start_bit_table, shift_table(end_bit_table), shift_table(shift_bits_table), shift_table(mask_table))
   puts
   
+  # TODO Show slice-specific bit masks
+  
   format_type_table = format_slice_class_collection slice, "format_type"
   format_string_table = format_slice_class_collection slice, "format_string"
   format_width_table  = format_slice_class_collection slice, "format_width"
@@ -252,7 +253,7 @@ end
 $bytes = Gecos::Word.new(0111222333444)
 
 show_value "$bytes.value", :format=>WORD_FORMAT
-Gecos::Word.slice_names.each do |slice|
+Gecos::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
   show_word_slice "$bytes", slice
   puts
 end
