@@ -1,7 +1,7 @@
 Gecos::Word.size => 36
 Gecos::Word.all_ones => 777777777777
 Gecos::Word:
-n   single_bit_masks[n]  preceding_bit_masks[n]  following_bit_masks[n]  n_bit_masks[n]  lower_bit_masks[n]  upper_bit_masks[n]
+n   single_bit_masks[n]  strip_leading_bit_masks[n]  strip_trailing_bit_masks[n]  n_bit_masks[n]  lower_bit_masks[n]  upper_bit_masks[n]
 0   1000000000000        777777777777            777777777777            000000000000    000000000000        000000000000      
 1   400000000000         377777777777            777777777776            000000000001    000000000001        400000000000      
 2   200000000000         177777777777            777777777774            000000000003    000000000003        600000000000      

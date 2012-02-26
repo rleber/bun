@@ -2,6 +2,7 @@ require 'pp'
 # TODO Move this to a Gem
 class Array
   # Take an array of columns and justify each column so that they're all the same width
+  # TODO What if columns aren't all the same size?
   def justify_columns
     widths = self.map do |column|
       column.map{|entry| entry.to_s.size}.max
@@ -15,7 +16,23 @@ class Array
   
   # Take an array of rows and justify them so each column is all the same width
   def justify_rows
-    # TODO Protect against IndexError, if all the rows aren't the same length
-    self.transpose.justify_columns.transpose
+    self.normalized_transpose.justify_columns.transpose
+  end
+  
+  def row_sizes
+    self.map{|row| row.size}
+  end
+  
+  # Like transpose, but pads rows out with the specified padding if they're too short
+  def normalized_transpose(pad='')
+    sizes = row_sizes
+    min_size = sizes.min
+    max_size = sizes.max
+    source = if min_size != max_size # Multiple row sizes
+      map{|row| row + [pad]*(max_size - row.size)}
+    else
+      source = self
+    end
+    source.transpose
   end
 end

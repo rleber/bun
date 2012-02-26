@@ -217,10 +217,6 @@ module Machine
         self.map{|e| e.string}.join
       end
       
-      def string_inspect
-        string.inspect
-      end
-    
       def values
         self.map{|e| e.values}
       end
@@ -242,20 +238,20 @@ module Machine
     def self.define_size(word_size)
       ones = eval('0b' + ('1'*word_size))
       # Has an extra entry, for consistency with other collections
-      single_bit_masks    = (0..word_size).map {|n| 1<<n }.reverse
+      single_bit_masks    = (0...word_size).map {|n| 1<<n }.reverse + [0]
       # Note that the following collections all have one extra entry
-      preceding_bit_masks = (0..word_size).map {|n| ones>>n }
-      following_bit_masks = (0..word_size).map {|n| ones & (ones << n) }
-      lower_bit_masks     = preceding_bit_masks.reverse
+      strip_leading_bit_masks = (0..word_size).map {|n| ones>>n }
+      strip_trailing_bit_masks = (0..word_size).map {|n| ones & (ones << n) }
+      lower_bit_masks     = strip_leading_bit_masks.reverse
       n_bit_masks         = lower_bit_masks
-      upper_bit_masks     = following_bit_masks.reverse
+      upper_bit_masks     = strip_trailing_bit_masks.reverse
 
       define_parameter :size, word_size
       define_parameter :all_ones, ones
     
       define_collection :single_bit_mask,    single_bit_masks
-      define_collection :preceding_bit_mask, preceding_bit_masks
-      define_collection :following_bit_mask, following_bit_masks
+      define_collection :strip_leading_bit_mask, strip_leading_bit_masks
+      define_collection :strip_trailing_bit_mask, strip_trailing_bit_masks
       define_collection :n_bit_mask,         n_bit_masks
       define_collection :lower_bit_mask,     lower_bit_masks
       define_collection :upper_bit_mask,     upper_bit_masks
@@ -264,7 +260,7 @@ module Machine
     end
   
     def self.make_bit_mask(from, to)
-      preceding_bit_masks[from] & upper_bit_masks[to+1]
+      strip_leading_bit_masks[from] & upper_bit_masks[to+1]
     end
   
     def self.exclusive_bit_mask(from, to)
@@ -348,12 +344,13 @@ module Machine
       slice_class.define_parameter  "string?",            is_string
       slice_class.define_parameter  "clipping_mask",      clipping_mask
 
-      slice_class.define_collection "single_bit_mask",    single_bit_masks[-slice_size..-1]
-      slice_class.define_collection "preceding_bit_mask", preceding_bit_masks[-(slice_size+1)..-1]
-      slice_class.define_collection "following_bit_mask", following_bit_masks[0..slice_size]
-      slice_class.define_collection "n_bit_mask",         n_bit_masks[0..slice_size]
-      slice_class.define_collection "lower_bit_mask",     lower_bit_masks[0..slice_size]
-      slice_class.define_collection "upper_bit_mask",     upper_bit_masks[-(slice_size+1)..-1]
+      # Again, all the bit masks have an extra entry
+      slice_class.define_collection "single_bit_mask",    single_bit_masks[-(nbits+1)..-1]
+      slice_class.define_collection "strip_leading_bit_mask", strip_leading_bit_masks[-(nbits+1)..-1]
+      slice_class.define_collection "strip_trailing_bit_mask", strip_trailing_bit_masks[0..nbits]
+      slice_class.define_collection "n_bit_mask",         n_bit_masks[0..nbits]
+      slice_class.define_collection "lower_bit_mask",     lower_bit_masks[0..nbits]
+      slice_class.define_collection "upper_bit_mask",     upper_bit_masks[-(nbits+1)..-1]
       slice_class.define_parameter  "all_ones",           all_ones & clipping_mask
 
 
@@ -434,12 +431,8 @@ module Machine
       end
 
       if is_string
-        # TODO Why the send?
         slice_class.def_method(:string) do ||
           self.chr
-        end
-        slice_class.def_method(:string_inspect) do ||
-          self.string.inspect
         end
         def_method "#{slice_name}_string" do |n|
           (0...per_word).map {|n| self.send(slice_name, n).string }
