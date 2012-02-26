@@ -40,119 +40,6 @@ n   single_bit_masks[n]  preceding_bit_masks[n]  following_bit_masks[n]  n_bit_m
 35  000000000002         000000000001            400000000000            377777777777    377777777777        777777777776      
 36  000000000001         000000000000            000000000000            777777777777    777777777777        777777777777      
 
-Gecos::Word::Word:
-Parameter         Gecos::Word    Gecos::Word::Word
-size              36             36               
-offset            0              0                
-(s_)per_word      1              1                
-significant_bits  36             36               
-clipping_mask     0777777777777  0777777777777    
-string?           false          false            
-
-n  start_bits[n]  end_bits[n]  shifts[n]  masks[n]    
-0  0              35           0          777777777777
-
-n  format_types[n]  key       format_strings[key]  format_widths[key]
-0  :binary          :binary   "%0#38b"             38                
-1  :decimal         :decimal  "%11d"               11                
-2  :default         :default  "%0#13o"             13                
-3  :hex             :hex      "%0#11x"             11                
-4  :inspect         :inspect  "%0#13o"             13                
-5  :octal           :octal    "%0#13o"             13                
-
-Gecos::Word::HalfWord:
-Parameter         Gecos::Word   Gecos::Word::HalfWord
-size              18            18                   
-offset            0             0                    
-(s_)per_word      2             2                    
-significant_bits  18            18                   
-clipping_mask     000000777777  000000777777         
-string?           false         false                
-
-n  start_bits[n]  end_bits[n]  shifts[n]  masks[n]    
-0  0              17           18         777777000000
-1  18             35           0          000000777777
-
-n  format_types[n]  key       format_strings[key]  format_widths[key]
-0  :binary          :binary   "%0#20b"             20                
-1  :decimal         :decimal  "%6d"                6                 
-2  :default         :default  "%0#7o"              7                 
-3  :hex             :hex      "%0#7x"              7                 
-4  :inspect         :inspect  "%0#7o"              7                 
-5  :octal           :octal    "%0#7o"              7                 
-
-Gecos::Word::Byte:
-Parameter         Gecos::Word   Gecos::Word::Byte
-size              9             9                
-offset            0             0                
-(s_)per_word      4             4                
-significant_bits  9             9                
-clipping_mask     000000000777  000000000777     
-string?           false         false            
-
-n  start_bits[n]  end_bits[n]  shifts[n]  masks[n]    
-0  0              8            27         777000000000
-1  9              17           18         000777000000
-2  18             26           9          000000777000
-3  27             35           0          000000000777
-
-n  format_types[n]  key       format_strings[key]  format_widths[key]
-0  :binary          :binary   "%0#11b"             11                
-1  :decimal         :decimal  "%3d"                3                 
-2  :default         :default  "%0#4o"              4                 
-3  :hex             :hex      "%0#5x"              5                 
-4  :inspect         :inspect  "%0#4o"              4                 
-5  :octal           :octal    "%0#4o"              4                 
-
-Gecos::Word::Character:
-Parameter         Gecos::Word   Gecos::Word::Character
-size              9             9                     
-offset            0             0                     
-(s_)per_word      4             4                     
-significant_bits  7             7                     
-clipping_mask     000000000177  000000000177          
-string?           true          true                  
-
-n  start_bits[n]  end_bits[n]  shifts[n]  masks[n]    
-0  0              8            27         177000000000
-1  9              17           18         000177000000
-2  18             26           9          000000177000
-3  27             35           0          000000000177
-
-n  format_types[n]  key       format_strings[key]  format_widths[key]
-0  :binary          :binary   "%0#9b"              9                 
-1  :decimal         :decimal  "%3d"                3                 
-2  :default         :default  "%0#4o"              4                 
-3  :hex             :hex      "%0#4x"              4                 
-4  :inspect         :inspect  "%0#4o::%-1s"        7                 
-5  :octal           :octal    "%0#4o"              4                 
-6  :string          :string   "%-1s"               1                 
-
-Gecos::Word::PackedCharacter:
-Parameter         Gecos::Word   Gecos::Word::PackedCharacter
-size              7             7                           
-offset            1             1                           
-(s_)per_word      5             5                           
-significant_bits  7             7                           
-clipping_mask     000000000177  000000000177                
-string?           true          true                        
-
-n  start_bits[n]  end_bits[n]  shifts[n]  masks[n]    
-0  1              7            28         376000000000
-1  8              14           21         001770000000
-2  15             21           14         000007740000
-3  22             28           7          000000037600
-4  29             35           0          000000000177
-
-n  format_types[n]  key       format_strings[key]  format_widths[key]
-0  :binary          :binary   "%0#9b"              9                 
-1  :decimal         :decimal  "%3d"                3                 
-2  :default         :default  "%0#4o"              4                 
-3  :hex             :hex      "%0#4x"              4                 
-4  :inspect         :inspect  "%0#4o::%-1s"        7                 
-5  :octal           :octal    "%0#4o"              4                 
-6  :string          :string   "%-1s"               1                 
-
 Gecos::Word::Bit:
 Parameter         Gecos::Word   Gecos::Word::Bit
 size              1             1               
@@ -207,6 +94,139 @@ n  format_types[n]  key       format_strings[key]  format_widths[key]
 3  :hex             :hex      "%x"                 1                 
 4  :inspect         :inspect  "%o"                 1                 
 5  :octal           :octal    "%o"                 1                 
+
+Gecos::Word::Byte:
+Parameter         Gecos::Word   Gecos::Word::Byte
+size              9             9                
+offset            0             0                
+(s_)per_word      4             4                
+significant_bits  9             9                
+clipping_mask     000000000777  000000000777     
+string?           false         false            
+
+n  start_bits[n]  end_bits[n]  shifts[n]  masks[n]    
+0  0              8            27         777000000000
+1  9              17           18         000777000000
+2  18             26           9          000000777000
+3  27             35           0          000000000777
+
+n  format_types[n]  key       format_strings[key]  format_widths[key]
+0  :binary          :binary   "%0#11b"             11                
+1  :decimal         :decimal  "%3d"                3                 
+2  :default         :default  "%0#4o"              4                 
+3  :hex             :hex      "%0#5x"              5                 
+4  :inspect         :inspect  "%0#4o"              4                 
+5  :octal           :octal    "%0#4o"              4                 
+
+Gecos::Word::Character:
+Parameter         Gecos::Word   Gecos::Word::Character
+size              9             9                     
+offset            0             0                     
+(s_)per_word      4             4                     
+significant_bits  7             7                     
+clipping_mask     000000000177  000000000177          
+string?           true          true                  
+
+n  start_bits[n]  end_bits[n]  shifts[n]  masks[n]    
+0  0              8            27         177000000000
+1  9              17           18         000177000000
+2  18             26           9          000000177000
+3  27             35           0          000000000177
+
+n  format_types[n]  key       format_strings[key]  format_widths[key]
+0  :binary          :binary   "%0#9b"              9                 
+1  :decimal         :decimal  "%3d"                3                 
+2  :default         :default  "%0#4o"              4                 
+3  :hex             :hex      "%0#4x"              4                 
+4  :inspect         :inspect  "%0#4o::%-1s"        7                 
+5  :octal           :octal    "%0#4o"              4                 
+6  :string          :string   "%-1s"               1                 
+
+Gecos::Word::HalfWord:
+Parameter         Gecos::Word   Gecos::Word::HalfWord
+size              18            18                   
+offset            0             0                    
+(s_)per_word      2             2                    
+significant_bits  18            18                   
+clipping_mask     000000777777  000000777777         
+string?           false         false                
+
+n  start_bits[n]  end_bits[n]  shifts[n]  masks[n]    
+0  0              17           18         777777000000
+1  18             35           0          000000777777
+
+n  format_types[n]  key       format_strings[key]  format_widths[key]
+0  :binary          :binary   "%0#20b"             20                
+1  :decimal         :decimal  "%6d"                6                 
+2  :default         :default  "%0#7o"              7                 
+3  :hex             :hex      "%0#7x"              7                 
+4  :inspect         :inspect  "%0#7o"              7                 
+5  :octal           :octal    "%0#7o"              7                 
+
+Gecos::Word::Integer:
+Parameter         Gecos::Word    Gecos::Word::Integer
+size              36             36                  
+offset            0              0                   
+(s_)per_word      1              1                   
+significant_bits  36             36                  
+clipping_mask     0777777777777  0777777777777       
+string?           false          false               
+
+n  start_bits[n]  end_bits[n]  shifts[n]  masks[n]    
+0  0              35           0          777777777777
+
+n  format_types[n]  key       format_strings[key]  format_widths[key]
+0  :binary          :binary   "%0#38b"             38                
+1  :decimal         :decimal  "%11d"               11                
+2  :default         :default  "%0#13o"             13                
+3  :hex             :hex      "%0#11x"             11                
+4  :inspect         :inspect  "%0#13o"             13                
+5  :octal           :octal    "%0#13o"             13                
+
+Gecos::Word::PackedCharacter:
+Parameter         Gecos::Word   Gecos::Word::PackedCharacter
+size              7             7                           
+offset            1             1                           
+(s_)per_word      5             5                           
+significant_bits  7             7                           
+clipping_mask     000000000177  000000000177                
+string?           true          true                        
+
+n  start_bits[n]  end_bits[n]  shifts[n]  masks[n]    
+0  1              7            28         376000000000
+1  8              14           21         001770000000
+2  15             21           14         000007740000
+3  22             28           7          000000037600
+4  29             35           0          000000000177
+
+n  format_types[n]  key       format_strings[key]  format_widths[key]
+0  :binary          :binary   "%0#9b"              9                 
+1  :decimal         :decimal  "%3d"                3                 
+2  :default         :default  "%0#4o"              4                 
+3  :hex             :hex      "%0#4x"              4                 
+4  :inspect         :inspect  "%0#4o::%-1s"        7                 
+5  :octal           :octal    "%0#4o"              4                 
+6  :string          :string   "%-1s"               1                 
+
+Gecos::Word::Word:
+Parameter         Gecos::Word    Gecos::Word::Word
+size              36             36               
+offset            0              0                
+(s_)per_word      1              1                
+significant_bits  36             36               
+clipping_mask     0777777777777  0777777777777    
+string?           false          false            
+
+n  start_bits[n]  end_bits[n]  shifts[n]  masks[n]    
+0  0              35           0          777777777777
+
+n  format_types[n]  key       format_strings[key]  format_widths[key]
+0  :binary          :binary   "%0#38b"             38                
+1  :decimal         :decimal  "%11d"               11                
+2  :default         :default  "%0#13o"             13                
+3  :hex             :hex      "%0#11x"             11                
+4  :inspect         :inspect  "%0#13o"             13                
+5  :octal           :octal    "%0#13o"             13                
 
 $bytes.value => 111222333444
 $bytes.words => [0111222333444]
@@ -281,3 +301,14 @@ n   value         :binary  :decimal  :default  :hex  :inspect  :octal
 34  000000000000  0        0         0         0     0         0     
 35  000000000000  0        0         0         0     0         0     
 
+$bytes.integers => [0111222333444]
+n  value         :binary                                 :decimal     :default       :hex         :inspect       :octal       
+0  111222333444  0b001001001010010010011011011100100100   9836279588  0111222333444  0x24a49b724  0111222333444  0111222333444
+
+$bytes-5 => 111222333437
+3+$bytes => 111222333447
+'First character: '+($bytes.character(0)) => "First character: I"
+$bytes.character(0)+': is here' => "I: is here"
+$bytes.character(0).add(2) => 75
+$negative.integer(0).signed => -1
+$negative.integer(0).unsigned => 777777777777

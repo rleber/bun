@@ -24,6 +24,7 @@ class GECOS
         characters = decoder.characters
         character_block_size = UNFROZEN_CHARACTERS_PER_WORD
       end
+      # TODO Refactor using Array#justify_rows
       address_width = ('%o'%(limit+display_offset)).size
       i = offset
       loop do

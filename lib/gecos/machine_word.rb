@@ -224,6 +224,7 @@ module Machine
   class Word < GenericNumeric
   
     FORMAT_WIDTH_WILDCARD = /<width>/
+    # TODO Could this be improved using the '*' sprintf flag?
     define_parameter :formats, {
       :binary=>  "%0#<width>b", 
       :octal=>   "%0#<width>o", 
