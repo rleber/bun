@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+
+# TODO Turn this into a set of RSpec tests
+
 target = File.dirname(__FILE__) + '/../lib'
 $:.unshift(target) unless $:.include?(target) || $:.include?(File.expand_path(target))
 
