@@ -115,7 +115,7 @@ def show_value(expression, options={})
   format = options[:format] || '%p'
   STDOUT.flush
   STDERR.flush
-  val = protected_eval(expression, options[:binding]||binding)
+  val = protected_eval(expression, options[:binding])
   puts "#{expression} => #{format % [val]}"
 end
 
@@ -188,16 +188,19 @@ def show_slice_class_collection(slice, name, options={})
 end
 
 def show_word_slice(word, slice, options={})
-  binding = options[:binding] || binding
+  binding = options[:binding]
   klass_name = class_name(slice)
   has_string = protected_eval("#{klass_name}.string?")
   show_value "#{word}.#{slice}s", :binding=>binding
   collection = protected_eval("#{word}.#{slice}s", binding)
-  show_value "#{word}.#{slice}s.merge", :binding=>binding if has_string
+  if has_string
+    show_value "#{word}.#{slice}s.string", :format=>'%s', :binding=>binding
+    show_value "#{word}.#{slice}s.string_inspect", :format=>'%s', :binding=>binding
+  end
   table = []
   formats = protected_eval("#{klass_name}.format_types")
   heading = ["n", "value"] + formats.map{|f| f.inspect }
-  heading << "string" if has_string
+  heading += ["string", "string_inspect"] if has_string
   table << heading
   collection.each_with_index do |byte, n|
     value = protected_eval("#{word}.#{slice}(#{n}).value", binding)
@@ -205,7 +208,10 @@ def show_word_slice(word, slice, options={})
     row += formats.map do |format|
       protected_eval("#{word}.#{slice}(#{n}).format(#{format.inspect})", binding)
     end
-    row << protected_eval("#{word}.#{slice}(#{n}).string.inspect", binding) if has_string
+    if has_string
+      row << protected_eval("#{word}.#{slice}(#{n}).string", binding)
+      row << protected_eval("#{word}.#{slice}(#{n}).string_inspect", binding)
+    end
     table << row
   end
   table = table.justify_rows
@@ -261,6 +267,7 @@ end
 # Does arithmetic work?
 show_value "$bytes-5", :format=>WORD_FORMAT
 show_value "3+$bytes", :format=>WORD_FORMAT
+show_value "$bytes.packed_characters.string"
 
 # Does string manipulation work?
 show_value "'First character: '+($bytes.character(0))"

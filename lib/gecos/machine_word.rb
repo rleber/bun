@@ -213,8 +213,12 @@ module Machine
     end
   
     class Array < ::Array
-      def merge
+      def string
         self.map{|e| e.string}.join
+      end
+      
+      def string_inspect
+        string.inspect
       end
     
       def values
@@ -430,11 +434,11 @@ module Machine
       end
 
       if is_string
-        # TODO Why the send? Fix block arity
-        slice_class.send(:def_method, :string) do ||
+        # TODO Why the send?
+        slice_class.def_method(:string) do ||
           self.chr
         end
-        slice_class.send(:def_method, :string_inspect) do ||
+        slice_class.def_method(:string_inspect) do ||
           self.string.inspect
         end
         def_method "#{slice_name}_string" do |n|
