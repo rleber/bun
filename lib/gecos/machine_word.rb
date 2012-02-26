@@ -1,5 +1,4 @@
 # Class for defining generic machine words
-
 class Object
   def singleton_class
     class << self; self; end
@@ -7,10 +6,13 @@ class Object
 end
 
 class Class
-  def define_class_method(name, &block)
-    warn "Dynamically defining class method #{self.class}.#{name}" if $trace
+  def def_class_method(name, &block)
+    class_name = self.name
+    warn "Dynamically defining class method #{class_name}.#{name}" if $trace
+    raise NameError, "Attempt to redefine class method #{class_name}.#{name}" if self.methods.include?(name)
     singleton_class.instance_eval do
-      define_method(name) do
+      define_method(name) do |*args|
+        puts "In #{class_name}.#{name}(#{args.map{|a| a.inspect}.join(',')})" if $trace
         yield
       end
     end
@@ -18,15 +20,26 @@ class Class
   
   def def_method(name, &blk)
     warn "Dynamically defining instance method #{self.name}##{name}" if $trace
+    raise NameError, "Attempt to redefine class method #{self.name}.#{name}" if self.instance_methods.include?(name)
     define_method(name, &blk)
   end
 
   def define_parameter(name, value=nil, &blk)
+    name = name.to_s.downcase
     value = yield if block_given?
     const_set name.to_s.upcase.sub(/[?!]?$/,''), value
-    def_method(name.to_s.downcase) { value }
+    # TODO Do argument count checking
+    def_method(name) { value }
+    # TODO This is redundant with def_class_method, but I can't figure out how to do the argument count checking there
+    class_name = self.name
+    warn "Dynamically defining class method #{class_name}.#{name}" if $trace
+    raise NameError, "Attempt to redefine class method #{class_name}.#{name}" if self.methods.include?(name)
     singleton_class.instance_eval do
-      def_method(name.to_s.downcase) { value }
+      define_method(name) do |*args|
+        puts "In #{class_name}.#{name}(#{args.map{|a| a.inspect}.join(',')})" if $trace
+        raise ArgumentError, "Incorrect number of arguments in #{class_name}##{name}: #{args.size} for 0" unless args.size == 0
+        value
+      end
     end
     value
   end
@@ -34,12 +47,22 @@ class Class
   def define_collection(name, value=nil, &blk)
     name = name.to_s.downcase
     value = define_parameter(name+"s", value, &blk)
+    # TODO Do argument count checking
     def_method name do |n|
       self.send(name+"s")[n]
     end
+    # TODO This is redundant with def_class_method, but I can't figure out how to do the argument count checking there
+    class_name = self.name
+    warn "Dynamically defining class method #{class_name}.#{name}" if $trace
+    raise NameError, "Attempt to redefine class method #{class_name}.#{name}" if self.methods.include?(name)
     singleton_class.instance_eval do
-      def_method(name.to_s.downcase) {|n| self.send(name+"s")[n] }
+      define_method(name) do |*args|
+        puts "In #{class_name}.#{name}(#{args.map{|a| a.inspect}.join(',')})" if $trace
+        raise ArgumentError, "Incorrect number of arguments in #{class_name}##{name}: #{args.size} for 1" unless args.size == 1
+        self.send(name+"s")[args.first]
+      end
     end
+    # def_class_method(name.to_s.downcase) {|n| self.send(name+"s")[n] }
   end
   
   # TODO Remove this
@@ -49,19 +72,26 @@ end
 
 class GenericNumeric
 
-  attr_reader :value
-  
   def initialize(value)
     raise TypeError, "Value for #{self.class} not numeric (#{value.inspect})" unless value.is_a?(Numeric)
-    @value = value
+    @n = value
   end
 
   def to_int
-    @value
+    @n
   end
   
+  def value
+    @n
+  end
+  
+  def internal_value
+    @n
+  end
+  protected :internal_value
+  
   def method_missing(name, *args, &blk)
-    ret = @value.send(name, *args, &blk)
+    ret = @n.send(name, *args, &blk)
     ret.is_a?(Numeric) ? self.class.new(ret) : ret
   end
 end
@@ -71,17 +101,21 @@ module Machine
   module Slice
     class Base < GenericNumeric
       def self.clip(value)
-        self.class.all_ones & value
+        all_ones & value
       end
   
       def initialize(options={})
-        raise RuntimeError, "#{self.class} does not understand signed values" if options[:signed_value]
-        raise RuntimeError, "No value provided for #{self.class}" unless val=options[:unsigned_value]
+        raise RuntimeError, "#{self.class} does not understand signed values" if options[:signed]
+        raise RuntimeError, "No value provided for #{self.class}" unless val=options[:unsigned]
         raise RuntimeError, "Cannot initialize #{self.class} with a negative value" unless val >= 0
         super(val)
       end
   
-      def unsigned_value
+      def unsigned
+        self.value
+      end
+      
+      def signed
         self.value
       end
     end
@@ -95,9 +129,9 @@ module Machine
       class TwosComplement < Numeric
         
         class << self 
-          def complement(bits)
-            raise RuntimeError, "Can't take complement of a negative number (#{bits})" unless bits >= 0
-            unprotected_complement(bits)
+          def complement(nbits)
+            raise RuntimeError, "Can't take complement of a negative number (#{nbits})" unless nbits >= 0
+            unprotected_complement(nbits)
           end
           
           def sign_bit
@@ -105,7 +139,7 @@ module Machine
           end
           
           def sign_mask
-            single_bit_masks[sign_bit]
+            single_bit_mask(sign_bit)
           end
 
           def unprotected_complement(value)
@@ -115,23 +149,31 @@ module Machine
         end
     
         def initialize(options={})
-          if val=options[:signed_value]
-            super(:unsigned_value=>complement(val))
+          if val=options[:signed]
+            super(:unsigned=>complement(val))
           else
             super
           end
         end
+        
+        def value
+          signed
+        end
     
         def sign
-          @unsigned_value & self.class.sign_mask
+          unsigned & self.class.sign_mask
         end
 
         def complement
-          self.class.complement(@unsigned_value)
+          self.class.complement(unsigned)
         end
       
-        def signed_value
-          sign==0 ? @unsigned_value : negative_value
+        def signed
+          sign==0 ? unsigned : negative_value
+        end
+        
+        def unsigned
+          internal_value
         end
       
         def negative_value
@@ -139,7 +181,7 @@ module Machine
         end
       
         def absolute_value
-          sign==0 ? @unsigned_value : complement
+          sign==0 ? unsigned : complement
         end
       end
       
@@ -155,15 +197,15 @@ module Machine
   
     class String < Base
       def to_str
-        @value.chr
+        internal_value.chr
       end
     
       def +(other)
-        @value.chr + other
+        internal_value.chr + other
       end
     
       def add(other)
-        @value + other
+        internal_value + other
       end
     end
   
@@ -213,12 +255,12 @@ module Machine
       define_slice :word, :size=>word_size
     end
   
-    def self.bit_mask(from, to)
+    def self.make_bit_mask(from, to)
       preceding_bit_masks[from] & upper_bit_masks[to+1]
     end
   
     def self.exclusive_bit_mask(from, to)
-      all_ones ^ bit_mask(from, to)
+      all_ones ^ make_bit_mask(from, to)
     end
   
     def self.slice_start_bit(n, size, offset=0)
@@ -230,7 +272,7 @@ module Machine
     end
   
     def self.slice_mask(n, size, offset)
-      bit_mask(slice_start_bit(n, size, offset), slice_end_bit(n, size, offset))
+      make_bit_mask(slice_start_bit(n, size, offset), slice_end_bit(n, size, offset))
     end
   
     def self.slices_per_word(slice_size, offset)
@@ -239,6 +281,9 @@ module Machine
   
     VALID_SIGNS = [:none, :ones_complement, :twos_complement]
     # TODO Define :sign option: :none, :ones_complement, :twos_complement
+    # TODO Should be able to say word.integer and have it mean word.integer(0). Should word.byte mean word.byte(0) or word.byte(n)?
+    # TODO Should be able to say word.integer.unsigned.octal
+    # TODO Should be recursive -- i.e. Should be able to say word.half_word(0).byte(2)
     # TODO Define fields (i.e. non-repeating parts of a word)
     # TODO Define structures (i.e. a sequence of fields -- possibly multiword?)
     # TODO Define bit and byte order (i.e. LR, RL)
@@ -247,8 +292,8 @@ module Machine
       slice_name = slice_name.to_s.downcase
       slice_size = options[:size]
       slice_offset = options[:offset] || 0
-      bits = options[:bits] || slice_size
-      clipping_mask = options[:mask] || n_bit_masks[bits]
+      nbits = options[:bits] || slice_size
+      clipping_mask = options[:mask] || n_bit_masks[nbits]
       default_format = options[:format] || :octal
       is_string = !!options[:string]
       sign = options[:sign] || :none
@@ -268,13 +313,7 @@ module Machine
       slice_class = Class.new(parent)
       const_set(class_name, slice_class)
       add_slice(slice_name, options.merge(:class=>slice_class))
-
-      # slice_class.send(:def_method, :initialize) do |value|
-      #   @value = value
-      # end
-      # slice_class.send(:attr_accessor, :value)
-      # slice_class.send(:attr_reader, :unsigned_value)
-    
+      
       per_word = slices_per_word(slice_size, slice_offset)
       start_bits = (0...per_word).map{|n| slice_start_bit(n, slice_size, slice_offset) }
       end_bits = (0...per_word).map{|n| slice_end_bit(n, slice_size, slice_offset) }
@@ -285,25 +324,35 @@ module Machine
         clip_to = (clipping_mask << (size - end_bits[n] - 1))
         res = mask & clip_to
       end
+
     
-      define_parameter "#{slice_name}_slice_size",             slice_size
-      define_parameter "#{slice_name}_slice_offset",           slice_offset
-      define_parameter "#{slice_name}_slices_per_word",        per_word
-      define_parameter "#{slice_name}_slice_significant_bits", bits
-      define_parameter "#{slice_name}_slice_string?",          !!is_string
-      define_parameter "#{slice_name}_slice_clipping_mask",    clipping_mask
+      define_parameter "#{slice_name}_size",              slice_size
+      define_parameter "#{slice_name}_offset",            slice_offset
+      define_parameter "#{slice_name}s_per_word",         per_word
+      define_parameter "#{slice_name}_significant_bits",  nbits
+      define_parameter "#{slice_name}_string?",           is_string
+      define_parameter "#{slice_name}_clipping_mask",     clipping_mask
     
-      slice_class.define_parameter  "size",              slice_size
-      slice_class.define_parameter  "offset",            slice_offset
-      slice_class.define_parameter  "per_word",          per_word
-      slice_class.define_parameter  "significant_bits",  bits
-      slice_class.define_parameter  "string?",           is_string
-      slice_class.define_parameter  "clipping_mask",     clipping_mask
-    
-      define_collection "#{slice_name}_slice_end_bit",   end_bits
-      define_collection "#{slice_name}_slice_start_bit", start_bits
-      define_collection "#{slice_name}_slice_shift",     shifts
-      define_collection "#{slice_name}_slice_mask",      masks
+      slice_class.define_parameter  "size",               slice_size
+      slice_class.define_parameter  "offset",             slice_offset
+      slice_class.define_parameter  "per_word",           per_word
+      slice_class.define_parameter  "significant_bits",   nbits
+      slice_class.define_parameter  "string?",            is_string
+      slice_class.define_parameter  "clipping_mask",      clipping_mask
+
+      slice_class.define_collection "single_bit_mask",    single_bit_masks[-slice_size..-1]
+      slice_class.define_collection "preceding_bit_mask", preceding_bit_masks[-(slice_size+1)..-1]
+      slice_class.define_collection "following_bit_mask", following_bit_masks[0..slice_size]
+      slice_class.define_collection "n_bit_mask",         n_bit_masks[0..slice_size]
+      slice_class.define_collection "lower_bit_mask",     lower_bit_masks[0..slice_size]
+      slice_class.define_collection "upper_bit_mask",     upper_bit_masks[-(slice_size+1)..-1]
+      slice_class.define_parameter  "all_ones",           all_ones & clipping_mask
+
+
+      define_collection "#{slice_name}_end_bit",   end_bits
+      define_collection "#{slice_name}_start_bit", start_bits
+      define_collection "#{slice_name}_shift",     shifts
+      define_collection "#{slice_name}_mask",      masks
 
       slice_class.define_collection "end_bit",     end_bits
       slice_class.define_collection "start_bit",   start_bits
@@ -313,8 +362,9 @@ module Machine
       slice_formats = {}
       formats.each do |format, definition|
         next if format==:string && !is_string
-        sample_values = [n_bit_masks[bits], n_bit_masks[bits-1]||0, 0]
-        if format!=:string && bits == 1 # Special case for single bits (binary, octal, decimal, and hex representations are all the same)
+        # TODO: Allow for unpadded formatting, and types which are unpadded by default
+        sample_values = [n_bit_masks[nbits], n_bit_masks[nbits-1]||0, 0]
+        if format!=:string && nbits == 1 # Special case for single bits (binary, octal, decimal, and hex representations are all the same)
           definition = definition.gsub(/%.*(?:#{FORMAT_WIDTH_WILDCARD})?.*?([a-z])/, '%\1')
         end
         sample_definition = definition.gsub(FORMAT_WIDTH_WILDCARD, '')
@@ -365,7 +415,7 @@ module Machine
       end
     
       def_method slice_name do |n|
-        slice_class.new(:unsigned_value=>self.send(unshifted_method_name, n) >> shifts[n])
+        slice_class.new(:unsigned=>self.send(unshifted_method_name, n) >> shifts[n])
       end
       def_method "#{slice_name}s" do
         ary = Slice::Array.new
@@ -395,22 +445,22 @@ module Machine
     end
   
     def unshifted_bits(from, to)
-      value & bit_mask(from, to)
+      value & make_bit_mask(from, to)
     end
   
     # TODO Allow negative indexing
     # TODO Consider a change which would permit indexing a la Array[]
-    def bits(from, to)
+    def get_bits(from, to)
       unshifted_bits(from, to) >> (size - to)
     end
   
-    def bit(at)
-      bits(at, at)
+    def get_bit(at)
+      get_bits(at, at)
     end
   
     def slice(n, size, offset=0)
       start = (n-1)*size + offset
-      bits(start, start+size-1)
+      get_bits(start, start+size-1)
     end
   
     def self.slices

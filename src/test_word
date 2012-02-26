@@ -74,18 +74,24 @@ def format_collection_table(obj, name, options={})
   table.justify_rows
 end
 
+class Exception
+  def formatted_trace
+    backtrace.map{|line| "        from " + line}.join("\n")
+  end
+end
+
 def protected_send(obj, *args, &blk)
   meth = args.shift
   obj.send(meth, *args, &blk)
 rescue => e
-  raise RuntimeError, "Unable to retrieve #{meth}(#{args.map{|a| a.inspect}.join(',')}) for #{obj.inspect}: #{e}\n#{e.backtrace.join("\n")}"
+  raise RuntimeError, "Unable to retrieve #{meth}(#{args.map{|a| a.inspect}.join(',')}) for #{obj.inspect}: #{e}\n#{e.formatted_trace}\n\n"
 end
 
 def protected_eval(*args)
   code = args.first
   eval(*args)
 rescue => e
-  raise RuntimeError, "Unable to eval #{code}: #{e}\n#{e.backtrace.join("\n")}"
+  raise RuntimeError, "Unable to eval #{code}: #{e}\n#{e.formatted_trace}\n\n"
 end
 
 def verify_collection_and_method(obj, name, options={})
@@ -114,18 +120,18 @@ def shift_table(table)
   table.map{|row| row.shift; row}
 end
 
-def dump_collection(obj, name, options={})
+def show_collection(obj, name, options={})
   put_table format_collection_table(obj, name, options)
 end
 
-def dump_slice_collection(word, slice, parameter, options={})
+def show_slice_collection(word, slice, parameter, options={})
   size = protected_send(word, "#{slice}s_per_word")
   puts "#{slice}s_per_word = #{size.inspect}"
   name = [slice, parameter].join('_')
-  dump_collection(word, name, options)
+  show_collection(word, name, options)
 end
 
-def dump_value(expression, options={})
+def show_value(expression, options={})
   binding = options[:binding] || self.send(:binding)
   format = options[:format] || '%p'
   STDOUT.flush
@@ -134,26 +140,26 @@ def dump_value(expression, options={})
   puts "#{expression} => #{format % [val]}"
 end
 
-def dump_slice_parameter(word, slice, parameter)
-  dump_value "word.#{slice}.#{parameter}", :binding=>binding
+def show_slice_parameter(word, slice, parameter)
+  show_value "word.#{slice}.#{parameter}", :binding=>binding
 end
 
-def dump_slice_class_parameter(slice, parameter, options={})
+def show_slice_class_parameter(slice, parameter, options={})
   klass_name = class_name(slice)
-  dump_value "#{klass_name}.#{parameter}", options
+  show_value "#{klass_name}.#{parameter}", options
 end
 
-def dump_word_class_parameter(name, options={})
-  dump_value "Gecos::Word.#{name}", options
+def show_word_class_parameter(name, options={})
+  show_value "Gecos::Word.#{name}", options
 end
 
 def get_slice_class_parameter(slice, parameter, options={})
   klass_name = class_name(slice)
   if parameter =~ /^\((.*)\)/
-    word_class_parameter = "#{slice}_slice#{$1}#{$'}"
+    word_class_parameter = "#{slice}#{$1}#{$'}"
     slice_class_parameter = $'
   else
-    word_class_parameter = "#{slice}_slice_#{parameter}"
+    word_class_parameter = "#{slice}_#{parameter}"
     slice_class_parameter = parameter
   end
   format = options[:format] || '%p'
@@ -165,7 +171,7 @@ def class_name(slice)
   "Gecos::Word::" + slice.to_s.gsub(/(^|_)(.)/) {|match| $2.upcase}
 end
 
-def dump_slice_class_parameters(slice, parameter_list, options={})
+def show_slice_class_parameters(slice, parameter_list, options={})
   klass_name = class_name(slice)
   table = parameter_list.map do |parameter|
     format = nil
@@ -186,7 +192,7 @@ def format_class_collection(name, options={})
   format_collection_table(Gecos::Word, name, options)
 end
 
-def dump_class_collection(name, options={})
+def show_class_collection(name, options={})
   puts "Gecos::Word.#{name}:"
   table = format_class_collection(name, options)
   put_table table
@@ -198,17 +204,17 @@ def format_slice_class_collection(slice, name, options={})
   format_collection_table(klass, name, options)
 end
 
-def dump_slice_class_collection(slice, name, options={})
+def show_slice_class_collection(slice, name, options={})
   put_table format_slice_class_collection(slice, name, options)
 end
 
-def dump_word_slice(word, slice, options={})
+def show_word_slice(word, slice, options={})
   binding = options[:binding] || binding
   klass_name = class_name(slice)
   has_string = protected_eval("#{klass_name}.string?")
-  dump_value "#{word}.#{slice}s", :binding=>binding
+  show_value "#{word}.#{slice}s", :binding=>binding
   collection = protected_eval("#{word}.#{slice}s", binding)
-  dump_value "#{word}.#{slice}s.merge", :binding=>binding if has_string
+  show_value "#{word}.#{slice}s.merge", :binding=>binding if has_string
   table = []
   formats = protected_eval("#{klass_name}.format_types")
   heading = ["n", "value"] + formats.map{|f| f.inspect }
@@ -227,8 +233,8 @@ def dump_word_slice(word, slice, options={})
   table.each {|row| puts row.join('  ')}
 end
 
-dump_value "Gecos::Word.size"
-dump_value "Gecos::Word.all_ones", :format=>WORD_FORMAT
+show_value "Gecos::Word.size"
+show_value "Gecos::Word.all_ones", :format=>WORD_FORMAT
 puts "Gecos::Word:"
 single_bit_mask_table    = format_class_collection "single_bit_mask",    :collection=>true, :format=>WORD_FORMAT
 preceding_bit_mask_table = format_class_collection "preceding_bit_mask", :collection=>true, :format=>WORD_FORMAT
@@ -245,8 +251,8 @@ put_table splice_table(single_bit_mask_table,
 )
 puts
 
-Gecos::Word.slice_names.each do |slice|
-  dump_slice_class_parameters slice, %w{size offset (s_)per_word significant_bits clipping_mask(%#012o) string?(%p)}
+Gecos::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
+  show_slice_class_parameters slice, %w{size offset (s_)per_word significant_bits clipping_mask(%#012o) string?(%p)}
   puts
   
   start_bit_table  = format_slice_class_collection slice, "start_bit"
@@ -265,17 +271,22 @@ end
 
 $bytes = Gecos::Word.new(0111222333444)
 
-dump_value "$bytes.value", :format=>WORD_FORMAT
+show_value "$bytes.value", :format=>WORD_FORMAT
 Gecos::Word.slice_names.each do |slice|
-  dump_word_slice "$bytes", slice
+  show_word_slice "$bytes", slice
   puts
 end
 
 # Does arithmetic work?
-dump_value "$bytes-5", :format=>WORD_FORMAT
-dump_value "3+$bytes", :format=>WORD_FORMAT
+show_value "$bytes-5", :format=>WORD_FORMAT
+show_value "3+$bytes", :format=>WORD_FORMAT
 
 # Does string manipulation work?
-dump_value "'First character: '+($bytes.character(0))"
-dump_value "$bytes.character(0)+': is here'"
-dump_value "$bytes.character(0).add(2)"
+show_value "'First character: '+($bytes.character(0))"
+show_value "$bytes.character(0)+': is here'"
+show_value "$bytes.character(0).add(2)"
+
+# Test signed integers
+$negative = Gecos::Word.new(0777777777777)
+show_value "$negative.integer(0).signed"
+show_value "$negative.integer(0).unsigned", :format=>'%012o'
