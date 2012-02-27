@@ -28,6 +28,103 @@ allocated to the file, but you may only have written part of it.
 Anything after the EOF RCW (000000170000) will have whatever was in
 it when the disk space was allocated to the file.
 
+=================
+ASCII File Format
+=================
+
+You have to read the file in 320-word blocks, discarding junk that might
+be near the end of each block.
+
+From: Alan Bowler <atbowler@thinkage.ca>
+To: "Ian! D. Allen" <idallen@idallen.ca>
+Subject: RE: watbun ascii file format
+Date: Tue, 21 Feb 2012 20:56:44 +0000
+
+> From: Ian! D. Allen [mailto:idallen@idallen.ca]
+> Sent: February 18, 2012 6:50 AM
+> To: Alan Bowler
+> Subject: watbun ascii file format
+> 
+> Can you explain the two "Woops" bits below, where some apparently
+> deleted
+> text appears in the middle of good text?  I need to know how to identify
+> this crap and not include it in the ASCII dump.
+> 
+> Dump excerpt follows (9 bit bytes truncated into 8-bit bytes and
+> printed):
+> 
+> Here's a 006 word record coming up:
+> 
+>     000 006 000 200   ....
+>     116 157 167 040   Now
+>     154 157 157 153   look
+>     040 150 145 162    her
+>     145 054 040 171   e, y
+>     157 165 040 142   ou b
+>     151 055 177 177   i-
+
+Truncating to 8 bits is losing a bit of data from the RCW which
+obviously was
+      000 006 400 600
+Regrouped in bit fields
+      000006   00-17, length of record/segment (must be non-zero)
+           2   18-19  # bytes in last word (0 -> 4) (media 4 & 6)
+          00   20-23  EOF type (only when length is zero)
+           0   24-25  Segment marker
+                        0->not segmented
+                        1->first segment of record split across blocks
+                        2->Intermediate segment
+                        3->last segment
+          06   26-29  media code (6->ascii)
+          00   30-35  report code
+The media and report codes are only in the first segment of
+a record (segment marker 0 or 1).  For the intermediate and final
+segments bits 26-35 give the segment number (origin 0)
+
+This record has 22 bytes of data (6-1)*4 + 2
+
+A record length of 000000 is an EOF marker, in which case
+20-23 will have 017 (standard EOF).
+
+Blanks lines are expressed as a 1 byte record where the
+byte is 177 (DEL).
+> 
+> Woops - what happened below?  This next word doesn't contain a word
+> count;
+> it's deleted text!  This record should be ignored, but it doesn't even
+> have a preceding header word to identify it:
+> 
+>     164 040 151 163   t is
+>     164 150 151 163   this
+>     040 154 157 157    loo
+>     153 163 040 164   ks t
+>     157 040 171 157   o yo
+>     165 162 040 154   ur l
+>     157 171 141 154   oyal
+>     040 163 165 142    sub
+>     152 145 143 164   ject
+>     163 040 141 156   s an
+>     144 040 141 144   d ad
+>     155 151 162 145   mire
+>     162 163 077 040   rs?
+>     000 003 000 061   ...1
+
+What you have here is garbage in the buffer beyond the
+last actual record.  You need to interpret the block
+control word at the start of the llink (320 word block)
+    00-17 Block sequence number (origin 1)
+    18-35 Number of meaningful words in the block not
+          counting the BCW itself
+
+When writing to a device with variable length physical
+records (blocks) a block would be at least 3 words
+(BCW + RCW + 1 word of data), and there would be no
+extra junk.  (EOF is marked by a different hardware
+marker and not a zero length RCW).  On disks, blocks
+are fixed sizes, and you get extra junk after the
+last record unless the llink is filled exactly.  A special
+RCW is needed to indicate EOF.  (000000170000)
+
 ==============
 Thinkage Tools
 ==============
