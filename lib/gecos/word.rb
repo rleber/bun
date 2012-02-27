@@ -1,4 +1,4 @@
-require 'gecos/machine'
+require 'machine'
 
 class GECOS
   # TODO Make this more DSL-like
