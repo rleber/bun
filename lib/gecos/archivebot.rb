@@ -3,6 +3,7 @@ require 'mechanize'
 require 'fileutils'
 require 'gecos/archive'
 require 'gecos/shell'
+require 'gecos/archive_indexbot'
 require 'pp'
 
 class GECOS
@@ -77,7 +78,7 @@ class GECOS
     end
     
     IGNORE_LINKS = ["Name", "Last modified", "Size", "Description", "Parent Directory"]
-    desc "fetch [URL] [TO]", "Fetch files from an online repository"
+    desc "fetch [URL]", "Fetch files from an online repository"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Do a dry run only; show what would be fetched, but don't save it"
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
     long_desc <<-EOT
@@ -113,18 +114,19 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     
     SORT_VALUES = %w{tape file type}
     TYPE_VALUES = %w{all frozen normal}
-    desc "ls [ARCHIVE]", "Display an index of archived files"
+    desc "ls", "Display an index of archived files"
     option "long", :aliases=>"-l", :type=>'boolean', :desc=>"Display long format (incl. normal vs. frozen)"
     option "sort", :aliases=>"-s", :type=>'string', :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
     option "type", :aliases=>"-T", :type=>'string', :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
     option "tapes", :aliases=>"-t", :type=>'string', :default=>'.*', :desc=>"Show only tapes that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
     option "files", :aliases=>"-f", :type=>'string', :default=>'.*', :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
+    option "frozen", :aliases=>"-r", :type=>'boolean', :desc=>"Recursively include contents of freeze files"
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
     def ls
       abort "Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
       type_pattern = case options[:type].downcase
         when 'f', 'frozen'
-          /^frozen$/i
+          /^(frozen|archive)$/i
         when 'n', 'normal'
           /^normal$/i
         when '*','a','all'
@@ -148,17 +150,28 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         puts "%-#{tape_name_width}s" % 'Tape' + '  File'
       end
       # Retrieve file information
+      # TODO Add archival dates to --long list
       file_info = []
-      ix.each_with_index do |tape_name, i|
+      files = ix.each_with_index do |tape_name, i|
         file_name = archive.file_path(tape_name)
-        friz = Archive.frozen?(archive.expanded_tape_path(tape_name)) ? 'Frozen' : 'Normal'
-        next unless friz =~ type_pattern && tape_name=~tape_pattern && file_name=~file_pattern
+        tape_path = archive.expanded_tape_path(tape_name)
+        frozen = Archive.frozen?(tape_path)
+        friz = frozen ? 'Archive' : 'Normal'
         file_info << {'tape'=>tape_name, 'type'=>friz, 'file'=>file_name}
+        if frozen && options[:frozen]
+          defroster = Defroster.new(Decoder.new(File.read(tape_path)))
+          defroster.file_paths.each do |path|
+            file_info << {'tape'=>tape_name, 'type'=>'Frozen', 'file'=>path, 'archive'=>file_name}
+          end
+        end
       end
+      file_info = file_info.select{|file| file['type']=~type_pattern && file['tape']=~tape_pattern && file['file']=~file_pattern }
       sorted_info = file_info.sort_by{|fi| [fi[options[:sort]], fi['file'], fi['tape']]} # Sort it in order
       # Display it
+      # TODO Refactor using Array.justify_rows
+      # TODO Add 
       sorted_info.each do |entry|
-        typ = options[:long] ? '%-8s'% entry['type'] : ""
+        typ = options[:long] ? '%-9s'% entry['type'] : ""
         puts %Q{#{"%-#{tape_name_width}s" % entry['tape']}  #{typ}#{'%-s' % entry['file']}}
       end
     end
@@ -267,20 +280,20 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     
     # Cross-reference the extracted files:
     # Create one directory per file, as opposed to one directory per tape
-    desc "xref [ARCHIVE] [FROM] [TO]", "Create cross-reference by file name"
-    option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to xref (instead of symlink)"
-    option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
+    desc "organize [FROM] [TO]", "Create cross-reference by file name"
+    option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to reorganized archive (instead of symlink)"
+    option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually reorganize"
     option 'trace', :aliases=>'-t', :type=>'boolean', :desc=>"Debugging trace"
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-    def xref(from=nil, to=nil)
+    def organize(from=nil, to=nil)
       @dryrun = options[:dryrun]
       @trace = options[:trace]
       directory = options[:archive] || Archive.location
       archive = Archive.new(directory)
       from ||= archive.extract_directory
       from = File.join(archive.location, from)
-      to ||= archive.xref_directory
-      to = File.join(archive.location, archive.xref_directory)
+      to ||= archive.files_directory
+      to = File.join(archive.location, archive.files_directory)
       index = Index.new
       
       # Build cross-reference index
@@ -337,7 +350,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         processed[spec[:to]] = true   # Only need to copy or link identical files to the new location once
         dir = File.dirname(spec[:to])
         shell.mkdir_p dir
-        warn "xref #{spec[:from]} => #{spec[:to]}" unless @dryrun
+        warn "organize #{spec[:from]} => #{spec[:to]}" unless @dryrun
         shell.invoke command, spec[:from], spec[:to]
         abort "No log entry for #{spec[:from]}" unless log[spec[:from]]
         new_log[spec[:to]] = alter_log(log[spec[:from]], spec[:to])
@@ -367,9 +380,9 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     end
     
     DEFAULT_THRESHOLD = 20
-    desc "classify", "Classify files based on whether they're clean or not."
+    desc "classify [FROM] [CLEAN] [DIRTY]", "Classify files based on whether they're clean or not."
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-    option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to xref (instead of symlink)"
+    option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to clean/dirty directories (instead of symlink)"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
     option 'threshold', :aliases=>'-t', :type=>'numeric',
       :desc=>"Set a threshold: how many errors before a file is 'dirty'? (default #{DEFAULT_THRESHOLD})"
@@ -378,13 +391,11 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       directory = options[:archive] || Archive.location
       threshold = options[:threshold] || DEFAULT_THRESHOLD
       archive = Archive.new(directory)
-      from ||= archive.xref_directory
+      from ||= archive.files_directory
       from = File.join(archive.location, from)
       log_file = File.join(from, archive.log_file)
-      clean ||= archive.xref_directory
       clean = File.join(archive.location, archive.clean_directory)
-      dirty ||= archive.xref_directory
-      dirty = File.join(archive.location, archive.dirty_directory)
+        dirty = File.join(archive.location, archive.dirty_directory)
       destinations = {:clean=>clean, :dirty=>dirty}
       shell = Shell.new(:dryrun=>@dryrun)
       destinations.each do |status, destination|
@@ -413,5 +424,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         File.open(File.join(destinations[status],archive.log_file),'w') {|f| f.puts log.map{|log_entry| log_entry[:entry]}.join("\n") }
       end
     end
+    
+    register GECOS::Archive::IndexBot, :index, "index", "Process Honeywell archive index"
   end
 end

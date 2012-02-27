@@ -4,9 +4,13 @@ class GECOS
   class Archive
     
     def self.config_dir(name)
-      config[name].sub(/^~/,ENV['HOME'])
+      dir = config[name]
+      return nil unless dir
+      dir = File.expand_path(dir) if dir=~/^~/
+      dir
     end
     
+    # TODO Use metaprogramming to refactor this
     def self.location
       config_dir('archive')
     end
@@ -23,8 +27,8 @@ class GECOS
       config_dir('extract_directory')
     end
     
-    def self.xref_directory
-      config_dir('xref_directory')
+    def self.files_directory
+      config_dir('files_directory')
     end
     
     def self.clean_directory
@@ -37,6 +41,10 @@ class GECOS
     
     def self.repository
       config['repository']
+    end
+    
+    def self.index_file
+      config['index_file']
     end
     
     def self.load_config(config_file="data/archive_config.yml")
@@ -78,8 +86,8 @@ class GECOS
       self.class.extract_directory
     end
     
-    def xref_directory
-      self.class.xref_directory
+    def files_directory
+      self.class.files_directory
     end
 
     def clean_directory
@@ -92,6 +100,10 @@ class GECOS
     
     def log_file
       self.class.log_file
+    end
+    
+    def index_file
+      File.expand_path(File.join(location, self.class.index_file))
     end
     
     def frozen?(file)
@@ -135,6 +147,32 @@ class GECOS
     
     def config
       self.class.config
+    end
+    
+    def index
+      @index ||= _index
+    end
+    
+    def _index
+      content = File.read(index_file)
+      specs = content.split("\n").map do |line|
+        words = line.strip.split(/\s+/)
+        raise RuntimeError, "Bad line in index file: #{line.inspect}" unless words.size == 3
+        # TODO Create a full timestamp (set to midnight)
+        date = begin
+          Date.strptime(words[1], "%y%m%d")
+        rescue
+          raise RuntimeError, "Bad date #{words[1].inspect} in index file at #{line.inspect}"
+        end
+        {:tape=>words[0], :date=>date, :file=>words[2]}
+      end
+      specs
+    end
+    private :_index
+    
+    def archival_date(tape)
+      info = index.find {|spec| spec[:tape] == tape }
+      info && info[:date]
     end
   end
 end

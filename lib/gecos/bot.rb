@@ -152,24 +152,31 @@ class GECOS
     desc "describe FILE", "Display description information for a file"
     def describe(file)
       archive = Archive.new
-      file = archive.expanded_tape_path(file)
-      decoder = GECOS::Decoder.new(File.read(file))
-      archived_file = archive.file_path(file)
-      archive = decoder.file_archive_name
+      tape_path = archive.expanded_tape_path(file)
+      decoder = GECOS::Decoder.new(File.read(tape_path))
+      archived_file = archive.file_path(tape_path)
+      archive_name = decoder.file_archive_name
       subdirectory = decoder.file_subdirectory
       specification = decoder.file_specification
       description = decoder.file_description
       name = decoder.file_name
       path = decoder.file_path
       description = decoder.file_description
-      frozen = Archive.frozen?(file)
-      puts "Path             #{path}"
-      puts "Archive          #{archive}"
+      archival_date = archive.archival_date(file)
+      archival_date_display = archival_date ? archival_date.strftime('%Y/%m/%d') : "n/a"
+      frozen = Archive.frozen?(tape_path)
+      frozen_files = Defroster.new(decoder).file_names.sort if frozen
+      puts "Tape             #{file}"
+      puts "Tape path        #{tape_path}"
+      puts "Archived file    #{path}"
+      puts "Archive          #{archive_name}"
       puts "Subdirectory     #{subdirectory}"
       puts "Name             #{name}"
       puts "Description      #{description}"
       puts "Specification    #{specification}"
+      puts "Archival date:   #{archival_date_display}"
       puts "Type:            #{frozen ? 'Frozen' : 'Normal'}"
+      puts "Frozen files:    #{frozen_files.join(', ')}" if frozen
     end
 
     register GECOS::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files"

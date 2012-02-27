@@ -97,7 +97,7 @@ class GECOS
     def file_paths
       (0...files).map{|n| file_path(n)}
     end
-
+    
     # Convert a file name to an index number; also convert negative indexes
     # Allowed formats:
     # Numeric: Any integer. 1..<# files> or -<# files>..-1 (counting backwards)
