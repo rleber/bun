@@ -4,9 +4,10 @@ class GECOS
   class Archive
     
     def self.config_dir(name)
-      config[name].sub(/^~/,ENV['HOME'])
+      File.expand_path(config[name])
     end
     
+    # TODO Use metaprogramming to refactor this
     def self.location
       config_dir('archive')
     end
@@ -37,6 +38,10 @@ class GECOS
     
     def self.repository
       config['repository']
+    end
+    
+    def self.index_file
+      config['index_file']
     end
     
     def self.load_config(config_file="data/archive_config.yml")
@@ -94,6 +99,10 @@ class GECOS
       self.class.log_file
     end
     
+    def index_file
+      File.expand_path(File.join(location, self.class.index_file))
+    end
+    
     def frozen?(file)
       self.class.frozen?(file)
     end
@@ -131,6 +140,26 @@ class GECOS
     def config
       self.class.config
     end
+    
+    def index
+      @index ||= _index
+    end
+    
+    def _index
+      content = File.read(index_file)
+      specs = content.split("\n").map do |line|
+        words = line.strip.split(/\s+/)
+        raise RuntimeError, "Bad line in index file: #{line.inspect}" unless words.size == 3
+        date = begin
+          Date.strptime(words[1], "%y%m%d")
+        rescue
+          raise RuntimeError, "Bad date #{words[1].inspect} in index file at #{line.inspect}"
+        end
+        {:tape=>words[0], :date=>date, :file=>words[2]}
+      end
+      specs
+    end
+    private :_index
   end
 end
 
