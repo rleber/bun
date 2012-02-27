@@ -1,6 +1,6 @@
 require 'gecos/machine'
 
-class Gecos
+class GECOS
   # TODO Make this more DSL-like
   class Word < Machine::Word
     define_size 36
@@ -17,10 +17,10 @@ class Gecos
     define_field :lower_half_word, :size=>18, :offset=>18
   end
   
-  class Words < Machine::Words(Gecos::Word)
+  class Words < Machine::Words(GECOS::Word)
   end
   
-  # class DoubleWords < Machine::MultiWord(Gecos::Word)
+  # class DoubleWords < Machine::MultiWord(GECOS::Word)
   #   
   # end
 end  

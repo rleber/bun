@@ -1,6 +1,6 @@
-Gecos::Word:
-Gecos::Word.size => 36
-Gecos::Word.all_ones => 777777777777
+GECOS::Word:
+GECOS::Word.size => 36
+GECOS::Word.all_ones => 777777777777
 n   single_bit_masks[n]  strip_leading_bit_masks[n]  strip_trailing_bit_masks[n]  n_bit_masks[n]  lower_bit_masks[n]  upper_bit_masks[n]
 0   400000000000         777777777777                777777777777                 000000000000    000000000000        000000000000      
 1   200000000000         377777777777                777777777776                 000000000001    000000000001        400000000000      
@@ -40,8 +40,8 @@ n   single_bit_masks[n]  strip_leading_bit_masks[n]  strip_trailing_bit_masks[n]
 35  000000000001         000000000001                400000000000                 377777777777    377777777777        777777777776      
 36  000000000000         000000000000                000000000000                 777777777777    777777777777        777777777777      
 
-Gecos::Word::Bit:
-Parameter         Gecos::Word   Gecos::Word::Bit
+GECOS::Word::Bit:
+Parameter         GECOS::Word   GECOS::Word::Bit
 size              1             1               
 offset            0             0               
 (s_)per_word      36            36              
@@ -98,8 +98,8 @@ n  format_types[n]  key       format_definitions[key]  format_widths[key]
 4  :inspect         :inspect  "%o"                     1                 
 5  :octal           :octal    "%o"                     1                 
 
-Gecos::Word::Byte:
-Parameter         Gecos::Word   Gecos::Word::Byte
+GECOS::Word::Byte:
+Parameter         GECOS::Word   GECOS::Word::Byte
 size              9             9                
 offset            0             0                
 (s_)per_word      4             4                
@@ -132,8 +132,8 @@ n  format_types[n]  key       format_definitions[key]  format_widths[key]
 4  :inspect         :inspect  "%0#4o"                  4                 
 5  :octal           :octal    "%0#4o"                  4                 
 
-Gecos::Word::Character:
-Parameter         Gecos::Word   Gecos::Word::Character
+GECOS::Word::Character:
+Parameter         GECOS::Word   GECOS::Word::Character
 size              9             9                     
 offset            0             0                     
 (s_)per_word      4             4                     
@@ -166,8 +166,8 @@ n  format_types[n]  key              format_definitions[key]  format_widths[key]
 6  :string          :string          "%-1s"                   1                 
 7  :string_inspect  :string_inspect  "%-1s"                   1                 
 
-Gecos::Word::HalfWord:
-Parameter         Gecos::Word   Gecos::Word::HalfWord
+GECOS::Word::HalfWord:
+Parameter         GECOS::Word   GECOS::Word::HalfWord
 size              18            18                   
 offset            0             0                    
 (s_)per_word      2             2                    
@@ -207,8 +207,8 @@ n  format_types[n]  key       format_definitions[key]  format_widths[key]
 4  :inspect         :inspect  "%0#7o"                  7                 
 5  :octal           :octal    "%0#7o"                  7                 
 
-Gecos::Word::Integer:
-Parameter         Gecos::Word    Gecos::Word::Integer
+GECOS::Word::Integer:
+Parameter         GECOS::Word    GECOS::Word::Integer
 size              36             36                  
 offset            0              0                   
 (s_)per_word      1              1                   
@@ -265,8 +265,8 @@ n  format_types[n]  key       format_definitions[key]  format_widths[key]
 4  :inspect         :inspect  "%d"                     11                
 5  :octal           :octal    "%0#13o"                 13                
 
-Gecos::Word::LowByte:
-Parameter         Gecos::Word   Gecos::Word::LowByte
+GECOS::Word::LowByte:
+Parameter         GECOS::Word   GECOS::Word::LowByte
 size              9             9                   
 offset            27            27                  
 (s_)per_word      1             1                   
@@ -296,8 +296,8 @@ n  format_types[n]  key       format_definitions[key]  format_widths[key]
 4  :inspect         :inspect  "%0#4o"                  4                 
 5  :octal           :octal    "%0#4o"                  4                 
 
-Gecos::Word::LowerHalfWord:
-Parameter         Gecos::Word   Gecos::Word::LowerHalfWord
+GECOS::Word::LowerHalfWord:
+Parameter         GECOS::Word   GECOS::Word::LowerHalfWord
 size              18            18                        
 offset            18            18                        
 (s_)per_word      1             1                         
@@ -336,8 +336,8 @@ n  format_types[n]  key       format_definitions[key]  format_widths[key]
 4  :inspect         :inspect  "%0#7o"                  7                 
 5  :octal           :octal    "%0#7o"                  7                 
 
-Gecos::Word::PackedCharacter:
-Parameter         Gecos::Word   Gecos::Word::PackedCharacter
+GECOS::Word::PackedCharacter:
+Parameter         GECOS::Word   GECOS::Word::PackedCharacter
 size              7             7                           
 offset            1             1                           
 (s_)per_word      5             5                           
@@ -371,8 +371,8 @@ n  format_types[n]  key              format_definitions[key]  format_widths[key]
 6  :string          :string          "%-1s"                   1                 
 7  :string_inspect  :string_inspect  "%-1s"                   1                 
 
-Gecos::Word::Sign:
-Parameter         Gecos::Word   Gecos::Word::Sign
+GECOS::Word::Sign:
+Parameter         GECOS::Word   GECOS::Word::Sign
 size              1             1                
 offset            0             0                
 (s_)per_word      1             1                
@@ -394,8 +394,8 @@ n  format_types[n]  key       format_definitions[key]  format_widths[key]
 4  :inspect         :inspect  "%o"                     1                 
 5  :octal           :octal    "%o"                     1                 
 
-Gecos::Word::UpperHalfWord:
-Parameter         Gecos::Word   Gecos::Word::UpperHalfWord
+GECOS::Word::UpperHalfWord:
+Parameter         GECOS::Word   GECOS::Word::UpperHalfWord
 size              18            18                        
 offset            0             0                         
 (s_)per_word      1             1                         
@@ -434,8 +434,8 @@ n  format_types[n]  key       format_definitions[key]  format_widths[key]
 4  :inspect         :inspect  "%0#7o"                  7                 
 5  :octal           :octal    "%0#7o"                  7                 
 
-Gecos::Word::Word:
-Parameter         Gecos::Word    Gecos::Word::Word
+GECOS::Word::Word:
+Parameter         GECOS::Word    GECOS::Word::Word
 size              36             36               
 offset            0              0                
 (s_)per_word      1              1                
@@ -691,15 +691,15 @@ $negative.integer(0).decimal => "-1"
 $negative.integer.decimal => "-1"
 $negative.integer(0).unsigned.octal => "0777777777777"
 $negative.integer.signed.hex => "0xfffffffff"
-$words.class => Gecos::Words
-$words => <Gecos::Words[<Gecos::Word: 1>,<Gecos::Word: 2>,<Gecos::Word: 3>]>
+$words.class => GECOS::Words
+$words => <GECOS::Words[<GECOS::Word: 1>,<GECOS::Word: 2>,<GECOS::Word: 3>]>
 $words.size => 3
-$words[0] => <Gecos::Word: 1>
-$words[0].class => Gecos::Word
-$words => <Gecos::Words[<Gecos::Word: 1>,<Gecos::Word: 2>,<Gecos::Word: 3>,nil,nil,<Gecos::Word: 1234>]>
+$words[0] => <GECOS::Word: 1>
+$words[0].class => GECOS::Word
+$words => <GECOS::Words[<GECOS::Word: 1>,<GECOS::Word: 2>,<GECOS::Word: 3>,nil,nil,<GECOS::Word: 1234>]>
 $words[4] => nil
-$words[5] => <Gecos::Word: 1234>
-$words[2..3] => <Gecos::Words[<Gecos::Word: 3>,nil]>
+$words[5] => <GECOS::Word: 1234>
+$words[2..3] => <GECOS::Words[<GECOS::Word: 3>,nil]>
 $words[2..3].bytes => [0000, 0000, 0000, 0003, nil, nil, nil, nil]
 $words[2..3].byte(3) => 0003
 $words[2..3].byte(4) => nil

@@ -133,7 +133,7 @@ def show_slice_class_parameter(slice, parameter, options={})
 end
 
 def show_word_class_parameter(name, options={})
-  show_value "Gecos::Word.#{name}", options
+  show_value "GECOS::Word.#{name}", options
 end
 
 def get_slice_class_parameter(slice, parameter, options={})
@@ -147,11 +147,11 @@ def get_slice_class_parameter(slice, parameter, options={})
   end
   format = options[:format] || '%p'
   klass = protected_eval(klass_name)
-  [protected_send(Gecos::Word, word_class_parameter), protected_send(klass, slice_class_parameter)].map{|e| format % [e]}
+  [protected_send(GECOS::Word, word_class_parameter), protected_send(klass, slice_class_parameter)].map{|e| format % [e]}
 end
 
 def class_name(slice)
-  "Gecos::Word::" + slice.to_s.gsub(/(^|_)(.)/) {|match| $2.upcase}
+  "GECOS::Word::" + slice.to_s.gsub(/(^|_)(.)/) {|match| $2.upcase}
 end
 
 def show_slice_class_parameters(slice, parameter_list, options={})
@@ -166,17 +166,17 @@ def show_slice_class_parameters(slice, parameter_list, options={})
     [parameter] + get_slice_class_parameter(slice, parameter, options)
   end
   puts klass_name + ":"
-  table.unshift ["Parameter", "Gecos::Word", klass_name]
+  table.unshift ["Parameter", "GECOS::Word", klass_name]
   table = table.justify_rows
   put_table table
 end
 
 def format_class_collection(name, options={})
-  format_collection_table(Gecos::Word, name, {:format=>WORD_FORMAT}.merge(options))
+  format_collection_table(GECOS::Word, name, {:format=>WORD_FORMAT}.merge(options))
 end
 
 def show_class_collection(name, options={})
-  puts "Gecos::Word.#{name}:"
+  puts "GECOS::Word.#{name}:"
   table = format_class_collection(name, options)
   put_table table
 end
@@ -233,13 +233,13 @@ end
 
 MASKS = %w{single_bit_mask strip_leading_bit_mask strip_trailing_bit_mask n_bit_mask lower_bit_mask upper_bit_mask}
 
-puts "Gecos::Word:"
-show_value "Gecos::Word.size"
-show_value "Gecos::Word.all_ones", :format=>WORD_FORMAT
-show_collections "Gecos::Word", MASKS, :format=>WORD_FORMAT
+puts "GECOS::Word:"
+show_value "GECOS::Word.size"
+show_value "GECOS::Word.all_ones", :format=>WORD_FORMAT
+show_collections "GECOS::Word", MASKS, :format=>WORD_FORMAT
 puts
 
-Gecos::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
+GECOS::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
   show_slice_class_parameters slice, %w{size offset (s_)per_word significant_bits clipping_mask(%#012o) string?(%p)}
   puts
   
@@ -261,14 +261,14 @@ end
 
 def show_word(expr)
   show_value "#{expr}.value", :format=>WORD_FORMAT
-  Gecos::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
+  GECOS::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
     show_word_slice expr, slice
     puts
   end
 end
 
-$byte_test_word = Gecos::Word.new(0111222333444)
-$negative = Gecos::Word.new(0777777777777)
+$byte_test_word = GECOS::Word.new(0111222333444)
+$negative = GECOS::Word.new(0777777777777)
 
 show_word "$byte_test_word"
 show_word "$negative"
@@ -294,7 +294,7 @@ show_value "$negative.integer.decimal"
 show_value "$negative.integer(0).unsigned.octal"
 show_value "$negative.integer.signed.hex"
 
-$words = Gecos::Words[1,2,3]
+$words = GECOS::Words[1,2,3]
 show_value "$words.class"
 show_value "$words"
 show_value "$words.size"
