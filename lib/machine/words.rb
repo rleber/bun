@@ -1,5 +1,13 @@
 module Machine
-  module WordArray
+  
+  def self.Words(constituent_class)
+    klass = Class.new(Array)
+    klass.send :include, Machine::WordsBase
+    klass.contains constituent_class
+    klass
+  end
+
+  module WordsBase
     def self.included(base)
       # puts "base=#{base.inspect}"
       # puts "base methods: #{base.instance_methods.sort.inspect}"
@@ -56,12 +64,5 @@ module Machine
     def slice_names
       self.class.slice_names
     end
-  end
-  
-  def self.Words(constituent_class)
-    klass = Class.new(Array)
-    klass.send :include, Machine::WordArray
-    klass.contains constituent_class
-    klass
   end
 end

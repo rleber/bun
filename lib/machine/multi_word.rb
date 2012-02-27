@@ -1,7 +1,12 @@
 module Machine
-  # TODO Make this dynamic with a defined constituent class, like Words
-  # TODO Should Word be a mixin? WordsBase
-  class MultiWord < Word
+  
+  def self.MultiWord(constituent_class)
+    klass = Class.new(MultiWordBase)
+    klass.contains constituent_class
+    klass
+  end
+
+  class MultiWordBase < Word
     include Container
     
     def get_at(*args)

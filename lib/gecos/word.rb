@@ -4,7 +4,6 @@ class GECOS
   # TODO Make this more DSL-like
   class Word < Machine::Word
     define_size 36
-    # Define signed integer (useful for time values)
     define_slice :half_word, :size=>size/2
     define_slice :byte, :size=>9
     define_slice :character, :size=>9, :bits=>7, :string=>true
@@ -20,7 +19,7 @@ class GECOS
   class Words < Machine::Words(GECOS::Word)
   end
   
-  # class DoubleWords < Machine::MultiWord(GECOS::Word)
-  #   
-  # end
+  class DoubleWords < Machine::MultiWord(GECOS::Word)
+  
+  end
 end  
