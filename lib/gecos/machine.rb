@@ -618,14 +618,22 @@ module Machine
           add_slice slice_name
           # TODO This code is already written elsewhere. Refactor it
           slices_name = (slice_name.to_s + 's').to_sym
+          per_word = subclass.send("#{slices_name}_per_word")
+          # TODO Define singular slice(n) method
           define_method slices_name do
             @slices ||= {}
             unless @slices[slices_name]
               slices = []
-              @words.each {|w| slices += w.send(slices_name) }
+              self.each do |w|
+                slices += w.nil? ? [nil]*per_word : w.send(slices_name)
+              end
               @slices[slices_name] = slices
             end
             @slices[slices_name]
+          end
+          define_method slice_name do |n|
+            raise ArgumentError, "Wrong number of arguments for #{self.class}##{slice_name}() (0 of 1)" if n.nil?
+            send(slices_name)[n]
           end
         end
       end

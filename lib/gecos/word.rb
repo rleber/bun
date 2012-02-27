@@ -19,4 +19,8 @@ class Gecos
   
   class Words < Machine::Words(Gecos::Word)
   end
+  
+  # class DoubleWords < Machine::MultiWord(Gecos::Word)
+  #   
+  # end
 end  

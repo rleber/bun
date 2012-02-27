@@ -305,4 +305,6 @@ show_value "$words"
 show_value "$words[4]"
 show_value "$words[5]"
 show_value "$words[2..3]"
-
+show_value "$words[2..3].bytes"
+show_value "$words[2..3].byte(3)"
+show_value "$words[2..3].byte(4)"
