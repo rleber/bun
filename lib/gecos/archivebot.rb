@@ -77,7 +77,7 @@ class GECOS
     end
     
     IGNORE_LINKS = ["Name", "Last modified", "Size", "Description", "Parent Directory"]
-    desc "fetch [URL] [TO]", "Fetch files from an online repository"
+    desc "fetch [URL]", "Fetch files from an online repository"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Do a dry run only; show what would be fetched, but don't save it"
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
     long_desc <<-EOT
@@ -113,7 +113,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     
     SORT_VALUES = %w{tape file type}
     TYPE_VALUES = %w{all frozen normal}
-    desc "ls [ARCHIVE]", "Display an index of archived files"
+    desc "ls", "Display an index of archived files"
     option "long", :aliases=>"-l", :type=>'boolean', :desc=>"Display long format (incl. normal vs. frozen)"
     option "sort", :aliases=>"-s", :type=>'string', :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
     option "type", :aliases=>"-T", :type=>'string', :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
@@ -266,7 +266,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     
     # Cross-reference the extracted files:
     # Create one directory per file, as opposed to one directory per tape
-    desc "organize [ARCHIVE] [FROM] [TO]", "Create cross-reference by file name"
+    desc "organize [FROM] [TO]", "Create cross-reference by file name"
     option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to reorganized archive (instead of symlink)"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually reorganize"
     option 'trace', :aliases=>'-t', :type=>'boolean', :desc=>"Debugging trace"
@@ -365,7 +365,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     end
     
     DEFAULT_THRESHOLD = 20
-    desc "classify", "Classify files based on whether they're clean or not."
+    desc "classify [FROM] [CLEAN] [DIRTY]", "Classify files based on whether they're clean or not."
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
     option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to clean/dirty directories (instead of symlink)"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
