@@ -120,12 +120,13 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     option "type", :aliases=>"-T", :type=>'string', :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
     option "tapes", :aliases=>"-t", :type=>'string', :default=>'.*', :desc=>"Show only tapes that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
     option "files", :aliases=>"-f", :type=>'string', :default=>'.*', :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
+    option "frozen", :aliases=>"-r", :type=>'boolean', :desc=>"Recursively include contents of freeze files"
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
     def ls
       abort "Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
       type_pattern = case options[:type].downcase
         when 'f', 'frozen'
-          /^frozen$/i
+          /^(frozen|archive)$/i
         when 'n', 'normal'
           /^normal$/i
         when '*','a','all'
@@ -148,17 +149,28 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         puts "%-#{tape_name_width}s" % 'Tape' + '  File'
       end
       # Retrieve file information
+      # TODO Add archival dates to --long list
       file_info = []
-      ix.each_with_index do |tape_name, i|
+      files = ix.each_with_index do |tape_name, i|
         file_name = archive.file_path(tape_name)
-        friz = Archive.frozen?(archive.expanded_tape_path(tape_name)) ? 'Frozen' : 'Normal'
-        next unless friz =~ type_pattern && tape_name=~tape_pattern && file_name=~file_pattern
+        tape_path = archive.expanded_tape_path(tape_name)
+        frozen = Archive.frozen?(tape_path)
+        friz = frozen ? 'Archive' : 'Normal'
         file_info << {'tape'=>tape_name, 'type'=>friz, 'file'=>file_name}
+        if frozen && options[:frozen]
+          defroster = Defroster.new(Decoder.new(File.read(tape_path)))
+          defroster.file_paths.each do |path|
+            file_info << {'tape'=>tape_name, 'type'=>'Frozen', 'file'=>path, 'archive'=>file_name}
+          end
+        end
       end
+      file_info = file_info.select{|file| file['type']=~type_pattern && file['tape']=~tape_pattern && file['file']=~file_pattern }
       sorted_info = file_info.sort_by{|fi| [fi[options[:sort]], fi['file'], fi['tape']]} # Sort it in order
       # Display it
+      # TODO Refactor using Array.justify_rows
+      # TODO Add 
       sorted_info.each do |entry|
-        typ = options[:long] ? '%-8s'% entry['type'] : ""
+        typ = options[:long] ? '%-9s'% entry['type'] : ""
         puts %Q{#{"%-#{tape_name_width}s" % entry['tape']}  #{typ}#{'%-s' % entry['file']}}
       end
     end

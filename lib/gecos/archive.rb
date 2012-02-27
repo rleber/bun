@@ -4,7 +4,10 @@ class GECOS
   class Archive
     
     def self.config_dir(name)
-      File.expand_path(config[name])
+      dir = config[name]
+      return nil unless dir
+      dir = File.expand_path(dir) if dir=~/^~/
+      dir
     end
     
     # TODO Use metaprogramming to refactor this
@@ -150,6 +153,7 @@ class GECOS
       specs = content.split("\n").map do |line|
         words = line.strip.split(/\s+/)
         raise RuntimeError, "Bad line in index file: #{line.inspect}" unless words.size == 3
+        # TODO Create a full timestamp (set to midnight)
         date = begin
           Date.strptime(words[1], "%y%m%d")
         rescue
@@ -160,6 +164,11 @@ class GECOS
       specs
     end
     private :_index
+    
+    def archival_date(tape)
+      info = index.find {|spec| spec[:tape] == tape }
+      info && info[:date]
+    end
   end
 end
 
