@@ -523,11 +523,11 @@ module Machine
   module Container
     module ClassMethods
       def contains(klass)
-        @constituent_class = klass
+        @@constituent_class = klass
       end
     
       def constituent_class
-        @constituent_class
+        @@constituent_class
       end
     
       def conform(data)
@@ -634,6 +634,13 @@ module Machine
     def slice_names
       self.class.slice_names
     end
+  end
+  
+  def self.Words(constituent_class)
+    klass = Class.new(Array)
+    klass.send :include, Machine::WordArray
+    klass.contains constituent_class
+    klass
   end
   
   # TODO Make this dynamic with a defined constituent class, like Words

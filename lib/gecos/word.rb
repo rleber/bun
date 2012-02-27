@@ -17,8 +17,6 @@ class Gecos
     define_field :lower_half_word, :size=>18, :offset=>18
   end
   
-  class Words < Array
-    include Machine::WordArray
-    contains Gecos::Word
+  class Words < Machine::Words(Gecos::Word)
   end
 end  
