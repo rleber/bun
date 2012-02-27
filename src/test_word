@@ -293,3 +293,16 @@ show_value "$negative.integer(0).decimal"
 show_value "$negative.integer.decimal"
 show_value "$negative.integer(0).unsigned.octal"
 show_value "$negative.integer.signed.hex"
+
+$words = Gecos::Words[1,2,3]
+show_value "$words.class"
+show_value "$words"
+show_value "$words.size"
+show_value "$words[0]"
+show_value "$words[0].class"
+$words[5] = 1234
+show_value "$words"
+show_value "$words[4]"
+show_value "$words[5]"
+show_value "$words[2..3]"
+

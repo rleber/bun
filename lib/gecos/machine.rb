@@ -81,20 +81,19 @@ end
 class GenericNumeric
 
   def initialize(value)
-    raise TypeError, "Value for #{self.class} not numeric (#{value.inspect})" unless value.is_a?(Numeric)
-    @n = value
+    @data = value
   end
 
   def to_int
-    @n
+    @data
   end
   
   def value
-    @n
+    @data
   end
   
   def internal_value
-    @n
+    @data
   end
   protected :internal_value
   
@@ -103,7 +102,7 @@ class GenericNumeric
   end
   
   def method_missing(name, *args, &blk)
-    ret = @n.send(name, *args, &blk)
+    ret = @data.send(name, *args, &blk)
     ret.is_a?(Numeric) ? self.class.new(ret) : ret
   end
 end
@@ -149,7 +148,6 @@ module Machine
         def initialize(val, options={})
           super(val)
           @ignore_sign = options[:ignore_sign]
-          puts "In #{self.class}.new(#{val.inspect}): internal_value=#{internal_value.inspect}"
         end
         
         def value
@@ -312,6 +310,7 @@ module Machine
       default_format = options[:default_format] || (is_string ? :string_inspect : (sign == :none ? :octal : :decimal))
       format_overrides = options[:format] || {}
       slice_gap = options[:gap] || 0
+      per_word = options[:count]
     
       class_name = slice_name.gsub(/(^|_)(.)/) {|match| $2.upcase}
       if is_string
@@ -330,7 +329,7 @@ module Machine
       add_slice(slice_name, options.merge(:class=>slice_class))
       
       # TODO Refactor this stuff as a slice specification (size, gap, offset, etc.)
-      per_word = slices_per_word(slice_size, slice_offset, slice_gap)
+      per_word ||= slices_per_word(slice_size, slice_offset, slice_gap)
       start_bits = (0...per_word).map{|n| slice_start_bit(n, slice_size, slice_offset, slice_gap) }
       end_bits = (0...per_word).map{|n| slice_end_bit(n, slice_size, slice_offset, slice_gap) }
       shifts = end_bits.map{|end_bit| size - end_bit - 1 }
@@ -474,25 +473,29 @@ module Machine
     # TODO Keep separate track of fields, vs. slices?
     # TODO Define structures (i.e. a sequence of fields -- possibly multiword?)
     def self.define_field(name, options={})
-      define_slice(name, {:gap=>size-options[:size]}.merge(options))
+      define_slice(name, {:count=>1}.merge(options))
     end
 
     def clip(value)
       self.class.all_ones & value
     end
   
-    def value=(value)
-      @value = clip(value)
-    end
+    # def value=(value)
+    #   @value = clip(value)
+    # end
   
-    def unshifted_bits(from, to)
+    def bit_segment(from, to)
       value & make_bit_mask(from, to)
     end
   
     # TODO Allow negative indexing
     # TODO Consider a change which would permit indexing a la Array[]
     def get_bits(from, to)
-      unshifted_bits(from, to) >> (size - to)
+      bit_segment(from, to) >> bit_count(to, size-1) # Use bit_count for extensibility
+    end
+    
+    def bit_count(from, to)
+      to - from + 1
     end
   
     def get_bit(at)
@@ -514,6 +517,241 @@ module Machine
   
     def self.slice_names
       self.slices.map{|slice| slice[:name]}
+    end
+  end
+  
+  module Container
+    module ClassMethods
+      def contains(klass)
+        @constituent_class = klass
+      end
+    
+      def constituent_class
+        @constituent_class
+      end
+    
+      def conform(data)
+        case data
+        when constituent_class, nil
+          data
+        else
+          constituent_class.new(data)
+        end
+      end
+      
+      def [](*args)
+        self.new(args)
+      end
+    end
+    
+    def self.included(base)
+      base.extend(ClassMethods)
+    end
+
+    def constituent_class
+      self.class.constituent_class
+    end
+    
+    def conform(data)
+      self.class.conform(data)
+    end
+
+    def initialize(data)
+      super(data.map{|v| conform(v)})
+    end
+
+    def [](*args)
+      segment = get_at(*args)
+      case segment
+      when constituent_class, nil
+        segment # Do nothing
+      when Array
+        segment = self.class.new(segment)
+      else 
+        conform(segment)
+      end
+    end
+    alias_method :slice, :[]
+
+    def []=(*args)
+      v = args.pop
+      v = conform(v) unless v.nil? || v.is_a?(Array)
+      args.push(v)
+      set_at(*args)
+    end
+    
+    def inspect
+      "<#{self.class.name}[#{self.map{|e| e.inspect}.join(',')}]>"
+    end
+  end
+  
+  module WordArray
+    def self.included(base)
+      # puts "base=#{base.inspect}"
+      # puts "base methods: #{base.instance_methods.sort.inspect}"
+      base.send :alias_method, :get_at, :[] if !base.instance_methods.include?('get_at') && base.instance_methods.include?('[]')
+      base.send :alias_method, :set_at, :[]= if !base.instance_methods.include?('set_at') && base.instance_methods.include?('[]=')
+      base.send :include, Container
+      class << base
+        alias_method :old_contains, :contains
+      end
+      base.extend ClassMethods
+    end
+    
+    module ClassMethods
+      def slice_names
+        @slice_names ||= []
+      end
+    
+      def add_slice(name)
+        @slice_names ||= []
+        @slice_names << name
+      end
+
+      def contains(klass)
+        old_contains(klass)
+        add_slices(klass)
+      end
+
+      def add_slices(subclass)
+        subclass.slice_names.each do |slice_name|
+          add_slice slice_name
+          # TODO This code is already written elsewhere. Refactor it
+          slices_name = (slice_name.to_s + 's').to_sym
+          define_method slices_name do
+            @slices ||= {}
+            unless @slices[slices_name]
+              slices = []
+              @words.each {|w| slices += w.send(slices_name) }
+              @slices[slices_name] = slices
+            end
+            @slices[slices_name]
+          end
+        end
+      end
+    end
+    
+    def slice_names
+      self.class.slice_names
+    end
+  end
+  
+  # TODO Make this dynamic with a defined constituent class, like Words
+  # TODO Should Word be a mixin? WordsBase
+  class MultiWord < Word
+    include Container
+    
+    def get_at(*args)
+      @data.[](*args)
+    end
+    
+    def set_at(*args)
+      @data.[]=(*args)
+    end
+
+    def word_size
+      constituent_class.size
+    end
+    
+    def size
+      @data.size * word_size
+    end
+    
+    def decode_index(index)
+      index.split(":").map{|segment| segment.to_i}
+    end
+    
+    def encode_index(*segments)
+      segments.flatten.map{|segment| segment.to_s}.join(':')
+    end
+
+    # Indexes may be specified in one of three ways: as a bit number,
+    # as a [word, bit] pair, or as a string "word:bit"
+    def index_numeric(*index)
+      index = index.flatten
+      index = index.first if index.size == 1
+      case index
+      when Numeric
+        index
+      when Array
+        index[0]*word_size + index[1]
+      when String
+        index_numeric(index_array(index))
+      else
+        raise IndexError, "Unknown index type (#{index.inspect})"
+      end
+    end
+    
+    def index_string(*index)
+      index = index.flatten
+      index = index.first if index.size == 1
+      case index
+      when Numeric
+        index_string(index_array(index))
+      when Array
+        encode_index(*index)
+      when String
+        index
+      else
+        raise IndexError, "Unknown index type (#{index.inspect})"
+      end
+    end
+    
+    def index_array(*index)
+      index = index.flatten
+      index = index.first if index.size == 1
+      case index
+      when Numeric
+        index.divmod(word_size)
+      when Array
+        index
+      when String
+        decode_index(index)
+      else
+        raise IndexError, "Unknown index type (#{index.inspect})"
+      end
+    end
+    
+    def index_class(klass, *index)
+      case klass
+      when Numeric
+        index_numeric(*index)
+      when Array
+        index_array(*index)
+      when String
+        index_string(*index)
+      else
+        raise IndexError, "Unknown index type (#{index.inspect})"
+      end
+    end
+    
+    def bit_segment(from, to)
+      from_word, from_bit = index_array(from)
+      to_word, to_bit = index_array(to)
+      words = (from_word..to_word).map {|i| self[i] }
+      words[0] &= constituent_class.strip_leading_bit_masks[from_bit]
+      words[-1] &= constituent_class.strip_trailing_bit_masks[to_bit]
+      words.inject {|val, word| val<<word_size | word }
+    end
+
+    def get_bits(from, to)
+      to_word, to_bit = index_array(to)
+      bit_segment(from, to) >> bit_count(to_bit, word_size-1)
+    end
+    
+    def bit_count(from, to)
+      index_numeric(to) - index_numeric(from) + 1
+    end
+    
+    def increment_index(index, increment)
+      index_class(index, index_numeric(index)+1)
+    end
+
+    def slice(n, size, offset=0)
+      size = index_numeric(size)
+      offset = index_numeric(offset)
+      start = (n-1)*size + offset
+      get_bits(start, start+size-1)
     end
   end
 end
