@@ -1,13 +1,14 @@
 class GECOS
   class Decoder
     attr_reader :raw, :errors
+    attr_accessor :keep_deletes
     
     EOF_MARKER = 0x00000f000 # Octal 000000170000 or 0b000000000000000000001111000000000000
     CHARACTERS_PER_WORD = 4
     BITS_PER_WORD = 36
     ARCHIVE_NAME_POSITION = 7 # words
     SPECIFICATION_POSITION = 11 # words
-    UNPACK_OFFSET = 22
+    UNPACK_OFFSET = 1
     
     def zstring(offset)
       start = offset
@@ -98,16 +99,31 @@ class GECOS
     def characters_per_word
       self.class.characters_per_word
     end
-
+    
+    VALID_CONTROL_CHARACTERS = '\r\t\n\b'
+    VALID_CONTROL_CHARACTER_STRING = eval("\"#{VALID_CONTROL_CHARACTERS}\"")
+    VALID_CONTROL_CHARACTER_REGEXP = /[#{VALID_CONTROL_CHARACTERS}]/
+    INVALID_CHARACTER_REGEXP = /(?!(?>#{VALID_CONTROL_CHARACTER_REGEXP}))[[:cntrl:]]/
+    VALID_CHARACTER_REGEXP = /(?!(?>#{INVALID_CHARACTER_REGEXP}))./
+    
+    def self.valid_control_character_regexp
+      VALID_CONTROL_CHARACTER_REGEXP
+    end
+    
+    def self.invalid_character_regexp
+      INVALID_CHARACTER_REGEXP
+    end
+    
+    def self.valid_character_regexp
+      VALID_CHARACTER_REGEXP
+    end
+    
     def self.clean?(text)
-      bad_characters = text.gsub(/[^[:cntrl:]]|[\r\t\n]/,'')
-      bad_characters.size == 0
+      find_flaw(text).nil?
     end
     
     def self.find_flaw(text)
-      pos = text.gsub(/[\r\t\n]/,'').sub(/[[:cntrl:]].*/m, '').size
-      return nil if pos >= text.size
-      pos
+      text =~ INVALID_CHARACTER_REGEXP
     end
     
     def self.bits_per_word
@@ -119,8 +135,9 @@ class GECOS
     end
     
     # TODO do we ever instantiate a Decoder without reading a file? If not, refactor
-    def initialize(raw)
+    def initialize(raw, options={})
       self.raw = raw
+      @keep_deletes = options[:keep_deletes]
     end
     
     def raw=(raw)
@@ -152,6 +169,10 @@ class GECOS
     # Raw data from file in octal; cached
     def octal
       @octal ||= _octal
+    end
+    
+    def word_count
+      [(words[0] & 0777777)+1, words.size].min
     end
     
     # Raw data from file in octal
@@ -237,60 +258,98 @@ class GECOS
     end
     
     def unpack
-      line_offset = file_content_start + UNPACK_OFFSET
+      # line_offset = file_content_start + UNPACK_OFFSET
+      line_offset = file_content_start + 22
       lines = []
       warned = false
       errors = 0
-      while line_offset < words.size
-        last_line_word, line, okay = unpack_line(words, line_offset)
-        if line
-          raw_line = line
-          line.sub!(/\r\0*$/,"\n")
-          lines << {:content=>line, :offset=>line_offset, :descriptor=>words[line_offset], 
-                    :words=>words[line_offset..last_line_word], :raw=>raw_line}
+      n = 0
+      while line_offset < word_count
+        line = unpack_line(words, line_offset)
+        line[:status] = :ignore if n == 0
+        case line[:status]
+        when :eof     then break
+        when :okay    then lines << line
+        when :delete  then lines << line if @keep_deletes
+        when :ignore  then # do nothing
+        else               errors += 1
         end
-        errors += 1 unless okay
-        line_offset = last_line_word + 1
+        line_offset = line[:finish]+1
+        n += 1
       end
       @errors = errors
       lines
     end
     
+    BLOCK_SIZE = 0500
     def unpack_line(words, line_offset)
+      # puts "  unpack at #{'%06o' % line_offset}"
       line = ""
+      raw_line = ""
       okay = true
       descriptor = words[line_offset]
-      return [words.size, nil, okay] if descriptor == EOF_MARKER
-      deleted = deleted_line?(descriptor)
-      line_length = line_length(descriptor)
+      if descriptor == 0
+        current_block = (line_offset - file_content_start).div(BLOCK_SIZE)
+        first_word_in_next_block = (current_block + 1)*BLOCK_SIZE + file_content_start + UNPACK_OFFSET - 1
+        # puts "  skip to block #{current_block + 1} at #{'%06o' % first_word_in_next_block}"
+        return {:status=>:ignore, :start=>line_offset, :finish=>first_word_in_next_block, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
+      end
+      if descriptor == EOF_MARKER
+        return {:status=>:eof, :start=>line_offset, :finish=>word_count, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
+      elsif (descriptor >> 27) & 0777 == 0177
+        # puts "  deleted (descriptor[0] == 0177)"
+        deleted = true
+        line_length = word_count
+      elsif (descriptor >> 27) & 0777 == 0
+        # if descriptor & 0777 == 0600
+          # puts "  normal (descriptor[0] == 0 && descriptor[3] == 0600): line_length = #{line_length}"
+          line_length = line_length(descriptor)
+        # else
+        #   raise "Unexpected line descriptor (byte 3). Descriptor=#{'%012o' % descriptor} at #{'%06o' % line_offset}" unless descriptor & 0777 == 0
+        #   return {:status=>:delete, :start=>line_offset, :finish=>line_offset+1, :content=>line, :raw=>raw_line, :words=>words[line_offset, 2], :descriptor=>descriptor}
+        # end
+      else # Sometimes, there is ASCII in the descriptor word; In that case, capture it, and look for terminating "\177"
+        # puts "  indeterminate ASCII"
+        line_length = word_count
+        chs = extract_characters(descriptor)
+        line += chs
+        raw_line += chs
+      end
       offset = line_offset+1
       loop do
         word = words[offset]
         break if !word || word == EOF_MARKER
         chs = extract_characters(word)
-        clipped_chs = chs.sub(/(?!\t)[[:cntrl:]].*/,'') # Remove control characters and all following letters
+        # puts "  at #{'%06o' % offset}: descriptor=#{'%012o' % descriptor}, line_length=#{'%06o' % line_length}, word=#{'%012o' % word}, chs=#{chs.inspect}"
+        raw_line += chs
+        clipped_chs = chs.sub(/#{INVALID_CHARACTER_REGEXP}.*/,'') # Remove control characters and all following letters
         line += clipped_chs
         break if (offset-line_offset) >= line_length
+        break if chs =~ /\177+$/
         if clipped_chs != chs || clipped_chs.size==0 || !good_characters?(chs)
           okay = false
           break
         end
         offset += 1
       end
-      return [offset, nil, okay] if deleted
-      line += "\n"
-      [offset, line, okay]
+      # puts "  emit"
+       line += "\n"
+      {:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>offset, :content=>line, :raw=>raw_line, :words=>words[line_offset..offset], :descriptor=>descriptor}
     end
     
     def line_length(word)
       (word & 0777777000000) >> 18
     end
     
+    def line_flags(word)
+      word & 0777777
+    end
+    
     def byte(word, n)
       extract_bytes(word)[n]
     end
     
-    def deleted_line?(word)
+    def oddball_line?(word)
       byte(word,0) != 0
     end
     

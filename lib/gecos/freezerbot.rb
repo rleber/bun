@@ -67,6 +67,7 @@ class GECOS
       if options[:long] || options[:descr] || options[:one] # One file per line
         puts lines.join("\n")
       else # Multiple files per line
+        # TODO Refactor using Array#justify_rows
         file_width = (lines.map{|l| l.size}.max)+1
         files_per_line = [1, options[:width].div(file_width)].max
         index = 0
@@ -124,6 +125,7 @@ whatever its name.
       puts "Archive for file #{defroster.file_name(file_index)}:"
       if options[:thawed]
         lines = defroster.lines(file_index)
+        # TODO Refactor using Array#justify_rows
         offset_width = ('%o'%lines[-1][:offset]).size
         lines.each do |l|
           offset = '0' + ("%0#{offset_width}o" % l[:offset])

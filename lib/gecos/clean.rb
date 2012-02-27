@@ -141,6 +141,7 @@ class GECOS
         return [] if cast.size == 0
         content = []
         content << "#CAST FOR SCENE:"
+        # TODO Refactor using Array#justify_rows
         nickname_width = cast.map{|member| member[:nickname].size}.max
         cast.each do |member|
           content << %Q{#  #{"%#{-(nickname_width+1)}s"%(member[:nickname]+':')}  #{member[:full_name]}}

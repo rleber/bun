@@ -3,6 +3,7 @@ require 'mechanize'
 require 'fileutils'
 require 'gecos/archive'
 require 'gecos/shell'
+require 'gecos/archive_indexbot'
 require 'pp'
 
 class GECOS
@@ -409,5 +410,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         File.open(File.join(destinations[status],archive.log_file),'w') {|f| f.puts log.map{|log_entry| log_entry[:entry]}.join("\n") }
       end
     end
+    
+    register GECOS::Archive::IndexBot, :index, "index", "Process Honeywell archive index"
   end
 end
