@@ -1,7 +1,6 @@
 TODO
-Set file modification dates for normally archived files, based on data in _misc/fass-index.txt
-Check contents of _misc/fass-index.txt vs. actual contents of archive
 Refactor based on Machine module
+Set file modification dates for normally archived files, based on data in _misc/fass-index.txt
 Fix 320 word block glitch in normally archived files
 Ability to 'gecos archive ls' by archive name patterns
 Ability to search xref'ed files, for example find files with multiple copies
