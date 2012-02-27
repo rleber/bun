@@ -266,20 +266,20 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     
     # Cross-reference the extracted files:
     # Create one directory per file, as opposed to one directory per tape
-    desc "xref [ARCHIVE] [FROM] [TO]", "Create cross-reference by file name"
-    option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to xref (instead of symlink)"
-    option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
+    desc "organize [ARCHIVE] [FROM] [TO]", "Create cross-reference by file name"
+    option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to reorganized archive (instead of symlink)"
+    option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually reorganize"
     option 'trace', :aliases=>'-t', :type=>'boolean', :desc=>"Debugging trace"
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-    def xref(from=nil, to=nil)
+    def organize(from=nil, to=nil)
       @dryrun = options[:dryrun]
       @trace = options[:trace]
       directory = options[:archive] || Archive.location
       archive = Archive.new(directory)
       from ||= archive.extract_directory
       from = File.join(archive.location, from)
-      to ||= archive.xref_directory
-      to = File.join(archive.location, archive.xref_directory)
+      to ||= archive.files_directory
+      to = File.join(archive.location, archive.files_directory)
       index = Index.new
       
       # Build cross-reference index
@@ -336,7 +336,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         processed[spec[:to]] = true   # Only need to copy or link identical files to the new location once
         dir = File.dirname(spec[:to])
         shell.mkdir_p dir
-        warn "xref #{spec[:from]} => #{spec[:to]}" unless @dryrun
+        warn "organize #{spec[:from]} => #{spec[:to]}" unless @dryrun
         shell.invoke command, spec[:from], spec[:to]
         abort "No log entry for #{spec[:from]}" unless log[spec[:from]]
         new_log[spec[:to]] = alter_log(log[spec[:from]], spec[:to])
@@ -367,7 +367,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     DEFAULT_THRESHOLD = 20
     desc "classify", "Classify files based on whether they're clean or not."
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-    option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to xref (instead of symlink)"
+    option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to clean/dirty directories (instead of symlink)"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
     option 'threshold', :aliases=>'-t', :type=>'numeric',
       :desc=>"Set a threshold: how many errors before a file is 'dirty'? (default #{DEFAULT_THRESHOLD})"
@@ -376,13 +376,11 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       directory = options[:archive] || Archive.location
       threshold = options[:threshold] || DEFAULT_THRESHOLD
       archive = Archive.new(directory)
-      from ||= archive.xref_directory
+      from ||= archive.files_directory
       from = File.join(archive.location, from)
       log_file = File.join(from, archive.log_file)
-      clean ||= archive.xref_directory
       clean = File.join(archive.location, archive.clean_directory)
-      dirty ||= archive.xref_directory
-      dirty = File.join(archive.location, archive.dirty_directory)
+        dirty = File.join(archive.location, archive.dirty_directory)
       destinations = {:clean=>clean, :dirty=>dirty}
       shell = Shell.new(:dryrun=>@dryrun)
       destinations.each do |status, destination|

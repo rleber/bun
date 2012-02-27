@@ -23,8 +23,8 @@ class GECOS
       config_dir('extract_directory')
     end
     
-    def self.xref_directory
-      config_dir('xref_directory')
+    def self.files_directory
+      config_dir('files_directory')
     end
     
     def self.clean_directory
@@ -78,8 +78,8 @@ class GECOS
       self.class.extract_directory
     end
     
-    def xref_directory
-      self.class.xref_directory
+    def files_directory
+      self.class.files_directory
     end
 
     def clean_directory
