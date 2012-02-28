@@ -80,6 +80,7 @@ module Machine
             slice.data_class.new(self.send(unshifted_method_name, n) >> shifts[n])
           end
         end
+
         def_method slice.plural do ||
           # puts %Q{In #{self.name}##{slice.plural}: self=#{self.inspect}\nCaller:\n#{caller.map{|s| "  "+s}.join("\n")}}
           ary = Slice::Array.new
@@ -114,6 +115,14 @@ module Machine
 
       def slice_names
         self.slices.map{|slice| slice.name}
+      end
+      
+      def slice_definition(slice_name)
+        self.slices.find{|definition| definition.name == slice_name}
+      end
+      
+      def fixed_size?
+        false
       end
     end
     

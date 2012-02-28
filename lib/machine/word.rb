@@ -16,21 +16,38 @@ module Machine
     }
     
     class << self
+      def fixed_size?
+        true
+      end
+      
       def size
         @size
+      end
+      
+      def all_ones(n=size)
+        super(n)
       end
       
       def define_size(word_size)
         @size = word_size
         define_slice :word, :size=>word_size
       end
-  
-      def slice_count(slice_size, offset=0, gap=0)
-        available_bits = size - offset
-        bits_per_slice = [slice_size+gap, available_bits].min
-        available_bits.div(bits_per_slice)
+      
+      def slice_count(slice, offset=0, gap=0)
+        case slice
+        when Numeric
+          slice_size = slice
+          available_bits = size - offset
+          bits_per_slice = [slice_size+gap, available_bits].min
+          available_bits.div(bits_per_slice)
+        when Slice::Definition
+          slice_count(slice.size, slice.offset, slice.gap)
+        else # Assume it's a name
+          defn = slice_definition(slice)
+          defn && slice_count(defn)
+        end
       end
-  
+      
       # TODO Should word.byte mean word.byte(0) or word.byte(n)?
       # TODO Should be recursive -- i.e. Should be able to say word.half_word(0).byte(2)
       # TODO Define bit and byte order (i.e. LR, RL)

@@ -37,17 +37,19 @@ module Machine
 
       def add_slices(subclass)
         subclass.slice_names.each do |slice_name|
+          slice_definition = subclass.slice_definition(slice_name)
+          raise NameError, "#{subclass.name} does not contain a slice #{slice_name}" unless slice_definition
           add_slice slice_name
-          # TODO This code is already written elsewhere. Refactor it
-          slices_name = (slice_name.to_s + 's').to_sym
-          per_word = subclass.send(slices_name).count
+          slices_name = slice_definition.plural
+          # per_word = subclass.fixed_size? ? subclass.slice_count(slice_name) : nil
           # TODO Define singular slice(n) method
           define_method slices_name do
             @slices ||= {}
             unless @slices[slices_name]
               slices = []
               self.each do |w|
-                slices += w.nil? ? [nil]*per_word : w.send(slices_name)
+                # TODO Is this handling of nils okay?
+                slices += w.send(slices_name) unless w.nil?
               end
               @slices[slices_name] = slices
             end
