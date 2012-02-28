@@ -40,7 +40,7 @@ module Machine
           add_slice slice_name
           # TODO This code is already written elsewhere. Refactor it
           slices_name = (slice_name.to_s + 's').to_sym
-          per_word = subclass.send("#{slices_name}_per_word")
+          per_word = subclass.send(slices_name).count
           # TODO Define singular slice(n) method
           define_method slices_name do
             @slices ||= {}

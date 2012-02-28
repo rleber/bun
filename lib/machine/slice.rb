@@ -1,8 +1,84 @@
 module Machine
   module Slice
     class Base < GenericNumeric
-      def self.clip(value)
-        all_ones & value
+      class << self
+        def definition=(defn)
+          @definition = defn
+        end
+        
+        def definition
+          @definition
+        end
+      
+        def clip(value)
+          all_ones & value
+        end
+
+        %w{size offset count significant_bits string? mask default_format}.each do |meth|
+          define_method meth do
+            definition.send(meth)
+          end
+        end
+        
+        attr_accessor :formats
+      
+        def sample_values
+          [Machine::Word.all_ones(size), Machine::Word.all_ones(size-1)||0, 1<<(size-1), 0]
+        end
+      
+        def add_formats(formats)
+          formats.each do |name, format|
+            add_format(name, format)
+          end
+        
+          default = @formats[default_format]
+          add_format :inspect, Format.new(:inspect, default.definition)
+          @formats[:default] = Format.new(:default, default.definition)
+
+          # TODO: Allow for unpadded formatting, and types which are unpadded by default
+          # TODO: Base inspect formatting on Class statically-defined inspect method?
+          def_method :format do |*args|
+            format_defn = args[0] || :default
+            format = @formats[format_defn] if format_defn.is_a?(Symbol)
+            if format
+              format_definition = format[:definition]
+              v = format.string? ? self.string : self.value
+              v = v.inspect if format.inspect?
+            else
+              format_definition = format_defn || word_default_format # TODO '%p' would be better, but would cause endless recursion currently
+              v = self.value
+            end
+            format_definition % [v]
+          end
+
+          def_method :inspect do ||
+            format.name(:inspect)
+          end
+        end
+
+        def add_format(name, format)
+          definition = format.adjusted_definition(self)
+          raise RuntimeError, "Format #{format.name.inspect} is not supported for slice #{self.slice_name}." unless definition
+          @formats ||= {}
+          @formats[format.name] = format
+
+          def_method format.name do ||
+            format(format.name)
+          end
+        end
+        
+        # TODO Is this necessary?
+        def slice_name
+          definition.name
+        end
+      end
+
+      def definition
+        self.class.definition
+      end
+      
+      def name
+        self.class.slice_name
       end
     end
     

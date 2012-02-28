@@ -1,3 +1,5 @@
+require 'machine/word'
+
 module Machine
   
   def self.MultiWord(constituent_class)
@@ -17,8 +19,12 @@ module Machine
       @data.[]=(*args)
     end
 
-    def word_size
+    def self.word_size
       constituent_class.size
+    end
+    
+    def word_size
+      self.class.word_size
     end
     
     def size
