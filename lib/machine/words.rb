@@ -41,8 +41,7 @@ module Machine
           raise NameError, "#{subclass.name} does not contain a slice #{slice_name}" unless slice_definition
           add_slice slice_name
           slices_name = slice_definition.plural
-          # per_word = subclass.fixed_size? ? subclass.slice_count(slice_name) : nil
-          # TODO Define singular slice(n) method
+
           define_method slices_name do
             @slices ||= {}
             unless @slices[slices_name]
@@ -55,6 +54,7 @@ module Machine
             end
             @slices[slices_name]
           end
+
           define_method slice_name do |n|
             raise ArgumentError, "Wrong number of arguments for #{self.class}##{slice_name}() (0 of 1)" if n.nil?
             send(slices_name)[n]
