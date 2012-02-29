@@ -5,11 +5,16 @@ module Machine
   def self.MultiWord(constituent_class)
     klass = Class.new(MultiWordBase)
     klass.contains constituent_class
+    klass.word_size = constituent_class.size
     klass
   end
 
   class MultiWordBase < Word
     include Container
+    
+    class << self
+      attr_accessor :word_size
+    end
     
     def get_at(*args)
       @data.[](*args)

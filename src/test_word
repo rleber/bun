@@ -37,7 +37,6 @@ def format_method(obj, name, options={})
 end
 
 def format_collection_table(obj, name, options={})
-  options= options.merge(:both=>true) unless verify_collection_and_method(obj, name)
   options = options.merge(:collection=>true) unless options[:collection] || options[:method]
   collection = format_collection(obj, name+"s", options)
   size = collection.size
@@ -117,8 +116,6 @@ end
 
 def show_value(expression, options={})
   format = options[:format] || '%p'
-  STDOUT.flush
-  STDERR.flush
   val = protected_eval(expression, options[:binding])
   puts "#{expression} => #{format % [val]}"
 end
@@ -138,16 +135,9 @@ end
 
 def get_slice_class_parameter(slice, parameter, options={})
   klass_name = class_name(slice)
-  if parameter =~ /^\((.*)\)/
-    word_class_parameter = "#{slice}#{$1}#{$'}"
-    slice_class_parameter = $'
-  else
-    word_class_parameter = "#{slice}_#{parameter}"
-    slice_class_parameter = parameter
-  end
   format = options[:format] || '%p'
   klass = protected_eval(klass_name)
-  [protected_send(GECOS::Word, word_class_parameter), protected_send(klass, slice_class_parameter)].map{|e| format % [e]}
+  format % protected_send(klass, parameter)
 end
 
 def class_name(slice)
@@ -163,10 +153,10 @@ def show_slice_class_parameters(slice, parameter_list, options={})
       format = $1
       options = options.merge(:format=>format)
     end
-    [parameter] + get_slice_class_parameter(slice, parameter, options)
+    [parameter] + [get_slice_class_parameter(slice, parameter, options)]
   end
   puts klass_name + ":"
-  table.unshift ["Parameter", "GECOS::Word", klass_name]
+  table.unshift ["Parameter", klass_name]
   table = table.justify_rows
   put_table table
 end
@@ -187,6 +177,18 @@ def format_slice_class_collection(slice, name, options={})
   format_collection_table(klass, name, options)
 end
 
+def format_slice_class_formats(slice, options={})
+  klass_name = class_name(slice)
+  klass = protected_eval(klass_name)
+  format_collection_table(klass, "format_type", options)
+  table = []
+  table << ['n', 'format_types(n)', 'format_definitions[key]']
+  klass.format_types.each_with_index do |format, n|
+    table << [n, format.inspect, klass.format_definition(format).inspect]
+  end
+  table.justify_rows
+end
+
 def show_slice_class_collection(slice, name, options={})
   put_table format_slice_class_collection(slice, name, options)
 end
@@ -205,7 +207,8 @@ def show_word_slice(word, slice, options={})
   heading << "string" if has_string
   table << heading
   collection.each_with_index do |byte, n|
-    value = protected_eval("#{word}.#{slice}(#{n}).value", binding)
+    s="#{word}.#{slice}[#{n}]"
+    value = protected_eval("#{word}.#{slice}[#{n}]", binding)
     row = [n, WORD_FORMAT % [value]]
     row += formats.map do |format|
       protected_eval("#{word}.#{slice}(#{n}).format(#{format.inspect})", binding)
@@ -231,40 +234,37 @@ def show_collections(obj_name, list, options={})
   put_table format_collections(obj, list, options)
 end
 
-MASKS = %w{single_bit_mask strip_leading_bit_mask strip_trailing_bit_mask n_bit_mask lower_bit_mask upper_bit_mask}
-
-puts "GECOS::Word:"
-show_value "GECOS::Word.size"
-show_value "GECOS::Word.all_ones", :format=>WORD_FORMAT
-show_collections "GECOS::Word", MASKS, :format=>WORD_FORMAT
-puts
-
-GECOS::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
-  show_slice_class_parameters slice, %w{size offset (s_)per_word significant_bits clipping_mask(%#012o) string?(%p)}
-  puts
-  
-  start_bit_table  = format_slice_class_collection slice, "start_bit"
-  end_bit_table    = format_slice_class_collection slice, "end_bit"
-  shift_bits_table = format_slice_class_collection slice, "shift"
-  mask_table       = format_slice_class_collection slice, "mask", :format=>WORD_FORMAT
-  put_table splice_table(start_bit_table, shift_table(end_bit_table), shift_table(shift_bits_table), shift_table(mask_table))
-  puts
-  
-  show_collections class_name(slice), MASKS, :format=>WORD_FORMAT
-  
-  format_type_table = format_slice_class_collection slice, "format_type"
-  format_definition_table = format_slice_class_collection slice, "format_definition"
-  format_width_table  = format_slice_class_collection slice, "format_width"
-  put_table splice_table(format_type_table, format_definition_table, shift_table(format_width_table))
-  puts
-end
-
 def show_word(expr)
   show_value "#{expr}.value", :format=>WORD_FORMAT
   GECOS::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
     show_word_slice expr, slice
     puts
   end
+end
+
+MASKS = %w{single_bit_mask ones_mask}
+
+puts "GECOS::Word:"
+show_value "GECOS::Word.size"
+show_value "GECOS::Word.ones_mask", :format=>WORD_FORMAT
+show_collections "GECOS::Word", MASKS, :format=>WORD_FORMAT
+puts
+
+GECOS::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
+  show_slice_class_parameters slice, %w{size offset count significant_bits mask(%#012o) string?(%p)}
+  puts
+  
+  # start_bit_table  = format_slice_class_collection slice, "start_bit"
+  # end_bit_table    = format_slice_class_collection slice, "end_bit"
+  # shift_bits_table = format_slice_class_collection slice, "shift"
+  # mask_table       = format_slice_class_collection slice, "mask", :format=>WORD_FORMAT
+  # put_table splice_table(start_bit_table, shift_table(end_bit_table), shift_table(shift_bits_table), shift_table(mask_table))
+  # puts
+  
+  # show_collections class_name(slice), MASKS, :format=>WORD_FORMAT
+  
+  put_table format_slice_class_formats(slice)
+  puts
 end
 
 $byte_test_word = GECOS::Word.new(0111222333444)

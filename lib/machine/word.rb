@@ -6,14 +6,14 @@ module Machine
     FORMAT_WIDTH_WILDCARD = /<width>/
     # TODO Could this be improved using the '*' sprintf flag?
     # TODO Generalize the inspect thing
-    define_parameter :formats, {
-      :binary=>         "%0#<width>b", 
-      :octal=>          "%0#<width>o", 
-      :decimal=>        "%<width>d",
-      :hex=>            "%0#<width>x",
-      :string=>         "%-<width>s",
-      :string_inspect=> "%-<width>s",
-    }
+    # define_parameter :formats, {
+    #   :binary=>         "%0#<width>b", 
+    #   :octal=>          "%0#<width>o", 
+    #   :decimal=>        "%<width>d",
+    #   :hex=>            "%0#<width>x",
+    #   :string=>         "%-<width>s",
+    #   :string_inspect=> "%-<width>s",
+    # }
     
     class << self
       def fixed_size?
@@ -24,15 +24,21 @@ module Machine
         @size
       end
       
-      def all_ones(n=size)
+      def ones_mask(n=size)
         super(n)
       end
       
       def define_size(word_size)
         @size = word_size
-        define_slice :word, :size=>word_size
       end
       
+      def define_slice(slice_name, options={})
+        slice_definition = super
+        slice_definition.count = slice_count(slice_definition)
+        slice_definition
+      end
+      
+      # TODO Should this be in Structure?
       def slice_count(slice, offset=0, gap=0)
         case slice
         when Numeric
@@ -41,7 +47,11 @@ module Machine
           bits_per_slice = [slice_size+gap, available_bits].min
           available_bits.div(bits_per_slice)
         when Slice::Definition
-          slice_count(slice.size, slice.offset, slice.gap)
+          if slice.count
+            slice.count
+          else
+            slice_count(slice.size, slice.offset, slice.gap)
+          end
         else # Assume it's a name
           defn = slice_definition(slice)
           defn && slice_count(defn)
@@ -115,7 +125,7 @@ module Machine
       #   slice_class.define_collection "n_bit_mask",         n_bit_masks[0..nbits]
       #   slice_class.define_collection "lower_bit_mask",     lower_bit_masks[0..nbits]
       #   slice_class.define_collection "upper_bit_mask",     upper_bit_masks[-(nbits+1)..-1]
-      #   slice_class.define_parameter  "all_ones",           all_ones & clipping_mask
+      #   slice_class.define_parameter  "ones_mask",           ones_mask & clipping_mask
       # 
       # 
       #   define_collection "#{slice_name}_end_bit",   end_bits
@@ -135,13 +145,13 @@ module Machine
       #     string_format = format_string =~ /string/
       #     next if string_format && !is_string
       #     definition = format_overrides[format] if format_overrides[format]
-      #     sample_values = [n_bit_masks[nbits], n_bit_masks[nbits-1]||0, n_bit_masks[0], 0]
+      #     format_samples = [n_bit_masks[nbits], n_bit_masks[nbits-1]||0, n_bit_masks[0], 0]
       #     if !string_format && nbits == 1 # Special case for single bits (binary, octal, decimal, and hex representations are all the same)
       #       definition = definition.gsub(/%.*(?:#{FORMAT_WIDTH_WILDCARD})?.*?([a-z])/, '%\1')
       #     end
       #     sample_definition = definition.gsub(FORMAT_WIDTH_WILDCARD, '')
-      #     sample_values = sample_values.map{|v| v.chr } if string_format && is_string
-      #     sample_texts = sample_values.map{|v| sample_definition % [v] }
+      #     format_samples = format_samples.map{|v| v.chr } if string_format && is_string
+      #     sample_texts = format_samples.map{|v| sample_definition % [v] }
       #     width = sample_texts.map{|t| t.size}.max
       #     definition = definition.gsub(FORMAT_WIDTH_WILDCARD, width.to_s)
       #     format_spec = {:name=>format, :definition=>definition, :max_width=>width}
@@ -224,35 +234,35 @@ module Machine
       # end
     end
 
-    def clip(value)
-      self.class.all_ones & value
-    end
-  
-    # def value=(value)
-    #   @value = clip(value)
+    # def clip(value)
+    #   self.class.ones_mask & value
     # end
-  
-    def bit_segment(from, to)
-      value & make_bit_mask(from, to)
-    end
-  
-    # TODO Allow negative indexing
-    # TODO Consider a change which would permit indexing a la Array[]
-    def get_bits(from, to)
-      bit_segment(from, to) >> bit_count(to, size-1) # Use bit_count for extensibility
-    end
-    
-    def bit_count(from, to)
-      to - from + 1
-    end
-  
-    def get_bit(at)
-      get_bits(at, at)
-    end
-  
-    def slice(n, size, offset=0)
-      start = (n-1)*size + offset
-      get_bits(start, start+size-1)
+    #   
+    # # def value=(value)
+    # #   @value = clip(value)
+    # # end
+    #   
+    # def bit_segment(from, to)
+    #   value & make_bit_mask(from, to)
+    # end
+    #   
+    # # TODO Allow negative indexing
+    # # TODO Consider a change which would permit indexing a la Array[]
+    # def get_bits(from, to)
+    #   bit_segment(from, to) >> bit_count(to, size-1) # Use bit_count for extensibility
+    # end
+    # 
+    # def bit_count(from, to)
+    #   to - from + 1
+    # end
+    #   
+    # def get_bit(at)
+    #   get_bits(at, at)
+    # end
+    #   
+    def slice(n, size, offset=0, gap=0, width=nil)
+      width ||= self.class.size
+      super(n, size, offset, gap, width)
     end
   
     # def self.slices
