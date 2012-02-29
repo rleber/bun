@@ -36,8 +36,8 @@ module Machine
     end
     
     module ClassMethods
-      # TODO: Allow for unpadded formatting, and types which are unpadded by default
-      
+      # TODO Allow for unpadded formatting, and types which are unpadded by default
+      # TODO More extensive DSL for defining formats, e.g. alignment, padding, width
       def define_format(name, format)
         Format.define(name, format)
       end

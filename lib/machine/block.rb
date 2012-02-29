@@ -4,7 +4,7 @@ require 'machine/word'
 
 module Machine
   
-  def self.MultiWord(constituent_class)
+  def self.Block(constituent_class)
     klass = Class.new(MultiWordBase)
     klass.contains constituent_class
     klass.word_size = constituent_class.size
