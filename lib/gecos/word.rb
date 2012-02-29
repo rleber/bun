@@ -54,7 +54,7 @@ class GECOS
   end
   
   # TODO Test this out
-  # class DoubleWords < Machine::Block(GECOS::Word)
-  #   slice :word_and_a_half, :size=>word_size*3.div(2)
-  # end
+  class DoubleWords < Machine::Block(GECOS::Word)
+    slice :word_and_a_half, :size=>word_size*3.div(2)
+  end
 end  
