@@ -13,13 +13,15 @@ module Machine
         case data
         when constituent_class, nil
           data
+        when ::Array
+          data.map{|v| conform(v)}
         else
           constituent_class.new(data)
         end
       end
       
       def [](*args)
-        self.new(args)
+        self.new(conform(args))
       end
     end
     
@@ -39,6 +41,7 @@ module Machine
       super(data.map{|v| conform(v)})
     end
 
+    # TODO Extended indexing
     def [](*args)
       segment = get_at(*args)
       case segment
@@ -54,13 +57,13 @@ module Machine
 
     def []=(*args)
       v = args.pop
-      v = conform(v) unless v.nil? || v.is_a?(Array)
+      v = conform(v)
       args.push(v)
       set_at(*args)
     end
     
     def inspect
-      "<#{self.class.name}[#{self.map{|e| puts "Container.inspect: e===#{e.class}";e.inspect}.join(',')}]>"
+      "<#{self.class.name}[#{self.map{|e| e.inspect}.join(',')}]>"
     end
   end
 end

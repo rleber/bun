@@ -211,6 +211,13 @@ module Machine
       @string_format = name_string =~ /string/
       @inspect = name_string =~ /inspect/
     end
+
+    define :binary,         "%0#*b"
+    define :octal,          "%0#*o"
+    define :decimal,        "%*d"
+    define :hex,            "%0#*x"
+    define :string,         "%-*s"
+    define :string_inspect, "%-*s"
     
     def string?
       @string_format

@@ -301,3 +301,6 @@ show_value "$words[2..3]"
 show_value "$words[2..3].bytes"
 show_value "$words[2..3].byte(3)"
 show_value "$words[2..3].byte(4)"
+# $double_word = GECOS::Block[1,2]
+# show_value "$double_word"
+# show_value "$double_word.word_and_a_halfs"

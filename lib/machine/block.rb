@@ -5,17 +5,31 @@ require 'machine/word'
 module Machine
   
   def self.Block(constituent_class)
-    klass = Class.new(MultiWordBase)
-    klass.contains constituent_class
-    klass.word_size = constituent_class.size
+    klass = Class.new(Words(constituent_class))
+    klass.send :include, Machine::BlockBase
+    # klass.contains constituent_class
+    # klass.word_size = constituent_class.size
     klass
   end
 
-  class MultiWordBase < Word
-    include Container
+  module BlockBase # Should inherit/include slicing from Structure
+    # include Container
     
-    class << self
-      attr_accessor :word_size
+    def self.included(base)
+      base.extend ClassMethods
+      base.send :attr_accessor, :word_size
+    end
+    
+    module ClassMethods
+      def word_size
+        constituent_class.size
+      end
+      
+      def slice()
+      end
+      
+      def field()
+      end
     end
     
     def get_at(*args)
@@ -26,10 +40,6 @@ module Machine
       @data.[]=(*args)
     end
 
-    def self.word_size
-      constituent_class.size
-    end
-    
     def word_size
       self.class.word_size
     end
