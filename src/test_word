@@ -16,7 +16,8 @@ def format_collection(obj, name, options={})
   name = name.to_s.downcase
   collection = protected_send(obj, name)
   new_obj = collection.class.new
-  indexes = collection.is_a?(Hash) ? collection.keys : (0...collection.size)
+  size = options[:size] || collection.size
+  indexes = collection.is_a?(Hash) ? collection.keys : (0...size)
   indexes.inject(new_obj) do |coll, index|
     coll[index] = format % [collection[index]]
     coll
@@ -28,7 +29,8 @@ def format_method(obj, name, options={})
   name = name.to_s.downcase
   collection = protected_send(obj, name + 's')
   new_obj = collection.class.new
-  indexes = collection.is_a?(Hash) ? collection.keys : (0...collection.size)
+  size = options[:size] || collection.size
+  indexes = collection.is_a?(Hash) ? collection.keys : (0...size)
   indexes.inject(new_obj) do |coll, index|
     value = protected_send(obj, name, index)
     coll[index] = format % [value]
@@ -39,7 +41,7 @@ end
 def format_collection_table(obj, name, options={})
   options = options.merge(:collection=>true) unless options[:collection] || options[:method]
   collection = format_collection(obj, name+"s", options)
-  size = collection.size
+  size = options[:size] || collection.size
   indexes = collection.is_a?(Hash) ? collection.keys.sort_by{|k| k.to_s} : (0...size)
   methods = format_method(obj, name, options)
   table = indexes.map do |k| 
@@ -247,7 +249,7 @@ MASKS = %w{single_bit_mask ones_mask}
 puts "GECOS::Word:"
 show_value "GECOS::Word.size"
 show_value "GECOS::Word.ones_mask", :format=>WORD_FORMAT
-show_collections "GECOS::Word", MASKS, :format=>WORD_FORMAT
+show_collections "GECOS::Word", MASKS, :format=>WORD_FORMAT, :size=>GECOS::Word.size+1
 puts
 
 GECOS::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
