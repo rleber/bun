@@ -31,12 +31,7 @@ module Machine
             definition.send(meth)
           end
         end
-        
-        # TODO Is this necessary?
-        def slice_name
-          definition.name
-        end
-      end
+       end
 
       def definition
         self.class.definition

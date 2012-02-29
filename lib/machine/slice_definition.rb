@@ -95,52 +95,6 @@ module Machine
         Machine::Word.single_bit_mask(n)
       end
       
-      # def start_bit(n)
-      #   @start_bit ||= []
-      #   @start_bit[n] ||= _start_bit[n]
-      #   start_bit[n]
-      # end
-      # 
-      # def _start_bit(n)
-      #   parent_class.slice_start_bit(n, size, offset, gap)
-      # end
-      # private :_start_bit
-      # 
-      # def end_bit(n)
-      #   @end_bit ||= []
-      #   @end_bit[n] ||= _end_bit[n]
-      #   end_bit[n]
-      # end
-      # 
-      # def _end_bit(n)
-      #   parent_class.slice_end_bit(n, size, offset, gap)
-      # end
-      # private :_end_bit
-      # 
-      # def shift(n)
-      #   @shift ||= []
-      #   @shift[n] ||= _shift[n]
-      #   shift[n]
-      # end
-      # 
-      # def _shift(n)
-      #   parent_class.slice_shift(n, size, offset, gap)
-      # end
-      # private :_shift
-      # 
-      # def mask(n)
-      #   @mask ||= []
-      #   @mask[n] ||= _mask[n]
-      #   mask[n]
-      # end
-      # 
-      # def _mask(n)
-      #   mask = parent_class.slice_mask(n, size, offset, gap)
-      #   clip_to = (slice.mask << shift(n))
-      #   mask & clip_to
-      # end
-      # private :_mask
-      
       def retrieve(from_object, index)
         value = from_object.slice(index, size, offset, gap) & mask
         data_class.new(value)

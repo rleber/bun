@@ -106,7 +106,7 @@ module Machine
   
   class Format
 
-    FORMAT_WIDTH_WILDCARD = '<width>'
+    FORMAT_WIDTH_WILDCARD = '*'
     
     attr_reader :name
     attr_reader :definition
@@ -146,7 +146,7 @@ module Machine
 
     def initialize(name, definition)
       @name = name.to_sym
-      @definition = definition.gsub(/\*/, FORMAT_WIDTH_WILDCARD)  # TODO Is this necessary?
+      @definition = definition
       @name_string = name.to_s
       @string_format = name_string =~ /string/
       @inspect = name_string =~ /inspect/
@@ -174,7 +174,7 @@ module Machine
       format_samples = klass.format_samples || self.class.format_samples(size)
       nbits = klass.significant_bits rescue size
       if !string? && nbits == 1 # Special case for single bits (binary, octal, decimal, and hex representations are all the same)
-        definition = definition.gsub(/%.*(?:#{FORMAT_WIDTH_WILDCARD})?.*?([a-z])/, '%\1')
+        definition = definition.gsub(/%.*(?:#{Regexp.escape(FORMAT_WIDTH_WILDCARD)})?.*?([a-z])/, '%\1')
       end
       sample_definition = definition.gsub(FORMAT_WIDTH_WILDCARD, '')
       # TODO This is essentially an implementation of <data_class>#format: refactor it

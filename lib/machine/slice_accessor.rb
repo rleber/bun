@@ -47,7 +47,7 @@ module Machine
         end
       end
       
-      # Allows you to say things like stuff.byte.count
+      # Allows you to say things like stuff.byte.count, stuff.integer.hex, or stuff.integer.unsigned
       # Should allow stuff.integer (without the index)
       def method_missing(name, *args, &blk)
         if allowed_methods.include?(name)

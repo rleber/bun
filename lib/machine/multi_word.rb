@@ -1,5 +1,7 @@
 require 'machine/word'
 
+# TODO Get this working
+
 module Machine
   
   def self.MultiWord(constituent_class)

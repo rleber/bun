@@ -45,6 +45,7 @@
 #     frodo[12..-3]
 #
 #  TODO Include Enumerable, define each etc., if they're not already defined
+#  TODO Create more extensive versions of this: e.g. starting other than at zero, non-contiguous indexes, non-numeric indexes
 
 module Indexable
   module Basic

@@ -19,6 +19,7 @@ class GECOS
   class Words < Machine::Words(GECOS::Word)
   end
   
+  # TODO Test this out
   # class DoubleWords < Machine::MultiWord(GECOS::Word)
   #   define_slice :word_and_a_half, :size=>word_size*3.div(2)
   # end

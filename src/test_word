@@ -256,15 +256,6 @@ GECOS::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
   show_slice_class_parameters slice, %w{size offset count significant_bits mask(%#012o) string?(%p)}
   puts
   
-  # start_bit_table  = format_slice_class_collection slice, "start_bit"
-  # end_bit_table    = format_slice_class_collection slice, "end_bit"
-  # shift_bits_table = format_slice_class_collection slice, "shift"
-  # mask_table       = format_slice_class_collection slice, "mask", :format=>WORD_FORMAT
-  # put_table splice_table(start_bit_table, shift_table(end_bit_table), shift_table(shift_bits_table), shift_table(mask_table))
-  # puts
-  
-  # show_collections class_name(slice), MASKS, :format=>WORD_FORMAT
-  
   put_table format_slice_class_formats(slice)
   puts
 end
