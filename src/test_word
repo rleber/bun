@@ -182,10 +182,10 @@ end
 def format_slice_class_formats(slice, options={})
   klass_name = class_name(slice)
   klass = protected_eval(klass_name)
-  format_collection_table(klass, "format_type", options)
+  format_collection_table(klass, "format_name", options)
   table = []
-  table << ['n', 'format_types(n)', 'format_definitions[key]']
-  klass.format_types.each_with_index do |format, n|
+  table << ['n', 'format_names(n)', 'format_definitions[key]']
+  klass.format_names.each_with_index do |format, n|
     table << [n, format.inspect, klass.format_definition(format).inspect]
   end
   table.justify_rows
@@ -204,7 +204,7 @@ def show_word_slice(word, slice, options={})
   collection = protected_eval("#{word}.#{slices}", binding)
   show_value "#{word}.#{slices}.string", :binding=>binding if has_string
   table = []
-  formats = protected_eval("#{klass_name}.format_types")
+  formats = protected_eval("#{klass_name}.format_names")
   heading = ["n", "value"] + formats.map{|f| f.inspect }
   heading << "string" if has_string
   table << heading

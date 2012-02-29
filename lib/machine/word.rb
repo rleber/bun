@@ -8,8 +8,12 @@ module Machine
         true
       end
       
-      def size
-        @size
+      def size(n=nil)
+        if n.nil?
+          @size
+        else
+          @size=n
+        end
       end
       
       def ones_mask(n=size)
@@ -20,9 +24,9 @@ module Machine
         @size = word_size
       end
       
-      def define_slice(slice_name, options={})
-        slice_definition = super
-        slice_definition.count = slice_count(slice_definition)
+      def slice(slice_name, options={}, &blk)
+        slice_definition = super(slice_name, options, &blk)
+        # slice_definition.count = slice_count(slice_definition)
         slice_definition
       end
       
@@ -47,7 +51,7 @@ module Machine
       end
     end
 
-    def slice(n, size, offset=0, gap=0, width=nil)
+    def get_slice(n, size, offset=0, gap=0, width=nil)
       width ||= self.class.size
       super(n, size, offset, gap, width)
     end

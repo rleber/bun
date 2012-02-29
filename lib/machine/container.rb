@@ -60,7 +60,7 @@ module Machine
     end
     
     def inspect
-      "<#{self.class.name}[#{self.map{|e| e.inspect}.join(',')}]>"
+      "<#{self.class.name}[#{self.map{|e| puts "Container.inspect: e===#{e.class}";e.inspect}.join(',')}]>"
     end
   end
 end

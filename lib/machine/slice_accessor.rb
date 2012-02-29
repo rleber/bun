@@ -19,6 +19,7 @@ module Machine
         @collapse
       end
       
+      # TODO Create a collapsed do ... end idiom?
       def array
         saved_collapse = collapse?
         self.collapse = false
@@ -39,11 +40,11 @@ module Machine
       
       def condensed_values(values)
         if !values.is_a?(::Array)
-          definition.data_class.new(values)
+          definition.slice_class.new(values)
         elsif values.size == 1 && collapse?
-          definition.data_class.new(values.first)
+          definition.slice_class.new(values.first)
         else
-          Slice::Array.new(values.map{|v| definition.data_class.new(v)})
+          Slice::Array.new(values.map{|v| definition.slice_class.new(v)})
         end
       end
       
@@ -67,7 +68,7 @@ module Machine
       end
       
       def allowed_methods
-        meths = definition.format_types
+        meths = definition.format_names
         meths += [:signed, :unsigned] if definition.sign != :none
         meths
       end

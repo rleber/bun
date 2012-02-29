@@ -64,9 +64,9 @@ module Machine
       # TODO Should be recursive -- i.e. Should be able to say word.half_word(0).byte(2)
       # TODO Define bit and byte order (i.e. LR, RL)
       # TODO Define signs other than at the beginning of a slice
-      def define_slice(slice_name, options={})
-        slice = Slice::Definition.new(slice_name, self, options)
-        slice.add_formats(nil, :format_overrides=>slice.formats, :default_format=>slice.default_format)
+      def slice(slice_name, options={}, &blk)
+        slice = Slice::Definition.new(slice_name, self, options, &blk)
+        slice.install_formats
         add_slice slice
     
         unshifted_method_name = "unshifted_#{slice.name}"
@@ -88,7 +88,7 @@ module Machine
         end
 
         if slice.string?
-          slice.data_class.def_method(:string) do ||
+          slice.slice_class.def_method(:string) do ||
             self.chr
           end
         end
@@ -97,10 +97,12 @@ module Machine
       end
       
       # A field only occurs once in a word
+      # Fields also "collapse" - that is, if sign_bit is a field, then foo.sign_bit.binary
+      # is possible -- it isn't necessary to say foo.sign_bit(0).binary
       # TODO Keep separate track of fields, vs. slices?
       # TODO Define structures (i.e. a sequence of fields -- possibly multiword?)
-      def define_field(name, options={})
-        define_slice(name, {:count=>1, :collapse=>true}.merge(options))
+      def field(name, options={}, &blk)
+        slice(name, {:count=>1, :collapse=>true}.merge(options), &blk)
       end
 
       def slices
@@ -124,8 +126,12 @@ module Machine
       end
     end
     
-    def size
-      @data.size * constituent_class.size
+    def size(n=nil)
+      if n.nil?
+        @data.size * constituent_class.size
+      else
+        define_size(n)
+      end
     end
 
     def slice_count(slice_size, offset=0, gap=0)
@@ -158,7 +164,7 @@ module Machine
       get_bits(at, at, width)
     end
   
-    def slice(n, size, offset=0, gap=0, width=nil)
+    def get_slice(n, size, offset=0, gap=0, width=nil)
       start = n*(size+gap) + offset
       get_bits(start, start+size-1, width)
     end

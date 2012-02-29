@@ -26,7 +26,7 @@ module Machine
           mask & value
         end
 
-        %w{size offset count significant_bits string? mask default_format}.each do |meth|
+        %w{size offset count significant_bits string? mask}.each do |meth|
           define_method meth do
             definition.send(meth)
           end

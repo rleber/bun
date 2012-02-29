@@ -1,20 +1,25 @@
+require 'machine/slice_dsl'
+
 module Machine
   module Slice
     class Definition
+
+      attr_accessor :bits
       attr_accessor :count
-      attr_reader :bits
-      attr_reader :class_name
-      attr_reader :data_class
-      attr_reader :default_format
-      attr_reader :formats
-      attr_reader :gap
-      attr_reader :mask
-      attr_reader :name
-      attr_reader :offset
-      attr_reader :parent_class
-      attr_reader :plural
-      attr_reader :sign
-      attr_reader :size
+      attr_accessor :class_name
+      attr_accessor :slice_class
+      attr_accessor :slice_class
+      attr_accessor :default_format
+      attr_accessor :formats
+      attr_accessor :gap
+      attr_accessor :mask
+      attr_accessor :name
+      attr_accessor :offset
+      attr_accessor :options
+      attr_accessor :parent_class
+      attr_accessor :plural
+      attr_accessor :sign
+      attr_accessor :size
       
       class << self
         @@definitions = []
@@ -26,28 +31,33 @@ module Machine
 
       VALID_SIGNS = [:none, :ones_complement, :twos_complement]
     
-      def initialize(slice_name, parent_class, options={})
+      def initialize(slice_name, parent_class, opts={}, &blk)
         @name = slice_name.to_s.downcase
         @plural = @name.pluralize
         @class_name = @name.gsub(/(^|_)(.)/) {|match| $2.upcase}
         @parent_class = parent_class
+        self.class.register(self)
+
+        self.options = {}
+        Slice::DSL.new(self, &blk) if block_given? # Processes Slice definition DSL; sets self.options
+        self.options.merge!(opts)
+
+        @is_string = !!options[:string]
+        @sign = options[:sign] || :none
+        @slice_class = make_class
         @size = options[:size]
         @offset = options[:offset] || 0
         @bits = options[:bits] || @size
         @mask = options[:mask] || @parent_class.ones_mask(@bits)
-        @is_string = !!options[:string]
-        @sign = options[:sign] || :none
         @default_format = options[:default_format]
         @formats = options[:format] || {}
         @gap = options[:gap] || 0
-        @count = options[:count]
-        @data_class = make_class
+        @count = options[:count] || parent_class.slice_count(@size, @offset, @gap)
         @collapse = options[:collapse]
-        self.class.register(self)
       end
       
-      def add_formats(formats=nil, options={})
-        @data_class.add_formats(formats, :format_overrides=>@formats.merge(options[:format_overrides]||{}), :default_format=>(options[:default_format] || @default_format))
+      def install_formats
+        @slice_class.install_formats(:formats=>@formats, :default=>@default_format)
       end
     
       def string?
@@ -59,11 +69,11 @@ module Machine
       end
       
       def formats
-        @data_class.formats
+        @slice_class.formats
       end
       
-      def format_types
-        @data_class.format_types
+      def format_names
+        @slice_class.format_names
       end
       
       def significant_bits
@@ -96,8 +106,8 @@ module Machine
       end
       
       def retrieve(from_object, index)
-        value = from_object.slice(index, size, offset, gap) & mask
-        data_class.new(value)
+        value = from_object.get_slice(index, size, offset, gap) & mask
+        slice_class.new(value)
       end
     end
   end

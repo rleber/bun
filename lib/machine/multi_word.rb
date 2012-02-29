@@ -128,7 +128,7 @@ module Machine
       index_class(index, index_numeric(index)+1)
     end
 
-    def slice(n, size, offset=0)
+    def get_slice(n, size, offset=0)
       size = index_numeric(size)
       offset = index_numeric(offset)
       start = (n-1)*size + offset

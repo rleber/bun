@@ -2,10 +2,40 @@ module Machine
   module Formatted
     def self.included(base)
       base.extend(ClassMethods)
+      base.send :alias_method, :original_inspect, :inspect
+      base.send(:define_method, :inspect) do
+        format(:inspect)
+      end
     end
     
     def formats
       self.class.formats
+    end
+
+    # TODO: Allow for unpadded formatting, and types which are unpadded by default
+    # TODO: Base inspect formatting on Class statically-defined inspect method?
+    # TODO: If :inspect format is missing, should fall back to original inspect method
+    def format(format_defn=nil)
+      self.class.install_formats unless formats
+      case format_defn
+      when nil
+        return format(:default)
+      when :inspect
+        format = formats[format_defn]
+        return format.nil? ? original_inspect : format(format)
+      when Symbol
+        format = formats[format_defn]
+        return format(format.nil? ? :inspect : format)
+      when Format
+        v = format_defn.string? ? self.string : self.value
+        v = v.inspect if format_defn.inspect?
+        format_defn = format_defn.definition
+      when String
+        v = format_defn=~/%[- *#\d]*s/ ? self.string : self.value
+      else
+        raise ArgumentError, "Unknown format type #{format_defn.inspect}"
+      end
+      format_defn % [v]
     end
     
     module ClassMethods
@@ -14,57 +44,68 @@ module Machine
       end
       
       def default_format
-        return @default_format if @default_format
-        sign = sign_type rescue :none
-        is_string = string? rescue false
-        (is_string ? :string_inspect : (sign == :none ? :octal : :decimal))
+        if @default_format
+          @default_format
+        else
+          sign = sign_type rescue :none
+          is_string = string? rescue false
+          (is_string ? :string_inspect : (sign == :none ? :octal : :decimal))
+        end
       end
       
-      def add_formats(new_formats=nil, options={})
-        format_overrides = options[:format_overrides] || {}
-        default_format = options[:default_format] || :octal
-        new_formats ||= Format.formats_for_class(self)
-        new_formats.each do |name, format|
-          add_format(format, :format_overrides=>format_overrides)
+      def install_formats(options={})
+        if options[:clear]
+          @formats = {}
+          @format_names = []
         end
-      
-        default = formats[default_format]
-        inspect_format = Format.new(:inspect, default.definition)
-        add_format inspect_format
-        # add_format Format.new(:inspect, default.definition)
-        add_format Format.new(:default, default.definition), :no_method=>true
         
-        # TODO: Allow for unpadded formatting, and types which are unpadded by default
-        # TODO: Base inspect formatting on Class statically-defined inspect method?
-        def_method :format do |*args|
-          format_defn = args[0] || :default
-          format = formats[format_defn] if format_defn.is_a?(Symbol)
-          if format
-            format_definition = format.definition
-            v = format.string? ? self.string : self.value
-            v = v.inspect if format.inspect?
-          else
-            format_definition = format_defn || word_default_format # TODO '%p' would be better, but would cause endless recursion currently
-            v = self.value
-          end
-          format_definition % [v]
+        save_formats Format.formats_for_class(self)
+
+        format_overrides = options[:formats] || {}
+        save_formats format_overrides
+        
+        if options[:default] || !formats[:default]
+          save_format :default, (options[:default_format] || default_format)
+        end
+        
+        if !formats[:inspect]
+          save_format :inspect, formats[:default]
+        end
+        
+        (formats.keys - [:default, :inspect]).each do |format_name|
+          define_format_method format_name
         end
       end
-
-      def add_format(format, options={})
-        format_overrides = options[:format_overrides] || {}
-        adjusted_format = format.adjusted_format(self, format_overrides)
+      
+      def save_formats(format_hash)
+        format_hash.each {|name, format| save_format(name, format) }
+      end
+      
+      def save_format(name, format)
+        case format
+        when nil
+          return save_format(name, default_format)
+        when Symbol
+          return save_format(name, formats[format])
+        when Format
+          if format.name != name
+            format = format.dup
+            format.name = name
+          end
+        else
+          format = Format.new(name, format)
+        end
+        adjusted_format = format.adjusted_format(self)
         raise RuntimeError, "Format #{format.name.inspect} is not supported for #{self.name}." unless adjusted_format
         @formats ||= {}
-        @format_types ||= []
+        @format_names ||= []
         @formats[adjusted_format.name] = adjusted_format
-        unless @format_types.include?(adjusted_format.name)
-          @format_types << adjusted_format.name
-          unless options[:no_method]
-            def_method adjusted_format.name do ||
-              format(adjusted_format.name)
-            end
-          end
+        @format_names << adjusted_format.name unless @format_names.include?(adjusted_format.name)
+      end
+        
+      def define_format_method(format_name)
+        def_method format_name do ||
+          format(format_name)
         end
       end
       
@@ -80,16 +121,16 @@ module Machine
         @format_samples
       end
       
-      def format_types
-        @format_types
+      def format_names
+        @format_names
       end
 
-      def format_type(n)
-        @format_types[n]
+      def format_name(n)
+        @format_names[n]
       end
       
       def format_definitions
-        @format_types.inject({}) do |hsh, key|
+        @format_names.inject({}) do |hsh, key|
           hsh[key] = @formats[key].definition
           hsh
         end
@@ -109,18 +150,22 @@ module Machine
     FORMAT_WIDTH_WILDCARD = '*'
     
     attr_reader :name
-    attr_reader :definition
+    attr_accessor :definition
     attr_reader :name_string
     
     @@formats = {}
     
     class << self
+      def ones_mask(n)
+        2^n-1
+      end
+      
       def format_samples(size)
         [
-          Machine::Word.ones_mask(size),   # All '1' bits
-          Machine::Word.ones_mask(size-1), # All '1' bits, except for possible leading sign
-          1<<(size-1),                    # '1' bit in possible leading sign, otherwise zero
-          0,                              # All '0' bits
+          ones_mask(size),    # All '1' bits
+          ones_mask(size-1),  # All '1' bits, except for possible leading sign
+          1<<(size-1),        # '1' bit in possible leading sign, otherwise zero
+          0,                  # All '0' bits
         ]
       end
 
@@ -145,9 +190,17 @@ module Machine
     end
 
     def initialize(name, definition)
-      @name = name.to_sym
+      self.name = name
+      set_format_types
       @definition = definition
+    end
+    
+    def name=(name)
+      @name = name.to_sym
       @name_string = name.to_s
+    end
+      
+    def set_format_types
       @string_format = name_string =~ /string/
       @inspect = name_string =~ /inspect/
     end
@@ -165,11 +218,11 @@ module Machine
       klass_is_string || !string?
     end
     
-    def adjusted_format(klass, format_overrides={})
+    def adjusted_format(klass)
       definition = self.definition
-      definition = format_overrides[name] if format_overrides[name]
       # TODO this doesn't word for MultiWords; not sure why
-      size = klass.size rescue klass.word_size
+      size = klass.size rescue nil
+      size ||= klass.word_size rescue nil
       size ||= 0
       format_samples = klass.format_samples || self.class.format_samples(size)
       nbits = klass.significant_bits rescue size
@@ -185,7 +238,9 @@ module Machine
       end
       sample_texts = format_samples.map{|v| sample_definition % [v] }
       width = sample_texts.map{|t| t.size}.max
-      self.class.new(name, definition.gsub(FORMAT_WIDTH_WILDCARD, width.to_s))
+      adjusted_format = self.dup
+      adjusted_format.definition = definition.gsub(FORMAT_WIDTH_WILDCARD, width.to_s)
+      adjusted_format
     end
 
   end

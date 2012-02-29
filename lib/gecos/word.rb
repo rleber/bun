@@ -1,19 +1,44 @@
 require 'machine'
 
 class GECOS
-  # TODO Make this more DSL-like
   class Word < Machine::Word
-    define_size 36
-    define_slice :half_word, :size=>size/2
-    define_slice :byte, :size=>9
-    define_slice :character, :size=>9, :bits=>7, :string=>true
-    define_slice :packed_character, :size=>7, :offset=>1, :string=>true
-    define_slice :bit, :size=>1
-    define_field :integer, :size=>size, :sign=>:twos_complement, :format=>{:decimal=>'%d'}, :default_format=>:decimal
-    define_field :sign, :size=>1
-    define_field :low_byte, :size=>9, :offset=>27
-    define_field :upper_half_word, :size=>18
-    define_field :lower_half_word, :size=>18, :offset=>18
+    SIZE = 36
+    size SIZE
+    slice :half_word, :size=>size/2
+    slice :byte, :size=>9
+    slice :character do
+      size 9
+      bits 7
+      string
+    end
+    slice :packed_character do
+      size 7
+      offset 1
+      string
+    end
+    slice :bit do
+      size 1
+    end
+    field :integer do
+      size SIZE
+      sign :twos_complement
+      format :decimal, '%d'
+      format :default, :decimal
+    end
+    field :sign do
+      size 1
+    end
+    field :low_byte do
+      size 9
+      offset 27
+    end
+    field :upper_half_word do
+      size 18
+    end
+    field :lower_half_word do
+      size 18
+      offset 18
+    end
   end
   
   class Words < Machine::Words(GECOS::Word)
