@@ -247,13 +247,13 @@ end
 MASKS = %w{single_bit_mask ones_mask}
 
 puts "GECOS::Word:"
-show_value "GECOS::Word.size"
+show_value "GECOS::Word.width"
 show_value "GECOS::Word.ones_mask", :format=>WORD_FORMAT
-show_collections "GECOS::Word", MASKS, :format=>WORD_FORMAT, :size=>GECOS::Word.size+1
+show_collections "GECOS::Word", MASKS, :format=>WORD_FORMAT, :size=>GECOS::Word.width+1
 puts
 
 GECOS::Word.slice_names.sort_by{|n| n.to_s}.each do |slice|
-  show_slice_class_parameters slice, %w{size offset count significant_bits mask(%#012o) string?(%p)}
+  show_slice_class_parameters slice, %w{width offset count significant_bits mask(%#012o) string?(%p)}
   puts
   
   put_table format_slice_class_formats(slice)
@@ -301,6 +301,9 @@ show_value "$words[2..3]"
 show_value "$words[2..3].bytes"
 show_value "$words[2..3].byte(3)"
 show_value "$words[2..3].byte(4)"
-# $double_word = GECOS::Block[1,2]
-# show_value "$double_word"
+$double_word = GECOS::Block[1,2]
+show_value "$double_word"
+show_value "$double_word[0]"
+show_value "$double_word[0].class"
+show_value "$double_word[1].to_s"
 # show_value "$double_word.word_and_a_halfs"

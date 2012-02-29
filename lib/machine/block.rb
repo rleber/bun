@@ -8,13 +8,15 @@ module Machine
     klass = Class.new(Words(constituent_class))
     klass.send :include, Machine::BlockBase
     klass.send :include, Machine::Sliceable
-    # klass.contains constituent_class
-    # klass.word_size = constituent_class.size
+    class << klass
+      def inherited(subclass)
+        subclass.send :define_format, :inspect, '%p'
+      end
+    end
     klass
   end
 
-  module BlockBase # Should inherit/include slicing from Structure
-    # include Container
+  module BlockBase
     
     def self.included(base)
       base.extend ClassMethods
@@ -23,30 +25,16 @@ module Machine
     
     module ClassMethods
       def word_size
-        constituent_class.size
+        constituent_class.width
       end
-      # 
-      # def slice()
-      # end
-      # 
-      # def field()
-      # end
     end
     
-    def get_at(*args)
-      @data.[](*args)
-    end
-    
-    def set_at(*args)
-      @data.[]=(*args)
-    end
-
     def word_size
       self.class.word_size
     end
     
-    def size
-      @data.size * word_size
+    def width
+      self.original_size * word_size
     end
     
     def decode_index(index)
@@ -139,11 +127,15 @@ module Machine
       index_class(index, index_numeric(index)+1)
     end
 
-    def get_slice(n, size, offset=0)
-      size = index_numeric(size)
+    def get_slice(n, width, offset=0)
+      width = index_numeric(width)
       offset = index_numeric(offset)
-      start = (n-1)*size + offset
-      get_bits(start, start+size-1)
+      start = (n-1)*width + offset
+      get_bits(start, start+width-1)
+    end
+    
+    def value
+      self.to_a
     end
   end
 end

@@ -4,24 +4,20 @@ module Machine
   class Word < Structure
     
     class << self
-      def fixed_size?
+      def fixed_width?
         true
       end
       
-      def size(n=nil)
+      def width(n=nil)
         if n.nil?
-          @size
+          @width
         else
-          @size=n
+          @width=n
         end
       end
       
-      def ones_mask(n=size)
+      def ones_mask(n=width)
         super(n)
-      end
-      
-      def define_size(word_size)
-        @size = word_size
       end
       
       def slice(slice_name, options={}, &blk)
@@ -32,14 +28,14 @@ module Machine
       
       def slice_count(slice, options={})
         options = options.dup
-        options[:data_size] ||= size
+        options[:data_size] ||= width
         super(slice, options)
       end
     end
 
-    def get_slice(n, size, offset=0, gap=0, width=nil)
-      width ||= self.class.size
-      super(n, size, offset, gap, width)
+    def get_slice(n, slice_width, offset=0, gap=0, width=nil)
+      width ||= self.class.width
+      super(n, slice_width, offset, gap, width)
     end
   end
 end

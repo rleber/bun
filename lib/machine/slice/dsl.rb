@@ -17,7 +17,7 @@ module Machine
         end
       end
       
-      %w{size offset gap count bits string sign collapse}.each do |meth|
+      %w{width offset gap count bits string sign collapse}.each do |meth|
         meth = meth.to_sym
         define_method meth do |value|
           definition.options ||= {}

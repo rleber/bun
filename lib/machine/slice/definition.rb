@@ -19,7 +19,7 @@ module Machine
       attr_accessor :parent_class
       attr_accessor :plural
       attr_accessor :sign
-      attr_accessor :size
+      attr_accessor :width
       
       class << self
         @@definitions = []
@@ -45,14 +45,14 @@ module Machine
         @is_string = !!options[:string]
         @sign = options[:sign] || :none
         @slice_class = make_class
-        @size = options[:size]
+        @width = options[:width]
         @offset = options[:offset] || 0
-        @bits = options[:bits] || @size
+        @bits = options[:bits] || @width
         @mask = options[:mask] || @parent_class.ones_mask(@bits)
         @default_format = options[:default_format]
         @formats = options[:format] || {}
         @gap = options[:gap] || 0
-        @count = options[:count] || parent_class.slice_count(@size, :offset=>@offset, :gap=>@gap)
+        @count = options[:count] || parent_class.slice_count(@width, :offset=>@offset, :gap=>@gap)
         @collapse = options[:collapse]
       end
       
@@ -106,7 +106,7 @@ module Machine
       end
       
       def retrieve(from_object, index)
-        value = from_object.get_slice(index, size, offset, gap) & mask
+        value = from_object.get_slice(index, width, offset, gap) & mask
         slice_class.new(value)
       end
     end

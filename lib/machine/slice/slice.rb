@@ -26,7 +26,7 @@ module Machine
           mask & value
         end
 
-        %w{size offset count significant_bits string? mask}.each do |meth|
+        %w{width offset count significant_bits string? mask}.each do |meth|
           define_method meth do
             definition.send(meth)
           end
@@ -55,7 +55,7 @@ module Machine
           end
           
           def sign_mask
-            single_bit_mask(size-sign_bit-1)
+            single_bit_mask(width-sign_bit-1)
           end
           
           def sign(val)
@@ -83,7 +83,7 @@ module Machine
         end
     
         def sign
-          (@ignore_sign ? 0 : self.class.sign(internal_value)) >> (size-self.class.sign_bit-1)
+          (@ignore_sign ? 0 : self.class.sign(internal_value)) >> (self.class.width-self.class.sign_bit-1)
         end
 
         def complement

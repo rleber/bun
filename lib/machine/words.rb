@@ -9,8 +9,6 @@ module Machine
 
   module WordsBase
     def self.included(base)
-      # puts "base=#{base.inspect}"
-      # puts "base methods: #{base.instance_methods.sort.inspect}"
       base.send :alias_method, :get_at, :[] if !base.instance_methods.include?('get_at') && base.instance_methods.include?('[]')
       base.send :alias_method, :set_at, :[]= if !base.instance_methods.include?('set_at') && base.instance_methods.include?('[]=')
       base.send :include, Container

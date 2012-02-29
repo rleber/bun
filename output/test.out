@@ -1,0 +1,423 @@
+GECOS::Word:
+GECOS::Word.width => 36
+GECOS::Word.ones_mask => 777777777777
+n   single_bit_masks[n]  ones_masks[n]
+0   000000000001         000000000000 
+1   000000000002         000000000001 
+2   000000000004         000000000003 
+3   000000000010         000000000007 
+4   000000000020         000000000017 
+5   000000000040         000000000037 
+6   000000000100         000000000077 
+7   000000000200         000000000177 
+8   000000000400         000000000377 
+9   000000001000         000000000777 
+10  000000002000         000000001777 
+11  000000004000         000000003777 
+12  000000010000         000000007777 
+13  000000020000         000000017777 
+14  000000040000         000000037777 
+15  000000100000         000000077777 
+16  000000200000         000000177777 
+17  000000400000         000000377777 
+18  000001000000         000000777777 
+19  000002000000         000001777777 
+20  000004000000         000003777777 
+21  000010000000         000007777777 
+22  000020000000         000017777777 
+23  000040000000         000037777777 
+24  000100000000         000077777777 
+25  000200000000         000177777777 
+26  000400000000         000377777777 
+27  001000000000         000777777777 
+28  002000000000         001777777777 
+29  004000000000         003777777777 
+30  010000000000         007777777777 
+31  020000000000         017777777777 
+32  040000000000         037777777777 
+33  100000000000         077777777777 
+34  200000000000         177777777777 
+35  400000000000         377777777777 
+36  1000000000000        777777777777 
+
+GECOS::Word::Bit:
+Parameter         GECOS::Word::Bit
+width             1               
+offset            0               
+count             36              
+significant_bits  1               
+mask              000000000001    
+string?           false           
+
+n  format_names(n)  format_definitions[key]
+0  :hex             "%x"                   
+1  :decimal         "%d"                   
+2  :octal           "%o"                   
+3  :binary          "%b"                   
+4  :default         :octal                 
+5  :inspect         :octal                 
+
+GECOS::Word::Byte:
+Parameter         GECOS::Word::Byte
+width             9                
+offset            0                
+count             4                
+significant_bits  9                
+mask              000000000777     
+string?           false            
+
+n  format_names(n)  format_definitions[key]
+0  :hex             "%0#5x"                
+1  :decimal         "%3d"                  
+2  :octal           "%0#4o"                
+3  :binary          "%0#11b"               
+4  :default         :octal                 
+5  :inspect         :octal                 
+
+GECOS::Word::Character:
+Parameter         GECOS::Word::Character
+width             9                     
+offset            0                     
+count             4                     
+significant_bits  7                     
+mask              000000000177          
+string?           true                  
+
+n  format_names(n)  format_definitions[key]
+0  :string_inspect  "%-1s"                 
+1  :hex             "%0#5x"                
+2  :string          "%-1s"                 
+3  :decimal         "%3d"                  
+4  :octal           "%0#4o"                
+5  :binary          "%0#11b"               
+6  :default         :string_inspect        
+7  :inspect         :string_inspect        
+
+GECOS::Word::HalfWord:
+Parameter         GECOS::Word::HalfWord
+width             18                   
+offset            0                    
+count             2                    
+significant_bits  18                   
+mask              000000777777         
+string?           false                
+
+n  format_names(n)  format_definitions[key]
+0  :hex             "%0#7x"                
+1  :decimal         "%6d"                  
+2  :octal           "%0#7o"                
+3  :binary          "%0#20b"               
+4  :default         :octal                 
+5  :inspect         :octal                 
+
+GECOS::Word::Integer:
+Parameter         GECOS::Word::Integer
+width             36                  
+offset            0                   
+count             1                   
+significant_bits  36                  
+mask              0777777777777       
+string?           false               
+
+n  format_names(n)  format_definitions[key]
+0  :hex             "%0#11x"               
+1  :decimal         "%d"                   
+2  :octal           "%0#13o"               
+3  :binary          "%0#38b"               
+4  :default         "%d"                   
+5  :inspect         "%d"                   
+
+GECOS::Word::LowByte:
+Parameter         GECOS::Word::LowByte
+width             9                   
+offset            27                  
+count             1                   
+significant_bits  9                   
+mask              000000000777        
+string?           false               
+
+n  format_names(n)  format_definitions[key]
+0  :hex             "%0#5x"                
+1  :decimal         "%3d"                  
+2  :octal           "%0#4o"                
+3  :binary          "%0#11b"               
+4  :default         :octal                 
+5  :inspect         :octal                 
+
+GECOS::Word::LowerHalfWord:
+Parameter         GECOS::Word::LowerHalfWord
+width             18                        
+offset            18                        
+count             1                         
+significant_bits  18                        
+mask              000000777777              
+string?           false                     
+
+n  format_names(n)  format_definitions[key]
+0  :hex             "%0#7x"                
+1  :decimal         "%6d"                  
+2  :octal           "%0#7o"                
+3  :binary          "%0#20b"               
+4  :default         :octal                 
+5  :inspect         :octal                 
+
+GECOS::Word::PackedCharacter:
+Parameter         GECOS::Word::PackedCharacter
+width             7                           
+offset            1                           
+count             5                           
+significant_bits  7                           
+mask              000000000177                
+string?           true                        
+
+n  format_names(n)  format_definitions[key]
+0  :string_inspect  "%-1s"                 
+1  :hex             "%0#4x"                
+2  :string          "%-1s"                 
+3  :decimal         "%2d"                  
+4  :octal           "%0#4o"                
+5  :binary          "%0#9b"                
+6  :default         :string_inspect        
+7  :inspect         :string_inspect        
+
+GECOS::Word::Sign:
+Parameter         GECOS::Word::Sign
+width             1                
+offset            0                
+count             1                
+significant_bits  1                
+mask              000000000001     
+string?           false            
+
+n  format_names(n)  format_definitions[key]
+0  :hex             "%x"                   
+1  :decimal         "%d"                   
+2  :octal           "%o"                   
+3  :binary          "%b"                   
+4  :default         :octal                 
+5  :inspect         :octal                 
+
+GECOS::Word::UpperHalfWord:
+Parameter         GECOS::Word::UpperHalfWord
+width             18                        
+offset            0                         
+count             1                         
+significant_bits  18                        
+mask              000000777777              
+string?           false                     
+
+n  format_names(n)  format_definitions[key]
+0  :hex             "%0#7x"                
+1  :decimal         "%6d"                  
+2  :octal           "%0#7o"                
+3  :binary          "%0#20b"               
+4  :default         :octal                 
+5  :inspect         :octal                 
+
+$byte_test_word.value => 111222333444
+$byte_test_word.bits => [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0]
+n   value         :hex  :decimal  :octal  :binary  :default  :inspect
+0   000000000000  0     0         0       0        0         0       
+1   000000000000  0     0         0       0        0         0       
+2   000000000001  1     1         1       1        1         1       
+3   000000000000  0     0         0       0        0         0       
+4   000000000000  0     0         0       0        0         0       
+5   000000000001  1     1         1       1        1         1       
+6   000000000000  0     0         0       0        0         0       
+7   000000000000  0     0         0       0        0         0       
+8   000000000001  1     1         1       1        1         1       
+9   000000000000  0     0         0       0        0         0       
+10  000000000001  1     1         1       1        1         1       
+11  000000000000  0     0         0       0        0         0       
+12  000000000000  0     0         0       0        0         0       
+13  000000000001  1     1         1       1        1         1       
+14  000000000000  0     0         0       0        0         0       
+15  000000000000  0     0         0       0        0         0       
+16  000000000001  1     1         1       1        1         1       
+17  000000000000  0     0         0       0        0         0       
+18  000000000000  0     0         0       0        0         0       
+19  000000000001  1     1         1       1        1         1       
+20  000000000001  1     1         1       1        1         1       
+21  000000000000  0     0         0       0        0         0       
+22  000000000001  1     1         1       1        1         1       
+23  000000000001  1     1         1       1        1         1       
+24  000000000000  0     0         0       0        0         0       
+25  000000000001  1     1         1       1        1         1       
+26  000000000001  1     1         1       1        1         1       
+27  000000000001  1     1         1       1        1         1       
+28  000000000000  0     0         0       0        0         0       
+29  000000000000  0     0         0       0        0         0       
+30  000000000001  1     1         1       1        1         1       
+31  000000000000  0     0         0       0        0         0       
+32  000000000000  0     0         0       0        0         0       
+33  000000000001  1     1         1       1        1         1       
+34  000000000000  0     0         0       0        0         0       
+35  000000000000  0     0         0       0        0         0       
+
+$byte_test_word.bytes => [0111, 0222, 0333, 0444]
+n  value         :hex   :decimal  :octal  :binary      :default  :inspect
+0  000000000111  0x049   73       0111    0b001001001  0111      0111    
+1  000000000222  0x092  146       0222    0b010010010  0222      0222    
+2  000000000333  0x0db  219       0333    0b011011011  0333      0333    
+3  000000000444  0x124  292       0444    0b100100100  0444      0444    
+
+$byte_test_word.characters => ["I", "\022", "[", "$"]
+$byte_test_word.characters.string => "I\022[$"
+n  value         :string_inspect  :hex   :string  :decimal  :octal  :binary      :default  :inspect  string
+0  000000000111  "I"              0x049  I         73       0111    0b001001001  "I"       "I"       I     
+1  000000000022  "\022"           0x012           18       0022    0b000010010  "\022"    "\022"         
+2  000000000133  "["              0x05b  [         91       0133    0b001011011  "["       "["       [     
+3  000000000044  "$"              0x024  $         36       0044    0b000100100  "$"       "$"       $     
+
+$byte_test_word.half_words => [0111222, 0333444]
+n  value         :hex     :decimal  :octal   :binary               :default  :inspect
+0  000000111222  0x09292   37522    0111222  0b001001001010010010  0111222   0111222 
+1  000000333444  0x1b724  112420    0333444  0b011011011100100100  0333444   0333444 
+
+$byte_test_word.integers => [9836279588]
+n  value         :hex         :decimal    :octal         :binary                                 :default    :inspect  
+0  111222333444  0x24a49b724  9836279588  0111222333444  0b001001001010010010011011011100100100  9836279588  9836279588
+
+$byte_test_word.low_bytes => [0444]
+n  value         :hex   :decimal  :octal  :binary      :default  :inspect
+0  000000000444  0x124  292       0444    0b100100100  0444      0444    
+
+$byte_test_word.lower_half_words => [0333444]
+n  value         :hex     :decimal  :octal   :binary               :default  :inspect
+0  000000333444  0x1b724  112420    0333444  0b011011011100100100  0333444   0333444 
+
+$byte_test_word.packed_characters => ["$", "R", "&", "n", "$"]
+$byte_test_word.packed_characters.string => "$R&n$"
+n  value         :string_inspect  :hex  :string  :decimal  :octal  :binary    :default  :inspect  string
+0  000000000044  "$"              0x24  $        36        0044    0b0100100  "$"       "$"       $     
+1  000000000122  "R"              0x52  R        82        0122    0b1010010  "R"       "R"       R     
+2  000000000046  "&"              0x26  &        38        0046    0b0100110  "&"       "&"       &     
+3  000000000156  "n"              0x6e  n        110       0156    0b1101110  "n"       "n"       n     
+4  000000000044  "$"              0x24  $        36        0044    0b0100100  "$"       "$"       $     
+
+$byte_test_word.signs => [0]
+n  value         :hex  :decimal  :octal  :binary  :default  :inspect
+0  000000000000  0     0         0       0        0         0       
+
+$byte_test_word.upper_half_words => [0111222]
+n  value         :hex     :decimal  :octal   :binary               :default  :inspect
+0  000000111222  0x09292   37522    0111222  0b001001001010010010  0111222   0111222 
+
+$negative.value => 777777777777
+$negative.bits => [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+n   value         :hex  :decimal  :octal  :binary  :default  :inspect
+0   000000000001  1     1         1       1        1         1       
+1   000000000001  1     1         1       1        1         1       
+2   000000000001  1     1         1       1        1         1       
+3   000000000001  1     1         1       1        1         1       
+4   000000000001  1     1         1       1        1         1       
+5   000000000001  1     1         1       1        1         1       
+6   000000000001  1     1         1       1        1         1       
+7   000000000001  1     1         1       1        1         1       
+8   000000000001  1     1         1       1        1         1       
+9   000000000001  1     1         1       1        1         1       
+10  000000000001  1     1         1       1        1         1       
+11  000000000001  1     1         1       1        1         1       
+12  000000000001  1     1         1       1        1         1       
+13  000000000001  1     1         1       1        1         1       
+14  000000000001  1     1         1       1        1         1       
+15  000000000001  1     1         1       1        1         1       
+16  000000000001  1     1         1       1        1         1       
+17  000000000001  1     1         1       1        1         1       
+18  000000000001  1     1         1       1        1         1       
+19  000000000001  1     1         1       1        1         1       
+20  000000000001  1     1         1       1        1         1       
+21  000000000001  1     1         1       1        1         1       
+22  000000000001  1     1         1       1        1         1       
+23  000000000001  1     1         1       1        1         1       
+24  000000000001  1     1         1       1        1         1       
+25  000000000001  1     1         1       1        1         1       
+26  000000000001  1     1         1       1        1         1       
+27  000000000001  1     1         1       1        1         1       
+28  000000000001  1     1         1       1        1         1       
+29  000000000001  1     1         1       1        1         1       
+30  000000000001  1     1         1       1        1         1       
+31  000000000001  1     1         1       1        1         1       
+32  000000000001  1     1         1       1        1         1       
+33  000000000001  1     1         1       1        1         1       
+34  000000000001  1     1         1       1        1         1       
+35  000000000001  1     1         1       1        1         1       
+
+$negative.bytes => [0777, 0777, 0777, 0777]
+n  value         :hex   :decimal  :octal  :binary      :default  :inspect
+0  000000000777  0x1ff  511       0777    0b111111111  0777      0777    
+1  000000000777  0x1ff  511       0777    0b111111111  0777      0777    
+2  000000000777  0x1ff  511       0777    0b111111111  0777      0777    
+3  000000000777  0x1ff  511       0777    0b111111111  0777      0777    
+
+$negative.characters => ["\177", "\177", "\177", "\177"]
+$negative.characters.string => "\177\177\177\177"
+n  value         :string_inspect  :hex   :string  :decimal  :octal  :binary      :default  :inspect  string
+0  000000000177  "\177"           0x07f          127       0177    0b001111111  "\177"    "\177"         
+1  000000000177  "\177"           0x07f          127       0177    0b001111111  "\177"    "\177"         
+2  000000000177  "\177"           0x07f          127       0177    0b001111111  "\177"    "\177"         
+3  000000000177  "\177"           0x07f          127       0177    0b001111111  "\177"    "\177"         
+
+$negative.half_words => [0777777, 0777777]
+n  value         :hex     :decimal  :octal   :binary               :default  :inspect
+0  000000777777  0x3ffff  262143    0777777  0b111111111111111111  0777777   0777777 
+1  000000777777  0x3ffff  262143    0777777  0b111111111111111111  0777777   0777777 
+
+$negative.integers => [-1]
+n  value         :hex         :decimal  :octal         :binary                                 :default  :inspect
+0  777777777777  0xfffffffff  -1        0777777777777  0b111111111111111111111111111111111111  -1        -1      
+
+$negative.low_bytes => [0777]
+n  value         :hex   :decimal  :octal  :binary      :default  :inspect
+0  000000000777  0x1ff  511       0777    0b111111111  0777      0777    
+
+$negative.lower_half_words => [0777777]
+n  value         :hex     :decimal  :octal   :binary               :default  :inspect
+0  000000777777  0x3ffff  262143    0777777  0b111111111111111111  0777777   0777777 
+
+$negative.packed_characters => ["\177", "\177", "\177", "\177", "\177"]
+$negative.packed_characters.string => "\177\177\177\177\177"
+n  value         :string_inspect  :hex  :string  :decimal  :octal  :binary    :default  :inspect  string
+0  000000000177  "\177"           0x7f          127       0177    0b1111111  "\177"    "\177"         
+1  000000000177  "\177"           0x7f          127       0177    0b1111111  "\177"    "\177"         
+2  000000000177  "\177"           0x7f          127       0177    0b1111111  "\177"    "\177"         
+3  000000000177  "\177"           0x7f          127       0177    0b1111111  "\177"    "\177"         
+4  000000000177  "\177"           0x7f          127       0177    0b1111111  "\177"    "\177"         
+
+$negative.signs => [1]
+n  value         :hex  :decimal  :octal  :binary  :default  :inspect
+0  000000000001  1     1         1       1        1         1       
+
+$negative.upper_half_words => [0777777]
+n  value         :hex     :decimal  :octal   :binary               :default  :inspect
+0  000000777777  0x3ffff  262143    0777777  0b111111111111111111  0777777   0777777 
+
+$byte_test_word-5 => 111222333437
+3+$byte_test_word => 111222333447
+$byte_test_word.packed_characters.string => "$R&n$"
+'First character: '+($byte_test_word.character(0)) => "First character: I"
+$byte_test_word.character(0)+': is here' => "I: is here"
+$byte_test_word.character(0).add(2) => 75
+$negative.integer(0).signed => -1
+$negative.integer(0).unsigned => 777777777777
+$byte_test_word.byte(2).octal => "0333"
+$negative.integer(0).decimal => "-1"
+$negative.integer.decimal => "-1"
+$negative.integer(0).unsigned.octal => "0777777777777"
+$negative.integer.signed.hex => "0xfffffffff"
+$words.class => GECOS::Words
+$words => <GECOS::Words[<GECOS::Word 000000000001>,<GECOS::Word 000000000002>,<GECOS::Word 000000000003>]>
+$words.size => 3
+$words[0] => <GECOS::Word 000000000001>
+$words[0].class => GECOS::Word
+$words => <GECOS::Words[<GECOS::Word 000000000001>,<GECOS::Word 000000000002>,<GECOS::Word 000000000003>,nil,nil,<GECOS::Word 000000002322>]>
+$words[4] => nil
+$words[5] => <GECOS::Word 000000002322>
+$words[2..3] => <GECOS::Words[<GECOS::Word 000000000003>,nil]>
+$words[2..3].bytes => [0000, 0000, 0000, 0003]
+$words[2..3].byte(3) => 0003
+$words[2..3].byte(4) => nil
+$double_word => "[<GECOS::Word 000000000001>, <GECOS::Word 000000000002>]"
+$double_word[0] => <GECOS::Word 000000000001>
+$double_word[0].class => GECOS::Word
+$double_word[1].to_s => "<GECOS::Word: 2>"

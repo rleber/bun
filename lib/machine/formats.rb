@@ -2,30 +2,49 @@ module Machine
   module Formatted
     def self.included(base)
       base.extend(ClassMethods)
-      base.send :alias_method, :original_inspect, :inspect
+      base.send :alias_method, :inspect_before_formatting, :inspect
       base.send(:define_method, :inspect) do
         format(:inspect)
+      end
+      base.send :alias_method ,:to_s_before_formatting, :to_s
+      base.send(:define_method, :to_s) do
+        format(:default)
       end
     end
     
     def formats
       self.class.formats
     end
+    
+    def format_names
+      self.class.format_names
+    end
 
-    def format(format_defn=nil)
-      self.class.install_formats unless formats
+    def format(format_defn=nil, inspecting=false)
       case format_defn
       when nil
-        return format(:default)
+        return format(:default, inspecting)
       when :inspect
         format = formats[format_defn]
-        return format.nil? ? original_inspect : format(format)
+        return format.nil? ? inspect_before_formatting : format(format, true)
       when Symbol
         format = formats[format_defn]
-        return format(format.nil? ? :inspect : format)
+        if format.nil?
+          return inspect_before_formatting if inspecting # We're in a recursive loop
+          return format(:inspect, true)
+        else
+          return format(format, inspecting)
+        end
       when Format
+        return format(format_defn.definition, inspecting) if format_defn.definition.is_a?(Symbol)
         v = format_defn.string? ? self.string : self.value
-        v = v.inspect if format_defn.inspect?
+        if format_defn.inspect?
+          if v.respond_to?(:inspect_before_formatting)
+            v = v.inspect_before_formatting 
+          else
+            v = v.inspect
+          end
+        end
         format_defn = format_defn.definition
       when String
         v = format_defn=~/%[- *#\d]*s/ ? self.string : self.value
@@ -38,11 +57,11 @@ module Machine
     module ClassMethods
       # TODO Allow for unpadded formatting, and types which are unpadded by default
       # TODO More extensive DSL for defining formats, e.g. alignment, padding, width
-      def define_format(name, format)
+      def global_format(name, format)
         Format.define(name, format)
       end
         
-      def define_formats(formats)
+      def global_formats(formats)
         Format.define_from_hash(formats)
       end
       
@@ -57,39 +76,37 @@ module Machine
       end
       
       def install_formats(options={})
-        if options[:clear]
-          @formats = {}
-          @format_names = []
-        end
+        saved_formats = @formats || {}
+        @formats = {}
+        @format_names = []
         
-        save_formats Format.formats_for_class(self)
+        define_formats Format.formats_for_class(self)
+        define_formats saved_formats
 
         format_overrides = options[:formats] || {}
-        save_formats format_overrides
+        define_formats format_overrides
         
-        if options[:default] || !formats[:default]
-          save_format :default, (options[:default_format] || default_format)
+        if options[:default] || !@formats[:default]
+          define_format :default, (options[:default_format] || default_format)
         end
         
-        if !formats[:inspect]
-          save_format :inspect, formats[:default]
+        if !@formats[:inspect]
+          define_format :inspect, @formats[:default]
         end
         
-        (formats.keys - [:default, :inspect]).each do |format_name|
+        (@formats.keys - [:default, :inspect]).each do |format_name|
           define_format_method format_name
         end
       end
       
-      def save_formats(format_hash)
-        format_hash.each {|name, format| save_format(name, format) }
+      def define_formats(format_hash)
+        format_hash.each {|name, format| define_format(name, format) }
       end
       
-      def save_format(name, format)
+      def define_format(name, format)
         case format
         when nil
-          return save_format(name, default_format)
-        when Symbol
-          return save_format(name, formats[format])
+          return define_format(name, default_format)
         when Format
           if format.name != name
             format = format.dup
@@ -113,6 +130,7 @@ module Machine
       end
       
       def formats
+        install_formats unless @formats
         @formats
       end
       
@@ -125,6 +143,7 @@ module Machine
       end
       
       def format_names
+        install_formats unless @format_names
         @format_names
       end
 
@@ -174,22 +193,26 @@ module Machine
 
       def define_from_hash(formats)
         table = {}
-        formats.each do |name, format_string|
-          table[name] = define(name, format_string)
+        formats.each do |name, format|
+          table[name] = define(name, format)
         end
         table
       end
       
-      def define(name, format_string)
+      def define(name, format)
         name = name.to_sym
-        @@formats[name] = new(name, format_string)
+        format = new(name, format) unless format.is_a?(Symbol)
+        @@formats[name] = format
       end
 
       def formats_for_class(klass)
         table = {}
         @@formats.each do |name, format|
           name_string = name.to_s
-          next unless format.suited_for(klass)
+          format_obj = format
+          format_obj = @@formats[format] if format.is_a?(Symbol)
+          next unless format_obj
+          next unless format_obj.suited_for(klass)
           table[name] = format
         end
         table
@@ -234,12 +257,13 @@ module Machine
     
     def adjusted_format(klass)
       definition = self.definition
+      return self if definition.is_a?(Symbol)
       # TODO this doesn't word for MultiWords; not sure why
-      size = klass.size rescue nil
-      size ||= klass.word_size rescue nil
-      size ||= 0
-      format_samples = klass.format_samples || self.class.format_samples(size)
-      nbits = klass.significant_bits rescue size
+      width = klass.width rescue nil
+      width ||= klass.word_size rescue nil
+      width ||= 0
+      format_samples = klass.format_samples || self.class.format_samples(width)
+      nbits = klass.significant_bits rescue width
       if !string? && nbits == 1 # Special case for single bits (binary, octal, decimal, and hex representations are all the same)
         definition = definition.gsub(/%.*(?:#{Regexp.escape(FORMAT_WIDTH_WILDCARD)})?.*?([a-z])/, '%\1')
       end

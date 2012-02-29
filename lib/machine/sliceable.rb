@@ -40,20 +40,20 @@ module Machine
         leading_bit_mask & trailing_bit_mask
       end
   
-      def slice_start_bit(n, size, offset=0, gap=0)
-        n*(size+gap) + offset
+      def slice_start_bit(n, width, offset=0, gap=0)
+        n*(width+gap) + offset
       end
   
-      def slice_end_bit(n, size, offset=0, gap=0)
-        slice_start_bit(n+1, size, offset, gap) - gap - 1
+      def slice_end_bit(n, width, offset=0, gap=0)
+        slice_start_bit(n+1, width, offset, gap) - gap - 1
       end
       
-      def slice_shift(n, size, offset=0, gap=0)
-        self.size - slice_end_bit(n, size, offset, gap) - 1
+      def slice_shift(n, width, offset=0, gap=0)
+        self.width - slice_end_bit(n, width, offset, gap) - 1
       end
   
-      def slice_mask(n, size, offset=0, gap=0)
-        make_bit_mask(slice_start_bit(n, size, offset, gap), slice_end_bit(n, size, offset, gap))
+      def slice_mask(n, width, offset=0, gap=0)
+        make_bit_mask(slice_start_bit(n, width, offset, gap), slice_end_bit(n, width, offset, gap))
       end
 
       def slice_count(slice, options={})
@@ -71,7 +71,7 @@ module Machine
           if slice.count
             slice.count
           else
-            slice_count(slice.size, options.merge(:offset=>slice.offset, :gap=>slice.gap))
+            slice_count(slice.width, options.merge(:offset=>slice.offset, :gap=>slice.gap))
           end
         else # Assume it's a name
           defn = slice_definition(slice)
@@ -140,16 +140,17 @@ module Machine
         self.slices.find{|definition| definition.name == slice_name}
       end
       
-      def fixed_size?
+      # TODO Better way of handling and changing this
+      def fixed_width?
         false
       end
     end
     
-    def size(n=nil)
+    def width(n=nil)
       if n.nil?
-        @data.size * constituent_class.size
+        @data.size * constituent_class.width
       else
-        define_size(n)
+        self.class.width(n)
       end
     end
     
@@ -158,18 +159,18 @@ module Machine
     end
 
     def clip(value)
-      self.class.ones_mask(size) & value
+      self.class.ones_mask(width) & value
     end
   
     def bit_segment(from, to, width=nil)
-      width ||= size
+      width ||= self.width
       value & self.class.make_bit_mask(width, from, to)
     end
   
     # TODO Allow negative indexing
     # TODO Consider a change which would permit indexing a la Array[]
     def get_bits(from, to, width=nil)
-      width ||= size
+      width ||= self.width
       bit_segment(from, to, width) >> bit_count(to, width-1)-1 # Use bit_count for extensibility
     end
     
