@@ -34,6 +34,7 @@ module Machine
       def slice_count(slice, offset=0, gap=0)
         case slice
         when Numeric
+          return nil unless size
           slice_size = slice
           available_bits = size - offset
           bits_per_slice = [slice_size+gap, available_bits].min
