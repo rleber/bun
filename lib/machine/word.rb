@@ -30,25 +30,10 @@ module Machine
         slice_definition
       end
       
-      # TODO Should this be in Structure?
-      def slice_count(slice, offset=0, gap=0)
-        case slice
-        when Numeric
-          return nil unless size
-          slice_size = slice
-          available_bits = size - offset
-          bits_per_slice = [slice_size+gap, available_bits].min
-          available_bits.div(bits_per_slice)
-        when Slice::Definition
-          if slice.count
-            slice.count
-          else
-            slice_count(slice.size, slice.offset, slice.gap)
-          end
-        else # Assume it's a name
-          defn = slice_definition(slice)
-          defn && slice_count(defn)
-        end
+      def slice_count(slice, options={})
+        options = options.dup
+        options[:data_size] ||= size
+        super(slice, options)
       end
     end
 

@@ -56,6 +56,29 @@ module Machine
       def slice_mask(n, size, offset=0, gap=0)
         make_bit_mask(slice_start_bit(n, size, offset, gap), slice_end_bit(n, size, offset, gap))
       end
+
+      def slice_count(slice, options={})
+        case slice
+        when Numeric
+          slice_size = slice
+          data_size=options[:data_size]
+          offset = options[:offset] || 0
+          gap = options[:gap] || 0
+          return nil unless data_size
+          available_bits = data_size - offset
+          bits_per_slice = [slice_size+gap, available_bits].min
+          available_bits.div(bits_per_slice)
+        when Slice::Definition
+          if slice.count
+            slice.count
+          else
+            slice_count(slice.size, options.merge(:offset=>slice.offset, :gap=>slice.gap))
+          end
+        else # Assume it's a name
+          defn = slice_definition(slice)
+          defn && slice_count(defn, options)
+        end
+      end
   
       # TODO Should word.byte mean word.byte(0) or word.byte(n)?
       # TODO Should be recursive -- i.e. Should be able to say word.half_word(0).byte(2)
@@ -130,11 +153,9 @@ module Machine
         define_size(n)
       end
     end
-
-    def slice_count(slice_size, offset=0, gap=0)
-      available_bits = size - offset
-      bits_per_slice = [slice_size+gap, available_bits].min
-      available_bits.div(bits_per_slice)
+    
+    def slice_count(*args)
+      self.class.slice_count(*args)
     end
 
     def clip(value)

@@ -52,7 +52,7 @@ module Machine
         @default_format = options[:default_format]
         @formats = options[:format] || {}
         @gap = options[:gap] || 0
-        @count = options[:count] || parent_class.slice_count(@size, @offset, @gap)
+        @count = options[:count] || parent_class.slice_count(@size, :offset=>@offset, :gap=>@gap)
         @collapse = options[:collapse]
       end
       
