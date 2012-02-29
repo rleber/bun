@@ -12,9 +12,6 @@ module Machine
       self.class.formats
     end
 
-    # TODO: Allow for unpadded formatting, and types which are unpadded by default
-    # TODO: Base inspect formatting on Class statically-defined inspect method?
-    # TODO: If :inspect format is missing, should fall back to original inspect method
     def format(format_defn=nil)
       self.class.install_formats unless formats
       case format_defn
@@ -39,8 +36,14 @@ module Machine
     end
     
     module ClassMethods
+      # TODO: Allow for unpadded formatting, and types which are unpadded by default
+      
+      def define_format(name, format)
+        Format.define(name, format)
+      end
+        
       def define_formats(formats)
-        Format.define(formats)
+        Format.define_from_hash(formats)
       end
       
       def default_format
@@ -169,13 +172,17 @@ module Machine
         ]
       end
 
-      def define(formats)
+      def define_from_hash(formats)
         table = {}
         formats.each do |name, format_string|
-          name = name.to_sym
-          table[name] = @@formats[name] = new(name, format_string)
+          table[name] = define(name, format_string)
         end
         table
+      end
+      
+      def define(name, format_string)
+        name = name.to_sym
+        @@formats[name] = new(name, format_string)
       end
 
       def formats_for_class(klass)

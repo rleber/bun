@@ -4,18 +4,15 @@ require 'machine/slice_accessor'
 
 module Machine
   class Structure < GenericNumeric
-    
-    # TODO Move this to Formats module?
-    FORMATS = Format.define(
-      :binary=>         "%0#*b", 
-      :octal=>          "%0#*o", 
-      :decimal=>        "%*d",
-      :hex=>            "%0#*x",
-      :string=>         "%-*s",
-      :string_inspect=> "%-*s"
-    )
 
     include Formatted
+    
+    define_format :binary,         "%0#*b"
+    define_format :octal,          "%0#*o"
+    define_format :decimal,        "%*d"
+    define_format :hex,            "%0#*x"
+    define_format :string,         "%-*s"
+    define_format :string_inspect, "%-*s"
     
     @@single_bit_masks = Masks.new {|n| 1<<n }
     @@ones_masks = Masks.new {|n| 2**n - 1 }
