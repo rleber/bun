@@ -6,34 +6,31 @@ module Machine
   module Sliceable
     
     def self.included(base)
-      base.send :include, :Formatted
-      
-    # TODO Move this stuff to Formats
-    define_format :binary,         "%0#*b"
-    define_format :octal,          "%0#*o"
-    define_format :decimal,        "%*d"
-    define_format :hex,            "%0#*x"
-    define_format :string,         "%-*s"
-    define_format :string_inspect, "%-*s"
+      base.send :include, Formatted
+      base.extend(ClassMethods)
+    end
     
-    @@single_bit_masks = Masks.new {|n| 1<<n }
-    @@ones_masks = Masks.new {|n| 2**n - 1 }
-    
-    class << self
+    module ClassMethods
       # TODO This stuff is repetitive; refactor it
       def single_bit_mask(n)
-        @@single_bit_masks[n]
+        single_bit_masks[n]
       end
       
       def single_bit_masks
+        unless class_variable_defined?(:@@single_bit_masks)
+          @@single_bit_masks = Masks.new {|n| 1<<n }
+        end
         @@single_bit_masks
       end
 
       def ones_mask(n)
-        @@ones_masks[n]
+        ones_masks[n]
       end
       
       def ones_masks
+        unless class_variable_defined?(:@@ones_masks)
+          @@ones_masks = Masks.new {|n| 2**n - 1 }
+        end
         @@ones_masks
       end
   

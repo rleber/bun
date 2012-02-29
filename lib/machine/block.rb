@@ -7,6 +7,7 @@ module Machine
   def self.Block(constituent_class)
     klass = Class.new(Words(constituent_class))
     klass.send :include, Machine::BlockBase
+    klass.send :include, Machine::Sliceable
     # klass.contains constituent_class
     # klass.word_size = constituent_class.size
     klass
@@ -24,12 +25,12 @@ module Machine
       def word_size
         constituent_class.size
       end
-      
-      def slice()
-      end
-      
-      def field()
-      end
+      # 
+      # def slice()
+      # end
+      # 
+      # def field()
+      # end
     end
     
     def get_at(*args)
