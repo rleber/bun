@@ -1,6 +1,6 @@
 require 'machine/masks'
 require 'machine/formats'
-require 'machine/slice_accessor'
+require 'machine/slice'
 
 module Machine
   class Structure < GenericNumeric

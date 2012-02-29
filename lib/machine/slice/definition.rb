@@ -1,4 +1,4 @@
-require 'machine/slice_dsl'
+require 'machine/slice/dsl'
 
 module Machine
   module Slice
