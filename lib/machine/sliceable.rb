@@ -57,6 +57,7 @@ module Machine
       end
 
       def slice_count(slice, options={})
+        puts "In #{self}.slice_count(#{slice.inspect}, #{options.inspect})"
         case slice
         when Numeric
           slice_size = slice
@@ -84,6 +85,7 @@ module Machine
       # TODO Define bit and byte order (i.e. LR, RL)
       # TODO Define signs other than at the beginning of a slice
       def slice(slice_name, options={}, &blk)
+        puts "Defining slice: #{slice_name} of #{self}"
         slice = Slice::Definition.new(slice_name, self, options, &blk)
         slice.install_formats
         add_slice slice

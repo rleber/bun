@@ -1,3 +1,8 @@
+Every sliceable object should descend from Slice::Base, and should be sliceable, e.g. foo.word[0].byte[3].bit[2]
+Every sliceable object should have be able to say foo.slice.count (and the class, if the object is fixed width: Foo.slice.count).
+These should be abbreviations for foo.slices[:slice_name].count, etc.
+In fact, foo.slices[:slice_name] and Foo.slices[:slice_name] should otherwise delegate to the respective Slice::Definition object
+
 TODO
 Refactor based on Machine module
 Set file modification dates for normally archived files, based on data in _misc/fass-index.txt

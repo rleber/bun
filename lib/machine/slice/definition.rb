@@ -106,6 +106,7 @@ module Machine
       end
       
       def retrieve(from_object, index)
+        puts "#{slice_class} retrieve(#{from_object.class}, #{index.inspect}): width=#{width.inspect}, offset=#{offset.inspect}, gap=#{gap.inspect}"
         value = from_object.get_slice(index, width, offset, gap) & mask
         slice_class.new(value)
       end

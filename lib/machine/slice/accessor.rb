@@ -21,6 +21,7 @@ module Machine
       
       # TODO Create a collapsed do ... end idiom?
       def array
+        puts "In #{definition.name} slicer: count=#{}"
         saved_collapse = collapse?
         self.collapse = false
         res = self[0..-1]
@@ -89,7 +90,8 @@ module Machine
       end
       
       def size
-        definition.count
+        # TODO May not need this OR
+        definition.count || definition.parent_class.slice_count(definition)
       end
     end
   end

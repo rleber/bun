@@ -1,3 +1,21 @@
+Defining slice: half_word of GECOS::Word
+In GECOS::Word.slice_count(18, {:offset=>0, :gap=>0, :data_size=>36})
+Defining slice: byte of GECOS::Word
+In GECOS::Word.slice_count(9, {:offset=>0, :gap=>0, :data_size=>36})
+Defining slice: character of GECOS::Word
+In GECOS::Word.slice_count(9, {:offset=>0, :gap=>0, :data_size=>36})
+Defining slice: packed_character of GECOS::Word
+In GECOS::Word.slice_count(7, {:offset=>1, :gap=>0, :data_size=>36})
+Defining slice: bit of GECOS::Word
+In GECOS::Word.slice_count(1, {:offset=>0, :gap=>0, :data_size=>36})
+Defining slice: integer of GECOS::Word
+Defining slice: sign of GECOS::Word
+Defining slice: low_byte of GECOS::Word
+Defining slice: upper_half_word of GECOS::Word
+Defining slice: lower_half_word of GECOS::Word
+GECOS::Block inheriting #<Class:0x107ab8ff8>
+Defining slice: word_and_a_half of GECOS::Block
+In GECOS::Block.slice_count(54, {:offset=>0, :gap=>0})
 GECOS::Word:
 GECOS::Word.width => 36
 GECOS::Word.ones_mask => 777777777777
@@ -215,7 +233,333 @@ n  format_names(n)  format_definitions[key]
 5  :inspect         :octal                 
 
 $byte_test_word.value => 111222333444
+In bit slicer: count=
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
 $byte_test_word.bits => [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0]
+In bit slicer: count=
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
 n   value         :hex  :decimal  :octal  :binary  :default  :inspect
 0   000000000000  0     0         0       0        0         0       
 1   000000000000  0     0         0       0        0         0       
@@ -254,40 +598,254 @@ n   value         :hex  :decimal  :octal  :binary  :default  :inspect
 34  000000000000  0     0         0       0        0         0       
 35  000000000000  0     0         0       0        0         0       
 
+In byte slicer: count=
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
 $byte_test_word.bytes => [0111, 0222, 0333, 0444]
+In byte slicer: count=
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
 n  value         :hex   :decimal  :octal  :binary      :default  :inspect
 0  000000000111  0x049   73       0111    0b001001001  0111      0111    
 1  000000000222  0x092  146       0222    0b010010010  0222      0222    
 2  000000000333  0x0db  219       0333    0b011011011  0333      0333    
 3  000000000444  0x124  292       0444    0b100100100  0444      0444    
 
+In character slicer: count=
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
 $byte_test_word.characters => ["I", "\022", "[", "$"]
+In character slicer: count=
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+In character slicer: count=
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
 $byte_test_word.characters.string => "I\022[$"
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
 n  value         :string_inspect  :hex   :string  :decimal  :octal  :binary      :default  :inspect  string
 0  000000000111  "I"              0x049  I         73       0111    0b001001001  "I"       "I"       I     
 1  000000000022  "\022"           0x012           18       0022    0b000010010  "\022"    "\022"         
 2  000000000133  "["              0x05b  [         91       0133    0b001011011  "["       "["       [     
 3  000000000044  "$"              0x024  $         36       0044    0b000100100  "$"       "$"       $     
 
+In half_word slicer: count=
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
 $byte_test_word.half_words => [0111222, 0333444]
+In half_word slicer: count=
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
 n  value         :hex     :decimal  :octal   :binary               :default  :inspect
 0  000000111222  0x09292   37522    0111222  0b001001001010010010  0111222   0111222 
 1  000000333444  0x1b724  112420    0333444  0b011011011100100100  0333444   0333444 
 
+In integer slicer: count=
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
 $byte_test_word.integers => [9836279588]
+In integer slicer: count=
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
 n  value         :hex         :decimal    :octal         :binary                                 :default    :inspect  
 0  111222333444  0x24a49b724  9836279588  0111222333444  0b001001001010010010011011011100100100  9836279588  9836279588
 
+In low_byte slicer: count=
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
 $byte_test_word.low_bytes => [0444]
+In low_byte slicer: count=
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
 n  value         :hex   :decimal  :octal  :binary      :default  :inspect
 0  000000000444  0x124  292       0444    0b100100100  0444      0444    
 
+In lower_half_word slicer: count=
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
 $byte_test_word.lower_half_words => [0333444]
+In lower_half_word slicer: count=
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
 n  value         :hex     :decimal  :octal   :binary               :default  :inspect
 0  000000333444  0x1b724  112420    0333444  0b011011011100100100  0333444   0333444 
 
+In packed_character slicer: count=
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
 $byte_test_word.packed_characters => ["$", "R", "&", "n", "$"]
+In packed_character slicer: count=
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+In packed_character slicer: count=
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
 $byte_test_word.packed_characters.string => "$R&n$"
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
 n  value         :string_inspect  :hex  :string  :decimal  :octal  :binary    :default  :inspect  string
 0  000000000044  "$"              0x24  $        36        0044    0b0100100  "$"       "$"       $     
 1  000000000122  "R"              0x52  R        82        0122    0b1010010  "R"       "R"       R     
@@ -295,16 +853,364 @@ n  value         :string_inspect  :hex  :string  :decimal  :octal  :binary    :d
 3  000000000156  "n"              0x6e  n        110       0156    0b1101110  "n"       "n"       n     
 4  000000000044  "$"              0x24  $        36        0044    0b0100100  "$"       "$"       $     
 
+In sign slicer: count=
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
 $byte_test_word.signs => [0]
+In sign slicer: count=
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
 n  value         :hex  :decimal  :octal  :binary  :default  :inspect
 0  000000000000  0     0         0       0        0         0       
 
+In upper_half_word slicer: count=
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
 $byte_test_word.upper_half_words => [0111222]
+In upper_half_word slicer: count=
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
 n  value         :hex     :decimal  :octal   :binary               :default  :inspect
 0  000000111222  0x09292   37522    0111222  0b001001001010010010  0111222   0111222 
 
 $negative.value => 777777777777
+In bit slicer: count=
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
 $negative.bits => [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+In bit slicer: count=
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 1): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 2): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 3): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 4): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 5): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 6): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 7): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 8): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 9): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 10): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 11): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 12): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 13): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 14): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 15): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 16): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 17): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 18): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 19): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 20): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 21): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 22): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 23): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 24): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 25): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 26): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 27): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 28): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 29): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 30): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 31): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 32): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 33): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 34): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
+GECOS::Word::Bit retrieve(GECOS::Word, 35): width=1, offset=0, gap=0
 n   value         :hex  :decimal  :octal  :binary  :default  :inspect
 0   000000000001  1     1         1       1        1         1       
 1   000000000001  1     1         1       1        1         1       
@@ -343,40 +1249,254 @@ n   value         :hex  :decimal  :octal  :binary  :default  :inspect
 34  000000000001  1     1         1       1        1         1       
 35  000000000001  1     1         1       1        1         1       
 
+In byte slicer: count=
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
 $negative.bytes => [0777, 0777, 0777, 0777]
+In byte slicer: count=
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
 n  value         :hex   :decimal  :octal  :binary      :default  :inspect
 0  000000000777  0x1ff  511       0777    0b111111111  0777      0777    
 1  000000000777  0x1ff  511       0777    0b111111111  0777      0777    
 2  000000000777  0x1ff  511       0777    0b111111111  0777      0777    
 3  000000000777  0x1ff  511       0777    0b111111111  0777      0777    
 
+In character slicer: count=
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
 $negative.characters => ["\177", "\177", "\177", "\177"]
+In character slicer: count=
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+In character slicer: count=
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
 $negative.characters.string => "\177\177\177\177"
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
+GECOS::Word::Character retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
 n  value         :string_inspect  :hex   :string  :decimal  :octal  :binary      :default  :inspect  string
 0  000000000177  "\177"           0x07f          127       0177    0b001111111  "\177"    "\177"         
 1  000000000177  "\177"           0x07f          127       0177    0b001111111  "\177"    "\177"         
 2  000000000177  "\177"           0x07f          127       0177    0b001111111  "\177"    "\177"         
 3  000000000177  "\177"           0x07f          127       0177    0b001111111  "\177"    "\177"         
 
+In half_word slicer: count=
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
 $negative.half_words => [0777777, 0777777]
+In half_word slicer: count=
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
+GECOS::Word::HalfWord retrieve(GECOS::Word, 1): width=18, offset=0, gap=0
 n  value         :hex     :decimal  :octal   :binary               :default  :inspect
 0  000000777777  0x3ffff  262143    0777777  0b111111111111111111  0777777   0777777 
 1  000000777777  0x3ffff  262143    0777777  0b111111111111111111  0777777   0777777 
 
+In integer slicer: count=
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
 $negative.integers => [-1]
+In integer slicer: count=
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
 n  value         :hex         :decimal  :octal         :binary                                 :default  :inspect
 0  777777777777  0xfffffffff  -1        0777777777777  0b111111111111111111111111111111111111  -1        -1      
 
+In low_byte slicer: count=
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
 $negative.low_bytes => [0777]
+In low_byte slicer: count=
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
+GECOS::Word::LowByte retrieve(GECOS::Word, 0): width=9, offset=27, gap=0
 n  value         :hex   :decimal  :octal  :binary      :default  :inspect
 0  000000000777  0x1ff  511       0777    0b111111111  0777      0777    
 
+In lower_half_word slicer: count=
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
 $negative.lower_half_words => [0777777]
+In lower_half_word slicer: count=
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
+GECOS::Word::LowerHalfWord retrieve(GECOS::Word, 0): width=18, offset=18, gap=0
 n  value         :hex     :decimal  :octal   :binary               :default  :inspect
 0  000000777777  0x3ffff  262143    0777777  0b111111111111111111  0777777   0777777 
 
+In packed_character slicer: count=
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
 $negative.packed_characters => ["\177", "\177", "\177", "\177", "\177"]
+In packed_character slicer: count=
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+In packed_character slicer: count=
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
 $negative.packed_characters.string => "\177\177\177\177\177"
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
 n  value         :string_inspect  :hex  :string  :decimal  :octal  :binary    :default  :inspect  string
 0  000000000177  "\177"           0x7f          127       0177    0b1111111  "\177"    "\177"         
 1  000000000177  "\177"           0x7f          127       0177    0b1111111  "\177"    "\177"         
@@ -384,26 +1504,64 @@ n  value         :string_inspect  :hex  :string  :decimal  :octal  :binary    :d
 3  000000000177  "\177"           0x7f          127       0177    0b1111111  "\177"    "\177"         
 4  000000000177  "\177"           0x7f          127       0177    0b1111111  "\177"    "\177"         
 
+In sign slicer: count=
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
 $negative.signs => [1]
+In sign slicer: count=
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
+GECOS::Word::Sign retrieve(GECOS::Word, 0): width=1, offset=0, gap=0
 n  value         :hex  :decimal  :octal  :binary  :default  :inspect
 0  000000000001  1     1         1       1        1         1       
 
+In upper_half_word slicer: count=
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
 $negative.upper_half_words => [0777777]
+In upper_half_word slicer: count=
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
+GECOS::Word::UpperHalfWord retrieve(GECOS::Word, 0): width=18, offset=0, gap=0
 n  value         :hex     :decimal  :octal   :binary               :default  :inspect
 0  000000777777  0x3ffff  262143    0777777  0b111111111111111111  0777777   0777777 
 
 $byte_test_word-5 => 111222333437
 3+$byte_test_word => 111222333447
+In packed_character slicer: count=
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 0): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 1): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 2): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 3): width=7, offset=1, gap=0
+GECOS::Word::PackedCharacter retrieve(GECOS::Word, 4): width=7, offset=1, gap=0
 $byte_test_word.packed_characters.string => "$R&n$"
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
 'First character: '+($byte_test_word.character(0)) => "First character: I"
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
 $byte_test_word.character(0)+': is here' => "I: is here"
+GECOS::Word::Character retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
 $byte_test_word.character(0).add(2) => 75
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
 $negative.integer(0).signed => -1
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
 $negative.integer(0).unsigned => 777777777777
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
 $byte_test_word.byte(2).octal => "0333"
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
 $negative.integer(0).decimal => "-1"
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
 $negative.integer.decimal => "-1"
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
 $negative.integer(0).unsigned.octal => "0777777777777"
+GECOS::Word::Integer retrieve(GECOS::Word, 0): width=36, offset=0, gap=0
 $negative.integer.signed.hex => "0xfffffffff"
 $words.class => GECOS::Words
 $words => <GECOS::Words[<GECOS::Word 000000000001>,<GECOS::Word 000000000002>,<GECOS::Word 000000000003>]>
@@ -414,10 +1572,28 @@ $words => <GECOS::Words[<GECOS::Word 000000000001>,<GECOS::Word 000000000002>,<G
 $words[4] => nil
 $words[5] => <GECOS::Word 000000002322>
 $words[2..3] => <GECOS::Words[<GECOS::Word 000000000003>,nil]>
+In byte slicer: count=
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
 $words[2..3].bytes => [0000, 0000, 0000, 0003]
+In byte slicer: count=
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
 $words[2..3].byte(3) => 0003
+In byte slicer: count=
+GECOS::Word::Byte retrieve(GECOS::Word, 0): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 1): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 2): width=9, offset=0, gap=0
+GECOS::Word::Byte retrieve(GECOS::Word, 3): width=9, offset=0, gap=0
 $words[2..3].byte(4) => nil
 $double_word => "[<GECOS::Word 000000000001>, <GECOS::Word 000000000002>]"
 $double_word[0] => <GECOS::Word 000000000001>
 $double_word[0].class => GECOS::Word
 $double_word[1].to_s => "<GECOS::Word: 2>"
+In word_and_a_half slicer: count=
+In GECOS::Block.slice_count(#<Machine::Slice::Definition:0x107ab7f40 @offset=0, @count=nil, @sign=:none, @class_name="WordAndAHalf", @width=54, @gap=0, @is_string=false, @mask=18014398509481983, @plural="word_and_a_halfs", @collapse=nil, @formats={}, @options={:width=>54}, @bits=54, @name="word_and_a_half", @slice_class=GECOS::Block::WordAndAHalf, @default_format=nil, @parent_class=GECOS::Block>, {})
+In GECOS::Block.slice_count(54, {:offset=>0, :gap=>0})

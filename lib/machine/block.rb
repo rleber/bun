@@ -6,10 +6,11 @@ module Machine
   
   def self.Block(constituent_class)
     klass = Class.new(Words(constituent_class))
-    klass.send :include, Machine::BlockBase
-    klass.send :include, Machine::Sliceable
     class << klass
       def inherited(subclass)
+        puts "#{subclass} inheriting #{self}"
+        subclass.send :include, Machine::Sliceable
+        subclass.send :include, Machine::BlockBase
         subclass.send :define_format, :inspect, '%p'
       end
     end
@@ -20,7 +21,6 @@ module Machine
     
     def self.included(base)
       base.extend ClassMethods
-      base.send :attr_accessor, :word_size
     end
     
     module ClassMethods
@@ -34,7 +34,7 @@ module Machine
     end
     
     def width
-      self.original_size * word_size
+      self.size * word_size
     end
     
     def decode_index(index)
@@ -108,10 +108,15 @@ module Machine
     def bit_segment(from, to)
       from_word, from_bit = index_array(from)
       to_word, to_bit = index_array(to)
+      puts "bit_segment: from_word=#{from_word.inspect}, from_bit=#{from_bit.inspect}, to_word=#{to_word.inspect}, to_bit=#{to_bit.inspect}"
       words = (from_word..to_word).map {|i| self[i] }
-      words[0] &= constituent_class.strip_leading_bit_masks[from_bit]
-      words[-1] &= constituent_class.strip_trailing_bit_masks[to_bit]
-      words.inject {|val, word| val<<word_size | word }
+      masks = constituent_class.ones_masks
+      words[0] &= masks[word_size - from_bit]
+      words[-1] &= (masks[word_size] ^ masks[word_size - to_bit - 1])
+      puts "words=#{words.map{|w| '%012o' % w}.inspect}"
+      res = words.inject {|val, word| val<<word_size | word }
+      puts "res=#{'%024o' % res}"
+      res
     end
 
     def get_bits(from, to)
@@ -127,11 +132,16 @@ module Machine
       index_class(index, index_numeric(index)+1)
     end
 
-    def get_slice(n, width, offset=0)
-      width = index_numeric(width)
+    def get_slice(n, slice_size, offset=0, gap=0, width=nil)
+      slice_size = index_numeric(slice_size)
+      width ||= self.width
       offset = index_numeric(offset)
-      start = (n-1)*width + offset
-      get_bits(start, start+width-1)
+      gap = index_numeric(gap)
+      width = index_numeric(width)
+      start = (n-1)*(slice_size + gap) + offset
+      finish = start+slice_size-1
+      puts "#{self.class}#slice: n=#{n}, start=#{start.inspect}, finish=#{finish.inspect}"
+      get_bits(start, finish)
     end
     
     def value

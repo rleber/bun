@@ -62,6 +62,6 @@ class GECOS
   
   # TODO Test this out
   class Block < Machine::Block(GECOS::Word)
-    slice :word_and_a_half, :width=>word_size*3.div(2)
+    slice :word_and_a_half, :width=>(word_size*3).div(2)
   end
 end  
