@@ -1,4 +1,6 @@
 require File.join(File.dirname(__FILE__), '../lib/gecos')
+require File.join(File.dirname(__FILE__), '../lib/machine')
+require File.join(File.dirname(__FILE__), '../lib/indexable_basic')
 
 def capture(*streams)
   streams.map! { |stream| stream.to_s }

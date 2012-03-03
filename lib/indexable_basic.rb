@@ -163,7 +163,7 @@ module Indexable
         res[:result] = :nil
       when 0 # End index == start-1 (zero length)
         # Note: Can't be :scalar, because end!=start
-        res[:result] = :empty
+        res[:result] = :empty unless res[:result] == :nil
       end
       res
     end
