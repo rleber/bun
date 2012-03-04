@@ -1,6 +1,5 @@
 require 'machine'
 
-require 'pp'
 class GECOS
   class Word < Machine::Word
     WIDTH = 36
@@ -37,31 +36,8 @@ class GECOS
       format :decimal, '%d'
       format :default, :decimal
     end
-
-    field :sign do
-      width 1
-    end
-
-    field :low_byte do
-      width 9
-      offset 27
-    end
-
-    field :upper_half_word do
-      width 18
-    end
-
-    field :lower_half_word do
-      width 18
-      offset 18
-    end
   end
   
   class Words < Machine::Words(GECOS::Word)
-  end
-  
-  # TODO Test this out
-  class Block < Machine::Block(GECOS::Word)
-    slice :word_and_a_half, :width=>(word_size*3).div(2)
   end
 end  

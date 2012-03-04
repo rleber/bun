@@ -5,19 +5,23 @@ module Machine
     class Accessor
       
       attr_reader :definition
-      attr_reader :container
+      attr_reader :parent
       attr_accessor :collapse
 
-      def initialize(definition, container)
+      def initialize(definition, parent)
         @definition = definition
-        @container = container
-        @slicer = Slicer.new(definition, container)
+        @parent = parent
+        @slicer = Slicer.new(definition, parent)
         @collapse = definition.collapse?
       end
       
       def collapse?
         @collapse
       end
+      
+      # def count
+      #   @parent.slice_count(@definition)
+      # end
       
       # TODO Create a collapsed do ... end idiom?
       def array
@@ -78,15 +82,15 @@ module Machine
     class Slicer
       include Indexable::Basic
       
-      attr_reader :definition, :container
+      attr_reader :definition, :parent
       
-      def initialize(definition, container)
+      def initialize(definition, parent)
         @definition = definition
-        @container = container
+        @parent = parent
       end
       
       def at(i)
-        definition.retrieve(container, i)
+        definition.retrieve(parent, i)
       end
       
       def size

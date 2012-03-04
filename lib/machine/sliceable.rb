@@ -57,7 +57,7 @@ module Machine
       end
 
       def slice_count(slice, options={})
-        puts "In #{self}.slice_count(#{slice.inspect}, #{options.inspect})"
+        # puts "In #{self}.slice_count(#{slice.inspect}, #{options.inspect})"
         case slice
         when Numeric
           slice_size = slice
@@ -85,7 +85,7 @@ module Machine
       # TODO Define bit and byte order (i.e. LR, RL)
       # TODO Define signs other than at the beginning of a slice
       def slice(slice_name, options={}, &blk)
-        puts "Defining slice: #{slice_name} of #{self}"
+        # puts "Defining slice: #{slice_name} of #{self}"
         slice = Slice::Definition.new(slice_name, self, options, &blk)
         slice.install_formats
         add_slice slice
@@ -93,6 +93,13 @@ module Machine
         unshifted_method_name = "unshifted_#{slice.name}"
         def_method unshifted_method_name do |n|
           value & slice.masks[n]
+        end
+        
+        _self = self
+        self.class_eval do
+          def_method slice.name do ||
+            Slice::Parent_Accessor.new(slice, _self)
+          end
         end
       
         def_method slice.name do |*args|
@@ -148,6 +155,30 @@ module Machine
       end
     end
     
+    def slice_names
+      self.class.slice_names
+    end
+    
+    def slice_definition(slice_name)
+      self.class.slice_definition(slice_name)
+    end
+    
+    def single_bit_mask(n)
+      self.class.single_bit_mask(n)
+    end
+    
+    def single_bit_masks
+      self.class.single_bit_masks
+    end
+
+    def ones_mask(n)
+      self.class.ones_mask(n)
+    end
+    
+    def ones_masks
+      self.class.ones_masks
+    end
+
     def width(n=nil)
       if n.nil?
         @data.size * constituent_class.width

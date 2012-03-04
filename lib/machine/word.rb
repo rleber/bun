@@ -37,5 +37,9 @@ module Machine
       width ||= self.class.width
       super(n, slice_width, offset, gap, width)
     end
+    
+    def width
+      self.class.width
+    end
   end
 end
