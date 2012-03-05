@@ -171,7 +171,7 @@ module Machine
       end
       
       def asc
-        internal_value
+        Unsigned.new(internal_value)
       end
     end
   

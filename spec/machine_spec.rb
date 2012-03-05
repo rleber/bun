@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 WORD_FORMAT = '%012o'
 DEFAULT_FORMAT = '%p'
-WIDTH = 36
+TEST_WIDTH = 36
 TEST_WORD_SLICES = %w{half_word byte character packed_character bit integer}
 STRING_SLICES = %w{character packed_character}
 NON_STRING_SLICES = TEST_WORD_SLICES - STRING_SLICES
@@ -14,9 +14,9 @@ end
 FORMATS = %w{default inspect octal decimal binary hex}
 STRING_FORMATS = FORMATS + %w{string string_inspect}
 
-SLICE_COUNTS = {:byte=>4, :character=>4, :packed_character=>5, :half_word=>2, :bit=>WIDTH, :integer=>1}
-SLICE_WIDTHS = {:byte=>9, :character=>9, :packed_character=>7, :half_word=>18, :bit=>1, :integer=>WIDTH}
-SLICE_BITS   = {:byte=>9, :character=>7, :packed_character=>7, :half_word=>18, :bit=>1, :integer=>WIDTH}
+SLICE_COUNTS = {:byte=>4, :character=>4, :packed_character=>5, :half_word=>2, :bit=>TEST_WIDTH, :integer=>1}
+SLICE_TEST_WIDTHS = {:byte=>9, :character=>9, :packed_character=>7, :half_word=>18, :bit=>1, :integer=>TEST_WIDTH}
+SLICE_BITS   = {:byte=>9, :character=>7, :packed_character=>7, :half_word=>18, :bit=>1, :integer=>TEST_WIDTH}
 SLICE_STRING = TEST_WORD_SLICES.inject({}) do |hsh, slice_name|
   hsh[slice_name.to_sym] = !!STRING_SLICES.include?(slice_name)
   hsh
@@ -42,9 +42,14 @@ BYTE_VALUES = {
 
 $strings = TestWord.new([?A,?B,?C,?D].inject{|value, ch| value<<9 | ch })
 $positive = TestWord.new(1)
-$negative = TestWord.new(eval('0b' + '1'*WIDTH))
+$negative = TestWord.new(eval('0b' + '1'*TEST_WIDTH))
 $negative_twos = $negative
-$negative_ones = TestWordOnes.new(eval('0b' + ('1'*(WIDTH-1)) + '0'))
+$negative_ones = TestWordOnes.new(eval('0b' + ('1'*(TEST_WIDTH-1)) + '0'))
+$words = TestWords[1,2,3]
+
+def is_numeric?(v)
+  v.is_a?(Numeric) || v.is_a?(GenericNumeric)
+end
 
 describe Machine::Word do
   
@@ -54,15 +59,17 @@ describe Machine::Word do
 
   context "subclass" do
     it "should define width method for the Word class" do
-      TestWord.width.should == WIDTH
+      TestWord.width.should == TEST_WIDTH
     end
+    
+    # TODO Refactor using shared_examples, custom matchers, etc.
   
     it "should define ones_mask" do
       # ones_mask should be 0b11111...
-      ('%b' % TestWord.ones_mask).should match /^1{#{WIDTH}}$/
+      ('%b' % TestWord.ones_mask).should match /^1{#{TEST_WIDTH}}$/
     end
     
-    (0..(WIDTH+1)).each do |bit|
+    (0..(TEST_WIDTH+1)).each do |bit|
       context "for bit number #{bit}" do
         it "should define single_bit mask" do
           # single_bit_mask should be 0b100000...
@@ -107,7 +114,7 @@ describe Machine::Word do
         end
 
         it "should define the .width method" do
-          slice_object.width.should == SLICE_WIDTHS[slice_name.to_sym]
+          slice_object.width.should == SLICE_TEST_WIDTHS[slice_name.to_sym]
         end
 
         it "should define the .significant_bits method" do
@@ -134,7 +141,7 @@ describe Machine::Word do
       $bytes.width.should == TestWord.width
     end
 
-    (0..(WIDTH+1)).each do |bit|
+    (0..(TEST_WIDTH+1)).each do |bit|
       context "for bit number #{bit}" do
         it "should define ones_mask" do
           # ones_mask should be 0b11111...
@@ -205,7 +212,7 @@ describe Machine::Word do
         end
 
         it "should define the .width method" do
-          slice_object.width.should == SLICE_WIDTHS[slice_name.to_sym]
+          slice_object.width.should == SLICE_TEST_WIDTHS[slice_name.to_sym]
         end
 
         it "should define the .significant_bits method" do
@@ -321,7 +328,7 @@ describe Machine::Word do
               end
 
               it "should define the .asc method" do
-                slice_object.asc.should be_a_kind_of Numeric
+                is_numeric?(slice_object.asc).should be true
               end
       
               it "should define the .plus method" do
@@ -332,11 +339,9 @@ describe Machine::Word do
                 slice_object.asc.should be >= 0
               end
               
-              # TODO Make this work
-              # it "should allow .asc.format" do
-              #   # This fails
-              #   expect { slice_object.asc.format }.should_not raise_error
-              # end
+              it "should allow .asc.format" do
+                expect { slice_object.asc.format }.should_not raise_error
+              end
       
               it "should return a string as .value" do
                 slice_object.string.should be_a_kind_of String
@@ -505,7 +510,7 @@ describe Machine::Word do
         end
 
         it "should have .unsigned set properly" do
-          $negative_twos.integer.unsigned.should == eval('0b' + '1'*WIDTH)
+          $negative_twos.integer.unsigned.should == eval('0b' + '1'*TEST_WIDTH)
         end
 
         it "should handle -(-1) properly" do
@@ -520,7 +525,7 @@ describe Machine::Word do
         end
 
         it "should have .unsigned set properly" do
-          $negative_ones.integer.unsigned.should == eval('0b' + '1'*(WIDTH-1) + '0')
+          $negative_ones.integer.unsigned.should == eval('0b' + '1'*(TEST_WIDTH-1) + '0')
         end
       end
     end
@@ -544,23 +549,49 @@ describe Machine::Word do
 end
 
 describe Machine::WordsBase do
-  # TODO Define tests for Machine::Words
-  # $words = TestWords[1,2,3]
-  # show_value "$words.size"
-  # show_value "$words[0]"
-  # show_value "$words[0].class"
-  # $words[5] = 1234
-  # show_value "$words"
-  # show_value "$words[4]"
-  # show_value "$words[5]"
-  # show_value "$words[2..3]"
-  # show_value "$words[2..3].bytes"
-  # show_value "$words[2..3].byte(3)"
-  # show_value "$words[2..3].byte(4)"
-  # $double_word = GECOS::Block[1,2]
-  # show_value "$double_word"
-  # show_value "$double_word[0]"
-  # show_value "$double_word[0].class"
-  # show_value "$double_word[1].to_s"
-  # show_value "$double_word.word_and_a_halfs"
+  it "should set size" do
+    $words.size.should == 3
+  end
+  
+  it "should allow indexing" do
+    $words[0].should == 1
+  end
+  
+  it "should allow negative indexing" do
+    $words[-1].should == 3
+  end
+  
+  it "should allow inclusive index ranges" do
+    $words[1..2].should == [2,3]
+  end
+  
+  it "should allow exclusive index ranges" do
+    $words[1...-1].should == [2]
+  end
+  
+  it "should allow indexing by pairs" do
+    $words[1,2].should == [2,3]
+  end
+  
+  it "should allow assignment" do
+    words = $words.dup
+    words[4] = 4
+    words.should == [1,2,3,nil,4]
+  end
+  
+  it "should allow accessors" do
+    $words.bytes.should == [0,0,0,1,0,0,0,2,0,0,0,3]
+  end
+  
+  it "should allow indexed accessors" do
+    $words[1,2].half_words.should == [0,2,0,3]
+  end
 end
+
+# TODO Write tests for Blocks
+# $double_word = GECOS::Block[1,2]
+# show_value "$double_word"
+# show_value "$double_word[0]"
+# show_value "$double_word[0].class"
+# show_value "$double_word[1].to_s"
+# show_value "$double_word.word_and_a_halfs"

@@ -14,7 +14,9 @@ module Machine
         when constituent_class, nil
           data
         when ::Array
-          data.map{|v| conform(v)}
+          res = new
+          data.each {|v| res << conform(v) }
+          res
         else
           constituent_class.new(data)
         end
@@ -37,8 +39,10 @@ module Machine
       self.class.conform(data)
     end
 
-    def initialize(data)
-      super(data.map{|v| conform(v)})
+    def initialize(data=[])
+      super()
+      data.each {|v| self << conform(v) }
+      self
     end
 
     # TODO Extended indexing

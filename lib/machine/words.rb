@@ -9,8 +9,12 @@ module Machine
 
   module WordsBase
     def self.included(base)
-      base.send :alias_method, :get_at, :[] if !base.instance_methods.include?('get_at') && base.instance_methods.include?('[]')
-      base.send :alias_method, :set_at, :[]= if !base.instance_methods.include?('set_at') && base.instance_methods.include?('[]=')
+      if !base.instance_methods.include?('get_at') && base.instance_methods.include?('[]')
+        base.send :alias_method, :get_at, :[] 
+      end
+      if !base.instance_methods.include?('set_at') && base.instance_methods.include?('[]=')
+        base.send :alias_method, :set_at, :[]= 
+      end
       base.send :include, Container
       class << base
         alias_method :old_contains, :contains
