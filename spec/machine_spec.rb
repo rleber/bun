@@ -391,11 +391,6 @@ describe Machine::Word do
             context "[#{i}]" do
               slice_object = slice[i]
 
-              # TODO Make this work
-              # it "should allow .value.format" do
-              #   expect { slice_object.value.format }.should_not raise_error
-              # end
-
               it "should not define the .asc method" do
                 expect {slice_object.asc }.should raise_error
               end
@@ -467,42 +462,6 @@ describe Machine::Word do
                     slice_object.unsigned.should be >= 0
                   end
                   
-                  # TODO Refactor the following out of the loops
-                  context "and positive values" do
-                    it "should have .signed == .unsigned" do
-                      $positive.integer.signed.should == $positive.integer.unsigned
-                    end
-                  end
-        
-                  context "and negative values" do
-                    it "should have .signed < 0" do
-                      $negative.integer.signed.should be < 0
-                    end
-          
-                    context "in two's complement format" do
-                      it "should have .signed set properly" do
-                        $negative_twos.integer.signed.should == -1
-                      end
-
-                      it "should have .unsigned set properly" do
-                        $negative_twos.integer.unsigned.should == eval('0b' + '1'*WIDTH)
-                      end
-            
-                      it "should handle -(-1) properly" do
-                        (-($negative_twos.integer.value)).should == 1
-                      end
-                    end
-          
-                    context "in one's complement format" do
-                      it "should have .signed set properly" do
-                        $negative_ones.integer.signed.should == -1
-                      end
-
-                      it "should have .unsigned set properly" do
-                        $negative_ones.integer.unsigned.should == eval('0b' + '1'*(WIDTH-1) + '0')
-                      end
-                    end
-                  end
                 end
               else
                 context "without signs" do
@@ -524,26 +483,84 @@ describe Machine::Word do
         end
       end
     end
+
+    context "with positive values" do
+      it "should have .signed == .unsigned" do
+        $positive.integer.signed.should == $positive.integer.unsigned
+      end
+    end
+
+    context "with negative values" do
+      it "should have .signed < 0" do
+        $negative.integer.signed.should be < 0
+      end
+      
+      it "should handle negative math okay" do
+        ($negative_twos.integer.value * $negative_ones.integer.value).should == 1
+      end
+
+      context "in two's complement format" do
+        it "should have .signed set properly" do
+          $negative_twos.integer.signed.should == -1
+        end
+
+        it "should have .unsigned set properly" do
+          $negative_twos.integer.unsigned.should == eval('0b' + '1'*WIDTH)
+        end
+
+        it "should handle -(-1) properly" do
+          (-($negative_twos.integer.value)).should == 1
+        end
+        
+      end
+
+      context "in one's complement format" do
+        it "should have .signed set properly" do
+          $negative_ones.integer.signed.should == -1
+        end
+
+        it "should have .unsigned set properly" do
+          $negative_ones.integer.unsigned.should == eval('0b' + '1'*(WIDTH-1) + '0')
+        end
+      end
+    end
     
-    # TODO Check collapsing
+    context "any slice" do
+      it "should default to .value" do
+        ($bytes.byte[1] + 2).should == (0222 + 2)
+      end
+    end
+    
+    context "any field" do
+      it "should collapse" do
+        ($positive.integer.signed).should == $positive.integer[0]
+      end
+      
+      it "should default to .value" do
+        ($positive.integer + 2).should == 3
+      end
+    end
   end
 end
-# 
-# $words = TestWords[1,2,3]
-# show_value "$words.size"
-# show_value "$words[0]"
-# show_value "$words[0].class"
-# $words[5] = 1234
-# show_value "$words"
-# show_value "$words[4]"
-# show_value "$words[5]"
-# show_value "$words[2..3]"
-# show_value "$words[2..3].bytes"
-# show_value "$words[2..3].byte(3)"
-# show_value "$words[2..3].byte(4)"
-# $double_word = GECOS::Block[1,2]
-# show_value "$double_word"
-# show_value "$double_word[0]"
-# show_value "$double_word[0].class"
-# show_value "$double_word[1].to_s"
-# show_value "$double_word.word_and_a_halfs"
+
+describe Machine::WordsBase do
+  # TODO Define tests for Machine::Words
+  # $words = TestWords[1,2,3]
+  # show_value "$words.size"
+  # show_value "$words[0]"
+  # show_value "$words[0].class"
+  # $words[5] = 1234
+  # show_value "$words"
+  # show_value "$words[4]"
+  # show_value "$words[5]"
+  # show_value "$words[2..3]"
+  # show_value "$words[2..3].bytes"
+  # show_value "$words[2..3].byte(3)"
+  # show_value "$words[2..3].byte(4)"
+  # $double_word = GECOS::Block[1,2]
+  # show_value "$double_word"
+  # show_value "$double_word[0]"
+  # show_value "$double_word[0].class"
+  # show_value "$double_word[1].to_s"
+  # show_value "$double_word.word_and_a_halfs"
+end

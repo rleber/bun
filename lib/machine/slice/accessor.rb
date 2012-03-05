@@ -59,7 +59,7 @@ module Machine
           if values.is_a?(::Array)
             raise NoMethodError, ".#{name} not permitted: #{definition.name} has multiple values"
           else
-            values.send(name)
+            values.send(name, *args, &blk)
           end
         else # Try delegating to the definition
           begin
@@ -73,7 +73,7 @@ module Machine
       def allowed_methods
         meths = definition.format_names
         meths += [:signed, :unsigned] if definition.sign != :none
-        meths << :value
+        meths += [:value, :+, :-, :*, :/, :div, :mod, :divmod, :**]
         meths
       end
     end

@@ -129,7 +129,6 @@ module Machine
       class OnesComplement < Slice::Signed::Base
         class << self 
           def complement(value)
-            # warn "complement(#{'%012o' % value}) => #{'%012o' % (~value)}, clipped = #{'%012o' % clip(~value)}"
             clip( ~value )
           end
           
