@@ -1,10 +1,10 @@
 require 'machine'
 
+WIDTH = 36
+
 class TestWord < Machine::Word
-  WIDTH = 36
   width WIDTH
   
-  # TODO Is there a less kludgy way to do this?
   def inspect
     "<#{self.class} #{'%012o' % internal_value}>"
   end
@@ -32,10 +32,24 @@ class TestWord < Machine::Word
   field :integer do
     width WIDTH
     sign :twos_complement
-    format :decimal, '%d'
-    format :default, :decimal
   end
 end
 
 class TestWords < Machine::Words(TestWord)
 end
+
+class StrangeWord < Machine::Word
+  width WIDTH
+  
+  slice :too_long, :width=>WIDTH+1
+end
+
+class TestWordOnes < Machine::Word
+  width WIDTH
+  
+  field :integer do
+    width WIDTH
+    sign :ones_complement
+  end
+end
+

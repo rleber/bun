@@ -34,8 +34,7 @@ module Machine
       end
 
       def add_slices(subclass)
-        subclass.slice_names.each do |slice_name|
-          slice_definition = subclass.slice_definition(slice_name)
+        subclass.slices.each do |slice_name, slice_definition|
           raise NameError, "#{subclass.name} does not contain a slice #{slice_name}" unless slice_definition
           add_slice slice_name
           slices_name = slice_definition.plural

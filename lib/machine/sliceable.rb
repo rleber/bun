@@ -66,7 +66,8 @@ module Machine
           gap = options[:gap] || 0
           return nil unless data_size
           available_bits = data_size - offset
-          bits_per_slice = [slice_size+gap, available_bits].min
+          bits_per_slice = slice_size+gap
+          bits_per_slice = available_bits if bits_per_slice > available_bits && options[:partial]
           available_bits.div(bits_per_slice)
         when Slice::Definition
           if slice.count
@@ -96,10 +97,8 @@ module Machine
         end
         
         _self = self
-        self.class_eval do
-          def_method slice.name do ||
-            Slice::Parent_Accessor.new(slice, _self)
-          end
+        def_class_method slice.name do ||
+          Slice::ParentAccessor.new(slice, _self)
         end
       
         def_method slice.name do |*args|
@@ -134,19 +133,11 @@ module Machine
       end
 
       def slices
-        @slices ||=[]
+        @slices ||= {}
       end
 
       def add_slice(definition)
-        self.slices << definition
-      end
-
-      def slice_names
-        self.slices.map{|slice| slice.name}
-      end
-      
-      def slice_definition(slice_name)
-        self.slices.find{|definition| definition.name == slice_name}
+        self.slices[definition.name] = definition
       end
       
       # TODO Better way of handling and changing this
@@ -155,12 +146,8 @@ module Machine
       end
     end
     
-    def slice_names
-      self.class.slice_names
-    end
-    
-    def slice_definition(slice_name)
-      self.class.slice_definition(slice_name)
+    def slices
+      self.class.slices
     end
     
     def single_bit_mask(n)

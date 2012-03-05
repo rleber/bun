@@ -47,8 +47,10 @@ module Machine
     class Unsigned < Slice::Numeric; end
 
     module Signed
-      class TwosComplement < Slice::Numeric
-        
+      class Base < Slice::Numeric
+
+        attr_reader :ignore_sign
+
         class << self 
           def sign_bit
             0
@@ -61,23 +63,17 @@ module Machine
           def sign(val)
             val & sign_mask
           end
-
-          def complement(value)
-            clip( ~value + 1)
-          end
-          
-          def sign_type
-            :twos_complement
-          end
         end
-    
-        attr_reader :ignore_sign
         
         def initialize(val, options={})
+          warn "In Signed::Base.new(#{val.inspect} (class #{val.class}), #{options.inspect})"
+          if val<0
+            val = self.class.complement(-val)
+          end
           super(val)
           @ignore_sign = options[:ignore_sign]
         end
-        
+
         def value
           _signed
         end
@@ -123,15 +119,39 @@ module Machine
         private :_abs
       end
       
-      class OnesComplement < TwosComplement
+      class TwosComplement < Slice::Signed::Base
+        class << self
+          def complement(value)
+            clip( ~value + 1)
+          end
+          
+          def sign_type
+            :twos_complement
+          end
+        end
+        
+        def initialize(val, options={})
+          warn "In TwosComplement.new(#{val.inspect} (class #{val.class}), #{options.inspect})"
+          super
+        end
+      end
+      
+      class OnesComplement < Slice::Signed::Base
         class << self 
           def complement(value)
-            clip( ~value)
+            # warn "complement(#{'%012o' % value}) => #{'%012o' % (~value)}, clipped = #{'%012o' % clip(~value)}"
+            clip( ~value )
           end
           
           def sign_type
             :ones_complement
           end
+        end
+        
+        def initialize(value, options={})
+          warn "In OnesComplement.new(#{value.inspect} (class #{value.class}), #{options.inspect})"
+          warn %Q{caller:\n#{caller.map{|s| '  ' + s}.join("\n")}}
+          super
         end
       end
     end
@@ -150,9 +170,25 @@ module Machine
       def +(other)
         internal_value.chr + other
       end
+      
+      def plus(other)
+        internal_value + other
+      end
     
       def add(other)
         internal_value + other
+      end
+      
+      def to_s
+        to_str
+      end
+      
+      def value
+        to_str
+      end
+      
+      def asc
+        internal_value
       end
     end
   

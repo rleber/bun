@@ -110,8 +110,10 @@ end
 
 def show_slice_collection(word, slice, parameter, options={})
   slices = slice.pluralize
-  size = protected_send(word, "#{slices}_per_word")
-  puts "#{slices}_per_word = #{size.inspect}"
+  slice_object = protected_send(word, slice)
+  size = nil
+  size = protected_send(slice_object, 'count') if slice_object
+  puts "#{slice}.count = #{size.inspect}"
   name = [slice, parameter].join('_')
   show_collection(word, name, options)
 end

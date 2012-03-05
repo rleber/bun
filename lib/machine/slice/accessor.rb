@@ -19,13 +19,9 @@ module Machine
         @collapse
       end
       
-      # def count
-      #   @parent.slice_count(@definition)
-      # end
-      
       # TODO Create a collapsed do ... end idiom?
       def array
-        puts "In #{definition.name} slicer: count=#{}"
+        # puts "In #{definition.name} slicer: count=#{}"
         saved_collapse = collapse?
         self.collapse = false
         res = self[0..-1]
@@ -44,7 +40,9 @@ module Machine
       end
       
       def condensed_values(values)
-        if !values.is_a?(::Array)
+        if values.nil?
+          nil
+        elsif !values.is_a?(::Array)
           definition.slice_class.new(values)
         elsif values.size == 1 && collapse?
           definition.slice_class.new(values.first)
@@ -75,6 +73,7 @@ module Machine
       def allowed_methods
         meths = definition.format_names
         meths += [:signed, :unsigned] if definition.sign != :none
+        meths << :value
         meths
       end
     end

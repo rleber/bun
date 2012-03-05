@@ -79,6 +79,10 @@ module Machine
       def significant_bits
         @bits
       end
+      
+      def sign?
+        @sign != :none
+      end
     
       def base_data_class
         if string?

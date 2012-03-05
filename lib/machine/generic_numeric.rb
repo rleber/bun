@@ -1,4 +1,5 @@
 class GenericNumeric
+  include Comparable
 
   def initialize(value)
     value = value.internal_value if value.is_a?(GenericNumeric)
@@ -21,6 +22,17 @@ class GenericNumeric
   
   def inspect
     "<#{self.class}: #{internal_value.inspect}>"
+  end
+  
+  def <=>(other)
+    case other
+    when GenericNumeric
+      self.value <=> other.value
+    when Numeric
+      self.value <=> other
+    else
+      raise TypeError, "Can't compare #{self.class} with #{other.class}"
+    end
   end
   
   def method_missing(name, *args, &blk)
