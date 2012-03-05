@@ -6,11 +6,41 @@ module Machine
       
       attr_reader :definition
       attr_reader :parent
-      attr_accessor :collapse
 
       def initialize(definition, parent)
         @definition = definition
         @parent = parent
+      end
+      
+      # Allows you to say things like stuff.byte.count, stuff.integer.hex, or stuff.integer.unsigned
+      def method_missing(name, *args, &blk)
+        success, res = _try(@definition, name, *args, &blk)
+        return res if success
+        values = self[0..-1]
+        raise NoMethodError, "#{@definition.name}##{name} not permitted for multiple values" if values.is_a?(::Array)
+        success, res = _try(values, name, *args, &blk)
+        raise NoMethodError, "#{@definition.name}##{name} method not defined" unless success
+        res
+      end
+      
+      def _try(object, name, *args, &blk)
+        success = false
+        res = nil
+        begin
+          res = object.send(name, *args, &blk)
+          success = true
+        rescue NoMethodError
+        end
+        [success, res]
+      end
+    end
+    
+    class SliceAccessor < Accessor
+      
+      attr_accessor :collapse
+
+      def initialize(definition, parent)
+        super
         @slicer = Slicer.new(definition, parent)
         @collapse = definition.collapse?
       end
@@ -51,29 +81,6 @@ module Machine
         end
       end
       
-      # Allows you to say things like stuff.byte.count, stuff.integer.hex, or stuff.integer.unsigned
-      def method_missing(name, *args, &blk)
-        success = false
-        res = nil
-        begin
-          res = @definition.send(name, *args, &blk)
-          success = true
-        rescue NoMethodError
-        end
-        unless success
-          values = self[0..-1]
-          if values.is_a?(::Array)
-            raise NoMethodError, "#{@definition.name}##{name} not permitted: #{definition.name} has multiple values"
-          else
-            begin
-              res = values.send(name, *args, &blk)
-            rescue NoMethodError
-              raise NoMethodError, "#{@definition.name}##{name} method not defined"
-            end
-          end
-        end
-        res
-      end
     end
     
     class Slicer

@@ -98,11 +98,11 @@ module Machine
         
         _self = self
         def_class_method slice.name do ||
-          Slice::ParentAccessor.new(slice, _self)
+          Slice::Accessor.new(slice, _self)
         end
       
         def_method slice.name do |*args|
-          accessor = Slice::Accessor.new(slice, self)
+          accessor = Slice::SliceAccessor.new(slice, self)
           if args.size == 0
             accessor
           else
@@ -111,7 +111,7 @@ module Machine
         end
 
         def_method slice.plural do ||
-          Slice::Accessor.new(slice, self).s
+          Slice::SliceAccessor.new(slice, self).s
         end
 
         if slice.string?
