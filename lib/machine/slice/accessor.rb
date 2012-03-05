@@ -14,24 +14,20 @@ module Machine
       
       # Allows you to say things like stuff.byte.count, stuff.integer.hex, or stuff.integer.unsigned
       def method_missing(name, *args, &blk)
-        success, res = _try(@definition, name, *args, &blk)
-        return res if success
+        return @res if _try(@definition, name, *args, &blk)
         values = self[0..-1]
         raise NoMethodError, "#{@definition.name}##{name} not permitted for multiple values" if values.is_a?(::Array)
-        success, res = _try(values, name, *args, &blk)
-        raise NoMethodError, "#{@definition.name}##{name} method not defined" unless success
-        res
+        raise NoMethodError, "#{@definition.name}##{name} method not defined" unless _try(values, name, *args, &blk)
+        @res
       end
       
       def _try(object, name, *args, &blk)
-        success = false
-        res = nil
         begin
-          res = object.send(name, *args, &blk)
-          success = true
+          @res = object.send(name, *args, &blk)
+          return true
         rescue NoMethodError
+          return false
         end
-        [success, res]
       end
     end
     
