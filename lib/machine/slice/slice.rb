@@ -106,11 +106,11 @@ module Machine
         end
       
         def signed
-          value
+          self
         end
 
         def unsigned
-          self.class.encode(internal_value)
+          Unsigned.new(self.class.encode(internal_value))
         end
       end
       
