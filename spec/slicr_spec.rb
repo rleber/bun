@@ -195,7 +195,8 @@ shared_examples "slice class" do |slice_name|
   end
 end
 
-shared_examples "it is indexed" do |object, expected_values|
+# Spot check only -- the thorough checking is in indexable_basic_spec.rb
+shared_examples "slicr is indexed" do |object, expected_values|
   size = expected_values.size
   
   it "should allow indexing" do
@@ -224,20 +225,20 @@ shared_examples "it is indexed" do |object, expected_values|
   
   [false, true].each do |negative_i|
     [false, true].each do |negative_j|
-      (size+1).times do |i|
-        i -= size if negative_i
-        ((i-1)..(size+2)).each do |j|
-          j -= size if negative_j
+      [-(size+1), -(size.div(2)), 2, size.div(2), size-1, size+1].each do |i|
+        next if (negative_i && i >= 0) || (!negative_i && i<0)
+        [-(size+1), -(size.div(2)), 2, size.div(2), size-1, size+1].each do |j|
+          next if (negative_j && j >= 0) || (!negative_j && j<0)
           it "should retrieve self[#{i}..#{j}]" do
             object[i..j].should == expected_values[i..j]
           end
         end
       end
   
-      (size+1).times do |i|
-        i -= size if negative_i
-        ((i-1)..(size+2)).each do |j|
-          j -= size if negative_j
+      [-(size+1), -(size.div(2)), 2, size.div(2), size-1, size+1].each do |i|
+        next if (negative_i && i >= 0) || (!negative_i && i<0)
+        [-(size+1), -(size.div(2)), 2, size.div(2), size-1, size+1].each do |j|
+          next if (negative_j && j >= 0) || (!negative_j && j<0)
           it "should retrieve self[#{i}...#{j}]" do
             object[i...j].should == expected_values[i...j]
           end
@@ -247,9 +248,9 @@ shared_examples "it is indexed" do |object, expected_values|
   end
   
   [false, true].each do |negative_i|
-    (size+1).times do |i|
-      i -= size if negative_i
-      (-1..(size+1)).each do |l|
+    [-(size+1), -(size.div(2)), 2, size.div(2), size-1, size+1].each do |i|
+      next if (negative_i && i >= 0) || (!negative_i && i<0)
+      [-1, size.div(2), (size+1)].each do |l|
         it "should retrieve self[#{i},#{l}]" do
           object[i,l].should == expected_values[i,l]
         end
@@ -296,7 +297,7 @@ describe "instance" do
     slice_count = slice_object.count
 
     context slice_name do
-      it_behaves_like "it is indexed", slice_object, BYTE_VALUES[slice_name.to_sym]
+      it_behaves_like "slicr is indexed", slice_object, BYTE_VALUES[slice_name.to_sym]
       
       $bytes.send(slice_name).count.times do |i|
         context "#{slice_name}[#{i}]" do
@@ -603,7 +604,7 @@ describe Slicr::WordsBase do
     $words.size.should == 3
   end
   
-  it_behaves_like "it is indexed", $words, [1,2,3]
+  it_behaves_like "slicr is indexed", $words, [1,2,3]
   # 
   # it "should allow inclusive index ranges" do
   #   $words[1..2].should == [2,3]
