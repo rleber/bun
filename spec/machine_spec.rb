@@ -134,370 +134,370 @@ shared_examples "with slices" do |object|
   end
 end
 
+shared_examples "slice" do |object, slice_name|
+  defn = object.slices[slice_name]
+  it "should define .#{slice_name}" do
+    object.should respond_to slice_name
+  end
+end
+
 describe Machine::Word do
-  
   it "should define String#pluralize" do
     "abcdef".should respond_to :pluralize
   end
+end
 
-  context "subclass" do
-    include_examples "with width", TestWord, TEST_WIDTH
-    include_examples "with masks", TestWord, TEST_WIDTH
-    include_examples "with slices", TestWord
-    
-    
-    TestWord.slices.each do |slice_name, defn|
-      it "should define .#{slice_name}" do
-        TestWord.should respond_to slice_name
+describe TestWord do
+  include_examples "with width", TestWord, TEST_WIDTH
+  include_examples "with masks", TestWord, TEST_WIDTH
+  include_examples "with slices", TestWord
+  
+  
+  TestWord.slices.each do |slice_name, defn|
+    include_examples "slice", TestWord, slice_name
+    context slice_name do
+      slices_name = slice_name.pluralize
+      slice_object = TestWord.send(slice_name) rescue nil
+
+      it "should define .count" do
+        expect { slice_object.count }.should_not raise_error
       end
 
-      context slice_name do
-        slices_name = slice_name.pluralize
-        slice_object = TestWord.send(slice_name) rescue nil
+      it "should count #{slices_name} correctly" do
+        slice_object.count.should == SLICE_COUNTS[slice_name.to_sym]
+      end
 
-        it "should define .count" do
-          expect { slice_object.count }.should_not raise_error
+      it "should define the .width method" do
+        slice_object.width.should == SLICE_TEST_WIDTHS[slice_name.to_sym]
+      end
+
+      it "should define the .significant_bits method" do
+        slice_object.bits.should == SLICE_BITS[slice_name.to_sym]
+      end
+
+      it "should define the .string? method" do
+        slice_object.string?.should == SLICE_STRING[slice_name.to_sym]
+      end
+
+      it "should define the .sign? method" do
+        slice_object.sign?.should == SLICE_SIGN[slice_name.to_sym]
+      end
+
+      it "should define the .mask method" do
+        ('%b' % slice_object.mask).should match /^1{#{SLICE_BITS[slice_name.to_sym]}}$/
+      end
+    end
+  end
+end
+  
+describe $bytes do
+  include_examples "with width", $bytes, TestWord.width
+  include_examples "with masks", $bytes
+  include_examples "with slices", $bytes
+  
+  TestWord.slices.each do |slice_name, defn|
+    slices_name = slice_name.pluralize
+    slice_class_name = TEST_WORD_SLICE_CLASSES[slice_name.to_sym]
+    slice_object = $bytes.send(slice_name) rescue nil
+
+    it "should define .#{slice_name}" do
+      $bytes.should respond_to slice_name
+    end
+    
+    context "#{slice_class_name} class" do
+      slice_class = TestWord.const_get(slice_class_name) rescue nil
+
+      it "should define the #{slice_class_name} class" do
+        slice_class.should be_a_kind_of Class
+      end
+      
+      it "should define .formats" do
+        slice_class.should respond_to :formats
+      end
+
+      it "should define <slice_class>.string?" do
+        slice_class.should respond_to :string?
+      end
+    end
+
+    context slice_name do
+      it "should define .count" do
+        expect { slice_object.count }.should_not raise_error
+      end
+    
+      it "should count #{slices_name} correctly" do
+        slice_object.count.should == SLICE_COUNTS[slice_name.to_sym]
+      end
+
+      it "should define the .width method" do
+        slice_object.width.should == SLICE_TEST_WIDTHS[slice_name.to_sym]
+      end
+
+      it "should define the .significant_bits method" do
+        slice_object.bits.should == SLICE_BITS[slice_name.to_sym]
+      end
+
+      it "should define the .string? method" do
+        slice_object.string?.should == SLICE_STRING[slice_name.to_sym]
+      end
+
+      it "should define the .sign? method" do
+        slice_object.sign?.should == SLICE_SIGN[slice_name.to_sym]
+      end
+
+      it "should define the .mask method" do
+        ('%b' % slice_object.mask).should match /^1{#{SLICE_BITS[slice_name.to_sym]}}$/
+      end
+      
+      it "should return nil for #{slice_name}[#{-($bytes.send(slice_name).count+1)}]" do
+        slice_object = $bytes.send(slice_name)
+        slice_count = slice_object.count
+        slice_object[-(slice_count+1)].should be_nil
+      end
+      
+      it "should return nil for #{slice_name}[#{$bytes.send(slice_name).count}]" do
+        slice_object = $bytes.send(slice_name)
+        slice_count = slice_object.count
+        slice_object[slice_count].should be_nil
+      end
+      
+      $bytes.send(slice_name).count.times do |i|
+        context "#{slice_name}[#{i}]" do
+          slice = $bytes.send(slice_name)[i]
+          
+          it "should define the .format method" do
+            slice.should respond_to :format
+          end
+
+          it "the .format method should use the default format" do
+            slice.format.should == slice.format(:default)
+          end
+
+          it "should define the .value method" do
+            slice.should respond_to :value
+          end
+          
+          it "should return the proper .value" do
+            slice.value.should == BYTE_VALUES[slice_name.to_sym][i]
+          end
         end
+      end
+      
+      it "should allow access to all the slices by .#{slices_name}" do
+        $bytes.should respond_to slices_name
+      end
 
-        it "should count #{slices_name} correctly" do
-          slice_object.count.should == SLICE_COUNTS[slice_name.to_sym]
+      context ".#{slices_name}" do
+        before do
+          @slices = $bytes.send(slices_name)
         end
-
-        it "should define the .width method" do
-          slice_object.width.should == SLICE_TEST_WIDTHS[slice_name.to_sym]
+        
+        it "should be an Array" do
+          @slices.should be_a_kind_of Array
         end
-
-        it "should define the .significant_bits method" do
-          slice_object.bits.should == SLICE_BITS[slice_name.to_sym]
+        
+        it "should contain the expected number of elements" do
+          @slices.size.should == SLICE_COUNTS[slice_name.to_sym]
         end
-
-        it "should define the .string? method" do
-          slice_object.string?.should == SLICE_STRING[slice_name.to_sym]
-        end
-
-        it "should define the .sign? method" do
-          slice_object.sign?.should == SLICE_SIGN[slice_name.to_sym]
-        end
-
-        it "should define the .mask method" do
-          ('%b' % slice_object.mask).should match /^1{#{SLICE_BITS[slice_name.to_sym]}}$/
+      
+        it "should contain instances of the proper slice class (#{slice_class_name})" do
+          @slices.inject(true) {|value, slice| value && slice.is_a?(TestWord.const_get(slice_class_name)) }.should == true
         end
       end
     end
   end
+
+  context "slices" do
+    context "with significant_bits < width" do
+      it "should mask out non-significant bits" do
+        $bytes.character[2].asc.should == 0133
+      end
+    end
   
-  context "instances" do
-    # it "should define width method" do
-    #   $bytes.width.should == TestWord.width
-    # end
-    include_examples "with width", $bytes, TestWord.width
-    include_examples "with masks", $bytes
-    include_examples "with slices", $bytes
-    
-    TestWord.slices.each do |slice_name, defn|
+    context "slices with width > underlying data width" do
+      it "should have 0 count" do
+        StrangeWord.too_long.count.should == 0
+      end
+    end
+
+    STRING_SLICES.each do |slice_name|
+      slice = $bytes.send(slice_name) rescue nil
       slices_name = slice_name.pluralize
-      slice_class_name = TEST_WORD_SLICE_CLASSES[slice_name.to_sym]
-      slice_object = $bytes.send(slice_name) rescue nil
-
-      it "should define .#{slice_name}" do
-        $bytes.should respond_to slice_name
-      end
       
-      context "#{slice_class_name} class" do
-        slice_class = TestWord.const_get(slice_class_name) rescue nil
+      context "string slice #{slice_name}" do
+        it "should define all string formats" do
+          slice.formats.keys.map{|f| f.to_s}.sort.should == STRING_FORMATS.sort
+        end
 
-        it "should define the #{slice_class_name} class" do
-          slice_class.should be_a_kind_of Class
+        it "should return true for .string?" do
+          slice.string?.should == true
         end
         
-        it "should define .formats" do
-          slice_class.should respond_to :formats
-        end
-
-        it "should define <slice_class>.string?" do
-          slice_class.should respond_to :string?
-        end
-      end
-
-      context slice_name do
-        it "should define .count" do
-          expect { slice_object.count }.should_not raise_error
-        end
-      
-        it "should count #{slices_name} correctly" do
-          slice_object.count.should == SLICE_COUNTS[slice_name.to_sym]
-        end
-
-        it "should define the .width method" do
-          slice_object.width.should == SLICE_TEST_WIDTHS[slice_name.to_sym]
-        end
-
-        it "should define the .significant_bits method" do
-          slice_object.bits.should == SLICE_BITS[slice_name.to_sym]
-        end
-
-        it "should define the .string? method" do
-          slice_object.string?.should == SLICE_STRING[slice_name.to_sym]
-        end
-
-        it "should define the .sign? method" do
-          slice_object.sign?.should == SLICE_SIGN[slice_name.to_sym]
-        end
-
-        it "should define the .mask method" do
-          ('%b' % slice_object.mask).should match /^1{#{SLICE_BITS[slice_name.to_sym]}}$/
-        end
-        
-        it "should return nil for #{slice_name}[#{-($bytes.send(slice_name).count+1)}]" do
-          slice_object = $bytes.send(slice_name)
-          slice_count = slice_object.count
-          slice_object[-(slice_count+1)].should be_nil
-        end
-        
-        it "should return nil for #{slice_name}[#{$bytes.send(slice_name).count}]" do
-          slice_object = $bytes.send(slice_name)
-          slice_count = slice_object.count
-          slice_object[slice_count].should be_nil
-        end
-        
-        $bytes.send(slice_name).count.times do |i|
-          context "#{slice_name}[#{i}]" do
-            slice = $bytes.send(slice_name)[i]
+        slice.count.times do |i|
+          context "[#{i}]" do
+            slice_object = slice[i]
             
-            it "should define the .format method" do
-              slice.should respond_to :format
+            it "should create a .string" do
+              slice_object.should respond_to :string
             end
 
-            it "the .format method should use the default format" do
-              slice.format.should == slice.format(:default)
+            it "the default format should be string_inspect" do
+              slice_object.format.should == slice_object.string_inspect
             end
 
-            it "should define the .value method" do
-              slice.should respond_to :value
+            it "should define the .asc method" do
+              is_numeric?(slice_object.asc).should be true
+            end
+    
+            it "should define the .plus method" do
+              slice_object.plus(2).should == (slice_object.asc + 2)
+            end
+    
+            it "should have .asc >= 0" do
+              slice_object.asc.should be >= 0
             end
             
-            it "should return the proper .value" do
-              slice.value.should == BYTE_VALUES[slice_name.to_sym][i]
+            it "should allow .asc.format" do
+              expect { slice_object.asc.format }.should_not raise_error
+            end
+    
+            it "should return a string as .value" do
+              slice_object.string.should be_a_kind_of String
+            end
+    
+            it "should have .string == .asc.chr" do
+              slice_object.string.should == slice_object.asc.chr
+            end
+    
+            it "should define the + operator as concatenation" do
+              (slice_object + "a").should == (slice_object.string + "a")
+            end
+    
+            it "should allow prefix +" do
+              expect { "a" + slice_object }.should_not raise_error
+            end
+    
+            it "should allow postfix +" do
+              expect { slice_object + "a" }.should_not raise_error
+            end
+    
+            it "should not define .sign?" do
+              expect { slice_object.sign? }.should raise_error
             end
           end
         end
-        
-        it "should allow access to all the slices by .#{slices_name}" do
-          $bytes.should respond_to slices_name
-        end
-
-        context ".#{slices_name}" do
-          before do
-            @slices = $bytes.send(slices_name)
-          end
-          
-          it "should be an Array" do
-            @slices.should be_a_kind_of Array
-          end
-          
-          it "should contain the expected number of elements" do
-            @slices.size.should == SLICE_COUNTS[slice_name.to_sym]
-          end
-        
-          it "should contain instances of the proper slice class (#{slice_class_name})" do
-            @slices.inject(true) {|value, slice| value && slice.is_a?(TestWord.const_get(slice_class_name)) }.should == true
-          end
-        end
+      end
+      
+      it ".<slices_name> should create a merged string using .string" do
+        $strings.characters.string.should == "ABCD"
       end
     end
 
-    context "slices" do
-      context "with significant_bits < width" do
-        it "should mask out non-significant bits" do
-          $bytes.character[2].asc.should == 0133
+    NON_STRING_SLICES.each do |slice_name|
+      slice = $bytes.send(slice_name) rescue nil
+      slices_name = slice_name.pluralize
+
+      context "non-string slice #{slice_name}" do
+        it "should return false for .string?" do
+          (!!slice.string?).should == false
         end
-      end
     
-      context "slices with width > underlying data width" do
-        it "should have 0 count" do
-          StrangeWord.too_long.count.should == 0
+        it "should define all relevant formats" do
+          slice.formats.keys.map{|f| f.to_s}.sort.should == FORMATS.sort
         end
-      end
-
-      STRING_SLICES.each do |slice_name|
-        slice = $bytes.send(slice_name) rescue nil
-        slices_name = slice_name.pluralize
         
-        context "string slice #{slice_name}" do
-          it "should define all string formats" do
-            slice.formats.keys.map{|f| f.to_s}.sort.should == STRING_FORMATS.sort
-          end
+        it "should define .sign?" do
+          expect { slice.sign? }.should_not raise_error
+        end
 
-          it "should return true for .string?" do
-            slice.string?.should == true
-          end
-          
-          slice.count.times do |i|
-            context "[#{i}]" do
-              slice_object = slice[i]
-              
-              it "should create a .string" do
-                slice_object.should respond_to :string
-              end
+        slice.count.times do |i|
+          context "[#{i}]" do
+            slice_object = slice[i]
 
-              it "the default format should be string_inspect" do
-                slice_object.format.should == slice_object.string_inspect
-              end
-
-              it "should define the .asc method" do
-                is_numeric?(slice_object.asc).should be true
-              end
-      
-              it "should define the .plus method" do
-                slice_object.plus(2).should == (slice_object.asc + 2)
-              end
-      
-              it "should have .asc >= 0" do
-                slice_object.asc.should be >= 0
-              end
-              
-              it "should allow .asc.format" do
-                expect { slice_object.asc.format }.should_not raise_error
-              end
-      
-              it "should return a string as .value" do
-                slice_object.string.should be_a_kind_of String
-              end
-      
-              it "should have .string == .asc.chr" do
-                slice_object.string.should == slice_object.asc.chr
-              end
-      
-              it "should define the + operator as concatenation" do
-                (slice_object + "a").should == (slice_object.string + "a")
-              end
-      
-              it "should allow prefix +" do
-                expect { "a" + slice_object }.should_not raise_error
-              end
-      
-              it "should allow postfix +" do
-                expect { slice_object + "a" }.should_not raise_error
-              end
-      
-              it "should not define .sign?" do
-                expect { slice_object.sign? }.should raise_error
-              end
+            it "should not define the .asc method" do
+              expect {slice_object.asc }.should raise_error
             end
-          end
-        end
-        
-        it ".<slices_name> should create a merged string using .string" do
-          $strings.characters.string.should == "ABCD"
-        end
-      end
 
-      NON_STRING_SLICES.each do |slice_name|
-        slice = $bytes.send(slice_name) rescue nil
-        slices_name = slice_name.pluralize
+            it "should not define the string format" do
+              expect {slice_object.string }.should raise_error
+            end
+    
+            it "should not define the string_inspect format" do
+              expect {slice_object.string_inspect }.should raise_error
+            end
 
-        context "non-string slice #{slice_name}" do
-          it "should return false for .string?" do
-            (!!slice.string?).should == false
-          end
-      
-          it "should define all relevant formats" do
-            slice.formats.keys.map{|f| f.to_s}.sort.should == FORMATS.sort
-          end
-          
-          it "should define .sign?" do
-            expect { slice.sign? }.should_not raise_error
-          end
+            it "should not define the .plus method" do
+              expect {slice_object.plus(2) }.should raise_error
+            end
+    
+            it "should return a number as .value" do
+              slice_object.value.should be_a_kind_of Numeric
+            end
+            
+            it "should return the proper value" do
+              slice_object.value.should == BYTE_VALUES[slice_name.to_sym][i]
+            end
+    
+            it "should define the + operator as addition" do
+              (slice_object + 2).value.should == (slice_object.value + 2)
+            end
 
-          slice.count.times do |i|
-            context "[#{i}]" do
-              slice_object = slice[i]
+            it "should allow prefix arithmetic" do
+              expect { 2 + slice_object }.should_not raise_error
+            end
 
-              it "should not define the .asc method" do
-                expect {slice_object.asc }.should raise_error
-              end
+            it "should allow postfix arithmetic" do
+              expect { slice_object + 2 }.should_not raise_error
+            end
 
-              it "should not define the string format" do
-                expect {slice_object.string }.should raise_error
-              end
-      
-              it "should not define the string_inspect format" do
-                expect {slice_object.string_inspect }.should raise_error
-              end
+            it "should not create a merged string using .#{slices_name}.string" do
+              expect { slice_object.send(slices_name).string }.should raise_error
+            end
+            
+            # TODO slice_object.sign? should be possible
+            if slice.sign?
+              context "with signs" do
+                it "the default format should be decimal" do
+                  slice_object.format.should == slice_object.format(:decimal)
+                end
 
-              it "should not define the .plus method" do
-                expect {slice_object.plus(2) }.should raise_error
-              end
-      
-              it "should return a number as .value" do
-                slice_object.value.should be_a_kind_of Numeric
-              end
-              
-              it "should return the proper value" do
-                slice_object.value.should == BYTE_VALUES[slice_name.to_sym][i]
-              end
-      
-              it "should define the + operator as addition" do
-                (slice_object + 2).value.should == (slice_object.value + 2)
-              end
-
-              it "should allow prefix arithmetic" do
-                expect { 2 + slice_object }.should_not raise_error
-              end
-
-              it "should allow postfix arithmetic" do
-                expect { slice_object + 2 }.should_not raise_error
-              end
-
-              it "should not create a merged string using .#{slices_name}.string" do
-                expect { slice_object.send(slices_name).string }.should raise_error
-              end
-              
-              # TODO slice_object.sign? should be possible
-              if slice.sign?
-                context "with signs" do
-                  it "the default format should be decimal" do
-                    slice_object.format.should == slice_object.format(:decimal)
-                  end
-
-                  it "should define the .signed method" do
-                    slice_object.should respond_to :signed
-                  end
-                    
-                  it "should have value == signed" do
-                    slice_object.value.should == slice_object.signed
-                  end
-
-                  it "should define the .unsigned method" do
-                    slice_object.should respond_to :unsigned
-                  end
-
-                  it "should allow .signed.format" do
-                    slice_object.signed.should respond_to :format
-                  end
-
-                  it "should allow .unsigned.format" do
-                    slice_object.unsigned.should respond_to :format
-                  end
-        
-                  it "should have .unsigned >= 0" do
-                    slice_object.unsigned.should be >= 0
-                  end
+                it "should define the .signed method" do
+                  slice_object.should respond_to :signed
+                end
                   
+                it "should have value == signed" do
+                  slice_object.value.should == slice_object.signed
                 end
-              else
-                context "without signs" do
-                  it "the default format should be octal" do
-                    slice_object.format.should == slice_object.format(:octal)
-                  end
+
+                it "should define the .unsigned method" do
+                  slice_object.should respond_to :unsigned
+                end
+
+                it "should allow .signed.format" do
+                  slice_object.signed.should respond_to :format
+                end
+
+                it "should allow .unsigned.format" do
+                  slice_object.unsigned.should respond_to :format
+                end
       
-                  it "should not define .signed" do
-                    expect { slice_object.signed }.should raise_error
-                  end
-      
-                  it "should not define .unsigned" do
-                    expect { slice_object.unsigned }.should raise_error
-                  end
+                it "should have .unsigned >= 0" do
+                  slice_object.unsigned.should be >= 0
+                end
+                
+              end
+            else
+              context "without signs" do
+                it "the default format should be octal" do
+                  slice_object.format.should == slice_object.format(:octal)
+                end
+    
+                it "should not define .signed" do
+                  expect { slice_object.signed }.should raise_error
+                end
+    
+                it "should not define .unsigned" do
+                  expect { slice_object.unsigned }.should raise_error
                 end
               end
             end
@@ -505,62 +505,62 @@ describe Machine::Word do
         end
       end
     end
+  end
 
-    context "with positive values" do
-      it "should have .signed == .unsigned" do
-        $positive.integer.signed.should == $positive.integer.unsigned
-      end
+  context "with positive values" do
+    it "should have .signed == .unsigned" do
+      $positive.integer.signed.should == $positive.integer.unsigned
     end
+  end
 
-    context "with negative values" do
-      it "should have .signed < 0" do
-        $negative.integer.signed.should be < 0
-      end
-      
-      it "should handle negative math okay" do
-        ($negative_twos.integer.value * $negative_ones.integer.value).should == 1
-      end
-
-      context "in two's complement format" do
-        it "should have .signed set properly" do
-          $negative_twos.integer.signed.should == -1
-        end
-
-        it "should have .unsigned set properly" do
-          $negative_twos.integer.unsigned.should == eval('0b' + '1'*TEST_WIDTH)
-        end
-
-        it "should handle -(-1) properly" do
-          (-($negative_twos.integer.value)).should == 1
-        end
-        
-      end
-
-      context "in one's complement format" do
-        it "should have .signed set properly" do
-          $negative_ones.integer.signed.should == -1
-        end
-
-        it "should have .unsigned set properly" do
-          $negative_ones.integer.unsigned.should == eval('0b' + '1'*(TEST_WIDTH-1) + '0')
-        end
-      end
+  context "with negative values" do
+    it "should have .signed < 0" do
+      $negative.integer.signed.should be < 0
     end
     
-    context "any slice" do
-      it "should default to .value" do
-        ($bytes.byte[1] + 2).should == (0222 + 2)
-      end
+    it "should handle negative math okay" do
+      ($negative_twos.integer.value * $negative_ones.integer.value).should == 1
     end
-    
-    context "any field" do
-      it "should collapse" do
-        ($positive.integer.signed).should == $positive.integer[0]
+
+    context "in two's complement format" do
+      it "should have .signed set properly" do
+        $negative_twos.integer.signed.should == -1
+      end
+
+      it "should have .unsigned set properly" do
+        $negative_twos.integer.unsigned.should == eval('0b' + '1'*TEST_WIDTH)
+      end
+
+      it "should handle -(-1) properly" do
+        (-($negative_twos.integer.value)).should == 1
       end
       
-      it "should default to .value" do
-        ($positive.integer + 2).should == 3
+    end
+
+    context "in one's complement format" do
+      it "should have .signed set properly" do
+        $negative_ones.integer.signed.should == -1
       end
+
+      it "should have .unsigned set properly" do
+        $negative_ones.integer.unsigned.should == eval('0b' + '1'*(TEST_WIDTH-1) + '0')
+      end
+    end
+  end
+  
+  context "any slice" do
+    it "should default to .value" do
+      ($bytes.byte[1] + 2).should == (0222 + 2)
+    end
+  end
+  
+  context "any field" do
+    it "should collapse" do
+      ($positive.integer.signed).should == $positive.integer[0]
+    end
+    
+    it "should default to .value" do
+      ($positive.integer + 2).should == 3
     end
   end
 end
