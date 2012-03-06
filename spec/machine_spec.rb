@@ -51,6 +51,89 @@ def is_numeric?(v)
   v.is_a?(Numeric) || v.is_a?(GenericNumeric)
 end
 
+# ones_mask should be 0b11111... of the specified # of binary digits
+RSpec::Matchers.define :be_a_ones_mask do |width|
+  match do |mask|
+    case 0 <=> width
+    when -1
+      ('%b' % mask) =~ /^1{#{width}}$/
+    when 0
+      mask == 0
+    else
+      raise ArgumentError, "Mask width must be >= 0"
+    end
+  end
+  
+  failure_message_for_should do |mask|
+    "expected that #{'%#b' % mask} would be a ones mask of width #{width}"
+  end
+end
+
+# single_bit_mask should be 0b10000... with the specified # of zeroes
+RSpec::Matchers.define :be_a_single_bit_mask do |zeroes|
+  match do |mask|
+    if zeroes >= 0
+      ('%b' % mask) =~ /^10{#{zeroes}}$/
+    else
+      raise ArgumentError, "# of zeroes must be >= 0"
+    end
+  end
+  
+  failure_message_for_should do |mask|
+    "expected that #{'%#b' % mask} would be a single bit mask of 1 followed by #{zeroes} 0s"
+  end
+end
+
+shared_examples "with width" do |object, width|
+  it "should define correct width" do
+    object.width.should == width
+  end
+end
+
+shared_examples "with masks" do |*args|
+  object, width = args
+  
+  if width
+    it "should define ones_mask" do
+      object.ones_mask.should be_a_ones_mask(width)
+    end
+  end
+  
+  (0..(TEST_WIDTH+1)).each do |bit|
+    context "for bit number #{bit}" do
+      it "should define single_bit mask" do
+        object.single_bit_mask(bit).should be_a_single_bit_mask(bit)
+      end
+      
+      unless width
+        it "should define ones_mask" do
+          object.ones_mask(bit).should be_a_ones_mask(bit)
+        end
+      end
+    end
+  end
+end
+
+shared_examples "with slices" do |object|
+  it "should define slices" do
+    expect { object.slices }.should_not raise_error
+  end
+  
+  context "slices" do
+    it "should be a Hash" do
+      object.slices.should be_a_kind_of Hash
+    end
+    
+    it "should contain Slice::Definitions" do
+      all_defns = true
+      object.slices.each do |key, defn|
+        all_defns &&= defn.should be_a_kind_of Machine::Slice::Definition
+      end
+      all_defns.should be_true
+    end
+  end
+end
+
 describe Machine::Word do
   
   it "should define String#pluralize" do
@@ -58,43 +141,10 @@ describe Machine::Word do
   end
 
   context "subclass" do
-    it "should define width method for the Word class" do
-      TestWord.width.should == TEST_WIDTH
-    end
+    include_examples "with width", TestWord, TEST_WIDTH
+    include_examples "with masks", TestWord, TEST_WIDTH
+    include_examples "with slices", TestWord
     
-    # TODO Refactor using shared_examples, custom matchers, etc.
-  
-    it "should define ones_mask" do
-      # ones_mask should be 0b11111...
-      ('%b' % TestWord.ones_mask).should match /^1{#{TEST_WIDTH}}$/
-    end
-    
-    (0..(TEST_WIDTH+1)).each do |bit|
-      context "for bit number #{bit}" do
-        it "should define single_bit mask" do
-          # single_bit_mask should be 0b100000...
-          ('%b' % TestWord.single_bit_mask(bit)).should match /^10{#{bit}}$/
-        end
-      end
-    end
-    
-    it "should define slices" do
-      expect { TestWord.slices }.should_not raise_error
-    end
-    
-    context "slices" do
-      it "should be a Hash" do
-        TestWord.slices.should be_a_kind_of Hash
-      end
-      
-      it "should contain Slice::Definitions" do
-        all_defns = true
-        TestWord.slices.each do |key, defn|
-          all_defns &&= defn.should be_a_kind_of Machine::Slice::Definition
-        end
-        all_defns.should be_true
-      end
-    end
     
     TestWord.slices.each do |slice_name, defn|
       it "should define .#{slice_name}" do
@@ -137,45 +187,12 @@ describe Machine::Word do
   end
   
   context "instances" do
-    it "should define width method" do
-      $bytes.width.should == TestWord.width
-    end
-
-    (0..(TEST_WIDTH+1)).each do |bit|
-      context "for bit number #{bit}" do
-        it "should define ones_mask" do
-          # ones_mask should be 0b11111...
-          if bit==0
-            $bytes.ones_mask(bit).should == 0
-          else
-            ('%b' % $bytes.ones_mask(bit)).should match /^1{#{bit}}$/
-          end
-        end
-
-        it "should define single_bit_mask" do
-          # single_bit_mask should be 0b100000...
-          ('%b' % $bytes.single_bit_mask(bit)).should match /^10{#{bit}}$/
-        end
-      end
-    end
-    
-    it "should define slices" do
-      expect { $bytes.slices }.should_not raise_error
-    end
-    
-    context "slices" do
-      it "should be a Hash" do
-        $bytes.slices.should be_a_kind_of Hash
-      end
-      
-      it "should contain Slice::Definitions" do
-        all_defns = true
-        $bytes.slices.each do |key, defn|
-          all_defns &&= defn.should be_a_kind_of Machine::Slice::Definition
-        end
-        all_defns.should be_true
-      end
-    end
+    # it "should define width method" do
+    #   $bytes.width.should == TestWord.width
+    # end
+    include_examples "with width", $bytes, TestWord.width
+    include_examples "with masks", $bytes
+    include_examples "with slices", $bytes
     
     TestWord.slices.each do |slice_name, defn|
       slices_name = slice_name.pluralize
