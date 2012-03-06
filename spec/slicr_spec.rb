@@ -225,8 +225,8 @@ shared_examples "it is indexed" do |object, expected_values|
   [false, true].each do |negative_i|
     [false, true].each do |negative_j|
       (size+1).times do |i|
+        i -= size if negative_i
         ((i-1)..(size+2)).each do |j|
-          i -= size if negative_i
           j -= size if negative_j
           it "should retrieve self[#{i}..#{j}]" do
             object[i..j].should == expected_values[i..j]
@@ -235,8 +235,8 @@ shared_examples "it is indexed" do |object, expected_values|
       end
   
       (size+1).times do |i|
+        i -= size if negative_i
         ((i-1)..(size+2)).each do |j|
-          i -= size if negative_i
           j -= size if negative_j
           it "should retrieve self[#{i}...#{j}]" do
             object[i...j].should == expected_values[i...j]
@@ -248,8 +248,8 @@ shared_examples "it is indexed" do |object, expected_values|
   
   [false, true].each do |negative_i|
     (size+1).times do |i|
+      i -= size if negative_i
       (-1..(size+1)).each do |l|
-        i -= size if negative_i
         it "should retrieve self[#{i},#{l}]" do
           object[i,l].should == expected_values[i,l]
         end
