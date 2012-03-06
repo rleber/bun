@@ -99,7 +99,6 @@ module Indexable
     def normalize_indexes(*args)
       res = _extract_indexes(*args)
       # Normalize negative indexes, relative to the end of the collection
-      [:start, :end].each {|i| res[i] = _normalize_index(res[i]) }
       # Adjust the edge cases
       res = _adjust_result_type(res)
     
@@ -122,8 +121,11 @@ module Indexable
       when 1
         ix = args.first
         if ix.is_a?(Range)
-          {:args=>:range, :result=>:array, :start=>ix.begin, :end=>ix.end + (ix.exclude_end? ? -1 : 0)}
+          finish = _normalize_index(ix.end)
+          finish -= 1 if ix.exclude_end?
+          {:args=>:range, :result=>:array, :start=>_normalize_index(ix.begin), :end=>finish, :exclusive=>ix.exclude_end?}
         else
+          ix = _normalize_index(ix)
           {:args=>:scalar, :result=>:scalar, :start=>ix, :end=>ix}
         end
       when 2
@@ -160,7 +162,7 @@ module Indexable
       case res[:end] <=> (res[:start]-1)
       when -1 # End index < start index-1
               # Note, since start!=end, type can't be :scalar
-        res[:result] = :nil
+        res[:result] = :nil if res[:args]==:pair
       when 0 # End index == start-1 (zero length)
         # Note: Can't be :scalar, because end!=start
         res[:result] = :empty unless res[:result] == :nil
@@ -171,16 +173,20 @@ module Indexable
   
     # Define generalized indexing in terms of at(i)
     def [](*args)
-      range = normalize_indexes(*args)
-      case range[:result]
+      @index_range = normalize_indexes(*args)
+      case @index_range[:result]
       when :nil
         return nil
       when :empty
         return []
       end
-      res = (range[:start]..range[:end]).map {|i| at(i) }
-      res = res.first if range[:result] == :scalar
+      res = (@index_range[:start]..@index_range[:end]).map {|i| at(i) }
+      res = res.first if @index_range[:result] == :scalar
       res
+    end
+    
+    def index_range
+      @index_range
     end
   end
 end

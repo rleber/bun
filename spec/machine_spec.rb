@@ -85,6 +85,7 @@ RSpec::Matchers.define :be_a_single_bit_mask do |zeroes|
 end
 
 shared_examples "with width" do |object, width|
+  width ||= TEST_WIDTH
   it "should define correct width" do
     object.width.should == width
   end
@@ -92,6 +93,7 @@ end
 
 shared_examples "with masks" do |*args|
   object, width = args
+  maximum_width = (width || TEST_WIDTH)+1
   
   if width
     it "should define ones_mask" do
@@ -99,7 +101,7 @@ shared_examples "with masks" do |*args|
     end
   end
   
-  (0..(TEST_WIDTH+1)).each do |bit|
+  (0..maximum_width).each do |bit|
     context "for bit number #{bit}" do
       it "should define single_bit mask" do
         object.single_bit_mask(bit).should be_a_single_bit_mask(bit)
@@ -134,10 +136,135 @@ shared_examples "with slices" do |object|
   end
 end
 
-shared_examples "slice" do |object, slice_name|
-  defn = object.slices[slice_name]
-  it "should define .#{slice_name}" do
-    object.should respond_to slice_name
+shared_examples "a segment" do ||
+  include_examples "with width", $parent, $width
+  include_examples "with masks", $parent, $width
+  include_examples "with slices", $parent
+end
+
+shared_examples "slice method" do |slice_name|
+  it "should define <parent>.#{slice_name}" do
+    $parent.should respond_to slice_name
+  end
+end
+
+shared_examples "slice definition" do |slice_name|
+  slice_name = slice_name.to_sym
+  slice_object = $parent.send(slice_name) rescue nil
+  it "sets .count" do
+    slice_object.count.should == SLICE_COUNTS[slice_name]
+  end
+
+  it "sets .width" do
+    slice_object.width.should == SLICE_TEST_WIDTHS[slice_name]
+  end
+
+  it "sets .significant_bits" do
+    slice_object.bits.should == SLICE_BITS[slice_name]
+  end
+
+  it "sets .string?" do
+    slice_object.string?.should == SLICE_STRING[slice_name]
+  end
+
+  it "sets .sign?" do
+    slice_object.sign?.should == SLICE_SIGN[slice_name]
+  end
+
+  it "sets .mask" do
+    slice_object.mask.should be_a_ones_mask(SLICE_BITS[slice_name])
+  end
+end
+
+shared_examples "slice class" do |slice_name|
+  slice_class_name = TEST_WORD_SLICE_CLASSES[slice_name.to_sym]
+  slice_class = TestWord.const_get(slice_class_name) rescue nil
+  
+  context "#{slice_class_name} class" do
+    it "exists" do
+      slice_class.should be_a_kind_of Class
+    end
+    
+    it "defines .formats" do
+      slice_class.should respond_to :formats
+    end
+
+    it "defines .string?" do
+      slice_class.should respond_to :string?
+    end
+  end
+end
+
+shared_examples "it is indexed" do |object, expected_values|
+  size = expected_values.size
+  
+  it "should allow indexing" do
+    object.should respond_to :[]
+  end
+  
+  it "should return nil for self[-(size+1)]" do
+    object[-(size+1)].should be_nil
+  end
+  
+  it "should return nil for self[size]" do
+    object[size].should be_nil
+  end
+  
+  size.times do |i|
+    it "should retrieve self[#{i}]" do
+      object[i].should == expected_values[i]
+    end
+  end
+  
+  size.times do |i|
+    it "should retrieve self[#{i-size}]" do
+      object[i-size].should == expected_values[i]
+    end
+  end
+  
+  [false, true].each do |negative_i|
+    [false, true].each do |negative_j|
+      (size+1).times do |i|
+        ((i-1)..(size+2)).each do |j|
+          i -= size if negative_i
+          j -= size if negative_j
+          it "should retrieve self[#{i}..#{j}]" do
+            object[i..j].should == expected_values[i..j]
+          end
+        end
+      end
+  
+      (size+1).times do |i|
+        ((i-1)..(size+2)).each do |j|
+          i -= size if negative_i
+          j -= size if negative_j
+          it "should retrieve self[#{i}...#{j}]" do
+            object[i...j].should == expected_values[i...j]
+          end
+        end
+      end
+    end
+  end
+  
+  [false, true].each do |negative_i|
+    (size+1).times do |i|
+      (-1..(size+1)).each do |l|
+        i -= size if negative_i
+        it "should retrieve self[#{i},#{l}]" do
+          object[i,l].should == expected_values[i,l]
+        end
+      end
+    end
+  end
+end
+
+shared_examples "it is sliced" do
+  TEST_WORD_SLICES.each do |slice_name|
+    context slice_name do
+      include_examples "slice method", slice_name
+      include_examples "slice definition", slice_name
+      include_examples "slice class", slice_name
+    end
   end
 end
 
@@ -147,119 +274,29 @@ describe Machine::Word do
   end
 end
 
-describe TestWord do
-  include_examples "with width", TestWord, TEST_WIDTH
-  include_examples "with masks", TestWord, TEST_WIDTH
-  include_examples "with slices", TestWord
-  
-  
-  TestWord.slices.each do |slice_name, defn|
-    include_examples "slice", TestWord, slice_name
-    context slice_name do
-      slices_name = slice_name.pluralize
-      slice_object = TestWord.send(slice_name) rescue nil
-
-      it "should define .count" do
-        expect { slice_object.count }.should_not raise_error
-      end
-
-      it "should count #{slices_name} correctly" do
-        slice_object.count.should == SLICE_COUNTS[slice_name.to_sym]
-      end
-
-      it "should define the .width method" do
-        slice_object.width.should == SLICE_TEST_WIDTHS[slice_name.to_sym]
-      end
-
-      it "should define the .significant_bits method" do
-        slice_object.bits.should == SLICE_BITS[slice_name.to_sym]
-      end
-
-      it "should define the .string? method" do
-        slice_object.string?.should == SLICE_STRING[slice_name.to_sym]
-      end
-
-      it "should define the .sign? method" do
-        slice_object.sign?.should == SLICE_SIGN[slice_name.to_sym]
-      end
-
-      it "should define the .mask method" do
-        ('%b' % slice_object.mask).should match /^1{#{SLICE_BITS[slice_name.to_sym]}}$/
-      end
-    end
-  end
+describe "word" do
+  $parent = TestWord
+  $width = TEST_WIDTH
+  it_behaves_like "a segment"
+  it_behaves_like "it is sliced"
 end
   
-describe $bytes do
-  include_examples "with width", $bytes, TestWord.width
-  include_examples "with masks", $bytes
-  include_examples "with slices", $bytes
+describe "instance" do
+  $parent = $bytes
+  $width = nil
+  it_behaves_like "a segment"
+  it_behaves_like "it is sliced"
+  # it_behaves_like "it contains slices"
   
-  TestWord.slices.each do |slice_name, defn|
+  TEST_WORD_SLICES.each do |slice_name|
+    defn = $parent.slices[slice_name]
     slices_name = slice_name.pluralize
     slice_class_name = TEST_WORD_SLICE_CLASSES[slice_name.to_sym]
     slice_object = $bytes.send(slice_name) rescue nil
-
-    it "should define .#{slice_name}" do
-      $bytes.should respond_to slice_name
-    end
-    
-    context "#{slice_class_name} class" do
-      slice_class = TestWord.const_get(slice_class_name) rescue nil
-
-      it "should define the #{slice_class_name} class" do
-        slice_class.should be_a_kind_of Class
-      end
-      
-      it "should define .formats" do
-        slice_class.should respond_to :formats
-      end
-
-      it "should define <slice_class>.string?" do
-        slice_class.should respond_to :string?
-      end
-    end
+    slice_count = slice_object.count
 
     context slice_name do
-      it "should define .count" do
-        expect { slice_object.count }.should_not raise_error
-      end
-    
-      it "should count #{slices_name} correctly" do
-        slice_object.count.should == SLICE_COUNTS[slice_name.to_sym]
-      end
-
-      it "should define the .width method" do
-        slice_object.width.should == SLICE_TEST_WIDTHS[slice_name.to_sym]
-      end
-
-      it "should define the .significant_bits method" do
-        slice_object.bits.should == SLICE_BITS[slice_name.to_sym]
-      end
-
-      it "should define the .string? method" do
-        slice_object.string?.should == SLICE_STRING[slice_name.to_sym]
-      end
-
-      it "should define the .sign? method" do
-        slice_object.sign?.should == SLICE_SIGN[slice_name.to_sym]
-      end
-
-      it "should define the .mask method" do
-        ('%b' % slice_object.mask).should match /^1{#{SLICE_BITS[slice_name.to_sym]}}$/
-      end
-      
-      it "should return nil for #{slice_name}[#{-($bytes.send(slice_name).count+1)}]" do
-        slice_object = $bytes.send(slice_name)
-        slice_count = slice_object.count
-        slice_object[-(slice_count+1)].should be_nil
-      end
-      
-      it "should return nil for #{slice_name}[#{$bytes.send(slice_name).count}]" do
-        slice_object = $bytes.send(slice_name)
-        slice_count = slice_object.count
-        slice_object[slice_count].should be_nil
-      end
+      it_behaves_like "it is indexed", slice_object, BYTE_VALUES[slice_name.to_sym]
       
       $bytes.send(slice_name).count.times do |i|
         context "#{slice_name}[#{i}]" do
@@ -275,10 +312,6 @@ describe $bytes do
 
           it "should define the .value method" do
             slice.should respond_to :value
-          end
-          
-          it "should return the proper .value" do
-            slice.value.should == BYTE_VALUES[slice_name.to_sym][i]
           end
         end
       end
@@ -570,25 +603,19 @@ describe Machine::WordsBase do
     $words.size.should == 3
   end
   
-  it "should allow indexing" do
-    $words[0].should == 1
-  end
-  
-  it "should allow negative indexing" do
-    $words[-1].should == 3
-  end
-  
-  it "should allow inclusive index ranges" do
-    $words[1..2].should == [2,3]
-  end
-  
-  it "should allow exclusive index ranges" do
-    $words[1...-1].should == [2]
-  end
-  
-  it "should allow indexing by pairs" do
-    $words[1,2].should == [2,3]
-  end
+  it_behaves_like "it is indexed", $words, [1,2,3]
+  # 
+  # it "should allow inclusive index ranges" do
+  #   $words[1..2].should == [2,3]
+  # end
+  # 
+  # it "should allow exclusive index ranges" do
+  #   $words[1...-1].should == [2]
+  # end
+  # 
+  # it "should allow indexing by pairs" do
+  #   $words[1,2].should == [2,3]
+  # end
   
   it "should allow assignment" do
     words = $words.dup

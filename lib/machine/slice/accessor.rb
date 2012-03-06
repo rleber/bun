@@ -15,9 +15,11 @@ module Machine
       # Allows you to say things like stuff.byte.count, stuff.integer.hex, or stuff.integer.unsigned
       def method_missing(name, *args, &blk)
         return @res if _try(@definition, name, *args, &blk)
-        values = self[0..-1]
-        raise NoMethodError, "#{@definition.name}##{name} not permitted for multiple values" if values.is_a?(::Array)
-        raise NoMethodError, "#{@definition.name}##{name} method not defined" unless _try(values, name, *args, &blk)
+        raise NoMethodError, "#{@definition.name}##{name} not permitted for multiple values" if _size > 1
+        raise NoMethodError, "#{@definition.name}##{name} not permitted for empty collection" if _size == 0
+        raise NoMethodEror,  "#{@definition.name}##{name} not permitted for non-collapsing slices" unless @definition.collapse?
+        value = self[0]
+        raise NoMethodError, "#{@definition.name}##{name} method not defined" unless _try(value, name, *args, &blk)
         @res
       end
       
@@ -28,6 +30,10 @@ module Machine
         rescue NoMethodError
           return false
         end
+      end
+      
+      def _size
+        definition.count || definition.parent_class.slice_count(definition)
       end
     end
     
@@ -70,7 +76,7 @@ module Machine
           nil
         elsif !values.is_a?(::Array)
           definition.slice_class.new(values)
-        elsif values.size == 1 && collapse?
+        elsif values.size == 1 && collapse? && @slicer.index_range[:args]==:scalar
           definition.slice_class.new(values.first)
         else
           Slice::Array.new(values.map{|v| definition.slice_class.new(v)})

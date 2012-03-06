@@ -173,6 +173,21 @@ module Machine
       def asc
         Unsigned.new(internal_value)
       end
+
+      def <=>(other)
+        case other
+        when GenericNumeric
+          self.asc <=> other.value
+        when Numeric
+          self.asc <=> other
+        when ::String
+          self.value <=> other
+        when String
+          self.value <=> other.value
+        else
+          raise TypeError, "Can't compare #{self.class} with #{other.class}"
+        end
+      end
     end
   
     class Array < ::Array
