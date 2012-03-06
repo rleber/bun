@@ -1,4 +1,4 @@
-module Machine
+module Slicr
   module Container
     module ClassMethods
       def contains(klass)

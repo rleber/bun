@@ -1,16 +1,16 @@
-require 'machine/word'
+require 'slicr/word'
 
 # TODO Get this working
 
-module Machine
+module Slicr
   
   def self.Block(constituent_class)
     klass = Class.new(Words(constituent_class))
     class << klass
       def inherited(subclass)
         puts "#{subclass} inheriting #{self}"
-        subclass.send :include, Machine::Sliceable
-        subclass.send :include, Machine::BlockBase
+        subclass.send :include, Slicr::Sliceable
+        subclass.send :include, Slicr::BlockBase
         subclass.send :define_format, :inspect, '%p'
       end
     end

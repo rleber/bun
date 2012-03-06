@@ -129,7 +129,7 @@ shared_examples "with slices" do |object|
     it "should contain Slice::Definitions" do
       all_defns = true
       object.slices.each do |key, defn|
-        all_defns &&= defn.should be_a_kind_of Machine::Slice::Definition
+        all_defns &&= defn.should be_a_kind_of Slicr::Slice::Definition
       end
       all_defns.should be_true
     end
@@ -268,7 +268,7 @@ shared_examples "it is sliced" do
   end
 end
 
-describe Machine::Word do
+describe Slicr::Word do
   it "should define String#pluralize" do
     "abcdef".should respond_to :pluralize
   end
@@ -598,7 +598,7 @@ describe "instance" do
   end
 end
 
-describe Machine::WordsBase do
+describe Slicr::WordsBase do
   it "should set size" do
     $words.size.should == 3
   end

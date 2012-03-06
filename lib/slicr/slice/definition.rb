@@ -1,6 +1,6 @@
-require 'machine/slice/dsl'
+require 'slicr/slice/dsl'
 
-module Machine
+module Slicr
   module Slice
     class Definition
 
@@ -106,7 +106,7 @@ module Machine
       end
       
       def single_bit_mask(n)
-        Machine::Word.single_bit_mask(n)
+        Slicr::Word.single_bit_mask(n)
       end
       
       def retrieve(from_object, index)

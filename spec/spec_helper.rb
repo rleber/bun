@@ -1,5 +1,5 @@
 require File.join(File.dirname(__FILE__), '../lib/gecos')
-require File.join(File.dirname(__FILE__), '../lib/machine')
+require File.join(File.dirname(__FILE__), '../lib/slicr')
 require File.join(File.dirname(__FILE__), '../lib/indexable_basic')
 require File.join(File.dirname(__FILE__), 'slices.rb')
 

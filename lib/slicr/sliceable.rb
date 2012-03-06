@@ -1,8 +1,8 @@
-require 'machine/masks'
-require 'machine/formats'
-require 'machine/slice'
+require 'slicr/masks'
+require 'slicr/formats'
+require 'slicr/slice'
 
-module Machine
+module Slicr
   module Sliceable
     
     def self.included(base)

@@ -2,7 +2,7 @@
 
 # TODO Reorganize slice* source files
 
-module Machine
+module Slicr
   module Slice
     class DSL
       attr_reader :definition, :options

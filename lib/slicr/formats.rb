@@ -1,4 +1,4 @@
-module Machine
+module Slicr
   module Formatted
     def self.included(base)
       base.extend(ClassMethods)

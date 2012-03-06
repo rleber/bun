@@ -1,6 +1,6 @@
-require 'machine/sliceable'
+require 'slicr/sliceable'
 
-module Machine
+module Slicr
   class Structure < GenericNumeric
 
     include Sliceable

@@ -1,7 +1,7 @@
-require 'machine'
+require 'slicr'
 
 class GECOS
-  class Word < Machine::Word
+  class Word < Slicr::Word
     WIDTH = 36
     width WIDTH
     
@@ -38,6 +38,6 @@ class GECOS
     end
   end
   
-  class Words < Machine::Words(GECOS::Word)
+  class Words < Slicr::Words(GECOS::Word)
   end
 end  

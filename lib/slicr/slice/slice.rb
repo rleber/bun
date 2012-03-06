@@ -1,6 +1,6 @@
-require 'machine/formats'
+require 'slicr/formats'
 
-module Machine
+module Slicr
   module Slice
     class Base < GenericNumeric
       include Formatted

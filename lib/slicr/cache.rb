@@ -1,4 +1,4 @@
-module Machine
+module Slicr
   class Cache
     def initialize(&blk)
       @contents = []

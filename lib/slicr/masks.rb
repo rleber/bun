@@ -1,6 +1,6 @@
-require 'machine/cache'
+require 'slicr/cache'
 
-module Machine
+module Slicr
   class Masks < Cache
   end
 end

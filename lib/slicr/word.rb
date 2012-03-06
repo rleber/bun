@@ -1,6 +1,6 @@
-require 'machine/structure'
+require 'slicr/structure'
 
-module Machine
+module Slicr
   class Word < Structure
     
     class << self

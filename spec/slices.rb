@@ -1,8 +1,8 @@
-require 'machine'
+require 'slicr'
 
 WIDTH = 36
 
-class TestWord < Machine::Word
+class TestWord < Slicr::Word
   width WIDTH
   
   def inspect
@@ -35,16 +35,16 @@ class TestWord < Machine::Word
   end
 end
 
-class TestWords < Machine::Words(TestWord)
+class TestWords < Slicr::Words(TestWord)
 end
 
-class StrangeWord < Machine::Word
+class StrangeWord < Slicr::Word
   width WIDTH
   
   slice :too_long, :width=>WIDTH+1
 end
 
-class TestWordOnes < Machine::Word
+class TestWordOnes < Slicr::Word
   width WIDTH
   
   field :integer do

@@ -1,6 +1,6 @@
 require 'indexable_basic'
 
-module Machine
+module Slicr
   module Slice
     class Accessor
       

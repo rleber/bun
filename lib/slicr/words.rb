@@ -1,8 +1,8 @@
-module Machine
+module Slicr
   
   def self.Words(constituent_class)
     klass = Class.new(Array)
-    klass.send :include, Machine::WordsBase
+    klass.send :include, Slicr::WordsBase
     klass.contains constituent_class
     klass
   end

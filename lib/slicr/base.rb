@@ -8,12 +8,12 @@
 # TODO Either get rid of this trace stuff, or make it better
 $trace = false
 
-require 'machine/object'
-require 'machine/class'
-require 'machine/string'
-require 'machine/generic_numeric'
-require 'machine/slice'
-require 'machine/word'
-require 'machine/container'
-require 'machine/words'
-require 'machine/block'
+require 'slicr/object'
+require 'slicr/class'
+require 'slicr/string'
+require 'slicr/generic_numeric'
+require 'slicr/slice'
+require 'slicr/word'
+require 'slicr/container'
+require 'slicr/words'
+require 'slicr/block'
