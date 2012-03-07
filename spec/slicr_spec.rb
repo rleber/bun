@@ -370,8 +370,8 @@ describe "instance" do
             end
             
             if fmt == :default
-              it " .to_s should == .value" do
-                slice[0].to_s.should == slice[0].value
+              it " .to_s should == .string" do
+                slice[0].to_s.should == slice[0].string
               end
             else
               it " .#{fmt} should == .format(#{fmt})" do
