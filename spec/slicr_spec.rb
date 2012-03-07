@@ -285,9 +285,15 @@ end
 describe "instance" do
   $parent = $bytes
   $width = nil
+
+  context "automatically installs formats" do
+    it "understands formats" do
+      expect { $bytes.integer(0).unsigned.octal }.should_not raise_error
+    end
+  end
+
   it_behaves_like "a segment"
   it_behaves_like "it is sliced"
-  # it_behaves_like "it contains slices"
   
   TEST_WORD_SLICES.each do |slice_name|
     defn = $parent.slices[slice_name]
