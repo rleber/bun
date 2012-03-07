@@ -37,7 +37,7 @@ module Slicr
         end
       when Format
         return format(format_defn.definition, inspecting) if format_defn.definition.is_a?(Symbol)
-        v = format_defn.string? ? self.string : self.value
+        v = format_defn.string? ? self.string : ( self.respond_to?(:asc) ? self.asc : self.value )
         if format_defn.inspect?
           if v.respond_to?(:inspect_before_formatting)
             v = v.inspect_before_formatting 

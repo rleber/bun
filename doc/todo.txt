@@ -3,7 +3,7 @@ Every slice object should descend from Slice::Base, and should be sliceable, e.g
 A layer is an array of slices; therefore "layer" is a synonym for "slices"
 Define the basic layer "words", which is different than most other kinds of layers, in that the data is stored in words
 Other layers may (or may not) store the data, or just reference it from their parent layer
-For now, at least, subordinate slices can't overlap the boundaries of slices in the underlying layers, although at their option, layers may define "short" slices to fill up the end of slices in the underlying layer)
+For now, at least, subordinate slices can't overlap the boundaries of slices in the underlying layers, although at their option, layers may define "short" slices to fill up the end of slices in the underlying layer
 Therefore, slices in a subordinate layer may not be longer than the slices in underlying layers. So, foo.bytes.six_bits may yield different results than foo.six_bits because the byte alignments will cause bits to be ignored
 Every slice has a width
 Layers may or may not have a fixed slice width (i.e. the same width for every slice in a layer)
@@ -20,11 +20,14 @@ Bit offset layers: e.g. offset by one bit from base layer, etc.
 Multiword layers: e.g. layers with a slice size a fixed integral multiple of the slices in the supporting layer
 
 TODO
+Repair run_word
 Refactor Slicr tests
 Refactor Slicr based on the concept of layers, etc.
-Refactor based on Slicr module
+Refactor file decoding based on Slicr module
 Set file modification dates for normally archived files, based on data in _misc/fass-index.txt
 Fix 320 word block glitch in normally archived files
+Ignore files not in the index
+Implement Ian's naming conventions
 Ability to 'gecos archive ls' by archive name patterns
 Ability to search xref'ed files, for example find files with multiple copies
 Change name of 'gecos archive xref' perhaps 'gecos archive organize'?

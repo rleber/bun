@@ -362,6 +362,24 @@ describe "instance" do
         it "should define all string formats" do
           slice.formats.keys.map{|f| f.to_s}.sort.should == STRING_FORMATS.sort
         end
+        
+        slice.formats.keys.each do |fmt|
+          context "format #{fmt}" do
+            it "should display .format(#{fmt})" do
+              expect { slice[0].format(fmt) }.should_not raise_error
+            end
+            
+            if fmt == :default
+              it " .to_s should == .value" do
+                slice[0].to_s.should == slice[0].value
+              end
+            else
+              it " .#{fmt} should == .format(#{fmt})" do
+                slice[0].send(fmt).should == slice[0].format(fmt)
+              end
+            end
+          end
+        end
 
         it "should return true for .string?" do
           slice.string?.should == true
@@ -438,6 +456,24 @@ describe "instance" do
     
         it "should define all relevant formats" do
           slice.formats.keys.map{|f| f.to_s}.sort.should == FORMATS.sort
+        end
+        
+        slice.formats.keys.each do |fmt|
+          context "format #{fmt}" do
+            it "should display .format(#{fmt})" do
+              expect { slice[0].format(fmt) }.should_not raise_error
+            end
+
+            if fmt == :default
+              it " .to_s should == .format(#{fmt})" do
+                slice[0].to_s.should == slice[0].format(fmt)
+              end
+            else
+              it " .#{fmt} should == .format(#{fmt})" do
+                slice[0].send(fmt).should == slice[0].format(fmt)
+              end
+            end
+          end
         end
         
         it "should define .sign?" do
