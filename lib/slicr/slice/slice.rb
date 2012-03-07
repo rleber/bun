@@ -33,6 +33,11 @@ module Slicr
         end
        end
 
+      def initialize(*args)
+        super
+        self.class.install_formats unless formats
+      end
+      
       def definition
         self.class.definition
       end

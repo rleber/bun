@@ -363,24 +363,6 @@ describe "instance" do
           slice.formats.keys.map{|f| f.to_s}.sort.should == STRING_FORMATS.sort
         end
         
-        slice.formats.keys.each do |fmt|
-          context "format #{fmt}" do
-            it "should display .format(#{fmt})" do
-              expect { slice[0].format(fmt) }.should_not raise_error
-            end
-            
-            if fmt == :default
-              it " .to_s should == .string" do
-                slice[0].to_s.should == slice[0].string
-              end
-            else
-              it " .#{fmt} should == .format(#{fmt})" do
-                slice[0].send(fmt).should == slice[0].format(fmt)
-              end
-            end
-          end
-        end
-
         it "should return true for .string?" do
           slice.string?.should == true
         end
@@ -393,8 +375,30 @@ describe "instance" do
               slice_object.should respond_to :string
             end
 
-            it "the default format should be string_inspect" do
-              slice_object.format.should == slice_object.string_inspect
+            it " .to_s should == .string" do
+              slice_object.to_s.should == slice_object.string
+            end
+
+            slice.formats.keys.each do |fmt|
+              context "format #{fmt}" do
+                it "should display .format(#{fmt})" do
+                  expect { slice_object.format(fmt) }.should_not raise_error
+                end
+
+                if fmt == :default
+                  it " .format(#{fmt.inspect}) should == .string_inspect" do
+                    slice_object.format(:default).should == slice_object.string_inspect
+                  end
+
+                  it " .format should == .format(#{fmt.inspect})" do
+                    slice_object.format(:default).should == slice_object.string_inspect
+                  end
+                else
+                  it " .#{fmt} should == .format(#{fmt})" do
+                    slice_object.send(fmt).should == slice_object.format(fmt)
+                  end
+                end
+              end
             end
 
             it "should define the .asc method" do
@@ -458,24 +462,6 @@ describe "instance" do
           slice.formats.keys.map{|f| f.to_s}.sort.should == FORMATS.sort
         end
         
-        slice.formats.keys.each do |fmt|
-          context "format #{fmt}" do
-            it "should display .format(#{fmt})" do
-              expect { slice[0].format(fmt) }.should_not raise_error
-            end
-
-            if fmt == :default
-              it " .to_s should == .format(#{fmt})" do
-                slice[0].to_s.should == slice[0].format(fmt)
-              end
-            else
-              it " .#{fmt} should == .format(#{fmt})" do
-                slice[0].send(fmt).should == slice[0].format(fmt)
-              end
-            end
-          end
-        end
-        
         it "should define .sign?" do
           expect { slice.sign? }.should_not raise_error
         end
@@ -494,6 +480,28 @@ describe "instance" do
     
             it "should not define the string_inspect format" do
               expect {slice_object.string_inspect }.should raise_error
+            end
+
+            it " .to_s should == default format" do
+              slice_object.to_s.should == slice_object.format
+            end
+
+            slice.formats.keys.each do |fmt|
+              context "format #{fmt}" do
+                it "should display .format(#{fmt})" do
+                  expect { slice_object.format(fmt) }.should_not raise_error
+                end
+
+                if fmt == :default
+                  it " .format should == .format(#{fmt.inspect})" do
+                    slice_object.format.should == slice_object.format(:default)
+                  end
+                else
+                  it " .#{fmt} should == .format(#{fmt})" do
+                    slice_object.send(fmt).should == slice_object.format(fmt)
+                  end
+                end
+              end
             end
 
             it "should not define the .plus method" do
@@ -549,6 +557,10 @@ describe "instance" do
 
                 it "should allow .unsigned.format" do
                   slice_object.unsigned.should respond_to :format
+                end
+                
+                it "should allow .unsigned.octal" do
+                  slice_object.unsigned.should respond_to :octal
                 end
       
                 it "should have .unsigned >= 0" do

@@ -286,6 +286,9 @@ show_value "$negative.integer(0).unsigned", :format=>'%012o'
 show_value "$byte_test_word.byte(2).octal"
 show_value "$negative.integer(0).decimal"
 show_value "$negative.integer.decimal"
+show_value "$negative.integer.unsigned.instance_eval { @formats }.inspect"
+# show_value "$negative.integer(0).unsigned.format(:octal)"
+# show_value "$negative.integer(0).unsigned.class"
 show_value "$negative.integer(0).unsigned.octal"
 show_value "$negative.integer.signed.hex"
 
