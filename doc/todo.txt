@@ -10,20 +10,20 @@ Layers may or may not have a fixed slice width (i.e. the same width for every sl
 Use layer-esque language: layers lie "on" other layers, layers "support" other layers, layers and slices have "layers" in/on them, etc.
 
 LAYERS YET TO BE DEFINED
-Layers of blocks: e.g. a layer with the same slice size as the supporting layer, but broken into segments
-- Segments of fixed size
-- Segments terminated with a sentinel value
-- Segments with a "size" field somewhere
-- Segments pointed to by a pointer
-- Idea: Base block object takes a Proc which determines its start and length, based on the data
-Bit offset layers: e.g. offset by one bit from base layer, etc.
-Multiword layers: e.g. layers with a slice size a fixed integral multiple of the slices in the supporting layer
+- Structures (i.e. a sequence of fields)
+- Blocks: e.g. a layer with the same slice size as the supporting layer, but broken into segments
+  - Segments of fixed size
+  - Segments terminated with a sentinel value
+  - Segments with a "size" field somewhere
+  - Segments pointed to by a pointer
+  - Idea: Base block object takes a Proc which determines its start and length, based on the data
+- Bit offset layers: e.g. offset by one bit from base layer, etc.
+- Multiword layers: e.g. layers with a slice size a fixed integral multiple of the slices in the supporting layer
 
 TODO
-Repair run_word
-Refactor Slicr tests
 Refactor Slicr based on the concept of layers, etc.
 Refactor file decoding based on Slicr module
+Are data and file_system classes necessary?
 Set file modification dates for normally archived files, based on data in _misc/fass-index.txt
 Fix 320 word block glitch in normally archived files
 Ignore files not in the index

@@ -9,8 +9,8 @@ module Slicr
 
   module WordsBase
     def self.included(base)
-      if !base.instance_methods.include?('get_at') && base.instance_methods.include?('[]')
-        base.send :alias_method, :get_at, :[] 
+      if !base.instance_methods.include?('at') && base.instance_methods.include?('[]')
+        base.send :alias_method, :at, :[] 
       end
       if !base.instance_methods.include?('set_at') && base.instance_methods.include?('[]=')
         base.send :alias_method, :set_at, :[]= 
@@ -46,6 +46,7 @@ module Slicr
           define_method slices_name do
             @slices ||= {}
             unless @slices[slices_name]
+              # TODO Make slices a caching array -- i.e. lazy evaluation of .[], cache results
               slices = []
               self.each do |w|
                 # TODO Is this handling of nils okay?

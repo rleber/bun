@@ -6,7 +6,6 @@ class Class
     expected_arguments = blk.arity < 0 ? nil : blk.arity
     singleton_class.instance_eval do
       define_method(name) do |*args|
-        # puts "In #{class_name}.#{name}(#{args.map{|a| a.inspect}.join(',')})" if $trace
         # TODO Encapsulate parameter checking in a method, and use it everywhere: e.g. check_args(actual_arg_count, expected_arg_count)
         raise ArgumentError, "Incorrect number of arguments in #{class_name}.#{name}: #{args.size} for #{expected_arguments}" unless [nil, args.size].include?(expected_arguments)
         yield(*args)

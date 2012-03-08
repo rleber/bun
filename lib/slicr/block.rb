@@ -132,14 +132,14 @@ module Slicr
       index_class(index, index_numeric(index)+1)
     end
 
-    def get_slice(n, slice_size, offset=0, gap=0, width=nil)
-      slice_size = index_numeric(slice_size)
-      width ||= self.width
-      offset = index_numeric(offset)
-      gap = index_numeric(gap)
-      width = index_numeric(width)
-      start = (n-1)*(slice_size + gap) + offset
-      finish = start+slice_size-1
+    def get_slice(n, options)
+      slice_width = index_numeric(options[:width])
+      offset = index_numeric(options[:offset] || 0)
+      gap = index_numeric(options[:gap])
+      # TODO Why is width necessary?
+      width = index_numeric(options[:block_width] || self.width)
+      start = (n-1)*(slice_width + gap) + offset
+      finish = start+slice_width-1
       puts "#{self.class}#slice: n=#{n}, start=#{start.inspect}, finish=#{finish.inspect}"
       get_bits(start, finish)
     end

@@ -83,6 +83,11 @@ module Slicr
       def sign?
         @sign != :none
       end
+      
+      # TODO enable caching
+      def cache?
+        false
+      end
     
       def base_data_class
         if string?
@@ -110,9 +115,13 @@ module Slicr
       end
       
       def retrieve(from_object, index)
-        # puts "#{slice_class} retrieve(#{from_object.class}, #{index.inspect}): width=#{width.inspect}, offset=#{offset.inspect}, gap=#{gap.inspect}"
-        value = from_object.get_slice(index, width, offset, gap) & mask
-        slice_class.new(value)
+        obj = cache? && from_object.get_cache(name, index)
+        unless obj
+          value = from_object.get_slice(index, :width=>width, :offset=>offset, :gap=>gap) & mask
+          obj = slice_class.new(value)
+          from_object.store_cache(name, index, obj) if cache?
+        end
+        obj
       end
     end
   end

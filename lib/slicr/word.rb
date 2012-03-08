@@ -33,8 +33,11 @@ module Slicr
       end
     end
 
-    def get_slice(n, slice_width, offset=0, gap=0, width=nil)
-      width ||= self.class.width
+    def get_slice(n, options)
+      slice_width = options[:width]
+      offset = options[:offset] || 0
+      gap = options[:gap] || 0
+      width = self.class.width
       super(n, slice_width, offset, gap, width)
     end
     

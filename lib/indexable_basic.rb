@@ -52,6 +52,7 @@ module Indexable
     
     def self.included(base)
       base.send(:alias_method, :slice, :[])
+      base.send(:attr_accessor, :index_array_class)
     end
     
     # Convert an index (which might be negative) to a positive one
@@ -181,7 +182,13 @@ module Indexable
         return []
       end
       res = (@index_range[:start]..@index_range[:end]).map {|i| at(i) }
-      res = res.first if @index_range[:result] == :scalar
+      if @index_range[:result] == :scalar
+        res = res.first 
+      else
+        warn "In Indexable::Basic#[]: self.class=#{self.class}"
+        klass = self.index_array_class || self.class
+        res = klass.new(res)
+      end
       res
     end
     
