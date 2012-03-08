@@ -1,7 +1,9 @@
+require 'gecos/word'
+
 class GECOS
   class Decoder
-    attr_reader :raw, :errors
-    attr_accessor :keep_deletes
+    attr_reader :errors
+    attr_accessor :keep_deletes, :words
     
     EOF_MARKER = 0x00000f000 # Octal 000000170000 or 0b000000000000000000001111000000000000
     CHARACTERS_PER_WORD = 4
@@ -10,6 +12,7 @@ class GECOS
     SPECIFICATION_POSITION = 11 # words
     UNPACK_OFFSET = 1
     
+    # TODO Would be helpful if there was a Slicr::Words#characters.count
     def zstring(offset)
       start = offset
       ch = characters
@@ -27,6 +30,7 @@ class GECOS
     end
     
     # Convert two's complement encoded word to signed value
+    # TODO Refactor this using Slicr Integer
     def self.make_signed(word)
       if word & 0x800000000 > 0
         # Negative number
@@ -139,114 +143,29 @@ class GECOS
     end
     
     # TODO do we ever instantiate a Decoder without reading a file? If not, refactor
-    def initialize(raw, options={})
-      self.raw = raw
+    def initialize(options={})
+      if options[:file]
+        @words = GECOS::Words.read(options[:file])
+      elsif options[:data]
+        @words = GECOS::Words.import(options[:data])
+      else
+        @words = GECOS::Words[]
+      end
       @keep_deletes = options[:keep_deletes]
     end
     
-    def raw=(raw)
-      clear
-      @raw = raw
-    end
-    
     def clear
-      @raw = nil
-      @hex = nil
       @words = nil
-      @bytes = nil
-      @octal = nil
-      @character = nil
-      @frozen_characters = nil
-    end
-    
-    # Raw data from file in hex; cached
-    def hex
-      @hex ||= _hex
-    end
-    
-    # Raw data from file in hex
-    def _hex
-      raw.unpack('H*').first
-    end
-    private :_hex
-    
-    # Raw data from file in octal; cached
-    def octal
-      @octal ||= _octal
+      @characters = nil
     end
     
     def word_count
       [(words[0] & 0777777)+1, words.size].min
     end
     
-    # Raw data from file in octal
-    def _octal
-      raw.unpack('B*').first.scan(/.../).map{|o| '%o'%eval('0b'+o)}.join
-    end
-    private :_octal
-    
-    def hex=(hex)
-      self.raw = [hex].pack('H*')
-    end
-    
-    # Raw data from file in 36-bit words (cached)
-    def words
-      @words ||= _words
-    end
-    
-    def words=(words)
-      self.hex = words.map{|w| '%09x' % w }.join
-    end
-    
-    # Raw data from file in 36-bit words
-    def _words
-      hex.scan(/.{9}/).map{|w| w.hex}
-    end
-    private :_words
-    
-    def bytes
-      @bytes ||= _bytes
-    end
-    
-    def _bytes
-      words.map do |w|
-        chars = []
-        4.times do |i|
-          chars.unshift( w & 0x1ff )
-          w = w >> 9
-        end
-        chars
-      end.flatten
-    end
-    private :_bytes
-    
     def characters
-      @characters ||= _characters
+      @characters ||= words.characters.join
     end
-    
-    def _characters
-      bytes.map do |b|
-        ch = b > 255 ? "\000" : b.chr
-        ch
-      end.join
-    end
-    private :_characters
-    
-    def frozen_characters
-      @frozen_characters ||= _frozen_characters
-    end
-    
-    def _frozen_characters
-      words.map do |w|
-        chars = []
-        5.times do |i|
-          chars.unshift( (w & 0x7f).chr )
-          w = w >> 7
-        end
-        chars.join
-      end.join
-    end
-    private :_frozen_characters
     
     def content
       @content ||= _content
@@ -285,6 +204,7 @@ class GECOS
     end
     
     BLOCK_SIZE = 0500
+    # TODO Refactor to understand blocks
     def unpack_line(words, line_offset)
       # puts "  unpack at #{'%06o' % line_offset}"
       line = ""

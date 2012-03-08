@@ -1,4 +1,6 @@
 module Slicr
+  # TODO Rename this something consistent with Layer
+  # TODO Rename constituent class something consistent with Layer/Slices/Words
   module Container
     module ClassMethods
       def contains(klass)

@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 def decode(file)
   archive = GECOS::Archive.new
   expanded_file = File.join("data", "test", file)
-  decoder = GECOS::Decoder.new(File.read(expanded_file))
+  decoder = GECOS::Decoder.new(:data=>File.read(expanded_file))
   decoder.content.split("\n")
 end
 

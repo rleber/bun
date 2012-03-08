@@ -155,7 +155,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         friz = frozen ? 'Archive' : 'Normal'
         file_info << {'tape'=>display_name, 'type'=>friz, 'file'=>file_name}
         if frozen && options[:frozen]
-          defroster = Defroster.new(Decoder.new(File.read(tape_path)))
+          defroster = Defroster.new(Decoder.new(:data=>File.read(tape_path)))
           defroster.file_paths.each do |path|
             file_info << {'tape'=>display_name, 'type'=>'Frozen', 'file'=>path, 'archive'=>file_name}
           end
@@ -209,7 +209,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       ix.each do |tape_name|
         extended_file_name = archive.expanded_tape_path(tape_name)
         frozen = Archive.frozen?(extended_file_name)
-        decoder = Decoder.new(File.read(extended_file_name))
+        decoder = Decoder.new(:data=>File.read(extended_file_name))
         file_path = decoder.file_path
         if frozen
           defroster = Defroster.new(decoder)

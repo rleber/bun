@@ -659,18 +659,6 @@ describe Slicr::WordsBase do
   end
   
   it_behaves_like "slicr is indexed", $words, [1,2,3]
-  # 
-  # it "should allow inclusive index ranges" do
-  #   $words[1..2].should == [2,3]
-  # end
-  # 
-  # it "should allow exclusive index ranges" do
-  #   $words[1...-1].should == [2]
-  # end
-  # 
-  # it "should allow indexing by pairs" do
-  #   $words[1,2].should == [2,3]
-  # end
   
   it "should allow assignment" do
     words = $words.dup
