@@ -3,6 +3,7 @@ module Slicr
   module Cacheable
     def cache
       @cache ||= {}
+      @cache
     end
     
     def clear_cache

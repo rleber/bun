@@ -359,7 +359,7 @@ describe "instance" do
         StrangeWord.too_long.count.should == 0
       end
     end
-
+    
     STRING_SLICES.each do |slice_name|
       slice = $bytes.send(slice_name) rescue nil
       slices_name = slice_name.pluralize
@@ -675,7 +675,6 @@ describe Slicr::WordsBase do
   it "should allow indexed accessors" do
     $words[1,2].half_words.should == [0,2,0,3]
   end
-
 end
 # TODO Write tests for Blocks
 # $double_word = GECOS::Block[1,2]

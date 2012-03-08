@@ -86,8 +86,8 @@ module Slicr
         @sign != :none
       end
       
-      def cache?
-        @cache
+      def cached?
+        @cached
       end
     
       def base_data_class
@@ -116,11 +116,11 @@ module Slicr
       end
       
       def retrieve(from_object, index)
-        obj = cache? && from_object.get_cache(name, index)
+        obj = cached? && from_object.get_cache(name, index)
         unless obj
           value = from_object.get_slice(index, :width=>width, :offset=>offset, :gap=>gap) & mask
           obj = slice_class.new(value)
-          from_object.store_cache(name, index, obj) if cache?
+          from_object.store_cache(name, index, obj) if cached?
         end
         obj
       end
