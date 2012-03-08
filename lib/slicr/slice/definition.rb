@@ -5,6 +5,7 @@ module Slicr
     class Definition
 
       attr_accessor :bits
+      attr_accessor :cached
       attr_accessor :count
       attr_accessor :class_name
       attr_accessor :slice_class
@@ -43,6 +44,7 @@ module Slicr
         self.options.merge!(opts)
 
         @is_string = !!options[:string]
+        @cached = !!options[:cached]
         @sign = options[:sign] || :none
         @slice_class = make_class
         @width = options[:width]
@@ -84,9 +86,8 @@ module Slicr
         @sign != :none
       end
       
-      # TODO enable caching
       def cache?
-        false
+        @cache
       end
     
       def base_data_class

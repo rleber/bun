@@ -2,5 +2,4 @@
 
 # TODO Define me
 class LazyArray < Array
-  puts "Defined #{self}"
 end
