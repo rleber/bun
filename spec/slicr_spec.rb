@@ -454,6 +454,8 @@ describe "instance" do
         $strings.characters.string.should == "ABCD"
       end
     end
+    
+    # TODO Test retrievals from cache
 
     NON_STRING_SLICES.each do |slice_name|
       slice = $bytes.send(slice_name) rescue nil
@@ -673,8 +675,8 @@ describe Slicr::WordsBase do
   it "should allow indexed accessors" do
     $words[1,2].half_words.should == [0,2,0,3]
   end
-end
 
+end
 # TODO Write tests for Blocks
 # $double_word = GECOS::Block[1,2]
 # show_value "$double_word"

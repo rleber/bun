@@ -1,3 +1,4 @@
+# TODO This has nothing to do with Slicr; move it outward (and eventually into a gem)
 module Slicr
   module Cacheable
     def cache

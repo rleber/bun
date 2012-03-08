@@ -51,7 +51,8 @@ module Indexable
   module Basic
     
     def self.included(base)
-      base.send(:alias_method, :slice, :[])
+      base.send(:alias_method, :slice, :[]) if base.instance_methods.include?(:[])
+      base.send(:alias_method, :[], :extended_slice)
       base.send(:attr_accessor, :index_array_class)
     end
     
@@ -173,7 +174,7 @@ module Indexable
     private :_adjust_result_type
   
     # Define generalized indexing in terms of at(i)
-    def [](*args)
+    def extended_slice(*args)
       @index_range = normalize_indexes(*args)
       case @index_range[:result]
       when :nil
@@ -185,7 +186,6 @@ module Indexable
       if @index_range[:result] == :scalar
         res = res.first 
       else
-        warn "In Indexable::Basic#[]: self.class=#{self.class}"
         klass = self.index_array_class || self.class
         res = klass.new(res)
       end
