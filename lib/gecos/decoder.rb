@@ -270,7 +270,6 @@ class GECOS
       n = 0
       while line_offset < word_count
         line = unpack_line(words, line_offset)
-        line[:status] = :ignore if n == 0
         case line[:status]
         when :eof     then break
         when :okay    then lines << line
