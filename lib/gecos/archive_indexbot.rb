@@ -46,7 +46,7 @@ class GECOS
             puts "No index entry for #{tape}" if inclusions.include?('missing') && !exclusions.include?('missing')
             next
           end
-          decoder = Decoder.new(File.read(tape_path))
+          decoder = Decoder.new(:data=>File.read(tape_path))
           if tape_spec[:file] != decoder.unexpanded_file_path && inclusions.include?('name') && !exclusions.include?('name')
             puts "#{tape}: File name in index (#{tape_spec[:file].inspect}) doesn't match contents of file (#{decoder.unexpanded_file_path.inspect})"
           end

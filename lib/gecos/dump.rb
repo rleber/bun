@@ -15,7 +15,7 @@ class GECOS
       end
       display_offset = (options[:display_offset] || offset) - offset
       stream = options[:to] || STDOUT
-      decoder = Decoder.new(nil)
+      decoder = Decoder.new
       decoder.words = words
       if options[:frozen]
         characters = decoder.frozen_characters

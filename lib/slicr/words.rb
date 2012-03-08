@@ -63,6 +63,39 @@ module Slicr
           end
         end
       end
+      
+      # Import a Ruby string (of 8-bit characters) into words
+      def import(content)
+        words = []
+        accumulator = 0
+        bits = 0
+        width = constituent_class.width
+        content.each_byte do |ch|
+          prev_accumulator = accumulator
+          accumulator <<= 8
+          accumulator |= ch
+          bits += 8
+          while bits >= width
+            words << (accumulator >> (bits - width))
+            accumulator &= (2**(bits-width)-1) # Mask off upper bits
+            bits -= width 
+          end
+        end
+        if bits > 0
+          words << (accumulator << (width - bits))
+        end
+        new(words)
+      end
+      
+      def read(file)
+        if file.is_a?(String)
+          close_when_done = true
+          file = File.open(file, 'rb')
+        end
+        import(file.read)
+      ensure
+        file.close if close_when_done
+      end
     end
     
     def slice_names

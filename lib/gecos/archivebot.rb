@@ -122,6 +122,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     option "files", :aliases=>"-f", :type=>'string', :default=>'.*', :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
     option "frozen", :aliases=>"-r", :type=>'boolean', :desc=>"Recursively include contents of freeze files"
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    option 'path', :aliases=>'-p', :type=>'boolean', :desc=>"Display paths for tape files"
     def ls
       abort "Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
       type_pattern = case options[:type].downcase
@@ -143,30 +144,31 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       ix = archive.tapes
       puts "Archive at #{directory}:"
       # TODO Refactor using Array#justify_rows
-      tape_name_width = ix.map{|entry| entry.first.size}.max
-      if options[:long]
-        puts "%-#{tape_name_width}s" % 'Tape' + '  Type    File'
-      else
-        puts "%-#{tape_name_width}s" % 'Tape' + '  File'
-      end
       # Retrieve file information
       # TODO Add archival dates to --long list
       file_info = []
       files = ix.each_with_index do |tape_name, i|
         file_name = archive.file_path(tape_name)
         tape_path = archive.expanded_tape_path(tape_name)
+        display_name = options[:path] ? tape_path : tape_name
         frozen = Archive.frozen?(tape_path)
         friz = frozen ? 'Archive' : 'Normal'
-        file_info << {'tape'=>tape_name, 'type'=>friz, 'file'=>file_name}
+        file_info << {'tape'=>display_name, 'type'=>friz, 'file'=>file_name}
         if frozen && options[:frozen]
-          defroster = Defroster.new(Decoder.new(File.read(tape_path)))
+          defroster = Defroster.new(Decoder.new(:data=>File.read(tape_path)))
           defroster.file_paths.each do |path|
-            file_info << {'tape'=>tape_name, 'type'=>'Frozen', 'file'=>path, 'archive'=>file_name}
+            file_info << {'tape'=>display_name, 'type'=>'Frozen', 'file'=>path, 'archive'=>file_name}
           end
         end
       end
       file_info = file_info.select{|file| file['type']=~type_pattern && file['tape']=~tape_pattern && file['file']=~file_pattern }
       sorted_info = file_info.sort_by{|fi| [fi[options[:sort]], fi['file'], fi['tape']]} # Sort it in order
+      tape_name_width = sorted_info.map{|entry| entry['tape'].size}.max
+      if options[:long]
+        puts "%-#{tape_name_width}s" % 'Tape' + '  Type    File'
+      else
+        puts "%-#{tape_name_width}s" % 'Tape' + '  File'
+      end
       # Display it
       # TODO Refactor using Array.justify_rows
       # TODO Add 
@@ -207,7 +209,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       ix.each do |tape_name|
         extended_file_name = archive.expanded_tape_path(tape_name)
         frozen = Archive.frozen?(extended_file_name)
-        decoder = Decoder.new(File.read(extended_file_name))
+        decoder = Decoder.new(:data=>File.read(extended_file_name))
         file_path = decoder.file_path
         if frozen
           defroster = Defroster.new(decoder)

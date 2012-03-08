@@ -24,7 +24,7 @@ class GECOS
     def dump(file)
       archive = Archive.new
       file = archive.expanded_tape_path(file)
-      decoder = GECOS::Decoder.new(File.read(file))
+      decoder = GECOS::Decoder.new(:data=>File.read(file))
       archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
       puts "Archive for file #{archived_file}:"
@@ -41,7 +41,7 @@ class GECOS
     def unpack(file, to=nil)
       archive = Archive.new
       expanded_file = archive.expanded_tape_path(file)
-      decoder = GECOS::Decoder.new(File.read(expanded_file))
+      decoder = GECOS::Decoder.new(:data=>File.read(expanded_file))
       decoder.keep_deletes = true if options[:delete]
       archived_file = archive.file_path(expanded_file)
       abort "Can't unpack #{file}. It contains a frozen file: #{archived_file}" if Archive.frozen?(expanded_file)
@@ -120,7 +120,7 @@ class GECOS
     def explore(file)
       archive = Archive.new
       expanded_file = archive.expanded_tape_path(file)
-      decoder = GECOS::Decoder.new(File.read(expanded_file))
+      decoder = GECOS::Decoder.new(:data=>File.read(expanded_file))
       decoder.keep_deletes = true
       archived_file = archive.file_path(expanded_file)
       abort "Can't unpack #{file}. It contains a frozen file: #{archived_file}" if Archive.frozen?(expanded_file)
@@ -153,7 +153,7 @@ class GECOS
     def describe(file)
       archive = Archive.new
       tape_path = archive.expanded_tape_path(file)
-      decoder = GECOS::Decoder.new(File.read(tape_path))
+      decoder = GECOS::Decoder.new(:data=>File.read(tape_path))
       archived_file = archive.file_path(tape_path)
       archive_name = decoder.file_archive_name
       subdirectory = decoder.file_subdirectory
