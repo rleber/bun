@@ -2,32 +2,32 @@
 
 require 'lib/indexable_basic'
 
-class LazyArray < Array
-  alias_method :index_before_lazy_array, :[]
-  alias_method :set_before_lazy_array, :[]=
+class LazyArray
 
   include Indexable::Basic
+  include Comparable
   
   attr_accessor :size
   
   def initialize(spec=0, obj=nil, &blk)
-    super()
     @size = 0
+    @values = Array.new
     if spec.is_a?(Array)
       spec.each {|v| self << v }
     elsif obj.nil?
       @size = spec
     else
-      size.times { self << obj }
+      spec.times { self << obj }
     end
     @value_block = blk
   end
   
   def at(index)
-    if v = self.index_before_lazy_array(index)
+    if v = @values[index]
       v.first
     elsif @value_block
-      self[index] = v = @value_block.call(index)
+      v = @value_block.call(index)
+      @values[index] = [v, true]
       v
     else
       nil
@@ -38,12 +38,13 @@ class LazyArray < Array
   # TODO Extended assignment indexing
   def []=(index, value)
     @size = index + 1 if index >= size
-    super(index, [value, true])
+    @values[index] = [value, true]
     value
   end
   
   def <<(value)
-    self[@size] = value
+    @values[@size] = [value, true]
+    @size += 1
     self
   end
   
@@ -60,5 +61,19 @@ class LazyArray < Array
   
   def last
     self[-1]
+  end
+  
+  def to_a
+    (0...@size).map {|i| self[i] }
+  end
+  
+  def <=>(other)
+    self.to_a <=> other.to_a
+  end
+  
+  def method_missing(meth, *args, &blk)
+    to_a.send(meth, *args, &blk)
+  rescue NoMethodError
+    raise NoMethodError, "#{self.class}##{name} method not defined"
   end
 end

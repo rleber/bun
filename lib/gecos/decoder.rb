@@ -12,16 +12,16 @@ class GECOS
     SPECIFICATION_POSITION = 11 # words
     UNPACK_OFFSET = 1
     
-    # TODO Would be helpful if there was a Slicr::Words#characters.count
     def zstring(offset)
       start = offset
       ch = characters
       loop do
         break if offset > ch.size
-        break if ch[offset,1] == "\0"
+        break if ch[offset] == "\0"
         offset += 1
       end
-      ch[start...offset]
+      res = ch[start...offset]
+      res
     end
     
     # Convert an eight-character GECOS date "mm/dd/yy" to a Ruby Date
@@ -164,7 +164,7 @@ class GECOS
     end
     
     def characters
-      @characters ||= words.characters.join
+      @characters ||= words.characters
     end
     
     def content

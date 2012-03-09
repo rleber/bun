@@ -115,4 +115,16 @@ describe LazyArray do
       $retrieval_counts[2].should == 1
     end
   end
+  
+  describe "to_a" do
+    it "should work" do
+      @ary.to_a.should == (0...SIZE).to_a
+    end
+  end
+  
+  describe "==" do
+    it "should compare to other arrays" do
+      @ary.should == (0...SIZE).to_a
+    end
+  end
 end

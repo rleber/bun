@@ -669,11 +669,11 @@ describe Slicr::WordsBase do
   end
   
   it "should allow accessors" do
-    $words.bytes.should == [0,0,0,1,0,0,0,2,0,0,0,3]
+    $words.bytes.to_a.should == [0,0,0,1,0,0,0,2,0,0,0,3]
   end
   
   it "should allow indexed accessors" do
-    $words[1,2].half_words.should == [0,2,0,3]
+    $words[1,2].half_words.to_a.should == [0,2,0,3]
   end
 end
 # TODO Write tests for Blocks

@@ -1,3 +1,5 @@
+require 'lazy_array'
+
 module Slicr
   
   def self.Words(constituent_class)
@@ -43,16 +45,15 @@ module Slicr
           raise NameError, "#{subclass.name} does not contain a slice #{slice_name}" unless slice_definition
           add_slice slice_name
           slices_name = slice_definition.plural
+          slice_count = constituent_class.send(slice_name).count
 
           define_method slices_name do
             @slices ||= {}
             unless @slices[slices_name]
-              # TODO Make slices a caching array -- i.e. lazy evaluation of .[], cache results
-              slices = []
-              self.each do |w|
-                # TODO Is this handling of nils okay?
-                slices += w.send(slices_name) unless w.nil?
+              slices = LazyArray.new do |index|
+                self.send(slice_name, index)
               end
+              slices.size = self.size * slice_count
               @slices[slices_name] = slices
             end
             @slices[slices_name]
@@ -60,7 +61,9 @@ module Slicr
 
           define_method slice_name do |n|
             raise ArgumentError, "Wrong number of arguments for #{self.class}##{slice_name}() (0 of 1)" if n.nil?
-            send(slices_name)[n]
+            word, slice = n.divmod(slice_count)
+            return nil if word >= self.size
+            self[word].send(slice_name, slice)
           end
         end
       end
