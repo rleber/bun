@@ -20,6 +20,7 @@ class GECOS
     option "frozen", :aliases=>'-f', :type=>'boolean', :desc=>'Display characters in frozen format (i.e. 5 per word)'
     option "escape", :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
     option "offset", :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lines'
+    option "unlimited", :aliases=>'-u', :type=>'boolean', :desc=>'Ignore the file size limit'
     desc "dump FILE", "Dump a Honeywell file"
     def dump(file)
       archive = Archive.new

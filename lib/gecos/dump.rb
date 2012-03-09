@@ -13,12 +13,11 @@ class GECOS
       else 
         limit = words.size - 1
       end
-      # puts '%o' % limit
-      # exit
       display_offset = (options[:display_offset] || offset) - offset
       stream = options[:to] || STDOUT
       decoder = Decoder.new
       decoder.words = words
+      limit = decoder.word_count-1 unless options[:unlimited]
       if options[:frozen]
         characters = decoder.packed_characters
         character_block_size = FROZEN_CHARACTERS_PER_WORD
@@ -33,7 +32,7 @@ class GECOS
         break if i > limit
         j = [i+WORDS_PER_LINE-1, limit].min
         chunk = ((words[i..j].map{|w| '%012o'%w }) + ([' '*12] * WORDS_PER_LINE))[0,WORDS_PER_LINE]
-        chars = characters[i*character_block_size, WORDS_PER_LINE*character_block_size].join
+        chars = characters[i*character_block_size, (j-i+1)*character_block_size].join
         chars = (chars + ' '*(WORDS_PER_LINE*character_block_size))[0,WORDS_PER_LINE*character_block_size]
         if options[:escape]
           chars = chars.inspect[1..-2].scan(/\\\d{3}|\\[^\d\\]|\\\\|[^\\]/).map{|s| (s+'   ')[0,4]}.join
