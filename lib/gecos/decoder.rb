@@ -189,9 +189,10 @@ class GECOS
       block_number = 1
       loop do
         break if offset >= word_count
+        break if words[offset] == 0
         block_size = words[offset].byte[-1]
         # puts "Block #{block_number} at #{'%012o' % offset}: size #{block_size}"
-        raise "Bad block number" unless words[offset].half_word[0] == block_number
+        raise "Bad block number at #{'%o' % offset}: expected #{'%06o' % block_number}; got #{words[offset].half_word[0]}" unless words[offset].half_word[0] == block_number
         deblocked_words += words[offset+1..(offset+block_size)]
         offset += 0500
         block_number += 1
