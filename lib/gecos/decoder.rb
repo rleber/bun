@@ -70,7 +70,6 @@ class GECOS
     
     DESCRIPTION_PATTERN = /\s+(.*)/
     def file_subpath
-      warn "file_subpath: file_specification=#{file_specification.inspect}"
       file_specification.sub(DESCRIPTION_PATTERN,'').sub(/^\//,'')
     end
     
