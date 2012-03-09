@@ -183,6 +183,7 @@ class GECOS
       @lines ||= unpack
     end
     
+    # TODO Build a capability in Slicr to do things like this
     def deblock
       deblocked_words = []
       offset = file_content_start
