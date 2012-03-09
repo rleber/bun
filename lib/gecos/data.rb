@@ -224,7 +224,7 @@ class GECOS
       @bytes = nil
       @octal = nil
       @character = nil
-      @frozen_characters = nil
+      @packed_characters = nil
     end
     
     # Raw data from file in hex; cached
@@ -300,11 +300,11 @@ class GECOS
     end
     private :_characters
     
-    def frozen_characters
-      @frozen_characters ||= _frozen_characters
+    def packed_characters
+      @packed_characters ||= _packed_characters
     end
     
-    def _frozen_characters
+    def _packed_characters
       words.map do |w|
         chars = []
         5.times do |i|
@@ -314,7 +314,7 @@ class GECOS
         chars.join
       end.join
     end
-    private :_frozen_characters
+    private :_packed_characters
     
     def content
       @content ||= _content

@@ -20,7 +20,7 @@ class GECOS
       decoder = Decoder.new
       decoder.words = words
       if options[:frozen]
-        characters = decoder.frozen_characters
+        characters = decoder.packed_characters
         character_block_size = FROZEN_CHARACTERS_PER_WORD
       else
         characters = decoder.characters

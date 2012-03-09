@@ -166,6 +166,10 @@ class GECOS
       @characters ||= words.characters
     end
     
+    def packed_characters
+      @packed_characters ||= words.packed_characters
+    end
+    
     def content
       @content ||= _content
     end
