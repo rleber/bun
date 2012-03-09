@@ -20,8 +20,7 @@ class GECOS
         break if ch[offset] == "\0"
         offset += 1
       end
-      res = ch[start...offset]
-      res
+      ch[start...offset].join
     end
     
     # Convert an eight-character GECOS date "mm/dd/yy" to a Ruby Date
@@ -71,6 +70,7 @@ class GECOS
     
     DESCRIPTION_PATTERN = /\s+(.*)/
     def file_subpath
+      warn "file_subpath: file_specification=#{file_specification.inspect}"
       file_specification.sub(DESCRIPTION_PATTERN,'').sub(/^\//,'')
     end
     
