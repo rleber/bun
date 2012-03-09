@@ -183,17 +183,32 @@ class GECOS
       @lines ||= unpack
     end
     
+    def deblock
+      deblocked_words = []
+      offset = file_content_start
+      block_number = 1
+      loop do
+        break if offset >= word_count
+        block_size = words[offset].byte[-1]
+        # puts "Block #{block_number} at #{'%012o' % offset}: size #{block_size}"
+        raise "Bad block number" unless words[offset].half_word[0] == block_number
+        deblocked_words += words[offset+1..(offset+block_size)]
+        offset += 0500
+        block_number += 1
+      end
+      GECOS::Words.new(deblocked_words)
+    end
+    
     def unpack
-      puts "size=#{words[0].half_word[1].inspect}"
-      exit
-      # line_offset = file_content_start + UNPACK_OFFSET
-      line_offset = file_content_start + 22
+      words = deblock
+      line_offset = 0
       lines = []
       warned = false
       errors = 0
       n = 0
-      while line_offset < word_count
+      while line_offset < words.size
         line = unpack_line(words, line_offset)
+        line[:status] = :ignore if n==0
         case line[:status]
         when :eof     then break
         when :okay    then lines << line
@@ -209,64 +224,67 @@ class GECOS
     end
     
     BLOCK_SIZE = 0500
-    # TODO Refactor to understand blocks
+    # TODO simplify
     def unpack_line(words, line_offset)
       # puts "  unpack at #{'%06o' % line_offset}"
       line = ""
       raw_line = ""
       okay = true
       descriptor = words[line_offset]
-      if descriptor == 0
-        current_block = (line_offset - file_content_start).div(BLOCK_SIZE)
-        first_word_in_next_block = (current_block + 1)*BLOCK_SIZE + file_content_start + UNPACK_OFFSET - 1
-        # puts "  skip to block #{current_block + 1} at #{'%06o' % first_word_in_next_block}"
-        return {:status=>:ignore, :start=>line_offset, :finish=>first_word_in_next_block, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
-      end
+      # if descriptor == 0
+      #   current_block = (line_offset - file_content_start).div(BLOCK_SIZE)
+      #   first_word_in_next_block = (current_block + 1)*BLOCK_SIZE + file_content_start + UNPACK_OFFSET - 1
+      #   # puts "  skip to block #{current_block + 1} at #{'%06o' % first_word_in_next_block}"
+      #   return {:status=>:ignore, :start=>line_offset, :finish=>first_word_in_next_block, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
+      # end
       if descriptor == EOF_MARKER
         return {:status=>:eof, :start=>line_offset, :finish=>word_count, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
       elsif (descriptor >> 27) & 0777 == 0177
         # puts "  deleted (descriptor[0] == 0177)"
+        raise "Deleted"
         deleted = true
         line_length = word_count
       elsif (descriptor >> 27) & 0777 == 0
         # if descriptor & 0777 == 0600
-          # puts "  normal (descriptor[0] == 0 && descriptor[3] == 0600): line_length = #{line_length}"
           line_length = line_length(descriptor)
+          # puts "  normal (descriptor[0] == 0 && descriptor[3] == 0600): line_length = #{line_length}"
         # else
         #   raise "Unexpected line descriptor (byte 3). Descriptor=#{'%012o' % descriptor} at #{'%06o' % line_offset}" unless descriptor & 0777 == 0
         #   return {:status=>:delete, :start=>line_offset, :finish=>line_offset+1, :content=>line, :raw=>raw_line, :words=>words[line_offset, 2], :descriptor=>descriptor}
         # end
       else # Sometimes, there is ASCII in the descriptor word; In that case, capture it, and look for terminating "\177"
         # puts "  indeterminate ASCII"
+        raise "ASCII in descriptor"
         line_length = word_count
         chs = extract_characters(descriptor)
         line += chs
         raw_line += chs
       end
       offset = line_offset+1
-      loop do
-        word = words[offset]
-        break if !word || word == EOF_MARKER
-        chs = extract_characters(word)
-        # puts "  at #{'%06o' % offset}: descriptor=#{'%012o' % descriptor}, line_length=#{'%06o' % line_length}, word=#{'%012o' % word}, chs=#{chs.inspect}"
-        raw_line += chs
-        clipped_chs = chs.sub(/#{INVALID_CHARACTER_REGEXP}.*/,'') # Remove control characters and all following letters
-        line += clipped_chs
-        break if (offset-line_offset) >= line_length
-        break if chs =~ /\177+$/
-        if clipped_chs != chs || clipped_chs.size==0 || !good_characters?(chs)
-          okay = false
-          break
-        end
-        offset += 1
-      end
+      line = words[offset,line_length].characters.join.sub(/\177+$/,'')
+      # loop do
+      #   word = words[offset]
+      #   break if !word || word == EOF_MARKER
+      #   chs = extract_characters(word)
+      #   # puts "  at #{'%06o' % offset}: descriptor=#{'%012o' % descriptor}, line_length=#{'%06o' % line_length}, word=#{'%012o' % word}, chs=#{chs.inspect}"
+      #   raw_line += chs
+      #   clipped_chs = chs.sub(/#{INVALID_CHARACTER_REGEXP}.*/,'') # Remove control characters and all following letters
+      #   line += clipped_chs
+      #   break if (offset-line_offset) >= line_length
+      #   break if chs =~ /\177+$/
+      #   if clipped_chs != chs || clipped_chs.size==0 || !good_characters?(chs)
+      #     okay = false
+      #     break
+      #   end
+      #   offset += 1
+      # end
       # puts "  emit"
        line += "\n"
-      {:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>offset, :content=>line, :raw=>raw_line, :words=>words[line_offset..offset], :descriptor=>descriptor}
+      {:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>line_offset+line_length, :content=>line, :raw=>raw_line, :words=>words[line_offset+line_length], :descriptor=>descriptor}
     end
     
     def line_length(word)
-      (word & 0777777000000) >> 18
+      word.half_word[0]
     end
     
     def line_flags(word)

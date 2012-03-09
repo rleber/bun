@@ -17,6 +17,8 @@ def scrub(lines, options={})
   tempfile = Tempfile.new('gecos1')
   tempfile2 = Tempfile.new('gecos2')
   tempfile.write(lines.join("\n"))
+  tempfile.close
+  tempfile2.close
   system("cat #{tempfile.path.inspect} | ruby -p -e '$_.gsub!(/_\\x8/,\"\")' | expand -t #{tabs} >#{tempfile2.path.inspect}")
   File.read(tempfile2.path).split("\n")
 end
