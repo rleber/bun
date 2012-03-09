@@ -31,7 +31,7 @@ class GECOS
         break if i > limit
         j = [i+WORDS_PER_LINE-1, limit].min
         chunk = ((words[i..j].map{|w| '%012o'%w }) + ([' '*12] * WORDS_PER_LINE))[0,WORDS_PER_LINE]
-        chars = characters[i*character_block_size, WORDS_PER_LINE*character_block_size]
+        chars = characters[i*character_block_size, WORDS_PER_LINE*character_block_size].join
         chars = (chars + ' '*(WORDS_PER_LINE*character_block_size))[0,WORDS_PER_LINE*character_block_size]
         if options[:escape]
           chars = chars.inspect[1..-2].scan(/\\\d{3}|\\[^\d\\]|\\\\|[^\\]/).map{|s| (s+'   ')[0,4]}.join
