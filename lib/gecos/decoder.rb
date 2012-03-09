@@ -159,7 +159,7 @@ class GECOS
     end
     
     def word_count
-      [(words[0] & 0777777)+1, words.size].min
+      [(words[0].half_word[1])+1, words.size].min
     end
     
     def characters
@@ -180,6 +180,8 @@ class GECOS
     end
     
     def unpack
+      puts "size=#{words[0].half_word[1].inspect}"
+      exit
       # line_offset = file_content_start + UNPACK_OFFSET
       line_offset = file_content_start + 22
       lines = []

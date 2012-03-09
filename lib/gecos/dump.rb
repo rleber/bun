@@ -13,6 +13,8 @@ class GECOS
       else 
         limit = words.size - 1
       end
+      # puts '%o' % limit
+      # exit
       display_offset = (options[:display_offset] || offset) - offset
       stream = options[:to] || STDOUT
       decoder = Decoder.new

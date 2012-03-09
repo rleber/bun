@@ -38,7 +38,7 @@ class GECOS
     end
     
     def _characters
-      decoder.characters[(offset*Decoder.characters_per_word)..-1]
+      decoder.characters[(offset*Decoder.characters_per_word)..-1].join
     end
     private :_characters
       

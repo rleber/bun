@@ -34,7 +34,7 @@ class GECOS
       end
       
       def characters(start, length)
-        @decoder.characters[offset*Decoder.characters_per_word + start, length]
+        @decoder.characters[offset*Decoder.characters_per_word + start, length].join
       end
       
       def words(start, length)
