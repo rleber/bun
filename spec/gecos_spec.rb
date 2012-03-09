@@ -27,12 +27,17 @@ def decode_and_scrub(file, options={})
   scrub(decode(file), options)
 end
 
-describe GECOS::Decoder do
-  it "decodes a simple file (ar119.1801)" do
-    infile = 'ar119.1801'
+shared_examples "simple" do |file|
+  it "decodes a simple file (#{file})" do
+    infile = file
     outfile = File.join("output", "test", infile)
     decode(infile).should == readfile(outfile)
   end
+end  
+
+describe GECOS::Decoder do
+  include_examples "simple", "ar119.1801"
+  include_examples "simple", "ar003.0698"
   
   it "decodes a more complex file (ar004.0642)" do
     infile = 'ar004.0642'
