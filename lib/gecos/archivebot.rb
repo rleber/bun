@@ -4,7 +4,6 @@ require 'fileutils'
 require 'gecos/archive'
 require 'gecos/shell'
 require 'gecos/archive_indexbot'
-require 'pp'
 
 class GECOS
   class ArchiveBot < Thor
@@ -104,96 +103,6 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       _fetch(url, archive_location)
     end
     
-    no_tasks do
-      def get_regexp(pattern)
-        Regexp.new(pattern)
-      rescue
-        nil
-      end
-    end
-    
-    SORT_VALUES = %w{tape file type}
-    TYPE_VALUES = %w{all frozen normal}
-    desc "ls", "Display an index of archived files"
-    option "long", :aliases=>"-l", :type=>'boolean', :desc=>"Display long format (incl. normal vs. frozen)"
-    option "sort", :aliases=>"-s", :type=>'string', :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
-    option "type", :aliases=>"-T", :type=>'string', :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
-    option "tapes", :aliases=>"-t", :type=>'string', :default=>'.*', :desc=>"Show only tapes that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
-    option "files", :aliases=>"-f", :type=>'string', :default=>'.*', :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
-    option "frozen", :aliases=>"-r", :type=>'boolean', :desc=>"Recursively include contents of freeze files"
-    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-    option 'path', :aliases=>'-p', :type=>'boolean', :desc=>"Display paths for tape files"
-    def ls
-      abort "Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
-      type_pattern = case options[:type].downcase
-        when 'f', 'frozen'
-          /^(frozen|archive)$/i
-        when 'n', 'normal'
-          /^normal$/i
-        when '*','a','all'
-          //
-        else
-          abort "Unknown --type setting. Should be one of #{TYPE_VALUES.join(', ')}"
-        end
-      file_pattern = get_regexp(options[:files])
-      abort "Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
-      tape_pattern = get_regexp(options[:tapes])
-      abort "Invalid --tapes pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless tape_pattern
-      directory = options[:archive] || Archive.location
-      archive = Archive.new(directory)
-      ix = archive.tapes
-      puts "Archive at #{directory}:"
-      # TODO Refactor using Array#justify_rows
-      # Retrieve file information
-      # TODO Add archival dates to --long list
-      file_info = []
-      files = ix.each_with_index do |tape_name, i|
-        file_name = archive.file_path(tape_name)
-        tape_path = archive.expanded_tape_path(tape_name)
-        display_name = options[:path] ? tape_path : tape_name
-        frozen = Archive.frozen?(tape_path)
-        friz = frozen ? 'Archive' : 'Normal'
-        file_info << {'tape'=>display_name, 'type'=>friz, 'file'=>file_name}
-        if frozen && options[:frozen]
-          defroster = Defroster.new(Decoder.new(:data=>File.read(tape_path)))
-          defroster.file_paths.each do |path|
-            file_info << {'tape'=>display_name, 'type'=>'Frozen', 'file'=>path, 'archive'=>file_name}
-          end
-        end
-      end
-      file_info = file_info.select{|file| file['type']=~type_pattern && file['tape']=~tape_pattern && file['file']=~file_pattern }
-      sorted_info = file_info.sort_by{|fi| [fi[options[:sort]], fi['file'], fi['tape']]} # Sort it in order
-      tape_name_width = sorted_info.map{|entry| entry['tape'].size}.max
-      if options[:long]
-        puts "%-#{tape_name_width}s" % 'Tape' + '  Type    File'
-      else
-        puts "%-#{tape_name_width}s" % 'Tape' + '  File'
-      end
-      # Display it
-      # TODO Refactor using Array.justify_rows
-      # TODO Add 
-      sorted_info.each do |entry|
-        typ = options[:long] ? '%-9s'% entry['type'] : ""
-        puts %Q{#{"%-#{tape_name_width}s" % entry['tape']}  #{typ}#{'%-s' % entry['file']}}
-      end
-    end
-    
-    # TODO Is there a lot of preamble code to these methods that could be refactored away?
-    desc "files [PATTERN]", "List tapes containing file paths matching a specified pattern"
-    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-    long_desc "PATTERN may be any Ruby regular expression (without the delimiting '/'s)"
-    def files(pattern=//)
-      directory = options[:archive] || Archive.location
-      archive = Archive.new(directory)
-      pattern = get_regexp(pattern)
-      ix = archive.contents.select{|c| c[:path] =~ pattern }
-      # TODO Refactor using Array#justify_rows
-      tape_and_file_width = ix.map{|item| item[:tape_and_file].size}.max
-      ix.each do |item|
-        puts %Q{#{"%-#{tape_and_file_width}s" % item[:tape_and_file]}  #{item[:path]}}
-      end
-    end
-    
     desc "extract [TO]", "Extract all the files in the archive"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
@@ -209,7 +118,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       ix.each do |tape_name|
         extended_file_name = archive.expanded_tape_path(tape_name)
         frozen = Archive.frozen?(extended_file_name)
-        decoder = Decoder.new(:data=>File.read(extended_file_name))
+        decoder = Decoder.new(:file=>extended_file_name)
         file_path = decoder.file_path
         if frozen
           defroster = Defroster.new(decoder)

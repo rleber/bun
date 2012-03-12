@@ -121,14 +121,14 @@ class GECOS
       tapes.each do |tape_name|
         extended_file_name = expanded_tape_path(tape_name)
         if frozen?(extended_file_name)
-          decoder = Decoder.new(:data=>File.read(extended_file_name))
+          decoder = Decoder.new(:file=>extended_file_name)
           defroster = Defroster.new(decoder)
           defroster.file_paths.each_with_index do |path, i|
             file = defroster.file_name(i)
             contents << {:tape=>tape_name, :file=>file, :tape_and_file=>"#{tape_name}:#{file}", :path=>path}
           end
         else
-          decoder = Decoder.new(:data=>File.read(extended_file_name))
+          decoder = Decoder.new(:file=>extended_file_name)
           path = decoder.file_path
           contents << {:tape=>tape_name, :tape_and_file=>tape_name, :path=>path}
         end

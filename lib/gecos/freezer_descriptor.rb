@@ -70,7 +70,7 @@ class GECOS
       end
       
       def file_blocks
-        word(6)
+        word(6).value
       end
       
       def self.block_size
@@ -82,11 +82,11 @@ class GECOS
       end
       
       def file_start
-        word(7)
+        word(7).value
       end
       
       def file_words
-        word(8)
+        word(8).value
       end
       
       def valid?

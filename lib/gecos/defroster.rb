@@ -218,7 +218,7 @@ class GECOS
           end
         end
         chs = extract_characters(word, ch_count)
-        line += chs.sub(/#{Decoder.invalid_control_character_regexp}.*/,'') # Remove invalid control characters and all following letters
+        line += chs.sub(/#{Decoder.invalid_character_regexp}.*/,'') # Remove invalid control characters and all following letters
         break if chs=~/\r/
         if !good_characters?(chs) || line.size >= line_length
           okay = false

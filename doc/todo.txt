@@ -21,6 +21,8 @@ LAYERS YET TO BE DEFINED
 - Multiword layers: e.g. layers with a slice size a fixed integral multiple of the slices in the supporting layer
 
 TODO
+Archive.new(location)
+GECOS::File.open(name) (or archive.open(name) ?)
 Refactor Slicr based on the concept of layers, etc.
 Refactor file decoding based on Slicr module
 Are data and file_system classes necessary?

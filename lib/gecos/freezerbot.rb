@@ -4,6 +4,8 @@ require 'gecos/shell'
 class GECOS
 
   class FreezerBot < Thor
+    
+    # TODO Consider combining this with bot.rb
 
     TIMESTAMP_FORMAT = "%m/%d/%Y %H:%M:%S"
 
@@ -15,15 +17,15 @@ class GECOS
       end
     end
 
-    DEFAULT_WIDTH = 120
+    DEFAULT_WIDTH = 120 # TODO Read the window size for this
     SORT_VALUES = %w{order name size update}
-    option "long", :aliases=>'-l', :type=>'boolean', :desc=>"Display listing in long format"
-    option "one", :aliases=>'-1', :type=>'boolean', :desc=>"Display one file per line (implied by --long or --descr)"
-    option "descr", :aliases=>'-d', :type=>'boolean', :desc=>"Display the file descriptor for each file (in octal)"
-    option "width", :aliases=>'-w', :type=>'numeric', :default=>DEFAULT_WIDTH, :desc=>"Width of display (for short format only)"
-    option "sort", :aliases=>"-s", :type=>'string', :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
-    option "files", :aliases=>"-f", :type=>'string', :default=>'.*', :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
     desc "ls ARCHIVE", "List contents of a frozen Honeywell file"
+    option "descr", :aliases=>'-d', :type=>'boolean',                              :desc=>"Display the file descriptor for each file (in octal)"
+    option "files", :aliases=>"-f", :type=>'string',  :default=>'.*',              :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
+    option "long",  :aliases=>'-l', :type=>'boolean',                              :desc=>"Display listing in long format"
+    option "one",   :aliases=>'-1', :type=>'boolean',                              :desc=>"Display one file per line (implied by --long or --descr)"
+    option "sort",  :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
+    option "width", :aliases=>'-w', :type=>'numeric', :default=>DEFAULT_WIDTH,     :desc=>"Width of display (for short format only)"
     def ls(file)
       abort "Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
       file_pattern = get_regexp(options[:files])
@@ -33,7 +35,7 @@ class GECOS
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
       archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
-      decoder = GECOS::Decoder.new(:data=>File.read(file))
+      decoder = GECOS::Decoder.new(:file=>file)
       defroster = GECOS::Defroster.new(decoder)
       print "Frozen archive for directory #{archived_file}"
       print "\nLast updated at #{defroster.update_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
@@ -82,10 +84,11 @@ class GECOS
       end
     end
 
+    # TODO Thaw all files
     desc "thaw ARCHIVE FILE [TO]", "Uncompress a frozen Honeywell file"
+    option "log",    :aliases=>'-l', :type=>'string',  :desc=>"Log status to specified file"
     option "strict", :aliases=>"-s", :type=>"boolean", :desc=>"Check for bad data. Abort if found"
-    option "warn", :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
-    option "log", :aliases=>'-l', :type=>'string', :desc=>"Log status to specified file"
+    option "warn",   :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
     long_desc <<-EOT
 FILE may have some special formats: '+-nnn' (where nnn is an integer) denotes file number nnn. '-nnn' denotes the nnnth
 file from the end of the archive. Anything else denotes the name of a file. A backslash character is ignored at the
@@ -98,7 +101,7 @@ whatever its name.
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(expanded_file)
       archived_file = archive.file_path(expanded_file)
       archived_file = "--unknown--" unless archived_file
-      decoder = GECOS::Decoder.new(:data=>File.read(expanded_file))
+      decoder = GECOS::Decoder.new(:file=>expanded_file)
       defroster = GECOS::Defroster.new(decoder, :options=>options)
       content = defroster.content(defroster.fn(n))
       shell = Shell.new
@@ -107,11 +110,11 @@ whatever its name.
       shell.log options[:log], "thaw #{out.inspect} from #{file.inspect} with #{defroster.errors} errors" if options[:log]
     end
 
-    option "lines", :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
-    option "offset", :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lines'
-    option "escape", :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
-    option "thawed", :aliases=>'-t', :type=>'boolean', :desc=>'Display the file in partially thawed format'
     desc "dump ARCHIVE FILE", "Uncompress a frozen Honeywell file"
+    option "escape", :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
+    option "lines",  :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
+    option "offset", :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lines'
+    option "thawed", :aliases=>'-t', :type=>'boolean', :desc=>'Display the file in partially thawed format'
     def dump(file, n)
       limit = options[:lines]
       archive = Archive.new
@@ -119,7 +122,7 @@ whatever its name.
       archived_file = archive.file_path(file)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
-      decoder = GECOS::Decoder.new(:data=>File.read(file))
+      decoder = GECOS::Decoder.new(:file=>file)
       defroster = GECOS::Defroster.new(decoder, :warn=>true)
       file_index = defroster.fn(n)
       puts "Archive for file #{defroster.file_name(file_index)}:"
