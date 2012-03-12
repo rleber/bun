@@ -25,13 +25,13 @@ class GECOS
     end
     
     SORT_VALUES = %w{tape file type date description size}
-    TYPE_VALUES = %w{all frozen normal}
+    TYPE_VALUES = %w{all frozen text}
     desc "ls", "Display an index of archived files"
     option 'archive', :aliases=>'-a', :type=>'string',                               :desc=>'Archive location'
     option "descr",   :aliases=>"-d", :type=>'boolean',                              :desc=>"Include description"
     option "files",   :aliases=>"-f", :type=>'string',  :default=>'.*',              :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
     option "frozen",  :aliases=>"-r", :type=>'boolean',                              :desc=>"Recursively include contents of freeze files"
-    option "long",    :aliases=>"-l", :type=>'boolean',                              :desc=>"Display long format (incl. normal vs. frozen)"
+    option "long",    :aliases=>"-l", :type=>'boolean',                              :desc=>"Display long format (incl. text vs. frozen)"
     option 'path',    :aliases=>'-p', :type=>'boolean',                              :desc=>"Display paths for tape files"
     option "sort",    :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
     option "tapes",   :aliases=>"-t", :type=>'string',  :default=>'.*',              :desc=>"Show only tapes that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
@@ -41,8 +41,8 @@ class GECOS
       type_pattern = case options[:type].downcase
         when 'f', 'frozen'
           /^(frozen|archive)$/i
-        when 'n', 'normal'
-          /^normal$/i
+        when 't', 'text'
+          /^text$/i
         when '*','a','all'
           //
         else
@@ -65,15 +65,15 @@ class GECOS
         frozen = Archive.frozen?(tape_path)
         archival_date = archive.archival_date(tape_name)
         archival_date_display = archival_date ? archival_date.strftime('%Y/%m/%d') : "n/a"
-        friz = frozen ? 'Archive' : 'Normal'
-        decoder = GECOS::Decoder.new(:data=>File.read(tape_path, 300))
-        file_row = {'tape'=>display_name, 'type'=>friz, 'file'=>file_name, 'date'=>archival_date_display, 'size'=>decoder.word_count.decimal}
+        friz = frozen ? 'Archive' : 'Text'
+        header = File::Header.new(:file=>tape_path)
+        file_row = {'tape'=>display_name, 'type'=>friz, 'file'=>file_name, 'date'=>archival_date_display, 'size'=>header.word_count.decimal}
         if options[:descr]
-          file_row['description'] = decoder.file_description
+          file_row['description'] = header.file_description
         end
         file_info << file_row
         if frozen && options[:frozen]
-          defroster = Defroster.new(Decoder.new(:file=>tape_path))
+          defroster = Defroster.new(File::Text.new(:file=>tape_path))
           defroster.file_paths.each do |path|
             file_info << {'tape'=>display_name, 'type'=>'Frozen', 'file'=>path, 'archive'=>file_name}
           end
@@ -106,14 +106,14 @@ class GECOS
     option "offset",    :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lines'
     option "unlimited", :aliases=>'-u', :type=>'boolean', :desc=>'Ignore the file size limit'
     # TODO Deblock option
-    def dump(file)
+    def dump(file_name)
       archive = Archive.new
-      file = archive.expanded_tape_path(file)
-      decoder = GECOS::Decoder.new(:file=>file)
-      archived_file = archive.file_path(file)
+      file_path = archive.expanded_tape_path(file_name)
+      file = GECOS::File::Text.new(:file=>file_path)
+      archived_file = archive.file_path(file_path)
       archived_file = "--unknown--" unless archived_file
       puts "Archive for file #{archived_file}:"
-      words = decoder.words
+      words = file.words
       Dump.dump(words, options)
     end
     
@@ -122,16 +122,16 @@ class GECOS
     option "inspect", :aliases=>'-i', :type=>'boolean', :desc=>"Display long format details for each line"
     option "log",     :aliases=>'-l', :type=>'string', :desc=>"Log status to specified file"
     option "warn",    :aliases=>'-w', :type=>'boolean', :desc=>"Warn if there are decoding errors"
-    def unpack(file, to=nil)
+    def unpack(file_name, to=nil)
       archive = Archive.new
-      expanded_file = archive.expanded_tape_path(file)
-      decoder = GECOS::Decoder.new(:file=>expanded_file)
-      decoder.keep_deletes = true if options[:delete]
+      expanded_file = archive.expanded_tape_path(file_name)
+      file = File::Text.new(:file=>expanded_file)
+      file.keep_deletes = true if options[:delete]
       archived_file = archive.file_path(expanded_file)
-      abort "Can't unpack #{file}. It contains a frozen file: #{archived_file}" if Archive.frozen?(expanded_file)
+      abort "Can't unpack #{file_name}. It contains a frozen file_name: #{archived_file}" if Archive.frozen?(expanded_file)
       if options[:inspect]
         lines = []
-        decoder.lines.each do |l|
+        file.lines.each do |l|
           # p l
           # exit
           start = l[:start]
@@ -146,12 +146,12 @@ class GECOS
         end
         content = lines.join("\n")
       else
-        content = decoder.text
+        content = file.text
       end
       shell = Shell.new
       shell.write to, content
-      warn "Unpacked with #{decoder.errors} errors" if options[:warn] && decoder.errors > 0
-      shell.log options[:log], "unpack #{to.inspect} from #{file.inspect} with #{decoder.errors} errors" if options[:log]
+      warn "Unpacked with #{file.errors} errors" if options[:warn] && file.errors > 0
+      shell.log options[:log], "unpack #{to.inspect} from #{file_name.inspect} with #{file.errors} errors" if options[:log]
     end
     
     desc "scrub FILE", "Clean up backspaces and tabs in a file"
@@ -163,7 +163,7 @@ class GECOS
     
     desc "test FILE", "Test a file for cleanness -- i.e. does it contain non-printable characters?"
     def test(file)
-      if Decoder.clean?(File.read(file))
+      if File::Text.clean?(File.read(file))
         puts "File is clean"
       else
         puts "File is dirty"
@@ -171,33 +171,33 @@ class GECOS
     end
     
     desc "describe FILE", "Display description information for a file"
-    def describe(file)
+    def describe(file_name)
       archive = Archive.new
-      tape_path = archive.expanded_tape_path(file)
-      decoder = GECOS::Decoder.new(:file=>tape_path)
+      tape_path = archive.expanded_tape_path(file_name)
+      file = File::Text.new(:file=>tape_path)
       archived_file = archive.file_path(tape_path)
-      archive_name = decoder.file_archive_name
-      subdirectory = decoder.file_subdirectory
-      specification = decoder.file_specification
-      description = decoder.file_description
-      name = decoder.file_name
-      path = decoder.file_path
-      description = decoder.file_description
-      archival_date = archive.archival_date(file)
+      archive_name = file.file_archive_name
+      subdirectory = file.file_subdirectory
+      specification = file.file_specification
+      description = file.file_description
+      name = file.file_name
+      path = file.file_path
+      description = file.file_description
+      archival_date = archive.archival_date(file_name)
       archival_date_display = archival_date ? archival_date.strftime('%Y/%m/%d') : "n/a"
       frozen = Archive.frozen?(tape_path)
-      frozen_files = Defroster.new(decoder).file_names.sort if frozen
-      puts "Tape             #{file}"
+      frozen_files = Defroster.new(file).file_names.sort if frozen
+      puts "Tape             #{file_name}"
       puts "Tape path        #{tape_path}"
-      puts "Archived file    #{path}"
+      puts "Archived file_name    #{path}"
       puts "Archive          #{archive_name}"
       puts "Subdirectory     #{subdirectory}"
       puts "Name             #{name}"
       puts "Description      #{description}"
       puts "Specification    #{specification}"
       puts "Archival date:   #{archival_date_display}"
-      puts "Size (words):    #{decoder.word_count.decimal.strip}"
-      puts "Type:            #{frozen ? 'Frozen' : 'Normal'}"
+      puts "Size (words):    #{file.word_count.decimal.strip}"
+      puts "Type:            #{frozen ? 'Frozen' : 'Text'}"
       puts "Frozen files:    #{frozen_files.join(', ')}" if frozen
     end
 

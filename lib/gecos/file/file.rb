@@ -3,7 +3,7 @@ require 'gecos/file/descriptor'
 class GECOS
   class File
     # TODO File::Description object
-    # TODO Decoder and Defroster are subclasses
+    # TODO Defroster is a subclass
     # TODO File::Header subclass (only reads enough to get the File::Description)
     # TOOD Move all the file class sources into a file subdirectory
     
@@ -90,7 +90,7 @@ class GECOS
     SPECIFICATION_POSITION = 11 # words
     DESCRIPTION_PATTERN = /\s+(.*)/
     
-    attr_reader :words, :content, :descriptor, :all_characters, :characters, :packed_characters
+    attr_reader :words, :descriptor, :all_characters, :characters, :packed_characters
     
     def initialize(options={}, &blk)
       file = options[:file]
@@ -114,13 +114,13 @@ class GECOS
         @all_characters = LazyArray.new(words.size*characters_per_word) do |n|
           @words.characters[n]
         end
-        @content = LazyArray.new(size-content_offset) do |n|
+        @file_content = LazyArray.new(size-content_offset) do |n|
           n < self.size ? @words[content_offset+n] : nil
         end
-        @characters = LazyArray.new(@content.size*characters_per_word) do |n|
+        @characters = LazyArray.new(@file_content.size*characters_per_word) do |n|
           @words.characters[n + content_offset*characters_per_word]
         end
-        @packed_characters = LazyArray.new(@content.size*packed_characters_per_word) do |n|
+        @packed_characters = LazyArray.new(@file_content.size*packed_characters_per_word) do |n|
           @words.characters[n + content_offset*packed_characters_per_word]
         end
       end
@@ -129,6 +129,10 @@ class GECOS
 
     def clear
       self.words = nil
+    end
+    
+    def content
+      @file_content
     end
     
     def delimited_string(offset, options={})

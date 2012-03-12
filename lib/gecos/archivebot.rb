@@ -118,10 +118,10 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       ix.each do |tape_name|
         extended_file_name = archive.expanded_tape_path(tape_name)
         frozen = Archive.frozen?(extended_file_name)
-        decoder = Decoder.new(:file=>extended_file_name)
-        file_path = decoder.file_path
+        file = File::Text.new(:file=>extended_file_name)
+        file_path = file.file_path
         if frozen
-          defroster = Defroster.new(decoder)
+          defroster = Defroster.new(file)
           defroster.files.times do |i|
             descr = defroster.descriptor(i)
             subfile_name = descr.file_name

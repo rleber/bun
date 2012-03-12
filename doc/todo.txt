@@ -26,8 +26,7 @@ GECOS::File.open(name) (or archive.open(name) ?)
 Refactor Slicr based on the concept of layers, etc.
 Refactor file decoding based on Slicr module
 Are data and file_system classes necessary?
-Set file modification dates for normally archived files, based on data in _misc/fass-index.txt
-Fix 320 word block glitch in normally archived files
+Set file modification dates for text files, based on data in _misc/fass-index.txt
 Ignore files not in the index
 Implement Ian's naming conventions
 Ability to 'gecos archive ls' by archive name patterns

@@ -6,7 +6,7 @@ imperfectly. Some salient features:
 
 - The Honeywell machine (known affectionately as the "'bun", as in "Honeybun") used 36 bit words.
 - The files store most signifcant bits first, and most significant bytes first
-- There are at least two formats of archive: normal, which archives one file, and frozen, which is archives 
+- There are at least two formats of archive: text, which archives one file, and frozen, which is archives 
   a collection of files (much like modern tar or zip). There may also be some files compressed using a
   Huffman coding scheme.
   
@@ -37,7 +37,7 @@ In what follows:
 _All Files_
 
 All files have a "preamble", which includes general information about its name, format, description, etc.
-I will write more details later, but for now, I suggest you refer to the source in lib/decoder.rb.
+I will write more details later, but for now, I suggest you refer to the source in lib/gecos/file/text.rb.
 - The first byte of the file contains 01 in the upper half-word, and the number of words in the file in
   the lower half-word.
 
@@ -52,13 +52,13 @@ Some other conventions:
 - Unless otherwise noted, characters are stored one per 9-bit byte, left-to-right, in ASCII.
   Generally it appears that the 'bun used only 7-bit ASCII for character encoding.
 - Also a word containing 0170000 is an end-of-file marker. Subsequent data in the file should be ignored.
-  I am sure this is true of normal archive files; I am less sure in the case of freeze files and huffman
+  I am sure this is true of text archive files; I am less sure in the case of freeze files and huffman
   coded files.
 
 The "gecos dump" command is available to display the contents of a file in octal and ASCII, and may
 be useful for exploring files.
 
-_Normal Archive Files_
+_Text Archive Files_
 
 Archive files have the following format:
 - They follow the file size shown in word 0 of the file -- that is, data after that may be ignored
@@ -89,7 +89,7 @@ Archive files have the following format:
 - The first line always appears to be a descriptor plus 20 words of 000s. It is ignored.
 - End of file markers are optional, but do apply if found. (See above.)
 
-For additional clues, see doc/file_format/decode_help.txt, the source file lib/decoder.rb or 
+For additional clues, see doc/file_format/decode_help.txt, the source file lib/gecos/file/text.rb or 
 run "gecos dump"
 
 _Freeze Files_

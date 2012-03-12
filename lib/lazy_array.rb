@@ -76,6 +76,6 @@ class LazyArray
   def method_missing(meth, *args, &blk)
     to_a.send(meth, *args, &blk)
   rescue NoMethodError
-    raise NoMethodError, "#{self.class}##{name} method not defined"
+    raise NoMethodError, "#{self.class}##{meth} method not defined"
   end
 end

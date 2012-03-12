@@ -2,18 +2,18 @@ require 'gecos/file/freezer_descriptor'
 
 class GECOS
   class Defroster
-    attr_reader :decoder, :errors
+    attr_reader :file, :errors
     attr_accessor :strict, :warn
     
-    # TODO do we ever instantiate a Defroster without a new Decoder? If not, refactor
-    def initialize(decoder, options={})
-      @decoder = decoder
+    # TODO do we ever instantiate a Defroster without a new file? If not, refactor
+    def initialize(file, options={})
+      @file = file
       @strict = options[:strict]
       @warn = options[:warn]
     end
     
     def offset
-      decoder.file_content_offset
+      file.file_content_offset
     end
     
     def words
@@ -21,7 +21,7 @@ class GECOS
     end
     
     def _words
-      decoder.words[offset..-1]
+      file.words[offset..-1]
     end
     private :_words
     
@@ -34,19 +34,19 @@ class GECOS
     end
     
     def characters(*args)
-      decoder.characters(*args)
+      file.characters(*args)
     end
       
     def update_date
-      Decoder.date(_update_date)
+      File.date(_update_date)
     end
   
     def _update_date
-      characters(2*Decoder.characters_per_word, 8)
+      characters(2*characters_per_word, 8)
     end
     
     def update_time_of_day
-      Decoder.time_of_day(_update_time_of_day)
+      File.time_of_day(_update_time_of_day)
     end
     
     def _update_time_of_day
@@ -54,7 +54,7 @@ class GECOS
     end
     
     def update_time
-      Decoder.time(_update_date, _update_time_of_day)
+      File.time(_update_date, _update_time_of_day)
     end
     
     def descriptors
@@ -83,10 +83,10 @@ class GECOS
     end
     
     def file_path(n=nil)
-      return decoder.file_path if n.nil?
+      return file.file_path if n.nil?
       d = descriptor(n)
       return nil unless d
-      Shell.relative_path(decoder.file_path, d.file_name)
+      Shell.relative_path(file.file_path, d.file_name)
     end
     
     def file_paths
@@ -194,7 +194,7 @@ class GECOS
       lines
     end
     
-    # TODO Refactor like Decoder#unpack_line
+    # TODO Refactor like File::Text#unpack_line
     def thaw_line(words, line_offset)
       line = ""
       line_length = words.size
@@ -213,7 +213,7 @@ class GECOS
           end
         end
         chs = extract_characters(word, ch_count)
-        line += chs.sub(/#{Decoder.invalid_character_regexp}.*/,'') # Remove invalid control characters and all following letters
+        line += chs.sub(/#{File.invalid_character_regexp}.*/,'') # Remove invalid control characters and all following letters
         break if chs=~/\r/
         if !good_characters?(chs) || line.size >= line_length
           okay = false
@@ -247,7 +247,7 @@ class GECOS
     end
     
     def good_characters?(text)
-      Decoder.clean?(text.sub(/\0*$/,'')) && (text !~ /\0+$/ || text =~ /\r\0*$/) && text !~ /\n/
+      File.clean?(text.sub(/\0*$/,'')) && (text !~ /\0+$/ || text =~ /\r\0*$/) && text !~ /\n/
     end
   end
 end

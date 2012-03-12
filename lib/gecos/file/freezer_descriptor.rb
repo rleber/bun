@@ -1,9 +1,9 @@
 class GECOS
   class Defroster
-    attr_reader :decoder
+    attr_reader :file
     
     class Descriptor
-      attr_reader :defroster, :decoder, :number
+      attr_reader :defroster, :file, :number
       
       DESCRIPTOR_OFFSET = 5
       DESCRIPTOR_SIZE = 10
@@ -24,7 +24,7 @@ class GECOS
       
       def initialize(defroster, number, options={})
         @defroster = defroster
-        @decoder = defroster.decoder
+        @file = defroster.file
         @number = number
         raise "Bad descriptor block #{dump}" unless options[:allow] || valid?
       end
@@ -34,11 +34,11 @@ class GECOS
       end
       
       def characters(start, length)
-        @decoder.characters[offset*Decoder.characters_per_word + start, length].join
+        @file.characters[offset*defroster.characters_per_word + start, length].join
       end
       
       def words(start, length)
-        @decoder.words[start+offset, length]
+        @file.words[start+offset, length]
       end
       
       def word(start)
@@ -50,7 +50,7 @@ class GECOS
       end
       
       def update_date
-        Decoder.date(_update_date)
+        File.date(_update_date)
       end
       
       def _update_date
@@ -58,7 +58,7 @@ class GECOS
       end
       
       def update_time_of_day
-        Decoder.time_of_day(_update_time_of_day)
+        File.time_of_day(_update_time_of_day)
       end
       
       def _update_time_of_day
@@ -66,7 +66,7 @@ class GECOS
       end
       
       def update_time
-        Decoder.time(_update_date, _update_time_of_day)
+        File.time(_update_date, _update_time_of_day)
       end
       
       def file_blocks
@@ -102,11 +102,11 @@ class GECOS
       end
       
       def hex
-        @decoder.hex[offset*(decoder.bits_per_word/4), DESCRIPTOR_SIZE*decoder.bits_per_word/4]
+        @file.hex[offset*(file.bits_per_word/4), DESCRIPTOR_SIZE*file.bits_per_word/4]
       end
 
       def octal
-        @decoder.octal[offset*(decoder.bits_per_word/3), DESCRIPTOR_SIZE*decoder.bits_per_word/3]
+        @file.octal[offset*(file.bits_per_word/3), DESCRIPTOR_SIZE*file.bits_per_word/3]
       end
     end
   end

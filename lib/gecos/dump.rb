@@ -15,14 +15,13 @@ class GECOS
       end
       display_offset = (options[:display_offset] || offset) - offset
       stream = options[:to] || STDOUT
-      decoder = Decoder.new
-      decoder.words = words
-      limit = decoder.size-1 unless options[:unlimited]
+      file = File::Text.new(:words=>words)
+      limit = file.size-1 unless options[:unlimited]
       if options[:frozen]
-        characters = decoder.packed_characters
+        characters = file.packed_characters
         character_block_size = FROZEN_CHARACTERS_PER_WORD
       else
-        characters = decoder.characters
+        characters = file.characters
         character_block_size = UNFROZEN_CHARACTERS_PER_WORD
       end
       # TODO Refactor using Array#justify_rows

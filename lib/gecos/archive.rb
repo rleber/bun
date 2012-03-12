@@ -56,11 +56,12 @@ class GECOS
     
     # Is the given file frozen?
     # Yes, if and only if it has a valid descriptor
+    # TODO move this to File::Header
     def self.frozen?(file_name)
       raise "File #{file_name} doesn't exist" unless ::File.exists?(file_name)
       return nil unless ::File.exists?(file_name)
-      decoder = Decoder.new(:data=>::File.read(file_name, 300))
-      defroster = Defroster.new(decoder)
+      header = File::Header.new(:file=>file_name)
+      defroster = Defroster.new(file)
       descriptor = Defroster::Descriptor.new(defroster, 0, :allow=>true)
       descriptor.valid?
     end
@@ -122,15 +123,15 @@ class GECOS
       tapes.each do |tape_name|
         extended_file_name = expanded_tape_path(tape_name)
         if frozen?(extended_file_name)
-          decoder = Decoder.new(:file=>extended_file_name)
-          defroster = Defroster.new(decoder)
+          file = File::Text.new(:file=>extended_file_name)
+          defroster = Defroster.new(file)
           defroster.file_paths.each_with_index do |path, i|
             file = defroster.file_name(i)
             contents << {:tape=>tape_name, :file=>file, :tape_and_file=>"#{tape_name}:#{file}", :path=>path}
           end
         else
-          decoder = Decoder.new(:file=>extended_file_name)
-          path = decoder.file_path
+          file = File::Text.new(:file=>extended_file_name)
+          path = file.file_path
           contents << {:tape=>tape_name, :tape_and_file=>tape_name, :path=>path}
         end
       end

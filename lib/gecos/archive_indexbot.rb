@@ -29,7 +29,7 @@ class GECOS
       
       # TODO Create check method: Check that an index file entry exists for each tape
       # file, check frozen file dates and content vs. index, check 
-      # normal archive file contents vs. index
+      # text archive file contents vs. index
       desc "check", "Check contents of the index"
       option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
       option "include", :aliases=>'-i', :type=>'string', :desc=>"Include only certain messages. Options include #{VALID_MESSAGES.join(',')}"
@@ -46,13 +46,13 @@ class GECOS
             puts "No index entry for #{tape}" if inclusions.include?('missing') && !exclusions.include?('missing')
             next
           end
-          decoder = Decoder.new(:file=>tape_path)
-          if tape_spec[:file] != decoder.unexpanded_file_path && inclusions.include?('name') && !exclusions.include?('name')
-            puts "#{tape}: File name in index (#{tape_spec[:file].inspect}) doesn't match contents of file (#{decoder.unexpanded_file_path.inspect})"
+          file = File::Text.new(:file=>tape_path)
+          if tape_spec[:file] != file.unexpanded_file_path && inclusions.include?('name') && !exclusions.include?('name')
+            puts "#{tape}: File name in index (#{tape_spec[:file].inspect}) doesn't match contents of file (#{file.unexpanded_file_path.inspect})"
           end
           frozen = Archive.frozen?(tape_path)
           if frozen
-            defroster = Defroster.new(decoder)
+            defroster = Defroster.new(file)
             case tape_spec[:date] <=> defroster.update_date
             when -1 
               puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is older than date of frozen archive (#{defroster.update_date.strftime('%Y/%m/%d')})" \

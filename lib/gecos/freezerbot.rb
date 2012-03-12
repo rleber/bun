@@ -26,17 +26,17 @@ class GECOS
     option "one",   :aliases=>'-1', :type=>'boolean',                              :desc=>"Display one file per line (implied by --long or --descr)"
     option "sort",  :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
     option "width", :aliases=>'-w', :type=>'numeric', :default=>DEFAULT_WIDTH,     :desc=>"Width of display (for short format only)"
-    def ls(file)
+    def ls(file_name)
       abort "Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
       file_pattern = get_regexp(options[:files])
       abort "Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
       archive = Archive.new
-      file = archive.expanded_tape_path(file)
-      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
-      archived_file = archive.file_path(file)
+      file_name = archive.expanded_tape_path(file_name)
+      abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file_name)
+      archived_file = archive.file_path(file_name)
       archived_file = "--unknown--" unless archived_file
-      decoder = GECOS::Decoder.new(:file=>file)
-      defroster = GECOS::Defroster.new(decoder)
+      file = File::Text.new(:file=>file_name)
+      defroster = Defroster.new(file)
       print "Frozen archive for directory #{archived_file}"
       print "\nLast updated at #{defroster.update_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
       puts ":"
@@ -66,7 +66,7 @@ class GECOS
           lines << descr.file_name
         end
       end
-      if options[:long] || options[:descr] || options[:one] # One file per line
+      if options[:long] || options[:descr] || options[:one] # One file_name per line
         puts lines.join("\n")
       else # Multiple files per line
         # TODO Refactor using Array#justify_rows
@@ -95,19 +95,19 @@ file from the end of the archive. Anything else denotes the name of a file. A ba
 beginning of a file name, so that '\\+1' refers to a file named '+1', whereas '+1' refers to the first file in the archive,
 whatever its name.
     EOT
-    def thaw(file, n, out=nil)
+    def thaw(file_name, n, out=nil)
       archive = Archive.new
-      expanded_file = archive.expanded_tape_path(file)
-      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(expanded_file)
+      expanded_file = archive.expanded_tape_path(file_name)
+      abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(expanded_file)
       archived_file = archive.file_path(expanded_file)
       archived_file = "--unknown--" unless archived_file
-      decoder = GECOS::Decoder.new(:file=>expanded_file)
-      defroster = GECOS::Defroster.new(decoder, :options=>options)
+      file = File::Text.new(:file=>expanded_file)
+      defroster = Defroster.new(file, :options=>options)
       content = defroster.content(defroster.fn(n))
       shell = Shell.new
       shell.write out, content, :timestamp=>defroster.update_time, :quiet=>true
       warn "Thawed with #{defroster.errors} decoding errors" if options[:warn] && defroster.errors > 0
-      shell.log options[:log], "thaw #{out.inspect} from #{file.inspect} with #{defroster.errors} errors" if options[:log]
+      shell.log options[:log], "thaw #{out.inspect} from #{file_name.inspect} with #{defroster.errors} errors" if options[:log]
     end
 
     desc "dump ARCHIVE FILE", "Uncompress a frozen Honeywell file"
@@ -115,17 +115,17 @@ whatever its name.
     option "lines",  :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
     option "offset", :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lines'
     option "thawed", :aliases=>'-t', :type=>'boolean', :desc=>'Display the file in partially thawed format'
-    def dump(file, n)
+    def dump(file_name, n)
       limit = options[:lines]
       archive = Archive.new
-      file = archive.expanded_tape_path(file)
-      archived_file = archive.file_path(file)
+      file_name = archive.expanded_tape_path(file_name)
+      archived_file = archive.file_path(file_name)
       archived_file = "--unknown--" unless archived_file
-      abort "File #{file} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file)
-      decoder = GECOS::Decoder.new(:file=>file)
-      defroster = GECOS::Defroster.new(decoder, :warn=>true)
+      abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file_name)
+      file = File::Text.new(:file=>file_name)
+      defroster = Defroster.new(file, :warn=>true)
       file_index = defroster.fn(n)
-      puts "Archive for file #{defroster.file_name(file_index)}:"
+      puts "Archive for file_name #{defroster.file_name(file_index)}:"
       if options[:thawed]
         lines = defroster.lines(file_index)
         # TODO Refactor using Array#justify_rows
@@ -133,10 +133,10 @@ whatever its name.
         lines.each do |l|
           offset = '0' + ("%0#{offset_width}o" % l[:offset])
           descriptor = l[:descriptor]
-          top_bits = GECOS::Defroster.top_descriptor_bits(descriptor)
-          clipped_length = GECOS::Defroster.clipped_line_length(descriptor)
-          bottom_bits = GECOS::Defroster.bottom_descriptor_bits(descriptor)
-          flag = GECOS::Defroster::good_descriptor?(descriptor) ? ' ' : '!'
+          top_bits = Defroster.top_descriptor_bits(descriptor)
+          clipped_length = Defroster.clipped_line_length(descriptor)
+          bottom_bits = Defroster.bottom_descriptor_bits(descriptor)
+          flag = Defroster::good_descriptor?(descriptor) ? ' ' : '!'
           puts "#{offset} #{'%012o'%descriptor} " + 
                "#{'%03o'%top_bits}|#{'%03o'%clipped_length} #{flag} " +
                "#{l[:raw].inspect[1..-2]}"

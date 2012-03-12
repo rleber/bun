@@ -1,11 +1,11 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require 'tempfile'
 
-def decode(file)
+def decode(file_name)
   archive = GECOS::Archive.new
-  expanded_file = File.join("data", "test", file)
-  decoder = GECOS::Decoder.new(:file=>expanded_file)
-  decoder.text.split("\n")
+  expanded_file = File.join("data", "test", file_name)
+  file = GECOS::File::Text.new(:file=>expanded_file)
+  file.text.split("\n")
 end
 
 def readfile(file)
@@ -28,17 +28,18 @@ def decode_and_scrub(file, options={})
 end
 
 shared_examples "simple" do |file|
-  it "decodes a simple file (#{file})" do
+  it "decodes a simple text file (#{file})" do
     infile = file
     outfile = File.join("output", "test", infile)
     decode(infile).should == readfile(outfile)
   end
 end  
 
-describe GECOS::Decoder do
+describe GECOS::File::Text do
   include_examples "simple", "ar119.1801"
   include_examples "simple", "ar003.0698"
   
+  # TODO Create a listing file class
   it "decodes a more complex file (ar004.0642)" do
     infile = 'ar004.0642'
     outfile = File.join("output", "test", infile)
