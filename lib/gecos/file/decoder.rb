@@ -1,80 +1,67 @@
-require 'gecos/word'
-require 'gecos/file'
-
 class GECOS
-  class Decoder
+  class Decoder < GECOS::File
     attr_reader :errors
-    attr_accessor :keep_deletes, :words
+    attr_accessor :keep_deletes
     
     # TODO do we ever instantiate a Decoder without reading a file? If not, refactor
     def initialize(options={})
-      if options[:file]
-        @words = GECOS::Words.read(options[:file])
-      elsif options[:data]
-        @words = GECOS::Words.import(options[:data])
-      else
-        @words = GECOS::Words[]
-      end
       @keep_deletes = options[:keep_deletes]
+      super
     end
     
-    def clear
-      @words = nil
-      @characters = nil
+    def words=(words)
+      super
+      if @words.nil?
+        @text = @deblocked_content = nil
+      end
+      words
     end
     
-    # TODO Move word_count, characters, packed_characters to GECOS::File
-    def word_count
-      (words[0].half_word[1])+1
+    def text
+      @text ||= _text
     end
     
-    def characters
-      @characters ||= words.characters
-    end
-    
-    def packed_characters
-      @packed_characters ||= words.packed_characters
-    end
-    
-    def content
-      @content ||= _content
-    end
-    
-    def _content
+    def _text
       lines.map{|l| l[:content]}.join
     end
-    private :_content
+    private :_text
     
     def lines
       @lines ||= unpack
     end
     
+    def deblocked_content
+      @deblocked_content ||= _deblocked_content
+    end
+    
     # TODO Build a capability in Slicr to do things like this
-    def deblock
-      deblocked_words = []
-      offset = file_content_offset
+    def _deblocked_content
+      deblocked_content = []
+      offset = 0
       block_number = 1
       loop do
-        break if offset >= word_count
-        break if words[offset] == 0
-        block_size = words[offset].byte[-1]
-        raise "Bad block number at #{'%o' % offset}: expected #{'%06o' % block_number}; got #{words[offset].half_word[0]}" unless words[offset].half_word[0] == block_number
-        deblocked_words += words[offset+1..(offset+block_size)]
+        break if offset >= size
+        break if content[offset] == 0
+        puts "offset=#{offset.inspect}, size=#{size.inspect}"
+        block_size = content[offset].byte[-1]
+        raise "Bad block number at #{'%o' % offset}: expected #{'%06o' % block_number}; got #{content[offset].half_word[0]}" unless content[offset].half_word[0] == block_number
+        deblocked_content += content[offset+1..(offset+block_size)]
         offset += 0500
         block_number += 1
       end
-      GECOS::Words.new(deblocked_words)
+      GECOS::Words.new(deblocked_content)
     end
+    private :_deblocked_content
     
     def unpack
-      words = deblock
+      deblocked_content = self.deblocked_content
       line_offset = 0
       lines = []
       warned = false
       errors = 0
       n = 0
-      while line_offset < words.size
-        line = unpack_line(words, line_offset)
+      while line_offset < deblocked_content.size
+        line = unpack_line(deblocked_content, line_offset)
         line[:status] = :ignore if n==0
         case line[:status]
         when :eof     then break

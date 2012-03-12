@@ -5,7 +5,7 @@ def decode(file)
   archive = GECOS::Archive.new
   expanded_file = File.join("data", "test", file)
   decoder = GECOS::Decoder.new(:file=>expanded_file)
-  decoder.content.split("\n")
+  decoder.text.split("\n")
 end
 
 def readfile(file)

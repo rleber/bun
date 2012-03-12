@@ -2,8 +2,7 @@ require 'thor'
 require 'mechanize'
 require 'fileutils'
 require 'gecos/archive'
-require 'gecos/decoder'
-require 'gecos/defroster'
+require 'gecos/file'
 require 'gecos/archivebot'
 require 'gecos/freezerbot'
 require 'gecos/dump'
@@ -146,7 +145,7 @@ class GECOS
         end
         content = lines.join("\n")
       else
-        content = decoder.content
+        content = decoder.text
       end
       shell = Shell.new
       shell.write to, content

@@ -6,7 +6,7 @@ class GECOS
     def self.config_dir(name)
       dir = config[name]
       return nil unless dir
-      dir = File.expand_path(dir) if dir=~/^~/
+      dir = ::File.expand_path(dir) if dir=~/^~/
       dir
     end
     
@@ -48,7 +48,7 @@ class GECOS
     end
     
     def self.load_config(config_file="data/archive_config.yml")
-      @config = YAML.load(File.read(config_file))
+      @config = YAML.load(::File.read(config_file))
       @config['repository'] ||= ENV['GECOS_REPOSITORY']
       @config
     end

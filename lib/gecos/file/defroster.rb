@@ -1,4 +1,4 @@
-require 'gecos/freezer_descriptor'
+require 'gecos/file/freezer_descriptor'
 
 class GECOS
   class Defroster
