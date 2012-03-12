@@ -74,6 +74,8 @@ class GECOS
       def valid_character_regexp
         VALID_CHARACTER_REGEXP
       end
+      
+      # TODO create class method for file descriptive information as a hash (Qu: how much data do we have to read for this?)
     end
     
     CHARACTERS_PER_WORD = characters_per_word
@@ -169,6 +171,8 @@ class GECOS
       self.class.time date(date_location), time_of_day(time_location)
     end
     
+    # TODO Return a hash of all file descriptive data
+    
     def specification
       delimited_string SPECIFICATION_POSITION*CHARACTERS_PER_WORD
     end
@@ -206,6 +210,5 @@ class GECOS
     def characters_per_word
       self.class.characters_per_word
     end
-    
   end
 end
