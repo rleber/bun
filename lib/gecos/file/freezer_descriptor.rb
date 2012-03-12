@@ -26,15 +26,24 @@ class GECOS
         @defroster = defroster
         @file = defroster.file
         @number = number
-        raise "Bad descriptor block #{dump}" unless options[:allow] || valid?
+        raise "Bad descriptor block ##{number} at #{'%#o' % start}" unless options[:allow] || valid?
       end
       
-      def offset # Offset from the beginning of the file content, in words
-        defroster.offset + DESCRIPTOR_OFFSET + number*DESCRIPTOR_SIZE
+      def offset(n=nil) # Offset from the beginning of the file content, in words
+        n ||= number
+        defroster.offset + DESCRIPTOR_OFFSET + n*DESCRIPTOR_SIZE
       end
       
+      def start
+        offset
+      end
+      
+      def finish
+        offset(number+1)-1
+      end
+            
       def characters(start, length)
-        @file.characters[offset*defroster.characters_per_word + start, length].join
+        @file.all_characters[offset*defroster.characters_per_word + start, length].join
       end
       
       def words(start, length)
@@ -90,6 +99,7 @@ class GECOS
       end
       
       def valid?
+        return nil unless @file.words.size > finish
         (check_text == 'asc ') && (check_word == DESCRIPTOR_END_MARKER)
       end
       

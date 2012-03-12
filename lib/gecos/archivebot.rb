@@ -121,7 +121,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         file = File::Text.open(extended_file_name)
         file_path = file.file_path
         if frozen
-          defroster = Defroster.new(file)
+          defroster = Defroster.new(File.open(extended_file_name))
           defroster.files.times do |i|
             descr = defroster.descriptor(i)
             subfile_name = descr.file_name
@@ -334,6 +334,30 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       new_logs.each do |status, log|
         File.open(File.join(destinations[status],archive.log_file),'w') {|f| f.puts log.map{|log_entry| log_entry[:entry]}.join("\n") }
       end
+    end
+    
+    desc "preamble_length", "Display the length of the file descriptors"
+    def preamble_length
+      archive = Archive.new
+      data = [%w{Tape Preamble Total}]
+      max = 0
+      archive.tapes.each do |tape_name|
+        extended_file_name = archive.expanded_tape_path(tape_name)
+        file = File.open(extended_file_name)
+        len = file.content_offset
+        if Archive.frozen?(extended_file_name)
+          defroster = Defroster.new(file)
+          total_len = len + defroster.files*Defroster::Descriptor.size
+        else
+          total_len = len
+        end
+        if total_len > max
+          max = total_len
+        end
+        data << [tape_name, len, total_len]
+      end
+      puts data.sort_by{|row| p row; row.last.to_i}.map{|row| row[-2] = row[-2].to_s; row[-1] = row[-1].to_s; row}.justify_rows.map{|row| row.join('  ')}.join("\n")
+      puts "Maximum preamble length: #{max} words"
     end
     
     register GECOS::Archive::IndexBot, :index, "index", "Process Honeywell archive index"

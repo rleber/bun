@@ -36,7 +36,8 @@ class GECOS
       archived_file = archive.file_path(file_name)
       archived_file = "--unknown--" unless archived_file
       file = File::Text.open(file_name)
-      defroster = Defroster.new(file)
+      # TODO Is duplicate open necessary?
+      defroster = Defroster.new(File.open(file_name))
       print "Frozen archive for directory #{archived_file}"
       print "\nLast updated at #{defroster.update_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
       puts ":"
@@ -102,7 +103,8 @@ whatever its name.
       archived_file = archive.file_path(expanded_file)
       archived_file = "--unknown--" unless archived_file
       file = File::Text.open(expanded_file)
-      defroster = Defroster.new(file, :options=>options)
+      # TODO Is duplicate open necessary?
+      defroster = Defroster.new(File.open(expanded_file), :options=>options)
       content = defroster.content(defroster.fn(n))
       shell = Shell.new
       shell.write out, content, :timestamp=>defroster.update_time, :quiet=>true
@@ -123,7 +125,8 @@ whatever its name.
       archived_file = "--unknown--" unless archived_file
       abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file_name)
       file = File::Text.open(file_name)
-      defroster = Defroster.new(file, :warn=>true)
+      # TODO is duplicate open necessary?
+      defroster = Defroster.new(File.open(file_name), :warn=>true)
       file_index = defroster.fn(n)
       puts "Archive for file_name #{defroster.file_name(file_index)}:"
       if options[:thawed]

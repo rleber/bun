@@ -4,7 +4,7 @@ class GECOS
       attr_reader :errors
       attr_accessor :keep_deletes
     
-      # TODO do we ever instantiate a Decoder without reading a file? If not, refactor
+      # TODO do we ever instantiate a File::Text without reading a file? If not, refactor
       def initialize(options={})
         @errors = 0
         @keep_deletes = options[:keep_deletes]

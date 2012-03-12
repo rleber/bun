@@ -56,7 +56,7 @@ class GECOS
     
     # Is the given file frozen?
     # Yes, if and only if it has a valid descriptor
-    # TODO move this to File::Header
+    # TODO move this to GECOS::File
     def self.frozen?(file_name)
       raise "File #{file_name} doesn't exist" unless ::File.exists?(file_name)
       return nil unless ::File.exists?(file_name)
@@ -117,13 +117,14 @@ class GECOS
       f.path
     end
     
+    # TODO Test me
     def contents
       tapes = self.tapes
       contents = []
       tapes.each do |tape_name|
         extended_file_name = expanded_tape_path(tape_name)
         if frozen?(extended_file_name)
-          file = File::Text.open(extended_file_name)
+          file = File.open(extended_file_name)
           defroster = Defroster.new(file)
           defroster.file_paths.each_with_index do |path, i|
             file = defroster.file_name(i)

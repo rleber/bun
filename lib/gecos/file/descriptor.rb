@@ -2,10 +2,10 @@ class GECOS
   class File
     class Descriptor
       class << self
-        MINIMUM_SIZE = 256
+        MAXIMUM_SIZE = 3000
         
-        def minimum_size
-          MINIMUM_SIZE
+        def maximum_size
+          MAXIMUM_SIZE
         end
       end
       
