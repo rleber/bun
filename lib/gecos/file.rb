@@ -2,6 +2,10 @@ require 'gecos/word'
 
 class GECOS
   class File
+    # TODO File::Description object
+    # TODO Decoder and Defroster are subclasses
+    # TODO File::Excerpt subclass (only reads enough to get the File::Description)
+    # TOOD Move all the file class sources into a file subdirectory
     
     class << self
 
@@ -171,7 +175,7 @@ class GECOS
       self.class.time date(date_location), time_of_day(time_location)
     end
     
-    # TODO Return a hash of all file descriptive data
+    # TODO create a File::Description object
     
     def specification
       delimited_string SPECIFICATION_POSITION*CHARACTERS_PER_WORD
