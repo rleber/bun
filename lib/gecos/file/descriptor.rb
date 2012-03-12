@@ -2,10 +2,10 @@ class GECOS
   class File
     class Descriptor
       class << self
-        MINIMUM_LENGTH = 256
+        MINIMUM_SIZE = 256
         
-        def minimum_length
-          MINIMUM_LENGTH
+        def minimum_size
+          MINIMUM_SIZE
         end
       end
       
@@ -24,11 +24,11 @@ class GECOS
       end
     
       def specification
-        delimited_string SPECIFICATION_POSITION*CHARACTERS_PER_WORD
+        file.delimited_string SPECIFICATION_POSITION*CHARACTERS_PER_WORD, :all=>true
       end
     
       def archive_name
-        delimited_string ARCHIVE_NAME_POSITION*CHARACTERS_PER_WORD
+        file.delimited_string ARCHIVE_NAME_POSITION*CHARACTERS_PER_WORD, :all=>true
       end
     
       def subpath
@@ -36,13 +36,13 @@ class GECOS
       end
     
       def subdirectory
-        d = File.dirname(subpath)
+        d = ::File.dirname(subpath)
         d = "" if d == "."
         d
       end
 
       def name
-        File.basename(subpath)
+        ::File.basename(subpath)
       end
     
       def description
@@ -50,11 +50,11 @@ class GECOS
       end
     
       def path
-        self.class.relative_path(archive_name, subpath)
+        File.relative_path(archive_name, subpath)
       end
     
       def unexpanded_path
-        File.join(archive_name, subpath)
+        ::File.join(archive_name, subpath)
       end
     
       def characters_per_word

@@ -2,6 +2,8 @@
 
 require 'lib/indexable_basic'
 
+# TODO Much simpler ProxyArray class without extended indexing
+
 class LazyArray
 
   include Indexable::Basic

@@ -30,6 +30,7 @@ class GECOS
       @lines ||= unpack
     end
     
+    # TODO Create a subclass File::Deblocked
     def deblocked_content
       @deblocked_content ||= _deblocked_content
     end
@@ -40,12 +41,11 @@ class GECOS
       offset = 0
       block_number = 1
       loop do
-        break if offset >= size
+        break if offset >= content.size
         break if content[offset] == 0
-        puts "offset=#{offset.inspect}, size=#{size.inspect}"
         block_size = content[offset].byte[-1]
-        raise "Bad block number at #{'%o' % offset}: expected #{'%06o' % block_number}; got #{content[offset].half_word[0]}" unless content[offset].half_word[0] == block_number
-        deblocked_content += content[offset+1..(offset+block_size)]
+        raise "Bad block number at #{'%#o' % offset}: expected #{'%06o' % block_number}; got #{content[offset].half_word[0]}" unless content[offset].half_word[0] == block_number
+        deblocked_content += content[offset+1..(offset+block_size)].to_a
         offset += 0500
         block_number += 1
       end
@@ -84,8 +84,8 @@ class GECOS
       raw_line = ""
       okay = true
       descriptor = words[line_offset]
-      if descriptor == EOF_MARKER
-        return {:status=>:eof, :start=>line_offset, :finish=>word_count, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
+      if descriptor == self.class.eof_marker
+        return {:status=>:eof, :start=>line_offset, :finish=>size-1, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
       elsif (descriptor >> 27) & 0777 == 0177
         raise "Deleted"
         deleted = true

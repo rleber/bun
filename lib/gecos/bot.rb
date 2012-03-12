@@ -105,6 +105,7 @@ class GECOS
     option "lines",     :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
     option "offset",    :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lines'
     option "unlimited", :aliases=>'-u', :type=>'boolean', :desc=>'Ignore the file size limit'
+    # TODO Deblock option
     def dump(file)
       archive = Archive.new
       file = archive.expanded_tape_path(file)

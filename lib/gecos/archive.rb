@@ -1,4 +1,5 @@
 require 'yaml'
+require 'gecos/file'
 
 class GECOS
   class Archive
@@ -56,9 +57,9 @@ class GECOS
     # Is the given file frozen?
     # Yes, if and only if it has a valid descriptor
     def self.frozen?(file_name)
-      raise "File #{file_name} doesn't exist" unless File.exists?(file_name)
-      return nil unless File.exists?(file_name)
-      decoder = Decoder.new(:data=>File.read(file_name, 300))
+      raise "File #{file_name} doesn't exist" unless ::File.exists?(file_name)
+      return nil unless ::File.exists?(file_name)
+      decoder = Decoder.new(:data=>::File.read(file_name, 300))
       defroster = Defroster.new(decoder)
       descriptor = Defroster::Descriptor.new(defroster, 0, :allow=>true)
       descriptor.valid?
@@ -75,7 +76,7 @@ class GECOS
     end
     
     def tapes
-      Dir.entries(File.join(location, raw_directory)).reject{|f| f=~/^\./}
+      Dir.entries(::File.join(location, raw_directory)).reject{|f| f=~/^\./}
     end
     
     def raw_directory
@@ -103,7 +104,7 @@ class GECOS
     end
     
     def index_file
-      File.expand_path(File.join(location, self.class.index_file))
+      ::File.expand_path(::File.join(location, self.class.index_file))
     end
     
     def frozen?(file)
@@ -111,8 +112,8 @@ class GECOS
     end
 
     def file_path(tape_name)
-      decoder = Decoder.new(:data=>File.read(expanded_tape_path(tape_name),300))
-      decoder.file_path
+      f = File::Header.new(:file=>expanded_tape_path(tape_name))
+      f.descriptor.path
     end
     
     def contents
@@ -140,9 +141,9 @@ class GECOS
       if file_name =~ /^\.\//
         rel = `pwd`.chomp
       else
-        rel = File.expand_path(raw_directory, location)
+        rel = ::File.expand_path(raw_directory, location)
       end
-      File.expand_path(file_name, rel)
+      ::File.expand_path(file_name, rel)
     end
     
     def config
@@ -154,7 +155,7 @@ class GECOS
     end
     
     def _index
-      content = File.read(index_file)
+      content = ::File.read(index_file)
       specs = content.split("\n").map do |line|
         words = line.strip.split(/\s+/)
         raise RuntimeError, "Bad line in index file: #{line.inspect}" unless words.size == 3

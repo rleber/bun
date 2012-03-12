@@ -1,10 +1,10 @@
-require 'lib/gecos/file/descriptor'
+require 'gecos/file/descriptor'
 
 class GECOS
   class File
     # TODO File::Description object
     # TODO Decoder and Defroster are subclasses
-    # TODO File::Excerpt subclass (only reads enough to get the File::Description)
+    # TODO File::Header subclass (only reads enough to get the File::Description)
     # TOOD Move all the file class sources into a file subdirectory
     
     class << self
@@ -58,7 +58,7 @@ class GECOS
       end
     
       def relative_path(*f)
-        File.expand_path(File.join(*f), ENV['HOME']).sub(/^#{Regexp.escape(ENV['HOME'])}\//,'')
+        ::File.expand_path(::File.join(*f), ENV['HOME']).sub(/^#{Regexp.escape(ENV['HOME'])}\//,'')
       end
 
       VALID_CONTROL_CHARACTERS = '\r\t\n\b'
@@ -80,7 +80,7 @@ class GECOS
       end
       
       def descriptor(options={})
-        Excerpt.new(options).descriptor
+        Header.new(options).descriptor
       end
     end
     
@@ -99,7 +99,7 @@ class GECOS
       if file
         words = GECOS::Words.read(file)
       elsif data
-        words = decode(data)
+        words = self.class.decode(data)
       end
       self.words = words
       yield(self) if block_given?
@@ -110,20 +110,19 @@ class GECOS
         @words = @all_characters = @characters = @packed_characters = @descriptor = nil
       else
         @words = words
-        @content = LazyArray.new do |n|
-          return nil if n >= self.size
-          @words[content_offset+n]
-        end
-        @all_characters = LazyArray.new do |n|
+        @descriptor = Descriptor.new(self)
+        @all_characters = LazyArray.new(words.size*characters_per_word) do |n|
           @words.characters[n]
         end
-        @characters = LazyArray.new do |n|
-          @content.characters[n]
+        @content = LazyArray.new(size-content_offset) do |n|
+          n < self.size ? @words[content_offset+n] : nil
         end
-        @packed_characters = LazyArray.new do |n|
-          @content.packed_characters[n]
+        @characters = LazyArray.new(@content.size*characters_per_word) do |n|
+          @words.characters[n + content_offset*characters_per_word]
         end
-        @descriptor = Descriptor.new(self)
+        @packed_characters = LazyArray.new(@content.size*packed_characters_per_word) do |n|
+          @words.characters[n + content_offset*packed_characters_per_word]
+        end
       end
       words
     end
@@ -152,7 +151,7 @@ class GECOS
         break if offset >= size
         word_index, ch_index = offset.divmod(chars_per_word)
         word = words[word_index]
-        break if !word || (word == EOF_MARKER && !options[:all])
+        break if !word || (word == self.class.eof_marker && !options[:all])
         char = chars[offset]
         break if char == delimiter
         string << char
@@ -192,6 +191,10 @@ class GECOS
 
     def characters_per_word
       self.class.characters_per_word
+    end
+    
+    def packed_characters_per_word
+      self.class.packed_characters_per_word
     end
   end
 end

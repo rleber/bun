@@ -17,7 +17,7 @@ class GECOS
       stream = options[:to] || STDOUT
       decoder = Decoder.new
       decoder.words = words
-      limit = decoder.word_count-1 unless options[:unlimited]
+      limit = decoder.size-1 unless options[:unlimited]
       if options[:frozen]
         characters = decoder.packed_characters
         character_block_size = FROZEN_CHARACTERS_PER_WORD
