@@ -1,133 +1,10 @@
 require 'gecos/word'
+require 'gecos/file'
 
 class GECOS
   class Decoder
     attr_reader :errors
     attr_accessor :keep_deletes, :words
-    
-    EOF_MARKER = 0x00000f000 # Octal 000000170000 or 0b000000000000000000001111000000000000
-    CHARACTERS_PER_WORD = GECOS::Word.character.count
-    BITS_PER_WORD = GECOS::Word.width
-    ARCHIVE_NAME_POSITION = 7 # words
-    SPECIFICATION_POSITION = 11 # words
-    
-    def zstring(offset)
-      start = offset
-      ch = characters
-      loop do
-        break if offset > ch.size
-        break if ch[offset] == "\0"
-        offset += 1
-      end
-      ch[start...offset].join
-    end
-    
-    # Convert an eight-character GECOS date "mm/dd/yy" to a Ruby Date
-    def self.date(date)
-      Date.strptime(date,"%m/%d/%y")
-    end
-    
-    # Convert a GECOS timestamp to the time of day in hours (24 hour clock)
-    # Returns a three item array: hour, minutes, seconds (with embedded fractional seconds)
-    TIME_SUM = 1620000 # additive offset for converting GECOS times
-    TIME_DIV = 64000.0 # division factor for converting GECOS ticks to seconds
-    def self.time_of_day(timestamp)
-      timestamp = timestamp.integer.value
-      seconds = (timestamp + TIME_SUM) / TIME_DIV
-      minutes, seconds = seconds.divmod(60.0)
-      hours, minutes = minutes.divmod(60.0)
-      [hours, minutes, seconds]
-    end
-    
-    # Convert a GECOS date and time into a Ruby Time
-    def self.time(date, timestamp)
-      hours, minutes, seconds = time_of_day(timestamp)
-      seconds, frac = seconds.divmod(1.0)
-      micro_seconds = (frac*1000000).to_i
-      date = self.date(date)
-      Time.local(date.year, date.month, date.day, hours, minutes, seconds, micro_seconds)
-    end
-    
-    def file_specification
-      zstring SPECIFICATION_POSITION*CHARACTERS_PER_WORD
-    end
-    
-    def file_archive_name
-      zstring ARCHIVE_NAME_POSITION*CHARACTERS_PER_WORD
-    end
-    
-    DESCRIPTION_PATTERN = /\s+(.*)/
-    def file_subpath
-      file_specification.sub(DESCRIPTION_PATTERN,'').sub(/^\//,'')
-    end
-    
-    def file_subdirectory
-      d = File.dirname(file_subpath)
-      d = "" if d == "."
-      d
-    end
-
-    def file_name
-      File.basename(file_subpath)
-    end
-    
-    def file_description
-      file_specification[DESCRIPTION_PATTERN,1] || ""
-    end
-    
-    def file_path
-      Shell.relative_path(file_archive_name, file_subpath)
-    end
-    
-    def unexpanded_file_path
-      File.join(file_archive_name, file_subpath)
-    end
-    
-    def file_content_start
-      SPECIFICATION_POSITION + (file_specification.size + 4)/4
-    end
-    
-    def self.characters_per_word
-      CHARACTERS_PER_WORD
-    end
-    
-    def characters_per_word
-      self.class.characters_per_word
-    end
-    
-    VALID_CONTROL_CHARACTERS = '\r\t\n\b'
-    VALID_CONTROL_CHARACTER_STRING = eval("\"#{VALID_CONTROL_CHARACTERS}\"")
-    VALID_CONTROL_CHARACTER_REGEXP = /[#{VALID_CONTROL_CHARACTERS}]/
-    INVALID_CHARACTER_REGEXP = /(?!(?>#{VALID_CONTROL_CHARACTER_REGEXP}))[[:cntrl:]]/
-    VALID_CHARACTER_REGEXP = /(?!(?>#{INVALID_CHARACTER_REGEXP}))./
-    
-    def self.valid_control_character_regexp
-      VALID_CONTROL_CHARACTER_REGEXP
-    end
-    
-    def self.invalid_character_regexp
-      INVALID_CHARACTER_REGEXP
-    end
-    
-    def self.valid_character_regexp
-      VALID_CHARACTER_REGEXP
-    end
-    
-    def self.clean?(text)
-      find_flaw(text).nil?
-    end
-    
-    def self.find_flaw(text)
-      text =~ INVALID_CHARACTER_REGEXP
-    end
-    
-    def self.bits_per_word
-      BITS_PER_WORD
-    end
-    
-    def bits_per_word
-      self.class.bits_per_word
-    end
     
     # TODO do we ever instantiate a Decoder without reading a file? If not, refactor
     def initialize(options={})
@@ -146,6 +23,7 @@ class GECOS
       @characters = nil
     end
     
+    # TODO Move word_count, characters, packed_characters to GECOS::File
     def word_count
       (words[0].half_word[1])+1
     end
@@ -174,7 +52,7 @@ class GECOS
     # TODO Build a capability in Slicr to do things like this
     def deblock
       deblocked_words = []
-      offset = file_content_start
+      offset = file_content_offset
       block_number = 1
       loop do
         break if offset >= word_count

@@ -13,7 +13,7 @@ class GECOS
     end
     
     def offset
-      decoder.file_content_start
+      decoder.file_content_offset
     end
     
     def words
@@ -33,21 +33,16 @@ class GECOS
       words[1]
     end
     
-    def characters
-      @characters ||= _characters
+    def characters(*args)
+      decoder.characters(*args)
     end
-    
-    def _characters
-      decoder.characters[(offset*Decoder.characters_per_word)..-1].join
-    end
-    private :_characters
       
     def update_date
       Decoder.date(_update_date)
     end
   
     def _update_date
-      characters[2*Decoder.characters_per_word, 8]
+      characters(2*Decoder.characters_per_word, 8)
     end
     
     def update_time_of_day
