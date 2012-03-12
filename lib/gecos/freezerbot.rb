@@ -35,7 +35,7 @@ class GECOS
       abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file_name)
       archived_file = archive.file_path(file_name)
       archived_file = "--unknown--" unless archived_file
-      file = File::Text.new(:file=>file_name)
+      file = File::Text.open(file_name)
       defroster = Defroster.new(file)
       print "Frozen archive for directory #{archived_file}"
       print "\nLast updated at #{defroster.update_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
@@ -101,7 +101,7 @@ whatever its name.
       abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(expanded_file)
       archived_file = archive.file_path(expanded_file)
       archived_file = "--unknown--" unless archived_file
-      file = File::Text.new(:file=>expanded_file)
+      file = File::Text.open(expanded_file)
       defroster = Defroster.new(file, :options=>options)
       content = defroster.content(defroster.fn(n))
       shell = Shell.new
@@ -122,7 +122,7 @@ whatever its name.
       archived_file = archive.file_path(file_name)
       archived_file = "--unknown--" unless archived_file
       abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file_name)
-      file = File::Text.new(:file=>file_name)
+      file = File::Text.open(file_name)
       defroster = Defroster.new(file, :warn=>true)
       file_index = defroster.fn(n)
       puts "Archive for file_name #{defroster.file_name(file_index)}:"

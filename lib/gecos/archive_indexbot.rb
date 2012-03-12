@@ -46,7 +46,7 @@ class GECOS
             puts "No index entry for #{tape}" if inclusions.include?('missing') && !exclusions.include?('missing')
             next
           end
-          file = File::Text.new(:file=>tape_path)
+          file = File::Text.open(tape_path)
           if tape_spec[:file] != file.unexpanded_file_path && inclusions.include?('name') && !exclusions.include?('name')
             puts "#{tape}: File name in index (#{tape_spec[:file].inspect}) doesn't match contents of file (#{file.unexpanded_file_path.inspect})"
           end

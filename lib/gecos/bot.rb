@@ -13,7 +13,7 @@ class GECOS
     
     desc "readme", "Display helpful information for beginners"
     def readme
-      STDOUT.write File.read("doc/readme.md")
+      STDOUT.write ::File.read("doc/readme.md")
     end
     
     no_tasks do
@@ -66,14 +66,14 @@ class GECOS
         archival_date = archive.archival_date(tape_name)
         archival_date_display = archival_date ? archival_date.strftime('%Y/%m/%d') : "n/a"
         friz = frozen ? 'Archive' : 'Text'
-        header = File::Header.new(:file=>tape_path)
-        file_row = {'tape'=>display_name, 'type'=>friz, 'file'=>file_name, 'date'=>archival_date_display, 'size'=>header.word_count.decimal}
+        header = File::Header.open(tape_path)
+        file_row = {'tape'=>display_name, 'type'=>friz, 'file'=>file_name, 'date'=>archival_date_display, 'size'=>header.size}
         if options[:descr]
           file_row['description'] = header.file_description
         end
         file_info << file_row
         if frozen && options[:frozen]
-          defroster = Defroster.new(File::Text.new(:file=>tape_path))
+          defroster = Defroster.new(File::Text.open(tape_path))
           defroster.file_paths.each do |path|
             file_info << {'tape'=>display_name, 'type'=>'Frozen', 'file'=>path, 'archive'=>file_name}
           end
@@ -103,13 +103,13 @@ class GECOS
     option "escape",    :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
     option "frozen",    :aliases=>'-f', :type=>'boolean', :desc=>'Display characters in frozen format (i.e. 5 per word)'
     option "lines",     :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
-    option "offset",    :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lines'
+    option "offset",    :aliases=>'-o', :type=>'numeric', :desc=>'Start at word n (zero-based index)'
     option "unlimited", :aliases=>'-u', :type=>'boolean', :desc=>'Ignore the file size limit'
     # TODO Deblock option
     def dump(file_name)
       archive = Archive.new
       file_path = archive.expanded_tape_path(file_name)
-      file = GECOS::File::Text.new(:file=>file_path)
+      file = GECOS::File::Text.open(file_path)
       archived_file = archive.file_path(file_path)
       archived_file = "--unknown--" unless archived_file
       puts "Archive for file #{archived_file}:"
@@ -125,7 +125,7 @@ class GECOS
     def unpack(file_name, to=nil)
       archive = Archive.new
       expanded_file = archive.expanded_tape_path(file_name)
-      file = File::Text.new(:file=>expanded_file)
+      file = File::Text.open(expanded_file)
       file.keep_deletes = true if options[:delete]
       archived_file = archive.file_path(expanded_file)
       abort "Can't unpack #{file_name}. It contains a frozen file_name: #{archived_file}" if Archive.frozen?(expanded_file)
@@ -163,7 +163,7 @@ class GECOS
     
     desc "test FILE", "Test a file for cleanness -- i.e. does it contain non-printable characters?"
     def test(file)
-      if File::Text.clean?(File.read(file))
+      if File.clean?(::File.read(file))
         puts "File is clean"
       else
         puts "File is dirty"
@@ -174,29 +174,33 @@ class GECOS
     def describe(file_name)
       archive = Archive.new
       tape_path = archive.expanded_tape_path(file_name)
-      file = File::Text.new(:file=>tape_path)
+      # TODO Refactor using File.descriptor
+      file = File::Header.open(tape_path)
       archived_file = archive.file_path(tape_path)
-      archive_name = file.file_archive_name
-      subdirectory = file.file_subdirectory
-      specification = file.file_specification
-      description = file.file_description
-      name = file.file_name
-      path = file.file_path
-      description = file.file_description
+      archive_name = file.archive_name
+      subdirectory = file.subdirectory
+      specification = file.specification
+      description = file.description
+      name = file.name
+      path = file.path
+      # TODO Archival date should be available from descriptor
       archival_date = archive.archival_date(file_name)
       archival_date_display = archival_date ? archival_date.strftime('%Y/%m/%d') : "n/a"
+      # TODO frozen? should be available from descriptor
       frozen = Archive.frozen?(tape_path)
+      # TODO Ultimately, descriptors should understand and retrieve freeze file names
       frozen_files = Defroster.new(file).file_names.sort if frozen
+      # TODO Refactor using Array#justify_rows
       puts "Tape             #{file_name}"
       puts "Tape path        #{tape_path}"
-      puts "Archived file_name    #{path}"
+      puts "Archived file    #{path}"
       puts "Archive          #{archive_name}"
       puts "Subdirectory     #{subdirectory}"
       puts "Name             #{name}"
       puts "Description      #{description}"
       puts "Specification    #{specification}"
       puts "Archival date:   #{archival_date_display}"
-      puts "Size (words):    #{file.word_count.decimal.strip}"
+      puts "Size (words):    #{file.size}"
       puts "Type:            #{frozen ? 'Frozen' : 'Text'}"
       puts "Frozen files:    #{frozen_files.join(', ')}" if frozen
     end

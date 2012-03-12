@@ -16,12 +16,12 @@ class GECOS
       display_offset = (options[:display_offset] || offset) - offset
       stream = options[:to] || STDOUT
       file = File::Text.new(:words=>words)
-      limit = file.size-1 unless options[:unlimited]
+      limit = [limit, file.size-1].min unless options[:unlimited]
       if options[:frozen]
-        characters = file.packed_characters
+        characters = file.all_packed_characters
         character_block_size = FROZEN_CHARACTERS_PER_WORD
       else
-        characters = file.characters
+        characters = file.all_characters
         character_block_size = UNFROZEN_CHARACTERS_PER_WORD
       end
       # TODO Refactor using Array#justify_rows
@@ -30,8 +30,13 @@ class GECOS
       loop do
         break if i > limit
         j = [i+WORDS_PER_LINE-1, limit].min
-        chunk = ((words[i..j].map{|w| '%012o'%w }) + ([' '*12] * WORDS_PER_LINE))[0,WORDS_PER_LINE]
-        chars = characters[i*character_block_size, (j-i+1)*character_block_size].join
+        chunk = words[i..j]
+        chars = characters[i*character_block_size, chunk.size*character_block_size]
+        if chars.nil?
+          puts "Nil chars:\ni=#{i}, j=#{j}, chunk=#{chunk.inspect}"
+        end
+        chars = chars.join
+        chunk = ((chunk.map{|w| '%012o'%w }) + ([' '*12] * WORDS_PER_LINE))[0,WORDS_PER_LINE]
         chars = (chars + ' '*(WORDS_PER_LINE*character_block_size))[0,WORDS_PER_LINE*character_block_size]
         if options[:escape]
           chars = chars.inspect[1..-2].scan(/\\\d{3}|\\[^\d\\]|\\\\|[^\\]/).map{|s| (s+'   ')[0,4]}.join

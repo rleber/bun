@@ -13,11 +13,15 @@ class GECOS
     end
     
     def offset
-      file.file_content_offset
+      file.content_offset
     end
     
     def words
       @words ||= _words
+    end
+    
+    def characters_per_word
+      file.characters_per_word
     end
     
     def _words

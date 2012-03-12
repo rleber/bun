@@ -4,7 +4,7 @@ require 'tempfile'
 def decode(file_name)
   archive = GECOS::Archive.new
   expanded_file = File.join("data", "test", file_name)
-  file = GECOS::File::Text.new(:file=>expanded_file)
+  file = GECOS::File::Text.open(expanded_file)
   file.text.split("\n")
 end
 

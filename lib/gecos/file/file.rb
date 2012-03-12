@@ -1,11 +1,9 @@
 require 'gecos/file/descriptor'
 
 class GECOS
+  # TODO What would happen if GECOS::File subclassed File?
   class File
-    # TODO File::Description object
     # TODO Defroster is a subclass
-    # TODO File::Header subclass (only reads enough to get the File::Description)
-    # TOOD Move all the file class sources into a file subdirectory
     
     class << self
 
@@ -79,6 +77,10 @@ class GECOS
         VALID_CHARACTER_REGEXP
       end
       
+      def clean?(text)
+        text !~ INVALID_CHARACTER_REGEXP
+      end
+      
       def descriptor(options={})
         Header.new(options).descriptor
       end
@@ -90,7 +92,7 @@ class GECOS
     SPECIFICATION_POSITION = 11 # words
     DESCRIPTION_PATTERN = /\s+(.*)/
     
-    attr_reader :words, :descriptor, :all_characters, :characters, :packed_characters
+    attr_reader :words, :descriptor, :all_characters, :characters, :all_packed_characters, :packed_characters
     
     def initialize(options={}, &blk)
       file = options[:file]
@@ -113,6 +115,9 @@ class GECOS
         @descriptor = Descriptor.new(self)
         @all_characters = LazyArray.new(words.size*characters_per_word) do |n|
           @words.characters[n]
+        end
+        @all_packed_characters = LazyArray.new(words.size*packed_characters_per_word) do |n|
+          @words.packed_characters[n]
         end
         @file_content = LazyArray.new(size-content_offset) do |n|
           n < self.size ? @words[content_offset+n] : nil
@@ -171,12 +176,20 @@ class GECOS
     def size(options={})
       # TODO Should :eof be the default? (Is there ever a meaningful eof marker in frozen files?)
       if options[:eof]
-        eof_location = content.find {|word| word.value == self.class.eof_marker }
+        eof_location = nil
+        words.each_with_index do |word, index|
+          if word.value == self.class.eof_marker
+            eof_location = index
+            break
+          end
+        end
         eof_location || size
       elsif options[:all]
         @words.size
       else
-        (words[0].half_word[1])+1
+         res = (words[0].half_word[1])+1
+         res = res.value unless res.is_a?(Fixnum)
+         res
       end
     end
 
@@ -199,6 +212,13 @@ class GECOS
     
     def packed_characters_per_word
       self.class.packed_characters_per_word
+    end
+  
+    # Allow file.path, etc.
+    def method_missing(meth, *args, &blk)
+      descriptor.send(meth, *args, &blk)
+    rescue NoMethodError
+      raise NoMethodError, "#{self.class}##{meth} method not defined"
     end
   end
 end
