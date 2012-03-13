@@ -65,30 +65,31 @@ class Bun
       ix = ix.select{|tape_name| tape_name =~ tape_pattern}
       file_info = []
       files = ix.each_with_index do |tape_name, i|
-        file_name = archive.file_path(tape_name)
-        tape_path = archive.expanded_tape_path(tape_name)
-        display_name = options[:path] ? tape_path : tape_name
-        archival_date = archive.archival_date(tape_name)
-        archival_date_display = archival_date ? archival_date.strftime('%Y/%m/%d') : "n/a"
-        header = File::Header.open(tape_path)
-        type = header.file_type.to_s
-        size = header.file_size
+        file = archive.open(tape_name, :header=>true)
+        file_name = file.path
+        tape_path = file.tape
+        type = file.file_type.to_s
+        size = file.file_size
         # TODO Override file size, update date/time for frozen files
         if type=='frozen'
-          frozen_file = File::Frozen.new(:file=>tape_path)
-          archival_date = frozen_file.update_time
-          archival_date_display = archival_date.strftime('%Y/%m/%d %H:%M:%S')
-          size = frozen_file.file_size
+          index_date = file.update_time
+          index_date_display = index_date.strftime('%Y/%m/%d %H:%M:%S')
+          # TODO The following should no longer be necessary
+          # size = frozen_file.file_size
+        else
+          # TODO Make this available from the file; requires saving the archive object
+          index_date = archive.index_date(tape_name)
+          index_date_display = index_date ? index_date.strftime('%Y/%m/%d') : "n/a"
         end
-        file_row = {'tape'=>display_name, 'type'=>type, 'file'=>file_name, 'date'=>archival_date_display, 'size'=>size}
+        display_name = options[:path] ? tape_path : tape_name
+        file_row = {'tape'=>display_name, 'type'=>type, 'file'=>file_name, 'date'=>index_date_display, 'size'=>size}
         if options[:descr]
-          file_row['description'] = header.description
+          file_row['description'] = file.description
         end
         file_info << file_row
         if type == "frozen" && options[:frozen]
           # TODO is extra File.open necessary?
-          frozen_file = File::Frozen.new(:file=>tape_path)
-          frozen_file.shard_descriptors.each do |d|
+          file.shard_descriptors.each do |d|
             file_info << {'tape'=>display_name, 'type'=>'shard', 'file'=>d.path, 'archive'=>file_name, 'size'=>d.size, 'date'=>d.update_time.strftime('%Y/%m/%d %H:%M:%S')}
           end
         end
@@ -141,7 +142,7 @@ class Bun
       end
       file_path = archive.expanded_tape_path(file_name)
       file = Bun::File::Text.open(file_path)
-      archived_file = archive.file_path(file_path)
+      archived_file = file.path
       archived_file = "--unknown--" unless archived_file
       puts "Archive for file #{archived_file}:"
       words = file.words
@@ -197,7 +198,7 @@ class Bun
     
     desc "test FILE", "Test a file for cleanness -- i.e. does it contain non-printable characters?"
     def test(file)
-      if File.clean?(::File.read(file))
+      if ::File.clean?(::File.read(file))
         puts "File is clean"
       else
         puts "File is dirty"
@@ -210,7 +211,7 @@ class Bun
       tape_path = archive.expanded_tape_path(file_name)
       # TODO Refactor using File.descriptor
       file = File.open(tape_path)
-      archived_file = archive.file_path(tape_path)
+      archived_file = file.path
       archive_name = file.archive_name
       subdirectory = file.subdirectory
       specification = file.specification
@@ -218,8 +219,8 @@ class Bun
       name = file.name
       path = file.path
       # TODO Archival date should be available from descriptor
-      archival_date = archive.archival_date(file_name)
-      archival_date_display = archival_date ? archival_date.strftime('%Y/%m/%d') : "n/a"
+      index_date = archive.index_date(file_name)
+      index_date_display = index_date ? index_date.strftime('%Y/%m/%d') : "n/a"
       # TODO frozen? should be available from descriptor
       type = file.file_type
       # TODO Ultimately, descriptors should understand and retrieve freeze file names
@@ -242,7 +243,7 @@ class Bun
       puts "Description:     #{description}"
       puts "Specification:   #{specification}"
       # TODO Change the following to Index date, and add update date from file for frozen files
-      puts "Archival date:   #{archival_date_display}"
+      puts "Index date:      #{index_date_display}"
       puts "Size (words):    #{size}"
       puts "Type:            #{type.to_s.sub(/^./) {|m| m.upcase}}"
       # TODO Prettier display of file names

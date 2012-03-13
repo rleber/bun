@@ -6,9 +6,10 @@ imperfectly. Some salient features:
 
 - The Honeywell machine (known affectionately as the "'bun", as in "Honeybun") used 36 bit words.
 - The files store most signifcant bits first, and most significant bytes first
-- There are at least two formats of archive: text, which archives one file, and frozen, which is archives 
-  a collection of files (much like modern tar or zip). There may also be some files compressed using a
-  Huffman coding scheme.
+- There are at least three formats of archive: 
+    text:    archives one text file
+    huffman: archives one text file with compression by huffman encoding
+    frozen:  archives a collection of files (much like modern tar or zip)
   
 Because these formats are old and my understanding is imperfect, I make no warranty of the absolutely
 correctness of these notes. I encourage you to explore -- you may discover elements of the format which
@@ -20,6 +21,9 @@ refer to the other files in the doc/file_format directory of this project. These
 - decode_help.txt  Some dialog about the characteristics of Honeywell files
 - free.b.txt       A program to decode Honeywell's freeze file format, written in B, an ancestor of C
 - huff.b.txt       A program to decode huffman coded files, also written in B
+
+The "bun dump" and "bun freezer dump" commands are available to display the contents of files in octal 
+and ASCII, and may be useful for exploring files.
 
 _Some Notes On Terminology and Conventions_
 
@@ -33,30 +37,27 @@ In what follows:
 - Indexing is from zero; thus a word has bits 0..35, where bit 0 is the most significant bit
 - I use the Ruby convention for numeric literals. For instance 0177 is an octal value (177 base 8).
   Generally, I use octal when discussing bit/byte/word values, because it fits well with 36-bit words.
-
-_All Files_
-
-All files have a "preamble", which includes general information about its name, format, description, etc.
-I will write more details later, but for now, I suggest you refer to the source in lib/bun/file/text.rb.
-- The first byte of the file contains 01 in the upper half-word, and the number of words in the file in
-  the lower half-word.
-
-Some other conventions:
-- Unless otherwise noted, characters are stored one per 9-bit byte, left-to-right, in ASCII.
-  Generally it appears that the 'bun used only 7-bit ASCII for character encoding.
+- Unless otherwise noted, characters are stored one per 9-bit byte, left-to-right, in ASCII. Generally
+  it appears that the 'bun used only 7-bit ASCII for character encoding.
 - Dates are stored as eight 9-bit ASCII characters "dd/mm/yy"
 - Times are stored as 36-bit unsigned integers, in some format I have yet to decipher, although there's
   some relevant code in the B programs
 - Integers were stored as signed 36-bit words, with a leading sign bit, and using two's complement format
 - Quantities like line length fields, etc. are generally unsigned
-- Unless otherwise noted, characters are stored one per 9-bit byte, left-to-right, in ASCII.
-  Generally it appears that the 'bun used only 7-bit ASCII for character encoding.
 - Also a word containing 0170000 is an end-of-file marker. Subsequent data in the file should be ignored.
-  I am sure this is true of text archive files; I am less sure in the case of freeze files and huffman
-  coded files.
+  I am sure this is true of text files. I have never seen it used in frozen files. I don't know if it
+  applies to huffman-coded files.
 
-The "bun dump" command is available to display the contents of a file in octal and ASCII, and may
-be useful for exploring files.
+_All Files_
+
+All files have a "preamble", which includes general information about its name, format, description, etc.
+- Word 0:       Always 01 in the upper half-word. The lower half-word contains the size of the file in 
+                words UNLESS the file is a frozen file, in which case it should be ignored
+- Word 1:       The lower half-word contains the size of the preamble (which contains the file name, etc.)
+- Words 7-10:   Contain the archive name (generally the same as the user name of the file owner), as a
+                null-delimited string
+- Words 11-end: The name of the archived file, and a description, as a null-delimited string. Everything
+                after the first space is the description.
 
 _Text Archive Files_
 
@@ -92,16 +93,18 @@ Archive files have the following format:
 For additional clues, see doc/file_format/decode_help.txt, the source file lib/bun/file/text.rb or 
 run "bun dump"
 
+_Huffman Coded Files_
+
+I haven't begun trying to decode these. I will add more notes as I learn how these work. In the 
+meantime, refer to doc/file_format/decode_help.txt, or the program doc/file_format/huff.b.txt
+
 _Freeze Files_
 
 Freeze files have the following format:
 - Each freeze file includes several archived files or 'shards' (similar to modern tar files)
 - After the preamble, there is a general information block of 5 words in length
   - Word 0: The number of words in the file
-  - Word 1: Supposed to have the number of archived shards in the freeze file in its lower half
-            word. However, in practice, I have found this to be unreliable. It's better to use the
-            position of the contents of the first shard to indicate where the shard descriptors
-            stop, and therefore how many of them there are (each is always 10 words long).
+  - Word 1: Contains the number of shards in the file
   - Words 2 and 3: The date of last update of the freeze file
   - Word 4: The time of last update of the freeze file
 - After the general information block comes a series of file descriptors, one for each shard:
@@ -137,7 +140,3 @@ Freeze files have the following format:
 
 For additional clues, see doc/file_format/decode_help.txt, the source file lib/frozen_file.rb or 
 run "bun dump" or "bun freezer dump".
-
-_Huffman Coded Files_
-
-I haven't explored this format. See decode_help.txt, free.b.txt, or try running "bun dump".

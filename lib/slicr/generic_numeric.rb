@@ -10,6 +10,7 @@ class GenericNumeric
   def to_int
     @data
   end
+  alias_method :to_i, :to_int
   
   def value
     @data

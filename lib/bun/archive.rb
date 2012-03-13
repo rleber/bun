@@ -95,11 +95,6 @@ class Bun
     def index_file
       ::File.expand_path(::File.join(location, self.class.index_file))
     end
-
-    def file_path(tape_name)
-      f = File::Header.open(expanded_tape_path(tape_name))
-      f.path
-    end
     
     # TODO Test me
     def contents
@@ -110,7 +105,7 @@ class Bun
         if self.class.frozen?(extended_file_name)
           file = File.open(extended_file_name)
           # TODO is double open necessary?
-          frozen_file = File::Frozen.new(:file=>extended_file_name)
+          frozen_file = File::Frozen.open(extended_file_name)
           frozen_file.file_paths.each_with_index do |path, i|
             file = frozen_file.file_name(i)
             contents << {:tape=>tape_name, :file=>file, :tape_and_file=>"#{tape_name}:#{file}", :path=>path}
@@ -158,9 +153,13 @@ class Bun
     end
     private :_index
     
-    def archival_date(tape)
+    def index_date(tape)
       info = index.find {|spec| spec[:tape] == tape }
       info && info[:date]
+    end
+    
+    def open(name, options={}, &blk)
+      File.open(expanded_tape_path(name), options, &blk)
     end
   end
 end

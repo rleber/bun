@@ -91,12 +91,13 @@ module Slicr
         new(words)
       end
       
-      def read(file)
+      def read(file, options={})
         if file.is_a?(String)
           close_when_done = true
-          file = File.open(file, 'rb')
+          file = ::File.open(file, 'rb')
         end
-        import(file.read)
+        bytes = options[:n] ? (constituent_class.width * options[:n] + 8 - 1).div(8) : nil
+        import(file.read(bytes))
       ensure
         file.close if close_when_done
       end

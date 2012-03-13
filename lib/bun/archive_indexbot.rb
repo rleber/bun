@@ -53,7 +53,7 @@ class Bun
           frozen = File.frozen?(tape_path)
           if frozen
             # TODO Is duplicate open necessary?
-            frozen_file = File::Frozen.new(:file=>tape_path)
+            frozen_file = File::Frozen.open(tape_path)
             case tape_spec[:date] <=> frozen_file.update_date
             when -1 
               puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is older than date of frozen archive (#{frozen_file.update_date.strftime('%Y/%m/%d')})" \

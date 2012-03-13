@@ -37,7 +37,7 @@ class Bun
       archived_file = "--unknown--" unless archived_file
       file = File::Text.open(file_name)
       # TODO Is duplicate open necessary?
-      frozen_file = File::Frozen.new(:file=>file_name)
+      frozen_file = File::Frozen.open(file_name)
       print "Frozen archive for directory #{archived_file}"
       print "\nLast updated at #{frozen_file.update_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
       puts ":"
@@ -104,7 +104,7 @@ whatever its name.
       archived_file = "--unknown--" unless archived_file
       file = File::Text.open(expanded_file)
       # TODO Is duplicate open necessary?
-      frozen_file = File::Frozen.new(options.merge(:file=>expanded_file))
+      frozen_file = File.create(options.merge(:file=>expanded_file, :type=>:frozen))
       content = frozen_file.content(frozen_file.fn(n))
       shell = Shell.new
       shell.write out, content, :timestamp=>frozen_file.update_time, :quiet=>true
@@ -126,7 +126,7 @@ whatever its name.
       abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless File.frozen?(file_name)
       file = File::Text.open(file_name)
       # TODO is duplicate open necessary?
-      frozen_file = File::Frozen.new(:file=>file_name, :warn=>true)
+      frozen_file = File::Frozen.open(file_name, :warn=>true)
       file_index = frozen_file.fn(n)
       puts "Archive for file_name #{frozen_file.file_name(file_index)}:"
       if options[:thawed]

@@ -65,7 +65,7 @@ end
 describe Bun::Bot do
   # TODO Speed up ls tests: test "ls", "ls -ldr" with a frozen file and a text file
   describe "ls" do
-    include_examples "command", "ls -ldr", "ls_ldr"
+    # include_examples "command", "ls -ldr", "ls_ldr"
     include_examples "command", "ls", "ls"
     include_examples "command", "ls -ldr -t ar003.0698", "ls_ldrt_ar003.0698"
     include_examples "command", "ls -ldr -t ar004.0888", "ls_ldrt_ar004.0888"

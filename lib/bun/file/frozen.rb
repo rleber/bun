@@ -45,7 +45,11 @@ class Bun
       # TODO reimplement this based on LazyArray for descriptors
       def preamble_size
         # Find size from position of data for first shard
-        words[content_offset + File::Frozen::Descriptor.offset + 7]
+        words[content_offset + File::Frozen::Descriptor.offset + 7].to_i
+      end
+      
+      def header_size
+        content_offset + preamble_size
       end
       
       def descriptors_size
@@ -57,7 +61,7 @@ class Bun
       end
   
       def _update_date
-        characters[2*characters_per_word, 8].join
+        all_characters[(content_offset + 2)*characters_per_word, 8].join
       end
     
       def update_time_of_day
@@ -65,7 +69,7 @@ class Bun
       end
     
       def _update_time_of_day
-        content[4]
+        words[content_offset + 4]
       end
     
       # TODO Choose latest (earliest?) of update time, time indicated in index, or shard update times
@@ -78,7 +82,7 @@ class Bun
       end
     
       def _shard_descriptors
-        (0...shard_count).map do |i|
+        LazyArray.new(shard_count) do |i|
           Frozen::Descriptor.new(self, i)
         end
       end

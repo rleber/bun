@@ -18,7 +18,7 @@ class Bun
       def initialize(file)
         @file = file
       end
-    
+      
       def size
         SPECIFICATION_POSITION + (specification.size + characters_per_word)/characters_per_word
       end

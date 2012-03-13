@@ -22,13 +22,13 @@ class Bun
         FileUtils::rm_rf(destination)
         process(agent, base_uri) do |page|
           relative_uri = page.uri.path.sub(/^#{Regexp.escape(uri_sub_path)}/, '')
-          file_name = File.join(destination, relative_uri)
-          dirname = File.dirname(file_name)
+          file_name = ::File.join(destination, relative_uri)
+          dirname = ::File.dirname(file_name)
           if @dryrun
             puts "Fetch #{file_name}"
           else
             FileUtils::mkdir_p(dirname)
-            File.open(file_name, 'w') {|f| f.write page.body}
+            ::File.open(file_name, 'w') {|f| f.write page.body}
           end
           count += 1
         end
@@ -111,8 +111,8 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       @dryrun = options[:dryrun]
       directory = options[:archive] || Archive.location
       archive = Archive.new(directory)
-      to ||= File.join(archive.location, archive.extract_directory)
-      log_file = File.join(to, archive.log_file)
+      to ||= ::File.join(archive.location, archive.extract_directory)
+      log_file = ::File.join(to, archive.log_file)
       ix = archive.tapes
       shell = Shell.new(:dryrun=>@dryrun)
       shell.rm_rf to
@@ -122,20 +122,20 @@ data/archive_config.yml. Usually, this is ~/bun_archive
         file = File::Text.open(extended_file_name)
         file_path = file.file_path
         if frozen
-          frozen_file = File::Frozen.new(:file=>extended_file_name)
+          frozen_file = File::Frozen.open(extended_file_name)
           frozen_file.shard_count.times do |i|
             descr = frozen_file.descriptor(i)
             subfile_name = descr.file_name
-            f = File.join(to, tape_name, file_path, subfile_name)
-            dir = File.dirname(f)
+            f = ::File.join(to, tape_name, file_path, subfile_name)
+            dir = ::File.dirname(f)
             shell.mkdir_p dir
             subfile_name = '\\' + subfile_name if subfile_name =~ /^\+/ # Watch out -- '+' has a special meaning to thaw
             warn "thaw #{tape_name} #{subfile_name}" unless @dryrun
             shell.thaw tape_name, subfile_name, f, :log=>log_file
           end
         else
-          f = File.join(to, tape_name, file_path)
-          dir = File.dirname(f)
+          f = ::File.join(to, tape_name, file_path)
+          dir = ::File.dirname(f)
           shell.mkdir_p dir
           warn "unpack #{tape_name}" unless @dryrun
           shell.unpack tape_name, f, :log=>log_file
@@ -173,7 +173,7 @@ data/archive_config.yml. Usually, this is ~/bun_archive
     no_tasks do
       def read_log(log_file_name)
         log = {}
-        File.read(log_file_name).split("\n").each do |line|
+        ::File.read(log_file_name).split("\n").each do |line|
           entry = parse_log_entry(line)
           log[entry[:file]] = entry
         end
@@ -203,21 +203,21 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       directory = options[:archive] || Archive.location
       archive = Archive.new(directory)
       from ||= archive.extract_directory
-      from = File.join(archive.location, from)
+      from = ::File.join(archive.location, from)
       to ||= archive.files_directory
-      to = File.join(archive.location, archive.files_directory)
+      to = ::File.join(archive.location, archive.files_directory)
       index = Index.new
       
       # Build cross-reference index
-      Dir.glob(File.join(from,'**','*')).each do |old_file|
-        next if File.directory?(old_file)
+      Dir.glob(::File.join(from,'**','*')).each do |old_file|
+        next if ::File.directory?(old_file)
         f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
         if f !~ /^([^\/]+)\/(.*)$/
           warn "File #{f} does not have a tape name and file name"
         else
           tape = $1
           file = $2
-          new_file = File.join(to, file, tape)
+          new_file = ::File.join(to, file, tape)
           warn "#{old_file} => #{new_file}" if @trace
           index.add(:from=>old_file, :to=>new_file, :file=>file, :tape=>tape)
         end
@@ -226,9 +226,9 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       # Combine files where the files have the same file name and have identical content
       index.each do |spec|
         matches = index.find(:file=>spec[:file]).reject{|e| e[:to]==spec[:to]}
-        content = File.read(spec[:from])
+        content = ::File.read(spec[:from])
         matches.each do |match|
-          if File.read(match[:from])==content
+          if ::File.read(match[:from])==content
             warn "#{match[:from]} is the same as #{spec[:from]} => #{spec[:to]}" if @trace
             index.add(match.merge(:to=>spec[:to]))
           end
@@ -249,7 +249,7 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       end
       
       # Read in log information
-      log = read_log(File.join(from, archive.log_file))
+      log = read_log(::File.join(from, archive.log_file))
       new_log = {}
       
       # Create cross-reference files
@@ -260,7 +260,7 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       index.sort_by{|e| e[:from]}.each do |spec|
         next if processed[spec[:to]]
         processed[spec[:to]] = true   # Only need to copy or link identical files to the new location once
-        dir = File.dirname(spec[:to])
+        dir = ::File.dirname(spec[:to])
         shell.mkdir_p dir
         warn "organize #{spec[:from]} => #{spec[:to]}" unless @dryrun
         shell.invoke command, spec[:from], spec[:to]
@@ -270,8 +270,8 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       
       # Write new log
       unless @dryrun
-        new_log_file = File.join(to, archive.log_file)
-        File.open(new_log_file, 'w') do |f|
+        new_log_file = ::File.join(to, archive.log_file)
+        ::File.open(new_log_file, 'w') do |f|
           new_log.keys.sort.each do |file|
             f.puts new_log[file][:entry]
           end
@@ -280,10 +280,10 @@ data/archive_config.yml. Usually, this is ~/bun_archive
 
       # Create index file of cross-reference
       unless @dryrun
-        index_file = File.join(to, '.index')
+        index_file = ::File.join(to, '.index')
         # TODO Refactor using Array#justify_rows
         from_width = index.froms.map{|old_file| old_file.size}.max
-        File.open(index_file, 'w') do |ixf|
+        ::File.open(index_file, 'w') do |ixf|
           index.sort_by{|e| e[:from]}.each do |spec|
             ixf.puts %Q{#{"%-#{from_width}s" % spec[:from]} => #{spec[:to]}}
           end
@@ -304,10 +304,10 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       threshold = options[:threshold] || DEFAULT_THRESHOLD
       archive = Archive.new(directory)
       from ||= archive.files_directory
-      from = File.join(archive.location, from)
-      log_file = File.join(from, archive.log_file)
-      clean = File.join(archive.location, archive.clean_directory)
-        dirty = File.join(archive.location, archive.dirty_directory)
+      from = ::File.join(archive.location, from)
+      log_file = ::File.join(from, archive.log_file)
+      clean = ::File.join(archive.location, archive.clean_directory)
+        dirty = ::File.join(archive.location, archive.dirty_directory)
       destinations = {:clean=>clean, :dirty=>dirty}
       shell = Shell.new(:dryrun=>@dryrun)
       destinations.each do |status, destination|
@@ -319,21 +319,21 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       log = read_log(log_file)
 
       new_logs = {:clean=>[], :dirty=>[]}
-      Dir.glob(File.join(from,'**','*')).each do |old_file|
-        next if File.directory?(old_file)
+      Dir.glob(::File.join(from,'**','*')).each do |old_file|
+        next if ::File.directory?(old_file)
         f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
         abort "Missing log entry for #{old_file}" unless log[old_file]
         okay = log[old_file][:errors] < threshold
         status = okay ? :clean : :dirty
-        new_file = File.join(destinations[status], f)
-        dir = File.dirname(new_file)
+        new_file = ::File.join(destinations[status], f)
+        dir = ::File.dirname(new_file)
         shell.mkdir_p dir
         warn "#{f} is #{status}"
         shell.invoke command, old_file, new_file
         new_logs[status] << alter_log(log[old_file], new_file)
       end
       new_logs.each do |status, log|
-        File.open(File.join(destinations[status],archive.log_file),'w') {|f| f.puts log.map{|log_entry| log_entry[:entry]}.join("\n") }
+        ::File.open(::File.join(destinations[status],archive.log_file),'w') {|f| f.puts log.map{|log_entry| log_entry[:entry]}.join("\n") }
       end
     end
     
@@ -347,7 +347,7 @@ data/archive_config.yml. Usually, this is ~/bun_archive
         file = File.open(extended_file_name)
         len = file.content_offset
         if File.frozen?(extended_file_name)
-          frozen_file = File::Frozen.new(:file=>extended_file_name)
+          frozen_file = File::Frozen.open(extended_file_name)
           total_len = len + frozen_file.files*File::Frozen::Descriptor.size
         else
           total_len = len
@@ -372,6 +372,7 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       end
     end
     
+    # TODO Remove me -- this was a research project
     desc "count_shards", "Count shards in frozen files three different ways"
     def count_shards
       archive = Archive.new
@@ -399,6 +400,31 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       end
       puts table.justify_rows.map{|row| row.join('  ')}.join("\n")
       abort "!Shard counts don't match in flagged entries" if flagged
+    end
+
+    desc "compare_offsets", "Compare file offsets vs. content of file preamble"
+    def compare_offsets
+      archive = Archive.new
+      table = [%w{Tape Word1 Calculated Flag}]
+      flagged = false
+      archive.tapes.each do |tape_name|
+        extended_file_name = archive.expanded_tape_path(tape_name)
+        file = File::Header.open(extended_file_name)
+        counts = [
+          file.words[1].half_word(1).to_i, 
+          file.content_offset
+        ]
+        row = [tape_name] + counts.map{|c| '%3d' % c } 
+        if counts.min != counts.max
+          flagged = true
+          row << '*'
+        else
+          row << ''
+        end
+        table << row
+      end
+      puts table.justify_rows.map{|row| row.join('  ')}.join("\n")
+      abort "!Offsets don't match in flagged entries" if flagged
     end
     
     # TODO Run this; check if there's a way to discern listing files automagically

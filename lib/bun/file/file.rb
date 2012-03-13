@@ -3,7 +3,6 @@ require 'bun/file/descriptor'
 class Bun
   # TODO What would happen if Bun::File subclassed File?
   class File
-    # TODO File::Frozen is a subclass
     
     class << self
 
@@ -23,10 +22,6 @@ class Bun
 
       def decode(data)
         Bun::Words.import(data)
-      end
-
-      def open(fname, &blk)
-        new(:file=>fname, &blk)
       end
 
       # Convert an eight-character Bun date "mm/dd/yy" to a Ruby Date
@@ -89,6 +84,65 @@ class Bun
         raise "File #{file_name} doesn't exist" unless ::File.exists?(file_name)
         new(:file=>file_name).frozen?
       end
+      
+      def create(options={}, &blk)
+        preamble = nil
+        if options[:type]
+          ftype = options[:type]
+        else
+          preamble = get_preamble(options)
+          ftype = preamble.file_type
+        end
+        klass = const_get(ftype.to_s.sub(/^./){|m| m.upcase}) unless ftype.is_a?(Class)
+        if options[:header]
+          if ftype == :frozen
+            limit = Frozen.send(:new, :words=>preamble.words, :header=>true).header_size
+          else
+            limit = preamble.header_size
+          end
+        else
+          limit = nil
+        end
+        klass.send(:new, options.merge(:n=>limit), &blk)
+      end
+
+      def open(fname, options={}, &blk)
+        create(options.merge(:file=>fname), &blk)
+      end
+      
+      def header(options={}, &blk)
+        create(options.merge(:header=>true), &blk)
+      end
+      
+      def get_preamble(options)
+        # TODO Do larger first fetch; only refetch if it wasn't enough
+        preamble_size = content_offset(get_words(2, options))
+        fetch_size = preamble_size + File::Frozen::Descriptor.offset+ File::Frozen::Descriptor.size
+        File::Raw.send(:new, :words=>get_words(fetch_size, options))
+      end
+      
+      def get_words(n, options)
+        if options[:file]
+          Bun::Words.read(options[:file], :n=>n)
+        elsif options[:data]
+          if n.nil?
+            decode(options[:data])
+          else
+            bytes = (Bun::Word.width*n + 8 - 1).div(8)
+            decode(options[:data][0,bytes])
+          end
+        else
+          if n.nil?
+            options[:words]
+          else
+            options[:words][0,n]
+          end
+        end
+      end
+      
+      def content_offset(words)
+        words[1].half_word(1).value
+      end
     end
     
     CHARACTERS_PER_WORD = characters_per_word
@@ -99,23 +153,19 @@ class Bun
     
     attr_reader :words, :file_content, :descriptor, :all_characters, :characters, :all_packed_characters, :packed_characters, :tape
     
-    # TODO Use File.create instead of File.new, so we can create the proper subclass, depending on type
+    # TODO Do we need options[:size] and options[:limit] ?
     def initialize(options={}, &blk)
-      file = options[:file]
-      data = options[:data]
-      words = options[:words]
-      if file
-        @tape = file
-        words = Bun::Words.read(file)
-      elsif data
-        @tape = options[:tape]
-        words = self.class.decode(data)
-      else
-        @tape = options[:tape]
-      end
-      self.words = words
+      @tape = options[:tape] || options[:file]
       @size = options[:size]
+      @header = options[:header]
+      self.words = self.class.get_words(options[:limit], options)
       yield(self) if block_given?
+    end
+    
+    private_class_method :new
+    
+    def header?
+      @header
     end
     
     def words=(words)
@@ -130,15 +180,17 @@ class Bun
         @all_packed_characters = LazyArray.new(words.size*packed_characters_per_word) do |n|
           @words.packed_characters.at(n)
         end
-        @file_content = LazyArray.new(size-content_offset) do |n|
-          # TODO is this check vs. size necessary? is it correct?
-          n < self.size ? @words.at(content_offset+n) : nil
-        end
-        @characters = LazyArray.new(@file_content.size*characters_per_word) do |n|
-          @words.characters.at(n + content_offset*characters_per_word)
-        end
-        @packed_characters = LazyArray.new(@file_content.size*packed_characters_per_word) do |n|
-          @words.characters.at(n + content_offset*packed_characters_per_word)
+        unless header?
+          @file_content = LazyArray.new(size-content_offset) do |n|
+            # TODO is this check vs. size necessary? is it correct?
+            n < self.size ? @words.at(content_offset+n) : nil
+          end
+          @characters = LazyArray.new(@file_content.size*characters_per_word) do |n|
+            @words.characters.at(n + content_offset*characters_per_word)
+          end
+          @packed_characters = LazyArray.new(@file_content.size*packed_characters_per_word) do |n|
+            @words.characters.at(n + content_offset*packed_characters_per_word)
+          end
         end
       end
       words
@@ -182,7 +234,11 @@ class Bun
     end
     
     def content_offset
-      descriptor.size
+      self.class.content_offset(words)
+    end
+    
+    def header_size
+      content_offset
     end
 
     def size(options={})
@@ -243,7 +299,7 @@ class Bun
     
     def file_type
       return :frozen if frozen?
-      return :huff if content[0].characters.join == 'huff'
+      return :huffman if words[content_offset].characters.join == 'huff'
       return :text
     end
   end
