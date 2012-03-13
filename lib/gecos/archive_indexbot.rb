@@ -53,7 +53,7 @@ class GECOS
           frozen = File.frozen?(tape_path)
           if frozen
             # TODO Is duplicate open necessary?
-            defroster = Defroster.new(File.open(tape_path))
+            defroster = File::Frozen.new(:file=>tape_path)
             case tape_spec[:date] <=> defroster.update_date
             when -1 
               puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is older than date of frozen archive (#{defroster.update_date.strftime('%Y/%m/%d')})" \
@@ -62,7 +62,7 @@ class GECOS
               puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is newer than date of frozen archive (#{defroster.update_date.strftime('%Y/%m/%d')})" \
               if inclusions.include?('new') &&!exclusions.include?('new')
             end
-            defroster.files.times do |i|
+            defroster.shard_count.times do |i|
               descriptor = defroster.descriptor(i)
               file_date = descriptor.update_date
               frozen_file = descriptor.file_name

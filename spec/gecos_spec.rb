@@ -38,10 +38,8 @@ end
 shared_examples "command" do |command|
   command_name = command.split(/\s+/).first
   it "handles #{('gecos ' + command).inspect} command properly" do
-    res = capture :stdout, :stderr do
-      system "gecos #{command}"
-    end
-    res.split("\n") == readfile(File.join("output", 'test', command_name))
+    res = `gecos #{command} 2>&1`
+    res.chomp.split("\n").should == readfile(File.join("output", 'test', command_name))
   end
 end
 
@@ -56,6 +54,8 @@ describe GECOS::File::Text do
     decode_and_scrub(infile, :tabs=>'80').should == readfile(outfile)
   end
 end
+
+# Frozen files to check ar013.0560, ar004.0888, ar019.0175
 
 describe GECOS::Bot do
   include_examples "command", "ls -ldr"

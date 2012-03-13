@@ -37,7 +37,7 @@ class GECOS
       archived_file = "--unknown--" unless archived_file
       file = File::Text.open(file_name)
       # TODO Is duplicate open necessary?
-      defroster = Defroster.new(File.open(file_name))
+      defroster = File::Frozen.new(:file=>file_name)
       print "Frozen archive for directory #{archived_file}"
       print "\nLast updated at #{defroster.update_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
       puts ":"
@@ -49,7 +49,7 @@ class GECOS
       end
       # Retrieve file information
       file_info = []
-      defroster.files.times do |i|
+      defroster.shard_count.times do |i|
         descr = defroster.descriptor(i)
         next unless descr.file_name=~file_pattern
         file_info << {'order'=>i, 'update'=>descr.update_time, 'size'=>descr.file_words, 'name'=>descr.file_name}
@@ -104,7 +104,7 @@ whatever its name.
       archived_file = "--unknown--" unless archived_file
       file = File::Text.open(expanded_file)
       # TODO Is duplicate open necessary?
-      defroster = Defroster.new(File.open(expanded_file), :options=>options)
+      defroster = File::Frozen.new(options.merge(:file=>expanded_file))
       content = defroster.content(defroster.fn(n))
       shell = Shell.new
       shell.write out, content, :timestamp=>defroster.update_time, :quiet=>true
@@ -126,7 +126,7 @@ whatever its name.
       abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless File.frozen?(file_name)
       file = File::Text.open(file_name)
       # TODO is duplicate open necessary?
-      defroster = Defroster.new(File.open(file_name), :warn=>true)
+      defroster = File::Frozen.new(:file=>file_name, :warn=>true)
       file_index = defroster.fn(n)
       puts "Archive for file_name #{defroster.file_name(file_index)}:"
       if options[:thawed]
@@ -136,10 +136,10 @@ whatever its name.
         lines.each do |l|
           offset = '0' + ("%0#{offset_width}o" % l[:offset])
           descriptor = l[:descriptor]
-          top_bits = Defroster.top_descriptor_bits(descriptor)
-          clipped_length = Defroster.clipped_line_length(descriptor)
-          bottom_bits = Defroster.bottom_descriptor_bits(descriptor)
-          flag = Defroster::good_descriptor?(descriptor) ? ' ' : '!'
+          top_bits = File::Frozen.top_descriptor_bits(descriptor)
+          clipped_length = File::Frozen.clipped_line_length(descriptor)
+          bottom_bits = File::Frozen.bottom_descriptor_bits(descriptor)
+          flag = File::Frozen::good_descriptor?(descriptor) ? ' ' : '!'
           puts "#{offset} #{'%012o'%descriptor} " + 
                "#{'%03o'%top_bits}|#{'%03o'%clipped_length} #{flag} " +
                "#{l[:raw].inspect[1..-2]}"

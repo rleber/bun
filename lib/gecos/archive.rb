@@ -109,7 +109,8 @@ class GECOS
         extended_file_name = expanded_tape_path(tape_name)
         if self.class.frozen?(extended_file_name)
           file = File.open(extended_file_name)
-          defroster = Defroster.new(file)
+          # TODO is double open necessary?
+          defroster = File::Frozen.new(:file=>extended_file_name)
           defroster.file_paths.each_with_index do |path, i|
             file = defroster.file_name(i)
             contents << {:tape=>tape_name, :file=>file, :tape_and_file=>"#{tape_name}:#{file}", :path=>path}

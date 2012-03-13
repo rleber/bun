@@ -3,7 +3,7 @@ require 'gecos/file/descriptor'
 class GECOS
   # TODO What would happen if GECOS::File subclassed File?
   class File
-    # TODO Defroster is a subclass
+    # TODO File::Frozen is a subclass
     
     class << self
 
@@ -108,10 +108,13 @@ class GECOS
         @tape = file
         words = GECOS::Words.read(file)
       elsif data
-        @tape = nil
+        @tape = options[:tape]
         words = self.class.decode(data)
+      else
+        @tape = options[:tape]
       end
       self.words = words
+      @size = options[:size]
       yield(self) if block_given?
     end
     
@@ -195,7 +198,7 @@ class GECOS
       elsif options[:all]
         @words.size
       else
-        file_size
+        @size || file_size
       end
     end
     
@@ -233,13 +236,8 @@ class GECOS
       raise NoMethodError, "#{self.class}##{meth} method not defined"
     end
     
-    
-    # Is this file frozen?
-    # Yes, if and only if it has a valid descriptor
     def frozen?
-      defroster = Defroster.new(self)
-      descriptor = Defroster::Descriptor.new(defroster, 0, :allow=>true)
-      descriptor.valid?
+      File::Frozen::Descriptor.frozen?(self)
     end
     
     def file_type

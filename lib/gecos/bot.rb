@@ -76,7 +76,7 @@ class GECOS
         size = header.file_size
         # TODO Override file size, update date/time for frozen files
         if type=='frozen'
-          defroster = Defroster.new(File.open(tape_path))
+          defroster = File::Frozen.new(:file=>tape_path)
           archival_date = defroster.update_time
           archival_date_display = archival_date.strftime('%Y/%m/%d %H:%M:%S')
           size = defroster.file_size
@@ -88,8 +88,8 @@ class GECOS
         file_info << file_row
         if type == "frozen" && options[:frozen]
           # TODO is extra File.open necessary?
-          defroster = Defroster.new(File.open(tape_path))
-          defroster.descriptors.each do |d|
+          defroster = File::Frozen.new(:file=>tape_path)
+          defroster.shard_descriptors.each do |d|
             file_info << {'tape'=>display_name, 'type'=>'shard', 'file'=>d.path, 'archive'=>file_name, 'size'=>d.size, 'date'=>d.update_time.strftime('%Y/%m/%d %H:%M:%S')}
           end
         end
@@ -221,9 +221,9 @@ class GECOS
       archival_date = archive.archival_date(file_name)
       archival_date_display = archival_date ? archival_date.strftime('%Y/%m/%d') : "n/a"
       # TODO frozen? should be available from descriptor
-      type = file.file_type.to_s
+      type = file.file_type
       # TODO Ultimately, descriptors should understand and retrieve freeze file names
-      frozen_files = Defroster.new(file).file_names.sort if frozen
+      frozen_files = File::Frozen.new(:file=>tape_path).shard_names.sort if type == :frozen
       # TODO Refactor using Array#justify_rows
       puts "Tape             #{file_name}"
       puts "Tape path        #{tape_path}"
@@ -237,7 +237,7 @@ class GECOS
       puts "Size (words):    #{file.size}"
       puts "Type:            #{type}"
       # TODO Prettier display of file names
-      puts "Frozen files:    #{frozen_files.join(', ')}" if frozen
+      puts "Shards:         #{frozen_files.join(', ')}" if type == :frozen
     end
 
     register GECOS::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files"

@@ -122,8 +122,8 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         file = File::Text.open(extended_file_name)
         file_path = file.file_path
         if frozen
-          defroster = Defroster.new(File.open(extended_file_name))
-          defroster.files.times do |i|
+          defroster = File::Frozen.new(:file=>extended_file_name)
+          defroster.shard_count.times do |i|
             descr = defroster.descriptor(i)
             subfile_name = descr.file_name
             f = File.join(to, tape_name, file_path, subfile_name)
@@ -347,8 +347,8 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         file = File.open(extended_file_name)
         len = file.content_offset
         if File.frozen?(extended_file_name)
-          defroster = Defroster.new(file)
-          total_len = len + defroster.files*Defroster::Descriptor.size
+          defroster = File::Frozen.new(:file=>extended_file_name)
+          total_len = len + defroster.files*File::Frozen::Descriptor.size
         else
           total_len = len
         end
