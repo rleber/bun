@@ -151,13 +151,22 @@ class Bun
     SPECIFICATION_POSITION = 11 # words
     DESCRIPTION_PATTERN = /\s+(.*)/
     
-    attr_reader :words, :file_content, :descriptor, :all_characters, :characters, :all_packed_characters, :packed_characters, :tape
+    attr_reader :all_characters
+    attr_reader :all_packed_characters
+    attr_reader :archive
+    attr_reader :descriptor
+    attr_reader :file_content
+    attr_reader :characters
+    attr_reader :packed_characters
+    attr_reader :tape_path
+    attr_reader :words
     
     # TODO Do we need options[:size] and options[:limit] ?
     def initialize(options={}, &blk)
-      @tape = options[:tape] || options[:file]
+      @tape_path = options[:tape] || options[:file]
       @size = options[:size]
       @header = options[:header]
+      @archive = options[:archive]
       self.words = self.class.get_words(options[:limit], options)
       yield(self) if block_given?
     end

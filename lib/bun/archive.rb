@@ -159,7 +159,7 @@ class Bun
     end
     
     def open(name, options={}, &blk)
-      File.open(expanded_tape_path(name), options, &blk)
+      File.open(expanded_tape_path(name), options.merge(:archive=>self), &blk)
     end
   end
 end

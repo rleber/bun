@@ -88,7 +88,7 @@ class Bun
         end
         file_info << file_row
         if type == "frozen" && options[:frozen]
-          # TODO is extra File.open necessary?
+          # TODO Include # shards
           file.shard_descriptors.each do |d|
             file_info << {'tape'=>display_name, 'type'=>'shard', 'file'=>d.path, 'archive'=>file_name, 'size'=>d.size, 'date'=>d.update_time.strftime('%Y/%m/%d %H:%M:%S')}
           end
@@ -205,50 +205,69 @@ class Bun
       end
     end
     
+    DATE_FORMAT = '%Y/%m/%d'
+    TIME_FORMAT = DATE_FORMAT + ' %H:%M:%S'
+    SHARDS_ACROSS = 5
     desc "describe FILE", "Display description information for a file"
     def describe(file_name)
       archive = Archive.new
-      tape_path = archive.expanded_tape_path(file_name)
-      # TODO Refactor using File.descriptor
-      file = File.open(tape_path)
-      archived_file = file.path
-      archive_name = file.archive_name
-      subdirectory = file.subdirectory
-      specification = file.specification
-      description = file.description
-      name = file.name
-      path = file.path
-      # TODO Archival date should be available from descriptor
-      index_date = archive.index_date(file_name)
+      file          = archive.open(file_name, :header=>true)
+      type          = file.file_type
+      shards        = file.shard_names
+      index_date    = file.index_date
       index_date_display = index_date ? index_date.strftime('%Y/%m/%d') : "n/a"
-      # TODO frozen? should be available from descriptor
-      type = file.file_type
-      # TODO Ultimately, descriptors should understand and retrieve freeze file names
-      if type == :frozen
-        f = File::Frozen.open(tape_path)
-        frozen_files = f.shard_names.sort
-        # TODO Files should automatically retrieve the correct size
-        # TODO Verify the correctness of this size calculation
-        size = f.size
-      else
-        size = file.size
-      end
+      
       # TODO Refactor using Array#justify_rows
-      puts "Tape:            #{file_name}"
-      puts "Tape path:       #{tape_path}"
-      puts "Archived file:   #{path}"
-      puts "Archive:         #{archive_name}"
-      puts "Subdirectory:    #{subdirectory}"
-      puts "Name:            #{name}"
-      puts "Description:     #{description}"
-      puts "Specification:   #{specification}"
-      # TODO Change the following to Index date, and add update date from file for frozen files
+      puts "Tape:            #{file.tape}"
+      puts "Tape path:       #{file.tape_path}"
+      puts "Archived file:   #{file.path}"
+      puts "Owner:           #{file.owner}"
+      puts "Subdirectory:    #{file.subdirectory}"
+      puts "Name:            #{file.name}"
+      puts "Description:     #{file.description}"
+      puts "Specification:   #{file.specification}"
       puts "Index date:      #{index_date_display}"
-      puts "Size (words):    #{size}"
+      if type == :frozen
+        puts "Updated at:      #{file.update_time.strftime(TIME_FORMAT)}"
+      end
+      puts "Size (words):    #{file.size}"
       puts "Type:            #{type.to_s.sub(/^./) {|m| m.upcase}}"
-      # TODO Prettier display of file names
-      # TODO Display more detail for shards: update date, size, full path
-      puts "Shards:          #{frozen_files.join(', ')}" if type == :frozen
+
+      if shards.size > 0
+        # Display shard information in a table, SHARDS_ACROSS shards per row,
+        # Multiple rows of information for each shard
+        puts
+        puts "Shards:"
+        grand_table = []
+        columns = 0
+        titles = %w{Name: Path: Updated\ at: Size\ (words):}
+        i = 0
+        loop do
+          break if i >= shards.size
+          table = [titles]
+          SHARDS_ACROSS.times do |j|
+            if i >= shards.size
+              column = [""]*4
+            else
+              shard = shards[i]
+              d = file.shard_descriptor(shard)
+              column = [shard, d.path, d.update_time.strftime(TIME_FORMAT), d.size]
+            end
+            table << column
+            i += 1
+          end
+          table.each_with_index do |column, j|
+            if grand_table[j]
+              grand_table[j] << ''
+              grand_table[j] += column
+            else
+              grand_table[j] = column.dup
+            end
+          end
+        end
+        row_table = grand_table.justify_columns.transpose
+        puts row_table.map{|row| '  ' + row.join('  ')}.join("\n")
+      end
     end
 
     register Bun::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files"

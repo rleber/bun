@@ -105,7 +105,7 @@ whatever its name.
       file = File::Text.open(expanded_file)
       # TODO Is duplicate open necessary?
       frozen_file = File.create(options.merge(:file=>expanded_file, :type=>:frozen))
-      content = frozen_file.content(frozen_file.fn(n))
+      content = frozen_file.content(frozen_file.shard_index(n))
       shell = Shell.new
       shell.write out, content, :timestamp=>frozen_file.update_time, :quiet=>true
       warn "Thawed with #{frozen_file.errors} decoding errors" if options[:warn] && frozen_file.errors > 0
@@ -127,7 +127,7 @@ whatever its name.
       file = File::Text.open(file_name)
       # TODO is duplicate open necessary?
       frozen_file = File::Frozen.open(file_name, :warn=>true)
-      file_index = frozen_file.fn(n)
+      file_index = frozen_file.shard_index(n)
       puts "Archive for file_name #{frozen_file.file_name(file_index)}:"
       if options[:thawed]
         lines = frozen_file.lines(file_index)

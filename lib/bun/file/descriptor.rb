@@ -26,8 +26,8 @@ class Bun
       def specification
         file.delimited_string SPECIFICATION_POSITION*CHARACTERS_PER_WORD, :all=>true
       end
-    
-      def archive_name
+
+      def owner
         file.delimited_string ARCHIVE_NAME_POSITION*CHARACTERS_PER_WORD, :all=>true
       end
     
@@ -50,15 +50,39 @@ class Bun
       end
     
       def path
-        File.relative_path(archive_name, subpath)
+        File.relative_path(owner, subpath)
       end
     
       def unexpanded_path
-        ::File.join(archive_name, subpath)
+        ::File.join(owner, subpath)
       end
     
       def characters_per_word
         file.characters_per_word
+      end
+      
+      def index_date
+        file.archive && file.archive.index_date(tape)
+      end
+      
+      def tape_path
+        file.tape_path
+      end
+      
+      def tape
+        ::File.basename(tape_path)
+      end
+      
+      def update_time
+        file.update_time rescue nil
+      end
+      
+      def type
+        file.type
+      end
+      
+      def shard_names
+        file.shard_names rescue []
       end
     end
   end

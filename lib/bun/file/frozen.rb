@@ -59,7 +59,9 @@ class Bun
       def update_date
         File.date(_update_date)
       end
-  
+      
+      # Reference to all_characters is necessary here, because characters isn't
+      # available in header files. Still, it seems a bit kludgy...
       def _update_date
         all_characters[(content_offset + 2)*characters_per_word, 8].join
       end
@@ -89,7 +91,7 @@ class Bun
       private :_shard_descriptors
     
       def shard_descriptor(n)
-        shard_descriptors[n]
+        shard_descriptors[shard_index(n)]
       end
     
       def file_size
@@ -116,29 +118,29 @@ class Bun
         (0...shard_count).map{|n| shard_path(n)}
       end
     
-      # Convert a file name to an index number; also convert negative indexes
+      # Convert a shard name or number to an index number; also convert negative indexes
       # Allowed formats:
-      # Numeric: Any integer. 1..<# shard_count> or -<# shard_count>..-1 (counting backwards)
+      # Numeric: Any integer. 0..<# shard_count> or -<# shard_count>..-1 (counting backwards)
       # String:  [+-]\d+ : same as an Integer (Use leading '+' to ensure non-ambiguity -- '+1' is the
-      #                    first file, '1' is the file named '1')
+      #                    second file, '1' is the file named '1')
       #          Other:    Name of file. Ignore leading '\\' if any -- this allows a way to specify
       #                    a file name starting with '+', as for instance '+OneForParty'
-      def fn(n)
+      def shard_index(n)
+        orig_n = n
+        n = n.to_i if n.is_a?(GenericNumeric)
         if n.is_a?(Numeric) || n.to_s =~ /^[+-]\d+$/
-          orig_n = n
           n = n.to_i if n.is_a?(String)
-          n += shard_count+1 if n<0
-          abort "Frozen file does not contain file number #{orig_n}" if n<1 || n>shard_count
-          n -= 1
+          n += shard_count if n<0
+          abort "Frozen file does not contain file number #{orig_n}" if n<0 || n>shard_count
         else
           name = n.to_s.sub(/^\\/,'') # Remove leading '\\', if any
-          n = shard_index(name)
+          n = _shard_index(name)
           abort "Frozen file does not contain a file #{name}" unless n
         end
         n
       end
     
-      def shard_index(name)
+      def _shard_index(name)
         descr = shard_descriptors.find {|d| d.name == name}
         if descr
           index = descr.number
@@ -147,6 +149,7 @@ class Bun
         end
         index
       end
+      private :_shard_index
     
       def shard_words(n)
         d = shard_descriptor(n)
