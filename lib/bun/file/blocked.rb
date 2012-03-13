@@ -1,6 +1,6 @@
-class GECOS
+class Bun
   class File
-    class Blocked < GECOS::File
+    class Blocked < Bun::File
 
       def words=(words)
         super
@@ -33,7 +33,7 @@ class GECOS
           offset += 0500
           block_number += 1
         end
-        GECOS::Words.new(deblocked_content)
+        Bun::Words.new(deblocked_content)
       end
       private :deblock_content
     end

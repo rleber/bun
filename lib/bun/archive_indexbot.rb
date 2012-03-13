@@ -1,4 +1,4 @@
-class GECOS
+class Bun
   class Archive
     class IndexBot < Thor
       desc "ls", "List the index file for the archive"
@@ -15,7 +15,7 @@ class GECOS
       option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
       def set_dates
         archive = Archive.new(options[:archive])
-        shell = GECOS::Shell.new
+        shell = Bun::Shell.new
         archive.index.each do |spec|
           file = archive.expanded_tape_path(spec[:tape])
           timestamp = spec[:date]

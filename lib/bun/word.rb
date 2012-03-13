@@ -1,6 +1,6 @@
 require 'slicr'
 
-class GECOS
+class Bun
   class Word < Slicr::Word
     WIDTH = 36
     width WIDTH
@@ -38,6 +38,6 @@ class GECOS
     end
   end
   
-  class Words < Slicr::Words(GECOS::Word)
+  class Words < Slicr::Words(Bun::Word)
   end
 end  

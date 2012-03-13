@@ -1,2 +1,2 @@
 require 'rubygems'
-require 'gecos/bot'
+require 'bun/bot'

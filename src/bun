@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require File.dirname(__FILE__) + '/../lib/bun'
+
+if __FILE__ == $0
+  Bun::Bot.start
+end

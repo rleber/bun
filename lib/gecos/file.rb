@@ -1,1 +1,0 @@
-require 'gecos/file/base'

@@ -1,4 +1,4 @@
-class GECOS
+class Bun
   class File::Frozen::Descriptor
     attr_reader :file, :number
 

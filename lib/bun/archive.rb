@@ -1,7 +1,7 @@
 require 'yaml'
-require 'gecos/file'
+require 'bun/file'
 
-class GECOS
+class Bun
   class Archive
     
     def self.config_dir(name)
@@ -50,7 +50,7 @@ class GECOS
     
     def self.load_config(config_file="data/archive_config.yml")
       @config = YAML.load(::File.read(config_file))
-      @config['repository'] ||= ENV['GECOS_REPOSITORY']
+      @config['repository'] ||= ENV['BUN_REPOSITORY']
       @config
     end
     

@@ -1,15 +1,15 @@
 require 'thor'
 require 'mechanize'
 require 'fileutils'
-require 'gecos/archive'
-require 'gecos/file'
-require 'gecos/archivebot'
-require 'gecos/freezerbot'
-require 'gecos/dump'
-require 'gecos/array'
+require 'bun/archive'
+require 'bun/file'
+require 'bun/archivebot'
+require 'bun/freezerbot'
+require 'bun/dump'
+require 'bun/array'
 require 'pp'
 
-class GECOS
+class Bun
   class Bot < Thor
     
     desc "readme", "Display helpful information for beginners"
@@ -141,7 +141,7 @@ class GECOS
         abort "Bad value for --offset: #{e}"
       end
       file_path = archive.expanded_tape_path(file_name)
-      file = GECOS::File::Text.open(file_path)
+      file = Bun::File::Text.open(file_path)
       archived_file = archive.file_path(file_path)
       archived_file = "--unknown--" unless archived_file
       puts "Archive for file #{archived_file}:"
@@ -155,7 +155,7 @@ class GECOS
     option "log",     :aliases=>'-l', :type=>'string', :desc=>"Log status to specified file"
     option "warn",    :aliases=>'-w', :type=>'boolean', :desc=>"Warn if there are decoding errors"
     # TODO combine with other forms of read (e.g. thaw)
-    # TODO rename gecos read
+    # TODO rename bun read
     def unpack(file_name, to=nil)
       archive = Archive.new
       expanded_file = archive.expanded_tape_path(file_name)
@@ -240,7 +240,7 @@ class GECOS
       puts "Shards:         #{frozen_files.join(', ')}" if type == :frozen
     end
 
-    register GECOS::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files"
-    register GECOS::ArchiveBot, :archive, "archive", "Manage archives of Honeywell files"
+    register Bun::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files"
+    register Bun::ArchiveBot, :archive, "archive", "Manage archives of Honeywell files"
   end
 end

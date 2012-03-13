@@ -37,7 +37,7 @@ In what follows:
 _All Files_
 
 All files have a "preamble", which includes general information about its name, format, description, etc.
-I will write more details later, but for now, I suggest you refer to the source in lib/gecos/file/text.rb.
+I will write more details later, but for now, I suggest you refer to the source in lib/bun/file/text.rb.
 - The first byte of the file contains 01 in the upper half-word, and the number of words in the file in
   the lower half-word.
 
@@ -55,7 +55,7 @@ Some other conventions:
   I am sure this is true of text archive files; I am less sure in the case of freeze files and huffman
   coded files.
 
-The "gecos dump" command is available to display the contents of a file in octal and ASCII, and may
+The "bun dump" command is available to display the contents of a file in octal and ASCII, and may
 be useful for exploring files.
 
 _Text Archive Files_
@@ -89,8 +89,8 @@ Archive files have the following format:
 - The first line always appears to be a descriptor plus 20 words of 000s. It is ignored.
 - End of file markers are optional, but do apply if found. (See above.)
 
-For additional clues, see doc/file_format/decode_help.txt, the source file lib/gecos/file/text.rb or 
-run "gecos dump"
+For additional clues, see doc/file_format/decode_help.txt, the source file lib/bun/file/text.rb or 
+run "bun dump"
 
 _Freeze Files_
 
@@ -133,8 +133,8 @@ Freeze files have the following format:
 - They also don't appear to use the end of file marker
 
 For additional clues, see doc/file_format/decode_help.txt, the source file lib/defroster.rb or 
-run "gecos dump" or "gecos freezer dump".
+run "bun dump" or "bun freezer dump".
 
 _Huffman Coded Files_
 
-I haven't explored this format. See decode_help.txt, free.b.txt, or try running "gecos dump".
+I haven't explored this format. See decode_help.txt, free.b.txt, or try running "bun dump".

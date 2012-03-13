@@ -1,4 +1,4 @@
-class GECOS
+class Bun
   class File
     class Text < File::Blocked
       attr_reader :errors

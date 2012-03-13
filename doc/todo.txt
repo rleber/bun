@@ -23,19 +23,19 @@ LAYERS YET TO BE DEFINED
 TODO
 Archive.new(location)
 File type for print listings (Qu: are these ever frozen?)
-GECOS::File should open a file as the appropriate type, depending on whether it's frozen or not
+Bun::File should open a file as the appropriate type, depending on whether it's frozen or not
 Merge File::Descriptor with File::FreezerDescriptor
-GECOS::File.open(name) (or archive.open(name) ?)
-Optimize file processing for speed (e.g. gecos ls command)
+Bun::File.open(name) (or archive.open(name) ?)
+Optimize file processing for speed (e.g. bun ls command)
 Refactor Slicr based on the concept of layers, etc.
 Refactor file decoding based on Slicr module
 Are data and file_system classes necessary?
 Set file modification dates for text files, based on data in _misc/fass-index.txt
 Ignore files not in the index
 Implement Ian's naming conventions
-Ability to 'gecos archive ls' by archive name patterns
+Ability to 'bun archive ls' by archive name patterns
 Ability to search xref'ed files, for example find files with multiple copies
-Change name of 'gecos archive xref' perhaps 'gecos archive organize'?
+Change name of 'bun archive xref' perhaps 'bun archive organize'?
 Keep a .spec file in decoded archives showing how the archive is organized?
 Flatten out code: freezer thaw => thaw (or even combine with unpack)
 Option to include file modification date in unpacked or thawed file names
@@ -47,7 +47,6 @@ Refactor repair (and thaw/unpack?): create parent class or mixin, and combine co
 Standardize Decode and Defrost interfaces
 Change defrost file specifications to tape:file
 Move Slicr bit masks to Slicr class
-Rename GECOS to GCOS (or Gecko? or Bun?)
 Clean code
 Build as a gem
 Revise installation readme

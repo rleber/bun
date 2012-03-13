@@ -1,7 +1,7 @@
-require 'gecos/archive'
-require 'gecos/shell'
+require 'bun/archive'
+require 'bun/shell'
 
-class GECOS
+class Bun
 
   class FreezerBot < Thor
     

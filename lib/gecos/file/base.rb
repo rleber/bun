@@ -1,6 +1,0 @@
-require 'gecos/word'
-require 'gecos/file/file'
-require 'gecos/file/header'
-require 'gecos/file/blocked'
-require 'gecos/file/text'
-require 'gecos/file/defroster'

@@ -1,7 +1,7 @@
 # Simple Shell interface
 # I created a separate class for this to encapsulate system dependencies
 
-class GECOS
+class Bun
   class Shell
     attr_accessor :dryrun, :quiet
     
@@ -72,7 +72,7 @@ class GECOS
           args.unshift "--log #{shell_quote(args.last[:log])}"
         end
       end
-      _run "gecos freezer thaw", *args
+      _run "bun freezer thaw", *args
     end
     
     def unpack(*args)
@@ -81,7 +81,7 @@ class GECOS
           args.unshift "--log #{shell_quote(args.last[:log])}"
         end
       end
-      _run "gecos unpack", *args
+      _run "bun unpack", *args
     end
     
     def set_timestamp(file, timestamp, options={})

@@ -1,6 +1,6 @@
-class GECOS
+class Bun
   class File
-    class Frozen < GECOS::File
+    class Frozen < Bun::File
       attr_reader :file, :errors
       attr_accessor :strict, :warn
     
@@ -236,4 +236,4 @@ class GECOS
     end
   end
 end
-require 'gecos/file/freezer_descriptor'
+require 'bun/file/freezer_descriptor'

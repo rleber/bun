@@ -5,8 +5,8 @@
 target = File.dirname(__FILE__) + '/../lib'
 $:.unshift(target) unless $:.include?(target) || $:.include?(File.expand_path(target))
 
-require 'gecos/word'
-require 'gecos/array'
+require 'bun/word'
+require 'bun/array'
 
 WORD_FORMAT = '%012o'
 DEFAULT_FORMAT = '%p'
@@ -134,7 +134,7 @@ def show_slice_class_parameter(slice, parameter, options={})
 end
 
 def show_word_class_parameter(name, options={})
-  show_value "GECOS::Word.#{name}", options
+  show_value "Bun::Word.#{name}", options
 end
 
 def get_slice_class_parameter(slice, parameter, options={})
@@ -145,7 +145,7 @@ def get_slice_class_parameter(slice, parameter, options={})
 end
 
 def class_name(slice)
-  "GECOS::Word::" + slice.to_s.gsub(/(^|_)(.)/) {|match| $2.upcase}
+  "Bun::Word::" + slice.to_s.gsub(/(^|_)(.)/) {|match| $2.upcase}
 end
 
 def show_slice_class_parameters(slice, parameter_list, options={})
@@ -166,11 +166,11 @@ def show_slice_class_parameters(slice, parameter_list, options={})
 end
 
 def format_class_collection(name, options={})
-  format_collection_table(GECOS::Word, name, {:format=>WORD_FORMAT}.merge(options))
+  format_collection_table(Bun::Word, name, {:format=>WORD_FORMAT}.merge(options))
 end
 
 def show_class_collection(name, options={})
-  puts "GECOS::Word.#{name}:"
+  puts "Bun::Word.#{name}:"
   table = format_class_collection(name, options)
   put_table table
 end
@@ -240,7 +240,7 @@ end
 
 def show_word(expr)
   show_value "#{expr}.value", :format=>WORD_FORMAT
-  GECOS::Word.slices.sort_by{|name, defn| name.to_s}.each do |slice, defn|
+  Bun::Word.slices.sort_by{|name, defn| name.to_s}.each do |slice, defn|
     show_word_slice expr, slice
     puts
   end
@@ -248,13 +248,13 @@ end
 
 MASKS = %w{single_bit_mask ones_mask}
 
-puts "GECOS::Word:"
-show_value "GECOS::Word.width"
-show_value "GECOS::Word.ones_mask", :format=>WORD_FORMAT
-show_collections "GECOS::Word", MASKS, :format=>WORD_FORMAT, :size=>GECOS::Word.width+1
+puts "Bun::Word:"
+show_value "Bun::Word.width"
+show_value "Bun::Word.ones_mask", :format=>WORD_FORMAT
+show_collections "Bun::Word", MASKS, :format=>WORD_FORMAT, :size=>Bun::Word.width+1
 puts
 
-GECOS::Word.slices.sort_by{|name, defn| name.to_s}.each do |slice, slice_defn|
+Bun::Word.slices.sort_by{|name, defn| name.to_s}.each do |slice, slice_defn|
   show_slice_class_parameters slice, %w{width offset count significant_bits mask(%#012o) string?(%p)}
   puts
   
@@ -262,8 +262,8 @@ GECOS::Word.slices.sort_by{|name, defn| name.to_s}.each do |slice, slice_defn|
   puts
 end
 
-$byte_test_word = GECOS::Word.new(0111222333444)
-$negative = GECOS::Word.new(0777777777777)
+$byte_test_word = Bun::Word.new(0111222333444)
+$negative = Bun::Word.new(0777777777777)
 
 show_word "$byte_test_word"
 show_word "$negative"
@@ -292,7 +292,7 @@ show_value "$negative.integer.unsigned.instance_eval { @formats }.inspect"
 show_value "$negative.integer(0).unsigned.octal"
 show_value "$negative.integer.signed.hex"
 
-$words = GECOS::Words[1,2,3]
+$words = Bun::Words[1,2,3]
 show_value "$words.class"
 show_value "$words"
 show_value "$words.size"
@@ -306,7 +306,7 @@ show_value "$words[2..3]"
 show_value "$words[2..3].bytes"
 show_value "$words[2..3].byte(3)"
 show_value "$words[2..3].byte(4)"
-# $double_word = GECOS::Block[1,2]
+# $double_word = Bun::Block[1,2]
 # show_value "$double_word"
 # show_value "$double_word[0]"
 # show_value "$double_word[0].class"

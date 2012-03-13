@@ -1,4 +1,4 @@
-archive: ~/gecos_archive
+archive: ~/bun_archive
 raw_directory: raw
 files_directory: files
 extract_directory: tapes

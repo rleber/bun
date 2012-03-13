@@ -1,7 +1,7 @@
-require 'gecos/file/descriptor'
+require 'bun/file/descriptor'
 
-class GECOS
-  # TODO What would happen if GECOS::File subclassed File?
+class Bun
+  # TODO What would happen if Bun::File subclassed File?
   class File
     # TODO File::Frozen is a subclass
     
@@ -14,30 +14,30 @@ class GECOS
       end
       
       def characters_per_word
-        GECOS::Word.character.count
+        Bun::Word.character.count
       end
 
       def packed_characters_per_word
-        GECOS::Word.packed_character.count
+        Bun::Word.packed_character.count
       end
 
       def decode(data)
-        GECOS::Words.import(data)
+        Bun::Words.import(data)
       end
 
       def open(fname, &blk)
         new(:file=>fname, &blk)
       end
 
-      # Convert an eight-character GECOS date "mm/dd/yy" to a Ruby Date
+      # Convert an eight-character Bun date "mm/dd/yy" to a Ruby Date
       def date(date)
         Date.strptime(date,"%m/%d/%y")
       end
 
-      # Convert a GECOS timestamp to the time of day in hours (24 hour clock)
+      # Convert a Bun timestamp to the time of day in hours (24 hour clock)
       # Returns a three item array: hour, minutes, seconds (with embedded fractional seconds)
-      TIME_SUM = 1620000 # additive offset for converting GECOS times
-      TIME_DIV = 64000.0 # division factor for converting GECOS ticks to seconds
+      TIME_SUM = 1620000 # additive offset for converting Bun times
+      TIME_DIV = 64000.0 # division factor for converting Bun ticks to seconds
       def time_of_day(timestamp)
         timestamp = timestamp.integer.value
         seconds = (timestamp + TIME_SUM) / TIME_DIV
@@ -46,7 +46,7 @@ class GECOS
         [hours, minutes, seconds]
       end
 
-      # Convert a GECOS date and time into a Ruby Time
+      # Convert a Bun date and time into a Ruby Time
       def time(date, timestamp)
         hours, minutes, seconds = time_of_day(timestamp)
         seconds, frac = seconds.divmod(1.0)
@@ -106,7 +106,7 @@ class GECOS
       words = options[:words]
       if file
         @tape = file
-        words = GECOS::Words.read(file)
+        words = Bun::Words.read(file)
       elsif data
         @tape = options[:tape]
         words = self.class.decode(data)

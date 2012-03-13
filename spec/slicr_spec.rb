@@ -677,7 +677,7 @@ describe Slicr::WordsBase do
   end
 end
 # TODO Write tests for Blocks
-# $double_word = GECOS::Block[1,2]
+# $double_word = Bun::Block[1,2]
 # show_value "$double_word"
 # show_value "$double_word[0]"
 # show_value "$double_word[0].class"

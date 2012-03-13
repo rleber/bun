@@ -1,11 +1,11 @@
 require 'thor'
 require 'mechanize'
 require 'fileutils'
-require 'gecos/archive'
-require 'gecos/shell'
-require 'gecos/archive_indexbot'
+require 'bun/archive'
+require 'bun/shell'
+require 'bun/archive_indexbot'
 
-class GECOS
+class Bun
   class ArchiveBot < Thor
     
     # TODO Move this to tools project; refactor
@@ -88,10 +88,10 @@ Fetched files are copied to subdirectories of the data directory. So, for instan
 data/example.com/in/a/subdirectory and its subdirectories, mirroring the structure online.
 
 If no URL is provided, this command will use the location specified in the data/archive_config.yml
-file or the GECOS_REPOSITORY environment variable. If neither is set, the URL is mandatory.
+file or the BUN_REPOSITORY environment variable. If neither is set, the URL is mandatory.
 
 If no "to" location is provided, this command will use the archive location specified in
-data/archive_config.yml. Usually, this is ~/gecos_archive
+data/archive_config.yml. Usually, this is ~/bun_archive
     EOT
     def fetch(url=nil)
       agent = Mechanize.new
@@ -383,6 +383,6 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       end
     end
     
-    register GECOS::Archive::IndexBot, :index, "index", "Process Honeywell archive index"
+    register Bun::Archive::IndexBot, :index, "index", "Process Honeywell archive index"
   end
 end

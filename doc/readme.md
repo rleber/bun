@@ -1,8 +1,9 @@
-_Notes about GECOS scripts_
+_Notes about Bun (GCOS) scripts_
 
-These scripts retrieve and read files archived from the Honeywell GECOS system. They were created in order
+These scripts retrieve and read files archived from the Honeywell GCOS system. They were created in order
 to access files from the University of Waterloo (http://uwaterloo.ca/), specifically archived files from the
-student theatrical group FASS.
+student theatrical group FASS. (The name is from the Honeywell's affectionate nickname -- the 'bun. For
+Honeybun. Get it?)
 
 _About the software_
 
@@ -31,14 +32,14 @@ At the moment, you will have to take the following steps to install the software
 5. Install any missing Ruby Gem dependencies (you'll know them from the error messages)
 6. Configure file locations: You can do this by setting the values in the file data/archive_config.yml, or with
    environment variables, in some cases:
-   - Set the default location to store a retrieved archive of GECOS files using the archive entry in the config file.
-   - Set the default URL for retrieving archived files (i.e. using "gecos fetch"), either by setting the value
-     for the repository entry in the config file, or by setting the "GECOS_REPOSITORY" environment variable.
+   - Set the default location to store a retrieved archive of GCOS files using the archive entry in the config file.
+   - Set the default URL for retrieving archived files (i.e. using "bun fetch"), either by setting the value
+     for the repository entry in the config file, or by setting the "BUN_REPOSITORY" environment variable.
 
 _Running this software_
 
-There is one primary executable src/gecos. Assuming that the src directory is in your load path, it should
-be pretty simple to run the software from the command line, by typing the command "gecos". Without any
+There is one primary executable src/bun. Assuming that the src directory is in your load path, it should
+be pretty simple to run the software from the command line, by typing the command "bun". Without any
 parameters, the command should provide you with a helpful summary of all the available subcommands.
 
 _File formats_

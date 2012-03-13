@@ -2,9 +2,9 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require 'tempfile'
 
 def decode(file_name)
-  archive = GECOS::Archive.new
+  archive = Bun::Archive.new
   expanded_file = File.join("data", "test", file_name)
-  file = GECOS::File::Text.open(expanded_file)
+  file = Bun::File::Text.open(expanded_file)
   file.text.split("\n")
 end
 
@@ -14,8 +14,8 @@ end
 
 def scrub(lines, options={})
   tabs = options[:tabs] || '80'
-  tempfile = Tempfile.new('gecos1')
-  tempfile2 = Tempfile.new('gecos2')
+  tempfile = Tempfile.new('bun1')
+  tempfile2 = Tempfile.new('bun2')
   tempfile.write(lines.join("\n"))
   tempfile.close
   tempfile2.close
@@ -37,13 +37,13 @@ end
 
 shared_examples "command" do |command|
   command_name = command.split(/\s+/).first
-  it "handles #{('gecos ' + command).inspect} command properly" do
-    res = `gecos #{command} 2>&1`
+  it "handles #{('bun ' + command).inspect} command properly" do
+    res = `bun #{command} 2>&1`
     res.chomp.split("\n").should == readfile(File.join("output", 'test', command_name))
   end
 end
 
-describe GECOS::File::Text do
+describe Bun::File::Text do
   include_examples "simple", "ar119.1801"
   include_examples "simple", "ar003.0698"
   
@@ -57,7 +57,7 @@ end
 
 # Frozen files to check ar013.0560, ar004.0888, ar019.0175
 
-describe GECOS::Bot do
+describe Bun::Bot do
   include_examples "command", "ls -ldr"
   include_examples "command", "describe ar004.0888"
 end

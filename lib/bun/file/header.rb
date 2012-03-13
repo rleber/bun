@@ -1,6 +1,6 @@
-class GECOS
+class Bun
   class File
-    class Header < GECOS::File
+    class Header < Bun::File
       HEADER_SIZE = Descriptor.maximum_size
       
       # TODO Should read in two gulps: first to get the descriptor + one freeze file descriptor (if there), then get descriptors
