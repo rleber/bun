@@ -37,9 +37,9 @@ class Bun
       archived_file = "--unknown--" unless archived_file
       file = File::Text.open(file_name)
       # TODO Is duplicate open necessary?
-      defroster = File::Frozen.new(:file=>file_name)
+      frozen_file = File::Frozen.new(:file=>file_name)
       print "Frozen archive for directory #{archived_file}"
-      print "\nLast updated at #{defroster.update_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
+      print "\nLast updated at #{frozen_file.update_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
       puts ":"
       lines = []
       if options[:long]
@@ -49,15 +49,15 @@ class Bun
       end
       # Retrieve file information
       file_info = []
-      defroster.shard_count.times do |i|
-        descr = defroster.descriptor(i)
+      frozen_file.shard_count.times do |i|
+        descr = frozen_file.descriptor(i)
         next unless descr.file_name=~file_pattern
         file_info << {'order'=>i, 'update'=>descr.update_time, 'size'=>descr.file_words, 'name'=>descr.file_name}
       end
       sorted_order = file_info.sort_by{|fi| [fi[options[:sort]], fi['name']]}.map{|fi| fi['order']} # Sort it in order
       # Accumulate the display
       sorted_order.each do |i|
-        descr = defroster.descriptor(i)
+        descr = frozen_file.descriptor(i)
         if options[:long]
           update_time = descr.update_time
           lines << "#{'%5d'%(i+1)} #{'%-8s'%descr.file_name} #{update_time.strftime(TIMESTAMP_FORMAT)} #{'%10d'%descr.file_words} #{'%10d'%descr.file_blocks} #{'%10d'%descr.file_start}"
@@ -104,12 +104,12 @@ whatever its name.
       archived_file = "--unknown--" unless archived_file
       file = File::Text.open(expanded_file)
       # TODO Is duplicate open necessary?
-      defroster = File::Frozen.new(options.merge(:file=>expanded_file))
-      content = defroster.content(defroster.fn(n))
+      frozen_file = File::Frozen.new(options.merge(:file=>expanded_file))
+      content = frozen_file.content(frozen_file.fn(n))
       shell = Shell.new
-      shell.write out, content, :timestamp=>defroster.update_time, :quiet=>true
-      warn "Thawed with #{defroster.errors} decoding errors" if options[:warn] && defroster.errors > 0
-      shell.log options[:log], "thaw #{out.inspect} from #{file_name.inspect} with #{defroster.errors} errors" if options[:log]
+      shell.write out, content, :timestamp=>frozen_file.update_time, :quiet=>true
+      warn "Thawed with #{frozen_file.errors} decoding errors" if options[:warn] && frozen_file.errors > 0
+      shell.log options[:log], "thaw #{out.inspect} from #{file_name.inspect} with #{frozen_file.errors} errors" if options[:log]
     end
 
     desc "dump ARCHIVE FILE", "Uncompress a frozen Honeywell file"
@@ -126,11 +126,11 @@ whatever its name.
       abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless File.frozen?(file_name)
       file = File::Text.open(file_name)
       # TODO is duplicate open necessary?
-      defroster = File::Frozen.new(:file=>file_name, :warn=>true)
-      file_index = defroster.fn(n)
-      puts "Archive for file_name #{defroster.file_name(file_index)}:"
+      frozen_file = File::Frozen.new(:file=>file_name, :warn=>true)
+      file_index = frozen_file.fn(n)
+      puts "Archive for file_name #{frozen_file.file_name(file_index)}:"
       if options[:thawed]
-        lines = defroster.lines(file_index)
+        lines = frozen_file.lines(file_index)
         # TODO Refactor using Array#justify_rows
         offset_width = ('%o'%lines[-1][:offset]).size
         lines.each do |l|
@@ -145,7 +145,7 @@ whatever its name.
                "#{l[:raw].inspect[1..-2]}"
         end
       else
-        content = defroster.file_words(file_index)
+        content = frozen_file.file_words(file_index)
         Dump.dump(content, options.merge(:frozen=>true))
       end
     end

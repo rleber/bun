@@ -53,17 +53,17 @@ class Bun
           frozen = File.frozen?(tape_path)
           if frozen
             # TODO Is duplicate open necessary?
-            defroster = File::Frozen.new(:file=>tape_path)
-            case tape_spec[:date] <=> defroster.update_date
+            frozen_file = File::Frozen.new(:file=>tape_path)
+            case tape_spec[:date] <=> frozen_file.update_date
             when -1 
-              puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is older than date of frozen archive (#{defroster.update_date.strftime('%Y/%m/%d')})" \
+              puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is older than date of frozen archive (#{frozen_file.update_date.strftime('%Y/%m/%d')})" \
                 if inclusions.include?('old') &&!exclusions.include?('old')
             when 1
-              puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is newer than date of frozen archive (#{defroster.update_date.strftime('%Y/%m/%d')})" \
+              puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is newer than date of frozen archive (#{frozen_file.update_date.strftime('%Y/%m/%d')})" \
               if inclusions.include?('new') &&!exclusions.include?('new')
             end
-            defroster.shard_count.times do |i|
-              descriptor = defroster.descriptor(i)
+            frozen_file.shard_count.times do |i|
+              descriptor = frozen_file.descriptor(i)
               file_date = descriptor.update_date
               frozen_file = descriptor.file_name
               case tape_spec[:date] <=> file_date
@@ -74,12 +74,12 @@ class Bun
                 puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is newer than date of frozen file #{frozen_file} (#{file_date.strftime('%Y/%m/%d')})" \
                   if inclusions.include?('new_file') &&!exclusions.include?('new_file')
               end
-              case defroster.update_date <=> defroster.update_date
+              case frozen_file.update_date <=> frozen_file.update_date
               when -1 
-                puts "#{tape}: Archival date of archive (#{defroster.update_date.strftime('%Y/%m/%d')}) is older than date of frozen file #{frozen_file} (#{file_date.strftime('%Y/%m/%d')})" \
+                puts "#{tape}: Archival date of archive (#{frozen_file.update_date.strftime('%Y/%m/%d')}) is older than date of frozen file #{frozen_file} (#{file_date.strftime('%Y/%m/%d')})" \
                   if inclusions.include?('old_file') &&!exclusions.include?('old_file')
               when 1
-                puts "#{tape}: Archival date of archive (#{defroster.update_date.strftime('%Y/%m/%d')}) is newer than date of frozen file #{frozen_file} (#{file_date.strftime('%Y/%m/%d')})" \
+                puts "#{tape}: Archival date of archive (#{frozen_file.update_date.strftime('%Y/%m/%d')}) is newer than date of frozen file #{frozen_file} (#{file_date.strftime('%Y/%m/%d')})" \
                   if inclusions.include?('new_file') &&!exclusions.include?('new_file')
               end
             end

@@ -38,8 +38,7 @@ class Bun
     option "tapes",   :aliases=>"-t", :type=>'string',  :default=>'',                :desc=>"Show only tapes that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
     option "type",    :aliases=>"-T", :type=>'string',  :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
     # TODO Refactor tape/file patterns; use tape::file::shard syntax
-    # TODO Include size for shards on --frozen
-    # TODO Include date/time for shards on --frozen
+    # TODO Speed this up; esp. ls with no options
     def ls
       abort "Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
       type_pattern = case options[:type].downcase
@@ -76,10 +75,10 @@ class Bun
         size = header.file_size
         # TODO Override file size, update date/time for frozen files
         if type=='frozen'
-          defroster = File::Frozen.new(:file=>tape_path)
-          archival_date = defroster.update_time
+          frozen_file = File::Frozen.new(:file=>tape_path)
+          archival_date = frozen_file.update_time
           archival_date_display = archival_date.strftime('%Y/%m/%d %H:%M:%S')
-          size = defroster.file_size
+          size = frozen_file.file_size
         end
         file_row = {'tape'=>display_name, 'type'=>type, 'file'=>file_name, 'date'=>archival_date_display, 'size'=>size}
         if options[:descr]
@@ -88,8 +87,8 @@ class Bun
         file_info << file_row
         if type == "frozen" && options[:frozen]
           # TODO is extra File.open necessary?
-          defroster = File::Frozen.new(:file=>tape_path)
-          defroster.shard_descriptors.each do |d|
+          frozen_file = File::Frozen.new(:file=>tape_path)
+          frozen_file.shard_descriptors.each do |d|
             file_info << {'tape'=>display_name, 'type'=>'shard', 'file'=>d.path, 'archive'=>file_name, 'size'=>d.size, 'date'=>d.update_time.strftime('%Y/%m/%d %H:%M:%S')}
           end
         end
@@ -146,7 +145,8 @@ class Bun
       archived_file = "--unknown--" unless archived_file
       puts "Archive for file #{archived_file}:"
       words = file.words
-      Dump.dump(words, options.merge(:offset=>offset))
+      lc = Dump.dump(words, options.merge(:offset=>offset))
+      puts "No data to dump" if lc == 0
     end
     
     desc "unpack FILE [TO]", "Unpack a file (Not frozen files -- use freezer subcommands for that)"
@@ -223,21 +223,31 @@ class Bun
       # TODO frozen? should be available from descriptor
       type = file.file_type
       # TODO Ultimately, descriptors should understand and retrieve freeze file names
-      frozen_files = File::Frozen.new(:file=>tape_path).shard_names.sort if type == :frozen
+      if type == :frozen
+        f = File::Frozen.open(tape_path)
+        frozen_files = f.shard_names.sort
+        # TODO Files should automatically retrieve the correct size
+        # TODO Verify the correctness of this size calculation
+        size = f.size
+      else
+        size = file.size
+      end
       # TODO Refactor using Array#justify_rows
-      puts "Tape             #{file_name}"
-      puts "Tape path        #{tape_path}"
-      puts "Archived file    #{path}"
-      puts "Archive          #{archive_name}"
-      puts "Subdirectory     #{subdirectory}"
-      puts "Name             #{name}"
-      puts "Description      #{description}"
-      puts "Specification    #{specification}"
+      puts "Tape:            #{file_name}"
+      puts "Tape path:       #{tape_path}"
+      puts "Archived file:   #{path}"
+      puts "Archive:         #{archive_name}"
+      puts "Subdirectory:    #{subdirectory}"
+      puts "Name:            #{name}"
+      puts "Description:     #{description}"
+      puts "Specification:   #{specification}"
+      # TODO Change the following to Index date, and add update date from file for frozen files
       puts "Archival date:   #{archival_date_display}"
-      puts "Size (words):    #{file.size}"
-      puts "Type:            #{type}"
+      puts "Size (words):    #{size}"
+      puts "Type:            #{type.to_s.sub(/^./) {|m| m.upcase}}"
       # TODO Prettier display of file names
-      puts "Shards:         #{frozen_files.join(', ')}" if type == :frozen
+      # TODO Display more detail for shards: update date, size, full path
+      puts "Shards:          #{frozen_files.join(', ')}" if type == :frozen
     end
 
     register Bun::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files"

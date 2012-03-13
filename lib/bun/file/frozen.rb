@@ -11,10 +11,45 @@ class Bun
         @warn = options[:warn]
       end
       
-      # Shard count in word 1 isn't reliable.
       # Better is to take the start of the first shard - the preamble divided by the descriptor size
       def shard_count
-        [words[1].half_word[1].to_i, (words[content_offset + 5 + 7] - 5).div(File::Frozen::Descriptor.size)].min
+        shard_count_based_on_position_of_shard_contents
+      end
+      
+      # There are three ways to determine shard count. The first of these is the official way: it is
+      # fast but relies on a header data field being set correctly. The second is also fast, and should
+      # work unless the shard data is in the wrong place, which seems unlikely. The third is the most 
+      # reliable -- it counts the shard describtors -- but it's slower.
+      
+      # Official method: fast, and reliable if the field is set properly
+      def shard_count_based_on_word_1
+        file_content[1].half_word(1).to_i
+      end
+
+      # Fast and fairly reliable:
+      def shard_count_based_on_position_of_shard_contents
+        descriptors_size.div(File::Frozen::Descriptor.size)
+      end
+      
+      # Most reliable, but slower:
+      def shard_count_based_on_count_of_valid_shard_descriptors
+        i = 0
+        loop do
+          d = Frozen::Descriptor.new(self, i, :allow=>true)
+          break if !d.valid?
+          i += 1
+        end
+        i
+      end
+      
+      # TODO reimplement this based on LazyArray for descriptors
+      def preamble_size
+        # Find size from position of data for first shard
+        words[content_offset + File::Frozen::Descriptor.offset + 7]
+      end
+      
+      def descriptors_size
+        preamble_size - File::Frozen::Descriptor.offset
       end
       
       def update_date
@@ -30,10 +65,10 @@ class Bun
       end
     
       def _update_time_of_day
-        words[4]
+        content[4]
       end
     
-      # TODO Choose earlier of update time or time indicated in index
+      # TODO Choose latest (earliest?) of update time, time indicated in index, or shard update times
       def update_time
         File.time(_update_date, _update_time_of_day)
       end
@@ -236,4 +271,4 @@ class Bun
     end
   end
 end
-require 'bun/file/freezer_descriptor'
+require 'bun/file/frozen_descriptor'

@@ -122,9 +122,9 @@ data/archive_config.yml. Usually, this is ~/bun_archive
         file = File::Text.open(extended_file_name)
         file_path = file.file_path
         if frozen
-          defroster = File::Frozen.new(:file=>extended_file_name)
-          defroster.shard_count.times do |i|
-            descr = defroster.descriptor(i)
+          frozen_file = File::Frozen.new(:file=>extended_file_name)
+          frozen_file.shard_count.times do |i|
+            descr = frozen_file.descriptor(i)
             subfile_name = descr.file_name
             f = File.join(to, tape_name, file_path, subfile_name)
             dir = File.dirname(f)
@@ -347,8 +347,8 @@ data/archive_config.yml. Usually, this is ~/bun_archive
         file = File.open(extended_file_name)
         len = file.content_offset
         if File.frozen?(extended_file_name)
-          defroster = File::Frozen.new(:file=>extended_file_name)
-          total_len = len + defroster.files*File::Frozen::Descriptor.size
+          frozen_file = File::Frozen.new(:file=>extended_file_name)
+          total_len = len + frozen_file.files*File::Frozen::Descriptor.size
         else
           total_len = len
         end
@@ -361,6 +361,7 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       puts "Maximum preamble length: #{max} words"
     end
     
+    # TODO Remove this
     desc "types", "List file typess"
     def types
       archive = Archive.new
@@ -371,6 +372,36 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       end
     end
     
+    desc "count_shards", "Count shards in frozen files three different ways"
+    def count_shards
+      archive = Archive.new
+      table = [%w{Tape Word1 Positions Valid Flag}]
+      flagged = false
+      archive.tapes.each do |tape_name|
+        extended_file_name = archive.expanded_tape_path(tape_name)
+        file = File::Header.open(extended_file_name)
+        if file.file_type == :frozen
+          f = File::Frozen.open(extended_file_name)
+          counts = [
+            f.shard_count_based_on_word_1, 
+            f.shard_count_based_on_position_of_shard_contents, 
+            f.shard_count_based_on_count_of_valid_shard_descriptors
+          ]
+          row = [tape_name] + counts.map{|c| '%3d' % c } 
+          if counts.min != counts.max
+            flagged = true
+            row << '*'
+          else
+            row << ''
+          end
+          table << row
+        end
+      end
+      puts table.justify_rows.map{|row| row.join('  ')}.join("\n")
+      abort "!Shard counts don't match in flagged entries" if flagged
+    end
+    
+    # TODO Run this; check if there's a way to discern listing files automagically
     desc "with_tabs", "Show files containing tabs"
     def with_tabs
       archive = Archive.new

@@ -98,7 +98,10 @@ Freeze files have the following format:
 - Each freeze file includes several archived files or 'shards' (similar to modern tar files)
 - After the preamble, there is a general information block of 5 words in length
   - Word 0: The number of words in the file
-  - Word 1: The number of archived shards in the freeze file
+  - Word 1: Supposed to have the number of archived shards in the freeze file in its lower half
+            word. However, in practice, I have found this to be unreliable. It's better to use the
+            position of the contents of the first shard to indicate where the shard descriptors
+            stop, and therefore how many of them there are (each is always 10 words long).
   - Words 2 and 3: The date of last update of the freeze file
   - Word 4: The time of last update of the freeze file
 - After the general information block comes a series of file descriptors, one for each shard:
@@ -132,7 +135,7 @@ Freeze files have the following format:
 - Frozen files don't seem to pay attention to the file size data in word 0 of the file (?)
 - They also don't appear to use the end of file marker
 
-For additional clues, see doc/file_format/decode_help.txt, the source file lib/defroster.rb or 
+For additional clues, see doc/file_format/decode_help.txt, the source file lib/frozen_file.rb or 
 run "bun dump" or "bun freezer dump".
 
 _Huffman Coded Files_

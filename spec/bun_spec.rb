@@ -1,15 +1,21 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require 'tempfile'
 
+def unpack(text)
+  lines = text.split("\n").map{|line| line.rstrip}
+  lines.pop if lines.last == ""
+  lines
+end
+
 def decode(file_name)
   archive = Bun::Archive.new
   expanded_file = File.join("data", "test", file_name)
   file = Bun::File::Text.open(expanded_file)
-  file.text.split("\n")
+  unpack(file.text)
 end
 
 def readfile(file)
-  File.read(file).split("\n")
+  unpack(File.read(file))
 end
 
 def scrub(lines, options={})
@@ -20,7 +26,7 @@ def scrub(lines, options={})
   tempfile.close
   tempfile2.close
   system("cat #{tempfile.path.inspect} | ruby -p -e '$_.gsub!(/_\\x8/,\"\")' | expand -t #{tabs} >#{tempfile2.path.inspect}")
-  File.read(tempfile2.path).split("\n")
+  unpack(File.read(tempfile2.path))
 end
 
 def decode_and_scrub(file, options={})
@@ -35,11 +41,10 @@ shared_examples "simple" do |file|
   end
 end
 
-shared_examples "command" do |command|
-  command_name = command.split(/\s+/).first
+shared_examples "command" do |command, output|
   it "handles #{('bun ' + command).inspect} command properly" do
     res = `bun #{command} 2>&1`
-    res.chomp.split("\n").should == readfile(File.join("output", 'test', command_name))
+    unpack(res).should == readfile(File.join("output", 'test', output))
   end
 end
 
@@ -58,6 +63,15 @@ end
 # Frozen files to check ar013.0560, ar004.0888, ar019.0175
 
 describe Bun::Bot do
-  include_examples "command", "ls -ldr"
-  include_examples "command", "describe ar004.0888"
+  # TODO Speed up ls tests: test "ls", "ls -ldr" with a frozen file and a text file
+  describe "ls" do
+    include_examples "command", "ls -ldr", "ls_ldr"
+    include_examples "command", "ls", "ls"
+    include_examples "command", "ls -ldr -t ar003.0698", "ls_ldrt_ar003.0698"
+    include_examples "command", "ls -ldr -t ar004.0888", "ls_ldrt_ar004.0888"
+    include_examples "command", "ls -ldr -t ar145.2699", "ls_ldrt_ar145.2699"
+  end
+  describe "describe" do
+    include_examples "command", "describe ar004.0888", "describe"
+  end
 end

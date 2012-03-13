@@ -110,9 +110,9 @@ class Bun
         if self.class.frozen?(extended_file_name)
           file = File.open(extended_file_name)
           # TODO is double open necessary?
-          defroster = File::Frozen.new(:file=>extended_file_name)
-          defroster.file_paths.each_with_index do |path, i|
-            file = defroster.file_name(i)
+          frozen_file = File::Frozen.new(:file=>extended_file_name)
+          frozen_file.file_paths.each_with_index do |path, i|
+            file = frozen_file.file_name(i)
             contents << {:tape=>tape_name, :file=>file, :tape_and_file=>"#{tape_name}:#{file}", :path=>path}
           end
         else

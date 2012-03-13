@@ -5,6 +5,8 @@ class Bun
     FROZEN_CHARACTERS_PER_WORD = 5
     UNFROZEN_CHARACTERS_PER_WORD = 4
     
+    # TODO Dump should understand frozen file sizes
+    # TODO Dump should be able to dump frozen file preambles 4 chars/word, then 5 chars/word for the remainder
     def self.dump(words, options={})
       offset = options[:offset] || 0
       if options[:lines]
@@ -27,6 +29,7 @@ class Bun
       # TODO Refactor using Array#justify_rows
       address_width = ('%o'%(limit+display_offset)).size
       i = offset
+      line_count = 0
       loop do
         break if i > limit
         j = [i+WORDS_PER_LINE-1, limit].min
@@ -45,8 +48,10 @@ class Bun
         end
         address = '0' + ("%0#{address_width}o"%(i + display_offset))
         stream.puts "#{address} #{chunk.join(' ')} #{chars}"
+        line_count += 1
         i += WORDS_PER_LINE
       end
+      line_count
     end
   end
 end

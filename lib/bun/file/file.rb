@@ -125,19 +125,20 @@ class Bun
         @words = words
         @descriptor = Descriptor.new(self)
         @all_characters = LazyArray.new(words.size*characters_per_word) do |n|
-          @words.characters[n]
+          @words.characters.at(n)
         end
         @all_packed_characters = LazyArray.new(words.size*packed_characters_per_word) do |n|
-          @words.packed_characters[n]
+          @words.packed_characters.at(n)
         end
         @file_content = LazyArray.new(size-content_offset) do |n|
-          n < self.size ? @words[content_offset+n] : nil
+          # TODO is this check vs. size necessary? is it correct?
+          n < self.size ? @words.at(content_offset+n) : nil
         end
         @characters = LazyArray.new(@file_content.size*characters_per_word) do |n|
-          @words.characters[n + content_offset*characters_per_word]
+          @words.characters.at(n + content_offset*characters_per_word)
         end
         @packed_characters = LazyArray.new(@file_content.size*packed_characters_per_word) do |n|
-          @words.characters[n + content_offset*packed_characters_per_word]
+          @words.characters.at(n + content_offset*packed_characters_per_word)
         end
       end
       words

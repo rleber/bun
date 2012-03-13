@@ -21,7 +21,10 @@ LAYERS YET TO BE DEFINED
 - Multiword layers: e.g. layers with a slice size a fixed integral multiple of the slices in the supporting layer
 
 TODO
+Rename Defroster and Defroster::Descriptor, move files
+Better header retrieval
 Archive.new(location)
+Better file type checking
 File type for print listings (Qu: are these ever frozen?)
 Bun::File should open a file as the appropriate type, depending on whether it's frozen or not
 Merge File::Descriptor with File::FreezerDescriptor
