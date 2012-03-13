@@ -62,12 +62,12 @@ class GECOS
         file_name = archive.file_path(tape_name)
         tape_path = archive.expanded_tape_path(tape_name)
         display_name = options[:path] ? tape_path : tape_name
-        frozen = Archive.frozen?(tape_path)
+        frozen = File.frozen?(tape_path)
         archival_date = archive.archival_date(tape_name)
         archival_date_display = archival_date ? archival_date.strftime('%Y/%m/%d') : "n/a"
         friz = frozen ? 'Archive' : 'Text'
         header = File::Header.open(tape_path)
-        file_row = {'tape'=>display_name, 'type'=>friz, 'file'=>file_name, 'date'=>archival_date_display, 'size'=>header.size}
+        file_row = {'tape'=>display_name, 'type'=>friz, 'file'=>file_name, 'date'=>archival_date_display, 'size'=>header.file_size}
         if options[:descr]
           file_row['description'] = header.description
         end
@@ -133,7 +133,7 @@ class GECOS
       file = File::Text.open(expanded_file)
       file.keep_deletes = true if options[:delete]
       archived_file = archive.file_path(expanded_file)
-      abort "Can't unpack #{file_name}. It contains a frozen file_name: #{archived_file}" if Archive.frozen?(expanded_file)
+      abort "Can't unpack #{file_name}. It contains a frozen file_name: #{archived_file}" if File.frozen?(expanded_file)
       if options[:inspect]
         lines = []
         file.lines.each do |l|
@@ -192,7 +192,7 @@ class GECOS
       archival_date = archive.archival_date(file_name)
       archival_date_display = archival_date ? archival_date.strftime('%Y/%m/%d') : "n/a"
       # TODO frozen? should be available from descriptor
-      frozen = Archive.frozen?(tape_path)
+      frozen = File.frozen?(tape_path)
       # TODO Ultimately, descriptors should understand and retrieve freeze file names
       frozen_files = Defroster.new(file).file_names.sort if frozen
       # TODO Refactor using Array#justify_rows

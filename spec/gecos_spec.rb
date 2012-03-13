@@ -33,7 +33,17 @@ shared_examples "simple" do |file|
     outfile = File.join("output", "test", infile)
     decode(infile).should == readfile(outfile)
   end
-end  
+end
+
+shared_examples "command" do |command|
+  command_name = command.split(/\s+/).first
+  it "handles #{('gecos ' + command).inspect} command properly" do
+    res = capture :stdout, :stderr do
+      system "gecos #{command}"
+    end
+    res.split("\n") == readfile(File.join("output", 'test', command_name))
+  end
+end
 
 describe GECOS::File::Text do
   include_examples "simple", "ar119.1801"
@@ -45,4 +55,9 @@ describe GECOS::File::Text do
     outfile = File.join("output", "test", infile)
     decode_and_scrub(infile, :tabs=>'80').should == readfile(outfile)
   end
+end
+
+describe GECOS::Bot do
+  include_examples "command", "ls -ld"
+  include_examples "command", "describe ar004.0888"
 end

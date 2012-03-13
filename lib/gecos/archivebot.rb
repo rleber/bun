@@ -117,7 +117,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       shell.rm_rf to
       ix.each do |tape_name|
         extended_file_name = archive.expanded_tape_path(tape_name)
-        frozen = Archive.frozen?(extended_file_name)
+        frozen = File.frozen?(extended_file_name)
         file = File::Text.open(extended_file_name)
         file_path = file.file_path
         if frozen
@@ -345,7 +345,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
         extended_file_name = archive.expanded_tape_path(tape_name)
         file = File.open(extended_file_name)
         len = file.content_offset
-        if Archive.frozen?(extended_file_name)
+        if File.frozen?(extended_file_name)
           defroster = Defroster.new(file)
           total_len = len + defroster.files*Defroster::Descriptor.size
         else

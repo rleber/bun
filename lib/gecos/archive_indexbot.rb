@@ -50,7 +50,7 @@ class GECOS
           if tape_spec[:file] != file.unexpanded_file_path && inclusions.include?('name') && !exclusions.include?('name')
             puts "#{tape}: File name in index (#{tape_spec[:file].inspect}) doesn't match contents of file (#{file.unexpanded_file_path.inspect})"
           end
-          frozen = Archive.frozen?(tape_path)
+          frozen = File.frozen?(tape_path)
           if frozen
             # TODO Is duplicate open necessary?
             defroster = Defroster.new(File.open(tape_path))

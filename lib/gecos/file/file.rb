@@ -84,6 +84,11 @@ class GECOS
       def descriptor(options={})
         Header.new(options).descriptor
       end
+      
+      def frozen?(file_name)
+        raise "File #{file_name} doesn't exist" unless ::File.exists?(file_name)
+        new(:file=>file_name).frozen?
+      end
     end
     
     CHARACTERS_PER_WORD = characters_per_word
@@ -187,10 +192,14 @@ class GECOS
       elsif options[:all]
         @words.size
       else
-         res = (words[0].half_word[1])+1
-         res = res.value unless res.is_a?(Fixnum)
-         res
+        file_size
       end
+    end
+    
+    def file_size
+      res = (words[0].half_word[1])+1
+      res = res.value unless res.is_a?(Fixnum)
+      res
     end
 
     def date(location)
@@ -219,6 +228,15 @@ class GECOS
       descriptor.send(meth, *args, &blk)
     rescue NoMethodError
       raise NoMethodError, "#{self.class}##{meth} method not defined"
+    end
+    
+    
+    # Is this file frozen?
+    # Yes, if and only if it has a valid descriptor
+    def frozen?
+      defroster = Defroster.new(self)
+      descriptor = Defroster::Descriptor.new(defroster, 0, :allow=>true)
+      descriptor.valid?
     end
   end
 end

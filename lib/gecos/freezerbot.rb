@@ -32,7 +32,7 @@ class GECOS
       abort "Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
       archive = Archive.new
       file_name = archive.expanded_tape_path(file_name)
-      abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file_name)
+      abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless File.frozen?(file_name)
       archived_file = archive.file_path(file_name)
       archived_file = "--unknown--" unless archived_file
       file = File::Text.open(file_name)
@@ -99,7 +99,7 @@ whatever its name.
     def thaw(file_name, n, out=nil)
       archive = Archive.new
       expanded_file = archive.expanded_tape_path(file_name)
-      abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(expanded_file)
+      abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless File.frozen?(expanded_file)
       archived_file = archive.file_path(expanded_file)
       archived_file = "--unknown--" unless archived_file
       file = File::Text.open(expanded_file)
@@ -123,7 +123,7 @@ whatever its name.
       file_name = archive.expanded_tape_path(file_name)
       archived_file = archive.file_path(file_name)
       archived_file = "--unknown--" unless archived_file
-      abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless Archive.frozen?(file_name)
+      abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless File.frozen?(file_name)
       file = File::Text.open(file_name)
       # TODO is duplicate open necessary?
       defroster = Defroster.new(File.open(file_name), :warn=>true)

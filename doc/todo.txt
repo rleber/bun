@@ -26,6 +26,7 @@ File type for print listings (Qu: are these ever frozen?)
 GECOS::File should open a file as the appropriate type, depending on whether it's frozen or not
 Merge File::Descriptor with File::FreezerDescriptor
 GECOS::File.open(name) (or archive.open(name) ?)
+Optimize file processing for speed (e.g. gecos ls command)
 Refactor Slicr based on the concept of layers, etc.
 Refactor file decoding based on Slicr module
 Are data and file_system classes necessary?
