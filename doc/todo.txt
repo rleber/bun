@@ -42,7 +42,7 @@ Option to include file modification date in unpacked or thawed file names
 Option to turn off resetting file modification dates for unpacked or thawed files
 Option to add an extension to unpacked or thawed files (e.g. '.txt')
 Option to create archives organized like file/v1/file1, file/v2/file2, etc.
-Look for Huffman-coded files
+Look for Huffman-coded files: e.g. ar003.0701
 Refactor repair (and thaw/unpack?): create parent class or mixin, and combine common code
 Standardize Decode and Defrost interfaces
 Change defrost file specifications to tape:file

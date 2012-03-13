@@ -58,6 +58,6 @@ describe GECOS::File::Text do
 end
 
 describe GECOS::Bot do
-  include_examples "command", "ls -ld"
+  include_examples "command", "ls -ldr"
   include_examples "command", "describe ar004.0888"
 end

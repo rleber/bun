@@ -54,8 +54,12 @@ class GECOS
         words(start, 1).first
       end
       
-      def file_name
+      def name
         characters(0,8).strip
+      end
+      
+      def path
+        File.relative_path(defroster.path, name)
       end
       
       def update_date
@@ -74,11 +78,12 @@ class GECOS
         word(4)
       end
       
+      # TODO Choose earlier of this time or time of file
       def update_time
         File.time(_update_date, _update_time_of_day)
       end
       
-      def file_blocks
+      def blocks
         word(6).value
       end
       
@@ -90,11 +95,11 @@ class GECOS
         self.class.block_size
       end
       
-      def file_start
+      def start
         word(7).value
       end
       
-      def file_words
+      def size
         word(8).value
       end
       

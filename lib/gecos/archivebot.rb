@@ -106,6 +106,7 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
     desc "extract [TO]", "Extract all the files in the archive"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    # TODO store metadata (e.g. description, source tape, source file type) in extended file attributes
     def extract(to=nil)
       @dryrun = options[:dryrun]
       directory = options[:archive] || Archive.location
@@ -358,6 +359,28 @@ data/archive_config.yml. Usually, this is ~/gecos_archive
       end
       puts data.sort_by{|row| p row; row.last.to_i}.map{|row| row[-2] = row[-2].to_s; row[-1] = row[-1].to_s; row}.justify_rows.map{|row| row.join('  ')}.join("\n")
       puts "Maximum preamble length: #{max} words"
+    end
+    
+    desc "types", "List file typess"
+    def types
+      archive = Archive.new
+      archive.tapes.each do |tape_name|
+        extended_file_name = archive.expanded_tape_path(tape_name)
+        file = File::Header.open(extended_file_name)
+        puts "#{tape_name}: #{file.fiile_type}"
+      end
+    end
+    
+    desc "with_tabs", "Show files containing tabs"
+    def with_tabs
+      archive = Archive.new
+      archive.tapes.each do |tape_name|
+        extended_file_name = archive.expanded_tape_path(tape_name)
+        file = File::Header.open(extended_file_name)
+        next if file.frozen?
+        file = File::Text.open(extended_file_name)
+        puts tape_name if file.content =~ /\t/
+      end
     end
     
     register GECOS::Archive::IndexBot, :index, "index", "Process Honeywell archive index"

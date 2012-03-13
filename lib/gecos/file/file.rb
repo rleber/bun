@@ -97,15 +97,18 @@ class GECOS
     SPECIFICATION_POSITION = 11 # words
     DESCRIPTION_PATTERN = /\s+(.*)/
     
-    attr_reader :words, :descriptor, :all_characters, :characters, :all_packed_characters, :packed_characters
+    attr_reader :words, :file_content, :descriptor, :all_characters, :characters, :all_packed_characters, :packed_characters, :tape
     
+    # TODO Use File.create instead of File.new, so we can create the proper subclass, depending on type
     def initialize(options={}, &blk)
       file = options[:file]
       data = options[:data]
       words = options[:words]
       if file
+        @tape = file
         words = GECOS::Words.read(file)
       elsif data
+        @tape = nil
         words = self.class.decode(data)
       end
       self.words = words
@@ -237,6 +240,12 @@ class GECOS
       defroster = Defroster.new(self)
       descriptor = Defroster::Descriptor.new(defroster, 0, :allow=>true)
       descriptor.valid?
+    end
+    
+    def file_type
+      return :frozen if frozen?
+      return :huff if content[0].characters.join == 'huff'
+      return :text
     end
   end
 end

@@ -95,29 +95,29 @@ run "gecos dump"
 _Freeze Files_
 
 Freeze files have the following format:
-- Each freeze file includes several archived files (similar to modern tar files)
+- Each freeze file includes several archived files or 'shards' (similar to modern tar files)
 - After the preamble, there is a general information block of 5 words in length
   - Word 0: The number of words in the file
-  - Word 1: The number of archived files in the freeze file
+  - Word 1: The number of archived shards in the freeze file
   - Words 2 and 3: The date of last update of the freeze file
   - Word 4: The time of last update of the freeze file
-- After the general information block comes a series of file descriptors, one for each archived file:
+- After the general information block comes a series of file descriptors, one for each shard:
   - Each file descriptor is ten words in length
   - The fields in each descriptor are as follows:
-    - Words 0 and 1: The name of the archived file, in 9-bit ASCII characters, padded with spaces
-    - Words 2 and 3: The date of last update of the archived file
-    - Word 4: The time of last update of the archived file
+    - Words 0 and 1: The name of the archived shard, in 9-bit ASCII characters, padded with spaces
+    - Words 2 and 3: The date of last update of the shard
+    - Word 4: The time of last update of the shard
     - Word 5: Always the ASCII characters 'asc '
     - Word 6: According to free.b.txt, "The number of 64-word blocks contained in the file."
         I can find no evidence of this being the case, nor have I found it necessary to use
         this data.
-    - Word 7: Starting word index of the contents of the file (zero-based offset, relative
+    - Word 7: Starting word index of the contents of the shard (zero-based offset, relative
         to the end of the preamble)
-    - Word 8: The number of words of data in the frozen file. This appears to be generally true,
-        except that the last frozen file in the archive extends all the way to the end of the
+    - Word 8: The number of words of data in the shard. This appears to be generally true,
+        except that the last frozen file in the archive may extend all the way to the end of the
         file, regardless of what the descriptor says about its length.
     - Word 9: Always 0777777777777
-- The frozen data for each file is always in 7-bit ASCII, starting at the word position
+- The frozen data for each shard is always in 7-bit ASCII, starting at the word position
   as specified in the descriptor for the file. The data is stored line-by-line. Each line is
   formatted as follows:
   - A line always takes an integral number of words. Excess space is padded with zeros.
@@ -129,7 +129,7 @@ Freeze files have the following format:
     - Bits 8-14: The length of the line, in characters, including the final LF
     - Bits 9-35: The first 3 characters of the line, encoded as described above
   - Subsequent words contain the successive characters for the remainder of the line
-- Frozen files don't seem to pay attention to the file size data in word 0 of the file
+- Frozen files don't seem to pay attention to the file size data in word 0 of the file (?)
 - They also don't appear to use the end of file marker
 
 For additional clues, see doc/file_format/decode_help.txt, the source file lib/defroster.rb or 

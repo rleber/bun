@@ -38,7 +38,7 @@ class GECOS
     end
     
     def characters(*args)
-      file.characters(*args)
+      file.characters[*args].join
     end
       
     def update_date
@@ -57,6 +57,7 @@ class GECOS
       words[4]
     end
     
+    # TODO Choose earlier of update time or time indicated in index
     def update_time
       File.time(_update_date, _update_time_of_day)
     end
@@ -76,25 +77,32 @@ class GECOS
       descriptors[n]
     end
     
-    def file_name(n)
+    def path
+      file.path
+    end
+    
+    def file_size
+      offset + descriptor(files-1).start + descriptor(files-1).size
+    end
+    
+    def shard_name(n)
       d = descriptor(n)
       return nil unless d
-      d.file_name
+      d.name
     end
     
-    def file_names
-      (0...files).map{|n| file_name(n)}
+    def shard_names
+      (0...files).map{|n| shard_name(n)}
     end
     
-    def file_path(n=nil)
-      return file.file_path if n.nil?
+    def shard_path(n=nil)
       d = descriptor(n)
       return nil unless d
-      Shell.relative_path(file.file_path, d.file_name)
+      d.path
     end
     
-    def file_paths
-      (0...files).map{|n| file_path(n)}
+    def shard_paths
+      (0...files).map{|n| shard_path(n)}
     end
     
     # Convert a file name to an index number; also convert negative indexes
@@ -113,14 +121,14 @@ class GECOS
         n -= 1
       else
         name = n.to_s.sub(/^\\/,'') # Remove leading '\\', if any
-        n = file_index(name)
+        n = shard_index(name)
         abort "Frozen file does not contain a file #{name}" unless n
       end
       n
     end
     
-    def file_index(name)
-      descr = descriptors.find {|d| d.file_name == name}
+    def shard_index(name)
+      descr = descriptors.find {|d| d.name == name}
       if descr
         index = descr.number
       else
@@ -129,13 +137,13 @@ class GECOS
       index
     end
     
-    def file_words(n)
+    def shard_words(n)
       d = descriptor(n)
       return nil unless d
       if n == files-1
-        words[d.file_start..-1]
+        words[d.start..-1]
       else
-        words[d.file_start, d.file_words]
+        words[d.start, d.size]
       end
     end
     
@@ -173,7 +181,7 @@ class GECOS
     end
 
     def thaw(n)
-      words = file_words(n)
+      words = shard_words(n)
       line_offset = 0
       lines = []
       warned = false
