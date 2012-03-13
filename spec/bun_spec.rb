@@ -72,6 +72,6 @@ describe Bun::Bot do
     include_examples "command", "ls -ldr -t ar145.2699", "ls_ldrt_ar145.2699"
   end
   describe "describe" do
-    include_examples "command", "describe ar004.0888", "describe"
+    include_examples "command", "describe ar025.0634", "describe"
   end
 end

@@ -1,53 +1,38 @@
-Tape:            ar004.0888
-Tape path:       /Users/richard/bun_archive/raw/ar004.0888
-Archived file:   fass/scripfrz
+Tape:            ar025.0634
+Tape path:       /Users/richard/bun_archive/raw/ar025.0634
+Archived file:   fass/songfest.f
 Owner:           fass
 Subdirectory:    
-Name:            scripfrz
-Description:     ==> freeze file containing roff source for fass '77 script
-Specification:   /scripfrz ==> freeze file containing roff source for fass '77 script
-Index date:      1977/03/02
-Updated at:      1977/03/01 15:40:58
-Size (words):    40058
+Name:            songfest.f
+Description:     ===> Songs from Fass '79 (roff source frz)
+Specification:   /songfest.f ===> Songs from Fass '79 (roff source frz)
+Index date:      1979/04/13
+Updated at:      1979/04/08 13:02:33
+Size (words):    3751
 Type:            Frozen
 
 Shards:
-  Name:          fasshole                macros                  evathing                1zero                   1one                  
-  Path:          fass/scripfrz/fasshole  fass/scripfrz/macros    fass/scripfrz/evathing  fass/scripfrz/1zero     fass/scripfrz/1one    
-  Updated at:    1977/02/10 16:44:55     1977/02/11 08:53:15     1977/02/10 16:44:55     1977/02/10 16:47:52     1977/02/18 09:06:07   
-  Size (words):  16                      238                     174                     71                      299                   
-                                                                                                                                       
-  Name:          1two                    1three                  1four                   1five                   1six                  
-  Path:          fass/scripfrz/1two      fass/scripfrz/1three    fass/scripfrz/1four     fass/scripfrz/1five     fass/scripfrz/1six    
-  Updated at:    1977/02/11 08:56:09     1977/02/11 08:56:09     1977/02/11 08:53:15     1977/02/11 08:59:30     1977/02/10 16:47:59   
-  Size (words):  162                     727                     1860                    1706                    85                    
-                                                                                                                                       
-  Name:          1seven                  1eight                  1nine                   1ten                    1eleven               
-  Path:          fass/scripfrz/1seven    fass/scripfrz/1eight    fass/scripfrz/1nine     fass/scripfrz/1ten      fass/scripfrz/1eleven 
-  Updated at:    1977/02/11 08:59:30     1977/02/11 09:10:44     1977/02/11 09:10:44     1977/02/11 09:42:17     1977/02/11 09:42:17   
-  Size (words):  1217                    449                     2172                    2373                    2248                  
-                                                                                                                                       
-  Name:          1twelve                 1thirtee                1fourtee                1fifteen                1sixteen              
-  Path:          fass/scripfrz/1twelve   fass/scripfrz/1thirtee  fass/scripfrz/1fourtee  fass/scripfrz/1fifteen  fass/scripfrz/1sixteen
-  Updated at:    1977/02/10 16:48:21     1977/02/14 08:51:07     1977/02/14 08:51:07     1977/02/10 16:48:49     1977/02/14 08:57:19   
-  Size (words):  88                      1783                    1482                    193                     783                   
-                                                                                                                                       
-  Name:          3zero                   3one                    3two                    3three                  3four                 
-  Path:          fass/scripfrz/3zero     fass/scripfrz/3one      fass/scripfrz/3two      fass/scripfrz/3three    fass/scripfrz/3four   
-  Updated at:    1977/02/14 08:57:19     1977/02/14 09:04:23     1977/02/14 09:04:23     1977/02/14 09:10:14     1977/02/14 09:10:14   
-  Size (words):  354                     1926                    1672                    936                     1813                  
-                                                                                                                                       
-  Name:          3five                   3six                    3seven                  3eight                  3nine                 
-  Path:          fass/scripfrz/3five     fass/scripfrz/3six      fass/scripfrz/3seven    fass/scripfrz/3eight    fass/scripfrz/3nine   
-  Updated at:    1977/02/14 09:15:55     1977/02/18 09:06:07     1977/02/18 09:06:07     1977/02/10 16:55:54     1977/02/10 16:55:54   
-  Size (words):  1211                    1976                    199                     95                      103                   
-                                                                                                                                       
-  Name:          3ten                    3eleven                 3twelve                 3thirtee                3fourtee              
-  Path:          fass/scripfrz/3ten      fass/scripfrz/3eleven   fass/scripfrz/3twelve   fass/scripfrz/3thirtee  fass/scripfrz/3fourtee
-  Updated at:    1977/02/18 09:38:21     1977/02/10 16:56:14     1977/02/18 10:18:04     1977/02/18 10:32:57     1977/02/10 16:56:51   
-  Size (words):  2441                    87                      3189                    1707                    124                   
-                                                                                                                                       
-  Name:          3fifteen                3sixteen                3sevente                roftemps                unfreeze              
-  Path:          fass/scripfrz/3fifteen  fass/scripfrz/3sixteen  fass/scripfrz/3sevente  fass/scripfrz/roftemps  fass/scripfrz/unfreeze
-  Updated at:    1977/02/18 11:29:00     1977/02/18 11:01:09     1977/02/18 10:32:57     1977/03/01 15:02:04     1977/03/01 15:40:58   
-  Size (words):  2712                    360                     409                     108                     76                    
+  Name:          opening                   harold                    albania                   drink                     master                  
+  Path:          fass/songfest.f/opening   fass/songfest.f/harold    fass/songfest.f/albania   fass/songfest.f/drink     fass/songfest.f/master  
+  Updated at:    1979/02/13 15:08:55       1979/02/13 15:03:24       1979/02/13 15:03:24       1979/02/13 15:03:24       1979/02/13 15:03:24     
+  Size (words):  225                       116                       68                        43                        53                      
+                                                                                                                                                 
+  Name:          hunch                     badge                     unfurled                  we'reoff                  meop                    
+  Path:          fass/songfest.f/hunch     fass/songfest.f/badge     fass/songfest.f/unfurled  fass/songfest.f/we'reoff  fass/songfest.f/meop    
+  Updated at:    1979/02/13 15:03:24       1979/02/13 15:03:24       1979/02/13 15:16:57       1979/02/13 15:17:08       1979/02/13 15:21:34     
+  Size (words):  54                        52                        192                       98                        199                     
+                                                                                                                                                 
+  Name:          custom                    lifegrnd                  lovemach                  meanpce                   wantbomb                
+  Path:          fass/songfest.f/custom    fass/songfest.f/lifegrnd  fass/songfest.f/lovemach  fass/songfest.f/meanpce   fass/songfest.f/wantbomb
+  Updated at:    1979/02/13 15:27:25       1979/02/13 15:30:13       1979/02/15 00:29:13       1979/02/13 15:31:10       1979/02/13 15:32:32     
+  Size (words):  143                       133                       95                        181                       35                      
+                                                                                                                                                 
+  Name:          nukenuke                  disaster                  hoowhom                   aphrds'c                  mabell                  
+  Path:          fass/songfest.f/nukenuke  fass/songfest.f/disaster  fass/songfest.f/hoowhom   fass/songfest.f/aphrds'c  fass/songfest.f/mabell  
+  Updated at:    1979/02/18 21:09:57       1979/02/14 10:39:54       1979/02/13 15:55:48       1979/02/13 15:57:18       1979/02/13 15:57:48     
+  Size (words):  30                        87                        211                       173                       232                     
+                                                                                                                                                 
+  Name:          closing                   79macros                  songcrun                                                                    
+  Path:          fass/songfest.f/closing   fass/songfest.f/79macros  fass/songfest.f/songcrun                                                    
+  Updated at:    1979/02/13 15:58:57       1979/02/13 16:04:19       1979/04/08 13:02:33                                                         
+  Size (words):  118                       838                       115                                                                         

@@ -47,7 +47,7 @@ class Bun
         when 't', 'text'
           /^text$/i
         when 'h', 'huff', 'huffman'
-          /^huff$/i
+          /^huffman$/i
         when '*','a','all'
           //
         else
@@ -70,27 +70,39 @@ class Bun
         tape_path = file.tape
         type = file.file_type.to_s
         size = file.file_size
-        # TODO Override file size, update date/time for frozen files
+        shards = file.shard_count
+        shards = '' if shards == 0
         if type=='frozen'
           index_date = file.update_time
           index_date_display = index_date.strftime('%Y/%m/%d %H:%M:%S')
-          # TODO The following should no longer be necessary
-          # size = frozen_file.file_size
         else
           # TODO Make this available from the file; requires saving the archive object
           index_date = archive.index_date(tape_name)
           index_date_display = index_date ? index_date.strftime('%Y/%m/%d') : "n/a"
         end
         display_name = options[:path] ? tape_path : tape_name
-        file_row = {'tape'=>display_name, 'type'=>type, 'file'=>file_name, 'date'=>index_date_display, 'size'=>size}
+        file_row = {
+          'tape'=>display_name, 
+          'type'=>type.sub(/^./) {|m| m.upcase}, 
+          'file'=>file_name, 
+          'date'=>index_date_display, 
+          'size'=>size,
+          'shards'=>shards
+        }
         if options[:descr]
           file_row['description'] = file.description
         end
         file_info << file_row
         if type == "frozen" && options[:frozen]
-          # TODO Include # shards
           file.shard_descriptors.each do |d|
-            file_info << {'tape'=>display_name, 'type'=>'shard', 'file'=>d.path, 'archive'=>file_name, 'size'=>d.size, 'date'=>d.update_time.strftime('%Y/%m/%d %H:%M:%S')}
+            file_info << {
+              'tape'=>display_name, 
+              'type'=>'Shard', 
+              'file'=>d.path, 
+              'archive'=>file_name, 
+              'size'=>d.size, 
+              'date'=>d.update_time.strftime('%Y/%m/%d %H:%M:%S')
+            }
           end
         end
       end
@@ -99,13 +111,13 @@ class Bun
       sorted_info = file_info.sort_by{|fi| [fi[options[:sort]||''], fi['file'], fi['tape']]} # Sort it in order
 
       # Display it
-      # TODO format times here
+      # TODO format times here, esp type
       table = []
-      header = options[:long] ? %w{Tape Type Update Size File} : %w{Tape File}
+      header = options[:long] ? %w{Tape Type Update Size File Shards} : %w{Tape File}
       header << 'Description' if options[:descr]
       table << header
       sorted_info.each do |entry|
-        table_row = entry.values_at(*(options[:long] ? %w{tape type date size file} : %w{tape file}))
+        table_row = entry.values_at(*(options[:long] ? %w{tape type date size file shards} : %w{tape file}))
         table_row << entry['description'] if options[:descr]
         table << table_row
       end

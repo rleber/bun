@@ -93,8 +93,9 @@ module Slicr
       
       def read(file, options={})
         if file.is_a?(String)
-          close_when_done = true
+          abort "File #{file} does not exist" unless ::File.exists?(file)
           file = ::File.open(file, 'rb')
+          close_when_done = true
         end
         bytes = options[:n] ? (constituent_class.width * options[:n] + 8 - 1).div(8) : nil
         import(file.read(bytes))

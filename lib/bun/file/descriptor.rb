@@ -84,6 +84,10 @@ class Bun
       def shard_names
         file.shard_names rescue []
       end
+      
+      def shard_count
+        file.shard_count rescue 0
+      end
     end
   end
 end
