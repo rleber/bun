@@ -114,11 +114,14 @@ class Bun
         create(options.merge(:header=>true), &blk)
       end
       
+      INITIAL_FETCH_SIZE = 30
       def get_preamble(options)
         # TODO Do larger first fetch; only refetch if it wasn't enough
-        preamble_size = content_offset(get_words(2, options))
+        initial_fetch = get_words(INITIAL_FETCH_SIZE, options)
+        preamble_size = content_offset(initial_fetch)
         fetch_size = preamble_size + File::Frozen::Descriptor.offset+ File::Frozen::Descriptor.size
-        File::Raw.send(:new, :words=>get_words(fetch_size, options))
+        full_fetch = fetch_size > INITIAL_FETCH_SIZE ? get_words(fetch_size, options) : initial_fetch
+        File::Raw.send(:new, :words=>full_fetch)
       end
       
       def get_words(n, options)
