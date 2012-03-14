@@ -1,0 +1,68 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'thor'
+require File.join(File.dirname(__FILE__), '../lib/bun/array')
+
+class Analyzer < Thor
+  DEFAULT_LOG = ENV['HOME'] + '/.indexable_basic.log'
+  attr_accessor :log_file
+  
+  no_tasks do
+    def load(log_file=nil)
+      log_file ||= @log_file || DEFAULT_LOG
+      log = []
+      File.open(log_file) do |f|
+        f.each do |line|
+          log << eval(line)
+        end
+      end
+      log
+    end
+    
+    def log
+      @log ||= load
+    end
+  end
+  
+  desc "count_args", "Count accesses by argument type"
+  def count_args
+    arg_counts = Hash.new(0)
+    log.each do |entry|
+      arg_counts[entry[:args]] += 1
+    end
+    arg_counts = arg_counts.to_a.sort_by{|e| -e.last}
+    arg_counts.each {|e| e[-1]=e[-1].to_s}
+    arg_counts = arg_counts.justify_rows
+    puts arg_counts.map{|e| e.join('  ')}.join("\n")
+  end
+  
+  
+  desc "count_args_by_class", "Count accesses by argument type"
+  def count_args_by_class
+    class_arg_counts = {}
+    arg_counts = Hash.new(0)
+    class_counts = Hash.new(0)
+    total_count = 0
+    log.each do |entry|
+      class_arg_counts[entry[:class]] ||= {}
+      class_arg_counts[entry[:class]][entry[:args]] ||= 0
+      class_arg_counts[entry[:class]][entry[:args]] += 1
+      arg_counts[entry[:args]] += 1
+      class_counts[entry[:class]] += 1
+      total_count += 1
+    end
+    keys = arg_counts.to_a.sort_by{|e| -e.last}.map{|e| e.first }
+    classes = class_counts.to_a.sort_by{|e| -e.last}.map{|e| e.first }
+    table = [['class'] + keys + ['total']]
+    classes.each do |klass|
+      table << [klass] + class_arg_counts[klass].values_at(*keys).map{|n| n.to_s} + [class_counts[klass].to_s]
+    end
+    table << ["total"] + keys.map{|k| arg_counts[k].to_s} + [total_count.to_s]
+    table = table.justify_rows
+    puts table.map{|row| row.join('  ')}.join("\n")
+  end
+  
+end
+
+Analyzer.start

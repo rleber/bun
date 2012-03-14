@@ -183,13 +183,23 @@ module Indexable
         return []
       end
       res = (@index_range[:start]..@index_range[:end]).map {|i| at(i) }
+      @index_range[:class] = self.class.name
       if @index_range[:result] == :scalar
         res = res.first 
       else
         klass = self.index_array_class || self.class
+        @index_range[:array_class] = klass.name
         res = klass.new(res)
       end
+      log
       res
+    end
+    
+    INDEXABLE_BASIC_LOG_FILE = ENV['HOME'] + '/.indexable_basic.log'
+    $indexable_basic_log = true
+    def log
+      return unless $indexable_basic_log
+      File.open(INDEXABLE_BASIC_LOG_FILE, 'a') {|f| f.puts @index_range.inspect + "\n"}
     end
     
     def index_range
