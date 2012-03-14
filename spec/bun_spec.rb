@@ -41,10 +41,12 @@ shared_examples "simple" do |file|
   end
 end
 
-shared_examples "command" do |command, output|
-  it "handles #{('bun ' + command).inspect} command properly" do
+shared_examples "command" do |descr, command, output|
+  it "handles #{descr} properly" do
+    # warn "> bun #{command}"
     res = `bun #{command} 2>&1`
-    unpack(res).should == readfile(File.join("output", 'test', output))
+    output = File.join("output", 'test', output) unless output =~ %r{/}
+    unpack(res).should == readfile(output)
   end
 end
 
@@ -63,15 +65,26 @@ end
 # Frozen files to check ar013.0560, ar004.0888, ar019.0175
 
 describe Bun::Bot do
-  # TODO Speed up ls tests: test "ls", "ls -ldr" with a frozen file and a text file
-  describe "ls" do
-    # include_examples "command", "ls -ldr", "ls_ldr"
-    include_examples "command", "ls", "ls"
-    include_examples "command", "ls -ldr -t ar003.0698", "ls_ldrt_ar003.0698"
-    include_examples "command", "ls -ldr -t ar004.0888", "ls_ldrt_ar004.0888"
-    include_examples "command", "ls -ldr -t ar145.2699", "ls_ldrt_ar145.2699"
+  # include_examples "command", "descr", "cmd", "output"
+  describe "check" do
+    include_examples "command", "check clean file", "check data/test/clean", "check_clean"
+    include_examples "command", "check dirty file", "check data/test/ar119.1801", "check_dirty"
   end
+    
   describe "describe" do
-    include_examples "command", "describe ar025.0634", "describe"
+    include_examples "command", "describe text file", "describe ar025.0634", "describe_ar025.0634"
+    include_examples "command", "describe frozen file", "describe ar025.0634", "describe_ar025.0634"
+  end
+  describe "ls" do
+    include_examples "command", "ls", "ls", "ls"
+    include_examples "command", "ls -ldr with text file", "ls -ldr -t ar003.0698", "ls_ldrt_ar003.0698"
+    include_examples "command", "ls -ldr with frozen file", "ls -ldr -t ar004.0888", "ls_ldrt_ar004.0888"
+    include_examples "command", "ls -ldr with frozen file (check dates)", "ls -ldr -t ar145.2699", "ls_ldrt_ar145.2699"
+  end
+  describe "readme" do
+    include_examples "command", "readme", "readme", "doc/readme.md"
+  end
+  describe "unpack" do
+    include_examples "command", "unpack", "unpack ar003.0698", "unpack"
   end
 end

@@ -171,11 +171,10 @@ class Bun
     # TODO rename bun read
     def unpack(file_name, to=nil)
       archive = Archive.new
-      expanded_file = archive.expanded_tape_path(file_name)
-      file = File::Text.open(expanded_file)
+      file = archive.open(file_name)
       file.keep_deletes = true if options[:delete]
-      archived_file = archive.file_path(expanded_file)
-      abort "Can't unpack #{file_name}. It contains a frozen file_name: #{archived_file}" if File.frozen?(expanded_file)
+      archived_file = file.path
+      abort "Can't unpack #{file_name}. It contains a frozen file_name: #{archived_file}" if file.file_type == :frozen
       if options[:inspect]
         lines = []
         file.lines.each do |l|
@@ -208,12 +207,12 @@ class Bun
       system("cat #{file.inspect} | ruby -p -e '$_.gsub!(/_\\x8/,\"\")' | expand -t #{tabs}")
     end
     
-    desc "test FILE", "Test a file for cleanness -- i.e. does it contain non-printable characters?"
-    def test(file)
-      if ::File.clean?(::File.read(file))
+    desc "check FILE", "Test a file for cleanness -- i.e. does it contain non-printable characters?"
+    def check(file)
+      if File.clean?(::File.read(file))
         puts "File is clean"
       else
-        puts "File is dirty"
+        abort "File is dirty"
       end
     end
     
@@ -280,6 +279,11 @@ class Bun
         row_table = grand_table.justify_columns.transpose
         puts row_table.map{|row| '  ' + row.join('  ')}.join("\n")
       end
+    end
+    
+    desc "test", "test this software"
+    def test
+      exec "thor spec"
     end
 
     register Bun::FreezerBot, :freezer, "freezer", "Manage frozen Honeywell files"
