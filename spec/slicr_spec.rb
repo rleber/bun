@@ -359,7 +359,7 @@ describe "instance" do
         StrangeWord.too_long.count.should == 0
       end
     end
-
+    
     STRING_SLICES.each do |slice_name|
       slice = $bytes.send(slice_name) rescue nil
       slices_name = slice_name.pluralize
@@ -454,6 +454,8 @@ describe "instance" do
         $strings.characters.string.should == "ABCD"
       end
     end
+    
+    # TODO Test retrievals from cache
 
     NON_STRING_SLICES.each do |slice_name|
       slice = $bytes.send(slice_name) rescue nil
@@ -659,18 +661,6 @@ describe Slicr::WordsBase do
   end
   
   it_behaves_like "slicr is indexed", $words, [1,2,3]
-  # 
-  # it "should allow inclusive index ranges" do
-  #   $words[1..2].should == [2,3]
-  # end
-  # 
-  # it "should allow exclusive index ranges" do
-  #   $words[1...-1].should == [2]
-  # end
-  # 
-  # it "should allow indexing by pairs" do
-  #   $words[1,2].should == [2,3]
-  # end
   
   it "should allow assignment" do
     words = $words.dup
@@ -679,16 +669,15 @@ describe Slicr::WordsBase do
   end
   
   it "should allow accessors" do
-    $words.bytes.should == [0,0,0,1,0,0,0,2,0,0,0,3]
+    $words.bytes.to_a.should == [0,0,0,1,0,0,0,2,0,0,0,3]
   end
   
   it "should allow indexed accessors" do
-    $words[1,2].half_words.should == [0,2,0,3]
+    $words[1,2].half_words.to_a.should == [0,2,0,3]
   end
 end
-
 # TODO Write tests for Blocks
-# $double_word = GECOS::Block[1,2]
+# $double_word = Bun::Block[1,2]
 # show_value "$double_word"
 # show_value "$double_word[0]"
 # show_value "$double_word[0].class"

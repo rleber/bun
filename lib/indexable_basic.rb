@@ -51,7 +51,9 @@ module Indexable
   module Basic
     
     def self.included(base)
-      base.send(:alias_method, :slice, :[])
+      base.send(:alias_method, :slice, :[]) if base.instance_methods.include?(:[])
+      base.send(:alias_method, :[], :extended_slice)
+      base.send(:attr_accessor, :index_array_class)
     end
     
     # Convert an index (which might be negative) to a positive one
@@ -172,7 +174,7 @@ module Indexable
     private :_adjust_result_type
   
     # Define generalized indexing in terms of at(i)
-    def [](*args)
+    def extended_slice(*args)
       @index_range = normalize_indexes(*args)
       case @index_range[:result]
       when :nil
@@ -181,7 +183,12 @@ module Indexable
         return []
       end
       res = (@index_range[:start]..@index_range[:end]).map {|i| at(i) }
-      res = res.first if @index_range[:result] == :scalar
+      if @index_range[:result] == :scalar
+        res = res.first 
+      else
+        klass = self.index_array_class || self.class
+        res = klass.new(res)
+      end
       res
     end
     

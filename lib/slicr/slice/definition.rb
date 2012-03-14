@@ -5,6 +5,7 @@ module Slicr
     class Definition
 
       attr_accessor :bits
+      attr_accessor :cached
       attr_accessor :count
       attr_accessor :class_name
       attr_accessor :slice_class
@@ -43,6 +44,7 @@ module Slicr
         self.options.merge!(opts)
 
         @is_string = !!options[:string]
+        @cached = !!options[:cached]
         @sign = options[:sign] || :none
         @slice_class = make_class
         @width = options[:width]
@@ -83,6 +85,10 @@ module Slicr
       def sign?
         @sign != :none
       end
+      
+      def cached?
+        @cached
+      end
     
       def base_data_class
         if string?
@@ -110,9 +116,13 @@ module Slicr
       end
       
       def retrieve(from_object, index)
-        # puts "#{slice_class} retrieve(#{from_object.class}, #{index.inspect}): width=#{width.inspect}, offset=#{offset.inspect}, gap=#{gap.inspect}"
-        value = from_object.get_slice(index, width, offset, gap) & mask
-        slice_class.new(value)
+        obj = cached? && from_object.get_cache(name, index)
+        unless obj
+          value = from_object.get_slice(index, :width=>width, :offset=>offset, :gap=>gap) & mask
+          obj = slice_class.new(value)
+          from_object.store_cache(name, index, obj) if cached?
+        end
+        obj
       end
     end
   end

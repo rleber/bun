@@ -25,7 +25,7 @@ module Slicr
         end
       end
       
-      %w{string collapse}.each do |boolean|
+      %w{string collapse cached}.each do |boolean|
         boolean = boolean.to_sym
         define_method "#{boolean}?" do ||
           definition.options[boolean]

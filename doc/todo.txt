@@ -10,37 +10,44 @@ Layers may or may not have a fixed slice width (i.e. the same width for every sl
 Use layer-esque language: layers lie "on" other layers, layers "support" other layers, layers and slices have "layers" in/on them, etc.
 
 LAYERS YET TO BE DEFINED
-Layers of blocks: e.g. a layer with the same slice size as the supporting layer, but broken into segments
-- Segments of fixed size
-- Segments terminated with a sentinel value
-- Segments with a "size" field somewhere
-- Segments pointed to by a pointer
-- Idea: Base block object takes a Proc which determines its start and length, based on the data
-Bit offset layers: e.g. offset by one bit from base layer, etc.
-Multiword layers: e.g. layers with a slice size a fixed integral multiple of the slices in the supporting layer
+- Structures (i.e. a sequence of fields)
+- Blocks: e.g. a layer with the same slice size as the supporting layer, but broken into segments
+  - Segments of fixed size
+  - Segments terminated with a sentinel value
+  - Segments with a "size" field somewhere
+  - Segments pointed to by a pointer
+  - Idea: Base block object takes a Proc which determines its start and length, based on the data
+- Bit offset layers: e.g. offset by one bit from base layer, etc.
+- Multiword layers: e.g. layers with a slice size a fixed integral multiple of the slices in the supporting layer
 
 TODO
-Repair run_word
-Refactor Slicr tests
+Better header retrieval
+Archive.new(location)
+Better file type checking
+File type for print listings (Qu: are these ever frozen?)
+Bun::File should open a file as the appropriate type, depending on whether it's frozen or not
+Merge File::Descriptor with File::FreezerDescriptor
+archive.open(name)
+Optimize file processing for speed (e.g. bun ls command)
 Refactor Slicr based on the concept of layers, etc.
-Refactor file decoding based on Slicr module
-Set file modification dates for normally archived files, based on data in _misc/fass-index.txt
-Fix 320 word block glitch in normally archived files
+Set file modification dates for text files, based on data in _misc/fass-index.txt
 Ignore files not in the index
 Implement Ian's naming conventions
-Ability to 'gecos archive ls' by archive name patterns
+Ability to 'bun archive ls' by archive name patterns
 Ability to search xref'ed files, for example find files with multiple copies
-Change name of 'gecos archive xref' perhaps 'gecos archive organize'?
+Change name of 'bun archive xref' perhaps 'bun archive organize'?
 Keep a .spec file in decoded archives showing how the archive is organized?
 Flatten out code: freezer thaw => thaw (or even combine with unpack)
 Option to include file modification date in unpacked or thawed file names
 Option to turn off resetting file modification dates for unpacked or thawed files
 Option to add an extension to unpacked or thawed files (e.g. '.txt')
 Option to create archives organized like file/v1/file1, file/v2/file2, etc.
-Look for Huffman-coded files
+Look for Huffman-coded files: e.g. ar003.0701, ar116.2122, ar116.2128
 Refactor repair (and thaw/unpack?): create parent class or mixin, and combine common code
 Standardize Decode and Defrost interfaces
-Change defrost file specifications to tape:file
+Change file patterns to tape::file(::shard)? Qu: how to specify whether it must be a shard?
+Possibly caching of archive index?
+Move Slicr bit masks to Slicr class
 Clean code
 Build as a gem
 Revise installation readme

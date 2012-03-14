@@ -53,7 +53,6 @@ module Slicr
       
       # TODO Create a collapsed do ... end idiom?
       def array
-        # puts "In #{definition.name} slicer: count=#{}"
         saved_collapse = collapse?
         self.collapse = false
         res = self[0..-1]
@@ -93,6 +92,7 @@ module Slicr
       def initialize(definition, parent)
         @definition = definition
         @parent = parent
+        self.index_array_class = Slice::Array
       end
       
       def at(i)

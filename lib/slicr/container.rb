@@ -1,4 +1,10 @@
+require 'indexable_basic'
+
+# TODO Create a constructor method, Container(ConstituentClass), a la Slicr::Words
+
 module Slicr
+  # TODO Rename this something consistent with Layer
+  # TODO Rename constituent class something consistent with Layer/Slices/Words
   module Container
     module ClassMethods
       def contains(klass)
@@ -28,6 +34,7 @@ module Slicr
     end
     
     def self.included(base)
+      base.send(:include, Indexable::Basic)
       base.extend(ClassMethods)
     end
 
@@ -45,25 +52,15 @@ module Slicr
       self
     end
 
-    # TODO Extended indexing
-    def [](*args)
-      segment = get_at(*args)
-      case segment
-      when constituent_class, nil
-        segment # Do nothing
-      when Array
-        segment = self.class.new(segment)
-      else 
-        conform(segment)
-      end
-    end
-    alias_method :slice, :[]
-
+    # TODO Extended assignment indexing
     def []=(*args)
       v = args.pop
       v = conform(v)
       args.push(v)
-      set_at(*args)
+      res = set_at(*args)
+      # TODO Smarter handling of change in values
+      clear_cache if self.respond_to?(:clear_cache)
+      res
     end
     
     def inspect

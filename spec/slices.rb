@@ -17,6 +17,7 @@ class TestWord < Slicr::Word
     width 9
     bits 7
     string
+    cached
   end
   
   slice :packed_character do
