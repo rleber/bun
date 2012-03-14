@@ -79,10 +79,51 @@ module Slicr
       #   end
       # end
       def import(content)
-        import_by_bytes_with_unpack(content)
+        # import_by_chunks(content, 8, 'C*')
+        import_by_chunks(content, 32, 'N*')
       end
 
       # This works and is about 12-15% faster than import_by_bytes
+      def import_by_chunks(content, bits_per_chunk, unpack_mask)
+        words = []
+        accumulator = 0
+        bits = 0
+        width = constituent_class.width
+        bytes_per_chunk = (bits_per_chunk+7).div(8)
+        puts content.scan(/.{1,#{bytes_per_chunk}}/).inspect
+        unless content.size % bytes_per_chunk == 0
+          padding = "\0"*(bytes_per_chunk - content.size % bytes_per_chunk)
+          content = content + padding 
+        end
+        puts content.scan(/.{1,#{bytes_per_chunk}}/).inspect
+        chunks = content.unpack(unpack_mask)
+        p chunks
+        chunks.each do |chunk|
+          accumulator <<= bits_per_chunk # Would checking for zero be faster?
+          accumulator |= chunk
+          bits += bits_per_chunk
+          while bits >= width
+            words << (accumulator >> (bits - width))
+            accumulator &= (2**(bits-width)-1) # Mask off upper bits
+            bits -= width 
+          end
+          puts "bits=#{bits}, accumulator=#{accumulator} words=#{words.inspect}"
+        end
+        if bits > 0
+          words << (accumulator << (width - bits))
+        end
+        p words.size
+        $count ||=0
+        $count += 1
+        if $count == 1
+          p words
+          exit
+        end
+        new(words)
+      end
+      
+      # This works and is about 12-15% faster than import_by_bytes;
+      # It is very slightly faster than import_by_chunks(content, 8, 'C*')
       def import_by_bytes_with_unpack(content)
         words = []
         accumulator = 0
@@ -164,6 +205,7 @@ module Slicr
 
       def import_by_bytes(content)
         words = []
+        
         accumulator = 0
         bits = 0
         width = constituent_class.width
