@@ -69,28 +69,36 @@ module Slicr
       end
       
       # Import a Ruby string (of 8-bit characters) into words
+      # See faster_import branch for a variety of different implementations
       def import(content)
         words = []
         accumulator = 0
         bits = 0
         width = constituent_class.width
-        content.each_byte do |ch|
-          prev_accumulator = accumulator
-          accumulator <<= 8
-          accumulator |= ch
+        unless @import_divs
+          @import_divs = Array(width+8)
+          (width...(width+8)).each {|n| @import_divs[n] = 2**(n-width)}
+          @import_masks = @import_divs.map{|div| div && div-1}
+        end
+        # The following is about as fast as I can make it in Ruby
+        # Consider a native extension?
+        chunks = content.unpack("C*")
+        chunks.each do |chunk|
+          accumulator = accumulator*256 + chunk
           bits += 8
           while bits >= width
-            words << (accumulator >> (bits - width))
-            accumulator &= (2**(bits-width)-1) # Mask off upper bits
+            div = @import_divs[bits]
+            words << accumulator.div(div)
+            accumulator &= (div-1) # Mask off upper bits
             bits -= width 
           end
         end
         if bits > 0
-          words << (accumulator << (width - bits))
+          words << (accumulator<<(width-bits))
         end
         new(words)
       end
-      
+
       def read(file, options={})
         if file.is_a?(String)
           abort "File #{file} does not exist" unless ::File.exists?(file)
