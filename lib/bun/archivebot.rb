@@ -337,32 +337,45 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       end
     end
     
-    desc "preamble_length", "Display the length of the file descriptors"
-    def preamble_length
+    desc "header_sizes", "Display the length of file headers"
+    def header_sizes
       archive = Archive.new
-      data = [%w{Tape Preamble Total}]
-      max = 0
+      data = [%w{Tape Preamble Header}]
+      max_header = max_preamble = nil
+      min_header = min_preamble = nil
+      sum_header = sum_preamble = 0
+      n = 0
       archive.tapes.each do |tape_name|
-        extended_file_name = archive.expanded_tape_path(tape_name)
-        file = File.open(extended_file_name)
-        len = file.content_offset
-        if File.frozen?(extended_file_name)
-          frozen_file = File::Frozen.open(extended_file_name)
-          total_len = len + frozen_file.files*File::Frozen::Descriptor.size
-        else
-          total_len = len
+        file = archive.open(tape_name)
+        preamble_size = file.content_offset
+        header_size = file.header_size
+        sum_preamble += preamble_size
+        sum_header += header_size
+        if !min_preamble || preamble_size < min_preamble
+          min_preamble = preamble_size
         end
-        if total_len > max
-          max = total_len
+        if !max_preamble || preamble_size > max_preamble
+          max_preamble = preamble_size
         end
-        data << [tape_name, len, total_len]
+        if !min_header || header_size < min_header
+          min_header = header_size
+        end
+        if !max_header || header_size > max_header
+          max_header = header_size
+        end
+        data << [tape_name, preamble_size, header_size]
+        n += 1
       end
-      puts data.sort_by{|row| p row; row.last.to_i}.map{|row| row[-2] = row[-2].to_s; row[-1] = row[-1].to_s; row}.justify_rows.map{|row| row.join('  ')}.join("\n")
-      puts "Maximum preamble length: #{max} words"
+      data = data.sort_by{|row| row[2].to_i }
+      data = data.map{|row| row[-2] = row[-2].to_s; row[-1] = row[-1].to_s; row}
+      data << ["Minimum", min_preamble.to_s, min_header.to_s]
+      data << ["Average", '%0.1f' % (sum_preamble/n.to_f), '%0.1f' % (sum_header/n.to_f)]
+      data << ["Maximum", max_preamble.to_s, max_header.to_s]
+      puts data.justify_rows.map{|row| row.join('  ')}.join("\n")
     end
     
     # TODO Remove this
-    desc "types", "List file typess"
+    desc "types", "List file types"
     def types
       archive = Archive.new
       archive.tapes.each do |tape_name|
