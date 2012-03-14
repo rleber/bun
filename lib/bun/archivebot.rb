@@ -338,9 +338,13 @@ data/archive_config.yml. Usually, this is ~/bun_archive
     end
     
     desc "header_sizes", "Display the length of file headers"
+    option "sort", :aliases=>'-s', :type=>'string', :default=>'header', :desc=>"Sort by what field: preamble or header (size)"
     def header_sizes
       archive = Archive.new
       data = [%w{Tape Preamble Header}]
+      sort_column = ['preamble', 'header'].index(options[:sort].downcase)
+      abort "Bad value for --sort option" unless sort_column
+      sort_column += 1
       max_header = max_preamble = nil
       min_header = min_preamble = nil
       sum_header = sum_preamble = 0
@@ -366,7 +370,7 @@ data/archive_config.yml. Usually, this is ~/bun_archive
         data << [tape_name, preamble_size, header_size]
         n += 1
       end
-      data = data.sort_by{|row| row[2].to_i }
+      data = data.sort_by{|row| row[sort_column].to_i }
       data = data.map{|row| row[-2] = row[-2].to_s; row[-1] = row[-1].to_s; row}
       data << ["Minimum", min_preamble.to_s, min_header.to_s]
       data << ["Average", '%0.1f' % (sum_preamble/n.to_f), '%0.1f' % (sum_header/n.to_f)]
