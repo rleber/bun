@@ -69,13 +69,105 @@ module Slicr
       end
       
       # Import a Ruby string (of 8-bit characters) into words
+      # def import(content)
+      #   width = constituent_class.width
+      #   case constituent_class.width % 8
+      #   when 0
+      #   when 4
+      #   else
+      #     import_by_bits(content)
+      #   end
+      # end
       def import(content)
+        import_by_bytes_with_unpack(content)
+      end
+
+      # This works and is about 12-15% faster than import_by_bytes
+      def import_by_bytes_with_unpack(content)
+        words = []
+        accumulator = 0
+        bits = 0
+        width = constituent_class.width
+        chunks = content.unpack("C*")
+        chunks.each do |chunk|
+          accumulator <<= 8
+          accumulator |= chunk
+          bits += 8
+          while bits >= width
+            words << (accumulator >> (bits - width))
+            accumulator &= (2**(bits-width)-1) # Mask off upper bits
+            bits -= width 
+          end
+        end
+        if bits > 0
+          words << (accumulator << (width - bits))
+        end
+        new(words)
+      end
+      
+      # This doesn't work
+      def import_by_words(content)
+        words = []
+        accumulator = 0
+        bits = 0
+        width = constituent_class.width
+        chunks = content.unpack("L*")
+        chunks.each do |chunk|
+          accumulator <<= 32
+          accumulator |= chunk
+          bits += 32
+          while bits >= width
+            words << (accumulator >> (bits - width))
+            accumulator &= (2**(bits-width)-1) # Mask off upper bits
+            bits -= width 
+          end
+        end
+        if bits > 0
+          words << (accumulator << (width - bits))
+        end
+        new(words)
+      end
+      
+      # This doesn't work
+      def import_by_quads(content)
+        words = []
+        accumulator = 0
+        bits = 0
+        width = constituent_class.width
+        quads = content.unpack("Q*")
+        quads.each do |q|
+          accumulator <<= 64
+          accumulator |= q
+          bits += 64
+          while bits >= width
+            words << (accumulator >> (bits - width))
+            accumulator &= (2**(bits-width)-1) # Mask off upper bits
+            bits -= width 
+          end
+        end
+        if bits > 0
+          words << (accumulator << (width - bits))
+        end
+        puts words.size
+        new(words)
+      end
+      
+      # This is slower than import_by_bytes
+      def import_bits_by_unpack(content)
+        width = constituent_class.width
+        bits = content.unpack("B#{8*content.size}").first
+        word_bits = (bits + '0'*width).scan(/.{#{width}}/) # Add the zeros to ensure a complete last word
+        word_bits.pop # There will always be extra zeros at the end
+        words = word_bits.map{|word| Integer('0b' + word)}
+        new(words)
+      end
+
+      def import_by_bytes(content)
         words = []
         accumulator = 0
         bits = 0
         width = constituent_class.width
         content.each_byte do |ch|
-          prev_accumulator = accumulator
           accumulator <<= 8
           accumulator |= ch
           bits += 8
