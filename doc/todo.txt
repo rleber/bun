@@ -21,13 +21,8 @@ LAYERS YET TO BE DEFINED
 - Multiword layers: e.g. layers with a slice size a fixed integral multiple of the slices in the supporting layer
 
 TODO
-Better header retrieval
-Archive.new(location)
-Better file type checking
+Better header retrieval: Get more on the first pass
 File type for print listings (Qu: are these ever frozen?)
-Bun::File should open a file as the appropriate type, depending on whether it's frozen or not
-Merge File::Descriptor with File::FreezerDescriptor
-archive.open(name)
 Optimize file processing for speed (e.g. bun ls command)
 Refactor Slicr based on the concept of layers, etc.
 Set file modification dates for text files, based on data in _misc/fass-index.txt
@@ -43,7 +38,6 @@ Option to turn off resetting file modification dates for unpacked or thawed file
 Option to add an extension to unpacked or thawed files (e.g. '.txt')
 Option to create archives organized like file/v1/file1, file/v2/file2, etc.
 Look for Huffman-coded files: e.g. ar003.0701, ar116.2122, ar116.2128
-Refactor repair (and thaw/unpack?): create parent class or mixin, and combine common code
 Standardize Decode and Defrost interfaces
 Change file patterns to tape::file(::shard)? Qu: how to specify whether it must be a shard?
 Possibly caching of archive index?
