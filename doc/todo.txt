@@ -21,9 +21,10 @@ LAYERS YET TO BE DEFINED
 - Multiword layers: e.g. layers with a slice size a fixed integral multiple of the slices in the supporting layer
 
 TODO
-Better header retrieval: Get more on the first pass
 File type for print listings (Qu: are these ever frozen?)
+Remove extraneous output files
 Optimize file processing for speed (e.g. bun ls command)
+Optimization ideas: use Indexable::Basic#at(x) for single indexes, fix Slice::Accessor[0..-1] reference
 Refactor Slicr based on the concept of layers, etc.
 Set file modification dates for text files, based on data in _misc/fass-index.txt
 Ignore files not in the index

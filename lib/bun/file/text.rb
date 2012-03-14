@@ -61,7 +61,7 @@ class Bun
         line = ""
         raw_line = ""
         okay = true
-        descriptor = words[line_offset]
+        descriptor = words.at(line_offset)
         if descriptor == self.class.eof_marker
           return {:status=>:eof, :start=>line_offset, :finish=>size-1, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
         elsif (descriptor >> 27) & 0777 == 0177
@@ -69,14 +69,14 @@ class Bun
           deleted = true
           line_length = word_count
         elsif (descriptor >> 27) & 0777 == 0
-            line_length = descriptor.half_word[0]
+            line_length = descriptor.half_words.at(0)
         else # Sometimes, there is ASCII in the descriptor word; In that case, capture it, and look for terminating "\177"
           raise "ASCII in descriptor"
         end
         offset = line_offset+1
         raw_line = words[offset,line_length].map{|w| w.characters}.join
         line = raw_line.sub(/\177+$/,'') + "\n"
-        {:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>line_offset+line_length, :content=>line, :raw=>raw_line, :words=>words[line_offset+line_length], :descriptor=>descriptor}
+        {:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>line_offset+line_length, :content=>line, :raw=>raw_line, :words=>words.at(line_offset+line_length), :descriptor=>descriptor}
       end
     end
   end

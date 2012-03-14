@@ -18,7 +18,7 @@ module Slicr
         raise NoMethodError, "#{@definition.name}##{name} not permitted for multiple values" if _size > 1
         raise NoMethodError, "#{@definition.name}##{name} not permitted for empty collection" if _size == 0
         raise NoMethodEror,  "#{@definition.name}##{name} not permitted for non-collapsing slices" unless @definition.collapse?
-        value = self[0]
+        value = self.at(0)
         raise NoMethodError, "#{@definition.name}##{name} method not defined" unless _try(value, name, *args, &blk)
         @res
       end
@@ -55,6 +55,7 @@ module Slicr
       def array
         saved_collapse = collapse?
         self.collapse = false
+        # TODO Optimize: Remove the following
         res = self[0..-1]
         self.collapse = saved_collapse
         res
@@ -63,6 +64,7 @@ module Slicr
       
       def string
         raise NoMethodError, "#{@definition.name}#string is not allowed for non-string slices" unless @definition.string?
+        # TODO Optimize: Remove the following
         self[0..-1].string
       end
       
@@ -70,12 +72,16 @@ module Slicr
         condensed_values @slicer[*args]
       end
       
+      def at(index)
+        condensed_values(@slicer.at(index))
+      end
+      
       def condensed_values(values)
         if values.nil?
           nil
         elsif !values.is_a?(::Array)
           definition.slice_class.new(values)
-        elsif values.size == 1 && collapse? && @slicer.index_range[:args]==:scalar
+        elsif values.size == 1 && collapse? && @slicer.index_range[:arg_type]==:scalar
           definition.slice_class.new(values.first)
         else
           Slice::Array.new(values.map{|v| definition.slice_class.new(v)})

@@ -22,13 +22,13 @@ class Bun
     # Is a file frozen?
     # Yes, if and only if it has a valid descriptor
     def self.frozen?(file)
-      file.words[file.content_offset + offset + size - 1 ] == end_marker
+      file.words.at(file.content_offset + offset + size - 1) == end_marker
     end
 
     def initialize(file, number, options={})
       @file = file
       @number = number
-      raise "Bad descriptor ##{number} for #{file.tape} at #{'%#o' % self.offset}" unless options[:allow] || valid?
+      raise "Bad descriptor ##{number} for #{file.tape} at #{'%#o' % self.offset}:\n#{dump}" unless options[:allow] || valid?
     end
 
     def offset(n=nil) # Offset from the beginning of the file content, in words
@@ -49,7 +49,7 @@ class Bun
     end
 
     def word(start)
-      words(start, 1).first
+      @file.words.at(start+offset)
     end
 
     def name
@@ -115,11 +115,15 @@ class Bun
     end
 
     def hex
-      @file.hex[offset*(file.bits_per_word/4), DESCRIPTOR_SIZE*file.bits_per_word/4]
+      words(offset, self.class.size).map{|w| '%#x' % w.value}.join(' ')
     end
-
+    
+    def dump
+      octal + "\ncheck_text: #{check_text.inspect}, check_word: #{'%#o' % check_word}"
+    end
+    
     def octal
-      @file.octal[offset*(file.bits_per_word/3), DESCRIPTOR_SIZE*file.bits_per_word/3]
+      words(offset, self.class.size).map{|w| '%#o' % w.value}.join(' ')
     end
   end
 end

@@ -132,19 +132,21 @@ class Bun
             decode(options[:data])
           else
             bytes = (Bun::Word.width*n + 8 - 1).div(8)
+            # TODO Optimize the following:
             decode(options[:data][0,bytes])
           end
         else
           if n.nil?
             options[:words]
           else
+            # TODO Optimize the following:
             options[:words][0,n]
           end
         end
       end
       
       def content_offset(words)
-        words[1].half_word(1).value
+        words.at(1).half_words.at(1).value
       end
     end
     
@@ -235,9 +237,9 @@ class Bun
       loop do
         break if offset >= size
         word_index, ch_index = offset.divmod(chars_per_word)
-        word = words[word_index]
+        word = words.at(word_index)
         break if !word || (word == self.class.eof_marker && !options[:all])
-        char = chars[offset]
+        char = chars.at(offset)
         break if char == delimiter
         string << char
         offset += 1
@@ -272,7 +274,7 @@ class Bun
     end
     
     def file_size
-      res = (words[0].half_word[1])+1
+      res = (words.at(0).half_words.at(1))+1
       res = res.value unless res.is_a?(Fixnum)
       res
     end
@@ -283,7 +285,7 @@ class Bun
     end
     
     def time_of_day(location)
-      self.class.time_of_day content[location]
+      self.class.time_of_day content.at(location)
     end
     
     def time(date_location, time_location)
@@ -311,7 +313,7 @@ class Bun
     
     def file_type
       return :frozen if frozen?
-      return :huffman if words[content_offset].characters.join == 'huff'
+      return :huffman if words.at(content_offset).characters.join == 'huff'
       return :text
     end
   end

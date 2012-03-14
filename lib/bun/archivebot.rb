@@ -428,7 +428,7 @@ data/archive_config.yml. Usually, this is ~/bun_archive
         extended_file_name = archive.expanded_tape_path(tape_name)
         file = File::Header.open(extended_file_name)
         counts = [
-          file.words[1].half_word(1).to_i, 
+          file.words.at(1).half_words.at(1).to_i, 
           file.content_offset
         ]
         row = [tape_name] + counts.map{|c| '%3d' % c } 
