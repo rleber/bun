@@ -4,16 +4,16 @@ module Slicr
   class Word < Structure
     
     class << self
-      def fixed_width?
-        true
+      def width(n=nil)
+        if n
+          @width=n
+        else
+          @width
+        end
       end
       
-      def width(n=nil)
-        if n.nil?
-          @width
-        else
-          @width=n
-        end
+      def get_width
+        @width
       end
       
       def slice(slice_name, options={}, &blk)
@@ -29,16 +29,12 @@ module Slicr
       end
     end
 
-    def get_slice(n, options)
-      slice_width = options[:width]
-      offset = options[:offset] || 0
-      gap = options[:gap] || 0
-      width = self.class.width
-      super(n, slice_width, offset, gap, width)
+    def get_slice(n, size, offset)
+      super(n, size, offset, self.width)
     end
     
     def width
-      self.class.width
+      self.class.get_width
     end
   end
 end

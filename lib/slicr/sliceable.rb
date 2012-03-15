@@ -10,60 +10,15 @@ module Slicr
     end
     
     module ClassMethods
-      # TODO This stuff is repetitive; refactor it
-      def single_bit_mask(n)
-        2**n
-      end
-
-      def ones_mask(n)
-        2**n - 1
-      end
-  
-      def make_bit_mask(width, from, to)
-        leading_bit_mask = ones_mask(width-from)
-        trailing_bit_mask = ones_mask(width) ^ ones_mask(width-to-1)
-        leading_bit_mask & trailing_bit_mask
-      end
-  
-      def slice_start_bit(n, width, offset=0, gap=0)
-        n*(width+gap) + offset
-      end
-  
-      def slice_end_bit(n, width, offset=0, gap=0)
-        slice_start_bit(n+1, width, offset, gap) - gap - 1
-      end
-      
-      def slice_shift(n, width, offset=0, gap=0)
-        self.width - slice_end_bit(n, width, offset, gap) - 1
-      end
-  
-      def slice_mask(n, width, offset=0, gap=0)
-        make_bit_mask(slice_start_bit(n, width, offset, gap), slice_end_bit(n, width, offset, gap))
-      end
-
-      def slice_count(slice, options={})
-        # puts "In #{self}.slice_count(#{slice.inspect}, #{options.inspect})"
-        case slice
-        when Numeric
-          slice_size = slice
-          data_size=options[:data_size]
-          offset = options[:offset] || 0
-          gap = options[:gap] || 0
-          return nil unless data_size
-          available_bits = data_size - offset
-          bits_per_slice = slice_size+gap
-          bits_per_slice = available_bits if bits_per_slice > available_bits && options[:partial]
-          available_bits.div(bits_per_slice)
-        when Slice::Definition
-          if slice.count
-            slice.count
-          else
-            slice_count(slice.width, options.merge(:offset=>slice.offset, :gap=>slice.gap))
-          end
-        else # Assume it's a name
-          defn = slice_definition(slice)
-          defn && slice_count(defn, options)
-        end
+      def slice_count(slice_size, options={})
+        data_size=options[:data_size]
+        offset = options[:offset] || 0
+        gap = options[:gap] || 0
+        return nil unless data_size
+        available_bits = data_size - offset
+        bits_per_slice = slice_size+gap
+        bits_per_slice = available_bits if bits_per_slice > available_bits && options[:partial]
+        available_bits.div(bits_per_slice)
       end
       
       # TODO Should word.byte mean word.byte(0) or word.byte(n)?
@@ -71,16 +26,10 @@ module Slicr
       # TODO Define bit and byte order (i.e. LR, RL)
       # TODO Define signs other than at the beginning of a slice
       def slice(slice_name, options={}, &blk)
-        # puts "Defining slice: #{slice_name} of #{self}"
         slice = Slice::Definition.new(slice_name, self, options, &blk)
         slice.install_formats
         add_slice slice
     
-        unshifted_method_name = "unshifted_#{slice.name}"
-        def_method unshifted_method_name do |n|
-          value & slice.masks[n]
-        end
-        
         _self = self
         def_class_method slice.name do ||
           Slice::Accessor.new(slice, _self)
@@ -112,18 +61,14 @@ module Slicr
       def field(name, options={}, &blk)
         slice(name, {:count=>1, :collapse=>true}.merge(options), &blk)
       end
-
+      
       def slices
-        @slices ||= {}
+        @slices
       end
 
       def add_slice(definition)
-        self.slices[definition.name] = definition
-      end
-      
-      # TODO Better way of handling and changing this
-      def fixed_width?
-        false
+        @slices ||={}
+        @slices[definition.name] = definition
       end
     end
     
@@ -131,41 +76,16 @@ module Slicr
       self.class.slices
     end
 
-    def width(n=nil)
-      if n.nil?
-        @data.size * constituent_class.width
-      else
-        self.class.width(n)
-      end
+    def width
+      @data.size * constituent_class.width
     end
     
-    def slice_count(*args)
-      self.class.slice_count(*args)
-    end
-
-    def bit_segment(from, to, width=nil)
-      width ||= self.width
-      value & self.class.make_bit_mask(width, from, to)
-    end
-  
-    # TODO Allow negative indexing
-    # TODO Consider a change which would permit indexing a la Array[]
-    def get_bits(from, to, width=nil)
-      width ||= self.width
-      bit_segment(from, to, width) >> bit_count(to, width-1)-1 # Use bit_count for extensibility
-    end
-    
-    def bit_count(from, to)
-      to - from + 1
-    end
-  
-    def get_bit(at, width=nil)
-      get_bits(at, at, width)
-    end
-  
-    def get_slice(n, size, offset=0, gap=0, width=nil)
-      start = n*(size+gap) + offset
-      get_bits(start, start+size-1, width)
+    # TODO Optimize Try this with value.unpack('B*')[start_bit,size], etc.
+    def get_slice(n, size, offset, width)
+      start_bit = n*size + offset
+      next_bit = start_bit+size
+      leading_bit_mask = 2**size-1
+      value.div(2**(width-next_bit)) & leading_bit_mask
     end
   end
 end

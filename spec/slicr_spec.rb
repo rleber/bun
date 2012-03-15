@@ -233,7 +233,7 @@ describe "instance" do
   it_behaves_like "it is sliced"
   
   TEST_WORD_SLICES.each do |slice_name|
-    defn = $parent.slices[slice_name]
+    defn = $parent.class.slices[slice_name]
     slices_name = slice_name.pluralize
     slice_class_name = TEST_WORD_SLICE_CLASSES[slice_name.to_sym]
     slice_object = $bytes.send(slice_name) rescue nil
@@ -596,12 +596,6 @@ describe Slicr::WordsBase do
   end
   
   it_behaves_like "slicr is indexed", $words, [1,2,3]
-  
-  it "should allow assignment" do
-    words = $words.dup
-    words[4] = 4
-    words.should == [1,2,3,nil,4]
-  end
   
   it "should allow accessors" do
     $words.bytes.to_a.should == [0,0,0,1,0,0,0,2,0,0,0,3]

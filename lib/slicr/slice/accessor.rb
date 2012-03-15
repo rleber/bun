@@ -45,14 +45,14 @@ module Slicr
       end
       
       def at(index)
-        conform definition.retrieve(parent, index)
+        conform(parent.get_slice(index, definition.width, definition.offset) & definition.mask)
       end
       
       def conform(value)
         case value
         when definition.slice_class
           value
-        when Numeric
+        when Fixnum
           definition.slice_class.new(value)
         else
           raise "Conversion! #{value.class} => #{definition.slice_class}"
