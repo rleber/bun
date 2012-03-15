@@ -86,17 +86,15 @@ module Slicr
           values
         when Numeric
           definition.slice_class.new(values)
-        # when Slice::String
-        #   definition.slice_class.new(values.internal_value)
         when GenericNumeric
           definition.slice_class.new(values.internal_value)
-        else
-          if !values.is_a?(::Array)
-            definition.slice_class.new(values.value)
-          elsif values.size == 1 && collapse? && @slicer.index_range[:arg_type]==:scalar
-            definition.slice_class.new(values.first)
+        else # Should be an array
+          if values.size == 1 && collapse? && @slicer.index_range[:arg_type]==:scalar
+            # raise "Aha!" unless values.first.is_a?(definition.slice_class)
+            # definition.slice_class.new(values.first)
+            values.first
           else
-            Slice::Array.new(values.map{|v| condensed_values(v)})
+            Slice::Array.new(values)
           end
         end
       end
