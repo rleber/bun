@@ -29,6 +29,7 @@ class Class
     # end
   end
 
+  # TODO Is this being used?
   def define_parameter(name, value=nil, &blk)
     class_name = self.name
     name = name.to_s.downcase
@@ -42,6 +43,7 @@ class Class
     value
   end
   
+  # TODO Is this being used?
   def define_collection(name, value=nil, &blk)
     name = name.to_s.downcase
     class_name = self.name

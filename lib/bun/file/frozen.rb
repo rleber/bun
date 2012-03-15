@@ -23,7 +23,7 @@ class Bun
       
       # Official method: fast, and reliable if the field is set properly
       def shard_count_based_on_word_1
-        file_content[1].half_word(1).to_i
+        file_content.at(10).half_words.at(1).to_i
       end
 
       # Fast and fairly reliable:
@@ -45,7 +45,7 @@ class Bun
       # TODO reimplement this based on LazyArray for descriptors
       def preamble_size
         # Find size from position of data for first shard
-        words[content_offset + File::Frozen::Descriptor.offset + 7].to_i
+        words.at(content_offset + File::Frozen::Descriptor.offset + 7).to_i
       end
       
       def header_size
@@ -71,7 +71,7 @@ class Bun
       end
     
       def _update_time_of_day
-        words[content_offset + 4]
+        words.at(content_offset + 4)
       end
     
       # TODO Choose latest (earliest?) of update time, time indicated in index, or shard update times
@@ -91,7 +91,7 @@ class Bun
       private :_shard_descriptors
     
       def shard_descriptor(n)
-        shard_descriptors[shard_index(n)]
+        shard_descriptors.at(shard_index(n))
       end
     
       def file_size
@@ -210,7 +210,7 @@ class Bun
           else
             raw_line = line
             line.sub!(/\r\0*$/,"\n")
-            lines << {:content=>line, :content_offset=>line_offset, :shard_descriptor=>words[line_offset], 
+            lines << {:content=>line, :content_offset=>line_offset, :shard_descriptor=>words.at(line_offset), 
                       :words=>words[line_offset..last_line_word], :raw=>raw_line}
             line_offset = last_line_word + 1
           end
@@ -227,7 +227,7 @@ class Bun
         content_offset = line_offset
         okay = true
         loop do
-          word = words[content_offset]
+          word = words.at(content_offset)
           break unless word
           ch_count = 5
           if line==""

@@ -1,4 +1,6 @@
 # TODO This has nothing to do with Slicr; move it outward (and eventually into a gem)
+# TODO Is this being used? Does it accomplish anything?
+
 module Slicr
   module Cacheable
     def cache

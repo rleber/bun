@@ -1,6 +1,7 @@
 require 'slicr/word'
 
 # TODO Get this working
+# TODO Is this being used?
 
 module Slicr
   
