@@ -79,7 +79,8 @@ module Slicr
     def width
       @data.size * constituent_class.width
     end
-  
+    
+    # TODO Optimize Try this with value.unpack('B*')[start_bit,size], etc.
     def get_slice(n, size, offset, width)
       start_bit = n*size + offset
       next_bit = start_bit+size

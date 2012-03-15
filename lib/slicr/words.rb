@@ -17,14 +17,30 @@ module Slicr
       if !base.instance_methods.include?('set_at') && base.instance_methods.include?('[]=')
         base.send :alias_method, :set_at, :[]= 
       end
-      base.send :include, Container
-      class << base
-        alias_method :old_contains, :contains
-      end
+      base.send(:include, Indexable::Basic)
       base.extend ClassMethods
     end
     
     module ClassMethods
+      def constituent_class
+        @@constituent_class
+      end
+    
+      def conform(data)
+        data.map do |v|
+          case v
+          when constituent_class, nil
+            v
+          else
+            constituent_class.new(v)
+          end
+        end
+      end
+      
+      def [](*args)
+        self.new(conform(args))
+      end
+
       def slice_names
         @slice_names ||= []
       end
@@ -35,7 +51,7 @@ module Slicr
       end
 
       def contains(klass)
-        old_contains(klass)
+        @@constituent_class = klass
         add_slices(klass)
       end
 
@@ -86,13 +102,13 @@ module Slicr
           bits += 8
           while bits >= width
             div = @import_divs[bits]
-            words << accumulator.div(div)
+            words << constituent_class.new(accumulator.div(div))
             accumulator &= (div-1) # Mask off upper bits
             bits -= width 
           end
         end
         if bits > 0
-          words << (accumulator<<(width-bits))
+          words << constituent_class.new(accumulator<<(width-bits))
         end
         new(words)
       end

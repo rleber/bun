@@ -597,12 +597,6 @@ describe Slicr::WordsBase do
   
   it_behaves_like "slicr is indexed", $words, [1,2,3]
   
-  it "should allow assignment" do
-    words = $words.dup
-    words[4] = 4
-    words.should == [1,2,3,nil,4]
-  end
-  
   it "should allow accessors" do
     $words.bytes.to_a.should == [0,0,0,1,0,0,0,2,0,0,0,3]
   end
