@@ -12,6 +12,23 @@ class Bun
       ARCHIVE_NAME_POSITION = 7 # words
       SPECIFICATION_POSITION = 11 # words
       DESCRIPTION_PATTERN = /\s+(.*)/
+      FIELDS = [
+        :description,
+        :file_size,
+        :file_type,
+        :index_date,
+        :name,
+        :owner,
+        :path,
+        :shard_count,
+        :shard_names,
+        :specification,
+        :tape_name,
+        :tape_path,
+        :update_date,
+        :update_time,
+        :updated,
+      ]
       
       attr_reader :file
       
@@ -19,10 +36,17 @@ class Bun
         @file = file
       end
       
+      def self.fields
+        FIELDS
+      end
+      
+      def to_hash
+        FIELDS.inject({}) {|hsh, f| hsh[f] = self.send(f) rescue nil; hsh }
+      end
+      
       def size
         SPECIFICATION_POSITION + (specification.size + characters_per_word)/characters_per_word
       end
-      alias_method :file_size, :size
     
       def specification
         file.delimited_string SPECIFICATION_POSITION*CHARACTERS_PER_WORD, :all=>true
@@ -66,12 +90,24 @@ class Bun
         file.archive && file.archive.index_date(tape)
       end
       
+      def tape_name
+        file.tape_name
+      end
+      
       def tape_path
         file.tape_path
       end
       
+      def file_type
+        file.file_type
+      end
+      
       def tape
         ::File.basename(tape_path)
+      end
+      
+      def update_date
+        file.update_date rescue nil
       end
       
       def update_time
@@ -97,6 +133,10 @@ class Bun
       
       def shard_count
         file.shard_count rescue 0
+      end
+      
+      def file_size
+        file.file_size
       end
     end
   end

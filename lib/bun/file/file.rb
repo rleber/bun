@@ -103,7 +103,12 @@ class Bun
         else
           limit = nil
         end
-        klass.send(:new, options.merge(:n=>limit), &blk)
+        f = klass.send(:new, options.merge(:n=>limit))
+        if block_given?
+          yield(f)
+        else
+          f
+        end
       end
 
       def open(fname, options={}, &blk)
@@ -180,6 +185,10 @@ class Bun
     
     def header?
       @header
+    end
+    
+    def read
+      ::File.read(tape_path)
     end
     
     def tape_name

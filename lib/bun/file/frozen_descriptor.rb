@@ -6,6 +6,19 @@ class Bun
     DESCRIPTOR_SIZE = 10
     BLOCK_SIZE = 64  # 36-bit words
     DESCRIPTOR_END_MARKER = 0777777777777
+    FIELDS = [
+      :file_size,
+      :file_type,
+      :index_date,
+      :name,
+      :owner,
+      :path,
+      :tape_name,
+      :tape_path,
+      :update_date,
+      :update_time,
+      :updated,
+    ]
 
     def self.offset
       DESCRIPTOR_OFFSET
@@ -30,8 +43,13 @@ class Bun
       @number = number
       raise "Bad descriptor ##{number} for #{file.tape} at #{'%#o' % self.offset}:\n#{dump}" unless options[:allow] || valid?
     end
+    
+    def to_hash
+      FIELDS.inject({}) {|hsh, f| hsh[f] = self.send(f) rescue nil; hsh }
+    end
 
     def offset(n=nil) # Offset from the beginning of the file content, in words
+      # TODO Optimize is n.nil? ever used
       n ||= number
       file.content_offset + DESCRIPTOR_OFFSET + n*DESCRIPTOR_SIZE
     end
@@ -54,6 +72,10 @@ class Bun
 
     def name
       characters(0,8).strip
+    end
+    
+    def owner
+      file.owner
     end
     
     def file_type
@@ -87,6 +109,10 @@ class Bun
     def _update_time_of_day
       word(4)
     end
+    
+    def index_date
+      file.index_date
+    end
 
     # TODO Choose earlier of this time or time of file
     def update_time
@@ -116,7 +142,8 @@ class Bun
     alias_method :file_size, :size
 
     def valid?
-      return nil unless @file.words.size > finish
+      # TODO Optimize Is this check necessary?
+      return nil unless finish < @file.words.size
       (check_text == 'asc ') && (check_word == DESCRIPTOR_END_MARKER)
     end
 

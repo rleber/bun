@@ -58,8 +58,10 @@ class Bun
       :updated     => Time.now,
     }
     
+    # TODO Reorder tasks (split in separate files?)
     desc "ls", "Display an index of archived files"
     option 'archive', :aliases=>'-a', :type=>'string',                               :desc=>'Archive location'
+    option "build",   :aliases=>"-b", :type=>'boolean',                              :desc=>"Don't rely on archive index; always build information from source file"
     option "descr",   :aliases=>"-d", :type=>'boolean',                              :desc=>"Include description"
     option "files",   :aliases=>"-f", :type=>'string',  :default=>'',                :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
     option "frozen",  :aliases=>"-r", :type=>'boolean',                              :desc=>"Recursively include contents of freeze files"
@@ -112,15 +114,16 @@ class Bun
       # Retrieve file information
       archive = Archive.new(directory)
       ix = archive.tapes
+      # TODO Refactor using archive.select
       ix = ix.select{|tape_name| tape_name =~ tape_pattern}
       file_info = []
       files = ix.each_with_index do |tape_name, i|
-        file = archive.open(tape_name, :header=>true)
-        file_row = fields.inject({}) {|hsh, f| hsh[f] = (file.send(f) rescue nil); hsh }
+        file_descriptor = archive.descriptor(tape_name, :build=>options[:build])
+        file_row = fields.inject({}) {|hsh, f| hsh[f] = file_descriptor[f]; hsh }
         file_info << file_row
-        if options[:frozen] && file_row[:file_type] == :frozen
-          file.shard_descriptors.each do |d|
-            file_info << fields.inject({}) {|hsh, f| hsh[f] = (d.send(f) rescue nil); hsh }
+        if options[:frozen] && file_descriptor[:file_type] == :frozen
+          file_descriptor[:shards].each do |d|
+            file_info << fields.inject({}) {|hsh, f| hsh[f] = d[f]; hsh }
           end
         end
       end
@@ -162,15 +165,17 @@ class Bun
       end  
     end
 
-    desc "dump FILE", "Dump a Honeywell file"
+    desc "dump TAPE", "Dump a Honeywell file"
+    option 'archive',   :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
     option "escape",    :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
     option "frozen",    :aliases=>'-f', :type=>'boolean', :desc=>'Display characters in frozen format (i.e. 5 per word)'
     option "lines",     :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
-    option "offset",    :aliases=>'-o', :type=>'string', :desc=>'Start at word n (zero-based index; octal/hex values allowed)'
+    option "offset",    :aliases=>'-o', :type=>'string',  :desc=>'Start at word n (zero-based index; octal/hex values allowed)'
     option "unlimited", :aliases=>'-u', :type=>'boolean', :desc=>'Ignore the file size limit'
     # TODO Deblock option
     def dump(file_name)
-      archive = Archive.new
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
       begin
         offset = options[:offset] ? eval(options[:offset]) : 0 # So octal or hex values can be given
       rescue => e
@@ -186,15 +191,17 @@ class Bun
       puts "No data to dump" if lc == 0
     end
     
-    desc "unpack FILE [TO]", "Unpack a file (Not frozen files -- use freezer subcommands for that)"
+    desc "unpack TAPE [TO]", "Unpack a file (Not frozen files -- use freezer subcommands for that)"
+    option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
     option "delete",  :aliases=>'-d', :type=>'boolean', :desc=>"Keep deleted lines"
     option "inspect", :aliases=>'-i', :type=>'boolean', :desc=>"Display long format details for each line"
-    option "log",     :aliases=>'-l', :type=>'string', :desc=>"Log status to specified file"
+    option "log",     :aliases=>'-l', :type=>'string',  :desc=>"Log status to specified file"
     option "warn",    :aliases=>'-w', :type=>'boolean', :desc=>"Warn if there are decoding errors"
     # TODO combine with other forms of read (e.g. thaw)
     # TODO rename bun read
     def unpack(file_name, to=nil)
-      archive = Archive.new
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
       file = archive.open(file_name)
       file.keep_deletes = true if options[:delete]
       archived_file = file.path
@@ -241,34 +248,38 @@ class Bun
     end
     
     SHARDS_ACROSS = 5
-    desc "describe FILE", "Display description information for a file"
+    desc "describe TAPE", "Display description information for a file"
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    option "build",   :aliases=>"-b", :type=>'boolean',                              :desc=>"Don't rely on archive index; always build information from source file"
     def describe(file_name)
-      archive = Archive.new
-      file          = archive.open(file_name, :header=>true)
-      type          = file.file_type
-      shards        = file.shard_names
-      index_date    = file.index_date
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
+      descriptor    = archive.descriptor(file_name, :build=>options[:build])
+      type          = descriptor[:file_type]
+      shards        = descriptor[:shard_names]
+      index_date    = descriptor[:index_date]
       index_date_display = index_date ? index_date.strftime('%Y/%m/%d') : "n/a"
       
       # TODO Refactor using Array#justify_rows
-      puts "Tape:            #{file.tape}"
-      puts "Tape path:       #{file.tape_path}"
-      puts "Archived file:   #{file.path}"
-      puts "Owner:           #{file.owner}"
-      puts "Subdirectory:    #{file.subdirectory}"
-      puts "Name:            #{file.name}"
-      puts "Description:     #{file.description}"
-      puts "Specification:   #{file.specification}"
+      puts "Tape:            #{descriptor[:tape_name]}"
+      puts "Tape path:       #{descriptor[:tape_path]}"
+      puts "Archived file:   #{descriptor[:path]}"
+      puts "Owner:           #{descriptor[:owner]}"
+      puts "Subdirectory:    #{descriptor[:subdirectory]}"
+      puts "Name:            #{descriptor[:name]}"
+      puts "Description:     #{descriptor[:description]}"
+      puts "Specification:   #{descriptor[:specification]}"
       puts "Index date:      #{index_date_display}"
       if type == :frozen
-        puts "Updated at:      #{file.update_time.strftime(TIME_FORMAT)}"
+        puts "Updated at:      #{descriptor[:update_time].strftime(TIME_FORMAT)}"
       end
-      puts "Size (words):    #{file.size}"
+      puts "Size (words):    #{descriptor[:file_size]}"
       puts "Type:            #{type.to_s.sub(/^./) {|m| m.upcase}}"
 
       if shards.size > 0
         # Display shard information in a table, SHARDS_ACROSS shards per row,
         # Multiple rows of information for each shard
+        # TODO Modify Array extensions and refactor
         puts
         puts "Shards:"
         grand_table = []
@@ -282,9 +293,8 @@ class Bun
             if i >= shards.size
               column = [""]*4
             else
-              shard = shards[i]
-              d = file.shard_descriptor(shard)
-              column = [shard, d.path, d.update_time.strftime(TIME_FORMAT), d.size]
+              shard = descriptor[:shards][i]
+              column = [shards[i], shard[:path], shard[:update_time].strftime(TIME_FORMAT), shard[:file_size]]
             end
             table << column
             i += 1
@@ -301,6 +311,27 @@ class Bun
         row_table = grand_table.justify_columns.transpose
         puts row_table.map{|row| '  ' + row.join('  ')}.join("\n")
       end
+    end
+    
+    desc "cat TAPE", "Copy a file to $stdout"
+    # TODO Refactor :archive as a global option?
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    def cat(tape)
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
+      archive.open(tape) {|f| $stdout.write f.read }
+    end
+
+    desc "cp TAPE [DESTINATION]", "Copy a file"
+    # TODO Refactor :archive as a global option?
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    def cp(tape, dest = nil)
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
+      unless dest.nil? || dest == '-'
+        dest = ::File.join(dest, ::File.basename(tape)) if ::File.directory?(dest)
+      end
+      archive.open(tape) {|f| Shell.new(:quiet=>true).write dest, f.read }
     end
     
     desc "test", "test this software"
