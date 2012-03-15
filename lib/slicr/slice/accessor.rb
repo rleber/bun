@@ -38,22 +38,25 @@ module Slicr
     end
     
     class SliceAccessor < Accessor
+      include Indexable::Basic
 
       def initialize(definition, parent)
         super
-        @slicer = Slicer.new(definition, parent)
+        self.index_array_class = Slice::Array
       end
 
       def to_a
         self[0..-1]
       end
       
+      alias_method :old_index, :[]
+      
       def [](*args)
-        condensed_values @slicer[*args]
+        condensed_values self.old_index(*args)
       end
       
       def at(index)
-        conform @slicer.at(index)
+        conform definition.retrieve(parent, index)
       end
       
       def conform(value)
@@ -78,28 +81,33 @@ module Slicr
         end
       end
       
-    end
-    
-    # TODO What's the point of Slicer?
-    class Slicer
-      include Indexable::Basic
-      
-      attr_reader :definition, :parent
-      
-      def initialize(definition, parent)
-        @definition = definition
-        @parent = parent
-        self.index_array_class = Slice::Array
-      end
-      
-      def at(i)
-        definition.retrieve(parent, i)
-      end
-      
       def size
         # TODO May not need this OR
         definition.count || definition.parent_class.slice_count(definition)
       end
+      
     end
+    
+    # # TODO What's the point of Slicer?
+    # class Slicer
+    #   include Indexable::Basic
+    #   
+    #   attr_reader :definition, :parent
+    #   
+    #   def initialize(definition, parent)
+    #     @definition = definition
+    #     @parent = parent
+    #     self.index_array_class = Slice::Array
+    #   end
+    #   
+    #   def at(i)
+    #     definition.retrieve(parent, i)
+    #   end
+    #   
+    #   def size
+    #     # TODO May not need this OR
+    #     definition.count || definition.parent_class.slice_count(definition)
+    #   end
+    # end
   end
 end
