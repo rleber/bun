@@ -37,11 +37,15 @@ class Bun
       def set_dates
         archive = Archive.new(options[:archive])
         shell = Bun::Shell.new(options)
-        archive.original_index.each do |spec|
-          file = archive.expanded_tape_path(spec[:tape])
-          timestamp = spec[:date]
-          puts "About to set timestamp: #{file} #{timestamp.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
-          shell.set_timestamp(file, timestamp)
+        archive.each do |tape|
+          descr = archive.descriptor(tape)
+          timestamp = descr[:updated]
+          if timestamp
+            puts "About to set timestamp: #{tape} #{timestamp.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
+            shell.set_timestamp(archive.expanded_tape_path(tape), timestamp)
+          else
+            puts "No updated time available for #{tape}" unless options[:quiet]
+          end
         end
       end
       
