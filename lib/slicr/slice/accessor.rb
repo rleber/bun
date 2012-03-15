@@ -3,6 +3,7 @@ require 'indexable_basic'
 module Slicr
   module Slice
     class Accessor
+      include Indexable::Basic
       
       attr_reader :definition
       attr_reader :parent
@@ -10,13 +11,14 @@ module Slicr
       def initialize(definition, parent)
         @definition = definition
         @parent = parent
+        self.index_array_class = Slice::Array
       end
       
       # Allows you to say things like stuff.byte.count, stuff.integer.hex, or stuff.integer.unsigned
       def method_missing(name, *args, &blk)
         return @res if _try(@definition, name, *args, &blk)
-        raise NoMethodError, "#{@definition.name}##{name} not permitted for multiple values" if _size > 1
-        raise NoMethodError, "#{@definition.name}##{name} not permitted for empty collection" if _size == 0
+        raise NoMethodError, "#{@definition.name}##{name} not permitted for multiple values" if size > 1
+        raise NoMethodError, "#{@definition.name}##{name} not permitted for empty collection" if size == 0
         raise NoMethodEror,  "#{@definition.name}##{name} not permitted for non-collapsing slices" unless @definition.collapse?
         value = self.at(0)
         raise NoMethodError, "#{@definition.name}##{name} method not defined" unless _try(value, name, *args, &blk)
@@ -32,19 +34,6 @@ module Slicr
         end
       end
       
-      def _size
-        definition.count || definition.parent_class.slice_count(definition)
-      end
-    end
-    
-    class SliceAccessor < Accessor
-      include Indexable::Basic
-
-      def initialize(definition, parent)
-        super
-        self.index_array_class = Slice::Array
-      end
-
       def to_a
         self[0..-1]
       end
@@ -85,29 +74,6 @@ module Slicr
         # TODO May not need this OR
         definition.count || definition.parent_class.slice_count(definition)
       end
-      
     end
-    
-    # # TODO What's the point of Slicer?
-    # class Slicer
-    #   include Indexable::Basic
-    #   
-    #   attr_reader :definition, :parent
-    #   
-    #   def initialize(definition, parent)
-    #     @definition = definition
-    #     @parent = parent
-    #     self.index_array_class = Slice::Array
-    #   end
-    #   
-    #   def at(i)
-    #     definition.retrieve(parent, i)
-    #   end
-    #   
-    #   def size
-    #     # TODO May not need this OR
-    #     definition.count || definition.parent_class.slice_count(definition)
-    #   end
-    # end
   end
 end
