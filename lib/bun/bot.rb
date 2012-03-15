@@ -66,6 +66,7 @@ class Bun
       file_info = []
       files = ix.each_with_index do |tape_name, i|
         file = archive.open(tape_name, :header=>true)
+        # TODO Optimize Decide what fields are needed outside the loop; only fetch thosega
         file_name = file.path
         tape_path = file.tape
         type = file.file_type.to_s
