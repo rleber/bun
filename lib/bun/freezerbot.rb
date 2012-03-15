@@ -123,9 +123,10 @@ class Bun
 
     # TODO Thaw all files
     desc "thaw ARCHIVE FILE [TO]", "Uncompress a frozen Honeywell file"
-    option "log",    :aliases=>'-l', :type=>'string',  :desc=>"Log status to specified file"
-    option "strict", :aliases=>"-s", :type=>"boolean", :desc=>"Check for bad data. Abort if found"
-    option "warn",   :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
+    option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+    option "log",     :aliases=>'-l', :type=>'string',  :desc=>"Log status to specified file"
+    option "strict",  :aliases=>"-s", :type=>"boolean", :desc=>"Check for bad data. Abort if found"
+    option "warn",    :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
     long_desc <<-EOT
 FILE may have some special formats: '+-nnn' (where nnn is an integer) denotes file number nnn. '-nnn' denotes the nnnth
 file from the end of the archive. Anything else denotes the name of a file. A backslash character is ignored at the
@@ -133,19 +134,17 @@ beginning of a file name, so that '\\+1' refers to a file named '+1', whereas '+
 whatever its name.
     EOT
     def thaw(file_name, n, out=nil)
-      archive = Archive.new
-      expanded_file = archive.expanded_tape_path(file_name)
-      abort "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless File.frozen?(expanded_file)
-      archived_file = archive.file_path(expanded_file)
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
+      file = archive.open(file_name)
+      abort "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
+      archived_file = file.path
       archived_file = "--unknown--" unless archived_file
-      file = File::Text.open(expanded_file)
-      # TODO Is duplicate open necessary?
-      frozen_file = File.create(options.merge(:file=>expanded_file, :type=>:frozen))
-      content = frozen_file.content(frozen_file.shard_index(n))
+      content = file.shard(file.shard_index(n))
       shell = Shell.new
-      shell.write out, content, :timestamp=>frozen_file.update_time, :quiet=>true
-      warn "Thawed with #{frozen_file.errors} decoding errors" if options[:warn] && frozen_file.errors > 0
-      shell.log options[:log], "thaw #{out.inspect} from #{file_name.inspect} with #{frozen_file.errors} errors" if options[:log]
+      shell.write out, content, :timestamp=>file.update_time, :quiet=>true
+      warn "Thawed with #{file.errors} decoding errors" if options[:warn] && file.errors > 0
+      shell.log options[:log], "thaw #{out.inspect} from #{file_name.inspect} with #{file.errors} errors" if options[:log]
     end
   end
 end
