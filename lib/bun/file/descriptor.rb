@@ -22,6 +22,7 @@ class Bun
         :path,
         :shard_count,
         :shard_names,
+        :specification,
         :tape_name,
         :tape_path,
         :update_date,

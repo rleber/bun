@@ -250,29 +250,30 @@ class Bun
     SHARDS_ACROSS = 5
     desc "describe TAPE", "Display description information for a file"
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    option "build",   :aliases=>"-b", :type=>'boolean',                              :desc=>"Don't rely on archive index; always build information from source file"
     def describe(file_name)
       directory = options[:archive] || Archive.location
       archive = Archive.new(directory)
-      file          = archive.open(file_name, :header=>true)
-      type          = file.file_type
-      shards        = file.shard_names
-      index_date    = file.index_date
+      descriptor    = archive.descriptor(file_name, :build=>options[:build])
+      type          = descriptor[:file_type]
+      shards        = descriptor[:shard_names]
+      index_date    = descriptor[:index_date]
       index_date_display = index_date ? index_date.strftime('%Y/%m/%d') : "n/a"
       
       # TODO Refactor using Array#justify_rows
-      puts "Tape:            #{file.tape}"
-      puts "Tape path:       #{file.tape_path}"
-      puts "Archived file:   #{file.path}"
-      puts "Owner:           #{file.owner}"
-      puts "Subdirectory:    #{file.subdirectory}"
-      puts "Name:            #{file.name}"
-      puts "Description:     #{file.description}"
-      puts "Specification:   #{file.specification}"
+      puts "Tape:            #{descriptor[:tape_name]}"
+      puts "Tape path:       #{descriptor[:tape_path]}"
+      puts "Archived file:   #{descriptor[:path]}"
+      puts "Owner:           #{descriptor[:owner]}"
+      puts "Subdirectory:    #{descriptor[:subdirectory]}"
+      puts "Name:            #{descriptor[:name]}"
+      puts "Description:     #{descriptor[:description]}"
+      puts "Specification:   #{descriptor[:specification]}"
       puts "Index date:      #{index_date_display}"
       if type == :frozen
-        puts "Updated at:      #{file.update_time.strftime(TIME_FORMAT)}"
+        puts "Updated at:      #{descriptor[:update_time].strftime(TIME_FORMAT)}"
       end
-      puts "Size (words):    #{file.size}"
+      puts "Size (words):    #{descriptor[:file_size]}"
       puts "Type:            #{type.to_s.sub(/^./) {|m| m.upcase}}"
 
       if shards.size > 0
@@ -292,9 +293,8 @@ class Bun
             if i >= shards.size
               column = [""]*4
             else
-              shard = shards[i]
-              d = file.shard_descriptor(shard)
-              column = [shard, d.path, d.update_time.strftime(TIME_FORMAT), d.size]
+              shard = descriptor[:shards][i]
+              column = [shards[i], shard[:path], shard[:update_time].strftime(TIME_FORMAT), shard[:file_size]]
             end
             table << column
             i += 1

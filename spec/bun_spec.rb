@@ -204,6 +204,26 @@ describe Bun::Bot do
       end
     end
   end
+  context "bun describe handling of the index" do
+    context "from the index" do
+      before :each do
+        lines = `bun describe --archive "data/test/archive/strange" ar003.0698`.chomp.split("\n")
+        @file = lines.find {|line| line =~ /^Name:/}.split(/\s+/)[-1].strip
+      end
+      it "should pull data from the index" do
+        @file.should == "from_the_index"
+      end
+    end
+    context "built from the file" do
+      before :each do
+        lines = `bun describe --archive "data/test/archive/strange" --build ar003.0698`.chomp.split("\n")
+        @file = lines.find {|line| line =~ /^Name:/}.split(/\s+/)[-1].strip
+      end
+      it "should not pull data from the index" do
+        @file.should_not == "from_the_index"
+      end
+    end
+  end
   # TODO Test bun dump
   # TODO Test bun dump -f
 end
