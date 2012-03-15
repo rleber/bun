@@ -87,12 +87,12 @@ module Slicr
         end
       
         def_method slice.name do |*args|
-          accessor = Slice::SliceAccessor.new(slice, self)
+          accessor = Slice::Accessor.new(slice, self)
           args.size==0 ? accessor : accessor.at(args[0])
         end
         
         def_method slice.plural do ||
-          Slice::SliceAccessor.new(slice, self).s
+          Slice::Accessor.new(slice, self).to_a
         end
 
         if slice.string?
