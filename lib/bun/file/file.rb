@@ -146,7 +146,7 @@ class Bun
       end
       
       def content_offset(words)
-        words.at(1).half_words.at(1).value
+        words.at(1).half_word(1).value
       end
     end
     
@@ -197,7 +197,7 @@ class Bun
         unless header?
           @file_content = LazyArray.new(size-content_offset) do |n|
             # TODO is this check vs. size necessary? is it correct?
-            n < self.size ? @words.at(content_offset+n) : nil
+            n < self.size ? word(content_offset+n) : nil
           end
           @characters = LazyArray.new(@file_content.size*characters_per_word) do |n|
             @words.characters.at(n + content_offset*characters_per_word)
@@ -208,6 +208,10 @@ class Bun
         end
       end
       words
+    end
+    
+    def word(n)
+      @words.at(n)
     end
 
     def clear
@@ -237,7 +241,7 @@ class Bun
       loop do
         break if offset >= size
         word_index, ch_index = offset.divmod(chars_per_word)
-        word = words.at(word_index)
+        word = word(word_index)
         break if !word || (word == self.class.eof_marker && !options[:all])
         char = chars.at(offset)
         break if char == delimiter
@@ -274,7 +278,7 @@ class Bun
     end
     
     def file_size
-      res = (words.at(0).half_words.at(1))+1
+      res = (word(0).half_word(1))+1
       res = res.value unless res.is_a?(Fixnum)
       res
     end
@@ -313,7 +317,7 @@ class Bun
     
     def file_type
       return :frozen if frozen?
-      return :huffman if words.at(content_offset).characters.join == 'huff'
+      return :huffman if word(content_offset).characters.join == 'huff'
       return :text
     end
   end

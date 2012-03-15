@@ -22,6 +22,7 @@ LAYERS YET TO BE DEFINED
 
 TODO
 File type for print listings (Qu: are these ever frozen?)
+Why doesn't words[0].octal work?
 Remove extraneous output files
 Optimize file processing for speed (e.g. bun ls command)
 Optimization ideas: use Indexable::Basic#at(x) for single indexes, fix Slice::Accessor[0..-1] reference

@@ -69,7 +69,7 @@ class Bun
           deleted = true
           line_length = word_count
         elsif (descriptor >> 27) & 0777 == 0
-            line_length = descriptor.half_words.at(0)
+            line_length = descriptor.half_word(0)
         else # Sometimes, there is ASCII in the descriptor word; In that case, capture it, and look for terminating "\177"
           raise "ASCII in descriptor"
         end

@@ -57,6 +57,7 @@ module Slicr
         self.collapse = false
         # TODO Optimize: Remove the following
         res = self[0..-1]
+        # warn %Q{SliceAccessor[0..-1]\n#{caller[0,2].join("\n")}}
         self.collapse = saved_collapse
         res
       end
@@ -65,6 +66,7 @@ module Slicr
       def string
         raise NoMethodError, "#{@definition.name}#string is not allowed for non-string slices" unless @definition.string?
         # TODO Optimize: Remove the following
+        # warn %Q{SliceAccessor[0..-1].string\n#{caller[0,2].join("\n")}}
         self[0..-1].string
       end
       

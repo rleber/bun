@@ -103,13 +103,9 @@ module Slicr
       
         def_method slice.name do |*args|
           accessor = Slice::SliceAccessor.new(slice, self)
-          if args.size == 0
-            accessor
-          else
-            accessor.[](*args)
-          end
+          args.size==0 ? accessor : accessor.at(args[0])
         end
-
+        
         def_method slice.plural do ||
           Slice::SliceAccessor.new(slice, self).s
         end

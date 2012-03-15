@@ -195,14 +195,15 @@ module Indexable
         @index_range[:array_class] = klass.name
         res = klass.new(res)
       end
-      log
+      log if $indexable_basic_log
       res
     end
     
     def log_file
       ENV['HOME'] + '/.indexable_basic.log'
     end
-    $indexable_basic_log = true
+
+    $indexable_basic_log = false
     def log
       return unless $indexable_basic_log
       File.open(log_file, 'a') {|f| f.puts @index_range.inspect + "\n"}
