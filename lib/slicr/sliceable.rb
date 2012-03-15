@@ -24,15 +24,16 @@ module Slicr
       end
 
       def ones_mask(n)
-        ones_masks[n]
+        2**n - 1
+        # ones_masks[n]
       end
       
-      def ones_masks
-        unless class_variable_defined?(:@@ones_masks)
-          @@ones_masks = Masks.new {|n| 2**n - 1 }
-        end
-        @@ones_masks
-      end
+      # def ones_masks
+      #   unless class_variable_defined?(:@@ones_masks)
+      #     @@ones_masks = Masks.new {|n| 2**n - 1 }
+      #   end
+      #   @@ones_masks
+      # end
   
       def make_bit_mask(width, from, to)
         leading_bit_mask = ones_mask(width-from)

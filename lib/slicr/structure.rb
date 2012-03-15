@@ -1,9 +1,9 @@
 require 'slicr/sliceable'
-require 'slicr/cacheable'
+# require 'slicr/cacheable'
 
 module Slicr
   class Structure < GenericNumeric
     include Sliceable
-    include Cacheable
+    # include Cacheable
   end
 end

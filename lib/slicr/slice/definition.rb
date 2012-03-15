@@ -5,7 +5,7 @@ module Slicr
     class Definition
 
       attr_accessor :bits
-      attr_accessor :cached
+      # attr_accessor :cached
       attr_accessor :count
       attr_accessor :class_name
       attr_accessor :slice_class
@@ -44,13 +44,13 @@ module Slicr
         self.options.merge!(opts)
 
         @is_string = !!options[:string]
-        @cached = !!options[:cached]
+        # @cached = !!options[:cached]
         @sign = options[:sign] || :none
         @slice_class = make_class
         @width = options[:width]
         @offset = options[:offset] || 0
         @bits = options[:bits] || @width
-        @mask = options[:mask] || @parent_class.ones_mask(@bits)
+        @mask = options[:mask] || (2**@bits - 1) # Mask @parent_class.ones_mask(@bits)
         @default_format = options[:default_format]
         @formats = options[:format] || {}
         @gap = options[:gap] || 0
@@ -86,9 +86,9 @@ module Slicr
         @sign != :none
       end
       
-      def cached?
-        @cached
-      end
+      # def cached?
+      #   @cached
+      # end
     
       def base_data_class
         if string?
@@ -112,16 +112,17 @@ module Slicr
       end
       
       def single_bit_mask(n)
-        Slicr::Word.single_bit_mask(n)
+        2**n
+        # Slicr::Word.single_bit_mask(n)
       end
       
       def retrieve(from_object, index)
-        obj = cached? && from_object.get_cache(name, index)
-        unless obj
+        # obj = cached? && from_object.get_cache(name, index)
+        # unless obj
           value = from_object.get_slice(index, :width=>width, :offset=>offset, :gap=>gap) & mask
           obj = slice_class.new(value)
-          from_object.store_cache(name, index, obj) if cached?
-        end
+        #   from_object.store_cache(name, index, obj) if cached?
+        # end
         obj
       end
     end

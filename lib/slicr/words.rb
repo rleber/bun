@@ -18,7 +18,7 @@ module Slicr
         base.send :alias_method, :set_at, :[]= 
       end
       base.send :include, Container
-      base.send :include, Cacheable
+      # base.send :include, Cacheable
       class << base
         alias_method :old_contains, :contains
       end

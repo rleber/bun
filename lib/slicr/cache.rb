@@ -1,6 +1,8 @@
 module Slicr
   class Cache
     def initialize(&blk)
+      warn caller.join("\n")
+      exit
       @contents = []
       @calculator = blk
     end

@@ -138,7 +138,7 @@ end
 
 shared_examples "a segment" do ||
   include_examples "with width", $parent, $width
-  include_examples "with masks", $parent, $width
+  # include_examples "with masks", $parent, $width
   include_examples "with slices", $parent
 end
 
