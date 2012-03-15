@@ -104,25 +104,6 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       Archive.new(archive_location).build_and_save_index(:verbose=>!options[:quiet])
     end
     
-    desc "build_index", "Build file index for archive"
-    option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
-    option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
-    def build_index
-      # TODO the following two lines are a common pattern; refactor
-      directory = options[:archive] || Archive.location
-      archive = Archive.new(directory)
-      archive.build_and_save_index(:verbose=>!options[:quiet])
-    end
-    
-    desc "clear_index", "Clear file index for archive"
-    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-    def clear_index
-      # TODO the following two lines are a common pattern; refactor
-      directory = options[:archive] || Archive.location
-      archive = Archive.new(directory)
-      archive.clear_index
-    end
-    
     desc "extract [TO]", "Extract all the files in the archive"
     option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'

@@ -58,6 +58,7 @@ class Bun
       :updated     => Time.now,
     }
     
+    # TODO Reorder tasks (split in separate files?)
     desc "ls", "Display an index of archived files"
     option 'archive', :aliases=>'-a', :type=>'string',                               :desc=>'Archive location'
     option "build",   :aliases=>"-b", :type=>'boolean',                              :desc=>"Don't rely on archive index; always build information from source file"
@@ -164,15 +165,17 @@ class Bun
       end  
     end
 
-    desc "dump FILE", "Dump a Honeywell file"
+    desc "dump TAPE", "Dump a Honeywell file"
+    option 'archive',   :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
     option "escape",    :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
     option "frozen",    :aliases=>'-f', :type=>'boolean', :desc=>'Display characters in frozen format (i.e. 5 per word)'
     option "lines",     :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
-    option "offset",    :aliases=>'-o', :type=>'string', :desc=>'Start at word n (zero-based index; octal/hex values allowed)'
+    option "offset",    :aliases=>'-o', :type=>'string',  :desc=>'Start at word n (zero-based index; octal/hex values allowed)'
     option "unlimited", :aliases=>'-u', :type=>'boolean', :desc=>'Ignore the file size limit'
     # TODO Deblock option
     def dump(file_name)
-      archive = Archive.new
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
       begin
         offset = options[:offset] ? eval(options[:offset]) : 0 # So octal or hex values can be given
       rescue => e
@@ -188,15 +191,17 @@ class Bun
       puts "No data to dump" if lc == 0
     end
     
-    desc "unpack FILE [TO]", "Unpack a file (Not frozen files -- use freezer subcommands for that)"
+    desc "unpack TAPE [TO]", "Unpack a file (Not frozen files -- use freezer subcommands for that)"
+    option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
     option "delete",  :aliases=>'-d', :type=>'boolean', :desc=>"Keep deleted lines"
     option "inspect", :aliases=>'-i', :type=>'boolean', :desc=>"Display long format details for each line"
-    option "log",     :aliases=>'-l', :type=>'string', :desc=>"Log status to specified file"
+    option "log",     :aliases=>'-l', :type=>'string',  :desc=>"Log status to specified file"
     option "warn",    :aliases=>'-w', :type=>'boolean', :desc=>"Warn if there are decoding errors"
     # TODO combine with other forms of read (e.g. thaw)
     # TODO rename bun read
     def unpack(file_name, to=nil)
-      archive = Archive.new
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
       file = archive.open(file_name)
       file.keep_deletes = true if options[:delete]
       archived_file = file.path
@@ -243,9 +248,11 @@ class Bun
     end
     
     SHARDS_ACROSS = 5
-    desc "describe FILE", "Display description information for a file"
+    desc "describe TAPE", "Display description information for a file"
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
     def describe(file_name)
-      archive = Archive.new
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
       file          = archive.open(file_name, :header=>true)
       type          = file.file_type
       shards        = file.shard_names
@@ -304,6 +311,27 @@ class Bun
         row_table = grand_table.justify_columns.transpose
         puts row_table.map{|row| '  ' + row.join('  ')}.join("\n")
       end
+    end
+    
+    desc "cat TAPE", "Copy a file to $stdout"
+    # TODO Refactor :archive as a global option?
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    def cat(tape)
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
+      archive.open(tape) {|f| $stdout.write f.read }
+    end
+
+    desc "cp TAPE [DESTINATION]", "Copy a file"
+    # TODO Refactor :archive as a global option?
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    def cp(tape, dest = nil)
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
+      unless dest.nil? || dest == '-'
+        dest = ::File.join(dest, ::File.basename(tape)) if ::File.directory?(dest)
+      end
+      archive.open(tape) {|f| Shell.new(:quiet=>true).write dest, f.read }
     end
     
     desc "test", "test this software"

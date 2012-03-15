@@ -1,22 +1,42 @@
 class Bun
   class Archive
     class IndexBot < Thor
-      desc "ls", "List the index file for the archive"
+    
+      desc "build", "Build file index for archive"
+      option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+      option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
+      def build
+        # TODO the following two lines are a common pattern; refactor
+        directory = options[:archive] || Archive.location
+        archive = Archive.new(directory)
+        archive.build_and_save_index(:verbose=>!options[:quiet])
+      end
+    
+      desc "clear", "Clear file index for archive"
       option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-      def ls
+      def clear
+        # TODO the following two lines are a common pattern; refactor
+        directory = options[:archive] || Archive.location
+        archive = Archive.new(directory)
+        archive.clear_index
+      end
+
+      desc "ls_original", "List the original index file for the archive"
+      option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+      def ls_original
         archive = Archive.new(options[:archive])
         # TODO Use Array.justify_rows
-        archive.index.each do |spec|
+        archive.original_index.each do |spec|
           puts "#{spec[:tape]}  #{spec[:date].strftime('%Y/%d/%m')}  #{spec[:file]}"
         end
       end
       
-      desc "set_dates", "Set file modification dates for archived files, based on index"
+      desc "set_dates", "Set file modification dates for archived files, based on original index"
       option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
       def set_dates
         archive = Archive.new(options[:archive])
         shell = Bun::Shell.new
-        archive.index.each do |spec|
+        archive.original_index.each do |spec|
           file = archive.expanded_tape_path(spec[:tape])
           timestamp = spec[:date]
           puts "About to set timestamp: #{file} #{timestamp.strftime('%Y/%m/%d %H:%M:%S')}"
@@ -30,17 +50,17 @@ class Bun
       # TODO Create check method: Check that an index file entry exists for each tape
       # file, check frozen file dates and content vs. index, check 
       # text archive file contents vs. index
-      desc "check", "Check contents of the index"
+      desc "check_original", "Check contents of the original index"
       option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
       option "include", :aliases=>'-i', :type=>'string', :desc=>"Include only certain messages. Options include #{VALID_MESSAGES.join(',')}"
       option "exclude", :aliases=>'-x', :type=>'string', :desc=>"Skip certain messages. Options include #{VALID_MESSAGES.join(',')}"
-      def check
+      def check_original
         archive = Archive.new(options[:archive])
         exclusions = (options[:exclude] || '').split(/\s*[,\s]\s*/).map{|s| s.strip.downcase }
         inclusions = (options[:include] || VALID_MESSAGES.join(',')).split(/\s*[,\s]\s*/).map{|s| s.strip.downcase }
         tapes = archive.tapes
         tapes.each do |tape|
-          tape_spec = archive.index.find {|spec| spec[:tape] == tape }
+          tape_spec = archive.original_index.find {|spec| spec[:tape] == tape }
           tape_path = archive.expanded_tape_path(tape)
           unless tape_spec
             puts "No index entry for #{tape}" if inclusions.include?('missing') && !exclusions.include?('missing')

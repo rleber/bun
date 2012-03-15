@@ -1,5 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require 'tempfile'
+require 'yaml'
 
 def unpack(text)
   lines = text.split("\n").map{|line| line.rstrip}
@@ -41,12 +42,50 @@ shared_examples "simple" do |file|
   end
 end
 
-shared_examples "command" do |descr, command, output|
+shared_examples "command" do |descr, command, expected_stdout_file|
   it "handles #{descr} properly" do
     # warn "> bun #{command}"
     res = `bun #{command} 2>&1`
-    output = File.join("output", 'test', output) unless output =~ %r{/}
-    unpack(res).should == readfile(output)
+    expected_stdout_file = File.join("output", 'test', expected_stdout_file) unless expected_stdout_file =~ %r{/}
+    unpack(res).should == readfile(expected_stdout_file)
+  end
+end
+
+shared_examples "command with file" do |descr, command, expected_stdout_file, output_file, expected_output_file|
+  context descr do
+    before :all do
+      # warn "> bun #{command}"
+      @res = `bun #{command} 2>&1`
+      @expected_stdout_file = if expected_stdout_file =~ %r{/}
+        expected_stdout_file
+      else 
+        File.join("output", 'test', expected_stdout_file)
+      end
+      @expected_output_file = if expected_output_file =~ %r{/}
+        expected_output_file
+      else
+        File.join("output", 'test', expected_output_file)
+      end
+      @output_file = if output_file =~ %r{/}
+        output_file
+      else
+        File.join("output", output_file)
+      end
+    end
+    it "gives the expected $stdout" do
+      unpack(@res).should == readfile(@expected_stdout_file)
+    end
+    it "creates the expected output file (#{@output_file})" do
+      file_should_exist @output_file
+    end
+    it "puts the expected output (in #{@output_file})" do
+      if File.exists?(@output_file) 
+        readfile(@output_file).should == readfile(@expected_output_file)
+      end
+    end
+    after :all do
+      `rm #{@output_file}`
+    end
   end
 end
 
@@ -65,7 +104,8 @@ end
 # Frozen files to check ar013.0560, ar004.0888, ar019.0175
 
 describe Bun::Bot do
-  # include_examples "command", "descr", "cmd", "output"
+  # include_examples "command", "descr", "cmd", "expected_stdout_file"
+  # include_examples "command with file", "descr", "cmd", "expected_stdout_file", "output_in_file", "expected_output_file"
   describe "check" do
     include_examples "command", "check clean file", "check data/test/clean", "check_clean"
     include_examples "command", "check dirty file", "check data/test/ar119.1801", "check_dirty"
@@ -79,6 +119,7 @@ describe Bun::Bot do
     include_examples "command", "ls", "ls", "ls"
     include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -t ar003.0698", "ls_ldrt_ar003.0698"
     include_examples "command", "ls -ldr with frozen file (ar145.2699)", "ls -ldr -t ar145.2699", "ls_ldrt_ar145.2699"
+    include_examples "command", "ls -ldrb with frozen file (ar145.2699)", "ls -ldrb -t ar145.2699", "ls_ldrbt_ar145.2699"
   end
   describe "readme" do
     include_examples "command", "readme", "readme", "doc/readme.md"
@@ -86,7 +127,83 @@ describe Bun::Bot do
   describe "unpack" do
     include_examples "command", "unpack", "unpack ar003.0698", "unpack"
   end
-  # TODO Test bun archive build_index
-  # TODO Test bun archive clear_index
-  # TODO Test bun ls --build (vs. bun ls)
+  describe "cat" do
+    include_examples "command", "cat (ar003.0698)", "cat ar003.0698", "cat"
+  end
+  describe "cp" do
+    include_examples "command with file", 
+      "cp ar003.0698 output/cp_ar003.0698.out", "cp ar003.0698 output/cp_ar003.0698.out", 
+      "cp_ar003.0698.stdout", "cp_ar003.0698.out", "cp_ar003.0698"
+    include_examples "command", "cp ar003.0698 -", "cp ar003.0698 -", "cp_ar003.0698"
+    include_examples "command", "cp ar003.0698", "cp ar003.0698 -", "cp_ar003.0698"
+    include_examples "command with file", 
+      "cp ar003.0698 output/cp_ar003.0698 (a directory)", "cp ar003.0698 output/cp_ar003.0698", 
+      "cp_ar003.0698.stdout", "output/cp_ar003.0698/ar003.0698", "cp_ar003.0698"
+  end
+  context "index processing" do
+    before :each do
+      `rm -rf data/test/archive/index`
+      `cp -r data/test/archive/init data/test/archive/index`
+    end
+    context "index build" do
+      before :each do
+        `rm -f data/test/archive/index/.index.yml`
+        `bun archive index build --archive "data/test/archive/index"`
+      end
+      it "should create index" do
+        file_should_exist "data/test/archive/index/.index.yml"
+      end
+      it "should be a good YAML file" do
+        expect { YAML.load(File.read("data/test/archive/index/.index.yml")) }.should_not raise_error
+      end
+      if (YAML.load(File.read("data/test/archive/index/.index.yml")) rescue nil)
+        context "index contents" do
+          before :each do
+            @index = YAML.load(File.read("data/test/archive/index/.index.yml")) rescue nil
+          end
+          it "should be a Hash" do
+            @index.should be_a(Hash)
+          end
+          it "should have one entry, for ar003.0698" do
+            @index.keys.should == ['ar003.0698']
+          end
+        end
+      end
+    end
+    context "index clear" do
+      before :each do
+        `rm -f data/test/archive/index/.index.yml`
+        `bun archive index build --archive "data/test/archive/index"`
+        `bun archive index clear --archive "data/test/archive/index"`
+      end
+      it "should remove index" do
+        file_should_not_exist "data/test/archive/index/.index.yml"
+      end
+    end
+    after :each do
+      `rm -rf data/test/archive/index`
+    end
+  end
+  context "bun ls handling of the index" do
+    context "from the index" do
+      before :each do
+        lines = `bun ls --archive "data/test/archive/strange" | tail -n 1`.chomp
+        @file = lines.split(/\s+/)[-1].strip
+      end
+      it "should pull data from the index" do
+        @file.should == "from_the_index"
+      end
+    end
+    context "built from the file" do
+      before :each do
+        lines = `bun ls --archive "data/test/archive/strange" --build | tail -n 1`.chomp
+        @file = lines.split(/\s+/)[-1].strip
+      end
+      it "should not pull data from the index" do
+        @file.should_not == "from_the_index"
+      end
+    end
+  end
+  # TODO Test bun dump
+  # TODO Test bun dump -f
 end

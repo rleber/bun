@@ -187,6 +187,10 @@ class Bun
       @header
     end
     
+    def read
+      ::File.read(tape_path)
+    end
+    
     def tape_name
       ::File.basename(tape_path)
     end
