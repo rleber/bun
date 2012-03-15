@@ -38,28 +38,14 @@ module Slicr
     end
     
     class SliceAccessor < Accessor
-      
-      attr_accessor :collapse
 
       def initialize(definition, parent)
         super
         @slicer = Slicer.new(definition, parent)
-        @collapse = definition.collapse?
       end
-      
-      def collapse?
-        @collapse
-      end
-      
-      # TODO Create a collapsed do ... end idiom?
+
       def array
-        saved_collapse = collapse?
-        self.collapse = false
-        # TODO Optimize: Remove the following
-        res = self[0..-1]
-        # warn %Q{SliceAccessor[0..-1]\n#{caller[0,2].join("\n")}}
-        self.collapse = saved_collapse
-        res
+        self[0..-1]
       end
       alias_method :s, :array # So you can say stuff.bit.s
       
@@ -75,32 +61,34 @@ module Slicr
       end
       
       def at(index)
-        condensed_values(@slicer.at(index))
+        conform @slicer.at(index)
+      end
+      
+      def conform(value)
+        case value
+        when definition.slice_class
+          value
+        when Numeric
+          definition.slice_class.new(value)
+        else
+          raise "Conversion! #{value.class} => #{definition.slice_class}"
+          definition.slice_class.new(value.internal_value)
+        end
       end
       
       def condensed_values(values)
-        case values
-        when nil
+        if values.nil?
           nil
-        when definition.slice_class
-          values
-        when Numeric
-          definition.slice_class.new(values)
-        when GenericNumeric
-          definition.slice_class.new(values.internal_value)
-        else # Should be an array
-          if values.size == 1 && collapse? && @slicer.index_range[:arg_type]==:scalar
-            # raise "Aha!" unless values.first.is_a?(definition.slice_class)
-            # definition.slice_class.new(values.first)
-            values.first
-          else
-            Slice::Array.new(values)
-          end
+        elsif values.is_a?(::Array)
+          Slice::Array.new(values)
+        else
+          conform(values)
         end
       end
       
     end
     
+    # TODO What's the point of Slicer?
     class Slicer
       include Indexable::Basic
       
