@@ -224,6 +224,8 @@ describe Bun::Bot do
       end
     end
   end
-  # TODO Test bun dump
-  # TODO Test bun dump -f
+  context "bun dump" do
+    include_examples "command", "dump ar003.0698", "dump ar003.0698", "dump_ar003.0698"
+    include_examples "command", "dump -f ar004.0888", "dump -f ar004.0888", "dump_f_ar004.0888"
+  end
 end
