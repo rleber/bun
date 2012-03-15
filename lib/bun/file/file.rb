@@ -182,6 +182,10 @@ class Bun
       @header
     end
     
+    def tape_name
+      ::File.basename(tape_path)
+    end
+    
     def words=(words)
       if words.nil?
         @words = @all_characters = @characters = @packed_characters = @descriptor = nil
