@@ -233,7 +233,7 @@ describe "instance" do
   it_behaves_like "it is sliced"
   
   TEST_WORD_SLICES.each do |slice_name|
-    defn = $parent.slices[slice_name]
+    defn = $parent.class.slices[slice_name]
     slices_name = slice_name.pluralize
     slice_class_name = TEST_WORD_SLICE_CLASSES[slice_name.to_sym]
     slice_object = $bytes.send(slice_name) rescue nil
