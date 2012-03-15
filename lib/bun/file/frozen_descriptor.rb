@@ -55,9 +55,21 @@ class Bun
     def name
       characters(0,8).strip
     end
+    
+    def file_type
+      :shard
+    end
 
     def path
       File.relative_path(file.path, name)
+    end
+    
+    def tape_name
+      file.tape_name
+    end
+    
+    def tape_path
+      file.tape_path
     end
 
     def update_date
@@ -80,6 +92,7 @@ class Bun
     def update_time
       File.time(_update_date, _update_time_of_day)
     end
+    alias_method :updated, :update_time
 
     def blocks
       word(6).value
@@ -100,6 +113,7 @@ class Bun
     def size
       word(8).value
     end
+    alias_method :file_size, :size
 
     def valid?
       return nil unless @file.words.size > finish

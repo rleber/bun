@@ -53,7 +53,7 @@ class Analyzer < Thor
         begin
           RowEvaluator.new(row).eval(string)
         rescue => e
-          abort "Bad --select: #{e}, row=#{row.inspect}"
+          abort "!Bad --select: #{e}, row=#{row.inspect}"
         end
       end
     end

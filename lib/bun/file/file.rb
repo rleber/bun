@@ -299,6 +299,10 @@ class Bun
     def time(date_location, time_location)
       self.class.time date(date_location), time_of_day(time_location)
     end
+    
+    def index_date
+      archive && archive.index_date(tape)
+    end
 
     def characters_per_word
       self.class.characters_per_word

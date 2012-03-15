@@ -135,7 +135,7 @@ class Bun
         else
           name = n.to_s.sub(/^\\/,'') # Remove leading '\\', if any
           n = _shard_index(name)
-          abort "Frozen file does not contain a file #{name}" unless n
+          abort "!Frozen file does not contain a file #{name}" unless n
         end
         n
       end
@@ -203,7 +203,7 @@ class Bun
         while line_offset < words.size
           last_line_word, line, okay = thaw_line(words, line_offset)
           if !line
-            abort "Bad line at #{'%o'%line_offset}: #{line.inspect}" if @strict
+            abort "!Bad line at #{'%o'%line_offset}: #{line.inspect}" if @strict
             Kernel.warn "Bad lines corrected" if !warned && @warn
             warned = true
             line_offset += 1
