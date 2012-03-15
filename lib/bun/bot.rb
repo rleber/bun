@@ -271,7 +271,8 @@ class Bun
       puts "Specification:   #{descriptor[:specification]}"
       puts "Index date:      #{index_date_display}"
       if type == :frozen
-        puts "Updated at:      #{descriptor[:file_time].strftime(TIME_FORMAT)}"
+        puts "File date:       #{descriptor[:file_time].strftime(TIME_FORMAT)}"
+        puts "Updated at:      #{descriptor[:updated].strftime(TIME_FORMAT)}"
       end
       puts "Size (words):    #{descriptor[:file_size]}"
       puts "Type:            #{type.to_s.sub(/^./) {|m| m.upcase}}"
