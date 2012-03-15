@@ -246,12 +246,9 @@ def show_word(expr)
   end
 end
 
-MASKS = %w{single_bit_mask ones_mask}
-
 puts "Bun::Word:"
 show_value "Bun::Word.width"
 show_value "Bun::Word.ones_mask", :format=>WORD_FORMAT
-show_collections "Bun::Word", MASKS, :format=>WORD_FORMAT, :size=>Bun::Word.width+1
 puts
 
 Bun::Word.slices.sort_by{|name, defn| name.to_s}.each do |slice, slice_defn|

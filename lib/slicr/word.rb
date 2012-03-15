@@ -16,10 +16,6 @@ module Slicr
         end
       end
       
-      def ones_mask(n=width)
-        super(n)
-      end
-      
       def slice(slice_name, options={}, &blk)
         slice_definition = super(slice_name, options, &blk)
         # slice_definition.count = slice_count(slice_definition)

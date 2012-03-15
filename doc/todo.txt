@@ -43,7 +43,6 @@ Look for Huffman-coded files: e.g. ar003.0701, ar116.2122, ar116.2128
 Standardize Decode and Defrost interfaces
 Change file patterns to tape::file(::shard)? Qu: how to specify whether it must be a shard?
 Possibly caching of archive index?
-Move Slicr bit masks to Slicr class
 Clean code
 Build as a gem
 Revise installation readme
