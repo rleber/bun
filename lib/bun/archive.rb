@@ -1,5 +1,5 @@
 require 'yaml'
-require 'bun/file'
+require 'lib/bun/file'
 
 class Bun
   class Archive

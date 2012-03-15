@@ -2,11 +2,11 @@
 
 # TODO Turn this into a set of RSpec tests
 
-target = File.dirname(__FILE__) + '/../lib'
+target = File.dirname(__FILE__) + '/..'
 $:.unshift(target) unless $:.include?(target) || $:.include?(File.expand_path(target))
 
-require 'bun/word'
-require 'bun/array'
+require 'lib/bun/word'
+require 'lib/bun/array'
 
 WORD_FORMAT = '%012o'
 DEFAULT_FORMAT = '%p'

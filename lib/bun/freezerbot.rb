@@ -1,5 +1,5 @@
-require 'bun/archive'
-require 'bun/shell'
+require 'lib/bun/archive'
+require 'lib/bun/shell'
 
 class Bun
 
@@ -38,7 +38,7 @@ class Bun
       archived_file = file.path
       archived_file = "--unknown--" unless archived_file
       print "Frozen archive for directory #{archived_file}"
-      print "\nLast updated at #{file.update_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
+      print "\nLast updated at #{file.file_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
       puts ":"
       lines = []
       if options[:long]
@@ -51,15 +51,15 @@ class Bun
       file.shard_count.times do |i|
         descr = file.shard_descriptor(i)
         next unless descr.name=~file_pattern
-        file_info << {'order'=>i, 'update'=>descr.update_time, 'size'=>descr.file_size, 'name'=>descr.name}
+        file_info << {'order'=>i, 'update'=>descr.file_time, 'size'=>descr.file_size, 'name'=>descr.name}
       end
       sorted_order = file_info.sort_by{|fi| [fi[options[:sort]], fi['name']]}.map{|fi| fi['order']} # Sort it in order
       # Accumulate the display
       sorted_order.each do |i|
         descr = file.shard_descriptor(i)
         if options[:long]
-          update_time = descr.update_time
-          lines << "#{'%5d'%(i)} #{'%-8s'%descr.name}  #{update_time.strftime(TIMESTAMP_FORMAT)}  #{'%10d'%descr.file_size}  #{'%#012o'% (descr.start + file.content_offset)}"
+          file_time = descr.file_time
+          lines << "#{'%5d'%(i)} #{'%-8s'%descr.name}  #{file_time.strftime(TIMESTAMP_FORMAT)}  #{'%10d'%descr.file_size}  #{'%#012o'% (descr.start + file.content_offset)}"
         elsif options[:descr]
           lines << "#{'%5d'%(i)} #{'%-8s'%descr.name} #{descr.octal}"
         else
@@ -142,7 +142,7 @@ whatever its name.
       archived_file = "--unknown--" unless archived_file
       content = file.shard(file.shard_index(n))
       shell = Shell.new
-      shell.write out, content, :timestamp=>file.update_time, :quiet=>true
+      shell.write out, content, :timestamp=>file.file_time, :quiet=>true
       warn "Thawed with #{file.errors} decoding errors" if options[:warn] && file.errors > 0
       shell.log options[:log], "thaw #{out.inspect} from #{file_name.inspect} with #{file.errors} errors" if options[:log]
     end

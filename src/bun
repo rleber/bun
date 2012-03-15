@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
-require File.dirname(__FILE__) + '/../lib/bun'
+target = File.dirname(__FILE__) + '/..'
+$:.unshift(target) unless $:.include?(target) || $:.include?(File.expand_path(target))
+
+require 'lib/bun'
 
 Bun::Bot.start

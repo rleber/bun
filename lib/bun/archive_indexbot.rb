@@ -32,15 +32,15 @@ class Bun
       end
       
       desc "set_dates", "Set file modification dates for archived files, based on original index"
-      option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+      option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+      option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually set dates"
       def set_dates
         archive = Archive.new(options[:archive])
-        shell = Bun::Shell.new
+        shell = Bun::Shell.new(options)
         archive.original_index.each do |spec|
           file = archive.expanded_tape_path(spec[:tape])
           timestamp = spec[:date]
-          puts "About to set timestamp: #{file} #{timestamp.strftime('%Y/%m/%d %H:%M:%S')}"
-          exit
+          puts "About to set timestamp: #{file} #{timestamp.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
           shell.set_timestamp(file, timestamp)
         end
       end
@@ -74,17 +74,17 @@ class Bun
           if frozen
             # TODO Is duplicate open necessary?
             frozen_file = File::Frozen.open(tape_path)
-            case tape_spec[:date] <=> frozen_file.update_date
+            case tape_spec[:date] <=> frozen_file.file_date
             when -1 
-              puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is older than date of frozen archive (#{frozen_file.update_date.strftime('%Y/%m/%d')})" \
+              puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is older than date of frozen archive (#{frozen_file.file_date.strftime('%Y/%m/%d')})" \
                 if inclusions.include?('old') &&!exclusions.include?('old')
             when 1
-              puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is newer than date of frozen archive (#{frozen_file.update_date.strftime('%Y/%m/%d')})" \
+              puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is newer than date of frozen archive (#{frozen_file.file_date.strftime('%Y/%m/%d')})" \
               if inclusions.include?('new') &&!exclusions.include?('new')
             end
             frozen_file.shard_count.times do |i|
               descriptor = frozen_file.descriptor(i)
-              file_date = descriptor.update_date
+              file_date = descriptor.file_date
               frozen_file = descriptor.file_name
               case tape_spec[:date] <=> file_date
               when -1 
@@ -94,12 +94,12 @@ class Bun
                 puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is newer than date of frozen file #{frozen_file} (#{file_date.strftime('%Y/%m/%d')})" \
                   if inclusions.include?('new_file') &&!exclusions.include?('new_file')
               end
-              case frozen_file.update_date <=> frozen_file.update_date
+              case frozen_file.file_date <=> frozen_file.file_date
               when -1 
-                puts "#{tape}: Archival date of archive (#{frozen_file.update_date.strftime('%Y/%m/%d')}) is older than date of frozen file #{frozen_file} (#{file_date.strftime('%Y/%m/%d')})" \
+                puts "#{tape}: Archival date of archive (#{frozen_file.file_date.strftime('%Y/%m/%d')}) is older than date of frozen file #{frozen_file} (#{file_date.strftime('%Y/%m/%d')})" \
                   if inclusions.include?('old_file') &&!exclusions.include?('old_file')
               when 1
-                puts "#{tape}: Archival date of archive (#{frozen_file.update_date.strftime('%Y/%m/%d')}) is newer than date of frozen file #{frozen_file} (#{file_date.strftime('%Y/%m/%d')})" \
+                puts "#{tape}: Archival date of archive (#{frozen_file.file_date.strftime('%Y/%m/%d')}) is newer than date of frozen file #{frozen_file} (#{file_date.strftime('%Y/%m/%d')})" \
                   if inclusions.include?('new_file') &&!exclusions.include?('new_file')
               end
             end

@@ -1,12 +1,12 @@
 require 'thor'
 require 'mechanize'
 require 'fileutils'
-require 'bun/archive'
-require 'bun/file'
-require 'bun/archivebot'
-require 'bun/freezerbot'
-require 'bun/dump'
-require 'bun/array'
+require 'lib/bun/archive'
+require 'lib/bun/file'
+require 'lib/bun/archivebot'
+require 'lib/bun/freezerbot'
+require 'lib/bun/dump'
+require 'lib/bun/array'
 require 'pp'
 
 class Bun
@@ -271,7 +271,7 @@ class Bun
       puts "Specification:   #{descriptor[:specification]}"
       puts "Index date:      #{index_date_display}"
       if type == :frozen
-        puts "Updated at:      #{descriptor[:update_time].strftime(TIME_FORMAT)}"
+        puts "Updated at:      #{descriptor[:file_time].strftime(TIME_FORMAT)}"
       end
       puts "Size (words):    #{descriptor[:file_size]}"
       puts "Type:            #{type.to_s.sub(/^./) {|m| m.upcase}}"
@@ -294,7 +294,7 @@ class Bun
               column = [""]*4
             else
               shard = descriptor[:shards][i]
-              column = [shards[i], shard[:path], shard[:update_time].strftime(TIME_FORMAT), shard[:file_size]]
+              column = [shards[i], shard[:path], shard[:file_time].strftime(TIME_FORMAT), shard[:file_size]]
             end
             table << column
             i += 1

@@ -25,8 +25,8 @@ class Bun
         :specification,
         :tape_name,
         :tape_path,
-        :update_date,
-        :update_time,
+        :file_date,
+        :file_time,
         :updated,
       ]
       
@@ -106,21 +106,33 @@ class Bun
         ::File.basename(tape_path)
       end
       
-      def update_date
-        file.update_date rescue nil
+      def file_date
+        file.file_date rescue nil
       end
       
-      def update_time
-        file.update_time rescue nil
+      def file_time
+        file.file_time rescue nil
       end
-      alias_method :updated, :update_time
+      
+      def updated
+        if file_time && index_date
+          index_time = index_date.to_local_time
+          [index_time, file_time].min
+        elsif file_time
+          file_time
+        elsif index_date
+          index_date.to_local_time
+        else
+          nil
+        end
+      end
       
       def index_date
         file.index_date rescue nil
       end
       
       def updated
-        update_time || index_date
+        file_time || index_date
       end
       
       def type

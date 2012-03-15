@@ -1,4 +1,4 @@
-require 'bun/scene'
+require 'lib/bun/scene'
 
 class Bun
   class Script

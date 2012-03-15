@@ -15,8 +15,8 @@ class Bun
       :path,
       :tape_name,
       :tape_path,
-      :update_date,
-      :update_time,
+      :file_date,
+      :file_time,
       :updated,
     ]
 
@@ -94,7 +94,7 @@ class Bun
       file.tape_path
     end
 
-    def update_date
+    def file_date
       File.date(_update_date)
     end
 
@@ -115,10 +115,10 @@ class Bun
     end
 
     # TODO Choose earlier of this time or time of file
-    def update_time
+    def file_time
       File.time(_update_date, _update_time_of_day)
     end
-    alias_method :updated, :update_time
+    alias_method :updated, :file_time
 
     def blocks
       word(6).value
