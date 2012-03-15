@@ -154,11 +154,7 @@ class Bun
       def shard_words(n)
         d = shard_descriptor(n)
         return nil unless d
-        if n == shard_count-1
-          words[d.start..-1]
-        else
-          words[d.start, d.size]
-        end
+        words[d.start + content_offset, d.file_size]
       end
     
       def shards

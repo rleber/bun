@@ -48,7 +48,7 @@ class Bun
       FIELDS.inject({}) {|hsh, f| hsh[f] = self.send(f) rescue nil; hsh }
     end
 
-    def offset(n=nil) # Offset from the beginning of the file content, in words
+    def offset(n=nil) # Offset of the descriptor from the beginning of the file content, in words
       # TODO Optimize is n.nil? ever used
       n ||= number
       file.content_offset + DESCRIPTOR_OFFSET + n*DESCRIPTOR_SIZE
