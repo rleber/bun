@@ -44,16 +44,8 @@ module Slicr
         @slicer = Slicer.new(definition, parent)
       end
 
-      def array
+      def to_a
         self[0..-1]
-      end
-      alias_method :s, :array # So you can say stuff.bit.s
-      
-      def string
-        raise NoMethodError, "#{@definition.name}#string is not allowed for non-string slices" unless @definition.string?
-        # TODO Optimize: Remove the following
-        # warn %Q{SliceAccessor[0..-1].string\n#{caller[0,2].join("\n")}}
-        self[0..-1].string
       end
       
       def [](*args)

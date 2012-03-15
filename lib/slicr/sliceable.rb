@@ -92,7 +92,7 @@ module Slicr
         end
         
         def_method slice.plural do ||
-          Slice::SliceAccessor.new(slice, self).s
+          Slice::SliceAccessor.new(slice, self).to_a
         end
 
         if slice.string?
