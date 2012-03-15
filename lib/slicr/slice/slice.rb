@@ -19,7 +19,7 @@ module Slicr
         end
         
         def single_bit_mask(n)
-          definition.single_bit_mask(n)
+          2**n
         end
       
         def clip(value)

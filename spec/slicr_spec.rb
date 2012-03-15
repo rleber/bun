@@ -51,68 +51,10 @@ def is_numeric?(v)
   v.is_a?(Numeric) || v.is_a?(GenericNumeric)
 end
 
-# ones_mask should be 0b11111... of the specified # of binary digits
-RSpec::Matchers.define :be_a_ones_mask do |width|
-  match do |mask|
-    case 0 <=> width
-    when -1
-      ('%b' % mask) =~ /^1{#{width}}$/
-    when 0
-      mask == 0
-    else
-      raise ArgumentError, "Mask width must be >= 0"
-    end
-  end
-  
-  failure_message_for_should do |mask|
-    "expected that #{'%#b' % mask} would be a ones mask of width #{width}"
-  end
-end
-
-# single_bit_mask should be 0b10000... with the specified # of zeroes
-RSpec::Matchers.define :be_a_single_bit_mask do |zeroes|
-  match do |mask|
-    if zeroes >= 0
-      ('%b' % mask) =~ /^10{#{zeroes}}$/
-    else
-      raise ArgumentError, "# of zeroes must be >= 0"
-    end
-  end
-  
-  failure_message_for_should do |mask|
-    "expected that #{'%#b' % mask} would be a single bit mask of 1 followed by #{zeroes} 0s"
-  end
-end
-
 shared_examples "with width" do |object, width|
   width ||= TEST_WIDTH
   it "should define correct width" do
     object.width.should == width
-  end
-end
-
-shared_examples "with masks" do |*args|
-  object, width = args
-  maximum_width = (width || TEST_WIDTH)+1
-  
-  if width
-    it "should define ones_mask" do
-      object.ones_mask.should be_a_ones_mask(width)
-    end
-  end
-  
-  (0..maximum_width).each do |bit|
-    context "for bit number #{bit}" do
-      it "should define single_bit mask" do
-        object.single_bit_mask(bit).should be_a_single_bit_mask(bit)
-      end
-      
-      unless width
-        it "should define ones_mask" do
-          object.ones_mask(bit).should be_a_ones_mask(bit)
-        end
-      end
-    end
   end
 end
 
@@ -138,7 +80,6 @@ end
 
 shared_examples "a segment" do ||
   include_examples "with width", $parent, $width
-  include_examples "with masks", $parent, $width
   include_examples "with slices", $parent
 end
 
@@ -169,10 +110,6 @@ shared_examples "slice definition" do |slice_name|
 
   it "sets .sign?" do
     slice_object.sign?.should == SLICE_SIGN[slice_name]
-  end
-
-  it "sets .mask" do
-    slice_object.mask.should be_a_ones_mask(SLICE_BITS[slice_name])
   end
 end
 
@@ -455,8 +392,6 @@ describe "instance" do
       end
     end
     
-    # TODO Test retrievals from cache
-
     NON_STRING_SLICES.each do |slice_name|
       slice = $bytes.send(slice_name) rescue nil
       slices_name = slice_name.pluralize

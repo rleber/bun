@@ -18,7 +18,6 @@ module Slicr
         base.send :alias_method, :set_at, :[]= 
       end
       base.send :include, Container
-      base.send :include, Cacheable
       class << base
         alias_method :old_contains, :contains
       end
@@ -78,7 +77,6 @@ module Slicr
         unless @import_divs
           @import_divs = Array(width+8)
           (width...(width+8)).each {|n| @import_divs[n] = 2**(n-width)}
-          @import_masks = @import_divs.map{|div| div && div-1}
         end
         # The following is about as fast as I can make it in Ruby
         # Consider a native extension?

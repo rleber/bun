@@ -1,4 +1,3 @@
-require 'slicr/masks'
 require 'slicr/formats'
 require 'slicr/slice'
 
@@ -13,25 +12,11 @@ module Slicr
     module ClassMethods
       # TODO This stuff is repetitive; refactor it
       def single_bit_mask(n)
-        single_bit_masks[n]
-      end
-      
-      def single_bit_masks
-        unless class_variable_defined?(:@@single_bit_masks)
-          @@single_bit_masks = Masks.new {|n| 1<<n }
-        end
-        @@single_bit_masks
+        2**n
       end
 
       def ones_mask(n)
-        ones_masks[n]
-      end
-      
-      def ones_masks
-        unless class_variable_defined?(:@@ones_masks)
-          @@ones_masks = Masks.new {|n| 2**n - 1 }
-        end
-        @@ones_masks
+        2**n - 1
       end
   
       def make_bit_mask(width, from, to)
@@ -80,7 +65,7 @@ module Slicr
           defn && slice_count(defn, options)
         end
       end
-  
+      
       # TODO Should word.byte mean word.byte(0) or word.byte(n)?
       # TODO Should be recursive -- i.e. Should be able to say word.half_word(0).byte(2)
       # TODO Define bit and byte order (i.e. LR, RL)
@@ -145,22 +130,6 @@ module Slicr
     def slices
       self.class.slices
     end
-    
-    def single_bit_mask(n)
-      self.class.single_bit_mask(n)
-    end
-    
-    def single_bit_masks
-      self.class.single_bit_masks
-    end
-
-    def ones_mask(n)
-      self.class.ones_mask(n)
-    end
-    
-    def ones_masks
-      self.class.ones_masks
-    end
 
     def width(n=nil)
       if n.nil?
@@ -174,10 +143,6 @@ module Slicr
       self.class.slice_count(*args)
     end
 
-    def clip(value)
-      self.class.ones_mask(width) & value
-    end
-  
     def bit_segment(from, to, width=nil)
       width ||= self.width
       value & self.class.make_bit_mask(width, from, to)

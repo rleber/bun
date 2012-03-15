@@ -179,7 +179,7 @@ module Slicr
     
     class << self
       def ones_mask(n)
-        2^n-1
+        2**n-1
       end
       
       def format_samples(size)

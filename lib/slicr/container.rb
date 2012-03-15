@@ -57,10 +57,7 @@ module Slicr
       v = args.pop
       v = conform(v)
       args.push(v)
-      res = set_at(*args)
-      # TODO Smarter handling of change in values
-      clear_cache if self.respond_to?(:clear_cache)
-      res
+      set_at(*args)
     end
     
     def inspect
