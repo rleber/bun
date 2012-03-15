@@ -86,4 +86,7 @@ describe Bun::Bot do
   describe "unpack" do
     include_examples "command", "unpack", "unpack ar003.0698", "unpack"
   end
+  # TODO Test bun archive build_index
+  # TODO Test bun archive clear_index
+  # TODO Test bun ls --build (vs. bun ls)
 end

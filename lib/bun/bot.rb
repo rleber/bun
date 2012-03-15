@@ -60,6 +60,7 @@ class Bun
     
     desc "ls", "Display an index of archived files"
     option 'archive', :aliases=>'-a', :type=>'string',                               :desc=>'Archive location'
+    option "build",   :aliases=>"-b", :type=>'boolean',                              :desc=>"Don't rely on archive index; always build information from source file"
     option "descr",   :aliases=>"-d", :type=>'boolean',                              :desc=>"Include description"
     option "files",   :aliases=>"-f", :type=>'string',  :default=>'',                :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
     option "frozen",  :aliases=>"-r", :type=>'boolean',                              :desc=>"Recursively include contents of freeze files"
@@ -112,15 +113,16 @@ class Bun
       # Retrieve file information
       archive = Archive.new(directory)
       ix = archive.tapes
+      # TODO Refactor using archive.select
       ix = ix.select{|tape_name| tape_name =~ tape_pattern}
       file_info = []
       files = ix.each_with_index do |tape_name, i|
-        file = archive.open(tape_name, :header=>true)
-        file_row = fields.inject({}) {|hsh, f| hsh[f] = (file.send(f) rescue nil); hsh }
+        file_descriptor = archive.descriptor(tape_name, :build=>options[:build])
+        file_row = fields.inject({}) {|hsh, f| hsh[f] = file_descriptor[f]; hsh }
         file_info << file_row
-        if options[:frozen] && file_row[:file_type] == :frozen
-          file.shard_descriptors.each do |d|
-            file_info << fields.inject({}) {|hsh, f| hsh[f] = (d.send(f) rescue nil); hsh }
+        if options[:frozen] && file_descriptor[:file_type] == :frozen
+          file_descriptor[:shards].each do |d|
+            file_info << fields.inject({}) {|hsh, f| hsh[f] = d[f]; hsh }
           end
         end
       end
@@ -269,6 +271,7 @@ class Bun
       if shards.size > 0
         # Display shard information in a table, SHARDS_ACROSS shards per row,
         # Multiple rows of information for each shard
+        # TODO Modify Array extensions and refactor
         puts
         puts "Shards:"
         grand_table = []

@@ -14,7 +14,7 @@ class Bun
       # The destination folder will have subfolders created, based on the structure of the uri
       # For example, fetching "http://example.com/in/a/directory/" to "data" will create a
       # copy of the contents at the uri into "data/example.com/in/a/directory"
-      def _fetch(base_uri, destination)
+      def _fetch(base_uri, destination, options={})
         destination.sub!(/\/$/,'') # Remove trailing slash from destination, if any
         uri_sub_path = base_uri.sub(/http:\/\/[^\/]*/,'')
         count = 0
@@ -24,7 +24,7 @@ class Bun
           relative_uri = page.uri.path.sub(/^#{Regexp.escape(uri_sub_path)}/, '')
           file_name = ::File.join(destination, relative_uri)
           dirname = ::File.dirname(file_name)
-          if @dryrun
+          if options[:dryrun] || !options[:quiet]
             puts "Fetch #{file_name}"
           else
             FileUtils::mkdir_p(dirname)
@@ -78,8 +78,9 @@ class Bun
     
     IGNORE_LINKS = ["Name", "Last modified", "Size", "Description", "Parent Directory"]
     desc "fetch [URL]", "Fetch files from an online repository"
-    option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Do a dry run only; show what would be fetched, but don't save it"
-    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+    option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Do a dry run only; show what would be fetched, but don't save it"
+    option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
     long_desc <<-EOT
 Fetches all the files and subdirectories of the specified online url to the data directory.
 
@@ -99,8 +100,27 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       archive_location = options[:archive] || Archive.location
       abort "!No url provided" unless url
       abort "!No archive location provided" unless archive_location
-      @dryrun = options[:dryrun]
-      _fetch(url, archive_location)
+      _fetch(url, archive_location, options)
+      Archive.new(archive_location).build_and_save_index(:verbose=>!options[:quiet])
+    end
+    
+    desc "build_index", "Build file index for archive"
+    option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+    option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
+    def build_index
+      # TODO the following two lines are a common pattern; refactor
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
+      archive.build_and_save_index(:verbose=>!options[:quiet])
+    end
+    
+    desc "clear_index", "Clear file index for archive"
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    def clear_index
+      # TODO the following two lines are a common pattern; refactor
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
+      archive.clear_index
     end
     
     desc "extract [TO]", "Extract all the files in the archive"

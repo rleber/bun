@@ -3,6 +3,9 @@ require 'bun/file'
 
 class Bun
   class Archive
+    include Enumerable
+    
+    @@index = nil
     
     def self.config_dir(name)
       dir = config[name]
@@ -44,6 +47,10 @@ class Bun
       config['repository']
     end
     
+    def self.original_index_file
+      config['original_index_file']
+    end
+
     def self.index_file
       config['index_file']
     end
@@ -66,6 +73,15 @@ class Bun
     
     def tapes
       Dir.entries(::File.join(location, raw_directory)).reject{|f| f=~/^\./}
+    end
+    
+    def each_tape(&blk)
+      tapes.each(&blk)
+    end
+    alias_method :each, :each_tape
+    
+    def each_file(&blk)
+      tapes.each {|tape| open(tape, &blk)}
     end
     
     def raw_directory
@@ -92,6 +108,10 @@ class Bun
       self.class.log_file
     end
     
+    def original_index_file
+      ::File.expand_path(::File.join(location, self.class.original_index_file))
+    end
+
     def index_file
       ::File.expand_path(::File.join(location, self.class.index_file))
     end
@@ -132,12 +152,12 @@ class Bun
       self.class.config
     end
     
-    def index
-      @index ||= _index
+    def original_index
+      @original_index ||= _original_index
     end
     
-    def _index
-      content = ::File.read(index_file)
+    def _original_index
+      content = ::File.read(original_index_file)
       specs = content.split("\n").map do |line|
         words = line.strip.split(/\s+/)
         raise RuntimeError, "Bad line in index file: #{line.inspect}" unless words.size == 3
@@ -151,15 +171,77 @@ class Bun
       end
       specs
     end
-    private :_index
+    private :_original_index
     
     def index_date(tape)
-      info = index.find {|spec| spec[:tape] == tape }
+      info = original_index.find {|spec| spec[:tape] == tape }
       info && info[:date]
+    end
+    
+    def index
+      _index unless @@index
+      @@index
+    end
+    
+    def _index
+      if ::File.exists?(index_file)
+        @@index = YAML.load(::File.read(index_file))
+      else
+        build_and_save_index
+      end
+    end
+    private :_index
+    
+    def build_and_save_index(options={})
+      @@index = res = build_index(options)
+      save_index(res)
+      res
+    end
+    
+    def build_index(options={})
+      index = {}
+      each_file do |f|
+        puts f.tape_name if options[:verbose]
+        index[f.tape_name] = build_descriptor_for_file(f)
+      end
+      index
+    end
+    
+    def clear_index
+      ::FileUtils.rm(index_file)
+      @@index = nil
+    end
+    
+    def build_descriptor(name)
+      open(name, :header=>true) {|f| build_descriptor_for_file(f) }
+    end
+    
+    def build_descriptor_for_file(f)
+      entry = f.descriptor.to_hash
+      entry[:shards] = (f.file_type == :frozen) ? f.shard_descriptors.map{|d| d.to_hash} : []
+      entry
+    end
+    
+    def save_index(index)
+      ::File.open(index_file, 'w') {|f| f.write index.to_yaml }
+    end
+    
+    def descriptor(name, options={})
+      if !exists?(name)
+        nil
+      elsif !options[:build] && index[name]
+        index[name]
+      else
+        build_descriptor(name)
+      end
     end
     
     def open(name, options={}, &blk)
       File.open(expanded_tape_path(name), options.merge(:archive=>self, :tape_name=>name), &blk)
+    end
+    
+    def exists?(name)
+      ::File.exists?(expanded_tape_path(name))
     end
   end
 end
