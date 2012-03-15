@@ -77,9 +77,8 @@ describe Bun::Bot do
   end
   describe "ls" do
     include_examples "command", "ls", "ls", "ls"
-    include_examples "command", "ls -ldr with text file", "ls -ldr -t ar003.0698", "ls_ldrt_ar003.0698"
-    include_examples "command", "ls -ldr with frozen file", "ls -ldr -t ar004.0888", "ls_ldrt_ar004.0888"
-    include_examples "command", "ls -ldr with frozen file (check dates)", "ls -ldr -t ar145.2699", "ls_ldrt_ar145.2699"
+    include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -t ar003.0698", "ls_ldrt_ar003.0698"
+    include_examples "command", "ls -ldr with frozen file (ar145.2699)", "ls -ldr -t ar145.2699", "ls_ldrt_ar145.2699"
   end
   describe "readme" do
     include_examples "command", "readme", "readme", "doc/readme.md"

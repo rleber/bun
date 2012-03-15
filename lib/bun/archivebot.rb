@@ -97,8 +97,8 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       agent = Mechanize.new
       url ||= Archive.repository
       archive_location = options[:archive] || Archive.location
-      abort "No url provided" unless url
-      abort "No archive location provided" unless archive_location
+      abort "!No url provided" unless url
+      abort "!No archive location provided" unless archive_location
       @dryrun = options[:dryrun]
       _fetch(url, archive_location)
     end
@@ -264,7 +264,7 @@ data/archive_config.yml. Usually, this is ~/bun_archive
         shell.mkdir_p dir
         warn "organize #{spec[:from]} => #{spec[:to]}" unless @dryrun
         shell.invoke command, spec[:from], spec[:to]
-        abort "No log entry for #{spec[:from]}" unless log[spec[:from]]
+        abort "!No log entry for #{spec[:from]}" unless log[spec[:from]]
         new_log[spec[:to]] = alter_log(log[spec[:from]], spec[:to])
       end
       
@@ -322,7 +322,7 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       Dir.glob(::File.join(from,'**','*')).each do |old_file|
         next if ::File.directory?(old_file)
         f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
-        abort "Missing log entry for #{old_file}" unless log[old_file]
+        abort "!Missing log entry for #{old_file}" unless log[old_file]
         okay = log[old_file][:errors] < threshold
         status = okay ? :clean : :dirty
         new_file = ::File.join(destinations[status], f)
@@ -343,7 +343,7 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       archive = Archive.new
       data = [%w{Tape Preamble Header}]
       sort_column = ['preamble', 'header'].index(options[:sort].downcase)
-      abort "Bad value for --sort option" unless sort_column
+      abort "!Bad value for --sort option" unless sort_column
       sort_column += 1
       max_header = max_preamble = nil
       min_header = min_preamble = nil

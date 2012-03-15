@@ -22,6 +22,7 @@ class Bun
       def size
         SPECIFICATION_POSITION + (specification.size + characters_per_word)/characters_per_word
       end
+      alias_method :file_size, :size
     
       def specification
         file.delimited_string SPECIFICATION_POSITION*CHARACTERS_PER_WORD, :all=>true
@@ -75,6 +76,15 @@ class Bun
       
       def update_time
         file.update_time rescue nil
+      end
+      alias_method :updated, :update_time
+      
+      def index_date
+        file.index_date rescue nil
+      end
+      
+      def updated
+        update_time || index_date
       end
       
       def type

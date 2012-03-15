@@ -25,8 +25,39 @@ class Bun
       end
     end
     
-    SORT_VALUES = %w{tape file type date description size}
+    SORT_VALUES = %w{tape file type updated description size}
+    SORT_FIELDS = {
+      :description => :description,
+      :file        => :path,
+      :size        => :file_size,
+      :tape        => :tape_name,
+      :type        => :file_type,
+      :updated     => :updated,
+    }
     TYPE_VALUES = %w{all frozen text huff}
+    DATE_FORMAT = '%Y/%m/%d'
+    TIME_FORMAT = DATE_FORMAT + ' %H:%M:%S'
+    FIELD_CONVERSIONS = {
+      :updated     => lambda {|f| f.nil? ? 'n/a' : f.strftime(f.is_a?(Time) ? TIME_FORMAT : DATE_FORMAT) },
+      :file_type   => lambda {|f| f.to_s.sub(/^./) {|m| m.upcase} },
+      :shard_count => lambda {|f| f==0 ? '' : f },
+    }
+    FIELD_HEADINGS = {
+      :description => 'Description',
+      :file_size   => 'Size',
+      :file_type   => 'Type',
+      :path        => 'File',
+      :shard_count => 'Shards',
+      :tape_name   => 'Tape',
+      :tape_path   => 'Tape',
+      :updated     => 'Updated',
+    }
+    DEFAULT_VALUES = {
+      :file_size   => 0,
+      :shard_count => 0,
+      :updated     => Time.now,
+    }
+    
     desc "ls", "Display an index of archived files"
     option 'archive', :aliases=>'-a', :type=>'string',                               :desc=>'Archive location'
     option "descr",   :aliases=>"-d", :type=>'boolean',                              :desc=>"Include description"
@@ -40,7 +71,6 @@ class Bun
     # TODO Refactor tape/file patterns; use tape::file::shard syntax
     # TODO Speed this up; esp. ls with no options
     def ls
-      abort "Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
       type_pattern = case options[:type].downcase
         when 'f', 'frozen'
           /^(frozen|shard)$/i
@@ -51,81 +81,75 @@ class Bun
         when '*','a','all'
           //
         else
-          abort "Unknown --type setting. Should be one of #{TYPE_VALUES.join(', ')}"
+          abort "!Unknown --type setting. Should be one of #{TYPE_VALUES.join(', ')}"
         end
       file_pattern = get_regexp(options[:files])
-      abort "Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
+      abort "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
       tape_pattern = get_regexp(options[:tapes])
-      abort "Invalid --tapes pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless tape_pattern
+      abort "!Invalid --tapes pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless tape_pattern
       directory = options[:archive] || Archive.location
-      archive = Archive.new(directory)
-      ix = archive.tapes
+
+      fields =  options[:path] ? [:tape_path] : [:tape_name]
+      fields += [:file_type, :updated, :file_size] if options[:long]
+      fields += [:path]
+      fields += [:shard_count] if options[:long]
+      fields += [:description] if options[:descr]
+
+      if options[:sort]
+        sort_field = SORT_FIELDS[options[:sort].to_sym]
+        abort "!Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless sort_field
+        sort_fields = [sort_field.to_sym, :tape_name, :path]
+      else
+        sort_fields = [:tape_name, :path]
+      end
+      if options[:path]
+        sort_fields = sort_fields.map {|f| f==:tape_name ? :tape_path : f }
+      end
+      sort_fields.each do |sort_field|
+        abort "!Can't sort by #{sort_field}. It isn't included in this format" unless fields.include?(sort_field)
+      end
 
       # Retrieve file information
+      archive = Archive.new(directory)
+      ix = archive.tapes
       ix = ix.select{|tape_name| tape_name =~ tape_pattern}
       file_info = []
       files = ix.each_with_index do |tape_name, i|
         file = archive.open(tape_name, :header=>true)
-        file_name = file.path
-        tape_path = file.tape
-        type = file.file_type.to_s
-        size = file.file_size
-        shards = file.shard_count
-        shards = '' if shards == 0
-        if type=='frozen'
-          index_date = file.update_time
-          index_date_display = index_date.strftime('%Y/%m/%d %H:%M:%S')
-        else
-          # TODO Make this available from the file; requires saving the archive object
-          index_date = archive.index_date(tape_name)
-          index_date_display = index_date ? index_date.strftime('%Y/%m/%d') : "n/a"
-        end
-        display_name = options[:path] ? tape_path : tape_name
-        file_row = {
-          'tape'=>display_name, 
-          'type'=>type.sub(/^./) {|m| m.upcase}, 
-          'file'=>file_name, 
-          'date'=>index_date_display, 
-          'size'=>size,
-          'shards'=>shards
-        }
-        if options[:descr]
-          file_row['description'] = file.description
-        end
+        file_row = fields.inject({}) {|hsh, f| hsh[f] = (file.send(f) rescue nil); hsh }
         file_info << file_row
-        if type == "frozen" && options[:frozen]
+        if options[:frozen] && file_row[:file_type] == :frozen
           file.shard_descriptors.each do |d|
-            file_info << {
-              'tape'=>display_name, 
-              'type'=>'Shard', 
-              'file'=>d.path, 
-              'archive'=>file_name, 
-              'size'=>d.size, 
-              'date'=>d.update_time.strftime('%Y/%m/%d %H:%M:%S')
-            }
+            file_info << fields.inject({}) {|hsh, f| hsh[f] = (d.send(f) rescue nil); hsh }
           end
         end
       end
+      
+      file_info = file_info.select{|file| file[:file_type].to_s=~type_pattern && file[:path]=~file_pattern }
+      sorted_info = file_info.sort_by do |fi|
+        sort_fields.map{|f| fi[f].nil? ? DEFAULT_VALUES[f]||'' : fi[f] }
+      end
+      
+      formatted_info = sorted_info
+      formatted_info.each do |fi|
+        fi.keys.each do |k|
+          fi[k] = FIELD_CONVERSIONS[k].call(fi[k]) if FIELD_CONVERSIONS[k]
+        end
+      end
 
-      file_info = file_info.select{|file| file['type']=~type_pattern && file['file']=~file_pattern }
-      sorted_info = file_info.sort_by{|fi| [fi[options[:sort]||''], fi['file'], fi['tape']]} # Sort it in order
-
-      # Display it
-      # TODO format times here, esp type
       table = []
-      header = options[:long] ? %w{Tape Type Update Size File Shards} : %w{Tape File}
-      header << 'Description' if options[:descr]
-      table << header
-      sorted_info.each do |entry|
-        table_row = entry.values_at(*(options[:long] ? %w{tape type date size file shards} : %w{tape file}))
-        table_row << entry['description'] if options[:descr]
-        table << table_row
+      headings = FIELD_HEADINGS.values_at(*fields)
+      table << headings
+      formatted_info.each do |entry|
+        table << entry.values_at(*fields)
       end
       table = table.justify_rows
       # TODO Move right justification to Array#justify_rows
-      if options[:long]
-        table.each do |row|
-          row[3] = (' '*(row[3].size) + row[3].strip)[-(row[3].size)..-1] # Right justify
+      [:file_size, :shard_count].each do |f|
+        if ix = fields.index(f)
+          table.each do |row|
+            row[ix] = (' '*(row[ix].size) + row[ix].strip)[-(row[ix].size)..-1] # Right justify
+          end
         end
       end
       puts "Archive at #{directory}:"
@@ -150,7 +174,7 @@ class Bun
       begin
         offset = options[:offset] ? eval(options[:offset]) : 0 # So octal or hex values can be given
       rescue => e
-        abort "Bad value for --offset: #{e}"
+        abort "!Bad value for --offset: #{e}"
       end
       file_path = archive.expanded_tape_path(file_name)
       file = Bun::File::Text.open(file_path)
@@ -174,7 +198,7 @@ class Bun
       file = archive.open(file_name)
       file.keep_deletes = true if options[:delete]
       archived_file = file.path
-      abort "Can't unpack #{file_name}. It contains a frozen file_name: #{archived_file}" if file.file_type == :frozen
+      abort "!Can't unpack #{file_name}. It contains a frozen file_name: #{archived_file}" if file.file_type == :frozen
       if options[:inspect]
         lines = []
         file.lines.each do |l|
@@ -216,8 +240,6 @@ class Bun
       end
     end
     
-    DATE_FORMAT = '%Y/%m/%d'
-    TIME_FORMAT = DATE_FORMAT + ' %H:%M:%S'
     SHARDS_ACROSS = 5
     desc "describe FILE", "Display description information for a file"
     def describe(file_name)

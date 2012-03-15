@@ -27,12 +27,12 @@ class Bun
     option "sort",  :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
     option "width", :aliases=>'-w', :type=>'numeric', :default=>DEFAULT_WIDTH,     :desc=>"Width of display (for short format only)"
     def ls(file_name)
-      abort "Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
+      abort "!Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
       file_pattern = get_regexp(options[:files])
-      abort "Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
+      abort "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
       archive = Archive.new
       file_name = archive.expanded_tape_path(file_name)
-      abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless File.frozen?(file_name)
+      abort "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless File.frozen?(file_name)
       archived_file = archive.file_path(file_name)
       archived_file = "--unknown--" unless archived_file
       file = File::Text.open(file_name)
@@ -99,7 +99,7 @@ whatever its name.
     def thaw(file_name, n, out=nil)
       archive = Archive.new
       expanded_file = archive.expanded_tape_path(file_name)
-      abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless File.frozen?(expanded_file)
+      abort "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless File.frozen?(expanded_file)
       archived_file = archive.file_path(expanded_file)
       archived_file = "--unknown--" unless archived_file
       file = File::Text.open(expanded_file)
@@ -123,7 +123,7 @@ whatever its name.
       file_name = archive.expanded_tape_path(file_name)
       archived_file = archive.file_path(file_name)
       archived_file = "--unknown--" unless archived_file
-      abort "File #{file_name} is an archive of #{archived_file}, which is not frozen." unless File.frozen?(file_name)
+      abort "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless File.frozen?(file_name)
       file = File::Text.open(file_name)
       # TODO is duplicate open necessary?
       frozen_file = File::Frozen.open(file_name, :warn=>true)

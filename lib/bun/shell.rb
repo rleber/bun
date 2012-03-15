@@ -21,7 +21,7 @@ class Bun
       warn task unless quiet
       res = true
       res = system(task) unless dryrun
-      abort "Command #{task} failed" unless res || options[:allow]
+      abort "!Command #{task} failed" unless res || options[:allow]
       res
     end
     private :_ex
