@@ -20,51 +20,50 @@ class Bun
     DEFAULT_WIDTH = 120 # TODO Read the window size for this
     SORT_VALUES = %w{order name size update}
     desc "ls ARCHIVE", "List contents of a frozen Honeywell file"
-    option "descr", :aliases=>'-d', :type=>'boolean',                              :desc=>"Display the file descriptor for each file (in octal)"
-    option "files", :aliases=>"-f", :type=>'string',  :default=>'.*',              :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
-    option "long",  :aliases=>'-l', :type=>'boolean',                              :desc=>"Display listing in long format"
-    option "one",   :aliases=>'-1', :type=>'boolean',                              :desc=>"Display one file per line (implied by --long or --descr)"
-    option "sort",  :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
-    option "width", :aliases=>'-w', :type=>'numeric', :default=>DEFAULT_WIDTH,     :desc=>"Width of display (for short format only)"
+    option 'archive', :aliases=>'-a', :type=>'string',                               :desc=>'Archive location'
+    option "descr",   :aliases=>'-d', :type=>'boolean',                              :desc=>"Display the file descriptor for each file (in octal)"
+    option "files",   :aliases=>"-f", :type=>'string',  :default=>'.*',              :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
+    option "long",    :aliases=>'-l', :type=>'boolean',                              :desc=>"Display listing in long format"
+    option "one",     :aliases=>'-1', :type=>'boolean',                              :desc=>"Display one file per line (implied by --long or --descr)"
+    option "sort",    :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
+    option "width",   :aliases=>'-w', :type=>'numeric', :default=>DEFAULT_WIDTH,     :desc=>"Width of display (for short format only)"
     def ls(file_name)
       abort "!Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
       file_pattern = get_regexp(options[:files])
       abort "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
-      archive = Archive.new
-      file_name = archive.expanded_tape_path(file_name)
-      abort "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless File.frozen?(file_name)
-      archived_file = archive.file_path(file_name)
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
+      file = archive.open(file_name)
+      abort "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
+      archived_file = file.path
       archived_file = "--unknown--" unless archived_file
-      file = File::Text.open(file_name)
-      # TODO Is duplicate open necessary?
-      frozen_file = File::Frozen.open(file_name)
       print "Frozen archive for directory #{archived_file}"
-      print "\nLast updated at #{frozen_file.update_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
+      print "\nLast updated at #{file.update_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
       puts ":"
       lines = []
       if options[:long]
-        lines << "Order File     Updated                   Words     Blocks     Offset"
+        lines << "Order File      Updated                   Words      Offset"
       elsif options[:descr]
         lines << "Order File     Descriptor"
       end
       # Retrieve file information
       file_info = []
-      frozen_file.shard_count.times do |i|
-        descr = frozen_file.descriptor(i)
-        next unless descr.file_name=~file_pattern
-        file_info << {'order'=>i, 'update'=>descr.update_time, 'size'=>descr.file_words, 'name'=>descr.file_name}
+      file.shard_count.times do |i|
+        descr = file.shard_descriptor(i)
+        next unless descr.name=~file_pattern
+        file_info << {'order'=>i, 'update'=>descr.update_time, 'size'=>descr.file_size, 'name'=>descr.name}
       end
       sorted_order = file_info.sort_by{|fi| [fi[options[:sort]], fi['name']]}.map{|fi| fi['order']} # Sort it in order
       # Accumulate the display
       sorted_order.each do |i|
-        descr = frozen_file.descriptor(i)
+        descr = file.shard_descriptor(i)
         if options[:long]
           update_time = descr.update_time
-          lines << "#{'%5d'%(i+1)} #{'%-8s'%descr.file_name} #{update_time.strftime(TIMESTAMP_FORMAT)} #{'%10d'%descr.file_words} #{'%10d'%descr.file_blocks} #{'%10d'%descr.file_start}"
+          lines << "#{'%5d'%(i+1)} #{'%-8s'%descr.name}  #{update_time.strftime(TIMESTAMP_FORMAT)}  #{'%10d'%descr.file_size}  #{'%10d'%descr.offset}"
         elsif options[:descr]
-          lines << "#{'%5d'%(i+1)} #{'%-8s'%descr.file_name} #{descr.octal.scan(/.{12}/).join(' ')}"
+          lines << "#{'%5d'%(i+1)} #{'%-8s'%descr.name} #{descr.octal}"
         else
-          lines << descr.file_name
+          lines << descr.name
         end
       end
       if options[:long] || options[:descr] || options[:one] # One file_name per line

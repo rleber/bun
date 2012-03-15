@@ -164,7 +164,7 @@ class Bun
     end
     
     def octal
-      words(offset, self.class.size).map{|w| '%#o' % w.value}.join(' ')
+      words(0, self.class.size).map{|w| '%012o' % w.value}.join(' ')
     end
   end
 end

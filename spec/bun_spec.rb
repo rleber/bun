@@ -228,4 +228,11 @@ describe Bun::Bot do
     include_examples "command", "dump ar003.0698", "dump ar003.0698", "dump_ar003.0698"
     include_examples "command", "dump -f ar004.0888", "dump -f ar004.0888", "dump_f_ar004.0888"
   end
+  context "bun freezer" do
+    context "ls" do
+      include_examples "command", "freezer ls ar004.0888", "freezer ls ar004.0888", "freezer_ls_ar004.0888"
+      include_examples "command", "freezer ls -l ar004.0888", "freezer ls -l ar004.0888", "freezer_ls_l_ar004.0888"
+      include_examples "command", "freezer ls -d ar004.0888", "freezer ls -d ar004.0888", "freezer_ls_d_ar004.0888"
+    end
+  end
 end
