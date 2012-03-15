@@ -75,10 +75,10 @@ shared_examples "command with file" do |descr, command, expected_stdout_file, ou
     it "gives the expected $stdout" do
       unpack(@res).should == readfile(@expected_stdout_file)
     end
-    it "creates the expected output file (#{@output_file})" do
+    it "creates the expected output file (#{output_file})" do
       file_should_exist @output_file
     end
-    it "puts the expected output (in #{@output_file})" do
+    it "puts the expected output (in #{output_file})" do
       if File.exists?(@output_file) 
         readfile(@output_file).should == readfile(@expected_output_file)
       end
