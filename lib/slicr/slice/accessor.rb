@@ -79,14 +79,25 @@ module Slicr
       end
       
       def condensed_values(values)
-        if values.nil?
+        case values
+        when nil
           nil
-        elsif !values.is_a?(::Array)
+        when definition.slice_class
+          values
+        when Numeric
           definition.slice_class.new(values)
-        elsif values.size == 1 && collapse? && @slicer.index_range[:arg_type]==:scalar
-          definition.slice_class.new(values.first)
+        # when Slice::String
+        #   definition.slice_class.new(values.internal_value)
+        when GenericNumeric
+          definition.slice_class.new(values.internal_value)
         else
-          Slice::Array.new(values.map{|v| definition.slice_class.new(v)})
+          if !values.is_a?(::Array)
+            definition.slice_class.new(values.value)
+          elsif values.size == 1 && collapse? && @slicer.index_range[:arg_type]==:scalar
+            definition.slice_class.new(values.first)
+          else
+            Slice::Array.new(values.map{|v| condensed_values(v)})
+          end
         end
       end
       
