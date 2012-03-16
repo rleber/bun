@@ -484,7 +484,7 @@ Produces a list of all other non-printable characters encountered.
           status = truncated ? "Truncated" : "Readable"
           table << [tape_name, status, file.blocks, file.good_blocks, text.size, tabs, backspaces, vertical_tabs, form_feeds, bad_characters, bad_character_set.uniq.sort.join.inspect[1...-1]]
         else
-          table << [tape_name, 'Unreadable', file.blocks]
+          table << [tape_name, 'Unreadable', file.blocks, 0]
         end
       end
       if table.size == 0

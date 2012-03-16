@@ -21,7 +21,12 @@ LAYERS YET TO BE DEFINED
 - Multiword layers: e.g. layers with a slice size a fixed integral multiple of the slices in the supporting layer
 
 TODO
+Change Bun to a Module
 Better unpack status checking: automatic truncate, good/bad status, errors: counting, list
+Separate file.open from file.load/read
+Make Bun::File a subclass of ::File
+Use something other than abort, so that we don't crap out if irb is running
+Resolve backspaces: to underlining or bold
 Record unpack status in .index
 Change bun archive text_status to report on unpack status; merge fetching part into bun archive extract
 Add --select option to bun ls

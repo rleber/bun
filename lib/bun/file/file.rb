@@ -190,7 +190,7 @@ class Bun
       @header
     end
     
-    def error
+    def error(msg)
       @errors += 1
     end
     
