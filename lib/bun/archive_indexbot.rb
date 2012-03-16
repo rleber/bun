@@ -73,7 +73,7 @@ class Bun
             next
           end
           file_descriptor = archive.descriptor(tape, :build=>options[:build])
-          if tape_spec[:file] != file_descriptor[:path] && inclusions.include?('name') && !exclusions.include?('name')
+          if File.relative_path(tape_spec[:file]) != file_descriptor[:path] && inclusions.include?('name') && !exclusions.include?('name')
             table << [tape, '', "Names don't match", "Index", tape_spec[:file], 'File', file_descriptor[:path]]
           end
           if file_descriptor[:file_type] == :frozen
