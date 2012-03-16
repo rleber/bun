@@ -1,5 +1,5 @@
 module Bun
-  class File
+  class File < ::File
     class Descriptor
       class << self
         MAXIMUM_SIZE = 3000

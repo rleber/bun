@@ -1,5 +1,5 @@
 module Bun
-  class File
+  class File < ::File
     class Blocked < Bun::File
       attr_accessor :truncate
       attr_reader   :good_blocks

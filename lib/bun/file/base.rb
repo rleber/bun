@@ -1,8 +1,8 @@
 require 'lib/bun/file/descriptor'
 
 module Bun
-  # TODO What would happen if Bun::File subclassed File?
-  class File
+
+  class File < ::File
   
     class << self
 
@@ -200,6 +200,10 @@ module Bun
   
     def tape_name
       ::File.basename(tape_path)
+    end
+    
+    def path
+      descriptor.path
     end
   
     def words=(words)

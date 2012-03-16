@@ -1,5 +1,5 @@
 module Bun
-  class File
+  class File < ::File
     class Huffman < Bun::File
     end
   end

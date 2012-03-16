@@ -1,5 +1,5 @@
 module Bun
-  class File
+  class File < ::File
     class Text < Bun::File::Blocked
       attr_accessor :keep_deletes
     

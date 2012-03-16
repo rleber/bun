@@ -1,6 +1,6 @@
 # TODO Get rid of me
 module Bun
-  class File
+  class File < ::File
     class Header < Bun::File
       HEADER_SIZE = Descriptor.maximum_size
       

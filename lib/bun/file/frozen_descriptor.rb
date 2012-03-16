@@ -1,5 +1,5 @@
 module Bun
-  class File
+  class File < ::File
     class Frozen
       class Descriptor
         attr_reader :file, :number
