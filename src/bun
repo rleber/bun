@@ -5,4 +5,4 @@ $:.unshift(target) unless $:.include?(target) || $:.include?(File.expand_path(ta
 
 require 'lib/bun'
 
-Bun::Bot.start
+Bun::Bot::Main.start

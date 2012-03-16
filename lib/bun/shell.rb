@@ -1,7 +1,7 @@
 # Simple Shell interface
 # I created a separate class for this to encapsulate system dependencies
 
-class Bun
+module Bun
   class Shell
     attr_accessor :dryrun, :quiet
     

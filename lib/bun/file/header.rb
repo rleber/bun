@@ -1,4 +1,4 @@
-class Bun
+module Bun
   class File
     class Header < Bun::File
       HEADER_SIZE = Descriptor.maximum_size

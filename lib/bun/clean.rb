@@ -1,6 +1,6 @@
 require 'lib/bun/scene'
 
-class Bun
+module Bun
   class Script
     class Cleaner
       SCENE_END = /-\s*\bf\s*i\s*n\b\s*-/

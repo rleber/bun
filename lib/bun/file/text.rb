@@ -1,4 +1,4 @@
-class Bun
+module Bun
   class File
     class Text < File::Blocked
       attr_accessor :keep_deletes

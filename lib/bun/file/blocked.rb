@@ -1,4 +1,4 @@
-class Bun
+module Bun
   class File
     class Blocked < Bun::File
       attr_accessor :truncate

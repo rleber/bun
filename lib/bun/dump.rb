@@ -1,4 +1,4 @@
-class Bun
+module Bun
   class Dump
     
     WORDS_PER_LINE = 4

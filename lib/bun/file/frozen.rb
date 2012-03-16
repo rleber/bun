@@ -1,4 +1,4 @@
-class Bun
+module Bun
   class File
     class Frozen < Bun::File
       attr_reader :file

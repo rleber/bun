@@ -1,7 +1,7 @@
 require 'yaml'
 require 'lib/bun/file'
 
-class Bun
+module Bun
   class Archive
     include Enumerable
     
