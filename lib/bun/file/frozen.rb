@@ -1,5 +1,5 @@
 module Bun
-  class File
+  class File < ::File
     class Frozen < Bun::File
       attr_reader :file
       attr_accessor :strict, :warn

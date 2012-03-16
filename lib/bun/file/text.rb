@@ -1,6 +1,6 @@
 module Bun
-  class File
-    class Text < File::Blocked
+  class File < ::File
+    class Text < Bun::File::Blocked
       attr_accessor :keep_deletes
     
       # TODO do we ever instantiate a File::Text without reading a file? If not, refactor

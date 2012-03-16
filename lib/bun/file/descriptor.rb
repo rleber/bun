@@ -1,5 +1,5 @@
 module Bun
-  class File
+  class File < ::File
     class Descriptor
       class << self
         MAXIMUM_SIZE = 3000
@@ -63,13 +63,13 @@ module Bun
       end
     
       def subdirectory
-        d = ::File.dirname(subpath)
+        d = File.dirname(subpath)
         d = "" if d == "."
         d
       end
 
       def name
-        ::File.basename(subpath)
+        File.basename(subpath)
       end
     
       def description
@@ -81,7 +81,7 @@ module Bun
       end
     
       def unexpanded_path
-        ::File.join(owner, subpath)
+        File.join(owner, subpath)
       end
     
       def characters_per_word
@@ -105,7 +105,7 @@ module Bun
       end
       
       def tape
-        ::File.basename(tape_path)
+        File.basename(tape_path)
       end
       
       def file_date

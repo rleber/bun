@@ -12,13 +12,13 @@ no_tasks do
     FileUtils::rm_rf(destination)
     process(agent, base_uri) do |page|
       relative_uri = page.uri.path.sub(/^#{Regexp.escape(uri_sub_path)}/, '')
-      file_name = ::File.join(destination, relative_uri)
-      dirname = ::File.dirname(file_name)
+      file_name = File.join(destination, relative_uri)
+      dirname = File.dirname(file_name)
       if options[:dryrun] || !options[:quiet]
         puts "Fetch #{file_name}"
       else
         FileUtils::mkdir_p(dirname)
-        ::File.open(file_name, 'w') {|f| f.write page.body}
+        File.open(file_name, 'w') {|f| f.write page.body}
       end
       count += 1
     end

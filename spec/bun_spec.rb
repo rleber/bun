@@ -154,12 +154,12 @@ describe Bun::Bot do
         file_should_exist "data/test/archive/index/.index.yml"
       end
       it "should be a good YAML file" do
-        expect { YAML.load(File.read("data/test/archive/index/.index.yml")) }.should_not raise_error
+        expect { YAML.load(::File.read("data/test/archive/index/.index.yml")) }.should_not raise_error
       end
-      if (YAML.load(File.read("data/test/archive/index/.index.yml")) rescue nil)
+      if (YAML.load(::File.read("data/test/archive/index/.index.yml")) rescue nil)
         context "index contents" do
           before :each do
-            @index = YAML.load(File.read("data/test/archive/index/.index.yml")) rescue nil
+            @index = YAML.load(::File.read("data/test/archive/index/.index.yml")) rescue nil
           end
           it "should be a Hash" do
             @index.should be_a(Hash)
