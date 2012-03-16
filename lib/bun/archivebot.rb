@@ -467,7 +467,13 @@ Produces a list of all other non-printable characters encountered.
         file = archive.open(tape_name)
         next unless file.file_type == :text
         text = file.text rescue nil
-        if text
+        truncated = !text
+        if truncated
+          file.truncate = true
+          file.reblock
+          text = file.text rescue nil
+        end
+        if text && file.good_blocks > 0
           tabs = backspaces = form_feeds = vertical_tabs = bad_characters = 0
           bad_character_set = []
           text.scan("\t") { tabs += 1 }
@@ -475,15 +481,16 @@ Produces a list of all other non-printable characters encountered.
           text.scan("\f") { form_feeds += 1 }
           text.scan("\v") { vertical_tabs += 1 }
           text.scan(File.invalid_character_regexp) {|m| bad_characters += 1; bad_character_set << m.to_s }
-          table << [tape_name, "Readable", text.size, tabs, backspaces, vertical_tabs, form_feeds, bad_characters, bad_character_set.uniq.sort.join.inspect[1...-1]]
+          status = truncated ? "Truncated" : "Readable"
+          table << [tape_name, status, file.blocks, file.good_blocks, text.size, tabs, backspaces, vertical_tabs, form_feeds, bad_characters, bad_character_set.uniq.sort.join.inspect[1...-1]]
         else
-          table << [tape_name, 'Unreadable']
+          table << [tape_name, 'Unreadable', file.blocks]
         end
       end
       if table.size == 0
         puts "No files unpacked"
       else
-        table.unshift %w{Tape Status Chars Tabs Backspaces Vertical\ Tabs Form\ Feeds Invalid\ Characters List}
+        table.unshift %w{Tape Status Blocks Good\ Blocks Chars Tabs Backspaces Vertical\ Tabs Form\ Feeds Invalid\ Characters List}
         puts table.justify_rows.map{|row| row.join('  ')}.join("\n")
       end
     end
