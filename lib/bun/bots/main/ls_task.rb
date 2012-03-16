@@ -102,8 +102,8 @@ def ls
     file_descriptor = archive.descriptor(tape_name, :build=>options[:build])
     file_row = fields.inject({}) {|hsh, f| hsh[f] = file_descriptor[f]; hsh }
     file_info << file_row
-    if options[:frozen] && file_descriptor[:file_type] == :frozen
-      file_descriptor[:shards].each do |d|
+    if options[:frozen] && file_descriptor.file_type == :frozen
+      file_descriptor.shards.each do |d|
         file_info << fields.inject({}) {|hsh, f| hsh[f] = d[f]; hsh }
       end
     end

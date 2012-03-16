@@ -1,68 +1,47 @@
 require 'yaml'
+require 'hashie/mash'
 require 'lib/bun/file'
 
 module Bun
   class Archive
     include Enumerable
     
+    DIRECTORY_LOCATIONS = %w{location log_file raw_directory extract_directory files_directory clean_directory dirty_directory}
+    OTHER_LOCATIONS = %w{repository original_index_file index_file}
+    
     @@index = nil
     
-    def self.config_dir(name)
-      dir = config[name]
-      return nil unless dir
-      dir = File.expand_path(dir) if dir=~/^~/
-      dir
-    end
+    class << self
     
-    # TODO Use metaprogramming to refactor this
-    def self.location
-      config_dir('archive')
-    end
+      def config_dir(name)
+        dir = config[name]
+        return nil unless dir
+        dir = File.expand_path(dir) if dir=~/^~/
+        dir
+      end
+  
+      def load_config(config_file="data/archive_config.yml")
+        @config = YAML.load(::File.read(config_file))
+        @config['repository'] ||= ENV['BUN_REPOSITORY']
+        @config
+      end
+  
+      def config
+        @config ||= load_config
+      end
     
-    def self.log_file
-      config_dir('log_file')
-    end
-    
-    def self.raw_directory
-      config_dir('raw_directory')
-    end
-    
-    def self.extract_directory
-      config_dir('extract_directory')
-    end
-    
-    def self.files_directory
-      config_dir('files_directory')
-    end
-    
-    def self.clean_directory
-      config_dir('clean_directory')
-    end
-    
-    def self.dirty_directory
-      config_dir('dirty_directory')
-    end
-    
-    def self.repository
-      config['repository']
-    end
-    
-    def self.original_index_file
-      config['original_index_file']
-    end
-
-    def self.index_file
-      config['index_file']
-    end
-    
-    def self.load_config(config_file="data/archive_config.yml")
-      @config = YAML.load(::File.read(config_file))
-      @config['repository'] ||= ENV['BUN_REPOSITORY']
-      @config
-    end
-    
-    def self.config
-      @config ||= load_config
+      DIRECTORY_LOCATIONS.each do |locn|
+        define_method locn do ||
+          config_dir(locn)
+        end
+      end
+      
+      # TODO Find a better name (everywhere) than 'original'
+      OTHER_LOCATIONS.each do |locn|
+        define_method locn do ||
+          config[locn]
+        end
+      end
     end
     
     attr_reader :location
@@ -71,70 +50,54 @@ module Bun
       @location = location || self.class.location
     end
     
-    def tapes
-      Dir.entries(File.join(location, raw_directory)).reject{|f| f=~/^\./}
+    def tapes(&blk)
+      tapes = Dir.entries(File.join(location, raw_directory)).reject{|f| f=~/^\./}
+      tapes.each(&blk) if block_given?
+      tapes
     end
-    
-    def each_tape(&blk)
-      tapes.each(&blk)
-    end
-    alias_method :each, :each_tape
+    alias_method :each, :tapes
     
     def each_file(&blk)
       tapes.each {|tape| open(tape, &blk)}
     end
     
-    def raw_directory
-      self.class.raw_directory
+    def config
+      self.class.config
     end
     
-    def extract_directory
-      self.class.extract_directory
+    def config_dir(name)
+      self.class.config_dir(name)
     end
     
-    def files_directory
-      self.class.files_directory
-    end
-
-    def clean_directory
-      self.class.clean_directory
-    end
-
-    def dirty_directory
-      self.class.dirty_directory
+    # TODO Are these necessary?
+    (DIRECTORY_LOCATIONS - %w{location}).each do |locn|
+      define_method locn do ||
+        config_dir(locn)
+      end
     end
     
-    def log_file
-      self.class.log_file
+    OTHER_LOCATIONS.each do |locn|
+      define_method locn do ||
+        File.expand_path(File.join(location, self.class.send(locn)))
+      end
     end
     
-    def original_index_file
-      File.expand_path(File.join(location, self.class.original_index_file))
-    end
-
-    def index_file
-      File.expand_path(File.join(location, self.class.index_file))
-    end
-    
-    # TODO Test me
-    def contents
+    # TODO Is there a more descriptive name for this?
+    def contents(&blk)
       tapes = self.tapes
       contents = []
-      tapes.each do |tape_name|
-        extended_file_name = expanded_tape_path(tape_name)
-        if self.class.frozen?(extended_file_name)
-          file = ::File.open(extended_file_name)
-          # TODO is double open necessary?
-          frozen_file = File::Frozen.open(extended_file_name)
-          frozen_file.file_paths.each_with_index do |path, i|
-            file = frozen_file.file_name(i)
-            contents << {:tape=>tape_name, :file=>file, :tape_and_file=>"#{tape_name}:#{file}", :path=>path}
+      each do |tape_name|
+        file = open(tape_name)
+        if file.file_type == :frozen
+          file.shard_count.times do |i|
+            contents << "#{tape_name}::#{file.shard_name(i)}"
           end
         else
-          file = File::Text.open(extended_file_name)
-          path = file.file_path
-          contents << {:tape=>tape_name, :tape_and_file=>tape_name, :path=>path}
+          contents << tape_name
         end
+      end
+      if block_given?
+        contents.each(&blk)
       end
       contents
     end
@@ -148,10 +111,7 @@ module Bun
       File.expand_path(file_name, rel)
     end
     
-    def config
-      self.class.config
-    end
-    
+    # TODO This kind of caching method definition occurs everywhere. Refactor it
     def original_index
       @original_index ||= _original_index
     end
@@ -228,12 +188,15 @@ module Bun
     
     # TODO Build an OpenStruct type object for descriptor
     def descriptor(name, options={})
+      # puts "In #{self.class}#descriptor(#{name.inspect}, #{options.inspect}): index[#{name.inspect}]=#{index[name].inspect}"
       if !exists?(name)
         nil
       elsif !options[:build] && index[name]
-        index[name]
+        Hashie::Mash.new(index[name])
+        # index[name]
       else
-        build_descriptor(name)
+        Hashie::Mash.new(build_descriptor(name))
+        # build_descriptor(name)
       end
     end
     

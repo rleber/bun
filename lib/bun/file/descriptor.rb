@@ -88,10 +88,6 @@ module Bun
         file.characters_per_word
       end
       
-      def index_date
-        file.archive && file.archive.index_date(tape)
-      end
-      
       def tape_name
         file.tape_name
       end
@@ -118,12 +114,12 @@ module Bun
       
       def updated
         if file_time && index_date
-          index_time = index_date.to_local_time
+          index_time = index_date.local_date_to_local_time
           [index_time, file_time].min
         elsif file_time
           file_time
         elsif index_date
-          index_date.to_local_time
+          index_date.local_date_to_local_time
         else
           nil
         end
@@ -139,10 +135,6 @@ module Bun
       
       def index_date
         file.index_date rescue nil
-      end
-      
-      def updated
-        file_time || index_date
       end
       
       def type

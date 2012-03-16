@@ -6,26 +6,26 @@ def describe(file_name)
   directory = options[:archive] || Archive.location
   archive = Archive.new(directory)
   descriptor    = archive.descriptor(file_name, :build=>options[:build])
-  type          = descriptor[:file_type]
-  shards        = descriptor[:shard_names]
-  index_date    = descriptor[:index_date]
+  type          = descriptor.file_type
+  shards        = descriptor.shard_names
+  index_date    = descriptor.index_date
   index_date_display = index_date ? index_date.strftime('%Y/%m/%d') : "n/a"
   
   # TODO Refactor using Array#justify_rows
-  puts "Tape:            #{descriptor[:tape_name]}"
-  puts "Tape path:       #{descriptor[:tape_path]}"
-  puts "Archived file:   #{descriptor[:path]}"
-  puts "Owner:           #{descriptor[:owner]}"
-  puts "Subdirectory:    #{descriptor[:subdirectory]}"
-  puts "Name:            #{descriptor[:name]}"
-  puts "Description:     #{descriptor[:description]}"
-  puts "Specification:   #{descriptor[:specification]}"
+  puts "Tape:            #{descriptor.tape_name}"
+  puts "Tape path:       #{descriptor.tape_path}"
+  puts "Archived file:   #{descriptor.path}"
+  puts "Owner:           #{descriptor.owner}"
+  puts "Subdirectory:    #{descriptor.subdirectory}"
+  puts "Name:            #{descriptor.name}"
+  puts "Description:     #{descriptor.description}"
+  puts "Specification:   #{descriptor.specification}"
   puts "Index date:      #{index_date_display}"
   if type == :frozen
-    puts "File date:       #{descriptor[:file_time].strftime(TIME_FORMAT)}"
-    puts "Updated at:      #{descriptor[:updated].strftime(TIME_FORMAT)}"
+    puts "File date:       #{descriptor.file_time.strftime(TIME_FORMAT)}"
+    puts "Updated at:      #{descriptor.updated.strftime(TIME_FORMAT)}"
   end
-  puts "Size (words):    #{descriptor[:file_size]}"
+  puts "Size (words):    #{descriptor.file_size}"
   puts "Type:            #{type.to_s.sub(/^./) {|m| m.upcase}}"
 
   if shards.size > 0

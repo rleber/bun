@@ -116,7 +116,6 @@ module Bun
           file.index_date
         end
 
-        # TODO Choose earlier of this time or time of file
         def file_time
           File.time(_update_date, _update_time_of_day)
         end
