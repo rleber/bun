@@ -1,10 +1,11 @@
 require 'lib/bun/archive'
 require 'lib/bun/shell'
 
-class Bun
-
-  # TODO Consider combining this with bot.rb
-  class FreezerBot < BotBase
-    load_tasks
+module Bun
+  module Bot
+    # TODO Consider combining this with bot/main.rb
+    class Freezer < Base
+      load_tasks
+    end
   end
 end

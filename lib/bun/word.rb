@@ -1,6 +1,6 @@
 require 'lib/slicr'
 
-class Bun
+module Bun
   class Word < Slicr::Word
     WIDTH = 36
     width WIDTH

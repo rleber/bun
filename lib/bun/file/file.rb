@@ -1,6 +1,6 @@
 require 'lib/bun/file/descriptor'
 
-class Bun
+module Bun
   # TODO What would happen if Bun::File subclassed File?
   class File
     

@@ -1,4 +1,4 @@
-class Bun
+module Bun
   class File::Frozen::Descriptor
     attr_reader :file, :number
 

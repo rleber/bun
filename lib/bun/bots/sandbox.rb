@@ -1,5 +1,7 @@
-class Bun
-  class SandboxBot < BotBase
-    load_tasks
+module Bun
+  module Bot
+    class Sandbox < Base
+      load_tasks
+    end
   end
 end
