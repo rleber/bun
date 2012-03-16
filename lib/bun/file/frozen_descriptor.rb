@@ -11,7 +11,7 @@ module Bun
         FIELDS = [
           :file_size,
           :file_type,
-          :index_date,
+          :index_time,
           :name,
           :owner,
           :path,
@@ -112,8 +112,8 @@ module Bun
           word(4)
         end
   
-        def index_date
-          file.index_date
+        def index_time
+          file.index_time
         end
 
         def file_time

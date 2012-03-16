@@ -133,9 +133,9 @@ module Bun
     end
     private :_original_index
     
-    def index_date(tape)
+    def index_time(tape)
       info = original_index.find {|spec| spec[:tape] == tape }
-      info && info[:date]
+      info && info[:date].local_date_to_local_time
     end
     
     def index
@@ -186,7 +186,6 @@ module Bun
       ::File.open(index_file, 'w') {|f| f.write index.to_yaml }
     end
     
-    # TODO Build an OpenStruct type object for descriptor
     def descriptor(name, options={})
       # puts "In #{self.class}#descriptor(#{name.inspect}, #{options.inspect}): index[#{name.inspect}]=#{index[name].inspect}"
       if !exists?(name)

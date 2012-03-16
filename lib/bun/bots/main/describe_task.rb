@@ -8,8 +8,8 @@ def describe(file_name)
   descriptor    = archive.descriptor(file_name, :build=>options[:build])
   type          = descriptor.file_type
   shards        = descriptor.shard_names
-  index_date    = descriptor.index_date
-  index_date_display = index_date ? index_date.strftime('%Y/%m/%d') : "n/a"
+  index_time    = descriptor.index_time
+  index_date_display = index_time ? index_time.strftime('%Y/%m/%d') : "n/a"
   
   # TODO Refactor using Array#justify_rows
   puts "Tape:            #{descriptor.tape_name}"

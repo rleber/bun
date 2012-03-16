@@ -320,8 +320,8 @@ module Bun
       self.class.time date(date_location), time_of_day(time_location)
     end
   
-    def index_date
-      archive && archive.index_date(tape_name)
+    def index_time
+      archive && archive.index_time(tape_name)
     end
     
     def updated

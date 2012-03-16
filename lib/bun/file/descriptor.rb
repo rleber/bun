@@ -18,7 +18,7 @@ module Bun
         :file_size,
         :file_type,
         :good_blocks,
-        :index_date,
+        :index_time,
         :name,
         :owner,
         :path,
@@ -113,13 +113,12 @@ module Bun
       end
       
       def updated
-        if file_time && index_date
-          index_time = index_date.local_date_to_local_time
+        if file_time && index_time
           [index_time, file_time].min
         elsif file_time
           file_time
-        elsif index_date
-          index_date.local_date_to_local_time
+        elsif index_time
+          index_time
         else
           nil
         end
@@ -133,8 +132,8 @@ module Bun
         file.good_blocks rescue nil
       end
       
-      def index_date
-        file.index_date rescue nil
+      def index_time
+        file.index_time rescue nil
       end
       
       def type
