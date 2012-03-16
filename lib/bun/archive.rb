@@ -208,7 +208,7 @@ module Bun
     end
     
     def clear_index
-      ::FileUtils.rm(index_file)
+      FileUtils.rm(index_file)
       @@index = nil
     end
     
