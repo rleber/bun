@@ -195,10 +195,10 @@ data/archive_config.yml. Usually, this is ~/bun_archive
     # Cross-reference the extracted files:
     # Create one directory per file, as opposed to one directory per tape
     desc "organize [FROM] [TO]", "Create cross-reference by file name"
-    option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to reorganized archive (instead of symlink)"
-    option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually reorganize"
-    option 'trace', :aliases=>'-t', :type=>'boolean', :desc=>"Debugging trace"
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    option "copy",    :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to reorganized archive (instead of symlink)"
+    option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually reorganize"
+    option 'trace',   :aliases=>'-t', :type=>'boolean', :desc=>"Debugging trace"
     def organize(from=nil, to=nil)
       @dryrun = options[:dryrun]
       @trace = options[:trace]
@@ -295,11 +295,11 @@ data/archive_config.yml. Usually, this is ~/bun_archive
     
     DEFAULT_THRESHOLD = 20
     desc "classify [FROM] [CLEAN] [DIRTY]", "Classify files based on whether they're clean or not."
-    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-    option "copy", :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to clean/dirty directories (instead of symlink)"
-    option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
+    option 'archive',   :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+    option "copy",      :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to clean/dirty directories (instead of symlink)"
+    option 'dryrun',    :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
     option 'threshold', :aliases=>'-t', :type=>'numeric',
-      :desc=>"Set a threshold: how many errors before a file is 'dirty'? (default #{DEFAULT_THRESHOLD})"
+        :desc=>"Set a threshold: how many errors before a file is 'dirty'? (default #{DEFAULT_THRESHOLD})"
     def classify(from=nil, clean=nil, dirty=nil)
       @dryrun = options[:dryrun]
       directory = options[:archive] || Archive.location
@@ -340,9 +340,11 @@ data/archive_config.yml. Usually, this is ~/bun_archive
     end
     
     desc "header_sizes", "Display the length of file headers"
-    option "sort", :aliases=>'-s', :type=>'string', :default=>'header', :desc=>"Sort by what field: preamble or header (size)"
+    option 'archive', :aliases=>'-a', :type=>'string',                     :desc=>'Archive location'
+    option "sort",    :aliases=>'-s', :type=>'string', :default=>'header', :desc=>"Sort by what field: preamble or header (size)"
     def header_sizes
-      archive = Archive.new
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
       data = [%w{Tape Preamble Header}]
       sort_column = ['preamble', 'header'].index(options[:sort].downcase)
       abort "!Bad value for --sort option" unless sort_column
@@ -351,7 +353,7 @@ data/archive_config.yml. Usually, this is ~/bun_archive
       min_header = min_preamble = nil
       sum_header = sum_preamble = 0
       n = 0
-      archive.tapes.each do |tape_name|
+      archive.each do |tape_name|
         file = archive.open(tape_name)
         preamble_size = file.content_offset
         header_size = file.header_size
@@ -382,26 +384,27 @@ data/archive_config.yml. Usually, this is ~/bun_archive
     
     # TODO Remove this
     desc "types", "List file types"
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
     def types
-      archive = Archive.new
-      archive.tapes.each do |tape_name|
-        extended_file_name = archive.expanded_tape_path(tape_name)
-        file = File::Header.open(extended_file_name)
-        puts "#{tape_name}: #{file.fiile_type}"
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
+      archive.each do |tape_name|
+        file = archive.descriptor(tape_name)
+        puts "#{tape_name}: #{file.file_type}"
       end
     end
     
     # TODO Remove me -- this was a research project
     desc "count_shards", "Count shards in frozen files three different ways"
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
     def count_shards
-      archive = Archive.new
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
       table = [%w{Tape Word1 Positions Valid Flag}]
       flagged = false
-      archive.tapes.each do |tape_name|
-        extended_file_name = archive.expanded_tape_path(tape_name)
-        file = File::Header.open(extended_file_name)
+      archive.each do |tape_name|
+        file = archive.open(tape_name, :header=>true)
         if file.file_type == :frozen
-          f = File::Frozen.open(extended_file_name)
           counts = [
             f.shard_count_based_on_word_1, 
             f.shard_count_based_on_position_of_shard_contents, 
@@ -422,13 +425,14 @@ data/archive_config.yml. Usually, this is ~/bun_archive
     end
 
     desc "compare_offsets", "Compare file offsets vs. content of file preamble"
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
     def compare_offsets
-      archive = Archive.new
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
       table = [%w{Tape Word1 Calculated Flag}]
       flagged = false
-      archive.tapes.each do |tape_name|
-        extended_file_name = archive.expanded_tape_path(tape_name)
-        file = File::Header.open(extended_file_name)
+      archive.each do |tape_name|
+        file = archive.open(tape_name)
         counts = [
           file.words.at(1).half_words.at(1).to_i, 
           file.content_offset
@@ -447,17 +451,44 @@ data/archive_config.yml. Usually, this is ~/bun_archive
     end
     
     # TODO Run this; check if there's a way to discern listing files automagically
-    desc "with_tabs", "Show files containing tabs"
-    def with_tabs
-      archive = Archive.new
-      archive.tapes.each do |tape_name|
-        extended_file_name = archive.expanded_tape_path(tape_name)
-        file = File::Header.open(extended_file_name)
-        next if file.frozen?
-        file = File::Text.open(extended_file_name)
-        puts tape_name if file.content =~ /\t/
+    desc "text_status", "Show status of text files"
+    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    long_desc <<-END
+Displays the "status" of text files: e.g. could they be successfully unpacked? Did they contain tabs? Did they contain invalid characters?
+Classifies whether the file could be successfully decoded. (If not, it's generally because of bad block headers.)
+Counts all characters, and the following special characters: tabs, backspaces, form-feeds, vertical tabs, other non-printable characters. 
+Produces a list of all other non-printable characters encountered.
+    END
+    def text_status
+      directory = options[:archive] || Archive.location
+      archive = Archive.new(directory)
+      table = []
+      archive.each do |tape_name|
+        file = archive.open(tape_name)
+        next unless file.file_type == :text
+        text = file.text rescue nil
+        if text
+          tabs = backspaces = form_feeds = vertical_tabs = bad_characters = 0
+          bad_character_set = []
+          text.scan("\t") { tabs += 1 }
+          text.scan("\b") { backspaces += 1 }
+          text.scan("\f") { form_feeds += 1 }
+          text.scan("\v") { vertical_tabs += 1 }
+          text.scan(File.invalid_character_regexp) {|m| bad_characters += 1; bad_character_set << m.to_s }
+          table << [tape_name, "Readable", text.size, tabs, backspaces, vertical_tabs, form_feeds, bad_characters, bad_character_set.uniq.sort.join.inspect[1...-1]]
+        else
+          table << [tape_name, 'Unreadable']
+        end
+      end
+      if table.size == 0
+        puts "No files unpacked"
+      else
+        table.unshift %w{Tape Status Chars Tabs Backspaces Vertical\ Tabs Form\ Feeds Invalid\ Characters List}
+        puts table.justify_rows.map{|row| row.join('  ')}.join("\n")
       end
     end
+    
+    # TODO Try comparing preamble contents: Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean binary load module
     
     register Bun::Archive::IndexBot, :index, "index", "Process Honeywell archive index"
   end
