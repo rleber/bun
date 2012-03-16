@@ -1,4 +1,4 @@
-require 'bun/file/descriptor'
+require 'lib/bun/file/descriptor'
 
 class Bun
   # TODO What would happen if Bun::File subclassed File?

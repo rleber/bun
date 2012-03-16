@@ -56,7 +56,7 @@ class Bun
         preamble_size - File::Frozen::Descriptor.offset
       end
       
-      def update_date
+      def file_date
         File.date(_update_date)
       end
       
@@ -74,8 +74,8 @@ class Bun
         words.at(content_offset + 4)
       end
     
-      # TODO Choose latest (earliest?) of update time, time indicated in index, or shard update times
-      def update_time
+      # TODO Choose earliest? of update time, or time indicated in index
+      def file_time
         File.time(_update_date, _update_time_of_day)
       end
     
@@ -274,4 +274,4 @@ class Bun
     end
   end
 end
-require 'bun/file/frozen_descriptor'
+require 'lib/bun/file/frozen_descriptor'

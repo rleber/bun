@@ -1,4 +1,4 @@
-require 'slicr'
+require 'lib/slicr'
 
 class Bun
   class Word < Slicr::Word

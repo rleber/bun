@@ -112,7 +112,7 @@ describe Bun::Bot do
   end
     
   describe "describe" do
-    include_examples "command", "describe text file", "describe ar025.0634", "describe_ar025.0634"
+    include_examples "command", "describe text file", "describe ar003.0698", "describe_ar003.0698"
     include_examples "command", "describe frozen file", "describe ar025.0634", "describe_ar025.0634"
   end
   describe "ls" do

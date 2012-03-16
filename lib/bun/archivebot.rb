@@ -1,9 +1,9 @@
 require 'thor'
 require 'mechanize'
 require 'fileutils'
-require 'bun/archive'
-require 'bun/shell'
-require 'bun/archive_indexbot'
+require 'lib/bun/archive'
+require 'lib/bun/shell'
+require 'lib/bun/archive_indexbot'
 
 class Bun
   class ArchiveBot < Thor
@@ -105,8 +105,9 @@ data/archive_config.yml. Usually, this is ~/bun_archive
     end
     
     desc "extract [TO]", "Extract all the files in the archive"
-    option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
-    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+    option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+    option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
+    option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
     # TODO store metadata (e.g. description, source tape, source file type) in extended file attributes
     def extract(to=nil)
       @dryrun = options[:dryrun]

@@ -1,5 +1,5 @@
 require 'yaml'
-require 'bun/file'
+require 'lib/bun/file'
 
 class Bun
   class Archive
@@ -226,6 +226,7 @@ class Bun
       ::File.open(index_file, 'w') {|f| f.write index.to_yaml }
     end
     
+    # TODO Build an OpenStruct type object for descriptor
     def descriptor(name, options={})
       if !exists?(name)
         nil

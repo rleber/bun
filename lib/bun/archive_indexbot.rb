@@ -32,78 +32,94 @@ class Bun
       end
       
       desc "set_dates", "Set file modification dates for archived files, based on original index"
-      option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+      option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+      option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually set dates"
       def set_dates
         archive = Archive.new(options[:archive])
-        shell = Bun::Shell.new
-        archive.original_index.each do |spec|
-          file = archive.expanded_tape_path(spec[:tape])
-          timestamp = spec[:date]
-          puts "About to set timestamp: #{file} #{timestamp.strftime('%Y/%m/%d %H:%M:%S')}"
-          exit
-          shell.set_timestamp(file, timestamp)
+        shell = Bun::Shell.new(options)
+        archive.each do |tape|
+          descr = archive.descriptor(tape)
+          timestamp = descr[:updated]
+          if timestamp
+            puts "About to set timestamp: #{tape} #{timestamp.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
+            shell.set_timestamp(archive.expanded_tape_path(tape), timestamp)
+          else
+            puts "No updated time available for #{tape}" unless options[:quiet]
+          end
         end
       end
       
       VALID_MESSAGES = %w{missing name old new old_file new_file}
-      
+      DATE_FORMAT = '%Y/%m/%d %H:%M:%S'
       # TODO Create check method: Check that an index file entry exists for each tape
       # file, check frozen file dates and content vs. index, check 
       # text archive file contents vs. index
       desc "check_original", "Check contents of the original index"
-      option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-      option "include", :aliases=>'-i', :type=>'string', :desc=>"Include only certain messages. Options include #{VALID_MESSAGES.join(',')}"
-      option "exclude", :aliases=>'-x', :type=>'string', :desc=>"Skip certain messages. Options include #{VALID_MESSAGES.join(',')}"
+      option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+      option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on archive index; always build information from source file"
+      option "include", :aliases=>'-i', :type=>'string',  :desc=>"Include only certain messages. Options include #{VALID_MESSAGES.join(',')}"
+      option "exclude", :aliases=>'-x', :type=>'string',  :desc=>"Skip certain messages. Options include #{VALID_MESSAGES.join(',')}"
+      # TODO Reformat this in columns: tape shard match loc1 value1 loc2 value2
       def check_original
         archive = Archive.new(options[:archive])
         exclusions = (options[:exclude] || '').split(/\s*[,\s]\s*/).map{|s| s.strip.downcase }
         inclusions = (options[:include] || VALID_MESSAGES.join(',')).split(/\s*[,\s]\s*/).map{|s| s.strip.downcase }
-        tapes = archive.tapes
-        tapes.each do |tape|
+        table = []
+        table << %w{Tape Shard Message Source\ 1 Value\ 1 Source\ 2 Value\ 2}
+        archive.each do |tape|
           tape_spec = archive.original_index.find {|spec| spec[:tape] == tape }
-          tape_path = archive.expanded_tape_path(tape)
           unless tape_spec
-            puts "No index entry for #{tape}" if inclusions.include?('missing') && !exclusions.include?('missing')
+            table << [tape, '', "No entry in index"] if inclusions.include?('missing') && !exclusions.include?('missing')
             next
           end
-          file = File::Text.open(tape_path)
-          if tape_spec[:file] != file.unexpanded_file_path && inclusions.include?('name') && !exclusions.include?('name')
-            puts "#{tape}: File name in index (#{tape_spec[:file].inspect}) doesn't match contents of file (#{file.unexpanded_file_path.inspect})"
+          file_descriptor = archive.descriptor(tape, :build=>options[:build])
+          if tape_spec[:file] != file_descriptor[:path] && inclusions.include?('name') && !exclusions.include?('name')
+            table << [tape, '', "Names don't match", "Index", tape_spec[:file], 'File', file_descriptor[:path]]
           end
-          frozen = File.frozen?(tape_path)
-          if frozen
-            # TODO Is duplicate open necessary?
-            frozen_file = File::Frozen.open(tape_path)
-            case tape_spec[:date] <=> frozen_file.update_date
+          if file_descriptor[:file_type] == :frozen
+            index_date = tape_spec[:date]
+            tape_date = file_descriptor[:file_date]
+            case index_date <=> tape_date
             when -1 
-              puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is older than date of frozen archive (#{frozen_file.update_date.strftime('%Y/%m/%d')})" \
-                if inclusions.include?('old') &&!exclusions.include?('old')
+              table << [tape, '', "Older date in index", 'Index', index_date.strftime(DATE_FORMAT), 
+                                                         'File',  tape_date.strftime(DATE_FORMAT)] \
+                                                              if inclusions.include?('old') &&!exclusions.include?('old')
             when 1
-              puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is newer than date of frozen archive (#{frozen_file.update_date.strftime('%Y/%m/%d')})" \
-              if inclusions.include?('new') &&!exclusions.include?('new')
+              table << [tape, '', "Newer date in index", 'Index', index_date.strftime(DATE_FORMAT), 
+                                                         'File',  tape_date.strftime(DATE_FORMAT)] \
+                                                              if inclusions.include?('new') &&!exclusions.include?('new')
             end
-            frozen_file.shard_count.times do |i|
-              descriptor = frozen_file.descriptor(i)
-              file_date = descriptor.update_date
-              frozen_file = descriptor.file_name
-              case tape_spec[:date] <=> file_date
+            file_descriptor[:shard_count].times do |i|
+              descriptor = file_descriptor[:shards][i]
+              shard_date = descriptor[:shard_date]
+              shard = descriptor[:name]
+              case index_date <=> shard_date
               when -1 
-                puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is older than date of frozen file #{frozen_file} (#{file_date.strftime('%Y/%m/%d')})" \
-                  if inclusions.include?('old_file') &&!exclusions.include?('old_file')
+                table << [tape, shard, "Older date in index", 'Index', index_date.strftime(DATE_FORMAT), 
+                                                              'Shard', shard_date.strftime(DATE_FORMAT)] \
+                                                                if inclusions.include?('old_file') &&!exclusions.include?('old_file')
               when 1
-                puts "#{tape}: Archival date in index (#{tape_spec[:date].strftime('%Y/%m/%d')}) is newer than date of frozen file #{frozen_file} (#{file_date.strftime('%Y/%m/%d')})" \
-                  if inclusions.include?('new_file') &&!exclusions.include?('new_file')
+                table << [tape, shard, "Newer date in index", 'Index', index_date.strftime(DATE_FORMAT), 
+                                                              'Shard', shard_date.strftime(DATE_FORMAT)] \
+                                                                if inclusions.include?('new_file') &&!exclusions.include?('new_file')
               end
-              case frozen_file.update_date <=> frozen_file.update_date
+              case tape_date <=> shard_date
               when -1 
-                puts "#{tape}: Archival date of archive (#{frozen_file.update_date.strftime('%Y/%m/%d')}) is older than date of frozen file #{frozen_file} (#{file_date.strftime('%Y/%m/%d')})" \
-                  if inclusions.include?('old_file') &&!exclusions.include?('old_file')
+                table << [tape, shard, "Older date in file", 'File',   tape_date.strftime(DATE_FORMAT), 
+                                                              'Shard', shard_date.strftime(DATE_FORMAT)] \
+                                                                if inclusions.include?('old_file') &&!exclusions.include?('old_file')
               when 1
-                puts "#{tape}: Archival date of archive (#{frozen_file.update_date.strftime('%Y/%m/%d')}) is newer than date of frozen file #{frozen_file} (#{file_date.strftime('%Y/%m/%d')})" \
-                  if inclusions.include?('new_file') &&!exclusions.include?('new_file')
+                table << [tape, shard, "Newer date in file", 'File',   tape_date.strftime(DATE_FORMAT), 
+                                                              'Shard', shard_date.strftime(DATE_FORMAT)] \
+                                                                if inclusions.include?('new_file') &&!exclusions.include?('new_file')
               end
             end
           end
+        end
+        if table.size <= 1
+          puts "No messages"
+        else
+          puts table.justify_rows.map{|row| row.join('  ')}.join("\n")
         end
       end
     end
