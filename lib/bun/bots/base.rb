@@ -12,12 +12,14 @@ module Bun
         ::File.expand_path(::File.join(::File.dirname(called_from), ::File.basename(called_from,'.*')))
       end
     
-      def self.task_names
-        Dir.glob(::File.join(task_directory,'*_task.rb')).map{|t| ::File.basename(t, '.*')}
+      def self.task_names(directory=nil)
+        directory ||= task_directory
+        Dir.glob(::File.join(directory,'*_task.rb')).map{|t| ::File.basename(t, '.*')}
       end
     
-      def self.load_tasks
-        task_names.each {|task| load_task task}
+      def self.load_tasks(directory=nil)
+        directory ||= task_directory
+        task_names(directory).each {|task| load_task task, ::File.join(directory, "#{task}.rb") }
       end
     
       def self.load_task(task_name, file_name=nil)
