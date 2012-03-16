@@ -3,7 +3,7 @@ require 'mechanize'
 require 'fileutils'
 require 'lib/bun/archive'
 require 'lib/bun/shell'
-require 'lib/bun/archive_indexbot'
+require 'lib/bun/bots/archive_index'
 
 class Bun
   class ArchiveBot < Thor
