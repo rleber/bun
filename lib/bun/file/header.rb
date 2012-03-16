@@ -15,7 +15,7 @@ module Bun
         words = options[:words]
         words = if file
           @tape = file
-          words = self.class.decode(::File.read(file, size))
+          words = self.class.decode(File.read(file, size))
         elsif data
           @tape = options[:tape]
           words = self.class.decode(data[0...size])

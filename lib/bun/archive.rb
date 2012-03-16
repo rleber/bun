@@ -10,7 +10,7 @@ module Bun
     def self.config_dir(name)
       dir = config[name]
       return nil unless dir
-      dir = ::File.expand_path(dir) if dir=~/^~/
+      dir = File.expand_path(dir) if dir=~/^~/
       dir
     end
     
@@ -72,7 +72,7 @@ module Bun
     end
     
     def tapes
-      Dir.entries(::File.join(location, raw_directory)).reject{|f| f=~/^\./}
+      Dir.entries(File.join(location, raw_directory)).reject{|f| f=~/^\./}
     end
     
     def each_tape(&blk)
@@ -109,11 +109,11 @@ module Bun
     end
     
     def original_index_file
-      ::File.expand_path(::File.join(location, self.class.original_index_file))
+      File.expand_path(File.join(location, self.class.original_index_file))
     end
 
     def index_file
-      ::File.expand_path(::File.join(location, self.class.index_file))
+      File.expand_path(File.join(location, self.class.index_file))
     end
     
     # TODO Test me
@@ -123,7 +123,7 @@ module Bun
       tapes.each do |tape_name|
         extended_file_name = expanded_tape_path(tape_name)
         if self.class.frozen?(extended_file_name)
-          file = File.open(extended_file_name)
+          file = ::File.open(extended_file_name)
           # TODO is double open necessary?
           frozen_file = File::Frozen.open(extended_file_name)
           frozen_file.file_paths.each_with_index do |path, i|
@@ -143,9 +143,9 @@ module Bun
       if file_name =~ /^\.\//
         rel = `pwd`.chomp
       else
-        rel = ::File.expand_path(raw_directory, location)
+        rel = File.expand_path(raw_directory, location)
       end
-      ::File.expand_path(file_name, rel)
+      File.expand_path(file_name, rel)
     end
     
     def config
@@ -157,7 +157,7 @@ module Bun
     end
     
     def _original_index
-      content = ::File.read(original_index_file)
+      content = File.read(original_index_file)
       specs = content.split("\n").map do |line|
         words = line.strip.split(/\s+/)
         raise RuntimeError, "Bad line in index file: #{line.inspect}" unless words.size == 3
@@ -184,8 +184,8 @@ module Bun
     end
     
     def _index
-      if ::File.exists?(index_file)
-        @@index = YAML.load(::File.read(index_file))
+      if File.exists?(index_file)
+        @@index = YAML.load(File.read(index_file))
       else
         build_and_save_index
       end
@@ -242,7 +242,7 @@ module Bun
     end
     
     def exists?(name)
-      ::File.exists?(expanded_tape_path(name))
+      File.exists?(expanded_tape_path(name))
     end
   end
 end

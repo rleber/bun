@@ -9,22 +9,22 @@ module Bun
     
       def self.task_directory
         called_from = calling_file
-        ::File.expand_path(::File.join(::File.dirname(called_from), ::File.basename(called_from,'.*')))
+        File.expand_path(File.join(File.dirname(called_from), File.basename(called_from,'.*')))
       end
     
       def self.task_names(directory=nil)
         directory ||= task_directory
-        Dir.glob(::File.join(directory,'*_task.rb')).map{|t| ::File.basename(t, '.*')}
+        Dir.glob(File.join(directory,'*_task.rb')).map{|t| File.basename(t, '.*')}
       end
     
       def self.load_tasks(directory=nil)
         directory ||= task_directory
-        task_names(directory).each {|task| load_task task, ::File.join(directory, "#{task}.rb") }
+        task_names(directory).each {|task| load_task task, File.join(directory, "#{task}.rb") }
       end
     
       def self.load_task(task_name, file_name=nil)
-        file_name ||= ::File.join(task_directory, "#{task_name}.rb")
-        code = ::File.read(file_name)
+        file_name ||= File.join(task_directory, "#{task_name}.rb")
+        code = File.read(file_name)
         begin
           eval "class #{self.name}\n#{code}\nend",nil,file_name,0
         rescue => e

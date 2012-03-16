@@ -5,7 +5,7 @@ def cp(tape, dest = nil)
   directory = options[:archive] || Archive.location
   archive = Archive.new(directory)
   unless dest.nil? || dest == '-'
-    dest = ::File.join(dest, ::File.basename(tape)) if ::File.directory?(dest)
+    dest = File.join(dest, File.basename(tape)) if File.directory?(dest)
   end
   archive.open(tape) {|f| Shell.new(:quiet=>true).write dest, f.read }
 end

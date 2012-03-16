@@ -3,7 +3,7 @@ EXTRACT_LOG_PATTERN = /\"([^\"]*)\"(.*?)(\d+)\s+errors/
 no_tasks do
   def read_log(log_file_name)
     log = {}
-    ::File.read(log_file_name).split("\n").each do |line|
+    File.read(log_file_name).split("\n").each do |line|
       entry = parse_log_entry(line)
       log[entry[:file]] = entry
     end
@@ -33,21 +33,21 @@ def organize(from=nil, to=nil)
   directory = options[:archive] || Archive.location
   archive = Archive.new(directory)
   from ||= archive.extract_directory
-  from = ::File.join(archive.location, from)
+  from = File.join(archive.location, from)
   to ||= archive.files_directory
-  to = ::File.join(archive.location, archive.files_directory)
+  to = File.join(archive.location, archive.files_directory)
   index = Index.new
   
   # Build cross-reference index
-  Dir.glob(::File.join(from,'**','*')).each do |old_file|
-    next if ::File.directory?(old_file)
+  Dir.glob(File.join(from,'**','*')).each do |old_file|
+    next if File.directory?(old_file)
     f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
     if f !~ /^([^\/]+)\/(.*)$/
       warn "File #{f} does not have a tape name and file name"
     else
       tape = $1
       file = $2
-      new_file = ::File.join(to, file, tape)
+      new_file = File.join(to, file, tape)
       warn "#{old_file} => #{new_file}" if @trace
       index.add(:from=>old_file, :to=>new_file, :file=>file, :tape=>tape)
     end
@@ -56,9 +56,9 @@ def organize(from=nil, to=nil)
   # Combine files where the files have the same file name and have identical content
   index.each do |spec|
     matches = index.find(:file=>spec[:file]).reject{|e| e[:to]==spec[:to]}
-    content = ::File.read(spec[:from])
+    content = File.read(spec[:from])
     matches.each do |match|
-      if ::File.read(match[:from])==content
+      if File.read(match[:from])==content
         warn "#{match[:from]} is the same as #{spec[:from]} => #{spec[:to]}" if @trace
         index.add(match.merge(:to=>spec[:to]))
       end
@@ -79,7 +79,7 @@ def organize(from=nil, to=nil)
   end
   
   # Read in log information
-  log = read_log(::File.join(from, archive.log_file))
+  log = read_log(File.join(from, archive.log_file))
   new_log = {}
   
   # Create cross-reference files
@@ -90,7 +90,7 @@ def organize(from=nil, to=nil)
   index.sort_by{|e| e[:from]}.each do |spec|
     next if processed[spec[:to]]
     processed[spec[:to]] = true   # Only need to copy or link identical files to the new location once
-    dir = ::File.dirname(spec[:to])
+    dir = File.dirname(spec[:to])
     shell.mkdir_p dir
     warn "organize #{spec[:from]} => #{spec[:to]}" unless @dryrun
     shell.invoke command, spec[:from], spec[:to]
@@ -100,8 +100,8 @@ def organize(from=nil, to=nil)
   
   # Write new log
   unless @dryrun
-    new_log_file = ::File.join(to, archive.log_file)
-    ::File.open(new_log_file, 'w') do |f|
+    new_log_file = File.join(to, archive.log_file)
+    File.open(new_log_file, 'w') do |f|
       new_log.keys.sort.each do |file|
         f.puts new_log[file][:entry]
       end
@@ -110,10 +110,10 @@ def organize(from=nil, to=nil)
 
   # Create index file of cross-reference
   unless @dryrun
-    index_file = ::File.join(to, '.index')
+    index_file = File.join(to, '.index')
     # TODO Refactor using Array#justify_rows
     from_width = index.froms.map{|old_file| old_file.size}.max
-    ::File.open(index_file, 'w') do |ixf|
+    File.open(index_file, 'w') do |ixf|
       index.sort_by{|e| e[:from]}.each do |spec|
         ixf.puts %Q{#{"%-#{from_width}s" % spec[:from]} => #{spec[:to]}}
       end

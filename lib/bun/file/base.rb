@@ -51,7 +51,7 @@ module Bun
       end
   
       def relative_path(*f)
-        ::File.expand_path(::File.join(*f), ENV['HOME']).sub(/^#{Regexp.escape(ENV['HOME'])}\//,'')
+        File.expand_path(File.join(*f), ENV['HOME']).sub(/^#{Regexp.escape(ENV['HOME'])}\//,'')
       end
 
       VALID_CONTROL_CHARACTERS = '\n\r\x8\x9\xb\xc' # \x8 is a backspace, \x9 is a tab, \xb is a VT, \xc is a form-feed
@@ -81,7 +81,7 @@ module Bun
       end
     
       def frozen?(file_name)
-        raise "File #{file_name} doesn't exist" unless ::File.exists?(file_name)
+        raise "File #{file_name} doesn't exist" unless File.exists?(file_name)
         new(:file=>file_name).frozen?
       end
     
@@ -195,11 +195,11 @@ module Bun
     end
   
     def read
-      ::File.read(tape_path)
+      File.read(tape_path)
     end
   
     def tape_name
-      ::File.basename(tape_path)
+      File.basename(tape_path)
     end
     
     def path

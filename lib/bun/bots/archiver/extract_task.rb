@@ -7,8 +7,8 @@ def extract(to=nil)
   @dryrun = options[:dryrun]
   directory = options[:archive] || Archive.location
   archive = Archive.new(directory)
-  to ||= ::File.join(archive.location, archive.extract_directory)
-  log_file = ::File.join(to, archive.log_file)
+  to ||= File.join(archive.location, archive.extract_directory)
+  log_file = File.join(to, archive.log_file)
   ix = archive.tapes
   shell = Shell.new(:dryrun=>@dryrun)
   shell.rm_rf to
@@ -22,16 +22,16 @@ def extract(to=nil)
       frozen_file.shard_count.times do |i|
         descr = frozen_file.descriptor(i)
         subfile_name = descr.file_name
-        f = ::File.join(to, tape_name, file_path, subfile_name)
-        dir = ::File.dirname(f)
+        f = File.join(to, tape_name, file_path, subfile_name)
+        dir = File.dirname(f)
         shell.mkdir_p dir
         subfile_name = '\\' + subfile_name if subfile_name =~ /^\+/ # Watch out -- '+' has a special meaning to thaw
         warn "thaw #{tape_name} #{subfile_name}" unless @dryrun
         shell.thaw tape_name, subfile_name, f, :log=>log_file
       end
     else
-      f = ::File.join(to, tape_name, file_path)
-      dir = ::File.dirname(f)
+      f = File.join(to, tape_name, file_path)
+      dir = File.dirname(f)
       shell.mkdir_p dir
       warn "unpack #{tape_name}" unless @dryrun
       shell.unpack tape_name, f, :log=>log_file
