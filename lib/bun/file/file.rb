@@ -171,12 +171,15 @@ class Bun
     attr_reader :tape_path
     attr_reader :words
     
+    attr_accessor :errors
+    
     # TODO Do we need options[:size] and options[:limit] ?
     def initialize(options={}, &blk)
       @tape_path = options[:tape] || options[:file]
       @size = options[:size]
       @header = options[:header]
       @archive = options[:archive]
+      @errors = 0
       self.words = self.class.get_words(options[:limit], options)
       yield(self) if block_given?
     end
@@ -185,6 +188,10 @@ class Bun
     
     def header?
       @header
+    end
+    
+    def error(msg)
+      @errors += 1
     end
     
     def read

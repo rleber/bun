@@ -13,9 +13,11 @@ class Bun
       SPECIFICATION_POSITION = 11 # words
       DESCRIPTION_PATTERN = /\s+(.*)/
       FIELDS = [
+        :blocks,
         :description,
         :file_size,
         :file_type,
+        :good_blocks,
         :index_date,
         :name,
         :owner,
@@ -125,6 +127,14 @@ class Bun
         else
           nil
         end
+      end
+      
+      def blocks
+        file.blocks rescue nil
+      end
+      
+      def good_blocks
+        file.good_blocks rescue nil
       end
       
       def index_date

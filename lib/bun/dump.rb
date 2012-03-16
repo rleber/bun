@@ -7,6 +7,7 @@ class Bun
     
     # TODO Dump should understand frozen file sizes
     # TODO Dump should be able to dump frozen file preambles 4 chars/word, then 5 chars/word for the remainder
+    # TODO Should dump be part of Words?
     def self.dump(words, options={})
       offset = options[:offset] || 0
       if options[:lines]

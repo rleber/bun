@@ -1,7 +1,7 @@
 class Bun
   class File
     class Frozen < Bun::File
-      attr_reader :file, :errors
+      attr_reader :file
       attr_accessor :strict, :warn
     
       # TODO do we ever instantiate a File::Frozen without a new file? If not, refactor

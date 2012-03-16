@@ -3,7 +3,7 @@ require 'mechanize'
 require 'fileutils'
 require 'lib/bun/archive'
 require 'lib/bun/shell'
-require 'lib/bun/archive_indexbot'
+require 'lib/bun/bots/archive_index'
 
 class Bun
   class ArchiveBot < Thor
@@ -338,118 +338,7 @@ data/archive_config.yml. Usually, this is ~/bun_archive
         ::File.open(::File.join(destinations[status],archive.log_file),'w') {|f| f.puts log.map{|log_entry| log_entry[:entry]}.join("\n") }
       end
     end
-    
-    desc "header_sizes", "Display the length of file headers"
-    option 'archive', :aliases=>'-a', :type=>'string',                     :desc=>'Archive location'
-    option "sort",    :aliases=>'-s', :type=>'string', :default=>'header', :desc=>"Sort by what field: preamble or header (size)"
-    def header_sizes
-      directory = options[:archive] || Archive.location
-      archive = Archive.new(directory)
-      data = [%w{Tape Preamble Header}]
-      sort_column = ['preamble', 'header'].index(options[:sort].downcase)
-      abort "!Bad value for --sort option" unless sort_column
-      sort_column += 1
-      max_header = max_preamble = nil
-      min_header = min_preamble = nil
-      sum_header = sum_preamble = 0
-      n = 0
-      archive.each do |tape_name|
-        file = archive.open(tape_name)
-        preamble_size = file.content_offset
-        header_size = file.header_size
-        sum_preamble += preamble_size
-        sum_header += header_size
-        if !min_preamble || preamble_size < min_preamble
-          min_preamble = preamble_size
-        end
-        if !max_preamble || preamble_size > max_preamble
-          max_preamble = preamble_size
-        end
-        if !min_header || header_size < min_header
-          min_header = header_size
-        end
-        if !max_header || header_size > max_header
-          max_header = header_size
-        end
-        data << [tape_name, preamble_size, header_size]
-        n += 1
-      end
-      data = data.sort_by{|row| row[sort_column].to_i }
-      data = data.map{|row| row[-2] = row[-2].to_s; row[-1] = row[-1].to_s; row}
-      data << ["Minimum", min_preamble.to_s, min_header.to_s]
-      data << ["Average", '%0.1f' % (sum_preamble/n.to_f), '%0.1f' % (sum_header/n.to_f)]
-      data << ["Maximum", max_preamble.to_s, max_header.to_s]
-      puts data.justify_rows.map{|row| row.join('  ')}.join("\n")
-    end
-    
-    # TODO Remove this
-    desc "types", "List file types"
-    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-    def types
-      directory = options[:archive] || Archive.location
-      archive = Archive.new(directory)
-      archive.each do |tape_name|
-        file = archive.descriptor(tape_name)
-        puts "#{tape_name}: #{file.file_type}"
-      end
-    end
-    
-    # TODO Remove me -- this was a research project
-    desc "count_shards", "Count shards in frozen files three different ways"
-    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-    def count_shards
-      directory = options[:archive] || Archive.location
-      archive = Archive.new(directory)
-      table = [%w{Tape Word1 Positions Valid Flag}]
-      flagged = false
-      archive.each do |tape_name|
-        file = archive.open(tape_name, :header=>true)
-        if file.file_type == :frozen
-          counts = [
-            f.shard_count_based_on_word_1, 
-            f.shard_count_based_on_position_of_shard_contents, 
-            f.shard_count_based_on_count_of_valid_shard_descriptors
-          ]
-          row = [tape_name] + counts.map{|c| '%3d' % c } 
-          if counts.min != counts.max
-            flagged = true
-            row << '*'
-          else
-            row << ''
-          end
-          table << row
-        end
-      end
-      puts table.justify_rows.map{|row| row.join('  ')}.join("\n")
-      abort "!Shard counts don't match in flagged entries" if flagged
-    end
-
-    desc "compare_offsets", "Compare file offsets vs. content of file preamble"
-    option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-    def compare_offsets
-      directory = options[:archive] || Archive.location
-      archive = Archive.new(directory)
-      table = [%w{Tape Word1 Calculated Flag}]
-      flagged = false
-      archive.each do |tape_name|
-        file = archive.open(tape_name)
-        counts = [
-          file.words.at(1).half_words.at(1).to_i, 
-          file.content_offset
-        ]
-        row = [tape_name] + counts.map{|c| '%3d' % c } 
-        if counts.min != counts.max
-          flagged = true
-          row << '*'
-        else
-          row << ''
-        end
-        table << row
-      end
-      puts table.justify_rows.map{|row| row.join('  ')}.join("\n")
-      abort "!Offsets don't match in flagged entries" if flagged
-    end
-    
+        
     # TODO Run this; check if there's a way to discern listing files automagically
     desc "text_status", "Show status of text files"
     option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
@@ -467,7 +356,13 @@ Produces a list of all other non-printable characters encountered.
         file = archive.open(tape_name)
         next unless file.file_type == :text
         text = file.text rescue nil
-        if text
+        truncated = !text
+        if truncated
+          file.truncate = true
+          file.reblock
+          text = file.text rescue nil
+        end
+        if text && file.good_blocks > 0
           tabs = backspaces = form_feeds = vertical_tabs = bad_characters = 0
           bad_character_set = []
           text.scan("\t") { tabs += 1 }
@@ -475,15 +370,16 @@ Produces a list of all other non-printable characters encountered.
           text.scan("\f") { form_feeds += 1 }
           text.scan("\v") { vertical_tabs += 1 }
           text.scan(File.invalid_character_regexp) {|m| bad_characters += 1; bad_character_set << m.to_s }
-          table << [tape_name, "Readable", text.size, tabs, backspaces, vertical_tabs, form_feeds, bad_characters, bad_character_set.uniq.sort.join.inspect[1...-1]]
+          status = truncated ? "Truncated" : "Readable"
+          table << [tape_name, status, file.blocks, file.good_blocks, text.size, tabs, backspaces, vertical_tabs, form_feeds, bad_characters, bad_character_set.uniq.sort.join.inspect[1...-1]]
         else
-          table << [tape_name, 'Unreadable']
+          table << [tape_name, 'Unreadable', file.blocks, 0]
         end
       end
       if table.size == 0
         puts "No files unpacked"
       else
-        table.unshift %w{Tape Status Chars Tabs Backspaces Vertical\ Tabs Form\ Feeds Invalid\ Characters List}
+        table.unshift %w{Tape Status Blocks Good\ Blocks Chars Tabs Backspaces Vertical\ Tabs Form\ Feeds Invalid\ Characters List}
         puts table.justify_rows.map{|row| row.join('  ')}.join("\n")
       end
     end
