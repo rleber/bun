@@ -37,6 +37,7 @@ Standardize Decode and Defrost interfaces: decode, instead of unpack/thaw
 Change file patterns to tape::file(::shard)? Qu: how to specify whether it must be a shard?
 Possibly caching of archive index?
 Clean code
+Move Bot::Base to a gem; provide tests
 Build as a gem
 Revise installation readme
 Upload to Github
