@@ -1,10 +1,7 @@
 TODO
-Change Bun to a Module
-Change Bun::FreezerBot to Bun::Bot::Freezer, etc.
-Move bot tasks to tasks folders, e.g. Bot::Freezer#thaw is in lib/bun/bots/freezer/thaw.rb
+Move archive index to file xattrs
 Better unpack status checking: automatic truncate, good/bad status, errors: counting, list
 Separate file.open from file.load/read
-Move archive index to file xattrs
 Make Bun::File a subclass of ::File
 Use something other than abort, so that we don't crap out if irb is running
 Resolve backspaces: to underlining or bold

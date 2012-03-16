@@ -1,4 +1,6 @@
 module Bun
-  class File::Huffman < File
+  class File
+    class Huffman < Bun::File
+    end
   end
 end
