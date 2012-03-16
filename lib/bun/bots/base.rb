@@ -12,11 +12,10 @@ class Bun
     end
     
     def self.task_names
-      Dir.glob(::File.join(task_directory,'*.rb')).map{|t| ::File.basename(t, '.*')}
+      Dir.glob(::File.join(task_directory,'*_task.rb')).map{|t| ::File.basename(t, '.*')}
     end
     
     def self.load_tasks
-      puts "in #{self}.load_tasks: task_names = #{task_names.inspect}"
       task_names.each {|task| load_task task}
     end
     
