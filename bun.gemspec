@@ -25,8 +25,8 @@ Gem::Specification.new do |s|
     s.rubygems_version = %q{1.3.6}
   end
   s.authors = ["Richard LeBer"]
-  s.date = %q{Replace Me}
-  s.description = %q{Replace Me}
+  s.date = %q{2012-03-17}
+  s.description = %q{Honeywell file archive utilities}
   s.summary = s.description
   s.email = ["richard.leber@gmail.com"]
   s.extra_rdoc_files = extra_files
