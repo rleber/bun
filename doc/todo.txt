@@ -1,5 +1,4 @@
 TODO
-Extend archive functionality to refactor common file processing patterns
 Move archive index to file xattrs
 Better unpack status checking: automatic truncate, good/bad status, errors: counting, list
 Separate file.open from file.load/read

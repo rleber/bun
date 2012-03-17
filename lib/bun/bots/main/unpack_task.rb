@@ -15,8 +15,6 @@ def unpack(file_name, to=nil)
   if options[:inspect]
     lines = []
     file.lines.each do |l|
-      # p l
-      # exit
       start = l[:start]
       line_descriptor = l[:descriptor]
       line_length = line_descriptor.half_word[0]
