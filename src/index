@@ -25,7 +25,7 @@ class Analyzer < Thor
   end
   
   no_tasks do
-    def load(log_file=nil)
+    def log(log_file=nil)
       log_file ||= @log_file || DEFAULT_LOG
       log = []
       File.open(log_file) do |f|
@@ -35,10 +35,7 @@ class Analyzer < Thor
       end
       log
     end
-    
-    def log
-      @log ||= load
-    end
+    cache :log
     
     def key_counts
       key_counts = Hash.new(0)

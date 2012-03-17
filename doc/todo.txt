@@ -1,10 +1,8 @@
 TODO
 Extend archive functionality to refactor common file processing patterns
-
 Move archive index to file xattrs
 Better unpack status checking: automatic truncate, good/bad status, errors: counting, list
 Separate file.open from file.load/read
-Use something other than abort, so that we don't crap out if irb is running
 Resolve backspaces: to underlining or bold
 Record unpack status in .index
 Change bun archive text_status to report on unpack status; merge fetching part into bun archive extract

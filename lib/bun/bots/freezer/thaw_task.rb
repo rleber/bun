@@ -17,7 +17,7 @@ def thaw(file_name, n, out=nil)
   stop "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
   archived_file = file.path
   archived_file = "--unknown--" unless archived_file
-  content = file.shard(file.shard_index(n))
+  content = file.shards.at(file.shard_index(n))
   shell = Shell.new
   shell.write out, content, :timestamp=>file.file_time, :quiet=>true
   warn "Thawed with #{file.errors} decoding errors" if options[:warn] && file.errors > 0

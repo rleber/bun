@@ -1,6 +1,8 @@
 module Bun
   class File < ::File
     class Blocked < Bun::File
+      include CacheableMethods
+      
       attr_accessor :truncate
       attr_reader   :good_blocks
       
@@ -21,11 +23,6 @@ module Bun
         @deblocked_content = nil
       end
     
-      # TODO Create a subclass File::Deblocked
-      def deblocked_content
-        @deblocked_content ||= deblock_content
-      end
-      
       def content
         deblocked_content
       end
@@ -37,7 +34,7 @@ module Bun
       end
     
       # TODO Build a capability in Slicr to do things like this
-      def deblock_content
+      def deblocked_content
         deblocked_content = []
         offset = 0
         block_number = 1
@@ -61,7 +58,7 @@ module Bun
         end
         Bun::Words.new(deblocked_content)
       end
-      private :deblock_content
+      cache :deblocked_content
     end
   end
 end

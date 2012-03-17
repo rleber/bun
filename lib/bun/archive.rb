@@ -5,6 +5,7 @@ require 'lib/bun/file'
 module Bun
   class Archive
     include Enumerable
+    include CacheableMethods
     
     DIRECTORY_LOCATIONS = %w{location log_file raw_directory extract_directory files_directory clean_directory dirty_directory}
     OTHER_LOCATIONS = %w{repository catalog_file index_file}
@@ -12,6 +13,7 @@ module Bun
     @@index = nil
     
     class << self
+      include CacheableMethods
     
       def config_dir(name)
         dir = config[name]
@@ -20,15 +22,12 @@ module Bun
         dir
       end
   
-      def load_config(config_file="data/archive_config.yml")
+      def config(config_file="data/archive_config.yml")
         @config = YAML.load(::File.read(config_file))
         @config['repository'] ||= ENV['BUN_REPOSITORY']
         @config
       end
-  
-      def config
-        @config ||= load_config
-      end
+      cache :config
     
       DIRECTORY_LOCATIONS.each do |locn|
         define_method locn do ||
@@ -110,12 +109,7 @@ module Bun
       File.expand_path(file_name, rel)
     end
     
-    # TODO This kind of caching method definition occurs everywhere. Refactor it
     def catalog
-      @catalog ||= _catalog
-    end
-    
-    def _catalog
       content = File.read(catalog_file)
       specs = content.split("\n").map do |line|
         words = line.strip.split(/\s+/)
@@ -130,7 +124,7 @@ module Bun
       end
       specs
     end
-    private :_catalog
+    cache :catalog
     
     def catalog_time(tape)
       info = catalog.find {|spec| spec[:tape] == tape }
