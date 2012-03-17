@@ -1,4 +1,4 @@
-desc "set_dates", "Set file modification dates for archived files, based on original index"
+desc "set_dates", "Set file modification dates for archived files, based on catalog"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually set dates"
 def set_dates

@@ -7,7 +7,7 @@ module Bun
     include Enumerable
     
     DIRECTORY_LOCATIONS = %w{location log_file raw_directory extract_directory files_directory clean_directory dirty_directory}
-    OTHER_LOCATIONS = %w{repository original_index_file index_file}
+    OTHER_LOCATIONS = %w{repository catalog_file index_file}
     
     @@index = nil
     
@@ -36,7 +36,6 @@ module Bun
         end
       end
       
-      # TODO Find a better name (everywhere) than 'original'
       OTHER_LOCATIONS.each do |locn|
         define_method locn do ||
           config[locn]
@@ -112,12 +111,12 @@ module Bun
     end
     
     # TODO This kind of caching method definition occurs everywhere. Refactor it
-    def original_index
-      @original_index ||= _original_index
+    def catalog
+      @catalog ||= _catalog
     end
     
-    def _original_index
-      content = File.read(original_index_file)
+    def _catalog
+      content = File.read(catalog_file)
       specs = content.split("\n").map do |line|
         words = line.strip.split(/\s+/)
         raise RuntimeError, "Bad line in index file: #{line.inspect}" unless words.size == 3
@@ -131,10 +130,10 @@ module Bun
       end
       specs
     end
-    private :_original_index
+    private :_catalog
     
-    def index_time(tape)
-      info = original_index.find {|spec| spec[:tape] == tape }
+    def catalog_time(tape)
+      info = catalog.find {|spec| spec[:tape] == tape }
       info && info[:date].local_date_to_local_time
     end
     

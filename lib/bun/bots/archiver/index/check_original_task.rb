@@ -3,20 +3,20 @@ DATE_FORMAT = '%Y/%m/%d %H:%M:%S'
 # TODO Create check method: Check that an index file entry exists for each tape
 # file, check frozen file dates and content vs. index, check 
 # text archive file contents vs. index
-desc "check_original", "Check contents of the original index"
+desc "check_catalog", "Check contents of the catalog"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on archive index; always build information from source file"
 option "include", :aliases=>'-i', :type=>'string',  :desc=>"Include only certain messages. Options include #{VALID_MESSAGES.join(',')}"
 option "exclude", :aliases=>'-x', :type=>'string',  :desc=>"Skip certain messages. Options include #{VALID_MESSAGES.join(',')}"
 # TODO Reformat this in columns: tape shard match loc1 value1 loc2 value2
-def check_original
+def check_catalog
   archive = Archive.new(options[:archive])
   exclusions = (options[:exclude] || '').split(/\s*[,\s]\s*/).map{|s| s.strip.downcase }
   inclusions = (options[:include] || VALID_MESSAGES.join(',')).split(/\s*[,\s]\s*/).map{|s| s.strip.downcase }
   table = []
   table << %w{Tape Shard Message Source\ 1 Value\ 1 Source\ 2 Value\ 2}
   archive.each do |tape|
-    tape_spec = archive.original_index.find {|spec| spec[:tape] == tape }
+    tape_spec = archive.catalog.find {|spec| spec[:tape] == tape }
     unless tape_spec
       table << [tape, '', "No entry in index"] if inclusions.include?('missing') && !exclusions.include?('missing')
       next

@@ -8,8 +8,8 @@ def describe(file_name)
   descriptor    = archive.descriptor(file_name, :build=>options[:build])
   type          = descriptor.file_type
   shards        = descriptor.shard_names
-  index_time    = descriptor.index_time
-  index_date_display = index_time ? index_time.strftime('%Y/%m/%d') : "n/a"
+  catalog_time    = descriptor.catalog_time
+  catalog_time_display = catalog_time ? catalog_time.strftime('%Y/%m/%d') : "n/a"
   
   # TODO Refactor using Array#justify_rows
   puts "Tape:            #{descriptor.tape_name}"
@@ -20,9 +20,9 @@ def describe(file_name)
   puts "Name:            #{descriptor.name}"
   puts "Description:     #{descriptor.description}"
   puts "Specification:   #{descriptor.specification}"
-  puts "Index date:      #{index_date_display}"
+  puts "Catalog date:    #{catalog_time_display}"
   if type == :frozen
-    puts "File date:       #{descriptor.file_time.strftime(TIME_FORMAT)}"
+    puts "File time:       #{descriptor.file_time.strftime(TIME_FORMAT)}"
     puts "Updated at:      #{descriptor.updated.strftime(TIME_FORMAT)}"
   end
   puts "Size (words):    #{descriptor.file_size}"

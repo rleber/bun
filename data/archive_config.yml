@@ -6,5 +6,5 @@ clean_directory: clean
 dirty_directory: dirty
 log_file: .log
 repository: 
-original_index_file: fass-index.txt
+catalog_file: fass-index.txt
 index_file: .index.yml
