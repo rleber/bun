@@ -8,7 +8,7 @@ require 'lib/bun/bots/archiver'
 require 'lib/bun/bots/freezer'
 require 'lib/bun/bots/sandbox'
 require 'lib/bun/dump'
-require 'lib/bun/array'
+require 'lib/array'
 require 'pp'
 
 module Bun

@@ -1,3 +1,4 @@
+# TODO Move this to a Gem
 class Date
   def to_gm_time
     to_time(new_offset, :gm)
