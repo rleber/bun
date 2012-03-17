@@ -1,6 +1,6 @@
-desc "ls_catalog", "List the catalog file for the archive"
+desc "ls", "List the catalog file for the archive"
 option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-def ls_catalog
+def ls
   archive = Archive.new(options[:archive])
   # TODO Use Array.justify_rows
   archive.catalog.each do |spec|

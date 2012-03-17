@@ -45,6 +45,7 @@ module Bun
     attr_reader :location
     
     def initialize(location=nil)
+      location = location[:archive] if location.is_a?(Hash)
       @location = location || self.class.location
     end
     

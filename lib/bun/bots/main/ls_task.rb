@@ -70,7 +70,6 @@ def ls
   stop "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
   tape_pattern = get_regexp(options[:tapes])
   stop "!Invalid --tapes pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless tape_pattern
-  directory = options[:archive] || Archive.location
 
   fields =  options[:path] ? [:tape_path] : [:tape_name]
   fields += [:file_type, :updated, :file_size] if options[:long]
@@ -93,11 +92,11 @@ def ls
   end
 
   # Retrieve file information
-  archive = Archive.new(directory)
+  archive = Archive.new(options)
   ix = archive.tapes
   # TODO Refactor using archive.select
-  ix = ix.select{|tape_name| tape_name =~ tape_pattern}
   file_info = []
+  ix = ix.select{|tape_name| tape_name =~ tape_pattern}
   files = ix.each_with_index do |tape_name, i|
     file_descriptor = archive.descriptor(tape_name, :build=>options[:build])
     file_row = fields.inject({}) {|hsh, f| hsh[f] = file_descriptor[f]; hsh }
@@ -136,7 +135,7 @@ def ls
       end
     end
   end
-  puts "Archive at #{directory}:"
+  puts "Archive at #{archive.location}:"
   if table.size <= 1
     puts "No matching files"
   else

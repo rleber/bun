@@ -3,13 +3,13 @@ DATE_FORMAT = '%Y/%m/%d %H:%M:%S'
 # TODO Create check method: Check that an index file entry exists for each tape
 # file, check frozen file dates and content vs. index, check 
 # text archive file contents vs. index
-desc "check_catalog", "Check contents of the catalog"
+desc "check", "Check contents of the catalog"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on archive index; always build information from source file"
 option "include", :aliases=>'-i', :type=>'string',  :desc=>"Include only certain messages. Options include #{VALID_MESSAGES.join(',')}"
 option "exclude", :aliases=>'-x', :type=>'string',  :desc=>"Skip certain messages. Options include #{VALID_MESSAGES.join(',')}"
 # TODO Reformat this in columns: tape shard match loc1 value1 loc2 value2
-def check_catalog
+def check
   archive = Archive.new(options[:archive])
   exclusions = (options[:exclude] || '').split(/\s*[,\s]\s*/).map{|s| s.strip.downcase }
   inclusions = (options[:include] || VALID_MESSAGES.join(',')).split(/\s*[,\s]\s*/).map{|s| s.strip.downcase }

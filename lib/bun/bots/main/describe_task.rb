@@ -1,10 +1,9 @@
 SHARDS_ACROSS = 5
 desc "describe TAPE", "Display description information for a file"
-option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-option "build",   :aliases=>"-b", :type=>'boolean',                              :desc=>"Don't rely on archive index; always build information from source file"
+option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on archive index; always build information from source file"
 def describe(file_name)
-  directory = options[:archive] || Archive.location
-  archive = Archive.new(directory)
+  archive = Archive.new(options)
   descriptor    = archive.descriptor(file_name, :build=>options[:build])
   type          = descriptor.file_type
   shards        = descriptor.shard_names

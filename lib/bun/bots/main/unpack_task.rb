@@ -7,8 +7,7 @@ option "warn",    :aliases=>'-w', :type=>'boolean', :desc=>"Warn if there are de
 # TODO combine with other forms of read (e.g. thaw)
 # TODO rename bun read
 def unpack(file_name, to=nil)
-  directory = options[:archive] || Archive.location
-  archive = Archive.new(directory)
+  archive = Archive.new(options)
   file = archive.open(file_name)
   file.keep_deletes = true if options[:delete]
   archived_file = file.path
