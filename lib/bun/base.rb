@@ -1,4 +1,5 @@
 require 'rubygems'
 require 'date'
+require 'lib/kernel'
 require 'lib/date'
 require 'lib/bun/bots'

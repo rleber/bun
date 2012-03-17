@@ -94,7 +94,7 @@ def organize(from=nil, to=nil)
     shell.mkdir_p dir
     warn "organize #{spec[:from]} => #{spec[:to]}" unless @dryrun
     shell.invoke command, spec[:from], spec[:to]
-    abort "!No log entry for #{spec[:from]}" unless log[spec[:from]]
+    stop "!No log entry for #{spec[:from]}" unless log[spec[:from]]
     new_log[spec[:to]] = alter_log(log[spec[:from]], spec[:to])
   end
   

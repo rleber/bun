@@ -12,7 +12,7 @@ def unpack(file_name, to=nil)
   file = archive.open(file_name)
   file.keep_deletes = true if options[:delete]
   archived_file = file.path
-  abort "!Can't unpack #{file_name}. It contains a frozen file_name: #{archived_file}" if file.file_type == :frozen
+  stop "!Can't unpack #{file_name}. It contains a frozen file_name: #{archived_file}" if file.file_type == :frozen
   if options[:inspect]
     lines = []
     file.lines.each do |l|

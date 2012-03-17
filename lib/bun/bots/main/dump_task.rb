@@ -12,7 +12,7 @@ def dump(file_name)
   begin
     offset = options[:offset] ? eval(options[:offset]) : 0 # So octal or hex values can be given
   rescue => e
-    abort "!Bad value for --offset: #{e}"
+    stop "!Bad value for --offset: #{e}"
   end
   file_path = archive.expanded_tape_path(file_name)
   file = Bun::File::Text.open(file_path)

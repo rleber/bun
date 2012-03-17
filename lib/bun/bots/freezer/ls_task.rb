@@ -19,13 +19,13 @@ option "one",     :aliases=>'-1', :type=>'boolean',                             
 option "sort",    :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
 option "width",   :aliases=>'-w', :type=>'numeric', :default=>DEFAULT_WIDTH,     :desc=>"Width of display (for short format only)"
 def ls(file_name)
-  abort "!Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
+  stop "!Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
   file_pattern = get_regexp(options[:files])
-  abort "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
+  stop "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
   directory = options[:archive] || Archive.location
   archive = Archive.new(directory)
   file = archive.open(file_name)
-  abort "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
+  stop "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
   archived_file = file.path
   archived_file = "--unknown--" unless archived_file
   print "Frozen archive for directory #{archived_file}"

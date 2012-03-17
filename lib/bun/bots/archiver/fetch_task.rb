@@ -88,8 +88,8 @@ def fetch(url=nil)
   agent = Mechanize.new
   url ||= Archive.repository
   archive_location = options[:archive] || Archive.location
-  abort "!No url provided" unless url
-  abort "!No archive location provided" unless archive_location
+  stop "!No url provided" unless url
+  stop "!No archive location provided" unless archive_location
   _fetch(url, archive_location, options)
   Archive.new(archive_location).build_and_save_index(:verbose=>!options[:quiet])
 end

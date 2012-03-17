@@ -131,11 +131,11 @@ module Bun
         if n.is_a?(Numeric) || n.to_s =~ /^[+-]\d+$/
           n = n.to_i if n.is_a?(String)
           n += shard_count if n<0
-          abort "Frozen file does not contain shard number #{orig_n}" if n<0 || n>shard_count
+          stop "Frozen file does not contain shard number #{orig_n}" if n<0 || n>shard_count
         else
           name = n.to_s.sub(/^\\/,'') # Remove leading '\\', if any
           n = _shard_index(name)
-          abort "!Frozen file does not contain a shard named #{name.inspect}" unless n
+          stop "!Frozen file does not contain a shard named #{name.inspect}" unless n
         end
         n
       end
@@ -199,7 +199,7 @@ module Bun
         while line_offset < words.size
           last_line_word, line, okay = thaw_line(words, line_offset)
           if !line
-            abort "!Bad line at #{'%o'%line_offset}: #{line.inspect}" if @strict
+            stop "!Bad line at #{'%o'%line_offset}: #{line.inspect}" if @strict
             Kernel.warn "Bad lines corrected" if !warned && @warn
             warned = true
             line_offset += 1

@@ -3,6 +3,6 @@ def check(file)
   if File.clean?(File.read(file))
     puts "File is clean"
   else
-    abort "File is dirty"
+    stop "File is dirty"
   end
 end

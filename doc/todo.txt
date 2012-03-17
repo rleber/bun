@@ -1,4 +1,6 @@
 TODO
+Extend archive functionality to refactor common file processing patterns
+
 Move archive index to file xattrs
 Better unpack status checking: automatic truncate, good/bad status, errors: counting, list
 Separate file.open from file.load/read
@@ -19,7 +21,6 @@ Set file modification dates for text files, based on data in _misc/fass-index.tx
 Ignore files not in the index
 Implement Ian's naming conventions
 Ability to 'bun archive ls' by archive name patterns
-Move array from lib/bun/ to lib/
 Ability to search xref'ed files, for example find files with multiple copies
 Change name of 'bun archive xref' perhaps 'bun archive organize'?
 Keep a .spec file in decoded archives showing how the archive is organized?

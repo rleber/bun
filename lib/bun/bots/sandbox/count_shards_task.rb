@@ -24,5 +24,5 @@ def count_shards
     end
   end
   puts table.justify_rows.map{|row| row.join('  ')}.join("\n")
-  abort "!Shard counts don't match in flagged entries" if flagged
+  stop "!Shard counts don't match in flagged entries" if flagged
 end

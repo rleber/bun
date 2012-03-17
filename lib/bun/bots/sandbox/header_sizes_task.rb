@@ -6,7 +6,7 @@ def header_sizes
   archive = Archive.new(directory)
   data = [%w{Tape Preamble Header}]
   sort_column = ['preamble', 'header'].index(options[:sort].downcase)
-  abort "!Bad value for --sort option" unless sort_column
+  stop "!Bad value for --sort option" unless sort_column
   sort_column += 1
   max_header = max_preamble = nil
   min_header = min_preamble = nil
