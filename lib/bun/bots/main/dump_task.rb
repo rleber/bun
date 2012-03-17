@@ -7,12 +7,11 @@ option "offset",    :aliases=>'-o', :type=>'string',  :desc=>'Start at word n (z
 option "unlimited", :aliases=>'-u', :type=>'boolean', :desc=>'Ignore the file size limit'
 # TODO Deblock option
 def dump(file_name)
-  directory = options[:archive] || Archive.location
-  archive = Archive.new(directory)
+  archive = Archive.new(options)
   begin
     offset = options[:offset] ? eval(options[:offset]) : 0 # So octal or hex values can be given
   rescue => e
-    abort "!Bad value for --offset: #{e}"
+    stop "!Bad value for --offset: #{e}"
   end
   file_path = archive.expanded_tape_path(file_name)
   file = Bun::File::Text.open(file_path)

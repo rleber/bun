@@ -1,0 +1,5 @@
+IRB :: ruby 1.8.7 (2011-02-18 patchlevel 334) [i686-darwin10.7.0]
+[0m[0m[0m[0m[0m[0m[1m[38;5;24m>> [0mputs 'Hello world'
+[37m[1mHello world[0m[37m[1m
+[0m[0m7[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1m[38;5;31m#=> [0m[38;5;105mnil[0m
+[0m8[0m[0m[0m[0m[0m[0m[1m[38;5;24m>> [0m[0;0m

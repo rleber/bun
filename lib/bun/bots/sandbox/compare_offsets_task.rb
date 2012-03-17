@@ -21,5 +21,5 @@ def compare_offsets
     table << row
   end
   puts table.justify_rows.map{|row| row.join('  ')}.join("\n")
-  abort "!Offsets don't match in flagged entries" if flagged
+  stop "!Offsets don't match in flagged entries" if flagged
 end

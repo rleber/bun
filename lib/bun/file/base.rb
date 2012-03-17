@@ -320,8 +320,12 @@ module Bun
       self.class.time date(date_location), time_of_day(time_location)
     end
   
-    def index_date
-      archive && archive.index_date(tape)
+    def catalog_time
+      archive && archive.catalog_time(tape_name)
+    end
+    
+    def updated
+      descriptor.updated
     end
 
     def characters_per_word
@@ -330,13 +334,6 @@ module Bun
   
     def packed_characters_per_word
       self.class.packed_characters_per_word
-    end
-
-    # Allow file.path, etc.
-    def method_missing(meth, *args, &blk)
-      descriptor.send(meth, *args, &blk)
-    rescue NoMethodError
-      raise NoMethodError, "#{self.class}##{meth} method not defined"
     end
   
     def frozen?

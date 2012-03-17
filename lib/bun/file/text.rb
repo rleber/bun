@@ -1,6 +1,8 @@
 module Bun
   class File < ::File
     class Text < Bun::File::Blocked
+      include CacheableMethods
+      
       attr_accessor :keep_deletes
     
       # TODO do we ever instantiate a File::Text without reading a file? If not, refactor
@@ -20,19 +22,11 @@ module Bun
       end
     
       def text
-        @text ||= _text
-      end
-    
-      def _text
         lines.map{|l| l[:content]}.join
       end
-      private :_text
+      cache :text
     
       def lines
-        @lines ||= unpack
-      end
-    
-      def unpack
         line_offset = 0
         lines = []
         warned = false
@@ -54,6 +48,7 @@ module Bun
         @errors = errors
         lines
       end
+      cache :lines
     
       # TODO simplify
       def unpack_line(words, line_offset)

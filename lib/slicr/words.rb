@@ -115,7 +115,7 @@ module Slicr
 
       def read(file, options={})
         if file.is_a?(String)
-          abort "!File #{file} does not exist" unless File.exists?(file)
+          stop "!File #{file} does not exist" unless File.exists?(file)
           file = File.open(file, 'rb')
           close_when_done = true
         end

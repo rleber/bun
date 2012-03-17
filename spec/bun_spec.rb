@@ -101,6 +101,24 @@ describe Bun::File::Text do
   end
 end
 
+describe Bun::Archive do
+  before :each do
+    @archive = Bun::Archive.new('data/test/archive/contents')
+  end
+  describe "contents" do
+    it "retrieves correct list" do
+      @archive.contents.sort.should == %w{ar003.0698 ar054.2299::brytside ar054.2299::disco 
+                                          ar054.2299::end ar054.2299::opening ar054.2299::santa }
+    end
+    it "invokes a block" do
+      foo = []
+      @archive.contents {|f| foo << f }
+      foo.sort.should == %w{ar003.0698 ar054.2299::brytside ar054.2299::disco 
+                            ar054.2299::end ar054.2299::opening ar054.2299::santa }
+    end
+  end
+end
+
 # Frozen files to check ar013.0560, ar004.0888, ar019.0175
 
 describe Bun::Bot do

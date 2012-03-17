@@ -64,13 +64,12 @@ def ls
     when '*','a','all'
       //
     else
-      abort "!Unknown --type setting. Should be one of #{TYPE_VALUES.join(', ')}"
+      stop "!Unknown --type setting. Should be one of #{TYPE_VALUES.join(', ')}"
     end
   file_pattern = get_regexp(options[:files])
-  abort "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
+  stop "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
   tape_pattern = get_regexp(options[:tapes])
-  abort "!Invalid --tapes pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless tape_pattern
-  directory = options[:archive] || Archive.location
+  stop "!Invalid --tapes pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless tape_pattern
 
   fields =  options[:path] ? [:tape_path] : [:tape_name]
   fields += [:file_type, :updated, :file_size] if options[:long]
@@ -80,7 +79,7 @@ def ls
 
   if options[:sort]
     sort_field = SORT_FIELDS[options[:sort].to_sym]
-    abort "!Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless sort_field
+    stop "!Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless sort_field
     sort_fields = [sort_field.to_sym, :tape_name, :path]
   else
     sort_fields = [:tape_name, :path]
@@ -89,21 +88,21 @@ def ls
     sort_fields = sort_fields.map {|f| f==:tape_name ? :tape_path : f }
   end
   sort_fields.each do |sort_field|
-    abort "!Can't sort by #{sort_field}. It isn't included in this format" unless fields.include?(sort_field)
+    stop "!Can't sort by #{sort_field}. It isn't included in this format" unless fields.include?(sort_field)
   end
 
   # Retrieve file information
-  archive = Archive.new(directory)
+  archive = Archive.new(options)
   ix = archive.tapes
   # TODO Refactor using archive.select
-  ix = ix.select{|tape_name| tape_name =~ tape_pattern}
   file_info = []
+  ix = ix.select{|tape_name| tape_name =~ tape_pattern}
   files = ix.each_with_index do |tape_name, i|
     file_descriptor = archive.descriptor(tape_name, :build=>options[:build])
     file_row = fields.inject({}) {|hsh, f| hsh[f] = file_descriptor[f]; hsh }
     file_info << file_row
-    if options[:frozen] && file_descriptor[:file_type] == :frozen
-      file_descriptor[:shards].each do |d|
+    if options[:frozen] && file_descriptor.file_type == :frozen
+      file_descriptor.shards.each do |d|
         file_info << fields.inject({}) {|hsh, f| hsh[f] = d[f]; hsh }
       end
     end
@@ -136,7 +135,7 @@ def ls
       end
     end
   end
-  puts "Archive at #{directory}:"
+  puts "Archive at #{archive.location}:"
   if table.size <= 1
     puts "No matching files"
   else

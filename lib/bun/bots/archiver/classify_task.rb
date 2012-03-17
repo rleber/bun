@@ -29,7 +29,7 @@ def classify(from=nil, clean=nil, dirty=nil)
   Dir.glob(File.join(from,'**','*')).each do |old_file|
     next if File.directory?(old_file)
     f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
-    abort "!Missing log entry for #{old_file}" unless log[old_file]
+    stop "!Missing log entry for #{old_file}" unless log[old_file]
     okay = log[old_file][:errors] < threshold
     status = okay ? :clean : :dirty
     new_file = File.join(destinations[status], f)

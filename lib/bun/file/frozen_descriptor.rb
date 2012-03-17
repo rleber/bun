@@ -11,7 +11,7 @@ module Bun
         FIELDS = [
           :file_size,
           :file_type,
-          :index_date,
+          :catalog_time,
           :name,
           :owner,
           :path,
@@ -112,11 +112,10 @@ module Bun
           word(4)
         end
   
-        def index_date
-          file.index_date
+        def catalog_time
+          file.catalog_time
         end
 
-        # TODO Choose earlier of this time or time of file
         def file_time
           File.time(_update_date, _update_time_of_day)
         end
