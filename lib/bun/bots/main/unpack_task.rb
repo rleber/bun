@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 desc "unpack TAPE [TO]", "Unpack a file (Not frozen files -- use freezer subcommands for that)"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option "delete",  :aliases=>'-d', :type=>'boolean', :desc=>"Keep deleted lines"

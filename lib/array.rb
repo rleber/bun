@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 require 'pp'
 # TODO Move this to a Gem
 class Array

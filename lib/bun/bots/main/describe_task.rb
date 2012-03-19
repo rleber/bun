@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 SHARDS_ACROSS = 5
 desc "describe TAPE", "Display description information for a file"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'

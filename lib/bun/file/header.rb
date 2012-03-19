@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 # TODO Get rid of me
 module Bun
   class File < ::File

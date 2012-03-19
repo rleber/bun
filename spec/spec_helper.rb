@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 require File.join(File.dirname(__FILE__), '../lib/bun')
 require File.join(File.dirname(__FILE__), '../lib/slicr')
 require File.join(File.dirname(__FILE__), '../lib/indexable_basic')

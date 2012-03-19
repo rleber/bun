@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 DEFAULT_THRESHOLD = 20
 desc "classify [FROM] [CLEAN] [DIRTY]", "Classify files based on whether they're clean or not."
 option 'archive',   :aliases=>'-a', :type=>'string',  :desc=>'Archive location'

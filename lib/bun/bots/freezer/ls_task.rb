@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 TIMESTAMP_FORMAT = "%m/%d/%Y %H:%M:%S"
 
 no_tasks do

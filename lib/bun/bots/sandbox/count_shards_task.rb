@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 desc "count_shards", "Count shards in frozen files three different ways"
 option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
 def count_shards

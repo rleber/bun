@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 require 'thor'
 # TODO Move these requires around
 require 'mechanize'

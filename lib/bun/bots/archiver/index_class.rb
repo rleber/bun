@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 class Index < Array
   def add(spec)
     reject!{|e| e[:from] == spec[:from] } # Can only have one entry for any :from file

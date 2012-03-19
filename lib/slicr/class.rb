@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 class Class
   def def_class_method(name, &blk)
     class_name = self.name

@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 require 'lib/bun/file/descriptor'
 
 module Bun

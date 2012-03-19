@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 # Create a DSL for defining slices
 
 # TODO Reorganize slice* source files

@@ -1,4 +1,6 @@
-# enconding: utf-8
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 require 'thor/rake_compat'
 
 class Default < Thor

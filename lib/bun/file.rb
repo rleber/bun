@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 require 'lib/bun/word'
 require 'lib/bun/file/base'
 require 'lib/bun/file/raw'

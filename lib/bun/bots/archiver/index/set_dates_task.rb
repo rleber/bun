@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 desc "set_dates", "Set file modification dates for archived files, based on catalog"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually set dates"

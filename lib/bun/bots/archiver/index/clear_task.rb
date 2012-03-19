@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 desc "clear", "Clear file index for archive"
 option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
 def clear

@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 require 'slicr'
 
 WIDTH = 36
@@ -52,4 +55,3 @@ class TestWordOnes < Slicr::Word
     sign :ones_complement
   end
 end
-

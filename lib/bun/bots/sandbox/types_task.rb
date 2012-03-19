@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 desc "types", "List file types"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on archive index; always build information from source file"

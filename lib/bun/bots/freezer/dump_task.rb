@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
 desc "dump ARCHIVE FILE", "Uncompress a frozen Honeywell file"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option "escape",  :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
