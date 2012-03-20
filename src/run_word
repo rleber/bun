@@ -206,7 +206,7 @@ def show_word_slice(word, slice, options={})
   has_string = protected_eval("#{klass_name}.string?")
   show_value "#{word}.#{slices}", :binding=>binding
   collection = protected_eval("#{word}.#{slices}", binding)
-  show_value "#{word}.#{slices}.string", :binding=>binding if has_string
+  show_value "#{word}.#{slices}.join", :binding=>binding if has_string
   table = []
   formats = protected_eval("#{klass_name}.format_names")
   heading = ["n", "value"] + formats.map{|f| f.inspect }
@@ -219,7 +219,7 @@ def show_word_slice(word, slice, options={})
     row += formats.map do |format|
       protected_eval("#{word}.#{slice}(#{n}).format(#{format.inspect})", binding)
     end
-    row << protected_eval("#{word}.#{slice}(#{n}).string", binding) if has_string
+    row << protected_eval("#{word}.#{slice}(#{n}).to_s", binding) if has_string
     table << row
   end
   table = table.justify_rows
@@ -270,7 +270,7 @@ show_word "$negative"
 # Does arithmetic work?
 show_value "$byte_test_word-5", :format=>WORD_FORMAT
 show_value "3+$byte_test_word", :format=>WORD_FORMAT
-show_value "$byte_test_word.packed_characters.string"
+show_value "$byte_test_word.packed_characters.join"
 
 # Does string manipulation work?
 show_value "'First character: '+($byte_test_word.character(0))"

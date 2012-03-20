@@ -6,7 +6,10 @@ require 'tempfile'
 require 'yaml'
 
 def unpack(text)
-  lines = text.force_encoding("ascii-8bit").split("\n").map{|line| line.rstrip}
+  if RUBY_VERSION !~ /^1\.8/
+    text = text.force_encoding("ascii-8bit")
+  end
+  lines = text.split("\n").map{|line| line.rstrip}
   lines.pop if lines.last == ""
   lines
 end
