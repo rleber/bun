@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 WORD_FORMAT = '%012o'
@@ -39,8 +42,11 @@ BYTE_VALUES = {
   :bit=>[0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,1,0,1,1,0,1,1,1,0,0,1,0,0,1,0,0],
   :integer=>[0111222333444],
 }
-
-$strings = TestWord.new([?A,?B,?C,?D].inject{|value, ch| value<<9 | ch })
+if RUBY_VERSION =~ /^1\.8/
+  $strings = TestWord.new([?A,?B,?C,?D].inject(0) {|value, ch| value<<9 | ch })
+else
+  $strings = TestWord.new([?A,?B,?C,?D].inject(0) {|value, ch| value<<9 | ch.getbyte(0) })
+end
 $positive = TestWord.new(1)
 $negative = TestWord.new(eval('0b' + '1'*TEST_WIDTH))
 $negative_twos = $negative
@@ -314,13 +320,13 @@ describe "instance" do
           context "[#{i}]" do
             slice_object = slice[i]
             
-            it "should create a .string" do
-              slice_object.should respond_to :string
-            end
+            # it "should create a .string" do
+            #   slice_object.should respond_to :string
+            # end
 
-            it " .to_s should == .string" do
-              slice_object.to_s.should == slice_object.string
-            end
+            # it " .to_s should == .string" do
+            #   slice_object.to_s.should == slice_object.string
+            # end
 
             slice.formats.keys.each do |fmt|
               context "format #{fmt}" do
@@ -361,15 +367,15 @@ describe "instance" do
             end
     
             it "should return a string as .value" do
-              slice_object.string.should be_a_kind_of String
+              slice_object.value.should be_a_kind_of String
             end
     
-            it "should have .string == .asc.chr" do
-              slice_object.string.should == slice_object.asc.chr
+            it "should have .value == .asc.chr" do
+              slice_object.value.should == slice_object.asc.chr
             end
     
             it "should define the + operator as concatenation" do
-              (slice_object + "a").should == (slice_object.string + "a")
+              (slice_object + "a").should == (slice_object.value + "a")
             end
     
             it "should allow prefix +" do
@@ -387,8 +393,8 @@ describe "instance" do
         end
       end
       
-      it ".<slices_name> should create a merged string using .string" do
-        $strings.characters.string.should == "ABCD"
+      it ".<slices_name> should create a merged string using .join" do
+        $strings.characters.join.should == "ABCD"
       end
     end
     
@@ -417,9 +423,9 @@ describe "instance" do
               expect {slice_object.asc }.should raise_error
             end
 
-            it "should not define the string format" do
-              expect {slice_object.string }.should raise_error
-            end
+            # it "should not define the string format" do
+            #   expect {slice_object.string }.should raise_error
+            # end
     
             it "should not define the string_inspect format" do
               expect {slice_object.string_inspect }.should raise_error
@@ -471,9 +477,9 @@ describe "instance" do
               expect { slice_object + 2 }.should_not raise_error
             end
 
-            it "should not create a merged string using .#{slices_name}.string" do
-              expect { slice_object.send(slices_name).string }.should raise_error
-            end
+            # it "should not create a merged string using .#{slices_name}.string" do
+            #   expect { slice_object.send(slices_name).string }.should raise_error
+            # end
             
             # TODO slice_object.sign? should be possible
             if slice.sign?

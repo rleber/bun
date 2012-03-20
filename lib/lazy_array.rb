@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 # A lazy array
 
 require 'lib/indexable_basic'

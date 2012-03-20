@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 no_tasks do
   def get_regexp(pattern)
     Regexp.new(pattern)

@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 # Class for defining generic machine words
 
 # TODO Write API documentation

@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 desc "compare_offsets", "Compare file offsets vs. content of file preamble"
 option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
 def compare_offsets

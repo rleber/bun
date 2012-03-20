@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 if $0 == 'irb'
   class Abort < RuntimeError; end
 end

@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 desc "scrub FILE", "Clean up backspaces and tabs in a file"
 option "tabs", :aliases=>'-t', :type=>'string', :desc=>"Set tab stops"
 def scrub(file)

@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 module Bun
   class File < ::File
     class Text < Bun::File::Blocked

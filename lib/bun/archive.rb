@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 require 'yaml'
 require 'hashie/mash'
 require 'lib/bun/file'
@@ -202,4 +205,3 @@ module Bun
     end
   end
 end
-

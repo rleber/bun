@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 # TODO Move this to tools project; refactor
 no_tasks do
   # Fetch all files and subdirectories of a uri to a destination folder

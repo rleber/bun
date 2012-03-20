@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 class Class
   def def_class_method(name, &blk)
     class_name = self.name
@@ -14,7 +17,7 @@ class Class
   
   def def_method(name, &blk)
     class_name = self.name
-    raise NameError, "Attempt to redefine class method #{class_name}.#{name}" if self.instance_methods.include?(name)
+    raise NameError, "Attempt to redefine method #{class_name}##{name}" if self.instance_methods.include?(name)
     define_method(name, &blk)
     
     # TODO Figure out why the following doesn't work -- it seems to bind block to the context of the class, rather than the instance:

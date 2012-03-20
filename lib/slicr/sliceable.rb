@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 require 'slicr/formats'
 require 'slicr/slice'
 
@@ -44,11 +47,11 @@ module Slicr
           Slice::Accessor.new(slice, self).to_a
         end
 
-        if slice.string?
-          slice.slice_class.def_method(:string) do ||
-            self.chr
-          end
-        end
+        # if slice.string?
+        #   slice.slice_class.def_method(:string) do ||
+        #     self.chr
+        #   end
+        # end
 
         slice
       end

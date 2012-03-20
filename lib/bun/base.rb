@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 require 'rubygems'
 require 'date'
 require 'lib/kernel'

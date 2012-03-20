@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 require 'slicr/formats'
 
 module Slicr
@@ -196,9 +199,9 @@ module Slicr
     end
   
     class Array < ::Array
-      def string
-        self.map{|e| e.string}.join
-      end
+      # def join
+      #   self.map{|e| e.value}.join
+      # end
       
       def values
         self.map{|e| e.values}

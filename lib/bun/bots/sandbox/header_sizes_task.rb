@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 desc "header_sizes", "Display the length of file headers"
 option 'archive', :aliases=>'-a', :type=>'string',                     :desc=>'Archive location'
 option "sort",    :aliases=>'-s', :type=>'string', :default=>'header', :desc=>"Sort by what field: preamble or header (size)"

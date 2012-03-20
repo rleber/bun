@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 # TODO Run this; check if there's a way to discern listing files automagically
 desc "text_status", "Show status of text files"
 option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'

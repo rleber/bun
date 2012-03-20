@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 require 'lib/bun/archive'
 require 'lib/bun/shell'
 

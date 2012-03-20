@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 require 'lib/bun/file/descriptor'
 
 module Bun
@@ -73,7 +76,11 @@ module Bun
       end
     
       def clean?(text)
-        text !~ INVALID_CHARACTER_REGEXP
+        if RUBY_VERSION =~ /^1\.8/
+          text !~ INVALID_CHARACTER_REGEXP
+        else
+          text.force_encoding("ASCII-8BIT") !~ INVALID_CHARACTER_REGEXP
+        end
       end
     
       def descriptor(options={})
@@ -308,7 +315,7 @@ module Bun
     end
 
     def date(location)
-      date_string = content[location,2].characters.string
+      date_string = content[location,2].characters.join
       self.class.date(date_string)
     end
   

@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 # TODO Thaw all files
 desc "thaw ARCHIVE FILE [TO]", "Uncompress a frozen Honeywell file"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'

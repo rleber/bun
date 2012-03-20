@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 require File.join(File.dirname(__FILE__), '../lib/lazy_array')
 
 SIZE = 10

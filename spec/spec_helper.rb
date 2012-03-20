@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 require File.join(File.dirname(__FILE__), '../lib/bun')
 require File.join(File.dirname(__FILE__), '../lib/slicr')
 require File.join(File.dirname(__FILE__), '../lib/indexable_basic')
@@ -15,7 +18,7 @@ def capture(*streams)
   ensure
     streams.each { |stream| eval("$#{stream} = #{stream.upcase}") }
   end
-  result.string
+  result.to_s
 end
 
 RSpec::Matchers.define :exist_as_a_file do ||

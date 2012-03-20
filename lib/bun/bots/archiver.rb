@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 require 'thor'
 require 'mechanize'
 require 'fileutils'

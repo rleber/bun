@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 # TODO Move this to a Gem
 class Date
   def to_gm_time

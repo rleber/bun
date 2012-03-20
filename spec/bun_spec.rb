@@ -1,8 +1,14 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require 'tempfile'
 require 'yaml'
 
 def unpack(text)
+  if RUBY_VERSION !~ /^1\.8/
+    text = text.force_encoding("ascii-8bit")
+  end
   lines = text.split("\n").map{|line| line.rstrip}
   lines.pop if lines.last == ""
   lines

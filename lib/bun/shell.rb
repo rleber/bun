@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 # Simple Shell interface
 # I created a separate class for this to encapsulate system dependencies
 

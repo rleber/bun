@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 VALID_MESSAGES = %w{missing name old new old_file new_file}
 DATE_FORMAT = '%Y/%m/%d %H:%M:%S'
 # TODO Create check method: Check that an index file entry exists for each tape
