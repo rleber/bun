@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require 'tempfile'
 require 'yaml'
 
 def unpack(text)
-  lines = text.split("\n").map{|line| line.rstrip}
+  lines = text.force_encoding("ascii-8bit").split("\n").map{|line| line.rstrip}
   lines.pop if lines.last == ""
   lines
 end

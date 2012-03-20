@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 desc "test", "test this software"
 def test

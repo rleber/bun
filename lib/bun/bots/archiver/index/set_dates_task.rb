@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 desc "set_dates", "Set file modification dates for archived files, based on catalog"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'

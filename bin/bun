@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 
 executable_name = File.dirname(__FILE__) + '/../src/' + File.basename(__FILE__,'.*')

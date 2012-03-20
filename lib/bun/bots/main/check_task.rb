@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 desc "check FILE", "Test a file for cleanness -- i.e. does it contain non-printable characters?"
 def check(file)

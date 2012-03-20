@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 require File.join(File.dirname(__FILE__), '../lib/bun')
 require File.join(File.dirname(__FILE__), '../lib/slicr')

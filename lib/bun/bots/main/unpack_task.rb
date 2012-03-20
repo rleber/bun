@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 desc "unpack TAPE [TO]", "Unpack a file (Not frozen files -- use freezer subcommands for that)"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'

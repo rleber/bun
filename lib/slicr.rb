@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 target = File.dirname(__FILE__)
 $:.unshift(target) unless $:.include?(target) || $:.include?(File.expand_path(target))

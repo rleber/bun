@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 require 'slicr/slice/definition.rb'
 require 'slicr/slice/dsl.rb'

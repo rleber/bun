@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 TIMESTAMP_FORMAT = "%m/%d/%Y %H:%M:%S"
 

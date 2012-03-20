@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 VALID_MESSAGES = %w{missing name old new old_file new_file}
 DATE_FORMAT = '%Y/%m/%d %H:%M:%S'

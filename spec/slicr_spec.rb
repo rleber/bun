@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
@@ -43,7 +43,7 @@ BYTE_VALUES = {
   :integer=>[0111222333444],
 }
 
-$strings = TestWord.new([?A,?B,?C,?D].inject{|value, ch| value<<9 | ch })
+$strings = TestWord.new([?A,?B,?C,?D].inject(0) {|value, ch| value<<9 | ch.getbyte(0) })
 $positive = TestWord.new(1)
 $negative = TestWord.new(eval('0b' + '1'*TEST_WIDTH))
 $negative_twos = $negative

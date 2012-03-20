@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 # TODO Thaw all files
 desc "thaw ARCHIVE FILE [TO]", "Uncompress a frozen Honeywell file"

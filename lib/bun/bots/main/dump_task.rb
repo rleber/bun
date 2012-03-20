@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 desc "dump TAPE", "Dump a Honeywell file"
 option 'archive',   :aliases=>'-a', :type=>'string',  :desc=>'Archive location'

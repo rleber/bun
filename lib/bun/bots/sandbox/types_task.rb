@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 desc "types", "List file types"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'

@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 require 'lib/bun/file/descriptor'
 
@@ -76,7 +76,7 @@ module Bun
       end
     
       def clean?(text)
-        text !~ INVALID_CHARACTER_REGEXP
+        text.force_encoding("ASCII-8BIT") !~ INVALID_CHARACTER_REGEXP
       end
     
       def descriptor(options={})

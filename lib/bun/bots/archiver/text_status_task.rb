@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 # TODO Run this; check if there's a way to discern listing files automagically
 desc "text_status", "Show status of text files"

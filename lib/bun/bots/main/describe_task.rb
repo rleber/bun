@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 SHARDS_ACROSS = 5
 desc "describe TAPE", "Display description information for a file"

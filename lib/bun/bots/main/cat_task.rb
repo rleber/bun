@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# -*- encoding: us-ascii -*-
 
 desc "cat TAPE", "Copy a file to $stdout"
 # TODO Refactor :archive as a global option?
