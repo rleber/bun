@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 #  Indexable::Simple
 #
 #  Adds Array-like capability to any Class, using only a few primitives

@@ -1,0 +1,39 @@
+Tape:            ar025.0634
+Tape path:       /Users/richard/bun_archive/raw/ar025.0634
+Archived file:   fass/songfest.f
+Owner:           fass
+Subdirectory:    
+Name:            songfest.f
+Description:     ===> Songs from Fass '79 (roff source frz)
+Specification:   /songfest.f ===> Songs from Fass '79 (roff source frz)
+Catalog date:    1979/04/13
+File time:       1979/04/08 13:02:33
+Updated at:      1979/04/08 13:02:33
+Size (words):    3751
+Type:            Frozen
+
+Shards:
+  Name:          opening                   harold                    albania                   drink                     master                  
+  Path:          fass/songfest.f/opening   fass/songfest.f/harold    fass/songfest.f/albania   fass/songfest.f/drink     fass/songfest.f/master  
+  Updated at:    1979/02/13 15:08:55       1979/02/13 15:03:24       1979/02/13 15:03:24       1979/02/13 15:03:24       1979/02/13 15:03:24     
+  Size (words):  225                       116                       68                        43                        53                      
+                                                                                                                                                 
+  Name:          hunch                     badge                     unfurled                  we'reoff                  meop                    
+  Path:          fass/songfest.f/hunch     fass/songfest.f/badge     fass/songfest.f/unfurled  fass/songfest.f/we'reoff  fass/songfest.f/meop    
+  Updated at:    1979/02/13 15:03:24       1979/02/13 15:03:24       1979/02/13 15:16:57       1979/02/13 15:17:08       1979/02/13 15:21:34     
+  Size (words):  54                        52                        192                       98                        199                     
+                                                                                                                                                 
+  Name:          custom                    lifegrnd                  lovemach                  meanpce                   wantbomb                
+  Path:          fass/songfest.f/custom    fass/songfest.f/lifegrnd  fass/songfest.f/lovemach  fass/songfest.f/meanpce   fass/songfest.f/wantbomb
+  Updated at:    1979/02/13 15:27:25       1979/02/13 15:30:13       1979/02/15 00:29:13       1979/02/13 15:31:10       1979/02/13 15:32:32     
+  Size (words):  143                       133                       95                        181                       35                      
+                                                                                                                                                 
+  Name:          nukenuke                  disaster                  hoowhom                   aphrds'c                  mabell                  
+  Path:          fass/songfest.f/nukenuke  fass/songfest.f/disaster  fass/songfest.f/hoowhom   fass/songfest.f/aphrds'c  fass/songfest.f/mabell  
+  Updated at:    1979/02/18 21:09:57       1979/02/14 10:39:54       1979/02/13 15:55:48       1979/02/13 15:57:18       1979/02/13 15:57:48     
+  Size (words):  30                        87                        211                       173                       232                     
+                                                                                                                                                 
+  Name:          closing                   79macros                  songcrun                                                                    
+  Path:          fass/songfest.f/closing   fass/songfest.f/79macros  fass/songfest.f/songcrun                                                    
+  Updated at:    1979/02/13 15:58:57       1979/02/13 16:04:19       1979/04/08 13:02:33                                                         
+  Size (words):  118                       838                       115                                                                         

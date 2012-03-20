@@ -1,15 +1,17 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 class GenericNumeric
   include Comparable
 
   def initialize(value)
-    value = value.internal_value if value.is_a?(GenericNumeric)
-    raise ArgumentError, "Bad value for #{self.class}: #{value.inspect}" unless value.is_a?(Numeric)
     @data = value
   end
 
   def to_int
     @data
   end
+  alias_method :to_i, :to_int
   
   def value
     @data

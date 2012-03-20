@@ -1,0 +1,142 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
+
+require 'rubygems'
+require 'thor'
+require File.join(File.dirname(__FILE__), '../lib/bun/array')
+
+class Analyzer < Thor
+  DEFAULT_LOG = ENV['HOME'] + '/.indexable_basic.log'
+  attr_accessor :log_file
+  
+  class RowEvaluator
+    def initialize(row)
+      @row = row
+    end
+    
+    def eval(string)
+      self.instance_eval(string)
+    end
+    
+    def method_missing(name, *args, &blk)
+      raise ArgumentError, "Don't understand arguments or block for #{name}" if args.size > 0 || block_given?
+      name = name.to_s.sub(/^_/,'').to_sym
+      @row[name]
+    end
+  end
+  
+  no_tasks do
+    def log(log_file=nil)
+      log_file ||= @log_file || DEFAULT_LOG
+      log = []
+      File.open(log_file) do |f|
+        f.each do |line|
+          log << eval(line)
+        end
+      end
+      log
+    end
+    cache :log
+    
+    def key_counts
+      key_counts = Hash.new(0)
+      log.each do |line|
+        line.keys.each {|k| key_counts[k] += 1 }
+      end
+      key_counts
+    end
+    
+    def select(string)
+      log.select do |row|
+        begin
+          RowEvaluator.new(row).eval(string)
+        rescue => e
+          stop "!Bad --select: #{e}, row=#{row.inspect}"
+        end
+      end
+    end
+    
+    def selected_log
+      options[:select] ? select(options[:select]) : log
+    end
+  end
+  
+  desc "count_args", "Count accesses by argument type"
+  option 'select', :aliases=>'-s', :type=>'string', :desc=>'Select rows (any ruby code)'
+  def count_args
+    arg_counts = Hash.new(0)
+    selected_log.each do |entry|
+      arg_counts[entry[:arg_type]] += 1
+    end
+    arg_counts = arg_counts.to_a.sort_by{|e| -e.last}
+    arg_counts.each {|e| e[-1]=e[-1].to_s}
+    arg_counts = arg_counts.justify_rows
+    puts arg_counts.map{|e| e.join('  ')}.join("\n")
+  end
+  
+  
+  desc "xtab", "Cross-tab accesses by argument type"
+  option 'select', :aliases=>'-s', :type=>'string', :desc=>'Select rows (any ruby code)'
+  def xtab
+    class_arg_counts = {}
+    arg_counts = Hash.new(0)
+    class_counts = Hash.new(0)
+    total_count = 0
+    selected_log.each do |entry|
+      class_arg_counts[entry[:class]] ||= {}
+      class_arg_counts[entry[:class]][entry[:arg_type]] ||= 0
+      class_arg_counts[entry[:class]][entry[:arg_type]] += 1
+      arg_counts[entry[:arg_type]] += 1
+      class_counts[entry[:class]] += 1
+      total_count += 1
+    end
+    keys = arg_counts.to_a.sort_by{|e| -e.last}.map{|e| e.first }
+    classes = class_counts.to_a.sort_by{|e| -e.last}.map{|e| e.first }
+    table = [['class'] + keys + ['total']]
+    classes.each do |klass|
+      table << [klass] + class_arg_counts[klass].values_at(*keys).map{|n| n.to_s} + [class_counts[klass].to_s]
+    end
+    table << ["total"] + keys.map{|k| arg_counts[k].to_s} + [total_count.to_s]
+    table = table.justify_rows
+    puts table.map{|row| row.join('  ')}.join("\n")
+  end
+  
+  desc 'ls', "Display the log in a readable form"
+  option 'select', :aliases=>'-s', :type=>'string', :desc=>'Select rows (any ruby code)'
+  # TODO This would be a pretty nifty utility with .csv files...
+  def ls
+    std_keys = [:class, :args, :arg_type, :start, :end, :result]
+    extra_keys = key_counts.to_a.reject{|entry| std_keys.include?(entry[0])}
+    extra_keys = extra_keys.sort_by{|entry| [-entry[-1], entry[0].to_s]}.map{|entry| entry[0]} # keys in descending order by frequency
+    keys = std_keys + extra_keys
+    table = []
+    table << keys
+    selected_log.each do |line|
+      table << keys.map do |k|
+        v = line[k]
+        if k.to_s =~ /class/
+          v
+        elsif k == :args
+          v.inspect[1...-1]
+        elsif v.nil?
+          ''
+        else
+          v.inspect
+        end
+      end
+    end
+    if table.size <= 1
+      puts "No matching data"
+    else
+      puts table.justify_rows.map{|row| row.join('  ')}.join("\n")
+    end
+  end
+  
+  desc "clear", "Clear the indexable_basic log"
+  def clear
+    `rm #{DEFAULT_LOG}`
+  end
+end
+
+Analyzer.start

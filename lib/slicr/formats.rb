@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 module Slicr
   module Formatted
     def self.included(base)
@@ -37,7 +40,7 @@ module Slicr
         end
       when Format
         return format(format_defn.definition, inspecting) if format_defn.definition.is_a?(Symbol)
-        v = format_defn.string? ? self.string : ( self.respond_to?(:asc) ? self.asc : self.value )
+        v = format_defn.string? ? self.value : ( self.respond_to?(:asc) ? self.asc : self.value )
         if format_defn.inspect?
           if v.respond_to?(:inspect_before_formatting)
             v = v.inspect_before_formatting 
@@ -47,7 +50,7 @@ module Slicr
         end
         format_defn = format_defn.definition
       when String
-        v = format_defn=~/%[- *#\d]*s/ ? self.string : self.value
+        v = format_defn=~/%[- *#\d]*s/ ? self.value : self.asc
       else
         raise ArgumentError, "Unknown format type #{format_defn.inspect}"
       end
@@ -179,7 +182,7 @@ module Slicr
     
     class << self
       def ones_mask(n)
-        2^n-1
+        2**n-1
       end
       
       def format_samples(size)

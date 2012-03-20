@@ -1,23 +1,22 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 require 'slicr/structure'
 
 module Slicr
   class Word < Structure
     
     class << self
-      def fixed_width?
-        true
-      end
-      
       def width(n=nil)
-        if n.nil?
-          @width
-        else
+        if n
           @width=n
+        else
+          @width
         end
       end
       
-      def ones_mask(n=width)
-        super(n)
+      def get_width
+        @width
       end
       
       def slice(slice_name, options={}, &blk)
@@ -33,13 +32,12 @@ module Slicr
       end
     end
 
-    def get_slice(n, slice_width, offset=0, gap=0, width=nil)
-      width ||= self.class.width
-      super(n, slice_width, offset, gap, width)
+    def get_slice(n, size, offset)
+      super(n, size, offset, self.width)
     end
     
     def width
-      self.class.width
+      self.class.get_width
     end
   end
 end

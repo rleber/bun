@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 #  Indexable::Basic
 #
 #  Adds Array-like capability to any Class, using only two primitives.
@@ -46,12 +49,18 @@
 #
 #  TODO Include Enumerable, define each etc., if they're not already defined
 #  TODO Create more extensive versions of this: e.g. starting other than at zero, non-contiguous indexes, non-numeric indexes
+#  TODO Optimization
+#  TODO Improve method documentation
+#  TODO Bundle as a gem
+#  TODO Minimally intrusive logging
 
 module Indexable
   module Basic
     
     def self.included(base)
-      base.send(:alias_method, :slice, :[])
+      base.send(:alias_method, :slice, :[]) if base.instance_methods.include?(:[])
+      base.send(:alias_method, :[], :extended_slice)
+      base.send(:attr_accessor, :index_array_class)
     end
     
     # Convert an index (which might be negative) to a positive one
@@ -63,9 +72,9 @@ module Indexable
 
     # Convert an index specification to a range of individual indexes
     # An index specification might be a single index, a (start, length) pair, or
-    # a Range. Returns a hash of three values:
+    # a Range. Returns a hash of several values, including:
     #
-    #    :args    The type of index arguments given
+    #    :arg_type    The type of index arguments given
     #    :result  The type of result that should be calculated
     #    :start   The starting index of the elements to be returned
     #    :end     The ending index of the elements to be returned
@@ -115,7 +124,7 @@ module Indexable
       res
     end
   
-    # Convert an index of whatever form to :args, :restul, :start, and :end
+    # Convert an index of whatever form to :arg_type, :restul, :start, and :end
     def _extract_indexes(*args)
       res = case args.size
       when 1
@@ -123,15 +132,15 @@ module Indexable
         if ix.is_a?(Range)
           finish = _normalize_index(ix.end)
           finish -= 1 if ix.exclude_end?
-          {:args=>:range, :result=>:array, :start=>_normalize_index(ix.begin), :end=>finish, :exclusive=>ix.exclude_end?}
+          {:arg_type=>:range, :args=>args, :result=>:array, :start=>_normalize_index(ix.begin), :end=>finish, :exclusive=>ix.exclude_end?}
         else
           ix = _normalize_index(ix)
-          {:args=>:scalar, :result=>:scalar, :start=>ix, :end=>ix}
+          {:arg_type=>:scalar, :args=>args, :result=>:scalar, :start=>ix, :end=>ix}
         end
       when 2
         start, length = args
         start = _normalize_index(start)
-        {:args=>:pair, :result=>:array, :start=>start, :end=>start + length - 1}
+        {:arg_type=>:pair, :args=>args, :result=>:array, :start=>start, :end=>start + length - 1}
       else
         raise ArgumentError, "wrong number of arguments: #{args.size} for 1 or 2"
       end
@@ -140,7 +149,7 @@ module Indexable
     private :_extract_indexes
     
     def index_result(*args)
-      {:range=>:array, :pair=>:array, :scalar=>:scalar}[_extract_indexes(*args)[:args]]
+      {:range=>:array, :pair=>:array, :scalar=>:scalar}[_extract_indexes(*args)[:arg_type]]
     end
   
     # Check indexes, and determine result type, taking into count
@@ -162,7 +171,7 @@ module Indexable
       case res[:end] <=> (res[:start]-1)
       when -1 # End index < start index-1
               # Note, since start!=end, type can't be :scalar
-        res[:result] = :nil if res[:args]==:pair
+        res[:result] = :nil if res[:arg_type]==:pair
       when 0 # End index == start-1 (zero length)
         # Note: Can't be :scalar, because end!=start
         res[:result] = :empty unless res[:result] == :nil
@@ -172,7 +181,7 @@ module Indexable
     private :_adjust_result_type
   
     # Define generalized indexing in terms of at(i)
-    def [](*args)
+    def extended_slice(*args)
       @index_range = normalize_indexes(*args)
       case @index_range[:result]
       when :nil
@@ -181,8 +190,26 @@ module Indexable
         return []
       end
       res = (@index_range[:start]..@index_range[:end]).map {|i| at(i) }
-      res = res.first if @index_range[:result] == :scalar
+      @index_range[:class] = self.class.name
+      if @index_range[:result] == :scalar
+        res = res.first 
+      else
+        klass = self.index_array_class || self.class
+        @index_range[:array_class] = klass.name
+        res = klass.new(res)
+      end
+      log if $indexable_basic_log
       res
+    end
+    
+    def log_file
+      ENV['HOME'] + '/.indexable_basic.log'
+    end
+
+    $indexable_basic_log = false
+    def log
+      return unless $indexable_basic_log
+      File.open(log_file, 'a') {|f| f.puts @index_range.inspect + "\n"}
     end
     
     def index_range

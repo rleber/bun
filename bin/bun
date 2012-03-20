@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
+
+executable_name = File.dirname(__FILE__) + '/../src/' + File.basename(__FILE__,'.*')
+# puts executable_name
+exec executable_name, *ARGV

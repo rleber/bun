@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 require 'slicr/slice/dsl'
 
 module Slicr
@@ -11,7 +14,6 @@ module Slicr
       attr_accessor :slice_class
       attr_accessor :default_format
       attr_accessor :formats
-      attr_accessor :gap
       attr_accessor :mask
       attr_accessor :name
       attr_accessor :offset
@@ -48,10 +50,9 @@ module Slicr
         @width = options[:width]
         @offset = options[:offset] || 0
         @bits = options[:bits] || @width
-        @mask = options[:mask] || @parent_class.ones_mask(@bits)
+        @mask = options[:mask] || (2**@bits - 1)
         @default_format = options[:default_format]
         @formats = options[:format] || {}
-        @gap = options[:gap] || 0
         @count = options[:count] || parent_class.slice_count(@width, :offset=>@offset, :gap=>@gap)
         @collapse = options[:collapse]
       end
@@ -103,16 +104,6 @@ module Slicr
         parent_class.const_set(class_name, slice_class)
         slice_class.definition = self
         slice_class
-      end
-      
-      def single_bit_mask(n)
-        Slicr::Word.single_bit_mask(n)
-      end
-      
-      def retrieve(from_object, index)
-        # puts "#{slice_class} retrieve(#{from_object.class}, #{index.inspect}): width=#{width.inspect}, offset=#{offset.inspect}, gap=#{gap.inspect}"
-        value = from_object.get_slice(index, width, offset, gap) & mask
-        slice_class.new(value)
       end
     end
   end

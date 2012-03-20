@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
+desc "readme", "Display helpful information for beginners"
+def readme
+  STDOUT.write File.read("doc/readme.md")
+end

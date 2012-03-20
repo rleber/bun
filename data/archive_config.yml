@@ -1,4 +1,4 @@
-archive: ~/gecos_archive
+location: ~/bun_archive
 raw_directory: raw
 files_directory: files
 extract_directory: tapes
@@ -6,4 +6,5 @@ clean_directory: clean
 dirty_directory: dirty
 log_file: .log
 repository: 
-index_file: fass-index.txt
+catalog_file: fass-index.txt
+index_file: .index.yml

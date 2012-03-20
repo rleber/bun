@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 WORD_FORMAT = '%012o'
@@ -39,8 +42,11 @@ BYTE_VALUES = {
   :bit=>[0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,1,0,1,1,0,1,1,1,0,0,1,0,0,1,0,0],
   :integer=>[0111222333444],
 }
-
-$strings = TestWord.new([?A,?B,?C,?D].inject{|value, ch| value<<9 | ch })
+if RUBY_VERSION =~ /^1\.8/
+  $strings = TestWord.new([?A,?B,?C,?D].inject(0) {|value, ch| value<<9 | ch })
+else
+  $strings = TestWord.new([?A,?B,?C,?D].inject(0) {|value, ch| value<<9 | ch.getbyte(0) })
+end
 $positive = TestWord.new(1)
 $negative = TestWord.new(eval('0b' + '1'*TEST_WIDTH))
 $negative_twos = $negative
@@ -51,68 +57,10 @@ def is_numeric?(v)
   v.is_a?(Numeric) || v.is_a?(GenericNumeric)
 end
 
-# ones_mask should be 0b11111... of the specified # of binary digits
-RSpec::Matchers.define :be_a_ones_mask do |width|
-  match do |mask|
-    case 0 <=> width
-    when -1
-      ('%b' % mask) =~ /^1{#{width}}$/
-    when 0
-      mask == 0
-    else
-      raise ArgumentError, "Mask width must be >= 0"
-    end
-  end
-  
-  failure_message_for_should do |mask|
-    "expected that #{'%#b' % mask} would be a ones mask of width #{width}"
-  end
-end
-
-# single_bit_mask should be 0b10000... with the specified # of zeroes
-RSpec::Matchers.define :be_a_single_bit_mask do |zeroes|
-  match do |mask|
-    if zeroes >= 0
-      ('%b' % mask) =~ /^10{#{zeroes}}$/
-    else
-      raise ArgumentError, "# of zeroes must be >= 0"
-    end
-  end
-  
-  failure_message_for_should do |mask|
-    "expected that #{'%#b' % mask} would be a single bit mask of 1 followed by #{zeroes} 0s"
-  end
-end
-
 shared_examples "with width" do |object, width|
   width ||= TEST_WIDTH
   it "should define correct width" do
     object.width.should == width
-  end
-end
-
-shared_examples "with masks" do |*args|
-  object, width = args
-  maximum_width = (width || TEST_WIDTH)+1
-  
-  if width
-    it "should define ones_mask" do
-      object.ones_mask.should be_a_ones_mask(width)
-    end
-  end
-  
-  (0..maximum_width).each do |bit|
-    context "for bit number #{bit}" do
-      it "should define single_bit mask" do
-        object.single_bit_mask(bit).should be_a_single_bit_mask(bit)
-      end
-      
-      unless width
-        it "should define ones_mask" do
-          object.ones_mask(bit).should be_a_ones_mask(bit)
-        end
-      end
-    end
   end
 end
 
@@ -138,7 +86,6 @@ end
 
 shared_examples "a segment" do ||
   include_examples "with width", $parent, $width
-  include_examples "with masks", $parent, $width
   include_examples "with slices", $parent
 end
 
@@ -169,10 +116,6 @@ shared_examples "slice definition" do |slice_name|
 
   it "sets .sign?" do
     slice_object.sign?.should == SLICE_SIGN[slice_name]
-  end
-
-  it "sets .mask" do
-    slice_object.mask.should be_a_ones_mask(SLICE_BITS[slice_name])
   end
 end
 
@@ -296,7 +239,7 @@ describe "instance" do
   it_behaves_like "it is sliced"
   
   TEST_WORD_SLICES.each do |slice_name|
-    defn = $parent.slices[slice_name]
+    defn = $parent.class.slices[slice_name]
     slices_name = slice_name.pluralize
     slice_class_name = TEST_WORD_SLICE_CLASSES[slice_name.to_sym]
     slice_object = $bytes.send(slice_name) rescue nil
@@ -359,7 +302,7 @@ describe "instance" do
         StrangeWord.too_long.count.should == 0
       end
     end
-
+    
     STRING_SLICES.each do |slice_name|
       slice = $bytes.send(slice_name) rescue nil
       slices_name = slice_name.pluralize
@@ -377,13 +320,13 @@ describe "instance" do
           context "[#{i}]" do
             slice_object = slice[i]
             
-            it "should create a .string" do
-              slice_object.should respond_to :string
-            end
+            # it "should create a .string" do
+            #   slice_object.should respond_to :string
+            # end
 
-            it " .to_s should == .string" do
-              slice_object.to_s.should == slice_object.string
-            end
+            # it " .to_s should == .string" do
+            #   slice_object.to_s.should == slice_object.string
+            # end
 
             slice.formats.keys.each do |fmt|
               context "format #{fmt}" do
@@ -424,15 +367,15 @@ describe "instance" do
             end
     
             it "should return a string as .value" do
-              slice_object.string.should be_a_kind_of String
+              slice_object.value.should be_a_kind_of String
             end
     
-            it "should have .string == .asc.chr" do
-              slice_object.string.should == slice_object.asc.chr
+            it "should have .value == .asc.chr" do
+              slice_object.value.should == slice_object.asc.chr
             end
     
             it "should define the + operator as concatenation" do
-              (slice_object + "a").should == (slice_object.string + "a")
+              (slice_object + "a").should == (slice_object.value + "a")
             end
     
             it "should allow prefix +" do
@@ -450,11 +393,11 @@ describe "instance" do
         end
       end
       
-      it ".<slices_name> should create a merged string using .string" do
-        $strings.characters.string.should == "ABCD"
+      it ".<slices_name> should create a merged string using .join" do
+        $strings.characters.join.should == "ABCD"
       end
     end
-
+    
     NON_STRING_SLICES.each do |slice_name|
       slice = $bytes.send(slice_name) rescue nil
       slices_name = slice_name.pluralize
@@ -480,9 +423,9 @@ describe "instance" do
               expect {slice_object.asc }.should raise_error
             end
 
-            it "should not define the string format" do
-              expect {slice_object.string }.should raise_error
-            end
+            # it "should not define the string format" do
+            #   expect {slice_object.string }.should raise_error
+            # end
     
             it "should not define the string_inspect format" do
               expect {slice_object.string_inspect }.should raise_error
@@ -534,9 +477,9 @@ describe "instance" do
               expect { slice_object + 2 }.should_not raise_error
             end
 
-            it "should not create a merged string using .#{slices_name}.string" do
-              expect { slice_object.send(slices_name).string }.should raise_error
-            end
+            # it "should not create a merged string using .#{slices_name}.string" do
+            #   expect { slice_object.send(slices_name).string }.should raise_error
+            # end
             
             # TODO slice_object.sign? should be possible
             if slice.sign?
@@ -659,36 +602,17 @@ describe Slicr::WordsBase do
   end
   
   it_behaves_like "slicr is indexed", $words, [1,2,3]
-  # 
-  # it "should allow inclusive index ranges" do
-  #   $words[1..2].should == [2,3]
-  # end
-  # 
-  # it "should allow exclusive index ranges" do
-  #   $words[1...-1].should == [2]
-  # end
-  # 
-  # it "should allow indexing by pairs" do
-  #   $words[1,2].should == [2,3]
-  # end
-  
-  it "should allow assignment" do
-    words = $words.dup
-    words[4] = 4
-    words.should == [1,2,3,nil,4]
-  end
   
   it "should allow accessors" do
-    $words.bytes.should == [0,0,0,1,0,0,0,2,0,0,0,3]
+    $words.bytes.to_a.should == [0,0,0,1,0,0,0,2,0,0,0,3]
   end
   
   it "should allow indexed accessors" do
-    $words[1,2].half_words.should == [0,2,0,3]
+    $words[1,2].half_words.to_a.should == [0,2,0,3]
   end
 end
-
 # TODO Write tests for Blocks
-# $double_word = GECOS::Block[1,2]
+# $double_word = Bun::Block[1,2]
 # show_value "$double_word"
 # show_value "$double_word[0]"
 # show_value "$double_word[0].class"

@@ -1,47 +1,37 @@
-CONCEPTS
-Every slice object should descend from Slice::Base, and should be sliceable, e.g. foo.word[0].byte[3].bit[2]
-A layer is an array of slices; therefore "layer" is a synonym for "slices"
-Define the basic layer "words", which is different than most other kinds of layers, in that the data is stored in words
-Other layers may (or may not) store the data, or just reference it from their parent layer
-For now, at least, subordinate slices can't overlap the boundaries of slices in the underlying layers, although at their option, layers may define "short" slices to fill up the end of slices in the underlying layer
-Therefore, slices in a subordinate layer may not be longer than the slices in underlying layers. So, foo.bytes.six_bits may yield different results than foo.six_bits because the byte alignments will cause bits to be ignored
-Every slice has a width
-Layers may or may not have a fixed slice width (i.e. the same width for every slice in a layer)
-Use layer-esque language: layers lie "on" other layers, layers "support" other layers, layers and slices have "layers" in/on them, etc.
-
-LAYERS YET TO BE DEFINED
-Layers of blocks: e.g. a layer with the same slice size as the supporting layer, but broken into segments
-- Segments of fixed size
-- Segments terminated with a sentinel value
-- Segments with a "size" field somewhere
-- Segments pointed to by a pointer
-- Idea: Base block object takes a Proc which determines its start and length, based on the data
-Bit offset layers: e.g. offset by one bit from base layer, etc.
-Multiword layers: e.g. layers with a slice size a fixed integral multiple of the slices in the supporting layer
-
 TODO
-Repair run_word
-Refactor Slicr tests
+Move archive index to file xattrs
+Better unpack status checking: automatic truncate, good/bad status, errors: counting, list
+Separate file.open from file.load/read
+Resolve backspaces: to underlining or bold
+Record unpack status in .index
+Change bun archive text_status to report on unpack status; merge fetching part into bun archive extract
+Add --select option to bun ls
+Add --select option to bun extract
+File type for print listings (Qu: are these ever frozen?)
+Try determining type by comparing preamble contents: Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean binary load module
+Why doesn't words[0].octal work?
+Remove extraneous output files
+Optimize file processing for speed (e.g. bun ls command)
+Optimization ideas: Continue examining Indexable::Basic, since it's probably 10-15% of execution time: Reduce usage, optimize "center" code
 Refactor Slicr based on the concept of layers, etc.
-Refactor file decoding based on Slicr module
-Set file modification dates for normally archived files, based on data in _misc/fass-index.txt
-Fix 320 word block glitch in normally archived files
+Set file modification dates for text files, based on data in _misc/fass-index.txt
 Ignore files not in the index
 Implement Ian's naming conventions
-Ability to 'gecos archive ls' by archive name patterns
+Ability to 'bun archive ls' by archive name patterns
 Ability to search xref'ed files, for example find files with multiple copies
-Change name of 'gecos archive xref' perhaps 'gecos archive organize'?
+Change name of 'bun archive xref' perhaps 'bun archive organize'?
 Keep a .spec file in decoded archives showing how the archive is organized?
 Flatten out code: freezer thaw => thaw (or even combine with unpack)
 Option to include file modification date in unpacked or thawed file names
 Option to turn off resetting file modification dates for unpacked or thawed files
 Option to add an extension to unpacked or thawed files (e.g. '.txt')
 Option to create archives organized like file/v1/file1, file/v2/file2, etc.
-Look for Huffman-coded files
-Refactor repair (and thaw/unpack?): create parent class or mixin, and combine common code
-Standardize Decode and Defrost interfaces
-Change defrost file specifications to tape:file
+Look for Huffman-coded files: e.g. ar003.0701, ar116.2122, ar116.2128
+Standardize Decode and Defrost interfaces: decode, instead of unpack/thaw
+Change file patterns to tape::file(::shard)? Qu: how to specify whether it must be a shard?
+Possibly caching of archive index?
 Clean code
+Move Bot::Base to a gem; provide tests
 Build as a gem
 Revise installation readme
 Upload to Github
