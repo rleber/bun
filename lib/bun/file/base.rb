@@ -41,7 +41,7 @@ module Bun
         seconds = (timestamp + TIME_SUM) / TIME_DIV
         minutes, seconds = seconds.divmod(60.0)
         hours, minutes = minutes.divmod(60.0)
-        [hours, minutes, seconds]
+        [hours, minutes, seconds.to_int]
       end
 
       # Convert a Bun date and time into a Ruby Time
