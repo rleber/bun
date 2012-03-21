@@ -5,35 +5,26 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require 'tempfile'
 require 'yaml'
 
-def unpack(text)
-  if RUBY_VERSION !~ /^1\.8/
-    text = text.force_encoding("ascii-8bit")
-  end
-  lines = text.split("\n").map{|line| line.rstrip}
-  lines.pop if lines.last == ""
-  lines
-end
-
 def decode(file_name)
   archive = Bun::Archive.new
   expanded_file = File.join("data", "test", file_name)
   file = Bun::File::Text.open(expanded_file)
-  unpack(file.text)
+  file.text
 end
 
 def readfile(file)
-  unpack(File.read(file))
+  File.read(file)
 end
 
 def scrub(lines, options={})
   tabs = options[:tabs] || '80'
   tempfile = Tempfile.new('bun1')
   tempfile2 = Tempfile.new('bun2')
-  tempfile.write(lines.join("\n"))
+  tempfile.write(lines)
   tempfile.close
   tempfile2.close
   system("cat #{tempfile.path.inspect} | ruby -p -e '$_.gsub!(/_\\x8/,\"\")' | expand -t #{tabs} >#{tempfile2.path.inspect}")
-  unpack(File.read(tempfile2.path))
+  File.read(tempfile2.path)
 end
 
 def decode_and_scrub(file, options={})
@@ -53,7 +44,7 @@ shared_examples "command" do |descr, command, expected_stdout_file|
     # warn "> bun #{command}"
     res = `bun #{command} 2>&1`
     expected_stdout_file = File.join("output", 'test', expected_stdout_file) unless expected_stdout_file =~ %r{/}
-    unpack(res).should == readfile(expected_stdout_file)
+    res.should == readfile(expected_stdout_file)
   end
 end
 
@@ -79,7 +70,7 @@ shared_examples "command with file" do |descr, command, expected_stdout_file, ou
       end
     end
     it "gives the expected $stdout" do
-      unpack(@res).should == readfile(@expected_stdout_file)
+      @res.should == readfile(@expected_stdout_file)
     end
     it "creates the expected output file (#{output_file})" do
       file_should_exist @output_file
