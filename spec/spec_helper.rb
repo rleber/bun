@@ -21,6 +21,8 @@ def capture(*streams)
   result.to_s
 end
 
+RSpec.configure {|c| c.fail_fast = true}
+
 RSpec::Matchers.define :exist_as_a_file do ||
   match do |actual|
     File.exists?(actual)
