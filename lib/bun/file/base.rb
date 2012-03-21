@@ -79,7 +79,7 @@ module Bun
         if RUBY_VERSION =~ /^1\.8/
           text !~ INVALID_CHARACTER_REGEXP
         else
-          text.force_encoding("ASCII-8BIT") !~ INVALID_CHARACTER_REGEXP
+          text !~ INVALID_CHARACTER_REGEXP
         end
       end
     
@@ -120,6 +120,14 @@ module Bun
 
       def open(fname, options={}, &blk)
         create(options.merge(:file=>fname), &blk)
+      end
+      
+      def read(fname, size=nil)
+        if RUBY_VERSION =~ /^1\.8\.7/
+          super
+        else
+          ::File.open(fname, "r:ascii-8bit") {|f| f.read(size) }
+        end
       end
     
       def header(options={}, &blk)
@@ -205,7 +213,7 @@ module Bun
     end
   
     def read
-      File.read(tape_path)
+      self.class.read(tape_path)
     end
   
     def tape_name
