@@ -185,7 +185,7 @@ module Bun
       @size = options[:size]
       @header = options[:header]
       @archive = options[:archive]
-      @errors = 0
+      clear_errors
       self.words = self.class.get_words(options[:limit], options)
       yield(self) if block_given?
     end
@@ -195,9 +195,13 @@ module Bun
     def header?
       @header
     end
+    
+    def clear_errors
+      @errors = []
+    end
   
-    def error(msg)
-      @errors += 1
+    def error(err)
+      @errors << err
     end
   
     def read

@@ -10,7 +10,6 @@ module Bun
     
       # TODO do we ever instantiate a File::Text without reading a file? If not, refactor
       def initialize(options={})
-        @errors = 0
         @keep_deletes = options[:keep_deletes]
         super
       end
@@ -19,7 +18,7 @@ module Bun
         super
         if @words.nil?
           @text = @lines = nil
-          @errors = 0
+          clear_errors
         end
         words
       end
@@ -33,7 +32,6 @@ module Bun
         line_offset = 0
         lines = []
         warned = false
-        errors = 0
         n = 0
         while line_offset < content.size
           line = unpack_line(content, line_offset)
@@ -43,12 +41,10 @@ module Bun
           when :okay    then lines << line
           when :delete  then lines << line if @keep_deletes
           when :ignore  then # do nothing
-          else               errors += 1
           end
           line_offset = line[:finish]+1
           n += 1
         end
-        @errors = errors
         lines
       end
       cache :lines

@@ -16,14 +16,9 @@ def text_status
   table = []
   archive.each do |tape_name|
     file = archive.open(tape_name)
+    # TODO Apply this to frozen files, too
     next unless file.file_type == :text
     text = file.text rescue nil
-    truncated = !text
-    if truncated
-      file.truncate = true
-      file.reblock
-      text = file.text rescue nil
-    end
     if text && file.good_blocks > 0
       tabs = backspaces = form_feeds = vertical_tabs = bad_characters = 0
       bad_character_set = []
@@ -32,7 +27,7 @@ def text_status
       text.scan("\f") { form_feeds += 1 }
       text.scan("\v") { vertical_tabs += 1 }
       text.scan(File.invalid_character_regexp) {|m| bad_characters += 1; bad_character_set << m.to_s }
-      status = truncated ? "Truncated" : "Readable"
+      status = file.good_blocks < file.blocks ? "Truncated" : "Readable"
       table << [tape_name, status, file.blocks, file.good_blocks, text.size, tabs, backspaces, vertical_tabs, form_feeds, bad_characters, bad_character_set.uniq.sort.join.inspect[1...-1]]
     else
       table << [tape_name, 'Unreadable', file.blocks, 0]
