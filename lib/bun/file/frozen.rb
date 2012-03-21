@@ -80,7 +80,6 @@ module Bun
         words.at(content_offset + 4)
       end
     
-      # TODO Choose earliest? of update time, or time indicated in index
       def file_time
         File.time(_update_date, _update_time_of_day)
       end

@@ -2,6 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 class Class
+  # TODO Are these still being used? Are they necessary?
   def def_class_method(name, &blk)
     class_name = self.name
     raise NameError, "Attempt to redefine class method #{class_name}.#{name}" if self.methods.include?(name)

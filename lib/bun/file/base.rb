@@ -128,7 +128,6 @@ module Bun
     
       INITIAL_FETCH_SIZE = 30
       def get_preamble(options)
-        # TODO Do larger first fetch; only refetch if it wasn't enough
         initial_fetch = get_words(INITIAL_FETCH_SIZE, options)
         preamble_size = content_offset(initial_fetch)
         fetch_size = preamble_size + File::Frozen::Descriptor.offset+ File::Frozen::Descriptor.size

@@ -42,7 +42,6 @@ DEFAULT_VALUES = {
   :updated     => Time.now,
 }
 
-# TODO Reorder tasks (split in separate files?)
 desc "ls", "Display an index of archived files"
 option 'archive', :aliases=>'-a', :type=>'string',                               :desc=>'Archive location'
 option "build",   :aliases=>"-b", :type=>'boolean',                              :desc=>"Don't rely on archive index; always build information from source file"
@@ -55,7 +54,7 @@ option "sort",    :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first,
 option "tapes",   :aliases=>"-t", :type=>'string',  :default=>'',                :desc=>"Show only tapes that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "type",    :aliases=>"-T", :type=>'string',  :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
 # TODO Refactor tape/file patterns; use tape::file::shard syntax
-# TODO Speed this up; esp. ls with no options
+# TODO Refactor code into shorter submethods
 def ls
   type_pattern = case options[:type].downcase
     when 'f', 'frozen'

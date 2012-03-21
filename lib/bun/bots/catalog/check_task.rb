@@ -3,9 +3,7 @@
 
 VALID_MESSAGES = %w{missing name old new old_file new_file}
 DATE_FORMAT = '%Y/%m/%d %H:%M:%S'
-# TODO Create check method: Check that an index file entry exists for each tape
-# file, check frozen file dates and content vs. index, check 
-# text archive file contents vs. index
+
 desc "check", "Check contents of the catalog"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on archive index; always build information from source file"

@@ -477,10 +477,6 @@ describe "instance" do
               expect { slice_object + 2 }.should_not raise_error
             end
 
-            # it "should not create a merged string using .#{slices_name}.string" do
-            #   expect { slice_object.send(slices_name).string }.should raise_error
-            # end
-            
             # TODO slice_object.sign? should be possible
             if slice.sign?
               context "with signs" do

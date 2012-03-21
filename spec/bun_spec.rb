@@ -99,7 +99,6 @@ describe Bun::File::Text do
   include_examples "simple", "ar119.1801"
   include_examples "simple", "ar003.0698"
   
-  # TODO Create a listing file class
   it "decodes a more complex file (ar004.0642)" do
     infile = 'ar004.0642'
     outfile = File.join("output", "test", infile)

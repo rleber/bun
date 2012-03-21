@@ -24,7 +24,6 @@ module Slicr
         available_bits.div(bits_per_slice)
       end
       
-      # TODO Should word.byte mean word.byte(0) or word.byte(n)?
       # TODO Should be recursive -- i.e. Should be able to say word.half_word(0).byte(2)
       # TODO Define bit and byte order (i.e. LR, RL)
       # TODO Define signs other than at the beginning of a slice
@@ -83,7 +82,6 @@ module Slicr
       @data.size * constituent_class.width
     end
     
-    # TODO Optimize Try this with value.unpack('B*')[start_bit,size], etc.
     def get_slice(n, size, offset, width)
       start_bit = n*size + offset
       next_bit = start_bit+size

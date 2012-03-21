@@ -3,8 +3,6 @@
 
 # Create a DSL for defining slices
 
-# TODO Reorganize slice* source files
-
 module Slicr
   module Slice
     class DSL
