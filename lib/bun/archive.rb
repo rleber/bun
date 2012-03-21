@@ -11,8 +11,9 @@ module Bun
     include CacheableMethods
     
     DIRECTORY_LOCATIONS = %w{location log_file raw_directory extract_directory files_directory clean_directory dirty_directory}
-    OTHER_LOCATIONS = %w{repository catalog_file index_file}
+    OTHER_LOCATIONS = %w{repository catalog_file index_directory}
     
+    # TODO Why is a class variable necessary here?
     @@index = nil
     
     class << self
@@ -59,8 +60,9 @@ module Bun
     end
     alias_method :each, :tapes
     
-    def each_file(&blk)
-      tapes.each {|tape| open(tape, &blk)}
+    def each_file(options={}, &blk)
+      tapes.each {|tape| 
+        open(tape, options, &blk)}
     end
     
     def config
@@ -141,8 +143,15 @@ module Bun
     end
     
     def _index
-      if File.exists?(index_file)
-        @@index = YAML.load(File.read(index_file))
+      if File.directory?(index_directory)
+        @@index = {}
+        Dir.glob(File.join(index_directory, '*.yml')) do |f|
+          raise "Unexpected file #{f} in index #{index_directory}" unless f =~ /\.descriptor.yml$/
+          file_name = File.basename($`)
+          @@index[file_name] = YAML.load(File.read(f))
+        end
+      elsif File.exists?(index_directory)
+        raise RuntimeError, "File #{index_directory} should be a directory"
       else
         build_and_save_index
       end
@@ -150,38 +159,76 @@ module Bun
     private :_index
     
     def build_and_save_index(options={})
-      @@index = res = build_index(options)
-      save_index(res)
-      res
+      build_index(options)
+      save_index
     end
     
     def build_index(options={})
-      index = {}
-      each_file do |f|
+      each_file(:header=>true) do |f|
         puts f.tape_name if options[:verbose]
-        index[f.tape_name] = build_descriptor_for_file(f)
+        update_index(f)
       end
-      index
     end
     
     def clear_index
-      FileUtils.rm(index_file)
+      clear_index_directory
       @@index = nil
     end
     
+    # TODO Allow for indexing by other than tape_name?
+    def update_index(f)
+      @@index ||= {}
+      @@index[f.tape_name] = build_descriptor_for_file(f)
+    end
+    
+    # TODO Is this being used anywhere?
     def build_descriptor(name)
       open(name, :header=>true) {|f| build_descriptor_for_file(f) }
     end
     
     def build_descriptor_for_file(f)
       entry = f.descriptor.to_hash
+      # TODO This smells: why should Archive have to know about frozen files?
       entry[:shards] = (f.file_type == :frozen) ? f.shard_descriptors.map{|d| d.to_hash} : []
       entry
     end
     
-    def save_index(index)
-      ::File.open(index_file, 'w') {|f| f.write index.to_yaml }
+    def clear_index_directory
+      FileUtils.rm_rf(index_directory)
     end
+    
+    def save_index
+      clear_index_directory
+      make_index_directory
+      each do |name|
+        _save_index_descriptor(name)
+      end
+      @@index
+    end
+    
+    def save_index_descriptor_for_file(f)
+      @@index ||= {}
+      name = f.tape_name
+      @@index[name] ||= build_descriptor_for_file(f)
+      make_index_directory
+      _save_index_descriptor(name)
+    end
+    
+    def save_index_descriptor(name)
+      @@index ||= {}
+      @@index[name] ||= build_descriptor(name)
+      make_index_directory
+      _save_index_descriptor(name)
+    end
+    
+    def make_index_directory
+      FileUtils.mkdir_p(index_directory) unless File.exists?(index_directory)
+    end
+    
+    def _save_index_descriptor(name)
+      ::File.open(File.join(index_directory, "#{name}.descriptor.yml"), 'w') {|f| f.write @@index[name].to_yaml }
+    end
+    private :_save_index_descriptor
     
     def descriptor(name, options={})
       # puts "In #{self.class}#descriptor(#{name.inspect}, #{options.inspect}): index[#{name.inspect}]=#{index[name].inspect}"
