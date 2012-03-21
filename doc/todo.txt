@@ -1,5 +1,7 @@
 TODO
 Better unpack status checking: automatic truncate, good/bad status, errors: counting, list
+Abandon ruby 1.8.7
+Use File::read(x, "r:ascii-8bit")
 Separate file.open from file.load/read
 Resolve backspaces: to underlining or bold
 Record unpack status in .index
