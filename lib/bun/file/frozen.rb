@@ -12,6 +12,7 @@ module Bun
       # TODO do we ever instantiate a File::Frozen without a new file? If not, refactor
       def initialize(options={})
         super
+        descriptor.register_field(:shards)
         @strict = options[:strict]
         @warn = options[:warn]
       end
@@ -32,7 +33,7 @@ module Bun
         words.at(content_offset+1).half_words.at(1).to_i
       end
 
-      # Fast and fairly reliable:
+      # Fast and fairly reliable, but awkwardly recursive:
       def shard_count_based_on_position_of_shard_contents
         descriptors_size.div(File::Frozen::Descriptor.size)
       end
@@ -90,6 +91,10 @@ module Bun
         end
       end
       cache :shard_descriptors
+      
+      def shard_descriptor_hashes
+        shard_descriptors.map{|d| d.to_hash }
+      end
     
       def shard_descriptor(n)
         shard_descriptors.at(shard_index(n))

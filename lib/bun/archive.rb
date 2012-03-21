@@ -188,8 +188,6 @@ module Bun
     
     def build_descriptor_for_file(f)
       entry = f.descriptor.to_hash
-      # TODO This smells: why should Archive have to know about frozen files?
-      entry[:shards] = (f.file_type == :frozen) ? f.shard_descriptors.map{|d| d.to_hash} : []
       entry
     end
     
