@@ -11,7 +11,7 @@ module Bun
     include CacheableMethods
     
     DIRECTORY_LOCATIONS = %w{location log_file raw_directory extract_directory files_directory clean_directory dirty_directory}
-    OTHER_LOCATIONS = %w{repository catalog_file index_directory}
+    OTHER_LOCATIONS = %w{repository catalog_file}
     
     # TODO Why is a class variable necessary here?
     @@index = nil
@@ -20,7 +20,7 @@ module Bun
       include CacheableMethods
     
       def config_dir(name)
-        dir = config[name]
+        dir = config[name.to_s]
         return nil unless dir
         dir = File.expand_path(dir) if dir=~/^~/
         dir
@@ -48,13 +48,13 @@ module Bun
     
     attr_reader :location
     
-    def initialize(location=nil)
-      location = location[:archive] if location.is_a?(Hash)
-      @location = location || self.class.location
+    def initialize(options={})
+      @location = options[:location] || options[:archive] || self.class.location
+      @directory = options[:directory] || 'raw'
     end
     
     def tapes(&blk)
-      tapes = Dir.entries(File.join(location, raw_directory)).reject{|f| f=~/^\./}
+      tapes = Dir.entries(File.join(location, directory_location)).reject{|f| f=~/^\./}
       tapes.each(&blk) if block_given?
       tapes
     end
@@ -79,11 +79,20 @@ module Bun
         config_dir(locn)
       end
     end
+      
+    def directory_location(directory=nil)
+      directory ||= @directory
+      config_dir("#{directory}_directory")
+    end
     
     OTHER_LOCATIONS.each do |locn|
       define_method locn do ||
         File.expand_path(File.join(location, self.class.send(locn)))
       end
+    end
+    
+    def index_directory
+      File.join(@location, directory_location, config['index_directory'])
     end
     
     # TODO Is there a more descriptive name for this?
@@ -110,7 +119,7 @@ module Bun
       if file_name =~ /^\.\//
         rel = `pwd`.chomp
       else
-        rel = File.expand_path(raw_directory, location)
+        rel = File.expand_path(directory_location, location)
       end
       File.expand_path(file_name, rel)
     end
@@ -159,15 +168,16 @@ module Bun
     private :_index
     
     def build_and_save_index(options={})
-      build_index(options)
-      save_index
+      build_index(options.merge(:save=>true))
     end
     
     def build_index(options={})
+      clear_index
       each_file(:header=>true) do |f|
         puts f.tape_name if options[:verbose]
-        update_index(f)
+        update_index(f, :save=>options[:save])
       end
+      @@index
     end
     
     def clear_index
@@ -176,9 +186,11 @@ module Bun
     end
     
     # TODO Allow for indexing by other than tape_name?
-    def update_index(f)
+    def update_index(f, options={})
       @@index ||= {}
-      @@index[f.tape_name] = build_descriptor_for_file(f)
+      @@index[f.tape_name] = descr =build_descriptor_for_file(f)
+      save_index_descriptor(f.tape_name) if options[:save]
+      descr
     end
     
     # TODO Is this being used anywhere?

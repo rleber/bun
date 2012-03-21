@@ -8,12 +8,9 @@
 :name: from_the_index
 :owner: fass
 :path: from_the_index
-:shard_count: 0
-:shard_names: []
 :specification: /idallen/vector  ==>files for idallen
 :tape_name: ar003.0698
 :tape_path: /Users/richard/projects/bun/data/test/archive/strange/raw/ar003.0698
 :file_date: 
 :file_time: 
 :updated: 
-:shards: []

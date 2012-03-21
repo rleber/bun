@@ -6,7 +6,7 @@ option 'archive', :aliases=>'-a', :type=>'string',                     :desc=>'A
 option "sort",    :aliases=>'-s', :type=>'string', :default=>'header', :desc=>"Sort by what field: preamble or header (size)"
 def header_sizes
   directory = options[:archive] || Archive.location
-  archive = Archive.new(directory)
+  archive = Archive.new(:location=>directory)
   data = [%w{Tape Preamble Header}]
   sort_column = ['preamble', 'header'].index(options[:sort].downcase)
   stop "!Bad value for --sort option" unless sort_column

@@ -6,7 +6,7 @@ desc "cp TAPE [DESTINATION]", "Copy a file"
 option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
 def cp(tape, dest = nil)
   directory = options[:archive] || Archive.location
-  archive = Archive.new(directory)
+  archive = Archive.new(:location=>directory)
   unless dest.nil? || dest == '-'
     dest = File.join(dest, File.basename(tape)) if File.directory?(dest)
   end

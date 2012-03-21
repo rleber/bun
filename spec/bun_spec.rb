@@ -99,7 +99,7 @@ end
 
 describe Bun::Archive do
   before :each do
-    @archive = Bun::Archive.new('data/test/archive/contents')
+    @archive = Bun::Archive.new(:location=>'data/test/archive/contents')
   end
   describe "contents" do
     it "retrieves correct list" do
@@ -161,34 +161,34 @@ describe Bun::Bot do
     end
     context "index build" do
       before :each do
-        `rm -f data/test/archive/index/.index.yml`
+        `rm -rf data/test/archive/index/raw/.bun_index`
         `bun archive index build --archive "data/test/archive/index"`
       end
       it "should create index" do
-        file_should_exist "data/test/archive/index/.index"
+        file_should_exist "data/test/archive/index/raw/.bun_index"
       end
-      if (YAML.load(::File.read("data/test/archive/index/.index.yml")) rescue nil)
+      it "should have an entry for ar003.0698" do
+        Dir.glob("data/test/archive/index/raw/.bun_index/*").should == ["data/test/archive/index/raw/.bun_index/ar003.0698.descriptor.yml"]
+      end
+      if (YAML.load(::File.read("data/test/archive/index/raw/.bun_index/ar003.0698.descriptor.yml")) rescue nil)
         context "index contents" do
           before :each do
-            @index = YAML.load(::File.read("data/test/archive/index/.index.yml")) rescue nil
+            @index = YAML.load(::File.read("data/test/archive/index/raw/.bun_index/ar003.0698.descriptor.yml")) rescue nil
           end
           it "should be a Hash" do
             @index.should be_a(Hash)
-          end
-          it "should have one entry, for ar003.0698" do
-            @index.keys.should == ['ar003.0698']
           end
         end
       end
     end
     context "index clear" do
       before :each do
-        `rm -f data/test/archive/index/.index.yml`
+        `rm -rf data/test/archive/index/raw/.bun_index`
         `bun archive index build --archive "data/test/archive/index"`
         `bun archive index clear --archive "data/test/archive/index"`
       end
       it "should remove index" do
-        file_should_not_exist "data/test/archive/index/.index.yml"
+        file_should_not_exist "data/test/archive/index/raw/.bun_index"
       end
     end
     after :each do

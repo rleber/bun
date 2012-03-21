@@ -34,7 +34,7 @@ def organize(from=nil, to=nil)
   @dryrun = options[:dryrun]
   @trace = options[:trace]
   directory = options[:archive] || Archive.location
-  archive = Archive.new(directory)
+  archive = Archive.new(:location=>directory)
   from ||= archive.extract_directory
   from = File.join(archive.location, from)
   to ||= archive.files_directory

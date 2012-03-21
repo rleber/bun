@@ -7,6 +7,6 @@ option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
 def build
   # TODO the following two lines are a common pattern; refactor
   directory = options[:archive] || Archive.location
-  archive = Archive.new(directory)
+  archive = Archive.new(:location=>directory)
   archive.build_and_save_index(:verbose=>!options[:quiet])
 end

@@ -6,6 +6,6 @@ desc "cat TAPE", "Copy a file to $stdout"
 option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
 def cat(tape)
   directory = options[:archive] || Archive.location
-  archive = Archive.new(directory)
+  archive = Archive.new(:location=>directory)
   archive.open(tape) {|f| $stdout.write f.read }
 end

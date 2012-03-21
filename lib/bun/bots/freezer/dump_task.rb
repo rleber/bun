@@ -10,7 +10,7 @@ option "thawed",  :aliases=>'-t', :type=>'boolean', :desc=>'Display the file in 
 def dump(file_name, n)
   limit = options[:lines]
   directory = options[:archive] || Archive.location
-  archive = Archive.new(directory)
+  archive = Archive.new(:location=>directory)
   file = archive.open(file_name)
   stop "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
   archived_file = file.path

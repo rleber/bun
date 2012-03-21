@@ -1,12 +1,11 @@
 TODO
-.index should be in the same directory as the file (so it can be found)
 bun cp should copy index entry
 Better unpack status checking: automatic truncate, good/bad status, errors: counting, list
+Record unpack status in .index
+Change bun archive text_status to report on unpack status; merge fetching part into bun archive extract
 Abandon ruby 1.8.7
 Separate file.open from file.load/read
 Resolve backspaces: to underlining or bold
-Record unpack status in .index
-Change bun archive text_status to report on unpack status; merge fetching part into bun archive extract
 Add --select option to bun ls
 Add --select option to bun extract
 File type for print listings (Qu: are these ever frozen?)
