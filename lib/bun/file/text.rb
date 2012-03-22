@@ -7,19 +7,21 @@ module Bun
       include CacheableMethods
       
       attr_accessor :keep_deletes
+      attr_reader   :bad_characters
     
       # TODO do we ever instantiate a File::Text without reading a file? If not, refactor
       def initialize(options={})
-        @errors = 0
         @keep_deletes = options[:keep_deletes]
         super
+        descriptor.register_fields(:bad_characters, :character_count)
+        @bad_characters = {}
       end
     
       def words=(words)
         super
         if @words.nil?
           @text = @lines = nil
-          @errors = 0
+          clear_errors
         end
         words
       end
@@ -28,12 +30,15 @@ module Bun
         lines.map{|l| l[:content]}.join
       end
       cache :text
+      
+      def character_count
+        text.size
+      end
     
       def lines
         line_offset = 0
         lines = []
         warned = false
-        errors = 0
         n = 0
         while line_offset < content.size
           line = unpack_line(content, line_offset)
@@ -43,15 +48,23 @@ module Bun
           when :okay    then lines << line
           when :delete  then lines << line if @keep_deletes
           when :ignore  then # do nothing
-          else               errors += 1
           end
           line_offset = line[:finish]+1
           n += 1
         end
-        @errors = errors
+        count_bad_characters(lines)
         lines
       end
       cache :lines
+      
+      def count_bad_characters(lines)
+        @bad_characters = Hash.new(0)
+        lines.each do |l|
+          ["\t","\b","\f","\v",File.invalid_character_regexp].each do |pat|
+            l[:content].scan(pat) {|ch| @bad_characters[ch] += 1 }
+          end
+        end
+      end
     
       # TODO simplify
       def unpack_line(words, line_offset)

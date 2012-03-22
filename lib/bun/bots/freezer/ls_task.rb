@@ -26,7 +26,7 @@ def ls(file_name)
   file_pattern = get_regexp(options[:files])
   stop "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
   directory = options[:archive] || Archive.location
-  archive = Archive.new(directory)
+  archive = Archive.new(:location=>directory)
   file = archive.open(file_name)
   stop "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
   archived_file = file.path

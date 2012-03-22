@@ -6,6 +6,11 @@ require 'pp'
 class Array
   # Take an array of columns and justify each column so that they're all the same width
   # TODO What if columns aren't all the same size?
+  # TODO print_table
+  # TODO column_append, row_append
+  # TODO Move to a subclass: Table
+  # TODO Add column heading support
+  # TODO Add right justification of columns
   def justify_columns
     widths = self.map do |column|
       column.map{|entry| entry.to_s.size}.max

@@ -1,25 +1,20 @@
 TODO
-Move archive index to file xattrs
-Better unpack status checking: automatic truncate, good/bad status, errors: counting, list
+Update statistics on thawing frozen files, too
+Change tape_name to location, tape_path to location_path
 Separate file.open from file.load/read
 Resolve backspaces: to underlining or bold
-Record unpack status in .index
-Change bun archive text_status to report on unpack status; merge fetching part into bun archive extract
 Add --select option to bun ls
 Add --select option to bun extract
 File type for print listings (Qu: are these ever frozen?)
 Try determining type by comparing preamble contents: Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean binary load module
 Why doesn't words[0].octal work?
 Remove extraneous output files
-Optimize file processing for speed (e.g. bun ls command)
 Optimization ideas: Continue examining Indexable::Basic, since it's probably 10-15% of execution time: Reduce usage, optimize "center" code
 Refactor Slicr based on the concept of layers, etc.
-Set file modification dates for text files, based on data in _misc/fass-index.txt
 Ignore files not in the index
 Implement Ian's naming conventions
 Ability to 'bun archive ls' by archive name patterns
 Ability to search xref'ed files, for example find files with multiple copies
-Change name of 'bun archive xref' perhaps 'bun archive organize'?
 Keep a .spec file in decoded archives showing how the archive is organized?
 Flatten out code: freezer thaw => thaw (or even combine with unpack)
 Option to include file modification date in unpacked or thawed file names

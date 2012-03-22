@@ -9,7 +9,7 @@ def describe(file_name)
   archive = Archive.new(options)
   descriptor    = archive.descriptor(file_name, :build=>options[:build])
   type          = descriptor.file_type
-  shards        = descriptor.shard_names
+  shards        = descriptor.shards || []
   catalog_time    = descriptor.catalog_time
   catalog_time_display = catalog_time ? catalog_time.strftime('%Y/%m/%d') : "n/a"
   
@@ -48,7 +48,7 @@ def describe(file_name)
           column = [""]*4
         else
           shard = descriptor[:shards][i]
-          column = [shards[i], shard[:path], shard[:file_time].strftime(TIME_FORMAT), shard[:file_size]]
+          column = [shard[:name], shard[:path], shard[:file_time].strftime(TIME_FORMAT), shard[:file_size]]
         end
         table << column
         i += 1

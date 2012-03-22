@@ -12,7 +12,7 @@ def classify(from=nil, clean=nil, dirty=nil)
   @dryrun = options[:dryrun]
   directory = options[:archive] || Archive.location
   threshold = options[:threshold] || DEFAULT_THRESHOLD
-  archive = Archive.new(directory)
+  archive = Archive.new(:location=>directory)
   from ||= archive.files_directory
   from = File.join(archive.location, from)
   log_file = File.join(from, archive.log_file)

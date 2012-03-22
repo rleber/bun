@@ -11,22 +11,23 @@ module Bun
     include CacheableMethods
     
     DIRECTORY_LOCATIONS = %w{location log_file raw_directory extract_directory files_directory clean_directory dirty_directory}
-    OTHER_LOCATIONS = %w{repository catalog_file index_file}
+    OTHER_LOCATIONS = %w{repository catalog_file}
     
-    @@index = nil
+    # TODO Why is a class variable necessary here?
     
     class << self
       include CacheableMethods
     
       def config_dir(name)
-        dir = config[name]
+        dir = config[name.to_s]
         return nil unless dir
         dir = File.expand_path(dir) if dir=~/^~/
         dir
       end
   
       def config(config_file="data/archive_config.yml")
-        @config = YAML.load(::File.read(config_file))
+        content = ::Bun.readfile(config_file, :encoding=>'us-ascii')
+        @config = YAML.load(content)
         @config['repository'] ||= ENV['BUN_REPOSITORY']
         @config
       end
@@ -47,20 +48,23 @@ module Bun
     
     attr_reader :location
     
-    def initialize(location=nil)
-      location = location[:archive] if location.is_a?(Hash)
-      @location = location || self.class.location
+    def initialize(options={})
+      @location = options[:location] || options[:archive] || self.class.location
+      @directory = options[:directory] || 'raw'
+      @index = nil
     end
     
     def tapes(&blk)
-      tapes = Dir.entries(File.join(location, raw_directory)).reject{|f| f=~/^\./}
+      tapes = Dir.entries(File.join(location, directory_location)).reject{|f| f=~/^\./}
       tapes.each(&blk) if block_given?
       tapes
     end
     alias_method :each, :tapes
     
-    def each_file(&blk)
-      tapes.each {|tape| open(tape, &blk)}
+    def each_file(options={}, &blk)
+      tapes.each do |tape| 
+        open(tape, options, &blk)
+      end
     end
     
     def config
@@ -77,11 +81,20 @@ module Bun
         config_dir(locn)
       end
     end
+      
+    def directory_location(directory=nil)
+      directory ||= @directory
+      config_dir("#{directory}_directory") || directory
+    end
     
     OTHER_LOCATIONS.each do |locn|
       define_method locn do ||
         File.expand_path(File.join(location, self.class.send(locn)))
       end
+    end
+    
+    def index_directory
+      File.join(@location, directory_location, config['index_directory'])
     end
     
     # TODO Is there a more descriptive name for this?
@@ -108,13 +121,13 @@ module Bun
       if file_name =~ /^\.\//
         rel = `pwd`.chomp
       else
-        rel = File.expand_path(raw_directory, location)
+        rel = File.expand_path(directory_location, location)
       end
       File.expand_path(file_name, rel)
     end
     
     def catalog
-      content = File.read(catalog_file)
+      content = Bun.readfile(catalog_file, :encoding=>'us-ascii')
       specs = content.split("\n").map do |line|
         words = line.strip.split(/\s+/)
         raise RuntimeError, "Bad line in index file: #{line.inspect}" unless words.size == 3
@@ -136,13 +149,21 @@ module Bun
     end
     
     def index
-      _index unless @@index
-      @@index
+      _index unless @index
+      @index
     end
     
     def _index
-      if File.exists?(index_file)
-        @@index = YAML.load(File.read(index_file))
+      if File.directory?(index_directory)
+        @index = {}
+        Dir.glob(File.join(index_directory, '*.yml')) do |f|
+          raise "Unexpected file #{f} in index #{index_directory}" unless f =~ /\.descriptor.yml$/
+          file_name = File.basename($`)
+          content = ::Bun.readfile(f, :encoding=>'us-ascii')
+          @index[file_name] = YAML.load(content)
+        end
+      elsif File.exists?(index_directory)
+        raise RuntimeError, "File #{index_directory} should be a directory"
       else
         build_and_save_index
       end
@@ -150,38 +171,84 @@ module Bun
     private :_index
     
     def build_and_save_index(options={})
-      @@index = res = build_index(options)
-      save_index(res)
-      res
+      build_index(options)
     end
     
     def build_index(options={})
-      index = {}
-      each_file do |f|
+      clear_index
+      each_file(:header=>true) do |f|
         puts f.tape_name if options[:verbose]
-        index[f.tape_name] = build_descriptor_for_file(f)
+        update_index(:file=>f)
       end
-      index
+      @index
     end
     
     def clear_index
-      FileUtils.rm(index_file)
-      @@index = nil
+      clear_index_directory
+      @index = nil
     end
     
+    # TODO Allow for indexing by other than tape_name?
+    def update_index(options={})
+      @index ||= {}
+      descr = options[:descriptor] ? options[:descriptor].to_hash : build_descriptor_for_file(options[:file])
+      descr.keys.each do |k|
+        if k.is_a?(String)
+          descr[k.to_sym] = descr[k]
+          descr.delete(k)
+        end
+      end
+      @index[descr[:tape_name]] = descr
+      save_index_descriptor(descr[:tape_name])
+      descr
+    end
+    
+    # TODO Is this being used anywhere?
     def build_descriptor(name)
       open(name, :header=>true) {|f| build_descriptor_for_file(f) }
     end
     
     def build_descriptor_for_file(f)
       entry = f.descriptor.to_hash
-      entry[:shards] = (f.file_type == :frozen) ? f.shard_descriptors.map{|d| d.to_hash} : []
       entry
     end
     
-    def save_index(index)
-      ::File.open(index_file, 'w') {|f| f.write index.to_yaml }
+    def clear_index_directory
+      FileUtils.rm_rf(index_directory)
     end
+    
+    def save_index
+      clear_index_directory
+      make_index_directory
+      each do |name|
+        _save_index_descriptor(name)
+      end
+      @index
+    end
+    
+    def save_index_descriptor_for_file(f)
+      @index ||= {}
+      name = f.tape_name
+      @index[name] ||= build_descriptor_for_file(f)
+      make_index_directory
+      _save_index_descriptor(name)
+    end
+    
+    def save_index_descriptor(name)
+      @index ||= {}
+      @index[name] ||= build_descriptor(name)
+      make_index_directory
+      _save_index_descriptor(name)
+    end
+    
+    def make_index_directory
+      FileUtils.mkdir_p(index_directory) unless File.exists?(index_directory)
+    end
+    
+    def _save_index_descriptor(name)
+      ::File.open(File.join(index_directory, "#{name}.descriptor.yml"), 'w') {|f| f.write @index[name].to_yaml }
+    end
+    private :_save_index_descriptor
     
     def descriptor(name, options={})
       # puts "In #{self.class}#descriptor(#{name.inspect}, #{options.inspect}): index[#{name.inspect}]=#{index[name].inspect}"
