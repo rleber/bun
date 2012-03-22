@@ -125,6 +125,27 @@ describe Bun::Bot do
     include_examples "command", "describe text file", "describe ar003.0698", "describe_ar003.0698"
     include_examples "command", "describe frozen file", "describe ar025.0634", "describe_ar025.0634"
   end
+  
+  context "functioning outside the base directory" do
+    before :each do
+      raise RuntimeError, "In unexpected working directory: #{Dir.pwd}" \
+        unless File.expand_path(Dir.pwd) == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+      @original_dir = Dir.pwd
+    end
+    it "should start in the base directory" do
+      File.expand_path(Dir.pwd).should == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+    end
+    it "should function okay in a different directory" do
+      `cd ~/bun_archive ; bun describe ar003.0698`
+      $?.exitstatus.should == 0
+    end
+    after :each do
+      Dir.chdir(@original_dir)
+      raise RuntimeError, "Not back in normal working directory: #{Dir.pwd}" \
+        unless File.expand_path(Dir.pwd) == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+    end
+  end
+  
   describe "ls" do
     include_examples "command", "ls", "ls", "ls"
     include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -t ar003.0698", "ls_ldrt_ar003.0698"
