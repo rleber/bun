@@ -27,8 +27,6 @@ module Bun
         :specification,
         :tape_name,
         :tape_path,
-        :file_date,
-        :file_time,
         :updated,
       ]
       
@@ -50,7 +48,7 @@ module Bun
       end
       
       def to_hash
-        fields.inject({}) {|hsh, f| hsh[f] = self.send(f) rescue nil; hsh }
+        fields.inject({}) {|hsh, f| hsh[f] = self.send(f); hsh }
       end
       
       def size
@@ -95,7 +93,9 @@ module Bun
         File.basename(tape_path)
       end
       
+      # TODO This isn't really relevant for non-frozen files; File::Frozen should really subclass this
       def updated
+        file_time = self.file_time rescue nil
         if file_time && catalog_time
           [catalog_time, file_time].min
         elsif file_time
