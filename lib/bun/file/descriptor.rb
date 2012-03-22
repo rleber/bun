@@ -16,17 +16,15 @@ module Bun
       SPECIFICATION_POSITION = 11 # words
       DESCRIPTION_PATTERN = /\s+(.*)/
       FIELDS = [
-        :blocks,
         :description,
+        :errors,
         :file_size,
         :file_type,
-        :good_blocks,
         :catalog_time,
         :name,
+        :open_time,
         :owner,
         :path,
-        :shard_count,
-        :shard_names,
         :specification,
         :tape_name,
         :tape_path,
@@ -35,18 +33,25 @@ module Bun
         :updated,
       ]
       
-      attr_reader :file
+      attr_reader :file, :fields
       
       def initialize(file)
         @file = file
+        @fields = []
+        # TODO fields should be registered in the class (and different file types should subclass File::Descriptor)
+        register_fields(FIELDS)
       end
       
-      def self.fields
-        FIELDS
+      def register_fields(*fields)
+        fields.flatten.each {|field| register_field(field) }
+      end
+      
+      def register_field(field)
+        @fields << field
       end
       
       def to_hash
-        FIELDS.inject({}) {|hsh, f| hsh[f] = self.send(f) rescue nil; hsh }
+        fields.inject({}) {|hsh, f| hsh[f] = self.send(f) rescue nil; hsh }
       end
       
       def size
@@ -86,33 +91,9 @@ module Bun
       def unexpanded_path
         File.join(owner, subpath)
       end
-    
-      def characters_per_word
-        file.characters_per_word
-      end
-      
-      def tape_name
-        file.tape_name
-      end
-      
-      def tape_path
-        file.tape_path
-      end
-      
-      def file_type
-        file.file_type
-      end
       
       def tape
         File.basename(tape_path)
-      end
-      
-      def file_date
-        file.file_date rescue nil
-      end
-      
-      def file_time
-        file.file_time rescue nil
       end
       
       def updated
@@ -127,32 +108,14 @@ module Bun
         end
       end
       
-      def blocks
-        file.blocks rescue nil
+      def shards
+        file.shard_descriptor_hashes rescue []
       end
-      
-      def good_blocks
-        file.good_blocks rescue nil
-      end
-      
-      def catalog_time
-        file.catalog_time rescue nil
-      end
-      
-      def type
-        file.type
-      end
-      
-      def shard_names
-        file.shard_names rescue []
-      end
-      
-      def shard_count
-        file.shard_count rescue 0
-      end
-      
-      def file_size
-        file.file_size
+  
+      def method_missing(meth, *args, &blk)
+        file.send(meth, *args, &blk)
+      rescue NoMethodError
+        raise NoMethodError, "#{self.class}##{meth} method not defined"
       end
     end
   end

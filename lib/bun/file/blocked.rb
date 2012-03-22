@@ -6,12 +6,13 @@ module Bun
     class Blocked < Bun::File
       include CacheableMethods
       
-      attr_accessor :truncate
+      attr_accessor :strict
       attr_reader   :good_blocks
       
       def initialize(options={}, &blk)
         super
-        @truncate = options[:truncate]
+        @strict = options[:strict]
+        descriptor.register_fields(:blocks, :good_blocks)
       end
 
       def words=(words)
@@ -33,7 +34,7 @@ module Bun
       BLOCK_SIZE = 0500 # words
       
       def blocks
-        (file.size - content_offset).div(BLOCK_SIZE)
+        (size - content_offset).div(BLOCK_SIZE)
       end
     
       # TODO Build a capability in Slicr to do things like this
@@ -47,11 +48,11 @@ module Bun
           break if file_content.at(offset) == 0
           block_size = file_content.at(offset).byte(3)
           unless file_content[offset].half_word[0] == block_number
-            if truncate
+            if strict
+              raise "Bad block number #{block_number} in #{tape} at #{'%#o' % (offset+content_offset)}: expected #{'%07o' % block_number}; got #{file_content[offset].half_word[0]}"
+            else
               error "Truncated before block #{block_number} at #{'%#o' % (offset+content_offset)}"
               break
-            else
-              raise "Bad block number #{block_number} in #{tape} at #{'%#o' % (offset+content_offset)}: expected #{'%07o' % block_number}; got #{file_content[offset].half_word[0]}"
             end
           end
           deblocked_content += file_content[offset+1..(offset+block_size)].to_a

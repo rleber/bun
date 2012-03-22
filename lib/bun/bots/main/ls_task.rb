@@ -101,7 +101,16 @@ def ls
   ix = ix.select{|tape_name| tape_name =~ tape_pattern}
   files = ix.each_with_index do |tape_name, i|
     file_descriptor = archive.descriptor(tape_name, :build=>options[:build])
-    file_row = fields.inject({}) {|hsh, f| hsh[f] = file_descriptor[f]; hsh }
+    file_row = fields.inject({}) do |hsh, f|
+      # TODO This is a little smelly
+      value = if f==:shard_count
+        file_descriptor[:shards] && file_descriptor[:shards].count
+      else
+        file_descriptor[f]
+      end
+      hsh[f] = value
+      hsh
+    end
     file_info << file_row
     if options[:frozen] && file_descriptor.file_type == :frozen
       file_descriptor.shards.each do |d|

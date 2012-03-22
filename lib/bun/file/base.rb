@@ -41,7 +41,7 @@ module Bun
         seconds = (timestamp + TIME_SUM) / TIME_DIV
         minutes, seconds = seconds.divmod(60.0)
         hours, minutes = minutes.divmod(60.0)
-        [hours, minutes, seconds]
+        [hours, minutes, seconds.to_int]
       end
 
       # Convert a Bun date and time into a Ruby Time
@@ -76,11 +76,7 @@ module Bun
       end
     
       def clean?(text)
-        if RUBY_VERSION =~ /^1\.8/
-          text !~ INVALID_CHARACTER_REGEXP
-        else
-          text.force_encoding("ASCII-8BIT") !~ INVALID_CHARACTER_REGEXP
-        end
+        text !~ INVALID_CHARACTER_REGEXP
       end
     
       def descriptor(options={})
@@ -101,6 +97,7 @@ module Bun
           ftype = preamble.file_type
         end
         klass = const_get(ftype.to_s.sub(/^./){|m| m.upcase}) unless ftype.is_a?(Class)
+        open_time = nil
         if options[:header]
           if ftype == :frozen
             limit = Frozen.send(:new, :words=>preamble.words, :header=>true).header_size
@@ -109,10 +106,16 @@ module Bun
           end
         else
           limit = nil
+          open_time = Time.now
         end
         f = klass.send(:new, options.merge(:n=>limit))
-        if block_given?
-          yield(f)
+        f.open_time = open_time if open_time
+        res = if block_given?
+          begin
+            yield(f)
+          ensure
+            f.close
+          end
         else
           f
         end
@@ -120,6 +123,14 @@ module Bun
 
       def open(fname, options={}, &blk)
         create(options.merge(:file=>fname), &blk)
+      end
+      
+      def read(fname, size=nil)
+        if RUBY_VERSION =~ /^1\.8/
+          super
+        else
+          ::File.open(fname, "r:ascii-8bit") {|f| f.read(size) }
+        end
       end
     
       def header(options={}, &blk)
@@ -170,9 +181,10 @@ module Bun
     attr_reader :all_characters
     attr_reader :all_packed_characters
     attr_reader :archive
+    attr_reader :characters
     attr_reader :descriptor
     attr_reader :file_content
-    attr_reader :characters
+    attr_reader :open_time
     attr_reader :packed_characters
     attr_reader :tape_path
     attr_reader :words
@@ -185,7 +197,8 @@ module Bun
       @size = options[:size]
       @header = options[:header]
       @archive = options[:archive]
-      @errors = 0
+      self.open_time = options[:open_time]
+      clear_errors
       self.words = self.class.get_words(options[:limit], options)
       yield(self) if block_given?
     end
@@ -195,13 +208,31 @@ module Bun
     def header?
       @header
     end
-  
-    def error(msg)
-      @errors += 1
+    
+    def clear_errors
+      @errors = []
     end
   
+    def error(err)
+      @errors << err
+    end
+    
+    def open_time=(time)
+      return unless time
+      @open_time = time
+    end
+    
+    def close
+      update_index
+    end
+    
     def read
-      File.read(tape_path)
+      self.class.read(tape_path)
+    end
+    
+    def update_index
+      return unless @archive
+      @archive.update_index(:file=>self)
     end
   
     def tape_name

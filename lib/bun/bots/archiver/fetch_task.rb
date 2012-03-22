@@ -94,5 +94,5 @@ def fetch(url=nil)
   stop "!No url provided" unless url
   stop "!No archive location provided" unless archive_location
   _fetch(url, archive_location, options)
-  Archive.new(archive_location).build_and_save_index(:verbose=>!options[:quiet])
+  Archive.new(:location=>archive_location).build_and_save_index(:verbose=>!options[:quiet])
 end

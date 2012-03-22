@@ -12,6 +12,7 @@ module Bun
       # TODO do we ever instantiate a File::Frozen without a new file? If not, refactor
       def initialize(options={})
         super
+        descriptor.register_field(:shards)
         @strict = options[:strict]
         @warn = options[:warn]
       end
@@ -32,7 +33,7 @@ module Bun
         words.at(content_offset+1).half_words.at(1).to_i
       end
 
-      # Fast and fairly reliable:
+      # Fast and fairly reliable, but awkwardly recursive:
       def shard_count_based_on_position_of_shard_contents
         descriptors_size.div(File::Frozen::Descriptor.size)
       end
@@ -90,6 +91,10 @@ module Bun
         end
       end
       cache :shard_descriptors
+      
+      def shard_descriptor_hashes
+        shard_descriptors.map{|d| d.to_hash }
+      end
     
       def shard_descriptor(n)
         shard_descriptors.at(shard_index(n))
@@ -171,7 +176,6 @@ module Bun
         line_offset = 0
         lines = []
         warned = false
-        errors = 0
         while line_offset < words.size
           last_line_word, line, okay = thaw_line(words, line_offset)
           if !line
@@ -186,9 +190,7 @@ module Bun
                       :words=>words[line_offset..last_line_word], :raw=>raw_line}
             line_offset = last_line_word + 1
           end
-          errors += 1 unless okay
         end
-        @errors = errors
         lines
       end
     
@@ -207,6 +209,7 @@ module Bun
               line_length = line_length(word)
               ch_count = 3
             else
+              error "Bad descriptor at #{content_offset}: #{word.inspect}"
               okay = false
             end
           end
@@ -214,6 +217,7 @@ module Bun
           line += chs.sub(/#{File.invalid_character_regexp}.*/,'') # Remove invalid control characters and all following letters
           break if chs=~/\r/
           if !good_characters?(chs) || line.size >= line_length
+            error "Bad characters in line"
             okay = false
             break
           end

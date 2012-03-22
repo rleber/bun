@@ -27,7 +27,7 @@ module Bun
     
       def self.load_task(task_name, file_name=nil)
         file_name ||= File.join(task_directory, "#{task_name}.rb")
-        code = File.read(file_name)
+        code = ::Bun.readfile(file_name, :encoding=>'us-ascii')
         begin
           eval "class #{self.name}\n#{code}\nend",nil,file_name,0
         rescue => e
