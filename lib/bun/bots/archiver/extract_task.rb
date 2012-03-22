@@ -15,21 +15,18 @@ def extract(to=nil)
   shell = Shell.new(:dryrun=>@dryrun)
   shell.rm_rf to
   ix.each do |tape_name|
-    extended_file_name = archive.expanded_tape_path(tape_name)
-    frozen = File.frozen?(extended_file_name)
-    file = File::Text.open(extended_file_name)
-    file_path = file.file_path
-    if frozen
-      frozen_file = File::Frozen.open(extended_file_name)
-      frozen_file.shard_count.times do |i|
-        descr = frozen_file.descriptor(i)
-        subfile_name = descr.file_name
-        f = File.join(to, tape_name, file_path, subfile_name)
+    file = archive.open(tape_name)
+    file_path = file.path
+    if file.frozen?
+      file.shard_count.times do |i|
+        descr = file.shard_descriptor(i)
+        shard_name = descr.name
+        f = File.join(to, tape_name, file_path, shard_name)
         dir = File.dirname(f)
         shell.mkdir_p dir
-        subfile_name = '\\' + subfile_name if subfile_name =~ /^\+/ # Watch out -- '+' has a special meaning to thaw
-        warn "thaw #{tape_name} #{subfile_name}" unless @dryrun
-        shell.thaw tape_name, subfile_name, f, :log=>log_file
+        shard_name = '\\' + shard_name if shard_name =~ /^\+/ # Watch out -- '+' has a special meaning to thaw
+        warn "thaw #{tape_name} #{shard_name}" unless @dryrun
+        shell.thaw tape_name, shard_name, f, :log=>log_file
       end
     else
       f = File.join(to, tape_name, file_path)

@@ -34,6 +34,6 @@ def unpack(file_name, to=nil)
   end
   shell = Shell.new
   shell.write to, content
-  warn "Unpacked with #{file.errors} errors" if options[:warn] && file.errors > 0
-  shell.log options[:log], "unpack #{to.inspect} from #{file_name.inspect} with #{file.errors} errors" if options[:log]
+  warn "Unpacked with #{file.errors.count} errors" if options[:warn] && file.errors > 0
+  shell.log options[:log], "unpack #{to.inspect} from #{file_name.inspect} with #{file.errors.count} errors" if options[:log]
 end
