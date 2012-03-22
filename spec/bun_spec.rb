@@ -12,10 +12,6 @@ def decode(file_name)
   file.text
 end
 
-def readfile(file)
-  File.read(file)
-end
-
 def scrub(lines, options={})
   tabs = options[:tabs] || '80'
   tempfile = Tempfile.new('bun1')
@@ -24,7 +20,7 @@ def scrub(lines, options={})
   tempfile.close
   tempfile2.close
   system("cat #{tempfile.path.inspect} | ruby -p -e '$_.gsub!(/_\\x8/,\"\")' | expand -t #{tabs} >#{tempfile2.path.inspect}")
-  File.read(tempfile2.path)
+  Bun.readfile(tempfile2.path)
 end
 
 def decode_and_scrub(file, options={})
@@ -35,7 +31,7 @@ shared_examples "simple" do |file|
   it "decodes a simple text file (#{file})" do
     infile = file
     outfile = File.join("output", "test", infile)
-    decode(infile).should == readfile(outfile)
+    decode(infile).should == Bun.readfile(outfile)
   end
 end
 
@@ -43,8 +39,11 @@ shared_examples "command" do |descr, command, expected_stdout_file|
   it "handles #{descr} properly" do
     # warn "> bun #{command}"
     res = `bun #{command} 2>&1`
+    unless RUBY_VERSION =~ /^1\.8/
+      res = res.force_encoding('ascii-8bit')
+    end
     expected_stdout_file = File.join("output", 'test', expected_stdout_file) unless expected_stdout_file =~ %r{/}
-    res.should == readfile(expected_stdout_file)
+    res.should == Bun.readfile(expected_stdout_file)
   end
 end
 
@@ -70,14 +69,14 @@ shared_examples "command with file" do |descr, command, expected_stdout_file, ou
       end
     end
     it "gives the expected $stdout" do
-      @res.should == readfile(@expected_stdout_file)
+      @res.should == Bun.readfile(@expected_stdout_file)
     end
     it "creates the expected output file (#{output_file})" do
       file_should_exist @output_file
     end
     it "puts the expected output (in #{output_file})" do
       if File.exists?(@output_file) 
-        readfile(@output_file).should == readfile(@expected_output_file)
+        Bun.readfile(@output_file).should == Bun.readfile(@expected_output_file)
       end
     end
     after :all do
@@ -93,7 +92,7 @@ describe Bun::File::Text do
   it "decodes a more complex file (ar004.0642)" do
     infile = 'ar004.0642'
     outfile = File.join("output", "test", infile)
-    decode_and_scrub(infile, :tabs=>'80').should == readfile(outfile)
+    decode_and_scrub(infile, :tabs=>'80').should == Bun.readfile(outfile)
   end
 end
 

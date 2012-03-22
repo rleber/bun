@@ -6,7 +6,8 @@ EXTRACT_LOG_PATTERN = /\"([^\"]*)\"(.*?)(\d+)\s+errors/
 no_tasks do
   def read_log(log_file_name)
     log = {}
-    File.read(log_file_name).split("\n").each do |line|
+    content = ::Bun.readfile(log_file_name,:encoding=>'us-ascii')
+    content.split("\n").each do |line|
       entry = parse_log_entry(line)
       log[entry[:file]] = entry
     end
@@ -59,9 +60,10 @@ def organize(from=nil, to=nil)
   # Combine files where the files have the same file name and have identical content
   index.each do |spec|
     matches = index.find(:file=>spec[:file]).reject{|e| e[:to]==spec[:to]}
-    content = File.read(spec[:from])
+    content = ::Bun.readfile(spec[:from], :encoding=>'us-ascii')
     matches.each do |match|
-      if File.read(match[:from])==content
+      match_content = ::Bun.readfile(match[:from], :encoding=>'us-ascii')
+      if match_content==content
         warn "#{match[:from]} is the same as #{spec[:from]} => #{spec[:to]}" if @trace
         index.add(match.merge(:to=>spec[:to]))
       end

@@ -26,7 +26,8 @@ module Bun
       end
   
       def config(config_file="data/archive_config.yml")
-        @config = YAML.load(::File.read(config_file))
+        content = ::Bun.readfile(config_file, :encoding=>'us-ascii')
+        @config = YAML.load(content)
         @config['repository'] ||= ENV['BUN_REPOSITORY']
         @config
       end
@@ -125,7 +126,7 @@ module Bun
     end
     
     def catalog
-      content = File.read(catalog_file)
+      content = Bun.readfile(catalog_file, :encoding=>'us-ascii')
       specs = content.split("\n").map do |line|
         words = line.strip.split(/\s+/)
         raise RuntimeError, "Bad line in index file: #{line.inspect}" unless words.size == 3
@@ -157,7 +158,8 @@ module Bun
         Dir.glob(File.join(index_directory, '*.yml')) do |f|
           raise "Unexpected file #{f} in index #{index_directory}" unless f =~ /\.descriptor.yml$/
           file_name = File.basename($`)
-          @index[file_name] = YAML.load(File.read(f))
+          content = ::Bun.readfile(f, :encoding=>'us-ascii')
+          @index[file_name] = YAML.load(content)
         end
       elsif File.exists?(index_directory)
         raise RuntimeError, "File #{index_directory} should be a directory"
