@@ -62,8 +62,9 @@ module Bun
     alias_method :each, :tapes
     
     def each_file(options={}, &blk)
-      tapes.each {|tape| 
-        open(tape, options, &blk)}
+      tapes.each do |tape| 
+        open(tape, options, &blk)
+      end
     end
     
     def config
