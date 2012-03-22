@@ -5,8 +5,7 @@ desc "mv TAPE [TAPE...] [DESTINATION]", "Move files in/from archive"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option 'bare',    :aliases=>'-b', :type=>'boolean', :desc=>'Move files, but not index data'
 def mv(*args)
-  directory = options[:archive] || Archive.location
-  from_archive = Archive.new(:location=>directory)
+  from_archive = Archive.new(:location=>options[:archive])
   if args.size == 1
     dest = nil
   else

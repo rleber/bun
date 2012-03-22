@@ -12,7 +12,6 @@ module Bun
     include CacheableMethods
     
     DIRECTORY_LOCATIONS = %w{location log_file raw_directory extract_directory files_directory clean_directory dirty_directory}
-    OTHER_LOCATIONS = %w{repository catalog_file}
     
     # TODO Why is a class variable necessary here?
     
@@ -93,10 +92,8 @@ module Bun
       config_dir("#{directory}_directory") || directory
     end
     
-    OTHER_LOCATIONS.each do |locn|
-      define_method locn do ||
-        File.expand_path(File.join(location, self.class.send(locn)))
-      end
+    def catalog_file
+      File.expand_path(File.join(location, config['catalog_file']))
     end
     
     def index_directory

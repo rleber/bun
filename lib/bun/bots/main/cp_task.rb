@@ -5,8 +5,7 @@ desc "cp TAPE [TAPE...] [DESTINATION]", "Copy files from archive"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option 'bare',    :aliases=>'-b', :type=>'boolean', :desc=>'Copy files, but not index data'
 def cp(*args)
-  directory = options[:archive] || Archive.location
-  from_archive = Archive.new(:location=>directory)
+  from_archive = Archive.new(:location=>options[:archive])
   if args.size == 1
     dest = nil
   else

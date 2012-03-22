@@ -25,8 +25,8 @@ def ls(file_name)
   stop "!Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
   file_pattern = get_regexp(options[:files])
   stop "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
-  directory = options[:archive] || Archive.location
-  archive = Archive.new(:location=>directory)
+  archive = Archive.new(:location=>options[:archive])
+  directory = archive.location
   file = archive.open(file_name)
   stop "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
   archived_file = file.path
