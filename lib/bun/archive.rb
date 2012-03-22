@@ -131,6 +131,7 @@ module Bun
     
     def catalog
       content = Bun.readfile(catalog_file, :encoding=>'us-ascii')
+      return [] unless content
       specs = content.split("\n").map do |line|
         words = line.strip.split(/\s+/)
         raise RuntimeError, "Bad line in index file: #{line.inspect}" unless words.size == 3
