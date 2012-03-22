@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-desc "cp TAPE [TAPE...] [DESTINATION]", "Copy files from archive"
+desc "mv TAPE [TAPE...] [DESTINATION]", "Move files in/from archive"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
-option 'bare',    :aliases=>'-b', :type=>'boolean', :desc=>'Copy files, but not index data'
-def cp(*args)
+option 'bare',    :aliases=>'-b', :type=>'boolean', :desc=>'Move files, but not index data'
+def mv(*args)
   directory = options[:archive] || Archive.location
   from_archive = Archive.new(:location=>directory)
   if args.size == 1
@@ -12,5 +12,5 @@ def cp(*args)
   else
     dest = args.pop
   end
-  from_archive.cp(:from=>args, :to=>dest, :bare=>options[:bare])
+  from_archive.mv(:from=>args, :to=>dest, :bare=>options[:bare])
 end

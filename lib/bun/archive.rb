@@ -308,6 +308,17 @@ module Bun
       File.exists?(expanded_tape_path(name))
     end
     
+    def rm(options={})
+      glob(*options[:tapes]) do |fname|
+        _rm(fname, options)
+      end
+    end
+    
+    def _rm(tape)
+      FileUtils.rm(expanded_tape_path(tape))
+    end
+    private :_rm
+    
     def cp(options={})
       glob(*options[:from]) do |fname|
         _cp(fname, options[:to], options)
@@ -339,5 +350,17 @@ module Bun
       end
     end
     private :_cp
+    
+    def mv(options={})
+      glob(*options[:from]) do |fname|
+        _mv(fname, options[:to], options)
+      end
+    end
+    
+    def _mv(tape, dest, options={})
+      _cp(tape, dest, options)
+      _rm(tape)
+    end
+    private :_mv
   end
 end
