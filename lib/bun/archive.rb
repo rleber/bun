@@ -16,41 +16,10 @@ module Bun
     
     # TODO Why is a class variable necessary here?
     
-    class << self
-      include CacheableMethods
-    
-      def config_dir(name)
-        dir = config[name.to_s]
-        return nil unless dir
-        dir = File.expand_path(dir) if dir=~/^~/
-        dir
-      end
-  
-      def config(config_file="data/archive_config.yml")
-        content = ::Bun.readfile(config_file, :encoding=>'us-ascii')
-        @config = YAML.load(content)
-        @config['repository'] ||= ENV['BUN_REPOSITORY']
-        @config
-      end
-      cache :config
-    
-      DIRECTORY_LOCATIONS.each do |locn|
-        define_method locn do ||
-          config_dir(locn)
-        end
-      end
-      
-      OTHER_LOCATIONS.each do |locn|
-        define_method locn do ||
-          config[locn]
-        end
-      end
-    end
-    
     attr_reader :location
     
     def initialize(options={})
-      @location = options[:location] || options[:archive] || self.class.location
+      @location = options[:location] || options[:archive] || default_location
       @directory = options[:directory] || 'raw'
       @index = nil
       @update_indexes = options.has_key?(:update_indexes) ? options[:update_indexes] : true
@@ -78,15 +47,41 @@ module Bun
       each.glob(*pat, &blk)
     end
     
-    def config
-      self.class.config
+    def default_location
+      File.expand_path(default_config['location'])
     end
-    
+
     def config_dir(name)
-      self.class.config_dir(name)
+      dir = config[name.to_s]
+      return nil unless dir
+      dir = File.expand_path(dir) if dir=~/^~/
+      dir
     end
     
-    # TODO Are these necessary?
+    def default_config_file
+      File.expand_path(File.join(File.dirname(__FILE__), '..','..','data','archive_config.yml'))
+    end
+    
+    def read_config_file(config_file)
+      content = ::Bun.readfile(config_file, :encoding=>'us-ascii')
+      config = YAML.load(content)
+      config['repository'] ||= ENV['BUN_REPOSITORY']
+      config
+    end
+    
+    def default_config
+      read_config_file(default_config_file)
+    end
+    cache :default_config
+    
+    def config(config_file=nil)
+      return read_config_file(config_file) if config_file && File.file?(config_file)
+      config_file = File.join(@location, '.config.yml')
+      return read_config_file(config_file) if File.file?(config_file)
+      default_config
+    end
+    cache :config
+    
     (DIRECTORY_LOCATIONS - %w{location}).each do |locn|
       define_method locn do ||
         config_dir(locn)
