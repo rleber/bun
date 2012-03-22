@@ -83,7 +83,7 @@ module Bun
       
     def directory_location(directory=nil)
       directory ||= @directory
-      config_dir("#{directory}_directory")
+      config_dir("#{directory}_directory") || directory
     end
     
     OTHER_LOCATIONS.each do |locn|
