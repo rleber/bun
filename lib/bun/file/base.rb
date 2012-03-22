@@ -76,11 +76,7 @@ module Bun
       end
     
       def clean?(text)
-        if RUBY_VERSION =~ /^1\.8/
-          text !~ INVALID_CHARACTER_REGEXP
-        else
-          text !~ INVALID_CHARACTER_REGEXP
-        end
+        text !~ INVALID_CHARACTER_REGEXP
       end
     
       def descriptor(options={})
@@ -123,7 +119,7 @@ module Bun
       end
       
       def read(fname, size=nil)
-        if RUBY_VERSION =~ /^1\.8\.7/
+        if RUBY_VERSION =~ /^1\.8/
           super
         else
           ::File.open(fname, "r:ascii-8bit") {|f| f.read(size) }
