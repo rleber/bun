@@ -259,6 +259,8 @@ describe Bun::Bot do
   context "bun ls handling of the index" do
     context "from the index" do
       before :each do
+        `rm -rf data/test/archive/strange`
+        `cp -r data/test/archive/strange_init data/test/archive/strange`
         lines = `bun ls --archive "data/test/archive/strange" | tail -n 1`.chomp
         @file = lines.split(/\s+/)[-1].strip
       end
@@ -268,6 +270,8 @@ describe Bun::Bot do
     end
     context "built from the file" do
       before :each do
+        `rm -rf data/test/archive/strange`
+        `cp -r data/test/archive/strange_init data/test/archive/strange`
         lines = `bun ls --archive "data/test/archive/strange" --build | tail -n 1`.chomp
         @file = lines.split(/\s+/)[-1].strip
       end
@@ -279,6 +283,8 @@ describe Bun::Bot do
   context "bun describe handling of the index" do
     context "from the index" do
       before :each do
+        `rm -rf data/test/archive/strange`
+        `cp -r data/test/archive/strange_init data/test/archive/strange`
         lines = `bun describe --archive "data/test/archive/strange" ar003.0698`.chomp.split("\n")
         @file = lines.find {|line| line =~ /^Name:/}.split(/\s+/)[-1].strip
       end
@@ -288,6 +294,8 @@ describe Bun::Bot do
     end
     context "built from the file" do
       before :each do
+        `rm -rf data/test/archive/strange`
+        `cp -r data/test/archive/strange_init data/test/archive/strange`
         lines = `bun describe --archive "data/test/archive/strange" --build ar003.0698`.chomp.split("\n")
         @file = lines.find {|line| line =~ /^Name:/}.split(/\s+/)[-1].strip
       end
