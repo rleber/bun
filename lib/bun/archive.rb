@@ -4,6 +4,7 @@
 require 'yaml'
 require 'hashie/mash'
 require 'lib/bun/file'
+require 'lib/bun/archive_enumerator'
 
 module Bun
   class Archive
@@ -55,17 +56,22 @@ module Bun
       @update_indexes = options.has_key?(:update_indexes) ? options[:update_indexes] : true
     end
     
-    def tapes(&blk)
-      tapes = Dir.entries(File.join(location, directory_location)).reject{|f| f=~/^\./}
-      tapes.each(&blk) if block_given?
-      tapes
+    def tapes
+      Dir.entries(File.join(location, directory_location)).reject{|f| f=~/^\./}
     end
-    alias_method :each, :tapes
+
+    def each(&blk)
+      tapes = self.tapes
+      enum = Enumerator.new(self)
+      if block_given?
+        enum.each(&blk)
+      else
+        enum
+      end
+    end
     
     def each_file(options={}, &blk)
-      tapes.each do |tape| 
-        open(tape, options, &blk)
-      end
+      each.files(options, &blk)
     end
     
     def config
