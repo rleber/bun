@@ -174,13 +174,23 @@ describe Bun::Bot do
           it "should change the tape_path" do
             @content[:tape_path].should == "#{`pwd`.chomp}/output/cp_ar003.0698.out"
           end
+          it "should record the original tape_name" do
+            @content[:original_tape_name].should == 'ar003.0698'
+          end
+          it "should record the original tape_path" do
+            @content[:original_tape_path].should == "#{ENV['HOME']}/bun_archive/raw/ar003.0698"
+          end
           it "should otherwise match the original index" do
             other_content = @content.dup
             other_content.delete(:tape_name)
             other_content.delete(:tape_path)
+            other_content.delete(:original_tape_name)
+            other_content.delete(:original_tape_path)
             other_original_content = @original_content.dup
             other_original_content.delete(:tape_name)
             other_original_content.delete(:tape_path)
+            other_original_content.delete(:original_tape_name)
+            other_original_content.delete(:original_tape_path)
             other_content.should == other_original_content
           end
         end

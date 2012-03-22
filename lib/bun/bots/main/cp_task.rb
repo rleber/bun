@@ -21,6 +21,8 @@ def cp(tape, dest = nil)
     to_dir = File.dirname(dest)
     to_archive = Archive.new(:location=>to_dir, :directory=>'')
     descriptor = from_archive.descriptor(tape)
+    descriptor.original_tape_name = tape unless descriptor.original_tape_name
+    descriptor.original_tape_path = from_archive.expanded_tape_path(tape) unless descriptor.original_tape_path
     descriptor.tape_name = File.basename(dest)
     descriptor.tape_path = File.expand_path(dest)
     to_archive.update_index(descriptor, :descriptor=>descriptor, :save=>true)
