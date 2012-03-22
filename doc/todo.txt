@@ -1,8 +1,5 @@
 TODO
-cp should keep track of the original location
-Better unpack status checking: automatic truncate, good/bad status, errors: counting, list
-Record unpack status in .index
-Change bun archive text_status to report on unpack status; merge fetching part into bun archive extract
+Update statistics on thawing frozen files, too
 Change tape_name to location, tape_path to location_path
 Separate file.open from file.load/read
 Resolve backspaces: to underlining or bold
