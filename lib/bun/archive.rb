@@ -273,6 +273,10 @@ module Bun
     def _save_index_descriptor(name)
       return unless @update_indexes
       descriptor_file_name = File.join(index_directory, "#{name}.descriptor.yml")
+      if name == 'ar145.2699' && @index[name][:updated].nil?
+        puts "_save_index_descriptor(#{name.inspect}): index=#{@index[name].inspect}"
+        raise RuntimeError, ":updated == nil"
+      end
       ::File.open(descriptor_file_name, 'w:us-ascii') {|f| f.write @index[name].to_yaml }
     end
     private :_save_index_descriptor
