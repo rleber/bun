@@ -16,13 +16,13 @@ module Bun
       SPECIFICATION_POSITION = 11 # words
       DESCRIPTION_PATTERN = /\s+(.*)/
       FIELDS = [
-        :blocks,
         :description,
+        :errors,
         :file_size,
         :file_type,
-        :good_blocks,
         :catalog_time,
         :name,
+        :open_time,
         :owner,
         :path,
         :specification,
