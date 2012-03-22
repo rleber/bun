@@ -1,3 +1,7 @@
+=== 0.0.3 2012-03-22
+
+* Improved indexing, and retention of processing statistics in index
+
 === 0.0.2 2012-03-19
 
 * Now passes a pretty good set of tests, in both Ruby 1.8.7 and 1.9.3
