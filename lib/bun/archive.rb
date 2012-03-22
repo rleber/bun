@@ -14,7 +14,6 @@ module Bun
     OTHER_LOCATIONS = %w{repository catalog_file}
     
     # TODO Why is a class variable necessary here?
-    @@index = nil
     
     class << self
       include CacheableMethods
@@ -51,6 +50,7 @@ module Bun
     def initialize(options={})
       @location = options[:location] || options[:archive] || self.class.location
       @directory = options[:directory] || 'raw'
+      @index = nil
     end
     
     def tapes(&blk)
@@ -147,17 +147,17 @@ module Bun
     end
     
     def index
-      _index unless @@index
-      @@index
+      _index unless @index
+      @index
     end
     
     def _index
       if File.directory?(index_directory)
-        @@index = {}
+        @index = {}
         Dir.glob(File.join(index_directory, '*.yml')) do |f|
           raise "Unexpected file #{f} in index #{index_directory}" unless f =~ /\.descriptor.yml$/
           file_name = File.basename($`)
-          @@index[file_name] = YAML.load(File.read(f))
+          @index[file_name] = YAML.load(File.read(f))
         end
       elsif File.exists?(index_directory)
         raise RuntimeError, "File #{index_directory} should be a directory"
@@ -177,18 +177,18 @@ module Bun
         puts f.tape_name if options[:verbose]
         update_index(f, :save=>options[:save])
       end
-      @@index
+      @index
     end
     
     def clear_index
       clear_index_directory
-      @@index = nil
+      @index = nil
     end
     
     # TODO Allow for indexing by other than tape_name?
     def update_index(f, options={})
-      @@index ||= {}
-      @@index[f.tape_name] = descr =build_descriptor_for_file(f)
+      @index ||= {}
+      @index[f.tape_name] = descr =build_descriptor_for_file(f)
       save_index_descriptor(f.tape_name) if options[:save]
       descr
     end
@@ -213,20 +213,20 @@ module Bun
       each do |name|
         _save_index_descriptor(name)
       end
-      @@index
+      @index
     end
     
     def save_index_descriptor_for_file(f)
-      @@index ||= {}
+      @index ||= {}
       name = f.tape_name
-      @@index[name] ||= build_descriptor_for_file(f)
+      @index[name] ||= build_descriptor_for_file(f)
       make_index_directory
       _save_index_descriptor(name)
     end
     
     def save_index_descriptor(name)
-      @@index ||= {}
-      @@index[name] ||= build_descriptor(name)
+      @index ||= {}
+      @index[name] ||= build_descriptor(name)
       make_index_directory
       _save_index_descriptor(name)
     end
@@ -236,7 +236,7 @@ module Bun
     end
     
     def _save_index_descriptor(name)
-      ::File.open(File.join(index_directory, "#{name}.descriptor.yml"), 'w') {|f| f.write @@index[name].to_yaml }
+      ::File.open(File.join(index_directory, "#{name}.descriptor.yml"), 'w') {|f| f.write @index[name].to_yaml }
     end
     private :_save_index_descriptor
     
