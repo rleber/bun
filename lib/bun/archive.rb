@@ -225,7 +225,6 @@ module Bun
       descr
     end
     
-    # TODO Is this being used anywhere?
     def build_descriptor(name)
       open(name, :header=>true) {|f| build_descriptor_for_file(f) }
     end
@@ -271,24 +270,22 @@ module Bun
     def _save_index_descriptor(name)
       return unless @update_indexes
       descriptor_file_name = File.join(index_directory, "#{name}.descriptor.yml")
-      if name == 'ar145.2699' && @index[name][:updated].nil?
-        puts "_save_index_descriptor(#{name.inspect}): index=#{@index[name].inspect}"
-        raise RuntimeError, ":updated == nil"
-      end
+      # TODO This trap code was inserted to catch a tricky little bug; I'm leaving it here for awhile
+      # if name == 'ar145.2699' && @index[name][:updated].nil?
+      #   puts "_save_index_descriptor(#{name.inspect}): index=#{@index[name].inspect}"
+      #   raise RuntimeError, ":updated == nil"
+      # end
       ::File.open(descriptor_file_name, 'w:us-ascii') {|f| f.write @index[name].to_yaml }
     end
     private :_save_index_descriptor
     
     def descriptor(name, options={})
-      # puts "In #{self.class}#descriptor(#{name.inspect}, #{options.inspect}): index[#{name.inspect}]=#{index[name].inspect}"
       if !exists?(name)
         nil
       elsif !options[:build] && index[name]
         Hashie::Mash.new(index[name])
-        # index[name]
       else
         Hashie::Mash.new(build_descriptor(name))
-        # build_descriptor(name)
       end
     end
     
