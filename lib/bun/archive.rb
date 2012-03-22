@@ -190,7 +190,14 @@ module Bun
     # TODO Allow for indexing by other than tape_name?
     def update_index(f, options={})
       @index ||= {}
-      @index[f.tape_name] = descr =build_descriptor_for_file(f)
+      descr = options[:descriptor] ? options[:descriptor].to_hash : build_descriptor_for_file(f)
+      descr.keys.each do |k|
+        if k.is_a?(String)
+          descr[k.to_sym] = descr[k]
+          descr.delete(k)
+        end
+      end
+      @index[f.tape_name] = descr
       save_index_descriptor(f.tape_name) if options[:save]
       descr
     end
