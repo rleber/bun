@@ -152,6 +152,59 @@ describe Bun::Bot do
     include_examples "command with file", 
       "cp ar003.0698 output/cp_ar003.0698 (a directory)", "cp ar003.0698 output/cp_ar003.0698", 
       "cp_ar003.0698.stdout", "output/cp_ar003.0698/ar003.0698", "cp_ar003.0698"
+    context "creates index" do
+      context "for a single file" do
+        before :all do
+          # warn "> bun #{command}"
+          `rm -rf output/.bun_index`
+          `rm -f output/cp_ar003.0698.out`
+          `bun cp ar003.0698 output/cp_ar003.0698.out 2>&1`
+        end
+        it "creates an index" do
+          file_should_exist "output/.bun_index/cp_ar003.0698.out.descriptor.yml"
+        end
+        context "contents of index" do
+          before :each do
+            @original_content = YAML.load(Bun.readfile("#{ENV['HOME']}/bun_archive/raw/.bun_index/ar003.0698.descriptor.yml", :encoding=>'us-ascii'))
+            @content = YAML.load(Bun.readfile("output/.bun_index/cp_ar003.0698.out.descriptor.yml", :encoding=>'us-ascii'))
+          end
+          it "should change the tape_name" do
+            @content[:tape_name].should == 'cp_ar003.0698.out'
+          end
+          it "should change the tape_path" do
+            @content[:tape_path].should == "#{`pwd`.chomp}/output/cp_ar003.0698.out"
+          end
+          it "should otherwise match the original index" do
+            other_content = @content.dup
+            other_content.delete(:tape_name)
+            other_content.delete(:tape_path)
+            other_original_content = @original_content.dup
+            other_original_content.delete(:tape_name)
+            other_original_content.delete(:tape_path)
+            other_content.should == other_original_content
+          end
+        end
+        after :all do
+          `rm -f output/cp_ar003.0698.out`
+          `rm -rf output/.bun_index`
+        end
+      end
+      context "for a directory of files" do
+        before :all do
+          # warn "> bun #{command}"
+          `rm -rf output/cp_ar003.0698/.bun_index`
+          `rm -f output/cp_ar003.0698/ar003.0698`
+          `bun cp ar003.0698 output/cp_ar003.0698 2>&1`
+        end
+        it "creates an index" do
+          file_should_exist "output/cp_ar003.0698/.bun_index/ar003.0698.descriptor.yml"
+        end
+        after :all do
+          `rm -f output/cp_ar003.0698/ar003.0698`
+          `rm -rf output/cp_ar003.0698.bun_index`
+        end
+      end
+    end
   end
   context "index processing" do
     before :each do
@@ -169,14 +222,13 @@ describe Bun::Bot do
       it "should have an entry for ar003.0698" do
         Dir.glob("data/test/archive/index/raw/.bun_index/*").should == ["data/test/archive/index/raw/.bun_index/ar003.0698.descriptor.yml"]
       end
-      if (YAML.load(::File.read("data/test/archive/index/raw/.bun_index/ar003.0698.descriptor.yml")) rescue nil)
-        context "index contents" do
-          before :each do
-            @index = YAML.load(::File.read("data/test/archive/index/raw/.bun_index/ar003.0698.descriptor.yml")) rescue nil
-          end
-          it "should be a Hash" do
-            @index.should be_a(Hash)
-          end
+      context "index contents" do
+        before :each do
+          content = Bun.readfile("data/test/archive/index/raw/.bun_index/ar003.0698.descriptor.yml", :encoding=>'us-ascii')
+          @index = YAML.load(content) rescue nil
+        end
+        it "should be a Hash" do
+          @index.should be_a(Hash)
         end
       end
     end

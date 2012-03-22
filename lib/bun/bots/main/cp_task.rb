@@ -11,5 +11,18 @@ def cp(tape, dest = nil)
     dest = '.' if dest == ''
     dest = File.join(dest, File.basename(tape)) if File.directory?(dest)
   end
-  archive.open(tape) {|f| Shell.new(:quiet=>true).write dest, f.read }
+
+  from_archive.open(tape) do |f|
+    Shell.new(:quiet=>true).write dest, f.read, :mode=>'w:ascii-8bit'
+  end
+  
+  unless dest.nil? || dest == '-'
+    # Copy index entry, too
+    to_dir = File.dirname(dest)
+    to_archive = Archive.new(:location=>to_dir, :directory=>'')
+    descriptor = from_archive.descriptor(tape)
+    descriptor.tape_name = File.basename(dest)
+    descriptor.tape_path = File.expand_path(dest)
+    to_archive.update_index(descriptor, :descriptor=>descriptor, :save=>true)
+  end
 end
