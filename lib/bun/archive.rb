@@ -308,7 +308,13 @@ module Bun
       File.exists?(expanded_tape_path(name))
     end
     
-    def cp(tape, dest=nil, options={})
+    def cp(options={})
+      glob(*options[:from]) do |fname|
+        _cp(fname, options[:to], options)
+      end
+    end
+    
+    def _cp(tape, dest=nil, options={})
       to_stdout = dest.nil? || dest == '-'
       index = !options[:bare] && !to_stdout
       unless to_stdout
@@ -332,5 +338,6 @@ module Bun
         to_archive.update_index(:descriptor=>descriptor)
       end
     end
+    private :_cp
   end
 end

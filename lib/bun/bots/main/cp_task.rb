@@ -1,8 +1,6 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-# TODO Copy more than one file
-# TODO Copy by pattern
 # TODO Create mv command
 
 desc "cp TAPE [DESTINATION]", "Copy a file"
@@ -16,7 +14,5 @@ def cp(*args)
   else
     dest = args.pop
   end
-  from_archive.glob(*args) do |fname|
-    from_archive.cp(fname, dest, options)
-  end
+  from_archive.cp(:from=>args, :to=>dest, :bare=>options[:bare])
 end
