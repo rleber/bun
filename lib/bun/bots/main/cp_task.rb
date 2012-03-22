@@ -1,13 +1,20 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+# TODO Move core capability to Archive; refactor
+# TODO Copy more than one file
+# TODO Copy by pattern
+# TODO Create mv command
+
 desc "cp TAPE [DESTINATION]", "Copy a file"
-# TODO Refactor :archive as a global option?
-option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'bare',    :aliases=>'-b', :type=>'boolean', :desc=>'Copy file, but not index data'
 def cp(tape, dest = nil)
   directory = options[:archive] || Archive.location
   from_archive = Archive.new(:location=>directory)
-  unless dest.nil? || dest == '-'
+  to_stdout = dest.nil? || dest == '-'
+  index = !options[:bare] && !to_stdout
+  unless to_stdout
     dest = '.' if dest == ''
     dest = File.join(dest, File.basename(tape)) if File.directory?(dest)
   end
@@ -15,8 +22,8 @@ def cp(tape, dest = nil)
   from_archive.open(tape) do |f|
     Shell.new(:quiet=>true).write dest, f.read, :mode=>'w:ascii-8bit'
   end
-  
-  unless dest.nil? || dest == '-'
+
+  if index
     # Copy index entry, too
     to_dir = File.dirname(dest)
     to_archive = Archive.new(:location=>to_dir, :directory=>'')

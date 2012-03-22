@@ -152,7 +152,7 @@ describe Bun::Bot do
     include_examples "command with file", 
       "cp ar003.0698 output/cp_ar003.0698 (a directory)", "cp ar003.0698 output/cp_ar003.0698", 
       "cp_ar003.0698.stdout", "output/cp_ar003.0698/ar003.0698", "cp_ar003.0698"
-    context "creates index" do
+    context "index processing" do
       context "for a single file" do
         before :all do
           # warn "> bun #{command}"
@@ -211,7 +211,22 @@ describe Bun::Bot do
         end
         after :all do
           `rm -f output/cp_ar003.0698/ar003.0698`
-          `rm -rf output/cp_ar003.0698.bun_index`
+          `rm -rf output/cp_ar003.0698/.bun_index`
+        end
+      end
+      context "with --bare" do
+        before :all do
+          # warn "> bun #{command}"
+          `rm -rf output/.bun_index`
+          `rm -f output/cp_ar003.0698.out`
+          `bun cp --bare ar003.0698 output/cp_ar003.0698.out 2>&1`
+        end
+        it "does not creates an index" do
+          file_should_not_exist "output/.bun_index"
+        end
+        after :all do
+          `rm -f output/cp_ar003.0698.out`
+          `rm -rf output/.bun_index`
         end
       end
     end

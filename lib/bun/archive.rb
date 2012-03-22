@@ -52,6 +52,7 @@ module Bun
       @location = options[:location] || options[:archive] || self.class.location
       @directory = options[:directory] || 'raw'
       @index = nil
+      @update_indexes = options.has_key?(:update_indexes) ? options[:update_indexes] : true
     end
     
     def tapes(&blk)
@@ -183,6 +184,24 @@ module Bun
       @index
     end
     
+    def update_indexes=(value)
+      @update_indexes = value
+    end
+    
+    def update_indexes?
+      @update_indexes
+    end
+    
+    def with_update_indexes(value) # 
+      original_update_indexes = @update_indexes
+      @update_indexes = value
+      begin
+        yield
+      ensure
+        @update_indexes = original_update_indexes
+      end
+    end
+    
     def clear_index
       clear_index_directory
       @index = nil
@@ -214,6 +233,7 @@ module Bun
     end
     
     def clear_index_directory
+      return unless @update_indexes
       FileUtils.rm_rf(index_directory)
     end
     
@@ -246,7 +266,14 @@ module Bun
     end
     
     def _save_index_descriptor(name)
-      ::File.open(File.join(index_directory, "#{name}.descriptor.yml"), 'w') {|f| f.write @index[name].to_yaml }
+      return unless @update_indexes
+      if RUBY_VERSION =~ /^1\.8/
+        mode = 'w'
+      else
+        mode = 'w:us-ascii'
+      end
+      descriptor_file_name = File.join(index_directory, "#{name}.descriptor.yml")
+      ::File.open(descriptor_file_name, mode) {|f| f.write @index[name].to_yaml }
     end
     private :_save_index_descriptor
     
