@@ -267,6 +267,9 @@ describe Bun::Bot do
       it "should pull data from the index" do
         @file.should == "from_the_index"
       end
+      after :each do
+        `rm -rf data/test/archive/strange`
+      end
     end
     context "built from the file" do
       before :each do
@@ -277,6 +280,9 @@ describe Bun::Bot do
       end
       it "should not pull data from the index" do
         @file.should_not == "from_the_index"
+      end
+      after :each do
+        `rm -rf data/test/archive/strange`
       end
     end
   end
@@ -291,6 +297,9 @@ describe Bun::Bot do
       it "should pull data from the index" do
         @file.should == "from_the_index"
       end
+      after :each do
+        `rm -rf data/test/archive/strange`
+      end
     end
     context "built from the file" do
       before :each do
@@ -301,6 +310,9 @@ describe Bun::Bot do
       end
       it "should not pull data from the index" do
         @file.should_not == "from_the_index"
+      end
+      after :each do
+        `rm -rf data/test/archive/strange`
       end
     end
   end
