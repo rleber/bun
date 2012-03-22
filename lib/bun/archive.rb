@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env rvm-ruby 1.9.3
 # -*- encoding: us-ascii -*-
 
 require 'yaml'

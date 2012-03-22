@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env rvm-ruby 1.9.3
 # -*- encoding: us-ascii -*-
 
 desc "mv TAPE [TAPE...] [DESTINATION]", "Move files in/from archive"
