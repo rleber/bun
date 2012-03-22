@@ -171,14 +171,14 @@ module Bun
     private :_index
     
     def build_and_save_index(options={})
-      build_index(options.merge(:save=>true))
+      build_index(options)
     end
     
     def build_index(options={})
       clear_index
       each_file(:header=>true) do |f|
         puts f.tape_name if options[:verbose]
-        update_index(f, :save=>options[:save])
+        update_index(:file=>f)
       end
       @index
     end
@@ -189,17 +189,17 @@ module Bun
     end
     
     # TODO Allow for indexing by other than tape_name?
-    def update_index(f, options={})
+    def update_index(options={})
       @index ||= {}
-      descr = options[:descriptor] ? options[:descriptor].to_hash : build_descriptor_for_file(f)
+      descr = options[:descriptor] ? options[:descriptor].to_hash : build_descriptor_for_file(options[:file])
       descr.keys.each do |k|
         if k.is_a?(String)
           descr[k.to_sym] = descr[k]
           descr.delete(k)
         end
       end
-      @index[f.tape_name] = descr
-      save_index_descriptor(f.tape_name) if options[:save]
+      @index[descr[:tape_name]] = descr
+      save_index_descriptor(descr[:tape_name])
       descr
     end
     

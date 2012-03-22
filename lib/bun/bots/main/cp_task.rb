@@ -25,6 +25,6 @@ def cp(tape, dest = nil)
     descriptor.original_tape_path = from_archive.expanded_tape_path(tape) unless descriptor.original_tape_path
     descriptor.tape_name = File.basename(dest)
     descriptor.tape_path = File.expand_path(dest)
-    to_archive.update_index(descriptor, :descriptor=>descriptor, :save=>true)
+    to_archive.update_index(:descriptor=>descriptor)
   end
 end
