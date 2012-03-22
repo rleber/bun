@@ -113,8 +113,8 @@ module Bun
   
       def method_missing(meth, *args, &blk)
         file.send(meth, *args, &blk)
-      rescue NoMethodError
-        raise NoMethodError, "#{self.class}##{meth} method not defined"
+      rescue NoMethodError => e
+        raise NoMethodError, %{"#{self.class}##{meth} method not defined:\n  Raised #{e} at:\n#{e.backtrace.map{|c| '    ' + c}.join("\n")}}
       end
     end
   end
