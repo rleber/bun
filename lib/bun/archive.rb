@@ -74,6 +74,10 @@ module Bun
       each.files(options, &blk)
     end
     
+    def glob(*pat, &blk)
+      each.glob(*pat, &blk)
+    end
+    
     def config
       self.class.config
     end
