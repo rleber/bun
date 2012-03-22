@@ -14,8 +14,8 @@ beginning of a file name, so that '\\+1' refers to a file named '+1', whereas '+
 whatever its name.
 EOT
 def thaw(file_name, n, out=nil)
-  directory = options[:archive] || Archive.location
-  archive = Archive.new(:location=>directory)
+  archive = Archive.new(:location=>options[:archive])
+  directory = archive.location
   file = archive.open(file_name)
   stop "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
   archived_file = file.path

@@ -5,8 +5,7 @@ desc "header_sizes", "Display the length of file headers"
 option 'archive', :aliases=>'-a', :type=>'string',                     :desc=>'Archive location'
 option "sort",    :aliases=>'-s', :type=>'string', :default=>'header', :desc=>"Sort by what field: preamble or header (size)"
 def header_sizes
-  directory = options[:archive] || Archive.location
-  archive = Archive.new(:location=>directory)
+  archive = Archive.new(:location=>options[:archive])
   data = [%w{Tape Preamble Header}]
   sort_column = ['preamble', 'header'].index(options[:sort].downcase)
   stop "!Bad value for --sort option" unless sort_column
