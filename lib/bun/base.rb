@@ -10,6 +10,10 @@ module Bun
       ::File.read(file, :encoding=>encoding)
     end
   end
+  
+  def self.convert_glob(pat)
+    Regexp.new(%{^#{pat.gsub('.', "\\.").gsub('*','.*')}$})
+  end
 end
 
 require 'rubygems'

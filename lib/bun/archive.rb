@@ -4,6 +4,7 @@
 require 'yaml'
 require 'hashie/mash'
 require 'lib/bun/file'
+require 'lib/bun/archive_enumerator'
 
 module Bun
   class Archive
@@ -52,19 +53,29 @@ module Bun
       @location = options[:location] || options[:archive] || self.class.location
       @directory = options[:directory] || 'raw'
       @index = nil
+      @update_indexes = options.has_key?(:update_indexes) ? options[:update_indexes] : true
     end
     
-    def tapes(&blk)
-      tapes = Dir.entries(File.join(location, directory_location)).reject{|f| f=~/^\./}
-      tapes.each(&blk) if block_given?
-      tapes
+    def tapes
+      Dir.entries(File.join(location, directory_location)).reject{|f| f=~/^\./}
     end
-    alias_method :each, :tapes
+
+    def each(&blk)
+      tapes = self.tapes
+      enum = Enumerator.new(self)
+      if block_given?
+        enum.each(&blk)
+      else
+        enum
+      end
+    end
     
     def each_file(options={}, &blk)
-      tapes.each do |tape| 
-        open(tape, options, &blk)
-      end
+      each.files(options, &blk)
+    end
+    
+    def glob(*pat, &blk)
+      each.glob(*pat, &blk)
     end
     
     def config
@@ -183,6 +194,24 @@ module Bun
       @index
     end
     
+    def update_indexes=(value)
+      @update_indexes = value
+    end
+    
+    def update_indexes?
+      @update_indexes
+    end
+    
+    def with_update_indexes(value) # 
+      original_update_indexes = @update_indexes
+      @update_indexes = value
+      begin
+        yield
+      ensure
+        @update_indexes = original_update_indexes
+      end
+    end
+    
     def clear_index
       clear_index_directory
       @index = nil
@@ -214,6 +243,7 @@ module Bun
     end
     
     def clear_index_directory
+      return unless @update_indexes
       FileUtils.rm_rf(index_directory)
     end
     
@@ -246,7 +276,14 @@ module Bun
     end
     
     def _save_index_descriptor(name)
-      ::File.open(File.join(index_directory, "#{name}.descriptor.yml"), 'w') {|f| f.write @index[name].to_yaml }
+      return unless @update_indexes
+      if RUBY_VERSION =~ /^1\.8/
+        mode = 'w'
+      else
+        mode = 'w:us-ascii'
+      end
+      descriptor_file_name = File.join(index_directory, "#{name}.descriptor.yml")
+      ::File.open(descriptor_file_name, mode) {|f| f.write @index[name].to_yaml }
     end
     private :_save_index_descriptor
     
@@ -270,5 +307,37 @@ module Bun
     def exists?(name)
       File.exists?(expanded_tape_path(name))
     end
+    
+    def cp(options={})
+      glob(*options[:from]) do |fname|
+        _cp(fname, options[:to], options)
+      end
+    end
+    
+    def _cp(tape, dest=nil, options={})
+      to_stdout = dest.nil? || dest == '-'
+      index = !options[:bare] && !to_stdout
+      unless to_stdout
+        dest = '.' if dest == ''
+        dest = File.join(dest, File.basename(tape)) if File.directory?(dest)
+      end
+
+      open(tape) do |f|
+        Shell.new(:quiet=>true).write dest, f.read, :mode=>'w:ascii-8bit'
+      end
+
+      if index
+        # Copy index entry, too
+        to_dir = File.dirname(dest)
+        to_archive = Archive.new(:location=>to_dir, :directory=>'')
+        descriptor = self.descriptor(tape)
+        descriptor.original_tape_name = tape unless descriptor.original_tape_name
+        descriptor.original_tape_path = expanded_tape_path(tape) unless descriptor.original_tape_path
+        descriptor.tape_name = File.basename(dest)
+        descriptor.tape_path = File.expand_path(dest)
+        to_archive.update_index(:descriptor=>descriptor)
+      end
+    end
+    private :_cp
   end
 end

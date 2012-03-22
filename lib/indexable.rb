@@ -124,10 +124,17 @@ module Indexable
       range.map{|ix| self.at(ix) }
     end
     
-    def each
-      index = 
-      size.times.do |i|
-        yield at(index)
+    def each(&blk)
+      enum = Enumerator.new do |yielder|
+        size.times do |i|
+          yielder << at(i)
+        end
+      end
+      if block_given?
+        enum.each(&blk)
+      else
+        enum
+      end
     end
   
     REQUIRED_METHODS = [:size, :at]

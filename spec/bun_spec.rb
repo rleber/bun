@@ -152,7 +152,22 @@ describe Bun::Bot do
     include_examples "command with file", 
       "cp ar003.0698 output/cp_ar003.0698 (a directory)", "cp ar003.0698 output/cp_ar003.0698", 
       "cp_ar003.0698.stdout", "output/cp_ar003.0698/ar003.0698", "cp_ar003.0698"
-    context "creates index" do
+    context "multiple files" do
+      before :each do
+        `rm -rf output/multiple_cp`
+        `mkdir output/multiple_cp`
+        `bun cp 'ar*.0698' 'ar*.0605' output/multiple_cp 2>&1`
+      end
+      it "should copy 3 files" do
+        expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.sort
+        result_files = Dir.glob('output/multiple_cp/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+        result_files.should == expected_files
+      end
+      after :each do
+        `rm -rf output/multiple_cp`
+      end
+    end
+    context "index processing" do
       context "for a single file" do
         before :all do
           # warn "> bun #{command}"
@@ -211,7 +226,22 @@ describe Bun::Bot do
         end
         after :all do
           `rm -f output/cp_ar003.0698/ar003.0698`
-          `rm -rf output/cp_ar003.0698.bun_index`
+          `rm -rf output/cp_ar003.0698/.bun_index`
+        end
+      end
+      context "with --bare" do
+        before :all do
+          # warn "> bun #{command}"
+          `rm -rf output/.bun_index`
+          `rm -f output/cp_ar003.0698.out`
+          `bun cp --bare ar003.0698 output/cp_ar003.0698.out 2>&1`
+        end
+        it "does not creates an index" do
+          file_should_not_exist "output/.bun_index"
+        end
+        after :all do
+          `rm -f output/cp_ar003.0698.out`
+          `rm -rf output/.bun_index`
         end
       end
     end
@@ -267,6 +297,9 @@ describe Bun::Bot do
       it "should pull data from the index" do
         @file.should == "from_the_index"
       end
+      after :each do
+        `rm -rf data/test/archive/strange`
+      end
     end
     context "built from the file" do
       before :each do
@@ -277,6 +310,9 @@ describe Bun::Bot do
       end
       it "should not pull data from the index" do
         @file.should_not == "from_the_index"
+      end
+      after :each do
+        `rm -rf data/test/archive/strange`
       end
     end
   end
@@ -291,6 +327,9 @@ describe Bun::Bot do
       it "should pull data from the index" do
         @file.should == "from_the_index"
       end
+      after :each do
+        `rm -rf data/test/archive/strange`
+      end
     end
     context "built from the file" do
       before :each do
@@ -301,6 +340,9 @@ describe Bun::Bot do
       end
       it "should not pull data from the index" do
         @file.should_not == "from_the_index"
+      end
+      after :each do
+        `rm -rf data/test/archive/strange`
       end
     end
   end
