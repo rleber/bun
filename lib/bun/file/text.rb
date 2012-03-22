@@ -14,7 +14,7 @@ module Bun
         @keep_deletes = options[:keep_deletes]
         super
         descriptor.register_fields(:bad_characters, :character_count)
-        @bad_characters = {}
+        @bad_characters = nil
       end
     
       def words=(words)

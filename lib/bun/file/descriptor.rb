@@ -22,7 +22,6 @@ module Bun
         :file_type,
         :catalog_time,
         :name,
-        :open_time,
         :owner,
         :path,
         :specification,

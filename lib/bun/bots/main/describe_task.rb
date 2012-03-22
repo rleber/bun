@@ -8,6 +8,7 @@ option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on archiv
 def describe(file_name)
   archive = Archive.new(options)
   descriptor    = archive.descriptor(file_name, :build=>options[:build])
+  abort "File #{file_name} is not in the archive" unless descriptor
   type          = descriptor.file_type
   shards        = descriptor.shards || []
   catalog_time    = descriptor.catalog_time
