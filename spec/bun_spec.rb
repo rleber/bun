@@ -38,10 +38,7 @@ end
 shared_examples "command" do |descr, command, expected_stdout_file|
   it "handles #{descr} properly" do
     # warn "> bun #{command}"
-    res = `bun #{command} 2>&1`
-    unless RUBY_VERSION =~ /^1\.8/
-      res = res.force_encoding('ascii-8bit')
-    end
+    res = `bun #{command} 2>&1`.force_encoding('ascii-8bit')
     expected_stdout_file = File.join("output", 'test', expected_stdout_file) unless expected_stdout_file =~ %r{/}
     res.should == Bun.readfile(expected_stdout_file)
   end

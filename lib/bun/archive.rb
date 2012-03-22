@@ -277,13 +277,8 @@ module Bun
     
     def _save_index_descriptor(name)
       return unless @update_indexes
-      if RUBY_VERSION =~ /^1\.8/
-        mode = 'w'
-      else
-        mode = 'w:us-ascii'
-      end
       descriptor_file_name = File.join(index_directory, "#{name}.descriptor.yml")
-      ::File.open(descriptor_file_name, mode) {|f| f.write @index[name].to_yaml }
+      ::File.open(descriptor_file_name, 'w:us-ascii') {|f| f.write @index[name].to_yaml }
     end
     private :_save_index_descriptor
     

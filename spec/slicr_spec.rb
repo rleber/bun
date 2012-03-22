@@ -42,11 +42,7 @@ BYTE_VALUES = {
   :bit=>[0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,1,0,1,1,0,1,1,1,0,0,1,0,0,1,0,0],
   :integer=>[0111222333444],
 }
-if RUBY_VERSION =~ /^1\.8/
-  $strings = TestWord.new([?A,?B,?C,?D].inject(0) {|value, ch| value<<9 | ch })
-else
-  $strings = TestWord.new([?A,?B,?C,?D].inject(0) {|value, ch| value<<9 | ch.getbyte(0) })
-end
+$strings = TestWord.new([?A,?B,?C,?D].inject(0) {|value, ch| value<<9 | ch.getbyte(0) })
 $positive = TestWord.new(1)
 $negative = TestWord.new(eval('0b' + '1'*TEST_WIDTH))
 $negative_twos = $negative

@@ -126,11 +126,7 @@ module Bun
       end
       
       def read(fname, size=nil)
-        if RUBY_VERSION =~ /^1\.8/
-          super
-        else
-          ::File.open(fname, "r:ascii-8bit") {|f| f.read(size) }
-        end
+        ::File.open(fname, "r:ascii-8bit") {|f| f.read(size) }
       end
     
       def header(options={}, &blk)
