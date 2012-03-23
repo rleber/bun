@@ -97,7 +97,6 @@ module Bun
           ftype = preamble.file_type
         end
         klass = const_get(ftype.to_s.sub(/^./){|m| m.upcase}) unless ftype.is_a?(Class)
-        open_time = nil
         if options[:header]
           if ftype == :frozen
             limit = Frozen.send(:new, :words=>preamble.words, :header=>true).header_size
@@ -106,10 +105,8 @@ module Bun
           end
         else
           limit = nil
-          open_time = Time.now
         end
         f = klass.send(:new, options.merge(:n=>limit))
-        f.open_time = open_time if open_time
         res = if block_given?
           begin
             yield(f)
@@ -126,11 +123,7 @@ module Bun
       end
       
       def read(fname, size=nil)
-        if RUBY_VERSION =~ /^1\.8/
-          super
-        else
-          ::File.open(fname, "r:ascii-8bit") {|f| f.read(size) }
-        end
+        ::File.open(fname, "r:ascii-8bit") {|f| f.read(size) }
       end
     
       def header(options={}, &blk)
@@ -184,7 +177,6 @@ module Bun
     attr_reader :characters
     attr_reader :descriptor
     attr_reader :file_content
-    attr_reader :open_time
     attr_reader :packed_characters
     attr_reader :tape_path
     attr_reader :words
@@ -197,7 +189,6 @@ module Bun
       @size = options[:size]
       @header = options[:header]
       @archive = options[:archive]
-      self.open_time = options[:open_time]
       clear_errors
       self.words = self.class.get_words(options[:limit], options)
       yield(self) if block_given?
@@ -217,9 +208,9 @@ module Bun
       @errors << err
     end
     
-    def open_time=(time)
-      return unless time
-      @open_time = time
+    def open_time
+      return nil unless tape_path && File.exists?(tape_path)
+      File.atime(tape_path)
     end
     
     def close

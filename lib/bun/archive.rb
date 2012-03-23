@@ -1,9 +1,10 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env rvm-ruby 1.9.3
 # -*- encoding: us-ascii -*-
 
 require 'yaml'
 require 'hashie/mash'
 require 'lib/bun/file'
+require 'lib/bun/archive_enumerator'
 
 module Bun
   class Archive
@@ -11,71 +12,75 @@ module Bun
     include CacheableMethods
     
     DIRECTORY_LOCATIONS = %w{location log_file raw_directory extract_directory files_directory clean_directory dirty_directory}
-    OTHER_LOCATIONS = %w{repository catalog_file}
     
     # TODO Why is a class variable necessary here?
-    
-    class << self
-      include CacheableMethods
-    
-      def config_dir(name)
-        dir = config[name.to_s]
-        return nil unless dir
-        dir = File.expand_path(dir) if dir=~/^~/
-        dir
-      end
-  
-      def config(config_file="data/archive_config.yml")
-        content = ::Bun.readfile(config_file, :encoding=>'us-ascii')
-        @config = YAML.load(content)
-        @config['repository'] ||= ENV['BUN_REPOSITORY']
-        @config
-      end
-      cache :config
-    
-      DIRECTORY_LOCATIONS.each do |locn|
-        define_method locn do ||
-          config_dir(locn)
-        end
-      end
-      
-      OTHER_LOCATIONS.each do |locn|
-        define_method locn do ||
-          config[locn]
-        end
-      end
-    end
     
     attr_reader :location
     
     def initialize(options={})
-      @location = options[:location] || options[:archive] || self.class.location
+      @location = options[:location] || options[:archive] || default_location
       @directory = options[:directory] || 'raw'
       @index = nil
+      @update_indexes = options.has_key?(:update_indexes) ? options[:update_indexes] : true
     end
     
-    def tapes(&blk)
-      tapes = Dir.entries(File.join(location, directory_location)).reject{|f| f=~/^\./}
-      tapes.each(&blk) if block_given?
-      tapes
+    def tapes
+      Dir.entries(File.join(location, directory_location)).reject{|f| f=~/^\./}
     end
-    alias_method :each, :tapes
-    
-    def each_file(options={}, &blk)
-      tapes.each do |tape| 
-        open(tape, options, &blk)
+
+    def each(&blk)
+      tapes = self.tapes
+      enum = Enumerator.new(self)
+      if block_given?
+        enum.each(&blk)
+      else
+        enum
       end
     end
     
-    def config
-      self.class.config
+    def each_file(options={}, &blk)
+      each.files(options, &blk)
     end
     
+    def glob(*pat, &blk)
+      each.glob(*pat, &blk)
+    end
+    
+    def default_location
+      File.expand_path(default_config['location'])
+    end
+
     def config_dir(name)
-      self.class.config_dir(name)
+      dir = config[name.to_s]
+      return nil unless dir
+      dir = File.expand_path(dir) if dir=~/^~/
+      dir
     end
     
-    # TODO Are these necessary?
+    def default_config_file
+      File.expand_path(File.join(File.dirname(__FILE__), '..','..','data','archive_config.yml'))
+    end
+    
+    def read_config_file(config_file)
+      content = ::Bun.readfile(config_file, :encoding=>'us-ascii')
+      config = YAML.load(content)
+      config['repository'] ||= ENV['BUN_REPOSITORY']
+      config
+    end
+    
+    def default_config
+      read_config_file(default_config_file)
+    end
+    cache :default_config
+    
+    def config(config_file=nil)
+      return read_config_file(config_file) if config_file && File.file?(config_file)
+      config_file = File.join(@location, '.config.yml')
+      return read_config_file(config_file) if File.file?(config_file)
+      default_config
+    end
+    cache :config
+    
     (DIRECTORY_LOCATIONS - %w{location}).each do |locn|
       define_method locn do ||
         config_dir(locn)
@@ -87,10 +92,8 @@ module Bun
       config_dir("#{directory}_directory") || directory
     end
     
-    OTHER_LOCATIONS.each do |locn|
-      define_method locn do ||
-        File.expand_path(File.join(location, self.class.send(locn)))
-      end
+    def catalog_file
+      File.expand_path(File.join(location, config['catalog_file']))
     end
     
     def index_directory
@@ -128,6 +131,7 @@ module Bun
     
     def catalog
       content = Bun.readfile(catalog_file, :encoding=>'us-ascii')
+      return [] unless content
       specs = content.split("\n").map do |line|
         words = line.strip.split(/\s+/)
         raise RuntimeError, "Bad line in index file: #{line.inspect}" unless words.size == 3
@@ -183,6 +187,24 @@ module Bun
       @index
     end
     
+    def update_indexes=(value)
+      @update_indexes = value
+    end
+    
+    def update_indexes?
+      @update_indexes
+    end
+    
+    def with_update_indexes(value) # 
+      original_update_indexes = @update_indexes
+      @update_indexes = value
+      begin
+        yield
+      ensure
+        @update_indexes = original_update_indexes
+      end
+    end
+    
     def clear_index
       clear_index_directory
       @index = nil
@@ -203,7 +225,6 @@ module Bun
       descr
     end
     
-    # TODO Is this being used anywhere?
     def build_descriptor(name)
       open(name, :header=>true) {|f| build_descriptor_for_file(f) }
     end
@@ -214,6 +235,7 @@ module Bun
     end
     
     def clear_index_directory
+      return unless @update_indexes
       FileUtils.rm_rf(index_directory)
     end
     
@@ -246,20 +268,24 @@ module Bun
     end
     
     def _save_index_descriptor(name)
-      ::File.open(File.join(index_directory, "#{name}.descriptor.yml"), 'w') {|f| f.write @index[name].to_yaml }
+      return unless @update_indexes
+      descriptor_file_name = File.join(index_directory, "#{name}.descriptor.yml")
+      # TODO This trap code was inserted to catch a tricky little bug; I'm leaving it here for awhile
+      # if name == 'ar145.2699' && @index[name][:updated].nil?
+      #   puts "_save_index_descriptor(#{name.inspect}): index=#{@index[name].inspect}"
+      #   raise RuntimeError, ":updated == nil"
+      # end
+      ::File.open(descriptor_file_name, 'w:us-ascii') {|f| f.write @index[name].to_yaml }
     end
     private :_save_index_descriptor
     
     def descriptor(name, options={})
-      # puts "In #{self.class}#descriptor(#{name.inspect}, #{options.inspect}): index[#{name.inspect}]=#{index[name].inspect}"
       if !exists?(name)
         nil
       elsif !options[:build] && index[name]
         Hashie::Mash.new(index[name])
-        # index[name]
       else
         Hashie::Mash.new(build_descriptor(name))
-        # build_descriptor(name)
       end
     end
     
@@ -270,5 +296,60 @@ module Bun
     def exists?(name)
       File.exists?(expanded_tape_path(name))
     end
+    
+    def rm(options={})
+      glob(*options[:tapes]) do |fname|
+        _rm(fname, options)
+      end
+    end
+    
+    def _rm(tape)
+      FileUtils.rm(expanded_tape_path(tape))
+    end
+    private :_rm
+    
+    def cp(options={})
+      glob(*options[:from]) do |fname|
+        _cp(fname, options[:to], options)
+      end
+    end
+    
+    def _cp(tape, dest=nil, options={})
+      to_stdout = dest.nil? || dest == '-'
+      index = !options[:bare] && !to_stdout
+      unless to_stdout
+        dest = '.' if dest == ''
+        dest = File.join(dest, File.basename(tape)) if File.directory?(dest)
+      end
+
+      open(tape) do |f|
+        Shell.new(:quiet=>true).write dest, f.read, :mode=>'w:ascii-8bit'
+      end
+
+      if index
+        # Copy index entry, too
+        to_dir = File.dirname(dest)
+        to_archive = Archive.new(:location=>to_dir, :directory=>'')
+        descriptor = self.descriptor(tape)
+        descriptor.original_tape_name = tape unless descriptor.original_tape_name
+        descriptor.original_tape_path = expanded_tape_path(tape) unless descriptor.original_tape_path
+        descriptor.tape_name = File.basename(dest)
+        descriptor.tape_path = File.expand_path(dest)
+        to_archive.update_index(:descriptor=>descriptor)
+      end
+    end
+    private :_cp
+    
+    def mv(options={})
+      glob(*options[:from]) do |fname|
+        _mv(fname, options[:to], options)
+      end
+    end
+    
+    def _mv(tape, dest, options={})
+      _cp(tape, dest, options)
+      _rm(tape)
+    end
+    private :_mv
   end
 end

@@ -3,12 +3,13 @@
 
 module Bun
   def self.readfile(file, options={})
-    if RUBY_VERSION =~ /^1\.8/
-      ::File.read(file)
-    else
-      encoding = options[:encoding] || 'ascii-8bit'
-      ::File.read(file, :encoding=>encoding)
-    end
+    return nil unless File.file?(file)
+    encoding = options[:encoding] || 'ascii-8bit'
+    ::File.read(file, :encoding=>encoding)
+  end
+  
+  def self.convert_glob(pat)
+    Regexp.new(%{^#{pat.gsub('.', "\\.").gsub('*','.*')}$})
   end
 end
 

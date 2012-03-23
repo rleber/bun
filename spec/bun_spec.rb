@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env rvm-ruby 1.9.3
 # -*- encoding: us-ascii -*-
 
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
@@ -38,10 +38,7 @@ end
 shared_examples "command" do |descr, command, expected_stdout_file|
   it "handles #{descr} properly" do
     # warn "> bun #{command}"
-    res = `bun #{command} 2>&1`
-    unless RUBY_VERSION =~ /^1\.8/
-      res = res.force_encoding('ascii-8bit')
-    end
+    res = `bun #{command} 2>&1`.force_encoding('ascii-8bit')
     expected_stdout_file = File.join("output", 'test', expected_stdout_file) unless expected_stdout_file =~ %r{/}
     res.should == Bun.readfile(expected_stdout_file)
   end
@@ -128,6 +125,27 @@ describe Bun::Bot do
     include_examples "command", "describe text file", "describe ar003.0698", "describe_ar003.0698"
     include_examples "command", "describe frozen file", "describe ar025.0634", "describe_ar025.0634"
   end
+  
+  context "functioning outside the base directory" do
+    before :each do
+      raise RuntimeError, "In unexpected working directory: #{Dir.pwd}" \
+        unless File.expand_path(Dir.pwd) == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+      @original_dir = Dir.pwd
+    end
+    it "should start in the base directory" do
+      File.expand_path(Dir.pwd).should == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+    end
+    it "should function okay in a different directory" do
+      `cd ~/bun_archive ; bun describe ar003.0698`
+      $?.exitstatus.should == 0
+    end
+    after :each do
+      Dir.chdir(@original_dir)
+      raise RuntimeError, "Not back in normal working directory: #{Dir.pwd}" \
+        unless File.expand_path(Dir.pwd) == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+    end
+  end
+  
   describe "ls" do
     include_examples "command", "ls", "ls", "ls"
     include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -t ar003.0698", "ls_ldrt_ar003.0698"
@@ -152,7 +170,22 @@ describe Bun::Bot do
     include_examples "command with file", 
       "cp ar003.0698 output/cp_ar003.0698 (a directory)", "cp ar003.0698 output/cp_ar003.0698", 
       "cp_ar003.0698.stdout", "output/cp_ar003.0698/ar003.0698", "cp_ar003.0698"
-    context "creates index" do
+    context "multiple files" do
+      before :each do
+        `rm -rf output/multiple_cp`
+        `mkdir output/multiple_cp`
+        `bun cp 'ar*.0698' 'ar*.0605' output/multiple_cp 2>&1`
+      end
+      it "should copy 3 files" do
+        expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.sort
+        result_files = Dir.glob('output/multiple_cp/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+        result_files.should == expected_files
+      end
+      after :each do
+        `rm -rf output/multiple_cp`
+      end
+    end
+    context "index processing" do
       context "for a single file" do
         before :all do
           # warn "> bun #{command}"
@@ -211,7 +244,22 @@ describe Bun::Bot do
         end
         after :all do
           `rm -f output/cp_ar003.0698/ar003.0698`
-          `rm -rf output/cp_ar003.0698.bun_index`
+          `rm -rf output/cp_ar003.0698/.bun_index`
+        end
+      end
+      context "with --bare" do
+        before :all do
+          # warn "> bun #{command}"
+          `rm -rf output/.bun_index`
+          `rm -f output/cp_ar003.0698.out`
+          `bun cp --bare ar003.0698 output/cp_ar003.0698.out 2>&1`
+        end
+        it "does not creates an index" do
+          file_should_not_exist "output/.bun_index"
+        end
+        after :all do
+          `rm -f output/cp_ar003.0698.out`
+          `rm -rf output/.bun_index`
         end
       end
     end
@@ -267,6 +315,9 @@ describe Bun::Bot do
       it "should pull data from the index" do
         @file.should == "from_the_index"
       end
+      after :each do
+        `rm -rf data/test/archive/strange`
+      end
     end
     context "built from the file" do
       before :each do
@@ -277,6 +328,9 @@ describe Bun::Bot do
       end
       it "should not pull data from the index" do
         @file.should_not == "from_the_index"
+      end
+      after :each do
+        `rm -rf data/test/archive/strange`
       end
     end
   end
@@ -291,6 +345,9 @@ describe Bun::Bot do
       it "should pull data from the index" do
         @file.should == "from_the_index"
       end
+      after :each do
+        `rm -rf data/test/archive/strange`
+      end
     end
     context "built from the file" do
       before :each do
@@ -301,6 +358,9 @@ describe Bun::Bot do
       end
       it "should not pull data from the index" do
         @file.should_not == "from_the_index"
+      end
+      after :each do
+        `rm -rf data/test/archive/strange`
       end
     end
   end
@@ -319,6 +379,34 @@ describe Bun::Bot do
     end
     context "thaw" do
       include_examples "command", "freezer thaw ar004.0888 +0", "freezer thaw ar004.0888 +0", "freezer_thaw_ar004.0888_0"
+    end
+  end
+  context "bun archive extract" do
+    before :all do
+      `rm -rf data/test/archive/extract_source`
+      `cp -r data/test/archive/extract_source_init data/test/archive/extract_source`
+      `bun archive extract --archive data/test/archive/extract_source 2>output/archive_extract_stderr.txt >output/archive_extract_stdout.txt`
+    end
+    it "should create a tapes directory" do
+      file_should_exist "data/test/archive/extract_source/tapes"
+    end
+    it "should write nothing on stdout" do
+      Bun.readfile('output/archive_extract_stdout.txt').chomp.should == ""
+    end
+    it "should write file decoding messages on stderr" do
+      Bun.readfile("output/archive_extract_stderr.txt").chomp.should == Bun.readfile('output/test/archive_extract_stderr.txt').chomp
+    end
+    it "should create the appropriate files" do
+      File.open('output/archive_extract_files.txt', 'w') do |f|
+        f.puts Dir.glob('data/test/archive/extract_source/tapes/**/*')
+      end
+      Bun.readfile('output/archive_extract_files.txt').chomp.should == Bun.readfile('output/test/archive_extract_files.txt').chomp
+    end
+    after :all do
+      `rm -rf data/test/archive/extract_source`
+      `rm -f output/archive_extract_stderr.txt`
+      `rm -f output/archive_extract_stdout.txt`
+      `rm -f output/archive_extract_files.txt`
     end
   end
 end

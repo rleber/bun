@@ -12,7 +12,8 @@ module Bun
       # TODO do we ever instantiate a File::Frozen without a new file? If not, refactor
       def initialize(options={})
         super
-        descriptor.register_field(:shards)
+        # TODO Why is file_date necessary?
+        descriptor.register_fields(:shards, :file_date, :file_time)
         @strict = options[:strict]
         @warn = options[:warn]
       end

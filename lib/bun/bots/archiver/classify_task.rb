@@ -10,9 +10,9 @@ option 'threshold', :aliases=>'-t', :type=>'numeric',
     :desc=>"Set a threshold: how many errors before a file is 'dirty'? (default #{DEFAULT_THRESHOLD})"
 def classify(from=nil, clean=nil, dirty=nil)
   @dryrun = options[:dryrun]
-  directory = options[:archive] || Archive.location
   threshold = options[:threshold] || DEFAULT_THRESHOLD
-  archive = Archive.new(:location=>directory)
+  archive = Archive.new(:location=>options[:archive])
+  directory = archive.location
   from ||= archive.files_directory
   from = File.join(archive.location, from)
   log_file = File.join(from, archive.log_file)
