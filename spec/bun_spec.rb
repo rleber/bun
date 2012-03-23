@@ -381,4 +381,32 @@ describe Bun::Bot do
       include_examples "command", "freezer thaw ar004.0888 +0", "freezer thaw ar004.0888 +0", "freezer_thaw_ar004.0888_0"
     end
   end
+  context "bun archive extract" do
+    before :all do
+      `rm -rf data/test/archive/extract_source`
+      `cp -r data/test/archive/extract_source_init data/test/archive/extract_source`
+      `bun archive extract --archive data/test/archive/extract_source 2>output/archive_extract_stderr.txt >output/archive_extract_stdout.txt`
+    end
+    it "should create a tapes directory" do
+      file_should_exist "data/test/archive/extract_source/tapes"
+    end
+    it "should write nothing on stdout" do
+      Bun.readfile('output/archive_extract_stdout.txt').chomp.should == ""
+    end
+    it "should write file decoding messages on stderr" do
+      Bun.readfile("output/archive_extract_stderr.txt").chomp.should == Bun.readfile('output/test/archive_extract_stderr.txt').chomp
+    end
+    it "should create the appropriate files" do
+      File.open('output/archive_extract_files.txt', 'w') do |f|
+        f.puts Dir.glob('data/test/archive/extract_source/tapes/**/*')
+      end
+      Bun.readfile('output/archive_extract_files.txt').chomp.should == Bun.readfile('output/test/archive_extract_files.txt').chomp
+    end
+    after :all do
+      `rm -rf data/test/archive/extract_source`
+      `rm -f output/archive_extract_stderr.txt`
+      `rm -f output/archive_extract_stdout.txt`
+      `rm -f output/archive_extract_files.txt`
+    end
+  end
 end

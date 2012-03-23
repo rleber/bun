@@ -23,6 +23,6 @@ def thaw(file_name, n, out=nil)
   content = file.shards.at(file.shard_index(n))
   shell = Shell.new
   shell.write out, content, :timestamp=>file.file_time, :quiet=>true
-  warn "Thawed with #{file.errors} decoding errors" if options[:warn] && file.errors > 0
-  shell.log options[:log], "thaw #{out.inspect} from #{file_name.inspect} with #{file.errors} errors" if options[:log]
+  warn "Thawed with #{file.errors.count} decoding errors" if options[:warn] && file.errors > 0
+  shell.log options[:log], "thaw #{out.inspect} from #{file_name.inspect} with #{file.errors.count} errors" if options[:log]
 end
