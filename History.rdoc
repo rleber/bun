@@ -1,3 +1,7 @@
+=== 0.0.4 2012-03-22
+
+* Substantial bug fixes, refactoring, and tested archive extract command
+
 === 0.0.3 2012-03-22
 
 * Improved indexing, and retention of processing statistics in index
