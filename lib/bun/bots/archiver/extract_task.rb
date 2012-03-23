@@ -17,7 +17,8 @@ def extract(to=nil)
   ix.each do |tape_name|
     file = archive.open(tape_name)
     file_path = file.path
-    if file.frozen?
+    case file.file_type
+    when :frozen
       file.shard_count.times do |i|
         descr = file.shard_descriptor(i)
         shard_name = descr.name
@@ -28,12 +29,14 @@ def extract(to=nil)
         warn "thaw #{tape_name} #{shard_name}" unless @dryrun
         shell.thaw tape_name, shard_name, f, :log=>log_file
       end
-    else
+    when :text
       f = File.join(to, tape_name, file_path)
       dir = File.dirname(f)
       shell.mkdir_p dir
       warn "unpack #{tape_name}" unless @dryrun
       shell.unpack tape_name, f, :log=>log_file
+    else
+      warn "skipping #{tape_name}: unknown type (#{file.file_type})"
     end
   end
 end
