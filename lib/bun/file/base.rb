@@ -2,6 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 require 'lib/bun/file/descriptor'
+require 'date'
 
 module Bun
 
@@ -62,6 +63,14 @@ module Bun
       VALID_CONTROL_CHARACTER_REGEXP = /[#{VALID_CONTROL_CHARACTERS}]/
       INVALID_CHARACTER_REGEXP = /(?!(?>#{VALID_CONTROL_CHARACTER_REGEXP}))[[:cntrl:]]/
       VALID_CHARACTER_REGEXP = /(?!(?>#{INVALID_CHARACTER_REGEXP}))./
+
+      def control_character_counts(text)
+        control_characters = Hash.new(0)
+        ["\t","\b","\f","\v",File.invalid_character_regexp].each do |pat|
+          text.scan(pat) {|ch| control_characters[ch] += 1 }
+        end
+        control_characters
+      end
 
       def valid_control_character_regexp
         VALID_CONTROL_CHARACTER_REGEXP
@@ -195,7 +204,7 @@ module Bun
     end
   
     private_class_method :new
-  
+      
     def header?
       @header
     end

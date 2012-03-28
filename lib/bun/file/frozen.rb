@@ -7,14 +7,14 @@ module Bun
       include CacheableMethods
       
       attr_reader :file
-      attr_accessor :strict, :warn
+      attr_accessor :status
+      attr_accessor :warn
     
       # TODO do we ever instantiate a File::Frozen without a new file? If not, refactor
       def initialize(options={})
         super
         # TODO Why is file_date necessary?
         descriptor.register_fields(:shards, :file_date, :file_time)
-        @strict = options[:strict]
         @warn = options[:warn]
       end
       
@@ -165,7 +165,12 @@ module Bun
       end
       
       def shards
-        LazyArray.new(shard_count) {|i| shard_lines.at(i).map{|l| l[:content]}.join }
+        LazyArray.new(shard_count) do |i|
+          text = shard_lines.at(i).map{|l| l[:content]}.join
+          shard_descriptors.at(i).control_characters = File.control_character_counts(text)
+          shard_descriptors.at(i).character_count    = text.size
+          text
+        end
       end
     
       def shard_lines
@@ -177,13 +182,18 @@ module Bun
         line_offset = 0
         lines = []
         warned = false
+        shard_descriptor(n).status = :readable
         while line_offset < words.size
-          last_line_word, line, okay = thaw_line(words, line_offset)
+          last_line_word, line, okay = thaw_line(n, words, line_offset)
           if !line
-            stop "!Bad line at #{'%o'%line_offset}: #{line.inspect}" if @strict
+            if lines.size == 0
+              shard_descriptor(n).status = :unreadable
+            else
+              shard_descriptor(n).status = :truncated
+            end
             Kernel.warn "Bad lines corrected" if !warned && @warn
             warned = true
-            line_offset += 1
+            break
           else
             raw_line = line
             line.sub!(/\r\0*$/,"\n")
@@ -196,7 +206,7 @@ module Bun
       end
     
       # TODO Refactor like File::Text#unpack_line
-      def thaw_line(words, line_offset)
+      def thaw_line(n, words, line_offset)
         line = ""
         line_length = words.size
         content_offset = line_offset
@@ -210,7 +220,7 @@ module Bun
               line_length = line_length(word)
               ch_count = 3
             else
-              error "Bad descriptor at #{content_offset}: #{word.inspect}"
+              error "Shard #{n}: Bad descriptor at #{content_offset}: #{word.inspect}"
               okay = false
             end
           end
@@ -218,7 +228,7 @@ module Bun
           line += chs.sub(/#{File.invalid_character_regexp}.*/,'') # Remove invalid control characters and all following letters
           break if chs=~/\r/
           if !good_characters?(chs) || line.size >= line_length
-            error "Bad characters in line"
+            error "Shard #{n}: Bad characters in line at #{content_offset}"
             okay = false
             break
           end
