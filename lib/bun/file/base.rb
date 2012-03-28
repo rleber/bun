@@ -2,6 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 require 'lib/bun/file/descriptor'
+require 'date'
 
 module Bun
 
