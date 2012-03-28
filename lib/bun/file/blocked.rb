@@ -6,13 +6,14 @@ module Bun
     class Blocked < Bun::File
       include CacheableMethods
       
+      attr_accessor :status
       attr_accessor :strict
       attr_reader   :good_blocks
       
       def initialize(options={}, &blk)
         super
         @strict = options[:strict]
-        descriptor.register_fields(:blocks, :good_blocks)
+        descriptor.register_fields(:blocks, :good_blocks, :status)
       end
 
       def words=(words)
@@ -42,6 +43,7 @@ module Bun
         deblocked_content = []
         offset = 0
         block_number = 1
+        self.status = :readable
         @good_blocks = 0
         loop do
           break if offset >= file_content.size
@@ -52,6 +54,11 @@ module Bun
               raise "Bad block number #{block_number} in #{tape} at #{'%#o' % (offset+content_offset)}: expected #{'%07o' % block_number}; got #{file_content[offset].half_word[0]}"
             else
               error "Truncated before block #{block_number} at #{'%#o' % (offset+content_offset)}"
+              if block_number == 1
+                self.status = :unreadable
+              else
+                self.status = :truncated
+              end
               break
             end
           end

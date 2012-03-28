@@ -33,7 +33,7 @@ def text_status
         vertical_tabs = descr.control_characters["\v"] || 0
         bad_character_set = (descr.control_characters.keys - ["\t","\b","\f","\v"]).sort.join
         control_characters = descr.control_characters.reject{|ch,ct| ["\t","\b","\f","\v"].include?(ch) }.map{|ch,ct| ct}.inject{|sum,ct| sum+ct } || 0
-        status = descr.good_blocks < descr.blocks ? "Truncated" : "Readable"
+        status = descr.status.capitalize
         table << [tape_name, status, descr.blocks, descr.good_blocks, descr.character_count, tabs, backspaces, vertical_tabs, form_feeds, control_characters, bad_character_set.inspect[1...-1]]
       else
         table << [tape_name, 'Unreadable', descr.blocks, 0]
