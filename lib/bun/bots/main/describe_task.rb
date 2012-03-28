@@ -24,7 +24,7 @@ def describe(file_name)
   end
   puts "Owner:         #{descriptor.owner}"
   puts "Subdirectory:  #{descriptor.subdirectory}"
-  puts "Basename:      #{descriptor.name}"
+  puts "Basename:      #{descriptor.basename}"
   puts "Description:   #{descriptor.description}"
   puts "Specification: #{descriptor.specification}"
   puts "Catalog date:  #{catalog_time_display}"
