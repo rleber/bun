@@ -27,14 +27,14 @@ FIELD_CONVERSIONS = {
   :shard_count => lambda {|f| f==0 ? '' : f },
 }
 FIELD_HEADINGS = {
-  :description => 'Description',
-  :file_size   => 'Size',
-  :file_type   => 'Type',
-  :path        => 'File',
-  :shard_count => 'Shards',
-  :location   => 'Tape',
-  :location_path   => 'Tape',
-  :updated     => 'Updated',
+  :description   => 'Description',
+  :file_size     => 'Size',
+  :file_type     => 'Type',
+  :path          => 'File/Directory',
+  :shard_count   => 'Shards',
+  :location      => 'Location',
+  :location_path => 'Location',
+  :updated       => 'Updated',
 }
 DEFAULT_VALUES = {
   :file_size   => 0,

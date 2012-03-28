@@ -5,7 +5,7 @@ desc "count_shards", "Count shards in frozen files three different ways"
 option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
 def count_shards
   archive = Archive.new(:location=>options[:archive])
-  table = [%w{Tape Word1 Positions Valid Flag}]
+  table = [%w{Location Word1 Positions Valid Flag}]
   flagged = false
   archive.each do |location|
     file = archive.open(location, :header=>true)

@@ -62,7 +62,7 @@ def text_status
   if table.size == 0
     puts "No files unpacked"
   else
-    table.unshift %w{Tape Status Blocks Good\ Blocks Chars Tabs Backspaces Vertical\ Tabs Form\ Feeds Invalid\ Characters List}
+    table.unshift %w{Location Status Blocks Good\ Blocks Chars Tabs Backspaces Vertical\ Tabs Form\ Feeds Invalid\ Characters List}
     puts table.justify_rows.map{|row| row.join('  ')}.join("\n")
   end
 end

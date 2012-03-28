@@ -20,7 +20,7 @@ def dump(file_name)
   file = Bun::File::Text.open(file_path)
   archived_file = file.path
   archived_file = "--unknown--" unless archived_file
-  puts "Archive for file #{archived_file}:"
+  puts "Archive at #{file.location_path} for file #{archived_file}:"
   words = file.words
   lc = Dump.dump(words, options.merge(:offset=>offset))
   puts "No data to dump" if lc == 0

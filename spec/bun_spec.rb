@@ -344,7 +344,7 @@ describe Bun::Bot do
         `rm -rf data/test/archive/strange`
         `cp -r data/test/archive/strange_init data/test/archive/strange`
         lines = `bun describe --archive "data/test/archive/strange" ar003.0698`.chomp.split("\n")
-        @file = lines.find {|line| line =~ /^Name:/}.split(/\s+/)[-1].strip
+        @file = lines.find {|line| line =~ /^Basename:/}.split(/\s+/)[-1].strip
       end
       it "should pull data from the index" do
         @file.should == "from_the_index"
@@ -358,7 +358,7 @@ describe Bun::Bot do
         `rm -rf data/test/archive/strange`
         `cp -r data/test/archive/strange_init data/test/archive/strange`
         lines = `bun describe --archive "data/test/archive/strange" --build ar003.0698`.chomp.split("\n")
-        @file = lines.find {|line| line =~ /^Name:/}.split(/\s+/)[-1].strip
+        @file = lines.find {|line| line =~ /^Basename:/}.split(/\s+/)[-1].strip
       end
       it "should not pull data from the index" do
         @file.should_not == "from_the_index"

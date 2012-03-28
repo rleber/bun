@@ -1,4 +1,4 @@
-Tape            Status      Blocks  Good Blocks  Chars  Tabs  Backspaces  Vertical Tabs  Form Feeds  Invalid Characters  List                                                                                                
+Location        Status      Blocks  Good Blocks  Chars  Tabs  Backspaces  Vertical Tabs  Form Feeds  Invalid Characters  List                                                                                                
 ar003.0698      Readable    8       8            8568   114   0           0              0           0                                                                                                                       
 ar003.0699      Readable    2       2            1518   0     0           0              0           12                  \x18\x1C\x1D\x1E                                                                                    
 ar003.0700      Readable    1       1            279    0     0           0              0           0                                                                                                                       

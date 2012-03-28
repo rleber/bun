@@ -15,21 +15,25 @@ def describe(file_name)
   catalog_time_display = catalog_time ? catalog_time.strftime('%Y/%m/%d') : "n/a"
   
   # TODO Refactor using Array#justify_rows
-  puts "Tape:            #{descriptor.location}"
-  puts "Tape path:       #{descriptor.location_path}"
-  puts "Archived file:   #{descriptor.path}"
-  puts "Owner:           #{descriptor.owner}"
-  puts "Subdirectory:    #{descriptor.subdirectory}"
-  puts "Name:            #{descriptor.name}"
-  puts "Description:     #{descriptor.description}"
-  puts "Specification:   #{descriptor.specification}"
-  puts "Catalog date:    #{catalog_time_display}"
+  puts "Location:      #{descriptor.location}"
+  puts "Path:          #{descriptor.location_path}"
   if type == :frozen
-    puts "File time:       #{descriptor.file_time.strftime(TIME_FORMAT)}"
-    puts "Updated at:      #{descriptor.updated.strftime(TIME_FORMAT)}"
+    puts "Directory:     #{descriptor.path}"
+  else
+    puts "File:          #{descriptor.path}"
   end
-  puts "Size (words):    #{descriptor.file_size}"
-  puts "Type:            #{type.to_s.sub(/^./) {|m| m.upcase}}"
+  puts "Owner:         #{descriptor.owner}"
+  puts "Subdirectory:  #{descriptor.subdirectory}"
+  puts "Basename:      #{descriptor.name}"
+  puts "Description:   #{descriptor.description}"
+  puts "Specification: #{descriptor.specification}"
+  puts "Catalog date:  #{catalog_time_display}"
+  if type == :frozen
+    puts "File time:     #{descriptor.file_time.strftime(TIME_FORMAT)}"
+    puts "Updated at:    #{descriptor.updated.strftime(TIME_FORMAT)}"
+  end
+  puts "Size (words):  #{descriptor.file_size}"
+  puts "Type:          #{type.to_s.sub(/^./) {|m| m.upcase}}"
 
   if shards.size > 0
     # Display shard information in a table, SHARDS_ACROSS shards per row,
