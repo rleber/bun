@@ -5,6 +5,7 @@ require 'yaml'
 require 'hashie/mash'
 require 'lib/bun/file'
 require 'lib/bun/archive_enumerator'
+require 'date'
 
 module Bun
   class Archive
