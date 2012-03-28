@@ -1,5 +1,5 @@
 TODO
-Set file.status in File::Text.unpack; use it in text_status
+Insert blank columns in characters in bun dump, bun freezer dump
 Change tape_name to location, tape_path to location_path
 Separate file.open from file.load/read
 Set atime only when we actually read a file (not just the preamble)
