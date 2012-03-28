@@ -2,6 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 # TODO Move this to a Gem
+require 'date'
 class Date
   def to_gm_time
     to_time(new_offset, :gm)
