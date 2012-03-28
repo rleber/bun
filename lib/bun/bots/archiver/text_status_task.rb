@@ -20,22 +20,43 @@ def text_status
     $stderr.puts tape_name unless options[:quiet]
     descr = archive.descriptor(tape_name)
     # TODO Apply this to frozen files, too
-    next unless descr.file_type == :text
-    if options[:build] || descr.bad_characters.nil?
-      text = archive.open(tape_name) {|f| f.text rescue nil }
-      descr = archive.descriptor(tape_name)
-    end
-    if descr.good_blocks > 0
-      tabs = descr.bad_characters["\t"] || 0
-      backspaces = descr.bad_characters["\b"] || 0
-      form_feeds = descr.bad_characters["\f"] || 0
-      vertical_tabs = descr.bad_characters["\v"] || 0
-      bad_character_set = (descr.bad_characters.keys - ["\t","\b","\f","\v"]).sort.join
-      bad_characters = descr.bad_characters.reject{|ch,ct| ["\t","\b","\f","\v"].include?(ch) }.map{|ch,ct| ct}.inject{|sum,ct| sum+ct } || 0
-      status = descr.good_blocks < descr.blocks ? "Truncated" : "Readable"
-      table << [tape_name, status, descr.blocks, descr.good_blocks, descr.character_count, tabs, backspaces, vertical_tabs, form_feeds, bad_characters, bad_character_set.inspect[1...-1]]
-    else
-      table << [tape_name, 'Unreadable', descr.blocks, 0]
+    case descr.file_type
+    when :text
+      if options[:build] || descr.control_characters.nil?
+        text = archive.open(tape_name) {|f| f.text rescue nil }
+        descr = archive.descriptor(tape_name)
+      end
+      if descr.good_blocks > 0
+        tabs = descr.control_characters["\t"] || 0
+        backspaces = descr.control_characters["\b"] || 0
+        form_feeds = descr.control_characters["\f"] || 0
+        vertical_tabs = descr.control_characters["\v"] || 0
+        bad_character_set = (descr.control_characters.keys - ["\t","\b","\f","\v"]).sort.join
+        control_characters = descr.control_characters.reject{|ch,ct| ["\t","\b","\f","\v"].include?(ch) }.map{|ch,ct| ct}.inject{|sum,ct| sum+ct } || 0
+        status = descr.good_blocks < descr.blocks ? "Truncated" : "Readable"
+        table << [tape_name, status, descr.blocks, descr.good_blocks, descr.character_count, tabs, backspaces, vertical_tabs, form_feeds, control_characters, bad_character_set.inspect[1...-1]]
+      else
+        table << [tape_name, 'Unreadable', descr.blocks, 0]
+      end
+    when :frozen
+      archive.open(tape_name) do |frozen_file|
+        frozen_file.shard_count.times do |i|
+          $stderr.puts "#{tape_name}[#{i}]" unless options[:quiet]
+          descr = frozen_file.shard_descriptor(i)
+          if options[:build] || descr.control_characters.nil?
+            text = frozen_file.shards.at(i)
+            descr = frozen_file.shard_descriptor(i)
+          end
+          tabs = descr.control_characters["\t"] || 0
+          backspaces = descr.control_characters["\b"] || 0
+          form_feeds = descr.control_characters["\f"] || 0
+          vertical_tabs = descr.control_characters["\v"] || 0
+          bad_character_set = (descr.control_characters.keys - ["\t","\b","\f","\v"]).sort.join
+          control_characters = descr.control_characters.reject{|ch,ct| ["\t","\b","\f","\v"].include?(ch) }.map{|ch,ct| ct}.inject{|sum,ct| sum+ct } || 0
+          status = descr.status.to_s.capitalize
+          table << ["#{tape_name}[#{i}]", status, nil, nil, descr.character_count, tabs, backspaces, vertical_tabs, form_feeds, control_characters, bad_character_set.inspect[1...-1]]
+        end
+      end
     end
   end
   if table.size == 0

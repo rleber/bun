@@ -284,6 +284,8 @@ module Bun
         nil
       elsif !options[:build] && index[name]
         Hashie::Mash.new(index[name])
+      elsif options[:build] == false
+        nil
       else
         Hashie::Mash.new(build_descriptor(name))
       end

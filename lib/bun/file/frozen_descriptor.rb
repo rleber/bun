@@ -5,7 +5,11 @@ module Bun
   class File < ::File
     class Frozen
       class Descriptor
-        attr_reader :file, :number
+        attr_reader :character_count
+        attr_reader :control_characters
+        attr_reader :file
+        attr_reader :number
+        attr_accessor :status
 
         DESCRIPTOR_OFFSET = 5
         DESCRIPTOR_SIZE = 10
@@ -15,42 +19,62 @@ module Bun
           :file_size,
           :file_type,
           :catalog_time,
+          :control_characters,
+          :character_count,
           :name,
           :owner,
           :path,
+          :status,
           :tape_name,
           :tape_path,
           :file_date,
           :file_time,
           :updated,
         ]
+        
+        INDEXED_FIELDS = [:control_characters, :character_count]
+        
+        class << self
+          def offset
+            DESCRIPTOR_OFFSET
+          end
 
-        def self.offset
-          DESCRIPTOR_OFFSET
-        end
+          def size
+            DESCRIPTOR_SIZE
+          end
 
-        def self.size
-          DESCRIPTOR_SIZE
-        end
+          def end_marker
+            DESCRIPTOR_END_MARKER
+          end
 
-        def self.end_marker
-          DESCRIPTOR_END_MARKER
-        end
-
-        # Is a file frozen?
-        # Yes, if and only if it has a valid descriptor
-        def self.frozen?(file)
-          file.words.at(file.content_offset + offset + size - 1) == end_marker
+          # Is a file frozen?
+          # Yes, if and only if it has a valid descriptor
+          def frozen?(file)
+            file.words.at(file.content_offset + offset + size - 1) == end_marker
+          end
         end
 
         def initialize(file, number, options={})
           @file = file
           @number = number
           raise "Bad descriptor ##{number} for #{file.tape} at #{'%#o' % self.offset}:\n#{dump}" unless options[:allow] || valid?
+          load_fields_from_archive
         end
   
         def to_hash
           FIELDS.inject({}) {|hsh, f| hsh[f] = self.send(f) rescue nil; hsh }
+        end
+        
+        def load_fields_from_archive
+          return unless @file.archive
+          archive_descriptor = @file.archive.descriptor(tape_name, :build=>false)
+          return unless archive_descriptor
+          shard_descriptor = archive_descriptor.shards[number]
+          return unless shard_descriptor
+          INDEXED_FIELDS.each do |field|
+            next unless shard_descriptor[field]
+            self.instance_variable_set("@#{field}", shard_descriptor[field])
+          end
         end
 
         def offset(n=nil) # Offset of the descriptor from the beginning of the file content, in words
@@ -60,6 +84,17 @@ module Bun
 
         def finish
           offset(number+1)-1
+        end
+        
+        def control_characters=(value)
+          raise "nil assigned to control_characters for #{tape_name}[#{name}]" if value.nil?
+          # raise "{} assigned to control_characters for #{tape_name}[#{name}]" if value == {}
+          @control_characters = value
+        end
+        
+        def character_count=(count)
+          raise "nil assigned to character_count for #{tape_name}[#{name}]" if count.nil?
+          @character_count = count
         end
     
         def characters(start, length)
