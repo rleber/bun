@@ -1,8 +1,14 @@
 TODO
-Change tape_name to location, tape_path to location_path
+Change descriptor/file.name to descriptor/file.basename throughout
 Change archive.location to something else
+Why doesn't ls -ldr list Shards?
+Move all test cases' input files to data/test directory
+Make tests directory-independent (on listings)
+What is output/test/archive_index_ls_original ?
+Add column headings to output/test/archive_index_ls_original
 Separate file.open from file.load/read
 Set atime only when we actually read a file (not just the preamble)
+Refactor archives vs. extracted archives (need a good name)
 Integrate bun archive text_status into bun ls
 Resolve backspaces: to underlining or bold
 Add --select option to bun ls
