@@ -51,7 +51,7 @@ module Bun
           block_size = file_content.at(offset).byte(3)
           unless file_content[offset].half_word[0] == block_number
             if strict
-              raise "Bad block number #{block_number} in #{tape} at #{'%#o' % (offset+content_offset)}: expected #{'%07o' % block_number}; got #{file_content[offset].half_word[0]}"
+              raise "Bad block number #{block_number} in #{location} at #{'%#o' % (offset+content_offset)}: expected #{'%07o' % block_number}; got #{file_content[offset].half_word[0]}"
             else
               error "Truncated before block #{block_number} at #{'%#o' % (offset+content_offset)}"
               if block_number == 1

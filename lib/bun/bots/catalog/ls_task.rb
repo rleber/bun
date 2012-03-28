@@ -7,6 +7,6 @@ def ls
   archive = Archive.new(options[:archive])
   # TODO Use Array.justify_rows
   archive.catalog.each do |spec|
-    puts "#{spec[:tape]}  #{spec[:date].strftime('%Y/%d/%m')}  #{spec[:file]}"
+    puts "#{spec[:location]}  #{spec[:date].strftime('%Y/%d/%m')}  #{spec[:file]}"
   end
 end

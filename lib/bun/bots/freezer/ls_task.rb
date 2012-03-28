@@ -31,14 +31,14 @@ def ls(file_name)
   stop "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
   archived_file = file.path
   archived_file = "--unknown--" unless archived_file
-  print "Frozen archive for directory #{archived_file}"
+  print "Frozen archive at #{file.location_path} for directory #{archived_file}"
   print "\nLast updated at #{file.file_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
   puts ":"
   lines = []
   if options[:long]
-    lines << "Index File      Updated                   Words         Start"
+    lines << "Index Shard     Updated                   Words         Start"
   elsif options[:descr]
-    lines << "Index File     Descriptor"
+    lines << "Index Shard    Descriptor"
   end
   # Retrieve file information
   file_info = []

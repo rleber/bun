@@ -5,15 +5,15 @@ desc "compare_offsets", "Compare file offsets vs. content of file preamble"
 option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
 def compare_offsets
   archive = Archive.new(:location=>options[:archive])
-  table = [%w{Tape Word1 Calculated Flag}]
+  table = [%w{Location Word1 Calculated Flag}]
   flagged = false
-  archive.each do |tape_name|
-    file = archive.open(tape_name)
+  archive.each do |location|
+    file = archive.open(location)
     counts = [
       file.words.at(1).half_words.at(1).to_i, 
       file.content_offset
     ]
-    row = [tape_name] + counts.map{|c| '%3d' % c } 
+    row = [location] + counts.map{|c| '%3d' % c } 
     if counts.min != counts.max
       flagged = true
       row << '*'

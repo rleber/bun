@@ -16,7 +16,8 @@ def dump(file_name, n)
   archived_file = file.path
   archived_file = "--unknown--" unless archived_file
   file_index = file.shard_index(n)
-  puts "Archive for file_name #{file.shard_name(file_index)}:"
+  shard_descriptor = file.shard_descriptors.at(file_index)
+  puts "Archive at #{file.location_path}[#{shard_descriptor.name}] for #{shard_descriptor.path}:"
   if options[:thawed]
     lines = file.lines(file_index)
     # TODO Refactor using Array#justify_rows

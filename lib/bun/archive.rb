@@ -24,12 +24,12 @@ module Bun
       @update_indexes = options.has_key?(:update_indexes) ? options[:update_indexes] : true
     end
     
-    def tapes
+    def locations
       Dir.entries(File.join(location, directory_location)).reject{|f| f=~/^\./}
     end
 
     def each(&blk)
-      tapes = self.tapes
+      locations = self.locations
       enum = Enumerator.new(self)
       if block_given?
         enum.each(&blk)
@@ -102,16 +102,16 @@ module Bun
     
     # TODO Is there a more descriptive name for this?
     def contents(&blk)
-      tapes = self.tapes
+      locations = self.locations
       contents = []
-      each do |tape_name|
-        file = open(tape_name)
+      each do |location|
+        file = open(location)
         if file.file_type == :frozen
           file.shard_count.times do |i|
-            contents << "#{tape_name}::#{file.shard_name(i)}"
+            contents << "#{location}::#{file.shard_name(i)}"
           end
         else
-          contents << tape_name
+          contents << location
         end
       end
       if block_given?
@@ -120,13 +120,13 @@ module Bun
       contents
     end
     
-    def expanded_tape_path(file_name)
-      if file_name =~ /^\.\//
+    def expanded_location_path(location)
+      if location =~ /^\.\//
         rel = `pwd`.chomp
       else
-        rel = File.expand_path(directory_location, location)
+        rel = File.expand_path(directory_location, self.location)
       end
-      File.expand_path(file_name, rel)
+      File.expand_path(location, rel)
     end
     
     def catalog
@@ -141,14 +141,14 @@ module Bun
         rescue
           raise RuntimeError, "Bad date #{words[1].inspect} in index file at #{line.inspect}"
         end
-        {:tape=>words[0], :date=>date, :file=>words[2]}
+        {:location=>words[0], :date=>date, :file=>words[2]}
       end
       specs
     end
     cache :catalog
     
-    def catalog_time(tape)
-      info = catalog.find {|spec| spec[:tape] == tape }
+    def catalog_time(location)
+      info = catalog.find {|spec| spec[:location] == location }
       info && info[:date].local_date_to_local_time
     end
     
@@ -181,7 +181,7 @@ module Bun
     def build_index(options={})
       clear_index
       each_file(:header=>true) do |f|
-        puts f.tape_name if options[:verbose]
+        puts f.location if options[:verbose]
         update_index(:file=>f)
       end
       @index
@@ -210,7 +210,7 @@ module Bun
       @index = nil
     end
     
-    # TODO Allow for indexing by other than tape_name?
+    # TODO Allow for indexing by other than location?
     def update_index(options={})
       @index ||= {}
       descr = options[:descriptor] ? options[:descriptor].to_hash : build_descriptor_for_file(options[:file])
@@ -220,8 +220,8 @@ module Bun
           descr.delete(k)
         end
       end
-      @index[descr[:tape_name]] = descr
-      save_index_descriptor(descr[:tape_name])
+      @index[descr[:location]] = descr
+      save_index_descriptor(descr[:location])
       descr
     end
     
@@ -250,7 +250,7 @@ module Bun
     
     def save_index_descriptor_for_file(f)
       @index ||= {}
-      name = f.tape_name
+      name = f.location
       @index[name] ||= build_descriptor_for_file(f)
       make_index_directory
       _save_index_descriptor(name)
@@ -292,21 +292,21 @@ module Bun
     end
     
     def open(name, options={}, &blk)
-      File.open(expanded_tape_path(name), options.merge(:archive=>self, :tape_name=>name), &blk)
+      File.open(expanded_location_path(name), options.merge(:archive=>self, :location=>name), &blk)
     end
     
     def exists?(name)
-      File.exists?(expanded_tape_path(name))
+      File.exists?(expanded_location_path(name))
     end
     
     def rm(options={})
-      glob(*options[:tapes]) do |fname|
+      glob(*options[:locations]) do |fname|
         _rm(fname, options)
       end
     end
     
-    def _rm(tape)
-      FileUtils.rm(expanded_tape_path(tape))
+    def _rm(location)
+      FileUtils.rm(expanded_location_path(location))
     end
     private :_rm
     
@@ -316,15 +316,15 @@ module Bun
       end
     end
     
-    def _cp(tape, dest=nil, options={})
+    def _cp(location, dest=nil, options={})
       to_stdout = dest.nil? || dest == '-'
       index = !options[:bare] && !to_stdout
       unless to_stdout
         dest = '.' if dest == ''
-        dest = File.join(dest, File.basename(tape)) if File.directory?(dest)
+        dest = File.join(dest, File.basename(location)) if File.directory?(dest)
       end
 
-      open(tape) do |f|
+      open(location) do |f|
         Shell.new(:quiet=>true).write dest, f.read, :mode=>'w:ascii-8bit'
       end
 
@@ -332,11 +332,11 @@ module Bun
         # Copy index entry, too
         to_dir = File.dirname(dest)
         to_archive = Archive.new(:location=>to_dir, :directory=>'')
-        descriptor = self.descriptor(tape)
-        descriptor.original_tape_name = tape unless descriptor.original_tape_name
-        descriptor.original_tape_path = expanded_tape_path(tape) unless descriptor.original_tape_path
-        descriptor.tape_name = File.basename(dest)
-        descriptor.tape_path = File.expand_path(dest)
+        descriptor = self.descriptor(location)
+        descriptor.original_location = location unless descriptor.original_location
+        descriptor.original_location_path = expanded_location_path(location) unless descriptor.original_location_path
+        descriptor.location = File.basename(dest)
+        descriptor.location_path = File.expand_path(dest)
         to_archive.update_index(:descriptor=>descriptor)
       end
     end
@@ -348,9 +348,9 @@ module Bun
       end
     end
     
-    def _mv(tape, dest, options={})
-      _cp(tape, dest, options)
-      _rm(tape)
+    def _mv(location, dest, options={})
+      _cp(location, dest, options)
+      _rm(location)
     end
     private :_mv
   end

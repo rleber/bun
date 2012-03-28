@@ -5,17 +5,17 @@ desc "count_shards", "Count shards in frozen files three different ways"
 option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
 def count_shards
   archive = Archive.new(:location=>options[:archive])
-  table = [%w{Tape Word1 Positions Valid Flag}]
+  table = [%w{Location Word1 Positions Valid Flag}]
   flagged = false
-  archive.each do |tape_name|
-    file = archive.open(tape_name, :header=>true)
+  archive.each do |location|
+    file = archive.open(location, :header=>true)
     if file.file_type == :frozen
       counts = [
         f.shard_count_based_on_word_1, 
         f.shard_count_based_on_position_of_shard_contents, 
         f.shard_count_based_on_count_of_valid_shard_descriptors
       ]
-      row = [tape_name] + counts.map{|c| '%3d' % c } 
+      row = [location] + counts.map{|c| '%3d' % c } 
       if counts.min != counts.max
         flagged = true
         row << '*'

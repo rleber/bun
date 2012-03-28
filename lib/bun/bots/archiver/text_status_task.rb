@@ -16,15 +16,15 @@ def text_status
   archive = Archive.new(:location=>options[:archive])
   directory = archive.location
   table = []
-  archive.each do |tape_name|
-    $stderr.puts tape_name unless options[:quiet]
-    descr = archive.descriptor(tape_name)
+  archive.each do |location|
+    $stderr.puts location unless options[:quiet]
+    descr = archive.descriptor(location)
     # TODO Apply this to frozen files, too
     case descr.file_type
     when :text
       if options[:build] || descr.control_characters.nil?
-        text = archive.open(tape_name) {|f| f.text rescue nil }
-        descr = archive.descriptor(tape_name)
+        text = archive.open(location) {|f| f.text rescue nil }
+        descr = archive.descriptor(location)
       end
       if descr.good_blocks > 0
         tabs = descr.control_characters["\t"] || 0
@@ -34,14 +34,14 @@ def text_status
         bad_character_set = (descr.control_characters.keys - ["\t","\b","\f","\v"]).sort.join
         control_characters = descr.control_characters.reject{|ch,ct| ["\t","\b","\f","\v"].include?(ch) }.map{|ch,ct| ct}.inject{|sum,ct| sum+ct } || 0
         status = descr.status.capitalize
-        table << [tape_name, status, descr.blocks, descr.good_blocks, descr.character_count, tabs, backspaces, vertical_tabs, form_feeds, control_characters, bad_character_set.inspect[1...-1]]
+        table << [location, status, descr.blocks, descr.good_blocks, descr.character_count, tabs, backspaces, vertical_tabs, form_feeds, control_characters, bad_character_set.inspect[1...-1]]
       else
-        table << [tape_name, 'Unreadable', descr.blocks, 0]
+        table << [location, 'Unreadable', descr.blocks, 0]
       end
     when :frozen
-      archive.open(tape_name) do |frozen_file|
+      archive.open(location) do |frozen_file|
         frozen_file.shard_count.times do |i|
-          $stderr.puts "#{tape_name}[#{i}]" unless options[:quiet]
+          $stderr.puts "#{location}[#{i}]" unless options[:quiet]
           descr = frozen_file.shard_descriptor(i)
           if options[:build] || descr.control_characters.nil?
             text = frozen_file.shards.at(i)
@@ -54,7 +54,7 @@ def text_status
           bad_character_set = (descr.control_characters.keys - ["\t","\b","\f","\v"]).sort.join
           control_characters = descr.control_characters.reject{|ch,ct| ["\t","\b","\f","\v"].include?(ch) }.map{|ch,ct| ct}.inject{|sum,ct| sum+ct } || 0
           status = descr.status.to_s.capitalize
-          table << ["#{tape_name}[#{i}]", status, nil, nil, descr.character_count, tabs, backspaces, vertical_tabs, form_feeds, control_characters, bad_character_set.inspect[1...-1]]
+          table << ["#{location}[#{i}]", status, nil, nil, descr.character_count, tabs, backspaces, vertical_tabs, form_feeds, control_characters, bad_character_set.inspect[1...-1]]
         end
       end
     end
@@ -62,7 +62,7 @@ def text_status
   if table.size == 0
     puts "No files unpacked"
   else
-    table.unshift %w{Tape Status Blocks Good\ Blocks Chars Tabs Backspaces Vertical\ Tabs Form\ Feeds Invalid\ Characters List}
+    table.unshift %w{Location Status Blocks Good\ Blocks Chars Tabs Backspaces Vertical\ Tabs Form\ Feeds Invalid\ Characters List}
     puts table.justify_rows.map{|row| row.join('  ')}.join("\n")
   end
 end

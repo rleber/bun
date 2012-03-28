@@ -1,16 +1,16 @@
-Tape:            ar025.0634
-Tape path:       /Users/richard/bun_archive/raw/ar025.0634
-Archived file:   fass/songfest.f
-Owner:           fass
-Subdirectory:    
-Name:            songfest.f
-Description:     ===> Songs from Fass '79 (roff source frz)
-Specification:   /songfest.f ===> Songs from Fass '79 (roff source frz)
-Catalog date:    1979/04/13
-File time:       1979/04/08 13:02:33
-Updated at:      1979/04/08 13:02:33
-Size (words):    3751
-Type:            Frozen
+Location:      ar025.0634
+Path:          /Users/richard/bun_archive/raw/ar025.0634
+Directory:     fass/songfest.f
+Owner:         fass
+Subdirectory:  
+Basename:      songfest.f
+Description:   ===> Songs from Fass '79 (roff source frz)
+Specification: /songfest.f ===> Songs from Fass '79 (roff source frz)
+Catalog date:  1979/04/13
+File time:     1979/04/08 13:02:33
+Updated at:    1979/04/08 13:02:33
+Size (words):  3751
+Type:          Frozen
 
 Shards:
   Name:          opening                   harold                    albania                   drink                     master                  

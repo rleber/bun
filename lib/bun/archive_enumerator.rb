@@ -12,8 +12,8 @@ module Bun
           super(*args, &blk)
         else
           super(*args) do |yielder|
-            @archive.tapes.each do |tape| 
-              yielder << tape
+            @archive.locations.each do |location| 
+              yielder << location
             end
           end
         end
