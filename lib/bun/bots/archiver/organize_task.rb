@@ -53,7 +53,7 @@ def organize(from=nil, to=nil)
       file = $2
       new_file = File.join(to, file, tape)
       warn "#{old_file} => #{new_file}" if @trace
-      index.add(:from=>old_file, :to=>new_file, :file=>file, :tape=>tape)
+      index.add(:from=>old_file, :to=>new_file, :file=>file, :location=>tape)
     end
   end
   

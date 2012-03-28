@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-desc "dump TAPE", "Dump a Honeywell file"
+desc "dump LOCATION", "Dump a Honeywell file"
 option 'archive',   :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option "escape",    :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
 option "frozen",    :aliases=>'-f', :type=>'boolean', :desc=>'Display characters in frozen format (i.e. 5 per word)'
@@ -16,7 +16,7 @@ def dump(file_name)
   rescue => e
     stop "!Bad value for --offset: #{e}"
   end
-  file_path = archive.expanded_tape_path(file_name)
+  file_path = archive.expanded_location_path(file_name)
   file = Bun::File::Text.open(file_path)
   archived_file = file.path
   archived_file = "--unknown--" unless archived_file

@@ -25,8 +25,8 @@ module Bun
         :owner,
         :path,
         :specification,
-        :tape_name,
-        :tape_path,
+        :location,
+        :location_path,
         :updated,
       ]
       
@@ -89,8 +89,8 @@ module Bun
         File.join(owner, subpath)
       end
       
-      def tape
-        File.basename(tape_path)
+      def location
+        File.basename(location_path)
       end
       
       # TODO This isn't really relevant for non-frozen files; File::Frozen should really subclass this

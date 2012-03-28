@@ -2,7 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 SHARDS_ACROSS = 5
-desc "describe TAPE", "Display description information for a file"
+desc "describe LOCATION", "Display description information for a file"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on archive index; always build information from source file"
 def describe(file_name)
@@ -15,8 +15,8 @@ def describe(file_name)
   catalog_time_display = catalog_time ? catalog_time.strftime('%Y/%m/%d') : "n/a"
   
   # TODO Refactor using Array#justify_rows
-  puts "Tape:            #{descriptor.tape_name}"
-  puts "Tape path:       #{descriptor.tape_path}"
+  puts "Tape:            #{descriptor.location}"
+  puts "Tape path:       #{descriptor.location_path}"
   puts "Archived file:   #{descriptor.path}"
   puts "Owner:           #{descriptor.owner}"
   puts "Subdirectory:    #{descriptor.subdirectory}"

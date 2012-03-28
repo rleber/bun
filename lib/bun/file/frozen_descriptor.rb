@@ -25,8 +25,8 @@ module Bun
           :owner,
           :path,
           :status,
-          :tape_name,
-          :tape_path,
+          :location,
+          :location_path,
           :file_date,
           :file_time,
           :updated,
@@ -57,7 +57,7 @@ module Bun
         def initialize(file, number, options={})
           @file = file
           @number = number
-          raise "Bad descriptor ##{number} for #{file.tape} at #{'%#o' % self.offset}:\n#{dump}" unless options[:allow] || valid?
+          raise "Bad descriptor ##{number} for #{file.location} at #{'%#o' % self.offset}:\n#{dump}" unless options[:allow] || valid?
           load_fields_from_archive
         end
   
@@ -67,7 +67,7 @@ module Bun
         
         def load_fields_from_archive
           return unless @file.archive
-          archive_descriptor = @file.archive.descriptor(tape_name, :build=>false)
+          archive_descriptor = @file.archive.descriptor(location, :build=>false)
           return unless archive_descriptor
           shard_descriptor = archive_descriptor.shards[number]
           return unless shard_descriptor
@@ -87,13 +87,13 @@ module Bun
         end
         
         def control_characters=(value)
-          raise "nil assigned to control_characters for #{tape_name}[#{name}]" if value.nil?
-          # raise "{} assigned to control_characters for #{tape_name}[#{name}]" if value == {}
+          raise "nil assigned to control_characters for #{location}[#{name}]" if value.nil?
+          # raise "{} assigned to control_characters for #{location}[#{name}]" if value == {}
           @control_characters = value
         end
         
         def character_count=(count)
-          raise "nil assigned to character_count for #{tape_name}[#{name}]" if count.nil?
+          raise "nil assigned to character_count for #{location}[#{name}]" if count.nil?
           @character_count = count
         end
     
@@ -125,12 +125,12 @@ module Bun
           File.relative_path(file.path, name)
         end
   
-        def tape_name
-          file.tape_name
+        def location
+          file.location
         end
   
-        def tape_path
-          file.tape_path
+        def location_path
+          file.location_path
         end
 
         def file_date

@@ -1,5 +1,6 @@
 TODO
 Change tape_name to location, tape_path to location_path
+Change archive.location to something else
 Separate file.open from file.load/read
 Set atime only when we actually read a file (not just the preamble)
 Integrate bun archive text_status into bun ls

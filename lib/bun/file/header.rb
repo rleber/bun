@@ -17,16 +17,16 @@ module Bun
         data = options[:data]
         words = options[:words]
         words = if file
-          @tape = file
+          @file = file
           words = self.class.decode(self.class.read(file, size))
         elsif data
-          @tape = options[:tape]
+          @location = options[:location]
           words = self.class.decode(data[0...size])
         else
-          @tape = options[:tape]
+          @location = options[:location]
           words = words[0...size.div(characters_per_word)]
         end
-        super(:words=>words, :size=>options[:size], :tape=>@tape, &blk)
+        super(:words=>words, :size=>options[:size], :location=>@location, &blk)
       end
     end
   end

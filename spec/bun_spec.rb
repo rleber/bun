@@ -152,9 +152,9 @@ describe Bun::Bot do
   
   describe "ls" do
     include_examples "command", "ls", "ls", "ls"
-    include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -t ar003.0698", "ls_ldrt_ar003.0698"
-    include_examples "command", "ls -ldr with frozen file (ar145.2699)", "ls -ldr -t ar145.2699", "ls_ldrt_ar145.2699"
-    include_examples "command", "ls -ldrb with frozen file (ar145.2699)", "ls -ldrb -t ar145.2699", "ls_ldrbt_ar145.2699"
+    include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -L ar003.0698", "ls_ldrL_ar003.0698"
+    include_examples "command", "ls -ldr with frozen file (ar145.2699)", "ls -ldr -L ar145.2699", "ls_ldrL_ar145.2699"
+    include_examples "command", "ls -ldrb with frozen file (ar145.2699)", "ls -ldrb -L ar145.2699", "ls_ldrbL_ar145.2699"
   end
   describe "readme" do
     include_examples "command", "readme", "readme", "doc/readme.md"
@@ -205,29 +205,29 @@ describe Bun::Bot do
             @original_content = YAML.load(Bun.readfile("#{ENV['HOME']}/bun_archive/raw/.bun_index/ar003.0698.descriptor.yml", :encoding=>'us-ascii'))
             @content = YAML.load(Bun.readfile("output/.bun_index/cp_ar003.0698.out.descriptor.yml", :encoding=>'us-ascii'))
           end
-          it "should change the tape_name" do
-            @content[:tape_name].should == 'cp_ar003.0698.out'
+          it "should change the location" do
+            @content[:location].should == 'cp_ar003.0698.out'
           end
-          it "should change the tape_path" do
-            @content[:tape_path].should == "#{`pwd`.chomp}/output/cp_ar003.0698.out"
+          it "should change the location_path" do
+            @content[:location_path].should == "#{`pwd`.chomp}/output/cp_ar003.0698.out"
           end
-          it "should record the original tape_name" do
-            @content[:original_tape_name].should == 'ar003.0698'
+          it "should record the original location" do
+            @content[:original_location].should == 'ar003.0698'
           end
-          it "should record the original tape_path" do
-            @content[:original_tape_path].should == "#{ENV['HOME']}/bun_archive/raw/ar003.0698"
+          it "should record the original location_path" do
+            @content[:original_location_path].should == "#{ENV['HOME']}/bun_archive/raw/ar003.0698"
           end
           it "should otherwise match the original index" do
             other_content = @content.dup
-            other_content.delete(:tape_name)
-            other_content.delete(:tape_path)
-            other_content.delete(:original_tape_name)
-            other_content.delete(:original_tape_path)
+            other_content.delete(:location)
+            other_content.delete(:location_path)
+            other_content.delete(:original_location)
+            other_content.delete(:original_location_path)
             other_original_content = @original_content.dup
-            other_original_content.delete(:tape_name)
-            other_original_content.delete(:tape_path)
-            other_original_content.delete(:original_tape_name)
-            other_original_content.delete(:original_tape_path)
+            other_original_content.delete(:location)
+            other_original_content.delete(:location_path)
+            other_original_content.delete(:original_location)
+            other_original_content.delete(:original_location_path)
             other_content.should == other_original_content
           end
         end
