@@ -1,3 +1,7 @@
+=== 0.0.5 2012-03-27
+
+* Add file statistics to thaw of frozen files, include frozen files in text_status, and improve dump format
+
 === 0.0.4 2012-03-22
 
 * Substantial bug fixes, refactoring, and tested archive extract command

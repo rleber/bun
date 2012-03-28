@@ -1,7 +1,8 @@
 TODO
-Update statistics on thawing frozen files, too
 Change tape_name to location, tape_path to location_path
 Separate file.open from file.load/read
+Set atime only when we actually read a file (not just the preamble)
+Integrate bun archive text_status into bun ls
 Resolve backspaces: to underlining or bold
 Add --select option to bun ls
 Add --select option to bun extract

@@ -5,7 +5,6 @@
 desc "thaw ARCHIVE FILE [TO]", "Uncompress a frozen Honeywell file"
 option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option "log",     :aliases=>'-l', :type=>'string',  :desc=>"Log status to specified file"
-option "strict",  :aliases=>"-s", :type=>"boolean", :desc=>"Check for bad data. Abort if found"
 option "warn",    :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
 long_desc <<-EOT
 FILE may have some special formats: '+-nnn' (where nnn is an integer) denotes file number nnn. '-nnn' denotes the nnnth
@@ -17,12 +16,16 @@ def thaw(file_name, n, out=nil)
   archive = Archive.new(:location=>options[:archive])
   directory = archive.location
   file = archive.open(file_name)
-  stop "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
-  archived_file = file.path
-  archived_file = "--unknown--" unless archived_file
-  content = file.shards.at(file.shard_index(n))
-  shell = Shell.new
-  shell.write out, content, :timestamp=>file.file_time, :quiet=>true
-  warn "Thawed with #{file.errors.count} decoding errors" if options[:warn] && file.errors > 0
-  shell.log options[:log], "thaw #{out.inspect} from #{file_name.inspect} with #{file.errors.count} errors" if options[:log]
+  begin
+    stop "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
+    archived_file = file.path
+    archived_file = "--unknown--" unless archived_file
+    content = file.shards.at(file.shard_index(n))
+    shell = Shell.new
+    shell.write out, content, :timestamp=>file.file_time, :quiet=>true
+    warn "Thawed with #{file.errors.count} decoding errors" if options[:warn] && file.errors > 0
+    shell.log options[:log], "thaw #{out.inspect} from #{file_name.inspect} with #{file.errors.count} errors" if options[:log]
+  ensure
+    file.close
+  end
 end
