@@ -21,7 +21,7 @@ module Bun
         :file_size,
         :file_type,
         :catalog_time,
-        :name,
+        :basename,
         :owner,
         :path,
         :specification,
@@ -73,7 +73,7 @@ module Bun
         d
       end
 
-      def name
+      def basename
         File.basename(subpath)
       end
     
