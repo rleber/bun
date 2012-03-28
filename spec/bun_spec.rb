@@ -20,11 +20,15 @@ def scrub(lines, options={})
   tempfile.close
   tempfile2.close
   system("cat #{tempfile.path.inspect} | ruby -p -e '$_.gsub!(/_\\x8/,\"\")' | expand -t #{tabs} >#{tempfile2.path.inspect}")
-  Bun.readfile(tempfile2.path)
+  rstrip(Bun.readfile(tempfile2.path))
 end
 
 def decode_and_scrub(file, options={})
   scrub(decode(file), options)
+end
+
+def rstrip(text)
+  text.split("\n").map{|line| line.rstrip }.join("\n")
 end
 
 shared_examples "simple" do |file|
@@ -40,7 +44,7 @@ shared_examples "command" do |descr, command, expected_stdout_file|
     # warn "> bun #{command}"
     res = `bun #{command} 2>&1`.force_encoding('ascii-8bit')
     expected_stdout_file = File.join("output", 'test', expected_stdout_file) unless expected_stdout_file =~ %r{/}
-    res.should == Bun.readfile(expected_stdout_file)
+    rstrip(res).should == rstrip(Bun.readfile(expected_stdout_file))
   end
 end
 
@@ -89,7 +93,7 @@ describe Bun::File::Text do
   it "decodes a more complex file (ar004.0642)" do
     infile = 'ar004.0642'
     outfile = File.join("output", "test", infile)
-    decode_and_scrub(infile, :tabs=>'80').should == Bun.readfile(outfile)
+    decode_and_scrub(infile, :tabs=>'80').should == rstrip(Bun.readfile(outfile))
   end
 end
 
