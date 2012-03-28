@@ -1,5 +1,4 @@
 TODO
-Change descriptor/file.name to descriptor/file.basename throughout
 Add tests for bun rm, bun mv
 Change archive.location to something else
 Why doesn't ls -ldr list Shards?
@@ -9,7 +8,7 @@ What is output/test/archive_index_ls_original ?
 Add column headings to output/test/archive_index_ls_original
 Separate file.open from file.load/read
 Set atime only when we actually read a file (not just the preamble)
-Refactor archives vs. extracted archives (need a good name)
+Refactor archives vs. extracted archives (need a good name, e.g. store, hoard, stash, library)
 Integrate bun archive text_status into bun ls
 Resolve backspaces: to underlining or bold
 Add --select option to bun ls
