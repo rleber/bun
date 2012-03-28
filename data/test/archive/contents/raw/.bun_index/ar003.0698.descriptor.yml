@@ -4,14 +4,15 @@
 :file_size: 2582
 :file_type: :text
 :catalog_time: 
-:name: vector
+:basename: vector
 :owner: fass
 :path: fass/idallen/vector
 :specification: /idallen/vector  ==>files for idallen
-:tape_name: ar003.0698
-:tape_path: /Users/richard/projects/bun/data/test/archive/contents/raw/ar003.0698
+:location: ar003.0698
+:location_path: /Users/richard/projects/bun/data/test/archive/contents/raw/ar003.0698
 :updated: 
 :blocks: 8
 :good_blocks: 
+:status: 
 :control_characters: 
 :character_count: 
