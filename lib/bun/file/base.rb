@@ -55,7 +55,12 @@ module Bun
       end
   
       def relative_path(*f)
-        File.expand_path(File.join(*f), ENV['HOME']).sub(/^#{Regexp.escape(ENV['HOME'])}\//,'')
+        options = {}
+        if f.last.is_a?(Hash)
+          options = f.pop
+        end
+        relative_to = options[:relative_to] || ENV['HOME']
+        File.expand_path(File.join(*f), relative_to).sub(/^#{Regexp.escape(relative_to)}\//,'')
       end
 
       VALID_CONTROL_CHARACTERS = '\n\r\x8\x9\xb\xc' # \x8 is a backspace, \x9 is a tab, \xb is a VT, \xc is a form-feed

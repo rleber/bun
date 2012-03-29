@@ -1,11 +1,13 @@
 TODO
-Add tests for bun rm, bun mv
+Add bun mkdir, bun mkdir -p
+Add bun rmdir
+What is output/test/archive_index_ls_original ?
+Add column headings to output/test/archive_index_ls_original
 Change archive.location to something else
+Change the funky /raw stuff
 Why doesn't ls -ldr list Shards?
 Move all test cases' input files to data/test directory
 Make tests directory-independent (on listings)
-What is output/test/archive_index_ls_original ?
-Add column headings to output/test/archive_index_ls_original
 Separate file.open from file.load/read
 Set atime only when we actually read a file (not just the preamble)
 Refactor archives vs. extracted archives (need a good name, e.g. store, hoard, stash, library)

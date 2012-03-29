@@ -12,7 +12,7 @@ def set_dates
     timestamp = descr[:updated]
     if timestamp
       puts "About to set timestamp: #{location} #{timestamp.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
-      shell.set_timestamp(archive.expanded_location_path(location), timestamp)
+      shell.set_timestamp(archive.expand_path(location), timestamp)
     else
       puts "No updated time available for #{location}" unless options[:quiet]
     end
