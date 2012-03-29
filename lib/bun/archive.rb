@@ -13,6 +13,8 @@ module Bun
     include CacheableMethods
     
     class NonRecursiveRemoveDirectory < ArgumentError; end
+    class NonRecursiveCopyDirectory < ArgumentError; end
+    class RecursiveCopyToNonDirectory < ArgumentError; end
     
     DIRECTORY_LOCATIONS = %w{location log_file raw_directory extract_directory files_directory clean_directory dirty_directory}
     
@@ -56,7 +58,7 @@ module Bun
     def config_dir(name)
       dir = config[name.to_s]
       return nil unless dir
-      dir = File.expand_path(dir) if dir=~/^~/
+      dir = File.expand_path(dir) if dir=~/^(~|\.)\//
       dir
     end
     
@@ -123,13 +125,17 @@ module Bun
       contents
     end
     
-    def expanded_location_path(location)
+    def expand_path(location)
       if location =~ /^\.\//
         rel = `pwd`.chomp
       else
         rel = File.expand_path(directory_location, self.location)
       end
       File.expand_path(location, rel)
+    end
+    
+    def relative_path(*f)
+      File.relative_path(*f, :relative_to=>::File.expand_path(directory_location, self.location))
     end
     
     def catalog
@@ -186,6 +192,12 @@ module Bun
       each_file(:header=>true) do |f|
         puts f.location if options[:verbose]
         update_index(:file=>f)
+      end
+      if options[:recursive]
+        directories do |f|
+          sub_archive = Archive.new(:location=>expand_path(f), :directory=>'')
+          sub_archive.build_index(options)
+        end
       end
       @index
     end
@@ -295,16 +307,16 @@ module Bun
     end
     
     def open(name, options={}, &blk)
-      File.open(expanded_location_path(name), options.merge(:archive=>self, :location=>name), &blk)
+      File.open(expand_path(name), options.merge(:archive=>self, :location=>name), &blk)
     end
     
     def exists?(name)
-      File.exists?(expanded_location_path(name))
+      File.exists?(expand_path(name))
     end
     
     def rm(options={})
       glob(*options[:locations]) do |fname|
-        path = expanded_location_path(fname)
+        path = expand_path(fname)
         rm_at_path(path, options)
       end
     end
@@ -324,7 +336,22 @@ module Bun
     
     def cp(options={})
       glob(*options[:from]) do |fname|
-        _cp(fname, options[:to], options)
+        path = expand_path(fname)
+        if File.directory?(path)
+          raise NonRecursiveCopyDirectory, "Non-recursive copy of directory #{path}" unless options[:recursive]
+          if File.exists?(options[:to])
+            raise RecursiveCopyToNonDirectory, "Recursive copy to non-directory #{options[:to]}" \
+              unless File.directory?(options[:to])
+          end
+          Dir.glob("#{path}/**/*").each do |subpath|
+            fname = File.relative_path(subpath, :relative_to=>path)
+            to_path = File.join(options[:to], fname)
+            FileUtils.mkdir_p(File.dirname(to_path))
+            _cp(fname, to_path, options)
+          end
+        else
+          _cp(fname, options[:to], options)
+        end
       end
     end
     
@@ -346,7 +373,7 @@ module Bun
         to_archive = Archive.new(:location=>to_dir, :directory=>'')
         descriptor = self.descriptor(location)
         descriptor.original_location = location unless descriptor.original_location
-        descriptor.original_location_path = expanded_location_path(location) unless descriptor.original_location_path
+        descriptor.original_location_path = expand_path(location) unless descriptor.original_location_path
         descriptor.location = File.basename(dest)
         descriptor.location_path = File.expand_path(dest)
         to_archive.update_index(:descriptor=>descriptor)
@@ -355,15 +382,12 @@ module Bun
     private :_cp
     
     def mv(options={})
-      glob(*options[:from]) do |fname|
-        _mv(fname, options[:to], options)
-      end
+      from = options[:from]
+      from_path = expand_path(from)
+      to = options[:to]
+      to_path = expand_path(to)
+      cp(options.merge(:from=>from, :to=>to_path, :recursive=>true))
+      rm_at_path(from_path, :recursive=>true)
     end
-    
-    def _mv(location, dest, options={})
-      _cp(location, dest, options)
-      _rm(location)
-    end
-    private :_mv
   end
 end

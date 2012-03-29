@@ -41,12 +41,38 @@ module Bun
         end
       end
       
-      def with_files(options={}, &blk)
+      def with_paths(&blk)
         enum = ::Enumerator.new do |yielder|
           loop do
             fname = self.next
-            f = @archive.open(fname, options)
-            yielder << [fname, f]
+            path = @archive.expand_path(fname)
+            yielder << [fname, path]
+          end
+        end
+        if block_given?
+          enum.each(&blk)
+        else
+          enum
+        end
+      end
+      
+      def directories(&blk)
+        enum = ::Enumerator.new do |yielder|
+          with_paths.each do |fname, path|
+            yielder << file if ::File.directory?(path)
+          end
+        end
+        if block_given?
+          enum.each(&blk)
+        else
+          enum
+        end
+      end
+      
+      def with_files(options={}, &blk)
+        enum = ::Enumerator.new do |yielder|
+          with_paths.each do |fname, path|
+            yielder << [fname, @archive.open(fname, &blk)] unless ::File.directory?(path)
           end
         end
         if block_given?

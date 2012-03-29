@@ -340,6 +340,66 @@ describe Bun::Bot do
       `rm -rf data/test/archive/rm`
     end
   end
+  describe "mv" do
+    before :each do
+      `rm -rf data/test/archive/mv`
+      `cp -r  data/test/archive/mv_init data/test/archive/mv`
+    end
+    describe "with a non-directory" do
+      before :each do
+        `bun mv --archive data/test/archive/mv ar003.0701 ar003.0701b`
+      end
+      it "moves the file in the index" do
+        expected_files = %w{ar003.0698 ar003.0701b ar082.0605 ar083.0698}.map{|name| name + '.descriptor.yml'}.sort
+        result_files = Dir.glob('data/test/archive/mv/raw/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+        result_files.should == expected_files
+      end
+      it "should change the location" do
+        content = YAML.load(Bun.readfile("data/test/archive/mv/raw/.bun_index/ar003.0701b.descriptor.yml", :encoding=>'us-ascii'))
+        content[:location].should == 'ar003.0701b'
+      end
+      it "should change the location_path" do
+        content = YAML.load(Bun.readfile("data/test/archive/mv/raw/.bun_index/ar003.0701b.descriptor.yml", :encoding=>'us-ascii'))
+        content[:location_path].should == "#{`pwd`.chomp}/data/test/archive/mv/raw/ar003.0701b"
+      end
+    end
+    describe "with a directory" do
+      before :each do
+        `bun mv --archive data/test/archive/mv directory directory2`
+      end
+      it "moves the directory" do
+        expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698 directory2}.sort
+        result_files = Dir.glob('data/test/archive/mv/raw/*').map{|f| File.basename(f)}.sort
+        result_files.should == expected_files
+      end
+      it "moves the contents of the directory" do
+        expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
+        result_files = Dir.glob('data/test/archive/mv/raw/directory2/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+        result_files.should == expected_files
+      end
+      it "should leave the locations unchanged" do
+        expected_locations = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
+        locations = []
+        Dir.glob("data/test/archive/mv/raw/directory2/.bun_index/*.descriptor.yml").each do |f|
+          locations << YAML.load(Bun.readfile(f, :encoding=>'us-ascii'))[:location]
+        end
+        locations.sort.should == expected_locations
+      end
+      it "should change the location_paths" do
+        expected_location_paths = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort.map do |f|
+          "#{`pwd`.chomp}/data/test/archive/mv/raw/directory2/#{f}"
+        end
+        location_paths = []
+        Dir.glob("data/test/archive/mv/raw/directory2/.bun_index/*.descriptor.yml").each do |f|
+          location_paths << YAML.load(Bun.readfile(f, :encoding=>'us-ascii'))[:location_path]
+        end
+        location_paths.sort.should == expected_location_paths
+      end
+    end
+    after :each do
+      `rm -rf data/test/archive/mv`
+    end
+  end
   context "index processing" do
     before :each do
       `rm -rf data/test/archive/index`

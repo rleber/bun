@@ -16,7 +16,7 @@ def dump(file_name)
   rescue => e
     stop "!Bad value for --offset: #{e}"
   end
-  file_path = archive.expanded_location_path(file_name)
+  file_path = archive.expand_path(file_name)
   file = Bun::File::Text.open(file_path)
   archived_file = file.path
   archived_file = "--unknown--" unless archived_file
