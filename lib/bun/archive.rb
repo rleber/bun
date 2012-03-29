@@ -12,6 +12,8 @@ module Bun
     include Enumerable
     include CacheableMethods
     
+    class NonRecursiveRemoveDirectory < ArgumentError; end
+    
     DIRECTORY_LOCATIONS = %w{location log_file raw_directory extract_directory files_directory clean_directory dirty_directory}
     
     # TODO Why is a class variable necessary here?
@@ -302,14 +304,23 @@ module Bun
     
     def rm(options={})
       glob(*options[:locations]) do |fname|
-        _rm(fname, options)
+        path = expanded_location_path(fname)
+        rm_at_path(path, options)
       end
     end
     
-    def _rm(location)
-      FileUtils.rm(expanded_location_path(location))
+    def rm_at_path(path, options={})
+      if File.directory?(path)
+        raise NonRecursiveRemoveDirectory, "#{path} is a directory, but not recursive" unless options[:recursive]
+        FileUtils.rm_rf(path)
+      else
+        FileUtils.rm(path)
+        descriptor_file_name = File.join(File.dirname(path), config['index_directory'], "#{File.basename(path)}.descriptor.yml")
+        puts "In Archive#rm_at_path: path=#{path.inspect}, descriptor_file_name=#{descriptor_file_name.inspect}"
+        FileUtils.rm(descriptor_file_name) if File.exists?(descriptor_file_name)
+      end
     end
-    private :_rm
+    private :rm_at_path
     
     def cp(options={})
       glob(*options[:from]) do |fname|

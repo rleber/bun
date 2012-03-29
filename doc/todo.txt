@@ -1,5 +1,6 @@
 TODO
 Add tests for bun rm, bun mv
+Add -r option to cp
 Change archive.location to something else
 Why doesn't ls -ldr list Shards?
 Move all test cases' input files to data/test directory

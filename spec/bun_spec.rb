@@ -268,6 +268,78 @@ describe Bun::Bot do
       end
     end
   end
+  describe "rm" do
+    before :each do
+      `rm -rf data/test/archive/rm`
+      `cp -r  data/test/archive/rm_init data/test/archive/rm`
+    end
+    describe "with one file" do
+      describe "non-recursive" do
+        before :each do
+          `bun rm --archive data/test/archive/rm ar003.0701`
+        end
+        it "removes the file" do
+          expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.sort
+          result_files = Dir.glob('data/test/archive/rm/raw/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+          result_files.should == expected_files
+        end
+        it "removes the file from the index" do
+          expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.map{|name| name + '.descriptor.yml'}.sort
+          result_files = Dir.glob('data/test/archive/rm/raw/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+          result_files.should == expected_files
+        end
+        it "should refuse to remove a directory" do
+          `bun rm --archive data/test/archive/rm directory 2>&1`
+          $?.exitstatus.should_not == 0
+        end
+      end
+      describe "recursive" do
+        describe "with non-directory" do
+          before :each do
+            `bun rm -r --archive data/test/archive/rm ar003.0701`
+          end
+          it "removes the file" do
+            expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.sort
+            result_files = Dir.glob('data/test/archive/rm/raw/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+            result_files.should == expected_files
+          end
+          it "removes the file from the index" do
+            expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.map{|name| name + '.descriptor.yml'}.sort
+            result_files = Dir.glob('data/test/archive/rm/raw/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+            result_files.should == expected_files
+          end
+        end
+        describe "with directory" do
+          before :each do
+            `bun rm -r --archive data/test/archive/rm directory`
+          end
+          it "removes the file" do
+            expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
+            result_files = Dir.glob('data/test/archive/rm/raw/*').map{|f| File.basename(f)}.sort
+            result_files.should == expected_files
+          end
+        end
+      end
+    end
+    describe "with multiple files" do
+      before :each do
+        `bun rm --archive data/test/archive/rm '*.0698'`
+      end
+      it "removes the files" do
+        expected_files = %w{ar003.0701 ar082.0605}.sort
+        result_files = Dir.glob('data/test/archive/rm/raw/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+        result_files.should == expected_files
+      end
+      it "removes the files from the index" do
+        expected_files = %w{ar003.0701 ar082.0605}.map{|name| name + '.descriptor.yml'}.sort
+        result_files = Dir.glob('data/test/archive/rm/raw/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+        result_files.should == expected_files
+      end
+    end
+    after :each do
+      `rm -rf data/test/archive/rm`
+    end
+  end
   context "index processing" do
     before :each do
       `rm -rf data/test/archive/index`
