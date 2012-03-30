@@ -1,6 +1,5 @@
 TODO
 Change the funky /raw stuff
-Why doesn't ls -ldr list Shards?
 Implement Ian's naming conventions
 - add .txt (except when it obviously isn't text)
 - name_YYMMDD.txt
