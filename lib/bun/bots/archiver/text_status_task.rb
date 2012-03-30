@@ -3,7 +3,7 @@
 
 # TODO Run this; check if there's a way to discern listing files automagically
 desc "text_status", "Show status of text files"
-option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option 'build',   :aliases=>'-b', :type=>'boolean', :desc=>'Rebuild the text statistics, even if they\'re already set'
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
 long_desc <<-END
@@ -13,8 +13,8 @@ Counts all characters, and the following special characters: tabs, backspaces, f
 Produces a list of all other non-printable characters encountered.
 END
 def text_status
-  archive = Archive.new(:location=>options[:archive])
-  directory = archive.location
+  archive = Archive.new(:at=>options[:at])
+  directory = archive.at
   table = []
   archive.each do |location|
     $stderr.puts location unless options[:quiet]

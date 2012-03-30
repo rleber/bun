@@ -14,7 +14,7 @@ end
 DEFAULT_WIDTH = 120 # TODO Read the window size for this
 SORT_VALUES = %w{order name size update}
 desc "ls ARCHIVE", "List contents of a frozen Honeywell file"
-option 'archive', :aliases=>'-a', :type=>'string',                               :desc=>'Archive location'
+option 'at',      :aliases=>'-a', :type=>'string',                               :desc=>'Archive location'
 option "descr",   :aliases=>'-d', :type=>'boolean',                              :desc=>"Display the file descriptor for each file (in octal)"
 option "files",   :aliases=>"-f", :type=>'string',  :default=>'.*',              :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "long",    :aliases=>'-l', :type=>'boolean',                              :desc=>"Display listing in long format"
@@ -25,8 +25,8 @@ def ls(file_name)
   stop "!Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
   file_pattern = get_regexp(options[:files])
   stop "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
-  archive = Archive.new(:location=>options[:archive])
-  directory = archive.location
+  archive = Archive.new(:at=>options[:at])
+  directory = archive.at
   file = archive.open(file_name)
   stop "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
   archived_file = file.path

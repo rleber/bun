@@ -17,21 +17,21 @@ module Bun
     class CopyMissingFromFile < ArgumentError; end
     class CopyToNonDirectory < ArgumentError; end
     
-    DIRECTORY_LOCATIONS = %w{location log_file raw_directory extract_directory files_directory clean_directory dirty_directory}
+    DIRECTORY_LOCATIONS = %w{at log_file raw_directory extract_directory files_directory clean_directory dirty_directory}
     
     # TODO Why is a class variable necessary here?
     
-    attr_reader :location
+    attr_reader :at
     
     def initialize(options={})
-      @location = options[:location] || options[:archive] || default_location
+      @at = options[:at] || default_at
       @directory = options[:directory] || 'raw'
       @index = nil
       @update_indexes = options.has_key?(:update_indexes) ? options[:update_indexes] : true
     end
     
     def locations
-      Dir.entries(File.join(location, directory_location)).reject{|f| f=~/^\./}
+      Dir.entries(File.join(at, directory_location)).reject{|f| f=~/^\./}
     end
 
     def each(&blk)
@@ -52,8 +52,8 @@ module Bun
       each.glob(*pat, &blk)
     end
     
-    def default_location
-      File.expand_path(default_config['location'])
+    def default_at
+      File.expand_path(default_config['at'])
     end
 
     def config_dir(name)
@@ -81,13 +81,13 @@ module Bun
     
     def config(config_file=nil)
       return read_config_file(config_file) if config_file && File.file?(config_file)
-      config_file = File.join(@location, '.config.yml')
+      config_file = File.join(@at, '.config.yml')
       return read_config_file(config_file) if File.file?(config_file)
       default_config
     end
     cache :config
     
-    (DIRECTORY_LOCATIONS - %w{location}).each do |locn|
+    (DIRECTORY_LOCATIONS - %w{at}).each do |locn|
       define_method locn do ||
         config_dir(locn)
       end
@@ -99,11 +99,11 @@ module Bun
     end
     
     def catalog_file
-      File.expand_path(File.join(location, config['catalog_file']))
+      File.expand_path(File.join(at, config['catalog_file']))
     end
     
     def index_directory
-      File.join(@location, directory_location, config['index_directory'])
+      File.join(@at, directory_location, config['index_directory'])
     end
     
     # TODO Is there a more descriptive name for this?
@@ -136,13 +136,13 @@ module Bun
         end
         rel = `pwd`.chomp
       else # expand relative to archive
-        rel = File.expand_path(directory_location, self.location)
+        rel = File.expand_path(directory_location, self.at)
       end
       File.expand_path(location, rel)
     end
     
     def relative_path(*f)
-      File.relative_path(*f, :relative_to=>::File.expand_path(directory_location, self.location))
+      File.relative_path(*f, :relative_to=>::File.expand_path(directory_location, self.at))
     end
     
     def catalog
@@ -202,7 +202,7 @@ module Bun
       end
       if options[:recursive]
         directories do |f|
-          sub_archive = Archive.new(:location=>expand_path(f), :directory=>'')
+          sub_archive = Archive.new(:at=>expand_path(f), :directory=>'')
           sub_archive.build_index(options)
         end
       end
@@ -475,7 +475,7 @@ module Bun
       if index
         # Copy index entry, too
         to_dir = File.dirname(to)
-        to_archive = Archive.new(:location=>to_dir, :directory=>'')
+        to_archive = Archive.new(:at=>to_dir, :directory=>'')
         descriptor = self.descriptor(File.basename(from))
         descriptor.original_location = File.basename(from) unless descriptor.original_location
         descriptor.original_location_path = expand_path(from) unless descriptor.original_location_path

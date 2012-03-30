@@ -1,5 +1,4 @@
 TODO
-Change archive.location to something else
 Change the funky /raw stuff
 Why doesn't ls -ldr list Shards?
 Move all test cases' input files to data/test directory

@@ -110,7 +110,7 @@ end
 
 describe Bun::Archive do
   before :each do
-    @archive = Bun::Archive.new(:location=>'data/test/archive/contents')
+    @archive = Bun::Archive.new(:at=>'data/test/archive/contents')
   end
   describe "contents" do
     it "retrieves correct list" do
@@ -205,7 +205,7 @@ describe Bun::Bot do
         exec("rm -rf data/test/archive/cp_recursive")
         exec("cp -r  data/test/archive/cp_recursive_init data/test/archive/cp_recursive")
         exec("mkdir  data/test/archive/cp_recursive/new")
-        exec("bun cp -r --archive data/test/archive/cp_recursive '*' '@/../new/'")
+        exec("bun cp -r --at data/test/archive/cp_recursive '*' '@/../new/'")
       end
       describe "the original files" do
         describe "in the main directory" do
@@ -378,7 +378,7 @@ describe Bun::Bot do
     describe "with one file" do
       describe "non-recursive" do
         before :each do
-          exec("bun rm --archive data/test/archive/rm ar003.0701")
+          exec("bun rm --at data/test/archive/rm ar003.0701")
         end
         it "removes the file" do
           expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.sort
@@ -391,14 +391,14 @@ describe Bun::Bot do
           result_files.should == expected_files
         end
         it "should refuse to remove a directory" do
-          exec("bun rm --archive data/test/archive/rm directory 2>&1", :allowed=>:all)
+          exec("bun rm --at data/test/archive/rm directory 2>&1", :allowed=>:all)
           $?.exitstatus.should_not == 0
         end
       end
       describe "recursive" do
         describe "with non-directory" do
           before :each do
-            exec("bun rm -r --archive data/test/archive/rm ar003.0701")
+            exec("bun rm -r --at data/test/archive/rm ar003.0701")
           end
           it "removes the file" do
             expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.sort
@@ -413,7 +413,7 @@ describe Bun::Bot do
         end
         describe "with directory" do
           before :each do
-            exec("bun rm -r --archive data/test/archive/rm directory")
+            exec("bun rm -r --at data/test/archive/rm directory")
           end
           it "removes the file" do
             expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
@@ -425,7 +425,7 @@ describe Bun::Bot do
     end
     describe "with multiple files" do
       before :each do
-        exec("bun rm --archive data/test/archive/rm '*.0698'")
+        exec("bun rm --at data/test/archive/rm '*.0698'")
       end
       it "removes the files" do
         expected_files = %w{ar003.0701 ar082.0605}.sort
@@ -449,7 +449,7 @@ describe Bun::Bot do
     end
     describe "with a non-directory" do
       before :each do
-        exec("bun mv --archive data/test/archive/mv ar003.0701 ar003.0701b")
+        exec("bun mv --at data/test/archive/mv ar003.0701 ar003.0701b")
       end
       it "moves the file in the index" do
         expected_files = %w{ar003.0698 ar003.0701b ar082.0605 ar083.0698}.map{|name| name + '.descriptor.yml'}.sort
@@ -467,7 +467,7 @@ describe Bun::Bot do
     end
     describe "with a directory" do
       before :each do
-        exec("bun mv --archive data/test/archive/mv directory directory2")
+        exec("bun mv --at data/test/archive/mv directory directory2")
       end
       it "moves the directory" do
         expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698 directory2}.sort
@@ -508,23 +508,23 @@ describe Bun::Bot do
     end
     describe "without -p" do
       it "should create a directory" do
-        archive = Bun::Archive.new(:location=>"output", :directory=>'')
+        archive = Bun::Archive.new(:at=>"output", :directory=>'')
         archive.mkdir('mkdir')
         file_should_exist "output/mkdir"
       end
       it "should not create a directory without parents" do
-        archive = Bun::Archive.new(:location=>"output", :directory=>'')
+        archive = Bun::Archive.new(:at=>"output", :directory=>'')
         expect { archive.mkdir('mkdir/foo') }.should raise_error
       end
     end
     describe "with -p" do
       it "should create a directory" do
-        archive = Bun::Archive.new(:location=>"output", :directory=>'')
+        archive = Bun::Archive.new(:at=>"output", :directory=>'')
         archive.mkdir('mkdir/foo/bar', :p=>true)
         file_should_exist "output/mkdir/foo/bar"
       end
       it "should create parent directories" do
-        archive = Bun::Archive.new(:location=>"output", :directory=>'')
+        archive = Bun::Archive.new(:at=>"output", :directory=>'')
         archive.mkdir('mkdir/foo/bar', :parents=>true)
         file_should_exist "output/mkdir"
       end
@@ -541,7 +541,7 @@ describe Bun::Bot do
     context "index build" do
       before :each do
         exec("rm -rf data/test/archive/index/raw/.bun_index")
-        exec("bun archive index build --archive \"data/test/archive/index\"")
+        exec("bun archive index build --at \"data/test/archive/index\"")
       end
       it "should create index" do
         file_should_exist "data/test/archive/index/raw/.bun_index"
@@ -562,8 +562,8 @@ describe Bun::Bot do
     context "index clear" do
       before :each do
         exec("rm -rf data/test/archive/index/raw/.bun_index")
-        exec("bun archive index build --archive \"data/test/archive/index\"")
-        exec("bun archive index clear --archive \"data/test/archive/index\"")
+        exec("bun archive index build --at \"data/test/archive/index\"")
+        exec("bun archive index clear --at \"data/test/archive/index\"")
       end
       it "should remove index" do
         file_should_not_exist "data/test/archive/index/raw/.bun_index"
@@ -578,7 +578,7 @@ describe Bun::Bot do
       before :each do
         exec("rm -rf data/test/archive/strange")
         exec("cp -r data/test/archive/strange_init data/test/archive/strange")
-        lines = exec("bun ls --archive \"data/test/archive/strange\" | tail -n 1").chomp
+        lines = exec("bun ls --at \"data/test/archive/strange\" | tail -n 1").chomp
         @file = lines.split(/\s+/)[-1].strip
       end
       it "should pull data from the index" do
@@ -592,7 +592,7 @@ describe Bun::Bot do
       before :each do
         exec("rm -rf data/test/archive/strange")
         exec("cp -r data/test/archive/strange_init data/test/archive/strange")
-        lines = exec("bun ls --archive \"data/test/archive/strange\" --build | tail -n 1").chomp
+        lines = exec("bun ls --at \"data/test/archive/strange\" --build | tail -n 1").chomp
         @file = lines.split(/\s+/)[-1].strip
       end
       it "should not pull data from the index" do
@@ -608,7 +608,7 @@ describe Bun::Bot do
       before :each do
         exec("rm -rf data/test/archive/strange")
         exec("cp -r data/test/archive/strange_init data/test/archive/strange")
-        lines = exec("bun describe --archive \"data/test/archive/strange\" ar003.0698").chomp.split("\n")
+        lines = exec("bun describe --at \"data/test/archive/strange\" ar003.0698").chomp.split("\n")
         @file = lines.find {|line| line =~ /^Basename:/}.split(/\s+/)[1].strip
       end
       it "should pull data from the index" do
@@ -622,7 +622,7 @@ describe Bun::Bot do
       before :each do
         exec("rm -rf data/test/archive/strange")
         exec("cp -r data/test/archive/strange_init data/test/archive/strange")
-        lines = exec("bun describe --archive \"data/test/archive/strange\" --build ar003.0698").chomp.split("\n")
+        lines = exec("bun describe --at \"data/test/archive/strange\" --build ar003.0698").chomp.split("\n")
         @file = lines.find {|line| line =~ /^Basename:/}.split(/\s+/)[-1].strip
       end
       it "should not pull data from the index" do
@@ -654,7 +654,7 @@ describe Bun::Bot do
     before :all do
       exec("rm -rf data/test/archive/extract_source")
       exec("cp -r data/test/archive/extract_source_init data/test/archive/extract_source")
-      exec("bun archive extract --archive data/test/archive/extract_source 2>output/archive_extract_stderr.txt >output/archive_extract_stdout.txt")
+      exec("bun archive extract --at data/test/archive/extract_source 2>output/archive_extract_stderr.txt >output/archive_extract_stdout.txt")
     end
     it "should create a tapes directory" do
       file_should_exist "data/test/archive/extract_source/tapes"

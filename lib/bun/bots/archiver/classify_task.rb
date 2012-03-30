@@ -3,7 +3,7 @@
 
 DEFAULT_THRESHOLD = 20
 desc "classify [FROM] [CLEAN] [DIRTY]", "Classify files based on whether they're clean or not."
-option 'archive',   :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'at',        :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option "copy",      :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to clean/dirty directories (instead of symlink)"
 option 'dryrun',    :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
 option 'threshold', :aliases=>'-t', :type=>'numeric',
@@ -11,13 +11,13 @@ option 'threshold', :aliases=>'-t', :type=>'numeric',
 def classify(from=nil, clean=nil, dirty=nil)
   @dryrun = options[:dryrun]
   threshold = options[:threshold] || DEFAULT_THRESHOLD
-  archive = Archive.new(:location=>options[:archive])
-  directory = archive.location
+  archive = Archive.new(:at=>options[:at])
+  directory = archive.at
   from ||= archive.files_directory
-  from = File.join(archive.location, from)
+  from = File.join(archive.at, from)
   log_file = File.join(from, archive.log_file)
-  clean = File.join(archive.location, archive.clean_directory)
-    dirty = File.join(archive.location, archive.dirty_directory)
+  clean = File.join(archive.at, archive.clean_directory)
+    dirty = File.join(archive.at, archive.dirty_directory)
   destinations = {:clean=>clean, :dirty=>dirty}
   shell = Shell.new(:dryrun=>@dryrun)
   destinations.each do |status, destination|

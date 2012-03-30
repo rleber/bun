@@ -2,7 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 desc "dump LOCATION", "Dump a Honeywell file"
-option 'archive',   :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'at',        :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option "escape",    :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
 option "frozen",    :aliases=>'-f', :type=>'boolean', :desc=>'Display characters in frozen format (i.e. 5 per word)'
 option "lines",     :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
