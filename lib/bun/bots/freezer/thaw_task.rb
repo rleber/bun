@@ -3,7 +3,7 @@
 
 # TODO Thaw all files
 desc "thaw ARCHIVE FILE [TO]", "Uncompress a frozen Honeywell file"
-option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option "log",     :aliases=>'-l', :type=>'string',  :desc=>"Log status to specified file"
 option "warn",    :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
 long_desc <<-EOT
@@ -13,7 +13,7 @@ beginning of a file name, so that '\\+1' refers to a file named '+1', whereas '+
 whatever its name.
 EOT
 def thaw(file_name, n, out=nil)
-  archive = Archive.new(:at=>options[:archive])
+  archive = Archive.new(:at=>options[:at])
   directory = archive.at
   file = archive.open(file_name)
   begin

@@ -2,14 +2,14 @@
 # -*- encoding: us-ascii -*-
 
 desc "dump ARCHIVE FILE", "Uncompress a frozen Honeywell file"
-option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option "escape",  :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
 option "lines",   :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
 option "offset",  :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lines'
 option "thawed",  :aliases=>'-t', :type=>'boolean', :desc=>'Display the file in partially thawed format'
 def dump(file_name, n)
   limit = options[:lines]
-  archive = Archive.new(:at=>options[:archive])
+  archive = Archive.new(:at=>options[:at])
   directory = archive.at
   file = archive.open(file_name)
   stop "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen

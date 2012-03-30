@@ -3,8 +3,8 @@
 
 SHARDS_ACROSS = 5
 desc "describe LOCATION", "Display description information for a file"
-option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
-option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on archive index; always build information from source file"
+option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on at index; always build information from source file"
 def describe(file_name)
   archive = Archive.new(options)
   descriptor    = archive.descriptor(file_name, :build=>options[:build])

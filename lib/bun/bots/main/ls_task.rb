@@ -43,8 +43,8 @@ DEFAULT_VALUES = {
 }
 
 desc "ls", "Display an index of archived files"
-option 'archive',   :aliases=>'-a', :type=>'string',                               :desc=>'Archive location'
-option "build",     :aliases=>"-b", :type=>'boolean',                              :desc=>"Don't rely on archive index; always build information from source file"
+option 'at',        :aliases=>'-a', :type=>'string',                               :desc=>'Archive location'
+option "build",     :aliases=>"-b", :type=>'boolean',                              :desc=>"Don't rely on at index; always build information from source file"
 option "descr",     :aliases=>"-d", :type=>'boolean',                              :desc=>"Include description"
 option "files",     :aliases=>"-f", :type=>'string',  :default=>'',                :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "frozen",    :aliases=>"-r", :type=>'boolean',                              :desc=>"Recursively include contents of freeze files"

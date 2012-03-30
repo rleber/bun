@@ -27,14 +27,14 @@ end
 # Cross-reference the extracted files:
 # Create one directory per file, as opposed to one directory per tape
 desc "organize [FROM] [TO]", "Create cross-reference by file name"
-option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-option "copy",    :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to reorganized archive (instead of symlink)"
+option 'at',      :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+option "copy",    :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to reorganized at (instead of symlink)"
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually reorganize"
 option 'trace',   :aliases=>'-t', :type=>'boolean', :desc=>"Debugging trace"
 def organize(from=nil, to=nil)
   @dryrun = options[:dryrun]
   @trace = options[:trace]
-  archive = Archive.new(:at=>options[:archive])
+  archive = Archive.new(:at=>options[:at])
   directory = archive.at
   from ||= archive.extract_directory
   from = File.join(archive.at, from)

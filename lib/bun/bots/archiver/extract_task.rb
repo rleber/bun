@@ -2,12 +2,12 @@
 # -*- encoding: us-ascii -*-
 
 desc "extract [TO]", "Extract all the files in the archive"
-option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
 def extract(to=nil)
   @dryrun = options[:dryrun]
-  archive = Archive.new(:at=>options[:archive])
+  archive = Archive.new(:at=>options[:at])
   directory = archive.at
   to ||= File.join(archive.at, archive.extract_directory)
   log_file = File.join(to, archive.log_file)

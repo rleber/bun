@@ -24,7 +24,7 @@ module Bun
     attr_reader :at
     
     def initialize(options={})
-      @at = options[:at] || options[:archive] || default_at
+      @at = options[:at] || default_at
       @directory = options[:directory] || 'raw'
       @index = nil
       @update_indexes = options.has_key?(:update_indexes) ? options[:update_indexes] : true
