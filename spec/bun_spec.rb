@@ -678,4 +678,15 @@ describe Bun::Bot do
       exec("rm -f output/archive_extract_files.txt")
     end
   end
+  context "bun catalog ls" do
+    before :all do
+      exec("bun catalog ls 2>&1 >output/catalog_ls")
+    end
+    it "should give correct output" do
+      Bun.readfile("output/catalog_ls").should == Bun.readfile("output/test/catalog_ls")
+    end
+    after :all do
+      exec("rm -rf output/catalog_ls")
+    end
+  end
 end
