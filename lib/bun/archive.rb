@@ -499,5 +499,14 @@ module Bun
         rm_at_path(from_path)
       end
     end
+    
+    def mkdir(path, options={})
+      path = expand_path(path)
+      if options[:p] || options[:parents]
+        FileUtils.mkdir_p(path)
+      else
+        FileUtils.mkdir(path)
+      end
+    end
   end
 end
