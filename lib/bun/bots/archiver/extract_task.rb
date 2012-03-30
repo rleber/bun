@@ -1,19 +1,19 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-desc "extract [TO]", "Extract all the files in the archive"
+desc "extract TO", "Extract all the files in the archive"
 option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
-def extract(to=nil)
+def extract(to)
   @dryrun = options[:dryrun]
   archive = Archive.new(:at=>options[:at])
   directory = archive.at
-  to ||= File.join(archive.at, archive.extract_directory)
-  log_file = File.join(to, archive.log_file)
+  to_path = archive.expand_path(to, :from_wd=>true) # @/foo form is allowed
+  log_file = File.join(to_path, archive.relative_path(archive.log_file))
   ix = archive.locations
   shell = Shell.new(:dryrun=>@dryrun)
-  shell.rm_rf to
+  shell.rm_rf to_path
   ix.each do |location|
     file = archive.open(location)
     file_path = file.path
@@ -22,15 +22,15 @@ def extract(to=nil)
       file.shard_count.times do |i|
         descr = file.shard_descriptor(i)
         shard_name = descr.name
-        f = File.join(to, location, file_path, shard_name)
+        f = File.join(to_path, location, file_path, shard_name)
         dir = File.dirname(f)
         shell.mkdir_p dir
-        shard_name = '\\' + shard_name if shard_name =~ /^\+/ # Watch out -- '+' has a special meaning to thaw
+        shard_name = '\\' + shard_name if shard_name =~ /^\+/ # Watch out -- '+' has a special meaning to_path thaw
         warn "thaw #{location} #{shard_name}" unless @dryrun
         shell.thaw location, shard_name, f, :log=>log_file
       end
     when :text
-      f = File.join(to, location, file_path)
+      f = File.join(to_path, location, file_path)
       dir = File.dirname(f)
       shell.mkdir_p dir
       warn "unpack #{location}" unless @dryrun

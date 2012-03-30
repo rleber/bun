@@ -11,7 +11,7 @@ option "include", :aliases=>'-i', :type=>'string',  :desc=>"Include only certain
 option "exclude", :aliases=>'-x', :type=>'string',  :desc=>"Skip certain messages. Options include #{VALID_MESSAGES.join(',')}"
 # TODO Reformat this in columns: location shard match loc1 value1 loc2 value2
 def check
-  archive = Archive.new(options[:at])
+  archive = Archive.new(:at=>options[:at])
   exclusions = (options[:exclude] || '').split(/\s*[,\s]\s*/).map{|s| s.strip.downcase }
   inclusions = (options[:include] || VALID_MESSAGES.join(',')).split(/\s*[,\s]\s*/).map{|s| s.strip.downcase }
   table = []

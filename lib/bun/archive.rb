@@ -17,21 +17,16 @@ module Bun
     class CopyMissingFromFile < ArgumentError; end
     class CopyToNonDirectory < ArgumentError; end
     
-    DIRECTORY_LOCATIONS = %w{at log_file raw_directory extract_directory files_directory clean_directory dirty_directory}
-    
-    # TODO Why is a class variable necessary here?
-    
     attr_reader :at
     
     def initialize(options={})
-      @at = options[:at] || default_at
-      @directory = options[:directory] || 'raw'
+      @at = File.expand_path(options[:at] || default_at)
       @index = nil
       @update_indexes = options.has_key?(:update_indexes) ? options[:update_indexes] : true
     end
     
     def locations
-      Dir.entries(File.join(at, directory_location)).reject{|f| f=~/^\./}
+      Dir.entries(at).reject{|f| f=~/^\./}
     end
 
     def each(&blk)
@@ -87,23 +82,16 @@ module Bun
     end
     cache :config
     
-    (DIRECTORY_LOCATIONS - %w{at}).each do |locn|
-      define_method locn do ||
-        config_dir(locn)
+    def expanded_config(name)
+      expand_path(config[name.to_s])
+    end
+    
+    CONFIG_FILES = %w{log_file catalog_file index_directory}
+    
+    CONFIG_FILES.each do |item|
+      define_method item do ||
+        expanded_config(item)
       end
-    end
-      
-    def directory_location(directory=nil)
-      directory ||= @directory
-      config_dir("#{directory}_directory") || directory
-    end
-    
-    def catalog_file
-      File.expand_path(File.join(at, config['catalog_file']))
-    end
-    
-    def index_directory
-      File.join(@at, directory_location, config['index_directory'])
     end
     
     # TODO Is there a more descriptive name for this?
@@ -130,19 +118,19 @@ module Bun
       if options[:from_wd] # Expand relative to working directory
         case location
         when /^@\/(.*)/ # syntax @/xxxx means expand relative to archive
-          return expand_path($1)
+               return expand_path($1)
         when /^\\(@.*)/ # syntax \@xxxx means ignore the '@'; expand relative to working directory
           location = $1
         end
         rel = `pwd`.chomp
       else # expand relative to archive
-        rel = File.expand_path(directory_location, self.at)
+        rel = File.expand_path(at)
       end
       File.expand_path(location, rel)
     end
     
     def relative_path(*f)
-      File.relative_path(*f, :relative_to=>::File.expand_path(directory_location, self.at))
+      File.relative_path(*f, :relative_to=>at)
     end
     
     def catalog
@@ -202,7 +190,7 @@ module Bun
       end
       if options[:recursive]
         directories do |f|
-          sub_archive = Archive.new(:at=>expand_path(f), :directory=>'')
+          sub_archive = Archive.new(:at=>expand_path(f))
           sub_archive.build_index(options)
         end
       end
@@ -475,7 +463,7 @@ module Bun
       if index
         # Copy index entry, too
         to_dir = File.dirname(to)
-        to_archive = Archive.new(:at=>to_dir, :directory=>'')
+        to_archive = Archive.new(:at=>to_dir)
         descriptor = self.descriptor(File.basename(from))
         descriptor.original_location = File.basename(from) unless descriptor.original_location
         descriptor.original_location_path = expand_path(from) unless descriptor.original_location_path

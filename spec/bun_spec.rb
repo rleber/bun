@@ -203,22 +203,23 @@ describe Bun::Bot do
     describe "recursive" do
       before :each do
         exec("rm -rf data/test/archive/cp_recursive")
+        exec("rm -rf data/test/archive/cp_recursive_new")
         exec("cp -r  data/test/archive/cp_recursive_init data/test/archive/cp_recursive")
-        exec("mkdir  data/test/archive/cp_recursive/new")
-        exec("bun cp -r --at data/test/archive/cp_recursive '*' '@/../new/'")
+        exec("mkdir  data/test/archive/cp_recursive_new")
+        exec("bun cp -r --at data/test/archive/cp_recursive '*' '@/../cp_recursive_new/'")
       end
       describe "the original files" do
         describe "in the main directory" do
           it "are unchanged" do
             expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698 directory}.sort
-            result_files = Dir.glob('data/test/archive/cp_recursive/raw/*').map{|f| File.basename(f)}.sort
+            result_files = Dir.glob('data/test/archive/cp_recursive/*').map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
         end
         describe "in the sub-directory" do
           it "are unchanged" do
             expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
-            result_files = Dir.glob('data/test/archive/cp_recursive/raw/directory/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+            result_files = Dir.glob('data/test/archive/cp_recursive/directory/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
         end
@@ -227,14 +228,14 @@ describe Bun::Bot do
         describe "in the main directory" do
           it "are unchanged" do
             expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort.map{|f| "#{f}.descriptor.yml"}
-            result_files = Dir.glob('data/test/archive/cp_recursive/raw/.bun_index/*').map{|f| File.basename(f)}.sort
+            result_files = Dir.glob('data/test/archive/cp_recursive/.bun_index/*').map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
         end
         describe "in the sub-directory" do
           it "are unchanged" do
             expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort.map{|f| "#{f}.descriptor.yml"}
-            result_files = Dir.glob('data/test/archive/cp_recursive/raw/directory/.bun_index/*').map{|f| File.basename(f)}.sort
+            result_files = Dir.glob('data/test/archive/cp_recursive/directory/.bun_index/*').map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
         end
@@ -243,14 +244,14 @@ describe Bun::Bot do
         describe "in the main directory" do
           it "are all copied" do
             expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698 directory}.sort
-            result_files = Dir.glob('data/test/archive/cp_recursive/new/*').map{|f| File.basename(f)}.sort
+            result_files = Dir.glob('data/test/archive/cp_recursive_new/*').map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
         end
         describe "in the sub-directory" do
           it "are all copied" do
             expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
-            result_files = Dir.glob('data/test/archive/cp_recursive/new/directory/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+            result_files = Dir.glob('data/test/archive/cp_recursive_new/directory/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
         end
@@ -259,36 +260,37 @@ describe Bun::Bot do
         describe "in the main directory" do
           it "are all created" do
             expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort.map{|f| "#{f}.descriptor.yml"}
-            result_files = Dir.glob('data/test/archive/cp_recursive/new/.bun_index/*').map{|f| File.basename(f)}.sort
+            result_files = Dir.glob('data/test/archive/cp_recursive_new/.bun_index/*').map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
           it "should not change the location" do
-            content = YAML.load(Bun.readfile("data/test/archive/cp_recursive/new/.bun_index/ar003.0701.descriptor.yml", :encoding=>'us-ascii'))
+            content = YAML.load(Bun.readfile("data/test/archive/cp_recursive_new/.bun_index/ar003.0701.descriptor.yml", :encoding=>'us-ascii'))
             content[:location].should == 'ar003.0701'
           end
           it "should change the location_path" do
-            content = YAML.load(Bun.readfile("data/test/archive/cp_recursive/new/.bun_index/ar003.0701.descriptor.yml", :encoding=>'us-ascii'))
-            content[:location_path].should == %{#{exec("pwd").chomp}/data/test/archive/cp_recursive/new/ar003.0701}
+            content = YAML.load(Bun.readfile("data/test/archive/cp_recursive_new/.bun_index/ar003.0701.descriptor.yml", :encoding=>'us-ascii'))
+            content[:location_path].should == %{#{exec("pwd").chomp}/data/test/archive/cp_recursive_new/ar003.0701}
           end
         end
         describe "in the sub-directory" do
           it "are all created" do
             expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort.map{|f| "#{f}.descriptor.yml"}
-            result_files = Dir.glob('data/test/archive/cp_recursive/new/directory/.bun_index/*').map{|f| File.basename(f)}.sort
+            result_files = Dir.glob('data/test/archive/cp_recursive_new/directory/.bun_index/*').map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
           it "should not change the location" do
-            content = YAML.load(Bun.readfile("data/test/archive/cp_recursive/new/.bun_index/ar082.0605.descriptor.yml", :encoding=>'us-ascii'))
+            content = YAML.load(Bun.readfile("data/test/archive/cp_recursive_new/.bun_index/ar082.0605.descriptor.yml", :encoding=>'us-ascii'))
             content[:location].should == 'ar082.0605'
           end
           it "should change the location_path" do
-            content = YAML.load(Bun.readfile("data/test/archive/cp_recursive/new/.bun_index/ar082.0605.descriptor.yml", :encoding=>'us-ascii'))
-            content[:location_path].should == %{#{exec("pwd").chomp}/data/test/archive/cp_recursive/new/ar082.0605}
+            content = YAML.load(Bun.readfile("data/test/archive/cp_recursive_new/.bun_index/ar082.0605.descriptor.yml", :encoding=>'us-ascii'))
+            content[:location_path].should == %{#{exec("pwd").chomp}/data/test/archive/cp_recursive_new/ar082.0605}
           end
         end
       end
       after :each do
         exec("rm -rf data/test/archive/cp_recursive")
+        exec("rm -rf data/test/archive/cp_recursive_new")
       end
     end
     context "index processing" do
@@ -304,7 +306,7 @@ describe Bun::Bot do
         end
         context "contents of index" do
           before :each do
-            @original_content = YAML.load(Bun.readfile("#{ENV['HOME']}/bun_archive/raw/.bun_index/ar003.0698.descriptor.yml", :encoding=>'us-ascii'))
+            @original_content = YAML.load(Bun.readfile("#{ENV['HOME']}/bun_archive/.bun_index/ar003.0698.descriptor.yml", :encoding=>'us-ascii'))
             @content = YAML.load(Bun.readfile("output/.bun_index/cp_ar003.0698.out.descriptor.yml", :encoding=>'us-ascii'))
           end
           it "should change the location" do
@@ -317,7 +319,7 @@ describe Bun::Bot do
             @content[:original_location].should == 'ar003.0698'
           end
           it "should record the original location_path" do
-            @content[:original_location_path].should == "#{ENV['HOME']}/bun_archive/raw/ar003.0698"
+            @content[:original_location_path].should == "#{ENV['HOME']}/bun_archive/ar003.0698"
           end
           it "should otherwise match the original index" do
             other_content = @content.dup
@@ -382,12 +384,12 @@ describe Bun::Bot do
         end
         it "removes the file" do
           expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.sort
-          result_files = Dir.glob('data/test/archive/rm/raw/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+          result_files = Dir.glob('data/test/archive/rm/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
           result_files.should == expected_files
         end
         it "removes the file from the index" do
           expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.map{|name| name + '.descriptor.yml'}.sort
-          result_files = Dir.glob('data/test/archive/rm/raw/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+          result_files = Dir.glob('data/test/archive/rm/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
           result_files.should == expected_files
         end
         it "should refuse to remove a directory" do
@@ -402,12 +404,12 @@ describe Bun::Bot do
           end
           it "removes the file" do
             expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.sort
-            result_files = Dir.glob('data/test/archive/rm/raw/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+            result_files = Dir.glob('data/test/archive/rm/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
           it "removes the file from the index" do
             expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.map{|name| name + '.descriptor.yml'}.sort
-            result_files = Dir.glob('data/test/archive/rm/raw/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+            result_files = Dir.glob('data/test/archive/rm/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
         end
@@ -417,7 +419,7 @@ describe Bun::Bot do
           end
           it "removes the file" do
             expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
-            result_files = Dir.glob('data/test/archive/rm/raw/*').map{|f| File.basename(f)}.sort
+            result_files = Dir.glob('data/test/archive/rm/*').map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
         end
@@ -429,12 +431,12 @@ describe Bun::Bot do
       end
       it "removes the files" do
         expected_files = %w{ar003.0701 ar082.0605}.sort
-        result_files = Dir.glob('data/test/archive/rm/raw/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+        result_files = Dir.glob('data/test/archive/rm/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
         result_files.should == expected_files
       end
       it "removes the files from the index" do
         expected_files = %w{ar003.0701 ar082.0605}.map{|name| name + '.descriptor.yml'}.sort
-        result_files = Dir.glob('data/test/archive/rm/raw/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+        result_files = Dir.glob('data/test/archive/rm/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
         result_files.should == expected_files
       end
     end
@@ -453,16 +455,16 @@ describe Bun::Bot do
       end
       it "moves the file in the index" do
         expected_files = %w{ar003.0698 ar003.0701b ar082.0605 ar083.0698}.map{|name| name + '.descriptor.yml'}.sort
-        result_files = Dir.glob('data/test/archive/mv/raw/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+        result_files = Dir.glob('data/test/archive/mv/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
         result_files.should == expected_files
       end
       it "should change the location" do
-        content = YAML.load(Bun.readfile("data/test/archive/mv/raw/.bun_index/ar003.0701b.descriptor.yml", :encoding=>'us-ascii'))
+        content = YAML.load(Bun.readfile("data/test/archive/mv/.bun_index/ar003.0701b.descriptor.yml", :encoding=>'us-ascii'))
         content[:location].should == 'ar003.0701b'
       end
       it "should change the location_path" do
-        content = YAML.load(Bun.readfile("data/test/archive/mv/raw/.bun_index/ar003.0701b.descriptor.yml", :encoding=>'us-ascii'))
-        content[:location_path].should == %{#{exec("pwd").chomp}/data/test/archive/mv/raw/ar003.0701b}
+        content = YAML.load(Bun.readfile("data/test/archive/mv/.bun_index/ar003.0701b.descriptor.yml", :encoding=>'us-ascii'))
+        content[:location_path].should == %{#{exec("pwd").chomp}/data/test/archive/mv/ar003.0701b}
       end
     end
     describe "with a directory" do
@@ -471,28 +473,28 @@ describe Bun::Bot do
       end
       it "moves the directory" do
         expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698 directory2}.sort
-        result_files = Dir.glob('data/test/archive/mv/raw/*').map{|f| File.basename(f)}.sort
+        result_files = Dir.glob('data/test/archive/mv/*').map{|f| File.basename(f)}.sort
         result_files.should == expected_files
       end
       it "moves the contents of the directory" do
         expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
-        result_files = Dir.glob('data/test/archive/mv/raw/directory2/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+        result_files = Dir.glob('data/test/archive/mv/directory2/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
         result_files.should == expected_files
       end
       it "should leave the locations unchanged" do
         expected_locations = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
         locations = []
-        Dir.glob("data/test/archive/mv/raw/directory2/.bun_index/*.descriptor.yml").each do |f|
+        Dir.glob("data/test/archive/mv/directory2/.bun_index/*.descriptor.yml").each do |f|
           locations << YAML.load(Bun.readfile(f, :encoding=>'us-ascii'))[:location]
         end
         locations.sort.should == expected_locations
       end
       it "should change the location_paths" do
         expected_location_paths = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort.map do |f|
-          %{#{exec("pwd").chomp}/data/test/archive/mv/raw/directory2/#{f}}
+          %{#{exec("pwd").chomp}/data/test/archive/mv/directory2/#{f}}
         end
         location_paths = []
-        Dir.glob("data/test/archive/mv/raw/directory2/.bun_index/*.descriptor.yml").each do |f|
+        Dir.glob("data/test/archive/mv/directory2/.bun_index/*.descriptor.yml").each do |f|
           location_paths << YAML.load(Bun.readfile(f, :encoding=>'us-ascii'))[:location_path]
         end
         location_paths.sort.should == expected_location_paths
@@ -508,23 +510,23 @@ describe Bun::Bot do
     end
     describe "without -p" do
       it "should create a directory" do
-        archive = Bun::Archive.new(:at=>"output", :directory=>'')
+        archive = Bun::Archive.new(:at=>"output")
         archive.mkdir('mkdir')
         file_should_exist "output/mkdir"
       end
       it "should not create a directory without parents" do
-        archive = Bun::Archive.new(:at=>"output", :directory=>'')
+        archive = Bun::Archive.new(:at=>"output")
         expect { archive.mkdir('mkdir/foo') }.should raise_error
       end
     end
     describe "with -p" do
       it "should create a directory" do
-        archive = Bun::Archive.new(:at=>"output", :directory=>'')
+        archive = Bun::Archive.new(:at=>"output")
         archive.mkdir('mkdir/foo/bar', :p=>true)
         file_should_exist "output/mkdir/foo/bar"
       end
       it "should create parent directories" do
-        archive = Bun::Archive.new(:at=>"output", :directory=>'')
+        archive = Bun::Archive.new(:at=>"output")
         archive.mkdir('mkdir/foo/bar', :parents=>true)
         file_should_exist "output/mkdir"
       end
@@ -540,18 +542,18 @@ describe Bun::Bot do
     end
     context "index build" do
       before :each do
-        exec("rm -rf data/test/archive/index/raw/.bun_index")
+        exec("rm -rf data/test/archive/index/.bun_index")
         exec("bun archive index build --at \"data/test/archive/index\"")
       end
       it "should create index" do
-        file_should_exist "data/test/archive/index/raw/.bun_index"
+        file_should_exist "data/test/archive/index/.bun_index"
       end
       it "should have an entry for ar003.0698" do
-        Dir.glob("data/test/archive/index/raw/.bun_index/*").should == ["data/test/archive/index/raw/.bun_index/ar003.0698.descriptor.yml"]
+        Dir.glob("data/test/archive/index/.bun_index/*").should == ["data/test/archive/index/.bun_index/ar003.0698.descriptor.yml"]
       end
       context "index contents" do
         before :each do
-          content = Bun.readfile("data/test/archive/index/raw/.bun_index/ar003.0698.descriptor.yml", :encoding=>'us-ascii')
+          content = Bun.readfile("data/test/archive/index/.bun_index/ar003.0698.descriptor.yml", :encoding=>'us-ascii')
           @index = YAML.load(content) rescue nil
         end
         it "should be a Hash" do
@@ -561,12 +563,12 @@ describe Bun::Bot do
     end
     context "index clear" do
       before :each do
-        exec("rm -rf data/test/archive/index/raw/.bun_index")
+        exec("rm -rf data/test/archive/index/.bun_index")
         exec("bun archive index build --at \"data/test/archive/index\"")
         exec("bun archive index clear --at \"data/test/archive/index\"")
       end
       it "should remove index" do
-        file_should_not_exist "data/test/archive/index/raw/.bun_index"
+        file_should_not_exist "data/test/archive/index/.bun_index"
       end
     end
     after :each do
@@ -653,11 +655,12 @@ describe Bun::Bot do
   context "bun archive extract" do
     before :all do
       exec("rm -rf data/test/archive/extract_source")
+      exec("rm -rf data/test/archive/extract_tapes")
       exec("cp -r data/test/archive/extract_source_init data/test/archive/extract_source")
-      exec("bun archive extract --at data/test/archive/extract_source 2>output/archive_extract_stderr.txt >output/archive_extract_stdout.txt")
+      exec("bun archive extract --at data/test/archive/extract_source data/test/archive/extract_tapes 2>output/archive_extract_stderr.txt >output/archive_extract_stdout.txt")
     end
     it "should create a tapes directory" do
-      file_should_exist "data/test/archive/extract_source/tapes"
+      file_should_exist "data/test/archive/extract_tapes"
     end
     it "should write nothing on stdout" do
       Bun.readfile('output/archive_extract_stdout.txt').chomp.should == ""
@@ -667,12 +670,13 @@ describe Bun::Bot do
     end
     it "should create the appropriate files" do
       File.open('output/archive_extract_files.txt', 'w') do |f|
-        f.puts Dir.glob('data/test/archive/extract_source/tapes/**/*')
+        f.puts Dir.glob('data/test/archive/extract_tapes/**/*')
       end
       Bun.readfile('output/archive_extract_files.txt').chomp.should == Bun.readfile('output/test/archive_extract_files.txt').chomp
     end
     after :all do
       exec("rm -rf data/test/archive/extract_source")
+      exec("rm -rf data/test/archive/extract_tapes")
       exec("rm -f output/archive_extract_stderr.txt")
       exec("rm -f output/archive_extract_stdout.txt")
       exec("rm -f output/archive_extract_files.txt")

@@ -5,7 +5,7 @@ desc "set_dates", "Set file modification dates for archived files, based on cata
 option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually set dates"
 def set_dates
-  archive = Archive.new(options[:at])
+  archive = Archive.new(:at=>options[:at])
   shell = Bun::Shell.new(options)
   archive.each do |location|
     descr = archive.descriptor(location)
