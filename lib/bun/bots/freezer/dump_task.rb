@@ -9,8 +9,8 @@ option "offset",  :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lin
 option "thawed",  :aliases=>'-t', :type=>'boolean', :desc=>'Display the file in partially thawed format'
 def dump(file_name, n)
   limit = options[:lines]
-  archive = Archive.new(:location=>options[:archive])
-  directory = archive.location
+  archive = Archive.new(:at=>options[:archive])
+  directory = archive.at
   file = archive.open(file_name)
   stop "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
   archived_file = file.path

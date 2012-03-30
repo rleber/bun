@@ -110,7 +110,7 @@ end
 
 describe Bun::Archive do
   before :each do
-    @archive = Bun::Archive.new(:location=>'data/test/archive/contents')
+    @archive = Bun::Archive.new(:at=>'data/test/archive/contents')
   end
   describe "contents" do
     it "retrieves correct list" do
@@ -508,23 +508,23 @@ describe Bun::Bot do
     end
     describe "without -p" do
       it "should create a directory" do
-        archive = Bun::Archive.new(:location=>"output", :directory=>'')
+        archive = Bun::Archive.new(:at=>"output", :directory=>'')
         archive.mkdir('mkdir')
         file_should_exist "output/mkdir"
       end
       it "should not create a directory without parents" do
-        archive = Bun::Archive.new(:location=>"output", :directory=>'')
+        archive = Bun::Archive.new(:at=>"output", :directory=>'')
         expect { archive.mkdir('mkdir/foo') }.should raise_error
       end
     end
     describe "with -p" do
       it "should create a directory" do
-        archive = Bun::Archive.new(:location=>"output", :directory=>'')
+        archive = Bun::Archive.new(:at=>"output", :directory=>'')
         archive.mkdir('mkdir/foo/bar', :p=>true)
         file_should_exist "output/mkdir/foo/bar"
       end
       it "should create parent directories" do
-        archive = Bun::Archive.new(:location=>"output", :directory=>'')
+        archive = Bun::Archive.new(:at=>"output", :directory=>'')
         archive.mkdir('mkdir/foo/bar', :parents=>true)
         file_should_exist "output/mkdir"
       end

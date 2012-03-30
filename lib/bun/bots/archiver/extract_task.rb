@@ -7,9 +7,9 @@ option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. D
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
 def extract(to=nil)
   @dryrun = options[:dryrun]
-  archive = Archive.new(:location=>options[:archive])
-  directory = archive.location
-  to ||= File.join(archive.location, archive.extract_directory)
+  archive = Archive.new(:at=>options[:archive])
+  directory = archive.at
+  to ||= File.join(archive.at, archive.extract_directory)
   log_file = File.join(to, archive.log_file)
   ix = archive.locations
   shell = Shell.new(:dryrun=>@dryrun)

@@ -13,8 +13,8 @@ Counts all characters, and the following special characters: tabs, backspaces, f
 Produces a list of all other non-printable characters encountered.
 END
 def text_status
-  archive = Archive.new(:location=>options[:archive])
-  directory = archive.location
+  archive = Archive.new(:at=>options[:archive])
+  directory = archive.at
   table = []
   archive.each do |location|
     $stderr.puts location unless options[:quiet]

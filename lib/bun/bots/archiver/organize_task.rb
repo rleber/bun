@@ -34,12 +34,12 @@ option 'trace',   :aliases=>'-t', :type=>'boolean', :desc=>"Debugging trace"
 def organize(from=nil, to=nil)
   @dryrun = options[:dryrun]
   @trace = options[:trace]
-  archive = Archive.new(:location=>options[:archive])
-  directory = archive.location
+  archive = Archive.new(:at=>options[:archive])
+  directory = archive.at
   from ||= archive.extract_directory
-  from = File.join(archive.location, from)
+  from = File.join(archive.at, from)
   to ||= archive.files_directory
-  to = File.join(archive.location, archive.files_directory)
+  to = File.join(archive.at, archive.files_directory)
   index = Index.new
   
   # Build cross-reference index

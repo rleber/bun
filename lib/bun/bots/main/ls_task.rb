@@ -146,7 +146,7 @@ def ls
       end
     end
   end
-  puts "Archive at #{archive.location}:"
+  puts "Archive at #{archive.at}:"
   if table.size <= 1
     puts "No matching files"
   else

@@ -4,7 +4,7 @@
 desc "compare_offsets", "Compare file offsets vs. content of file preamble"
 option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
 def compare_offsets
-  archive = Archive.new(:location=>options[:archive])
+  archive = Archive.new(:at=>options[:archive])
   table = [%w{Location Word1 Calculated Flag}]
   flagged = false
   archive.each do |location|
