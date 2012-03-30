@@ -4,13 +4,10 @@
 :file_size: 662
 :file_type: :huffman
 :catalog_time: 
-:name: huffhart
+:basename: huffhart
 :owner: fass
 :path: fass/idallen/huffhart
 :specification: /idallen/huffhart  ==>files for idallen
-:tape_name: !binary |-
-  YXIwMDMuMDcwMQ==
-:tape_path: /Users/richard/projects/bun/data/test/archive/extract_source_init/raw/ar003.0701
+:location: ar003.0701
+:location_path: /Users/richard/projects/bun/data/test/archive/extract_source_init/raw/ar003.0701
 :updated: 
-:original_tape_name: ar003.0701
-:original_tape_path: /Users/richard/bun_archive/raw/ar003.0701

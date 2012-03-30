@@ -8,9 +8,9 @@ class Index < Array
   end
   
   def find(spec={})
-    spec = {:from=>//, :to=>//, :from=>//, :tape=>//}.merge(spec)
+    spec = {:from=>//, :to=>//, :from=>//, :location=>//}.merge(spec)
     spec.each {|key, pattern| spec[key] = /^#{Regexp.escape(pattern)}$/ if pattern.is_a?(String) }
-    select {|e| e[:from]=~ spec[:from] && e[:to]=~spec[:to] && e[:tape]=~spec[:tape] && e[:file]=~spec[:file] }
+    select {|e| e[:from]=~ spec[:from] && e[:to]=~spec[:to] && e[:location]=~spec[:location] && e[:file]=~spec[:file] }
   end
   
   def summary(field)

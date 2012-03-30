@@ -2,11 +2,11 @@
 # -*- encoding: us-ascii -*-
 
 desc "ls", "List the catalog file for the archive"
-option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+option 'at', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
 def ls
-  archive = Archive.new(options[:archive])
-  # TODO Use Array.justify_rows
+  archive = Archive.new(:at=>options[:at])
+  puts "Location    Update      File/Directory"
   archive.catalog.each do |spec|
-    puts "#{spec[:tape]}  #{spec[:date].strftime('%Y/%d/%m')}  #{spec[:file]}"
+    puts "#{spec[:location]}  #{spec[:date].strftime('%Y/%d/%m')}  #{spec[:file]}"
   end
 end

@@ -4,20 +4,15 @@
 :file_size: 2582
 :file_type: :text
 :catalog_time: 
-:name: vector
-:open_time: 2012-03-22 10:58:07.215879000 -04:00
+:basename: vector
 :owner: fass
 :path: fass/idallen/vector
 :specification: /idallen/vector  ==>files for idallen
-:tape_name: !binary |-
-  YXIwMDMuMDY5OA==
-:tape_path: /Users/richard/projects/bun/data/test/archive/extract_source/raw/ar003.0698
-:file_date: 
-:file_time: 
+:location: ar003.0698
+:location_path: /Users/richard/projects/bun/data/test/archive/extract_source_init/raw/ar003.0698
 :updated: 
 :blocks: 8
 :good_blocks: 
-:bad_characters: {}
-:character_count: 8568
-:original_tape_name: ar003.0698
-:original_tape_path: /Users/richard/bun_archive/raw/ar003.0698
+:status: 
+:control_characters: 
+:character_count: 

@@ -1,3 +1,7 @@
+=== 0.0.6 2012-03-29
+
+* Refactor naming: tape=>location, archive.location=>archive.at; build cp -r, mv, and rm commands
+
 === 0.0.5 2012-03-27
 
 * Add file statistics to thaw of frozen files, include frozen files in text_status, and improve dump format

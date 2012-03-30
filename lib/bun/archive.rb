@@ -5,31 +5,37 @@ require 'yaml'
 require 'hashie/mash'
 require 'lib/bun/file'
 require 'lib/bun/archive_enumerator'
+require 'date'
 
 module Bun
   class Archive
     include Enumerable
     include CacheableMethods
     
-    DIRECTORY_LOCATIONS = %w{location log_file raw_directory extract_directory files_directory clean_directory dirty_directory}
+    class NonRecursiveRemoveDirectory < ArgumentError; end
+    class CopyDirectoryNonRecursive < ArgumentError; end
+    class CopyMissingFromFile < ArgumentError; end
+    class CopyToNonDirectory < ArgumentError; end
+    
+    DIRECTORY_LOCATIONS = %w{at log_file raw_directory extract_directory files_directory clean_directory dirty_directory}
     
     # TODO Why is a class variable necessary here?
     
-    attr_reader :location
+    attr_reader :at
     
     def initialize(options={})
-      @location = options[:location] || options[:archive] || default_location
+      @at = options[:at] || default_at
       @directory = options[:directory] || 'raw'
       @index = nil
       @update_indexes = options.has_key?(:update_indexes) ? options[:update_indexes] : true
     end
     
-    def tapes
-      Dir.entries(File.join(location, directory_location)).reject{|f| f=~/^\./}
+    def locations
+      Dir.entries(File.join(at, directory_location)).reject{|f| f=~/^\./}
     end
 
     def each(&blk)
-      tapes = self.tapes
+      locations = self.locations
       enum = Enumerator.new(self)
       if block_given?
         enum.each(&blk)
@@ -46,14 +52,14 @@ module Bun
       each.glob(*pat, &blk)
     end
     
-    def default_location
-      File.expand_path(default_config['location'])
+    def default_at
+      File.expand_path(default_config['at'])
     end
 
     def config_dir(name)
       dir = config[name.to_s]
       return nil unless dir
-      dir = File.expand_path(dir) if dir=~/^~/
+      dir = File.expand_path(dir) if dir=~/^(~|\.)\//
       dir
     end
     
@@ -75,13 +81,13 @@ module Bun
     
     def config(config_file=nil)
       return read_config_file(config_file) if config_file && File.file?(config_file)
-      config_file = File.join(@location, '.config.yml')
+      config_file = File.join(@at, '.config.yml')
       return read_config_file(config_file) if File.file?(config_file)
       default_config
     end
     cache :config
     
-    (DIRECTORY_LOCATIONS - %w{location}).each do |locn|
+    (DIRECTORY_LOCATIONS - %w{at}).each do |locn|
       define_method locn do ||
         config_dir(locn)
       end
@@ -93,25 +99,25 @@ module Bun
     end
     
     def catalog_file
-      File.expand_path(File.join(location, config['catalog_file']))
+      File.expand_path(File.join(at, config['catalog_file']))
     end
     
     def index_directory
-      File.join(@location, directory_location, config['index_directory'])
+      File.join(@at, directory_location, config['index_directory'])
     end
     
     # TODO Is there a more descriptive name for this?
     def contents(&blk)
-      tapes = self.tapes
+      locations = self.locations
       contents = []
-      each do |tape_name|
-        file = open(tape_name)
+      each do |location|
+        file = open(location)
         if file.file_type == :frozen
           file.shard_count.times do |i|
-            contents << "#{tape_name}::#{file.shard_name(i)}"
+            contents << "#{location}::#{file.shard_name(i)}"
           end
         else
-          contents << tape_name
+          contents << location
         end
       end
       if block_given?
@@ -120,13 +126,23 @@ module Bun
       contents
     end
     
-    def expanded_tape_path(file_name)
-      if file_name =~ /^\.\//
+    def expand_path(location, options={})
+      if options[:from_wd] # Expand relative to working directory
+        case location
+        when /^@\/(.*)/ # syntax @/xxxx means expand relative to archive
+          return expand_path($1)
+        when /^\\(@.*)/ # syntax \@xxxx means ignore the '@'; expand relative to working directory
+          location = $1
+        end
         rel = `pwd`.chomp
-      else
-        rel = File.expand_path(directory_location, location)
+      else # expand relative to archive
+        rel = File.expand_path(directory_location, self.at)
       end
-      File.expand_path(file_name, rel)
+      File.expand_path(location, rel)
+    end
+    
+    def relative_path(*f)
+      File.relative_path(*f, :relative_to=>::File.expand_path(directory_location, self.at))
     end
     
     def catalog
@@ -141,14 +157,14 @@ module Bun
         rescue
           raise RuntimeError, "Bad date #{words[1].inspect} in index file at #{line.inspect}"
         end
-        {:tape=>words[0], :date=>date, :file=>words[2]}
+        {:location=>words[0], :date=>date, :file=>words[2]}
       end
       specs
     end
     cache :catalog
     
-    def catalog_time(tape)
-      info = catalog.find {|spec| spec[:tape] == tape }
+    def catalog_time(location)
+      info = catalog.find {|spec| spec[:location] == location }
       info && info[:date].local_date_to_local_time
     end
     
@@ -181,8 +197,14 @@ module Bun
     def build_index(options={})
       clear_index
       each_file(:header=>true) do |f|
-        puts f.tape_name if options[:verbose]
+        puts f.location if options[:verbose]
         update_index(:file=>f)
+      end
+      if options[:recursive]
+        directories do |f|
+          sub_archive = Archive.new(:at=>expand_path(f), :directory=>'')
+          sub_archive.build_index(options)
+        end
       end
       @index
     end
@@ -210,7 +232,7 @@ module Bun
       @index = nil
     end
     
-    # TODO Allow for indexing by other than tape_name?
+    # TODO Allow for indexing by other than location?
     def update_index(options={})
       @index ||= {}
       descr = options[:descriptor] ? options[:descriptor].to_hash : build_descriptor_for_file(options[:file])
@@ -220,8 +242,8 @@ module Bun
           descr.delete(k)
         end
       end
-      @index[descr[:tape_name]] = descr
-      save_index_descriptor(descr[:tape_name])
+      @index[descr[:location]] = descr
+      save_index_descriptor(descr[:location])
       descr
     end
     
@@ -250,7 +272,7 @@ module Bun
     
     def save_index_descriptor_for_file(f)
       @index ||= {}
-      name = f.tape_name
+      name = f.location
       @index[name] ||= build_descriptor_for_file(f)
       make_index_directory
       _save_index_descriptor(name)
@@ -292,66 +314,199 @@ module Bun
     end
     
     def open(name, options={}, &blk)
-      File.open(expanded_tape_path(name), options.merge(:archive=>self, :tape_name=>name), &blk)
+      File.open(expand_path(name), options.merge(:archive=>self, :location=>name), &blk)
     end
     
     def exists?(name)
-      File.exists?(expanded_tape_path(name))
+      File.exists?(expand_path(name))
     end
     
     def rm(options={})
-      glob(*options[:tapes]) do |fname|
-        _rm(fname, options)
+      glob(*options[:locations]) do |fname|
+        path = expand_path(fname)
+        rm_at_path(path, options)
       end
     end
     
-    def _rm(tape)
-      FileUtils.rm(expanded_tape_path(tape))
+    def rm_at_path(path, options={})
+      if File.directory?(path)
+        raise NonRecursiveRemoveDirectory, "#{path} is a directory, but not recursive" unless options[:recursive]
+        FileUtils.rm_rf(path)
+      else
+        FileUtils.rm(path)
+        descriptor_file_name = File.join(File.dirname(path), config['index_directory'], "#{File.basename(path)}.descriptor.yml")
+        puts "In Archive#rm_at_path: path=#{path.inspect}, descriptor_file_name=#{descriptor_file_name.inspect}"
+        FileUtils.rm(descriptor_file_name) if File.exists?(descriptor_file_name)
+      end
     end
-    private :_rm
+    private :rm_at_path
     
+    # cp follows the same rules as Unix cp:
+    #   Notes: 
+    #      - expand glob patterns first
+    #      - file paths are expanded: from files, relative to archive; to files, relative to working
+    #        directory. In the case of to files, '@/xxx' syntax is allowed, which forces expansion relative
+    #        to archive
+    #      - special values are allowed for to: nil or '-' causes output to go to STDOUT
+    #      - options:
+    #        :bare      Do not also copy bun index entries
+    #        :quiet     Do not print warnings (use with :tolerant)
+    #        :tolerant  Do not raise an exception on non-recursive copy of a directory -- just skip it
+    #   1. cp [-r] file dest  (-r is irrelevant):
+    #     a. if dest is omitted or '-'
+    #        - copy file to STDOUT
+    #     b. if dest does not exist:
+    #        - copy file to dest
+    #     c. if dest is a directory:
+    #        - copy file to dest/file
+    #        - dest/file is overwritten if it exists
+    #     d. otherwise (dest exists and it is a file)
+    #        - copy file to dest, overwriting it
+    #   2. cp [-r] file dest/ (-r is irrelevant)
+    #     - dest must exist and be a directory
+    #     - if so, same as 1(c)
+    #   3. cp [-r] directory file (-r is irrelevant)
+    #      - fails
+    #   4. cp directory dest_directory
+    #      - does nothing: ignores from directory, with a warning
+    #   5. cp -r directory dest_directory (with optional trailing /)
+    #      a. if dest exists, copy directory (and its contents) to dest_directory/directory
+    #      b. if dest does not exist, copy directory (and its contents) to dest_directory
+    #   6. cp [-r] file_or_directory file_or_directory... dest_directory (with optional trailing /)
+    #      a. if dest is omitted or '-'
+    #         - Copy all files to STDOUT
+    #      b. Otherwise, dest_directory must exist and be a directory
+    #         - if not -r, ignore all directories in from list (with a warning)
+    #         - Will not copy a directory into itself (e.g. cp -r dir dir)
+    #         - Copies all files and directories into dest_directory
     def cp(options={})
-      glob(*options[:from]) do |fname|
-        _cp(fname, options[:to], options)
+      from = options[:from]
+      from_list = glob(*from).to_a
+      to = options[:to]
+      to_path = to
+      to_path = expand_path(to_path, :from_wd=>true) unless to.nil? || to == '-'
+      if from_list.size == 1
+        cp_single_file_or_directory(options.merge(:from=>from_list.first, :to=>to_path))
+      else
+        if to && to != '-'
+          to += '/' unless to =~ %r{/$/}
+        end
+        from_list.each do |from_item|
+          cp_single_file_or_directory(options.merge(:from=>from_item, :to=>to_path))
+        end
       end
     end
     
-    def _cp(tape, dest=nil, options={})
-      to_stdout = dest.nil? || dest == '-'
+    # Handles copying a single file or directory. Paths for :to should already
+    # be expanded, but not :from
+    def cp_single_file_or_directory(options={})
+      from = options[:from]
+      from_path = expand_path(from)
+      to = options[:to]
+      if to.to_s =~ %r{(.*)/$}
+        to = $1
+        raise CopyToNonDirectory, "#{to} is not a directory" unless File.directory?(to)
+      end
+      case
+      when File.directory?(from_path)
+        if to && to != '-'
+          if File.exists?(to)
+            raise CopyToNonDirectory, "#{to} is not a directory" unless File.directory?(to)
+            creating_to_directory = false
+          else
+            creating_to_directory = true
+          end
+        end
+        if options[:recursive]
+          Dir.glob("#{from_path}/**/*") do |from_item|
+            suffix = File.relative_path(from_item, :relative_to=>from_path)
+            suffix = File.join(from, suffix) unless creating_to_directory
+            target_dir = File.dirname(File.join(to, suffix))
+            FileUtils.mkdir_p(target_dir)
+            cp_single_file(options.merge(:from=>from_item, :to=>target_dir + '/'))
+          end
+        else
+          if options[:tolerant]
+            STDERR.puts "cp: Skipping directory #{from}" unless options[:quiet]
+          else
+            raise CopyDirectoryNonRecursive, "Can't non-recursively copy directory #{from}"
+          end
+        end
+      when File.exists?(from_path)
+        cp_single_file(options.merge(:from=>from_path))
+      else
+        raise CopyMissingFromFile, "#{from} does not exist"
+      end
+    end
+    private :cp_single_file_or_directory
+    
+    # Copy a single file (no directories). :to may be a directory. Both from and to should be expanded
+    def cp_single_file(options={})
+      from = options[:from]
+      to = options[:to]
+      raise RuntimeError, "#{from} should not be a directory" if File.directory?(from)
+      if to.to_s =~ %r{(.*)/$}
+        to = $1
+        raise CopyToNonDirectory, "#{to} is not a directory" unless File.directory?(to)
+      end
+      if to && to != '-' && File.directory?(to)
+        to = File.join(to, File.basename(from))
+      end
+      cp_file_to_file(:from=>from, :to=>to, :bare=>options[:bare])
+    end
+    private :cp_single_file
+    
+    # Copy a single file to a file location. If the file already exists, it
+    # is overwritten. 
+    def cp_file_to_file(options={})
+      from = options[:from]
+      to = options[:to]
+      to_stdout = to.nil? || to == '-'
       index = !options[:bare] && !to_stdout
       unless to_stdout
-        dest = '.' if dest == ''
-        dest = File.join(dest, File.basename(tape)) if File.directory?(dest)
+        to = '.' if to == ''
+        to = File.join(to, File.basename(from)) if File.directory?(to)
       end
 
-      open(tape) do |f|
-        Shell.new(:quiet=>true).write dest, f.read, :mode=>'w:ascii-8bit'
+      open(from) do |f|
+        Shell.new(:quiet=>true).write to, f.read, :mode=>'w:ascii-8bit'
       end
 
       if index
         # Copy index entry, too
-        to_dir = File.dirname(dest)
-        to_archive = Archive.new(:location=>to_dir, :directory=>'')
-        descriptor = self.descriptor(tape)
-        descriptor.original_tape_name = tape unless descriptor.original_tape_name
-        descriptor.original_tape_path = expanded_tape_path(tape) unless descriptor.original_tape_path
-        descriptor.tape_name = File.basename(dest)
-        descriptor.tape_path = File.expand_path(dest)
+        to_dir = File.dirname(to)
+        to_archive = Archive.new(:at=>to_dir, :directory=>'')
+        descriptor = self.descriptor(File.basename(from))
+        descriptor.original_location = File.basename(from) unless descriptor.original_location
+        descriptor.original_location_path = expand_path(from) unless descriptor.original_location_path
+        descriptor.location = File.basename(to)
+        descriptor.location_path = to
         to_archive.update_index(:descriptor=>descriptor)
       end
     end
-    private :_cp
+    private :cp_file_to_file
     
     def mv(options={})
-      glob(*options[:from]) do |fname|
-        _mv(fname, options[:to], options)
+      from = options[:from]
+      from_path = expand_path(from)
+      to = options[:to]
+      to_path = expand_path(to)
+      if File.directory?(from_path)
+        cp(options.merge(:from=>from, :to=>to_path, :recursive=>true))
+        rm_at_path(from_path, :recursive=>true)
+      else
+        cp(options.merge(:from=>from, :to=>to_path))
+        rm_at_path(from_path)
       end
     end
     
-    def _mv(tape, dest, options={})
-      _cp(tape, dest, options)
-      _rm(tape)
+    def mkdir(path, options={})
+      path = expand_path(path)
+      if options[:p] || options[:parents]
+        FileUtils.mkdir_p(path)
+      else
+        FileUtils.mkdir(path)
+      end
     end
-    private :_mv
   end
 end

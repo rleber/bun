@@ -3,21 +3,16 @@
 :errors: []
 :file_size: 1627
 :file_type: :text
-:catalog_time: 1983-01-28 00:00:00.000000000 -05:00
-:name: actors
-:open_time: 2012-03-22 10:58:07.726455000 -04:00
+:catalog_time: 
+:basename: actors
 :owner: fass
 :path: fass/1983/programme/actors
 :specification: /1983/programme/actors ==> TROFF source for FASS 1983 Programme
-:tape_name: !binary |-
-  YXIwODMuMDY5OA==
-:tape_path: /Users/richard/projects/bun/data/test/archive/extract_source/raw/ar083.0698
-:file_date: 
-:file_time: 
+:location: ar083.0698
+:location_path: /Users/richard/projects/bun/data/test/archive/extract_source_init/raw/ar083.0698
 :updated: 
 :blocks: 5
 :good_blocks: 
-:bad_characters: {}
-:character_count: 4544
-:original_tape_name: ar083.0698
-:original_tape_path: /Users/richard/bun_archive/raw/ar083.0698
+:status: 
+:control_characters: 
+:character_count: 

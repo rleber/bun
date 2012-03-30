@@ -2,11 +2,11 @@
 # -*- encoding: us-ascii -*-
 
 desc "header_sizes", "Display the length of file headers"
-option 'archive', :aliases=>'-a', :type=>'string',                     :desc=>'Archive location'
+option 'at',      :aliases=>'-a', :type=>'string',                     :desc=>'Archive location'
 option "sort",    :aliases=>'-s', :type=>'string', :default=>'header', :desc=>"Sort by what field: preamble or header (size)"
 def header_sizes
-  archive = Archive.new(:location=>options[:archive])
-  data = [%w{Tape Preamble Header}]
+  archive = Archive.new(:at=>options[:at])
+  data = [%w{Location Preamble Header}]
   sort_column = ['preamble', 'header'].index(options[:sort].downcase)
   stop "!Bad value for --sort option" unless sort_column
   sort_column += 1
@@ -14,8 +14,8 @@ def header_sizes
   min_header = min_preamble = nil
   sum_header = sum_preamble = 0
   n = 0
-  archive.each do |tape_name|
-    file = archive.open(tape_name)
+  archive.each do |location|
+    file = archive.open(location)
     preamble_size = file.content_offset
     header_size = file.header_size
     sum_preamble += preamble_size
@@ -32,7 +32,7 @@ def header_sizes
     if !max_header || header_size > max_header
       max_header = header_size
     end
-    data << [tape_name, preamble_size, header_size]
+    data << [location, preamble_size, header_size]
     n += 1
   end
   data = data.sort_by{|row| row[sort_column].to_i }

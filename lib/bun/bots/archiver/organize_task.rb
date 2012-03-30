@@ -27,19 +27,19 @@ end
 # Cross-reference the extracted files:
 # Create one directory per file, as opposed to one directory per tape
 desc "organize [FROM] [TO]", "Create cross-reference by file name"
-option 'archive', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
-option "copy",    :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to reorganized archive (instead of symlink)"
+option 'at',      :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+option "copy",    :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to reorganized at (instead of symlink)"
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually reorganize"
 option 'trace',   :aliases=>'-t', :type=>'boolean', :desc=>"Debugging trace"
 def organize(from=nil, to=nil)
   @dryrun = options[:dryrun]
   @trace = options[:trace]
-  archive = Archive.new(:location=>options[:archive])
-  directory = archive.location
+  archive = Archive.new(:at=>options[:at])
+  directory = archive.at
   from ||= archive.extract_directory
-  from = File.join(archive.location, from)
+  from = File.join(archive.at, from)
   to ||= archive.files_directory
-  to = File.join(archive.location, archive.files_directory)
+  to = File.join(archive.at, archive.files_directory)
   index = Index.new
   
   # Build cross-reference index
@@ -53,7 +53,7 @@ def organize(from=nil, to=nil)
       file = $2
       new_file = File.join(to, file, tape)
       warn "#{old_file} => #{new_file}" if @trace
-      index.add(:from=>old_file, :to=>new_file, :file=>file, :tape=>tape)
+      index.add(:from=>old_file, :to=>new_file, :file=>file, :location=>tape)
     end
   end
   

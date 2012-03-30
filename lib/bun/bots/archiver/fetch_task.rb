@@ -71,7 +71,7 @@ end
 
 IGNORE_LINKS = ["Name", "Last modified", "Size", "Description", "Parent Directory"]
 desc "fetch [URL]", "Fetch files from an online repository"
-option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Do a dry run only; show what would be fetched, but don't save it"
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
 long_desc <<-EOT
@@ -90,10 +90,10 @@ EOT
 def fetch(url=nil)
   agent = Mechanize.new
   url ||= Archive.repository
-  archive = Archive.new(options[:archive])
-  archive_location = archive.location
+  archive = Archive.new(options[:at])
+  archive_location = archive.at
   stop "!No url provided" unless url
   stop "!No archive location provided" unless archive_location
   _fetch(url, archive_location, options)
-  Archive.new(:location=>archive_location).build_and_save_index(:verbose=>!options[:quiet])
+  Archive.new(:at=>archive_location).build_and_save_index(:verbose=>!options[:quiet])
 end

@@ -2,9 +2,9 @@
 # -*- encoding: us-ascii -*-
 
 SHARDS_ACROSS = 5
-desc "describe TAPE", "Display description information for a file"
-option 'archive', :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
-option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on archive index; always build information from source file"
+desc "describe LOCATION", "Display description information for a file"
+option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on at index; always build information from source file"
 def describe(file_name)
   archive = Archive.new(options)
   descriptor    = archive.descriptor(file_name, :build=>options[:build])
@@ -15,21 +15,25 @@ def describe(file_name)
   catalog_time_display = catalog_time ? catalog_time.strftime('%Y/%m/%d') : "n/a"
   
   # TODO Refactor using Array#justify_rows
-  puts "Tape:            #{descriptor.tape_name}"
-  puts "Tape path:       #{descriptor.tape_path}"
-  puts "Archived file:   #{descriptor.path}"
-  puts "Owner:           #{descriptor.owner}"
-  puts "Subdirectory:    #{descriptor.subdirectory}"
-  puts "Name:            #{descriptor.name}"
-  puts "Description:     #{descriptor.description}"
-  puts "Specification:   #{descriptor.specification}"
-  puts "Catalog date:    #{catalog_time_display}"
+  puts "Location:      #{descriptor.location}"
+  puts "Path:          #{descriptor.location_path}"
   if type == :frozen
-    puts "File time:       #{descriptor.file_time.strftime(TIME_FORMAT)}"
-    puts "Updated at:      #{descriptor.updated.strftime(TIME_FORMAT)}"
+    puts "Directory:     #{descriptor.path}"
+  else
+    puts "File:          #{descriptor.path}"
   end
-  puts "Size (words):    #{descriptor.file_size}"
-  puts "Type:            #{type.to_s.sub(/^./) {|m| m.upcase}}"
+  puts "Owner:         #{descriptor.owner}"
+  puts "Subdirectory:  #{descriptor.subdirectory}"
+  puts "Basename:      #{descriptor.basename}"
+  puts "Description:   #{descriptor.description}"
+  puts "Specification: #{descriptor.specification}"
+  puts "Catalog date:  #{catalog_time_display}"
+  if type == :frozen
+    puts "File time:     #{descriptor.file_time.strftime(TIME_FORMAT)}"
+    puts "Updated at:    #{descriptor.updated.strftime(TIME_FORMAT)}"
+  end
+  puts "Size (words):  #{descriptor.file_size}"
+  puts "Type:          #{type.to_s.sub(/^./) {|m| m.upcase}}"
 
   if shards.size > 0
     # Display shard information in a table, SHARDS_ACROSS shards per row,

@@ -55,7 +55,12 @@ module Bun
       end
   
       def relative_path(*f)
-        File.expand_path(File.join(*f), ENV['HOME']).sub(/^#{Regexp.escape(ENV['HOME'])}\//,'')
+        options = {}
+        if f.last.is_a?(Hash)
+          options = f.pop
+        end
+        relative_to = options[:relative_to] || ENV['HOME']
+        File.expand_path(File.join(*f), relative_to).sub(/^#{Regexp.escape(relative_to)}\//,'')
       end
 
       VALID_CONTROL_CHARACTERS = '\n\r\x8\x9\xb\xc' # \x8 is a backspace, \x9 is a tab, \xb is a VT, \xc is a form-feed
@@ -94,7 +99,7 @@ module Bun
     
       def frozen?(file_name)
         raise "File #{file_name} doesn't exist" unless File.exists?(file_name)
-        new(:file=>file_name).frozen?
+        new(:location_path=>file_name).frozen?
       end
     
       def create(options={}, &blk)
@@ -128,7 +133,7 @@ module Bun
       end
 
       def open(fname, options={}, &blk)
-        create(options.merge(:file=>fname), &blk)
+        create(options.merge(:location_path=>fname), &blk)
       end
       
       def read(fname, size=nil)
@@ -149,8 +154,8 @@ module Bun
       end
     
       def get_words(n, options)
-        if options[:file]
-          Bun::Words.read(options[:file], :n=>n)
+        if options[:location_path]
+          Bun::Words.read(options[:location_path], :n=>n)
         elsif options[:data]
           if n.nil?
             decode(options[:data])
@@ -187,14 +192,15 @@ module Bun
     attr_reader :descriptor
     attr_reader :file_content
     attr_reader :packed_characters
-    attr_reader :tape_path
+    attr_reader :location_path
     attr_reader :words
   
     attr_accessor :errors
   
     # TODO Do we need options[:size] and options[:limit] ?
     def initialize(options={}, &blk)
-      @tape_path = options[:tape] || options[:file]
+      @location = options[:location]
+      @location_path = options[:location_path]
       @size = options[:size]
       @header = options[:header]
       @archive = options[:archive]
@@ -218,8 +224,8 @@ module Bun
     end
     
     def open_time
-      return nil unless tape_path && File.exists?(tape_path)
-      File.atime(tape_path)
+      return nil unless location_path && File.exists?(location_path)
+      File.atime(location_path)
     end
     
     def close
@@ -227,7 +233,7 @@ module Bun
     end
     
     def read
-      self.class.read(tape_path)
+      self.class.read(location_path)
     end
     
     def update_index
@@ -235,8 +241,8 @@ module Bun
       @archive.update_index(:file=>self)
     end
   
-    def tape_name
-      File.basename(tape_path)
+    def location
+      @location ||= File.basename(location_path)
     end
     
     def path
@@ -358,7 +364,7 @@ module Bun
     end
   
     def catalog_time
-      archive && archive.catalog_time(tape_name)
+      archive && archive.catalog_time(location)
     end
     
     def updated
