@@ -1,35 +1,38 @@
 TODO
 Change the funky /raw stuff
 Why doesn't ls -ldr list Shards?
+Implement Ian's naming conventions
+- add .txt (except when it obviously isn't text)
+- name_YYMMDD.txt
+- frozen_file_YYMMDD/shard_YYMMDD.txt (collapse the frozen_file_YYMMDD if there's only one, or if all frozen files contain the same shards)
 Move all test cases' input files to data/test directory
 Make tests directory-independent (on listings)
 Separate file.open from file.load/read
 Set atime only when we actually read a file (not just the preamble)
 Refactor archives vs. extracted archives (need a good name, e.g. store, hoard, stash, library)
 Integrate bun archive text_status into bun ls
-Resolve backspaces: to underlining or bold
-Add --select option to bun ls
-Add --select option to bun extract
-File type for print listings (Qu: are these ever frozen?)
-Try determining type by comparing preamble contents: Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean binary load module
-Why doesn't words[0].octal work?
-Remove extraneous output files
-Optimization ideas: Continue examining Indexable::Basic, since it's probably 10-15% of execution time: Reduce usage, optimize "center" code
-Refactor Slicr based on the concept of layers, etc.
-Ignore files not in the index
-Implement Ian's naming conventions
+Change file patterns to tape::file([shard])? Qu: how to specify whether it must be a shard?
 Ability to 'bun archive ls' by archive name patterns
 Ability to search xref'ed files, for example find files with multiple copies
+Add --select option to bun ls
+Add --select option to bun extract
+Why doesn't words[0].octal work?
+Ignore files not in the index
+Make set_timestamp automatic
 Keep a .spec file in decoded archives showing how the archive is organized?
 Flatten out code: freezer thaw => thaw (or even combine with unpack)
-Option to include file modification date in unpacked or thawed file names
+Option to turn off inclusion of file modification date in unpacked or thawed file names
 Option to turn off resetting file modification dates for unpacked or thawed files
-Option to add an extension to unpacked or thawed files (e.g. '.txt')
+Option to customize extension on unpacked or thawed files (e.g. '.txt')
 Option to create archives organized like file/v1/file1, file/v2/file2, etc.
 Look for Huffman-coded files: e.g. ar003.0701, ar116.2122, ar116.2128
 Standardize Decode and Defrost interfaces: decode, instead of unpack/thaw
-Change file patterns to tape::file(::shard)? Qu: how to specify whether it must be a shard?
-Possibly caching of archive index?
+Remove extraneous output files
+Resolve backspaces: to underlining or bold
+File type for print listings (Qu: are these ever frozen?)
+Try determining type by comparing preamble contents: Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean binary load module
+Optimization ideas: Continue examining Indexable::Basic, since it's probably 10-15% of execution time: Reduce usage, optimize "center" code
+Refactor Slicr based on the concept of layers, etc.
 Clean code
 Move Bot::Base to a gem; provide tests
 Build as a gem
