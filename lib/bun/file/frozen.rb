@@ -260,6 +260,13 @@ module Bun
       def good_characters?(text)
         File.clean?(text.sub(/\0*$/,'')) && (text !~ /\0+$/ || text =~ /\r\0*$/) && text !~ /\n/
       end
+      
+      def extract(n, to, options={})
+        content = shards.at(shard_index(n))
+        shell = Shell.new
+        shell.write to, content, :timestamp=>file_time, :quiet=>true
+        copy_descriptor(to, :extracted=>Time.now) unless options[:bare] || to.nil? || to == '-'
+      end
     end
   end
 end

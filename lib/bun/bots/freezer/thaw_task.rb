@@ -16,14 +16,9 @@ def thaw(file_name, n, out=nil)
   archive = Archive.new(:at=>options[:at])
   directory = archive.at
   file = archive.open(file_name)
+  stop "!File #{file_name} is not frozen." unless file.file_type == :frozen
   begin
-    stop "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
-    archived_file = file.path
-    archived_file = "--unknown--" unless archived_file
-    content = file.shards.at(file.shard_index(n))
-    shell = Shell.new
-    shell.write out, content, :timestamp=>file.file_time, :quiet=>true
-    file.copy_descriptor(out, :extracted=>Time.now) unless options[:bare] || out.nil? || out == '-'
+    file.extract(n, out, :bare=>options[:bare])
     warn "Thawed with #{file.errors.count} decoding errors" if options[:warn] && file.errors > 0
   ensure
     file.close

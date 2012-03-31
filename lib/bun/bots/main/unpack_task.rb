@@ -12,14 +12,9 @@ option "warn",    :aliases=>'-w', :type=>'boolean', :desc=>"Warn if there are de
 def unpack(file_name, to=nil)
   archive = Archive.new(options)
   file = archive.open(file_name)
+  stop "!Can't unpack #{file_name}. It isn't a text file" unless file.file_type == :text
   begin
-    file.keep_deletes = true if options[:delete]
-    archived_file = file.path
-    stop "!Can't unpack #{file_name}. It contains a frozen file_name: #{archived_file}" if file.file_type == :frozen
-    content = options[:inspect] ? file.inspect : file.text
-    shell = Shell.new
-    shell.write to, content
-    file.copy_descriptor(to, :extracted=>Time.now) unless options[:bare] || to.nil? || to=='-'
+    file.extract(to, options)
     warn "Unpacked with #{file.errors.count} errors" if options[:warn] && file.errors > 0
   ensure
     file.close
