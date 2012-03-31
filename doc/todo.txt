@@ -1,9 +1,6 @@
 TODO
-bun archive extract needs better disambiguating naming standards
-bun archive extract should copy .bun_index entries, not keep a centralized .log file
 Refactor archives vs. extracted archives (need a good name, e.g. store, hoard, stash, library)
-Test bun library organize
-- Reorganize tape/file/path_YYMMDD_HHMMSS.txt => file_path_YYMMDD_HHMMSS/tape.txt
+Remove bun library organize
 Test bun library compact
 - For all files:
   - collapse tape names to the oldest if the content is identical
@@ -19,6 +16,7 @@ Test bun library compact
     - If there's only one date, collapse the date altogether
     - If there's more than one date, collapse the HHMMSS unless the YYMMDD is identical
 Remove bun archive classify
+Remove shell.log code
 Move all test cases' input files to data/test directory
 Make tests directory-independent (e.g. on listings)
 Separate file.open from file.load/read

@@ -16,17 +16,20 @@ module Bun
       SPECIFICATION_POSITION = 11 # words
       DESCRIPTION_PATTERN = /\s+(.*)/
       FIELDS = [
+        :basename,
+        :catalog_time,
         :description,
         :errors,
+        :extracted,
         :file_size,
         :file_type,
-        :catalog_time,
-        :basename,
+        :location,
+        :location_path,
+        :original_location,
+        :original_location_path,
         :owner,
         :path,
         :specification,
-        :location,
-        :location_path,
         :updated,
       ]
       
@@ -115,6 +118,18 @@ module Bun
         file.send(meth, *args, &blk)
       rescue NoMethodError => e
         raise NoMethodError, %{"#{self.class}##{meth} method not defined:\n  Raised #{e} at:\n#{e.backtrace.map{|c| '    ' + c}.join("\n")}}
+      end
+      
+      def copy(to, new_settings={})
+        to_dir = File.dirname(to)
+        to_archive = Archive.new(:at=>to_dir)
+        descriptor = self.to_hash
+        descriptor[:original_location] = descriptor[:location] unless descriptor[:original_location]
+        descriptor[:original_location_path] = descriptor[:location_path] unless descriptor[:original_location_path]
+        descriptor[:location] = File.basename(to)
+        descriptor[:location_path] = to
+        descriptor.merge! new_settings
+        to_archive.update_index(:descriptor=>descriptor)
       end
     end
   end

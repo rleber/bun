@@ -196,6 +196,9 @@ module Bun
     attr_reader :words
   
     attr_accessor :errors
+    attr_accessor :extracted
+    attr_accessor :original_location
+    attr_accessor :original_location_path
   
     # TODO Do we need options[:size] and options[:limit] ?
     def initialize(options={}, &blk)
@@ -387,6 +390,10 @@ module Bun
       return :frozen if frozen?
       return :huffman if word(content_offset).characters.join == 'huff'
       return :text
+    end
+    
+    def copy_descriptor(to, new_settings={})
+      descriptor.copy(to, new_settings)
     end
   end
 end
