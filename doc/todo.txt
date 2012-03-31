@@ -1,5 +1,4 @@
 TODO
-Refactor archive extract code to Archive class
 Refactor archives vs. extracted archives (need a good name, e.g. store, hoard, stash, library)
 Remove bun library organize
 Test bun library compact

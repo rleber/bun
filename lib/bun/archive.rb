@@ -485,5 +485,51 @@ module Bun
         FileUtils.mkdir(path)
       end
     end
+    
+    def extract(to, options={})
+      to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
+      FileUtils.rm_rf to_path unless options[:dryrun]
+      locations.each do |location|
+        file = open(location)
+        case file.file_type
+        when :frozen
+          file.shard_count.times do |i|
+            descr = file.shard_descriptor(i)
+            shard_name = descr.name
+            warn "thaw #{location}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
+            unless options[:dryrun]
+              f = File.join(to_path, extract_path(file.path, file.updated), shard_name, extract_filename(location, descr.updated))
+              dir = File.dirname(f)
+              FileUtils.mkdir_p dir
+              file.extract shard_name, f
+            end
+          end
+        when :text
+          warn "unpack #{location}" if options[:dryrun] || !options[:quiet]
+          unless options[:dryrun]
+            f = File.join(to_path, file.path, extract_filename(location, file.updated))
+            dir = File.dirname(f)
+            FileUtils.mkdir_p dir
+            file.extract f
+          end
+        else
+          warn "skipping #{location}: unknown type (#{file.file_type})" if options[:dryrun] || !options[:quiet]
+        end
+      end
+    end
+    
+    EXTRACT_DATE_FORMAT = "%Y%m%d_%H%M%S"
+    EXTRACT_SUFFIX = '.txt'
+
+    def extract_path(path, date)
+      return path unless date
+      date_to_s = date.strftime(EXTRACT_DATE_FORMAT)
+      date_to_s = $1 if date_to_s =~ /^(.*)_000000$/
+      path + '_' + date_to_s
+    end
+
+    def extract_filename(path, date)
+      extract_path(path, date) + EXTRACT_SUFFIX
+    end
   end
 end
