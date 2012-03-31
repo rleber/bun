@@ -25,11 +25,9 @@ def extract(to)
   @dryrun = options[:dryrun]
   @quiet = options[:quiet]
   archive = Archive.new(:at=>options[:at])
-  directory = archive.at
   to_path = archive.expand_path(to, :from_wd=>true) # @/foo form is allowed
   ix = archive.locations
-  shell = Shell.new(:dryrun=>@dryrun)
-  shell.rm_rf to_path
+  FileUtils.rm_rf to_path unless @dryrun
   ix.each do |location|
     file = archive.open(location)
     file_path = file.path
@@ -38,21 +36,24 @@ def extract(to)
       file.shard_count.times do |i|
         descr = file.shard_descriptor(i)
         shard_name = descr.name
-        f = File.join(to_path, extract_path(file_path, file.updated), shard_name, extract_filename(location, descr.updated))
-        dir = File.dirname(f)
-        shell.mkdir_p dir
-        shard_name = '\\' + shard_name if shard_name =~ /^\+/ # Watch out -- '+' has a special meaning to_path thaw
-        warn "thaw #{location}[#{shard_name}]" unless @dryrun || @quiet
-        shell.thaw location, shard_name, f, :at=>options[:at]
+        warn "thaw #{location}[#{shard_name}]" if @dryrun || !@quiet
+        unless @dryrun
+          f = File.join(to_path, extract_path(file_path, file.updated), shard_name, extract_filename(location, descr.updated))
+          dir = File.dirname(f)
+          FileUtils.mkdir_p dir
+          file.extract shard_name, f
+        end
       end
     when :text
-      f = File.join(to_path, file_path, extract_filename(location, file.updated))
-      dir = File.dirname(f)
-      shell.mkdir_p dir
-      warn "unpack #{location}" unless @dryrun || @quiet
-      shell.unpack location, f, :at=>options[:at]
+      warn "unpack #{location}" if @dryrun || !@quiet
+      unless @dryrun
+        f = File.join(to_path, file_path, extract_filename(location, file.updated))
+        dir = File.dirname(f)
+        FileUtils.mkdir_p dir
+        file.extract f
+      end
     else
-      warn "skipping #{location}: unknown type (#{file.file_type})"
+      warn "skipping #{location}: unknown type (#{file.file_type})" if @dryrun || !@quiet
     end
   end
 end

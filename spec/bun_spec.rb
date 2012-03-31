@@ -691,29 +691,10 @@ describe Bun::Bot do
           @content[:original_location].should == 'ar083.0698'
         end
         it "should record the original location_path" do
-          if @original_content[:original_location_path]
-            @content[:original_location_path].should == @original_content[:original_location_path]
-          else
-            @content[:original_location_path].should == @original_content[:location_path]
-          end
+          @content[:original_location_path].should == %{#{exec("pwd").chomp}/data/test/archive/extract_source/ar083.0698}
         end
         it "should record the extract time" do
           @content[:extracted].should be_a(Time)
-        end
-        it "should otherwise match the original index" do
-          other_content = @content.dup
-          other_content.delete(:location)
-          other_content.delete(:location_path)
-          other_content.delete(:original_location)
-          other_content.delete(:original_location_path)
-          other_content.delete(:extracted)
-          other_original_content = @original_content.dup
-          other_original_content.delete(:location)
-          other_original_content.delete(:location_path)
-          other_original_content.delete(:original_location)
-          other_original_content.delete(:original_location_path)
-          other_original_content.delete(:extracted)
-          other_content.should == other_original_content
         end
       end
     end

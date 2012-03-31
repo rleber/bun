@@ -1,6 +1,4 @@
 TODO
-bun archive extract shouldn't unpack/thaw via the shell
-Remove use of Shell in bun archive extract
 Refactor archive extract code to Archive class
 Refactor archives vs. extracted archives (need a good name, e.g. store, hoard, stash, library)
 Remove bun library organize
