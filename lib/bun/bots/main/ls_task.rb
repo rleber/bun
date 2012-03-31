@@ -50,7 +50,7 @@ option "files",     :aliases=>"-f", :type=>'string',  :default=>'',             
 option "frozen",    :aliases=>"-r", :type=>'boolean',                              :desc=>"Recursively include contents of freeze files"
 option "long",      :aliases=>"-l", :type=>'boolean',                              :desc=>"Display long format (incl. text vs. frozen)"
 option 'path',      :aliases=>'-p', :type=>'boolean',                              :desc=>"Display paths for tape files"
-option "sort",      :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
+option "sort",      :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order(s) for files (#{SORT_VALUES.join(', ')})"
 option "locations", :aliases=>"-L", :type=>'string',  :default=>'',                :desc=>"Show only locations that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "type",      :aliases=>"-T", :type=>'string',  :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
 # TODO Refactor location/file patterns; use location::file::shard syntax
@@ -80,12 +80,15 @@ def ls
   fields += [:description] if options[:descr]
 
   if options[:sort]
-    sort_field = SORT_FIELDS[options[:sort].to_sym]
-    stop "!Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless sort_field
-    sort_fields = [sort_field.to_sym, :location, :path]
+    sort_fields = options[:sort].split(',').map do |sort_field|
+      sort_field = SORT_FIELDS[sort_field.strip.to_sym]
+      stop "!Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless sort_field
+      sort_field.to_sym
+    end
   else
-    sort_fields = [:location, :path]
+    sort_fields = []
   end
+  sort_fields += [:location, :path]
   if options[:path]
     sort_fields = sort_fields.map {|f| f==:location ? :location_path : f }
   end
