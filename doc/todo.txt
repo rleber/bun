@@ -1,15 +1,33 @@
 TODO
-Implement Ian's naming conventions
-- add .txt (except when it obviously isn't text)
-- name_YYMMDD.txt
-- frozen_file_YYMMDD/shard_YYMMDD.txt (collapse the frozen_file_YYMMDD if there's only one, or if all frozen files contain the same shards)
+ls sort on multiple fields
+Remove --at keyword from bun archive extract
+bun archive extract needs better disambiguating naming standards
+bun archive extract should copy .bun_index entries, not keep a centralized .log file
+Refactor archives vs. extracted archives (need a good name, e.g. store, hoard, stash, library)
+Test bun library organize
+- Reorganize tape/file/path_YYMMDD_HHMMSS.txt => file_path_YYMMDD_HHMMSS/tape.txt
+Test bun library compact
+- For all files:
+  - collapse tape names to the oldest if the content is identical
+  - collapse tape name entirely if there's only one version
+- For text files:
+  - Collapse dates to the oldest, if the content is identical
+  - If there's only one date, collapse the date altogether (?)
+  - If there's more than one date, collapse the HHMMSS unless the YYMMDD is identical
+- For frozen shards:
+  - Above rules apply within a frozen file
+  - For frozen files, similar rules apply:
+    - Collapse dates to the oldest, if the content is identical
+    - If there's only one date, collapse the date altogether
+    - If there's more than one date, collapse the HHMMSS unless the YYMMDD is identical
+Remove bun archive classify
 Move all test cases' input files to data/test directory
-Make tests directory-independent (on listings)
+Make tests directory-independent (e.g. on listings)
 Separate file.open from file.load/read
 Set atime only when we actually read a file (not just the preamble)
-Refactor archives vs. extracted archives (need a good name, e.g. store, hoard, stash, library)
 Integrate bun archive text_status into bun ls
 Change file patterns to tape::file([shard])? Qu: how to specify whether it must be a shard?
+Change shard 0 to mean the first shard; use shard '\\0', etc. for a shard named '0'
 Ability to 'bun archive ls' by archive name patterns
 Ability to search xref'ed files, for example find files with multiple copies
 Add --select option to bun ls
