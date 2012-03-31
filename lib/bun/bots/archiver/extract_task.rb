@@ -1,6 +1,22 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+EXTRACT_DATE_FORMAT = "%Y%m%d_%H%M%S"
+EXTRACT_SUFFIX = '.txt'
+
+no_tasks do
+  def extract_path(path, date)
+    return path unless date
+    date_to_s = date.strftime(EXTRACT_DATE_FORMAT)
+    date_to_s = $1 if date_to_s =~ /^(.*)_000000$/
+    path + '_' + date_to_s
+  end
+  
+  def extract_filename(path, date)
+    extract_path(path, date) + EXTRACT_SUFFIX
+  end
+end
+
 desc "extract TO", "Extract all the files in the archive"
 option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
@@ -22,15 +38,15 @@ def extract(to)
       file.shard_count.times do |i|
         descr = file.shard_descriptor(i)
         shard_name = descr.name
-        f = File.join(to_path, location, file_path, shard_name)
+        f = File.join(to_path, location, extract_path(file_path, file.updated), extract_filename(shard_name,descr.updated))
         dir = File.dirname(f)
         shell.mkdir_p dir
         shard_name = '\\' + shard_name if shard_name =~ /^\+/ # Watch out -- '+' has a special meaning to_path thaw
-        warn "thaw #{location} #{shard_name}" unless @dryrun
+        warn "thaw #{location}[#{shard_name}]" unless @dryrun
         shell.thaw location, shard_name, f, :log=>log_file
       end
     when :text
-      f = File.join(to_path, location, file_path)
+      f = File.join(to_path, location, extract_filename(file_path, file.updated))
       dir = File.dirname(f)
       shell.mkdir_p dir
       warn "unpack #{location}" unless @dryrun
