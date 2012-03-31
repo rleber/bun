@@ -225,13 +225,11 @@ module Bun
             end
           end
           chs = extract_characters(word, ch_count)
-          line += chs.sub(/#{File.invalid_character_regexp}.*/,'') # Remove invalid control characters and all following letters
-          break if chs=~/\r/
-          if !good_characters?(chs) || line.size >= line_length
-            error "Shard #{n}: Bad characters in line at #{content_offset}"
-            okay = false
+          if chs =~ /^(.*\r).*$/
+            line += $1
             break
           end
+          line += chs
           content_offset += 1
         end
         return [content_offset, nil, false] unless line =~ /\r/
