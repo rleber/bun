@@ -38,7 +38,7 @@ def extract(to)
       file.shard_count.times do |i|
         descr = file.shard_descriptor(i)
         shard_name = descr.name
-        f = File.join(to_path, location, extract_path(file_path, file.updated), extract_filename(shard_name,descr.updated))
+        f = File.join(to_path, extract_path(file_path, file.updated), shard_name, extract_filename(location, descr.updated))
         dir = File.dirname(f)
         shell.mkdir_p dir
         shard_name = '\\' + shard_name if shard_name =~ /^\+/ # Watch out -- '+' has a special meaning to_path thaw
@@ -46,7 +46,7 @@ def extract(to)
         shell.thaw location, shard_name, f, :log=>log_file
       end
     when :text
-      f = File.join(to_path, location, extract_filename(file_path, file.updated))
+      f = File.join(to_path, file_path, extract_filename(location, file.updated))
       dir = File.dirname(f)
       shell.mkdir_p dir
       warn "unpack #{location}" unless @dryrun
