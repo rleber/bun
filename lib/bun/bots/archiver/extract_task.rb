@@ -23,10 +23,10 @@ option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. D
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
 def extract(to)
   @dryrun = options[:dryrun]
+  @quiet = options[:quiet]
   archive = Archive.new(:at=>options[:at])
   directory = archive.at
   to_path = archive.expand_path(to, :from_wd=>true) # @/foo form is allowed
-  log_file = File.join(to_path, archive.relative_path(archive.log_file))
   ix = archive.locations
   shell = Shell.new(:dryrun=>@dryrun)
   shell.rm_rf to_path
@@ -42,15 +42,15 @@ def extract(to)
         dir = File.dirname(f)
         shell.mkdir_p dir
         shard_name = '\\' + shard_name if shard_name =~ /^\+/ # Watch out -- '+' has a special meaning to_path thaw
-        warn "thaw #{location}[#{shard_name}]" unless @dryrun
-        shell.thaw location, shard_name, f, :log=>log_file
+        warn "thaw #{location}[#{shard_name}]" unless @dryrun || @quiet
+        shell.thaw location, shard_name, f, :at=>options[:at]
       end
     when :text
       f = File.join(to_path, file_path, extract_filename(location, file.updated))
       dir = File.dirname(f)
       shell.mkdir_p dir
-      warn "unpack #{location}" unless @dryrun
-      shell.unpack location, f, :log=>log_file
+      warn "unpack #{location}" unless @dryrun || @quiet
+      shell.unpack location, f, :at=>options[:at]
     else
       warn "skipping #{location}: unknown type (#{file.file_type})"
     end

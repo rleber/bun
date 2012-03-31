@@ -4,7 +4,7 @@
 # TODO Thaw all files
 desc "thaw ARCHIVE FILE [TO]", "Uncompress a frozen Honeywell file"
 option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
-option "log",     :aliases=>'-l', :type=>'string',  :desc=>"Log status to specified file"
+option "bare",    :aliases=>"-b", :type=>"boolean", :desc=>"Do not create an index entry for the thawed file"
 option "warn",    :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
 long_desc <<-EOT
 FILE may have some special formats: '+-nnn' (where nnn is an integer) denotes file number nnn. '-nnn' denotes the nnnth
@@ -23,8 +23,8 @@ def thaw(file_name, n, out=nil)
     content = file.shards.at(file.shard_index(n))
     shell = Shell.new
     shell.write out, content, :timestamp=>file.file_time, :quiet=>true
+    file.copy_descriptor(out, :extracted=>Time.now) unless options[:bare] || out.nil? || out == '-'
     warn "Thawed with #{file.errors.count} decoding errors" if options[:warn] && file.errors > 0
-    shell.log options[:log], "thaw #{out.inspect} from #{file_name.inspect} with #{file.errors.count} errors" if options[:log]
   ensure
     file.close
   end

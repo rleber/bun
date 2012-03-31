@@ -458,18 +458,7 @@ module Bun
 
       open(from) do |f|
         Shell.new(:quiet=>true).write to, f.read, :mode=>'w:ascii-8bit'
-      end
-
-      if index
-        # Copy index entry, too
-        to_dir = File.dirname(to)
-        to_archive = Archive.new(:at=>to_dir)
-        descriptor = self.descriptor(File.basename(from))
-        descriptor.original_location = File.basename(from) unless descriptor.original_location
-        descriptor.original_location_path = expand_path(from) unless descriptor.original_location_path
-        descriptor.location = File.basename(to)
-        descriptor.location_path = to
-        to_archive.update_index(:descriptor=>descriptor)
+        f.copy_descriptor(to) if index
       end
     end
     private :cp_file_to_file

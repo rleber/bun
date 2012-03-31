@@ -672,6 +672,51 @@ describe Bun::Bot do
       exec('find data/test/archive/extract_library -print >output/archive_extract_files.txt')
       Bun.readfile('output/archive_extract_files.txt').chomp.should == Bun.readfile('output/test/archive_extract_files.txt').chomp
     end
+    describe "the index" do
+      it "should exist" do
+        file_should_exist "data/test/archive/extract_library/fass/1983/programme/actors/.bun_index/ar083.0698_19830128.txt.descriptor.yml"
+      end
+      describe "contents" do
+        before :each do
+          @original_content = YAML.load(Bun.readfile("data/test/archive/extract_source/.bun_index/ar083.0698.descriptor.yml", :encoding=>'us-ascii'))
+          @content = YAML.load(Bun.readfile("data/test/archive/extract_library/fass/1983/programme/actors/.bun_index/ar083.0698_19830128.txt.descriptor.yml", :encoding=>'us-ascii'))
+        end
+        it "should change the location" do
+          @content[:location].should == 'ar083.0698_19830128.txt'
+        end
+        it "should change the location_path" do
+          @content[:location_path].should == %{#{exec("pwd").chomp}/data/test/archive/extract_library/fass/1983/programme/actors/ar083.0698_19830128.txt}
+        end
+        it "should record the original location" do
+          @content[:original_location].should == 'ar083.0698'
+        end
+        it "should record the original location_path" do
+          if @original_content[:original_location_path]
+            @content[:original_location_path].should == @original_content[:original_location_path]
+          else
+            @content[:original_location_path].should == @original_content[:location_path]
+          end
+        end
+        it "should record the extract time" do
+          @content[:extracted].should be_a(Time)
+        end
+        it "should otherwise match the original index" do
+          other_content = @content.dup
+          other_content.delete(:location)
+          other_content.delete(:location_path)
+          other_content.delete(:original_location)
+          other_content.delete(:original_location_path)
+          other_content.delete(:extracted)
+          other_original_content = @original_content.dup
+          other_original_content.delete(:location)
+          other_original_content.delete(:location_path)
+          other_original_content.delete(:original_location)
+          other_original_content.delete(:original_location_path)
+          other_original_content.delete(:extracted)
+          other_content.should == other_original_content
+        end
+      end
+    end
     after :all do
       exec("rm -rf data/test/archive/extract_source")
       exec("rm -rf data/test/archive/extract_library")

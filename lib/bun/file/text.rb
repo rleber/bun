@@ -78,6 +78,23 @@ module Bun
         line = raw_line.sub(/\177+$/,'') + "\n"
         {:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>line_offset+line_length, :content=>line, :raw=>raw_line, :words=>words.at(line_offset+line_length), :descriptor=>descriptor}
       end
+      
+      def inspect
+        inspect_lines = []
+        self.lines.each do |l|
+          start = l[:start]
+          line_descriptor = l[:descriptor]
+          line_length = line_descriptor.half_word[0]
+          line_flags = line_descriptor.half_word[1]
+          line_codes = []
+          line_codes << 'D' if l[:status]==:deleted
+          line_codes << '+' if line_length > 0777 # Upper bits not zero
+          line_codes << '*' if (line_descriptor & 0777) != 0600 # Bottom descriptor byte is normally 0600
+          inspect_lines << %Q{#{"%06o" % start}: len #{"%06o" % line_length} (#{"%6d" % line_length}) [#{'%06o' % line_flags} #{'%-3s' % (line_codes.join)}] #{l[:raw].inspect}}
+        end
+        inspect_lines.join("\n")
+      end
+      
     end
   end
 end
