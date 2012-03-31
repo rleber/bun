@@ -1,6 +1,4 @@
 TODO
-ls sort on multiple fields
-Remove --at keyword from bun archive extract
 bun archive extract needs better disambiguating naming standards
 bun archive extract should copy .bun_index entries, not keep a centralized .log file
 Refactor archives vs. extracted archives (need a good name, e.g. store, hoard, stash, library)
