@@ -2,7 +2,7 @@
 #  -*- encoding: utf-8 -*-
 
 module Bun
-  class Archive
+  class Collection
     class Enumerator < ::Enumerator
       attr_reader :archive
       

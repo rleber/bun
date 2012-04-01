@@ -1,12 +1,13 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+require 'thor'
+require 'lib/bun/library'
+
 module Bun
   module Bot
-    class Archiver < Base
-      class Index < Base
-        load_tasks
-      end
+    class Librarian < Base
+      load_tasks
     end
   end
 end

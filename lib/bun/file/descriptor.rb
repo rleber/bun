@@ -14,6 +14,8 @@ module Bun
       
       ARCHIVE_NAME_POSITION = 7 # words
       SPECIFICATION_POSITION = 11 # words
+      CHARACTERS_PER_WORD = 4
+      
       DESCRIPTION_PATTERN = /\s+(.*)/
       FIELDS = [
         :basename,

@@ -3,7 +3,7 @@
 
 DEFAULT_THRESHOLD = 20
 desc "classify [FROM] [CLEAN] [DIRTY]", "Classify files based on whether they're clean or not."
-option 'at',        :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'at',        :aliases=>'-a', :type=>'string',  :desc=>'Library location'
 option "copy",      :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to clean/dirty directories (instead of symlink)"
 option 'dryrun',    :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
 option 'threshold', :aliases=>'-t', :type=>'numeric',
@@ -11,13 +11,13 @@ option 'threshold', :aliases=>'-t', :type=>'numeric',
 def classify(from=nil, clean=nil, dirty=nil)
   @dryrun = options[:dryrun]
   threshold = options[:threshold] || DEFAULT_THRESHOLD
-  archive = Archive.new(:at=>options[:at])
-  directory = archive.at
-  from ||= archive.files_directory
-  from = File.join(archive.at, from)
-  log_file = File.join(from, archive.log_file)
-  clean = File.join(archive.at, archive.clean_directory)
-    dirty = File.join(archive.at, archive.dirty_directory)
+  library = Library.new(:at=>options[:at])
+  directory = library.at
+  from ||= library.files_directory
+  from = File.join(library.at, from)
+  log_file = File.join(from, library.log_file)
+  clean = File.join(library.at, library.clean_directory)
+    dirty = File.join(library.at, library.dirty_directory)
   destinations = {:clean=>clean, :dirty=>dirty}
   shell = Shell.new(:dryrun=>@dryrun)
   destinations.each do |status, destination|
@@ -43,6 +43,6 @@ def classify(from=nil, clean=nil, dirty=nil)
     new_logs[status] << alter_log(log[old_file], new_file)
   end
   new_logs.each do |status, log|
-    File.open(File.join(destinations[status],archive.log_file),'w') {|f| f.puts log.map{|log_entry| log_entry[:entry]}.join("\n") }
+    File.open(File.join(destinations[status],library.log_file),'w') {|f| f.puts log.map{|log_entry| log_entry[:entry]}.join("\n") }
   end
 end

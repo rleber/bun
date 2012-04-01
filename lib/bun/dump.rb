@@ -21,7 +21,7 @@ module Bun
       end
       display_offset = (options[:display_offset] || offset) - offset
       stream = options[:to] || STDOUT
-      file = File.create(:words=>words, :type=>:raw)
+      file = File::Archived.create(:words=>words, :type=>:raw)
       limit = [limit, file.size-1].min unless options[:unlimited]
       if options[:frozen]
         characters = file.all_packed_characters

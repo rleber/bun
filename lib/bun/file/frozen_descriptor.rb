@@ -134,7 +134,7 @@ module Bun
         end
 
         def file_date
-          File.date(_update_date)
+          File::Archived.date(_update_date)
         end
 
         def _update_date
@@ -142,7 +142,7 @@ module Bun
         end
 
         def update_time_of_day
-          File.time_of_day(_update_time_of_day)
+          File::Archived.time_of_day(_update_time_of_day)
         end
 
         def _update_time_of_day
@@ -154,7 +154,7 @@ module Bun
         end
 
         def file_time
-          File.time(_update_date, _update_time_of_day)
+          File::Archived.time(_update_date, _update_time_of_day)
         end
         alias_method :updated, :file_time
 

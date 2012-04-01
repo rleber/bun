@@ -3,7 +3,7 @@
 
 module Bun
   class File < ::File
-    class Frozen < Bun::File
+    class Frozen < Bun::File::Archived
       include CacheableMethods
       
       attr_reader :file
@@ -65,7 +65,7 @@ module Bun
       end
       
       def file_date
-        File.date(_update_date)
+        File::Archived.date(_update_date)
       end
       
       # Reference to all_characters is necessary here, because characters isn't
@@ -75,7 +75,7 @@ module Bun
       end
     
       def update_time_of_day
-        File.time_of_day(_update_time_of_day)
+        File::Archived.time_of_day(_update_time_of_day)
       end
     
       def _update_time_of_day
@@ -83,7 +83,7 @@ module Bun
       end
     
       def file_time
-        File.time(_update_date, _update_time_of_day)
+        File::Archived.time(_update_date, _update_time_of_day)
       end
     
       def shard_descriptors

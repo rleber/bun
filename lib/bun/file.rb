@@ -3,6 +3,7 @@
 
 require 'lib/bun/word'
 require 'lib/bun/file/base'
+require 'lib/bun/file/archived'
 require 'lib/bun/file/raw'
 require 'lib/bun/file/header'
 require 'lib/bun/file/blocked'

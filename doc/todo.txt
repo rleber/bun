@@ -1,5 +1,4 @@
 TODO
-Refactor archives vs. extracted archives (need a good name, e.g. store, hoard, stash, library)
 Remove bun library organize
 Test bun library compact
 - For all files:
@@ -31,6 +30,7 @@ Add --select option to bun extract
 Why doesn't words[0].octal work?
 Ignore files not in the index
 Make set_timestamp automatic
+Move archive fetch logic to Archive
 Keep a .spec file in decoded archives showing how the archive is organized?
 Flatten out code: freezer thaw => thaw (or even combine with unpack)
 Option to turn off inclusion of file modification date in unpacked or thawed file names

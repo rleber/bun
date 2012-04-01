@@ -4,19 +4,19 @@
 # Cross-reference the extracted files:
 # Create one directory per file, as opposed to one directory per tape
 desc "organize [FROM] [TO]", "Create cross-reference by file name"
-option 'at',      :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+option 'at',      :aliases=>'-a', :type=>'string', :desc=>'Library location'
 option "copy",    :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to reorganized at (instead of symlink)"
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually reorganize"
 option 'trace',   :aliases=>'-t', :type=>'boolean', :desc=>"Debugging trace"
 def organize(from=nil, to=nil)
   @dryrun = options[:dryrun]
   @trace = options[:trace]
-  archive = Archive.new(:at=>options[:at])
-  directory = archive.at
-  from ||= archive.extract_directory
-  from = File.join(archive.at, from)
-  to ||= archive.files_directory
-  to = File.join(archive.at, archive.files_directory)
+  library = Library.new(:at=>options[:at])
+  directory = library.at
+  from ||= library.extract_directory
+  from = File.join(library.at, from)
+  to ||= library.files_directory
+  to = File.join(library.at, library.files_directory)
   index = Index.new
   
   # Build cross-reference index
@@ -61,7 +61,7 @@ def organize(from=nil, to=nil)
   end
   
   # Read in log information
-  log = read_log(File.join(from, archive.log_file))
+  log = read_log(File.join(from, library.log_file))
   new_log = {}
   
   # Create cross-reference files
@@ -82,7 +82,7 @@ def organize(from=nil, to=nil)
   
   # Write new log
   unless @dryrun
-    new_log_file = File.join(to, archive.log_file)
+    new_log_file = File.join(to, library.log_file)
     File.open(new_log_file, 'w') do |f|
       new_log.keys.sort.each do |file|
         f.puts new_log[file][:entry]
