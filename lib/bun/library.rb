@@ -19,5 +19,11 @@ module Bun
     def open(name, options={}, &blk)
       File::Library.open(expand_path(name), options.merge(:library=>self,  :location=>name), &blk)
     end
+    
+    # Options:
+    # - :compact
+    # - :dryrun
+    def compact(options={})
+    end
   end
 end

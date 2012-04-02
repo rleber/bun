@@ -1,5 +1,4 @@
 TODO
-Remove bun library organize
 Test bun library compact
 - For all files:
   - collapse tape names to the oldest if the content is identical
@@ -14,11 +13,13 @@ Test bun library compact
     - Collapse dates to the oldest, if the content is identical
     - If there's only one date, collapse the date altogether
     - If there's more than one date, collapse the HHMMSS unless the YYMMDD is identical
-Remove bun archive classify
+Change bun library classify to bun library clean
+Create bun find command (similar to find shell command)
 Remove shell.log code
 Move all test cases' input files to data/test directory
 Make tests directory-independent (e.g. on listings)
 Separate file.open from file.load/read
+Refactor other commands into the appropriate classes
 Set atime only when we actually read a file (not just the preamble)
 Integrate bun archive text_status into bun ls
 Change file patterns to tape::file([shard])? Qu: how to specify whether it must be a shard?
