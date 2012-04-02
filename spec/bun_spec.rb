@@ -674,18 +674,18 @@ describe Bun::Bot do
     end
     describe "the index" do
       it "should exist" do
-        file_should_exist "data/test/archive/extract_library/fass/1983/programme/actors/.bun_index/ar083.0698_19830128.txt.descriptor.yml"
+        file_should_exist "data/test/archive/extract_library/fass/1983/programme/actors/.bun_index/tape.ar083.0698_19830128.txt.descriptor.yml"
       end
       describe "contents" do
         before :each do
           @original_content = YAML.load(Bun.readfile("data/test/archive/extract_source/.bun_index/ar083.0698.descriptor.yml", :encoding=>'us-ascii'))
-          @content = YAML.load(Bun.readfile("data/test/archive/extract_library/fass/1983/programme/actors/.bun_index/ar083.0698_19830128.txt.descriptor.yml", :encoding=>'us-ascii'))
+          @content = YAML.load(Bun.readfile("data/test/archive/extract_library/fass/1983/programme/actors/.bun_index/tape.ar083.0698_19830128.txt.descriptor.yml", :encoding=>'us-ascii'))
         end
         it "should change the location" do
-          @content[:location].should == 'ar083.0698_19830128.txt'
+          @content[:location].should == 'tape.ar083.0698_19830128.txt'
         end
         it "should change the location_path" do
-          @content[:location_path].should == %{#{exec("pwd").chomp}/data/test/archive/extract_library/fass/1983/programme/actors/ar083.0698_19830128.txt}
+          @content[:location_path].should == %{#{exec("pwd").chomp}/data/test/archive/extract_library/fass/1983/programme/actors/tape.ar083.0698_19830128.txt}
         end
         it "should record the original location" do
           @content[:original_location].should == 'ar083.0698'

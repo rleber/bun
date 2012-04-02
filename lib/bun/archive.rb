@@ -75,7 +75,7 @@ module Bun
             shard_name = descr.name
             warn "thaw #{location}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
             unless options[:dryrun]
-              f = File.join(to_path, extract_path(file.path, file.updated), shard_name, extract_filename(location, descr.updated))
+              f = File.join(to_path, extract_path(file.path, file.updated), shard_name, extract_tapename(location, descr.updated))
               dir = File.dirname(f)
               FileUtils.mkdir_p dir
               file.extract shard_name, f
@@ -84,7 +84,7 @@ module Bun
         when :text
           warn "unpack #{location}" if options[:dryrun] || !options[:quiet]
           unless options[:dryrun]
-            f = File.join(to_path, file.path, extract_filename(location, file.updated))
+            f = File.join(to_path, file.path, extract_tapename(location, file.updated))
             dir = File.dirname(f)
             FileUtils.mkdir_p dir
             file.extract f
@@ -96,7 +96,8 @@ module Bun
     end
     
     EXTRACT_DATE_FORMAT = "%Y%m%d_%H%M%S"
-    EXTRACT_SUFFIX = '.txt'
+    EXTRACT_TAPE_PREFIX = 'tape.'
+    EXTRACT_TAPE_SUFFIX = '.txt'
 
     def extract_path(path, date)
       return path unless date
@@ -105,8 +106,8 @@ module Bun
       path + '_' + date_to_s
     end
 
-    def extract_filename(path, date)
-      extract_path(path, date) + EXTRACT_SUFFIX
+    def extract_tapename(path, date)
+      EXTRACT_TAPE_PREFIX + extract_path(path, date) + EXTRACT_TAPE_SUFFIX
     end
   end
 end
