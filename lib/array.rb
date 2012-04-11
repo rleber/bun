@@ -10,21 +10,25 @@ class Array
   # TODO column_append, row_append
   # TODO Move to a subclass: Table
   # TODO Add column heading support
-  # TODO Add right justification of columns
-  def justify_columns
+  def justify_columns(options={})
+    right_justified_columns = options[:right_justify] || []
     widths = self.map do |column|
       column.map{|entry| entry.to_s.size}.max
     end
     justified = []
     self.each_with_index do |column, column_number|
-      justified << column.map{|entry| "%-*s" % [widths[column_number], entry] }
+      if right_justified_columns.include?(column_number)
+        justified << column.map{|entry| "%*s" % [widths[column_number], entry] }
+      else
+        justified << column.map{|entry| "%-*s" % [widths[column_number], entry] }
+      end
     end
     justified
   end
   
   # Take an array of rows and justify them so each column is all the same width
-  def justify_rows
-    self.normalized_transpose.justify_columns.transpose
+  def justify_rows(options={})
+    self.normalized_transpose.justify_columns(options).transpose
   end
   
   def row_sizes
