@@ -2,18 +2,12 @@
 # -*- encoding: us-ascii -*-
 
 desc "compact LIBRARY [TO]", "Remove redundant files from library"
-option 'collapse', :aliases=>'-c', :type=>'boolean', :desc=>"Collapse levels if there's only one file in them", 
-                   :default=>true
-option 'dryrun',   :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually reorganize"
 def compact(from, to=nil)
-  @dryrun = options[:dryrun]
-  @trace = options[:trace]
   if to
-    Library.new(:at=>from).cp(:from=>".", :to=>nil, :recursive=>true)
-    at = to
+    target = to
+    Library.new(:at=>from).cp(:from=>'*', :to=>to, :recursive=>true)
   else
-    at = from
+    target = from
   end
-  library = Library.new(:at=>options[:at])
-  library.compact(options)
+  # Library.new(:at=>target).compact!
 end

@@ -1,0 +1,64 @@
+---
+:basename: totleclips.f
+:catalog_time: 
+:description: ==> Total Eclipse Episode 6 - CKMS Radio Theatre
+:errors: []
+:extracted: 
+:file_size: 7228
+:file_type: :frozen
+:location: !binary |-
+  YXIwMTkuMDE3NQ==
+:location_path: !binary |-
+  L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
+  L2NvbXBhY3Rfc291cmNlL2FyMDE5LjAxNzU=
+:original_location: ar019.0175
+:original_location_path: /Users/richard/bun_archive/ar019.0175
+:owner: fass
+:path: fass/totleclips.f
+:specification: /totleclips.f ==> Total Eclipse Episode 6 - CKMS Radio Theatre
+:updated: 1978-11-08 14:15:17.000000000 -05:00
+:shards:
+- :file_size: 125
+  :file_type: :shard
+  :catalog_time: 
+  :control_characters: 
+  :character_count: 
+  :name: temacro
+  :owner: 
+  :path: fass/totleclips.f/temacro
+  :status: 
+  :location: /Users/richard/bun_archive/ar019.0175
+  :location_path: /Users/richard/bun_archive/ar019.0175
+  :file_date: 1978-11-08
+  :file_time: 1978-11-08 14:15:17.000000000 -05:00
+  :updated: 1978-11-08 14:15:17.000000000 -05:00
+- :file_size: 6614
+  :file_type: :shard
+  :catalog_time: 
+  :control_characters: 
+  :character_count: 
+  :name: eclipse
+  :owner: 
+  :path: fass/totleclips.f/eclipse
+  :status: 
+  :location: /Users/richard/bun_archive/ar019.0175
+  :location_path: /Users/richard/bun_archive/ar019.0175
+  :file_date: 1978-11-08
+  :file_time: 1978-11-08 14:15:17.000000000 -05:00
+  :updated: 1978-11-08 14:15:17.000000000 -05:00
+- :file_size: 427
+  :file_type: :shard
+  :catalog_time: 
+  :control_characters: 
+  :character_count: 
+  :name: sounds
+  :owner: 
+  :path: fass/totleclips.f/sounds
+  :status: 
+  :location: /Users/richard/bun_archive/ar019.0175
+  :location_path: /Users/richard/bun_archive/ar019.0175
+  :file_date: 1978-11-08
+  :file_time: 1978-11-08 14:15:17.000000000 -05:00
+  :updated: 1978-11-08 14:15:17.000000000 -05:00
+:file_date: 1978-11-08
+:file_time: 1978-11-08 14:15:17.000000000 -05:00

@@ -1,0 +1,1863 @@
+---
+:basename: scripfrz
+:catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+:description: ==> freeze file containing roff source for fass '77 script
+:errors:
+- ! 'Shard 7: Bad descriptor at 1801: <Bun::Word 251642101075>'
+- ! 'Shard 7: Bad descriptor at 1852: <Bun::Word 145420207417>'
+- ! 'Shard 8: Bad descriptor at 0: <Bun::Word 012342607174>'
+- ! 'Shard 8: Bad descriptor at 19: <Bun::Word 112451501244>'
+- ! 'Shard 8: Bad descriptor at 22: <Bun::Word 410520231114>'
+- ! 'Shard 8: Bad descriptor at 35: <Bun::Word 152323532402>'
+- ! 'Shard 8: Bad descriptor at 45: <Bun::Word 152323432000>'
+- ! 'Shard 8: Bad descriptor at 56: <Bun::Word 204041637165>'
+- ! 'Shard 8: Bad descriptor at 313: <Bun::Word 250420121314>'
+- ! 'Shard 8: Bad descriptor at 420: <Bun::Word 144044212404>'
+- ! 'Shard 8: Bad descriptor at 698: <Bun::Word 151142212405>'
+- ! 'Shard 8: Bad descriptor at 869: <Bun::Word 452320247114>'
+- ! 'Shard 8: Bad descriptor at 986: <Bun::Word 152442634405>'
+- ! 'Shard 8: Bad descriptor at 988: <Bun::Word 251452246562>'
+- ! 'Shard 8: Bad descriptor at 1004: <Bun::Word 756566310404>'
+- ! 'Shard 8: Bad descriptor at 1211: <Bun::Word 604072313562>'
+- ! 'Shard 8: Bad descriptor at 1342: <Bun::Word 244074737652>'
+- ! 'Shard 8: Bad descriptor at 1499: <Bun::Word 257120132407>'
+- ! 'Shard 8: Bad descriptor at 1589: <Bun::Word 004066762406>'
+- ! 'Shard 8: Bad descriptor at 1634: <Bun::Word 644044634404>'
+- ! 'Shard 8: Bad descriptor at 1638: <Bun::Word 004042237175>'
+- ! 'Shard 9: Bad descriptor at 0: <Bun::Word 015074703620>'
+- ! 'Shard 9: Bad descriptor at 23: <Bun::Word 144046223074>'
+- ! 'Shard 9: Bad descriptor at 35: <Bun::Word 152323532402>'
+- ! 'Shard 9: Bad descriptor at 65: <Bun::Word 404020101305>'
+- ! 'Shard 9: Bad descriptor at 72: <Bun::Word 413020101305>'
+- ! 'Shard 10: Bad descriptor at 0: <Bun::Word 413054260150>'
+- ! 'Shard 10: Bad descriptor at 2: <Bun::Word 004054261305>'
+- ! 'Shard 10: Bad descriptor at 9: <Bun::Word 004020261305>'
+- ! 'Shard 10: Bad descriptor at 35: <Bun::Word 144726500452>'
+- ! 'Shard 10: Bad descriptor at 61: <Bun::Word 244046223164>'
+- ! 'Shard 10: Bad descriptor at 64: <Bun::Word 010347653165>'
+- ! 'Shard 10: Bad descriptor at 67: <Bun::Word 250420205312>'
+- ! 'Shard 10: Bad descriptor at 72: <Bun::Word 111542610404>'
+- ! 'Shard 10: Bad descriptor at 93: <Bun::Word 210526101274>'
+- ! 'Shard 10: Bad descriptor at 100: <Bun::Word 110520203242>'
+- ! 'Shard 10: Bad descriptor at 101: <Bun::Word 012444213115>'
+- ! 'Shard 10: Bad descriptor at 111: <Bun::Word 244050237235>'
+- ! 'Shard 10: Bad descriptor at 130: <Bun::Word 710720247274>'
+- ! 'Shard 10: Bad descriptor at 162: <Bun::Word 105106400000>'
+- ! 'Shard 10: Bad descriptor at 355: <Bun::Word 257120351576>'
+- ! 'Shard 10: Bad descriptor at 404: <Bun::Word 645120203164>'
+- ! 'Shard 10: Bad descriptor at 921: <Bun::Word 656072323562>'
+- ! 'Shard 10: Bad descriptor at 1209: <Bun::Word 204021124522>'
+- ! 'Shard 10: Bad descriptor at 1213: <Bun::Word 212320251104>'
+- ! 'Shard 11: Bad descriptor at 0: <Bun::Word 451624432000>'
+- ! 'Shard 11: Bad descriptor at 18: <Bun::Word 252342522150>'
+- ! 'Shard 11: Bad descriptor at 35: <Bun::Word 152323532402>'
+- ! 'Shard 11: Bad descriptor at 47: <Bun::Word 341500000000>'
+- ! 'Shard 11: Bad descriptor at 110: <Bun::Word 152320347506>'
+- ! 'Shard 11: Bad descriptor at 253: <Bun::Word 152320347506>'
+- ! 'Shard 11: Bad descriptor at 263: <Bun::Word 250420251014>'
+- ! 'Shard 11: Bad descriptor at 274: <Bun::Word 211751102405>'
+- ! 'Shard 12: Bad descriptor at 0: <Bun::Word 014167310402>'
+- ! 'Shard 12: Bad descriptor at 35: <Bun::Word 152323532402>'
+- ! 'Shard 12: Bad descriptor at 79: <Bun::Word 152324432000>'
+- ! 'Shard 12: Bad descriptor at 327: <Bun::Word 306344322340>'
+- ! 'Shard 12: Bad descriptor at 428: <Bun::Word 744717136320>'
+- ! 'Shard 12: Bad descriptor at 437: <Bun::Word 330203455163>'
+- ! 'Shard 12: Bad descriptor at 461: <Bun::Word 212202412247>'
+- ! 'Shard 12: Bad descriptor at 571: <Bun::Word 744643036071>'
+- ! 'Shard 12: Bad descriptor at 624: <Bun::Word 322753124061>'
+- ! 'Shard 12: Bad descriptor at 832: <Bun::Word 500617035623>'
+- ! 'Shard 12: Bad descriptor at 963: <Bun::Word 100747376520>'
+- ! 'Shard 12: Bad descriptor at 1062: <Bun::Word 744643036071>'
+- ! 'Shard 12: Bad descriptor at 1079: <Bun::Word 302721176320>'
+- ! 'Shard 12: Bad descriptor at 1104: <Bun::Word 734237504044>'
+- ! 'Shard 12: Bad descriptor at 1204: <Bun::Word 756203075772>'
+- ! 'Shard 12: Bad descriptor at 1269: <Bun::Word 732625014171>'
+- ! 'Shard 12: Bad descriptor at 1405: <Bun::Word 320641341500>'
+- ! 'Shard 12: Bad descriptor at 1440: <Bun::Word 732647354471>'
+- ! 'Shard 12: Bad descriptor at 1591: <Bun::Word 302721014467>'
+- ! 'Shard 12: Bad descriptor at 1610: <Bun::Word 500723455162>'
+- ! 'Shard 12: Bad descriptor at 1822: <Bun::Word 202526470524>'
+- ! 'Shard 12: Bad descriptor at 1824: <Bun::Word 330203415773>'
+- ! 'Shard 12: Bad descriptor at 1964: <Bun::Word 646202471042>'
+- ! 'Shard 12: Bad descriptor at 1977: <Bun::Word 302721176320>'
+- ! 'Shard 12: Bad descriptor at 2105: <Bun::Word 734340320000>'
+- ! 'Shard 12: Bad descriptor at 2147: <Bun::Word 744747035364>'
+- ! 'Shard 13: Bad descriptor at 15: <Bun::Word 302721014467>'
+- ! 'Shard 13: Bad descriptor at 32: <Bun::Word 730661304062>'
+- ! 'Shard 13: Bad descriptor at 45: <Bun::Word 330203415773>'
+- ! 'Shard 13: Bad descriptor at 63: <Bun::Word 312201170640>'
+- ! 'Shard 13: Bad descriptor at 70: <Bun::Word 236201170141>'
+- ! 'Shard 13: Bad descriptor at 244: <Bun::Word 500677344066>'
+- ! 'Shard 13: Bad descriptor at 406: <Bun::Word 734203036262>'
+- ! 'Shard 13: Bad descriptor at 435: <Bun::Word 756203074167>'
+- ! 'Shard 13: Bad descriptor at 453: <Bun::Word 750723314566>'
+- ! 'Shard 13: Bad descriptor at 463: <Bun::Word 312647444064>'
+- ! 'Shard 13: Bad descriptor at 495: <Bun::Word 302721016464>'
+- ! 'Shard 13: Bad descriptor at 517: <Bun::Word 500647344061>'
+- ! 'Shard 13: Bad descriptor at 547: <Bun::Word 744203635772>'
+- ! 'Shard 13: Bad descriptor at 614: <Bun::Word 756671014167>'
+- ! 'Shard 13: Bad descriptor at 650: <Bun::Word 732627515064>'
+- ! 'Shard 13: Bad descriptor at 660: <Bun::Word 302721015171>'
+- ! 'Shard 13: Bad descriptor at 687: <Bun::Word 706677454464>'
+- ! 'Shard 13: Bad descriptor at 713: <Bun::Word 750677334172>'
+- ! 'Shard 13: Bad descriptor at 733: <Bun::Word 706677454464>'
+- ! 'Shard 13: Bad descriptor at 748: <Bun::Word 302721016767>'
+- ! 'Shard 13: Bad descriptor at 826: <Bun::Word 244426411444>'
+- ! 'Shard 13: Bad descriptor at 943: <Bun::Word 734673235663>'
+- ! 'Shard 13: Bad descriptor at 992: <Bun::Word 100667234764>'
+- ! 'Shard 13: Bad descriptor at 1007: <Bun::Word 302617134666>'
+- ! 'Shard 13: Bad descriptor at 1077: <Bun::Word 744657235663>'
+- ! 'Shard 13: Bad descriptor at 1107: <Bun::Word 312203415460>'
+- ! 'Shard 13: Bad descriptor at 1183: <Bun::Word 500677345567>'
+- ! 'Shard 13: Bad descriptor at 1234: <Bun::Word 322715015171>'
+- ! 'Shard 13: Bad descriptor at 1301: <Bun::Word 312237464060>'
+- ! 'Shard 13: Bad descriptor at 1317: <Bun::Word 314064000000>'
+- ! 'Shard 13: Bad descriptor at 1321: <Bun::Word 312203574174>'
+- ! 'Shard 13: Bad descriptor at 1347: <Bun::Word 310203374620>'
+- ! 'Shard 13: Bad descriptor at 1379: <Bun::Word 346625341500>'
+- ! 'Shard 13: Bad descriptor at 1385: <Bun::Word 750643235663>'
+- ! 'Shard 13: Bad descriptor at 1430: <Bun::Word 322715011123>'
+- ! 'Shard 13: Bad descriptor at 1470: <Bun::Word 124723364072>'
+- ! 'Shard 13: Bad descriptor at 1480: <Bun::Word 124212224053>'
+- ! 'Shard 13: Bad descriptor at 1490: <Bun::Word 124251245225>'
+- ! 'Shard 13: Bad descriptor at 1500: <Bun::Word 500737375662>'
+- ! 'Shard 13: Bad descriptor at 1539: <Bun::Word 100723214520>'
+- ! 'Shard 13: Bad descriptor at 1569: <Bun::Word 130203454560>'
+- ! 'Shard 13: Bad descriptor at 1586: <Bun::Word 312203356566>'
+- ! 'Shard 13: Bad descriptor at 1621: <Bun::Word 734203235672>'
+- ! 'Shard 13: Bad descriptor at 1627: <Bun::Word 750203135667>'
+- ! 'Shard 13: Bad descriptor at 1764: <Bun::Word 754627444071>'
+- ! 'Shard 13: Bad descriptor at 1797: <Bun::Word 750203515062>'
+- ! 'Shard 13: Bad descriptor at 1972: <Bun::Word 500633376220>'
+- ! 'Shard 13: Bad descriptor at 2014: <Bun::Word 115414504014>'
+- ! 'Shard 13: Bad descriptor at 2018: <Bun::Word 714614604016>'
+- ! 'Shard 13: Bad descriptor at 2021: <Bun::Word 716204014614>'
+- ! 'Shard 14: Bad descriptor at 0: <Bun::Word 012731240617>'
+- ! 'Shard 14: Bad descriptor at 9: <Bun::Word 515731745723>'
+- ! 'Shard 14: Bad descriptor at 94: <Bun::Word 004510055236>'
+- ! 'Shard 14: Bad descriptor at 569: <Bun::Word 101500074522>'
+- ! 'Shard 14: Bad descriptor at 586: <Bun::Word 464024117516>'
+- ! 'Shard 14: Bad descriptor at 616: <Bun::Word 351223703455>'
+- ! 'Shard 14: Bad descriptor at 1589: <Bun::Word 320000001064>'
+- ! 'Shard 14: Bad descriptor at 1910: <Bun::Word 224010111721>'
+- ! 'Shard 14: Bad descriptor at 2098: <Bun::Word 010224505406>'
+- ! 'Shard 15: Bad descriptor at 0: <Bun::Word 515031240633>'
+- ! 'Shard 16: Bad descriptor at 0: <Bun::Word 475710146607>'
+- ! 'Shard 16: Bad descriptor at 6: <Bun::Word 004510055236>'
+- ! 'Shard 16: Bad descriptor at 94: <Bun::Word 004510055236>'
+- ! 'Shard 16: Bad descriptor at 329: <Bun::Word 350410111472>'
+- ! 'Shard 16: Bad descriptor at 349: <Bun::Word 016031357703>'
+- ! 'Shard 16: Bad descriptor at 603: <Bun::Word 475133545375>'
+- ! 'Shard 16: Bad descriptor at 1170: <Bun::Word 630710750200>'
+- ! 'Shard 16: Bad descriptor at 1213: <Bun::Word 240515274465>'
+- ! 'Shard 16: Bad descriptor at 1225: <Bun::Word 701544542020>'
+- ! 'Shard 16: Bad descriptor at 1273: <Bun::Word 505515242023>'
+- ! 'Shard 16: Bad descriptor at 1294: <Bun::Word 363201112031>'
+- ! 'Shard 16: Bad descriptor at 1314: <Bun::Word 240721506775>'
+- ! 'Shard 16: Bad descriptor at 1416: <Bun::Word 741665452035>'
+- ! 'Shard 16: Bad descriptor at 1509: <Bun::Word 357724406170>'
+- ! 'Shard 16: Bad descriptor at 1520: <Bun::Word 150625626250>'
+- ! 'Shard 16: Bad descriptor at 1645: <Bun::Word 765711452035>'
+- ! 'Shard 16: Bad descriptor at 1666: <Bun::Word 350641502610>'
+- ! 'Shard 16: Bad descriptor at 1677: <Bun::Word 557725566231>'
+- ! 'Shard 16: Bad descriptor at 1693: <Bun::Word 240721506473>'
+- ! 'Shard 16: Bad descriptor at 1722: <Bun::Word 157675532610>'
+- ! 'Shard 16: Bad descriptor at 1734: <Bun::Word 165624407233>'
+- ! 'Shard 16: Bad descriptor at 1775: <Bun::Word 557734542031>'
+- ! 'Shard 17: Bad descriptor at 0: <Bun::Word 254201146471>'
+- ! 'Shard 17: Bad descriptor at 31: <Bun::Word 141655452036>'
+- ! 'Shard 17: Bad descriptor at 62: <Bun::Word 346201716775>'
+- ! 'Shard 17: Bad descriptor at 90: <Bun::Word 545605447453>'
+- ! 'Shard 17: Bad descriptor at 165: <Bun::Word 315501015222>'
+- ! 'Shard 17: Bad descriptor at 177: <Bun::Word 117461044463>'
+- ! 'Shard 17: Bad descriptor at 332: <Bun::Word 240715657034>'
+- ! 'Shard 17: Bad descriptor at 404: <Bun::Word 741671642031>'
+- ! 'Shard 17: Bad descriptor at 418: <Bun::Word 545605546636>'
+- ! 'Shard 17: Bad descriptor at 525: <Bun::Word 117445144265>'
+- ! 'Shard 17: Bad descriptor at 567: <Bun::Word 347675567457>'
+- ! 'Shard 17: Bad descriptor at 623: <Bun::Word 741701646072>'
+- ! 'Shard 17: Bad descriptor at 670: <Bun::Word 750260404233>'
+- ! 'Shard 17: Bad descriptor at 763: <Bun::Word 145201217271>'
+- ! 'Shard 17: Bad descriptor at 894: <Bun::Word 701515105123>'
+- ! 'Shard 17: Bad descriptor at 1041: <Bun::Word 247664406332>'
+- ! 'Shard 17: Bad descriptor at 1052: <Bun::Word 757665452031>'
+- ! 'Shard 17: Bad descriptor at 1064: <Bun::Word 150624406071>'
+- ! 'Shard 17: Bad descriptor at 1118: <Bun::Word 364235632033>'
+- ! 'Shard 17: Bad descriptor at 1146: <Bun::Word 150625712031>'
+- ! 'Shard 17: Bad descriptor at 1158: <Bun::Word 545615417274>'
+- ! 'Shard 17: Bad descriptor at 1176: <Bun::Word 757711626270>'
+- ! 'Shard 17: Bad descriptor at 1359: <Bun::Word 741701646072>'
+- ! 'Shard 17: Bad descriptor at 1416: <Bun::Word 265300406172>'
+- ! 'Shard 18: Bad descriptor at 0: <Bun::Word 344064003135>'
+- ! 'Shard 18: Bad descriptor at 177: <Bun::Word 157201606273>'
+- ! 'Shard 19: Bad descriptor at 0: <Bun::Word 760625456611>'
+- ! 'Shard 19: Bad descriptor at 485: <Bun::Word 557615532610>'
+- ! 'Shard 19: Bad descriptor at 535: <Bun::Word 240635457210>'
+- ! 'Shard 20: Bad descriptor at 0: <Bun::Word 103475164325>'
+- ! 'Shard 20: Bad descriptor at 31: <Bun::Word 123441014561>'
+- ! 'Shard 20: Bad descriptor at 68: <Bun::Word 346201676250>'
+- ! 'Shard 20: Bad descriptor at 155: <Bun::Word 324441054610>'
+- ! 'Shard 20: Bad descriptor at 267: <Bun::Word 354660407132>'
+- ! 'Shard 21: Bad descriptor at 0: <Bun::Word 541604404265>'
+- ! 'Shard 21: Bad descriptor at 102: <Bun::Word 114445074425>'
+- ! 'Shard 21: Bad descriptor at 389: <Bun::Word 745661542610>'
+- ! 'Shard 21: Bad descriptor at 449: <Bun::Word 030633633435>'
+- ! 'Shard 21: Bad descriptor at 453: <Bun::Word 034633635234>'
+- ! 'Shard 21: Bad descriptor at 456: <Bun::Word 430234634610>'
+- ! 'Shard 21: Bad descriptor at 578: <Bun::Word 417235271312>'
+- ! 'Shard 21: Bad descriptor at 1032: <Bun::Word 516734620303>'
+- ! 'Shard 21: Bad descriptor at 1044: <Bun::Word 636250072321>'
+- ! 'Shard 21: Bad descriptor at 1060: <Bun::Word 516734620303>'
+- ! 'Shard 21: Bad descriptor at 1091: <Bun::Word 516731620337>'
+- ! 'Shard 21: Bad descriptor at 1099: <Bun::Word 657157606400>'
+- ! 'Shard 21: Bad descriptor at 1212: <Bun::Word 522503200140>'
+- ! 'Shard 21: Bad descriptor at 1239: <Bun::Word 516731626032>'
+- ! 'Shard 21: Bad descriptor at 1387: <Bun::Word 312024644203>'
+- ! 'Shard 21: Bad descriptor at 1556: <Bun::Word 452033262530>'
+- ! 'Shard 21: Bad descriptor at 1623: <Bun::Word 516710206400>'
+- ! 'Shard 21: Bad descriptor at 1695: <Bun::Word 546271020213>'
+- ! 'Shard 21: Bad descriptor at 1721: <Bun::Word 452025060731>'
+- ! 'Shard 21: Bad descriptor at 1724: <Bun::Word 452021460723>'
+- ! 'Shard 21: Bad descriptor at 1727: <Bun::Word 452024462710>'
+- ! 'Shard 21: Bad descriptor at 1751: <Bun::Word 676473463501>'
+- ! 'Shard 21: Bad descriptor at 1811: <Bun::Word 456213406400>'
+- ! 'Shard 21: Bad descriptor at 1871: <Bun::Word 676475064101>'
+- ! 'Shard 22: Bad descriptor at 0: <Bun::Word 456633067757>'
+- ! 'Shard 22: Bad descriptor at 42: <Bun::Word 566172027101>'
+- ! 'Shard 22: Bad descriptor at 151: <Bun::Word 015164623532>'
+- ! 'Shard 22: Bad descriptor at 173: <Bun::Word 244621226651>'
+- ! 'Shard 22: Bad descriptor at 197: <Bun::Word 150000000002>'
+- ! 'Shard 22: Bad descriptor at 300: <Bun::Word 066271272176>'
+- ! 'Shard 22: Bad descriptor at 324: <Bun::Word 432024672303>'
+- ! 'Shard 22: Bad descriptor at 325: <Bun::Word 566230271310>'
+- ! 'Shard 22: Bad descriptor at 393: <Bun::Word 034250044634>'
+- ! 'Shard 22: Bad descriptor at 397: <Bun::Word 144623653623>'
+- ! 'Shard 22: Bad descriptor at 434: <Bun::Word 225161220237>'
+- ! 'Shard 22: Bad descriptor at 700: <Bun::Word 150000000163>'
+- ! 'Shard 22: Bad descriptor at 711: <Bun::Word 235220243612>'
+- ! 'Shard 22: Bad descriptor at 870: <Bun::Word 477210062336>'
+- ! 'Shard 22: Bad descriptor at 925: <Bun::Word 477210062755>'
+- ! 'Shard 22: Bad descriptor at 979: <Bun::Word 542035267345>'
+- ! 'Shard 22: Bad descriptor at 1017: <Bun::Word 427450074737>'
+- ! 'Shard 22: Bad descriptor at 1238: <Bun::Word 406773420351>'
+- ! 'Shard 22: Bad descriptor at 1322: <Bun::Word 646750066712>'
+- ! 'Shard 22: Bad descriptor at 1384: <Bun::Word 224063242501>'
+- ! 'Shard 22: Bad descriptor at 1397: <Bun::Word 646774664102>'
+- ! 'Shard 22: Bad descriptor at 1438: <Bun::Word 632030267303>'
+- ! 'Shard 22: Bad descriptor at 1630: <Bun::Word 014661224501>'
+- ! 'Shard 23: Bad descriptor at 0: <Bun::Word 407031267741>'
+- ! 'Shard 23: Bad descriptor at 4: <Bun::Word 516650066712>'
+- ! 'Shard 23: Bad descriptor at 151: <Bun::Word 015164623532>'
+- ! 'Shard 23: Bad descriptor at 163: <Bun::Word 235151606400>'
+- ! 'Shard 23: Bad descriptor at 186: <Bun::Word 034264420227>'
+- ! 'Shard 23: Bad descriptor at 195: <Bun::Word 204063444613>'
+- ! 'Shard 23: Bad descriptor at 300: <Bun::Word 175222042644>'
+- ! 'Shard 23: Bad descriptor at 327: <Bun::Word 164361251246>'
+- ! 'Shard 23: Bad descriptor at 418: <Bun::Word 276430272176>'
+- ! 'Shard 23: Bad descriptor at 457: <Bun::Word 622034666303>'
+- ! 'Shard 23: Bad descriptor at 533: <Bun::Word 014664624501>'
+- ! 'Shard 23: Bad descriptor at 729: <Bun::Word 401631431621>'
+- ! 'Shard 23: Bad descriptor at 732: <Bun::Word 564735441304>'
+- ! 'Shard 23: Bad descriptor at 767: <Bun::Word 172176150000>'
+- ! 'Shard 23: Bad descriptor at 784: <Bun::Word 560734561012>'
+- ! 'Shard 23: Bad descriptor at 787: <Bun::Word 171501513507>'
+- ! 'Shard 23: Bad descriptor at 804: <Bun::Word 320323641764>'
+- ! 'Shard 23: Bad descriptor at 806: <Bun::Word 172100150000>'
+- ! 'Shard 23: Bad descriptor at 844: <Bun::Word 761731573075>'
+- ! 'Shard 23: Bad descriptor at 846: <Bun::Word 723707543374>'
+- ! 'Shard 23: Bad descriptor at 847: <Bun::Word 365501123374>'
+- ! 'Shard 23: Bad descriptor at 854: <Bun::Word 420156403364>'
+- ! 'Shard 23: Bad descriptor at 855: <Bun::Word 761731573075>'
+- ! 'Shard 23: Bad descriptor at 857: <Bun::Word 723707543374>'
+- ! 'Shard 23: Bad descriptor at 858: <Bun::Word 365501123374>'
+- ! 'Shard 23: Bad descriptor at 910: <Bun::Word 406400000004>'
+- ! 'Shard 23: Bad descriptor at 915: <Bun::Word 520335453616>'
+- ! 'Shard 23: Bad descriptor at 918: <Bun::Word 462534150001>'
+- ! 'Shard 24: Bad descriptor at 10: <Bun::Word 726100700320>'
+- ! 'Shard 24: Bad descriptor at 47: <Bun::Word 662703623136>'
+- ! 'Shard 24: Bad descriptor at 97: <Bun::Word 420351503124>'
+- ! 'Shard 24: Bad descriptor at 112: <Bun::Word 520307543374>'
+- ! 'Shard 24: Bad descriptor at 113: <Bun::Word 365501643375>'
+- ! 'Shard 24: Bad descriptor at 114: <Bun::Word 664717503505>'
+- ! 'Shard 24: Bad descriptor at 178: <Bun::Word 766312150004>'
+- ! 'Shard 24: Bad descriptor at 196: <Bun::Word 520205623656>'
+- ! 'Shard 24: Bad descriptor at 293: <Bun::Word 272303563504>'
+- ! 'Shard 24: Bad descriptor at 354: <Bun::Word 172101513464>'
+- ! 'Shard 24: Bad descriptor at 358: <Bun::Word 767331711341>'
+- ! 'Shard 24: Bad descriptor at 365: <Bun::Word 620217513554>'
+- ! 'Shard 24: Bad descriptor at 367: <Bun::Word 062745451341>'
+- ! 'Shard 24: Bad descriptor at 435: <Bun::Word 566310402224>'
+- ! 'Shard 24: Bad descriptor at 438: <Bun::Word 663576150000>'
+- ! 'Shard 24: Bad descriptor at 446: <Bun::Word 167316403475>'
+- ! 'Shard 24: Bad descriptor at 448: <Bun::Word 167316770320>'
+- ! 'Shard 24: Bad descriptor at 466: <Bun::Word 167316770320>'
+- ! 'Shard 24: Bad descriptor at 475: <Bun::Word 462703631761>'
+- ! 'Shard 24: Bad descriptor at 487: <Bun::Word 767346403575>'
+- ! 'Shard 24: Bad descriptor at 502: <Bun::Word 074737651016>'
+- ! 'Shard 24: Bad descriptor at 511: <Bun::Word 763314403035>'
+- ! 'Shard 24: Bad descriptor at 559: <Bun::Word 763101643214>'
+- ! 'Shard 24: Bad descriptor at 560: <Bun::Word 520247413515>'
+- ! 'Shard 24: Bad descriptor at 563: <Bun::Word 460735443134>'
+- ! 'Shard 24: Bad descriptor at 575: <Bun::Word 520351623534>'
+- ! 'Shard 24: Bad descriptor at 578: <Bun::Word 772351711301>'
+- ! 'Shard 24: Bad descriptor at 585: <Bun::Word 120303623124>'
+- ! 'Shard 24: Bad descriptor at 609: <Bun::Word 167134401012>'
+- ! 'Shard 24: Bad descriptor at 655: <Bun::Word 727101111175>'
+- ! 'Shard 24: Bad descriptor at 659: <Bun::Word 120337461016>'
+- ! 'Shard 24: Bad descriptor at 662: <Bun::Word 170101233036>'
+- ! 'Shard 24: Bad descriptor at 686: <Bun::Word 620351503124>'
+- ! 'Shard 24: Bad descriptor at 689: <Bun::Word 763101623134>'
+- ! 'Shard 24: Bad descriptor at 700: <Bun::Word 773723563164>'
+- ! 'Shard 24: Bad descriptor at 732: <Bun::Word 564747653354>'
+- ! 'Shard 24: Bad descriptor at 736: <Bun::Word 667756541017>'
+- ! 'Shard 24: Bad descriptor at 740: <Bun::Word 620315653355>'
+- ! 'Shard 24: Bad descriptor at 743: <Bun::Word 665432000006>'
+- ! 'Shard 24: Bad descriptor at 789: <Bun::Word 062336403236>'
+- ! 'Shard 24: Bad descriptor at 790: <Bun::Word 320357623236>'
+- ! 'Shard 24: Bad descriptor at 805: <Bun::Word 763101453354>'
+- ! 'Shard 24: Bad descriptor at 818: <Bun::Word 420331453504>'
+- ! 'Shard 24: Bad descriptor at 828: <Bun::Word 620313563136>'
+- ! 'Shard 24: Bad descriptor at 830: <Bun::Word 320335573504>'
+- ! 'Shard 24: Bad descriptor at 839: <Bun::Word 520347513315>'
+- ! 'Shard 24: Bad descriptor at 842: <Bun::Word 062703663135>'
+- ! 'Shard 24: Bad descriptor at 890: <Bun::Word 520205453476>'
+- ! 'Shard 24: Bad descriptor at 907: <Bun::Word 171501423034>'
+- ! 'Shard 24: Bad descriptor at 913: <Bun::Word 320357573456>'
+- ! 'Shard 24: Bad descriptor at 926: <Bun::Word 662501663136>'
+- ! 'Shard 24: Bad descriptor at 954: <Bun::Word 663534150003>'
+- ! 'Shard 24: Bad descriptor at 959: <Bun::Word 172101553376>'
+- ! 'Shard 24: Bad descriptor at 967: <Bun::Word 426101463376>'
+- ! 'Shard 24: Bad descriptor at 978: <Bun::Word 172117631016>'
+- ! 'Shard 24: Bad descriptor at 984: <Bun::Word 167326403635>'
+- ! 'Shard 24: Bad descriptor at 988: <Bun::Word 327032000000>'
+- ! 'Shard 24: Bad descriptor at 993: <Bun::Word 167326403635>'
+- ! 'Shard 24: Bad descriptor at 1005: <Bun::Word 306400000003>'
+- ! 'Shard 24: Bad descriptor at 1008: <Bun::Word 567745451014>'
+- ! 'Shard 24: Bad descriptor at 1017: <Bun::Word 623750403515>'
+- ! 'Shard 24: Bad descriptor at 1030: <Bun::Word 620233653354>'
+- ! 'Shard 24: Bad descriptor at 1041: <Bun::Word 526101643375>'
+- ! 'Shard 24: Bad descriptor at 1042: <Bun::Word 720432000000>'
+- ! 'Shard 24: Bad descriptor at 1070: <Bun::Word 460735441014>'
+- ! 'Shard 24: Bad descriptor at 1080: <Bun::Word 272733601014>'
+- ! 'Shard 24: Bad descriptor at 1094: <Bun::Word 067737643075>'
+- ! 'Shard 24: Bad descriptor at 1100: <Bun::Word 620351503137>'
+- ! 'Shard 24: Bad descriptor at 1117: <Bun::Word 767130150005>'
+- ! 'Shard 24: Bad descriptor at 1121: <Bun::Word 571723431014>'
+- ! 'Shard 24: Bad descriptor at 1134: <Bun::Word 364101643036>'
+- ! 'Shard 24: Bad descriptor at 1155: <Bun::Word 166314403024>'
+- ! 'Shard 24: Bad descriptor at 1163: <Bun::Word 067714403376>'
+- ! 'Shard 24: Bad descriptor at 1164: <Bun::Word 571101603455>'
+- ! 'Shard 24: Bad descriptor at 1171: <Bun::Word 772744403515>'
+- ! 'Shard 24: Bad descriptor at 1177: <Bun::Word 364101543236>'
+- ! 'Shard 24: Bad descriptor at 1178: <Bun::Word 406400000004>'
+- ! 'Shard 24: Bad descriptor at 1185: <Bun::Word 570345453476>'
+- ! 'Shard 24: Bad descriptor at 1200: <Bun::Word 061703561014>'
+- ! 'Shard 24: Bad descriptor at 1239: <Bun::Word 562747631341>'
+- ! 'Shard 24: Bad descriptor at 1253: <Bun::Word 567745451016>'
+- ! 'Shard 24: Bad descriptor at 1255: <Bun::Word 667756403575>'
+- ! 'Shard 24: Bad descriptor at 1285: <Bun::Word 772101411014>'
+- ! 'Shard 24: Bad descriptor at 1306: <Bun::Word 571323643034>'
+- ! 'Shard 24: Bad descriptor at 1334: <Bun::Word 763101643214>'
+- ! 'Shard 24: Bad descriptor at 1335: <Bun::Word 520235573456>'
+- ! 'Shard 24: Bad descriptor at 1343: <Bun::Word 574501073374>'
+- ! 'Shard 24: Bad descriptor at 1355: <Bun::Word 167316541010>'
+- ! 'Shard 24: Bad descriptor at 1360: <Bun::Word 620351503124>'
+- ! 'Shard 24: Bad descriptor at 1368: <Bun::Word 420357413514>'
+- ! 'Shard 24: Bad descriptor at 1371: <Bun::Word 320323631015>'
+- ! 'Shard 24: Bad descriptor at 1372: <Bun::Word 467735471014>'
+- ! 'Shard 24: Bad descriptor at 1393: <Bun::Word 072303533124>'
+- ! 'Shard 24: Bad descriptor at 1435: <Bun::Word 020432000000>'
+- ! 'Shard 24: Bad descriptor at 1443: <Bun::Word 560762403054>'
+- ! 'Shard 24: Bad descriptor at 1457: <Bun::Word 272747641014>'
+- ! 'Shard 24: Bad descriptor at 1459: <Bun::Word 562501713376>'
+- ! 'Shard 24: Bad descriptor at 1470: <Bun::Word 167101223135>'
+- ! 'Shard 24: Bad descriptor at 1478: <Bun::Word 330100473515>'
+- ! 'Shard 24: Bad descriptor at 1480: <Bun::Word 767734402516>'
+- ! 'Shard 24: Bad descriptor at 1491: <Bun::Word 065735573564>'
+- ! 'Shard 24: Bad descriptor at 1502: <Bun::Word 672733423136>'
+- ! 'Shard 24: Bad descriptor at 1515: <Bun::Word 667750403024>'
+- ! 'Shard 24: Bad descriptor at 1523: <Bun::Word 667530403355>'
+- ! 'Shard 24: Bad descriptor at 1524: <Bun::Word 772101413355>'
+- ! 'Shard 24: Bad descriptor at 1533: <Bun::Word 460751451021>'
+- ! 'Shard 24: Bad descriptor at 1541: <Bun::Word 467737533235>'
+- ! 'Shard 24: Bad descriptor at 1566: <Bun::Word 060710403235>'
+- ! 'Shard 24: Bad descriptor at 1567: <Bun::Word 620333513354>'
+- ! 'Shard 24: Bad descriptor at 1586: <Bun::Word 623750403574>'
+- ! 'Shard 24: Bad descriptor at 1589: <Bun::Word 571313441016>'
+- ! 'Shard 24: Bad descriptor at 1599: <Bun::Word 364735441015>'
+- ! 'Shard 24: Bad descriptor at 1600: <Bun::Word 763101423234>'
+- ! 'Shard 24: Bad descriptor at 1627: <Bun::Word 037432000000>'
+- ! 'Shard 24: Bad descriptor at 1647: <Bun::Word 767312403374>'
+- ! 'Shard 24: Bad descriptor at 1648: <Bun::Word 620351503376>'
+- ! 'Shard 24: Bad descriptor at 1649: <Bun::Word 362501533235>'
+- ! 'Shard 24: Bad descriptor at 1663: <Bun::Word 620363573536>'
+- ! 'Shard 24: Bad descriptor at 1671: <Bun::Word 563737573115>'
+- ! 'Shard 24: Bad descriptor at 1711: <Bun::Word 171501673214>'
+- ! 'Shard 24: Bad descriptor at 1716: <Bun::Word 171501473376>'
+- ! 'Shard 24: Bad descriptor at 1719: <Bun::Word 520432000003>'
+- ! 'Shard 24: Bad descriptor at 1724: <Bun::Word 066712770320>'
+- ! 'Shard 24: Bad descriptor at 1730: <Bun::Word 420323641176>'
+- ! 'Shard 24: Bad descriptor at 1733: <Bun::Word 271313473535>'
+- ! 'Shard 24: Bad descriptor at 1747: <Bun::Word 562710403024>'
+- ! 'Shard 24: Bad descriptor at 1759: <Bun::Word 520345453104>'
+- ! 'Shard 24: Bad descriptor at 1762: <Bun::Word 272747641015>'
+- ! 'Shard 24: Bad descriptor at 1763: <Bun::Word 462750403214>'
+- ! 'Shard 24: Bad descriptor at 1764: <Bun::Word 571101473364>'
+- ! 'Shard 24: Bad descriptor at 1766: <Bun::Word 066712770320>'
+- ! 'Shard 24: Bad descriptor at 1772: <Bun::Word 420222403476>'
+- ! 'Shard 24: Bad descriptor at 1801: <Bun::Word 420432000000>'
+- ! 'Shard 25: Bad descriptor at 0: <Bun::Word 352237311010>'
+- ! 'Shard 25: Bad descriptor at 28: <Bun::Word 520341413174>'
+- ! 'Shard 25: Bad descriptor at 39: <Bun::Word 567303433235>'
+- ! 'Shard 25: Bad descriptor at 44: <Bun::Word 560745441016>'
+- ! 'Shard 25: Bad descriptor at 50: <Bun::Word 662132150000>'
+- ! 'Shard 25: Bad descriptor at 66: <Bun::Word 767101653415>'
+- ! 'Shard 25: Bad descriptor at 67: <Bun::Word 767134561341>'
+- ! 'Shard 25: Bad descriptor at 96: <Bun::Word 472747433235>'
+- ! 'Shard 25: Bad descriptor at 99: <Bun::Word 571501673215>'
+- ! 'Shard 25: Bad descriptor at 100: <Bun::Word 720341623374>'
+- ! 'Shard 25: Bad descriptor at 127: <Bun::Word 462101713376>'
+- ! 'Shard 25: Bad descriptor at 131: <Bun::Word 766323433624>'
+- ! 'Shard 25: Bad descriptor at 135: <Bun::Word 123732403036>'
+- ! 'Shard 25: Bad descriptor at 178: <Bun::Word 766312150004>'
+- ! 'Shard 25: Bad descriptor at 197: <Bun::Word 006400000000>'
+- ! 'Shard 25: Bad descriptor at 339: <Bun::Word 172101643214>'
+- ! 'Shard 25: Bad descriptor at 340: <Bun::Word 574501503036>'
+- ! 'Shard 25: Bad descriptor at 357: <Bun::Word 571750403416>'
+- ! 'Shard 25: Bad descriptor at 380: <Bun::Word 171734473504>'
+- ! 'Shard 25: Bad descriptor at 383: <Bun::Word 763101423536>'
+- ! 'Shard 25: Bad descriptor at 415: <Bun::Word 167316403156>'
+- ! 'Shard 25: Bad descriptor at 427: <Bun::Word 574501463235>'
+- ! 'Shard 25: Bad descriptor at 429: <Bun::Word 767134150000>'
+- ! 'Shard 25: Bad descriptor at 435: <Bun::Word 720303623124>'
+- ! 'Shard 25: Bad descriptor at 475: <Bun::Word 464727451016>'
+- ! 'Shard 25: Bad descriptor at 483: <Bun::Word 367337671016>'
+- ! 'Shard 25: Bad descriptor at 507: <Bun::Word 163735453136>'
+- ! 'Shard 25: Bad descriptor at 513: <Bun::Word 572100641015>'
+- ! 'Shard 25: Bad descriptor at 514: <Bun::Word 567735643216>'
+- ! 'Shard 25: Bad descriptor at 515: <Bun::Word 320331413514>'
+- ! 'Shard 25: Bad descriptor at 529: <Bun::Word 420303463514>'
+- ! 'Shard 25: Bad descriptor at 531: <Bun::Word 567735643216>'
+- ! 'Shard 25: Bad descriptor at 532: <Bun::Word 320337461014>'
+- ! 'Shard 25: Bad descriptor at 537: <Bun::Word 362501653465>'
+- ! 'Shard 25: Bad descriptor at 540: <Bun::Word 262710150006>'
+- ! 'Shard 25: Bad descriptor at 544: <Bun::Word 720347653075>'
+- ! 'Shard 25: Bad descriptor at 546: <Bun::Word 663501413464>'
+- ! 'Shard 25: Bad descriptor at 549: <Bun::Word 764735453136>'
+- ! 'Shard 25: Bad descriptor at 589: <Bun::Word 764735453104>'
+- ! 'Shard 25: Bad descriptor at 595: <Bun::Word 172032000007>'
+- ! 'Shard 25: Bad descriptor at 598: <Bun::Word 362501413344>'
+- ! 'Shard 25: Bad descriptor at 607: <Bun::Word 772744150001>'
+- ! 'Shard 25: Bad descriptor at 618: <Bun::Word 164735453104>'
+- ! 'Shard 25: Bad descriptor at 661: <Bun::Word 071751413624>'
+- ! 'Shard 25: Bad descriptor at 663: <Bun::Word 072321451016>'
+- ! 'Shard 25: Bad descriptor at 677: <Bun::Word 171751631016>'
+- ! 'Shard 25: Bad descriptor at 684: <Bun::Word 462735643234>'
+- ! 'Shard 25: Bad descriptor at 685: <Bun::Word 166101663234>'
+- ! 'Shard 25: Bad descriptor at 699: <Bun::Word 362501643364>'
+- ! 'Shard 25: Bad descriptor at 700: <Bun::Word 073713413444>'
+- ! 'Shard 25: Bad descriptor at 704: <Bun::Word 773502150000>'
+- ! 'Shard 25: Bad descriptor at 731: <Bun::Word 571101433036>'
+- ! 'Shard 25: Bad descriptor at 742: <Bun::Word 767741631304>'
+- ! 'Shard 25: Bad descriptor at 744: <Bun::Word 663313563474>'
+- ! 'Shard 25: Bad descriptor at 761: <Bun::Word 462702560320>'
+- ! 'Shard 25: Bad descriptor at 780: <Bun::Word 667751503235>'
+- ! 'Shard 25: Bad descriptor at 781: <Bun::Word 663534150003>'
+- ! 'Shard 25: Bad descriptor at 787: <Bun::Word 167316560320>'
+- ! 'Shard 25: Bad descriptor at 825: <Bun::Word 771312403074>'
+- ! 'Shard 25: Bad descriptor at 843: <Bun::Word 667757561014>'
+- ! 'Shard 25: Bad descriptor at 859: <Bun::Word 161712541017>'
+- ! 'Shard 25: Bad descriptor at 861: <Bun::Word 667756403515>'
+- ! 'Shard 25: Bad descriptor at 878: <Bun::Word 767313543624>'
+- ! 'Shard 25: Bad descriptor at 885: <Bun::Word 500000000010>'
+- ! 'Shard 25: Bad descriptor at 896: <Bun::Word 574501503035>'
+- ! 'Shard 25: Bad descriptor at 898: <Bun::Word 066703533121>'
+- ! 'Shard 25: Bad descriptor at 902: <Bun::Word 120357413625>'
+- ! 'Shard 25: Bad descriptor at 923: <Bun::Word 320323631017>'
+- ! 'Shard 25: Bad descriptor at 948: <Bun::Word 571176150000>'
+- ! 'Shard 25: Bad descriptor at 957: <Bun::Word 166314553215>'
+- ! 'Shard 25: Bad descriptor at 958: <Bun::Word 772744770320>'
+- ! 'Shard 25: Bad descriptor at 982: <Bun::Word 767307451014>'
+- ! 'Shard 25: Bad descriptor at 990: <Bun::Word 667534401013>'
+- ! 'Shard 25: Bad descriptor at 993: <Bun::Word 364734403516>'
+- ! 'Shard 25: Bad descriptor at 997: <Bun::Word 562501573144>'
+- ! 'Shard 25: Bad descriptor at 1088: <Bun::Word 765501413504>'
+- ! 'Shard 25: Bad descriptor at 1093: <Bun::Word 420305451761>'
+- ! 'Shard 25: Bad descriptor at 1099: <Bun::Word 720500402515>'
+- ! 'Shard 25: Bad descriptor at 1119: <Bun::Word 767726541015>'
+- ! 'Shard 25: Bad descriptor at 1120: <Bun::Word 062517631014>'
+- ! 'Shard 25: Bad descriptor at 1129: <Bun::Word 520333413516>'
+- ! 'Shard 25: Bad descriptor at 1154: <Bun::Word 572747641014>'
+- ! 'Shard 25: Bad descriptor at 1157: <Bun::Word 663534150000>'
+- ! 'Shard 25: Bad descriptor at 1162: <Bun::Word 562501503035>'
+- ! 'Shard 25: Bad descriptor at 1175: <Bun::Word 767134401212>'
+- ! 'Shard 25: Bad descriptor at 1206: <Bun::Word 165723563164>'
+- ! 'Shard 26: Bad descriptor at 0: <Bun::Word 427321650320>'
+- ! 'Shard 26: Bad descriptor at 6: <Bun::Word 663337623334>'
+- ! 'Shard 26: Bad descriptor at 9: <Bun::Word 763101503235>'
+- ! 'Shard 26: Bad descriptor at 10: <Bun::Word 527100402376>'
+- ! 'Shard 26: Bad descriptor at 17: <Bun::Word 763101503136>'
+- ! 'Shard 26: Bad descriptor at 28: <Bun::Word 564747631016>'
+- ! 'Shard 26: Bad descriptor at 36: <Bun::Word 462702560320>'
+- ! 'Shard 26: Bad descriptor at 43: <Bun::Word 527100401212>'
+- ! 'Shard 26: Bad descriptor at 53: <Bun::Word 765501413504>'
+- ! 'Shard 26: Bad descriptor at 62: <Bun::Word 372134150000>'
+- ! 'Shard 26: Bad descriptor at 83: <Bun::Word 474432000005>'
+- ! 'Shard 26: Bad descriptor at 103: <Bun::Word 520351571014>'
+- ! 'Shard 26: Bad descriptor at 111: <Bun::Word 474501453336>'
+- ! 'Shard 26: Bad descriptor at 114: <Bun::Word 766310403036>'
+- ! 'Shard 26: Bad descriptor at 117: <Bun::Word 172032000003>'
+- ! 'Shard 26: Bad descriptor at 121: <Bun::Word 120363573535>'
+- ! 'Shard 26: Bad descriptor at 138: <Bun::Word 720351513075>'
+- ! 'Shard 26: Bad descriptor at 154: <Bun::Word 420321413354>'
+- ! 'Shard 26: Bad descriptor at 178: <Bun::Word 766312150004>'
+- ! 'Shard 26: Bad descriptor at 198: <Bun::Word 052321451010>'
+- ! 'Shard 26: Bad descriptor at 230: <Bun::Word 460711513136>'
+- ! 'Shard 26: Bad descriptor at 237: <Bun::Word 506400000010>'
+- ! 'Shard 26: Bad descriptor at 254: <Bun::Word 460747641016>'
+- ! 'Shard 26: Bad descriptor at 266: <Bun::Word 672336403635>'
+- ! 'Shard 26: Bad descriptor at 268: <Bun::Word 560745643464>'
+- ! 'Shard 26: Bad descriptor at 270: <Bun::Word 043737623235>'
+- ! 'Shard 26: Bad descriptor at 275: <Bun::Word 571312473464>'
+- ! 'Shard 26: Bad descriptor at 277: <Bun::Word 067747641015>'
+- ! 'Shard 26: Bad descriptor at 278: <Bun::Word 763101713376>'
+- ! 'Shard 26: Bad descriptor at 323: <Bun::Word 020351503137>'
+- ! 'Shard 26: Bad descriptor at 348: <Bun::Word 562501643135>'
+- ! 'Shard 26: Bad descriptor at 353: <Bun::Word 572117630320>'
+- ! 'Shard 26: Bad descriptor at 379: <Bun::Word 772101453554>'
+- ! 'Shard 26: Bad descriptor at 382: <Bun::Word 061313413324>'
+- ! 'Shard 26: Bad descriptor at 384: <Bun::Word 571312560320>'
+- ! 'Shard 26: Bad descriptor at 390: <Bun::Word 662761641016>'
+- ! 'Shard 26: Bad descriptor at 395: <Bun::Word 167101643214>'
+- ! 'Shard 26: Bad descriptor at 396: <Bun::Word 520205573036>'
+- ! 'Shard 26: Bad descriptor at 414: <Bun::Word 773312403334>'
+- ! 'Shard 26: Bad descriptor at 415: <Bun::Word 527032000011>'
+- ! 'Shard 26: Bad descriptor at 418: <Bun::Word 571101463236>'
+- ! 'Shard 26: Bad descriptor at 424: <Bun::Word 040745643464>'
+- ! 'Shard 26: Bad descriptor at 434: <Bun::Word 060735443465>'
+- ! 'Shard 26: Bad descriptor at 441: <Bun::Word 462750473464>'
+- ! 'Shard 26: Bad descriptor at 487: <Bun::Word 571312541011>'
+- ! 'Shard 26: Bad descriptor at 492: <Bun::Word 520337543104>'
+- ! 'Shard 26: Bad descriptor at 496: <Bun::Word 420222403074>'
+- ! 'Shard 26: Bad descriptor at 502: <Bun::Word 773313441017>'
+- ! 'Shard 26: Bad descriptor at 510: <Bun::Word 772717503504>'
+- ! 'Shard 26: Bad descriptor at 515: <Bun::Word 571101633134>'
+- ! 'Shard 26: Bad descriptor at 525: <Bun::Word 162311453444>'
+- ! 'Shard 26: Bad descriptor at 529: <Bun::Word 526101463375>'
+- ! 'Shard 26: Bad descriptor at 536: <Bun::Word 663347643034>'
+- ! 'Shard 26: Bad descriptor at 538: <Bun::Word 571312541011>'
+- ! 'Shard 26: Bad descriptor at 548: <Bun::Word 526101423377>'
+- ! 'Shard 26: Bad descriptor at 551: <Bun::Word 662761641016>'
+- ! 'Shard 26: Bad descriptor at 554: <Bun::Word 520317623134>'
+- ! 'Shard 26: Bad descriptor at 558: <Bun::Word 060735441015>'
+- ! 'Shard 26: Bad descriptor at 559: <Bun::Word 064746403414>'
+- ! 'Shard 26: Bad descriptor at 568: <Bun::Word 064746403114>'
+- ! 'Shard 26: Bad descriptor at 577: <Bun::Word 371534150000>'
+- ! 'Shard 26: Bad descriptor at 596: <Bun::Word 462101423377>'
+- ! 'Shard 26: Bad descriptor at 601: <Bun::Word 661712403054>'
+- ! 'Shard 26: Bad descriptor at 605: <Bun::Word 606400000011>'
+- ! 'Shard 26: Bad descriptor at 609: <Bun::Word 464727451016>'
+- ! 'Shard 26: Bad descriptor at 615: <Bun::Word 044516126411>'
+- ! 'Shard 26: Bad descriptor at 1119: <Bun::Word 203515067565>'
+- ! 'Shard 26: Bad descriptor at 1198: <Bun::Word 204320000000>'
+- ! 'Shard 26: Bad descriptor at 1208: <Bun::Word 305012044503>'
+- ! 'Shard 26: Bad descriptor at 1605: <Bun::Word 515221500000>'
+- ! 'Shard 26: Bad descriptor at 1690: <Bun::Word 374320000000>'
+- ! 'Shard 26: Bad descriptor at 1729: <Bun::Word 663104074557>'
+- ! 'Shard 26: Bad descriptor at 1817: <Bun::Word 203574520147>'
+- ! 'Shard 26: Bad descriptor at 1877: <Bun::Word 465012444105>'
+- ! 'Shard 27: Bad descriptor at 0: <Bun::Word 251245225052>'
+- ! 'Shard 27: Bad descriptor at 77: <Bun::Word 203354573563>'
+- ! 'Shard 27: Bad descriptor at 183: <Bun::Word 623375520150>'
+- ! 'Shard 27: Bad descriptor at 196: <Bun::Word 426372552056>'
+- ! 'Shard 28: Bad descriptor at 0: <Bun::Word 202131642111>'
+- ! 'Shard 28: Bad descriptor at 11: <Bun::Word 265004520055>'
+- ! 'Shard 29: Bad descriptor at 0: <Bun::Word 542613054040>'
+- ! 'Shard 30: Bad descriptor at 0: <Bun::Word 542613006400>'
+- ! 'Shard 30: Bad descriptor at 12: <Bun::Word 265004520055>'
+- ! 'Shard 30: Bad descriptor at 24: <Bun::Word 064000000000>'
+- ! 'Shard 30: Bad descriptor at 107: <Bun::Word 265004520055>'
+- ! 'Shard 30: Bad descriptor at 210: <Bun::Word 235324022440>'
+- ! 'Shard 30: Bad descriptor at 216: <Bun::Word 236030352040>'
+- ! 'Shard 30: Bad descriptor at 305: <Bun::Word 202032740531>'
+- ! 'Shard 30: Bad descriptor at 347: <Bun::Word 536232444040>'
+- ! 'Shard 30: Bad descriptor at 412: <Bun::Word 462464044111>'
+- ! 'Shard 30: Bad descriptor at 612: <Bun::Word 270320000000>'
+- ! 'Shard 30: Bad descriptor at 876: <Bun::Word 627614166560>'
+- ! 'Shard 30: Bad descriptor at 1102: <Bun::Word 462464047527>'
+- ! 'Shard 30: Bad descriptor at 1299: <Bun::Word 641341500000>'
+- ! 'Shard 30: Bad descriptor at 1631: <Bun::Word 211221500000>'
+- ! 'Shard 30: Bad descriptor at 1635: <Bun::Word 536451152105>'
+- ! 'Shard 30: Bad descriptor at 2069: <Bun::Word 426344043117>'
+- ! 'Shard 30: Bad descriptor at 2073: <Bun::Word 202470541517>'
+- ! 'Shard 30: Bad descriptor at 2080: <Bun::Word 442124050105>'
+- ! 'Shard 30: Bad descriptor at 2146: <Bun::Word 033756625007>'
+- ! 'Shard 30: Bad descriptor at 2147: <Bun::Word 233757203406>'
+- ! 'Shard 30: Bad descriptor at 2156: <Bun::Word 430364203026>'
+- ! 'Shard 30: Bad descriptor at 2164: <Bun::Word 250151721006>'
+- ! 'Shard 30: Bad descriptor at 2165: <Bun::Word 474656064000>'
+- ! 'Shard 30: Bad descriptor at 2181: <Bun::Word 210156677506>'
+- ! 'Shard 30: Bad descriptor at 2182: <Bun::Word 470745203506>'
+- ! 'Shard 30: Bad descriptor at 2184: <Bun::Word 211763203066>'
+- ! 'Shard 30: Bad descriptor at 2186: <Bun::Word 231354745006>'
+- ! 'Shard 30: Bad descriptor at 2193: <Bun::Word 731240677142>'
+- ! 'Shard 30: Bad descriptor at 2194: <Bun::Word 035150625006>'
+- ! 'Shard 30: Bad descriptor at 2199: <Bun::Word 232145203146>'
+- ! 'Shard 30: Bad descriptor at 2204: <Bun::Word 171254203047>'
+- ! 'Shard 30: Bad descriptor at 2210: <Bun::Word 774456064000>'
+- ! 'Shard 30: Bad descriptor at 2214: <Bun::Word 250141203166>'
+- ! 'Shard 30: Bad descriptor at 2216: <Bun::Word 310122647466>'
+- ! 'Shard 30: Bad descriptor at 2228: <Bun::Word 022240623366>'
+- ! 'Shard 30: Bad descriptor at 2269: <Bun::Word 770753271002>'
+- ! 'Shard 30: Bad descriptor at 2286: <Bun::Word 333762202226>'
+- ! 'Shard 30: Bad descriptor at 2297: <Bun::Word 072745271002>'
+- ! 'Shard 30: Bad descriptor at 2317: <Bun::Word 035157203506>'
+- ! 'Shard 30: Bad descriptor at 2319: <Bun::Word 250164643027>'
+- ! 'Shard 30: Bad descriptor at 2323: <Bun::Word 034751721006>'
+- ! 'Shard 30: Bad descriptor at 2329: <Bun::Word 731640647166>'
+- ! 'Shard 30: Bad descriptor at 2330: <Bun::Word 733762607347>'
+- ! 'Shard 30: Bad descriptor at 2332: <Bun::Word 171363374320>'
+- ! 'Shard 30: Bad descriptor at 2339: <Bun::Word 475551673162>'
+- ! 'Shard 30: Bad descriptor at 2346: <Bun::Word 030545203146>'
+- ! 'Shard 30: Bad descriptor at 2352: <Bun::Word 350144675007>'
+- ! 'Shard 30: Bad descriptor at 2359: <Bun::Word 473440723206>'
+- ! 'Shard 30: Bad descriptor at 2361: <Bun::Word 172344625007>'
+- ! 'Shard 30: Bad descriptor at 2364: <Bun::Word 775240627546>'
+- ! 'Shard 30: Bad descriptor at 2366: <Bun::Word 075545064000>'
+- ! 'Shard 30: Bad descriptor at 2369: <Bun::Word 770753270320>'
+- ! 'Shard 30: Bad descriptor at 2378: <Bun::Word 771440617026>'
+- ! 'Shard 30: Bad descriptor at 2381: <Bun::Word 774541673502>'
+- ! 'Shard 30: Bad descriptor at 2383: <Bun::Word 274640647342>'
+- ! 'Shard 30: Bad descriptor at 2384: <Bun::Word 035150624320>'
+- ! 'Shard 30: Bad descriptor at 2394: <Bun::Word 774145625006>'
+- ! 'Shard 30: Bad descriptor at 2396: <Bun::Word 773563270320>'
+- ! 'Shard 30: Bad descriptor at 2402: <Bun::Word 431240501344>'
+- ! 'Shard 30: Bad descriptor at 2406: <Bun::Word 274640717506>'
+- ! 'Shard 31: Bad descriptor at 0: <Bun::Word 017050426345>'
+- ! 'Shard 31: Bad descriptor at 26: <Bun::Word 471756202466>'
+- ! 'Shard 31: Bad descriptor at 28: <Bun::Word 553040723206>'
+- ! 'Shard 31: Bad descriptor at 37: <Bun::Word 175040647346>'
+- ! 'Shard 31: Bad descriptor at 38: <Bun::Word 371356647367>'
+- ! 'Shard 31: Bad descriptor at 40: <Bun::Word 731345713462>'
+- ! 'Shard 31: Bad descriptor at 43: <Bun::Word 075545270320>'
+- ! 'Shard 31: Bad descriptor at 50: <Bun::Word 211763203022>'
+- ! 'Shard 31: Bad descriptor at 52: <Bun::Word 770753203566>'
+- ! 'Shard 31: Bad descriptor at 59: <Bun::Word 074745203507>'
+- ! 'Shard 31: Bad descriptor at 68: <Bun::Word 033157677262>'
+- ! 'Shard 31: Bad descriptor at 69: <Bun::Word 033345617206>'
+- ! 'Shard 31: Bad descriptor at 70: <Bun::Word 073551617026>'
+- ! 'Shard 31: Bad descriptor at 75: <Bun::Word 610142727502>'
+- ! 'Shard 31: Bad descriptor at 85: <Bun::Word 475545663622>'
+:extracted: 2012-04-04 21:47:57.550200000 -04:00
+:file_size: 40058
+:file_type: :frozen
+:location: !binary |-
+  dGFwZS5hcjAwNC4wODg4XzE5NzcwMjEwXzE2NTYxNC50eHQ=
+:location_path: !binary |-
+  L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
+  L2NvbXBhY3RfZmlsZXMvZmFzcy9zY3JpcGZyel8xOTc3MDMwMV8xNTQwNTgv
+  M2VsZXZlbi90YXBlLmFyMDA0LjA4ODhfMTk3NzAyMTBfMTY1NjE0LnR4dA==
+:original_location: ar004.0888
+:original_location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+:owner: fass
+:path: fass/scripfrz
+:specification: /scripfrz ==> freeze file containing roff source for fass '77 script
+:updated: 1977-03-01 15:40:58.000000000 -05:00
+:shards:
+- :file_size: 16
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 37
+  :name: fasshole
+  :owner: 
+  :path: fass/scripfrz/fasshole
+  :status: :readable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:44:55.000000000 -05:00
+  :updated: 1977-02-10 16:44:55.000000000 -05:00
+- :file_size: 238
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 776
+  :name: macros
+  :owner: 
+  :path: fass/scripfrz/macros
+  :status: :readable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 08:53:15.000000000 -05:00
+  :updated: 1977-02-11 08:53:15.000000000 -05:00
+- :file_size: 174
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 720
+  :name: evathing
+  :owner: 
+  :path: fass/scripfrz/evathing
+  :status: :readable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:44:55.000000000 -05:00
+  :updated: 1977-02-10 16:44:55.000000000 -05:00
+- :file_size: 71
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 314
+  :name: 1zero
+  :owner: 
+  :path: fass/scripfrz/1zero
+  :status: :readable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:47:52.000000000 -05:00
+  :updated: 1977-02-10 16:47:52.000000000 -05:00
+- :file_size: 299
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 1331
+  :name: 1one
+  :owner: 
+  :path: fass/scripfrz/1one
+  :status: :readable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 09:06:07.000000000 -05:00
+  :updated: 1977-02-18 09:06:07.000000000 -05:00
+- :file_size: 162
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 723
+  :name: 1two
+  :owner: 
+  :path: fass/scripfrz/1two
+  :status: :readable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 08:56:09.000000000 -05:00
+  :updated: 1977-02-11 08:56:09.000000000 -05:00
+- :file_size: 727
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 3228
+  :name: 1three
+  :owner: 
+  :path: fass/scripfrz/1three
+  :status: :readable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 08:56:09.000000000 -05:00
+  :updated: 1977-02-11 08:56:09.000000000 -05:00
+- :file_size: 1860
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 1
+    !binary "CA==": 7
+    !binary "AA==": 114
+    !binary "Ag==": 6
+    !binary "AQ==": 6
+    !binary "BA==": 8
+    !binary "Bw==": 16
+    !binary "GA==": 7
+    !binary "HA==": 4
+    !binary "GQ==": 2
+    !binary "Dw==": 3
+    !binary "FA==": 2
+    !binary "Hg==": 4
+    !binary "Gg==": 1
+    !binary "Ew==": 1
+    !binary "Gw==": 3
+    !binary "Bg==": 7
+    !binary "Dg==": 3
+    !binary "Hw==": 7
+    !binary "Fg==": 7
+    !binary "BQ==": 3
+    !binary "Fw==": 16
+    !binary "Eg==": 13
+    !binary "fw==": 2
+  :character_count: 7489
+  :name: 1four
+  :owner: 
+  :path: fass/scripfrz/1four
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 08:53:15.000000000 -05:00
+  :updated: 1977-02-11 08:53:15.000000000 -05:00
+- :file_size: 1706
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    !binary "CA==": 112
+    !binary "DA==": 25
+    !binary "BQ==": 102
+    !binary "HA==": 30
+    !binary "Gg==": 94
+    !binary "BA==": 206
+    !binary "Ag==": 109
+    !binary "AA==": 1069
+    !binary "Aw==": 39
+    !binary "FQ==": 16
+    !binary "Bg==": 436
+    !binary "Dw==": 103
+    !binary "Fw==": 99
+    !binary "Dg==": 137
+    !binary "Bw==": 311
+    !binary "Hg==": 135
+    !binary "Fg==": 211
+    !binary "Eg==": 94
+    !binary "HQ==": 23
+    !binary "AQ==": 56
+    !binary "Hw==": 71
+    !binary "fw==": 124
+    !binary "FA==": 36
+    !binary "GA==": 3
+    !binary "EA==": 7
+    !binary "Gw==": 2
+    !binary "Ew==": 1
+  :character_count: 8173
+  :name: 1five
+  :owner: 
+  :path: fass/scripfrz/1five
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 08:59:30.000000000 -05:00
+  :updated: 1977-02-11 08:59:30.000000000 -05:00
+- :file_size: 85
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    !binary "CA==": 4
+    !binary "DA==": 3
+    !binary "Bg==": 5
+    !binary "Dw==": 3
+    !binary "EA==": 1
+    !binary "AA==": 36
+    !binary "Fg==": 2
+    !binary "fw==": 4
+    !binary "Dg==": 3
+    !binary "Eg==": 3
+    !binary "BA==": 14
+    !binary "HA==": 5
+    !binary "Aw==": 3
+    !binary "Ag==": 38
+    !binary "Bw==": 2
+    !binary "BQ==": 22
+    !binary "Fw==": 1
+    !binary "Hg==": 5
+    !binary "HQ==": 3
+    !binary "Gg==": 3
+    !binary "FA==": 1
+    !binary "AQ==": 3
+    !binary "Hw==": 3
+    !binary "FQ==": 1
+  :character_count: 356
+  :name: 1six
+  :owner: 
+  :path: fass/scripfrz/1six
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:47:59.000000000 -05:00
+  :updated: 1977-02-10 16:47:59.000000000 -05:00
+- :file_size: 1217
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    !binary "CA==": 59
+    !binary "DA==": 27
+    !binary "Cw==": 1
+    !binary "BQ==": 94
+    !binary "AA==": 655
+    !binary "Ag==": 122
+    !binary "EA==": 11
+    !binary "AQ==": 42
+    !binary "Eg==": 63
+    !binary "Hg==": 75
+    !binary "Bg==": 322
+    !binary "Dw==": 73
+    !binary "Hw==": 39
+    !binary "HQ==": 26
+    !binary "BA==": 147
+    !binary "HA==": 33
+    !binary "FA==": 36
+    !binary "FQ==": 18
+    !binary "Gg==": 63
+    !binary "Dg==": 105
+    !binary "Aw==": 23
+    !binary "Fw==": 59
+    !binary "GA==": 8
+    !binary "Bw==": 232
+    !binary "Ew==": 10
+    !binary "fw==": 77
+    !binary "Fg==": 134
+    !binary "Gw==": 1
+  :character_count: 6045
+  :name: 1seven
+  :owner: 
+  :path: fass/scripfrz/1seven
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 08:59:30.000000000 -05:00
+  :updated: 1977-02-11 08:59:30.000000000 -05:00
+- :file_size: 449
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    !binary "CA==": 8
+    !binary "DA==": 13
+    !binary "FA==": 14
+    !binary "AA==": 92
+    !binary "AQ==": 4
+    !binary "BA==": 49
+    !binary "FQ==": 8
+    !binary "Gg==": 26
+    !binary "BQ==": 29
+    !binary "Ag==": 30
+    !binary "Hg==": 31
+    !binary "Fg==": 28
+    !binary "Eg==": 15
+    !binary "EA==": 2
+    !binary "HA==": 13
+    !binary "Bw==": 46
+    !binary "Bg==": 76
+    !binary "fw==": 23
+    !binary "Gw==": 1
+    !binary "Dw==": 18
+    !binary "Hw==": 14
+    !binary "HQ==": 4
+    !binary "Dg==": 17
+    !binary "Aw==": 7
+    !binary "GA==": 2
+    !binary "Fw==": 12
+  :character_count: 1365
+  :name: 1eight
+  :owner: 
+  :path: fass/scripfrz/1eight
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 09:10:44.000000000 -05:00
+  :updated: 1977-02-11 09:10:44.000000000 -05:00
+- :file_size: 2172
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 2
+    !binary "CA==": 26
+    !binary "DA==": 10
+    !binary "Cw==": 7
+    !binary "Bg==": 275
+    !binary "Dg==": 32
+    !binary "Ag==": 115
+    !binary "Fg==": 86
+    !binary "Dw==": 31
+    !binary "Eg==": 27
+    !binary "BA==": 50
+    !binary "Hg==": 33
+    !binary "Aw==": 17
+    !binary "fw==": 17
+    !binary "Ew==": 46
+    !binary "Gw==": 7
+    !binary "AA==": 1213
+    !binary "Bw==": 55
+    !binary "Fw==": 170
+    !binary "Gg==": 21
+    !binary "AQ==": 17
+    !binary "Hw==": 28
+    !binary "BQ==": 27
+    !binary "HA==": 15
+    !binary "HQ==": 10
+    !binary "FQ==": 76
+    !binary "FA==": 28
+    !binary "EA==": 519
+    !binary "GA==": 10
+    !binary "GQ==": 13
+    !binary "EQ==": 14
+  :character_count: 10550
+  :name: 1nine
+  :owner: 
+  :path: fass/scripfrz/1nine
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 09:10:44.000000000 -05:00
+  :updated: 1977-02-11 09:10:44.000000000 -05:00
+- :file_size: 2373
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 4
+    !binary "CA==": 5
+    !binary "DA==": 8
+    !binary "Cw==": 6
+    !binary "Ew==": 39
+    !binary "EA==": 712
+    !binary "Bg==": 191
+    !binary "AA==": 928
+    !binary "Hw==": 12
+    !binary "GA==": 28
+    !binary "Aw==": 8
+    !binary "Ag==": 60
+    !binary "Fw==": 124
+    !binary "Fg==": 65
+    !binary "EQ==": 11
+    !binary "Bw==": 7
+    !binary "FA==": 25
+    !binary "Dg==": 6
+    !binary "GQ==": 16
+    !binary "Gw==": 2
+    !binary "Eg==": 4
+    !binary "Gg==": 8
+    !binary "BA==": 5
+    !binary "FQ==": 170
+    !binary "Dw==": 1
+    !binary "HA==": 7
+    !binary "BQ==": 1
+    !binary "Hg==": 1
+    !binary "AQ==": 1
+  :character_count: 9871
+  :name: 1ten
+  :owner: 
+  :path: fass/scripfrz/1ten
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 09:42:17.000000000 -05:00
+  :updated: 1977-02-11 09:42:17.000000000 -05:00
+- :file_size: 2248
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 6
+    !binary "CA==": 1
+    !binary "DA==": 7
+    !binary "Cw==": 139
+    !binary "BQ==": 57
+    !binary "FQ==": 161
+    !binary "Aw==": 822
+    !binary "Dw==": 104
+    !binary "fw==": 35
+    !binary "EQ==": 189
+    !binary "Ew==": 106
+    !binary "Hw==": 98
+    !binary "AA==": 1249
+    !binary "Gw==": 130
+    !binary "Fw==": 214
+    !binary "BA==": 129
+    !binary "GQ==": 59
+    !binary "AQ==": 184
+    !binary "Bw==": 343
+    !binary "Ag==": 241
+    !binary "Gg==": 52
+    !binary "Dg==": 57
+    !binary "Fg==": 66
+    !binary "Eg==": 36
+    !binary "HQ==": 38
+    !binary "Bg==": 134
+    !binary "EA==": 7
+    !binary "Hg==": 56
+    !binary "HA==": 12
+    !binary "FA==": 9
+    !binary "GA==": 4
+  :character_count: 10464
+  :name: 1eleven
+  :owner: 
+  :path: fass/scripfrz/1eleven
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 09:42:17.000000000 -05:00
+  :updated: 1977-02-11 09:42:17.000000000 -05:00
+- :file_size: 88
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 0
+  :name: 1twelve
+  :owner: 
+  :path: fass/scripfrz/1twelve
+  :status: :unreadable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:48:21.000000000 -05:00
+  :updated: 1977-02-10 16:48:21.000000000 -05:00
+- :file_size: 1783
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 21
+    !binary "CA==": 102
+    !binary "DA==": 20
+    !binary "Cw==": 144
+    !binary "Hg==": 50
+    !binary "Aw==": 459
+    !binary "Gw==": 126
+    !binary "Bw==": 186
+    !binary "Hw==": 71
+    !binary "GQ==": 91
+    !binary "AQ==": 221
+    !binary "BQ==": 42
+    !binary "Gg==": 94
+    !binary "Ag==": 191
+    !binary "Dg==": 45
+    !binary "Fg==": 94
+    !binary "AA==": 941
+    !binary "Bg==": 120
+    !binary "HQ==": 70
+    !binary "HA==": 31
+    !binary "FQ==": 101
+    !binary "Dw==": 66
+    !binary "Fw==": 119
+    !binary "BA==": 76
+    !binary "EQ==": 95
+    !binary "Ew==": 99
+    !binary "EA==": 127
+    !binary "fw==": 31
+    !binary "Eg==": 45
+    !binary "FA==": 21
+    !binary "GA==": 57
+  :character_count: 8845
+  :name: 1thirtee
+  :owner: 
+  :path: fass/scripfrz/1thirtee
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 08:51:07.000000000 -05:00
+  :updated: 1977-02-14 08:51:07.000000000 -05:00
+- :file_size: 1482
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 11
+    !binary "CA==": 220
+    !binary "DA==": 9
+    !binary "Cw==": 91
+    !binary "EA==": 231
+    !binary "Ew==": 76
+    !binary "Gg==": 138
+    !binary "GQ==": 128
+    !binary "Aw==": 50
+    !binary "AA==": 733
+    !binary "BQ==": 10
+    !binary "FA==": 45
+    !binary "HQ==": 133
+    !binary "HA==": 67
+    !binary "EQ==": 56
+    !binary "AQ==": 61
+    !binary "BA==": 8
+    !binary "FQ==": 56
+    !binary "Gw==": 150
+    !binary "Dg==": 16
+    !binary "GA==": 138
+    !binary "Fg==": 26
+    !binary "Hg==": 38
+    !binary "Bg==": 26
+    !binary "Bw==": 11
+    !binary "Fw==": 15
+    !binary "Eg==": 74
+    !binary "Dw==": 16
+    !binary "Ag==": 6
+    !binary "Hw==": 1
+  :character_count: 7056
+  :name: 1fourtee
+  :owner: 
+  :path: fass/scripfrz/1fourtee
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 08:51:07.000000000 -05:00
+  :updated: 1977-02-14 08:51:07.000000000 -05:00
+- :file_size: 193
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 3
+    !binary "CA==": 34
+    !binary "DA==": 5
+    !binary "Cw==": 22
+    !binary "Bg==": 4
+    !binary "GQ==": 19
+    !binary "HQ==": 12
+    !binary "Gw==": 13
+    !binary "EA==": 31
+    !binary "Hg==": 8
+    !binary "GA==": 10
+    !binary "HA==": 7
+    !binary "Aw==": 4
+    !binary "AA==": 96
+    !binary "Dg==": 1
+    !binary "Gg==": 3
+    !binary "Bw==": 3
+    !binary "Fw==": 11
+    !binary "FA==": 6
+    !binary "Ag==": 3
+    !binary "AQ==": 6
+    !binary "Fg==": 6
+    !binary "FQ==": 7
+    !binary "Eg==": 10
+    !binary "EQ==": 9
+    !binary "Ew==": 4
+    !binary "Dw==": 2
+    !binary "BQ==": 1
+    !binary "BA==": 1
+  :character_count: 884
+  :name: 1fifteen
+  :owner: 
+  :path: fass/scripfrz/1fifteen
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:48:49.000000000 -05:00
+  :updated: 1977-02-10 16:48:49.000000000 -05:00
+- :file_size: 783
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 9
+    !binary "CA==": 67
+    !binary "DA==": 6
+    !binary "Cw==": 53
+    !binary "FA==": 13
+    !binary "Gw==": 71
+    !binary "EQ==": 12
+    !binary "Fw==": 3
+    !binary "Aw==": 19
+    !binary "AA==": 331
+    !binary "EA==": 68
+    !binary "Fg==": 11
+    !binary "GQ==": 61
+    !binary "Ew==": 21
+    !binary "Eg==": 22
+    !binary "HQ==": 42
+    !binary "Hg==": 17
+    !binary "Gg==": 59
+    !binary "GA==": 47
+    !binary "HA==": 27
+    !binary "Bg==": 19
+    !binary "Dw==": 7
+    !binary "FQ==": 14
+    !binary "Hw==": 1
+    !binary "Dg==": 2
+    !binary "AQ==": 34
+    !binary "BA==": 4
+    !binary "BQ==": 3
+    !binary "Bw==": 3
+  :character_count: 2673
+  :name: 1sixteen
+  :owner: 
+  :path: fass/scripfrz/1sixteen
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 08:57:19.000000000 -05:00
+  :updated: 1977-02-14 08:57:19.000000000 -05:00
+- :file_size: 354
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 6
+    !binary "CA==": 45
+    !binary "DA==": 5
+    !binary "Cw==": 13
+    !binary "FA==": 9
+    !binary "EA==": 38
+    !binary "GQ==": 32
+    !binary "HQ==": 29
+    !binary "Gw==": 20
+    !binary "GA==": 23
+    !binary "Eg==": 16
+    !binary "AA==": 123
+    !binary "AQ==": 7
+    !binary "Ew==": 17
+    !binary "Fw==": 7
+    !binary "EQ==": 14
+    !binary "Fg==": 8
+    !binary "Bg==": 4
+    !binary "Gg==": 22
+    !binary "HA==": 7
+    !binary "Hg==": 5
+    !binary "BQ==": 1
+    !binary "FQ==": 6
+    !binary "Aw==": 5
+    !binary "BA==": 1
+    !binary "Ag==": 3
+    !binary "Dg==": 5
+    !binary "Dw==": 2
+    !binary "Bw==": 1
+  :character_count: 1331
+  :name: 3zero
+  :owner: 
+  :path: fass/scripfrz/3zero
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 08:57:19.000000000 -05:00
+  :updated: 1977-02-14 08:57:19.000000000 -05:00
+- :file_size: 1926
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 31
+    !binary "CA==": 144
+    !binary "DA==": 14
+    !binary "Cw==": 75
+    !binary "EQ==": 60
+    !binary "Aw==": 270
+    !binary "AA==": 1385
+    !binary "AQ==": 191
+    !binary "GQ==": 75
+    !binary "Bg==": 15
+    !binary "Ag==": 149
+    !binary "Ew==": 61
+    !binary "Fg==": 16
+    !binary "HA==": 36
+    !binary "Hg==": 14
+    !binary "Gg==": 188
+    !binary "GA==": 65
+    !binary "Gw==": 89
+    !binary "Dg==": 14
+    !binary "EA==": 95
+    !binary "HQ==": 95
+    !binary "FA==": 83
+    !binary "Eg==": 32
+    !binary "FQ==": 151
+    !binary "BA==": 55
+    !binary "Bw==": 157
+    !binary "Fw==": 112
+    !binary "Dw==": 36
+    !binary "BQ==": 69
+    !binary "Hw==": 85
+    !binary "fw==": 2
+  :character_count: 9569
+  :name: 3one
+  :owner: 
+  :path: fass/scripfrz/3one
+  :status: :readable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 09:04:23.000000000 -05:00
+  :updated: 1977-02-14 09:04:23.000000000 -05:00
+- :file_size: 1672
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 21
+    !binary "CA==": 73
+    !binary "DA==": 4
+    !binary "Cw==": 45
+    !binary "Fw==": 117
+    !binary "GQ==": 47
+    !binary "AQ==": 255
+    !binary "FQ==": 160
+    !binary "Ag==": 198
+    !binary "HQ==": 69
+    !binary "BQ==": 96
+    !binary "AA==": 1123
+    !binary "FA==": 66
+    !binary "Gg==": 146
+    !binary "Hw==": 74
+    !binary "BA==": 21
+    !binary "Dw==": 49
+    !binary "Gw==": 35
+    !binary "Aw==": 266
+    !binary "HA==": 18
+    !binary "Bw==": 133
+    !binary "Dg==": 18
+    !binary "Ew==": 63
+    !binary "GA==": 3
+    !binary "EA==": 31
+    !binary "EQ==": 56
+    !binary "Fg==": 28
+    !binary "Bg==": 20
+    !binary "Eg==": 15
+    !binary "Hg==": 9
+    !binary "fw==": 4
+  :character_count: 8113
+  :name: 3two
+  :owner: 
+  :path: fass/scripfrz/3two
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 09:04:23.000000000 -05:00
+  :updated: 1977-02-14 09:04:23.000000000 -05:00
+- :file_size: 936
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 23
+    !binary "CA==": 77
+    !binary "DA==": 15
+    !binary "Cw==": 45
+    !binary "Aw==": 127
+    !binary "FQ==": 56
+    !binary "FA==": 32
+    !binary "AA==": 656
+    !binary "Bw==": 84
+    !binary "Dw==": 18
+    !binary "AQ==": 89
+    !binary "Fw==": 41
+    !binary "EQ==": 40
+    !binary "BA==": 51
+    !binary "Gg==": 78
+    !binary "Ag==": 113
+    !binary "Fg==": 25
+    !binary "BQ==": 54
+    !binary "Hg==": 7
+    !binary "Bg==": 30
+    !binary "Ew==": 35
+    !binary "GQ==": 34
+    !binary "fw==": 1
+    !binary "Hw==": 42
+    !binary "HQ==": 49
+    !binary "HA==": 27
+    !binary "Gw==": 27
+    !binary "GA==": 18
+    !binary "EA==": 16
+    !binary "Dg==": 33
+    !binary "Eg==": 18
+  :character_count: 4616
+  :name: 3three
+  :owner: 
+  :path: fass/scripfrz/3three
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 09:10:14.000000000 -05:00
+  :updated: 1977-02-14 09:10:14.000000000 -05:00
+- :file_size: 1813
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 75
+    !binary "CA==": 337
+    !binary "DA==": 136
+    !binary "Cw==": 113
+    !binary "AA==": 1121
+    !binary "AQ==": 55
+    !binary "FA==": 97
+    !binary "EQ==": 86
+    !binary "BA==": 184
+    !binary "GQ==": 145
+    !binary "HQ==": 135
+    !binary "Gg==": 156
+    !binary "Gw==": 156
+    !binary "HA==": 85
+    !binary "Bg==": 18
+    !binary "Dg==": 112
+    !binary "BQ==": 50
+    !binary "Hg==": 61
+    !binary "GA==": 192
+    !binary "Eg==": 104
+    !binary "Ew==": 79
+    !binary "FQ==": 84
+    !binary "EA==": 69
+    !binary "Bw==": 20
+    !binary "Aw==": 55
+    !binary "Fg==": 15
+    !binary "Dw==": 23
+    !binary "Ag==": 25
+    !binary "Fw==": 1
+    !binary "Hw==": 5
+  :character_count: 8917
+  :name: 3four
+  :owner: 
+  :path: fass/scripfrz/3four
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 09:10:14.000000000 -05:00
+  :updated: 1977-02-14 09:10:14.000000000 -05:00
+- :file_size: 1211
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 63
+    !binary "CA==": 185
+    !binary "DA==": 98
+    !binary "Cw==": 55
+    !binary "Ew==": 57
+    !binary "EQ==": 91
+    !binary "FA==": 80
+    !binary "GA==": 97
+    !binary "AA==": 675
+    !binary "Bw==": 19
+    !binary "BA==": 69
+    !binary "Dg==": 89
+    !binary "Gw==": 70
+    !binary "BQ==": 28
+    !binary "EA==": 45
+    !binary "HQ==": 106
+    !binary "HA==": 60
+    !binary "GQ==": 113
+    !binary "Hg==": 48
+    !binary "Gg==": 104
+    !binary "FQ==": 44
+    !binary "Ag==": 20
+    !binary "Bg==": 26
+    !binary "Eg==": 83
+    !binary "Aw==": 28
+    !binary "AQ==": 34
+    !binary "Fg==": 21
+    !binary "Dw==": 12
+    !binary "Fw==": 1
+  :character_count: 5976
+  :name: 3five
+  :owner: 
+  :path: fass/scripfrz/3five
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 09:15:55.000000000 -05:00
+  :updated: 1977-02-14 09:15:55.000000000 -05:00
+- :file_size: 1976
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 62
+    !binary "CA==": 178
+    !binary "DA==": 60
+    !binary "Cw==": 67
+    !binary "HQ==": 84
+    !binary "AA==": 967
+    !binary "Bg==": 21
+    !binary "Fg==": 10
+    !binary "Dg==": 68
+    !binary "GQ==": 90
+    !binary "BA==": 51
+    !binary "Gg==": 238
+    !binary "Gw==": 58
+    !binary "Hg==": 47
+    !binary "GA==": 60
+    !binary "HA==": 31
+    !binary "EA==": 40
+    !binary "Eg==": 123
+    !binary "BQ==": 22
+    !binary "EQ==": 40
+    !binary "Ew==": 35
+    !binary "FQ==": 33
+    !binary "AQ==": 12
+    !binary "Ag==": 76
+    !binary "Aw==": 48
+    !binary "Dw==": 20
+    !binary "FA==": 22
+    !binary "Bw==": 21
+    !binary "fw==": 3
+    !binary "Fw==": 13
+    !binary "Hw==": 25
+  :character_count: 9594
+  :name: 3six
+  :owner: 
+  :path: fass/scripfrz/3six
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 09:06:07.000000000 -05:00
+  :updated: 1977-02-18 09:06:07.000000000 -05:00
+- :file_size: 199
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 1
+    !binary "CA==": 4
+    !binary "Cw==": 1
+    !binary "Gg==": 28
+    !binary "AA==": 108
+    !binary "Aw==": 4
+    !binary "Ag==": 5
+    !binary "Eg==": 6
+    !binary "BQ==": 1
+    !binary "Ew==": 2
+    !binary "Dg==": 2
+    !binary "Dw==": 1
+    !binary "Fw==": 1
+    !binary "Bw==": 1
+  :character_count: 954
+  :name: 3seven
+  :owner: 
+  :path: fass/scripfrz/3seven
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 09:06:07.000000000 -05:00
+  :updated: 1977-02-18 09:06:07.000000000 -05:00
+- :file_size: 95
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 1
+    !binary "CA==": 2
+    !binary "Cw==": 3
+    !binary "HQ==": 4
+    !binary "Dg==": 1
+    !binary "Gg==": 5
+    !binary "AA==": 22
+    !binary "Ag==": 2
+    !binary "Aw==": 4
+    !binary "Bw==": 3
+    !binary "Ew==": 5
+    !binary "Eg==": 5
+  :character_count: 173
+  :name: 3eight
+  :owner: 
+  :path: fass/scripfrz/3eight
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:55:54.000000000 -05:00
+  :updated: 1977-02-10 16:55:54.000000000 -05:00
+- :file_size: 103
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    !binary "Gg==": 8
+    !binary "AA==": 16
+    !binary "Ag==": 1
+  :character_count: 461
+  :name: 3nine
+  :owner: 
+  :path: fass/scripfrz/3nine
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:55:54.000000000 -05:00
+  :updated: 1977-02-10 16:55:54.000000000 -05:00
+- :file_size: 2441
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 39
+    !binary "CA==": 69
+    !binary "DA==": 62
+    !binary "Cw==": 67
+    !binary "Gg==": 318
+    !binary "AA==": 1180
+    !binary "Ag==": 105
+    !binary "Aw==": 59
+    !binary "Bw==": 46
+    !binary "Ew==": 55
+    !binary "Eg==": 63
+    !binary "HQ==": 49
+    !binary "Fw==": 13
+    !binary "Bg==": 26
+    !binary "HA==": 76
+    !binary "EQ==": 61
+    !binary "GQ==": 41
+    !binary "Hw==": 41
+    !binary "GA==": 16
+    !binary "Gw==": 12
+    !binary "Hg==": 40
+    !binary "EA==": 28
+    !binary "Dg==": 45
+    !binary "Fg==": 49
+    !binary "Dw==": 18
+    !binary "BQ==": 28
+    !binary "FQ==": 8
+    !binary "fw==": 1
+    !binary "BA==": 15
+    !binary "FA==": 22
+    !binary "AQ==": 16
+  :character_count: 11717
+  :name: 3ten
+  :owner: 
+  :path: fass/scripfrz/3ten
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 09:38:21.000000000 -05:00
+  :updated: 1977-02-18 09:38:21.000000000 -05:00
+- :file_size: 87
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 4
+    !binary "CA==": 10
+    !binary "DA==": 19
+    !binary "Bw==": 6
+    !binary "FA==": 9
+    !binary "GQ==": 7
+    !binary "BA==": 8
+    !binary "FQ==": 1
+    !binary "AA==": 25
+    !binary "Aw==": 1
+    !binary "BQ==": 2
+    !binary "EQ==": 4
+    !binary "Hg==": 11
+    !binary "Dg==": 18
+    !binary "HA==": 8
+    !binary "Bg==": 6
+    !binary "Fw==": 2
+    !binary "HQ==": 4
+    !binary "EA==": 1
+    !binary "GA==": 1
+    !binary "Fg==": 3
+    !binary "Eg==": 2
+    !binary "AQ==": 1
+    !binary "fw==": 1
+  :character_count: 389
+  :name: 3eleven
+  :owner: 
+  :path: fass/scripfrz/3eleven
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:56:14.000000000 -05:00
+  :updated: 1977-02-10 16:56:14.000000000 -05:00
+- :file_size: 3189
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3twelve
+  :owner: 
+  :path: fass/scripfrz/3twelve
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 10:18:04.000000000 -05:00
+  :updated: 1977-02-18 10:18:04.000000000 -05:00
+- :file_size: 1707
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3thirtee
+  :owner: 
+  :path: fass/scripfrz/3thirtee
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 10:32:57.000000000 -05:00
+  :updated: 1977-02-18 10:32:57.000000000 -05:00
+- :file_size: 124
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3fourtee
+  :owner: 
+  :path: fass/scripfrz/3fourtee
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:56:51.000000000 -05:00
+  :updated: 1977-02-10 16:56:51.000000000 -05:00
+- :file_size: 2712
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3fifteen
+  :owner: 
+  :path: fass/scripfrz/3fifteen
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 11:29:00.000000000 -05:00
+  :updated: 1977-02-18 11:29:00.000000000 -05:00
+- :file_size: 360
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3sixteen
+  :owner: 
+  :path: fass/scripfrz/3sixteen
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 11:01:09.000000000 -05:00
+  :updated: 1977-02-18 11:01:09.000000000 -05:00
+- :file_size: 409
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3sevente
+  :owner: 
+  :path: fass/scripfrz/3sevente
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 10:32:57.000000000 -05:00
+  :updated: 1977-02-18 10:32:57.000000000 -05:00
+- :file_size: 108
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: roftemps
+  :owner: 
+  :path: fass/scripfrz/roftemps
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-03-01
+  :file_time: 1977-03-01 15:02:04.000000000 -05:00
+  :updated: 1977-03-01 15:02:04.000000000 -05:00
+- :file_size: 76
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: unfreeze
+  :owner: 
+  :path: fass/scripfrz/unfreeze
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-03-01
+  :file_time: 1977-03-01 15:40:58.000000000 -05:00
+  :updated: 1977-03-01 15:40:58.000000000 -05:00
+:file_date: 1977-03-01
+:file_time: 1977-03-01 15:40:58.000000000 -05:00

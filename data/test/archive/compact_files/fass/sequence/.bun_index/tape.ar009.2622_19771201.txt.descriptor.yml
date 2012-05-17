@@ -1,0 +1,25 @@
+---
+:basename: sequence
+:catalog_time: 1977-12-01 00:00:00.000000000 -05:00
+:description: ''
+:errors: []
+:extracted: 2012-04-04 21:48:00.356148000 -04:00
+:file_size: 3854
+:file_type: :text
+:location: !binary |-
+  dGFwZS5hcjAwOS4yNjIyXzE5NzcxMjAxLnR4dA==
+:location_path: !binary |-
+  L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
+  L2NvbXBhY3RfZmlsZXMvZmFzcy9zZXF1ZW5jZS90YXBlLmFyMDA5LjI2MjJf
+  MTk3NzEyMDEudHh0
+:original_location: ar009.2622
+:original_location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar009.2622
+:owner: fass
+:path: fass/sequence
+:specification: /sequence
+:updated: 1977-12-01 00:00:00.000000000 -05:00
+:blocks: 12
+:good_blocks: 12
+:status: :readable
+:control_characters: {}
+:character_count: 13230

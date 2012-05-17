@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-require 'lib/bun/file/descriptor'
 require 'date'
 
 module Bun
@@ -168,7 +167,7 @@ module Bun
           @words = @all_characters = @characters = @packed_characters = @descriptor = nil
         else
           @words = words
-          @descriptor = Descriptor.new(self)
+          @descriptor = Descriptor::Archived.new(self)
           @all_characters = LazyArray.new(words.size*characters_per_word) do |n|
             @words.characters.at(n)
           end

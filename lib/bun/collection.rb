@@ -18,6 +18,12 @@ module Bun
     
     attr_reader :at
     
+    class << self
+      def enumerator_class
+        Enumerator
+      end
+    end
+    
     def initialize(options={})
       @at = File.expand_path(options[:at] || default_at)
       @index = nil
@@ -28,22 +34,52 @@ module Bun
       Dir.entries(at).reject{|f| f=~/^\./}
     end
 
-    def each(&blk)
-      locations = self.locations
-      enum = Enumerator.new(self)
-      if block_given?
-        enum.each(&blk)
+    def open(name, options={}, &blk)
+      if File.basename(name) =~ /^ar\d{3}.\d{4}$/
+        Bun::File::Archived.open(expand_path(name), options.merge(:archive=>self, :location=>name), &blk)
       else
-        enum
+        Bun::File::Extracted.open(expand_path(name), options.merge(:library=>self,  :location=>name), &blk)
       end
     end
+
+    def to_enum(&blk)
+      self.class.enumerator_class.new(self, &blk)
+    end
+    
+    def each(&blk)
+      to_enum.each(&blk)
+    end
+    
+    def all(&blk)
+      to_enum.all(&blk)
+    end
+    
+    def directories(&blk)
+      to_enum.directories(&blk)
+    end
+    
+    alias_method :folders, :directories
+    
+    def leaves(&blk)
+      to_enum.leaves(&blk)
+    end
+    
+    alias_method :items, :leaves
+    alias_method :fragments, :leaves
     
     def each_file(options={}, &blk)
-      each.files(options, &blk)
+      to_enum.files(options, &blk)
     end
     
     def glob(*pat, &blk)
-      each.glob(*pat, &blk)
+      to_enum.glob(*pat, &blk)
+    end
+    
+    def depth
+      first = all.depth_first.with_depth.next
+      return 0 unless first
+      name, depth = first
+      depth
     end
     
     def default_at
@@ -86,7 +122,15 @@ module Bun
     end
     
     def index_directory
-      expanded_config(:index_directory)
+      config['index_directory']
+    end
+    
+    def index_directories
+      Dir.glob(at + '/**/' + index_directory)
+    end
+    
+    def expanded_index_directory
+      expand_path(index_directory)
     end
     
     def expand_path(location, options={})
@@ -114,16 +158,20 @@ module Bun
     end
     
     def _index
-      if File.directory?(index_directory)
+      indexes = index_directories
+      if indexes.size > 0
         @index = {}
-        Dir.glob(File.join(index_directory, '*.yml')) do |f|
-          raise "Unexpected file #{f} in index #{index_directory}" unless f =~ /\.descriptor.yml$/
-          file_name = File.basename($`)
-          content = ::Bun.readfile(f, :encoding=>'us-ascii')
-          @index[file_name] = YAML.load(content)
+        indexes.each do |index|
+          raise RuntimeError, "File #{index} should be a directory" unless File.directory?(index)
+          index_prefix = File.dirname(index)
+          index_prefix = '' if index_prefix == '.'
+          Dir.glob(File.join(index, '*.yml')) do |f|
+            raise "Unexpected file #{f} in index #{expanded_index_directory}" unless f =~ /\.descriptor.yml$/
+            file_name = File.join(index_prefix, File.basename($`))
+            content = ::Bun.readfile(f, :encoding=>'us-ascii')
+            @index[file_name] = YAML.load(content)
+          end
         end
-      elsif File.exists?(index_directory)
-        raise RuntimeError, "File #{index_directory} should be a directory"
       else
         build_and_save_index
       end
@@ -131,20 +179,10 @@ module Bun
     private :_index
     
     def build_and_save_index(options={})
-      build_index(options)
-    end
-    
-    def build_index(options={})
       clear_index
-      each_file(:header=>true) do |f|
+      items.with_file(:header=>true) do |fname, f|
         puts f.location if options[:verbose]
         update_index(:file=>f)
-      end
-      if options[:recursive]
-        directories do |f|
-          sub_archive = Archive.new(:at=>expand_path(f))
-          sub_archive.build_index(options)
-        end
       end
       @index
     end
@@ -168,7 +206,7 @@ module Bun
     end
     
     def clear_index
-      clear_index_directory
+      clear_index_directories
       @index = nil
     end
     
@@ -196,15 +234,16 @@ module Bun
       entry
     end
     
-    def clear_index_directory
+    def clear_index_directories
       return unless @update_indexes
-      FileUtils.rm_rf(index_directory)
+      index_directories.each do |index_directory|
+        FileUtils.rm_rf(index_directory)
+      end
     end
     
     def save_index
-      clear_index_directory
-      make_index_directory
-      each do |name|
+      clear_index_directories
+      items do |name|
         _save_index_descriptor(name)
       end
       @index
@@ -214,7 +253,6 @@ module Bun
       @index ||= {}
       name = f.location
       @index[name] ||= build_descriptor_for_file(f)
-      make_index_directory
       _save_index_descriptor(name)
     end
     
@@ -226,22 +264,29 @@ module Bun
     end
     
     def make_index_directory
-      FileUtils.mkdir_p(index_directory) unless File.exists?(index_directory)
+      FileUtils.mkdir_p(expanded_index_directory) unless File.exists?(expanded_index_directory)
     end
     
     def _save_index_descriptor(name)
       return unless @update_indexes
-      descriptor_file_name = File.join(index_directory, "#{name}.descriptor.yml")
+      descriptor_file_parts = [at]
+      descriptor_directory = File.dirname(name)
+      descriptor_file_parts << descriptor_directory unless descriptor_directory == '.'
+      descriptor_file_parts << index_directory
+      descriptor_file_parts << File.basename(name) + '.descriptor.yml'
+      descriptor_file_name = File.join(*descriptor_file_parts)
       # TODO This trap code was inserted to catch a tricky little bug; I'm leaving it here for awhile
       # if name == 'ar145.2699' && @index[name][:updated].nil?
       #   puts "_save_index_descriptor(#{name.inspect}): index=#{@index[name].inspect}"
       #   raise RuntimeError, ":updated == nil"
       # end
+      FileUtils.mkdir_p File.dirname(descriptor_file_name)
       ::File.open(descriptor_file_name, 'w:us-ascii') {|f| f.write @index[name].to_yaml }
     end
     private :_save_index_descriptor
     
     def descriptor(name, options={})
+      i = index
       if !exists?(name)
         nil
       elsif !options[:build] && index[name]
@@ -276,6 +321,10 @@ module Bun
       end
     end
     private :rm_at_path
+    
+    def erase!
+      FileUtils.rm_rf(at)
+    end
     
     # cp follows the same rules as Unix cp:
     #   Notes: 
@@ -317,6 +366,7 @@ module Bun
     #         - Copies all files and directories into dest_directory
     def cp(options={})
       from = options[:from]
+      from = '*' if from == '.'
       from_list = glob(*from).to_a
       to = options[:to]
       to_path = to
@@ -359,7 +409,12 @@ module Bun
             suffix = File.join(from, suffix) unless creating_to_directory
             target_dir = File.dirname(File.join(to, suffix))
             FileUtils.mkdir_p(target_dir)
-            cp_single_file(options.merge(:from=>from_item, :to=>target_dir + '/'))
+            if File.directory?(from_item)
+              new_directory = File.join(target_dir,File.basename(from_item))
+              FileUtils.mkdir(new_directory)
+            else
+              cp_single_file(options.merge(:from=>from_item, :to=>target_dir + '/'))
+            end
           end
         else
           if options[:tolerant]

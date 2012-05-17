@@ -7,11 +7,11 @@ module Bun
 
   class File < ::File
     class Library < Bun::File
-      class << self
-        def open(fname, options={}, &blk)
-          new(options.merge(:location_path=>fname), &blk)
-        end
-      end
+      # class << self
+      #   def open(fname, options={}, &blk)
+      #     new(options.merge(:location_path=>fname), &blk)
+      #   end
+      # end
       
       attr_accessor :descriptor
       attr_accessor :library

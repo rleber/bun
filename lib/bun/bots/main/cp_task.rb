@@ -6,7 +6,7 @@ option 'at',        :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option 'bare',      :aliases=>'-b', :type=>'boolean', :desc=>'Copy files, but not index data'
 option 'recursive', :aliases=>'-r', :type=>'boolean', :desc=>'Recursively copy sub-directories'
 def cp(*args)
-  from_archive = Archive.new(:at=>options[:at])
+  from_archive = Library.new(:at=>options[:at])
   if args.size == 1
     dest = nil
   else

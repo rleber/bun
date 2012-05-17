@@ -208,6 +208,18 @@ describe Bun::Bot do
         exec("mkdir  data/test/archive/cp_recursive_new")
         exec("bun cp -r --at data/test/archive/cp_recursive '*' '@/../cp_recursive_new/'")
       end
+      describe "creates files" do
+        before :each do
+          exec "rm -f output/cp_recursive_files"
+          exec "find data/test/archive/cp_recursive -print > output/cp_recursive_files"
+        end
+        it "as expected" do
+          Bun.readfile('output/cp_recursive_files').should == Bun.readfile('output/test/cp_recursive_files')
+        end
+        after :each do
+          exec "rm -f output/cp_recursive_files"
+        end
+      end
       describe "the original files" do
         describe "in the main directory" do
           it "are unchanged" do
@@ -219,7 +231,7 @@ describe Bun::Bot do
         describe "in the sub-directory" do
           it "are unchanged" do
             expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
-            result_files = Dir.glob('data/test/archive/cp_recursive/directory/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+            result_files = Dir.glob('data/test/archive/cp_recursive/directory/subdirectory/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
         end
@@ -235,7 +247,7 @@ describe Bun::Bot do
         describe "in the sub-directory" do
           it "are unchanged" do
             expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort.map{|f| "#{f}.descriptor.yml"}
-            result_files = Dir.glob('data/test/archive/cp_recursive/directory/.bun_index/*').map{|f| File.basename(f)}.sort
+            result_files = Dir.glob('data/test/archive/cp_recursive/directory/subdirectory/.bun_index/*').map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
         end
@@ -251,7 +263,7 @@ describe Bun::Bot do
         describe "in the sub-directory" do
           it "are all copied" do
             expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
-            result_files = Dir.glob('data/test/archive/cp_recursive_new/directory/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
+            result_files = Dir.glob('data/test/archive/cp_recursive_new/directory/subdirectory/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
         end
@@ -275,7 +287,7 @@ describe Bun::Bot do
         describe "in the sub-directory" do
           it "are all created" do
             expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort.map{|f| "#{f}.descriptor.yml"}
-            result_files = Dir.glob('data/test/archive/cp_recursive_new/directory/.bun_index/*').map{|f| File.basename(f)}.sort
+            result_files = Dir.glob('data/test/archive/cp_recursive_new/directory/subdirectory/.bun_index/*').map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
           it "should not change the location" do
@@ -716,5 +728,20 @@ describe Bun::Bot do
     after :all do
       exec("rm -rf output/catalog_ls")
     end
+  end
+  context "bun library compact" do
+    before :each do
+      exec("rm -rf data/test/archive/compact_files")
+      exec("rm -rf data/test/archive/compact_result")
+      exec("cp -r data/test/archive/compact_files_init data/test/archive/compact_files")
+      exec("bun library compact data/test/archive/compact_files data/test/archive/compact_result")
+    end
+    it "should create the results directory" do
+      file_should_exist "data/test/archive/compact_result"
+    end
+    # after :each do
+    #   exec("rm -rf data/test/archive/compact_source")
+    #   exec("rm -rf data/test/archive/compact_result")
+    # end
   end
 end

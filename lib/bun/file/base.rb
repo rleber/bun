@@ -53,9 +53,9 @@ module Bun
       end
     end
     attr_reader :archive
-    attr_reader :descriptor
     attr_reader :location_path
 
+    attr_accessor :descriptor
     attr_accessor :errors
     attr_accessor :extracted
     attr_accessor :original_location

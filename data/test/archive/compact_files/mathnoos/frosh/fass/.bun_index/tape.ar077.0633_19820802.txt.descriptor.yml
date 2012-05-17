@@ -1,0 +1,25 @@
+---
+:basename: fass
+:catalog_time: 1982-08-02 00:00:00.000000000 -04:00
+:description: Frosh issue 1982
+:errors: []
+:extracted: 2012-04-04 21:48:05.466595000 -04:00
+:file_size: 659
+:file_type: :text
+:location: !binary |-
+  dGFwZS5hcjA3Ny4wNjMzXzE5ODIwODAyLnR4dA==
+:location_path: !binary |-
+  L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
+  L2NvbXBhY3RfZmlsZXMvbWF0aG5vb3MvZnJvc2gvZmFzcy90YXBlLmFyMDc3
+  LjA2MzNfMTk4MjA4MDIudHh0
+:original_location: ar077.0633
+:original_location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar077.0633
+:owner: mathnoos
+:path: mathnoos/frosh/fass
+:specification: /frosh/fass Frosh issue 1982
+:updated: 1982-08-02 00:00:00.000000000 -04:00
+:blocks: 2
+:good_blocks: 2
+:status: :readable
+:control_characters: {}
+:character_count: 1629

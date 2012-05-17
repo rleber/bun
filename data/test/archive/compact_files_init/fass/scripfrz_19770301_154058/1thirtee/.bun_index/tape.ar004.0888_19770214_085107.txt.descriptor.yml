@@ -1,0 +1,995 @@
+---
+:basename: scripfrz
+:catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+:description: ==> freeze file containing roff source for fass '77 script
+:errors:
+- ! 'Shard 7: Bad descriptor at 1801: <Bun::Word 251642101075>'
+- ! 'Shard 7: Bad descriptor at 1852: <Bun::Word 145420207417>'
+- ! 'Shard 8: Bad descriptor at 0: <Bun::Word 012342607174>'
+- ! 'Shard 8: Bad descriptor at 19: <Bun::Word 112451501244>'
+- ! 'Shard 8: Bad descriptor at 22: <Bun::Word 410520231114>'
+- ! 'Shard 8: Bad descriptor at 35: <Bun::Word 152323532402>'
+- ! 'Shard 8: Bad descriptor at 45: <Bun::Word 152323432000>'
+- ! 'Shard 8: Bad descriptor at 56: <Bun::Word 204041637165>'
+- ! 'Shard 8: Bad descriptor at 313: <Bun::Word 250420121314>'
+- ! 'Shard 8: Bad descriptor at 420: <Bun::Word 144044212404>'
+- ! 'Shard 8: Bad descriptor at 698: <Bun::Word 151142212405>'
+- ! 'Shard 8: Bad descriptor at 869: <Bun::Word 452320247114>'
+- ! 'Shard 8: Bad descriptor at 986: <Bun::Word 152442634405>'
+- ! 'Shard 8: Bad descriptor at 988: <Bun::Word 251452246562>'
+- ! 'Shard 8: Bad descriptor at 1004: <Bun::Word 756566310404>'
+- ! 'Shard 8: Bad descriptor at 1211: <Bun::Word 604072313562>'
+- ! 'Shard 8: Bad descriptor at 1342: <Bun::Word 244074737652>'
+- ! 'Shard 8: Bad descriptor at 1499: <Bun::Word 257120132407>'
+- ! 'Shard 8: Bad descriptor at 1589: <Bun::Word 004066762406>'
+- ! 'Shard 8: Bad descriptor at 1634: <Bun::Word 644044634404>'
+- ! 'Shard 8: Bad descriptor at 1638: <Bun::Word 004042237175>'
+- ! 'Shard 9: Bad descriptor at 0: <Bun::Word 015074703620>'
+- ! 'Shard 9: Bad descriptor at 23: <Bun::Word 144046223074>'
+- ! 'Shard 9: Bad descriptor at 35: <Bun::Word 152323532402>'
+- ! 'Shard 9: Bad descriptor at 65: <Bun::Word 404020101305>'
+- ! 'Shard 9: Bad descriptor at 72: <Bun::Word 413020101305>'
+- ! 'Shard 10: Bad descriptor at 0: <Bun::Word 413054260150>'
+- ! 'Shard 10: Bad descriptor at 2: <Bun::Word 004054261305>'
+- ! 'Shard 10: Bad descriptor at 9: <Bun::Word 004020261305>'
+- ! 'Shard 10: Bad descriptor at 35: <Bun::Word 144726500452>'
+- ! 'Shard 10: Bad descriptor at 61: <Bun::Word 244046223164>'
+- ! 'Shard 10: Bad descriptor at 64: <Bun::Word 010347653165>'
+- ! 'Shard 10: Bad descriptor at 67: <Bun::Word 250420205312>'
+- ! 'Shard 10: Bad descriptor at 72: <Bun::Word 111542610404>'
+- ! 'Shard 10: Bad descriptor at 93: <Bun::Word 210526101274>'
+- ! 'Shard 10: Bad descriptor at 100: <Bun::Word 110520203242>'
+- ! 'Shard 10: Bad descriptor at 101: <Bun::Word 012444213115>'
+- ! 'Shard 10: Bad descriptor at 111: <Bun::Word 244050237235>'
+- ! 'Shard 10: Bad descriptor at 130: <Bun::Word 710720247274>'
+- ! 'Shard 10: Bad descriptor at 162: <Bun::Word 105106400000>'
+- ! 'Shard 10: Bad descriptor at 355: <Bun::Word 257120351576>'
+- ! 'Shard 10: Bad descriptor at 404: <Bun::Word 645120203164>'
+- ! 'Shard 10: Bad descriptor at 921: <Bun::Word 656072323562>'
+- ! 'Shard 10: Bad descriptor at 1209: <Bun::Word 204021124522>'
+- ! 'Shard 10: Bad descriptor at 1213: <Bun::Word 212320251104>'
+- ! 'Shard 11: Bad descriptor at 0: <Bun::Word 451624432000>'
+- ! 'Shard 11: Bad descriptor at 18: <Bun::Word 252342522150>'
+- ! 'Shard 11: Bad descriptor at 35: <Bun::Word 152323532402>'
+- ! 'Shard 11: Bad descriptor at 47: <Bun::Word 341500000000>'
+- ! 'Shard 11: Bad descriptor at 110: <Bun::Word 152320347506>'
+- ! 'Shard 11: Bad descriptor at 253: <Bun::Word 152320347506>'
+- ! 'Shard 11: Bad descriptor at 263: <Bun::Word 250420251014>'
+- ! 'Shard 11: Bad descriptor at 274: <Bun::Word 211751102405>'
+- ! 'Shard 12: Bad descriptor at 0: <Bun::Word 014167310402>'
+- ! 'Shard 12: Bad descriptor at 35: <Bun::Word 152323532402>'
+- ! 'Shard 12: Bad descriptor at 79: <Bun::Word 152324432000>'
+- ! 'Shard 12: Bad descriptor at 327: <Bun::Word 306344322340>'
+- ! 'Shard 12: Bad descriptor at 428: <Bun::Word 744717136320>'
+- ! 'Shard 12: Bad descriptor at 437: <Bun::Word 330203455163>'
+- ! 'Shard 12: Bad descriptor at 461: <Bun::Word 212202412247>'
+- ! 'Shard 12: Bad descriptor at 571: <Bun::Word 744643036071>'
+- ! 'Shard 12: Bad descriptor at 624: <Bun::Word 322753124061>'
+- ! 'Shard 12: Bad descriptor at 832: <Bun::Word 500617035623>'
+- ! 'Shard 12: Bad descriptor at 963: <Bun::Word 100747376520>'
+- ! 'Shard 12: Bad descriptor at 1062: <Bun::Word 744643036071>'
+- ! 'Shard 12: Bad descriptor at 1079: <Bun::Word 302721176320>'
+- ! 'Shard 12: Bad descriptor at 1104: <Bun::Word 734237504044>'
+- ! 'Shard 12: Bad descriptor at 1204: <Bun::Word 756203075772>'
+- ! 'Shard 12: Bad descriptor at 1269: <Bun::Word 732625014171>'
+- ! 'Shard 12: Bad descriptor at 1405: <Bun::Word 320641341500>'
+- ! 'Shard 12: Bad descriptor at 1440: <Bun::Word 732647354471>'
+- ! 'Shard 12: Bad descriptor at 1591: <Bun::Word 302721014467>'
+- ! 'Shard 12: Bad descriptor at 1610: <Bun::Word 500723455162>'
+- ! 'Shard 12: Bad descriptor at 1822: <Bun::Word 202526470524>'
+- ! 'Shard 12: Bad descriptor at 1824: <Bun::Word 330203415773>'
+- ! 'Shard 12: Bad descriptor at 1964: <Bun::Word 646202471042>'
+- ! 'Shard 12: Bad descriptor at 1977: <Bun::Word 302721176320>'
+- ! 'Shard 12: Bad descriptor at 2105: <Bun::Word 734340320000>'
+- ! 'Shard 12: Bad descriptor at 2147: <Bun::Word 744747035364>'
+- ! 'Shard 13: Bad descriptor at 15: <Bun::Word 302721014467>'
+- ! 'Shard 13: Bad descriptor at 32: <Bun::Word 730661304062>'
+- ! 'Shard 13: Bad descriptor at 45: <Bun::Word 330203415773>'
+- ! 'Shard 13: Bad descriptor at 63: <Bun::Word 312201170640>'
+- ! 'Shard 13: Bad descriptor at 70: <Bun::Word 236201170141>'
+- ! 'Shard 13: Bad descriptor at 244: <Bun::Word 500677344066>'
+- ! 'Shard 13: Bad descriptor at 406: <Bun::Word 734203036262>'
+- ! 'Shard 13: Bad descriptor at 435: <Bun::Word 756203074167>'
+- ! 'Shard 13: Bad descriptor at 453: <Bun::Word 750723314566>'
+- ! 'Shard 13: Bad descriptor at 463: <Bun::Word 312647444064>'
+- ! 'Shard 13: Bad descriptor at 495: <Bun::Word 302721016464>'
+- ! 'Shard 13: Bad descriptor at 517: <Bun::Word 500647344061>'
+- ! 'Shard 13: Bad descriptor at 547: <Bun::Word 744203635772>'
+- ! 'Shard 13: Bad descriptor at 614: <Bun::Word 756671014167>'
+- ! 'Shard 13: Bad descriptor at 650: <Bun::Word 732627515064>'
+- ! 'Shard 13: Bad descriptor at 660: <Bun::Word 302721015171>'
+- ! 'Shard 13: Bad descriptor at 687: <Bun::Word 706677454464>'
+- ! 'Shard 13: Bad descriptor at 713: <Bun::Word 750677334172>'
+- ! 'Shard 13: Bad descriptor at 733: <Bun::Word 706677454464>'
+- ! 'Shard 13: Bad descriptor at 748: <Bun::Word 302721016767>'
+- ! 'Shard 13: Bad descriptor at 826: <Bun::Word 244426411444>'
+- ! 'Shard 13: Bad descriptor at 943: <Bun::Word 734673235663>'
+- ! 'Shard 13: Bad descriptor at 992: <Bun::Word 100667234764>'
+- ! 'Shard 13: Bad descriptor at 1007: <Bun::Word 302617134666>'
+- ! 'Shard 13: Bad descriptor at 1077: <Bun::Word 744657235663>'
+- ! 'Shard 13: Bad descriptor at 1107: <Bun::Word 312203415460>'
+- ! 'Shard 13: Bad descriptor at 1183: <Bun::Word 500677345567>'
+- ! 'Shard 13: Bad descriptor at 1234: <Bun::Word 322715015171>'
+- ! 'Shard 13: Bad descriptor at 1301: <Bun::Word 312237464060>'
+- ! 'Shard 13: Bad descriptor at 1317: <Bun::Word 314064000000>'
+- ! 'Shard 13: Bad descriptor at 1321: <Bun::Word 312203574174>'
+- ! 'Shard 13: Bad descriptor at 1347: <Bun::Word 310203374620>'
+- ! 'Shard 13: Bad descriptor at 1379: <Bun::Word 346625341500>'
+- ! 'Shard 13: Bad descriptor at 1385: <Bun::Word 750643235663>'
+- ! 'Shard 13: Bad descriptor at 1430: <Bun::Word 322715011123>'
+- ! 'Shard 13: Bad descriptor at 1470: <Bun::Word 124723364072>'
+- ! 'Shard 13: Bad descriptor at 1480: <Bun::Word 124212224053>'
+- ! 'Shard 13: Bad descriptor at 1490: <Bun::Word 124251245225>'
+- ! 'Shard 13: Bad descriptor at 1500: <Bun::Word 500737375662>'
+- ! 'Shard 13: Bad descriptor at 1539: <Bun::Word 100723214520>'
+- ! 'Shard 13: Bad descriptor at 1569: <Bun::Word 130203454560>'
+- ! 'Shard 13: Bad descriptor at 1586: <Bun::Word 312203356566>'
+- ! 'Shard 13: Bad descriptor at 1621: <Bun::Word 734203235672>'
+- ! 'Shard 13: Bad descriptor at 1627: <Bun::Word 750203135667>'
+- ! 'Shard 13: Bad descriptor at 1764: <Bun::Word 754627444071>'
+- ! 'Shard 13: Bad descriptor at 1797: <Bun::Word 750203515062>'
+- ! 'Shard 13: Bad descriptor at 1972: <Bun::Word 500633376220>'
+- ! 'Shard 13: Bad descriptor at 2014: <Bun::Word 115414504014>'
+- ! 'Shard 13: Bad descriptor at 2018: <Bun::Word 714614604016>'
+- ! 'Shard 13: Bad descriptor at 2021: <Bun::Word 716204014614>'
+- ! 'Shard 14: Bad descriptor at 0: <Bun::Word 012731240617>'
+- ! 'Shard 14: Bad descriptor at 9: <Bun::Word 515731745723>'
+- ! 'Shard 14: Bad descriptor at 94: <Bun::Word 004510055236>'
+- ! 'Shard 14: Bad descriptor at 569: <Bun::Word 101500074522>'
+- ! 'Shard 14: Bad descriptor at 586: <Bun::Word 464024117516>'
+- ! 'Shard 14: Bad descriptor at 616: <Bun::Word 351223703455>'
+- ! 'Shard 14: Bad descriptor at 1589: <Bun::Word 320000001064>'
+- ! 'Shard 14: Bad descriptor at 1910: <Bun::Word 224010111721>'
+- ! 'Shard 14: Bad descriptor at 2098: <Bun::Word 010224505406>'
+- ! 'Shard 15: Bad descriptor at 0: <Bun::Word 515031240633>'
+- ! 'Shard 16: Bad descriptor at 0: <Bun::Word 475710146607>'
+- ! 'Shard 16: Bad descriptor at 6: <Bun::Word 004510055236>'
+- ! 'Shard 16: Bad descriptor at 94: <Bun::Word 004510055236>'
+- ! 'Shard 16: Bad descriptor at 329: <Bun::Word 350410111472>'
+- ! 'Shard 16: Bad descriptor at 349: <Bun::Word 016031357703>'
+- ! 'Shard 16: Bad descriptor at 603: <Bun::Word 475133545375>'
+- ! 'Shard 16: Bad descriptor at 1170: <Bun::Word 630710750200>'
+- ! 'Shard 16: Bad descriptor at 1213: <Bun::Word 240515274465>'
+- ! 'Shard 16: Bad descriptor at 1225: <Bun::Word 701544542020>'
+- ! 'Shard 16: Bad descriptor at 1273: <Bun::Word 505515242023>'
+- ! 'Shard 16: Bad descriptor at 1294: <Bun::Word 363201112031>'
+- ! 'Shard 16: Bad descriptor at 1314: <Bun::Word 240721506775>'
+- ! 'Shard 16: Bad descriptor at 1416: <Bun::Word 741665452035>'
+- ! 'Shard 16: Bad descriptor at 1509: <Bun::Word 357724406170>'
+- ! 'Shard 16: Bad descriptor at 1520: <Bun::Word 150625626250>'
+- ! 'Shard 16: Bad descriptor at 1645: <Bun::Word 765711452035>'
+- ! 'Shard 16: Bad descriptor at 1666: <Bun::Word 350641502610>'
+- ! 'Shard 16: Bad descriptor at 1677: <Bun::Word 557725566231>'
+- ! 'Shard 16: Bad descriptor at 1693: <Bun::Word 240721506473>'
+- ! 'Shard 16: Bad descriptor at 1722: <Bun::Word 157675532610>'
+- ! 'Shard 16: Bad descriptor at 1734: <Bun::Word 165624407233>'
+- ! 'Shard 16: Bad descriptor at 1775: <Bun::Word 557734542031>'
+:extracted: 2012-04-04 21:47:54.283267000 -04:00
+:file_size: 40058
+:file_type: :frozen
+:location: !binary |-
+  dGFwZS5hcjAwNC4wODg4XzE5NzcwMjE0XzA4NTEwNy50eHQ=
+:location_path: !binary |-
+  L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
+  L2NvbXBhY3RfZmlsZXMvZmFzcy9zY3JpcGZyel8xOTc3MDMwMV8xNTQwNTgv
+  MXRoaXJ0ZWUvdGFwZS5hcjAwNC4wODg4XzE5NzcwMjE0XzA4NTEwNy50eHQ=
+:original_location: ar004.0888
+:original_location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+:owner: fass
+:path: fass/scripfrz
+:specification: /scripfrz ==> freeze file containing roff source for fass '77 script
+:updated: 1977-03-01 15:40:58.000000000 -05:00
+:shards:
+- :file_size: 16
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 37
+  :name: fasshole
+  :owner: 
+  :path: fass/scripfrz/fasshole
+  :status: :readable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:44:55.000000000 -05:00
+  :updated: 1977-02-10 16:44:55.000000000 -05:00
+- :file_size: 238
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 776
+  :name: macros
+  :owner: 
+  :path: fass/scripfrz/macros
+  :status: :readable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 08:53:15.000000000 -05:00
+  :updated: 1977-02-11 08:53:15.000000000 -05:00
+- :file_size: 174
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 720
+  :name: evathing
+  :owner: 
+  :path: fass/scripfrz/evathing
+  :status: :readable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:44:55.000000000 -05:00
+  :updated: 1977-02-10 16:44:55.000000000 -05:00
+- :file_size: 71
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 314
+  :name: 1zero
+  :owner: 
+  :path: fass/scripfrz/1zero
+  :status: :readable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:47:52.000000000 -05:00
+  :updated: 1977-02-10 16:47:52.000000000 -05:00
+- :file_size: 299
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 1331
+  :name: 1one
+  :owner: 
+  :path: fass/scripfrz/1one
+  :status: :readable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 09:06:07.000000000 -05:00
+  :updated: 1977-02-18 09:06:07.000000000 -05:00
+- :file_size: 162
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 723
+  :name: 1two
+  :owner: 
+  :path: fass/scripfrz/1two
+  :status: :readable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 08:56:09.000000000 -05:00
+  :updated: 1977-02-11 08:56:09.000000000 -05:00
+- :file_size: 727
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 3228
+  :name: 1three
+  :owner: 
+  :path: fass/scripfrz/1three
+  :status: :readable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 08:56:09.000000000 -05:00
+  :updated: 1977-02-11 08:56:09.000000000 -05:00
+- :file_size: 1860
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 1
+    !binary "CA==": 7
+    !binary "AA==": 114
+    !binary "Ag==": 6
+    !binary "AQ==": 6
+    !binary "BA==": 8
+    !binary "Bw==": 16
+    !binary "GA==": 7
+    !binary "HA==": 4
+    !binary "GQ==": 2
+    !binary "Dw==": 3
+    !binary "FA==": 2
+    !binary "Hg==": 4
+    !binary "Gg==": 1
+    !binary "Ew==": 1
+    !binary "Gw==": 3
+    !binary "Bg==": 7
+    !binary "Dg==": 3
+    !binary "Hw==": 7
+    !binary "Fg==": 7
+    !binary "BQ==": 3
+    !binary "Fw==": 16
+    !binary "Eg==": 13
+    !binary "fw==": 2
+  :character_count: 7489
+  :name: 1four
+  :owner: 
+  :path: fass/scripfrz/1four
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 08:53:15.000000000 -05:00
+  :updated: 1977-02-11 08:53:15.000000000 -05:00
+- :file_size: 1706
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    !binary "CA==": 112
+    !binary "DA==": 25
+    !binary "BQ==": 102
+    !binary "HA==": 30
+    !binary "Gg==": 94
+    !binary "BA==": 206
+    !binary "Ag==": 109
+    !binary "AA==": 1069
+    !binary "Aw==": 39
+    !binary "FQ==": 16
+    !binary "Bg==": 436
+    !binary "Dw==": 103
+    !binary "Fw==": 99
+    !binary "Dg==": 137
+    !binary "Bw==": 311
+    !binary "Hg==": 135
+    !binary "Fg==": 211
+    !binary "Eg==": 94
+    !binary "HQ==": 23
+    !binary "AQ==": 56
+    !binary "Hw==": 71
+    !binary "fw==": 124
+    !binary "FA==": 36
+    !binary "GA==": 3
+    !binary "EA==": 7
+    !binary "Gw==": 2
+    !binary "Ew==": 1
+  :character_count: 8173
+  :name: 1five
+  :owner: 
+  :path: fass/scripfrz/1five
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 08:59:30.000000000 -05:00
+  :updated: 1977-02-11 08:59:30.000000000 -05:00
+- :file_size: 85
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    !binary "CA==": 4
+    !binary "DA==": 3
+    !binary "Bg==": 5
+    !binary "Dw==": 3
+    !binary "EA==": 1
+    !binary "AA==": 36
+    !binary "Fg==": 2
+    !binary "fw==": 4
+    !binary "Dg==": 3
+    !binary "Eg==": 3
+    !binary "BA==": 14
+    !binary "HA==": 5
+    !binary "Aw==": 3
+    !binary "Ag==": 38
+    !binary "Bw==": 2
+    !binary "BQ==": 22
+    !binary "Fw==": 1
+    !binary "Hg==": 5
+    !binary "HQ==": 3
+    !binary "Gg==": 3
+    !binary "FA==": 1
+    !binary "AQ==": 3
+    !binary "Hw==": 3
+    !binary "FQ==": 1
+  :character_count: 356
+  :name: 1six
+  :owner: 
+  :path: fass/scripfrz/1six
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:47:59.000000000 -05:00
+  :updated: 1977-02-10 16:47:59.000000000 -05:00
+- :file_size: 1217
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    !binary "CA==": 59
+    !binary "DA==": 27
+    !binary "Cw==": 1
+    !binary "BQ==": 94
+    !binary "AA==": 655
+    !binary "Ag==": 122
+    !binary "EA==": 11
+    !binary "AQ==": 42
+    !binary "Eg==": 63
+    !binary "Hg==": 75
+    !binary "Bg==": 322
+    !binary "Dw==": 73
+    !binary "Hw==": 39
+    !binary "HQ==": 26
+    !binary "BA==": 147
+    !binary "HA==": 33
+    !binary "FA==": 36
+    !binary "FQ==": 18
+    !binary "Gg==": 63
+    !binary "Dg==": 105
+    !binary "Aw==": 23
+    !binary "Fw==": 59
+    !binary "GA==": 8
+    !binary "Bw==": 232
+    !binary "Ew==": 10
+    !binary "fw==": 77
+    !binary "Fg==": 134
+    !binary "Gw==": 1
+  :character_count: 6045
+  :name: 1seven
+  :owner: 
+  :path: fass/scripfrz/1seven
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 08:59:30.000000000 -05:00
+  :updated: 1977-02-11 08:59:30.000000000 -05:00
+- :file_size: 449
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    !binary "CA==": 8
+    !binary "DA==": 13
+    !binary "FA==": 14
+    !binary "AA==": 92
+    !binary "AQ==": 4
+    !binary "BA==": 49
+    !binary "FQ==": 8
+    !binary "Gg==": 26
+    !binary "BQ==": 29
+    !binary "Ag==": 30
+    !binary "Hg==": 31
+    !binary "Fg==": 28
+    !binary "Eg==": 15
+    !binary "EA==": 2
+    !binary "HA==": 13
+    !binary "Bw==": 46
+    !binary "Bg==": 76
+    !binary "fw==": 23
+    !binary "Gw==": 1
+    !binary "Dw==": 18
+    !binary "Hw==": 14
+    !binary "HQ==": 4
+    !binary "Dg==": 17
+    !binary "Aw==": 7
+    !binary "GA==": 2
+    !binary "Fw==": 12
+  :character_count: 1365
+  :name: 1eight
+  :owner: 
+  :path: fass/scripfrz/1eight
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 09:10:44.000000000 -05:00
+  :updated: 1977-02-11 09:10:44.000000000 -05:00
+- :file_size: 2172
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 2
+    !binary "CA==": 26
+    !binary "DA==": 10
+    !binary "Cw==": 7
+    !binary "Bg==": 275
+    !binary "Dg==": 32
+    !binary "Ag==": 115
+    !binary "Fg==": 86
+    !binary "Dw==": 31
+    !binary "Eg==": 27
+    !binary "BA==": 50
+    !binary "Hg==": 33
+    !binary "Aw==": 17
+    !binary "fw==": 17
+    !binary "Ew==": 46
+    !binary "Gw==": 7
+    !binary "AA==": 1213
+    !binary "Bw==": 55
+    !binary "Fw==": 170
+    !binary "Gg==": 21
+    !binary "AQ==": 17
+    !binary "Hw==": 28
+    !binary "BQ==": 27
+    !binary "HA==": 15
+    !binary "HQ==": 10
+    !binary "FQ==": 76
+    !binary "FA==": 28
+    !binary "EA==": 519
+    !binary "GA==": 10
+    !binary "GQ==": 13
+    !binary "EQ==": 14
+  :character_count: 10550
+  :name: 1nine
+  :owner: 
+  :path: fass/scripfrz/1nine
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 09:10:44.000000000 -05:00
+  :updated: 1977-02-11 09:10:44.000000000 -05:00
+- :file_size: 2373
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 4
+    !binary "CA==": 5
+    !binary "DA==": 8
+    !binary "Cw==": 6
+    !binary "Ew==": 39
+    !binary "EA==": 712
+    !binary "Bg==": 191
+    !binary "AA==": 928
+    !binary "Hw==": 12
+    !binary "GA==": 28
+    !binary "Aw==": 8
+    !binary "Ag==": 60
+    !binary "Fw==": 124
+    !binary "Fg==": 65
+    !binary "EQ==": 11
+    !binary "Bw==": 7
+    !binary "FA==": 25
+    !binary "Dg==": 6
+    !binary "GQ==": 16
+    !binary "Gw==": 2
+    !binary "Eg==": 4
+    !binary "Gg==": 8
+    !binary "BA==": 5
+    !binary "FQ==": 170
+    !binary "Dw==": 1
+    !binary "HA==": 7
+    !binary "BQ==": 1
+    !binary "Hg==": 1
+    !binary "AQ==": 1
+  :character_count: 9871
+  :name: 1ten
+  :owner: 
+  :path: fass/scripfrz/1ten
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 09:42:17.000000000 -05:00
+  :updated: 1977-02-11 09:42:17.000000000 -05:00
+- :file_size: 2248
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 6
+    !binary "CA==": 1
+    !binary "DA==": 7
+    !binary "Cw==": 139
+    !binary "BQ==": 57
+    !binary "FQ==": 161
+    !binary "Aw==": 822
+    !binary "Dw==": 104
+    !binary "fw==": 35
+    !binary "EQ==": 189
+    !binary "Ew==": 106
+    !binary "Hw==": 98
+    !binary "AA==": 1249
+    !binary "Gw==": 130
+    !binary "Fw==": 214
+    !binary "BA==": 129
+    !binary "GQ==": 59
+    !binary "AQ==": 184
+    !binary "Bw==": 343
+    !binary "Ag==": 241
+    !binary "Gg==": 52
+    !binary "Dg==": 57
+    !binary "Fg==": 66
+    !binary "Eg==": 36
+    !binary "HQ==": 38
+    !binary "Bg==": 134
+    !binary "EA==": 7
+    !binary "Hg==": 56
+    !binary "HA==": 12
+    !binary "FA==": 9
+    !binary "GA==": 4
+  :character_count: 10464
+  :name: 1eleven
+  :owner: 
+  :path: fass/scripfrz/1eleven
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-11
+  :file_time: 1977-02-11 09:42:17.000000000 -05:00
+  :updated: 1977-02-11 09:42:17.000000000 -05:00
+- :file_size: 88
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 0
+  :name: 1twelve
+  :owner: 
+  :path: fass/scripfrz/1twelve
+  :status: :unreadable
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:48:21.000000000 -05:00
+  :updated: 1977-02-10 16:48:21.000000000 -05:00
+- :file_size: 1783
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 21
+    !binary "CA==": 102
+    !binary "DA==": 20
+    !binary "Cw==": 144
+    !binary "Hg==": 50
+    !binary "Aw==": 459
+    !binary "Gw==": 126
+    !binary "Bw==": 186
+    !binary "Hw==": 71
+    !binary "GQ==": 91
+    !binary "AQ==": 221
+    !binary "BQ==": 42
+    !binary "Gg==": 94
+    !binary "Ag==": 191
+    !binary "Dg==": 45
+    !binary "Fg==": 94
+    !binary "AA==": 941
+    !binary "Bg==": 120
+    !binary "HQ==": 70
+    !binary "HA==": 31
+    !binary "FQ==": 101
+    !binary "Dw==": 66
+    !binary "Fw==": 119
+    !binary "BA==": 76
+    !binary "EQ==": 95
+    !binary "Ew==": 99
+    !binary "EA==": 127
+    !binary "fw==": 31
+    !binary "Eg==": 45
+    !binary "FA==": 21
+    !binary "GA==": 57
+  :character_count: 8845
+  :name: 1thirtee
+  :owner: 
+  :path: fass/scripfrz/1thirtee
+  :status: :truncated
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 08:51:07.000000000 -05:00
+  :updated: 1977-02-14 08:51:07.000000000 -05:00
+- :file_size: 1482
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 1fourtee
+  :owner: 
+  :path: fass/scripfrz/1fourtee
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 08:51:07.000000000 -05:00
+  :updated: 1977-02-14 08:51:07.000000000 -05:00
+- :file_size: 193
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 1fifteen
+  :owner: 
+  :path: fass/scripfrz/1fifteen
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:48:49.000000000 -05:00
+  :updated: 1977-02-10 16:48:49.000000000 -05:00
+- :file_size: 783
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 1sixteen
+  :owner: 
+  :path: fass/scripfrz/1sixteen
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 08:57:19.000000000 -05:00
+  :updated: 1977-02-14 08:57:19.000000000 -05:00
+- :file_size: 354
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3zero
+  :owner: 
+  :path: fass/scripfrz/3zero
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 08:57:19.000000000 -05:00
+  :updated: 1977-02-14 08:57:19.000000000 -05:00
+- :file_size: 1926
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3one
+  :owner: 
+  :path: fass/scripfrz/3one
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 09:04:23.000000000 -05:00
+  :updated: 1977-02-14 09:04:23.000000000 -05:00
+- :file_size: 1672
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3two
+  :owner: 
+  :path: fass/scripfrz/3two
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 09:04:23.000000000 -05:00
+  :updated: 1977-02-14 09:04:23.000000000 -05:00
+- :file_size: 936
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3three
+  :owner: 
+  :path: fass/scripfrz/3three
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 09:10:14.000000000 -05:00
+  :updated: 1977-02-14 09:10:14.000000000 -05:00
+- :file_size: 1813
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3four
+  :owner: 
+  :path: fass/scripfrz/3four
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 09:10:14.000000000 -05:00
+  :updated: 1977-02-14 09:10:14.000000000 -05:00
+- :file_size: 1211
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3five
+  :owner: 
+  :path: fass/scripfrz/3five
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-14
+  :file_time: 1977-02-14 09:15:55.000000000 -05:00
+  :updated: 1977-02-14 09:15:55.000000000 -05:00
+- :file_size: 1976
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3six
+  :owner: 
+  :path: fass/scripfrz/3six
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 09:06:07.000000000 -05:00
+  :updated: 1977-02-18 09:06:07.000000000 -05:00
+- :file_size: 199
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3seven
+  :owner: 
+  :path: fass/scripfrz/3seven
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 09:06:07.000000000 -05:00
+  :updated: 1977-02-18 09:06:07.000000000 -05:00
+- :file_size: 95
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3eight
+  :owner: 
+  :path: fass/scripfrz/3eight
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:55:54.000000000 -05:00
+  :updated: 1977-02-10 16:55:54.000000000 -05:00
+- :file_size: 103
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3nine
+  :owner: 
+  :path: fass/scripfrz/3nine
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:55:54.000000000 -05:00
+  :updated: 1977-02-10 16:55:54.000000000 -05:00
+- :file_size: 2441
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3ten
+  :owner: 
+  :path: fass/scripfrz/3ten
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 09:38:21.000000000 -05:00
+  :updated: 1977-02-18 09:38:21.000000000 -05:00
+- :file_size: 87
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3eleven
+  :owner: 
+  :path: fass/scripfrz/3eleven
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:56:14.000000000 -05:00
+  :updated: 1977-02-10 16:56:14.000000000 -05:00
+- :file_size: 3189
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3twelve
+  :owner: 
+  :path: fass/scripfrz/3twelve
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 10:18:04.000000000 -05:00
+  :updated: 1977-02-18 10:18:04.000000000 -05:00
+- :file_size: 1707
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3thirtee
+  :owner: 
+  :path: fass/scripfrz/3thirtee
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 10:32:57.000000000 -05:00
+  :updated: 1977-02-18 10:32:57.000000000 -05:00
+- :file_size: 124
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3fourtee
+  :owner: 
+  :path: fass/scripfrz/3fourtee
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-10
+  :file_time: 1977-02-10 16:56:51.000000000 -05:00
+  :updated: 1977-02-10 16:56:51.000000000 -05:00
+- :file_size: 2712
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3fifteen
+  :owner: 
+  :path: fass/scripfrz/3fifteen
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 11:29:00.000000000 -05:00
+  :updated: 1977-02-18 11:29:00.000000000 -05:00
+- :file_size: 360
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3sixteen
+  :owner: 
+  :path: fass/scripfrz/3sixteen
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 11:01:09.000000000 -05:00
+  :updated: 1977-02-18 11:01:09.000000000 -05:00
+- :file_size: 409
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: 3sevente
+  :owner: 
+  :path: fass/scripfrz/3sevente
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-02-18
+  :file_time: 1977-02-18 10:32:57.000000000 -05:00
+  :updated: 1977-02-18 10:32:57.000000000 -05:00
+- :file_size: 108
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: roftemps
+  :owner: 
+  :path: fass/scripfrz/roftemps
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-03-01
+  :file_time: 1977-03-01 15:02:04.000000000 -05:00
+  :updated: 1977-03-01 15:02:04.000000000 -05:00
+- :file_size: 76
+  :file_type: :shard
+  :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: unfreeze
+  :owner: 
+  :path: fass/scripfrz/unfreeze
+  :status: 
+  :location: ar004.0888
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
+  :file_date: 1977-03-01
+  :file_time: 1977-03-01 15:40:58.000000000 -05:00
+  :updated: 1977-03-01 15:40:58.000000000 -05:00
+:file_date: 1977-03-01
+:file_time: 1977-03-01 15:40:58.000000000 -05:00

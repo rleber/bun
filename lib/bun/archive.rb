@@ -8,6 +8,12 @@ require 'date'
 module Bun
   class Archive < Collection
     
+    class << self
+      def enumerator_class
+        Archive::Enumerator
+      end
+    end
+    
     def tapes
       locations
     end
@@ -58,10 +64,6 @@ module Bun
       info = catalog.find {|spec| spec[:location] == location }
       info && info[:date].local_date_to_local_time
     end
-    
-    def open(name, options={}, &blk)
-      Bun::File::Archived.open(expand_path(name), options.merge(:archive=>self, :location=>name), &blk)
-    end
 
     def extract(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
@@ -108,6 +110,18 @@ module Bun
 
     def extract_tapename(path, date)
       EXTRACT_TAPE_PREFIX + extract_path(path, date) + EXTRACT_TAPE_SUFFIX
+    end
+    
+    def items(&blk)
+      to_enum.items(&blk)
+    end
+    
+    def fragments(&blk)
+      to_enum.fragments(&blk)
+    end
+    
+    def folders(&blk)
+      to_enum.folders(&blk)
     end
   end
 end

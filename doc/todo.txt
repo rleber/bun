@@ -1,4 +1,6 @@
 TODO
+Add archived to descriptor
+Add folders (directories plus frozen) and fragments (leaves, but with shards), items (leaves + shards) to collection methods
 Test bun library compact
 - For all files:
   - collapse tape names to the oldest if the content is identical
@@ -15,6 +17,12 @@ Test bun library compact
     - If there's more than one date, collapse the HHMMSS unless the YYMMDD is identical
 Change bun library classify to bun library clean
 Create bun find command (similar to find shell command)
+  --print
+  --exec
+  --command (--command 'foo xxx' => bun foo xxx)
+  --type x
+  --clean
+  --dirty
 Remove shell.log code
 Move all test cases' input files to data/test directory
 Make tests directory-independent (e.g. on listings)
