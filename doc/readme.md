@@ -42,6 +42,12 @@ There is one primary executable src/bun. Assuming that the src directory is in y
 be pretty simple to run the software from the command line, by typing the command "bun". Without any
 parameters, the command should provide you with a helpful summary of all the available subcommands.
 
+_Terminology_
+- This software refers to a collection of undecoded Honeywell files as an "archive". Use the "bun archive" commands
+  to process these files
+- Once files have been extracted, this software refers to that collection as a "library". The "bun library"
+  commands are used to process these files.
+
 _File formats_
 
 These scripts were written to decipher old archive tapes from the Honeywell machine at the University of

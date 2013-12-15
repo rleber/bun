@@ -5,6 +5,7 @@ require 'yaml'
 require 'hashie/mash'
 require 'lib/bun/file'
 require 'lib/bun/collection_enumerator'
+require 'lib/bun/configuration'
 
 module Bun
   class Collection
@@ -98,13 +99,12 @@ module Bun
     end
     
     def read_config_file(config_file)
-      content = ::Bun.readfile(config_file, :encoding=>'us-ascii')
-      config = YAML.load(content)
-      config['repository'] ||= ENV['BUN_REPOSITORY']
-      config
+      @config = Configuration.new(:location=>config_file)
+      @config.read
     end
     
     def default_config
+      @default_config = Configuration.new(:location=>default_config_file)
       read_config_file(default_config_file)
     end
     cache :default_config
@@ -118,7 +118,7 @@ module Bun
     cache :config
     
     def expanded_config(name)
-      expand_path(config[name.to_s])
+      @config.expanded_setting(name)
     end
     
     def index_directory

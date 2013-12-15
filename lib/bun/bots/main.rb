@@ -9,6 +9,7 @@ require 'lib/bun/archive'
 require 'lib/bun/library'
 require 'lib/bun/file'
 require 'lib/bun/bots/archivist'
+require 'lib/bun/bots/config'
 require 'lib/bun/bots/librarian'
 require 'lib/bun/bots/freezer'
 require 'lib/bun/bots/sandbox'
@@ -21,7 +22,8 @@ module Bun
   module Bot
     class Main < Base
       load_tasks
-    
+      
+      register Bun::Bot::Config,    :config,  "config",  "Manage configuration"
       register Bun::Bot::Freezer,   :freezer, "freezer", "Manage frozen Honeywell files"
       register Bun::Bot::Archivist, :archive, "archive", "Manage archives of Honeywell files"
       register Bun::Bot::Librarian, :library, "library", "Manage libraries of extracted Honeywell files"

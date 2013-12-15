@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+# Classes to define Honeywell file formats
+
 require 'lib/bun/word'
 require 'lib/bun/file/descriptor'
 require 'lib/bun/file/archived_descriptor'
