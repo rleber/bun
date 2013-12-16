@@ -89,11 +89,23 @@ _Process_
 2. Use "bun archive fetch" to fetch the repository into the archive.
 3. Set the "at_path" configuration setting to point to the location of the downloaded tape files.
 4. Set the "catalog_path" configuration setting to point to the location of the catalog file.
-5. Use "bun ls" to list tapes, and "bun catalog check" to identify tapes not matching the catalog.
+5. You can use "bun ls" to list tapes, "bun catalog ls" to list the catalog, and "bun catalog check" to
+   identify tapes not matching the catalog.
 6. If desired, use "bun archive index build" to build the index file (although "bun fetch") may have 
    already done this.
 7. Use "bun archive index set_dates" to set file modification dates to match the modification dates from
    the catalog.
-8. Use "bun archive text_status" to check the quality of the archived text files.
-9. Optionally, use "bun archive extract" to extract files from the archive and place them in a library.
+8. Optionally, use "bun archive text_status" to check the quality of the archived text files.
+9. There are a variety of commands you can use to work on individual files:
+   - "bun cat"      Copy a file to STDOUT
+   - "bun mv"       Move a file from the archive
+   - "bun cp"       Copy a file from the archive
+   - "bun describe" Describe a file in the archive
+   - "bun freezer"  A collection of commands for frozen file archives
+   - "bun mkdir"    Make a directory in the archive
+   - "bun scrub"    Clean up tabs etc.
+   - "bun check"    Check if a file is clean
+   - "bun rm"       Remove a file from the archive
+10. Optionally, use "bun archive extract" to extract files from the archive and place them in a library.
+11. Use the "bun library" commands to reorganize the extracted files
 
