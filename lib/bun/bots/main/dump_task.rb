@@ -7,6 +7,7 @@ option "escape",    :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintabl
 option "frozen",    :aliases=>'-f', :type=>'boolean', :desc=>'Display characters in frozen format (i.e. 5 per word)'
 option "lines",     :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
 option "offset",    :aliases=>'-o', :type=>'string',  :desc=>'Start at word n (zero-based index; octal/hex values allowed)'
+option "spaces",    :aliases=>'-s', :type=>'boolean', :desc=>'Display spaces unchanged'
 option "unlimited", :aliases=>'-u', :type=>'boolean', :desc=>'Ignore the file size limit'
 # TODO Deblock option
 def dump(file_name)

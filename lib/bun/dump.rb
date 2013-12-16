@@ -49,6 +49,7 @@ module Bun
           chars = chars.inspect[1..-2].scan(/\\\d{3}|\\[^\d\\]|\\\\|[^\\]/).map{|s| (s+'   ')[0,4]}.join
         else
           chars = chars.gsub(/[[:cntrl:]]/, '~')
+          chars = chars.gsub(/_/, '~').gsub(/\s/,'_') unless options[:spaces]
           chars = chars.scan(/.{1,#{character_block_size}}/).join(' ')
         end
         address = '0' + ("%0#{address_width}o"%(i + display_offset))
