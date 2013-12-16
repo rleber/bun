@@ -2,8 +2,8 @@
 # -*- encoding: us-ascii -*-
 
 SHARDS_ACROSS = 5
-desc "describe LOCATION", "Display description information for a file"
-option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+desc "describe HOARD", "Display description information for a hoard"
+option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
 option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on at index; always build information from source file"
 def describe(file_name)
   archive = Archive.new(options)
@@ -15,8 +15,8 @@ def describe(file_name)
   catalog_time_display = catalog_time ? catalog_time.strftime('%Y/%m/%d') : "n/a"
   
   # TODO Refactor using Array#justify_rows
-  puts "Location:      #{descriptor.location}"
-  puts "Path:          #{descriptor.location_path}"
+  puts "Hoard:      #{descriptor.hoard}"
+  puts "Path:          #{descriptor.hoard_path}"
   if type == :frozen
     puts "Directory:     #{descriptor.path}"
   else

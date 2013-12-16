@@ -59,7 +59,7 @@ module Bun
     
         def frozen?(file_name)
           raise "File #{file_name} doesn't exist" unless File.exists?(file_name)
-          new(:location_path=>file_name).frozen?
+          new(:hoard_path=>file_name).frozen?
         end
     
         def create(options={}, &blk)
@@ -93,7 +93,7 @@ module Bun
         end
 
         def open(fname, options={}, &blk)
-          create(options.merge(:location_path=>fname), &blk)
+          create(options.merge(:hoard_path=>fname), &blk)
         end
       
         def read(fname, size=nil)
@@ -114,8 +114,8 @@ module Bun
         end
     
         def get_words(n, options)
-          if options[:location_path]
-            Bun::Words.read(options[:location_path], :n=>n)
+          if options[:hoard_path]
+            Bun::Words.read(options[:hoard_path], :n=>n)
           elsif options[:data]
             if n.nil?
               decode(options[:data])
@@ -242,14 +242,14 @@ module Bun
       def size(options={})
         # TODO Should :eof be the default? (Is there ever a meaningful eof marker in frozen files?)
         if options[:eof]
-          eof_location = nil
+          eof_hoard = nil
           words.each_with_index do |word, index|
             if word.value == self.class.eof_marker
-              eof_location = index
+              eof_hoard = index
               break
             end
           end
-          eof_location || size
+          eof_hoard || size
         elsif options[:all]
           @words.size
         else
@@ -263,21 +263,21 @@ module Bun
         res
       end
 
-      def date(location)
-        date_string = content[location,2].characters.join
+      def date(hoard)
+        date_string = content[hoard,2].characters.join
         self.class.date(date_string)
       end
   
-      def time_of_day(location)
-        self.class.time_of_day content.at(location)
+      def time_of_day(hoard)
+        self.class.time_of_day content.at(hoard)
       end
   
-      def time(date_location, time_location)
-        self.class.time date(date_location), time_of_day(time_location)
+      def time(date_hoard, time_hoard)
+        self.class.time date(date_hoard), time_of_day(time_hoard)
       end
   
       def catalog_time
-        archive && archive.catalog_time(location)
+        archive && archive.catalog_time(hoard)
       end
 
       def characters_per_word

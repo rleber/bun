@@ -6,7 +6,7 @@ module Bun
     class Extracted < Bun::File
       class << self
         def open(fname, options, &blk)
-          f = send(:new, options.merge(:location_path=>fname))
+          f = send(:new, options.merge(:hoard_path=>fname))
           if options[:library]
             descriptor_hash = options[:library].descriptor(fname, :build=>false)
             f.descriptor = File::Descriptor::Extracted.from_hash(self, descriptor_hash)

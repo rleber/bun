@@ -19,10 +19,10 @@ module Bun
           :extracted,
           :file_size,
           :file_type,
-          :location,
-          :location_path,
-          :original_location,
-          :original_location_path,
+          :hoard,
+          :hoard_path,
+          :original_hoard,
+          :original_hoard_path,
           :owner,
           :path,
           :specification,
@@ -74,10 +74,10 @@ module Bun
           to_dir = File.dirname(to)
           to_archive = Archive.new(:at=>to_dir)
           descriptor = self.to_hash
-          descriptor[:original_location] = descriptor[:location] unless descriptor[:original_location]
-          descriptor[:original_location_path] = descriptor[:location_path] unless descriptor[:original_location_path]
-          descriptor[:location] = File.basename(to)
-          descriptor[:location_path] = to
+          descriptor[:original_hoard] = descriptor[:hoard] unless descriptor[:original_hoard]
+          descriptor[:original_hoard_path] = descriptor[:hoard_path] unless descriptor[:original_hoard_path]
+          descriptor[:hoard] = File.basename(to)
+          descriptor[:hoard_path] = to
           descriptor.merge! new_settings
           to_archive.update_index(:descriptor=>descriptor)
         end

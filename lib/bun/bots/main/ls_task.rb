@@ -9,12 +9,12 @@ no_tasks do
   end
 end
 
-SORT_VALUES = %w{location file type updated description size}
+SORT_VALUES = %w{hoard file type updated description size}
 SORT_FIELDS = {
   :description => :description,
   :file        => :path,
   :size        => :file_size,
-  :location    => :location,
+  :hoard       => :hoard,
   :type        => :file_type,
   :updated     => :updated,
 }
@@ -30,10 +30,10 @@ FIELD_HEADINGS = {
   :description   => 'Description',
   :file_size     => 'Size',
   :file_type     => 'Type',
-  :path          => 'File/Directory',
+  :path          => 'File',
   :shard_count   => 'Shards',
-  :location      => 'Location',
-  :location_path => 'Location',
+  :hoard         => 'Hoard',
+  :hoard_path    => 'Hoard',
   :updated       => 'Updated',
 }
 DEFAULT_VALUES = {
@@ -43,17 +43,17 @@ DEFAULT_VALUES = {
 }
 
 desc "ls", "Display an index of archived files"
-option 'at',        :aliases=>'-a', :type=>'string',                               :desc=>'Archive location'
+option 'at',        :aliases=>'-a', :type=>'string',                               :desc=>'Archive hoard'
 option "build",     :aliases=>"-b", :type=>'boolean',                              :desc=>"Don't rely on at index; always build information from source file"
 option "descr",     :aliases=>"-d", :type=>'boolean',                              :desc=>"Include description"
 option "files",     :aliases=>"-f", :type=>'string',  :default=>'',                :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "frozen",    :aliases=>"-r", :type=>'boolean',                              :desc=>"Recursively include contents of freeze files"
 option "long",      :aliases=>"-l", :type=>'boolean',                              :desc=>"Display long format (incl. text vs. frozen)"
-option 'path',      :aliases=>'-p', :type=>'boolean',                              :desc=>"Display paths for tape files"
+option 'path',      :aliases=>'-p', :type=>'boolean',                              :desc=>"Display paths for hoard files"
 option "sort",      :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order(s) for files (#{SORT_VALUES.join(', ')})"
-option "locations", :aliases=>"-L", :type=>'string',  :default=>'',                :desc=>"Show only locations that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
+option "hoards",    :aliases=>"-h", :type=>'string',  :default=>'',                :desc=>"Show only hoards that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "type",      :aliases=>"-T", :type=>'string',  :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
-# TODO Refactor location/file patterns; use location::file::shard syntax
+# TODO Refactor hoard/file patterns; use hoard::file::shard syntax
 # TODO Refactor code into shorter submethods
 def ls
   type_pattern = case options[:type].downcase
@@ -70,13 +70,13 @@ def ls
     end
   file_pattern = get_regexp(options[:files])
   stop "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
-  location_pattern = get_regexp(options[:locations])
-  stop "!Invalid --locations pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless location_pattern
+  hoard_pattern = get_regexp(options[:hoards])
+  stop "!Invalid --hoards pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless hoard_pattern
 
-  fields =  options[:path] ? [:location_path] : [:location]
+  fields =  options[:path] ? [:hoard_path] : [:hoard]
+  fields += [:path]
   fields += [:file_type] if options[:type]
   fields += [:file_type, :updated, :file_size] if options[:long]
-  fields += [:path]
   fields += [:shard_count] if options[:long]
   fields += [:description] if options[:descr]
   fields = fields.uniq
@@ -90,9 +90,9 @@ def ls
   else
     sort_fields = []
   end
-  sort_fields += [:location, :path]
+  sort_fields += [:hoard, :path]
   if options[:path]
-    sort_fields = sort_fields.map {|f| f==:location ? :location_path : f }
+    sort_fields = sort_fields.map {|f| f==:hoard ? :hoard_path : f }
   end
   sort_fields.each do |sort_field|
     stop "!Can't sort by #{sort_field}. It isn't included in this format" unless fields.include?(sort_field)
@@ -100,12 +100,12 @@ def ls
 
   # Retrieve file information
   archive = Archive.new(options)
-  ix = archive.locations
+  ix = archive.hoards
   # TODO Refactor using archive.select
   file_info = []
-  ix = ix.select{|location| location =~ location_pattern}
-  files = ix.each_with_index do |location, i|
-    file_descriptor = archive.descriptor(location, :build=>options[:build])
+  ix = ix.select{|hoard| hoard =~ hoard_pattern}
+  files = ix.each_with_index do |hoard, i|
+    file_descriptor = archive.descriptor(hoard, :build=>options[:build])
     file_row = fields.inject({}) do |hsh, f|
       # TODO This is a little smelly
       value = if f==:shard_count

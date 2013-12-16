@@ -71,7 +71,7 @@ end
 
 IGNORE_LINKS = ["Name", "Last modified", "Size", "Description", "Parent Directory"]
 desc "fetch [URL]", "Fetch files from an online repository"
-option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Do a dry run only; show what would be fetched, but don't save it"
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
 long_desc <<-EOT

@@ -14,22 +14,18 @@ module Bun
       end
     end
     
-    def tapes
-      locations
-    end
-    
     # TODO Is there a more descriptive name for this?
     def contents(&blk)
-      locations = self.locations
+      hoards = self.hoards
       contents = []
-      each do |location|
-        file = open(location)
+      each do |hoard|
+        file = open(hoard)
         if file.file_type == :frozen
           file.shard_count.times do |i|
-            contents << "#{location}::#{file.shard_name(i)}"
+            contents << "#{hoard}::#{file.shard_name(i)}"
           end
         else
-          contents << location
+          contents << hoard
         end
       end
       if block_given?
@@ -54,52 +50,52 @@ module Bun
         rescue
           raise RuntimeError, "Bad date #{words[1].inspect} in index file at #{line.inspect}"
         end
-        {:location=>words[0], :date=>date, :file=>words[2]}
+        {:hoard=>words[0], :date=>date, :file=>words[2]}
       end
       specs
     end
     cache :catalog
     
-    def catalog_time(location)
-      info = catalog.find {|spec| spec[:location] == location }
+    def catalog_time(hoard)
+      info = catalog.find {|spec| spec[:hoard] == hoard }
       info && info[:date].local_date_to_local_time
     end
 
     def extract(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
       FileUtils.rm_rf to_path unless options[:dryrun]
-      locations.each do |location|
-        file = open(location)
+      hoards.each do |hoard|
+        file = open(hoard)
         case file.file_type
         when :frozen
           file.shard_count.times do |i|
             descr = file.shard_descriptor(i)
             shard_name = descr.name
-            warn "thaw #{location}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
+            warn "thaw #{hoard}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
             unless options[:dryrun]
-              f = File.join(to_path, extract_path(file.path, file.updated), shard_name, extract_tapename(location, descr.updated))
+              f = File.join(to_path, extract_path(file.path, file.updated), shard_name, extract_hoardname(hoard, descr.updated))
               dir = File.dirname(f)
               FileUtils.mkdir_p dir
               file.extract shard_name, f
             end
           end
         when :text
-          warn "unpack #{location}" if options[:dryrun] || !options[:quiet]
+          warn "unpack #{hoard}" if options[:dryrun] || !options[:quiet]
           unless options[:dryrun]
-            f = File.join(to_path, file.path, extract_tapename(location, file.updated))
+            f = File.join(to_path, file.path, extract_hoardname(hoard, file.updated))
             dir = File.dirname(f)
             FileUtils.mkdir_p dir
             file.extract f
           end
         else
-          warn "skipping #{location}: unknown type (#{file.file_type})" if options[:dryrun] || !options[:quiet]
+          warn "skipping #{hoard}: unknown type (#{file.file_type})" if options[:dryrun] || !options[:quiet]
         end
       end
     end
     
     EXTRACT_DATE_FORMAT = "%Y%m%d_%H%M%S"
-    EXTRACT_TAPE_PREFIX = 'tape.'
-    EXTRACT_TAPE_SUFFIX = '.txt'
+    EXTRACT_HOARD_PREFIX = 'hoard.'
+    EXTRACT_HOARD_SUFFIX = '.txt'
 
     def extract_path(path, date)
       return path unless date
@@ -108,8 +104,8 @@ module Bun
       path + '_' + date_to_s
     end
 
-    def extract_tapename(path, date)
-      EXTRACT_TAPE_PREFIX + extract_path(path, date) + EXTRACT_TAPE_SUFFIX
+    def extract_hoardname(path, date)
+      EXTRACT_HOARD_PREFIX + extract_path(path, date) + EXTRACT_HOARD_SUFFIX
     end
     
     def items(&blk)

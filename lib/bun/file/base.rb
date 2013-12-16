@@ -53,17 +53,17 @@ module Bun
       end
     end
     attr_reader :archive
-    attr_reader :location_path
+    attr_reader :hoard_path
 
     attr_accessor :descriptor
     attr_accessor :errors
     attr_accessor :extracted
-    attr_accessor :original_location
-    attr_accessor :original_location_path
+    attr_accessor :original_hoard
+    attr_accessor :original_hoard_path
 
     def initialize(options={}, &blk)
-      @location = options[:location]
-      @location_path = options[:location_path]
+      @hoard = options[:hoard]
+      @hoard_path = options[:hoard_path]
       @size = options[:size]
       @archive = options[:archive]
       clear_errors
@@ -81,8 +81,8 @@ module Bun
     end
   
     def open_time
-      return nil unless location_path && File.exists?(location_path)
-      File.atime(location_path)
+      return nil unless hoard_path && File.exists?(hoard_path)
+      File.atime(hoard_path)
     end
   
     def close
@@ -90,7 +90,7 @@ module Bun
     end
   
     def read
-      self.class.read(location_path)
+      self.class.read(hoard_path)
     end
   
     def update_index
@@ -98,8 +98,8 @@ module Bun
       @archive.update_index(:file=>self)
     end
 
-    def location
-      @location ||= File.basename(location_path)
+    def hoard
+      @hoard ||= File.basename(hoard_path)
     end
   
     def path

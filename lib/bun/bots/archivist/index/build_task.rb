@@ -2,7 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 desc "build", "Build file index for archive"
-option 'at',        :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'at',        :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
 option 'quiet',     :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
 option 'recursive', :aliases=>'-r', :type=>'boolean', :desc=>'Recursively build indexes in sub-directories'
 def build

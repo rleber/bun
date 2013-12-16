@@ -56,11 +56,14 @@ subcommands is "bun archive index". "bun archive help index" lists help informat
 The "bun test" command will run a set of software checks on this software.
 
 _Terminology_
-- We refer to an online collection of Honeywell encoded files as a "repository". The repository is a set of 
-  files, with one file in the repository for each archive "tape" created from the orignial files. Use the 
-  "bun fetch" command to download a repository to the local network.
-- Once the repository has been downloaded to the local network, we call the collection of undecoded Honeywell
-  files an "archive". Each such archive contains one file for each tape from the repository. Use the 
+- We refer to a Honeywell backup store of files as a "hoard". Typically, this would be the digital image of
+  a Honeywell backup tape, stored as a binary file somewhere. Each tape might contain several files, and
+  the files might be in several formats, including text files, executable files, listing files (printouts),
+  "frozen" archives of files (akin to today's tar archives), or text files compressed using Huffman encoding.
+- We expect to start from a collection of hoards: we call an online collection of hoards a "repository". Use
+  the "bun fetch" command to download a repository to the local network.
+- Once the repository has been downloaded to the local network, we call the collection of hoards an "archive".
+  Each such archive contains one file for each tape from the repository. Use the 
   "bun archive" commands to process these files. The archive also has an index, which is processed using the
   "bun archive index" commands.
 - The software understands the concept of a "catalog" within the repository or archive. This is a text file
@@ -87,10 +90,10 @@ _Process_
 1. Set up configuration. The "bun config" commands are useful for this. You may also want to define the 
    "BUN_REPOSITORY" environment variable to point to the URL of the archived files.
 2. Use "bun archive fetch" to fetch the repository into the archive.
-3. Set the "at_path" configuration setting to point to the location of the downloaded tape files.
+3. Set the "at_path" configuration setting to point to the location of the downloaded archive.
 4. Set the "catalog_path" configuration setting to point to the location of the catalog file.
-5. You can use "bun ls" to list tapes, "bun catalog ls" to list the catalog, and "bun catalog check" to
-   identify tapes not matching the catalog.
+5. You can use "bun ls" to list hoards, "bun catalog ls" to list the catalog, and "bun catalog check" to
+   identify hoards not matching the catalog.
 6. If desired, use "bun archive index build" to build the index file (although "bun fetch") may have 
    already done this.
 7. Use "bun archive index set_dates" to set file modification dates to match the modification dates from

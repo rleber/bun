@@ -5,7 +5,7 @@ require 'pp'
 require 'lib/array'
 
 desc "compare_dates", "Compare update dates for matching files"
-option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
 option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on at index; always build information from source file"
 option 'type',    :aliases=>'-t', :type=>'string',  :desc=>'Select file type (or all)', :default=>'all'
 def compare_dates
@@ -16,13 +16,13 @@ def compare_dates
                else
                  options[:type].split(',').map(&:to_sym)
                end
-  archive.each do |location|
-    descriptor = archive.descriptor(location, :build=>options[:build])
+  archive.each do |hoard|
+    descriptor = archive.descriptor(hoard, :build=>options[:build])
     next unless file_types.include?(descriptor.file_type)
     path = descriptor.path
     file_update_dates[path] ||= []
     file_update_dates[path] << {
-      location: location, 
+      hoard: hoard, 
       date_string: (descriptor.updated ? descriptor.updated.strftime('%Y/%m/%d %H:%M:%S') : 'n/a').sub(/\s+00:00:00$/,''),
       descriptor: descriptor
     }
@@ -32,7 +32,7 @@ def compare_dates
     puts path + ':'
     columns = []
     file_update_dates[path].sort_by{|d| d[:date_string]}.each do |entry|
-      new_column = [entry[:location], entry[:date_string]]
+      new_column = [entry[:hoard], entry[:date_string]]
       new_column += [''] + entry[:descriptor].shards.map{|s| s.name}.sort if entry[:descriptor].file_type == :frozen
       columns << new_column
     end

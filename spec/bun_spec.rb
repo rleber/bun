@@ -163,9 +163,9 @@ describe Bun::Bot do
   
   describe "ls" do
     include_examples "command", "ls", "ls", "ls"
-    include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -L ar003.0698", "ls_ldrL_ar003.0698"
-    include_examples "command", "ls -ldr with frozen file (ar145.2699)", "ls -ldr -L ar145.2699", "ls_ldrL_ar145.2699"
-    include_examples "command", "ls -ldrb with frozen file (ar145.2699)", "ls -ldrb -L ar145.2699", "ls_ldrbL_ar145.2699"
+    include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -h ar003.0698", "ls_ldrL_ar003.0698"
+    include_examples "command", "ls -ldr with frozen file (ar145.2699)", "ls -ldr -h ar145.2699", "ls_ldrL_ar145.2699"
+    include_examples "command", "ls -ldrb with frozen file (ar145.2699)", "ls -ldrb -h ar145.2699", "ls_ldrbL_ar145.2699"
   end
   describe "readme" do
     include_examples "command", "readme", "readme", "doc/readme.md"
@@ -671,7 +671,7 @@ describe Bun::Bot do
       exec("cp -r data/test/archive/extract_source_init data/test/archive/extract_source")
       exec("bun archive extract --at data/test/archive/extract_source data/test/archive/extract_library 2>output/archive_extract_stderr.txt >output/archive_extract_stdout.txt")
     end
-    it "should create a tapes directory" do
+    it "should create a hoards directory" do
       file_should_exist "data/test/archive/extract_library"
     end
     it "should write nothing on stdout" do
@@ -686,18 +686,18 @@ describe Bun::Bot do
     end
     describe "the index" do
       it "should exist" do
-        file_should_exist "data/test/archive/extract_library/fass/1983/programme/actors/.bun_index/tape.ar083.0698_19830128.txt.descriptor.yml"
+        file_should_exist "data/test/archive/extract_library/fass/1983/programme/actors/.bun_index/hoard.ar083.0698_19830128.txt.descriptor.yml"
       end
       describe "contents" do
         before :each do
           @original_content = YAML.load(Bun.readfile("data/test/archive/extract_source/.bun_index/ar083.0698.descriptor.yml", :encoding=>'us-ascii'))
-          @content = YAML.load(Bun.readfile("data/test/archive/extract_library/fass/1983/programme/actors/.bun_index/tape.ar083.0698_19830128.txt.descriptor.yml", :encoding=>'us-ascii'))
+          @content = YAML.load(Bun.readfile("data/test/archive/extract_library/fass/1983/programme/actors/.bun_index/hoard.ar083.0698_19830128.txt.descriptor.yml", :encoding=>'us-ascii'))
         end
         it "should change the location" do
-          @content[:location].should == 'tape.ar083.0698_19830128.txt'
+          @content[:location].should == 'hoard.ar083.0698_19830128.txt'
         end
         it "should change the location_path" do
-          @content[:location_path].should == %{#{exec("pwd").chomp}/data/test/archive/extract_library/fass/1983/programme/actors/tape.ar083.0698_19830128.txt}
+          @content[:location_path].should == %{#{exec("pwd").chomp}/data/test/archive/extract_library/fass/1983/programme/actors/hoard.ar083.0698_19830128.txt}
         end
         it "should record the original location" do
           @content[:original_location].should == 'ar083.0698'

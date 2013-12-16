@@ -2,18 +2,18 @@
 # -*- encoding: us-ascii -*-
 
 desc "compare_offsets", "Compare file offsets vs. content of file preamble"
-option 'at', :aliases=>'-a', :type=>'string', :desc=>'Archive location'
+option 'at', :aliases=>'-a', :type=>'string', :desc=>'Archive path'
 def compare_offsets
   archive = Archive.new(:at=>options[:at])
-  table = [%w{Location Word1 Calculated Flag}]
+  table = [%w{Hoard Word1 Calculated Flag}]
   flagged = false
-  archive.each do |location|
-    file = archive.open(location)
+  archive.each do |hoard|
+    file = archive.open(hoard)
     counts = [
       file.words.at(1).half_words.at(1).to_i, 
       file.content_offset
     ]
-    row = [location] + counts.map{|c| '%3d' % c } 
+    row = [hoard] + counts.map{|c| '%3d' % c } 
     if counts.min != counts.max
       flagged = true
       row << '*'

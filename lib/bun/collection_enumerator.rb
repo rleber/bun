@@ -12,8 +12,8 @@ module Bun
           super(*args, &blk)
         else
           super(*args) do |yielder|
-            @collection.locations.each do |location| 
-              yielder << location
+            @collection.hoards.each do |hoard| 
+              yielder << hoard
             end
           end
         end

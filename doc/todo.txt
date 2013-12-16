@@ -1,10 +1,11 @@
 TODO
 Add archived to descriptor
 Add folders (directories plus frozen) and fragments (leaves, but with shards), items (leaves + shards) to collection methods
+Find better term for tapes/locations
 Test bun library compact
 - For all files:
-  - collapse tape names to the oldest if the content is identical
-  - collapse tape name entirely if there's only one version
+  - collapse hoard names to the oldest if the content is identical
+  - collapse hoard name entirely if there's only one version
 - For text files:
   - Collapse dates to the oldest, if the content is identical
   - If there's only one date, collapse the date altogether (?)
@@ -30,7 +31,7 @@ Separate file.open from file.load/read
 Refactor other commands into the appropriate classes
 Set atime only when we actually read a file (not just the preamble)
 Integrate bun archive text_status into bun ls
-Change file patterns to tape::file([shard])? Qu: how to specify whether it must be a shard?
+Change file patterns to hoard::file([shard])? Qu: how to specify whether it must be a shard?
 Change shard 0 to mean the first shard; use shard '\\0', (or shard "0") for a shard named '0'
 Allow globs in file patterns
 Refactor Bots to use Actors (or put methods (e.g. thaw, dump) into the data objects)
@@ -66,3 +67,7 @@ Revise installation readme
 Upload to Github
 Why does bun ls take so long?
 Rename Bot modules, e.g. Archive bot is in "archive_bot.rb" and directory "archive_bot"
+Why the distinction between repositories and archives? Why not just use URLs, and let the tell the difference, and
+have an "archive copy" command to copy from one to the other?
+Create stream-based versions of the major conversion commands (e.g. thaw, unpack). This would allow the use of binary
+editors, etc. to try to recover files that are corrupted.

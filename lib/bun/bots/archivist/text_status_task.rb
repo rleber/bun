@@ -3,7 +3,7 @@
 
 # TODO Run this; check if there's a way to discern listing files automagically
 desc "text_status", "Show status of text files"
-option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
 option 'build',   :aliases=>'-b', :type=>'boolean', :desc=>'Rebuild the text statistics, even if they\'re already set'
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
 long_desc <<-END
@@ -16,15 +16,15 @@ def text_status
   archive = Archive.new(:at=>options[:at])
   directory = archive.at
   table = []
-  archive.each do |location|
-    $stderr.puts location unless options[:quiet]
-    descr = archive.descriptor(location)
+  archive.each do |hoard|
+    $stderr.puts hoard unless options[:quiet]
+    descr = archive.descriptor(hoard)
     # TODO Apply this to frozen files, too
     case descr.file_type
     when :text
       if options[:build] || descr.control_characters.nil?
-        text = archive.open(location) {|f| f.text rescue nil }
-        descr = archive.descriptor(location)
+        text = archive.open(hoard) {|f| f.text rescue nil }
+        descr = archive.descriptor(hoard)
       end
       if descr.good_blocks > 0
         tabs = descr.control_characters["\t"] || 0
@@ -34,14 +34,14 @@ def text_status
         bad_character_set = (descr.control_characters.keys - ["\t","\b","\f","\v"]).sort.join
         control_characters = descr.control_characters.reject{|ch,ct| ["\t","\b","\f","\v"].include?(ch) }.map{|ch,ct| ct}.inject{|sum,ct| sum+ct } || 0
         status = descr.status.capitalize
-        table << [location, status, descr.blocks, descr.good_blocks, descr.character_count, tabs, backspaces, vertical_tabs, form_feeds, control_characters, bad_character_set.inspect[1...-1]]
+        table << [hoard, status, descr.blocks, descr.good_blocks, descr.character_count, tabs, backspaces, vertical_tabs, form_feeds, control_characters, bad_character_set.inspect[1...-1]]
       else
-        table << [location, 'Unreadable', descr.blocks, 0]
+        table << [hoard, 'Unreadable', descr.blocks, 0]
       end
     when :frozen
-      archive.open(location) do |frozen_file|
+      archive.open(hoard) do |frozen_file|
         frozen_file.shard_count.times do |i|
-          $stderr.puts "#{location}[#{i}]" unless options[:quiet]
+          $stderr.puts "#{hoard}[#{i}]" unless options[:quiet]
           descr = frozen_file.shard_descriptor(i)
           if options[:build] || descr.control_characters.nil?
             text = frozen_file.shards.at(i)
@@ -54,7 +54,7 @@ def text_status
           bad_character_set = (descr.control_characters.keys - ["\t","\b","\f","\v"]).sort.join
           control_characters = descr.control_characters.reject{|ch,ct| ["\t","\b","\f","\v"].include?(ch) }.map{|ch,ct| ct}.inject{|sum,ct| sum+ct } || 0
           status = descr.status.to_s.capitalize
-          table << ["#{location}[#{i}]", status, nil, nil, descr.character_count, tabs, backspaces, vertical_tabs, form_feeds, control_characters, bad_character_set.inspect[1...-1]]
+          table << ["#{hoard}[#{i}]", status, nil, nil, descr.character_count, tabs, backspaces, vertical_tabs, form_feeds, control_characters, bad_character_set.inspect[1...-1]]
         end
       end
     end
@@ -62,7 +62,7 @@ def text_status
   if table.size == 0
     puts "No files unpacked"
   else
-    table.unshift %w{Location Status Blocks Good\ Blocks Chars Tabs Backspaces Vertical\ Tabs Form\ Feeds Invalid\ Characters List}
+    table.unshift %w{Hoard Status Blocks Good\ Blocks Chars Tabs Backspaces Vertical\ Tabs Form\ Feeds Invalid\ Characters List}
     puts table.justify_rows.map{|row| row.join('  ')}.join("\n")
   end
 end

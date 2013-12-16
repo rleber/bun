@@ -31,15 +31,15 @@ module Bun
       @update_indexes = options.has_key?(:update_indexes) ? options[:update_indexes] : true
     end
     
-    def locations
+    def hoards
       Dir.entries(at).reject{|f| f=~/^\./}
     end
 
     def open(name, options={}, &blk)
       if File.basename(name) =~ /^ar\d{3}.\d{4}$/
-        Bun::File::Archived.open(expand_path(name), options.merge(:archive=>self, :location=>name), &blk)
+        Bun::File::Archived.open(expand_path(name), options.merge(:archive=>self, :hoard=>name), &blk)
       else
-        Bun::File::Extracted.open(expand_path(name), options.merge(:library=>self,  :location=>name), &blk)
+        Bun::File::Extracted.open(expand_path(name), options.merge(:library=>self,  :hoard=>name), &blk)
       end
     end
 
@@ -99,12 +99,12 @@ module Bun
     end
     
     def read_config_file(config_file)
-      @config = Configuration.new(:location=>config_file)
+      @config = Configuration.new(:hoard=>config_file)
       @config.read
     end
     
     def default_config
-      @default_config = Configuration.new(:location=>default_config_file)
+      @default_config = Configuration.new(:hoard=>default_config_file)
       read_config_file(default_config_file)
     end
     cache :default_config
@@ -133,19 +133,19 @@ module Bun
       expand_path(index_directory)
     end
     
-    def expand_path(location, options={})
+    def expand_path(hoard, options={})
       if options[:from_wd] # Expand relative to working directory
-        case location
+        case hoard
         when /^@\/(.*)/ # syntax @/xxxx means expand relative to archive
                return expand_path($1)
         when /^\\(@.*)/ # syntax \@xxxx means ignore the '@'; expand relative to working directory
-          location = $1
+          hoard = $1
         end
         rel = `pwd`.chomp
       else # expand relative to archive
         rel = File.expand_path(at)
       end
-      File.expand_path(location, rel)
+      File.expand_path(hoard, rel)
     end
     
     def relative_path(*f)
@@ -181,7 +181,7 @@ module Bun
     def build_and_save_index(options={})
       clear_index
       items.with_file(:header=>true) do |fname, f|
-        puts f.location if options[:verbose]
+        puts f.hoard if options[:verbose]
         update_index(:file=>f)
       end
       @index
@@ -210,7 +210,7 @@ module Bun
       @index = nil
     end
     
-    # TODO Allow for indexing by other than location?
+    # TODO Allow for indexing by other than hoard?
     def update_index(options={})
       @index ||= {}
       descr = options[:descriptor] ? options[:descriptor].to_hash : build_descriptor_for_file(options[:file])
@@ -220,8 +220,8 @@ module Bun
           descr.delete(k)
         end
       end
-      @index[descr[:location]] = descr
-      save_index_descriptor(descr[:location])
+      @index[descr[:hoard]] = descr
+      save_index_descriptor(descr[:hoard])
       descr
     end
     
@@ -251,7 +251,7 @@ module Bun
     
     def save_index_descriptor_for_file(f)
       @index ||= {}
-      name = f.location
+      name = f.hoard
       @index[name] ||= build_descriptor_for_file(f)
       _save_index_descriptor(name)
     end
@@ -303,7 +303,7 @@ module Bun
     end
     
     def rm(options={})
-      glob(*options[:locations]) do |fname|
+      glob(*options[:hoards]) do |fname|
         path = expand_path(fname)
         rm_at_path(path, options)
       end
@@ -447,7 +447,7 @@ module Bun
     end
     private :cp_single_file
     
-    # Copy a single file to a file location. If the file already exists, it
+    # Copy a single file to a file hoard. If the file already exists, it
     # is overwritten. 
     def cp_file_to_file(options={})
       from = options[:from]
