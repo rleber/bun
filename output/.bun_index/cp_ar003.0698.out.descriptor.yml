@@ -6,11 +6,8 @@
 :extracted: 
 :file_size: 2582
 :file_type: :text
-:hoard: !binary |-
-  YXIwMDMuMDY5OA==
-:hoard_path: !binary |-
-  L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL291dHB1dC9jcF9hcjAwMy4w
-  Njk4L2FyMDAzLjA2OTg=
+:hoard: cp_ar003.0698.out
+:hoard_path: /Users/richard/projects/bun/output/cp_ar003.0698.out
 :original_hoard: ar003.0698
 :original_hoard_path: /Users/richard/bun_archive/ar003.0698
 :owner: fass

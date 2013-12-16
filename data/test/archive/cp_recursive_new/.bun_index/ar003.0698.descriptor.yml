@@ -9,10 +9,10 @@
 :hoard: !binary |-
   YXIwMDMuMDY5OA==
 :hoard_path: !binary |-
-  L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL291dHB1dC9jcF9hcjAwMy4w
-  Njk4L2FyMDAzLjA2OTg=
+  L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
+  L2NwX3JlY3Vyc2l2ZV9uZXcvYXIwMDMuMDY5OA==
 :original_hoard: ar003.0698
-:original_hoard_path: /Users/richard/bun_archive/ar003.0698
+:original_hoard_path: /Users/richard/projects/bun/data/test/archive/cp_recursive/ar003.0698
 :owner: fass
 :path: fass/idallen/vector
 :specification: /idallen/vector  ==>files for idallen

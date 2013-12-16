@@ -80,13 +80,15 @@ module Bun
     def read(config_file=nil)
       return _read(config_file) if config_file && File.file?(config_file)
       config_file = File.join(location, '.config.yml')
-      res = File.file?(config_file) ? _read(config_file) : default_config
-      res['repository'] ||= ENV['BUN_REPOSITORY']
-      res
+      File.file?(config_file) ? _read(config_file) : default_config
+    end
+    
+    def setting
+      @setting ||= read
     end
     
     def expanded_setting(name)
-      ::File.expand_path(@setting[name.to_s])
+      ::File.expand_path(setting[name.to_s])
     end
     
     def write(location=nil)

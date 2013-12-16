@@ -6,13 +6,10 @@
 :extracted: 
 :file_size: 2582
 :file_type: :text
-:hoard: !binary |-
-  YXIwMDMuMDY5OA==
-:hoard_path: !binary |-
-  L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL291dHB1dC9jcF9hcjAwMy4w
-  Njk4L2FyMDAzLjA2OTg=
-:original_hoard: ar003.0698
-:original_hoard_path: /Users/richard/bun_archive/ar003.0698
+:hoard: ar003.0698
+:hoard_path: /Users/richard/projects/bun/data/test/archive/cp_recursive/directory/subdirectory/ar003.0698
+:original_hoard: 
+:original_hoard_path: 
 :owner: fass
 :path: fass/idallen/vector
 :specification: /idallen/vector  ==>files for idallen

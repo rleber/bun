@@ -84,11 +84,11 @@ module Bun
     end
     
     def default_at
-      File.expand_path(default_config['at_path'])
+      File.expand_path(default_config.setting['at_path'])
     end
 
     def config_dir(name)
-      dir = config[name.to_s]
+      dir = config.setting[name.to_s]
       return nil unless dir
       dir = File.expand_path(dir) if dir=~/^(~|\.)\//
       dir
@@ -105,7 +105,6 @@ module Bun
     
     def default_config
       @default_config = Configuration.new(:hoard=>default_config_file)
-      read_config_file(default_config_file)
     end
     cache :default_config
     
@@ -118,11 +117,11 @@ module Bun
     cache :config
     
     def expanded_config(name)
-      @config.expanded_setting(name)
+      expand_path(config.setting[name.to_s])
     end
     
     def index_directory
-      config['index_directory']
+      config.setting['index_directory']
     end
     
     def index_directories
@@ -130,7 +129,7 @@ module Bun
     end
     
     def expanded_index_directory
-      expand_path(index_directory)
+      expanded_config('index_directory')
     end
     
     def expand_path(hoard, options={})
@@ -316,7 +315,7 @@ module Bun
       else
         FileUtils.rm(path)
         descriptor_file_name = File.join(File.dirname(path), config['index_directory'], "#{File.basename(path)}.descriptor.yml")
-        puts "In Archive#rm_at_path: path=#{path.inspect}, descriptor_file_name=#{descriptor_file_name.inspect}"
+#        puts "In Archive#rm_at_path: path=#{path.inspect}, descriptor_file_name=#{descriptor_file_name.inspect}"
         FileUtils.rm(descriptor_file_name) if File.exists?(descriptor_file_name)
       end
     end
@@ -458,7 +457,7 @@ module Bun
         to = '.' if to == ''
         to = File.join(to, File.basename(from)) if File.directory?(to)
       end
-
+      
       open(from) do |f|
         Shell.new(:quiet=>true).write to, f.read, :mode=>'w:ascii-8bit'
         f.copy_descriptor(to) if index
