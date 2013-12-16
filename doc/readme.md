@@ -98,14 +98,19 @@ _Process_
 8. Optionally, use "bun archive text_status" to check the quality of the archived text files.
 9. There are a variety of commands you can use to work on individual files:
    - "bun cat"      Copy a file to STDOUT
-   - "bun mv"       Move a file from the archive
+   - "bun check"    Check if a file is clean
    - "bun cp"       Copy a file from the archive
    - "bun describe" Describe a file in the archive
-   - "bun freezer"  A collection of commands for frozen file archives
+   - "bun dump"     Dump the undecoded contents of a file
+   - "bun freezer"  A collection of commands for frozen file archives:
+     - "bun freezer dump" Dump the contents of a frozen file
+     - "bun freezer ls"   List the contents of the frozen file
+     - "bun freezer thaw" Thaw the contents of a frozen file
    - "bun mkdir"    Make a directory in the archive
-   - "bun scrub"    Clean up tabs etc.
-   - "bun check"    Check if a file is clean
+   - "bun mv"       Move a file from the archive
    - "bun rm"       Remove a file from the archive
+   - "bun scrub"    Clean up tabs etc.
+   - "bun unpack"   Decode a file
 10. Optionally, use "bun archive extract" to extract files from the archive and place them in a library.
 11. Use the "bun library" commands to reorganize the extracted files
 
