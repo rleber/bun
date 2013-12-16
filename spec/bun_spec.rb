@@ -275,13 +275,13 @@ describe Bun::Bot do
             result_files = Dir.glob('data/test/archive/cp_recursive_new/.bun_index/*').map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
-          it "should not change the location" do
+          it "should not change the hoard" do
             content = YAML.load(Bun.readfile("data/test/archive/cp_recursive_new/.bun_index/ar003.0701.descriptor.yml", :encoding=>'us-ascii'))
-            content[:location].should == 'ar003.0701'
+            content[:hoard].should == 'ar003.0701'
           end
-          it "should change the location_path" do
+          it "should change the hoard_path" do
             content = YAML.load(Bun.readfile("data/test/archive/cp_recursive_new/.bun_index/ar003.0701.descriptor.yml", :encoding=>'us-ascii'))
-            content[:location_path].should == %{#{exec("pwd").chomp}/data/test/archive/cp_recursive_new/ar003.0701}
+            content[:hoard_path].should == %{#{exec("pwd").chomp}/data/test/archive/cp_recursive_new/ar003.0701}
           end
         end
         describe "in the sub-directory" do
@@ -290,13 +290,13 @@ describe Bun::Bot do
             result_files = Dir.glob('data/test/archive/cp_recursive_new/directory/subdirectory/.bun_index/*').map{|f| File.basename(f)}.sort
             result_files.should == expected_files
           end
-          it "should not change the location" do
+          it "should not change the hoard" do
             content = YAML.load(Bun.readfile("data/test/archive/cp_recursive_new/.bun_index/ar082.0605.descriptor.yml", :encoding=>'us-ascii'))
-            content[:location].should == 'ar082.0605'
+            content[:hoard].should == 'ar082.0605'
           end
-          it "should change the location_path" do
+          it "should change the hoard_path" do
             content = YAML.load(Bun.readfile("data/test/archive/cp_recursive_new/.bun_index/ar082.0605.descriptor.yml", :encoding=>'us-ascii'))
-            content[:location_path].should == %{#{exec("pwd").chomp}/data/test/archive/cp_recursive_new/ar082.0605}
+            content[:hoard_path].should == %{#{exec("pwd").chomp}/data/test/archive/cp_recursive_new/ar082.0605}
           end
         end
       end
@@ -321,29 +321,29 @@ describe Bun::Bot do
             @original_content = YAML.load(Bun.readfile("#{ENV['HOME']}/bun_archive/.bun_index/ar003.0698.descriptor.yml", :encoding=>'us-ascii'))
             @content = YAML.load(Bun.readfile("output/.bun_index/cp_ar003.0698.out.descriptor.yml", :encoding=>'us-ascii'))
           end
-          it "should change the location" do
-            @content[:location].should == 'cp_ar003.0698.out'
+          it "should change the hoard" do
+            @content[:hoard].should == 'cp_ar003.0698.out'
           end
-          it "should change the location_path" do
-            @content[:location_path].should == %{#{exec("pwd").chomp}/output/cp_ar003.0698.out}
+          it "should change the hoard_path" do
+            @content[:hoard_path].should == %{#{exec("pwd").chomp}/output/cp_ar003.0698.out}
           end
-          it "should record the original location" do
-            @content[:original_location].should == 'ar003.0698'
+          it "should record the original hoard" do
+            @content[:original_hoard].should == 'ar003.0698'
           end
-          it "should record the original location_path" do
-            @content[:original_location_path].should == "#{ENV['HOME']}/bun_archive/ar003.0698"
+          it "should record the original hoard_path" do
+            @content[:original_hoard_path].should == "#{ENV['HOME']}/bun_archive/ar003.0698"
           end
           it "should otherwise match the original index" do
             other_content = @content.dup
-            other_content.delete(:location)
-            other_content.delete(:location_path)
-            other_content.delete(:original_location)
-            other_content.delete(:original_location_path)
+            other_content.delete(:hoard)
+            other_content.delete(:hoard_path)
+            other_content.delete(:original_hoard)
+            other_content.delete(:original_hoard_path)
             other_original_content = @original_content.dup
-            other_original_content.delete(:location)
-            other_original_content.delete(:location_path)
-            other_original_content.delete(:original_location)
-            other_original_content.delete(:original_location_path)
+            other_original_content.delete(:hoard)
+            other_original_content.delete(:hoard_path)
+            other_original_content.delete(:original_hoard)
+            other_original_content.delete(:original_hoard_path)
             other_content.should == other_original_content
           end
         end
@@ -470,13 +470,13 @@ describe Bun::Bot do
         result_files = Dir.glob('data/test/archive/mv/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
         result_files.should == expected_files
       end
-      it "should change the location" do
+      it "should change the hoard" do
         content = YAML.load(Bun.readfile("data/test/archive/mv/.bun_index/ar003.0701b.descriptor.yml", :encoding=>'us-ascii'))
-        content[:location].should == 'ar003.0701b'
+        content[:hoard].should == 'ar003.0701b'
       end
-      it "should change the location_path" do
+      it "should change the hoard_path" do
         content = YAML.load(Bun.readfile("data/test/archive/mv/.bun_index/ar003.0701b.descriptor.yml", :encoding=>'us-ascii'))
-        content[:location_path].should == %{#{exec("pwd").chomp}/data/test/archive/mv/ar003.0701b}
+        content[:hoard_path].should == %{#{exec("pwd").chomp}/data/test/archive/mv/ar003.0701b}
       end
     end
     describe "with a directory" do
@@ -493,23 +493,23 @@ describe Bun::Bot do
         result_files = Dir.glob('data/test/archive/mv/directory2/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
         result_files.should == expected_files
       end
-      it "should leave the locations unchanged" do
-        expected_locations = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
-        locations = []
+      it "should leave the hoards unchanged" do
+        expected_hoards = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
+        hoards = []
         Dir.glob("data/test/archive/mv/directory2/.bun_index/*.descriptor.yml").each do |f|
-          locations << YAML.load(Bun.readfile(f, :encoding=>'us-ascii'))[:location]
+          hoards << YAML.load(Bun.readfile(f, :encoding=>'us-ascii'))[:hoard]
         end
-        locations.sort.should == expected_locations
+        hoards.sort.should == expected_hoards
       end
-      it "should change the location_paths" do
-        expected_location_paths = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort.map do |f|
+      it "should change the hoard_paths" do
+        expected_hoard_paths = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort.map do |f|
           %{#{exec("pwd").chomp}/data/test/archive/mv/directory2/#{f}}
         end
-        location_paths = []
+        hoard_paths = []
         Dir.glob("data/test/archive/mv/directory2/.bun_index/*.descriptor.yml").each do |f|
-          location_paths << YAML.load(Bun.readfile(f, :encoding=>'us-ascii'))[:location_path]
+          hoard_paths << YAML.load(Bun.readfile(f, :encoding=>'us-ascii'))[:hoard_path]
         end
-        location_paths.sort.should == expected_location_paths
+        hoard_paths.sort.should == expected_hoard_paths
       end
     end
     after :each do
@@ -693,17 +693,17 @@ describe Bun::Bot do
           @original_content = YAML.load(Bun.readfile("data/test/archive/extract_source/.bun_index/ar083.0698.descriptor.yml", :encoding=>'us-ascii'))
           @content = YAML.load(Bun.readfile("data/test/archive/extract_library/fass/1983/programme/actors/.bun_index/hoard.ar083.0698_19830128.txt.descriptor.yml", :encoding=>'us-ascii'))
         end
-        it "should change the location" do
-          @content[:location].should == 'hoard.ar083.0698_19830128.txt'
+        it "should change the hoard" do
+          @content[:hoard].should == 'hoard.ar083.0698_19830128.txt'
         end
-        it "should change the location_path" do
-          @content[:location_path].should == %{#{exec("pwd").chomp}/data/test/archive/extract_library/fass/1983/programme/actors/hoard.ar083.0698_19830128.txt}
+        it "should change the hoard_path" do
+          @content[:hoard_path].should == %{#{exec("pwd").chomp}/data/test/archive/extract_library/fass/1983/programme/actors/hoard.ar083.0698_19830128.txt}
         end
-        it "should record the original location" do
-          @content[:original_location].should == 'ar083.0698'
+        it "should record the original hoard" do
+          @content[:original_hoard].should == 'ar083.0698'
         end
-        it "should record the original location_path" do
-          @content[:original_location_path].should == %{#{exec("pwd").chomp}/data/test/archive/extract_source/ar083.0698}
+        it "should record the original hoard_path" do
+          @content[:original_hoard_path].should == %{#{exec("pwd").chomp}/data/test/archive/extract_source/ar083.0698}
         end
         it "should record the extract time" do
           @content[:extracted].should be_a(Time)
