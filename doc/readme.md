@@ -94,3 +94,6 @@ _Process_
    already done this.
 7. Use "bun archive index set_dates" to set file modification dates to match the modification dates from
    the catalog.
+8. Use "bun archive text_status" to check the quality of the archived text files.
+9. Optionally, use "bun archive extract" to extract files from the archive and place them in a library.
+
