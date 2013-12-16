@@ -20,6 +20,7 @@ def dump(file_name, n)
   shard_descriptor = file.shard_descriptors.at(file_index)
   puts "Archive at #{file.location_path}[#{shard_descriptor.name}] for #{shard_descriptor.path}:"
   if options[:thawed]
+    p file
     lines = file.lines(file_index)
     # TODO Refactor using Array#justify_rows
     offset_width = ('%o'%lines[-1][:offset]).size

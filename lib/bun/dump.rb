@@ -19,6 +19,7 @@ module Bun
       else 
         limit = words.size - 1
       end
+      bit_offsets = options[:bit_offsets] || [0]
       display_offset = (options[:display_offset] || offset) - offset
       stream = options[:to] || STDOUT
       file = File::Archived.create(:words=>words, :type=>:raw)
