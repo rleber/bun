@@ -18,7 +18,7 @@ Within the directory are various source files for the bot. Any such source file 
 main file "freezer.rb", and a directory "freezer" which contains (among other things) a "thaw_task.rb" file. 
 These bot classes map to a command line command (or subcommand), as defined beginning in lib/bun/bots/main.rb
 
-Bot class hierarchy:
+Bot class hierarchy (indentation denotes inheritance, not naming scope):
 Thor
     Bun::Bots::Base
         Bun::Bots::Main
@@ -29,7 +29,7 @@ Thor
         Bun::Bots::Sandbox
 
 _Files_
-There is a hierarchy of File and related classes (indentation denotes inheritance, not naming scope):
+There is a hierarchy of File and related classes:
 ::File
     Bun::File
         Bun::File::Archived
@@ -81,6 +81,8 @@ Slicr::WordsBase
     
 LazyArray (mixes in Indexable::Basic and Comparable)
 
+Generally, the source for these classes is contained in either the lib/slicr directory (for the various Slicr classes),
+or in the lib or lib/bun directories.
 
 _Other Modules and Classes_
 These classes define various miscellaneous objects and methods, such as:
@@ -98,6 +100,9 @@ Slicr::Slice::Accessor (mixes in Indexable::Basic)
 Slicr::Slice::Definition
 Slicr::Slice::DSL
 Slicr::Sliceable
+
+As with the data classes, the source for these classes is contained in either the lib/slicr directory (for the 
+Slicr classes), or in the lib or lib/bun directories.
 
 ::Enumerator
     Bun::Collection::Enumerator
