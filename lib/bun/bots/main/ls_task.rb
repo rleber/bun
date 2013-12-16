@@ -74,10 +74,12 @@ def ls
   stop "!Invalid --locations pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless location_pattern
 
   fields =  options[:path] ? [:location_path] : [:location]
+  fields += [:file_type] if options[:type]
   fields += [:file_type, :updated, :file_size] if options[:long]
   fields += [:path]
   fields += [:shard_count] if options[:long]
   fields += [:description] if options[:descr]
+  fields = fields.uniq
 
   if options[:sort]
     sort_fields = options[:sort].split(',').map do |sort_field|
@@ -135,6 +137,7 @@ def ls
   end
 
   table = []
+  fields -= [:file_type] unless options[:long]
   headings = FIELD_HEADINGS.values_at(*fields)
   table << headings
   formatted_info.each do |entry|
