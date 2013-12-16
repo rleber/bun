@@ -31,7 +31,10 @@ Refactor other commands into the appropriate classes
 Set atime only when we actually read a file (not just the preamble)
 Integrate bun archive text_status into bun ls
 Change file patterns to tape::file([shard])? Qu: how to specify whether it must be a shard?
-Change shard 0 to mean the first shard; use shard '\\0', etc. for a shard named '0'
+Change shard 0 to mean the first shard; use shard '\\0', (or shard "0") for a shard named '0'
+Allow globs in file patterns
+Refactor Bots to use Actors (or put methods (e.g. thaw, dump) into the data objects)
+Stream-oriented versions of thaw, etc.
 Ability to 'bun archive ls' by archive name patterns
 Ability to search xref'ed files, for example find files with multiple copies
 Add --select option to bun ls
@@ -39,7 +42,7 @@ Add --select option to bun extract
 Why doesn't words[0].octal work?
 Ignore files not in the index
 Make set_timestamp automatic
-Move archive fetch logic to Archive
+Move archive fetch logic to Archive object
 Keep a .spec file in decoded archives showing how the archive is organized?
 Flatten out code: freezer thaw => thaw (or even combine with unpack)
 Option to turn off inclusion of file modification date in unpacked or thawed file names
@@ -47,9 +50,11 @@ Option to turn off resetting file modification dates for unpacked or thawed file
 Option to customize extension on unpacked or thawed files (e.g. '.txt')
 Option to create archives organized like file/v1/file1, file/v2/file2, etc.
 Look for Huffman-coded files: e.g. ar003.0701, ar116.2122, ar116.2128
+Implement Huffman decoding
 Standardize Decode and Defrost interfaces: decode, instead of unpack/thaw
 Remove extraneous output files
 Resolve backspaces: to underlining or bold
+Convert roff to HTML or Markdown, or some other modern format
 File type for print listings (Qu: are these ever frozen?)
 Try determining type by comparing preamble contents: Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean binary load module
 Optimization ideas: Continue examining Indexable::Basic, since it's probably 10-15% of execution time: Reduce usage, optimize "center" code
@@ -59,3 +64,5 @@ Move Bot::Base to a gem; provide tests
 Build as a gem
 Revise installation readme
 Upload to Github
+Why does bun ls take so long?
+Rename Bot modules, e.g. Archive bot is in "archive_bot.rb" and directory "archive_bot"

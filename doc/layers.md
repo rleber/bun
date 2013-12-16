@@ -1,4 +1,7 @@
-LAYERS CONCEPT
+The Bun project uses the concept of "layers" as the basis for processing files of structured binary data. The
+fundamental classes to implement this are contained in the Slicr and Slice classes.
+
+_LAYERS CONCEPT_
 Every slice object should descend from Slice::Base, and should be sliceable, e.g. foo.word[0].byte[3].bit[2]
 A layer is an array of slices; therefore "layer" is a synonym for "slices"
 Define the basic layer "words", which is different than most other kinds of layers, in that the data is stored in words
@@ -9,7 +12,11 @@ Every slice has a width
 Layers may or may not have a fixed slice width (i.e. the same width for every slice in a layer)
 Use layer-esque language: layers lie "on" other layers, layers "support" other layers, layers and slices have "layers" in/on them, etc.
 
-LAYERS YET TO BE DEFINED
+_LAYERS ALREADY DEFINED FOR BUN PROJECT_
+- Word, half-word, byte, character, packed character, bit, integer (see lib/bun/word.rb)
+- File, archived file, file descriptor (various kinds), blocked file, text file, frozen file, libraries
+
+_LAYERS YET TO BE DEFINED_
 - Structures (i.e. a sequence of fields)
 - Blocks: e.g. a layer with the same slice size as the supporting layer, but broken into segments
   - Segments of fixed size
