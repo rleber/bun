@@ -38,12 +38,12 @@ module Bun
       contents
     end
 
-    def catalog_file
-      expanded_config(:catalog_file)
+    def catalog_path
+      expanded_config(:catalog_path)
     end
     
     def catalog
-      content = Bun.readfile(catalog_file, :encoding=>'us-ascii')
+      content = Bun.readfile(catalog_path, :encoding=>'us-ascii')
       return [] unless content
       specs = content.split("\n").map do |line|
         words = line.strip.split(/\s+/)

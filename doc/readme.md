@@ -42,9 +42,25 @@ There is one primary executable src/bun. Assuming that the src directory is in y
 be pretty simple to run the software from the command line, by typing the command "bun". Without any
 parameters, the command should provide you with a helpful summary of all the available subcommands.
 
+Many commands are organized as subcommands:
+- bun archive
+- bun catalog
+- bun config
+- bun freezer
+- bun libray
+- bun sandbox
+
+Use "help" with subcommands, as well. For instance "bun archive" lists all the subcommands. One of those 
+subcommands is "bun archive index". "bun archive help index" lists help information for that subcommand.
+
+The "bun test" command will run a set of software checks on this software.
+
 _Terminology_
-- This software refers to a collection of undecoded Honeywell files as an "archive". Use the "bun archive" commands
-  to process these files
+- We refer to an online collection of Honeywell encoded files as a "repository". Use the "bun fetch" command
+  to download a repository to the local network.
+- Once the repository has been downloaded to the local network, we call the collection of undecoded Honeywell
+  files an "archive". Use the "bun archive" commands to process these files. The archive also has an index,
+  which is processed using the "bun archive index" commands.
 - Once files have been extracted, this software refers to that collection as a "library". The "bun library"
   commands are used to process these files.
 
@@ -60,3 +76,10 @@ imperfectly. Some salient features:
 
 More detailed notes on the file formats (and some old reference programs written in B -- an ancestor of C)
 are included in the doc/file_format directory of this project.
+
+_Process_
+1. Set up configuration. Especially, you will need to define the "BUN_REPOSITORY" environment variable to 
+   point to the URL of the archived files.
+2. Use "bun archive fetch" to fetch the repository into the archive.
+3. Use "bun ls" to list files, and 
+

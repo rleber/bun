@@ -39,7 +39,7 @@ def check
                                                        'File',  location_date.strftime(DATE_FORMAT)] \
                                                         if inclusions.include?('new') &&!exclusions.include?('new')
       end
-      file_descriptor[:shard_count].times do |i|
+      file_descriptor[:shards].count.times do |i|
         descriptor = file_descriptor[:shards][i]
         shard_date = descriptor[:shard_date]
         shard = descriptor[:name]

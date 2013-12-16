@@ -1,5 +1,5 @@
 ---
-at: ~/bun_archive
+at_path: ~/bun_archive
 log_file: .log
-catalog_file: ~/fass_archive/_misc/fass-index.txt
+catalog_path: ~/fass_archive/_misc/fass-index.txt
 index_directory: .bun_index

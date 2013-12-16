@@ -86,7 +86,7 @@ module Bun
     end
     
     def expanded_setting(name)
-      expand_path(@setting[name.to_s])
+      ::File.expand_path(@setting[name.to_s])
     end
     
     def write(location=nil)

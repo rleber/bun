@@ -84,7 +84,7 @@ module Bun
     end
     
     def default_at
-      File.expand_path(default_config['at'])
+      File.expand_path(default_config['at_path'])
     end
 
     def config_dir(name)
