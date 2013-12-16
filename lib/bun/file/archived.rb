@@ -84,6 +84,8 @@ module Bun
           res = if block_given?
             begin
               yield(f)
+            rescue => e
+              raise "!Raised error in yield: #{e}"
             ensure
               f.close
             end

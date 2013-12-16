@@ -15,7 +15,7 @@ def describe(file_name)
   catalog_time_display = catalog_time ? catalog_time.strftime('%Y/%m/%d') : "n/a"
   
   # TODO Refactor using Array#justify_rows
-  puts "Hoard:      #{descriptor.hoard}"
+  puts "Hoard:         #{descriptor.hoard}"
   puts "Path:          #{descriptor.hoard_path}"
   if type == :frozen
     puts "Directory:     #{descriptor.path}"
