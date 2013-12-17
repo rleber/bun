@@ -315,7 +315,6 @@ module Bun
       if !exists?(name)
         nil
       elsif !options[:build] && index_for(name)
-        $stderr.puts "  Found index"
         Hashie::Mash.new(index_for(name))
       elsif options[:build] == false # False signifies "Do not ever build from file data, even if no index"
         nil
