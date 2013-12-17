@@ -85,7 +85,7 @@ module Bun
             begin
               yield(f)
             rescue => e
-              raise "!Raised error in yield: #{e}"
+              raise %Q{!Raised error in yield: #{e}\n  Raised #{e} at:\n#{e.backtrace.map{|c| '    ' + c}.join("\n")}}
             ensure
               f.close
             end

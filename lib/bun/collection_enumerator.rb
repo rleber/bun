@@ -136,7 +136,7 @@ module Bun
       def with_files(options={}, &blk)
         enum = ::Enumerator.new do |yielder|
           with_path.each do |fname, path|
-            yielder << [fname, @collection.open(fname, &blk)] unless ::File.directory?(path)
+            yielder << [fname, @collection.open(fname, options)] unless ::File.directory?(path)
           end
         end
         if block_given?

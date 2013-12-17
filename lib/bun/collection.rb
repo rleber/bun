@@ -179,7 +179,7 @@ module Bun
     
     def build_and_save_index(options={})
       clear_index
-      items.with_file(:header=>true) do |fname, f|
+      items.with_files(:header=>true) do |fname, f|
         puts f.hoard if options[:verbose]
         update_index(:file=>f)
       end
@@ -285,7 +285,7 @@ module Bun
     private :_save_index_descriptor
     
     def descriptor(name, options={})
-      i = index
+#      i = index
       if !exists?(name)
         nil
       elsif !options[:build] && index[name]
@@ -314,7 +314,7 @@ module Bun
         FileUtils.rm_rf(path)
       else
         FileUtils.rm(path)
-        descriptor_file_name = File.join(File.dirname(path), config['index_directory'], "#{File.basename(path)}.descriptor.yml")
+        descriptor_file_name = File.join(File.dirname(path), index_directory, "#{File.basename(path)}.descriptor.yml")
 #        puts "In Archive#rm_at_path: path=#{path.inspect}, descriptor_file_name=#{descriptor_file_name.inspect}"
         FileUtils.rm(descriptor_file_name) if File.exists?(descriptor_file_name)
       end
