@@ -1,0 +1,26 @@
+---
+:basename: actors
+:catalog_time: 1983-01-28 00:00:00.000000000 -05:00
+:description: ==> TROFF source for FASS 1983 Programme
+:errors: []
+:extracted: 2013-12-17 16:17:07.198558000 -05:00
+:file_size: 1627
+:file_type: :text
+:hoard: !binary |-
+  aG9hcmQuYXIwODMuMDY5OF8xOTgzMDEyOC50eHQ=
+:hoard_path: !binary |-
+  L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
+  L2V4dHJhY3RfbGlicmFyeS9mYXNzLzE5ODMvcHJvZ3JhbW1lL2FjdG9ycy9o
+  b2FyZC5hcjA4My4wNjk4XzE5ODMwMTI4LnR4dA==
+:original_hoard: ar083.0698
+:original_hoard_path: /Users/richard/projects/bun/data/test/archive/extract_source_init/ar083.0698
+:owner: fass
+:path: fass/1983/programme/actors
+:specification: /1983/programme/actors ==> TROFF source for FASS 1983 Programme
+:updated: 1983-01-28 00:00:00.000000000 -05:00
+:blocks: 5
+:good_blocks: 5
+:status: :readable
+:control_characters:
+  !binary "AQ==": 100
+:character_count: 4544

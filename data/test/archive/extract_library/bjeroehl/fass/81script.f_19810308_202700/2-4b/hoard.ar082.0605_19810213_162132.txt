@@ -1,0 +1,65 @@
+.m3 1
+.m4 0
+.sp
+.in 0
+.ce
+-~fin~-
+.br
+.m3 2
+.m4 2
+.sy echo "    Pages=^^(%) Speeches=^^(indx)"
+.bp
+.en(es)
+.at(fini) *** end a scene ***
+.es
+.en(fini)
+.at(ch) *** character macro ***
+^(ex)
+.ti0 10
+.an(indx) +1
+.an(@14) +1
+.an(x) ^^(@14)=1
+.ig(ch1^^(x))
+.en(ch11)
+.bf
+^^(indx)-^^(@12):
+.ig(chen)
+.en(ch10)
+^^(indx)-^^(@13):
+.en(chen)
+.ns 5
+.en(ch)
+.at(sd) *** sound direction ***
+^(ad)
+.an(sdct) +1
+[S-^^(sdct)]
+.en(sd)
+.at(ld) *** lighting direction ***
+^(ad)
+.an(ldct) +1
+[L-^^(ldct)]
+.en(ld)
+.en(9999) *** SKIP TO HERE: THIS IS LAST LINE OF MACRO FILE ***
+.so 81macros
+.bs 2 4 "News"
+.na ew IRV~WEINSTEIN IRV
+.na tj TOM~JOLLS TOM
+.sd
+(TAPE IS PLAYED DURING BLACKOUT.)
+.ch tj
+It's 11 o'clock, do you know where your children were?
+.sd
+("EYEWITNESS NEWS" MUSIC.)
+.ch ew
+Topping tonight's Eyewitness news,
+fire broke out in Tonawanda tonight as a full scale nuclear strike
+was accidentally ordered on the town.  Damage was estimated at
+close to twenty-seven dollars and 32 cents.
+Now, here's Tom, with the weather outside.
+.ch tj
+Thanks very much, Irv.
+Well, that nuclear strike is causing some pretty heavy weather today.
+Winds are expected to reach up to 700 miles an hour.
+The temperature is currently 7000 degrees
+(that's 3,871 degrees centigrade for you Canadian viewers) with barometric
+pressure rising to 400 inches of mercury.  The National Weather Service
