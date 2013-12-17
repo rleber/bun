@@ -660,6 +660,7 @@ describe Bun::Bot do
     end
     context "dump" do
       include_examples "command", "freezer dump ar004.0888 +0", "freezer dump ar004.0888 +0", "freezer_dump_ar004.0888_0"
+      include_examples "command", "freezer dump -s ar004.0888 +0", "freezer dump -s ar004.0888 +0", "freezer_dump_s_ar004.0888_0"
     end
     context "thaw" do
       include_examples "command", "freezer thaw ar004.0888 +0", "freezer thaw ar004.0888 +0", "freezer_thaw_ar004.0888_0"
