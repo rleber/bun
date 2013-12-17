@@ -128,6 +128,22 @@ module Bun
       Dir.glob(at + '/**/' + index_directory)
     end
     
+    def index_prefix(ix=nil)
+      ix ||= expanded_index_directory
+      res = File.dirname(ix)
+      res = '' if res == '.'
+      res
+    end
+    
+    def index_path(name, ix=nil)
+      ix ? File.join(ix, name) : expand_path(name)
+    end
+    
+    def index_for(name, ix=nil)
+      expanded_path = index_path(name)
+      index[expanded_path]
+    end
+    
     def expanded_index_directory
       expanded_config('index_directory')
     end
@@ -151,26 +167,32 @@ module Bun
       File.relative_path(*f, :relative_to=>at)
     end
     
-    def index
-      _index unless @index
-      @index
+    def index(options={})
+      return @index if !options[:build] && @index
+      res = _index(options)
+      @index = res unless options[:no_save]
+      res
     end
     
-    def _index
-      indexes = index_directories
+    def _index(options={})
+      if options[:recursive]
+        indexes = index_directories
+      else
+        indexes = [expanded_index_directory]
+      end
       if indexes.size > 0
-        @index = {}
+        res = {}
         indexes.each do |index|
           raise RuntimeError, "File #{index} should be a directory" unless File.directory?(index)
-          index_prefix = File.dirname(index)
-          index_prefix = '' if index_prefix == '.'
+          prefix = index_prefix(index)
           Dir.glob(File.join(index, '*.yml')) do |f|
             raise "Unexpected file #{f} in index #{expanded_index_directory}" unless f =~ /\.descriptor.yml$/
-            file_name = File.join(index_prefix, File.basename($`))
+            file_name = index_path(File.basename($`), prefix)
             content = ::Bun.readfile(f, :encoding=>'us-ascii')
-            @index[file_name] = YAML.load(content)
+            res[file_name] = YAML.load(content)
           end
         end
+        res
       else
         build_and_save_index
       end
@@ -284,13 +306,18 @@ module Bun
     end
     private :_save_index_descriptor
     
+    # Options:
+    #  :build: true  Always build descriptor from file data, never use index
+    #          false Use index if available, never build from file data
+    #          nil   Use index if available, otherwise build from file data
     def descriptor(name, options={})
-#      i = index
+#      i = index        # TODO Remove this if everything is still working; not sure what its purpose was
       if !exists?(name)
         nil
-      elsif !options[:build] && index[name]
-        Hashie::Mash.new(index[name])
-      elsif options[:build] == false
+      elsif !options[:build] && index_for(name)
+        $stderr.puts "  Found index"
+        Hashie::Mash.new(index_for(name))
+      elsif options[:build] == false # False signifies "Do not ever build from file data, even if no index"
         nil
       else
         Hashie::Mash.new(build_descriptor(name))
