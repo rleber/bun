@@ -649,6 +649,7 @@ describe Bun::Bot do
   end
   context "bun dump" do
     include_examples "command", "dump ar003.0698", "dump ar003.0698", "dump_ar003.0698"
+    include_examples "command", "dump -s ar003.0698", "dump -s ar003.0698", "dump_s_ar003.0698"
     include_examples "command", "dump -f ar004.0888", "dump -f ar004.0888", "dump_f_ar004.0888"
   end
   context "bun freezer" do
