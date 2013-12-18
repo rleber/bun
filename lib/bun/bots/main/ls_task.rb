@@ -50,6 +50,7 @@ option "files",     :aliases=>"-f", :type=>'string',  :default=>'',             
 option "frozen",    :aliases=>"-r", :type=>'boolean',                              :desc=>"Recursively include contents of freeze files"
 option "long",      :aliases=>"-l", :type=>'boolean',                              :desc=>"Display long format (incl. text vs. frozen)"
 option 'path',      :aliases=>'-p', :type=>'boolean',                              :desc=>"Display paths for hoard files"
+option 'quick',     :aliases=>'-Q', :type=>'boolean',                              :desc=>"Quickly display hoards"
 option "sort",      :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order(s) for files (#{SORT_VALUES.join(', ')})"
 option "hoards",    :aliases=>"-h", :type=>'string',  :default=>'',                :desc=>"Show only hoards that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "type",      :aliases=>"-T", :type=>'string',  :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
@@ -101,6 +102,10 @@ def ls
   # Retrieve file information
   archive = Archive.new(options)
   ix = archive.hoards
+  if options[:quick]
+    puts ix
+    return
+  end
   # TODO Refactor using archive.select
   file_info = []
   ix = ix.select{|hoard| hoard =~ hoard_pattern}

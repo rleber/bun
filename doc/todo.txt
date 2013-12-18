@@ -54,8 +54,10 @@ Look for Huffman-coded files: e.g. ar003.0701, ar116.2122, ar116.2128
 Implement Huffman decoding
 Standardize Decode and Defrost interfaces: decode, instead of unpack/thaw
 Remove extraneous output files
-Resolve backspaces: to underlining or bold
-Convert roff to HTML or Markdown, or some other modern format
+Resolve backspaces: to underlining, overstrike or bold (explore 'col' command)
+Flag whether files contain backspaces/overstrikes, or tabs
+Convert troff to HTML or Markdown, or some other modern format (explore 'groff -T')
+Flag whether files contain troff commands
 File type for print listings (Qu: are these ever frozen?)
 Try determining type by comparing preamble contents: Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean binary load module
 Optimization ideas: Continue examining Indexable::Basic, since it's probably 10-15% of execution time: Reduce usage, optimize "center" code
