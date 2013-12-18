@@ -163,6 +163,7 @@ describe Bun::Bot do
   
   describe "ls" do
     include_examples "command", "ls", "ls", "ls"
+    include_examples "command", "ls -Q", "ls -Q", "ls_q"
     include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -h ar003.0698", "ls_ldrh_ar003.0698"
     include_examples "command", "ls -ldr with frozen file (ar145.2699)", "ls -ldr -h ar145.2699", "ls_ldrh_ar145.2699"
     include_examples "command", "ls -ldrb with frozen file (ar145.2699)", "ls -ldrb -h ar145.2699", "ls_ldrbh_ar145.2699"
