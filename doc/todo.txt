@@ -1,7 +1,7 @@
 TODO
 Add archived to descriptor
 Add folders (directories plus frozen) and fragments (leaves, but with shards), items (leaves + shards) to collection methods
-Find better term for tapes/locations
+Replace the term "hoard" with backup?
 Test bun library compact
 - For all files:
   - collapse hoard names to the oldest if the content is identical

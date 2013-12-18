@@ -436,7 +436,12 @@ module Bun
             FileUtils.mkdir_p(target_dir)
             if File.directory?(from_item)
               new_directory = File.join(target_dir,File.basename(from_item))
-              FileUtils.mkdir(new_directory)
+              if File.exists?(new_directory)
+                raise CopyToNonDirectory "Can't copy directory #{from_item } to non-directory #{new_directory}" \
+                  unless File.directory?(new_directory)
+              else
+                FileUtils.mkdir(new_directory)
+              end
             else
               cp_single_file(options.merge(:from=>from_item, :to=>target_dir + '/'))
             end
