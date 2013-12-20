@@ -54,8 +54,10 @@ module Bun
           fields.each do |f|
             instance_variable_set("@#{f}", nil)
           end
-          h.keys.each do |k|
-            instance_variable_set("@#{k}", h[k])
+          if h
+            h.keys.each do |k|
+              instance_variable_set("@#{k}", h[k])
+            end
           end
           self
         end

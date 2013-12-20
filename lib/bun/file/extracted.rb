@@ -8,7 +8,7 @@ module Bun
         def open(fname, options, &blk)
           f = send(:new, options.merge(:hoard_path=>fname))
           if options[:library]
-            descriptor_hash = options[:library].descriptor(fname, :build=>nil)
+            descriptor_hash = options[:library].descriptor(fname, :build=>false)
             f.descriptor = File::Descriptor::Extracted.from_hash(self, descriptor_hash)
           end
           if block_given?

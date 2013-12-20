@@ -149,6 +149,8 @@ module Bun
     end
     
     def expand_path(hoard, options={})
+      # $stderr.puts "In #{self.class}#expand_path(#{hoard.inspect}, #{options.inspect}):" # DEBUG
+      # $stderr.puts caller.map{|c| "  #{c}"}
       if options[:from_wd] # Expand relative to working directory
         case hoard
         when /^@\/(.*)/ # syntax @/xxxx means expand relative to archive
@@ -183,6 +185,7 @@ module Bun
       if indexes.size > 0
         res = {}
         indexes.each do |index|
+          next unless File.exists?(index)
           raise RuntimeError, "File #{index} should be a directory" unless File.directory?(index)
           prefix = index_prefix(index)
           Dir.glob(File.join(index, '*.yml')) do |f|

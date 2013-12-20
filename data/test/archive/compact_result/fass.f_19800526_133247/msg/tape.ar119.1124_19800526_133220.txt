@@ -1,0 +1,15 @@
+I'm trying to compile a list of songs (and parts of songs) used in Fass 80.
+The list I have so far is in eksiegerman/fass/songs (in chronological
+order of first appearance in the show). Each line looks like
+act-scene:line:type description
+where
+line refers to qed line in the scene, rather than speech number
+type is s for a song (one with a .sb macro, for those who wrote)
+    and f for a song fragment (any other musical thing that existed)
+desc is, for a type s, "fass name" "real name"
+    and, for a type f, whatever I could think of to say.
+If you have a couple of minutes, could you please look at this file, and,
+if you can think of any that I've missed, let me know?
+Thanx muchly.
+             -eks
+(cc. %eksiegerman/fass/list)
