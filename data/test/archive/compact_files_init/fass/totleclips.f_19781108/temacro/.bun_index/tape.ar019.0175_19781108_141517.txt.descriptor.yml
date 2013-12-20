@@ -1,0 +1,65 @@
+---
+:basename: totleclips.f
+:catalog_time: 1978-11-08 00:00:00.000000000 -05:00
+:description: ==> Total Eclipse Episode 6 - CKMS Radio Theatre
+:errors: []
+:extracted: 2012-04-04 21:48:04.684013000 -04:00
+:file_size: 7228
+:file_type: :frozen
+:location: !binary |-
+  dGFwZS5hcjAxOS4wMTc1XzE5NzgxMTA4XzE0MTUxNy50eHQ=
+:location_path: !binary |-
+  L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
+  L2NvbXBhY3RfZmlsZXMvZmFzcy90b3RsZWNsaXBzLmZfMTk3ODExMDgvdGVt
+  YWNyby90YXBlLmFyMDE5LjAxNzVfMTk3ODExMDhfMTQxNTE3LnR4dA==
+:original_location: ar019.0175
+:original_location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.0175
+:owner: fass
+:path: fass/totleclips.f
+:specification: /totleclips.f ==> Total Eclipse Episode 6 - CKMS Radio Theatre
+:updated: 1978-11-08 00:00:00.000000000 -05:00
+:shards:
+- :file_size: 125
+  :file_type: :shard
+  :catalog_time: 1978-11-08 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 382
+  :name: temacro
+  :owner: 
+  :path: fass/totleclips.f/temacro
+  :status: :readable
+  :location: ar019.0175
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.0175
+  :file_date: 1978-11-08
+  :file_time: 1978-11-08 14:15:17.000000000 -05:00
+  :updated: 1978-11-08 14:15:17.000000000 -05:00
+- :file_size: 6614
+  :file_type: :shard
+  :catalog_time: 1978-11-08 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: eclipse
+  :owner: 
+  :path: fass/totleclips.f/eclipse
+  :status: 
+  :location: ar019.0175
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.0175
+  :file_date: 1978-11-08
+  :file_time: 1978-11-08 14:15:17.000000000 -05:00
+  :updated: 1978-11-08 14:15:17.000000000 -05:00
+- :file_size: 427
+  :file_type: :shard
+  :catalog_time: 1978-11-08 00:00:00.000000000 -05:00
+  :control_characters: 
+  :character_count: 
+  :name: sounds
+  :owner: 
+  :path: fass/totleclips.f/sounds
+  :status: 
+  :location: ar019.0175
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.0175
+  :file_date: 1978-11-08
+  :file_time: 1978-11-08 14:15:17.000000000 -05:00
+  :updated: 1978-11-08 14:15:17.000000000 -05:00
+:file_date: 1978-11-08
+:file_time: 1978-11-08 14:15:17.000000000 -05:00

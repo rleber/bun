@@ -1,0 +1,82 @@
+---
+:basename: totleclips.f
+:catalog_time: 1978-11-20 00:00:00.000000000 -05:00
+:description: Total Eclipse Episode 6 - Fixed-Up Version
+:errors:
+- ! 'Shard 0: Bad descriptor at 3827: <Bun::Word 144055125160>'
+- ! 'Shard 1: Bad descriptor at 0: <Bun::Word 101106273154>'
+:extracted: 2012-04-04 21:48:05.378932000 -04:00
+:file_size: 7227
+:file_type: :frozen
+:location: !binary |-
+  dGFwZS5hcjAxOS4xODQyXzE5NzgxMTIwXzEwMjIzMS50eHQ=
+:location_path: !binary |-
+  L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
+  L2NvbXBhY3RfZmlsZXMvZmFzcy90b3RsZWNsaXBzLmZfMTk3ODExMjAvc291
+  bmRzL3RhcGUuYXIwMTkuMTg0Ml8xOTc4MTEyMF8xMDIyMzEudHh0
+:original_location: ar019.1842
+:original_location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.1842
+:owner: fass
+:path: fass/totleclips.f
+:specification: /totleclips.f Total Eclipse Episode 6 - Fixed-Up Version
+:updated: 1978-11-20 00:00:00.000000000 -05:00
+:shards:
+- :file_size: 6614
+  :file_type: :shard
+  :catalog_time: 1978-11-20 00:00:00.000000000 -05:00
+  :control_characters:
+    ! "\t": 2
+    !binary "DA==": 6
+    !binary "AA==": 34
+    !binary "Gw==": 2
+    !binary "EA==": 3
+    !binary "Gg==": 1
+    !binary "Ag==": 2
+    !binary "Dg==": 2
+    !binary "BA==": 4
+    !binary "Fw==": 2
+    !binary "Ew==": 3
+    !binary "Aw==": 2
+    !binary "FA==": 3
+    !binary "AQ==": 1
+    !binary "BQ==": 1
+  :character_count: 28731
+  :name: eclipse
+  :owner: 
+  :path: fass/totleclips.f/eclipse
+  :status: :truncated
+  :location: ar019.1842
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.1842
+  :file_date: 1978-11-20
+  :file_time: 1978-11-20 10:22:31.000000000 -05:00
+  :updated: 1978-11-20 10:22:31.000000000 -05:00
+- :file_size: 125
+  :file_type: :shard
+  :catalog_time: 1978-11-20 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 425
+  :name: temacro
+  :owner: 
+  :path: fass/totleclips.f/temacro
+  :status: :readable
+  :location: ar019.1842
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.1842
+  :file_date: 1978-11-20
+  :file_time: 1978-11-20 10:22:31.000000000 -05:00
+  :updated: 1978-11-20 10:22:31.000000000 -05:00
+- :file_size: 427
+  :file_type: :shard
+  :catalog_time: 1978-11-20 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 1817
+  :name: sounds
+  :owner: 
+  :path: fass/totleclips.f/sounds
+  :status: :truncated
+  :location: ar019.1842
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.1842
+  :file_date: 1978-11-20
+  :file_time: 1978-11-20 10:22:31.000000000 -05:00
+  :updated: 1978-11-20 10:22:31.000000000 -05:00
+:file_date: 1978-11-20
+:file_time: 1978-11-20 10:22:31.000000000 -05:00

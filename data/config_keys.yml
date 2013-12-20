@@ -1,0 +1,5 @@
+at_path:         File path of archive
+log_file:        File name of log files
+repository:      URL of online repository
+catalog_path:    File path of catalog file
+index_directory: Name of directory containing indexes (within archive directories)

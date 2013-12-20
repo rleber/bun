@@ -1,0 +1,45 @@
+1-1:108:f 25 or 6 to 4 (intro to opening song)
+1-1:109:s "This is the FASS Show" "You Are My Sunshine"
+1-2:110:s "University Bookstore" "Winchester Cathedral"
+1-2:370:f Monster Mash (working in the lab)
+1-2:506:s "Hey, Food" "Hey, Jude"
+1-2:516:s "Food Services' Food" "Food, Glorious Food"
+1-2:546:s "In The Gravy" "In The Navy"
+1-2:557:s "South Campus Hall" "YMCA"
+1-2:762:s "I Want To Be A Superhero" "Just An Old-Fashioned Love Song"
+1-3:135:s "Plato's Retreat" "Lollipop Guild"
+1-3:549:s "50 Ways To Screw The Students" "50 Ways To Leave Your Lover"
+1-4:031:s "COAL" "TANG-SPAM"
+1-4:039:s "Our Hearth" "Our House"
+1-4:050:s "NEIL YOUNG EAT YOUR HEARTH OUT" "HEART OF GOLD"
+1-4:493:f I'm~an~Alien I'm~a~Pepper (Dr. Pepper ad)
+1-4:574:f Coke Ad (It's the real thing)
+1-5:107:s "INTREPID ASTROS" "JUNIOR BIRDMEN"
+1-5:176:f Battle Hymn of the Republic (We are, we are, ... the engineers)
+1-5:535:s "SUPERHERO" "RED RUBBER BALL"
+1-5:587:s "SUPERHERO REPRISE" "RED RUBBER BALL"
+1-5:794:s "A SPACESHIP" "ACH DU LIEBER AUGUSTINE"
+1-6:632:s "STUDIO /360" "PUFF THE MAGIC DISCO"
+2-1:269:s "WIDJET" "A Bicycle Built for Two"
+2-1:615:s "I FORGET WITH YOU MILK" "THANK YOU VERY MUCH MILK"
+2-2:385:f I'd do Anything
+2-2:469:s "HEY SUE" "OCTOPUS'S GARDEN"
+2-2:825:s "HI HO" "HI HO"
+2-4:082:f Close Encounters Theme (5 notes)
+2-4:089:f Star Trek theme
+2-4:102:f Boogie Woogie Dancing Shoes
+2-4:275:s "Over At The PRG Place" "Over At The Frankenstein Place"
+2-4:411:s "No Way, Jose" "Scarborough Fair"
+2-4:417:s "Torn Between Two Tow-Trucks" "Torn Between Two Lovers"
+2-5:128:s "You Can't Do Anything" "Anything You Can Do"
+2-5:319:s "Sergeant Peppers Band" "Close Encounters Theme"
+2-5:346:s "You Funded Me" "You Needed Me"
+2-5:357:s "Sex & Drugs & Downhill Skis" "Sex & Drugs & Rock'n'roll"
+2-5:484:s "The Banana Blitz Song" "The Banana Splits Song"
+2-6:033:s "The Show So Far" "Science Fiction Double Feature"
+2-6:169:s "The Bonzo Cat In The Hat Comes Back" "The Rain In Spain"
+2-6:285:f Russian Dance from Nutcracker Suite
+2-6:415:s "I Want To Be A Superhero (Reprise)" "Just An Old-Fashioned Love Song"
+2-6:524:s "Bye Bye Earth"  "Bye Bye Love"
+2-6:653:s "No Fun Like FASS Fun" "No Business Like Show Business"
+2-6:659:s "Bye Bye FASS" "Bye Bye Love"

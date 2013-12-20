@@ -1,0 +1,64 @@
+---
+:basename: fass.f
+:catalog_time: 
+:description: ''
+:errors: []
+:extracted: 
+:file_size: 727
+:file_type: :frozen
+:location: !binary |-
+  YXIxMTQuMTg2MA==
+:location_path: !binary |-
+  L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
+  L2NvbXBhY3Rfc291cmNlL2FyMTE0LjE4NjA=
+:original_location: ar114.1860
+:original_location_path: /Users/richard/bun_archive/ar114.1860
+:owner: eksiegerman
+:path: eksiegerman/fass.f
+:specification: /fass.f
+:updated: 1980-05-26 13:32:47.000000000 -04:00
+:shards:
+- :file_size: 31
+  :file_type: :shard
+  :catalog_time: 
+  :control_characters: 
+  :character_count: 
+  :name: list
+  :owner: 
+  :path: eksiegerman/fass.f/list
+  :status: 
+  :location: /Users/richard/bun_archive/ar114.1860
+  :location_path: /Users/richard/bun_archive/ar114.1860
+  :file_date: 1980-05-26
+  :file_time: 1980-05-26 13:25:38.000000000 -04:00
+  :updated: 1980-05-26 13:25:38.000000000 -04:00
+- :file_size: 161
+  :file_type: :shard
+  :catalog_time: 
+  :control_characters: 
+  :character_count: 
+  :name: msg
+  :owner: 
+  :path: eksiegerman/fass.f/msg
+  :status: 
+  :location: /Users/richard/bun_archive/ar114.1860
+  :location_path: /Users/richard/bun_archive/ar114.1860
+  :file_date: 1980-05-26
+  :file_time: 1980-05-26 13:32:20.000000000 -04:00
+  :updated: 1980-05-26 13:32:20.000000000 -04:00
+- :file_size: 487
+  :file_type: :shard
+  :catalog_time: 
+  :control_characters: 
+  :character_count: 
+  :name: songs
+  :owner: 
+  :path: eksiegerman/fass.f/songs
+  :status: 
+  :location: /Users/richard/bun_archive/ar114.1860
+  :location_path: /Users/richard/bun_archive/ar114.1860
+  :file_date: 1980-05-26
+  :file_time: 1980-05-26 13:32:47.000000000 -04:00
+  :updated: 1980-05-26 13:32:47.000000000 -04:00
+:file_date: 1980-05-26
+:file_time: 1980-05-26 13:32:47.000000000 -04:00

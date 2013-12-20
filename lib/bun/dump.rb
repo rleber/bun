@@ -19,9 +19,10 @@ module Bun
       else 
         limit = words.size - 1
       end
+      bit_offsets = options[:bit_offsets] || [0]
       display_offset = (options[:display_offset] || offset) - offset
       stream = options[:to] || STDOUT
-      file = File.create(:words=>words, :type=>:raw)
+      file = File::Archived.create(:words=>words, :type=>:raw)
       limit = [limit, file.size-1].min unless options[:unlimited]
       if options[:frozen]
         characters = file.all_packed_characters
@@ -49,6 +50,7 @@ module Bun
           chars = chars.inspect[1..-2].scan(/\\\d{3}|\\[^\d\\]|\\\\|[^\\]/).map{|s| (s+'   ')[0,4]}.join
         else
           chars = chars.gsub(/[[:cntrl:]]/, '~')
+          chars = chars.gsub(/_/, '~').gsub(/\s/,'_') unless options[:spaces]
           chars = chars.scan(/.{1,#{character_block_size}}/).join(' ')
         end
         address = '0' + ("%0#{address_width}o"%(i + display_offset))

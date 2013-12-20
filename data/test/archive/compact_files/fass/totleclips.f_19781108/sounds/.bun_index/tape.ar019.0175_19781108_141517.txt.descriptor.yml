@@ -1,0 +1,148 @@
+---
+:basename: totleclips.f
+:catalog_time: 1978-11-08 00:00:00.000000000 -05:00
+:description: ==> Total Eclipse Episode 6 - CKMS Radio Theatre
+:errors:
+- ! 'Shard 1: Bad descriptor at 4608: <Bun::Word 211444635077>'
+- ! 'Shard 1: Bad descriptor at 4732: <Bun::Word 250744251055>'
+- ! 'Shard 1: Bad descriptor at 4996: <Bun::Word 245120247556>'
+- ! 'Shard 1: Bad descriptor at 5188: <Bun::Word 752224432000>'
+- ! 'Shard 1: Bad descriptor at 5228: <Bun::Word 211444635077>'
+- ! 'Shard 1: Bad descriptor at 5908: <Bun::Word 313177247244>'
+- ! 'Shard 1: Bad descriptor at 5913: <Bun::Word 250477223165>'
+- ! 'Shard 1: Bad descriptor at 5988: <Bun::Word 211444635070>'
+- ! 'Shard 1: Bad descriptor at 5997: <Bun::Word 250744250150>'
+- ! 'Shard 1: Bad descriptor at 6091: <Bun::Word 010547223164>'
+- ! 'Shard 1: Bad descriptor at 6120: <Bun::Word 012247603034>'
+- ! 'Shard 1: Bad descriptor at 6531: <Bun::Word 017643237144>'
+- ! 'Shard 1: Bad descriptor at 6542: <Bun::Word 056423746406>'
+- ! 'Shard 1: Bad descriptor at 6593: <Bun::Word 751446237274>'
+- ! 'Shard 2: Bad descriptor at 0: <Bun::Word 755562501646>'
+- ! 'Shard 2: Bad descriptor at 7: <Bun::Word 250744251055>'
+- ! 'Shard 2: Bad descriptor at 16: <Bun::Word 712344661762>'
+- ! 'Shard 2: Bad descriptor at 23: <Bun::Word 710550223234>'
+- ! 'Shard 2: Bad descriptor at 62: <Bun::Word 352324530404>'
+- ! 'Shard 2: Bad descriptor at 93: <Bun::Word 210344101175>'
+- ! 'Shard 2: Bad descriptor at 154: <Bun::Word 252220215175>'
+- ! 'Shard 2: Bad descriptor at 177: <Bun::Word 651540617114>'
+- ! 'Shard 2: Bad descriptor at 184: <Bun::Word 012044635072>'
+- ! 'Shard 2: Bad descriptor at 204: <Bun::Word 451643432000>'
+- ! 'Shard 2: Bad descriptor at 207: <Bun::Word 212446223164>'
+- ! 'Shard 2: Bad descriptor at 248: <Bun::Word 212446223164>'
+- ! 'Shard 2: Bad descriptor at 319: <Bun::Word 211751122150>'
+- ! 'Shard 2: Bad descriptor at 321: <Bun::Word 212446223164>'
+- ! 'Shard 2: Bad descriptor at 345: <Bun::Word 210542101114>'
+- ! 'Shard 2: Bad descriptor at 351: <Bun::Word 212446223164>'
+- ! 'Shard 2: Bad descriptor at 370: <Bun::Word 752042635114>'
+- ! 'Shard 2: Bad descriptor at 375: <Bun::Word 012051237014>'
+- ! 'Shard 2: Bad descriptor at 399: <Bun::Word 151747251114>'
+:extracted: 2012-04-04 21:48:05.013372000 -04:00
+:file_size: 7228
+:file_type: :frozen
+:location: !binary |-
+  dGFwZS5hcjAxOS4wMTc1XzE5NzgxMTA4XzE0MTUxNy50eHQ=
+:location_path: !binary |-
+  L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
+  L2NvbXBhY3RfZmlsZXMvZmFzcy90b3RsZWNsaXBzLmZfMTk3ODExMDgvc291
+  bmRzL3RhcGUuYXIwMTkuMDE3NV8xOTc4MTEwOF8xNDE1MTcudHh0
+:original_location: ar019.0175
+:original_location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.0175
+:owner: fass
+:path: fass/totleclips.f
+:specification: /totleclips.f ==> Total Eclipse Episode 6 - CKMS Radio Theatre
+:updated: 1978-11-08 00:00:00.000000000 -05:00
+:shards:
+- :file_size: 125
+  :file_type: :shard
+  :catalog_time: 1978-11-08 00:00:00.000000000 -05:00
+  :control_characters: {}
+  :character_count: 382
+  :name: temacro
+  :owner: 
+  :path: fass/totleclips.f/temacro
+  :status: :readable
+  :location: ar019.0175
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.0175
+  :file_date: 1978-11-08
+  :file_time: 1978-11-08 14:15:17.000000000 -05:00
+  :updated: 1978-11-08 14:15:17.000000000 -05:00
+- :file_size: 6614
+  :file_type: :shard
+  :catalog_time: 1978-11-08 00:00:00.000000000 -05:00
+  :control_characters:
+    !binary "CA==": 18
+    !binary "DA==": 19
+    !binary "Cw==": 1
+    !binary "AA==": 1252
+    !binary "Ag==": 151
+    !binary "AQ==": 55
+    !binary "Ew==": 5
+    !binary "FA==": 47
+    !binary "GA==": 14
+    !binary "HA==": 49
+    !binary "Gw==": 6
+    !binary "Dw==": 260
+    !binary "FQ==": 20
+    !binary "Bg==": 1117
+    !binary "GQ==": 2
+    !binary "Gg==": 184
+    !binary "BQ==": 70
+    !binary "BA==": 185
+    !binary "Hw==": 147
+    !binary "Hg==": 313
+    !binary "Fw==": 202
+    !binary "Bw==": 723
+    !binary "Fg==": 495
+    !binary "EA==": 66
+    !binary "HQ==": 25
+    !binary "Aw==": 58
+    !binary "fw==": 302
+    !binary "Eg==": 141
+    !binary "Dg==": 201
+  :character_count: 30503
+  :name: eclipse
+  :owner: 
+  :path: fass/totleclips.f/eclipse
+  :status: :truncated
+  :location: ar019.0175
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.0175
+  :file_date: 1978-11-08
+  :file_time: 1978-11-08 14:15:17.000000000 -05:00
+  :updated: 1978-11-08 14:15:17.000000000 -05:00
+- :file_size: 427
+  :file_type: :shard
+  :catalog_time: 1978-11-08 00:00:00.000000000 -05:00
+  :control_characters:
+    !binary "CA==": 2
+    !binary "DA==": 24
+    !binary "Bw==": 1
+    !binary "BA==": 156
+    !binary "AA==": 134
+    !binary "Ag==": 18
+    !binary "Hg==": 1
+    !binary "BQ==": 75
+    !binary "Hw==": 1
+    !binary "HA==": 63
+    !binary "fw==": 1
+    !binary "EA==": 3
+    !binary "AQ==": 24
+    !binary "Eg==": 25
+    !binary "FA==": 70
+    !binary "Aw==": 11
+    !binary "HQ==": 28
+    !binary "Gg==": 27
+    !binary "FQ==": 26
+    !binary "GA==": 9
+    !binary "Gw==": 1
+  :character_count: 1978
+  :name: sounds
+  :owner: 
+  :path: fass/totleclips.f/sounds
+  :status: :truncated
+  :location: ar019.0175
+  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.0175
+  :file_date: 1978-11-08
+  :file_time: 1978-11-08 14:15:17.000000000 -05:00
+  :updated: 1978-11-08 14:15:17.000000000 -05:00
+:file_date: 1978-11-08
+:file_time: 1978-11-08 14:15:17.000000000 -05:00

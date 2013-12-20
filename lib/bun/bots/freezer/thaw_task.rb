@@ -3,7 +3,7 @@
 
 # TODO Thaw all files
 desc "thaw ARCHIVE FILE [TO]", "Uncompress a frozen Honeywell file"
-option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
 option "bare",    :aliases=>"-b", :type=>"boolean", :desc=>"Do not create an index entry for the thawed file"
 option "warn",    :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
 long_desc <<-EOT

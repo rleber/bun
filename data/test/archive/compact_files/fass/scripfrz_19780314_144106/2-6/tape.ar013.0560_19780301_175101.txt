@@ -1,0 +1,514 @@
+g around, I found the expose.
+Yeah.  Yeah.  It'll be over at the AIA when you get there.
+Right.  Bye-bye.
+.sg
+Right, now where did I put that expose.  Oh, here.  (SHE PICKS
+UP THE PILE OF MATERIAL THAT THE MONKEYS HAVE WRITTEN)
+All right, I'm off.
+.ob
+(ENTERING FROM LEFT) Hold it!
+.xx ALL
+Get a Vivitar!!
+.ob
+(WAIT UNTIL PREVIOUS LINE SINKS IN) Where do you think you're going, Miss Goodness.
+.sg
+I'll tell you on the way.  Come on.
+(SHE RUNS OUT THE VOM WITHOUT LOOKING TO SEE IF ORSON IS FOLLOWING)
+.ob
+(CALLING AFTER HER) You can't leave yet, it's only
+ten to two!  Dumb broad!  (HE HURRIES OUT THE VOM AFTER HER)
+.lc
+The Nun'll be waiting for me - see you there.
+.rv
+Right! (CHARLIE EXITS OUT VOM) First I'd better phone
+the Big Cheese and let him know that all of the newspaper people
+and all of the cops and all of the wine gang are all rushing off to the 
+AIA after the reporters and the expose.  (PAUSE).
+This is gonna be one heck of an ending, folks.
+.sp
+(LIGHTS DOWN)
+.sp
+fin
+.so fass/78macros
+.bs II 6 "THE GALA CECIL B. DEMILLE STYLE ENDING"
+(THE SCENE BEGINS WITH THE LIGHTS DIMMER THAN USUAL)
+.sp
+.ne2
+(THE CARDPLAYERS ARE PLAYING IN A SHADOWED CORNER)
+.sp
+.ne2
+(LOTUS AND JIMMY ARE TIED UP BACK TO BACK ON STAGE.  SHIRLEY AND ORSON ENTER
+THROUGH TRAP DOOR)
+.sg
+It's so dark in here.
+And this tunnel stinks so.  What's that smell from?
+.ob
+Probably some form of green moss, you know - like the stuff on the top of a
+pond or aquarium.
+.sg
+(TO THE TUNE OF ALFIE) "What's it all about? - Algae!"
+I can't seem to get the flashlight out of your pants pocket.
+.ob
+That's because it's not IN my pants pocket!
+.sg
+But then what am I ... Goodness!
+.sp
+.ne2
+(THE EFFECTS OF LONESOME CHARLIE'S COME-ON ARE WEARING OFF.
+SHIRLEY AND ORSON CONTINUE TO WALK CAUTIOUSLY AHEAD
+OFF STAGE RIGHT)
+.lo
+Oh Jimmy.  Will we ever get out of here?
+.jm
+Don't you worry, Lotus.  All I have to do is press the secret
+button on my wristwatch here and an ultrasonic signal will summon help.
+.lo
+But you've been doing that for two hours now and all
+I've heard is Brahms Lullaby.
+.jm
+That's not the only problem - I seem to be stuck in the rinse cycle.
+Got another quarter?
+.lo
+You've been pressing that button for so long now your watch reads
+February 29, 1993!  That's
+.ul
+TERRIBLE
+Jimmy!  We'll never get away.  We're
+.ul
+DOOMED!
+.jm
+You're right!  This is terrible! February 29 - and 1993 isn't a leap year!
+Must be a Timex.
+(JIM RETURNS TO PUSHING HIS BUTTON)
+.sp
+.ne2
+(ENTER CHEESE GANG STAGE LEFT)
+.oc
+Rocko, how could even you be stupid enough to tell
+where we had Lane?
+.rv
+It wasn't me!  It was Lonesome Charlie from the other 
+gang let it slip.  They've got Molson here.
+.mz
+Molsons?  Oh good, I'm just parched!
+.sp
+.ne2
+(THEY CONTINUE OFF STAGE RIGHT AS THE WINE GANG
+ENTERS FROM THE VOM)
+.bn
+Come on; they must be here somewhere.
+.pi
+(TO NINA) It's so dark I can't see your hand
+in front of my face.
+.sp
+.ne2
+(THEY EXIT STAGE LEFT AS THE FEDS ENTER STAGE RIGHT)
+.lp
+.ig(skip) *** skipped ***
+Remember boys, we're here to save Molson and Lane;
+we're here to bust up the AIA once and for all; we're
+here to capture both gangs and to free the city from the
+grip of organized crime; but most of all, we're here to
+find that expose and tear it into little bits.
+.en(skip) *** skipped ***
+All right boys, remember we're here to save Lane and
+pick up Molson.
+.cc
+Why Molson?
+.lp
+We're picking him up for illegal immigration.
+.cc
+But Molson's Canadian!
+.lp
+Aaargggh!  I can't
+.ul
+beer
+it any longer!
+.sp
+.ne2
+(THEY EXIT THROUGH THE VOM)
+.lo
+Jimmy, Jimmy!  I hear something!
+.jm
+Yeah - it's February 29, and March is coming in like a lion...
+.sg
+(ENTERING FROM RIGHT WITH ORSON)
+Hellooooo.  Where are you?
+.jm
+April Third, two thousand and thirteen; where are you?
+.lo
+That wasn't me, Jimmy!  There's someone here to save us!
+We're saved!  We're saved!
+.sg
+Oh, thank Burt you're okay!  We're just in time, boss!
+.jm
+Speak for yourself, kid.  By my watch we've been dead and buried for 15 years.
+.lo
+Quiet everybody - I hear someone coming.
+.sp
+.ne2
+(ENTER LANCE, STAGE LEFT, FOLLOWED BY HENRI AND PARMESAN)
+.lp
+The important thing is not to get separated.
+.hm
+Federaliste Cochon!
+.sp
+.ne2
+(THEY EXIT THROUGH THE VOM)
+.ob
+How long have they held you here?
+.jm
+I don't know.
+.ob
+You have that blasted watch, kid - use it!
+.jm
+This?  It doesn't give the time of day.  It only has an hour hand, and
+that doesn't work after 10 PM.
+.ob
+What good is that?
+.jm
+It tells you how long you have to wait for the bus.
+.ob
+Does anyone really know what time it is?
+.xx JIM~&~LOTUS:
+Does anyone really care?
+.ob
+If so...
+.sg
+Shh!!
+.sp
+.ne2
+(THE MUSCATELS ENTER FROM STAGE RIGHT, IN THE WRONG ORDER,
+PINTA, FETH, NINA)
+.EV
+We're getting all mixed up in this dark you know.
+.ni
+Shut up, I'm getting a migraine.
+.sp
+.ne2
+(THEY EXIT, STAGE LEFT)
+.sg
+Goodness!
+.ob
+What is it?
+.sg
+I think we left our dogsled on the ring road.  Have you guys ever been towed?
+.lo
+Told?  Told what?
+.sg
+No, I mean towed away.
+.lo
+(CONDESCENDING) Told a way?  Honey, I've been told more ways than
+you'll ever DREAM of.
+.sg
+No, no - I mean towed away in a car!
+.lo
+Shirley - I've been told of 27 ways in a car.  SEVEN of them in Volkswagens alone!
+.sg
+Who'd want to be in a Volkswagen alone?
+.jm
+Shhh!!!!
+.sp
+.ne2
+(ENTER BOJANGLES AND FATHER RAPPER FROM VOM)
+.fr
+How could you let Rover run off into the open tunnel like that?
+.bj
+He didn't look like he was gonna run far.
+.fr
+That's true enough.
+.bj
+Don't worry, I'm sure I saw him run in here.
+We'll find him.
+.sp
+.ne2
+(THEY EXIT, STAGE RIGHT)
+.ob
+All right, let's get out of here fast!
+(HE TRIES TO OPEN THE TRAP DOOR WHILE STANDING ON IT)
+.jm
+Hey!  Love to follow you, boss, but I'm just a bit tied up!
+.ob
+Oh yeah.
+.sp
+.ne2
+(STARTS TO UNTIE THE PAIR)
+.sg
+This place sure is awful.  What do they call this hole?
+.lo
+The Amoeba Jail.
+.sg
+The Amoeba Jail - why the Amoeba Jail?
+.lo
+Because there's only one cell.
+.ob
+Shhh!
+.sp
+.ne2
+(ENTER DIRECTOR, BOLT AND FARRAH STAGE LEFT)
+.ff
+(SHE IS WEARING SUNGLASSES)
+I don't like it at all.  It's so dark.
+.sp
+.ne2
+(AS BOLT MAKES THE NEXT SPEECH, HE TAKES OFF HER DARK GLASSES,
+AND SHE LOOKS AROUND IN SURPRISE)
+.bu
+Why are we here anyway?
+.di
+Why not?  Everybody else is.
+.sp
+.ne2
+(THEY EXIT STAGE RIGHT)
+.jm
+What could happen next?
+.sp
+.ne2
+(A PERISCOPE APPEARS UP AS THE TRAP DOOR OF THE TUNNEL
+OPENS A CRACK)
+.sg
+Goodness!
+.sp
+.ne2
+(ORSON GOES TO THE TRAP, OPENS IT ALL THE WAY, AND LOOKS IN)
+.ob
+Professor Farley!  It's Charles U. Farley, the physics inventor!
+.jm
+Not again.
+.sg
+Hey boss - he's the one who gave me that flashlight.  What's up, Chuck?
+.lo
+That's nauseating.
+.cf
+Flashlight?  Oh yeah, you da sveetie I sold
+the Solar Powered Flashlight.
+.ob
+(INCREDULOUS)
+.ul
+Solar powered
+flashlight?  (DROPS FLASHLIGHT INTO TUNNEL
+IN DISGUST)
+.cf
+But dat's stale cookies now.  I got the greatest invention
+da vorld's ever seen.  Duplicates people.  Makes twins.
+Duplicates 'em, you know.  Twins.  Both of them.  Both twins.
+The pair.  Yep.  (PAUSE) Well, almost twins. Actually, dere's a change
+in size that makes them taller than each other.  Both of them.  Twins, you know.
+.jm
+This is the guy who tried to sell me the electric sundial.
+.ob
+I'm surprised you didn't buy one Molson.
+.jm
+I'm not that dumb.  It was stuck at ten to two.
+.cf
+Vat time is it kiddo?
+.sp
+.ne2
+(THE SPOTLIGHT IS PUT UP ON THE THEATRE CLOCK, WHICH JUST HAPPENS TO READ
+TEN TO TWO!)
+.jm
+Well, all right, you luck out this once; big deal!
+.lo
+You sound like the inventor of the key wound spring machine gun.
+.cf
+That's me!
+.lo
+What happens if the spring winds down at a critical time, eh?
+.cf
+A Tragic, tragic oversight...
+.sg
+I'll say!  Instead of winding up getting killed, you'd get killed winding up!
+.cf
+(PRICKING UP HIS EARS)
+Shhh!
+.sp
+.ne2
+(ENTER LANCE, OBI-DON AND THE BLUE NUN IN THE MUSCATELS OUTFIT,
+FROM VOM.  THEY ARE FOLLOWED BY THE MUSCATELS IN THE
+LEADERS CLOTHES)
+.ni
+Why look so mad at me?  All I said was that this
+was a dull party, so why didn't we split.
+.sp
+.ne2
+(ALL EXIT STAGE RIGHT)
+.jm
+Look, we've got no more
+time for inventions, Chuck Baby - we've got to run.
+(SHOVES PROFESSOR BACK DOWN INTO SHAFT)
+Get down the shaft.
+.cf
+No, no - this really works!  Twins, you know - twins!
+(PROF KEEPS BANGING ON TRAP DOOR AS IT IS CLOSED OVER HIM)
+.jm
+That'll hold him.  First time I've ever shafted a prof and not suffered for it.
+.sg
+But you've blocked our only exit!
+.lo
+We'll have to go out the front, past the guards.
+.jm
+Listen, there must be a back door.
+.sp
+.ne2
+(HE HEADS TOWARDS THE BACK THEN FREEZES AS CHUCK COMES IN FROM THE
+LEFT)
+.sp
+.ne2
+A twin Professor Farley! 
+.sp
+.ne4
+(ALL LOOK FROM HIM DOWN TO THE BANGING TRAPDOOR AND BACK.
+THE BANGING WILL CONTINUE INTERMITTENTLY THROUGHOUT THE NEXT LITTLE
+WHILE, UNTIL FARLEY COMES OUT FROM THE TRAP AGAIN)
+.cf
+He who shafts last, shafts best, kid.
+.jm
+No time for idle chit chat, Lotus - we've got to hurry out of here.
+.sg
+Yes, to save our lives!
+.jm
+Not only that, I've got to attend to nature.
+.lo
+I told you you should have gone at intermission.
+(SHE PRICKS UP HER EARS)  Uh-oh.
+.xx ALL
+Shhh!
+.sp
+.ne2
+(ALL BUT THE LEADERS OF THE GROUPS COME IN
+IN STRAGGLING COLLECTIONS FROM ALL ENTRANCES.  AS
+THEY ENTER, JIMMY, LOTUS, ORSON, FARLEY AND AND SHIRLEY SLIDE OUT LEFT)
+.es
+I would really like to know why it's so dark in here.
+Don't the people in the AIA like seeing the light?
+.bo
+They think they have.
+.ac
+(LOOKING AT THE TRAP DOOR FROM WHICH WE CAN STILL HEAR SOME BANGING)
+Oooh, I think I hear some knockers.
+.es
+You really should have taken that remedial English course, Ann.
+.lc
+Hey, I think there's someone down there.
+.rv
+Okay kid, let's see what's up.
+.lc
+Not again!
+.sp
+.ne2
+(TOGETHER LONESOME AND ROCKO OPEN THE TRAP DOOR.  FARLEY
+SURFACES)
+.cf
+Twins, you know!  Hey, where did they go?
+.rr
+That's Farley!
+.ma
+Farley, do you have anything to do with this black-out?
+.cf
+Acchhh, the fuses in this place - they ought to buy some of my new
+blow-proof fuses, take enough current to vapourize a house,
+they really good boy.
+.v1
+Whadja do?
+.cf
+Oh, never mind that.  Do you want to turn the lights back on?
+.xx ALL
+Yes!
+.cf
+Okay, okay, everybody hold their hands in the air.
+High up, higher, that's it.
+.sp
+.ne2
+(THE PEOPLE ON STAGE LIFT THEIR ARMS UP HIGH.  AS THEY
+DO SO, THE LIGHTS COME ON FULL)
+.gz
+(LOOKING AROUND AMAZED)
+However did you do that dear?
+.cf
+My momma used to say,
+Many hands make light work.  Ha-ha, dat's a yoke,
+pretty funny, eh?
+.sp
+.ne2
+(THE GANGSTERS DO NOT THINK SO)
+.pm
+It was ... a booby trap.
+.sp
+.ne2
+(ALL DIE HORRIBLY, EXCEPT FARLEY AND JULIUS, WHO REMAINS WITH
+HIS HANDS IN THE AIR FOR THE REST OF THE SHOW.  THEY ARE BOTH
+SITTING IN THE MIDDLE OF
+THE STAGE, LOOKING SURPRISED)
+.jl
+Whut.
+.sp
+.ne2
+(ENTER OBI-DON LEFT, BLUE NUN RIGHT AND LANCE
+FROM THE VOM)
+.lp
+Shut up Julius! (HE THEN NOTICES OBI-DON) Obi-don Cortisone!
+.sp
+.ne2
+(OBI TRIES TO FEND OFF LANCE, BUT: BLARING STAR WARS THEME. OBI LOOKS TIRED)
+.oc
+Shut up!  You!  You're the Blue Nun!
+.sp
+.ne2
+(BLUE TRIES TO FEND OFF OBI, BUT: BLARING TOCCATA AND FUGUE IN D MINOR.
+SHE CROSSES HERSELF AS SHE YELLS:)
+.bn
+Quiet!! And y  q    
+Nfl0INfl0       cag0              <sg#$pG#h #Qx G#<z&a f'3L #\83r'P &c &3eg3<r&SL   *b*?Rfv6*Nf/F~rph  "w h     *vvSh   bE$-J<M"4u
+4},t",*HP "vg h    <F/bJF~r?"F6*~v*pP "w h     *vvSh    ZDDR}-Eph  D5D-
+l|l,e"$DRLdM"$,<Lu2$zd
+E<Lt\D*b%tLt\dRbdME$d*5$
+
+DB|tR4Ltt-Hh  "vg h    ETLdLtr
+"Hh   ]GW"/
+h   "w h     *vvSh   *D,e$-u|rt"4DMdUJ$<*dT5"Hh  "v~ h    F/b>FW*&*fG/f"VNVoKxh  "wph    ,JF~r?"^v:B&F*fN>GGV*~rv"FF/Jv/*v~v*pP "v~0h    $F/bNR?*FF*.FO&?/Jb~b.>wJVr?"+xh  "v~ h    e&F"?&N>G"Bv"N*?&*~n&~r&~v*`h     "w h     *vvSh   JDD
+r$
+"<
+2$D,T*
+|J$Mt42DD
+Bt"$E}uM"$z$*=u,t"r$M4=-"h     "v~0h    TJvOB*>w.f&rw"&FNf?f^*&"ph  "wph    LvB&FB?&*gV*w.bph    "w h     *vvSh   ZE$t
+t"5,=,RLrBlLturE,*$}-2D-4,d2<Lrh     "v~ h    =>.Fbb>R?6*v"&*/G*&N>G"F/*&F"O>vNv:Fxh   /BN*.F*/B~2'/NvWph  "vg h    $F/b>F"w/"nSxh    "v~ h    tO"vfbW"NR/"~2WNv/7&~rNv7/FNvrph   "w h     *vvSh   zE%tLt\dRb%<t\d*dM%$D*$Hh   "v`h    5>*w*G.'/"~2WNv/7rF~~ZpPbE*LtDL
+U$DR|$-|b$,B<ttl,lU|b$D*$<RHh    "wph    \R&F/&.CzD%L<EDeJHh  "w h     *vvSh   RDtTt<D-DL]DM,"},tB$D*}tUbD<*D,5"HP "v h    Lvz>./FN*bFF/J?&*W/7 h    "w.@h     W'Vbph    "w h     *vvSh   2DDR$M,
+%<LrHh  "wph    &FWJf~vZ&."ph   "v~0h    DF/b.v?JbFF/*wvFFNv:f.7"6wJ~b/wNn&*ph  
+&~rw"NR&.fB/vF"?2NrFF*/*BW/@h    66"/O'?^*ph  "v~ h    $FBbOf/bVf"Nw*."&Fxh   "w h     *vvSh   :DDRDtED-"$D*l|t\UJ=5%,42BLt4*D*r=B,BHh    "wph    TO&FO&F*WGSzD"D
+2l|t4-MuM%$TrdB}4-"M"HPTJw./zrf/"V*.Rr"O
+&&ZvB&&oJv>G"pPL
+Vr~6F/v&FWr&&B*>VNvr'.fF~'ph }&FR~v*ONr
+>FO/bWJ&~rFvzvw*ph lFr&~/2F*6n.fbB_2&F*&F/"r&WNF*r~B>v~&v/7ph   u&F"?g.vwJ`h     "v~0h     \>v>>FFBph   "v`h     L
+GNZh     "vg h    V>G"v62?V"P "w h     *vvSh   DDb$LRD}$LeJh     "vV@h     5>GW"ph   "wh     "w.@h     4>Nb
+h   "w h    ]>F#z>r>NszN*?f*FB>Nr/6/NvR>*7>O&."&rN/"&.27&Wh   ONR&.w&fgJ6/"6*&r.~2FF*FF/f/&V.rph  "w0h    D6WW>NrrJ>2/R&FBN2F.fB&F/6*'>r/22E$E$}=h t$}tr
+$%J*w.f&rw">Nbph    "w@h    D?w:j">Vf&r?BF6Rn&RwJ&N66W.vRwOvJrFO/v2&/h 6."NW6WW~2F.Gw>JpP "wh    4VZoF.'"bwOr&F"w&FR>HP "w.@h     ,4
+5h   >~Wr>"&F P&R6O">r7.Rph    "w h     E&FOP "w.@h     44
+5`h  V.CrNRfN^R&FO2FszJ&~r?BfN^R&FO2Fr~v*O"P DJFFNvXP "w.@h     ,4
+5h    G&v_pP "w0h    mN.Bjv"J&FNv2&FBFO*7&Nv_2b&~rph    "w@h    E&FWJFBf~vZW''JfOGJ&znRbph    "wh    T~V*~rBf/"wFf*&FR>~~Gr,e"lLd$,$eD*|%,4-
+L<
+$-%$*h     l>B
+n&CxPRwGlL
+GuM$zgtd'tD,D,ph   eN.B
+/h  "w.@h     $Ph     >vBoHh  "w.@h     <4
+5
+h  "w h     *vvSh   2DTlmJt"du%-4|l*trbD<*D,5"HP "vfph    Df.Nr:fOV&'b&NnoJh     "vVPh    f~v_f^*Ff2bF/"Nw&r
+F&OFN6f`h     "w h    -&FWJ>/&*V>G"v62?V"r>*6:&*>Fvf*&Nv:pP "w0h    mN.BjV~^R^NvB~2v.w"v62.f/G.7&.&gph    "vVPh    TFr&N"N*f/7/6Of+xh   "vfph    }~V*.wf*'/"F~r?"F6*
+.g*~bG.nw/ph  "w@h    ]bw/"&"/*b/&FN*6.f"/'&F*
+FO/F*/G>..rn*f h   g&FRO2j>&F"&Fv:6w.bbJn.rj>2>FBN*N".fGJ'V+xh   "vfph    2E$T
+DeJJvGJb:w.f"*J.6B
+V.rFFNv;ph     "vVPh    <vrbvrf'Wjfzv.V"&z>/"W/"`h     "w@h    ~Bjvz~66.f*bV
+>jjJ'/"rbph    "vVPh    f~vZF/&*rv*/B
+fw"~2>~~"f.b>."NwFz&F"/rr`h     "w@h    2rrbD=}d,ddLd:JrrbN.rrrJn.rrrpP "vVPh    Zrrfv"fz'>rO">NrfN/"Ov~vv
+"V/&B>F">*&vv*r/6/>B`h    4J6Hh   "w.@h     ^/6WJ>w h  NNr&F"/"OG.*b'>G"g~jFF(h  fF~f/""v^Nf:6~FZNwf~g6.Br>R>.wB/"&F/Rv">*:O"fN^*O h   />2ph    "wh    F/bFR&N&b?"nVrgO&FNf:rr`h     "vfph    5FR&.'&."w/>w"ph  "vVPh    ,N2>F">*?&&*vr?B&F*'/&bn>~"'N6*/P VfB&.Bph    "w h     *vvSh   Ddu,"$Zt2$ETt$-t"dd
+|2d<E"rdbd||Z$zDT
+h     BwG<| P \oJ>N6*Oh   "w.@h     xP O.>GJrr`h     "w h     *vvSh   jDDb-BU,d-5,jd},$EJtBd||2-r$D-$*Mt}$-h  E|Db|2$E,tD-d"$DR$t*Md4,"}U"rDD-*Mh  ]LD,t*4}4-:l|l,e%Hh  "w h     *vvS(h   jE<,r$*dLtE%4|l*$ZUb<R$LDbD
+d*U,DM-tM$BMh  |Dd%DTd"-LrDD*r*d|t]
+$},t"
+*%<Tu%JuxP|$,"|DL-5%-<b}U"$DR$t*\Lde,$t:TlmJbd}%-2t PM$DR
+Ed
+U<z4,Db%-$Lt:DD*DZlu-%jt"dt|]h  M-%Td,"h     "vV@h     5>GW"ph   "w h     *vvSh   RE$*$,"|DL-ELLt:}-B$D*$<RdbdL5"-|b|t(P,d$}:d"Du-"Hh  BwGd`P "w.@h    GW"/BW.f/
+P "w h     *vvSh   ZE<---|r$*$,"|DL-DL*Z$u<rd"$DRLdM"E
+$D*$L<<-5 h   T=,b}b4LtBt"d
+EU,DM-DzL$|ubD*$L-PLD}%Le$zDD*-E$-D,dL<"|2$D*,$L,d*r$d\u-"Hh  "w h     *vvSh   RDe$-l|lTu"bDD*t<-25|R$D*
+dz,uD-D}<eJt"$-4-Tu$eJ$<RL<"Lrh   D=u<Lt:$LjDL<E"t"$,<Lr$zt:r
+*,tB|2DD(h  4M%"4U*b$D*D,"$|$L-2MRt"Lt:d|trHh    "v h    rw"duLt:|t:"u$D-d}4*u%4,ddt:e4

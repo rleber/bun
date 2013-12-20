@@ -1,0 +1,568 @@
+.so fass/temacro
+.ob
+Observer four-zero-niner mission recapitulation.
+Monitoring progress of designated target subject and 
+companions from the Fallen Angel Hotel currently moving through
+a black hole by means of
+a Kerr-Newman-Kruskal Singularity Rotational Isolator and
+Horizon Tunnel Magnification Device. Last port of call was
+a close simulation of planet Earth, circa 1968
+created by a human named Ambrose as a preservation of the appearance of his
+world before a global war destroyed most of the planet's surface.
+A young female
+named Paula stole the purses of the females Wanda, Fisher and Carnifoffle, resulting
+in a temporary loss of the reality transfer mechanism.
+Following the recovery of the purses from the man
+Ambrose, the party successfully departed by means of the reality transfer
+machine. Observer four-zero-niner continuing to record
+for direct transmission to our Mistress, her eyes only.
+Out. 
+.sf GIMRACKERY
+.br
+Transmission completed. Report 
+.sf ELECTRONIC~MUMBO-JUMBO
+.wa
+It's freezing!
+.ba
+I must say the wind is exceedingly bitter even through my fur.
+.sw
+Will somebody close that window before we all freeze our butts off?
+.sf WINDOW~CLOSING
+.sw
+Geez, I'm sorry we found that window at all.
+.cf
+We're lucky we found it, the way the stupid Ontario Liquor Laws make you board pub windows up.  I've been coming to the Fallen
+Angel for years and I never even knew it
+.ul
+had
+windows till Basil found this one.  And even it's frosted over.
+.sw
+So now we got a window we can't see out of unless we open it up
+and pretend we're brass monkeys.  Big deal.
+.pf
+Streetwise, it is a big deal.
+Now we can look outside to see if we're in any danger.
+.sw
+If we're in any danger, it's because we're so stupid we
+go outside looking for it.  For once, just once, let's stay inside where we'll
+be safe until we get zlapped somewhere else.
+.ba
+Really, Streetwise, have you no curiosity at all about what's outside that
+door?
+.sw
+Nope.
+.ba
+What is the younger generation coming to?
+.sw
+I'm avoiding coming to a conclusion.
+.wa
+I had a client once who did that...rest his soul.
+.cf
+I don't see that there's any harm in looking out a window just to
+check where we are.
+.sw
+Well, what did you see?
+.pf
+Not much -- it was too dark.
+.wa
+And too cold.
+.pf
+One thing I'm sure of though, we're not on earth.  Far too many
+stars in the sky, and not a single recognizable constellation.
+.ba
+One other thing -- the odour of the air is so refreshing, if
+there are any inhabitants on this planet at all, they have 
+not yet developed a technology of fossil fuels.
+.sw
+Huh?
+.cf
+He means there's no pollution in the air.
+.sw
+Great, we'll never have to worry about black lung disease.
+What a terrific place, let's stay forever.
+.wa
+Ooh, the cold's starting to get inside.  I hope the sun comes up soon.
+.pf
+Well, Wanda, that's not something you should really count on.
+.wa
+Why not?  It has to come up sooner or later.
+.pf
+Not really.  Planets rotate at different speeds; we know that
+in our own solar system.  Even on earth the nights last six
+months at the poles.
+.wa
+You mean it could stay this cold for six months?
+.cf
+With no heat in this bar, we'll all be icicles in half that time.
+.pf
+Six months, six hours, anything's possible.
+.ba
+I might point out that it appears to be getting brighter even now.
+.cf
+The mutt's right; look at the window!
+.sw
+Hey, I've been up for a lot of sunrises, and it doesn't happen that fast!
+.pf
+Not on earth.
+.sf WINDOW~RISING
+.pf
+There, see on the horizon?  It
+.ul
+is
+the sun!
+.ob
+Observer four zero niner report continues.  Open window of Fallen
+Angel bar reveals stark red sand desert, no visible signs of life
+in any direction.  Small blue-white sun on the horizon.
+Glint of metal short distance from bar.
+.wa
+That means the planet is going fast?
+.pf
+It's rotating at an enormous rate.
+.wa
+So the days are going to be pretty short, right Professor?
+.pf
+That's right.  How short, I don't really know; judging by the rate at which the sun came up, I'd say
+no more than five hours from sunrise to sunset....maybe a lot less.  If we're
+going to do any exploring, we'd better hurry.
+.sw
+Exploring?  Are you out of your mind?
+.cf
+Streetwise, quit being such a paranoid little jerk.  There's
+nothing but red sand as far as the eye can see.  Nothing's
+going to jump the professor if she wants to poke about a little
+for scientific curiosity.
+.ba
+To be quite honest, I fail to see anything worth investigating at all.
+What are you on about, Leonard?
+.wa
+He's pointing at something.
+.ba
+Ah yes, I see it now.  Some sort of metal structure protruding
+from the sand.
+.wa
+Sure is shiny.  I wonder what it is.
+.pf
+I think we should go take a look.We've got at least an hour
+before the black hole takes the bar somewhere else, so there's plenty of time to get there and back again.
+.ba
+It likely won't do any harm to spend a few minutes investigating.
+.sw
+I give up.  If you don't know by now that nosing around means trouble,
+I'd just be wasting my breath telling you.
+Me, I'm staying right here and getting some sleep.
+.cf
+Streetwise has a point, people.  We look like we could all use some shut-eye
+after everything we've been through.  All except Leonard, that is...honestly, I don't know where
+he gets his energy.
+.wa
+Neither do I, but I'm glad he's got it.
+He's everything a girl dreams of.
+.pf
+We'll get some sleep as soon as we have a look at what that thing is.
+.ba
+I believe I will accompany you, professor.  I for one am interested in
+learning from these new worlds we visit, not hiding from them.
+.pf
+Good.  We won't be long, people.  Bye.
+.sf DOOR~OPENING
+.sf FOOTSTEPS~(AND~PAWS),~FOLLOWED~BY~DOOR~CLOSING
+.ob
+Observer four-zero-niner report continues.  The canine Basil and the female Fisher are
+departing for the metallic structure approximately
+one hundred meters from the Fallen Angel bar.
+Observer following to investigate for possible danger.
+.sf WIND~SOUNDS,~FADING
+.cf
+Wanda honey, you want the cot in the back room?  I'm used to sleeping on a board, and the nearest thing I can find is the bar.
+.wa
+No thanks, I've tried that cot a couple of times, and I never get any sleep there.
+.sw
+Well, if you two don't want it, I'll take it;  I could use
+something soft under me.
+.wa
+Funny, it was because of talk like that that I couldn't sleep.
+.sw
+Goodnight, people.
+.wa
+Night...even if it is morning.
+.sf DOOR~CLOSING
+.cf
+Yep, pleasant dreams.
+.wa
+I hope so.  I'm afraid I'm going to have nightmares about
+Xenothon, Valuria, and all the rest.  You know, I wish
+we could come out on top just once, show the universe that we're important too, and that it can't just
+toss us around from one mess to another.
+.cf
+Yeah, we haven't made much of a showing so far, have we?
+.wa
+At least you can defend yourself.  I
+wind up being the helpless victim all the time.
+It's almost as if the whole universe was out to get me...
+Ahh, I need some sleep, I'm sounding as paranoid as Streetwise.
+Goodnight, Emily.  And goodnight, Leonard.
+If you're staying awake, take good care of us, eh?
+.sf TWO~SOFT~THUMPS,~FOLLOWED~BY~DESERT~WIND~FADING~IN.
+.pf
+It looks like...a spaceship.
+.ba
+Look, here's a hatch of some kind.
+.pf
+Just a sec, I'll see if I can open it.
+.sf CREAKING~METAL~SOUNDS
+.pf
+Pretty rusty.  Boy, I wish I had Leonard's muscles.
+.sf HATCH~OPENS,~POSSIBLY~ACCOMPANIED~BY~A~SMALL~HISSING~SOUND
+.pf
+Got it.  Well, are we going in?
+.ba
+It does look rather dark inside.
+.pf
+Yeah.  Still, it's silly to go to all the effort of opening that
+hatch and chicken out now.  And I did bring a flashlight.
+.ba
+I suppose there's nothing stopping us, is there?
+.pf
+I guess not.  Oh well, ladies first.
+.sf FEET~ON~METAL~RUNGS
+.pf
+I'll just get my flash...wait a second, the lights just came on.
+.ba
+They must have been activated when we entered.
+.pf
+It's a wonder
+they weren't damaged in the crash.
+.ba
+You think this ship crashed here?
+.pf
+Crashed, abandonned, who knows?  Who even knows
+what kind of creatures built this ship?
+.ba
+From the design of the 
+chairs and other furnishings, I would say the ship was built by humans.
+.pf
+Humanoids at least...but not likely earth humans.
+This craft is far in advance of anything
+our technology could produce.
+.ob
+Female Fisher's analysis incorrect.
+Comparison of ship's interior with record tapes reveals it to be of human origin, though of an era
+considerably later than that of Fallen Angel Hotel.
+.ba
+The air smells so ancient...as if it had been closed up for thousands of years.
+Professor, what's that you're leaning against?
+.pf
+It looks like a glass cube of some sort.
+.ba
+It seems to be glowing...as if it were alive.
+.pf
+Do you think it is?  Heaven knows what an alien life-form might look like.
+.ba
+It appears to be installed into the ship itself, by some sort of mechanical 
+apparatus.  How odd...it appears to be a combination lock.
+.pf
+A combination
+lock?  Tumblers and all?
+.ba
+Yes...Strange that a race so advanced should use
+such a crude mechanical device.
+.pf
+Perhaps they were concerned that their power might break down, and so
+they provided mechanical backups.
+.sf VOICES~AND~HORSES'~HOOVES
+.ba
+Wait a minute; I hear something.
+.pf
+Maybe the others decided to come with us after all.
+.ba
+I think not, professor...I believe I also hear horses' hooves.
+.pf
+Oh crumb.
+.sf CREAKING~METAL
+.ob
+Observer four-zero-niner continuing to record. Two creatures are now entering
+the spacecraft. Both appear to be reptilian bipeds, approximately two meters
+tall.  One is wearing ornamental
+robes and similar articles; the other would appear to be a menial.
+.pf
+Oh my God, look at them!!
+.fj
+Behold, leader...aliens.
+.fn
+Indeed, Janos.
+Explain yourselves, aliens -- who are you?
+.pf
+My name's Arlene Fisher.  And this is Basil.
+.ba
+And who, pray tell, are you?
+.ja
+The animal speaks!
+.ba
+I would be careful whom you call an animal.
+.ny
+I am Nyala, leader of my people.
+And rightful leader of all on this planet, including alien visitors.
+Speak, aliens: how did you come here and why?
+.pf
+This may take a while to explain.
+.ny
+My people regard patience as a virtue.
+.pf
+Well, you see there's this singularity...
+.ba
+Professor, it does not seem likely that creatures who ride horses will
+have the requisite knowledge to comprehend the complexities
+of space-time singularities.
+.ja
+Huh?
+.pf
+Basil, it's worth a try.  You see Nyala, every now and then the singularity
+sort of...well, gobbles us up.  Or rather, the bar.  Well, anyway, whatever's in
+the bar when the singularity goes gets taken along for the ride, so to speak, and
+we just happened to be there when it...
+.ny
+Enough!  You will tell all of this to the
+War Council of my people.
+.pf
+War council?  There's a war on?
+.ny
+You will learn of it in time.
+.ba
+Professor, it is imperative that we do not
+travel too far from the Fallen Angel.
+.pf
+Basil's right -- if we aren't back at the bar when the machine takes off, we'll be stranded here
+forever.
+.ny
+You cannot be freed until you've explained your presence here.
+Janos, bring them.
+.ja
+Yes, leader.
+.ba
+Now, wait just a...
+.sf SOUNDS~OF~A~STRUGGLE~FOLLOWED~BY~A~THUD
+.ba
+Uhh...
+.pf
+Basil!  You hit Basil!
+.ny
+Further resistance will not be tolerated.
+.pf
+Let go of me!
+.sf MORE~SOUNDS~OF~A~STRUGGLE~FADING~TO~SNORE
+.wa
+(WAKING) Hunh?  What is it?  Leonard?  What's wrong??  Something outside?
+Emily, wake up!  Leonard says there's something outside.
+.cf
+What's that?
+.wa
+Look out the window, there's something coming this
+way awful fast.
+.cf
+Oh, where are my glasses?  Ah, there.
+(PAUSE) All I see is some kind of silver dot moving along the horizon.
+.wa
+But it's coming our way.  And fast.
+.cf
+Ooh, you're right.  Where did Streetwise put
+those rifles he picked up back in the amusement park?
+.wa
+I don't know.
+.cf
+Then look!
+.sf RUMMAGING~FOR~GUNS,~HOVERCRAFT~SLOWING~AND~STOPPING
+.wa
+I think we're too late!
+.sf DOOR~BEING~OPENED~RATHER~FORCIBLY
+.fq
+(VOICE THROUGH ARP) Welcome, strangers.  Please identify yourselves.
+.cf
+Uhh, name's Emily Carnifoffle.  Call me Emily.  And this here's Wanda.
+.qu
+You will come with us immediately.
+.cf
+We'd rather stay.
+.qu
+You are not being offered the choice.
+.cf
+That sounds mighty unfriendly, doesn't it, Leonard...
+let 'em have it!
+.sf CLANGING~SOUND~-~-~METAL~AGAINST~STEEL
+.wa
+Emily, Leonard doesn't have a chance against them.
+.cf
+If he holds them at the door 'till we find the guns, that's all we need.
+.sf MORE~RUMMAGING~SOUNDS,~THOUGH~JUST~FOR~A~MOMENT
+.sf RUMMAGING~STOPS.
+.cf
+What are you doing?
+.sf "CLICK!"
+.wa
+Locking Streetwise in the back room.
+.cf
+What for?  Streetwise picks locks like my ex-husband picked his teeth.
+.wa
+He'll be able to get out, but maybe the goons won't be able to get in.
+At least he'll be safe.
+.sf ZAPPING~SOUND
+.cf
+What was that?
+.wa
+They zapped Leonard with some kind of gun.
+.qu
+You will come with us.
+.wa
+How can a girl turn down such a gracious invitation?
+.sf FOOTSTEPS,~DOOR~OPENING,~CLOSING,~THEN~DEPARTING~HOVERCRAFT
+.sw
+Hey, what's going on out there?
+.sf LOCKED~DOOR~RATTLING
+.sw
+What's the big idea locking me in here?
+.sf MORE~RATTLING
+.sw
+Well, no locked door ever stopped Streetwise Porhane from going where he
+wants to go.
+.sf LOCKPICKING~SOUNDS
+.sw
+There! Got it!
+.sf DOOR~OPENING
+.sw
+All right, you guys -- what's the big idea?
+Guys?  Hey, where is everybody? (PAUSE) I guess they must've gone to
+look at that thing out in the desert...wonder why they didn't leave a 
+note or something?  (PAUSE)  Gee, it sure is quiet in here.
+(PAUSE) All alone. (PAUSE)  Well, no point in sitting in here by myself...
+It's only a couple a hundred feet or so, no harm just checking things out.  Who knows,
+might be interesting.  Hey guys, wait for me!
+.sf DOOR~OPENING,~CLOSING.
+.sf NOTE~REVERB~ON~VOICES;~DUNGEON
+.pf
+Are you all right, Basil?
+.ba
+No.  My head is throbbing and I'm locked in a
+cage.
+.pf
+This isn't a cage, Basil.  It's a prison.
+Underground too -- the lizards have built an entire city under the sand.
+.ba
+No wonder we couldn't see it from the Fallen Angel.
+How long have we been here?
+.pf
+Too long.  Who knows how soon the machine may leave?  It may be gone already.
+.ba
+You mean we may be stranded here?
+.pf
+It's possible.
+.ba
+What a thoroughly depressing thought!  Stuck here forever
+among a tribe of primitive lizards.
+.pf
+Not so primitive as all that.  Did you know
+they're telepathic?
+.ba
+Telepathic?
+.pf
+They weren't talking to us earlier, they were communicating by some sort of mind-link.  That's how they talk to 
+each other, too.  The difference is that when they talk amongst themselves, we can't hear them.
+.ba
+Selective; rather like different radio frequencies.
+.pf
+Look outside:
+hundreds of them,
+and all silent.  At least, to us.
+.sf HEAVY~STEEL~DOOR~OPENING
+.ny
+I am glad to see you have recovered sufficiently
+to answer our questions.
+.pf
+Wait a second, we want some answers too.
+.ny
+Very well, you may ask what you wish.  As I mentioned earlier, my people take great pride in their
+patience.
+.pf
+Just what is this war of yours about?
+.ny
+It is a war, like any war.
+From what little we may see in your minds, your species is as
+familiar with the concept as is our own.
+.ba
+No self-respecting dog ever went to war.
+.ny
+Your species is scarcely less violent for that.
+.ba
+Me, violent?  Never!
+.ny
+Perhaps not.  But the predator instinct lives on in your subconscious
+nonetheless.  It is that which is most easy for us to see in your mind,
+the reason why Janos took it upon himself to subdue you so forcibly.
+The veneer of civilization runs so thin in both of you, you will
+forgive us in overlooking it at the time.
+.pf
+The veneer must be pretty thin in you too if you're at war.
+.ny
+Our war is one of self-preservation...we must fight to survive.
+A brief history may
+be in order.
+You see, many years ago the spaceship you found in our desert was discovered by
+a team of our scientists.  Inside was a device, a machine that was more
+than a machine.  It...contains information.  A great deal of information.  In
+fact, the accumulated knowledge of your species.
+.pf
+.ul
+Our  ]   0  
+pJ:U`J:U`       sag0              <tgC0efC$pbc #Qx sPac@s"p'3<d"X "K%1 R&C$oC e'CHe   h    VN/r/B.FB&NFr?"'.Nf"&F"FObO"w6"/Nvv"/2ph    "vwh    &FW*O2vz~Nw"Nr&VwNNvrO#Z>*6w.v"FG.*V&Nn.gN~vbNn>/h ~2n.nW~bN/".6N/FG.vF/"&F*6FOpP "vh    v6/wbWF2&F*FO>'.Ng"v"F.v."vn*&n*g&/h /">r/
+rO"vF.g&/>v."6.nw2ph    "w`h    ENRn.b&F*FO>b>fbRb.g"Nb/7/'/&+xh   "vwh    O"OO'.f/fw"r&F*~NwBOFF"FF*&W6N(P6~g&Nw2
+'&.n.vF/v2NvfnFN~r`PO>FB>R&FV>G"v.f"F.g/&r&/6Vfw/6NfO&&N~bnR&gJpP.vf'.f&.gb&FW*>
+FO?&..n.g"nvv?"/.fRFz&FR//2&zvFN@P?&FRv/:^v>F.&>*>.fB*/"r/6.r.6&*&FRn.vOR~2FF*V*>.vF/&v~"`h n
+&N7""&W6.f.">&FNr/7&&*b~vR6FN~rf.g"FF"FF*&VFv~F~?Hh v~2N/./>w.f"vO6*W
+6FvR&zWGvB/"Nw&zRbvBn^R/(P~2/W/6NFf*&F/Rr&/J&~^*>Jbv"6/"/
+V.b7&&*v"fh   ^7vjF/&*ph   "vh    lvB&F6*>Fr&."VFNv#ph     "vwh    E>*>/*&F*FFNv^WbFF*NfwF/3Xh   >*FR~wF.of&N~rW>~2FN6*r>*6.>GB&F*FNfwFbvO&~Ph    ?&F"NWVN/W."B&z7.&R/>rW&Nph    "w`h    LvBzFF*NfwF/2>.wB&zv>&B&*.w&O7'ph  "vwh    uN/2r&*OvwJO2&FB>*"V.r&W.v&Vw h  g/vr.6B&/6wzf~v:&F"/66b&.nR&N6fN.gBph   >**6f>g'NNf:rw/wN.G'/*O&vznO&Of*&z6.."/`h ~/"n.&Nv*&~z7.&*&zFVb&*N6Zrv*v.V".6B^vw>f.&v*7vj&Fw*>z*Wbf h   G>OFB&FR>W~2&F*7.*v*>NFb*f*&zVOV*"ph   "vh    }&FO..gJ&F*6"v2n.vNv>F/7'.>vf*&"GVnwF6*.v>v."N`h    &G&.>Fw/"&.OO&'KZ>"n^/*&NvZ*r/6W>Ncxh    "vwh    t~v6*>*.*&*&/fN*r&FRFOv".v&/'&vB&F*Nv6Of/2JvFN@PO"/&/b>*>fbRNr&N~r&z&W'>FF/6/6O&N~bnJ/FOBph    "vh    t/B>GJF6.b?"Nw*nF*/R~2FFO6v>fV&>*F/6NR.6w+xh  "vwh    l/"6V/vo'&N'F6*.w&NB.Vw&gJ/6Vw&."/7&~j~6FNv:O"ph |Fv/6/B
+V.w"/NW~2N'2~rFF.Ov.'J.v6onVw'6*6f.V"&FPh    >6
+7.Fb6.g"~r&.O7'~vvF~f'2r&>b&~nw:B&F*.w&O&*fNph  G>NFb*/BNvG.&Nvr&F*FOv"FF*&W6N*>O&Frph   "w`h    $Vr?"*
+fO'&F*6Wn~f6N&.g#xh   "vwh    ~r&F*6~w'Jbw/vv6N&Vv(h O>.fbV6.vF."rN*6.*br&FRfB6/:F/2>*6*vNv.B~nR6VN&F(h    f6O&f*ph  "w`h    LJv.f&b?"fb.&F/~2/26VN&F*ph   "vwh    dJvvw".f/Nf:&zN*pP "wFPh    4NvF.."f"rF*vV6/v:&rn*pP "vh     UF.f&F~bh    "w`h    T6Nbb*^f:&Onsxh   "vh    U&F"?FF*&N/">FzGN."&z^fb>v&
+r&FROnN"P]>F"bF*&*&~v:FW+xh  "wFPh    M>F"J6*F~v*fVw'//rrg/6v:o&2nF/ph  "vh    T/BF:&N"*>W"F/&+xh   "wFPh    M/&.gJ*&&r?"&FNv2&FB&F*&Zf">.fBf/"FOh vFw.r6NfN*WRFNjxh   MFRO6~n/>/*vr&F&/6/"v2
+vf"Bv""Vw/"J>NFb*7.(P o&z6Nv"F/pP "w`h     E.g/#xP "wFPh    -&FR&2~v*F6F.b&zvO6*V*'Vn.v&w/w>/`Pf/Bf2>O&>W~V/>V^v/7rvf"6Vw'/R6F@h   NNr&F*'N>GFv/~2&KZW"F/&*&.v'2.N6^gJbv"FF*v>G"vNfb P N*nNv*`h     "vwh    F.f&F~bbO"O&n*&r/*w/&nN/6F~vN>"?.G"ph   "wFPh     eNRnJ>zph zwb,dGt$|}'t},dLt:gdd}t8h   "vh    e>G*N*.gNf:wNf
+>&BFWfw6w>#zW.gJN*7&v"v&Fv8h   &z>NrJOBph    "wFPh    \J"&*FvN*v2&O6NvrNrFFOVv&/w.vBO'FF*Nf:~vRph   $J6F*&F*6f/7"&z>v&bvBNv?&&NF."o.f2&z&.jNb&F(PF/~b/7.&Nf:&FVj&z'W*FWrw&."bJ6.vBN*b h    "w`h    >F"RN*>~Nvr&zFz&z/xh  "wFPh    f.6*Nw*&z&F*FOVGbJF6*vzNg&//7"NrN*rzf/>Vfbph DNr/"6/:F/2O"vNfb&*'/6Zbf h   ?&FR>OB>NfB*VNv*pPzwb,dGt$|}'t},dLt:gdd}t8h   "vVh     UF.f&F~cxh    "wFPh    <FbVfr&N"*6v">v&
+"&FPh    .f~6&N~bJ>6*Nw+xh   "vVh    ,vzBnF/rrg&F/R>vz~f*&FW*ph  "wFPh    4Fr.v6w'.v&*r>F"O&"Nw*Ff*NrN/Fv#ph     "vVh    TO"Ovw&FNvrrrvWW"
+BrO".o'Jph  "wFPh     |>Of*O"&znRph   "wb
+DdLt?d|7tu@h    "wFPh    uz&FOO&*nO&Of*.fO'J'w66/F/6NR&F/?6*W. h w&z.g.&Rn*frf~vrrvr~wG~bV.FfOj"fBrrvFVnjph %>.FbN2&F/JF6.b?"&*n.w&r~wG~b"bJ&zh  2vNbh  BwbuT$$,wd7t|7uDE,t$Ugt4tdd}<T'tu$|ddLd?u$ETt$-dLwt\=u,t h  "wFPh    2D,\dUJf"vrbVfb&/'/b&FO2B&z&*f*Nw*6Vv"OBph   N2O".f"FVr&F"JFzvB&^R&F*>~nb~rFFOvf"@h    JvNfbvO"fFWNr&F*f/G"pP "vVh     }N/2bF.f&F~bph    rwb4|}E$-0h     "wFPh    ,O"OW"
+V'&/"~2/.w&NB&F*>~nbOVNv*pP:wbD,tu$D|rutd
+T<E$-"gt,|Lt?d|47tu$uDD/t$$t4(h    "wph    Dfw:6~*JF.vFF~sz&>bF/SzJ&F.vG">RfBFNjZNr&"nNBrrph \F/b>"
+VNw/&RbJ&.n.n&/vw:
+*>2NrFF*'J~b&F*.fOF&~rph   \Fr.F"Jf>/B&FCzvn/&Fv:VfgHP7>."?>~Nvr~rbrtJv'&
+>/"FF*v~Bv"&*v6/w/B6Bh   bwbd|5L\t?uu,t%Gt4|dD}<,'dOtTdgt$t}utLt<Ld?t}Tph    "w`h     e'&./'>*h  "wph    F
+Nw*&FvZ&*w6/?&>rFOVGR&.cxh    "w`h    L/BF:&N"*6v"/3xh    "wph    6~Ff>.BN/"'6_7&~j&"nW&bFFNv:Nr&*&/6/"rb?h vvB&F*~vgJ~v*/*vFzr6~Ff:'bph   "vh    LR&F*&F/'>OFBNSxh    "wph    ]NRn.b&F/.b?"FW+xh  "w`h    >*f.7"&F.j>O&BN*r&FR`h     "wph    5&FWJVr?"FF/*v:r~nW&FNvro/BF6R>"&F.j`h     "vh    -&FR6O7"F/~b/v/OW/6*g~j/*pP7F/&">Rr.*/"F.gv:&*&/pP "wph    $vz~F.jrv~v*~2&*'.fv.g&>rF/**w.&V"bf"&FW*?P
+6B~2/2N>"/GN&*`h     "vh    &FVrJ7.>>/7">*f.6RF/RNnnV&N&VgJrwNf>NfB&.'&f/0h    .*Z6W~vrph   "wph    <J&F*vJb*>fBv/6W?.W>zJ'/"6:W'N&Rph    "vh     UF.f&F~bph    "wph    jEDL<E"
+RJn&2&~:`h     "vh    ]>*o/"&FNj&.6RF*6r^fb>v&
+pP "wph    F*wvB.rVJw/J&r&ph    "w`h    |6O'"&Nv?6OBrrvfW"?vzph  zwb,dGt$|}'u<Ld<Lt?d},rGu,tdLt?td|}%D-h "wb4|}E$-7t4$t?u$wt$-U'u<t h   "v~ h    l~6/6/"6/"oV/rnvNvW/"6~w&Ng./r h   ,Ff*/G/v.B&zfff.bv>Vb&z/.V*n~fO&v:~b&v/"VV.@h    vB~ovN~gph  \6Ff.rv>.b.o'Jph -Nvw~b'V>>f*Nph  6".>v/"&NF*6.g"v"6'/&*J/vr/vw.f^v>bph   Nw7&N>FNv:>/~v*6.w"b&zF~&RGJph  Bwb,d,5%|tt-4Lt-0h     "v`h    %>.Fbb&OO2vFF/fNv*V/v*?6*>'&Vr/'.g6WNwFzb~FfN*pP "w>h    Jv~v&/"N27'./G>O*nvv."&r>bbvB&F*~6Wph     "v`h    N.BbnN*FF/J>Fb*6*b&FWJ/&*Vr?"v~Nv:&z6v"/0h    ~F/&*&Fw.>Bb&>rNr
+&.f/&FN2fOV"'Jph Jwb$|}'udLDLt?tu,wrdL\/dwt,D-4
+uHh   "v7 h    $FboJ?./Grj&N
+B.o&/v2&F&&*ph lJG/"N**vn6Ff*`h     "w>h    4W/7"&f'JrN*g>O2Fr/N/?./GfN6*~wf.vv"&F/Sxh   "wb
+DdLt?dDLeh    "wVh    >OFB~vRz7'~vph    o>*.fBv"&^*&F*6FvRrO2F*o/&Sxh    "w>h     -N/2ph    "wVh    LFrO~fNrrg>*r~Vo.vN6&*vO&BNjb'/"Nw*b?"ph  "w>h    F/bF*nN>GBv"*&f*&r&f2b/B>F.bO"6~n/&zON`h   ~Vo.vN6&N~bbf.vv"O
+zpP "wVh    JFzvB.v&W&f"NWn.vNv:brw&FRNnv/J.*rNWnNf h   R/W&fNv:b&z>F"6j~2vno.v&NvrRN*.6/'Nv;ph     "v`h    >*fbO"WBph   "wVh    LFrrw>RfBO"V&Nvrph    "w>h    vr&FB?>"Jfb
+FfFNB&N6f/.v6*ph   "v~ h    ,~6/6/"6/"oV/rnvNvW/"6~w&Ng./rF6R.6/7.FgJfv&.@h    W&&>/"7.V.7"vB~ovN~grrwFF/J*.g&gJr
+6.f.B~~R~2h    f6''/2&FNn&.gJ&.r6Nf~nW&/'.*v/"v26Ff.rv>.bb~g&Nw.v8h   _&z.&"ph   "wVh    ,Fr~&"brtJ7.&&.fgJVw*FF*&/.v6*~2v&/nv"Nb&F*~~j`h     "w>h    tf~vZbFw:f~f:RN*>~Nvr&z6./WF/&+xh   "wVh    m.wFNb>R&.&*>"O2&z&*&~f*>OFBNRph   =>**">"v"o/"*W&Nb>Fz*gN.vGvB>Fz*Vv.nNWph   "v`h     }NR?*">#xh    "wVh    ]>*F6*..r6.O&*~n*&Nn*bO">.fB*w6/'Jvr>/RO"f"6wh   &FR'.&vW~b/.v.n/ph  "v`h    5&F"?W.fGJ&FR>J>O&B>B&F*.v.oNw'vr6NvG&Nvr2ph   tvBv:&z^V/>&B'&&O&~rb*?R>~Nf:&z&.fb/>JNW>"O'/"pP "wVh    LO"OWW"
+>*&*6NvG&Nvr&z&.>Nb>FB>*vv*"ph  "w>h     5>F#xh   "wVh    <^vw>f.&v*b^f>f.F>*&"O2N>&gJw/b/"FF".v:^W"7&~hh  /J
+?/~2NnOFO6*b_v"GN/6n.rvFzvw:~g'~b&F*F/OFJv(h   _.VZr"O>*>zFf*.g"&O.WO(P7vj'/7"r"O>*>zFf*&V."&*.fVn.w'2v"n&*&F*F?v2vG/*&.v h &z/vNfbr>**&*NvG&7.BNvFWO&'~2&F.O"^vvf.&>Rph    "v`h    >F"^vw>f.&v+z*?6R>"N/.oO&*b>"nw*&rN*v..#ph     "wVh    D
+GO6Nb&Fv;Rv*v.V"/".v.VN/Fz/'6*/2Nrw&/v:W.gf/ph %>*F6*&F*F.Fvvf~?JB&F*&nvf*FNf6F/'Ff*&FRnNvG&xPF&O&.""&z/Vv'rO".6B
+6nfb&FNvrjj*vv"/G.7"h .?V"6N.w&6NVNv"Fz>7&*OG&NV*Nr/&"&VNvOG&Of*v@h    ~vvOV&N~vb&/FNgb&FWJo/7"/'6*/2rrvW"&FWJ.g/*pP "w>h    5zN*7&&V"
+vph  "wVh    e>*&N"f"7&""&F*>rbw&F*>&.>r`h     "v`h    u>.Fbb>R.b?"
+"~2OBh    "wVh    u&FW*&*vzv//'&gr>"ph   Rwb$|}'t},dLt:gdd}t8h   "wPh    f.&/bJj..6Nv:
+&.F/&N'&wnN~b7~R&F*n~vOFNvrB/"/vV&*Fph  L
+7'vv*Vv"O2.nf&Nvr7~R&F*'.7'/*v.O"ph  "wVh    Nw7'.B&F*?.@h    o&zfNvZ/r&FB>*VJFV&O7'vv*Vv">.Fbph   RwbMTph    "v`h    O"w&FRf7&."6O.r&FRww/"&rf.f*h   "w>h    M>*w6*>w"&z>/"&Zrbph   fV*bN*?f*>B&zF/"/2>zP "wVh    ,/B~2FF*V/&Nvrph   "v~ h    \~6/6/"6/"oV/rnvNvW~f&O&NvrN.Ff:pPUO&.rNf&NF/7&O6FN~rv2.fO'J'w66/V.FfOjpP,/6.w&Nb&F"&&>/"7.V.7"/G/w&z&rO'&/''/*`h    ev..&v:&r.fNVNv&R/FNffNr&`h    Rwbu,lU}-dt,ZT,t4DLt=2gu$ET%gtU$ph  "v~ h    D&.fNnv&.Br&~..FNv:Fz.V6*F~v2.Fbph  "wbD,
+eOu$T,gt$t}tTLt?t$d
+T'tLuDtt}DDLt<d-h  "v`h    }>F"Nr/6.g&..rg.*6fnv:FVfg>~v:~cz6"&NPnvB&F*?.B^..B6/"bvBv:&F*F~v/'&f&V"Vrph   "w>h    ln*&.OVv.nNWR/Fz~V/&FNf:b>z^vw?z"fV"v*b>/"/ h V~2F/*v:v"Z&r&F*6ffVrvv.bph  "v`h    >/B&F*^/O6F.~v&"?6FNw27~R&F*?.Bph   wb\-M7u
+DdLt8P "w>h     <FBph 2wb\-M7t,Ld?t
+T<E h  "v`h     =NvG"ph RwbDutTLt?uTtd|4, h   "v`h    &FW*fV~vBbNR?*7.Rnr`h     "w>h    ,.ngJbF~~Z"&FrrtgNf
+wv.6ZOv."rrfW/"fN^*O2?rr`h     "v`h    E&FOvz&n*&r>/"~~6."bF.NRph   u>*F6*&zF.bvv*~b&F6*Ff/7"Vv&/J&.>GB/r~rv"&f:pP "w>h    bN*'O6R~v*~2&*FFNv?3xh    "v`h    }>*vfbv~r6v"W"r6~n*vrh  Bwb,tdLt:gd4$Ld?t}-@h    Bwb$|}'t|7t$
+,tLtph     "w`h     tw~'JF~n+ph     "vh    J>R7N"&"W~WvNvw&*&fbnNvrph    "wph     DfO7&.rPZwbD}4Ue't
+|Lt8h  "wph    -&F"?FF*n*&Nv:F.&">FVr&FWJ&O6.."pP "w`h    Ln*&*&Fv?FF"v"&.j&*~VNv:&Zfnw*ph  "wph    T?.g/B.f*bF/"?*V'Jf&.jph bwbD}4Ue'u$uwtd|}%D-ge$D,wd$|}d},u2wt=,guD}Bph    "v`h    NR'/N"f'&f*'>/bNR.F"Ff*FOBn*P "w`h     mNR?*&ZP "w>h    dvN6*'"~2>.fvn*bo/BJbNR>~rw".FN/6*>F/R>*?f*W/7".Vrph  rwbd4_tD|D/tl4DLt/d,<Leh    "v~ h    ,~6/6/"6/"oV/rnvNvW~f&O&NvrN.Ff:r/6NF.v*~2.f.oJv6g.Vv*rNnV.&NF(h   6N6NvO'v:Nb.Vw""rvfNv:f7W&F/"&/&NgpPwb,d,5%|ttdottu$LuTLt?t$,DLtGt|U4-P "v~ h    l~f&O&Nvr.B
+vv&O&~rV"
+6.w'Fw8h   g&F".fO'J'w66/V.FfOjV.r&o/V">OFBbK*vNFO'Jv2 h  6.vVoJ&W&/nv&Nvr~2'w66/F/&Nf&N~brNWf*FzO&.o6Vw"rNw''.&NvwNf&NF*&O&. h 6NwF/6.wFN~rv.6/'JrGv:Ng6ON&NfO'~Nw&v>NfO'J6N.fBph    "wph    U>F"&FRF.fBOFF#zzh   "w`h    J?f*v/f/V.rgO&FNf:fN6*O"h     "w>h     L
+&~#ph     "vh    4f.vv"&/7'JO"h  "v~ h    O"O/7.w&b&"Nw*f.6*FW*NVn.&N&.gJ`h     "v`h    LvB~r/FN6*b/&Wu&FRnNv*?2>~Nf:&zVf/vJgJ.6~v"`PNvBwOvF/*OW'&/&Fr&FOfOV&"nNvf/&.B&/W"ph  "v~ h    lO"O'~g/F.gJo/&O6*&F"N*F/B.6w*&*'w6/"&^Wf*ph wbl-$gu<u'uEL\Ld?t|4-4- h     "w>h    Df.vv"w>w"&&r?"/6.r&FWFNRph   \W/7">F"RN*BwOvKxh  "v~ h    &FW*O2vzFNn*Fz/GfNrbNPh    o/7"f.6*FW(h   "w.@h     .vrph    "wph    >*.rw">~v:gO>F/&*bNw*FF2nG.Vr&./pP jwb=,weD} P "v`h    |&Vrb/f.rVff/'2&~rw">&Zph   "v~ h    OG.&Nvr&NBrrvoW"Vn6*&>W".&V."7~j'J6&*ph  "wph    ~BBvz*&vr?"pPwb%<d?t|7edLtuD}"GtLm't|gudLd=D}Gu,dD- h   "v~ h    -nfbF~v*.ff/Bf~&v."Nb'g6/6*.FJ.OBrrw.ff*&zrr`h    wbTd
+t4|dD}<,'dOud,tRgu$DTwtd}wu,l$dLt8P "wph    
+"?v~Nv:~sxh  "v`h    =&FR6..g2fN^RO"?2F6Nv:"h     "wph    M&F"~&"'V&*oW"R&~Nf:~V/&FNf:ph  ]&Ff*O2~nv:&w>r&.v"/VP "vh    |Vf">RF6R..b'gF."Ng&z
+6~fv{xh 
+wbE,<Wu$E,d$-D

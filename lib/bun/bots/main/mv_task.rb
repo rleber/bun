@@ -2,7 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 desc "mv FROM  TO", "Move files in/from archive"
-option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
 option 'bare',    :aliases=>'-b', :type=>'boolean', :desc=>'Move files, but not index data'
 def mv(from, to)
   from_archive = Archive.new(:at=>options[:at])

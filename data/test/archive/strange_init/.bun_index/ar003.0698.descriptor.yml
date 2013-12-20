@@ -1,18 +1,21 @@
 ---
+:basename: basename_from_the_index
+:catalog_time: 
 :description: ==>files for idallen
 :errors: []
+:extracted: 
 :file_size: 2582
 :file_type: :text
-:catalog_time: 
-:basename: basename_from_the_index
+:hoard: ar003.0698
+:hoard_path: /Users/richard/projects/bun/data/test/archive/strange_init/ar003.0698
+:original_hoard: 
+:original_hoard_path: 
 :owner: fass
 :path: path_from_the_index
 :specification: /idallen/vector  ==>files for idallen
-:location: ar003.0698
-:location_path: /Users/richard/projects/bun/data/test/archive/strange_init/ar003.0698
 :updated: 
 :blocks: 8
-:good_blocks: 
-:status: 
+:good_blocks: 0
+:status: :readable
 :control_characters: 
 :character_count: 

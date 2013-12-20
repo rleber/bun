@@ -3,133 +3,86 @@
 
 module Bun
   class File < ::File
-    class Descriptor
-      class << self
-        MAXIMUM_SIZE = 3000
-        
-        def maximum_size
-          MAXIMUM_SIZE
+    module Descriptor
+      class Base
+        class << self
+          def from_hash(file, h)
+            d = new(file)
+            d.from_hash(h)
+          end
         end
-      end
+        FIELDS = [
+          :basename,
+          :catalog_time,
+          :description,
+          :errors,
+          :extracted,
+          :file_size,
+          :file_type,
+          :hoard,
+          :hoard_path,
+          :original_hoard,
+          :original_hoard_path,
+          :owner,
+          :path,
+          :specification,
+          :updated,
+        ]
       
-      ARCHIVE_NAME_POSITION = 7 # words
-      SPECIFICATION_POSITION = 11 # words
-      DESCRIPTION_PATTERN = /\s+(.*)/
-      FIELDS = [
-        :basename,
-        :catalog_time,
-        :description,
-        :errors,
-        :extracted,
-        :file_size,
-        :file_type,
-        :location,
-        :location_path,
-        :original_location,
-        :original_location_path,
-        :owner,
-        :path,
-        :specification,
-        :updated,
-      ]
+        attr_reader :file, :fields
       
-      attr_reader :file, :fields
-      
-      def initialize(file)
-        @file = file
-        @fields = []
-        # TODO fields should be registered in the class (and different file types should subclass File::Descriptor)
-        register_fields(FIELDS)
-      end
-      
-      def register_fields(*fields)
-        fields.flatten.each {|field| register_field(field) }
-      end
-      
-      def register_field(field)
-        @fields << field
-      end
-      
-      def to_hash
-        fields.inject({}) {|hsh, f| hsh[f] = self.send(f); hsh }
-      end
-      
-      def size
-        SPECIFICATION_POSITION + (specification.size + characters_per_word)/characters_per_word
-      end
-    
-      def specification
-        file.delimited_string SPECIFICATION_POSITION*CHARACTERS_PER_WORD, :all=>true
-      end
-
-      def owner
-        file.delimited_string ARCHIVE_NAME_POSITION*CHARACTERS_PER_WORD, :all=>true
-      end
-    
-      def subpath
-        specification.sub(DESCRIPTION_PATTERN,'').sub(/^\//,'')
-      end
-    
-      def subdirectory
-        d = File.dirname(subpath)
-        d = "" if d == "."
-        d
-      end
-
-      def basename
-        File.basename(subpath)
-      end
-    
-      def description
-        specification[DESCRIPTION_PATTERN,1] || ""
-      end
-    
-      def path
-        File.relative_path(owner, subpath)
-      end
-    
-      def unexpanded_path
-        File.join(owner, subpath)
-      end
-      
-      def location
-        File.basename(location_path)
-      end
-      
-      # TODO This isn't really relevant for non-frozen files; File::Frozen should really subclass this
-      def updated
-        file_time = self.file_time rescue nil
-        if file_time && catalog_time
-          [catalog_time, file_time].min
-        elsif file_time
-          file_time
-        elsif catalog_time
-          catalog_time
-        else
-          nil
+        def initialize(file)
+          @file = file
+          @fields = []
+          # TODO fields should be registered in the class (and different file types should subclass File::Descriptor)
+          register_fields(FIELDS)
         end
-      end
       
-      def shards
-        file.shard_descriptor_hashes rescue []
-      end
+        def register_fields(*fields)
+          fields.flatten.each {|field| register_field(field) }
+        end
+      
+        def register_field(field)
+          @fields << field
+        end
+      
+        def to_hash
+          fields.inject({}) {|hsh, f| hsh[f] = self.send(f); hsh }
+        end
+      
+        def from_hash(h)
+          fields.each do |f|
+            instance_variable_set("@#{f}", nil)
+          end
+          if h
+            h.keys.each do |k|
+              instance_variable_set("@#{k}", h[k])
+            end
+          end
+          self
+        end
+      
+        def shards
+          file.shard_descriptor_hashes rescue []
+        end
   
-      def method_missing(meth, *args, &blk)
-        file.send(meth, *args, &blk)
-      rescue NoMethodError => e
-        raise NoMethodError, %{"#{self.class}##{meth} method not defined:\n  Raised #{e} at:\n#{e.backtrace.map{|c| '    ' + c}.join("\n")}}
-      end
+        def method_missing(meth, *args, &blk)
+          file.send(meth, *args, &blk)
+        rescue NoMethodError => e
+          raise NoMethodError, %{"#{self.class}##{meth} method not defined:\n  Raised #{e} at:\n#{e.backtrace.map{|c| '    ' + c}.join("\n")}}
+        end
       
-      def copy(to, new_settings={})
-        to_dir = File.dirname(to)
-        to_archive = Archive.new(:at=>to_dir)
-        descriptor = self.to_hash
-        descriptor[:original_location] = descriptor[:location] unless descriptor[:original_location]
-        descriptor[:original_location_path] = descriptor[:location_path] unless descriptor[:original_location_path]
-        descriptor[:location] = File.basename(to)
-        descriptor[:location_path] = to
-        descriptor.merge! new_settings
-        to_archive.update_index(:descriptor=>descriptor)
+        def copy(to, new_settings={})
+          to_dir = File.dirname(to)
+          to_archive = Archive.new(:at=>to_dir)
+          descriptor = self.to_hash
+          descriptor[:original_hoard] = descriptor[:hoard] unless descriptor[:original_hoard]
+          descriptor[:original_hoard_path] = descriptor[:hoard_path] unless descriptor[:original_hoard_path]
+          descriptor[:hoard] = File.basename(to)
+          descriptor[:hoard_path] = to
+          descriptor.merge! new_settings
+          to_archive.update_index(:descriptor=>descriptor)
+        end
       end
     end
   end

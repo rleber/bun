@@ -14,7 +14,7 @@ end
 DEFAULT_WIDTH = 120 # TODO Read the window size for this
 SORT_VALUES = %w{order name size update}
 desc "ls ARCHIVE", "List contents of a frozen Honeywell file"
-option 'at',      :aliases=>'-a', :type=>'string',                               :desc=>'Archive location'
+option 'at',      :aliases=>'-a', :type=>'string',                               :desc=>'Archive path'
 option "descr",   :aliases=>'-d', :type=>'boolean',                              :desc=>"Display the file descriptor for each file (in octal)"
 option "files",   :aliases=>"-f", :type=>'string',  :default=>'.*',              :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "long",    :aliases=>'-l', :type=>'boolean',                              :desc=>"Display listing in long format"
@@ -31,7 +31,7 @@ def ls(file_name)
   stop "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
   archived_file = file.path
   archived_file = "--unknown--" unless archived_file
-  print "Frozen archive at #{file.location_path} for directory #{archived_file}"
+  print "Frozen archive at #{file.hoard_path} for directory #{archived_file}"
   print "\nLast updated at #{file.file_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
   puts ":"
   lines = []

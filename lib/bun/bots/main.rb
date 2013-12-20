@@ -6,8 +6,11 @@ require 'thor'
 require 'mechanize'
 require 'fileutils'
 require 'lib/bun/archive'
+require 'lib/bun/library'
 require 'lib/bun/file'
-require 'lib/bun/bots/archiver'
+require 'lib/bun/bots/archivist'
+require 'lib/bun/bots/config'
+require 'lib/bun/bots/librarian'
 require 'lib/bun/bots/freezer'
 require 'lib/bun/bots/sandbox'
 require 'lib/bun/bots/catalog'
@@ -19,11 +22,13 @@ module Bun
   module Bot
     class Main < Base
       load_tasks
-    
-      register Bun::Bot::Freezer,  :freezer, "freezer", "Manage frozen Honeywell files"
-      register Bun::Bot::Archiver, :archive, "archive", "Manage archives of Honeywell files"
-      register Bun::Bot::Catalog,  :catalog, "catalog", "Process the catalog of archival tapes"
-      register Bun::Bot::Sandbox,  :sandbox, 'sandbox', "Play with archive"
+      
+      register Bun::Bot::Config,    :config,  "config",  "Manage configuration"
+      register Bun::Bot::Freezer,   :freezer, "freezer", "Manage frozen Honeywell files"
+      register Bun::Bot::Archivist, :archive, "archive", "Manage archives of Honeywell files"
+      register Bun::Bot::Librarian, :library, "library", "Manage libraries of extracted Honeywell files"
+      register Bun::Bot::Catalog,   :catalog, "catalog", "Process the catalog of archival hoards"
+      register Bun::Bot::Sandbox,   :sandbox, 'sandbox', "Play with archive"
     end
   end
 end

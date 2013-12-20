@@ -2,10 +2,11 @@
 # -*- encoding: us-ascii -*-
 
 desc "dump ARCHIVE FILE", "Uncompress a frozen Honeywell file"
-option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
+option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
 option "escape",  :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
 option "lines",   :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
 option "offset",  :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lines'
+option "spaces",  :aliases=>'-s', :type=>'boolean', :desc=>'Display spaces unchanged'
 option "thawed",  :aliases=>'-t', :type=>'boolean', :desc=>'Display the file in partially thawed format'
 def dump(file_name, n)
   limit = options[:lines]
@@ -17,8 +18,9 @@ def dump(file_name, n)
   archived_file = "--unknown--" unless archived_file
   file_index = file.shard_index(n)
   shard_descriptor = file.shard_descriptors.at(file_index)
-  puts "Archive at #{file.location_path}[#{shard_descriptor.name}] for #{shard_descriptor.path}:"
+  puts "Archive at #{file.hoard_path}[#{shard_descriptor.name}] for #{shard_descriptor.path}:"
   if options[:thawed]
+    p file
     lines = file.lines(file_index)
     # TODO Refactor using Array#justify_rows
     offset_width = ('%o'%lines[-1][:offset]).size

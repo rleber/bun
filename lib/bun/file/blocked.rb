@@ -3,7 +3,7 @@
 
 module Bun
   class File < ::File
-    class Blocked < Bun::File
+    class Blocked < Bun::File::Archived
       include CacheableMethods
       
       attr_accessor :status

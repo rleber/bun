@@ -1,0 +1,291 @@
+
+.ld
+(AS THE DULCID WHISTLING FADES, SO DO THE LIGHTS.)
+.es
+.so 81macros
+.bs 1 2 "Insurance Agents and Secret Agents"
+.na sy SVEN~YEARITCH SVEN
+.na ms MAUDE~SQUAUDE MAUDE
+.na yd YVES~DROPPING YVES
+.na dm DINAH~MIGHT DINAH
+.na rr RINGO~ROUNDACOLLAR RINGO
+.na kp KAZ~PAJAMAS KAZ
+.na ca CHRIS~ANTHEMUM CHRIS
+.na im I.M.BORING BORING
+.na ml MANUEL~LIFE MANUEL
+.na ph PAULA~C.~HOLDER PAULA
+.na xr X~RAY~TUBE X~RAY
+.ld
+(SCENE OPENS WITH A LONG TABLE WITH CHAIRS AND NO PEOPLE ON STAGE.
+ENTER THE SPIES IN ONES AND TWOS.)
+.ch dm
+(HUSHED) The cock crows at midnight.
+.ch ms
+The Wicked Witch is dead.
+.ch rr
+The King's horses have the trots.
+.ch sy
+My hovercraft is full of eels.
+.ch ms
+The Alcan Can-Can Tin-Cans can Can-can...
+.ch ca
+Is there anyone here who's NOT a spy?
+.ad
+(EVERYBODY LOOKS AROUND -- NO RESPONSE)
+.ex
+Then let's cut the cutesie-poo dialogue and start speaking English.
+.ch yd
+Maudit Anglais!
+.ch kp
+I don't see what's wrong with spy-talk.
+Back in the old days, we always spoke in code.
+But this younger generation has no respect for tradition.
+.ch ca
+Yeah, I guess those must have been the days -- when
+spying was a respectable profession.
+.ch kp
+When Ronald Reagan was acting in Bonzo movies.
+.ch ca
+When Bonzo was acting in Ronald Reagan movies.
+.ch kp
+When the Chevron was a newspaper.
+.ch ca
+You're that old???
+.ad
+(ENTER I.M.BORING)
+.ch im
+Good afternoon, Ladies and Gentlemen.
+I am Mr.I.M.Boring and I represent your employer.
+.ch yd
+Our employer?  Who are we working for?
+.ch im
+Let's just say you're working for five hundred dollars a day plus expenses.
+Is that satisfactory?
+(PAUSE) Good.  Of the two thousand spies who applied for this job,
+only 100 have been chosen.
+You have all gone through a thorough selection process
+designed to find the best spies in the world.
+Not to mention the cheapest.
+.ch dm
+What selection process?
+.ch rr
+Don't you remember sending in 5 Fruit Loops box tops
+and two arts degrees?
+.ch dm
+I thought I was applying for grad school.
+.ch im
+It is necessary for you to fill out these forms for Income Tax purposes.
+.ad
+(HE HANDS OUT FORMS)
+.ex
+They're really quite simple, but please listen carefully to my instructions
+-- I do not intend to repeat myself.
+.ch ca
+What'd you say?
+.ch im
+I said, I don't intend to repeat myself!
+(PAUSE)
+Now, in space 1 enter your total income for the year 1980.
+Then deduct all amounts invested in an RRSP, RHOSP or RSVP.
+Put the result in Box 2.
+Take the result out of Box 2.
+Multiply this value by the taxation factor found in table 27B.
+Deduct from this amount the windspeed velocity of a laden tree swallow.
+Take the square root of this number and enter it in box 27.
+Plot it as a function of your contributions to WATFUND in the next five years
+(on average, with standard deviation not to exceed 50%).
+Set the derivative equal to zero and solve for x.
+This is multiplied by the Superfluous Multiplier Factor found in table 31C.
+Exchange with your neighbour and sign on the dotted line.
+Any questions?
+.ad
+(ALL THE SPIES HOLD UP HANDS.)
+.ex
+Good.  Now there are some Life Insurance people who would like to talk to you.
+.ad
+(ENTER MANUEL AND PAULA.)
+.ex
+This is Manuel Life and this is Paula C.Holder.  Carry on, you two.
+.ch ml
+Hi there, friends.
+Have you ever considered what would happen to your loved ones if,
+heaven forbid, you were transferred to that great multi-national in the sky?
+.ch ph
+Think of your children begging for OSAP grants in the streets... your
+mother forced to do auto repairs to survive...
+.ch ml
+Why not provide for your loved ones in advance by buying a policy
+from the Expendable Life Assurance Company?
+.ch ph
+Yes, at Expendable Life we offer complete coverage.
+You get both life and injury insurance for a mere $50,000
+a year, payable annually or in convenient hourly installments.
+.ch ml
+You'll sleep easily in the knowledge that your family's fully cared for.
+.ch kp
+Just what coverage would I get?
+.xx MANUEL~AND~PAULA
+.sb AMPUTATION TOUCHA-TOUCHA
+If you're pinkie's cut off...don't scoff
+You'll get a dollar forty-nine...
+(You mean me?  Uh-huh.)
+Your policy will insure any part you injure
+Be it ankle, elbow, or middle fin-ger
+.ve
+So if you sever a toe, let us know
+Becoming less will earn you more
+SPIES: More, more, more...
+M&P: You'll get more than you planned on
+If you've no leg to stand on
+You get a thousand bucks without a hand on.
+.ve
+Ampu-ampu-amputation
+Of any part of your anatomy
+Just name it, maim it, then claim it
+You'll be reimbursed
+.ve
+So if you happen to die, no need to cry
+We'll handle every last detail
+You need a grave, we'll dig one
+You want a wake, we'll rig one
+We pay for everything when
+You bite the big one...
+.ve
+     ....CHORUS....
+.ve
+SPIES: We'll be reimbursed?
+M&P:   You'll be reimbursed.
+SPIES: We'll be reimbused!
+M&P:   You'll be reimbursed!!
+.ex
+.ch ph
+(PASSING OUT FORMS TO SPIES)
+Now, if you'll just sign on the dotted line...
+.ad
+(THE SPIES SIGN THE POLICIES.)
+.ch im 
+Thank you. Now if you'll excuse us for a moment we will continue with
+some other business.
+.ad
+(MANUEL AND PAULA EXIT.
+THE SPIES TALK AMONGST THEMSELVES FOR A FEW MOMENTS, THEN DR.X.RAY TUBE
+ENTERS WEARING A WHITE LAB COAT.  SHE CARRIES A MACHINE GUN.)
+.ch xr
+Ladies and Gentlemen.
+.ad
+(THE SPIES CONTINUE TO TALK.)
+.ex
+Ladies and Gentlemen!  I have been chosen to give you your briefing.
+You have a very dangerous mission ahead of you.
+.ch yd
+Are we going to smuggle guns into Afghanistan?
+.ch xr
+No, something really dangerous...
+.ch ms
+(HORRIFIED)  You mean we're going to steal the ridgid tool?
+.ch xr
+I said dangerous, not suicidal.
+You're going to steal military secrets from a foreign embassy.
+.ad
+(OOHS AND AHHS FROM THE SPIES)
+.ex
+Now to help on your mission, we're going to show you some of the
+things that you're likely to find in a standard foreign embassy.
+.ad
+(TWO GRIPS BRING IN A DESK.)
+.ex
+This is a standard embassy desk.
+You will find desks like this in embassies all over the world.
+Note the working telephone and the embassy name, in this case
+"EMBASSY A".
+.ad
+(THE GRIPS CARRY ON THE SAFE)
+.ex
+These of course are the standard FASS safes. You will see them in nearly
+every scene in this show. Note the security alarm panel beside the safe door.
+.ch ca
+What alarm panel?
+.ad
+(AN ARM REACHES OUT AND SLAPS THE PANEL ON THE DOOR.)
+.ch xr
+This panel.
+.ad
+(THE GRIPS CARRY ON A SLEEPING GUARD.)
+.ex
+And this is the standard embassy guard.
+Note the look of keen intellect, the aura of awareness,
+the savage ferocity lurking just under the surface.
+.ad
+(THE GUARD SNORES LOUDLY.
+THE REST OF THE EQUIPMENT IS BROUGHT ON AS XRAY CONTINUES TALKING.)
+.ex
+Now we want you all to sneak into various embassies around the world.
+.ch dm
+How do we get in?
+.ch xr
+Through the standard embassy secret door located here behind the guard.
+.ad
+(SHE OPENS UP THE TRAP)
+.ch dm
+Looks like a trap to me.
+.ch xr
+You will go to the safes and you will steal the most top secret
+war plans you can find.  You will bring them back here where we
+will put those plans to our own fiendish uses.
+Any questions?  Good.  Then I'll pass you back to our friends
+from Expendable Life.
+.ad
+(POLLY AND MANUEL RE-ENTER.  THEY SEE XRAY AND HER MACHINE GUN.)
+.ch ml
+That woman has a gun!
+.ch ph
+Stay away from those precious life insured bodies with that gun!
+.ch xr
+I think they've seen guns before.  
+They are spies, after all...
+.xx MANUEL~AND~PAULA
+SPIES!?!?!?
+.ch ml
+But Mr.Boring told us they were accountants...
+.ad
+(THE SPIES LAUGH)
+.ch ph
+We've been had!!!
+.ch xr
+Well, that's all folks.
+Happy accounting.
+.ad
+(DR.TUBE LAUGHS AND EXITS.)
+.ch ml
+(IN DISBELIEF)
+Mr.Boring lied to us.
+.ch ph
+We just insured 100 spies. And they bruise easier than Macintoshes.
+When Head Office finds out, we'll be sent to
+the north pole!
+.ch ml
+Well, Eskimos need life insurance too.
+.ch ph
+Don't be such a drip!  We're ruined!
+.ch ml
+It doesn't seem fair...
+.ch ph
+We've got to come up with some way to keep those spies alive.
+.ch ml
+But how?
+.ch ph
+I've got an idea.  Yes, it just might work...
+.ch ml
+What is it?  What is it?
+.ad
+(PAULA WHISPERS IN MANUEL'S EAR.  HE REACTS WITH SHOCK.)
+.ex
+That's awful!
+.ch ph
+Do we have any choice?
+.ch ml
+Well, all's fair in love and insurance.
+.ch ph
+Insurance makes strange bedfellows.
+.ch dm
+The cock crows at midnight.
