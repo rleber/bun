@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 #  -*- encoding: utf-8 -*-
 
-# Set a configuration
+# Define a place
 
-desc "set KEY VALUE", "Set configuration setting"
+desc "set KEY VALUE", "Define a place"
 def set(key,value)
   config = Configuration.new
-  config.setting[key.to_sym] = value
+  config.places[key] = value
   config.write
 end

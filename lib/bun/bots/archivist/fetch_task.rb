@@ -70,7 +70,7 @@ no_tasks do
 end
 
 IGNORE_LINKS = ["Name", "Last modified", "Size", "Description", "Parent Directory"]
-desc "fetch [URL]", "Fetch files from an online repository"
+desc "fetch [URL] [TO]", "Fetch files from an online repository"
 option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Do a dry run only; show what would be fetched, but don't save it"
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
@@ -81,17 +81,15 @@ Fetched files are copied to subdirectories of the data directory. So, for instan
 "http://example.com/in/a/subdirectory/" will cause files to be copied to the directory
 data/example.com/in/a/subdirectory and its subdirectories, mirroring the structure online.
 
-If no URL is provided, this command will use the location specified in the data/archive_config.yml
-file or the BUN_REPOSITORY environment variable. If neither is set, the URL is mandatory.
-
-If no "to" location is provided, this command will use the archive location specified in
-data/archive_config.yml. Usually, this is ~/bun_archive
+# TODO: not true
+If no URL is provided, this command will use the location specified in the bun config file.
+The archive is fetched to the specified location
 EOT
-def fetch(url=nil)
+def fetch(url=nil, to=nil)
   agent = Mechanize.new
   url ||= Archive.repository
   archive = Archive.new(options[:at])
-  archive_location = archive.at
+  archive_location = to || archive.at
   stop "!No url provided" unless url
   stop "!No archive location provided" unless archive_location
   _fetch(url, archive_location, options)

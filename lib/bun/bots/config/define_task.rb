@@ -6,15 +6,13 @@
 desc "define [PAT]", "Display definition of configuration keys"
 def define(pat=nil)
   config = Configuration.new
-  config.read
-  tasks = config.all_keys.sort
+  tasks = config.all_keys.sort_by {|key| key.to_s}
   pat ||= '*'
   pat = Bun.convert_glob(pat)
   selected_tasks = tasks.select {|task| task =~ pat }
   if selected_tasks.size > 0
-    task_name_size = selected_tasks.map{|task| task.size}.max
-    selected_tasks.each do |task|
-      puts "#{task.ljust(task_name_size)}  #{config.definitions[task]}"
-    end
+    tasks = selected_tasks.map{|task| [task, config.class.definitions[task]]}
+    tasks.unshift %W{Setting Definition}
+    tasks.justify_rows.each {|task,definition| puts "#{task}  #{definition}"}
   end
 end

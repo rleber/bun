@@ -3,9 +3,9 @@
 
 # Remove a configuration
 
-desc "rm KEY", "Remove configuration setting"
+desc "rm KEY", "Remove place name"
 def rm(key)
   config = Configuration.new
-  config.setting.delete(key.to_sym)
+  config.places.delete(key)
   config.write
 end
