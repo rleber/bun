@@ -138,8 +138,6 @@ module Bun
     
     def index_for(name, ix=nil)
       expanded_path = index_path(name)
-      # $stderr.puts "In index_for(#{name.inspect},#{ix.inspect}): expanded_path=#{expanded_path.inspect}" # DEBUG
-      # $stderr.puts "  index keys=#{index.keys.inspect}"
       index[expanded_path].merge(:hoard=>name, :hoard_path=>expand_path(name))
     end
     
