@@ -191,14 +191,14 @@
 :extracted: 2012-04-04 21:47:54.512694000 -04:00
 :file_size: 40058
 :file_type: :frozen
-:hoard: !binary |-
+:tape: !binary |-
   dGFwZS5hcjAwNC4wODg4XzE5NzcwMjE0XzA4NTEwNy50eHQ=
-:hoard_path: !binary |-
+:tape_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfcmVzdWx0L2Zhc3Mvc2NyaXBmcnpfMTk3NzAzMDFfMTU0MDU4
   LzFmb3VydGVlL3RhcGUuYXIwMDQuMDg4OF8xOTc3MDIxNF8wODUxMDcudHh0
-:original_hoard: /Users/richard/projects/bun/data/test/archive/compact_files/fass/scripfrz_19770301_154058/1fourtee/tape.ar004.0888_19770214_085107.txt
-:original_hoard_path: /Users/richard/projects/bun/data/test/archive/compact_files/fass/scripfrz_19770301_154058/1fourtee/tape.ar004.0888_19770214_085107.txt
+:original_tape: ar004.0888
+:original_tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar004.0888
 :owner: fass
 :path: fass/scripfrz
 :specification: /scripfrz ==> freeze file containing roff source for fass '77 script

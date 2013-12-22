@@ -6,14 +6,14 @@
 :extracted: 2012-04-04 21:48:00.356148000 -04:00
 :file_size: 3854
 :file_type: :text
-:hoard: !binary |-
+:tape: !binary |-
   dGFwZS5hcjAwOS4yNjIyXzE5NzcxMjAxLnR4dA==
-:hoard_path: !binary |-
+:tape_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfcmVzdWx0L2Zhc3Mvc2VxdWVuY2UvdGFwZS5hcjAwOS4yNjIy
   XzE5NzcxMjAxLnR4dA==
-:original_hoard: /Users/richard/projects/bun/data/test/archive/compact_files/fass/sequence/tape.ar009.2622_19771201.txt
-:original_hoard_path: /Users/richard/projects/bun/data/test/archive/compact_files/fass/sequence/tape.ar009.2622_19771201.txt
+:original_tape: ar009.2622
+:original_tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar009.2622
 :owner: fass
 :path: fass/sequence
 :specification: /sequence

@@ -1182,14 +1182,14 @@
 :extracted: 2012-04-04 21:48:03.851276000 -04:00
 :file_size: 45351
 :file_type: :frozen
-:hoard: !binary |-
+:tape: !binary |-
   dGFwZS5hcjAxMy4wNTYwXzE5NzgwMzAxXzE3NTEwMS50eHQ=
-:hoard_path: !binary |-
+:tape_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfcmVzdWx0L2Zhc3Mvc2NyaXBmcnpfMTk3ODAzMTRfMTQ0MTA2
   LzItNi90YXBlLmFyMDEzLjA1NjBfMTk3ODAzMDFfMTc1MTAxLnR4dA==
-:original_hoard: /Users/richard/projects/bun/data/test/archive/compact_files/fass/scripfrz_19780314_144106/2-6/tape.ar013.0560_19780301_175101.txt
-:original_hoard_path: /Users/richard/projects/bun/data/test/archive/compact_files/fass/scripfrz_19780314_144106/2-6/tape.ar013.0560_19780301_175101.txt
+:original_tape: ar013.0560
+:original_tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
 :owner: fass
 :path: fass/scripfrz
 :specification: /scripfrz ==> frozen fass 1978 script and accessories

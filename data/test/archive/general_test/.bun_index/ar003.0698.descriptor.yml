@@ -6,10 +6,10 @@
 :extracted: 
 :file_size: 2582
 :file_type: :text
-:hoard: ar003.0698
-:hoard_path: /Users/richard/projects/bun/data/test/archive/general_test/ar003.0698
-:original_hoard: 
-:original_hoard_path: 
+:tape: ar003.0698
+:tape_path: /Users/richard/projects/bun/data/test/archive/general_test/ar003.0698
+:original_tape: 
+:original_tape_path: 
 :owner: fass
 :path: fass/idallen/vector
 :specification: /idallen/vector  ==>files for idallen

@@ -6,14 +6,14 @@
 :extracted: 2012-04-04 21:48:06.323689000 -04:00
 :file_size: 727
 :file_type: :frozen
-:location: !binary |-
+:tape: !binary |-
   dGFwZS5hcjExNC4xODYwXzE5ODAwNTI2XzEzMzIyMC50eHQ=
-:location_path: !binary |-
+:tape_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfZmlsZXMvZWtzaWVnZXJtYW4vZmFzcy5mXzE5ODAwNTI2XzEz
   MzI0Ny9tc2cvdGFwZS5hcjExNC4xODYwXzE5ODAwNTI2XzEzMzIyMC50eHQ=
-:original_location: ar114.1860
-:original_location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar114.1860
+:original_tape: ar114.1860
+:original_tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar114.1860
 :owner: eksiegerman
 :path: eksiegerman/fass.f
 :specification: /fass.f
@@ -28,8 +28,8 @@
   :owner: 
   :path: eksiegerman/fass.f/list
   :status: :readable
-  :location: ar114.1860
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar114.1860
+  :tape: ar114.1860
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar114.1860
   :file_date: 1980-05-26
   :file_time: 1980-05-26 13:25:38.000000000 -04:00
   :updated: 1980-05-26 13:25:38.000000000 -04:00
@@ -42,8 +42,8 @@
   :owner: 
   :path: eksiegerman/fass.f/msg
   :status: :readable
-  :location: ar114.1860
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar114.1860
+  :tape: ar114.1860
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar114.1860
   :file_date: 1980-05-26
   :file_time: 1980-05-26 13:32:20.000000000 -04:00
   :updated: 1980-05-26 13:32:20.000000000 -04:00
@@ -56,8 +56,8 @@
   :owner: 
   :path: eksiegerman/fass.f/songs
   :status: 
-  :location: ar114.1860
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar114.1860
+  :tape: ar114.1860
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar114.1860
   :file_date: 1980-05-26
   :file_time: 1980-05-26 13:32:47.000000000 -04:00
   :updated: 1980-05-26 13:32:47.000000000 -04:00

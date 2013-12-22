@@ -6,14 +6,14 @@
 :extracted: 2012-04-04 21:48:05.466595000 -04:00
 :file_size: 659
 :file_type: :text
-:hoard: !binary |-
+:tape: !binary |-
   dGFwZS5hcjA3Ny4wNjMzXzE5ODIwODAyLnR4dA==
-:hoard_path: !binary |-
+:tape_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfcmVzdWx0L21hdGhub29zL2Zyb3NoL2Zhc3MvdGFwZS5hcjA3
   Ny4wNjMzXzE5ODIwODAyLnR4dA==
-:original_hoard: /Users/richard/projects/bun/data/test/archive/compact_files/mathnoos/frosh/fass/tape.ar077.0633_19820802.txt
-:original_hoard_path: /Users/richard/projects/bun/data/test/archive/compact_files/mathnoos/frosh/fass/tape.ar077.0633_19820802.txt
+:original_tape: ar077.0633
+:original_tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar077.0633
 :owner: mathnoos
 :path: mathnoos/frosh/fass
 :specification: /frosh/fass Frosh issue 1982

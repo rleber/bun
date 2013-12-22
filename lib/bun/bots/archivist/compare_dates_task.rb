@@ -15,13 +15,13 @@ def compare_dates(at)
                else
                  options[:type].split(',').map(&:to_sym)
                end
-  archive.each do |hoard|
-    descriptor = archive.descriptor(hoard, :build=>options[:build])
+  archive.each do |tape|
+    descriptor = archive.descriptor(tape, :build=>options[:build])
     next unless file_types.include?(descriptor.file_type)
     path = descriptor.path
     file_update_dates[path] ||= []
     file_update_dates[path] << {
-      hoard: hoard, 
+      tape: tape, 
       date_string: (descriptor.updated ? descriptor.updated.strftime('%Y/%m/%d %H:%M:%S') : 'n/a').sub(/\s+00:00:00$/,''),
       descriptor: descriptor
     }
@@ -31,7 +31,7 @@ def compare_dates(at)
     puts path + ':'
     columns = []
     file_update_dates[path].sort_by{|d| d[:date_string]}.each do |entry|
-      new_column = [entry[:hoard], entry[:date_string]]
+      new_column = [entry[:tape], entry[:date_string]]
       new_column += [''] + entry[:descriptor].shards.map{|s| s.name}.sort if entry[:descriptor].file_type == :frozen
       columns << new_column
     end

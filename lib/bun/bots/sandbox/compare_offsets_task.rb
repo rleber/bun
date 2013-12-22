@@ -4,15 +4,15 @@
 desc "compare_offsets ARCHIVE", "Compare file offsets vs. content of file preamble"
 def compare_offsets(at)
   archive = Archive.new(at)
-  table = [%w{Hoard Word1 Calculated Flag}]
+  table = [%w{Tape Word1 Calculated Flag}]
   flagged = false
-  archive.each do |hoard|
-    file = archive.open(hoard)
+  archive.each do |tape|
+    file = archive.open(tape)
     counts = [
       file.words.at(1).half_words.at(1).to_i, 
       file.content_offset
     ]
-    row = [hoard] + counts.map{|c| '%3d' % c } 
+    row = [tape] + counts.map{|c| '%3d' % c } 
     if counts.min != counts.max
       flagged = true
       row << '*'

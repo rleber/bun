@@ -6,13 +6,13 @@
 :extracted: 
 :file_size: 1935
 :file_type: :text
-:location: !binary |-
+:tape: !binary |-
   YXIxMDMuMTA2NQ==
-:location_path: !binary |-
+:tape_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3Rfc291cmNlL2FyMTAzLjEwNjU=
-:original_location: ar103.1065
-:original_location_path: /Users/richard/bun_archive/ar103.1065
+:original_tape: ar103.1065
+:original_tape_path: /Users/richard/bun_archive/ar103.1065
 :owner: jagardner
 :path: fassmac.t
 :specification: /../fassmac.t

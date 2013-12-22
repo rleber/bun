@@ -9,7 +9,7 @@ module Bun
     class Library < Bun::File
       # class << self
       #   def open(fname, options={}, &blk)
-      #     new(options.merge(:hoard_path=>fname), &blk)
+      #     new(options.merge(:tape_path=>fname), &blk)
       #   end
       # end
       
@@ -19,7 +19,7 @@ module Bun
       def initialize(options={}, &blk)
         @library = options[:library]
         @descriptor = options[:descriptor]
-        @descriptor ||= @library.descriptor(options[:hoard_path]) if @library && options[:hoard_path]
+        @descriptor ||= @library.descriptor(options[:tape_path]) if @library && options[:tape_path]
         super(options.merge(:archive=>@library), &blk)
       end
   

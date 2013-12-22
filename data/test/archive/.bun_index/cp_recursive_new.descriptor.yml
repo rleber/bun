@@ -6,10 +6,10 @@
 :extracted: 
 :file_size: 1627
 :file_type: :text
-:hoard: cp_recursive_new
-:hoard_path: /Users/richard/projects/bun/data/test/archive/cp_recursive_new
-:original_hoard: ar083.0698
-:original_hoard_path: /Users/richard/projects/bun/data/test/archive/cp_recursive/ar083.0698
+:tape: cp_recursive_new
+:tape_path: /Users/richard/projects/bun/data/test/archive/cp_recursive_new
+:original_tape: ar083.0698
+:original_tape_path: /Users/richard/projects/bun/data/test/archive/cp_recursive/ar083.0698
 :owner: fass
 :path: fass/1983/programme/actors
 :specification: /1983/programme/actors ==> TROFF source for FASS 1983 Programme

@@ -25,8 +25,8 @@ module Bun
           :owner,
           :path,
           :status,
-          :hoard,
-          :hoard_path,
+          :tape,
+          :tape_path,
           :file_date,
           :file_time,
           :updated,
@@ -57,7 +57,7 @@ module Bun
         def initialize(file, number, options={})
           @file = file
           @number = number
-          raise "Bad descriptor ##{number} for #{file.hoard} at #{'%#o' % self.offset}:\n#{dump}" unless options[:allow] || valid?
+          raise "Bad descriptor ##{number} for #{file.tape} at #{'%#o' % self.offset}:\n#{dump}" unless options[:allow] || valid?
           load_fields_from_archive
         end
   
@@ -67,7 +67,7 @@ module Bun
         
         def load_fields_from_archive
           return unless @file.archive
-          archive_descriptor = @file.archive.descriptor(hoard, :build=>false)
+          archive_descriptor = @file.archive.descriptor(tape, :build=>false)
           return unless archive_descriptor
           shard_descriptor = archive_descriptor.shards[number]
           return unless shard_descriptor
@@ -87,13 +87,13 @@ module Bun
         end
         
         def control_characters=(value)
-          raise "nil assigned to control_characters for #{hoard}[#{name}]" if value.nil?
-          # raise "{} assigned to control_characters for #{hoard}[#{name}]" if value == {}
+          raise "nil assigned to control_characters for #{tape}[#{name}]" if value.nil?
+          # raise "{} assigned to control_characters for #{tape}[#{name}]" if value == {}
           @control_characters = value
         end
         
         def character_count=(count)
-          raise "nil assigned to character_count for #{hoard}[#{name}]" if count.nil?
+          raise "nil assigned to character_count for #{tape}[#{name}]" if count.nil?
           @character_count = count
         end
     
@@ -125,12 +125,12 @@ module Bun
           File.relative_path(file.path, name)
         end
   
-        def hoard
-          file.hoard
+        def tape
+          file.tape
         end
   
-        def hoard_path
-          file.hoard_path
+        def tape_path
+          file.tape_path
         end
 
         def file_date

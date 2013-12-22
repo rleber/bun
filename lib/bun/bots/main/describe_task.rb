@@ -2,7 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 SHARDS_ACROSS = 5
-desc "describe ARCHIVE HOARD", "Display description information for a hoard"
+desc "describe ARCHIVE TAPE", "Display description information for a tape"
 option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on at index; always build information from source file"
 def describe(at, file_name)
   archive = Archive.new(at, options)
@@ -14,8 +14,8 @@ def describe(at, file_name)
   catalog_time_display = catalog_time ? catalog_time.strftime('%Y/%m/%d') : "n/a"
   
   # TODO Refactor using Array#justify_rows
-  puts "Hoard:         #{descriptor.hoard}"
-  puts "Path:          #{descriptor.hoard_path}"
+  puts "Tape:         #{descriptor.tape}"
+  puts "Path:          #{descriptor.tape_path}"
   if type == :frozen
     puts "Directory:     #{descriptor.path}"
   else

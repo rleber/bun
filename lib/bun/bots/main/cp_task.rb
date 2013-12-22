@@ -1,8 +1,8 @@
 #!/usr/bin/env rvm-ruby 1.9.3
 # -*- encoding: us-ascii -*-
 
-desc "cp ARCHIVE HOARD... [DESTINATION]", "Copy hoards from archive"
-option 'bare',      :aliases=>'-b', :type=>'boolean', :desc=>'Copy hoards, but not index data'
+desc "cp ARCHIVE TAPE... [DESTINATION]", "Copy tapes from archive"
+option 'bare',      :aliases=>'-b', :type=>'boolean', :desc=>'Copy tapes, but not index data'
 option 'recursive', :aliases=>'-r', :type=>'boolean', :desc=>'Recursively copy sub-directories'
 def cp(*args)
   if args.size <= 2

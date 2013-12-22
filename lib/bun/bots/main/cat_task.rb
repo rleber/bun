@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-desc "cat HOARD", "Copy a hoard to $stdout"
+desc "cat TAPE", "Copy a tape to $stdout"
 # TODO Refactor :archive as a global option?
-def cat(at, hoard)
+def cat(at, tape)
   archive = Archive.new(at)
-  archive.open(hoard) {|f| $stdout.write f.read }
+  archive.open(tape) {|f| $stdout.write f.read }
 end

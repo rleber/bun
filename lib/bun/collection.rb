@@ -31,15 +31,15 @@ module Bun
       @update_indexes = options.has_key?(:update_indexes) ? options[:update_indexes] : true
     end
     
-    def hoards
+    def tapes
       Dir.entries(at).reject{|f| f=~/^\./}
     end
 
     def open(name, options={}, &blk)
       if File.basename(name) =~ /^ar\d{3}.\d{4}$/
-        Bun::File::Archived.open(expand_path(name), options.merge(:archive=>self, :hoard=>name), &blk)
+        Bun::File::Archived.open(expand_path(name), options.merge(:archive=>self, :tape=>name), &blk)
       else
-        Bun::File::Extracted.open(expand_path(name), options.merge(:library=>self,  :hoard=>name), &blk)
+        Bun::File::Extracted.open(expand_path(name), options.merge(:library=>self,  :tape=>name), &blk)
       end
     end
 
@@ -95,7 +95,7 @@ module Bun
     end
     
     def read_config_file(config_file)
-      @config = Configuration.new(:hoard=>config_file)
+      @config = Configuration.new(:tape=>config_file)
       @config.read
     end
     
@@ -138,26 +138,26 @@ module Bun
     
     def index_for(name, ix=nil)
       expanded_path = index_path(name)
-      index[expanded_path].merge(:hoard=>name, :hoard_path=>expand_path(name))
+      index[expanded_path].merge(:tape=>name, :tape_path=>expand_path(name))
     end
     
     def expanded_index_directory
       expanded_config(:index_directory)
     end
     
-    def expand_path(hoard, options={})
+    def expand_path(tape, options={})
       if options[:from_wd] # Expand relative to working directory
-        case hoard
+        case tape
         when /^@\/(.*)/ # syntax @/xxxx means expand relative to archive
                return expand_path($1)
         when /^\\(@.*)/ # syntax \@xxxx means ignore the '@'; expand relative to working directory
-          hoard = $1
+          tape = $1
         end
         rel = `pwd`.chomp
       elsif !options[:already_from_wd] # expand relative to archive
         rel = File.expand_path(at)
       end
-      File.expand_path(hoard, rel)
+      File.expand_path(tape, rel)
     end
     
     def relative_path(*f)
@@ -202,7 +202,7 @@ module Bun
     def build_and_save_index(options={})
       clear_index
       items.with_files(:header=>true, :already_from_wd=>true) do |fname, f|
-        puts f.hoard if options[:verbose]
+        puts f.tape if options[:verbose]
         update_index(:file=>f)
       end
       @index
@@ -231,7 +231,7 @@ module Bun
       @index = nil
     end
     
-    # TODO Allow for indexing by other than hoard?
+    # TODO Allow for indexing by other than tape?
     def update_index(options={})
       @index ||= {}
       descr = options[:descriptor] ? options[:descriptor].to_hash : build_descriptor_for_file(options[:file])
@@ -241,8 +241,8 @@ module Bun
           descr.delete(k)
         end
       end
-      @index[descr[:hoard]] = descr
-      save_index_descriptor(descr[:hoard])
+      @index[descr[:tape]] = descr
+      save_index_descriptor(descr[:tape])
       descr
     end
     
@@ -272,7 +272,7 @@ module Bun
     
     def save_index_descriptor_for_file(f)
       @index ||= {}
-      name = f.hoard
+      name = f.tape
       @index[name] ||= build_descriptor_for_file(f)
       _save_index_descriptor(name)
     end
@@ -328,7 +328,7 @@ module Bun
     end
     
     def rm(options={})
-      glob(*options[:hoards]) do |fname|
+      glob(*options[:tapes]) do |fname|
         path = expand_path(fname)
         rm_at_path(path, options)
       end
@@ -477,7 +477,7 @@ module Bun
     end
     private :cp_single_file
     
-    # Copy a single file to a file hoard. If the file already exists, it
+    # Copy a single file to a file tape. If the file already exists, it
     # is overwritten. 
     def cp_file_to_file(options={})
       from = options[:from]

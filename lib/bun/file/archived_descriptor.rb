@@ -26,10 +26,10 @@ module Bun
           :extracted,
           :file_size,
           :file_type,
-          :hoard,
-          :hoard_path,
-          :original_hoard,
-          :original_hoard_path,
+          :tape,
+          :tape_path,
+          :original_tape,
+          :original_tape_path,
           :owner,
           :path,
           :specification,
@@ -74,8 +74,8 @@ module Bun
           File.join(owner, subpath)
         end
       
-        def hoard
-          File.basename(hoard_path)
+        def tape
+          File.basename(tape_path)
         end
       
         # TODO This isn't really relevant for non-frozen files; File::Frozen should really subclass this

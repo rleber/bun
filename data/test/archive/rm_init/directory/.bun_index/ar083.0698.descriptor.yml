@@ -8,8 +8,8 @@
 :owner: fass
 :path: fass/1983/programme/actors
 :specification: /1983/programme/actors ==> TROFF source for FASS 1983 Programme
-:location: ar083.0698
-:location_path: /Users/richard/projects/bun/data/test/archive/rm_init/directory/ar083.0698
+:tape: ar083.0698
+:tape_path: /Users/richard/projects/bun/data/test/archive/rm_init/directory/ar083.0698
 :updated: 
 :blocks: 5
 :good_blocks: 

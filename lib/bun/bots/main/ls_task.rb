@@ -9,12 +9,12 @@ no_tasks do
   end
 end
 
-SORT_VALUES = %w{hoard file type updated description size}
+SORT_VALUES = %w{tape file type updated description size}
 SORT_FIELDS = {
   :description => :description,
   :file        => :path,
   :size        => :file_size,
-  :hoard       => :hoard,
+  :tape       => :tape,
   :type        => :file_type,
   :updated     => :updated,
 }
@@ -32,8 +32,8 @@ FIELD_HEADINGS = {
   :file_type     => 'Type',
   :path          => 'File',
   :shard_count   => 'Shards',
-  :hoard         => 'Hoard',
-  :hoard_path    => 'Hoard',
+  :tape         => 'Tape',
+  :tape_path    => 'Tape',
   :updated       => 'Updated',
 }
 DEFAULT_VALUES = {
@@ -48,12 +48,12 @@ option "descr",     :aliases=>"-d", :type=>'boolean',                           
 option "files",     :aliases=>"-f", :type=>'string',  :default=>'',                :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "frozen",    :aliases=>"-r", :type=>'boolean',                              :desc=>"Recursively include contents of freeze files"
 option "long",      :aliases=>"-l", :type=>'boolean',                              :desc=>"Display long format (incl. text vs. frozen)"
-option 'path',      :aliases=>'-p', :type=>'boolean',                              :desc=>"Display paths for hoard files"
-option 'quick',     :aliases=>'-Q', :type=>'boolean',                              :desc=>"Quickly display hoards"
+option 'path',      :aliases=>'-p', :type=>'boolean',                              :desc=>"Display paths for tape files"
+option 'quick',     :aliases=>'-Q', :type=>'boolean',                              :desc=>"Quickly display tapes"
 option "sort",      :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order(s) for files (#{SORT_VALUES.join(', ')})"
-option "hoards",    :aliases=>"-h", :type=>'string',  :default=>'',                :desc=>"Show only hoards that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
+option "tapes",    :aliases=>"-h", :type=>'string',  :default=>'',                :desc=>"Show only tapes that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "type",      :aliases=>"-T", :type=>'string',  :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
-# TODO Refactor hoard/file patterns; use hoard::file::shard syntax
+# TODO Refactor tape/file patterns; use tape::file::shard syntax
 # TODO Refactor code into shorter submethods
 def ls(at)
   type_pattern = case options[:type].downcase
@@ -70,10 +70,10 @@ def ls(at)
     end
   file_pattern = get_regexp(options[:files])
   stop "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
-  hoard_pattern = get_regexp(options[:hoards])
-  stop "!Invalid --hoards pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless hoard_pattern
+  tape_pattern = get_regexp(options[:tapes])
+  stop "!Invalid --tapes pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless tape_pattern
 
-  fields =  options[:path] ? [:hoard_path] : [:hoard]
+  fields =  options[:path] ? [:tape_path] : [:tape]
   fields += [:path]
   fields += [:file_type] if options[:type]
   fields += [:file_type, :updated, :file_size] if options[:long]
@@ -90,9 +90,9 @@ def ls(at)
   else
     sort_fields = []
   end
-  sort_fields += [:hoard, :path]
+  sort_fields += [:tape, :path]
   if options[:path]
-    sort_fields = sort_fields.map {|f| f==:hoard ? :hoard_path : f }
+    sort_fields = sort_fields.map {|f| f==:tape ? :tape_path : f }
   end
   sort_fields.each do |sort_field|
     stop "!Can't sort by #{sort_field}. It isn't included in this format" unless fields.include?(sort_field)
@@ -100,16 +100,16 @@ def ls(at)
 
   # Retrieve file information
   archive = Archive.new(at, options)
-  ix = archive.hoards
+  ix = archive.tapes
   if options[:quick]
     puts ix
     return
   end
   # TODO Refactor using archive.select
   file_info = []
-  ix = ix.select{|hoard| hoard =~ hoard_pattern}
-  files = ix.each_with_index do |hoard, i|
-    file_descriptor = archive.descriptor(hoard, :build=>options[:build])
+  ix = ix.select{|tape| tape =~ tape_pattern}
+  files = ix.each_with_index do |tape, i|
+    file_descriptor = archive.descriptor(tape, :build=>options[:build])
     file_row = fields.inject({}) do |hsh, f|
       # TODO This is a little smelly
       value = if f==:shard_count

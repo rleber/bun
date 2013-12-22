@@ -59,7 +59,7 @@ module Bun
     
         def frozen?(file_name)
           raise "File #{file_name} doesn't exist" unless File.exists?(file_name)
-          new(:hoard_path=>file_name).frozen?
+          new(:tape_path=>file_name).frozen?
         end
     
         def create(options={}, &blk)
@@ -95,7 +95,7 @@ module Bun
         end
 
         def open(fname, options={}, &blk)
-          create(options.merge(:hoard_path=>fname), &blk)
+          create(options.merge(:tape_path=>fname), &blk)
         end
       
         def read(fname, size=nil)
@@ -116,8 +116,8 @@ module Bun
         end
     
         def get_words(n, options)
-          if options[:hoard_path]
-            Bun::Words.read(options[:hoard_path], :n=>n)
+          if options[:tape_path]
+            Bun::Words.read(options[:tape_path], :n=>n)
           elsif options[:data]
             if n.nil?
               decode(options[:data])
@@ -244,14 +244,14 @@ module Bun
       def size(options={})
         # TODO Should :eof be the default? (Is there ever a meaningful eof marker in frozen files?)
         if options[:eof]
-          eof_hoard = nil
+          eof_tape = nil
           words.each_with_index do |word, index|
             if word.value == self.class.eof_marker
-              eof_hoard = index
+              eof_tape = index
               break
             end
           end
-          eof_hoard || size
+          eof_tape || size
         elsif options[:all]
           @words.size
         else
@@ -265,21 +265,21 @@ module Bun
         res
       end
 
-      def date(hoard)
-        date_string = content[hoard,2].characters.join
+      def date(tape)
+        date_string = content[tape,2].characters.join
         self.class.date(date_string)
       end
   
-      def time_of_day(hoard)
-        self.class.time_of_day content.at(hoard)
+      def time_of_day(tape)
+        self.class.time_of_day content.at(tape)
       end
   
-      def time(date_hoard, time_hoard)
-        self.class.time date(date_hoard), time_of_day(time_hoard)
+      def time(date_tape, time_tape)
+        self.class.time date(date_tape), time_of_day(time_tape)
       end
   
       def catalog_time
-        archive && archive.catalog_time(hoard)
+        archive && archive.catalog_time(tape)
       end
 
       def characters_per_word

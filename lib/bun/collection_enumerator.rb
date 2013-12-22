@@ -12,8 +12,8 @@ module Bun
           super(*args, &blk)
         else
           super(*args) do |yielder|
-            @collection.hoards.each do |hoard| 
-              yielder << hoard
+            @collection.tapes.each do |tape| 
+              yielder << tape
             end
           end
         end

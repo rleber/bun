@@ -6,13 +6,13 @@
 :extracted: 
 :file_size: 7227
 :file_type: :frozen
-:location: !binary |-
+:tape: !binary |-
   YXIwMTkuMTg0Mg==
-:location_path: !binary |-
+:tape_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3Rfc291cmNlL2FyMDE5LjE4NDI=
-:original_location: ar019.1842
-:original_location_path: /Users/richard/bun_archive/ar019.1842
+:original_tape: ar019.1842
+:original_tape_path: /Users/richard/bun_archive/ar019.1842
 :owner: fass
 :path: fass/totleclips.f
 :specification: /totleclips.f Total Eclipse Episode 6 - Fixed-Up Version
@@ -27,8 +27,8 @@
   :owner: 
   :path: fass/totleclips.f/eclipse
   :status: 
-  :location: /Users/richard/bun_archive/ar019.1842
-  :location_path: /Users/richard/bun_archive/ar019.1842
+  :tape: /Users/richard/bun_archive/ar019.1842
+  :tape_path: /Users/richard/bun_archive/ar019.1842
   :file_date: 1978-11-20
   :file_time: 1978-11-20 10:22:31.000000000 -05:00
   :updated: 1978-11-20 10:22:31.000000000 -05:00
@@ -41,8 +41,8 @@
   :owner: 
   :path: fass/totleclips.f/temacro
   :status: 
-  :location: /Users/richard/bun_archive/ar019.1842
-  :location_path: /Users/richard/bun_archive/ar019.1842
+  :tape: /Users/richard/bun_archive/ar019.1842
+  :tape_path: /Users/richard/bun_archive/ar019.1842
   :file_date: 1978-11-20
   :file_time: 1978-11-20 10:22:31.000000000 -05:00
   :updated: 1978-11-20 10:22:31.000000000 -05:00
@@ -55,8 +55,8 @@
   :owner: 
   :path: fass/totleclips.f/sounds
   :status: 
-  :location: /Users/richard/bun_archive/ar019.1842
-  :location_path: /Users/richard/bun_archive/ar019.1842
+  :tape: /Users/richard/bun_archive/ar019.1842
+  :tape_path: /Users/richard/bun_archive/ar019.1842
   :file_date: 1978-11-20
   :file_time: 1978-11-20 10:22:31.000000000 -05:00
   :updated: 1978-11-20 10:22:31.000000000 -05:00

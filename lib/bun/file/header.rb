@@ -20,13 +20,13 @@ module Bun
           @file = file
           words = self.class.decode(self.class.read(file, size))
         elsif data
-          @hoard = options[:hoard]
+          @tape = options[:tape]
           words = self.class.decode(data[0...size])
         else
-          @hoard = options[:hoard]
+          @tape = options[:tape]
           words = words[0...size.div(characters_per_word)]
         end
-        super(:words=>words, :size=>options[:size], :hoard=>@hoard, &blk)
+        super(:words=>words, :size=>options[:size], :tape=>@tape, &blk)
       end
     end
   end

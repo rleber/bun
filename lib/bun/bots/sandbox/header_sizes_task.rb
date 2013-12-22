@@ -5,7 +5,7 @@ desc "header_sizes ARCHIVE", "Display the length of file headers"
 option "sort",    :aliases=>'-s', :type=>'string', :default=>'header', :desc=>"Sort by what field: preamble or header (size)"
 def header_sizes(at)
   archive = Archive.new(at)
-  data = [%w{Hoard Preamble Header}]
+  data = [%w{Tape Preamble Header}]
   sort_column = ['preamble', 'header'].index(options[:sort].downcase)
   stop "!Bad value for --sort option" unless sort_column
   sort_column += 1
@@ -13,8 +13,8 @@ def header_sizes(at)
   min_header = min_preamble = nil
   sum_header = sum_preamble = 0
   n = 0
-  archive.each do |hoard|
-    file = archive.open(hoard)
+  archive.each do |tape|
+    file = archive.open(tape)
     preamble_size = file.content_offset
     header_size = file.header_size
     sum_preamble += preamble_size
@@ -31,7 +31,7 @@ def header_sizes(at)
     if !max_header || header_size > max_header
       max_header = header_size
     end
-    data << [hoard, preamble_size, header_size]
+    data << [tape, preamble_size, header_size]
     n += 1
   end
   data = data.sort_by{|row| row[sort_column].to_i }

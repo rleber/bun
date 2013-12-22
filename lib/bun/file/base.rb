@@ -53,17 +53,17 @@ module Bun
       end
     end
     attr_reader :archive
-    attr_reader :hoard_path
+    attr_reader :tape_path
 
     attr_accessor :descriptor
     attr_accessor :errors
     attr_accessor :extracted
-    attr_accessor :original_hoard
-    attr_accessor :original_hoard_path
+    attr_accessor :original_tape
+    attr_accessor :original_tape_path
 
     def initialize(options={}, &blk)
-      @hoard = options[:hoard]
-      @hoard_path = options[:hoard_path]
+      @tape = options[:tape]
+      @tape_path = options[:tape_path]
       @size = options[:size]
       @archive = options[:archive]
       clear_errors
@@ -81,8 +81,8 @@ module Bun
     end
   
     def open_time
-      return nil unless hoard_path && File.exists?(hoard_path)
-      File.atime(hoard_path)
+      return nil unless tape_path && File.exists?(tape_path)
+      File.atime(tape_path)
     end
   
     def close
@@ -90,7 +90,7 @@ module Bun
     end
   
     def read
-      self.class.read(hoard_path)
+      self.class.read(tape_path)
     end
   
     def update_index
@@ -98,8 +98,8 @@ module Bun
       @archive.update_index(:file=>self)
     end
 
-    def hoard
-      @hoard ||= File.basename(hoard_path)
+    def tape
+      @tape ||= File.basename(tape_path)
     end
   
     def path

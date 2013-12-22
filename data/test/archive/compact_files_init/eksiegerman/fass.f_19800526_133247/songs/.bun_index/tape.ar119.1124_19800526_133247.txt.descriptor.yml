@@ -6,15 +6,15 @@
 :extracted: 2012-04-04 21:48:06.729846000 -04:00
 :file_size: 727
 :file_type: :frozen
-:location: !binary |-
+:tape: !binary |-
   dGFwZS5hcjExOS4xMTI0XzE5ODAwNTI2XzEzMzI0Ny50eHQ=
-:location_path: !binary |-
+:tape_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfZmlsZXMvZWtzaWVnZXJtYW4vZmFzcy5mXzE5ODAwNTI2XzEz
   MzI0Ny9zb25ncy90YXBlLmFyMTE5LjExMjRfMTk4MDA1MjZfMTMzMjQ3LnR4
   dA==
-:original_location: ar119.1124
-:original_location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar119.1124
+:original_tape: ar119.1124
+:original_tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar119.1124
 :owner: eksiegerman
 :path: eksiegerman/fass.f
 :specification: /fass.f
@@ -29,8 +29,8 @@
   :owner: 
   :path: eksiegerman/fass.f/list
   :status: :readable
-  :location: ar119.1124
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar119.1124
+  :tape: ar119.1124
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar119.1124
   :file_date: 1980-05-26
   :file_time: 1980-05-26 13:25:38.000000000 -04:00
   :updated: 1980-05-26 13:25:38.000000000 -04:00
@@ -43,8 +43,8 @@
   :owner: 
   :path: eksiegerman/fass.f/msg
   :status: :readable
-  :location: ar119.1124
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar119.1124
+  :tape: ar119.1124
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar119.1124
   :file_date: 1980-05-26
   :file_time: 1980-05-26 13:32:20.000000000 -04:00
   :updated: 1980-05-26 13:32:20.000000000 -04:00
@@ -57,8 +57,8 @@
   :owner: 
   :path: eksiegerman/fass.f/songs
   :status: :readable
-  :location: ar119.1124
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar119.1124
+  :tape: ar119.1124
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar119.1124
   :file_date: 1980-05-26
   :file_time: 1980-05-26 13:32:47.000000000 -04:00
   :updated: 1980-05-26 13:32:47.000000000 -04:00

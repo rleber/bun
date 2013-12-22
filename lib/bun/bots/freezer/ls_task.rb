@@ -31,7 +31,7 @@ def ls(at, file_name)
   stop "!File #{file_name} is an archive of #{archived_file}, which is not frozen." unless file.file_type == :frozen
   archived_file = file.path
   archived_file = "--unknown--" unless archived_file
-  print "Frozen archive at #{file.hoard_path} for directory #{archived_file}"
+  print "Frozen archive at #{file.tape_path} for directory #{archived_file}"
   print "\nLast updated at #{file.file_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
   puts ":"
   lines = []

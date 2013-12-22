@@ -8,8 +8,8 @@
 :owner: bstempleton
 :path: bstempleton/fass
 :specification: /fass
-:location: ar054.2299
-:location_path: /Users/richard/projects/bun/data/test/archive/contents/ar054.2299
+:tape: ar054.2299
+:tape_path: /Users/richard/projects/bun/data/test/archive/contents/ar054.2299
 :updated: 1981-02-05 15:11:25.000000000 -05:00
 :shards:
 - :file_size: 129
@@ -21,8 +21,8 @@
   :owner: 
   :path: bstempleton/fass/end
   :status: 
-  :location: ar054.2299
-  :location_path: /Users/richard/projects/bun/data/test/archive/contents/ar054.2299
+  :tape: ar054.2299
+  :tape_path: /Users/richard/projects/bun/data/test/archive/contents/ar054.2299
   :file_date: 1980-11-25
   :file_time: 1980-11-25 15:49:46.000000000 -05:00
   :updated: 1980-11-25 15:49:46.000000000 -05:00
@@ -35,8 +35,8 @@
   :owner: 
   :path: bstempleton/fass/santa
   :status: 
-  :location: ar054.2299
-  :location_path: /Users/richard/projects/bun/data/test/archive/contents/ar054.2299
+  :tape: ar054.2299
+  :tape_path: /Users/richard/projects/bun/data/test/archive/contents/ar054.2299
   :file_date: 1980-11-25
   :file_time: 1980-11-25 15:49:46.000000000 -05:00
   :updated: 1980-11-25 15:49:46.000000000 -05:00
@@ -49,8 +49,8 @@
   :owner: 
   :path: bstempleton/fass/disco
   :status: 
-  :location: ar054.2299
-  :location_path: /Users/richard/projects/bun/data/test/archive/contents/ar054.2299
+  :tape: ar054.2299
+  :tape_path: /Users/richard/projects/bun/data/test/archive/contents/ar054.2299
   :file_date: 1980-11-25
   :file_time: 1980-11-25 16:09:15.000000000 -05:00
   :updated: 1980-11-25 16:09:15.000000000 -05:00
@@ -63,8 +63,8 @@
   :owner: 
   :path: bstempleton/fass/opening
   :status: 
-  :location: ar054.2299
-  :location_path: /Users/richard/projects/bun/data/test/archive/contents/ar054.2299
+  :tape: ar054.2299
+  :tape_path: /Users/richard/projects/bun/data/test/archive/contents/ar054.2299
   :file_date: 1981-01-08
   :file_time: 1981-01-08 18:31:14.000000000 -05:00
   :updated: 1981-01-08 18:31:14.000000000 -05:00
@@ -77,8 +77,8 @@
   :owner: 
   :path: bstempleton/fass/brytside
   :status: 
-  :location: ar054.2299
-  :location_path: /Users/richard/projects/bun/data/test/archive/contents/ar054.2299
+  :tape: ar054.2299
+  :tape_path: /Users/richard/projects/bun/data/test/archive/contents/ar054.2299
   :file_date: 1981-02-05
   :file_time: 1981-02-05 15:11:25.000000000 -05:00
   :updated: 1981-02-05 15:11:25.000000000 -05:00

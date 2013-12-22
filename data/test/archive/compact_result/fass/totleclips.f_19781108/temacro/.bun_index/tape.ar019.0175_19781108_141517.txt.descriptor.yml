@@ -6,14 +6,14 @@
 :extracted: 2012-04-04 21:48:04.684013000 -04:00
 :file_size: 7228
 :file_type: :frozen
-:hoard: !binary |-
+:tape: !binary |-
   dGFwZS5hcjAxOS4wMTc1XzE5NzgxMTA4XzE0MTUxNy50eHQ=
-:hoard_path: !binary |-
+:tape_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfcmVzdWx0L2Zhc3MvdG90bGVjbGlwcy5mXzE5NzgxMTA4L3Rl
   bWFjcm8vdGFwZS5hcjAxOS4wMTc1XzE5NzgxMTA4XzE0MTUxNy50eHQ=
-:original_hoard: /Users/richard/projects/bun/data/test/archive/compact_files/fass/totleclips.f_19781108/temacro/tape.ar019.0175_19781108_141517.txt
-:original_hoard_path: /Users/richard/projects/bun/data/test/archive/compact_files/fass/totleclips.f_19781108/temacro/tape.ar019.0175_19781108_141517.txt
+:original_tape: ar019.0175
+:original_tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.0175
 :owner: fass
 :path: fass/totleclips.f
 :specification: /totleclips.f ==> Total Eclipse Episode 6 - CKMS Radio Theatre

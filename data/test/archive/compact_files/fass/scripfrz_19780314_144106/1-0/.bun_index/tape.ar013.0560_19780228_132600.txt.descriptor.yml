@@ -1319,14 +1319,14 @@
 :extracted: 2012-04-04 21:48:04.242711000 -04:00
 :file_size: 45351
 :file_type: :frozen
-:location: !binary |-
+:tape: !binary |-
   dGFwZS5hcjAxMy4wNTYwXzE5NzgwMjI4XzEzMjYwMC50eHQ=
-:location_path: !binary |-
+:tape_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfZmlsZXMvZmFzcy9zY3JpcGZyel8xOTc4MDMxNF8xNDQxMDYv
   MS0wL3RhcGUuYXIwMTMuMDU2MF8xOTc4MDIyOF8xMzI2MDAudHh0
-:original_location: ar013.0560
-:original_location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+:original_tape: ar013.0560
+:original_tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
 :owner: fass
 :path: fass/scripfrz
 :specification: /scripfrz ==> frozen fass 1978 script and accessories
@@ -1341,8 +1341,8 @@
   :owner: 
   :path: fass/scripfrz/1-1
   :status: :readable
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-03-01
   :file_time: 1978-03-01 11:50:49.000000000 -05:00
   :updated: 1978-03-01 11:50:49.000000000 -05:00
@@ -1384,8 +1384,8 @@
   :owner: 
   :path: fass/scripfrz/1-2
   :status: :truncated
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-03-01
   :file_time: 1978-03-01 18:25:23.000000000 -05:00
   :updated: 1978-03-01 18:25:23.000000000 -05:00
@@ -1429,8 +1429,8 @@
   :owner: 
   :path: fass/scripfrz/1-3
   :status: :truncated
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-03-01
   :file_time: 1978-03-01 17:51:01.000000000 -05:00
   :updated: 1978-03-01 17:51:01.000000000 -05:00
@@ -1474,8 +1474,8 @@
   :owner: 
   :path: fass/scripfrz/1-4
   :status: :truncated
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-03-01
   :file_time: 1978-03-01 11:50:49.000000000 -05:00
   :updated: 1978-03-01 11:50:49.000000000 -05:00
@@ -1519,8 +1519,8 @@
   :owner: 
   :path: fass/scripfrz/1-5
   :status: :truncated
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-03-01
   :file_time: 1978-03-01 18:25:23.000000000 -05:00
   :updated: 1978-03-01 18:25:23.000000000 -05:00
@@ -1564,8 +1564,8 @@
   :owner: 
   :path: fass/scripfrz/1-6
   :status: :truncated
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-03-01
   :file_time: 1978-03-01 11:50:49.000000000 -05:00
   :updated: 1978-03-01 11:50:49.000000000 -05:00
@@ -1609,8 +1609,8 @@
   :owner: 
   :path: fass/scripfrz/1-7
   :status: :truncated
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-03-01
   :file_time: 1978-03-01 17:51:01.000000000 -05:00
   :updated: 1978-03-01 17:51:01.000000000 -05:00
@@ -1654,8 +1654,8 @@
   :owner: 
   :path: fass/scripfrz/2-1
   :status: :truncated
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-03-01
   :file_time: 1978-03-01 18:25:23.000000000 -05:00
   :updated: 1978-03-01 18:25:23.000000000 -05:00
@@ -1699,8 +1699,8 @@
   :owner: 
   :path: fass/scripfrz/2-2
   :status: :truncated
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-03-01
   :file_time: 1978-03-01 12:19:40.000000000 -05:00
   :updated: 1978-03-01 12:19:40.000000000 -05:00
@@ -1744,8 +1744,8 @@
   :owner: 
   :path: fass/scripfrz/2-3
   :status: :truncated
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-03-01
   :file_time: 1978-03-01 17:51:01.000000000 -05:00
   :updated: 1978-03-01 17:51:01.000000000 -05:00
@@ -1789,8 +1789,8 @@
   :owner: 
   :path: fass/scripfrz/2-5
   :status: :truncated
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-03-03
   :file_time: 1978-03-03 12:00:19.000000000 -05:00
   :updated: 1978-03-03 12:00:19.000000000 -05:00
@@ -1832,8 +1832,8 @@
   :owner: 
   :path: fass/scripfrz/2-6
   :status: :truncated
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-03-01
   :file_time: 1978-03-01 17:51:01.000000000 -05:00
   :updated: 1978-03-01 17:51:01.000000000 -05:00
@@ -1877,8 +1877,8 @@
   :owner: 
   :path: fass/scripfrz/2-4
   :status: :truncated
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-03-14
   :file_time: 1978-03-14 14:41:06.000000000 -05:00
   :updated: 1978-03-14 14:41:06.000000000 -05:00
@@ -1910,8 +1910,8 @@
   :owner: 
   :path: fass/scripfrz/1-0
   :status: :truncated
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-02-28
   :file_time: 1978-02-28 13:26:00.000000000 -05:00
   :updated: 1978-02-28 13:26:00.000000000 -05:00
@@ -1924,8 +1924,8 @@
   :owner: 
   :path: fass/scripfrz/2-0
   :status: 
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-02-21
   :file_time: 1978-02-21 13:09:48.000000000 -05:00
   :updated: 1978-02-21 13:09:48.000000000 -05:00
@@ -1938,8 +1938,8 @@
   :owner: 
   :path: fass/scripfrz/titlpage
   :status: 
-  :location: ar013.0560
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
+  :tape: ar013.0560
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar013.0560
   :file_date: 1978-03-01
   :file_time: 1978-03-01 13:16:31.000000000 -05:00
   :updated: 1978-03-01 13:16:31.000000000 -05:00

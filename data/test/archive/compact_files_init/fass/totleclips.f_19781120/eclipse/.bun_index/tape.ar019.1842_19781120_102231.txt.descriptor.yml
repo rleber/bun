@@ -7,14 +7,14 @@
 :extracted: 2012-04-04 21:48:05.307358000 -04:00
 :file_size: 7227
 :file_type: :frozen
-:location: !binary |-
+:tape: !binary |-
   dGFwZS5hcjAxOS4xODQyXzE5NzgxMTIwXzEwMjIzMS50eHQ=
-:location_path: !binary |-
+:tape_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfZmlsZXMvZmFzcy90b3RsZWNsaXBzLmZfMTk3ODExMjAvZWNs
   aXBzZS90YXBlLmFyMDE5LjE4NDJfMTk3ODExMjBfMTAyMjMxLnR4dA==
-:original_location: ar019.1842
-:original_location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.1842
+:original_tape: ar019.1842
+:original_tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.1842
 :owner: fass
 :path: fass/totleclips.f
 :specification: /totleclips.f Total Eclipse Episode 6 - Fixed-Up Version
@@ -44,8 +44,8 @@
   :owner: 
   :path: fass/totleclips.f/eclipse
   :status: :truncated
-  :location: ar019.1842
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.1842
+  :tape: ar019.1842
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.1842
   :file_date: 1978-11-20
   :file_time: 1978-11-20 10:22:31.000000000 -05:00
   :updated: 1978-11-20 10:22:31.000000000 -05:00
@@ -58,8 +58,8 @@
   :owner: 
   :path: fass/totleclips.f/temacro
   :status: 
-  :location: ar019.1842
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.1842
+  :tape: ar019.1842
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.1842
   :file_date: 1978-11-20
   :file_time: 1978-11-20 10:22:31.000000000 -05:00
   :updated: 1978-11-20 10:22:31.000000000 -05:00
@@ -72,8 +72,8 @@
   :owner: 
   :path: fass/totleclips.f/sounds
   :status: 
-  :location: ar019.1842
-  :location_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.1842
+  :tape: ar019.1842
+  :tape_path: /Users/richard/projects/bun/data/test/archive/compact_source/ar019.1842
   :file_date: 1978-11-20
   :file_time: 1978-11-20 10:22:31.000000000 -05:00
   :updated: 1978-11-20 10:22:31.000000000 -05:00

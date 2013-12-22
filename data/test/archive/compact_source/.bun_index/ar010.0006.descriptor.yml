@@ -6,13 +6,13 @@
 :extracted: 
 :file_size: 3854
 :file_type: :text
-:location: !binary |-
+:tape: !binary |-
   YXIwMTAuMDAwNg==
-:location_path: !binary |-
+:tape_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3Rfc291cmNlL2FyMDEwLjAwMDY=
-:original_location: ar010.0006
-:original_location_path: /Users/richard/bun_archive/ar010.0006
+:original_tape: ar010.0006
+:original_tape_path: /Users/richard/bun_archive/ar010.0006
 :owner: fass
 :path: fass/sequence
 :specification: /sequence
