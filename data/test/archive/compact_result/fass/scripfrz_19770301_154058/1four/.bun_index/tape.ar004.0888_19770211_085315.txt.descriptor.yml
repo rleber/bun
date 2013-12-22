@@ -1,20 +1,22 @@
 ---
-:basename: 
-:catalog_time: 
-:description: 
-:errors: 
-:extracted: 
-:file_size: 
-:file_type: 
+:basename: scripfrz
+:catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+:description: ==> freeze file containing roff source for fass '77 script
+:errors:
+- ! 'Shard 7: Bad descriptor at 1801: <Bun::Word 251642101075>'
+- ! 'Shard 7: Bad descriptor at 1852: <Bun::Word 145420207417>'
+:extracted: 2012-04-04 21:47:52.494673000 -04:00
+:file_size: 40058
+:file_type: :frozen
 :hoard: !binary |-
   dGFwZS5hcjAwNC4wODg4XzE5NzcwMjExXzA4NTMxNS50eHQ=
 :hoard_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfcmVzdWx0L2Zhc3Mvc2NyaXBmcnpfMTk3NzAzMDFfMTU0MDU4
   LzFmb3VyL3RhcGUuYXIwMDQuMDg4OF8xOTc3MDIxMV8wODUzMTUudHh0
-:original_hoard: 
-:original_hoard_path: 
-:owner: 
-:path: 
-:specification: 
-:updated: 
+:original_hoard: /Users/richard/projects/bun/data/test/archive/compact_files/fass/scripfrz_19770301_154058/1four/tape.ar004.0888_19770211_085315.txt
+:original_hoard_path: /Users/richard/projects/bun/data/test/archive/compact_files/fass/scripfrz_19770301_154058/1four/tape.ar004.0888_19770211_085315.txt
+:owner: fass
+:path: fass/scripfrz
+:specification: /scripfrz ==> freeze file containing roff source for fass '77 script
+:updated: 1977-03-01 15:40:58.000000000 -05:00

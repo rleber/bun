@@ -2,19 +2,17 @@
 # -*- encoding: us-ascii -*-
 
 DEFAULT_THRESHOLD = 20
-desc "classify [FROM] [CLEAN] [DIRTY]", "Classify files based on whether they're clean or not."
-option 'at',        :aliases=>'-a', :type=>'string',  :desc=>'Library location'
+desc "classify FROM [CLEAN] [DIRTY]", "Classify files based on whether they're clean or not."
 option "copy",      :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to clean/dirty directories (instead of symlink)"
 option 'dryrun',    :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
 option 'threshold', :aliases=>'-t', :type=>'numeric',
     :desc=>"Set a threshold: how many errors before a file is 'dirty'? (default #{DEFAULT_THRESHOLD})"
-def classify(from=nil, clean=nil, dirty=nil)
+def classify(from, clean=nil, dirty=nil)
   @dryrun = options[:dryrun]
   threshold = options[:threshold] || DEFAULT_THRESHOLD
-  library = Library.new(:at=>options[:at])
+  library = Library.new(from)
   directory = library.at
   from ||= library.files_directory
-  from = File.join(library.at, from)
   log_file = File.join(from, library.log_file)
   clean = File.join(library.at, library.clean_directory)
     dirty = File.join(library.at, library.dirty_directory)

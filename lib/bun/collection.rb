@@ -25,8 +25,8 @@ module Bun
       end
     end
     
-    def initialize(options={})
-      @at = File.expand_path(options[:at] || default_at)
+    def initialize(at, options={})
+      @at = at
       @index = nil
       @update_indexes = options.has_key?(:update_indexes) ? options[:update_indexes] : true
     end
@@ -82,10 +82,6 @@ module Bun
       name, depth = first
       depth
     end
-    
-    def default_at
-      File.expand_path(default_config.setting['at_path'])
-    end
 
     def config_dir(name)
       dir = config.setting[name.to_s]
@@ -104,7 +100,7 @@ module Bun
     end
     
     def default_config
-      @default_config = Configuration.new(:hoard=>default_config_file)
+      @default_config = Configuration.new
     end
     cache :default_config
     
@@ -117,11 +113,12 @@ module Bun
     cache :config
     
     def expanded_config(name)
-      expand_path(config.setting[name.to_s])
+      setting = config.setting[name]
+      setting && expand_path(setting)
     end
     
     def index_directory
-      config.setting['index_directory']
+      config.setting[:index_directory]
     end
     
     def index_directories
@@ -130,7 +127,7 @@ module Bun
     
     def index_prefix(ix=nil)
       ix ||= expanded_index_directory
-      res = File.dirname(ix)
+      res = File.expand_path(File.dirname(ix))
       res = '' if res == '.'
       res
     end
@@ -141,16 +138,14 @@ module Bun
     
     def index_for(name, ix=nil)
       expanded_path = index_path(name)
-      index[expanded_path]
+      index[expanded_path].merge(:hoard=>name, :hoard_path=>expand_path(name))
     end
     
     def expanded_index_directory
-      expanded_config('index_directory')
+      expanded_config(:index_directory)
     end
     
     def expand_path(hoard, options={})
-      # $stderr.puts "In #{self.class}#expand_path(#{hoard.inspect}, #{options.inspect}):" # DEBUG
-      # $stderr.puts caller.map{|c| "  #{c}"}
       if options[:from_wd] # Expand relative to working directory
         case hoard
         when /^@\/(.*)/ # syntax @/xxxx means expand relative to archive
@@ -159,7 +154,7 @@ module Bun
           hoard = $1
         end
         rel = `pwd`.chomp
-      else # expand relative to archive
+      elsif !options[:already_from_wd] # expand relative to archive
         rel = File.expand_path(at)
       end
       File.expand_path(hoard, rel)
@@ -176,8 +171,10 @@ module Bun
       res
     end
     
+    attr_accessor :recursive_index
+    
     def _index(options={})
-      if options[:recursive]
+      if options[:recursive] || recursive_index
         indexes = index_directories
       else
         indexes = [expanded_index_directory]
@@ -204,7 +201,7 @@ module Bun
     
     def build_and_save_index(options={})
       clear_index
-      items.with_files(:header=>true) do |fname, f|
+      items.with_files(:header=>true, :already_from_wd=>true) do |fname, f|
         puts f.hoard if options[:verbose]
         update_index(:file=>f)
       end

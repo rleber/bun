@@ -42,11 +42,11 @@ module Bun
         end
       end
       
-      def with_path(&blk)
+      def with_path(options={}, &blk)
         enum = ::Enumerator.new do |yielder|
           loop do
             fname = self.next
-            path = @collection.expand_path(fname)
+            path = @collection.expand_path(fname, options)
             yielder << [fname, path]
           end
         end
@@ -87,7 +87,7 @@ module Bun
       end
       
       def all(&blk)
-        collection = Dir.glob("#{@collection.at}/**/*").map{|f| @collection.relative_path(f) }
+        collection = Dir.glob("#{@collection.at}/**/*")
         collection.unshift '.'
         collection = collection.to_enum
         enum = self.class.new(@collection) do |yielder|
@@ -135,8 +135,8 @@ module Bun
       
       def with_files(options={}, &blk)
         enum = ::Enumerator.new do |yielder|
-          with_path.each do |fname, path|
-            yielder << [fname, @collection.open(fname, options)] unless ::File.directory?(path)
+          with_path(options).each do |fname, path|
+            yielder << [fname, @collection.open(path, options)] unless ::File.directory?(path)
           end
         end
         if block_given?

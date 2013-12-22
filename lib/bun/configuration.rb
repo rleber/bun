@@ -9,18 +9,30 @@ module Bun
   class Configuration
     include CacheableMethods
     
+    PROJECT_DIRECTORY = File.join(File.dirname(__FILE__), '..', '..') # Two levels up from the directory this file is in
+    DATA_DIRECTORY = File.join(PROJECT_DIRECTORY, 'data')
+    CONFIG_INIT_PATH = File.join(DATA_DIRECTORY,'bun_config_init.yml')
+    CONFIG_DEFINITIONS_PATH = File.join(DATA_DIRECTORY,'config_keys.yml')
+
     class << self
-      def data_directory
-        File.expand_path(File.join(File.dirname(__FILE__), '..','..','data'))
+    
+      CONFIG_FILE_NAME = '.bun_config.yml'
+      DEFAULT_CONFIG_PATH = File.join(ENV['HOME'], CONFIG_FILE_NAME)
+ 
+      def location
+        @location ||= default_location
       end
       
       def default_location
-        File.expand_path(File.join(data_directory,'archive_config.yml'))
+        ENV['BUN_CONFIG'] || DEFAULT_CONFIG_PATH
+      end
+      
+      def location=(path)
+        @location = path
       end
       
       def definitions
-        location = File.expand_path(File.join(data_directory,'config_keys.yml'))
-        content = ::Bun.readfile(location, :encoding=>'us-ascii')
+        content = ::Bun.readfile(CONFIG_DEFINITIONS_PATH, :encoding=>'us-ascii')
         YAML.load(content)
       end
       
@@ -29,58 +41,58 @@ module Bun
       end
     end
     
-    def default_location
-      self.class.default_location
+    def initialize
+      @setting = read
     end
     
-    def default_keys
-      self.class.default_keys
+    def init
+      @setting = File.exists?(location) ? read : init
+    end
+    
+    def init
+      setting = _read(CONFIG_INIT_PATH)
+      write(setting)
+      setting
+    end
+    
+    def location
+      self.class.location
+    end
+    
+    def places
+      setting[:places] || {}
+    end
+    
+    def places=(p)
+      setting[:places] = p
     end
     
     def keys
       @setting.keys
     end
     
-    def definitions
-      self.class.definitions
-    end
-    
     def all_keys
-      (keys + default_keys).uniq
+      (keys + self.class.default_keys).uniq
     end
     
     def location=(locn)
       @location = locn
     end
     
-    attr_accessor :setting
+    attr_writer :setting
     
-    def location
-      @location ||= default_location
-    end
-    
-    def initialize(options={})
-      @location = File.expand_path(options[:location] || default_location)
-      @data = {}
-    end
-    
-    def _read(location=nil)
+    def _read(location)
       location ||= self.location
-      content = ::Bun.readfile(location, :encoding=>'us-ascii')
-      @setting = YAML.load(content)
-      @setting['repository'] ||= ENV['BUN_REPOSITORY']
-      @setting
+      begin
+        content = ::Bun.readfile(location, :encoding=>'us-ascii')
+        content ? YAML.load(content) : {}
+      rescue => e
+        stop "!Unable to read configuration file at #{location}: #{e}"
+      end
     end
-        
-    def default_config
-      read(default_location)
-    end
-    cache :default_config
     
-    def read(config_file=nil)
-      return _read(config_file) if config_file && File.file?(config_file)
-      config_file = File.join(location, '.config.yml')
-      File.file?(config_file) ? _read(config_file) : default_config
+    def read
+      @setting = _read(location)
     end
     
     def setting
@@ -91,10 +103,10 @@ module Bun
       ::File.expand_path(setting[name.to_s])
     end
     
-    def write(location=nil)
-      location ||= self.location
+    def write(setting=nil)
+      setting ||= @setting
       ::File.open(location, 'w') do |f|
-        f.write(YAML.dump(@setting))
+        f.write(YAML.dump(setting))
       end
     end
   end

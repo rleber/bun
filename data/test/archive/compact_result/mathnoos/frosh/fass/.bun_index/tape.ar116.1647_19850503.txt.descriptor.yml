@@ -1,20 +1,20 @@
 ---
-:basename: 
-:catalog_time: 
-:description: 
-:errors: 
-:extracted: 
-:file_size: 
-:file_type: 
+:basename: fass
+:catalog_time: 1985-05-03 00:00:00.000000000 -04:00
+:description: FASS blurb
+:errors: []
+:extracted: 2012-04-04 21:48:06.530749000 -04:00
+:file_size: 977
+:file_type: :text
 :hoard: !binary |-
   dGFwZS5hcjExNi4xNjQ3XzE5ODUwNTAzLnR4dA==
 :hoard_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfcmVzdWx0L21hdGhub29zL2Zyb3NoL2Zhc3MvdGFwZS5hcjEx
   Ni4xNjQ3XzE5ODUwNTAzLnR4dA==
-:original_hoard: 
-:original_hoard_path: 
-:owner: 
-:path: 
-:specification: 
-:updated: 
+:original_hoard: /Users/richard/projects/bun/data/test/archive/compact_files/mathnoos/frosh/fass/tape.ar116.1647_19850503.txt
+:original_hoard_path: /Users/richard/projects/bun/data/test/archive/compact_files/mathnoos/frosh/fass/tape.ar116.1647_19850503.txt
+:owner: mathnoos
+:path: mathnoos/frosh/fass
+:specification: /frosh/fass FASS blurb
+:updated: 1985-05-03 00:00:00.000000000 -04:00

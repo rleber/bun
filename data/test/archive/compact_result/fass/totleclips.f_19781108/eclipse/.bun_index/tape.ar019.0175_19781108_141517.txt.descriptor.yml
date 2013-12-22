@@ -1,20 +1,34 @@
 ---
-:basename: 
-:catalog_time: 
-:description: 
-:errors: 
-:extracted: 
-:file_size: 
-:file_type: 
+:basename: totleclips.f
+:catalog_time: 1978-11-08 00:00:00.000000000 -05:00
+:description: ==> Total Eclipse Episode 6 - CKMS Radio Theatre
+:errors:
+- ! 'Shard 1: Bad descriptor at 4608: <Bun::Word 211444635077>'
+- ! 'Shard 1: Bad descriptor at 4732: <Bun::Word 250744251055>'
+- ! 'Shard 1: Bad descriptor at 4996: <Bun::Word 245120247556>'
+- ! 'Shard 1: Bad descriptor at 5188: <Bun::Word 752224432000>'
+- ! 'Shard 1: Bad descriptor at 5228: <Bun::Word 211444635077>'
+- ! 'Shard 1: Bad descriptor at 5908: <Bun::Word 313177247244>'
+- ! 'Shard 1: Bad descriptor at 5913: <Bun::Word 250477223165>'
+- ! 'Shard 1: Bad descriptor at 5988: <Bun::Word 211444635070>'
+- ! 'Shard 1: Bad descriptor at 5997: <Bun::Word 250744250150>'
+- ! 'Shard 1: Bad descriptor at 6091: <Bun::Word 010547223164>'
+- ! 'Shard 1: Bad descriptor at 6120: <Bun::Word 012247603034>'
+- ! 'Shard 1: Bad descriptor at 6531: <Bun::Word 017643237144>'
+- ! 'Shard 1: Bad descriptor at 6542: <Bun::Word 056423746406>'
+- ! 'Shard 1: Bad descriptor at 6593: <Bun::Word 751446237274>'
+:extracted: 2012-04-04 21:48:04.944593000 -04:00
+:file_size: 7228
+:file_type: :frozen
 :hoard: !binary |-
   dGFwZS5hcjAxOS4wMTc1XzE5NzgxMTA4XzE0MTUxNy50eHQ=
 :hoard_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfcmVzdWx0L2Zhc3MvdG90bGVjbGlwcy5mXzE5NzgxMTA4L2Vj
   bGlwc2UvdGFwZS5hcjAxOS4wMTc1XzE5NzgxMTA4XzE0MTUxNy50eHQ=
-:original_hoard: 
-:original_hoard_path: 
-:owner: 
-:path: 
-:specification: 
-:updated: 
+:original_hoard: /Users/richard/projects/bun/data/test/archive/compact_files/fass/totleclips.f_19781108/eclipse/tape.ar019.0175_19781108_141517.txt
+:original_hoard_path: /Users/richard/projects/bun/data/test/archive/compact_files/fass/totleclips.f_19781108/eclipse/tape.ar019.0175_19781108_141517.txt
+:owner: fass
+:path: fass/totleclips.f
+:specification: /totleclips.f ==> Total Eclipse Episode 6 - CKMS Radio Theatre
+:updated: 1978-11-08 00:00:00.000000000 -05:00

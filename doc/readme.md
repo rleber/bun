@@ -30,8 +30,7 @@ At the moment, you will have to take the following steps to install the software
 3. Install this software, and put the "bin" directory in your load path
 4. Try running it (see below)
 5. Install any missing Ruby Gem dependencies (you'll know them from the error messages)
-6. Configure file locations: You can do this by setting the values in the file data/archive_config.yml, or with
-   environment variables, in some cases:
+6. Configure file locations: You can do this using the bun config commands
    - Set the default location to store a retrieved archive of GCOS files using the archive entry in the config file.
    - Set the default URL for retrieving archived files (i.e. using "bun fetch"), either by setting the value
      for the repository entry in the config file, or by setting the "BUN_REPOSITORY" environment variable.

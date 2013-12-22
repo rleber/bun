@@ -42,8 +42,7 @@ DEFAULT_VALUES = {
   :updated     => Time.now,
 }
 
-desc "ls", "Display an index of archived files"
-option 'at',        :aliases=>'-a', :type=>'string',                               :desc=>'Archive hoard'
+desc "ls ARCHIVE", "Display an index of archived files"
 option "build",     :aliases=>"-b", :type=>'boolean',                              :desc=>"Don't rely on at index; always build information from source file"
 option "descr",     :aliases=>"-d", :type=>'boolean',                              :desc=>"Include description"
 option "files",     :aliases=>"-f", :type=>'string',  :default=>'',                :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
@@ -56,7 +55,7 @@ option "hoards",    :aliases=>"-h", :type=>'string',  :default=>'',             
 option "type",      :aliases=>"-T", :type=>'string',  :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
 # TODO Refactor hoard/file patterns; use hoard::file::shard syntax
 # TODO Refactor code into shorter submethods
-def ls
+def ls(at)
   type_pattern = case options[:type].downcase
     when 'f', 'frozen'
       /^(frozen|shard)$/i
@@ -100,7 +99,7 @@ def ls
   end
 
   # Retrieve file information
-  archive = Archive.new(options)
+  archive = Archive.new(at, options)
   ix = archive.hoards
   if options[:quick]
     puts ix
@@ -157,7 +156,7 @@ def ls
       end
     end
   end
-  puts "Archive at #{archive.at}:"
+  puts "Archive at #{File.expand_path(archive.at)}:"
   if table.size <= 1
     puts "No matching files"
   else

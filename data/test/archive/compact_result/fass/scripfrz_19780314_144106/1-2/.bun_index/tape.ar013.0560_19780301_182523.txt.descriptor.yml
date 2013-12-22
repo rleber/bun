@@ -1,20 +1,111 @@
 ---
-:basename: 
-:catalog_time: 
-:description: 
-:errors: 
-:extracted: 
-:file_size: 
-:file_type: 
+:basename: scripfrz
+:catalog_time: 1978-04-11 00:00:00.000000000 -05:00
+:description: ==> frozen fass 1978 script and accessories
+:errors:
+- ! 'Shard 1: Bad descriptor at 2375: <Bun::Word 704051653044>'
+- ! 'Shard 1: Bad descriptor at 2383: <Bun::Word 204053621015>'
+- ! 'Shard 1: Bad descriptor at 2384: <Bun::Word 204051621052>'
+- ! 'Shard 1: Bad descriptor at 2416: <Bun::Word 204052221052>'
+- ! 'Shard 1: Bad descriptor at 2439: <Bun::Word 410551432000>'
+- ! 'Shard 1: Bad descriptor at 2453: <Bun::Word 252306400000>'
+- ! 'Shard 1: Bad descriptor at 2529: <Bun::Word 151042646405>'
+- ! 'Shard 1: Bad descriptor at 2532: <Bun::Word 011147251055>'
+- ! 'Shard 1: Bad descriptor at 2574: <Bun::Word 450620251225>'
+- ! 'Shard 1: Bad descriptor at 2577: <Bun::Word 444051637154>'
+- ! 'Shard 1: Bad descriptor at 2582: <Bun::Word 252306400000>'
+- ! 'Shard 1: Bad descriptor at 2584: <Bun::Word 010141205114>'
+- ! 'Shard 1: Bad descriptor at 2621: <Bun::Word 211720221115>'
+- ! 'Shard 1: Bad descriptor at 2656: <Bun::Word 056420311516>'
+- ! 'Shard 1: Bad descriptor at 2688: <Bun::Word 144044614404>'
+- ! 'Shard 1: Bad descriptor at 2724: <Bun::Word 152044635072>'
+- ! 'Shard 1: Bad descriptor at 2736: <Bun::Word 010120247035>'
+- ! 'Shard 1: Bad descriptor at 2745: <Bun::Word 144046237174>'
+- ! 'Shard 1: Bad descriptor at 2759: <Bun::Word 152447635115>'
+- ! 'Shard 1: Bad descriptor at 2806: <Bun::Word 010551101174>'
+- ! 'Shard 1: Bad descriptor at 2817: <Bun::Word 410551534404>'
+- ! 'Shard 1: Bad descriptor at 2870: <Bun::Word 010551032000>'
+- ! 'Shard 1: Bad descriptor at 2875: <Bun::Word 610542640510>'
+- ! 'Shard 1: Bad descriptor at 2883: <Bun::Word 150524501246>'
+- ! 'Shard 1: Bad descriptor at 2915: <Bun::Word 110520203164>'
+- ! 'Shard 1: Bad descriptor at 2918: <Bun::Word 451524432000>'
+- ! 'Shard 1: Bad descriptor at 2924: <Bun::Word 251142651145>'
+- ! 'Shard 1: Bad descriptor at 2943: <Bun::Word 251142651145>'
+- ! 'Shard 1: Bad descriptor at 2946: <Bun::Word 410551223164>'
+- ! 'Shard 1: Bad descriptor at 3133: <Bun::Word 005620251104>'
+- ! 'Shard 1: Bad descriptor at 3192: <Bun::Word 012352203074>'
+- ! 'Shard 1: Bad descriptor at 3207: <Bun::Word 250151246510>'
+- ! 'Shard 1: Bad descriptor at 3208: <Bun::Word 640002135546>'
+- ! 'Shard 1: Bad descriptor at 3225: <Bun::Word 012051237014>'
+- ! 'Shard 1: Bad descriptor at 3388: <Bun::Word 410551101014>'
+- ! 'Shard 1: Bad descriptor at 3410: <Bun::Word 012744651102>'
+- ! 'Shard 1: Bad descriptor at 3434: <Bun::Word 252320247244>'
+- ! 'Shard 1: Bad descriptor at 3466: <Bun::Word 710720247014>'
+- ! 'Shard 1: Bad descriptor at 3482: <Bun::Word 011152101234>'
+- ! 'Shard 1: Bad descriptor at 3484: <Bun::Word 451626101244>'
+- ! 'Shard 1: Bad descriptor at 3517: <Bun::Word 610551501015>'
+- ! 'Shard 1: Bad descriptor at 3518: <Bun::Word 350145612562>'
+- ! 'Shard 1: Bad descriptor at 3545: <Bun::Word 444050203255>'
+- ! 'Shard 1: Bad descriptor at 3546: <Bun::Word 150524501276>'
+- ! 'Shard 1: Bad descriptor at 3613: <Bun::Word 441500000000>'
+- ! 'Shard 1: Bad descriptor at 3634: <Bun::Word 310551501014>'
+- ! 'Shard 1: Bad descriptor at 3657: <Bun::Word 150527101244>'
+- ! 'Shard 1: Bad descriptor at 3676: <Bun::Word 012352203074>'
+- ! 'Shard 1: Bad descriptor at 3685: <Bun::Word 011442615242>'
+- ! 'Shard 1: Bad descriptor at 3698: <Bun::Word 144052236404>'
+- ! 'Shard 1: Bad descriptor at 3704: <Bun::Word 451642647234>'
+- ! 'Shard 1: Bad descriptor at 3759: <Bun::Word 450552231310>'
+- ! 'Shard 1: Bad descriptor at 3764: <Bun::Word 111752635042>'
+- ! 'Shard 1: Bad descriptor at 3801: <Bun::Word 011247607132>'
+- ! 'Shard 1: Bad descriptor at 3803: <Bun::Word 252020203164>'
+- ! 'Shard 1: Bad descriptor at 3841: <Bun::Word 110451530150>'
+- ! 'Shard 1: Bad descriptor at 3873: <Bun::Word 012044631114>'
+- ! 'Shard 1: Bad descriptor at 3915: <Bun::Word 110344101244>'
+- ! 'Shard 1: Bad descriptor at 3920: <Bun::Word 444047635145>'
+- ! 'Shard 1: Bad descriptor at 3928: <Bun::Word 211042662405>'
+- ! 'Shard 1: Bad descriptor at 3930: <Bun::Word 405620101244>'
+- ! 'Shard 1: Bad descriptor at 3938: <Bun::Word 405420203164>'
+- ! 'Shard 1: Bad descriptor at 4006: <Bun::Word 251642101114>'
+- ! 'Shard 1: Bad descriptor at 4013: <Bun::Word 210344223164>'
+- ! 'Shard 1: Bad descriptor at 4028: <Bun::Word 150540645034>'
+- ! 'Shard 1: Bad descriptor at 4029: <Bun::Word 410542101024>'
+- ! 'Shard 1: Bad descriptor at 4038: <Bun::Word 311744611114>'
+- ! 'Shard 1: Bad descriptor at 4043: <Bun::Word 752444101244>'
+- ! 'Shard 1: Bad descriptor at 4048: <Bun::Word 110506400000>'
+- ! 'Shard 1: Bad descriptor at 4053: <Bun::Word 312546101174>'
+- ! 'Shard 1: Bad descriptor at 4065: <Bun::Word 012444212405>'
+- ! 'Shard 1: Bad descriptor at 4081: <Bun::Word 151540647104>'
+- ! 'Shard 1: Bad descriptor at 4082: <Bun::Word 250420237255>'
+- ! 'Shard 1: Bad descriptor at 4092: <Bun::Word 112254623164>'
+- ! 'Shard 1: Bad descriptor at 4127: <Bun::Word 204052221052>'
+- ! 'Shard 1: Bad descriptor at 4148: <Bun::Word 310520205054>'
+- ! 'Shard 1: Bad descriptor at 4165: <Bun::Word 752547210405>'
+- ! 'Shard 1: Bad descriptor at 4170: <Bun::Word 252242501115>'
+- ! 'Shard 1: Bad descriptor at 4299: <Bun::Word 144046213065>'
+- ! 'Shard 1: Bad descriptor at 4307: <Bun::Word 104050213175>'
+- ! 'Shard 1: Bad descriptor at 4335: <Bun::Word 244041203224>'
+- ! 'Shard 1: Bad descriptor at 4336: <Bun::Word 245420203164>'
+- ! 'Shard 1: Bad descriptor at 4353: <Bun::Word 411146501254>'
+- ! 'Shard 1: Bad descriptor at 4358: <Bun::Word 410520221015>'
+- ! 'Shard 1: Bad descriptor at 4359: <Bun::Word 141500000000>'
+- ! 'Shard 1: Bad descriptor at 4369: <Bun::Word 244043213055>'
+- ! 'Shard 1: Bad descriptor at 4387: <Bun::Word 710406400000>'
+- ! 'Shard 1: Bad descriptor at 4389: <Bun::Word 012444212404>'
+- ! 'Shard 1: Bad descriptor at 4431: <Bun::Word 010240607132>'
+- ! 'Shard 1: Bad descriptor at 4435: <Bun::Word 111542647014>'
+- ! 'Shard 1: Bad descriptor at 4445: <Bun::Word 150551501014>'
+:extracted: 2012-04-04 21:48:01.527869000 -04:00
+:file_size: 45351
+:file_type: :frozen
 :hoard: !binary |-
   dGFwZS5hcjAxMy4wNTYwXzE5NzgwMzAxXzE4MjUyMy50eHQ=
 :hoard_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfcmVzdWx0L2Zhc3Mvc2NyaXBmcnpfMTk3ODAzMTRfMTQ0MTA2
   LzEtMi90YXBlLmFyMDEzLjA1NjBfMTk3ODAzMDFfMTgyNTIzLnR4dA==
-:original_hoard: 
-:original_hoard_path: 
-:owner: 
-:path: 
-:specification: 
-:updated: 
+:original_hoard: /Users/richard/projects/bun/data/test/archive/compact_files/fass/scripfrz_19780314_144106/1-2/tape.ar013.0560_19780301_182523.txt
+:original_hoard_path: /Users/richard/projects/bun/data/test/archive/compact_files/fass/scripfrz_19780314_144106/1-2/tape.ar013.0560_19780301_182523.txt
+:owner: fass
+:path: fass/scripfrz
+:specification: /scripfrz ==> frozen fass 1978 script and accessories
+:updated: 1978-03-14 14:41:06.000000000 -05:00

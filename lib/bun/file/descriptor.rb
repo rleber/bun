@@ -54,10 +54,8 @@ module Bun
           fields.each do |f|
             instance_variable_set("@#{f}", nil)
           end
-          if h
-            h.keys.each do |k|
-              instance_variable_set("@#{k}", h[k])
-            end
+          h.keys.each do |k|
+            instance_variable_set("@#{k}", h[k])
           end
           self
         end
@@ -74,7 +72,7 @@ module Bun
       
         def copy(to, new_settings={})
           to_dir = File.dirname(to)
-          to_archive = Archive.new(:at=>to_dir)
+          to_archive = Archive.new(to_dir)
           descriptor = self.to_hash
           descriptor[:original_hoard] = descriptor[:hoard] unless descriptor[:original_hoard]
           descriptor[:original_hoard_path] = descriptor[:hoard_path] unless descriptor[:original_hoard_path]

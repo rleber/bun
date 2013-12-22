@@ -2,11 +2,10 @@
 # -*- encoding: us-ascii -*-
 
 SHARDS_ACROSS = 5
-desc "describe HOARD", "Display description information for a hoard"
-option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
+desc "describe ARCHIVE HOARD", "Display description information for a hoard"
 option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on at index; always build information from source file"
-def describe(file_name)
-  archive = Archive.new(options)
+def describe(at, file_name)
+  archive = Archive.new(at, options)
   descriptor    = archive.descriptor(file_name, :build=>options[:build])
   abort "File #{file_name} is not in the archive" unless descriptor
   type          = descriptor.file_type

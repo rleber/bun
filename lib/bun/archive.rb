@@ -35,11 +35,13 @@ module Bun
     end
 
     def catalog_path
-      expanded_config(:catalog_path)
+      cp = config.places['catalog']
+      cp && ::File.expand_path(cp)
     end
     
     def catalog
-      content = Bun.readfile(catalog_path, :encoding=>'us-ascii')
+      cp = catalog_path
+      content = cp && Bun.readfile(catalog_path, :encoding=>'us-ascii')
       return [] unless content
       specs = content.split("\n").map do |line|
         words = line.strip.split(/\s+/)
@@ -101,7 +103,8 @@ module Bun
       return path unless date
       date_to_s = date.strftime(EXTRACT_DATE_FORMAT)
       date_to_s = $1 if date_to_s =~ /^(.*)_000000$/
-      path + '_' + date_to_s
+      res = path + '_' + date_to_s
+      res
     end
 
     def extract_hoardname(path, date)

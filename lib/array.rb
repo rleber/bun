@@ -19,8 +19,10 @@ class Array
     self.each_with_index do |column, column_number|
       if right_justified_columns.include?(column_number)
         justified << column.map{|entry| "%*s" % [widths[column_number], entry] }
-      else
+      elsif column_number < self.size-1
         justified << column.map{|entry| "%-*s" % [widths[column_number], entry] }
+      else
+        justified << column
       end
     end
     justified

@@ -5,6 +5,8 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require 'tempfile'
 require 'yaml'
 
+TEST_ARCHIVE = File.join(File.dirname(__FILE__),'..','data','test', 'archive', 'general_test')
+
 def exec(cmd, options={})
   res = `#{cmd}`
   unless $?.exitstatus == 0
@@ -17,7 +19,7 @@ def exec(cmd, options={})
 end
 
 def decode(file_name)
-  archive = Bun::Archive.new
+  archive = Bun::Archive.new(TEST_ARCHIVE)
   expanded_file = File.join("data", "test", file_name)
   file = Bun::File::Text.open(expanded_file)
   file.text
@@ -110,7 +112,7 @@ end
 
 describe Bun::Archive do
   before :each do
-    @archive = Bun::Archive.new(:at=>'data/test/archive/contents')
+    @archive = Bun::Archive.new('data/test/archive/contents')
   end
   describe "contents" do
     it "retrieves correct list" do
@@ -137,8 +139,8 @@ describe Bun::Bot do
   end
     
   describe "describe" do
-    include_examples "command", "describe text file", "describe ar003.0698", "describe_ar003.0698"
-    include_examples "command", "describe frozen file", "describe ar025.0634", "describe_ar025.0634"
+    include_examples "command", "describe text file", "describe #{TEST_ARCHIVE} ar003.0698", "describe_ar003.0698"
+    include_examples "command", "describe frozen file", "describe #{TEST_ARCHIVE} ar025.0634", "describe_ar025.0634"
   end
   
   context "functioning outside the base directory" do
@@ -151,7 +153,7 @@ describe Bun::Bot do
       File.expand_path(Dir.pwd).should == File.expand_path(File.join(File.dirname(__FILE__),'..'))
     end
     it "should function okay in a different directory" do
-      exec("cd ~/bun_archive ; bun describe ar003.0698")
+      exec("cd ~/bun_archive ; bun describe #{TEST_ARCHIVE} ar003.0698")
       $?.exitstatus.should == 0
     end
     after :each do
@@ -162,35 +164,35 @@ describe Bun::Bot do
   end
   
   describe "ls" do
-    include_examples "command", "ls", "ls", "ls"
-    include_examples "command", "ls -Q", "ls -Q", "ls_q"
-    include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -h ar003.0698", "ls_ldrh_ar003.0698"
-    include_examples "command", "ls -ldr with frozen file (ar145.2699)", "ls -ldr -h ar145.2699", "ls_ldrh_ar145.2699"
-    include_examples "command", "ls -ldrb with frozen file (ar145.2699)", "ls -ldrb -h ar145.2699", "ls_ldrbh_ar145.2699"
+    include_examples "command", "ls", "ls #{TEST_ARCHIVE}", "ls"
+    include_examples "command", "ls -Q", "ls -Q #{TEST_ARCHIVE}", "ls_q"
+    include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -h ar003.0698 #{TEST_ARCHIVE}", "ls_ldrh_ar003.0698"
+    include_examples "command", "ls -ldr with frozen file (ar145.2699)", "ls -ldr -h ar145.2699 #{TEST_ARCHIVE}", "ls_ldrh_ar145.2699"
+    include_examples "command", "ls -ldrb with frozen file (ar145.2699)", "ls -ldrb -h ar145.2699 #{TEST_ARCHIVE}", "ls_ldrbh_ar145.2699"
   end
   describe "readme" do
     include_examples "command", "readme", "readme", "doc/readme.md"
   end
   describe "unpack" do
-    include_examples "command", "unpack", "unpack ar003.0698", "unpack"
+    include_examples "command", "unpack", "unpack #{TEST_ARCHIVE} ar003.0698", "unpack"
   end
   describe "cat" do
-    include_examples "command", "cat (ar003.0698)", "cat ar003.0698", "cat"
+    include_examples "command", "cat (ar003.0698)", "cat #{TEST_ARCHIVE} ar003.0698", "cat"
   end
   describe "cp" do
     include_examples "command with file", 
-      "cp ar003.0698 output/cp_ar003.0698.out", "cp ar003.0698 output/cp_ar003.0698.out", 
+      "cp ar003.0698 output/cp_ar003.0698.out", "cp #{TEST_ARCHIVE} ar003.0698 output/cp_ar003.0698.out", 
       "cp_ar003.0698.stdout", "cp_ar003.0698.out", "cp_ar003.0698"
-    include_examples "command", "cp ar003.0698 -", "cp ar003.0698 -", "cp_ar003.0698"
-    include_examples "command", "cp ar003.0698", "cp ar003.0698", "cp_ar003.0698"
+    include_examples "command", "cp ar003.0698 -", "cp #{TEST_ARCHIVE} ar003.0698 -", "cp_ar003.0698"
+    include_examples "command", "cp ar003.0698", "cp #{TEST_ARCHIVE} ar003.0698", "cp_ar003.0698"
     include_examples "command with file", 
-      "cp ar003.0698 output/cp_ar003.0698 (a directory)", "cp ar003.0698 output/cp_ar003.0698", 
+      "cp ar003.0698 output/cp_ar003.0698 (a directory)", "cp #{TEST_ARCHIVE} ar003.0698 output/cp_ar003.0698", 
       "cp_ar003.0698.stdout", "output/cp_ar003.0698/ar003.0698", "cp_ar003.0698"
     context "multiple files" do
       before :each do
         exec("rm -rf output/multiple_cp")
         exec("mkdir output/multiple_cp")
-        exec("bun cp 'ar*.0698' 'ar*.0605' output/multiple_cp 2>&1")
+        exec("bun cp #{TEST_ARCHIVE} 'ar*.0698' 'ar*.0605' output/multiple_cp 2>&1")
       end
       it "should copy 3 files" do
         expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.sort
@@ -207,7 +209,7 @@ describe Bun::Bot do
         exec("rm -rf data/test/archive/cp_recursive_new")
         exec("cp -r  data/test/archive/cp_recursive_init data/test/archive/cp_recursive")
         exec("mkdir  data/test/archive/cp_recursive_new")
-        exec("bun cp -r --at data/test/archive/cp_recursive '*' '@/../cp_recursive_new/'")
+        exec("bun cp -r data/test/archive/cp_recursive '*' '@/../cp_recursive_new/'")
       end
       describe "creates files" do
         before :each do
@@ -312,7 +314,7 @@ describe Bun::Bot do
           # warn "> bun #{command}"
           exec("rm -rf output/.bun_index")
           exec("rm -f output/cp_ar003.0698.out")
-          exec("bun cp ar003.0698 output/cp_ar003.0698.out 2>&1")
+          exec("bun cp #{TEST_ARCHIVE} ar003.0698 output/cp_ar003.0698.out 2>&1")
         end
         it "creates an index" do
           file_should_exist "output/.bun_index/cp_ar003.0698.out.descriptor.yml"
@@ -332,7 +334,7 @@ describe Bun::Bot do
             @content[:original_hoard].should == 'ar003.0698'
           end
           it "should record the original hoard_path" do
-            @content[:original_hoard_path].should == "#{ENV['HOME']}/bun_archive/ar003.0698"
+            @content[:original_hoard_path].should == File.expand_path("#{TEST_ARCHIVE}/ar003.0698")
           end
           it "should otherwise match the original index" do
             other_content = @content.dup
@@ -358,7 +360,7 @@ describe Bun::Bot do
           # warn "> bun #{command}"
           exec("rm -rf output/cp_ar003.0698/.bun_index")
           exec("rm -f output/cp_ar003.0698/ar003.0698")
-          exec("bun cp ar003.0698 output/cp_ar003.0698 2>&1")
+          exec("bun cp #{TEST_ARCHIVE} ar003.0698 output/cp_ar003.0698 2>&1")
         end
         it "creates an index" do
           file_should_exist "output/cp_ar003.0698/.bun_index/ar003.0698.descriptor.yml"
@@ -373,7 +375,7 @@ describe Bun::Bot do
           # warn "> bun #{command}"
           exec("rm -rf output/.bun_index")
           exec("rm -f output/cp_ar003.0698.out")
-          exec("bun cp --bare ar003.0698 output/cp_ar003.0698.out 2>&1")
+          exec("bun cp #{TEST_ARCHIVE} --bare ar003.0698 output/cp_ar003.0698.out 2>&1")
         end
         it "does not creates an index" do
           file_should_not_exist "output/.bun_index"
@@ -388,12 +390,12 @@ describe Bun::Bot do
   describe "rm" do
     before :each do
       exec("rm -rf data/test/archive/rm")
-      exec("cp -r  data/test/archive/rm_init data/test/archive/rm")
+      exec("cp -r data/test/archive/rm_init data/test/archive/rm")
     end
     describe "with one file" do
       describe "non-recursive" do
         before :each do
-          exec("bun rm --at data/test/archive/rm ar003.0701")
+          exec("bun rm data/test/archive/rm ar003.0701")
         end
         it "removes the file" do
           expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.sort
@@ -406,14 +408,14 @@ describe Bun::Bot do
           result_files.should == expected_files
         end
         it "should refuse to remove a directory" do
-          exec("bun rm --at data/test/archive/rm directory 2>&1", :allowed=>:all)
+          exec("bun rm data/test/archive/rm directory 2>&1", :allowed=>:all)
           $?.exitstatus.should_not == 0
         end
       end
       describe "recursive" do
         describe "with non-directory" do
           before :each do
-            exec("bun rm -r --at data/test/archive/rm ar003.0701")
+            exec("bun rm -r data/test/archive/rm ar003.0701")
           end
           it "removes the file" do
             expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.sort
@@ -428,7 +430,7 @@ describe Bun::Bot do
         end
         describe "with directory" do
           before :each do
-            exec("bun rm -r --at data/test/archive/rm directory")
+            exec("bun rm -r data/test/archive/rm directory")
           end
           it "removes the file" do
             expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
@@ -440,7 +442,7 @@ describe Bun::Bot do
     end
     describe "with multiple files" do
       before :each do
-        exec("bun rm --at data/test/archive/rm '*.0698'")
+        exec("bun rm data/test/archive/rm '*.0698'")
       end
       it "removes the files" do
         expected_files = %w{ar003.0701 ar082.0605}.sort
@@ -464,7 +466,7 @@ describe Bun::Bot do
     end
     describe "with a non-directory" do
       before :each do
-        exec("bun mv --at data/test/archive/mv ar003.0701 ar003.0701b")
+        exec("bun mv data/test/archive/mv ar003.0701 ar003.0701b")
       end
       it "moves the file in the index" do
         expected_files = %w{ar003.0698 ar003.0701b ar082.0605 ar083.0698}.map{|name| name + '.descriptor.yml'}.sort
@@ -482,7 +484,7 @@ describe Bun::Bot do
     end
     describe "with a directory" do
       before :each do
-        exec("bun mv --at data/test/archive/mv directory directory2")
+        exec("bun mv data/test/archive/mv directory directory2")
       end
       it "moves the directory" do
         expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698 directory2}.sort
@@ -523,23 +525,23 @@ describe Bun::Bot do
     end
     describe "without -p" do
       it "should create a directory" do
-        archive = Bun::Archive.new(:at=>"output")
+        archive = Bun::Archive.new("output")
         archive.mkdir('mkdir')
         file_should_exist "output/mkdir"
       end
       it "should not create a directory without parents" do
-        archive = Bun::Archive.new(:at=>"output")
+        archive = Bun::Archive.new("output")
         expect { archive.mkdir('mkdir/foo') }.should raise_error
       end
     end
     describe "with -p" do
       it "should create a directory" do
-        archive = Bun::Archive.new(:at=>"output")
+        archive = Bun::Archive.new("output")
         archive.mkdir('mkdir/foo/bar', :p=>true)
         file_should_exist "output/mkdir/foo/bar"
       end
       it "should create parent directories" do
-        archive = Bun::Archive.new(:at=>"output")
+        archive = Bun::Archive.new("output")
         archive.mkdir('mkdir/foo/bar', :parents=>true)
         file_should_exist "output/mkdir"
       end
@@ -556,7 +558,7 @@ describe Bun::Bot do
     context "index build" do
       before :each do
         exec("rm -rf data/test/archive/index/.bun_index")
-        exec("bun archive index build --at \"data/test/archive/index\"")
+        exec("bun archive index build \"data/test/archive/index\"")
       end
       it "should create index" do
         file_should_exist "data/test/archive/index/.bun_index"
@@ -577,8 +579,8 @@ describe Bun::Bot do
     context "index clear" do
       before :each do
         exec("rm -rf data/test/archive/index/.bun_index")
-        exec("bun archive index build --at \"data/test/archive/index\"")
-        exec("bun archive index clear --at \"data/test/archive/index\"")
+        exec("bun archive index build \"data/test/archive/index\"")
+        exec("bun archive index clear \"data/test/archive/index\"")
       end
       it "should remove index" do
         file_should_not_exist "data/test/archive/index/.bun_index"
@@ -593,7 +595,7 @@ describe Bun::Bot do
       before :each do
         exec("rm -rf data/test/archive/strange")
         exec("cp -r data/test/archive/strange_init data/test/archive/strange")
-        lines = exec("bun ls --at \"data/test/archive/strange\" | tail -n 1").chomp
+        lines = exec("bun ls \"data/test/archive/strange\" | tail -n 1").chomp
         @file = lines.split(/\s+/)[-1].strip
       end
       it "should pull data from the index" do
@@ -607,7 +609,7 @@ describe Bun::Bot do
       before :each do
         exec("rm -rf data/test/archive/strange")
         exec("cp -r data/test/archive/strange_init data/test/archive/strange")
-        lines = exec("bun ls --at \"data/test/archive/strange\" --build | tail -n 1").chomp
+        lines = exec("bun ls \"data/test/archive/strange\" --build | tail -n 1").chomp
         @file = lines.split(/\s+/)[-1].strip
       end
       it "should not pull data from the index" do
@@ -623,7 +625,7 @@ describe Bun::Bot do
       before :each do
         exec("rm -rf data/test/archive/strange")
         exec("cp -r data/test/archive/strange_init data/test/archive/strange")
-        lines = exec("bun describe --at \"data/test/archive/strange\" ar003.0698").chomp.split("\n")
+        lines = exec("bun describe \"data/test/archive/strange\" ar003.0698").chomp.split("\n")
         @file = lines.find {|line| line =~ /^Basename:/}.split(/\s+/)[1].strip
       end
       it "should pull data from the index" do
@@ -637,7 +639,7 @@ describe Bun::Bot do
       before :each do
         exec("rm -rf data/test/archive/strange")
         exec("cp -r data/test/archive/strange_init data/test/archive/strange")
-        lines = exec("bun describe --at \"data/test/archive/strange\" --build ar003.0698").chomp.split("\n")
+        lines = exec("bun describe \"data/test/archive/strange\" --build ar003.0698").chomp.split("\n")
         @file = lines.find {|line| line =~ /^Basename:/}.split(/\s+/)[-1].strip
       end
       it "should not pull data from the index" do
@@ -649,22 +651,22 @@ describe Bun::Bot do
     end
   end
   context "bun dump" do
-    include_examples "command", "dump ar003.0698", "dump ar003.0698", "dump_ar003.0698"
-    include_examples "command", "dump -s ar003.0698", "dump -s ar003.0698", "dump_s_ar003.0698"
-    include_examples "command", "dump -f ar004.0888", "dump -f ar004.0888", "dump_f_ar004.0888"
+    include_examples "command", "dump ar003.0698", "dump #{TEST_ARCHIVE} ar003.0698", "dump_ar003.0698"
+    include_examples "command", "dump -s ar003.0698", "dump #{TEST_ARCHIVE} -s ar003.0698", "dump_s_ar003.0698"
+    include_examples "command", "dump -f ar004.0888", "dump #{TEST_ARCHIVE} -f ar004.0888", "dump_f_ar004.0888"
   end
   context "bun freezer" do
     context "ls" do
-      include_examples "command", "freezer ls ar004.0888", "freezer ls ar004.0888", "freezer_ls_ar004.0888"
-      include_examples "command", "freezer ls -l ar004.0888", "freezer ls -l ar004.0888", "freezer_ls_l_ar004.0888"
-      include_examples "command", "freezer ls -d ar004.0888", "freezer ls -d ar004.0888", "freezer_ls_d_ar004.0888"
+      include_examples "command", "freezer ls ar004.0888", "freezer ls #{TEST_ARCHIVE} ar004.0888", "freezer_ls_ar004.0888"
+      include_examples "command", "freezer ls -l ar004.0888", "freezer ls #{TEST_ARCHIVE} -l ar004.0888", "freezer_ls_l_ar004.0888"
+      include_examples "command", "freezer ls -d ar004.0888", "freezer ls #{TEST_ARCHIVE} -d ar004.0888", "freezer_ls_d_ar004.0888"
     end
     context "dump" do
-      include_examples "command", "freezer dump ar004.0888 +0", "freezer dump ar004.0888 +0", "freezer_dump_ar004.0888_0"
-      include_examples "command", "freezer dump -s ar004.0888 +0", "freezer dump -s ar004.0888 +0", "freezer_dump_s_ar004.0888_0"
+      include_examples "command", "freezer dump ar004.0888 +0", "freezer dump #{TEST_ARCHIVE} ar004.0888 +0", "freezer_dump_ar004.0888_0"
+      include_examples "command", "freezer dump -s ar004.0888 +0", "freezer dump #{TEST_ARCHIVE} -s ar004.0888 +0", "freezer_dump_s_ar004.0888_0"
     end
     context "thaw" do
-      include_examples "command", "freezer thaw ar004.0888 +0", "freezer thaw ar004.0888 +0", "freezer_thaw_ar004.0888_0"
+      include_examples "command", "freezer thaw ar004.0888 +0", "freezer thaw #{TEST_ARCHIVE} ar004.0888 +0", "freezer_thaw_ar004.0888_0"
     end
   end
   context "bun archive extract" do
@@ -672,7 +674,7 @@ describe Bun::Bot do
       exec("rm -rf data/test/archive/extract_source")
       exec("rm -rf data/test/archive/extract_library")
       exec("cp -r data/test/archive/extract_source_init data/test/archive/extract_source")
-      exec("bun archive extract --at data/test/archive/extract_source data/test/archive/extract_library 2>output/archive_extract_stderr.txt >output/archive_extract_stdout.txt")
+      exec("bun archive extract data/test/archive/extract_source data/test/archive/extract_library 2>output/archive_extract_stderr.txt >output/archive_extract_stdout.txt")
     end
     it "should create a hoards directory" do
       file_should_exist "data/test/archive/extract_library"
@@ -723,7 +725,7 @@ describe Bun::Bot do
   end
   context "bun catalog ls" do
     before :all do
-      exec("bun catalog ls 2>&1 >output/catalog_ls")
+      exec("bun catalog ls #{TEST_ARCHIVE} 2>&1 >output/catalog_ls")
     end
     it "should give correct output" do
       Bun.readfile("output/catalog_ls").should == Bun.readfile("output/test/catalog_ls")

@@ -1,20 +1,20 @@
 ---
-:basename: 
-:catalog_time: 
-:description: 
-:errors: 
-:extracted: 
-:file_size: 
-:file_type: 
+:basename: fass
+:catalog_time: 1982-08-02 00:00:00.000000000 -04:00
+:description: Frosh issue 1982
+:errors: []
+:extracted: 2012-04-04 21:48:05.466595000 -04:00
+:file_size: 659
+:file_type: :text
 :hoard: !binary |-
   dGFwZS5hcjA3Ny4wNjMzXzE5ODIwODAyLnR4dA==
 :hoard_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfcmVzdWx0L21hdGhub29zL2Zyb3NoL2Zhc3MvdGFwZS5hcjA3
   Ny4wNjMzXzE5ODIwODAyLnR4dA==
-:original_hoard: 
-:original_hoard_path: 
-:owner: 
-:path: 
-:specification: 
-:updated: 
+:original_hoard: /Users/richard/projects/bun/data/test/archive/compact_files/mathnoos/frosh/fass/tape.ar077.0633_19820802.txt
+:original_hoard_path: /Users/richard/projects/bun/data/test/archive/compact_files/mathnoos/frosh/fass/tape.ar077.0633_19820802.txt
+:owner: mathnoos
+:path: mathnoos/frosh/fass
+:specification: /frosh/fass Frosh issue 1982
+:updated: 1982-08-02 00:00:00.000000000 -04:00

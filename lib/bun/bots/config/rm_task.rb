@@ -3,10 +3,9 @@
 
 # Remove a configuration
 
-desc "rm KEY VALUE", "Remove configuration setting"
+desc "rm KEY", "Remove configuration setting"
 def rm(key)
   config = Configuration.new
-  config.read
-  config.setting.delete(key)
+  config.setting.delete(key.to_sym)
   config.write
 end

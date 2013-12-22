@@ -1,20 +1,20 @@
 ---
-:basename: 
-:catalog_time: 
-:description: 
-:errors: 
-:extracted: 
-:file_size: 
-:file_type: 
+:basename: fassmac.t
+:catalog_time: 1983-10-27 00:00:00.000000000 -04:00
+:description: ''
+:errors: []
+:extracted: 2012-04-04 21:48:06.139300000 -04:00
+:file_size: 1935
+:file_type: :text
 :hoard: !binary |-
   dGFwZS5hcjEwOC4yNDM5XzE5ODMxMDI3LnR4dA==
 :hoard_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfcmVzdWx0L2Zhc3NtYWMudC90YXBlLmFyMTA4LjI0MzlfMTk4
   MzEwMjcudHh0
-:original_hoard: 
-:original_hoard_path: 
-:owner: 
-:path: 
-:specification: 
-:updated: 
+:original_hoard: /Users/richard/projects/bun/data/test/archive/compact_files/fassmac.t/tape.ar108.2439_19831027.txt
+:original_hoard_path: /Users/richard/projects/bun/data/test/archive/compact_files/fassmac.t/tape.ar108.2439_19831027.txt
+:owner: jagardner
+:path: fassmac.t
+:specification: /../fassmac.t
+:updated: 1983-10-27 00:00:00.000000000 -04:00

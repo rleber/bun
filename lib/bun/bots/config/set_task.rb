@@ -6,7 +6,6 @@
 desc "set KEY VALUE", "Set configuration setting"
 def set(key,value)
   config = Configuration.new
-  config.read
-  config.setting[key] = value
+  config.setting[key.to_sym] = value
   config.write
 end

@@ -2,8 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 # TODO Run this; check if there's a way to discern listing files automagically
-desc "text_status", "Show status of text files"
-option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
+desc "text_status ARCHIVE", "Show status of text files"
 option 'build',   :aliases=>'-b', :type=>'boolean', :desc=>'Rebuild the text statistics, even if they\'re already set'
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
 long_desc <<-END
@@ -12,8 +11,8 @@ Classifies whether the file could be successfully decoded. (If not, it's general
 Counts all characters, and the following special characters: tabs, backspaces, form-feeds, vertical tabs, other non-printable characters. 
 Produces a list of all other non-printable characters encountered.
 END
-def text_status
-  archive = Archive.new(:at=>options[:at])
+def text_status(at)
+  archive = Archive.new(at)
   directory = archive.at
   table = []
   archive.each do |hoard|

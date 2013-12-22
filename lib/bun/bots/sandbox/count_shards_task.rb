@@ -1,10 +1,9 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-desc "count_shards", "Count shards in frozen files three different ways"
-option 'at', :aliases=>'-a', :type=>'string', :desc=>'Archive path'
-def count_shards
-  archive = Archive.new(:at=>options[:at])
+desc "count_shards ARCHIVE", "Count shards in frozen files three different ways"
+def count_shards(at)
+  archive = Archive.new(at)
   table = [%w{Hoard Word1 Positions Valid Flag}]
   flagged = false
   archive.each do |hoard|

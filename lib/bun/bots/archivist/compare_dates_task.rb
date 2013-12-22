@@ -4,12 +4,11 @@
 require 'pp'
 require 'lib/array'
 
-desc "compare_dates", "Compare update dates for matching files"
-option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
+desc "compare_dates ARCHIVE", "Compare update dates for matching files"
 option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on at index; always build information from source file"
 option 'type',    :aliases=>'-t', :type=>'string',  :desc=>'Select file type (or all)', :default=>'all'
-def compare_dates
-  archive = Archive.new(:at=>options[:at])
+def compare_dates(at)
+  archive = Archive.new(at)
   file_update_dates = {}
   file_types = if %w{* all}.include?(options[:type])
                  [:text, :frozen, :huffman]

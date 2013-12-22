@@ -4,14 +4,13 @@
 VALID_MESSAGES = %w{missing name old new old_file new_file}
 DATE_FORMAT = '%Y/%m/%d %H:%M:%S'
 
-desc "check", "Check contents of the catalog"
-option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
+desc "check ARCHIVE", "Check contents of the catalog"
 option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on at index; always build information from source file"
 option "include", :aliases=>'-i', :type=>'string',  :desc=>"Include only certain messages. Options include #{VALID_MESSAGES.join(',')}"
 option "exclude", :aliases=>'-x', :type=>'string',  :desc=>"Skip certain messages. Options include #{VALID_MESSAGES.join(',')}"
 # TODO Reformat this in columns: hoard shard match loc1 value1 loc2 value2
-def check
-  archive = Archive.new(:at=>options[:at])
+def check(at)
+  archive = Archive.new(at)
   exclusions = (options[:exclude] || '').split(/\s*[,\s]\s*/).map{|s| s.strip.downcase }
   inclusions = (options[:include] || VALID_MESSAGES.join(',')).split(/\s*[,\s]\s*/).map{|s| s.strip.downcase }
   table = []
