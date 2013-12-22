@@ -1,11 +1,10 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-desc "header_sizes", "Display the length of file headers"
-option 'at',      :aliases=>'-a', :type=>'string',                     :desc=>'Archive path'
+desc "header_sizes ARCHIVE", "Display the length of file headers"
 option "sort",    :aliases=>'-s', :type=>'string', :default=>'header', :desc=>"Sort by what field: preamble or header (size)"
-def header_sizes
-  archive = Archive.new(:at=>options[:at])
+def header_sizes(at)
+  archive = Archive.new(at)
   data = [%w{Hoard Preamble Header}]
   sort_column = ['preamble', 'header'].index(options[:sort].downcase)
   stop "!Bad value for --sort option" unless sort_column

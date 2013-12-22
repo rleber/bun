@@ -8,6 +8,11 @@ require 'date'
 module Bun
   class Library < Collection
     
+    def initialize(*args)
+      super
+      @recursive_index = true
+    end
+    
     def files(&blk)
       contents(&blk)
     end

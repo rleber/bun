@@ -25,6 +25,7 @@ Create bun find command (similar to find shell command)
   --clean
   --dirty
 Remove shell.log code
+Change bun test, so you can run a subset of tests
 Move all test cases' input files to data/test directory
 Make tests directory-independent (e.g. on listings)
 Separate file.open from file.load/read
@@ -50,7 +51,6 @@ Option to turn off inclusion of file modification date in unpacked or thawed fil
 Option to turn off resetting file modification dates for unpacked or thawed files
 Option to customize extension on unpacked or thawed files (e.g. '.txt')
 Option to create archives organized like file/v1/file1, file/v2/file2, etc.
-Look for Huffman-coded files: e.g. ar003.0701, ar116.2122, ar116.2128
 Implement Huffman decoding
 Standardize Decode and Defrost interfaces: decode, instead of unpack/thaw
 Remove extraneous output files

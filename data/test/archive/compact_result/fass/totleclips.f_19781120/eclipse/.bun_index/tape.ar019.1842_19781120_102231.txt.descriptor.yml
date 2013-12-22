@@ -1,20 +1,21 @@
 ---
-:basename: 
-:catalog_time: 
-:description: 
-:errors: 
-:extracted: 
-:file_size: 
-:file_type: 
+:basename: totleclips.f
+:catalog_time: 1978-11-20 00:00:00.000000000 -05:00
+:description: Total Eclipse Episode 6 - Fixed-Up Version
+:errors:
+- ! 'Shard 0: Bad descriptor at 3827: <Bun::Word 144055125160>'
+:extracted: 2012-04-04 21:48:05.307358000 -04:00
+:file_size: 7227
+:file_type: :frozen
 :hoard: !binary |-
   dGFwZS5hcjAxOS4xODQyXzE5NzgxMTIwXzEwMjIzMS50eHQ=
 :hoard_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfcmVzdWx0L2Zhc3MvdG90bGVjbGlwcy5mXzE5NzgxMTIwL2Vj
   bGlwc2UvdGFwZS5hcjAxOS4xODQyXzE5NzgxMTIwXzEwMjIzMS50eHQ=
-:original_hoard: 
-:original_hoard_path: 
-:owner: 
-:path: 
-:specification: 
-:updated: 
+:original_hoard: /Users/richard/projects/bun/data/test/archive/compact_files/fass/totleclips.f_19781120/eclipse/tape.ar019.1842_19781120_102231.txt
+:original_hoard_path: /Users/richard/projects/bun/data/test/archive/compact_files/fass/totleclips.f_19781120/eclipse/tape.ar019.1842_19781120_102231.txt
+:owner: fass
+:path: fass/totleclips.f
+:specification: /totleclips.f Total Eclipse Episode 6 - Fixed-Up Version
+:updated: 1978-11-20 00:00:00.000000000 -05:00

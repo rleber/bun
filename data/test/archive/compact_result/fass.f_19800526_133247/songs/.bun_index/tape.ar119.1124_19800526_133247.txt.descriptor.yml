@@ -1,20 +1,20 @@
 ---
-:basename: 
-:catalog_time: 
-:description: 
-:errors: 
-:extracted: 
-:file_size: 
-:file_type: 
+:basename: fass.f
+:catalog_time: 1981-02-16 00:00:00.000000000 -05:00
+:description: ''
+:errors: []
+:extracted: 2012-04-04 21:48:06.729846000 -04:00
+:file_size: 727
+:file_type: :frozen
 :hoard: !binary |-
   dGFwZS5hcjExOS4xMTI0XzE5ODAwNTI2XzEzMzI0Ny50eHQ=
 :hoard_path: !binary |-
   L1VzZXJzL3JpY2hhcmQvcHJvamVjdHMvYnVuL2RhdGEvdGVzdC9hcmNoaXZl
   L2NvbXBhY3RfcmVzdWx0L2Zhc3MuZl8xOTgwMDUyNl8xMzMyNDcvc29uZ3Mv
   dGFwZS5hcjExOS4xMTI0XzE5ODAwNTI2XzEzMzI0Ny50eHQ=
-:original_hoard: 
-:original_hoard_path: 
-:owner: 
-:path: 
-:specification: 
-:updated: 
+:original_hoard: /Users/richard/projects/bun/data/test/archive/compact_files/eksiegerman/fass.f_19800526_133247/songs/tape.ar119.1124_19800526_133247.txt
+:original_hoard_path: /Users/richard/projects/bun/data/test/archive/compact_files/eksiegerman/fass.f_19800526_133247/songs/tape.ar119.1124_19800526_133247.txt
+:owner: eksiegerman
+:path: eksiegerman/fass.f
+:specification: /fass.f
+:updated: 1980-05-26 13:32:47.000000000 -04:00

@@ -1,10 +1,9 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-desc "compare_offsets", "Compare file offsets vs. content of file preamble"
-option 'at', :aliases=>'-a', :type=>'string', :desc=>'Archive path'
-def compare_offsets
-  archive = Archive.new(:at=>options[:at])
+desc "compare_offsets ARCHIVE", "Compare file offsets vs. content of file preamble"
+def compare_offsets(at)
+  archive = Archive.new(at)
   table = [%w{Hoard Word1 Calculated Flag}]
   flagged = false
   archive.each do |hoard|

@@ -3,8 +3,7 @@
 
 desc "cat HOARD", "Copy a hoard to $stdout"
 # TODO Refactor :archive as a global option?
-option 'at', :aliases=>'-a', :type=>'string', :desc=>'Archive path'
-def cat(hoard)
-  archive = Archive.new(:at=>options[:at])
+def cat(at, hoard)
+  archive = Archive.new(at)
   archive.open(hoard) {|f| $stdout.write f.read }
 end

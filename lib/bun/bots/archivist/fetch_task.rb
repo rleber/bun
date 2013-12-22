@@ -70,7 +70,7 @@ no_tasks do
 end
 
 IGNORE_LINKS = ["Name", "Last modified", "Size", "Description", "Parent Directory"]
-desc "fetch [URL] [TO]", "Fetch files from an online repository"
+desc "fetch URL ARCHIVE", "Fetch files from an online repository"
 option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Do a dry run only; show what would be fetched, but don't save it"
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
@@ -85,13 +85,9 @@ data/example.com/in/a/subdirectory and its subdirectories, mirroring the structu
 If no URL is provided, this command will use the location specified in the bun config file.
 The archive is fetched to the specified location
 EOT
-def fetch(url=nil, to=nil)
+def fetch(url, at)
   agent = Mechanize.new
-  url ||= Archive.repository
-  archive = Archive.new(options[:at])
-  archive_location = to || archive.at
-  stop "!No url provided" unless url
-  stop "!No archive location provided" unless archive_location
-  _fetch(url, archive_location, options)
-  Archive.new(:at=>archive_location).build_and_save_index(:verbose=>!options[:quiet])
+  archive = Archive.new(at)
+  _fetch(url, archive.location, options)
+  Archive.new(archive.location).build_and_save_index(:verbose=>!options[:quiet])
 end

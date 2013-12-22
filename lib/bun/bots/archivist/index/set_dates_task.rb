@@ -1,11 +1,10 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-desc "set_dates", "Set file modification dates for archived files, based on catalog"
-option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
+desc "set_dates ARCHIVE", "Set file modification dates for archived files, based on catalog"
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually set dates"
-def set_dates
-  archive = Archive.new(:at=>options[:at])
+def set_dates(at)
+  archive = Archive.new(at)
   shell = Bun::Shell.new(options)
   archive.each do |hoard|
     descr = archive.descriptor(hoard)
