@@ -115,18 +115,35 @@ end
 
 describe Bun::Archive do
   context "bun convert" do
-    before :all do
-      exec("rm -f output/convert_ar003.0698")
-      exec("bun convert #{TEST_ARCHIVE} ar003.0698 >output/convert_ar003.0698")
+    context "with a text file" do
+      before :all do
+        exec("rm -f output/convert_ar003.0698")
+        exec("bun convert #{TEST_ARCHIVE} ar003.0698 >output/convert_ar003.0698")
+      end
+      it "should create the proper file" do
+        file_should_exist "output/convert_ar003.0698"
+      end
+      it "should generate the proper conversion" do
+        Bun.readfile("output/convert_ar003.0698").chomp.should == Bun.readfile('output/test/convert_ar003.0698').chomp
+      end
+      after :all do
+        exec("rm -f output/convert_ar003.0698")
+      end
     end
-    it "should create the proper file" do
-      file_should_exist "output/convert_ar003.0698"
-    end
-    it "should generate the proper conversion" do
-      Bun.readfile("output/convert_ar003.0698").chomp.should == Bun.readfile('output/test/convert_ar003.0698').chomp
-    end
-    after :all do
-      exec("rm -f output/convert_ar003.0698")
+    context "with a frozen file" do
+      before :all do
+        exec("rm -f output/convert_ar019.0175")
+        exec("bun convert #{TEST_ARCHIVE} ar019.0175 >output/convert_ar019.0175")
+      end
+      it "should create the proper file" do
+        file_should_exist "output/convert_ar019.0175"
+      end
+      it "should generate the proper conversion" do
+        Bun.readfile("output/convert_ar019.0175").chomp.should == Bun.readfile('output/test/convert_ar019.0175').chomp
+      end
+      after :all do
+        exec("rm -f output/convert_ar019.0175")
+      end
     end
   end
   context "bun archive convert" do

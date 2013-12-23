@@ -33,7 +33,7 @@ module Bun
       
       # Convert file from internal Bun binary format to YAML digest
       def convert
-        descriptor.to_hash.merge(:content=>data.data).to_yaml
+        descriptor.to_hash.merge(:format=>:raw,:content=>data.data).to_yaml
       end
     end
   end
