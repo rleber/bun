@@ -1,5 +1,11 @@
 TODO
 Annotated file structure
+- Archive convert command
+- Change other commands to work with converted format
+- Allow input from $stdin
+- Remove redundant stuff from descriptor hash
+- Ability to test file type quickly, based on content
+- Creator information: Bun system, version, development/production, branch, git HEAD
 Filter methods
 Universal path URL with substitutions <name>, [<shard index>]
 New process: pull, annotate, merge (with catalog), decode, find, list/describe, clean, reorganize, extract, push

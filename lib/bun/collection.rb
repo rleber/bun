@@ -161,7 +161,12 @@ module Bun
     end
     
     def relative_path(*f)
-      File.relative_path(*f, :relative_to=>at)
+      options = {}
+      if f.last.is_a?(Hash)
+        options = f.pop
+      end
+      options.merge!(:relative_to=>at) unless options[:relative_to]
+      File.relative_path(*f, options)
     end
     
     def index(options={})

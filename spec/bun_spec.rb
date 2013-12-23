@@ -111,6 +111,52 @@ describe Bun::File::Text do
 end
 
 describe Bun::Archive do
+  context "bun convert" do
+    before :all do
+      exec("rm -f output/convert_ar003.0698")
+      exec("bun convert #{TEST_ARCHIVE} ar003.0698 >output/convert_ar003.0698")
+    end
+    it "should create the proper file" do
+      file_should_exist "output/convert_ar003.0698"
+    end
+    it "should generate the proper conversion" do
+      Bun.readfile("output/convert_ar003.0698").chomp.should == Bun.readfile('output/test/convert_ar003.0698').chomp
+    end
+    after :all do
+      exec("rm -f output/convert_ar003.0698")
+    end
+  end
+  context "bun archive convert" do
+    before :all do
+      exec("rm -rf data/test/archive/general_test_raw_converted")
+      exec("rm -f output/archive_convert_files.txt")
+      exec("rm -f output/archive_convert_stdout.txt")
+      exec("rm -f output/archive_convert_stdout.txt")
+      exec("bun archive convert data/test/archive/general_test_raw data/test/archive/general_test_raw_converted 2>output/archive_convert_stderr.txt >output/archive_convert_stdout.txt")
+    end
+    it "should create a new directory" do
+      file_should_exist "data/test/archive/general_test_raw_converted"
+    end
+    it "should write nothing on stdout" do
+      Bun.readfile('output/archive_convert_stdout.txt').chomp.should == ""
+    end
+    it "should write file decoding messages on stderr" do
+      Bun.readfile("output/archive_convert_stderr.txt").chomp.should == Bun.readfile('output/test/archive_convert_stderr.txt').chomp
+    end
+    it "should create the appropriate files" do
+      exec('find data/test/archive/general_test_raw_converted -print >output/archive_convert_files.txt')
+      Bun.readfile('output/archive_convert_files.txt').chomp.should == Bun.readfile('output/test/archive_convert_files.txt').chomp
+    end
+    after :all do
+      exec("rm -rf data/test/archive/general_test_raw_converted")
+      exec("rm -f output/archive_convert_files.txt")
+      exec("rm -f output/archive_convert_stderr.txt")
+      exec("rm -f output/archive_convert_stdout.txt")
+    end
+  end
+end
+
+describe Bun::Archive do
   before :each do
     @archive = Bun::Archive.new('data/test/archive/contents')
   end

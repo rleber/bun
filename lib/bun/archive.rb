@@ -63,13 +63,29 @@ module Bun
       info && info[:date].local_date_to_local_time
     end
     
+    def convert(glob, to, options={})
+      to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
+      FileUtils.rm_rf to_path unless options[:dryrun]
+      Dir.glob(expand_path(glob)).each do |tape|
+        from_tape = relative_path(tape, :relative_to=>File.expand_path(at))
+        to_file  = File.join(to_path, from_tape)        
+        warn "convert #{from_tape} => #{to_file}" if options[:dryrun] || !options[:quiet]
+        unless options[:dryrun]
+          dir = File.dirname(to_file)
+          FileUtils.mkdir_p dir
+          convert_single(from_tape, to_file) unless options[:dryrun]
+        end
+      end
+    end
+    
     # Convert a file from internal bun binary format to YAML digest
-    def convert(tape,to=nil)
+    def convert_single(tape,to=nil)
       content = open(tape) {|f| f.convert}
       shell = Shell.new
       shell.write to, content
     end
 
+    # TODO Add glob capability?
     def extract(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
       FileUtils.rm_rf to_path unless options[:dryrun]
