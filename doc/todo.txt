@@ -1,11 +1,10 @@
 TODO
-Universal path URL with substitutions <name>, [<shard index>]
 Annotated file structure
 Filter methods
+Universal path URL with substitutions <name>, [<shard index>]
 New process: pull, annotate, merge (with catalog), decode, find, list/describe, clean, reorganize, extract, push
 Add archived to descriptor
 Add folders (directories plus frozen) and fragments (leaves, but with shards), items (leaves + shards) to collection methods
-Replace the term "tape" with backup?
 Test bun library compact
 - For all files:
   - collapse tape names to the oldest if the content is identical

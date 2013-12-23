@@ -62,6 +62,12 @@ module Bun
       info = catalog.find {|spec| spec[:tape] == tape }
       info && info[:date].local_date_to_local_time
     end
+    
+    def translate(tape,to=nil)
+      content = open(tape) {|f| f.translate}
+      shell = Shell.new
+      shell.write to, content
+    end
 
     def extract(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed

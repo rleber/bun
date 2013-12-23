@@ -2,6 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 require 'lib/bun/file/descriptor'
+require 'yaml'
 require 'date'
 
 module Bun
@@ -91,6 +92,10 @@ module Bun
   
     def read
       self.class.read(tape_path)
+    end
+    
+    def translate
+      descriptor.to_hash.merge(:content=>read).to_yaml
     end
   
     def update_index

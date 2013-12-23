@@ -3,7 +3,7 @@
 
 desc "mkdir ARCHIVE PATH", "Make a directory in the archive"
 option 'parents', :aliases=>'-p', :type=>'boolean', :desc=>'Construct all parent directories, if missing'
-def mkdir(path)
+def mkdir(at, path)
   archive = Archive.new(at)
   archive.mkdir(path, options)
 end
