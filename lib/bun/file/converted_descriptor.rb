@@ -4,7 +4,7 @@
 module Bun
   class File < ::File
     module Descriptor
-      class Archived < Base
+      class Converted < Base
         class << self
           MAXIMUM_SIZE = 3000
         

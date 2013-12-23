@@ -12,27 +12,27 @@ module Bun
           end
         end
         FIELDS = [
-          :basename,
-          :catalog_time,
+          # :basename,
+          # :catalog_time,
           :description,
-          :errors,
-          :extracted,
+          # :errors,
+          # :extracted,
           :file_size,
           :file_type,
           :tape,
           :tape_path,
-          :original_tape,
-          :original_tape_path,
+          # :original_tape,
+          # :original_tape_path,
           :owner,
           :path,
-          :specification,
-          :updated,
+          # :specification,
+          # :updated,
         ]
       
-        attr_reader :file, :fields
+        attr_reader :data, :fields
       
-        def initialize(file)
-          @file = file
+        def initialize(data)
+          @data = data
           @fields = []
           # TODO fields should be registered in the class (and different file types should subclass File::Descriptor)
           register_fields(FIELDS)
@@ -54,32 +54,36 @@ module Bun
           fields.each do |f|
             instance_variable_set("@#{f}", nil)
           end
+          merge!(h)
+        end
+        
+        def merge!(h)
           h.keys.each do |k|
             instance_variable_set("@#{k}", h[k])
+            register_field(k) unless @fields.include?(k)
           end
           self
         end
       
-        def shards
-          file.shard_descriptor_hashes rescue []
-        end
-  
+        # def shards
+        #   data.shard_descriptor_hashes rescue []
+        # end
+          
         def method_missing(meth, *args, &blk)
-          file.send(meth, *args, &blk)
+          data.send(meth, *args, &blk)
         rescue NoMethodError => e
           raise NoMethodError, %{"#{self.class}##{meth} method not defined:\n  Raised #{e} at:\n#{e.backtrace.map{|c| '    ' + c}.join("\n")}}
         end
       
         def copy(to, new_settings={})
           to_dir = File.dirname(to)
-          to_archive = Archive.new(to_dir)
           descriptor = self.to_hash
           descriptor[:original_tape] = descriptor[:tape] unless descriptor[:original_tape]
           descriptor[:original_tape_path] = descriptor[:tape_path] unless descriptor[:original_tape_path]
           descriptor[:tape] = File.basename(to)
           descriptor[:tape_path] = to
           descriptor.merge! new_settings
-          to_archive.update_index(:descriptor=>descriptor)
+          descriptor
         end
       end
     end

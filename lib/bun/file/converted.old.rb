@@ -6,7 +6,7 @@ require 'date'
 module Bun
 
   class File < ::File
-    class Archived < Bun::File
+    class Raw < Bun::File
       class << self
 
         EOF_MARKER = 0x00000f000 # Octal 000000170000 or 0b000000000000000000001111000000000000
@@ -53,16 +53,13 @@ module Bun
           Time.local(date.year, date.month, date.day, hours, minutes, seconds, micro_seconds)
         end
     
-        def descriptor(options={})
-          Header.new(options).descriptor
-        end
-    
         def frozen?(file_name)
           raise "File #{file_name} doesn't exist" unless File.exists?(file_name)
           new(:tape_path=>file_name).frozen?
         end
     
         def create(options={}, &blk)
+          $stderr.puts "In #{self.class}#create(#{options.inspect})"
           preamble = nil
           if options[:type]
             ftype = options[:type]
@@ -112,7 +109,7 @@ module Bun
           preamble_size = content_offset(initial_fetch)
           fetch_size = preamble_size + File::Frozen::Descriptor.offset+ File::Frozen::Descriptor.size
           full_fetch = fetch_size > INITIAL_FETCH_SIZE ? get_words(fetch_size, options) : initial_fetch
-          File::Raw.send(:new, :words=>full_fetch)
+          File::RawHeader.send(:new, :words=>full_fetch)
         end
     
         def get_words(n, options)
@@ -169,7 +166,7 @@ module Bun
           @words = @all_characters = @characters = @packed_characters = @descriptor = nil
         else
           @words = words
-          @descriptor = Descriptor::Archived.new(self)
+          @descriptor = Descriptor::Converted.new(self)
           @all_characters = LazyArray.new(words.size*characters_per_word) do |n|
             @words.characters.at(n)
           end

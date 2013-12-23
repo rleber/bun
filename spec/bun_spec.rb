@@ -21,8 +21,11 @@ end
 def decode(file_name)
   archive = Bun::Archive.new(TEST_ARCHIVE)
   expanded_file = File.join("data", "test", file_name)
+  $stderr.puts expanded_file
   file = Bun::File::Text.open(expanded_file)
-  file.text
+  res = file.text
+  $stderr.puts res.inspect
+  exit
 end
 
 def scrub(lines, options={})

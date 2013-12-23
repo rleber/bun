@@ -22,7 +22,7 @@ module Bun
       bit_offsets = options[:bit_offsets] || [0]
       display_offset = (options[:display_offset] || offset) - offset
       stream = options[:to] || STDOUT
-      file = File::Archived.create(:words=>words, :type=>:raw)
+      file = File::Converted.create(:words=>words, :type=>:raw)
       limit = [limit, file.size-1].min unless options[:unlimited]
       if options[:frozen]
         characters = file.all_packed_characters

@@ -52,6 +52,11 @@ module Bun
       def descriptor(options={})
         Header.new(options).descriptor
       end
+      
+      def raw?(path)
+        prefix = ::File.open(path,'rb') {|f| f.read(3)}
+        prefix != '---' # YAML prefix; one of the converted formats
+      end
     end
     attr_reader :archive
     attr_reader :tape_path
@@ -92,11 +97,6 @@ module Bun
   
     def read
       self.class.read(tape_path)
-    end
-    
-    # Convert file from internal Bun binary format to YAML digest
-    def convert
-      descriptor.to_hash.merge(:content=>read).to_yaml
     end
   
     def update_index

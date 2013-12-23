@@ -36,10 +36,13 @@ module Bun
     end
 
     def open(name, options={}, &blk)
-      if File.basename(name) =~ /^ar\d{3}.\d{4}$/
-        Bun::File::Archived.open(expand_path(name), options.merge(:archive=>self, :tape=>name), &blk)
+      path = expand_path(name)
+      if File.raw?(path)
+        Bun::File::Raw.open(path, options.merge(:archive=>self, :tape=>name), &blk)
+      elsif File.basename(name) =~ /^ar\d{3}.\d{4}$/
+        Bun::File::Converted.open(path, options.merge(:archive=>self, :tape=>name), &blk)
       else
-        Bun::File::Extracted.open(expand_path(name), options.merge(:library=>self,  :tape=>name), &blk)
+        Bun::File::Extracted.open(path, options.merge(:library=>self,  :tape=>name), &blk)
       end
     end
 

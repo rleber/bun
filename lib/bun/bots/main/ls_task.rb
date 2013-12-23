@@ -51,7 +51,7 @@ option "long",      :aliases=>"-l", :type=>'boolean',                           
 option 'path',      :aliases=>'-p', :type=>'boolean',                              :desc=>"Display paths for tape files"
 option 'quick',     :aliases=>'-Q', :type=>'boolean',                              :desc=>"Quickly display tapes"
 option "sort",      :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order(s) for files (#{SORT_VALUES.join(', ')})"
-option "tapes",    :aliases=>"-h", :type=>'string',  :default=>'',                :desc=>"Show only tapes that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
+option "tapes",     :aliases=>"-t", :type=>'string',  :default=>'',                :desc=>"Show only tapes that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "type",      :aliases=>"-T", :type=>'string',  :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
 # TODO Refactor tape/file patterns; use tape::file::shard syntax
 # TODO Refactor code into shorter submethods
