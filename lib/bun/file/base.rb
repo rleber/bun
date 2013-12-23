@@ -94,7 +94,8 @@ module Bun
       self.class.read(tape_path)
     end
     
-    def translate
+    # Convert file from internal Bun binary format to YAML digest
+    def convert
       descriptor.to_hash.merge(:content=>read).to_yaml
     end
   
