@@ -89,16 +89,16 @@ _Process_
 1. Set up configuration. The "bun config" commands are useful for this. You may also want to define the 
    "BUN_REPOSITORY" environment variable to point to the URL of the archived files.
 2. Use "bun archive fetch" to fetch the repository into the archive.
-3. Set the "at_path" configuration setting to point to the location of the downloaded archive.
-4. Set the "catalog_path" configuration setting to point to the location of the catalog file.
-5. You can use "bun ls" to list tapes, "bun catalog ls" to list the catalog, and "bun catalog check" to
+3. Set the definition of the place 'catalog' to point to the catalog listing of the archive. (Using
+   "bun archive places")
+4. You can use "bun ls" to list tapes, "bun catalog ls" to list the catalog, and "bun catalog check" to
    identify tapes not matching the catalog.
-6. If desired, use "bun archive index build" to build the index file (although "bun fetch") may have 
+5. If desired, use "bun archive index build" to build the index file (although "bun fetch") may have 
    already done this.
-7. Use "bun archive index set_dates" to set file modification dates to match the modification dates from
+6. Use "bun archive index set_dates" to set file modification dates to match the modification dates from
    the catalog.
-8. Optionally, use "bun archive text_status" to check the quality of the archived text files.
-9. There are a variety of commands you can use to work on individual files:
+7. Optionally, use "bun archive text_status" to check the quality of the archived text files.
+8. There are a variety of commands you can use to work on individual files:
    - "bun cat"      Copy a file to STDOUT
    - "bun check"    Check if a file is clean
    - "bun cp"       Copy a file from the archive
@@ -113,6 +113,6 @@ _Process_
    - "bun rm"       Remove a file from the archive
    - "bun scrub"    Clean up tabs etc.
    - "bun unpack"   Decode a file
-10. Optionally, use "bun archive extract" to extract files from the archive and place them in a library.
-11. Use the "bun library" commands to reorganize the extracted files
+9. Optionally, use "bun archive extract" to extract files from the archive and place them in a library.
+10. Use the "bun library" commands to reorganize the extracted files
 

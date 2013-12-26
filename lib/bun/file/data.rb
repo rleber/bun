@@ -209,5 +209,9 @@ module Bun
       return :huffman if word(content_offset).characters.join == 'huff'
       return :text
     end
+    
+    def eof_marker
+      self.class.eof_marker
+    end
   end
 end

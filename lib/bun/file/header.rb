@@ -13,6 +13,7 @@ module Bun
       end
       
       def initialize(options={}, &blk)
+        stop "!Building File::Header"
         file = options[:file]
         data = options[:data]
         words = options[:words]

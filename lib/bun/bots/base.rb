@@ -6,6 +6,10 @@
 #   It provides some methods allowing a bot class to be defined by simply defining each task in a separate
 #   <task name>_task.rb file within the same directory.
 
+def debug(msg)
+  warn "In #{caller.first}: #{msg}"
+end
+
 module Bun
   module Bot
     class Base < Thor

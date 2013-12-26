@@ -27,7 +27,7 @@ module Bun
           :file_size,
           :file_type,
           :tape,
-          :tape_path,
+          # :tape_path,
           # :original_tape,
           # :original_tape_path,
           :owner,

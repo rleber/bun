@@ -1,22 +1,214 @@
 ---
-:basename: scripfrz
-:catalog_time: 1977-03-02 00:00:00.000000000 -05:00
 :description: ==> freeze file containing roff source for fass '77 script
-:errors: []
-:extracted: 
-:file_size: 40058
+:file_size: 3869
 :file_type: :frozen
 :tape: ar004.0888
 :tape_path: /Users/richard/projects/bun/data/test/archive/general_test_raw/ar004.0888
-:original_tape: 
-:original_tape_path: 
 :owner: fass
 :path: fass/scripfrz
-:specification: /scripfrz ==> freeze file containing roff source for fass '77 script
-:updated: 1977-03-01 15:40:58.000000000 -05:00
-:shards: []
-:file_date: 1977-03-01
+:shards:
+- :name: fasshole
+  :file_time: 1977-02-10 16:44:55.000000000 -05:00
+  :blocks: 0
+  :start: 405
+  :size: 16
+- :name: macros
+  :file_time: 1977-02-11 08:53:15.000000000 -05:00
+  :blocks: 0
+  :start: 421
+  :size: 238
+- :name: evathing
+  :file_time: 1977-02-10 16:44:55.000000000 -05:00
+  :blocks: 2
+  :start: 659
+  :size: 174
+- :name: 1zero
+  :file_time: 1977-02-10 16:47:52.000000000 -05:00
+  :blocks: 0
+  :start: 833
+  :size: 71
+- :name: 1one
+  :file_time: 1977-02-18 09:06:07.000000000 -05:00
+  :blocks: 0
+  :start: 904
+  :size: 299
+- :name: 1two
+  :file_time: 1977-02-11 08:56:09.000000000 -05:00
+  :blocks: 0
+  :start: 1203
+  :size: 162
+- :name: 1three
+  :file_time: 1977-02-11 08:56:09.000000000 -05:00
+  :blocks: 1
+  :start: 1365
+  :size: 727
+- :name: 1four
+  :file_time: 1977-02-11 08:53:15.000000000 -05:00
+  :blocks: 1
+  :start: 2092
+  :size: 1860
+- :name: 1five
+  :file_time: 1977-02-11 08:59:30.000000000 -05:00
+  :blocks: 0
+  :start: 3952
+  :size: 1706
+- :name: 1six
+  :file_time: 1977-02-10 16:47:59.000000000 -05:00
+  :blocks: 2
+  :start: 5658
+  :size: 85
+- :name: 1seven
+  :file_time: 1977-02-11 08:59:30.000000000 -05:00
+  :blocks: 1
+  :start: 5743
+  :size: 1217
+- :name: 1eight
+  :file_time: 1977-02-11 09:10:44.000000000 -05:00
+  :blocks: 0
+  :start: 6960
+  :size: 449
+- :name: 1nine
+  :file_time: 1977-02-11 09:10:44.000000000 -05:00
+  :blocks: 1
+  :start: 7409
+  :size: 2172
+- :name: 1ten
+  :file_time: 1977-02-11 09:42:17.000000000 -05:00
+  :blocks: 0
+  :start: 9581
+  :size: 2373
+- :name: 1eleven
+  :file_time: 1977-02-11 09:42:17.000000000 -05:00
+  :blocks: 1
+  :start: 11954
+  :size: 2248
+- :name: 1twelve
+  :file_time: 1977-02-10 16:48:21.000000000 -05:00
+  :blocks: 2
+  :start: 14202
+  :size: 88
+- :name: 1thirtee
+  :file_time: 1977-02-14 08:51:07.000000000 -05:00
+  :blocks: 0
+  :start: 14290
+  :size: 1783
+- :name: 1fourtee
+  :file_time: 1977-02-14 08:51:07.000000000 -05:00
+  :blocks: 1
+  :start: 16073
+  :size: 1482
+- :name: 1fifteen
+  :file_time: 1977-02-10 16:48:49.000000000 -05:00
+  :blocks: 2
+  :start: 17555
+  :size: 193
+- :name: 1sixteen
+  :file_time: 1977-02-14 08:57:19.000000000 -05:00
+  :blocks: 0
+  :start: 17748
+  :size: 783
+- :name: 3zero
+  :file_time: 1977-02-14 08:57:19.000000000 -05:00
+  :blocks: 1
+  :start: 18531
+  :size: 354
+- :name: 3one
+  :file_time: 1977-02-14 09:04:23.000000000 -05:00
+  :blocks: 0
+  :start: 18885
+  :size: 1926
+- :name: 3two
+  :file_time: 1977-02-14 09:04:23.000000000 -05:00
+  :blocks: 1
+  :start: 20811
+  :size: 1672
+- :name: 3three
+  :file_time: 1977-02-14 09:10:14.000000000 -05:00
+  :blocks: 0
+  :start: 22483
+  :size: 936
+- :name: 3four
+  :file_time: 1977-02-14 09:10:14.000000000 -05:00
+  :blocks: 1
+  :start: 23419
+  :size: 1813
+- :name: 3five
+  :file_time: 1977-02-14 09:15:55.000000000 -05:00
+  :blocks: 0
+  :start: 25232
+  :size: 1211
+- :name: 3six
+  :file_time: 1977-02-18 09:06:07.000000000 -05:00
+  :blocks: 1
+  :start: 26443
+  :size: 1976
+- :name: 3seven
+  :file_time: 1977-02-18 09:06:07.000000000 -05:00
+  :blocks: 2
+  :start: 28419
+  :size: 199
+- :name: 3eight
+  :file_time: 1977-02-10 16:55:54.000000000 -05:00
+  :blocks: 1
+  :start: 28618
+  :size: 95
+- :name: 3nine
+  :file_time: 1977-02-10 16:55:54.000000000 -05:00
+  :blocks: 2
+  :start: 28713
+  :size: 103
+- :name: 3ten
+  :file_time: 1977-02-18 09:38:21.000000000 -05:00
+  :blocks: 0
+  :start: 28816
+  :size: 2441
+- :name: 3eleven
+  :file_time: 1977-02-10 16:56:14.000000000 -05:00
+  :blocks: 1
+  :start: 31257
+  :size: 87
+- :name: 3twelve
+  :file_time: 1977-02-18 10:18:04.000000000 -05:00
+  :blocks: 0
+  :start: 31344
+  :size: 3189
+- :name: 3thirtee
+  :file_time: 1977-02-18 10:32:57.000000000 -05:00
+  :blocks: 0
+  :start: 34533
+  :size: 1707
+- :name: 3fourtee
+  :file_time: 1977-02-10 16:56:51.000000000 -05:00
+  :blocks: 1
+  :start: 36240
+  :size: 124
+- :name: 3fifteen
+  :file_time: 1977-02-18 11:29:00.000000000 -05:00
+  :blocks: 0
+  :start: 36364
+  :size: 2712
+- :name: 3sixteen
+  :file_time: 1977-02-18 11:01:09.000000000 -05:00
+  :blocks: 0
+  :start: 39076
+  :size: 360
+- :name: 3sevente
+  :file_time: 1977-02-18 10:32:57.000000000 -05:00
+  :blocks: 1
+  :start: 39436
+  :size: 409
+- :name: roftemps
+  :file_time: 1977-03-01 15:02:04.000000000 -05:00
+  :blocks: 0
+  :start: 39845
+  :size: 108
+- :name: unfreeze
+  :file_time: 1977-03-01 15:40:58.000000000 -05:00
+  :blocks: 0
+  :start: 39953
+  :size: 76
 :file_time: 1977-03-01 15:40:58.000000000 -05:00
+:format: :raw
 :content: !binary |-
   AABA8cAABAAdAAEAN4CRJTitCRJTitAAAAAAAABAB+MxhOZzAAAAAAAAAAAA
   AAAAAAF5zMZyNJwMxyPQgHo9HwgMxyMplPRlEBmNJsMogMZvNx0MJpNxpNxn

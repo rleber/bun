@@ -21,11 +21,8 @@ end
 def decode(file_name)
   archive = Bun::Archive.new(TEST_ARCHIVE)
   expanded_file = File.join("data", "test", file_name)
-  $stderr.puts expanded_file
   file = Bun::File::Text.open(expanded_file)
-  res = file.text
-  $stderr.puts res.inspect
-  exit
+  file.text
 end
 
 def scrub(lines, options={})
@@ -47,11 +44,12 @@ def rstrip(text)
   text.split("\n").map{|line| line.rstrip }.join("\n")
 end
 
-shared_examples "simple" do |file|
-  it "decodes a simple text file (#{file})" do
-    infile = file
-    outfile = File.join("output", "test", infile)
-    decode(infile).should == Bun.readfile(outfile)
+shared_examples "simple" do |source|
+  it "decodes a simple text file (#{source})" do
+    expected_output_file = File.join("output", "test", source)
+    actual_output = decode(source)
+    expected_output = Bun.readfile(expected_output_file)
+    actual_output.should == expected_output
   end
 end
 
@@ -59,7 +57,8 @@ shared_examples "command" do |descr, command, expected_stdout_file, options={}|
   it "handles #{descr} properly" do
     # warn "> bun #{command}"
     res = exec("bun #{command} 2>&1", options).force_encoding('ascii-8bit')
-    expected_stdout_file = File.join("output", 'test', expected_stdout_file) unless expected_stdout_file =~ %r{/}  
+    expected_stdout_file = File.join("output", 'test', expected_stdout_file) unless expected_stdout_file =~ %r{/}
+    raise "!Missing expected output file: #{expected_stdout_file.inspect}" unless File.exists?(expected_stdout_file)  
     rstrip(res).should == rstrip(Bun.readfile(expected_stdout_file))
   end
 end
@@ -118,7 +117,7 @@ describe Bun::Archive do
     context "with a text file" do
       before :all do
         exec("rm -f output/convert_ar003.0698")
-        exec("bun convert #{TEST_ARCHIVE} ar003.0698 >output/convert_ar003.0698")
+        exec("bun convert data/test/archive/general_test_raw ar003.0698 >output/convert_ar003.0698")
       end
       it "should create the proper file" do
         file_should_exist "output/convert_ar003.0698"
@@ -133,7 +132,7 @@ describe Bun::Archive do
     context "with a frozen file" do
       before :all do
         exec("rm -f output/convert_ar019.0175")
-        exec("bun convert #{TEST_ARCHIVE} ar019.0175 >output/convert_ar019.0175")
+        exec("bun convert data/test/archive/general_test_raw ar019.0175 >output/convert_ar019.0175")
       end
       it "should create the proper file" do
         file_should_exist "output/convert_ar019.0175"
@@ -179,17 +178,17 @@ end
 describe Bun::Archive do
   before :each do
     @archive = Bun::Archive.new('data/test/archive/contents')
+    $expected_archive_contents = %w{ar003.0698 ar054.2299[brytside] ar054.2299[disco] 
+                                        ar054.2299[end] ar054.2299[opening] ar054.2299[santa] }
   end
   describe "contents" do
     it "retrieves correct list" do
-      @archive.contents.sort.should == %w{ar003.0698 ar054.2299::brytside ar054.2299::disco 
-                                          ar054.2299::end ar054.2299::opening ar054.2299::santa }
+      @archive.contents.sort.should == $expected_archive_contents
     end
     it "invokes a block" do
       foo = []
-      @archive.contents {|f| foo << f }
-      foo.sort.should == %w{ar003.0698 ar054.2299::brytside ar054.2299::disco 
-                            ar054.2299::end ar054.2299::opening ar054.2299::santa }
+      @archive.contents {|f| foo << f.upcase }
+      foo.sort.should == $expected_archive_contents.map{|c| c.upcase }
     end
   end
 end
@@ -201,7 +200,8 @@ describe Bun::Bot do
   # include_examples "command with file", "descr", "cmd", "expected_stdout_file", "output_in_file", "expected_output_file"
   describe "check" do
     include_examples "command", "check clean file", "check data/test/clean", "check_clean"
-    include_examples "command", "check dirty file", "check data/test/ar119.1801", "check_dirty", :allowed=>[1]
+    # Dirty file is just the unconverted version of ar119.1801
+    include_examples "command", "check dirty file", "check data/test/dirty", "check_dirty", :allowed=>[1]
   end
     
   describe "describe" do
@@ -231,10 +231,9 @@ describe Bun::Bot do
   
   describe "ls" do
     include_examples "command", "ls", "ls #{TEST_ARCHIVE}", "ls"
-    include_examples "command", "ls -Q", "ls -Q #{TEST_ARCHIVE}", "ls_q"
-    include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -h ar003.0698 #{TEST_ARCHIVE}", "ls_ldrh_ar003.0698"
-    include_examples "command", "ls -ldr with frozen file (ar145.2699)", "ls -ldr -h ar145.2699 #{TEST_ARCHIVE}", "ls_ldrh_ar145.2699"
-    include_examples "command", "ls -ldrb with frozen file (ar145.2699)", "ls -ldrb -h ar145.2699 #{TEST_ARCHIVE}", "ls_ldrbh_ar145.2699"
+    include_examples "command", "ls -o", "ls -o #{TEST_ARCHIVE}", "ls_o"
+    include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -t ar003.0698 #{TEST_ARCHIVE}", "ls_ldrt_ar003.0698"
+    include_examples "command", "ls -ldr with frozen file (ar145.2699)", "ls -ldr -t ar145.2699 #{TEST_ARCHIVE}", "ls_ldrt_ar145.2699"
   end
   describe "readme" do
     include_examples "command", "readme", "readme", "doc/readme.md"

@@ -1,6 +1,7 @@
 convert ar003.0698 => /Users/richard/projects/bun/data/test/archive/general_test_raw_converted/ar003.0698
 convert ar003.0701 => /Users/richard/projects/bun/data/test/archive/general_test_raw_converted/ar003.0701
 convert ar004.0888 => /Users/richard/projects/bun/data/test/archive/general_test_raw_converted/ar004.0888
+convert ar019.0175 => /Users/richard/projects/bun/data/test/archive/general_test_raw_converted/ar019.0175
 convert ar025.0634 => /Users/richard/projects/bun/data/test/archive/general_test_raw_converted/ar025.0634
 convert ar082.0605 => /Users/richard/projects/bun/data/test/archive/general_test_raw_converted/ar082.0605
 convert ar083.0698 => /Users/richard/projects/bun/data/test/archive/general_test_raw_converted/ar083.0698

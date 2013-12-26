@@ -3,7 +3,6 @@
 :file_size: 3867
 :file_type: :frozen
 :tape: ar019.0175
-:tape_path: /Users/richard/bun_archive_raw/ar019.0175
 :owner: fass
 :path: fass/totleclips.f
 :shards:
@@ -23,6 +22,7 @@
   :start: 6774
   :size: 427
 :file_time: 1978-11-08 14:15:17.000000000 -05:00
+:format: :raw
 :content: !binary |-
   AABA8aAABAAbAATACvCUUdVWCUUdVWAAAAAAAABAAXMxhOZzAAAAAAAAAAAA
   AAAAAAF50N50NhlMZsNJwOYuMwgHo9HwgKhvOhhNggIpjNhpOBzMogIpwNJz

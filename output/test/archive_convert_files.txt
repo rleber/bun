@@ -2,6 +2,7 @@ data/test/archive/general_test_raw_converted
 data/test/archive/general_test_raw_converted/ar003.0698
 data/test/archive/general_test_raw_converted/ar003.0701
 data/test/archive/general_test_raw_converted/ar004.0888
+data/test/archive/general_test_raw_converted/ar019.0175
 data/test/archive/general_test_raw_converted/ar025.0634
 data/test/archive/general_test_raw_converted/ar082.0605
 data/test/archive/general_test_raw_converted/ar083.0698

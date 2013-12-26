@@ -22,7 +22,7 @@ module Bun
         file = open(tape)
         if file.file_type == :frozen
           file.shard_count.times do |i|
-            contents << "#{tape}::#{file.shard_name(i)}"
+            contents << "#{tape}[#{file.shards[i][:name]}]"
           end
         else
           contents << tape
@@ -35,6 +35,7 @@ module Bun
     end
 
     def catalog_path
+      # TODO Remove this direct reference
       cp = config.places['catalog']
       cp && ::File.expand_path(cp)
     end

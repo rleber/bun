@@ -89,5 +89,4 @@ def fetch(url, at)
   agent = Mechanize.new
   archive = Archive.new(at)
   _fetch(url, archive.location, options)
-  Archive.new(archive.location).build_and_save_index(:verbose=>!options[:quiet])
 end

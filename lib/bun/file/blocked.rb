@@ -32,6 +32,10 @@ module Bun
         deblocked_content
       end
       
+      def file_content
+        data.file_content
+      end
+      
       BLOCK_SIZE = 0500 # words
       
       def blocks

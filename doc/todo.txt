@@ -1,4 +1,5 @@
 TODO
+File::Converted.open should attempt to convert an unconverted file
 Annotated file structure
 - Archive convert command
 - Change other commands to work with converted format

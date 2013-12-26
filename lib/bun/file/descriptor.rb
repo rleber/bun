@@ -6,8 +6,8 @@ module Bun
     module Descriptor
       class Base
         class << self
-          def from_hash(file, h)
-            d = new(file)
+          def from_hash(data, h)
+            d = new(data)
             d.from_hash(h)
           end
         end
@@ -20,7 +20,7 @@ module Bun
           :file_size,
           :file_type,
           :tape,
-          :tape_path,
+          # :tape_path,
           # :original_tape,
           # :original_tape_path,
           :owner,
@@ -47,7 +47,10 @@ module Bun
         end
       
         def to_hash
-          fields.inject({}) {|hsh, f| hsh[f] = self.send(f); hsh }
+          fields.inject({}) do |hsh, f|
+            hsh[f] = self.send(f) rescue nil
+            hsh
+          end
         end
       
         def from_hash(h)
@@ -64,24 +67,29 @@ module Bun
           end
           self
         end
+        
+        def [](arg)
+          self.send(arg)
+        end
       
         # def shards
         #   data.shard_descriptor_hashes rescue []
         # end
           
         def method_missing(meth, *args, &blk)
-          data.send(meth, *args, &blk)
-        rescue NoMethodError => e
-          raise NoMethodError, %{"#{self.class}##{meth} method not defined:\n  Raised #{e} at:\n#{e.backtrace.map{|c| '    ' + c}.join("\n")}}
+          if !block_given? && args.size==0 && instance_variable_defined?("@#{meth}")
+            return instance_variable_get("@#{meth}")
+          end
+          data.respond_to?(meth) ? data.send(meth, *args, &blk) : nil
         end
       
         def copy(to, new_settings={})
           to_dir = File.dirname(to)
           descriptor = self.to_hash
-          descriptor[:original_tape] = descriptor[:tape] unless descriptor[:original_tape]
-          descriptor[:original_tape_path] = descriptor[:tape_path] unless descriptor[:original_tape_path]
-          descriptor[:tape] = File.basename(to)
-          descriptor[:tape_path] = to
+          # descriptor[:original_tape] = descriptor[:tape] unless descriptor[:original_tape]
+          # descriptor[:original_tape_path] = descriptor[:tape_path] unless descriptor[:original_tape_path]
+          # descriptor[:tape] = File.basename(to)
+          # descriptor[:tape_path] = to
           descriptor.merge! new_settings
           descriptor
         end

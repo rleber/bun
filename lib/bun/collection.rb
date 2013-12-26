@@ -139,9 +139,8 @@ module Bun
       ix ? File.join(ix, name) : expand_path(name)
     end
     
-    def index_for(name, ix=nil)
-      expanded_path = index_path(name)
-      index[expanded_path].merge(:tape=>name, :tape_path=>expand_path(name))
+    def index_for(name)
+      index[expand_path(name)]
     end
     
     def expanded_index_directory
@@ -172,40 +171,23 @@ module Bun
       File.relative_path(*f, options)
     end
     
-    def index(options={})
-      return @index if !options[:build] && @index
-      res = _index(options)
-      @index = res unless options[:no_save]
-      res
+    def index
+      @index ||= build_index
     end
     
-    attr_accessor :recursive_index
-    
-    def _index(options={})
-      if options[:recursive] || recursive_index
-        indexes = index_directories
-      else
-        indexes = [expanded_index_directory]
-      end
-      if indexes.size > 0
-        res = {}
-        indexes.each do |index|
-          next unless File.exists?(index)
-          raise RuntimeError, "File #{index} should be a directory" unless File.directory?(index)
-          prefix = index_prefix(index)
-          Dir.glob(File.join(index, '*.yml')) do |f|
-            raise "Unexpected file #{f} in index #{expanded_index_directory}" unless f =~ /\.descriptor.yml$/
-            file_name = index_path(File.basename($`), prefix)
-            content = ::Bun.readfile(f, :encoding=>'us-ascii')
-            res[file_name] = YAML.load(content)
-          end
+    def build_index
+      items.inject({}) do |index_hash, item|
+        f = begin
+          File::Converted.open(item)
+        rescue Bun::File::UnknownFileType =>e 
+          nil
         end
-        res
-      else
-        build_and_save_index
+        descriptor = f && f.descriptor
+        index_hash[expand_path(item, :already_from_wd=>true)] = descriptor if descriptor
+        index_hash
       end
     end
-    private :_index
+    private :build_index
     
     def build_and_save_index(options={})
       clear_index
@@ -314,21 +296,8 @@ module Bun
     end
     private :_save_index_descriptor
     
-    # Options:
-    #  :build: true  Always build descriptor from file data, never use index
-    #          false Use index if available, never build from file data
-    #          nil   Use index if available, otherwise build from file data
-    def descriptor(name, options={})
-#      i = index        # TODO Remove this if everything is still working; not sure what its purpose was
-      if !exists?(name)
-        nil
-      elsif !options[:build] && index_for(name)
-        Hashie::Mash.new(index_for(name))
-      elsif options[:build] == false # False signifies "Do not ever build from file data, even if no index"
-        nil
-      else
-        Hashie::Mash.new(build_descriptor(name))
-      end
+    def descriptor(name)
+      exists?(name) && index_for(name)
     end
     
     def exists?(name)
@@ -349,7 +318,6 @@ module Bun
       else
         FileUtils.rm(path)
         descriptor_file_name = File.join(File.dirname(path), index_directory, "#{File.basename(path)}.descriptor.yml")
-#        puts "In Archive#rm_at_path: path=#{path.inspect}, descriptor_file_name=#{descriptor_file_name.inspect}"
         FileUtils.rm(descriptor_file_name) if File.exists?(descriptor_file_name)
       end
     end

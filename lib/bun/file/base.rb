@@ -76,7 +76,7 @@ module Bun
       yield(self) if block_given?
     end
 
-    private_class_method :new
+    # private_class_method :new
   
     def clear_errors
       @errors = []
