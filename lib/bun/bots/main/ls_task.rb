@@ -14,15 +14,15 @@ SORT_FIELDS = {
   :description => :description,
   :file        => :path,
   :size        => :file_size,
-  :tape       => :tape,
+  :tape        => :tape,
   :type        => :file_type,
-  :updated     => :updated,
+  :updated     => :file_time,
 }
 TYPE_VALUES = %w{all frozen text huff}
 DATE_FORMAT = '%Y/%m/%d'
 TIME_FORMAT = DATE_FORMAT + ' %H:%M:%S'
 FIELD_CONVERSIONS = {
-  :updated     => lambda {|f| f.nil? ? 'n/a' : f.strftime(f.is_a?(Time) ? TIME_FORMAT : DATE_FORMAT) },
+  :file_time   => lambda {|f| f.nil? ? 'n/a' : f.strftime(f.is_a?(Time) ? TIME_FORMAT : DATE_FORMAT) },
   :file_type   => lambda {|f| f.to_s.sub(/^./) {|m| m.upcase} },
   :shard_count => lambda {|f| f==0 ? '' : f },
 }
@@ -32,20 +32,20 @@ FIELD_HEADINGS = {
   :file_type     => 'Type',
   :path          => 'File',
   :shard_count   => 'Shards',
-  :tape         => 'Tape',
-  :tape_path    => 'Tape',
-  :updated       => 'Updated',
+  :tape          => 'Tape',
+  :tape_path     => 'Tape',
+  :file_time     => 'Updated',
 }
 DEFAULT_VALUES = {
   :file_size   => 0,
   :shard_count => 0,
-  :updated     => Time.now,
+  :file_time   => Time.now,
 }
 SHARD_FIELDS = {
   :file_size     => :size,
   :shard_count   => '',
   :file_type     => 'Shard',
-  :updated       => :file_time,
+  # :updated       => :file_time,
 }
 
 desc "ls ARCHIVE", "Display an index of archived files"
@@ -81,7 +81,7 @@ def ls(at)
   fields =  options[:path] ? [:tape_path] : [:tape]
   fields += [:path] unless options[:onecolumn]
   fields += [:file_type] if options[:type]
-  fields += [:file_type, :updated, :file_size] if options[:long]
+  fields += [:file_type, :file_time, :file_size] if options[:long]
   fields += [:shard_count] if options[:long]
   fields += [:description] if options[:descr]
   fields = fields.uniq

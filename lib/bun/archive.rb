@@ -81,6 +81,7 @@ module Bun
     
     # Convert a file from internal bun binary format to YAML digest
     def convert_single(tape,to=nil)
+      return unless File.raw?(expand_path(tape))
       content = open(tape) {|f| f.convert}
       shell = Shell.new
       shell.write to, content

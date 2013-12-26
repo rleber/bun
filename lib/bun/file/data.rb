@@ -172,8 +172,11 @@ module Bun
     end
 
     def file_size
-      debug "word(0): #{'%o' % word(0).value}, word(0).half_word(1): #{'%o' % (word(0).half_word(1)).value}"
       ((word(0).half_word(1))+1).value
+    end
+    
+    def frozen_file_size
+      word(content_offset).value + content_offset
     end
 
     def date(tape)
@@ -206,9 +209,13 @@ module Bun
     end
 
     def file_type
-      return :frozen if frozen?
-      return :huffman if word(content_offset).characters.join == 'huff'
-      return :text
+      if frozen?
+        :frozen
+      elsif word(content_offset).characters.join == 'huff'
+        :huffman
+      else
+        :text
+      end
     end
     
     def eof_marker

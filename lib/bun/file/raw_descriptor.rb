@@ -104,6 +104,10 @@ module Bun
         def shard_count
           file_type == :frozen ? words.at(content_offset+1).half_words.at(1).to_i : 0
         end
+        
+        def file_size
+          file_type == :frozen ? data.frozen_file_size : data.file_size
+        end
       
         # Reference to all_characters is necessary here, because characters isn't
         # available in header files. Still, it seems a bit kludgy...

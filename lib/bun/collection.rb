@@ -37,13 +37,7 @@ module Bun
 
     def open(name, options={}, &blk)
       path = expand_path(name)
-      if File.raw?(path)
-        Bun::File::Raw.open(path, options.merge(:archive=>self, :tape=>name), &blk)
-      elsif File.basename(name) =~ /^ar\d{3}.\d{4}$/
-        Bun::File::Converted.open(path, options.merge(:archive=>self, :tape=>name), &blk)
-      else
-        Bun::File::Extracted.open(path, options.merge(:library=>self,  :tape=>name), &blk)
-      end
+      File.open(path, options.merge(:archive=>self, :tape=>name), &blk)
     end
 
     def to_enum(&blk)
@@ -178,12 +172,13 @@ module Bun
     def build_index
       items.inject({}) do |index_hash, item|
         f = begin
-          File::Converted.open(item)
+          File.open(item)
         rescue Bun::File::UnknownFileType =>e 
           nil
         end
         descriptor = f && f.descriptor
         index_hash[expand_path(item, :already_from_wd=>true)] = descriptor if descriptor
+        f.close if f
         index_hash
       end
     end

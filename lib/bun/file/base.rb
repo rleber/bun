@@ -57,6 +57,24 @@ module Bun
         prefix = ::File.open(path,'rb') {|f| f.read(3)}
         prefix != '---' # YAML prefix; one of the converted formats
       end
+      
+      def open(path, options={}, &blk)
+        if raw?(path)
+          File::Raw.open(path, options, &blk)
+        else
+          File::Converted.open(path, options, &blk)
+        end
+      end
+      
+      def file_type(path)
+        return :raw if raw?(path)
+        begin
+          f = File::Converted.open(path)
+          f.file_type
+        rescue
+          :unknown
+        end
+      end
     end
     attr_reader :archive
     attr_reader :tape_path
