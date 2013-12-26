@@ -172,6 +172,7 @@ module Bun
     end
 
     def file_size
+      debug "word(0): #{'%o' % word(0).value}, word(0).half_word(1): #{'%o' % (word(0).half_word(1)).value}"
       ((word(0).half_word(1))+1).value
     end
 
