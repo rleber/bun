@@ -33,6 +33,7 @@ module Bun
           :owner,
           :path,
           # :specification,
+          :file_time,
           # :updated,
         ]
         
@@ -85,7 +86,7 @@ module Bun
           File.basename(tape_path)
         end
         
-         #      
+              
          # # TODO This isn't really relevant for non-frozen files; File::Frozen should really subclass this
          # def updated
          #   file_time = self.file_time rescue nil

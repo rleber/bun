@@ -1,24 +1,11 @@
 ---
-:basename: vector
-:catalog_time: 
 :description: ==>files for idallen
-:errors: []
-:extracted: 
 :file_size: 2582
 :file_type: :text
 :tape: ar003.0698
-:tape_path: /Users/richard/projects/bun/data/test/archive/general_test_raw/ar003.0698
-:original_tape: 
-:original_tape_path: 
 :owner: fass
 :path: fass/idallen/vector
-:specification: /idallen/vector  ==>files for idallen
-:updated: 
-:blocks: 8
-:good_blocks: 8
-:status: :readable
-:control_characters: 
-:character_count: 
+:format: :raw
 :content: !binary |-
   AABAoVAABAAVAADAK6CQoUstCQoUstAAAAAAAAAAAIMxhOZzAAAAAAAAAAAA
   AAAAAAF5pMhhNhsMpuF52MpjOhvOQgEA9Ho+MxpNhlOYgMxvOQgNJkMJsNhl

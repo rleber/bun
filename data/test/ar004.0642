@@ -1,24 +1,11 @@
 ---
-:basename: script
-:catalog_time: 1977-02-24 00:00:00.000000000 -05:00
 :description: klisted final copy of fass '77 script
-:errors: []
-:extracted: 
 :file_size: 3863
 :file_type: :text
 :tape: ar004.0642
-:tape_path: /Users/richard/bun_archive/ar004.0642
-:original_tape: 
-:original_tape_path: 
 :owner: fass
 :path: fass/script
-:specification: /script klisted final copy of fass '77 script
-:updated: 1977-02-24 00:00:00.000000000 -05:00
-:blocks: 12
-:good_blocks: 12
-:status: :readable
-:control_characters: 
-:character_count: 
+:format: :raw
 :content: !binary |-
   AABA8WAABAAXAAEAKCCRHVG9CRHVG9AAAAAAAAAADcMxhOZzAAAAAAAAAAAA
   AAAAAAF5zMZyNJwOggNZsNJzOhlMggMxpNxhNggMZvOB5EBvMwgMxhOZzEAn
