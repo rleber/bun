@@ -462,7 +462,7 @@ module Bun
       
       open(from) do |f|
         Shell.new(:quiet=>true).write to, f.read, :mode=>'w:ascii-8bit'
-        f.copy_descriptor(to) if index
+        # f.copy_descriptor(to) if index
       end
     end
     private :cp_file_to_file

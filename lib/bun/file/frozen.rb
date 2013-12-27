@@ -12,6 +12,7 @@ module Bun
     
       # TODO do we ever instantiate a File::Frozen without a new file? If not, refactor
       def initialize(options={})
+        options[:data] = Data.new(options) if options[:data]
         super
         # TODO Why is file_date necessary?
         descriptor.register_fields(:shards, :file_date, :file_time)

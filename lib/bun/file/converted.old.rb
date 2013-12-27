@@ -59,7 +59,6 @@ module Bun
         end
     
         def create(options={}, &blk)
-          $stderr.puts "In #{self.class}#create(#{options.inspect})"
           preamble = nil
           if options[:type]
             ftype = options[:type]

@@ -11,7 +11,6 @@ module Bun
       class << self
 
         def create(options={}, &blk)
-          $stderr.puts "In #{self.class}#create(#{options.inspect})"
           preamble = nil
           if options[:type]
             ftype = options[:type]
@@ -50,10 +49,10 @@ module Bun
             :data=>data, 
             :archive=>options[:archive], 
             :tape=>options[:tape], 
-            # :tape_path=>fname
+            :tape_path=>fname
           )
           descriptor = Descriptor::Base.from_hash(@content,input)
-          options.merge!(:data=>data, :descriptor=>descriptor)
+          options.merge!(:data=>data, :descriptor=>descriptor, :tape_path=>fname)
           # @content = Data.new(options)
           file = case descriptor[:file_type]
           when :text
@@ -108,6 +107,10 @@ module Bun
       def header?
         @header
       end
+
+      # def read
+      #   @data.data
+      # end
       # 
       # def words=(words)
       #   if words.nil?
