@@ -5,7 +5,8 @@
 :tape: ar083.0698
 :owner: fass
 :path: fass/1983/programme/actors
-:format: :raw
+:data_format: :raw
+:catalog_time: 1983-01-28 00:00:00.000000000 -05:00
 :content: !binary |-
   AABAZaAABAAbABTAK6CcRRCsCcQjBJAAAAAAgAAAAFMxhOZzAAAAAAAAAAAA
   AAAAAAF4xHI4GYvOByN5nORhNptMovMJjOhvORzEA9Ho+EBUKRPIxGEBzN51

@@ -5,7 +5,8 @@
 :tape: ar004.0642
 :owner: fass
 :path: fass/script
-:format: :raw
+:data_format: :raw
+:catalog_time: 1977-02-24 00:00:00.000000000 -05:00
 :content: !binary |-
   AABA8WAABAAXAAEAKCCRHVG9CRHVG9AAAAAAAAAADcMxhOZzAAAAAAAAAAAA
   AAAAAAF5zMZyNJwOggNZsNJzOhlMggMxpNxhNggMZvOB5EBvMwgMxhOZzEAn

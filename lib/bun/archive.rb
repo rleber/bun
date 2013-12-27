@@ -2,6 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 require 'lib/bun/collection'
+require 'lib/bun/catalog'
 require 'lib/bun/file'
 require 'date'
 
@@ -73,7 +74,8 @@ module Bun
             shard_name = descr.name
             warn "thaw #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
             unless options[:dryrun]
-              f = File.join(to_path, extract_path(file.path, file.file_time), shard_name, extract_tapename(tape, descr.updated))
+              timestamp = file.descriptor.timestamp
+              f = File.join(to_path, extract_path(file.path, timestamp), shard_name, extract_tapename(tape, descr.file_time))
               dir = File.dirname(f)
               FileUtils.mkdir_p dir
               file.extract shard_name, f
@@ -82,7 +84,8 @@ module Bun
         when :text
           warn "unpack #{tape}" if options[:dryrun] || !options[:quiet]
           unless options[:dryrun]
-            f = File.join(to_path, file.path, extract_tapename(tape, file.file_time))
+            timestamp = file.descriptor.timestamp
+            f = File.join(to_path, file.path, extract_tapename(tape, timestamp))
             dir = File.dirname(f)
             FileUtils.mkdir_p dir
             file.extract f

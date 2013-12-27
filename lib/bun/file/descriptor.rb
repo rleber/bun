@@ -92,6 +92,10 @@ module Bun
           hash.delete(:content)
           hash
         end
+        
+        def timestamp
+          fields.include?(:catalog_time) ? [file_time, catalog_time].compact.min : file_time
+        end
       
         # def shards
         #   data.shard_descriptor_hashes rescue []

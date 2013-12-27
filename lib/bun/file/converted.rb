@@ -257,6 +257,10 @@ module Bun
         descriptor.file_type
       end
       
+      def file_time
+        descriptor.file_time
+      end
+      
       def to_yaml
         hash = descriptor.to_hash.merge(:content=>data.data)
         if file_type == :frozen
@@ -280,7 +284,7 @@ module Bun
       end
       
       def convert
-        dup
+        self
       end
 
       def method_missing(meth, *args, &blk)

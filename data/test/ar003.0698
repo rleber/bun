@@ -5,7 +5,7 @@
 :tape: ar003.0698
 :owner: fass
 :path: fass/idallen/vector
-:format: :raw
+:data_format: :raw
 :content: !binary |-
   AABAoVAABAAVAADAK6CQoUstCQoUstAAAAAAAAAAAIMxhOZzAAAAAAAAAAAA
   AAAAAAF5pMhhNhsMpuF52MpjOhvOQgEA9Ho+MxpNhlOYgMxvOQgNJkMJsNhl

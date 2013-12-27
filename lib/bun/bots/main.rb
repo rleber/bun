@@ -15,6 +15,7 @@ require 'lib/bun/bots/librarian'
 require 'lib/bun/bots/freezer'
 require 'lib/bun/bots/sandbox'
 require 'lib/bun/bots/catalog'
+require 'lib/bun/bots/test'
 require 'lib/bun/dump'
 require 'lib/array'
 require 'pp'
@@ -31,6 +32,7 @@ module Bun
       register Bun::Bot::Librarian, :library, "library", "Manage libraries of extracted Honeywell files"
       register Bun::Bot::Place,     :places,  "places",  "Manage defined places (files/URLs)"
       register Bun::Bot::Sandbox,   :sandbox, 'sandbox', "Play with archive"
+      register Bun::Bot::Test,      :test,    'test',    "Run tests"
     end
   end
 end

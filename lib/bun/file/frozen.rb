@@ -88,7 +88,7 @@ module Bun
       end
     
       def shard_descriptors
-        descriptor.shards.map{|d| Hashie::Mash.new(d) }
+        descriptor.shards.map.with_index {|d,i| Hashie::Mash.new(d.merge(:number=>i)) }
       end
       cache :shard_descriptors
       

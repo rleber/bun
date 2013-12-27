@@ -307,7 +307,7 @@ describe Bun::Bot do
     before :all do
       exec("rm -rf data/test/archive/catalog_source")
       exec("cp -r data/test/archive/catalog_source_init data/test/archive/catalog_source")
-      exec("bun archive catalog data/test/archive/catalog_source 2>output/archive_catalog_stderr.txt >output/archive_catalog_stdout.txt")
+      exec("bun archive catalog data/test/archive/catalog_source data/test/catalog.txt 2>output/archive_catalog_stderr.txt >output/archive_catalog_stdout.txt")
     end
     it "should write nothing on stdout" do
       Bun.readfile('output/archive_catalog_stdout.txt').chomp.should == ""
@@ -315,9 +315,11 @@ describe Bun::Bot do
     it "should write file decoding messages on stderr" do
       Bun.readfile("output/archive_catalog_stderr.txt").chomp.should == Bun.readfile('output/test/archive_catalog_stderr.txt').chomp
     end
-    it "should not change the files in the archive" do
+    it "should not add or remove any files in the archive" do
       exec('find data/test/archive/catalog_source -print >output/archive_catalog_files.txt')
       Bun.readfile('output/archive_catalog_files.txt').chomp.should == Bun.readfile('output/test/archive_catalog_files.txt').chomp
+    end
+    it "should change the catalog dates in the catalog" do 
     end
     after :all do
       exec("rm -rf data/test/archive/catalog_source")
@@ -346,32 +348,6 @@ describe Bun::Bot do
       exec('find data/test/archive/extract_library -print >output/archive_extract_files.txt')
       Bun.readfile('output/archive_extract_files.txt').chomp.should == Bun.readfile('output/test/archive_extract_files.txt').chomp
     end
-    describe "the index" do
-      it "should exist" do
-        file_should_exist "data/test/archive/extract_library/fass/1983/programme/actors/.bun_index/tape.ar083.0698_19830128.txt.descriptor.yml"
-      end
-      describe "contents" do
-        before :each do
-          @original_content = YAML.load(Bun.readfile("data/test/archive/extract_source/.bun_index/ar083.0698.descriptor.yml", :encoding=>'us-ascii'))
-          @content = YAML.load(Bun.readfile("data/test/archive/extract_library/fass/1983/programme/actors/.bun_index/tape.ar083.0698_19830128.txt.descriptor.yml", :encoding=>'us-ascii'))
-        end
-        it "should change the tape" do
-          @content[:tape].should == 'tape.ar083.0698_19830128.txt'
-        end
-        it "should change the tape_path" do
-          @content[:tape_path].should == %{#{exec("pwd").chomp}/data/test/archive/extract_library/fass/1983/programme/actors/tape.ar083.0698_19830128.txt}
-        end
-        it "should record the original tape" do
-          @content[:original_tape].should == 'ar083.0698'
-        end
-        it "should record the original tape_path" do
-          @content[:original_tape_path].should == %{#{exec("pwd").chomp}/data/test/archive/extract_source/ar083.0698}
-        end
-        it "should record the extract time" do
-          @content[:extracted].should be_a(Time)
-        end
-      end
-    end
     after :all do
       exec("rm -rf data/test/archive/extract_source")
       exec("rm -rf data/test/archive/extract_library")
@@ -380,23 +356,12 @@ describe Bun::Bot do
       exec("rm -f output/archive_extract_files.txt")
     end
   end
-  context "bun catalog ls" do
-    before :all do
-      exec("bun catalog ls #{TEST_ARCHIVE} 2>&1 >output/catalog_ls")
-    end
-    it "should give correct output" do
-      Bun.readfile("output/catalog_ls").should == Bun.readfile("output/test/catalog_ls")
-    end
-    after :all do
-      exec("rm -rf output/catalog_ls")
-    end
-  end
   context "bun library compact" do
     before :each do
       exec("rm -rf data/test/archive/compact_files")
       exec("rm -rf data/test/archive/compact_result")
-      exec("cp -r data/test/archive/compact_files_init data/test/archive/compact_files")
-      exec("bun library compact data/test/archive/compact_files data/test/archive/compact_result")
+      exec("cp -r data/test/archive/compact_source_init data/test/archive/compact_source")
+      exec("bun library compact data/test/archive/compact_source data/test/archive/compact_result")
     end
     it "should create the results directory" do
       file_should_exist "data/test/archive/compact_result"

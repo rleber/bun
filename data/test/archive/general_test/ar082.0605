@@ -5,6 +5,7 @@
 :tape: ar082.0605
 :owner: bjeroehl
 :path: bjeroehl/fass/81script.f
+:data_format: :raw
 :shards:
 - :name: 81macros
   :file_time: 1981-01-05 15:43:56.000000000 -05:00
@@ -82,7 +83,7 @@
   :start: 36113
   :size: 328
 :file_time: 1981-03-08 20:27:00.000000000 -05:00
-:format: :raw
+:catalog_time: 1982-12-22 00:00:00.000000000 -05:00
 :content: !binary |-
   AABA8PAABAAQABSAJdCcEdfaCcEZC9AAAAAAgABAB3MRqMpyN5lNBsAAAAAA
   AAAAAAF5mMJzOYvHAxOZjORpOB0FxmAAAAAAAAAI5ZAAAAAPGAzF4wHAvHAx
