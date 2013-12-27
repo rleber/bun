@@ -10,37 +10,37 @@ module Bun
     class Converted < Bun::File
       class << self
 
-        def create(options={}, &blk)
-          preamble = nil
-          if options[:type]
-            ftype = options[:type]
-          else
-            preamble = get_preamble(options)
-            ftype = preamble.file_type
-          end
-          klass = const_get(ftype.to_s.sub(/^./){|m| m.upcase}) unless ftype.is_a?(Class)
-          if options[:header]
-            if ftype == :frozen
-              limit = Frozen.send(:new, :words=>preamble.words, :header=>true).header_size
-            else
-              limit = preamble.header_size
-            end
-          else
-            limit = nil
-          end
-          f = klass.send(:new, options.merge(:n=>limit))
-          res = if block_given?
-            begin
-              yield(f)
-            rescue => e
-              raise %Q{!Raised error in yield: #{e}\n  Raised #{e} at:\n#{e.backtrace.map{|c| '    ' + c}.join("\n")}}
-            ensure
-              f.close
-            end
-          else
-            f
-          end
-        end
+        # def create(options={}, &blk)
+        #   preamble = nil
+        #   if options[:type]
+        #     ftype = options[:type]
+        #   else
+        #     preamble = get_preamble(options)
+        #     ftype = preamble.file_type
+        #   end
+        #   klass = const_get(ftype.to_s.sub(/^./){|m| m.upcase}) unless ftype.is_a?(Class)
+        #   if options[:header]
+        #     if ftype == :frozen
+        #       limit = Frozen.send(:new, :words=>preamble.words, :header=>true).header_size
+        #     else
+        #       limit = preamble.header_size
+        #     end
+        #   else
+        #     limit = nil
+        #   end
+        #   f = klass.send(:new, options.merge(:n=>limit))
+        #   res = if block_given?
+        #     begin
+        #       yield(f)
+        #     rescue => e
+        #       raise %Q{!Raised error in yield: #{e}\n  Raised #{e} at:\n#{e.backtrace.map{|c| '    ' + c}.join("\n")}}
+        #     ensure
+        #       f.close
+        #     end
+        #   else
+        #     f
+        #   end
+        # end
 
         def open(fname, options={}, &blk)
           input = YAML.load(::File.read(fname))
@@ -53,8 +53,17 @@ module Bun
           )
           descriptor = Descriptor::Base.from_hash(@content,input)
           options.merge!(:data=>data, :descriptor=>descriptor, :tape_path=>fname)
-          # @content = Data.new(options)
-          file = case descriptor[:file_type]
+          file = create(options)
+          if block_given?
+            yield(file)
+          else
+            file
+          end
+        end
+        
+        def create(options={})
+          descriptor = options[:descriptor]
+          case descriptor[:file_type]
           when :text
             File::Converted::Text.new(options)
           when :frozen
@@ -65,11 +74,6 @@ module Bun
             else
               File::Converted::Text.new(options)
             end
-          end
-          if block_given?
-            yield(file)
-          else
-            file
           end
         end
         
@@ -96,7 +100,14 @@ module Bun
       attr_reader :data
       attr_reader :descriptor
 
-      def initialize(options={})
+      # Create a new File
+      # Options:
+      #   :data        A File::Data object containing the file's data
+      #   :archive     The archive containing the file
+      #   :tape        The tape name of the file
+      #   :tape_path   The path name of the file
+      #   :descriptor  The descriptor for the file
+       def initialize(options={})
         @header = options[:header]
         @descriptor = options[:descriptor]
         @data = options[:data]
@@ -244,6 +255,32 @@ module Bun
       
       def file_type
         descriptor.file_type
+      end
+      
+      def to_yaml
+        hash = descriptor.to_hash.merge(:content=>data.data)
+        if file_type == :frozen
+          hash[:shards] = shard_descriptors.map do |d|
+            {
+              :name      => d.name,
+              :file_time => d.file_time,
+              :blocks    => d.blocks,
+              :start     => d.start,
+              :size      => d.size,
+            }
+          end
+        end
+        hash.to_yaml
+      end
+      
+      def write(to=nil)
+        to ||= tape_path
+        shell = Shell.new
+        shell.write to, to_yaml
+      end
+      
+      def convert
+        dup
       end
 
       def method_missing(meth, *args, &blk)

@@ -115,24 +115,64 @@ end
 describe Bun::Archive do
   context "bun convert" do
     context "with a text file" do
+      context "with output to stdout" do
+        before :all do
+          exec("rm -f output/convert_ar003.0698")
+          exec("rm -rf data/test/archive/general_test_raw")
+          exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
+          exec("bun convert data/test/archive/general_test_raw ar003.0698 - >output/convert_ar003.0698")
+        end
+        it "should create the proper file" do
+          file_should_exist "output/convert_ar003.0698"
+        end
+        it "should generate the proper conversion on stdout" do
+          Bun.readfile("output/convert_ar003.0698").chomp.should == Bun.readfile('output/test/convert_ar003.0698').chomp
+        end
+        after :all do
+          exec("rm -f output/convert_ar003.0698")
+          exec("rm -rf data/test/archive/general_test_raw")
+        end
+      end
+    end
+    context "with output to a file" do
       before :all do
         exec("rm -f output/convert_ar003.0698")
-        exec("bun convert data/test/archive/general_test_raw ar003.0698 >output/convert_ar003.0698")
+        exec("rm -rf data/test/archive/general_test_raw")
+        exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
+        exec("bun convert data/test/archive/general_test_raw ar003.0698 output/convert_ar003.0698")
       end
       it "should create the proper file" do
         file_should_exist "output/convert_ar003.0698"
       end
-      it "should generate the proper conversion" do
+      it "should generate the proper conversion in the file" do
         Bun.readfile("output/convert_ar003.0698").chomp.should == Bun.readfile('output/test/convert_ar003.0698').chomp
       end
       after :all do
         exec("rm -f output/convert_ar003.0698")
+        exec("rm -rf data/test/archive/general_test_raw")
+      end
+    end
+    context "with output in place" do
+      before :all do
+        exec("rm -f output/convert_ar003.0698")
+        exec("rm -rf data/test/archive/general_test_raw")
+        exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
+        exec("bun convert data/test/archive/general_test_raw ar003.0698")
+      end
+      it "should generate the proper conversion in place" do
+        Bun.readfile("data/test/archive/general_test_raw/ar003.0698").chomp.should == Bun.readfile('output/test/convert_ar003.0698').chomp
+      end
+      after :all do
+        exec("rm -f output/convert_ar003.0698")
+        exec("rm -rf data/test/archive/general_test_raw")
       end
     end
     context "with a frozen file" do
       before :all do
         exec("rm -f output/convert_ar019.0175")
-        exec("bun convert data/test/archive/general_test_raw ar019.0175 >output/convert_ar019.0175")
+        exec("rm -rf data/test/archive/general_test_raw")
+        exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
+        exec("bun convert data/test/archive/general_test_raw ar019.0175 output/convert_ar019.0175")
       end
       it "should create the proper file" do
         file_should_exist "output/convert_ar019.0175"
@@ -142,6 +182,7 @@ describe Bun::Archive do
       end
       after :all do
         exec("rm -f output/convert_ar019.0175")
+        exec("rm -rf data/test/archive/general_test_raw")
       end
     end
   end
@@ -151,6 +192,8 @@ describe Bun::Archive do
       exec("rm -f output/archive_convert_files.txt")
       exec("rm -f output/archive_convert_stdout.txt")
       exec("rm -f output/archive_convert_stdout.txt")
+      exec("rm -rf data/test/archive/general_test_raw")
+      exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
       exec("bun archive convert data/test/archive/general_test_raw data/test/archive/general_test_raw_converted 2>output/archive_convert_stderr.txt >output/archive_convert_stdout.txt")
     end
     it "should create a new directory" do
@@ -168,6 +211,7 @@ describe Bun::Archive do
     end
     after :all do
       exec("rm -rf data/test/archive/general_test_raw_converted")
+      exec("rm -rf data/test/archive/general_test_raw")
       exec("rm -f output/archive_convert_files.txt")
       exec("rm -f output/archive_convert_stderr.txt")
       exec("rm -f output/archive_convert_stdout.txt")
@@ -258,6 +302,29 @@ describe Bun::Bot do
     end
     context "thaw" do
       include_examples "command", "freezer thaw ar004.0888 +0", "freezer thaw #{TEST_ARCHIVE} ar004.0888 +0", "freezer_thaw_ar004.0888_0"
+    end
+  end
+  context "bun catalog" do
+    before :all do
+      exec("rm -rf data/test/archive/catalog_source")
+      exec("cp -r data/test/archive/catalog_source_init data/test/archive/catalog_source")
+      exec("bun archive catalog data/test/archive/catalog_source 2>output/archive_catalog_stderr.txt >output/archive_catalog_stdout.txt")
+    end
+    it "should write nothing on stdout" do
+      Bun.readfile('output/archive_catalog_stdout.txt').chomp.should == ""
+    end
+    it "should write file decoding messages on stderr" do
+      Bun.readfile("output/archive_catalog_stderr.txt").chomp.should == Bun.readfile('output/test/archive_catalog_stderr.txt').chomp
+    end
+    it "should not change the files in the archive" do
+      exec('find data/test/archive/catalog_source -print >output/archive_catalog_files.txt')
+      Bun.readfile('output/archive_catalog_files.txt').chomp.should == Bun.readfile('output/test/archive_catalog_files.txt').chomp
+    end
+    after :all do
+      exec("rm -rf data/test/archive/catalog_source")
+      exec("rm -f output/archive_catalog_stderr.txt")
+      exec("rm -f output/archive_catalog_stdout.txt")
+      exec("rm -f output/archive_catalog_files.txt")
     end
   end
   context "bun archive extract" do

@@ -104,6 +104,11 @@ module Bun
       end
     end
 
+    # def subset(start, length)
+    #   subset_data = data[start*characters_per_word, length*characters_per_word]
+    #   self.class.new(:data=>subset_data, :archive=>self.archive, :tape=>self.tape, :tape_path=>self.tape_path)
+    # end
+    # 
     def word(n)
       @words.at(n)
     end

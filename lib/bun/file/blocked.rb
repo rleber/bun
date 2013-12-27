@@ -13,7 +13,7 @@ module Bun
       def initialize(options={}, &blk)
         super
         @strict = options[:strict]
-        descriptor.register_fields(:blocks, :good_blocks, :status)
+        # descriptor.register_fields(:blocks, :good_blocks, :status)
       end
 
       def words=(words)

@@ -12,11 +12,11 @@ module Bun
       # TODO do we ever instantiate a File::Text without reading a file? If not, refactor
       def initialize(options={})
         @keep_deletes = options[:keep_deletes]
-        options[:data] = Data.new(options) if options[:data]
+        options[:data] = Data.new(options) if options[:data] && !options[:data].is_a?(Bun::Data)
         super
-        descriptor.register_fields(:control_characters, :character_count)
-        @control_characters = nil
-        @character_count = nil
+        # descriptor.register_fields(:control_characters, :character_count)
+        # @control_characters = nil
+        # @character_count = nil
       end
     
       def words=(words)

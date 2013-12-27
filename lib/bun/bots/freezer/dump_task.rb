@@ -36,7 +36,7 @@ def dump(at, file_name, n)
            "#{l[:raw].inspect[1..-2]}"
     end
   else
-    content = file.shard_words(file_index)
-    Dump.dump(content, options.merge(:frozen=>true))
+    shard_start, shard_size = file.shard_extent(file_index)
+    Dump.dump(file.data, options.merge(:frozen=>true, :offset=>shard_start, :limit=>shard_start + shard_size - 1))
   end
 end

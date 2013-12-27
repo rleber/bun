@@ -43,12 +43,13 @@ module Bun
         end
       
         def register_field(field)
+          instance_variable_set("@#{field}", nil)
           @fields << field
         end
       
         def to_hash
           fields.inject({}) do |hsh, f|
-            hsh[f] = self.send(f) rescue nil
+            hsh[f] = self.send(f)
             hsh
           end
         end
@@ -62,10 +63,21 @@ module Bun
         
         def merge!(h)
           h.keys.each do |k|
-            instance_variable_set("@#{k}", h[k])
             register_field(k) unless @fields.include?(k)
+            instance_variable_set("@#{k}", h[k])
           end
           self
+        end
+        
+        def dup
+          h = to_hash
+          n = self.class.new(self.data)
+          n.from_hash(h)
+          n
+        end
+        
+        def merge(h)
+          dup.merge!(h)
         end
         
         def [](arg)

@@ -1,4 +1,5 @@
 TODO
+Change bun test, so you can run a subset of tests
 File::Converted.open should attempt to convert an unconverted file
 Annotated file structure
 - Archive convert command
@@ -8,6 +9,8 @@ Annotated file structure
 - Creator information: Bun system, version, development/production, branch, git HEAD
 Filter methods
 Alternate data storage formats
+Combine archive, library
+Remove extraneous code
 Universal path URL with substitutions <name>, [<shard index>]
 New process: pull, annotate, merge (with catalog), decode, find, list/describe, clean, reorganize, extract, push
 Add archived to descriptor
@@ -35,7 +38,6 @@ Create bun find command (similar to find shell command)
   --clean
   --dirty
 Remove shell.log code
-Change bun test, so you can run a subset of tests
 Move all test cases' input files to data/test directory
 Make tests directory-independent (e.g. on listings)
 Separate file.open from file.load/read

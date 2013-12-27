@@ -231,6 +231,76 @@ module Bun
       descr
     end
     
+    def set_timestamps(options={})
+      shell = Bun::Shell.new(options)
+      each do |tape|
+        descr = descriptor(tape)
+        timestamp = [descr[:catalog_time], descr[:file_time]].compact.min
+        if timestamp
+          warn "Set timestamp: #{tape} #{timestamp.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
+          set_timestamp(tape, timestamp, :shell=>shell) unless options[:dryrun]
+        else
+          warn "No timestamp available for #{tape}" unless options[:quiet]
+        end
+      end
+    end
+    
+    def set_timestamp(tape, timestamp, options={})
+      if timestamp
+        shell = options[:shell] || Bun::Shell.new(options)
+        shell.set_timestamp(archive.expand_path(tape), timestamp)
+      end
+    end
+
+    def apply_catalog(catalog_path, options={})
+      shell = Bun::Shell.new(options)
+      each do |tape|
+        ct = catalog_time(tape)
+        if ct
+          warn "Set catalog time: #{tape} #{ct.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
+          set_catalog_time(tape, ct, :shell=>shell) unless options[:dryrun]
+        elsif options[:remove]
+          warn "Remove #{tape} (not in catalog)" unless options[:quiet]
+          remove(tape) unless options[:dryrun]
+        end
+      end
+    end
+    
+    def set_catalog_time(tape, catalog_time, options={})
+      file = open(tape)
+      file = file.convert
+      descr = file.descriptor
+      descr.register_fields(:catalog_time)
+      descr.catalog_time = catalog_time
+      file.write
+      timestamp = [descr[:catalog_time], descr[:file_time]].compact.min
+      set_timestamp(tape, descr, :shell=>options[:shell])
+    end
+    
+    def catalog(cp)
+      cp = ::File.expand_path(cp)
+      content = cp && Bun.readfile(catalog_path, :encoding=>'us-ascii')
+      return [] unless content
+      specs = content.split("\n").map do |line|
+        words = line.strip.split(/\s+/)
+        raise RuntimeError, "Bad line in index file: #{line.inspect}" unless words.size == 3
+        # TODO Create a full timestamp (set to midnight)
+        date = begin
+          Date.strptime(words[1], "%y%m%d")
+        rescue
+          raise RuntimeError, "Bad date #{words[1].inspect} in index file at #{line.inspect}"
+        end
+        {:tape=>words[0], :date=>date, :file=>words[2]}
+      end
+      specs
+    end
+    cache :catalog
+    
+    def catalog_time(tape)
+      info = catalog.find {|spec| spec[:tape] == tape }
+      info && info[:date].local_date_to_local_time
+    end
+    
     def build_descriptor(name)
       open(name, :header=>true) {|f| build_descriptor_for_file(f) }
     end

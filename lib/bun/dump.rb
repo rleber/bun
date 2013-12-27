@@ -14,7 +14,10 @@ module Bun
     def self.dump(data, options={})
       words = data.words
       offset = options[:offset] || 0
-      if options[:lines]
+      if options[:limit]
+        limit = options[:limit]
+        limit = words.size - 1 if limit >= words.size
+      elsif options[:lines]
         limit = (options[:lines] * WORDS_PER_LINE - 1) + offset
         limit = words.size - 1 if limit >= words.size
       else 

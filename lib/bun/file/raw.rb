@@ -29,7 +29,18 @@ module Bun
      
       # Convert file from internal Bun binary format to YAML digest
       def convert
-        @data.descriptor.to_hash.merge(:format=>:raw,:content=>data.data).to_yaml
+        new_descriptor = data.descriptor.merge(:data_format=>:raw, :file_type=>data.file_type)
+        f = File::Converted.create(
+          :data=>data,
+          :archive=>archive,
+          :tape=>File.basename(tape),
+          :tape_path=>tape_path,
+          :descriptor=>new_descriptor,
+        )
+        if data.file_type == :frozen
+          f.descriptor.merge!(:shards=>f.shard_descriptors)
+        end
+        f
       end
 
       def method_missing(meth, *args, &blk)
