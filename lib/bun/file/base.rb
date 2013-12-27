@@ -110,7 +110,7 @@ module Bun
     end
   
     def close
-      update_index
+      # update_index
     end
   
     def read

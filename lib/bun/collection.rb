@@ -248,7 +248,7 @@ module Bun
     def set_timestamp(tape, timestamp, options={})
       if timestamp
         shell = options[:shell] || Bun::Shell.new(options)
-        shell.set_timestamp(archive.expand_path(tape), timestamp)
+        shell.set_timestamp(expand_path(tape), timestamp)
       end
     end
 

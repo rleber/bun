@@ -266,7 +266,7 @@ module Bun
               :file_time => d.file_time,
               :blocks    => d.blocks,
               :start     => d.start,
-              :size      => d.size,
+              :size      => d[:size], # Need to do it this way, because d.size is the builtin
             }
           end
         end

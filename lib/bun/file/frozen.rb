@@ -88,11 +88,7 @@ module Bun
       end
     
       def shard_descriptors
-        descs = []
-        shard_count.times do |i|
-          descs << Frozen::Descriptor.new(self, i)
-        end
-        descs
+        descriptor.shards.map{|d| Hashie::Mash.new(d) }
       end
       cache :shard_descriptors
       
@@ -164,7 +160,7 @@ module Bun
       def shard_extent(n)
         d = shard_descriptor(n)
         return nil unless d
-        [d.start+content_offset, d.file_size]
+        [d.start+content_offset, d[:size]]
       end
       
       # def shard_data(n)
@@ -176,7 +172,7 @@ module Bun
       def shard_words(n)
         d = shard_descriptor(n)
         return nil unless d
-        words[d.start + content_offset, d.file_size]
+        words[d.start + content_offset, d[:size]]
       end
       
       def shards

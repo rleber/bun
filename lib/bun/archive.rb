@@ -20,12 +20,9 @@ module Bun
       contents = []
       each do |tape|
         file = open(tape)
-        debug "tape: #{tape}, file_type: #{file.file_type.inspect}"
         if file.file_type == :frozen
-          debug "file.shards: #{file.shards.inspect}"
           file.shard_count.times do |i|
-            debug "file.shards[#{i.inspect}]=#{file.shards[i].inspect}"
-            contents << "#{tape}[#{file.shards[i][:name]}]"
+            contents << "#{tape}[#{file.shard_name(i)}]"
           end
         else
           contents << tape

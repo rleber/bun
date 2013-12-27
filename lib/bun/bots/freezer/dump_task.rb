@@ -18,7 +18,8 @@ def dump(at, file_name, n)
   archived_file = "--unknown--" unless archived_file
   file_index = file.shard_index(n)
   shard_descriptor = file.shard_descriptors.at(file_index)
-  puts "Archive at #{file.tape_path}[#{shard_descriptor.name}] for #{shard_descriptor.path}:"
+  path = File.join(file.descriptor.path, shard_descriptor.name)
+  puts "Archive at #{file.tape_path}[#{shard_descriptor.name}] for #{path}:"
   if options[:thawed]
     p file
     lines = file.lines(file_index)

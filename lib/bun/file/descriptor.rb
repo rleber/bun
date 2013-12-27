@@ -43,8 +43,10 @@ module Bun
         end
       
         def register_field(field)
-          instance_variable_set("@#{field}", nil)
-          @fields << field
+          unless @fields.include?(field)
+            instance_variable_set("@#{field}", nil)
+            @fields << field
+          end
         end
       
         def to_hash
@@ -82,6 +84,13 @@ module Bun
         
         def [](arg)
           self.send(arg)
+        end
+        
+        # Like to_hash, but omits content
+        def precis
+          hash = to_hash
+          hash.delete(:content)
+          hash
         end
       
         # def shards
