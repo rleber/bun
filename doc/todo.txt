@@ -72,8 +72,6 @@ Keep a .spec file in decoded archives showing how the archive is organized?
 Combine freezer ls with bun ls
 Combine freezer dump with bun dump
 Combine archive decode and decode
-Change bun thaw/unpack/extract to bun decode
-Change bun convert to bun unpack
 Option to turn off inclusion of file modification date in unpacked or thawed file names
 Option to turn off resetting file modification dates for unpacked or thawed files
 Option to customize extension on unpacked or thawed files (e.g. '.txt')

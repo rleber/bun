@@ -119,9 +119,12 @@ def ls(*paths)
     file_descriptor = File.descriptor(tape)
     file_row = fields.inject({}) do |hsh, f|
       # TODO This is a little smelly
-      value = if f==:shard_count
+      value = case f
+      when :shard_count
         file_descriptor[:shards] && file_descriptor[:shards].count
-      else
+      when :file_time
+        [file_descriptor[:catalog_time], file_descriptor[:file_time]].compact.min
+      else 
         file_descriptor[f]
       end
       hsh[f] = value
@@ -169,6 +172,7 @@ def ls(*paths)
   [:file_size, :shard_count].each do |f|
     if ix = fields.index(f)
       table.each do |row|
+        row[ix] = row[ix].to_s
         row[ix] = (' '*(row[ix].size) + row[ix].strip)[-(row[ix].size)..-1] # Right justify
       end
     end
