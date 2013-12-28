@@ -107,7 +107,6 @@ module Bun
         content = options[:inspect] ? self.inspect : self.text
         shell = Shell.new
         shell.write to, content
-        copy_descriptor(to, :extracted=>Time.now) unless options[:bare] || to.nil? || to=='-'
       end
     end
   end

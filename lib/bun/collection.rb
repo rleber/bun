@@ -497,7 +497,7 @@ module Bun
       if to && to != '-' && File.directory?(to)
         to = File.join(to, File.basename(from))
       end
-      cp_file_to_file(:from=>from, :to=>to, :bare=>options[:bare])
+      cp_file_to_file(:from=>from, :to=>to)
     end
     private :cp_single_file
     
@@ -507,7 +507,7 @@ module Bun
       from = options[:from]
       to = options[:to]
       to_stdout = to.nil? || to == '-'
-      index = !options[:bare] && !to_stdout
+      index = !to_stdout
       unless to_stdout
         to = '.' if to == ''
         to = File.join(to, File.basename(from)) if File.directory?(to)

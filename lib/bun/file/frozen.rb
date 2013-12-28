@@ -284,7 +284,7 @@ module Bun
         content = shards.at(shard_index(n))
         shell = Shell.new
         shell.write to, content, :timestamp=>file_time, :quiet=>true
-        copy_descriptor(to, :extracted=>Time.now) unless options[:bare] || to.nil? || to == '-'
+        copy_descriptor(to, :extracted=>Time.now) unless to.nil? || to == '-'
       end
     end
   end

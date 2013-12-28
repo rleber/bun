@@ -2,7 +2,6 @@
 # -*- encoding: us-ascii -*-
 
 desc "unpack FILE [TO]", "Unpack a tape (Not frozen files -- use freezer subcommands for that)"
-option "bare",    :aliases=>"-b", :type=>"boolean", :desc=>"Do not create an index entry for the unpacked tape"
 option "delete",  :aliases=>'-d', :type=>'boolean', :desc=>"Keep deleted lines"
 option "inspect", :aliases=>'-i', :type=>'boolean', :desc=>"Display long format details for each line"
 option "warn",    :aliases=>'-w', :type=>'boolean', :desc=>"Warn if there are decoding errors"

@@ -1,6 +1,5 @@
 TODO
 Change bun test, so you can run a subset of tests
-Remove option --bare
 Filter methods (i.e. allow input to stdin, output to stdout)
 Allow multiple files in certain commands
 Change converted tape file extensions to .bun
