@@ -3,7 +3,7 @@
 
 class ::String
   def _safe
-    if self =~ /^[\w\d.]*$/
+    if self =~ /^[\w\d.\/]*$/
       self.dup
     else
       self.inspect
@@ -20,7 +20,14 @@ no_tasks do
   end
   
   def build_file(file, at=nil, format=:converted)
-    from = format==:raw ? "~/bun_archive_raw" : "~/bun_archive"
+    from = case format
+    when :raw
+      "~/bun_archive_raw" 
+    when :uncataloged
+      "~/bun_archive_uncataloged"
+    else
+      "~/bun_archive"
+    end
     at = $at unless at
     source_file = File.join(from,file).sub(/^~/,ENV['HOME'])
     target_file = File.join(at,file).sub(/^~/,ENV['HOME'])
@@ -77,7 +84,7 @@ def build
   build_file "ar019.0175", "data/test"
   build_file "ar119.1801", "data/test"
   
-  build_standard_directory "data/test/archive/catalog_source_init"
+  build_standard_directory "data/test/archive/catalog_source_init", :uncataloged
   
   $stderr.puts "Not rebuilding data/test/archive/compact_files_init"
   
