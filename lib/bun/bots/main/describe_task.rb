@@ -4,13 +4,7 @@
 SHARDS_ACROSS = 5
 desc "describe FILE", "Display description information for a tape"
 def describe(file)
-  at = File.dirname(file)
-  file_name = File.basename(file)
-  # TODO Is the Archive object even necessary here?
-  
-  archive = Archive.new(at, options)
-  descriptor    = archive.descriptor(file_name)
-  abort "File #{file_name} is not in the archive" unless descriptor
+  descriptor    = File.descriptor(file, :graceful=>true)
   type          = descriptor.file_type
   shards        = descriptor.shards || []
   catalog_time    = descriptor.catalog_time

@@ -7,6 +7,7 @@ module Bun
 
   class File < ::File
     class UnknownFileType < RuntimeError; end
+    class UnexpectedFileType < RuntimeError; end
     class Converted < Bun::File
       class << self
 
@@ -53,9 +54,21 @@ module Bun
           )
           descriptor = Descriptor::Base.from_hash(@content,input)
           options.merge!(:data=>data, :descriptor=>descriptor, :tape_path=>fname)
+          if options[:type] && descriptor[:file_type]!=options[:type]
+            msg = "Expected file #{fname} to be a #{options[:type]} file, not a #{descriptor[:file_type]} file"
+            if options[:graceful]
+              stop "!#{msg}"
+            else
+              raise UnexpectedFileType, msg
+            end
+          end
           file = create(options)
           if block_given?
-            yield(file)
+            begin
+              yield(file)
+            ensure
+              file.close
+            end
           else
             file
           end
@@ -63,7 +76,8 @@ module Bun
         
         def create(options={})
           descriptor = options[:descriptor]
-          case descriptor[:file_type]
+          file_type = options[:force_type] || descriptor[:file_type]
+          case file_type
           when :text
             File::Converted::Text.new(options)
           when :frozen

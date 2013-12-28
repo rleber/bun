@@ -6,6 +6,12 @@ module Bun
     class Frozen < Bun::File::Converted
       include CacheableMethods
       
+      class << self
+        def open(path, options={}, &blk)
+          File::Converted.open(path, options.merge(:type=>:frozen), &blk)
+        end
+      end
+      
       attr_reader :file
       attr_accessor :status
       attr_accessor :warn

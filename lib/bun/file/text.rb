@@ -6,6 +6,12 @@ module Bun
     class Text < Bun::File::Blocked
       include CacheableMethods
       
+      class << self
+        def open(path, options={}, &blk)
+          File::Converted.open(path, options.merge(:type=>:text), &blk)
+        end
+      end
+      
       attr_accessor :keep_deletes
       attr_reader   :control_characters, :character_count
     

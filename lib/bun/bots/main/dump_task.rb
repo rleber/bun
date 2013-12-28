@@ -9,22 +9,17 @@ option "offset",    :aliases=>'-o', :type=>'string',  :desc=>'Start at word n (z
 option "spaces",    :aliases=>'-s', :type=>'boolean', :desc=>'Display spaces unchanged'
 option "unlimited", :aliases=>'-u', :type=>'boolean', :desc=>'Ignore the file size limit'
 # TODO Deblock option
-def dump(file)
-  at = File.dirname(file)
-  file_name = File.basename(file)
-  # TODO Is the Archive object even necessary here?
-  
-  archive = Archive.new(at, options)
+def dump(file_name)
   begin
     offset = options[:offset] ? eval(options[:offset]) : 0 # So octal or hex values can be given
   rescue => e
     stop "!Bad value for --offset: #{e}"
   end
-  file_path = archive.expand_path(file_name)
-  file = Bun::File::Text.open(file_path)
-  archived_file = file.path
-  archived_file = "--unknown--" unless archived_file
-  puts "Archive at #{file.tape_path} for file #{archived_file}:"
-  lc = Dump.dump(file.data, options.merge(:offset=>offset))
-  puts "No data to dump" if lc == 0
+  Bun::File::Converted.open(file_name, :force=>:text) do |file|
+    archived_file = file.path
+    archived_file = "--unknown--" unless archived_file
+    puts "Archive at #{File.expand_path(file.tape_path)} for file #{archived_file}:"
+    lc = Dump.dump(file.data, options.merge(:offset=>offset))
+    puts "No data to dump" if lc == 0
+  end
 end

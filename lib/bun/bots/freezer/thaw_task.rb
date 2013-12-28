@@ -11,19 +11,9 @@ file from the end of the archive. Anything else denotes the name of a file. A ba
 beginning of a file name, so that '\\+1' refers to a file named '+1', whereas '+1' refers to the first file in the archive,
 whatever its name.
 EOT
-def thaw(file, n, out=nil)
-  at = File.dirname(file)
-  file_name = File.basename(file)
-  # TODO Is the Archive object even necessary here?
-  
-  archive = Archive.new(at)
-  directory = archive.at
-  file = archive.open(file_name)
-  stop "!File #{file_name} is not frozen." unless file.file_type == :frozen
-  begin
+def thaw(file_name, n, out=nil)
+  File::Frozen.open(file_name, :graceful=>true) do |file|
     file.extract(n, out, :bare=>options[:bare])
     warn "Thawed with #{file.errors.count} decoding errors" if options[:warn] && file.errors > 0
-  ensure
-    file.close
   end
 end

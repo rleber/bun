@@ -76,10 +76,23 @@ module Bun
         end
       end
       
-      def descriptor(path)
+      def descriptor(path, options={})
         open(path) {|f| f.descriptor }
       rescue Bun::File::UnknownFileType =>e 
         nil
+      rescue Errno::ENOENT => e
+        return nil if options[:allow]
+        stop "!File #{path} does not exist" if options[:graceful]
+        raise
+      end
+      
+      # Convert from raw format to converted (i.e. YAML)
+      def convert(path, to)
+        return unless raw?(path)
+        open(path) do |f|
+          cvt = f.convert
+          cvt.write(to)
+        end
       end
     end
     attr_reader :archive

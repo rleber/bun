@@ -1,18 +1,9 @@
 TODO
-Remove extra "archive" argument to most commands
-- bun convert *
-- bun describe *
-- bun dump *
-- bun freezer dump *
-- bun freezer ls *
-- bun freezer thaw *
-- bun ls (i.e. --tape) *
-- bun unpack *
 Change bun test, so you can run a subset of tests
 Remove option --bare
 Filter methods (i.e. allow input to stdin, output to stdout)
 Allow multiple files in certain commands
-Remove unnecessary references to Archives
+Change converted tape file extensions to .bun
 File::Converted.open should attempt to convert an unconverted file
 Annotated file structure
 - Archive convert command *
@@ -81,6 +72,8 @@ Keep a .spec file in decoded archives showing how the archive is organized?
 Flatten out code: freezer thaw => thaw (or even combine with unpack and archive extract)
 Combine freezer ls with bun ls
 Combine freezer dump with bun dump
+Change bun thaw/unpack/extract to bun decode
+Change bun convert to bun unpack
 Option to turn off inclusion of file modification date in unpacked or thawed file names
 Option to turn off resetting file modification dates for unpacked or thawed files
 Option to customize extension on unpacked or thawed files (e.g. '.txt')

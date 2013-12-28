@@ -45,20 +45,11 @@ module Bun
         unless options[:dryrun]
           dir = File.dirname(to_file)
           FileUtils.mkdir_p dir
-          convert_single(from_tape, to_file) unless options[:dryrun]
+          File.convert(expand_path(from_tape), to_file) unless options[:dryrun]
         end
       end
       to_archive = self.class.new(to_path)
       to_archive.set_timestamps(:quiet=>true)
-    end
-    
-    # Convert a file from internal bun binary format to YAML digest
-    def convert_single(tape,to=nil)
-      return unless File.raw?(expand_path(tape))
-      open(tape) do |f|
-        cvt = f.convert
-        cvt.write(to)
-      end
     end
 
     # TODO Add glob capability?
