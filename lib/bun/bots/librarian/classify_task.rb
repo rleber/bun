@@ -4,7 +4,7 @@
 DEFAULT_THRESHOLD = 20
 desc "classify FROM [CLEAN] [DIRTY]", "Classify files based on whether they're clean or not."
 option "copy",      :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to clean/dirty directories (instead of symlink)"
-option 'dryrun',    :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
+option 'dryrun',    :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually classify"
 option 'threshold', :aliases=>'-t', :type=>'numeric',
     :desc=>"Set a threshold: how many errors before a file is 'dirty'? (default #{DEFAULT_THRESHOLD})"
 def classify(from, clean=nil, dirty=nil)

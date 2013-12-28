@@ -4,7 +4,7 @@
 module Bun
   class File < ::File
     module Descriptor
-      class Converted < Base
+      class Unpacked < Base
         class << self
           MAXIMUM_SIZE = 3000
         
@@ -23,7 +23,7 @@ module Bun
           :catalog_time,
           :description,
           :errors,
-          :extracted,
+          :decoded,
           :file_size,
           :file_type,
           :tape,

@@ -8,7 +8,7 @@ module Bun
       
       class << self
         def open(path, options={}, &blk)
-          File::Converted.open(path, options.merge(:type=>:text), &blk)
+          File::Unpacked.open(path, options.merge(:type=>:text), &blk)
         end
       end
       
@@ -102,7 +102,7 @@ module Bun
         inspect_lines.join("\n")
       end
       
-      def extract(to, options={})
+      def decode(to, options={})
         self.keep_deletes = options[:delete]
         content = options[:inspect] ? self.inspect : self.text
         shell = Shell.new

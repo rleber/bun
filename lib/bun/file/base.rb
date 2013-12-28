@@ -53,23 +53,23 @@ module Bun
         Header.new(options).descriptor
       end
       
-      def raw?(path)
+      def packed?(path)
         prefix = ::File.open(path,'rb') {|f| f.read(3)}
-        prefix != '---' # YAML prefix; one of the converted formats
+        prefix != '---' # YAML prefix; one of the unpacked formats
       end
       
       def open(path, options={}, &blk)
-        if raw?(path)
+        if packed?(path)
           File::Raw.open(path, options, &blk)
         else
-          File::Converted.open(path, options, &blk)
+          File::Unpacked.open(path, options, &blk)
         end
       end
       
       def file_type(path)
-        return :raw if raw?(path)
+        return :packed if packed?(path)
         begin
-          f = File::Converted.open(path)
+          f = File::Unpacked.open(path)
           f.file_type
         rescue
           :unknown
@@ -86,11 +86,11 @@ module Bun
         raise
       end
       
-      # Convert from raw format to converted (i.e. YAML)
-      def convert(path, to)
-        return unless raw?(path)
+      # Convert from packed format to unpacked (i.e. YAML)
+      def unpack(path, to)
+        return unless packed?(path)
         open(path) do |f|
-          cvt = f.convert
+          cvt = f.unpack
           cvt.write(to)
         end
       end
@@ -100,7 +100,7 @@ module Bun
 
     attr_accessor :descriptor
     attr_accessor :errors
-    attr_accessor :extracted
+    attr_accessor :decoded
     attr_accessor :original_tape
     attr_accessor :original_tape_path
 

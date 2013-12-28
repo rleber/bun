@@ -1,5 +1,5 @@
 
-/Users/richard/cloud/Personal/FASS/extract
+/Users/richard/cloud/Personal/FASS/decode
    .
    |-1984
    |---fass

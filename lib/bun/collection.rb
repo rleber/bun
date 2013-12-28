@@ -264,7 +264,7 @@ module Bun
     
     def set_catalog_time(tape, catalog_time, options={})
       file = open(tape)
-      file = file.convert
+      file = file.unpack
       descr = file.descriptor
       descr.merge!(:catalog_time=>catalog_time)
       file.write

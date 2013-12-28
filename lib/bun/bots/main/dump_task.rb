@@ -15,7 +15,7 @@ def dump(file_name)
   rescue => e
     stop "!Bad value for --offset: #{e}"
   end
-  Bun::File::Converted.open(file_name, :force=>:text) do |file|
+  Bun::File::Unpacked.open(file_name, :force=>:text) do |file|
     archived_file = file.path
     archived_file = "--unknown--" unless archived_file
     puts "Archive at #{File.expand_path(file.tape_path)} for file #{archived_file}:"

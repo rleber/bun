@@ -35,17 +35,17 @@ module Bun
       contents
     end
         
-    def convert(glob, to, options={})
+    def unpack(glob, to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
       FileUtils.rm_rf to_path unless options[:dryrun]
       Dir.glob(expand_path(glob)).each do |tape|
         from_tape = relative_path(tape, :relative_to=>File.expand_path(at))
         to_file  = File.join(to_path, from_tape)        
-        warn "convert #{from_tape} => #{to_file}" if options[:dryrun] || !options[:quiet]
+        warn "unpack #{from_tape} => #{to_file}" if options[:dryrun] || !options[:quiet]
         unless options[:dryrun]
           dir = File.dirname(to_file)
           FileUtils.mkdir_p dir
-          File.convert(expand_path(from_tape), to_file) unless options[:dryrun]
+          File.unpack(expand_path(from_tape), to_file) unless options[:dryrun]
         end
       end
       to_archive = self.class.new(to_path)
@@ -53,7 +53,7 @@ module Bun
     end
 
     # TODO Add glob capability?
-    def extract(to, options={})
+    def decode(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
       FileUtils.rm_rf to_path unless options[:dryrun]
       tapes.each do |tape|
@@ -66,20 +66,20 @@ module Bun
             warn "thaw #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
             unless options[:dryrun]
               timestamp = file.descriptor.timestamp
-              f = File.join(to_path, extract_path(file.path, timestamp), shard_name, extract_tapename(tape, descr.file_time))
+              f = File.join(to_path, decode_path(file.path, timestamp), shard_name, decode_tapename(tape, descr.file_time))
               dir = File.dirname(f)
               FileUtils.mkdir_p dir
-              file.extract shard_name, f
+              file.decode f, :shard=>shard_name
             end
           end
         when :text
           warn "unpack #{tape}" if options[:dryrun] || !options[:quiet]
           unless options[:dryrun]
             timestamp = file.descriptor.timestamp
-            f = File.join(to_path, file.path, extract_tapename(tape, timestamp))
+            f = File.join(to_path, file.path, decode_tapename(tape, timestamp))
             dir = File.dirname(f)
             FileUtils.mkdir_p dir
-            file.extract f
+            file.decode f
           end
         else
           warn "skipping #{tape}: unknown type (#{file.file_type})" if options[:dryrun] || !options[:quiet]
@@ -91,7 +91,7 @@ module Bun
     EXTRACT_TAPE_PREFIX = 'tape.'
     EXTRACT_TAPE_SUFFIX = '.txt'
 
-    def extract_path(path, date)
+    def decode_path(path, date)
       if date
         date_to_s = date.strftime(EXTRACT_DATE_FORMAT)
         date_to_s = $1 if date_to_s =~ /^(.*)_000000$/
@@ -101,8 +101,8 @@ module Bun
       end
     end
 
-    def extract_tapename(path, date)
-      EXTRACT_TAPE_PREFIX + extract_path(path, date) + EXTRACT_TAPE_SUFFIX
+    def decode_tapename(path, date)
+      EXTRACT_TAPE_PREFIX + decode_path(path, date) + EXTRACT_TAPE_SUFFIX
     end
     
     def items(&blk)

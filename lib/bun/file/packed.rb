@@ -28,9 +28,9 @@ module Bun
       end
      
       # Convert file from internal Bun binary format to YAML digest
-      def convert
+      def unpack
         new_descriptor = data.descriptor.merge(:data_format=>:raw, :file_type=>data.file_type)
-        f = File::Converted.create(
+        f = File::Unpacked.create(
           :data=>data,
           :archive=>archive,
           :tape=>File.basename(tape),

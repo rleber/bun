@@ -23,7 +23,7 @@ module Bun
           # :catalog_time,
           :description,
           # :errors,
-          # :extracted,
+          # :decoded,
           :file_size,
           :file_type,
           :tape,
@@ -111,19 +111,19 @@ module Bun
       
         # Reference to all_characters is necessary here, because characters isn't
         # available in header files. Still, it seems a bit kludgy...
-        def raw_update_date
+        def packed_update_date
           all_characters[(content_offset + 2)*characters_per_word, 8].join
         end
-        private :raw_update_date
+        private :packed_update_date
         
-        def raw_update_time_of_day
+        def packed_update_time_of_day
           words.at(content_offset + 4)
         end
-        private :raw_update_time_of_day
+        private :packed_update_time_of_day
     
         def file_time
           return nil unless file_type == :frozen
-          Bun::Data.time(raw_update_date, raw_update_time_of_day)
+          Bun::Data.time(packed_update_date, packed_update_time_of_day)
         end
     
         def shards

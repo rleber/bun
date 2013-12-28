@@ -134,7 +134,7 @@ module Bun
         end
 
         def file_date
-          File::Converted.date(_update_date)
+          File::Unpacked.date(_update_date)
         end
 
         def _update_date
@@ -142,7 +142,7 @@ module Bun
         end
 
         def update_time_of_day
-          File::Converted.time_of_day(_update_time_of_day)
+          File::Unpacked.time_of_day(_update_time_of_day)
         end
 
         def _update_time_of_day

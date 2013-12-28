@@ -3,12 +3,12 @@
 
 module Bun
   class File < ::File
-    class Frozen < Bun::File::Converted
+    class Frozen < Bun::File::Unpacked
       include CacheableMethods
       
       class << self
         def open(path, options={}, &blk)
-          File::Converted.open(path, options.merge(:type=>:frozen), &blk)
+          File::Unpacked.open(path, options.merge(:type=>:frozen), &blk)
         end
       end
       
@@ -72,7 +72,7 @@ module Bun
       end
       
       def file_date
-        File::Converted.date(_update_date)
+        File::Unpacked.date(_update_date)
       end
       
       # Reference to all_characters is necessary here, because characters isn't
@@ -82,7 +82,7 @@ module Bun
       end
     
       def update_time_of_day
-        File::Converted.time_of_day(_update_time_of_day)
+        File::Unpacked.time_of_day(_update_time_of_day)
       end
     
       def _update_time_of_day
@@ -243,7 +243,7 @@ module Bun
               okay = false
             end
           end
-          chs = extract_characters(word, ch_count)
+          chs = decode_characters(word, ch_count)
           if chs =~ /^(.*\r).*$/
             line += $1
             break
@@ -267,7 +267,7 @@ module Bun
         top_descriptor_bits(word) == 0
       end
     
-      def extract_characters(word, n=5)
+      def decode_characters(word, n=5)
         chs = []
         n.times do |i|
           chs.unshift((word & 0x7f).chr)
@@ -280,11 +280,11 @@ module Bun
         File.clean?(text.sub(/\0*$/,'')) && (text !~ /\0+$/ || text =~ /\r\0*$/) && text !~ /\n/
       end
       
-      def extract(n, to, options={})
-        content = shards.at(shard_index(n))
+      def decode(to, options={})
+        content = shards.at(shard_index(options[:shard]))
         shell = Shell.new
         shell.write to, content, :timestamp=>file_time, :quiet=>true
-        copy_descriptor(to, :extracted=>Time.now) unless to.nil? || to == '-'
+        copy_descriptor(to, :decoded=>Time.now) unless to.nil? || to == '-'
       end
     end
   end

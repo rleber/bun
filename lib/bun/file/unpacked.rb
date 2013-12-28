@@ -8,7 +8,7 @@ module Bun
   class File < ::File
     class UnknownFileType < RuntimeError; end
     class UnexpectedFileType < RuntimeError; end
-    class Converted < Bun::File
+    class Unpacked < Bun::File
       class << self
 
         # def create(options={}, &blk)
@@ -76,17 +76,17 @@ module Bun
         
         def create(options={})
           descriptor = options[:descriptor]
-          file_type = options[:force_type] || descriptor[:file_type]
+          file_type = options[:force] || descriptor[:file_type]
           case file_type
           when :text
-            File::Converted::Text.new(options)
+            File::Unpacked::Text.new(options)
           when :frozen
-            File::Converted::Frozen.new(options)
+            File::Unpacked::Frozen.new(options)
           else
             if options[:strict]
               raise UnknownFileType,"!Unknown file type: #{descriptor.file_type.inspect}"
             else
-              File::Converted::Text.new(options)
+              File::Unpacked::Text.new(options)
             end
           end
         end
@@ -142,7 +142,7 @@ module Bun
       #     @words = @all_characters = @characters = @packed_characters = @descriptor = nil
       #   else
       #     @words = words
-      #     @descriptor = Descriptor::Converted.new(self)
+      #     @descriptor = Descriptor::Unpacked.new(self)
       #     @all_characters = LazyArray.new(words.size*characters_per_word) do |n|
       #       @words.characters.at(n)
       #     end
@@ -297,7 +297,7 @@ module Bun
         shell.write to, to_yaml
       end
       
-      def convert
+      def unpack
         self
       end
 

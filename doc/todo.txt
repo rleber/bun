@@ -1,12 +1,13 @@
 TODO
 Change bun test, so you can run a subset of tests
+Allow output to stdout
 Filter methods (i.e. allow input to stdin, output to stdout)
 Allow multiple files in certain commands
-Change converted tape file extensions to .bun
-File::Converted.open should attempt to convert an unconverted file
+Change unpacked tape file extensions to .bun
+File::Unpacked.open should attempt to unpack an packed file
 Annotated file structure
-- Archive convert command *
-- Change other commands to work with converted format *
+- Archive unpack command *
+- Change other commands to work with unpacked format *
 - Allow input from $stdin
 - Remove redundant stuff from descriptor hash *
 - Creator information: Bun system, version, development/production, branch, git HEAD
@@ -24,7 +25,7 @@ Remove places code
 Remove config code?
 Remove extraneous code
 New process: pull, annotate, merge (with catalog), decode, find, list/describe, clean, reorganize, extract, push
-Add archived to descriptor
+Add decoded_time to descriptor
 Add folders (directories plus frozen) and fragments (leaves, but with shards), items (leaves + shards) to collection methods
 Test bun library compact
 - For all files:
@@ -62,15 +63,15 @@ Stream-oriented versions of thaw, etc.
 Ability to 'bun archive ls' by archive name patterns
 Ability to search xref'ed files, for example find files with multiple copies
 Add --select option to bun ls
-Add --select option to bun extract
+Add --select option to bun decode
 Why doesn't words[0].octal work?
 Ignore files not in the index
 Make set_timestamp automatic
 Move archive fetch logic to Archive object
 Keep a .spec file in decoded archives showing how the archive is organized?
-Flatten out code: freezer thaw => thaw (or even combine with unpack and archive extract)
 Combine freezer ls with bun ls
 Combine freezer dump with bun dump
+Combine archive decode and decode
 Change bun thaw/unpack/extract to bun decode
 Change bun convert to bun unpack
 Option to turn off inclusion of file modification date in unpacked or thawed file names

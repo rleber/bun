@@ -106,7 +106,7 @@ module Indexable
     # are guaranteed to be in the range 0...size, and start <= end
 
     def normalize_indexes(*args)
-      res = _extract_indexes(*args)
+      res = _decode_indexes(*args)
       # Normalize negative indexes, relative to the end of the collection
       # Adjust the edge cases
       res = _adjust_result_type(res)
@@ -125,7 +125,7 @@ module Indexable
     end
   
     # Convert an index of whatever form to :arg_type, :restul, :start, and :end
-    def _extract_indexes(*args)
+    def _decode_indexes(*args)
       res = case args.size
       when 1
         ix = args.first
@@ -146,10 +146,10 @@ module Indexable
       end
       res
     end
-    private :_extract_indexes
+    private :_decode_indexes
     
     def index_result(*args)
-      {:range=>:array, :pair=>:array, :scalar=>:scalar}[_extract_indexes(*args)[:arg_type]]
+      {:range=>:array, :pair=>:array, :scalar=>:scalar}[_decode_indexes(*args)[:arg_type]]
     end
   
     # Check indexes, and determine result type, taking into count

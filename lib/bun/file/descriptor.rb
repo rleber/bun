@@ -16,7 +16,7 @@ module Bun
           # :catalog_time,
           :description,
           # :errors,
-          # :extracted,
+          # :decoded,
           :file_size,
           :file_type,
           :tape,

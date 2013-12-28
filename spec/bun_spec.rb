@@ -113,108 +113,108 @@ describe Bun::File::Text do
 end
 
 describe Bun::Archive do
-  context "bun convert" do
+  context "bun unpack" do
     context "with a text file" do
       context "with output to stdout" do
         before :all do
-          exec("rm -f output/convert_ar003.0698")
-          exec("rm -rf data/test/archive/general_test_raw")
-          exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
-          exec("bun convert data/test/archive/general_test_raw/ar003.0698 - >output/convert_ar003.0698")
+          exec("rm -f output/unpack_ar003.0698")
+          exec("rm -rf data/test/archive/general_test_packed")
+          exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
+          exec("bun unpack data/test/archive/general_test_packed/ar003.0698 - >output/unpack_ar003.0698")
         end
         it "should create the proper file" do
-          file_should_exist "output/convert_ar003.0698"
+          file_should_exist "output/unpack_ar003.0698"
         end
         it "should generate the proper conversion on stdout" do
-          Bun.readfile("output/convert_ar003.0698").chomp.should == Bun.readfile('output/test/convert_ar003.0698').chomp
+          Bun.readfile("output/unpack_ar003.0698").chomp.should == Bun.readfile('output/test/unpack_ar003.0698').chomp
         end
         after :all do
-          exec("rm -f output/convert_ar003.0698")
-          exec("rm -rf data/test/archive/general_test_raw")
+          exec("rm -f output/unpack_ar003.0698")
+          exec("rm -rf data/test/archive/general_test_packed")
         end
       end
     end
     context "with output to a file" do
       before :all do
-        exec("rm -f output/convert_ar003.0698")
-        exec("rm -rf data/test/archive/general_test_raw")
-        exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
-        exec("bun convert data/test/archive/general_test_raw/ar003.0698 output/convert_ar003.0698")
+        exec("rm -f output/unpack_ar003.0698")
+        exec("rm -rf data/test/archive/general_test_packed")
+        exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
+        exec("bun unpack data/test/archive/general_test_packed/ar003.0698 output/unpack_ar003.0698")
       end
       it "should create the proper file" do
-        file_should_exist "output/convert_ar003.0698"
+        file_should_exist "output/unpack_ar003.0698"
       end
       it "should generate the proper conversion in the file" do
-        Bun.readfile("output/convert_ar003.0698").chomp.should == Bun.readfile('output/test/convert_ar003.0698').chomp
+        Bun.readfile("output/unpack_ar003.0698").chomp.should == Bun.readfile('output/test/unpack_ar003.0698').chomp
       end
       after :all do
-        exec("rm -f output/convert_ar003.0698")
-        exec("rm -rf data/test/archive/general_test_raw")
+        exec("rm -f output/unpack_ar003.0698")
+        exec("rm -rf data/test/archive/general_test_packed")
       end
     end
     context "with output in place" do
       before :all do
-        exec("rm -f output/convert_ar003.0698")
-        exec("rm -rf data/test/archive/general_test_raw")
-        exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
-        exec("bun convert data/test/archive/general_test_raw/ar003.0698")
+        exec("rm -f output/unpack_ar003.0698")
+        exec("rm -rf data/test/archive/general_test_packed")
+        exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
+        exec("bun unpack data/test/archive/general_test_packed/ar003.0698")
       end
       it "should generate the proper conversion in place" do
-        Bun.readfile("data/test/archive/general_test_raw/ar003.0698").chomp.should == Bun.readfile('output/test/convert_ar003.0698').chomp
+        Bun.readfile("data/test/archive/general_test_packed/ar003.0698").chomp.should == Bun.readfile('output/test/unpack_ar003.0698').chomp
       end
       after :all do
-        exec("rm -f output/convert_ar003.0698")
-        exec("rm -rf data/test/archive/general_test_raw")
+        exec("rm -f output/unpack_ar003.0698")
+        exec("rm -rf data/test/archive/general_test_packed")
       end
     end
     context "with a frozen file" do
       before :all do
-        exec("rm -f output/convert_ar019.0175")
-        exec("rm -rf data/test/archive/general_test_raw")
-        exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
-        exec("bun convert data/test/archive/general_test_raw/ar019.0175 output/convert_ar019.0175")
+        exec("rm -f output/unpack_ar019.0175")
+        exec("rm -rf data/test/archive/general_test_packed")
+        exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
+        exec("bun unpack data/test/archive/general_test_packed/ar019.0175 output/unpack_ar019.0175")
       end
       it "should create the proper file" do
-        file_should_exist "output/convert_ar019.0175"
+        file_should_exist "output/unpack_ar019.0175"
       end
       it "should generate the proper conversion" do
-        Bun.readfile("output/convert_ar019.0175").chomp.should == Bun.readfile('output/test/convert_ar019.0175').chomp
+        Bun.readfile("output/unpack_ar019.0175").chomp.should == Bun.readfile('output/test/unpack_ar019.0175').chomp
       end
       after :all do
-        exec("rm -f output/convert_ar019.0175")
-        exec("rm -rf data/test/archive/general_test_raw")
+        exec("rm -f output/unpack_ar019.0175")
+        exec("rm -rf data/test/archive/general_test_packed")
       end
     end
   end
-  context "bun archive convert" do
+  context "bun archive unpack" do
     before :all do
-      exec("rm -rf data/test/archive/general_test_raw_converted")
-      exec("rm -f output/archive_convert_files.txt")
-      exec("rm -f output/archive_convert_stdout.txt")
-      exec("rm -f output/archive_convert_stdout.txt")
-      exec("rm -rf data/test/archive/general_test_raw")
-      exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
-      exec("bun archive convert data/test/archive/general_test_raw data/test/archive/general_test_raw_converted 2>output/archive_convert_stderr.txt >output/archive_convert_stdout.txt")
+      exec("rm -rf data/test/archive/general_test_packed_unpacked")
+      exec("rm -f output/archive_unpack_files.txt")
+      exec("rm -f output/archive_unpack_stdout.txt")
+      exec("rm -f output/archive_unpack_stdout.txt")
+      exec("rm -rf data/test/archive/general_test_packed")
+      exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
+      exec("bun archive unpack data/test/archive/general_test_packed data/test/archive/general_test_packed_unpacked 2>output/archive_unpack_stderr.txt >output/archive_unpack_stdout.txt")
     end
     it "should create a new directory" do
-      file_should_exist "data/test/archive/general_test_raw_converted"
+      file_should_exist "data/test/archive/general_test_packed_unpacked"
     end
     it "should write nothing on stdout" do
-      Bun.readfile('output/archive_convert_stdout.txt').chomp.should == ""
+      Bun.readfile('output/archive_unpack_stdout.txt').chomp.should == ""
     end
     it "should write file decoding messages on stderr" do
-      Bun.readfile("output/archive_convert_stderr.txt").chomp.should == Bun.readfile('output/test/archive_convert_stderr.txt').chomp
+      Bun.readfile("output/archive_unpack_stderr.txt").chomp.should == Bun.readfile('output/test/archive_unpack_stderr.txt').chomp
     end
     it "should create the appropriate files" do
-      exec('find data/test/archive/general_test_raw_converted -print >output/archive_convert_files.txt')
-      Bun.readfile('output/archive_convert_files.txt').chomp.should == Bun.readfile('output/test/archive_convert_files.txt').chomp
+      exec('find data/test/archive/general_test_packed_unpacked -print >output/archive_unpack_files.txt')
+      Bun.readfile('output/archive_unpack_files.txt').chomp.should == Bun.readfile('output/test/archive_unpack_files.txt').chomp
     end
     after :all do
-      exec("rm -rf data/test/archive/general_test_raw_converted")
-      exec("rm -rf data/test/archive/general_test_raw")
-      exec("rm -f output/archive_convert_files.txt")
-      exec("rm -f output/archive_convert_stderr.txt")
-      exec("rm -f output/archive_convert_stdout.txt")
+      exec("rm -rf data/test/archive/general_test_packed_unpacked")
+      exec("rm -rf data/test/archive/general_test_packed")
+      exec("rm -f output/archive_unpack_files.txt")
+      exec("rm -f output/archive_unpack_stderr.txt")
+      exec("rm -f output/archive_unpack_stdout.txt")
     end
   end
 end
@@ -244,7 +244,7 @@ describe Bun::Bot do
   # include_examples "command with file", "descr", "cmd", "expected_stdout_file", "output_in_file", "expected_output_file"
   describe "check" do
     include_examples "command", "check clean file", "check data/test/clean", "check_clean"
-    # Dirty file is just the unconverted version of ar119.1801
+    # Dirty file is just the packed version of ar119.1801
     include_examples "command", "check dirty file", "check data/test/dirty", "check_dirty", :allowed=>[1]
   end
     
@@ -283,8 +283,15 @@ describe Bun::Bot do
   describe "readme" do
     include_examples "command", "readme", "readme", "doc/readme.md"
   end
-  describe "unpack" do
-    include_examples "command", "unpack", "unpack #{TEST_ARCHIVE}/ar003.0698", "unpack"
+  describe "decode" do
+    describe "with text file" do
+      include_examples "command", "decode ar003.0698", "decode #{TEST_ARCHIVE}/ar003.0698", "decode_ar003.0698"
+    end
+    describe "with frozen file" do
+      include_examples "command", "decode ar004.0888 +0", "decode -s +0 #{TEST_ARCHIVE}/ar004.0888", "decode_ar004.0888_0"
+      include_examples "command", "decode ar004.0888[+0]", "decode #{TEST_ARCHIVE}/ar004.0888[+0]", "decode_ar004.0888_0"
+      include_examples "command", "decode ar004.0888[fasshole]", "decode #{TEST_ARCHIVE}/ar004.0888[fasshole]", "decode_ar004.0888_0"
+    end
   end
   context "bun dump" do
     include_examples "command", "dump ar003.0698", "dump #{TEST_ARCHIVE}/ar003.0698", "dump_ar003.0698"
@@ -300,9 +307,6 @@ describe Bun::Bot do
     context "dump" do
       include_examples "command", "freezer dump ar004.0888 +0", "freezer dump #{TEST_ARCHIVE}/ar004.0888 +0", "freezer_dump_ar004.0888_0"
       include_examples "command", "freezer dump -s ar004.0888 +0", "freezer dump -s #{TEST_ARCHIVE}/ar004.0888 +0", "freezer_dump_s_ar004.0888_0"
-    end
-    context "thaw" do
-      include_examples "command", "freezer thaw ar004.0888 +0", "freezer thaw #{TEST_ARCHIVE}/ar004.0888 +0", "freezer_thaw_ar004.0888_0"
     end
   end
   context "bun catalog" do
@@ -330,32 +334,32 @@ describe Bun::Bot do
       exec("rm -f output/archive_catalog_files.txt")
     end
   end
-  context "bun archive extract" do
+  context "bun archive decode" do
     before :all do
-      exec("rm -rf data/test/archive/extract_source")
-      exec("rm -rf data/test/archive/extract_library")
-      exec("cp -r data/test/archive/extract_source_init data/test/archive/extract_source")
-      exec("bun archive extract data/test/archive/extract_source data/test/archive/extract_library 2>output/archive_extract_stderr.txt >output/archive_extract_stdout.txt")
+      exec("rm -rf data/test/archive/decode_source")
+      exec("rm -rf data/test/archive/decode_library")
+      exec("cp -r data/test/archive/decode_source_init data/test/archive/decode_source")
+      exec("bun archive decode data/test/archive/decode_source data/test/archive/decode_library 2>output/archive_decode_stderr.txt >output/archive_decode_stdout.txt")
     end
     it "should create a tapes directory" do
-      file_should_exist "data/test/archive/extract_library"
+      file_should_exist "data/test/archive/decode_library"
     end
     it "should write nothing on stdout" do
-      Bun.readfile('output/archive_extract_stdout.txt').chomp.should == ""
+      Bun.readfile('output/archive_decode_stdout.txt').chomp.should == ""
     end
     it "should write file decoding messages on stderr" do
-      Bun.readfile("output/archive_extract_stderr.txt").chomp.should == Bun.readfile('output/test/archive_extract_stderr.txt').chomp
+      Bun.readfile("output/archive_decode_stderr.txt").chomp.should == Bun.readfile('output/test/archive_decode_stderr.txt').chomp
     end
     it "should create the appropriate files" do
-      exec('find data/test/archive/extract_library -print >output/archive_extract_files.txt')
-      Bun.readfile('output/archive_extract_files.txt').chomp.should == Bun.readfile('output/test/archive_extract_files.txt').chomp
+      exec('find data/test/archive/decode_library -print >output/archive_decode_files.txt')
+      Bun.readfile('output/archive_decode_files.txt').chomp.should == Bun.readfile('output/test/archive_decode_files.txt').chomp
     end
     after :all do
-      exec("rm -rf data/test/archive/extract_source")
-      exec("rm -rf data/test/archive/extract_library")
-      exec("rm -f output/archive_extract_stderr.txt")
-      exec("rm -f output/archive_extract_stdout.txt")
-      exec("rm -f output/archive_extract_files.txt")
+      exec("rm -rf data/test/archive/decode_source")
+      exec("rm -rf data/test/archive/decode_library")
+      exec("rm -f output/archive_decode_stderr.txt")
+      exec("rm -f output/archive_decode_stdout.txt")
+      exec("rm -f output/archive_decode_files.txt")
     end
   end
   context "bun library compact" do

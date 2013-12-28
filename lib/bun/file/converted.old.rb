@@ -165,7 +165,7 @@ module Bun
           @words = @all_characters = @characters = @packed_characters = @descriptor = nil
         else
           @words = words
-          @descriptor = Descriptor::Converted.new(self)
+          @descriptor = Descriptor::Unpacked.new(self)
           @all_characters = LazyArray.new(words.size*characters_per_word) do |n|
             @words.characters.at(n)
           end

@@ -6,7 +6,6 @@
 :owner: fass
 :path: fass/sequence
 :data_format: :raw
-:catalog_time: 1977-12-01 00:00:00.000000000 -05:00
 :content: !binary |-
   AABA8NAABAAOAAJAo+CSjzPOCSjzPOAAAAAAAAAAASMxhOZzAAAAAAAAAAAA
   AAAAAAF5zMpxOplNxjMoAAAAAABAExAAUAIAAAAAAAAAAAAAAAAAAAAAAAAA

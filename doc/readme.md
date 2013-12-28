@@ -69,7 +69,7 @@ _Terminology_
   that lists each archive tape in the archive, one per line. For each archive tape, the row of the text file
   lists the name of the archive tape, its creation date, and the path of the directory archived in the
   archive tape.
-- Once files have been extracted, this software refers to that collection as a "library". The "bun library"
+- Once files have been decoded, this software refers to that collection as a "library". The "bun library"
   commands are used to process these files.
 
 _File formats_
@@ -113,6 +113,6 @@ _Process_
    - "bun rm"       Remove a file from the archive
    - "bun scrub"    Clean up tabs etc.
    - "bun unpack"   Decode a file
-9. Optionally, use "bun archive extract" to extract files from the archive and place them in a library.
-10. Use the "bun library" commands to reorganize the extracted files
+9. Optionally, use "bun archive decode" to decode files from the archive and place them in a library.
+10. Use the "bun library" commands to reorganize the decoded files
 

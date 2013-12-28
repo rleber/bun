@@ -10,7 +10,7 @@ module Bun
         attr_accessor :catalog_time
         attr_accessor :description
         attr_accessor :errors
-        attr_accessor :extracted
+        attr_accessor :decoded
         attr_accessor :file_size
         attr_accessor :file_type
         attr_accessor :tape

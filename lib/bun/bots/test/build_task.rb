@@ -19,12 +19,12 @@ no_tasks do
     end
   end
   
-  def build_file(file, at=nil, format=:converted)
+  def build_file(file, at=nil, format=:unpacked)
     from = case format
-    when :raw
-      "~/bun_archive_raw" 
-    when :uncataloged
-      "~/bun_archive_uncataloged"
+    when :packed
+      "~/bun_archive_packed" 
+    when :unpacked
+      "~/bun_archive_unpacked"
     else
       "~/bun_archive"
     end
@@ -43,14 +43,14 @@ no_tasks do
     yield
   end
   
-  def build_contents(at, format=:converted)
+  def build_contents(at, format=:cataloged)
     build_directory(at) do
       build_file "ar003.0698", nil, format
       build_file "ar054.2299", nil, format
     end
   end
   
-  def build_standard_directory(at, format=:converted)
+  def build_standard_directory(at, format=:cataloged)
     build_directory(at) do
       build_file "ar003.0698", nil, format
       build_file "ar003.0701", nil, format
@@ -59,7 +59,7 @@ no_tasks do
     end
   end
   
-  def build_general_test(at, format=:converted)
+  def build_general_test(at, format=:cataloged)
     build_directory(at) do
       build_file "ar003.0698", nil, format
       build_file "ar003.0701", nil, format
@@ -84,7 +84,7 @@ def build
   build_file "ar019.0175", "data/test"
   build_file "ar119.1801", "data/test"
   
-  build_standard_directory "data/test/archive/catalog_source_init", :uncataloged
+  build_standard_directory "data/test/archive/catalog_source_init", :unpacked
   
   $stderr.puts "Not rebuilding data/test/archive/compact_files_init"
   
@@ -105,15 +105,15 @@ def build
   end
   
   build_contents "data/test/archive/contents"
-  build_contents "data/test/archive/contents_raw", :raw
+  build_contents "data/test/archive/contents_packed", :packed
 
-  build_standard_directory "data/test/archive/extract_source_init"
+  build_standard_directory "data/test/archive/decode_source_init"
   
   build_general_test "data/test/archive/general_test"
-  build_general_test "data/test/archive/general_test_raw_init", :raw
+  build_general_test "data/test/archive/general_test_packed_init", :packed
 
   build_directory "data/test/archive/init" do
-    build_file "ar003.0698", nil, :raw
+    build_file "ar003.0698", nil, :packed
   end
 
   build_standard_directory "data/test/archive/mv_init"
