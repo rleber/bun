@@ -1,8 +1,0 @@
-.pa1
-.in 8
-.m2 4
-.fi
-.ju
-.ss
-.fo
-.he

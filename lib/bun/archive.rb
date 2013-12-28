@@ -2,6 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 require 'lib/bun/collection'
+require 'lib/bun/catalog'
 require 'lib/bun/file'
 require 'date'
 
@@ -22,7 +23,7 @@ module Bun
         file = open(tape)
         if file.file_type == :frozen
           file.shard_count.times do |i|
-            contents << "#{tape}::#{file.shard_name(i)}"
+            contents << "#{tape}[#{file.shard_name(i)}]"
           end
         else
           contents << tape
@@ -33,36 +34,34 @@ module Bun
       end
       contents
     end
-
-    def catalog_path
-      cp = config.places['catalog']
-      cp && ::File.expand_path(cp)
-    end
-    
-    def catalog
-      cp = catalog_path
-      content = cp && Bun.readfile(catalog_path, :encoding=>'us-ascii')
-      return [] unless content
-      specs = content.split("\n").map do |line|
-        words = line.strip.split(/\s+/)
-        raise RuntimeError, "Bad line in index file: #{line.inspect}" unless words.size == 3
-        # TODO Create a full timestamp (set to midnight)
-        date = begin
-          Date.strptime(words[1], "%y%m%d")
-        rescue
-          raise RuntimeError, "Bad date #{words[1].inspect} in index file at #{line.inspect}"
+        
+    def convert(glob, to, options={})
+      to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
+      FileUtils.rm_rf to_path unless options[:dryrun]
+      Dir.glob(expand_path(glob)).each do |tape|
+        from_tape = relative_path(tape, :relative_to=>File.expand_path(at))
+        to_file  = File.join(to_path, from_tape)        
+        warn "convert #{from_tape} => #{to_file}" if options[:dryrun] || !options[:quiet]
+        unless options[:dryrun]
+          dir = File.dirname(to_file)
+          FileUtils.mkdir_p dir
+          convert_single(from_tape, to_file) unless options[:dryrun]
         end
-        {:tape=>words[0], :date=>date, :file=>words[2]}
       end
-      specs
+      to_archive = self.class.new(to_path)
+      to_archive.set_timestamps(:quiet=>true)
     end
-    cache :catalog
     
-    def catalog_time(tape)
-      info = catalog.find {|spec| spec[:tape] == tape }
-      info && info[:date].local_date_to_local_time
+    # Convert a file from internal bun binary format to YAML digest
+    def convert_single(tape,to=nil)
+      return unless File.raw?(expand_path(tape))
+      open(tape) do |f|
+        cvt = f.convert
+        cvt.write(to)
+      end
     end
 
+    # TODO Add glob capability?
     def extract(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
       FileUtils.rm_rf to_path unless options[:dryrun]
@@ -75,7 +74,8 @@ module Bun
             shard_name = descr.name
             warn "thaw #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
             unless options[:dryrun]
-              f = File.join(to_path, extract_path(file.path, file.updated), shard_name, extract_tapename(tape, descr.updated))
+              timestamp = file.descriptor.timestamp
+              f = File.join(to_path, extract_path(file.path, timestamp), shard_name, extract_tapename(tape, descr.file_time))
               dir = File.dirname(f)
               FileUtils.mkdir_p dir
               file.extract shard_name, f
@@ -84,7 +84,8 @@ module Bun
         when :text
           warn "unpack #{tape}" if options[:dryrun] || !options[:quiet]
           unless options[:dryrun]
-            f = File.join(to_path, file.path, extract_tapename(tape, file.updated))
+            timestamp = file.descriptor.timestamp
+            f = File.join(to_path, file.path, extract_tapename(tape, timestamp))
             dir = File.dirname(f)
             FileUtils.mkdir_p dir
             file.extract f
@@ -100,11 +101,13 @@ module Bun
     EXTRACT_TAPE_SUFFIX = '.txt'
 
     def extract_path(path, date)
-      return path unless date
-      date_to_s = date.strftime(EXTRACT_DATE_FORMAT)
-      date_to_s = $1 if date_to_s =~ /^(.*)_000000$/
-      res = path + '_' + date_to_s
-      res
+      if date
+        date_to_s = date.strftime(EXTRACT_DATE_FORMAT)
+        date_to_s = $1 if date_to_s =~ /^(.*)_000000$/
+        path + '_' + date_to_s
+      else
+        path
+      end
     end
 
     def extract_tapename(path, date)

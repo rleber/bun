@@ -36,11 +36,8 @@ module Bun
     end
 
     def open(name, options={}, &blk)
-      if File.basename(name) =~ /^ar\d{3}.\d{4}$/
-        Bun::File::Archived.open(expand_path(name), options.merge(:archive=>self, :tape=>name), &blk)
-      else
-        Bun::File::Extracted.open(expand_path(name), options.merge(:library=>self,  :tape=>name), &blk)
-      end
+      path = expand_path(name)
+      File.open(path, options.merge(:archive=>self, :tape=>name), &blk)
     end
 
     def to_enum(&blk)
@@ -136,9 +133,8 @@ module Bun
       ix ? File.join(ix, name) : expand_path(name)
     end
     
-    def index_for(name, ix=nil)
-      expanded_path = index_path(name)
-      index[expanded_path].merge(:tape=>name, :tape_path=>expand_path(name))
+    def index_for(name)
+      index[expand_path(name)]
     end
     
     def expanded_index_directory
@@ -161,43 +157,32 @@ module Bun
     end
     
     def relative_path(*f)
-      File.relative_path(*f, :relative_to=>at)
-    end
-    
-    def index(options={})
-      return @index if !options[:build] && @index
-      res = _index(options)
-      @index = res unless options[:no_save]
-      res
-    end
-    
-    attr_accessor :recursive_index
-    
-    def _index(options={})
-      if options[:recursive] || recursive_index
-        indexes = index_directories
-      else
-        indexes = [expanded_index_directory]
+      options = {}
+      if f.last.is_a?(Hash)
+        options = f.pop
       end
-      if indexes.size > 0
-        res = {}
-        indexes.each do |index|
-          next unless File.exists?(index)
-          raise RuntimeError, "File #{index} should be a directory" unless File.directory?(index)
-          prefix = index_prefix(index)
-          Dir.glob(File.join(index, '*.yml')) do |f|
-            raise "Unexpected file #{f} in index #{expanded_index_directory}" unless f =~ /\.descriptor.yml$/
-            file_name = index_path(File.basename($`), prefix)
-            content = ::Bun.readfile(f, :encoding=>'us-ascii')
-            res[file_name] = YAML.load(content)
-          end
+      options.merge!(:relative_to=>at) unless options[:relative_to]
+      File.relative_path(*f, options)
+    end
+    
+    def index
+      @index ||= build_index
+    end
+    
+    def build_index
+      items.inject({}) do |index_hash, item|
+        f = begin
+          File.open(item)
+        rescue Bun::File::UnknownFileType =>e 
+          nil
         end
-        res
-      else
-        build_and_save_index
+        descriptor = f && f.descriptor
+        index_hash[expand_path(item, :already_from_wd=>true)] = descriptor if descriptor
+        f.close if f
+        index_hash
       end
     end
-    private :_index
+    private :build_index
     
     def build_and_save_index(options={})
       clear_index
@@ -244,6 +229,65 @@ module Bun
       @index[descr[:tape]] = descr
       save_index_descriptor(descr[:tape])
       descr
+    end
+    
+    def set_timestamps(options={})
+      shell = Bun::Shell.new(options)
+      each do |tape|
+        descr = descriptor(tape)
+        timestamp = [descr[:catalog_time], descr[:file_time]].compact.min
+        if timestamp
+          warn "Set timestamp: #{tape} #{timestamp.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
+          set_timestamp(tape, timestamp, :shell=>shell) unless options[:dryrun]
+        else
+          warn "No timestamp available for #{tape}" unless options[:quiet]
+        end
+      end
+    end
+    
+    def set_timestamp(tape, timestamp, options={})
+      if timestamp
+        shell = options[:shell] || Bun::Shell.new(options)
+        shell.set_timestamp(expand_path(tape), timestamp)
+      end
+    end
+
+    def apply_catalog(catalog_path, options={})
+      shell = Bun::Shell.new(options)
+      each do |tape|
+        ct = catalog(catalog_path).time_for(tape)
+        if ct
+          warn "Set catalog time: #{tape} #{ct.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
+          set_catalog_time(tape, ct, :shell=>shell) unless options[:dryrun]
+        elsif options[:remove]
+          warn "Remove #{tape} (not in catalog)" unless options[:quiet]
+          remove(tape) unless options[:dryrun]
+        else
+          warn "Skipping #{tape}: not in catalog" unless options[:quiet]
+        end
+      end
+    end
+    
+    def set_catalog_time(tape, catalog_time, options={})
+      file = open(tape)
+      file = file.convert
+      descr = file.descriptor
+      descr.merge!(:catalog_time=>catalog_time)
+      file.write
+      timestamp = [descr.catalog_time, descr.file_time].compact.min
+      set_timestamp(tape, timestamp, :shell=>options[:shell])
+    end
+    
+    def catalog(cp)
+      unless @catalog && @catalog.at == ::File.expand_path(cp)
+        @catalog = Catalog.new(cp)
+      end
+      @catalog
+    end
+    
+    def catalog_time(tape)
+      info = catalog.find {|spec| spec[:tape] == tape }
+      info && info[:date].local_date_to_local_time
     end
     
     def build_descriptor(name)
@@ -306,21 +350,8 @@ module Bun
     end
     private :_save_index_descriptor
     
-    # Options:
-    #  :build: true  Always build descriptor from file data, never use index
-    #          false Use index if available, never build from file data
-    #          nil   Use index if available, otherwise build from file data
-    def descriptor(name, options={})
-#      i = index        # TODO Remove this if everything is still working; not sure what its purpose was
-      if !exists?(name)
-        nil
-      elsif !options[:build] && index_for(name)
-        Hashie::Mash.new(index_for(name))
-      elsif options[:build] == false # False signifies "Do not ever build from file data, even if no index"
-        nil
-      else
-        Hashie::Mash.new(build_descriptor(name))
-      end
+    def descriptor(name)
+      exists?(name) && index_for(name)
     end
     
     def exists?(name)
@@ -341,7 +372,6 @@ module Bun
       else
         FileUtils.rm(path)
         descriptor_file_name = File.join(File.dirname(path), index_directory, "#{File.basename(path)}.descriptor.yml")
-#        puts "In Archive#rm_at_path: path=#{path.inspect}, descriptor_file_name=#{descriptor_file_name.inspect}"
         FileUtils.rm(descriptor_file_name) if File.exists?(descriptor_file_name)
       end
     end
@@ -491,7 +521,7 @@ module Bun
       
       open(from) do |f|
         Shell.new(:quiet=>true).write to, f.read, :mode=>'w:ascii-8bit'
-        f.copy_descriptor(to) if index
+        # f.copy_descriptor(to) if index
       end
     end
     private :cp_file_to_file

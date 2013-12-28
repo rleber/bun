@@ -15,10 +15,9 @@ DEFAULT_WIDTH = 120 # TODO Read the window size for this
 SORT_VALUES = %w{order name size update}
 desc "ls ARCHIVE FILE", "List contents of a frozen Honeywell file"
 option 'at',      :aliases=>'-a', :type=>'string',                               :desc=>'Archive path'
-option "descr",   :aliases=>'-d', :type=>'boolean',                              :desc=>"Display the file descriptor for each file (in octal)"
 option "files",   :aliases=>"-f", :type=>'string',  :default=>'.*',              :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "long",    :aliases=>'-l', :type=>'boolean',                              :desc=>"Display listing in long format"
-option "one",     :aliases=>'-1', :type=>'boolean',                              :desc=>"Display one file per line (implied by --long or --descr)"
+option "one",     :aliases=>'-1', :type=>'boolean',                              :desc=>"Display one file per line (implied by --long)"
 option "sort",    :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
 option "width",   :aliases=>'-w', :type=>'numeric', :default=>DEFAULT_WIDTH,     :desc=>"Width of display (for short format only)"
 def ls(at, file_name)
@@ -35,10 +34,9 @@ def ls(at, file_name)
   print "\nLast updated at #{file.file_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
   puts ":"
   lines = []
+  # TODO Refactor using Array#justify_rows
   if options[:long]
     lines << "Index Shard     Updated                   Words         Start"
-  elsif options[:descr]
-    lines << "Index Shard    Descriptor"
   end
   # Retrieve file information
   file_info = []
@@ -53,17 +51,20 @@ def ls(at, file_name)
     descr = file.shard_descriptor(i)
     if options[:long]
       file_time = descr.file_time
-      lines << "#{'%5d'%(i)} #{'%-8s'%descr.name}  #{file_time.strftime(TIMESTAMP_FORMAT)}  #{'%10d'%descr.file_size}  #{'%#012o'% (descr.start + file.content_offset)}"
-    elsif options[:descr]
-      lines << "#{'%5d'%(i)} #{'%-8s'%descr.name} #{descr.octal}"
+      line = []
+      line << '%5d' % i
+      line << '%-8s'%descr.name
+      line << file_time.strftime(TIMESTAMP_FORMAT)
+      line << '%10d'%descr[:size]
+      line << '%#012o'% (descr.start + file.content_offset)
+      lines << line.join('  ')
     else
       lines << descr.name
     end
   end
-  if options[:long] || options[:descr] || options[:one] # One file_name per line
+  if options[:long] || options[:one] # One file_name per line
     puts lines.join("\n")
   else # Multiple files per line
-    # TODO Refactor using Array#justify_rows
     file_width = (lines.map{|l| l.size}.max)+1
     files_per_line = [1, options[:width].div(file_width)].max
     index = 0

@@ -3,7 +3,7 @@
 
 module Bun
   class File < ::File
-    class Huffman < Bun::File::Archived
+    class Huffman < Bun::File::Converted
     end
   end
 end

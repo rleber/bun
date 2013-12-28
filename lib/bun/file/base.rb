@@ -2,6 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 require 'lib/bun/file/descriptor'
+require 'yaml'
 require 'date'
 
 module Bun
@@ -51,6 +52,29 @@ module Bun
       def descriptor(options={})
         Header.new(options).descriptor
       end
+      
+      def raw?(path)
+        prefix = ::File.open(path,'rb') {|f| f.read(3)}
+        prefix != '---' # YAML prefix; one of the converted formats
+      end
+      
+      def open(path, options={}, &blk)
+        if raw?(path)
+          File::Raw.open(path, options, &blk)
+        else
+          File::Converted.open(path, options, &blk)
+        end
+      end
+      
+      def file_type(path)
+        return :raw if raw?(path)
+        begin
+          f = File::Converted.open(path)
+          f.file_type
+        rescue
+          :unknown
+        end
+      end
     end
     attr_reader :archive
     attr_reader :tape_path
@@ -70,7 +94,7 @@ module Bun
       yield(self) if block_given?
     end
 
-    private_class_method :new
+    # private_class_method :new
   
     def clear_errors
       @errors = []
@@ -86,7 +110,7 @@ module Bun
     end
   
     def close
-      update_index
+      # update_index
     end
   
     def read

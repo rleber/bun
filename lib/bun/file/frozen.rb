@@ -3,7 +3,7 @@
 
 module Bun
   class File < ::File
-    class Frozen < Bun::File::Archived
+    class Frozen < Bun::File::Converted
       include CacheableMethods
       
       attr_reader :file
@@ -12,9 +12,10 @@ module Bun
     
       # TODO do we ever instantiate a File::Frozen without a new file? If not, refactor
       def initialize(options={})
+        options[:data] = Data.new(options) if options[:data] && !options[:data].is_a?(Bun::Data)
         super
         # TODO Why is file_date necessary?
-        descriptor.register_fields(:shards, :file_date, :file_time)
+        descriptor.register_fields(:shards, :file_time)
         @warn = options[:warn]
       end
       
@@ -65,7 +66,7 @@ module Bun
       end
       
       def file_date
-        File::Archived.date(_update_date)
+        File::Converted.date(_update_date)
       end
       
       # Reference to all_characters is necessary here, because characters isn't
@@ -75,7 +76,7 @@ module Bun
       end
     
       def update_time_of_day
-        File::Archived.time_of_day(_update_time_of_day)
+        File::Converted.time_of_day(_update_time_of_day)
       end
     
       def _update_time_of_day
@@ -83,13 +84,11 @@ module Bun
       end
     
       def file_time
-        File::Archived.time(_update_date, _update_time_of_day)
+        Bun::Data.time(_update_date, _update_time_of_day)
       end
     
       def shard_descriptors
-        LazyArray.new(shard_count) do |i|
-          Frozen::Descriptor.new(self, i)
-        end
+        descriptor.shards.map.with_index {|d,i| Hashie::Mash.new(d.merge(:number=>i)) }
       end
       cache :shard_descriptors
       
@@ -157,20 +156,34 @@ module Bun
         index
       end
       private :_shard_index
+      
+      def shard_extent(n)
+        d = shard_descriptor(n)
+        return nil unless d
+        [d.start+content_offset, d[:size]]
+      end
+      
+      # def shard_data(n)
+      #   d = shard_descriptor(n)
+      #   return nil unless d
+      #   data.subset(d.start + content_offset, d.file_size)
+      # end
     
       def shard_words(n)
         d = shard_descriptor(n)
         return nil unless d
-        words[d.start + content_offset, d.file_size]
+        words[d.start + content_offset, d[:size]]
       end
       
       def shards
-        LazyArray.new(shard_count) do |i|
+        s = []
+        shard_count.times do |i|
           text = shard_lines.at(i).map{|l| l[:content]}.join
           shard_descriptors.at(i).control_characters = File.control_character_counts(text)
           shard_descriptors.at(i).character_count    = text.size
-          text
+          s << text
         end
+        s
       end
     
       def shard_lines

@@ -12,10 +12,11 @@ module Bun
       # TODO do we ever instantiate a File::Text without reading a file? If not, refactor
       def initialize(options={})
         @keep_deletes = options[:keep_deletes]
+        options[:data] = Data.new(options) if options[:data] && !options[:data].is_a?(Bun::Data)
         super
-        descriptor.register_fields(:control_characters, :character_count)
-        @control_characters = nil
-        @character_count = nil
+        # descriptor.register_fields(:control_characters, :character_count)
+        # @control_characters = nil
+        # @character_count = nil
       end
     
       def words=(words)
@@ -62,8 +63,8 @@ module Bun
         raw_line = ""
         okay = true
         descriptor = words.at(line_offset)
-        if descriptor == self.class.eof_marker
-          return {:status=>:eof, :start=>line_offset, :finish=>size-1, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
+        if descriptor == eof_marker
+          return {:status=>:eof, :start=>line_offset, :finish=>data.size-1, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
         elsif (descriptor >> 27) & 0777 == 0177
           raise "Deleted"
           deleted = true

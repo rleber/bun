@@ -21,7 +21,6 @@ def dump(at, file_name)
   archived_file = file.path
   archived_file = "--unknown--" unless archived_file
   puts "Archive at #{file.tape_path} for file #{archived_file}:"
-  words = file.words
-  lc = Dump.dump(words, options.merge(:offset=>offset))
+  lc = Dump.dump(file.data, options.merge(:offset=>offset))
   puts "No data to dump" if lc == 0
 end

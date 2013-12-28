@@ -44,11 +44,12 @@ def rstrip(text)
   text.split("\n").map{|line| line.rstrip }.join("\n")
 end
 
-shared_examples "simple" do |file|
-  it "decodes a simple text file (#{file})" do
-    infile = file
-    outfile = File.join("output", "test", infile)
-    decode(infile).should == Bun.readfile(outfile)
+shared_examples "simple" do |source|
+  it "decodes a simple text file (#{source})" do
+    expected_output_file = File.join("output", "test", source)
+    actual_output = decode(source)
+    expected_output = Bun.readfile(expected_output_file)
+    actual_output.should == expected_output
   end
 end
 
@@ -56,7 +57,8 @@ shared_examples "command" do |descr, command, expected_stdout_file, options={}|
   it "handles #{descr} properly" do
     # warn "> bun #{command}"
     res = exec("bun #{command} 2>&1", options).force_encoding('ascii-8bit')
-    expected_stdout_file = File.join("output", 'test', expected_stdout_file) unless expected_stdout_file =~ %r{/}  
+    expected_stdout_file = File.join("output", 'test', expected_stdout_file) unless expected_stdout_file =~ %r{/}
+    raise "!Missing expected output file: #{expected_stdout_file.inspect}" unless File.exists?(expected_stdout_file)  
     rstrip(res).should == rstrip(Bun.readfile(expected_stdout_file))
   end
 end
@@ -111,19 +113,126 @@ describe Bun::File::Text do
 end
 
 describe Bun::Archive do
+  context "bun convert" do
+    context "with a text file" do
+      context "with output to stdout" do
+        before :all do
+          exec("rm -f output/convert_ar003.0698")
+          exec("rm -rf data/test/archive/general_test_raw")
+          exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
+          exec("bun convert data/test/archive/general_test_raw ar003.0698 - >output/convert_ar003.0698")
+        end
+        it "should create the proper file" do
+          file_should_exist "output/convert_ar003.0698"
+        end
+        it "should generate the proper conversion on stdout" do
+          Bun.readfile("output/convert_ar003.0698").chomp.should == Bun.readfile('output/test/convert_ar003.0698').chomp
+        end
+        after :all do
+          exec("rm -f output/convert_ar003.0698")
+          exec("rm -rf data/test/archive/general_test_raw")
+        end
+      end
+    end
+    context "with output to a file" do
+      before :all do
+        exec("rm -f output/convert_ar003.0698")
+        exec("rm -rf data/test/archive/general_test_raw")
+        exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
+        exec("bun convert data/test/archive/general_test_raw ar003.0698 output/convert_ar003.0698")
+      end
+      it "should create the proper file" do
+        file_should_exist "output/convert_ar003.0698"
+      end
+      it "should generate the proper conversion in the file" do
+        Bun.readfile("output/convert_ar003.0698").chomp.should == Bun.readfile('output/test/convert_ar003.0698').chomp
+      end
+      after :all do
+        exec("rm -f output/convert_ar003.0698")
+        exec("rm -rf data/test/archive/general_test_raw")
+      end
+    end
+    context "with output in place" do
+      before :all do
+        exec("rm -f output/convert_ar003.0698")
+        exec("rm -rf data/test/archive/general_test_raw")
+        exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
+        exec("bun convert data/test/archive/general_test_raw ar003.0698")
+      end
+      it "should generate the proper conversion in place" do
+        Bun.readfile("data/test/archive/general_test_raw/ar003.0698").chomp.should == Bun.readfile('output/test/convert_ar003.0698').chomp
+      end
+      after :all do
+        exec("rm -f output/convert_ar003.0698")
+        exec("rm -rf data/test/archive/general_test_raw")
+      end
+    end
+    context "with a frozen file" do
+      before :all do
+        exec("rm -f output/convert_ar019.0175")
+        exec("rm -rf data/test/archive/general_test_raw")
+        exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
+        exec("bun convert data/test/archive/general_test_raw ar019.0175 output/convert_ar019.0175")
+      end
+      it "should create the proper file" do
+        file_should_exist "output/convert_ar019.0175"
+      end
+      it "should generate the proper conversion" do
+        Bun.readfile("output/convert_ar019.0175").chomp.should == Bun.readfile('output/test/convert_ar019.0175').chomp
+      end
+      after :all do
+        exec("rm -f output/convert_ar019.0175")
+        exec("rm -rf data/test/archive/general_test_raw")
+      end
+    end
+  end
+  context "bun archive convert" do
+    before :all do
+      exec("rm -rf data/test/archive/general_test_raw_converted")
+      exec("rm -f output/archive_convert_files.txt")
+      exec("rm -f output/archive_convert_stdout.txt")
+      exec("rm -f output/archive_convert_stdout.txt")
+      exec("rm -rf data/test/archive/general_test_raw")
+      exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
+      exec("bun archive convert data/test/archive/general_test_raw data/test/archive/general_test_raw_converted 2>output/archive_convert_stderr.txt >output/archive_convert_stdout.txt")
+    end
+    it "should create a new directory" do
+      file_should_exist "data/test/archive/general_test_raw_converted"
+    end
+    it "should write nothing on stdout" do
+      Bun.readfile('output/archive_convert_stdout.txt').chomp.should == ""
+    end
+    it "should write file decoding messages on stderr" do
+      Bun.readfile("output/archive_convert_stderr.txt").chomp.should == Bun.readfile('output/test/archive_convert_stderr.txt').chomp
+    end
+    it "should create the appropriate files" do
+      exec('find data/test/archive/general_test_raw_converted -print >output/archive_convert_files.txt')
+      Bun.readfile('output/archive_convert_files.txt').chomp.should == Bun.readfile('output/test/archive_convert_files.txt').chomp
+    end
+    after :all do
+      exec("rm -rf data/test/archive/general_test_raw_converted")
+      exec("rm -rf data/test/archive/general_test_raw")
+      exec("rm -f output/archive_convert_files.txt")
+      exec("rm -f output/archive_convert_stderr.txt")
+      exec("rm -f output/archive_convert_stdout.txt")
+    end
+  end
+end
+
+describe Bun::Archive do
   before :each do
     @archive = Bun::Archive.new('data/test/archive/contents')
+    $expected_archive_contents = %w{ar003.0698 ar054.2299[brytside] ar054.2299[disco] 
+                                        ar054.2299[end] ar054.2299[opening] ar054.2299[santa] }
   end
   describe "contents" do
     it "retrieves correct list" do
-      @archive.contents.sort.should == %w{ar003.0698 ar054.2299::brytside ar054.2299::disco 
-                                          ar054.2299::end ar054.2299::opening ar054.2299::santa }
+      @archive.contents.sort.should == $expected_archive_contents
     end
     it "invokes a block" do
       foo = []
-      @archive.contents {|f| foo << f }
-      foo.sort.should == %w{ar003.0698 ar054.2299::brytside ar054.2299::disco 
-                            ar054.2299::end ar054.2299::opening ar054.2299::santa }
+      @archive.contents {|f| foo << f.upcase }
+      foo.sort.should == $expected_archive_contents.map{|c| c.upcase }
     end
   end
 end
@@ -135,7 +244,8 @@ describe Bun::Bot do
   # include_examples "command with file", "descr", "cmd", "expected_stdout_file", "output_in_file", "expected_output_file"
   describe "check" do
     include_examples "command", "check clean file", "check data/test/clean", "check_clean"
-    include_examples "command", "check dirty file", "check data/test/ar119.1801", "check_dirty", :allowed=>[1]
+    # Dirty file is just the unconverted version of ar119.1801
+    include_examples "command", "check dirty file", "check data/test/dirty", "check_dirty", :allowed=>[1]
   end
     
   describe "describe" do
@@ -165,490 +275,15 @@ describe Bun::Bot do
   
   describe "ls" do
     include_examples "command", "ls", "ls #{TEST_ARCHIVE}", "ls"
-    include_examples "command", "ls -Q", "ls -Q #{TEST_ARCHIVE}", "ls_q"
-    include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -h ar003.0698 #{TEST_ARCHIVE}", "ls_ldrh_ar003.0698"
-    include_examples "command", "ls -ldr with frozen file (ar145.2699)", "ls -ldr -h ar145.2699 #{TEST_ARCHIVE}", "ls_ldrh_ar145.2699"
-    include_examples "command", "ls -ldrb with frozen file (ar145.2699)", "ls -ldrb -h ar145.2699 #{TEST_ARCHIVE}", "ls_ldrbh_ar145.2699"
+    include_examples "command", "ls -o", "ls -o #{TEST_ARCHIVE}", "ls_o"
+    include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -t ar003.0698 #{TEST_ARCHIVE}", "ls_ldrt_ar003.0698"
+    include_examples "command", "ls -ldr with frozen file (ar145.2699)", "ls -ldr -t ar145.2699 #{TEST_ARCHIVE}", "ls_ldrt_ar145.2699"
   end
   describe "readme" do
     include_examples "command", "readme", "readme", "doc/readme.md"
   end
   describe "unpack" do
     include_examples "command", "unpack", "unpack #{TEST_ARCHIVE} ar003.0698", "unpack"
-  end
-  describe "cat" do
-    include_examples "command", "cat (ar003.0698)", "cat #{TEST_ARCHIVE} ar003.0698", "cat"
-  end
-  describe "cp" do
-    include_examples "command with file", 
-      "cp ar003.0698 output/cp_ar003.0698.out", "cp #{TEST_ARCHIVE} ar003.0698 output/cp_ar003.0698.out", 
-      "cp_ar003.0698.stdout", "cp_ar003.0698.out", "cp_ar003.0698"
-    include_examples "command", "cp ar003.0698 -", "cp #{TEST_ARCHIVE} ar003.0698 -", "cp_ar003.0698"
-    include_examples "command", "cp ar003.0698", "cp #{TEST_ARCHIVE} ar003.0698", "cp_ar003.0698"
-    include_examples "command with file", 
-      "cp ar003.0698 output/cp_ar003.0698 (a directory)", "cp #{TEST_ARCHIVE} ar003.0698 output/cp_ar003.0698", 
-      "cp_ar003.0698.stdout", "output/cp_ar003.0698/ar003.0698", "cp_ar003.0698"
-    context "multiple files" do
-      before :each do
-        exec("rm -rf output/multiple_cp")
-        exec("mkdir output/multiple_cp")
-        exec("bun cp #{TEST_ARCHIVE} 'ar*.0698' 'ar*.0605' output/multiple_cp 2>&1")
-      end
-      it "should copy 3 files" do
-        expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.sort
-        result_files = Dir.glob('output/multiple_cp/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
-        result_files.should == expected_files
-      end
-      after :each do
-        exec("rm -rf output/multiple_cp")
-      end
-    end
-    describe "recursive" do
-      before :each do
-        exec("rm -rf data/test/archive/cp_recursive")
-        exec("rm -rf data/test/archive/cp_recursive_new")
-        exec("cp -r  data/test/archive/cp_recursive_init data/test/archive/cp_recursive")
-        exec("mkdir  data/test/archive/cp_recursive_new")
-        exec("bun cp -r data/test/archive/cp_recursive '*' '@/../cp_recursive_new/'")
-      end
-      describe "creates files" do
-        before :each do
-          exec "rm -f output/cp_recursive_files"
-          exec "find data/test/archive/cp_recursive -print > output/cp_recursive_files"
-        end
-        it "as expected" do
-          Bun.readfile('output/cp_recursive_files').should == Bun.readfile('output/test/cp_recursive_files')
-        end
-        after :each do
-          exec "rm -f output/cp_recursive_files"
-        end
-      end
-      describe "the original files" do
-        describe "in the main directory" do
-          it "are unchanged" do
-            expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698 directory}.sort
-            result_files = Dir.glob('data/test/archive/cp_recursive/*').map{|f| File.basename(f)}.sort
-            result_files.should == expected_files
-          end
-        end
-        describe "in the sub-directory" do
-          it "are unchanged" do
-            expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
-            result_files = Dir.glob('data/test/archive/cp_recursive/directory/subdirectory/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
-            result_files.should == expected_files
-          end
-        end
-      end
-      describe "the original indexes" do
-        describe "in the main directory" do
-          it "are unchanged" do
-            expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort.map{|f| "#{f}.descriptor.yml"}
-            result_files = Dir.glob('data/test/archive/cp_recursive/.bun_index/*').map{|f| File.basename(f)}.sort
-            result_files.should == expected_files
-          end
-        end
-        describe "in the sub-directory" do
-          it "are unchanged" do
-            expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort.map{|f| "#{f}.descriptor.yml"}
-            result_files = Dir.glob('data/test/archive/cp_recursive/directory/subdirectory/.bun_index/*').map{|f| File.basename(f)}.sort
-            result_files.should == expected_files
-          end
-        end
-      end
-      describe "the new files" do
-        describe "in the main directory" do
-          it "are all copied" do
-            expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698 directory}.sort
-            result_files = Dir.glob('data/test/archive/cp_recursive_new/*').map{|f| File.basename(f)}.sort
-            result_files.should == expected_files
-          end
-        end
-        describe "in the sub-directory" do
-          it "are all copied" do
-            expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
-            result_files = Dir.glob('data/test/archive/cp_recursive_new/directory/subdirectory/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
-            result_files.should == expected_files
-          end
-        end
-      end
-      describe "the new indexes" do
-        describe "in the main directory" do
-          it "are all created" do
-            expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort.map{|f| "#{f}.descriptor.yml"}
-            result_files = Dir.glob('data/test/archive/cp_recursive_new/.bun_index/*').map{|f| File.basename(f)}.sort
-            result_files.should == expected_files
-          end
-          it "should not change the tape" do
-            content = YAML.load(Bun.readfile("data/test/archive/cp_recursive_new/.bun_index/ar003.0701.descriptor.yml", :encoding=>'us-ascii'))
-            content[:tape].should == 'ar003.0701'
-          end
-          it "should change the tape_path" do
-            content = YAML.load(Bun.readfile("data/test/archive/cp_recursive_new/.bun_index/ar003.0701.descriptor.yml", :encoding=>'us-ascii'))
-            content[:tape_path].should == %{#{exec("pwd").chomp}/data/test/archive/cp_recursive_new/ar003.0701}
-          end
-        end
-        describe "in the sub-directory" do
-          it "are all created" do
-            expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort.map{|f| "#{f}.descriptor.yml"}
-            result_files = Dir.glob('data/test/archive/cp_recursive_new/directory/subdirectory/.bun_index/*').map{|f| File.basename(f)}.sort
-            result_files.should == expected_files
-          end
-          it "should not change the tape" do
-            content = YAML.load(Bun.readfile("data/test/archive/cp_recursive_new/.bun_index/ar082.0605.descriptor.yml", :encoding=>'us-ascii'))
-            content[:tape].should == 'ar082.0605'
-          end
-          it "should change the tape_path" do
-            content = YAML.load(Bun.readfile("data/test/archive/cp_recursive_new/.bun_index/ar082.0605.descriptor.yml", :encoding=>'us-ascii'))
-            content[:tape_path].should == %{#{exec("pwd").chomp}/data/test/archive/cp_recursive_new/ar082.0605}
-          end
-        end
-      end
-      after :each do
-        exec("rm -rf data/test/archive/cp_recursive")
-        exec("rm -rf data/test/archive/cp_recursive_new")
-      end
-    end
-    context "index processing" do
-      context "for a single file" do
-        before :all do
-          # warn "> bun #{command}"
-          exec("rm -rf output/.bun_index")
-          exec("rm -f output/cp_ar003.0698.out")
-          exec("bun cp #{TEST_ARCHIVE} ar003.0698 output/cp_ar003.0698.out 2>&1")
-        end
-        it "creates an index" do
-          file_should_exist "output/.bun_index/cp_ar003.0698.out.descriptor.yml"
-        end
-        context "contents of index" do
-          before :each do
-            @original_content = YAML.load(Bun.readfile("#{TEST_ARCHIVE}/.bun_index/ar003.0698.descriptor.yml", :encoding=>'us-ascii'))
-            @content = YAML.load(Bun.readfile("output/.bun_index/cp_ar003.0698.out.descriptor.yml", :encoding=>'us-ascii'))
-          end
-          it "should change the tape" do
-            @content[:tape].should == 'cp_ar003.0698.out'
-          end
-          it "should change the tape_path" do
-            @content[:tape_path].should == %{#{exec("pwd").chomp}/output/cp_ar003.0698.out}
-          end
-          it "should record the original tape" do
-            @content[:original_tape].should == 'ar003.0698'
-          end
-          it "should record the original tape_path" do
-            @content[:original_tape_path].should == File.expand_path("#{TEST_ARCHIVE}/ar003.0698")
-          end
-          it "should otherwise match the original index" do
-            other_content = @content.dup
-            other_content.delete(:tape)
-            other_content.delete(:tape_path)
-            other_content.delete(:original_tape)
-            other_content.delete(:original_tape_path)
-            other_original_content = @original_content.dup
-            other_original_content.delete(:tape)
-            other_original_content.delete(:tape_path)
-            other_original_content.delete(:original_tape)
-            other_original_content.delete(:original_tape_path)
-            other_content.should == other_original_content
-          end
-        end
-        after :all do
-          exec("rm -f output/cp_ar003.0698.out")
-          exec("rm -rf output/.bun_index")
-        end
-      end
-      context "for a directory of files" do
-        before :all do
-          # warn "> bun #{command}"
-          exec("rm -rf output/cp_ar003.0698/.bun_index")
-          exec("rm -f output/cp_ar003.0698/ar003.0698")
-          exec("bun cp #{TEST_ARCHIVE} ar003.0698 output/cp_ar003.0698 2>&1")
-        end
-        it "creates an index" do
-          file_should_exist "output/cp_ar003.0698/.bun_index/ar003.0698.descriptor.yml"
-        end
-        after :all do
-          exec("rm -f output/cp_ar003.0698/ar003.0698")
-          exec("rm -rf output/cp_ar003.0698/.bun_index")
-        end
-      end
-      context "with --bare" do
-        before :all do
-          # warn "> bun #{command}"
-          exec("rm -rf output/.bun_index")
-          exec("rm -f output/cp_ar003.0698.out")
-          exec("bun cp #{TEST_ARCHIVE} --bare ar003.0698 output/cp_ar003.0698.out 2>&1")
-        end
-        it "does not creates an index" do
-          file_should_not_exist "output/.bun_index"
-        end
-        after :all do
-          exec("rm -f output/cp_ar003.0698.out")
-          exec("rm -rf output/.bun_index")
-        end
-      end
-    end
-  end
-  describe "rm" do
-    before :each do
-      exec("rm -rf data/test/archive/rm")
-      exec("cp -r data/test/archive/rm_init data/test/archive/rm")
-    end
-    describe "with one file" do
-      describe "non-recursive" do
-        before :each do
-          exec("bun rm data/test/archive/rm ar003.0701")
-        end
-        it "removes the file" do
-          expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.sort
-          result_files = Dir.glob('data/test/archive/rm/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
-          result_files.should == expected_files
-        end
-        it "removes the file from the index" do
-          expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.map{|name| name + '.descriptor.yml'}.sort
-          result_files = Dir.glob('data/test/archive/rm/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
-          result_files.should == expected_files
-        end
-        it "should refuse to remove a directory" do
-          exec("bun rm data/test/archive/rm directory 2>&1", :allowed=>:all)
-          $?.exitstatus.should_not == 0
-        end
-      end
-      describe "recursive" do
-        describe "with non-directory" do
-          before :each do
-            exec("bun rm -r data/test/archive/rm ar003.0701")
-          end
-          it "removes the file" do
-            expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.sort
-            result_files = Dir.glob('data/test/archive/rm/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
-            result_files.should == expected_files
-          end
-          it "removes the file from the index" do
-            expected_files = %w{ar003.0698 ar082.0605 ar083.0698}.map{|name| name + '.descriptor.yml'}.sort
-            result_files = Dir.glob('data/test/archive/rm/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
-            result_files.should == expected_files
-          end
-        end
-        describe "with directory" do
-          before :each do
-            exec("bun rm -r data/test/archive/rm directory")
-          end
-          it "removes the file" do
-            expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
-            result_files = Dir.glob('data/test/archive/rm/*').map{|f| File.basename(f)}.sort
-            result_files.should == expected_files
-          end
-        end
-      end
-    end
-    describe "with multiple files" do
-      before :each do
-        exec("bun rm data/test/archive/rm '*.0698'")
-      end
-      it "removes the files" do
-        expected_files = %w{ar003.0701 ar082.0605}.sort
-        result_files = Dir.glob('data/test/archive/rm/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
-        result_files.should == expected_files
-      end
-      it "removes the files from the index" do
-        expected_files = %w{ar003.0701 ar082.0605}.map{|name| name + '.descriptor.yml'}.sort
-        result_files = Dir.glob('data/test/archive/rm/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
-        result_files.should == expected_files
-      end
-    end
-    after :each do
-      exec("rm -rf data/test/archive/rm")
-    end
-  end
-  describe "mv" do
-    before :each do
-      exec("rm -rf data/test/archive/mv")
-      exec("cp -r  data/test/archive/mv_init data/test/archive/mv")
-    end
-    describe "with a non-directory" do
-      before :each do
-        exec("bun mv data/test/archive/mv ar003.0701 ar003.0701b")
-      end
-      it "moves the file in the index" do
-        expected_files = %w{ar003.0698 ar003.0701b ar082.0605 ar083.0698}.map{|name| name + '.descriptor.yml'}.sort
-        result_files = Dir.glob('data/test/archive/mv/.bun_index/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
-        result_files.should == expected_files
-      end
-      it "should change the tape" do
-        content = YAML.load(Bun.readfile("data/test/archive/mv/.bun_index/ar003.0701b.descriptor.yml", :encoding=>'us-ascii'))
-        content[:tape].should == 'ar003.0701b'
-      end
-      it "should change the tape_path" do
-        content = YAML.load(Bun.readfile("data/test/archive/mv/.bun_index/ar003.0701b.descriptor.yml", :encoding=>'us-ascii'))
-        content[:tape_path].should == %{#{exec("pwd").chomp}/data/test/archive/mv/ar003.0701b}
-      end
-    end
-    describe "with a directory" do
-      before :each do
-        exec("bun mv data/test/archive/mv directory directory2")
-      end
-      it "moves the directory" do
-        expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698 directory2}.sort
-        result_files = Dir.glob('data/test/archive/mv/*').map{|f| File.basename(f)}.sort
-        result_files.should == expected_files
-      end
-      it "moves the contents of the directory" do
-        expected_files = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
-        result_files = Dir.glob('data/test/archive/mv/directory2/*').reject{|f| File.directory?(f)}.map{|f| File.basename(f)}.sort
-        result_files.should == expected_files
-      end
-      it "should leave the tapes unchanged" do
-        expected_tapes = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort
-        tapes = []
-        Dir.glob("data/test/archive/mv/directory2/.bun_index/*.descriptor.yml").each do |f|
-          tapes << YAML.load(Bun.readfile(f, :encoding=>'us-ascii'))[:tape]
-        end
-        tapes.sort.should == expected_tapes
-      end
-      it "should change the tape_paths" do
-        expected_tape_paths = %w{ar003.0698 ar003.0701 ar082.0605 ar083.0698}.sort.map do |f|
-          %{#{exec("pwd").chomp}/data/test/archive/mv/directory2/#{f}}
-        end
-        tape_paths = []
-        Dir.glob("data/test/archive/mv/directory2/.bun_index/*.descriptor.yml").each do |f|
-          tape_paths << YAML.load(Bun.readfile(f, :encoding=>'us-ascii'))[:tape_path]
-        end
-        tape_paths.sort.should == expected_tape_paths
-      end
-    end
-    after :each do
-      exec("rm -rf data/test/archive/mv")
-    end
-  end
-  describe "mkdir" do
-    before :each do
-      exec("rm -rf output/mkdir")
-    end
-    describe "without -p" do
-      it "should create a directory" do
-        archive = Bun::Archive.new("output")
-        archive.mkdir('mkdir')
-        file_should_exist "output/mkdir"
-      end
-      it "should not create a directory without parents" do
-        archive = Bun::Archive.new("output")
-        expect { archive.mkdir('mkdir/foo') }.should raise_error
-      end
-    end
-    describe "with -p" do
-      it "should create a directory" do
-        archive = Bun::Archive.new("output")
-        archive.mkdir('mkdir/foo/bar', :p=>true)
-        file_should_exist "output/mkdir/foo/bar"
-      end
-      it "should create parent directories" do
-        archive = Bun::Archive.new("output")
-        archive.mkdir('mkdir/foo/bar', :parents=>true)
-        file_should_exist "output/mkdir"
-      end
-    end
-    after :each do
-      exec("rm -rf output/mkdir")
-    end
-  end
-  context "index processing" do
-    before :each do
-      exec("rm -rf data/test/archive/index")
-      exec("cp -r data/test/archive/init data/test/archive/index")
-    end
-    context "index build" do
-      before :each do
-        exec("rm -rf data/test/archive/index/.bun_index")
-        exec("bun archive index build \"data/test/archive/index\"")
-      end
-      it "should create index" do
-        file_should_exist "data/test/archive/index/.bun_index"
-      end
-      it "should have an entry for ar003.0698" do
-        Dir.glob("data/test/archive/index/.bun_index/*").should == ["data/test/archive/index/.bun_index/ar003.0698.descriptor.yml"]
-      end
-      context "index contents" do
-        before :each do
-          content = Bun.readfile("data/test/archive/index/.bun_index/ar003.0698.descriptor.yml", :encoding=>'us-ascii')
-          @index = YAML.load(content) rescue nil
-        end
-        it "should be a Hash" do
-          @index.should be_a(Hash)
-        end
-      end
-    end
-    context "index clear" do
-      before :each do
-        exec("rm -rf data/test/archive/index/.bun_index")
-        exec("bun archive index build \"data/test/archive/index\"")
-        exec("bun archive index clear \"data/test/archive/index\"")
-      end
-      it "should remove index" do
-        file_should_not_exist "data/test/archive/index/.bun_index"
-      end
-    end
-    after :each do
-      exec("rm -rf data/test/archive/index")
-    end
-  end
-  context "bun ls handling of the index" do
-    context "from the index" do
-      before :each do
-        exec("rm -rf data/test/archive/strange")
-        exec("cp -r data/test/archive/strange_init data/test/archive/strange")
-        lines = exec("bun ls \"data/test/archive/strange\" | tail -n 1").chomp
-        @file = lines.split(/\s+/)[-1].strip
-      end
-      it "should pull data from the index" do
-        @file.should == "path_from_the_index"
-      end
-      after :each do
-        exec("rm -rf data/test/archive/strange")
-      end
-    end
-    context "built from the file" do
-      before :each do
-        exec("rm -rf data/test/archive/strange")
-        exec("cp -r data/test/archive/strange_init data/test/archive/strange")
-        lines = exec("bun ls \"data/test/archive/strange\" --build | tail -n 1").chomp
-        @file = lines.split(/\s+/)[-1].strip
-      end
-      it "should not pull data from the index" do
-        @file.should_not == "path_from_the_index"
-      end
-      after :each do
-        exec("rm -rf data/test/archive/strange")
-      end
-    end
-  end
-  context "bun describe handling of the index" do
-    context "from the index" do
-      before :each do
-        exec("rm -rf data/test/archive/strange")
-        exec("cp -r data/test/archive/strange_init data/test/archive/strange")
-        lines = exec("bun describe \"data/test/archive/strange\" ar003.0698").chomp.split("\n")
-        @file = lines.find {|line| line =~ /^Basename:/}.split(/\s+/)[1].strip
-      end
-      it "should pull data from the index" do
-        @file.should == "basename_from_the_index"
-      end
-      after :each do
-        exec("rm -rf data/test/archive/strange")
-      end
-    end
-    context "built from the file" do
-      before :each do
-        exec("rm -rf data/test/archive/strange")
-        exec("cp -r data/test/archive/strange_init data/test/archive/strange")
-        lines = exec("bun describe \"data/test/archive/strange\" --build ar003.0698").chomp.split("\n")
-        @file = lines.find {|line| line =~ /^Basename:/}.split(/\s+/)[-1].strip
-      end
-      it "should not pull data from the index" do
-        @file.should_not == "basename_from_the_index"
-      end
-      after :each do
-        exec("rm -rf data/test/archive/strange")
-      end
-    end
   end
   context "bun dump" do
     include_examples "command", "dump ar003.0698", "dump #{TEST_ARCHIVE} ar003.0698", "dump_ar003.0698"
@@ -659,7 +294,6 @@ describe Bun::Bot do
     context "ls" do
       include_examples "command", "freezer ls ar004.0888", "freezer ls #{TEST_ARCHIVE} ar004.0888", "freezer_ls_ar004.0888"
       include_examples "command", "freezer ls -l ar004.0888", "freezer ls #{TEST_ARCHIVE} -l ar004.0888", "freezer_ls_l_ar004.0888"
-      include_examples "command", "freezer ls -d ar004.0888", "freezer ls #{TEST_ARCHIVE} -d ar004.0888", "freezer_ls_d_ar004.0888"
     end
     context "dump" do
       include_examples "command", "freezer dump ar004.0888 +0", "freezer dump #{TEST_ARCHIVE} ar004.0888 +0", "freezer_dump_ar004.0888_0"
@@ -667,6 +301,31 @@ describe Bun::Bot do
     end
     context "thaw" do
       include_examples "command", "freezer thaw ar004.0888 +0", "freezer thaw #{TEST_ARCHIVE} ar004.0888 +0", "freezer_thaw_ar004.0888_0"
+    end
+  end
+  context "bun catalog" do
+    before :all do
+      exec("rm -rf data/test/archive/catalog_source")
+      exec("cp -r data/test/archive/catalog_source_init data/test/archive/catalog_source")
+      exec("bun archive catalog data/test/archive/catalog_source data/test/catalog.txt 2>output/archive_catalog_stderr.txt >output/archive_catalog_stdout.txt")
+    end
+    it "should write nothing on stdout" do
+      Bun.readfile('output/archive_catalog_stdout.txt').chomp.should == ""
+    end
+    it "should write file decoding messages on stderr" do
+      Bun.readfile("output/archive_catalog_stderr.txt").chomp.should == Bun.readfile('output/test/archive_catalog_stderr.txt').chomp
+    end
+    it "should not add or remove any files in the archive" do
+      exec('find data/test/archive/catalog_source -print >output/archive_catalog_files.txt')
+      Bun.readfile('output/archive_catalog_files.txt').chomp.should == Bun.readfile('output/test/archive_catalog_files.txt').chomp
+    end
+    it "should change the catalog dates in the catalog" do 
+    end
+    after :all do
+      exec("rm -rf data/test/archive/catalog_source")
+      exec("rm -f output/archive_catalog_stderr.txt")
+      exec("rm -f output/archive_catalog_stdout.txt")
+      exec("rm -f output/archive_catalog_files.txt")
     end
   end
   context "bun archive extract" do
@@ -689,32 +348,6 @@ describe Bun::Bot do
       exec('find data/test/archive/extract_library -print >output/archive_extract_files.txt')
       Bun.readfile('output/archive_extract_files.txt').chomp.should == Bun.readfile('output/test/archive_extract_files.txt').chomp
     end
-    describe "the index" do
-      it "should exist" do
-        file_should_exist "data/test/archive/extract_library/fass/1983/programme/actors/.bun_index/tape.ar083.0698_19830128.txt.descriptor.yml"
-      end
-      describe "contents" do
-        before :each do
-          @original_content = YAML.load(Bun.readfile("data/test/archive/extract_source/.bun_index/ar083.0698.descriptor.yml", :encoding=>'us-ascii'))
-          @content = YAML.load(Bun.readfile("data/test/archive/extract_library/fass/1983/programme/actors/.bun_index/tape.ar083.0698_19830128.txt.descriptor.yml", :encoding=>'us-ascii'))
-        end
-        it "should change the tape" do
-          @content[:tape].should == 'tape.ar083.0698_19830128.txt'
-        end
-        it "should change the tape_path" do
-          @content[:tape_path].should == %{#{exec("pwd").chomp}/data/test/archive/extract_library/fass/1983/programme/actors/tape.ar083.0698_19830128.txt}
-        end
-        it "should record the original tape" do
-          @content[:original_tape].should == 'ar083.0698'
-        end
-        it "should record the original tape_path" do
-          @content[:original_tape_path].should == %{#{exec("pwd").chomp}/data/test/archive/extract_source/ar083.0698}
-        end
-        it "should record the extract time" do
-          @content[:extracted].should be_a(Time)
-        end
-      end
-    end
     after :all do
       exec("rm -rf data/test/archive/extract_source")
       exec("rm -rf data/test/archive/extract_library")
@@ -723,23 +356,12 @@ describe Bun::Bot do
       exec("rm -f output/archive_extract_files.txt")
     end
   end
-  context "bun catalog ls" do
-    before :all do
-      exec("bun catalog ls #{TEST_ARCHIVE} 2>&1 >output/catalog_ls")
-    end
-    it "should give correct output" do
-      Bun.readfile("output/catalog_ls").should == Bun.readfile("output/test/catalog_ls")
-    end
-    after :all do
-      exec("rm -rf output/catalog_ls")
-    end
-  end
   context "bun library compact" do
     before :each do
       exec("rm -rf data/test/archive/compact_files")
       exec("rm -rf data/test/archive/compact_result")
-      exec("cp -r data/test/archive/compact_files_init data/test/archive/compact_files")
-      exec("bun library compact data/test/archive/compact_files data/test/archive/compact_result")
+      exec("cp -r data/test/archive/compact_source_init data/test/archive/compact_source")
+      exec("bun library compact data/test/archive/compact_source data/test/archive/compact_result")
     end
     it "should create the results directory" do
       file_should_exist "data/test/archive/compact_result"

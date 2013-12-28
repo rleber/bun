@@ -11,9 +11,13 @@ module Bun
     # TODO Dump should understand frozen file sizes
     # TODO Dump should be able to dump frozen file preambles 4 chars/word, then 5 chars/word for the remainder
     # TODO Should dump be part of Words?
-    def self.dump(words, options={})
+    def self.dump(data, options={})
+      words = data.words
       offset = options[:offset] || 0
-      if options[:lines]
+      if options[:limit]
+        limit = options[:limit]
+        limit = words.size - 1 if limit >= words.size
+      elsif options[:lines]
         limit = (options[:lines] * WORDS_PER_LINE - 1) + offset
         limit = words.size - 1 if limit >= words.size
       else 
@@ -22,13 +26,12 @@ module Bun
       bit_offsets = options[:bit_offsets] || [0]
       display_offset = (options[:display_offset] || offset) - offset
       stream = options[:to] || STDOUT
-      file = File::Archived.create(:words=>words, :type=>:raw)
-      limit = [limit, file.size-1].min unless options[:unlimited]
+      limit = [limit, data.size-1].min unless options[:unlimited]
       if options[:frozen]
-        characters = file.all_packed_characters
+        characters = data.all_packed_characters
         character_block_size = FROZEN_CHARACTERS_PER_WORD
       else
-        characters = file.all_characters
+        characters = data.all_characters
         character_block_size = UNFROZEN_CHARACTERS_PER_WORD
       end
       # TODO Refactor using Array#justify_rows

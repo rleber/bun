@@ -1,11 +1,31 @@
 TODO
-Universal path URL with substitutions <name>, [<shard index>]
+Remove extra "archive" argument to most commands
+Change bun test, so you can run a subset of tests
+File::Converted.open should attempt to convert an unconverted file
 Annotated file structure
+- Archive convert command
+- Change other commands to work with converted format
+- Allow input from $stdin
+- Remove redundant stuff from descriptor hash
+- Creator information: Bun system, version, development/production, branch, git HEAD
 Filter methods
+Alternate data storage formats
+Complete tests: 
+- archive catalog (check descriptor 'catalog_time' has been changed; test --remove)
+- archive compare_dates
+- archive fetch
+- archive text_status
+- config *
+- library compact (complete tests)
+- library classify
+Combine archive, library
+Remove places code
+Remove config code?
+Remove extraneous code
+Universal path URL with substitutions <name>, [<shard index>]
 New process: pull, annotate, merge (with catalog), decode, find, list/describe, clean, reorganize, extract, push
 Add archived to descriptor
 Add folders (directories plus frozen) and fragments (leaves, but with shards), items (leaves + shards) to collection methods
-Replace the term "tape" with backup?
 Test bun library compact
 - For all files:
   - collapse tape names to the oldest if the content is identical
@@ -29,7 +49,6 @@ Create bun find command (similar to find shell command)
   --clean
   --dirty
 Remove shell.log code
-Change bun test, so you can run a subset of tests
 Move all test cases' input files to data/test directory
 Make tests directory-independent (e.g. on listings)
 Separate file.open from file.load/read

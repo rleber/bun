@@ -67,7 +67,7 @@ module Bun
         
         def load_fields_from_archive
           return unless @file.archive
-          archive_descriptor = @file.archive.descriptor(tape, :build=>false)
+          archive_descriptor = @file.archive.descriptor(tape)
           return unless archive_descriptor
           shard_descriptor = archive_descriptor.shards[number]
           return unless shard_descriptor
@@ -134,7 +134,7 @@ module Bun
         end
 
         def file_date
-          File::Archived.date(_update_date)
+          File::Converted.date(_update_date)
         end
 
         def _update_date
@@ -142,7 +142,7 @@ module Bun
         end
 
         def update_time_of_day
-          File::Archived.time_of_day(_update_time_of_day)
+          File::Converted.time_of_day(_update_time_of_day)
         end
 
         def _update_time_of_day
@@ -154,7 +154,7 @@ module Bun
         end
 
         def file_time
-          File::Archived.time(_update_date, _update_time_of_day)
+          Bun::Data.time(_update_date, _update_time_of_day)
         end
         alias_method :updated, :file_time
 

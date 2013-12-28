@@ -14,15 +14,15 @@ SORT_FIELDS = {
   :description => :description,
   :file        => :path,
   :size        => :file_size,
-  :tape       => :tape,
+  :tape        => :tape,
   :type        => :file_type,
-  :updated     => :updated,
+  :updated     => :file_time,
 }
 TYPE_VALUES = %w{all frozen text huff}
 DATE_FORMAT = '%Y/%m/%d'
 TIME_FORMAT = DATE_FORMAT + ' %H:%M:%S'
 FIELD_CONVERSIONS = {
-  :updated     => lambda {|f| f.nil? ? 'n/a' : f.strftime(f.is_a?(Time) ? TIME_FORMAT : DATE_FORMAT) },
+  :file_time   => lambda {|f| f.nil? ? 'n/a' : f.strftime(f.is_a?(Time) ? TIME_FORMAT : DATE_FORMAT) },
   :file_type   => lambda {|f| f.to_s.sub(/^./) {|m| m.upcase} },
   :shard_count => lambda {|f| f==0 ? '' : f },
 }
@@ -32,26 +32,31 @@ FIELD_HEADINGS = {
   :file_type     => 'Type',
   :path          => 'File',
   :shard_count   => 'Shards',
-  :tape         => 'Tape',
-  :tape_path    => 'Tape',
-  :updated       => 'Updated',
+  :tape          => 'Tape',
+  :tape_path     => 'Tape',
+  :file_time     => 'Updated',
 }
 DEFAULT_VALUES = {
   :file_size   => 0,
   :shard_count => 0,
-  :updated     => Time.now,
+  :file_time   => Time.now,
+}
+SHARD_FIELDS = {
+  :file_size     => :size,
+  :shard_count   => '',
+  :file_type     => 'Shard',
+  # :updated       => :file_time,
 }
 
 desc "ls ARCHIVE", "Display an index of archived files"
-option "build",     :aliases=>"-b", :type=>'boolean',                              :desc=>"Don't rely on at index; always build information from source file"
 option "descr",     :aliases=>"-d", :type=>'boolean',                              :desc=>"Include description"
 option "files",     :aliases=>"-f", :type=>'string',  :default=>'',                :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "frozen",    :aliases=>"-r", :type=>'boolean',                              :desc=>"Recursively include contents of freeze files"
 option "long",      :aliases=>"-l", :type=>'boolean',                              :desc=>"Display long format (incl. text vs. frozen)"
 option 'path',      :aliases=>'-p', :type=>'boolean',                              :desc=>"Display paths for tape files"
-option 'quick',     :aliases=>'-Q', :type=>'boolean',                              :desc=>"Quickly display tapes"
+option 'onecolumn', :aliases=>'-o', :type=>'boolean',                              :desc=>"Display tape names only"
 option "sort",      :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order(s) for files (#{SORT_VALUES.join(', ')})"
-option "tapes",    :aliases=>"-h", :type=>'string',  :default=>'',                :desc=>"Show only tapes that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
+option "tapes",     :aliases=>"-t", :type=>'string',  :default=>'',                :desc=>"Show only tapes that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "type",      :aliases=>"-T", :type=>'string',  :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
 # TODO Refactor tape/file patterns; use tape::file::shard syntax
 # TODO Refactor code into shorter submethods
@@ -74,9 +79,9 @@ def ls(at)
   stop "!Invalid --tapes pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless tape_pattern
 
   fields =  options[:path] ? [:tape_path] : [:tape]
-  fields += [:path]
+  fields += [:path] unless options[:onecolumn]
   fields += [:file_type] if options[:type]
-  fields += [:file_type, :updated, :file_size] if options[:long]
+  fields += [:file_type, :file_time, :file_size] if options[:long]
   fields += [:shard_count] if options[:long]
   fields += [:description] if options[:descr]
   fields = fields.uniq
@@ -91,6 +96,9 @@ def ls(at)
     sort_fields = []
   end
   sort_fields += [:tape, :path]
+  if options[:onecolumn]
+    sort_fields = [:tape]
+  end
   if options[:path]
     sort_fields = sort_fields.map {|f| f==:tape ? :tape_path : f }
   end
@@ -101,7 +109,7 @@ def ls(at)
   # Retrieve file information
   archive = Archive.new(at, options)
   ix = archive.tapes
-  if options[:quick]
+  if options[:onecolumn] && !options[:frozen] && tape_pattern==// && type_pattern==// && !options[:path]
     puts ix
     return
   end
@@ -109,7 +117,7 @@ def ls(at)
   file_info = []
   ix = ix.select{|tape| tape =~ tape_pattern}
   files = ix.each_with_index do |tape, i|
-    file_descriptor = archive.descriptor(tape, :build=>options[:build])
+    file_descriptor = archive.descriptor(tape)
     file_row = fields.inject({}) do |hsh, f|
       # TODO This is a little smelly
       value = if f==:shard_count
@@ -123,7 +131,17 @@ def ls(at)
     file_info << file_row
     if options[:frozen] && file_descriptor.file_type == :frozen
       file_descriptor.shards.each do |d|
-        file_info << fields.inject({}) {|hsh, f| hsh[f] = d[f]; hsh }
+        file_info << fields.inject({}) do |hsh, f|
+          new_f = SHARD_FIELDS[f] || f
+          hsh[f] = if new_f==:path
+            File.join(file_descriptor[:path], d[:name])
+          elsif new_f.is_a?(Symbol)
+            d[new_f] || file_descriptor[new_f] 
+          else
+            new_f
+          end
+          hsh
+        end
       end
     end
   end

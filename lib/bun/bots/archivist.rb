@@ -12,7 +12,6 @@ module Bun
   module Bot
     class Archivist < Base
       load_tasks
-      register Bun::Bot::Archivist::Index, :index, "index", "Process Honeywell archive index"
     end
   end
 end
