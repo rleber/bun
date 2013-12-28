@@ -1,5 +1,13 @@
 TODO
 Remove extra "archive" argument to most commands
+- bun convert *
+- bun describe
+- bun dump
+- bun freezer dump
+- bun freezer ls
+- bun freezer thaw
+- bun ls (i.e. --tape)
+- bun unpack
 Change bun test, so you can run a subset of tests
 File::Converted.open should attempt to convert an unconverted file
 Annotated file structure

@@ -69,6 +69,10 @@ module Bun
       _run "cp", from, to, options
     end
     
+    def cp_r(from, to, options={})
+      _run "cp -r", from, to, options
+    end
+    
     def thaw(*args)
       options = {}
       options = args.pop if args.last.is_a?(Hash)

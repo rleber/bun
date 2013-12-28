@@ -120,7 +120,7 @@ describe Bun::Archive do
           exec("rm -f output/convert_ar003.0698")
           exec("rm -rf data/test/archive/general_test_raw")
           exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
-          exec("bun convert data/test/archive/general_test_raw ar003.0698 - >output/convert_ar003.0698")
+          exec("bun convert data/test/archive/general_test_raw/ar003.0698 - >output/convert_ar003.0698")
         end
         it "should create the proper file" do
           file_should_exist "output/convert_ar003.0698"
@@ -139,7 +139,7 @@ describe Bun::Archive do
         exec("rm -f output/convert_ar003.0698")
         exec("rm -rf data/test/archive/general_test_raw")
         exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
-        exec("bun convert data/test/archive/general_test_raw ar003.0698 output/convert_ar003.0698")
+        exec("bun convert data/test/archive/general_test_raw/ar003.0698 output/convert_ar003.0698")
       end
       it "should create the proper file" do
         file_should_exist "output/convert_ar003.0698"
@@ -157,7 +157,7 @@ describe Bun::Archive do
         exec("rm -f output/convert_ar003.0698")
         exec("rm -rf data/test/archive/general_test_raw")
         exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
-        exec("bun convert data/test/archive/general_test_raw ar003.0698")
+        exec("bun convert data/test/archive/general_test_raw/ar003.0698")
       end
       it "should generate the proper conversion in place" do
         Bun.readfile("data/test/archive/general_test_raw/ar003.0698").chomp.should == Bun.readfile('output/test/convert_ar003.0698').chomp
@@ -172,7 +172,7 @@ describe Bun::Archive do
         exec("rm -f output/convert_ar019.0175")
         exec("rm -rf data/test/archive/general_test_raw")
         exec("cp -r data/test/archive/general_test_raw_init data/test/archive/general_test_raw")
-        exec("bun convert data/test/archive/general_test_raw ar019.0175 output/convert_ar019.0175")
+        exec("bun convert data/test/archive/general_test_raw/ar019.0175 output/convert_ar019.0175")
       end
       it "should create the proper file" do
         file_should_exist "output/convert_ar019.0175"
