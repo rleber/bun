@@ -249,8 +249,8 @@ describe Bun::Bot do
   end
     
   describe "describe" do
-    include_examples "command", "describe text file", "describe #{TEST_ARCHIVE} ar003.0698", "describe_ar003.0698"
-    include_examples "command", "describe frozen file", "describe #{TEST_ARCHIVE} ar025.0634", "describe_ar025.0634"
+    include_examples "command", "describe text file", "describe #{TEST_ARCHIVE}/ar003.0698", "describe_ar003.0698"
+    include_examples "command", "describe frozen file", "describe #{TEST_ARCHIVE}/ar025.0634", "describe_ar025.0634"
   end
   
   context "functioning outside the base directory" do
@@ -263,7 +263,7 @@ describe Bun::Bot do
       File.expand_path(Dir.pwd).should == File.expand_path(File.join(File.dirname(__FILE__),'..'))
     end
     it "should function okay in a different directory" do
-      exec("cd ~ ; bun describe #{TEST_ARCHIVE} ar003.0698")
+      exec("cd ~ ; bun describe #{TEST_ARCHIVE}/ar003.0698")
       $?.exitstatus.should == 0
     end
     after :each do
@@ -276,31 +276,32 @@ describe Bun::Bot do
   describe "ls" do
     include_examples "command", "ls", "ls #{TEST_ARCHIVE}", "ls"
     include_examples "command", "ls -o", "ls -o #{TEST_ARCHIVE}", "ls_o"
-    include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr -t ar003.0698 #{TEST_ARCHIVE}", "ls_ldrt_ar003.0698"
-    include_examples "command", "ls -ldr with frozen file (ar145.2699)", "ls -ldr -t ar145.2699 #{TEST_ARCHIVE}", "ls_ldrt_ar145.2699"
+    include_examples "command", "ls -ldr with text file (ar003.0698)", "ls -ldr #{TEST_ARCHIVE}/ar003.0698", "ls_ldr_ar003.0698"
+    include_examples "command", "ls -ldr with frozen file (ar145.2699)", "ls -ldr #{TEST_ARCHIVE}/ar145.2699", "ls_ldr_ar145.2699"
+    include_examples "command", "ls with glob", "ls #{TEST_ARCHIVE}/ar08*", "ls_glob"
   end
   describe "readme" do
     include_examples "command", "readme", "readme", "doc/readme.md"
   end
   describe "unpack" do
-    include_examples "command", "unpack", "unpack #{TEST_ARCHIVE} ar003.0698", "unpack"
+    include_examples "command", "unpack", "unpack #{TEST_ARCHIVE}/ar003.0698", "unpack"
   end
   context "bun dump" do
-    include_examples "command", "dump ar003.0698", "dump #{TEST_ARCHIVE} ar003.0698", "dump_ar003.0698"
-    include_examples "command", "dump -s ar003.0698", "dump #{TEST_ARCHIVE} -s ar003.0698", "dump_s_ar003.0698"
-    include_examples "command", "dump -f ar004.0888", "dump #{TEST_ARCHIVE} -f ar004.0888", "dump_f_ar004.0888"
+    include_examples "command", "dump ar003.0698", "dump #{TEST_ARCHIVE}/ar003.0698", "dump_ar003.0698"
+    include_examples "command", "dump -s ar003.0698", "dump -s #{TEST_ARCHIVE}/ar003.0698", "dump_s_ar003.0698"
+    include_examples "command", "dump -f ar004.0888", "dump -f #{TEST_ARCHIVE}/ar004.0888", "dump_f_ar004.0888"
   end
   context "bun freezer" do
     context "ls" do
-      include_examples "command", "freezer ls ar004.0888", "freezer ls #{TEST_ARCHIVE} ar004.0888", "freezer_ls_ar004.0888"
-      include_examples "command", "freezer ls -l ar004.0888", "freezer ls #{TEST_ARCHIVE} -l ar004.0888", "freezer_ls_l_ar004.0888"
+      include_examples "command", "freezer ls ar004.0888", "freezer ls #{TEST_ARCHIVE}/ar004.0888", "freezer_ls_ar004.0888"
+      include_examples "command", "freezer ls -l ar004.0888", "freezer ls -l #{TEST_ARCHIVE}/ar004.0888", "freezer_ls_l_ar004.0888"
     end
     context "dump" do
-      include_examples "command", "freezer dump ar004.0888 +0", "freezer dump #{TEST_ARCHIVE} ar004.0888 +0", "freezer_dump_ar004.0888_0"
-      include_examples "command", "freezer dump -s ar004.0888 +0", "freezer dump #{TEST_ARCHIVE} -s ar004.0888 +0", "freezer_dump_s_ar004.0888_0"
+      include_examples "command", "freezer dump ar004.0888 +0", "freezer dump #{TEST_ARCHIVE}/ar004.0888 +0", "freezer_dump_ar004.0888_0"
+      include_examples "command", "freezer dump -s ar004.0888 +0", "freezer dump -s #{TEST_ARCHIVE}/ar004.0888 +0", "freezer_dump_s_ar004.0888_0"
     end
     context "thaw" do
-      include_examples "command", "freezer thaw ar004.0888 +0", "freezer thaw #{TEST_ARCHIVE} ar004.0888 +0", "freezer_thaw_ar004.0888_0"
+      include_examples "command", "freezer thaw ar004.0888 +0", "freezer thaw #{TEST_ARCHIVE}/ar004.0888 +0", "freezer_thaw_ar004.0888_0"
     end
   end
   context "bun catalog" do

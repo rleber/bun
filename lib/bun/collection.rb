@@ -171,14 +171,8 @@ module Bun
     
     def build_index
       items.inject({}) do |index_hash, item|
-        f = begin
-          File.open(item)
-        rescue Bun::File::UnknownFileType =>e 
-          nil
-        end
-        descriptor = f && f.descriptor
+        descriptor = File.descriptor(item)
         index_hash[expand_path(item, :already_from_wd=>true)] = descriptor if descriptor
-        f.close if f
         index_hash
       end
     end

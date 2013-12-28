@@ -1,14 +1,17 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-desc "dump ARCHIVE FILE SHARD", "Dump a frozen Honeywell file"
-option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive path'
+desc "dump FILE SHARD", "Dump a frozen Honeywell file"
 option "escape",  :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
 option "lines",   :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
 option "offset",  :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lines'
 option "spaces",  :aliases=>'-s', :type=>'boolean', :desc=>'Display spaces unchanged'
 option "thawed",  :aliases=>'-t', :type=>'boolean', :desc=>'Display the file in partially thawed format'
-def dump(at, file_name, n)
+def dump(file, n)
+  at = File.dirname(file)
+  file_name = File.basename(file)
+  # TODO Is the Archive object even necessary here?
+  
   limit = options[:lines]
   archive = Archive.new(at)
   directory = archive.at

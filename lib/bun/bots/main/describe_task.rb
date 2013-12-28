@@ -2,8 +2,12 @@
 # -*- encoding: us-ascii -*-
 
 SHARDS_ACROSS = 5
-desc "describe ARCHIVE TAPE", "Display description information for a tape"
-def describe(at, file_name)
+desc "describe FILE", "Display description information for a tape"
+def describe(file)
+  at = File.dirname(file)
+  file_name = File.basename(file)
+  # TODO Is the Archive object even necessary here?
+  
   archive = Archive.new(at, options)
   descriptor    = archive.descriptor(file_name)
   abort "File #{file_name} is not in the archive" unless descriptor

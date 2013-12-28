@@ -48,7 +48,9 @@ SHARD_FIELDS = {
   # :updated       => :file_time,
 }
 
-desc "ls ARCHIVE", "Display an index of archived files"
+# TODO --recursive option
+
+desc "ls FILE...", "Display an index of archived files"
 option "descr",     :aliases=>"-d", :type=>'boolean',                              :desc=>"Include description"
 option "files",     :aliases=>"-f", :type=>'string',  :default=>'',                :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "frozen",    :aliases=>"-r", :type=>'boolean',                              :desc=>"Recursively include contents of freeze files"
@@ -56,11 +58,10 @@ option "long",      :aliases=>"-l", :type=>'boolean',                           
 option 'path',      :aliases=>'-p', :type=>'boolean',                              :desc=>"Display paths for tape files"
 option 'onecolumn', :aliases=>'-o', :type=>'boolean',                              :desc=>"Display tape names only"
 option "sort",      :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order(s) for files (#{SORT_VALUES.join(', ')})"
-option "tapes",     :aliases=>"-t", :type=>'string',  :default=>'',                :desc=>"Show only tapes that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "type",      :aliases=>"-T", :type=>'string',  :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
 # TODO Refactor tape/file patterns; use tape::file::shard syntax
 # TODO Refactor code into shorter submethods
-def ls(at)
+def ls(*paths)
   type_pattern = case options[:type].downcase
     when 'f', 'frozen'
       /^(frozen|shard)$/i
@@ -75,8 +76,6 @@ def ls(at)
     end
   file_pattern = get_regexp(options[:files])
   stop "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
-  tape_pattern = get_regexp(options[:tapes])
-  stop "!Invalid --tapes pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless tape_pattern
 
   fields =  options[:path] ? [:tape_path] : [:tape]
   fields += [:path] unless options[:onecolumn]
@@ -105,19 +104,19 @@ def ls(at)
   sort_fields.each do |sort_field|
     stop "!Can't sort by #{sort_field}. It isn't included in this format" unless fields.include?(sort_field)
   end
+  
+  # Expand directories, if given as parameters
+  paths = paths.map {|path| File.directory?(path) ? Dir.glob("#{path}/*") : path }.flatten
 
   # Retrieve file information
-  archive = Archive.new(at, options)
-  ix = archive.tapes
-  if options[:onecolumn] && !options[:frozen] && tape_pattern==// && type_pattern==// && !options[:path]
-    puts ix
+  if options[:onecolumn] && !options[:frozen] && type_pattern==// && !options[:path]
+    output = options[:path] ? paths : paths.map{|p| File.basename(p) }
+    puts output
     return
   end
-  # TODO Refactor using archive.select
   file_info = []
-  ix = ix.select{|tape| tape =~ tape_pattern}
-  files = ix.each_with_index do |tape, i|
-    file_descriptor = archive.descriptor(tape)
+  files = paths.each_with_index do |tape, i|
+    file_descriptor = File.descriptor(tape)
     file_row = fields.inject({}) do |hsh, f|
       # TODO This is a little smelly
       value = if f==:shard_count
@@ -174,7 +173,6 @@ def ls(at)
       end
     end
   end
-  puts "Archive at #{File.expand_path(archive.at)}:"
   if table.size <= 1
     puts "No matching files"
   else

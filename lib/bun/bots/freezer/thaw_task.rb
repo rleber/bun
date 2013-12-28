@@ -2,7 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 # TODO Thaw all files
-desc "thaw ARCHIVE FILE SHARD [TO]", "Uncompress a frozen Honeywell file"
+desc "thaw FILE SHARD [TO]", "Uncompress a frozen Honeywell file"
 option "bare",    :aliases=>"-b", :type=>"boolean", :desc=>"Do not create an index entry for the thawed file"
 option "warn",    :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
 long_desc <<-EOT
@@ -11,7 +11,11 @@ file from the end of the archive. Anything else denotes the name of a file. A ba
 beginning of a file name, so that '\\+1' refers to a file named '+1', whereas '+1' refers to the first file in the archive,
 whatever its name.
 EOT
-def thaw(at, file_name, n, out=nil)
+def thaw(file, n, out=nil)
+  at = File.dirname(file)
+  file_name = File.basename(file)
+  # TODO Is the Archive object even necessary here?
+  
   archive = Archive.new(at)
   directory = archive.at
   file = archive.open(file_name)

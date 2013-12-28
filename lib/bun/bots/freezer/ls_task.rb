@@ -13,14 +13,17 @@ end
 
 DEFAULT_WIDTH = 120 # TODO Read the window size for this
 SORT_VALUES = %w{order name size update}
-desc "ls ARCHIVE FILE", "List contents of a frozen Honeywell file"
-option 'at',      :aliases=>'-a', :type=>'string',                               :desc=>'Archive path'
+desc "ls FILE", "List contents of a frozen Honeywell file"
 option "files",   :aliases=>"-f", :type=>'string',  :default=>'.*',              :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "long",    :aliases=>'-l', :type=>'boolean',                              :desc=>"Display listing in long format"
 option "one",     :aliases=>'-1', :type=>'boolean',                              :desc=>"Display one file per line (implied by --long)"
 option "sort",    :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
 option "width",   :aliases=>'-w', :type=>'numeric', :default=>DEFAULT_WIDTH,     :desc=>"Width of display (for short format only)"
-def ls(at, file_name)
+def ls(file)
+  at = File.dirname(file)
+  file_name = File.basename(file)
+  # TODO Is the Archive object even necessary here?
+  
   stop "!Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
   file_pattern = get_regexp(options[:files])
   stop "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern

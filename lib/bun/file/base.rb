@@ -75,6 +75,12 @@ module Bun
           :unknown
         end
       end
+      
+      def descriptor(path)
+        open(path) {|f| f.descriptor }
+      rescue Bun::File::UnknownFileType =>e 
+        nil
+      end
     end
     attr_reader :archive
     attr_reader :tape_path
