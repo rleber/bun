@@ -44,7 +44,7 @@ module Bun
         # end
 
         def open(fname, options={}, &blk)
-          input = YAML.load(::File.read(fname))
+          input = YAML.load(File.read(fname))
           data = input.delete(:content)
           @content = Data.new(
             :data=>data, 

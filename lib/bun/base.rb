@@ -3,9 +3,10 @@
 
 module Bun
   def self.readfile(file, options={})
-    return nil unless ::File.file?(file)
     encoding = options[:encoding] || 'ascii-8bit'
-    ::File.read(file, :encoding=>encoding)
+    return $stdin.read.force_encoding(encoding) if file == '-'
+    return nil unless ::File.file?(file)
+    Bun::File.read(file, :encoding=>encoding)
   end
   
   def self.convert_glob(pat)

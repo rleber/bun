@@ -84,7 +84,7 @@ module Bun
       if @words.nil?
         @all_characters = @characters = @packed_characters = @descriptor = nil
       else
-        @descriptor = Bun::File::Descriptor::Raw.new(self)
+        @descriptor = Bun::File::Descriptor::Packed.new(self)
         @all_characters = LazyArray.new(@words.size*characters_per_word) do |n|
           @words.characters.at(n)
         end

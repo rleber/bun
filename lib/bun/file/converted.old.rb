@@ -6,7 +6,7 @@ require 'date'
 module Bun
 
   class File < ::File
-    class Raw < Bun::File
+    class Packed < Bun::File
       class << self
 
         EOF_MARKER = 0x00000f000 # Octal 000000170000 or 0b000000000000000000001111000000000000
@@ -108,7 +108,7 @@ module Bun
           preamble_size = content_offset(initial_fetch)
           fetch_size = preamble_size + File::Frozen::Descriptor.offset+ File::Frozen::Descriptor.size
           full_fetch = fetch_size > INITIAL_FETCH_SIZE ? get_words(fetch_size, options) : initial_fetch
-          File::RawHeader.send(:new, :words=>full_fetch)
+          File::PackedHeader.send(:new, :words=>full_fetch)
         end
     
         def get_words(n, options)

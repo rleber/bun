@@ -9,7 +9,56 @@ module Bun
 
   class File < ::File
     class << self
-
+      
+      def preread(path)
+        return $stdin_tempfile if $stdin_tempfile
+        if path == '-'
+          tempfile = Tempfile.new('stdin')
+          tempfile.write($stdin.read)
+          tempfile.close
+          $stdin_tempfile = tempfile.path
+        else
+          path
+        end
+      end
+      
+      def read(*args)
+        path = preread(args.first)
+        args[0] = path
+        ::File.read(*args)
+      end
+      
+      # attr_accessor :stdin_buffer
+      # 
+      #  def read(*args)
+      #    original_args = args.dup
+      #    options = {}
+      #    if args.last.is_a?(Hash)
+      #      options = args.pop
+      #    end
+      #    raise "Missing path" if args.size == 0
+      #    encoding = options[:encoding] || 'ascii-8bit'
+      #    path = args.first
+      #    res = if path == '-'
+      #      stdin_buffer ||= ''
+      #      if args.size >=2
+      #        len = args[1]
+      #        if len > stdin_buffer.size
+      #          data = $stdin.read(len-stdin_buffer.size).force_encoding(encoding)
+      #          stdin_buffer += data
+      #        end
+      #        stdin_buffer[0,len]
+      #      else
+      #        stdin_buffer + $stdin.read.force_encoding(encoding)
+      #      end
+      #    else
+      #      debug "About to do File.read: args: #{args.inspect}"
+      #      ::File.read(*args)
+      #    end
+      #    debug "args: #{original_args.inspect} => #{res.inspect}"
+      #    res
+      #  end
+ 
       def relative_path(*f)
         options = {}
         if f.last.is_a?(Hash)
@@ -46,7 +95,7 @@ module Bun
       end
   
       def clean?(text)
-        text !~ INVALID_CHARACTER_REGEXP
+        text.force_encoding('ascii-8bit') !~ INVALID_CHARACTER_REGEXP
       end
   
       def descriptor(options={})
@@ -54,13 +103,13 @@ module Bun
       end
       
       def packed?(path)
-        prefix = ::File.open(path,'rb') {|f| f.read(3)}
+        prefix = File.read(path, 3)
         prefix != '---' # YAML prefix; one of the unpacked formats
       end
       
       def open(path, options={}, &blk)
         if packed?(path)
-          File::Raw.open(path, options, &blk)
+          File::Packed.open(path, options, &blk)
         else
           File::Unpacked.open(path, options, &blk)
         end
@@ -87,12 +136,17 @@ module Bun
       end
       
       # Convert from packed format to unpacked (i.e. YAML)
-      def unpack(path, to)
+      def unpack(path, to, options={})
         return unless packed?(path)
         open(path) do |f|
           cvt = f.unpack
+          cvt.descriptor.tape = options[:tape] if options[:tape]
           cvt.write(to)
         end
+      end
+      
+      def expand_path(path, relative_to=nil)
+        path == '-' ? path : super(path, relative_to)
       end
     end
     attr_reader :archive

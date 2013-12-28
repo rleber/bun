@@ -1,16 +1,14 @@
 TODO
 Change bun test, so you can run a subset of tests
-Allow output to stdout
-Filter methods (i.e. allow input to stdin, output to stdout)
 Allow multiple files in certain commands
 Change unpacked tape file extensions to .bun
 File::Unpacked.open should attempt to unpack an packed file
 Annotated file structure
-- Archive unpack command *
-- Change other commands to work with unpacked format *
-- Allow input from $stdin
-- Remove redundant stuff from descriptor hash *
-- Creator information: Bun system, version, development/production, branch, git HEAD
+- Archive unpack command √
+- Change other commands to work with unpacked format √
+- Allow input from $stdin √
+- Remove redundant stuff from descriptor hash √
+- Creator information: Bun system, version, development/production, branch, git HEAD, unpacked_time, decoded_time, etc.
 Alternate data storage formats
 Complete tests: 
 - archive catalog (check descriptor 'catalog_time' has been changed; test --remove)
@@ -25,7 +23,6 @@ Remove places code
 Remove config code?
 Remove extraneous code
 New process: pull, annotate, merge (with catalog), decode, find, list/describe, clean, reorganize, extract, push
-Add decoded_time to descriptor
 Add folders (directories plus frozen) and fragments (leaves, but with shards), items (leaves + shards) to collection methods
 Test bun library compact
 - For all files:

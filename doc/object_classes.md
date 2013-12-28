@@ -32,14 +32,14 @@ _Files_
 There is a hierarchy of File and related classes:
 ::File
     Bun::File
-        Bun::File::Raw
+        Bun::File::Packed
         Bun::File::Unpacked
             Bun::File::Blocked
                 Bun::File::Text
             Bun::File::Frozen
             Bun::File::Header
             Bun::File::Huffman
-            Bun::File::RawHeader
+            Bun::File::PackedHeader
         Bun::File::Extracted
         Bun::File::Library
         

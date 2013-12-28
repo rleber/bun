@@ -4,7 +4,7 @@
 module Bun
   class File < ::File
     module Descriptor
-      class Raw < Base
+      class Packed < Base
         class << self
           MAXIMUM_SIZE = 3000
         
@@ -83,7 +83,12 @@ module Bun
         # end
       
         def tape
-          File.basename(tape_path)
+          @tape ||= File.basename(tape_path)
+          @tape
+        end
+        
+        def tape=(name)
+          @tape = name
         end
         
               

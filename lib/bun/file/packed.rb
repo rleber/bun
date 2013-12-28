@@ -6,10 +6,11 @@ require 'date'
 module Bun
 
   class File < ::File
-    class Raw < Bun::File
+    class Packed < Bun::File
       class << self
         def open(fname, options={}, &blk)
-          path = expand_path(fname)
+          path = fname
+          path = expand_path(fname) unless fname == '-'
           data = read(path)
           obj = self.send(:new,options.merge(:data=>data, :tape=>fname, :tape_path=>path))
           if block_given?
