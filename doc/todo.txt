@@ -1,93 +1,89 @@
 TODO
-Allow multiple files in certain commands
-Change unpacked tape file extensions to .bun
-File::Unpacked.open should attempt to unpack an packed file
-Alternate data storage formats
+_High Priority_
+Change file_type to tape_type
+Decode to YAML format
+Add decode_time, decoded_by to annotated decoded format
+Create bun archive extract (or unload): Convert decoded YAML format to flat file
+Create bun archive find command (similar to find shell command)
+    --print
+    --exec
+    --command (--command 'foo xxx' => bun foo xxx)
+    --type x
+    --clean
+    --dirty
+    Output from commands like clean/analyze
+Change bun library classify to bun library clean
+Create bun analyze
+    Clean/dirty
+    Flag whether files contain backspaces/overstrikes, or tabs
+    Flag whether files contain troff commands
+    Printer listing
+    Object file
+    Try determining type by comparing preamble contents:
+        Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
+        binary load module
+Flag whether files contain backspaces/overstrikes, or tabs
+Flag whether files contain troff commands
+Fix bun library classify
+Alternate data storage formats: raw, binary, octal, hex
+Implement bun archive organize
+    Keep a .bun_spec.yml file in decoded archives showing how the archive is organized?
+    Option to turn off inclusion of file modification date in unpacked or thawed file names
+    Option to turn off resetting file modification dates for unpacked or thawed files
 Complete tests: 
-- archive catalog (check descriptor 'catalog_time' has been changed; test --remove)
-- archive compare_dates
-- archive fetch
-- archive text_status
-- config *
-- library compact (complete tests)
-- library classify
-Refactor the tests into smaller sets
+    archive catalog (check descriptor 'catalog_time' has been changed; test --remove)
+    archive compare_dates
+    archive pull
+    archive text_status
+    config *
+    library compact (complete tests)
+        For all files:
+            collapse tape names to the oldest if the content is identical
+            collapse tape name entirely if there's only one version
+        For text files:
+            Collapse dates to the oldest, if the content is identical
+            If there's only one date, collapse the date altogether (?)
+            If there's more than one date, collapse the HHMMSS unless the YYMMDD is identical
+        For frozen shards:
+            Above rules apply within a frozen file
+            For frozen files, similar rules apply:
+                Collapse dates to the oldest, if the content is identical
+                If there's only one date, collapse the date altogether
+                If there's more than one date, collapse the HHMMSS unless the YYMMDD is identical
+    library classify
+Create bun library (or archive) push
 Combine archive, library
+Document new process: pull, unpack, catalog, decode, find, list/describe, clean, organize, extract, push
+Implement Huffman decoding
+
+_Medium Priority_
+Change shard 0 to mean the first shard; use shard '\\0', (or shard "0") for a shard named '0'
+Create bun archive find_duplicates
+Resolve backspaces: to underlining, overstrike or bold (explore 'col' command)
+Convert troff to HTML or Markdown, or some other modern format (explore 'groff -T')
+Refactor the tests into smaller sets
 Remove places code
 Remove config code?
 Remove extraneous code
-New process: pull, unpack, catalog, decode, find, list/describe, clean, reorganize, extract, push
-Add folders (directories plus frozen) and fragments (leaves, but with shards), items (leaves + shards) to collection methods
-Annotated decoded format
-Add decode_time, decoded_by to annotated decoded format
-Test bun library compact
-- For all files:
-  - collapse tape names to the oldest if the content is identical
-  - collapse tape name entirely if there's only one version
-- For text files:
-  - Collapse dates to the oldest, if the content is identical
-  - If there's only one date, collapse the date altogether (?)
-  - If there's more than one date, collapse the HHMMSS unless the YYMMDD is identical
-- For frozen shards:
-  - Above rules apply within a frozen file
-  - For frozen files, similar rules apply:
-    - Collapse dates to the oldest, if the content is identical
-    - If there's only one date, collapse the date altogether
-    - If there's more than one date, collapse the HHMMSS unless the YYMMDD is identical
-Change bun library classify to bun library clean
-Create bun find command (similar to find shell command)
-  --print
-  --exec
-  --command (--command 'foo xxx' => bun foo xxx)
-  --type x
-  --clean
-  --dirty
 Remove shell.log code
-Move all test cases' input files to data/test directory
-Make tests directory-independent (e.g. on listings)
-Separate file.open from file.load/read
-Refactor other commands into the appropriate classes
-Set atime only when we actually read a file (not just the preamble)
-Integrate bun archive text_status into bun ls
-Change shard 0 to mean the first shard; use shard '\\0', (or shard "0") for a shard named '0'
-Allow globs in file patterns
 Refactor Bots to use Actors (or put methods (e.g. thaw, dump) into the data objects)
-Stream-oriented versions of thaw, etc.
-Ability to 'bun archive ls' by archive name patterns
-Ability to search xref'ed files, for example find files with multiple copies
-Add --select option to bun ls
-Add --select option to bun decode
-Why doesn't words[0].octal work?
-Ignore files not in the index
-Make set_timestamp automatic
-Move archive fetch logic to Archive object
-Keep a .spec file in decoded archives showing how the archive is organized?
+Optimization ideas: Continue examining Indexable::Basic, since it's probably 10-15% of execution time
+    Reduce usage, optimize "center" code
+File type for print listings (Qu: are these ever frozen?)
+Gemify
+    Move Bot::Base to a gem; provide tests
+    Build as a gem
+    Revise installation readme
+    Upload to Github
+
+    
+_Low Priority_
+Allow multiple files in certain commands
+Integrate bun archive text_status into bun ls
 Combine freezer ls with bun ls
+Combine bun describe with bun ls
 Combine freezer dump with bun dump
 Combine archive decode and decode
-Option to turn off inclusion of file modification date in unpacked or thawed file names
-Option to turn off resetting file modification dates for unpacked or thawed files
 Option to customize extension on unpacked or thawed files (e.g. '.txt')
 Option to create archives organized like file/v1/file1, file/v2/file2, etc.
-Implement Huffman decoding
-Standardize Decode and Defrost interfaces: decode, instead of unpack/thaw
-Remove extraneous output files
-Resolve backspaces: to underlining, overstrike or bold (explore 'col' command)
-Flag whether files contain backspaces/overstrikes, or tabs
-Convert troff to HTML or Markdown, or some other modern format (explore 'groff -T')
-Flag whether files contain troff commands
-File type for print listings (Qu: are these ever frozen?)
-Try determining type by comparing preamble contents: Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean binary load module
-Optimization ideas: Continue examining Indexable::Basic, since it's probably 10-15% of execution time: Reduce usage, optimize "center" code
 Refactor Slicr based on the concept of layers, etc.
-Clean code
-Move Bot::Base to a gem; provide tests
-Build as a gem
-Revise installation readme
-Upload to Github
-Why does bun ls take so long?
-Rename Bot modules, e.g. Archive bot is in "archive_bot.rb" and directory "archive_bot"
-Why the distinction between repositories and archives? Why not just use URLs, and let the tell the difference, and
-have an "archive copy" command to copy from one to the other?
-Create stream-based versions of the major conversion commands (e.g. thaw, unpack). This would allow the use of binary
-editors, etc. to try to recover files that are corrupted.
