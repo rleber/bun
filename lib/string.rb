@@ -147,7 +147,7 @@ class String
          !last_runnable ||
          ch =~ /[aA0\x00]/ ||  # Don't allow a-z to run into A-Z, etc.
          ch_asc != last_asc + 1
-        runs << ch
+        runs << ((ch=='-') ? '\\-' : ch) # Always escape '-' to avoid ambiguity
       else # Add to a run
         if runs.last =~ /^.-.$/m # Add to an existing run
           runs.last[-1,1] = ch
@@ -161,7 +161,7 @@ class String
       last_asc = ch_asc
       last_runnable = ch_runnable
     end
-    '[' + runs.join.inspect[1..-2].gsub('/','\/') + ']'
+    '[' + runs.join.inspect[1..-2].gsub('/','\/').gsub('\\\\-', '\\-') + ']'
   end
 end
 
