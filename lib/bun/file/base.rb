@@ -8,6 +8,8 @@ require 'date'
 module Bun
 
   class File < ::File
+    class InvalidFileCheck < ArgumentError; end
+
     class << self
       
       def preread(path)
@@ -96,6 +98,27 @@ module Bun
   
       def clean?(text)
         text.force_encoding('ascii-8bit') !~ INVALID_CHARACTER_REGEXP
+      end
+
+      CHECK_TESTS = {
+        clean: {
+          options: [:clean, :dirty],
+          description: "File contains special characters",
+          test: lambda {|text| File.clean?(text) ? :clean : :dirty }
+        }
+      }
+      
+      def check_tests
+        CHECK_TESTS
+      end
+      
+      def check(path, test)
+        spec = check_tests[test.to_sym]
+        raise InvalidFileCheck, "!Invalid test: #{test.inspect}" unless spec
+        content = read(path)
+        test_result = spec[:test].call(content)
+        ix = spec[:options].index(test_result) || spec[:options].size
+        {code: ix, description: test_result}
       end
   
       def descriptor(options={})
