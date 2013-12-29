@@ -11,18 +11,12 @@ module Bun
           .map{|f| f.sub(/^#{TEST_DIRECTORY}\//,'').sub(/_spec.rb$/,'')}
       end
       
-      def run_test(test)
-        load_path = File.dirname(__FILE__).sub(/bun.*/,'bun')
-        test_file = File.join(TEST_DIRECTORY, "#{test}_spec.rb")
-        system("rspec -c -f d -I . #{test_file.inspect}")
-      end
-
       def run(*tests)
         tests = Bun::Test.all_tests if tests == %w{all}
-        tests.each do |test|
-          res = run_test(test)
-          stop "!Failed test" unless res
-        end
+        load_path = File.dirname(__FILE__).sub(/bun.*/,'bun')
+        test_files = tests.map{|test| File.join(TEST_DIRECTORY, "#{test}_spec.rb") }
+        test_spec = test_files.map{|test| test.inspect}.join(' ')
+        system("rspec -c -f d -I . #{test_spec}")
       end
       
       def run_all_tests
