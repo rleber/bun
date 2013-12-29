@@ -11,7 +11,7 @@ module Bun
         attr_accessor :description
         attr_accessor :errors
         attr_accessor :decoded
-        attr_accessor :file_size
+        attr_accessor :tape_size
         attr_accessor :tape_type
         attr_accessor :tape
         attr_accessor :tape_path

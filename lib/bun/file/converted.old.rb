@@ -251,11 +251,11 @@ module Bun
         elsif options[:all]
           @words.size
         else
-          @size || file_size
+          @size || tape_size
         end
       end
   
-      def file_size
+      def tape_size
         res = (word(0).half_word(1))+1
         res = res.value unless res.is_a?(Fixnum)
         res

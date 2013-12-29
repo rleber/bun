@@ -39,7 +39,7 @@ def ls(file_name)
     file.shard_count.times do |i|
       descr = file.shard_descriptor(i)
       next unless descr.name=~shard_pattern
-      file_info << {'order'=>i, 'update'=>descr.file_time, 'size'=>descr.file_size, 'name'=>descr.name}
+      file_info << {'order'=>i, 'update'=>descr.file_time, 'size'=>descr.tape_size, 'name'=>descr.name}
     end
     sorted_order = file_info.sort_by{|fi| [fi[options[:sort]], fi['name']]}.map{|fi| fi['order']} # Sort it in order
     # Accumulate the display

@@ -106,7 +106,7 @@ module Bun
         shard_descriptors.at(shard_index(n))
       end
     
-      def file_size
+      def tape_size
         content_offset + shard_descriptor(shard_count-1).start + shard_descriptor(shard_count-1).size
       end
     
@@ -172,7 +172,7 @@ module Bun
       # def shard_data(n)
       #   d = shard_descriptor(n)
       #   return nil unless d
-      #   data.subset(d.start + content_offset, d.file_size)
+      #   data.subset(d.start + content_offset, d.tape_size)
       # end
     
       def shard_words(n)

@@ -16,7 +16,7 @@ module Bun
         BLOCK_SIZE = 64  # 36-bit words
         DESCRIPTOR_END_MARKER = 0777777777777
         FIELDS = [
-          :file_size,
+          :tape_size,
           :tape_type,
           :catalog_time,
           :control_characters,
@@ -177,7 +177,7 @@ module Bun
         def size
           word(8).value
         end
-        alias_method :file_size, :size
+        alias_method :tape_size, :size
 
         def valid?
           # TODO Optimize Is this check necessary?

@@ -24,7 +24,7 @@ module Bun
           :description,
           # :errors,
           # :decoded,
-          :file_size,
+          :tape_size,
           :tape_type,
           :tape,
           # :tape_path,
@@ -110,8 +110,8 @@ module Bun
           tape_type == :frozen ? words.at(content_offset+1).half_words.at(1).to_i : 0
         end
         
-        def file_size
-          tape_type == :frozen ? data.frozen_file_size : data.file_size
+        def tape_size
+          tape_type == :frozen ? data.frozen_tape_size : data.tape_size
         end
       
         # Reference to all_characters is necessary here, because characters isn't

@@ -172,15 +172,15 @@ module Bun
       elsif options[:all]
         @words.size
       else
-        @size || file_size
+        @size || tape_size
       end
     end
 
-    def file_size
+    def tape_size
       ((word(0).half_word(1))+1).value
     end
     
-    def frozen_file_size
+    def frozen_tape_size
       word(content_offset).value + content_offset
     end
 

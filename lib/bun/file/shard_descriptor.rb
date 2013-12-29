@@ -113,7 +113,7 @@ module Bun
         def size
           word(8).value
         end
-        alias_method :file_size, :size
+        alias_method :tape_size, :size
 
         def valid?
           # TODO Optimize Is this check necessary?

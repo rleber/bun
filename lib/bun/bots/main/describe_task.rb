@@ -2,7 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 STANDARD_FIELDS = %w{tape path owner description catalog_time 
-                     file_time file_size tape_type data_format shards}.map{|f| f.to_sym}
+                     file_time tape_size tape_type data_format shards}.map{|f| f.to_sym}
 
 SHARDS_ACROSS = 5
 desc "describe FILE", "Display description information for a tape"
@@ -19,7 +19,7 @@ def describe(file)
   preamble_table.push ["Description", descriptor.description]
   preamble_table.push ["Catalog date", catalog_time.strftime('%Y/%m/%d')] if catalog_time
   preamble_table.push ["File time", descriptor.file_time.strftime(TIME_FORMAT)] if type==:frozen
-  preamble_table.push ["Size (words)", descriptor.file_size]
+  preamble_table.push ["Size (words)", descriptor.tape_size]
   preamble_table.push ["Type", type.to_s.sub(/^./) {|c| c.upcase}]
   preamble_table.push ["Data Format", descriptor.data_format.to_s.sub(/^./) {|c| c.upcase}]
 

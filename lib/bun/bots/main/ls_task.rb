@@ -13,7 +13,7 @@ SORT_VALUES = %w{tape file type updated description size}
 SORT_FIELDS = {
   :description => :description,
   :file        => :path,
-  :size        => :file_size,
+  :size        => :tape_size,
   :tape        => :tape,
   :type        => :tape_type,
   :updated     => :file_time,
@@ -28,7 +28,7 @@ FIELD_CONVERSIONS = {
 }
 FIELD_HEADINGS = {
   :description   => 'Description',
-  :file_size     => 'Size',
+  :tape_size     => 'Size',
   :tape_type     => 'Type',
   :path          => 'File',
   :shard_count   => 'Shards',
@@ -37,12 +37,12 @@ FIELD_HEADINGS = {
   :file_time     => 'Updated',
 }
 DEFAULT_VALUES = {
-  :file_size   => 0,
+  :tape_size   => 0,
   :shard_count => 0,
   :file_time   => Time.now,
 }
 SHARD_FIELDS = {
-  :file_size     => :size,
+  :tape_size     => :size,
   :shard_count   => '',
   :tape_type     => 'Shard',
   # :updated       => :file_time,
@@ -80,7 +80,7 @@ def ls(*paths)
   fields =  options[:path] ? [:tape_path] : [:tape]
   fields += [:path] unless options[:onecolumn]
   fields += [:tape_type] if options[:type]
-  fields += [:tape_type, :file_time, :file_size] if options[:long]
+  fields += [:tape_type, :file_time, :tape_size] if options[:long]
   fields += [:shard_count] if options[:long]
   fields += [:description] if options[:descr]
   fields = fields.uniq
@@ -169,7 +169,7 @@ def ls(*paths)
   end
   table = table.justify_rows
   # TODO Move right justification to Array#justify_rows
-  [:file_size, :shard_count].each do |f|
+  [:tape_size, :shard_count].each do |f|
     if ix = fields.index(f)
       table.each do |row|
         row[ix] = row[ix].to_s
