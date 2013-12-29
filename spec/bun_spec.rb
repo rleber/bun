@@ -51,8 +51,9 @@ end
 
 shared_examples "simple" do |source|
   it "decodes a simple text file (#{source})" do
+    source_file = source + Bun::DEFAULT_UNPACKED_FILE_EXTENSION
     expected_output_file = File.join("output", "test", source)
-    actual_output = decode(source)
+    actual_output = decode(source_file)
     expected_output = Bun.readfile(expected_output_file)
     actual_output.should == expected_output
   end
@@ -156,8 +157,9 @@ describe Bun::File::Text do
   
   it "decodes a more complex file (ar004.0642)" do
     infile = 'ar004.0642'
+    source_file = infile + Bun::DEFAULT_UNPACKED_FILE_EXTENSION
     outfile = File.join("output", "test", infile)
-    decode_and_scrub(infile, :tabs=>'80').should == rstrip(Bun.readfile(outfile))
+    decode_and_scrub(source_file, :tabs=>'80').should == rstrip(Bun.readfile(outfile))
   end
 end
 
@@ -294,8 +296,14 @@ end
 describe Bun::Archive do
   before :each do
     @archive = Bun::Archive.new('data/test/archive/contents')
-    $expected_archive_contents = %w{ar003.0698 ar054.2299[brytside] ar054.2299[disco] 
-                                        ar054.2299[end] ar054.2299[opening] ar054.2299[santa] }
+    $expected_archive_contents = %w{
+      ar003.0698.bun
+      ar054.2299.bun[brytside]
+      ar054.2299.bun[disco]
+      ar054.2299.bun[end]
+      ar054.2299.bun[opening]
+      ar054.2299.bun[santa] 
+    } 
   end
   describe "contents" do
     it "retrieves correct list" do
@@ -340,13 +348,13 @@ describe Bun::Bot do
   describe "describe" do
     describe "with text file" do
       before :all do
-        exec("bun describe #{TEST_ARCHIVE}/ar003.0698 >output/describe_ar003.0698")
+        exec("bun describe #{TEST_ARCHIVE}/ar003.0698.bun >output/describe_ar003.0698")
       end
       include_examples "match with variable data", "describe_ar003.0698", DESCRIBE_PATTERNS
     end
     describe "with frozen file" do
       before :all do
-        exec("bun describe #{TEST_ARCHIVE}/ar025.0634 >output/describe_ar025.0634")
+        exec("bun describe #{TEST_ARCHIVE}/ar025.0634.bun >output/describe_ar025.0634")
       end
       include_examples "match with variable data", "describe_ar025.0634", DESCRIBE_PATTERNS
     end
@@ -362,7 +370,7 @@ describe Bun::Bot do
       File.expand_path(Dir.pwd).should == File.expand_path(File.join(File.dirname(__FILE__),'..'))
     end
     it "should function okay in a different directory" do
-      exec("cd ~ ; bun describe #{TEST_ARCHIVE}/ar003.0698")
+      exec("cd ~ ; bun describe #{TEST_ARCHIVE}/ar003.0698.bun")
       $?.exitstatus.should == 0
     end
     after :each do
@@ -375,10 +383,14 @@ describe Bun::Bot do
   describe "ls" do
     include_examples "command", "ls", "ls #{TEST_ARCHIVE}", "ls"
     include_examples "command", "ls -o", "ls -o #{TEST_ARCHIVE}", "ls_o"
-    include_examples "command", "ls -ldr with text file (ar003.0698)", 
-                     "ls -ldr #{TEST_ARCHIVE}/ar003.0698", "ls_ldr_ar003.0698"
-    include_examples "command", "ls -ldr with frozen file (ar145.2699)", 
-                     "ls -ldr #{TEST_ARCHIVE}/ar145.2699", "ls_ldr_ar145.2699"
+    include_examples "command", 
+                     "ls -ldr with text file (ar003.0698)", 
+                     "ls -ldr #{TEST_ARCHIVE}/ar003.0698.bun", 
+                     "ls_ldr_ar003.0698"
+    include_examples "command", 
+                     "ls -ldr with frozen file (ar145.2699)", 
+                     "ls -ldr #{TEST_ARCHIVE}/ar145.2699.bun", 
+                     "ls_ldr_ar145.2699"
     include_examples "command", "ls with glob", "ls #{TEST_ARCHIVE}/ar08*", "ls_glob"
   end
   describe "readme" do
@@ -386,53 +398,85 @@ describe Bun::Bot do
   end
   describe "decode" do
     describe "with text file" do
-      include_examples "command", "decode ar003.0698", "decode #{TEST_ARCHIVE}/ar003.0698",
+      include_examples "command", 
+                       "decode ar003.0698", 
+                       "decode #{TEST_ARCHIVE}/ar003.0698.bun",
                        "decode_ar003.0698"
     end
     describe "from STDIN" do
-      include_examples "command from STDIN", "decode ar003.0698", "decode -",
-                        "#{TEST_ARCHIVE}/ar003.0698", "decode_ar003.0698"
+      include_examples "command from STDIN", 
+                       "decode ar003.0698", 
+                       "decode -",
+                       "#{TEST_ARCHIVE}/ar003.0698.bun", 
+                       "decode_ar003.0698"
     end
     describe "with frozen file" do
-      include_examples "command", "decode ar004.0888 +0", "decode -s +0 #{TEST_ARCHIVE}/ar004.0888",
+      include_examples "command", 
+                       "decode ar004.0888 +0", 
+                       "decode -s +0 #{TEST_ARCHIVE}/ar004.0888.bun",
                        "decode_ar004.0888_0"
-      include_examples "command", "decode ar004.0888[+0]", "decode #{TEST_ARCHIVE}/ar004.0888[+0]",
+      include_examples "command", 
+                       "decode ar004.0888[+0]", 
+                       "decode #{TEST_ARCHIVE}/ar004.0888.bun[+0]",
                        "decode_ar004.0888_0"
-      include_examples "command", "decode ar004.0888[fasshole]", 
-                       "decode #{TEST_ARCHIVE}/ar004.0888[fasshole]", "decode_ar004.0888_0"
+      include_examples "command", 
+                       "decode ar004.0888[fasshole]", 
+                       "decode #{TEST_ARCHIVE}/ar004.0888.bun[fasshole]", 
+                       "decode_ar004.0888_0"
     end
   end
   context "bun dump" do
-    include_examples "command", "dump ar003.0698", "dump #{TEST_ARCHIVE}/ar003.0698", "dump_ar003.0698"
-    include_examples "command", "dump -s ar003.0698", "dump -s #{TEST_ARCHIVE}/ar003.0698",
+    include_examples "command", 
+                     "dump ar003.0698", 
+                     "dump #{TEST_ARCHIVE}/ar003.0698.bun", 
+                     "dump_ar003.0698"
+    include_examples "command", 
+                     "dump -s ar003.0698", 
+                     "dump -s #{TEST_ARCHIVE}/ar003.0698.bun",
                      "dump_s_ar003.0698"
-    include_examples "command", "dump ar004.0888", "dump #{TEST_ARCHIVE}/ar004.0888", "dump_ar004.0888"
-    include_examples "command", "dump -f ar004.0888", "dump -f #{TEST_ARCHIVE}/ar004.0888",
+    include_examples "command", 
+                     "dump ar004.0888", 
+                     "dump #{TEST_ARCHIVE}/ar004.0888.bun", 
+                     "dump_ar004.0888"
+    include_examples "command", 
+                     "dump -f ar004.0888", 
+                     "dump -f #{TEST_ARCHIVE}/ar004.0888.bun",
                      "dump_f_ar004.0888"
-    include_examples "command from STDIN", "dump ar003.0698", "dump - ", 
-                     "#{TEST_ARCHIVE}/ar003.0698", "dump_stdin_ar003.0698"
+    include_examples "command from STDIN", 
+                     "dump ar003.0698", 
+                     "dump - ", 
+                     "#{TEST_ARCHIVE}/ar003.0698.bun", 
+                     "dump_stdin_ar003.0698"
   end
   context "bun freezer" do
     context "ls" do
-      include_examples "command", "freezer ls ar004.0888", "freezer ls #{TEST_ARCHIVE}/ar004.0888",
+      include_examples "command", 
+                       "freezer ls ar004.0888", 
+                       "freezer ls #{TEST_ARCHIVE}/ar004.0888.bun",
                        "freezer_ls_ar004.0888"
-      include_examples "command", "freezer ls -l ar004.0888", 
-                       "freezer ls -l #{TEST_ARCHIVE}/ar004.0888", "freezer_ls_l_ar004.0888"
+      include_examples "command", 
+                       "freezer ls -l ar004.0888", 
+                       "freezer ls -l #{TEST_ARCHIVE}/ar004.0888.bun", 
+                       "freezer_ls_l_ar004.0888"
       include_examples "command from STDIN", 
                        "freezer ls ar004.0888", 
                        "freezer ls -",
-                       "#{TEST_ARCHIVE}/ar004.0888",
+                       "#{TEST_ARCHIVE}/ar004.0888.bun",
                        "freezer_ls_stdin_ar004.0888"
     end
     context "dump" do
-      include_examples "command", "freezer dump ar004.0888 +0", 
-                       "freezer dump #{TEST_ARCHIVE}/ar004.0888 +0", "freezer_dump_ar004.0888_0"
-      include_examples "command", "freezer dump -s ar004.0888 +0", 
-                       "freezer dump -s #{TEST_ARCHIVE}/ar004.0888 +0", "freezer_dump_s_ar004.0888_0"
+      include_examples "command", 
+                       "freezer dump ar004.0888 +0", 
+                       "freezer dump #{TEST_ARCHIVE}/ar004.0888.bun +0", 
+                       "freezer_dump_ar004.0888_0"
+      include_examples "command", 
+                       "freezer dump -s ar004.0888 +0", 
+                       "freezer dump -s #{TEST_ARCHIVE}/ar004.0888.bun +0", 
+                       "freezer_dump_s_ar004.0888_0"
       include_examples "command from STDIN", 
                        "freezer dump ar004.0888 +0", 
                        "freezer dump - +0",
-                       "#{TEST_ARCHIVE}/ar004.0888", 
+                       "#{TEST_ARCHIVE}/ar004.0888.bun", 
                        "freezer_dump_stdin_ar004.0888_0"
     end
   end

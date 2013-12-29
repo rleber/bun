@@ -28,9 +28,16 @@ no_tasks do
     else
       "~/bun_archive"
     end
+    extension = case format
+    when :packed
+      Bun::DEFAULT_PACKED_FILE_EXTENSION
+    else
+      Bun::DEFAULT_UNPACKED_FILE_EXTENSION
+    end
     at = $at unless at
-    source_file = File.join(from,file).sub(/^~/,ENV['HOME'])
-    target_file = File.join(at,file).sub(/^~/,ENV['HOME'])
+    file_with_extension = file + extension
+    source_file = File.join(File.expand_path(from),file_with_extension)
+    target_file = File.join(File.expand_path(at),file_with_extension)
     stop "!Source file #{source_file._safe} does not exist" unless File.exists?(source_file)
     cmd = "cp -f #{source_file._safe} #{target_file._safe}"
     _exec "#{cmd}"

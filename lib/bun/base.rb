@@ -2,6 +2,9 @@
 # -*- encoding: us-ascii -*-
 
 module Bun
+  DEFAULT_PACKED_FILE_EXTENSION = ''
+  DEFAULT_UNPACKED_FILE_EXTENSION = '.bun'
+  
   def self.readfile(file, options={})
     encoding = options[:encoding] || 'ascii-8bit'
     return $stdin.read.force_encoding(encoding) if file == '-'

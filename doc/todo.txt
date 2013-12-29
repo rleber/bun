@@ -1,5 +1,4 @@
 TODO
-Change bun test, so you can run a subset of tests
 Allow multiple files in certain commands
 Change unpacked tape file extensions to .bun
 File::Unpacked.open should attempt to unpack an packed file
@@ -12,6 +11,7 @@ Complete tests:
 - config *
 - library compact (complete tests)
 - library classify
+Refactor the tests into smaller sets
 Combine archive, library
 Remove places code
 Remove config code?

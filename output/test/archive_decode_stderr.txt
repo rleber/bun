@@ -1,18 +1,18 @@
-unpack ar003.0698
-skipping ar003.0701: unknown type (huffman)
-unpack ar082.0605[81macros]
-unpack ar082.0605[1-0]
-unpack ar082.0605[1-1]
-unpack ar082.0605[1-2]
-unpack ar082.0605[1-3a]
-unpack ar082.0605[1-3b]
-unpack ar082.0605[1-4]
-unpack ar082.0605[1-5]
-unpack ar082.0605[2-1]
-unpack ar082.0605[2-2]
-unpack ar082.0605[2-3]
-unpack ar082.0605[2-4]
-unpack ar082.0605[2-5]
-unpack ar082.0605[bulkmacr]
-unpack ar082.0605[2-4b]
-unpack ar083.0698
+decode ar003.0698.bun
+skipping ar003.0701.bun: unknown type (huffman)
+decode ar082.0605.bun[81macros]
+decode ar082.0605.bun[1-0]
+decode ar082.0605.bun[1-1]
+decode ar082.0605.bun[1-2]
+decode ar082.0605.bun[1-3a]
+decode ar082.0605.bun[1-3b]
+decode ar082.0605.bun[1-4]
+decode ar082.0605.bun[1-5]
+decode ar082.0605.bun[2-1]
+decode ar082.0605.bun[2-2]
+decode ar082.0605.bun[2-3]
+decode ar082.0605.bun[2-4]
+decode ar082.0605.bun[2-5]
+decode ar082.0605.bun[bulkmacr]
+decode ar082.0605.bun[2-4b]
+decode ar083.0698.bun

@@ -40,7 +40,8 @@ module Bun
       FileUtils.rm_rf to_path unless options[:dryrun]
       Dir.glob(expand_path(glob)).each do |tape|
         from_tape = relative_path(tape, :relative_to=>File.expand_path(at))
-        to_file  = File.join(to_path, from_tape)        
+        from_tape.sub!(/#{Bun::DEFAULT_PACKED_FILE_EXTENSION}$/,'')
+        to_file  = File.join(to_path, from_tape + Bun::DEFAULT_UNPACKED_FILE_EXTENSION)        
         warn "unpack #{from_tape} => #{to_file}" if options[:dryrun] || !options[:quiet]
         unless options[:dryrun]
           dir = File.dirname(to_file)
@@ -63,17 +64,18 @@ module Bun
           file.shard_count.times do |i|
             descr = file.shard_descriptor(i)
             shard_name = descr.name
-            warn "unpack #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
+            warn "decode #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
             unless options[:dryrun]
               timestamp = file.descriptor.timestamp
-              f = File.join(to_path, decode_path(file.path, timestamp), shard_name, decode_tapename(tape, descr.file_time))
+              f = File.join(to_path, decode_path(file.path, timestamp), shard_name,
+                    decode_tapename(tape, descr.file_time))
               dir = File.dirname(f)
               FileUtils.mkdir_p dir
               file.decode f, :shard=>shard_name
             end
           end
         when :text
-          warn "unpack #{tape}" if options[:dryrun] || !options[:quiet]
+          warn "decode #{tape}" if options[:dryrun] || !options[:quiet]
           unless options[:dryrun]
             timestamp = file.descriptor.timestamp
             f = File.join(to_path, file.path, decode_tapename(tape, timestamp))
@@ -82,7 +84,8 @@ module Bun
             file.decode f
           end
         else
-          warn "skipping #{tape}: unknown type (#{file.file_type})" if options[:dryrun] || !options[:quiet]
+          warn "skipping #{tape}: unknown type (#{file.file_type})" \
+                if options[:dryrun] || !options[:quiet]
         end
       end
     end
@@ -92,6 +95,7 @@ module Bun
     EXTRACT_TAPE_SUFFIX = '.txt'
 
     def decode_path(path, date)
+      path = path.sub(/#{DEFAULT_UNPACKED_FILE_EXTENSION}$/,'')
       if date
         date_to_s = date.strftime(EXTRACT_DATE_FORMAT)
         date_to_s = $1 if date_to_s =~ /^(.*)_000000$/

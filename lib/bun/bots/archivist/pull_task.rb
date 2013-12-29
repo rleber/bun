@@ -2,6 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 # TODO Move this to tools project; refactor
+
 no_tasks do
   # Fetch all files and subdirectories of a uri to a destination folder
   # The destination folder will have subfolders created, based on the structure of the uri
@@ -15,7 +16,7 @@ no_tasks do
     FileUtils::rm_rf(destination)
     process(agent, base_uri) do |page|
       relative_uri = page.uri.path.sub(/^#{Regexp.escape(uri_sub_path)}/, '')
-      file_name = File.join(destination, relative_uri)
+      file_name = File.join(destination, relative_uri + Bun::DEFAULT_PACKED_FILE_EXTENSION)
       dirname = File.dirname(file_name)
       if options[:dryrun] || !options[:quiet]
         puts "Fetch #{file_name}"
