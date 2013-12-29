@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+require 'lib/string_analysis'
+require 'lib/string_check'
+
 class String
   class InvalidCheck < ArgumentError; end
 
@@ -151,32 +154,19 @@ class String
   end
   
   def pattern_counts(*character_sets)
-    character_sets = [/./] if character_sets.size == 0 # Match anything
-    encoded = self.force_encoding('ascii-8bit')
-    counts = []
-    [character_sets].flatten.each.with_index do |pat, i|
-      encoded.scan(pat) do |ch|
-        counts[i] ||= {index:i, characters: {}, count: 0}
-        counts[i][:count] += 1
-        counts[i][:characters][ch] ||= 0
-        counts[i][:characters][ch] += 1
-      end
-    end
-    counts
+    counter = String::Analysis::Base.new(self, character_sets)
+    counter.pattern_counts
   end
   
   def character_counts(*character_sets)
-    counts = pattern_counts(*character_sets)
-    counts.inject({}) do |hsh, entry|
-      hsh[entry[:character].keys.sort.join] = entry[:count]
-      hsh
-    end
+    counter = String::Analysis::Base.new(self, character_sets)
+    counter.character_counts
   end
   
   def analyze(analysis)
-    spec = self.class.analyses[analysis.to_sym]
-    raise InvalidCheck, "!Invalid analysis: #{analysis.inspect}" unless spec
-    spec[:test].call(self)
+    analyzer = String::Analysis.create(analysis)
+    analyzer.string = self
+    analyzer
   end
 
   def clean?
@@ -204,8 +194,12 @@ class String
     {code: ix, description: test_result}
   end
   
+  def titleize
+    split(/(\W)/).map(&:capitalize).join
+  end
+  
   def character_set
-    chars = self.force_encoding('ascii-8bit').split(//).sort.uniq
+    chars = self.dup.force_encoding('ascii-8bit').split(//).sort.uniq
     runs = [""]
     last_asc = -999
     last_runnable = false

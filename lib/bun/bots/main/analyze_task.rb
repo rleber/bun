@@ -18,11 +18,8 @@ Available analyses include:\x5
 }
 EOT
 def analyze(file)
-  spec = String.analyses[options[:test].to_sym]
-  raise String::InvalidCheck unless spec
-  table = spec[:fields]
-  table = spec[:format].call(Bun::File.analyze(file,options[:test]))
-  puts table.map{|row| row.join('  ')}
+  analyzer = Bun::File.analyze(file, options[:test])
+  puts analyzer.to_s
 rescue String::InvalidCheck => e
   warn "!Invalid analysis: #{options[:test]}" unless options[:quiet]
   exit(99)
