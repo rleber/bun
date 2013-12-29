@@ -12,9 +12,10 @@ Calculates statistics on a file.
 
 Available analyses include:\x5
 
-controls: Analyze control characters\x5
-chars:    Count all characters\x5
-english:  Count english vs. non-english characters\x5
+controls:  Analyze control characters\x5
+chars:     Count all characters\x5
+classe:    Count text, punctuation, and non_printable characters\x5
+printable: Count printable vs. non-printable characters
 
 EOT
 def analyze(file)
