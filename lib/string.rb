@@ -119,16 +119,19 @@ class String
   end
   
   def check(test)
-    spec = self.class.check_tests[test.to_sym]
-    raise InvalidCheck, "!Invalid test: #{test.inspect}" unless spec
-    test_result = spec[:test].call(self)
-    if spec[:options]
-      ix = spec[:options].index(test_result) || spec[:options].size
-    else
-      ix = nil
-    end
-    test_result = spec[:format].call(test_result) if spec[:format]
-    {code: ix, description: test_result}
+    checker = String::Check.create(test)
+    checker.string = self
+    checker
+    # spec = self.class.check_tests[test.to_sym]
+    # raise InvalidCheck, "!Invalid test: #{test.inspect}" unless spec
+    # test_result = spec[:test].call(self)
+    # if spec[:options]
+    #   ix = spec[:options].index(test_result) || spec[:options].size
+    # else
+    #   ix = nil
+    # end
+    # test_result = spec[:format].call(test_result) if spec[:format]
+    # {code: ix, description: test_result}
   end
   
   def titleize

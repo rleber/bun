@@ -4,12 +4,14 @@
 # Base classes to define analyses on strings
 
 class String
-  class Check
+  class Analysis
     class Base
       attr_accessor :string
+      attr_accessor :patterns
     
-      def initialize(string='')
+      def initialize(string, patterns=[/./])
         @string = string
+        @patterns = patterns
       end
       
       # Subclasses should define check method

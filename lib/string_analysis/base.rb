@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-# Base classes to define analyses on strings
+# Base classes to define checks on strings
 
 class String
   class Analysis
