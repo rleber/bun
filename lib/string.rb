@@ -82,62 +82,8 @@ class String
       CHECK_TESTS
     end
     
-    # TODO Refactor this, using a String::Analysis class?
-    ANALYSES = {
-      characters: {
-        description: "Count all characters",
-        fields: %w{Character Count},
-        test: lambda {|text| text.character_counts },
-        format: lambda do |analysis|
-          table = [%w{Character Count}]
-          analysis.to_a.sort_by {|key, stat| -stat[:count]} \
-          .each do |character, stat|
-            table << [character.inspect, stat[:count].to_s]
-          end
-          table.justify_rows(right_justify: [1])
-        end
-      },
-      english: {
-        description: "Count english vs. non-english characters",
-        fields: %w{Category Count},
-        test: lambda {|text| text.english_counts },
-        format: lambda do |analysis|
-          table = [%w{Category Characters Count}]
-          analysis.to_a.sort_by {|key, stat| -stat[:count]} \
-          .each do |category, stat|
-            table << [category.inspect, stat[:characters].character_set, stat[:count].to_s]
-          end
-          table.justify_rows(right_justify: [2])
-        end
-      },
-    }
-
-    def analyses
-      ANALYSES
-    end
   end
 
-  def control_character_counts
-    pats = self.class.valid_control_character_array + [self.class.invalid_character_regexp]
-    character_counts(pats)
-  end
-  
-  def english_counts
-    english = 'a-zA-Z0-9\.,():\';\/\- \n\t"!\\#$%&*+<=>?@\[\]^_`{|}~'
-    pats = [/[#{english}]/,/[^#{english}]/]
-    counts = pattern_counts(pats)
-    counts += [{count: 0, characters: {} }]*2
-    { 
-      english: {
-        count: counts[0][:count], 
-        characters: counts[0][:characters].keys.sort.join,
-      },
-      non_english: {
-        count: counts[1][:count],
-        characters: counts[1][:characters].keys.sort.join,
-      }
-    }
-  end
   
   def english_proportion
     counts = english_counts
@@ -149,7 +95,7 @@ class String
     counter.pattern_counts
   end
   
-  def character_counts(*character_sets)
+  def character_class_counts(*character_sets)
     counter = String::Analysis::Base.new(self, character_sets)
     counter.character_counts
   end

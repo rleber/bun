@@ -11,11 +11,11 @@ long_desc <<-EOT
 Calculates statistics on a file.
 
 Available analyses include:\x5
-#{
-  String.analyses.to_a.map do |key,spec| 
-    [key.to_s, spec[:description]]
-  end.justify_rows.map{|row| row.join(': ')}.join("\x5")
-}
+
+controls: Analyze control characters\x5
+chars:    Count all characters\x5
+english:  Count english vs. non-english characters\x5
+
 EOT
 def analyze(file)
   analyzer = Bun::File.analyze(file, options[:test])
