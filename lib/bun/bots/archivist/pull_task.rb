@@ -7,7 +7,7 @@ no_tasks do
   # The destination folder will have subfolders created, based on the structure of the uri
   # For example, fetching "http://example.com/in/a/directory/" to "data" will create a
   # copy of the contents at the uri into "data/example.com/in/a/directory"
-  def _fetch(base_uri, destination, options={})
+  def _pull(base_uri, destination, options={})
     destination.sub!(/\/$/,'') # Remove trailing slash from destination, if any
     uri_sub_path = base_uri.sub(/http:\/\/[^\/]*/,'')
     count = 0
@@ -70,7 +70,7 @@ no_tasks do
 end
 
 IGNORE_LINKS = ["Name", "Last modified", "Size", "Description", "Parent Directory"]
-desc "fetch URL ARCHIVE", "Fetch files from an online repository"
+desc "pull URL ARCHIVE", "Fetch files from an online repository"
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Do a dry run only; show what would be fetched, but don't save it"
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
 long_desc <<-EOT
@@ -84,8 +84,8 @@ data/example.com/in/a/subdirectory and its subdirectories, mirroring the structu
 If no URL is provided, this command will use the location specified in the bun config file.
 The archive is fetched to the specified location
 EOT
-def fetch(url, at)
+def pull(url, at)
   agent = Mechanize.new
   archive = Archive.new(at)
-  _fetch(url, archive.location, options)
+  _pull(url, archive.location, options)
 end
