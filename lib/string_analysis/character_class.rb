@@ -30,23 +30,24 @@ class String
       end
       
       def data_table
-        tbl = character_counts.to_a
-        tbl += [['',0]]*(categories.size)
-        res = []
-        categories.size.times do |i|
-          res << [categories[i]] + tbl[i]
-        end
-        res.sort_by{|row| -row[-1]}
+        pattern_counts.to_a.map.with_index do |row, i|
+          row.merge(category: categories[i])
+        end \
+        .reject {|row| row[:count] == 0 }
+        .sort_by{|row| -row[:count]}
+      end
+      
+      # This can be overridden in subclasses
+      def format_row(row)
+        [
+          row[:category].to_s.gsub(/non_/i,'non-').gsub('_',' ').titleize,
+          row[:characters].keys.join.character_set,
+          row[:count].to_s
+        ]
       end
       
       def formatted_table
-        [fields] + data_table.map do |row|
-          [
-            row[0].to_s.gsub(/non_/i,'non-').gsub('_',' '),
-            row[1].character_set,
-            row[2].to_s
-          ]
-        end
+        [fields] + data_table.map {|row| format_row(row) }
       end
       
       def justified

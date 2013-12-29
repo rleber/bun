@@ -18,8 +18,8 @@ class String
         encoded = @string.force_encoding('ascii-8bit')
         counts = []
         [patterns].flatten.each.with_index do |pat, i|
+          counts[i] = {index:i, characters: {}, count: 0}
           encoded.scan(pat) do |ch|
-            counts[i] ||= {index:i, characters: {}, count: 0}
             counts[i][:count] += 1
             counts[i][:characters][ch] ||= 0
             counts[i][:characters][ch] += 1
@@ -28,7 +28,7 @@ class String
         counts
       end
   
-      def character_counts
+      def character_class_counts
         counts = pattern_counts
         counts.inject({}) do |hsh, entry|
           hsh[entry[:characters].keys.sort.join] = entry[:count]

@@ -1,9 +1,6 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-require 'lib/string_analysis'
-require 'lib/string_check'
-
 class String
   class InvalidCheck < ArgumentError; end
 
@@ -11,32 +8,39 @@ class String
     self.inspect[1..-2]
   end
   
+  class Analysis; end # Defined elsewhere
+  
+  VALID_CONTROL_CHARACTER_HASH = {
+    line_feed:       "\n", 
+    carriage_return: "\r", 
+    backspace:       "\x8", 
+    tab:             "\x9", 
+    vertical_tab:    "\xb",
+    form_feed:       "\xc",
+  }
+  VALID_CONTROL_CHARACTER_HASH.each do |key, value|
+    const_set(key.upcase, value)
+    const_set("#{key.upcase}_REGEXP", /#{value.escaped}/)
+    define_method("#{key}_regexp}") { const_get("#{key.upcase}_REGEXP") }
+  end
+
+  VALID_CONTROL_CHARACTER_ARRAY = VALID_CONTROL_CHARACTER_HASH.values
+  VALID_CONTROL_CHARACTER_STRING = VALID_CONTROL_CHARACTER_ARRAY.join
+  VALID_CONTROL_CHARACTERS = VALID_CONTROL_CHARACTER_STRING.escaped
+  VALID_CONTROL_CHARACTER_REGEXP = /[#{VALID_CONTROL_CHARACTERS}]/
+  INVALID_CHARACTER_REGEXP = /(?!(?>#{VALID_CONTROL_CHARACTER_REGEXP}))[[:cntrl:]]/
+  VALID_CHARACTER_REGEXP = /(?!(?>#{INVALID_CHARACTER_REGEXP}))./
+
   class << self
-  
-    VALID_CONTROL_CHARACTER_HASH = {
-      new_line:        "\n", 
-      carriage_return: "\r", 
-      backspace:       "\x8", 
-      tab:             "\x9", 
-      vertical_tab:    "\xb",
-      form_feed:       "\xc",
-    }
-    VALID_CONTROL_CHARACTER_HASH.each do |key, value|
-      const_set(key.upcase, value)
-      const_set("#{key.upcase}_REGEXP", /#{value.escaped}/)
-      define_method("#{key}_regexp}") { const_get("#{key.upcase}_REGEXP") }
-    end
-  
-    VALID_CONTROL_CHARACTER_ARRAY = VALID_CONTROL_CHARACTER_HASH.values
-    VALID_CONTROL_CHARACTER_STRING = VALID_CONTROL_CHARACTER_ARRAY.join
-    VALID_CONTROL_CHARACTERS = VALID_CONTROL_CHARACTER_STRING.escaped
-    VALID_CONTROL_CHARACTER_REGEXP = /[#{VALID_CONTROL_CHARACTERS}]/
-    INVALID_CHARACTER_REGEXP = /(?!(?>#{VALID_CONTROL_CHARACTER_REGEXP}))[[:cntrl:]]/
-    VALID_CHARACTER_REGEXP = /(?!(?>#{INVALID_CHARACTER_REGEXP}))./
 
     def valid_control_character_array
       VALID_CONTROL_CHARACTER_ARRAY
     end
+
+    def valid_control_character_hash
+      VALID_CONTROL_CHARACTER_HASH
+    end
+
     def valid_control_character_regexp
       VALID_CONTROL_CHARACTER_REGEXP
     end
@@ -80,19 +84,6 @@ class String
     
     # TODO Refactor this, using a String::Analysis class?
     ANALYSES = {
-      control_characters: {
-        description: "Count control characters",
-        fields: %w{Character Count},
-        test: lambda {|text| text.control_character_counts },
-        format: lambda do |analysis|
-          table = [%w{Character Count}]
-          analysis.to_a.sort_by {|key, stat| -stat[:count]} \
-          .each do |character, stat|
-            table << [character.inspect, stat[:count].to_s]
-          end
-          table.justify_rows(right_justify: [1])
-        end
-      },
       characters: {
         description: "Count all characters",
         fields: %w{Character Count},
@@ -227,3 +218,6 @@ class String
     '[' + runs.join.inspect[1..-2].gsub('/','\/') + ']'
   end
 end
+
+require 'lib/string_analysis'
+require 'lib/string_check'

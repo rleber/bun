@@ -20,7 +20,7 @@ EOT
 def analyze(file)
   analyzer = Bun::File.analyze(file, options[:test])
   puts analyzer.to_s
-rescue String::InvalidCheck => e
+rescue String::Analysis::Invalid => e
   warn "!Invalid analysis: #{options[:test]}" unless options[:quiet]
   exit(99)
 end

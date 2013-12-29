@@ -17,6 +17,8 @@ class String
   end
 end
 
+require 'lib/string'
 require 'lib/string_analysis/base'
 require 'lib/string_analysis/character_class'
 require 'lib/string_analysis/english'
+require 'lib/string_analysis/control_characters'
