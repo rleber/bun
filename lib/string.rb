@@ -1,0 +1,235 @@
+#!/usr/bin/env ruby
+# -*- encoding: us-ascii -*-
+
+class String
+  class InvalidCheck < ArgumentError; end
+
+  def escaped
+    self.inspect[1..-2]
+  end
+  
+  class << self
+  
+    VALID_CONTROL_CHARACTER_HASH = {
+      new_line:        "\n", 
+      carriage_return: "\r", 
+      backspace:       "\x8", 
+      tab:             "\x9", 
+      vertical_tab:    "\xb",
+      form_feed:       "\xc",
+    }
+    VALID_CONTROL_CHARACTER_HASH.each do |key, value|
+      const_set(key.upcase, value)
+      const_set("#{key.upcase}_REGEXP", /#{value.escaped}/)
+      define_method("#{key}_regexp}") { const_get("#{key.upcase}_REGEXP") }
+    end
+  
+    VALID_CONTROL_CHARACTER_ARRAY = VALID_CONTROL_CHARACTER_HASH.values
+    VALID_CONTROL_CHARACTER_STRING = VALID_CONTROL_CHARACTER_ARRAY.join
+    VALID_CONTROL_CHARACTERS = VALID_CONTROL_CHARACTER_STRING.escaped
+    VALID_CONTROL_CHARACTER_REGEXP = /[#{VALID_CONTROL_CHARACTERS}]/
+    INVALID_CHARACTER_REGEXP = /(?!(?>#{VALID_CONTROL_CHARACTER_REGEXP}))[[:cntrl:]]/
+    VALID_CHARACTER_REGEXP = /(?!(?>#{INVALID_CHARACTER_REGEXP}))./
+
+    def valid_control_character_array
+      VALID_CONTROL_CHARACTER_ARRAY
+    end
+    def valid_control_character_regexp
+      VALID_CONTROL_CHARACTER_REGEXP
+    end
+
+    def invalid_character_regexp
+      INVALID_CHARACTER_REGEXP
+    end
+
+    def valid_character_regexp
+      VALID_CHARACTER_REGEXP
+    end
+
+    # TODO Refactor this, using a String::Check class?
+    CHECK_TESTS = {
+      clean: {
+        options: [:clean, :dirty],
+        description: "File contains special characters",
+        test: lambda {|text| text.clean? ? :clean : :dirty }
+      },
+      tabbed: {
+        options: [:tabs, :no_tabs],
+        description: "File contains tabs",
+        test: lambda {|text| text.tabbed? ? :tabs : :no_tabs }
+      },
+      overstruck: {
+        options: [:tabs, :no_tabs],
+        description: "File contains backspaces",
+        test: lambda {|text| text.overstruck? ? :overstruck : :not_overstruck }
+      },
+      english: {
+        description: "Proportion of english vs. non-english characters",
+        test: lambda {|text| text.english_proportion },
+        format: lambda {|res| '%0.2f%' % (res*100.0) }
+      },
+      
+    }
+
+    def check_tests
+      CHECK_TESTS
+    end
+    
+    # TODO Refactor this, using a String::Analysis class?
+    ANALYSES = {
+      control_characters: {
+        description: "Count control characters",
+        fields: %w{Character Count},
+        test: lambda {|text| text.control_character_counts },
+        format: lambda do |analysis|
+          table = [%w{Character Count}]
+          analysis.to_a.sort_by {|key, stat| -stat[:count]} \
+          .each do |character, stat|
+            table << [character.inspect, stat[:count].to_s]
+          end
+          table.justify_rows(right_justify: [1])
+        end
+      },
+      characters: {
+        description: "Count all characters",
+        fields: %w{Character Count},
+        test: lambda {|text| text.character_counts },
+        format: lambda do |analysis|
+          table = [%w{Character Count}]
+          analysis.to_a.sort_by {|key, stat| -stat[:count]} \
+          .each do |character, stat|
+            table << [character.inspect, stat[:count].to_s]
+          end
+          table.justify_rows(right_justify: [1])
+        end
+      },
+      english: {
+        description: "Count english vs. non-english characters",
+        fields: %w{Category Count},
+        test: lambda {|text| text.english_counts },
+        format: lambda do |analysis|
+          table = [%w{Category Characters Count}]
+          analysis.to_a.sort_by {|key, stat| -stat[:count]} \
+          .each do |category, stat|
+            table << [category.inspect, stat[:characters].character_set, stat[:count].to_s]
+          end
+          table.justify_rows(right_justify: [2])
+        end
+      },
+    }
+
+    def analyses
+      ANALYSES
+    end
+  end
+
+  def control_character_counts
+    pats = self.class.valid_control_character_array + [self.class.invalid_character_regexp]
+    character_counts(pats)
+  end
+  
+  def english_counts
+    english = 'a-zA-Z0-9\.,():\';\/\- \n\t"!\\#$%&*+<=>?@\[\]^_`{|}~'
+    pats = [/[#{english}]/,/[^#{english}]/]
+    counts = pattern_counts(pats)
+    counts += [{count: 0, characters: {} }]*2
+    { 
+      english: {
+        count: counts[0][:count], 
+        characters: counts[0][:characters].keys.sort.join,
+      },
+      non_english: {
+        count: counts[1][:count],
+        characters: counts[1][:characters].keys.sort.join,
+      }
+    }
+  end
+  
+  def english_proportion
+    counts = english_counts
+    counts[:english][:count]*1.0 / (counts[:english][:count] + counts[:non_english][:count])
+  end
+  
+  def pattern_counts(*character_sets)
+    character_sets = [/./] if character_sets.size == 0 # Match anything
+    encoded = self.force_encoding('ascii-8bit')
+    counts = []
+    [character_sets].flatten.each.with_index do |pat, i|
+      encoded.scan(pat) do |ch|
+        counts[i] ||= {index:i, characters: {}, count: 0}
+        counts[i][:count] += 1
+        counts[i][:characters][ch] ||= 0
+        counts[i][:characters][ch] += 1
+      end
+    end
+    counts
+  end
+  
+  def character_counts(*character_sets)
+    counts = pattern_counts(*character_sets)
+    counts.inject({}) do |hsh, entry|
+      hsh[entry[:character].keys.sort.join] = entry[:count]
+      hsh
+    end
+  end
+  
+  def analyze(analysis)
+    spec = self.class.analyses[analysis.to_sym]
+    raise InvalidCheck, "!Invalid analysis: #{analysis.inspect}" unless spec
+    spec[:test].call(self)
+  end
+
+  def clean?
+    self.force_encoding('ascii-8bit') !~ String.invalid_character_regexp
+  end
+  
+  def tabbed?(text)
+    self.force_encoding('ascii-8bit') !~ String.tab_regexp
+  end
+  
+  def overstruck?(text)
+    self.force_encoding('ascii-8bit') !~ String.backspace_regexp
+  end
+  
+  def check(test)
+    spec = self.class.check_tests[test.to_sym]
+    raise InvalidCheck, "!Invalid test: #{test.inspect}" unless spec
+    test_result = spec[:test].call(self)
+    if spec[:options]
+      ix = spec[:options].index(test_result) || spec[:options].size
+    else
+      ix = nil
+    end
+    test_result = spec[:format].call(test_result) if spec[:format]
+    {code: ix, description: test_result}
+  end
+  
+  def character_set
+    chars = self.force_encoding('ascii-8bit').split(//).sort.uniq
+    runs = [""]
+    last_asc = -999
+    last_runnable = false
+    chars.each do |ch|
+      ch_asc = ch[0].ord
+      ch_runnable = ch=~/[a-z0-9]/i || ch.inspect=~/"\\x/
+      if !ch_runnable ||
+         !last_runnable ||
+         ch =~ /[aA0\x00]/ ||  # Don't allow a-z to run into A-Z, etc.
+         ch_asc != last_asc + 1
+        runs << ch
+      else # Add to a run
+        if runs.last =~ /^.-.$/m # Add to an existing run
+          runs.last[-1,1] = ch
+        elsif runs.last.size < 3 && runs.last.inspect.size < 10 # Not big enough for a run yet
+                                                                # Last.inspect etc. for "\x00-..."
+          runs[-1] += ch
+        else # Create a new run
+          runs[-1] = "#{runs.last[0,1]}-#{ch}"
+        end
+      end
+      last_asc = ch_asc
+      last_runnable = ch_runnable
+    end
+    '[' + runs.join.inspect[1..-2].gsub('/','\/') + ']'
+  end
+end
