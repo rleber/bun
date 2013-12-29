@@ -1,18 +1,18 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-# Check if string is all readable characters
+# Base classes to define checks on strings
 
 class String
   class Check
-    class Clean < Boolean
+    class Overstruck < Boolean
       
       def labels
-        [:clean, :dirty]
+        [:overstruck, :not_overstruck]
       end
       
       def okay?
-        string.clean?
+        string.overstruck?
       end
     end
   end

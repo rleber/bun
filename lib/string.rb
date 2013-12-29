@@ -21,7 +21,6 @@ class String
   VALID_CONTROL_CHARACTER_HASH.each do |key, value|
     const_set(key.upcase, value)
     const_set("#{key.upcase}_REGEXP", /#{value.escaped}/)
-    define_method("#{key}_regexp}") { const_get("#{key.upcase}_REGEXP") }
   end
 
   VALID_CONTROL_CHARACTER_ARRAY = VALID_CONTROL_CHARACTER_HASH.values
@@ -67,10 +66,6 @@ class String
       },
       
     }
-
-    def check_tests
-      CHECK_TESTS
-    end
     
   end
 
@@ -99,28 +94,18 @@ class String
     self.force_encoding('ascii-8bit') !~ String.invalid_character_regexp
   end
   
-  def tabbed?(text)
-    self.force_encoding('ascii-8bit') !~ String.tab_regexp
+  def tabbed?
+    self.force_encoding('ascii-8bit') !~ /\t/
   end
   
-  def overstruck?(text)
-    self.force_encoding('ascii-8bit') !~ String.backspace_regexp
+  def overstruck?
+    self.force_encoding('ascii-8bit') !~ /\b/
   end
   
   def check(test)
     checker = String::Check.create(test)
     checker.string = self
     checker
-    # spec = self.class.check_tests[test.to_sym]
-    # raise InvalidCheck, "!Invalid test: #{test.inspect}" unless spec
-    # test_result = spec[:test].call(self)
-    # if spec[:options]
-    #   ix = spec[:options].index(test_result) || spec[:options].size
-    # else
-    #   ix = nil
-    # end
-    # test_result = spec[:format].call(test_result) if spec[:format]
-    # {code: ix, description: test_result}
   end
   
   def titleize

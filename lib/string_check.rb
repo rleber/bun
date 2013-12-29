@@ -24,5 +24,8 @@ end
 
 require 'lib/string'
 require 'lib/string_check/base'
+require 'lib/string_check/boolean'
 require 'lib/string_check/clean'
 require 'lib/string_check/readability'
+require 'lib/string_check/tabbed'
+require 'lib/string_check/overstruck'

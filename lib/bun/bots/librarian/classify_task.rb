@@ -15,13 +15,6 @@ Classifies all the files in the library, based on whether they pass certain test
 If TO is specified, files are linked (or copied) into separate directories, depending
 on the outcome of the tests. For instance, if the "clean" test is specified (--test clean),
 the files are classified into two directories: TO/clean and TO/dirty.
-
-Available tests include:\x5
-#{
-  String.check_tests.to_a.map do |key,spec| 
-    [key.to_s, spec[:description]]
-  end.justify_rows.map{|row| row.join(': ')}.join("\x5")
-}
 EOT
 def classify(from, to=nil)
   no_move = options[:dryrun] || !to
