@@ -29,11 +29,14 @@ class String
         super(string, patterns)
       end
       
-      def data_table
-        pattern_counts.to_a.map.with_index do |row, i|
+      def counts
+        super.to_a.map.with_index do |row, i|
           row.merge(category: categories[i])
-        end \
-        .reject {|row| row[:count] == 0 }
+        end
+      end
+      
+      def data_table
+        counts.reject {|row| row[:count] == 0 }
         .sort_by{|row| -row[:count]}
       end
       

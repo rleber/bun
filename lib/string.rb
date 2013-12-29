@@ -55,11 +55,6 @@ class String
 
     # TODO Refactor this, using a String::Check class?
     CHECK_TESTS = {
-      clean: {
-        options: [:clean, :dirty],
-        description: "File contains special characters",
-        test: lambda {|text| text.clean? ? :clean : :dirty }
-      },
       tabbed: {
         options: [:tabs, :no_tabs],
         description: "File contains tabs",
@@ -86,13 +81,12 @@ class String
 
   
   def english_proportion
-    counts = english_counts
-    counts[:english][:count]*1.0 / (counts[:english][:count] + counts[:non_english][:count])
+    String::Check(self, :english)
   end
   
-  def pattern_counts(*character_sets)
+  def counts(*character_sets)
     counter = String::Analysis::Base.new(self, character_sets)
-    counter.pattern_counts
+    counter.counts
   end
   
   def character_class_counts(*character_sets)

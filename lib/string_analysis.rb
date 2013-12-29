@@ -8,10 +8,14 @@ class String
     class Invalid < ArgumentError; end
     
     class << self
-      def create(name)
-        class_name = name.titleize
+      def create(analysis, string="")
+        class_name = analysis.to_s.titleize
         raise Invalid, "Analysis class not defined: #{class_name}" unless const_defined?(class_name)
-        const_get(class_name).new
+        const_get(class_name).new(string)
+      end
+      
+      def analyze(string, analysis)
+        create(analysis, string).counts
       end
     end
   end

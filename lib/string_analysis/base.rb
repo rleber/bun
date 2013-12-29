@@ -14,23 +14,23 @@ class String
         @patterns = patterns
       end
   
-      def pattern_counts
+      def counts
         encoded = @string.force_encoding('ascii-8bit')
-        counts = []
+        cts = []
         [patterns].flatten.each.with_index do |pat, i|
-          counts[i] = {index:i, characters: {}, count: 0}
+          cts[i] = {index:i, characters: {}, count: 0}
           encoded.scan(pat) do |ch|
-            counts[i][:count] += 1
-            counts[i][:characters][ch] ||= 0
-            counts[i][:characters][ch] += 1
+            cts[i][:count] += 1
+            cts[i][:characters][ch] ||= 0
+            cts[i][:characters][ch] += 1
           end
         end
-        counts
+        cts
       end
   
       def character_class_counts
-        counts = pattern_counts
-        counts.inject({}) do |hsh, entry|
+        cts = counts
+        cts.inject({}) do |hsh, entry|
           hsh[entry[:characters].keys.sort.join] = entry[:count]
           hsh
         end
