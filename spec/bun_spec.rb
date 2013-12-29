@@ -134,9 +134,7 @@ shared_examples "match with variable data" do |fname, patterns|
   it "should generate output matching each pattern" do
     actual_output = Bun.readfile(actual_output_file).chomp
     patterns.each do |key, pat|
-      $stderr.puts "checking #{key}:"
-      # (actual_output =~ pat).should_not == nil
-      expect(actual_output).to match(pat)
+      actual_output.should match_named_pattern(key, pat)
     end
   end
   it "should generate the proper fixed content" do

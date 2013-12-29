@@ -62,7 +62,7 @@ end
 
 shared_examples "with slices" do |object|
   it "should define slices" do
-    expect { object.slices }.should_not raise_error
+    expect { object.slices }.not_to raise_error
   end
   
   context "slices" do
@@ -227,7 +227,7 @@ describe "instance" do
 
   context "automatically installs formats" do
     it "understands formats" do
-      expect { $bytes.integer(0).unsigned.octal }.should_not raise_error
+      expect { $bytes.integer(0).unsigned.octal }.not_to raise_error
     end
   end
 
@@ -327,7 +327,7 @@ describe "instance" do
             slice.formats.keys.each do |fmt|
               context "format #{fmt}" do
                 it "should display .format(#{fmt})" do
-                  expect { slice_object.format(fmt) }.should_not raise_error
+                  expect { slice_object.format(fmt) }.not_to raise_error
                 end
 
                 if fmt == :default
@@ -359,7 +359,7 @@ describe "instance" do
             end
             
             it "should allow .asc.format" do
-              expect { slice_object.asc.format }.should_not raise_error
+              expect { slice_object.asc.format }.not_to raise_error
             end
     
             it "should return a string as .value" do
@@ -375,15 +375,15 @@ describe "instance" do
             end
     
             it "should allow prefix +" do
-              expect { "a" + slice_object }.should_not raise_error
+              expect { "a" + slice_object }.not_to raise_error
             end
     
             it "should allow postfix +" do
-              expect { slice_object + "a" }.should_not raise_error
+              expect { slice_object + "a" }.not_to raise_error
             end
     
             it "should not define .sign?" do
-              expect { slice_object.sign? }.should raise_error
+              expect { slice_object.sign? }.to raise_error
             end
           end
         end
@@ -408,7 +408,7 @@ describe "instance" do
         end
         
         it "should define .sign?" do
-          expect { slice.sign? }.should_not raise_error
+          expect { slice.sign? }.not_to raise_error
         end
 
         slice.count.times do |i|
@@ -416,15 +416,15 @@ describe "instance" do
             slice_object = slice[i]
 
             it "should not define the .asc method" do
-              expect {slice_object.asc }.should raise_error
+              expect {slice_object.asc }.to raise_error
             end
 
             # it "should not define the string format" do
-            #   expect {slice_object.string }.should raise_error
+            #   expect {slice_object.string }.to raise_error
             # end
     
             it "should not define the string_inspect format" do
-              expect {slice_object.string_inspect }.should raise_error
+              expect {slice_object.string_inspect }.to raise_error
             end
 
             it " .to_s should == default format" do
@@ -434,7 +434,7 @@ describe "instance" do
             slice.formats.keys.each do |fmt|
               context "format #{fmt}" do
                 it "should display .format(#{fmt})" do
-                  expect { slice_object.format(fmt) }.should_not raise_error
+                  expect { slice_object.format(fmt) }.not_to raise_error
                 end
 
                 if fmt == :default
@@ -450,7 +450,7 @@ describe "instance" do
             end
 
             it "should not define the .plus method" do
-              expect {slice_object.plus(2) }.should raise_error
+              expect {slice_object.plus(2) }.to raise_error
             end
     
             it "should return a number as .value" do
@@ -466,11 +466,11 @@ describe "instance" do
             end
 
             it "should allow prefix arithmetic" do
-              expect { 2 + slice_object }.should_not raise_error
+              expect { 2 + slice_object }.not_to raise_error
             end
 
             it "should allow postfix arithmetic" do
-              expect { slice_object + 2 }.should_not raise_error
+              expect { slice_object + 2 }.not_to raise_error
             end
 
             # TODO slice_object.sign? should be possible
@@ -516,11 +516,11 @@ describe "instance" do
                 end
     
                 it "should not define .signed" do
-                  expect { slice_object.signed }.should raise_error
+                  expect { slice_object.signed }.to raise_error
                 end
     
                 it "should not define .unsigned" do
-                  expect { slice_object.unsigned }.should raise_error
+                  expect { slice_object.unsigned }.to raise_error
                 end
               end
             end
