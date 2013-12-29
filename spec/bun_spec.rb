@@ -121,7 +121,8 @@ shared_examples "command with file" do |descr, command, expected_stdout_file, ou
 end
 
 UNPACK_PATTERNS = {
-  :unpack_time=>/:unpack_time: \d{4}-\d\d-\d\d \d\d:\d\d:\d\d\.\d{9} [-+]\d\d:\d\d\n?/
+  :unpack_time=>/:unpack_time: \d{4}-\d\d-\d\d \d\d:\d\d:\d\d\.\d{9} [-+]\d\d:\d\d\n?/,
+  :unpacked_by=>/:unpacked_by:\s+Bun version \d+\.\d+\.\d+\s+\[.*?\]\n?/, 
 }
 
 shared_examples "match with variable data" do |fname, patterns|
