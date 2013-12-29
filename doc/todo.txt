@@ -58,6 +58,7 @@ Implement Huffman decoding
 
 _Medium Priority_
 Change shard 0 to mean the first shard; use shard '\\0', (or shard "0") for a shard named '0'
+Add MD5 checksum to unpacked and decoded formats
 Create bun archive find_duplicates
 Resolve backspaces: to underlining, overstrike or bold (explore 'col' command)
 Convert troff to HTML or Markdown, or some other modern format (explore 'groff -T')
@@ -66,6 +67,7 @@ Remove places code
 Remove config code?
 Remove extraneous code
 Remove shell.log code
+Add long_desc to all methods
 Refactor Bots to use Actors (or put methods (e.g. thaw, dump) into the data objects)
 Optimization ideas: Continue examining Indexable::Basic, since it's probably 10-15% of execution time
     Reduce usage, optimize "center" code
