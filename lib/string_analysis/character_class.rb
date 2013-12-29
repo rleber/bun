@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-# Classes to define analysis of english vs. non-english characters
+# Abstract base classes for counting classes of characters
 
 class String
   class Analysis

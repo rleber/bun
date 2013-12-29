@@ -11,7 +11,8 @@ Checks the file to see whether it passes certain tests.
 
 Available tests include:\x5
 
-
+clean: Text does not contain unprintable characters
+readability: Proportion of readable textual characters in text
 
 EOT
 def check(file)

@@ -25,4 +25,4 @@ end
 require 'lib/string'
 require 'lib/string_check/base'
 require 'lib/string_check/clean'
-require 'lib/string_check/english'
+require 'lib/string_check/readability'

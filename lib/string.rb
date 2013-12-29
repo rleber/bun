@@ -65,11 +65,6 @@ class String
         description: "File contains backspaces",
         test: lambda {|text| text.overstruck? ? :overstruck : :not_overstruck }
       },
-      english: {
-        description: "Proportion of english vs. non-english characters",
-        test: lambda {|text| text.english_proportion },
-        format: lambda {|res| '%0.2f%' % (res*100.0) }
-      },
       
     }
 
@@ -80,8 +75,8 @@ class String
   end
 
   
-  def english_proportion
-    String::Check(self, :english)
+  def readable_proportion
+    String::Check(self, :readability)
   end
   
   def counts(*character_sets)

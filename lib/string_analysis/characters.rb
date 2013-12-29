@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-# Classes to define analysis of english vs. non-english characters
+# Classes for counting occurrences of all characters
 
 require 'lib/string'
 
