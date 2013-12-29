@@ -5,10 +5,200 @@ require 'lib/bun/file/descriptor'
 require 'yaml'
 require 'date'
 
+# TODO Move to a separate file
+class String
+  class InvalidCheck < ArgumentError; end
+
+  def escaped
+    self.inspect[1..-2]
+  end
+  
+  class << self
+  
+    VALID_CONTROL_CHARACTER_HASH = {
+      new_line:        "\n", 
+      carriage_return: "\r", 
+      backspace:       "\x8", 
+      tab:             "\x9", 
+      vertical_tab:    "\xb",
+      form_feed:       "\xc",
+    }
+    VALID_CONTROL_CHARACTER_HASH.each do |key, value|
+      const_set(key.upcase, value)
+      const_set("#{key.upcase}_REGEXP", /#{value.escaped}/)
+      define_method("#{key}_regexp}") { const_get("#{key.upcase}_REGEXP") }
+    end
+  
+    VALID_CONTROL_CHARACTER_ARRAY = VALID_CONTROL_CHARACTER_HASH.values
+    VALID_CONTROL_CHARACTER_STRING = VALID_CONTROL_CHARACTER_ARRAY.join
+    VALID_CONTROL_CHARACTERS = VALID_CONTROL_CHARACTER_STRING.escaped
+    VALID_CONTROL_CHARACTER_REGEXP = /[#{VALID_CONTROL_CHARACTERS}]/
+    INVALID_CHARACTER_REGEXP = /(?!(?>#{VALID_CONTROL_CHARACTER_REGEXP}))[[:cntrl:]]/
+    VALID_CHARACTER_REGEXP = /(?!(?>#{INVALID_CHARACTER_REGEXP}))./
+
+    def valid_control_character_array
+      VALID_CONTROL_CHARACTER_ARRAY
+    end
+    def valid_control_character_regexp
+      VALID_CONTROL_CHARACTER_REGEXP
+    end
+
+    def invalid_character_regexp
+      INVALID_CHARACTER_REGEXP
+    end
+
+    def valid_character_regexp
+      VALID_CHARACTER_REGEXP
+    end
+
+    # TODO Refactor this, using a String::Check class?
+    CHECK_TESTS = {
+      clean: {
+        options: [:clean, :dirty],
+        description: "File contains special characters",
+        test: lambda {|text| text.clean? ? :clean : :dirty }
+      },
+      tabbed: {
+        options: [:tabs, :no_tabs],
+        description: "File contains tabs",
+        test: lambda {|text| text.tabbed? ? :tabs : :no_tabs }
+      },
+      overstruck: {
+        options: [:tabs, :no_tabs],
+        description: "File contains backspaces",
+        test: lambda {|text| text.overstruck? ? :overstruck : :not_overstruck }
+      },
+      english: {
+        description: "Proportion of english vs. non-english characters",
+        test: lambda {|text| text.english_proportion },
+        format: lambda {|res| '%0.2f%' % (res*100.0) }
+      },
+      
+    }
+
+    def check_tests
+      CHECK_TESTS
+    end
+    
+    # TODO Refactor this, using a String::Analysis class?
+    ANALYSES = {
+      control_characters: {
+        description: "Count control characters",
+        fields: %w{Character Count},
+        test: lambda {|text| text.control_character_counts },
+        format: lambda do |analysis|
+          table = [%w{Character Count}]
+          analysis.to_a.sort_by {|row| -row.last} \
+          .each do |character, count|
+            table << [character.inspect, count.to_s]
+          end
+          table.justify_rows(right_justify: [1])
+        end
+      },
+      characters: {
+        description: "Count all characters",
+        fields: %w{Character Count},
+        test: lambda {|text| text.character_counts },
+        format: lambda do |analysis|
+          table = [%w{Character Count}]
+          analysis.to_a.sort_by {|row| -row.last} \
+          .each do |character, count|
+            table << [character.inspect, count.to_s]
+          end
+          table.justify_rows(right_justify: [1])
+        end
+      },
+      english: {
+        description: "Count english vs. non-english characters",
+        fields: %w{Category Count},
+        test: lambda {|text| text.english_counts },
+        format: lambda do |analysis|
+          table = [%w{Category Count}]
+          analysis.to_a.sort_by {|row| -row.last} \
+          .each do |category, count|
+            table << [category.inspect, count.to_s]
+          end
+          table.justify_rows(right_justify: [1])
+        end
+      },
+    }
+
+    def analyses
+      ANALYSES
+    end
+  end
+
+  def control_character_counts
+    pats = self.class.valid_control_character_array + [self.class.invalid_character_regexp]
+    character_counts(pats)
+  end
+  
+  def english_counts
+    english = 'a-zA-Z0-9\.,()\-'
+    pats = [/[#{english}]/,/[^#{english}]/]
+    counts = pattern_counts(pats)
+    counts += [{count: 0}]*2
+    { english: counts[0][:count], non_english: counts[1][:count] }
+  end
+  
+  def english_proportion
+    counts = english_counts
+    counts[:english]*1.0 / (counts[:english] + counts[:non_english])
+  end
+  
+  def pattern_counts(*character_sets)
+    character_sets = [/./] if character_sets.size == 0 # Match anything
+    encoded = self.force_encoding('ascii-8bit')
+    counts = []
+    [character_sets].flatten.each.with_index do |pat, i|
+      encoded.scan(pat) do |ch|
+        counts[i] ||= {index:i, character:ch, count: 0}
+        counts[i][:count] += 1
+      end
+    end
+    counts
+  end
+  
+  def character_counts(*character_sets)
+    counts = pattern_counts(*character_sets)
+    counts.inject({}) {|hsh, entry| hsh[entry[:character]] = entry[:count]; hsh }
+  end
+  
+  def analyze(analysis)
+    spec = self.class.analyses[analysis.to_sym]
+    raise InvalidCheck, "!Invalid analysis: #{analysis.inspect}" unless spec
+    spec[:test].call(self)
+  end
+
+  def clean?
+    self.force_encoding('ascii-8bit') !~ String.invalid_character_regexp
+  end
+  
+  def tabbed?(text)
+    self.force_encoding('ascii-8bit') !~ String.tab_regexp
+  end
+  
+  def overstruck?(text)
+    self.force_encoding('ascii-8bit') !~ String.backspace_regexp
+  end
+  
+  def check(test)
+    spec = self.class.check_tests[test.to_sym]
+    raise InvalidCheck, "!Invalid test: #{test.inspect}" unless spec
+    test_result = spec[:test].call(self)
+    if spec[:options]
+      ix = spec[:options].index(test_result) || spec[:options].size
+    else
+      ix = nil
+    end
+    test_result = spec[:format].call(test_result) if spec[:format]
+    {code: ix, description: test_result}
+  end
+end
+
 module Bun
 
   class File < ::File
-    class InvalidFileCheck < ArgumentError; end
 
     class << self
       
@@ -29,38 +219,7 @@ module Bun
         args[0] = path
         ::File.read(*args)
       end
-      
-      # attr_accessor :stdin_buffer
-      # 
-      #  def read(*args)
-      #    original_args = args.dup
-      #    options = {}
-      #    if args.last.is_a?(Hash)
-      #      options = args.pop
-      #    end
-      #    raise "Missing path" if args.size == 0
-      #    encoding = options[:encoding] || 'ascii-8bit'
-      #    path = args.first
-      #    res = if path == '-'
-      #      stdin_buffer ||= ''
-      #      if args.size >=2
-      #        len = args[1]
-      #        if len > stdin_buffer.size
-      #          data = $stdin.read(len-stdin_buffer.size).force_encoding(encoding)
-      #          stdin_buffer += data
-      #        end
-      #        stdin_buffer[0,len]
-      #      else
-      #        stdin_buffer + $stdin.read.force_encoding(encoding)
-      #      end
-      #    else
-      #      debug "About to do File.read: args: #{args.inspect}"
-      #      ::File.read(*args)
-      #    end
-      #    debug "args: #{original_args.inspect} => #{res.inspect}"
-      #    res
-      #  end
- 
+
       def relative_path(*f)
         options = {}
         if f.last.is_a?(Hash)
@@ -70,55 +229,16 @@ module Bun
         File.expand_path(File.join(*f), relative_to).sub(/^#{Regexp.escape(relative_to)}\//,'')
       end
 
-      VALID_CONTROL_CHARACTERS = '\n\r\x8\x9\xb\xc' # \x8 is a backspace, \x9 is a tab, \xb is a VT, \xc is a form-feed
-      VALID_CONTROL_CHARACTER_STRING = eval("\"#{VALID_CONTROL_CHARACTERS}\"")
-      VALID_CONTROL_CHARACTER_REGEXP = /[#{VALID_CONTROL_CHARACTERS}]/
-      INVALID_CHARACTER_REGEXP = /(?!(?>#{VALID_CONTROL_CHARACTER_REGEXP}))[[:cntrl:]]/
-      VALID_CHARACTER_REGEXP = /(?!(?>#{INVALID_CHARACTER_REGEXP}))./
-
-      def control_character_counts(text)
-        control_characters = Hash.new(0)
-        ["\t","\b","\f","\v",File.invalid_character_regexp].each do |pat|
-          text.scan(pat) {|ch| control_characters[ch] += 1 }
-        end
-        control_characters
-      end
-
-      def valid_control_character_regexp
-        VALID_CONTROL_CHARACTER_REGEXP
-      end
-
-      def invalid_character_regexp
-        INVALID_CHARACTER_REGEXP
-      end
-
-      def valid_character_regexp
-        VALID_CHARACTER_REGEXP
-      end
-  
-      def clean?(text)
-        text.force_encoding('ascii-8bit') !~ INVALID_CHARACTER_REGEXP
-      end
-
-      CHECK_TESTS = {
-        clean: {
-          options: [:clean, :dirty],
-          description: "File contains special characters",
-          test: lambda {|text| File.clean?(text) ? :clean : :dirty }
-        }
-      }
-      
-      def check_tests
-        CHECK_TESTS
+      def control_character_counts(path)
+        Bun.readfile(path).control_character_counts
       end
       
       def check(path, test)
-        spec = check_tests[test.to_sym]
-        raise InvalidFileCheck, "!Invalid test: #{test.inspect}" unless spec
-        content = read(path)
-        test_result = spec[:test].call(content)
-        ix = spec[:options].index(test_result) || spec[:options].size
-        {code: ix, description: test_result}
+        read(path).check(test)
+      end
+      
+      def analyze(path, analysis)
+        read(path).analyze(analysis)
       end
   
       def descriptor(options={})

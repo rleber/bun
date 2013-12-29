@@ -18,7 +18,7 @@ the files are classified into two directories: TO/clean and TO/dirty.
 
 Available tests include:\x5
 #{
-  Bun::File.check_tests.to_a.map do |key,spec| 
+  String.check_tests.to_a.map do |key,spec| 
     [key.to_s, spec[:description]]
   end.justify_rows.map{|row| row.join(': ')}.join("\x5")
 }
