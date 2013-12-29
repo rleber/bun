@@ -63,7 +63,7 @@ module Bun
           file.shard_count.times do |i|
             descr = file.shard_descriptor(i)
             shard_name = descr.name
-            warn "thaw #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
+            warn "unpack #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
             unless options[:dryrun]
               timestamp = file.descriptor.timestamp
               f = File.join(to_path, decode_path(file.path, timestamp), shard_name, decode_tapename(tape, descr.file_time))
