@@ -6,6 +6,8 @@
 :owner: mathnoos
 :path: mathnoos/frosh/fass
 :data_format: :raw
+:unpack_time: 2013-12-28 19:21:19.706387000 -05:00
+:unpacked_by: Bun version 0.0.6 [feature/simplify:1099b486e0213f8296dd8c2a2bc4a1bddca32f39]
 :content: !binary |-
   AABAPQAABAARAB0AZvChKGIQCgg90zAAAAAAkAAAADNphOhoNxvN5zAAAAAA
   AAAAAAF5mORvOZoF5mMJzOYgIxBKZTEBiNh1ORiAAAAABAE7AAUAIAAAAAAA

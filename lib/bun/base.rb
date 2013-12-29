@@ -12,6 +12,22 @@ module Bun
   def self.convert_glob(pat)
     Regexp.new(%{^#{pat.gsub('.', "\\.").gsub('*','.*')}$})
   end
+  
+  def self.expanded_version
+    "Bun version #{version} [#{git_branch}:#{git_hash}]"
+  end
+  
+  def self.version
+    Bun::VERSION
+  end
+  
+  def self.git_hash
+    `git rev-parse HEAD`.chomp
+  end
+  
+  def self.git_branch
+    `git branch | grep '*'`[/\*\s+(.*)/,1]
+  end
 end
 
 require 'rubygems'
@@ -19,4 +35,5 @@ require 'date'
 require 'lib/kernel'
 require 'lib/cacheable_methods'
 require 'lib/bun/date'
+require 'lib/bun/version'
 require 'lib/bun/bots'

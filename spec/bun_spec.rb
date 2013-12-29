@@ -120,6 +120,36 @@ shared_examples "command with file" do |descr, command, expected_stdout_file, ou
   end
 end
 
+UNPACK_PATTERNS = {
+  :unpack_time=>/:unpack_time: \d{4}-\d\d-\d\d \d\d:\d\d:\d\d\.\d{9} [-+]\d\d:\d\d\n?/
+}
+
+shared_examples "match with variable data" do |fname, patterns|
+  actual_output_file = File.join('output', fname)
+  expected_output_file = File.join('output','test', fname)
+  it "should create the proper file" do
+    file_should_exist actual_output_file
+  end
+  it "should generate output matching each pattern" do
+    actual_output = Bun.readfile(actual_output_file).chomp
+    patterns.each do |key, pat|
+      $stderr.puts "checking #{key}:"
+      (actual_output =~ pat).should_not == nil
+    end
+  end
+  it "should generate the proper fixed content" do
+    actual_output = Bun.readfile(actual_output_file).chomp
+    expected_output = Bun.readfile(expected_output_file).chomp
+    patterns.each do |key, pat|
+      actual_output = actual_output.sub(pat,'')
+      expected_output = expected_output.sub(pat,'')
+    end
+    actual_output = actual_output.gsub!(/\n+/,"\n").chomp
+    expected_output = expected_output.gsub!(/\n+/,"\n").chomp
+    actual_output.should == expected_output
+  end
+end
+
 describe Bun::File::Text do
   include_examples "simple", "ar119.1801"
   include_examples "simple", "ar003.0698"
@@ -138,12 +168,12 @@ describe Bun::Archive do
         before :all do
           exec("rm -f output/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
-          exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
-          exec("bun unpack data/test/archive/general_test_packed/ar003.0698 - >output/unpack_ar003.0698")
+          exec("cp -r data/test/archive/general_test_packed_init \
+                      data/test/archive/general_test_packed")
+          exec("bun unpack data/test/archive/general_test_packed/ar003.0698 - \
+                    >output/unpack_ar003.0698")
         end
-        it "should generate the proper conversion on stdout" do
-          Bun.readfile("output/unpack_ar003.0698").chomp.should == Bun.readfile('output/test/unpack_ar003.0698').chomp
-        end
+        include_examples "match with variable data", "unpack_ar003.0698", UNPACK_PATTERNS
         after :all do
           exec("rm -f output/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
@@ -153,15 +183,11 @@ describe Bun::Archive do
         before :all do
           exec("rm -f output/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
-          exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
+          exec("cp -r data/test/archive/general_test_packed_init \
+                   data/test/archive/general_test_packed")
           exec("bun unpack data/test/archive/general_test_packed/ar003.0698 >output/unpack_ar003.0698")
         end
-        it "should create the proper file" do
-          file_should_exist "output/unpack_ar003.0698"
-        end
-        it "should generate the proper conversion on stdout" do
-          Bun.readfile("output/unpack_ar003.0698").chomp.should == Bun.readfile('output/test/unpack_ar003.0698').chomp
-        end
+        include_examples "match with variable data", "unpack_ar003.0698", UNPACK_PATTERNS
         after :all do
           exec("rm -f output/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
@@ -171,17 +197,14 @@ describe Bun::Archive do
     context "from STDIN" do
       context "without tape name" do
         before :all do
-          exec("rm -f output/unpack_ar003.0698")
+          exec("rm -f output/unpack_stdin_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
           exec("cp -r data/test/archive/general_test_packed_init \
                   data/test/archive/general_test_packed")
           exec("cat data/test/archive/general_test_packed/ar003.0698 | \
-                  bun unpack - >output/unpack_ar003.0698")
+                  bun unpack - >output/unpack_stdin_ar003.0698")
         end
-        it "should generate the proper conversion on stdout" do
-          Bun.readfile("output/unpack_ar003.0698").chomp.should == 
-          Bun.readfile('output/test/unpack_stdin_ar003.0698').chomp
-        end
+        include_examples "match with variable data", "unpack_stdin_ar003.0698", UNPACK_PATTERNS
         after :all do
           exec("rm -f output/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
@@ -196,10 +219,7 @@ describe Bun::Archive do
           exec("cat data/test/archive/general_test_packed/ar003.0698 | \
                   bun unpack -t ar003.0698 - >output/unpack_ar003.0698")
         end
-        it "should generate the proper conversion on stdout" do
-          Bun.readfile("output/unpack_ar003.0698").chomp.should ==
-          Bun.readfile('output/test/unpack_ar003.0698').chomp
-        end
+        include_examples "match with variable data", "unpack_ar003.0698", UNPACK_PATTERNS
         after :all do
           exec("rm -f output/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
@@ -213,13 +233,7 @@ describe Bun::Archive do
         exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
         exec("bun unpack data/test/archive/general_test_packed/ar003.0698 output/unpack_ar003.0698")
       end
-      it "should create the proper file" do
-        file_should_exist "output/unpack_ar003.0698"
-      end
-      it "should generate the proper conversion in the file" do
-        Bun.readfile("output/unpack_ar003.0698").chomp.should ==
-        Bun.readfile('output/test/unpack_ar003.0698').chomp
-      end
+      include_examples "match with variable data", "unpack_ar003.0698", UNPACK_PATTERNS
       after :all do
         exec("rm -f output/unpack_ar003.0698")
         exec("rm -rf data/test/archive/general_test_packed")
@@ -232,13 +246,7 @@ describe Bun::Archive do
         exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
         exec("bun unpack data/test/archive/general_test_packed/ar019.0175 output/unpack_ar019.0175")
       end
-      it "should create the proper file" do
-        file_should_exist "output/unpack_ar019.0175"
-      end
-      it "should generate the proper conversion" do
-        Bun.readfile("output/unpack_ar019.0175").chomp.should ==
-        Bun.readfile('output/test/unpack_ar019.0175').chomp
-      end
+      include_examples "match with variable data", "unpack_ar019.0175", UNPACK_PATTERNS
       after :all do
         exec("rm -f output/unpack_ar019.0175")
         exec("rm -rf data/test/archive/general_test_packed")
@@ -303,6 +311,11 @@ end
 
 # Frozen files to check ar013.0560, ar004.0888, ar019.0175
 
+DESCRIBE_PATTERNS = {
+  :unpack_time=>/Unpack Time\s+\d{4}-\d\d-\d\d \d\d:\d\d:\d\d\s+[-+]\d{4}\n?/,
+  :unpacked_by=>/Unpacked By\s+Bun version \d+\.\d+\.\d+\s+\[.*?\]\n?/,
+}
+
 describe Bun::Bot do
   # include_examples "command", "descr", "cmd", "expected_stdout_file"
   # include_examples "command with file", "descr", "cmd", "expected_stdout_file", "output_in_file", "expected_output_file"
@@ -325,10 +338,18 @@ describe Bun::Bot do
   end
     
   describe "describe" do
-    include_examples "command", "describe text file", "describe #{TEST_ARCHIVE}/ar003.0698",
-                     "describe_ar003.0698"
-    include_examples "command", "describe frozen file", "describe #{TEST_ARCHIVE}/ar025.0634",
-                     "describe_ar025.0634"
+    describe "with text file" do
+      before :all do
+        exec("bun describe #{TEST_ARCHIVE}/ar003.0698 >output/describe_ar003.0698")
+      end
+      include_examples "match with variable data", "describe_ar003.0698", DESCRIBE_PATTERNS
+    end
+    describe "with frozen file" do
+      before :all do
+        exec("bun describe #{TEST_ARCHIVE}/ar025.0634 >output/describe_ar025.0634")
+      end
+      include_examples "match with variable data", "describe_ar025.0634", DESCRIBE_PATTERNS
+    end
   end
   
   context "functioning outside the base directory" do

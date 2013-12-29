@@ -2,11 +2,11 @@
 :description: ==>files for idallen
 :file_size: 2582
 :file_type: :text
-:tape: ar003.0698
+:tape: ! '-'
 :owner: fass
 :path: fass/idallen/vector
 :data_format: :raw
-:unpack_time: 2013-12-28 16:18:13.901405000 -05:00
+:unpack_time: 2013-12-28 20:35:05.494913000 -05:00
 :unpacked_by: Bun version 0.0.6 [feature/simplify:1099b486e0213f8296dd8c2a2bc4a1bddca32f39]
 :content: !binary |-
   AABAoVAABAAVAADAK6CQoUstCQoUstAAAAAAAAAAAIMxhOZzAAAAAAAAAAAA

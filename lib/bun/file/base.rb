@@ -141,6 +141,7 @@ module Bun
         open(path) do |f|
           cvt = f.unpack
           cvt.descriptor.tape = options[:tape] if options[:tape]
+          cvt.descriptor.merge!(:unpack_time=>Time.now, :unpacked_by=>Bun.expanded_version)
           cvt.write(to)
         end
       end
