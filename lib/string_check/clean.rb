@@ -8,7 +8,14 @@ class String
     class Clean < Base
       
       def check
-        string.clean? ? :clean : :dirty
+        if string.clean?
+          res = :clean
+          @code = 0
+        else
+          res = :dirty
+          @code = 1
+        end
+        res
       end
     end
   end

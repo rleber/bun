@@ -7,9 +7,11 @@ class String
   class Check
     class Base
       attr_accessor :string
+      attr_reader :code
     
       def initialize(string='')
         @string = string
+        @code = 0
       end
       
       # Subclasses should define check method

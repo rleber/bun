@@ -17,6 +17,7 @@ EOT
 def check(file)
   checker = Bun::File.check(file, options[:test])
   puts checker.to_s
+  exit checker.code
 rescue String::Check::Invalid => e
   warn "!Invalid check: #{options[:test]}" unless options[:quiet]
   exit(99)
