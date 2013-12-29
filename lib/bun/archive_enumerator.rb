@@ -12,7 +12,7 @@ module Bun
               yielder << fname
             else
               descriptor = @collection.descriptor(fname)
-              yielder << fname if descriptor.file_type == :frozen
+              yielder << fname if descriptor.tape_type == :frozen
             end
           end
         end
@@ -29,7 +29,7 @@ module Bun
             if ::File.file?(path)
               yielder << fname
               descriptor = @collection.descriptor(fname)
-              if descriptor.file_type == :frozen
+              if descriptor.tape_type == :frozen
                 descriptor.shard_names.each do |shard_name|
                   yielder << "#{fname}[#{shard_name}]"
                 end
@@ -50,7 +50,7 @@ module Bun
           all.with_path do |fname, path|
             if ::File.file?(path)
               descriptor = @collection.descriptor(fname)
-              if descriptor.file_type == :frozen
+              if descriptor.tape_type == :frozen
                 descriptor.shard_names.each do |shard_name|
                   yielder << "#{fname}[#{shard_name}]"
                 end

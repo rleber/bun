@@ -213,7 +213,7 @@ module Bun
       File::Frozen::Descriptor.frozen?(self)
     end
 
-    def file_type
+    def tape_type
       if frozen?
         :frozen
       elsif word(content_offset).characters.join == 'huff'

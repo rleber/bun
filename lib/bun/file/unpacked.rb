@@ -7,7 +7,7 @@ module Bun
 
   class File < ::File
     class UnknownFileType < RuntimeError; end
-    class UnexpectedFileType < RuntimeError; end
+    class UnexpectedTapeType < RuntimeError; end
     class Unpacked < Bun::File
       class << self
 
@@ -17,7 +17,7 @@ module Bun
         #     ftype = options[:type]
         #   else
         #     preamble = get_preamble(options)
-        #     ftype = preamble.file_type
+        #     ftype = preamble.tape_type
         #   end
         #   klass = const_get(ftype.to_s.sub(/^./){|m| m.upcase}) unless ftype.is_a?(Class)
         #   if options[:header]
@@ -54,12 +54,12 @@ module Bun
           )
           descriptor = Descriptor::Base.from_hash(@content,input)
           options.merge!(:data=>data, :descriptor=>descriptor, :tape_path=>fname)
-          if options[:type] && descriptor[:file_type]!=options[:type]
-            msg = "Expected file #{fname} to be a #{options[:type]} file, not a #{descriptor[:file_type]} file"
+          if options[:type] && descriptor[:tape_type]!=options[:type]
+            msg = "Expected file #{fname} to be a #{options[:type]} file, not a #{descriptor[:tape_type]} file"
             if options[:graceful]
               stop "!#{msg}"
             else
-              raise UnexpectedFileType, msg
+              raise UnexpectedTapeType, msg
             end
           end
           file = create(options)
@@ -76,15 +76,15 @@ module Bun
         
         def create(options={})
           descriptor = options[:descriptor]
-          file_type = options[:force] || descriptor[:file_type]
-          case file_type
+          tape_type = options[:force] || descriptor[:tape_type]
+          case tape_type
           when :text
             File::Unpacked::Text.new(options)
           when :frozen
             File::Unpacked::Frozen.new(options)
           else
             if options[:strict]
-              raise UnknownFileType,"!Unknown file type: #{descriptor.file_type.inspect}"
+              raise UnknownFileType,"!Unknown file type: #{descriptor.tape_type.inspect}"
             else
               File::Unpacked::Text.new(options)
             end
@@ -267,8 +267,8 @@ module Bun
       #   File::Frozen::Descriptor.frozen?(self)
       # end
       
-      def file_type
-        descriptor.file_type
+      def tape_type
+        descriptor.tape_type
       end
       
       def file_time
@@ -277,7 +277,7 @@ module Bun
       
       def to_yaml
         hash = descriptor.to_hash.merge(:content=>data.data)
-        if file_type == :frozen
+        if tape_type == :frozen
           hash[:shards] = shard_descriptors.map do |d|
             {
               :name      => d.name,

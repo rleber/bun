@@ -7,6 +7,6 @@ def types(at)
   archive = Archive.new(at)
   archive.each do |tape|
     file = archive.descriptor(tape, :build=>options[:build])
-    puts "#{tape}: #{file[:file_type]}"
+    puts "#{tape}: #{file[:tape_type]}"
   end
 end

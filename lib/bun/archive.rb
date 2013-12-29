@@ -21,7 +21,7 @@ module Bun
       contents = []
       each do |tape|
         file = open(tape)
-        if file.file_type == :frozen
+        if file.tape_type == :frozen
           file.shard_count.times do |i|
             contents << "#{tape}[#{file.shard_name(i)}]"
           end
@@ -59,7 +59,7 @@ module Bun
       FileUtils.rm_rf to_path unless options[:dryrun]
       tapes.each do |tape|
         file = open(tape)
-        case file.file_type
+        case file.tape_type
         when :frozen
           file.shard_count.times do |i|
             descr = file.shard_descriptor(i)
@@ -84,7 +84,7 @@ module Bun
             file.decode f
           end
         else
-          warn "skipping #{tape}: unknown type (#{file.file_type})" \
+          warn "skipping #{tape}: unknown type (#{file.tape_type})" \
                 if options[:dryrun] || !options[:quiet]
         end
       end

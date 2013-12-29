@@ -39,9 +39,9 @@ module Bun
         File.expand_path(File.join(*f), relative_to).sub(/^#{Regexp.escape(relative_to)}\//,'')
       end
 
-      def control_character_counts(path)
-        Bun.readfile(path).control_character_counts
-      end
+      # def control_character_counts(path)
+      #   Bun.readfile(path).control_character_counts
+      # end
       
       def check(path, test)
         read(path).check(test)
@@ -68,11 +68,11 @@ module Bun
         end
       end
       
-      def file_type(path)
+      def tape_type(path)
         return :packed if packed?(path)
         begin
           f = File::Unpacked.open(path)
-          f.file_type
+          f.tape_type
         rescue
           :unknown
         end

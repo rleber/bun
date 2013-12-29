@@ -64,7 +64,7 @@ module Bun
             ftype = options[:type]
           else
             preamble = get_preamble(options)
-            ftype = preamble.file_type
+            ftype = preamble.tape_type
           end
           klass = const_get(ftype.to_s.sub(/^./){|m| m.upcase}) unless ftype.is_a?(Class)
           if options[:header]
@@ -290,7 +290,7 @@ module Bun
         File::Frozen::Descriptor.frozen?(self)
       end
   
-      def file_type
+      def tape_type
         return :frozen if frozen?
         return :huffman if word(content_offset).characters.join == 'huff'
         return :text

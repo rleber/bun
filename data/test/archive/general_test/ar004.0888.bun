@@ -1,7 +1,7 @@
 ---
 :description: ==> freeze file containing roff source for fass '77 script
 :file_size: 40058
-:file_type: :frozen
+:tape_type: :frozen
 :tape: ar004.0888
 :owner: fass
 :path: fass/scripfrz

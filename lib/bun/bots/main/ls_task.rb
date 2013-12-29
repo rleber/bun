@@ -15,7 +15,7 @@ SORT_FIELDS = {
   :file        => :path,
   :size        => :file_size,
   :tape        => :tape,
-  :type        => :file_type,
+  :type        => :tape_type,
   :updated     => :file_time,
 }
 TYPE_VALUES = %w{all frozen text huff}
@@ -23,13 +23,13 @@ DATE_FORMAT = '%Y/%m/%d'
 TIME_FORMAT = DATE_FORMAT + ' %H:%M:%S'
 FIELD_CONVERSIONS = {
   :file_time   => lambda {|f| f.nil? ? 'n/a' : f.strftime(f.is_a?(Time) ? TIME_FORMAT : DATE_FORMAT) },
-  :file_type   => lambda {|f| f.to_s.sub(/^./) {|m| m.upcase} },
+  :tape_type   => lambda {|f| f.to_s.sub(/^./) {|m| m.upcase} },
   :shard_count => lambda {|f| f==0 ? '' : f },
 }
 FIELD_HEADINGS = {
   :description   => 'Description',
   :file_size     => 'Size',
-  :file_type     => 'Type',
+  :tape_type     => 'Type',
   :path          => 'File',
   :shard_count   => 'Shards',
   :tape          => 'Tape',
@@ -44,7 +44,7 @@ DEFAULT_VALUES = {
 SHARD_FIELDS = {
   :file_size     => :size,
   :shard_count   => '',
-  :file_type     => 'Shard',
+  :tape_type     => 'Shard',
   # :updated       => :file_time,
 }
 
@@ -79,8 +79,8 @@ def ls(*paths)
 
   fields =  options[:path] ? [:tape_path] : [:tape]
   fields += [:path] unless options[:onecolumn]
-  fields += [:file_type] if options[:type]
-  fields += [:file_type, :file_time, :file_size] if options[:long]
+  fields += [:tape_type] if options[:type]
+  fields += [:tape_type, :file_time, :file_size] if options[:long]
   fields += [:shard_count] if options[:long]
   fields += [:description] if options[:descr]
   fields = fields.uniq
@@ -131,7 +131,7 @@ def ls(*paths)
       hsh
     end
     file_info << file_row
-    if options[:frozen] && file_descriptor.file_type == :frozen
+    if options[:frozen] && file_descriptor.tape_type == :frozen
       file_descriptor.shards.each do |d|
         file_info << fields.inject({}) do |hsh, f|
           new_f = SHARD_FIELDS[f] || f
@@ -148,7 +148,7 @@ def ls(*paths)
     end
   end
   
-  file_info = file_info.select{|file| file[:file_type].to_s=~type_pattern && file[:path]=~file_pattern }
+  file_info = file_info.select{|file| file[:tape_type].to_s=~type_pattern && file[:path]=~file_pattern }
   sorted_info = file_info.sort_by do |fi|
     sort_fields.map{|f| fi[f].nil? ? DEFAULT_VALUES[f]||'' : fi[f] }
   end
@@ -161,7 +161,7 @@ def ls(*paths)
   end
 
   table = []
-  fields -= [:file_type] unless options[:long]
+  fields -= [:tape_type] unless options[:long]
   headings = FIELD_HEADINGS.values_at(*fields)
   table << headings
   formatted_info.each do |entry|

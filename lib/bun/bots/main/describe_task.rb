@@ -2,13 +2,13 @@
 # -*- encoding: us-ascii -*-
 
 STANDARD_FIELDS = %w{tape path owner description catalog_time 
-                     file_time file_size file_type data_format shards}.map{|f| f.to_sym}
+                     file_time file_size tape_type data_format shards}.map{|f| f.to_sym}
 
 SHARDS_ACROSS = 5
 desc "describe FILE", "Display description information for a tape"
 def describe(file)
   descriptor    = File.descriptor(file, :graceful=>true)
-  type          = descriptor.file_type
+  type          = descriptor.tape_type
   shards        = descriptor.shards || []
   catalog_time    = descriptor.catalog_time
   

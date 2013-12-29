@@ -37,7 +37,7 @@ module Bun
       def text
         res = lines.map{|l| l[:content]}.join
         @character_count = res.size
-        @control_characters = File.control_character_counts(res)
+        # @control_characters = File.control_character_counts(res)
         res
       end
       cache :text

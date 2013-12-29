@@ -19,7 +19,7 @@ def text_status(at)
     $stderr.puts tape unless options[:quiet]
     descr = archive.descriptor(tape)
     # TODO Apply this to frozen files, too
-    case descr.file_type
+    case descr.tape_type
     when :text
       if options[:build] || descr.control_characters.nil?
         text = archive.open(tape) {|f| f.text rescue nil }

@@ -25,7 +25,7 @@ module Bun
           # :errors,
           # :decoded,
           :file_size,
-          :file_type,
+          :tape_type,
           :tape,
           # :tape_path,
           # :original_tape,
@@ -39,7 +39,7 @@ module Bun
         
         def initialize(*args)
           super
-          if file_type == :frozen
+          if tape_type == :frozen
             register_fields :shards, :file_time
           end
         end
@@ -107,11 +107,11 @@ module Bun
          # end
         #        
         def shard_count
-          file_type == :frozen ? words.at(content_offset+1).half_words.at(1).to_i : 0
+          tape_type == :frozen ? words.at(content_offset+1).half_words.at(1).to_i : 0
         end
         
         def file_size
-          file_type == :frozen ? data.frozen_file_size : data.file_size
+          tape_type == :frozen ? data.frozen_file_size : data.file_size
         end
       
         # Reference to all_characters is necessary here, because characters isn't
@@ -127,7 +127,7 @@ module Bun
         private :packed_update_time_of_day
     
         def file_time
-          return nil unless file_type == :frozen
+          return nil unless tape_type == :frozen
           Bun::Data.time(packed_update_date, packed_update_time_of_day)
         end
     

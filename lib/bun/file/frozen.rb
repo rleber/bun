@@ -185,7 +185,7 @@ module Bun
         s = []
         shard_count.times do |i|
           text = shard_lines.at(i).map{|l| l[:content]}.join
-          shard_descriptors.at(i).control_characters = File.control_character_counts(text)
+          # shard_descriptors.at(i).control_characters = File.control_character_counts(text)
           shard_descriptors.at(i).character_count    = text.size
           s << text
         end

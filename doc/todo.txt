@@ -1,6 +1,6 @@
 TODO
 _High Priority_
-Change file_type to tape_type
+Change tape_type to tape_type
 Decode to YAML format
 Add decode_time, decoded_by to annotated decoded format
 Create bun archive extract (or unload): Convert decoded YAML format to flat file
