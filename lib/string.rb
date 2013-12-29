@@ -95,11 +95,11 @@ class String
   end
   
   def tabbed?
-    self.force_encoding('ascii-8bit') !~ /\t/
+    self.force_encoding('ascii-8bit') =~ /\t/
   end
   
   def overstruck?
-    self.force_encoding('ascii-8bit') !~ /\b/
+    self.force_encoding('ascii-8bit') =~ /\b/
   end
   
   def check(test)
