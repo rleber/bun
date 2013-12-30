@@ -365,25 +365,47 @@ describe Bun::Bot do
       end
       include_examples "match with variable data", "describe_ar025.0634", DESCRIBE_PATTERNS
     end
-  end
   
-  context "functioning outside the base directory" do
-    before :each do
-      raise RuntimeError, "In unexpected working directory: #{Dir.pwd}" \
-        unless File.expand_path(Dir.pwd) == File.expand_path(File.join(File.dirname(__FILE__),'..'))
-      @original_dir = Dir.pwd
+    context "functioning outside the base directory" do
+      before :each do
+        raise RuntimeError, "In unexpected working directory: #{Dir.pwd}" \
+          unless File.expand_path(Dir.pwd) == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+        @original_dir = Dir.pwd
+      end
+      it "should start in the base directory" do
+        File.expand_path(Dir.pwd).should == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+      end
+      it "should function okay in a different directory" do
+        exec("cd ~ ; bun describe #{TEST_ARCHIVE}/ar003.0698.bun")
+        $?.exitstatus.should == 0
+      end
+      after :each do
+        Dir.chdir(@original_dir)
+        raise RuntimeError, "Not back in normal working directory: #{Dir.pwd}" \
+          unless File.expand_path(Dir.pwd) == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+      end
     end
-    it "should start in the base directory" do
-      File.expand_path(Dir.pwd).should == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+  end  
+  
+  describe "mark" do
+    before :all do
+      exec "cp data/test/mark_source_init.bun data/test/mark_source.bun"
+      exec "bun describe data/test/mark_source.bun >output/mark_source_before"
+      exec "bun mark -t \" foo : bar , named:'abc,d\\\\'ef '\" data/test/mark_source.bun"
+      exec "bun describe data/test/mark_source.bun >output/mark_source_after"
     end
-    it "should function okay in a different directory" do
-      exec("cd ~ ; bun describe #{TEST_ARCHIVE}/ar003.0698.bun")
-      $?.exitstatus.should == 0
+    it "should have the expected input" do
+      Bun.readfile("output/mark_source_before").chomp.should ==
+      Bun.readfile('output/test/mark_source_before').chomp
     end
-    after :each do
-      Dir.chdir(@original_dir)
-      raise RuntimeError, "Not back in normal working directory: #{Dir.pwd}" \
-        unless File.expand_path(Dir.pwd) == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+    it "should create the expected marks in the file" do
+      Bun.readfile("output/mark_source_after").chomp.should ==
+      Bun.readfile('output/test/mark_source_after').chomp
+    end
+    after :all do
+      exec "rm -f data/test/mark_source.bun"
+      exec "rm -f output/mark_source_before"
+      exec "rm -f output/mark_source_after"
     end
   end
   

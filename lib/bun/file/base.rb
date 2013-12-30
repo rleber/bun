@@ -156,6 +156,10 @@ module Bun
     def path
       descriptor.path
     end
+    
+    def mark(tag_name, tag_value)
+      descriptor.set_field(tag_name, tag_value)
+    end
   
     def updated
       descriptor.updated
