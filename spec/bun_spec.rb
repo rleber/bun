@@ -388,24 +388,123 @@ describe Bun::Bot do
   end  
   
   describe "mark" do
-    before :all do
-      exec "cp data/test/mark_source_init.bun data/test/mark_source.bun"
-      exec "bun describe data/test/mark_source.bun >output/mark_source_before"
-      exec "bun mark -t \" foo : bar , named:'abc,d\\\\'ef '\" data/test/mark_source.bun"
-      exec "bun describe data/test/mark_source.bun >output/mark_source_after"
+    context "with no output file" do
+      before :all do
+        exec "cp data/test/mark_source_init.bun data/test/mark_source.bun"
+        exec "bun describe data/test/mark_source.bun >output/mark_source_before"
+        exec "bun mark -t \" foo : bar , named:'abc,d\\\\'ef '\" data/test/mark_source.bun"
+        exec "bun describe data/test/mark_source.bun >output/mark_source_after"
+      end
+      it "should have the expected input" do
+        Bun.readfile("output/mark_source_before").chomp.should ==
+        Bun.readfile('output/test/mark_source_before').chomp
+      end
+      it "should create the expected marks in the existing file" do
+        Bun.readfile("output/mark_source_after").chomp.should ==
+        Bun.readfile('output/test/mark_source_after').chomp
+      end
+      after :all do
+        exec "rm -f data/test/mark_source.bun"
+        exec "rm -f output/mark_source_before"
+        exec "rm -f output/mark_source_after"
+      end
     end
-    it "should have the expected input" do
-      Bun.readfile("output/mark_source_before").chomp.should ==
-      Bun.readfile('output/test/mark_source_before').chomp
+    context "with an output file" do
+      before :all do
+        exec "cp data/test/mark_source_init.bun data/test/mark_source.bun"
+        exec "bun describe data/test/mark_source.bun >output/mark_source_before"
+        exec "rm -f data/test/mark_result.bun"
+        exec "bun mark -t \" foo : bar , named:'abc,d\\\\'ef '\" \
+                  data/test/mark_source.bun data/test/mark_result.bun"
+        exec "bun describe data/test/mark_source.bun >output/mark_source_after"
+        exec "bun describe data/test/mark_result.bun >output/mark_result_after"
+      end
+      it "should have the expected input" do
+        Bun.readfile("output/mark_source_before").chomp.should ==
+        Bun.readfile('output/test/mark_source_before').chomp
+      end
+      it "should create the new file" do
+        file_should_exist "data/test/mark_result.bun"
+      end
+      it "should create the expected marks in the new file" do
+        Bun.readfile("output/mark_result_after").chomp.should ==
+        Bun.readfile('output/test/mark_source_after').chomp
+      end
+      it "should have leave the existing file unchanged" do
+        Bun.readfile("output/mark_source_after").chomp.should ==
+        Bun.readfile('output/test/mark_source_before').chomp
+      end
+      after :all do
+        exec "rm -f data/test/mark_source.bun"
+        exec "rm -f data/test/mark_result.bun"
+        exec "rm -f output/mark_source_before"
+        exec "rm -f output/mark_source_after"
+        exec "rm -f output/mark_result_after"
+      end
     end
-    it "should create the expected marks in the file" do
-      Bun.readfile("output/mark_source_after").chomp.should ==
-      Bun.readfile('output/test/mark_source_after').chomp
+    context "with '-' as output file" do
+      before :all do
+        exec "cp data/test/mark_source_init.bun data/test/mark_source.bun"
+        exec "bun describe data/test/mark_source.bun >output/mark_source_before"
+        exec "rm -f output/mark_result.bun"
+        exec "bun mark -t \" foo : bar , named:'abc,d\\\\'ef '\" \
+                  data/test/mark_source.bun - >output/mark_result.bun"
+        exec "bun describe data/test/mark_source.bun >output/mark_source_after"
+        exec "bun describe output/mark_result.bun >output/mark_result_after"
+      end
+      it "should have the expected input" do
+        Bun.readfile("output/mark_source_before").chomp.should ==
+        Bun.readfile('output/test/mark_source_before').chomp
+      end
+      it "should create the expected marks on STDOUT" do
+        Bun.readfile("output/mark_result_after").chomp.should ==
+        Bun.readfile('output/test/mark_source_after').chomp
+      end
+      it "should have leave the existing file unchanged" do
+        Bun.readfile("output/mark_source_after").chomp.should ==
+        Bun.readfile('output/test/mark_source_before').chomp
+      end
+      after :all do
+        exec "rm -f data/test/mark_source.bun"
+        exec "rm -f output/mark_result.bun"
+        exec "rm -f output/mark_source_before"
+        exec "rm -f output/mark_source_after"
+        exec "rm -f output/mark_result_after"
+      end
     end
-    after :all do
-      exec "rm -f data/test/mark_source.bun"
-      exec "rm -f output/mark_source_before"
-      exec "rm -f output/mark_source_after"
+    context "with '-' as input file" do
+      before :all do
+        exec "cp data/test/mark_source_init.bun data/test/mark_source.bun"
+        exec "bun describe data/test/mark_source.bun >output/mark_source_before"
+        exec "rm -f data/test/mark_result.bun"
+        exec "cat data/test/mark_source.bun | \
+              bun mark -t \" foo : bar , named:'abc,d\\\\'ef '\" \
+                  - data/test/mark_result.bun"
+        exec "bun describe data/test/mark_source.bun >output/mark_source_after"
+        exec "bun describe data/test/mark_result.bun >output/mark_result_after"
+      end
+      it "should have the expected input" do
+        Bun.readfile("output/mark_source_before").chomp.should ==
+        Bun.readfile('output/test/mark_source_before').chomp
+      end
+      it "should create the new file" do
+        file_should_exist "data/test/mark_result.bun"
+      end
+      it "should create the expected marks in the new file" do
+        Bun.readfile("output/mark_result_after").chomp.should ==
+        Bun.readfile('output/test/mark_source_after').chomp
+      end
+      it "should have leave the existing file unchanged" do
+        Bun.readfile("output/mark_source_after").chomp.should ==
+        Bun.readfile('output/test/mark_source_before').chomp
+      end
+      after :all do
+        exec "rm -f data/test/mark_source.bun"
+        exec "rm -f data/test/mark_result.bun"
+        exec "rm -f output/mark_source_before"
+        exec "rm -f output/mark_source_after"
+        exec "rm -f output/mark_result_after"
+      end
     end
   end
   

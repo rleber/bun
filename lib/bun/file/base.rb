@@ -12,6 +12,7 @@ module Bun
 
     class << self
       
+      # Allows STDIN to be read multiple times
       def preread(path)
         return $stdin_tempfile if $stdin_tempfile
         if path == '-'
