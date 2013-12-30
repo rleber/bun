@@ -80,18 +80,18 @@ module Bun
           characters(0,8).strip
         end
         
-        def raw_update_date
+        def packed_update_date
           characters(8,8)
         end
-        private :raw_update_date
+        private :packed_update_date
 
-        def raw_update_time_of_day
+        def packed_update_time_of_day
           word(4)
         end
-        private :raw_update_time_of_day
+        private :packed_update_time_of_day
 
         def file_time
-          Bun::Data.time(raw_update_date, raw_update_time_of_day)
+          Bun::Data.time(packed_update_date, packed_update_time_of_day)
         end
 
         def blocks
@@ -113,7 +113,7 @@ module Bun
         def size
           word(8).value
         end
-        alias_method :file_size, :size
+        alias_method :tape_size, :size
 
         def valid?
           # TODO Optimize Is this check necessary?

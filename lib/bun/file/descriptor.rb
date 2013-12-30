@@ -16,9 +16,9 @@ module Bun
           # :catalog_time,
           :description,
           # :errors,
-          # :extracted,
-          :file_size,
-          :file_type,
+          # :decoded,
+          :tape_size,
+          :tape_type,
           :tape,
           # :tape_path,
           # :original_tape,
@@ -103,9 +103,10 @@ module Bun
           
         def method_missing(meth, *args, &blk)
           if !block_given? && args.size==0 && instance_variable_defined?("@#{meth}")
-            return instance_variable_get("@#{meth}")
+            instance_variable_get("@#{meth}")
+          else
+            data.respond_to?(meth) ? data.send(meth, *args, &blk) : nil
           end
-          data.respond_to?(meth) ? data.send(meth, *args, &blk) : nil
         end
       
         def copy(to, new_settings={})

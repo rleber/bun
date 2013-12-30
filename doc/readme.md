@@ -69,7 +69,7 @@ _Terminology_
   that lists each archive tape in the archive, one per line. For each archive tape, the row of the text file
   lists the name of the archive tape, its creation date, and the path of the directory archived in the
   archive tape.
-- Once files have been extracted, this software refers to that collection as a "library". The "bun library"
+- Once files have been decoded, this software refers to that collection as a "library". The "bun library"
   commands are used to process these files.
 
 _File formats_
@@ -86,33 +86,21 @@ More detailed notes on the file formats (and some old reference programs written
 are included in the doc/file_format directory of this project.
 
 _Process_
-1. Set up configuration. The "bun config" commands are useful for this. You may also want to define the 
-   "BUN_REPOSITORY" environment variable to point to the URL of the archived files.
+1. Set up configuration. The "bun config" commands are useful for this. 
 2. Use "bun archive fetch" to fetch the repository into the archive.
-3. Set the definition of the place 'catalog' to point to the catalog listing of the archive. (Using
-   "bun archive places")
-4. You can use "bun ls" to list tapes, "bun catalog ls" to list the catalog, and "bun catalog check" to
-   identify tapes not matching the catalog.
-5. If desired, use "bun archive index build" to build the index file (although "bun fetch") may have 
-   already done this.
-6. Use "bun archive index set_dates" to set file modification dates to match the modification dates from
-   the catalog.
-7. Optionally, use "bun archive text_status" to check the quality of the archived text files.
-8. There are a variety of commands you can use to work on individual files:
-   - "bun cat"      Copy a file to STDOUT
+3. Use "bun archive unpack" to unpack the repository files into an ASCII format (YAML, actually)
+4. You can use "bun ls" to list tapes.
+5. Optionally, use "bun archive catalog" to apply "last updated" dates from a catalog file.
+6. Optionally, use "bun archive text_status" to check the quality of the archived text files.
+7. There are a variety of commands you can use to work on individual files:
    - "bun check"    Check if a file is clean
-   - "bun cp"       Copy a file from the archive
    - "bun describe" Describe a file in the archive
    - "bun dump"     Dump the undecoded contents of a file
    - "bun freezer"  A collection of commands for frozen file archives:
      - "bun freezer dump" Dump the contents of a frozen file
      - "bun freezer ls"   List the contents of the frozen file
-     - "bun freezer thaw" Thaw the contents of a frozen file
-   - "bun mkdir"    Make a directory in the archive
-   - "bun mv"       Move a file from the archive
-   - "bun rm"       Remove a file from the archive
    - "bun scrub"    Clean up tabs etc.
-   - "bun unpack"   Decode a file
-9. Optionally, use "bun archive extract" to extract files from the archive and place them in a library.
-10. Use the "bun library" commands to reorganize the extracted files
+   - "bun decode"   Decode a file
+8. Use "bun archive decode" to decode files from the archive and place them in a library.
+9. Use the "bun library" commands to reorganize the decoded files
 

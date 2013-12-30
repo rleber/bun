@@ -4,8 +4,8 @@
 # TODO Get rid of me
 module Bun
   class File < ::File
-    class Header < Bun::File::Raw
-      HEADER_SIZE = Descriptor::Converted.maximum_size
+    class Header < Bun::File::Packed
+      HEADER_SIZE = Descriptor::Unpacked.maximum_size
       
       # TODO Should read in two gulps: first to get the descriptor + one freeze file descriptor (if there), then get descriptors
       def size(options={})

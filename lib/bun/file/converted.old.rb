@@ -6,7 +6,7 @@ require 'date'
 module Bun
 
   class File < ::File
-    class Raw < Bun::File
+    class Packed < Bun::File
       class << self
 
         EOF_MARKER = 0x00000f000 # Octal 000000170000 or 0b000000000000000000001111000000000000
@@ -64,7 +64,7 @@ module Bun
             ftype = options[:type]
           else
             preamble = get_preamble(options)
-            ftype = preamble.file_type
+            ftype = preamble.tape_type
           end
           klass = const_get(ftype.to_s.sub(/^./){|m| m.upcase}) unless ftype.is_a?(Class)
           if options[:header]
@@ -108,7 +108,7 @@ module Bun
           preamble_size = content_offset(initial_fetch)
           fetch_size = preamble_size + File::Frozen::Descriptor.offset+ File::Frozen::Descriptor.size
           full_fetch = fetch_size > INITIAL_FETCH_SIZE ? get_words(fetch_size, options) : initial_fetch
-          File::RawHeader.send(:new, :words=>full_fetch)
+          File::PackedHeader.send(:new, :words=>full_fetch)
         end
     
         def get_words(n, options)
@@ -165,7 +165,7 @@ module Bun
           @words = @all_characters = @characters = @packed_characters = @descriptor = nil
         else
           @words = words
-          @descriptor = Descriptor::Converted.new(self)
+          @descriptor = Descriptor::Unpacked.new(self)
           @all_characters = LazyArray.new(words.size*characters_per_word) do |n|
             @words.characters.at(n)
           end
@@ -251,11 +251,11 @@ module Bun
         elsif options[:all]
           @words.size
         else
-          @size || file_size
+          @size || tape_size
         end
       end
   
-      def file_size
+      def tape_size
         res = (word(0).half_word(1))+1
         res = res.value unless res.is_a?(Fixnum)
         res
@@ -290,7 +290,7 @@ module Bun
         File::Frozen::Descriptor.frozen?(self)
       end
   
-      def file_type
+      def tape_type
         return :frozen if frozen?
         return :huffman if word(content_offset).characters.join == 'huff'
         return :text

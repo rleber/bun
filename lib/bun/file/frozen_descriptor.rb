@@ -16,8 +16,8 @@ module Bun
         BLOCK_SIZE = 64  # 36-bit words
         DESCRIPTOR_END_MARKER = 0777777777777
         FIELDS = [
-          :file_size,
-          :file_type,
+          :tape_size,
+          :tape_type,
           :catalog_time,
           :control_characters,
           :character_count,
@@ -117,7 +117,7 @@ module Bun
           file.owner
         end
   
-        def file_type
+        def tape_type
           :shard
         end
 
@@ -134,7 +134,7 @@ module Bun
         end
 
         def file_date
-          File::Converted.date(_update_date)
+          File::Unpacked.date(_update_date)
         end
 
         def _update_date
@@ -142,7 +142,7 @@ module Bun
         end
 
         def update_time_of_day
-          File::Converted.time_of_day(_update_time_of_day)
+          File::Unpacked.time_of_day(_update_time_of_day)
         end
 
         def _update_time_of_day
@@ -177,7 +177,7 @@ module Bun
         def size
           word(8).value
         end
-        alias_method :file_size, :size
+        alias_method :tape_size, :size
 
         def valid?
           # TODO Optimize Is this check necessary?

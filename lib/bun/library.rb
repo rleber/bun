@@ -45,5 +45,21 @@ module Bun
                     end
             end
     end
+    
+    def put(to, options={})
+      to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
+      FileUtils.rm_rf to_path unless options[:dryrun]
+      leaves.each do |leaf|
+        # file = File::Decoded.open(leaf)
+        relative_leaf = relative_path(leaf)
+        $stderr.puts "put #{relative_leaf}" unless options[:quiet]
+        unless options[:dryrun]
+          to_file = File.join(to,relative_leaf)
+          file = File::Decoded.open(leaf)
+          file.put(to_file)
+        end
+      end
+    end
+    
   end
 end

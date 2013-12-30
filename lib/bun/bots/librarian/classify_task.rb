@@ -2,45 +2,37 @@
 # -*- encoding: us-ascii -*-
 
 DEFAULT_THRESHOLD = 20
-desc "classify FROM [CLEAN] [DIRTY]", "Classify files based on whether they're clean or not."
-option "copy",      :aliases=>"-c", :type=>"boolean", :desc=>"Copy files to clean/dirty directories (instead of symlink)"
-option 'dryrun',    :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually extract"
-option 'threshold', :aliases=>'-t', :type=>'numeric',
-    :desc=>"Set a threshold: how many errors before a file is 'dirty'? (default #{DEFAULT_THRESHOLD})"
-def classify(from, clean=nil, dirty=nil)
-  @dryrun = options[:dryrun]
+desc "classify FROM [TO]", "Classify files based on whether they're clean or not, etc."
+option 'dryrun',    :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually classify"
+option "link",      :aliases=>"-l", :type=>"boolean", :desc=>"Symlink files to clean/dirty directories (instead of copy)"
+option 'quiet',     :aliases=>'-d', :type=>'boolean', :desc=>"Quiet mode"
+option 'test',      :aliases=>'-t', :type=>'string',  
+                    :desc=>"What test? See bun help classify for options",
+                    :default=>'clean'
+long_desc <<-EOT
+Classifies all the files in the library, based on whether they pass certain tests.
+
+If TO is specified, files are linked (or copied) into separate directories, depending
+on the outcome of the tests. For instance, if the "clean" test is specified (--test clean),
+the files are classified into two directories: TO/clean and TO/dirty.
+EOT
+def classify(from, to=nil)
+  no_move = options[:dryrun] || !to
   threshold = options[:threshold] || DEFAULT_THRESHOLD
   library = Library.new(from)
-  directory = library.at
-  from ||= library.files_directory
-  log_file = File.join(from, library.log_file)
-  clean = File.join(library.at, library.clean_directory)
-    dirty = File.join(library.at, library.dirty_directory)
-  destinations = {:clean=>clean, :dirty=>dirty}
-  shell = Shell.new(:dryrun=>@dryrun)
-  destinations.each do |status, destination|
-    shell.rm_rf destination
-    shell.mkdir_p destination
-  end
+  shell = Shell.new(:dryrun=>no_move)
+  shell.rm_rf(to) if to && File.exists?(to)
   command = options[:copy] ? :cp : :ln_s
 
-  log = read_log(log_file)
-
-  new_logs = {:clean=>[], :dirty=>[]}
   Dir.glob(File.join(from,'**','*')).each do |old_file|
     next if File.directory?(old_file)
     f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
-    stop "!Missing log entry for #{old_file}" unless log[old_file]
-    okay = log[old_file][:errors] < threshold
-    status = okay ? :clean : :dirty
-    new_file = File.join(destinations[status], f)
-    dir = File.dirname(new_file)
-    shell.mkdir_p dir
-    warn "#{f} is #{status}"
-    shell.invoke command, old_file, new_file
-    new_logs[status] << alter_log(log[old_file], new_file)
-  end
-  new_logs.each do |status, log|
-    File.open(File.join(destinations[status],library.log_file),'w') {|f| f.puts log.map{|log_entry| log_entry[:entry]}.join("\n") }
+    status = Bun::File::Decoded.check(old_file, options[:test])
+    warn "#{f} is #{status}" unless options[:quiet]
+    unless no_move
+      new_file = File.join(to, status.to_s, f)
+      shell.mkdir_p File.dirname(new_file)
+      shell.invoke command, old_file, new_file
+    end
   end
 end

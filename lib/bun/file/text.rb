@@ -6,6 +6,12 @@ module Bun
     class Text < Bun::File::Blocked
       include CacheableMethods
       
+      class << self
+        def open(path, options={}, &blk)
+          File::Unpacked.open(path, options.merge(:type=>:text), &blk)
+        end
+      end
+      
       attr_accessor :keep_deletes
       attr_reader   :control_characters, :character_count
     
@@ -31,7 +37,7 @@ module Bun
       def text
         res = lines.map{|l| l[:content]}.join
         @character_count = res.size
-        @control_characters = File.control_character_counts(res)
+        # @control_characters = File.control_character_counts(res)
         res
       end
       cache :text
@@ -96,12 +102,9 @@ module Bun
         inspect_lines.join("\n")
       end
       
-      def extract(to, options={})
+      def decoded_text(options={})
         self.keep_deletes = options[:delete]
-        content = options[:inspect] ? self.inspect : self.text
-        shell = Shell.new
-        shell.write to, content
-        copy_descriptor(to, :extracted=>Time.now) unless options[:bare] || to.nil? || to=='-'
+        options[:inspect] ? self.inspect : self.text
       end
     end
   end

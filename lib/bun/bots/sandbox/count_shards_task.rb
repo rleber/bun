@@ -8,7 +8,7 @@ def count_shards(at)
   flagged = false
   archive.each do |tape|
     file = archive.open(tape, :header=>true)
-    if file.file_type == :frozen
+    if file.tape_type == :frozen
       counts = [
         f.shard_count_based_on_word_1, 
         f.shard_count_based_on_position_of_shard_contents, 

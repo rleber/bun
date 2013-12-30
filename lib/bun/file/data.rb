@@ -84,7 +84,7 @@ module Bun
       if @words.nil?
         @all_characters = @characters = @packed_characters = @descriptor = nil
       else
-        @descriptor = Bun::File::Descriptor::Raw.new(self)
+        @descriptor = Bun::File::Descriptor::Packed.new(self)
         @all_characters = LazyArray.new(@words.size*characters_per_word) do |n|
           @words.characters.at(n)
         end
@@ -172,15 +172,15 @@ module Bun
       elsif options[:all]
         @words.size
       else
-        @size || file_size
+        @size || tape_size
       end
     end
 
-    def file_size
+    def tape_size
       ((word(0).half_word(1))+1).value
     end
     
-    def frozen_file_size
+    def frozen_tape_size
       word(content_offset).value + content_offset
     end
 
@@ -213,7 +213,7 @@ module Bun
       File::Frozen::Descriptor.frozen?(self)
     end
 
-    def file_type
+    def tape_type
       if frozen?
         :frozen
       elsif word(content_offset).characters.join == 'huff'

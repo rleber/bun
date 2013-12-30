@@ -2,13 +2,33 @@
 # -*- encoding: us-ascii -*-
 
 require 'lib/bun/file/descriptor'
+require 'lib/string'
 require 'yaml'
 require 'date'
 
 module Bun
 
   class File < ::File
+
     class << self
+      
+      def preread(path)
+        return $stdin_tempfile if $stdin_tempfile
+        if path == '-'
+          tempfile = Tempfile.new('stdin')
+          tempfile.write($stdin.read)
+          tempfile.close
+          $stdin_tempfile = tempfile.path
+        else
+          path
+        end
+      end
+      
+      def read(*args)
+        path = preread(args.first)
+        args[0] = path
+        ::File.read(*args)
+      end
 
       def relative_path(*f)
         options = {}
@@ -19,61 +39,68 @@ module Bun
         File.expand_path(File.join(*f), relative_to).sub(/^#{Regexp.escape(relative_to)}\//,'')
       end
 
-      VALID_CONTROL_CHARACTERS = '\n\r\x8\x9\xb\xc' # \x8 is a backspace, \x9 is a tab, \xb is a VT, \xc is a form-feed
-      VALID_CONTROL_CHARACTER_STRING = eval("\"#{VALID_CONTROL_CHARACTERS}\"")
-      VALID_CONTROL_CHARACTER_REGEXP = /[#{VALID_CONTROL_CHARACTERS}]/
-      INVALID_CHARACTER_REGEXP = /(?!(?>#{VALID_CONTROL_CHARACTER_REGEXP}))[[:cntrl:]]/
-      VALID_CHARACTER_REGEXP = /(?!(?>#{INVALID_CHARACTER_REGEXP}))./
-
-      def control_character_counts(text)
-        control_characters = Hash.new(0)
-        ["\t","\b","\f","\v",File.invalid_character_regexp].each do |pat|
-          text.scan(pat) {|ch| control_characters[ch] += 1 }
-        end
-        control_characters
+      # def control_character_counts(path)
+      #   Bun.readfile(path).control_character_counts
+      # end
+      
+      def check(path, test)
+        read(path).check(test)
       end
-
-      def valid_control_character_regexp
-        VALID_CONTROL_CHARACTER_REGEXP
-      end
-
-      def invalid_character_regexp
-        INVALID_CHARACTER_REGEXP
-      end
-
-      def valid_character_regexp
-        VALID_CHARACTER_REGEXP
-      end
-  
-      def clean?(text)
-        text !~ INVALID_CHARACTER_REGEXP
+      
+      def analyze(path, analysis)
+        read(path).analyze(analysis)
       end
   
       def descriptor(options={})
         Header.new(options).descriptor
       end
       
-      def raw?(path)
-        prefix = ::File.open(path,'rb') {|f| f.read(3)}
-        prefix != '---' # YAML prefix; one of the converted formats
+      def packed?(path)
+        prefix = File.read(path, 3)
+        prefix != '---' # YAML prefix; one of the unpacked formats
       end
       
       def open(path, options={}, &blk)
-        if raw?(path)
-          File::Raw.open(path, options, &blk)
+        if packed?(path)
+          File::Packed.open(path, options, &blk)
         else
-          File::Converted.open(path, options, &blk)
+          File::Unpacked.open(path, options, &blk)
         end
       end
       
-      def file_type(path)
-        return :raw if raw?(path)
+      def tape_type(path)
+        return :packed if packed?(path)
         begin
-          f = File::Converted.open(path)
-          f.file_type
+          f = File::Unpacked.open(path)
+          f.tape_type
         rescue
           :unknown
         end
+      end
+      
+      def descriptor(path, options={})
+        open(path) {|f| f.descriptor }
+      rescue Bun::File::UnknownFileType =>e 
+        nil
+      rescue Errno::ENOENT => e
+        return nil if options[:allow]
+        stop "!File #{path} does not exist" if options[:graceful]
+        raise
+      end
+      
+      # Convert from packed format to unpacked (i.e. YAML)
+      def unpack(path, to, options={})
+        return unless packed?(path)
+        open(path) do |f|
+          cvt = f.unpack
+          cvt.descriptor.tape = options[:tape] if options[:tape]
+          cvt.descriptor.merge!(:unpack_time=>Time.now, :unpacked_by=>Bun.expanded_version)
+          cvt.write(to)
+        end
+      end
+      
+      def expand_path(path, relative_to=nil)
+        path == '-' ? path : super(path, relative_to)
       end
     end
     attr_reader :archive
@@ -81,7 +108,7 @@ module Bun
 
     attr_accessor :descriptor
     attr_accessor :errors
-    attr_accessor :extracted
+    attr_accessor :decoded
     attr_accessor :original_tape
     attr_accessor :original_tape_path
 

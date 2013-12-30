@@ -32,27 +32,27 @@ _Files_
 There is a hierarchy of File and related classes:
 ::File
     Bun::File
-        Bun::File::Raw
-        Bun::File::Converted
+        Bun::File::Packed
+        Bun::File::Unpacked
             Bun::File::Blocked
                 Bun::File::Text
             Bun::File::Frozen
             Bun::File::Header
             Bun::File::Huffman
-            Bun::File::RawHeader
+            Bun::File::PackedHeader
         Bun::File::Extracted
         Bun::File::Library
         
 Bun::File::Descriptor
     Bun::File::Descriptor::Base
-        Bun::File::Descriptor::Converted
+        Bun::File::Descriptor::Unpacked
         Bun::File::Descriptor::Extracted
         
 Bun::File::Frozen::Descriptor (note that this does not descend from Bun::File::Descriptor)
 
 Generally, the source files for these classes are found within the lib/bun/file directory, with a source file
-name that is derived in a common-sense way from the Class name. So, for instance, Bun::File::Converted is in
-lib/bun/file/archived.rb, and Bun::File::Descriptor::Converted is defined in lib/bun/file/archived_descriptor.rb
+name that is derived in a common-sense way from the Class name. So, for instance, Bun::File::Unpacked is in
+lib/bun/file/archived.rb, and Bun::File::Descriptor::Unpacked is defined in lib/bun/file/archived_descriptor.rb
 
 _Data Classes_
 These classes define various data types and structures:

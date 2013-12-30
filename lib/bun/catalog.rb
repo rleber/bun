@@ -38,6 +38,7 @@ module Bun
     end
     
     def time_for(tape)
+      tape = tape.sub(/#{DEFAULT_UNPACKED_FILE_EXTENSION}$/,'')
       entry = entries.find {|spec| spec.tape == tape }
       entry && entry.date.local_date_to_local_time
     end

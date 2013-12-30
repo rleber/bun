@@ -19,18 +19,25 @@ no_tasks do
     end
   end
   
-  def build_file(file, at=nil, format=:converted)
+  def build_file(file, at=nil, format=:unpacked)
     from = case format
-    when :raw
-      "~/bun_archive_raw" 
-    when :uncataloged
-      "~/bun_archive_uncataloged"
+    when :packed
+      "~/bun_archive_packed" 
+    when :unpacked
+      "~/bun_archive_unpacked"
     else
       "~/bun_archive"
     end
+    extension = case format
+    when :packed
+      Bun::DEFAULT_PACKED_FILE_EXTENSION
+    else
+      Bun::DEFAULT_UNPACKED_FILE_EXTENSION
+    end
     at = $at unless at
-    source_file = File.join(from,file).sub(/^~/,ENV['HOME'])
-    target_file = File.join(at,file).sub(/^~/,ENV['HOME'])
+    file_with_extension = file + extension
+    source_file = File.join(File.expand_path(from),file_with_extension)
+    target_file = File.join(File.expand_path(at),file_with_extension)
     stop "!Source file #{source_file._safe} does not exist" unless File.exists?(source_file)
     cmd = "cp -f #{source_file._safe} #{target_file._safe}"
     _exec "#{cmd}"
@@ -43,14 +50,14 @@ no_tasks do
     yield
   end
   
-  def build_contents(at, format=:converted)
+  def build_contents(at, format=:cataloged)
     build_directory(at) do
       build_file "ar003.0698", nil, format
       build_file "ar054.2299", nil, format
     end
   end
   
-  def build_standard_directory(at, format=:converted)
+  def build_standard_directory(at, format=:cataloged)
     build_directory(at) do
       build_file "ar003.0698", nil, format
       build_file "ar003.0701", nil, format
@@ -59,7 +66,7 @@ no_tasks do
     end
   end
   
-  def build_general_test(at, format=:converted)
+  def build_general_test(at, format=:cataloged)
     build_directory(at) do
       build_file "ar003.0698", nil, format
       build_file "ar003.0701", nil, format
@@ -84,7 +91,7 @@ def build
   build_file "ar019.0175", "data/test"
   build_file "ar119.1801", "data/test"
   
-  build_standard_directory "data/test/archive/catalog_source_init", :uncataloged
+  build_standard_directory "data/test/archive/catalog_source_init", :unpacked
   
   $stderr.puts "Not rebuilding data/test/archive/compact_files_init"
   
@@ -105,15 +112,15 @@ def build
   end
   
   build_contents "data/test/archive/contents"
-  build_contents "data/test/archive/contents_raw", :raw
+  build_contents "data/test/archive/contents_packed", :packed
 
-  build_standard_directory "data/test/archive/extract_source_init"
+  build_standard_directory "data/test/archive/decode_source_init"
   
   build_general_test "data/test/archive/general_test"
-  build_general_test "data/test/archive/general_test_raw_init", :raw
+  build_general_test "data/test/archive/general_test_packed_init", :packed
 
   build_directory "data/test/archive/init" do
-    build_file "ar003.0698", nil, :raw
+    build_file "ar003.0698", nil, :packed
   end
 
   build_standard_directory "data/test/archive/mv_init"

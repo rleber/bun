@@ -49,4 +49,8 @@ class Array
     end
     source.transpose
   end
+  
+  def sum
+    self.inject(0) {|s, e| s+e }
+  end
 end

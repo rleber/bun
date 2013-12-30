@@ -1,5 +1,5 @@
 data/test/archive/catalog_source
-data/test/archive/catalog_source/ar003.0698
-data/test/archive/catalog_source/ar003.0701
-data/test/archive/catalog_source/ar082.0605
-data/test/archive/catalog_source/ar083.0698
+data/test/archive/catalog_source/ar003.0698.bun
+data/test/archive/catalog_source/ar003.0701.bun
+data/test/archive/catalog_source/ar082.0605.bun
+data/test/archive/catalog_source/ar083.0698.bun

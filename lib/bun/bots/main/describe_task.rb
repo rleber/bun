@@ -1,13 +1,14 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+STANDARD_FIELDS = %w{tape path owner description catalog_time 
+                     file_time tape_size tape_type data_format shards}.map{|f| f.to_sym}
+
 SHARDS_ACROSS = 5
-desc "describe ARCHIVE TAPE", "Display description information for a tape"
-def describe(at, file_name)
-  archive = Archive.new(at, options)
-  descriptor    = archive.descriptor(file_name)
-  abort "File #{file_name} is not in the archive" unless descriptor
-  type          = descriptor.file_type
+desc "describe FILE", "Display description information for a tape"
+def describe(file)
+  descriptor    = File.descriptor(file, :graceful=>true)
+  type          = descriptor.tape_type
   shards        = descriptor.shards || []
   catalog_time    = descriptor.catalog_time
   
@@ -18,8 +19,16 @@ def describe(at, file_name)
   preamble_table.push ["Description", descriptor.description]
   preamble_table.push ["Catalog date", catalog_time.strftime('%Y/%m/%d')] if catalog_time
   preamble_table.push ["File time", descriptor.file_time.strftime(TIME_FORMAT)] if type==:frozen
-  preamble_table.push ["Size (words)", descriptor.file_size]
-  preamble_table.push ["Type", type.to_s.sub(/^./) {|m| m.upcase}]
+  preamble_table.push ["Size (words)", descriptor.tape_size]
+  preamble_table.push ["Type", type.to_s.sub(/^./) {|c| c.upcase}]
+  preamble_table.push ["Data Format", descriptor.data_format.to_s.sub(/^./) {|c| c.upcase}]
+
+  (descriptor.fields - STANDARD_FIELDS).sort_by{|f| f.to_s }.each do |f|
+    preamble_table.push [
+                          f.to_s.gsub(/_/,' ').gsub(/\b[a-z]/) {|c| c.upcase},
+                          descriptor[f.to_sym].to_s
+                        ]
+  end
   
   puts preamble_table.justify_rows.map {|row| row.join('  ')}
 
