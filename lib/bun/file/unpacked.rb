@@ -44,8 +44,8 @@ module Bun
         #     f
         #   end
         # end
-
-        def open(fname, options={}, &blk)
+        
+        def read_information(fname)
           input = begin
             YAML.load(Bun::File.read(fname))
           rescue => e
@@ -53,16 +53,30 @@ module Bun
           end
           raise InvalidInput, "Expected #{fname} to be a Hash, not a #{input.class}" \
             unless input.is_a?(Hash)
-          data = input.delete(:content)
+          input
+        end
+        
+        def build_data(input, options={})
+          @data = input.delete(:content)
           @content = Data.new(
-            :data=>data, 
+            :data=>@data, 
             :archive=>options[:archive], 
             :tape=>options[:tape], 
-            :tape_path=>fname
+            :tape_path=>options[:fname],
           )
-          descriptor = Descriptor::Base.from_hash(@content,input)
-          options.merge!(:data=>data, :descriptor=>descriptor, :tape_path=>fname)
-          if options[:type] && descriptor[:tape_type]!=options[:type]
+        end
+        
+        def build_descriptor(input)
+          @descriptor = Descriptor::Base.from_hash(@content,input)
+        end
+
+        def open(fname, options={}, &blk)
+          options[:fname] = fname
+          input = read_information(fname)
+          build_data(input, options)
+          build_descriptor(input)
+          options.merge!(:data=>@data, :descriptor=>@descriptor, :tape_path=>options[:fname])
+          if options[:type] && @descriptor[:tape_type]!=options[:type]
             msg = "Expected file #{fname} to be a #{options[:type]} file, not a #{descriptor[:tape_type]} file"
             if options[:graceful]
               stop "!#{msg}"

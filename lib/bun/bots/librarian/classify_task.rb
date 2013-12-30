@@ -27,7 +27,7 @@ def classify(from, to=nil)
   Dir.glob(File.join(from,'**','*')).each do |old_file|
     next if File.directory?(old_file)
     f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
-    status = Bun::File.check(old_file, options[:test])[:description]
+    status = Bun::File::Decoded.check(old_file, options[:test])
     warn "#{f} is #{status}" unless options[:quiet]
     unless no_move
       new_file = File.join(to, status.to_s, f)
