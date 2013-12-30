@@ -181,7 +181,7 @@ describe Bun::Archive do
           exec("rm -rf data/test/archive/general_test_packed")
         end
       end
-      context "with output to omitted output" do
+      context "with omitted output" do
         before :all do
           exec("rm -f output/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")

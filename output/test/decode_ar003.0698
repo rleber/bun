@@ -6,8 +6,8 @@
 :owner: fass
 :path: fass/idallen/vector
 :data_format: :unpacked
-:unpack_time: 2013-12-28 23:09:39.845397000 -05:00
-:unpacked_by: Bun version 0.0.6 [feature/simplify:9e36322204713719b9b571a930b7f22acd88f921]
+:unpack_time: 2013-12-29 21:59:10.169749000 -05:00
+:unpacked_by: Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
 :content: ! ".po10\n.sp22\n.ce\n.ul\nTHE VECTOR MACHINE\n.sp5\n.ce\n.ul\nAuthors:\n.sp\n.ce\nCal
   Blackshaw 73202658 Math\n.ce\nIan Allen 74210779 Arts\n.sp17\n.nf\n.ss\n.ta 60R\nCOMPUTER
   SCIENCE\tCAL BLACKSHAW\nCS-342\tIAN ALLEN\nOCTOBER 22, 1976\tNORTH 5, VILLAGE 1\n.m1+2\n.pa1\n.fi\n.in0\n.ds\n.he
@@ -113,5 +113,6 @@
   (Karen Lo, DAvid Palmer, Cal Blackshaw, and\nIan Allen). Having arrived at the basic
   concept (notably the\nVDB idea), we split into autonomus teams to work out the data
   flow\nand other details.\n"
-:decode_time: 2013-12-29 19:15:35.534878000 -05:00
-:decoded_by: Bun version 0.0.6 [feature/simplify:b9f9e0e315e4038a5d8bda479158bb18b07499ff]
+:decode_time: 2013-12-30 12:17:13.785392000 -05:00
+:decoded_by: Bun version 0.1.0 [feature/checksum:69284a47236588ad341365cfd80f50970ed2395a]
+:digest: db455f97b98b77cc0f99c1a81159c0fb

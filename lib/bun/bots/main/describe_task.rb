@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-STANDARD_FIELDS = %w{tape path owner description catalog_time 
-                     file_time tape_size tape_type data_format shards}.map{|f| f.to_sym}
+STANDARD_FIELDS = %w{description catalog_time data data_format digest
+                     file_time owner path shards tape tape_size tape_type }.map{|f| f.to_sym}
 
 SHARDS_ACROSS = 5
 desc "describe FILE", "Display description information for a tape"
@@ -22,6 +22,7 @@ def describe(file)
   preamble_table.push ["Size (words)", descriptor.tape_size]
   preamble_table.push ["Type", type.to_s.sub(/^./) {|c| c.upcase}]
   preamble_table.push ["Data Format", descriptor.data_format.to_s.sub(/^./) {|c| c.upcase}]
+  preamble_table.push ["MD5 Digest", descriptor.digest.scan(/..../).join(' ')]
 
   (descriptor.fields - STANDARD_FIELDS).sort_by{|f| f.to_s }.each do |f|
     preamble_table.push [

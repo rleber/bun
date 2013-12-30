@@ -44,7 +44,7 @@ module Bun
         end
 
         def initialize(data, number, options={})
-          super(data)
+          super(data.data)
           @number = number
           unless options[:allow] || valid?
             raise "Bad descriptor ##{number} for #{data.tape} at #{'%#o' % self.offset}:\n#{dump}" 

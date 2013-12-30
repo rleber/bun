@@ -146,7 +146,7 @@ module Bun
           stop "Frozen file does not contain shard number #{orig_n}" if n<0 || n>shard_count
         else
           name = n.to_s.sub(/^\\/,'') # Remove leading '\\', if any
-          raise "!Missing shard index or name" if n.to_s == '' # debug
+          raise "!Missing shard index or name" if n.to_s == ''
           n = _shard_index(name)
           stop "!Frozen file does not contain a shard named #{name.inspect}" unless n
         end

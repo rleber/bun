@@ -299,6 +299,8 @@ module Bun
       
       def to_yaml
         hash = descriptor.to_hash.merge(:content=>data.data)
+        hash.delete(:data)
+        # hash[:digest] = hash[:digest].inspect[1..-2] if hash[:digest]
         if tape_type == :frozen
           hash[:shards] = shard_descriptors.map do |d|
             {
@@ -324,11 +326,13 @@ module Bun
       end
       
       def to_hash(options={})
+        content = decoded_text(options)
         descriptor.to_hash.merge(
-          content:     decoded_text(options),
+          content:     content,
           data_format: :unpacked,
           decode_time: Time.now,
-          decoded_by:  Bun.expanded_version
+          decoded_by:  Bun.expanded_version,
+          digest:      content.digest,
         )
       end
 

@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+require 'digest/md5'
+
 class String
   class InvalidCheck < ArgumentError; end
 
@@ -139,6 +141,10 @@ class String
       last_runnable = ch_runnable
     end
     '[' + runs.join.inspect[1..-2].gsub('/','\/').gsub('\\\\-', '\\-') + ']'
+  end
+  
+  def digest
+    Digest::MD5.hexdigest(self).inspect[1..-2] # Inspect prevents YAML from treating this as binary
   end
 end
 

@@ -7,8 +7,8 @@
 :path: fass/scripfrz
 :data_format: :unpacked
 :file_time: 1977-03-01 15:40:58.000000000 -05:00
-:unpack_time: 2013-12-28 23:09:42.875775000 -05:00
-:unpacked_by: Bun version 0.0.6 [feature/simplify:9e36322204713719b9b571a930b7f22acd88f921]
+:unpack_time: 2013-12-29 21:59:13.459614000 -05:00
+:unpacked_by: Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
 :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
 :content: ! '.pa1
 
@@ -27,8 +27,9 @@
   .he
 
 '
-:decode_time: 2013-12-29 20:13:16.116561000 -05:00
-:decoded_by: Bun version 0.0.6 [feature/simplify:b9f9e0e315e4038a5d8bda479158bb18b07499ff]
+:decode_time: 2013-12-30 12:18:37.614975000 -05:00
+:decoded_by: Bun version 0.1.0 [feature/checksum:69284a47236588ad341365cfd80f50970ed2395a]
+:digest: 70f558a692c0ff2b35067d2e787d0646
 :shard_number: 0
 :shard_name: fasshole
 :shard_time: 1977-02-10 16:44:55.000000000 -05:00

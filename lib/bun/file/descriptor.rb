@@ -25,6 +25,7 @@ module Bun
           # :original_tape_path,
           :owner,
           :path,
+          :digest,
           # :specification,
           # :updated,
         ]
@@ -32,9 +33,12 @@ module Bun
         attr_reader :data, :fields
       
         def initialize(data)
-          @data = data
+          reset_fields
+          set_field('data', data)
+        end
+        
+        def reset_fields
           @fields = []
-          # TODO fields should be registered in the class (and different file types should subclass File::Descriptor)
           register_fields(FIELDS)
         end
       
@@ -43,10 +47,24 @@ module Bun
         end
       
         def register_field(field)
-          unless @fields.include?(field)
-            instance_variable_set("@#{field}", nil)
-            @fields << field
-          end
+          set_field(field, nil) unless @fields.include?(field)
+        end
+        
+        def set_field(name, value)
+          name = name.to_sym
+          return if name==:digest
+          _set_field name, value
+          set_digest if name == :data
+        end
+        
+        def _set_field(name, value)
+          @fields << name unless @fields.include?(name)
+          instance_variable_set("@#{name}", value)
+        end
+        private :_set_field
+        
+        def set_digest
+          _set_field :digest, @data && @data.data.digest
         end
       
         def to_hash
@@ -57,16 +75,13 @@ module Bun
         end
       
         def from_hash(h)
-          fields.each do |f|
-            instance_variable_set("@#{f}", nil)
-          end
+          reset_fields
           merge!(h)
         end
         
         def merge!(h)
           h.keys.each do |k|
-            register_field(k) unless @fields.include?(k)
-            instance_variable_set("@#{k}", h[k])
+            set_field(k, h[k])
           end
           self
         end
@@ -96,7 +111,7 @@ module Bun
         def timestamp
           fields.include?(:catalog_time) ? [file_time, catalog_time].compact.min : file_time
         end
-      
+              
         # def shards
         #   data.shard_descriptor_hashes rescue []
         # end

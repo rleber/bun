@@ -25,9 +25,12 @@ Create bun archive tar
 Release version 1.0
 Major rewrite:
     All files are just Hashie::Mashes
-        File.load(<packed file>)
+        File.unpack(<packed file>) unpacks a packed file
+        No packed file object (except as needed to unpack files)
     No file descriptor object
+    No Data object (except as needed to unpack files)
     Limited distinction (if any), between file types
+        Possibly File::Decoded, File::Text, and File::Frozen
     No distinction between libraries and archives
         Archives don't care how they're organized
 Alternate data storage formats: raw, binary, octal, hex
