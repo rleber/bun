@@ -1,33 +1,36 @@
 TODO
 _High Priority_
-Create bun library put: Convert decoded YAML format to flat file
 Add --mark option to library classify and bun check/analyze
-Create bun archive find command (similar to find shell command)
-    --print
-    --exec
-    --command (--command 'foo xxx' => bun foo xxx)
-    --type x
-    --clean
-    --dirty
-    Output from commands like clean/analyze
-Change bun library classify to bun library clean
-Create bun analyze
-    Clean/dirty
-    Flag whether files contain backspaces/overstrikes, or tabs
+Add MD5 checksum to unpacked and decoded formats
+Create bun field -f FIELD FILE... and bun match -f FIELD -v VALUE FILE (or bun match FORMULA FILE)
+Extend bun check
     Flag whether files contain troff commands
-    Printer listing
+    Printer listing (same as overstruck?)
     Object file
     Try determining type by comparing preamble contents:
         Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
         binary load module
-Flag whether files contain backspaces/overstrikes, or tabs
-Flag whether files contain troff commands
-Fix bun library classify
-Alternate data storage formats: raw, binary, octal, hex
-Implement bun archive organize
+Generalized bun check/analyze
+    Combine check and analyze
+    Run all tests, with --mark
+Implement bun library clean
+    Find duplicates
+    Remove unclean files
+    Possible --tag option (place a tag saying what happened to files which were removed)
+Implement bun library organize
     Keep a .bun_spec.yml file in decoded archives showing how the archive is organized?
     Option to turn off inclusion of file modification date in unpacked or thawed file names
     Option to turn off resetting file modification dates for unpacked or thawed files
+Create bun archive tar
+Release version 1.0
+Major rewrite:
+    All files are just Hashie::Mashes
+        File.load(<packed file>)
+    No file descriptor object
+    Limited distinction (if any), between file types
+    No distinction between libraries and archives
+        Archives don't care how they're organized
+Alternate data storage formats: raw, binary, octal, hex
 Complete tests: 
     archive catalog (check descriptor 'catalog_time' has been changed; test --remove)
     archive compare_dates
@@ -57,8 +60,7 @@ Document new process: pull, unpack, catalog, decode, find, list/describe, clean,
 Implement Huffman decoding
 
 _Medium Priority_
-Add MD5 checksum to unpacked and decoded formats
-Create bun archive find_duplicates
+Change bun archive put to bun archive bake, burn, wring, squeeze, extrude
 Resolve backspaces: to underlining, overstrike or bold (explore 'col' command)
 Convert troff to HTML or Markdown, or some other modern format (explore 'groff -T')
 Refactor the tests into smaller sets
@@ -70,21 +72,22 @@ Add long_desc to all methods
 Refactor Bots to use Actors (or put methods (e.g. thaw, dump) into the data objects)
 Optimization ideas: Continue examining Indexable::Basic, since it's probably 10-15% of execution time
     Reduce usage, optimize "center" code
-File type for print listings (Qu: are these ever frozen?)
+File type for different kinds of files:
+    Object files
+    Troff command files
+    Scripts
+    Print listings (Qu: are these ever frozen?)
 Gemify
     Move Bot::Base to a gem; provide tests
     Build as a gem
     Revise installation readme
     Upload to Github
 
-    
 _Low Priority_
 Allow multiple files in certain commands
-Integrate bun archive text_status into bun ls
 Combine freezer ls with bun ls
 Combine bun describe with bun ls
 Combine freezer dump with bun dump
 Combine archive decode and decode
 Option to customize extension on unpacked or thawed files (e.g. '.txt')
-Option to create archives organized like file/v1/file1, file/v2/file2, etc.
 Refactor Slicr based on the concept of layers, etc.
