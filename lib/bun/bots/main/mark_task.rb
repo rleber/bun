@@ -18,15 +18,12 @@ TAG_REGEXP = /^\s*
 desc "mark FILE [TO]", "Mark an unpacked or decoded Bun file with arbitrary tag information"
 option "tag", :aliases=>'-t', :type=>'string',  :desc=>"tag:value,..."
 def mark(file, to=nil)
-  to ||= file
   stop "!Bad --tag. Use --tag tag:value,..." unless tag_match = TAG_REGEXP.match(options[:tag])
-  tag_pairs = tag_match[1..-1].compact.each_slice(2).to_a
-  File.open(file) do |f|
-    tag_pairs.each do |tag, value|
-      tag = eval(tag) if tag =~ /^['"]/ # Remove quoting
-      value = eval(value) if value =~ /^['"]/ # Remove quoting
-      f.mark tag, value
-    end
-    f.write(to)
+  tag_pairs = tag_match[1..-1].compact.each_slice(2)
+  tag_pairs = tag_pairs.map do |tag, value|
+    tag = eval(tag) if tag =~ /^['"]/ # Remove quoting
+    value = eval(value) if value =~ /^['"]/ # Remove quoting
+    [tag, value]
   end
+  File::Unpacked.mark(file, tag_pairs, to)
 end

@@ -119,6 +119,15 @@ module Bun
           end
         end
         
+        def mark(fname, tag_hash, to=nil)
+          to ||= fname
+          File.open(fname) do |f|
+            tag_hash.each do |tag, value|
+              f.mark tag, value
+            end
+            f.write(to)
+          end
+        end
       end
 
       # CHARACTERS_PER_WORD = characters_per_word
