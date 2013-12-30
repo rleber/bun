@@ -1,7 +1,6 @@
 TODO
 _High Priority_
 Add --mark option to library classify and bun check/analyze
-Add MD5 checksum to unpacked and decoded formats
 Create bun field -f FIELD FILE... and bun match -f FIELD -v VALUE FILE (or bun match FORMULA FILE)
 Extend bun check
     Flag whether files contain troff commands

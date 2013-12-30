@@ -12,22 +12,27 @@ module Bun
 
     class << self
       
-      def preread(path)
-        return $stdin_tempfile if $stdin_tempfile
-        if path == '-'
-          tempfile = Tempfile.new('stdin')
-          tempfile.write($stdin.read)
-          tempfile.close
-          $stdin_tempfile = tempfile.path
-        else
+      @@stdin_cache = nil # Name of the tempfile caching STDIN (if it exists)
+      
+      # Allows STDIN to be read multiple times
+      def read(*args)
+        path = args.shift
+        path = if path != '-'
           path
+        elsif @@stdin_cache
+          @@stdin_cache
+        else
+          cache_stdin
         end
+        ::File.read(path, *args)
       end
       
-      def read(*args)
-        path = preread(args.first)
-        args[0] = path
-        ::File.read(*args)
+      # Read STDIN and save it to a tempfile
+      def cache_stdin
+        tempfile = Tempfile.new('stdin')
+        tempfile.write($stdin.read)
+        tempfile.close
+        @@stdin_cache = tempfile.path
       end
 
       def relative_path(*f)
@@ -155,6 +160,10 @@ module Bun
   
     def path
       descriptor.path
+    end
+    
+    def mark(tag_name, tag_value)
+      descriptor.set_field(tag_name, tag_value)
     end
   
     def updated
