@@ -1,8 +1,7 @@
 TODO
 _High Priority_
-Decode to YAML format
-Add decode_time, decoded_by to annotated decoded format
-Create bun archive extract (or unload): Convert decoded YAML format to flat file
+Create bun library put: Convert decoded YAML format to flat file
+Add --mark option to library classify and bun check/analyze
 Create bun archive find command (similar to find shell command)
     --print
     --exec
@@ -50,6 +49,8 @@ Complete tests:
                 If there's only one date, collapse the date altogether
                 If there's more than one date, collapse the HHMMSS unless the YYMMDD is identical
     library classify
+    library put
+    library push
 Create bun library (or archive) push
 Combine archive, library
 Document new process: pull, unpack, catalog, decode, find, list/describe, clean, organize, extract, push

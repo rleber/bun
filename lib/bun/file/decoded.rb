@@ -3,23 +3,20 @@
 
 module Bun
   class File < ::File
-    class Extracted < Bun::File
+    class Decoded < Bun::File::Unpacked
+      attr_accessor :content
       class << self
-        def open(fname, options, &blk)
-          f = send(:new, options.merge(:tape_path=>fname))
-          if options[:library]
-            descriptor_hash = options[:library].descriptor(fname, :build=>false)
-            f.descriptor = File::Descriptor::Extracted.from_hash(self, descriptor_hash)
-          end
-          if block_given?
-            begin
-              yield f
-            ensure
-              f.close
-            end
-          end
-          f
+        def create(options={})
+          descriptor = options[:descriptor]
+          tape_type = options[:force] || descriptor[:tape_type]
+          new(options)
         end
+      end
+      
+      def put(to_file)
+        shell = Shell.new
+        shell.mkdir_p File.dirname(to_file)
+        shell.write(to_file, content)
       end
     end
   end

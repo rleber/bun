@@ -6,8 +6,8 @@
 :owner: fass
 :path: fass/sequence
 :data_format: :raw
-:unpack_time: 2013-12-28 23:09:43.186144000 -05:00
-:unpacked_by: Bun version 0.0.6 [feature/simplify:9e36322204713719b9b571a930b7f22acd88f921]
+:unpack_time: 2013-12-29 21:59:13.891517000 -05:00
+:unpacked_by: Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
 :content: !binary |-
   AABA8NAABAAOAAJAo+CSjzPOCSjzPOAAAAAAAAAAASMxhOZzAAAAAAAAAAAA
   AAAAAAF5zMpxOplNxjMoAAAAAABAExAAUAIAAAAAAAAAAAAAAAAAAAAAAAAA
