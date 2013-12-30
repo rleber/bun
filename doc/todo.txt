@@ -56,7 +56,6 @@ Document new process: pull, unpack, catalog, decode, find, list/describe, clean,
 Implement Huffman decoding
 
 _Medium Priority_
-Change shard 0 to mean the first shard; use shard '\\0', (or shard "0") for a shard named '0'
 Add MD5 checksum to unpacked and decoded formats
 Create bun archive find_duplicates
 Resolve backspaces: to underlining, overstrike or bold (explore 'col' command)

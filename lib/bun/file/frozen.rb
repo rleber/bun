@@ -146,6 +146,7 @@ module Bun
           stop "Frozen file does not contain shard number #{orig_n}" if n<0 || n>shard_count
         else
           name = n.to_s.sub(/^\\/,'') # Remove leading '\\', if any
+          raise "!Missing shard index or name" if n.to_s == '' # debug
           n = _shard_index(name)
           stop "!Frozen file does not contain a shard named #{name.inspect}" unless n
         end
@@ -280,11 +281,21 @@ module Bun
         File.clean?(text.sub(/\0*$/,'')) && (text !~ /\0+$/ || text =~ /\r\0*$/) && text !~ /\n/
       end
       
-      def decode(to, options={})
+      def decoded_text(options={})
         content = shards.at(shard_index(options[:shard]))
-        shell = Shell.new
-        shell.write to, content, :timestamp=>file_time, :quiet=>true
-        copy_descriptor(to, :decoded=>Time.now) unless to.nil? || to == '-'
+      end
+      
+      def to_hash(options=[])
+        base_hash = super(options)
+        base_hash.delete(:shards)
+        index = shard_index(options[:shard])
+        shard_descriptor = descriptor.shards[index].to_a.inject({}) do |hsh, pair|
+          key, value = pair
+          new_key = "shard_#{key.to_s.sub(/^file_/,'')}".to_sym
+          hsh[new_key] = value
+          hsh
+        end
+        base_hash.merge(shard_number: index).merge(shard_descriptor)
       end
     end
   end

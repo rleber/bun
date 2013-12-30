@@ -8,6 +8,8 @@ module Bun
   class File < ::File
     class UnknownFileType < RuntimeError; end
     class UnexpectedTapeType < RuntimeError; end
+    class InvalidInput < RuntimeError; end
+    
     class Unpacked < Bun::File
       class << self
 
@@ -44,7 +46,13 @@ module Bun
         # end
 
         def open(fname, options={}, &blk)
-          input = YAML.load(File.read(fname))
+          input = begin
+            YAML.load(Bun::File.read(fname))
+          rescue => e
+            raise InvalidInput, "Error reading #{fname}: #{e}"
+          end
+          raise InvalidInput, "Expected #{fname} to be a Hash, not a #{input.class}" \
+            unless input.is_a?(Hash)
           data = input.delete(:content)
           @content = Data.new(
             :data=>data, 
@@ -299,6 +307,20 @@ module Bun
       
       def unpack
         self
+      end
+      
+      def to_hash(options={})
+        descriptor.to_hash.merge(
+          content:     decoded_text(options),
+          data_format: :unpacked,
+          decode_time: Time.now,
+          decoded_by:  Bun.expanded_version
+        )
+      end
+
+      # Subclasses must define decoded_text
+      def decode(to, options={})
+        Shell.new.write(to,to_hash(options).to_yaml)
       end
 
       def method_missing(meth, *args, &blk)

@@ -324,6 +324,11 @@ DESCRIBE_PATTERNS = {
   :unpacked_by=>/Unpacked By\s+Bun version \d+\.\d+\.\d+\s+\[.*?\]\n?/,
 }
 
+DECODE_PATTERNS = {
+  :decode_time=>/:decode_time: \d{4}-\d\d-\d\d \d\d:\d\d:\d\d\.\d{9} [-+]\d\d:\d\d\n?/,
+  :decoded_by=>/:decoded_by:\s+Bun version \d+\.\d+\.\d+\s+\[.*?\]\n?/, 
+}
+
 describe Bun::Bot do
   # include_examples "command", "descr", "cmd", "expected_stdout_file"
   # include_examples "command with file", "descr", "cmd", "expected_stdout_file", "output_in_file", "expected_output_file"
@@ -397,32 +402,62 @@ describe Bun::Bot do
     include_examples "command", "readme", "readme", "doc/readme.md"
   end
   describe "decode" do
-    describe "with text file" do
-      include_examples "command", 
-                       "decode ar003.0698", 
-                       "decode #{TEST_ARCHIVE}/ar003.0698.bun",
-                       "decode_ar003.0698"
+    context "with text file" do
+      before :all do
+        exec("rm -f output/decode_ar003.0698")
+        exec("bun decode #{TEST_ARCHIVE}/ar003.0698.bun \
+                  >output/decode_ar003.0698")
+      end
+      include_examples "match with variable data", "decode_ar003.0698", DECODE_PATTERNS
+      after :all do
+        exec("rm -f output/decode_ar003.0698")
+      end
     end
-    describe "from STDIN" do
-      include_examples "command from STDIN", 
-                       "decode ar003.0698", 
-                       "decode -",
-                       "#{TEST_ARCHIVE}/ar003.0698.bun", 
-                       "decode_ar003.0698"
+    context "from STDIN" do
+      before :all do
+        exec("rm -f output/decode_ar003.0698")
+        exec("cat #{TEST_ARCHIVE}/ar003.0698.bun | bun decode - \
+                  >output/decode_ar003.0698")
+      end
+      include_examples "match with variable data", "decode_ar003.0698", DECODE_PATTERNS
+      after :all do
+        exec("rm -f output/decode_ar003.0698")
+      end
     end
-    describe "with frozen file" do
-      include_examples "command", 
-                       "decode ar004.0888 +0", 
-                       "decode -s +0 #{TEST_ARCHIVE}/ar004.0888.bun",
-                       "decode_ar004.0888_0"
-      include_examples "command", 
-                       "decode ar004.0888[+0]", 
-                       "decode #{TEST_ARCHIVE}/ar004.0888.bun[+0]",
-                       "decode_ar004.0888_0"
-      include_examples "command", 
-                       "decode ar004.0888[fasshole]", 
-                       "decode #{TEST_ARCHIVE}/ar004.0888.bun[fasshole]", 
-                       "decode_ar004.0888_0"
+    context "with frozen file" do
+      context "and +0 shard argument" do
+        before :all do
+          exec("rm -f output/decode_ar004.0888")
+          exec("bun decode -s +0 #{TEST_ARCHIVE}/ar004.0888.bun \
+                    >output/decode_ar004.0888_0")
+        end
+        include_examples "match with variable data", "decode_ar004.0888_0", DECODE_PATTERNS
+        after :all do
+          exec("rm -f output/decode_ar004.0888_0")
+        end
+      end
+      context "and [+0] shard syntax" do
+        before :all do
+          exec("rm -f output/decode_ar004.0888")
+          exec("bun decode #{TEST_ARCHIVE}/ar004.0888.bun[+0] \
+                    >output/decode_ar004.0888_0")
+        end
+        include_examples "match with variable data", "decode_ar004.0888_0", DECODE_PATTERNS
+        after :all do
+          exec("rm -f output/decode_ar004.0888_0")
+        end
+      end
+      context "and [name] shard syntax" do
+        before :all do
+          exec("rm -f output/decode_ar004.0888_0")
+          exec("bun decode #{TEST_ARCHIVE}/ar004.0888.bun[fasshole] \
+                    >output/decode_ar004.0888_0")
+        end
+        include_examples "match with variable data", "decode_ar004.0888_0", DECODE_PATTERNS
+        after :all do
+          exec("rm -f output/decode_ar004.0888_0")
+        end
+      end
     end
   end
   context "bun dump" do

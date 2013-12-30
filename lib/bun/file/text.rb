@@ -102,11 +102,9 @@ module Bun
         inspect_lines.join("\n")
       end
       
-      def decode(to, options={})
+      def decoded_text(options={})
         self.keep_deletes = options[:delete]
-        content = options[:inspect] ? self.inspect : self.text
-        shell = Shell.new
-        shell.write to, content
+        options[:inspect] ? self.inspect : self.text
       end
     end
   end
