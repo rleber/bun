@@ -1,59 +1,56 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+STANDARD_FIELDS = %w{tape path owner description catalog_time 
+                     file_time tape_size tape_type data_format shards}.map{|f| f.to_sym}
+
 SHARDS_ACROSS = 5
-desc "describe LOCATION", "Display description information for a file"
-option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
-option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on at index; always build information from source file"
-def describe(file_name)
-  archive = Archive.new(options)
-  descriptor    = archive.descriptor(file_name, :build=>options[:build])
-  abort "File #{file_name} is not in the archive" unless descriptor
-  type          = descriptor.file_type
+desc "describe FILE", "Display description information for a tape"
+def describe(file)
+  descriptor    = File.descriptor(file, :graceful=>true)
+  type          = descriptor.tape_type
   shards        = descriptor.shards || []
   catalog_time    = descriptor.catalog_time
-  catalog_time_display = catalog_time ? catalog_time.strftime('%Y/%m/%d') : "n/a"
   
-  # TODO Refactor using Array#justify_rows
-  puts "Location:      #{descriptor.location}"
-  puts "Path:          #{descriptor.location_path}"
-  if type == :frozen
-    puts "Directory:     #{descriptor.path}"
-  else
-    puts "File:          #{descriptor.path}"
+  preamble_table = []
+  preamble_table.push ["Tape", descriptor.tape]
+  preamble_table.push [type==:frozen ? "Directory" : "File", descriptor.path]
+  preamble_table.push ["Owner", descriptor.owner]
+  preamble_table.push ["Description", descriptor.description]
+  preamble_table.push ["Catalog date", catalog_time.strftime('%Y/%m/%d')] if catalog_time
+  preamble_table.push ["File time", descriptor.file_time.strftime(TIME_FORMAT)] if type==:frozen
+  preamble_table.push ["Size (words)", descriptor.tape_size]
+  preamble_table.push ["Type", type.to_s.sub(/^./) {|c| c.upcase}]
+  preamble_table.push ["Data Format", descriptor.data_format.to_s.sub(/^./) {|c| c.upcase}]
+
+  (descriptor.fields - STANDARD_FIELDS).sort_by{|f| f.to_s }.each do |f|
+    preamble_table.push [
+                          f.to_s.gsub(/_/,' ').gsub(/\b[a-z]/) {|c| c.upcase},
+                          descriptor[f.to_sym].to_s
+                        ]
   end
-  puts "Owner:         #{descriptor.owner}"
-  puts "Subdirectory:  #{descriptor.subdirectory}"
-  puts "Basename:      #{descriptor.basename}"
-  puts "Description:   #{descriptor.description}"
-  puts "Specification: #{descriptor.specification}"
-  puts "Catalog date:  #{catalog_time_display}"
-  if type == :frozen
-    puts "File time:     #{descriptor.file_time.strftime(TIME_FORMAT)}"
-    puts "Updated at:    #{descriptor.updated.strftime(TIME_FORMAT)}"
-  end
-  puts "Size (words):  #{descriptor.file_size}"
-  puts "Type:          #{type.to_s.sub(/^./) {|m| m.upcase}}"
+  
+  puts preamble_table.justify_rows.map {|row| row.join('  ')}
 
   if shards.size > 0
     # Display shard information in a table, SHARDS_ACROSS shards per row,
     # Multiple rows of information for each shard
     # TODO Modify Array extensions and refactor
     puts
-    puts "Shards:"
+    puts "Shards"
     grand_table = []
     columns = 0
-    titles = %w{Name: Path: Updated\ at: Size\ (words):}
+    titles = ["Name", "Updated at", "Size (words)"]
     i = 0
     loop do
       break if i >= shards.size
       table = [titles]
       SHARDS_ACROSS.times do |j|
         if i >= shards.size
-          column = [""]*4
+          column = [""]*(titles.size)
         else
           shard = descriptor[:shards][i]
-          column = [shard[:name], shard[:path], shard[:file_time].strftime(TIME_FORMAT), shard[:file_size]]
+          column = [shard[:name], shard[:file_time].strftime(TIME_FORMAT), shard[:size]]
         end
         table << column
         i += 1

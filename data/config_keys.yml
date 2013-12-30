@@ -1,0 +1,2 @@
+:index_directory: Name of directory containing indexes (within archive directories)
+:log_file:        File name of log files

@@ -3,8 +3,14 @@
 
 module Bun
   class File < ::File
-    class Frozen < Bun::File
+    class Frozen < Bun::File::Unpacked
       include CacheableMethods
+      
+      class << self
+        def open(path, options={}, &blk)
+          File::Unpacked.open(path, options.merge(:type=>:frozen), &blk)
+        end
+      end
       
       attr_reader :file
       attr_accessor :status
@@ -12,9 +18,10 @@ module Bun
     
       # TODO do we ever instantiate a File::Frozen without a new file? If not, refactor
       def initialize(options={})
+        options[:data] = Data.new(options) if options[:data] && !options[:data].is_a?(Bun::Data)
         super
         # TODO Why is file_date necessary?
-        descriptor.register_fields(:shards, :file_date, :file_time)
+        descriptor.register_fields(:shards, :file_time)
         @warn = options[:warn]
       end
       
@@ -65,7 +72,7 @@ module Bun
       end
       
       def file_date
-        File.date(_update_date)
+        File::Unpacked.date(_update_date)
       end
       
       # Reference to all_characters is necessary here, because characters isn't
@@ -75,7 +82,7 @@ module Bun
       end
     
       def update_time_of_day
-        File.time_of_day(_update_time_of_day)
+        File::Unpacked.time_of_day(_update_time_of_day)
       end
     
       def _update_time_of_day
@@ -83,13 +90,11 @@ module Bun
       end
     
       def file_time
-        File.time(_update_date, _update_time_of_day)
+        Bun::Data.time(_update_date, _update_time_of_day)
       end
     
       def shard_descriptors
-        LazyArray.new(shard_count) do |i|
-          Frozen::Descriptor.new(self, i)
-        end
+        descriptor.shards.map.with_index {|d,i| Hashie::Mash.new(d.merge(:number=>i)) }
       end
       cache :shard_descriptors
       
@@ -101,7 +106,7 @@ module Bun
         shard_descriptors.at(shard_index(n))
       end
     
-      def file_size
+      def tape_size
         content_offset + shard_descriptor(shard_count-1).start + shard_descriptor(shard_count-1).size
       end
     
@@ -141,6 +146,7 @@ module Bun
           stop "Frozen file does not contain shard number #{orig_n}" if n<0 || n>shard_count
         else
           name = n.to_s.sub(/^\\/,'') # Remove leading '\\', if any
+          raise "!Missing shard index or name" if n.to_s == '' # debug
           n = _shard_index(name)
           stop "!Frozen file does not contain a shard named #{name.inspect}" unless n
         end
@@ -157,20 +163,34 @@ module Bun
         index
       end
       private :_shard_index
+      
+      def shard_extent(n)
+        d = shard_descriptor(n)
+        return nil unless d
+        [d.start+content_offset, d[:size]]
+      end
+      
+      # def shard_data(n)
+      #   d = shard_descriptor(n)
+      #   return nil unless d
+      #   data.subset(d.start + content_offset, d.tape_size)
+      # end
     
       def shard_words(n)
         d = shard_descriptor(n)
         return nil unless d
-        words[d.start + content_offset, d.file_size]
+        words[d.start + content_offset, d[:size]]
       end
       
       def shards
-        LazyArray.new(shard_count) do |i|
+        s = []
+        shard_count.times do |i|
           text = shard_lines.at(i).map{|l| l[:content]}.join
-          shard_descriptors.at(i).control_characters = File.control_character_counts(text)
+          # shard_descriptors.at(i).control_characters = File.control_character_counts(text)
           shard_descriptors.at(i).character_count    = text.size
-          text
+          s << text
         end
+        s
       end
     
       def shard_lines
@@ -224,14 +244,12 @@ module Bun
               okay = false
             end
           end
-          chs = extract_characters(word, ch_count)
-          line += chs.sub(/#{File.invalid_character_regexp}.*/,'') # Remove invalid control characters and all following letters
-          break if chs=~/\r/
-          if !good_characters?(chs) || line.size >= line_length
-            error "Shard #{n}: Bad characters in line at #{content_offset}"
-            okay = false
+          chs = decode_characters(word, ch_count)
+          if chs =~ /^(.*\r).*$/
+            line += $1
             break
           end
+          line += chs
           content_offset += 1
         end
         return [content_offset, nil, false] unless line =~ /\r/
@@ -250,7 +268,7 @@ module Bun
         top_descriptor_bits(word) == 0
       end
     
-      def extract_characters(word, n=5)
+      def decode_characters(word, n=5)
         chs = []
         n.times do |i|
           chs.unshift((word & 0x7f).chr)
@@ -261,6 +279,23 @@ module Bun
     
       def good_characters?(text)
         File.clean?(text.sub(/\0*$/,'')) && (text !~ /\0+$/ || text =~ /\r\0*$/) && text !~ /\n/
+      end
+      
+      def decoded_text(options={})
+        content = shards.at(shard_index(options[:shard]))
+      end
+      
+      def to_hash(options=[])
+        base_hash = super(options)
+        base_hash.delete(:shards)
+        index = shard_index(options[:shard])
+        shard_descriptor = descriptor.shards[index].to_a.inject({}) do |hsh, pair|
+          key, value = pair
+          new_key = "shard_#{key.to_s.sub(/^file_/,'')}".to_sym
+          hsh[new_key] = value
+          hsh
+        end
+        base_hash.merge(shard_number: index).merge(shard_descriptor)
       end
     end
   end

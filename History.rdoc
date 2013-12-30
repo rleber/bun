@@ -1,3 +1,7 @@
+=== 0.1.0 2013-12-30
+
+* Major improvements: simplified object model, expanded capability
+
 === 0.0.6 2012-03-29
 
 * Refactor naming: tape=>location, archive.location=>archive.at; build cp -r, mv, and rm commands

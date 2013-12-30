@@ -11,23 +11,27 @@ module Bun
     # TODO Dump should understand frozen file sizes
     # TODO Dump should be able to dump frozen file preambles 4 chars/word, then 5 chars/word for the remainder
     # TODO Should dump be part of Words?
-    def self.dump(words, options={})
+    def self.dump(data, options={})
+      words = data.words
       offset = options[:offset] || 0
-      if options[:lines]
+      if options[:limit]
+        limit = options[:limit]
+        limit = words.size - 1 if limit >= words.size
+      elsif options[:lines]
         limit = (options[:lines] * WORDS_PER_LINE - 1) + offset
         limit = words.size - 1 if limit >= words.size
       else 
         limit = words.size - 1
       end
+      bit_offsets = options[:bit_offsets] || [0]
       display_offset = (options[:display_offset] || offset) - offset
       stream = options[:to] || STDOUT
-      file = File.create(:words=>words, :type=>:raw)
-      limit = [limit, file.size-1].min unless options[:unlimited]
+      limit = [limit, data.size-1].min unless options[:unlimited]
       if options[:frozen]
-        characters = file.all_packed_characters
+        characters = data.all_packed_characters
         character_block_size = FROZEN_CHARACTERS_PER_WORD
       else
-        characters = file.all_characters
+        characters = data.all_characters
         character_block_size = UNFROZEN_CHARACTERS_PER_WORD
       end
       # TODO Refactor using Array#justify_rows
@@ -49,6 +53,7 @@ module Bun
           chars = chars.inspect[1..-2].scan(/\\\d{3}|\\[^\d\\]|\\\\|[^\\]/).map{|s| (s+'   ')[0,4]}.join
         else
           chars = chars.gsub(/[[:cntrl:]]/, '~')
+          chars = chars.gsub(/_/, '~').gsub(/\s/,'_') unless options[:spaces]
           chars = chars.scan(/.{1,#{character_block_size}}/).join(' ')
         end
         address = '0' + ("%0#{address_width}o"%(i + display_offset))

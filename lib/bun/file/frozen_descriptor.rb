@@ -16,8 +16,8 @@ module Bun
         BLOCK_SIZE = 64  # 36-bit words
         DESCRIPTOR_END_MARKER = 0777777777777
         FIELDS = [
-          :file_size,
-          :file_type,
+          :tape_size,
+          :tape_type,
           :catalog_time,
           :control_characters,
           :character_count,
@@ -25,8 +25,8 @@ module Bun
           :owner,
           :path,
           :status,
-          :location,
-          :location_path,
+          :tape,
+          :tape_path,
           :file_date,
           :file_time,
           :updated,
@@ -57,7 +57,7 @@ module Bun
         def initialize(file, number, options={})
           @file = file
           @number = number
-          raise "Bad descriptor ##{number} for #{file.location} at #{'%#o' % self.offset}:\n#{dump}" unless options[:allow] || valid?
+          raise "Bad descriptor ##{number} for #{file.tape} at #{'%#o' % self.offset}:\n#{dump}" unless options[:allow] || valid?
           load_fields_from_archive
         end
   
@@ -67,7 +67,7 @@ module Bun
         
         def load_fields_from_archive
           return unless @file.archive
-          archive_descriptor = @file.archive.descriptor(location, :build=>false)
+          archive_descriptor = @file.archive.descriptor(tape)
           return unless archive_descriptor
           shard_descriptor = archive_descriptor.shards[number]
           return unless shard_descriptor
@@ -87,13 +87,13 @@ module Bun
         end
         
         def control_characters=(value)
-          raise "nil assigned to control_characters for #{location}[#{name}]" if value.nil?
-          # raise "{} assigned to control_characters for #{location}[#{name}]" if value == {}
+          raise "nil assigned to control_characters for #{tape}[#{name}]" if value.nil?
+          # raise "{} assigned to control_characters for #{tape}[#{name}]" if value == {}
           @control_characters = value
         end
         
         def character_count=(count)
-          raise "nil assigned to character_count for #{location}[#{name}]" if count.nil?
+          raise "nil assigned to character_count for #{tape}[#{name}]" if count.nil?
           @character_count = count
         end
     
@@ -117,7 +117,7 @@ module Bun
           file.owner
         end
   
-        def file_type
+        def tape_type
           :shard
         end
 
@@ -125,16 +125,16 @@ module Bun
           File.relative_path(file.path, name)
         end
   
-        def location
-          file.location
+        def tape
+          file.tape
         end
   
-        def location_path
-          file.location_path
+        def tape_path
+          file.tape_path
         end
 
         def file_date
-          File.date(_update_date)
+          File::Unpacked.date(_update_date)
         end
 
         def _update_date
@@ -142,7 +142,7 @@ module Bun
         end
 
         def update_time_of_day
-          File.time_of_day(_update_time_of_day)
+          File::Unpacked.time_of_day(_update_time_of_day)
         end
 
         def _update_time_of_day
@@ -154,7 +154,7 @@ module Bun
         end
 
         def file_time
-          File.time(_update_date, _update_time_of_day)
+          Bun::Data.time(_update_date, _update_time_of_day)
         end
         alias_method :updated, :file_time
 
@@ -177,7 +177,7 @@ module Bun
         def size
           word(8).value
         end
-        alias_method :file_size, :size
+        alias_method :tape_size, :size
 
         def valid?
           # TODO Optimize Is this check necessary?

@@ -2,12 +2,11 @@
 # -*- encoding: us-ascii -*-
 
 desc "types", "List file types"
-option 'at',      :aliases=>'-a', :type=>'string',  :desc=>'Archive location'
 option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on at index; always build information from source file"
-def types
-  archive = Archive.new(:at=>options[:at])
-  archive.each do |location|
-    file = archive.descriptor(location, :build=>options[:build])
-    puts "#{location}: #{file[:file_type]}"
+def types(at)
+  archive = Archive.new(at)
+  archive.each do |tape|
+    file = archive.descriptor(tape, :build=>options[:build])
+    puts "#{tape}: #{file[:tape_type]}"
   end
 end

@@ -32,6 +32,15 @@ RSpec::Matchers.define :exist_as_a_file do ||
   end
 end
 
+RSpec::Matchers.define :match_named_pattern do |name, pattern|
+  match do |actual|
+    actual =~ pattern
+  end
+  failure_message_for_should do |actual|
+    "expected that text would match #{name} pattern: #{pattern.inspect}"
+  end
+end
+
 def file_should_exist(name)
   name.should exist_as_a_file
 end

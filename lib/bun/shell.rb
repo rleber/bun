@@ -69,21 +69,21 @@ module Bun
       _run "cp", from, to, options
     end
     
+    def cp_r(from, to, options={})
+      _run "cp -r", from, to, options
+    end
+    
     def thaw(*args)
-      if args.last.is_a?(Hash)
-        if args.last[:log]
-          args.unshift "--log #{shell_quote(args.last[:log])}"
-        end
-      end
+      options = {}
+      options = args.pop if args.last.is_a?(Hash)
+      args.push "--at #{options[:at].inspect}" if options[:at]
       _run "bun freezer thaw", *args
     end
     
     def unpack(*args)
-      if args.last.is_a?(Hash)
-        if args.last[:log]
-          args.unshift "--log #{shell_quote(args.last[:log])}"
-        end
-      end
+      options = {}
+      options = args.pop if args.last.is_a?(Hash)
+      args.push "--at #{options[:at].inspect}" if options[:at]
       _run "bun unpack", *args
     end
     

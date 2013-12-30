@@ -1,11 +1,7 @@
-Location:      ar003.0698
-Path:          /Users/richard/bun_archive/raw/ar003.0698
-File:          fass/idallen/vector
-Owner:         fass
-Subdirectory:  
-Basename:      vector
-Description:   ==>files for idallen
-Specification: /idallen/vector  ==>files for idallen
-Catalog date:  n/a
-Size (words):  2582
-Type:          Text
+Tape          ar003.0698
+File          fass/idallen/vector
+Owner         fass
+Description   ==>files for idallen
+Size (words)  2582
+Type          Text
+Data Format   Raw

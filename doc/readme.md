@@ -30,8 +30,7 @@ At the moment, you will have to take the following steps to install the software
 3. Install this software, and put the "bin" directory in your load path
 4. Try running it (see below)
 5. Install any missing Ruby Gem dependencies (you'll know them from the error messages)
-6. Configure file locations: You can do this by setting the values in the file data/archive_config.yml, or with
-   environment variables, in some cases:
+6. Configure file locations: You can do this using the bun config commands
    - Set the default location to store a retrieved archive of GCOS files using the archive entry in the config file.
    - Set the default URL for retrieving archived files (i.e. using "bun fetch"), either by setting the value
      for the repository entry in the config file, or by setting the "BUN_REPOSITORY" environment variable.
@@ -41,6 +40,37 @@ _Running this software_
 There is one primary executable src/bun. Assuming that the src directory is in your load path, it should
 be pretty simple to run the software from the command line, by typing the command "bun". Without any
 parameters, the command should provide you with a helpful summary of all the available subcommands.
+
+Many commands are organized as subcommands:
+- bun archive
+- bun catalog
+- bun config
+- bun freezer
+- bun libray
+- bun sandbox
+
+Use "help" with subcommands, as well. For instance "bun archive" lists all the subcommands. One of those 
+subcommands is "bun archive index". "bun archive help index" lists help information for that subcommand.
+
+The "bun test" command will run a set of software checks on this software.
+
+_Terminology_
+- We refer to a Honeywell backup store of files as a "tape". Typically, this would be the digital image of
+  a Honeywell backup tape, stored as a binary file somewhere. Each tape might contain several files, and
+  the files might be in several formats, including text files, executable files, listing files (printouts),
+  "frozen" archives of files (akin to today's tar archives), or text files compressed using Huffman encoding.
+- We expect to start from a collection of tapes: we call an online collection of tapes a "repository". Use
+  the "bun fetch" command to download a repository to the local network.
+- Once the repository has been downloaded to the local network, we call the collection of tapes an "archive".
+  Each such archive contains one file for each tape from the repository. Use the 
+  "bun archive" commands to process these files. The archive also has an index, which is processed using the
+  "bun archive index" commands.
+- The software understands the concept of a "catalog" within the repository or archive. This is a text file
+  that lists each archive tape in the archive, one per line. For each archive tape, the row of the text file
+  lists the name of the archive tape, its creation date, and the path of the directory archived in the
+  archive tape.
+- Once files have been decoded, this software refers to that collection as a "library". The "bun library"
+  commands are used to process these files.
 
 _File formats_
 
@@ -54,3 +84,23 @@ imperfectly. Some salient features:
 
 More detailed notes on the file formats (and some old reference programs written in B -- an ancestor of C)
 are included in the doc/file_format directory of this project.
+
+_Process_
+1. Set up configuration. The "bun config" commands are useful for this. 
+2. Use "bun archive fetch" to fetch the repository into the archive.
+3. Use "bun archive unpack" to unpack the repository files into an ASCII format (YAML, actually)
+4. You can use "bun ls" to list tapes.
+5. Optionally, use "bun archive catalog" to apply "last updated" dates from a catalog file.
+6. Optionally, use "bun archive text_status" to check the quality of the archived text files.
+7. There are a variety of commands you can use to work on individual files:
+   - "bun check"    Check if a file is clean
+   - "bun describe" Describe a file in the archive
+   - "bun dump"     Dump the undecoded contents of a file
+   - "bun freezer"  A collection of commands for frozen file archives:
+     - "bun freezer dump" Dump the contents of a frozen file
+     - "bun freezer ls"   List the contents of the frozen file
+   - "bun scrub"    Clean up tabs etc.
+   - "bun decode"   Decode a file
+8. Use "bun archive decode" to decode files from the archive and place them in a library.
+9. Use the "bun library" commands to reorganize the decoded files
+

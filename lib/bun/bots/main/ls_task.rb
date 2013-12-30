@@ -9,53 +9,59 @@ no_tasks do
   end
 end
 
-SORT_VALUES = %w{location file type updated description size}
+SORT_VALUES = %w{tape file type updated description size}
 SORT_FIELDS = {
   :description => :description,
   :file        => :path,
-  :size        => :file_size,
-  :location    => :location,
-  :type        => :file_type,
-  :updated     => :updated,
+  :size        => :tape_size,
+  :tape        => :tape,
+  :type        => :tape_type,
+  :updated     => :file_time,
 }
 TYPE_VALUES = %w{all frozen text huff}
 DATE_FORMAT = '%Y/%m/%d'
 TIME_FORMAT = DATE_FORMAT + ' %H:%M:%S'
 FIELD_CONVERSIONS = {
-  :updated     => lambda {|f| f.nil? ? 'n/a' : f.strftime(f.is_a?(Time) ? TIME_FORMAT : DATE_FORMAT) },
-  :file_type   => lambda {|f| f.to_s.sub(/^./) {|m| m.upcase} },
+  :file_time   => lambda {|f| f.nil? ? 'n/a' : f.strftime(f.is_a?(Time) ? TIME_FORMAT : DATE_FORMAT) },
+  :tape_type   => lambda {|f| f.to_s.sub(/^./) {|m| m.upcase} },
   :shard_count => lambda {|f| f==0 ? '' : f },
 }
 FIELD_HEADINGS = {
   :description   => 'Description',
-  :file_size     => 'Size',
-  :file_type     => 'Type',
-  :path          => 'File/Directory',
+  :tape_size     => 'Size',
+  :tape_type     => 'Type',
+  :path          => 'File',
   :shard_count   => 'Shards',
-  :location      => 'Location',
-  :location_path => 'Location',
-  :updated       => 'Updated',
+  :tape          => 'Tape',
+  :tape_path     => 'Tape',
+  :file_time     => 'Updated',
 }
 DEFAULT_VALUES = {
-  :file_size   => 0,
+  :tape_size   => 0,
   :shard_count => 0,
-  :updated     => Time.now,
+  :file_time   => Time.now,
+}
+SHARD_FIELDS = {
+  :tape_size     => :size,
+  :shard_count   => '',
+  :tape_type     => 'Shard',
+  # :updated       => :file_time,
 }
 
-desc "ls", "Display an index of archived files"
-option 'at',        :aliases=>'-a', :type=>'string',                               :desc=>'Archive location'
-option "build",     :aliases=>"-b", :type=>'boolean',                              :desc=>"Don't rely on at index; always build information from source file"
+# TODO --recursive option
+
+desc "ls FILE...", "Display an index of archived files"
 option "descr",     :aliases=>"-d", :type=>'boolean',                              :desc=>"Include description"
 option "files",     :aliases=>"-f", :type=>'string',  :default=>'',                :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "frozen",    :aliases=>"-r", :type=>'boolean',                              :desc=>"Recursively include contents of freeze files"
 option "long",      :aliases=>"-l", :type=>'boolean',                              :desc=>"Display long format (incl. text vs. frozen)"
 option 'path',      :aliases=>'-p', :type=>'boolean',                              :desc=>"Display paths for tape files"
-option "sort",      :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
-option "locations", :aliases=>"-L", :type=>'string',  :default=>'',                :desc=>"Show only locations that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
+option 'onecolumn', :aliases=>'-o', :type=>'boolean',                              :desc=>"Display tape names only"
+option "sort",      :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order(s) for files (#{SORT_VALUES.join(', ')})"
 option "type",      :aliases=>"-T", :type=>'string',  :default=>TYPE_VALUES.first, :desc=>"Show only files of this type (#{TYPE_VALUES.join(', ')})"
-# TODO Refactor location/file patterns; use location::file::shard syntax
+# TODO Refactor tape/file patterns; use tape::file::shard syntax
 # TODO Refactor code into shorter submethods
-def ls
+def ls(*paths)
   type_pattern = case options[:type].downcase
     when 'f', 'frozen'
       /^(frozen|shard)$/i
@@ -70,56 +76,79 @@ def ls
     end
   file_pattern = get_regexp(options[:files])
   stop "!Invalid --files pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless file_pattern
-  location_pattern = get_regexp(options[:locations])
-  stop "!Invalid --locations pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless location_pattern
 
-  fields =  options[:path] ? [:location_path] : [:location]
-  fields += [:file_type, :updated, :file_size] if options[:long]
-  fields += [:path]
+  fields =  options[:path] ? [:tape_path] : [:tape]
+  fields += [:path] unless options[:onecolumn]
+  fields += [:tape_type] if options[:type]
+  fields += [:tape_type, :file_time, :tape_size] if options[:long]
   fields += [:shard_count] if options[:long]
   fields += [:description] if options[:descr]
+  fields = fields.uniq
 
   if options[:sort]
-    sort_field = SORT_FIELDS[options[:sort].to_sym]
-    stop "!Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless sort_field
-    sort_fields = [sort_field.to_sym, :location, :path]
+    sort_fields = options[:sort].split(',').map do |sort_field|
+      sort_field = SORT_FIELDS[sort_field.strip.to_sym]
+      stop "!Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless sort_field
+      sort_field.to_sym
+    end
   else
-    sort_fields = [:location, :path]
+    sort_fields = []
+  end
+  sort_fields += [:tape, :path]
+  if options[:onecolumn]
+    sort_fields = [:tape]
   end
   if options[:path]
-    sort_fields = sort_fields.map {|f| f==:location ? :location_path : f }
+    sort_fields = sort_fields.map {|f| f==:tape ? :tape_path : f }
   end
   sort_fields.each do |sort_field|
     stop "!Can't sort by #{sort_field}. It isn't included in this format" unless fields.include?(sort_field)
   end
+  
+  # Expand directories, if given as parameters
+  paths = paths.map {|path| File.directory?(path) ? Dir.glob("#{path}/*") : path }.flatten
 
   # Retrieve file information
-  archive = Archive.new(options)
-  ix = archive.locations
-  # TODO Refactor using archive.select
+  if options[:onecolumn] && !options[:frozen] && type_pattern==// && !options[:path]
+    output = options[:path] ? paths : paths.map{|p| File.basename(p) }
+    puts output
+    return
+  end
   file_info = []
-  ix = ix.select{|location| location =~ location_pattern}
-  files = ix.each_with_index do |location, i|
-    file_descriptor = archive.descriptor(location, :build=>options[:build])
+  files = paths.each_with_index do |tape, i|
+    file_descriptor = File.descriptor(tape)
     file_row = fields.inject({}) do |hsh, f|
       # TODO This is a little smelly
-      value = if f==:shard_count
+      value = case f
+      when :shard_count
         file_descriptor[:shards] && file_descriptor[:shards].count
-      else
+      when :file_time
+        [file_descriptor[:catalog_time], file_descriptor[:file_time]].compact.min
+      else 
         file_descriptor[f]
       end
       hsh[f] = value
       hsh
     end
     file_info << file_row
-    if options[:frozen] && file_descriptor.file_type == :frozen
+    if options[:frozen] && file_descriptor.tape_type == :frozen
       file_descriptor.shards.each do |d|
-        file_info << fields.inject({}) {|hsh, f| hsh[f] = d[f]; hsh }
+        file_info << fields.inject({}) do |hsh, f|
+          new_f = SHARD_FIELDS[f] || f
+          hsh[f] = if new_f==:path
+            File.join(file_descriptor[:path], d[:name])
+          elsif new_f.is_a?(Symbol)
+            d[new_f] || file_descriptor[new_f] 
+          else
+            new_f
+          end
+          hsh
+        end
       end
     end
   end
   
-  file_info = file_info.select{|file| file[:file_type].to_s=~type_pattern && file[:path]=~file_pattern }
+  file_info = file_info.select{|file| file[:tape_type].to_s=~type_pattern && file[:path]=~file_pattern }
   sorted_info = file_info.sort_by do |fi|
     sort_fields.map{|f| fi[f].nil? ? DEFAULT_VALUES[f]||'' : fi[f] }
   end
@@ -132,6 +161,7 @@ def ls
   end
 
   table = []
+  fields -= [:tape_type] unless options[:long]
   headings = FIELD_HEADINGS.values_at(*fields)
   table << headings
   formatted_info.each do |entry|
@@ -139,14 +169,14 @@ def ls
   end
   table = table.justify_rows
   # TODO Move right justification to Array#justify_rows
-  [:file_size, :shard_count].each do |f|
+  [:tape_size, :shard_count].each do |f|
     if ix = fields.index(f)
       table.each do |row|
+        row[ix] = row[ix].to_s
         row[ix] = (' '*(row[ix].size) + row[ix].strip)[-(row[ix].size)..-1] # Right justify
       end
     end
   end
-  puts "Archive at #{archive.at}:"
   if table.size <= 1
     puts "No matching files"
   else

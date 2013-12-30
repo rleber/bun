@@ -1,0 +1,4 @@
+---
+:log_file: .log
+:index_directory: .bun_index
+:places: {}

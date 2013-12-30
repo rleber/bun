@@ -6,16 +6,23 @@ module Bun
     class Text < Bun::File::Blocked
       include CacheableMethods
       
+      class << self
+        def open(path, options={}, &blk)
+          File::Unpacked.open(path, options.merge(:type=>:text), &blk)
+        end
+      end
+      
       attr_accessor :keep_deletes
       attr_reader   :control_characters, :character_count
     
       # TODO do we ever instantiate a File::Text without reading a file? If not, refactor
       def initialize(options={})
         @keep_deletes = options[:keep_deletes]
+        options[:data] = Data.new(options) if options[:data] && !options[:data].is_a?(Bun::Data)
         super
-        descriptor.register_fields(:control_characters, :character_count)
-        @control_characters = nil
-        @character_count = nil
+        # descriptor.register_fields(:control_characters, :character_count)
+        # @control_characters = nil
+        # @character_count = nil
       end
     
       def words=(words)
@@ -30,7 +37,7 @@ module Bun
       def text
         res = lines.map{|l| l[:content]}.join
         @character_count = res.size
-        @control_characters = File.control_character_counts(res)
+        # @control_characters = File.control_character_counts(res)
         res
       end
       cache :text
@@ -62,8 +69,8 @@ module Bun
         raw_line = ""
         okay = true
         descriptor = words.at(line_offset)
-        if descriptor == self.class.eof_marker
-          return {:status=>:eof, :start=>line_offset, :finish=>size-1, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
+        if descriptor == eof_marker
+          return {:status=>:eof, :start=>line_offset, :finish=>data.size-1, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
         elsif (descriptor >> 27) & 0777 == 0177
           raise "Deleted"
           deleted = true
@@ -77,6 +84,27 @@ module Bun
         raw_line = words[offset,line_length].map{|w| w.characters}.join
         line = raw_line.sub(/\177+$/,'') + "\n"
         {:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>line_offset+line_length, :content=>line, :raw=>raw_line, :words=>words.at(line_offset+line_length), :descriptor=>descriptor}
+      end
+      
+      def inspect
+        inspect_lines = []
+        self.lines.each do |l|
+          start = l[:start]
+          line_descriptor = l[:descriptor]
+          line_length = line_descriptor.half_word[0]
+          line_flags = line_descriptor.half_word[1]
+          line_codes = []
+          line_codes << 'D' if l[:status]==:deleted
+          line_codes << '+' if line_length > 0777 # Upper bits not zero
+          line_codes << '*' if (line_descriptor & 0777) != 0600 # Bottom descriptor byte is normally 0600
+          inspect_lines << %Q{#{"%06o" % start}: len #{"%06o" % line_length} (#{"%6d" % line_length}) [#{'%06o' % line_flags} #{'%-3s' % (line_codes.join)}] #{l[:raw].inspect}}
+        end
+        inspect_lines.join("\n")
+      end
+      
+      def decoded_text(options={})
+        self.keep_deletes = options[:delete]
+        options[:inspect] ? self.inspect : self.text
       end
     end
   end

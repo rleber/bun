@@ -3,7 +3,7 @@
 
 module Bun
   class File < ::File
-    class Blocked < Bun::File
+    class Blocked < Bun::File::Unpacked
       include CacheableMethods
       
       attr_accessor :status
@@ -13,7 +13,7 @@ module Bun
       def initialize(options={}, &blk)
         super
         @strict = options[:strict]
-        descriptor.register_fields(:blocks, :good_blocks, :status)
+        # descriptor.register_fields(:blocks, :good_blocks, :status)
       end
 
       def words=(words)
@@ -30,6 +30,10 @@ module Bun
     
       def content
         deblocked_content
+      end
+      
+      def file_content
+        data.file_content
       end
       
       BLOCK_SIZE = 0500 # words
