@@ -37,7 +37,10 @@ RSpec::Matchers.define :match_named_pattern do |name, pattern|
     actual =~ pattern
   end
   failure_message_for_should do |actual|
-    "expected that text would match #{name} pattern: #{pattern.inspect}"
+    msg = "text does not match #{name} pattern"
+    $msg ||= []
+    $msg << msg
+    msg
   end
 end
 
@@ -72,27 +75,32 @@ RSpec::Matchers.define :match_patterns do |patterns|
     end
   end
   failure_message_for_should do |actual|
-    "expected that text would match all patterns"
+    "text did not match all patterns: #{$msg.join(', ')}"
   end
 end
 
+
+
 RSpec::Matchers.define :match_except_for_patterns do |expected|
   match do |actual|
-    actual = actual.dup
-    expected = expected.dup
+    actual_text = actual.dup
+    expected_text = expected.dup
     @patterns.each do |key, pat|
-      actual = actual.sub(pat,'')
-      expected = expected.sub(pat,'')
+      actual_text = actual_text.sub(pat,'')
+      expected_text = expected_text.sub(pat,'')
     end
-    actual = actual.gsub!(/\n+/,"\n").chomp
-    expected = expected.gsub!(/\n+/,"\n").chomp
-    actual.should == expected
+    actual_text = actual_text.sub(/\n+\Z/,'')
+    expected_text = expected_text.sub(/\n+\Z/,'')
+    actual_text.should == expected_text
   end
   chain :with_patterns do |patterns|
     @patterns = patterns
   end
   failure_message_for_should do |actual|
-    "expected that text would match, except for patterns"
+    msg = "non-variable text should match"
+    $msg ||= []
+    $msg << msg
+    msg
   end
 end
 
@@ -105,7 +113,7 @@ RSpec::Matchers.define :match_with_variable_data do |expected|
     @patterns = patterns
   end
   failure_message_for_should do |actual|
-    "expected that text would match, with variable data"
+    "text with variable data did not match: #{$msg.join(', ')}"
   end
 end
 
@@ -119,7 +127,7 @@ RSpec::Matchers.define :match_file_with_variable_data do |expected_file|
     @patterns = patterns
   end
   failure_message_for_should do |actual_file|
-    "expected that content of #{actual_file} would match #{expected_file}, with variable data"
+    "content of #{actual_file} did not match #{expected_file}: #{$msg.join(', ')}"
   end
 end
 
@@ -133,7 +141,7 @@ RSpec::Matchers.define :match_expected_output_except_for do |patterns|
     actual_output_file.should match_file_with_variable_data(expected_output_file).except_for(patterns)
   end
   failure_message_for_should do |file|
-    "expected that #{file} would match expected output, with variable data"
+    "#{file} did not match expectations: #{$msg.join(', ')}"
   end
 end
 

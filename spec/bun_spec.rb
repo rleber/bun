@@ -398,9 +398,9 @@ describe Bun::Bot do
       it "should have the expected input" do
         "mark_source_before".should match_expected_output_except_for(DESCRIBE_PATTERNS)
       end
-      # include_examples "match with variable data", "mark_source_before", DESCRIBE_PATTERNS
-      # it "should create the expected marks in the existing file" do
-      include_examples "match with variable data", "mark_source_after", DESCRIBE_PATTERNS
+      it "should create the expected marks in the existing file" do
+        "mark_source_after".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
       after :all do
         exec "rm -f data/test/mark_source.bun"
         exec "rm -f output/mark_source_before"
@@ -417,13 +417,15 @@ describe Bun::Bot do
         exec "bun describe data/test/mark_source.bun >output/mark_source_after"
         exec "bun describe data/test/mark_result.bun >output/mark_result_after"
       end
-      # it "should have the expected input" do
-      include_examples "match with variable data", "mark_source_before", DESCRIBE_PATTERNS
+      it "should have the expected input" do
+        "mark_source_before".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
       it "should create the new file" do
         file_should_exist "data/test/mark_result.bun"
       end
-      # it "should create the expected marks in the new file" do
-      include_examples "match with variable data", "mark_result_after", DESCRIBE_PATTERNS
+      it "should create the expected marks in the new file" do
+        "mark_result_after".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
       it "should have leave the existing file unchanged" do
         Bun.readfile("output/mark_source_after").chomp.should ==
         Bun.readfile('output/mark_source_before').chomp
@@ -446,10 +448,12 @@ describe Bun::Bot do
         exec "bun describe data/test/mark_source.bun >output/mark_source_after"
         exec "bun describe output/mark_result.bun >output/mark_result_after"
       end
-      # it "should have the expected input" do
-      include_examples "match with variable data", "mark_source_before", DESCRIBE_PATTERNS
-      # it "should create the expected marks on STDOUT" do
-      include_examples "match with variable data", "mark_result_after", DESCRIBE_PATTERNS
+      it "should have the expected input" do
+        "mark_source_before".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
+      it "should create the expected marks on STDOUT" do
+        "mark_result_after".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
       it "should have leave the existing file unchanged" do
         Bun.readfile("output/mark_source_after").chomp.should ==
         Bun.readfile('output/mark_source_before').chomp
@@ -473,13 +477,15 @@ describe Bun::Bot do
         exec "bun describe data/test/mark_source.bun >output/mark_source_after"
         exec "bun describe data/test/mark_result.bun >output/mark_result_after"
       end
-      # it "should have the expected input" do
-      include_examples "match with variable data", "mark_source_before", DESCRIBE_PATTERNS
+      it "should have the expected input" do
+        "mark_source_before".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
       it "should create the new file" do
         file_should_exist "data/test/mark_result.bun"
       end
-      # it "should create the expected marks in the new file" do
-      include_examples "match with variable data", "mark_result_after", DESCRIBE_PATTERNS
+      it "should create the expected marks in the new file" do
+        "mark_result_after".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
       it "should have leave the existing file unchanged" do
         Bun.readfile("output/mark_source_after").chomp.should ==
         Bun.readfile('output/mark_source_before').chomp
