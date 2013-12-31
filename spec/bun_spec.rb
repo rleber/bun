@@ -330,13 +330,14 @@ describe Bun::Bot do
                      "data/test/clean", 
                      "scrub"
   end
-  describe "check" do
-    include_examples "command", "check clean file", "check data/test/clean", "check_clean"
-    include_examples "command from STDIN", "check clean file", "check -", "data/test/clean",
-                     "check_clean"
+
+  describe "examine" do
+    include_examples "command", "check clean file", "examine -t clean data/test/clean", "check_clean"
+    include_examples "command from STDIN", "check clean file from STDIN", 
+        "examine -t clean -", "data/test/clean", "check_clean"
     
     # Dirty file is just the packed version of ar119.1801
-    include_examples "command", "check dirty file", "check data/test/dirty", "check_dirty",
+    include_examples "command", "check dirty file", "examine -t clean data/test/dirty", "check_dirty",
                      :allowed=>[1]
   end
     
@@ -509,9 +510,11 @@ describe Bun::Bot do
                      "ls_ldr_ar145.2699"
     include_examples "command", "ls with glob", "ls #{TEST_ARCHIVE}/ar08*", "ls_glob"
   end
+
   describe "readme" do
     include_examples "command", "readme", "readme", "doc/readme.md"
   end
+
   describe "decode" do
     context "with text file" do
       before :all do
@@ -581,7 +584,8 @@ describe Bun::Bot do
       end
     end
   end
-  context "bun dump" do
+
+  describe "dump" do
     include_examples "command", 
                      "dump ar003.0698", 
                      "dump #{TEST_ARCHIVE}/ar003.0698.bun", 
@@ -604,7 +608,8 @@ describe Bun::Bot do
                      "#{TEST_ARCHIVE}/ar003.0698.bun", 
                      "dump_stdin_ar003.0698"
   end
-  context "bun freezer" do
+
+  describe "freezer" do
     context "ls" do
       include_examples "command", 
                        "freezer ls ar004.0888", 
@@ -636,7 +641,8 @@ describe Bun::Bot do
                        "freezer_dump_stdin_ar004.0888_0"
     end
   end
-  context "bun catalog" do
+
+  describe "catalog" do
     before :all do
       exec("rm -rf data/test/archive/catalog_source")
       exec("cp -r data/test/archive/catalog_source_init data/test/archive/catalog_source")
@@ -664,7 +670,8 @@ describe Bun::Bot do
       exec("rm -f output/archive_catalog_files.txt")
     end
   end
-  context "bun archive decode" do
+
+  describe "archive decode" do
     before :all do
       exec("rm -rf data/test/archive/decode_source")
       exec("rm -rf data/test/archive/decode_library")
@@ -695,7 +702,8 @@ describe Bun::Bot do
       exec("rm -f output/archive_decode_files.txt")
     end
   end
-  context "bun library compact" do
+
+  describe "library compact" do
     before :each do
       exec("rm -rf data/test/archive/compact_files")
       exec("rm -rf data/test/archive/compact_result")
