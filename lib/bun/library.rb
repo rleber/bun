@@ -46,7 +46,7 @@ module Bun
             end
     end
     
-    def put(to, options={})
+    def bake(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
       FileUtils.rm_rf to_path unless options[:dryrun]
       leaves.each do |leaf|
@@ -56,7 +56,7 @@ module Bun
         unless options[:dryrun]
           to_file = File.join(to,relative_leaf)
           file = File::Decoded.open(leaf)
-          file.put(to_file)
+          file.bake(to_file)
         end
       end
     end

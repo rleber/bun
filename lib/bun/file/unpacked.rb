@@ -327,9 +327,11 @@ module Bun
       def write(to=nil)
         to ||= tape_path
         shell = Shell.new
+        output = to_yaml
         shell.write to, to_yaml
+        output
       end
-      
+
       def unpack
         self
       end

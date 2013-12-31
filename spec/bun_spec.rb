@@ -674,13 +674,13 @@ describe Bun::Bot do
   describe "archive decode" do
     before :all do
       exec("rm -rf data/test/archive/decode_source")
-      exec("rm -rf data/test/archive/decode_library")
+      exec("rm -rf data/test/archive/decode_archive")
       exec("cp -r data/test/archive/decode_source_init data/test/archive/decode_source")
-      exec("bun archive decode data/test/archive/decode_source data/test/archive/decode_library \
+      exec("bun archive decode data/test/archive/decode_source data/test/archive/decode_archive \
                 2>output/archive_decode_stderr.txt >output/archive_decode_stdout.txt")
     end
     it "should create a tapes directory" do
-      file_should_exist "data/test/archive/decode_library"
+      file_should_exist "data/test/archive/decode_archive"
     end
     it "should write nothing on stdout" do
       Bun.readfile('output/archive_decode_stdout.txt').chomp.should == ""
@@ -690,25 +690,25 @@ describe Bun::Bot do
       Bun.readfile('output/test/archive_decode_stderr.txt').chomp
     end
     it "should create the appropriate files" do
-      exec('find data/test/archive/decode_library -print >output/archive_decode_files.txt')
+      exec('find data/test/archive/decode_archive -print >output/archive_decode_files.txt')
       Bun.readfile('output/archive_decode_files.txt').chomp.should ==
       Bun.readfile('output/test/archive_decode_files.txt').chomp
     end
     after :all do
       exec("rm -rf data/test/archive/decode_source")
-      exec("rm -rf data/test/archive/decode_library")
+      exec("rm -rf data/test/archive/decode_archive")
       exec("rm -f output/archive_decode_stderr.txt")
       exec("rm -f output/archive_decode_stdout.txt")
       exec("rm -f output/archive_decode_files.txt")
     end
   end
 
-  describe "library compact" do
+  describe "archive compact" do
     before :each do
       exec("rm -rf data/test/archive/compact_files")
       exec("rm -rf data/test/archive/compact_result")
       exec("cp -r data/test/archive/compact_source_init data/test/archive/compact_source")
-      exec("bun library compact data/test/archive/compact_source data/test/archive/compact_result")
+      exec("bun archive compact data/test/archive/compact_source data/test/archive/compact_result")
     end
     it "should create the results directory" do
       file_should_exist "data/test/archive/compact_result"
