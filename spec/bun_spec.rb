@@ -395,8 +395,10 @@ describe Bun::Bot do
         exec "bun mark -t \" foo : bar , named:'abc,d\\\\'ef '\" data/test/mark_source.bun"
         exec "bun describe data/test/mark_source.bun >output/mark_source_after"
       end
-      # it "should have the expected input" do
-      include_examples "match with variable data", "mark_source_before", DESCRIBE_PATTERNS
+      it "should have the expected input" do
+        "mark_source_before".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
+      # include_examples "match with variable data", "mark_source_before", DESCRIBE_PATTERNS
       # it "should create the expected marks in the existing file" do
       include_examples "match with variable data", "mark_source_after", DESCRIBE_PATTERNS
       after :all do
