@@ -353,7 +353,7 @@ describe Bun::Bot do
       before :all do
         exec("bun describe #{TEST_ARCHIVE}/ar025.0634.bun >output/describe_ar025.0634")
       end
-      it "should match the expected output" do
+      it "should match the expected output (including quoting)" do
         "describe_ar025.0634".should match_expected_output_except_for(DESCRIBE_PATTERNS)
       end
     end
