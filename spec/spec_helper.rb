@@ -44,30 +44,10 @@ RSpec::Matchers.define :match_named_pattern do |name, pattern|
   end
 end
 
-# shared_examples "match with variable data" do |fname, patterns|
-#   actual_output_file = File.join('output', fname)
-#   expected_output_file = File.join('output','test', fname)
-#   it "should create the proper file" do
-#     file_should_exist actual_output_file
-#   end
-#   it "should generate output matching each pattern" do
-#     actual_output = Bun.readfile(actual_output_file).chomp
-#     patterns.each do |key, pat|
-#       actual_output.should match_named_pattern(key, pat)
-#     end
-#   end
-#   it "should generate the proper fixed content" do
-#     actual_output = Bun.readfile(actual_output_file).chomp
-#     expected_output = Bun.readfile(expected_output_file).chomp
-#     patterns.each do |key, pat|
-#       actual_output = actual_output.sub(pat,'')
-#       expected_output = expected_output.sub(pat,'')
-#     end
-#     actual_output = actual_output.gsub!(/\n+/,"\n").chomp
-#     expected_output = expected_output.gsub!(/\n+/,"\n").chomp
-#     actual_output.should == expected_output
-#   end
-# end
+# Match text to each of a set of specified patterns (in a Hash)
+#  expected_patterns = {pat1: /a*/, pat2: /b*/, pat3: /c*/}
+#  "aaaaxbbycccz".should match_patterns(expected_patterns)
+#  Note that each specified pattern must match at least once in the actual string
 RSpec::Matchers.define :match_patterns do |patterns|
   match do |actual|
     patterns.each do |key, pat|
@@ -79,8 +59,10 @@ RSpec::Matchers.define :match_patterns do |patterns|
   end
 end
 
-
-
+# Match text, except for specified patterns (in a Hash)
+#  excluded_patterns = {pat1: /a+/, pat2: /b+/, pat3: /c+/}
+#  "aaaaxbbycccz".should match_except_for_patterns("xyz").with_patterns(excluded_patterns)
+#  Note that specified patterns need not match in either actual or expected strings
 RSpec::Matchers.define :match_except_for_patterns do |expected|
   match do |actual|
     actual_text = actual.dup
@@ -104,6 +86,10 @@ RSpec::Matchers.define :match_except_for_patterns do |expected|
   end
 end
 
+# Match text, except for specified patterns (in a Hash)
+#  excluded_patterns = {pat1: /a*/, pat2: /b*/, pat3: /c*/}
+#  "aaaaxbbycccz".should match_with_variable_data("axbycz").except_for(excluded_patterns)
+#  Note that specified patterns must match at least once in both actual and expected strings
 RSpec::Matchers.define :match_with_variable_data do |expected|
   match do |actual|
     actual.should match_patterns(@patterns)
@@ -117,6 +103,12 @@ RSpec::Matchers.define :match_with_variable_data do |expected|
   end
 end
 
+# Content of two files should match, except for excluded patterns
+#  excluded_patterns = {pat1: /a*/, pat2: /def/, pat3: /ghi/}
+#  "data/actual.txt".should
+#      match_file_with_variable_data("data/expected.txt").except_for(excluded_patterns)
+#  # Assuming data/actual.txt contains "aaaaxbbycccz"
+#  # and data/expected.txt contains "axbycz"
 RSpec::Matchers.define :match_file_with_variable_data do |expected_file|
   match do |actual_file|
     actual_output = Bun.readfile(actual_file).chomp
@@ -134,6 +126,11 @@ end
 ACTUAL_OUTPUT_FILE_PREFIX = File.join('output')
 EXPECTED_OUTPUT_FILE_PREFIX = File.join('output', 'test')
 
+# Content of two files with (matching names) should match, except for excluded patterns
+#  excluded_patterns = {pat1: /a*/, pat2: /def/, pat3: /ghi/}
+#  "actual.txt".should match_expected_output_except_for(excluded_patterns)
+#  # Assuming output/actual.txt contains "aaaaxbbycccz"
+#  #      and output/test/expected.txt contains "axbycz"
 RSpec::Matchers.define :match_expected_output_except_for do |patterns|
   match do |file|
     actual_output_file = File.join(ACTUAL_OUTPUT_FILE_PREFIX, file)

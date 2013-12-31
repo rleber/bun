@@ -126,31 +126,6 @@ UNPACK_PATTERNS = {
   :unpacked_by=>/:unpacked_by:\s+Bun version \d+\.\d+\.\d+\s+\[.*?\]\n?/, 
 }
 
-shared_examples "match with variable data" do |fname, patterns|
-  actual_output_file = File.join('output', fname)
-  expected_output_file = File.join('output','test', fname)
-  it "should create the proper file" do
-    file_should_exist actual_output_file
-  end
-  it "should generate output matching each pattern" do
-    actual_output = Bun.readfile(actual_output_file).chomp
-    patterns.each do |key, pat|
-      actual_output.should match_named_pattern(key, pat)
-    end
-  end
-  it "should generate the proper fixed content" do
-    actual_output = Bun.readfile(actual_output_file).chomp
-    expected_output = Bun.readfile(expected_output_file).chomp
-    patterns.each do |key, pat|
-      actual_output = actual_output.sub(pat,'')
-      expected_output = expected_output.sub(pat,'')
-    end
-    actual_output = actual_output.gsub!(/\n+/,"\n").chomp
-    expected_output = expected_output.gsub!(/\n+/,"\n").chomp
-    actual_output.should == expected_output
-  end
-end
-
 describe Bun::File::Text do
   include_examples "simple", "ar119.1801"
   include_examples "simple", "ar003.0698"
@@ -175,7 +150,9 @@ describe Bun::Archive do
           exec("bun unpack data/test/archive/general_test_packed/ar003.0698 - \
                     >output/unpack_ar003.0698")
         end
-        include_examples "match with variable data", "unpack_ar003.0698", UNPACK_PATTERNS
+        it "should match the expected output" do
+          "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
+        end
         after :all do
           exec("rm -f output/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
@@ -189,7 +166,9 @@ describe Bun::Archive do
                    data/test/archive/general_test_packed")
           exec("bun unpack data/test/archive/general_test_packed/ar003.0698 >output/unpack_ar003.0698")
         end
-        include_examples "match with variable data", "unpack_ar003.0698", UNPACK_PATTERNS
+        it "should match the expected output" do
+          "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
+        end
         after :all do
           exec("rm -f output/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
@@ -206,7 +185,9 @@ describe Bun::Archive do
           exec("cat data/test/archive/general_test_packed/ar003.0698 | \
                   bun unpack - >output/unpack_stdin_ar003.0698")
         end
-        include_examples "match with variable data", "unpack_stdin_ar003.0698", UNPACK_PATTERNS
+        it "should match the expected output" do
+          "unpack_stdin_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
+        end
         after :all do
           exec("rm -f output/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
@@ -221,7 +202,9 @@ describe Bun::Archive do
           exec("cat data/test/archive/general_test_packed/ar003.0698 | \
                   bun unpack -t ar003.0698 - >output/unpack_ar003.0698")
         end
-        include_examples "match with variable data", "unpack_ar003.0698", UNPACK_PATTERNS
+        it "should match the expected output" do
+          "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
+        end
         after :all do
           exec("rm -f output/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
@@ -235,7 +218,9 @@ describe Bun::Archive do
         exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
         exec("bun unpack data/test/archive/general_test_packed/ar003.0698 output/unpack_ar003.0698")
       end
-      include_examples "match with variable data", "unpack_ar003.0698", UNPACK_PATTERNS
+      it "should match the expected output" do
+        "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
+      end
       after :all do
         exec("rm -f output/unpack_ar003.0698")
         exec("rm -rf data/test/archive/general_test_packed")
@@ -248,13 +233,16 @@ describe Bun::Archive do
         exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
         exec("bun unpack data/test/archive/general_test_packed/ar019.0175 output/unpack_ar019.0175")
       end
-      include_examples "match with variable data", "unpack_ar019.0175", UNPACK_PATTERNS
+      it "should match the expected output" do
+        "unpack_ar019.0175".should match_expected_output_except_for(UNPACK_PATTERNS)
+      end
       after :all do
         exec("rm -f output/unpack_ar019.0175")
         exec("rm -rf data/test/archive/general_test_packed")
       end
     end
   end
+  
   context "bun archive unpack" do
     before :all do
       exec("rm -rf data/test/archive/general_test_packed_unpacked")
@@ -357,13 +345,17 @@ describe Bun::Bot do
       before :all do
         exec("bun describe #{TEST_ARCHIVE}/ar003.0698.bun >output/describe_ar003.0698")
       end
-      include_examples "match with variable data", "describe_ar003.0698", DESCRIBE_PATTERNS
+      it "should match the expected output" do
+        "describe_ar003.0698".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
     end
     describe "with frozen file" do
       before :all do
         exec("bun describe #{TEST_ARCHIVE}/ar025.0634.bun >output/describe_ar025.0634")
       end
-      include_examples "match with variable data", "describe_ar025.0634", DESCRIBE_PATTERNS
+      it "should match the expected output" do
+        "describe_ar025.0634".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
     end
   
     context "functioning outside the base directory" do
@@ -523,7 +515,9 @@ describe Bun::Bot do
         exec("bun decode #{TEST_ARCHIVE}/ar003.0698.bun \
                   >output/decode_ar003.0698")
       end
-      include_examples "match with variable data", "decode_ar003.0698", DECODE_PATTERNS
+      it "should match the expected output" do
+        "decode_ar003.0698".should match_expected_output_except_for(DECODE_PATTERNS)
+      end
       after :all do
         exec("rm -f output/decode_ar003.0698")
       end
@@ -534,7 +528,9 @@ describe Bun::Bot do
         exec("cat #{TEST_ARCHIVE}/ar003.0698.bun | bun decode - \
                   >output/decode_ar003.0698")
       end
-      include_examples "match with variable data", "decode_ar003.0698", DECODE_PATTERNS
+      it "should match the expected output" do
+        "decode_ar003.0698".should match_expected_output_except_for(DECODE_PATTERNS)
+      end
       after :all do
         exec("rm -f output/decode_ar003.0698")
       end
@@ -546,7 +542,9 @@ describe Bun::Bot do
           exec("bun decode -s +0 #{TEST_ARCHIVE}/ar004.0888.bun \
                     >output/decode_ar004.0888_0")
         end
-        include_examples "match with variable data", "decode_ar004.0888_0", DECODE_PATTERNS
+        it "should match the expected output" do
+          "decode_ar004.0888_0".should match_expected_output_except_for(DECODE_PATTERNS)
+        end
         after :all do
           exec("rm -f output/decode_ar004.0888_0")
         end
@@ -557,7 +555,9 @@ describe Bun::Bot do
           exec("bun decode #{TEST_ARCHIVE}/ar004.0888.bun[+0] \
                     >output/decode_ar004.0888_0")
         end
-        include_examples "match with variable data", "decode_ar004.0888_0", DECODE_PATTERNS
+        it "should match the expected output" do
+          "decode_ar004.0888_0".should match_expected_output_except_for(DECODE_PATTERNS)
+        end
         after :all do
           exec("rm -f output/decode_ar004.0888_0")
         end
@@ -568,7 +568,9 @@ describe Bun::Bot do
           exec("bun decode #{TEST_ARCHIVE}/ar004.0888.bun[fasshole] \
                     >output/decode_ar004.0888_0")
         end
-        include_examples "match with variable data", "decode_ar004.0888_0", DECODE_PATTERNS
+        it "should match the expected output" do
+          "decode_ar004.0888_0".should match_expected_output_except_for(DECODE_PATTERNS)
+        end
         after :all do
           exec("rm -f output/decode_ar004.0888_0")
         end
