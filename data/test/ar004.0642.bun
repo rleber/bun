@@ -5,9 +5,10 @@
 :tape: ar004.0642
 :owner: fass
 :path: fass/script
+:digest: b97094d97fa4394b14a920b67a898e3d
 :data_format: :raw
-:unpack_time: 2013-12-29 21:59:13.109628000 -05:00
-:unpacked_by: Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
+:unpack_time: 2013-12-30 17:26:13.611608000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:a0d570894c9e9c8bfb309e88e90894105335d7a0]
 :content: !binary |-
   AABA8WAABAAXAAEAKCCRHVG9CRHVG9AAAAAAAAAADcMxhOZzAAAAAAAAAAAA
   AAAAAAF5zMZyNJwOggNZsNJzOhlMggMxpNxhNggMZvOB5EBvMwgMxhOZzEAn

@@ -5,9 +5,10 @@
 :tape: ar103.1065
 :owner: jagardner
 :path: fassmac.t
+:digest: 8b39c8d1c62a043577797bc5b433be6d
 :data_format: :raw
-:unpack_time: 2013-12-29 21:59:44.693927000 -05:00
-:unpacked_by: Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
+:unpack_time: 2013-12-30 17:26:33.715138000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:a0d570894c9e9c8bfb309e88e90894105335d7a0]
 :content: !binary |-
   AABAeOAABAAPABnAQpCfCTkLCdqPTmAAAAAAkAAAAGNRhM5hORkNxlOQAAAA
   AAAAAAF4uFwvMxhOZzNphMYuOgAAE6AABAE/AAUAIAAAAAAAAAAAAAAAAAAA

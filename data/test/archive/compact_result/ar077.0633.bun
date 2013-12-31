@@ -5,9 +5,10 @@
 :tape: ar077.0633
 :owner: mathnoos
 :path: mathnoos/frosh/fass
+:digest: 9aafa99b25dccdc183296c99377d22d1
 :data_format: :raw
-:unpack_time: 2013-12-29 21:59:30.393210000 -05:00
-:unpacked_by: Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
+:unpack_time: 2013-12-30 17:26:25.078924000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:a0d570894c9e9c8bfb309e88e90894105335d7a0]
 :content: !binary |-
   AABAKSAABAATABNAJ5CbXPCHCbVq37AAAAAAgAAAACNphOhoNxvN5zAAAAAA
   AAAAAAF5mORvOZoF5mMJzOYgIxyN5zNAgNJzOZ1MogGI5HAyAAAABoAABAEu

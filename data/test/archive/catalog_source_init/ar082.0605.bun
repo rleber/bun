@@ -5,6 +5,7 @@
 :tape: ar082.0605
 :owner: bjeroehl
 :path: bjeroehl/fass/81script.f
+:digest: 8c8ef1d2f5b3ac52aa1cc59229707d21
 :data_format: :raw
 :shards:
 - :name: 81macros
@@ -83,8 +84,8 @@
   :start: 36113
   :size: 328
 :file_time: 1981-03-08 20:27:00.000000000 -05:00
-:unpack_time: 2013-12-29 21:59:34.962806000 -05:00
-:unpacked_by: Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
+:unpack_time: 2013-12-30 17:26:27.809151000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:a0d570894c9e9c8bfb309e88e90894105335d7a0]
 :content: !binary |-
   AABA8PAABAAQABSAJdCcEdfaCcEZC9AAAAAAgABAB3MRqMpyN5lNBsAAAAAA
   AAAAAAF5mMJzOYvHAxOZjORpOB0FxmAAAAAAAAAI5ZAAAAAPGAzF4wHAvHAx
