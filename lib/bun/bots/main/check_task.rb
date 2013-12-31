@@ -3,6 +3,7 @@
 
 # TODO add --mark option
 desc "check FILE", "Test a file for cleanness, etc."
+option 'mark', :aliases=>'-m', :type=>'boolean', :desc=>"Mark the test in the file"
 option 'test',  :aliases=>'-t', :type=>'string',  :desc=>"What test? See bun help check for options",
                 :default=>'clean'
 option 'quiet', :aliases=>'-q', :type=>'boolean', :desc=>"Quiet mode"
@@ -17,7 +18,9 @@ readability: Proportion of readable textual characters in text
 EOT
 def check(file)
   checker = Bun::File.check(file, options[:test])
-  puts checker.to_s
+  test_result = checker.to_s
+  puts test_result unless options[:quiet]
+  Bun::File::Unpacked.mark(file, {options[:test]=>test_result}) if options[:mark]
   exit checker.code
 rescue String::Check::Invalid => e
   warn "!Invalid check: #{options[:test]}" unless options[:quiet]

@@ -1,6 +1,14 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+no_tasks do
+  def push_tbl(tbl, label, value)
+    value = value.inspect if value =~ /[[:cntrl:]'"]/
+    tbl.push [label, value]
+    tbl
+  end
+end
+
 STANDARD_FIELDS = %w{description catalog_time data data_format digest
                      file_time owner path shards tape tape_size tape_type }.map{|f| f.to_sym}
 
@@ -13,22 +21,21 @@ def describe(file)
   catalog_time    = descriptor.catalog_time
   
   preamble_table = []
-  preamble_table.push ["Tape", descriptor.tape]
-  preamble_table.push [type==:frozen ? "Directory" : "File", descriptor.path]
-  preamble_table.push ["Owner", descriptor.owner]
-  preamble_table.push ["Description", descriptor.description]
-  preamble_table.push ["Catalog date", catalog_time.strftime('%Y/%m/%d')] if catalog_time
-  preamble_table.push ["File time", descriptor.file_time.strftime(TIME_FORMAT)] if type==:frozen
-  preamble_table.push ["Size (words)", descriptor.tape_size]
-  preamble_table.push ["Type", type.to_s.sub(/^./) {|c| c.upcase}]
-  preamble_table.push ["Data Format", descriptor.data_format.to_s.sub(/^./) {|c| c.upcase}]
-  preamble_table.push ["MD5 Digest", descriptor.digest.scan(/..../).join(' ')]
-
+  push_tbl preamble_table, "Tape", descriptor.tape
+  push_tbl preamble_table, type==:frozen ? "Directory" : "File", descriptor.path
+  push_tbl preamble_table, "Owner", descriptor.owner
+  push_tbl preamble_table, "Description", descriptor.description
+  push_tbl preamble_table, "Catalog date", catalog_time.strftime('%Y/%m/%d') if catalog_time
+  push_tbl preamble_table, "File time", descriptor.file_time.strftime(TIME_FORMAT) if type==:frozen
+  push_tbl preamble_table, "Size (words)", descriptor.tape_size
+  push_tbl preamble_table, "Type", type.to_s.sub(/^./) {|c| c.upcase}
+  push_tbl preamble_table, "Data Format", descriptor.data_format.to_s.sub(/^./) {|c| c.upcase}
+  push_tbl preamble_table, "MD5 Digest", descriptor.digest.scan(/..../).join(' ')
+  
   (descriptor.fields - STANDARD_FIELDS).sort_by{|f| f.to_s }.each do |f|
-    preamble_table.push [
-                          f.to_s.gsub(/_/,' ').gsub(/\b[a-z]/) {|c| c.upcase},
-                          descriptor[f.to_sym].to_s
-                        ]
+    push_tbl preamble_table,
+             f.to_s.gsub(/_/,' ').gsub(/\b[a-z]/) {|c| c.upcase},
+             descriptor[f.to_sym].to_s
   end
   
   puts preamble_table.justify_rows.map {|row| row.join('  ')}

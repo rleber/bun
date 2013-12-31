@@ -1,6 +1,6 @@
 TODO
 _High Priority_
-Add --mark option to library classify and bun check/analyze
+Test --mark option in bun check/analyze
 Create bun field -f FIELD FILE... and bun match -f FIELD -v VALUE FILE (or bun match FORMULA FILE)
 Extend bun check
     Flag whether files contain troff commands

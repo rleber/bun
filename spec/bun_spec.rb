@@ -382,6 +382,7 @@ describe Bun::Bot do
   describe "mark" do
     context "with no output file" do
       before :all do
+        exec "rm -f data/test/mark_source.bun"
         exec "cp data/test/mark_source_init.bun data/test/mark_source.bun"
         exec "bun describe data/test/mark_source.bun >output/mark_source_before"
         exec "bun mark -t \" foo : bar , named:'abc,d\\\\'ef '\" data/test/mark_source.bun"
@@ -401,6 +402,7 @@ describe Bun::Bot do
     end
     context "with an output file" do
       before :all do
+        exec "rm -f data/test/mark_source.bun"
         exec "cp data/test/mark_source_init.bun data/test/mark_source.bun"
         exec "bun describe data/test/mark_source.bun >output/mark_source_before"
         exec "rm -f data/test/mark_result.bun"
@@ -432,6 +434,7 @@ describe Bun::Bot do
     end
     context "with '-' as output file" do
       before :all do
+        exec "rm -f data/test/mark_source.bun"
         exec "cp data/test/mark_source_init.bun data/test/mark_source.bun"
         exec "bun describe data/test/mark_source.bun >output/mark_source_before"
         exec "rm -f output/mark_result.bun"
@@ -460,6 +463,7 @@ describe Bun::Bot do
     end
     context "with '-' as input file" do
       before :all do
+        exec "rm -f data/test/mark_source.bun"
         exec "cp data/test/mark_source_init.bun data/test/mark_source.bun"
         exec "bun describe data/test/mark_source.bun >output/mark_source_before"
         exec "rm -f data/test/mark_result.bun"
