@@ -24,6 +24,7 @@ module Bun
         else
           cache_stdin
         end
+        stop "!File #{path} does not exist" unless File.exists?(path)
         ::File.read(path, *args)
       end
       
@@ -48,12 +49,8 @@ module Bun
       #   Bun.readfile(path).control_character_counts
       # end
       
-      def check(path, test)
-        read(path).check(test)
-      end
-      
-      def analyze(path, analysis)
-        read(path).analyze(analysis)
+      def examination(path, analysis)
+        read(path).examination(analysis)
       end
   
       def descriptor(options={})

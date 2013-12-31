@@ -1,17 +1,20 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-# Base classes to define checks on strings
+# Base classes to define analyses on strings (e.g. counting kinds of characters)
+
+require 'lib/string_examination/base'
 
 class String
-  class Analysis
-    class Base
+  class Examination
+    class AnalysisBase < Base
       attr_accessor :string
       attr_accessor :patterns
     
       def initialize(string, patterns=[/./])
-        @string = string
         @patterns = patterns
+        super(string)
+        @code = nil
       end
   
       def counts
@@ -28,7 +31,7 @@ class String
         cts
       end
   
-      def character_class_counts
+      def count_hash
         cts = counts
         cts.inject({}) do |hsh, entry|
           hsh[entry[:characters].keys.sort.join] = entry[:count]

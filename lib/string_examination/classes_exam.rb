@@ -1,12 +1,15 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-# Classes to define analysis of major classes of characters
+# Count major classes of characters (e.g. text, digits, punctuation)
+
+require 'lib/string_examination/character_class'
 
 class String
-  class Analysis
+  class Examination
     class Classes < CharacterClass
       
+      # TODO Refactor using POSIX classes, e.g. /[[:digit:]]/
       TEXT_CHARACTERS = 'a-zA-Z'
       DIGITS = '0-9'
       PUNCTUATION_CHARACTERS = '\.,(){}\[\]:;\-\'"! \\\\#$%&*+/<=>?@^_`|~'
@@ -19,7 +22,7 @@ class String
         other: /[^#{TEXT_CHARACTERS}#{DIGITS}#{PUNCTUATION_CHARACTERS}#{VALID_CONTROL_CHARACTERS}]/,
       }
       
-      def description
+      def self.description
         "Count major classes of characters"
       end
     end

@@ -1,17 +1,22 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-# Base classes to define checks on strings
+# Check: does data contain overstrikes (i.e. backspaces)?
+
+require 'lib/string_examination/boolean'
 
 class String
-  class Check
+  class Examination
     class Overstruck < Boolean
+      def self.description
+        "Does data contain backspaces?"
+      end
       
       def labels
         [:overstruck, :not_overstruck]
       end
       
-      def okay?
+      def true?
         string.overstruck?
       end
     end

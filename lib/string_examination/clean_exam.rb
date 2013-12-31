@@ -3,15 +3,21 @@
 
 # Check if string is all readable characters
 
+require 'lib/string_examination/boolean'
+
 class String
-  class Check
+  class Examination
     class Clean < Boolean
+
+      def self.description
+        "Test if data contains unreadable characters"
+      end
       
       def labels
         [:clean, :dirty]
       end
       
-      def okay?
+      def true?
         string.clean?
       end
     end

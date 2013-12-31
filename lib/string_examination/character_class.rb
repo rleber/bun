@@ -1,13 +1,15 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-# Abstract base classes for counting classes of characters
+# Abstract base class for counting classes of characters
+
+require 'lib/string_examination/analysis_base'
 
 class String
-  class Analysis
+  class Examination
     # Abstract base class
     # Subclasses need to define patterns
-    class CharacterClass < Base
+    class CharacterClass < AnalysisBase
       
       def pattern_hash
         self.class.const_get('PATTERN_HASH')
@@ -35,22 +37,34 @@ class String
         end
       end
       
-      def data_table
+      def analysis
         counts.reject {|row| row[:count] == 0 }
         .sort_by{|row| -row[:count]}
       end
       
-      # This can be overridden in subclasses
+      # These format methods can be overridden in subclasses
+      def format_category(row)
+        row[:category].to_s.gsub(/non_/i,'non-').gsub('_',' ').titleize
+      end
+      
+      def format_character_set(row)
+        row[:characters].keys.join.character_set
+      end
+      
+      def format_count(row)
+        row[:count].to_s
+      end
+      
       def format_row(row)
         [
-          row[:category].to_s.gsub(/non_/i,'non-').gsub('_',' ').titleize,
-          row[:characters].keys.join.character_set,
-          row[:count].to_s
+          format_category(row),
+          format_character_set(row),
+          format_count(row)
         ]
       end
       
       def formatted_table
-        [fields] + data_table.map {|row| format_row(row) }
+        [fields] + analysis.map {|row| format_row(row) }
       end
       
       def justified

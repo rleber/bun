@@ -1,17 +1,22 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-# Base classes to define checks on strings
+# Check: does data contain tabs?
+
+require 'lib/string_examination/boolean'
 
 class String
-  class Check
+  class Examination
     class Tabbed < Boolean
+      def self.description
+        "Does data contain tabs?"
+      end
       
       def labels
         [:tabs, :no_tabs]
       end
       
-      def okay?
+      def true?
         string.tabbed?
       end
     end

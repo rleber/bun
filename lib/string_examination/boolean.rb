@@ -3,14 +3,22 @@
 
 # Abstract base class for boolean checks
 
+require 'lib/string_examination/base'
+
 class String
-  class Check
+  class Examination
     class Boolean < Base
       
-      # Subclasses should define labels, boolean?
+      def labels
+        missing_method :labels
+      end
       
-      def check
-        if okay?
+      def true?
+        missing_method :true
+      end
+      
+      def analysis
+        if true?
           res = labels[0]
           @code = 0
         else

@@ -10,7 +10,7 @@ class String
     self.inspect[1..-2]
   end
   
-  class Analysis; end # Defined elsewhere
+  class Examination; end # Defined elsewhere
   
   VALID_CONTROL_CHARACTER_HASH = {
     line_feed:       "\n", 
@@ -54,42 +54,35 @@ class String
       VALID_CHARACTER_REGEXP
     end
 
-    # TODO Refactor this, using a String::Check class?
-    CHECK_TESTS = {
-      tabbed: {
-        options: [:tabs, :no_tabs],
-        description: "File contains tabs",
-        test: lambda {|text| text.tabbed? ? :tabs : :no_tabs }
-      },
-      overstruck: {
-        options: [:tabs, :no_tabs],
-        description: "File contains backspaces",
-        test: lambda {|text| text.overstruck? ? :overstruck : :not_overstruck }
-      },
-      
-    }
+    # CHECK_TESTS = {
+    #   tabbed: {
+    #     options: [:tabs, :no_tabs],
+    #     description: "File contains tabs",
+    #     test: lambda {|text| text.tabbed? ? :tabs : :no_tabs }
+    #   },
+    #   overstruck: {
+    #     options: [:tabs, :no_tabs],
+    #     description: "File contains backspaces",
+    #     test: lambda {|text| text.overstruck? ? :overstruck : :not_overstruck }
+    #   },
+    #   
+    # }
     
   end
 
   
-  def readable_proportion
+  def legibility
     String::Check(self, :readability)
   end
   
   def counts(*character_sets)
-    counter = String::Analysis::Base.new(self, character_sets)
+    counter = String::Examination::Base.new(self, character_sets)
     counter.counts
   end
   
-  def character_class_counts(*character_sets)
-    counter = String::Analysis::Base.new(self, character_sets)
+  def count_hash(*character_sets)
+    counter = String::Examination::Base.new(self, character_sets)
     counter.character_counts
-  end
-  
-  def analyze(analysis)
-    analyzer = String::Analysis.create(analysis)
-    analyzer.string = self
-    analyzer
   end
 
   def clean?
@@ -97,24 +90,24 @@ class String
   end
   
   def tabbed?
-    self.force_encoding('ascii-8bit') =~ /\t/
+    self.force_encoding('ascii-8bit') =~ /\x9/
   end
   
   def overstruck?
-    self.force_encoding('ascii-8bit') =~ /\b/
+    self.force_encoding('ascii-8bit') =~ /\x8/
   end
   
-  def check(test)
-    checker = String::Check.create(test)
-    checker.string = self
-    checker
+  def examination(analysis)
+    examiner = String::Examination.create(analysis)
+    examiner.string = self
+    examiner
   end
   
   def titleize
     split(/(\W)/).map(&:capitalize).join
   end
   
-  def character_set
+  def character_set(options={})
     chars = self.dup.force_encoding('ascii-8bit').split(//).sort.uniq
     runs = [""]
     last_asc = -999
@@ -140,13 +133,23 @@ class String
       last_asc = ch_asc
       last_runnable = ch_runnable
     end
-    '[' + runs.join.inspect[1..-2].gsub('/','\/').gsub('\\\\-', '\\-') + ']'
+    runs_string = runs.join
+    runs_string = '-' if runs_string == "\\-"
+    runs_output = runs_string.inspect
+    if runs_string.size > 1 || !options[:single_as_string]
+      runs_output = '[' + runs_output[1..-2].gsub('/','\/').gsub('\\\\-', '\\-') + ']'
+    end
+    runs_output
   end
   
   def digest
     Digest::MD5.hexdigest(self).inspect[1..-2] # Inspect prevents YAML from treating this as binary
   end
+  
+  def freeze_for_thor
+    self.gsub("\n","\x5").gsub(' ',"\177")
+  end
+  
 end
 
-require 'lib/string_analysis'
-require 'lib/string_check'
+require 'lib/string_examination'
