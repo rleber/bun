@@ -103,6 +103,8 @@ class String
     examiner
   end
   
+  
+  
   def titleize
     split(/(\W)/).map(&:capitalize).join
   end

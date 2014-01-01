@@ -1,14 +1,17 @@
 ---
+:identifier: Bun
+:catalog_time: 1977-12-01 00:00:00.000000000 -05:00
+:data_format: :raw
 :description: ''
-:tape_size: 3854
-:tape_type: :text
-:tape: ar009.2622
+:digest: a6e077ed3b80a8cc071cb71a34066a33
+:file_grade: :unpacked
 :owner: fass
 :path: fass/sequence
-:digest: a6e077ed3b80a8cc071cb71a34066a33
-:data_format: :raw
-:unpack_time: 2013-12-30 17:26:14.084961000 -05:00
-:unpacked_by: Bun version 0.1.0 [feature/mark_option:a0d570894c9e9c8bfb309e88e90894105335d7a0]
+:tape: ar009.2622
+:tape_size: 3854
+:tape_type: :text
+:unpack_time: 2014-01-01 13:42:45.057084000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:54b05429a6e4072958854a557f2e530c2e4c76e9]
 :content: !binary |-
   AABA8NAABAAOAAJAo+CSjzPOCSjzPOAAAAAAAAAAASMxhOZzAAAAAAAAAAAA
   AAAAAAF5zMpxOplNxjMoAAAAAABAExAAUAIAAAAAAAAAAAAAAAAAAAAAAAAA

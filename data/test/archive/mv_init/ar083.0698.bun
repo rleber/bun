@@ -1,14 +1,16 @@
 ---
+:identifier: Bun
+:data_format: :raw
 :description: ==> TROFF source for FASS 1983 Programme
-:tape_size: 1627
-:tape_type: :text
-:tape: ar083.0698
+:digest: 0546b1c1e32e05c88e9e6ca561aaddfa
+:file_grade: :unpacked
 :owner: fass
 :path: fass/1983/programme/actors
-:data_format: :raw
-:unpack_time: 2013-12-30 17:26:28.621639000 -05:00
-:unpacked_by: Bun version 0.1.0 [feature/mark_option:a0d570894c9e9c8bfb309e88e90894105335d7a0]
-:catalog_time: 1983-01-28 00:00:00.000000000 -05:00
+:tape: ar083.0698
+:tape_size: 1627
+:tape_type: :text
+:unpack_time: 2014-01-01 13:43:17.486195000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:54b05429a6e4072958854a557f2e530c2e4c76e9]
 :content: !binary |-
   AABAZaAABAAbABTAK6CcRRCsCcQjBJAAAAAAgAAAAFMxhOZzAAAAAAAAAAAA
   AAAAAAF4xHI4GYvOByN5nORhNptMovMJjOhvORzEA9Ho+EBUKRPIxGEBzN51

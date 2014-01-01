@@ -12,12 +12,13 @@ class String
     class << self
       def exam_class(analysis)
         class_name = analysis.to_s.titleize
+        raise Invalid, "Bad analysis: #{analysis.inspect}" if class_name == ''
         const_defined?(class_name) ? const_get(class_name) : nil
       end
       
       def create(analysis, string='')
         klass = exam_class(analysis)
-        raise Invalid, "Check class not defined: #{class_name}" unless klass
+        raise Invalid, "Examination class not defined: #{class_name}" unless klass
         klass.new(string)
       end
       

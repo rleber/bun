@@ -1,11 +1,17 @@
 ---
+:identifier: Bun
+:data_format: :raw
 :description: ''
-:tape_size: 36457
-:tape_type: :frozen
-:tape: ar082.0605
+:digest: 8c8ef1d2f5b3ac52aa1cc59229707d21
+:file_grade: :unpacked
+:file_time: 1981-03-08 20:27:00.000000000 -05:00
 :owner: bjeroehl
 :path: bjeroehl/fass/81script.f
-:data_format: :raw
+:tape: ar082.0605
+:tape_size: 36457
+:tape_type: :frozen
+:unpack_time: 2014-01-01 13:43:16.093508000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:54b05429a6e4072958854a557f2e530c2e4c76e9]
 :shards:
 - :name: 81macros
   :file_time: 1981-01-05 15:43:56.000000000 -05:00
@@ -82,10 +88,6 @@
   :blocks: 0
   :start: 36113
   :size: 328
-:file_time: 1981-03-08 20:27:00.000000000 -05:00
-:unpack_time: 2013-12-30 17:26:27.809151000 -05:00
-:unpacked_by: Bun version 0.1.0 [feature/mark_option:a0d570894c9e9c8bfb309e88e90894105335d7a0]
-:catalog_time: 1982-12-22 00:00:00.000000000 -05:00
 :content: !binary |-
   AABA8PAABAAQABSAJdCcEdfaCcEZC9AAAAAAgABAB3MRqMpyN5lNBsAAAAAA
   AAAAAAF5mMJzOYvHAxOZjORpOB0FxmAAAAAAAAAI5ZAAAAAPGAzF4wHAvHAx

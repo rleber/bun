@@ -17,22 +17,5 @@ on the outcome of the tests. For instance, if the "clean" test is specified (--t
 the files are classified into two directories: TO/clean and TO/dirty.
 EOT
 def classify(from, to=nil)
-  no_move = options[:dryrun] || !to
-  threshold = options[:threshold] || DEFAULT_THRESHOLD
-  library = Library.new(from)
-  shell = Shell.new(:dryrun=>no_move)
-  shell.rm_rf(to) if to && File.exists?(to)
-  command = options[:copy] ? :cp : :ln_s
-
-  Dir.glob(File.join(from,'**','*')).each do |old_file|
-    next if File.directory?(old_file)
-    f = old_file.sub(/^#{Regexp.escape(from)}\//, '')
-    status = Bun::File::Decoded.check(old_file, options[:test])
-    warn "#{f} is #{status}" unless options[:quiet]
-    unless no_move
-      new_file = File.join(to, status.to_s, f)
-      shell.mkdir_p File.dirname(new_file)
-      shell.invoke command, old_file, new_file
-    end
-  end
+  Archive.classify(from, to, options)
 end

@@ -1,12 +1,18 @@
 ---
+:identifier: Bun
+:catalog_time: 1978-04-11 00:00:00.000000000 -05:00
+:data_format: :raw
 :description: ==> frozen fass 1978 script and accessories
-:tape_size: 45351
-:tape_type: :frozen
-:tape: ar013.0560
+:digest: 457693822ed69efc2a260c32386def39
+:file_grade: :unpacked
+:file_time: 1978-03-14 14:41:06.000000000 -05:00
 :owner: fass
 :path: fass/scripfrz
-:digest: 457693822ed69efc2a260c32386def39
-:data_format: :raw
+:tape: ar013.0560
+:tape_size: 45351
+:tape_type: :frozen
+:unpack_time: 2014-01-01 13:42:48.298619000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:54b05429a6e4072958854a557f2e530c2e4c76e9]
 :shards:
 - :name: 1-1
   :file_time: 1978-03-01 11:50:49.000000000 -05:00
@@ -88,9 +94,6 @@
   :blocks: 0
   :start: 45195
   :size: 131
-:file_time: 1978-03-14 14:41:06.000000000 -05:00
-:unpack_time: 2013-12-30 17:26:15.290833000 -05:00
-:unpacked_by: Bun version 0.1.0 [feature/mark_option:a0d570894c9e9c8bfb309e88e90894105335d7a0]
 :content: !binary |-
   AABA8YAABAAZAANAIwCTOzbLCTOzbLAAAAAAAABACOMxhOZzAAAAAAAAAAAA
   AAAAAAF5zMZyNJwMxyPQgHo9HwgMxyN56MpuEBmMJzOYgGI5G44EBzMZyNJw

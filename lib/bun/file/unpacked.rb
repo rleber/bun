@@ -306,12 +306,27 @@ module Bun
         descriptor.file_time
       end
       
+      BUN_IDENTIFIER = "Bun"
+      
       def to_hash(options={})
-        hash = descriptor.to_hash.merge(:content=>data.data)
-        hash.delete(:data)
-        # hash[:digest] = hash[:digest].inspect[1..-2] if hash[:digest]
+        # Note: This is set up to include fields in a particular order:
+        #  1. :identifier
+        #  2. Other fields, in sorted key order:
+        #    a. Descriptor fields (except :data), in sorted key order
+        #    b. :digest
+        #    c. All other fields specified in options
+        #  6. :shards
+        #  7. :content
+        content = options.delete(:content)
+        content ||= data.data
+        fields = descriptor.to_hash
+        fields.delete(:data)
+        fields.delete(:shards)
+        file_grade = options.delete(:file_grade)
+        fields[:file_grade] = file_grade || :unpacked
+        fields[:digest]  = content.digest
         if tape_type == :frozen
-          hash[:shards] = shard_descriptors.map do |d|
+          shards = shard_descriptors.map do |d|
             {
               :name      => d.name,
               :file_time => d.file_time,
@@ -320,12 +335,19 @@ module Bun
               :size      => d[:size], # Need to do it this way, because d.size is the builtin
             }
           end
+        else
+          options.delete(:shard)
+          options.delete(:shards)
         end
+        fields.merge!(options)
+        hash = {identifier: BUN_IDENTIFIER}.merge(fields.symbolized_keys.sorted)
+        hash[:shards] = shards if shards
+        hash[:content] = content
         hash
       end
       
-      def to_yaml
-        to_hash.to_yaml
+      def to_yaml(options={})
+        to_hash(options).to_yaml
       end
       
       def write(to=nil)
@@ -346,18 +368,21 @@ module Bun
       end
       
       def to_decoded_hash(options={})
-        content = decoded_text(options)
-        descriptor.to_hash.merge(
-          content:     content,
-          data_format: :unpacked,
-          decode_time: Time.now,
-          decoded_by:  Bun.expanded_version,
-          digest:      content.digest,
-        )
+        options = options.merge(
+                    content: decoded_text(options), 
+                    file_grade: :decoded,
+                    decode_time: Time.now,
+                    decoded_by:  Bun.expanded_version
+                  )
+        to_hash(options)
+      end
+      
+      def to_decoded_yaml(options={})
+        to_decoded_hash(options).to_yaml
       end
 
       def decode(to, options={})
-        Shell.new.write(to,to_decoded_hash(options).to_yaml)
+        Shell.new.write(to,to_decoded_yaml(options))
       end
 
       def method_missing(meth, *args, &blk)

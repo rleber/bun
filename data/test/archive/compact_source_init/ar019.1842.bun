@@ -1,12 +1,18 @@
 ---
+:identifier: Bun
+:catalog_time: 1978-11-20 00:00:00.000000000 -05:00
+:data_format: :raw
 :description: Total Eclipse Episode 6 - Fixed-Up Version
-:tape_size: 7227
-:tape_type: :frozen
-:tape: ar019.1842
+:digest: 92b0c92f1c3e061baa32bfc1cacda4f9
+:file_grade: :unpacked
+:file_time: 1978-11-20 10:22:31.000000000 -05:00
 :owner: fass
 :path: fass/totleclips.f
-:digest: 92b0c92f1c3e061baa32bfc1cacda4f9
-:data_format: :raw
+:tape: ar019.1842
+:tape_size: 7227
+:tape_type: :frozen
+:unpack_time: 2014-01-01 13:42:49.896628000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:54b05429a6e4072958854a557f2e530c2e4c76e9]
 :shards:
 - :name: eclipse
   :file_time: 1978-11-20 10:22:31.000000000 -05:00
@@ -23,9 +29,6 @@
   :blocks: 2
   :start: 6774
   :size: 427
-:file_time: 1978-11-20 10:22:31.000000000 -05:00
-:unpack_time: 2013-12-30 17:26:15.899205000 -05:00
-:unpacked_by: Bun version 0.1.0 [feature/mark_option:a0d570894c9e9c8bfb309e88e90894105335d7a0]
 :content: !binary |-
   AABA8ZAABAAaAATAcyCUYTAMCUYTAMAAAAAAAABAAXMxhOZzAAAAAAAAAAAA
   AAAAAAF50N50NhlMZsNJwOYuMwgKhvOhhNggIpjNhpOBzMogIpwNJzN5kMog

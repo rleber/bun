@@ -1,14 +1,17 @@
 ---
+:identifier: Bun
+:catalog_time: 1985-12-20 00:00:00.000000000 -05:00
+:data_format: :raw
 :description: ''
-:tape_size: 2255
-:tape_type: :text
-:tape: ar126.0345
+:digest: 21844c898d916c99eed664bf049b1501
+:file_grade: :unpacked
 :owner: jagardner
 :path: fassmac.t
-:digest: 21844c898d916c99eed664bf049b1501
-:data_format: :raw
-:unpack_time: 2013-12-30 17:26:42.237666000 -05:00
-:unpacked_by: Bun version 0.1.0 [feature/mark_option:a0d570894c9e9c8bfb309e88e90894105335d7a0]
+:tape: ar126.0345
+:tape_size: 2255
+:tape_type: :text
+:unpack_time: 2014-01-01 13:43:45.922479000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:54b05429a6e4072958854a557f2e530c2e4c76e9]
 :content: !binary |-
   AABAjOAABAAPAB+AFZCjQPUeChs+W1AAAAAAgAAAAHNRhM5hORkNxlOQAAAA
   AAAAAAF4uFwvMxhOZzNphMYuOgAAE1AABAE/AAUAIAAAAAAAAAAAAAAAAAAA

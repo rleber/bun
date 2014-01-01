@@ -1,14 +1,17 @@
 ---
+:identifier: Bun
+:catalog_time: 1985-05-03 00:00:00.000000000 -04:00
+:data_format: :raw
 :description: FASS blurb
-:tape_size: 977
-:tape_type: :text
-:tape: ar116.1647
+:digest: 9f0ce90b1085c17d614d7af50423751a
+:file_grade: :unpacked
 :owner: mathnoos
 :path: mathnoos/frosh/fass
-:digest: 9f0ce90b1085c17d614d7af50423751a
-:data_format: :raw
-:unpack_time: 2013-12-30 17:26:37.515833000 -05:00
-:unpacked_by: Bun version 0.1.0 [feature/mark_option:a0d570894c9e9c8bfb309e88e90894105335d7a0]
+:tape: ar116.1647
+:tape_size: 977
+:tape_type: :text
+:unpack_time: 2014-01-01 13:43:36.124937000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:54b05429a6e4072958854a557f2e530c2e4c76e9]
 :content: !binary |-
   AABAPQAABAARAB0AZvChKGIQCgg90zAAAAAAkAAAADNphOhoNxvN5zAAAAAA
   AAAAAAF5mORvOZoF5mMJzOYgIxBKZTEBiNh1ORiAAAAABAE7AAUAIAAAAAAA

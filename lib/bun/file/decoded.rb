@@ -20,9 +20,9 @@ module Bun
           @descriptor = Hashie::Mash.new(input)
         end
         
-        def check(path, test)
+        def examination(path, test)
           f = open(path)
-          f.check(test)
+          f.examination(test)
         end
     
         # Output the ASCII content of a file
@@ -42,8 +42,8 @@ module Bun
         data
       end
 
-      def check(test)
-        data.check(test)
+      def examination(test)
+        data.examination(test)
       end
     end
   end
