@@ -285,7 +285,7 @@ module Bun
         content = shards.at(shard_index(options[:shard]))
       end
       
-      def to_hash(options=[])
+      def to_decoded_hash(options={})
         base_hash = super(options)
         base_hash.delete(:shards)
         index = shard_index(options[:shard])

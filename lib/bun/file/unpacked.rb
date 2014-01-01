@@ -306,7 +306,7 @@ module Bun
         descriptor.file_time
       end
       
-      def to_yaml
+      def to_hash(options={})
         hash = descriptor.to_hash.merge(:content=>data.data)
         hash.delete(:data)
         # hash[:digest] = hash[:digest].inspect[1..-2] if hash[:digest]
@@ -321,7 +321,11 @@ module Bun
             }
           end
         end
-        hash.to_yaml
+        hash
+      end
+      
+      def to_yaml
+        to_hash.to_yaml
       end
       
       def write(to=nil)
@@ -336,7 +340,12 @@ module Bun
         self
       end
       
-      def to_hash(options={})
+      # Subclasses must define decoded_text
+      def decoded_text(options={})
+        raise RuntimeError, "#{self.class} does not define decoded_text"
+      end
+      
+      def to_decoded_hash(options={})
         content = decoded_text(options)
         descriptor.to_hash.merge(
           content:     content,
@@ -347,9 +356,8 @@ module Bun
         )
       end
 
-      # Subclasses must define decoded_text
       def decode(to, options={})
-        Shell.new.write(to,to_hash(options).to_yaml)
+        Shell.new.write(to,to_decoded_hash(options).to_yaml)
       end
 
       def method_missing(meth, *args, &blk)
