@@ -52,7 +52,11 @@ module Bun
       # end
       
       def examination(path, analysis, options={})
-        text = options[:asis] ? read(path) : File::Decoded.read(path)
+        text = if options[:promote]
+          File::Decoded.open(path, :promote=>true) {|f| f.read}
+        else
+          read(path)
+        end
         text.examination(analysis)
       end
   
@@ -72,7 +76,7 @@ module Bun
       
       def packed?(path)
         return false if !unpacked?(path)
-        path.to_s =~ /^$|^-$|\bar\d{3}\.\d{4}$/ # nil, '', '-' (all STDIN) or 'ar999.9999'
+        path.to_s =~ /^$|^-$|ar\d{3}\.\d{4}$/ # nil, '', '-' (all STDIN) or '...ar999.9999'
       end
       
       def open(path, options={}, &blk)
@@ -120,7 +124,9 @@ module Bun
       end
       
       # Convert from packed format to unpacked (i.e. YAML)
+      # TODO: move to File::Packed
       def unpack(path, to, options={})
+        # debug "path: #{path}, to: #{to}, options: #{options.inspect}\n  caller: #{caller.first}"
         return unless packed?(path)
         open(path) do |f|
           cvt = f.unpack

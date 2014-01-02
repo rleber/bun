@@ -55,7 +55,11 @@ module Bun
         private :_set_field
         
         def set_digest
-          _set_field :digest, @data && @data.data.digest
+          return unless @data
+          data = @data
+          data = data.data if data.respond_to?(:data)
+          return unless data && data.respond_to?(:digest)
+          _set_field :digest, data.digest
         end
       
         def to_hash

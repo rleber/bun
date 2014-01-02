@@ -43,7 +43,7 @@ module Bun
           input = read_information(fname)
           build_data(input, options)
           build_descriptor(input)
-          options.merge!(:data=>@data, :descriptor=>@descriptor, :tape_path=>options[:fname])
+          options = options.merge(:data=>@data, :descriptor=>@descriptor, :tape_path=>options[:fname])
           if options[:type] && @descriptor[:tape_type]!=options[:type]
             msg = "Expected file #{fname} to be a #{options[:type]} file, not a #{descriptor[:tape_type]} file"
             if options[:graceful]
@@ -66,15 +66,20 @@ module Bun
 
         # TODO -- Generalize this, and move it to File
         def open(fname, options={}, &blk)
+          # debug "fname: #{fname}, options: #{options.inspect}\n  caller: #{caller.first}"
           if options[:force]
             forced_open(fname, options, &blk)
           elsif (grade = File.file_grade(fname)) != :unpacked
             if options[:promote]
               if File.file_grade_level(grade) < File.file_grade_level(:unpacked)
-                t = Tempfile.new('promote_to_unpacked')
+                t = Tempfile.new('promoted_to_unpacked_')
                 t.close
-                super(fname, options) {|f| f.decode(t.path, options)}
-                open(t.path, options, &blk)
+                # TODO redo this:
+                # super(fname, options) {|f| f.unpack(t.path, options)}
+                File.unpack(fname, t.path)
+                # puts "Unpacked file:" # debug
+                # system("cat #{t.path} | more")
+                File::Unpacked.open(t.path, options, &blk)
               else
                 raise BadFileGrade, "#{fname} can't be converted to unpacked"
               end
@@ -187,6 +192,8 @@ module Bun
         hash = {identifier: BUN_IDENTIFIER}.merge(fields.symbolized_keys.sorted)
         hash[:shards] = shards if shards
         hash[:content] = content
+        # debug "Caller: #{caller[0,2].inspect}"
+        # debug hash.inspect
         hash
       end
       
@@ -198,7 +205,7 @@ module Bun
         to ||= tape_path
         shell = Shell.new
         output = to_yaml
-        shell.write to, to_yaml
+        shell.write to, output
         output
       end
 

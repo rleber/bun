@@ -34,7 +34,7 @@ module Bun
       end
      
       # Convert file from internal Bun binary format to YAML digest
-      def unpack
+      def to_unpacked_file
         new_descriptor = data.descriptor.merge(
                               :data_format=>:raw, 
                               :tape_type=>data.tape_type,
@@ -50,6 +50,11 @@ module Bun
           f.descriptor.merge!(:shards=>f.shard_descriptors)
         end
         f
+      end
+      
+      # TODO Redefine this: unpack(to, options={})
+      def unpack
+        to_unpacked_file
       end
 
       def method_missing(meth, *args, &blk)

@@ -1,17 +1,9 @@
 TODO
 _High Priority_
-bun examine should attempt to decode files
-Change bun examine parameters
-    --test => --exam
-    --mark => --temp
-    --tag NAME
-    --plain (or --ascii) to prevent conversion
 New tests
     Count runs of legible characters
-Make --mark the default in bun examine (possibly rename it: temporary, ignore)
-Tests for bun examine
-Create bun field -f FIELD FILE... (or bun calc FORMULA FILE) -- possibly combine with examine
-Create bun match -f FIELD -v VALUE FILE (or bun match FORMULA FILE) -- possibly bun matches or bun test?
+Create bun examine -f FORMULA FILE
+Create bun match -f FORMULA -V VALUE FILE -- possibly bun matches or bun check?
 More extensions to bun examine
     Printer listing (same as overstruck?)
     Object file
@@ -77,6 +69,7 @@ Implement Huffman decoding
 _Medium Priority_
 Symlink readme and todo in top directory
 Encapsulize test pattern: should create output, with this format, etc.
+Refactor test with create_file, create_directory, clean
 Is archive even necessary? Could we not just do e.g. bun decode archive/**, etc.?
 file_type should never be :packed -- it should be :text or :frozen
 Change :text file_type to :flat (and :frozen to :library ?)

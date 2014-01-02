@@ -3,11 +3,12 @@
 
 desc "examine [FILE]", "Analyze the contents of a file"
 option 'asis',  :aliases=>'-a', :type=>'boolean', :desc=>"Do not attempt to decode file"
-option 'list',  :aliases=>'-l', :type=>'boolean', :desc=>"List the defined examinations"
-option 'mark',  :aliases=>'-m', :type=>'boolean', :desc=>"Mark the test in the file"
-option 'test',  :aliases=>'-t', :type=>'string',  :desc=>"What test? See bun help check for options",
+option 'exam',  :aliases=>'-e', :type=>'string',  :desc=>"What test? See bun help check for options",
                 :default=>'clean'
+option 'list',  :aliases=>'-l', :type=>'boolean', :desc=>"List the defined examinations"
 option 'quiet', :aliases=>'-q', :type=>'boolean', :desc=>"Quiet mode"
+option 'tag',   :aliases=>'-T', :type=>'string',  :desc=>"Override the standard mark name"
+option 'temp',  :aliases=>'-t', :type=>'boolean', :desc=>"Don't mark the test in the file"
 long_desc <<-EOT
 Analyze the contents of a file.
 
@@ -22,12 +23,15 @@ def examine(file=nil)
     exit
   end
   stop "!Must provide file name" unless file
-  examination = Bun::File.examination(file, options[:test], asis: options[:asis])
+  examination = Bun::File.examination(file, options[:exam], promote: !options[:asis])
   test_result = examination.to_s
   puts test_result unless options[:quiet]
-  Bun::File::Unpacked.mark(file, {options[:test]=>test_result}) if options[:mark]
+  tag = options[:tag] || "exam:#{options[:exam]}"
+  unless options[:temp] || File.binary?(file)
+    Bun::File::Unpacked.mark(file, {tag=>test_result})
+  end
   exit(examination.code || 0)
 rescue String::Examination::Invalid => e
-  warn "!Invalid analysis: #{options[:test]}" unless options[:quiet]
+  warn "!Invalid analysis: #{options[:exam]}" unless options[:quiet]
   exit(99)
 end
