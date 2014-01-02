@@ -646,7 +646,7 @@ describe Bun::Bot do
     before :all do
       exec("rm -rf data/test/archive/catalog_source")
       exec("cp -r data/test/archive/catalog_source_init data/test/archive/catalog_source")
-      exec("bun archive catalog data/test/archive/catalog_source data/test/catalog.txt \
+      exec("bun archive catalog data/test/archive/catalog_source --catalog data/test/catalog.txt \
                 2>output/archive_catalog_stderr.txt >output/archive_catalog_stdout.txt")
     end
     it "should write nothing on stdout" do

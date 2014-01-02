@@ -11,10 +11,16 @@ module Bun
   class Archive < Collection
     class InvalidStep < ArgumentError; end
     class MissingCatalog < ArgumentError; end
+    class DirectoryConflict < ArgumentError; end
     
     class << self
       def enumerator_class
         Archive::Enumerator
+      end
+      
+      FETCH_STEPS = %w{pull unpack catalog decode classify bake tests}
+      def fetch_steps
+        FETCH_STEPS
       end
 
       # Steps:
@@ -43,7 +49,6 @@ module Bun
       #   :links     Prefix pattern for symlink names
       #   :tests     Boolean: rebuild test cases?
       #   :to        Directory to output archives to
-      PROCESS_STEPS = %w{pull unpack catalog decode classify bake tests}
       def fetch(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         stages = %w{packed unpacked cataloged decoded classified baked}
@@ -105,7 +110,7 @@ module Bun
       def process_steps(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         test = options[:tests]
-        all_steps = PROCESS_STEPS + %w{all}
+        all_steps = FETCH_STEPS + %w{all}
 
         # Convert all steps to lowercase, unabbreviated
         args = args.map do |orig_arg|
@@ -128,21 +133,21 @@ module Bun
           when '..all', 'all..', /^not[-_]?all/
             raise InvalidStep, "Step #{arg} is not allowed"
           when 'all'
-            ary += PROCESS_STEPS
+            ary += FETCH_STEPS
           when /^not[-_]?(\w+)$/
             ary -= [$1]
           when /^(\w*)(\.\.\.?)(\w*)$/
-            ix1 = $1=='' ? 0 : PROCESS_STEPS.index($1)
+            ix1 = $1=='' ? 0 : FETCH_STEPS.index($1)
             raise InvalidStep, "Unknown process step #{$1}" unless ix1
-            ix2 = $3=='' ? -1 : PROCESS_STEPS.index($3)
+            ix2 = $3=='' ? -1 : FETCH_STEPS.index($3)
             raise InvalidStep, "Unknown process step #{$2}" unless ix2
             if $2 == '..' || ix2 == -1
-              ary += PROCESS_STEPS[ix1..ix2]
+              ary += FETCH_STEPS[ix1..ix2]
             else
-              ary += PROCESS_STEPS[ix1...ix2]
+              ary += FETCH_STEPS[ix1...ix2]
             end
           else
-            raise InvalidStep, "Unknown process step #{arg}" unless PROCESS_STEPS.index(arg)
+            raise InvalidStep, "Unknown process step #{arg}" unless FETCH_STEPS.index(arg)
             ary << arg
           end
           ary
@@ -152,7 +157,7 @@ module Bun
                                           # This syntax allows process --tests all
         steps = steps.uniq
         index = 0
-        step_numbers = PROCESS_STEPS.inject({}) do |hsh, step|
+        step_numbers = FETCH_STEPS.inject({}) do |hsh, step|
           hsh[step] = index
           index += 1
           hsh
@@ -168,9 +173,15 @@ module Bun
         `rm -rf #{@directories[stage]}`
       end
       
+      # Must be done this way, in case there is a symlink to the to directory
       def copy(from, to, options={})
-        cp_opts = options[:force] ? '-rf' : '-r'
-        system(['cp', cp_opts, File.expand_path(from), File.expand_path(to)].shelljoin)
+        expanded_to = File.expand_path(to)
+        unless options[:force]
+          raise DirectoryConflict, "Directory #{expanded_to} already exists" \
+                  if File.exists?(expanded_to)
+        end
+        system(['rm', '-rf', expanded_to].shelljoin)
+        system(['cp', '-r', File.expand_path(from) + "/", expanded_to + "/"].shelljoin)
       end
       
       def pull(from, to, options={})
@@ -182,12 +193,13 @@ module Bun
       end
       
       def catalog(from, to=nil, options={})
+        raise MissingCatalog, "options[:catalog] not supplied" unless options[:catalog]
         if to
           copy from, to, :force=>true
         else
           to = from
         end
-        archive = Archive.new(from)
+        archive = Archive.new(to)
         archive.apply_catalog(options[:catalog], options)
       end
       

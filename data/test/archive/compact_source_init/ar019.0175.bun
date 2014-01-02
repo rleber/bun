@@ -1,6 +1,5 @@
 ---
 :identifier: Bun
-:catalog_time: 1978-11-08 00:00:00.000000000 -05:00
 :data_format: :raw
 :description: ==> Total Eclipse Episode 6 - CKMS Radio Theatre
 :digest: b84b4aed1e3b70e87952f9c4648a7beb
@@ -11,8 +10,8 @@
 :tape: ar019.0175
 :tape_size: 7228
 :tape_type: :frozen
-:unpack_time: 2014-01-01 13:42:49.294202000 -05:00
-:unpacked_by: Bun version 0.1.0 [feature/mark_option:54b05429a6e4072958854a557f2e530c2e4c76e9]
+:unpack_time: 2014-01-01 18:20:36.552502000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:fac108cb905e2921c9f8e9e2fd55475eb4b730d4]
 :shards:
 - :name: temacro
   :file_time: 1978-11-08 14:15:17.000000000 -05:00

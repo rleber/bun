@@ -5,6 +5,7 @@ desc "fetch [STEPS...]", "Process an archive, start to finish"
 option "announce", :aliases=>'-a', :type=>'boolean',  :desc=>"Announce each step of the process"
 option "catalog",  :aliases=>'-c', :type=>'string',   :desc=>"Location of the catalog listing"
 option "source",   :aliases=>'-s', :type=>'string',   :desc=>"Location of the original archive"
+option "steps",    :aliases=>'-S', :type=>'boolean',  :desc=>"List the steps in the fetch process"
 option "links",    :aliases=>'-l', :type=>'string',   :desc=>"Prefix for symlinks"
 option "tests",    :aliases=>'-T', :type=>'boolean',  :desc=>"Rebuild the test cases for this software"
 option "to",       :aliases=>'-t', :type=>'string',   :desc=>"Directory to contain the output archives"
@@ -34,6 +35,10 @@ Some convenience abbreviations are allowed:
 EOT
 long_desc DESC_TEXT.gsub(/(?<!\\)\n/,"\x5").gsub(/\\$/,'').gsub(/ /,"\177")
 def fetch(*steps)
+  if options[:steps]
+    puts Bun::Archive.fetch_steps
+    exit
+  end
   Bun::Archive.fetch(*steps, options)
 rescue Archive::InvalidStep => e
   stop "!#{e}"

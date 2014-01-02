@@ -1,6 +1,5 @@
 TODO
 _High Priority_
-Identifier label in all unpacked files
 File grades, assess, promote (using temp files)
 Bun file open with --force, --convert, or --promote
 bun examine should attempt to decode files
@@ -77,6 +76,7 @@ Implement Huffman decoding
 
 _Medium Priority_
 Symlink readme and todo in top directory
+Is archive even necessary? Could we not just do e.g. bun decode archive/**, etc.?
 Multiple readme files, accessible via readme FILE (with readme --ls)
 Resolve backspaces: to underlining, overstrike or bold (explore 'col' command)
 Convert troff to HTML or Markdown, or some other modern format (explore 'groff -T')

@@ -1,5 +1,6 @@
 ---
 :identifier: Bun
+:catalog_time: 1979-04-13 00:00:00.000000000 -05:00
 :data_format: :raw
 :description: ===> Songs from Fass '79 (roff source frz)
 :digest: c35ca054be91bfbc07faea91e66ed0e4
@@ -10,8 +11,8 @@
 :tape: ar025.0634
 :tape_size: 3751
 :tape_type: :frozen
-:unpack_time: 2014-01-01 13:42:51.547170000 -05:00
-:unpacked_by: Bun version 0.1.0 [feature/mark_option:54b05429a6e4072958854a557f2e530c2e4c76e9]
+:unpack_time: 2014-01-01 18:20:39.008175000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:fac108cb905e2921c9f8e9e2fd55475eb4b730d4]
 :shards:
 - :name: opening
   :file_time: 1979-02-13 15:08:55.000000000 -05:00

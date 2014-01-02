@@ -1,6 +1,5 @@
 ---
 :identifier: Bun
-:catalog_time: 1977-02-24 00:00:00.000000000 -05:00
 :data_format: :raw
 :description: klisted final copy of fass '77 script
 :digest: b97094d97fa4394b14a920b67a898e3d
@@ -10,8 +9,8 @@
 :tape: ar004.0642
 :tape_size: 3863
 :tape_type: :text
-:unpack_time: 2014-01-01 13:42:43.521738000 -05:00
-:unpacked_by: Bun version 0.1.0 [feature/mark_option:54b05429a6e4072958854a557f2e530c2e4c76e9]
+:unpack_time: 2014-01-01 18:20:30.834065000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:fac108cb905e2921c9f8e9e2fd55475eb4b730d4]
 :content: !binary |-
   AABA8WAABAAXAAEAKCCRHVG9CRHVG9AAAAAAAAAADcMxhOZzAAAAAAAAAAAA
   AAAAAAF5zMZyNJwOggNZsNJzOhlMggMxpNxhNggMZvOB5EBvMwgMxhOZzEAn

@@ -1,5 +1,6 @@
 ---
 :identifier: Bun
+:catalog_time: 1983-01-28 00:00:00.000000000 -05:00
 :data_format: :raw
 :description: ==> TROFF source for FASS 1983 Programme
 :digest: 0546b1c1e32e05c88e9e6ca561aaddfa
@@ -9,8 +10,8 @@
 :tape: ar083.0698
 :tape_size: 1627
 :tape_type: :text
-:unpack_time: 2014-01-01 13:43:17.486195000 -05:00
-:unpacked_by: Bun version 0.1.0 [feature/mark_option:54b05429a6e4072958854a557f2e530c2e4c76e9]
+:unpack_time: 2014-01-01 18:21:10.917788000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:fac108cb905e2921c9f8e9e2fd55475eb4b730d4]
 :content: !binary |-
   AABAZaAABAAbABTAK6CcRRCsCcQjBJAAAAAAgAAAAFMxhOZzAAAAAAAAAAAA
   AAAAAAF4xHI4GYvOByN5nORhNptMovMJjOhvORzEA9Ho+EBUKRPIxGEBzN51
