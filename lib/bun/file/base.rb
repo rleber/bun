@@ -51,20 +51,34 @@ module Bun
       #   Bun.readfile(path).control_character_counts
       # end
       
-      def baked_data(path, options={})
+      def baked_file_and_data(path, options={})
         if options[:promote]
           if File.file_grade(path) == :baked
-            File.read(path)
+            [nil, File.read(path)]
           else
-            File::Decoded.open(path, :promote=>true) {|f| f.data }
+            f = File::Decoded.open(path, :promote=>true)
+            [f, f.data]
           end
         else
-          read(path)
+          [nil, read(path)]
         end
+      end
+      
+      def baked_data(path, options={})
+        _, data = baked_file_and_data(path, options)
+        data
       end
       
       def examination(path, analysis, options={})
         baked_data(path, options).examination(analysis)
+      end
+      
+      def formula(path, expression, options={})
+        file, data = baked_file_and_data(path, options)
+        data.formula(options.merge(
+                            expression: expression,
+                            file: file,
+                            path: path))
       end
   
       def descriptor(options={})

@@ -103,7 +103,12 @@ class String
     examiner
   end
   
-  
+  # Options should include :file, :path, :expression
+  def formula(options=[])
+    evaluator = Bun::Formula.new(options)
+    evaluator.data = self
+    evaluator
+  end
   
   def titleize
     split(/(\W)/).map(&:capitalize).join
@@ -199,3 +204,4 @@ class String
 end
 
 require 'lib/string_examination'
+require 'lib/bun/formula'

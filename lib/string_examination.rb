@@ -57,7 +57,6 @@ class String
   end
 end
 
-require 'lib/string'
 String::Examination.all_exam_files.each do |f|
   require "lib/string_examination/#{f.sub(/\.rb$/,'')}"
 end
