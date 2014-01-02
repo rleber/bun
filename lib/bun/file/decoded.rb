@@ -28,9 +28,29 @@ module Bun
         # Output the ASCII content of a file
         def bake(path, to=nil, options={})
           # return unless unpacked?(path)
-          open(path) do |f|
+          open(path, options) do |f|
             f.descriptor.tape = options[:tape] if options[:tape]
             f.bake(to)
+          end
+        end
+        
+        def open(fname, options={}, &blk)
+          # debug "fname: #{fname}, options: #{options.inspect}\n  caller: #{caller.first}"
+          if File.file_grade(fname) != :decoded
+            if options[:promote]
+              t = Tempfile.new('promoted_to_decoded_')
+              t.close
+              super(fname, options) {|f| f.decode(t.path, options)}
+              # puts "Decoded file:" # debug
+              # system("cat #{t.path} | more")
+              f = File::Decoded.open(t.path, options, &blk)
+              f
+            else
+              raise BadFileGrade, "#{fname} is not a decoded file"
+            end
+          else
+            # Ooh, this smells
+            super(fname, options.merge(force: true))
           end
         end
       end
@@ -44,6 +64,10 @@ module Bun
 
       def examination(test)
         data.examination(test)
+      end
+      
+      def decoded_text(options={})
+        data
       end
     end
   end

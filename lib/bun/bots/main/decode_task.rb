@@ -4,6 +4,7 @@
 # TODO Extract multiple files
 # TODO Extract multiple shards
 desc "decode FILE [TO]", "Uncompress a frozen Honeywell file"
+option 'asis',    :aliases=>'-a', :type=>'boolean', :desc=>"Do not attempt to unpack file first"
 option "delete",  :aliases=>'-d', :type=>'boolean', :desc=>"Keep deleted lines (only with text files)"
 option "inspect", :aliases=>'-i', :type=>'boolean', :desc=>"Display long format details for each line (only with text files)"
 option "shard",   :aliases=>'-s', :type=>'string',  :desc=>"Select shards with this pattern (only with frozen files)"
@@ -20,8 +21,20 @@ def decode(file_name, out=nil)
     file_name = $1
     shard = $2
   end
-  File::Unpacked.open(file_name) do |file|
-    file.decode(out, options.merge(:shard=>shard))
-    warn "Thawed with #{file.errors.count} decoding errors" if options[:warn] && file.errors > 0
+  case File.file_grade(file_name)
+  when :baked
+    stop "!Can't decode file. It is already baked"
+  when :decoded
+    case out
+    when nil, '-'
+      system(['cat',file_name].shelljoin)
+    else
+      system(['cp','-f',file_name,out].shelljoin) if out
+    end
+  else
+    File::Unpacked.open(file_name, :promote=>!options[:asis]) do |file|
+      file.decode(out, options.merge(:shard=>shard))
+      warn "Thawed with #{file.errors.count} decoding errors" if options[:warn] && file.errors > 0
+    end
   end
 end

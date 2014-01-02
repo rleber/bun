@@ -3,7 +3,7 @@
 
 require 'lib/bun/archive'
 require 'lib/bun/shell'
-require 'lib/bun/bots/test/base.rb'
+require 'lib/bun/test'
 
 module Bun
   module Bot

@@ -45,7 +45,7 @@ module Bun
       # Load a single task with the name given, from the file given.
       def self.load_task(task_name, file_name=nil)
         file_name ||= ::File.join(task_directory, "#{task_name}.rb")
-        code = ::Bun.readfile(file_name, :encoding=>'us-ascii')
+        code = ::File.read(file_name).force_encoding('us-ascii')
         begin
           eval "class #{self.name}\n#{code}\nend",nil,file_name,0
         rescue => e

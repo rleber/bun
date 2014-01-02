@@ -9,6 +9,8 @@ require 'date'
 module Bun
 
   class File < ::File
+    
+    class BadFileGrade < RuntimeError; end
 
     class << self
       
@@ -49,17 +51,32 @@ module Bun
       #   Bun.readfile(path).control_character_counts
       # end
       
-      def examination(path, analysis)
-        read(path).examination(analysis)
+      def examination(path, analysis, options={})
+        text = if options[:promote]
+          File::Decoded.open(path, :promote=>true) {|f| f.read}
+        else
+          read(path)
+        end
+        text.examination(analysis)
       end
   
       def descriptor(options={})
         Header.new(options).descriptor
       end
       
+      def binary?(path)
+        prefix = File.read(path, 4)
+        prefix != "---\n" # YAML prefix; one of the unpacked formats
+      end
+      
+      def unpacked?(path)
+        prefix = File.read(path, 21)
+        prefix != "---\n:identifier: Bun\n" # YAML prefix with identifier
+      end
+      
       def packed?(path)
-        prefix = File.read(path, 3)
-        prefix != '---' # YAML prefix; one of the unpacked formats
+        return false if !unpacked?(path)
+        path.to_s =~ /^$|^-$|ar\d{3}\.\d{4}$/ # nil, '', '-' (all STDIN) or '...ar999.9999'
       end
       
       def open(path, options={}, &blk)
@@ -73,7 +90,7 @@ module Bun
       def tape_type(path)
         return :packed if packed?(path)
         begin
-          f = File::Unpacked.open(path)
+          f = File::Unpacked.open(path) 
           f.tape_type
         rescue
           :unknown
@@ -81,10 +98,23 @@ module Bun
       end
       
       def file_grade(path)
+        if packed?(path)
+          :packed
+        elsif binary?(path)
+          :baked
+        else
+          f = File::Unpacked.open(path, :force=>true)
+          f.descriptor.file_grade
+        end
+      end
+      
+      def file_grade_level(grade)
+        [:packed, :unpacked, :decoded, :baked].index(grade)
       end
       
       def descriptor(path, options={})
-        open(path) {|f| f.descriptor }
+        # TODO This is smelly (but necessary, in case the file was opened with :force)
+        open(path, :force=>true) {|f| f.descriptor }
       rescue Bun::File::UnknownFileType =>e 
         nil
       rescue Errno::ENOENT => e
@@ -94,7 +124,9 @@ module Bun
       end
       
       # Convert from packed format to unpacked (i.e. YAML)
+      # TODO: move to File::Packed
       def unpack(path, to, options={})
+        # debug "path: #{path}, to: #{to}, options: #{options.inspect}\n  caller: #{caller.first}"
         return unless packed?(path)
         open(path) do |f|
           cvt = f.unpack
