@@ -9,9 +9,8 @@ class String
   class Examination
     class Classes < CharacterClass
       
-      # TODO Refactor using POSIX classes, e.g. /[[:digit:]]/
-      TEXT_CHARACTERS = 'a-zA-Z'
-      DIGITS = '0-9'
+      TEXT_CHARACTERS = '[:alpha:]'
+      DIGITS = '[:digit:]'
       PUNCTUATION_CHARACTERS = '\.,(){}\[\]:;\-\'"! \\\\#$%&*+/<=>?@^_`|~'
       VALID_CONTROL_CHARACTERS = String.const_get('VALID_CONTROL_CHARACTERS')
       PATTERN_HASH = {
@@ -21,7 +20,7 @@ class String
         control: /[#{VALID_CONTROL_CHARACTERS}]/,
         other: /[^#{TEXT_CHARACTERS}#{DIGITS}#{PUNCTUATION_CHARACTERS}#{VALID_CONTROL_CHARACTERS}]/,
       }
-      
+            
       def self.description
         "Count major classes of characters"
       end

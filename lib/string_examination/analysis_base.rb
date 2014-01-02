@@ -17,7 +17,7 @@ class String
         @code = nil
       end
   
-      def counts
+      def calculate_counts
         encoded = @string.force_encoding('ascii-8bit')
         cts = []
         [patterns].flatten.each.with_index do |pat, i|
@@ -30,6 +30,7 @@ class String
         end
         cts
       end
+      alias_method :counts, :calculate_counts
   
       def count_hash
         cts = counts

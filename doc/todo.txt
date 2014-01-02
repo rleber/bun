@@ -1,7 +1,5 @@
 TODO
 _High Priority_
-New tests
-    Count runs of legible characters
 Create bun examine -f FORMULA FILE
 Create bun match -f FORMULA -V VALUE FILE -- possibly bun matches or bun check?
 More extensions to bun examine

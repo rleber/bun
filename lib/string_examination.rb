@@ -18,7 +18,8 @@ class String
       
       def create(analysis, string='')
         klass = exam_class(analysis)
-        raise Invalid, "Examination class not defined: #{class_name}" unless klass
+        raise Invalid, "Examination class not defined: #{analysis}" \
+            unless klass && klass < String::Examination::Base
         klass.new(string)
       end
       

@@ -27,7 +27,7 @@ module Bun
           cache_stdin
         end
         stop "!File #{path} does not exist" unless File.exists?(path)
-        ::File.read(path, *args)
+        ::File.read(path, *args).force_encoding('ascii-8bit')
       end
       
       # Read STDIN and save it to a tempfile
@@ -51,13 +51,20 @@ module Bun
       #   Bun.readfile(path).control_character_counts
       # end
       
-      def examination(path, analysis, options={})
-        text = if options[:promote]
-          File::Decoded.open(path, :promote=>true) {|f| f.read}
+      def baked_data(path, options={})
+        if options[:promote]
+          if File.file_grade(path) == :baked
+            File.read(path)
+          else
+            File::Decoded.open(path, :promote=>true) {|f| f.data }
+          end
         else
           read(path)
         end
-        text.examination(analysis)
+      end
+      
+      def examination(path, analysis, options={})
+        baked_data(path, options).examination(analysis)
       end
   
       def descriptor(options={})
