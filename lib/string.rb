@@ -144,6 +144,14 @@ class String
     runs_output
   end
   
+  def safe
+    if self =~ /^[\w\d.\/]*$/
+      self.dup
+    else
+      self.inspect
+    end
+  end
+
   def digest
     Digest::MD5.hexdigest(self).inspect[1..-2] # Inspect prevents YAML from treating this as binary
   end

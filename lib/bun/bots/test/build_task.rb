@@ -1,15 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-class ::String
-  def _safe
-    if self =~ /^[\w\d.\/]*$/
-      self.dup
-    else
-      self.inspect
-    end
-  end
-end
+require 'lib/string'
 
 no_tasks do
   def _exec(command)
@@ -38,14 +30,14 @@ no_tasks do
     file_with_extension = file + extension
     source_file = File.join(File.expand_path(from),file_with_extension)
     target_file = File.join(File.expand_path(at),file_with_extension)
-    stop "!Source file #{source_file._safe} does not exist" unless File.exists?(source_file)
-    cmd = "cp -f #{source_file._safe} #{target_file._safe}"
+    stop "!Source file #{source_file.safe} does not exist" unless File.exists?(source_file)
+    cmd = "cp -f #{source_file.safe} #{target_file.safe}"
     _exec "#{cmd}"
   end
   
   def build_directory(at, &blk)
-    _exec "rm -rf #{at._safe}"
-    _exec "mkdir -p #{at._safe}"
+    _exec "rm -rf #{at.safe}"
+    _exec "mkdir -p #{at.safe}"
     $at = at
     yield
   end

@@ -80,6 +80,9 @@ module Bun
         end
       end
       
+      def file_grade(path)
+      end
+      
       def descriptor(path, options={})
         open(path) {|f| f.descriptor }
       rescue Bun::File::UnknownFileType =>e 
