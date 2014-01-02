@@ -1,17 +1,25 @@
 TODO
 _High Priority_
-Add --mark option to library classify and bun check/analyze
-Create bun field -f FIELD FILE... and bun match -f FIELD -v VALUE FILE (or bun match FORMULA FILE)
-Extend bun check
-    Flag whether files contain troff commands
+File grades, assess, promote (using temp files)
+Bun file open with --force, --convert, or --promote
+bun examine should attempt to decode files
+Change bun examine parameters
+    --test => --exam
+    --mark => --temp
+    --tag NAME
+    --plain (or --ascii) to prevent conversion
+New tests
+    Count runs of legible characters
+Make --mark the default in bun examine (possibly rename it: temporary, ignore)
+Tests for bun examine
+Create bun field -f FIELD FILE... (or bun calc FORMULA FILE) -- possibly combine with examine
+Create bun match -f FIELD -v VALUE FILE (or bun match FORMULA FILE) -- possibly bun matches or bun test?
+More extensions to bun examine
     Printer listing (same as overstruck?)
     Object file
     Try determining type by comparing preamble contents:
         Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
         binary load module
-Generalized bun check/analyze
-    Combine check and analyze
-    Run all tests, with --mark
 Implement bun library clean
     Find duplicates
     Remove unclean files
@@ -59,10 +67,17 @@ Complete tests:
 Create bun library (or archive) push
 Combine archive, library
 Document new process: pull, unpack, catalog, decode, find, list/describe, clean, organize, extract, push
+Implement interactive (or stream) editor: 
+    Could you use sed, vim, Textmate as a backend?
+    /pat/[bxoa]? pattern matching (e.g. b for binary, a for ascii, etc.)
+    p command shows a dump in multiple formats
+    Alternatively: check out the contents (in whatever format), edit, then check them back in again
 Implement Huffman decoding
 
 _Medium Priority_
-Change bun archive put to bun archive bake, burn, wring, squeeze, extrude
+Symlink readme and todo in top directory
+Is archive even necessary? Could we not just do e.g. bun decode archive/**, etc.?
+Multiple readme files, accessible via readme FILE (with readme --ls)
 Resolve backspaces: to underlining, overstrike or bold (explore 'col' command)
 Convert troff to HTML or Markdown, or some other modern format (explore 'groff -T')
 Refactor the tests into smaller sets
@@ -79,9 +94,12 @@ File type for different kinds of files:
     Troff command files
     Scripts
     Print listings (Qu: are these ever frozen?)
+CSV output
+Loose hook to output printing (e.g. use rleber-table)
 Gemify
+    Move Slicr to a gem
     Move Bot::Base to a gem; provide tests
-    Build as a gem
+    Build Bun as a gem
     Revise installation readme
     Upload to Github
 
@@ -92,4 +110,5 @@ Combine bun describe with bun ls
 Combine freezer dump with bun dump
 Combine archive decode and decode
 Option to customize extension on unpacked or thawed files (e.g. '.txt')
+Create Slicr command line tools (e.g. a filter)
 Refactor Slicr based on the concept of layers, etc.

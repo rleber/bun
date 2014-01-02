@@ -1,11 +1,18 @@
 ---
+:identifier: Bun
+:catalog_time: 1979-04-13 00:00:00.000000000 -05:00
+:data_format: :raw
 :description: ===> Songs from Fass '79 (roff source frz)
-:tape_size: 3751
-:tape_type: :frozen
-:tape: ar025.0634
+:digest: c35ca054be91bfbc07faea91e66ed0e4
+:file_grade: :unpacked
+:file_time: 1979-04-08 13:02:33.000000000 -05:00
 :owner: fass
 :path: fass/songfest.f
-:data_format: :raw
+:tape: ar025.0634
+:tape_size: 3751
+:tape_type: :frozen
+:unpack_time: 2014-01-01 19:27:48.543712000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
 :shards:
 - :name: opening
   :file_time: 1979-02-13 15:08:55.000000000 -05:00
@@ -122,10 +129,6 @@
   :blocks: 0
   :start: 3611
   :size: 115
-:file_time: 1979-04-08 13:02:33.000000000 -05:00
-:unpack_time: 2013-12-29 21:59:17.528884000 -05:00
-:unpacked_by: Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
-:catalog_time: 1979-04-13 00:00:00.000000000 -05:00
 :content: !binary |-
   AABA8YAABAAZAAZAJ6CVHzR7CVHzR7AAAAAAAABAAVMxhOZzAAAAAAAAAAAA
   AAAAAAF5zN5uM5mMpzOguMwgHo9Ho+EBTN5uM5zEBmORvNogIxhOZzEAnG45

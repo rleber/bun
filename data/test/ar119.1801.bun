@@ -1,13 +1,16 @@
 ---
+:identifier: Bun
+:data_format: :raw
 :description: ''
-:tape_size: 1935
-:tape_type: :text
-:tape: ar119.1801
+:digest: 0e36ba226b06117142ea99f9a3f5c29e
+:file_grade: :unpacked
 :owner: fass
 :path: fass/1986/skit.t
-:data_format: :raw
-:unpack_time: 2013-12-29 21:59:55.733843000 -05:00
-:unpacked_by: Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
+:tape: ar119.1801
+:tape_size: 1935
+:tape_type: :text
+:unpack_time: 2014-01-01 19:28:47.947574000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
 :content: !binary |-
   AABAeOAABAAPAB3AcJCh/Kx+ChJbNmAAAAAAkAAAAGMxhOZzAAAAAAAAAAAA
   AAAAAAF4xHI4GwvOZrNJ0Fx0AAAAAAAABAE1AAUAIAAAAAAAAAAAAAAAAAAA

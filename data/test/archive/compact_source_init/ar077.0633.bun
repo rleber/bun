@@ -1,13 +1,16 @@
 ---
+:identifier: Bun
+:data_format: :raw
 :description: Frosh issue 1982
-:tape_size: 659
-:tape_type: :text
-:tape: ar077.0633
+:digest: 9aafa99b25dccdc183296c99377d22d1
+:file_grade: :unpacked
 :owner: mathnoos
 :path: mathnoos/frosh/fass
-:data_format: :raw
-:unpack_time: 2013-12-29 21:59:30.393210000 -05:00
-:unpacked_by: Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
+:tape: ar077.0633
+:tape_size: 659
+:tape_type: :text
+:unpack_time: 2014-01-01 19:28:10.627080000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
 :content: !binary |-
   AABAKSAABAATABNAJ5CbXPCHCbVq37AAAAAAgAAAACNphOhoNxvN5zAAAAAA
   AAAAAAF5mORvOZoF5mMJzOYgIxyN5zNAgNJzOZ1MogGI5HAyAAAABoAABAEu

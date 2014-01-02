@@ -1,13 +1,16 @@
 ---
+:identifier: Bun
+:data_format: :raw
 :description: ''
-:tape_size: 1935
-:tape_type: :text
-:tape: ar103.1065
+:digest: 8b39c8d1c62a043577797bc5b433be6d
+:file_grade: :unpacked
 :owner: jagardner
 :path: fassmac.t
-:data_format: :raw
-:unpack_time: 2013-12-29 21:59:44.693927000 -05:00
-:unpacked_by: Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
+:tape: ar103.1065
+:tape_size: 1935
+:tape_type: :text
+:unpack_time: 2014-01-01 19:28:31.374782000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
 :content: !binary |-
   AABAeOAABAAPABnAQpCfCTkLCdqPTmAAAAAAkAAAAGNRhM5hORkNxlOQAAAA
   AAAAAAF4uFwvMxhOZzNphMYuOgAAE6AABAE/AAUAIAAAAAAAAAAAAAAAAAAA

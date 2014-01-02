@@ -285,10 +285,11 @@ module Bun
         content = shards.at(shard_index(options[:shard]))
       end
       
-      def to_hash(options=[])
+      def to_decoded_hash(options={})
         base_hash = super(options)
         base_hash.delete(:shards)
-        index = shard_index(options[:shard])
+        index = shard_index(options.delete(:shard))
+        base_hash.delete(:shard)
         shard_descriptor = descriptor.shards[index].to_a.inject({}) do |hsh, pair|
           key, value = pair
           new_key = "shard_#{key.to_s.sub(/^file_/,'')}".to_sym

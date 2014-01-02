@@ -2,9 +2,10 @@ Tape          ar003.0698
 File          fass/idallen/vector
 Owner         fass
 Description   ==>files for idallen
-Size (words)  2582
+File Grade    :unpacked
+Size (Words)  2582
 Type          Text
 Data Format   Raw
 MD5 Digest    9e14 0aad 691e ba04 afdf 22ef 2e33 b575
-Unpack Time   2013-12-29 21:59:10 -0500
-Unpacked By   Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
+Unpack Time   2014-01-01 13:42:37 -0500
+Unpacked By   Bun version 0.1.0 [feature/mark_option:54b05429a6e4072958854a557f2e530c2e4c76e9]

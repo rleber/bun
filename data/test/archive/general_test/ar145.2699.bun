@@ -1,11 +1,18 @@
 ---
+:identifier: Bun
+:catalog_time: 1989-02-28 00:00:00.000000000 -05:00
+:data_format: :raw
 :description: ''
-:tape_size: 58295
-:tape_type: :frozen
-:tape: ar145.2699
+:digest: f27c95e3a7f8a88fffb272d69d4437d8
+:file_grade: :unpacked
+:file_time: 1985-10-02 19:04:31.000000000 -04:00
 :owner: jagardner
 :path: jagardner/fass/1979.f
-:data_format: :raw
+:tape: ar145.2699
+:tape_size: 58295
+:tape_type: :frozen
+:unpack_time: 2014-01-01 19:29:13.484339000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
 :shards:
 - :name: '1.1'
   :file_time: 1985-10-02 19:04:31.000000000 -04:00
@@ -67,10 +74,6 @@
   :blocks: 122
   :start: 50469
   :size: 7811
-:file_time: 1985-10-02 19:04:31.000000000 -04:00
-:unpack_time: 2013-12-29 22:00:11.516131000 -05:00
-:unpacked_by: Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
-:catalog_time: 1989-02-28 00:00:00.000000000 -05:00
 :content: !binary |-
   AABA8OAABAAPACRAqLCnuUpiCntWcWAAAAAAgABAC3NRhM5hORkNxlOQAAAA
   AAAAAAF5mMJzOYvGI5G45FxmAAAAAAAAAOOoAAAAAMGIwF4wGQvHA1EF3SDI

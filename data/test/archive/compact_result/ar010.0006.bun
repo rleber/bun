@@ -1,13 +1,16 @@
 ---
+:identifier: Bun
+:data_format: :raw
 :description: ''
-:tape_size: 3854
-:tape_type: :text
-:tape: ar010.0006
+:digest: 4f9ec4c52be677b7a3ea68efd3ae66a0
+:file_grade: :unpacked
 :owner: fass
 :path: fass/sequence
-:data_format: :raw
-:unpack_time: 2013-12-29 21:59:14.298274000 -05:00
-:unpacked_by: Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
+:tape: ar010.0006
+:tape_size: 3854
+:tape_type: :text
+:unpack_time: 2014-01-01 19:27:42.895659000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
 :content: !binary |-
   AABA8NAABAAOAAKAAGCSk9pdCSk9pdAAAAAAAAAAASMxhOZzAAAAAAAAAAAA
   AAAAAAF5zMpxOplNxjMoAAAAAABAExAAUAIAAAAAAAAAAAAAAAAAAAAAAAAA
