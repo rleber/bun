@@ -1,6 +1,5 @@
 TODO
 _High Priority_
-Bun::Bots should not use Bun::fileread
 bun examine should attempt to decode files
 Change bun examine parameters
     --test => --exam
@@ -39,6 +38,7 @@ Major rewrite:
         Possibly File::Decoded, File::Text, and File::Frozen
     No distinction between libraries and archives
         Archives don't care how they're organized
+    Simpler model for file promotion, using inheritance
 Alternate data storage formats: raw, binary, octal, hex
 Complete tests: 
     archive catalog (check descriptor 'catalog_time' has been changed; test --remove)
