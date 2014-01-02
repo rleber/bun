@@ -67,6 +67,7 @@ Complete tests:
 Create bun library (or archive) push
 Combine archive, library
 Document new process: pull, unpack, catalog, decode, find, list/describe, clean, organize, extract, push
+Check out lib/clean.rb
 Implement interactive (or stream) editor: 
     Could you use sed, vim, Textmate as a backend?
     /pat/[bxoa]? pattern matching (e.g. b for binary, a for ascii, etc.)
@@ -77,6 +78,8 @@ Implement Huffman decoding
 _Medium Priority_
 Symlink readme and todo in top directory
 Is archive even necessary? Could we not just do e.g. bun decode archive/**, etc.?
+file_type should never be :packed -- it should be :text or :frozen
+Change :text file_type to :flat (and :frozen to :library ?)
 Multiple readme files, accessible via readme FILE (with readme --ls)
 Resolve backspaces: to underlining, overstrike or bold (explore 'col' command)
 Convert troff to HTML or Markdown, or some other modern format (explore 'groff -T')
@@ -84,6 +87,11 @@ Refactor the tests into smaller sets
 Remove places code
 Remove config code?
 Remove extraneous code
+    places
+    config
+    sandbox
+    compare_dates
+    collection cp, mv, etc.
 Remove shell.log code
 Add long_desc to all methods
 Refactor Bots to use Actors (or put methods (e.g. thaw, dump) into the data objects)
