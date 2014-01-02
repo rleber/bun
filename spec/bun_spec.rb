@@ -358,6 +358,9 @@ describe Bun::Archive do
       @archive.contents {|f| foo << f.upcase }
       foo.sort.should == $expected_archive_contents.map{|c| c.upcase }
     end
+    after :all do
+      backtrace
+    end
   end
 end
 
@@ -385,6 +388,9 @@ describe Bun::Bot do
                      "scrub -",
                      "data/test/clean", 
                      "scrub"
+    after :all do
+      backtrace
+    end
   end
 
   describe "examine" do
@@ -395,6 +401,9 @@ describe Bun::Bot do
     # Dirty file is just the packed version of ar119.1801
     include_examples "command", "check dirty file", "examine -t clean data/test/dirty", "check_dirty",
                      :allowed=>[1]
+    after :all do
+      backtrace
+    end
   end
     
   describe "describe" do
@@ -405,6 +414,9 @@ describe Bun::Bot do
       it "should match the expected output" do
         "describe_ar003.0698".should match_expected_output_except_for(DESCRIBE_PATTERNS)
       end
+      after :all do
+        backtrace
+      end
     end
     describe "with frozen file" do
       before :all do
@@ -412,6 +424,9 @@ describe Bun::Bot do
       end
       it "should match the expected output (including quoting)" do
         "describe_ar025.0634".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
+      after :all do
+        backtrace
       end
     end
   
@@ -429,10 +444,12 @@ describe Bun::Bot do
         $?.exitstatus.should == 0
       end
       after :each do
-        backtrace
         Dir.chdir(@original_dir)
         raise RuntimeError, "Not back in normal working directory: #{Dir.pwd}" \
           unless File.expand_path(Dir.pwd) == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+      end
+      after :all do
+        backtrace
       end
     end
   end  
@@ -570,10 +587,16 @@ describe Bun::Bot do
                      "ls -ldr #{TEST_ARCHIVE}/ar145.2699.bun", 
                      "ls_ldr_ar145.2699"
     include_examples "command", "ls with glob", "ls #{TEST_ARCHIVE}/ar08*", "ls_glob"
+    after :all do
+      backtrace
+    end
   end
 
   describe "readme" do
     include_examples "command", "readme", "readme", "doc/readme.md"
+    after :all do
+      backtrace
+    end
   end
 
   describe "decode" do
@@ -673,6 +696,9 @@ describe Bun::Bot do
                      "dump - ", 
                      "#{TEST_ARCHIVE}/ar003.0698.bun", 
                      "dump_stdin_ar003.0698"
+    after :all do
+      backtrace
+    end
   end
 
   describe "freezer" do
@@ -690,6 +716,9 @@ describe Bun::Bot do
                        "freezer ls -",
                        "#{TEST_ARCHIVE}/ar004.0888.bun",
                        "freezer_ls_stdin_ar004.0888"
+      after :all do
+        backtrace
+      end
     end
     context "dump" do
       include_examples "command", 
@@ -705,6 +734,9 @@ describe Bun::Bot do
                        "freezer dump - +0",
                        "#{TEST_ARCHIVE}/ar004.0888.bun", 
                        "freezer_dump_stdin_ar004.0888_0"
+      after :all do
+        backtrace
+      end
     end
   end
 
@@ -781,9 +813,10 @@ describe Bun::Bot do
     it "should create the results directory" do
       file_should_exist "data/test/archive/compact_result"
     end
-    # after :all do
-    #   exec_on_success("rm -rf data/test/archive/compact_source")
-    #   exec_on_success("rm -rf data/test/archive/compact_result")
-    # end
+    after :all do
+      backtrace
+      exec_on_success("rm -rf data/test/archive/compact_source")
+      exec_on_success("rm -rf data/test/archive/compact_result")
+    end
   end
 end

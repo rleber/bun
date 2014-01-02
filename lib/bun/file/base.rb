@@ -51,7 +51,7 @@ module Bun
       #   Bun.readfile(path).control_character_counts
       # end
       
-      def examination(path, analysis)
+      def examination(path, analysis, options={})
         text = options[:asis] ? read(path) : File::Decoded.read(path)
         text.examination(analysis)
       end

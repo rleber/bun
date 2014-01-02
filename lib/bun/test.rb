@@ -34,7 +34,7 @@ module Bun
       end
       
       def backtrace(options={})
-        commands = ::File.read(BACKTRACE_FILE).chomp.split("\n")
+        commands = ::File.read(BACKTRACE_FILE).chomp.split("\n") rescue []
         n = options[:n] || commands.size
         n = [n.to_i, commands.size].min
         commands = commands[(-n)..-1]
@@ -42,8 +42,8 @@ module Bun
           commands = commands.map do |c|
             words = c.shellsplit
             words = words.map do |word|
-              word.match(/^((?:\d?[|<>])?)(.*)/)
-              $1 + $2.shellescape
+              word.match(/^((?:\d?[|<>](?:&\d)?)?)(.*)/)
+              $1 + ($2 == '' ? '' : $2.shellescape)
             end
             words.join(' ')
           end

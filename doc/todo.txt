@@ -76,8 +76,6 @@ Implement Huffman decoding
 
 _Medium Priority_
 Symlink readme and todo in top directory
-Move test case output (e.g. to output/test_actual), and expected output to output/test_expected
-Add diffs to failing test case :after clauses 
 Encapsulize test pattern: should create output, with this format, etc.
 Is archive even necessary? Could we not just do e.g. bun decode archive/**, etc.?
 file_type should never be :packed -- it should be :text or :frozen
