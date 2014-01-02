@@ -2,6 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 desc "examine [FILE]", "Analyze the contents of a file"
+option 'asis',  :aliases=>'-a', :type=>'boolean', :desc=>"Do not attempt to decode file"
 option 'list',  :aliases=>'-l', :type=>'boolean', :desc=>"List the defined examinations"
 option 'mark',  :aliases=>'-m', :type=>'boolean', :desc=>"Mark the test in the file"
 option 'test',  :aliases=>'-t', :type=>'string',  :desc=>"What test? See bun help check for options",
@@ -21,7 +22,7 @@ def examine(file=nil)
     exit
   end
   stop "!Must provide file name" unless file
-  examination = Bun::File.examination(file, options[:test])
+  examination = Bun::File.examination(file, options[:test], asis: options[:asis])
   test_result = examination.to_s
   puts test_result unless options[:quiet]
   Bun::File::Unpacked.mark(file, {options[:test]=>test_result}) if options[:mark]

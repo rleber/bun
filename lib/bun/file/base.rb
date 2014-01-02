@@ -52,7 +52,8 @@ module Bun
       # end
       
       def examination(path, analysis)
-        read(path).examination(analysis)
+        text = options[:asis] ? read(path) : File::Decoded.read(path)
+        text.examination(analysis)
       end
   
       def descriptor(options={})

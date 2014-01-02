@@ -7,6 +7,10 @@ TEST_DIRECTORY = 'spec'
 
 module Bun
   class Test
+    BACKTRACE_FILE = "output/test_actual/_backtrace.txt"
+    ACTUAL_OUTPUT_DIRECTORY = "output/test_actual"
+    EXPECTED_OUTPUT_DIRECTORY = "output/test_expected"
+    
     class << self
       def all_tests
         Dir.glob(TEST_DIRECTORY + '/*_spec.rb') \
@@ -27,6 +31,33 @@ module Bun
       
       def run_all_tests
         run('all')
+      end
+      
+      def backtrace(options={})
+        commands = ::File.read(BACKTRACE_FILE).chomp.split("\n")
+        n = options[:n] || commands.size
+        n = [n.to_i, commands.size].min
+        commands = commands[(-n)..-1]
+        unless options[:preserve]
+          commands = commands.map do |c|
+            words = c.shellsplit
+            words = words.map do |word|
+              word.match(/^((?:\d?[|<>])?)(.*)/)
+              $1 + $2.shellescape
+            end
+            words.join(' ')
+          end
+        end
+        commands
+      end
+      
+      def diff(actual, expected=nil)
+        expected ||= actual
+        system([
+                 'diff', 
+                 File.join(ACTUAL_OUTPUT_DIRECTORY,actual),
+                 File.join(EXPECTED_OUTPUT_DIRECTORY,expected)
+               ].shelljoin)
       end
     end
   end

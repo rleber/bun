@@ -131,8 +131,8 @@ RSpec::Matchers.define :match_file_with_variable_data do |expected_file|
   end
 end
 
-ACTUAL_OUTPUT_FILE_PREFIX = File.join('output')
-EXPECTED_OUTPUT_FILE_PREFIX = File.join('output', 'test')
+ACTUAL_OUTPUT_FILE_PREFIX = File.join('output', 'test_actual')
+EXPECTED_OUTPUT_FILE_PREFIX = File.join('output', 'test_expected')
 
 # Content of two files with (matching names) should match, except for excluded patterns
 #  excluded_patterns = {pat1: /a*/, pat2: /def/, pat3: /ghi/}
