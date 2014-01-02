@@ -57,9 +57,19 @@ module Bun
         Header.new(options).descriptor
       end
       
+      def binary?(path)
+        prefix = File.read(path, 4)
+        prefix != "---\n" # YAML prefix; one of the unpacked formats
+      end
+      
+      def unpacked?(path)
+        prefix = File.read(path, 21)
+        prefix != "---\n:identifier: Bun\n" # YAML prefix with identifier
+      end
+      
       def packed?(path)
-        prefix = File.read(path, 3)
-        prefix != '---' # YAML prefix; one of the unpacked formats
+        return false if !unpacked?(path)
+        path =~ /ar\d{3}\.\d{4}$/
       end
       
       def open(path, options={}, &blk)
@@ -73,7 +83,7 @@ module Bun
       def tape_type(path)
         return :packed if packed?(path)
         begin
-          f = File::Unpacked.open(path)
+          f = File::Unpacked.open(path) 
           f.tape_type
         rescue
           :unknown
@@ -81,6 +91,14 @@ module Bun
       end
       
       def file_grade(path)
+        if packed?(path)
+          :packed
+        elsif binary?(path)
+          :baked
+        else
+          f = File::Unpacked.open(path)
+          f.descriptor.file_grade
+        end
       end
       
       def descriptor(path, options={})

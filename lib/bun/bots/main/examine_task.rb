@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-# TODO add --mark option
 desc "examine [FILE]", "Analyze the contents of a file"
 option 'list',  :aliases=>'-l', :type=>'boolean', :desc=>"List the defined examinations"
 option 'mark',  :aliases=>'-m', :type=>'boolean', :desc=>"Mark the test in the file"
