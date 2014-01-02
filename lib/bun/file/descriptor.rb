@@ -12,22 +12,13 @@ module Bun
           end
         end
         FIELDS = [
-          # :basename,
-          # :catalog_time,
           :description,
-          # :errors,
-          # :decoded,
           :tape_size,
           :tape_type,
           :tape,
-          # :tape_path,
-          # :original_tape,
-          # :original_tape_path,
           :owner,
           :path,
           :digest,
-          # :specification,
-          # :updated,
         ]
       
         attr_reader :data, :fields
@@ -112,10 +103,6 @@ module Bun
           fields.include?(:catalog_time) ? [file_time, catalog_time].compact.min : file_time
         end
               
-        # def shards
-        #   data.shard_descriptor_hashes rescue []
-        # end
-          
         def method_missing(meth, *args, &blk)
           if !block_given? && args.size==0 && instance_variable_defined?("@#{meth}")
             instance_variable_get("@#{meth}")
@@ -127,10 +114,6 @@ module Bun
         def copy(to, new_settings={})
           to_dir = File.dirname(to)
           descriptor = self.to_hash
-          # descriptor[:original_tape] = descriptor[:tape] unless descriptor[:original_tape]
-          # descriptor[:original_tape_path] = descriptor[:tape_path] unless descriptor[:original_tape_path]
-          # descriptor[:tape] = File.basename(to)
-          # descriptor[:tape_path] = to
           descriptor.merge! new_settings
           descriptor
         end

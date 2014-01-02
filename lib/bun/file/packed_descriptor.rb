@@ -19,22 +19,13 @@ module Bun
       
         DESCRIPTION_PATTERN = /\s+(.*)/
         FIELDS = [
-          # :basename,
-          # :catalog_time,
           :description,
-          # :errors,
-          # :decoded,
           :tape_size,
           :tape_type,
           :tape,
-          # :tape_path,
-          # :original_tape,
-          # :original_tape_path,
           :owner,
           :path,
-          # :specification,
           :file_time,
-          # :updated,
         ]
         
         def initialize(*args)
@@ -59,16 +50,6 @@ module Bun
         def subpath
           specification.sub(DESCRIPTION_PATTERN,'').sub(/^\//,'')
         end
-        #     
-        # def subdirectory
-        #   d = File.dirname(subpath)
-        #   d = "" if d == "."
-        #   d
-        # end
-        # 
-        # def basename
-        #   File.basename(subpath)
-        # end
     
         def description
           specification[DESCRIPTION_PATTERN,1] || ""
@@ -92,20 +73,6 @@ module Bun
         end
         
               
-         # # TODO This isn't really relevant for non-frozen files; File::Frozen should really subclass this
-         # def updated
-         #   file_time = self.file_time rescue nil
-         #   if file_time && catalog_time
-         #     [catalog_time, file_time].min
-         #   elsif file_time
-         #     file_time
-         #   elsif catalog_time
-         #     catalog_time
-         #   else
-         #     nil
-         #   end
-         # end
-        #        
         def shard_count
           tape_type == :frozen ? words.at(content_offset+1).half_words.at(1).to_i : 0
         end

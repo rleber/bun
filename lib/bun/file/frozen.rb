@@ -20,7 +20,6 @@ module Bun
       def initialize(options={})
         options[:data] = Data.new(options) if options[:data] && !options[:data].is_a?(Bun::Data)
         super
-        # TODO Why is file_date necessary?
         descriptor.register_fields(:shards, :file_time)
         @warn = options[:warn]
       end
@@ -186,7 +185,6 @@ module Bun
         s = []
         shard_count.times do |i|
           text = shard_lines.at(i).map{|l| l[:content]}.join
-          # shard_descriptors.at(i).control_characters = File.control_character_counts(text)
           shard_descriptors.at(i).character_count    = text.size
           s << text
         end

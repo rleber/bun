@@ -92,6 +92,7 @@ Remove extraneous code
     sandbox
     compare_dates
     collection cp, mv, etc.
+Move system calls into Shell class
 Remove shell.log code
 Add long_desc to all methods
 Refactor Bots to use Actors (or put methods (e.g. thaw, dump) into the data objects)
