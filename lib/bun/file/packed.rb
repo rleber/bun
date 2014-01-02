@@ -9,14 +9,19 @@ module Bun
     class Packed < Bun::File
       class << self
         def open(fname, options={}, &blk)
-          path = fname
-          path = expand_path(fname) unless fname == '-'
-          data = read(path)
-          obj = self.send(:new,options.merge(:data=>data, :tape=>fname, :tape_path=>path))
-          if block_given?
-            yield(obj)
+          grade = File.file_grade(fname)
+          if grade != :packed
+            raise BadFileGrade, "#{fname} can't be converted to packed"
           else
-            obj
+            path = fname
+            path = expand_path(fname) unless fname == '-'
+            data = read(path)
+            obj = self.send(:new,options.merge(:data=>data, :tape=>fname, :tape_path=>path))
+            if block_given?
+              yield(obj)
+            else
+              obj
+            end
           end
         end
       end

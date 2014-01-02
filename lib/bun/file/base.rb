@@ -9,6 +9,8 @@ require 'date'
 module Bun
 
   class File < ::File
+    
+    class BadFileGrade < RuntimeError; end
 
     class << self
       
@@ -69,7 +71,7 @@ module Bun
       
       def packed?(path)
         return false if !unpacked?(path)
-        path =~ /ar\d{3}\.\d{4}$/
+        path.to_s =~ /^$|^-$|\bar\d{3}\.\d{4}$/ # nil, '', '-' (all STDIN) or 'ar999.9999'
       end
       
       def open(path, options={}, &blk)
@@ -96,9 +98,13 @@ module Bun
         elsif binary?(path)
           :baked
         else
-          f = File::Unpacked.open(path)
+          f = File::Unpacked.open(path, :force=>true)
           f.descriptor.file_grade
         end
+      end
+      
+      def file_grade_level(grade)
+        [:packed, :unpacked, :decoded, :baked].index(grade)
       end
       
       def descriptor(path, options={})

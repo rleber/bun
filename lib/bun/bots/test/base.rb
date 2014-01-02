@@ -12,11 +12,12 @@ module Bun
       end
       
       def run(*tests)
+        options = tests.last.is_a?(Hash) ? tests.pop : {}
         tests = Bun::Test.all_tests if tests == %w{all}
         load_path = File.dirname(__FILE__).sub(/bun.*/,'bun')
         test_files = tests.map{|test| File.join(TEST_DIRECTORY, "#{test}_spec.rb") }
         test_spec = test_files.map{|test| test.inspect}.join(' ')
-        system("rspec -c -f d -I . #{test_spec}")
+        system(options, "rspec -c -f d -I . #{test_spec}")
       end
       
       def run_all_tests

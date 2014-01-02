@@ -1,7 +1,7 @@
 TODO
 _High Priority_
-File grades, assess, promote (using temp files)
-Bun file open with --force, --convert, or --promote
+Bun file open with :promote
+Bun::Bots should not use Bun::fileread
 bun examine should attempt to decode files
 Change bun examine parameters
     --test => --exam

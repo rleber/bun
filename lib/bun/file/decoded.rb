@@ -33,6 +33,21 @@ module Bun
             f.bake(to)
           end
         end
+        
+        def open(fname, options={}, &blk)
+          if File.file_grade(fname) != :decoded
+            if options[:promote]
+              t = Tempfile.new('promote_to_decode')
+              t.close
+              super(fname, options) {|f| f.decode(t.path, options)}
+              open(t.path, options, &blk)
+            else
+              raise BadFileGrade, "#{fname} is not a decode file"
+            end
+          else
+            super
+          end
+        end
       end
       
       def bake(to=nil)

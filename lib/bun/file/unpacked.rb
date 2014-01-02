@@ -37,8 +37,8 @@ module Bun
         def build_descriptor(input)
           @descriptor = Descriptor::Base.from_hash(@content,input)
         end
-
-        def open(fname, options={}, &blk)
+        
+        def forced_open(fname, options={}, &blk)
           options[:fname] = fname
           input = read_information(fname)
           build_data(input, options)
@@ -61,6 +61,28 @@ module Bun
             end
           else
             file
+          end
+        end
+
+        # TODO -- Generalize this, and move it to File
+        def open(fname, options={}, &blk)
+          if options[:force]
+            forced_open(fname, options, &blk)
+          elsif (grade = File.file_grade(fname)) != :unpacked
+            if options[:promote]
+              if File.file_grade_level(grade) < File.file_grade_level(:unpacked)
+                t = Tempfile.new('promote_to_unpacked')
+                t.close
+                super(fname, options) {|f| f.decode(t.path, options)}
+                open(t.path, options, &blk)
+              else
+                raise BadFileGrade, "#{fname} can't be converted to unpacked"
+              end
+            else
+              raise BadFileGrade, "#{fname} is not a decode file"
+            end
+          else
+            forced_open(fname, options, &blk)
           end
         end
         

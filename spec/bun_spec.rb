@@ -19,6 +19,11 @@ def exec(cmd, options={})
   res
 end
 
+def exec_on_success(example, cmd, options={})
+  return if example.exception
+  exec cmd, options
+end
+
 def decode(file_name)
   archive = Bun::Archive.new(TEST_ARCHIVE)
   expanded_file = File.join("data", "test", file_name)
@@ -142,7 +147,7 @@ describe Bun::Archive do
   context "bun unpack" do
     context "with a text file" do
       context "with output to '-'" do
-        before :all do
+        before :each do
           exec("rm -f output/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
           exec("cp -r data/test/archive/general_test_packed_init \
@@ -152,9 +157,10 @@ describe Bun::Archive do
         end
         it "should match the expected output" do
           "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
+          fail
         end
-        after :all do
-          exec("rm -f output/unpack_ar003.0698")
+        after :each do
+          exec_on_success(example, "rm -f output/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
         end
       end
