@@ -79,7 +79,7 @@ module Bun
                 raise BadFileGrade, "#{fname} can't be converted to unpacked"
               end
             else
-              raise BadFileGrade, "#{fname} is not a decode file"
+              raise BadFileGrade, "#{fname} is not an unpacked file"
             end
           else
             forced_open(fname, options, &blk)
@@ -111,7 +111,7 @@ module Bun
         
         def mark(fname, tag_hash, to=nil)
           to ||= fname
-          File.open(fname) do |f|
+          open(fname, :force=>true) do |f|
             tag_hash.each do |tag, value|
               f.mark tag, value
             end

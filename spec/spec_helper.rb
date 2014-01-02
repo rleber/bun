@@ -21,6 +21,14 @@ def capture(*streams)
   result.to_s
 end
 
+def debug?
+  ENV['BUN_TEST_DEBUG']
+end
+
+def params
+  $params ||= eval(ENV['BUN_TEST_PARAMS'])
+end
+
 RSpec.configure {|c| c.fail_fast = true}
 
 RSpec::Matchers.define :exist_as_a_file do ||

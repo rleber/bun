@@ -19,8 +19,18 @@ def exec(cmd, options={})
   res
 end
 
-def exec_on_success(example, cmd, options={})
-  return if example.exception
+def success?
+  examples = RSpec.world.filtered_examples.values.flatten
+  examples.none?(&:exception)
+end
+
+def exec_on_success(cmd, options={})
+  return unless success?
+  exec cmd, options
+end
+
+def exec_on_failure(cmd, options={})
+  return if success?
   exec cmd, options
 end
 
@@ -147,7 +157,7 @@ describe Bun::Archive do
   context "bun unpack" do
     context "with a text file" do
       context "with output to '-'" do
-        before :each do
+        before :all do
           exec("rm -f output/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
           exec("cp -r data/test/archive/general_test_packed_init \
@@ -157,11 +167,10 @@ describe Bun::Archive do
         end
         it "should match the expected output" do
           "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
-          fail
         end
-        after :each do
-          exec_on_success(example, "rm -f output/unpack_ar003.0698")
-          exec("rm -rf data/test/archive/general_test_packed")
+        after :all do
+          exec_on_success("rm -f output/unpack_ar003.0698")
+          exec_on_success("rm -rf data/test/archive/general_test_packed")
         end
       end
       context "with omitted output" do
@@ -176,8 +185,8 @@ describe Bun::Archive do
           "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
         end
         after :all do
-          exec("rm -f output/unpack_ar003.0698")
-          exec("rm -rf data/test/archive/general_test_packed")
+          exec_on_success("rm -f output/unpack_ar003.0698")
+          exec_on_success("rm -rf data/test/archive/general_test_packed")
         end
       end
     end
@@ -195,8 +204,8 @@ describe Bun::Archive do
           "unpack_stdin_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
         end
         after :all do
-          exec("rm -f output/unpack_ar003.0698")
-          exec("rm -rf data/test/archive/general_test_packed")
+          exec_on_success("rm -f output/unpack_ar003.0698")
+          exec_on_success("rm -rf data/test/archive/general_test_packed")
         end
       end
       context "with tape name" do
@@ -212,8 +221,8 @@ describe Bun::Archive do
           "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
         end
         after :all do
-          exec("rm -f output/unpack_ar003.0698")
-          exec("rm -rf data/test/archive/general_test_packed")
+          exec_on_success("rm -f output/unpack_ar003.0698")
+          exec_on_success("rm -rf data/test/archive/general_test_packed")
         end
       end
     end
@@ -228,8 +237,8 @@ describe Bun::Archive do
         "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
       end
       after :all do
-        exec("rm -f output/unpack_ar003.0698")
-        exec("rm -rf data/test/archive/general_test_packed")
+        exec_on_success("rm -f output/unpack_ar003.0698")
+        exec_on_success("rm -rf data/test/archive/general_test_packed")
       end
     end
     context "with a frozen file" do
@@ -243,8 +252,8 @@ describe Bun::Archive do
         "unpack_ar019.0175".should match_expected_output_except_for(UNPACK_PATTERNS)
       end
       after :all do
-        exec("rm -f output/unpack_ar019.0175")
-        exec("rm -rf data/test/archive/general_test_packed")
+        exec_on_success("rm -f output/unpack_ar019.0175")
+        exec_on_success("rm -rf data/test/archive/general_test_packed")
       end
     end
   end
@@ -278,11 +287,11 @@ describe Bun::Archive do
       Bun.readfile('output/test/archive_unpack_files.txt').chomp
     end
     after :all do
-      exec("rm -rf data/test/archive/general_test_packed_unpacked")
-      exec("rm -rf data/test/archive/general_test_packed")
-      exec("rm -f output/archive_unpack_files.txt")
-      exec("rm -f output/archive_unpack_stderr.txt")
-      exec("rm -f output/archive_unpack_stdout.txt")
+      exec_on_success("rm -rf data/test/archive/general_test_packed_unpacked")
+      exec_on_success("rm -rf data/test/archive/general_test_packed")
+      exec_on_success("rm -f output/archive_unpack_files.txt")
+      exec_on_success("rm -f output/archive_unpack_stderr.txt")
+      exec_on_success("rm -f output/archive_unpack_stdout.txt")
     end
   end
 end
@@ -402,9 +411,9 @@ describe Bun::Bot do
         "mark_source_after".should match_expected_output_except_for(DESCRIBE_PATTERNS)
       end
       after :all do
-        exec "rm -f data/test/mark_source.bun"
-        exec "rm -f output/mark_source_before"
-        exec "rm -f output/mark_source_after"
+        exec_on_success "rm -f data/test/mark_source.bun"
+        exec_on_success "rm -f output/mark_source_before"
+        exec_on_success "rm -f output/mark_source_after"
       end
     end
     context "with an output file" do
@@ -432,11 +441,11 @@ describe Bun::Bot do
         Bun.readfile('output/mark_source_before').chomp
       end
       after :all do
-        exec "rm -f data/test/mark_source.bun"
-        exec "rm -f data/test/mark_result.bun"
-        exec "rm -f output/mark_source_before"
-        exec "rm -f output/mark_source_after"
-        exec "rm -f output/mark_result_after"
+        exec_on_success "rm -f data/test/mark_source.bun"
+        exec_on_success "rm -f data/test/mark_result.bun"
+        exec_on_success "rm -f output/mark_source_before"
+        exec_on_success "rm -f output/mark_source_after"
+        exec_on_success "rm -f output/mark_result_after"
       end
     end
     context "with '-' as output file" do
@@ -461,11 +470,11 @@ describe Bun::Bot do
         Bun.readfile('output/mark_source_before').chomp
       end
       after :all do
-        exec "rm -f data/test/mark_source.bun"
-        exec "rm -f output/mark_result.bun"
-        exec "rm -f output/mark_source_before"
-        exec "rm -f output/mark_source_after"
-        exec "rm -f output/mark_result_after"
+        exec_on_success "rm -f data/test/mark_source.bun"
+        exec_on_success "rm -f output/mark_result.bun"
+        exec_on_success "rm -f output/mark_source_before"
+        exec_on_success "rm -f output/mark_source_after"
+        exec_on_success "rm -f output/mark_result_after"
       end
     end
     context "with '-' as input file" do
@@ -494,11 +503,11 @@ describe Bun::Bot do
         Bun.readfile('output/mark_source_before').chomp
       end
       after :all do
-        exec "rm -f data/test/mark_source.bun"
-        exec "rm -f data/test/mark_result.bun"
-        exec "rm -f output/mark_source_before"
-        exec "rm -f output/mark_source_after"
-        exec "rm -f output/mark_result_after"
+        exec_on_success "rm -f data/test/mark_source.bun"
+        exec_on_success "rm -f data/test/mark_result.bun"
+        exec_on_success "rm -f output/mark_source_before"
+        exec_on_success "rm -f output/mark_source_after"
+        exec_on_success "rm -f output/mark_result_after"
       end
     end
   end
@@ -532,7 +541,7 @@ describe Bun::Bot do
         "decode_ar003.0698".should match_expected_output_except_for(DECODE_PATTERNS)
       end
       after :all do
-        exec("rm -f output/decode_ar003.0698")
+        exec_on_success("rm -f output/decode_ar003.0698")
       end
     end
     context "from STDIN" do
@@ -545,7 +554,7 @@ describe Bun::Bot do
         "decode_ar003.0698".should match_expected_output_except_for(DECODE_PATTERNS)
       end
       after :all do
-        exec("rm -f output/decode_ar003.0698")
+        exec_on_success("rm -f output/decode_ar003.0698")
       end
     end
     context "with frozen file" do
@@ -559,7 +568,7 @@ describe Bun::Bot do
           "decode_ar004.0888_0".should match_expected_output_except_for(DECODE_PATTERNS)
         end
         after :all do
-          exec("rm -f output/decode_ar004.0888_0")
+          exec_on_success("rm -f output/decode_ar004.0888_0")
         end
       end
       context "and [+0] shard syntax" do
@@ -572,7 +581,7 @@ describe Bun::Bot do
           "decode_ar004.0888_0".should match_expected_output_except_for(DECODE_PATTERNS)
         end
         after :all do
-          exec("rm -f output/decode_ar004.0888_0")
+          exec_on_success("rm -f output/decode_ar004.0888_0")
         end
       end
       context "and [name] shard syntax" do
@@ -585,7 +594,7 @@ describe Bun::Bot do
           "decode_ar004.0888_0".should match_expected_output_except_for(DECODE_PATTERNS)
         end
         after :all do
-          exec("rm -f output/decode_ar004.0888_0")
+          exec_on_success("rm -f output/decode_ar004.0888_0")
         end
       end
     end
@@ -670,10 +679,10 @@ describe Bun::Bot do
     it "should change the catalog dates in the catalog" do 
     end
     after :all do
-      exec("rm -rf data/test/archive/catalog_source")
-      exec("rm -f output/archive_catalog_stderr.txt")
-      exec("rm -f output/archive_catalog_stdout.txt")
-      exec("rm -f output/archive_catalog_files.txt")
+      exec_on_success("rm -rf data/test/archive/catalog_source")
+      exec_on_success("rm -f output/archive_catalog_stderr.txt")
+      exec_on_success("rm -f output/archive_catalog_stdout.txt")
+      exec_on_success("rm -f output/archive_catalog_files.txt")
     end
   end
 
@@ -701,16 +710,16 @@ describe Bun::Bot do
       Bun.readfile('output/test/archive_decode_files.txt').chomp
     end
     after :all do
-      exec("rm -rf data/test/archive/decode_source")
-      exec("rm -rf data/test/archive/decode_archive")
-      exec("rm -f output/archive_decode_stderr.txt")
-      exec("rm -f output/archive_decode_stdout.txt")
-      exec("rm -f output/archive_decode_files.txt")
+      exec_on_success("rm -rf data/test/archive/decode_source")
+      exec_on_success("rm -rf data/test/archive/decode_archive")
+      exec_on_success("rm -f output/archive_decode_stderr.txt")
+      exec_on_success("rm -f output/archive_decode_stdout.txt")
+      exec_on_success("rm -f output/archive_decode_files.txt")
     end
   end
 
   describe "archive compact" do
-    before :each do
+    before :all do
       exec("rm -rf data/test/archive/compact_files")
       exec("rm -rf data/test/archive/compact_result")
       exec("cp -r data/test/archive/compact_source_init data/test/archive/compact_source")
@@ -719,9 +728,9 @@ describe Bun::Bot do
     it "should create the results directory" do
       file_should_exist "data/test/archive/compact_result"
     end
-    # after :each do
-    #   exec("rm -rf data/test/archive/compact_source")
-    #   exec("rm -rf data/test/archive/compact_result")
+    # after :all do
+    #   exec_on_success("rm -rf data/test/archive/compact_source")
+    #   exec_on_success("rm -rf data/test/archive/compact_result")
     # end
   end
 end

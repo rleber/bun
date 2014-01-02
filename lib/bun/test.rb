@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+require 'shellwords'
+
 TEST_DIRECTORY = 'spec'
 
 module Bun
@@ -16,8 +18,11 @@ module Bun
         tests = Bun::Test.all_tests if tests == %w{all}
         load_path = File.dirname(__FILE__).sub(/bun.*/,'bun')
         test_files = tests.map{|test| File.join(TEST_DIRECTORY, "#{test}_spec.rb") }
-        test_spec = test_files.map{|test| test.inspect}.join(' ')
-        system(options, "rspec -c -f d -I . #{test_spec}")
+        params = options[:params] || {}
+        e_param = options[:examples] ? ["-e", options[:examples]] : nil
+        cmd_line = ['rspec','-c', '-f', 'd', '-I', '.', e_param, test_files].flatten.compact.shelljoin
+        $stderr.puts cmd_line
+        system(params, cmd_line)
       end
       
       def run_all_tests

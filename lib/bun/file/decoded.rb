@@ -42,7 +42,7 @@ module Bun
               super(fname, options) {|f| f.decode(t.path, options)}
               open(t.path, options, &blk)
             else
-              raise BadFileGrade, "#{fname} is not a decode file"
+              raise BadFileGrade, "#{fname} is not a decoded file"
             end
           else
             super

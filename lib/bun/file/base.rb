@@ -108,7 +108,8 @@ module Bun
       end
       
       def descriptor(path, options={})
-        open(path) {|f| f.descriptor }
+        # TODO This is smelly (but necessary, in case the file was opened with :force)
+        open(path, :force=>true) {|f| f.descriptor }
       rescue Bun::File::UnknownFileType =>e 
         nil
       rescue Errno::ENOENT => e
