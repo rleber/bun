@@ -3,7 +3,7 @@
 
 # Abstract base class for boolean checks
 
-require 'lib/string_examination/base'
+require 'lib/examination/base'
 
 class String
   class Examination

@@ -3,7 +3,7 @@
 
 # Classes to define analysis of printable vs. non-printable characters
 
-require 'lib/string_examination/character_class'
+require 'lib/examination/character_class'
 
 class String
   class Examination

@@ -203,5 +203,5 @@ class String
   
 end
 
-require 'lib/string_examination'
+require 'lib/examination'
 require 'lib/bun/formula'

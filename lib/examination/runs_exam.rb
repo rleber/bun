@@ -3,7 +3,7 @@
 
 # Count runs of word characters
 
-require 'lib/string_examination/count_table'
+require 'lib/examination/count_table'
 
 class String
   class Examination
@@ -19,7 +19,7 @@ class String
         string.split(/\W+/).reject {|run| run=='' }
       end
       
-      def calculate_counts
+      def unfiltered_counts
         runs.group_by{|run| run.size}
             .to_a
             .map{|len, words| {length: len, count: words.size} }
@@ -33,7 +33,7 @@ class String
         [:length, :count]
       end
       
-      def right_justified_rows
+      def right_justified_columns
         [0,1]
       end
     end

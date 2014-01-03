@@ -3,7 +3,7 @@
 
 # Counts words
 
-require 'lib/string_examination/count_table'
+require 'lib/examination/count_table'
 
 class String
   class Examination
@@ -21,7 +21,7 @@ class String
         s.split(/\W+/).reject {|run| run=='' }
       end
       
-      def calculate_counts
+      def unfiltered_counts
         runs.group_by{|run| run }
             .to_a
             .map{|word, words| {word: word, count: words.size} }
@@ -39,7 +39,7 @@ class String
         row[:word].safe
       end
       
-      def right_justified_rows
+      def right_justified_columns
         [1]
       end
     end

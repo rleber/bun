@@ -26,14 +26,34 @@ class String
         @code = 0
       end
       
-      # Subclasses should define check method
+      # Subclasses should define analysis method
       def analysis
         missing_method :analysis
       end
-      alias_method :value, :analysis
+      
+      # This allows subclass hooks, e.g.
+      #    def set_value(x)
+      #      ResultClass.new(x)
+      #    end
+      def set_value(x)
+        x
+      end
+      
+      def value
+        @value ||= set_value(analysis)
+      end
+      
+      def reset
+        @value = nil
+      end
+      
+      def recalculate
+        reset
+        value
+      end
       
       def to_s
-        analysis.to_s
+        value.to_s
       end
     end
   end

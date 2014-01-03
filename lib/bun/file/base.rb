@@ -76,7 +76,7 @@ module Bun
           examination.minimum = options[:min] if examination.respond_to?(:minimum)
           examination.case_insensitive = options[:case] if examination.respond_to?(:case_insensitive)
           {
-            result: examination.to_s,
+            result: examination,
             code:   examination.code,
             tag:    options[:tag] || "exam:#{options[:exam]}",
           }

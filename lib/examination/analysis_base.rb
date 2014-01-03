@@ -3,7 +3,7 @@
 
 # Base classes to define analyses on strings (e.g. counting kinds of characters)
 
-require 'lib/string_examination/base'
+require 'lib/examination/base'
 
 class String
   class Examination
@@ -17,7 +17,8 @@ class String
         @code = nil
       end
   
-      def calculate_counts
+      # This allows subclasses to do things like remove zero values
+      def unfiltered_counts
         encoded = @string.force_encoding('ascii-8bit')
         cts = []
         [patterns].flatten.each.with_index do |pat, i|
@@ -30,7 +31,7 @@ class String
         end
         cts
       end
-      alias_method :counts, :calculate_counts
+      alias_method :counts, :unfiltered_counts
   
       def count_hash
         cts = counts

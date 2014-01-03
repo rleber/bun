@@ -3,7 +3,7 @@
 
 # Check: does data contain apparent roff commands ('.xx ...', etc.)
 
-require 'lib/string_examination/boolean'
+require 'lib/examination/boolean'
 
 class String
   class Examination

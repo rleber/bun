@@ -41,9 +41,9 @@ def examine(file=nil)
   asis = opts.delete(:asis)
   options = opts.merge(promote: !asis)
   result = Bun::File.examine(file, options)
-  puts result[:result] unless options[:quiet]
+  puts result[:result].to_s unless options[:quiet]
   if result[:tag] && !options[:temp] && !File.binary?(file)
-    Bun::File::Unpacked.mark(file, {result[:tag]=>result[:result]})
+    Bun::File::Unpacked.mark(file, {result[:tag]=>result[:result]}.inspect)
   end
   code = result[:code]
   if options[:value]

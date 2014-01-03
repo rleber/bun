@@ -3,7 +3,7 @@
 
 # Abstract base class for counting classes of characters
 
-require 'lib/string_examination/count_table'
+require 'lib/examination/count_table'
 
 class String
   class Examination
@@ -31,17 +31,12 @@ class String
         super(string, patterns)
       end
       
-      def calculate_counts
+      def unfiltered_counts
         super.to_a.map.with_index do |row, i|
           row.merge(category: categories[i])
         end
       end
-      
-      def analysis
-        counts.reject {|row| row[:count] <= (minimum||0) }
-        .sort_by{|row| -row[:count]}
-      end
-      
+            
       # These format methods can be overridden in subclasses
       def format_category(row)
         row[:category].to_s.gsub(/non_/i,'non-').gsub('_',' ').titleize

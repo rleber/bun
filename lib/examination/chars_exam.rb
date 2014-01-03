@@ -3,7 +3,7 @@
 
 # Count occurrences of all characters
 
-require 'lib/string_examination/character_class'
+require 'lib/examination/character_class'
 
 class String
   class Examination

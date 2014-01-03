@@ -3,9 +3,11 @@
 
 # Calculate proportion of readable vs. non-readable characters
 
+require 'lib/examination/numeric'
+
 class String
   class Examination
-    class Legibility < Base
+    class Legibility < String::Examination::Numeric
       
       READABLE_CATEGORIES = %w{text digits punctuation control}.map{|c| c.to_sym}
       
@@ -21,8 +23,8 @@ class String
         readable_count*1.0 / total_count
       end
       
-      def to_s
-        '%0.2f%' % (analysis*100.0)
+      def format(x)
+        '%0.2f%' % (x*100.0)
       end
     end
   end

@@ -3,7 +3,7 @@
 
 # Check if string is all readable characters
 
-require 'lib/string_examination/boolean'
+require 'lib/examination/boolean'
 
 class String
   class Examination

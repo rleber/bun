@@ -97,7 +97,9 @@ File type for different kinds of files:
     Troff command files
     Scripts
     Print listings (Qu: are these ever frozen?)
-CSV output
+More flexible output options:
+    CSV output
+    Non-justified (immediate output)
 Loose hook to output printing (e.g. use rleber-table)
 Gemify
     Move Slicr to a gem
