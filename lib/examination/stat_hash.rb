@@ -24,16 +24,18 @@ class String
   class Examination
     # Abstract base class
     # Subclasses need to define patterns
-    class Array < Base
-      
-      class Result < ::Array
-        attr_accessor :exam
-        attr_accessor :right_justified
+    class StatHash < Base
+      module RowFormatting
+        def exam
+          @exam
+        end
         
-        def initialize(exam, array)
-          @exam = exam
-          super(0)
-          push(*array)
+        def right_justified
+          @right_justified
+        end
+        
+        def right_justified=(x)
+          @right_justified=x
         end
         
         # Designed to be overridden in subclasses
@@ -64,8 +66,30 @@ class String
           rows.join("\n")
         end
         
+        def fields
+          exam.fields
+        end
+        
         def titles
           exam.titles
+        end
+        
+        def title_hash
+          fields..zip(exam.titles).inject({}) do |hsh, pair|
+            key, value = pair
+            hsh[key] = value
+            hsh
+          end
+        end
+      end
+      
+      class Result < ::Hash
+        include RowFormatting
+        
+        def initialize(exam, hash)
+          @exam = exam
+          super()
+          self.merge!(hash)
         end
       end
       
@@ -82,7 +106,7 @@ class String
       
       # Designed to be overridden in subclasses
       def titles
-        fields.map{|f| f.to_s.titleize }
+        fields.map{|f| f.to_s.gsub('_',' ').titleize }
       end
 
       # Designed be overridden in subclasses
@@ -97,18 +121,12 @@ class String
           if respond_to?("format_#{f}")
             send("format_#{f}", row)
           else
-            row[f].inspect
+            row[f].to_s
           end
         end
       end
       alias_method :format, :format_row
-      
-      def counts
-        unfiltered_counts.reject {|row| row[:count] < (minimum||1) }
-        .sort_by{|row| -row[:count]}
-      end
-      alias_method :analysis, :counts
-      
+            
       def make_value(x)
         Result.new(self,x)
       end

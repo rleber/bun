@@ -11,7 +11,7 @@ class String
     
     class << self
       def exam_class(analysis)
-        class_name = analysis.to_s.titleize
+        class_name = analysis.to_s.gsub('_',' ').titleize.gsub(/\s+/,'')
         raise Invalid, "Bad analysis: #{analysis.inspect}" if class_name == ''
         const_defined?(class_name) ? const_get(class_name) : nil
       end
@@ -25,7 +25,11 @@ class String
       end
       
       def examination(string, analysis)
-        create(analysis, string).analysis
+        create(analysis, string)
+      end
+      
+      def examine(string, analysis)
+        examination(string, analysis).value
       end
       
       def exam_directory

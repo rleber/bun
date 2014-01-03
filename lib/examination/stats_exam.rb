@@ -7,7 +7,7 @@ require 'lib/examination/character_class'
 
 class String
   class Examination
-    class Stats
+    class Stats < String::Examination::StatHash
       
       
       
@@ -20,6 +20,39 @@ class String
       def self.description
         "Statistics about likelihood this is executable"
       end
+
+      # class Result < String::Examination::CountTable::Result
+      #   def format_rows
+      #     self.map{|row| exam.format_row(row) }
+      #   end
+      # end
+      
+      def analysis
+        {
+          run_size: String::Examination.examination(string, :run_size), 
+          legibility: String::Examination.examination(string, :legibility)
+        }
+      end
+      
+      def format_run_size(row)
+        "%0.2f" % row[:run_size]
+      end
+      
+      def format_legibility(row)
+        row[:legibility].to_s
+      end
+      
+      def fields
+        [:run_size, :legibility]
+      end
+
+      def right_justified_columns
+        [0,1]
+      end
+      
+      # def make_value(x)
+      #   Result.new(self,x)
+      # end
     end
   end
 end

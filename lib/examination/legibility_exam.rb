@@ -16,7 +16,7 @@ class String
       end
       
       def analysis
-        counts = String::Examination.examination(string, :classes)
+        counts = String::Examination.examine(string, :classes)
         total_count = counts.map{|row| row[:count]}.sum
         readable_count = counts.select{|row| READABLE_CATEGORIES.include?(row[:category])} \
                          .map{|row| row[:count]}.sum
