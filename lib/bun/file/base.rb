@@ -69,17 +69,40 @@ module Bun
         data
       end
       
-      def examination(path, analysis, options={})
-        baked_data(path, options).examination(analysis)
+      def examine(file, options={})
+        if options[:exam]
+          examination = Bun::File.create_examination(file, options[:exam], promote: options[:promote])
+          # TODO Change this to range
+          examination.minimum = options[:min] if examination.respond_to?(:minimum)
+          examination.case_insensitive = options[:case] if examination.respond_to?(:case_insensitive)
+          {
+            result: examination.to_s,
+            code:   examination.code,
+            tag:    options[:tag] || "exam:#{options[:exam]}",
+          }
+        elsif options[:formula]
+          # TODO allow other parameters to the formula, from the command line
+          formula = Bun::File.create_formula(file, options[:formula], promote: options[:promote])
+          {
+            result: formula.to_s,
+            tag:    options[:tag],
+          }
+        end
       end
       
-      def formula(path, expression, options={})
+      def create_examination(path, analysis, options={})
+        baked_data(path, options).examination(analysis)
+      end
+      protected :create_examination
+      
+      def create_formula(path, expression, options={})
         file, data = baked_file_and_data(path, options)
         data.formula(options.merge(
                             expression: expression,
                             file: file,
                             path: path))
       end
+      protected :create_formula
   
       def descriptor(options={})
         Header.new(options).descriptor
@@ -97,7 +120,15 @@ module Bun
       
       def packed?(path)
         return false if !unpacked?(path)
-        path.to_s =~ /^$|^-$|ar\d{3}\.\d{4}$/ # nil, '', '-' (all STDIN) or '...ar999.9999'
+        if path.to_s =~ /^$|^-$|ar\d{3}\.\d{4}$/ # nil, '', '-' (all STDIN) or '...ar999.9999'
+          begin
+            File::Packed.open(path, force: true)
+          rescue 
+            false
+          end
+        else
+          false
+        end
       end
       
       def open(path, options={}, &blk)

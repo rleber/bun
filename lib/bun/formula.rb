@@ -3,6 +3,8 @@
 
 module Bun
   class Formula
+    class EvaluationError < RuntimeError; end
+    
     class Context
       # Context for invocation of formulas in bun examine.
       # Should allow expressions to reference the following fields:
@@ -63,9 +65,19 @@ module Bun
       @data = options[:data]
     end
     
-    def to_s
+    def value
       @context = Context.new(@file, @path, @data)
-      @context.instance_eval(@expression)
+      begin
+        @context.instance_eval(@expression)
+      rescue => e
+        raise EvaluationError, e.to_s
+      rescue SyntaxError => e
+        raise EvaluationError, e.to_s
+      end
+    end
+    
+    def to_s
+      value.to_s
     end
   end
 end

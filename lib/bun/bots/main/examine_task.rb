@@ -11,6 +11,8 @@ option 'min',     :aliases=>'-m', :type=>'numeric', :desc=>"For counting examina
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>"Quiet mode"
 option 'tag',     :aliases=>'-T', :type=>'string',  :desc=>"Override the standard mark name"
 option 'temp',    :aliases=>'-t', :type=>'boolean', :desc=>"Don't mark the test in the file"
+option 'value',   :aliases=>'-v', :type=>'string',  :desc=>"Set the return code based on whether the" +
+                                                           " result matches this value"
 long_desc <<-EOT
 Analyze the contents of a file.
 
@@ -20,36 +22,36 @@ Analyses are available via the --exam parameter. Available analyses include:\x5
 
 The command also allows for evaluating arbitrary Ruby expressions.
 
+TODO Explain expression syntax
+TODO Explain how --value works
+
 EOT
 def examine(file=nil)
   if options[:list]
     puts String::Examination.exam_definition_table
     exit
   end
+
   stop "!Must provide file name" unless file
   stop "!Cannot handle --exam and --formula" if options[:exam] && options[:formula]
-  if options[:exam]
-    examination = Bun::File.examination(file, options[:exam], promote: !options[:asis])
-    # TODO Change this to range
-    examination.minimum = options[:min] if examination.respond_to?(:minimum)
-    examination.case_insensitive = options[:case] if examination.respond_to?(:case_insensitive)
-    result = examination.to_s
-    code = examination.code
-    tag = "exam:#{options[:exam]}"
-  elsif options[:formula]
-    # TODO allow other parameters to the formula, from the command line
-    formula = Bun::File.formula(file, options[:formula], promote: !options[:asis])
-    result = formula.to_s
-    tag = "formula:#{options[:formula]}"
-  else
-    stop "!Must provide either --exam or --formula"
+  stop "!Must do either --exam or --formula" if !options[:exam] && !options[:formula]
+  stop "!Must specify either --tag or --temp" if options[:formula] && !options[:temp] && !options[:tag]
+  
+  opts = options.dup # Weird behavior of options here
+  asis = opts.delete(:asis)
+  options = opts.merge(promote: !asis)
+  result = Bun::File.examine(file, options)
+  puts result[:result] unless options[:quiet]
+  if result[:tag] && !options[:temp] && !File.binary?(file)
+    Bun::File::Unpacked.mark(file, {result[:tag]=>result[:result]})
   end
-  puts result unless options[:quiet]
-  tag = options[:tag] || tag
-  unless options[:temp] || File.binary?(file)
-    Bun::File::Unpacked.mark(file, {tag=>result})
+  code = result[:code]
+  if options[:value]
+    code = options[:value] == result[:result] ? 0 : 1
   end
   exit(code || 0)
+rescue Formula::EvaluationError => e
+  stop "!Evaluation error: #{e}"
 rescue String::Examination::Invalid => e
   warn "!Invalid analysis: #{options[:exam]}" unless options[:quiet]
   exit(99)
