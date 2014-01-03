@@ -30,6 +30,7 @@ class String
       def analysis
         missing_method :analysis
       end
+      alias_method :value, :analysis
       
       def to_s
         analysis.to_s

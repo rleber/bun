@@ -14,7 +14,7 @@ class String
       end
       
       def true?
-        missing_method :true
+        missing_method :true?
       end
       
       def analysis

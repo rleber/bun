@@ -1,11 +1,16 @@
 TODO
 _High Priority_
 More extensions to bun examine
-    Printer listing (same as overstruck?)
+    Printer listing
+        Largely printable
+        Very few large runs
+        Overstruck
     Object file
+        Very few large runs
+        Largely unreadable
     Try determining type by comparing preamble contents:
         Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
-        binary load module
+            binary load module
 Implement bun library clean
     Find duplicates
     Remove unclean files

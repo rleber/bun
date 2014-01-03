@@ -218,6 +218,65 @@ module Bun
       def build_symlink(stage)
         `ln -s #{@directories[stage]} #{@symlinks[stage]}`
       end
+      
+      def glob_all(files)
+        files.map do |f|
+          path = File.expand_path(f)
+          if File.directory?(f)
+            Dir.glob(File.join(f,'**','*'))
+          else
+            f
+          end
+        end.flatten
+      end
+      
+      def examine_select(files, options={}, &blk)
+        glob_all(files).map do |file|
+          res=false
+          begin
+            if !File.directory?(file)
+              result = Bun::File.examine(file, options)
+              code = result[:code] || 0
+              if options[:value]
+                code = options[:value] == result[:result] ? 0 : 1
+              end
+              res = code==0
+              yield(result) if block_given? && res
+            end
+          rescue Formula::EvaluationError => e
+            warn "!Evaluation error: #{e}" unless options[:quiet]
+            res = nil
+          rescue String::Examination::Invalid => e
+            warn "!Invalid analysis: #{options[:exam]}" unless options[:quiet]
+            res = nil
+          end
+          res
+        end
+      end
+        
+      def examine_map(files, options={}, &blk)
+        glob_all(files).map do |file|
+          begin
+            if !File.directory?(file)
+              result = Bun::File.examine(file, options)
+              code = result[:code] || 0
+              if options[:value]
+                code = options[:value] == result[:result] ? 0 : 1
+              end
+              result = {file: file, code: result[:code], result: result[:result]}
+              result = yield(result) if block_given?
+              result
+            end
+          rescue Formula::EvaluationError => e
+            warn "!Evaluation error: #{e}" unless options[:quiet]
+            {file: file, result: nil, code: 0}
+          rescue String::Examination::Invalid => e
+            warn "!Invalid analysis: #{options[:exam]}" unless options[:quiet]
+            {file: file, result: nil, code: 0}
+          end
+        end
+      end
+
     end
     
     # TODO Is there a more descriptive name for this?

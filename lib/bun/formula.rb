@@ -19,12 +19,12 @@ module Bun
     
       attr_reader :path
     
-      def fields
-        FieldAccessor.new(@file)
+      def f
+        @f ||= FieldAccessor.new(@file)
       end
     
-      def exams
-        ExamAccessor.new(@file, @data)
+      def e
+        @e ||= ExamAccessor.new(@file, @data)
       end
     
       class FieldAccessor

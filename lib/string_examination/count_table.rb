@@ -13,7 +13,7 @@ class String
       attr_accessor :minimum
 
       def categories
-        raise "class #{self.class} does not define a categories method"
+        missing_method :categories
       end
       
       # Designed be overridden in subclasses
