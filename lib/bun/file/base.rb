@@ -69,7 +69,7 @@ module Bun
         data
       end
       
-      def examine(file, options={})
+      def examination(file, options={})
         if options[:exam]
           examination = Bun::File.create_examination(file, options[:exam], promote: options[:promote])
           # TODO Change this to range
@@ -84,6 +84,7 @@ module Bun
           # TODO allow other parameters to the formula, from the command line
           formula = Bun::File.create_formula(file, options[:formula], promote: options[:promote])
           {
+            # TODO Use .value?
             result: formula.to_s,
             tag:    options[:tag],
           }

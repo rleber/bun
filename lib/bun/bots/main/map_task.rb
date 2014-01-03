@@ -42,32 +42,46 @@ def map(*files)
   max_columns = 0
   table = []
   last_result = nil
+  column_sizes = []
+  
   Archive.examine_map(files, options) do |result| 
-    file_column_size = [file_column_size, result[:file].size].max
     last_result = result[:result]
-    row = [result[:file], result[:result]].flatten
+    if result[:result].value.class < Hash
+      row = [result[:file], result[:result].value.values].flatten
+    else
+      row = [result[:file], result[:result]].flatten
+    end
+    row.size.times do |i|
+      column_sizes[i] = [column_sizes[i]||0, row[i].to_s.size].max
+    end
     max_columns = [max_columns, row.size].max
     if options[:justify]
       table << row
     else
-      puts row.join('  ')
+      puts row.map.with_index{|entry, i| entry.to_s.ljust(column_sizes[i]) }.join('  ')
     end
   end
+  
+  # If justified, create titles and justify
   if options[:justify] && max_columns > 0 # i.e. at least one row
-    titles = case max_columns
+    titles = []
+    if last_result.respond_to?(:titles)
+      # Splice the titles together
+      (0...max_columns).each do |i|
+        titles << (['File'] + last_result.titles)[i]
+      end
+    end
+    default_titles = case max_columns
     when 1
       nil
     when 2
       %w{File Result}
     else
-      ['File'] + (1..max_columns).map {|i| "Result #{i}"}
+      ['File'] + (1...max_columns).map {|i| "Result #{i}"}
     end
-    if titles
-      if last_result.respond_to?(:titles)
-        # Splice the titles together
-        (titles.size...max_columns).each do |i|
-          titles += last_result.titles[i]
-        end
+    if default_titles
+      (titles.size...max_columns).each do |i|
+        titles << default_titles[i]
       end
       table.unshift titles
     end

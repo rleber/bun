@@ -29,8 +29,10 @@ class String
       
       def analysis
         {
-          run_size: String::Examination.examination(string, :run_size), 
-          legibility: String::Examination.examination(string, :legibility)
+          run_size:   String::Examination.examination(string, :run_size), 
+          legibility: String::Examination.examination(string, :legibility),
+          overstruck: String::Examination.examination(string, :overstruck),
+          roff:       String::Examination.examination(string, :roff),
         }
       end
       
@@ -38,12 +40,8 @@ class String
         "%0.2f" % row[:run_size]
       end
       
-      def format_legibility(row)
-        row[:legibility].to_s
-      end
-      
       def fields
-        [:run_size, :legibility]
+        [:run_size, :legibility, :overstruck, :roff]
       end
 
       def right_justified_columns

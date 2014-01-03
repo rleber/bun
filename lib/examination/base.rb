@@ -60,6 +60,10 @@ class String
       def to_s
         value.to_s
       end
+      
+      def inspect
+        value.inspect
+      end
     end
   end
 end

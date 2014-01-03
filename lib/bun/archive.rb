@@ -258,7 +258,7 @@ module Bun
         glob_all(files).map do |file|
           begin
             if !File.directory?(file)
-              result = Bun::File.examine(file, options)
+              result = Bun::File.examination(file, options)
               code = result[:code] || 0
               if options[:value]
                 code = options[:value] == result[:result] ? 0 : 1
