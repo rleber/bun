@@ -13,7 +13,7 @@ class String
       attr_accessor :case_insensitive
       
       def self.description
-        "Count runs of word characters"
+        "Count words"
       end
       
       def runs

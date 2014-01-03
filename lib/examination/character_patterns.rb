@@ -3,18 +3,23 @@
 
 # Base classes to define analyses on strings (e.g. counting kinds of characters)
 
-require 'lib/examination/base'
-
 class String
   class Examination
-    class AnalysisBase < Base
-      attr_accessor :string
-      attr_accessor :patterns
-    
-      def initialize(string, patterns=[/./])
-        @patterns = patterns
-        super(string)
-        @code = nil
+    module CharacterPatterns
+      def string
+        @string
+      end
+      
+      def string=(s)
+        @string=s
+      end
+      
+      def patterns
+        @patterns
+      end
+      
+      def patterns=(p)
+        @patterns=p
       end
   
       # This allows subclasses to do things like remove zero values
@@ -31,7 +36,10 @@ class String
         end
         cts
       end
-      alias_method :counts, :unfiltered_counts
+      
+      def counts
+        unfiltered_counts
+      end
   
       def count_hash
         cts = counts

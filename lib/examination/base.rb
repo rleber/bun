@@ -32,15 +32,20 @@ class String
       end
       
       # This allows subclass hooks, e.g.
-      #    def set_value(x)
+      #    def make_value(x)
       #      ResultClass.new(x)
       #    end
-      def set_value(x)
+      def make_value(x)
         x
       end
       
       def value
-        @value ||= set_value(analysis)
+        self.value = make_value(analysis) unless @value
+        @value
+      end
+      
+      def value=(x)
+        @value=x
       end
       
       def reset

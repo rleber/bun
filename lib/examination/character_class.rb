@@ -4,12 +4,14 @@
 # Abstract base class for counting classes of characters
 
 require 'lib/examination/count_table'
+require 'lib/examination/character_patterns'
 
 class String
   class Examination
     # Abstract base class
     # Subclasses need to define patterns
     class CharacterClass < CountTable
+      include CharacterPatterns
       
       def pattern_hash
         self.class.const_get('PATTERN_HASH')
@@ -24,11 +26,11 @@ class String
       end
       
       def patterns
-        pattern_hash.values
+        @patterns ||= pattern_hash.values
       end
       
       def initialize(string='')
-        super(string, patterns)
+        super
       end
       
       def unfiltered_counts

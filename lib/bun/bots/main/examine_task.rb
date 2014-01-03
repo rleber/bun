@@ -53,6 +53,6 @@ def examine(file=nil)
 rescue Formula::EvaluationError => e
   stop "!Evaluation error: #{e}"
 rescue String::Examination::Invalid => e
-  warn "!Invalid analysis: #{options[:exam]}" unless options[:quiet]
+  warn "!#{options[:exam]} is an invalid analysis: #{e}" unless options[:quiet]
   exit(99)
 end

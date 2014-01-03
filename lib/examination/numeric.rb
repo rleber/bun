@@ -27,7 +27,6 @@ class String
         end
         
         def to_s
-          debug "value: #{value.inspect}"
           exam.format(value)
         end
         
@@ -37,8 +36,8 @@ class String
         end
       end
       
-      def set_value(x)
-        @result = Result.new(self, x)
+      def make_value(x)
+        Result.new(self, x)
       end
       
       def format(x)
