@@ -1,5 +1,9 @@
 TODO
 _High Priority_
+Find duplicates
+    Same file name
+    Same MD5 hash
+    Absolutely identical
 More extensions to bun examine
     Printer listing
         Largely printable
@@ -13,6 +17,9 @@ More extensions to bun examine
             binary load module
 Implement bun library clean
     Find duplicates
+        Same file name
+        Same MD5 hash
+        Absolutely identical
     Remove unclean files
     Possible --tag option (place a tag saying what happened to files which were removed)
 Implement bun library organize
