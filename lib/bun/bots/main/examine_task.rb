@@ -40,7 +40,7 @@ def examine(file=nil)
   opts = options.dup # Weird behavior of options here
   asis = opts.delete(:asis)
   options = opts.merge(promote: !asis)
-  result = Bun::File.examine(file, options)
+  result = Bun::File.examination(file, options)
   puts result[:result].to_s unless options[:quiet]
   if result[:tag] && !options[:temp] && !File.binary?(file)
     Bun::File::Unpacked.mark(file, {result[:tag]=>result[:result]}.inspect)
