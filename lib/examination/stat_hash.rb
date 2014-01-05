@@ -111,6 +111,13 @@ class String
 
       # Designed be overridden in subclasses
       def right_justified_columns
+        res = fields.map.with_index do |field, i|
+          klass = String::Examination.exam_class(field) rescue nil
+          [(klass && klass.justification) || :left, i]
+        end
+        res = res.select {|justification, index| justification == :right}
+                 .map{|justification, index| index}
+        res
       end
       alias_method :right_justified, :right_justified_columns
 

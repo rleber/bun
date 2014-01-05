@@ -13,6 +13,11 @@ class String
       def self.description
       end
       
+      # Default; may be overridden in subclasses
+      def self.justification
+        :left
+      end
+      
       def description
         self.class.description
       end

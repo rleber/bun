@@ -36,6 +36,11 @@ class String
         end
       end
       
+      # Default; may be overridden in subclasses
+      def self.justification
+        :right
+      end
+
       def make_value(x)
         Result.new(self, x)
       end

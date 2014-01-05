@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-# Calculate some statistics about the likelihood that this is an executable file
+# Calculate some statistics about the likelihood that this is not a text file
 
 require 'lib/examination/character_class'
 
@@ -18,22 +18,14 @@ class String
       }
       
       def self.description
-        "Statistics about likelihood this is executable"
+        "Statistics about likelihood this is not a text file"
       end
-
-      # class Result < String::Examination::CountTable::Result
-      #   def format_rows
-      #     self.map{|row| exam.format_row(row) }
-      #   end
-      # end
       
       def analysis
-        {
-          run_size:   String::Examination.examination(string, :run_size), 
-          legibility: String::Examination.examination(string, :legibility),
-          overstruck: String::Examination.examination(string, :overstruck),
-          roff:       String::Examination.examination(string, :roff),
-        }
+        fields.inject({}) do |hsh, field|
+          hsh[field] = String::Examination.examination(string, field)
+          hsh
+        end
       end
       
       def format_run_size(row)
@@ -41,12 +33,12 @@ class String
       end
       
       def fields
-        [:run_size, :legibility, :overstruck, :roff]
+        [:run_size, :legibility, :english, :overstruck, :roff]
       end
 
-      def right_justified_columns
-        [0,1]
-      end
+      # def right_justified_columns
+      #   [0,1]
+      # end
       
       # def make_value(x)
       #   Result.new(self,x)
