@@ -88,6 +88,15 @@ module Bun
             result: formula.to_s,
             tag:    options[:tag],
           }
+        elsif options[:match]
+          regexp = Regexp.new(options[:match])
+          if options[:case]
+            regexp = Regexp.new(options[:match], Regexp::IGNORECASE)
+          else
+            regexp = Regexp.new(options[:match])
+          end
+          res = baked_data(file, options) =~ regexp
+          { result: res, code: res.nil? ? 1 : 0 }
         end
       end
       

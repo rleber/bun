@@ -235,13 +235,16 @@ module Bun
           res=false
           begin
             if !File.directory?(file)
-              result = Bun::File.examine(file, options)
+              result = Bun::File.examination(file, options)
               code = result[:code] || 0
               if options[:value]
                 code = options[:value] == result[:result] ? 0 : 1
               end
               res = code==0
-              yield(result) if block_given? && res
+              if res
+                result = result.merge(file: file)
+                yield(result) if block_given?
+              end
             end
           rescue Formula::EvaluationError => e
             warn "!Evaluation error: #{e}" unless options[:quiet]
@@ -260,10 +263,12 @@ module Bun
             if !File.directory?(file)
               result = Bun::File.examination(file, options)
               code = result[:code] || 0
+              res = result[:result]
+              res = res ? 'match' : 'no_match' if options[:match]
               if options[:value]
-                code = options[:value] == result[:result] ? 0 : 1
+                code = options[:value] == res ? 0 : 1
               end
-              result = {file: file, code: result[:code], result: result[:result]}
+              result = {file: file, code: result[:code], result: res}
               result = yield(result) if block_given?
               result
             end

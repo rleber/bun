@@ -7,7 +7,8 @@ option 'case',    :aliases=>'-c', :type=>'boolean', :desc=>"Case insensitive"
 option 'exam',    :aliases=>'-e', :type=>'string',  :desc=>"What test? See bun help check for options"
 option 'formula', :aliases=>'-f', :type=>'string',  :desc=>"Evaluate a Ruby formula -- see help"
 option 'list',    :aliases=>'-l', :type=>'boolean', :desc=>"List the defined examinations"
-option 'min',     :aliases=>'-m', :type=>'numeric', :desc=>"For counting examinations: minimum count"
+option 'match',   :aliases=>'-m', :type=>'string',  :desc=>"Matches this regular expression (Ruby format)"
+option 'min',     :aliases=>'-M', :type=>'numeric', :desc=>"For counting examinations: minimum count"
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>"Quiet mode"
 option 'tag',     :aliases=>'-T', :type=>'string',  :desc=>"Override the standard mark name"
 option 'temp',    :aliases=>'-t', :type=>'boolean', :desc=>"Don't mark the test in the file"
@@ -33,16 +34,21 @@ def examine(file=nil)
   end
 
   stop "!Must provide file name" unless file
-  stop "!Cannot handle --exam and --formula" if options[:exam] && options[:formula]
-  stop "!Must do either --exam or --formula" if !options[:exam] && !options[:formula]
+  option_count = [:exam, :formula, :match].inject(0) {|sum, option| sum += 1 if options[option]; sum }
+  stop "!Cannot have more than one of --exam, --formula and --match" if option_count > 1
+  stop "!Must do one of --exam, --formula or --match" if option_count == 0
   stop "!Must specify either --tag or --temp" if options[:formula] && !options[:temp] && !options[:tag]
   
   opts = options.dup # Weird behavior of options here
   asis = opts.delete(:asis)
   options = opts.merge(promote: !asis)
   result = Bun::File.examination(file, options)
-  puts result[:result].to_s unless options[:quiet]
-  if result[:tag] && !options[:temp] && !File.binary?(file)
+  if options[:match]
+    puts result[:result] ? 'match' : 'no_match' unless options[:quiet]
+  else
+    puts result[:result].to_s unless options[:quiet]
+  end
+  if result[:tag] && !options[:match] && !options[:temp] && !File.binary?(file)
     Bun::File::Unpacked.mark(file, {result[:tag]=>result[:result]}.inspect)
   end
   code = result[:code]
