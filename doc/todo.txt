@@ -1,8 +1,19 @@
 TODO
 _High Priority_
+Allow baked_data for frozen archives
+    File::Decoded must understand that promoting an unpacked file archive may result in multiple files
+        (perhaps it results in a directory?)
+        This probably shouldn't be the default behavior of File::Unpacked open/decode
+Fix bugs
+    bun describe <packed_file> doesn't work -- try ar004.0888, for instance
+    bun bake <unpacked ar003.0698.bun> produces gibberish
+    bun legibility packed ar003.0698 is 100%
+More ways to examine:
+    Extended fields (pre-defined, e.g. tape basename, etc.)
+        File name (with subfiles, etc.)
+        File basename
 Find duplicates
     Same file name
-    Same MD5 hash
     Absolutely identical
 More extensions to bun examine
     Printer listing
@@ -15,6 +26,24 @@ More extensions to bun examine
     Try determining type by comparing preamble contents:
         Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
             binary load module
+bun file editor
+    Checkout/checking (or in-place edit)
+    Produce multiple synchronized lines
+        9-bit ASCII
+        8-bit ASCII
+        7-bit ASCII
+        hex
+        octal
+        decimal
+    Look for edit marks (or a separate edit line)
+        [...] {...} / \ dddd i
+Consolidate exam, field, formula in bun find, map, and examine
+    Allow exam: (etc.) syntax
+    Allow <field_or_exam_name> without e[] or f[] syntax
+    Prescan formulas to check for simple references to fields or exams (for speed) ?
+    Allow multiple fields somehow
+    Is the -e/f option required at all?
+Should bun find be called bun grep?
 Implement bun library clean
     Find duplicates
         Same file name

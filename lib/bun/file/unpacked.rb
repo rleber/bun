@@ -46,6 +46,7 @@ module Bun
           options = options.merge(:data=>@data, :descriptor=>@descriptor, :tape_path=>options[:fname])
           if options[:type] && @descriptor[:tape_type]!=options[:type]
             msg = "Expected file #{fname} to be a #{options[:type]} file, not a #{descriptor[:tape_type]} file"
+            # TODO Remove this option; use exception handling, instead
             if options[:graceful]
               stop "!#{msg}"
             else

@@ -97,9 +97,8 @@ class String
     self.force_encoding('ascii-8bit') =~ /\x8/
   end
   
-  def examination(analysis)
-    examiner = String::Examination.create(analysis)
-    examiner.string = self
+  def examination(analysis, options={})
+    examiner = String::Examination.create(analysis, self, options)
     examiner
   end
   

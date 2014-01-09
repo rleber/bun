@@ -12,17 +12,34 @@ class String
       # TODO Handle root words (e.g. having, have) more intelligently
       # TODO Refactor using ffi-aspell
       # TODO Put this in config
-      LIBRARY_FILE = '/usr/share/dict/words'
+      DICTIONARY_FILE = '/usr/share/dict/words'
 
-      def library
-        @library ||= ::File.read(LIBRARY_FILE)
-                           .chomp
-                           .split("\n")
-                           .inject({}) {|hsh, word| w = word.strip.downcase; hsh[w] = true; hsh }
+      @@dictionary = nil
+      
+      def self.included(base)
+        base.extend(ClassMethods)
+      end
+      
+      module ClassMethods
+        def dictionary
+          @@dictionary ||= ::File.read(DICTIONARY_FILE)
+                             .chomp
+                             .split("\n")
+                             .inject({}) {|hsh, word| w = word.strip.downcase; hsh[w] = true; hsh }
+        end
+      
+        def dictionary_add(word)
+          @@dictionary ||= self.dictionary
+          @@dictionary[word.downcase] = true
+        end
+      end
+      
+      def dictionary
+        self.class.dictionary
       end
       
       def _is_english?(word)
-        word && library[word.downcase]
+        word && dictionary[word.downcase]
       end
       private :_is_english?
             
@@ -48,7 +65,9 @@ class String
             word =~ /[a-z]{2,}ied|ies$/i && _is_english?(word[0..-4]+'y'),
             word =~ /[a-z]{2,}tion$/i && _is_english?(word[0..-5]+'e'),
           ]
-          tests.any? {|test| test }
+          res = tests.any? {|test| test }
+          self.class.dictionary_add(word) if res
+          res
         end
       end
     end

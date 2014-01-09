@@ -8,6 +8,7 @@ class String
     class Base
       attr_accessor :string
       attr_reader :code
+      attr_accessor :options
       
       # Should be overridden in subclasses
       def self.description
@@ -26,9 +27,10 @@ class String
         stop "!#{self.class} does not define #{meth} method"
       end
     
-      def initialize(string='')
+      def initialize(string='', options={})
         @string = string
         @code = 0
+        @options = options
       end
       
       # Subclasses should define analysis method

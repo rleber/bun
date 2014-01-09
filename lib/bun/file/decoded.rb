@@ -18,6 +18,8 @@ module Bun
         
         def build_descriptor(input)
           @descriptor = Hashie::Mash.new(input)
+          @descriptor.fields = @descriptor.keys
+          @descriptor.shard_count = 1 if @descriptor.tape_type == :frozen
         end
         
         def examination(path, test)
@@ -40,7 +42,19 @@ module Bun
             if options[:promote]
               t = Tempfile.new('promoted_to_decoded_')
               t.close
-              super(fname, options) {|f| f.decode(t.path, options)}
+              super(fname, options) do |f|
+                if f.tape_type == :frozen
+                  ::File.open(t.path, 'w') do |outfile|
+                    f.shard_count.times do |i|
+                      # TODO: insert shard names, allow overriding (or prevention) of headers
+                      outfile.puts "----- Shard #{i} -----"
+                      outfile.write f.to_decoded_yaml(options.merge(shard: i))
+                    end
+                  end
+                else
+                  f.decode(t.path, options)
+                end
+              end
               # puts "Decoded file:" # debug
               # system("cat #{t.path} | more")
               f = File::Decoded.open(t.path, options, &blk)

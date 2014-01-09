@@ -16,12 +16,12 @@ class String
         const_defined?(class_name) ? const_get(class_name) : nil
       end
       
-      def create(analysis, string='')
+      def create(analysis, string='', options={})
         klass = exam_class(analysis)
         raise Invalid, "Examination class not defined: #{analysis}" unless klass
         raise Invalid, "Examination class is not a String::Examination: #{analysis}" \
             unless klass < String::Examination::Base
-        klass.new(string)
+        klass.new(string, options)
       end
       
       def examination(string, analysis)
@@ -63,5 +63,6 @@ class String
 end
 
 String::Examination.all_exam_files.each do |f|
+  # TODO Fix this -- it only works in the home directory
   require "lib/examination/#{f.sub(/\.rb$/,'')}"
 end

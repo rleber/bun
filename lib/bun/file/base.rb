@@ -27,7 +27,8 @@ module Bun
           cache_stdin
         end
         stop "!File #{path} does not exist" unless File.exists?(path)
-        ::File.read(path, *args).force_encoding('ascii-8bit')
+        text = ::File.read(path, *args) || ''
+        text.force_encoding('ascii-8bit')
       end
       
       # Read STDIN and save it to a tempfile
@@ -80,6 +81,14 @@ module Bun
             code:   examination.code,
             tag:    options[:tag] || "exam:#{options[:exam]}",
           }
+        elsif options[:field]
+          value = File.open(file) do |f|
+            value = f.descriptor[options[:field]] || nil rescue nil
+          end
+          {
+            result: value,
+            tag: options[:field]
+          }
         elsif options[:formula]
           # TODO allow other parameters to the formula, from the command line
           formula = Bun::File.create_formula(file, options[:formula], promote: options[:promote])
@@ -97,11 +106,13 @@ module Bun
           end
           res = baked_data(file, options) =~ regexp
           { result: res, code: res.nil? ? 1 : 0 }
+        elsif options[:text]
+          { result: baked_data(file, promote: true)||'', code: 0 }
         end
       end
       
       def create_examination(path, analysis, options={})
-        baked_data(path, options).examination(analysis)
+        baked_data(path, options).examination(analysis, file: path)
       end
       protected :create_examination
       
@@ -114,10 +125,6 @@ module Bun
       end
       protected :create_formula
   
-      def descriptor(options={})
-        Header.new(options).descriptor
-      end
-      
       def binary?(path)
         prefix = File.read(path, 4)
         prefix != "---\n" # YAML prefix; one of the unpacked formats
@@ -142,17 +149,24 @@ module Bun
       end
       
       def open(path, options={}, &blk)
-        if packed?(path)
+        # TODO But file_grade opens and reads the file, too...
+        case file_grade(path)
+        when :packed
           File::Packed.open(path, options, &blk)
-        else
+        when :unpacked
           File::Unpacked.open(path, options, &blk)
+        when :decoded
+          File::Decoded.open(path, options, &blk)
+        else
+          # TODO Why not?
+          raise BadFileGrade, "Can't open baked file"
         end
       end
       
       def tape_type(path)
-        return :packed if packed?(path)
+        # return :packed if packed?(path)
         begin
-          f = File::Unpacked.open(path) 
+          f = File::Unpacked.open(path, promote: true) 
           f.tape_type
         rescue
           :unknown
@@ -176,12 +190,10 @@ module Bun
       
       def descriptor(path, options={})
         # TODO This is smelly (but necessary, in case the file was opened with :force)
+        # bun describe <packed file> fails right here
         open(path, :force=>true) {|f| f.descriptor }
-      rescue Bun::File::UnknownFileType =>e 
-        nil
       rescue Errno::ENOENT => e
         return nil if options[:allow]
-        stop "!File #{path} does not exist" if options[:graceful]
         raise
       end
       
