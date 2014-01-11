@@ -170,6 +170,54 @@ shared_examples "command with file" do |descr, command, expected_stdout_file, ou
   end
 end
 
+describe Bun::Shell do
+  context "write" do
+    context "with null file" do
+      before :all do
+        @shell = Bun::Shell.new
+        @stdout_content = capture(:stdout) { @res = @shell.write(nil, "foo") }
+      end
+      it "should return the text" do
+        @res.should == "foo"
+      end
+      it "should write nothing to $stdout" do
+        @stdout_content.should == ""
+      end
+    end
+    context "with - as file" do
+      before :all do
+        @shell = Bun::Shell.new
+        @stdout_content = capture(:stdout) { @res = @shell.write("-", "foo") }
+      end
+      it "should return the text" do
+        @res.should == "foo"
+      end
+      it "should write the text to $stdout" do
+        @stdout_content.should == "foo"
+      end
+    end
+    context "with other file name" do
+      before :all do
+        @shell = Bun::Shell.new
+        @file = "output/test_actual/shell_write_test.txt"
+        exec("rm -f #{@file}")
+        @res = @shell.write(@file, "foo")
+      end
+      it "should return the text" do
+        @res.should == "foo"
+      end
+      it "should write the text to the file given" do
+        file_should_exist @file
+        content = ::File.read(@file)
+        content.should == "foo"
+      end
+      after :all do
+        exec("rm -f #{@file}")
+      end
+    end
+  end
+end
+
 UNPACK_PATTERNS = {
   :unpack_time=>/:unpack_time: \d{4}-\d\d-\d\d \d\d:\d\d:\d\d\.\d{9} [-+]\d\d:\d\d\n?/,
   :unpacked_by=>/:unpacked_by:\s+Bun version \d+\.\d+\.\d+\s+\[.*?\]\n?/, 

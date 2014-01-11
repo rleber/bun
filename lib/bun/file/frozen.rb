@@ -14,14 +14,14 @@ module Bun
       
       attr_reader :file
       attr_accessor :status
-      attr_accessor :warn
+      attr_accessor :line_correct
     
       # TODO do we ever instantiate a File::Frozen without a new file? If not, refactor
       def initialize(options={})
         options[:data] = Data.new(options) if options[:data] && !options[:data].is_a?(Bun::Data)
         super
         descriptor.register_fields(:shards, :file_time)
-        @warn = options[:warn]
+        @line_correct = options[:line_correct]
       end
       
       # This is the official definition. Even though some other approaches might be more reliable,
@@ -195,11 +195,12 @@ module Bun
         LazyArray.new(shard_count) {|i| thaw(i) }
       end
 
+      # TODO Rename decode (Carefully: decode is used for a different meaning on some other methods)
       def thaw(n)
         words = shard_words(n)
         line_offset = 0
         lines = []
-        warned = false
+        line_corrected = false
         shard_descriptor(n).status = :readable
         while line_offset < words.size
           last_line_word, line, okay = thaw_line(n, words, line_offset)
@@ -209,8 +210,8 @@ module Bun
             else
               shard_descriptor(n).status = :truncated
             end
-            Kernel.warn "Bad lines corrected" if !warned && @warn
-            warned = true
+            Kernel.line_correct "Bad lines corrected" if !line_corrected && @line_correct
+            line_corrected = true
             break
           else
             raw_line = line

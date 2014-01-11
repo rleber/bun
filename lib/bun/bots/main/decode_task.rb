@@ -21,6 +21,8 @@ def decode(file_name, out=nil)
     file_name = $1
     shard = $2
   end
+  out ||= '-'
+  # TODO The following should be a simple primitive operation
   case File.file_grade(file_name)
   when :baked
     stop "!Can't decode file. It is already baked"
@@ -34,7 +36,7 @@ def decode(file_name, out=nil)
   else
     File::Unpacked.open(file_name, :promote=>!options[:asis]) do |file|
       file.decode(out, options.merge(:shard=>shard))
-      warn "Thawed with #{file.errors.count} decoding errors" if options[:warn] && file.errors > 0
+      warn "Decoded with #{file.errors.count} decoding errors" if options[:warn] && file.errors > 0
     end
   end
 end

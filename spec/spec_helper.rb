@@ -11,14 +11,14 @@ require 'rspec/expectations'
 # Usage capture :stdout, :stderr { foo } => <contents of all streams>
 def capture(*streams)
   streams.map! { |stream| stream.to_s }
+  sio = StringIO.new
   begin
-    result = StringIO.new
-    streams.each { |stream| eval "$#{stream} = result" }
+    streams.each { |stream| eval "$#{stream} = sio" }
     yield
   ensure
     streams.each { |stream| eval("$#{stream} = #{stream.upcase}") }
   end
-  result.to_s
+  sio.string
 end
 
 def debug?

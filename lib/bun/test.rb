@@ -35,9 +35,22 @@ module Bun
       
       def backtrace(options={})
         commands = ::File.read(BACKTRACE_FILE).chomp.split("\n") rescue []
-        n = options[:n] || commands.size
-        n = [n.to_i, commands.size].min
-        commands = commands[(-n)..-1]
+        all = 0...(commands.size)
+        n = options[:range] || all
+        n = begin
+          n.is_a?(String) ? eval(n) : n
+        rescue
+          nil
+        end
+        case n
+        when Numeric
+          n = 0..([n.to_i, commands.size-1].min)
+        when Range
+          # Do nothing
+        else
+          raise ArgumentError, "Unexpected trace range: #{options[:range].inspect}"
+        end
+        commands = commands[n]
         unless options[:preserve]
           commands = commands.map do |c|
             words = c.shellsplit

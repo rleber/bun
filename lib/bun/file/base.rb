@@ -5,6 +5,7 @@ require 'lib/bun/file/descriptor'
 require 'lib/string'
 require 'yaml'
 require 'date'
+require 'tmpdir'
 
 module Bun
 
@@ -46,6 +47,30 @@ module Bun
         end
         relative_to = options[:relative_to] || ENV['HOME']
         File.expand_path(File.join(*f), relative_to).sub(/^#{Regexp.escape(relative_to)}\//,'')
+      end
+
+      def temporary_file_name(seed)
+        Dir::Tmpname.make_tmpname [Dir::Tmpname.tmpdir, seed], nil
+      end
+
+      def temporary_file(seed, options={}, &blk)
+        file = Tempfile.new(seed)
+        return file unless block_given?
+        begin
+          yield(file)
+        ensure
+          file.close unless options[:keep]
+        end
+      end
+
+      def temporary_directory(seed, options={}, &blk)
+        directory_name = Dir.mktmpdir(seed)
+        return directory_name unless block_given?
+        begin
+          yield(directory_name)
+        ensure
+          Dir.rmdir(directory_name) unless options[:keep]
+        end
       end
 
       # def control_character_counts(path)
@@ -150,7 +175,7 @@ module Bun
       
       def open(path, options={}, &blk)
         # TODO But file_grade opens and reads the file, too...
-        case file_grade(path)
+        case grade = file_grade(path)
         when :packed
           File::Packed.open(path, options, &blk)
         when :unpacked

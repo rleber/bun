@@ -1,9 +1,40 @@
 TODO
 _High Priority_
+Remove Bun::File temporary file code
 Allow baked_data for frozen archives
-    File::Decoded must understand that promoting an unpacked file archive may result in multiple files
-        (perhaps it results in a directory?)
-        This probably shouldn't be the default behavior of File::Unpacked open/decode
+    Decoding an unpacked file archive may result in multiple files
+        Check out Archive.decode
+        Shell.write 
+                - Should always return the text
+                - Shell.write(nil) does not write any file (including STDOUT)
+        File::Unpacked.decode 
+                with a :frozen file
+                        - Fails unless file name is nil
+                        - Fails unless option :expand
+                        - Returns an array of results
+                with :expand option
+                        - Always returns an array
+                        - Fails unless file name is nil
+        File::Decoded.open
+                With :expand and :promote option on a packed or unpacked file
+                        Invokes File::Unpacked with :expand option and nil file
+                        Handles multiple returned files
+                        Always returns an array of files
+                Without :expand option
+                        Returns file as a scalar
+                        Fails if a frozen file packed or unpacked is encountered
+        File::Baked class
+                Mostly, behaves like ::File
+                Provides a :promote option to open
+        bun bake
+                Should create directories for frozen files
+                Should invoke File::Decoded.bake
+        Archive::decode
+            With :expand option
+                Should create directories for frozen files
+            Without :expand option
+                Fails if a frozen file packed or unpacked is encountered
+Expand tests to cover all file types: unpack, decode, bake, describe
 Fix bugs
     bun describe <packed_file> doesn't work -- try ar004.0888, for instance
     bun bake <unpacked ar003.0698.bun> produces gibberish
@@ -53,8 +84,8 @@ Implement bun library clean
     Possible --tag option (place a tag saying what happened to files which were removed)
 Implement bun library organize
     Keep a .bun_spec.yml file in decoded archives showing how the archive is organized?
-    Option to turn off inclusion of file modification date in unpacked or thawed file names
-    Option to turn off resetting file modification dates for unpacked or thawed files
+    Option to turn off inclusion of file modification date in unpacked or decoded file names
+    Option to turn off resetting file modification dates for unpacked or decoded files
 Create bun archive tar
 Release version 1.0
 Major rewrite:
@@ -65,11 +96,12 @@ Major rewrite:
     No Data object (except as needed to unpack files)
     Limited distinction (if any), between file types
         Possibly File::Decoded, File::Text, and File::Frozen
+        File::Text and File::Frozen should be File::Unpacked::Text and File::Unpacked::Frozen
     No distinction between libraries and archives
         Archives don't care how they're organized
     Simpler model for file promotion, using inheritance
 Alternate data storage formats: raw, binary, octal, hex
-Complete tests: 
+Complete tests:
     archive catalog (check descriptor 'catalog_time' has been changed; test --remove)
     archive compare_dates
     archive pull
@@ -96,7 +128,7 @@ Create bun library (or archive) push
 Combine archive, library
 Document new process: pull, unpack, catalog, decode, find, list/describe, clean, organize, extract, push
 Check out lib/clean.rb
-Implement interactive (or stream) editor: 
+Implement interactive (or stream) editor:
     Could you use sed, vim, Textmate as a backend?
     /pat/[bxoa]? pattern matching (e.g. b for binary, a for ascii, etc.)
     p command shows a dump in multiple formats
@@ -125,7 +157,7 @@ Remove extraneous code
 Move system calls into Shell class
 Remove shell.log code
 Add long_desc to all methods
-Refactor Bots to use Actors (or put methods (e.g. thaw, dump) into the data objects)
+Refactor Bots to use Actors (or put methods (e.g. decode, dump) into the data objects)
 Optimization ideas: Continue examining Indexable::Basic, since it's probably 10-15% of execution time
     Reduce usage, optimize "center" code
 File type for different kinds of files:
@@ -150,6 +182,6 @@ Combine freezer ls with bun ls
 Combine bun describe with bun ls
 Combine freezer dump with bun dump
 Combine archive decode and decode
-Option to customize extension on unpacked or thawed files (e.g. '.txt')
+Option to customize extension on unpacked or decoded files (e.g. '.txt')
 Create Slicr command line tools (e.g. a filter)
-Refactor Slicr based on the concept of layers, etc.
+Refactor Slicr based on the concept of layers, etc. 

@@ -233,8 +233,27 @@ module Bun
         to_decoded_hash(options).to_yaml
       end
 
+      # Change this protocol:
+      # - Should take :temp option
+      # - If temp, should create Tempfile or Tempdir, using to as seed name
+      # - Should return name of file created
+      # Hooboy, this needs refactoring -- this version will delete the temporary
+      # file before passing it back up the chain. Alternative versions are smelly
+      # and risk leaking undeleted temporary files and directories
       def decode(to, options={})
-        Shell.new.write(to,to_decoded_yaml(options))
+        if tape_type==:frozen
+          if options[:shard]
+            # Return a file
+            Shell.new.write(to,to_decoded_yaml(options))
+          else
+            raise ArgumentError, ":shard option not specified. Decoding of multiple shards in frozen files is not implemented"
+            # Return a directory
+          end
+        else
+          # Return a file
+          Shell.new.write(to,to_decoded_yaml(options))
+        end
+
       end
 
       def method_missing(meth, *args, &blk)
