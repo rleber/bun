@@ -9,14 +9,19 @@ module Bun
     class Packed < Bun::File
       class << self
         def open(fname, options={}, &blk)
-          path = fname
-          path = expand_path(fname) unless fname == '-'
-          data = read(path)
-          obj = self.send(:new,options.merge(:data=>data, :tape=>fname, :tape_path=>path))
-          if block_given?
-            yield(obj)
+          grade = File.file_grade(fname)
+          if grade != :packed
+            raise BadFileGrade, "#{fname} can't be converted to packed"
           else
-            obj
+            path = fname
+            path = expand_path(fname) unless fname == '-'
+            data = read(path)
+            obj = self.send(:new,options.merge(:data=>data, :tape=>fname, :tape_path=>path))
+            if block_given?
+              yield(obj)
+            else
+              obj
+            end
           end
         end
       end
@@ -29,8 +34,11 @@ module Bun
       end
      
       # Convert file from internal Bun binary format to YAML digest
-      def unpack
-        new_descriptor = data.descriptor.merge(:data_format=>:raw, :tape_type=>data.tape_type)
+      def to_unpacked_file
+        new_descriptor = data.descriptor.merge(
+                              :data_format=>:raw, 
+                              :tape_type=>data.tape_type,
+                            )
         f = File::Unpacked.create(
           :data=>data,
           :archive=>archive,
@@ -42,6 +50,11 @@ module Bun
           f.descriptor.merge!(:shards=>f.shard_descriptors)
         end
         f
+      end
+      
+      # TODO Redefine this: unpack(to, options={})
+      def unpack
+        to_unpacked_file
       end
 
       def method_missing(meth, *args, &blk)

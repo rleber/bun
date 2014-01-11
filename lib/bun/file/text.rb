@@ -20,9 +20,6 @@ module Bun
         @keep_deletes = options[:keep_deletes]
         options[:data] = Data.new(options) if options[:data] && !options[:data].is_a?(Bun::Data)
         super
-        # descriptor.register_fields(:control_characters, :character_count)
-        # @control_characters = nil
-        # @character_count = nil
       end
     
       def words=(words)
@@ -37,7 +34,6 @@ module Bun
       def text
         res = lines.map{|l| l[:content]}.join
         @character_count = res.size
-        # @control_characters = File.control_character_counts(res)
         res
       end
       cache :text

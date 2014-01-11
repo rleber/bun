@@ -46,20 +46,38 @@ module Bun
             end
     end
     
-    def put(to, options={})
+    def bake(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
       FileUtils.rm_rf to_path unless options[:dryrun]
       leaves.each do |leaf|
         # file = File::Decoded.open(leaf)
         relative_leaf = relative_path(leaf)
-        $stderr.puts "put #{relative_leaf}" unless options[:quiet]
+        $stderr.puts "bake #{relative_leaf}" unless options[:quiet]
         unless options[:dryrun]
           to_file = File.join(to,relative_leaf)
           file = File::Decoded.open(leaf)
-          file.put(to_file)
+          file.bake(to_file)
         end
       end
     end
     
+    def classify(to, options={})
+      no_move = options[:dryrun] || !to
+      shell = Shell.new(:dryrun=>no_move)
+      shell.rm_rf(to) if to && File.exists?(to)
+      command = options[:copy] ? :cp : :ln_s
+      test = options[:test] || 'clean'
+
+      leaves.each do |old_file|
+        f = relative_path(old_file)
+        status = Bun::File::Decoded.examination(old_file, test).to_s
+        warn "#{f} is #{status}" unless options[:quiet]
+        unless no_move
+          new_file = File.join(to, status, f)
+          shell.mkdir_p File.dirname(new_file)
+          shell.invoke command, old_file, new_file
+        end
+      end
+    end
   end
 end

@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+# TODO Move code to File (as class method)
 no_tasks do
   def get_regexp(pattern)
     Regexp.new(pattern)

@@ -12,29 +12,24 @@ module Bun
           end
         end
         FIELDS = [
-          # :basename,
-          # :catalog_time,
           :description,
-          # :errors,
-          # :decoded,
           :tape_size,
           :tape_type,
           :tape,
-          # :tape_path,
-          # :original_tape,
-          # :original_tape_path,
           :owner,
           :path,
-          # :specification,
-          # :updated,
+          :digest,
         ]
       
         attr_reader :data, :fields
       
         def initialize(data)
-          @data = data
+          reset_fields
+          set_field('data', data)
+        end
+        
+        def reset_fields
           @fields = []
-          # TODO fields should be registered in the class (and different file types should subclass File::Descriptor)
           register_fields(FIELDS)
         end
       
@@ -43,10 +38,28 @@ module Bun
         end
       
         def register_field(field)
-          unless @fields.include?(field)
-            instance_variable_set("@#{field}", nil)
-            @fields << field
-          end
+          set_field(field, nil) unless @fields.include?(field)
+        end
+        
+        def set_field(name, value)
+          name = name.to_sym
+          return if name==:digest
+          _set_field name, value
+          set_digest if name == :data
+        end
+        
+        def _set_field(name, value)
+          @fields << name unless @fields.include?(name)
+          instance_variable_set("@#{name}", value)
+        end
+        private :_set_field
+        
+        def set_digest
+          return unless @data
+          data = @data
+          data = data.data if data.respond_to?(:data)
+          return unless data && data.respond_to?(:digest)
+          _set_field :digest, data.digest
         end
       
         def to_hash
@@ -57,16 +70,13 @@ module Bun
         end
       
         def from_hash(h)
-          fields.each do |f|
-            instance_variable_set("@#{f}", nil)
-          end
+          reset_fields
           merge!(h)
         end
         
         def merge!(h)
           h.keys.each do |k|
-            register_field(k) unless @fields.include?(k)
-            instance_variable_set("@#{k}", h[k])
+            set_field(k, h[k])
           end
           self
         end
@@ -96,11 +106,7 @@ module Bun
         def timestamp
           fields.include?(:catalog_time) ? [file_time, catalog_time].compact.min : file_time
         end
-      
-        # def shards
-        #   data.shard_descriptor_hashes rescue []
-        # end
-          
+              
         def method_missing(meth, *args, &blk)
           if !block_given? && args.size==0 && instance_variable_defined?("@#{meth}")
             instance_variable_get("@#{meth}")
@@ -112,10 +118,6 @@ module Bun
         def copy(to, new_settings={})
           to_dir = File.dirname(to)
           descriptor = self.to_hash
-          # descriptor[:original_tape] = descriptor[:tape] unless descriptor[:original_tape]
-          # descriptor[:original_tape_path] = descriptor[:tape_path] unless descriptor[:original_tape_path]
-          # descriptor[:tape] = File.basename(to)
-          # descriptor[:tape_path] = to
           descriptor.merge! new_settings
           descriptor
         end

@@ -46,7 +46,6 @@ There is a hierarchy of File and related classes:
 Bun::File::Descriptor
     Bun::File::Descriptor::Base
         Bun::File::Descriptor::Unpacked
-        Bun::File::Descriptor::Extracted
         
 Bun::File::Frozen::Descriptor (note that this does not descend from Bun::File::Descriptor)
 
@@ -101,6 +100,20 @@ Slicr::Slice::Accessor (mixes in Indexable::Basic)
 Slicr::Slice::Definition
 Slicr::Slice::DSL
 Slicr::Sliceable
+String::Examination
+String::Examination::Base
+    String::Examination::AnalysisBase
+        String::Examination::CharacterClass
+            String::Examination::Chars
+            String::Examination::Classes
+            String::Examination::Controls
+            String::Examination::Printable
+    String::Examination::Boolean
+        String::Examination::Clean
+        String::Examination::Overstruck
+        String::Examination::Roff
+        String::Examination::Tabbed
+    String::Examination::Legibility
 
 As with the data classes, the source for these classes is contained in either the lib/slicr directory (for the 
 Slicr classes), or in the lib or lib/bun directories.

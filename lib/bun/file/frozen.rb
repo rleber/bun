@@ -20,7 +20,6 @@ module Bun
       def initialize(options={})
         options[:data] = Data.new(options) if options[:data] && !options[:data].is_a?(Bun::Data)
         super
-        # TODO Why is file_date necessary?
         descriptor.register_fields(:shards, :file_time)
         @warn = options[:warn]
       end
@@ -146,7 +145,7 @@ module Bun
           stop "Frozen file does not contain shard number #{orig_n}" if n<0 || n>shard_count
         else
           name = n.to_s.sub(/^\\/,'') # Remove leading '\\', if any
-          raise "!Missing shard index or name" if n.to_s == '' # debug
+          raise "!Missing shard index or name" if n.to_s == ''
           n = _shard_index(name)
           stop "!Frozen file does not contain a shard named #{name.inspect}" unless n
         end
@@ -186,7 +185,6 @@ module Bun
         s = []
         shard_count.times do |i|
           text = shard_lines.at(i).map{|l| l[:content]}.join
-          # shard_descriptors.at(i).control_characters = File.control_character_counts(text)
           shard_descriptors.at(i).character_count    = text.size
           s << text
         end
@@ -285,10 +283,11 @@ module Bun
         content = shards.at(shard_index(options[:shard]))
       end
       
-      def to_hash(options=[])
+      def to_decoded_hash(options={})
         base_hash = super(options)
         base_hash.delete(:shards)
-        index = shard_index(options[:shard])
+        index = shard_index(options.delete(:shard))
+        base_hash.delete(:shard)
         shard_descriptor = descriptor.shards[index].to_a.inject({}) do |hsh, pair|
           key, value = pair
           new_key = "shard_#{key.to_s.sub(/^file_/,'')}".to_sym

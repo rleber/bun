@@ -31,11 +31,16 @@ module Bun
   def self.git_branch
     `git branch | grep '*'`[/\*\s+(.*)/,1]
   end
+  
+  def self.project_relative_path(path)
+    path.sub(%r{^.*bun/}, '')
+  end
 end
 
 require 'rubygems'
 require 'date'
 require 'lib/kernel'
+require 'lib/hash'
 require 'lib/cacheable_methods'
 require 'lib/bun/date'
 require 'lib/bun/version'

@@ -1,11 +1,18 @@
 ---
+:identifier: Bun
+:catalog_time: 1981-02-05 00:00:00.000000000 -05:00
+:data_format: :raw
 :description: ''
-:tape_size: 905
-:tape_type: :frozen
-:tape: ar054.2299
+:digest: 7f1a3e176c24d1f67d60d5a267e022ed
+:file_grade: :unpacked
+:file_time: 1981-02-05 15:11:25.000000000 -05:00
 :owner: bstempleton
 :path: bstempleton/fass
-:data_format: :raw
+:tape: ar054.2299
+:tape_size: 905
+:tape_type: :frozen
+:unpack_time: 2014-01-01 19:28:01.621745000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
 :shards:
 - :name: end
   :file_time: 1980-11-25 15:49:46.000000000 -05:00
@@ -32,10 +39,6 @@
   :blocks: 0
   :start: 778
   :size: 114
-:file_time: 1981-02-05 15:11:25.000000000 -05:00
-:unpack_time: 2013-12-29 21:59:24.779929000 -05:00
-:unpacked_by: Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
-:catalog_time: 1981-02-05 00:00:00.000000000 -05:00
 :content: !binary |-
   AABAPMAABAANAA2Aj7CYnOsvCYiqOGAAAAAAkABAADMRzOhlNpwNhlOhvNwA
   AAAAAAF5mMJzOYAAAAAAAAN8AAAAAFGAyF4wGovHAxDQgsUaMpuMggEAgEAg
