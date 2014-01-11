@@ -3,6 +3,7 @@
 
 desc "count_shards ARCHIVE", "Count shards in frozen files three different ways"
 def count_shards(at)
+  check_for_unknown_options(at)
   archive = Archive.new(at)
   table = [%w{Tape Word1 Positions Valid Flag}]
   flagged = false

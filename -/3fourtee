@@ -1,0 +1,30 @@
+---
+:identifier: Bun
+:catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-11 18:21:54.609262000 -05:00
+:decoded_by: Bun version 0.1.0 [feature/expanded_examine:a8533e91be87c0b7c37ef1277230cd3eb5840a28]
+:description: ==> freeze file containing roff source for fass '77 script
+:digest: b5b0b26461eb14d0a09233f67a38438d
+:file_grade: :decoded
+:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:owner: fass
+:path: fass/scripfrz
+:tape: ar004.0888
+:tape_size: 40058
+:tape_type: :frozen
+:unpack_time: 2014-01-01 19:27:41.379743000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
+:content: ! "That's what I said.\n\n.st\nNo, you don't understand.\n\n.hu\nSo I've
+  been told.\n\n.st\nYou see, pounds sterling is a type of currency.\n(ASIDE) Get
+  off my leg, Jock.\n\n.hu\nOh. (TO JJ) How much is that in Pederasty units?\n\n.aa
+  JJ\nCouple o' bucks.\n\n.hu\nDamn. I only have one credit.\n\n.aa JJ\nWe take Master
+  Charge.\n\n.hu\nNo, that's no good. I don't have a card, just a credit.\n(PAUSE.
+  TO COMMUNICATOR) Mr. Spot, would you beam us down a \ncouple of credits? And tell
+  me, is Mr. Jock all right?\n\n.st\n"
+:shard_number: 34
+:shard_name: 3fourtee
+:shard_time: 1977-02-10 16:56:51.000000000 -05:00
+:shard_blocks: 1
+:shard_start: 36240
+:shard_size: 124

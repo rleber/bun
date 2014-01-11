@@ -6,9 +6,10 @@ require 'date'
 module Bun
 
   class File < ::File
-    class UnknownFileType < RuntimeError; end
-    class UnexpectedTapeType < RuntimeError; end
-    class InvalidInput < RuntimeError; end
+    class UnknownFileTypeError < RuntimeError; end
+    class UnexpectedTapeTypeError < RuntimeError; end
+    class InvalidInputError < RuntimeError; end
+    class CantExpandError < RuntimeError; end
     
     class Unpacked < Bun::File
       class << self
@@ -50,7 +51,7 @@ module Bun
             if options[:graceful]
               stop "!#{msg}"
             else
-              raise UnexpectedTapeType, msg
+              raise UnexpectedTapeTypeError, msg
             end
           end
           file = create(options)
@@ -102,7 +103,7 @@ module Bun
             File::Unpacked::Frozen.new(options)
           else
             if options[:strict]
-              raise UnknownFileType,"!Unknown file type: #{descriptor.tape_type.inspect}"
+              raise UnknownFileTypeError,"!Unknown file type: #{descriptor.tape_type.inspect}"
             else
               File::Unpacked::Text.new(options)
             end
@@ -233,27 +234,38 @@ module Bun
         to_decoded_hash(options).to_yaml
       end
 
-      # Change this protocol:
-      # - Should take :temp option
-      # - If temp, should create Tempfile or Tempdir, using to as seed name
-      # - Should return name of file created
-      # Hooboy, this needs refactoring -- this version will delete the temporary
-      # file before passing it back up the chain. Alternative versions are smelly
-      # and risk leaking undeleted temporary files and directories
-      def decode(to, options={})
-        if tape_type==:frozen
-          if options[:shard]
-            # Return a file
-            Shell.new.write(to,to_decoded_yaml(options))
-          else
-            raise ArgumentError, ":shard option not specified. Decoding of multiple shards in frozen files is not implemented"
-            # Return a directory
-          end
-        else
-          # Return a file
-          Shell.new.write(to,to_decoded_yaml(options))
-        end
+      def qualified_path_name(to, shard=nil)
+        shard ? File.join(to, shard) : to
+      end
 
+      # TODO Could this be refactored to Frozen and other subclasses?
+      def to_decoded_parts(to, options)
+        expand = options.delete(:expand)
+        if tape_type!=:frozen || options[:shard]
+          # Return a file
+          {to=>to_decoded_yaml(options)}
+        elsif expand
+          # Return multiple shards
+          parts = {}
+          shard_count.times do |shard_number|
+            res = to_decoded_hash(options.merge(shard: shard_number))
+            path = qualified_path_name(to, res[:shard_name])
+            raise CantExpandError, "Must specify file name with :expand" if res[:shard_name] && (to.nil? || to=='-')
+            parts[path] = res.to_yaml
+          end
+          parts
+        else
+          raise CantExpandError, "Must specify either :shard or :expand"
+        end
+      end
+
+      def decode(to, options={})
+        parts = to_decoded_parts(to, options)
+        shell = Shell.new
+        parts.each do |part, content|
+          shell.mkdir_p(File.dirname(part)) unless part.nil? || part=='-'
+          shell.write(part, content)
+        end
       end
 
       def method_missing(meth, *args, &blk)

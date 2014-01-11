@@ -4,6 +4,7 @@
 desc "header_sizes ARCHIVE", "Display the length of file headers"
 option "sort",    :aliases=>'-s', :type=>'string', :default=>'header', :desc=>"Sort by what field: preamble or header (size)"
 def header_sizes(at)
+  check_for_unknown_options(at)
   archive = Archive.new(at)
   data = [%w{Tape Preamble Header}]
   sort_column = ['preamble', 'header'].index(options[:sort].downcase)

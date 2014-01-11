@@ -1,39 +1,17 @@
 TODO
 _High Priority_
-Remove Bun::File temporary file code
-Allow baked_data for frozen archives
-    Decoding an unpacked file archive may result in multiple files
-        Check out Archive.decode
-        Shell.write 
-                - Should always return the text
-                - Shell.write(nil) does not write any file (including STDOUT)
-        File::Unpacked.decode 
-                with a :frozen file
-                        - Fails unless file name is nil
-                        - Fails unless option :expand
-                        - Returns an array of results
-                with :expand option
-                        - Always returns an array
-                        - Fails unless file name is nil
-        File::Decoded.open
-                With :expand and :promote option on a packed or unpacked file
-                        Invokes File::Unpacked with :expand option and nil file
-                        Handles multiple returned files
-                        Always returns an array of files
-                Without :expand option
-                        Returns file as a scalar
-                        Fails if a frozen file packed or unpacked is encountered
-        File::Baked class
-                Mostly, behaves like ::File
-                Provides a :promote option to open
-        bun bake
-                Should create directories for frozen files
-                Should invoke File::Decoded.bake
-        Archive::decode
-            With :expand option
-                Should create directories for frozen files
-            Without :expand option
-                Fails if a frozen file packed or unpacked is encountered
+Decoding an unpacked file archive may result in multiple files
+    Archive::decode
+        With :expand option
+            Should create directories for frozen files
+        Without :expand option
+            Fails if a frozen file packed or unpacked is encountered
+    bun bake
+        Should create directories for frozen files
+        Should invoke File::Decoded.bake
+    File::Baked class
+        Mostly, behaves like ::File
+        Provides a :promote option to open
 Expand tests to cover all file types: unpack, decode, bake, describe
 Fix bugs
     bun describe <packed_file> doesn't work -- try ar004.0888, for instance

@@ -15,6 +15,7 @@ STANDARD_FIELDS = %w{description catalog_time data data_format digest file_grade
 SHARDS_ACROSS = 5
 desc "describe FILE", "Display description information for a tape"
 def describe(file)
+  check_for_unknown_options(file)
   # TODO Move logic to File class
   descriptor    = File.descriptor(file, :graceful=>true)
   type          = descriptor.tape_type

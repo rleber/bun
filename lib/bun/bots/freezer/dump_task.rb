@@ -8,6 +8,7 @@ option "lines",   :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of th
 option "offset",  :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lines'
 option "spaces",  :aliases=>'-s', :type=>'boolean', :desc=>'Display spaces unchanged'
 def dump(file_name, n)
+  check_for_unknown_options(file_name, n)
   File::Frozen.open(file_name, :graceful=>true) do |file|
     archived_file = file.path
     archived_file = "--unknown--" unless archived_file

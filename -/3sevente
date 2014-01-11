@@ -1,0 +1,62 @@
+---
+:identifier: Bun
+:catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-11 18:21:56.520308000 -05:00
+:decoded_by: Bun version 0.1.0 [feature/expanded_examine:a8533e91be87c0b7c37ef1277230cd3eb5840a28]
+:description: ==> freeze file containing roff source for fass '77 script
+:digest: d7e40d6a80317255e784cd16efe94db5
+:file_grade: :decoded
+:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:owner: fass
+:path: fass/scripfrz
+:tape: ar004.0888
+:tape_size: 40058
+:tape_type: :frozen
+:unpack_time: 2014-01-01 19:27:41.379743000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
+:content: !binary |-
+  Zi4PJyZCPxoHHy8WNhYeKnIERi8mDk5HGgZOcgcnPi53R0oGbk5nLyYvGmBo
+  AAAAAAAIaAAAAHp2DhIEDHR0dSx0HC0jCGgAAAAERE5yBgoGZg83IgYmT0Ye
+  QgYuZjZ/FyIHJnoGD2Z+TiIGNn5vBmZXJioGLjZ+dn5uFhoGJk82Dx8mLyJi
+  BBcWFyZODnIGRg8YaAAENx5+RiIGTyc2LmYyB0Z6BEwUUgZOdyZXFnYPJhZ+
+  dg5iYgIFHwZ2Xi8ebhZyBjZ/IgcmRioGHn5vBhZ3SgceF0oHJkYXIGgAAAAE
+  JyZGUgYefy5nJxdKB3ZOZmIGJioHLx5WIgYPGgYKByYPAgc/Fk9GKm5+NmIG
+  DnYiBz4PFi4Gfy8eKmICBR5GdxcmZ0hQBFYON0YvEgcmBioGDnZmfy52HlZu
+  LnciBn4yByYGKgYmLhZiYgRGdnYvTz5WZmIHH0YPJi4iByZGDyIGTyIGTzIH
+  BxYvNi53JmcQaAAAAAAELh5+Zh5nLiYWdjoGdlY+fyZOFyZOfncyBjZ/Egcm
+  RioHBy8WHkYXHioGfmIETxYuRg52InICBSZGTzIGNn5mRn8+TnZwaAAAAAAD
+  fyZGUgcWLh5WdyIHHhZmKgZ+YgUGfmYWdiIHJnIHJkYqBSZ/Fn5nJnoEFkcu
+  KgRWF08aBhcSBm5PH0YOXipwUAAIaAAAAHp2DhIEDHR0dSx0HC0jEGgAAAAE
+  LSZGUgQPJn5WThoERlZufxcWBn5OJxoEHn5ubhcfHk5+YgZ+MgQ2DnYOJhIH
+  Jn4mF0oHLndmLk5mLkICBwZmFncaByZwaAAAAAADFy8eUgQ+DmdCBg8aB0ZG
+  KgceFyYqBn5iByZGLhcSBnYvcgZ3Lh5GLg8SBwZOZipyAgBoAAAAAAhoAAAA
+  enYOEgQMdHR1LHQcLSMIaAAAAAQkDnIGDwcGLhZiBkYPMgYWLi5iBwcWLzYu
+  dyYuQgcmegdGRioFLmZPJi4iBR8mDyZXGgUfLwcWLm4qBB5/LxdCBjZ/EFAD
+  fgoHNyYPSgZ2MgYvRlYfLyZOdnIGNn8iBh5+d2ZOHyYuQgZeTmZGLxIEPhcX
+  SgQ+FmZufxZSYgZ+agcmRioAUANWPxZ3LnYnGgcmRg8iBkYqBk8yBk5yBmYO
+  HyIGZn8iBD4WZm5/FlJiBhcvQgQ+LnZXFg5mTzceTm54UAJ0NxYWdh5PHjZ6
+  BDcWFnYeemIGDnYiB0ZGLxYuZn8WKgZGLg4iBhZnFi4OR0pwaAAAAAhoAAAA
+  enYOEgQMdHR1LHQcLSMQaAAAAAN0TnIGCgcfLycHFk8eUgZufzZSByZ+JhdK
+  YgYedncfJxdWHyZOfmIGHxYvdxoGTnIFJn8Wfmcmegc+VxYqAGgABDZ/FkYv
+  Fi4iByZ6Bh5GLg8SBhZyBmNDAwJuNn53IgcfJyZPAgZ+YgZmDnZCBicuKgc+
+  Lx8iBn4yByYGKgQccgcmfz4vInBoAAAABDU+RlZyBk52Zn8Wbi5CBhdKBlYv
+  Ji5/Jn5mfj4XHycaB0ZGDyIHRkYqByZXFmoCFwcWLzYOFmZOdjoHPi8fJlcW
+  Zk4vMhBoAAAAAT8WLmYvFxoHRnoHPk5mJxoGHnZuTnY4UAAidy5AaAAAAAAA
+  LjcWdmhoAAAAAlcmRlIHPi8fQmIEbg8WfxIEJhc2TiIENxZ+bhYWKgZOblYu
+  Jk4PRi5nSGgAAV5/FkYvFi4iByZGKgd2fxZeLycaByZ6ByZGKGgAACJ3LkBo
+  AAAAAAAuLg83IGgAAAABHx5ORioGfjIHJkYqB0Z/Pi8SYGgAAAAAAAhoAAAA
+  enYOEgQMdHR1LHQcLSMQaAAAAAQcDnZCBnZ/Ogc+KgcWVycvFnIHJnoGf1cS
+  ByYuNkZ2Th4WYgYmTmY2Th8uRyZOLxoHHyZOZkIGTnIHBxZ+PxZXHxpwaAAA
+  CGgAAAAmNk5gaAAAAAABEncecgY2Dx8yfjYPHzZGfmYoUAIadkZSPDQKMjpq
+  AioCajwMHUIETExKBRwcLHRSBUU0TBI4aAAAAAFCdjZyPAwdIgRMTEoFNBws
+  dCoFRTRMSnBoAAAAAAJ0Dh9CAxpiBTYeLnYqAws6AmoFFi8efkcvJk5+YgYO
+  diIEfwYudhZ2OgUednY4aAAAAAhoAAAAInZWUGgAAAAAA2JFPSRNJEx0cgR8
+  cgQETRoEZHQ6SgJyYnJyBg5mIgceegZ2DxcWdz5nSgYXNi8XJlYiBiZPNg8f
+  Ji8icGgAAAAECg==
+:shard_number: 37
+:shard_name: 3sevente
+:shard_time: 1977-02-18 10:32:57.000000000 -05:00
+:shard_blocks: 1
+:shard_start: 39436
+:shard_size: 409

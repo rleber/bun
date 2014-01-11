@@ -5,5 +5,6 @@
 
 desc "grade FILE", "Determine the file grade (e.g. packed, unpacked, etc.) for a file"
 def grade(file)
+  check_for_unknown_options(grade)
   puts File.file_grade(file)
 end

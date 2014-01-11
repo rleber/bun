@@ -52,6 +52,15 @@ module Bun
           raise "Error defining task #{task_name}: #{e}"
         end
       end
+
+      no_tasks do
+        def check_for_unknown_options(*args)
+          args.each do |arg|
+            arg = arg.to_s
+            stop "!Unknown option: #{arg}" if arg != '-' && arg =~ /^-/
+          end
+        end
+      end
     end
   end
 end

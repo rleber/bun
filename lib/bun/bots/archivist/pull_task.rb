@@ -86,6 +86,7 @@ If no URL is provided, this command will use the location specified in the bun c
 The archive is fetched to the specified location
 EOT
 def pull(url, at)
+  check_for_unknown_options(url, at)
   agent = Mechanize.new
   archive = Archive.new(at)
   _pull(url, archive.location, options)

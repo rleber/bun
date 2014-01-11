@@ -25,6 +25,7 @@ TODO Explain how --value works
 
 EOT
 def find(*files)
+  check_for_unknown_options(*files)
   if options[:list]
     puts String::Examination.exam_definition_table
     exit

@@ -5,6 +5,7 @@
 
 desc "ls [PAT]", "List place definitions"
 def ls(pat=nil)
+  check_for_unknown_options(pat)
   config = Configuration.new
   places = config.places
   place_names = places.keys.sort

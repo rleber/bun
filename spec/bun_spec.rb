@@ -484,7 +484,7 @@ describe Bun::Bot do
         backtrace
       end
     end
-  
+
     context "functioning outside the base directory" do
       before :each do
         raise RuntimeError, "In unexpected working directory: #{Dir.pwd}" \
@@ -656,17 +656,33 @@ describe Bun::Bot do
 
   describe "decode" do
     context "with text file" do
-      before :all do
-        exec("rm -f output/test_actual/decode_ar003.0698")
-        exec("bun decode #{TEST_ARCHIVE}/ar003.0698.bun \
-                  >output/test_actual/decode_ar003.0698")
+      context "without expand option" do
+        before :all do
+          exec("rm -f output/test_actual/decode_ar003.0698")
+          exec("bun decode #{TEST_ARCHIVE}/ar003.0698.bun \
+                    >output/test_actual/decode_ar003.0698")
+        end
+        it "should match the expected output" do
+          "decode_ar003.0698".should match_expected_output_except_for(DECODE_PATTERNS)
+        end
+        after :all do
+          backtrace
+          exec_on_success("rm -f output/test_actual/decode_ar003.0698")
+        end
       end
-      it "should match the expected output" do
-        "decode_ar003.0698".should match_expected_output_except_for(DECODE_PATTERNS)
-      end
-      after :all do
-        backtrace
-        exec_on_success("rm -f output/test_actual/decode_ar003.0698")
+      context "with expand option" do
+        before :all do
+          exec("rm -f output/test_actual/decode_ar003.0698")
+          exec("bun decode --expand #{TEST_ARCHIVE}/ar003.0698.bun \
+                    >output/test_actual/decode_ar003.0698")
+        end
+        it "should match the expected output" do
+          "decode_ar003.0698".should match_expected_output_except_for(DECODE_PATTERNS)
+        end
+        after :all do
+          backtrace
+          exec_on_success("rm -f output/test_actual/decode_ar003.0698")
+        end
       end
     end
     context "from STDIN" do
@@ -686,7 +702,7 @@ describe Bun::Bot do
     context "with frozen file" do
       context "and +0 shard argument" do
         before :all do
-          exec("rm -f output/test_actual/decode_ar004.0888")
+          exec("rm -rf output/test_actual/decode_ar004.0888_0")
           exec("bun decode -s +0 #{TEST_ARCHIVE}/ar004.0888.bun \
                     >output/test_actual/decode_ar004.0888_0")
         end
@@ -695,12 +711,12 @@ describe Bun::Bot do
         end
         after :all do
           backtrace
-          exec_on_success("rm -f output/test_actual/decode_ar004.0888_0")
+          exec_on_success("rm -rf output/test_actual/decode_ar004.0888_0")
         end
       end
       context "and [+0] shard syntax" do
         before :all do
-          exec("rm -f output/test_actual/decode_ar004.0888")
+          exec("rm -rf output/test_actual/decode_ar004.0888_0")
           exec("bun decode #{TEST_ARCHIVE}/ar004.0888.bun[+0] \
                     >output/test_actual/decode_ar004.0888_0")
         end
@@ -709,12 +725,12 @@ describe Bun::Bot do
         end
         after :all do
           backtrace
-          exec_on_success("rm -f output/test_actual/decode_ar004.0888_0")
+          exec_on_success("rm -rf output/test_actual/decode_ar004.0888_0")
         end
       end
       context "and [name] shard syntax" do
         before :all do
-          exec("rm -f output/test_actual/decode_ar004.0888_0")
+          exec("rm -rf output/test_actual/decode_ar004.0888_0")
           exec("bun decode #{TEST_ARCHIVE}/ar004.0888.bun[fasshole] \
                     >output/test_actual/decode_ar004.0888_0")
         end
@@ -723,7 +739,78 @@ describe Bun::Bot do
         end
         after :all do
           backtrace
-          exec_on_success("rm -f output/test_actual/decode_ar004.0888_0")
+          exec_on_success("rm -rf output/test_actual/decode_ar004.0888_0")
+        end
+      end
+      context "and no shard argument" do
+        context "and no expand option" do
+          before :all do
+            exec("rm -rf output/test_actual/decode_ar004.0888")
+            exec("bun decode #{TEST_ARCHIVE}/ar004.0888.bun \
+                      2>/dev/null >output/test_actual/decode_ar004.0888", :allowed=>[1])
+          end
+          it "should fail" do
+            $?.exitstatus.should == 1
+          end
+          after :all do
+            backtrace
+            exec_on_success("rm -rf output/test_actual/decode_ar004.0888")
+          end
+        end
+        context "and expand option" do
+          context "without output file name" do
+            before :all do
+              exec("rm -rf output/test_actual/decode_ar004.0888")
+              exec("bun decode --expand #{TEST_ARCHIVE}/ar004.0888.bun \
+                        2>/dev/null >output/test_actual/decode_ar004.0888", :allowed=>[1])
+            end
+            it "should fail" do
+              $?.exitstatus.should == 1
+            end
+            after :all do
+              backtrace
+              exec_on_success("rm -rf output/test_actual/decode_ar004.0888")
+            end
+          end
+          context "with '-' as output file name" do
+            before :all do
+              exec("rm -rf output/test_actual/decode_ar004.0888")
+              exec("bun decode --expand #{TEST_ARCHIVE}/ar004.0888.bun - \
+                        2>/dev/null >output/test_actual/decode_ar004.0888", :allowed=>[1])
+            end
+            it "should fail" do
+              $?.exitstatus.should == 1
+            end
+            after :all do
+              backtrace
+              exec_on_success("rm -rf output/test_actual/decode_ar004.0888")
+            end
+          end
+          context "with output file name" do
+            before :all do
+              exec("rm -rf output/test_actual/decode_ar004.0888")
+              exec("bun decode --expand #{TEST_ARCHIVE}/ar004.0888.bun \
+                        output/test_actual/decode_ar004.0888")
+            end
+            it "should create a directory" do
+              system('[ -d output/test_actual/decode_ar004.0888 ]').should be_true
+            end
+            it "should contain all the shards" do
+              exec("ls output/test_actual/decode_ar004.0888 >output/test_actual/decode_ar004.0888.ls.txt")
+              rstrip(Bun.readfile("output/test_actual/decode_ar004.0888.ls.txt")).should == 
+                  rstrip(Bun.readfile("output/test_expected/decode_ar004.0888.ls.txt"))
+            end
+            it "should match the expected output in the shards" do
+              exec("cat output/test_actual/decode_ar004.0888/3eleven >output/test_actual/decode_ar004.0888_cat_3eleven.txt")
+              "decode_ar004.0888_cat_3eleven.txt".should match_expected_output_except_for(DECODE_PATTERNS)
+            end
+            after :all do
+              backtrace
+              exec_on_success("rm -rf output/test_actual/decode_ar004.0888")
+              backtrace
+              exec_on_success("rm -rf output/test_actual/decode_ar004.0888")
+            end
+          end
         end
       end
     end

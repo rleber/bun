@@ -30,6 +30,7 @@ TODO Explain how --value works
 
 EOT
 def examine(file=nil)
+  check_for_unknown_options(file)
   if options[:list]
     puts String::Examination.exam_definition_table
     exit

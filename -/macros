@@ -1,0 +1,34 @@
+---
+:identifier: Bun
+:catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-11 18:21:35.012360000 -05:00
+:decoded_by: Bun version 0.1.0 [feature/expanded_examine:a8533e91be87c0b7c37ef1277230cd3eb5840a28]
+:description: ==> freeze file containing roff source for fass '77 script
+:digest: 96fc30fa3be2a311b005de8d5cec0fa2
+:file_grade: :decoded
+:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:owner: fass
+:path: fass/scripfrz
+:tape: ar004.0888
+:tape_size: 40058
+:tape_type: :frozen
+:unpack_time: 2014-01-01 19:27:41.379743000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
+:content: ! ".ic ^\n.tr ~ \n.pc *\n.at (aa)\n.sp\n.ne 4\n.ti -8\n.ul\n*1:~\n.en (aa)\n.at
+  (je)\n.aa JERK\n.en (je)\n.at (jo)\n.aa JOCK\n.en (jo)\n.at (ty)\n.aa TOROTHY\n.en
+  (ty)\n.at (mc)\n.aa ROBT.~BRASSIERE\n.en (mc)\n.at (rm)\n.aa THE~REAL~MCCOY\n.en
+  (rm)\n.at (pz)\n.aa PRIZE~BOOBY\n.en (pz)\n.at (pd)\n.aa PRIDE~BOOBY\n.en (pd)\n.at
+  (st)\n.aa SPOTTY\n.en (st)\n.at (to)\n.aa TOLSTOY\n.en (to)\n.at (su)\n.aa SURU\n.en
+  (su)\n.at (hu)\n.aa HUARYU\n.en (hu)\n.at (cl)\n.aa CHAPPEDLIPS\n.en (cl)\n.at (le)\n.aa
+  LEFTY\n.en (le)\n.at (ga)\n.aa GABANDABALF\n.en (ga)\n.at (wn)\n.aa WINKLE\n.en
+  (wn)\n.at (rb)\n.aa ROBT.~BRASSIERE\n.en (rb)\n.at (sh)\n.aa STEVE~HULL~THE~WRITER\n.en
+  (sh)\n.at (tb)\n.aa BRZUSTOWSKABIL\n.en (tb)\n.at (er)\n.aa ERIC\n.en (er)\n.at
+  (wo)\n.aa WOUNDWORT\n.en (wo)\n.at (wm)\n.aa WAHLSTEN~MATILDA\n.en (wm)\n.at (wi)\n.aa
+  WINKLE\n.en (wi)\n"
+:shard_number: 1
+:shard_name: macros
+:shard_time: 1977-02-11 08:53:15.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 421
+:shard_size: 238

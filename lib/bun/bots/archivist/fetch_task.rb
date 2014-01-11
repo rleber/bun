@@ -35,6 +35,7 @@ Some convenience abbreviations are allowed:
 EOT
 long_desc DESC_TEXT.gsub(/(?<!\\)\n/,"\x5").gsub(/\\$/,'').gsub(/ /,"\177")
 def fetch(*steps)
+  check_for_unknown_options(*steps)
   if options[:steps]
     puts Bun::Archive.fetch_steps
     exit

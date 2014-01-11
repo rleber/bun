@@ -1,0 +1,32 @@
+---
+:identifier: Bun
+:catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-11 18:21:57.795846000 -05:00
+:decoded_by: Bun version 0.1.0 [feature/expanded_examine:a8533e91be87c0b7c37ef1277230cd3eb5840a28]
+:description: ==> freeze file containing roff source for fass '77 script
+:digest: fd01621b7a32aae303b7bf94de2095d1
+:file_grade: :decoded
+:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:owner: fass
+:path: fass/scripfrz
+:tape: ar004.0888
+:tape_size: 40058
+:tape_type: :frozen
+:unpack_time: 2014-01-01 19:27:41.379743000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
+:content: !binary |-
+  MgZGDiIHHwcXLmY6Bn5yBy8aByYGLxYqBhZyByZGUgU+TnY2Zio/GFAAVwYO
+  Rg4eKnJicGgAAAAACGgAAAJiRSQELUoELQRNIgQKMgUkRCoEZEw8RUUaBDQM
+  RCoENH0iBAoEbHRsLHUiYGgAAAAAAlUkRFVKBBx8VCoFLQIEDDwMTGIEDGRs
+  dR0iBExUbCwkTBUkLGVKBDR9EGgAAQpSBDRMdBRiBRx8ZDpySGgAAAhoAAAA
+  UnYOEgU0fEw0KGgAAAADbD5+diIGLzZWdk52OkIGZg4mFi8aBg5mIgY+Lmcm
+  Zi5uVnJiBg5mIgc+LkYefm4qByZ6BDQVHRoCO3M6CGgAAAAIaAAAAEJ2DhIE
+  DGRgUANKRSQEKgQsdURNFCoENApUdSQtFTIENRR8UgQKVAx1SgUEfRUkDEUa
+  BAo=
+:shard_number: 39
+:shard_name: unfreeze
+:shard_time: 1977-03-01 15:40:58.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 39953
+:shard_size: 76
