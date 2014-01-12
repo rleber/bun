@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+# require 'dir/tmpdir'
+
 module Bun
   class File < ::File
     class Decoded < Bun::File::Unpacked
@@ -30,32 +32,50 @@ module Bun
         # Output the ASCII content of a file
         def bake(path, to=nil, options={})
           # return unless unpacked?(path)
-          open(path, options) do |f|
-            f.descriptor.tape = options[:tape] if options[:tape]
-            f.bake(to)
+          open(path, options) do |files|
+            unless files.is_a?(Hash)
+              files = {nil=>files}
+            end
+            files.each do |key, f|
+              path = key ? File.join(to, File.basename(key)) : to
+              f.descriptor.tape = options[:tape] if options[:tape]
+              f.bake(path)
+            end
           end
         end
         
         def open(fname, options={}, &blk)
-          # debug "fname: #{fname}, options: #{options.inspect}\n  caller: #{caller.first}"
           if File.file_grade(fname) != :decoded
             if options[:promote]
-              t = Tempfile.new('promoted_to_decoded_')
-              t.close
-              super(fname, options) do |f|
+              paths = super(fname, options) do |f|
                 # This could return more than one file; how does that work?
-                f.decode(t.path, options)
+                parts = f.decode(nil, options.merge(expand: true))
+                if parts.size == 1
+                  t = Tempfile.new('promoted_to_decoded_')
+                  t.write(parts.values.first)
+                  t.close
+                  options[:expand] ? {parts.values.first=>t.path} : t.path
+                else
+                  raise Bun::File::CantExpandError, "Frozen file without :expand option" unless options[:expand]
+                  t = Dir.mktmpdir("promoted_to_decoded_")
+                  shell = Shell.new
+                  parts.map do |part, content|
+                    path = File.join(t, part)
+                    shell.write(path, content)
+                    path
+                  end
+                end
               end
-              # puts "Decoded file:" # debug
-              # system("cat #{t.path} | more")
-              f = File::Decoded.open(t.path, options, &blk)
-              f
+              files = paths.map {|path| [path, File::Decoded.open(path, options)] }
+                           .inject({}) {|hsh, pair| key,value=pair; hsh[key] = value; hsh }
+              yield(files) if block_given?
+              files
             else
               raise BadFileGrade, "#{fname} is not a decoded file"
             end
           else
             # Ooh, this smells
-            super(fname, options.merge(force: true))
+            super(fname, options.merge(force: true), &blk)
           end
         end
       end

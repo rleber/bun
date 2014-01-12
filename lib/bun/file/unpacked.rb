@@ -235,8 +235,7 @@ module Bun
       end
 
       def qualified_path_name(to, shard=nil)
-        shard ? File.join(to, shard) : to
-      end
+        to ? (shard ? File.join(to, shard) : to) : shard      end
 
       # TODO Could this be refactored to Frozen and other subclasses?
       def to_decoded_parts(to, options)
@@ -250,7 +249,7 @@ module Bun
           shard_count.times do |shard_number|
             res = to_decoded_hash(options.merge(shard: shard_number))
             path = qualified_path_name(to, res[:shard_name])
-            raise CantExpandError, "Must specify file name with :expand" if res[:shard_name] && (to.nil? || to=='-')
+            raise CantExpandError, "Must specify file name with :expand" if res[:shard_name] && to=='-'
             parts[path] = res.to_yaml
           end
           parts
@@ -264,8 +263,9 @@ module Bun
         shell = Shell.new
         parts.each do |part, content|
           shell.mkdir_p(File.dirname(part)) unless part.nil? || part=='-'
-          shell.write(part, content)
+          shell.write(part, content) unless part.nil?
         end
+        parts
       end
 
       def method_missing(meth, *args, &blk)

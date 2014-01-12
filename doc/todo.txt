@@ -8,6 +8,8 @@ Decoding an unpacked file archive may result in multiple files
         Mostly, behaves like ::File
         Provides a :promote option to open
 Expand tests to cover all file types: unpack, decode, bake, describe
+    File grades: packed, unpacked, decoded, baked
+    File types: huffman, text, frozen
 Fix bugs
     bun describe <packed_file> doesn't work -- try ar004.0888, for instance
     bun bake <unpacked ar003.0698.bun> produces gibberish
@@ -60,6 +62,14 @@ Implement bun library organize
     Option to turn off inclusion of file modification date in unpacked or decoded file names
     Option to turn off resetting file modification dates for unpacked or decoded files
 Create bun archive tar
+Allow decoding and baking frozen archives to STDOUT
+    Insert separators
+        Allow separators to be overridden
+    bun decode should work
+    bun bake should work
+    bun archive decode should work
+    bun archive bake should work
+Decode huffman files
 Release version 1.0
 Major rewrite:
     All files are just Hashie::Mashes
