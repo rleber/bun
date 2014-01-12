@@ -323,6 +323,7 @@ module Bun
     end
 
     # TODO Add glob capability?
+    # TODO DRY this up, using File.decode
     def decode(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
       FileUtils.rm_rf to_path unless options[:dryrun]

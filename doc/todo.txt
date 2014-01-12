@@ -1,12 +1,7 @@
 TODO
 _High Priority_
 Decoding an unpacked file archive may result in multiple files
-    Archive::decode
-        With :expand option
-            Should create directories for frozen files
-        Without :expand option
-            Fails if a frozen file packed or unpacked is encountered
-    bun bake
+     bun bake
         Should create directories for frozen files
         Should invoke File::Decoded.bake
     File::Baked class

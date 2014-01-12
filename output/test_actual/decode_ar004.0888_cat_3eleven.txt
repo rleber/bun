@@ -2,8 +2,8 @@
 :identifier: Bun
 :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
 :data_format: :raw
-:decode_time: 2014-01-11 18:51:18.642391000 -05:00
-:decoded_by: Bun version 0.1.0 [feature/expanded_examine:a8533e91be87c0b7c37ef1277230cd3eb5840a28]
+:decode_time: 2014-01-11 19:05:58.751546000 -05:00
+:decoded_by: Bun version 0.1.0 [feature/expanded_examine:d81b05494f983d4d479acd08dc293bc93d878fb8]
 :description: ==> freeze file containing roff source for fass '77 script
 :digest: 2e071e4b6cd4a3ca62b4df8345b263b0
 :file_grade: :decoded
