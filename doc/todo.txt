@@ -1,10 +1,6 @@
 TODO
 _High Priority_
-Expand tests to cover all file types: unpack, decode, bake, describe
-    File grades: packed, unpacked, decoded, baked
-    File types: huffman, text, frozen
-Fix bugs
-    bun describe <packed_file> doesn't work -- try ar004.0888, for instance
+ix bugs
     bun bake <unpacked ar003.0698.bun> produces gibberish
     bun legibility packed ar003.0698 is 100%
 Find duplicates
