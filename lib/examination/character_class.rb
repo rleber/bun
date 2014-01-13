@@ -29,7 +29,7 @@ class String
         @patterns ||= pattern_hash.values
       end
       
-      def initialize(string='')
+      def initialize(string='', options={})
         super
       end
       

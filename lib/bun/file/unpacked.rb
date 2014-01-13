@@ -61,7 +61,8 @@ module Bun
               raise UnexpectedTapeTypeError, msg
             end
           end
-          file = create(options)
+          klass = options[:as_class] || self # So that File::Decoded can force open as File::Unpacked
+          file = klass.create(options)
           if block_given?
             begin
               yield(file)
@@ -75,7 +76,6 @@ module Bun
 
         # TODO -- Generalize this, and move it to File
         def open(fname, options={}, &blk)
-          # debug "fname: #{fname}, options: #{options.inspect}\n  caller: #{caller.first}"
           if options[:force]
             forced_open(fname, options, &blk)
           elsif (grade = File.file_grade(fname)) != :unpacked
@@ -253,7 +253,12 @@ module Bun
       # TODO Could this be refactored to Frozen and other subclasses?
       def to_decoded_parts(to, options)
         expand = options.delete(:expand)
-        if tape_type!=:frozen || options[:shard]
+        allow = options.delete(:allow)
+        if tape_type == :huffman
+          # Not decodeable
+          raise Bun::File::CantDecodeError, "Unable to decode Huffman encoded file" unless allow
+          nil
+        elsif tape_type!=:frozen || options[:shard]
           # Return a file
           {to=>to_decoded_yaml(options)}
         elsif expand
@@ -273,6 +278,10 @@ module Bun
 
       def decode(to, options={}, &blk)
         parts = to_decoded_parts(to, options)
+        unless parts
+          yield(self, 0) if block_given? # In case some reporting needs to be done
+          return nil
+        end
         shell = Shell.new
         parts.each.with_index do |pair, index|
           part, content = pair

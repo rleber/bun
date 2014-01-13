@@ -197,7 +197,7 @@ class String
   end
   
   def freeze_for_thor
-    self.gsub("\n","\x5").gsub(' ',"\177")
+    self.gsub("\n","\n\005").gsub(' ',"\177")
   end
   
 end

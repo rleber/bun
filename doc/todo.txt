@@ -1,8 +1,5 @@
 TODO
 _High Priority_
-ix bugs
-    bun bake <unpacked ar003.0698.bun> produces gibberish
-    bun legibility packed ar003.0698 is 100%
 Find duplicates
     Same file name
     Absolutely identical

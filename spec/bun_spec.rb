@@ -817,6 +817,37 @@ describe Bun::Bot do
     end
   end
 
+  describe "bake" do
+    context "with packed file" do
+      before :all do
+        exec("rm -f output/test_actual/bake_ar003.0698")
+        exec("bun bake data/test/ar003.0698 \
+                  >output/test_actual/bake_ar003.0698")
+      end
+      it "should match the expected output" do
+        "bake_ar003.0698".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/bake_ar003.0698")
+      end
+    end
+    context "with unpacked file" do
+      before :all do
+        exec("rm -f output/test_actual/bake_ar003.0698")
+        exec("bun bake #{TEST_ARCHIVE}/ar003.0698.bun \
+                  >output/test_actual/bake_ar003.0698")
+      end
+      it "should match the expected output" do
+        "bake_ar003.0698".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/bake_ar003.0698")
+      end
+    end
+  end
+
   describe "dump" do
     include_examples "command", 
                      "dump ar003.0698", 

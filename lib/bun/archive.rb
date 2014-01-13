@@ -337,7 +337,7 @@ module Bun
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
       FileUtils.rm_rf to_path unless options[:dryrun]
       leaves.each do |tape_path|
-        decode_options = options.merge(promote: true, expand: true)
+        decode_options = options.merge(promote: true, expand: true, allow: true)
         File.decode(tape_path, nil, decode_options) do |file, index|
           # Determine whether to decode tape, and if so, where to put it
           tape = relative_path(tape_path)
