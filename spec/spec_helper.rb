@@ -150,6 +150,52 @@ RSpec::Matchers.define :match_expected_output_except_for do |patterns|
   end
 end
 
+# Content of two files should match
+RSpec::Matchers.define :match_file do |expected_file|
+  match do |file|
+    actual_output = Bun.readfile(file).chomp
+    expected_output = Bun.readfile(expected_file).chomp
+    actual_output.should == expected_output
+  end
+  failure_message_for_should do |file|
+    "#{file} did not match expectations in #{expected_file}"
+  end
+end
+
+# Content of two files with (matching names) should match
+RSpec::Matchers.define :match_expected_output do
+  match do |file|
+    actual_output_file = File.join(ACTUAL_OUTPUT_FILE_PREFIX, file)
+    expected_output_file = File.join(EXPECTED_OUTPUT_FILE_PREFIX, file)
+    actual_output_file.should match_file(expected_output_file)
+  end
+  failure_message_for_should do |file|
+    "#{file} did not match expectations"
+  end
+end
+
+# File contents should match a string
+RSpec::Matchers.define :contain_content do |expected_content|
+  match do |file|
+    actual_output = Bun.readfile(file).chomp
+    actual_output.should == expected_content
+  end
+  failure_message_for_should do |file|
+    "#{file} did not contain expected content (#{expected_content.inspect}"
+  end
+end
+
+
+# File contents should be empty
+RSpec::Matchers.define :be_an_empty_file do 
+  match do |file|
+    file.should contain_content("")
+  end
+  failure_message_for_should do |file|
+    "#{file} was not empty"
+  end
+end
+
 def file_should_exist(name)
   name.should exist_as_a_file
 end

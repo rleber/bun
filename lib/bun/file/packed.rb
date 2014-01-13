@@ -50,6 +50,10 @@ module Bun
         end
         f
       end
+
+      def descriptor
+        data.descriptor
+      end
       
       # TODO Redefine this: unpack(to, options={})
       def unpack

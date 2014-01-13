@@ -1,0 +1,500 @@
+---
+:identifier: Bun
+:catalog_time: 1982-12-22 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-13 08:20:49.281009000 -05:00
+:decoded_by: Bun version 0.1.0 [feature/expanded_examine:5347498790fa3c32e0e5deef29ba32b1411963da]
+:description: ''
+:digest: 8ba222131317c9cfe27f70a296646e4f
+:file_grade: :decoded
+:file_time: 1981-03-08 20:27:00.000000000 -05:00
+:fname: /Users/richard/projects/bun/data/test/archive/decode_source/ar082.0605.bun
+:owner: bjeroehl
+:path: bjeroehl/fass/81script.f
+:promote: true
+:tape: ar082.0605
+:tape_size: 36457
+:tape_type: :frozen
+:unpack_time: 2014-01-01 19:28:16.748525000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
+:content: ! 'et a work report out of this.
+
+  .ld
+
+  (THE GUARDS CHASE THE CO-OPS OUT, LEAVING AL STILL SNORING
+
+  IN THE MIDDLE OF THE STAGE.  LIGHTS DOWN.)
+
+  .es
+
+  .so 81macros
+
+  .bs 1 3b "Everybody Wants a Pizza the Action"
+
+  .na ms MAUDE~SQUAUDE MAUDE
+
+  .na dm DINAH~MIGHT DINAH
+
+  .na rr RINGO~ROUNDACOLLAR RINGO
+
+  .na bw BUD~WISER BUD
+
+  .na al AL~LERT AL
+
+  .ld
+
+  (SCENE FADES OPEN WITH AL LERT ASLEEP AT A DESK CENTRE STAGE.  LIGHTS ARE
+
+  AT ABOUT 50%.  SPIES ENTER LURKING FROM THE VOM.  HALF GO STAGE LEFT AND
+
+  HALF GO STAGE RIGHT, CIRCLING AROUND THE DESK AND MEETING AT THE POINT.
+
+  DINAH WEARS A SIGN SAYING "DANGER -- EXPLOSIVES")
+
+  .ch dm
+
+  Okay men, ah, women, ah fellow associates.
+
+  We all know our specific jobs, each vitally important to the
+
+  ultimate success of this mission.
+
+  Maude, you know what you have to do...
+
+  .ch ms
+
+  Right, boss!
+
+  .ad
+
+  (SHE GOES TO PHONE. OTHERS WATCH WITH INTEGERS)
+
+  .ex
+
+  9... 6... 7... 11... 11... one ringy dingy.
+
+  Two ringy dingies.  Is this the party to whom I''m speaking?
+
+  Yes, I''d like a large pizza with double pepperoni, peanut butter,
+
+  double bananas, double anchovies, and yogurt.
+
+  Thank you very much...
+
+  Okay, boss, it''s done.
+
+  .xx RINGO~AND~DINAH
+
+  (WIPING SWEAT FROM THEIR BROWS) Whew.
+
+  .ch ms
+
+  Okay, group, let''s go.
+
+  .ad
+
+  (DINAH AND RINGO TURN TOWARDS SAFE.
+
+  DINAH PUTS TAPE AROUND DOOR AND RUSHES EVERYONE TO THE FRONT OF THE DESK)
+
+  .ch dm
+
+  Take cover -- here she goes!
+
+  .sd
+
+  (SHE ATTACHES THE WIRES TO A PLUNGER.
+
+  JUST AS SHE IS ABOUT TO PUSH THE PLUNGER, THE PHONE RINGS.
+
+  MAUDE GOES TO PHONE.)
+
+  .ch ms
+
+  Hello?  Yes, we did order pizza.  Thank you very much.
+
+  .ch dm
+
+  All right.  Here we go again.
+
+  .ad
+
+  (SHE PUMPS THE PLUNGER BUT NOTHING HAPPENS.  PUZZLED, SHE HANDS
+
+  THE PLUNGER TO RINGO.)
+
+  .ch dm
+
+  Hold this, Ringo.
+
+  .ad
+
+  (HE GRABS THE HANDLE AND THE PUMP SLIDES DOWN.)
+
+  .ch rr
+
+  Uh-oh, I broke it.
+
+  .ad
+
+  (HE TRIES TO PUT IT BACK TOGETHER AS DINAH GOES TO THE SAFE.
+
+  SHE SOON FINDS THE PROBLEM)
+
+  .ch dm
+
+  Ah!  Here''s the problem.
+
+  .ad
+
+  (SHE TAKES TWO WIRES AND SPLICES THEM.
+
+  MEANWHILE RINGO IS STILL FIDDLING WITH THE PLUNGER.
+
+  THE SAFE DOOR BLOWS ON TOP OF DINAH.
+
+  THE SPIES RUSH FORWARD.  AS THEY REACH THE SAFE, BUD WISER
+
+  APPEARS IN THE DOORWAY.)
+
+  .ch bw
+
+  Did someone here order pizza?
+
+  .ch ms
+
+  (LOOKING PUZZLED)  Yes, we did.  But we didn''t give you our address.
+
+  How did you find us?
+
+  .ch bw
+
+  You didn''t give us your phone number either, but we managed to call you back.
+
+  .ch ms
+
+  Good point.  Just wait a second, okay?
+
+  (SHE TURNS TO RINGO FOR A KINDLY CHAT.)
+
+  Now Ringo, listen very closely.  I want you to go into the safe,
+
+  get the papers, then take pictures of everything.
+
+  Have you got all that?
+
+  .ch rr
+
+  Almost all.
+
+  .ch ms
+
+  What didn''t you get?
+
+  .ch rr
+
+  The part after "Listen very closely".
+
+  .ch ms
+
+  Get into that safe!
+
+  .ad
+
+  (SHE CUFFS RINGO TOWARDS SAFE.
+
+  AS HE GOES THROUGH THE DOOR, DINAH, STILL UNDER THE DOOR CALLS OUT.)
+
+  .ch dm
+
+  Would someone please get this door off me?
+
+  .ch rr
+
+  Sorry, I''ve got work to do.
+
+  .ad
+
+  (RINGO VANISHES INTO THE SAFE.)
+
+  .ch ms
+
+  (TO BUD) How much for the pizza?
+
+  .ch bw
+
+  Well that all depends on what you want on it.
+
+  .ch ms
+
+  You mean you brought us this pizza and there''s nothing on it?
+
+  .ch bw
+
+  That''s right, but let me explain: you see I drive around
+
+  a neighbourhood with cooked pizza crusts in the back of my car
+
+  and when a call comes in I just rush right over.
+
+  Pizza Transworld Delivery, the Fastest Delivery on Earth...
+
+  Now, what did you want on your pizza?
+
+  .ch ms
+
+  We ordered double pepperoni...
+
+  .ch bw
+
+  Right.
+
+  .ad
+
+  (HE PULLS A HUGE SAUSAGE OUT OF HIS COAT, TAKES A BITE, AND SPITS
+
+  IT ONTO THE PIZZA.  HE GOES TO PUT THE SAUSAGE AWAY, THEN STOPS.)
+
+  .ex
+
+  Did you say
+
+  .ul
+
+  double
+
+  pepperoni?
+
+  .ch ms
+
+  Nope, just single.
+
+  .ch bw
+
+  Okay, what else?
+
+  .ch ms
+
+  Uhh, peanut butter.
+
+  .ad
+
+  (BUD PRODUCES A JAR OF PEANUT BUTTER AND SMEARS SOME ON THE CRUST.)
+
+  .ch bw
+
+  Peanut butter.
+
+  .ch dm
+
+  Would someone please get this door off me!
+
+  .ch ms
+
+  (OBLIVIOUS TO DINAH) Double bananas.
+
+  .ch bw
+
+  Double bananas.
+
+  .ad
+
+  (HE TAKES OUT A BANANA, CRACKS IT LIKE AN EGG ON THE SIDE OF THE
+
+  PIZZA BOX, AND SQUEEZES THE MUSH OUT OF THE TWO HALVES.
+
+  HE THEN JAMS THE TWO PEELS INTO THE PIZZA LIKE HORNS.)
+
+  .ch ms
+
+  Double anchovies.
+
+  .ch bw
+
+  .ul
+
+  Double
+
+  anchovies?
+
+  .ad
+
+  (ANCHOVIES, YUK!  ANYWAY, BUD PULLS A LARGE FISH FROM HIS
+
+  COAT AND A SMALL FISH FROM DEEP DOWN IN HIS CROTCH.
+
+  HE FLAPS THEM BOTH DOWN ON THE PIZZA.)
+
+  .ex
+
+  Double anchovies.
+
+  .ch dm
+
+  Would someone please get this door off of me?
+
+  .ch ms
+
+  (STILL OBLIVIOUS) And yogurt.
+
+  .ad
+
+  (BUD TAKES OUT A YOGURT CONTAINER.
+
+  HE WIPES HIS NOSE WITH HIS HAND, THEN STIRS THE YOGURT WITH HIS FINGER.)
+
+  .ch ms
+
+  Not with your finger!
+
+  .ad
+
+  (GLARING, BUD PULLS OUT HIS SWITCH-BLADE COMB, FLICKS IT OPEN,
+
+  COMBS HIS GREASY HAIR, THEN STIRS THE YOGURT WITH THE COMB.
+
+  WHEN HE''S FINISHED, HE POURS THE YOGURT ALL OVER EVERYTHING IN
+
+  THE BOX, ON STAGE, ETC.)
+
+  .ch bw
+
+  Yogurt.  That''ll be ten bucks.
+
+  .ad
+
+  (MAUDE HANDS HIM A 10 SPOT AND TAKES PIZZA.)
+
+  .ch ms
+
+  This pizza is cold!
+
+  .ch bw
+
+  Oh yeah, I almost forgot.
+
+  (HE PICKS UP BOX.)  Here, hold this.
+
+  .ad
+
+  (MAUDE HOLDS PIZZA BOX ON BOTTOM.  BUD TAKES OUT HIS BIC LIGHTER
+
+  AND WAVES IT UNDER THE BOX FOR A COUPLE OF SECONDS.  MAUDE IS BROWNED OFF.)
+
+  .ch ms
+
+  Ouch!
+
+  .ch bw
+
+  Sorry.  You''d better hold it this way.
+
+  .ad
+
+  (BUD SHOWS MAUDE HOW TO HOLD BOX BY THE SIDES.
+
+  HE THEN RUNS HIS LIGHTER AROUND THE BOX EDGES, BURNING HER AGAIN.)
+
+  .ch ms
+
+  Ouch!
+
+  .ch bw
+
+  Okay, enjoy your pizza.  And watch it, it''s hot.
+
+  .ad
+
+  (BUD EXITS.  AT THE SAME TIME, RINGO COMES OUT OF THE SAFE.
+
+  HE HAS THE PAPERS AND SOME POLAROID NEGATIVES.)
+
+  .ch rr
+
+  I''ve got pictures of all the plans.
+
+  .ad
+
+  (HE COMES DOWN TO THE DESK AND DROPS THE PAPERS WHEN HE SEES THE PIZZA.)
+
+  .ex
+
+  Mmmmm. PIZZA!
+
+  .ch dm
+
+  (SCREAMING) Will someone please get this door off me!!!
+
+  .ad
+
+  (MAUDE GOES TO HELP DINAH. RINGO STAYS WITH THE PIZZA.)
+
+  .ch rr
+
+  I say, I wanted
+
+  .ul
+
+  double
+
+  pepperoni... and there''s no knife to cut it with.
+
+  .ch ms
+
+  (HELPING DINAH)  All right... here goes.
+
+  .ad
+
+  (SHE LIFTS THE DOOR AND DINAH CRAWLS OUT.  MEANWHILE, RINGO IS
+
+  STILL LOOKING FOR A KNIFE.  HE TRIES A DRAWER IN THE DESK.)
+
+  .ch rr
+
+  Maybe there''s a knife in the drawer.
+
+  .ad
+
+  (HE PULLS THE DRAWER RIGHT OUT OF THE DESK.  IT FALLS WITH A CLATTER.
+
+  AL LERT STIRS.)
+
+  .ch ms
+
+  Uh oh.  Let''s get out of here.
+
+  .ad
+
+  (ALL THREE SPIES RUN OUT.
+
+  THE GUARD YAWNS AND STRETCHES, SEES THE DRAWER ON THE FLOOR,
+
+  AND BEGINS TO PUT THINGS BACK INTO IT.)
+
+  .ch al
+
+  Blast, that''s always happening!
+
+  .ad
+
+  (SUDDENLY HE DOUBLE TAKES AND SEES THE OPEN SAFE.
+
+  HE PULLS OUT HIS GUN AND BEGINS RUNNING AROUND THE ROOM,
+
+  LOOKING FOR THE CULPRITS AND CHECKING EVERYTHING.
+
+  RELUCTANTLY HE COMES BACK TO THE DESK AND DIALS)
+
+  .ex
+
+  Hello chief.
+
+  Ah, you''re not going to believe this but I think we''ve had a break-in.
+
+'
+:shard_number: 5
+:shard_name: 1-3b
+:shard_time: 1981-02-13 13:59:07.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 8319
+:shard_size: 1503

@@ -52,11 +52,25 @@ module Bun
       leaves.each do |leaf|
         # file = File::Decoded.open(leaf)
         relative_leaf = relative_path(leaf)
-        $stderr.puts "bake #{relative_leaf}" unless options[:quiet]
-        unless options[:dryrun]
+        if options[:dryrun]
+          $stderr.puts "bake #{relative_leaf}" unless options[:quiet]
+        else
           to_file = File.join(to,relative_leaf)
-          file = File::Decoded.open(leaf)
-          file.bake(to_file)
+          begin
+            File.bake(leaf, to_file, promote: true)
+            $stderr.puts "bake #{relative_leaf}" unless options[:quiet]
+          rescue File::CantDecodeError
+            $stderr.puts "unable to bake #{relative_leaf}" unless options[:quiet]
+            # Skip the file
+          end
+          # if File.file_grade(leaf) == :baked
+          #   shell = Shell.new
+          #   shell.mkdir_p File.dirname(to_file)
+          #   shell.cp leaf, to_file
+          # else
+          #   file = File::Decoded.open(leaf, promote: true)
+          #   file.bake(to_file)
+          # end
         end
       end
     end

@@ -4,7 +4,10 @@
 module Bun
   DEFAULT_PACKED_FILE_EXTENSION = ''
   DEFAULT_UNPACKED_FILE_EXTENSION = '.bun'
-  
+  DEFAULT_CATALOGED_FILE_EXTENSION = '.bun'
+  DEFAULT_DECODED_FILE_EXTENSION = '.txt'
+  DEFAULT_BAKED_FILE_EXTENSION = '.txt'
+
   def self.readfile(file, options={})
     encoding = options[:encoding] || 'ascii-8bit'
     return $stdin.read.force_encoding(encoding) if file == '-'

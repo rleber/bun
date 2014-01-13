@@ -1,12 +1,5 @@
 TODO
 _High Priority_
-Decoding an unpacked file archive may result in multiple files
-     bun bake
-        Should create directories for frozen files
-        Should invoke File::Decoded.bake
-    File::Baked class
-        Mostly, behaves like ::File
-        Provides a :promote option to open
 Expand tests to cover all file types: unpack, decode, bake, describe
     File grades: packed, unpacked, decoded, baked
     File types: huffman, text, frozen
@@ -14,24 +7,9 @@ Fix bugs
     bun describe <packed_file> doesn't work -- try ar004.0888, for instance
     bun bake <unpacked ar003.0698.bun> produces gibberish
     bun legibility packed ar003.0698 is 100%
-More ways to examine:
-    Extended fields (pre-defined, e.g. tape basename, etc.)
-        File name (with subfiles, etc.)
-        File basename
 Find duplicates
     Same file name
     Absolutely identical
-More extensions to bun examine
-    Printer listing
-        Largely printable
-        Very few large runs
-        Overstruck
-    Object file
-        Very few large runs
-        Largely unreadable
-    Try determining type by comparing preamble contents:
-        Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
-            binary load module
 bun file editor
     Checkout/checking (or in-place edit)
     Produce multiple synchronized lines
@@ -49,6 +27,20 @@ Consolidate exam, field, formula in bun find, map, and examine
     Prescan formulas to check for simple references to fields or exams (for speed) ?
     Allow multiple fields somehow
     Is the -e/f option required at all?
+More extensions to bun examine
+    Extended fields (pre-defined, e.g. tape basename, etc.)
+        File name (with subfiles, etc.)
+        File basename
+    Printer listing
+        Largely printable
+        Very few large runs
+        Overstruck
+    Object file
+        Very few large runs
+        Largely unreadable
+    Try determining type by comparing preamble contents:
+        Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
+            binary load module
 Should bun find be called bun grep?
 Implement bun library clean
     Find duplicates
@@ -61,6 +53,9 @@ Implement bun library organize
     Keep a .bun_spec.yml file in decoded archives showing how the archive is organized?
     Option to turn off inclusion of file modification date in unpacked or decoded file names
     Option to turn off resetting file modification dates for unpacked or decoded files
+File::Baked class
+    Mostly, behaves like ::File
+    Provides a :promote option to open
 Create bun archive tar
 Allow decoding and baking frozen archives to STDOUT
     Insert separators

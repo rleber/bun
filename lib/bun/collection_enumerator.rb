@@ -87,8 +87,8 @@ module Bun
       end
       
       def all(&blk)
-        collection = Dir.glob("#{@collection.at}/**/*")
-        collection.unshift '.'
+        collection = Dir.glob("#{@collection.at}/**/*").map{|p| File.expand_path(p)}
+        collection.unshift File.expand_path(@collection.at)
         collection = collection.to_enum
         enum = self.class.new(@collection) do |yielder|
           loop do
@@ -117,9 +117,9 @@ module Bun
       
       alias_method :folders, :directories
       
-      def leaves(&blk)
+      def leaves(options={}, &blk)
         enum = self.class.new(@collection) do |yielder|
-          all.with_path do |fname, path|
+          all.with_path(options) do |fname, path|
             yielder << fname unless ::File.directory?(path)
           end
         end

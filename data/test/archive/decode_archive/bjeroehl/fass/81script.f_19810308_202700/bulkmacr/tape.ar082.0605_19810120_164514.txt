@@ -1,0 +1,51 @@
+---
+:identifier: Bun
+:catalog_time: 1982-12-22 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-13 08:20:53.702915000 -05:00
+:decoded_by: Bun version 0.1.0 [feature/expanded_examine:5347498790fa3c32e0e5deef29ba32b1411963da]
+:description: ''
+:digest: 289ccc26b89001a82a258c46f9a72a2f
+:file_grade: :decoded
+:file_time: 1981-03-08 20:27:00.000000000 -05:00
+:fname: /Users/richard/projects/bun/data/test/archive/decode_source/ar082.0605.bun
+:owner: bjeroehl
+:path: bjeroehl/fass/81script.f
+:promote: true
+:tape: ar082.0605
+:tape_size: 36457
+:tape_type: :frozen
+:unpack_time: 2014-01-01 19:28:16.748525000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
+:content: ! "ggering\nThe life insurance folks back to the sub\nThe spies will go
+  on with their cloak and daggering\nAnd the pizza man will go out to the pub.\n.in
+  5\n.sp\n     ....CHORUS....\n.sp\nIn a couple of days, we will all forget our lines\nAssuming
+  we don't mess things up\nAnd forget them ahead of time\n(Ho, Ho, Ho, Ho)\n.sp\n.in
+  3\nHappy ever after 'cuz the show is done\nWe'll take off all our make-up and our
+  shoes\nYou will leave the theatre and you'll head for home,\nWe will head out to
+  the party and the booze.\n.sp\n.in 5\n     ....CHORUS...\n.sp\nAnd if you want more
+  giggles\nCome back in eighty-two.  Wooh!\n.ex\n.es\n.ic ^^\n.tr~\n.hc`\n.qc\"\n.pc@\n.fs
+  '____________________________________________________________'\n.pl 66\n.in 0\n.po
+  0\n.ll 60\n.ls 1\n.m1 3\n.m2 2\n.m3 2\n.m4 2\n.hy 3\n.fi\n.ju\n.ig(^(xxxx))\n.en(0)
+  \    *** ignore to here the first time             ***\n.an(xxxx)9999 *** skip all
+  macro definitions all next times ***\n.sy echo \">>> Bulk-Script Macros. Use correct
+  o= value for slis, otherwise klist <<<\"\n.at(titl)\nFASSified Information\n.en(titl)\n.af
+  (mon) 01\n.af (day) 01\n.af (min) 01\n.af (hour) 01\n.at(sq)\n.m4 -1\n.sp\n.m4 +1\n.en(sq)\n.at(ex)
+  *** reset to normal ***\n^(sq)\n.fi\n.in 3\n.ne 2\n.en(ex)\n.at(ad) *** actor direction
+  ***\n^(ex)\n.in 0\n.en(ad)\n.at(na) *** Macro-Building Macro for character macros
+  ***\n.mg\n   . . . . . . . . . . . . . . . . . . . . . . . . . .\n@2~\t~(@3)\t\n.br\n.mg\n\n.at(@12)\n@2\n.en(@12)\n.at(@13)\n@3\n.en(@13)\n.an(@14)0\n.en(na)\n.at(xx)
+  *** one-use character macro ***\n.at(##2)\n@1\n.en(##2)\n.an(##4)0\n.ch ##\n.en(xx)\n.at(star)\n************************************************************\n.en(star)\n.at(sb)
+  *** song begin ***\n^(ex)\n.in 0\n.nf\n.ne 12\n^(star)\n.mg\n*****                                                  *****\n.ce
+  3\n~@1~\n~(to the tune of:)~\n~@2~\n.mg\n\n^(star)\n.sp\n.in 3\n.en(sb)\n.at(ve)
+  *** verse separator ***\n^(ex)\n.nf\n.ne @1 5\n.en(ve)\n.at(se) *** song end ***\n.ex\n.en(se)\n.at(bs)
+  *** begin a scene ***\n.pa 1\n.an(indx) 0\n.an(ldct) 0\n.an(sdct) 0\n.an(act)@1\n.an(actr)@1\n.af(actr)II\n.an(scen)@2\n.sy
+  echo \">>> Now roffing Act ^^(actr) Scene ^^(scen): @3 <<<\"\n.he \"^^(actr):^^(scen)\"^^(titl)\"Page
+  %\"\n.fo \"^^(actr):^^(scen) Page %\"F.A.S.S. 1981\"^(year)/^(mon)/^(day)-^(hour):^(min)\"\n.sp\n.ce\n.bf\n@3\n.sp2\n.he
+  \"^^(actr):^^(scen)\"@3\"Page %\"\n.in 3\n.bf\nCast of Characters:\n.sp\n.ta 55R\n.en(bs)\n.at(es)
+  *** end a scene ***\n"
+:shard_number: 13
+:shard_name: bulkmacr
+:shard_time: 1981-01-20 16:45:14.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 35528
+:shard_size: 585

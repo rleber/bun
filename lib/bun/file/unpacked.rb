@@ -10,6 +10,7 @@ module Bun
     class UnexpectedTapeTypeError < RuntimeError; end
     class InvalidInputError < RuntimeError; end
     class CantExpandError < RuntimeError; end
+    class CantDecodeError < RuntimeError; end
     
     class Unpacked < Bun::File
       class << self
@@ -27,18 +28,24 @@ module Bun
         
         def build_data(input, options={})
           @data = input.delete(:content)
-          @content = Data.new(
-            :data=>@data, 
-            :archive=>options[:archive], 
-            :tape=>options[:tape], 
-            :tape_path=>options[:fname],
-          )
+          @content =
+            Data.new(
+              :data=>@data, 
+              :archive=>options[:archive], 
+              :tape=>options[:tape], 
+              :tape_path=>options[:fname],
+            )
         end
         
         def build_descriptor(input)
           @descriptor = Descriptor::Base.from_hash(@content,input)
         end
-        
+
+        def build_descriptor_from_file(fname)
+          input = read_information(fname)
+          build_descriptor(input)
+        end
+
         def forced_open(fname, options={}, &blk)
           options[:fname] = fname
           input = read_information(fname)
@@ -123,6 +130,12 @@ module Bun
               f.mark tag, value
             end
             f.write(to)
+          end
+        end
+
+        def decode(fname, to, options={}, &blk)
+          open(fname, options) do |f|
+            f.decode(to, options, &blk)
           end
         end
       end
@@ -258,10 +271,12 @@ module Bun
         end
       end
 
-      def decode(to, options={})
+      def decode(to, options={}, &blk)
         parts = to_decoded_parts(to, options)
         shell = Shell.new
-        parts.each do |part, content|
+        parts.each.with_index do |pair, index|
+          part, content = pair
+          part = yield(self, index) if block_given? # Block overrides "to"
           shell.mkdir_p(File.dirname(part)) unless part.nil? || part=='-'
           shell.write(part, content) unless part.nil?
         end

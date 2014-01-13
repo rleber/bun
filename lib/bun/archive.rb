@@ -189,7 +189,7 @@ module Bun
       end
       
       def unpack(from, to, options={})
-        Archive.new(from).unpack('**/*', to, options)
+        Archive.new(from).unpack(to, options)
       end
       
       def catalog(from, to=nil, options={})
@@ -304,13 +304,23 @@ module Bun
       contents
     end
         
-    def unpack(glob, to, options={})
+    def unpack(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
       FileUtils.rm_rf to_path unless options[:dryrun]
-      Dir.glob(expand_path(glob)).each do |tape|
-        from_tape = relative_path(tape, :relative_to=>File.expand_path(at))
-        from_tape.sub!(/#{Bun::DEFAULT_PACKED_FILE_EXTENSION}$/,'')
-        to_file  = File.join(to_path, from_tape + Bun::DEFAULT_UNPACKED_FILE_EXTENSION)        
+      leaves.each do |tape|
+        from_tape = relative_path(tape, from_wd: true)
+        to_file = from_tape
+        if to_file =~ /^(.*)(\.[a-zA-Z]+)$/
+          case $2
+          when Bun::DEFAULT_DECODED_FILE_EXTENSION, Bun::DEFAULT_BAKED_FILE_EXTENSION
+            # Do nothing
+          else
+            to_file = $1 + Bun::DEFAULT_UNPACKED_FILE_EXTENSION
+          end
+        else
+            to_file += Bun::DEFAULT_UNPACKED_FILE_EXTENSION
+        end
+        to_file  = File.join(to_path, to_file)
         warn "unpack #{from_tape} => #{to_file}" if options[:dryrun] || !options[:quiet]
         unless options[:dryrun]
           dir = File.dirname(to_file)
@@ -323,40 +333,67 @@ module Bun
     end
 
     # TODO Add glob capability?
-    # TODO DRY this up, using File.decode
     def decode(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
       FileUtils.rm_rf to_path unless options[:dryrun]
-      tapes.each do |tape|
-        file = open(tape)
-        case file.tape_type
-        when :frozen
-          file.shard_count.times do |i|
-            descr = file.shard_descriptor(i)
-            shard_name = descr.name
-            warn "decode #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
-            unless options[:dryrun]
+      leaves.each do |tape_path|
+        decode_options = options.merge(promote: true, expand: true)
+        File.decode(tape_path, nil, decode_options) do |file, index|
+          # Determine whether to decode tape, and if so, where to put it
+          tape = relative_path(tape_path)
+          to_tape_path = case file.descriptor.file_grade
+          when :packed, :unpacked
+            case typ=file.tape_type
+            when :frozen
+              descr = file.shard_descriptor(index)
+              shard_name = descr.name
+              warn "Decoding #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
               timestamp = file.descriptor.timestamp
-              f = File.join(to_path, decode_path(file.path, timestamp), shard_name,
-                    decode_tapename(tape, descr.file_time))
-              dir = File.dirname(f)
-              FileUtils.mkdir_p dir
-              file.decode f, :shard=>shard_name
+              File.join(to_path, decode_path(file.path, timestamp), shard_name,
+                      decode_tapename(tape, descr.file_time))
+            when :text
+              warn "Decoding #{tape}" if options[:dryrun] || !options[:quiet]
+              timestamp = file.descriptor.timestamp
+              File.join(to_path, file.path, decode_tapename(tape, timestamp))
+            else
+              warn "Skipping #{tape}: Unknown type (#{typ})" if options[:dryrun] || !options[:quiet]
+              nil # Force skip file
             end
+          else
+            warn "Copying #{tape}" if options[:dryrun] || !options[:quiet]
+            File.join(to_path, tape)
           end
-        when :text
-          warn "decode #{tape}" if options[:dryrun] || !options[:quiet]
-          unless options[:dryrun]
-            timestamp = file.descriptor.timestamp
-            f = File.join(to_path, file.path, decode_tapename(tape, timestamp))
-            dir = File.dirname(f)
-            FileUtils.mkdir_p dir
-            file.decode f
-          end
-        else
-          warn "skipping #{tape}: unknown type (#{file.tape_type})" \
-                if options[:dryrun] || !options[:quiet]
+          options[:dryrun] ? nil : to_tape_path # Force skipping of file if :dryrun
         end
+        # file = open(tape)
+        # case file.tape_type
+        # when :frozen
+        #   file.shard_count.times do |i|
+        #     descr = file.shard_descriptor(i)
+        #     shard_name = descr.name
+        #     warn "decode #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
+        #     unless options[:dryrun]
+        #       timestamp = file.descriptor.timestamp
+        #       f = File.join(to_path, decode_path(file.path, timestamp), shard_name,
+        #             decode_tapename(tape, descr.file_time))
+        #       dir = File.dirname(f)
+        #       FileUtils.mkdir_p dir
+        #       file.decode f, :shard=>shard_name
+        #     end
+        #   end
+        # when :text
+        #   warn "decode #{tape}" if options[:dryrun] || !options[:quiet]
+        #   unless options[:dryrun]
+        #     timestamp = file.descriptor.timestamp
+        #     f = File.join(to_path, file.path, decode_tapename(tape, timestamp))
+        #     dir = File.dirname(f)
+        #     FileUtils.mkdir_p dir
+        #     file.decode f
+        #   end
+        # else
+        #   warn "skipping #{tape}: unknown type (#{file.tape_type})" \
+        #         if options[:dryrun] || !options[:quiet]
+        # end
       end
     end
     

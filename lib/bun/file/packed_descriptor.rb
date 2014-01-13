@@ -107,6 +107,17 @@ module Bun
           @shards
         end
 
+        def tape_type
+          data.tape_type
+        end
+
+        def file_grade
+          :packed
+        end
+
+        def data_format
+          :raw
+        end
       end
     end
   end

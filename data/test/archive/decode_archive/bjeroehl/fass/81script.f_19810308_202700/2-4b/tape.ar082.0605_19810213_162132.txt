@@ -1,0 +1,156 @@
+---
+:identifier: Bun
+:catalog_time: 1982-12-22 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-13 08:20:54.258536000 -05:00
+:decoded_by: Bun version 0.1.0 [feature/expanded_examine:5347498790fa3c32e0e5deef29ba32b1411963da]
+:description: ''
+:digest: 7ab24f8d4f1d905961db36ebd61a0add
+:file_grade: :decoded
+:file_time: 1981-03-08 20:27:00.000000000 -05:00
+:fname: /Users/richard/projects/bun/data/test/archive/decode_source/ar082.0605.bun
+:owner: bjeroehl
+:path: bjeroehl/fass/81script.f
+:promote: true
+:tape: ar082.0605
+:tape_size: 36457
+:tape_type: :frozen
+:unpack_time: 2014-01-01 19:28:16.748525000 -05:00
+:unpacked_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
+:content: ! '.m3 1
+
+  .m4 0
+
+  .sp
+
+  .in 0
+
+  .ce
+
+  -~fin~-
+
+  .br
+
+  .m3 2
+
+  .m4 2
+
+  .sy echo "    Pages=^^(%) Speeches=^^(indx)"
+
+  .bp
+
+  .en(es)
+
+  .at(fini) *** end a scene ***
+
+  .es
+
+  .en(fini)
+
+  .at(ch) *** character macro ***
+
+  ^(ex)
+
+  .ti0 10
+
+  .an(indx) +1
+
+  .an(@14) +1
+
+  .an(x) ^^(@14)=1
+
+  .ig(ch1^^(x))
+
+  .en(ch11)
+
+  .bf
+
+  ^^(indx)-^^(@12):
+
+  .ig(chen)
+
+  .en(ch10)
+
+  ^^(indx)-^^(@13):
+
+  .en(chen)
+
+  .ns 5
+
+  .en(ch)
+
+  .at(sd) *** sound direction ***
+
+  ^(ad)
+
+  .an(sdct) +1
+
+  [S-^^(sdct)]
+
+  .en(sd)
+
+  .at(ld) *** lighting direction ***
+
+  ^(ad)
+
+  .an(ldct) +1
+
+  [L-^^(ldct)]
+
+  .en(ld)
+
+  .en(9999) *** SKIP TO HERE: THIS IS LAST LINE OF MACRO FILE ***
+
+  .so 81macros
+
+  .bs 2 4 "News"
+
+  .na ew IRV~WEINSTEIN IRV
+
+  .na tj TOM~JOLLS TOM
+
+  .sd
+
+  (TAPE IS PLAYED DURING BLACKOUT.)
+
+  .ch tj
+
+  It''s 11 o''clock, do you know where your children were?
+
+  .sd
+
+  ("EYEWITNESS NEWS" MUSIC.)
+
+  .ch ew
+
+  Topping tonight''s Eyewitness news,
+
+  fire broke out in Tonawanda tonight as a full scale nuclear strike
+
+  was accidentally ordered on the town.  Damage was estimated at
+
+  close to twenty-seven dollars and 32 cents.
+
+  Now, here''s Tom, with the weather outside.
+
+  .ch tj
+
+  Thanks very much, Irv.
+
+  Well, that nuclear strike is causing some pretty heavy weather today.
+
+  Winds are expected to reach up to 700 miles an hour.
+
+  The temperature is currently 7000 degrees
+
+  (that''s 3,871 degrees centigrade for you Canadian viewers) with barometric
+
+  pressure rising to 400 inches of mercury.  The National Weather Service
+
+'
+:shard_number: 14
+:shard_name: 2-4b
+:shard_time: 1981-02-13 16:21:32.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 36113
+:shard_size: 328

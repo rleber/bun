@@ -178,13 +178,15 @@ module Bun
         case grade = file_grade(path)
         when :packed
           File::Packed.open(path, options, &blk)
-        when :unpacked
+        when :unpacked, :cataloged
           File::Unpacked.open(path, options, &blk)
         when :decoded
           File::Decoded.open(path, options, &blk)
+        when :baked
+          File::Baked.open(path, &blk)
         else
           # TODO Why not?
-          raise BadFileGrade, "Can't open baked file"
+          raise BadFileGrade, "Can't open file of this grade: #{grade.inspect}"
         end
       end
       
@@ -204,18 +206,20 @@ module Bun
         elsif binary?(path)
           :baked
         else
-          f = File::Unpacked.open(path, :force=>true)
-          f.descriptor.file_grade
+          File::Unpacked.build_descriptor_from_file(path).file_grade
         end
       end
       
       def file_grade_level(grade)
         [:packed, :unpacked, :decoded, :baked].index(grade)
       end
+
+      def file_outgrades?(path, level)
+        file_grade_level(file_grade(path)) > file_grade_level(level)
+      end
       
       def descriptor(path, options={})
         # TODO This is smelly (but necessary, in case the file was opened with :force)
-        # bun describe <packed file> fails right here
         open(path, :force=>true) {|f| f.descriptor }
       rescue Errno::ENOENT => e
         return nil if options[:allow]
@@ -223,18 +227,42 @@ module Bun
       end
       
       # Convert from packed format to unpacked (i.e. YAML)
-      # TODO: move to File::Packed
       def unpack(path, to, options={})
-        # debug "path: #{path}, to: #{to}, options: #{options.inspect}\n  caller: #{caller.first}"
-        return unless packed?(path)
-        open(path) do |f|
-          cvt = f.unpack
-          cvt.descriptor.tape = options[:tape] if options[:tape]
-          cvt.descriptor.merge!(:unpack_time=>Time.now, :unpacked_by=>Bun.expanded_version)
-          cvt.write(to)
+        case file_grade(path)
+        when :packed
+          open(path) do |f|
+            cvt = f.unpack
+            cvt.descriptor.tape = options[:tape] if options[:tape]
+            cvt.descriptor.merge!(:unpack_time=>Time.now, :unpacked_by=>Bun.expanded_version)
+            cvt.write(to)
+          end
+        else
+          Shell.new.cp(path, to)
         end
       end
-      
+
+      def decode(path, to, options={}, &blk)
+        case file_grade(path)
+        when :packed
+          File::Unpacked.open(path, options.merge(promote: true)) do |f|
+            f.decode(to, options, &blk)
+          end
+        else
+          File.open(path, options) do |f|
+            f.decode(to, options, &blk)
+          end
+        end
+      end
+
+      def bake(path, to, options={})
+        case file_grade(path)
+        when :baked, :decoded
+          File.open(path, options) {|f| f.bake(to)}
+        else
+          File::Decoded.open(path, options.merge(promote: true)) {|f| f.bake(to)}
+        end
+      end
+     
       def expand_path(path, relative_to=nil)
         path == '-' ? path : super(path, relative_to)
       end
