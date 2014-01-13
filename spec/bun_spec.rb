@@ -991,7 +991,7 @@ describe Bun::Bot do
       end
       it "should write the proper content" do
         "mixed_grades_unpack/ar003.0698.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
-        "mixed_grades_unpack/ar003.0701.bun".should match_expected_output
+        "mixed_grades_unpack/ar003.0701.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
         "mixed_grades_unpack/clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
             match_expected_output
         "mixed_grades_unpack/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output

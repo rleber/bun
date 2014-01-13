@@ -33,7 +33,6 @@ module Bun
               :data=>@data, 
               :archive=>options[:archive], 
               :tape=>options[:tape], 
-              :tape_path=>options[:fname],
             )
         end
         
@@ -47,7 +46,6 @@ module Bun
         end
 
         def forced_open(fname, options={}, &blk)
-          options[:fname] = fname
           input = read_information(fname)
           build_data(input, options)
           build_descriptor(input)

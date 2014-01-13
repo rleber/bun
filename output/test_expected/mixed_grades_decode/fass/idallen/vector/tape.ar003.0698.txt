@@ -8,7 +8,6 @@
 :file_grade: :decoded
 :owner: fass
 :path: fass/idallen/vector
-:promote: true
 :tape: ar003.0698
 :tape_size: 2582
 :tape_type: :text

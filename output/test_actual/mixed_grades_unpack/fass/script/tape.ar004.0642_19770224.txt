@@ -1,9 +1,10 @@
 ---
 :identifier: Bun
+:catalog: ~/bun_catalog
 :catalog_time: 1977-02-24 00:00:00.000000000 -05:00
 :data_format: :raw
-:decode_time: 2014-01-01 19:33:06.213516000 -05:00
-:decoded_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
+:decode_time: 2014-01-13 12:30:07.413693000 -05:00
+:decoded_by: Bun version 0.2.0 [develop:069392246bd09950044827adaa45cc77d85d9c0d]
 :description: klisted final copy of fass '77 script
 :digest: 1061fcee9b130d261da6308856fdc984
 :file_grade: :decoded
@@ -12,8 +13,8 @@
 :tape: ar004.0642
 :tape_size: 3863
 :tape_type: :text
-:unpack_time: 2014-01-01 19:27:40.752139000 -05:00
-:unpacked_by: Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
+:unpack_time: 2014-01-13 12:28:23.012148000 -05:00
+:unpacked_by: Bun version 0.2.0 [develop:069392246bd09950044827adaa45cc77d85d9c0d]
 :content: ! "\t\n\t\n        FASS                   - 1 -           ACT I SCENE 0\tFASS
   \                      - 1 -               ACT I SCENE I\n\t\n\t\n\t\n        Act
   1 Scene 0\tAct 1, Scene 1 - Closing Song\n\t\n        (AN EXTENDED ROUTINE BEFORE
