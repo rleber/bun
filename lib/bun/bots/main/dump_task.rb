@@ -10,6 +10,7 @@ option "spaces",    :aliases=>'-s', :type=>'boolean', :desc=>'Display spaces unc
 option "unlimited", :aliases=>'-u', :type=>'boolean', :desc=>'Ignore the file size limit'
 # TODO Deblock option
 def dump(file_name)
+  check_for_unknown_options(file_name)
   begin
     offset = options[:offset] ? eval(options[:offset]) : 0 # So octal or hex values can be given
   rescue => e

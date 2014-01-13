@@ -6,9 +6,11 @@ require 'date'
 module Bun
 
   class File < ::File
-    class UnknownFileType < RuntimeError; end
-    class UnexpectedTapeType < RuntimeError; end
-    class InvalidInput < RuntimeError; end
+    class UnknownFileTypeError < RuntimeError; end
+    class UnexpectedTapeTypeError < RuntimeError; end
+    class InvalidInputError < RuntimeError; end
+    class CantExpandError < RuntimeError; end
+    class CantDecodeError < RuntimeError; end
     
     class Unpacked < Bun::File
       class << self
@@ -26,18 +28,24 @@ module Bun
         
         def build_data(input, options={})
           @data = input.delete(:content)
-          @content = Data.new(
-            :data=>@data, 
-            :archive=>options[:archive], 
-            :tape=>options[:tape], 
-            :tape_path=>options[:fname],
-          )
+          @content =
+            Data.new(
+              :data=>@data, 
+              :archive=>options[:archive], 
+              :tape=>options[:tape], 
+              :tape_path=>options[:fname],
+            )
         end
         
         def build_descriptor(input)
           @descriptor = Descriptor::Base.from_hash(@content,input)
         end
-        
+
+        def build_descriptor_from_file(fname)
+          input = read_information(fname)
+          build_descriptor(input)
+        end
+
         def forced_open(fname, options={}, &blk)
           options[:fname] = fname
           input = read_information(fname)
@@ -46,13 +54,15 @@ module Bun
           options = options.merge(:data=>@data, :descriptor=>@descriptor, :tape_path=>options[:fname])
           if options[:type] && @descriptor[:tape_type]!=options[:type]
             msg = "Expected file #{fname} to be a #{options[:type]} file, not a #{descriptor[:tape_type]} file"
+            # TODO Remove this option; use exception handling, instead
             if options[:graceful]
               stop "!#{msg}"
             else
-              raise UnexpectedTapeType, msg
+              raise UnexpectedTapeTypeError, msg
             end
           end
-          file = create(options)
+          klass = options[:as_class] || self # So that File::Decoded can force open as File::Unpacked
+          file = klass.create(options)
           if block_given?
             begin
               yield(file)
@@ -66,7 +76,6 @@ module Bun
 
         # TODO -- Generalize this, and move it to File
         def open(fname, options={}, &blk)
-          # debug "fname: #{fname}, options: #{options.inspect}\n  caller: #{caller.first}"
           if options[:force]
             forced_open(fname, options, &blk)
           elsif (grade = File.file_grade(fname)) != :unpacked
@@ -101,7 +110,7 @@ module Bun
             File::Unpacked::Frozen.new(options)
           else
             if options[:strict]
-              raise UnknownFileType,"!Unknown file type: #{descriptor.tape_type.inspect}"
+              raise UnknownFileTypeError,"!Unknown file type: #{descriptor.tape_type.inspect}"
             else
               File::Unpacked::Text.new(options)
             end
@@ -121,6 +130,12 @@ module Bun
               f.mark tag, value
             end
             f.write(to)
+          end
+        end
+
+        def decode(fname, to, options={}, &blk)
+          open(fname, options) do |f|
+            f.decode(to, options, &blk)
           end
         end
       end
@@ -232,8 +247,49 @@ module Bun
         to_decoded_hash(options).to_yaml
       end
 
-      def decode(to, options={})
-        Shell.new.write(to,to_decoded_yaml(options))
+      def qualified_path_name(to, shard=nil)
+        to ? (shard ? File.join(to, shard) : to) : shard      end
+
+      # TODO Could this be refactored to Frozen and other subclasses?
+      def to_decoded_parts(to, options)
+        expand = options.delete(:expand)
+        allow = options.delete(:allow)
+        if tape_type == :huffman
+          # Not decodeable
+          raise Bun::File::CantDecodeError, "Unable to decode Huffman encoded file" unless allow
+          nil
+        elsif tape_type!=:frozen || options[:shard]
+          # Return a file
+          {to=>to_decoded_yaml(options)}
+        elsif expand
+          # Return multiple shards
+          parts = {}
+          shard_count.times do |shard_number|
+            res = to_decoded_hash(options.merge(shard: shard_number))
+            path = qualified_path_name(to, res[:shard_name])
+            raise CantExpandError, "Must specify file name with :expand" if res[:shard_name] && to=='-'
+            parts[path] = res.to_yaml
+          end
+          parts
+        else
+          raise CantExpandError, "Must specify either :shard or :expand"
+        end
+      end
+
+      def decode(to, options={}, &blk)
+        parts = to_decoded_parts(to, options)
+        unless parts
+          yield(self, 0) if block_given? # In case some reporting needs to be done
+          return nil
+        end
+        shell = Shell.new
+        parts.each.with_index do |pair, index|
+          part, content = pair
+          part = yield(self, index) if block_given? # Block overrides "to"
+          shell.mkdir_p(File.dirname(part)) unless part.nil? || part=='-'
+          shell.write(part, content) unless part.nil?
+        end
+        parts
       end
 
       def method_missing(meth, *args, &blk)

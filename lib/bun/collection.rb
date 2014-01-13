@@ -58,8 +58,8 @@ module Bun
     
     alias_method :folders, :directories
     
-    def leaves(&blk)
-      to_enum.leaves(&blk)
+    def leaves(options={}, &blk)
+      to_enum.leaves(options, &blk)
     end
     
     alias_method :items, :leaves
@@ -161,7 +161,7 @@ module Bun
       if f.last.is_a?(Hash)
         options = f.pop
       end
-      options.merge!(:relative_to=>at) unless options[:relative_to]
+      options.merge!(:relative_to=>File.expand_path(at)) unless options[:relative_to]
       File.relative_path(*f, options)
     end
     
@@ -228,13 +228,14 @@ module Bun
     def set_timestamps(options={})
       shell = Bun::Shell.new(options)
       each do |tape|
-        descr = descriptor(tape)
-        timestamp = [descr[:catalog_time], descr[:file_time]].compact.min
-        if timestamp
-          warn "Set timestamp: #{tape} #{timestamp.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
-          set_timestamp(tape, timestamp, :shell=>shell) unless options[:dryrun]
-        else
-          warn "No timestamp available for #{tape}" unless options[:quiet]
+        if descr = descriptor(tape)
+          timestamp = [descr[:catalog_time], descr[:file_time]].compact.min
+          if timestamp
+            warn "Set timestamp: #{tape} #{timestamp.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
+            set_timestamp(tape, timestamp, :shell=>shell) unless options[:dryrun]
+          else
+            warn "No timestamp available for #{tape}" unless options[:quiet]
+          end
         end
       end
     end
@@ -248,7 +249,20 @@ module Bun
 
     def apply_catalog(catalog_path, options={})
       shell = Bun::Shell.new(options)
-      each do |tape|
+      leaves do |tape_path|
+        tape = relative_path(tape_path, from_wd: true)
+        case File.file_grade(tape_path)
+        when :packed
+          new_tape_path = tape_path.sub(/#{DEFAULT_PACKED_FILE_EXTENSION}$/,'') + DEFAULT_UNPACKED_FILE_EXTENSION
+          File.unpack(tape_path, new_tape_path)
+          Shell.new.rm_rf tape_path
+          tape_path = new_tape_path
+          tape = relative_path(tape_path, from_wd: true)
+        when :unpacked
+          # Do nothing; file is already unpacked
+        else
+          next
+        end
         ct = catalog(catalog_path).time_for(tape)
         if ct
           warn "Set catalog time: #{tape} #{ct.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]

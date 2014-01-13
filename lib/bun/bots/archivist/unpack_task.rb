@@ -5,5 +5,6 @@ desc "unpack ARCHIVE TO", "Convert all the files in the archive from Bun binary 
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Perform a dry run. Do not actually unpack"
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>'Run quietly'
 def unpack(at, to)
+  check_for_unknown_options(at, to)
   Archive.unpack(at, to, options)
 end

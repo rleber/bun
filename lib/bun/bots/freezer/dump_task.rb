@@ -2,12 +2,13 @@
 # -*- encoding: us-ascii -*-
 
 desc "dump FILE SHARD", "Dump a frozen Honeywell file"
+option "decoded", :aliases=>'-d', :type=>'boolean', :desc=>'Display the file in partially decoded format'
 option "escape",  :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
 option "lines",   :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
 option "offset",  :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lines'
 option "spaces",  :aliases=>'-s', :type=>'boolean', :desc=>'Display spaces unchanged'
-option "thawed",  :aliases=>'-t', :type=>'boolean', :desc=>'Display the file in partially thawed format'
 def dump(file_name, n)
+  check_for_unknown_options(file_name, n)
   File::Frozen.open(file_name, :graceful=>true) do |file|
     archived_file = file.path
     archived_file = "--unknown--" unless archived_file
@@ -16,7 +17,7 @@ def dump(file_name, n)
     path = File.join(file.descriptor.path, shard_descriptor.name)
     limit = options[:lines]
     puts "Archive at #{File.expand_path(file_name)}[#{shard_descriptor.name}] for #{path}:"
-    if options[:thawed]
+    if options[:decoded]
       p file
       lines = file.lines(file_index)
       # TODO Refactor using Array#justify_rows

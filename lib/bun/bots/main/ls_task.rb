@@ -63,6 +63,7 @@ option "type",      :aliases=>"-T", :type=>'string',  :default=>TYPE_VALUES.firs
 # TODO Refactor tape/file patterns; use tape::file::shard syntax
 # TODO Refactor code into shorter submethods
 def ls(*paths)
+  check_for_unknown_options(*paths)
   type_pattern = case options[:type].downcase
     when 'f', 'frozen'
       /^(frozen|shard)$/i

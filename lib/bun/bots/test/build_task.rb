@@ -14,25 +14,40 @@ no_tasks do
   def build_file(file, at=nil, format=:unpacked)
     from = case format
     when :packed
-      "~/bun_archive_packed" 
+      "~/fass_work/packed" 
     when :unpacked
-      "~/bun_archive_unpacked"
+      "~/fass_work/unpacked"
+    when :cataloged
+      "~/fass_work/cataloged"
+    when :decoded
+      "~/fass_work/decoded"
+    when :baked
+      "~/fass_work/baked"
     else
-      "~/bun_archive"
+      raise "Unknown format: #{format}"
     end
+    # TODO Move this to Bun class
     extension = case format
     when :packed
       Bun::DEFAULT_PACKED_FILE_EXTENSION
-    else
+    when :unpacked
       Bun::DEFAULT_UNPACKED_FILE_EXTENSION
+    when :cataloged
+      Bun::DEFAULT_CATALOGED_FILE_EXTENSION
+    when :decoded
+      Bun::DEFAULT_DECODED_FILE_EXTENSION
+    else
+      Bun::DEFAULT_BAKED_FILE_EXTENSION
     end
     at = $at unless at
     file_with_extension = file + extension
     source_file = File.join(File.expand_path(from),file_with_extension)
     target_file = File.join(File.expand_path(at),file_with_extension)
     stop "!Source file #{source_file.safe} does not exist" unless File.exists?(source_file)
+    cmd = "mkdir -p #{File.dirname(target_file).safe}"
+    _exec cmd
     cmd = "cp -f #{source_file.safe} #{target_file.safe}"
-    _exec "#{cmd}"
+    _exec cmd
   end
   
   def build_directory(at, &blk)
@@ -75,7 +90,8 @@ end
 desc "build", "Build test files"
 def build
   build_directory "data/test" do
-    _exec "cp -rf data/test_init/* data/test/"
+    _exec "rm -rf data/test"
+    _exec "cp -rf data/test_init data/test"
   end
   
   build_file "ar003.0698", "data/test"
@@ -119,4 +135,12 @@ def build
   build_standard_directory "data/test/archive/mv_init/directory"
   build_standard_directory "data/test/archive/rm_init"
   build_standard_directory "data/test/archive/rv_init/directory"
+
+  # Build mixed directory
+  build_directory "data/test/archive/mixed_grades_init" do
+    build_file "ar003.0698", nil, :packed
+    build_file "ar003.0701", nil, :cataloged
+    build_file "fass/script/tape.ar004.0642_19770224", nil, :decoded
+    build_file "clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229", nil, :baked
+  end
 end

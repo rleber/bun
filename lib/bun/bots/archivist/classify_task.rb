@@ -17,5 +17,6 @@ on the outcome of the tests. For instance, if the "clean" test is specified (--t
 the files are classified into two directories: TO/clean and TO/dirty.
 EOT
 def classify(from, to=nil)
+  check_for_unknown_options(from, to)
   Archive.classify(from, to, options)
 end

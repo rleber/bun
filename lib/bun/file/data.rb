@@ -53,7 +53,7 @@ module Bun
       end
   
       def content_offset(words)
-        words.at(1).half_word(1).value
+        words.at(1).half_word(1).value rescue 0
       end
     end
 
@@ -172,7 +172,7 @@ module Bun
     end
 
     def tape_size
-      ((word(0).half_word(1))+1).value
+      ((word(0).half_word(1))+1).value rescue 0
     end
     
     def frozen_tape_size

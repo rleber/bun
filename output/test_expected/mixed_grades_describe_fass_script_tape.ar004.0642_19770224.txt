@@ -1,0 +1,14 @@
+Tape          ar004.0642
+File          fass/script
+Owner         fass
+Description   "klisted final copy of fass '77 script"
+Catalog Date  1977/02/24
+File Grade    :decoded
+Size (Words)  3863
+Type          Text
+Data Format   Raw
+MD5 Digest    1061 fcee 9b13 0d26 1da6 3088 56fd c984
+Decode Time   2014-01-01 19:33:06 -0500
+Decoded By    Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
+Unpack Time   2014-01-01 19:27:40 -0500
+Unpacked By   Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]

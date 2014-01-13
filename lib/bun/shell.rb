@@ -73,13 +73,15 @@ module Bun
       _run "cp -r", from, to, options
     end
     
-    def thaw(*args)
+    # TODO Is this used?
+    def decode(*args)
       options = {}
       options = args.pop if args.last.is_a?(Hash)
       args.push "--at #{options[:at].inspect}" if options[:at]
-      _run "bun freezer thaw", *args
+      _run "bun freezer decode", *args
     end
     
+    # TODO Is this used?
     def unpack(*args)
       options = {}
       options = args.pop if args.last.is_a?(Hash)
@@ -93,8 +95,10 @@ module Bun
     
     def write(file, content, options={})
       case file
-      when nil, '-'
-        STDOUT.write content
+      when nil
+        # Do nothing
+      when '-'
+        $stdout.write content
       when IO
         file.write content
       else
@@ -102,10 +106,11 @@ module Bun
         ::File.open(file, mode) {|f| f.write content}
         set_timestamp(file, options[:timestamp], options) if options[:timestamp]
       end
+      content
     end
     
     def log(file, message)
-      file = STDERR if file == '-'
+      file = $stderr if file == '-'
       write file, "#{Time.now.strftime('%Y/%m/%d %H:%M:%S')} #{message}\n", :mode=>'a'
     end
   end

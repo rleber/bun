@@ -5,7 +5,8 @@ desc "redo [N]", "Rerun the Nth command in the backtrace (-1 is default: last co
 option 'dryrun', :aliases=>'-d', :type=>'boolean', :desc=>"Don't actually run the command"
 option 'quiet',  :aliases=>'-q', :type=>'boolean', :desc=>"Quiet mode"
 def redo(n=-1)
-  trace = Bun::Test.backtrace
+  n = n.to_i
+  trace = Bun::Test.backtrace(range: n)
   command = trace[n.to_i]
   stop "!Command number out of range" unless command
   puts command unless options[:quiet]

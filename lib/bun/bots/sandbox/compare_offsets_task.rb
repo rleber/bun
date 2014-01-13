@@ -3,6 +3,7 @@
 
 desc "compare_offsets ARCHIVE", "Compare file offsets vs. content of file preamble"
 def compare_offsets(at)
+  check_for_unknown_options(at)
   archive = Archive.new(at)
   table = [%w{Tape Word1 Calculated Flag}]
   flagged = false

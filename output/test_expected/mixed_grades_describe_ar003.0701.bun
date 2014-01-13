@@ -1,0 +1,11 @@
+Tape          ar003.0701
+File          fass/idallen/huffhart
+Owner         fass
+Description   ==>files for idallen
+File Grade    :unpacked
+Size (Words)  662
+Type          Huffman
+Data Format   Raw
+MD5 Digest    c432 253b c6b1 94ed ab16 ff86 46d9 8e8d
+Unpack Time   2014-01-01 19:27:34 -0500
+Unpacked By   Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]

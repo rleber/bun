@@ -15,11 +15,18 @@ STANDARD_FIELDS = %w{description catalog_time data data_format digest file_grade
 SHARDS_ACROSS = 5
 desc "describe FILE", "Display description information for a tape"
 def describe(file)
+  check_for_unknown_options(file)
   # TODO Move logic to File class
+
+  if File.file_grade(file) == :baked
+    puts "#{file} is baked. No description available."
+    exit
+  end
+
   descriptor    = File.descriptor(file, :graceful=>true)
   type          = descriptor.tape_type
   shards        = descriptor.shards || []
-  catalog_time    = descriptor.catalog_time
+  catalog_time  = descriptor.catalog_time
   
   preamble_table = []
   push_tbl preamble_table, "Tape", descriptor.tape
@@ -34,7 +41,7 @@ def describe(file)
   push_tbl preamble_table, "Data Format", descriptor.data_format.to_s.sub(/^./) {|c| c.upcase}
   push_tbl preamble_table, "MD5 Digest", descriptor.digest.scan(/..../).join(' ')
   
-  (descriptor.fields - STANDARD_FIELDS).sort_by{|f| f.to_s }.each do |f|
+  (descriptor.fields.map{|f| f.to_sym} - STANDARD_FIELDS).sort_by{|f| f.to_s }.each do |f|
     push_tbl preamble_table,
              f.to_s.gsub(/_/,' ').gsub(/\b[a-z]/) {|c| c.upcase},
              descriptor[f.to_sym].to_s

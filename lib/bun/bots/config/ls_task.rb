@@ -5,6 +5,7 @@
 
 desc "ls [PAT]", "Display configuration information"
 def ls(pat=nil)
+  check_for_unknown_options(pat)
   config = Configuration.new
   tasks = config.all_keys.sort
   pat ||= '*'

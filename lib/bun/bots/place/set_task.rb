@@ -5,6 +5,7 @@
 
 desc "set KEY VALUE", "Define a place"
 def set(key,value)
+  check_for_unknown_options(key, value)
   config = Configuration.new
   config.places[key] = value
   config.write

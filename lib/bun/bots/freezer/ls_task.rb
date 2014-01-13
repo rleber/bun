@@ -20,6 +20,7 @@ option "one",     :aliases=>'-1', :type=>'boolean',                             
 option "sort",    :aliases=>"-S", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order for files (#{SORT_VALUES.join(', ')})"
 option "width",   :aliases=>'-w', :type=>'numeric', :default=>DEFAULT_WIDTH,     :desc=>"Width of display (for short format only)"
 def ls(file_name)
+  check_for_unknown_options(file_name)
   stop "!Unknown --sort setting. Must be one of #{SORT_VALUES.join(', ')}" unless SORT_VALUES.include?(options[:sort])
   shard_pattern = get_regexp(options[:shard])
   stop "!Invalid --shards pattern. Should be a valid Ruby regular expression (except for the delimiters)" unless shard_pattern

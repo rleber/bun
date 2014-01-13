@@ -8,6 +8,7 @@ desc "compare_dates ARCHIVE", "Compare update dates for matching files"
 option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on at index; always build information from source file"
 option 'type',    :aliases=>'-t', :type=>'string',  :desc=>'Select file type (or all)', :default=>'all'
 def compare_dates(at)
+  check_for_unknown_options(at)
   archive = Archive.new(at)
   file_update_dates = {}
   tape_types = if %w{* all}.include?(options[:type])
