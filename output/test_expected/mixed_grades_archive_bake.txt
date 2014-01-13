@@ -1,0 +1,12 @@
+output/test_actual/mixed_grades_bake
+output/test_actual/mixed_grades_bake/ar003.0698
+output/test_actual/mixed_grades_bake/clean
+output/test_actual/mixed_grades_bake/clean/fass
+output/test_actual/mixed_grades_bake/clean/fass/1986
+output/test_actual/mixed_grades_bake/clean/fass/1986/script
+output/test_actual/mixed_grades_bake/clean/fass/1986/script/script.f_19860213
+output/test_actual/mixed_grades_bake/clean/fass/1986/script/script.f_19860213/1-1
+output/test_actual/mixed_grades_bake/clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt
+output/test_actual/mixed_grades_bake/fass
+output/test_actual/mixed_grades_bake/fass/script
+output/test_actual/mixed_grades_bake/fass/script/tape.ar004.0642_19770224.txt
