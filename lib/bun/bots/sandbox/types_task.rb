@@ -4,6 +4,7 @@
 desc "types", "List file types"
 option "build",   :aliases=>"-b", :type=>'boolean', :desc=>"Don't rely on at index; always build information from source file"
 def types(at)
+  check_for_unknown_options(at)
   archive = Archive.new(at)
   archive.each do |tape|
     file = archive.descriptor(tape, :build=>options[:build])

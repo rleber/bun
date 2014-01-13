@@ -11,7 +11,6 @@ require 'lib/bun/file'
 require 'lib/bun/bots/archivist'
 require 'lib/bun/bots/config'
 require 'lib/bun/bots/place'
-require 'lib/bun/bots/librarian'
 require 'lib/bun/bots/freezer'
 require 'lib/bun/bots/sandbox'
 require 'lib/bun/bots/test'
@@ -27,7 +26,6 @@ module Bun
       register Bun::Bot::Archivist, :archive, "archive", "Manage archives of Honeywell files"
       register Bun::Bot::Config,    :config,  "config",  "Manage configuration"
       register Bun::Bot::Freezer,   :freezer, "freezer", "Manage frozen Honeywell files"
-      register Bun::Bot::Librarian, :library, "library", "Manage libraries of decoded Honeywell files"
       register Bun::Bot::Place,     :places,  "places",  "Manage defined places (files/URLs)"
       register Bun::Bot::Sandbox,   :sandbox, 'sandbox', "Play with archive"
       register Bun::Bot::Test,      :test,    'test',    "Run tests"

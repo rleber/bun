@@ -5,8 +5,8 @@ operating on them. The primary categories of these objects are Bots, Files, Data
 
 _BOTS_
 A "bot" is an executable utility that operates on data. An example is the "Freezer" bot, which provides 
-operations on "frozen" Honeywell archives (collections of files). Freezer implements a "thaw" method, for
-example, which "unfreezes" a file from within an archive.
+operations on "frozen" Honeywell archives (collections of files). For instance, Archivist implements a 
+"decode" task, which decodes all the files in an archive.
 
 Bots are implemented using the Thor gem, which helps turn them into command line utilities, with arguments
 options, etc. See rubygems or git for further documentation on Thor.
@@ -14,8 +14,8 @@ options, etc. See rubygems or git for further documentation on Thor.
 The source file for bots is stored in the lib/bun/buts directory. Generally, each bot has a main file, named 
 the same as the bot (plus ".rb"), and a directory with the same name (without the ".rb").
 Within the directory are various source files for the bot. Any such source file with a name of the form 
-"xxx_task.rb" will automatically be turned into a subtask for the bot. So, for example, the Freezer bot has a 
-main file "freezer.rb", and a directory "freezer" which contains (among other things) a "thaw_task.rb" file. 
+"xxx_task.rb" will automatically be turned into a subtask for the bot. So, for example, the Archivist bot has a 
+main file "archivist.rb", and a directory "archivist" which contains (among other things) a "decode_task.rb" file. 
 These bot classes map to a command line command (or subcommand), as defined beginning in lib/bun/bots/main.rb
 
 Bot class hierarchy (indentation denotes inheritance, not naming scope):
@@ -46,7 +46,6 @@ There is a hierarchy of File and related classes:
 Bun::File::Descriptor
     Bun::File::Descriptor::Base
         Bun::File::Descriptor::Unpacked
-        Bun::File::Descriptor::Extracted
         
 Bun::File::Frozen::Descriptor (note that this does not descend from Bun::File::Descriptor)
 
@@ -101,6 +100,20 @@ Slicr::Slice::Accessor (mixes in Indexable::Basic)
 Slicr::Slice::Definition
 Slicr::Slice::DSL
 Slicr::Sliceable
+String::Examination
+String::Examination::Base
+    String::Examination::AnalysisBase
+        String::Examination::CharacterClass
+            String::Examination::Chars
+            String::Examination::Classes
+            String::Examination::Controls
+            String::Examination::Printable
+    String::Examination::Boolean
+        String::Examination::Clean
+        String::Examination::Overstruck
+        String::Examination::Roff
+        String::Examination::Tabbed
+    String::Examination::Legibility
 
 As with the data classes, the source for these classes is contained in either the lib/slicr directory (for the 
 Slicr classes), or in the lib or lib/bun directories.

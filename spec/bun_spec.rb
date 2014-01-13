@@ -3,11 +3,24 @@
 
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require 'tempfile'
+require 'shellwords'
 require 'yaml'
 
 TEST_ARCHIVE = File.join(File.dirname(__FILE__),'..','data','test', 'archive', 'general_test')
 
+$saved_commands = []
+
+def save(cmd)
+  $saved_commands << cmd
+  cmd
+end
+
+def saved_commands
+  $saved_commands
+end
+
 def exec(cmd, options={})
+  save(cmd)
   res = `#{cmd}`
   unless $?.exitstatus == 0
     allowed_codes = [options[:allowed] || []].flatten
@@ -17,6 +30,41 @@ def exec(cmd, options={})
     end
   end
   res
+end
+
+$backtrace = 5
+
+def backtrace(options={})
+  if $backtrace && failure?
+    if $saved_commands && $saved_commands.size > 0
+      ::File.open(Bun::Test::BACKTRACE_FILE, 'w') {|f| f.write($saved_commands.join("\n")) }
+      unless options[:quiet]
+        $stderr.puts "Command backtrace:"
+        system("bun test trace -i 2 #{$backtrace}")
+      end
+    end
+  else
+    `rm -f #{Bun::Test::BACKTRACE_FILE}`
+  end
+end
+
+def success?
+  examples = RSpec.world.filtered_examples.values.flatten
+  examples.none?(&:exception)
+end
+
+def failure?
+  !success?
+end
+
+def exec_on_success(cmd, options={})
+  return unless success?
+  exec cmd, options
+end
+
+def exec_on_failure(cmd, options={})
+  return if success?
+  exec cmd, options
 end
 
 def decode(file_name)
@@ -52,7 +100,7 @@ end
 shared_examples "simple" do |source|
   it "decodes a simple text file (#{source})" do
     source_file = source + Bun::DEFAULT_UNPACKED_FILE_EXTENSION
-    expected_output_file = File.join("output", "test", source)
+    expected_output_file = File.join("output", "test_expected", source)
     actual_output = decode(source_file)
     expected_output = Bun.readfile(expected_output_file)
     actual_output.should == expected_output
@@ -63,7 +111,7 @@ shared_examples "command" do |descr, command, expected_stdout_file, options={}|
   it "handles #{descr} properly" do
     # warn "> bun #{command}"
     res = exec("bun #{command} 2>&1", options).force_encoding('ascii-8bit')
-    expected_stdout_file = File.join("output", 'test', expected_stdout_file) \
+    expected_stdout_file = File.join("output", "test_expected", expected_stdout_file) \
         unless expected_stdout_file =~ %r{/}
     raise "!Missing expected output file: #{expected_stdout_file.inspect}" \
         unless File.exists?(expected_stdout_file)  
@@ -75,7 +123,7 @@ shared_examples "command from STDIN" do |descr, command, input_file, expected_st
   it "handles #{descr} from STDIN properly" do
     # warn "> bun #{command}"
     res = exec("cat #{input_file} | bun #{command} 2>&1", options).force_encoding('ascii-8bit')
-    expected_stdout_file = File.join("output", 'test', expected_stdout_file) \
+    expected_stdout_file = File.join("output", 'test_expected', expected_stdout_file) \
         unless expected_stdout_file =~ %r{/}
     raise "!Missing expected output file: #{expected_stdout_file.inspect}" \
         unless File.exists?(expected_stdout_file)  
@@ -91,17 +139,17 @@ shared_examples "command with file" do |descr, command, expected_stdout_file, ou
       @expected_stdout_file = if expected_stdout_file =~ %r{/}
         expected_stdout_file
       else 
-        File.join("output", 'test', expected_stdout_file)
+        File.join("output", 'test_expected', expected_stdout_file)
       end
       @expected_output_file = if expected_output_file =~ %r{/}
         expected_output_file
       else
-        File.join("output", 'test', expected_output_file)
+        File.join("output", 'test_expected', expected_output_file)
       end
       @output_file = if output_file =~ %r{/}
         output_file
       else
-        File.join("output", output_file)
+        File.join("output", "test_actual", output_file)
       end
     end
     it "gives the expected $stdout" do
@@ -112,11 +160,60 @@ shared_examples "command with file" do |descr, command, expected_stdout_file, ou
     end
     it "puts the expected output (in #{output_file})" do
       if File.exists?(@output_file) 
-        Bun.readfile(@output_file).should == Bun.readfile(@expected_output_file)
+        @output_file.should match_file(@expected_output_file)
       end
     end
     after :all do
+      backtrace
       exec("rm #{@output_file}")
+    end
+  end
+end
+
+describe Bun::Shell do
+  context "write" do
+    context "with null file" do
+      before :all do
+        @shell = Bun::Shell.new
+        @stdout_content = capture(:stdout) { @res = @shell.write(nil, "foo") }
+      end
+      it "should return the text" do
+        @res.should == "foo"
+      end
+      it "should write nothing to $stdout" do
+        @stdout_content.should == ""
+      end
+    end
+    context "with - as file" do
+      before :all do
+        @shell = Bun::Shell.new
+        @stdout_content = capture(:stdout) { @res = @shell.write("-", "foo") }
+      end
+      it "should return the text" do
+        @res.should == "foo"
+      end
+      it "should write the text to $stdout" do
+        @stdout_content.should == "foo"
+      end
+    end
+    context "with other file name" do
+      before :all do
+        @shell = Bun::Shell.new
+        @file = "output/test_actual/shell_write_test.txt"
+        exec("rm -f #{@file}")
+        @res = @shell.write(@file, "foo")
+      end
+      it "should return the text" do
+        @res.should == "foo"
+      end
+      it "should write the text to the file given" do
+        file_should_exist @file
+        content = ::File.read(@file)
+        content.should == "foo"
+      end
+      after :all do
+        exec("rm -f #{@file}")
+      end
     end
   end
 end
@@ -126,31 +223,6 @@ UNPACK_PATTERNS = {
   :unpacked_by=>/:unpacked_by:\s+Bun version \d+\.\d+\.\d+\s+\[.*?\]\n?/, 
 }
 
-shared_examples "match with variable data" do |fname, patterns|
-  actual_output_file = File.join('output', fname)
-  expected_output_file = File.join('output','test', fname)
-  it "should create the proper file" do
-    file_should_exist actual_output_file
-  end
-  it "should generate output matching each pattern" do
-    actual_output = Bun.readfile(actual_output_file).chomp
-    patterns.each do |key, pat|
-      actual_output.should match_named_pattern(key, pat)
-    end
-  end
-  it "should generate the proper fixed content" do
-    actual_output = Bun.readfile(actual_output_file).chomp
-    expected_output = Bun.readfile(expected_output_file).chomp
-    patterns.each do |key, pat|
-      actual_output = actual_output.sub(pat,'')
-      expected_output = expected_output.sub(pat,'')
-    end
-    actual_output = actual_output.gsub!(/\n+/,"\n").chomp
-    expected_output = expected_output.gsub!(/\n+/,"\n").chomp
-    actual_output.should == expected_output
-  end
-end
-
 describe Bun::File::Text do
   include_examples "simple", "ar119.1801"
   include_examples "simple", "ar003.0698"
@@ -158,7 +230,7 @@ describe Bun::File::Text do
   it "decodes a more complex file (ar004.0642)" do
     infile = 'ar004.0642'
     source_file = infile + Bun::DEFAULT_UNPACKED_FILE_EXTENSION
-    outfile = File.join("output", "test", infile)
+    outfile = File.join("output", "test_expected", infile)
     decode_and_scrub(source_file, :tabs=>'80').should == rstrip(Bun.readfile(outfile))
   end
 end
@@ -168,127 +240,145 @@ describe Bun::Archive do
     context "with a text file" do
       context "with output to '-'" do
         before :all do
-          exec("rm -f output/unpack_ar003.0698")
+          exec("rm -f output/test_actual/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
           exec("cp -r data/test/archive/general_test_packed_init \
                       data/test/archive/general_test_packed")
           exec("bun unpack data/test/archive/general_test_packed/ar003.0698 - \
-                    >output/unpack_ar003.0698")
+                    >output/test_actual/unpack_ar003.0698")
         end
-        include_examples "match with variable data", "unpack_ar003.0698", UNPACK_PATTERNS
+        it "should match the expected output" do
+          "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
+        end
         after :all do
-          exec("rm -f output/unpack_ar003.0698")
-          exec("rm -rf data/test/archive/general_test_packed")
+          backtrace
+          exec_on_success("rm -f output/test_actual/unpack_ar003.0698")
+          exec_on_success("rm -rf data/test/archive/general_test_packed")
         end
       end
-      context "with output to omitted output" do
+      context "with omitted output" do
         before :all do
-          exec("rm -f output/unpack_ar003.0698")
+          exec("rm -f output/test_actual/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
           exec("cp -r data/test/archive/general_test_packed_init \
                    data/test/archive/general_test_packed")
-          exec("bun unpack data/test/archive/general_test_packed/ar003.0698 >output/unpack_ar003.0698")
+          exec("bun unpack data/test/archive/general_test_packed/ar003.0698 >output/test_actual/unpack_ar003.0698")
         end
-        include_examples "match with variable data", "unpack_ar003.0698", UNPACK_PATTERNS
+        it "should match the expected output" do
+          "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
+        end
         after :all do
-          exec("rm -f output/unpack_ar003.0698")
-          exec("rm -rf data/test/archive/general_test_packed")
+          backtrace
+          exec_on_success("rm -f output/test_actual/unpack_ar003.0698")
+          exec_on_success("rm -rf data/test/archive/general_test_packed")
         end
       end
     end
     context "from STDIN" do
       context "without tape name" do
         before :all do
-          exec("rm -f output/unpack_stdin_ar003.0698")
+          exec("rm -rf output/test_actual/unpack_stdin_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
           exec("cp -r data/test/archive/general_test_packed_init \
                   data/test/archive/general_test_packed")
           exec("cat data/test/archive/general_test_packed/ar003.0698 | \
-                  bun unpack - >output/unpack_stdin_ar003.0698")
+                  bun unpack - >output/test_actual/unpack_stdin_ar003.0698")
         end
-        include_examples "match with variable data", "unpack_stdin_ar003.0698", UNPACK_PATTERNS
+        it "should match the expected output" do
+          "unpack_stdin_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
+        end
         after :all do
-          exec("rm -f output/unpack_ar003.0698")
-          exec("rm -rf data/test/archive/general_test_packed")
+          backtrace
+          exec_on_success("rm -rf output/test_actual/unpack_stdin_ar003.0698")
+          exec_on_success("rm -rf data/test/archive/general_test_packed")
         end
       end
       context "with tape name" do
         before :all do
-          exec("rm -f output/unpack_ar003.0698")
+          exec("rm -f output/test_actual/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
           exec("cp -r data/test/archive/general_test_packed_init \
                   data/test/archive/general_test_packed")
           exec("cat data/test/archive/general_test_packed/ar003.0698 | \
-                  bun unpack -t ar003.0698 - >output/unpack_ar003.0698")
+                  bun unpack -t ar003.0698 - >output/test_actual/unpack_ar003.0698")
         end
-        include_examples "match with variable data", "unpack_ar003.0698", UNPACK_PATTERNS
+        it "should match the expected output" do
+          "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
+        end
         after :all do
-          exec("rm -f output/unpack_ar003.0698")
-          exec("rm -rf data/test/archive/general_test_packed")
+          backtrace
+          exec_on_success("rm -f output/test_actual/unpack_ar003.0698")
+          exec_on_success("rm -rf data/test/archive/general_test_packed")
         end
       end
     end
     context "with output to a file" do
       before :all do
-        exec("rm -f output/unpack_ar003.0698")
+        exec("rm -f output/test_actual/unpack_ar003.0698")
         exec("rm -rf data/test/archive/general_test_packed")
         exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
-        exec("bun unpack data/test/archive/general_test_packed/ar003.0698 output/unpack_ar003.0698")
+        exec("bun unpack data/test/archive/general_test_packed/ar003.0698 output/test_actual/unpack_ar003.0698")
       end
-      include_examples "match with variable data", "unpack_ar003.0698", UNPACK_PATTERNS
+      it "should match the expected output" do
+        "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
+      end
       after :all do
-        exec("rm -f output/unpack_ar003.0698")
-        exec("rm -rf data/test/archive/general_test_packed")
+        backtrace
+        exec_on_success("rm -f output/test_actual/unpack_ar003.0698")
+        exec_on_success("rm -rf data/test/archive/general_test_packed")
       end
     end
     context "with a frozen file" do
       before :all do
-        exec("rm -f output/unpack_ar019.0175")
+        exec("rm -f output/test_actual/unpack_ar019.0175")
         exec("rm -rf data/test/archive/general_test_packed")
         exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
-        exec("bun unpack data/test/archive/general_test_packed/ar019.0175 output/unpack_ar019.0175")
+        exec("bun unpack data/test/archive/general_test_packed/ar019.0175 output/test_actual/unpack_ar019.0175")
       end
-      include_examples "match with variable data", "unpack_ar019.0175", UNPACK_PATTERNS
+      it "should match the expected output" do
+        "unpack_ar019.0175".should match_expected_output_except_for(UNPACK_PATTERNS)
+      end
       after :all do
-        exec("rm -f output/unpack_ar019.0175")
-        exec("rm -rf data/test/archive/general_test_packed")
+        backtrace
+        exec_on_success("rm -f output/test_actual/unpack_ar019.0175")
+        exec_on_success("rm -rf data/test/archive/general_test_packed")
       end
     end
   end
+  
   context "bun archive unpack" do
     before :all do
       exec("rm -rf data/test/archive/general_test_packed_unpacked")
-      exec("rm -f output/archive_unpack_files.txt")
-      exec("rm -f output/archive_unpack_stdout.txt")
-      exec("rm -f output/archive_unpack_stdout.txt")
+      exec("rm -f output/test_actual/archive_unpack_files.txt")
+      exec("rm -f output/test_actual/archive_unpack_stdout.txt")
+      exec("rm -f output/test_actual/archive_unpack_stdout.txt")
       exec("rm -rf data/test/archive/general_test_packed")
       exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
       exec("bun archive unpack data/test/archive/general_test_packed \
-              data/test/archive/general_test_packed_unpacked 2>output/archive_unpack_stderr.txt \
-              >output/archive_unpack_stdout.txt")
+              data/test/archive/general_test_packed_unpacked 2>output/test_actual/archive_unpack_stderr.txt \
+              >output/test_actual/archive_unpack_stdout.txt")
     end
     it "should create a new directory" do
       file_should_exist "data/test/archive/general_test_packed_unpacked"
     end
     it "should write nothing on stdout" do
-      Bun.readfile('output/archive_unpack_stdout.txt').chomp.should == ""
+      'output/test_actual/archive_unpack_stdout.txt'.should be_an_empty_file
     end
     it "should write file decoding messages on stderr" do
-      Bun.readfile("output/archive_unpack_stderr.txt").chomp.should ==
-      Bun.readfile('output/test/archive_unpack_stderr.txt').chomp
+      "archive_unpack_stderr.txt".should match_expected_output
     end
     it "should create the appropriate files" do
       exec('find data/test/archive/general_test_packed_unpacked -print \
-                >output/archive_unpack_files.txt')
-      Bun.readfile('output/archive_unpack_files.txt').chomp.should ==
-      Bun.readfile('output/test/archive_unpack_files.txt').chomp
+                >output/test_actual/archive_unpack_files.txt')
+      "archive_unpack_files.txt".should match_expected_output
     end
     after :all do
-      exec("rm -rf data/test/archive/general_test_packed_unpacked")
-      exec("rm -rf data/test/archive/general_test_packed")
-      exec("rm -f output/archive_unpack_files.txt")
-      exec("rm -f output/archive_unpack_stderr.txt")
-      exec("rm -f output/archive_unpack_stdout.txt")
+      backtrace
+      exec_on_success("rm -rf data/test/archive/general_test_packed_unpacked")
+      exec_on_success("rm -rf data/test/archive/general_test_packed")
+      exec_on_success("rm -f output/test_actual/archive_unpack_files.txt")
+      exec_on_success("rm -f output/test_actual/archive_unpack_stderr.txt")
+      exec_on_success("rm -f output/test_actual/archive_unpack_stdout.txt")
     end
   end
 end
@@ -313,6 +403,9 @@ describe Bun::Archive do
       foo = []
       @archive.contents {|f| foo << f.upcase }
       foo.sort.should == $expected_archive_contents.map{|c| c.upcase }
+    end
+    after :all do
+      backtrace
     end
   end
 end
@@ -341,49 +434,198 @@ describe Bun::Bot do
                      "scrub -",
                      "data/test/clean", 
                      "scrub"
+    after :all do
+      backtrace
+    end
   end
-  describe "check" do
-    include_examples "command", "check clean file", "check data/test/clean", "check_clean"
-    include_examples "command from STDIN", "check clean file", "check -", "data/test/clean",
-                     "check_clean"
+
+  describe "examine" do
+    include_examples "command", "examine clean file", "examine -t --asis -e clean data/test/clean", "examine_clean"
+    include_examples "command from STDIN", "examine clean file", 
+        "examine -t --asis -e clean -", "data/test/clean", "examine_clean"
     
     # Dirty file is just the packed version of ar119.1801
-    include_examples "command", "check dirty file", "check data/test/dirty", "check_dirty",
+    include_examples "command", "examine dirty file", "examine -t --asis -e clean data/test/dirty", "examine_dirty",
                      :allowed=>[1]
+    include_examples "command", "examine promotes file", 
+      "examine -t -e clean data/test/packed_ar003.0698", "examine_clean",
+                       :allowed=>[1] # Because we're testing the output; it's more helpful
+                                     # to allow a non-zero return code
+    include_examples "command", "examine does not promote file with --asis", 
+      "examine -t --asis -e clean data/test/packed_ar003.0698", "examine_dirty",
+                       :allowed=>[1]
+    after :all do
+      backtrace
+    end
   end
     
   describe "describe" do
     describe "with text file" do
       before :all do
-        exec("bun describe #{TEST_ARCHIVE}/ar003.0698.bun >output/describe_ar003.0698")
+        exec("rm -rf output/test_actual/describe_ar003.0698")
+        exec("bun describe #{TEST_ARCHIVE}/ar003.0698.bun >output/test_actual/describe_ar003.0698")
       end
-      include_examples "match with variable data", "describe_ar003.0698", DESCRIBE_PATTERNS
+      it "should match the expected output" do
+        "describe_ar003.0698".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf output/test_actual/describe_ar003.0698")
+      end
     end
     describe "with frozen file" do
       before :all do
-        exec("bun describe #{TEST_ARCHIVE}/ar025.0634.bun >output/describe_ar025.0634")
+        exec("rm -rf output/test_actual/describe_ar025.0634")
+        exec("bun describe #{TEST_ARCHIVE}/ar025.0634.bun >output/test_actual/describe_ar025.0634")
       end
-      include_examples "match with variable data", "describe_ar025.0634", DESCRIBE_PATTERNS
+      it "should match the expected output (including quoting)" do
+        "describe_ar025.0634".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf output/test_actual/describe_ar025.0634")
+      end
     end
-  end
+
+    context "functioning outside the base directory" do
+      before :each do
+        raise RuntimeError, "In unexpected working directory: #{Dir.pwd}" \
+          unless File.expand_path(Dir.pwd) == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+        @original_dir = Dir.pwd
+      end
+      it "should start in the base directory" do
+        File.expand_path(Dir.pwd).should == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+      end
+      it "should function okay in a different directory" do
+        exec("cd ~ ; bun describe #{TEST_ARCHIVE}/ar003.0698.bun")
+        $?.exitstatus.should == 0
+      end
+      after :each do
+        Dir.chdir(@original_dir)
+        raise RuntimeError, "Not back in normal working directory: #{Dir.pwd}" \
+          unless File.expand_path(Dir.pwd) == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+      end
+      after :all do
+        backtrace
+      end
+    end
+  end  
   
-  context "functioning outside the base directory" do
-    before :each do
-      raise RuntimeError, "In unexpected working directory: #{Dir.pwd}" \
-        unless File.expand_path(Dir.pwd) == File.expand_path(File.join(File.dirname(__FILE__),'..'))
-      @original_dir = Dir.pwd
+  describe "mark" do
+    context "with no output file" do
+      before :all do
+        exec "rm -f data/test/mark_source.bun"
+        exec "cp data/test/mark_source_init.bun data/test/mark_source.bun"
+        exec "bun describe data/test/mark_source.bun >output/test_actual/mark_source_before"
+        exec "bun mark -t \" foo : bar , named:'abc,d\\\\'ef '\" data/test/mark_source.bun"
+        exec "bun describe data/test/mark_source.bun >output/test_actual/mark_source_after"
+      end
+      it "should have the expected input" do
+        "mark_source_before".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
+      it "should create the expected marks in the existing file" do
+        "mark_source_after".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
+      after :all do
+        backtrace
+        exec_on_success "rm -f data/test/mark_source.bun"
+        exec_on_success "rm -f output/test_actual/mark_source_before"
+        exec_on_success "rm -f output/test_actual/mark_source_after"
+      end
     end
-    it "should start in the base directory" do
-      File.expand_path(Dir.pwd).should == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+    context "with an output file" do
+      before :all do
+        exec "rm -f data/test/mark_source.bun"
+        exec "cp data/test/mark_source_init.bun data/test/mark_source.bun"
+        exec "bun describe data/test/mark_source.bun >output/test_actual/mark_source_before"
+        exec "rm -f data/test/mark_result.bun"
+        exec "bun mark -t \" foo : bar , named:'abc,d\\\\'ef '\" \
+                  data/test/mark_source.bun data/test/mark_result.bun"
+        exec "bun describe data/test/mark_source.bun >output/test_actual/mark_source_after"
+        exec "bun describe data/test/mark_result.bun >output/test_actual/mark_result_after"
+      end
+      it "should have the expected input" do
+        "mark_source_before".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
+      it "should create the new file" do
+        file_should_exist "data/test/mark_result.bun"
+      end
+      it "should create the expected marks in the new file" do
+        "mark_result_after".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
+      it "should have leave the existing file unchanged" do
+        "output/test_actual/mark_source_after".should match_file('output/test_actual/mark_source_before')
+      end
+      after :all do
+        backtrace
+        exec_on_success "rm -f data/test/mark_source.bun"
+        exec_on_success "rm -f data/test/mark_result.bun"
+        exec_on_success "rm -f output/test_actual/mark_source_before"
+        exec_on_success "rm -f output/test_actual/mark_source_after"
+        exec_on_success "rm -f output/test_actual/mark_result_after"
+      end
     end
-    it "should function okay in a different directory" do
-      exec("cd ~ ; bun describe #{TEST_ARCHIVE}/ar003.0698.bun")
-      $?.exitstatus.should == 0
+    context "with '-' as output file" do
+      before :all do
+        exec "rm -f data/test/mark_source.bun"
+        exec "cp data/test/mark_source_init.bun data/test/mark_source.bun"
+        exec "bun describe data/test/mark_source.bun >output/test_actual/mark_source_before"
+        exec "rm -f output/test_actual/mark_result.bun"
+        exec "bun mark -t \" foo : bar , named:'abc,d\\\\'ef '\" \
+                  data/test/mark_source.bun - >output/test_actual/mark_result.bun"
+        exec "bun describe data/test/mark_source.bun >output/test_actual/mark_source_after"
+        exec "bun describe output/test_actual/mark_result.bun >output/test_actual/mark_result_after"
+      end
+      it "should have the expected input" do
+        "mark_source_before".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
+      it "should create the expected marks on STDOUT" do
+        "mark_result_after".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
+      it "should have leave the existing file unchanged" do
+        "output/test_actual/mark_source_after".should match_file('output/test_actual/mark_source_before')
+      end
+      after :all do
+        backtrace
+        exec_on_success "rm -f data/test/mark_source.bun"
+        exec_on_success "rm -f output/test_actual/mark_result.bun"
+        exec_on_success "rm -f output/test_actual/mark_source_before"
+        exec_on_success "rm -f output/test_actual/mark_source_after"
+        exec_on_success "rm -f output/test_actual/mark_result_after"
+      end
     end
-    after :each do
-      Dir.chdir(@original_dir)
-      raise RuntimeError, "Not back in normal working directory: #{Dir.pwd}" \
-        unless File.expand_path(Dir.pwd) == File.expand_path(File.join(File.dirname(__FILE__),'..'))
+    context "with '-' as input file" do
+      before :all do
+        exec "rm -f data/test/mark_source.bun"
+        exec "cp data/test/mark_source_init.bun data/test/mark_source.bun"
+        exec "bun describe data/test/mark_source.bun >output/test_actual/mark_source_before"
+        exec "rm -f data/test/mark_result.bun"
+        exec "cat data/test/mark_source.bun | \
+              bun mark -t \" foo : bar , named:'abc,d\\\\'ef '\" \
+                  - data/test/mark_result.bun"
+        exec "bun describe data/test/mark_source.bun >output/test_actual/mark_source_after"
+        exec "bun describe data/test/mark_result.bun >output/test_actual/mark_result_after"
+      end
+      it "should have the expected input" do
+        "mark_source_before".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
+      it "should create the new file" do
+        file_should_exist "data/test/mark_result.bun"
+      end
+      it "should create the expected marks in the new file" do
+        "mark_result_after".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
+      it "should have leave the existing file unchanged" do
+        "output/test_actual/mark_source_after".should match_file('output/test_actual/mark_source_before')
+      end
+      after :all do
+        backtrace
+        exec_on_success "rm -f data/test/mark_source.bun"
+        exec_on_success "rm -f data/test/mark_result.bun"
+        exec_on_success "rm -f output/test_actual/mark_source_before"
+        exec_on_success "rm -f output/test_actual/mark_source_after"
+        exec_on_success "rm -f output/test_actual/mark_result_after"
+      end
     end
   end
   
@@ -399,70 +641,214 @@ describe Bun::Bot do
                      "ls -ldr #{TEST_ARCHIVE}/ar145.2699.bun", 
                      "ls_ldr_ar145.2699"
     include_examples "command", "ls with glob", "ls #{TEST_ARCHIVE}/ar08*", "ls_glob"
+    after :all do
+      backtrace
+    end
   end
+
   describe "readme" do
     include_examples "command", "readme", "readme", "doc/readme.md"
+    after :all do
+      backtrace
+    end
   end
+
   describe "decode" do
     context "with text file" do
-      before :all do
-        exec("rm -f output/decode_ar003.0698")
-        exec("bun decode #{TEST_ARCHIVE}/ar003.0698.bun \
-                  >output/decode_ar003.0698")
+      context "without expand option" do
+        before :all do
+          exec("rm -f output/test_actual/decode_ar003.0698")
+          exec("bun decode #{TEST_ARCHIVE}/ar003.0698.bun \
+                    >output/test_actual/decode_ar003.0698")
+        end
+        it "should match the expected output" do
+          "decode_ar003.0698".should match_expected_output_except_for(DECODE_PATTERNS)
+        end
+        after :all do
+          backtrace
+          exec_on_success("rm -f output/test_actual/decode_ar003.0698")
+        end
       end
-      include_examples "match with variable data", "decode_ar003.0698", DECODE_PATTERNS
-      after :all do
-        exec("rm -f output/decode_ar003.0698")
+      context "with expand option" do
+        before :all do
+          exec("rm -f output/test_actual/decode_ar003.0698")
+          exec("bun decode --expand #{TEST_ARCHIVE}/ar003.0698.bun \
+                    >output/test_actual/decode_ar003.0698")
+        end
+        it "should match the expected output" do
+          "decode_ar003.0698".should match_expected_output_except_for(DECODE_PATTERNS)
+        end
+        after :all do
+          backtrace
+          exec_on_success("rm -f output/test_actual/decode_ar003.0698")
+        end
       end
     end
     context "from STDIN" do
       before :all do
-        exec("rm -f output/decode_ar003.0698")
+        exec("rm -f output/test_actual/decode_ar003.0698")
         exec("cat #{TEST_ARCHIVE}/ar003.0698.bun | bun decode - \
-                  >output/decode_ar003.0698")
+                  >output/test_actual/decode_ar003.0698")
       end
-      include_examples "match with variable data", "decode_ar003.0698", DECODE_PATTERNS
+      it "should match the expected output" do
+        "decode_ar003.0698".should match_expected_output_except_for(DECODE_PATTERNS)
+      end
       after :all do
-        exec("rm -f output/decode_ar003.0698")
+        backtrace
+        exec_on_success("rm -f output/test_actual/decode_ar003.0698")
       end
     end
     context "with frozen file" do
       context "and +0 shard argument" do
         before :all do
-          exec("rm -f output/decode_ar004.0888")
+          exec("rm -rf output/test_actual/decode_ar004.0888_0")
           exec("bun decode -s +0 #{TEST_ARCHIVE}/ar004.0888.bun \
-                    >output/decode_ar004.0888_0")
+                    >output/test_actual/decode_ar004.0888_0")
         end
-        include_examples "match with variable data", "decode_ar004.0888_0", DECODE_PATTERNS
+        it "should match the expected output" do
+          "decode_ar004.0888_0".should match_expected_output_except_for(DECODE_PATTERNS)
+        end
         after :all do
-          exec("rm -f output/decode_ar004.0888_0")
+          backtrace
+          exec_on_success("rm -rf output/test_actual/decode_ar004.0888_0")
         end
       end
       context "and [+0] shard syntax" do
         before :all do
-          exec("rm -f output/decode_ar004.0888")
+          exec("rm -rf output/test_actual/decode_ar004.0888_0")
           exec("bun decode #{TEST_ARCHIVE}/ar004.0888.bun[+0] \
-                    >output/decode_ar004.0888_0")
+                    >output/test_actual/decode_ar004.0888_0")
         end
-        include_examples "match with variable data", "decode_ar004.0888_0", DECODE_PATTERNS
+        it "should match the expected output" do
+          "decode_ar004.0888_0".should match_expected_output_except_for(DECODE_PATTERNS)
+        end
         after :all do
-          exec("rm -f output/decode_ar004.0888_0")
+          backtrace
+          exec_on_success("rm -rf output/test_actual/decode_ar004.0888_0")
         end
       end
       context "and [name] shard syntax" do
         before :all do
-          exec("rm -f output/decode_ar004.0888_0")
+          exec("rm -rf output/test_actual/decode_ar004.0888_0")
           exec("bun decode #{TEST_ARCHIVE}/ar004.0888.bun[fasshole] \
-                    >output/decode_ar004.0888_0")
+                    >output/test_actual/decode_ar004.0888_0")
         end
-        include_examples "match with variable data", "decode_ar004.0888_0", DECODE_PATTERNS
+        it "should match the expected output" do
+          "decode_ar004.0888_0".should match_expected_output_except_for(DECODE_PATTERNS)
+        end
         after :all do
-          exec("rm -f output/decode_ar004.0888_0")
+          backtrace
+          exec_on_success("rm -rf output/test_actual/decode_ar004.0888_0")
+        end
+      end
+      context "and no shard argument" do
+        context "and no expand option" do
+          before :all do
+            exec("rm -rf output/test_actual/decode_ar004.0888")
+            exec("bun decode #{TEST_ARCHIVE}/ar004.0888.bun \
+                      2>/dev/null >output/test_actual/decode_ar004.0888", :allowed=>[1])
+          end
+          it "should fail" do
+            $?.exitstatus.should == 1
+          end
+          after :all do
+            backtrace
+            exec_on_success("rm -rf output/test_actual/decode_ar004.0888")
+          end
+        end
+        context "and expand option" do
+          context "without output file name" do
+            before :all do
+              exec("rm -rf output/test_actual/decode_ar004.0888")
+              exec("bun decode --expand #{TEST_ARCHIVE}/ar004.0888.bun \
+                        2>/dev/null >output/test_actual/decode_ar004.0888", :allowed=>[1])
+            end
+            it "should fail" do
+              $?.exitstatus.should == 1
+            end
+            after :all do
+              backtrace
+              exec_on_success("rm -rf output/test_actual/decode_ar004.0888")
+            end
+          end
+          context "with '-' as output file name" do
+            before :all do
+              exec("rm -rf output/test_actual/decode_ar004.0888")
+              exec("bun decode --expand #{TEST_ARCHIVE}/ar004.0888.bun - \
+                        2>/dev/null >output/test_actual/decode_ar004.0888", :allowed=>[1])
+            end
+            it "should fail" do
+              $?.exitstatus.should == 1
+            end
+            after :all do
+              backtrace
+              exec_on_success("rm -rf output/test_actual/decode_ar004.0888")
+            end
+          end
+          context "with output file name" do
+            before :all do
+              exec("rm -rf output/test_actual/decode_ar004.0888")
+              exec("rm -rf output/test_actual/decode_ar004.0888.ls.txt")
+              exec("rm -rf output/test_actual/decode_ar004.0888_cat_3eleven.txt")
+              exec("bun decode --expand #{TEST_ARCHIVE}/ar004.0888.bun \
+                        output/test_actual/decode_ar004.0888")
+            end
+            it "should create a directory" do
+              system('[ -d output/test_actual/decode_ar004.0888 ]').should be_true
+            end
+            it "should contain all the shards" do
+              exec("ls output/test_actual/decode_ar004.0888 >output/test_actual/decode_ar004.0888.ls.txt")
+              "decode_ar004.0888.ls.txt".should match_expected_output
+            end
+            it "should match the expected output in the shards" do
+              exec("cat output/test_actual/decode_ar004.0888/3eleven >output/test_actual/decode_ar004.0888_cat_3eleven.txt")
+              "decode_ar004.0888_cat_3eleven.txt".should match_expected_output_except_for(DECODE_PATTERNS)
+            end
+            after :all do
+              backtrace
+              exec_on_success("rm -rf output/test_actual/decode_ar004.0888")
+              exec_on_success("rm -rf output/test_actual/decode_ar004.0888.ls.txt")
+              exec_on_success("rm -f output/test_actual/decode_ar004.0888_cat_3eleven.txt")
+              exec_on_success("rm -rf output/test_actual/decode_ar004.0888")
+            end
+          end
         end
       end
     end
   end
-  context "bun dump" do
+
+  describe "bake" do
+    context "with packed file" do
+      before :all do
+        exec("rm -f output/test_actual/bake_ar003.0698")
+        exec("bun bake data/test/ar003.0698 \
+                  >output/test_actual/bake_ar003.0698")
+      end
+      it "should match the expected output" do
+        "bake_ar003.0698".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/bake_ar003.0698")
+      end
+    end
+    context "with unpacked file" do
+      before :all do
+        exec("rm -f output/test_actual/bake_ar003.0698")
+        exec("bun bake #{TEST_ARCHIVE}/ar003.0698.bun \
+                  >output/test_actual/bake_ar003.0698")
+      end
+      it "should match the expected output" do
+        "bake_ar003.0698".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/bake_ar003.0698")
+      end
+    end
+  end
+
+  describe "dump" do
     include_examples "command", 
                      "dump ar003.0698", 
                      "dump #{TEST_ARCHIVE}/ar003.0698.bun", 
@@ -484,8 +870,12 @@ describe Bun::Bot do
                      "dump - ", 
                      "#{TEST_ARCHIVE}/ar003.0698.bun", 
                      "dump_stdin_ar003.0698"
+    after :all do
+      backtrace
+    end
   end
-  context "bun freezer" do
+
+  describe "freezer" do
     context "ls" do
       include_examples "command", 
                        "freezer ls ar004.0888", 
@@ -500,6 +890,9 @@ describe Bun::Bot do
                        "freezer ls -",
                        "#{TEST_ARCHIVE}/ar004.0888.bun",
                        "freezer_ls_stdin_ar004.0888"
+      after :all do
+        backtrace
+      end
     end
     context "dump" do
       include_examples "command", 
@@ -515,80 +908,268 @@ describe Bun::Bot do
                        "freezer dump - +0",
                        "#{TEST_ARCHIVE}/ar004.0888.bun", 
                        "freezer_dump_stdin_ar004.0888_0"
+      after :all do
+        backtrace
+      end
     end
   end
-  context "bun catalog" do
+
+  describe "catalog" do
     before :all do
       exec("rm -rf data/test/archive/catalog_source")
       exec("cp -r data/test/archive/catalog_source_init data/test/archive/catalog_source")
-      exec("bun archive catalog data/test/archive/catalog_source data/test/catalog.txt \
-                2>output/archive_catalog_stderr.txt >output/archive_catalog_stdout.txt")
+      exec("bun archive catalog data/test/archive/catalog_source --catalog data/test/catalog.txt \
+                2>output/test_actual/archive_catalog_stderr.txt >output/test_actual/archive_catalog_stdout.txt")
     end
     it "should write nothing on stdout" do
-      Bun.readfile('output/archive_catalog_stdout.txt').chomp.should == ""
+      'output/test_actual/archive_catalog_stdout.txt'.should be_an_empty_file
     end
     it "should write file decoding messages on stderr" do
-      Bun.readfile("output/archive_catalog_stderr.txt").chomp.should ==
-      Bun.readfile('output/test/archive_catalog_stderr.txt').chomp
+      "archive_catalog_stderr.txt".should match_expected_output
     end
     it "should not add or remove any files in the archive" do
-      exec('find data/test/archive/catalog_source -print >output/archive_catalog_files.txt')
-      Bun.readfile('output/archive_catalog_files.txt').chomp.should ==
-      Bun.readfile('output/test/archive_catalog_files.txt').chomp
+      exec('find data/test/archive/catalog_source -print >output/test_actual/archive_catalog_files.txt')
+      'archive_catalog_files.txt'.should match_expected_output
     end
     it "should change the catalog dates in the catalog" do 
+      # TODO Add a test here
     end
     after :all do
-      exec("rm -rf data/test/archive/catalog_source")
-      exec("rm -f output/archive_catalog_stderr.txt")
-      exec("rm -f output/archive_catalog_stdout.txt")
-      exec("rm -f output/archive_catalog_files.txt")
+      backtrace
+      exec_on_success("rm -rf data/test/archive/catalog_source")
+      exec_on_success("rm -f output/test_actual/archive_catalog_stderr.txt")
+      exec_on_success("rm -f output/test_actual/archive_catalog_stdout.txt")
+      exec_on_success("rm -f output/test_actual/archive_catalog_files.txt")
     end
   end
-  context "bun archive decode" do
+
+  describe "archive decode" do
     before :all do
       exec("rm -rf data/test/archive/decode_source")
-      exec("rm -rf data/test/archive/decode_library")
+      exec("rm -rf data/test/archive/decode_archive")
       exec("cp -r data/test/archive/decode_source_init data/test/archive/decode_source")
-      exec("bun archive decode data/test/archive/decode_source data/test/archive/decode_library \
-                2>output/archive_decode_stderr.txt >output/archive_decode_stdout.txt")
+      exec("bun archive decode data/test/archive/decode_source data/test/archive/decode_archive \
+                2>output/test_actual/archive_decode_stderr.txt >output/test_actual/archive_decode_stdout.txt")
     end
     it "should create a tapes directory" do
-      file_should_exist "data/test/archive/decode_library"
+      file_should_exist "data/test/archive/decode_archive"
     end
     it "should write nothing on stdout" do
-      Bun.readfile('output/archive_decode_stdout.txt').chomp.should == ""
+      'output/test_actual/archive_decode_stdout.txt'.should be_an_empty_file
     end
     it "should write file decoding messages on stderr" do
-      Bun.readfile("output/archive_decode_stderr.txt").chomp.should ==
-      Bun.readfile('output/test/archive_decode_stderr.txt').chomp
+      "archive_decode_stderr.txt".should match_expected_output
     end
     it "should create the appropriate files" do
-      exec('find data/test/archive/decode_library -print >output/archive_decode_files.txt')
-      Bun.readfile('output/archive_decode_files.txt').chomp.should ==
-      Bun.readfile('output/test/archive_decode_files.txt').chomp
+      exec('find data/test/archive/decode_archive -print >output/test_actual/archive_decode_files.txt')
+      'archive_decode_files.txt'.should match_expected_output
     end
     after :all do
-      exec("rm -rf data/test/archive/decode_source")
-      exec("rm -rf data/test/archive/decode_library")
-      exec("rm -f output/archive_decode_stderr.txt")
-      exec("rm -f output/archive_decode_stdout.txt")
-      exec("rm -f output/archive_decode_files.txt")
+      backtrace
+      exec_on_success("rm -rf data/test/archive/decode_source")
+      exec_on_success("rm -rf data/test/archive/decode_archive")
+      exec_on_success("rm -f output/test_actual/archive_decode_stderr.txt")
+      exec_on_success("rm -f output/test_actual/archive_decode_stdout.txt")
+      exec_on_success("rm -f output/test_actual/archive_decode_files.txt")
     end
   end
-  context "bun library compact" do
-    before :each do
+
+  describe "mixed archive" do
+    context "unpack" do
+      before :all do
+        exec("rm -rf data/test/archive/mixed_grades")
+        exec("rm -rf output/test_actual/mixed_grades_unpack")
+        exec("rm -f output/test_actual/mixed_grades_archive_unpack.txt")
+        exec("rm -f output/test_actual/mixed_grades_archive_diff.txt")
+        exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
+        exec("bun archive unpack data/test/archive/mixed_grades output/test_actual/mixed_grades_unpack 2>/dev/null \
+                  >/dev/null")
+      end
+      it "should create the proper files" do
+        exec "find output/test_actual/mixed_grades_unpack -print >output/test_actual/mixed_grades_archive_unpack.txt"
+        'mixed_grades_archive_unpack.txt'.should match_expected_output
+      end
+      it "should write the proper content" do
+        "mixed_grades_unpack/ar003.0698.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
+        "mixed_grades_unpack/ar003.0701.bun".should match_expected_output
+        "mixed_grades_unpack/clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+            match_expected_output
+        "mixed_grades_unpack/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf data/test/archive/mixed_grades")
+        exec_on_success("rm -rf output/test_actual/mixed_grades_unpack")
+        exec_on_success("rm -f output/test_actual/mixed_grades_archive_unpack.txt")
+        exec_on_success("rm -f output/test_actual/mixed_grades_archive_diff.txt")
+      end
+    end
+    context "catalog" do
+      before :all do
+        exec("rm -rf data/test/archive/mixed_grades")
+        exec("rm -rf output/test_actual/mixed_grades_catalog")
+        exec("rm -f output/test_actual/mixed_grades_archive_catalog.txt")
+        exec("rm -f output/test_actual/mixed_grades_archive_diff.txt")
+        exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
+        exec("bun archive catalog --catalog data/test/fass-index.txt \
+                  data/test/archive/mixed_grades \
+                  output/test_actual/mixed_grades_catalog \
+                  2>/dev/null \
+                  >/dev/null")
+      end
+      it "should create the proper files" do
+        exec "find output/test_actual/mixed_grades_catalog -print >output/test_actual/mixed_grades_archive_catalog.txt"
+        'mixed_grades_archive_catalog.txt'.should match_expected_output
+      end
+      it "should write the proper content" do
+        "mixed_grades_catalog/ar003.0698.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
+        "mixed_grades_catalog/ar003.0701.bun".should match_expected_output
+        "mixed_grades_catalog/clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+            match_expected_output
+        "mixed_grades_catalog/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf data/test/archive/mixed_grades")
+        exec_on_success("rm -rf output/test_actual/mixed_grades_catalog")
+        exec_on_success("rm -f output/test_actual/mixed_grades_archive_catalog.txt")
+        exec_on_success("rm -f output/test_actual/mixed_grades_archive_diff.txt")
+      end
+    end
+    context "decode" do
+      before :all do
+        exec("rm -rf data/test/archive/mixed_grades")
+        exec("rm -rf output/test_actual/mixed_grades_decode")
+        exec("rm -f output/test_actual/mixed_grades_archive_decode.txt")
+        exec("rm -f output/test_actual/mixed_grades_archive_diff.txt")
+        exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
+        exec("bun archive decode data/test/archive/mixed_grades output/test_actual/mixed_grades_decode 2>/dev/null \
+                  >/dev/null")
+      end
+      it "should create the proper files" do
+        exec "find output/test_actual/mixed_grades_decode -print >output/test_actual/mixed_grades_archive_decode.txt"
+        'mixed_grades_archive_decode.txt'.should match_expected_output
+      end
+      it "should write the proper content" do
+        "mixed_grades_decode/fass/idallen/vector/tape.ar003.0698.txt".should match_expected_output_except_for(DECODE_PATTERNS)
+        "mixed_grades_decode/clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+            match_expected_output
+        "mixed_grades_decode/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf data/test/archive/mixed_grades")
+        exec_on_success("rm -rf output/test_actual/mixed_grades_decode")
+        exec_on_success("rm -f output/test_actual/mixed_grades_archive_decode.txt")
+        exec_on_success("rm -f output/test_actual/mixed_grades_archive_diff.txt")
+      end
+    end
+    context "bake" do
+      before :all do
+        exec("rm -rf data/test/archive/mixed_grades")
+        exec("rm -rf output/test_actual/mixed_grades_bake")
+        exec("rm -f output/test_actual/mixed_grades_archive_bake.txt")
+        exec("rm -f output/test_actual/mixed_grades_archive_diff.txt")
+        exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
+        exec("bun archive bake data/test/archive/mixed_grades output/test_actual/mixed_grades_bake 2>/dev/null \
+                  >/dev/null")
+      end
+      it "should create the proper files" do
+        exec "find output/test_actual/mixed_grades_bake -print >output/test_actual/mixed_grades_archive_bake.txt"
+        'mixed_grades_archive_bake.txt'.should match_expected_output
+      end
+      it "should write the proper content" do
+        "mixed_grades_bake/ar003.0698".should match_expected_output
+        "mixed_grades_bake/clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+            match_expected_output
+        "mixed_grades_bake/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf data/test/archive/mixed_grades")
+        exec_on_success("rm -rf output/test_actual/mixed_grades_bake")
+        exec_on_success("rm -f output/test_actual/mixed_grades_archive_bake.txt")
+        exec_on_success("rm -f output/test_actual/mixed_grades_archive_diff.txt")
+      end
+    end
+    context "describe" do
+      context "packed file (ar003.0698)" do
+        before :all do
+          exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
+          exec("rm -rf output/test_actual/mixed_grades_describe_ar003.0698")
+          exec("bun describe data/test/archive/mixed_grades/ar003.0698 >output/test_actual/mixed_grades_describe_ar003.0698")
+        end
+        it "should match the expected output" do
+          "mixed_grades_describe_ar003.0698".should match_expected_output
+        end
+        after :all do
+          backtrace
+          exec_on_success("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
+          exec_on_success("rm -rf output/test_actual/mixed_grades_describe_ar003.0698")
+        end      
+      end
+      context "unpacked file (ar003.0701.bun)" do
+        before :all do
+          exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
+          exec("rm -rf output/test_actual/mixed_grades_describe_ar003.0701.bun")
+          exec("bun describe data/test/archive/mixed_grades/ar003.0701.bun >output/test_actual/mixed_grades_describe_ar003.0701.bun")
+        end
+        it "should match the expected output" do
+          "mixed_grades_describe_ar003.0701.bun".should match_expected_output
+        end
+        after :all do
+          backtrace
+          exec_on_success("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
+          exec_on_success("rm -rf output/test_actual/mixed_grades_describe_ar003.0701.bun")
+        end      
+      end
+      context "decoded file (fass/script/tape.ar004.0642_19770224.txt)" do
+        before :all do
+          exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
+          exec("rm -rf output/test_actual/mixed_grades_describe_fass_script_tape.ar004.0642_19770224.txt")
+          exec("bun describe data/test/archive/mixed_grades/fass/script/tape.ar004.0642_19770224.txt >output/test_actual/mixed_grades_describe_fass_script_tape.ar004.0642_19770224.txt")
+        end
+        it "should match the expected output" do
+          "mixed_grades_describe_fass_script_tape.ar004.0642_19770224.txt".should match_expected_output
+        end
+        after :all do
+          backtrace
+          exec_on_success("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
+          exec_on_success("rm -rf output/test_actual/mixed_grades_describe_fass_script_tape.ar004.0642_19770224.txt")
+        end      
+      end
+      context "baked file (clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt)" do
+        before :all do
+          exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
+          exec("rm -rf output/test_actual/mixed_grades_describe_clean_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt")
+          exec("bun describe data/test/archive/mixed_grades/clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt >output/test_actual/mixed_grades_describe_clean_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt")
+        end
+        it "should match the expected output" do
+          "mixed_grades_describe_clean_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt".should match_expected_output
+        end
+        after :all do
+          backtrace
+          exec_on_success("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
+          exec_on_success("rm -rf output/test_actual/mixed_grades_describe_clean_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt")
+        end      
+      end
+    end
+  end
+
+  describe "archive compact" do
+    before :all do
       exec("rm -rf data/test/archive/compact_files")
       exec("rm -rf data/test/archive/compact_result")
       exec("cp -r data/test/archive/compact_source_init data/test/archive/compact_source")
-      exec("bun library compact data/test/archive/compact_source data/test/archive/compact_result")
+      exec("bun archive compact data/test/archive/compact_source data/test/archive/compact_result")
     end
     it "should create the results directory" do
       file_should_exist "data/test/archive/compact_result"
     end
-    # after :each do
-    #   exec("rm -rf data/test/archive/compact_source")
-    #   exec("rm -rf data/test/archive/compact_result")
-    # end
+    after :all do
+      backtrace
+      exec_on_success("rm -rf data/test/archive/compact_source")
+      exec_on_success("rm -rf data/test/archive/compact_result")
+    end
   end
 end

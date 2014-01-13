@@ -1,37 +1,78 @@
 TODO
 _High Priority_
-Add --mark option to library classify and bun check/analyze
-Add MD5 checksum to unpacked and decoded formats
-Create bun field -f FIELD FILE... and bun match -f FIELD -v VALUE FILE (or bun match FORMULA FILE)
-Extend bun check
-    Flag whether files contain troff commands
-    Printer listing (same as overstruck?)
+Find duplicates
+    Same file name
+    Absolutely identical
+bun file editor
+    Checkout/checking (or in-place edit)
+    Produce multiple synchronized lines
+        9-bit ASCII
+        8-bit ASCII
+        7-bit ASCII
+        hex
+        octal
+        decimal
+    Look for edit marks (or a separate edit line)
+        [...] {...} / \ dddd i
+Consolidate exam, field, formula in bun find, map, and examine
+    Allow exam: (etc.) syntax
+    Allow <field_or_exam_name> without e[] or f[] syntax
+    Prescan formulas to check for simple references to fields or exams (for speed) ?
+    Allow multiple fields somehow
+    Is the -e/f option required at all?
+More extensions to bun examine
+    Extended fields (pre-defined, e.g. tape basename, etc.)
+        File name (with subfiles, etc.)
+        File basename
+    Printer listing
+        Largely printable
+        Very few large runs
+        Overstruck
     Object file
+        Very few large runs
+        Largely unreadable
     Try determining type by comparing preamble contents:
         Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
-        binary load module
-Generalized bun check/analyze
-    Combine check and analyze
-    Run all tests, with --mark
+            binary load module
+Should bun find be called bun grep?
 Implement bun library clean
     Find duplicates
+        Same file name
+        Same MD5 hash
+        Absolutely identical
     Remove unclean files
     Possible --tag option (place a tag saying what happened to files which were removed)
 Implement bun library organize
     Keep a .bun_spec.yml file in decoded archives showing how the archive is organized?
-    Option to turn off inclusion of file modification date in unpacked or thawed file names
-    Option to turn off resetting file modification dates for unpacked or thawed files
+    Option to turn off inclusion of file modification date in unpacked or decoded file names
+    Option to turn off resetting file modification dates for unpacked or decoded files
+File::Baked class
+    Mostly, behaves like ::File
+    Provides a :promote option to open
 Create bun archive tar
+Allow decoding and baking frozen archives to STDOUT
+    Insert separators
+        Allow separators to be overridden
+    bun decode should work
+    bun bake should work
+    bun archive decode should work
+    bun archive bake should work
+Decode huffman files
 Release version 1.0
 Major rewrite:
     All files are just Hashie::Mashes
-        File.load(<packed file>)
+        File.unpack(<packed file>) unpacks a packed file
+        No packed file object (except as needed to unpack files)
     No file descriptor object
+    No Data object (except as needed to unpack files)
     Limited distinction (if any), between file types
+        Possibly File::Decoded, File::Text, and File::Frozen
+        File::Text and File::Frozen should be File::Unpacked::Text and File::Unpacked::Frozen
     No distinction between libraries and archives
         Archives don't care how they're organized
+    Simpler model for file promotion, using inheritance
 Alternate data storage formats: raw, binary, octal, hex
-Complete tests: 
+Complete tests:
     archive catalog (check descriptor 'catalog_time' has been changed; test --remove)
     archive compare_dates
     archive pull
@@ -57,19 +98,37 @@ Complete tests:
 Create bun library (or archive) push
 Combine archive, library
 Document new process: pull, unpack, catalog, decode, find, list/describe, clean, organize, extract, push
+Check out lib/clean.rb
+Implement interactive (or stream) editor:
+    Could you use sed, vim, Textmate as a backend?
+    /pat/[bxoa]? pattern matching (e.g. b for binary, a for ascii, etc.)
+    p command shows a dump in multiple formats
+    Alternatively: check out the contents (in whatever format), edit, then check them back in again
 Implement Huffman decoding
 
 _Medium Priority_
-Change bun archive put to bun archive bake, burn, wring, squeeze, extrude
+Symlink readme and todo in top directory
+Encapsulize test pattern: should create output, with this format, etc.
+Refactor test with create_file, create_directory, clean
+Is archive even necessary? Could we not just do e.g. bun decode archive/**, etc.?
+file_type should never be :packed -- it should be :text or :frozen
+Change :text file_type to :flat (and :frozen to :library ?)
+Multiple readme files, accessible via readme FILE (with readme --ls)
 Resolve backspaces: to underlining, overstrike or bold (explore 'col' command)
 Convert troff to HTML or Markdown, or some other modern format (explore 'groff -T')
 Refactor the tests into smaller sets
 Remove places code
 Remove config code?
 Remove extraneous code
+    places
+    config
+    sandbox
+    compare_dates
+    collection cp, mv, etc.
+Move system calls into Shell class
 Remove shell.log code
 Add long_desc to all methods
-Refactor Bots to use Actors (or put methods (e.g. thaw, dump) into the data objects)
+Refactor Bots to use Actors (or put methods (e.g. decode, dump) into the data objects)
 Optimization ideas: Continue examining Indexable::Basic, since it's probably 10-15% of execution time
     Reduce usage, optimize "center" code
 File type for different kinds of files:
@@ -77,9 +136,14 @@ File type for different kinds of files:
     Troff command files
     Scripts
     Print listings (Qu: are these ever frozen?)
+More flexible output options:
+    CSV output
+    Non-justified (immediate output)
+Loose hook to output printing (e.g. use rleber-table)
 Gemify
+    Move Slicr to a gem
     Move Bot::Base to a gem; provide tests
-    Build as a gem
+    Build Bun as a gem
     Revise installation readme
     Upload to Github
 
@@ -89,5 +153,6 @@ Combine freezer ls with bun ls
 Combine bun describe with bun ls
 Combine freezer dump with bun dump
 Combine archive decode and decode
-Option to customize extension on unpacked or thawed files (e.g. '.txt')
-Refactor Slicr based on the concept of layers, etc.
+Option to customize extension on unpacked or decoded files (e.g. '.txt')
+Create Slicr command line tools (e.g. a filter)
+Refactor Slicr based on the concept of layers, etc. 

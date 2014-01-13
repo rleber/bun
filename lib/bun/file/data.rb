@@ -53,7 +53,7 @@ module Bun
       end
   
       def content_offset(words)
-        words.at(1).half_word(1).value
+        words.at(1).half_word(1).value rescue 0
       end
     end
 
@@ -104,11 +104,6 @@ module Bun
       end
     end
 
-    # def subset(start, length)
-    #   subset_data = data[start*characters_per_word, length*characters_per_word]
-    #   self.class.new(:data=>subset_data, :archive=>self.archive, :tape=>self.tape, :tape_path=>self.tape_path)
-    # end
-    # 
     def word(n)
       @words.at(n)
     end
@@ -177,7 +172,7 @@ module Bun
     end
 
     def tape_size
-      ((word(0).half_word(1))+1).value
+      ((word(0).half_word(1))+1).value rescue 0
     end
     
     def frozen_tape_size

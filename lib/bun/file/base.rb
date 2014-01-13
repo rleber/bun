@@ -5,29 +5,39 @@ require 'lib/bun/file/descriptor'
 require 'lib/string'
 require 'yaml'
 require 'date'
+require 'tmpdir'
 
 module Bun
 
   class File < ::File
+    
+    class BadFileGrade < RuntimeError; end
 
     class << self
       
-      def preread(path)
-        return $stdin_tempfile if $stdin_tempfile
-        if path == '-'
-          tempfile = Tempfile.new('stdin')
-          tempfile.write($stdin.read)
-          tempfile.close
-          $stdin_tempfile = tempfile.path
-        else
+      @@stdin_cache = nil # Name of the tempfile caching STDIN (if it exists)
+      
+      # Allows STDIN to be read multiple times
+      def read(*args)
+        path = args.shift
+        path = if path != '-'
           path
+        elsif @@stdin_cache
+          @@stdin_cache
+        else
+          cache_stdin
         end
+        stop "!File #{path} does not exist" unless File.exists?(path)
+        text = ::File.read(path, *args) || ''
+        text.force_encoding('ascii-8bit')
       end
       
-      def read(*args)
-        path = preread(args.first)
-        args[0] = path
-        ::File.read(*args)
+      # Read STDIN and save it to a tempfile
+      def cache_stdin
+        tempfile = Tempfile.new('stdin')
+        tempfile.write($stdin.read)
+        tempfile.close
+        @@stdin_cache = tempfile.path
       end
 
       def relative_path(*f)
@@ -39,66 +49,220 @@ module Bun
         File.expand_path(File.join(*f), relative_to).sub(/^#{Regexp.escape(relative_to)}\//,'')
       end
 
+      def temporary_file_name(seed)
+        Dir::Tmpname.make_tmpname [Dir::Tmpname.tmpdir, seed], nil
+      end
+
+      def temporary_file(seed, options={}, &blk)
+        file = Tempfile.new(seed)
+        return file unless block_given?
+        begin
+          yield(file)
+        ensure
+          file.close unless options[:keep]
+        end
+      end
+
+      def temporary_directory(seed, options={}, &blk)
+        directory_name = Dir.mktmpdir(seed)
+        return directory_name unless block_given?
+        begin
+          yield(directory_name)
+        ensure
+          Dir.rmdir(directory_name) unless options[:keep]
+        end
+      end
+
       # def control_character_counts(path)
       #   Bun.readfile(path).control_character_counts
       # end
       
-      def check(path, test)
-        read(path).check(test)
+      def baked_file_and_data(path, options={})
+        if options[:promote]
+          if File.file_grade(path) == :baked
+            [nil, File.read(path)]
+          else
+            f = File::Decoded.open(path, :promote=>true)
+            [f, f.data]
+          end
+        else
+          [nil, read(path)]
+        end
       end
       
-      def analyze(path, analysis)
-        read(path).analyze(analysis)
+      def baked_data(path, options={})
+        _, data = baked_file_and_data(path, options)
+        data
       end
+      
+      def examination(file, options={})
+        if options[:exam]
+          examination = Bun::File.create_examination(file, options[:exam], promote: options[:promote])
+          # TODO Change this to range
+          examination.minimum = options[:min] if examination.respond_to?(:minimum)
+          examination.case_insensitive = options[:case] if examination.respond_to?(:case_insensitive)
+          {
+            result: examination,
+            code:   examination.code,
+            tag:    options[:tag] || "exam:#{options[:exam]}",
+          }
+        elsif options[:field]
+          value = File.open(file) do |f|
+            value = f.descriptor[options[:field]] || nil rescue nil
+          end
+          {
+            result: value,
+            tag: options[:field]
+          }
+        elsif options[:formula]
+          # TODO allow other parameters to the formula, from the command line
+          formula = Bun::File.create_formula(file, options[:formula], promote: options[:promote])
+          {
+            # TODO Use .value?
+            result: formula.to_s,
+            tag:    options[:tag],
+          }
+        elsif options[:match]
+          regexp = Regexp.new(options[:match])
+          if options[:case]
+            regexp = Regexp.new(options[:match], Regexp::IGNORECASE)
+          else
+            regexp = Regexp.new(options[:match])
+          end
+          res = baked_data(file, options) =~ regexp
+          { result: res, code: res.nil? ? 1 : 0 }
+        elsif options[:text]
+          { result: baked_data(file, promote: true)||'', code: 0 }
+        end
+      end
+      
+      def create_examination(path, analysis, options={})
+        baked_data(path, options).examination(analysis, file: path)
+      end
+      protected :create_examination
+      
+      def create_formula(path, expression, options={})
+        file, data = baked_file_and_data(path, options)
+        data.formula(options.merge(
+                            expression: expression,
+                            file: file,
+                            path: path))
+      end
+      protected :create_formula
   
-      def descriptor(options={})
-        Header.new(options).descriptor
+      def binary?(path)
+        prefix = File.read(path, 4)
+        prefix != "---\n" # YAML prefix; one of the unpacked formats
+      end
+      
+      def unpacked?(path)
+        prefix = File.read(path, 21)
+        prefix != "---\n:identifier: Bun\n" # YAML prefix with identifier
       end
       
       def packed?(path)
-        prefix = File.read(path, 3)
-        prefix != '---' # YAML prefix; one of the unpacked formats
+        return false if !unpacked?(path)
+        if path.to_s =~ /^$|^-$|ar\d{3}\.\d{4}$/ # nil, '', '-' (all STDIN) or '...ar999.9999'
+          begin
+            File::Packed.open(path, force: true)
+          rescue 
+            false
+          end
+        else
+          false
+        end
       end
       
       def open(path, options={}, &blk)
-        if packed?(path)
+        # TODO But file_grade opens and reads the file, too...
+        case grade = file_grade(path)
+        when :packed
           File::Packed.open(path, options, &blk)
-        else
+        when :unpacked, :cataloged
           File::Unpacked.open(path, options, &blk)
+        when :decoded
+          File::Decoded.open(path, options, &blk)
+        when :baked
+          File::Baked.open(path, &blk)
+        else
+          # TODO Why not?
+          raise BadFileGrade, "Can't open file of this grade: #{grade.inspect}"
         end
       end
       
       def tape_type(path)
-        return :packed if packed?(path)
+        # return :packed if packed?(path)
         begin
-          f = File::Unpacked.open(path)
+          f = File::Unpacked.open(path, promote: true) 
           f.tape_type
         rescue
           :unknown
         end
       end
       
+      def file_grade(path)
+        if packed?(path)
+          :packed
+        elsif binary?(path)
+          :baked
+        else
+          File::Unpacked.build_descriptor_from_file(path).file_grade
+        end
+      end
+      
+      def file_grade_level(grade)
+        [:packed, :unpacked, :decoded, :baked].index(grade)
+      end
+
+      def file_outgrades?(path, level)
+        file_grade_level(file_grade(path)) > file_grade_level(level)
+      end
+      
       def descriptor(path, options={})
-        open(path) {|f| f.descriptor }
-      rescue Bun::File::UnknownFileType =>e 
-        nil
+        # TODO This is smelly (but necessary, in case the file was opened with :force)
+        open(path, :force=>true) {|f| f.descriptor }
       rescue Errno::ENOENT => e
         return nil if options[:allow]
-        stop "!File #{path} does not exist" if options[:graceful]
         raise
       end
       
       # Convert from packed format to unpacked (i.e. YAML)
       def unpack(path, to, options={})
-        return unless packed?(path)
-        open(path) do |f|
-          cvt = f.unpack
-          cvt.descriptor.tape = options[:tape] if options[:tape]
-          cvt.descriptor.merge!(:unpack_time=>Time.now, :unpacked_by=>Bun.expanded_version)
-          cvt.write(to)
+        case file_grade(path)
+        when :packed
+          open(path) do |f|
+            cvt = f.unpack
+            cvt.descriptor.tape = options[:tape] if options[:tape]
+            cvt.descriptor.merge!(:unpack_time=>Time.now, :unpacked_by=>Bun.expanded_version)
+            cvt.write(to)
+          end
+        else
+          Shell.new.cp(path, to)
         end
       end
-      
+
+      def decode(path, to, options={}, &blk)
+        case file_grade(path)
+        when :packed
+          File::Unpacked.open(path, options.merge(promote: true)) do |f|
+            f.decode(to, options, &blk)
+          end
+        else
+          File.open(path, options) do |f|
+            f.decode(to, options, &blk)
+          end
+        end
+      end
+
+      def bake(path, to, options={})
+        case file_grade(path)
+        when :baked, :decoded
+          File.open(path, options) {|f| f.bake(to)}
+        else
+          File::Decoded.open(path, options.merge(promote: true)) {|f| f.bake(to)}
+        end
+      end
+     
       def expand_path(path, relative_to=nil)
         path == '-' ? path : super(path, relative_to)
       end
@@ -155,6 +319,10 @@ module Bun
   
     def path
       descriptor.path
+    end
+    
+    def mark(tag_name, tag_value)
+      descriptor.set_field(tag_name, tag_value)
     end
   
     def updated

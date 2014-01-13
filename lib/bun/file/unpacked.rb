@@ -6,44 +6,14 @@ require 'date'
 module Bun
 
   class File < ::File
-    class UnknownFileType < RuntimeError; end
-    class UnexpectedTapeType < RuntimeError; end
-    class InvalidInput < RuntimeError; end
+    class UnknownFileTypeError < RuntimeError; end
+    class UnexpectedTapeTypeError < RuntimeError; end
+    class InvalidInputError < RuntimeError; end
+    class CantExpandError < RuntimeError; end
+    class CantDecodeError < RuntimeError; end
     
     class Unpacked < Bun::File
       class << self
-
-        # def create(options={}, &blk)
-        #   preamble = nil
-        #   if options[:type]
-        #     ftype = options[:type]
-        #   else
-        #     preamble = get_preamble(options)
-        #     ftype = preamble.tape_type
-        #   end
-        #   klass = const_get(ftype.to_s.sub(/^./){|m| m.upcase}) unless ftype.is_a?(Class)
-        #   if options[:header]
-        #     if ftype == :frozen
-        #       limit = Frozen.send(:new, :words=>preamble.words, :header=>true).header_size
-        #     else
-        #       limit = preamble.header_size
-        #     end
-        #   else
-        #     limit = nil
-        #   end
-        #   f = klass.send(:new, options.merge(:n=>limit))
-        #   res = if block_given?
-        #     begin
-        #       yield(f)
-        #     rescue => e
-        #       raise %Q{!Raised error in yield: #{e}\n  Raised #{e} at:\n#{e.backtrace.map{|c| '    ' + c}.join("\n")}}
-        #     ensure
-        #       f.close
-        #     end
-        #   else
-        #     f
-        #   end
-        # end
         
         def read_information(fname)
           input = begin
@@ -58,33 +28,41 @@ module Bun
         
         def build_data(input, options={})
           @data = input.delete(:content)
-          @content = Data.new(
-            :data=>@data, 
-            :archive=>options[:archive], 
-            :tape=>options[:tape], 
-            :tape_path=>options[:fname],
-          )
+          @content =
+            Data.new(
+              :data=>@data, 
+              :archive=>options[:archive], 
+              :tape=>options[:tape], 
+              :tape_path=>options[:fname],
+            )
         end
         
         def build_descriptor(input)
           @descriptor = Descriptor::Base.from_hash(@content,input)
         end
 
-        def open(fname, options={}, &blk)
+        def build_descriptor_from_file(fname)
+          input = read_information(fname)
+          build_descriptor(input)
+        end
+
+        def forced_open(fname, options={}, &blk)
           options[:fname] = fname
           input = read_information(fname)
           build_data(input, options)
           build_descriptor(input)
-          options.merge!(:data=>@data, :descriptor=>@descriptor, :tape_path=>options[:fname])
+          options = options.merge(:data=>@data, :descriptor=>@descriptor, :tape_path=>options[:fname])
           if options[:type] && @descriptor[:tape_type]!=options[:type]
             msg = "Expected file #{fname} to be a #{options[:type]} file, not a #{descriptor[:tape_type]} file"
+            # TODO Remove this option; use exception handling, instead
             if options[:graceful]
               stop "!#{msg}"
             else
-              raise UnexpectedTapeType, msg
+              raise UnexpectedTapeTypeError, msg
             end
           end
-          file = create(options)
+          klass = options[:as_class] || self # So that File::Decoded can force open as File::Unpacked
+          file = klass.create(options)
           if block_given?
             begin
               yield(file)
@@ -93,6 +71,32 @@ module Bun
             end
           else
             file
+          end
+        end
+
+        # TODO -- Generalize this, and move it to File
+        def open(fname, options={}, &blk)
+          if options[:force]
+            forced_open(fname, options, &blk)
+          elsif (grade = File.file_grade(fname)) != :unpacked
+            if options[:promote]
+              if File.file_grade_level(grade) < File.file_grade_level(:unpacked)
+                t = Tempfile.new('promoted_to_unpacked_')
+                t.close
+                # TODO redo this:
+                # super(fname, options) {|f| f.unpack(t.path, options)}
+                File.unpack(fname, t.path)
+                # puts "Unpacked file:" # debug
+                # system("cat #{t.path} | more")
+                File::Unpacked.open(t.path, options, &blk)
+              else
+                raise BadFileGrade, "#{fname} can't be converted to unpacked"
+              end
+            else
+              raise BadFileGrade, "#{fname} is not an unpacked file"
+            end
+          else
+            forced_open(fname, options, &blk)
           end
         end
         
@@ -106,7 +110,7 @@ module Bun
             File::Unpacked::Frozen.new(options)
           else
             if options[:strict]
-              raise UnknownFileType,"!Unknown file type: #{descriptor.tape_type.inspect}"
+              raise UnknownFileTypeError,"!Unknown file type: #{descriptor.tape_type.inspect}"
             else
               File::Unpacked::Text.new(options)
             end
@@ -119,20 +123,23 @@ module Bun
           end
         end
         
+        def mark(fname, tag_hash, to=nil)
+          to ||= fname
+          open(fname, :force=>true) do |f|
+            tag_hash.each do |tag, value|
+              f.mark tag, value
+            end
+            f.write(to)
+          end
+        end
+
+        def decode(fname, to, options={}, &blk)
+          open(fname, options) do |f|
+            f.decode(to, options, &blk)
+          end
+        end
       end
 
-      # CHARACTERS_PER_WORD = characters_per_word
-      # PACKED_CHARACTERS_PER_WORD = packed_characters_per_word
-      # ARCHIVE_NAME_POSITION = 7 # words
-      # SPECIFICATION_POSITION = 11 # words
-      # DESCRIPTION_PATTERN = /\s+(.*)/
-
-      # attr_reader :all_characters
-      # attr_reader :all_packed_characters
-      # attr_reader :characters
-      # attr_reader :file_content
-      # attr_reader :packed_characters
-      # attr_reader :words
       attr_reader :data
       attr_reader :descriptor
 
@@ -154,140 +161,6 @@ module Bun
       def header?
         @header
       end
-
-      # def read
-      #   @data.data
-      # end
-      # 
-      # def words=(words)
-      #   if words.nil?
-      #     @words = @all_characters = @characters = @packed_characters = @descriptor = nil
-      #   else
-      #     @words = words
-      #     @descriptor = Descriptor::Unpacked.new(self)
-      #     @all_characters = LazyArray.new(words.size*characters_per_word) do |n|
-      #       @words.characters.at(n)
-      #     end
-      #     @all_packed_characters = LazyArray.new(words.size*packed_characters_per_word) do |n|
-      #       @words.packed_characters.at(n)
-      #     end
-      #     unless header?
-      #       @file_content = LazyArray.new(size-content_offset) do |n|
-      #         # TODO is this check vs. size necessary? is it correct?
-      #         n < self.size ? word(content_offset+n) : nil
-      #       end
-      #       @characters = LazyArray.new(@file_content.size*characters_per_word) do |n|
-      #         @words.characters.at(n + content_offset*characters_per_word)
-      #       end
-      #       @packed_characters = LazyArray.new(@file_content.size*packed_characters_per_word) do |n|
-      #         @words.characters.at(n + content_offset*packed_characters_per_word)
-      #       end
-      #     end
-      #   end
-      #   words
-      # end
-      # 
-      # def word(n)
-      #   @words.at(n)
-      # end
-      # 
-      # def clear
-      #   self.words = nil
-      # end
-      # 
-      # def content
-      #   @file_content
-      # end
-      # 
-      # def delimited_string(offset, options={})
-      #   delimiter = options[:delimiter] || "\0"
-      #   start = offset
-      #   if options[:all]
-      #     chars = all_characters
-      #     chars_per_word = CHARACTERS_PER_WORD
-      #   elsif options[:packed]
-      #     chars = packed_characters
-      #     chars_per_word = PACKED_CHARACTERS_PER_WORD
-      #   else
-      #     chars = characters
-      #     chars_per_word = CHARACTERS_PER_WORD
-      #   end
-      #   size = chars.size
-      #   offset *= chars_per_word if options[:word_offset]
-      #   string = ""
-      #   loop do
-      #     break if offset >= size
-      #     word_index, ch_index = offset.divmod(chars_per_word)
-      #     word = word(word_index)
-      #     break if !word || (word == self.class.eof_marker && !options[:all])
-      #     char = chars.at(offset)
-      #     break if char == delimiter
-      #     string << char
-      #     offset += 1
-      #   end
-      #   string
-      # end
-      # 
-      # def content_offset
-      #   self.class.content_offset(words)
-      # end
-      # 
-      # def header_size
-      #   content_offset
-      # end
-      # 
-      # def size(options={})
-      #   # TODO Should :eof be the default? (Is there ever a meaningful eof marker in frozen files?)
-      #   if options[:eof]
-      #     eof_tape = nil
-      #     words.each_with_index do |word, index|
-      #       if word.value == self.class.eof_marker
-      #         eof_tape = index
-      #         break
-      #       end
-      #     end
-      #     eof_tape || size
-      #   elsif options[:all]
-      #     @words.size
-      #   else
-      #     @size || tape_size
-      #   end
-      # end
-      # 
-      # def tape_size
-      #   res = (word(0).half_word(1))+1
-      #   res = res.value unless res.is_a?(Fixnum)
-      #   res
-      # end
-      # 
-      # def date(tape)
-      #   date_string = content[tape,2].characters.join
-      #   self.class.date(date_string)
-      # end
-      # 
-      # def time_of_day(tape)
-      #   self.class.time_of_day content.at(tape)
-      # end
-      # 
-      # def time(date_tape, time_tape)
-      #   self.class.time date(date_tape), time_of_day(time_tape)
-      # end
-      # 
-      # def catalog_time
-      #   archive && archive.catalog_time(tape)
-      # end
-      # 
-      # def characters_per_word
-      #   self.class.characters_per_word
-      # end
-      # 
-      # def packed_characters_per_word
-      #   self.class.packed_characters_per_word
-      # end
-      # 
-      # def frozen?
-      #   File::Frozen::Descriptor.frozen?(self)
-      # end
       
       def tape_type
         descriptor.tape_type
@@ -297,10 +170,27 @@ module Bun
         descriptor.file_time
       end
       
-      def to_yaml
-        hash = descriptor.to_hash.merge(:content=>data.data)
+      BUN_IDENTIFIER = "Bun"
+      
+      def to_hash(options={})
+        # Note: This is set up to include fields in a particular order:
+        #  1. :identifier
+        #  2. Other fields, in sorted key order:
+        #    a. Descriptor fields (except :data), in sorted key order
+        #    b. :digest
+        #    c. All other fields specified in options
+        #  6. :shards
+        #  7. :content
+        content = options.delete(:content)
+        content ||= data.data
+        fields = descriptor.to_hash
+        fields.delete(:data)
+        fields.delete(:shards)
+        file_grade = options.delete(:file_grade)
+        fields[:file_grade] = file_grade || :unpacked
+        fields[:digest]  = content.digest
         if tape_type == :frozen
-          hash[:shards] = shard_descriptors.map do |d|
+          shards = shard_descriptors.map do |d|
             {
               :name      => d.name,
               :file_time => d.file_time,
@@ -309,32 +199,97 @@ module Bun
               :size      => d[:size], # Need to do it this way, because d.size is the builtin
             }
           end
+        else
+          options.delete(:shard)
+          options.delete(:shards)
         end
-        hash.to_yaml
+        fields.merge!(options)
+        hash = {identifier: BUN_IDENTIFIER}.merge(fields.symbolized_keys.sorted)
+        hash[:shards] = shards if shards
+        hash[:content] = content
+        # debug "Caller: #{caller[0,2].inspect}"
+        # debug hash.inspect
+        hash
+      end
+      
+      def to_yaml(options={})
+        to_hash(options).to_yaml
       end
       
       def write(to=nil)
         to ||= tape_path
         shell = Shell.new
-        shell.write to, to_yaml
+        output = to_yaml
+        shell.write to, output
+        output
       end
-      
+
       def unpack
         self
       end
       
-      def to_hash(options={})
-        descriptor.to_hash.merge(
-          content:     decoded_text(options),
-          data_format: :unpacked,
-          decode_time: Time.now,
-          decoded_by:  Bun.expanded_version
-        )
+      # Subclasses must define decoded_text
+      def decoded_text(options={})
+        raise RuntimeError, "#{self.class} does not define decoded_text"
+      end
+      
+      def to_decoded_hash(options={})
+        options = options.merge(
+                    content: decoded_text(options), 
+                    file_grade: :decoded,
+                    decode_time: Time.now,
+                    decoded_by:  Bun.expanded_version
+                  )
+        to_hash(options)
+      end
+      
+      def to_decoded_yaml(options={})
+        to_decoded_hash(options).to_yaml
       end
 
-      # Subclasses must define decoded_text
-      def decode(to, options={})
-        Shell.new.write(to,to_hash(options).to_yaml)
+      def qualified_path_name(to, shard=nil)
+        to ? (shard ? File.join(to, shard) : to) : shard      end
+
+      # TODO Could this be refactored to Frozen and other subclasses?
+      def to_decoded_parts(to, options)
+        expand = options.delete(:expand)
+        allow = options.delete(:allow)
+        if tape_type == :huffman
+          # Not decodeable
+          raise Bun::File::CantDecodeError, "Unable to decode Huffman encoded file" unless allow
+          nil
+        elsif tape_type!=:frozen || options[:shard]
+          # Return a file
+          {to=>to_decoded_yaml(options)}
+        elsif expand
+          # Return multiple shards
+          parts = {}
+          shard_count.times do |shard_number|
+            res = to_decoded_hash(options.merge(shard: shard_number))
+            path = qualified_path_name(to, res[:shard_name])
+            raise CantExpandError, "Must specify file name with :expand" if res[:shard_name] && to=='-'
+            parts[path] = res.to_yaml
+          end
+          parts
+        else
+          raise CantExpandError, "Must specify either :shard or :expand"
+        end
+      end
+
+      def decode(to, options={}, &blk)
+        parts = to_decoded_parts(to, options)
+        unless parts
+          yield(self, 0) if block_given? # In case some reporting needs to be done
+          return nil
+        end
+        shell = Shell.new
+        parts.each.with_index do |pair, index|
+          part, content = pair
+          part = yield(self, index) if block_given? # Block overrides "to"
+          shell.mkdir_p(File.dirname(part)) unless part.nil? || part=='-'
+          shell.write(part, content) unless part.nil?
+        end
+        parts
       end
 
       def method_missing(meth, *args, &blk)

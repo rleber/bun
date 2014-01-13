@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+require 'digest/md5'
+
 class String
   class InvalidCheck < ArgumentError; end
 
@@ -8,7 +10,7 @@ class String
     self.inspect[1..-2]
   end
   
-  class Analysis; end # Defined elsewhere
+  class Examination; end # Defined elsewhere
   
   VALID_CONTROL_CHARACTER_HASH = {
     line_feed:       "\n", 
@@ -52,42 +54,35 @@ class String
       VALID_CHARACTER_REGEXP
     end
 
-    # TODO Refactor this, using a String::Check class?
-    CHECK_TESTS = {
-      tabbed: {
-        options: [:tabs, :no_tabs],
-        description: "File contains tabs",
-        test: lambda {|text| text.tabbed? ? :tabs : :no_tabs }
-      },
-      overstruck: {
-        options: [:tabs, :no_tabs],
-        description: "File contains backspaces",
-        test: lambda {|text| text.overstruck? ? :overstruck : :not_overstruck }
-      },
-      
-    }
+    # CHECK_TESTS = {
+    #   tabbed: {
+    #     options: [:tabs, :no_tabs],
+    #     description: "File contains tabs",
+    #     test: lambda {|text| text.tabbed? ? :tabs : :no_tabs }
+    #   },
+    #   overstruck: {
+    #     options: [:tabs, :no_tabs],
+    #     description: "File contains backspaces",
+    #     test: lambda {|text| text.overstruck? ? :overstruck : :not_overstruck }
+    #   },
+    #   
+    # }
     
   end
 
   
-  def readable_proportion
+  def legibility
     String::Check(self, :readability)
   end
   
   def counts(*character_sets)
-    counter = String::Analysis::Base.new(self, character_sets)
+    counter = String::Examination::Base.new(self, character_sets)
     counter.counts
   end
   
-  def character_class_counts(*character_sets)
-    counter = String::Analysis::Base.new(self, character_sets)
+  def count_hash(*character_sets)
+    counter = String::Examination::Base.new(self, character_sets)
     counter.character_counts
-  end
-  
-  def analyze(analysis)
-    analyzer = String::Analysis.create(analysis)
-    analyzer.string = self
-    analyzer
   end
 
   def clean?
@@ -95,52 +90,117 @@ class String
   end
   
   def tabbed?
-    self.force_encoding('ascii-8bit') =~ /\t/
+    self.force_encoding('ascii-8bit') =~ /\x9/
   end
   
   def overstruck?
-    self.force_encoding('ascii-8bit') =~ /\b/
+    self.force_encoding('ascii-8bit') =~ /\x8/
   end
   
-  def check(test)
-    checker = String::Check.create(test)
-    checker.string = self
-    checker
+  def examination(analysis, options={})
+    examiner = String::Examination.create(analysis, self, options)
+    examiner
+  end
+  
+  # Options should include :file, :path, :expression
+  def formula(options=[])
+    evaluator = Bun::Formula.new(options)
+    evaluator.data = self
+    evaluator
   end
   
   def titleize
     split(/(\W)/).map(&:capitalize).join
   end
   
-  def character_set
-    chars = self.dup.force_encoding('ascii-8bit').split(//).sort.uniq
-    runs = [""]
+  # Convert a string to its equivalent character set, e.g.
+  # e.g. "abbbasssscc".positive_character_set => '[a-cs]'
+  def character_set(options={})
+    s = options[:case_insensitive] ? self.downcase : self
+    chars = s.dup.force_encoding('ascii-8bit').split(//).sort.uniq
+    runs = [{from: '', to: ''}]
     last_asc = -999
     last_runnable = false
     chars.each do |ch|
       ch_asc = ch[0].ord
-      ch_runnable = ch=~/[a-z0-9]/i || ch.inspect=~/"\\x/
+      ch_runnable = ch.escaped=~/^\\x|^[a-zA-Z0-9]/
       if !ch_runnable ||
          !last_runnable ||
          ch =~ /[aA0\x00]/ ||  # Don't allow a-z to run into A-Z, etc.
          ch_asc != last_asc + 1
-        runs << ((ch=='-') ? '\\-' : ch) # Always escape '-' to avoid ambiguity
+        runs << {:from=>ch, to: ch}
       else # Add to a run
-        if runs.last =~ /^.-.$/m # Add to an existing run
-          runs.last[-1,1] = ch
-        elsif runs.last.size < 3 && runs.last.inspect.size < 10 # Not big enough for a run yet
-                                                                # Last.inspect etc. for "\x00-..."
-          runs[-1] += ch
-        else # Create a new run
-          runs[-1] = "#{runs.last[0,1]}-#{ch}"
-        end
+        runs[-1][:to] = ch
       end
       last_asc = ch_asc
       last_runnable = ch_runnable
     end
-    '[' + runs.join.inspect[1..-2].gsub('/','\/').gsub('\\\\-', '\\-') + ']'
+    runs_string = runs.map do |run|
+      from = run[:from]
+      to = run[:to]
+      if from==to
+        from.set_escaped
+      else
+        res1="#{from.set_escaped(no_ctrl: true)}-#{to.set_escaped(no_ctrl: true)}"
+        res2=(from..to).map {|ch| ch.set_escaped(no_ctrl:true)}.join
+        res1.size < res2.size ? res1 : res2
+      end
+    end.join
+    runs_string = "-#{$1}#{$2}" if runs_string =~ /(.*)\\-(.*)/
+    runs_string = "#{$1}^" if runs_string =~ /^\^(.*)/
+    
+    delimiters = parse_character_set_delimiters(options[:delimiters])
+    if runs_string.size > 1 || !options[:single_as_string]
+      runs_output = delimiters[0] + 
+                    runs_string + 
+                    delimiters[1]
+    end
+    runs_output
   end
+  
+  def parse_character_set_delimiters(delimiters)
+    delimiters ||= '[]'
+    delimiters = case delimiters.size
+    when 0
+      ['','']
+    when 1
+      delimiters*2
+    else
+      delimiters[0,2].split(//)
+    end
+    delimiters
+  end
+  private :parse_character_set_delimiters
+  
+  def safe
+    if self =~ /^[\w\d.\/]*$/
+      self.dup
+    else
+      self.inspect
+    end
+  end
+  
+  def escaped
+    inspect[1..-2]
+  end
+  
+  def set_escaped(options={})
+    self.split(//).map do |ch|
+      res = ch.escaped
+      res = "\\x#{'%02X' % ch.ord}" if options[:no_ctrl] && res=~/^\\\w$/
+      res.gsub("-",'\\-')
+    end.join
+  end
+
+  def digest
+    Digest::MD5.hexdigest(self).inspect[1..-2] # Inspect prevents YAML from treating this as binary
+  end
+  
+  def freeze_for_thor
+    self.gsub("\n","\n\005").gsub(' ',"\177")
+  end
+  
 end
 
-require 'lib/string_analysis'
-require 'lib/string_check'
+require 'lib/examination'
+require 'lib/bun/formula'

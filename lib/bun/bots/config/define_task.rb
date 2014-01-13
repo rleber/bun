@@ -5,6 +5,7 @@
 
 desc "define [PAT]", "Display definition of configuration keys"
 def define(pat=nil)
+  check_for_unknown_options(pat)
   config = Configuration.new
   tasks = config.all_keys.sort_by {|key| key.to_s}
   pat ||= '*'

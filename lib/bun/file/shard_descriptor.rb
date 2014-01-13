@@ -5,8 +5,6 @@ module Bun
   class File < ::File
     module Descriptor
       class Shard < Base
-        # attr_reader :character_count
-        # attr_reader :control_characters
         attr_reader :data
         attr_reader :number
         attr_accessor :status
@@ -35,16 +33,10 @@ module Bun
           def end_marker
             DESCRIPTOR_END_MARKER
           end
-
-          # Is a file frozen?
-          # Yes, if and only if it has a valid descriptor
-          # def frozen?(file)
-          #   file.words.at(file.content_offset + offset + size - 1) == end_marker
-          # end
         end
 
         def initialize(data, number, options={})
-          super(data)
+          super(data.data)
           @number = number
           unless options[:allow] || valid?
             raise "Bad descriptor ##{number} for #{data.tape} at #{'%#o' % self.offset}:\n#{dump}" 

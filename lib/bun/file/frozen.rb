@@ -14,15 +14,14 @@ module Bun
       
       attr_reader :file
       attr_accessor :status
-      attr_accessor :warn
+      attr_accessor :line_correct
     
       # TODO do we ever instantiate a File::Frozen without a new file? If not, refactor
       def initialize(options={})
         options[:data] = Data.new(options) if options[:data] && !options[:data].is_a?(Bun::Data)
         super
-        # TODO Why is file_date necessary?
         descriptor.register_fields(:shards, :file_time)
-        @warn = options[:warn]
+        @line_correct = options[:line_correct]
       end
       
       # This is the official definition. Even though some other approaches might be more reliable,
@@ -146,7 +145,7 @@ module Bun
           stop "Frozen file does not contain shard number #{orig_n}" if n<0 || n>shard_count
         else
           name = n.to_s.sub(/^\\/,'') # Remove leading '\\', if any
-          raise "!Missing shard index or name" if n.to_s == '' # debug
+          raise "!Missing shard index or name" if n.to_s == ''
           n = _shard_index(name)
           stop "!Frozen file does not contain a shard named #{name.inspect}" unless n
         end
@@ -186,7 +185,6 @@ module Bun
         s = []
         shard_count.times do |i|
           text = shard_lines.at(i).map{|l| l[:content]}.join
-          # shard_descriptors.at(i).control_characters = File.control_character_counts(text)
           shard_descriptors.at(i).character_count    = text.size
           s << text
         end
@@ -197,11 +195,12 @@ module Bun
         LazyArray.new(shard_count) {|i| thaw(i) }
       end
 
+      # TODO Rename decode (Carefully: decode is used for a different meaning on some other methods)
       def thaw(n)
         words = shard_words(n)
         line_offset = 0
         lines = []
-        warned = false
+        line_corrected = false
         shard_descriptor(n).status = :readable
         while line_offset < words.size
           last_line_word, line, okay = thaw_line(n, words, line_offset)
@@ -211,8 +210,8 @@ module Bun
             else
               shard_descriptor(n).status = :truncated
             end
-            Kernel.warn "Bad lines corrected" if !warned && @warn
-            warned = true
+            Kernel.line_correct "Bad lines corrected" if !line_corrected && @line_correct
+            line_corrected = true
             break
           else
             raw_line = line
@@ -285,10 +284,11 @@ module Bun
         content = shards.at(shard_index(options[:shard]))
       end
       
-      def to_hash(options=[])
+      def to_decoded_hash(options={})
         base_hash = super(options)
         base_hash.delete(:shards)
-        index = shard_index(options[:shard])
+        index = shard_index(options.delete(:shard))
+        base_hash.delete(:shard)
         shard_descriptor = descriptor.shards[index].to_a.inject({}) do |hsh, pair|
           key, value = pair
           new_key = "shard_#{key.to_s.sub(/^file_/,'')}".to_sym
