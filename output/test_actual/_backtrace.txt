@@ -1,7 +1,0 @@
-rm -rf data/test/archive/mixed_grades
-rm -rf output/test_actual/mixed_grades_unpack
-rm -f output/test_actual/mixed_grades_archive_unpack.txt
-rm -f output/test_actual/mixed_grades_archive_diff.txt
-cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades
-bun archive unpack data/test/archive/mixed_grades output/test_actual/mixed_grades_unpack 2>/dev/null                   >/dev/null
-find output/test_actual/mixed_grades_unpack -print >output/test_actual/mixed_grades_archive_unpack.txt

@@ -86,7 +86,7 @@ module Bun
               @directories[:unpacked]
             end
             clear_stage :decoded
-            decode from, @directories[:decoded], :catalog=>options[:catalog]
+            decode from, @directories[:decoded]
             build_symlink :decoded
           when 'classify'
             warn "Classify the decoded files into clean and dirty" if options[:announce]

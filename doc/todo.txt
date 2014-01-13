@@ -35,6 +35,7 @@ More extensions to bun examine
         Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
             binary load module
 Should bun find be called bun grep?
+Make catalog :remove the default; rename --keep?
 Implement bun library clean
     Find duplicates
         Same file name

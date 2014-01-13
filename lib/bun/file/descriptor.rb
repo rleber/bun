@@ -49,6 +49,7 @@ module Bun
         end
         
         def _set_field(name, value)
+          raise "Bad field #{name.inspect}" if %w{catalog fname promote}.include?(name.to_s)
           @fields << name unless @fields.include?(name)
           instance_variable_set("@#{name}", value)
         end

@@ -33,7 +33,7 @@ Some convenience abbreviations are allowed:
     xxx..yyy                          Steps xxx to yyy
     xxx...yyy                         Steps xxx to the step before yyy
 EOT
-long_desc DESC_TEXT.gsub(/(?<!\\)\n/,"\x5").gsub(/\\$/,'').gsub(/ /,"\177")
+long_desc DESC_TEXT.freeze_for_thor
 def fetch(*steps)
   check_for_unknown_options(*steps)
   if options[:steps]

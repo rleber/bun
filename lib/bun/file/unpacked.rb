@@ -47,6 +47,7 @@ module Bun
 
         def forced_open(fname, options={}, &blk)
           input = read_information(fname)
+          input.merge!(tape_path: fname)
           build_data(input, options)
           build_descriptor(input)
           options = options.merge(:data=>@data, :descriptor=>@descriptor, :tape_path=>options[:fname])
@@ -205,6 +206,8 @@ module Bun
         hash = {identifier: BUN_IDENTIFIER}.merge(fields.symbolized_keys.sorted)
         hash[:shards] = shards if shards
         hash[:content] = content
+        hash.delete(:promote)
+        hash.delete(:tape_path)
         # debug "Caller: #{caller[0,2].inspect}"
         # debug hash.inspect
         hash
@@ -215,7 +218,7 @@ module Bun
       end
       
       def write(to=nil)
-        to ||= tape_path
+        to ||= descriptor.tape_path
         shell = Shell.new
         output = to_yaml
         shell.write to, output

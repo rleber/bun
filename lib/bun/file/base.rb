@@ -305,7 +305,7 @@ module Bun
     end
   
     def read
-      self.class.read(tape_path)
+      self.class.read(descriptor.tape_path)
     end
   
     def update_index
