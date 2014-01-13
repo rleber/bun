@@ -27,8 +27,8 @@ TODO Explain how --value works
 
 EOT
 def same(*files)
-   check_for_unknown_options(*files)
- if options[:list]
+  check_for_unknown_options(*files)
+  if options[:list]
     puts String::Examination.exam_definition_table
     exit
   end
@@ -57,16 +57,21 @@ def same(*files)
     table << row
   end
   
+  # Find duplicates
+  counts_hash = {}
+  table.each do |row|
+    key = row[1..-1]
+    counts_hash[key] ||= 0
+    counts_hash[key] += 1
+  end
   puts "Uniqueness counts"
   puts "#{table.size} rows in table"
-  puts "#{table.uniq {|row| row[1..-1]}.size} uniq rows in table"
+  puts "#{counts_hash.values.select{|value| value>1}.size} duplicated sets in table"
   puts ""
   table = table.sort_by{|row| row.rotate }
-  last_row = []
   table.each do |row|
-    if row[1..-1] == last_row[1..-1]
+    if (counts_hash[row[1..-1]]||0) > 1
       puts row.rotate.join('  ')
     end
-    last_row = row
   end
 end
