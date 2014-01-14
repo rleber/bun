@@ -108,6 +108,8 @@ module Bun
             File::Unpacked::Text.new(options)
           when :frozen
             File::Unpacked::Frozen.new(options)
+          when :huffman
+            File::Unpacked::Huffman.new(options)
           else
             if options[:strict]
               raise UnknownFileTypeError,"!Unknown file type: #{descriptor.tape_type.inspect}"
