@@ -100,7 +100,7 @@ module Bun
 
         def get_bit
           @bit_position ||= 0
-          if @bit_position >= Bun::Data::BYTES_PER_WORD
+          if @bit_position >= Bun::Data::BITS_PER_BYTE
             get_byte
             @bit_position = 0
           end
@@ -124,7 +124,7 @@ module Bun
               if tree.left
                 b = get_bit
                 if b
-                  tree = tree[get_bit]
+                  tree = tree[b]
                 else
                   return nil
                 end
