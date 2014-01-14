@@ -18,6 +18,14 @@ module Bun
         Bun::Word.character.count
       end
 
+      def bytes_per_word
+        Bun::Word.byte.count
+      end
+
+      def bits_per_byte
+        Bun::Word.byte.width
+      end
+
       def packed_characters_per_word
         Bun::Word.packed_character.count
       end
@@ -58,6 +66,8 @@ module Bun
     end
 
     CHARACTERS_PER_WORD = characters_per_word
+    BYTES_PER_WORD = bytes_per_word
+    BITS_PER_BYTE = bits_per_byte
     PACKED_CHARACTERS_PER_WORD = packed_characters_per_word
     ARCHIVE_NAME_POSITION = 7 # words
     SPECIFICATION_POSITION = 11 # words
@@ -66,6 +76,7 @@ module Bun
     attr_reader :all_characters
     attr_reader :all_packed_characters
     attr_reader :characters
+    attr_reader :bytes
     attr_reader :file_content
     attr_reader :packed_characters
     attr_reader :words
@@ -97,6 +108,9 @@ module Bun
         end
         @characters = LazyArray.new(@file_content.size*characters_per_word) do |n|
           @words.characters.at(n + content_offset*characters_per_word)
+        end
+        @bytes = LazyArray.new(@file_content.size*bytes_per_word) do |n|
+          @words.bytes.at(n + content_offset*bytes_per_word)
         end
         @packed_characters = LazyArray.new(@file_content.size*packed_characters_per_word) do |n|
           @words.characters.at(n + content_offset*packed_characters_per_word)
@@ -202,6 +216,10 @@ module Bun
 
     def packed_characters_per_word
       self.class.packed_characters_per_word
+    end
+
+    def bytes_per_word
+      self.class.bytes_per_word
     end
 
     def frozen?

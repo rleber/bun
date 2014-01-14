@@ -1,7 +1,6 @@
 TODO
 _High Priority_
 Tests for bun compress, bun same
-Implement huffman decoding
 Find duplicates
     Same file name
     Absolutely identical
@@ -102,7 +101,6 @@ Implement interactive (or stream) editor:
     /pat/[bxoa]? pattern matching (e.g. b for binary, a for ascii, etc.)
     p command shows a dump in multiple formats
     Alternatively: check out the contents (in whatever format), edit, then check them back in again
-Implement Huffman decoding
 
 _Medium Priority_
 Symlink readme and todo in top directory

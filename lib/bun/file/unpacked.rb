@@ -42,8 +42,14 @@ module Bun
 
         # TODO How is this different from File.descriptor?
         def build_descriptor_from_file(fname)
-          input = read_information(fname)
-          build_descriptor(input)
+          if File.packed?(fname) 
+            File::Packed.open(fname) {|f| f.descriptor }
+          elsif File.binary?(fname) # Baked
+            nil
+          else
+            input = read_information(fname)
+            build_descriptor(input)
+          end
         end
 
         def forced_open(fname, options={}, &blk)
@@ -108,6 +114,8 @@ module Bun
             File::Unpacked::Text.new(options)
           when :frozen
             File::Unpacked::Frozen.new(options)
+          when :huffman
+            File::Unpacked::Huffman.new(options)
           else
             if options[:strict]
               raise UnknownFileTypeError,"!Unknown file type: #{descriptor.tape_type.inspect}"
@@ -256,11 +264,7 @@ module Bun
       def to_decoded_parts(to, options)
         expand = options.delete(:expand)
         allow = options.delete(:allow)
-        if tape_type == :huffman
-          # Not decodeable
-          raise Bun::File::CantDecodeError, "Unable to decode Huffman encoded file" unless allow
-          nil
-        elsif tape_type!=:frozen || options[:shard]
+        if tape_type!=:frozen || options[:shard]
           # Return a file
           {to=>to_decoded_yaml(options)}
         elsif expand

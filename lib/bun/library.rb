@@ -55,7 +55,7 @@ module Bun
         if options[:dryrun]
           $stderr.puts "bake #{relative_leaf}" unless options[:quiet]
         else
-          to_file = File.join(to,relative_leaf)
+          to_file = File.join(to_path,relative_leaf)
           success = begin
             File.bake(leaf, to_file, promote: true)
             $stderr.puts "bake #{relative_leaf}" unless options[:quiet]

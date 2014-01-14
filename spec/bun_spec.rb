@@ -273,34 +273,50 @@ describe Bun::Archive do
           exec_on_success("rm -rf data/test/archive/general_test_packed")
         end
       end
-    end
-    context "from STDIN" do
-      context "without tape name" do
-        before :all do
-          exec("rm -rf output/test_actual/unpack_stdin_ar003.0698")
-          exec("rm -rf data/test/archive/general_test_packed")
-          exec("cp -r data/test/archive/general_test_packed_init \
-                  data/test/archive/general_test_packed")
-          exec("cat data/test/archive/general_test_packed/ar003.0698 | \
-                  bun unpack - >output/test_actual/unpack_stdin_ar003.0698")
+      context "from STDIN" do
+        context "without tape name" do
+          before :all do
+            exec("rm -rf output/test_actual/unpack_stdin_ar003.0698")
+            exec("rm -rf data/test/archive/general_test_packed")
+            exec("cp -r data/test/archive/general_test_packed_init \
+                    data/test/archive/general_test_packed")
+            exec("cat data/test/archive/general_test_packed/ar003.0698 | \
+                    bun unpack - >output/test_actual/unpack_stdin_ar003.0698")
+          end
+          it "should match the expected output" do
+            "unpack_stdin_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
+          end
+          after :all do
+            backtrace
+            exec_on_success("rm -rf output/test_actual/unpack_stdin_ar003.0698")
+            exec_on_success("rm -rf data/test/archive/general_test_packed")
+          end
         end
-        it "should match the expected output" do
-          "unpack_stdin_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
-        end
-        after :all do
-          backtrace
-          exec_on_success("rm -rf output/test_actual/unpack_stdin_ar003.0698")
-          exec_on_success("rm -rf data/test/archive/general_test_packed")
+        context "with tape name" do
+          before :all do
+            exec("rm -f output/test_actual/unpack_ar003.0698")
+            exec("rm -rf data/test/archive/general_test_packed")
+            exec("cp -r data/test/archive/general_test_packed_init \
+                    data/test/archive/general_test_packed")
+            exec("cat data/test/archive/general_test_packed/ar003.0698 | \
+                    bun unpack -t ar003.0698 - >output/test_actual/unpack_ar003.0698")
+          end
+          it "should match the expected output" do
+            "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
+          end
+          after :all do
+            backtrace
+            exec_on_success("rm -f output/test_actual/unpack_ar003.0698")
+            exec_on_success("rm -rf data/test/archive/general_test_packed")
+          end
         end
       end
-      context "with tape name" do
+      context "with output to a file" do
         before :all do
           exec("rm -f output/test_actual/unpack_ar003.0698")
           exec("rm -rf data/test/archive/general_test_packed")
-          exec("cp -r data/test/archive/general_test_packed_init \
-                  data/test/archive/general_test_packed")
-          exec("cat data/test/archive/general_test_packed/ar003.0698 | \
-                  bun unpack -t ar003.0698 - >output/test_actual/unpack_ar003.0698")
+          exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
+          exec("bun unpack data/test/archive/general_test_packed/ar003.0698 output/test_actual/unpack_ar003.0698")
         end
         it "should match the expected output" do
           "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
@@ -310,22 +326,6 @@ describe Bun::Archive do
           exec_on_success("rm -f output/test_actual/unpack_ar003.0698")
           exec_on_success("rm -rf data/test/archive/general_test_packed")
         end
-      end
-    end
-    context "with output to a file" do
-      before :all do
-        exec("rm -f output/test_actual/unpack_ar003.0698")
-        exec("rm -rf data/test/archive/general_test_packed")
-        exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
-        exec("bun unpack data/test/archive/general_test_packed/ar003.0698 output/test_actual/unpack_ar003.0698")
-      end
-      it "should match the expected output" do
-        "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
-      end
-      after :all do
-        backtrace
-        exec_on_success("rm -f output/test_actual/unpack_ar003.0698")
-        exec_on_success("rm -rf data/test/archive/general_test_packed")
       end
     end
     context "with a frozen file" do
@@ -341,6 +341,22 @@ describe Bun::Archive do
       after :all do
         backtrace
         exec_on_success("rm -f output/test_actual/unpack_ar019.0175")
+        exec_on_success("rm -rf data/test/archive/general_test_packed")
+      end
+    end
+    context "with a huffman file" do
+      before :all do
+        exec("rm -f output/test_actual/unpack_ar003.0701")
+        exec("rm -rf data/test/archive/general_test_packed")
+        exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
+        exec("bun unpack data/test/archive/general_test_packed/ar003.0701 output/test_actual/unpack_ar003.0701")
+      end
+      it "should match the expected output" do
+        "unpack_ar003.0701".should match_expected_output_except_for(UNPACK_PATTERNS)
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/unpack_ar003.0701")
         exec_on_success("rm -rf data/test/archive/general_test_packed")
       end
     end
@@ -690,19 +706,33 @@ describe Bun::Bot do
           exec_on_success("rm -f output/test_actual/decode_ar003.0698")
         end
       end
+      context "from STDIN" do
+        before :all do
+          exec("rm -f output/test_actual/decode_ar003.0698")
+          exec("cat #{TEST_ARCHIVE}/ar003.0698.bun | bun decode - \
+                    >output/test_actual/decode_ar003.0698")
+        end
+        it "should match the expected output" do
+          "decode_ar003.0698".should match_expected_output_except_for(DECODE_PATTERNS)
+        end
+        after :all do
+          backtrace
+          exec_on_success("rm -f output/test_actual/decode_ar003.0698")
+        end
+      end
     end
-    context "from STDIN" do
+    context "with huffman file" do
       before :all do
-        exec("rm -f output/test_actual/decode_ar003.0698")
-        exec("cat #{TEST_ARCHIVE}/ar003.0698.bun | bun decode - \
-                  >output/test_actual/decode_ar003.0698")
+        exec("rm -f output/test_actual/decode_ar003.0701")
+        exec("bun decode #{TEST_ARCHIVE}/ar003.0701.bun \
+                  >output/test_actual/decode_ar003.0701")
       end
       it "should match the expected output" do
-        "decode_ar003.0698".should match_expected_output_except_for(DECODE_PATTERNS)
+        "decode_ar003.0701".should match_expected_output_except_for(DECODE_PATTERNS)
       end
       after :all do
         backtrace
-        exec_on_success("rm -f output/test_actual/decode_ar003.0698")
+        exec_on_success("rm -f output/test_actual/decode_ar003.0701")
       end
     end
     context "with frozen file" do
@@ -1059,6 +1089,7 @@ describe Bun::Bot do
       end
       it "should write the proper content" do
         "mixed_grades_decode/fass/idallen/vector/tape.ar003.0698.txt".should match_expected_output_except_for(DECODE_PATTERNS)
+        "mixed_grades_decode/fass/idallen/huffhart/tape.ar003.0701.txt".should match_expected_output_except_for(DECODE_PATTERNS)
         "mixed_grades_decode/clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
             match_expected_output
         "mixed_grades_decode/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DECODE_PATTERNS)
@@ -1087,6 +1118,7 @@ describe Bun::Bot do
       end
       it "should write the proper content" do
         "mixed_grades_bake/ar003.0698".should match_expected_output
+        "mixed_grades_bake/ar003.0701.bun".should match_expected_output
         "mixed_grades_bake/clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
             match_expected_output
         "mixed_grades_bake/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output
