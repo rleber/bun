@@ -8,7 +8,7 @@ imperfectly. Some salient features:
 - The files store most signifcant bits first, and most significant bytes first
 - There are at least three formats of archive: 
     text:    archives one text file
-    huffman: archives one text file with compression by huffman encoding
+    huffman: archives one text file with compression by Huffman encoding
     frozen:  archives a collection of files (much like modern tar or zip)
   
 Because these formats are old and my understanding is imperfect, I make no warranty of the absolutely
@@ -20,7 +20,10 @@ refer to the other files in the doc/file_format directory of this project. These
 
 - decode_help.txt  Some dialog about the characteristics of Honeywell files
 - free.b.txt       A program to decode Honeywell's freeze file format, written in B, an ancestor of C
-- huff.b.txt       A program to decode huffman coded files, also written in B
+- huff.b.txt       A program to decode Huffman encoded files, also written in B. THIS FILE IS OBSOLETE, AND
+                   DOES NOT MATCH THE ENCODING USED IN THESE FILES.
+- huff.v2.b.txt    A program to encode Huffman coded files
+- puff.b.txt       A program to decode Huffman coded files (huff and puff, get it?)
 
 The "bun dump" and "bun freezer dump" commands are available to display the contents of files in octal 
 and ASCII, and may be useful for exploring files.
@@ -45,8 +48,8 @@ In what follows:
 - Integers were stored as signed 36-bit words, with a leading sign bit, and using two's complement format
 - Quantities like line length fields, etc. are generally unsigned
 - Also a word containing 0170000 is an end-of-file marker. Subsequent data in the file should be ignored.
-  I am sure this is true of text files. I have never seen it used in frozen files. I don't know if it
-  applies to huffman-coded files.
+  I am sure this is true of text files. I have never seen it used in frozen files, and I don't think it
+  applies to Huffman-coded files.
 
 _All Files_
 
@@ -95,8 +98,24 @@ run "bun dump"
 
 _Huffman Coded Files_
 
-I haven't begun trying to decode these. I will add more notes as I learn how these work. In the 
-meantime, refer to doc/file_format/decode_help.txt, or the program doc/file_format/huff.b.txt
+I made several fits and starts trying to get this to work, but I finally have. One of the major detours
+I made was trying to use the algorithm in the huff.b.txt program. This turns out NOT to be the format
+used in these files. Look at puff.b.txt, instead.
+- The first word after the preamble should contain 'huff'
+- The next word contains the number of characters (allegedly) in the upper 18 bits of the word. There's
+  some information encoded in the remainder of the word, too, but I can't figure out what it means.
+- After the first two words begins the Huffman encoding tree. Taking each 9-bit byte in turn, they
+  encode a binary tree, using the following algorithm:
+  - Examine a byte. If it is zero, then you are at a leaf of the tree, and the next byte contains the 
+    character at that leaf
+  - Otherwise, the byte is the number of nodes down the left-most arm of the tree. Start the description
+    of the left subtree using this byte minus one, and the next byte in sequence after the description of
+    that subtree finishes starts the description of the right subtree. Proceed recursively.
+  - If the above isn't clear, look at File::Unpacked::Huffman#make_tree
+- Immediately following the tree begins the encoded text. Since Huffman encoding works bit-by-bit, the
+  text must be examined one bit at a time, traversing the Huffman tree from the top. At each bit, a "0" bit
+  means take the left branch of the tree, and a "1" bit means take the right branch. When you reach a leaf,
+  that's the encoded character. See Wikipedia for more information on Huffman encoding.
 
 _Freeze Files_
 

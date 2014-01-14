@@ -5,6 +5,8 @@ module Bun
   class File < ::File
     class Unpacked < Bun::File
       class Huffman < ::Bun::File::Blocked
+        include CacheableMethods
+
         class BadFileContentError < RuntimeError; end
 
         class TreeNode
@@ -77,9 +79,13 @@ module Bun
 
         def reset
           reset_position
-          @tree = build_sub_tree(get_byte)
           @characters_left = number_of_characters
-          @tree
+          @tree = make_tree # Must rebuild tree, in order to find the end of the tree description
+                            # That is the start of the encoded text.
+        end
+
+        def make_tree
+          build_sub_tree(get_byte)
         end
 
         def build_sub_tree(ch)
@@ -145,6 +151,11 @@ module Bun
             s << ch
           end
           s
+        end
+        cache :text
+
+        def decoded_text(options={})
+          text
         end
       end
     end

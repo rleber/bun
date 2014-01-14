@@ -393,7 +393,7 @@ module Bun
               timestamp = file.descriptor.timestamp
               File.join(to_path, decode_path(file.path, timestamp), shard_name,
                       decode_tapename(tape, descr.file_time))
-            when :text
+            when :text, :huffman
               warn "Decoding #{tape}" if options[:dryrun] || !options[:quiet]
               timestamp = file.descriptor.timestamp
               File.join(to_path, file.path, decode_tapename(tape, timestamp))
