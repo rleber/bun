@@ -215,6 +215,10 @@ module Bun
         Library.new(from).bake(to, options)
       end
 
+      def tar(archive, tar_file)
+        Archive.new(archive).tar(tar_file)
+      end
+
       def build_symlink(stage)
         `ln -s #{@directories[stage]} #{@symlinks[stage]}`
       end
@@ -315,7 +319,7 @@ module Bun
         sorted_duplicates = {}
         fail = false
         duplicates.each do |key, files|
-          sorted_duplicates[key] = files.sort_by {|file| File::Unpacked.date_of(file) }
+          sorted_duplicates[key] = files.sort_by {|file| File.timestamp(file) }
         end
         sorted_duplicates
       end
@@ -464,6 +468,16 @@ module Bun
     
     def folders(&blk)
       to_enum.folders(&blk)
+    end
+
+    def tar(tar_file)
+      tar_file = File.expand_path(tar_file)
+      tar_file += '.tar.bz2' unless File.extname(tar_file) != ''
+      Shell.new.rm_rf(tar_file)
+      Dir.chdir(at) do
+        cmd = "tar cvjf #{tar_file.inspect} ."
+        system(cmd)
+      end
     end
   end
 end

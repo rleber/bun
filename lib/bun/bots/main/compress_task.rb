@@ -27,7 +27,7 @@ no_tasks do
           shell.rm_rf(temp_file)
         end
       else
-        sorted_files = files.map {|file| [file, File::Unpacked.date_of(file)] }.sort_by {|file, date| date }
+        sorted_files = files.map {|file| [file, File.timestamp(file)] }.sort_by {|file, date| date }
         sorted_files.each.with_index do |file_data, index|
           file, date = file_data
           suffix = ".v#{index+1}"

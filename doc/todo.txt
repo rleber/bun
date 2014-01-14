@@ -1,5 +1,7 @@
 TODO
 _High Priority_
+Tests for bun compress, bun same
+Implement huffman decoding
 Find duplicates
     Same file name
     Absolutely identical
@@ -47,10 +49,6 @@ Implement bun library organize
     Keep a .bun_spec.yml file in decoded archives showing how the archive is organized?
     Option to turn off inclusion of file modification date in unpacked or decoded file names
     Option to turn off resetting file modification dates for unpacked or decoded files
-File::Baked class
-    Mostly, behaves like ::File
-    Provides a :promote option to open
-Create bun archive tar
 Allow decoding and baking frozen archives to STDOUT
     Insert separators
         Allow separators to be overridden
@@ -58,7 +56,6 @@ Allow decoding and baking frozen archives to STDOUT
     bun bake should work
     bun archive decode should work
     bun archive bake should work
-Decode huffman files
 Release version 1.0
 Major rewrite:
     All files are just Hashie::Mashes

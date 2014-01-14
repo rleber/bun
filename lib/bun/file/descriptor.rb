@@ -105,7 +105,8 @@ module Bun
         end
         
         def timestamp
-          fields.include?(:catalog_time) ? [file_time, catalog_time].compact.min : file_time
+          t1 = fields.include?(:catalog_time) ? [file_time, catalog_time].compact.min : file_time
+          fields.include?(:shard_time) ? [shard_time, t1].compact.min : t1
         end
               
         def method_missing(meth, *args, &blk)
