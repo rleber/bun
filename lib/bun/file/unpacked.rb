@@ -45,6 +45,12 @@ module Bun
           build_descriptor(input)
         end
 
+        def date_of(file)
+          descr = File::Unpacked.build_descriptor_from_file(file) rescue nil
+          time = descr && [descr.catalog_time, descr.file_time, descr.shard_time].compact.min
+          time || Time.new(9999,12,31)
+        end
+
         def forced_open(fname, options={}, &blk)
           input = read_information(fname)
           input.merge!(tape_path: fname)

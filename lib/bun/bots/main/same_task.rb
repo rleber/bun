@@ -14,7 +14,7 @@ option 'text',    :aliases=>'-x', :type=>'boolean', :desc=>"Based on the text in
 option 'value',   :aliases=>'-v', :type=>'string',  :desc=>"Set the return code based on whether the" +
                                                            " result matches this value"
 long_desc <<-EOT
-Analyze the contents of a file.
+Group files which match on certain criteria.
 
 Analyses are available via the --exam parameter. Available analyses include:\x5
 
@@ -42,36 +42,12 @@ def same(*files)
   asis = opts.delete(:asis)
   options = opts.merge(promote: !asis)
 
-  max_columns = 0
-  table = []
-  
   # TODO DRY this up (same logic in map_task)
-  Archive.examine_map(files, options) do |result| 
-    last_result = result[:result]
-    if result[:result].respond_to?(:value) && result[:result].value.class < Hash
-      row = [result[:file], result[:result].value.values].flatten
-    else
-      row = [result[:file], result[:result]].flatten
-    end
-    max_columns = [max_columns, row.size].max
-    table << row
-  end
-  
-  # Find duplicates
-  counts_hash = {}
-  table.each do |row|
-    key = row[1..-1]
-    counts_hash[key] ||= 0
-    counts_hash[key] += 1
-  end
-  puts "Uniqueness counts"
-  puts "#{table.size} rows in table"
-  puts "#{counts_hash.values.select{|value| value>1}.size} duplicated sets in table"
-  puts ""
-  table = table.sort_by{|row| row.rotate }
-  table.each do |row|
-    if (counts_hash[row[1..-1]]||0) > 1
-      puts row.rotate.join('  ')
-    end
+  dups = Archive.duplicates(files, options)
+  last_key = nil
+  dups.keys.sort.each do |key|
+    puts "" if last_key
+    dups[key].each {|dup| puts ([key] + [dup]).flatten.join('  ')}
+    last_key = key
   end
 end

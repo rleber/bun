@@ -282,6 +282,44 @@ module Bun
         end
       end
 
+      def duplicates(files, options={})
+        table = []
+        examine_map(files, options) do |result| 
+          last_result = result[:result]
+          if result[:result].respond_to?(:value) && result[:result].value.class < Hash
+            row = [result[:file], result[:result].value.values].flatten
+          else
+            row = [result[:file], result[:result]].flatten
+          end
+          table << row
+        end
+        
+        # Find duplicates
+        counts_hash = {}
+        table.each do |row|
+          key = row[1..-1]
+          counts_hash[key] ||= 0
+          counts_hash[key] += 1
+        end
+
+        table = table.sort_by{|row| row.rotate }
+
+        duplicates = {}
+        table.each do |row|
+          key = row[1..-1]
+          if (counts_hash[key]||0) > 1
+            duplicates[key] ||= []
+            duplicates[key] << row[0]
+          end
+        end
+        sorted_duplicates = {}
+        fail = false
+        duplicates.each do |key, files|
+          sorted_duplicates[key] = files.sort_by {|file| File::Unpacked.date_of(file) }
+        end
+        sorted_duplicates
+      end
+
     end
     
     # TODO Is there a more descriptive name for this?
