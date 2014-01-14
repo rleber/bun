@@ -225,6 +225,12 @@ module Bun
         return nil if options[:allow]
         raise
       end
+
+      def timestamp(file)
+        descr = File::Unpacked.build_descriptor_from_file(file) rescue nil
+        time = descr && descr.timestamp
+        time || Time.now
+      end
       
       # Convert from packed format to unpacked (i.e. YAML)
       def unpack(path, to, options={})
@@ -305,7 +311,7 @@ module Bun
     end
   
     def read
-      self.class.read(tape_path)
+      self.class.read(descriptor.tape_path)
     end
   
     def update_index

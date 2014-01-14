@@ -87,7 +87,9 @@ module Bun
       end
       
       def all(&blk)
-        collection = Dir.glob("#{@collection.at}/**/*").map{|p| File.expand_path(p)}
+        collection = Dir.glob("#{@collection.at}/**/*", File::FNM_DOTMATCH) \
+                     .reject{|p| File.basename(p) =~ /^\.\.?$/ }
+                     .map{|p| File.expand_path(p)}
         collection.unshift File.expand_path(@collection.at)
         collection = collection.to_enum
         enum = self.class.new(@collection) do |yielder|

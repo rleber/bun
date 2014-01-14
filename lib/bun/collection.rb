@@ -253,6 +253,7 @@ module Bun
         tape = relative_path(tape_path, from_wd: true)
         case File.file_grade(tape_path)
         when :packed
+          # TODO Refactor using built-in file promotion capability
           new_tape_path = tape_path.sub(/#{DEFAULT_PACKED_FILE_EXTENSION}$/,'') + DEFAULT_UNPACKED_FILE_EXTENSION
           File.unpack(tape_path, new_tape_path)
           Shell.new.rm_rf tape_path

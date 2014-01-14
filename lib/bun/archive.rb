@@ -86,7 +86,7 @@ module Bun
               @directories[:unpacked]
             end
             clear_stage :decoded
-            decode from, @directories[:decoded], :catalog=>options[:catalog]
+            decode from, @directories[:decoded]
             build_symlink :decoded
           when 'classify'
             warn "Classify the decoded files into clean and dirty" if options[:announce]
@@ -215,6 +215,10 @@ module Bun
         Library.new(from).bake(to, options)
       end
 
+      def tar(archive, tar_file)
+        Archive.new(archive).tar(tar_file)
+      end
+
       def build_symlink(stage)
         `ln -s #{@directories[stage]} #{@symlinks[stage]}`
       end
@@ -280,6 +284,44 @@ module Bun
             {file: file, result: nil, code: 0}
           end
         end
+      end
+
+      def duplicates(files, options={})
+        table = []
+        examine_map(files, options) do |result| 
+          last_result = result[:result]
+          if result[:result].respond_to?(:value) && result[:result].value.class < Hash
+            row = [result[:file], result[:result].value.values].flatten
+          else
+            row = [result[:file], result[:result]].flatten
+          end
+          table << row
+        end
+        
+        # Find duplicates
+        counts_hash = {}
+        table.each do |row|
+          key = row[1..-1]
+          counts_hash[key] ||= 0
+          counts_hash[key] += 1
+        end
+
+        table = table.sort_by{|row| row.rotate }
+
+        duplicates = {}
+        table.each do |row|
+          key = row[1..-1]
+          if (counts_hash[key]||0) > 1
+            duplicates[key] ||= []
+            duplicates[key] << row[0]
+          end
+        end
+        sorted_duplicates = {}
+        fail = false
+        duplicates.each do |key, files|
+          sorted_duplicates[key] = files.sort_by {|file| File.timestamp(file) }
+        end
+        sorted_duplicates
       end
 
     end
@@ -426,6 +468,16 @@ module Bun
     
     def folders(&blk)
       to_enum.folders(&blk)
+    end
+
+    def tar(tar_file)
+      tar_file = File.expand_path(tar_file)
+      tar_file += '.tar.bz2' unless File.extname(tar_file) != ''
+      Shell.new.rm_rf(tar_file)
+      Dir.chdir(at) do
+        cmd = "tar cvjf #{tar_file.inspect} ."
+        system(cmd)
+      end
     end
   end
 end

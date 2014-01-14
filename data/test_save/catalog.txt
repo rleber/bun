@@ -1,3 +1,0 @@
-ar003.0698 990101 bad/file
-ar082.0605 781108 fass/totleclips.f
-ar083.0698 850903 fass/1986/skit.t

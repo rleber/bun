@@ -38,6 +38,15 @@ module Bun
   def self.project_relative_path(path)
     path.sub(%r{^.*bun/}, '')
   end
+
+  def self.project_path(path)
+    path = File.expand_path(path)
+    if path =~ %r{^(.*bun)/}
+      $1
+    else
+      nil
+    end
+  end
 end
 
 require 'rubygems'
