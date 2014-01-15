@@ -25,11 +25,17 @@ module Bun
         end
       end
       
-      attr_reader :data
+      attr_accessor :altered
       
       def initialize(options={})
         @data = Data.new(:archive=>options[:archive], :data=>options[:data], :tape=>options[:tape], :tape_path=>options[:tape_path])
         super
+      end
+
+      def data
+        @data.reload if @altered
+        @altered = false
+        @data
       end
      
       # Convert file from internal Bun binary format to YAML digest
@@ -39,7 +45,7 @@ module Bun
                               :tape_type=>data.tape_type,
                             )
         f = File::Unpacked.create(
-          :data=>data,
+          :data=>data.deblocked,
           :archive=>archive,
           :tape=>File.basename(tape),
           :tape_path=>tape_path,

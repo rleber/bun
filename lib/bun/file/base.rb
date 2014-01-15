@@ -12,6 +12,7 @@ module Bun
   class File < ::File
     
     class BadFileGrade < RuntimeError; end
+    class BadBlockError < RuntimeError; end
 
     class << self
       

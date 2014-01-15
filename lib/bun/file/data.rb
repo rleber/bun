@@ -6,6 +6,7 @@ require 'date'
 module Bun
 
   class Data
+
     class << self
 
       EOF_MARKER = 0x00000f000 # Octal 000000170000 or 0b000000000000000000001111000000000000
@@ -30,7 +31,7 @@ module Bun
         Bun::Word.packed_character.count
       end
 
-      def decode(data)
+      def import(data)
         Bun::Words.import(data)
       end
 
@@ -66,9 +67,11 @@ module Bun
     end
 
     CHARACTERS_PER_WORD = characters_per_word
+    BITS_PER_WORD = Bun::Word::WIDTH
     BYTES_PER_WORD = bytes_per_word
     BITS_PER_BYTE = bits_per_byte
     PACKED_CHARACTERS_PER_WORD = packed_characters_per_word
+    NYBBLES_PER_WORD = (BITS_PER_WORD / 4).ceil
     ARCHIVE_NAME_POSITION = 7 # words
     SPECIFICATION_POSITION = 11 # words
     DESCRIPTION_PATTERN = /\s+(.*)/
@@ -87,13 +90,26 @@ module Bun
     attr_reader :tape_path
 
     def initialize(options={})
-      @data = options[:data]
       @archive = options[:archive]
       @tape = options[:tape]
       @tape_path = options[:tape_path]
-      @words = self.class.decode(data)
+      load options[:data]
+    end
+
+    def load(data)
+      @data = data
+      self.words = self.class.import(@data)
+      @data
+    end
+
+    def reload
+      load @words.export
+    end
+
+    def words=(w)
+      @words = Bun::Words.new(w)
       if @words.nil?
-        @all_characters = @characters = @packed_characters = @descriptor = nil
+        @all_characters = @characters = @bytes = @packed_characters = @descriptor = nil
       else
         @descriptor = Bun::File::Descriptor::Packed.new(self)
         @all_characters = LazyArray.new(@words.size*characters_per_word) do |n|
@@ -178,15 +194,13 @@ module Bun
           end
         end
         eof_tape || size
-      elsif options[:all]
-        @words.size
       else
-        @size || tape_size
+        @words.size
       end
     end
 
     def tape_size
-      ((word(0).half_word(1))+1).value rescue 0
+      @words.size
     end
     
     def frozen_tape_size
@@ -238,6 +252,96 @@ module Bun
     
     def eof_marker
       self.class.eof_marker
+    end
+
+    def split_word(w)
+      w = w.to_i
+      [w>>18, w & 0777777]
+    end
+    private :split_word
+
+    def get_bcw_at(words, offset)
+      split_word(words.at(offset))
+    end
+
+    MAXIMUM_CHUNK_SIZE = 320*12 + 100
+
+    def check_bcw(actual_index, actual_offset, expected_index)
+      raise File::BadBlockError, "Bad block sequence number #{actual_index} (expected #{expected_index}" \
+        unless actual_index == expected_index
+      raise File::BadBlockError, "Block #{chunk_number} length out of range (#{chunk_max}(#{'%05o' % chunk_max})" \
+        unless actual_offset < MAXIMUM_CHUNK_SIZE
+    end
+
+    def get_bcw_from_hex(hex, offset, expected_index)
+      bcw_words = Bun::Words.import([hex[offset, NYBBLES_PER_WORD]].pack('H*'))
+      actual_index, actual_max = get_bcw_at(bcw_words,0)
+      check_bcw actual_index, actual_max, expected_index 
+      actual_max
+    end
+
+    # This code removes an artifact of the file archiving, once transferred to 8-bit systems
+    # See doc/file_format/llink_padding.md for a more extensive discussion
+    def deblocked_words
+      nybbles_per_word = (Bun::Words.constituent_class.width / 4).ceil
+      hex = data.to_hex
+      offset = 0
+      chunks = []
+      while offset < hex.size do
+        chunk_max = get_bcw_from_hex(hex, offset, chunks.size+1)
+        chunk_size = (chunk_max+1) * NYBBLES_PER_WORD
+        chunk = hex[offset, chunk_size]
+        chunks << chunk
+        offset += chunk_size
+        # Check next chunk -- look for extraneous nybble
+        if offset < hex.size && chunk_size.odd?
+          2.times do |i|
+            begin
+              get_bcw_from_hex(hex, offset, chunks.size+1)
+              break
+            rescue File::BadBlockError
+              if i==0
+                offset += 1
+              else
+                raise
+              end
+            end
+          end
+        end
+      end
+      # chunk_words = chunks.map{|chunk| Bun::Words.import([chunk].pack('H*'))}
+      # chunk_words.each.with_index do |chunk, index|
+      #   this_chunk_prefix = chunk.at(0).to_i
+      #   this_chunk_index, this_chunk_max = split_word(this_chunk_prefix)
+      #   this_preamble_prefix = chunk.at(1).to_i
+      #   this_preamble_index, this_preamble_offset = split_word(this_preamble_prefix)
+      #   raise BadBlockError,"!Bad chunk (##{index+1}): Chunk index out of sequence (#{'%013o' % this_chunk_prefix})" \
+      #     unless this_chunk_index==(index+1)
+      #   unless index==chunks.size-1 # Last chunk may be truncated
+      #     raise BadBlockError,"!Bad chunk (##{index+1}): Unexpected chunk size (#{'%013o' % this_chunk_prefix})" \
+      #       unless this_chunk_max==chunk_max
+      #   end
+      #   raise BadBlockError,"!Bad chunk (##{index+1}): Preamble index not 1 (#{'%013o' % this_preamble_prefix})" \
+      #     unless this_preamble_index==1
+      #   raise BadBlockError,"!Bad chunk (##{index+1}): Unexpected preamble length (#{'%013o' % this_preamble_prefix})" \
+      #     unless this_preamble_prefix===first_preamble_prefix
+      #   first_data_word = chunk.at(this_preamble_offset)
+      #   if index > 0
+      #     removed_words = chunk_words[index].slice!(0,this_preamble_offset)
+      #     removed_words.each.with_index do |w, i|
+      #       debug "#{i}: #{'%013o' % w}"
+      #     end
+      #     debug "Data: #{'%013o' % chunk_words[index].at(0)}"
+      #     raise BadBlockError,"!Unexpected result of truncation" unless first_data_word == chunk_words[index].at(0)
+      #   end
+      # end
+      Bun::Words.import([chunks.join].pack('H*'))
+    end
+
+    def deblocked
+      res = self.dup
+      res.load(deblocked_words.export)
+      res
     end
   end
 end

@@ -132,5 +132,39 @@ module Slicr
     def slice_names
       self.class.slice_names
     end
+
+    def export_bit(bit)
+      bit = bit > 0 ? 1 : 0
+      @current_export_byte = @current_export_byte*2 + bit
+      @export_bits += 1
+      if @export_bits >= 8
+        @export_bytes << @current_export_byte
+        @current_export_byte = 0
+        @export_bits = 0
+      end
+      @current_export_byte
+    end
+    private :export_bit
+
+    def export
+      @export_bytes = []
+      @current_export_byte=0
+      @export_bits = 0
+      width = self.class.constituent_class.width
+      unless @export_masks
+        @export_masks = (0...width).map {|n| 2**n }
+      end
+      each do |word|
+        (width-1).downto(0) do |n|
+          export_bit(word & @export_masks[n])
+        end
+      end
+      # Pad out any incomplete final byte with zeros
+      while @export_bits > 0 do
+        export_bit(0)
+      end
+      @export_bytes.pack("C*")
+    end
+
   end
 end
