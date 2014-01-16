@@ -266,9 +266,13 @@ module Bun
         loop do 
           # Process a link
           break if offset >= words.size
+          bcw = words.at(offset)
+          break if bcw.to_i == 0
+          link_sequence_number = bcw.half_word[0]
           # debug "link: offset: #{offset}(0#{'%o' % offset}): #{'%013o' % words.at(offset)}"
           # debug "preamble: offset: #{offset+1}(0#{'%o' % (offset+1)}): #{'%013o' % words.at(offset+1)}"
-          raise BadBlockError, "Link out of sequence" unless (words.at(offset).half_word[0]) == link_number
+          raise BadBlockError, "Link out of sequence at #{offset}(0#{'%o'%offset}): Found #{link_sequence_number}, expected #{link_number}. BCW #{'%013o' % bcw.to_i}" \
+            unless link_sequence_number == link_number
           next_link = words.at(offset).half_word[1].to_i + offset + 1
           # debug "next link: #{'%013o' % next_link}"
           preamble_length = words.at(offset+1).half_word[1].to_i

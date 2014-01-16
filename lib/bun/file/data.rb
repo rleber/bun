@@ -266,17 +266,34 @@ module Bun
 
     MAXIMUM_CHUNK_SIZE = 320*12 + 100
 
-    def check_bcw(actual_index, actual_offset, expected_index)
-      raise File::BadBlockError, "Bad block sequence number #{actual_index} (expected #{expected_index}" \
-        unless actual_index == expected_index
-      raise File::BadBlockError, "Block #{chunk_number} length out of range (#{chunk_max}(#{'%05o' % chunk_max})" \
-        unless actual_offset < MAXIMUM_CHUNK_SIZE
+    def location(at)
+      "#{at}(0#{'%o' % at})"
     end
 
-    def get_bcw_from_hex(hex, offset, expected_index)
+    def minidump(at, width)
+      word, nybble = at.divmod(NYBBLES_PER_WORD)
+      $stderr.puts "File dump at nybble #{location(at)} (word #{location(word)}, nybble #{nybble}):"
+      (([0,word-width].max)..([words.size-1,word+width].min)).each do |loc|
+        flag = loc==word ? '<=' : ' '
+        $stderr.puts "#{location(loc)}: #{'%013o' % words.at(loc)} #{flag}"
+      end
+    end
+
+    def bad_bcw(offset, msg, options={})
+      minidump(offset, 010) unless options[:quiet]
+      raise File::BadBlockError, msg
+    end
+
+    def get_bcw_from_hex(hex, offset, expected_index, options={})
       bcw_words = Bun::Words.import([hex[offset, NYBBLES_PER_WORD]].pack('H*'))
+      return nil if bcw_words.first == 0
       actual_index, actual_max = get_bcw_at(bcw_words,0)
-      check_bcw actual_index, actual_max, expected_index 
+      unless actual_index == expected_index
+        bad_bcw offset, "Bad block sequence number at nybble #{location(offset)} #{actual_index} (expected #{expected_index})", quiet: options[:quiet]
+      end
+      unless actual_max < MAXIMUM_CHUNK_SIZE
+        bad_bcw offset, "Block #{chunk_number} length out of range at nybble #{location(offset)}: #{chunk_max}(#{'%05o' % chunk_max}", quiet: options[:quiet]
+      end
       actual_max
     end
 
@@ -289,6 +306,7 @@ module Bun
       chunks = []
       while offset < hex.size do
         chunk_max = get_bcw_from_hex(hex, offset, chunks.size+1)
+        break unless chunk_max
         chunk_size = (chunk_max+1) * NYBBLES_PER_WORD
         chunk = hex[offset, chunk_size]
         chunks << chunk
@@ -297,13 +315,13 @@ module Bun
         if offset < hex.size && chunk_size.odd?
           2.times do |i|
             begin
-              get_bcw_from_hex(hex, offset, chunks.size+1)
+              get_bcw_from_hex(hex, offset, chunks.size+1, quiet: true)
               break
             rescue File::BadBlockError
               if i==0
                 offset += 1
               else
-                raise
+                get_bcw_from_hex(hex, offset, chunks.size+1)
               end
             end
           end

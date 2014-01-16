@@ -26,8 +26,9 @@ def dump(file_name)
   rescue => e
     stop "!Bad value for --length: #{e}"
   end
-  opts = options.to_hash.merge(offset: offset, length: length, lines: lines)
-  Bun::File::Unpacked.open(file_name, :promote=>true, :force=>:text) do |file|
+  opts = options.to_hash.inject({}) {|hsh, pair| key,value = pair; hsh[key.to_sym] = value; hsh}
+  opts.merge!(offset: offset, length: length, lines: lines)
+  Bun::File::Unpacked.open(file_name, :promote=>true, :force_type=>:text) do |file|
     archived_file = file.path
     archived_file = "--unknown--" unless archived_file
     puts "#{File.expand_path(file.descriptor.tape_path)} (#{archived_file}):"

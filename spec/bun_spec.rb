@@ -1029,7 +1029,7 @@ describe Bun::Bot do
       it "should write the proper content" do
         "mixed_grades_unpack/ar003.0698.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
         "mixed_grades_unpack/ar003.0701.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
-        "mixed_grades_unpack/clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+        "mixed_grades_unpack/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
             match_expected_output
         "mixed_grades_unpack/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DECODE_PATTERNS)
       end
@@ -1061,7 +1061,7 @@ describe Bun::Bot do
       it "should write the proper content" do
         "mixed_grades_catalog/ar003.0698.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
         "mixed_grades_catalog/ar003.0701.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
-        "mixed_grades_catalog/clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+        "mixed_grades_catalog/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
             match_expected_output
         "mixed_grades_catalog/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DECODE_PATTERNS)
       end
@@ -1090,7 +1090,7 @@ describe Bun::Bot do
       it "should write the proper content" do
         "mixed_grades_decode/fass/idallen/vector/tape.ar003.0698.txt".should match_expected_output_except_for(DECODE_PATTERNS)
         "mixed_grades_decode/fass/idallen/huffhart/tape.ar003.0701.txt".should match_expected_output_except_for(DECODE_PATTERNS)
-        "mixed_grades_decode/clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+        "mixed_grades_decode/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
             match_expected_output
         "mixed_grades_decode/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DECODE_PATTERNS)
       end
@@ -1119,7 +1119,7 @@ describe Bun::Bot do
       it "should write the proper content" do
         "mixed_grades_bake/ar003.0698".should match_expected_output
         "mixed_grades_bake/ar003.0701.bun".should match_expected_output
-        "mixed_grades_bake/clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+        "mixed_grades_bake/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
             match_expected_output
         "mixed_grades_bake/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output
       end
@@ -1177,14 +1177,14 @@ describe Bun::Bot do
           exec_on_success("rm -rf output/test_actual/mixed_grades_describe_fass_script_tape.ar004.0642_19770224.txt")
         end      
       end
-      context "baked file (clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt)" do
+      context "baked file (fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt)" do
         before :all do
           exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
           exec("rm -rf output/test_actual/mixed_grades_describe_clean_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt")
-          exec("bun describe data/test/archive/mixed_grades/clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt >output/test_actual/mixed_grades_describe_clean_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt")
+          exec("bun describe data/test/archive/mixed_grades/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt >output/test_actual/mixed_grades_describe_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt")
         end
         it "should match the expected output" do
-          "mixed_grades_describe_clean_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt".should match_expected_output
+          "mixed_grades_describe_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt".should match_expected_output
         end
         after :all do
           backtrace
@@ -1194,21 +1194,5 @@ describe Bun::Bot do
       end
     end
   end
-
-  describe "archive compact" do
-    before :all do
-      exec("rm -rf data/test/archive/compact_files")
-      exec("rm -rf data/test/archive/compact_result")
-      exec("cp -r data/test/archive/compact_source_init data/test/archive/compact_source")
-      exec("bun archive compact data/test/archive/compact_source data/test/archive/compact_result")
-    end
-    it "should create the results directory" do
-      file_should_exist "data/test/archive/compact_result"
-    end
-    after :all do
-      backtrace
-      exec_on_success("rm -rf data/test/archive/compact_source")
-      exec_on_success("rm -rf data/test/archive/compact_result")
-    end
   end
 end

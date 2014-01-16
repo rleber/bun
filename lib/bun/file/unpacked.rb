@@ -108,7 +108,7 @@ module Bun
         
         def create(options={})
           descriptor = options[:descriptor]
-          tape_type = options[:force] || descriptor[:tape_type]
+          tape_type = options[:force_type] || descriptor[:tape_type]
           case tape_type
           when :text
             File::Unpacked::Text.new(options)
