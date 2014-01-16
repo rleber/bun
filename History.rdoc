@@ -1,3 +1,7 @@
+=== 0.3.0 2014-01-16
+
+* Significantly improved ability to extract files, including major bug fix, and ability to decode huffman files
+
 === 0.2.0 2014-01-13
 
 * Significant improvements to flow; better testing
