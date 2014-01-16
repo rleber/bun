@@ -525,6 +525,17 @@ module Bun
       
       # Phase III: Compress dated freeze file archives
       compact_groups(options) {|path| path.sub(/_\d{8}(?:_\d{6})?(?=\/)/,'') }
+
+      # Phase IV: Remove empty directories
+      # Thanks to http://stackoverflow.com/questions/1290670/ruby-how-do-i-recursively-find-and-remove-empty-directories
+      all.select { |d| File.directory?(d)} \
+         .reverse_each do |d| 
+            if ((Dir.entries(d) - %w[ . .. ]).empty?)
+              rel_directory = relative_path(d)
+              warn "Delete #{rel_directory}" unless options[:quiet]
+              Dir.rmdir(d)
+            end
+          end
     end
 
     def duplicates(options={})

@@ -40,7 +40,8 @@ no_tasks do
       Bun::DEFAULT_BAKED_FILE_EXTENSION
     end
     at = $at unless at
-    file_with_extension = file + extension
+    file_with_extension = file
+    file_with_extension += extension unless File.extname(file_with_extension) == extension
     source_file = File.join(File.expand_path(from),file_with_extension)
     target_file = File.join(File.expand_path(at),file_with_extension)
     stop "!Source file #{source_file.safe} does not exist" unless File.exists?(source_file)
@@ -142,5 +143,21 @@ def build
     build_file "ar003.0701", nil, :cataloged
     build_file "fass/script/tape.ar004.0642_19770224", nil, :decoded
     build_file "fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229", nil, :baked
+  end
+
+  build_directory "data/test/archive/same_init" do
+    # These two files are identical
+    build_file "bjeroehl/fass/bjthings_19781219_151907/addinde/tape.ar082.0604_19780620_175438.txt", nil, :decoded
+    build_file "fass/bjeroehl/bjthings_19781219_151907/addinde/tape.ar020.1140_19780620_175438.txt", nil, :decoded
+    # These two files are identical
+    build_file "bjeroehl/fass/bjthings_19781219_151907/rjbmail/tape.ar082.0604_19780725_174329.txt", nil, :decoded
+    build_file "fass/bjeroehl/bjthings_19781219_151907/rjbmail/tape.ar020.1140_19780725_174329.txt", nil, :decoded
+    # This file isn't identical to anything else
+    build_file "bjeroehl/fass/bjthings_19781219_151907/countess/tape.ar082.0604_19780630_182833.txt", nil, :decoded
+    # These four files are identical
+    build_file "fass/one/zero/tape.ar003.2557_19770118.txt", nil, :decoded
+    build_file "fass/one/zero/tape.ar004.0495_19770210.txt", nil, :decoded
+    build_file "bjeroehl/fass/77script.f_19770301_154058/1zero/tape.ar082.0603_19770210_164752.txt", nil, :decoded
+    build_file "fass/scripfrz_19770301_154058/1zero/tape.ar004.0888_19770210_164752.txt", nil, :decoded
   end
 end
