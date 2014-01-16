@@ -1,7 +1,7 @@
 TODO
 _High Priority_
 Release version
-Tests for bun compress, bun same
+Tests for bun same
 Find duplicates
     Same file name
     Absolutely identical

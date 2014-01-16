@@ -1,0 +1,47 @@
+---
+:identifier: Bun
+:catalog_time: 1982-12-22 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-15 21:01:04.568923000 -05:00
+:decoded_by: Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]
+:description: ''
+:digest: 112d684f1529592d2b428f06d7949a4e
+:file_grade: :decoded
+:file_time: 1978-12-19 15:19:07.000000000 -05:00
+:owner: bjeroehl
+:path: bjeroehl/fass/bjthings
+:tape: ar082.0604
+:tape_size: 14207
+:tape_type: :frozen
+:unpack_time: 2014-01-15 17:42:11.227851000 -05:00
+:unpacked_by: Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]
+:content: ! "Greetings once again, Countess Katya!\n     The script Mr. Lee refers
+  to is at least two or three years old.  It is \nneither this past year's show, nor
+  (I suspect) the previous year's.  As you\nmay (or may not) recall, this past year's
+  show had to do with gangsters, while\nFASS of the previous year was on a Star Trek
+  motif.  So far as I know, only\nthose two scripts are readily available.  This past
+  year's is in a formal form\n(i.e. in a plastic ringbinder) and looking rather good.
+  The Star Trek  script is\ncurrently archived on the Honeywell, but I can have a
+  copy printed up in no time\nif he wants it.  I think the script he's after is the
+  year prior to the Star Trek\nshow...I don't know if copies of that script are still
+  around, but I can ask. \n     I'll be getting into Waterloo some time in early September...exactly
+  when,\nI don't know.   I'll be glad to help out with Orientation, if you tell me
+  what\nmust be done.  One thing that greatly surprised me upon my arrival in Waterloo\nis
+  how un-close the various groups are.  While there are some obvious overlaps,\nI
+  had expected far more mathsoc/mathnews/watsfic/fed/board people to be involved\nin
+  FASS...do you know Oscar (Nierstrasz)?\n     I have some friends in W'loo connected
+  with something that I just recently\nlearned is called \"Imprint\".  I was very
+  involved with it before my return to\nMontreal for the summer, and am glad to see
+  it off the ground.  Any WATSFICers\n(WATSFICians?) interested?  Maybe you could
+  spread the word...AIA members need\nnot apply (they already have a rag of their
+  own).\n     Mr. Lee can reach me at BJEROEHL or (much less frequently) FASS.  Oscar's\nuserid
+  is OMNIERSTRASZ, though he hasn't been on in a while.\n     Keep in touch, fair
+  Countess.  I'm on about twice a week (though this is \nsubject to change, especially
+  in August when I'll be about 50 miles from the \nnearest terminal).\n                                   Sincerely,\n
+  \                                      Mr. Bernie Roehl\n"
+:shard_number: 20
+:shard_name: countess
+:shard_time: 1978-06-30 18:28:33.000000000 -04:00
+:shard_blocks: 0
+:shard_start: 7927
+:shard_size: 420

@@ -1198,72 +1198,72 @@ describe Bun::Bot do
   describe "compress" do
     context "to a new directory" do
       before :all do
-        exec("rm -rf data/test/archive/same")
-        exec("rm -rf output/test_actual/same")
-        exec("rm -rf output/test_actual/same_files.txt")
-        exec("rm -rf output/test_actual/same_files_before.txt")
-        exec("rm -rf output/test_actual/same_stdout.txt")
-        exec("rm -rf output/test_actual/same_stderr.txt")
-        exec("cp -r data/test/archive/same_init data/test/archive/same")
-        exec("find data/test/archive/same -print >output/test_actual/same_files_before.txt")
-        exec("bun compress data/test/archive/same output/test_actual/same \
-                  2>output/test_actual/same_stderr.txt >output/test_actual/same_stdout.txt")
-        exec("find output/test_actual/same -print >output/test_actual/same_files.txt")
+        exec("rm -rf data/test/archive/compress")
+        exec("rm -rf output/test_actual/compress")
+        exec("rm -rf output/test_actual/compress_files.txt")
+        exec("rm -rf output/test_actual/compress_files_before.txt")
+        exec("rm -rf output/test_actual/compress_stdout.txt")
+        exec("rm -rf output/test_actual/compress_stderr.txt")
+        exec("cp -r data/test/archive/compress_init data/test/archive/compress")
+        exec("find data/test/archive/compress -print >output/test_actual/compress_files_before.txt")
+        exec("bun compress data/test/archive/compress output/test_actual/compress \
+                  2>output/test_actual/compress_stderr.txt >output/test_actual/compress_stdout.txt")
+        exec("find output/test_actual/compress -print >output/test_actual/compress_files.txt")
       end
       it "should create the proper files" do
-        "same_files.txt".should match_expected_output
+        "compress_files.txt".should match_expected_output
       end
       it "should leave the original directory alone" do
-        "same_files_before.txt".should match_expected_output
+        "compress_files_before.txt".should match_expected_output
       end
       it "should write the proper messages on STDERR" do
-        "same_stderr.txt".should match_expected_output
+        "compress_stderr.txt".should match_expected_output
       end
       it "should write nothing on STDOUT" do
-        "output/test_actual/same_stdout.txt".should be_an_empty_file
+        "output/test_actual/compress_stdout.txt".should be_an_empty_file
       end
       after :all do
         backtrace
-        exec_on_success("rm -rf data/test/archive/same")
-        exec_on_success("rm -rf output/test_actual/same")
-        exec_on_success("rm -rf output/test_actual/same_files.txt")
-        exec_on_success("rm -rf output/test_actual/same_files_before.txt")
-        exec_on_success("rm -rf output/test_actual/same_stdout.txt")
-        exec_on_success("rm -rf output/test_actual/same_stderr.txt")
+        exec_on_success("rm -rf data/test/archive/compress")
+        exec_on_success("rm -rf output/test_actual/compress")
+        exec_on_success("rm -rf output/test_actual/compress_files.txt")
+        exec_on_success("rm -rf output/test_actual/compress_files_before.txt")
+        exec_on_success("rm -rf output/test_actual/compress_stdout.txt")
+        exec_on_success("rm -rf output/test_actual/compress_stderr.txt")
       end
     end
     context "to the same directory" do
       before :all do
-        exec("rm -rf data/test/archive/same")
-        exec("rm -rf output/test_actual/same_files_inplace.txt")
-        exec("rm -rf output/test_actual/same_files_before.txt")
-        exec("rm -rf output/test_actual/same_stdout_inplace.txt")
-        exec("rm -rf output/test_actual/same_stderr_inplace.txt")
-        exec("cp -r data/test/archive/same_init data/test/archive/same")
-        exec("find data/test/archive/same -print >output/test_actual/same_files_before.txt")
-        exec("bun compress data/test/archive/same \
-                  2>output/test_actual/same_stderr_inplace.txt >output/test_actual/same_stdout_inplace.txt")
-        exec("find data/test/archive/same -print >output/test_actual/same_files_inplace.txt")
+        exec("rm -rf data/test/archive/compress")
+        exec("rm -rf output/test_actual/compress_files_inplace.txt")
+        exec("rm -rf output/test_actual/compress_files_before.txt")
+        exec("rm -rf output/test_actual/compress_stdout_inplace.txt")
+        exec("rm -rf output/test_actual/compress_stderr_inplace.txt")
+        exec("cp -r data/test/archive/compress_init data/test/archive/compress")
+        exec("find data/test/archive/compress -print >output/test_actual/compress_files_before.txt")
+        exec("bun compress data/test/archive/compress \
+                  2>output/test_actual/compress_stderr_inplace.txt >output/test_actual/compress_stdout_inplace.txt")
+        exec("find data/test/archive/compress -print >output/test_actual/compress_files_inplace.txt")
       end
       it "should create the proper files" do
-        "same_files_inplace.txt".should match_expected_output
+        "compress_files_inplace.txt".should match_expected_output
       end
       it "should leave the original directory alone" do
-        "same_files_before.txt".should match_expected_output
+        "compress_files_before.txt".should match_expected_output
       end
       it "should write the proper messages on STDERR" do
-        "same_stderr_inplace.txt".should match_expected_output
+        "compress_stderr_inplace.txt".should match_expected_output
       end
       it "should write nothing on STDOUT" do
-        "output/test_actual/same_stdout_inplace.txt".should be_an_empty_file
+        "output/test_actual/compress_stdout_inplace.txt".should be_an_empty_file
       end
       after :all do
         backtrace
-        exec_on_success("rm -rf data/test/archive/same")
-        exec_on_success("rm -rf output/test_actual/same_files_inplace.txt")
-        exec_on_success("rm -rf output/test_actual/same_files_before.txt")
-        exec_on_success("rm -rf output/test_actual/same_stdout_inplace.txt")
-        exec_on_success("rm -rf output/test_actual/same_stderr_inplace.txt")
+        exec_on_success("rm -rf data/test/archive/compress")
+        exec_on_success("rm -rf output/test_actual/compress_files_inplace.txt")
+        exec_on_success("rm -rf output/test_actual/compress_files_before.txt")
+        exec_on_success("rm -rf output/test_actual/compress_stdout_inplace.txt")
+        exec_on_success("rm -rf output/test_actual/compress_stderr_inplace.txt")
       end
     end
   end
