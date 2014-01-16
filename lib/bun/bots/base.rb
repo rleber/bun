@@ -60,6 +60,24 @@ module Bun
             stop "!Unknown option: #{arg}" if arg != '-' && arg =~ /^-/
           end
         end
+
+        def option_inspect(options)
+          options.keys.sort.map do |key|
+            case options[key]
+            when true
+              "--#{key}"
+            when String
+              "--#{key} #{options[key].safe}"
+            else
+              "--#{key} #{options.inspect}"
+            end
+          end.join(' ')
+        end
+
+        def puts_options(prefix="")
+          s = option_inspect(options)
+          puts prefix + s if s != ""
+        end
       end
     end
   end

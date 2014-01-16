@@ -4,11 +4,11 @@ Owner         fass
 Description   "klisted final copy of fass '77 script"
 Catalog Date  1977/02/24
 File Grade    :decoded
-Size (Words)  3863
+Size (Words)  70840
 Type          Text
 Data Format   Raw
-MD5 Digest    1061 fcee 9b13 0d26 1da6 3088 56fd c984
-Decode Time   2014-01-01 19:33:06 -0500
-Decoded By    Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
-Unpack Time   2014-01-01 19:27:40 -0500
-Unpacked By   Bun version 0.1.0 [feature/mark_option:276d191884b5b9b70d424e27552bb38042687e2f]
+MD5 Digest    d63f 127d 31a5 1764 8d55 8540 d1cc a409
+Decode Time   2014-01-15 20:56:36 -0500
+Decoded By    Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]
+Unpack Time   2014-01-15 17:40:43 -0500
+Unpacked By   Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]

@@ -3,15 +3,15 @@
 :catalog_time: 1983-01-28 00:00:00.000000000 -05:00
 :data_format: :raw
 :description: ==> TROFF source for FASS 1983 Programme
-:digest: 0546b1c1e32e05c88e9e6ca561aaddfa
+:digest: eb74bf8edbcf87cc04cf35ed36ec6398
 :file_grade: :unpacked
 :owner: fass
 :path: fass/1983/programme/actors
 :tape: ar083.0698
-:tape_size: 1627
+:tape_size: 1628
 :tape_type: :text
-:unpack_time: 2014-01-14 19:50:31.780062000 -05:00
-:unpacked_by: Bun version 0.2.0 [develop:22512ebf83a375b0e76b079682c11124b4dfb025]
+:unpack_time: 2014-01-15 17:42:15.786978000 -05:00
+:unpacked_by: Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]
 :content: !binary |-
   AABAZaAABAAbABTAK6CcRRCsCcQjBJAAAAAAgAAAAFMxhOZzAAAAAAAAAAAA
   AAAAAAF4xHI4GYvOByN5nORhNptMovMJjOhvORzEA9Ho+EBUKRPIxGEBzN51
@@ -175,4 +175,4 @@
   BQkOQgDQoMwpBRqFBhFJ0BRiFBmFJ0E4vE4gNRmEBqOAnDQoMwpHQnEB5EBq
   MoKMQoFwpBQkOQgDQoOopF5mORlMgvDQoMwpBRqFBhFJ0EBuFBmFI6EYvGI2
   G43G4yGI2HotGQwGgyEBqOggNRwE4aFB1FIvMxyMpkF4aFBmFI6E4gPIgNRl
-  BQkOQgMxyMpkF4aFBmFIKNQoMIpOggNwoMwpHQjF4xA=
+  BQkOQgMxyMpkF4aFBmFIKNQoMIpOggNwoMwpHQjF4xAAAAAA

@@ -1,5 +1,7 @@
 TODO
 _High Priority_
+Add --copy option to bun find
+Release version
 Tests for bun compress, bun same
 Find duplicates
     Same file name
@@ -21,7 +23,12 @@ Consolidate exam, field, formula in bun find, map, and examine
     Prescan formulas to check for simple references to fields or exams (for speed) ?
     Allow multiple fields somehow
     Is the -e/f option required at all?
+--where (or --if --unless) option to bun map (i.e. include only files which match a condition)
+--unless option for bun find
 More extensions to bun examine
+    Chunking, padding (can then eliminate bun sandbox find_large_files)
+        Size greater than one chunk
+        Padded (e.g. odd # of 36-bit words in a chunk)
     Extended fields (pre-defined, e.g. tape basename, etc.)
         File name (with subfiles, etc.)
         File basename

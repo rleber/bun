@@ -3,7 +3,7 @@
 :catalog_time: 1981-02-05 00:00:00.000000000 -05:00
 :data_format: :raw
 :description: ''
-:digest: 7f1a3e176c24d1f67d60d5a267e022ed
+:digest: c155d430ac9dd18261b4b5e89276bc72
 :file_grade: :unpacked
 :file_time: 1981-02-05 15:11:25.000000000 -05:00
 :owner: bstempleton
@@ -11,8 +11,8 @@
 :tape: ar054.2299
 :tape_size: 905
 :tape_type: :frozen
-:unpack_time: 2014-01-14 19:50:24.960301000 -05:00
-:unpacked_by: Bun version 0.2.0 [develop:22512ebf83a375b0e76b079682c11124b4dfb025]
+:unpack_time: 2014-01-15 17:41:33.033550000 -05:00
+:unpacked_by: Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]
 :shards:
 - :name: end
   :file_time: 1980-11-25 15:49:46.000000000 -05:00
@@ -137,4 +137,4 @@
   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-  AAAAAAAAAAAAAAAAAAA=
+  AAAAAAAAAAAAAAAAAAAAAAAA

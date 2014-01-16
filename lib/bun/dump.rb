@@ -14,8 +14,8 @@ module Bun
     def self.dump(data, options={})
       words = data.words
       offset = options[:offset] || 0
-      if options[:limit]
-        limit = options[:limit]
+      if options[:length]
+        limit = options[:length] + offset
         limit = words.size - 1 if limit >= words.size
       elsif options[:lines]
         limit = (options[:lines] * WORDS_PER_LINE - 1) + offset
@@ -26,7 +26,6 @@ module Bun
       bit_offsets = options[:bit_offsets] || [0]
       display_offset = (options[:display_offset] || offset) - offset
       stream = options[:to] || STDOUT
-      limit = [limit, data.size-1].min unless options[:unlimited]
       if options[:frozen]
         characters = data.all_packed_characters
         character_block_size = FROZEN_CHARACTERS_PER_WORD

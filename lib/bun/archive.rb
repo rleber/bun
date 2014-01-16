@@ -18,7 +18,7 @@ module Bun
         Archive::Enumerator
       end
       
-      FETCH_STEPS = %w{pull unpack catalog decode classify bake tests}
+      FETCH_STEPS = %w{pull unpack catalog decode compress bake bake:compressed tests}
       def fetch_steps
         FETCH_STEPS
       end
@@ -51,7 +51,7 @@ module Bun
       #   :to        Directory to output archives to
       def fetch(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
-        stages = %w{packed unpacked cataloged decoded classified baked}
+        stages = %w{packed unpacked cataloged decoded compressed baked compressed_baked}
         base_directory = options[:to]
         @directories = {}
         @symlinks = {}
@@ -88,16 +88,27 @@ module Bun
             clear_stage :decoded
             decode from, @directories[:decoded]
             build_symlink :decoded
-          when 'classify'
-            warn "Classify the decoded files into clean and dirty" if options[:announce]
-            clear_stage :classified
-            classify @directories[:decoded], @directories[:classified]
-            build_symlink :classified
+          # when 'classify'
+          #   warn "Classify the decoded files into clean and dirty" if options[:announce]
+          #   clear_stage :classified
+          #   classify @directories[:decoded], @directories[:classified]
+          #   build_symlink :classified
+          when 'compress'
+            warn "Compress the files" if options[:announce]
+            from = @directories[:decoded]
+            clear_stage :compressed
+            compress @directories[:decoded], @directories[:compressed]
+            build_symlink :decoded
           when 'bake'
             warn "Bake the files (i.e. remove metadata)" if options[:announce]
             clear_stage :baked
-            bake @directories[:classified], @directories[:baked]
+            bake @directories[:decoded], @directories[:baked]
             build_symlink :baked
+          when 'bake:compressed'
+            warn "Bake the files (i.e. remove metadata)" if options[:announce]
+            clear_stage :compressed_baked
+            bake @directories[:compressed], @directories[:compressed_baked]
+            build_symlink :compressed_baked
           when 'tests'
             warn "Rebuild test cases" if options[:announce]
             system('bun test build')
@@ -213,6 +224,21 @@ module Bun
       
       def bake(from, to, options={})
         Library.new(from).bake(to, options)
+      end
+
+      def compress(from, to=nil, options={})
+        shell = Shell.new
+        if options[:dryrun]
+          dest = to
+        elsif to
+          shell.rm_rf(to)
+          shell.cp_r(from, to)
+          dest = to
+        else
+          dest = from
+        end
+
+        Archive.new(dest).compress(options)
       end
 
       def tar(archive, tar_file)
@@ -468,6 +494,74 @@ module Bun
     
     def folders(&blk)
       to_enum.folders(&blk)
+    end
+
+    def compress(options={})
+      files = leaves.to_a
+      shell = Shell.new
+      
+      # Phase I: Remove duplicates
+      duplicates(field: :digest).each do |key, files|
+        duplicate_files = files[1..-1]
+        duplicate_files.each do |file|
+          rel_file = relative_path(file)
+          warn "Delete #{rel_file}" unless options[:quiet]
+          shell.rm_rf(file) unless options[:dryrun]
+        end
+      end
+
+      # Phase II: Remove tape files, if there's no difference between them
+      compact_groups(options) {|path| File.dirname(path) }
+      
+      # Phase III: Compress dated freeze file archives
+      compact_groups(options) {|path| path.sub(/_\d{8}(?:_\d{6})?(?=\/)/,'') }
+    end
+
+    def duplicates(options={})
+      Archive.duplicates(leaves.to_a, options)
+    end
+
+    def compact_groups(options={}, &blk)
+      shell = Shell.new
+      groups = leaves.to_a.group_by {|path| yield(path) }
+      # puts groups.inspect
+      groups.each do |group, files|
+        case files.size
+        when 0
+          # Shouldn't happen
+        when 1
+          file = files.first
+          unless file == group
+            rel_file = relative_path(file)
+            rel_group = relative_path(group)
+            warn "Compact #{rel_file} => #{rel_group}" unless options[:quiet]
+            new_file = group
+            new_file += File.extname(file) unless File.extname(new_file)==File.extname(file)
+            temp_file = group+".tmp"
+            shell.mkdir_p(File.dirname(temp_file))
+            shell.cp(file, temp_file)
+            shell.rm_rf(file)
+            shell.rm_rf(group)
+            shell.cp(temp_file, new_file)
+            shell.rm_rf(temp_file)
+          end
+        else
+          sorted_files = files.map {|file| [file, File.timestamp(file)] }.sort_by {|file, date| date }
+          sorted_files.each.with_index do |file_data, index|
+            file, date = file_data
+            suffix = ".v#{index+1}"
+            new_file = group + suffix
+            new_file += File.extname(file) unless File.extname(new_file)==File.extname(file)
+            shell.mkdir_p(File.dirname(new_file))
+            shell.cp(file, new_file)
+            shell.rm_rf(file)
+            rel_file = relative_path(file)
+            rel_new_file = relative_path(new_file)
+            warn "Move #{rel_file} => #{rel_new_file}" unless options[:quiet]
+          end
+          shell.rm_rf(group)
+        end
+      end
     end
 
     def tar(tar_file)

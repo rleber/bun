@@ -178,7 +178,7 @@ module Bun
       def shard_words(n)
         d = shard_descriptor(n)
         return nil unless d
-        words[d.start + content_offset, d[:size]]
+        deblocked_content[d.start, d[:size]]
       end
       
       def shards
@@ -254,6 +254,37 @@ module Bun
         return [content_offset, nil, false] unless line =~ /\r/
         [content_offset, line, okay]
       end
+
+      def deblocked_content
+        deblocked_content = []
+        offset = 0
+        block_number = 1
+        self.status = :readable
+        @good_blocks = 0
+        link_number = 1
+        llink_number = 1
+        loop do 
+          # Process a link
+          break if offset >= words.size
+          bcw = words.at(offset)
+          break if bcw.to_i == 0
+          link_sequence_number = bcw.half_word[0]
+          # debug "link: offset: #{offset}(0#{'%o' % offset}): #{'%013o' % words.at(offset)}"
+          # debug "preamble: offset: #{offset+1}(0#{'%o' % (offset+1)}): #{'%013o' % words.at(offset+1)}"
+          raise BadBlockError, "Link out of sequence at #{offset}(0#{'%o'%offset}): Found #{link_sequence_number}, expected #{link_number}. BCW #{'%013o' % bcw.to_i}" \
+            unless link_sequence_number == link_number
+          next_link = words.at(offset).half_word[1].to_i + offset + 1
+          # debug "next link: #{'%013o' % next_link}"
+          preamble_length = words.at(offset+1).half_word[1].to_i
+          offset += preamble_length
+          deblocked_content += words[offset...next_link].to_a
+          offset = next_link
+          link_number += 1
+        end
+        Bun::Words.new(deblocked_content)
+      end
+      cache :deblocked_content
+
     
       def line_length(word)
         (word & 0x00fe00000) >> 21

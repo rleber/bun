@@ -8,9 +8,9 @@ File Grade    :unpacked
 Size (Words)  3751
 Type          Frozen
 Data Format   Raw
-MD5 Digest    c35c a054 be91 bfbc 07fa ea91 e66e d0e4
-Unpack Time   2014-01-01 18:20:39 -0500
-Unpacked By   Bun version 0.1.0 [feature/mark_option:fac108cb905e2921c9f8e9e2fd55475eb4b730d4]
+MD5 Digest    ed68 94b6 6259 a80e dc7e 598b 5cd4 cced
+Unpack Time   2014-01-15 17:40:59 -0500
+Unpacked By   Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]
 
 Shards
   Name          opening              harold               albania              drink                master

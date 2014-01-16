@@ -4,6 +4,7 @@
 module Bun
   class File < ::File
     class Blocked < Bun::File::Unpacked
+
       include CacheableMethods
       
       attr_accessor :status
@@ -49,27 +50,47 @@ module Bun
         block_number = 1
         self.status = :readable
         @good_blocks = 0
-        loop do
-          break if offset >= file_content.size
-          break if file_content.at(offset) == 0
-          block_size = file_content.at(offset).byte(3)
-          unless file_content[offset].half_word[0] == block_number
-            if strict
-              raise "Bad block number #{block_number} in #{location} at #{'%#o' % (offset+content_offset)}: expected #{'%07o' % block_number}; got #{file_content[offset].half_word[0]}"
-            else
-              error "Truncated before block #{block_number} at #{'%#o' % (offset+content_offset)}"
-              if block_number == 1
-                self.status = :unreadable
+        link_number = 1
+        llink_number = 1
+        loop do 
+          # Process a link
+          break if offset >= words.size
+          bcw = words.at(offset)
+          break if bcw.to_i == 0
+          # debug "link: offset: #{offset}(0#{'%o' % offset}): #{'%013o' % words.at(offset)}"
+          # debug "preamble: offset: #{offset+1}(0#{'%o' % (offset+1)}): #{'%013o' % words.at(offset+1)}"
+          link_sequence_number = bcw.half_word[0].to_i
+          raise BadBlockError, "Link out of sequence at #{offset}(0#{'%o'%offset}): Found #{link_sequence_number}, expected #{link_number}. BCW #{'%013o' % bcw.to_i}" \
+            unless link_sequence_number == link_number
+          next_link = bcw.half_word[1].to_i + offset + 1
+          # debug "next link: #{'%013o' % next_link}"
+          preamble_length = words.at(offset+1).half_word[1].to_i
+          offset += preamble_length
+          loop do
+            # debug "llink: offset: #{offset}(0#{'%o' % offset}): #{'%013o' % words.at(offset)}"
+            break if offset >= words.size || offset >= next_link
+            break if words.at(offset) == 0
+            block_size = words.at(offset).byte(3)
+            unless words.at(offset).half_word[0] == block_number
+              if strict
+                raise "Llink out of sequence in #{location} at #{'%#o' % (offset+content_offset)}: expected #{'%07o' % block_number}; got #{file_content[offset].half_word[0]}"
               else
-                self.status = :truncated
+                error "Truncated before block #{block_number} at #{'%#o' % (offset+content_offset)}"
+                if block_number == 1
+                  self.status = :unreadable
+                else
+                  self.status = :truncated
+                end
+                break
               end
-              break
             end
+            deblocked_content += words[offset+1..(offset+block_size)].to_a
+            offset += BLOCK_SIZE
+            block_number += 1
+            @good_blocks += 1
           end
-          deblocked_content += file_content[offset+1..(offset+block_size)].to_a
-          offset += BLOCK_SIZE
-          block_number += 1
-          @good_blocks += 1
+          offset = next_link
+          link_number += 1
         end
         Bun::Words.new(deblocked_content)
       end
