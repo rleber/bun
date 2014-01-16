@@ -86,6 +86,24 @@ no_tasks do
       build_file "ar145.2699", nil, format
     end
   end
+
+  def build_compress_test_directory(at)
+    build_directory(at) do
+      # These two files are identical
+      build_file "bjeroehl/fass/bjthings_19781219_151907/addinde/tape.ar082.0604_19780620_175438.txt", nil, :decoded
+      build_file "fass/bjeroehl/bjthings_19781219_151907/addinde/tape.ar020.1140_19780620_175438.txt", nil, :decoded
+      # These two files are identical
+      build_file "bjeroehl/fass/bjthings_19781219_151907/rjbmail/tape.ar082.0604_19780725_174329.txt", nil, :decoded
+      build_file "fass/bjeroehl/bjthings_19781219_151907/rjbmail/tape.ar020.1140_19780725_174329.txt", nil, :decoded
+      # This file isn't identical to anything else
+      build_file "bjeroehl/fass/bjthings_19781219_151907/countess/tape.ar082.0604_19780630_182833.txt", nil, :decoded
+      # These four files are identical
+      build_file "fass/one/zero/tape.ar003.2557_19770118.txt", nil, :decoded
+      build_file "fass/one/zero/tape.ar004.0495_19770210.txt", nil, :decoded
+      build_file "bjeroehl/fass/77script.f_19770301_154058/1zero/tape.ar082.0603_19770210_164752.txt", nil, :decoded
+      build_file "fass/scripfrz_19770301_154058/1zero/tape.ar004.0888_19770210_164752.txt", nil, :decoded
+    end
+  end
 end
 
 desc "build", "Build test files"
@@ -145,19 +163,6 @@ def build
     build_file "fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229", nil, :baked
   end
 
-  build_directory "data/test/archive/same_init" do
-    # These two files are identical
-    build_file "bjeroehl/fass/bjthings_19781219_151907/addinde/tape.ar082.0604_19780620_175438.txt", nil, :decoded
-    build_file "fass/bjeroehl/bjthings_19781219_151907/addinde/tape.ar020.1140_19780620_175438.txt", nil, :decoded
-    # These two files are identical
-    build_file "bjeroehl/fass/bjthings_19781219_151907/rjbmail/tape.ar082.0604_19780725_174329.txt", nil, :decoded
-    build_file "fass/bjeroehl/bjthings_19781219_151907/rjbmail/tape.ar020.1140_19780725_174329.txt", nil, :decoded
-    # This file isn't identical to anything else
-    build_file "bjeroehl/fass/bjthings_19781219_151907/countess/tape.ar082.0604_19780630_182833.txt", nil, :decoded
-    # These four files are identical
-    build_file "fass/one/zero/tape.ar003.2557_19770118.txt", nil, :decoded
-    build_file "fass/one/zero/tape.ar004.0495_19770210.txt", nil, :decoded
-    build_file "bjeroehl/fass/77script.f_19770301_154058/1zero/tape.ar082.0603_19770210_164752.txt", nil, :decoded
-    build_file "fass/scripfrz_19770301_154058/1zero/tape.ar004.0888_19770210_164752.txt", nil, :decoded
-  end
+  build_compress_test_directory "data/test/archive/compress_init"
+  build_compress_test_directory "data/test/archive/same"
 end
