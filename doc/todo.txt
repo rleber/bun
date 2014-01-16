@@ -1,6 +1,5 @@
 TODO
 _High Priority_
-Add --copy option to bun find
 Release version
 Tests for bun compress, bun same
 Find duplicates
@@ -23,8 +22,8 @@ Consolidate exam, field, formula in bun find, map, and examine
     Prescan formulas to check for simple references to fields or exams (for speed) ?
     Allow multiple fields somehow
     Is the -e/f option required at all?
---where (or --if --unless) option to bun map (i.e. include only files which match a condition)
---unless option for bun find
+--where (or --if) option to bun map (i.e. include only files which match a condition)
+--unless (or --not) option for bun find, map
 More extensions to bun examine
     Chunking, padding (can then eliminate bun sandbox find_large_files)
         Size greater than one chunk
@@ -66,7 +65,7 @@ Release version 1.0
 Major rewrite:
     All files are just Hashie::Mashes
         File.unpack(<packed file>) unpacks a packed file
-        No packed file object (except as needed to unpack files)
+        No packed file object(?) (except as needed to unpack files)
     No file descriptor object
     No Data object (except as needed to unpack files)
     Limited distinction (if any), between file types
@@ -111,6 +110,7 @@ Implement interactive (or stream) editor:
 
 _Medium Priority_
 Symlink readme and todo in top directory
+Review miscellaneous TODOs in the source files
 Encapsulize test pattern: should create output, with this format, etc.
 Refactor test with create_file, create_directory, clean
 Is archive even necessary? Could we not just do e.g. bun decode archive/**, etc.?
@@ -128,7 +128,7 @@ Remove extraneous code
     sandbox
     compare_dates
     collection cp, mv, etc.
-Move system calls into Shell class
+Move all system calls into Shell class
 Remove shell.log code
 Add long_desc to all methods
 Refactor Bots to use Actors (or put methods (e.g. decode, dump) into the data objects)
@@ -136,7 +136,7 @@ Optimization ideas: Continue examining Indexable::Basic, since it's probably 10-
     Reduce usage, optimize "center" code
 File type for different kinds of files:
     Object files
-    Troff command files
+    Roff command files
     Scripts
     Print listings (Qu: are these ever frozen?)
 More flexible output options:

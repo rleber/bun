@@ -120,7 +120,7 @@ module Bun
           formula = Bun::File.create_formula(file, options[:formula], promote: options[:promote])
           {
             # TODO Use .value?
-            result: formula.to_s,
+            result: formula.value,
             tag:    options[:tag],
           }
         elsif options[:match]

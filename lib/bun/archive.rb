@@ -6,12 +6,15 @@ require 'lib/bun/catalog'
 require 'lib/bun/file'
 require 'date'
 require 'shellwords'
+require 'tempfile'
 
 module Bun
   class Archive < Collection
     class InvalidStep < ArgumentError; end
     class MissingCatalog < ArgumentError; end
     class DirectoryConflict < ArgumentError; end
+    class TarError < RuntimeError; end
+
     
     class << self
       def enumerator_class
@@ -241,8 +244,8 @@ module Bun
         Archive.new(dest).compress(options)
       end
 
-      def tar(archive, tar_file)
-        Archive.new(archive).tar(tar_file)
+      def tar(archive, tar_file, options={})
+        Archive.new(archive).tar(tar_file, options)
       end
 
       def build_symlink(stage)
@@ -261,6 +264,11 @@ module Bun
       end
       
       def examine_select(files, options={}, &blk)
+        begin
+          test_value = eval(options[:value]) if options[:value]
+        rescue => e
+          raise Formula::EvaluationError, "Error evaluating value: #{e}"
+        end
         glob_all(files).map do |file|
           res=false
           begin
@@ -268,7 +276,9 @@ module Bun
               result = Bun::File.examination(file, options)
               code = result[:code] || 0
               if options[:value]
-                code = options[:value] == result[:result] ? 0 : 1
+                code = test_value == result[:result] ? 0 : 1
+              elsif options[:formula]
+                code = result[:result] ? 0 : 1
               end
               res = code==0
               if res
@@ -564,13 +574,20 @@ module Bun
       end
     end
 
-    def tar(tar_file)
+    def tar(tar_file, options={})
       tar_file = File.expand_path(tar_file)
       tar_file += '.tar.bz2' unless File.extname(tar_file) != ''
       Shell.new.rm_rf(tar_file)
       Dir.chdir(at) do
         cmd = "tar cvjf #{tar_file.inspect} ."
-        system(cmd)
+        t = Tempfile.new("tar")
+        t.close
+        output = %x{#{cmd} 2>&1}
+        unless $? == 0
+          $stderr.puts output
+          raise TarError, "#{cmd} failed with exit code #{$?}"
+        end
+        system("tar tvf #{tar_file.inspect}") unless options[:quiet]
       end
     end
   end

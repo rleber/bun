@@ -166,6 +166,7 @@ module Bun
         break if offset >= size
         word_index, ch_index = offset.divmod(chars_per_word)
         word = word(word_index)
+        # TODO Are there really examples of eof markers?
         break if !word || (word == self.class.eof_marker && !options[:all])
         char = chars.at(offset)
         break if char == delimiter
@@ -188,6 +189,7 @@ module Bun
       if options[:eof]
         eof_tape = nil
         words.each_with_index do |word, index|
+          # TODO Are there really examples of eof markers?
           if word.value == self.class.eof_marker
             eof_tape = index
             break
