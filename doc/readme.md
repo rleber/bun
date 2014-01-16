@@ -78,9 +78,8 @@ These scripts were written to decipher old archive tapes from the Honeywell mach
 Waterloo, vintage mid- to late 1980s. This machine used several particular formats, which I only understand
 imperfectly. Some salient features:
 - The Honeywell machine (often referred to as the "bun", as in "Honeybun"), used 36 bit words.
-- There are at least two formats of archive: text, which archives one file, and frozen, which is archives 
-  a collection of files (much like modern tar or zip). There may also be some files compressed using a
-  Huffman coding scheme.
+- There are three formats of archive: text, which archives one file, frozen, which is archives 
+  a collection of files (much like modern tar or zip), and huffman, which uses a Huffman encoding scheme
 
 More detailed notes on the file formats (and some old reference programs written in B -- an ancestor of C)
 are included in the doc/file_format directory of this project.

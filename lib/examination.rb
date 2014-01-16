@@ -33,7 +33,7 @@ class String
       end
       
       def exam_directory
-        Bun.project_relative_path(__FILE__.sub(/\.rb$/,''))
+        File.join(Bun.project_path(__FILE__),Bun.project_relative_path(__FILE__.sub(/\.rb$/,'')))
       end
       
       def all_exam_files

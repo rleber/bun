@@ -184,6 +184,7 @@ class String
     inspect[1..-2]
   end
   
+  # Escaping for use inside ranges, e.g. a-z
   def set_escaped(options={})
     self.split(//).map do |ch|
       res = ch.escaped
@@ -194,6 +195,10 @@ class String
 
   def digest
     Digest::MD5.hexdigest(self).inspect[1..-2] # Inspect prevents YAML from treating this as binary
+  end
+
+  def to_hex
+    unpack('H*').first
   end
   
   def freeze_for_thor

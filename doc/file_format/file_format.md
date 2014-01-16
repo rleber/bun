@@ -1,5 +1,7 @@
 _Notes on Honeywell File Formats_
 
+Written by Richard LeBer (richard.leber@gmail.com), January 2014.
+
 These scripts were written to decipher old archive tapes from the Honeywell machine at the University of
 Waterloo, vintage mid- to late 1980s. This machine used several particular formats, which I only understand
 imperfectly. Some salient features:
@@ -8,7 +10,7 @@ imperfectly. Some salient features:
 - The files store most signifcant bits first, and most significant bytes first
 - There are at least three formats of archive: 
     text:    archives one text file
-    huffman: archives one text file with compression by huffman encoding
+    huffman: archives one text file with compression by Huffman encoding
     frozen:  archives a collection of files (much like modern tar or zip)
   
 Because these formats are old and my understanding is imperfect, I make no warranty of the absolutely
@@ -20,10 +22,17 @@ refer to the other files in the doc/file_format directory of this project. These
 
 - decode_help.txt  Some dialog about the characteristics of Honeywell files
 - free.b.txt       A program to decode Honeywell's freeze file format, written in B, an ancestor of C
-- huff.b.txt       A program to decode huffman coded files, also written in B
+- huff.b.txt       A program to decode Huffman encoded files, also written in B. THIS FILE IS OBSOLETE, AND
+                   DOES NOT MATCH THE ENCODING USED IN THESE FILES.
+- huff.v2.b.txt    A program to encode Huffman coded files
+- puff.b.txt       A program to decode Huffman coded files (huff and puff, get it?)
 
 The "bun dump" and "bun freezer dump" commands are available to display the contents of files in octal 
 and ASCII, and may be useful for exploring files.
+
+It may also be helpful to explore online. Wikipedia has an entry about GCOS, which was the operating
+system on the Honeywell, and later on Groupe Bull machines: 
+  http://en.wikipedia.org/wiki/General_Comprehensive_Operating_System
 
 _Some Notes On Terminology and Conventions_
 
@@ -31,6 +40,9 @@ In what follows:
 - A "word" is 36 bits
 - A "half-word" is 18 bits
 - A "byte is 9 bits (there are therefore four bytes in a word)
+- An "llink" (short for little link) was the fundamental unit of storage for disk files on the Honeywell.
+  Each llink containss 320 words
+- A "link" was the fundamental unit of storage in tape archival files. Each link contains 12 llinks.
 - Bit order is assumed to be most significant bit first
 - Byte order is assumed to be most significant byte first
 - Half-word order is "upper" half-word first, followed by the "lower" half-word
@@ -45,47 +57,77 @@ In what follows:
 - Integers were stored as signed 36-bit words, with a leading sign bit, and using two's complement format
 - Quantities like line length fields, etc. are generally unsigned
 - Also a word containing 0170000 is an end-of-file marker. Subsequent data in the file should be ignored.
-  I am sure this is true of text files. I have never seen it used in frozen files. I don't know if it
-  applies to huffman-coded files.
+  I am sure this is true of text files. I have never seen it used in frozen files, and I don't think it
+  applies to Huffman-coded files.
+- Dates were stored as 8 ascii (9-bit) characters, in the sequence "YYYYMMDD"
+- Times were stored as a single 36-bit word, counting the number of "ticks" since midnight. It's easier
+  to explain this with an algorithm than in words: see the function Bun::Data.time_of_day in 
+  lib/bun/file/data.rb for example.
+- Note that freeze files contain "time of day" information, but other formats do not. In the case of the
+  archive which this software was originally created to decode, we (fortunately) had a "catalog" file
+  which contained the names and creation dates of the archives. Several programs, notably "bun archive catalog"
+  are designed to work with such a catalog to record the creation date of files. Without such a catalog,
+  it is impossible to determine when files (other than freeze files) were created.
 
 _All Files_
 
-All files have a "preamble", which includes general information about its name, format, description, etc.
-- Word 0:       Always 01 in the upper half-word. The lower half-word contains the size of the file in 
-                words UNLESS the file is a frozen file, in which case it should be ignored
-- Word 1:       The lower half-word contains the size of the preamble (which contains the file name, etc.)
+All files were stored in tape archives. The tape archives were created in "chunks", with each chunk 
+corresponding to a "link" of data. (Once again, a link is 12 "llinks", each of which is 320 36-bit words.)
+Each llink in the file has a "preamble", which contains general information about the archived file: its
+name, format, description, owner, etc.
+- Word 0:       This word is the Block Control Word (BCW) for the link. Its upper half-word contains the 
+                sequence number of the link (starting at sequence number 1). The lower half-word contains 
+                the size of the link in words, excluding the BCW.
+- Word 1:       The upper half-word contains 1. The lower half-word contains the size of the preamble 
+                (which contains the file name, etc.)
 - Words 7-10:   Contain the archive name (generally the same as the user name of the file owner), as a
                 null-delimited string
 - Words 11-end: The name of the archived file, and a description, as a null-delimited string. Everything
                 after the first space is the description.
 
+After the preamble appears the data for the link. The length of this data is determined by the link length
+field in the BCW. Additionally, due to a transcription bug in transferring the data to modern 32-bit systems,
+some files may contain an extra four zero bits after some links. See doc/link_padding.md for more details.
+
+The format of the content of each link depend on the format of the file. See below for more details.
+
+Eac archived file is then composed of a series of such links. In some cases, a link with a BCW of all zeros
+may occur. This signifies end of file. Additionally, it _may_ be the case (I have some doubt), that a word
+containing 0xf000 (Octal 0170000) may mark the end of some files.
+
+
 _Text Archive Files_
 
 Archive files have the following format:
-- They follow the file size shown in word 0 of the file -- that is, data after that may be ignored
-- Data may also be terminated by an end of file marker at any time. This is a word containing 0170000
-- Following the preamble, as described above, the file is organized as a sequence of 320-word blocks
-  - Each block starts with a block length word:
-    - The upper half word is the block number (starting at 1 for the first block)
-    - The lower half word is the number of bytes used in the block. That is, if a block starts at
-      word w, and has a size marker s, then word w+s is the last used word in the block. Words after
+- The files follow the normal link structure. Content of the file is encoded within that structure.
+- Data may also be terminated by an end of file marker at any time. This is a word containing 0170000. 
+  (Actually, I have some doubt about this...)
+- Following the preamble, as described above, each link in the file is organized as a sequence of 320-word
+  blocks, called llinks. Each llink is always exactly 320 words in length, but the meaningful content of 
+  the llink is variable in length; some of the words at the end of the llink may not contain meaningful data.
+  - Each llink starts with its Block Control Word (BCW):
+    - The upper half word is the llink number (starting at 1 for the first llink). Note: llink numbers are
+      sequential throughout the entire file -- the llinks don't start over at llink #1 in the second or
+      subsequent links.
+    - The lower half word is the number of bytes used in the llink. That is, if an llink starts at
+      word w, and has a size marker s, then word w+s is the last used word in the llink. Words after
       this word (i.e. words w+s+1... w+319) should be ignored
-- The data of the file is encoded within the used words in the sequence of blocks. It may be
+- The data of the file is encoded within the used words in the sequence of llinks. It may be
   conceptually simpler to think of the used words of each block running into the used words of the
-  next block (i.e. ignoring the block descriptor word and any unused words at the end of blocks).
-- The contents is encoded as a series of lines of ASCII text.
-- Lines do not cross block boundaries, and always take an integral number of words.
-- Each line is prefixed with descriptor word that includes:
+  next llink (i.e. ignoring the block control word and any unused words at the end of llinks).
+- The content is encoded as a series of lines of ASCII text.
+- Lines do not cross llink boundaries, and always take an integral number of words.
+- Each line is prefixed with line descriptor word that includes:
   - Byte 0: Always 0
   - Byte 1: The length of the data in the line in words (not including the descriptor word)
   - Byte 2: A flag word. The valid values seem to be 000, 0200, 0400, and 0600. I have no idea
             what these flag bits signify
   - Byte 3: Always 0600
-- The descriptor word is followed by the character data for the line:
-  - The number of words of character data is specified in the length field of the line descriptor
-  - Characters are packed 4 to a word, one per byte. No more than 7 bits/character are used.
+- The line descriptor word is followed by the character data for the line:
+  - The number of words of character data is specified in the length field of the line descriptor word
+  - Characters are packed 4 to a word, one per 9-bit byte. No more than 7 bits/character are used.
   - No CR or LF characters are included; they are assumed
-  - The end of the line may be padded with bytes containing 0177
+  - The end of the line may be padded with bytes containing 0177. These should be ignored.
   - Some control characters may be found, e.g. backspace, tab
 - The first line always appears to be a descriptor plus 20 words of 000s. It is ignored.
 - End of file markers are optional, but do apply if found. (See above.)
@@ -95,25 +137,57 @@ run "bun dump"
 
 _Huffman Coded Files_
 
-I haven't begun trying to decode these. I will add more notes as I learn how these work. In the 
-meantime, refer to doc/file_format/decode_help.txt, or the program doc/file_format/huff.b.txt
+Some files were compressed before being saved. The Honeywell used a simple Huffman encoding scheme for
+compressing files. This scheme results in a minimal-length encoding through the encoding each 9-bit byte 
+using a translation table (a binary tree, actually), and a variable number of bits per encoded character
+(with the fewest bits for the most common characters, etc.). See http://en.wikipedia.org/wiki/Huffman_coding for general information on Huffman encoding.
+
+The original source for the Honeywell's encoding algorithms is contained in the doc/huff.v2.b.txt and
+puff.b.txt files.
+
+The format for Honeywell Huffman-encoded files is as follows:
+- The files follow the normal link structure. Content of the file is encoded within that structure. They do
+  not use the llink structure contained in text files.
+- The file contains first the Huffman encoding translation table/tree, followed by the encoded text.
+- The first word after the preamble of the first link should contain 'huff'
+- The next word contains the number of characters in the encoded text (allegedly) in the upper 18 bits
+  of the word. There's some information encoded in the remainder of the word, too, but I can't figure 
+  out what it means.
+- After the first two words begins the Huffman encoding tree. Taking each 9-bit byte in turn, they
+  encode a binary tree, using the following algorithm:
+  - Examine a byte. If it is zero, then you are at a leaf of the tree, and the next byte contains the 
+    character at that leaf
+  - Otherwise, the byte is the number of nodes down the left-most arm of the tree. Recursively define
+    the subtrees (in depth-first fashion), as follows: Start the description of the left subtree by 
+    reusing the byte that began the description of its parent, minus one. Once you have decoded the
+    left subtree, the description of the right subtree begins with the next byte in sequence.
+  - If the above isn't clear, look at File::Unpacked::Huffman#make_tree
+- The next 9-bit byte following the tree begins the encoded text. Since Huffman encoding works bit-by-bit, the
+  text must be examined one bit at a time, traversing the Huffman tree from the top. At each bit, a "0" bit
+  means take the left branch of the tree, and a "1" bit means take the right branch. When you reach a leaf,
+  that's the encoded character. See the Wikipedia article for more information on the encoding algorithm.
+
+Important note: I made several fits and starts trying to get this to work, but I finally succeeded. One 
+of the major detours I made was trying to use the algorithm in the huff.b.txt program. This turns out NOT to be the format used in these files. DO NOT USE HUFF.B.TXT, it is obsolete. Look at puff.b.txt, instead.
 
 _Freeze Files_
 
 Freeze files have the following format:
+- The files follow the normal link structure. Content of the file is encoded within that structure. They do
+  not use the llink structure contained in text files.
 - Each freeze file includes several archived files or 'shards' (similar to modern tar files)
-- After the preamble, there is a general information block of 5 words in length
+- After the preamble of the first link, there is a general information block of 5 words in length
   - Word 0: The number of words in the file
   - Word 1: Contains the number of shards in the file
-  - Words 2 and 3: The date of last update of the freeze file
-  - Word 4: The time of last update of the freeze file
+  - Words 2 and 3: The date of last update of the freeze file (date format is described above)
+  - Word 4: The time of last update of the freeze file (time format is described above)
 - After the general information block comes a series of file descriptors, one for each shard:
   - Each file descriptor is ten words in length
   - The fields in each descriptor are as follows:
     - Words 0 and 1: The name of the archived shard, in 9-bit ASCII characters, padded with spaces
-    - Words 2 and 3: The date of last update of the shard
-    - Word 4: The time of last update of the shard
-    - Word 5: Always the ASCII characters 'asc '
+    - Words 2 and 3: The date of last update of the shard (see above for format)
+    - Word 4: The time of last update of the shard (see above for format)
+    - Word 5: Always the ASCII characters 'asc ' (note the space)
     - Word 6: According to free.b.txt, "The number of 64-word blocks contained in the file."
         I can find no evidence of this being the case, nor have I found it necessary to use
         this data.
@@ -127,15 +201,14 @@ Freeze files have the following format:
   as specified in the descriptor for the file. The data is stored line-by-line. Each line is
   formatted as follows:
   - A line always takes an integral number of words. Excess space is padded with zeros.
-  - Characters are compressed to 7 bits, and stored left-to-right, 5 to a word. The top bit
-    of the word is not used.
-  - The last character of a line is always a linefeed (LF character, "\r", ASCII code 015)
-  - The first word contains a descriptor, plus the first 3 characters of the line:
+  - The first word of each line contains a descriptor, plus the first 3 characters of the line:
     - Bits 0-7: Not used. Always 000
     - Bits 8-14: The length of the line, in characters, including the final LF
-    - Bits 9-35: The first 3 characters of the line, encoded as described above
+    - Bits 9-35: The first 3 characters of the line, encoded as described below
   - Subsequent words contain the successive characters for the remainder of the line
-- Frozen files don't seem to pay attention to the file size data in word 0 of the file (?)
+  - Characters are stored as 7-bit ASCII. They are stored left-to-right, 5 to a word, starting at
+    the second bit in the word. The top bit of the word is not used.
+  - The last character of a line is always a linefeed (LF character, "\r", ASCII code 015)
 - They also don't appear to use the end of file marker
 
 For additional clues, see doc/file_format/decode_help.txt, the source file lib/frozen_file.rb or 

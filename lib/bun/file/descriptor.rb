@@ -49,6 +49,7 @@ module Bun
         end
         
         def _set_field(name, value)
+          raise "Bad field #{name.inspect}" if %w{catalog fname promote}.include?(name.to_s)
           @fields << name unless @fields.include?(name)
           instance_variable_set("@#{name}", value)
         end
@@ -104,7 +105,8 @@ module Bun
         end
         
         def timestamp
-          fields.include?(:catalog_time) ? [file_time, catalog_time].compact.min : file_time
+          t1 = fields.include?(:catalog_time) ? [file_time, catalog_time].compact.min : file_time
+          fields.include?(:shard_time) ? [shard_time, t1].compact.min : t1
         end
               
         def method_missing(meth, *args, &blk)

@@ -4,23 +4,36 @@
 desc "dump FILE", "Dump the contents of a Honeywell backup tape"
 option "escape",    :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
 option "frozen",    :aliases=>'-f', :type=>'boolean', :desc=>'Display characters in frozen format (i.e. 5 per word)'
-option "lines",     :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
+option "length",    :aliases=>'-L', :type=>'string',  :desc=>'Limit dump to this many words'
+option "lines",     :aliases=>'-l', :type=>'string',  :desc=>'How many lines of the dump to show'
 option "offset",    :aliases=>'-o', :type=>'string',  :desc=>'Start at word n (zero-based index; octal/hex values allowed)'
 option "spaces",    :aliases=>'-s', :type=>'boolean', :desc=>'Display spaces unchanged'
-option "unlimited", :aliases=>'-u', :type=>'boolean', :desc=>'Ignore the file size limit'
 # TODO Deblock option
 def dump(file_name)
   check_for_unknown_options(file_name)
   begin
-    offset = options[:offset] ? eval(options[:offset]) : 0 # So octal or hex values can be given
+    offset = options[:offset] ? eval(options[:offset]) : 0   # So octal or hex values can be given
   rescue => e
     stop "!Bad value for --offset: #{e}"
   end
-  Bun::File::Unpacked.open(file_name, :force=>:text) do |file|
+  begin
+    lines  = options[:lines]  ? eval(options[:lines])  : nil # So octal or hex values can be given
+  rescue => e
+    stop "!Bad value for --lines: #{e}"
+  end
+  begin
+    length = options[:length] ? eval(options[:length]) : nil # So octal or hex values can be given
+  rescue => e
+    stop "!Bad value for --length: #{e}"
+  end
+  opts = options.to_hash.inject({}) {|hsh, pair| key,value = pair; hsh[key.to_sym] = value; hsh}
+  opts.merge!(offset: offset, length: length, lines: lines)
+  Bun::File::Unpacked.open(file_name, :promote=>true, :force_type=>:text) do |file|
     archived_file = file.path
     archived_file = "--unknown--" unless archived_file
-    puts "Archive at #{File.expand_path(file.tape_path)} for file #{archived_file}:"
-    lc = Dump.dump(file.data, options.merge(:offset=>offset))
+    puts "#{File.expand_path(file.descriptor.tape_path)} (#{archived_file}):"
+    puts_options "  Options: "
+    lc = Dump.dump(file.data, opts)
     puts "No data to dump" if lc == 0
   end
 end

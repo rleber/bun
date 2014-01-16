@@ -141,6 +141,6 @@ def build
     build_file "ar003.0698", nil, :packed
     build_file "ar003.0701", nil, :cataloged
     build_file "fass/script/tape.ar004.0642_19770224", nil, :decoded
-    build_file "clean/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229", nil, :baked
+    build_file "fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229", nil, :baked
   end
 end

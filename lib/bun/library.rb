@@ -55,22 +55,22 @@ module Bun
         if options[:dryrun]
           $stderr.puts "bake #{relative_leaf}" unless options[:quiet]
         else
-          to_file = File.join(to,relative_leaf)
-          begin
+          to_file = File.join(to_path,relative_leaf)
+          success = begin
             File.bake(leaf, to_file, promote: true)
             $stderr.puts "bake #{relative_leaf}" unless options[:quiet]
+            true
           rescue File::CantDecodeError
             $stderr.puts "unable to bake #{relative_leaf}" unless options[:quiet]
+            false
             # Skip the file
           end
-          # if File.file_grade(leaf) == :baked
-          #   shell = Shell.new
-          #   shell.mkdir_p File.dirname(to_file)
-          #   shell.cp leaf, to_file
-          # else
-          #   file = File::Decoded.open(leaf, promote: true)
-          #   file.bake(to_file)
-          # end
+          if success
+            unless options[:now]
+              timestamp = File.timestamp(leaf)
+              set_timestamp(to_file, timestamp)
+            end
+          end
         end
       end
     end

@@ -1,22 +1,40 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+# TODO lines, length, and offset options don't really work
 desc "dump FILE SHARD", "Dump a frozen Honeywell file"
 option "decoded", :aliases=>'-d', :type=>'boolean', :desc=>'Display the file in partially decoded format'
 option "escape",  :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
+option "length",  :aliases=>'-L', :type=>'string',  :desc=>'Limit dump to this many words'
 option "lines",   :aliases=>'-l', :type=>'numeric', :desc=>'How many lines of the dump to show'
 option "offset",  :aliases=>'-o', :type=>'numeric', :desc=>'Skip the first n lines'
 option "spaces",  :aliases=>'-s', :type=>'boolean', :desc=>'Display spaces unchanged'
 def dump(file_name, n)
   check_for_unknown_options(file_name, n)
+  begin
+    offset = options[:offset] ? eval(options[:offset]) : 0   # So octal or hex values can be given
+  rescue => e
+    stop "!Bad value for --offset: #{e}"
+  end
+  begin
+    lines_option  = options[:lines]  ? eval(options[:lines])  : nil # So octal or hex values can be given
+  rescue => e
+    stop "!Bad value for --lines: #{e}"
+  end
+  begin
+    length = options[:length] ? eval(options[:length]) : nil # So octal or hex values can be given
+  rescue => e
+    stop "!Bad value for --length: #{e}"
+  end
   File::Frozen.open(file_name, :graceful=>true) do |file|
     archived_file = file.path
     archived_file = "--unknown--" unless archived_file
     file_index = file.shard_index(n)
     shard_descriptor = file.shard_descriptors.at(file_index)
     path = File.join(file.descriptor.path, shard_descriptor.name)
-    limit = options[:lines]
-    puts "Archive at #{File.expand_path(file_name)}[#{shard_descriptor.name}] for #{path}:"
+    lines_option = options[:lines]
+    puts "#{File.expand_path(file_name)}[#{shard_descriptor.name}] (#{path}):"
+    puts_options "  Options: "
     if options[:decoded]
       p file
       lines = file.lines(file_index)

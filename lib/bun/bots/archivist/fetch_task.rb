@@ -18,8 +18,9 @@ There are several steps to this process. They are, in order:
     unpack                    Unpack the files (from Honeywell binary format)
     catalog                   Catalog the files (using a catalog file)
     decode                    Decode the files
-    classify                  Classify the decoded files into clean and dirty
+    compress                  Compress the decoded files
     bake                      Bake the files (i.e. remove metadata)
+    bake:compressed           Bake the compressed files
     tests                     Rebuild the test cases for the bun software
     all                       Run all the steps
 
@@ -33,7 +34,7 @@ Some convenience abbreviations are allowed:
     xxx..yyy                          Steps xxx to yyy
     xxx...yyy                         Steps xxx to the step before yyy
 EOT
-long_desc DESC_TEXT.gsub(/(?<!\\)\n/,"\x5").gsub(/\\$/,'').gsub(/ /,"\177")
+long_desc DESC_TEXT.freeze_for_thor
 def fetch(*steps)
   check_for_unknown_options(*steps)
   if options[:steps]
