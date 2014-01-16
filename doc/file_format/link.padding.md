@@ -1,17 +1,19 @@
 _LLINK PADDING_
 
-There is an issue (as yet unresolved), related to the how llinks from the original archive tapes 
-were processed while they were being transferred from the Honeywell to other platforms. During 
-this process, extra bits were inserted in the files.
+There is an issue in the original files which this software was created to solve, related to how
+the original archive tapes were processed while they were being transferred from a Honeywell computer
+system to other platforms. During this process, extra bits were inserted in the files, mostly because
+the Honeywell was a system with 36-bit words and 9-bit bytes, whereas almost all modern computers
+use 32 bit words and 8-bit bytes.
 
-Alan Bowler at Thinkage (atbowler@thinkage.ca) is a pre-eminent expert on Honeywell software. 
-As he explained in an email (dated January 14, 2014):
+Alan Bowler at Thinkage (atbowler@thinkage.ca) is an expert on Honeywell software. He explained this 
+issue in detail in an email, dated January 14, 2014. (See the general notes in the doc/file_format.md
+file for a glossary of terms):
 
 	The archiver would read 12 llinks from the disk (or less
-	if this was the last chunk of the file),
-	prepend its control info and write this as a block to
-	tape.  The first word of the control info is the block
-	control word (BCW)
+	if this was the last chunk of the file), prepend its control 
+	info and write this as a block to tape.  The first word of the 
+	control info is the block control word (BCW)
 	    bbbbbb nnnnnn
 	       bbbbbb is the block number in the tape file (origin 1)
 	       nnnnnn number of words in the block not counting the BCW
@@ -135,13 +137,13 @@ As he explained in an email (dated January 14, 2014):
 
 Let's examine Alan's comments further:
 - An llink ("little link" or "block") is:
-  - 320 36-bit words (which I will henceforth refer to as lwords)
-  - 1,280 9-bit bytes (which I will henceforth refer to as lbytes)
+  - 320 36-bit words
+  - 1,280 9-bit bytes
   - 11,520 bits
   - 1,440 8-bit bytes.
 - 12 llinks constitute a "link". A link is therefore:
-  - 3,840 36-bit lwords
-  - 15,260 9-bit lbytes
+  - 3,840 36-bit words
+  - 15,260 9-bit bytes
   - 138,240 bits
   - 17,280 8-bit bytes
 - The archival tapes were created in segments. Let's call each such segment a "chunk". 
@@ -155,20 +157,33 @@ Let's examine Alan's comments further:
   constant throughout the tape, the length of the prefix is constant for every chunk on
   the tape.
 - The first word of each chunk is the Block Control Word (BCW). It contains:
-  - The block number (starting with 1) in the top 18 bits
+  - The block number (numbering starts at 1) in the top 18 bits
   - The number of words in the tape block (not including the BCW) in the bottom 18 bits
-- The second word in each block contains the offset of the start of the data in the 
+- The second word in each block contains the offset of the start of the data in its 
   bottom 18 bits (e.g. 023 in Alan's example)
-- The length of the prefix for each chunk may be an even or odd number of 36-bit words:
+- The length of the prefix for each chunk may be an even or odd number of 36-bit words.
+  Therefore, the length of the entire chunk may also be an even or odd number of 36-bit 
+  words.
   - If the chunk contains an even number of 36-bit words, then it is also a whole number
     of 8 bit bytes. In this case, the chunk fits exactly into the 8-bit bytes created
     during the transfer.
   - If the length of each chunk is an odd number of 36-bit words, then it is not a whole
     number of 8-bit bytes: there are 4 extra bits left over. During the transfer process,
-    the chunk was padded with 4 zero bits to make a whole number of 8-bit bytes.
+    the chunk was padded with 4 zero bits to make a whole number of 8-bit bytes. The last
+    8-bit byte of the transferred chuck therefore contains the 4 left-over bits from the
+    last 36-bit word, followed by four extra zero bits.
 - Within each chunk, the data for each link is encoded as a series of llinks. Similarly
   to the encoding of links, each llink is preceded by a BCW for the llink.
-  - The top 18 bits are the llink number (again, starting with 1)
+  - The top 18 bits are the llink number (again, starting with 1). The llink numbers run
+  	progressively for the whole file. That is, they don't start over at 1 in the second
+  	and subsequent links.
   - The bottom 18 bits are the # of words in the llink, not counting the BCW
+
+This software handles this problem as follows:
+- The "unpack" process examines each chunk, and removes the extra four zero bits, if they
+  exist. Therefore, packed files may contain extra bits; unpacked files do not.
+- The "decode" process handles links and llinks, and removes the prefix information as the
+  files are decoded. Therefore, packed and unpacked files contain links and llinks, and their
+  constituent prefix information. Decoded files do not.
 
 For further general information, see http://en.wikipedia.org/wiki/General_Comprehensive_Operating_System
