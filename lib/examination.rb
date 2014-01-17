@@ -4,10 +4,13 @@
 # Classes to define checks on strings
 
 require 'lib/string'
+require 'lib/bun/file/descriptor'
 
 class String
   class Examination
     class Invalid < ArgumentError; end
+
+    USAGE_FILE = File.join(Bun.project_path(__FILE__), Bun.project_relative_path('doc/exam_usage.md'))
     
     class << self
       def exam_class(analysis)
@@ -57,6 +60,16 @@ class String
           .justify_rows \
           .map{|row| row.join('  ')} \
           .join("\n")
+      end
+
+      def usage
+        begin
+          text = File.read(USAGE_FILE)
+          eval(text.inspect.gsub('\\#{','#{'))
+        rescue => e
+          warn "Error: #{e}"
+          text
+        end
       end
     end
   end

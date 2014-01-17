@@ -217,6 +217,7 @@ module Bun
         hash[:content] = content
         hash.delete(:promote)
         hash.delete(:tape_path)
+        hash.delete(:fields)
         # debug "Caller: #{caller[0,2].inspect}"
         # debug hash.inspect
         hash
@@ -254,7 +255,9 @@ module Bun
       end
       
       def to_decoded_yaml(options={})
-        to_decoded_hash(options).to_yaml
+        hash = to_decoded_hash(options)
+        raise "contains :fields: #{hash.inspect}" if hash.keys.map{|k| k.to_s}.include?('fields')
+        hash.to_yaml
       end
 
       def qualified_path_name(to, shard=nil)

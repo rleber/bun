@@ -7,7 +7,7 @@ Size (Words)  2582
 Type          Text
 Data Format   Raw
 MD5 Digest    9e14 0aad 691e ba04 afdf 22ef 2e33 b575
-Foo           bar
-Named         "abc,d'ef "
-Unpack Time   2013-12-30 17:26:10 -0500
-Unpacked By   Bun version 0.1.0 [feature/mark_option:a0d570894c9e9c8bfb309e88e90894105335d7a0]
+Unpack Time   2014-01-15 17:10:38 -0500
+Unpacked By   Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]
+User Foo      bar
+User Named    "abc,d'ef "

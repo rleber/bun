@@ -7,7 +7,7 @@ option 'case',    :aliases=>'-c', :type=>'boolean', :desc=>"Case insensitive"
 option 'exam',    :aliases=>'-e', :type=>'string',  :desc=>"What test? See bun help check for options"
 option 'field',   :aliases=>'-F', :type=>'string',  :desc=>"Return the value in a field"
 option 'formula', :aliases=>'-f', :type=>'string',  :desc=>"Evaluate a Ruby formula -- see help"
-option 'list',    :aliases=>'-l', :type=>'boolean', :desc=>"List the defined examinations"
+option 'usage',   :aliases=>'-l', :type=>'boolean', :desc=>"List usage information"
 option 'match',   :aliases=>'-m', :type=>'string',  :desc=>"Matches this regular expression (Ruby format)"
 option 'min',     :aliases=>'-M', :type=>'numeric', :desc=>"For counting examinations: minimum count"
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>"Quiet mode"
@@ -17,22 +17,17 @@ option 'text',    :aliases=>'-x', :type=>'boolean', :desc=>"Based on the text in
 option 'value',   :aliases=>'-v', :type=>'string',  :desc=>"Set the return code based on whether the" +
                                                            " result matches this value"
 long_desc <<-EOT
-Analyze the contents of a file.
+Query the contents or characteristics of a file.
 
-Analyses are available via the --exam parameter. Available analyses include:\x5
+Analyses are available via the --query parameter.
 
-#{String::Examination.exam_definition_table.freeze_for_thor}
-
-The command also allows for evaluating arbitrary Ruby expressions.
-
-TODO Explain expression syntax
-TODO Explain how --value works
+#{String::Examination.usage.freeze_for_thor}
 
 EOT
 def examine(file=nil)
   check_for_unknown_options(file)
-  if options[:list]
-    puts String::Examination.exam_definition_table
+  if options[:usage]
+    puts String::Examination.usage
     exit
   end
 

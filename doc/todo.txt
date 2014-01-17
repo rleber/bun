@@ -1,11 +1,14 @@
 TODO
 _High Priority_
+Change bun examine to bun query ?
 Consolidate exam, field, formula in bun find, map, and examine
+    Allow --inspect option
     Allow exam: (etc.) syntax
     Allow <field_or_exam_name> without e[] or f[] syntax
     Prescan formulas to check for simple references to fields or exams (for speed) ?
     Allow multiple fields somehow
     Is the -e/f option required at all?
+    Syntax for referencing shard data (with index)
 --if (or --where, or --with) option to bun map (i.e. include only files which match a condition)
 --unless (or --not, or --without) option for bun find, map
 More extensions to bun examine
@@ -111,6 +114,11 @@ Implement interactive (or stream) editor:
     Alternatively: check out the contents (in whatever format), edit, then check them back in again
 
 _Medium Priority_
+Better audit trail mechanism: Where did a file come from?
+    Unpack should record where unpacked from/to
+    Decode should record where decoded from/to
+    Compress should record where moved from/to (where?)
+    Better syntax for reverse find: i.e., where did a baked file come from?
 bun dump pre-block padding repair
 bun dump with or without block preambles and llink preambles
 Symlink readme and todo in top directory

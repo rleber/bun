@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+require 'lib/bun/file/descriptor_fields'
+
 module Bun
   class File < ::File
     module Descriptor
@@ -10,7 +12,30 @@ module Bun
             d = new(data)
             d.from_hash(h)
           end
+
+          def valid_fields
+            VALID_FIELDS.keys
+          end
+
+          def field_valid?(name)
+            VALID_FIELDS.keys.include?(name.to_sym)
+          end
+
+          def field_definitions
+            VALID_FIELDS
+          end
+
+          def field_definition_table
+            ([%w{Field Description}] + field_definitions.to_a.sort) \
+              .justify_rows \
+              .map{|row| row.join('  ')} \
+              .join("\n")
         end
+
+        end
+
+        class InvalidField < ArgumentError; end
+
         FIELDS = [
           :description,
           :tape_size,
@@ -41,20 +66,24 @@ module Bun
           set_field(field, nil) unless @fields.include?(field)
         end
         
-        def set_field(name, value)
+        def set_field(name, value, options={})
           name = name.to_sym
-          return if name==:digest
-          _set_field name, value
-          set_digest if name == :data
+          return if name==:digest # Can't directly set the digest
+          _set_field name, value, options
+          set_digest if name == :data # If the data changes, so should the digest
         end
         
-        def _set_field(name, value)
-          raise "Bad field #{name.inspect}" if %w{catalog fname promote}.include?(name.to_s)
+        def _set_field(name, value, options={})
+          if options[:user]
+            name = "user_#{name}" unless name =~ /^user_/
+          else
+            raise InvalidField, "Bad field #{name.inspect}" unless name =~ /^user_/ || self.class.field_valid?(name)
+          end
           @fields << name unless @fields.include?(name)
           instance_variable_set("@#{name}", value)
         end
         private :_set_field
-        
+
         def set_digest
           return unless @data
           data = @data

@@ -156,17 +156,17 @@ module Bun
         prefix != "---\n" # YAML prefix; one of the unpacked formats
       end
       
-      def unpacked?(path)
+      def nonpacked?(path)
         prefix = File.read(path, 21)
-        prefix != "---\n:identifier: Bun\n" # YAML prefix with identifier
+        prefix == "---\n:identifier: Bun\n" # YAML prefix with identifier
       end
       
       def packed?(path)
-        return false if !unpacked?(path)
+        return false if nonpacked?(path)
         if path.to_s =~ /^$|^-$|ar\d{3}\.\d{4}$/ # nil, '', '-' (all STDIN) or '...ar999.9999'
           begin
             File::Packed.open(path, force: true)
-          rescue 
+          rescue => e
             false
           end
         else
@@ -329,7 +329,7 @@ module Bun
     end
     
     def mark(tag_name, tag_value)
-      descriptor.set_field(tag_name, tag_value)
+      descriptor.set_field(tag_name, tag_value, :user=>true) # Allow only unregistered field names
     end
   
     def updated
