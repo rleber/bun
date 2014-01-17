@@ -1,16 +1,19 @@
 ---
 :identifier: Bun
+:block_count: 1
+:block_padding_repairs: 0
 :data_format: :raw
 :description: ==>files for idallen
 :digest: 9e140aad691eba04afdf22ef2e33b575
 :file_grade: :unpacked
+:first_block_size: 2582
 :owner: fass
 :path: fass/idallen/vector
 :tape: ar003.0698
 :tape_size: 2582
 :tape_type: :text
-:unpack_time: 2014-01-13 10:02:52.598352000 -05:00
-:unpacked_by: Bun version 0.1.0 [feature/expanded_examine:5347498790fa3c32e0e5deef29ba32b1411963da]
+:unpack_time: 2014-01-17 08:06:25.897172000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:f01c1be8817bb73435b755f1039b09138be55648]
 :content: !binary |-
   AABAoVAABAAVAADAK6CQoUstCQoUstAAAAAAAAAAAIMxhOZzAAAAAAAAAAAA
   AAAAAAF5pMhhNhsMpuF52MpjOhvOQgEA9Ho+MxpNhlOYgMxvOQgNJkMJsNhl

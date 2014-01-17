@@ -119,6 +119,7 @@ end
 #  # and data/expected.txt contains "axbycz"
 RSpec::Matchers.define :match_file_with_variable_data do |expected_file|
   match do |actual_file|
+    Bun::Test.save_actual_output(actual_file)
     actual_output = Bun.readfile(actual_file).chomp
     expected_output = Bun.readfile(expected_file).chomp
     actual_output.should match_with_variable_data(expected_output).except_for(@patterns)
@@ -153,6 +154,7 @@ end
 # Content of two files should match
 RSpec::Matchers.define :match_file do |expected_file|
   match do |file|
+    Bun::Test.save_actual_output(file)
     actual_output = Bun.readfile(file).chomp
     expected_output = Bun.readfile(expected_file).chomp
     actual_output.should == expected_output
@@ -177,6 +179,7 @@ end
 # File contents should match a string
 RSpec::Matchers.define :contain_content do |expected_content|
   match do |file|
+    Bun::Test.save_actual_output(file)
     actual_output = Bun.readfile(file).chomp
     actual_output.should == expected_content
   end

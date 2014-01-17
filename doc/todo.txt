@@ -1,6 +1,5 @@
 TODO
 _High Priority_
-Bun unpack should flag if it removed extra zeros padding
 Consolidate exam, field, formula in bun find, map, and examine
     Allow exam: (etc.) syntax
     Allow <field_or_exam_name> without e[] or f[] syntax
@@ -29,6 +28,7 @@ More extensions to bun examine
     Try determining type by comparing preamble contents:
         Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
             binary load module
+bun examine --usage
 Find duplicates
     Same file name
     Absolutely identical

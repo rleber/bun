@@ -10,6 +10,7 @@ module Bun
     BACKTRACE_FILE = "output/test_actual/_backtrace.txt"
     ACTUAL_OUTPUT_DIRECTORY = "output/test_actual"
     EXPECTED_OUTPUT_DIRECTORY = "output/test_expected"
+    LAST_OUTPUT_FILE = "#{ENV['HOME']}/.bun_test_actual_output_file"
     
     class << self
       def all_tests
@@ -65,12 +66,19 @@ module Bun
       end
       
       def diff(actual, expected=nil)
-        expected ||= actual
-        system([
-                 'diff', 
-                 File.join(ACTUAL_OUTPUT_DIRECTORY,actual),
-                 File.join(EXPECTED_OUTPUT_DIRECTORY,expected)
-               ].shelljoin)
+        expected ||= actual.sub(/^#{ACTUAL_OUTPUT_DIRECTORY}/,'')
+        actual = File.join(ACTUAL_OUTPUT_DIRECTORY, actual) unless actual =~ /^#{ACTUAL_OUTPUT_DIRECTORY}/
+        expected = File.join(EXPECTED_OUTPUT_DIRECTORY, expected) unless expected =~ /^#{EXPECTED_OUTPUT_DIRECTORY}/
+        system(['diff', actual, expected].shelljoin)
+      end
+
+      def save_actual_output(file)
+        content = Bun.readfile(file)
+        ::File.open(LAST_OUTPUT_FILE, 'w') {|f| f.write file}
+      end
+
+      def last_actual_output_file
+        ::File.read(LAST_OUTPUT_FILE)
       end
     end
   end
