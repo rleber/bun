@@ -1,0 +1,6 @@
+rm -f output/test_actual/shell_write_test.txt
+rm -f output/test_actual/shell_write_test.txt
+rm -f output/test_actual/unpack_ar003.0698
+rm -rf data/test/archive/general_test_packed
+cp -r data/test/archive/general_test_packed_init                       data/test/archive/general_test_packed
+bun unpack data/test/archive/general_test_packed/ar003.0698 -                     >output/test_actual/unpack_ar003.0698

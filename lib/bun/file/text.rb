@@ -59,6 +59,7 @@ module Bun
       end
       cache :lines
     
+      # TODO Is this code used?
       # TODO simplify
       def unpack_line(words, line_offset)
         line = ""

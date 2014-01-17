@@ -71,7 +71,7 @@ In what follows:
 
 _All Files_
 
-All files were stored in tape archives. The tape archives were created in "chunks", with each chunk 
+All files were stored in tape archives. The tape archives were created in "blocks", with each block 
 corresponding to a "link" of data. (Once again, a link is 12 "llinks", each of which is 320 36-bit words.)
 Each llink in the file has a "preamble", which contains general information about the archived file: its
 name, format, description, owner, etc.

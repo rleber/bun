@@ -44,8 +44,15 @@ module Bun
                               :data_format=>:raw, 
                               :tape_type=>data.tape_type,
                             )
+        block_padding_repaired_data = data.with_block_padding_repaired
+        new_descriptor.merge!(
+          block_padding_repairs: block_padding_repaired_data.block_padding_repairs,
+          block_count:           block_padding_repaired_data.block_count,
+          first_block_size:      block_padding_repaired_data.first_block_size
+        )
+
         f = File::Unpacked.create(
-          :data=>data.deblocked,
+          :data=>block_padding_repaired_data,
           :archive=>archive,
           :tape=>File.basename(tape),
           :tape_path=>tape_path,

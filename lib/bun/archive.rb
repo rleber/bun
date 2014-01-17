@@ -21,7 +21,7 @@ module Bun
         Archive::Enumerator
       end
       
-      FETCH_STEPS = %w{pull unpack catalog decode compress bake bake:compressed tests}
+      FETCH_STEPS = %w{pull unpack catalog decode compress bake tests}
       def fetch_steps
         FETCH_STEPS
       end
@@ -31,7 +31,7 @@ module Bun
       # unpack                    Unpack the files (from Honeywell binary format)
       # catalog                   Catalog the files (using a catalog file)
       # decode                    Decode the files
-      # classify                  Classify the decoded files into clean and dirty
+      # compress                  Compress the baked library (e.g. remove duplicates)
       # bake                      Bake the files (i.e. remove metadata)
       # tests                     Rebuild the test cases for the bun software
       # all                       Run all the steps
@@ -91,11 +91,6 @@ module Bun
             clear_stage :decoded
             decode from, @directories[:decoded]
             build_symlink :decoded
-          # when 'classify'
-          #   warn "Classify the decoded files into clean and dirty" if options[:announce]
-          #   clear_stage :classified
-          #   classify @directories[:decoded], @directories[:classified]
-          #   build_symlink :classified
           when 'compress'
             warn "Compress the files" if options[:announce]
             from = @directories[:decoded]
@@ -105,13 +100,8 @@ module Bun
           when 'bake'
             warn "Bake the files (i.e. remove metadata)" if options[:announce]
             clear_stage :baked
-            bake @directories[:decoded], @directories[:baked]
+            bake @directories[:compressed], @directories[:baked]
             build_symlink :baked
-          when 'bake:compressed'
-            warn "Bake the files (i.e. remove metadata)" if options[:announce]
-            clear_stage :compressed_baked
-            bake @directories[:compressed], @directories[:compressed_baked]
-            build_symlink :compressed_baked
           when 'tests'
             warn "Rebuild test cases" if options[:announce]
             system('bun test build')

@@ -1,5 +1,34 @@
 TODO
 _High Priority_
+Bun unpack should flag if it removed extra zeros padding
+Consolidate exam, field, formula in bun find, map, and examine
+    Allow exam: (etc.) syntax
+    Allow <field_or_exam_name> without e[] or f[] syntax
+    Prescan formulas to check for simple references to fields or exams (for speed) ?
+    Allow multiple fields somehow
+    Is the -e/f option required at all?
+--if (or --where, or --with) option to bun map (i.e. include only files which match a condition)
+--unless (or --not, or --without) option for bun find, map
+More extensions to bun examine
+    Blocking, padding (can then eliminate bun sandbox find_large_files) -- only for packed files
+        Size in links -- only for packed or unpacked files
+        Size in llinks -- only for packed or unpacked files
+        Padded (e.g. odd # of 36-bit words in a block)
+            Theoretically (for any packed or unpacked file)
+            Actually (for packed files only)
+    Extended fields (pre-defined, e.g. tape basename, etc.)
+        File name (with subfiles, etc.)
+        File basename
+    Printer listing
+        Largely printable
+        Very few large runs
+        Overstruck
+    Object file
+        Very few large runs
+        Largely unreadable
+    Try determining type by comparing preamble contents:
+        Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
+            binary load module
 Find duplicates
     Same file name
     Absolutely identical
@@ -14,31 +43,6 @@ bun file editor
         decimal
     Look for edit marks (or a separate edit line)
         [...] {...} / \ dddd i
-Consolidate exam, field, formula in bun find, map, and examine
-    Allow exam: (etc.) syntax
-    Allow <field_or_exam_name> without e[] or f[] syntax
-    Prescan formulas to check for simple references to fields or exams (for speed) ?
-    Allow multiple fields somehow
-    Is the -e/f option required at all?
---where (or --if) option to bun map (i.e. include only files which match a condition)
---unless (or --not) option for bun find, map
-More extensions to bun examine
-    Chunking, padding (can then eliminate bun sandbox find_large_files)
-        Size greater than one chunk
-        Padded (e.g. odd # of 36-bit words in a chunk)
-    Extended fields (pre-defined, e.g. tape basename, etc.)
-        File name (with subfiles, etc.)
-        File basename
-    Printer listing
-        Largely printable
-        Very few large runs
-        Overstruck
-    Object file
-        Very few large runs
-        Largely unreadable
-    Try determining type by comparing preamble contents:
-        Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
-            binary load module
 Should bun find be called bun grep?
 Make catalog :remove the default; rename --keep?
 Implement bun library clean

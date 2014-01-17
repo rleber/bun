@@ -20,7 +20,6 @@ There are several steps to this process. They are, in order:
     decode                    Decode the files
     compress                  Compress the decoded files
     bake                      Bake the files (i.e. remove metadata)
-    bake:compressed           Bake the compressed files
     tests                     Rebuild the test cases for the bun software
     all                       Run all the steps
 

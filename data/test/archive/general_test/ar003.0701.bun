@@ -1,16 +1,19 @@
 ---
 :identifier: Bun
+:block_count: 1
+:block_padding_repairs: 0
 :data_format: :raw
 :description: ==>files for idallen
 :digest: c432253bc6b194edab16ff8646d98e8d
 :file_grade: :unpacked
+:first_block_size: 662
 :owner: fass
 :path: fass/idallen/huffhart
 :tape: ar003.0701
 :tape_size: 662
 :tape_type: :huffman
-:unpack_time: 2014-01-15 17:40:30.383264000 -05:00
-:unpacked_by: Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]
+:unpack_time: 2014-01-16 22:42:02.747212000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:f23eff661435bf0d2b6fe4556cebcdd920ad7442]
 :content: !binary |-
   AABAKVAABAAVAADAK9CQoUsxCQoUsxAAAAAAAABAACMxhOZzAAAAAAAAAAAA
   AAAAAAF5pMhhNhsMpuF5oOpmMxoMJyOggEA9Ho+MxpNhlOYgMxvOQgNJkMJs

@@ -10,6 +10,16 @@ no_tasks do
       stop "!Command failed with code #{$?}"
     end
   end
+
+  def copy_file(from, to)
+    from = File.expand_path(from)
+    to = File.expand_path(to)
+    stop "!Source file #{from.safe} does not exist" unless File.exists?(from)
+    cmd = "mkdir -p #{File.dirname(to).safe}"
+    _exec cmd
+    cmd = "cp -f #{from.safe} #{to.safe}"
+    _exec cmd
+  end
   
   def build_file(file, at=nil, format=:unpacked)
     from = case format
@@ -44,11 +54,7 @@ no_tasks do
     file_with_extension += extension unless File.extname(file_with_extension) == extension
     source_file = File.join(File.expand_path(from),file_with_extension)
     target_file = File.join(File.expand_path(at),file_with_extension)
-    stop "!Source file #{source_file.safe} does not exist" unless File.exists?(source_file)
-    cmd = "mkdir -p #{File.dirname(target_file).safe}"
-    _exec cmd
-    cmd = "cp -f #{source_file.safe} #{target_file.safe}"
-    _exec cmd
+    copy_file(source_file, target_file)
   end
   
   def build_directory(at, &blk)
@@ -160,7 +166,8 @@ def build
     build_file "ar003.0698", nil, :packed
     build_file "ar003.0701", nil, :cataloged
     build_file "fass/script/tape.ar004.0642_19770224", nil, :decoded
-    build_file "fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229", nil, :baked
+    copy_file "~/fass_work/baked/fass/1986/script/script.f/1-1.txt", 
+              "data/test/archive/mixed_grades_init/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt"
   end
 
   build_compress_test_directory "data/test/archive/compress_init"

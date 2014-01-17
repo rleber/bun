@@ -1,16 +1,19 @@
 ---
 :identifier: Bun
+:block_count: 2
+:block_padding_repairs: 0
 :data_format: :raw
 :description: ''
 :digest: de66fa4b8e9057abf56a1249efa0be03
 :file_grade: :unpacked
+:first_block_size: 3854
 :owner: fass
 :path: fass/sequence
 :tape: ar010.0006
 :tape_size: 5790
 :tape_type: :text
-:unpack_time: 2014-01-15 17:40:47.490039000 -05:00
-:unpacked_by: Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]
+:unpack_time: 2014-01-16 22:42:20.422626000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:f23eff661435bf0d2b6fe4556cebcdd920ad7442]
 :content: !binary |-
   AABA8NAABAAOAAKAAGCSk9pdCSk9pdAAAAAAAAAAASMxhOZzAAAAAAAAAAAA
   AAAAAAF5zMpxOplNxjMoAAAAAABAExAAUAIAAAAAAAAAAAAAAAAAAAAAAAAA

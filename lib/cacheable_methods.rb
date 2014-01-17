@@ -9,10 +9,6 @@ module CacheableMethods
   end
   
   module ClassMethods
-    def foo
-      puts "bar"
-    end
-    
     def cache(method)
       original_method = "_#{method}_before_caching"
       instance_variable = "@_cached_value_of_#{method}"
