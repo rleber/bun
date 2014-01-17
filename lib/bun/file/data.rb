@@ -346,7 +346,10 @@ module Bun
     
     def with_block_padding_repaired
       res = self.dup
-      res.load(block_padding_repaired_words.export)
+      s = block_padding_repaired_words.export
+      repairs = self.block_padding_repairs
+      res.load(s)
+      res.block_padding_repairs = repairs # Necessary, because load will reset this to zero
       res
     end
 
@@ -357,8 +360,12 @@ module Bun
       @block_count
     end
 
+    def block_padding_repairs=(value)
+      @block_padding_repairs = value
+    end
+
     def block_padding_repairs
-      unless @block_padding_repaired_words
+      unless @block_padding_repairs
         _ = block_padding_repaired_words
       end
       @block_padding_repairs

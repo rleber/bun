@@ -1,11 +1,11 @@
 ---
 :identifier: Bun
 :block_count: 4
-:block_padding_repairs: 0
+:block_padding_repairs: 3
 :catalog_time: 1982-12-22 00:00:00.000000000 -05:00
 :data_format: :raw
-:decode_time: 2014-01-16 22:52:31.273741000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:f23eff661435bf0d2b6fe4556cebcdd920ad7442]
+:decode_time: 2014-01-16 23:43:58.410735000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
 :description: ''
 :digest: 0155d8bd75758b61b7a91a4dd4465b0a
 :file_grade: :decoded
@@ -16,8 +16,8 @@
 :tape: ar082.0604
 :tape_size: 14207
 :tape_type: :frozen
-:unpack_time: 2014-01-16 22:43:45.758994000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:f23eff661435bf0d2b6fe4556cebcdd920ad7442]
+:unpack_time: 2014-01-16 23:35:27.583960000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
 :content: ! "33 fass         Thu Jul  6 1978  21:08 *\nHi.  My name is Bernie -- I'm
   the guy that Rohan may have mentioned\nconcerning the tape of the Adventure program.
   \ I picked it up on my\nway through Toronto today (I'm here 'till Sunday from Montreal).

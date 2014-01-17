@@ -111,6 +111,8 @@ Implement interactive (or stream) editor:
     Alternatively: check out the contents (in whatever format), edit, then check them back in again
 
 _Medium Priority_
+bun dump pre-block padding repair
+bun dump with or without block preambles and llink preambles
 Symlink readme and todo in top directory
 Review miscellaneous TODOs in the source files
 Encapsulize test pattern: should create output, with this format, etc.
