@@ -1,14 +1,16 @@
 TODO
 _High Priority_
-Change bun examine to bun query ?
-Consolidate exam, field, formula in bun find, map, and examine
+Examinations should coerce to floats or ints
+Consolidate exam, field, formula in bun find, map, and examine (and same?)
     Allow --inspect option
     Allow exam: (etc.) syntax
     Allow <field_or_exam_name> without e[] or f[] syntax
+    Change formula to expression throughout
     Prescan formulas to check for simple references to fields or exams (for speed) ?
     Allow multiple fields somehow
     Is the -e/f option required at all?
     Syntax for referencing shard data (with index)
+    Pseudo references: file_path, text
 --if (or --where, or --with) option to bun map (i.e. include only files which match a condition)
 --unless (or --not, or --without) option for bun find, map
 More extensions to bun examine

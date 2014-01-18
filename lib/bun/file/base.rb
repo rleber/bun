@@ -96,44 +96,36 @@ module Bun
         data
       end
       
-      def examination(file, options={})
-        if options[:exam]
-          examination = Bun::File.create_examination(file, options[:exam], promote: options[:promote])
+      def examination(file, exam, options={})
+        case exam.to_s.strip
+        when ''
+          # Do nothing
+        when /^exam:(.*)/
+          exam = $1
+          examination = Bun::File.create_examination(file, exam, promote: options[:promote])
           # TODO Change this to range
           examination.minimum = options[:min] if examination.respond_to?(:minimum)
           examination.case_insensitive = options[:case] if examination.respond_to?(:case_insensitive)
           {
             result: examination,
             code:   examination.code,
-            tag:    options[:tag] || "exam:#{options[:exam]}",
           }
-        elsif options[:field]
+        when /^field:(.*)/
+          field = $1
           value = File.open(file) do |f|
-            value = f.descriptor[options[:field]] || nil rescue nil
+            value = f.descriptor[field] || nil rescue nil
           end
           {
             result: value,
-            tag: options[:field]
           }
-        elsif options[:formula]
-          # TODO allow other parameters to the formula, from the command line
-          formula = Bun::File.create_formula(file, options[:formula], promote: options[:promote])
+        else # It's an expression
+          expr = exam.sub(/^expr:/,'')
+          # TODO allow other parameters to the expression, from the command line
+          expression = Bun::File.create_expression(file, expr, promote: options[:promote])
           {
             # TODO Use .value?
-            result: formula.value,
-            tag:    options[:tag],
+            result: expression.value,
           }
-        elsif options[:match]
-          regexp = Regexp.new(options[:match])
-          if options[:case]
-            regexp = Regexp.new(options[:match], Regexp::IGNORECASE)
-          else
-            regexp = Regexp.new(options[:match])
-          end
-          res = baked_data(file, options) =~ regexp
-          { result: res, code: res.nil? ? 1 : 0 }
-        elsif options[:text]
-          { result: baked_data(file, promote: true)||'', code: 0 }
         end
       end
       
@@ -142,14 +134,14 @@ module Bun
       end
       protected :create_examination
       
-      def create_formula(path, expression, options={})
+      def create_expression(path, expression, options={})
         file, data = baked_file_and_data(path, options)
-        data.formula(options.merge(
+        data.expression(options.merge(
                             expression: expression,
                             file: file,
                             path: path))
       end
-      protected :create_formula
+      protected :create_expression
   
       def binary?(path)
         prefix = File.read(path, 4)

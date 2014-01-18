@@ -103,8 +103,8 @@ class String
   end
   
   # Options should include :file, :path, :expression
-  def formula(options=[])
-    evaluator = Bun::Formula.new(options)
+  def expression(options=[])
+    evaluator = Bun::Expression.new(options)
     evaluator.data = self
     evaluator
   end
@@ -208,4 +208,4 @@ class String
 end
 
 require 'lib/examination'
-require 'lib/bun/formula'
+require 'lib/bun/expression'

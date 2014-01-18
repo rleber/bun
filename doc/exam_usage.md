@@ -1,7 +1,7 @@
 _USING QUERIES_
 
 The bun software provides a powerful general-purpose language for querying the contents and properties of files
-in an archive. In general, these query formulas are very flexible. They can contain just about any valid Ruby 
+in an archive. In general, these query expressions are very flexible. They can contain just about any valid Ruby 
 expression, and can reference the values of fields defined for bun file (for example, its MD5 digest, or its 
 catalog date), a number of predefined "examinations" (for example, a test of legibility).
 
@@ -54,7 +54,7 @@ Expressions may be referenced in one of two ways:
 - Using the form expr:<expression>
 - Or, just using the <expression> without the "expr:" prefix
 
-BE CAREFUL: bash shell escaping can do weird, unexpected things to the value of your formula. If strange things
+BE CAREFUL: bash shell escaping can do weird, unexpected things to the value of your expression. If strange things
 are happening, try using the --inspect option to have the command print back for you the value of the expression
 as it was received.
 
