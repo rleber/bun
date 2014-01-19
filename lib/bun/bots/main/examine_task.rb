@@ -15,6 +15,7 @@ option 'min',     :aliases=>'-M', :type=>'numeric', :desc=>"For counting examina
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>"Quiet mode"
 option 'raise',   :aliases=>'-r', :type=>'boolean', :desc=>"Allow expression evaluations to raise exceptions"
 option 'save',    :aliases=>'-s', :type=>'string',  :desc=>"Save the result under this name as a mark in the file"
+option 'titles',  :aliases=>'-t', :type=>'boolean', :desc=>"Always include column titles in print listing"
 option 'usage',   :aliases=>'-U', :type=>'boolean', :desc=>"List usage information"
 # TODO Is this still necessary?
 option 'unless',  :aliases=>'-u', :type=>'string',  :desc=>"Only show the result for files which do not match this expression"
@@ -102,7 +103,7 @@ def examine(*args)
             right_columns = right_columns.map{|col| col+1}
           end
           formatter.right_justified_columns = right_columns
-          formatter.titles = titles if files.size >1 && column_count > 1
+          formatter.titles = titles if options[:titles] || (files.size >1 && column_count > 1)
         end
         if files.size > 1 || options[:file]
           m_rows = matrixes.map {|matrix| matrix.size }.max
@@ -110,9 +111,9 @@ def examine(*args)
           file_matrix = if m_rows == 0
             [] # Do nothing
           elsif (format == :text && options[:justify])
-            [[file] + ['']*(m_rows-1)] # File name only in first row
+            [[file]] + [['']]*(m_rows-1) # File name only in first row
           else
-            [[file]*m_rows] # File name in all rows
+            [[file]]*m_rows # File name in all rows
           end
           matrixes.unshift file_matrix
         end

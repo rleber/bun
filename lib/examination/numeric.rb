@@ -17,65 +17,19 @@
 class String
   class Examination
     class Numeric < Base
-      class Result
-        attr_accessor :exam
-        attr_accessor :value
-        
-        def initialize(exam,value)
-          @exam = exam
-          @value = value
-        end
-
-        def to_s
-          exam.format(value)
-        end
-
-        def to_matrix
-          [[exam.format(value)]]
-        end
-
-        # TODO Some of this could be dried up with other Result classes with a Mixin
-        def titles
-          exam.titles rescue nil 
-        end
-
-        def to_titled_matrix
-          [titles ? [titles] : []] + to_matrix
-        end
-
+      class Result < String::Examination::Base::Result
         def right_justified_columns
           [0]
         end
-        
-        # Behave like a Float
-        def method_missing(meth, *args, &blk)
-          value.send(meth, *args, &blk)
-        end
+      end
+
+      def self.result_class
+        Result
       end
       
       # Default; may be overridden in subclasses
       def self.justification
         :right
-      end
-
-      def make_value(x)
-        Result.new(self, x)
-      end
-      
-      def format(x)
-        x.to_s
-      end
-      
-      def to_i
-        value.to_i
-      end
-      
-      def to_f
-        value.to_f
-      end
-      
-      def to_s
-        format(value)
       end
     end
   end

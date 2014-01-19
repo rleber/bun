@@ -6,14 +6,6 @@
 class String
   class Examination
     module CharacterPatterns
-      def string
-        @string
-      end
-      
-      def string=(s)
-        @string=s
-      end
-      
       def patterns
         @patterns
       end
@@ -24,7 +16,7 @@ class String
   
       # This allows subclasses to do things like remove zero values
       def unfiltered_counts
-        encoded = @string.force_encoding('ascii-8bit')
+        encoded = string.force_encoding('ascii-8bit')
         cts = []
         [patterns].flatten.each.with_index do |pat, i|
           cts[i] = {index:i, characters: {}, count: 0}

@@ -19,12 +19,12 @@ class String
         const_defined?(class_name) ? const_get(class_name) : nil
       end
       
-      def create(analysis, string='', options={})
+      def create(analysis, options={})
         klass = exam_class(analysis)
         raise Invalid, "Examination class not defined: #{analysis}" unless klass
         raise Invalid, "Examination class is not a String::Examination: #{analysis}" \
             unless klass < String::Examination::Base
-        klass.new(string, options)
+        klass.new(options)
       end
       
       def examination(string, analysis)

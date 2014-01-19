@@ -12,10 +12,6 @@ class String
         "Does text contain roff commands?"
       end
       
-      def labels
-        [:roff, :no_roff]
-      end
-      
       def true?
         string =~ /^\.[a-zA-Z]{,2}(?:\s|$)/
       end

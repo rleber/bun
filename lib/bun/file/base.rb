@@ -93,6 +93,20 @@ module Bun
           [nil, read(path)]
         end
       end
+
+      def file_for_expression(path, options={})
+        if options[:promote]
+          if File.file_grade(path) == :baked
+            File::Baked.open(path)
+          elsif File.tape_type(path) == :frozen && !options[:shard]
+            File::Decoded.open(path, :promote=>true).values.first # This is smelly
+          else
+            File::Decoded.open(path, :promote=>true, :shard=>options[:shard])
+          end
+        else
+          File.open(path)
+        end
+      end
       
       def baked_data(path, options={})
         _, data = baked_file_and_data(path, options)
@@ -104,16 +118,19 @@ module Bun
       end
       
       def create_examination(path, analysis, options={})
-        baked_data(path, options).examination(analysis, file: path)
+        examiner = String::Examination.create(analysis, options)
+        examiner.attach(:string) { baked_data(path, options) } # Lazy evaluation of file contents
+        examiner.attach(:file, self)
+        examiner
       end
       protected :create_examination
       
       def create_expression(path, expression, options={})
-        file, data = baked_file_and_data(path, options)
-        data.expression(options.merge(
-                            expression: expression,
-                            file: file,
-                            path: path))
+        expression_options = options.merge(expression: expression, path: path)
+        evaluator = Bun::Expression.new(expression_options)
+        evaluator.attach(:data) { baked_data(path, options) }
+        evaluator.attach(:file) { file_for_expression(path, options={}) }
+        evaluator
       end
       protected :create_expression
   

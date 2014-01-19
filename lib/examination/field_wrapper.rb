@@ -14,8 +14,8 @@ class String
 
       attr_reader :field_name
 
-      def initialize(field_name, value, string='', options={})
-        super(value, string, options)
+      def initialize(field_name, value, options={})
+        super(value, options)
         @field_name = field_name
       end
 

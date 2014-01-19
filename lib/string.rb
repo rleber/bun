@@ -98,7 +98,8 @@ class String
   end
   
   def examination(analysis, options={})
-    examiner = String::Examination.create(analysis, self, options)
+    examiner = String::Examination.create(analysis, options)
+    examiner.attach :string, self
     examiner
   end
   
@@ -154,6 +155,8 @@ class String
       runs_output = delimiters[0] + 
                     runs_string + 
                     delimiters[1]
+    else
+      runs_output = runs_string =~ /\s/ ? runs_string.inspect : runs_string
     end
     runs_output
   end

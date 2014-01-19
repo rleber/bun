@@ -12,6 +12,15 @@ class String
         "Encapsulize a scalar value"
       end
 
+      def self.wrap(value, string='', options={})
+        case value
+        when String::Examination::Base, String::Examination::FieldWrapper, String::Examination::Wrapper
+          value
+        else
+          self.new(value, string, options)
+        end
+      end
+
       class ValueWrapper
         attr_accessor :value
         def initialize(value)
@@ -27,7 +36,7 @@ class String
         end
 
         def code
-          value.code
+          value.code rescue nil
         end
 
         def method_missing(method, *args, &blk)
@@ -42,30 +51,26 @@ class String
       attr_reader :value
       attr_accessor :right_justified_columns
 
-      def initialize(value, string='', options={})
-        super(string, options)
-        @value = value
+      def self.result_class
+        ValueWrapper
+      end
+
+      def initialize(value, options={})
+        super(options)
+        @value = wrap(value)
         @right_justified_columns = value.is_a?(::Numeric) ? [0] : []
-      end
-
-      def value
-        ValueWrapper.new(@value)
-      end
-
-      def titles
-        nil
       end
       
       def analysis
         @value
       end
-      
-      def format(x)
-        x.to_s
-      end
 
       def code
         value.code
+      end
+
+      def wrap(value)
+        self.class.result_class.new(value)
       end
 
       def method_missing(method, *args, &blk)

@@ -7,42 +7,46 @@ module Bun
   class Expression
     class EvaluationError < RuntimeError; end
 
-    class << self
-      def wrap(value)
-        case value
-        when String::Examination::Base, String::Examination::FieldWrapper
-          value
-        else
-          String::Examination::Wrapper.new(value)
-        end
-      end
-    end
-    
     class Context
       # Context for invocation of expressions in bun examine.
       # Should allow expressions to reference the following fields:
       #   file_path
       #   f[name], or simply name
       #   e[name], or simply name
-      def initialize(file, path, data)
-        @file = file
-        @file_path = path
-        @data = data
+
+      attr_reader :expr
+
+      def initialize(expr)
+        @expr = expr
       end
     
-      attr_reader :file_path
-    
       def f
-        @f ||= FieldAccessor.new(@file)
+        @f ||= FieldAccessor.new(self)
       end
     
       def e
-        @e ||= ExamAccessor.new(@file, @data)
+        @e ||= ExamAccessor.new(self)
       end
 
       def text
-        @data
+        @expr.data
       end
+
+      def file
+        @expr.file
+      end
+
+      def file_path
+        @expr.path
+      end
+
+      def wrap(value)
+        String::Examination::Wrapper.wrap(value)
+      end
+
+      # def fields
+      #   wrap(@file.descriptor.fields)
+      # end
     
       def method_missing(name, *args, &blk)
         raise NoMethodError, "Method #{name} not defined" if args.size>0 || block_given?
@@ -56,29 +60,43 @@ module Bun
       end
 
      class FieldAccessor
-        def initialize(file)
-          @file = file
+        attr_reader :context
+
+        def initialize(context)
+          @context = context
+        end
+
+        # TODO DRY this out
+        def file
+          context.file
         end
 
         def has_field?(name)
-          @file.descriptor.fields.include?(name.to_s)
+          file.descriptor.fields.include?(name.to_s)
         end
       
         def [](field_name)
-          String::Examination::FieldWrapper.new(field_name, @file.descriptor[field_name.to_sym])
+          String::Examination::FieldWrapper.new(field_name, file.descriptor[field_name.to_sym])
         end
       end
     
       class ExamAccessor
-        def initialize(file, data)
-          @file = file
-          @data = data
+        attr_reader :context
+
+        def initialize(context)
+          @context = context
           @bound_examinations = {}
         end
       
-        def at(analysis)
+        def at(analysis, options={})
           analysis = analysis.to_sym
-          @bound_examinations[analysis] ||= @data.examination(analysis)
+          unless @bound_examinations[analysis]
+            examiner = String::Examination.create(analysis, options)
+            context.expr.copy_attachment(:file, examiner)
+            context.expr.copy_attachment(:data, examiner, :string)
+            @bound_examinations[analysis] = examiner
+          end
+          @bound_examinations[analysis]
         end
 
         def has_exam?(name)
@@ -91,18 +109,16 @@ module Bun
       end
     end
 
-    attr_accessor :data
-    attr_reader   :expression
+    attr_reader   :expression, :path
     
     def initialize(options={})
       @expression = options[:expression]
-      @file = options[:file]
       @path = options[:path]
-      @data = options[:data]
+      @attachments = {}
     end
     
     def value(options={})
-      @context = Context.new(@file, @path, @data)
+      @context = Context.new(self)
       value = begin
         @context.instance_eval(@expression)
       rescue => err
@@ -114,7 +130,7 @@ module Bun
       rescue SyntaxError => err # Blanket rescue doesn't trap syntax errors
         raise EvaluationError, err.to_s
       end
-      self.class.wrap(value)
+      String::Examination::Wrapper.wrap(value)
     end
 
     def code
@@ -123,6 +139,41 @@ module Bun
     
     def to_s
       value.to_s
+    end
+
+    # Could DRY this out (also appears in Examinations)
+    def attach(name, value=nil, &blk)
+      if block_given?
+        @attachments[name.to_sym] = blk
+      else
+        @attachments[name.to_sym] = value
+      end
+    end
+
+    def retrieve(name)
+      v = @attachments[name.to_sym]
+      v = v.call if v.is_a?(Proc)
+      v
+    end
+
+    def copy_attachment(name, to, to_name=nil)
+      name = name.to_sym
+      to_name ||= name
+      attachment = @attachments[name]
+      if attachment.is_a?(Proc)
+        to.attach(to_name, &attachment)
+      else
+        to.attach(to_name, attachment)
+      end
+      attachment
+    end
+
+    def file
+      @file ||= retrieve(:file)
+    end
+
+    def data
+      @data ||= retrieve(:data)
     end
   end
 end

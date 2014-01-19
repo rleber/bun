@@ -1,9 +1,9 @@
 TODO
 _High Priority_
 File::Expression
-    Syntax for referencing shard data (with index)
     Lazy evaluation of text
-    to_matrix (for Examinations)
+    Setting of --min (e.g. with chars exam)
+    Syntax for referencing shard data (with index)
 Consolidate exam, field, formula in bun find, map, and examine (and same?)
     Allow --inspect option
     Allow <field_or_exam_name> without e[] or f[] syntax
