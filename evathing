@@ -1,0 +1,98 @@
+---
+:identifier: Bun
+:block_count: 11
+:block_padding_repairs: 10
+:data_format: :raw
+:decode_time: 2014-01-18 08:49:22.662218000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a1ac93fe4110fbacdc223807c983e69f63af1f12]
+:description: ==> freeze file containing roff source for fass '77 script
+:digest: 4c014d341b9c6f54058954be504e0b01
+:file_grade: :decoded
+:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:first_block_size: 3869
+:owner: fass
+:path: fass/scripfrz
+:tape: ar004.0888
+:tape_size: 40058
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:34:01.116501000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! '.so fass/macros
+
+  .so fass/one/zero
+
+  .so fass/one/one
+
+  .so fass/one/two
+
+  .so fass/one/three
+
+  .so fass/one/four
+
+  .so fass/one/five
+
+  .so fass/one/six
+
+  .so fass/one/seven
+
+  .so fass/one/eight
+
+  .so fass/one/nine
+
+  .so fass/one/ten
+
+  .so fass/one/eleven
+
+  .so fass/one/twelve
+
+  .so fass/one/thirteen
+
+  .so fass/one/fourteen
+
+  .so fass/one/fifteen
+
+  .so fass/one/sixteen
+
+  .so fass/three/zero
+
+  .so fass/three/one
+
+  .so fass/three/two
+
+  .so fass/three/three
+
+  .so fass/three/four
+
+  .so fass/three/five
+
+  .so fass/three/six
+
+  .so fass/three/seven
+
+  .so fass/three/eight
+
+  .so fass/three/nine
+
+  .so fass/three/ten
+
+  .so fass/three/eleven
+
+  .so fass/three/twelve
+
+  .so fass/three/thirteen
+
+  .so fass/three/fourteen
+
+  .so fass/three/fifteen
+
+  .so fass/three/sixteen
+
+  .so fass/three/seventen
+
+'
+:shard_number: 2
+:shard_name: evathing
+:shard_time: 1977-02-10 16:44:55.000000000 -05:00
+:shard_blocks: 2
+:shard_start: 659
+:shard_size: 174

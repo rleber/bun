@@ -1,0 +1,104 @@
+---
+:identifier: Bun
+:block_count: 11
+:block_padding_repairs: 10
+:data_format: :raw
+:decode_time: 2014-01-18 08:49:23.931823000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a1ac93fe4110fbacdc223807c983e69f63af1f12]
+:description: ==> freeze file containing roff source for fass '77 script
+:digest: d2043fa58d78af66e74733fdd481e491
+:file_grade: :decoded
+:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:first_block_size: 3869
+:owner: fass
+:path: fass/scripfrz
+:tape: ar004.0888
+:tape_size: 40058
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:34:01.116501000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! '.so fass/fasshole
+
+  .in0
+
+  .nf
+
+  .he ''FASS''- % -''ACT I SCENE I''
+
+  .FO ''ACT I SCENE I''''FASS''
+
+  Act 1, Scene 1 - Closing Song
+
+
+  *************************************
+
+  ***to the tune of "Comedy Tonight"***
+
+  *************************************
+
+  Something amusing, something confusing,
+
+  Something for everyone:  a travesty tonight;
+
+  Some things are aimless, some things are shameless,
+
+  Something for everyone:  a travesty tonight;
+
+  Nothing that''s dense, nothing intense;
+
+  Nothing that even seems to make sense.
+
+  Some jokes are oldies, some jokes are mouldies,
+
+  Written by folks who couldn''t write,
+
+  Comedy tomorrow, travesty tonight.
+
+
+  Some parts are gifted, some parts are lifted,
+
+  Something from everyone, a travesty tonight.
+
+  Num, num, etc.
+
+  Something num, num, num, num, a travesty tonight.
+
+  Something verbose, something that''s gross,
+
+  Even the acting seems comatose.
+
+  Old situations, Serbo-Croatians,
+
+  Ethnic minorities delight...
+
+  Prejudice tomorrow, travesty tonight.
+
+
+  Something that''s foolish, something that''s ghoulish,
+
+  Something insidious:  a travesty tonight.
+
+  Something that''s tricky, something that''s sticky,
+
+  Something perfidious:  a travesty tonight.
+
+  Nothing obscene, nothing that''s clean,
+
+  All of the humour fits in between,
+
+  We''re out for laughter, that''s what we''re after,
+
+  We hope that you will prove us right,
+
+  Comedy tomorrow, travesty tonight.
+
+
+  fin
+
+'
+:shard_number: 4
+:shard_name: 1one
+:shard_time: 1977-02-18 09:06:07.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 904
+:shard_size: 299

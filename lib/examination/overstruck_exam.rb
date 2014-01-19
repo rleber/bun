@@ -11,6 +11,10 @@ class String
       def self.description
         "Does data contain backspaces?"
       end
+
+      def titles
+        %w{Overstruck}
+      end
       
       def labels
         [:overstruck, :not_overstruck]

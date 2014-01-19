@@ -1,0 +1,45 @@
+---
+:identifier: Bun
+:block_count: 11
+:block_padding_repairs: 10
+:data_format: :raw
+:decode_time: 2014-01-18 08:49:44.186433000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a1ac93fe4110fbacdc223807c983e69f63af1f12]
+:description: ==> freeze file containing roff source for fass '77 script
+:digest: 85d191e482871f881ab7950d290d963f
+:file_grade: :decoded
+:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:first_block_size: 3869
+:owner: fass
+:path: fass/scripfrz
+:tape: ar004.0888
+:tape_size: 40058
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:34:01.116501000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! ".so fass/fasshole\n.he'FASS'- % -'ACT III SCENE XVI'\n.fo'ACT III SCENE
+  XVI''FASS'\nAct 3, Scene 16 - Interruption\n\n.aa ANNOUNCER1\nWe interrupt these
+  technical difficulties to  bring you the following\nspecial bulletin.\n\n.aa ANNOUNCER2\nThe
+  sun didn't rise this morning; great cracks are forming on the\nearth's surface.
+  Details in twenty minutes.\n\n.aa ANNOUNCER1\nIn a last ditch effort to avoid complete
+  economic disaster, Britian has\nsold itself to IBM international.  Spokesman for
+  the company say that\nthe country will be used as a tax write-off and warehouse.
+  \ Shortly\nafter the announcement of the deal, Honeywell stated that it is presently\nconcluding
+  negotiations for the purchase of Ireland.  This following\nthe recent sale of Poland
+  to the Toronto Blue Jays by mistake.\n\n.aa ANNOUNCER2\nThe Atomic Hemorrhoids Commission
+  of Canada today unveiled  plans to\nuse Galt as the site of their new nuclear pile.
+  \ \n\n.aa ANNOUNCER1\nAn appeal has been presented to the United States Supreme
+  Court for\na stay of execution for convicted killer Gary Gilmore, om the \ngrounds
+  that he is in fact not Gilmore, but Generalissimo\nFrancisco Franco, and therefore
+  dead already.\n\n.aa ANNOUNCER2\nIn a surprise move today, construction crews in
+  Toronto were \nordered to clear an l800-foot strip of land due west of the CN tower.\nWhen
+  informed by meteorologists that the term \"prevailing westerlies\"\nrefers to winds
+  coming\n.ul\nfrom\nthe west, Mayor David Crombie immediately\nordered the workers
+  to the\n.ul\neast\nside of the tower.\n\n.aa ANNOUNCER2\nAnd now we return to our
+  technical difficulties still in progress.\n\nfin\n"
+:shard_number: 36
+:shard_name: 3sixteen
+:shard_time: 1977-02-18 11:01:09.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 39076
+:shard_size: 360

@@ -52,14 +52,18 @@ module Bun
           end
         end
 
+        attr_accessor :content, :data, :descriptor
+
+        # TODO Woof! This is getting really smelly
         def forced_open(fname, options={}, &blk)
           input = read_information(fname)
           input.merge!(tape_path: fname)
-          build_data(input, options)
-          build_descriptor(input)
-          options = options.merge(:data=>@data, :descriptor=>@descriptor, :tape_path=>options[:fname])
-          if options[:type] && @descriptor[:tape_type]!=options[:type]
-            msg = "Expected file #{fname} to be a #{options[:type]} file, not a #{descriptor[:tape_type]} file"
+          klass = options[:as_class] || self # So that File::Decoded can force open as File::Unpacked
+          klass.build_data(input, options)
+          klass.build_descriptor(input)
+          options = options.merge(:data=>klass.data, :descriptor=>klass.descriptor, :tape_path=>options[:fname])
+          if options[:type] && klass.descriptor[:tape_type]!=options[:type]
+            msg = "Expected file #{fname} to be a #{options[:type]} file, not a #{klass.descriptor[:tape_type]} file"
             # TODO Remove this option; use exception handling, instead
             if options[:graceful]
               stop "!#{msg}"
@@ -67,7 +71,6 @@ module Bun
               raise UnexpectedTapeTypeError, msg
             end
           end
-          klass = options[:as_class] || self # So that File::Decoded can force open as File::Unpacked
           file = klass.create(options)
           if block_given?
             begin

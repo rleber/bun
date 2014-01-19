@@ -36,6 +36,10 @@ class String
         def format_rows
           self.map{|row| exam.format_row(row) }
         end
+
+        def right_justified_columns
+          exam.right_justified_columns
+        end
       end
 
       # Designed be overridden in subclasses
@@ -45,7 +49,7 @@ class String
 
       # Designed be overridden in subclasses
       def right_justified_columns
-        formatted_table = value.formatted
+        formatted_table = value.to_matrix
         if formatted_table.size == 0
           []
         else

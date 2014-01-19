@@ -1,0 +1,32 @@
+---
+:identifier: Bun
+:block_count: 11
+:block_padding_repairs: 10
+:data_format: :raw
+:decode_time: 2014-01-18 08:49:42.905828000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a1ac93fe4110fbacdc223807c983e69f63af1f12]
+:description: ==> freeze file containing roff source for fass '77 script
+:digest: 9e0433dc4cf9b98fa4fda1b15276f8a1
+:file_grade: :decoded
+:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:first_block_size: 3869
+:owner: fass
+:path: fass/scripfrz
+:tape: ar004.0888
+:tape_size: 40058
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:34:01.116501000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! ".so fass/fasshole\n.he'FASS'- % -'ACT III SCENE XIV'\n.fo'ACT III SCENE
+  XIV''FASS'\nAct 3, Scene 14 - Oh, wow!\n\n.nf\n.in3\n XXXXXX   XX    XX      XX
+  \   XX   XXXXXX   XX    XX  XX\nXX    XX  XX    XX      XX    XX  XX    XX  XX    XX
+  \ XX\nXX    XX  XX    XX      XX    XX  XX    XX  XX    XX  XX\nXX    XX  XXXXXXXX
+  \     XX    XX  XX    XX  XX    XX  XX\nXX    XX  XX    XX      XX XX XX  XX    XX
+  \ XX XX XX  XX\nXX    XX  XX    XX XX   XX XX XX  XX    XX  XX XX XX  \n XXXXXX
+  \  XX    XX XX    XX  XX    XXXXXX    XX  XX   XX\n                   X\n.fi\n\nfin\n"
+:shard_number: 34
+:shard_name: 3fourtee
+:shard_time: 1977-02-10 16:56:51.000000000 -05:00
+:shard_blocks: 1
+:shard_start: 36240
+:shard_size: 124

@@ -25,9 +25,26 @@ class String
           @exam = exam
           @value = value
         end
-        
+
         def to_s
           exam.format(value)
+        end
+
+        def to_matrix
+          [[exam.format(value)]]
+        end
+
+        # TODO Some of this could be dried up with other Result classes with a Mixin
+        def titles
+          exam.titles rescue nil 
+        end
+
+        def to_titled_matrix
+          [titles ? [titles] : []] + to_matrix
+        end
+
+        def right_justified_columns
+          [0]
         end
         
         # Behave like a Float

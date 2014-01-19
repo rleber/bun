@@ -67,6 +67,14 @@ class String
       def to_s
         value.to_s
       end
+
+      def to_matrix
+        value.to_matrix
+      end
+
+      def to_titled_matrix
+        value.to_titled_matrix
+      end
       
       def inspect
         value.inspect

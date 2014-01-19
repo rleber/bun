@@ -44,17 +44,8 @@ class String
           [exam.format_row(self)]
         end
         
-        def formatted
-          unless @formatted
-            @formatted = format_rows
-            titles = exam.titles rescue nil
-            @formatted.unshift titles if titles
-          end
-          @formatted
-        end
-            
         def justified
-          tbl = formatted
+          tbl = to_titled_matrix
           tbl.justify_rows(right_justify: exam.right_justified_columns)
         end
       
@@ -65,7 +56,19 @@ class String
         def to_s
           rows.join("\n")
         end
-        
+
+        def to_matrix
+          @matrix ||= format_rows
+        end
+
+        def titles
+          exam.titles rescue nil
+        end
+
+        def to_titled_matrix
+          [titles ? [titles] : []] + to_matrix
+        end
+
         def fields
           exam.fields
         end
@@ -90,6 +93,10 @@ class String
           @exam = exam
           super()
           self.merge!(hash)
+        end
+
+        def right_justified_columns
+          exam.right_justified_columns
         end
       end
       
@@ -122,18 +129,19 @@ class String
       alias_method :right_justified, :right_justified_columns
 
       # Subclasses may define a set of "format_xxx" methods for each field
-    
-      def format_row(row)
-        fields.map do |f|
-          if respond_to?("format_#{f}")
-            send("format_#{f}", row)
-          else
-            row[f].to_s
-          end
+      def format_field(f, row)
+        if respond_to?("format_#{f}")
+          send("format_#{f}", row)
+        else
+          row[f].to_s
         end
       end
+
+      def format_row(row)
+        fields.map {|f| format_field(f,row) }
+      end
       alias_method :format, :format_row
-            
+
       def make_value(x)
         Result.new(self,x)
       end

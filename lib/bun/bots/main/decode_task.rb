@@ -19,10 +19,8 @@ EOT
 def decode(file_name, out=nil)
   check_for_unknown_options(file_name, out)
   shard = options[:shard]
-  if file_name =~ /(^.*)\[(.*)\]$/ # Has a shard specifier
-    file_name = $1
-    shard = $2
-  end
+  file_name, shard_2 = Bun::File.get_shard(file_name)
+  shard = shard_2 || shard
   out ||= '-'
   # TODO The following should be a simple primitive operation
   case File.file_grade(file_name)

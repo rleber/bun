@@ -15,6 +15,7 @@ require 'lib/bun/bots/freezer'
 require 'lib/bun/bots/sandbox'
 require 'lib/bun/bots/test'
 require 'lib/bun/dump'
+require 'lib/bun/formatter'
 require 'lib/array'
 require 'pp'
 

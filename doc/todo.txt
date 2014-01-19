@@ -1,25 +1,20 @@
 TODO
 _High Priority_
-Examinations should coerce to floats or ints
+File::Expression
+    Syntax for referencing shard data (with index)
+    Lazy evaluation of text
+    to_matrix (for Examinations)
 Consolidate exam, field, formula in bun find, map, and examine (and same?)
     Allow --inspect option
-    Allow exam: (etc.) syntax
     Allow <field_or_exam_name> without e[] or f[] syntax
-    Change formula to expression throughout
-    Prescan formulas to check for simple references to fields or exams (for speed) ?
-    Allow multiple fields somehow
-    Is the -e/f option required at all?
-    Syntax for referencing shard data (with index)
     Pseudo references: file_path, text
---if (or --where, or --with) option to bun map (i.e. include only files which match a condition)
---unless (or --not, or --without) option for bun find, map
+Add synthetic field descriptions: text, file_path
+Bun fields
+Bun exams
 More extensions to bun examine
-    Blocking, padding (can then eliminate bun sandbox find_large_files) -- only for packed files
-        Size in links -- only for packed or unpacked files
-        Size in llinks -- only for packed or unpacked files
-        Padded (e.g. odd # of 36-bit words in a block)
-            Theoretically (for any packed or unpacked file)
-            Actually (for packed files only)
+    Size in llinks -- only for packed or unpacked files
+    Field_names
+    Field_values
     Extended fields (pre-defined, e.g. tape basename, etc.)
         File name (with subfiles, etc.)
         File basename
@@ -33,7 +28,7 @@ More extensions to bun examine
     Try determining type by comparing preamble contents:
         Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
             binary load module
-bun examine --usage
+Multiple output formats for bun examine, et al
 Find duplicates
     Same file name
     Absolutely identical
@@ -116,6 +111,7 @@ Implement interactive (or stream) editor:
     Alternatively: check out the contents (in whatever format), edit, then check them back in again
 
 _Medium Priority_
+Other output formats, e.g. xls, html
 Better audit trail mechanism: Where did a file come from?
     Unpack should record where unpacked from/to
     Decode should record where decoded from/to

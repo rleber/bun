@@ -1,0 +1,36 @@
+---
+:identifier: Bun
+:block_count: 11
+:block_padding_repairs: 10
+:data_format: :raw
+:decode_time: 2014-01-18 08:49:32.755734000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a1ac93fe4110fbacdc223807c983e69f63af1f12]
+:description: ==> freeze file containing roff source for fass '77 script
+:digest: 9976afd8db66cbdb08891460a824b9f0
+:file_grade: :decoded
+:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:first_block_size: 3869
+:owner: fass
+:path: fass/scripfrz
+:tape: ar004.0888
+:tape_size: 40058
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:34:01.116501000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! ".so fass/fasshole\n.he'FASS'- % -'ACT I SCENE XV'\n.fo'ACT I SCENE XV''FASS'\nAct
+  1, Scene 15 - Demigod Commercial\n\n(THIS SPEECH IS READ DURING A BLACKOUT WHILE
+  THE SET IS CHANGED)\n\n.aa VOICE\nAre you tired of being mortal? Did Charles Atlas
+  send you back your dime?\nDo people give you boxes of All-Bran for Christmas?\n
+  \  Then get the all-new Popeel's Pocket Demigod.\nYes, Popeel's Pocket Demigod.
+  It's easy to operate, fun to use.\nSimply sacrifice a close relative in front of
+  the deluxe injection-moulded\ngraven image (available in a wide variety of colours)
+  and instantly all\nthe powers of ther universe lie at your disposal.\n   Bicycle
+  to England! Turn encyclopaedia salesmen into banana\nyoghurt! Can he make a stone
+  so big he can't move it? You decide - \nwith Popeel's Pocket Demigod, only $9.98,
+  batteries not included.\n   Void in Wisconson and where prohibited by law.\n\nfin\n"
+:shard_number: 18
+:shard_name: 1fifteen
+:shard_time: 1977-02-10 16:48:49.000000000 -05:00
+:shard_blocks: 2
+:shard_start: 17555
+:shard_size: 193

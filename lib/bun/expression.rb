@@ -1,19 +1,32 @@
 #!/usr/bin/env ruby
 #  -*- encoding: utf-8 -*-
 
+require 'lib/examination/wrapper'
+
 module Bun
   class Expression
     class EvaluationError < RuntimeError; end
+
+    class << self
+      def wrap(value)
+        case value
+        when String::Examination::Base, String::Examination::FieldWrapper
+          value
+        else
+          String::Examination::Wrapper.new(value)
+        end
+      end
+    end
     
     class Context
       # Context for invocation of expressions in bun examine.
       # Should allow expressions to reference the following fields:
-      #   path
-      #   fields[name]
-      #   exams[name]
+      #   file_path
+      #   f[name], or simply name
+      #   e[name], or simply name
       def initialize(file, path, data)
         @file = file
-        @file_path = @path
+        @file_path = path
         @data = data
       end
     
@@ -25,6 +38,10 @@ module Bun
     
       def e
         @e ||= ExamAccessor.new(@file, @data)
+      end
+
+      def text
+        @data
       end
     
       def method_missing(name, *args, &blk)
@@ -48,7 +65,7 @@ module Bun
         end
       
         def [](field_name)
-          @file.descriptor[field_name.to_sym]
+          String::Examination::FieldWrapper.new(field_name, @file.descriptor[field_name.to_sym])
         end
       end
     
@@ -69,7 +86,7 @@ module Bun
         end
       
         def [](analysis)
-          at(analysis).value
+          at(analysis)
         end
       end
     end
@@ -84,15 +101,24 @@ module Bun
       @data = options[:data]
     end
     
-    def value
+    def value(options={})
       @context = Context.new(@file, @path, @data)
-      begin
+      value = begin
         @context.instance_eval(@expression)
       rescue => err
-        raise EvaluationError, err.to_s
+        if options[:raise]
+          raise
+        else
+          raise EvaluationError, err.to_s
+        end
       rescue SyntaxError => err # Blanket rescue doesn't trap syntax errors
         raise EvaluationError, err.to_s
       end
+      self.class.wrap(value)
+    end
+
+    def code
+      0
     end
     
     def to_s

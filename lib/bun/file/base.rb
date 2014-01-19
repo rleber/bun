@@ -82,8 +82,11 @@ module Bun
         if options[:promote]
           if File.file_grade(path) == :baked
             [nil, File.read(path)]
+          elsif File.tape_type(path) == :frozen && !options[:shard]
+            files = File::Decoded.open(path, :promote=>true, :expand=>true)
+            [files.values.first, files.values.map{|f| f.data}.join ]
           else
-            f = File::Decoded.open(path, :promote=>true)
+            f = File::Decoded.open(path, :promote=>true, :shard=>options[:shard])
             [f, f.data]
           end
         else
@@ -97,36 +100,7 @@ module Bun
       end
       
       def examination(file, exam, options={})
-        case exam.to_s.strip
-        when ''
-          # Do nothing
-        when /^exam:(.*)/
-          exam = $1
-          examination = Bun::File.create_examination(file, exam, promote: options[:promote])
-          # TODO Change this to range
-          examination.minimum = options[:min] if examination.respond_to?(:minimum)
-          examination.case_insensitive = options[:case] if examination.respond_to?(:case_insensitive)
-          {
-            result: examination,
-            code:   examination.code,
-          }
-        when /^field:(.*)/
-          field = $1
-          value = File.open(file) do |f|
-            value = f.descriptor[field] || nil rescue nil
-          end
-          {
-            result: value,
-          }
-        else # It's an expression
-          expr = exam.sub(/^expr:/,'')
-          # TODO allow other parameters to the expression, from the command line
-          expression = Bun::File.create_expression(file, expr, promote: options[:promote])
-          {
-            # TODO Use .value?
-            result: expression.value,
-          }
-        end
+        Bun::File.create_expression(file, exam, promote: options[:promote], shard: options[:shard])
       end
       
       def create_examination(path, analysis, options={})
@@ -264,6 +238,14 @@ module Bun
      
       def expand_path(path, relative_to=nil)
         path == '-' ? path : super(path, relative_to)
+      end
+
+      def get_shard(path)
+        if path =~ /^(.*?)\[(.*)\]$/ # Has shard specifier
+          [$1, $2]
+        else
+          [path, nil]
+        end
       end
     end
     attr_reader :archive

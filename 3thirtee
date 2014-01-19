@@ -1,0 +1,108 @@
+---
+:identifier: Bun
+:block_count: 11
+:block_padding_repairs: 10
+:data_format: :raw
+:decode_time: 2014-01-18 08:49:42.280993000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a1ac93fe4110fbacdc223807c983e69f63af1f12]
+:description: ==> freeze file containing roff source for fass '77 script
+:digest: 4246f2b8bf269ca16680d85774ed441c
+:file_grade: :decoded
+:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:first_block_size: 3869
+:owner: fass
+:path: fass/scripfrz
+:tape: ar004.0888
+:tape_size: 40058
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:34:01.116501000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! ".so fass/fasshole\n.he'FASS'- % -'ACT III SCENE XIII'\n.fo'ACT III SCENE
+  XIII''FASS'\nAct 3, Scene 13 - Thee\n\n(HUARYU AND LEFTY HIT DECK AS BUS SOUNDS
+  \nARE HEARD--BUS COMES AND GOES)\n\n.hu\nWhat was that that just missed us?\n\n.le\nThe
+  bus.\n\n.hu\nOh, no.  When's the next one?\n\n.le\n(WHO HAS BEEN PATTING HIMSELF
+  ON THE GROUND AND NOW STOPS)\nThree  hours.  (RESUMES PATTING)\n\n.hu\n\nWhat are
+  you doing?\n\n.le\nJust checking my pockets to see if I\nhave the exact change.\n\n.hu\nBut
+  you don't have any pockets.\n\n.le\nNo wonder I don't have the change.\n\n.hu\nI
+  don't have any either.\n\n.le\nPockets?\n\n.hu\nNo, change.  How are we going to
+  pay the\nexact fare without any change?\n\n.le\nHere comes someone.  Why don't we
+  ask her?\n\n(ENTER CHICK, PREFERABLY SLEAZY,\nWEARING LARGE WRIST WATCH ON ARM.)\n\n.aa
+  CHICK\n(TO LEFTY)\nHi handsome, got the time?\n\n(LEFTY GRABS HER ARM, \"LOOKS\"
+  AT THE WATCH)\n\n.le\nNine fifteen.  Got change for a credit?\n\n.aa CHICK\nCheapskate!
+  \ (STOMPS OFF)\n\n.hu\nNow what do we do?\n\n.le\nWell, there's a store of some
+  kind over\nthere.\n\n(POINTS TO FRONT OF STAGE AS LIGHTS\nCOME UP ON THAT AREA.
+  \ JJ IS SITTING AT DESK OR\nTABLE, HEAD BOWED, EYES CLOSED.  THERE IS A LARGE\nPLASTIC
+  BAG OF GREEN ORGANIC MATTER ON TABLE.\nALSO A BELL, PILE OF RECORDS, AND BOX WITH\nLID.
+  \ LEFTY AND HUARYU PROCEED DOWNSTAGE\nTO JJ)\n\n.hu\nExcuse me.\n\n(JJ SNORES SOFTLY,
+  HUARYU RAISES\nVOICE)\n\nUh ...Excuse me.\n\n(JJ SNORES LOUDER. HUARYU SHOUTS)\n\nExcuse
+  me!!\n\n(JJ SNORES A REAL KILLER)\n\n(TO LEFTY)\nNow what do we do?\n\n.le\n(THOUGHTFULLY)
+  \ That rings a bell...\n\n.hu\nIt's worth a try.\n(GRABS BELL AND RINGS)\n\n.aa
+  JJ\nBe down in a minute!\n(OPENS EYES SUDDENLY, JUMPS UP.\nTO HUARYU AND LEFTY)\nI'm
+  sorry but we're closed.\n\n.hu  \n(PERPLEXED)  Closed?\n\n.aa JJ\nYes, it's Monday.
+  \ We're never open on \nMonday, a Monday, a Monday -\n\n.le\nBut it's not Monday.\n\n.aa
+  JJ\nIt's not?\n\n.le\nNo.  It won 't be Monday until a week from today.\n\n.aa JJ\nOh!
+  \ In that case we must be open; I should\ntake down the closed sign.\n\n.hu\nThere
+  isn't one.\n\n.aa JJ\nOh? Oh, the cat must've eaten it...\nWell, what can I do for
+  you?\n\n.hu\nCan you change a credit?\n\n.aa JJ\nInto what?\n\n.hu\nNickels, dimes,
+  quarters -\n\n.aa JJ\nGood heavens, no.  You'll want the bank down\nthe road.  Just
+  take the number 9 bus\nsouth until you reach-\n\n.hu\nBut you don't understand!\nWe
+  haven't got the exact change.  That's why \nwe came in here.\n\n.aa JJ\nOh, I see.
+  \ You just want some change.\n\n.hu\nThat's right.\n\n.aa JJ\n(HANDING HER CLOTHES)
+  \ Here.\n\n.hu\nWhat's that?\n\n.aa JJ\nA change.\n\n.hu\nAll this just for one
+  credit!\n\n.aa JJ\nToday we're having a special:  all this for\nhalf a credit.\n\n.hu\nLook,
+  all I want is some coins to give the\nbus driver.\n\n.aa JJ\nWell, perhaps you'd
+  like to purchase something?\n\n.hu\n(LOOKING INTO PLASTIC BAG)  What's this?\n\n.aa
+  JJ\n(GRABS BAG AND STUFFS AWAY)  That's not for sale.\n\n.hu\nWhat is it?\n\n.aa
+  JJ\nFood for my gerbil.\n\n.le\nYou have a gerbil?\n\n.aa JJ\nNo.  (PAUSE)  Not
+  any more.\n\n.hu\nDid the cat eat it?\n\n.aa JJ\nNo, the mailman trampled him.  Poor
+  Robert.\n\n.hu\nI'm very sorry.  How did it happen?\n\n.aa JJ\nHe was running from
+  the dog. The mailman, that is.\n\n.le\nThe dog was chasing him?\n\n.aa JJ\nNo, the
+  dog was being chased by the Bengal\ntiger, which was running away from a flock of\nfruitbats.\n\n.le\nAnd
+  who was chasing the fruitbats?\n\n.aa JJ\nThe fire in the basement.\n(PAUSE)  Chased
+  them right up the stairs\nand out of the house.  Made a frightful mess\nof the lawn.
+  \ Burnt places all over.  All it's\ngood for now is hopscorch.\n\n.hu\n(CHANGING
+  THE SUBJECT)  Is there anything for sale here?\n\n.aa JJ\nOh, yes.  All kinds of
+  things.  (PAUSE)  Actually, you see, we\nonly sell one thing here.\n\n.hu\nWhat's
+  that?\n\n.aa JJ\n(LOOKING AROUND)  Where?\n\n.hu\nNo, no, no.  What do you sell?\n\n.aa
+  JJ\nOh!  We sell ring modulators.\n\n.aa HUARYU~AND~LEFTY\n(STUNNED)  What?!\n\n.aa
+  JJ\nWe sell ring modulators.  This is Thee \nRing Modulator Shop.\n\n.le\n(STILL
+  INCREDULOUS)  The ring modulator\nshop?\n\n.aa JJ\nNo,\n.ul\nThee\nRing modulator
+  shop.\n\n.le\nThat's what\n.ul\nwe\nsaid.\n\n.hu\nAnd that's exactly what we want...
+  A ring\nmodulator, I mean.\n\n.aa JJ\n(POUTING)\nI thought you wanted change.\n\n.hu\nYes,
+  well, we wanted change for the bus, but-\n\n.aa JJ\nYou can't buy a bus with just
+  change.\n\n.hu\nNo, you don't understand.  We wanted to\ntake the bus to find the
+  true page to take to\nthe winkle to get a ring modulator.\n\n.aa JJ\nWell, you'd
+  better hurry.  It looks like\nyou've got a big day ahead of you!\n\n.le\nWe decided
+  to get the ring modulator\nfirst.\n\n.aa JJ\nWell, you've certainly come to the
+  right place\nfor that! You say you want a ring modulator?\n\n.le\nIf my memory serves
+  me correctly.\n\n.aa JJ\nWell that's what we sell here. What kind were you thinking
+  of?\n\n.hu\nDo you have a number 14?\n\n.aa JJ\nI'm not sure. (POINTS TO A STACK
+  OF RECORDS) Have a look.\nThey're in alphabetical order.\n\n.hu\n(SEARCHING THROUGH
+  STACK) I don't think there's one here.\n\n.aa JJ\n(GLANCES AT BOOK) No, there isn't.\n\n.le\nDoes
+  this mean you don't have a number 14?\n\n.aa JJ\nNot necessarily. I might be sitting
+  on one. (LOOKS)\nYes, here we are! (HOLDS UP MANGLED DISC) That'll be\n40 quid.\n\n.le\nWhat?\n\n.aa
+  JJ\nThat'll be 40 quid.\n\n.hu\n(INTO COMMUNICATOR) Mr. Jock! I need 40 squids.\n\n.jo\nHeeeeey!
+  Que pasa?\n\n.hu\nI need 40 squids to buy a ring modulator. \n\n.jo\nFar out, man!\n\n.hu\n(EXASPERATED)
+  I need -\n\n.aa JJ\nNo, no, no! Forty\n.ul\nquid.\n\n.hu\nWhat?\n\n.aa JJ\n40 quid...
+  40 pounds.\n\n.hu\n40 pounds of squid?\n\n.aa JJ\nNo, no! You don't understand!
+  40 pounds\n.ul\nsterling.\n\n.hu\nChange that, Mr. Jock. He wants 40 pounds of starlings.\n\n.jo\nOh,
+  wow, like starlings, man!\n\n.st\n(SOBER) I believe that the gentleman is asking
+  for 40\npounds sterling.\n\n.hu\nThat's what I said.\n\n.st\nNo, you don't understand.\n\n.hu\nSo
+  I've been told.\n\n.st\nYou see, pounds sterling is a type of currency.\n(ASIDE)
+  Get off my leg, Jock.\n\n.hu\nOh. (TO JJ) How much is that in Pederasty units?\n\n.aa
+  JJ\nCouple o' bucks.\n\n.hu\nDamn. I only have one credit.\n\n.aa JJ\nWe take Master
+  Charge.\n\n.hu\nNo, that's no good. I don't have a card, just a credit.\n(PAUSE.
+  TO COMMUNICATOR) Mr. Spot, would you beam us down a \ncouple of credits? And tell
+  me, is Mr. Jock all right?\n\n.st\nHe's doing fine.\n\n.jo\nWow, yeah. (STONED LAUGH)\n\n.st\nShuttup,
+  Jock!\n\n.hu\n(PULLS BILLS OUT OF COMMUNICATOR AND GIVES TO JJ)\n\nThere. Keep the
+  change.\n(TO LEFTY) Let's get back to the Winkle. (COMMUNICATOR) Mr. Spot.\nWe have
+  a ring modulator. Please notify the others to meet usa at the\nWinkle's palace.\n\n(HUARYU
+  AND LEFTY BEGIN TO LEAVE)\n\n.aa JJ\nWait! Would you like a page before you go?\n\n.hu\nNo
+  thanks, I can't afford one.\n\n.aa JJ\nThat's all right; I'm a free page.\n\n.hu\nOh.
+  Come along, then. I'll leaf through you on the way.\n\n(EXEUNT)\n\nfin\n"
+:shard_number: 33
+:shard_name: 3thirtee
+:shard_time: 1977-02-18 10:32:57.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 34533
+:shard_size: 1707

@@ -1,0 +1,117 @@
+---
+:identifier: Bun
+:block_count: 11
+:block_padding_repairs: 10
+:data_format: :raw
+:decode_time: 2014-01-18 08:49:36.574966000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a1ac93fe4110fbacdc223807c983e69f63af1f12]
+:description: ==> freeze file containing roff source for fass '77 script
+:digest: d700391a6c4c2d7c7be25be6843af121
+:file_grade: :decoded
+:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:first_block_size: 3869
+:owner: fass
+:path: fass/scripfrz
+:tape: ar004.0888
+:tape_size: 40058
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:34:01.116501000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! ".so fass/fasshole\n.he'FASS'- % -'ACT III SCENE IV'\n.fo'ACT III SCENE
+  IV''FASS'\nAct 3, Scene 4 - Tom Brzustowskabil\n\n(TOM BRZUSTOWSKABIL IS SITTING
+  ALONE AT A DESK CENTER STAGE.  THE DESK\nIS PILED HIGH ON BOTH SIDES WITH STACKS
+  OF PAPER.  THERE IS A LOWER \nSTACK IN THE MIDDLE OF THE DESK WHERE HE WORKS.  DRAPED
+  OVER\nTHE DESK IS SOME RED RIBBON (AS IN RED TAPE). THE DOG-EARED PAGE ENTERS.\nSHE
+  HAS THE RED RIBBON WOUND AROUND HER A FEW TIMES WITH A TRAIL OF\nRIBBON DRAGGING
+  BEHIND. THE TRAIL LEADS ALL THE WAY OFF STAGE)\n\n.aa PAGE\nI have an important
+  document for you, sir.\n\n.tb\n(NOTICES THAT THE DOCUMENT IS NOT VERY LONG)\nRead
+  it for me please.\n\n.aa PAGE\nSorry, but it says right here (POINT AT THE TOP OF
+  THE DOCUMENT), here\n(POINTING TO THE MIDDLE OF THE DOCUMENT) and here (NEAR THE
+  END OF\nTHE DOCUMENT) that it is for your eyes only.\n\n.tb\nVery well. Give it
+  here.\n\n(THE PAGE DOES SO BUT CONTINUES TO STAND BY TOM BRZUSTOWSKABIL'S DESK.\nTOM
+  DOES NOT LIKE THIS)\n\nYes.\n\n.aa PAGE\nYes?\n\n.tb\nAre you waiting for something?\n\n.aa
+  PAGE\nNo. Are you?\n\n.tb\nOf course not! Why are you standing there?\n\n.aa PAGE\nWhere
+  should I be standing?\n\n.tb\nShouldn't you be doing something?\n\n.aa PAGE\nLike
+  what?\n\n.tb\nWhy don't you think of something?\n\n.aa PAGE\nHave you any ideas?\n\n.tb\nWhy
+  do you always answer my questions with a question?\n\n.aa PAGE\nDo I?\n\n.tb\nWill
+  you stand over there before I tear your arm off and beat you with\nthe wet end?\n\n.aa
+  PAGE\n(PAUSE) Sure.\n\n(TOM INDICATES AN OUT OF THE WAY CORNER. THE PAGE COMPLIES
+  AND\nTOM CLEARS HIS THROAT AND BEGINS TO READ)\n\n.tb\nThe show so far.\nThe crew
+  of the Satirize has landed on Fed,\nwhere they are presently looking for the true
+  page. Spotty,\nJock and Officer Knightly are in rough shape.\nA page brings Tom
+  Brzustowskabil a document to read.  As he does\nso Ensign Tolstoy comes in.  They
+  exchange some casual banter.\n\n(AT THIS POINT TOLSTOY ENTERS FOLLOWING THE RED
+  RIBBON.\nTOM LOOKS UP AT THE NOISE HE IS MAKING,\nTHEN STANDS UP AND OFFERS HIS
+  HAND WHICH TOLSTOY SHAKES)\n\n.to\nHello. I'm Ensign Tolstoy of the starship Satirize,
+  its five-year-\n\n.tb\nI've read all that, Ensign. (PATS DOCUMENT)\nI'm Tom Brzustowskabil
+  of the mountain of red tape - V.P.\n\n.to\nYes, I've been following the tape.  What's
+  the V.P. stand for?\n\n.tb\nVox populi.\n\n.to\nOh, the sailor man!\n\n.tb\n(LOOKS
+  EXASPERATED)\nYou misunderstand. You know, you talk sort of funny.  I think\nyou
+  should take the Munchkinese Proficiency Test.\n\n(TOM RUSHES TOLSTOY AROUND HIS
+  DESK AND SITS HIM IN THE CHAIR,\nPLACING A PIECE OF PAPER IN FRONT OF HIM. TOLSTOY
+  PROTESTS\nFEEBLY)\n\nNow all you have to do is write a paragraph describing the
+  conflict\nbetween quality and quantity of energy.\n\n.to\n(TALKING WHILE WRITING)\nWell,
+  let's see:\n.nf\n.in+5\nThe quantity of energy is not sustained,\nIt droppeth as
+  the gentle silicon from heaven\nUpon the place beneath-\n\n.in8\n.fi\n.tb\nThat's
+  enough.  You flunk.\n\n.to\nBut why......\n\n.tb\n     ***************************************\n
+  \    ***to the tune of \"All for the Best\"***\n     ***************************************\n
+  \    Your spelling is bad;\n     Your grammar is worse.\n.to\n     How can you tell\n
+  \    From reading one verse?\n.tb\n     The prose is wordy,\n.to\n     Pur-ty,\n.tb\n
+  \    Excruciating,\n.to\n     Fascinating.\n     I can't adore it more!\n.tb\n     I
+  just abhor it, for\n     It's too verbose.\n.to\n     No, it's terse.\n\n     I
+  think your taste smells.\n.tb\n     I think yours does, too.\n.to\n     A monkey
+  that spells\n     Has more class than you.\n.tb\n     I don't think you will\n     Make
+  - it - here - at -\n     U. of Munchkinloo.\n.to\n     You're a sweetie pie, too!\n\n.tb\n(SPOKEN)
+  You dance well.\n\n.to\n(SPOKEN) Thank you, so do you.\n\n     Some men can\n     Do
+  a Highland fling, even as they sing.\n     They can jump about, cut a caper.\n.tb\n
+  \    Wiggle as they do, even hootchy-coo,\n     Seem as if they're walking on air.\n.to\n
+  \    Jump up, turn around, get the rhythm down,\n     Let the music flow through
+  your booties.\n.aa BOTH\n     Our English tastes differ, but what do we care\n.tb\n
+  \    When we can\n     Dance, take a stance, given half a chance\n     To perform
+  with all of our prowess.\n.to\n     Tap our toes a bit, then our English lit\n     Doesn't
+  really need to impress.\n.aa BOTH\n     Friend, comrade or droogie,\n     A man
+  who can boogie\n     's A man who's sure of suc-\n.tb\n     Free yourself from all
+  distress.\n.aa BOTH\n     Yes, we're sure of suc-\n.to\n     Glad we straightened
+  up this mess.\n.aa BOTH\n     Yes, we're sure of suc-\n     One more time now with
+  finesse.\n     Yes, we're sure of success!\n\n(TOLSTOY AND TOM RETURN ARM IN ARM
+  TO THE DESK)\n\n.to\nReally, though, that's not a fair test.\n\n.tb\nWhat do you
+  mean?\n\n.to\nIt doesn't relate to my cultural heritage.\n\n.tb\nWhat do you want
+  us to do, give you the test in Russian?\n\n.to\nRussian - smussian! I'm from the
+  wilds of the North Campus.\n\n.tb\nOh, my God.\n\n.aa VOICE\nYes?\n\n.tb\nNothing,
+  Burt - just a slip of the tongue.\n\n.aa VOICE\nWell, watch it! This is long distance
+  from Florida.\n\n.tb\nYes, sir. (TO TOLSTOY) Now, as I was saying, you'll have to
+  take remedial \nMunchkin until you get rid of that outrageous accent.\n\n.to\nWhat
+  accent?\n.ul\nI\ndon't have an accent,\n.ul\nyou\nhave an accent.\n\n.tb\nShhhh!\n.ul\nHe\n(GESTURES
+  UPWARDS) may be listening.\n\n.to\nOh, sorry.\n\n.tb\nNow just give me your ID number
+  and I'll see that you're\nenrolled in Remedial Munchkin 101.\nThat's 6:30 'till
+  noon Tuesday and R-day. (ASIDE) R-day...\nI used to know what R was.\n\n.to\nBut
+  I don't have a number!\n\n.tb\nWhat do you mean?\n\n.to\nI'm not a student.\n\n.tb\nOh,
+  no, not another Student Council Presidential Candidate!\n\n.to\nNo, sir - I'm looking
+  for a page.\n\n.tb\nOh. (PAUSE) Here's a page: a title page.\n\n.to\nThat's not
+  quite what I had in mind.\n\n.tb\nHow about a coloured page?\n\n.to\nThat isn't
+  either - I don't want a coloured page.\n\n.tb\nWhat are you, some kind of bigot?\nHere's
+  a blank page.\n\n(TOLSTOY SHAKES HIS HEAD)\n\nDrawn another blank, eh? Would you
+  care for an appendix?\n\n.to\nNo, I had mine out. What I want is a human-type page.\n\n.tb\nOh,
+  one of those kinky types, are you?\n\n.to\nLook, I don't want any of your paper!
+  I want an \nhonest-to-goodness true\n.ul\npage!\n\n.aa PAGE\n(ENTERING) Yes, sir?\n\n.aa
+  TOM~AND~TOLSTOY\nWhat?\n\n.aa PAGE\nYou called for a page, sir?\n\n.to\nNow this
+  is what I'm after. This has got to be him!\nMay I take him with me?\n\n.tb\nWell,
+  it's highly irregular.\n\n.aa PAGE\nI beg your pardon! I know when I need a laxative.\n\n.to\nCan't
+  you cut through the red tape and just let her go with me?\n\n.tb\nWell, I suppose...
+  \n\n(CUTS OFF SOME RED TAPE, CUTS IT AND SIGNS IT - RUBBER STAMPS IT\nTWENTY TIMES)\n\nThere
+  - that should do it!\n\n.to\nThank you wery much, sir.\n\n(TOLSTOY AND THE PAGE
+  EXIT)\n\n.tb\nOh, well. Back to work, I suppose. Now where was I? Oh, yes.\n(READS)
+  The Ensign departs with the page.\nSuddenly, the sound of dragging chains and menacing
+  feetsteps\nis heard to approach Tom from behind-\n\n(APPROPRIATE SOUND)\n\n-and
+  a giant sledgehammer is brought down upon...\n(QUICK PAUSE, THEN TOM ERASES PART
+  OF THE PAGE AND SAYS THE FOLLOWING\nLINES AS HE WRITES THEM IN)\nSuddenly, I am
+  set upon by 8 luscious beauties who proceed to ravish\nme and-\n\n.aa VOICE\nTom!\n\n.tb\n(QUAKING)\nYes,
+  sir?\n\n.aa VOICE\nI told you before - no policy changes while i'm away!\n\n.tb\nOh,
+  but Burt-\n\n(HE IS DROWNED OUT AS 8 ENGINEERS IN DRAG ENTER SINGING\nAND PROCEED
+  TO RAVISH TOM. HE CALLS FOR HELP, AND THUNDER IS HEARD)\n\nfin\n"
+:shard_number: 24
+:shard_name: 3four
+:shard_time: 1977-02-14 09:10:14.000000000 -05:00
+:shard_blocks: 1
+:shard_start: 23419
+:shard_size: 1813
