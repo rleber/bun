@@ -28,7 +28,9 @@ class String
       end
       
       def examination(string, analysis)
-        create(analysis, string)
+        exam = create(analysis)
+        exam.attach(:string, string)
+        exam
       end
       
       def examine(string, analysis)

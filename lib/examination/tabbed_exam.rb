@@ -12,11 +12,7 @@ class String
         "Does data contain tabs?"
       end
       
-      def labels
-        [:tabs, :no_tabs]
-      end
-      
-      def true?
+      def test
         string.tabbed?
       end
     end

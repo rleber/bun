@@ -12,7 +12,7 @@ class String
         "Does text contain roff commands?"
       end
       
-      def true?
+      def test
         string =~ /^\.[a-zA-Z]{,2}(?:\s|$)/
       end
     end

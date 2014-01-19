@@ -16,7 +16,8 @@ class String
       end
       
       def runs
-        string.split(/\W+/).reject {|run| run=='' }
+        s = case_insensitive ? string.downcase : string
+        s.split(/\W+/).reject {|run| run=='' }
       end
       
       def unfiltered_counts

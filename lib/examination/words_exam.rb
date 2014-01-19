@@ -15,20 +15,15 @@ class String
       def self.description
         "Count words"
       end
-      
-      def runs
-        s = case_insensitive ? string.downcase : string
-        s.split(/\W+/).reject {|run| run=='' }
-      end
-      
-      def unfiltered_counts
-        runs.group_by{|run| run }
-            .to_a
-            .map{|word, words| {word: word, count: words.size} }
-      end
             
       def categories
         counts.map{|word, words| word }
+      end
+
+      def unfiltered_counts
+        runs.group_by{|run| run}
+            .to_a
+            .map{|word, words| {word: word, count: words.size} }
       end
       
       def fields

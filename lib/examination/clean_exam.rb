@@ -13,11 +13,7 @@ class String
         "Test if data contains unreadable characters"
       end
       
-      def labels
-        [:clean, :dirty]
-      end
-      
-      def true?
+      def test
         string.clean?
       end
     end

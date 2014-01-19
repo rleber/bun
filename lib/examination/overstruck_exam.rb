@@ -12,7 +12,7 @@ class String
         "Does data contain backspaces?"
       end
 
-      def true?
+      def test
         string.overstruck?
       end
     end

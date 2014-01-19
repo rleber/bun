@@ -114,7 +114,8 @@ module Bun
       end
       
       def examination(file, exam, options={})
-        Bun::File.create_expression(file, exam, promote: options[:promote], shard: options[:shard])
+        Bun::File.create_expression(file, exam, 
+          promote: options[:promote], shard: options[:shard], raise: options[:raise])
       end
       
       def create_examination(path, analysis, options={})
@@ -126,10 +127,10 @@ module Bun
       protected :create_examination
       
       def create_expression(path, expression, options={})
-        expression_options = options.merge(expression: expression, path: path)
+        expression_options = options.merge(expression: expression, path: path, raise: options[:raise])
         evaluator = Bun::Expression.new(expression_options)
         evaluator.attach(:data) { baked_data(path, options) }
-        evaluator.attach(:file) { file_for_expression(path, options={}) }
+        evaluator.attach(:file) { file_for_expression(path, options) }
         evaluator
       end
       protected :create_expression
