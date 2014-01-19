@@ -463,22 +463,26 @@ describe Bun::Bot do
   end
 
   describe "examine" do
-    include_examples "command", "examine clean file", "examine -t --asis -e clean data/test/clean", "examine_clean"
-    include_examples "command from STDIN", "examine clean file", 
-        "examine -t --asis -e clean -", "data/test/clean", "examine_clean"
-    
-    # Dirty file is just the packed version of ar119.1801
-    include_examples "command", "examine dirty file", "examine -t --asis -e clean data/test/dirty", "examine_dirty",
-                     :allowed=>[1]
-    include_examples "command", "examine promotes file", 
-      "examine -t -e clean data/test/packed_ar003.0698", "examine_clean",
-                       :allowed=>[1] # Because we're testing the output; it's more helpful
-                                     # to allow a non-zero return code
-    include_examples "command", "examine does not promote file with --asis", 
-      "examine -t --asis -e clean data/test/packed_ar003.0698", "examine_dirty",
+    context "basic tests" do
+      include_examples "command", "examine clean file", "examine -t --asis -e clean data/test/clean", "examine_clean"
+      include_examples "command from STDIN", "examine clean file", 
+          "examine -t --asis -e clean -", "data/test/clean", "examine_clean"
+      
+      # Dirty file is just the packed version of ar119.1801
+      include_examples "command", "examine dirty file", "examine -t --asis -e clean data/test/dirty", "examine_dirty",
                        :allowed=>[1]
-    after :all do
-      backtrace
+      include_examples "command", "examine promotes file", 
+        "examine -t -e clean data/test/packed_ar003.0698", "examine_clean",
+                         :allowed=>[1] # Because we're testing the output; it's more helpful
+                                       # to allow a non-zero return code
+      include_examples "command", "examine does not promote file with --asis", 
+        "examine -t --asis -e clean data/test/packed_ar003.0698", "examine_dirty",
+                         :allowed=>[1]
+      after :all do
+        backtrace
+      end
+    end
+    context "exhaustive tests" do
     end
   end
     

@@ -14,7 +14,7 @@ module Bun
           end
 
           def valid_fields
-            VALID_FIELDS.keys
+            @valid_fields ||= VALID_FIELDS.keys.sort
           end
 
           def field_valid?(name)
@@ -25,8 +25,12 @@ module Bun
             VALID_FIELDS
           end
 
+          def field_definition_array
+            field_definitions.to_a.sort
+          end
+
           def field_definition_table
-            ([%w{Field Description}] + field_definitions.to_a.sort) \
+            ([%w{Field Description}] + field_definition_array) \
               .justify_rows \
               .map{|row| row.join('  ')} \
               .join("\n")

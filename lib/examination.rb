@@ -6,6 +6,7 @@
 require 'lib/string'
 require 'lib/bun/file/descriptor'
 
+# TODO Actually, Examinations no longer necessarily have anything to do with Strings
 class String
   class Examination
     class Invalid < ArgumentError; end

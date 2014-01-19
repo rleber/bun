@@ -70,6 +70,10 @@ module Bun
       self # For chaining
     end
 
+    def format_rows(rows)
+      rows.each {|row| self<<row }
+    end
+
     def write_row(row)
       self.send("write_#{@format}", row)
     end

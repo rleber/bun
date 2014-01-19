@@ -3,6 +3,7 @@ _High Priority_
 File::Expression
     Lazy evaluation of text
     Setting of --min (e.g. with chars exam)
+    Setting of --case (e.g. with chars exam)
     Syntax for referencing shard data (with index)
 Consolidate exam, field, formula in bun find, map, and examine (and same?)
     Allow --inspect option
