@@ -1,9 +1,9 @@
 TODO
 _High Priority_
-Fix fields retrieved by bun examine for frozen files without shard specifier
-Could we cache file data, for faster processing?
-    Raw data
-    Decoded data
+Cache file data, for faster processing
+    Raw data (Bun::File.read)
+    Unpacked data (File::Unpacked.read_information)
+    Decoded data (File::Decoded.open -- promote )
 File::Expression
     Setting of --min (e.g. with chars exam)
     Setting of --case (e.g. with chars exam)

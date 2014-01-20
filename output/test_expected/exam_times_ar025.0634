@@ -1,2 +1,2 @@
-File                                                                       File Time                  Shard Time                 Catalog Time               Earliest Time
-/Users/richard/projects/bun/data/test/archive/general_test/ar025.0634.bun  1979-04-08 13:02:33 -0500  1979-02-13 15:08:55 -0500  1979-04-13 00:00:00 -0500  1979-02-13 15:08:55 -0500
+File                                                                       File Time                  Shard Time  Catalog Time               Earliest Time
+/Users/richard/projects/bun/data/test/archive/general_test/ar025.0634.bun  1979-04-08 13:02:33 -0500  nil         1979-04-13 00:00:00 -0500  1979-04-08 13:02:33 -0500

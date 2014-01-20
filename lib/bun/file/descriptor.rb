@@ -72,7 +72,6 @@ module Bun
         
         def set_field(name, value, options={})
           name = name.to_sym
-          return if name==:digest # Can't directly set the digest
           _set_field name, value, options
           set_digest if name == :data # If the data changes, so should the digest
         end

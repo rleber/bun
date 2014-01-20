@@ -512,7 +512,7 @@ describe Bun::Bot do
     # TODO Test words with --min 5
     # TODO Test chars with --case
     # TODO Check return codes from boolean tests
-    # TODO Test examining frozen file with shard specifier (e.g. --fields, text)
+    # TODO Test examining frozen file with shard specifier (e.g. fields, text, times)
     # TODO Test with multiple files, without --titles
     # TODO Test with invalid test
     # TODO Test with formula

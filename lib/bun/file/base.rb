@@ -95,13 +95,12 @@ module Bun
       end
 
       def file_for_expression(path, options={})
-        if options[:promote]
-          if File.file_grade(path) == :baked
-            File::Baked.open(path)
-          elsif File.tape_type(path) == :frozen && !options[:shard]
-            File::Decoded.open(path, :promote=>true, :expand=>true).values.first # This is smelly
+        case File.file_grade(path)
+        when :packed
+          if options[:promote]
+            File::Unpacked.open(path, :promote=>true)
           else
-            File::Decoded.open(path, :promote=>true, :shard=>options[:shard])
+            File::Packed.open(path)
           end
         else
           File.open(path)
