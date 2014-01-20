@@ -464,25 +464,45 @@ describe Bun::Bot do
 
   describe "examine" do
     context "basic tests" do
-      include_examples "command", "examine clean file", "examine -t --asis -e clean data/test/clean", "examine_clean"
+      include_examples "command", "examine clean file", "examine --asis clean data/test/clean", "examine_clean"
       include_examples "command from STDIN", "examine clean file", 
-          "examine -t --asis -e clean -", "data/test/clean", "examine_clean"
+          "examine --asis clean -", "data/test/clean", "examine_clean"
       
       # Dirty file is just the packed version of ar119.1801
-      include_examples "command", "examine dirty file", "examine -t --asis -e clean data/test/dirty", "examine_dirty",
+      include_examples "command", "examine dirty file", "examine --asis clean data/test/dirty", "examine_dirty",
                        :allowed=>[1]
       include_examples "command", "examine promotes file", 
-        "examine -t -e clean data/test/packed_ar003.0698", "examine_clean",
+        "examine clean data/test/packed_ar003.0698", "examine_clean",
                          :allowed=>[1] # Because we're testing the output; it's more helpful
                                        # to allow a non-zero return code
       include_examples "command", "examine does not promote file with --asis", 
-        "examine -t --asis -e clean data/test/packed_ar003.0698", "examine_dirty",
+        "examine --asis clean data/test/packed_ar003.0698", "examine_dirty",
                          :allowed=>[1]
       after :all do
         backtrace
       end
     end
+    # TODO Test changing --file, --title, -j, --format, --min, --case, --fields on a frozen file, --fields on a frozen shard
+    # TODO Test legibility on a less than 100% file
+    # TODO Check return codes from boolean tests
     context "exhaustive tests" do
+      String::Examination.exams.each do |exam|
+        @current_exam = exam
+        context @current_exam do
+          before :all do
+            @examine_result_file = "exam_#{exam}_ar003.0698"
+            exec("rm -rf output/test_actual/#{@examine_result_file}")
+            exec("bun examine #{exam} --file --raise -j --titles #{TEST_ARCHIVE}/ar003.0698.bun >output/test_actual/#{@examine_result_file}", :allowed=>[0,1])
+          end
+          it "should produce the proper output" do
+            @examine_result_file.should match_expected_output
+          end
+          after :all do
+            backtrace
+            exec_on_success("rm -rf output/test_actual/#{@examine_result_file}")
+          end
+        end
+      end
     end
   end
     

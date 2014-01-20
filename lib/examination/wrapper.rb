@@ -17,7 +17,7 @@ class String
         when String::Examination::Base, String::Examination::FieldWrapper, String::Examination::Wrapper
           value
         else
-          self.new(value, string, options)
+          self.new(value, options)
         end
       end
 

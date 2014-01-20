@@ -20,9 +20,6 @@ class String
       end
 
       def format_row(row)
-        debug row.inspect
-        debug row[:characters].keys.join.inspect
-        debug row[:characters].keys.join.character_set(single_as_string: true).inspect
         [
           row[:characters].keys.join.character_set(single_as_string: true),
           row[:count].to_s

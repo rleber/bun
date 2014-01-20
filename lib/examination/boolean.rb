@@ -15,8 +15,16 @@ class String
       def analysis
         res = test
         @code = res ? 0 : 1
-        res = labels(@code) if self.respond_to?(:labels)
         res
+      end
+
+      def format(x)
+        x = x.value if x.is_a?(String::Examination::Base::Result)
+        if self.respond_to?(:labels)
+          labels(x ? 0: 1)
+        else
+          x ? 'true' : 'false'
+        end
       end
     end
   end

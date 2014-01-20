@@ -10,6 +10,7 @@ class String
     # Abstract base class
     # Subclasses need to define patterns
     class Runs < CountTable
+      attr_accessor :case_insensitive
 
       def self.description
         "Count runs of word characters"

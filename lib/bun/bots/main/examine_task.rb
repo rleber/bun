@@ -68,7 +68,7 @@ def examine(*args)
 
   files = files.map do |file|
     file, shard = Bun::File.get_shard(file)
-    stop "!File #{file} does not exist" unless File.exists?(file)
+    stop "!File #{file} does not exist" unless File.exists?(file) || file=='-'
     res = if File.directory?(file)
       Archive.new(file).leaves.to_a
     else
@@ -111,9 +111,9 @@ def examine(*args)
           file_matrix = if m_rows == 0
             [] # Do nothing
           elsif (format == :text && options[:justify])
-            [[file]] + [['']]*(m_rows-1) # File name only in first row
+            [[File.expand_path(file)]] + [['']]*(m_rows-1) # File name only in first row
           else
-            [[file]]*m_rows # File name in all rows
+            [[File.expand_path(file)]]*m_rows # File name in all rows
           end
           matrixes.unshift file_matrix
         end

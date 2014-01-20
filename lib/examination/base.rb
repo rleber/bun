@@ -16,11 +16,13 @@ class String
         end
 
         def to_s
-          exam.format(value)
+          v = value
+          v = value.value if v.class.to_s =~ /^String::Examination::.*::Result$/
+          exam.format(v)
         end
 
         def to_matrix
-          [[exam.format(value)]]
+          [[to_s]]
         end
 
         # TODO Some of this could be dried up with other Result classes with a Mixin
@@ -135,10 +137,6 @@ class String
         value
       end
       
-      def to_s
-        value.to_s
-      end
-
       def to_matrix
         value.to_matrix
       end
@@ -169,7 +167,9 @@ class String
       end
       
       def to_s
-        format(value)
+        v = value
+        v = value.value if v.class.to_s =~ /^String::Examination::.*::Result$/
+        format(v)
       end
 
       def right_justified_columns

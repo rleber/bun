@@ -18,7 +18,7 @@ class String
       end
       
       def analysis
-        file.descriptor.fields.sort
+        file.descriptor.fields.sort.map {|f| f.to_sym}
       end
     end
   end

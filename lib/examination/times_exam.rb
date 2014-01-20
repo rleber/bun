@@ -14,18 +14,15 @@ class String
       end
       
       def analysis
-        file = options[:file]
-        Bun::File.open(file) do |f|
-          file_time = f.descriptor.file_time
-          catalog_time = f.descriptor.catalog_time
-          times = [file_time, catalog_time].compact
-          earliest_time = times.size==0 ? nil : times.min
-          {
-            file_time:     file_time,
-            catalog_time:  catalog_time,
-            earliest_time: earliest_time
-          }
-        end
+        file_time = file.descriptor.file_time
+        catalog_time = file.descriptor.catalog_time
+        times = [file_time, catalog_time].compact
+        earliest_time = times.size==0 ? nil : times.min
+        {
+          file_time:     file_time,
+          catalog_time:  catalog_time,
+          earliest_time: earliest_time
+        }
       end
       
       def format_time(field)

@@ -21,7 +21,7 @@ require 'lib/examination/base'
 class String
   class Examination
     class Array < Base
-      class Result
+      class Result < String::Examination::Base::Result
         attr_accessor :exam
         attr_accessor :value
         

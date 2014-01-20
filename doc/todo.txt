@@ -1,7 +1,7 @@
 TODO
 _High Priority_
+Default title for RunSize
 File::Expression
-    Lazy evaluation of text
     Setting of --min (e.g. with chars exam)
     Setting of --case (e.g. with chars exam)
     Syntax for referencing shard data (with index)
