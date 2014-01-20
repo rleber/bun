@@ -297,9 +297,11 @@ module Bun
         shell = Shell.new
         parts.each.with_index do |pair, index|
           part, content = pair
-          part = yield(self, index) if block_given? # Block overrides "to"
-          shell.mkdir_p(File.dirname(part)) unless to.nil? || part.nil? || part=='-'
-          shell.write(part, content) unless to.nil? || part.nil?
+          if block_given? || !to.nil?
+            part = yield(self, index) if block_given? # Block overrides "to"
+            shell.mkdir_p(File.dirname(part)) unless part.nil? || part=='-'
+            shell.write(part, content) unless part.nil?
+          end
         end
         parts
       end

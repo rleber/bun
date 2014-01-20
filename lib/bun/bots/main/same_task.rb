@@ -1,16 +1,15 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-desc "same FILES", "Group files which match on a certain criterion"
+desc "same [OPTIONS] EXAMINATIONS... FILES...", "Group files which match on a certain criterion"
 option 'asis',    :aliases=>'-a', :type=>'boolean', :desc=>"Do not attempt to decode files"
 option 'case',    :aliases=>'-c', :type=>'boolean', :desc=>"Case insensitive"
-option 'exam',    :aliases=>'-e', :type=>'string',  :desc=>"What test? See bun help check for options"
-option 'field',   :aliases=>'-F', :type=>'string',  :desc=>"Return the value in a field"
-option 'formula', :aliases=>'-f', :type=>'string',  :desc=>"Evaluate a Ruby formula -- see help"
+option 'format',  :aliases=>'-F', :type=>'string',  :desc=>"Use other formats", :default=>'text'
+option 'inspect', :aliases=>'-I', :type=>'boolean', :desc=>"Just echo back the value of --exam as received"
 option 'justify', :aliases=>'-j', :type=>'boolean', :desc=>"Justify the rows"
-option 'list',    :aliases=>'-l', :type=>'boolean', :desc=>"List the defined examinations"
 option 'min',     :aliases=>'-m', :type=>'numeric', :desc=>"For counting examinations: minimum count"
 option 'text',    :aliases=>'-x', :type=>'boolean', :desc=>"Based on the text in the file"
+option 'usage',   :aliases=>'-u', :type=>'boolean', :desc=>"List usage information"
 option 'value',   :aliases=>'-v', :type=>'string',  :desc=>"Set the return code based on whether the" +
                                                            " result matches this value"
 long_desc <<-EOT
@@ -26,24 +25,40 @@ TODO Explain expression syntax
 TODO Explain how --value works
 
 EOT
-def same(*files)
-  check_for_unknown_options(*files)
-  if options[:list]
-    puts String::Examination.exam_definition_table
+def same(*args)
+  # Check for separator ('--in') between exams and files
+  exams, files = split_arguments_at_separator('--in', *args, assumed_before: 1)
+  check_for_unknown_options(*exams, *files)
+
+  if options[:usage]
+    puts String::Examination.usage
     exit
   end
-
-  option_count = [:exam, :field, :formula, :match, :text] \
-      .inject(0) {|sum, option| sum += 1 if options[option]; sum }
-  stop "!Cannot have more than one of --exam, --field, --formula, --match, and --text" if option_count > 1
-  stop "!Must do one of --exam, --field, --formula, --match, or --text" if option_count == 0
   
+  if options[:inspect]
+    puts exams
+    exit
+  end
+  
+  case exams.size
+  when 0
+    stop "!First argument should be an examination expression"
+  when 1
+    exam = exams.first 
+  else
+    exam = '[' + exams.join(',') + ']'
+  end
+  
+  stop "!Must provide at least one file " unless files.size > 0
+
+
   opts = options.dup # Weird behavior of options here
   asis = opts.delete(:asis)
   options = opts.merge(promote: !asis)
 
   # TODO DRY this up (same logic in map_task)
-  dups = Archive.duplicates(files, options)
+  # TODO Allow shard specifiers
+  dups = Archive.duplicates(exam, files, options)
   last_key = nil
   dups.keys.sort.each do |key|
     puts "" if last_key

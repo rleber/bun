@@ -33,14 +33,7 @@ Available formats are: #{Bun::Formatter.valid_formats.join(', ')}
 EOT
 def examine(*args)
   # Check for separator ('--in') between exams and files
-  if i = args.index('--in')
-    exams = args[0..i-1]
-    files = args[i+1..-1]
-  else
-    exams = [args.shift]
-    files = args
-  end
-
+  exams, files = split_arguments_at_separator('--in', *args, assumed_before: 1)
   check_for_unknown_options(*exams, *files)
 
   if options[:usage]
@@ -56,7 +49,7 @@ def examine(*args)
   stop "!First argument should be an examination expression" unless exams.size > 0
   
   if options[:inspect]
-    puts exam
+    puts exams
     exit
   end
 
@@ -136,20 +129,8 @@ def examine(*args)
 end
 
 no_tasks do
+  # TODO Opportunity to DRY this out?
   def value_of(expr, file, options={})
-    result = Bun::File.examination(file, expr, options)
-    value = begin
-      result.value(raise: options[:raise])
-    rescue Expression::EvaluationError => e
-      stop "!Evaluation error: #{e}" unless options[:raise]
-      raise Expression::EvaluationError, e
-    rescue String::Examination::Invalid => e
-      unless options[:raise]
-        warn "!#{options[:exam]} is an invalid analysis: #{e}" unless options[:quiet]
-        exit(99)
-      end
-      raise String::Examination::Invalid, e
-    end
-
+    Bun::File.examination(file, expr, options).value_for_bot(options)
   end
 end

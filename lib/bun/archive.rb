@@ -287,22 +287,22 @@ module Bun
         end
       end
         
-      def examine_map(files, options={}, &blk)
+      def examine_map(expr, files, options={}, &blk)
         glob_all(files).map do |file|
           begin
             if !File.directory?(file)
-              result = Bun::File.examination(file, options)
-              code = result[:code] || 0
-              res = result[:result]
+              exam = Bun::File.examination(file, expr, options)
+              code = exam.code || 0
+              res = exam.value(raise: options[:raise])
               res = res ? 'match' : 'no_match' if options[:match]
               if options[:value]
                 code = options[:value] == res ? 0 : 1
               end
-              result = {file: file, code: result[:code], result: res}
+              result = {file: file, code: exam.code, result: res}
               result = yield(result) if block_given?
               result
             end
-          rescue Formula::EvaluationError => e
+          rescue Expression::EvaluationError => e
             warn "!Evaluation error: #{e}" unless options[:quiet]
             {file: file, result: nil, code: 0}
           rescue String::Examination::Invalid => e
@@ -312,15 +312,14 @@ module Bun
         end
       end
 
-      def duplicates(files, options={})
+      def duplicates(exam, files, options={})
         table = []
-        examine_map(files, options) do |result| 
-          last_result = result[:result]
-          if result[:result].respond_to?(:value) && result[:result].value.class < Hash
-            row = [result[:file], result[:result].value.values].flatten
-          else
-            row = [result[:file], result[:result]].flatten
-          end
+        examine_map(exam, files, options) do |result| 
+          res = result[:result]
+          res = res.value if res.class.to_s =~ /Wrapper/ # A bit smelly
+          res = res.value if res.class.to_s =~ /Wrapper/ # A bit smelly
+          last_result = res
+          row = [result[:file], res].flatten
           table << row
         end
         
@@ -433,35 +432,6 @@ module Bun
           end
           options[:dryrun] ? nil : to_tape_path # Force skipping of file if :dryrun
         end
-        # file = open(tape)
-        # case file.tape_type
-        # when :frozen
-        #   file.shard_count.times do |i|
-        #     descr = file.shard_descriptor(i)
-        #     shard_name = descr.name
-        #     warn "decode #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
-        #     unless options[:dryrun]
-        #       timestamp = file.descriptor.timestamp
-        #       f = File.join(to_path, decode_path(file.path, timestamp), shard_name,
-        #             decode_tapename(tape, descr.file_time))
-        #       dir = File.dirname(f)
-        #       FileUtils.mkdir_p dir
-        #       file.decode f, :shard=>shard_name
-        #     end
-        #   end
-        # when :text
-        #   warn "decode #{tape}" if options[:dryrun] || !options[:quiet]
-        #   unless options[:dryrun]
-        #     timestamp = file.descriptor.timestamp
-        #     f = File.join(to_path, file.path, decode_tapename(tape, timestamp))
-        #     dir = File.dirname(f)
-        #     FileUtils.mkdir_p dir
-        #     file.decode f
-        #   end
-        # else
-        #   warn "skipping #{tape}: unknown type (#{file.tape_type})" \
-        #         if options[:dryrun] || !options[:quiet]
-        # end
       end
     end
     
@@ -501,7 +471,7 @@ module Bun
       shell = Shell.new
       
       # Phase I: Remove duplicates
-      duplicates(field: :digest).each do |key, files|
+      duplicates('digest').each do |key, files|
         duplicate_files = files[1..-1]
         duplicate_files.each do |file|
           rel_file = relative_path(file)
@@ -528,8 +498,8 @@ module Bun
           end
     end
 
-    def duplicates(options={})
-      Archive.duplicates(leaves.to_a, options)
+    def duplicates(exam, options={})
+      Archive.duplicates(exam, leaves.to_a, options)
     end
 
     def compact_groups(options={}, &blk)

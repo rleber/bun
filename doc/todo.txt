@@ -1,9 +1,11 @@
 TODO
 _High Priority_
+Remove bun places
 Cache file data, for faster processing
     Raw data (Bun::File.read)
     Unpacked data (File::Unpacked.read_information)
     Decoded data (File::Decoded.open -- promote )
+Recatalog FASS files
 File::Expression
     Setting of --min (e.g. with chars exam)
     Setting of --case (e.g. with chars exam)
@@ -11,7 +13,7 @@ File::Expression
 Consolidate exam, field, formula in bun find, map, and examine (and same?)
     Allow --inspect option
     Allow <field_or_exam_name> without e[] or f[] syntax
-    Pseudo references: file_path, text
+    Pseudo references: file_path, text, grade?
 Tests for bun find, bun map
 Add synthetic field descriptions: text, file_path
 More extensions to bun examine
@@ -114,6 +116,7 @@ Implement interactive (or stream) editor:
     Alternatively: check out the contents (in whatever format), edit, then check them back in again
 
 _Medium Priority_
+bun catalog should be able to recatalog files of all grades
 Other output formats, e.g. xls, html
 Better audit trail mechanism: Where did a file come from?
     Unpack should record where unpacked from/to

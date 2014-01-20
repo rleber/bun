@@ -72,7 +72,7 @@ module Bun
         end
 
         def has_field?(name)
-          file.descriptor.fields.include?(name.to_s)
+          file.descriptor.fields.map{|f| f.to_sym}.include?(name.to_sym)
         end
       
         def [](field_name)
@@ -131,6 +131,21 @@ module Bun
         raise EvaluationError, err.to_s
       end
       String::Examination::Wrapper.wrap(value)
+    end
+
+    def value_for_bot(options={})
+      value = begin
+        value(raise: options[:raise])
+      rescue Expression::EvaluationError => e
+        stop "!Evaluation error: #{e}" unless options[:raise]
+        raise Expression::EvaluationError, e
+      rescue String::Examination::Invalid => e
+        unless options[:raise]
+          warn "!#{options[:exam]} is an invalid analysis: #{e}" unless options[:quiet]
+          exit(99)
+        end
+        raise String::Examination::Invalid, e
+      end
     end
 
     def code

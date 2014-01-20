@@ -54,11 +54,31 @@ module Bun
       end
 
       no_tasks do
+        # Thor will allow unknown options -- they are passed through with the other arguments
+        # This checks for anything in the argument list starting with a "-" and throws an error if it's found
         def check_for_unknown_options(*args)
           args.each do |arg|
             arg = arg.to_s
             stop "!Unknown option: #{arg}" if arg != '-' && arg =~ /^-/
           end
+        end
+
+        # Bun examine, map, same, and find allow multiple examinations and multiple files, separated
+        # by a separator marker (in the case of these commands, it's '--in'). This method splits the
+        # parameter list into two arrays: one before and one after the separator.
+        # The :assumed_before option allows for a fixed number of arguments to be separated into the
+        # before list if no separator is found.
+        def split_arguments_at_separator(separator, *args)
+          options = args.last.is_a?(Hash) ? args.pop : {}
+          if i = args.index(separator)
+            before = args[0..i-1]
+            after = args[i+1..-1]
+          else
+            assumed_before = options[:assumed_before] || 0
+            before = args[0...assumed_before]
+            after = args[assumed_before..-1]
+          end
+          [before, after]
         end
 
         def option_inspect(options)
