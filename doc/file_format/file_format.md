@@ -21,11 +21,11 @@ If you are looking for more details on the file formats beyond what I have writt
 refer to the other files in the doc/file_format directory of this project. These files include:
 
 - decode_help.txt  Some dialog about the characteristics of Honeywell files
-- free.b.txt       A program to decode Honeywell's freeze file format, written in B, an ancestor of C
-- huff.b.txt       A program to decode Huffman encoded files, also written in B. THIS FILE IS OBSOLETE, AND
-                   DOES NOT MATCH THE ENCODING USED IN THESE FILES.
-- huff.v2.b.txt    A program to encode Huffman coded files
-- puff.b.txt       A program to decode Huffman coded files (huff and puff, get it?)
+- free.b.txt           A program to decode Honeywell's freeze file format, written in B, an ancestor of C
+- huff.b.txt           A program to encode Huffman coded files
+- huff.b.obsolete.txt  A program to decode Huffman encoded files, also written in B. THIS FILE IS OBSOLETE, AND
+                       DOES NOT MATCH THE ENCODING USED IN THESE FILES.
+- puff.b.txt           A program to decode Huffman coded files (huff and puff, get it?)
 
 The "bun dump" and "bun freezer dump" commands are available to display the contents of files in octal 
 and ASCII, and may be useful for exploring files.
@@ -142,7 +142,7 @@ compressing files. This scheme results in a minimal-length encoding through the 
 using a translation table (a binary tree, actually), and a variable number of bits per encoded character
 (with the fewest bits for the most common characters, etc.). See http://en.wikipedia.org/wiki/Huffman_coding for general information on Huffman encoding.
 
-The original source for the Honeywell's encoding algorithms is contained in the doc/huff.v2.b.txt and
+The original source for the Honeywell's encoding algorithms is contained in the doc/huff.b.txt and
 puff.b.txt files.
 
 The format for Honeywell Huffman-encoded files is as follows:
@@ -168,7 +168,9 @@ The format for Honeywell Huffman-encoded files is as follows:
   that's the encoded character. See the Wikipedia article for more information on the encoding algorithm.
 
 Important note: I made several fits and starts trying to get this to work, but I finally succeeded. One 
-of the major detours I made was trying to use the algorithm in the huff.b.txt program. This turns out NOT to be the format used in these files. DO NOT USE HUFF.B.TXT, it is obsolete. Look at puff.b.txt, instead.
+of the major detours I made was trying to use the algorithm in the huff.b.obsolete.txt program. (Obviously, it
+wasn't originally named that!) This program turns out NOT to be the one that encoded these files. DO NOT USE IT.
+Look at puff.b.txt, instead.
 
 _Freeze Files_
 

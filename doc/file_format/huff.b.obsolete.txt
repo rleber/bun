@@ -3,33 +3,6 @@
  *	Copyright (c) 1978, Alex White   
  *  ccng.wheeler
  */ 
- 
- /** Annotations by Richard LeBer, 2013 */
- 
- /**
- 
- Usage:
-    huff <options>* <infile>*
-    
- Options
-    -Overstrike                          Allows "overstrikes" (multiple characters per word); Default true
-    -Runlength=n                         Code runs of more than n characters
-    -Usertable=<table>                   Use an existing encoding, contained in this file
-    -Table=<table>                       Output the encoding to a separate file with this name
-    -noHuff                              Don't output the encoded content at all; just calculate and save
-                                         the encoding tables; Default false
-    -Size                                Output size of huffman encoding table; Default false
-    -STatisticalfile=<statistical_file>  Output statistics to this file
-    
-*/
-
-/** Note on overstrikes:
-
-Apparently, the way this works is that overstricken characters are allowed without restriction. These appear
-in the input in the form of either backspaces or character returns. They are encoded by storing the overstricken
-characters in each of the multiple (9-bit) characters in a word. (As a practical matter, therefore, the encoding
-breaks if there are more than four overstricken characters.)
-*/
 
 
 %b/manif/.bset  
@@ -44,7 +17,6 @@ optable[] {
 	-1 
 };  
 .process 0; 
-/** Command line option flag bits */
 FILE		=	0;  
 OVERSTRIKE	=	1; 
 RUNLENGTH	=	2;  
@@ -56,33 +28,25 @@ STATISTICS	=	7;
 REDIRECTION	=	8;
 
 
-stats		0;   /** Either zero, or pointer to statistical file name */
+stats		0;   
 tty		0; 
 stdin	=	0;  
 stdout	=	1; 
 s_sector=	64;	/* words per sector */
 s_word	=	36;	/* number of bits per word */  
 s_printer=	136;	/* number of print positions (for overstrikes) */   
-hashtab;            /** Contains Huffman encoding hash table */
+hashtab;
 sorted; 
 count		0;   
-RAW_FLAG=	0600000000000;	/* Small table */  /** Used in hash table files */
-items		1;	/** # of items in hash table */ /* always at least eof */ 
-RPT	=	0777776; /* Repeated character */ /** In the encoding, this represents a run, followed by the length */
+RAW_FLAG=	0600000000000;	/* Small table */  
+items		1;	/* always at least eof */ 
+RPT	=	0777776; /* Repeated character */ 
 rpt_no		5;  
-EOF	=	0777777; /** End of file is marked with 0777777 (0x3FFFF)*/ /* EOF will be huffman encoded */
+EOF	=	0777777; /* EOF will be huffman encoded */
 extern	=	extrn; 
 int	=	auto; 
 char	=	auto;
 s_hash	=	5;	/* size of hash table entry */  
-
-/** Format of Hash table entries:
-Word 0 The character
-Word 1 The chain to the next item
-Word 2 Frequency count for this character
-Word 3 The number of bits in the encoding
-Word 4 The encoding for the character
-*/
 .char	=	[0];	/* The character(s) */ 
 .fwd	=	[1];	/* next item in hash table */   
 
@@ -98,48 +62,47 @@ s_tree	=	4;	/* size of huffman tree */
 
 
 main(argc, argv) {  
-	extern rpt_no, tty;  /** rpt_no is the -Runlength setting */
+	extern rpt_no, tty;
 	extern .argtyp, sector;
 	extern incr, puthuf, stats;
 	int size, nohuff, overstr; 
-	int f, j, i;   /** f is an array of input files; j is the count of the files */
-	int table, outfile, usertable; /** table is the -Table setting; outfile is the redirected output file (if any)
-	                                   usertable is the -Usertable setting */
+	int f, j, i;   
+	int table, outfile, usertable; 
 
 
-	size = 0;  /** -Size setting */
-	nohuff = 0; /** -noHuff setting */
+	size = 0;  
+	nohuff = 0;
 	table = 0; 
 	usertable = 0; 
-	overstr = 1;   /** Overstrike setting */
+	overstr = 1;   
 	/* 
 	 *	Parse args. 
 	 */
-	f = getvec(argc);  /** getvec appears to be a Honeywell primitive for dynamic memory allocation */
-	j = 0; /** j counts # files encountered so far, which are accumulated in f */
+	f = getvec(argc);  
+	j = 0; 
 	for(i=1 ; argv[i] != -1 ; ++i) {   
 		switch(argv[i]>>18) { 
 		case STATISTICS:  
 			if(stats)
-				usage(); /** Can't specify more than one statistical file */
-			stats = open(argv[i], "wd"); /** otherwise, open file for output */
+				usage();
+			stats = open(argv[i], "wd"); 
 			break;   
 		case FILESIZE:
-			size = !size; /** toggle setting */
+			size = !size;
 			break;   
 		case NOHUFFING:   
-			nohuff = !nohuff; /** toggle setting */
+			nohuff = !nohuff;
 			break;   
 		case OVERSTRIKE:  
-			overstr = !overstr;   /** toggle setting */
+			overstr = !overstr;  
 			break;   
 		case RUNLENGTH:   
-			rpt_no = *argv[i];   /** set run length */
+			rpt_no = *argv[i];   
 			break;   
 		case FILE:
 			f[j++] = argv[i];
 			break;   
-		case REDIRECTION: /** Handle file redirection */
+		case REDIRECTION: 
 			if(.argtyp[i] == '>')
 
 
@@ -153,22 +116,22 @@ main(argc, argv) {
 		case USETABLE:
 			if(usertable)
 				usage();
-			usertable = argv[i]; /** Set -Usertable */
+			usertable = argv[i]; 
 			break;   
 		case TABLEFILE:   
 			if(table)
 				usage();
-			table = argv[i];   /** Set -Table */
+			table = argv[i]; 
 			break;   
 		} 
 	}  
-	if(usertable && table) /** Can't use both -Usertable and -Table */
+	if(usertable && table) 
 		usage();  
 	/* 
-	 *	Pass 1: make occurrence counts
+	 *	Pass 1: make occurance counts   
 	 */
 	init();
-	if(!usertable) {   /** Read all the files, calculate frequency counts, and compute Huffman codes */
+	if(!usertable) {   
 		for(i=0 ; i<j ; ++i) {
 			open(stdin, f[i], "rd"); 
 			if(overstr)  
@@ -177,7 +140,7 @@ main(argc, argv) {
 				raw(incr);  
 			close(stdin);
 		} 
-		if(j == 0) {  /** If redirected input */
+		if(j == 0) {  
 			tty = 1; 
 			open(stdout, f[0]="(stdout)", "w");  
 			if(overstr)  
@@ -192,7 +155,7 @@ main(argc, argv) {
 		 *	Compute the huff codes.
 		 */   
 		huffcode();   
-	} else {   /** -Usertable has been provided; read it */
+	} else {   
 		open(stdin, usertable, "rbd");
 		gettab(); 
 		close(stdin); 
@@ -201,9 +164,23 @@ main(argc, argv) {
 	if(table)  
 		open(stdout, table, "wbdn");  
 	if(!usertable) 
-		puttab(overstr ? 0 : RAW_FLAG);  /** use small table, unless overstrikes */ 
+		puttab(overstr ? 0 : RAW_FLAG);   
 	if(table) {
 		if(size)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			printf(-4, "%s is %d sectors*n", table, sector+1);   
 		wflush(); 
 		close(stdout);
@@ -271,7 +248,7 @@ processline(line, fun) {
 
 
 /*  
- *	Increment the occurrence count for a character.   
+ *	Increment the occurance count for a character.   
  */ 
 incr(c) {   
 	extern hashtab, items; 
@@ -345,7 +322,7 @@ huffcode() {
 
 	table();   
 	for(j=count-1 ; j>0 ; j--) {   
-		shellsort(sorted, count-1, comp); /** Apparently shellsort is a primitive or library function */
+		shellsort(sorted, count-1, comp); 
 		sorted[1].bit = 1;
 		sorted[0].bit = 0;
 		sorted[1].conc = sorted[0].conc = sorted[count];  
@@ -389,7 +366,7 @@ init() {
 	int i; 
 
 
-	hashtab = getmatrix(256, s_hash);  /** Allocate hash table; a matrix of 256 5-word entries? */
+	hashtab = getmatrix(256, s_hash);  
 	for(i=0 ; i<256 ; ++i) 
 		hashtab[i].fwd = hashtab[i].cnt = hashtab[i].char = 0;
 	/* end of file flag! */
@@ -485,9 +462,6 @@ raw(fun) {
 /*  
  *	Hash the item
  */ 
- 
-/** Exclusive or the 8 bits of each of the characters in the word */
-
 hash(c) 
 	return((c&0377) ^ ((c>>9)&0377) ^ ((c>>18)&0377) ^ ((c>>27)&0377));
 
@@ -534,25 +508,25 @@ gettab() {
 
 	if(getword() != 'huff')
 		error("not a huffman encoded file*n");
-	small = getword() & RAW_FLAG;  /** small flag */
+	small = getword() & RAW_FLAG;  
 	if(getword() != 'tabl')
 		error("no tables*n"); 
 	items = getword(); 
 	while(c=getword()) {   
-		for(h=hashtab[hash(c)] ; h .fwd ; h=h .fwd);  /** chase to the leaf for this entry */
-		if(h .char != 0) { /** If leaf already occupied, then chain another one */
+		for(h=hashtab[hash(c)] ; h .fwd ; h=h .fwd);  
+		if(h .char != 0) {
 			h .fwd = getvec(s_hash); 
 			h = h .fwd;  
 		} 
 		h .fwd = 0;   
-		if(small) {   /** entry is small: character in bits 18-36; bits in lower 0-15 */
+		if(small) {   
 			h .char = c>>18; 
 			h .bits = c&0177777; 
-		} else {  /** entry is large; character in first word; bits in second word */
+		} else {  
 			h .char = c; 
 			h .bits = getword(); 
 		} 
-		h .code = getword();  /** Huffman coding is next word */
+		h .code = getword();  
 	}  
 }   
 
@@ -657,8 +631,6 @@ re(a) {
 rbuffer[s_sector];  
 rpos s_sector;  
 rsector 0;  
-
-/** Read a binary word from the input */
 getword() { 
 	extern rbuffer, rpos, rsector; 
 

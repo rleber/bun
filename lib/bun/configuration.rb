@@ -59,14 +59,6 @@ module Bun
       self.class.location
     end
     
-    def places
-      setting[:places] || {}
-    end
-    
-    def places=(p)
-      setting[:places] = p
-    end
-    
     def keys
       @setting.keys
     end

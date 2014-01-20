@@ -13,32 +13,42 @@ module Bun
     
     class BadFileGrade < RuntimeError; end
     class BadBlockError < RuntimeError; end
+    class ReadError < ArgumentError; end
 
     class << self
       
-      @@stdin_cache = nil # Name of the tempfile caching STDIN (if it exists)
+      @@stdin_cache = nil  # Content of STDIN (we cache it, to allow rereading)
+      @@last_read = nil    # Name of the last file read, except STDIN (we save it, to avoid rereading)
+      @@last_content = nil # Content of the last file read (except STDIN)
       
       # Allows STDIN to be read multiple times
       def read(*args)
+        options = args.last.is_a?(Hash) ? args.pop : {}
         path = args.shift
-        path = if path != '-'
-          path
-        elsif @@stdin_cache
-          @@stdin_cache
+        text = if path == '-'
+          Bun.cache(:read_stdin, :stdin) { $stdin.read.force_encoding('ascii-8bit') }
         else
-          cache_stdin
+          Bun.cache(:read_path, File.expand_path(path)) do
+            stop "!File #{path} does not exist" unless File.exists?(path)
+            Bun.cache(:read_path, path) do
+              (::File.read(path) || '').force_encoding('ascii-8bit') # We cache entire file
+            end
+          end
         end
-        stop "!File #{path} does not exist" unless File.exists?(path)
-        text = ::File.read(path, *args) || ''
-        text.force_encoding('ascii-8bit')
-      end
-      
-      # Read STDIN and save it to a tempfile
-      def cache_stdin
-        tempfile = Tempfile.new('stdin')
-        tempfile.write($stdin.read)
-        tempfile.close
-        @@stdin_cache = tempfile.path
+        case args.size
+        when 0
+          # Do nothing
+        when 1 # Read length specified
+          raise ReadError, "Unable to handle read parameter #{args[0].inspect}" unless args[0].is_a?(Numeric)
+          text = text[0,args[0]]
+        when 2 # Read length and offset specified
+          raise ReadError, "Unable to handle first read parameter #{args[0].inspect}" unless args[0].is_a?(Numeric)
+          raise ReadError, "Unable to handle second read parameter #{args[1].inspect}" unless args[1].is_a?(Numeric)
+          text = text[args[1], args[0]]
+        else
+          raise ReadError, "Unable to handle first read parameters #{args.inspect}"
+        end
+        text
       end
 
       def relative_path(*f)
@@ -81,13 +91,15 @@ module Bun
       def baked_file_and_data(path, options={})
         if options[:promote]
           if File.file_grade(path) == :baked
-            [nil, File.read(path)]
+            [nil, read(path)]
           elsif File.tape_type(path) == :frozen && !options[:shard]
             files = File::Decoded.open(path, :promote=>true, :expand=>true)
-            [files.values.first, files.values.map{|f| f.data}.join ]
+            data = Bun.cache(:baked_expanded_data, File.expand_path(path)) { files.values.map{|f| f.data}.join }
+            [files.values.first, data]
           else
             f = File::Decoded.open(path, :promote=>true, :shard=>options[:shard])
-            [f, f.data]
+            data = Bun.cache(:baked_unexpanded_data, [File.expand_path(path), options[:shard]]) { f.data }
+            [f, data]
           end
         else
           [nil, read(path)]
@@ -185,13 +197,15 @@ module Bun
       end
       
       def file_grade(path)
-        if packed?(path)
+        res = if packed?(path)
           :packed
         elsif binary?(path)
           :baked
         else
-          File::Unpacked.build_descriptor_from_file(path).file_grade
+          d = File::Unpacked.build_descriptor_from_file(path)
+          d.file_grade
         end
+        res
       end
       
       def file_grade_level(grade)

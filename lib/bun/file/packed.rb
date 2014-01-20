@@ -44,7 +44,10 @@ module Bun
                               :data_format=>:raw, 
                               :tape_type=>data.tape_type,
                             )
-        block_padding_repaired_data = data.with_block_padding_repaired
+        tp = File.expand_path(data.tape_path)
+        block_padding_repaired_data = Bun.cache(:repaired_data, tp) do
+          data.with_block_padding_repaired
+        end
         new_descriptor.merge!(
           block_padding_repairs: block_padding_repaired_data.block_padding_repairs,
           block_count:           block_padding_repaired_data.block_count,

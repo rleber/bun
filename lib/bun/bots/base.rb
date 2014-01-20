@@ -7,7 +7,7 @@
 #   <task name>_task.rb file within the same directory.
 
 def debug(msg)
-  warn "In #{caller.first}: #{msg}"
+  warn "Debug in #{caller.first}: #{msg}"
 end
 
 module Bun

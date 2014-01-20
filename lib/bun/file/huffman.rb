@@ -42,7 +42,7 @@ module Bun
         def initialize(options={})
           options[:data] = Data.new(options) if options[:data] && !options[:data].is_a?(Bun::Data)
           super
-          raise BadFileContentError, "Does not appear to be a Huffman file" unless file_type_code == "huff"
+          raise BadFileContentError, "Does not appear to be a Huffman file: file type word=#{file_type_code.inspect} (should be 'huff')" unless file_type_code == "huff"
           reset_position
         end
 

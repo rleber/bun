@@ -16,14 +16,16 @@ module Bun
       class << self
         
         def read_information(fname)
-          input = begin
-            YAML.load(Bun::File.read(fname))
-          rescue => e
-            raise InvalidInput, "Error reading #{fname}: #{e}"
+          Bun.cache(:unpacked_yaml, File.expand_path(fname)) do
+            input = begin
+              YAML.load(Bun::File.read(fname))
+            rescue => e
+              raise InvalidInputError, "Error reading #{fname}: #{e}"
+            end
+            raise InvalidInputError "Expected #{fname} to be a Hash, not a #{input.class}" \
+              unless input.is_a?(Hash)
+            input
           end
-          raise InvalidInput, "Expected #{fname} to be a Hash, not a #{input.class}" \
-            unless input.is_a?(Hash)
-          input
         end
         
         def build_data(input, options={})
@@ -264,10 +266,11 @@ module Bun
       end
 
       def qualified_path_name(to, shard=nil)
-        to ? (shard ? File.join(to, shard) : to) : shard      end
+        to ? (shard ? File.join(to, shard) : to) : shard      
+      end
 
-      # TODO Could this be refactored to Frozen and other subclasses?
       def to_decoded_parts(to, options)
+      # TODO Could this be refactored to Frozen and other subclasses?
         expand = options.delete(:expand)
         allow = options.delete(:allow)
         if tape_type!=:frozen || options[:shard]
