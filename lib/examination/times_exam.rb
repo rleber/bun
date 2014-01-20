@@ -35,6 +35,10 @@ class String
         format_time(row[:file_time])
       end
       
+      def format_shard_time(row)
+        format_time(row[:shard_time])
+      end
+
       def format_catalog_time(row)
         format_time(row[:catalog_time])
       end
