@@ -9,7 +9,7 @@ class String
   class Examination
     class Printable < CharacterClass
       
-      PRINTABLE_CHARACTERS = 'a-zA-Z0-9\.,(){}\[\]:;\-\'"! \\#$%&*+/<=>?@^_`|~\t\n\b\v\f\a'
+      PRINTABLE_CHARACTERS = 'a-zA-Z0-9\.,(){}\[\]:;\\-\'"! \\#$%&*+/<=>?@^_`|~\t\n\b\v\f\a\\\\'
       PATTERN_HASH = {
         printable: /[#{PRINTABLE_CHARACTERS}]/,
         non_printable: /[^#{PRINTABLE_CHARACTERS}]/

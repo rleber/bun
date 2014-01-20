@@ -1,0 +1,186 @@
+---
+:identifier: Bun
+:block_count: 10
+:block_padding_repairs: 0
+:catalog_time: 1982-12-22 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-19 19:50:54.261128000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a2ea911a7ddd55e074137dede45d9e1829336b44]
+:description: ''
+:digest: 9a3858862f41ab45b1ea7fe0e218b07d
+:file_grade: :decoded
+:file_time: 1981-03-08 20:27:00.000000000 -05:00
+:first_block_size: 3856
+:owner: bjeroehl
+:path: bjeroehl/fass/81script.f
+:tape: ar082.0605
+:tape_size: 36457
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:35:29.777986000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! ".so 81macros\n.bs 1 4 \"ConFASSions of a Pizza Man\"\n.na gd GENERAL~DEGREE
+  GENERAL\n.na bw BUD~WISER WISER\n.na ms MORTIMER~SCREW SCREW\n.na ca COOL~AIDE COOL\n.na
+  ba BAND~AIDE BAND\n.na ga GATOR~AIDE GATOR\n.na al AL~LERT AL\n.na hp HY~PERTENTION
+  HY\n.na js JENNY~SIDE JENNY\n.na cg CHARLES~GROVEL GROVEL\n.ld\n(LIGHTS UP ON ROOM
+  FOR QUESTIONING OF BUD WISER.\nTHE AIDES ARE DEEP IN DISCUSSION.\nTHERE IS A SHABBY
+  DESK ON STAGE WITH A\nPLAIN BLACK PHONE AND BEAT-UP TYPEWRITER ON IT)\n.ch ca\nWhat
+  are we going to do? The general will be here\nany minute to ask us about the robbery,
+  and what have we got?\n.ch ba\n(PROUDLY) I found these! (HOLDS UP NEGATIVES) Negatives
+  of the stolen plans.\n.ch ga\nAnd I found this. (HOLDS UP PIZZA BOX)\n.ch ca\n(SARCASTICALLY)
+  Great! We go looking for thieves and bring back garbage.\nDid you find any fingerprints?\n.xx
+  BAND~&~GATOR\nNo, chief!\n.ch ca\nDid you find any tracks?\n.xx BAND~&~GATOR\nNo,
+  chief.\n.ch ca\nDid you find anything to tell us who the robbers are?\n.ch ba\nI
+  found these. (HOLDS UP POLAROIDS AGAIN)\n.ch ga\nAnd I found this. (HOLDS UP PIZZA
+  BOX)\n.ch ca\nGo and get the security guards from the embassy -- maybe they\ncan
+  give us a clue.\n.ad\n(BAND SUMMONS SECURITY GUARDS FROM VOM)\n.ex\nOkay folks,
+  let's go through this again.\nHow many of them were there?\n.ch al\n(MILITARILY)
+  \ The guard at the gate let four people out, sir.\n.ch ca\nAnd how many of you were
+  there?\n.ch al\nEighteen, Sir!\n.ch ca\nThen why did the guard let them out?\n.ch
+  al\nThey might have had guns.\n.ch ca\nDo you know that for sure?\n.ch hp\nWell
+  one of them gave me a nasty look, sir.\n.ch ca\nWhat did it matter if they had guns
+  anyway?  You had guns too!\n.ch hp\nWe weren't carrying our guns, sir.\n.ch ca\nWhy
+  not?\n.ch hp\nThey weren't loaded, sir.\n.ch ca\nWeren't loaded? Why weren't they
+  loaded?\n.ch hp\n(RELUCTANTLY) Well, a loaded gun is dangerous.\n.ch ca\nYou're
+  supposed to be dangerous. That's why you're guards.\n.ch hp\nOh, yeah, I hadn't
+  thought of that.\nWell, anyway, we eventually got our guns and loaded them.\n.ch
+  ca\nAnd then what did you do?\n.ch hp\nWe fired at the enemy, sir!\n.ch ca\nWhy
+  didn't you arrest the thieves before they had copied the plans?\n.ch js\nIf we had
+  stopped them before they took anything, it would only have\nbeen breaking and entering.\n.ch
+  ca\nWhat of it?\n.ch js\nIf you stop a trespasser, they just shake your hand and
+  give you a citation.\nBut if you catch a thief, they give you a raise. \n.ch ca\nBut,
+  they got away!\n.ch js\nWell it was still a good plan.\n.ch ba\nThe general's coming!\n.ch
+  ca\nQuick! You security guards get back to your posts!\n.ad\n(JENNY AND HY LEAVE
+  AS THE GENERAL ENTERS. AL LERT REMAINS ON STAGE)\n.ch gd\nWell, what have you found
+  out about the robbery?\n.ch ca\n(NERVOUSLY) Well sir...ah our intelligence ah...has
+  determined that ah\n...the people responsible for the...ah robbery are ah...the
+  enemy, sir!\n.ch gd\nSo!  THAT's their game, is it?\n.ch ba\nDoes the enemy realize
+  we have this information?\n.ch ca\nOh no! We've got them fooled. They think that
+  we're the enemy.\n.ch ba\nWhat a perfect disguise!\n.ch gd\nAnything else?\n.ch
+  ga\nYes sir! (COMES FORWARD WITH PIZZA BOX) We found this at the embassy.\nWe think
+  it might be a clue!\n.ad\n(HE HANDS THE BOX TO THE GENERAL, PRINTING DOWN.)\n.ch
+  gd\nThere's nothing here!\n.ch ga\n(COUGHS EMBARRASSED) Sir, the printing's on the
+  other side.\n.ch gd\n(REVERSING BOX) Oh! That's a clever idea. Why don't our lab
+  boys\never come up with ideas like this? Now, let's see (READS ALOUD)...Pizza\nTransworld
+  Delivery...Say It With Pizza. (PAUSES)\nWell, what does it mean?\n.ad\n(NOTE THE
+  PIZZA BOX HAS A TAKE OFF ON THE FLORIST'S\nTRANSWORLD DELIVERY SYMBOL WITH THE SLOGAN
+  ON IT)\n.ch al\nWe believe that the man who delivered that pizza may know something\nabout
+  the robbery. We've had him brought here so we can question him.\n.ch gd\nGood idea!
+  Bring him in.\n.ad\n(HY AND JENNY PULL A STRUGGLING BUD WISER ONTO THE STAGE AND\nTHROW
+  HIM ON THE CHAIR.  BUD GOES OVER THE BACK OF THE CHAIR\nAND ENDS UP ON THE FLOOR.)\n.ex\nWhat's
+  his name?\n.ch ga\nHe says he's Bud Wiser, sir.\n.ch gd\nIs that Bud Wiser Junior?\n.ch
+  ga\nNo, I think it's the Older Bud Wiser.\n.ch gd\n(TO BUD)  Wouldn't you be more
+  comfortable sitting normally?\n.ch bw\n(ADJUSTING SELF) Yes! That's better, but
+  I warn you, you can't\nget on my good side that easily!\n.ch gd\nAll right, Bud
+  Wiser.  I think you'd better know who you're\nup against.  I am General Degree,
+  and these are my aides Cool,\nGator, and Band.  (TO BAND AND GATOR)  Go get my chief
+  interrogator,\nyou two.\n.ch bw\nSee you later, Band and Gator.\n.ad\n(THEY EXIT)\n.ch
+  gd\nYou won't be so crusty when we're through grilling you, pizza man.\n.ch bw\nYou
+  don't scare me! I can see it now...\nYou start small with beatings and cigarette
+  burns to my body... then\nbamboo shoots under the finger nails...electric shocks...drugs...\nyou
+  won't let me sleep or eat for days...My mind will go numb from\nyour endless questioning...my
+  body will be wracked with pain...\nbut I'll laugh and say \"Is that the best you
+  can do?\"...then you'll\nget really nasty and try some of the old favourites...the
+  rack...\nthe thumb screws...\n.ch gd\nStop! Stop! I can't take it any more! I'll
+  tell you everything you want\nto know! Stop!\n.ad\n(HE KNOCKS BUD OVER AND THE TWO
+  OF THEM SPRAWL ON THE FLOOR\nIN A SUGGESTIVE POSITION.)\n.ch ca\nGeneral Degree!
+  Get a hold on yourself! Remember, we still have our secret\nweapon.\n.ad\n(THE GENERAL
+  GETS A GRIP ON HIMSELF AND GETS OFF BUD.\nBOTH BUD AND THE GENERAL ZIP UP THEIR
+  FLIES.)\n.ch gd\nAh, yes!  A torture so fiendish\nthat the mere mention of it has
+  turned iron men into iron maidens,\nbegging to tell us all that they know.\nYes,
+  the ultimate in tortures...SEVEN STRAIGHT HOURS OF DISCO MUSIC!\n.sd\n(WE HEAR \"STAYING
+  ALIVE\" PLAYED AT HIGH SPEED)\n.ch ca\nHow horrible!\n.ch gd\n(PONDERING) Well...
+  we like to think so.\n.ad\n(SCREW ENTERS WITH GATOR AND BAND.)\n.ex\nAh! Mortimer
+  Screw, my chief interrogator.\n.ch ms\nGood morning, General.  Where is my prisoner?\n.ch
+  gd\n(POINTS TO BUD) This Bud's for you.\n.ch bw\nHappy to see you.\n.ch ms\nYou'll
+  be sadder, Bud Wiser.\nI'll start out small with beatings and cigarette burns to
+  your body.\nThen, bamboo under the finger nails, electric shocks, drugs.\nI won't
+  let you sleep or eat for days.\nYour mind will go numb from my endless questioning.\nYour
+  body will be wracked with pain. And then I'll get really nasty!\n.ch bw\n(TO GENERAL)
+  I told you so.\n.ch ms\nBut, first I am required by the state to inform you of your
+  rights.\nYou have the right to remain silent.\nIf you give up this right, we will
+  be very grateful.\nYou have the right to moan, vomit, and scream in agony, and you\nhave
+  the right to whatever medical attention is necessary to keep\nyou alive and in pain
+  for days.\nDo you understand these rights as I have explained them to you?\n.ch
+  bw\n(YELLS) I'll never talk! (SOTTO) Scream, maybe, but talk never.\nYou can do
+  your worst.\n.ch ms\nReally? (RUBS HANDS GLEEFULLY)\n.ch gd\nI warn you, we'll be
+  watching you.\n.ch bw\n(FLATTERED) Will you?\n.ch gd\nYes!  It's not a pretty sight,
+  but somebody's got to do it!\n.ch ms\nAnd now General, may I introduce my apprentice?\n.ch
+  gd\nGo ahead.\n.ld\n(LIGHTS GO DOWN ON ALL BUT SCREW)\n.ch ms\nLadies and Gentlemen.
+  In this corner, weighing\n143 pounds, holding the indoor record for world's messiest
+  confession\nin the free-style events, winner of the Marquis deSade Memorial Cup\nfor
+  two years running, whipping all the competition,\nCharles - I can keep this up all
+  night - Grovel.\n.ad\n(GROVEL ENTERS TO THUNDEROUS APPLAUSE.)\n.ex\nCharles?\n.ch
+  cg\n(IGOR LIKE) Yes, Master?\n.ch ms\nYou silly twisted boy. (PAUSES) Now, I want
+  you to show me just\nhow much you've learned. See what you can find out.\n.ld\n(GROVEL
+  APPROACHES BUD WISER.\nA VERY BRIGHT SPOT COMES UP ON BUD WISER IN TIGHT FOCUS.\nBUD
+  TAKES SUNGLASSES FROM POCKET AND PUTS THEM ON.)\n.ch bw\nAll right! Let's get started.\nWhat
+  are you going to do to me?\n.ch cg\n(LAUGHS EVILLY) Say, I'm glad you asked.\n.sb
+  \"MISTER SCREW\" \"MISTER KITE\"\n.ti 0\nCHARLES:\nFor the benefit of Mister Screw\nI
+  have come to torture you\nIf it takes all night\n.ve 4\n.ti 0\nSCREW:\nThe general
+  is waiting there\nAs slowly we pull out your hair\nWhat a sight\n.ve 4\n.ti 0\nGROVEL
+  AND SCREW:\nAnd the thumbscrews to your fingers\nWe'll apply\nWith the greatest
+  of delight\n.ve 3\nIn this way\nYou will pray\nTo tell all you know\n.ve 4\n.ti
+  0\nWISER:\nIt's only fair to warn you two\nThat you can scream until you're blue\nBut
+  I won't talk\n.ve 3\nThe pain and death don't worry me\nSince I've caught terminal
+  V.D.\nFrom a jock\n.ve 3\nSo you can do your best to torture me\nAnd you will see\nYou'd
+  get more out of a rock\n.ve 3\nYou can stay for the whole day\nIt'll do you no good\n.ch
+  cg\nNow first, what is your name?\n.ch bw\nBud Wiser, what's yours?\n.ch cg\nCharles
+  Grovel, pleased to meet you.\nPermit me to introduce my associate, Mortimer Screw.\nWe
+  plan to go into business together someday.\n.ch bw\nGrovel and Screw... reminds
+  me of the last date I had with a KIN student.\n.ch ms\nLook, hadn't we better get
+  on with this?\n.ch cg\nOh yes! Back to business! Now what is your name?\n.ch ms\nDon't
+  start that again!\n.ch cg\nWhat is your quest?\n.xx ALL\nWrong script!!!\n.ch cg\nSo-rry.
+  What do you know about the robbery?\n.ch bw\nWhat robbery?\n.ch cg\nDon't play games
+  with us!!! We know that you were at the scene of the\ncrime. We found this! (HOLDS
+  UP PIZZA BOX)\n.ch bw\nI've never seen that pizza box before in my life!\n.ch cg\nThen
+  how do you explain ... THIS?\n.ad\n(HE WHIPS OPENS BOX TO REVEAL A MESSAGE ON THE
+  LID.  HE READS.)\n.ex\n\"If lost, return to Mr.B.Wiser, 34 Carlsberg Avenue, Sudsbury.\n.ch
+  bw\n(BREAKING DOWN) All right, I'll confess!\n.ch gd\n(TO GATOR) Quick! Get this
+  down!\n.ad\n(GATOR BEGINS TO TYPE FURIOUSLY.  ALL LOOK AT HIM CURIOUSLY.)\n.ex\n(TIREDLY)
+  Wait until he says something.\n.ad\n(GATOR STOPS AND WAITS)\n.ch ms\nSo you've broken
+  him.  I'm proud of you.\n.ch cg\nThank you -- I owe it all to degenerate habits
+  and a basic personality flaw.\n.ch ms\nYou must have taken engineering!\n.ch cg\nYes,
+  I spent the best twelve years of my life in systems design.\nFirst year isn't that
+  easy you know.\n.ch ms\n(TO BUD)  Now talk!\n.ch bw\nI'm sorry, I've forgotten what
+  the question was. Oh yes, the robbery.\n.sd\n(MUSIC FROM THE TWILIGHT ZONE.\nLIGHTS
+  DOWN ON ALL BUT BUD.\nBUD RISES FROM HIS CHAIR AND BEGINS TO HAM IT UP, ROD SERLING
+  STYLE.)\n.ex\nSubmitted for your approval.\nA cold night, a lonely stretch of road
+  and a man with a mission.\nA mission to deliver pizza to paying customers.\n.sd\n(PHONE
+  RINGING.)\n.ex\nSuddenly, the call comes through.\nRising to the challenge, the
+  lone pizza driver begins his journey...\n.sd\n(CAR DRIVING)\n.ex\nEventually, he
+  arrives at his destination, a seldom visited embassy\non the outskirts of town.
+  \ He pauses...\n.sd\n(SOUNDS OF A CAR CRASH.  BUD LOOKS UP WITH DISTASTE.)\n.ex\n...and
+  then makes his delivery.  One party sized pizza...\n.ld\n(ANCHOVIES, YUK!  LIGHTS
+  UP QUICKLY)\n.ch ms\nPizza! Is that all you deliver?\n.ch bw\nWell no...\n.ld\n(LIGHTS
+  DOWN AND TWILIGHT ZONE MUSIC STARTS AGAIN.)\n.ex\nDriving through the vacant streets...\n.ch
+  gd\nWithout the flashbacks!\n.ld\n(LIGHTS UP QUICKLY.  TWILIGHT ZONE MUSIC CUTS.)\n.ch
+  bw\nAll right.  I also deliver subs.\n.ch gd\nSubs?  Where?  Where do you deliver
+  subs?\n.ch bw\nThe last delivery I had was to a manhole cover downtown.\n.ch gd\n(TO
+  AIDES) Did you hear that? There are submarines in the sewers of our city!\n.ch ga\nImpossible!
+  \ They'd never get past the albino alligators.\n.ch ba\nNot to mention the soiled
+  budgies.\n.ch gd\nThat doesn't matter.  Get me the president!\n.ad\n(COOL PULLS
+  A PHONE OUT OF HIS FLY.  HIS HELMET LIGHTS UP AND ITS\nRADAR DISH BEGINS TO ROTATE.)\n.ex\nHello,
+  operator. Get me the president.  This is a matter which\ncould affect the sanctity
+  of life in our country.\nWhat? (DOWN CAST) Yes, I'll hold.\n.ad\n(ALL PERSONNEL
+  ON STAGE EXCEPT BUD CROWD AROUND TO HEAR\nWHAT THE GENERAL IS SAYING.\nBUD GOES
+  TO THE OTHER PHONE AND DIALS ONCE.\nA SECTION OF THE BACK WALL OPENS AND BUD WALKS
+  OUT.\nTHE SECTION CLOSES BEHIND HIM)\n.ex\nHello, Mr.President. (STRAIGHTENS VISIBLY)
+  Ah, Mr.President,\nsir, I believe I have uncovered an enemy plot.\nI believe that
+  there is a secret submarine pen in\nthe sewers of our city. Yes sir, right under
+  our noses.\nWhat? Oh, yes sir, I'll hold.\n(TO AIDES) That jackass is probably asking
+  his wife what to do...\n(LOUDER) Ah, yes sir. Oh you decided not to put me on hold
+  after all.\n(EMBARRASSED) It was just a little humour to lighten the mood.\nYes
+  sir, you didn't find it funny...\n(PAUSES) Yes sir I have a plan.\nI would like
+  to have full military control on this one.\nAbsolutely every weapon at our disposal.
+  No nukes?\n(HE SNAPS HIS FINGERS SADLY)  Right, sir.  Thank you, sir.\nI'll get
+  on it right away. (HANGS UP)\nOkay Wiser...(LOOKS FOR BUD) Where did he go?\n.ch
+  ba\nHe's not here!\n.ch gd\nHe can't just disappear.\n.ch ca\nOh no! We left him
+  here with an unguarded phone!\n.xx ALL~THE~REST\nSo what?\n.ch ca\nHe must have
+  dialed nine to get out!\n.ch gd\nFollow him!\n.ld\n(EVERYONE DIVES FOR THE PHONE.
+  \ THE LIGHTS GO DOWN ON THE COMMOTION.)\n.es\n"
+:shard_number: 6
+:shard_name: 1-4
+:shard_time: 1981-02-13 14:34:43.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 9822
+:shard_size: 2955

@@ -1,0 +1,50 @@
+---
+:identifier: Bun
+:block_count: 10
+:block_padding_repairs: 0
+:catalog_time: 1982-12-22 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-19 19:50:58.235418000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a2ea911a7ddd55e074137dede45d9e1829336b44]
+:description: ''
+:digest: 2953d1dc2a583b919de046ab36477044
+:file_grade: :decoded
+:file_time: 1981-03-08 20:27:00.000000000 -05:00
+:first_block_size: 3856
+:owner: bjeroehl
+:path: bjeroehl/fass/81script.f
+:tape: ar082.0605
+:tape_size: 36457
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:35:29.777986000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! ".ic ^^\n.tr~\n.hc`\n.qc\"\n.pc@\n.fs '____________________________________________________________'\n.pl
+  66\n.in 0\n.po 0\n.ll 60\n.ls 1\n.m1 3\n.m2 2\n.m3 2\n.m4 2\n.hy 3\n.fi\n.ju\n.ig(^(xxxx))\n.en(0)
+  \    *** ignore to here the first time             ***\n.an(xxxx)9999 *** skip all
+  macro definitions all next times ***\n.sy echo \">>> Bulk-Script Macros. Use correct
+  o= value for slis, otherwise klist <<<\"\n.at(titl)\nFASSified Information\n.en(titl)\n.af
+  (mon) 01\n.af (day) 01\n.af (min) 01\n.af (hour) 01\n.at(sq)\n.m4 -1\n.sp\n.m4 +1\n.en(sq)\n.at(ex)
+  *** reset to normal ***\n^(sq)\n.fi\n.in 3\n.ne 2\n.en(ex)\n.at(ad) *** actor direction
+  ***\n^(ex)\n.in 0\n.en(ad)\n.at(na) *** Macro-Building Macro for character macros
+  ***\n.mg\n   . . . . . . . . . . . . . . . . . . . . . . . . . .\n@2~\t~(@3)\t\n.br\n.mg\n\n.at(@12)\n@2\n.en(@12)\n.at(@13)\n@3\n.en(@13)\n.an(@14)0\n.en(na)\n.at(xx)
+  *** one-use character macro ***\n.at(##2)\n@1\n.en(##2)\n.an(##4)0\n.ch ##\n.en(xx)\n.at(star)\n************************************************************\n.en(star)\n.at(sb)
+  *** song begin ***\n^(ex)\n.in 0\n.nf\n.ne 12\n^(star)\n.mg\n*****                                                  *****\n.ce
+  3\n~@1~\n~(to the tune of:)~\n~@2~\n.mg\n\n^(star)\n.sp\n.in 3\n.en(sb)\n.at(ve)
+  *** verse separator ***\n^(ex)\n.nf\n.ne @1 5\n.en(ve)\n.at(se) *** song end ***\n.ex\n.en(se)\n.at(bs)
+  *** begin a scene ***\n.pa 1\n.an(indx) 0\n.an(ldct) 0\n.an(sdct) 0\n.an(act)@1\n.an(actr)@1\n.af(actr)II\n.an(scen)@2\n.sy
+  echo \">>> Now roffing Act ^^(actr) Scene ^^(scen): @3 <<<\"\n.he \"^^(actr):^^(scen)\"^^(titl)\"Page
+  %\"\n.fo \"^^(actr):^^(scen) Page %\"F.A.S.S. 1981\"^(year)/^(mon)/^(day)-^(hour):^(min)\"\n.sp\n.ce\n.bf\n@3\n.sp2\n.he
+  \"^^(actr):^^(scen)\"@3\"Page %\"\n.in 3\n.bf\nCast of Characters:\n.sp\n.ta 55R\n.en(bs)\n.at(es)
+  *** end a scene ***\n.m3 1\n.m4 0\n.sp\n.in 0\n.ce\n-~fin~-\n.br\n.m3 2\n.m4 2\n.sy
+  echo \"    Pages=^^(%) Speeches=^^(indx)\"\n.bp\n.en(es)\n.at(fini) *** end a scene
+  ***\n.es\n.en(fini)\n.at(ch) *** character macro ***\n^(ex)\n.ti0 10\n.an(indx)
+  +1\n.an(@14) +1\n.an(x) ^^(@14)=1\n.ig(ch1^^(x))\n.en(ch11)\n.bf\n^^(indx)-^^(@12):\n.ig(chen)\n.en(ch10)\n^^(indx)-^^(@13):\n.en(chen)\n.ns
+  5\n.en(ch)\n.at(sd) *** sound direction ***\n^(ad)\n.an(sdct) +1\n[S-^^(sdct)]\n.en(sd)\n.at(ld)
+  *** lighting direction ***\n^(ad)\n.an(ldct) +1\n[L-^^(ldct)]\n.en(ld)\n.en(9999)
+  *** SKIP TO HERE: THIS IS LAST LINE OF MACRO FILE ***\n"
+:shard_number: 13
+:shard_name: bulkmacr
+:shard_time: 1981-01-20 16:45:14.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 35528
+:shard_size: 585

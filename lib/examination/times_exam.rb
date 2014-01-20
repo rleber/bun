@@ -16,10 +16,11 @@ class String
       def analysis
         file_time = file.descriptor.file_time
         catalog_time = file.descriptor.catalog_time
-        times = [file_time, catalog_time].compact
-        earliest_time = times.size==0 ? nil : times.min
+        shard_time = file.descriptor.shard_time
+        earliest_time = [file_time, catalog_time, shard_time].compact.min
         {
           file_time:     file_time,
+          shard_time:    shard_time,
           catalog_time:  catalog_time,
           earliest_time: earliest_time
         }
@@ -27,7 +28,7 @@ class String
       
       def format_time(field)
         return 'nil' unless field
-        "#{field.class}:#{field.to_s}"
+        "#{field.to_s}"
       end
       
       def format_file_time(row)
@@ -43,7 +44,7 @@ class String
       end
       
       def fields
-        [:file_time, :catalog_time, :earliest_time]
+        [:file_time, :shard_time, :catalog_time, :earliest_time]
       end
     end
   end

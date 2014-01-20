@@ -1,0 +1,238 @@
+---
+:identifier: Bun
+:block_count: 10
+:block_padding_repairs: 0
+:catalog_time: 1982-12-22 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-19 19:50:55.368475000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a2ea911a7ddd55e074137dede45d9e1829336b44]
+:description: ''
+:digest: c2290bf52dea0b1971194b702d05195c
+:file_grade: :decoded
+:file_time: 1981-03-08 20:27:00.000000000 -05:00
+:first_block_size: 3856
+:owner: bjeroehl
+:path: bjeroehl/fass/81script.f
+:tape: ar082.0605
+:tape_size: 36457
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:35:29.777986000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! ".so 81macros\n.bs 2 1 \"Jolly Old St.Nicholas\"\n.na sc SANTA~CLAUS SANTA\n.na
+  be BEEBLEBROX BEEBLEBROX\n.na ls LICKSPITTLE LICKSPITTLE\n.na cr CRUMHORN CRUMHORN\n.na
+  ra RASPUTIN RASPUTIN\n.na ar ARGBARGLE ARGBARGLE\n.na ma MANUEL~LIFE MANUEL\n.na
+  pa PAULA~C.HOLDER PAULA\n.na gr GRINCHLEY GRINCH\n.ld\n(LIGHTS UP ON SANTA'S WORKSHOP.
+  \ THERE ARE A BUNCH OF\nELVES HERE, HAPPILY AT WORK.  NATURALLY, THEY ARE SINGING.)\n.sb
+  \"Happy Elves\" \"Jingle Bells\"\nHappy elves, happy elves,\nHappy elves are we\nMaking
+  toys for girls and boys\nFor a dollar thirty-three\n   AN HOUR!\n.sp\nHappy elves,
+  happy elves,\nHappy, yes indeed,\nAll day long we sing our song\n'Cuz we're all
+  high on speed!\n.sp\n  Snorting up the snow, we'll keep our spirits high\n  On and
+  on we go, working till we die.\n  Grossly underpaid and tyrannized as well\n  By
+  ho-ho-hoing Santa Claus,\n  But we still think he's swell,\n.sp\nOh, happy elves,
+  happy elves,\nOur bliss is not a fluke,\nWe'll laugh and sing at anything\nIt's
+  enough to make you puke,\n.sp\nOh, happy elves, happy elves,\nWe're devoid of wit,\nLobotomized
+  above our eyes,\nBut we don't give a...\n.ex\n.ch cr\n(SCREAMING VERY LOUDLY)\nI
+  can't take it anymore!\n.ad\n(THE SINGING STOPS VERY ABRUPTLY, WE HOPE.)\n.ch ls\nWhat's
+  wrong, Crumhorn?\n.ch cr\nI can't take the singing!  I can't take the dancing!\nI
+  can't take the unremitting hardship and the public\nhumiliation of it all!\n.ch
+  ls\nIf you wanted a good job, why did you go into Honours English?\n.ch cr\nBut
+  I never thought I'd end up working for a tyrant like Santa Claus.\n.ad\n(A COLLECTIVE
+  GASP FROM THE OTHER ELVES.)\n.ch ls\nHow can you say things against Santa?\n.ch
+  be\nHe's a saint.\n.ch ar\nHe's an institution.\n.ch ra\nHe's our Lord and Master.\n.ad\n(PAUSE)\n.xx
+  ARGBARGLE,~BEEBLEBROX,~&~RASPUTIN\nHe's mean, too!\n.ch ls\nThat's right, Crumhorn;
+  he'd barbecue your butt for breakfast\nif he found out you were talking like this.\n.ch
+  cr\nI know.  But I can't take it anymore.  I really can't.\n.ch ls\nCrumhorn, straighten
+  up!  He's going to be here any second.\nIf he catches you whimpering, he'll chop
+  you up for reindeer ragout.\n.ch be\nYeah, Crumhorn.  You'd better not pout.\n.ch
+  ar\nYou'd better not cry.\n.ch ra\nYou'd better not shout.\n.ch ls\nWe're telling
+  you why.\n.ad\n(SANTA COMES CRASHING ON STAGE.)\n.ch sc\nHo ho ho!  Merry Christmas...slime.\n.ad\n(THE
+  ELVES ALL GROVEL OBSEQUIOUSLY.)\n.xx ELVES\nMerry Christmas, your jolliness.\n.ch
+  sc\nI don't suppose you scum would care to explain\nwhy you weren't working when
+  I came in?\n.ch be\nWould you believe we were on our coffee break?\n.ch sc\nYou
+  don't get a coffee break, worm.\n.ch ar\nWould you believe we'd finished work for
+  the day?\n.ch sc\nYou vermin work twenty-four hours a day.\n.ch ra\nWould you believe
+  that today's a holiday?\n.ch sc\nYou insects are supposed to work four hundred and
+  sixty-five\ndays a year... but I'll bet that you all started goofing\noff as soon
+  as my back was turned.\nAnd you know what happens to elves who goof off.\n.ad\n(HE
+  PULLS OUT A GIGANTIC BULLWHIP.)\n.xx ELVES\nNo Santa, we'll be good, please don't
+  (etc.)\n.ch sc\nIt's high time I reminded you what happens to\nyour kind of lazy...
+  lazy... (POLITELY)  Have I called\nyou \"scum\" yet today?\n.xx ELVES\n(LIKE SCHOOL
+  CHILDREN)\nYes, Santa.\n.ch sc\nSlime?\n.xx ELVES\nYes, Santa.\n.ch sc\nHow about
+  lily-livered toffee-nosed snots?\n.xx ELVES\nNo, Santa.\n.ch sc\nThank you.\n(MEAN
+  AGAIN)  It's high time I reminded you what happens\nto your kind of lazy lily-livered
+  toffee-nosed snots.\n.xx ELVES\nNo, Santa, no, no, no et cetera.\n.sd\n(A KLAXON
+  BEGINS HOOTING LOUDLY.  IT CONTINUES AS THE\nTRAP DOOR THUMPS A COUPLE OF TIMES,
+  THEN OPENS UP.\nTHE SOUND STOPS.  AFTER A FEW SECONDS OF SILENCE, A\nPERISCOPE POKES
+  OUT OF THE TRAP AND LOOKS AROUND.\nOVER THE P.A. WE HEAR THE FAMILIAR VIA RAIL NOTES
+  AND\nA VOICE OVER.)\n.xx VOICE~OVER\nNow arriving on platform one, the GO-Sub from
+  Pickering,\nNorth Tonnawanda, and Fergus.\n(IN HOKEY QUEBECOIS ACCENT)  Now arrivant
+  on ze platform un,\nla GO-Sub from Pickering, Tonnawanda Nord, et Fergoo.\n.ch sc\nCurses!
+  \ Interrupted again.\n.ch ls\nWhew!  Saved by the diving bell!\n.ch sc\nYou know,
+  things were a lot quieter around the North Pole\nbefore they put us on the regular
+  route.\n.ch cr\nThe regular route?\n.ch be\nIt's the GO-Sub, Crumhorn.\n.ch ar\nIt's
+  a submarine that goes around to all the different\nparts of the world.\n.ch cr\nI
+  don't believe it.\n.ch ra\nWhy not?  Haven't you ever heard of the subway?\n.ch
+  cr\nWhat's a subway?\n.xx ELVES\nAbout forty thousand tons.\n.ch sc\nShut up you
+  beady-brained morons.\nAs soon as the sub leaves, we'll be left alone again,\nand
+  you know what that means.\n(HE FLICKS THE WHIP MENACINGLY.)\n.ch cr\nWhat if someone
+  gets off?\n.ch sc\nThe only people who'd get off the GO-Sub at the North Pole would
+  be idiots.\n.ad\n(MANUEL COMES OUT OF THE TRAP.)\n.ch ma\nSo, how are all you folks
+  today?\n.ch pa\n(ENTERING BEHIND MANUEL)\nGood afternoon, we're from the Expendable
+  Life\nAssurance Company and we'd like to talk about your future.\n.ch sc\nLucky
+  me.\n.ch ma\n(LOOKING AT THE ELVES WHO ARE STILL GROVELLING)\nFine looking family
+  you've got here, sir.  They all look just like you.\n.ch sc\nI don't have pointy
+  toes.\n.ch ma\nExcept for the pointy toes, you're quite right there.\nThe toes must
+  come from their mother's side of the family.\nAnd speaking of your lady wife, sir,
+  is she at home?\n.ch sc\nNo, she's at work.\n.ch pa\nAnd where does she work, sir?\n.ch
+  sc\nShe runs a massage parlour in Galt.\n.ch ma\nA massage parlour!\n.ch pa\nDon't
+  worry, Manuel, in Galt they likely just give massages.\n.ch sc\nDid I understand
+  you to say that you were insurance agents?\n.ch ma\nNot in so many words, my friend;
+  the title insurance agent\nseems to scare people off.  We prefer to think of ourselves\nas
+  family future counsellors.\n.ch pa\nYes sir, if you're interested in seeing that
+  your children\nget everything possible out of life...\n.ch sc\nThey aren't my children,
+  they're my elves.\n.ad\n(PAUSE WITH DUST ON IT.)\n.ch pa\nElves, sir?\n.ch ma\nDo
+  we have a policy that covers elves, Paula?\n.ch pa\nThe question is, do we have
+  a policy that\ncovers people who believe in elves.  I don't think it's\nlegal to
+  take cheques from a nutcase.\n.ch sc\nI'm not a nutcase, I'm Santa Claus.\n.ad\n(ANOTHER
+  PAUSE WITH DUST ON IT.)\n.ch pa\nMm-hmm.  And I suppose these are your subordinate
+  clauses?\n.ch sc\nI've already told you, they're elves.\n.ch ma\nSure thing, friend.
+  \ Well hey, it's been a load of laughs\ntalking with you here, and if you're ever
+  in the market for\ninsurance, I can give you the number of someone who sells All-State.\n.ch
+  sc\nI really am Santa Claus.\n.ch pa\nListen sir, we understand.  A fat bearded
+  man who\nlives at the North Pole is bound to pick up a delusion or\ntwo over the
+  years of isolation.\n.ch sc\nI'm not isolated.  I get out and see the world every
+  Christmas Eve.\n.ch ma\nSure.  You slide down chimneys, right?  We believe you,
+  Mr.Claus.\nWe also believe in the Tooth Fairy.\n.ad\n(A LIMP-WRISTED PERSON IN A
+  TUTU RUNS ON, BRUSHES MANUEL'S TEETH,\nTITTERS, THEN RUNS OUT.)\n.ex\nAll right,
+  maybe we\n.ul\ndo\nbelieve in the Tooth Fairy, but we still don't believe in Santa
+  Claus.\n.ch sc\nI'm Santa Claus and I can prove it.\n.ad\n(HE GOES STOMPING OUT
+  THE VOM.)\n.ch ls\n(GETTING UP)\nHe really is Santa Claus.\n.ch pa\nAnd you're his
+  elves.\n.ch cr\nRight.\n.ch ma\nI thought elves were smaller.\n.ch be\nThat was
+  back in the old days when we were suffering\nfrom malnutrition.\n.ch ar\nAll we
+  ever used to eat was snow: scrambled snow,\nfried snow, snow Florentine...\n.ch
+  ra\nNow that we've changed our diets though, we're\nas big as anyone.\n.ch pa\nWhat
+  do you eat now?\n.ch be\nYellow snow.\n.ch ar\nIt's a delicacy.\n.ch ra\nWe buy
+  it from the Eskimos.\n.ch ma\nI can't believe I'm talking to elves who eat yellow
+  snow.\n.ch be\nYou are.  I'm Beeblebrox.\n.ch ls\nI'm Lickspittle.\n.ch cr\nI'm
+  Crumhorn.\n.ch ra\nI'm Rasputin.\n.ch ar\nI'm Argbargle.\n.xx MANUEL~AND~PAULA\nBeeblebrox,
+  Lickspittle, Crumhorn, Rasputin, Argbargle?\n.xx ELVES\n.sb \"BLCRA\" \"SUPERCALIFRAGILISTICEXPIALIDOCIOUS\"\nBeeblebrox,
+  Lickspittle, Crumhorn, Rasputin, Argbargle,\nEven though it sounds like someone
+  dying\n      trying to gargle\nIf you shout it loud in someone's ear\n      it's
+  sure to startle\nBeeblebrox, Lickspittle, Crumhorn, Rasputin, Argbargle.\n (Humdiddle-iddle-iddle,
+  umdiddle-ay)\n.ve\nMAN: I think that we have come here\n     To a North Pole booby
+  hatch\nPAU: Let's get out very quickly\n     And make sure to lock the latch\nBOTH:
+  In situations such as this\n      We must protect ourselves\n      Surrounded here
+  by lunatics\n      Who think that they are elves\n      Named...\n.ex\n.ad\n(THE
+  ELVES SING THE CHORUS AGAIN.  MANUEL AND PAULA\nEDGE TOWARDS THE TRAP DOOR AS THE
+  ELVES GO INTO THEIR\nUMDIDDLES.  THEY ARE STOPPED BY SANTA WHO COMES OUT THE TRAP.)\n.ch
+  sc\nWhere do you two think you're going?\n.ad\n(THE ELVES STOP SINGING AND FALL
+  TO THEIR KNEES AGAIN.)\n.ch ma\nHeh, heh.  Just checking to see if the next GO-Sub\nwas
+  in.  You know how it is in the insurance game.  Can't\nstay in any one place for
+  too long or the grass grows under your feet.\n.ch sc\nThe grass isn't going to grow
+  under your feet\nat the North Pole, Mr.Life.\n.ch ma\nA very valid point, sir, one
+  that I will be sure\nto write down as soon as I figure out how you know my name.\n.ad\n(SANTA
+  WAVES ABOUT A GIANT BOOK.  HE LOWERS HIS GLASSES AND READS.)\n.ch sc\nManuel Life,
+  born April 1, 1958.  First Christmas present,\nthirty-five new diapers.  Second
+  Christmas, thirty-six new diapers.\nThird Christmas, a toy piano that your\nfather
+  burned in the fireplace on New Year's Eve.  Shall I go on?\n.ch pa\nBoy, Manuel,
+  he's really got the stuff on you.\n.ch sc\n(STILL READING)\nPaula C.Holder, born
+  February 29, 1957.  Let me see.\nBetsy Wetsy doll for Christmas '63.\nPatty Poo-poo
+  doll for Christmas '64.\nVeronica Vomit '65, Frederica Flatulence '66...\nmy, my,
+  my...\n.ch pa\nHow do you know all this?\n.ch be\nHe sees you when you're sleeping...\n.ch
+  ar\nHe knows when you're awake...\n.ch ra\nHe knows when you've been bad or good...\n.ch
+  sc\nYes sir, I've got the best spy network in the world.\n.ch ls\nIt's quite true,
+  you know.  Santa's spies manage\nto sneak into every house in the world at least
+  once a year.\n.ch cr\nAnd then they report back through the mail.\n.ch ls\nYes,
+  every nation in the world forwards kids' letters\nto Santa Claus, never dreaming
+  that among the real letters\nare reports from the spies.\n.ch sc\nFor example, listen
+  to this letter.\n\"Dear Santa: This year for Christmas I would like\na secret army
+  base just like the one that's hidden\nin the service tunnels of our local university.\nI
+  would also like a GI-Joe with a uniform that's just\nlike the uniforms of the base
+  personnel.\nThe uniform is all green and there's a walkie-talkie\nthat everyone
+  carries in his back pocket...\"\n.ch pa\nThat's all very interesting, Santa, but
+  I really\ndon't want to hear anything more about spies at the moment.\n.ch ma\nRight.
+  \ We've had an embarassing experience with espionage\nthat we'd like to forget.\n.ch
+  sc\nWhat kind of embarassing experience?\n.ch pa\nWe sold millions of dollars worth
+  of insurance to\na bunch of spies.  What a disaster!\n.ch ma\nDo you know what collossal
+  risks those people are,\ninsurancewise?  With every move they make, another chance\nthey
+  take; the odds are they won't live to see tomorrow.\n.ch pa\nThat's why we were
+  sent up here to the North Pole.\nIt's the Expendable Life Company's form of banishment.\n.ch
+  sc\nWell, you two sure are a pair of suckers, aren't you?\nHow in the world could
+  you ever be so stupid as to sell insurance to spies?\n.ch ma\nWe didn't know they
+  were spies.  We thought they\nwere just regular employees of the Fassablanca Toy
+  Company.\n.ad\n(PAUSE WITHOUT DUST ON IT)\n.ch sc\nDid you say...the Fassablanca
+  Toy Company?\n.ch ma\nHave you heard of it?\n.ch sc\nHeard of it!\nHave I heard
+  of the people who annually steal over a billion dollars of\nbusiness that is rightfully
+  mine?  Have I heard of the\ncompany that steals every product idea I develop?\nHave
+  I heard of the low-lifes who outbid me for the\nright to make Star Wars toys?\n.ch
+  ma\nWell don't keep us in suspense; have you?\n.ch sc\nWhat are those little toadies
+  doing with spies?\n.ch pa\nIt's kind of complicated.  Apparently they're\ncreating
+  the war game to end all war games.\n.ch ma\nSo they hired a bunch of spies to steal
+  actual battle\nplans from countries all over the world.\n.ch ls\nWow, talk about
+  authenticity!\n.ch sc\n(CRACKING THE WHIP)\nShut up, Lickspittle!  (MUSING)  So,
+  Fassablanca\nis stealing battle plans, is it?\n.ch ma\nIt's bound to make a dandy
+  war game, Mr.Claus.\n.ch sc\n(SCREAMING)\nI know that!\n.ch ls\nIt could put us
+  out of business, sir.\n.ch cr\nAnd then we wouldn't have to make all these toys
+  any more.\n.ch be\nWe wouldn't have to work day and night.\n.ch ar\nWe wouldn't
+  have to rack our brains to come up\nwith new ideas.\n.ch ra\nWe wouldn't have to
+  deafen ourselves with the\nsound of little hammers tapping on wood.\n.xx ELVES\n(SARCASTICALLY)
+  \ Awww!\n.ch sc\nNot so fast, you little shrimps.  There's still time\nto put the
+  screws to Fassablanca.\n.ch pa\nHow?\n.ch sc\nI think we need a leak.\n.ch ls\nOkay,
+  Santa, you go out the vom and down the hall\nuntil you get to the big glass doors...\n.ch
+  sc\nNot that kind of leak, pin-head.  Grinchley!\n.ad\n(GRINCHLEY COMES RUNNING
+  ON AND SALUTES.)\n.ch gr\nYes sir!\n.ch ma\nWho's that?\n.ch sc\nThis is Grinchley,
+  one of my spy-elves.\nCertainly a cut above the drones I keep here in the work-shop,
+  isn't he?\n.ch gr\nYes sir!\n.ch pa\nWhat do you want a spy elf for?\n.ch sc\nI
+  think we're going to let the governments\nof the world know what Fassablanca is
+  up to.\n.ch gr\nYes sir!\n.ch sc\nStop that, Grinchley!\n.ch gr\nYes sir!\n.ch pa\nAre
+  you really going to spill the beans about Fassablanca?\n.ch sc\nMore or less.\n.ch
+  ma\nWhat do you mean by that?\n.ch sc\nIf I just tell the truth about Fassablanca,
+  they won't\nget into enough trouble.  After all, it's hard for a government to get\nexcited
+  if its secrets have only fallen into the hands of a toy company.\n.ch pa\nSo what
+  are you going to say?\n.ch be\nYou could tell the Russians that the company is a
+  front for the Americans.\n.ch ar\nYou could tell the Americans that the company
+  is a front for the Russians.\n.ch ra\nYou could tell everybody that the company
+  is a front for the Albanians.\n.ch ls\n(TO RASPUTIN)  So who'd care?\n.ch sc\nYou
+  people are thinking too small.  We need some\nsort of creative story that will bring
+  the world down\non top of Fassablanca without causing serious repercussions.\n.ch
+  be\nWe could say that the Fassablanca people are really alien invaders\nfrom some
+  glorious planet that intends to take over the earth.\n.ch sc\nIt's been done.\n.ch
+  ar\nWe could say that the Fassablanca people are making\nclones of Donny and Marie
+  to release on a defenseless world.\n.ch sc\nImpossible --\n.ul\nI've\ngot the rights
+  for Donny and Marie clones.\n.ch ra\nWe could say that Fassablanca was going\nto
+  sponsor re-runs of Gilligan's Island.\n.ch sc\nNot even Fassablanca would be that
+  fiendish.\n.ch ls\nWait a second!  We want to get all the governments\nin the world
+  mad at Fassablanca, right?\n.ch sc\nRight.\n.ch ls\nThen all we have to do is say
+  that Fassablanca\nis threatening the one thing that politicians love most.\n.ch
+  cr\nWhat's that?\n.ch be\nMoney?\n.ch ar\nSex?\n.ch ra\nPop-tarts?\n.ch ls\nNo --
+  lying.  We spread the word that Fassablanca has invented a toy\nthat will immediately
+  determine whether or not someone is telling the truth.\n.ch cr\nA long distance
+  lie detector!\n.ch ls\nRight.  Politicians don't want people to find out what they're
+  really up to.\nThey'd do anything to stop Fassablanca.\n.ch sc\nGreat idea, Lickspittle...
+  for a mindless lackey.\nYou understand what we've been saying, Grinchley?\n.ch gr\nYes
+  sir!\n.ch sc\nYou know what you're supposed to tell the governments of the world?\n.ch
+  gr\nYes sir!\n.ch sc\nThen go out there and lie for Santa!\n.ch gr\nYes sir!\n.ad\n(HE
+  DOES AN ABOUT-FACE AND LEAVES.)\n.ch sc\n(YELLING AFTER GRINCHLEY)  And do it right!
+  \ I'm going to send\nmy wife to keep an eye on you.\n.ch ma\nI hope you won't take
+  this badly, Santa, but unethical things like spreading\nlies about the competition
+  don't really fit in with your reputation.\n.ch sc\nYou think I care?\n.ch ma\nApparently
+  not.  But it still seems like a rather shady practice.\n.ch sc\nMy dear boy...\n.sb
+  \"A SPOONFUL OF SLANDER\" \"A SPOONFUL OF SUGAR\"\nIf you would like to make some
+  dough\nYou must be ruthless, even though\nPeople in the competition might complain\nThe
+  folks in business know it's wise\nTo slander enemies with lies\nWith dirt, with
+  muck,\nAnything to make a buck...\n.ve\n  Cuz a spoonful of slander keeps the competition
+  down\n  The competition down, competition down\n  Just a spoonful of slander keeps
+  the competition down\n  In a very spiteful way.\n.ve\nWell if your products aren't
+  so good\nMade out of plastic and plywood\nThat doesn't mean you can't come out on
+  top\nA bit of falsehood here and there\nGets other folks out of your hair\nAnd then...
+  you're free...\nWith a monopoly...\n.ve\n  And a spoonful of slander keeps the competition
+  down,\n  The competition down, competition down,\n  Just a spoonful of slander keeps
+  the competition down,\n  In a very spiteful way.\n.ex\n.ld\n(SANTA WHIPS THE ELVES
+  INTO JOINING IN THE CHORUS, AND EVERYBODY GOES\nBOUNCING ABOUT THE STAGE IN JOYOUS
+  REVELRY AS THE LIGHTS DIM.)\n.es\n"
+:shard_number: 8
+:shard_name: 2-1
+:shard_time: 1981-02-13 15:05:59.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 15244
+:shard_size: 3899

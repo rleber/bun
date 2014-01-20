@@ -1,0 +1,32 @@
+---
+:identifier: Bun
+:block_count: 2
+:block_padding_repairs: 1
+:catalog_time: 1978-11-08 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-19 19:50:37.173980000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a2ea911a7ddd55e074137dede45d9e1829336b44]
+:description: ==> Total Eclipse Episode 6 - CKMS Radio Theatre
+:digest: bba71085eba32b9fa4ac62e1650319a9
+:file_grade: :decoded
+:file_time: 1978-11-08 14:15:17.000000000 -05:00
+:first_block_size: 3867
+:owner: fass
+:path: fass/totleclips.f
+:tape: ar019.0175
+:tape_size: 7228
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:34:08.933111000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! ".m3 0\n.m4 2\n.he ''TOTAL ECLIPSE'(%)'\n.po 12\n.ll 67\n.ds\n.pc #\n.nj\n.in
+  3\n.tr ~\n.hy 1\n.at (na)\n.at (#1)\n.sp\n.ne 4\n.ti -3\n#2:\n.en (#1)\n.en (na)\n.na
+  ba B \n.na cf C\n.na pf F\n.na ob O\n.na sw S\n.na wa W\n.na ny N\n.na ja J\n.na
+  za Z\n.na xe X\n.na qu Q\n.na fn Nyala\n.na fj Janos\n.na fq Quentaras\n.na fz Zarya\n.at
+  (sf)\n.ne 2\n.sp\n.ti 13\n(\n.ul\nSFX\n:\n#1)\n.en (sf)\n.at (no)\n.sp\n.ti 13\n(\n#1)\n.en
+  (no)\n"
+:shard_number: 0
+:shard_name: temacro
+:shard_time: 1978-11-08 14:15:17.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 35
+:shard_size: 125

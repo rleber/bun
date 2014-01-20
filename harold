@@ -1,0 +1,75 @@
+---
+:identifier: Bun
+:block_count: 2
+:block_padding_repairs: 1
+:catalog_time: 1979-04-13 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-19 20:39:39.491643000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a2ea911a7ddd55e074137dede45d9e1829336b44]
+:description: ===> Songs from Fass '79 (roff source frz)
+:digest: b6944e75c75618a202019aab370e11f4
+:file_grade: :decoded
+:file_time: 1979-04-08 13:02:33.000000000 -05:00
+:first_block_size: 3865
+:owner: fass
+:path: fass/songfest.f
+:tape: ar025.0634
+:tape_size: 3751
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:34:15.280998000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! '.sb "Harold Mallard" "Rubber Duckie"
+
+  Harold Mallard, he''s the man
+
+  Who keeps his spare change in a van.
+
+  Harold Mallard owns everything on earth.
+
+  .sp
+
+  .ne4
+
+  Harold Mallard owns this boat,
+
+  He makes sure our assets float.
+
+  Harold Mallard owns everything on earth.
+
+  .sp
+
+  .ne4
+
+  .ne6
+
+  Anything you see,
+
+  Chances are that
+
+  He owns it!
+
+  If a charity
+
+  Needs some money,
+
+  He loans it!
+
+  .sp
+
+  .ne4
+
+  Harold Mallard, yeah - he''s rich.
+
+  He''s got palms that always itch!
+
+  Harold Mallard owns everything on earth!
+
+  .se
+
+'
+:shard_number: 1
+:shard_name: harold
+:shard_time: 1979-02-13 15:03:24.000000000 -05:00
+:shard_blocks: 1
+:shard_start: 460
+:shard_size: 116

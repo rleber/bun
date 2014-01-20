@@ -1,0 +1,37 @@
+---
+:identifier: Bun
+:block_count: 2
+:block_padding_repairs: 1
+:catalog_time: 1979-04-13 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-19 20:39:40.670286000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a2ea911a7ddd55e074137dede45d9e1829336b44]
+:description: ===> Songs from Fass '79 (roff source frz)
+:digest: c455001763a7711bcd58440d905bf982
+:file_grade: :decoded
+:file_time: 1979-04-08 13:02:33.000000000 -05:00
+:first_block_size: 3865
+:owner: fass
+:path: fass/songfest.f
+:tape: ar025.0634
+:tape_size: 3751
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:34:15.280998000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! '.sb "Nuke the World" "Duke of Earl"
+
+  Nuke, nuke, nuke, nuke the world
+
+  Nuke, nuke, nuke the world,
+
+  Nuke, nuke, nuke the world...
+
+  .se
+
+'
+:shard_number: 15
+:shard_name: nukenuke
+:shard_time: 1979-02-18 21:09:57.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 1922
+:shard_size: 30

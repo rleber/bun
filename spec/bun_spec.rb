@@ -482,28 +482,48 @@ describe Bun::Bot do
         backtrace
       end
     end
-    # TODO Test changing --file, --title, -j, --format, --min, --case, --fields on a frozen file, --fields on a frozen shard
-    # TODO Test legibility on a less than 100% file
-    # TODO Check return codes from boolean tests
-    context "exhaustive tests" do
-      String::Examination.exams.each do |exam|
-        @current_exam = exam
-        context @current_exam do
-          before :all do
-            @examine_result_file = "exam_#{exam}_ar003.0698"
-            exec("rm -rf output/test_actual/#{@examine_result_file}")
-            exec("bun examine #{exam} --file --raise -j --titles #{TEST_ARCHIVE}/ar003.0698.bun >output/test_actual/#{@examine_result_file}", :allowed=>[0,1])
-          end
-          it "should produce the proper output" do
-            @examine_result_file.should match_expected_output
-          end
-          after :all do
-            backtrace
-            exec_on_success("rm -rf output/test_actual/#{@examine_result_file}")
+
+    %w{ar003.0698 ar025.0634}.each do |file|
+      context "all tests on #{file}" do
+        String::Examination.exams.each do |exam|
+          @current_exam = exam
+          context @current_exam do
+            before :all do
+              @examine_result_file = "exam_#{exam}_#{file}"
+              exec("rm -rf output/test_actual/#{@examine_result_file}")
+              exec("bun examine #{exam} --file --raise -j --titles #{TEST_ARCHIVE}/#{file}.bun >output/test_actual/#{@examine_result_file}", :allowed=>[0,1])
+            end
+            it "should produce the proper output" do
+              @examine_result_file.should match_expected_output
+            end
+            after :all do
+              backtrace
+              exec_on_success("rm -rf output/test_actual/#{@examine_result_file}")
+            end
           end
         end
       end
     end
+
+    # TODO Test without --file and --title
+    # TODO Test without --file, with --title
+    # TODO Test without -j
+    # TODO Test with --format csv
+    # TODO Test words with --min 5
+    # TODO Test chars with --case
+    # TODO Check return codes from boolean tests
+    # TODO Test examining frozen file with shard specifier (e.g. --fields, text)
+    # TODO Test with multiple files, without --titles
+    # TODO Test with invalid test
+    # TODO Test with formula
+    # TODO Test with fields (e.g. digest, block_count)
+    # TODO Test with multiple exams
+    # TODO Test with bad formula
+    # TODO Test legibility on a less than 100% legible file
+    # TODO Test roff on a file with no roff
+    # TODO Test tabbed on a file with no tabs
+    # TODO Test reference to text
+    # TODO Test reference to file_path
   end
     
   describe "describe" do

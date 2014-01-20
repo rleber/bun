@@ -1,0 +1,205 @@
+---
+:identifier: Bun
+:block_count: 10
+:block_padding_repairs: 0
+:catalog_time: 1982-12-22 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-19 19:50:57.031751000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a2ea911a7ddd55e074137dede45d9e1829336b44]
+:description: ''
+:digest: b3db8004eeaae08f092a74032d3b0251
+:file_grade: :decoded
+:file_time: 1981-03-08 20:27:00.000000000 -05:00
+:first_block_size: 3856
+:owner: bjeroehl
+:path: bjeroehl/fass/81script.f
+:tape: ar082.0605
+:tape_size: 36457
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:35:29.777986000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! ".so 81macros\n.bs 2 4 \"As the Fuse Burns\"\n.na gd GENERAL~DEGREE DEGREE\n.na
+  ld LES~DEWITT DEWITT\n.na ml MANUEL~LIFE MANUEL\n.na pa PAULA~C.HOLDER PAULA\n.na
+  iu IMA~UNDERCOVER IMA\n.na pr PHIL~T.RICH PHIL\n.na as ANNA~STESIA ANNA\n.na gp
+  GENERAL~POLSKI~O'GORKI GORKI\n.na mm MAX~MILK MAX\n.na tt TESS~TUBE TESS\n.na at
+  ALEC~TROLYSIS ALEC\n.na ps POLLY~SACCHARIDE POLLY\n.na sc SEYMOUR~CLEARLY SEYMOUR\n.na
+  fs FRANK~LEE~SPEAKING FRANK\n.na mt MILLIE~TERRY MILLIE\n.na wi WILL~PROBATE WILL\n.na
+  js JENNY~SIDE JENNY\n.na hp HY~PERTENTION HY\n.ld\n(LIGHTS UP ON THE BOARDROOM.
+  \ PHIL AND LES ARE THERE\nWITH ALL THE SCIENTISTS.  THEY ARE PLAYING WITH A DARTBOARD.(??))\n.ch
+  ld\nThe only solution is a move to the right.\n.ch at\nEven an idiot should be able
+  to see it should swing to the left.\n.ch ld\nOnly a fool could think...\n.ad\n(ENTER
+  PAULA AND MANUEL BREATHLESSLY.)\n.ch ml\nEverybody run!  You're about to be attacked!\n.ch
+  pa\nThere are thousands of soldiers pulling up outside the factory!\n.ch pr\nCan
+  it wait?  We're almost done.\n.ad\n(HE HOLDS UP THE DARTBOARD.  AT THAT MOMENT,
+  THERE ARE SOUNDS OF\nSHOOTING AND SHOUTING FROM OFFSTAGE.  GENERAL DEGREE AND CREW
+  COME IN\nFROM STAGE RIGHT WHILE GENERAL GORKI AND COMPANY COME IN FROM STAGE LEFT.\nTHE
+  TWO FORCES ARE ABOUT EQUAL.)\n.xx DEGREE~AND~GORKI\n(TO EACH OTHER)  Surrender!
+  \ We have you surrounded.\n.xx GORKI'S~TROOPS\nLook!  Faith and Begorrah, it's General
+  Degree.\n.xx DEGREE'S~TROOPS\nUh-oh, it's General Polski O'Gorki.  We're in a pickle
+  now.\n.xx GORKI'S~TROOPS\nYou're in a dilly of a mess.\n.ch gp\n(HORRID IRISH ACCENT)\nAh!
+  \ So the capitalist swine seek to further the cause of\nimperialism by covering
+  the tracks of your running dog lackies.\nFilthy Fascists!\n.ch gd\nWhat did he say?
+  \ Get me my translator!\n.ad\n(FRANK LEE SPEAKING IS PUSHED UP TO THE FRONT OF DEGREE'S
+  FORCES.)\n.ch fs\nHe accuses us of backing Fassablanca, sir.\n.ch gd\nA likely story!
+  \ Tell that red commie that the feeble lies of\nthe Bolshevik slavers could never
+  fool me.\n.ch fs\nThe capitalist lackey says that the claims of the servant of the\nWorkers
+  Paradise conflict with his bourgeois superstitions.\n.ch gp\nAye, and tell the reactionary
+  foot-kisser thug that the workers of the world\nwill not allow this blatant falsehood
+  to go unchallenged.\n.ch fs\nThe commie simp says you're lying, sir, and he won't
+  let us take Fassablanca.\n.ch gd\nTell that pinko that these proud sons of the bastion
+  of liberty\nwould rather face the withering gun blasts, the foul nerve gasses,\nand
+  the vile brain-washing tortures of the enemy than let the World\nCommunist plot
+  succeed.\n.ch fs\nThe capitalist swine says Nyet.\n.ch gp\nThen the proletariat's
+  army has no choice but to face the frail\nbullets and decadent grenades of the imperialist
+  oppressors.\n.ad\n(DEGREE'S MEN ARE RATHER DISMAYED AT THIS.)\n.ch mt\nHey Will,
+  did you hear anything about fighting when you signed up?\n.ch wi\nNo man, I thought
+  this was the new army.\n.ch js\nNew army, old army, our army, their army, they're
+  all rotten!\n.ad\n(THE FOLLOWING SONG IS SUNG BY EVERYONE ON STAGE.)\n.sb \"DOWN
+  WITH THE ARMY\" \"BALLS TO YOUR PARTNER\"\nDown with the army, ask me if I care,\nIf
+  I hadn't enlisted I wouldn't be here\nWith people who aren't all there.\n.ve 5\n
+  \     The generals, the generals\n      They order us to fight\n      But whenever
+  the enemy\n      Comes into view\n      The generals aren't in sight.\n      Right!\n.sp\n
+  \ ...CHORUS...\n.ve 5\n      The sergeants, the sergeants,\n      They teach us
+  to survive, it's\n      So good for morale\n      To show he's your pal\n      The
+  sarge plays with his privates.\n.sp\n  ...CHORUS...\n.ve 5\n      The cooking staff,
+  the cooking staff,\n      They're said to be the best,\n      But they hired them
+  all\n      From South Campus Hall\n      And so our food's a mess!\n      Yes!\n.sp\n
+  \ ...CHORUS...\n.ve 7\nSOLDIER:\n      The cabin boy, the cabin boy,\n      The
+  dirty little nipper...\nGENERAL:\n      He doesn't belong\n      In an army song\n
+  \     And neither does the skipper!\n      Arrr!\n.sp\n  ...CHORUS...\n.ve 5\n      We
+  hate the army\n      We hate it quite a lot\n      But we'll certainly stay\n      If
+  we run away\n      They're sure to have us shot.\n      Oh!\n.ve 3\nDown with the
+  army, ask me if I care,\nIf I hadn't enlisted I wouldn't be here\nWith people who
+  aren't all there!\nIf I hadn't enlisted I wouldn't be here\nWith people who aren't
+  all there!\nIf I hadn't enlisted I wouldn't be here\nWith people who aren't... ALL
+  THERE!!\n.ex\n.ch ps\nThose guys may complain a bit, but they're going to shoot\nus
+  if they're ordered to.  We'd better do something fast.\n.ch at\n(PUTTING HIS HAND
+  IN HIS PANTS POCKET)  I have just the thing.\n.ch ps\nOh put it away, Alec...\n.ch
+  at\nNo, I mean the Alcan Can-can Tin Cans.\n.sd\n(ALEC WHIPS OUT A BUTTON, SLAMS
+  IT DOWN ON THE DESK, AND PRESSES IT HARD.\nIMMEDIATELY, THE ALCAN CAN-CAN TIN CANS
+  CANTER ON STAGE CAN-CANNING TO THE\nCAN-CAN MUSIC.  THEY GET BETWEEN GORKI AND HIS
+  MEN, AND SCARE THEM\nOFFSTAGE IN THE FACE OF THE FLYING FEET.)\n.xx GORKI~AND~DEGREE\nAttack!\n.ad\n(GORKI
+  CHARGES IN.  SUDDENLY HE REALIZES HIS SOLDIERS HAVE DISAPPEARED.)\n.ch gp\nWhere
+  have all my soldiers gone?\n.xx ALL\n(SINGING)  Long time passing...\n.ad\n(WILL
+  PROBATE RUNS UP AND GRABS GORKI.)\n.ch wi\nGot him, General.\n.ch gd\nGood going,
+  Will.\n(TO THE FASSABLANCA PEOPLE)  And now your commie comrades have fled.\nAre
+  you going to surrender or do we have to get rough?\n.ad\n(DEGREE'S SOLDIERS ADVANCE,
+  LEERING.)\n.ch pr\nWell of course we'll cooperate.  We're good citizens.\n.ch gd\nOn
+  the other hand, why waste time with a trial?  Fire at Will.\n.ad\n(NATURALLY EVERYONE
+  FIRES AT WILL PROBATE.  GORKI LOOKS AT THE FALLEN WILL.\nMEANWHILE A RATHER STUPID
+  SOLDIER NAMED MAX MILK SHOOTS GORKI.)\n.ch mm\nRats!  Missed.\n.ch gd\nNow look
+  at the mess you've made.\n.ch at\nNo problem; we'll clean it up.\n.ad\n(HE PUSHES
+  THE ROBOT BUTTON AGAIN.\nTHEY COME IN, CAN-CANNING AND PUSHING BROOMS.\nTHEY SWEEP
+  THE TWO DEAD BODIES OFF THE STAGE.)\n.ch ps\nWho were they?\n.ch at\nThe Alcan Can-can
+  Trash Cans.\n.ch gd\nBring them back, we'll have some more bodies for them in just
+  a second.\n.ch at\nWhose bodies?\n.ch gd\n(POINTING AT THE FASSABLANCA FOLKS)  Yours.
+  \ Ready, aim, and fire.\n.ld\n(TESS MAKES A DRAMATIC LEAP TO THE TABLE AND PUSHES
+  A LARGE RED BUTTON.\nA RED SPOT LIGHT SPRINGS UP AROUND THE COMPANY PEOPLE.)\n.sd\n(A
+  HUMMING IS HEARD.  THE SOLDIERS FIRE THEIR GUNS BUT THEY\nHAVE NO EFFECT.)\n.ch
+  mt\nGood Lord, it looks like an impenetrable force field!\n.ad\n(TESS PUTS UP A
+  SIGN THAT READS \"IMPENETRABLE FORCE FIELD.\")\n.ex\nIt is!  It is an impenetrable
+  force field.\n.ch tt\nYou have nothing that can get through that field and hurt
+  us.\nIt's impervious to everything.\n.ch sc\nActually, since we can see through
+  the force field, light can get through.\nAnd since we can hear through the force
+  field, sound can get through.\nTherefore the brightness and shock waves of something
+  like a bomb\nwould be able to get through the field and kill us all.\nA tactical
+  nuclear device would work quite nicely.\n.ch tt\nNitpicker.\n.ch gd\nDid we bring
+  a tactical nuclear device with us?\n.ch hp\nLet me check, sir.\n.ad\n(HE GOES OFF
+  AND COMES BACK A SECOND LATER WITH THE FAMOUS\nTACTICAL NUCLEAR DEVICE ON A DOLLY.
+  \ IT HAS A LARGE ON-OFF SWITCH\nAND A MICKEY MOUSE CLOCK.)\n.ex\nHere it is, sir.\n.ch
+  gd\nMen, you have an opportunity for fame and glory rarely given to persons\nof
+  your generation.\n.ad\n(THE TROOPS CHEER.)\n.ex\nYes, you are now going to be able
+  to die for your country.\n.ad\n(THE TROOPS BOO.)\n.ex\nWe can't leave this device
+  alone, because the villains of Fassablanca\nwould be able to turn off the force
+  field, disarm the device, and escape.\nTherefore, we must guard the bomb until it
+  goes off.\n.ch js\nWhat about protection from the blast, sir?\n.ch gd\nYou can use
+  your regulation bibles.\nIf you place them in front of your hearts,\nyou'll be protected
+  by the lead lining.\n.ad\n(ALL THE MEN PUT THEIR BIBLES OVER THEIR HEARTS EXCEPT
+  HY WHO\nHOLDS HIS BIBLE SLIGHTLY LOWER DOWN.  THE TROOPS STAND AS FAR\nFROM THE
+  BOMB AS POSSIBLE, GUNS IN HAND.)\n.ch gd\nThere!\n.ad\n(HE TURNS PROUDLY TO HIS
+  TROOPS.)\n.ex\nWhat do you think of that?\n.ad\n(WHILE HIS BACK IS TURNED, TESS
+  TURNS OFF THE FORCE FIELD.\nSEYMOUR AND POLLY GRAB THE BOMB AND PULL IT BACK INSIDE.\nTESS
+  SWITCHES ON THE FORCE FIELD AGAIN.)\n.ex\nOh darn.\n.ch pr\nOkay, one of us has
+  to disarm this bomb.  Any volunteers?\n.ch tt\nNot my field of competence, sir.\n.ch
+  pa\nI don't save lives, I insure them.\n(AS AN AFTERTHOUGHT)  Are you all covered?\n.ch
+  sc\nYes... with Expendable Life.\n.ch pa\nRats.\n.ch as\nI think disarming the bomb
+  is going to be up to you, boss.\n.ch pr\nI'm honoured, but I really can't accept...\n.ch
+  as\nBut boss, you're so disarming...\n.ch pr\nBut...\n.ad\n(VERY QUICKLY, SEYMOUR
+  HANDS PHIL A PAIR OF PLIERS, ALEC\nHANDS HIM A SCREWDRIVER, AND POLLY PLUNKS A HARD
+  HAT ON HIS HEAD.)\n.ex\nBut I don't know how to disarm a bomb.\n.ch ml\nWhy don't
+  you just use that big ON-OFF switch?\n.ch as\nDon't be absurd.  The switch is obviously
+  a booby-trap.\n.ch at\nIn the movies, you always have to cut one of the wires.\n.ch
+  pr\nWhich wire do I cut first?\n.ch ld\nThe red one.\n.ch at\nThe green one.\n.ch
+  pr\nDo I hear any motions from the floor?\n.ch ld\nI move that we cut the red wire.\n.ch
+  pa\nI second it.\n.ch pr\nThank you.  Any discussion or amendments?\n.ch at\nI move
+  that we cut the red wire but first we cut the green one.\n.ch ml\nI second it.\n.ch
+  pr\nThank you.  The floor is open for discussion.  Line up, please.\n.ad\n(LES AND
+  ALEC LINE UP.)\n.ch ld\nHow can you allow that quivering blob to ruin my plan?\nIf
+  you cut that green wire, we'll all be killed.\n.ch at\nAbsurd!  Green is the obvious
+  colour.\nWould the general use the colour of communism for the best part of the
+  bomb?\nObviously not -- he'd use green for money.\n.ch ld\nMaybe business would
+  use green but government would use red,\nfor their budget and their tape.\n.ch tt\nI
+  call the question.\n.ch sc\nSecond!\n.ch pr\nOkay, we're voting on the amendment.\nAll
+  in favour?  All against?  Abstaining?\n.ad\n(AGAINST WINS)\n.ch at\nI object!\n.ch
+  pr\nShut up!  We still have to discuss the original question.\n.ch ps\nCall the
+  question!\n.ch ld\nYou can't do that.  We haven't discussed the question.\n.ch pr\nDoesn't
+  matter.  We're using Burt's rules of order.\nAll in favour?  Opposed?  Abstaining?\n.ad\n(THE
+  VOTE IS EQUAL ON BOTH SIDES.)\n.ex\nWe seem to have a tie.  What do we do now?\n.ch
+  as\nThe chairman casts the deciding vote.\n.ch pr\nMe?\n.ch as\nLook upon it as
+  an opportunity to assert yourself.\n.ch pr\nYes!  Finally, a chance to prove I deserve
+  my position!\nTo show these youngsters that I'm not just a spineless cretin who
+  happened to\ninherit forty per cent of the company's shares from my uncle!\n.ch
+  as\nHow will you decide, sir?\n.ch pr\nGot a coin?\n.ad\n(SHE HANDS HIM A COIN.)\n.ex\nAll
+  right, call it!\n.xx DEWITT~AND~ALEC\nHeads!\n.ad\n(PHIL FLIPS.)\n.ch pr\nIt's tails.
+  \ Guess we can't do anything.\n.ch sc\nBut we only have five minutes!\n.ch pa\nIt's
+  going to take a miracle to save us now.  We're doomed.\n.ad\n(ENTER IMA UNDERCOVER.)\n.ch
+  iu\nStop, stop!  You're making a horrible mistake.\n.ch gd\nWhat are you talking
+  about?\n.ch iu\nThere's no need to destroy Fassablanca.\n.ch gd\nBut they're a cover
+  for the enemy!\n.ch iu\nThey were just stealing plans so they could make a war game.\nThey
+  have nothing to do with the enemy!\n.ch gd\nNonsense!  I saw the commie army here.\nAnd
+  now we're going to wipe these pinkos off the face of the earth.\n.ch iu\nWith that
+  bomb?  Why don't they just switch it off?\n.ch as\nThat switch is just a booby-trap.\n.ch
+  iu\nNo it's not; it's the real thing.\n.ad\n(ALL THE COMPANY DIVE FOR THE SWITCH.)\n.ch
+  gd\n(TO SOLDIERS)  Arrest that woman!\n.ad\n(THE TROOPS SEIZE HER.)\n.ex\nI'm not
+  going to let these pinkos get away with this.\nI'm calling in an air strike.\n(HE
+  PICKS UP A CONVENIENTLY LOCATED PHONE.)\nHello, operator?  Get me the President!
+  \ (PAUSE)\nOf the United States.\n(PAUSE) Yes, I'll hold.\n(PAUSE) Hello, Mr. President?\n(PAUSE)
+  \ He's in Buffalo at the hockey game?\n(PAUSE)  He's got how many secret service
+  agents guarding him?\nAren't they a little trigger happy?  (PAUSE)  They've already\nshot
+  both goalies and a hot dog vendor.\n(PAUSE)  Look, could you connect me with the
+  President?\nIt's kind of urgent.  Thanks.\n(PAUSE) Hello, Mr. President, this is
+  General Degree again.\nI have to call a missile strike.\nAre you using any missiles
+  right now?\n(PAUSE)  Besides the ones for Iran.  (PAUSE)\nYes, I know missiles are
+  expensive.\nNo sir, I won't bother you again.\nThank you, Sir.\n(TO OTHERS) He's
+  giving us the old Bomarc missiles we got from Canada.\n.ch pa\nI thought the Canadian
+  Bomarcs didn't have warheads.\n.ch ml\nThey got the warheads from Sears.\n.ch pa\nSears
+  has warheads?\n.ch ml\nSears bought a used CANDU.\n.ch gd\nJust tell congress it's
+  part of your urban renewal plan.\nThey'll never check up.  Thank you, sir.  We all
+  salute you.\n(HE DIALS THE PHONE AGAIN.)  Hello Strategic Air Command?  Fire a missile\nat
+  these coordinates.  519-88-51-211.  Thank you.\n(TO TROOPS)  Well soldiers, we're
+  all about to die.  And rather\nthan spending our last minutes in futile crying or
+  praying\nor gnashing of teeth, I think we should die like men...\n(PAUSE) ...listening
+  to the hockey game.\n.ad\n(HE TURNS ON THE RADIO.)\n.xx BRIAN~MACFARLANE\nThis is
+  Brian MacFarlane with Bill Hewitt.\nThe Leafs have the puck and they're breaking
+  down the ice!\nThe accidental shooting of the entire Sabre team has really helped\nthe
+  Leafs tonight, folks.  They've managed to get it across the\nblue line three times
+  already, and who knows they may even score\nbefore the night is through.  Yes, it
+  looks as if Sitler is going\nto attempt a shot at the empty net.  Oh dear, he missed
+  the puck\nthat time but he's taking another swing at it.\nIt'll take an act of God
+  to stop him this time.\nHe shoots!  He scores!\n.sd\n(LOUD BOOM.  RADIO GOES DEAD.)\n.ch
+  gd\n(VERY SLOWLY)  Uh oh.\n.sd\n(THE PHONE RINGS.)\n.ex\nUm, hello, Vice-Pres...I
+  mean, hello President Bush.\n(LONG PAUSE)  Well look, anyone can make a mistake.\nSo
+  I transposed a couple of numbers in the coordinates, I'm only human.\nBesides, I
+  must have got one or two commies when the bomb fell.\nLook, I tell you what we do.
+  \ We blame the bombing on the\nenemy and order a full scale nuclear strike.  On
+  whom?\nWhy pick favourites?  We bomb everybody.\nThat way we can blame THEM for
+  our little slip-up.\n(EXCITED)  Yes sir.  Thank you sir.\nI'll call out the bombers
+  right away.\n(HE HANGS UP.)\n.ch ml\nUhh, General, correct me if I'm wrong, but
+  did you just bomb Buffalo?\n.ch gd\n(SLOWLY)  Yes, I did.  And I'm about to start
+  World War Three.\n(SUDDEN GLOATING)  God, I love the army.\n.ld\n(LIGHTS DOWN.)\n.es\n"
+:shard_number: 11
+:shard_name: 2-4
+:shard_time: 1981-02-13 16:15:24.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 27576
+:shard_size: 3305

@@ -1,0 +1,2 @@
+File                                                                       Fields
+/Users/richard/projects/bun/data/test/archive/general_test/ar025.0634.bun  [:block_count, :block_padding_repairs, :catalog_time, :data_format, :decode_time, :decoded_by, :description, :digest, :file_grade, :file_time, :first_block_size, :identifier, :owner, :path, :shard_blocks, :shard_name, :shard_number, :shard_size, :shard_start, :shard_time, :tape, :tape_path, :tape_size, :tape_type, :unpack_time, :unpacked_by]

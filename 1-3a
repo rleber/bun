@@ -1,0 +1,90 @@
+---
+:identifier: Bun
+:block_count: 10
+:block_padding_repairs: 0
+:catalog_time: 1982-12-22 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-19 19:50:53.159109000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a2ea911a7ddd55e074137dede45d9e1829336b44]
+:description: ''
+:digest: 9d1002c9a0d467486e2fc28d60504692
+:file_grade: :decoded
+:file_time: 1981-03-08 20:27:00.000000000 -05:00
+:first_block_size: 3856
+:owner: bjeroehl
+:path: bjeroehl/fass/81script.f
+:tape: ar082.0605
+:tape_size: 36457
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:35:29.777986000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! ".so 81macros\n.bs 1 3 \"A Tough Safe to Crack\"\n.na ca CHRIS~ANTHEMUM
+  CHRIS\n.na yd YVES~DROPPING YVES\n.na kp KAZ~PAJAMAS KAZ\n.na ml MANUEL~LIFE MANUEL\n.na
+  pc PATTY~CAKE PATTY\n.na hy HY~PERTENSION HY\n.na js JENNY~SIDE JENNY\n.na ph PAULA~C.~HOLDER
+  PAULA\n.ld\n(SCENE OPENS WITH DESK DOWNSTAGE BY TRAP AND PLANTS SL & SR.\nTHERE
+  IS A GUARD, AL LERT, SLEEPING AT THE DESK.\nTHE OTHER GUARDS ENTER THROUGH THE SAFES.)\n.ch
+  pc\nBoy, it sure is easy making these rounds ever since we found out\nabout the
+  steam tunnels behind the safes.\n.ch hy\nYou aren't kidding! Just think, it used
+  to take us almost a whole\nhour to make one round.\n.ch pc\nBut now we can do the
+  whole building in 15 minutes.\n.ch js\nAnd that means we've got 45 minutes to play
+  cards before the next round.\nLet's go.\n.ad\n(GUARDS EXIT THROUGH VOM.\nTHE TRAP
+  OPENS AND THE SPIES ENTER SLOWLY AND CAUTIOUSLY.\nYVES HEADS BACK TOWARDS THE SAFES
+  AS THE OTHERS GATHER\nIN FRONT OF THE DESK.)\n.ch ca\nOK troops, you know what we're
+  here for.\n.ch yd\nWe find de plans, copy dem, and leave before de guards arrive.\n.ch
+  ca\nRight.  Now let's get started.\n.ch kp\nEh?\n.ch ca\n(SHOUTING) Let's go!\n.ch
+  kp \nIf you want, but we haven't got the plans yet.\n.ch ca\nCan we just get on
+  with cracking the safe?\n.ch yd\nEh boss, dese fools, de alarm, dey turned him off.\n.ch
+  ca\nAre you sure?\n.ch yd\nDe alarm, she is off, and the safe he is open.  (HE OPENS
+  DE SAFE.)\n.ch ca\n(ALARMED) Wait, it might be a trap!\n.ad\n(CHRIS AND KAZ DIVE
+  FOR COVER BUT NOTHING HAPPENS)\n.ch yd\nTabernac, I 'ope all our jobs are dis heasy.\n.ad\n(AS
+  YVES GETS THE PAPERS FROM THE SAFE, THE OTHERS GET UP AND BRUSH \nTHEMSELVES OFF.
+  CHRIS STARTS COPYING THE PAPERS ON THE DESK.\nKAZ HAS HIS LEGS CROSSED AND OBVIOUSLY
+  HAS TO GO.\nHE WAVES HIS HAND AND CHRIS NOTICES.)\n.ch ca\nYes, what is it?\n.ch
+  kp\nBoss, I gotta go.\n.ch ca \nYeah, yeah, we'll all go just as soon as the job
+  is done.\n.ch kp\nNo boss, I gotta GO.\n.ch ca\nIf you'd stop interrupting me, we'd
+  all get out of here sooner.\n.ch yd\nHe means he has to go to the 'loo.\n.ch ca\nWe'll
+  all go for a drink AFTER the job is done.\n.ch yd\nNever mind, just keep copying.\n.ad\n(CHRIS
+  GOES BACK TO WORK AS YVES TURNS TO KAZ)\n.ex\nLook, dere is a jean hout dere in
+  de hall.  Just look hout for de\nguards and de alarms.\n.ch kp\nOh thank you.  Murky
+  buckets. (EXITS OUT VOM)\n.ch yd\nDat's merci beaucoup!  Tete de cochon.\n(TO CHRIS)
+  Finished yet?\n.ch ca\nYes, let's put these back and get out of here.  Where's Kaz?\n.sd\n(THERE
+  IS THE SOUND OF A FLUSH FOLLOWED BY AN ALARM.\nTHE SPIES DIVE FOR COVER AS THE GUARDS
+  ENTER WITH GUNS DRAWN.\nAL STAYS ASLEEP.  THEY GO TO THE ALARM CONTROL PANEL AS
+  THE ALARM ENDS.)\n.ch js\nIt can't be the safe alarm, it's not turned on.\n.ch pc\nThen
+  at least no one's broken in here.\n.ad\n(THEY PUT THEIR GUNS AWAY)\n.ch hy\nIt sure
+  sounded as though it came from here.\n.ch pc\nThe only other alarm on this floor
+  is the one in the washroom.\n.ch js\nYou mean the one that goes off when you take
+  too many paper towels.\n.ad\n(KAZ ENTERS WITH HIS ARMS LOADED WITH PAPER TOWELS,
+  STICKING OUT OF\nHIS POCKETS, OUT OF HIS SHOES, IN HIS EARS, ETC.)\n.ch kp\nAre
+  we ready to go now, boss? Ooops!\n.ch hy\nI think we've just found our quicker picker-upper.\n.ch
+  yd\n(SUDDENLY)  Hey look, it's Maurice Richard!\n.ad \n(KAZ DIVES FOR COVER AS THE
+  GUARDS PULL OUT THEIR GUNS.\nAS THE SHOOTING STARTS, THE TWO INSURANCE AGENTS ENTER)\n.ch
+  ph\nStop! Stop! Don't shoot them please, we could lose our jobs.\n.ch ml\nBesides,
+  you might get blood all over your carpet.\n.ch pc\nThis isn't carpet, this is parquet.\n.xx
+  VOICE~OVER\nButter.\n.ch ml\nIt would be such a pity to ruin it, whatever it is.\n.ch
+  hy\nAre you two trying to get yourselves killed?\n.ch ph\nWe're just trying to prevent
+  a lot of needless bloodshed and\ninsurance pay-offs.\n.ch js\nLook, we have to shoot
+  them or we'll get fired.\n.ch ml\nCouldn't you just capture them?\n.ch pc\nI don't
+  know; as security guards, we're paid to fire indiscriminately\nat anything that
+  moves.\n.ch ph\nLook, if they surrender then you won't have to shoot.\n.ch hy\nI
+  suppose so...\n.ch ph\nGood.  All you spies, surrender right now!\n.xx SPIES\nNo!\n.ch
+  ml\nCome on, you guys, be fair.  You've been caught and you'll be\nshot unless you
+  give up on the spot.\n.xx SPIES\nGet stuffed!\n.ch pc\nI'm afraid we're going to
+  have to shoot them now.\n.ch ph\nWe have no choice now, Manuel.\nWe have to use...
+  THEM.\n.ch ml\n(SADLY)  All right.  (HE YELLS OFFSTAGE)\nBring on the co-op bullet
+  catchers!\n.ad\n(ENTER THE CO-OP BULLET CATCHERS.\nTHE GUARDS START TO FIRE BUT
+  THE BULLET CATCHERS\nDIVE IN FRONT OF THE SPIES STOPPING THE BULLETS.)\n.ch hy\nWhat's
+  going on here?\n.ch ph\nWe hired a bunch of co-op students as bullet catchers.\n.ch
+  ml\nYes, they're in co-op Latin.\n.xx CO-OP1\n(BEING SHOT)  Et tu, Brute!\n.xx CO-OP2\nE
+  pluribus unum.\n.xx CO-OP3\nSemper ubi, sub ubi.\n.ch ph\nHey you spies, get your
+  beautiful life-insured bods out of here.\n.ad\n(MANUEL AND PAULA RUSH SPIES OUT.\nTHE
+  CO-OP BULLET CATCHERS INTERPOSE THEMSELVES BETWEEN THE GUARDS\nAND THE ESCAPING
+  SPIES.)\n.ch hy\nI think we have a problem.\n.xx CO-OP2\n.ul\nYou've\ngot a problem?
+  \ We have to get a work report out of this.\n.ld\n(THE GUARDS CHASE THE CO-OPS OUT,
+  LEAVING AL STILL SNORING\nIN THE MIDDLE OF THE STAGE.  LIGHTS DOWN.)\n.es\n"
+:shard_number: 4
+:shard_name: 1-3a
+:shard_time: 1981-02-13 13:27:27.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 7131
+:shard_size: 1188

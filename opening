@@ -1,0 +1,107 @@
+---
+:identifier: Bun
+:block_count: 2
+:block_padding_repairs: 1
+:catalog_time: 1979-04-13 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-19 20:39:39.406882000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a2ea911a7ddd55e074137dede45d9e1829336b44]
+:description: ===> Songs from Fass '79 (roff source frz)
+:digest: cd16967efa69f2975ecb9fb021152161
+:file_grade: :decoded
+:file_time: 1979-04-08 13:02:33.000000000 -05:00
+:first_block_size: 3865
+:owner: fass
+:path: fass/songfest.f
+:tape: ar025.0634
+:tape_size: 3751
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:34:15.280998000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! '.sb "AN OCEAN CRUISE" "THE NORTH ATLANTIC SQUADRON"
+
+  Chorus:
+
+  Away, away on an ocean cruise
+
+  Full of booze, what can we lose?
+
+  We don''t know our lines and we''ll miss all our cues,
+
+  But that''s the way that FASS goes.
+
+  .sp
+
+  .ne5
+
+  Farewell to all our writers
+
+  That stupid bunch of blighters
+
+  After four months of thought
+
+  They wrote up this plot
+
+  Last week in three all-nighters.
+
+  .sp
+
+  .ne5
+
+  Farewell to our producer
+
+  Our harmony inducer.
+
+  When an actress in rage
+
+  Wouldn''t go on the stage,
+
+  Our inducer producer would goose her.
+
+  .sp
+
+  .ne5
+
+  Farewell to all our tech crew
+
+  They sure make a competent deck crew.
+
+  And on make-up and  lights
+
+  And sewing our tights
+
+  They''re great but they just don''t rhyme.
+
+  .sp
+
+  .ne5
+
+  In days of old when knights were bold
+
+  And FASS was not invented
+
+  The people sighed, the children cried,
+
+  And all were discontented.
+
+  .sp
+
+  .ne5
+
+  But now there''s FASS, a worse disas...
+
+  ...ter than five tornadoes.
+
+  It should be fun for everyone,
+
+  So please don''t throw tomatoes.
+
+  .se
+
+'
+:shard_number: 0
+:shard_name: opening
+:shard_time: 1979-02-13 15:08:55.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 235
+:shard_size: 225

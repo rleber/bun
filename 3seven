@@ -1,0 +1,87 @@
+---
+:identifier: Bun
+:block_count: 11
+:block_padding_repairs: 10
+:catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-19 19:50:28.693000000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a2ea911a7ddd55e074137dede45d9e1829336b44]
+:description: ==> freeze file containing roff source for fass '77 script
+:digest: f2efccdcca5691ff3ab1bff1b886a47a
+:file_grade: :decoded
+:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:first_block_size: 3869
+:owner: fass
+:path: fass/scripfrz
+:tape: ar004.0888
+:tape_size: 40058
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:34:01.116501000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! '.so fass/fasshole
+
+  .he''FASS''- % -''ACT III SCENE VII''
+
+  .fo''ACT III SCENE VII''''FASS''
+
+  Act 3, Scene 7 - Interview
+
+
+  .nf
+
+  XX    XX  XX    XX
+
+  XXX  XXX   XX  XX
+
+  XXXXXXXX    XXXX
+
+  XX XX XX     XX
+
+  XX    XX     XX
+
+  XX    XX     XX
+
+  XX    XX     XX
+
+
+  XXXXXXX   XXXXXXX    XXXXXX   XX  XX    XX
+
+  XX    XX  XX    XX  XX    XX  XX  XXX   XX
+
+  XX    XX  XX    XX  XX    XX  XX  XXXX  XX
+
+  XXXXXXX   XXXXXXX   XXXXXXXX  XX  XX XX XX
+
+  XX    XX  XX    XX  XX    XX  XX  XX  XXXX
+
+  XX    XX  XX    XX  XX    XX  XX  XX   XXX
+
+  XXXXXXX   XX    XX  XX    XX  XX  XX    XX
+
+
+  XX    XX  XX    XX  XXXXXXX   XXXXXXXX   XXXXXX
+
+  XX    XX  XX    XX  XX    XX     XX     XX    XX
+
+  XX    XX  XX    XX  XX    XX     XX     XX
+
+  XXXXXXXX  XX    XX  XXXXXXX      XX      XXXXXX
+
+  XX    XX  XX    XX  XX    XX     XX           XX
+
+  XX    XX  XX    XX  XX    XX     XX     XX    XX
+
+  XX    XX   XXXXXX   XX    XX     XX      XXXXXX
+
+  .fi
+
+
+  fin
+
+'
+:shard_number: 27
+:shard_name: 3seven
+:shard_time: 1977-02-18 09:06:07.000000000 -05:00
+:shard_blocks: 2
+:shard_start: 28419
+:shard_size: 199

@@ -1,0 +1,87 @@
+---
+:identifier: Bun
+:block_count: 2
+:block_padding_repairs: 1
+:catalog_time: 1979-04-13 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-19 20:39:40.505273000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a2ea911a7ddd55e074137dede45d9e1829336b44]
+:description: ===> Songs from Fass '79 (roff source frz)
+:digest: 772f5b5ce3d5c3f76eb892ef05cbbc5d
+:file_grade: :decoded
+:file_time: 1979-04-08 13:02:33.000000000 -05:00
+:first_block_size: 3865
+:owner: fass
+:path: fass/songfest.f
+:tape: ar025.0634
+:tape_size: 3751
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:34:15.280998000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! '.sb "We are Meanpeace" "We Will Rock You"
+
+  Buddy we''re aboard - but we''re real bored
+
+  Playin'' on the deck - gonna have a big fight some day
+
+  Gonna beat up the crew
+
+  Clobber you
+
+  Really enjoy everything that we do -
+
+  .ne2
+
+  We are we are Meanpeace
+
+  We are we are Meanpeace
+
+  .sp
+
+  .ne 7
+
+  Now that we''re on deck - make a big wreck
+
+  Playin'' with the bomb - gonna blow up this ship some day
+
+  Gonna blow up the crew
+
+  And you too
+
+  Get a real bang out of all that we do -
+
+  We are we are Meanpeace
+
+  We are we are Meanpeace
+
+  .sp
+
+  .ne 9
+
+  Buddy we''re annoyed - MAKE A BIG NOISE
+
+  Gonna have some fun - gonna club a few seals some day
+
+  Gonna harpoon a whale
+
+  Go to jail
+
+  Kick your cans clean over the rail
+
+  We will we will munch you
+
+  We will we will crunch you
+
+  We will we will mash you
+
+  We will we will bash you
+
+  .se
+
+'
+:shard_number: 13
+:shard_name: meanpce
+:shard_time: 1979-02-13 15:31:10.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 1706
+:shard_size: 181

@@ -1,0 +1,306 @@
+---
+:identifier: Bun
+:block_count: 10
+:block_padding_repairs: 0
+:catalog_time: 1982-12-22 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-19 19:50:56.474082000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a2ea911a7ddd55e074137dede45d9e1829336b44]
+:description: ''
+:digest: 45742163ae12ad0e1b708549de04ccf3
+:file_grade: :decoded
+:file_time: 1981-03-08 20:27:00.000000000 -05:00
+:first_block_size: 3856
+:owner: bjeroehl
+:path: bjeroehl/fass/81script.f
+:tape: ar082.0605
+:tape_size: 36457
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:35:29.777986000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! ".so 81macros\n.bs 2 3 \"Not a GO-ST of a Chance\"\n.na iu IMA~UNDERCOVER
+  IMA\n.na sy SVEN~YEARITCH SVEN\n.na ml MANUEL~LIFE MANUEL\n.na ph PAULA~C.HOLDER
+  PAULA\n.na ss STAN~STUREASON STAN\n.na fh FREIDA~HOSTAGES FREIDA\n.na jj JEAN~JACKET
+  JEAN\n.na rs RICKY~T.SPLIT SPLIT\n.na ra RICK~O'SHAY O'SHAY\n.ld\n(LIGHTS UP.\nTHERE
+  IS A BIG SIGN THAT SAYS \"GO-ST\".\nMANY STRANGE PEOPLE ARE ON STAGE WAITING FOR
+  THE GO-SUBMARINE.\nIMA UNDERCOVER IS STANDING READING \"LEAPING THESPIANS\".\nSTAN
+  STUREASON IS WAITING IN LINE FOR THE\nTELEPHONE.)\n.sd\n(VIA RAIL CHIME AND THEN
+  THE ANNOUNCER'S VOICE ARE HEARD OVER THE SPEAKERS.)\n.xx VOICE~OVER\n(IN HOKEY QUEBECOIS
+  ACCENT:)\nSubmarine bound for Baffin Island, Fiji, and Belleville,\nwith connections
+  to the Banff sewer system, now loading on platform nine.\n(IN HORRIBLE ONTARIO ACCENT:)
+  \ La submarine bound a Baffin Isle, Fiji,\nand Prettyville, avec connections a la\nBanff
+  systemes de sewer est loading maintenant sur la plafond neuf.\n.ad\n(SVEN YEARICH
+  ENTERS.\nHE DOES NOT SEE IMA UNDERCOVER UNTIL SHE SPEAKS.)\n.ch sy\nExcuse me sir.
+  (STAN IGNORES HIM.) Pardon me, but could you\nplease tell me what time it is?\n.ch
+  rs\n(LOOKING SUSPICIOUSLY LIKE ARGBARGLE THE ELF:)\nDoes anyone\n.ul\nreally\nknow
+  what time it is?\n.ch ra\nDoes anyone really care?\n.ad\n(FOR THE NEXT FEW LINES
+  STAN TURNS AWAY FROM THE PHONE BOOTH.\nSTAN SPEAKS WITH AN OUTRAGEOUS JEWISH ACCENT.)\n.ch
+  ss\n(LOOKS AT WATCH:) At the sound of the odd buzz, it will be\nexactly two minutes
+  to ten.\n.sd\n(THE TRADITIONAL ODD BUZZ.)\n.ex\nThere.\n.ch sy\nIs that math building
+  time or biology time?\n.ch ss\nE.S.T. -- Engineering Standard Time.\n.ch sy\nWhat's
+  Engineering Standard Time?\n.ch ss\nTime for a beer.\n.xx EXTRAS\n(WITH GUSTO:)\nTime
+  for a beer?\n.ad\n(ALL THE EXTRAS RUSH OUT.)\n.ch sy\nI don't suppose you know where
+  platform five is?\n.ch ss\nBetween platform four and platform six.\nWhat did you
+  expect?\n.ch sy\nI thought they might be using the standard university\nroom numbering
+  system.\nYou know -- one, two, eight hundred and eighty-five,\ntwelve hundred and
+  eleven...\n.ch ss\nFirst time you've used the GO-Sub, eh?\n.ch sy\nYes, I wanted
+  to be sure that they'd be able to keep their\nheads above water before I went under
+  with them.\n.ch ss\nSensible of you.\n.ch sy\nWhat does GO-ST stand for anyway?
+  Gutter Or Sewer Transit?\n.ch ss\nActually it's just Good Old Submarine Transport.\n.ch
+  sy\nIs it really safe to travel in these nuclear tin cans?\n.ch ss\nIt's safer than
+  trying to take a shower at the PAC.\n.ch sy\nBut what about radioactivity?\n.ch
+  ss\nOh, they've pretty well eliminated that at the PAC.\n.ch sy\nWell, all I can
+  say is it can't be too safe having\nnuclear powered submarines running around criss-crossing
+  the world.\n.ad\n(SVEN SITS BY THE PHONE BOOTH AND STARTS READING HIS PAPER --\nSPY
+  NEWS AND VIEWS.)\n.ch ss\nIt's better now than when all the submarines were owned
+  by a few major\ncountries.  Now the subs are safely divided among a few multi-national\ncorporations.
+  \ At least this way, they're being used by the public\ninstead of lurking offshore
+  waiting to torpedo poor defenceless oil rigs.\n.ad\n(FREIDA BARGES PAST STAN AND
+  GOES INTO THE PHONE BOOTH.\nSHE IS DRESSED AS TOTO FROM THE WIZARD OF OZ AND IS
+  WEARING A T-SHIRT\nWHICH READS \"TOTO WAS A BITCH\".)\n.ex\nHey,\n.ul\nI\nwas next
+  in line!\n(TO AL:) Now look what you've done!\n(TO FREIDA:)\nI was next!  You can't
+  do that.\n.ch fh\nCan't do what?  You mean I can't get in the phone booth before
+  you like this?\n.ch ss\nYeah-\n.ch fh\nAnd I can't put a dime in the slot like this?\n.ch
+  ss\nYeah-\n.ch fh\nAnd I can't start dialing like this?\n.ch ss\nHey wait a second!\n.ad\n(STAN
+  DRAGS FREIDA OUT OF PHONE BOOTH.)\n.ch fh\nGet your paws off me.  I have to make
+  a long distance call to Kansas.\n.ch ss\nSo what is this?  You're wearing a pair
+  of mink sleepers to make a phone call?\n.ch fh\nThat's not mink - it's me!\n.ch
+  ss\nIt's you?  Well, on you it looks good.\nBut then I don't know from fashion,
+  lady.\n.ch fh\nDon't call me a lady - I'm a bitch.\n.ch ss\nThis I won't argue with.
+  \ Look, can't we just settle\nthis like reasonable human beings?\n.ad\n(FREIDA GROWLS
+  AT STAN.)\n.ch ss\nWell...\n.ch fh\nHow are we going to decide who gets the booth?\n.ch
+  ss\nWhy don't we just flip for it?\n.ch fh\nAll right.\n.ad\n(FREIDA DOES A CARTWHEEL.)\n.ch
+  fh\nLike that?\n.ch ss\nNo no.  Not that kind of flip.\n.ch fh\n(LOOKS PUZZLED,
+  THEN BRIGHTENS.)\nOk.  How about this?\n.ad\n(FREIDA DOES BACK FLIP.)\n.ch ss\nEverybody's
+  a comedian.  Come on.\n.ad\n(HE PULLS OUT A COIN AND FLIPS IT.  WHILE LOOKING FOR
+  IT TO\nCOME DOWN, HE NOTICES THAT JEAN JACKET, WEARING A KNAPSACK WITH\nA CANADIAN
+  FLAG ON THE BACK, HAS SQUEEZED INTO THE TELEPHONE BOOTH.)\n.ex\nShe's in my phone
+  booth!\n.ad\n(FREIDA JUMPS ON STAN AS ONLY FREIDA CAN AND GIVES STAN A BIG SLURPY
+  LICK\nON THE FACE!!)\n.ch fh\n.ul\nOur\nphone booth!\n.ad\n(THEY BOTH RUSH OVER
+  AND TRY TO DRAG JEAN OUT BUT HER KNAPSACK IS TOO\nBIG AND SHE IS STUCK.\nEVENTUALLY
+  SHE WILL GET FREE AND THEN STAN LETS\nFREIDA MAKE HER CALL AND THEN HE GETS IN THE
+  BOOTH.\nTHE TELEPHONE BOOTH SCENARIO WILL CONTINUE FOR MOST OF THE REST OF THE SCENE.\nWHEN
+  STAN FINALLY GETS INTO THE BOOTH\nHE OF COURSE HAS NO MONEY, HAVING LOST HIS LAST
+  DIME IN THE COIN TOSS EARLIER.\nHE LEAVES THE BOOTH TO GET MORE DIMES.\nWHILE HE
+  IS GONE VARIOUS OTHER THINGS\nHAPPEN IN THE BOOTH, E.G. A MAN WILL ENTER, DUCK DOWN
+  AND COME\nUP AS A SUPERHERO.\nWHEN STAN GETS BACK, HE TAKES A SHOWER IN THE BOOTH,
+  COMPLETE WITH\nCURTIAN, SHOWER CAP AND HOSE.)\n.ad\n(SVEN YEARICH LOOKS UP FROM
+  HIS PAPER, ANNOYED AT THE NOISE IN THE\nPHONE BOOTH.)\n.ch sy\nWould you yahoos
+  mind keeping quiet -- I'm trying to read.\n.ad\n(NAUGHTY CENTREFOLD FALLS OUT OF
+  HIS SPY PAPER.\nSVEN HASTILY RETRIEVES IT.\nSVEN'S VOICE STRIKES A FAMILIAR CHORD
+  IN IMA UNDERCOVER, AND SHE\nPUTS DOWN HER SPY PAPER.)\n.ch iu\nDick?\n(RECOGNITION
+  DAWNS:)\nDick!\nAfter all these years...\n.ch sy\nTracy?\n(RECOGNITION DAWNS:)\nTracy!\n.sd\n(THE
+  EXPECTED ROMEO AND JULIETTE LOVE THEME SWELLS\n[AS DO OTHER THINGS] DURING THE FOLLOWING
+  EXCHANGE,\nAS THE LONG-LOST LOVERS MOVE INTO EACH OTHER'S ARMS.)\n.ch iu\nDick!\n.ch
+  sy\nTracy!\n.ch iu\nDick!\n.ch sy\nTracy!\n(SVEN NOTICES THE MUSIC:)\nCut that out.\n.sd\n(MUSIC
+  CUTS ABRUPTLY.)\n.ex\nWe're just good friends.\n.ch iu\nDick -- I just can't believe
+  running into you like this.\n.ch sy\nHow would you prefer running into me?\n.ch
+  iu\n(CHIDING:)\nI ought to run into you with a Mac Truck, you crazy fool.\nDon't
+  start up with those abominable wisecracks again.\nI couldn't stand them then, and
+  I won't put up with them now.\n.ch sy\nStill haven't acquired a sense of humour,
+  eh Tracy?\n.ch iu\nThere was nothing wrong with my sense of humour, buster,\nit's
+  only your twisted little mind that ever thought your tasteless\ncomments were funny.\nAnd
+  don't call me Tracy, I'm not using my real name\non this job.\n.ch sy\nSo what should
+  I call you?\n.ch iu\nIma Undercover.\n.ch sy\nSo you said.\n.ch iu\nThat's my\n.ul\nname,\nDick:
+  Ima Undercover.\n.ch sy\nAh -- well since we're being so formal,\nyou can call me
+  by my code name: Sven Yearich.\n.ch iu\nHow charming.\nDid you choose it yourself
+  or select it\nfrom Sesame Street?\n.ch sy\nI must say Tracy, ...Ima, after all these
+  years the saccharin sound of your\nlovely voice brings back a wonderful rush of
+  ambivalence.\nAre you still spying freelance,\nor did some nation finally win your
+  loyalties?\n.ch iu\nAs a matter of fact, I'm on the Fassablanca case for\nthe Republic
+  of Polyfillia.\n.ch sy\nPolyfillia?\nSplendid little place.\nI seem to recall getting
+  plastered there once.\nWhat do you use for a cover?\n.ch iu\nPrecious little;\nI
+  work the burlesque line at a night club.\nI'm a Polystripper.\n.ch sy\nFull time?\n.ch
+  iu\nJust filling in.\n.ch sy\nI'm surprised you'd let yourself be caught with your
+  pants down.\nWhat does Polyfillia want from a two-bit toy company\nwith delusions
+  of grandeur?\n(APOLOGIES TO SJHULL.)\n.ch iu\nThe top brass back home think\nFassablanca's
+  a front for some foreign power seeking\nto dominate the world.\nMy assignment is
+  to get the inside story\nfrom the key research and development scientists\nthrough
+  a little seduction exercise.\n.ch sy\nYou weren't kidding when you said you were
+  operating under cover.\nWhy didn't you take a job\n.ul\nwith\nFassablanca instead
+  of scheming against them;\ntheir benefits are reasonable, the money is good...\n.ch
+  iu\n...and the whole job they're planning is the most ludicrous, shady enterprise\nsince
+  the Chevron got a free typesetter.\n.ch sy\nVery astute observation, my dear.\nThat
+  is exactly why I declined the offer.\nYou just can't get the classy espionage jobs
+  anymore.\n.ch iu\n(CHECKS POCKET PAD OR PAPERS:)\nYou know,\nI might possibly have
+  a trifling sub-contract here\nwhich lies within your capabilities,\nif you're interested.\nYes
+  -- one of the research scientists is female,\na Dr. Tess Tube.\n(TO SVEN:)\nI do
+  need a man.\n.ch sy\nDaily, Ima, as I recall.\n.ch iu\nDon't you start that again
+  you...\n.ch sy\n(CUTTING IN:)\nWhat might this trifling requirement for a man be
+  if it hasn't already been\nsatisfied by your traditionally indiscriminate selection
+  process?\n.ch iu\nIndiscriminate?!\nIf you're going start a moral debate then I\n.ul\nmight\nremind
+  you of that sixteen year old with the tight...\n.ch sy\nOut of bounds!\nAll right!\nAll
+  right! \n.ch iu\nCome on, Sven.\nWe owe it to each other, for old times sake.\n.ch
+  sy\nOld times?\nWhat have you ever done for me?\n.ch iu\nRemember that time I got
+  you out of that\nroom full of sound-sensitive explosives?\n.ch sy\nYeah.\nBy yelling
+  for help.\nI spent six months in hospital acting as a human pipe permanently\nconnected
+  between a hospital diet cart and an overflowing bedpan.\n.ch iu\nOkay, so I picked
+  a poor example.\nHow about the time I rescued you from the clutches of that\ntireless
+  blond nymphomaniac?\n.ch sy\nA favour I could have done without,\njust as I could
+  easily have done without your clumsy intervention\nduring my other private and professional
+  affairs.\n.ch iu\nClumsy?!\nWhat about the time you burst in on\n.ul\nme\nduring
+  that lusty little liaison in Venice, screaming your head off and\nclaiming to be
+  my outraged husband?\n.ch sy\nIf you will recall, Ima my dear, that is exactly\nwhat
+  I was at the time.\n.ch iu\nCherie, cherie -- here we are, yelling at each other
+  again.\n(TENDER LIKE A VENUS FLYTRAP:)\nI was thinking of\nwhen we used to spy together
+  along the French Riviera.\nThat tender springtime in Paris by the Seine.\n.ch sy\n(REMINISCING:)\nYes
+  -- and Munich by the Rhine.\n.ch iu\nLondon on Thames...\n.ch sy\nNewcastle on Tyne...\n.ch
+  iu\nStratford on Avon...\n.ch sy\nWaterloo on Tario...\n.ch iu\nI remember those
+  first awkward months of our marriage,\ntrying desperately to make ends meet.\n.ad\n(IMA
+  MOVES TO THE PIANO AND RECEIVES TWO GLASSES OF CHAMPAGNE FROM\nTHE PIANO PLAYER.)\n.ch
+  sy\nAh yes -- I remember one particularly awkward moment on top of the\ngrand piano
+  in mother's drawing room.\n.ad\n(SVEN TAKES ONE GLASS OF CHAMPAGNE AND PRESSES IMA
+  DOWN ON TOP OF THE PIANO.)\n.ex\nTo this day she hasn't figured out where the extra
+  G-string came from.\n.ch iu\n(IMA REVERSES POSITIONS, FONDLING SVEN ON THE PIANO.)\nYes,
+  I've stroked every searing scar on your body,\ntouched every taut tendon,\ntwirled
+  my fingers in the lush forest of your chest hairs...\nboth of them.\n.ad\n(SO MUCH
+  FOR TENDER CLOSENESS!\nSVEN IS CAUGHT OFF GUARD WITH A MOUTHFUL OF CHAMPAGNE.\nIT
+  SPRAYS FORTH...)\n.ch sy\nYou're one to talk!\nYou were blonde that year,\nbut then
+  Miss Clairol always was a close friend of yours.\n.ch iu\nAnd who was so eager to
+  find out if it was natural!\nYou, the pseudo-sophisticated spy.\nI learned more
+  in those months of hell with you than you did in all\nof spy school.\nThat's why
+  our marriage didn't work, Dick -- because you just couldn't take\nmy success in
+  your own business.\n.ch sy\nIt was just beginner's luck.\nYou might have been a
+  charming little urchin -- but I was\nclearly the better spy.\n.ch iu\nBetter spy?!\nAll
+  your fumbling ineptitude ever got you was a General Arts Degree.\n.ch sy\nWrong
+  again, cherie.\nIt got me (PAUSE) you.\nYou were a sweet scamp, but you were no
+  match for a seasoned\nprofessional like myself.\nI've devoted my entire life to
+  gathering intelligence.\n.ch iu\n(DEPENDING ON HOW SWIFT OUR AUDIENCE IS, THE FOLLOWING
+  LINE MAY BE\nABBREVIATED:)\nAll I can say is keep trying dear, someday you'll succeed.\nI've
+  always been able to squeeze information from a mark faster than you\never could.\n.ch
+  sy\n(TAKING THE CHALLENGE:)\nAll right, my dear -- we'll just see about that.\n(LOOKS
+  AROUND:)\nHow long would it take you to crack that fellow in the trench coat\nwith
+  the shifty eyes?\n.ch iu\nI break meaner men than him in my sleep.\n.ch sy\nWhat
+  about the girl with the weird clothes and the knapsack?\n.ch iu\nI could crack her
+  in minutes.\n.ch sy\nIt would take me seconds.\n.ch iu\nYou're on!\n.ad\n(THEY GO
+  OVER TO JEAN JACKET.)\n.ch sy\nYou!\n.ch jj\nMe?\n.ch iu\nYes, you!\n.ch sy\nTell
+  us the secret.\n.ch jj\nSecret?\nWhat Secret? (SHE WHIPS OUT A BUBBLE UMBRELLA.)
+  I'm under the dome!\n.ch iu\nPut that umbrella down.\n.ch jj\nWhy? Is there a Ban
+  on them here?\n.ch iu\nNo. You don't need an umbrella. This is an Arrid climate.\n.ch
+  jj\nYes, it is kind of Soft and Dry. Not like where I'm from.\n.ch sy\nWhere are
+  you from?\n.ch jj\nCanada! Can't you tell?\n.ch iu\nHow would I know? All you foreigners
+  look alike!\n.ch jj\nBut I've got a Canadian flag on my pack!\n.ch sy\nSo do most
+  of the other travellers in Europe.\n.ch jj\nBut we're not in Europe!\n.ch iu\nSo
+  what? We have a few questions for you.\n.ad\n(SVEN NOW ASKS JEAN THE IMPRINT'S CAMPUS
+  QUESTION OF THE WEEK.)\n.ch sy\n(QUESTION OF THE WEEK:)\nDo you think the government
+  is infringing on your rights by making\nyou drink the fluoride they put in the water?\n.ch
+  jj\n(WITTY REPLY:)\n1)~Well, it tickles your teeth!\n2)~Water?  Who drinks water
+  -- I'm an engineer!\n.ch sy\nWell we didn't find out much from her. We'll have to
+  try someone else.\n.ad\n(ENTER THE TWO INSURANCE AGENTS.\nTHEY HAVE LARGE SIGNS
+  ON THEIR BRIEFCASES SAYING\n\"EXPENDABLE LIFE ASSURANCE CO.\")\n.ch iu\nHey.\nThose
+  two insurace agents are from the same company that\ninsured the Fassablanca spy
+  network.\nThis is a perfect opportunity to find\nout what country Fassablanca is
+  a front for.\n.ch sy\nWait a minute!\nYou're not going to get me to help you with
+  that silly\nFassablanca spy caper that easily.\n.ch iu\nYou want to prove who's
+  the better spy, don't you?\n.ch sy\nWell....yes.\n.ch iu\nThey're the ideal candidates.
+  We know they're hiding something.\n.ch sy\nOh, all right.\n.ch iu\nThere are two
+  of them and two of us. First one to\nfind out what country Fassablanca is a front
+  for wins. Deal?\n.ch sy\nDeal! I'll take the woman.\n.ch iu\nYou think so, do you?
+  \ You've got high hopes.\n.ad\n(PIANO PLAYER STARTS IN ON FIRST FEW BARS OF THE
+  SONG \"HIGH HOPES\".)\n.ch sy\nCut it out.\n.ad\n(PIANO STOPS AFTER APPROPRIATE
+  THREATS ARE ISSUED.)\n.ex\nShe looks as though an attractive man\nlike me could
+  easily sweep her off her feet. She doesn't look like\nshe's been swept in a long
+  time.\nSee you in a few minutes, cherie.\n.ld\n(THEY EACH SWOOP IN ON THEIR TARGET.\nIMA
+  DRAGS MANUAL BACKWARDS BY THE TIE,\nAS SVEN INTERPOSES HIMSELF BETWEEN HE AND PAULA.\nPAULA
+  LOOKS ON\nIN ASTONISHMENT. SHE TURNS TO SVEN.)\n.ch ph\nWhere is she going with
+  him?\n.ch sy\nShe just wants to ask him about insurance.\n.ld\n(IMA SITS MANUEL
+  DOWN AND PLACES HER LEG PROTECTIVELY ON THE\nATTACHE CASE ON HIS LAP.\nTHE LIGHTS
+  EMPHASIZE SVEN AND PAULA.)\n.ch ph\nHow do you know we're insurance agents?\n.ch
+  sy\nLucky guess.\n(DRAMATIC PAUSE, SWITCH INTO SEDUCTION MODE:)\nDid anyone ever
+  tell you that you have the most sensuous ... (LOOKS HER\nUP AND DOWN:) ...smile?\n(FRIDAY
+  NIGHT: ...elbows?)\n.ch ph\nWhat?\n(FRIDAY NIGHT: What!)\n.ch sy\nLooking at you
+  gives my heart such palpitations.\n.ch ph\nWe've got a policy that covers that.\n.ch
+  sy\nCovers what?\n.ch ph\nPalpitations of the heart. (SHE GETS OUT A POLICY.)\nSee?
+  Right here.\nPolicy number 34Q.\nYou get $3000.00 if you die from heart palpitations.\n.ch
+  sy\nYou don't understand. I'm trying to tell you that your eyes\nare like limpid
+  pools.\n.ch ph\nPolicy 62B. Death by drowning in limpid pools.\n.ch sy\nThat's not
+  what I meant.\n.ch ph\nOh, I see. You want to insure a boat for crossing limpid
+  pools.\nMotorboat or hovercraft?\n.ch sy\nNeither.\n.ch ph\nCanoe? Sailboat? Rubber
+  Duckie?\n.ch sy\nForget the insurance. Just come into my arms.\n.ch ph\nWhatever
+  for?\n.ch sy\nThere's a fire in my heart and you fan it.\n.xx AUDIENCE\n(SORT OF...)\nJanet!\n.ch
+  ph\nWe also have fire insurance.\n(SHE RUMMAGES THROUGH BRIEFCASE.)\nSee, right
+  here! It even covers heart fires in this clause.\n.ch sy\nI'm trying to win your
+  love but you keep breaking my heart.\n.ch ph\nIf you're so paranoid about your heart
+  I'd suggest\npolicy 87D. It covers all damages to the heart, including\npalpitations,
+  structural damage and fire damage. Just sign here.\n.ch sy\nNo, I don't think that
+  you understand.\n.ld\n(SVEN ENDS UP TAKING MANY POLICIES.\nLIGHTS DRAW ATTENTION
+  TO THE FAR SIDE OF THE STAGE, WHERE IMA HAS\nUNZIPPED SEDUCTIVELY AND IS WORKING
+  ON MANUEL.)\n.ch iu\nSo you're in the insurance business, are you?\nI imagine an
+  attractive man like yourself must sell lots of policies.\n.ch ml\nI must? Oh, yes.
+  I must. I mean I do. Sell policies that is.\n.ch iu\nWhat kinds of policies do you
+  sell?\n.ch ml\nOh, all kinds. But mostly life insurance.\n.ch iu\nSelling insurance
+  must be very demanding.\nI can see that you're all tensed up.\nWhy don't you let
+  me rub your neck and shoulders? It could help you relax.\n.ch ml\nI don't think...\n.ch
+  iu\nThat's okay, you don't have to.  This'll make you feel better.\nReally it will.
+  \ Trust me.\n.ad\n(IMA BEGINS TO RUB MANUEL'S SHOULDERS AND NECK.)\n.ch iu\nA friend
+  of mine recently got a life insurance policy from\nthe company he works for. I wonder
+  if it was your company that insured him?\n.ch ml\nWhat company does he work for?\n.ch
+  iu\nThe Fassablanca Toy Company.\n.ch ml\nHe wasn't a spy, was he?\n.ch iu\nA spy!
+  Whatever gave you that idea?\n.ch ml\nWell, the other day my partner and I insured
+  what we thought were chartered\naccountants for the company. But they turned out
+  to be spies!\n.ch iu\nSpies! Whyever would a toy company need spies?\n.ch ml\nWell,
+  it seems as though their R & D team hasn't\nbeen able to come up with any good ideas
+  for toys.\n.ch iu\nI get it! Industrial espionage!\n.ch ml\nNot exactly. None of
+  the other companies have come\nup with anything good either. They decided that the
+  one way to\ndevelop a really good war game was to steal plans from the world powers.\n.ch
+  iu\nWow! You really lead an exciting life, don't you!\n.ch ml\n(HUMBLY:) Yeah, I
+  guess I do.\n.ch iu\nOf course I don't know much about this sort of thing,\nbut
+  it seems to me that Fassablanca could be a front for\na hostile nation that wanted
+  to rule the world.\n.ch ml\nDon't be silly. It's not a front. All they are is a
+  toy\ncompany. My uncle is on the Board of Directors.\n.ch iu\nAre you certain? I
+  mean I don't want to question\nyour word or anything but I have to know for sure.\n.ch
+  ml\nI'd bet my life insurance policy on it.\n(MANUEL SWITCHES INTO SEDUCTION MODE:)\nNow,
+  the sub won't be here for a while;\nwhat would you say to a little drink?\n.ch iu\nGood-bye,
+  little drink.\n.ad\n(SHE LEAVES ABRUPTLY\nAND GOES OVER TO SVEN AND DRAGS HIM AWAY
+  FROM PAULA.)\n.ch iu\nOk Sven, time's up.\nMagnificent Manuel back there says the
+  Fassablanca Toy Company\nis just a toy company, and that's that.\n(LOOKS AT WATCH:)\nThat
+  took me exactly 93 seconds to find out.\nWhat earth-shaking information did you
+  get?\n.ch sy\n(EMBARASSED:) A life insurance policy.\nA health insurance policy.
+  A mental health insurance policy...\n.ch iu\nSnap out of it, man!\nMy country Polyfillia
+  thinks that Fassablanca is a front for some\nforeign power trying to dominate the
+  world,\nand they've mobilized their entire army!\n.ch sy\n(NOT CATCHING ON:)\nWhat's
+  that?\n.ch iu\nIt's a bunch of guys who dress the same and walk around carrying
+  guns,\nbut that's not important now.\nI've got to get to a phone and call off the
+  strike against Fassablanca.\n.ad\n(THEY RUSH OVER TO THE PHONE BOOTH WHERE STAN
+  STUREASON IS LEAFING THROUGH\nTHE PHONE BOOK.\nPAULA GOES OVER TO WHERE MANUEL IS
+  STILL STANDING LOOKING STUNNED.)\n.ch ph\nWhat's wrong with you?\n.ch ml\nI feel
+  lower than the basement of Engineering Lecture.\n.ch ph\nDid you sell a policy?\n.ch
+  ml\nPolicy?\n.ch ph\nThat\n.ul\nis\nwhat she wanted to talk to you about wasn't
+  it?\n.ch ml\nI don't think so.\n.ch ph\nWell aren't you the fine salesman!\n.ul\nI\nat
+  least sold some policies to her friend.\nEven if he did have a problem keeping his
+  hands to himself.\nWhat did she want if it wasn't a policy?\n.ch ml\nMe.\n.ch ph\nI
+  find that hard to believe. She probably wanted\ninformation or something. Did she
+  ask you questions about Expendable Life?\n.ch ml\nActually she seemed more interested
+  in toy companies than insurance.\n.ch ph\nWhat do you mean?\n.ch ml\nShe seemed
+  to have this crazy idea that Fassablanca\nwas a front for a hostile power trying
+  to dominate the world.\n.ch ph\nThat seems crazy, all right.\n.ch ml\nAs soon as
+  I convinced her that it was just a money hungry toy company,\nshe ran off like she'd
+  left her cat in the rinse cycle.\n.ch ph\nWhy would she put her cat in the rinse
+  cycle?\n.ch ml\nI don't suppose it started off in the rinse cycle; it must\nhave
+  started in the wash.\nJust hope she gets there before it goes into the spin dry.\n.ch
+  ph\nThis sounds suspicious. I think we'd better tell\nFassablanca that she was asking
+  questions about them.\n.ch ml\nRight.\n.ad\n(THEY LEAVE.\nIMA HAS FINALLY GOTTEN
+  TIRED OF WAITING FOR STAN TO MAKE HIS CALL.)\n.ch iu\nExcuse me, but are you ever
+  going to make a call?\n.ch ss\nWhat? (HE TURNS AND SEES THEM WAITING:) Oh, yes.
+  I'll\nmake a call. Just as soon as I remember who I was calling and why.\n.ch sy\nMay
+  we use the phone while you're trying to remember?\n.ch ss\nNo. You can't!\n.ch iu\nWhy
+  not?\n.ch ss\nDo you know what I went through to get this phone booth?\n.ch sy\nAsk
+  me if I care.\n.ch ss\nI don't care if you don't care. I've waited in line for hours,\nthen
+  had to fight a lady for it, drag someone else out of it and\nwhen I finally got
+  in, I'd lost my last dime.\n.ch iu\nLook, I'll lend you a dime if you let me make
+  my call first.\n.ch ss\nThat's not the problem now. I already went and got more
+  dimes.\n.ch sy\nThen what's the problem?\n.ch ss\nI told you already! I don't remember
+  who I wanted\nto call or why! And after what I went through to get this booth, I'm\nnot
+  leaving until I remember.\n.ch iu\nI don't think you realize the gravity of this
+  situation.\nIt is absolutely imperative that I get in touch with Fassablanca!\n.ch
+  ss\n(IMPRESSED:)\nWhat is it?\n.ch iu\nIt's a bunch of people who make toys and
+  sell them for profit,\nbut that's not important now.\nThis requires personal action.\nI'm
+  going to Fassablanca myself\nto try and stop the army before it's too late.\n.ld\n(SHE
+  STRIKES A HEROIC PROFILE.\nUNFORTUNATELY, THAT PROFILE HAPPENS TO BE SVEN'S GROIN
+  AND\nHE SINKS SLOWLY IN THE WEST AS THE LIGHTS FADE...)\n.es\n"
+:shard_number: 10
+:shard_name: 2-3
+:shard_time: 1981-03-08 20:27:00.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 22412
+:shard_size: 5164

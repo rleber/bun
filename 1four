@@ -1,0 +1,119 @@
+---
+:identifier: Bun
+:block_count: 11
+:block_padding_repairs: 10
+:catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-19 19:50:16.317273000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a2ea911a7ddd55e074137dede45d9e1829336b44]
+:description: ==> freeze file containing roff source for fass '77 script
+:digest: c867581302b01ff9381e8997caf2425e
+:file_grade: :decoded
+:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:first_block_size: 3869
+:owner: fass
+:path: fass/scripfrz
+:tape: ar004.0888
+:tape_size: 40058
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:34:01.116501000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! ".so fass/fasshole\n.he 'FASS'- % -'ACT I SCENE IV'\n.FO 'ACT I SCENE
+  IV''FASS'\nAct 1, Scene 4 - The Bridge\n\n(LIGHTS UP ON BRIDGE: JERK IN HIS CHAIR,
+  MCINTOSH STANDING BESIDE HIM,\nHUARYU AT HER CONSOLE, JOCK AT HIS, SURU ON HIS 'MOTORCYCLE'\nCONSOLE
+  WITH TOLSTOY IN THE 'SIDECAR')\n\n.aa ECM\nAhem.\n\n(NO ONE NOTICES)\n\n.hu\nReady
+  to leave orbit, Captain Jerk.\n\n.je\nThank you, Lt. Huaryu.\n\n.hu\n(LOOKS PUZZLED)
+  I'm Lt. Huaryu, Captain.\n\n.je\nI should think you'd know who I was after all\nwe've
+  been through together, Huaryu!\n\n.hu\nYou know who I am, and let's not broadcast
+  all over subspace\nwhat we've been through.\n\n.jo\n(CHANGING THE SUBJECT) Course
+  calculated...\n\n.to\n....and pre-registered, Kyeptin.\n\n.aa ECM\n(HAS BEEN CLEARING
+  HIS THROAT WITH INCREASING VIGOUR THROUGHOUT\nTHIS DISCOURSE) Ahem, ahem!\n\n.je\nWha..?
+  Say, that's a nasty cough you've got there. Doctor\nMacintosh, give him something
+  for his cough.\n\n.rm\nSure thing, Jim. Here's a quarter.\n\n.hu\nThat's not much.\n\n.rm\nIt's
+  not much of a cough. (HE LAUGHS, CREW IS STONE SILENT: HE STIFLES)\n\n.je\nAll right,
+  people, that's enough. Cut it out!\n\n.to\nThyet's Dr. Macintosh's job,  Kyeptin.
+  (HE LAUGHS, IBID. )\n\n.je\nHold it right there, Ensign! (HAND OVER EYES) Oh,no!
+  \n\n.to\nAnd now I'll hold it over here!\n\n(GENERAL LAUGHTER)\n\n.je\n(TO ECM)
+  By the way, who are you?\n\n.hu\nYes, Captain?\n\n.je\nNo, no, no, not you. (JUMPS
+  UP AND DOWN, POINTING TO ECM)\nHim, him, hymn!\n\n.su\nHow about \"Onward Christian
+  Soldiers\"?\n.to\nOh boy, charades! Sounds like... joint.\n\n.je\nAaaaaaaaaarrrrrrgh!\n\n.jo\nJoint
+  - scream - it's obvious: a joint gets you high and\na scream is a high-pitched vocalism
+  of little or no meaning.\nObviously he's trying to tell us that he's stoned and\ndoesn't
+  know what he's saying. Really Captain, I'm ashamed;\na man in your position!\n\n(JERK,
+  ANGUISHED TO THE POINT OF BEING ON HIS KNEES AND HOLDING \nHIS FACE, SUDDENLY LEAPS
+  UP, GRABS ECM BY THE THROAT AND SHAKES\nHIM)\n\n.je\nWhat - is - your - name? Why
+  - are - you - here? What - is - \nthis - all - about?\n\n.aa ECM\n(ON HIS KNEES,
+  CHOKING) It's (GASP) Howdy Booby time!\n\n(JERK RELEASES ECM, WHO COLLAPSES IN A
+  HEAP)\n\n.je\nWhat? Oh, my God, they're here; and this place is a mess! Quick, \nSuru,
+  set phasers on dust.  Prize and Pride ... together-\n\n.pd\nSkip it, Captain, we've
+  been through that once.\n\n.je\nYour Boobyships, please.  Welcome aboard.  Let me
+  introduce you\nto my crew.\n\n(AS JERK INTRODUCES EVERYBODY, MACINTOSH MOVES\nFROM
+  BESIDE THE CAPTAIN'S CHAIR,  EXAMINES ECM BRIEFLY\nAND REMAINS THERE STANDING.)\n\n.je\nThis
+  is Lt. Huaru, our communications officer.\n\n.pz\nHow are you?\n\n.hu\nNo, Huaru.\n\n.pz\nI'm
+  the Prize Booby.\n\n.hu\nSo's the Captain.\n\n.pd\nI thought he was Jerk.\n\n.hu\nThat
+  too.  Who are you?\n\n.pd\nI'm the Pride booby, her sister.\n\n.hu\nI'm Lt. Huaru.
+  \ How are you?\n\n.pz\nWhat an odd name.\n\n.hu\nWhat?\n\n.pz\nNo, Huaru.\n\n(HUARU
+  ATTEMPTS TO ANSWER, BUT THE CAPTAIN CUTS HER OFF.)\n\n.je\nAh, this is our co-op
+  Science officer, Mr. Jock.\n\n.pz\nDidn't you write a book on babies?\n\n.jo\nNo,
+  madam, that would be illogical.\n\n.pz\nWhy?  Because you're a science officer?\n\n.jo\nNo,
+  because babies tend to get the printing presses messy.\n\n.pz\nWhat about when they're
+  older?\n\n.jo\nThat is a pressing question.\n\n.je\nAnd this is Lt. Suru, out pilot
+  and weapons officer.\n\n.pd\nHow do you do?\n\n.su\nWhat?\n\n.pd\nPardon?\n\n.su\nI
+  say, \"You're pardoned.\"\n\n.pz\nWhy?\n\n.su\nShe asked me.\n\n.pd\nWhat?\n\n.su\nHow
+  I did; I mean, how I pardoned.\n\n.pz\nAre they all like this?\n\n.je\nNo, some
+  of them are a little silly.\n\n.pd\nOh God.\n\n.je\nThis is Ensign Doestoyevski,
+  our navigator.\n\n.to\nThat's Tolstoy, and \"nawigator\".\n\n.je\nSorry, Ensign
+  Nawigator.\n\n.pz\nI say; you're Russian, aren't you?\n\n.to\nYes, why?\n\n.pz\nNo
+  reason really, it's just been so long since I saw a red ensign flying.\nSee you
+  later, nawigator.\n\n(SCUFFLE IN BACKGROUND AS BRASSIERE SNEAKS IN THE DOORWAY,\nGARROTES
+  MACINTOSH AND STUFFS HIM INTO THE HATCH MARKED \"TANG\nCONVERTER\".)\n\n.je\n(TURNING
+  AROUND AFTER THIS IS DONE) Oh yes; this is our medical officer, Dr.\nMacintosh of
+  the Star Flit medical corpse.  Affectionately known as\n\"the Bones\".\n\n.rb\nAaaaaayyyyyy.\n\n.je\nOur
+  engineering officer, Mr. Spot, is not here right now.  We'll be\npicking him up
+  later.  And I, of course, am Captain Jerk, at your\nservice.\n\n.pz\nThank you,
+  Captain Jerk-at-your-service, but -\n\n.je\nThat's Jerk.\n\n.pz\nPardon?\n\n.je\nIt's
+  not Jerk-at-your service, just \nJerk.\n\n.pd\nWell, if you say so; we'll just jerk
+  if we need anything.\n\n.je\nNo, no. If you need anything, just call your orderly.\n\n.pz\nI
+  thought you said to jerk.\n\n.je\nNo, I'm Jerk.\n\n.pd\nWe figured that out for
+  ourselves.\n\n.pz\nCaptain, I think you had better see to our escort. I think you
+  killed him.\n\n.aa ECM\nI'm not dead.\n\n.pd\nDon't argue.  She's a goddess, and
+  she says you're dead.\n\n.aa ECM\nI'm getting better.\n\n.rb\nI've examined him
+  and he's dead.\n\n.aa ECM\nI'm not.\n\n.rb\n(SPREADS HIS HANDS AND LOOKS AROUND,
+  A LA FONZARELLI) Aaayy.\n(STOMPS ECM ONCE.) He's dead, Captain.\n\n.je\nWell, do
+  something about him.  We can't have him messing up the floor.\n\n(BRASSIERRE STUFFS
+  ECM INTO THE TANG CHUTE WITH MCINTOSH.)\n\n.aa ECM\nI'm not deeeeaaaaad. (DIES AWAY)\n\n.je\nWell,
+  let's get going\n(JERK MOVES TO CHAIR WITH A BOOBY ON EITHER SIDE OF\nHIM.) What's
+  our course?\n\n.to\nRight on, Captain.\n\n.je\nWhat's that, Ibsen?\n\n.to\nStraight
+  ahead, sir; and that's Tolstoy, sir.\n\n.je\nWhatever, and change that to a right
+  turn.\n\n.jo\nCorrection, Captain.  That will be six wrongs, Ensign.\n\n.je\nHuh?
+  How do you get that?\n\n.jo\nIt's simple, sir.  If two wrongs don't make a right,
+  then\nthey make a left.  If three lefts equals one right, then it is \nintuitively
+  obvious that\nby applying the Forrest lemma on capitalistic letters\nsix wrongs
+  make a right. Completely logical, sir.\n\n.je\nJock, why don't you go sharpen your
+  ears?\n\n.jo\nSorry sir, the ear-sharpener is broken.\n\n.je\nI don't think I can
+  take this any more.  This crew is getting on my\nnerves.  I wish I could drop tham
+  off on the nearest planet and carry\non by myself.  There's only one problem.\n\n(WALKS
+  TO THE FRONT OF THE STAGE.)\n\n.nf\n***************************************************\n***to
+  the tune of \"I Don't Know How To Love Him\"***\n***************************************************\n.in
+  +5\nI don't know how to fly this,\nHow it works, how to move it.\nIt's a ship, it's
+  just a ship.\nAnd I've had so many ships before\nIn very many ways, it's just one
+  more.\n\nShould I keep on course,\nShould I just drop out,\nThink I'll ask Dick
+  Knight what it's all about.\nI never thought I'd get this far;\nWhat do I do now?\n\nI
+  don't know how to fly this,\nWhat the heck, it won't matter\nI've got a crew, a
+  not bad crew\nAnd they all know how; who told them?\nMaybe thay'll tell me; I hope
+  they do.\nI hope they do\n\n.fi\n.in -5\n.to\nExcuse me, Keptain. I wish to report
+  that I can't make that\ncourse change, sir.\n\n.je\nWhy not?\n\n.to\nYou didn't
+  get the form signed by the Assistant Assistant Auxiliary\nUndersecretary to the
+  Dean's Second-in-Command's Subordinate.\n\n.je\nBy the who?  Never mind.  Straight
+  ahead.\n\n.su\nVroom, vroom.\n\n.je\nQuiet, Suru.\n\n.su\nPutputputputput ( LOOKS
+  AROUND GRINNING ) Brrrrooooom, brrrroooooom,\nbrrrrroooooooom, putputputput.\n\n.je\nCool
+  it, Suru.\n\n.su\nBr-r-r-r-r-r-mmm, br-r-r-r-r-r-r-r-mmm.\n\n.je\nStop it, Suru,
+  or I'll break your scarf.\n\n.su\nYes, Captain, straight ahead sir.  ( A FEW SECONDS
+  OF SILENCE.  \nTHEN IN ANGUISH.) Please don't break my scarf, sir!\n\n(HE STARTS
+  TO CRY AS THE LIGHTS GO OUT.)\n\nfin\n"
+:shard_number: 7
+:shard_name: 1four
+:shard_time: 1977-02-11 08:53:15.000000000 -05:00
+:shard_blocks: 1
+:shard_start: 2092
+:shard_size: 1860

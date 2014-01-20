@@ -1,6 +1,7 @@
 TODO
 _High Priority_
-Default title for RunSize
+Add shard_time to times exam
+Fix fields retrieved by bun examine for frozen files without shard specifier
 File::Expression
     Setting of --min (e.g. with chars exam)
     Setting of --case (e.g. with chars exam)
@@ -9,6 +10,10 @@ Consolidate exam, field, formula in bun find, map, and examine (and same?)
     Allow --inspect option
     Allow <field_or_exam_name> without e[] or f[] syntax
     Pseudo references: file_path, text
+Tests for bun find, bun map
+Could we cache file data, for faster processing?
+    Raw data
+    Decoded data
 Add synthetic field descriptions: text, file_path
 Bun fields
 Bun exams

@@ -1,0 +1,160 @@
+---
+:identifier: Bun
+:block_count: 10
+:block_padding_repairs: 0
+:catalog_time: 1982-12-22 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-19 19:50:54.821972000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a2ea911a7ddd55e074137dede45d9e1829336b44]
+:description: ''
+:digest: 481d5b91330586e29f4a673e42efdcf5
+:file_grade: :decoded
+:file_time: 1981-03-08 20:27:00.000000000 -05:00
+:first_block_size: 3856
+:owner: bjeroehl
+:path: bjeroehl/fass/81script.f
+:tape: ar082.0605
+:tape_size: 36457
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:35:29.777986000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! ".so 81macros\n.bs 1 5 \"The Name Of The Game Is Money\"\n.na pt PHIL~T.~RICH
+  PHIL\n.na sc SEYMOUR~CLEARLY SEYMOUR\n.na ps POLLY~SACCHARIDE POLLY\n.na at ALEC~TROLYSIS
+  ALEC\n.na tt TESS~TUBE TESS\n.na ld LES~DEWITT DEWITT\n.na as ANNA~STESIA ANNA\n.na
+  ms MAUDE~SQUAUDE MAUDE\n.na dm DINAH~MIGHT DINAH\n.na rr RINGO~ROUNDACOLLAR RINGO\n.na
+  ca CHRIS~ANTHEMUM CHRIS\n.na yd YVES~DROPPING YVES\n.na kp KAZ~PYJAMAS KAZ\n.na
+  vt VIC~TORIA VIC\n.na em ED~MONTON ED\n.na ri REG~INA REG\n.na wp WINNIE~PEG WINNIE\n.na
+  qp QUEEN~SPARK QUEEN\n.na kb KAY~BECK KAY\n.na fr FRED~RICTON FRED\n.na hi HAL~IFAX
+  HAL\n.na ct CHARLOTTE~TOWN CHARLOTTE\n.na js JOHN~SAINT'S JOHN\n.ad\n(LIGHTS UP
+  TO A TABLE STAGE RIGHT MOAT WITH THE FOUR SCIENTISTS\nIN A HUDDLE. THEY ARE SORTING
+  THROUGH BLUEPRINTS AND FILES MARKED SECRET.\nSEYMOUR ENTERS WITH MORE FILES.)\n.ch
+  sc\nWell, here's the plans the last group brought in.\n.ch ps\n(PICKING UP SOME
+  OF THE PLANS)  Look at this -- plans\nfor secret biological weapons.\n.ch at\n(READING)
+  \ A giant carnivorous mutant red worm.\n.ch tt\nA vicious giant boar with skin like
+  metal...\n.ch sc\nOh, and here's a weapon that's capable of instantly putting\nhuge
+  crowds of people into a drug-like stupor.\n.ch ps\nWhat's it called?\n.ch sc\nStatistics.\n.ch
+  ps \nThis stuff sounds tremendous.\n.ch at\nAnd there are only three more groups
+  of spies left to report.\n.ch tt\nIt's all beginning to pull together.\nYou're doing
+  a good job, team.\n.ad\n(ALEC HAS OPENED ANOTHER ONE OF THE FILES.  HE LOOKS ASTONISHED)\n.ch
+  at\nHey boss, look at this!\n.ad\n(THE RESEARCHERS CROWD AROUND AS PHIL, ANNA, AND
+  LES ENTER.)\n.ch pt\nWell, Les, your people better have something to report.\nThe
+  personnel department has been having kittens over the\nexpense accounts from the
+  insurance people and the spies.\n.ch ld\nIt can't be that bad, boss.\nAfter all,
+  the spies can steal\nwhatever they want, and what does an insurance agent need?\n.ch
+  pt \nRead the list, Anna.\n.ch as\n(READING A LIST DEADPAN) Expense accounts:\nOne
+  large pizza with pepperoni, peanut butter, double banana,\ndouble anchovies, yogurt,
+  23 frisbee guns, 2 boxes of ammunition, 36 pairs\nof boffer glasses, 10 Tom Mix
+  secret decoder rings, and 1389 co-op students.\n.ch ld\nWho could eat a pizza with
+  1389 co-op students on it?\n.ch pt\nDewitt, do you expect this company to pay for
+  all that nonsense?\n.ch ld\nBoss, if we want results, we have to put up with these
+  little peculiarities.\n.ch pt \nAre we getting results?\n.ch ld\nWe brought you
+  here so that R&D team could tell you\npersonally what progress they've made.\n.ch
+  as\nWhat! You let that group of morons work on this?\nThey had absolutely no workable
+  ideas before...\n.ch ld \nWell, the team is like a bunch of engineers -- they'll\nnever
+  come up with anything original, but if someone gives them an\nidea, they can follow
+  it through to its logical conclusion.\n.ch pt\nMy logical conclusion will be to
+  fire the lot of you if this doesn't work.\n.ch ld \nNo problem boss, you'll love
+  what we've got.  I hope.\n(TO RESEARCHERS)  Okay team, attenhut!\n.ad\n(THE SCIENTISTS
+  SNAP TO ATTENTION.)\n.ch ld\nAre you ready to report on your progress?\n.xx TEAM\nYes
+  sir!\n.ch pt\nJust get on with it; what have you got?\n.ch ps\nWell, we've got...\n.sb
+  \"LASERS AND PHASERS\" \"FAVORITE THINGS\"\nLasers and Phasers and nuclear weapons\nMiniature
+  landmines that you'll love to step on\nFiendish devices that blow you to bits\nThese
+  are the things that we think will be hits\n.ve 4\nRobots and androids and sneaky
+  torpedoes\nHand grenades, light sabres, aren't they just neat-o?\nGadgets designed
+  to go off with a bang\nThese are the things for which this song is sang\n.ve 4\nWhen
+  the bombs burst, and the guns fire\nAnd we're feeling blue\nWe just design more
+  of these devious things\nAnd shoot them off right at you.\n.ex\n.ch pt\nSounds good.
+  Is that it?\n.ch at \nWe're just waiting for the last three groups to report. After
+  we incorporate\ntheir information, it should take about a month before the first
+  units can be\nshipped out.\n.ch pt \nGood, good.\n.ch at \nOh, here comes one of
+  the groups now.\n.ad\n(TEN PEOPLE ENTER WEARING PARKAS WITH PROVINCIAL TAGS)\n.ch
+  pt\nWhere have you people been?\n.ch vt\nWe've been stealing state secrets from
+  Canada.\n.ch ps\nAren't those\n.ul\nprovincial\nsecrets.\n.ch vt\nWhatever.\n.ch
+  em\nYou'd be amazed at what we've learned.\n.ch ri\nFor example, they say that the
+  country is run by P.E.T.\n.ch wp\nIt's a little confusing but we think it's a Commodore
+  PET microcomputer.\n.ch ld\nThey use a microbrain to run the country?\n.ch qp\nHard
+  to believe, isn't it?\n.ch kb\nNot only that, but there's a lot\nof doubt about
+  who's leading the opposition.\n.ch ld\nWhat do you mean?\n.ch fr\nWhen we asked
+  \"Who leads the Opposition?\", they just said \"Yes.\"\n.ch hi\nAnd the country
+  is ripping apart at the seams.\n.ch ct\nYah. It's constitutionally weak.\n.ch js\nEven
+  their national anthem has ten different parts.\n.ad\n(THE FOLLOWING SONG IS PERFORMED
+  EAST VS. WEST VS. CENTRE.)\n.sb \"THE CANADIAN NATIONAL UNITY SONG\" \"HALLELUJAH
+  CHORUS\"\nManitoba, Manitoba,\nManitoba, Manitoba, Saskatchewan.\nNova Scotia, Nova
+  Scotia,\nNova Scotia, Nova Scotia, Newfoundland.\nBritish Columbia and Alberta!\n
+  \ (Nova Scotia, Nova Scotia.\n   Manitoba, Manitoba.)\nPrince Edward Island and
+  New Brunswick!\n  (Manitoba, Manitoba.\n   Nova Scotia, Nova Scotia.)\nQue-bec!\nOntari-ari-ari-o.\n.ex\n.ad\n(THE
+  VARIOUS SINGERS PILE ON ONTARIO AND POUND HIM\nOUT AS THEY GO OFF STAGE.)\n.ch tt\nHow
+  terribly provincial.\n.ld\n(LIGHTS DOWN ON THE COMPANY PEOPLE.  THE SPIES FROM 3A
+  AND 3B\nENTER FROM OPPOSITE SIDES OF THE STAGE.  THE 3A FOLKS LOOK TORN\nTO SHREDS;
+  THE 3B FOLKS LOOK VERY COOL.)\n.ch dm\nYou people look awful! What happened?\n.ch
+  yd\nIt was pretty rough dere.\nWe got caught in da act and had to shoot hour way
+  hout.\n.ch ca \nIt was a good thing those insurance agents showed up when the\nshooting
+  started, or we'd all look like Swiss cheese.\n.ch ms\nInsurance agents? What were
+  they doing there?\n.ch kp\nIt must have something to do with the policies they sold
+  us.\nAnyway, they brought in some co-op bullet catchers and pulled us out.\n.ch
+  ca\nBullet Catcher -- that reminds me of some of the jobs I\ngot when I was in Co-op
+  Espionage Studies.\n.ch kp\nYou were in Espionage Studies?  Hey, I was in ES too.\n.ch
+  rr\nYou were in ES2?  I didn't even think it was built yet.\n.ch ms\nHow could you
+  stand being inside that building?\n.ch kp\nI have nothing against ugly red monstrosities.\n.ch
+  dm \nI remember\n.ul\nmy\nfirst job interview.\nAll we knew was that the\ninterviewer
+  was hidden in a room somewhere in the northern hemisphere.\nThe first one to find
+  the room got the job.\n.ch ms\nI applied for that job, but I didn't get it.\nThe
+  room was in the Psychology building.\n.ch yd\nHow did anyone find da room?\n.ch
+  dm\nNo one did.  They ended up hiring a monkey.\n.ch ms\nRight.\n.ch dm\nWright?
+  \ Yes, I believe that was the monkey's name.\n.ch kp\nAnd the school terms weren't
+  any better than the jobs.\n.ch ca\nOur graduating class had an interesting assignment
+  from the student government\nWe were hired to eliminate some fanatical left wing
+  radicals who were \npublishing a silly newspaper.\nIt wasn't hard, we just took
+  them to the South Campus Hall cafeteria.\n.ch rr\nWow, we didn't study Cruel and
+  Unusual Punishment until Grad School.\n.ch ca\nWell we decided it was kind of nasty
+  too, so we took them to\nHealth Services to get their stomachs pumped.  When the
+  operation\nwas finished, the radicals said they would only pay last year's\nmedical
+  fees, so the doctors pumped back 7 1/2%.\n.ld\n(LIGHTS UP ON PHIL AND COMPANY.  PHIL
+  COMES BACK TO MEET THE SPIES.)\n.ch pt\nSo there you are.  Do you have the information
+  we asked you to steal?\n.ch ca\nRight here.\n.ch dm\nAnd here's ours... uhh, you
+  don't mind the pizza stains, do you?\n.ch pt\nNo problem.  You people have done
+  a fine job.\nA great job.  Just wait out here and we'll give you everything you
+  deserve.\n.ld\n(HE WALKS BACK TO THE FASSABLANCA FOLKS.  LIGHTS DOWN ON THE SPIES.)\n.ex\nOkay,
+  who's going to fire the spies?  Anna?\n.ch as\nWhy me? You're the boss.\n.ch pt\n(CONDESCENDINGLY)
+  Didn't they teach you anything in Management school?\nThe aide always does the dirty
+  work, and the boss always gets the credit.\n.ch as\nOh, all right.\n.ld\n(ANNA GOES
+  TO THE SPIES.  LIGHTS UP ON SPIES, DOWN ON COMPANY FOLKS.)\n.ex\nWell folks, I'd
+  like to thank you all for a job well done,\nbut as of this moment you're fired.\n.xx
+  SPIES\nFired??\n.ch ca\nDon't we get a week's notice?\n.ch as\nNot at $500 a day.\n.ch
+  rr\nBut some of us gave up promising positions with other countries for this job.\nWhat
+  are we going to do now?\n.ch as\nGo home and apply for unemployment insurance,\nblackmail
+  some government... it doesn't matter to us.\n.ch ms \nThere aren't going to be any
+  governments to blackmail.\nWith all that stuff we stole, you people are going to
+  take over the world.\n.ch as\nDon't be silly -- we have no interest in taking over
+  the world.\n.ch dm\nThen why did you want all those plans?\n.ch as \nWe're going
+  to use them to make the best darned war game you've ever seen.\n.ch ca\nWar game?\n.ch
+  ms\nWar game!\n.xx SPIES\nWar game!\n.ch rr\nWhat is this place, anyway?\n.ch as
+  \nIt's the Fassablanca Toy Company.\n.ad\n(AT THIS POINT A BIG SIGN SAYING FASSABLANCA
+  APPEARS FROM BACK STAGE.\nIN DEFERENCE TO THOSE PEOPLE WHO DO NOT LIKE THE WORD
+  \"BOFFO\", WE WILL\nREFRAIN FROM POINTING OUT WHAT KIND OF SIGN THIS IS.)\n.ch ca\nBut
+  all the secret weapons!\nThe lasers and the phasers and the...\n.ch as\nSoon to
+  be available in durable plastic, batteries not included\nand some assembly required.\n.ch
+  yd\nYou mean we put in all dat work for some lousy stinking toys?\n.ch as\nLousy?
+  \ The plans you stole are going to make our war toys\nmore authentic than anything
+  else on the market.\n.ch yd\nBut we laid on lives on da plane!\n.ch dm\nI believe
+  the expression is \"laid our lives on the line\".\n.ch yd\nNobody's dat thin!\n.ch
+  as\nLook, we appreciate the trouble you've gone to and so will\nthe little kiddies.\nBut
+  you're still fired.\n.ad\n(SHE BEGINS TO HERD THEM OFFSTAGE.)\n.ch ms\nYou haven't
+  heard the last of us, Fassablanca.\n.xx SPIES\nRight!\n.ld\n(THEY EXIT.  LIGHTS
+  UP ON FULL STAGE.)\n.ch as\nI did your dirty work for you, boss.\n.ch pt\n(HOLDING
+  A FILE)\nGood; now we have everything we need to make a really boffo game.\nI want
+  to get started on the manufacture of this one right away.\n.ch at\nAt once, sir.\n.ad
+  \n(HE AND THE OTHERS BEGIN TO ASSEMBLE THE PAPERS)\n.ch ld\nJust think of the spinoffs
+  we could get, boss.\nToy cruise missiles! Nuclear Barbie! Atomic Ken!\n.ch pt\nThe
+  Fassablanca Toy Company will make millions.\nAll rise and sing the company anthem.\n.sb
+  \"FASSABLANCA\" \"CARLING'S RED CAP\"\nToys and games and gadgets\nDolls and teddy
+  bears\nWe love Fassablanca\nWe own all the shares\n.ve 4\nProfit is our motto\nMoney
+  is our goal\nFor a million dollars\nWe would sell our soul.\n.ve 4\nToys and games
+  and gadgets\nDolls and GI Joe\nWe love Fassablanca\nIt rakes in the dough.\n.sp\n
+  \     A-men.\n.ld\n(LIGHTS DOWN)\n.es\n"
+:shard_number: 7
+:shard_name: 1-5
+:shard_time: 1981-02-13 14:57:21.000000000 -05:00
+:shard_blocks: 0
+:shard_start: 12777
+:shard_size: 2467

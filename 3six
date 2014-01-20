@@ -1,0 +1,129 @@
+---
+:identifier: Bun
+:block_count: 11
+:block_padding_repairs: 10
+:catalog_time: 1977-03-02 00:00:00.000000000 -05:00
+:data_format: :raw
+:decode_time: 2014-01-19 19:50:28.077068000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:a2ea911a7ddd55e074137dede45d9e1829336b44]
+:description: ==> freeze file containing roff source for fass '77 script
+:digest: 9c32d014a9d1adf8a50afb0cdfc9e50c
+:file_grade: :decoded
+:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:first_block_size: 3869
+:owner: fass
+:path: fass/scripfrz
+:tape: ar004.0888
+:tape_size: 40058
+:tape_type: :frozen
+:unpack_time: 2014-01-16 23:34:01.116501000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:content: ! ".so fass/fasshole\n.he 'FASS'- % -'ACT III SCENE VI'\n.fo 'ACT III SCENE
+  VI''FASS'\nAct III, Scene 6 -- The Federation Scene\n.br\n(THE IDEA OF THE SCENE
+  IS THAT IT IS RUN ENTIRELY LIKE THE GONG SHOW.)\n\n.aa EMCEE\nWelcome to the show
+  tonight, ladies and gentlemen, welcome to the\nKing Kong show where you go ape over
+  your favourite contestant.\nRemember last week when Morgo the Friendly Brickman
+  sang\nhis way into your hearts with Gorilla My Dreams; and here's the host of your\nshow
+  K. K. Kong...\n\n(ENTER KONG WITH CASSETTE RECORDER UNDER HIS ARM. HE TURNS ON A\nLAUGH
+  TRACK OF CHEERS AND RECORDED APPLAUSE)\n\n.aa KONG\nGood evening, good evening,
+  thank you all, oh they love me, what can I say -\n(HE TURNS OFF THE LAUGH TRACK
+  ABRUPTLY).\nAnd we have a great show tonight folks, let me tell you.  But first
+  let's\nintroduce our panel.\n\n(MAN WALKS ON AND OFF WITH A PIECE OF PANELLING)\n\nIsn't
+  that great? And we didn't even have to beam it here.\nAnd stay tuned for next week,
+  when we bring in the Board of\nEntertainment. (TURNS ON LAUGH TRACK, STOPS IT).\nGreat
+  stuff, they love me.\nAnd for our first act, we have Marshall Arts who will break
+  the silence with\nhis bare hands.\nGive him a hand, folks, let's here it for Marshall
+  Arts. (FARTING SOUND)\nArts, folks, arts.\n\n(ENTER MARSHALL ARTS. HE TRIES TO CLAP
+  HIS HANDS TWICE AND FAILS. ON\nTHE THIRD TRY HE IS GONGED JUST AS HIS HANDS MEET)\n\nOh,
+  too bad there, Marshall, you got the old gong.\nWell, I can't understand that, I
+  loved you.\n\n.aa MARSHALL\nI thought you said that was our secret.\n\n.aa KONG\nGreat
+  little kidder there, isn't he, folks? (LAUGH TRACK)\nJust go offstage there, Marsh;
+  you're\na gas.  Cement booties for him, boys.\nAnd next we have the great Dave McClell
+  and his pet head, who will\namaze you all with his daring feats of somnambulance
+  and acoustics.\n\n(DM PLAYS A SONG ON HIS HEAD. GONG WITH THE WIND)\n\nOh too bad
+  there, Dave old boy.  You tried this once before, I recall.\nOh, you don't like
+  that word?  Well, I won't petition you to stay any longer,\nDave, signature a very
+  busy man.\nAnd now folks we've got a real treat for you, the Bay City Reefers will\n.ul\nnot\nplay
+  tonight because their act went up in smoke. (LAUGH TRACK)\nInstead, we bring you,
+  for the first time on any stage, live or\notherwise, from L. A. to New York, from
+  New York to L. A., The Persecution\nand Assasination of Student Journalism as Performed
+  by the Inmates of the\nAsylum at Segram and University under the Domination of the
+  Marquis de Shane.\nTake it away, Bozos.\n\n.aa FEDS\n.nf\n.in3\n*********************************************************\n***to
+  the tune of \"Copulation Round\" from \"Marat/Sade\"***\n*********************************************************\n\n.in10\nAnd
+  what's the point of a referendum\nWithout several:\nSeveral Confrontations, Allegations,
+  Obfuscations.\n(REPEAT)\n.in8\n.fi\n\n.aa FED1\nWho was the lady I saw you with
+  last night?\n\n.aa FED2\nThat was no lady, that was my typewriter.  Actually, it
+  wasn't my typewriter,\nbut I don't think that...\n\n.aa FED3\nI say, you've got
+  a typewriter in your hands.\n\n.aa FED4\nI'm sorry, I can't hear you, I've got a
+  typewriter in my hands.\n\n.aa FED2\nOrder, Order.\n\n.aa FED3\nHam on rye, hold
+  the mustard.\n\n.aa FED1\nHave you got a quorum?\n\n.aa FED2\nSorry, sold right
+  out of quorum.  How about a by-law?\n\n.aa FED1\nAre you kidding? I broke the last
+  three that I got from you.\n\n.aa FED3\nWell, then, how about a pickle?\n\n.aa FED4\nWe're
+  in pretty much of a pickle as it is.\n\n.aa FED2\nBoy, that was a dilly.  And now
+  for a song ...\n\n.aa ALL\n.nf\n.in +5\n*******************************\n***to the
+  tune of \"Hey Jude\"***\n*******************************\nHey you, don't make it
+  bad,\nJust ignore them, don't let them pester.\nThe minute you let them under your
+  skin,\nThen they begin to make it fester.\n.fi\n.in -5\n\n.aa FED4\nOr how about...\n\n.aa
+  ALL\n.nf\n.in +5\n****************************************\n***to the tune of \"A
+  Day in the Life\"***\n****************************************\nI read the news
+  today whoopee,\nFour thousand holes in all their arguments.\nAnd though they said
+  the news was real,\nWell I just had to laugh,\nI know who's on their staff.\n.fi\n.in
+  -5\n\n.aa FED1\nPoint of order, point of order.  How do you get down off a high
+  horse?\n\n.aa FED3\nYou get recalled.\n\n.aa FED4\nI thought you get down off a
+  duck.\n\n.aa FED2\nDuck!\n\n(A BOOK IS THROWN ACROSS THE STAGE. FED1 PICKS IT UP)\n\n.aa
+  FED1\nThis is what we should be reading - Roberts Rules of Order.\n\n.aa FED2\nWe've
+  been hearing enough of that as it is.\n\n.aa FED4\nMaybe we should have some rubber
+  rules of order so we can bend them as\nmuch as we want.\n\n.aa FED3\nI move we check
+  that we have a quorum.\n\n.aa FED2\nWe can put up with a modicum of de-quorum.\n\n.aa
+  FED1\nAlas poor quorum I knew him well.\n\n.aa FED4\nTime for roll call.\n\n.aa
+  FED2\nWe don't need a roll call, they've got programs.\n\n.aa FED3\nProgram, program,
+  can't tell your opponent off without a program!\n\n.aa FED1\nDid we ever have a
+  program?\n\n.aa FED2\nYou think that something like this could have been planned?\n\n.aa
+  ALL\n.nf\n.in+5\n*****************************\n***to the tune of \"Canada\"***\n*****************************\n\nChaos
+  dear,\n    (one silly, two silly, three silly people)\nWe love you.\n    (will get
+  us re-elected)\nNow it's clear\n (four rabble, five rabble, six rabble rousers)\nNo
+  one knew.\n (no one will ever stop us once we're through)\nRight, right, right,
+  right;\nWe know where we stand,\nOthers will know it too.\nIt's the age-old game\nAs
+  narrow minded politicians\nThink for me and you - together...\n.fi\n.in 8\n\n.aa
+  FED3\nPoint of order, point of order, that song wasn't on the agenda.\n\n.aa FED1\nSalvadore
+  Agenda?\n\n.aa FED4\nSpeaking of agendas, I know a man with a wooden leg named-\n.br\n(GONG)\n\n.aa
+  KONG\nOh, too bad there, inmates. If there's ever been an act that accomplished\nso
+  little with so much effort, I can't recall it.\nSorry boys, I know you don't like
+  that word. (LAUGH TRACK)\nLet's give them a big hand anyway. \n\n(MAN CARRYING GIANT
+  HAND PROCEEDS TO SWAT DOWN THE FEDS)\n\n(LAUGH TRACK) Oh God, they love me.\nAnd
+  now for our last act, we have an unnatural act.  I think that's\nabout all I can
+  say, take it away Mouldie.\n.br\n(ENTER GABANDABALF).\n\n.ga\nExcuse me, but I think
+  that I've lost my way.\nI haven't made any headway for an hour. Can you tell me
+  where I am?\n\n.aa KONG\nWhat? What?! Are you a poodle in a garter belt?\n\n.ga\nWhat?\n\n.aa
+  KONG\nAre you a poodle in a garter belt?\n\n.ga\nWhere would I put the belt?\n\n.aa
+  KONG\nGood point; then what are you doing here?\n\n.ga\nI told you, I'm lost.  And
+  what does wearing a garter belt have to do\nwith being here?\n\n.aa KONG\nThis is
+  the King Kong show (LAUGH TRACK) and we were expecting a poodle\nin a garter belt.
+  Well, maybe not a poodle's garter belt, but a \nmad dog's dildo anyway.\n\n.ga\nAll
+  I'm trying to do is find the true page for the Winkle.\n\n.aa KONG\nWell, why didn't
+  you say so in the first place?\nHave we got a page for him, folks. (LAUGH TRACK)
+  Oh God, they love me\nso much.  Yes, yes.  Leopold, keep quiet, I'm talking.\n\n.ga\nDo
+  you know about the true page?\n\n.aa KONG\nDo I know about the true page? Do I know
+  about the true page, folks?\n\n.aa VOICE\n(FROM THE BACKGROUND) Do you know about
+  the true page?\n\n.aa KONG\n(LOOKS AT RECORDER) Do I know about the true page?\nSon,
+  you've hit the bullseye!\nI\n.ul\nam\nthe true page!  Or the real page, as I am
+  known to my friends and admirers.\n(LAUGH TRACK) Oh, they're such good people, and
+  so perceptive, too.\n\n.ga\nAre you sure you're the true page?\n\n.aa KONG\nTell
+  him, boys.\n\n.aa FEDS\n.nf\n.in +5\n***********************************\n***to
+  the tune of \"American Pie\"***\n***********************************\n\nA long,
+  long time ago,\nI can still remember \nhow the paper used to make me cry;\nAnd I
+  knew if I had my way\nThey would publish what I say,\nAnd no one would dispute me
+  for a while.\nBut last September made me quiver,\nwith each new issue I would shiver.\nFree
+  news in the hallways,\nIt won't be like that always.\nThough some may pout and some
+  may talk\nThe campus will forget this shock;\nThey'll soon forget who threw the
+  rock\nThe day the chevron died.\n.fi\n.in -5\n\n.ga\nTo the Winkle...\n\n.aa FEDS\n.nf\n.in
+  +5\nSo, so long to Gabbie and Kong.\nIn a year or two we'll say \nthat we were right
+  all along\nAnd no one will believe \nthat we could ever be wrong;\n'Cause power
+  is the tool of the strong,\nFreedom has no place in this song.\n.fi\n.in8\n\n(FADEOUT.
+  A LOW-KEY ENDING)\n\nfin\n"
+:shard_number: 26
+:shard_name: 3six
+:shard_time: 1977-02-18 09:06:07.000000000 -05:00
+:shard_blocks: 1
+:shard_start: 26443
+:shard_size: 1976

@@ -99,7 +99,7 @@ module Bun
           if File.file_grade(path) == :baked
             File::Baked.open(path)
           elsif File.tape_type(path) == :frozen && !options[:shard]
-            File::Decoded.open(path, :promote=>true).values.first # This is smelly
+            File::Decoded.open(path, :promote=>true, :expand=>true).values.first # This is smelly
           else
             File::Decoded.open(path, :promote=>true, :shard=>options[:shard])
           end
