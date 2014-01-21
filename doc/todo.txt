@@ -1,6 +1,6 @@
 TODO
 _High Priority_
-Change bun examine to bun show
+Change bun show --file to file examination
 File::Expression
     Setting of --min (e.g. with chars exam)
     Setting of --case (e.g. with chars exam)
