@@ -32,7 +32,7 @@ module Bun
         @expr.data
       end
 
-      def file
+      def file_object
         @expr.file
       end
 
@@ -67,16 +67,16 @@ module Bun
         end
 
         # TODO DRY this out
-        def file
-          context.file
+        def file_object
+          context.file_object
         end
 
         def has_field?(name)
-          file.descriptor.fields.map{|f| f.to_sym}.include?(name.to_sym)
+          file_object.descriptor.fields.map{|f| f.to_sym}.include?(name.to_sym)
         end
       
         def [](field_name)
-          String::Examination::FieldWrapper.new(field_name, file.descriptor[field_name.to_sym])
+          String::Examination::FieldWrapper.new(field_name, file_object.descriptor[field_name.to_sym])
         end
       end
     

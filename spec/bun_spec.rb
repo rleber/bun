@@ -491,7 +491,7 @@ describe Bun::Bot do
             before :all do
               @show_result_file = "show_#{exam}_#{file}"
               exec("rm -rf output/test_actual/#{@show_result_file}")
-              exec("bun show #{exam} --file --raise -j --titles #{TEST_ARCHIVE}/#{file}.bun >output/test_actual/#{@show_result_file}", :allowed=>[0,1])
+              exec("bun show file #{exam} --raise -j --titles --in #{TEST_ARCHIVE}/#{file}.bun >output/test_actual/#{@show_result_file}", :allowed=>[0,1])
             end
             it "should produce the proper output" do
               @show_result_file.should match_expected_output
@@ -505,8 +505,8 @@ describe Bun::Bot do
       end
     end
 
-    # TODO Test without --file and --title
-    # TODO Test without --file, with --title
+    # TODO Test without file and --title
+    # TODO Test without file, with --title
     # TODO Test without -j
     # TODO Test with --format csv
     # TODO Test words with --min 5

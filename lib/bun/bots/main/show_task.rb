@@ -5,7 +5,6 @@ desc "show [OPTIONS] EXAMINATIONS... FILES...", "Analyze the contents of files"
 option 'asis',    :aliases=>'-a', :type=>'boolean', :desc=>"Do not attempt to decode file"
 # TODO Needs some explanation
 option 'case',    :aliases=>'-c', :type=>'boolean', :desc=>"Case insensitive"
-option 'file',    :aliases=>'-f', :type=>'boolean', :desc=>"Always include file path in results"
 option 'format',  :aliases=>'-F', :type=>'string',  :desc=>"Use other formats", :default=>'text'
 option 'if',      :aliases=>'-i', :type=>'string',  :desc=>"Only show the result for files which match this expression"
 option 'inspect', :aliases=>'-I', :type=>'boolean', :desc=>"Just echo back the value of --exam as received"
@@ -91,24 +90,8 @@ def show(*args)
             column_count += (matrixes[i].first || []).size
           end
           titles = values.map{|value| value.titles || ['Value']}.flatten
-          if options[:file] || files.size > 1
-            titles.unshift("File")
-            right_columns = right_columns.map{|col| col+1}
-          end
           formatter.right_justified_columns = right_columns
           formatter.titles = titles if options[:titles] || (files.size >1 && column_count > 1)
-        end
-        if files.size > 1 || options[:file]
-          m_rows = matrixes.map {|matrix| matrix.size }.max
-          # Insert file names in first column
-          file_matrix = if m_rows == 0
-            [] # Do nothing
-          elsif (format == :text && options[:justify])
-            [[File.expand_path(file)]] + [['']]*(m_rows-1) # File name only in first row
-          else
-            [[File.expand_path(file)]]*m_rows # File name in all rows
-          end
-          matrixes.unshift file_matrix
         end
         m = matrixes.matrix_join
         m.each {|row| formatter << row }

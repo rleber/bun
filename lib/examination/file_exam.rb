@@ -5,10 +5,14 @@
 
 class String
   class Examination
-    class Fields < String::Examination::Base
+    class File < String::Examination::Base
 
       def self.description
-        "List fields of the file"
+        "File path of file"
+      end
+
+      def titles
+        %w{File}
       end
 
       def initialize(*args)
@@ -16,7 +20,7 @@ class String
       end
       
       def analysis
-        file.descriptor.fields.sort.map {|f| f.to_sym}
+        ::File.expand_path(file.descriptor.tape_path)
       end
     end
   end

@@ -11,7 +11,7 @@ class String
   class Examination
     class Invalid < ArgumentError; end
 
-    USAGE_FILE = File.join(Bun.project_path(__FILE__), Bun.project_relative_path('doc/exam_usage.md'))
+    USAGE_FILE = ::File.join(Bun.project_path(__FILE__), Bun.project_relative_path('doc/exam_usage.md'))
     
     class << self
       def exam_class(analysis)
@@ -39,11 +39,11 @@ class String
       end
       
       def exam_directory
-        File.join(Bun.project_path(__FILE__),Bun.project_relative_path(__FILE__.sub(/\.rb$/,'')))
+        ::File.join(Bun.project_path(__FILE__),Bun.project_relative_path(__FILE__.sub(/\.rb$/,'')))
       end
       
       def all_exam_files
-        Dir[File.join(exam_directory,"*.rb")] \
+        Dir[::File.join(exam_directory,"*.rb")] \
           .map{|f| f.sub(%r{^#{exam_directory}/},'')}
       end
       
@@ -67,7 +67,7 @@ class String
 
       def usage
         begin
-          text = File.read(USAGE_FILE)
+          text = ::File.read(USAGE_FILE)
           eval(text.inspect.gsub('\\#{','#{'))
         rescue => e
           warn "Error: #{e}"
