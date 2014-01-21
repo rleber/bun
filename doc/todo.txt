@@ -1,16 +1,9 @@
 TODO
 _High Priority_
-Change bun show --file to file examination
 File::Expression
     Setting of --min (e.g. with chars exam)
     Setting of --case (e.g. with chars exam)
     Syntax for referencing shard data (with index)
-Consolidate exam, field, formula in bun find, map, and examine (and same?)
-    Allow --inspect option
-    Allow <field_or_exam_name> without e[] or f[] syntax
-    Pseudo references: file_path, text, grade?
-Tests for bun find, bun map
-Add synthetic field descriptions: text, file_path
 More extensions to bun examine
     Size in llinks -- only for packed or unpacked files
     Field_names

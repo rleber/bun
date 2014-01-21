@@ -38,6 +38,10 @@ module Bun
           :unpack_time  => "The date and time at which this file was unpacked",
           :unpacked_by  => "An identifier of the version of the bun software that unpacked this file",
         }
+
+        SYNTHETIC_FIELDS = {
+          :text => "The decoded text for the file",
+        }
       end
     end
   end

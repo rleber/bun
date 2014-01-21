@@ -20,7 +20,7 @@ _FIELD VALUES_
 The bun software extracts or calculates a number of different fields concerning the contents, characteristics,
 or processing of a file. Available fields include:
 
-#{Bun::File::Descriptor::Base.field_definition_table}
+#{Bun::File::Descriptor::Base.all_field_definition_table}
 
 Field values may be referenced in one of three ways:
 - Using the field:<field name> syntax (Do not include the "<" and ">", those are for clarity only)

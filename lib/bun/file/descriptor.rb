@@ -14,7 +14,11 @@ module Bun
           end
 
           def valid_fields
-            @valid_fields ||= VALID_FIELDS.keys.sort
+            @valid_fields ||= field_definitions.keys.sort
+          end
+
+          def all_fields
+            all_field_definitions.keys.sort
           end
 
           def field_valid?(name)
@@ -25,12 +29,24 @@ module Bun
             VALID_FIELDS
           end
 
+          def synthetic_field_definitions
+            SYNTHETIC_FIELDS 
+          end
+
+          def all_field_definitions
+            field_definitions.merge synthetic_field_definitions
+          end
+
           def field_definition_array
             field_definitions.to_a.sort
           end
 
-          def field_definition_table
-            ([%w{Field Description}] + field_definition_array) \
+          def all_field_definition_array
+            all_field_definitions.to_a.sort
+          end
+
+          def all_field_definition_table
+            ([%w{Field Description}] + all_field_definition_array) \
               .justify_rows \
               .map{|row| row.join('  ')} \
               .join("\n")
