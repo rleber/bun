@@ -2,9 +2,10 @@
 :identifier: Bun
 :block_count: 1
 :block_padding_repairs: 0
+:catalog_time: 1976-11-22 00:00:00.000000000 -05:00
 :data_format: :raw
-:decode_time: 2014-01-17 07:18:51.755434000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:f01c1be8817bb73435b755f1039b09138be55648]
+:decode_time: 2014-01-20 20:09:22.744415000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
 :description: ==>files for idallen
 :digest: 6dce3a2ecf9675194e0871c1afd37ec2
 :file_grade: :decoded
@@ -14,8 +15,8 @@
 :tape: ar003.0701
 :tape_size: 662
 :tape_type: :huffman
-:unpack_time: 2014-01-16 23:33:45.092065000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:unpack_time: 2014-01-20 19:32:55.658758000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
 :content: ! "** ** \n\n \n \n                                       H  A  P  P  Y
   \            V  A  L  E  N  T  I  N  E  S\n  \n  \n                                                        D
   \ A  Y  !\n \n \n \n*****************************************************************************************************************************\n*****************************************************************************************************************************\n*****************************************************************************************************************************\n*****************************************************************************************************************************\n*************************

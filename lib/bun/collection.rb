@@ -249,6 +249,7 @@ module Bun
 
     def apply_catalog(catalog_path, options={})
       shell = Bun::Shell.new(options)
+      cat = catalog(catalog_path)
       leaves do |tape_path|
         tape = relative_path(tape_path, from_wd: true)
         case File.file_grade(tape_path)
@@ -264,10 +265,10 @@ module Bun
         else
           next
         end
-        ct = catalog(catalog_path).time_for(tape)
-        if ct
-          warn "Set catalog time: #{tape} #{ct.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
-          set_catalog_time(tape, ct, :shell=>shell) unless options[:dryrun]
+        cat_entry = cat[tape]
+        if cat_entry
+          warn "Set catalog time: #{tape} #{cat_entry.time.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
+          set_catalog_time(tape, cat_entry, :shell=>shell) unless options[:dryrun]
         elsif options[:remove]
           warn "Remove #{tape} (not in catalog)" unless options[:quiet]
           remove(tape) unless options[:dryrun]
@@ -277,11 +278,12 @@ module Bun
       end
     end
     
-    def set_catalog_time(tape, catalog_time, options={})
+    def set_catalog_time(tape, catalog_entry, options={})
       file = open(tape)
       file = file.unpack
       descr = file.descriptor
-      descr.merge!(:catalog_time=>catalog_time)
+      descr.merge!(:catalog_time=>catalog_entry.time)
+      descr.merge!(:incomplete_file=>true) if catalog_entry.incomplete
       file.write
       timestamp = [descr.catalog_time, descr.file_time].compact.min
       set_timestamp(tape, timestamp, :shell=>options[:shell])

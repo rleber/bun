@@ -4,8 +4,8 @@
 :block_padding_repairs: 3
 :catalog_time: 1978-12-22 00:00:00.000000000 -05:00
 :data_format: :raw
-:decode_time: 2014-01-16 23:40:22.369279000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:decode_time: 2014-01-20 19:39:52.252626000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
 :description: Bernie's Odds and Ends freezefile
 :digest: 0155d8bd75758b61b7a91a4dd4465b0a
 :file_grade: :decoded
@@ -16,8 +16,8 @@
 :tape: ar020.1140
 :tape_size: 14217
 :tape_type: :frozen
-:unpack_time: 2014-01-16 23:34:12.763421000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+:unpack_time: 2014-01-20 19:33:24.245175000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
 :content: ! "33 fass         Thu Jul  6 1978  21:08 *\nHi.  My name is Bernie -- I'm
   the guy that Rohan may have mentioned\nconcerning the tape of the Adventure program.
   \ I picked it up on my\nway through Toronto today (I'm here 'till Sunday from Montreal).

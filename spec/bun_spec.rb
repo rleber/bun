@@ -1133,7 +1133,7 @@ describe Bun::Bot do
       end
       it "should write the proper content" do
         "mixed_grades_decode/fass/idallen/vector/tape.ar003.0698.txt".should match_expected_output_except_for(DECODE_PATTERNS)
-        "mixed_grades_decode/fass/idallen/huffhart/tape.ar003.0701.txt".should match_expected_output_except_for(DECODE_PATTERNS)
+        "mixed_grades_decode/fass/idallen/huffhart/tape.ar003.0701_19761122.txt".should match_expected_output_except_for(DECODE_PATTERNS)
         "mixed_grades_decode/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
             match_expected_output
         "mixed_grades_decode/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DECODE_PATTERNS)
