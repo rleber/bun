@@ -21,6 +21,7 @@ module Bun
           :file_time    => "The date and time of last update of the file (frozen files only)",
           :first_block_size => "The size of the first block in this file (in 36-bit words)",
           :identifier   => "Identifies this file as a bun file",
+          :incomplete_file  => "This file was flagged as incomplete in the catalog",
           :owner        => "The Honeywell username of the person who 'owned' this file",
           :path         => "The relative path of the original file on the Honeywell",
           :shards       => "The description of the shards of a frozen file",

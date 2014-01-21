@@ -1012,8 +1012,22 @@ describe Bun::Bot do
       exec('find data/test/archive/catalog_source -print >output/test_actual/archive_catalog_files.txt')
       'archive_catalog_files.txt'.should match_expected_output
     end
-    it "should change the catalog dates in the catalog" do 
-      # TODO Add a test here
+    %w{ar003.0698.bun  ar003.0701.bun  ar082.0605.bun  ar083.0698.bun}.each do |file|
+      context file do
+        before :all do
+          @catalog_describe_basename = "catalog_describe_#{file}"
+          @catalog_describe_output_file = "output/test_actual/#{@catalog_describe_basename}"
+          exec("rm -rf #{@catalog_describe_output_file}")
+          exec("bun describe data/test/archive/catalog_source/#{file} >#{@catalog_describe_output_file}")
+        end
+        it "should change the catalog dates and incomplete_file fields" do 
+          @catalog_describe_basename.should match_expected_output
+        end
+        after :all do
+          backtrace
+          exec_on_success("rm -rf #{@catalog_describe_output_file}")
+        end
+      end
     end
     after :all do
       backtrace

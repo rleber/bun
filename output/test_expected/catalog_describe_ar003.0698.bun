@@ -1,0 +1,15 @@
+Tape                   ar003.0698
+File                   fass/idallen/vector
+Owner                  fass
+Description            ==>files for idallen
+Catalog Date           1999/01/01
+File Grade             :unpacked
+Size (Words)           2582
+Type                   Text
+Data Format            Raw
+MD5 Digest             9e14 0aad 691e ba04 afdf 22ef 2e33 b575
+Block Count            1
+Block Padding Repairs  0
+First Block Size       2582
+Unpack Time            2014-01-20 19:32:55 -0500
+Unpacked By            Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
