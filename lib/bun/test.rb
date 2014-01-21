@@ -11,6 +11,7 @@ module Bun
     ACTUAL_OUTPUT_DIRECTORY = "output/test_actual"
     EXPECTED_OUTPUT_DIRECTORY = "output/test_expected"
     LAST_OUTPUT_FILE = "#{ENV['HOME']}/.bun_test_actual_output_file"
+    PROJECT_DIRECTORY = Bun.project_path(__FILE__)
     
     class << self
       def all_tests
@@ -25,6 +26,10 @@ module Bun
         test_files = tests.map{|test| File.join(TEST_DIRECTORY, "#{test}_spec.rb") }
         params = options[:params] || {}
         e_param = options[:examples] ? ["-e", options[:examples]] : nil
+        test_files.each do |test_file|
+          expanded_test_file = File.join(PROJECT_DIRECTORY, test_file)
+          stop "!File #{expanded_test_file} does not exist" unless File.exists?(expanded_test_file)
+        end
         cmd_line = ['rspec','-c', '-f', 'd', '-I', '.', e_param, test_files].flatten.compact.shelljoin
         $stderr.puts cmd_line
         system(params, cmd_line)

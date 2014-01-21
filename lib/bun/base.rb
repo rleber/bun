@@ -43,7 +43,7 @@ module Bun
 
     def project_path(path)
       path = File.expand_path(path)
-      if path =~ %r{^(.*bun)/}
+      if path =~ %r{^(.*?bun)/}
         $1
       else
         nil

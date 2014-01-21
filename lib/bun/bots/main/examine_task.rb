@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-desc "examine [OPTIONS] EXAMINATIONS... FILES...", "Analyze the contents of files"
+desc "show [OPTIONS] EXAMINATIONS... FILES...", "Analyze the contents of files"
 option 'asis',    :aliases=>'-a', :type=>'boolean', :desc=>"Do not attempt to decode file"
 # TODO Needs some explanation
 option 'case',    :aliases=>'-c', :type=>'boolean', :desc=>"Case insensitive"
@@ -31,7 +31,7 @@ If more than one EXAMINATION is provided, then they must be separated from the F
 Available formats are: #{Bun::Formatter.valid_formats.join(', ')}
 
 EOT
-def examine(*args)
+def show(*args)
   # Check for separator ('--in') between exams and files
   exams, files = split_arguments_at_separator('--in', *args, assumed_before: 1)
   check_for_unknown_options(*exams, *files)

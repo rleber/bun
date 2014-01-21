@@ -1,6 +1,6 @@
 TODO
 _High Priority_
-Recatalog FASS files
+Change bun examine to bun show
 File::Expression
     Setting of --min (e.g. with chars exam)
     Setting of --case (e.g. with chars exam)

@@ -462,21 +462,21 @@ describe Bun::Bot do
     end
   end
 
-  describe "examine" do
+  describe "show" do
     context "basic tests" do
-      include_examples "command", "examine clean file", "examine --asis clean data/test/clean", "examine_clean"
-      include_examples "command from STDIN", "examine clean file", 
-          "examine --asis clean -", "data/test/clean", "examine_clean"
+      include_examples "command", "show clean file", "show --asis clean data/test/clean", "show_clean"
+      include_examples "command from STDIN", "show clean file", 
+          "show --asis clean -", "data/test/clean", "show_clean"
       
       # Dirty file is just the packed version of ar119.1801
-      include_examples "command", "examine dirty file", "examine --asis clean data/test/dirty", "examine_dirty",
+      include_examples "command", "show dirty file", "show --asis clean data/test/dirty", "show_dirty",
                        :allowed=>[1]
-      include_examples "command", "examine promotes file", 
-        "examine clean data/test/packed_ar003.0698", "examine_clean",
+      include_examples "command", "show promotes file", 
+        "show clean data/test/packed_ar003.0698", "show_clean",
                          :allowed=>[1] # Because we're testing the output; it's more helpful
                                        # to allow a non-zero return code
-      include_examples "command", "examine does not promote file with --asis", 
-        "examine --asis clean data/test/packed_ar003.0698", "examine_dirty",
+      include_examples "command", "show does not promote file with --asis", 
+        "show --asis clean data/test/packed_ar003.0698", "show_dirty",
                          :allowed=>[1]
       after :all do
         backtrace
@@ -489,16 +489,16 @@ describe Bun::Bot do
           @current_exam = exam
           context @current_exam do
             before :all do
-              @examine_result_file = "exam_#{exam}_#{file}"
-              exec("rm -rf output/test_actual/#{@examine_result_file}")
-              exec("bun examine #{exam} --file --raise -j --titles #{TEST_ARCHIVE}/#{file}.bun >output/test_actual/#{@examine_result_file}", :allowed=>[0,1])
+              @show_result_file = "show_#{exam}_#{file}"
+              exec("rm -rf output/test_actual/#{@show_result_file}")
+              exec("bun show #{exam} --file --raise -j --titles #{TEST_ARCHIVE}/#{file}.bun >output/test_actual/#{@show_result_file}", :allowed=>[0,1])
             end
             it "should produce the proper output" do
-              @examine_result_file.should match_expected_output
+              @show_result_file.should match_expected_output
             end
             after :all do
               backtrace
-              exec_on_success("rm -rf output/test_actual/#{@examine_result_file}")
+              exec_on_success("rm -rf output/test_actual/#{@show_result_file}")
             end
           end
         end
