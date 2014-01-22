@@ -10,6 +10,7 @@ module Bun
       attr_accessor :status
       attr_accessor :strict
       attr_reader   :good_blocks
+      attr_reader   :llink_count
       
       def initialize(options={}, &blk)
         super

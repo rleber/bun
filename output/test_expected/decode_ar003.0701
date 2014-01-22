@@ -3,20 +3,21 @@
 :block_count: 1
 :block_padding_repairs: 0
 :catalog_time: 1976-11-22 00:00:00.000000000 -05:00
-:data_format: :raw
-:decode_time: 2014-01-20 20:09:22.744415000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
+:decode_time: 2014-01-21 19:28:49.604144000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
 :description: ==>files for idallen
 :digest: 6dce3a2ecf9675194e0871c1afd37ec2
 :file_grade: :decoded
 :first_block_size: 662
+:llink_count: 2
 :owner: fass
 :path: fass/idallen/huffhart
 :tape: ar003.0701
 :tape_size: 662
 :tape_type: :huffman
-:unpack_time: 2014-01-20 19:32:55.658758000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
+:text_size: 18065
+:unpack_time: 2014-01-21 18:41:24.040851000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
 :content: ! "** ** \n\n \n \n                                       H  A  P  P  Y
   \            V  A  L  E  N  T  I  N  E  S\n  \n  \n                                                        D
   \ A  Y  !\n \n \n \n*****************************************************************************************************************************\n*****************************************************************************************************************************\n*****************************************************************************************************************************\n*****************************************************************************************************************************\n*************************

@@ -20,6 +20,7 @@ option 'usage',   :aliases=>'-U', :type=>'boolean', :desc=>"List usage informati
 option 'unless',  :aliases=>'-u', :type=>'string',  :desc=>"Only show the result for files which do not match this expression"
 option 'value',   :aliases=>'-v', :type=>'string',  :desc=>"Set the return code based on whether the" +
                                                            " result matches this value"
+option 'where',   :aliases=>'-w', :type=>'string',  :desc=>"Synonym for --if"
 long_desc <<-EOT
 Examine the contents or characteristics of files.
 
@@ -40,7 +41,10 @@ def show(*args)
     exit
   end
 
-  if_clause = [(options[:if] ? "(#{options[:if]})" : nil), (options[:unless] ? "!(#{options[:unless]})" : nil)] \
+  if_clause = [
+                (options[:if] ? "(#{options[:if]})" : nil), 
+                (options[:where] ? "(#{options[:where]})" : nil), 
+                (options[:unless] ? "!(#{options[:unless]})" : nil)] \
               .compact.join("&&")
   if_clause = nil if if_clause==''
   format = options[:format].to_sym
@@ -49,6 +53,9 @@ def show(*args)
   
   if options[:inspect]
     puts exams
+    puts "--if #{options[:if]}" if options[:if]
+    puts "--where #{options[:where]}" if options[:where]
+    puts "--unless #{options[:unless]}" if options[:where]
     exit
   end
 
@@ -77,7 +84,11 @@ def show(*args)
     files.each do |file|
       file, shard = Bun::File.get_shard(file)
       options.merge!(shard: shard)
-      next if if_clause && !value_of(if_clause, file, options)
+      if if_clause
+        v = value_of(if_clause, file, options).value.value # value_of returns Wrapper; .value gets ValueWrapper; .value.value gets value
+        # debug "file: #{file}, File.tape_type(file): #{File.tape_type(file).inspect}, v: #{v.inspect}"
+        next unless v
+      end
       last_values = values = exams.map {|exam| value_of(exam, file, options) }
       unless options[:quiet]
         matrixes = values.map{|value| value.to_matrix }
@@ -114,6 +125,6 @@ end
 no_tasks do
   # TODO Opportunity to DRY this out?
   def value_of(expr, file, options={})
-    Bun::File.examination(file, expr, options).value_for_bot(options)
+    Bun::File.examination(file, expr, options).value(options)
   end
 end

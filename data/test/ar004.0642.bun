@@ -2,7 +2,6 @@
 :identifier: Bun
 :block_count: 19
 :block_padding_repairs: 18
-:data_format: :raw
 :description: klisted final copy of fass '77 script
 :digest: 0d3b51d01793316781993754bfd88d2d
 :file_grade: :unpacked
@@ -12,8 +11,8 @@
 :tape: ar004.0642
 :tape_size: 70840
 :tape_type: :text
-:unpack_time: 2014-01-20 19:33:09.879353000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
+:unpack_time: 2014-01-21 18:41:40.179528000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
 :content: !binary |-
   AABA8WAABAAXAAEAKCCRHVG9CRHVG9AAAAAAAAAADcMxhOZzAAAAAAAAAAAA
   AAAAAAF5zMZyNJwOggNZsNJzOhlMggMxpNxhNggMZvOB5EBvMwgMxhOZzEAn

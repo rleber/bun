@@ -2,7 +2,6 @@
 :identifier: Bun
 :block_count: 1
 :block_padding_repairs: 0
-:data_format: :raw
 :description: Frosh issue 1982
 :digest: fed46b50571284cf8df79b1124f04881
 :file_grade: :unpacked
@@ -12,8 +11,8 @@
 :tape: ar077.0633
 :tape_size: 660
 :tape_type: :text
-:unpack_time: 2014-01-20 19:34:20.109234000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
+:unpack_time: 2014-01-21 18:43:03.783037000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
 :content: !binary |-
   AABAKSAABAATABNAJ5CbXPCHCbVq37AAAAAAgAAAACNphOhoNxvN5zAAAAAA
   AAAAAAF5mORvOZoF5mMJzOYgIxyN5zNAgNJzOZ1MogGI5HAyAAAABoAABAEu

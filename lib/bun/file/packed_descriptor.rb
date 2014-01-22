@@ -114,10 +114,6 @@ module Bun
         def file_grade
           :packed
         end
-
-        def data_format
-          :raw
-        end
       end
     end
   end

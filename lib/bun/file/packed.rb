@@ -40,10 +40,7 @@ module Bun
      
       # Convert file from internal Bun binary format to YAML digest
       def to_unpacked_file
-        new_descriptor = data.descriptor.merge(
-                              :data_format=>:raw, 
-                              :tape_type=>data.tape_type,
-                            )
+        new_descriptor = data.descriptor.merge( :tape_type=>data.tape_type )
         tp = File.expand_path(data.tape_path)
         block_padding_repaired_data = Bun.cache(:repaired_data, tp) do
           data.with_block_padding_repaired
@@ -51,7 +48,7 @@ module Bun
         new_descriptor.merge!(
           block_padding_repairs: block_padding_repaired_data.block_padding_repairs,
           block_count:           block_padding_repaired_data.block_count,
-          first_block_size:      block_padding_repaired_data.first_block_size
+          first_block_size:      block_padding_repaired_data.first_block_size,
         )
 
         f = File::Unpacked.create(

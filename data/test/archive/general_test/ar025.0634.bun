@@ -3,7 +3,6 @@
 :block_count: 2
 :block_padding_repairs: 1
 :catalog_time: 1979-04-13 00:00:00.000000000 -05:00
-:data_format: :raw
 :description: ===> Songs from Fass '79 (roff source frz)
 :digest: ed6894b66259a80edc7e598b5cd4cced
 :file_grade: :unpacked
@@ -14,8 +13,8 @@
 :tape: ar025.0634
 :tape_size: 3751
 :tape_type: :frozen
-:unpack_time: 2014-01-20 19:33:26.772598000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
+:unpack_time: 2014-01-21 18:42:00.426667000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
 :shards:
 - :name: opening
   :file_time: 1979-02-13 15:08:55.000000000 -05:00

@@ -2,7 +2,6 @@
 :identifier: Bun
 :block_count: 1
 :block_padding_repairs: 0
-:data_format: :raw
 :description: ''
 :digest: e25194886539e828ba425bee4506e470
 :file_grade: :unpacked
@@ -13,8 +12,8 @@
 :tape: ar119.1124
 :tape_size: 727
 :tape_type: :frozen
-:unpack_time: 2014-01-20 19:36:05.598400000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
+:unpack_time: 2014-01-21 18:45:08.863983000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
 :shards:
 - :name: list
   :file_time: 1980-05-26 13:25:38.000000000 -04:00

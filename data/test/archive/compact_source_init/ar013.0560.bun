@@ -2,7 +2,6 @@
 :identifier: Bun
 :block_count: 12
 :block_padding_repairs: 11
-:data_format: :raw
 :description: ==> frozen fass 1978 script and accessories
 :digest: eb39cb3c6a8dc39ca11c3207ad8b0231
 :file_grade: :unpacked
@@ -13,8 +12,8 @@
 :tape: ar013.0560
 :tape_size: 45351
 :tape_type: :frozen
-:unpack_time: 2014-01-20 19:33:18.753185000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
+:unpack_time: 2014-01-21 18:41:50.843370000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
 :shards:
 - :name: 1-1
   :file_time: 1978-03-01 11:50:49.000000000 -05:00

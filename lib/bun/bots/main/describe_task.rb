@@ -38,7 +38,6 @@ def describe(file)
   push_tbl preamble_table, "File Grade", descriptor.file_grade
   push_tbl preamble_table, "Size (Words)", descriptor.tape_size
   push_tbl preamble_table, "Type", type.to_s.sub(/^./) {|c| c.upcase}
-  push_tbl preamble_table, "Data Format", descriptor.data_format.to_s.sub(/^./) {|c| c.upcase}
   push_tbl preamble_table, "MD5 Digest", descriptor.digest.scan(/..../).join(' ')
   
   (descriptor.fields.map{|f| f.to_sym} - STANDARD_FIELDS).sort_by{|f| f.to_s }.each do |f|

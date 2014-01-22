@@ -250,12 +250,16 @@ module Bun
       end
       
       def to_decoded_hash(options={})
+        llinks = self.llink_count rescue nil # Frozen and huffman files don't have llinks
+        text = decoded_text(options)
         options = options.merge(
-                    content: decoded_text(options), 
-                    file_grade: :decoded,
+                    content:     text, 
+                    file_grade:  :decoded,
                     decode_time: Time.now,
-                    decoded_by:  Bun.expanded_version
+                    decoded_by:  Bun.expanded_version,
+                    text_size:   text.size,
                   )
+        options[:llink_count] = llinks if llinks
         to_hash(options)
       end
       

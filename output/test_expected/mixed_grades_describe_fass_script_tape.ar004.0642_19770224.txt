@@ -6,12 +6,13 @@ Catalog Date           1977/02/24
 File Grade             :decoded
 Size (Words)           70840
 Type                   Text
-Data Format            Raw
 MD5 Digest             d63f 127d 31a5 1764 8d55 8540 d1cc a409
 Block Count            19
 Block Padding Repairs  18
-Decode Time            2014-01-16 23:39:40 -0500
-Decoded By             Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+Decode Time            2014-01-21 18:48:51 -0500
+Decoded By             Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
 First Block Size       3863
-Unpack Time            2014-01-16 23:33:58 -0500
-Unpacked By            Bun version 0.3.0 [feature/expanded_examine_v2:477c53fcf81f97388efda22b43989e350c28afbb]
+Llink Count            20
+Text Size              241204
+Unpack Time            2014-01-21 18:41:40 -0500
+Unpacked By            Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]

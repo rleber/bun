@@ -5,10 +5,9 @@ Description            ==>files for idallen
 File Grade             :unpacked
 Size (Words)           662
 Type                   Huffman
-Data Format            Raw
 MD5 Digest             c432 253b c6b1 94ed ab16 ff86 46d9 8e8d
 Block Count            1
 Block Padding Repairs  0
 First Block Size       662
-Unpack Time            2014-01-20 19:32:55 -0500
-Unpacked By            Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
+Unpack Time            2014-01-21 18:41:24 -0500
+Unpacked By            Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]

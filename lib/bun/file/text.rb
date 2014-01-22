@@ -59,7 +59,6 @@ module Bun
       end
       cache :lines
     
-      # TODO Is this code used?
       # TODO simplify
       def unpack_line(words, line_offset)
         line = ""
@@ -83,6 +82,7 @@ module Bun
         {:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>line_offset+line_length, :content=>line, :raw=>raw_line, :words=>words.at(line_offset+line_length), :descriptor=>descriptor}
       end
       
+      # TODO Is this necessary any more?
       def inspect
         inspect_lines = []
         self.lines.each do |l|

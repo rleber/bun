@@ -1,16 +1,15 @@
 TODO
 _High Priority_
-File::Expression
-    Setting of --min (e.g. with chars exam)
-    Setting of --case (e.g. with chars exam)
-    Syntax for referencing shard data (with index)
+eliminate .value.value problem in expressions: Expression => Wrapper => ValueWrapper
+bun show with examinations with array values don't work, e.g.: bun show 'chars' ~/fass_work/unpacked/ar004.0698.bun
+Is there really any meaningful distinction between field examinations and other examinations?
 More extensions to bun examine
-    Size in llinks -- only for packed or unpacked files
-    Field_names
+    --mark option (e.g. --mark foo saves the value of the expressions in a mark 'foo')
+    Fully qualified path (e.g. for shards in frozen archives)
     Field_values
-    Extended fields (pre-defined, e.g. tape basename, etc.)
-        File name (with subfiles, etc.)
-        File basename
+    shards['shard_name'] should work
+    words(case_insensitive: true) should work
+    chars(min: 5)
     Printer listing
         Largely printable
         Very few large runs
@@ -22,9 +21,10 @@ More extensions to bun examine
         Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
             binary load module
 Multiple output formats for bun examine, et al
-Find duplicates
-    Same file name
-    Absolutely identical
+Bun compare (one file from each of two lists), e.g.
+    bun compare EXAMINATIONS --in FILES... --vs FILES... --where CONDITION
+      e.g. --where 'file1.digest == file2.digest && file1.text != file2.digest'
+Better caching: should be done at the object level, not globally
 bun file editor
     Checkout/checking (or in-place edit)
     Produce multiple synchronized lines
@@ -36,19 +36,6 @@ bun file editor
         decimal
     Look for edit marks (or a separate edit line)
         [...] {...} / \ dddd i
-Should bun find be called bun grep?
-Make catalog :remove the default; rename --keep?
-Implement bun library clean
-    Find duplicates
-        Same file name
-        Same MD5 hash
-        Absolutely identical
-    Remove unclean files
-    Possible --tag option (place a tag saying what happened to files which were removed)
-Implement bun library organize
-    Keep a .bun_spec.yml file in decoded archives showing how the archive is organized?
-    Option to turn off inclusion of file modification date in unpacked or decoded file names
-    Option to turn off resetting file modification dates for unpacked or decoded files
 Allow decoding and baking frozen archives to STDOUT
     Insert separators
         Allow separators to be overridden

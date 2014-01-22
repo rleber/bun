@@ -3,7 +3,6 @@
 :block_count: 16
 :block_padding_repairs: 15
 :catalog_time: 1989-02-28 00:00:00.000000000 -05:00
-:data_format: :raw
 :description: ''
 :digest: 1a9e89355e5243b4686a6abcc2ff156b
 :file_grade: :unpacked
@@ -14,8 +13,8 @@
 :tape: ar145.2699
 :tape_size: 58295
 :tape_type: :frozen
-:unpack_time: 2014-01-20 19:37:28.517881000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
+:unpack_time: 2014-01-21 18:46:46.529729000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
 :shards:
 - :name: '1.1'
   :file_time: 1985-10-02 19:04:31.000000000 -04:00

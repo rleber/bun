@@ -7,14 +7,12 @@ File Time              1981/03/08 20:27:00
 File Grade             :unpacked
 Size (Words)           36457
 Type                   Frozen
-Data Format            Raw
 MD5 Digest             8c8e f1d2 f5b3 ac52 aa1c c592 2970 7d21
 Block Count            10
 Block Padding Repairs  0
 First Block Size       3856
-Incomplete File        true
-Unpack Time            2014-01-20 19:34:43 -0500
-Unpacked By            Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
+Unpack Time            2014-01-21 18:43:31 -0500
+Unpacked By            Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
 
 Shards
   Name          81macros             1-0                  1-1                  1-2                  1-3a

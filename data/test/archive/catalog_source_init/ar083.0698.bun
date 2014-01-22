@@ -2,7 +2,6 @@
 :identifier: Bun
 :block_count: 1
 :block_padding_repairs: 0
-:data_format: :raw
 :description: ==> TROFF source for FASS 1983 Programme
 :digest: eb74bf8edbcf87cc04cf35ed36ec6398
 :file_grade: :unpacked
@@ -12,8 +11,8 @@
 :tape: ar083.0698
 :tape_size: 1628
 :tape_type: :text
-:unpack_time: 2014-01-20 19:34:45.674570000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
+:unpack_time: 2014-01-21 18:43:34.157227000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
 :content: !binary |-
   AABAZaAABAAbABTAK6CcRRCsCcQjBJAAAAAAgAAAAFMxhOZzAAAAAAAAAAAA
   AAAAAAF4xHI4GYvOByN5nORhNptMovMJjOhvORzEA9Ho+EBUKRPIxGEBzN51

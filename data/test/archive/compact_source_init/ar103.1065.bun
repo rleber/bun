@@ -2,7 +2,6 @@
 :identifier: Bun
 :block_count: 1
 :block_padding_repairs: 0
-:data_format: :raw
 :description: ''
 :digest: 3d5760e905b05df74906eb8159836fe8
 :file_grade: :unpacked
@@ -12,8 +11,8 @@
 :tape: ar103.1065
 :tape_size: 1936
 :tape_type: :text
-:unpack_time: 2014-01-20 19:35:15.082409000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
+:unpack_time: 2014-01-21 18:44:08.619766000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
 :content: !binary |-
   AABAeOAABAAPABnAQpCfCTkLCdqPTmAAAAAAkAAAAGNRhM5hORkNxlOQAAAA
   AAAAAAF4uFwvMxhOZzNphMYuOgAAE6AABAE/AAUAIAAAAAAAAAAAAAAAAAAA

@@ -2,7 +2,6 @@
 :identifier: Bun
 :block_count: 1
 :block_padding_repairs: 0
-:data_format: :raw
 :description: ==>files for idallen
 :digest: c432253bc6b194edab16ff8646d98e8d
 :file_grade: :unpacked
@@ -12,8 +11,8 @@
 :tape: ar003.0701
 :tape_size: 662
 :tape_type: :huffman
-:unpack_time: 2014-01-20 19:32:55.658758000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:0bbfd659330220e446eea3ccd28401f797c85714]
+:unpack_time: 2014-01-21 18:41:24.040851000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
 :content: !binary |-
   AABAKVAABAAVAADAK9CQoUsxCQoUsxAAAAAAAABAACMxhOZzAAAAAAAAAAAA
   AAAAAAF5pMhhNhsMpuF5oOpmMxoMJyOggEA9Ho+MxpNhlOYgMxvOQgNJkMJs
