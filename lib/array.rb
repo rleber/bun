@@ -63,8 +63,8 @@ class Array
   #       ["s", "t", "u"]                                      ["s", "t", "u", "",  "" ]
   #
   def matrix_join
+    return self.dup if size == 0 # Deal with the trivial case
     normalized_matrixes = self.map{|matrix| matrix.normalize } # Ensure component matrixes are squared up
-    return normalized_matrixes if normalized_matrixes.size <= 1 # Deal with the trivial cases
     row_counts = normalized_matrixes.map {|matrix| matrix.size }
     column_counts = normalized_matrixes.map {|matrix| matrix.row_sizes.max || 0 }
     result_rows = row_counts.max

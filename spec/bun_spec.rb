@@ -131,6 +131,26 @@ shared_examples "command from STDIN" do |descr, command, input_file, expected_st
   end
 end
 
+def exec_test(descr, command, prefix, options={})
+  context descr do
+    before :all do
+      @output_basename = prefix + "_" + descr.gsub(/\W/,'_').gsub(/_+/,'_')
+      @actual_output_file = File.join('output', 'test_actual', @output_basename)
+      @expected_output_file = File.join('output', 'test_expected', @output_basename)
+      @allowed_codes = options[:allowed] || [0]
+      exec("rm -rf #{@actual_output_file}")
+      exec("bun #{command} >#{@actual_output_file}", allowed: @allowed_codes)
+    end
+    it "should generate the expected output" do
+      @output_basename.should match_expected_output
+    end
+    after :all do 
+      backtrace
+      exec_on_success("rm -rf #{@actual_output_file}")
+    end
+    end
+end
+
 shared_examples "command with file" do |descr, command, expected_stdout_file, output_file, expected_output_file|
   context descr do
     before :all do
@@ -504,26 +524,63 @@ describe Bun::Bot do
         end
       end
     end
+    context "specific tests" do
+      [
+        {
+          title:   "matrix result without file, --titles, or --justify", 
+          command: "show 'chars' data/test/ar003.0698.bun"
+        },
+        {
+          title:   "matrix result with --titles without file or --justify", 
+          command: "show file 'chars' --in data/test/ar003.0698.bun --titles"
+        },
+        {
+          title:   "matrix result --format csv", 
+          command: "show 'chars' data/test/ar003.0698.bun --format csv"
+        },
+        {
+          title:   "multiple files without --titles", 
+          command: "show 'chars' data/test/ar003.0698.bun data/test/ar019.0175.bun"
+        },
+        {
+          title:   "complex formula", 
+          command: "show 'first_block_size*2' data/test/ar003.0698.bun"
+        },
+        {
+          title:   "field", 
+          command: "show digest data/test/ar003.0698.bun"
+        },
+        {
+          title:   "low legibility, not roff", 
+          command: "show legibility roff --in data/test/ar047.1383.bun"
+        },
+        {
+          title:   "text", 
+          command: "show text data/test/ar003.0698.bun"
+        },
+        {
+          title:   "file_path", 
+          command: "show file_path data/test/ar003.0698.bun"
+        },
+        {
+          title:    "tabbed",
+          command: "show tabbed data/test/ar019.0175.bun",
+          allowed: [1]
+        },
+        {
+          title:   "words with min 5", 
+          command: "show 'words(min: 5)' data/test/ar003.0698.bun"
+        },
+      ].each do |test|
+        exec_test(test[:title], test[:command], "show_specific_test", allowed: test[:allowed]||[0])
+      end
+    end
 
-    # TODO Test without file and --title
-    # TODO Test without file, with --title
-    # TODO Test without -j
-    # TODO Test with --format csv
     # TODO Test words with --min 5
     # TODO Test chars with --case
-    # TODO Check return codes from boolean tests
     # TODO Test examining frozen file with shard specifier (e.g. fields, text, times)
-    # TODO Test with multiple files, without --titles
     # TODO Test with invalid test
-    # TODO Test with formula
-    # TODO Test with fields (e.g. digest, block_count)
-    # TODO Test with multiple exams
     # TODO Test with bad formula
-    # TODO Test legibility on a less than 100% legible file
-    # TODO Test roff on a file with no roff
-    # TODO Test tabbed on a file with no tabs
-    # TODO Test reference to text
-    # TODO Test reference to file_path
   end
     
   describe "describe" do

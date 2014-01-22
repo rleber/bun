@@ -1,8 +1,6 @@
 TODO
 _High Priority_
 eliminate .value.value problem in expressions: Expression => Wrapper => ValueWrapper
-bun show with examinations with array values don't work, e.g.: bun show 'chars' ~/fass_work/unpacked/ar004.0698.bun
-Is there really any meaningful distinction between field examinations and other examinations?
 More extensions to bun examine
     --mark option (e.g. --mark foo saves the value of the expressions in a mark 'foo')
     Fully qualified path (e.g. for shards in frozen archives)
@@ -25,6 +23,13 @@ Bun compare (one file from each of two lists), e.g.
     bun compare EXAMINATIONS --in FILES... --vs FILES... --where CONDITION
       e.g. --where 'file1.digest == file2.digest && file1.text != file2.digest'
 Better caching: should be done at the object level, not globally
+Allow decoding and baking frozen archives to STDOUT
+    Insert separators
+        Allow separators to be overridden
+    bun decode should work
+    bun bake should work
+    bun archive decode should work
+    bun archive bake should work
 bun file editor
     Checkout/checking (or in-place edit)
     Produce multiple synchronized lines
@@ -36,13 +41,6 @@ bun file editor
         decimal
     Look for edit marks (or a separate edit line)
         [...] {...} / \ dddd i
-Allow decoding and baking frozen archives to STDOUT
-    Insert separators
-        Allow separators to be overridden
-    bun decode should work
-    bun bake should work
-    bun archive decode should work
-    bun archive bake should work
 Release version 1.0
 Major rewrite:
     All files are just Hashie::Mashes
@@ -56,9 +54,8 @@ Major rewrite:
     No distinction between libraries and archives
         Archives don't care how they're organized
     Simpler model for file promotion, using inheritance
-Alternate data storage formats: raw, binary, octal, hex
+    Is there really any meaningful distinction between field examinations and other examinations?
 Complete tests:
-    archive catalog (check descriptor 'catalog_time' has been changed; test --remove)
     archive compare_dates
     archive pull
     archive text_status

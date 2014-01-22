@@ -79,6 +79,8 @@ def show(*args)
     res
   end.flatten
 
+  exams.unshift('file') if files.size>1 && !exams.include?('file')
+
   last_values = nil
   Formatter.open('-', justify: options[:justify], format: format) do |formatter|
     files.each do |file|

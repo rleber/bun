@@ -1,0 +1,32 @@
+rm -rf output/test_actual/show_specific_test_matrix_result_without_file_titles_or_justify
+bun show 'chars' data/test/ar003.0698.bun >output/test_actual/show_specific_test_matrix_result_without_file_titles_or_justify
+rm -rf output/test_actual/show_specific_test_matrix_result_without_file_titles_or_justify
+rm -rf output/test_actual/show_specific_test_matrix_result_with_titles_without_file_or_justify
+bun show file 'chars' --in data/test/ar003.0698.bun --titles >output/test_actual/show_specific_test_matrix_result_with_titles_without_file_or_justify
+rm -rf output/test_actual/show_specific_test_matrix_result_with_titles_without_file_or_justify
+rm -rf output/test_actual/show_specific_test_matrix_result_format_csv
+bun show 'chars' data/test/ar003.0698.bun --format csv >output/test_actual/show_specific_test_matrix_result_format_csv
+rm -rf output/test_actual/show_specific_test_matrix_result_format_csv
+rm -rf output/test_actual/show_specific_test_multiple_files_without_titles
+bun show 'chars' data/test/ar003.0698.bun data/test/ar019.0175.bun >output/test_actual/show_specific_test_multiple_files_without_titles
+rm -rf output/test_actual/show_specific_test_multiple_files_without_titles
+rm -rf output/test_actual/show_specific_test_complex_formula
+bun show 'first_block_size*2' data/test/ar003.0698.bun >output/test_actual/show_specific_test_complex_formula
+rm -rf output/test_actual/show_specific_test_complex_formula
+rm -rf output/test_actual/show_specific_test_field
+bun show digest data/test/ar003.0698.bun >output/test_actual/show_specific_test_field
+rm -rf output/test_actual/show_specific_test_field
+rm -rf output/test_actual/show_specific_test_low_legibility_not_roff
+bun show legibility roff --in data/test/ar047.1383.bun >output/test_actual/show_specific_test_low_legibility_not_roff
+rm -rf output/test_actual/show_specific_test_low_legibility_not_roff
+rm -rf output/test_actual/show_specific_test_text
+bun show text data/test/ar003.0698.bun >output/test_actual/show_specific_test_text
+rm -rf output/test_actual/show_specific_test_text
+rm -rf output/test_actual/show_specific_test_file_path
+bun show file_path data/test/ar003.0698.bun >output/test_actual/show_specific_test_file_path
+rm -rf output/test_actual/show_specific_test_file_path
+rm -rf output/test_actual/show_specific_test_tabbed
+bun show tabbed data/test/ar019.0175.bun >output/test_actual/show_specific_test_tabbed
+rm -rf output/test_actual/show_specific_test_tabbed
+rm -rf output/test_actual/show_specific_test_words_with_min_5
+bun show 'words(min: 5)' data/test/ar003.0698.bun >output/test_actual/show_specific_test_words_with_min_5

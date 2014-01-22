@@ -123,6 +123,7 @@ def build
   build_file "ar004.0642", "data/test"
   build_file "ar019.0175", "data/test"
   build_file "ar119.1801", "data/test"
+  build_file "ar047.1383", "data/test"
   
   build_standard_directory "data/test/archive/catalog_source_init", :unpacked
   
