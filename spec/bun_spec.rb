@@ -568,18 +568,20 @@ describe Bun::Bot do
           allowed: [1]
         },
         {
-          title:   "words with min 5", 
-          command: "show 'words(min: 5)' data/test/ar003.0698.bun"
+          title:   "words with minimum 5", 
+          command: "show 'words(minimum: 5)' data/test/ar003.0698.bun"
+        },
+        {
+          title:   "case insensitive words", 
+          command: "show 'words(case_insensitive: true)' data/test/ar003.0698.bun"
         },
       ].each do |test|
         exec_test(test[:title], test[:command], "show_specific_test", allowed: test[:allowed]||[0])
       end
     end
-
-    # TODO Test words with --min 5
-    # TODO Test chars with --case
     # TODO Test examining frozen file with shard specifier (e.g. fields, text, times)
-    # TODO Test with invalid test
+    # TODO Test with bad formula
+    # TODO Test with bad exam parameters
     # TODO Test with bad formula
   end
     

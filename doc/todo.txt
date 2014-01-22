@@ -1,13 +1,13 @@
 TODO
 _High Priority_
-eliminate .value.value problem in expressions: Expression => Wrapper => ValueWrapper
+Better error-checking on invoking examinations with options (simplified syntax?)
+Eliminate .value.value problem in expressions: Expression => Wrapper => ValueWrapper
+Document available options to examinations
 More extensions to bun examine
-    --mark option (e.g. --mark foo saves the value of the expressions in a mark 'foo')
+    --mark option (e.g. bun show expressions --mark foo saves the value of the expressions in a mark 'foo')
     Fully qualified path (e.g. for shards in frozen archives)
-    Field_values
+    Field_values (returns array of [field_name, value] pairs)
     shards['shard_name'] should work
-    words(case_insensitive: true) should work
-    chars(min: 5)
     Printer listing
         Largely printable
         Very few large runs
@@ -55,30 +55,18 @@ Major rewrite:
         Archives don't care how they're organized
     Simpler model for file promotion, using inheritance
     Is there really any meaningful distinction between field examinations and other examinations?
+    Collapse archive/library as much as possible
+    Separate bun show logic into a separate class/gem, loosely coupled to File characteristics
+    Separate Slicr gem
+    Separate Bots gem?
 Complete tests:
     archive compare_dates
     archive pull
     archive text_status
     config *
-    library compact (complete tests)
-        For all files:
-            collapse tape names to the oldest if the content is identical
-            collapse tape name entirely if there's only one version
-        For text files:
-            Collapse dates to the oldest, if the content is identical
-            If there's only one date, collapse the date altogether (?)
-            If there's more than one date, collapse the HHMMSS unless the YYMMDD is identical
-        For frozen shards:
-            Above rules apply within a frozen file
-            For frozen files, similar rules apply:
-                Collapse dates to the oldest, if the content is identical
-                If there's only one date, collapse the date altogether
-                If there's more than one date, collapse the HHMMSS unless the YYMMDD is identical
     library classify
-    library put
-    library push
+    archive tar
 Create bun library (or archive) push
-Combine archive, library
 Document new process: pull, unpack, catalog, decode, find, list/describe, clean, organize, extract, push
 Check out lib/clean.rb
 Implement interactive (or stream) editor:

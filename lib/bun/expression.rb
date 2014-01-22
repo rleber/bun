@@ -49,11 +49,15 @@ module Bun
       # end
     
       def method_missing(name, *args, &blk)
-        raise NoMethodError, "Method #{name} not defined" if args.size>0 || block_given?
         if f.has_field?(name)
+          raise NoMethodError, "Method #{name} not defined" if args.size>0 || block_given?
           f[name]
         elsif e.has_exam?(name)
-          e[name]
+          raise NoMethodError, "Method #{name} not defined" if args.size>1 || block_given?
+          options = args[0] || {}
+          exam = e[name]
+          options.each {|key, value| exam.send("#{key}=", value) }
+          exam
         else
           raise NoMethodError, "Method #{name} not defined"
         end
@@ -103,8 +107,8 @@ module Bun
           String::Examination.exams.include?(name.to_s)
         end
       
-        def [](analysis)
-          at(analysis)
+        def [](analysis, options={})
+          at(analysis, options)
         end
       end
     end
