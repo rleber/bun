@@ -12,7 +12,6 @@ module Bun
           :catalog_time => "The date and time of last update of the file (per the archive index)",
           :content      => "The content of this file (in external formats only)",
           :data         => "The content of this file in binary form",
-          :data_format  => "The format of the internal data (e.g. :raw) OBSOLETE", # TODO Remove this
           :decode_time  => "The date and time at which this file was decoded",
           :decoded_by   => "An identifier of the version of the bun software that decoded this file",
           :description  => "Description of file (from Honeywell archive)",
