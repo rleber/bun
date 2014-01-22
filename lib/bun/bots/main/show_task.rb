@@ -128,5 +128,7 @@ no_tasks do
   # TODO Opportunity to DRY this out?
   def value_of(expr, file, options={})
     Bun::File.examination(file, expr, options).value(options)
+  rescue Bun::Expression::EvaluationError => e 
+    stop "!Bad expression: #{e}"
   end
 end

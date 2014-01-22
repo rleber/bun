@@ -6,6 +6,9 @@ require 'lib/examination/wrapper'
 module Bun
   class Expression
     class EvaluationError < RuntimeError; end
+    class EvaluationExpressionError < EvaluationError; end
+    class EvaluationSyntaxError < EvaluationError; end
+    class EvaluationParameterError < EvaluationError; end
 
     class Context
       # Context for invocation of expressions in bun examine.
@@ -56,7 +59,13 @@ module Bun
           raise NoMethodError, "Method #{name} not defined" if args.size>1 || block_given?
           options = args[0] || {}
           exam = e[name]
-          options.each {|key, value| exam.send("#{key}=", value) }
+          options.each do |key, value|
+            begin
+              exam.send("#{key}=", value)
+            rescue NoMethodError
+              raise EvaluationParameterError, "Examination #{name.inspect} does not recognize parameter #{key.inspect}"
+            end
+          end
           exam
         else
           raise NoMethodError, "Method #{name} not defined"
@@ -132,7 +141,7 @@ module Bun
           raise EvaluationError, err.to_s
         end
       rescue SyntaxError => err # Blanket rescue doesn't trap syntax errors
-        raise EvaluationError, err.to_s
+        raise EvaluationSyntaxError, err.to_s
       end
       String::Examination::Wrapper.wrap(value)
     end

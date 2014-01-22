@@ -1,13 +1,17 @@
 TODO
 _High Priority_
-Better error-checking on invoking examinations with options (simplified syntax?)
-Eliminate .value.value problem in expressions: Expression => Wrapper => ValueWrapper
+exam(:help=>true) should show exam help
+exam(:foo) should be equivalent to exam(:foo=>true)
 Document available options to examinations
+bun examinations should have a --long option: show examination options, if any
+shards['shard_name'] should work
+Change tape_type to format throughout (or bun_format, orginal_format, storage_format, as, or stored_as?)
+Change file_grade to grade throughout (or format?)
+Eliminate .value.value problem in expressions: Expression => Wrapper => ValueWrapper
 More extensions to bun examine
     --mark option (e.g. bun show expressions --mark foo saves the value of the expressions in a mark 'foo')
     Fully qualified path (e.g. for shards in frozen archives)
     Field_values (returns array of [field_name, value] pairs)
-    shards['shard_name'] should work
     Printer listing
         Largely printable
         Very few large runs

@@ -138,8 +138,14 @@ def exec_test(descr, command, prefix, options={})
       @actual_output_file = File.join('output', 'test_actual', @output_basename)
       @expected_output_file = File.join('output', 'test_expected', @output_basename)
       @allowed_codes = options[:allowed] || [0]
+      @allowed_codes << 1 if options[:fail]
       exec("rm -rf #{@actual_output_file}")
-      exec("bun #{command} >#{@actual_output_file}", allowed: @allowed_codes)
+      exec("bun #{command} >#{@actual_output_file} 2>&1", allowed: @allowed_codes)
+    end
+    if options[:fail]
+      it "should fail" do
+        $?.exitstatus.should == 1
+      end
     end
     it "should generate the expected output" do
       @output_basename.should match_expected_output
@@ -575,14 +581,59 @@ describe Bun::Bot do
           title:   "case insensitive words", 
           command: "show 'words(case_insensitive: true)' data/test/ar003.0698.bun"
         },
+        {
+          title:   "inspect frozen file shards",
+          command: "show 'shards.inspect' data/test/ar019.0175.bun"
+        },
+        {
+          title:   "show second shard name",
+          command: "show 'shards[1][:name]' data/test/ar019.0175.bun"
+        },
+        # {
+        #   title:   "show second shard time, indexed by name",
+        #   command: "show 'shards[\"eclipse\"][:shard_time]' data/test/ar019.0175.bun"
+        # },
+        # {
+        #   title:   "show fields from file with specified shard number",
+        #   command: "show fields data/test/ar019.0175.bun[+2]"
+        # },
+        # {
+        #   title:   "show field from file with specified shard number",
+        #   command: "show 'shard_name' data/test/ar019.0175.bun[+2]"
+        # },
+        # {
+        #   title:   "show field from file with specified shard name",
+        #   command: "show 'shard_start' data/test/ar019.0175.bun[eclipse]"
+        # },
+        # {
+        #   title:   "show text from file with specified shard name",
+        #   command: "show text data/test/ar019.0175.bun[eclipse]"
+        # },
+        {
+          title:   "show bad field or exam",
+          command: "show foo data/test/ar019.0175.bun[eclipse]",
+          fail:    true
+        },
+        {
+          title:   "show bad exam parameters",
+          command: "show 'words(:foo=>true)' data/test/ar019.0175.bun[eclipse]",
+          fail:    true
+        },
+        {
+          title:   "show bad formula",
+          command: "show '2*' data/test/ar019.0175.bun[eclipse]",
+          fail:    true
+        },
       ].each do |test|
-        exec_test(test[:title], test[:command], "show_specific_test", allowed: test[:allowed]||[0])
+        exec_test(
+          test[:title], 
+          test[:command], 
+          "show_specific_test", 
+          allowed: test[:allowed]||[0],
+          fail: test[:fail]
+        )
       end
     end
-    # TODO Test examining frozen file with shard specifier (e.g. fields, text, times)
-    # TODO Test with bad formula
-    # TODO Test with bad exam parameters
-    # TODO Test with bad formula
   end
     
   describe "describe" do
