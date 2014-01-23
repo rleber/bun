@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-desc "fetch [STEPS...]", "Process an archive, start to finish"
+desc "process [STEPS...]", "Process an archive, start to finish"
 option "announce", :aliases=>'-a', :type=>'boolean',  :desc=>"Announce each step of the process"
 option "catalog",  :aliases=>'-c', :type=>'string',   :desc=>"Location of the catalog listing"
 option "source",   :aliases=>'-s', :type=>'string',   :desc=>"Location of the original archive"
@@ -34,7 +34,7 @@ Some convenience abbreviations are allowed:
     xxx...yyy                         Steps xxx to the step before yyy
 EOT
 long_desc DESC_TEXT.freeze_for_thor
-def fetch(*steps)
+def process(*steps)
   check_for_unknown_options(*steps)
   if options[:steps]
     puts Bun::Archive.fetch_steps

@@ -21,9 +21,9 @@ module Bun
         Archive::Enumerator
       end
       
-      FETCH_STEPS = %w{pull unpack catalog decode compress bake tests}
-      def fetch_steps
-        FETCH_STEPS
+      PROCESS_STEPS = %w{pull unpack catalog decode compress bake tests}
+      def process_steps
+        PROCESS_STEPS
       end
 
       # Steps:
@@ -52,7 +52,7 @@ module Bun
       #   :links     Prefix pattern for symlink names
       #   :tests     Boolean: rebuild test cases?
       #   :to        Directory to output archives to
-      def fetch(*args)
+      def process(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         stages = %w{packed unpacked cataloged decoded compressed baked compressed_baked}
         base_directory = options[:to]
@@ -62,7 +62,7 @@ module Bun
           @directories[stage.to_sym] = File.expand_path(File.join(base_directory, stage))
           @symlinks[stage.to_sym] = options[:links] + '_' + stage
         end
-        process_steps(*args, options).each do |step|
+        do_process_steps(*args, options).each do |step|
           case step
           when 'pull'
             warn "Pull files from the original archive" if options[:announce]
@@ -111,10 +111,10 @@ module Bun
         end
       end
 
-      def process_steps(*args)
+      def do_process_steps(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         test = options[:tests]
-        all_steps = FETCH_STEPS + %w{all}
+        all_steps = PROCESS_STEPS + %w{all}
 
         # Convert all steps to lowercase, unabbreviated
         args = args.map do |orig_arg|
@@ -137,21 +137,21 @@ module Bun
           when '..all', 'all..', /^not[-_]?all/
             raise InvalidStep, "Step #{arg} is not allowed"
           when 'all'
-            ary += FETCH_STEPS
+            ary += PROCESS_STEPS
           when /^not[-_]?(\w+)$/
             ary -= [$1]
           when /^(\w*)(\.\.\.?)(\w*)$/
-            ix1 = $1=='' ? 0 : FETCH_STEPS.index($1)
+            ix1 = $1=='' ? 0 : PROCESS_STEPS.index($1)
             raise InvalidStep, "Unknown process step #{$1}" unless ix1
-            ix2 = $3=='' ? -1 : FETCH_STEPS.index($3)
+            ix2 = $3=='' ? -1 : PROCESS_STEPS.index($3)
             raise InvalidStep, "Unknown process step #{$2}" unless ix2
             if $2 == '..' || ix2 == -1
-              ary += FETCH_STEPS[ix1..ix2]
+              ary += PROCESS_STEPS[ix1..ix2]
             else
-              ary += FETCH_STEPS[ix1...ix2]
+              ary += PROCESS_STEPS[ix1...ix2]
             end
           else
-            raise InvalidStep, "Unknown process step #{arg}" unless FETCH_STEPS.index(arg)
+            raise InvalidStep, "Unknown process step #{arg}" unless PROCESS_STEPS.index(arg)
             ary << arg
           end
           ary
@@ -161,7 +161,7 @@ module Bun
                                           # This syntax allows process --tests all
         steps = steps.uniq
         index = 0
-        step_numbers = FETCH_STEPS.inject({}) do |hsh, step|
+        step_numbers = PROCESS_STEPS.inject({}) do |hsh, step|
           hsh[step] = index
           index += 1
           hsh
