@@ -1,8 +1,5 @@
 TODO
 _High Priority_
-exam(:foo) should be equivalent to exam(:foo=>true)
-Document available options to examinations
-bun examinations should have a --long option: show examination options, if any
 shards['shard_name'] should work
 Create watbun pull, process (or fetch)
 Change archive fetch to archive process (don't forget to change fass)

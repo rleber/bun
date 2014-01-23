@@ -6,6 +6,9 @@ require 'lib/bun/formatter'
 desc "examinations PATTERN", "List the available examinations for files"
 option "long",    :aliases=>'-l', :type=>'boolean', :desc=>'Include descriptions'
 option "options", :aliases=>'-o', :type=>'boolean', :desc=>'Show options usage information for examinations'
+long_desc <<-EOT
+PATTERN is any valid Ruby regular expression, e.g. examinations "^.*foo"
+EOT
 def examinations(pattern='.*')
   regex = %r{#{pattern}}i
   exams = String::Examination.exams.select {|name| name =~ regex }
