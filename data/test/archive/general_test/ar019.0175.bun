@@ -5,16 +5,16 @@
 :catalog_time: 1978-11-08 00:00:00.000000000 -05:00
 :description: ==> Total Eclipse Episode 6 - CKMS Radio Theatre
 :digest: befdfb3812c8d797ba6b31450806b2f5
-:format: :unpacked
 :file_time: 1978-11-08 14:15:17.000000000 -05:00
 :first_block_size: 3867
+:format: :unpacked
 :owner: fass
 :path: fass/totleclips.f
 :tape: ar019.0175
 :tape_size: 7228
 :tape_type: :frozen
-:unpack_time: 2014-01-21 18:41:52.893666000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+:unpack_time: 2014-01-23 09:12:19.224845000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
 :shards:
 - :name: temacro
   :file_time: 1978-11-08 14:15:17.000000000 -05:00

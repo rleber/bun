@@ -4,15 +4,15 @@
 :block_padding_repairs: 0
 :description: ==> Eric Siegerman Catalog, last touched in June 1980
 :digest: 57a83bf0f79e5d6b4e3a788d90b8d037
-:format: :unpacked
 :first_block_size: 670
+:format: :unpacked
 :owner: fass
 :path: fass/eksiegerman/pause
 :tape: ar047.1383
 :tape_size: 670
 :tape_type: :text
-:unpack_time: 2014-01-21 18:42:35.071103000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+:unpack_time: 2014-01-23 09:13:06.210883000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
 :content: !binary |-
   AABAKdAABAAeAAvAVnCYB+yNCXPCC0AAAAAAgAAAACMxhOZzAAAAAAAAAAAA
   AAAAAAF5lNZzNJlM5lORtMJuF5wMJ1OZlEA9Ho+EBFORpMYgKZpMpnMpyNph

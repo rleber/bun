@@ -4,15 +4,15 @@
 :block_padding_repairs: 0
 :description: ''
 :digest: de66fa4b8e9057abf56a1249efa0be03
-:format: :unpacked
 :first_block_size: 3854
+:format: :unpacked
 :owner: fass
 :path: fass/sequence
 :tape: ar010.0006
 :tape_size: 5790
 :tape_type: :text
-:unpack_time: 2014-01-21 18:41:45.233067000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+:unpack_time: 2014-01-23 09:12:10.849619000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
 :content: !binary |-
   AABA8NAABAAOAAKAAGCSk9pdCSk9pdAAAAAAAAAAASMxhOZzAAAAAAAAAAAA
   AAAAAAF5zMpxOplNxjMoAAAAAABAExAAUAIAAAAAAAAAAAAAAAAAAAAAAAAA

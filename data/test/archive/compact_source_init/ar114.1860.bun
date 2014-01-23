@@ -4,16 +4,16 @@
 :block_padding_repairs: 0
 :description: ''
 :digest: 201ea0b6bc678a2e5ca1274726a6c584
-:format: :unpacked
 :file_time: 1980-05-26 13:32:47.000000000 -04:00
 :first_block_size: 973
+:format: :unpacked
 :owner: eksiegerman
 :path: eksiegerman/fass.f
 :tape: ar114.1860
 :tape_size: 727
 :tape_type: :frozen
-:unpack_time: 2014-01-21 18:44:35.360820000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+:unpack_time: 2014-01-23 09:15:16.337767000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
 :shards:
 - :name: list
   :file_time: 1980-05-26 13:25:38.000000000 -04:00

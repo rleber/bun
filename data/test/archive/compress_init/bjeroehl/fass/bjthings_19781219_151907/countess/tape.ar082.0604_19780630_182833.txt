@@ -3,22 +3,21 @@
 :block_count: 4
 :block_padding_repairs: 3
 :catalog_time: 1982-12-22 00:00:00.000000000 -05:00
-:decode_time: 2014-01-21 18:54:53.471021000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+:decode_time: 2014-01-23 09:25:45.884406000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
 :description: ''
 :digest: 112d684f1529592d2b428f06d7949a4e
-:format: :decoded
 :file_time: 1978-12-19 15:19:07.000000000 -05:00
 :first_block_size: 3855
-:llink_count: 
+:format: :decoded
 :owner: bjeroehl
 :path: bjeroehl/fass/bjthings
 :tape: ar082.0604
 :tape_size: 14207
 :tape_type: :frozen
 :text_size: 1974
-:unpack_time: 2014-01-21 18:43:28.371960000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+:unpack_time: 2014-01-23 09:14:04.690268000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
 :content: ! "Greetings once again, Countess Katya!\n     The script Mr. Lee refers
   to is at least two or three years old.  It is \nneither this past year's show, nor
   (I suspect) the previous year's.  As you\nmay (or may not) recall, this past year's

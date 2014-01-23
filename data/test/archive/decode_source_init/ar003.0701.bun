@@ -5,15 +5,15 @@
 :catalog_time: 1976-11-22 00:00:00.000000000 -05:00
 :description: ==>files for idallen
 :digest: c432253bc6b194edab16ff8646d98e8d
-:format: :unpacked
 :first_block_size: 662
+:format: :unpacked
 :owner: fass
 :path: fass/idallen/huffhart
 :tape: ar003.0701
 :tape_size: 662
 :tape_type: :huffman
-:unpack_time: 2014-01-21 18:41:24.040851000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+:unpack_time: 2014-01-23 09:11:49.277408000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
 :content: !binary |-
   AABAKVAABAAVAADAK9CQoUsxCQoUsxAAAAAAAABAACMxhOZzAAAAAAAAAAAA
   AAAAAAF5pMhhNhsMpuF5oOpmMxoMJyOggEA9Ho+MxpNhlOYgMxvOQgNJkMJs

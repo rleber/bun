@@ -416,12 +416,12 @@ module Bun
               shard_name = descr.name
               warn "Decoding #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
               timestamp = file.descriptor.timestamp
-              File.join(to_path, decode_path(file.path, timestamp), shard_name,
+              File.join(to_path, decode_path(file.path, timestamp), shard_name.sub(/\.+$/,''),
                       decode_tapename(tape, descr.file_time))
             when :text, :huffman
               warn "Decoding #{tape}" if options[:dryrun] || !options[:quiet]
               timestamp = file.descriptor.timestamp
-              File.join(to_path, file.path, decode_tapename(tape, timestamp))
+              File.join(to_path, file.path.sub(/\.+$/,''), decode_tapename(tape, timestamp))
             else
               warn "Skipping #{tape}: Unknown type (#{typ})" if options[:dryrun] || !options[:quiet]
               nil # Force skip file
@@ -440,7 +440,7 @@ module Bun
     EXTRACT_TAPE_SUFFIX = '.txt'
 
     def decode_path(path, date)
-      path = path.sub(/#{DEFAULT_UNPACKED_FILE_EXTENSION}$/,'')
+      path = path.sub(/#{DEFAULT_UNPACKED_FILE_EXTENSION}$/,'').sub(/\.+$/,'')
       if date
         date_to_s = date.strftime(EXTRACT_DATE_FORMAT)
         date_to_s = $1 if date_to_s =~ /^(.*)_000000$/

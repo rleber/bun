@@ -5,16 +5,16 @@
 :catalog_time: 1989-02-28 00:00:00.000000000 -05:00
 :description: ''
 :digest: 1a9e89355e5243b4686a6abcc2ff156b
-:format: :unpacked
 :file_time: 1985-10-02 19:04:31.000000000 -04:00
 :first_block_size: 3855
+:format: :unpacked
 :owner: jagardner
 :path: jagardner/fass/1979.f
 :tape: ar145.2699
 :tape_size: 58295
 :tape_type: :frozen
-:unpack_time: 2014-01-21 18:46:46.529729000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+:unpack_time: 2014-01-23 09:17:31.055987000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
 :shards:
 - :name: '1.1'
   :file_time: 1985-10-02 19:04:31.000000000 -04:00

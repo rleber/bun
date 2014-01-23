@@ -161,7 +161,10 @@ module Bun
       if f.last.is_a?(Hash)
         options = f.pop
       end
-      options.merge!(:relative_to=>File.expand_path(at)) unless options[:relative_to]
+      unless options[:relative_to]
+        base = File.directory?(at) ? at : File.dirname(at)
+        options.merge!(:relative_to=>File.expand_path(base)) 
+      end
       File.relative_path(*f, options)
     end
     

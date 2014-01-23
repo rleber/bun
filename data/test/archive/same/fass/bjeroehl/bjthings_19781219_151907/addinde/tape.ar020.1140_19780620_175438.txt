@@ -3,22 +3,21 @@
 :block_count: 4
 :block_padding_repairs: 3
 :catalog_time: 1978-12-22 00:00:00.000000000 -05:00
-:decode_time: 2014-01-21 18:49:48.057359000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+:decode_time: 2014-01-23 09:20:30.060099000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
 :description: Bernie's Odds and Ends freezefile
 :digest: 008c0d5eda808207c7ecc39efaeca09d
-:format: :decoded
 :file_time: 1978-12-19 15:19:07.000000000 -05:00
 :first_block_size: 3865
-:llink_count: 
+:format: :decoded
 :owner: fass
 :path: fass/bjeroehl/bjthings
 :tape: ar020.1140
 :tape_size: 14217
 :tape_type: :frozen
 :text_size: 2630
-:unpack_time: 2014-01-21 18:41:57.358320000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+:unpack_time: 2014-01-23 09:12:24.466776000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
 :content: ! 'copy fass/addinde to at:t0(ebcdic,fb=80,blksize=800)
 
   copy fass/bjeroehl/assign5;2.1 to at:t0(ebcdic,fb=80,blksize=800)

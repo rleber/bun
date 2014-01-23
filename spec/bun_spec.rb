@@ -1131,7 +1131,7 @@ describe Bun::Bot do
           exec("bun describe data/test/archive/catalog_source/#{file} >#{@catalog_describe_output_file}")
         end
         it "should change the catalog dates and incomplete_file fields" do 
-          @catalog_describe_basename.should match_expected_output
+          @catalog_describe_basename.should match_expected_output_except_for(DESCRIBE_PATTERNS)
         end
         after :all do
           backtrace

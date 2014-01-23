@@ -3,12 +3,12 @@
 :block_count: 1
 :block_padding_repairs: 0
 :catalog_time: 1977-02-10 00:00:00.000000000 -05:00
-:decode_time: 2014-01-21 18:48:48.325906000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+:decode_time: 2014-01-23 09:19:30.022111000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
 :description: ==> star travesty script 1977 (to be roffed)
 :digest: 2f51bd97948363e796b8fa8c1227425f
-:format: :decoded
 :first_block_size: 346
+:format: :decoded
 :llink_count: 2
 :owner: fass
 :path: fass/one/zero
@@ -16,8 +16,8 @@
 :tape_size: 346
 :tape_type: :text
 :text_size: 314
-:unpack_time: 2014-01-21 18:41:31.972192000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+:unpack_time: 2014-01-23 09:11:57.770422000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
 :content: ! ".so fass/fasshole\n.he 'FASS'- % -'ACT I SCENE 0'\n.FO 'ACT I SCENE 0''FASS'\nAct
   1 Scene 0\n\n(AN EXTENDED ROUTINE BEFORE THE OPENING OF THE SHOW - A PERSON\nAPPEARS
   ON STAGE GIVING THE IMPRESSION THAT HE HAS AN ANNOUNCEMENT \nTO MAKE - WHEN HE HAS
