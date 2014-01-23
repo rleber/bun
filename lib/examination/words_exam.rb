@@ -12,6 +12,8 @@ class String
     class Words < Runs
       attr_accessor :case_insensitive
       
+      option "case_insensitive", :desc=>"Ignore upper and lower case"
+
       def self.description
         "Count words"
       end

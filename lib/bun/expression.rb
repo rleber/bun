@@ -59,6 +59,7 @@ module Bun
           raise NoMethodError, "Method #{name} not defined" if args.size>1 || block_given?
           options = args[0] || {}
           exam = e[name]
+          options = {options=>true} if options.is_a?(Symbol)
           options.each do |key, value|
             begin
               exam.send("#{key}=", value)

@@ -21,18 +21,31 @@ module Bun
 
       def open(file_name, options={})
         formatter = new(file_name, options)
-        yield(formatter)
-      ensure
-        formatter.close
+        if block_given?
+          begin
+            yield(formatter)
+          ensure
+            formatter.close
+          end
+        else
+          formatter
+        end
       end
     end
 
-    attr_reader :file_name, :file, :format, :justify, :shell, :buffer, :count
+    attr_reader :file_name, :file, :format, :justify, :shell, :buffer, :count, :titles
     attr_accessor :right_justified_columns
 
     def initialize(file_name, options={})
       @file_name = file_name
-      @file = file_name == '-' ? $stdout : File.open(file_name, 'w')
+      @file = case file_name
+      when nil
+        nil
+      when '-'
+        $stdout
+      else 
+        File.open(file_name, 'w')
+      end
       @format = options[:format] || DEFAULT_FORMAT
       @justify = options[:justify]
       @right_justified_columns = options[:right_justified_columns]
@@ -45,10 +58,11 @@ module Bun
     def close
       finish
       @buffer.each {|row| write_row(row)}
-      @file.close unless file_name == '-'
+      @file.close if @file && file_name != '-'
     end
 
     def titles=(row)
+      return unless row
       raise "Can't reset titles" if @titles
       raise "Have already output rows; can't set titles now" if !justify && count>0
       @titles = row
@@ -69,6 +83,7 @@ module Bun
       end
       self # For chaining
     end
+    alias_method :format_row, :<<
 
     def format_rows(rows)
       rows.each {|row| self<<row }
@@ -98,7 +113,7 @@ module Bun
     end
 
     def write(text)
-      file.puts text
+      file.puts text if file
     end
   end
 end

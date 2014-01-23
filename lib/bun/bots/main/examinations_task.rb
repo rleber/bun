@@ -3,15 +3,24 @@
 
 require 'lib/bun/formatter'
 
-desc "examinations", "List the available examinations for files"
-option "long", :aliases=>'-l', :type=>'boolean', :desc=>'Include descriptions'
-def examinations
-  if options[:long]
-    Formatter.open('-', justify: true) do |formatter|
-      formatter.titles = %w{Examination Description}
-      formatter.format_rows String::Examination.exam_definitions
+desc "examinations PATTERN", "List the available examinations for files"
+option "long",    :aliases=>'-l', :type=>'boolean', :desc=>'Include descriptions'
+option "options", :aliases=>'-o', :type=>'boolean', :desc=>'Show options usage information for examinations'
+def examinations(pattern='.*')
+  regex = %r{#{pattern}}i
+  exams = String::Examination.exams.select {|name| name =~ regex }
+  rows = exams.map do |exam|
+    options[:long] ? String::Examination.exam_definitions.find {|name, defn| name == exam } : [exam]
+  end
+  Formatter.open("-", justify: true) do |usage_formatter|
+    usage_formatter.titles = %w{Examination Description} if options[:long]
+    rows.each do |row|
+      usage_formatter << row
+      next if !options[:options]
+      exam_class = String::Examination.exam_class(row[0])
+      exam_class.option_usage.each do |usage_defn|
+        usage_formatter << ["  "+usage_defn[:name], "  "+usage_defn[:desc]]
+      end
     end
-  else
-    puts String::Examination.exams
   end
 end

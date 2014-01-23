@@ -12,6 +12,8 @@ class String
     class Runs < CountTable
       attr_accessor :case_insensitive
 
+      option "case_insensitive", :desc=>"Ignore upper and lower case"
+
       def self.description
         "Count runs of word characters"
       end

@@ -49,17 +49,49 @@ class String
       attr_accessor :options
       attr_reader :attachments
 
-      def self.result_class
-        Result
-      end
-      
-      # Should be overridden in subclasses
-      def self.description
-      end
-      
-      # Default; may be overridden in subclasses
-      def self.justification
-        :left
+      class << self
+
+        def result_class
+          Result
+        end
+        
+        # Should be overridden in subclasses
+        def description
+        end
+
+        def option_definitions
+          @option_definitions ||= []
+        end
+
+        def option_usage
+          superclass_usage = super rescue []
+          superclass_usage + option_definitions
+        end
+
+        def option_help
+            option_usage.map{|hash| [hash[:name], hash[:desc]].join('  ') }
+        end
+
+        def option(name, options={})
+          option_definitions
+          @option_definitions << {name: name}.merge(options)
+        end
+
+        def help
+          text = description || ""
+          options = option_usage
+          if options
+            text += "\n\n" unless text == ""
+            text += "Options\n"
+            text += option_help.join("\n")
+          end
+          help
+        end
+        
+        # Default; may be overridden in subclasses
+        def justification
+          :left
+        end
       end
       
       def description
@@ -120,8 +152,12 @@ class String
       end
       
       def value
-        self.value = make_value(analysis) unless @value
-        @value
+        if help
+          self.class.help_text
+        else
+          self.value = make_value(analysis) unless @value
+          @value
+        end
       end
       
       def value=(x)

@@ -101,6 +101,7 @@ class String
       end
       
       attr_accessor :minimum
+      option "minimum", :desc=>"Only include occurrences with at least this minimum coun"
 
       def categories
         missing_method :categories
