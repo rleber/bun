@@ -3,7 +3,7 @@ _High Priority_
 shards['shard_name'] should work
 Create watbun pull, process (or fetch)
 Change archive fetch to archive process (don't forget to change fass)
-Change tape_type to format throughout (or bun_format, orginal_format, storage_format, as, or stored_as?)
+Change tape_type to format throughout (or bun_format, original_format, storage_format, as, or stored_as?)
 Change file_grade to grade throughout (or format?)
 Eliminate .value.value problem in expressions: Expression => Wrapper => ValueWrapper
 More extensions to bun examine
