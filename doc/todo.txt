@@ -1,6 +1,5 @@
 TODO
 _High Priority_
-exam(:help=>true) should show exam help
 exam(:foo) should be equivalent to exam(:foo=>true)
 Document available options to examinations
 bun examinations should have a --long option: show examination options, if any

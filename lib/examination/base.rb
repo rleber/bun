@@ -156,12 +156,8 @@ class String
       end
       
       def value
-        if help
-          self.class.help_text
-        else
-          self.value = make_value(analysis) unless @value
-          @value
-        end
+        self.value = make_value(analysis) unless @value
+        @value
       end
       
       def value=(x)
