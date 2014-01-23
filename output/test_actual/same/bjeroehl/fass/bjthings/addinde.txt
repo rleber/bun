@@ -12,7 +12,7 @@
 :path: bjeroehl/fass/bjthings
 :tape: ar082.0604
 :tape_size: 14207
-:tape_type: :frozen
+:type: :frozen
 :unpack_time: 2014-01-15 17:42:11.227851000 -05:00
 :unpacked_by: Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]
 :content: ! 'copy fass/addinde to at:t0(ebcdic,fb=80,blksize=800)

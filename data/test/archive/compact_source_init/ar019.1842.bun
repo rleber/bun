@@ -11,9 +11,9 @@
 :path: fass/totleclips.f
 :tape: ar019.1842
 :tape_size: 7227
-:tape_type: :frozen
-:unpack_time: 2014-01-23 09:12:23.256960000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
+:type: :frozen
+:unpack_time: 2014-01-23 13:31:25.319138000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
 :shards:
 - :name: eclipse
   :file_time: 1978-11-20 10:22:31.000000000 -05:00

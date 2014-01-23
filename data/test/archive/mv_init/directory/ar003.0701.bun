@@ -11,9 +11,9 @@
 :path: fass/idallen/huffhart
 :tape: ar003.0701
 :tape_size: 662
-:tape_type: :huffman
-:unpack_time: 2014-01-23 09:11:49.277408000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
+:type: :huffman
+:unpack_time: 2014-01-23 13:30:53.298773000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
 :content: !binary |-
   AABAKVAABAAVAADAK9CQoUsxCQoUsxAAAAAAAABAACMxhOZzAAAAAAAAAAAA
   AAAAAAF5pMhhNhsMpuF5oOpmMxoMJyOggEA9Ho+MxpNhlOYgMxvOQgNJkMJs

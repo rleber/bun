@@ -8,7 +8,7 @@
 :path: fass/script
 :tape: ar004.0642
 :tape_size: 70840
-:tape_type: :text
+:type: :text
 :unpack_time: 2014-01-15 17:07:54.714904000 -05:00
 :unpacked_by: Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]
 :content: !binary |-

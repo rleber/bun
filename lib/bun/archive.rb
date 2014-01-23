@@ -21,9 +21,9 @@ module Bun
         Archive::Enumerator
       end
       
-      PROCESS_STEPS = %w{pull unpack catalog decode compress bake tests}
-      def process_steps
-        PROCESS_STEPS
+      TRANSLATE_STEPS = %w{pull unpack catalog decode compress bake tests}
+      def translate_steps
+        TRANSLATE_STEPS
       end
 
       # Steps:
@@ -52,37 +52,36 @@ module Bun
       #   :links     Prefix pattern for symlink names
       #   :tests     Boolean: rebuild test cases?
       #   :to        Directory to output archives to
-      def process(*args)
-        options = args.last.is_a?(Hash) ? args.pop : {}
+      def translate(from, to, options={})
         stages = %w{packed unpacked cataloged decoded compressed baked compressed_baked}
-        base_directory = options[:to]
         @directories = {}
         @symlinks = {}
         stages.each do |stage|
-          @directories[stage.to_sym] = File.expand_path(File.join(base_directory, stage))
-          @symlinks[stage.to_sym] = options[:links] + '_' + stage
+          @directories[stage.to_sym] = File.expand_path(File.join(to, stage))
+          @symlinks[stage.to_sym] = options[:links] + '_' + stage if options[:links]
         end
-        do_process_steps(*args, options).each do |step|
+        do_translate_steps(options).each do |step|
           case step
           when 'pull'
-            warn "Pull files from the original archive" if options[:announce]
+            # TODO DRY this up
+            warn "Pull files from the original archive" unless options[:quiet]
             clear_stage :packed
-            pull options[:source], @directories[:packed]
-            build_symlink :packed
+            pull from, @directories[:packed]
+            build_symlink :packed if options[:links]
           when 'unpack'
-            warn "Unpack the files (from Honeywell binary format)" if options[:announce]
+            warn "Unpack the files (from Honeywell binary format)" unless options[:quiet]
             clear_stage :unpacked
             clear_stage :cataloged
             unpack @directories[:packed], @directories[:unpacked]
-            build_symlink :unpacked
+            build_symlink :unpacked if options[:links]
           when 'catalog'
-            warn "Catalog the files (using a catalog file)" if options[:announce]
+            warn "Catalog the files (using a catalog file)" unless options[:quiet]
             raise MissingCatalog, "No catalog specified" unless options[:catalog]
             clear_stage :cataloged
             catalog @directories[:unpacked], @directories[:cataloged], :catalog=>options[:catalog]
-            build_symlink :cataloged
+            build_symlink :cataloged if options[:links]
           when 'decode'
-            warn "Decode the files" if options[:announce]
+            warn "Decode the files" unless options[:quiet]
             from = if File.exists?(@directories[:cataloged])
               @directories[:cataloged]
             else
@@ -90,78 +89,78 @@ module Bun
             end
             clear_stage :decoded
             decode from, @directories[:decoded]
-            build_symlink :decoded
+            build_symlink :decoded if options[:links]
           when 'compress'
-            warn "Compress the files" if options[:announce]
+            warn "Compress the files" unless options[:quiet]
             from = @directories[:decoded]
             clear_stage :compressed
             compress @directories[:decoded], @directories[:compressed]
-            build_symlink :decoded
+            build_symlink :decoded if options[:links]
           when 'bake'
-            warn "Bake the files (i.e. remove metadata)" if options[:announce]
+            warn "Bake the files (i.e. remove metadata)" unless options[:quiet]
             clear_stage :baked
             bake @directories[:compressed], @directories[:baked]
-            build_symlink :baked
+            build_symlink :baked if options[:links]
           when 'tests'
-            warn "Rebuild test cases" if options[:announce]
+            warn "Rebuild test cases" unless options[:quiet]
             system('bun test build')
           else
-            raise InvalidStep, "Unknown process step #{step}"
+            raise InvalidStep, "Unknown step #{step}"
           end
         end
       end
 
-      def do_process_steps(*args)
-        options = args.last.is_a?(Hash) ? args.pop : {}
+      def do_translate_steps(options={})
         test = options[:tests]
-        all_steps = PROCESS_STEPS + %w{all}
+        all_steps = TRANSLATE_STEPS + %w{all}
 
         # Convert all steps to lowercase, unabbreviated
-        args = args.map do |orig_arg|
-          arg = orig_arg.to_s.strip.downcase
-          if arg =~ /^((?:\.\.\.?|not[-_]?)?)(\w)((?:\.\.\.?)?)$/
+        steps = options[:steps] || 'all'
+        steps = steps.split(',') do |orig_step|
+          step = orig_step.strip.downcase
+          if step =~ /^((?:\.\.\.?|not[-_]?)?)(\w)((?:\.\.\.?)?)$/
             ix = all_steps.index($2)
-            raise InvalidStep, "Unknown process step #{orig_arg.inspect}" unless ix
-            arg = $1 + all_steps[ix] + $3
+            raise InvalidStep, "Unknown step #{orig_step.inspect}" unless ix
+            step = $1 + all_steps[ix] + $3
           end
-          arg
+          step
         end
         
-        if args.size==0 || (args.size==1 && args.first =~ /^not/)
+        if steps.size==0 || (steps.size==1 && steps.first =~ /^not/)
           args.unshift 'all'
         end
         
         # Expand shorthands and check argument validity
-        steps = args.inject([]) do |ary, arg|
-          case arg
+        steps = steps.inject([]) do |ary, step|
+          case step
           when '..all', 'all..', /^not[-_]?all/
-            raise InvalidStep, "Step #{arg} is not allowed"
+            raise InvalidStep, "Step #{step} is not allowed"
           when 'all'
-            ary += PROCESS_STEPS
+            ary += TRANSLATE_STEPS
           when /^not[-_]?(\w+)$/
             ary -= [$1]
           when /^(\w*)(\.\.\.?)(\w*)$/
-            ix1 = $1=='' ? 0 : PROCESS_STEPS.index($1)
-            raise InvalidStep, "Unknown process step #{$1}" unless ix1
-            ix2 = $3=='' ? -1 : PROCESS_STEPS.index($3)
-            raise InvalidStep, "Unknown process step #{$2}" unless ix2
+            ix1 = $1=='' ? 0 : TRANSLATE_STEPS.index($1)
+            raise InvalidStep, "Unknown step #{$1}" unless ix1
+            ix2 = $3=='' ? -1 : TRANSLATE_STEPS.index($3)
+            raise InvalidStep, "Unknown step #{$2}" unless ix2
             if $2 == '..' || ix2 == -1
-              ary += PROCESS_STEPS[ix1..ix2]
+              ary += TRANSLATE_STEPS[ix1..ix2]
             else
-              ary += PROCESS_STEPS[ix1...ix2]
+              ary += TRANSLATE_STEPS[ix1...ix2]
             end
           else
-            raise InvalidStep, "Unknown process step #{arg}" unless PROCESS_STEPS.index(arg)
-            ary << arg
+            raise InvalidStep, "Unknown step #{step}" unless TRANSLATE_STEPS.index(step)
+            ary << step
           end
           ary
         end
 
         steps << 'tests' if options[:tests] # Test isn't automatically part of the sequence
-                                          # This syntax allows process --tests all
+                                            # This syntax allows translate --tests all
         steps = steps.uniq
         index = 0
-        step_numbers = PROCESS_STEPS.inject({}) do |hsh, step|
+        step_numbers = TRANSLATE_STEPS.inject({}) do |hsh, step|
           hsh[step] = index
           index += 1
           hsh
@@ -169,7 +168,7 @@ module Bun
         if steps.include?('unpack') && !steps.include?('catalog')
           warn "Steps include unpack, but not catalog -- be careful! Cataloged directory will be erased"
         end
-        steps.sort_by{|arg| step_numbers[arg] }
+        steps.sort_by{|step| step_numbers[step] }
       end
       
       def clear_stage(stage)
@@ -357,7 +356,7 @@ module Bun
       contents = []
       each do |tape|
         file = open(tape)
-        if file.tape_type == :frozen
+        if file.type == :frozen
           file.shard_count.times do |i|
             contents << "#{tape}[#{file.shard_name(i)}]"
           end
@@ -410,7 +409,7 @@ module Bun
           tape = relative_path(tape_path)
           to_tape_path = case file.descriptor.format
           when :packed, :unpacked
-            case typ=file.tape_type
+            case typ=file.type
             when :frozen
               descr = file.shard_descriptor(index)
               shard_name = descr.name

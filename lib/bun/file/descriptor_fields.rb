@@ -34,7 +34,7 @@ module Bun
           :tape         => "The name of the Honeywell tape archive this file came from",
           :tape_path    => "The path name of this tape file (not generally saved in the file)",
           :tape_size    => "The size of the archival tape file (in 36-bit words)",
-          :tape_type    => "The type of Honeywell file contained in this file (i.e. :text, :frozen, :huffman)",
+          :type    => "The type of Honeywell file contained in this file (i.e. :text, :frozen, :huffman)",
           :text_size    => "The size of the decoded text (only for decoded files)",
           :unpack_time  => "The date and time at which this file was unpacked",
           :unpacked_by  => "An identifier of the version of the bun software that unpacked this file",

@@ -10,9 +10,9 @@
 :path: fassmac.t
 :tape: ar103.1065
 :tape_size: 1936
-:tape_type: :text
-:unpack_time: 2014-01-23 09:14:48.985789000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
+:type: :text
+:unpack_time: 2014-01-23 13:33:40.644569000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
 :content: !binary |-
   AABAeOAABAAPABnAQpCfCTkLCdqPTmAAAAAAkAAAAGNRhM5hORkNxlOQAAAA
   AAAAAAF4uFwvMxhOZzNphMYuOgAAE6AABAE/AAUAIAAAAAAAAAAAAAAAAAAA

@@ -9,7 +9,7 @@
 :path: fass/totleclips.f
 :tape: ar019.0175
 :tape_size: 7228
-:tape_type: :frozen
+:type: :frozen
 :unpack_time: 2014-01-15 17:09:04.185832000 -05:00
 :unpacked_by: Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]
 :shards:

@@ -1,15 +1,16 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-desc "process [STEPS...]", "Process an archive, start to finish"
-option "announce", :aliases=>'-a', :type=>'boolean',  :desc=>"Announce each step of the process"
+desc "translate [OPTIONS] FROM TO", "Process an archive, start to finish"
 option "catalog",  :aliases=>'-c', :type=>'string',   :desc=>"Location of the catalog listing"
-option "source",   :aliases=>'-s', :type=>'string',   :desc=>"Location of the original archive"
-option "steps",    :aliases=>'-S', :type=>'boolean',  :desc=>"List the steps in the fetch process"
+option "quiet",    :aliases=>'-q', :type=>'boolean',  :desc=>"Don't announce each step of the process"
+option "source",   :aliases=>'-S', :type=>'string',   :desc=>"Location of the original archive"
+option "steps",    :aliases=>'-s', :type=>'string',   :desc=>"What steps to perform?", :default=>'all'
 option "links",    :aliases=>'-l', :type=>'string',   :desc=>"Prefix for symlinks"
 option "tests",    :aliases=>'-T', :type=>'boolean',  :desc=>"Rebuild the test cases for this software"
 option "to",       :aliases=>'-t', :type=>'string',   :desc=>"Directory to contain the output archives"
-# TODO Create long_desc describing step syntax
+option "usage",    :aliases=>'-u', :type=>'boolean',  :desc=>"List the steps in the translation process"
+
 DESC_TEXT = <<-EOT
 Process an archive of Honeywell binary backup tapes, from start to finish. \\
 There are several steps to this process. They are, in order:
@@ -34,13 +35,13 @@ Some convenience abbreviations are allowed:
     xxx...yyy                         Steps xxx to the step before yyy
 EOT
 long_desc DESC_TEXT.freeze_for_thor
-def process(*steps)
-  check_for_unknown_options(*steps)
-  if options[:steps]
-    puts Bun::Archive.fetch_steps
+def translate(from, to)
+  check_for_unknown_options(from, to)
+  if options[:usage]
+    puts Bun::Archive.translate_steps
     exit
   end
-  Bun::Archive.fetch(*steps, options)
+  Bun::Archive.translate(from, to, options)
 rescue Archive::InvalidStep => e
   stop "!#{e}"
 rescue Archive::MissingCatalog

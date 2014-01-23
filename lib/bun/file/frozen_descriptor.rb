@@ -17,7 +17,7 @@ module Bun
         DESCRIPTOR_END_MARKER = 0777777777777
         FIELDS = [
           :tape_size,
-          :tape_type,
+          :type,
           :catalog_time,
           :control_characters,
           :character_count,
@@ -117,7 +117,7 @@ module Bun
           file.owner
         end
   
-        def tape_type
+        def type
           :shard
         end
 

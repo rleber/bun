@@ -92,7 +92,7 @@ module Bun
         if options[:promote]
           if File.format(path) == :baked
             [nil, read(path)]
-          elsif File.tape_type(path) == :frozen && !options[:shard]
+          elsif File.type(path) == :frozen && !options[:shard]
             files = File::Decoded.open(path, :promote=>true, :expand=>true)
             data = Bun.cache(:baked_expanded_data, File.expand_path(path)) { files.values.map{|f| f.data}.join }
             [files.values.first, data]
@@ -186,11 +186,11 @@ module Bun
         end
       end
       
-      def tape_type(path)
+      def type(path)
         # return :packed if packed?(path)
         begin
           f = File::Unpacked.open(path, promote: true) 
-          f.tape_type
+          f.type
         rescue
           :unknown
         end

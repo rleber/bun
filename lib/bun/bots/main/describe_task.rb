@@ -10,7 +10,7 @@ no_tasks do
 end
 
 STANDARD_FIELDS = %w{description catalog_time data data_format digest format file_time
-                     identifier owner path shards tape tape_path tape_size tape_type }.map{|f| f.to_sym}
+                     identifier owner path shards tape tape_path tape_size type }.map{|f| f.to_sym}
 
 SHARDS_ACROSS = 5
 desc "describe FILE", "Display description information for a tape"
@@ -24,7 +24,7 @@ def describe(file)
   end
 
   descriptor    = File.descriptor(file, :graceful=>true)
-  type          = descriptor.tape_type
+  type          = descriptor.type
   shards        = descriptor.shards || []
   catalog_time  = descriptor.catalog_time
   

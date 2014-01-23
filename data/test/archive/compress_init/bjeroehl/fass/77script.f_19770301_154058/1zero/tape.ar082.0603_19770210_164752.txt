@@ -3,8 +3,8 @@
 :block_count: 11
 :block_padding_repairs: 0
 :catalog_time: 1982-12-22 00:00:00.000000000 -05:00
-:decode_time: 2014-01-23 09:25:09.317139000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
+:decode_time: 2014-01-23 13:44:13.685370000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
 :description: ''
 :digest: 2f51bd97948363e796b8fa8c1227425f
 :file_time: 1977-03-01 15:40:58.000000000 -05:00
@@ -14,10 +14,10 @@
 :path: bjeroehl/fass/77script.f
 :tape: ar082.0603
 :tape_size: 40045
-:tape_type: :frozen
 :text_size: 314
-:unpack_time: 2014-01-23 09:14:03.522822000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
+:type: :frozen
+:unpack_time: 2014-01-23 13:32:57.842079000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
 :content: ! ".so fass/fasshole\n.he 'FASS'- % -'ACT I SCENE 0'\n.FO 'ACT I SCENE 0''FASS'\nAct
   1 Scene 0\n\n(AN EXTENDED ROUTINE BEFORE THE OPENING OF THE SHOW - A PERSON\nAPPEARS
   ON STAGE GIVING THE IMPRESSION THAT HE HAS AN ANNOUNCEMENT \nTO MAKE - WHEN HE HAS

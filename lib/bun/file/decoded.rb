@@ -9,7 +9,7 @@ module Bun
       class << self
         def create(options={})
           descriptor = options[:descriptor]
-          tape_type = options[:force] || descriptor[:tape_type]
+          type = options[:force] || descriptor[:type]
           new(options)
         end
         
@@ -21,7 +21,7 @@ module Bun
         def build_descriptor(input)
           @descriptor = Hashie::Mash.new(input)
           @descriptor.fields = @descriptor.keys
-          @descriptor.shard_count = 1 if @descriptor.tape_type == :frozen
+          @descriptor.shard_count = 1 if @descriptor.type == :frozen
         end
         
         def examination(path, test)

@@ -11,9 +11,9 @@
 :path: eksiegerman/fass.f
 :tape: ar119.1124
 :tape_size: 727
-:tape_type: :frozen
-:unpack_time: 2014-01-23 09:15:51.108084000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
+:type: :frozen
+:unpack_time: 2014-01-23 13:34:43.006454000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
 :shards:
 - :name: list
   :file_time: 1980-05-26 13:25:38.000000000 -04:00

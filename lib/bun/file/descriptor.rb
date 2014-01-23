@@ -60,7 +60,7 @@ module Bun
         FIELDS = [
           :description,
           :tape_size,
-          :tape_type,
+          :type,
           :tape,
           :owner,
           :path,

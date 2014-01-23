@@ -11,9 +11,9 @@
 :path: fass/idallen/vector
 :tape: ar003.0698
 :tape_size: 2582
-:tape_type: :text
-:unpack_time: 2014-01-23 09:11:49.051358000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:db235f6859e09351ac052b63d02b9fb222740c2f]
+:type: :text
+:unpack_time: 2014-01-23 13:30:53.075018000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
 :content: !binary |-
   AABAoVAABAAVAADAK6CQoUstCQoUstAAAAAAAAAAAIMxhOZzAAAAAAAAAAAA
   AAAAAAF5pMhhNhsMpuF52MpjOhvOQgEA9Ho+MxpNhlOYgMxvOQgNJkMJsNhl

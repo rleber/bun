@@ -25,7 +25,7 @@ module Bun
           :errors,
           :decoded,
           :tape_size,
-          :tape_type,
+          :type,
           :tape,
           :tape_path,
           :original_tape,

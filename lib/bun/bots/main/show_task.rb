@@ -88,7 +88,7 @@ def show(*args)
       options.merge!(shard: shard)
       if if_clause
         v = value_of(if_clause, file, options).value.value # value_of returns Wrapper; .value gets ValueWrapper; .value.value gets value
-        # debug "file: #{file}, File.tape_type(file): #{File.tape_type(file).inspect}, v: #{v.inspect}"
+        # debug "file: #{file}, File.type(file): #{File.type(file).inspect}, v: #{v.inspect}"
         next unless v
       end
       last_values = values = exams.map {|exam| value_of(exam, file, options) }

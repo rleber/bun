@@ -64,8 +64,8 @@ module Bun
           klass.build_data(input, options)
           klass.build_descriptor(input)
           options = options.merge(:data=>klass.data, :descriptor=>klass.descriptor, :tape_path=>options[:fname])
-          if options[:type] && klass.descriptor[:tape_type]!=options[:type]
-            msg = "Expected file #{fname} to be a #{options[:type]} file, not a #{klass.descriptor[:tape_type]} file"
+          if options[:type] && klass.descriptor[:type]!=options[:type]
+            msg = "Expected file #{fname} to be a #{options[:type]} file, not a #{klass.descriptor[:type]} file"
             # TODO Remove this option; use exception handling, instead
             if options[:graceful]
               stop "!#{msg}"
@@ -113,8 +113,8 @@ module Bun
         
         def create(options={})
           descriptor = options[:descriptor]
-          tape_type = options[:force_type] || descriptor[:tape_type]
-          case tape_type
+          type = options[:force_type] || descriptor[:type]
+          case type
           when :text
             File::Unpacked::Text.new(options)
           when :frozen
@@ -123,7 +123,7 @@ module Bun
             File::Unpacked::Huffman.new(options)
           else
             if options[:strict]
-              raise UnknownFileTypeError,"!Unknown file type: #{descriptor.tape_type.inspect}"
+              raise UnknownFileTypeError,"!Unknown file type: #{descriptor.type.inspect}"
             else
               File::Unpacked::Text.new(options)
             end
@@ -175,8 +175,8 @@ module Bun
         @header
       end
       
-      def tape_type
-        descriptor.tape_type
+      def type
+        descriptor.type
       end
       
       def file_time
@@ -202,7 +202,7 @@ module Bun
         format = options.delete(:format)
         fields[:format] = format || :unpacked
         fields[:digest]  = content.digest
-        if tape_type == :frozen
+        if type == :frozen
           shards = shard_descriptors.map do |d|
             {
               :name      => d.name,
@@ -277,7 +277,7 @@ module Bun
       # TODO Could this be refactored to Frozen and other subclasses?
         expand = options.delete(:expand)
         allow = options.delete(:allow)
-        if tape_type!=:frozen || options[:shard]
+        if type!=:frozen || options[:shard]
           # Return a file
           {to=>to_decoded_yaml(options)}
         elsif expand
