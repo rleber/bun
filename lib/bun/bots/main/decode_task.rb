@@ -23,7 +23,7 @@ def decode(file_name, out=nil)
   shard = shard_2 || shard
   out ||= '-'
   # TODO The following should be a simple primitive operation
-  case File.file_grade(file_name)
+  case File.format(file_name)
   when :baked
     stop "!Can't decode file. It is already baked"
   when :decoded

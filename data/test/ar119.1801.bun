@@ -4,7 +4,7 @@
 :block_padding_repairs: 0
 :description: ''
 :digest: fc73f7f95a75238b1e9d9c6eaf09cfed
-:file_grade: :unpacked
+:format: :unpacked
 :first_block_size: 1935
 :owner: fass
 :path: fass/1986/skit.t

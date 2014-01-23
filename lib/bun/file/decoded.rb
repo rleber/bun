@@ -45,7 +45,7 @@ module Bun
         end
         
         def open(fname, options={}, &blk)
-          if File.file_grade(fname) != :decoded
+          if File.format(fname) != :decoded
             if options[:promote]
               paths = super(fname, options.merge(as_class: File::Unpacked)) do |f|
                 parts = f.decode(nil, options.merge(expand: true))

@@ -252,7 +252,7 @@ module Bun
       cat = catalog(catalog_path)
       leaves do |tape_path|
         tape = relative_path(tape_path, from_wd: true)
-        case File.file_grade(tape_path)
+        case File.format(tape_path)
         when :packed
           # TODO Refactor using built-in file promotion capability
           new_tape_path = tape_path.sub(/#{DEFAULT_PACKED_FILE_EXTENSION}$/,'') + DEFAULT_UNPACKED_FILE_EXTENSION

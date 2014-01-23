@@ -5,7 +5,7 @@
 :catalog_time: 1976-11-22 00:00:00.000000000 -05:00
 :description: ==>files for idallen
 :digest: 9e140aad691eba04afdf22ef2e33b575
-:file_grade: :unpacked
+:format: :unpacked
 :first_block_size: 2582
 :owner: fass
 :path: fass/idallen/vector

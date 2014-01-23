@@ -4,7 +4,7 @@
 :block_padding_repairs: 0
 :description: ''
 :digest: a6e077ed3b80a8cc071cb71a34066a33
-:file_grade: :unpacked
+:format: :unpacked
 :first_block_size: 3854
 :owner: fass
 :path: fass/sequence

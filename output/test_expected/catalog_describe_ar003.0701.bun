@@ -2,7 +2,7 @@ Tape                   ar003.0701
 File                   fass/idallen/huffhart
 Owner                  fass
 Description            ==>files for idallen
-File Grade             :unpacked
+Format                 :unpacked
 Size (Words)           662
 Type                   Huffman
 MD5 Digest             c432 253b c6b1 94ed ab16 ff86 46d9 8e8d

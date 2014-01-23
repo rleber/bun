@@ -111,7 +111,7 @@ module Bun
           data.tape_type
         end
 
-        def file_grade
+        def format
           :packed
         end
       end

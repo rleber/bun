@@ -4,7 +4,7 @@
 :block_padding_repairs: 0
 :description: ''
 :digest: feaef3d6efe33f9641a32e414aeb4789
-:file_grade: :unpacked
+:format: :unpacked
 :first_block_size: 2255
 :owner: jagardner
 :path: fassmac.t

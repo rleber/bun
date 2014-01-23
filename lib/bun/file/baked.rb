@@ -10,7 +10,7 @@ module Bun
       end
 
       def descriptor
-        @descriptor ||= File::Descriptor::Base.from_hash(nil, file_grade: :baked)
+        @descriptor ||= File::Descriptor::Base.from_hash(nil, format: :baked)
       end
 
       # TODO DRY this up; see File::Decoded, for instance

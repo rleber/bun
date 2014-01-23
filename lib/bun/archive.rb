@@ -408,7 +408,7 @@ module Bun
         File.decode(tape_path, nil, decode_options) do |file, index|
           # Determine whether to decode tape, and if so, where to put it
           tape = relative_path(tape_path)
-          to_tape_path = case file.descriptor.file_grade
+          to_tape_path = case file.descriptor.format
           when :packed, :unpacked
             case typ=file.tape_type
             when :frozen

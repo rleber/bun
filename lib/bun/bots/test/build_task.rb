@@ -163,12 +163,12 @@ def build
   build_standard_directory "data/test/archive/rv_init/directory"
 
   # Build mixed directory
-  build_directory "data/test/archive/mixed_grades_init" do
+  build_directory "data/test/archive/mixed_formats_init" do
     build_file "ar003.0698", nil, :packed
     build_file "ar003.0701", nil, :cataloged
     build_file "fass/script/tape.ar004.0642_19770224", nil, :decoded
     copy_file "~/fass_work/baked/fass/1986/script/script.f/1-1.txt", 
-              "data/test/archive/mixed_grades_init/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt"
+              "data/test/archive/mixed_formats_init/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt"
   end
 
   build_compress_test_directory "data/test/archive/compress_init"

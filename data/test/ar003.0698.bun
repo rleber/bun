@@ -4,7 +4,7 @@
 :block_padding_repairs: 0
 :description: ==>files for idallen
 :digest: 9e140aad691eba04afdf22ef2e33b575
-:file_grade: :unpacked
+:format: :unpacked
 :first_block_size: 2582
 :owner: fass
 :path: fass/idallen/vector

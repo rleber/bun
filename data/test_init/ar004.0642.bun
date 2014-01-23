@@ -3,7 +3,7 @@
 :data_format: :raw
 :description: klisted final copy of fass '77 script
 :digest: 0d3b51d01793316781993754bfd88d2d
-:file_grade: :unpacked
+:format: :unpacked
 :owner: fass
 :path: fass/script
 :tape: ar004.0642

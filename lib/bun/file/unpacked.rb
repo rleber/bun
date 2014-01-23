@@ -89,9 +89,9 @@ module Bun
         def open(fname, options={}, &blk)
           if options[:force]
             forced_open(fname, options, &blk)
-          elsif (grade = File.file_grade(fname)) != :unpacked
+          elsif (fmt = File.format(fname)) != :unpacked
             if options[:promote]
-              if File.file_grade_level(grade) < File.file_grade_level(:unpacked)
+              if File.format_level(fmt) < File.format_level(:unpacked)
                 t = Tempfile.new('promoted_to_unpacked_')
                 t.close
                 # TODO redo this:
@@ -199,8 +199,8 @@ module Bun
         fields = descriptor.to_hash
         fields.delete(:data)
         fields.delete(:shards)
-        file_grade = options.delete(:file_grade)
-        fields[:file_grade] = file_grade || :unpacked
+        format = options.delete(:format)
+        fields[:format] = format || :unpacked
         fields[:digest]  = content.digest
         if tape_type == :frozen
           shards = shard_descriptors.map do |d|
@@ -254,7 +254,7 @@ module Bun
         text = decoded_text(options)
         options = options.merge(
                     content:     text, 
-                    file_grade:  :decoded,
+                    format:  :decoded,
                     decode_time: Time.now,
                     decoded_by:  Bun.expanded_version,
                     text_size:   text.size,

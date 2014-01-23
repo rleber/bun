@@ -9,8 +9,8 @@ module Bun
     class Packed < Bun::File
       class << self
         def open(fname, options={}, &blk)
-          if !options[:force] && (grade = File.file_grade(fname)) != :packed
-            raise BadFileGrade, "#{fname} can't be converted to packed"
+          if !options[:force] && (fmt = File.format(fname)) != :packed
+            raise BadFileGrade, "#{fname} is a #{fmt} format file, which can't be converted to packed"
           else
             path = fname
             path = expand_path(fname) unless fname == '-'

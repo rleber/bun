@@ -7,7 +7,7 @@
 :decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
 :description: ==> star travesty script 1977 (to be roffed)
 :digest: 2f51bd97948363e796b8fa8c1227425f
-:file_grade: :decoded
+:format: :decoded
 :first_block_size: 346
 :llink_count: 2
 :owner: fass

@@ -4,7 +4,7 @@
 :block_padding_repairs: 0
 :description: ==> Eric Siegerman Catalog, last touched in June 1980
 :digest: 57a83bf0f79e5d6b4e3a788d90b8d037
-:file_grade: :unpacked
+:format: :unpacked
 :first_block_size: 670
 :owner: fass
 :path: fass/eksiegerman/pause

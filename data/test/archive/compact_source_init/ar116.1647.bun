@@ -4,7 +4,7 @@
 :block_padding_repairs: 0
 :description: FASS blurb
 :digest: 7bf4e25422507d2bc37cba0d7b56d3ff
-:file_grade: :unpacked
+:format: :unpacked
 :first_block_size: 977
 :owner: mathnoos
 :path: mathnoos/frosh/fass

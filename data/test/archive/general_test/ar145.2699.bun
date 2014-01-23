@@ -5,7 +5,7 @@
 :catalog_time: 1989-02-28 00:00:00.000000000 -05:00
 :description: ''
 :digest: 1a9e89355e5243b4686a6abcc2ff156b
-:file_grade: :unpacked
+:format: :unpacked
 :file_time: 1985-10-02 19:04:31.000000000 -04:00
 :first_block_size: 3855
 :owner: jagardner

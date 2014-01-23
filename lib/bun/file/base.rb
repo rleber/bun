@@ -90,7 +90,7 @@ module Bun
       
       def baked_file_and_data(path, options={})
         if options[:promote]
-          if File.file_grade(path) == :baked
+          if File.format(path) == :baked
             [nil, read(path)]
           elsif File.tape_type(path) == :frozen && !options[:shard]
             files = File::Decoded.open(path, :promote=>true, :expand=>true)
@@ -107,7 +107,7 @@ module Bun
       end
 
       def file_for_expression(path, options={})
-        case File.file_grade(path)
+        case File.format(path)
         when :packed
           if options[:promote]
             File::Unpacked.open(path, :promote=>true)
@@ -170,8 +170,8 @@ module Bun
       end
       
       def open(path, options={}, &blk)
-        # TODO But file_grade opens and reads the file, too...
-        case grade = file_grade(path)
+        # TODO But format opens and reads the file, too...
+        case fmt = format(path)
         when :packed
           File::Packed.open(path, options, &blk)
         when :unpacked, :cataloged
@@ -182,7 +182,7 @@ module Bun
           File::Baked.open(path, &blk)
         else
           # TODO Why not?
-          raise BadFileGrade, "Can't open file of this grade: #{grade.inspect}"
+          raise BadFileGrade, "Can't open file of this format: #{fmt.inspect}"
         end
       end
       
@@ -196,24 +196,24 @@ module Bun
         end
       end
       
-      def file_grade(path)
+      def format(path)
         res = if packed?(path)
           :packed
         elsif binary?(path)
           :baked
         else
           d = File::Unpacked.build_descriptor_from_file(path)
-          d.file_grade
+          d.format
         end
         res
       end
       
-      def file_grade_level(grade)
-        [:packed, :unpacked, :decoded, :baked].index(grade)
+      def format_level(fmt)
+        [:packed, :unpacked, :decoded, :baked].index(fmt)
       end
 
       def file_outgrades?(path, level)
-        file_grade_level(file_grade(path)) > file_grade_level(level)
+        format_level(format(path)) > format_level(level)
       end
       
       def descriptor(path, options={})
@@ -232,7 +232,7 @@ module Bun
       
       # Convert from packed format to unpacked (i.e. YAML)
       def unpack(path, to, options={})
-        case file_grade(path)
+        case format(path)
         when :packed
           open(path) do |f|
             cvt = f.unpack
@@ -246,7 +246,7 @@ module Bun
       end
 
       def decode(path, to, options={}, &blk)
-        case file_grade(path)
+        case format(path)
         when :packed
           File::Unpacked.open(path, options.merge(promote: true)) do |f|
             f.decode(to, options, &blk)
@@ -259,7 +259,7 @@ module Bun
       end
 
       def bake(path, to, options={})
-        case file_grade(path)
+        case format(path)
         when :baked, :decoded
           File.open(path, options) {|f| f.bake(to)}
         else

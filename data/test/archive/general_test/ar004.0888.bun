@@ -5,7 +5,7 @@
 :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
 :description: ==> freeze file containing roff source for fass '77 script
 :digest: f875bf6d887c3392c339a676cc08876c
-:file_grade: :unpacked
+:format: :unpacked
 :file_time: 1977-03-01 15:40:58.000000000 -05:00
 :first_block_size: 3869
 :owner: fass

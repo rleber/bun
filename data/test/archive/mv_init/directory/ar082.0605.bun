@@ -5,7 +5,7 @@
 :catalog_time: 1982-12-22 00:00:00.000000000 -05:00
 :description: ''
 :digest: 8c8ef1d2f5b3ac52aa1cc59229707d21
-:file_grade: :unpacked
+:format: :unpacked
 :file_time: 1981-03-08 20:27:00.000000000 -05:00
 :first_block_size: 3856
 :owner: bjeroehl

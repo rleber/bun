@@ -2,7 +2,7 @@
 :identifier: Bun
 :description: ==>files for idallen
 :digest: 9e140aad691eba04afdf22ef2e33b575
-:file_grade: :unpacked
+:format: :unpacked
 :owner: fass
 :path: fass/idallen/vector
 :tape: ar003.0698

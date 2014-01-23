@@ -4,7 +4,7 @@
 :block_padding_repairs: 0
 :description: ==>files for idallen
 :digest: c432253bc6b194edab16ff8646d98e8d
-:file_grade: :unpacked
+:format: :unpacked
 :first_block_size: 662
 :owner: fass
 :path: fass/idallen/huffhart

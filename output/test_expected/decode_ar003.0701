@@ -3,12 +3,12 @@
 :block_count: 1
 :block_padding_repairs: 0
 :catalog_time: 1976-11-22 00:00:00.000000000 -05:00
-:decode_time: 2014-01-21 19:28:49.604144000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+:decode_time: 2014-01-23 07:13:19.636781000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:625cd723cb95b97820929d28fa2f2014750e182d]
 :description: ==>files for idallen
 :digest: 6dce3a2ecf9675194e0871c1afd37ec2
-:file_grade: :decoded
 :first_block_size: 662
+:format: :decoded
 :llink_count: 2
 :owner: fass
 :path: fass/idallen/huffhart

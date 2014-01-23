@@ -4,7 +4,7 @@
 :block_padding_repairs: 18
 :description: klisted final copy of fass '77 script
 :digest: 0d3b51d01793316781993754bfd88d2d
-:file_grade: :unpacked
+:format: :unpacked
 :first_block_size: 3863
 :owner: fass
 :path: fass/script

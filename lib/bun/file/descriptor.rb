@@ -7,6 +7,7 @@ module Bun
   class File < ::File
     module Descriptor
       class Base
+        undef_method :format
         class << self
           def from_hash(data, h)
             d = new(data)

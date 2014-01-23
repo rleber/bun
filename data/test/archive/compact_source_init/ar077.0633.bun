@@ -4,7 +4,7 @@
 :block_padding_repairs: 0
 :description: Frosh issue 1982
 :digest: fed46b50571284cf8df79b1124f04881
-:file_grade: :unpacked
+:format: :unpacked
 :first_block_size: 659
 :owner: mathnoos
 :path: mathnoos/frosh/fass

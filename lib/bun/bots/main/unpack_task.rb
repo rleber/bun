@@ -5,7 +5,7 @@ desc "unpack FILE [TO]", "Read in a packed Bun file and translate to a flat YAML
 option "tape", :aliases=>'-t', :type=>'string',  :desc=>"Supply tape name (use with input from STDIN)"
 def unpack(file, to='-')
   check_for_unknown_options(file, to)
-  case g=File.file_grade(file)
+  case g=File.format(file)
   when :packed
     File.unpack(file, to, options)
   when :unpacked

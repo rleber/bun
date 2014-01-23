@@ -1182,182 +1182,182 @@ describe Bun::Bot do
   describe "mixed archive" do
     context "unpack" do
       before :all do
-        exec("rm -rf data/test/archive/mixed_grades")
-        exec("rm -rf output/test_actual/mixed_grades_unpack")
-        exec("rm -f output/test_actual/mixed_grades_archive_unpack.txt")
-        exec("rm -f output/test_actual/mixed_grades_archive_diff.txt")
-        exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
-        exec("bun archive unpack data/test/archive/mixed_grades output/test_actual/mixed_grades_unpack 2>/dev/null \
+        exec("rm -rf data/test/archive/mixed_formats")
+        exec("rm -rf output/test_actual/mixed_formats_unpack")
+        exec("rm -f output/test_actual/mixed_formats_archive_unpack.txt")
+        exec("rm -f output/test_actual/mixed_formats_archive_diff.txt")
+        exec("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
+        exec("bun archive unpack data/test/archive/mixed_formats output/test_actual/mixed_formats_unpack 2>/dev/null \
                   >/dev/null")
       end
       it "should create the proper files" do
-        exec "find output/test_actual/mixed_grades_unpack -print >output/test_actual/mixed_grades_archive_unpack.txt"
-        'mixed_grades_archive_unpack.txt'.should match_expected_output
+        exec "find output/test_actual/mixed_formats_unpack -print >output/test_actual/mixed_formats_archive_unpack.txt"
+        'mixed_formats_archive_unpack.txt'.should match_expected_output
       end
       it "should write the proper content" do
-        "mixed_grades_unpack/ar003.0698.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
-        "mixed_grades_unpack/ar003.0701.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
-        "mixed_grades_unpack/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+        "mixed_formats_unpack/ar003.0698.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
+        "mixed_formats_unpack/ar003.0701.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
+        "mixed_formats_unpack/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
             match_expected_output
-        "mixed_grades_unpack/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DECODE_PATTERNS)
+        "mixed_formats_unpack/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DECODE_PATTERNS)
       end
       after :all do
         backtrace
-        exec_on_success("rm -rf data/test/archive/mixed_grades")
-        exec_on_success("rm -rf output/test_actual/mixed_grades_unpack")
-        exec_on_success("rm -f output/test_actual/mixed_grades_archive_unpack.txt")
-        exec_on_success("rm -f output/test_actual/mixed_grades_archive_diff.txt")
+        exec_on_success("rm -rf data/test/archive/mixed_formats")
+        exec_on_success("rm -rf output/test_actual/mixed_formats_unpack")
+        exec_on_success("rm -f output/test_actual/mixed_formats_archive_unpack.txt")
+        exec_on_success("rm -f output/test_actual/mixed_formats_archive_diff.txt")
       end
     end
     context "catalog" do
       before :all do
-        exec("rm -rf data/test/archive/mixed_grades")
-        exec("rm -rf output/test_actual/mixed_grades_catalog")
-        exec("rm -f output/test_actual/mixed_grades_archive_catalog.txt")
-        exec("rm -f output/test_actual/mixed_grades_archive_diff.txt")
-        exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
+        exec("rm -rf data/test/archive/mixed_formats")
+        exec("rm -rf output/test_actual/mixed_formats_catalog")
+        exec("rm -f output/test_actual/mixed_formats_archive_catalog.txt")
+        exec("rm -f output/test_actual/mixed_formats_archive_diff.txt")
+        exec("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
         exec("bun archive catalog --catalog data/test/fass-index.txt \
-                  data/test/archive/mixed_grades \
-                  output/test_actual/mixed_grades_catalog \
+                  data/test/archive/mixed_formats \
+                  output/test_actual/mixed_formats_catalog \
                   2>/dev/null \
                   >/dev/null")
       end
       it "should create the proper files" do
-        exec "find output/test_actual/mixed_grades_catalog -print >output/test_actual/mixed_grades_archive_catalog.txt"
-        'mixed_grades_archive_catalog.txt'.should match_expected_output
+        exec "find output/test_actual/mixed_formats_catalog -print >output/test_actual/mixed_formats_archive_catalog.txt"
+        'mixed_formats_archive_catalog.txt'.should match_expected_output
       end
       it "should write the proper content" do
-        "mixed_grades_catalog/ar003.0698.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
-        "mixed_grades_catalog/ar003.0701.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
-        "mixed_grades_catalog/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+        "mixed_formats_catalog/ar003.0698.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
+        "mixed_formats_catalog/ar003.0701.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
+        "mixed_formats_catalog/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
             match_expected_output
-        "mixed_grades_catalog/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DECODE_PATTERNS)
+        "mixed_formats_catalog/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DECODE_PATTERNS)
       end
       after :all do
         backtrace
-        exec_on_success("rm -rf data/test/archive/mixed_grades")
-        exec_on_success("rm -rf output/test_actual/mixed_grades_catalog")
-        exec_on_success("rm -f output/test_actual/mixed_grades_archive_catalog.txt")
-        exec_on_success("rm -f output/test_actual/mixed_grades_archive_diff.txt")
+        exec_on_success("rm -rf data/test/archive/mixed_formats")
+        exec_on_success("rm -rf output/test_actual/mixed_formats_catalog")
+        exec_on_success("rm -f output/test_actual/mixed_formats_archive_catalog.txt")
+        exec_on_success("rm -f output/test_actual/mixed_formats_archive_diff.txt")
       end
     end
     context "decode" do
       before :all do
-        exec("rm -rf data/test/archive/mixed_grades")
-        exec("rm -rf output/test_actual/mixed_grades_decode")
-        exec("rm -f output/test_actual/mixed_grades_archive_decode.txt")
-        exec("rm -f output/test_actual/mixed_grades_archive_diff.txt")
-        exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
-        exec("bun archive decode data/test/archive/mixed_grades output/test_actual/mixed_grades_decode 2>/dev/null \
+        exec("rm -rf data/test/archive/mixed_formats")
+        exec("rm -rf output/test_actual/mixed_formats_decode")
+        exec("rm -f output/test_actual/mixed_formats_archive_decode.txt")
+        exec("rm -f output/test_actual/mixed_formats_archive_diff.txt")
+        exec("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
+        exec("bun archive decode data/test/archive/mixed_formats output/test_actual/mixed_formats_decode 2>/dev/null \
                   >/dev/null")
       end
       it "should create the proper files" do
-        exec "find output/test_actual/mixed_grades_decode -print >output/test_actual/mixed_grades_archive_decode.txt"
-        'mixed_grades_archive_decode.txt'.should match_expected_output
+        exec "find output/test_actual/mixed_formats_decode -print >output/test_actual/mixed_formats_archive_decode.txt"
+        'mixed_formats_archive_decode.txt'.should match_expected_output
       end
       it "should write the proper content" do
-        "mixed_grades_decode/fass/idallen/vector/tape.ar003.0698.txt".should match_expected_output_except_for(DECODE_PATTERNS)
-        "mixed_grades_decode/fass/idallen/huffhart/tape.ar003.0701_19761122.txt".should match_expected_output_except_for(DECODE_PATTERNS)
-        "mixed_grades_decode/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+        "mixed_formats_decode/fass/idallen/vector/tape.ar003.0698.txt".should match_expected_output_except_for(DECODE_PATTERNS)
+        "mixed_formats_decode/fass/idallen/huffhart/tape.ar003.0701_19761122.txt".should match_expected_output_except_for(DECODE_PATTERNS)
+        "mixed_formats_decode/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
             match_expected_output
-        "mixed_grades_decode/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DECODE_PATTERNS)
+        "mixed_formats_decode/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DECODE_PATTERNS)
       end
       after :all do
         backtrace
-        exec_on_success("rm -rf data/test/archive/mixed_grades")
-        exec_on_success("rm -rf output/test_actual/mixed_grades_decode")
-        exec_on_success("rm -f output/test_actual/mixed_grades_archive_decode.txt")
-        exec_on_success("rm -f output/test_actual/mixed_grades_archive_diff.txt")
+        exec_on_success("rm -rf data/test/archive/mixed_formats")
+        exec_on_success("rm -rf output/test_actual/mixed_formats_decode")
+        exec_on_success("rm -f output/test_actual/mixed_formats_archive_decode.txt")
+        exec_on_success("rm -f output/test_actual/mixed_formats_archive_diff.txt")
       end
     end
     context "bake" do
       before :all do
-        exec("rm -rf data/test/archive/mixed_grades")
-        exec("rm -rf output/test_actual/mixed_grades_bake")
-        exec("rm -f output/test_actual/mixed_grades_archive_bake.txt")
-        exec("rm -f output/test_actual/mixed_grades_archive_diff.txt")
-        exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
-        exec("bun archive bake data/test/archive/mixed_grades output/test_actual/mixed_grades_bake 2>/dev/null \
+        exec("rm -rf data/test/archive/mixed_formats")
+        exec("rm -rf output/test_actual/mixed_formats_bake")
+        exec("rm -f output/test_actual/mixed_formats_archive_bake.txt")
+        exec("rm -f output/test_actual/mixed_formats_archive_diff.txt")
+        exec("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
+        exec("bun archive bake data/test/archive/mixed_formats output/test_actual/mixed_formats_bake 2>/dev/null \
                   >/dev/null")
       end
       it "should create the proper files" do
-        exec "find output/test_actual/mixed_grades_bake -print >output/test_actual/mixed_grades_archive_bake.txt"
-        'mixed_grades_archive_bake.txt'.should match_expected_output
+        exec "find output/test_actual/mixed_formats_bake -print >output/test_actual/mixed_formats_archive_bake.txt"
+        'mixed_formats_archive_bake.txt'.should match_expected_output
       end
       it "should write the proper content" do
-        "mixed_grades_bake/ar003.0698".should match_expected_output
-        "mixed_grades_bake/ar003.0701.bun".should match_expected_output
-        "mixed_grades_bake/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+        "mixed_formats_bake/ar003.0698".should match_expected_output
+        "mixed_formats_bake/ar003.0701.bun".should match_expected_output
+        "mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
             match_expected_output
-        "mixed_grades_bake/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output
+        "mixed_formats_bake/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output
       end
       after :all do
         backtrace
-        exec_on_success("rm -rf data/test/archive/mixed_grades")
-        exec_on_success("rm -rf output/test_actual/mixed_grades_bake")
-        exec_on_success("rm -f output/test_actual/mixed_grades_archive_bake.txt")
-        exec_on_success("rm -f output/test_actual/mixed_grades_archive_diff.txt")
+        exec_on_success("rm -rf data/test/archive/mixed_formats")
+        exec_on_success("rm -rf output/test_actual/mixed_formats_bake")
+        exec_on_success("rm -f output/test_actual/mixed_formats_archive_bake.txt")
+        exec_on_success("rm -f output/test_actual/mixed_formats_archive_diff.txt")
       end
     end
     context "describe" do
       context "packed file (ar003.0698)" do
         before :all do
-          exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
-          exec("rm -rf output/test_actual/mixed_grades_describe_ar003.0698")
-          exec("bun describe data/test/archive/mixed_grades/ar003.0698 >output/test_actual/mixed_grades_describe_ar003.0698")
+          exec("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
+          exec("rm -rf output/test_actual/mixed_formats_describe_ar003.0698")
+          exec("bun describe data/test/archive/mixed_formats/ar003.0698 >output/test_actual/mixed_formats_describe_ar003.0698")
         end
         it "should match the expected output" do
-          "mixed_grades_describe_ar003.0698".should match_expected_output
+          "mixed_formats_describe_ar003.0698".should match_expected_output
         end
         after :all do
           backtrace
-          exec_on_success("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
-          exec_on_success("rm -rf output/test_actual/mixed_grades_describe_ar003.0698")
+          exec_on_success("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
+          exec_on_success("rm -rf output/test_actual/mixed_formats_describe_ar003.0698")
         end      
       end
       context "unpacked file (ar003.0701.bun)" do
         before :all do
-          exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
-          exec("rm -rf output/test_actual/mixed_grades_describe_ar003.0701.bun")
-          exec("bun describe data/test/archive/mixed_grades/ar003.0701.bun >output/test_actual/mixed_grades_describe_ar003.0701.bun")
+          exec("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
+          exec("rm -rf output/test_actual/mixed_formats_describe_ar003.0701.bun")
+          exec("bun describe data/test/archive/mixed_formats/ar003.0701.bun >output/test_actual/mixed_formats_describe_ar003.0701.bun")
         end
         it "should match the expected output" do
-          "mixed_grades_describe_ar003.0701.bun".should match_expected_output_except_for(DESCRIBE_PATTERNS)
+          "mixed_formats_describe_ar003.0701.bun".should match_expected_output_except_for(DESCRIBE_PATTERNS)
         end
         after :all do
           backtrace
-          exec_on_success("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
-          exec_on_success("rm -rf output/test_actual/mixed_grades_describe_ar003.0701.bun")
+          exec_on_success("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
+          exec_on_success("rm -rf output/test_actual/mixed_formats_describe_ar003.0701.bun")
         end      
       end
       context "decoded file (fass/script/tape.ar004.0642_19770224.txt)" do
         before :all do
-          exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
-          exec("rm -rf output/test_actual/mixed_grades_describe_fass_script_tape.ar004.0642_19770224.txt")
-          exec("bun describe data/test/archive/mixed_grades/fass/script/tape.ar004.0642_19770224.txt >output/test_actual/mixed_grades_describe_fass_script_tape.ar004.0642_19770224.txt")
+          exec("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
+          exec("rm -rf output/test_actual/mixed_formats_describe_fass_script_tape.ar004.0642_19770224.txt")
+          exec("bun describe data/test/archive/mixed_formats/fass/script/tape.ar004.0642_19770224.txt >output/test_actual/mixed_formats_describe_fass_script_tape.ar004.0642_19770224.txt")
         end
         it "should match the expected output" do
-          "mixed_grades_describe_fass_script_tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DESCRIBE_WITH_DECODE_PATTERNS)
+          "mixed_formats_describe_fass_script_tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DESCRIBE_WITH_DECODE_PATTERNS)
         end
         after :all do
           backtrace
-          exec_on_success("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
-          exec_on_success("rm -rf output/test_actual/mixed_grades_describe_fass_script_tape.ar004.0642_19770224.txt")
+          exec_on_success("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
+          exec_on_success("rm -rf output/test_actual/mixed_formats_describe_fass_script_tape.ar004.0642_19770224.txt")
         end      
       end
       context "baked file (fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt)" do
         before :all do
-          exec("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
-          exec("rm -rf output/test_actual/mixed_grades_describe_clean_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt")
-          exec("bun describe data/test/archive/mixed_grades/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt >output/test_actual/mixed_grades_describe_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt")
+          exec("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
+          exec("rm -rf output/test_actual/mixed_formats_describe_clean_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt")
+          exec("bun describe data/test/archive/mixed_formats/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt >output/test_actual/mixed_formats_describe_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt")
         end
         it "should match the expected output" do
-          "mixed_grades_describe_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt".should match_expected_output
+          "mixed_formats_describe_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt".should match_expected_output
         end
         after :all do
           backtrace
-          exec_on_success("cp -r data/test/archive/mixed_grades_init data/test/archive/mixed_grades")
-          exec_on_success("rm -rf output/test_actual/mixed_grades_describe_clean_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt")
+          exec_on_success("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
+          exec_on_success("rm -rf output/test_actual/mixed_formats_describe_clean_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt")
         end      
       end
     end
