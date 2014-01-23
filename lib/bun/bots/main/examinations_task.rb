@@ -9,16 +9,21 @@ option "options", :aliases=>'-o', :type=>'boolean', :desc=>'Show options usage i
 def examinations(pattern='.*')
   regex = %r{#{pattern}}i
   exams = String::Examination.exams.select {|name| name =~ regex }
+  long = options[:long] || options[:options]
   rows = exams.map do |exam|
-    options[:long] ? String::Examination.exam_definitions.find {|name, defn| name == exam } : [exam]
+    long ? String::Examination.exam_definitions.find {|name, defn| name == exam } : [exam]
   end
   Formatter.open("-", justify: true) do |usage_formatter|
-    usage_formatter.titles = %w{Examination Description} if options[:long]
+    if options[:options]
+      usage_formatter.titles = %w{Examination/Options Description}
+    elsif long
+      usage_formatter.titles = %w{Examination Description}
+    end
     rows.each do |row|
       usage_formatter << row
       next if !options[:options]
       exam_class = String::Examination.exam_class(row[0])
-      exam_class.option_usage.each do |usage_defn|
+      exam_class.option_definitions.each do |usage_defn|
         usage_formatter << ["  "+usage_defn[:name], "  "+usage_defn[:desc]]
       end
     end

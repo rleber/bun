@@ -59,22 +59,26 @@ class String
         def description
         end
 
-        def option_definitions
-          @option_definitions ||= []
+        def options_store
+          @options_store ||= {}
         end
 
         def option_usage
-          superclass_usage = super rescue []
-          superclass_usage + option_definitions
+          superclass_usage = superclass.option_usage rescue {}
+          @options_store = superclass_usage.merge(options_store)
+        end
+
+        def option_definitions
+          option_usage.keys.sort.map {|key| option_usage[key]}
         end
 
         def option_help
-            option_usage.map{|hash| [hash[:name], hash[:desc]].join('  ') }
+          option_definitions.map{|hash| [hash[:name], hash[:desc]].join('  ') }
         end
 
         def option(name, options={})
-          option_definitions
-          @option_definitions << {name: name}.merge(options)
+          options_store
+          @options_store[name] = {name: name}.merge(options)
         end
 
         def help
