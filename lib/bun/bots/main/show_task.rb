@@ -167,10 +167,7 @@ end
 
 no_tasks do
   def unwrap(value)
-    while value.respond_to?(:value) && (value.respond_to?(:to_matrix) || value.class.to_s =~/(Wrapper|Result)$/) do
-      value = value.value
-    end
-    value
+    String::Trait::Base.unwrap(value)
   end
 
   # TODO Opportunity to DRY this out?

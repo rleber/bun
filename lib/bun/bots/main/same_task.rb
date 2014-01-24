@@ -17,7 +17,7 @@ Group files which match on certain criteria.
 
 Analyses are available via the --trait parameter. Available analyses include:\x5
 
-#{String::Trait.exam_definition_table.freeze_for_thor}
+#{String::Trait.trait_definition_table.freeze_for_thor}
 
 The command also allows for evaluating arbitrary Ruby expressions.
 

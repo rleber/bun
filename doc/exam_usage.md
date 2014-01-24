@@ -32,7 +32,7 @@ _EXAMINATIONS_
 Examinations are predefined tests of the content or characteristics of a file. Generally they return some kind
 of string value or table. Available pre-defined traits include:
 
-#{String::Trait.exam_definition_table}
+#{String::Trait.trait_definition_table}
 
 Similarly to fields, traits may be referenced in three ways:
 - Using the trait:<trait name> syntax

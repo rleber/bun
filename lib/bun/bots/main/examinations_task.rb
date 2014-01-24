@@ -14,7 +14,7 @@ def traits(pattern='.*')
   traits = String::Trait.traits.select {|name| name =~ regex }
   long = options[:long] || options[:options]
   rows = traits.map do |trait|
-    long ? String::Trait.exam_definitions.find {|name, defn| name == trait } : [trait]
+    long ? String::Trait.trait_definitions.find {|name, defn| name == trait } : [trait]
   end
   Formatter.open("-", justify: true) do |usage_formatter|
     if options[:options]
@@ -25,8 +25,8 @@ def traits(pattern='.*')
     rows.each do |row|
       usage_formatter << row
       next if !options[:options]
-      exam_class = String::Trait.exam_class(row[0])
-      exam_class.option_definitions.each do |usage_defn|
+      trait_class = String::Trait.trait_class(row[0])
+      trait_class.option_definitions.each do |usage_defn|
         usage_formatter << ["  "+usage_defn[:name], "  "+usage_defn[:desc]]
       end
     end

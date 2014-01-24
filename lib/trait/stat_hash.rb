@@ -121,7 +121,7 @@ class String
       # Designed be overridden in subclasses
       def right_justified_columns
         res = fields.map.with_index do |field, i|
-          klass = String::Trait.exam_class(field) rescue nil
+          klass = String::Trait.trait_class(field) rescue nil
           justification = klass && klass.justification rescue :left
           [justification, i]
         end

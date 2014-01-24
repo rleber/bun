@@ -43,6 +43,7 @@ class String
         end
 
         def coerce(foo)
+          debug "foo is a #{foo.class}, self is a #{self.class}"
           [foo, self.value]
         end
         
@@ -104,6 +105,14 @@ class String
         def justification
           :left
         end
+
+        def unwrap(value)
+          while value.respond_to?(:value) && (value.respond_to?(:to_matrix) || value.class.to_s =~/(Wrapper|Result)$/) do
+            value = value.value
+          end
+          value
+        end
+
       end
       
       def description
@@ -231,6 +240,10 @@ class String
 
       def coerce(foo)
         value.coerce(foo)
+      end
+
+      def unwrap(value)
+        self.class.unwrap(value)
       end
 
       def method_missing(meth, *args, &blk)
