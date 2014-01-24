@@ -108,14 +108,8 @@ def show(*args)
     end.compact # Because next above will cause nils to be inserted
 
     value_list = value_list.sort do |traits1, traits2|
-      v1 = traits1.last
-      while v1.respond_to?(:to_matrix) || v1.class.to_s =~/(Wrapper|Result)$/ do
-        v1 = v1.value
-      end
-      v2 = traits2.last
-      while v2.respond_to?(:to_matrix) || v2.class.to_s =~/(Wrapper|Result)$/ do
-        v2 = v2.value
-      end
+      v1 = unwrap(traits1.last)
+      v2 = unwrap(traits2.last)
       # Sort nils at top
       comparison = if v1.nil?
         v2.nil? ? 0 : -1
@@ -124,7 +118,7 @@ def show(*args)
       end
       comparison ||= v1.object_id <=> v2.object_id # If all else fails, this should be consistent
       if comparison == 0
-        comparison = traits1[-2].value.value <=> traits2[-2].value.value # Break ties with file paths
+        comparison = unwrap(traits1[-2]) <=> unwrap(traits2[-2]) # Break ties with file paths
       end
       order_direction*comparison
     end
@@ -150,9 +144,7 @@ def show(*args)
         file, shard = Bun::File.get_shard(file)
         options.merge!(shard: shard)
         if if_clause
-          v = value_of(if_clause, file, options)
-          v = v.value.value if v.respond_to?(:to_matrix) # Get rid of wrapper
-          next unless v
+          next unless unwrap(value_of(if_clause, file, options))
         end
 
         last_values = values = traits.map {|trait| value_of(trait, file, options) }
@@ -166,7 +158,7 @@ def show(*args)
   if last_values && last_values.size == 1
     code = last_values.first.code
     if options[:value]
-      value = last_values.first.value rescue nil
+      value = unwrap(last_values.first) rescue nil
       code = options[:value] == value ? 0 : 1
     end
     exit(code || 0)
@@ -174,6 +166,13 @@ def show(*args)
 end
 
 no_tasks do
+  def unwrap(value)
+    while value.respond_to?(:value) && (value.respond_to?(:to_matrix) || value.class.to_s =~/(Wrapper|Result)$/) do
+      value = value.value
+    end
+    value
+  end
+
   # TODO Opportunity to DRY this out?
   def value_of(expr, file, options={})
     Bun::File.trait(file, expr, options).value(options)

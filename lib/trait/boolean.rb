@@ -8,6 +8,28 @@ require 'lib/trait/base'
 class String
   class Trait
     class Boolean < Base
+      class Result < String::Trait::Base::Result 
+        def !
+          self.not
+        end
+
+        def not
+          res = self.dup
+          res.value = !self.value
+          res
+        end
+      end
+
+      class << self
+        def result_class
+          Result
+        end
+      end
+
+      def !
+        self.value.not
+      end
+
       def test
         missing_method :test
       end

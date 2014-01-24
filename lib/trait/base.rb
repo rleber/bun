@@ -234,7 +234,7 @@ class String
       end
 
       def method_missing(meth, *args, &blk)
-        make_value(value.send(meth, *args, &blk))
+        value.send(meth, *args, &blk)
       end
     end
   end
