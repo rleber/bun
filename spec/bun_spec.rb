@@ -652,6 +652,10 @@ describe Bun::Bot do
           command: "show digest data/test/ar003.0698.bun"
         },
         {
+          title:   "earliest_time",
+          command: "show 'earliest_time' data/test/ar003.0698.bun"
+        },
+        {
           title:   "low legibility, not roff", 
           command: "show legibility roff --in data/test/ar047.1383.bun"
         },
@@ -707,6 +711,10 @@ describe Bun::Bot do
         {
           title:   "field from file with specified shard number",
           command: "show 'shard_name' data/test/ar019.0175.bun[+2]"
+        },
+        {
+          title:   "earliest_time from file with specified shard number",
+          command: "show 'earliest_time' data/test/ar019.0175.bun[+2]"
         },
         {
           title:   "field from file with specified shard name",

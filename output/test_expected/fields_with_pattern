@@ -1,5 +1,6 @@
 catalog_time
 decode_time
+earliest_time
 shard_time
 time
 unpack_time

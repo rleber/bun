@@ -7,6 +7,8 @@ decode_time
 decoded_by
 description
 digest
+earliest_time
+file
 first_block_size
 format
 identifier

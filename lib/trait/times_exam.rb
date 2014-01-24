@@ -13,13 +13,14 @@ class String
         "Extract 'last updated' times"
       end
       
+      # TODO Move this to descriptor?
       def analysis
         time = file.descriptor.time
         catalog_time = file.descriptor.catalog_time
         shard_time = file.descriptor.shard_time
         earliest_time = [time, catalog_time, shard_time].compact.min
         {
-          time:     time,
+          time:          time,
           shard_time:    shard_time,
           catalog_time:  catalog_time,
           earliest_time: earliest_time

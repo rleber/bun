@@ -1,10 +1,10 @@
 TODO
 _High Priority_
+Extend bun scrub to work on multiple files (or create bun archive scrub)
+Test bun scrub
 Create watbun pull, translate
---chronology (or history, calendar, or timetable) option for bun show
---progress option for bun show
+--order option for bun show
 More extensions to bun show
-    --mark option (e.g. bun show expressions --mark foo saves the value of the expressions in a mark 'foo')
     Fully qualified path (e.g. for shards in frozen archives)
     Field_values (returns array of [field_name, value] pairs)
     earliest_time
@@ -18,6 +18,7 @@ More extensions to bun show
     Try determining type by comparing preamble contents:
         Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
             binary load module
+    --mark option (e.g. bun show expressions --mark foo saves the value of the expressions in a mark 'foo')
 Multiple output formats for bun show, et al
 Bun compare (one file from each of two lists), e.g.
     bun compare EXPRESSIONS --in FILES... --vs FILES... --where CONDITION
@@ -79,6 +80,7 @@ _Medium Priority_
 bun catalog should be able to recatalog files of all grades
 Refactor match_expected_output_except_for, using a method, so we can do a series of separate tests
 Fix weird spacing in Thor long descriptions with fixed spacing  
+--progress option for bun show
 Other output formats, e.g. xls, html
 Better audit trail mechanism: Where did a file come from?
     Unpack should record where unpacked from/to

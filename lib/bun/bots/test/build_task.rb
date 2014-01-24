@@ -21,7 +21,7 @@ no_tasks do
     _exec cmd
   end
   
-  def build_file(file, at=nil, format=:unpacked)
+  def build_file(file, at=nil, format=:cataloged)
     from = case format
     when :packed
       "~/fass_work/packed" 

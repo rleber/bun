@@ -8,6 +8,8 @@ decode_time            The date and time at which this file was decoded
 decoded_by             An identifier of the version of the bun software that decoded this file
 description            Description of file (from Honeywell archive)
 digest                 The MD5 checksum digest of the content of this file
+earliest_time          The earliest recorded date for a file
+file                   The path of this file
 first_block_size       The size of the first block in this file (in 36-bit words)
 format                 The format of this file (e.g. :packed, :unpacked, :decoded, :baked)
 identifier             Identifies this file as a bun file

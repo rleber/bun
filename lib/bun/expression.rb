@@ -40,7 +40,13 @@ module Bun
       end
 
       def file
-        File.expand_path(@expr.path)
+        f = File.expand_path(@expr.path)
+        f += "[#{@expr.shard}]" if @expr.shard
+        f
+      end
+
+      def earliest_time
+        trait[:times].value[:earliest_time]
       end
 
       def wrap(value)
@@ -77,6 +83,7 @@ module Bun
         attr_reader :context
 
         class << self
+          # TODO Get rid of this
           def wrap(field_name, value)
             # String::Trait::FieldWrapper.new(field_name, value)
             value
@@ -135,11 +142,12 @@ module Bun
       end
     end
 
-    attr_reader   :expression, :path
+    attr_reader   :expression, :path, :shard
     
     def initialize(options={})
       @expression = options[:expression]
       @path = options[:path]
+      @shard = options[:shard]
       @attachments = {}
     end
     
