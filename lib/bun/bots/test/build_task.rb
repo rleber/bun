@@ -114,17 +114,16 @@ end
 
 desc "build", "Build test files"
 def build
-  build_directory "data/test" do
-    _exec "rm -rf data/test"
-    _exec "cp -rf data/test_init data/test"
-  end
-  
-  build_file "ar003.0698", "data/test"
-  build_file "ar004.0642", "data/test"
-  build_file "ar019.0175", "data/test"
-  build_file "ar119.1801", "data/test"
-  build_file "ar047.1383", "data/test"
-  
+  build_file "ar003.0698", "data/test_init"
+  build_file "ar004.0642", "data/test_init"
+  build_file "ar019.0175", "data/test_init"
+  build_file "ar119.1801", "data/test_init"
+  build_file "ar047.1383", "data/test_init"
+  build_file "ar074.1174", "data/test_init"
+
+  _exec "rm -rf data/test"
+  _exec "cp -rf data/test_init data/test"
+    
   build_standard_directory "data/test/archive/catalog_source_init", :unpacked
   
   $stderr.puts "Not rebuilding data/test/archive/compact_files_init"
