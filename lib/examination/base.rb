@@ -39,7 +39,11 @@ class String
         end
 
         def code
-          exam.code
+          exam.code rescue nil
+        end
+
+        def coerce(foo)
+          [foo, self.value]
         end
         
         # Behave like a Float
@@ -223,6 +227,10 @@ class String
       # TODO Could default this to the base Class name of the subclass
       def titles
         [class_basename.gsub(/((?<!^)[A-Z])/,' \1')] # Insert a space before each capital letter
+      end
+
+      def coerce(foo)
+        value.coerce(foo)
       end
 
       def method_missing(meth, *args, &blk)

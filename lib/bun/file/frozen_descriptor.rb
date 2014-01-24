@@ -154,7 +154,7 @@ module Bun
         end
 
         def time
-          Bun::Data.time(_update_date, _update_time_of_day)
+          Bun::Data.internal_time(_update_date, _update_time_of_day)
         end
         alias_method :updated, :time
 

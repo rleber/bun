@@ -83,7 +83,7 @@ module Bun
         private :packed_update_time_of_day
 
         def time
-          Bun::Data.time(packed_update_date, packed_update_time_of_day)
+          Bun::Data.internal_time(packed_update_date, packed_update_time_of_day)
         end
 
         def blocks

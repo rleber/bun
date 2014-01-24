@@ -54,7 +54,7 @@ module Bun
       end
 
       # Convert a Bun date and time into a Ruby Time
-      def time(date, timestamp)
+      def internal_time(date, timestamp)
         hours, minutes, seconds = time_of_day(timestamp)
         seconds, frac = seconds.divmod(1.0)
         micro_seconds = (frac*1000000).to_i
@@ -222,7 +222,7 @@ module Bun
       self.class.time_of_day content.at(tape)
     end
 
-    def time(date_tape, time_tape)
+    def internal_time(date_tape, time_tape)
       self.class.time date(date_tape), time_of_day(time_tape)
     end
 

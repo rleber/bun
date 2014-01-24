@@ -40,6 +40,10 @@ class String
         def right_justified_columns
           exam.right_justified_columns
         end
+
+        def code
+          nil
+        end
       end
 
       # Designed be overridden in subclasses

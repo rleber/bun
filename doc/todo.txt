@@ -1,7 +1,6 @@
 TODO
 _High Priority_
-Fix right and left coercion of scalar examinations
-Change examinations to aspects (or attributes, traits, characteristics, or properties), throughout
+Change examinations to traits (or attributes, aspects, characteristics, or properties), throughout
 Change e[] to examination[] in expressions
 Change f[] to field[] in expressions
 shards should default to [] in expressions
@@ -79,6 +78,7 @@ Implement interactive (or stream) editor:
 
 _Medium Priority_
 bun catalog should be able to recatalog files of all grades
+Refactor match_expected_output_except_for, using a method, so we can do a series of separate tests
 Fix weird spacing in Thor long descriptions with fixed spacing  
 Other output formats, e.g. xls, html
 Better audit trail mechanism: Where did a file come from?

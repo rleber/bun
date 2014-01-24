@@ -26,29 +26,33 @@ class String
         }
       end
       
-      def format_time(field)
+      def format_time_value(field)
         return 'nil' unless field
-        "#{field.to_s}"
+        field.to_s
       end
       
-      def format_file_time(row)
-        format_time(row[:time])
+      def format_time(row)
+        format_time_value(row[:time])
       end
       
       def format_shard_time(row)
-        format_time(row[:shard_time])
+        format_time_value(row[:shard_time])
       end
 
       def format_catalog_time(row)
-        format_time(row[:catalog_time])
+        format_time_value(row[:catalog_time])
       end
       
       def format_earliest_time(row)
-        format_time(row[:earliest_time])
+        format_time_value(row[:earliest_time])
       end
       
       def fields
         [:time, :shard_time, :catalog_time, :earliest_time]
+      end
+
+      def titles
+        ["File Time", "Shard Time", "Catalog Time", "Earliest Time"]
       end
     end
   end

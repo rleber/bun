@@ -565,8 +565,8 @@ describe Bun::Bot do
           command: "show '1 + legibility' data/test/ar003.0698.bun"
         },
         {
-          title:   "complex formula with matrix examination", 
-          command: "show 'classes*2' data/test/ar003.0698.bun",
+          title:   "bad formula with matrix examination", 
+          command: "show 'classes+1' data/test/ar003.0698.bun",
           fail:    true
         },
         {
@@ -639,19 +639,19 @@ describe Bun::Bot do
           command: "show text data/test/ar019.0175.bun[eclipse]"
         },
         {
-          title:   "--if parameter 1",
+          title:   "--if parameter 1", # matches
           command: "show fields data/test/ar019.0175.bun[+2] --if 'type==:frozen'"
         },
         {
-          title:   "--if parameter 2",
+          title:   "--if parameter 2", # does not match
           command: "show fields data/test/ar019.0175.bun[+2] --if 'type!=:frozen'"
         },
         {
-          title:   "--where parameter",
+          title:   "--where parameter", # does not match
           command: "show fields data/test/ar019.0175.bun[+2] --where 'type!=:frozen'"
         },
         {
-          title:   "--unless parameter",
+          title:   "--unless parameter", # does not match
           command: "show fields data/test/ar019.0175.bun[+2] --unless 'type==:frozen'"
         },
         {

@@ -136,8 +136,6 @@ no_tasks do
   def value_of(expr, file, options={})
     Bun::File.examination(file, expr, options).value(options)
   rescue Bun::Expression::EvaluationError => e 
-    debug "expr: #{expr}"
-    debug caller
     stop "!Bad expression: #{e}"
   end
 end

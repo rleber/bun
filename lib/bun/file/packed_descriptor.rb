@@ -95,7 +95,7 @@ module Bun
     
         def time
           return nil unless type == :frozen
-          Bun::Data.time(packed_update_date, packed_update_time_of_day)
+          Bun::Data.internal_time(packed_update_date, packed_update_time_of_day)
         end
     
         def shards

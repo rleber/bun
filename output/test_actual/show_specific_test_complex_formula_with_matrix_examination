@@ -1,0 +1,14 @@
+/Users/richard/projects/bun/lib/bun/bots/main/show_task.rb:125:in `show': undefined method `code' for #<String::Examination::CountTable::Result:0x007f8404413a40> (NoMethodError)
+	from /Users/richard/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems/thor-0.18.1/lib/thor/command.rb:27:in `run'
+	from /Users/richard/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems/thor-0.18.1/lib/thor/invocation.rb:120:in `invoke_command'
+	from /Users/richard/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems/thor-0.18.1/lib/thor.rb:363:in `dispatch'
+	from /Users/richard/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems/thor-0.18.1/lib/thor/base.rb:439:in `start'
+	from /Users/richard/projects/bun/src/bun:10:in `<main>'
+Text  [A-IK-PR-Wa-z]  6234
+Punctuation  [- !\"%&'()+,./:;<>[]|]  1789
+Control  [\t\n]  385
+Digits  [0-9]  160
+Text  [A-IK-PR-Wa-z]  6234
+Punctuation  [- !\"%&'()+,./:;<>[]|]  1789
+Control  [\t\n]  385
+Digits  [0-9]  160

@@ -66,6 +66,7 @@ class String
         end
 
         def to_titled_matrix
+          # debug caller
           [titles ? [titles] : []] + to_matrix
         end
 
@@ -121,7 +122,8 @@ class String
       def right_justified_columns
         res = fields.map.with_index do |field, i|
           klass = String::Examination.exam_class(field) rescue nil
-          [(klass && klass.justification) || :left, i]
+          justification = klass && klass.justification rescue :left
+          [justification, i]
         end
         res = res.select {|justification, index| justification == :right}
                  .map{|justification, index| index}
