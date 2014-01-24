@@ -37,6 +37,10 @@ class String
         def right_justified_columns
           []
         end
+
+        def code
+          exam.code
+        end
         
         # Behave like a Float
         def method_missing(meth, *args, &blk)
@@ -219,6 +223,10 @@ class String
       # TODO Could default this to the base Class name of the subclass
       def titles
         [class_basename.gsub(/((?<!^)[A-Z])/,' \1')] # Insert a space before each capital letter
+      end
+
+      def method_missing(meth, *args, &blk)
+        make_value(value.send(meth, *args, &blk))
       end
     end
   end

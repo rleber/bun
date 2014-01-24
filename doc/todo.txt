@@ -1,7 +1,10 @@
 TODO
 _High Priority_
-fields should default if they don't exist (e.g. mostly to nil; shards might default to [])
-Change time to time throughout
+Fix right and left coercion of scalar examinations
+Change examinations to aspects (or attributes, traits, characteristics, or properties), throughout
+Change e[] to examination[] in expressions
+Change f[] to field[] in expressions
+shards should default to [] in expressions
 Create watbun pull, translate
 More extensions to bun examine
     --mark option (e.g. bun show expressions --mark foo saves the value of the expressions in a mark 'foo')
