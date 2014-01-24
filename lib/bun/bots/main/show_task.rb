@@ -1,23 +1,21 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-desc "show [OPTIONS] EXAMINATIONS... FILES...", "Analyze the contents of files"
+desc "show [OPTIONS] EXPRESSIONS... FILES...", "Analyze the contents of files"
 option 'asis',    :aliases=>'-a', :type=>'boolean', :desc=>"Do not attempt to decode file"
-# TODO Needs some explanation
-option 'case',    :aliases=>'-c', :type=>'boolean', :desc=>"Case insensitive"
 option 'format',  :aliases=>'-F', :type=>'string',  :desc=>"Use other formats", :default=>'text'
 option 'if',      :aliases=>'-i', :type=>'string',  :desc=>"Only show the result for files which match this expression"
 option 'inspect', :aliases=>'-I', :type=>'boolean', :desc=>"Just echo back the value of --trait as received"
 option 'justify', :aliases=>'-j', :type=>'boolean', :desc=>"Line up the text neatly"
-# TODO Better syntax for this?
-option 'min',     :aliases=>'-M', :type=>'numeric', :desc=>"For counting traits: minimum count"
+option 'order',   :aliases=>'-o', :type=>'string',  :desc=>"Sort in the order of this expression (may have prefix)"
+option 'inspect', :aliases=>'-I', :type=>'boolean', :desc=>"Just echo back the value of --trait as received"
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>"Quiet mode"
 option 'raise',   :aliases=>'-r', :type=>'boolean', :desc=>"Allow expression evaluations to raise exceptions"
 option 'save',    :aliases=>'-s', :type=>'string',  :desc=>"Save the result under this name as a mark in the file"
 option 'titles',  :aliases=>'-t', :type=>'boolean', :desc=>"Always include column titles in print listing"
 option 'usage',   :aliases=>'-U', :type=>'boolean', :desc=>"List usage information"
-# TODO Is this still necessary?
 option 'unless',  :aliases=>'-u', :type=>'string',  :desc=>"Only show the result for files which do not match this expression"
+# TODO Is this still necessary?
 option 'value',   :aliases=>'-v', :type=>'string',  :desc=>"Set the return code based on whether the" +
                                                            " result matches this value"
 option 'where',   :aliases=>'-w', :type=>'string',  :desc=>"Synonym for --if"
@@ -27,6 +25,12 @@ Examine the contents or characteristics of files.
 Many analyses are available via the EXAMINATION parameter. See --usage for more detail.
 
 If more than one EXAMINATION is provided, then they must be separated from the FILES by the marker --in.
+
+--if and --where are synonyms, and --unless is the opposite. They may all be used, in which case results are only
+included if all three tests pass. Example: bun show ... --if 'type==:frozen' --unless 'block_count > 3'
+
+--order allows you to provide a sort order for results. It can be any Ruby expression, similar to the EXPRESSIONS
+arguments. It may (optionally) be preceded with a prefix like "asc:" or "desc:" to specify sort order.
 
 Available formats are: #{Bun::Formatter.valid_formats.join(', ')}
 
@@ -81,9 +85,18 @@ def show(*args)
 
   traits.unshift('file') if files.size>1 && !traits.include?('file')
 
-  last_values = nil
-  Formatter.open('-', justify: options[:justify], format: format) do |formatter|
-    files.each do |file|
+  if options[:order] # Fetch the data once, and sort it, then display it later
+    if options[:order] =~ /^\s*(asc|desc|a|d|ascending|descending):(.*)$/i
+      order_direction = $1[0].downcase == 'a' ? +1 : -1
+      order_expression = $2
+    else
+      order_direction = +1
+      order_expression = options[:order]
+    end
+    traits.push 'file'
+    traits.push order_expression
+
+    value_list = files.map do |file|
       file, shard = Bun::File.get_shard(file)
       options.merge!(shard: shard)
       if if_clause
@@ -91,33 +104,56 @@ def show(*args)
         v = v.value.value if v.respond_to?(:to_matrix) # Get rid of wrapper
         next unless v
       end
+      traits.map {|trait| value_of(trait, file, options) }
+    end.compact # Because next above will cause nils to be inserted
 
-      last_values = values = traits.map {|trait| value_of(trait, file, options) }
-      unless options[:quiet]
-        # TODO Simplify this
-        matrixes = values.map{|value| value.respond_to?(:to_matrix) ? value.to_matrix : [[value]]}
-        if formatter.count == 0
-          right_columns = []
-          column_count = 0
-          values.each.with_index do |value, i|
-            # TODO Simplify this
-            cols = if value.respond_to?(:right_justified_columns)
-              value.right_justified_columns
-            else
-              value.is_a?(Numeric) ? [0]: []
-            end
-            right_columns += cols.map{|col| col + column_count}
-            column_count += (matrixes[i].first || []).size
-          end
-          titles = values.map{|value| value.titles || ['Value']}.flatten
-          formatter.right_justified_columns = right_columns
-          formatter.titles = titles if options[:titles] || (files.size >1 && column_count > 1)
-        end
-        m = matrixes.matrix_join
-        m.each {|row| formatter << row }
+    value_list = value_list.sort do |traits1, traits2|
+      v1 = traits1.last.value.value # Will be wrapped; need to remove the wrappers
+      v2 = traits2.last.value.value
+      # Sort nils at top
+      comparison = if v1.nil?
+        v2.nil? ? 0 : -1
+      else
+        v2.nil? ? 1 : (v1<=>v2)
       end
-      if options[:save] && !File.binary?(file)
-        Bun::File::Unpacked.mark(file, {options[:save]=>value}.inspect)
+      comparison ||= v1.object_id <=> v2.object_id # If all else fails, this should be consistent
+      if comparison == 0
+        comparison = traits1[-2].value.value <=> traits2[-2].value.value # Break ties with file paths
+      end
+      order_direction*comparison
+    end
+    value_list.map!{|traits| traits[0..-2]} # Drop the sort field
+
+    # Now output
+    # TODO DRY this up
+    last_values = nil
+    Formatter.open('-', justify: options[:justify], format: format) do |formatter|
+      value_list.each do |values|
+        file = values.pop
+        last_values = values
+        output_values(formatter, values, titles: options[:titles]) unless options[:quiet]
+        if options[:save] && !File.binary?(file)
+          Bun::File::Unpacked.mark(file, {options[:save]=>value}.inspect)
+        end
+      end
+    end
+  else # Not sorted
+    last_values = nil
+    Formatter.open('-', justify: options[:justify], format: format) do |formatter|
+      files.each do |file|
+        file, shard = Bun::File.get_shard(file)
+        options.merge!(shard: shard)
+        if if_clause
+          v = value_of(if_clause, file, options)
+          v = v.value.value if v.respond_to?(:to_matrix) # Get rid of wrapper
+          next unless v
+        end
+
+        last_values = values = traits.map {|trait| value_of(trait, file, options) }
+        output_values(formatter, values, titles: options[:titles]) unless options[:quiet]
+        if options[:save] && !File.binary?(file)
+          Bun::File::Unpacked.mark(file, {options[:save]=>value}.inspect)
+        end
       end
     end
   end
@@ -137,5 +173,29 @@ no_tasks do
     Bun::File.trait(file, expr, options).value(options)
   rescue Bun::Expression::EvaluationError => e 
     stop "!Bad expression: #{e}"
+  end
+
+  def output_values(formatter, values, options={})
+    # TODO Simplify this
+    matrixes = values.map{|value| value.respond_to?(:to_matrix) ? value.to_matrix : [[value]]}
+    if formatter.count == 0
+      right_columns = []
+      column_count = 0
+      values.each.with_index do |value, i|
+        # TODO Simplify this
+        cols = if value.respond_to?(:right_justified_columns)
+          value.right_justified_columns
+        else
+          value.is_a?(Numeric) ? [0]: []
+        end
+        right_columns += cols.map{|col| col + column_count}
+        column_count += (matrixes[i].first || []).size
+      end
+      titles = values.map{|value| value.titles || ['Value']}.flatten
+      formatter.right_justified_columns = right_columns
+      formatter.titles = titles if options[:titles] || column_count > 1
+    end
+    m = matrixes.matrix_join
+    m.each {|row| formatter << row }
   end
 end

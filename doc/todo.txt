@@ -1,8 +1,5 @@
 TODO
 _High Priority_
-Extend bun scrub to work on multiple files (or create bun archive scrub)
-Create watbun pull, translate
---order option for bun show
 More extensions to bun show
     Fully qualified path (e.g. for shards in frozen archives)
     Field_values (returns array of [field_name, value] pairs)
@@ -17,8 +14,7 @@ More extensions to bun show
     Try determining type by comparing preamble contents:
         Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
             binary load module
-    --mark option (e.g. bun show expressions --mark foo saves the value of the expressions in a mark 'foo')
-Multiple output formats for bun show, et al
+Create watbun pull, translate
 Bun compare (one file from each of two lists), e.g.
     bun compare EXPRESSIONS --in FILES... --vs FILES... --where CONDITION
       e.g. --where 'file1.digest == file2.digest && file1.text != file2.digest'

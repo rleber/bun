@@ -74,6 +74,18 @@ module Bun
         end
       end
     end
+
+    def scrub(to, options={})
+      to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
+      FileUtils.rm_rf to_path unless options[:dryrun]
+      leaves.each do |leaf|
+        # file = File::Decoded.open(leaf)
+        relative_leaf = relative_path(leaf)
+        to_file = File.join(to_path,relative_leaf)
+        File.scrub(leaf, to_file, options)
+        $stderr.puts "scrub #{relative_leaf}" unless options[:quiet]
+      end
+    end
     
     def classify(to, options={})
       no_move = options[:dryrun] || !to

@@ -739,6 +739,10 @@ describe Bun::Bot do
           command: "show fields data/test/ar019.0175.bun[+2] --unless 'type==:frozen'"
         },
         {
+          title:   "--order parameter",
+          command: "show tape_size data/test/archive/general_test --order 'desc:tape_size' -j"
+        },
+        {
           title:   "bad field or trait",
           command: "show foo data/test/ar019.0175.bun[eclipse]",
           fail:    true

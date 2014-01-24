@@ -279,7 +279,20 @@ module Bun
           File::Decoded.open(path, options.merge(promote: true)) {|f| f.bake(to, scrub: scrub)}
         end
       end
-     
+
+      SCRUB_COLUMN_WIDTH = 60
+      SCRUB_FORM_FEED    = %q{"\n" + "-"*column_width + "\n"}
+      SCRUB_VERTICAL_TAB = %q{"\n"}
+
+      def scrub(from, to, options={})
+        column_width = options[:width] || SCRUB_COLUMN_WIDTH
+        form_feed = options[:ff] || eval(SCRUB_FORM_FEED)
+        vertical_tab = options[:vtab] || eval(SCRUB_VERTICAL_TAB)
+        text = File.read(from)
+        scrubbed_text = text.scrub(:column_width=>column_width, :form_feed=>form_feed, :vertical_tab=>vertical_tab)
+        Shell.new.write(to, scrubbed_text)
+      end
+
       def expand_path(path, relative_to=nil)
         path == '-' ? path : super(path, relative_to)
       end
