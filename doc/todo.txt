@@ -3,11 +3,11 @@ _High Priority_
 More extensions to bun show
     Fully qualified path (e.g. for shards in frozen archives)
     Field_values (returns array of [field_name, value] pairs)
-    earliest_time
     Printer listing
         Largely printable
         Very few large runs
         Overstruck
+        Tabbed
     Object file
         Very few large runs
         Largely unreadable

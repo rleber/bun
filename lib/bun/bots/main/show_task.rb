@@ -108,8 +108,12 @@ def show(*args)
     end.compact # Because next above will cause nils to be inserted
 
     value_list = value_list.sort do |traits1, traits2|
-      v1 = traits1.last.value.value # Will be wrapped; need to remove the wrappers
-      v2 = traits2.last.value.value
+      while v1.class.to_s =~/(Wrapper|Result)$/ do
+        v1 = v1.value
+      end
+      while v2.class.to_s =~/(Wrapper|Result)$/ do
+        v2 = v2.value
+      end
       # Sort nils at top
       comparison = if v1.nil?
         v2.nil? ? 0 : -1
