@@ -488,6 +488,68 @@ describe Bun::Bot do
     end
   end
 
+  describe "fields" do
+    [
+      {
+        :title=>"no options",
+        :command=>"fields"
+      },
+      {
+        :title=>"-l option",
+        :command=>"fields -l"
+      },
+      {
+        :title=>"with pattern",
+        :command=>"fields time"
+      },
+      {
+        :title=>"with pattern and -l",
+        :command=>"fields time -l"
+      },
+    ].each do |test|
+      exec_test(
+        test[:title], 
+        test[:command], 
+        "fields", 
+        allowed: test[:allowed]||[0],
+        fail: test[:fail]
+      )
+    end
+  end
+
+  describe "traits" do
+    [
+      {
+        :title=>"no options",
+        :command=>"traits"
+      },
+      {
+        :title=>"-l option",
+        :command=>"traits -l"
+      },
+      {
+        :title=>"-o option",
+        :command=>"traits -o"
+      },
+      {
+        :title=>"with pattern",
+        :command=>"traits c"
+      },
+      {
+        :title=>"with pattern and -o",
+        :command=>"traits c -o"
+      },
+    ].each do |test|
+      exec_test(
+        test[:title], 
+        test[:command], 
+        "traits", 
+        allowed: test[:allowed]||[0],
+        fail: test[:fail]
+      )
+    end
+  end
+
   describe "show" do
     context "basic tests" do
       include_examples "command", "show clean file", "show --asis clean data/test/clean", "show_clean"
@@ -532,6 +594,22 @@ describe Bun::Bot do
     end
     context "specific tests" do
       [
+        {
+          title:   "field[] syntax with symbol", 
+          command: "show 'field[:first_block_size]' data/test/ar003.0698.bun"
+        },
+        {
+          title:   "field[] syntax with string", 
+          command: %Q{show 'field["first_block_size"]' data/test/ar003.0698.bun}
+        },
+        {
+          title:   "trait[] syntax with symbol", 
+          command: "show 'trait[:legibility]' data/test/ar003.0698.bun"
+        },
+        {
+          title:   "trait[] syntax with string", 
+          command: %Q{show 'trait["legibility"]' data/test/ar003.0698.bun}
+        },
         {
           title:   "matrix result without file, --titles, or --justify", 
           command: "show 'chars' data/test/ar003.0698.bun"

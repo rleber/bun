@@ -1,0 +1,19 @@
+Trait              Description
+chars              Count every character
+classes            Count major classes of characters
+clean              Test if data contains unreadable characters
+controls           Count different control characters
+english            Calculate proportion of english words
+fields             List fields of the file
+file               File path of file
+legibility         Calculate proportion of readable characters
+non_english_words  List non-english words
+overstruck         Does data contain backspaces?
+printable          Analyze printable vs. non-printable characters
+roff               Does text contain roff commands?
+run_size           Calculate average size of runs of readable characters
+runs               Count runs of word characters
+stats              Statistics about likelihood this is not a text file
+tabbed             Does data contain tabs?
+times              Extract 'last updated' times
+words              Count words

@@ -1,0 +1,30 @@
+Trait/Options       Description
+chars               Count every character
+  minimum             Only include occurrences with at least this minimum count
+classes             Count major classes of characters
+  minimum             Only include occurrences with at least this minimum count
+clean               Test if data contains unreadable characters
+controls            Count different control characters
+  minimum             Only include occurrences with at least this minimum count
+english             Calculate proportion of english words
+fields              List fields of the file
+file                File path of file
+legibility          Calculate proportion of readable characters
+non_english_words   List non-english words
+  minimum             Only include occurrences with at least this minimum count
+overstruck          Does data contain backspaces?
+printable           Analyze printable vs. non-printable characters
+  minimum             Only include occurrences with at least this minimum count
+roff                Does text contain roff commands?
+run_size            Calculate average size of runs of readable characters
+runs                Count runs of word characters
+  case_insensitive    Ignore upper and lower case
+  minimum             Only include occurrences with at least this minimum count
+stats               Statistics about likelihood this is not a text file
+  minimum             Only include occurrences with at least this minimum count
+tabbed              Does data contain tabs?
+times               Extract 'last updated' times
+  minimum             Only include occurrences with at least this minimum count
+words               Count words
+  case_insensitive    Ignore upper and lower case
+  minimum             Only include occurrences with at least this minimum count

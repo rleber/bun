@@ -52,11 +52,9 @@ module Bun
       # end
     
       def method_missing(name, *args, &blk)
-        if field.has_field?(name)
+        if File::Descriptor::Base.field_valid?(name)
           raise NoMethodError, "Method #{name} not defined" if args.size>0 || block_given?
           field[name]
-        elsif File::Descriptor::Base.field_valid?(name) # This is a valid field name, but this file hasn't got one
-          FieldAccessor.wrap(name, File::Descriptor::Base.default_value_for(name))
         elsif trait.has_trait?(name)
           raise NoMethodError, "Method #{name} not defined" if args.size>1 || block_given?
           options = args[0] || {}
@@ -99,7 +97,12 @@ module Bun
         end
       
         def [](field_name)
-          self.class.wrap(field_name, file_object.descriptor[field_name.to_sym])
+          value = if has_field?(field_name)
+            file_object.descriptor[field_name.to_sym]
+          else
+            File::Descriptor::Base.field_default_for(field_name)
+          end
+          self.class.wrap(field_name, value)
         end
       end
     

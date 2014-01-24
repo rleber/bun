@@ -1,7 +1,5 @@
 TODO
 _High Priority_
-Add tests for bun fields, bun traits
-shards should default to [] in expressions
 Create watbun pull, translate
 More extensions to bun show
     --mark option (e.g. bun show expressions --mark foo saves the value of the expressions in a mark 'foo')

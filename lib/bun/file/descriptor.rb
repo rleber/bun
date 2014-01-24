@@ -26,10 +26,6 @@ module Bun
             VALID_FIELDS.keys.include?(name.to_sym)
           end
 
-          def default_value_for(name)
-            nil
-          end
-
           def field_definitions
             VALID_FIELDS
           end
@@ -39,15 +35,25 @@ module Bun
           end
 
           def all_field_definitions
-            field_definitions.merge synthetic_field_definitions
+            @all_field_definitions ||= field_definitions.merge(synthetic_field_definitions)
           end
 
           def field_definition_array
-            field_definitions.to_a.sort
+            field_definitions.to_a.map{|key, defn| [key, defn.is_a?(Hash) ? defn[:desc] : defn]}.sort
+          end
+
+          def field_defaults
+            @field_defaults ||=
+              all_field_definitions.to_a.select{|key, defn| defn.is_a?(Hash) && defn[:default]} \
+                .inject({}) {|hsh, pair| key, defn = pair; hsh[key] = defn[:default]; hsh}
+          end
+
+          def field_default_for(name)
+            field_defaults[name.to_sym]
           end
 
           def all_field_definition_array
-            all_field_definitions.to_a.sort
+            all_field_definitions.to_a.map{|key, defn| [key, defn.is_a?(Hash) ? defn[:desc] : defn]}.sort
           end
 
           def all_field_definition_table

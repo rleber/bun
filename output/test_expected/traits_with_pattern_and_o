@@ -1,0 +1,9 @@
+Trait/Options  Description
+chars          Count every character
+  minimum        Only include occurrences with at least this minimum count
+classes        Count major classes of characters
+  minimum        Only include occurrences with at least this minimum count
+clean          Test if data contains unreadable characters
+controls       Count different control characters
+  minimum        Only include occurrences with at least this minimum count
+overstruck     Does data contain backspaces?
