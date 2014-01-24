@@ -84,7 +84,7 @@ module Bun
 
       leaves.each do |old_file|
         f = relative_path(old_file)
-        status = Bun::File::Decoded.examination(old_file, test).to_s
+        status = Bun::File::Decoded.trait(old_file, test).to_s
         warn "#{f} is #{status}" unless options[:quiet]
         unless no_move
           new_file = File.join(to, status, f)

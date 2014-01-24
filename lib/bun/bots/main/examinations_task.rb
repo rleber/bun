@@ -3,29 +3,29 @@
 
 require 'lib/bun/formatter'
 
-desc "examinations PATTERN", "List the available examinations for files"
+desc "traits PATTERN", "List the available traits for files"
 option "long",    :aliases=>'-l', :type=>'boolean', :desc=>'Include descriptions'
-option "options", :aliases=>'-o', :type=>'boolean', :desc=>'Show options usage information for examinations'
+option "options", :aliases=>'-o', :type=>'boolean', :desc=>'Show options usage information for traits'
 long_desc <<-EOT
-PATTERN is any valid Ruby regular expression, e.g. examinations "^.*foo"
+PATTERN is any valid Ruby regular expression, e.g. traits "^.*foo"
 EOT
-def examinations(pattern='.*')
+def traits(pattern='.*')
   regex = %r{#{pattern}}i
-  exams = String::Examination.exams.select {|name| name =~ regex }
+  traits = String::Trait.traits.select {|name| name =~ regex }
   long = options[:long] || options[:options]
-  rows = exams.map do |exam|
-    long ? String::Examination.exam_definitions.find {|name, defn| name == exam } : [exam]
+  rows = traits.map do |trait|
+    long ? String::Trait.exam_definitions.find {|name, defn| name == trait } : [trait]
   end
   Formatter.open("-", justify: true) do |usage_formatter|
     if options[:options]
-      usage_formatter.titles = %w{Examination/Options Description}
+      usage_formatter.titles = %w{Trait/Options Description}
     elsif long
-      usage_formatter.titles = %w{Examination Description}
+      usage_formatter.titles = %w{Trait Description}
     end
     rows.each do |row|
       usage_formatter << row
       next if !options[:options]
-      exam_class = String::Examination.exam_class(row[0])
+      exam_class = String::Trait.exam_class(row[0])
       exam_class.option_definitions.each do |usage_defn|
         usage_formatter << ["  "+usage_defn[:name], "  "+usage_defn[:desc]]
       end

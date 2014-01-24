@@ -1,11 +1,11 @@
 TODO
 _High Priority_
-Change examinations to traits (or attributes, aspects, characteristics, or properties), throughout
-Change e[] to examination[] in expressions
+Change e[] to trait[] in expressions
 Change f[] to field[] in expressions
+Add tests for bun fields, bun traits
 shards should default to [] in expressions
 Create watbun pull, translate
-More extensions to bun examine
+More extensions to bun show
     --mark option (e.g. bun show expressions --mark foo saves the value of the expressions in a mark 'foo')
     Fully qualified path (e.g. for shards in frozen archives)
     Field_values (returns array of [field_name, value] pairs)
@@ -19,11 +19,10 @@ More extensions to bun examine
     Try determining type by comparing preamble contents:
         Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
             binary load module
-Multiple output formats for bun examine, et al
+Multiple output formats for bun show, et al
 Bun compare (one file from each of two lists), e.g.
-    bun compare EXAMINATIONS --in FILES... --vs FILES... --where CONDITION
+    bun compare EXPRESSIONS --in FILES... --vs FILES... --where CONDITION
       e.g. --where 'file1.digest == file2.digest && file1.text != file2.digest'
-Better caching: should be done at the object level, not globally
 Allow decoding and baking frozen archives to STDOUT
     Insert separators
         Allow separators to be overridden
@@ -55,8 +54,9 @@ Major rewrite:
     No distinction between libraries and archives
         Archives don't care how they're organized
     Simpler model for file promotion, using inheritance
-    Is there really any meaningful distinction between field examinations and other examinations?
+    Is there really any meaningful distinction between field traits and other traits?
     Collapse archive/library as much as possible
+    Sensible caching, less file rereading; cache at object or class level, not globally
     Separate bun show logic into a separate class/gem, loosely coupled to File characteristics
     Separate Slicr gem
     Separate Bots gem?

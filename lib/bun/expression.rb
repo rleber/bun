@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 #  -*- encoding: utf-8 -*-
 
-require 'lib/examination/wrapper'
+require 'lib/trait/wrapper'
 
 module Bun
   class Expression
@@ -60,16 +60,16 @@ module Bun
         elsif e.has_exam?(name)
           raise NoMethodError, "Method #{name} not defined" if args.size>1 || block_given?
           options = args[0] || {}
-          exam = e[name]
+          trait = e[name]
           options = {options=>true} if options.is_a?(Symbol)
           options.each do |key, value|
             begin
-              exam.send("#{key}=", value)
+              trait.send("#{key}=", value)
             rescue NoMethodError
-              raise EvaluationParameterError, "Examination #{name.inspect} does not recognize parameter #{key.inspect}"
+              raise EvaluationParameterError, "Trait #{name.inspect} does not recognize parameter #{key.inspect}"
             end
           end
-          exam
+          trait
         else
           raise NoMethodError, "Method #{name} not defined"
         end
@@ -80,7 +80,7 @@ module Bun
 
         class << self
           def wrap(field_name, value)
-            # String::Examination::FieldWrapper.new(field_name, value)
+            # String::Trait::FieldWrapper.new(field_name, value)
             value
           end
         end
@@ -114,7 +114,7 @@ module Bun
         def at(analysis, options={})
           analysis = analysis.to_sym
           unless @bound_examinations[analysis]
-            examiner = String::Examination.create(analysis, options)
+            examiner = String::Trait.create(analysis, options)
             context.expr.copy_attachment(:file, examiner)
             context.expr.copy_attachment(:data, examiner, :string)
             @bound_examinations[analysis] = examiner
@@ -123,7 +123,7 @@ module Bun
         end
 
         def has_exam?(name)
-          String::Examination.exams.include?(name.to_s)
+          String::Trait.traits.include?(name.to_s)
         end
       
         def [](analysis, options={})
@@ -155,7 +155,7 @@ module Bun
       end
       unless value.respond_to?(:to_matrix)
         titles = [ @expression =~ /^\w+$/ ? @expression.titleize : @expression ]
-        value = String::Examination::Wrapper.wrap(value, :titles=>titles)
+        value = String::Trait::Wrapper.wrap(value, :titles=>titles)
       end
       value
     end

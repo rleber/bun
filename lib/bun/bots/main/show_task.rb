@@ -7,10 +7,10 @@ option 'asis',    :aliases=>'-a', :type=>'boolean', :desc=>"Do not attempt to de
 option 'case',    :aliases=>'-c', :type=>'boolean', :desc=>"Case insensitive"
 option 'format',  :aliases=>'-F', :type=>'string',  :desc=>"Use other formats", :default=>'text'
 option 'if',      :aliases=>'-i', :type=>'string',  :desc=>"Only show the result for files which match this expression"
-option 'inspect', :aliases=>'-I', :type=>'boolean', :desc=>"Just echo back the value of --exam as received"
+option 'inspect', :aliases=>'-I', :type=>'boolean', :desc=>"Just echo back the value of --trait as received"
 option 'justify', :aliases=>'-j', :type=>'boolean', :desc=>"Line up the text neatly"
 # TODO Better syntax for this?
-option 'min',     :aliases=>'-M', :type=>'numeric', :desc=>"For counting examinations: minimum count"
+option 'min',     :aliases=>'-M', :type=>'numeric', :desc=>"For counting traits: minimum count"
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>"Quiet mode"
 option 'raise',   :aliases=>'-r', :type=>'boolean', :desc=>"Allow expression evaluations to raise exceptions"
 option 'save',    :aliases=>'-s', :type=>'string',  :desc=>"Save the result under this name as a mark in the file"
@@ -32,12 +32,12 @@ Available formats are: #{Bun::Formatter.valid_formats.join(', ')}
 
 EOT
 def show(*args)
-  # Check for separator ('--in') between exams and files
-  exams, files = split_arguments_at_separator('--in', *args, assumed_before: 1)
-  check_for_unknown_options(*exams, *files)
+  # Check for separator ('--in') between traits and files
+  traits, files = split_arguments_at_separator('--in', *args, assumed_before: 1)
+  check_for_unknown_options(*traits, *files)
 
   if options[:usage]
-    puts String::Examination.usage
+    puts String::Trait.usage
     exit
   end
 
@@ -49,10 +49,10 @@ def show(*args)
   if_clause = nil if if_clause==''
   format = options[:format].to_sym
 
-  stop "!First argument should be an examination expression" unless exams.size > 0
+  stop "!First argument should be an trait expression" unless traits.size > 0
   
   if options[:inspect]
-    puts exams
+    puts traits
     puts "--if #{options[:if]}" if options[:if]
     puts "--where #{options[:where]}" if options[:where]
     puts "--unless #{options[:unless]}" if options[:where]
@@ -79,7 +79,7 @@ def show(*args)
     res
   end.flatten
 
-  exams.unshift('file') if files.size>1 && !exams.include?('file')
+  traits.unshift('file') if files.size>1 && !traits.include?('file')
 
   last_values = nil
   Formatter.open('-', justify: options[:justify], format: format) do |formatter|
@@ -92,7 +92,7 @@ def show(*args)
         next unless v
       end
 
-      last_values = values = exams.map {|exam| value_of(exam, file, options) }
+      last_values = values = traits.map {|trait| value_of(trait, file, options) }
       unless options[:quiet]
         # TODO Simplify this
         matrixes = values.map{|value| value.respond_to?(:to_matrix) ? value.to_matrix : [[value]]}
@@ -134,7 +134,7 @@ end
 no_tasks do
   # TODO Opportunity to DRY this out?
   def value_of(expr, file, options={})
-    Bun::File.examination(file, expr, options).value(options)
+    Bun::File.trait(file, expr, options).value(options)
   rescue Bun::Expression::EvaluationError => e 
     stop "!Bad expression: #{e}"
   end

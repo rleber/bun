@@ -136,13 +136,13 @@ module Bun
         data
       end
       
-      def examination(file, exam, options={})
-        Bun::File.create_expression(file, exam, 
+      def trait(file, trait, options={})
+        Bun::File.create_expression(file, trait, 
           promote: options[:promote], shard: options[:shard], raise: options[:raise])
       end
       
       def create_examination(path, analysis, options={})
-        examiner = String::Examination.create(analysis, options)
+        examiner = String::Trait.create(analysis, options)
         examiner.attach(:string) { baked_data(path, options) } # Lazy evaluation of file contents
         examiner.attach(:file, self)
         examiner

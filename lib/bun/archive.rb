@@ -262,7 +262,7 @@ module Bun
           res=false
           begin
             if !File.directory?(file)
-              result = Bun::File.examination(file, options)
+              result = Bun::File.trait(file, options)
               code = result[:code] || 0
               if options[:value]
                 code = test_value == result[:result] ? 0 : 1
@@ -278,8 +278,8 @@ module Bun
           rescue Formula::EvaluationError => e
             warn "!Evaluation error: #{e}" unless options[:quiet]
             res = nil
-          rescue String::Examination::Invalid => e
-            warn "!Invalid analysis: #{options[:exam]}" unless options[:quiet]
+          rescue String::Trait::Invalid => e
+            warn "!Invalid analysis: #{options[:trait]}" unless options[:quiet]
             res = nil
           end
           res
@@ -290,30 +290,30 @@ module Bun
         glob_all(files).map do |file|
           begin
             if !File.directory?(file)
-              exam = Bun::File.examination(file, expr, options)
-              code = exam.code || 0
-              res = exam.value(raise: options[:raise])
+              trait = Bun::File.trait(file, expr, options)
+              code = trait.code || 0
+              res = trait.value(raise: options[:raise])
               res = res ? 'match' : 'no_match' if options[:match]
               if options[:value]
                 code = options[:value] == res ? 0 : 1
               end
-              result = {file: file, code: exam.code, result: res}
+              result = {file: file, code: trait.code, result: res}
               result = yield(result) if block_given?
               result
             end
           rescue Expression::EvaluationError => e
             warn "!Evaluation error: #{e}" unless options[:quiet]
             {file: file, result: nil, code: 0}
-          rescue String::Examination::Invalid => e
-            warn "!Invalid analysis: #{options[:exam]}" unless options[:quiet]
+          rescue String::Trait::Invalid => e
+            warn "!Invalid analysis: #{options[:trait]}" unless options[:quiet]
             {file: file, result: nil, code: 0}
           end
         end
       end
 
-      def duplicates(exam, files, options={})
+      def duplicates(trait, files, options={})
         table = []
-        examine_map(exam, files, options) do |result| 
+        examine_map(trait, files, options) do |result| 
           res = result[:result]
           res = res.value if res.class.to_s =~ /Wrapper/ # A bit smelly
           res = res.value if res.class.to_s =~ /Wrapper/ # A bit smelly
@@ -497,8 +497,8 @@ module Bun
           end
     end
 
-    def duplicates(exam, options={})
-      Archive.duplicates(exam, leaves.to_a, options)
+    def duplicates(trait, options={})
+      Archive.duplicates(trait, leaves.to_a, options)
     end
 
     def compact_groups(options={}, &blk)

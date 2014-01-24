@@ -10,7 +10,7 @@ class String
     self.inspect[1..-2]
   end
   
-  class Examination; end # Defined elsewhere
+  class Trait; end # Defined elsewhere
   
   VALID_CONTROL_CHARACTER_HASH = {
     line_feed:       "\n", 
@@ -76,12 +76,12 @@ class String
   end
   
   def counts(*character_sets)
-    counter = String::Examination::Base.new(self, character_sets)
+    counter = String::Trait::Base.new(self, character_sets)
     counter.counts
   end
   
   def count_hash(*character_sets)
-    counter = String::Examination::Base.new(self, character_sets)
+    counter = String::Trait::Base.new(self, character_sets)
     counter.character_counts
   end
 
@@ -97,8 +97,8 @@ class String
     self.force_encoding('ascii-8bit') =~ /\x8/
   end
   
-  def examination(analysis, options={})
-    examiner = String::Examination.create(analysis, options)
+  def trait(analysis, options={})
+    examiner = String::Trait.create(analysis, options)
     examiner.attach :string, self
     examiner
   end
@@ -210,5 +210,5 @@ class String
   
 end
 
-require 'lib/examination'
+require 'lib/trait'
 require 'lib/bun/expression'

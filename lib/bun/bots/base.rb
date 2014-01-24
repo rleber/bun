@@ -63,7 +63,7 @@ module Bun
           end
         end
 
-        # Bun examine, map, same, and find allow multiple examinations and multiple files, separated
+        # Bun examine, map, same, and find allow multiple traits and multiple files, separated
         # by a separator marker (in the case of these commands, it's '--in'). This method splits the
         # parameter list into two arrays: one before and one after the separator.
         # The :assumed_before option allows for a fixed number of arguments to be separated into the

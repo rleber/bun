@@ -1,4 +1,4 @@
-/Users/richard/projects/bun/lib/bun/bots/main/show_task.rb:125:in `show': undefined method `code' for #<String::Examination::CountTable::Result:0x007f8404413a40> (NoMethodError)
+/Users/richard/projects/bun/lib/bun/bots/main/show_task.rb:125:in `show': undefined method `code' for #<String::Trait::CountTable::Result:0x007f8404413a40> (NoMethodError)
 	from /Users/richard/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems/thor-0.18.1/lib/thor/command.rb:27:in `run'
 	from /Users/richard/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems/thor-0.18.1/lib/thor/invocation.rb:120:in `invoke_command'
 	from /Users/richard/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems/thor-0.18.1/lib/thor.rb:363:in `dispatch'

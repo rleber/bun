@@ -511,13 +511,13 @@ describe Bun::Bot do
 
     %w{ar003.0698 ar025.0634}.each do |file|
       context "all tests on #{file}" do
-        String::Examination.exams.each do |exam|
-          @current_exam = exam
+        String::Trait.traits.each do |trait|
+          @current_exam = trait
           context @current_exam do
             before :all do
-              @show_result_file = "show_#{exam}_#{file}"
+              @show_result_file = "show_#{trait}_#{file}"
               exec("rm -rf output/test_actual/#{@show_result_file}")
-              exec("bun show file #{exam} --raise -j --titles --in #{TEST_ARCHIVE}/#{file}.bun >output/test_actual/#{@show_result_file}", :allowed=>[0,1])
+              exec("bun show file #{trait} --raise -j --titles --in #{TEST_ARCHIVE}/#{file}.bun >output/test_actual/#{@show_result_file}", :allowed=>[0,1])
             end
             it "should produce the proper output" do
               @show_result_file.should match_expected_output
@@ -557,15 +557,15 @@ describe Bun::Bot do
           command: "show '1 + first_block_size' data/test/ar003.0698.bun"
         },
         {
-          title:   "complex formula with examination and right coercion", 
+          title:   "complex formula with trait and right coercion", 
           command: "show 'legibility*2' data/test/ar003.0698.bun"
         },
         {
-          title:   "complex formula with examination and left coercion", 
+          title:   "complex formula with trait and left coercion", 
           command: "show '1 + legibility' data/test/ar003.0698.bun"
         },
         {
-          title:   "bad formula with matrix examination", 
+          title:   "bad formula with matrix trait", 
           command: "show 'classes+1' data/test/ar003.0698.bun",
           fail:    true
         },
@@ -655,12 +655,12 @@ describe Bun::Bot do
           command: "show fields data/test/ar019.0175.bun[+2] --unless 'type==:frozen'"
         },
         {
-          title:   "bad field or exam",
+          title:   "bad field or trait",
           command: "show foo data/test/ar019.0175.bun[eclipse]",
           fail:    true
         },
         {
-          title:   "bad exam parameters",
+          title:   "bad trait parameters",
           command: "show 'words(:foo=>true)' data/test/ar019.0175.bun[eclipse]",
           fail:    true
         },

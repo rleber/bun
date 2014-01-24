@@ -6,7 +6,7 @@ require 'lib/bun/formatter'
 desc "fields PATTERN", "List the available fields for files"
 option "long", :aliases=>'-l', :type=>'boolean', :desc=>'Include descriptions'
 long_desc <<-EOT
-PATTERN is any valid Ruby regular expression, e.g. examinations "^.*foo"
+PATTERN is any valid Ruby regular expression, e.g. traits "^.*foo"
 EOT
 def fields(pattern='.*')
   regex = %r{#{pattern}}i

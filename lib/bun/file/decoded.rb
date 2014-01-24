@@ -24,9 +24,9 @@ module Bun
           @descriptor.shard_count = 1 if @descriptor.type == :frozen
         end
         
-        def examination(path, test)
+        def trait(path, test)
           f = open(path)
-          f.examination(test)
+          f.trait(test)
         end
     
         # Output the ASCII content of a file
@@ -91,8 +91,8 @@ module Bun
         shell.write(to, read) unless to.nil?
       end
 
-      def examination(test)
-        data.examination(test)
+      def trait(test)
+        data.trait(test)
       end
       
       def decoded_text(options={})
