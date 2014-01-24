@@ -1,7 +1,7 @@
 ---
 :identifier: Bun
 :catalog_time: 1982-12-22 00:00:00.000000000 -05:00
-:data_format: :raw
+:format: :raw
 :decode_time: 2014-01-15 21:01:05.178745000 -05:00
 :decoded_by: Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]
 :description: ''

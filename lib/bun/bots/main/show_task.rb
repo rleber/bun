@@ -87,18 +87,25 @@ def show(*args)
       file, shard = Bun::File.get_shard(file)
       options.merge!(shard: shard)
       if if_clause
-        v = value_of(if_clause, file, options).value.value # value_of returns Wrapper; .value gets ValueWrapper; .value.value gets value
-        # debug "file: #{file}, File.type(file): #{File.type(file).inspect}, v: #{v.inspect}"
+        v = value_of(if_clause, file, options)
+        v = v.value.value if v.respond_to?(:to_matrix) # Get rid of wrapper
         next unless v
       end
+
       last_values = values = exams.map {|exam| value_of(exam, file, options) }
       unless options[:quiet]
-        matrixes = values.map{|value| value.to_matrix }
+        # TODO Simplify this
+        matrixes = values.map{|value| value.respond_to?(:to_matrix) ? value.to_matrix : [[value]]}
         if formatter.count == 0
           right_columns = []
           column_count = 0
           values.each.with_index do |value, i|
-            cols = value.right_justified_columns
+            # TODO Simplify this
+            cols = if value.respond_to?(:right_justified_columns)
+              value.right_justified_columns
+            else
+              value.is_a?(Numeric) ? [0]: []
+            end
             right_columns += cols.map{|col| col + column_count}
             column_count += (matrixes[i].first || []).size
           end
@@ -129,6 +136,8 @@ no_tasks do
   def value_of(expr, file, options={})
     Bun::File.examination(file, expr, options).value(options)
   rescue Bun::Expression::EvaluationError => e 
+    debug "expr: #{expr}"
+    debug caller
     stop "!Bad expression: #{e}"
   end
 end

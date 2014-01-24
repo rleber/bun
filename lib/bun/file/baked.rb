@@ -6,10 +6,6 @@ module Bun
   class File < ::File
     class Baked < ::File
       def descriptor
-        nil
-      end
-
-      def descriptor
         @descriptor ||= File::Descriptor::Base.from_hash(nil, format: :baked)
       end
 

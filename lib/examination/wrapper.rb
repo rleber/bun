@@ -12,7 +12,7 @@ class String
         "Encapsulize a scalar value"
       end
 
-      def self.wrap(value, string='', options={})
+      def self.wrap(value, options={})
         case value
         when String::Examination::Base, String::Examination::FieldWrapper, String::Examination::Wrapper
           value
@@ -22,21 +22,35 @@ class String
       end
 
       class ValueWrapper
+        attr_accessor :exam
         attr_accessor :value
-        def initialize(value)
+        attr_accessor :right_justified_columns
+
+        def initialize(exam, value)
+          @exam = exam
           @value = value
+          @right_justified_columns = value.is_a?(::Numeric) ? [0] : []
         end
 
         def to_matrix
-          [[value]]
+          [[to_s]]
         end
 
         def to_s
-          value.to_s
+          case value
+          when NilClass, Symbol
+            value.inspect
+          else
+            value.to_s
+          end
         end
 
         def code
           value.code rescue nil
+        end
+
+        def titles
+          exam.titles
         end
 
         def method_missing(method, *args, &blk)
@@ -49,16 +63,18 @@ class String
       end
 
       attr_reader :value
-      attr_accessor :right_justified_columns
+      attr_accessor :right_justified_columns, :titles
 
       def self.result_class
         ValueWrapper
       end
 
+      # TODO Some of this is redundant
       def initialize(value, options={})
         super(options)
         @value = wrap(value)
         @right_justified_columns = value.is_a?(::Numeric) ? [0] : []
+        @titles = options[:titles]
       end
       
       def analysis
@@ -70,7 +86,7 @@ class String
       end
 
       def wrap(value)
-        self.class.result_class.new(value)
+        self.class.result_class.new(self, value)
       end
 
       def method_missing(method, *args, &blk)

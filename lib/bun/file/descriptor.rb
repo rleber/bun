@@ -26,6 +26,10 @@ module Bun
             VALID_FIELDS.keys.include?(name.to_sym)
           end
 
+          def default_value_for(name)
+            nil
+          end
+
           def field_definitions
             VALID_FIELDS
           end
@@ -100,6 +104,7 @@ module Bun
             raise InvalidField, "Bad field #{name.inspect}" unless name =~ /^user_/ || self.class.field_valid?(name)
           end
           @fields << name unless @fields.include?(name)
+          value = Shards.new(value) if name.to_s == 'shards' && !value.nil?
           instance_variable_set("@#{name}", value)
         end
         private :_set_field

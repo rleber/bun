@@ -5,7 +5,7 @@
 :tape: ar003.0698
 :owner: fass
 :path: fass/idallen/vector
-:data_format: :unpacked
+:format: :decoded
 :unpack_time: 2013-12-29 21:59:10.169749000 -05:00
 :unpacked_by: Bun version 0.0.6 [feature/simplify:77968dbb712eb8fc76b607114641bfe3939b878d]
 :content: ! ".po10\n.sp22\n.ce\n.ul\nTHE VECTOR MACHINE\n.sp5\n.ce\n.ul\nAuthors:\n.sp\n.ce\nCal

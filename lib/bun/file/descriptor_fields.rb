@@ -25,6 +25,7 @@ module Bun
           :owner        => "The Honeywell username of the person who 'owned' this file",
           :path         => "The relative path of the original file on the Honeywell",
           :shards       => "The description of the shards of a frozen file",
+          # :shards       => {:desc=>"The description of the shards of a frozen file", :default=>[]},
           :shard_blocks => "The number of blocks in the original shard for this file (decoded shards only)",
           :shard_name   => "The name of the original shard for this file (decoded shards only)",
           :shard_number => "The number of original shard for this file (decoded shards only)",

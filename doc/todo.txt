@@ -1,9 +1,8 @@
 TODO
 _High Priority_
-Change type to format throughout (or bun_format, original_format, storage_format, as, or stored_as?)
-shards['shard_name'] should work
-Create watbun pull, process (or fetch)
-Eliminate .value.value problem in expressions: Expression => Wrapper => ValueWrapper
+fields should default if they don't exist (e.g. mostly to nil; shards might default to [])
+Change file_time to time throughout
+Create watbun pull, translate
 More extensions to bun examine
     --mark option (e.g. bun show expressions --mark foo saves the value of the expressions in a mark 'foo')
     Fully qualified path (e.g. for shards in frozen archives)

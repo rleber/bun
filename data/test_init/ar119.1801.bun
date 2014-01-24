@@ -1,6 +1,6 @@
 ---
 :identifier: Bun
-:data_format: :raw
+:format: :raw
 :description: ''
 :digest: fc73f7f95a75238b1e9d9c6eaf09cfed
 :format: :unpacked

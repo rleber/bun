@@ -100,7 +100,7 @@ module Bun
     
         def shards
           return @shards if @shards
-          @shards = []
+          @shards = Shards.new
           shard_count.times do |i|
             @shards << Descriptor::Shard.new(self, i).to_hash
           end

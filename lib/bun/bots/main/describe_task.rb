@@ -9,7 +9,7 @@ no_tasks do
   end
 end
 
-STANDARD_FIELDS = %w{description catalog_time data data_format digest format file_time
+STANDARD_FIELDS = %w{description catalog_time data digest format file_time
                      identifier owner path shards tape tape_path tape_size type }.map{|f| f.to_sym}
 
 SHARDS_ACROSS = 5

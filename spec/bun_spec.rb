@@ -549,8 +549,25 @@ describe Bun::Bot do
           command: "show 'chars' data/test/ar003.0698.bun data/test/ar019.0175.bun"
         },
         {
-          title:   "complex formula", 
+          title:   "complex formula with field and right coercion", 
           command: "show 'first_block_size*2' data/test/ar003.0698.bun"
+        },
+        {
+          title:   "complex formula with field and left coercion", 
+          command: "show '1 + first_block_size' data/test/ar003.0698.bun"
+        },
+        {
+          title:   "complex formula with examination and right coercion", 
+          command: "show 'legibility*2' data/test/ar003.0698.bun"
+        },
+        {
+          title:   "complex formula with examination and left coercion", 
+          command: "show '1 + legibility' data/test/ar003.0698.bun"
+        },
+        {
+          title:   "complex formula with matrix examination", 
+          command: "show 'classes*2' data/test/ar003.0698.bun",
+          fail:    true
         },
         {
           title:   "field", 
@@ -565,8 +582,8 @@ describe Bun::Bot do
           command: "show text data/test/ar003.0698.bun"
         },
         {
-          title:   "file_path", 
-          command: "show file_path data/test/ar003.0698.bun"
+          title:   "file", 
+          command: "show file data/test/ar003.0698.bun"
         },
         {
           title:    "tabbed",
@@ -586,41 +603,69 @@ describe Bun::Bot do
           command: "show 'shards.inspect' data/test/ar019.0175.bun"
         },
         {
-          title:   "show second shard name",
+          title:   "shards for non-frozen file", 
+          command: "show shards data/test/ar003.0698.bun" # Should be nil (or maybe [])
+        },
+        {
+          title:   "second shard name",
           command: "show 'shards[1][:name]' data/test/ar019.0175.bun"
         },
-        # {
-        #   title:   "show second shard time, indexed by name",
-        #   command: "show 'shards[\"eclipse\"][:shard_time]' data/test/ar019.0175.bun"
-        # },
-        # {
-        #   title:   "show fields from file with specified shard number",
-        #   command: "show fields data/test/ar019.0175.bun[+2]"
-        # },
-        # {
-        #   title:   "show field from file with specified shard number",
-        #   command: "show 'shard_name' data/test/ar019.0175.bun[+2]"
-        # },
-        # {
-        #   title:   "show field from file with specified shard name",
-        #   command: "show 'shard_start' data/test/ar019.0175.bun[eclipse]"
-        # },
-        # {
-        #   title:   "show text from file with specified shard name",
-        #   command: "show text data/test/ar019.0175.bun[eclipse]"
-        # },
         {
-          title:   "show bad field or exam",
+          title:   "second shard time, indexed by name, field indexed",
+          command: "show 'shards[\"eclipse\"][:file_time]' data/test/ar019.0175.bun"
+        },
+        {
+          title:   "second shard time, indexed by name, field method",
+          command: "show 'shards[\"eclipse\"].file_time' data/test/ar019.0175.bun"
+        },
+        {
+          title:   "second shard size, indexed by name, field method",
+          command: "show 'shards[\"eclipse\"].size' data/test/ar019.0175.bun" # Should be 6614, not 5
+        },
+        {
+          title:   "fields from file with specified shard number",
+          command: "show fields data/test/ar019.0175.bun[+2]"
+        },
+        {
+          title:   "field from file with specified shard number",
+          command: "show 'shard_name' data/test/ar019.0175.bun[+2]"
+        },
+        {
+          title:   "field from file with specified shard name",
+          command: "show 'shard_start' data/test/ar019.0175.bun[eclipse]"
+        },
+        {
+          title:   "text from file with specified shard name",
+          command: "show text data/test/ar019.0175.bun[eclipse]"
+        },
+        {
+          title:   "--if parameter 1",
+          command: "show fields data/test/ar019.0175.bun[+2] --if 'type==:frozen'"
+        },
+        {
+          title:   "--if parameter 2",
+          command: "show fields data/test/ar019.0175.bun[+2] --if 'type!=:frozen'"
+        },
+        {
+          title:   "--where parameter",
+          command: "show fields data/test/ar019.0175.bun[+2] --where 'type!=:frozen'"
+        },
+        {
+          title:   "--unless parameter",
+          command: "show fields data/test/ar019.0175.bun[+2] --unless 'type==:frozen'"
+        },
+        {
+          title:   "bad field or exam",
           command: "show foo data/test/ar019.0175.bun[eclipse]",
           fail:    true
         },
         {
-          title:   "show bad exam parameters",
+          title:   "bad exam parameters",
           command: "show 'words(:foo=>true)' data/test/ar019.0175.bun[eclipse]",
           fail:    true
         },
         {
-          title:   "show bad formula",
+          title:   "bad formula",
           command: "show '2*' data/test/ar019.0175.bun[eclipse]",
           fail:    true
         },

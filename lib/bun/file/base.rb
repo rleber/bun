@@ -107,9 +107,10 @@ module Bun
       end
 
       def file_for_expression(path, options={})
+        debug "options: #{options.inspect}"
         case File.format(path)
-        when :packed
-          if options[:promote]
+        when :packed, :unpacked
+          f = if options[:promote]
             File::Unpacked.open(path, :promote=>true)
           else
             File::Packed.open(path)
@@ -117,6 +118,16 @@ module Bun
         else
           File.open(path)
         end
+      end
+
+      def merge_shard_descriptor(f, shard)
+        # :shard_number: 0
+        # :shard_name: temacro
+        # :shard_time: 1978-11-08 14:15:17.000000000 -05:00
+        # :shard_blocks: 0
+        # :shard_start: 35
+        # :shard_size: 125
+        f.descriptor.merge!()
       end
       
       def baked_data(path, options={})
@@ -140,8 +151,8 @@ module Bun
       def create_expression(path, expression, options={})
         expression_options = options.merge(expression: expression, path: path, raise: options[:raise])
         evaluator = Bun::Expression.new(expression_options)
-        evaluator.attach(:data) { baked_data(path, options) }
         evaluator.attach(:file) { file_for_expression(path, options) }
+        evaluator.attach(:data) { baked_data(path, options) }
         evaluator
       end
       protected :create_expression

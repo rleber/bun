@@ -39,12 +39,12 @@ module Bun
         @expr.file
       end
 
-      def file_path
-        @expr.path
+      def file
+        File.expand_path(@expr.path)
       end
 
       def wrap(value)
-        String::Examination::Wrapper.wrap(value)
+        value
       end
 
       # def fields
@@ -55,6 +55,8 @@ module Bun
         if f.has_field?(name)
           raise NoMethodError, "Method #{name} not defined" if args.size>0 || block_given?
           f[name]
+        elsif File::Descriptor::Base.field_valid?(name) # This is a valid field name, but this file hasn't got one
+          FieldAccessor.wrap(name, File::Descriptor::Base.default_value_for(name))
         elsif e.has_exam?(name)
           raise NoMethodError, "Method #{name} not defined" if args.size>1 || block_given?
           options = args[0] || {}
@@ -76,6 +78,13 @@ module Bun
      class FieldAccessor
         attr_reader :context
 
+        class << self
+          def wrap(field_name, value)
+            # String::Examination::FieldWrapper.new(field_name, value)
+            value
+          end
+        end
+
         def initialize(context)
           @context = context
         end
@@ -90,7 +99,7 @@ module Bun
         end
       
         def [](field_name)
-          String::Examination::FieldWrapper.new(field_name, file_object.descriptor[field_name.to_sym])
+          self.class.wrap(field_name, file_object.descriptor[field_name.to_sym])
         end
       end
     
@@ -144,7 +153,11 @@ module Bun
       rescue SyntaxError => err # Blanket rescue doesn't trap syntax errors
         raise EvaluationSyntaxError, err.to_s
       end
-      String::Examination::Wrapper.wrap(value)
+      unless value.respond_to?(:to_matrix)
+        titles = [ @expression =~ /^\w+$/ ? @expression.titleize : @expression ]
+        value = String::Examination::Wrapper.wrap(value, :titles=>titles)
+      end
+      value
     end
 
     def code

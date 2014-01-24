@@ -249,7 +249,7 @@ module Bun
     def type
       if frozen?
         :frozen
-      elsif word(content_offset).characters.join == 'huff'
+      elsif (word(content_offset).characters || ['']).join == 'huff'
         :huffman
       else
         :text

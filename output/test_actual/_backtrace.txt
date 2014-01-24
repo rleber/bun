@@ -1,0 +1,56 @@
+rm -rf output/test_actual/show_specific_test_matrix_result_without_file_titles_or_justify
+bun show 'chars' data/test/ar003.0698.bun >output/test_actual/show_specific_test_matrix_result_without_file_titles_or_justify 2>&1
+rm -rf output/test_actual/show_specific_test_matrix_result_without_file_titles_or_justify
+rm -rf output/test_actual/show_specific_test_matrix_result_with_titles_without_file_or_justify
+bun show file 'chars' --in data/test/ar003.0698.bun --titles >output/test_actual/show_specific_test_matrix_result_with_titles_without_file_or_justify 2>&1
+rm -rf output/test_actual/show_specific_test_matrix_result_with_titles_without_file_or_justify
+rm -rf output/test_actual/show_specific_test_matrix_result_format_csv
+bun show 'chars' data/test/ar003.0698.bun --format csv >output/test_actual/show_specific_test_matrix_result_format_csv 2>&1
+rm -rf output/test_actual/show_specific_test_matrix_result_format_csv
+rm -rf output/test_actual/show_specific_test_multiple_files_without_titles
+bun show 'chars' data/test/ar003.0698.bun data/test/ar019.0175.bun >output/test_actual/show_specific_test_multiple_files_without_titles 2>&1
+rm -rf output/test_actual/show_specific_test_multiple_files_without_titles
+rm -rf output/test_actual/show_specific_test_complex_formula
+bun show '1 + first_block_size*2' data/test/ar003.0698.bun >output/test_actual/show_specific_test_complex_formula 2>&1
+rm -rf output/test_actual/show_specific_test_complex_formula
+rm -rf output/test_actual/show_specific_test_field
+bun show digest data/test/ar003.0698.bun >output/test_actual/show_specific_test_field 2>&1
+rm -rf output/test_actual/show_specific_test_field
+rm -rf output/test_actual/show_specific_test_low_legibility_not_roff
+bun show legibility roff --in data/test/ar047.1383.bun >output/test_actual/show_specific_test_low_legibility_not_roff 2>&1
+rm -rf output/test_actual/show_specific_test_low_legibility_not_roff
+rm -rf output/test_actual/show_specific_test_text
+bun show text data/test/ar003.0698.bun >output/test_actual/show_specific_test_text 2>&1
+rm -rf output/test_actual/show_specific_test_text
+rm -rf output/test_actual/show_specific_test_file
+bun show file data/test/ar003.0698.bun >output/test_actual/show_specific_test_file 2>&1
+rm -rf output/test_actual/show_specific_test_file
+rm -rf output/test_actual/show_specific_test_tabbed
+bun show tabbed data/test/ar019.0175.bun >output/test_actual/show_specific_test_tabbed 2>&1
+rm -rf output/test_actual/show_specific_test_tabbed
+rm -rf output/test_actual/show_specific_test_words_with_minimum_5
+bun show 'words(minimum: 5)' data/test/ar003.0698.bun >output/test_actual/show_specific_test_words_with_minimum_5 2>&1
+rm -rf output/test_actual/show_specific_test_words_with_minimum_5
+rm -rf output/test_actual/show_specific_test_case_insensitive_words
+bun show 'words(case_insensitive: true)' data/test/ar003.0698.bun >output/test_actual/show_specific_test_case_insensitive_words 2>&1
+rm -rf output/test_actual/show_specific_test_case_insensitive_words
+rm -rf output/test_actual/show_specific_test_inspect_frozen_file_shards
+bun show 'shards.inspect' data/test/ar019.0175.bun >output/test_actual/show_specific_test_inspect_frozen_file_shards 2>&1
+rm -rf output/test_actual/show_specific_test_inspect_frozen_file_shards
+rm -rf output/test_actual/show_specific_test_shards_for_non_frozen_file
+bun show shards data/test/ar003.0698.bun >output/test_actual/show_specific_test_shards_for_non_frozen_file 2>&1
+rm -rf output/test_actual/show_specific_test_shards_for_non_frozen_file
+rm -rf output/test_actual/show_specific_test_second_shard_name
+bun show 'shards[1][:name]' data/test/ar019.0175.bun >output/test_actual/show_specific_test_second_shard_name 2>&1
+rm -rf output/test_actual/show_specific_test_second_shard_name
+rm -rf output/test_actual/show_specific_test_second_shard_time_indexed_by_name_field_indexed
+bun show 'shards["eclipse"][:file_time]' data/test/ar019.0175.bun >output/test_actual/show_specific_test_second_shard_time_indexed_by_name_field_indexed 2>&1
+rm -rf output/test_actual/show_specific_test_second_shard_time_indexed_by_name_field_indexed
+rm -rf output/test_actual/show_specific_test_second_shard_time_indexed_by_name_field_method
+bun show 'shards["eclipse"].file_time' data/test/ar019.0175.bun >output/test_actual/show_specific_test_second_shard_time_indexed_by_name_field_method 2>&1
+rm -rf output/test_actual/show_specific_test_second_shard_time_indexed_by_name_field_method
+rm -rf output/test_actual/show_specific_test_second_shard_size_indexed_by_name_field_method
+bun show 'shards["eclipse"].size' data/test/ar019.0175.bun >output/test_actual/show_specific_test_second_shard_size_indexed_by_name_field_method 2>&1
+rm -rf output/test_actual/show_specific_test_second_shard_size_indexed_by_name_field_method
+rm -rf output/test_actual/show_specific_test_fields_from_file_with_specified_shard_number
+bun show fields data/test/ar019.0175.bun[+2] >output/test_actual/show_specific_test_fields_from_file_with_specified_shard_number 2>&1
