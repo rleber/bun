@@ -1,7 +1,5 @@
 TODO
 _High Priority_
-Change e[] to trait[] in expressions
-Change f[] to field[] in expressions
 Add tests for bun fields, bun traits
 shards should default to [] in expressions
 Create watbun pull, translate

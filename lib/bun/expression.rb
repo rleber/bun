@@ -11,7 +11,7 @@ module Bun
     class EvaluationParameterError < EvaluationError; end
 
     class Context
-      # Context for invocation of expressions in bun examine.
+      # Context for invocation of expressions in bun traitine.
       # Should allow expressions to reference the following fields:
       #   file_path
       #   f[name], or simply name
@@ -23,12 +23,12 @@ module Bun
         @expr = expr
       end
     
-      def f
-        @f ||= FieldAccessor.new(self)
+      def field
+        @field ||= FieldAccessor.new(self)
       end
     
-      def e
-        @e ||= ExamAccessor.new(self)
+      def trait
+        @trait ||= TraitAccessor.new(self)
       end
 
       def text
@@ -52,24 +52,24 @@ module Bun
       # end
     
       def method_missing(name, *args, &blk)
-        if f.has_field?(name)
+        if field.has_field?(name)
           raise NoMethodError, "Method #{name} not defined" if args.size>0 || block_given?
-          f[name]
+          field[name]
         elsif File::Descriptor::Base.field_valid?(name) # This is a valid field name, but this file hasn't got one
           FieldAccessor.wrap(name, File::Descriptor::Base.default_value_for(name))
-        elsif e.has_exam?(name)
+        elsif trait.has_trait?(name)
           raise NoMethodError, "Method #{name} not defined" if args.size>1 || block_given?
           options = args[0] || {}
-          trait = e[name]
+          this_trait = trait[name]
           options = {options=>true} if options.is_a?(Symbol)
           options.each do |key, value|
             begin
-              trait.send("#{key}=", value)
+              this_trait.send("#{key}=", value)
             rescue NoMethodError
               raise EvaluationParameterError, "Trait #{name.inspect} does not recognize parameter #{key.inspect}"
             end
           end
-          trait
+          this_trait
         else
           raise NoMethodError, "Method #{name} not defined"
         end
@@ -103,26 +103,26 @@ module Bun
         end
       end
     
-      class ExamAccessor
+      class TraitAccessor
         attr_reader :context
 
         def initialize(context)
           @context = context
-          @bound_examinations = {}
+          @bound_traits = {}
         end
       
         def at(analysis, options={})
           analysis = analysis.to_sym
-          unless @bound_examinations[analysis]
+          unless @bound_traits[analysis]
             examiner = String::Trait.create(analysis, options)
             context.expr.copy_attachment(:file, examiner)
             context.expr.copy_attachment(:data, examiner, :string)
-            @bound_examinations[analysis] = examiner
+            @bound_traits[analysis] = examiner
           end
-          @bound_examinations[analysis]
+          @bound_traits[analysis]
         end
 
-        def has_exam?(name)
+        def has_trait?(name)
           String::Trait.traits.include?(name.to_s)
         end
       
