@@ -232,7 +232,7 @@ module Bun
       shell = Bun::Shell.new(options)
       each do |tape|
         if descr = descriptor(tape)
-          timestamp = [descr[:catalog_time], descr[:file_time]].compact.min
+          timestamp = [descr[:catalog_time], descr[:time]].compact.min
           if timestamp
             warn "Set timestamp: #{tape} #{timestamp.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
             set_timestamp(tape, timestamp, :shell=>shell) unless options[:dryrun]
@@ -288,7 +288,7 @@ module Bun
       descr.merge!(:catalog_time=>catalog_entry.time)
       descr.merge!(:incomplete_file=>true) if catalog_entry.incomplete
       file.write
-      timestamp = [descr.catalog_time, descr.file_time].compact.min
+      timestamp = [descr.catalog_time, descr.time].compact.min
       set_timestamp(tape, timestamp, :shell=>options[:shell])
     end
     

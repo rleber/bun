@@ -416,7 +416,7 @@ module Bun
               warn "Decoding #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
               timestamp = file.descriptor.timestamp
               File.join(to_path, decode_path(file.path, timestamp), shard_name.sub(/\.+$/,''),
-                      decode_tapename(tape, descr.file_time))
+                      decode_tapename(tape, descr.time))
             when :text, :huffman
               warn "Decoding #{tape}" if options[:dryrun] || !options[:quiet]
               timestamp = file.descriptor.timestamp

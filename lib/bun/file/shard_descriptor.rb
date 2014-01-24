@@ -15,7 +15,7 @@ module Bun
         DESCRIPTOR_END_MARKER = 0777777777777
         FIELDS = [
           :name,
-          :file_time,
+          :time,
           :blocks,
           :start,
           :size,
@@ -82,7 +82,7 @@ module Bun
         end
         private :packed_update_time_of_day
 
-        def file_time
+        def time
           Bun::Data.time(packed_update_date, packed_update_time_of_day)
         end
 

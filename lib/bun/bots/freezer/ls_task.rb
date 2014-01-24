@@ -28,7 +28,7 @@ def ls(file_name)
     archived_file = file.path
     archived_file = "--unknown--" unless archived_file
     print "Frozen archive at #{File.expand_path(file_name)} for directory #{archived_file}"
-    print "\nLast updated at #{file.file_time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
+    print "\nLast updated at #{file.time.strftime(TIMESTAMP_FORMAT)}" if options[:long]
     puts ":"
     lines = []
     # TODO Refactor using Array#justify_rows
@@ -40,18 +40,18 @@ def ls(file_name)
     file.shard_count.times do |i|
       descr = file.shard_descriptor(i)
       next unless descr.name=~shard_pattern
-      file_info << {'order'=>i, 'update'=>descr.file_time, 'size'=>descr.tape_size, 'name'=>descr.name}
+      file_info << {'order'=>i, 'update'=>descr.time, 'size'=>descr.tape_size, 'name'=>descr.name}
     end
     sorted_order = file_info.sort_by{|fi| [fi[options[:sort]], fi['name']]}.map{|fi| fi['order']} # Sort it in order
     # Accumulate the display
     sorted_order.each do |i|
       descr = file.shard_descriptor(i)
       if options[:long]
-        file_time = descr.file_time
+        time = descr.time
         line = []
         line << '%5d' % i
         line << '%-8s'%descr.name
-        line << file_time.strftime(TIMESTAMP_FORMAT)
+        line << time.strftime(TIMESTAMP_FORMAT)
         line << '%10d'%descr[:size]
         line << '%#012o'% (descr.start + file.content_offset)
         lines << line.join('  ')

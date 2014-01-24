@@ -109,6 +109,13 @@ module Bun
         end
         private :_set_field
 
+        def delete(field)
+          field = field.to_sym
+          return unless @fields.include?(field)
+          remove_instance_variable("@#{field}")
+          @fields.delete(field)
+        end
+
         def set_digest
           return unless @data
           data = @data
@@ -159,7 +166,7 @@ module Bun
         end
         
         def timestamp
-          t1 = fields.include?(:catalog_time) ? [file_time, catalog_time].compact.min : file_time
+          t1 = fields.include?(:catalog_time) ? [time, catalog_time].compact.min : time
           fields.include?(:shard_time) ? [shard_time, t1].compact.min : t1
         end
               

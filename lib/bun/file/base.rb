@@ -107,7 +107,6 @@ module Bun
       end
 
       def file_for_expression(path, options={})
-        debug "options: #{options.inspect}"
         case File.format(path)
         when :packed, :unpacked
           f = if options[:promote]
@@ -115,19 +114,21 @@ module Bun
           else
             File::Packed.open(path)
           end
+          merge_shard_descriptor(f, options[:shard]) if options[:shard]
+          f
         else
           File.open(path)
         end
       end
 
       def merge_shard_descriptor(f, shard)
-        # :shard_number: 0
-        # :shard_name: temacro
-        # :shard_time: 1978-11-08 14:15:17.000000000 -05:00
-        # :shard_blocks: 0
-        # :shard_start: 35
-        # :shard_size: 125
-        f.descriptor.merge!()
+        shard_entry = f.descriptor.shards[shard]
+        shard_entry.keys.each do |key|
+          new_key = "shard_#{key}".to_sym
+          f.descriptor.merge!(new_key=>shard_entry[key])
+        end
+        f.descriptor.delete(:shards)
+        f.descriptor.delete('shards')
       end
       
       def baked_data(path, options={})

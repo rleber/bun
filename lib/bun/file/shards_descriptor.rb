@@ -7,7 +7,7 @@ module Bun
       class Shards < ::Array
         # Fields:
         #   :name
-        #   :file_time
+        #   :time
         #   :blocks
         #   :start
         #   :size

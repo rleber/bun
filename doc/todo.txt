@@ -1,7 +1,7 @@
 TODO
 _High Priority_
 fields should default if they don't exist (e.g. mostly to nil; shards might default to [])
-Change file_time to time throughout
+Change time to time throughout
 Create watbun pull, translate
 More extensions to bun examine
     --mark option (e.g. bun show expressions --mark foo saves the value of the expressions in a mark 'foo')

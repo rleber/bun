@@ -4,7 +4,7 @@
 :block_padding_repairs: 0
 :description: Total Eclipse Episode 6 - Fixed-Up Version
 :digest: 92b0c92f1c3e061baa32bfc1cacda4f9
-:file_time: 1978-11-20 10:22:31.000000000 -05:00
+:time: 1978-11-20 10:22:31.000000000 -05:00
 :first_block_size: 3866
 :format: :unpacked
 :owner: fass
@@ -16,17 +16,17 @@
 :unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
 :shards:
 - :name: eclipse
-  :file_time: 1978-11-20 10:22:31.000000000 -05:00
+  :time: 1978-11-20 10:22:31.000000000 -05:00
   :blocks: 0
   :start: 35
   :size: 6614
 - :name: temacro
-  :file_time: 1978-11-20 10:22:31.000000000 -05:00
+  :time: 1978-11-20 10:22:31.000000000 -05:00
   :blocks: 1
   :start: 6649
   :size: 125
 - :name: sounds
-  :file_time: 1978-11-20 10:22:31.000000000 -05:00
+  :time: 1978-11-20 10:22:31.000000000 -05:00
   :blocks: 2
   :start: 6774
   :size: 427

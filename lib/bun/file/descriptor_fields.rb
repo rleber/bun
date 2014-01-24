@@ -16,7 +16,7 @@ module Bun
           :decoded_by   => "An identifier of the version of the bun software that decoded this file",
           :description  => "Description of file (from Honeywell archive)",
           :digest       => "The MD5 checksum digest of the content of this file",
-          :file_time    => "The date and time of last update of the file (frozen files only)",
+          :time    => "The date and time of last update of the file (frozen files only)",
           :first_block_size => "The size of the first block in this file (in 36-bit words)",
           :format       => "The format of this file (e.g. :packed, :unpacked, :decoded, :baked)",
           :identifier   => "Identifies this file as a bun file",

@@ -25,13 +25,13 @@ module Bun
           :tape,
           :owner,
           :path,
-          :file_time,
+          :time,
         ]
         
         def initialize(*args)
           super
           if type == :frozen
-            register_fields :shards, :file_time
+            register_fields :shards, :time
           end
         end
       
@@ -93,7 +93,7 @@ module Bun
         end
         private :packed_update_time_of_day
     
-        def file_time
+        def time
           return nil unless type == :frozen
           Bun::Data.time(packed_update_date, packed_update_time_of_day)
         end

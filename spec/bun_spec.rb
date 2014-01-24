@@ -612,11 +612,11 @@ describe Bun::Bot do
         },
         {
           title:   "second shard time, indexed by name, field indexed",
-          command: "show 'shards[\"eclipse\"][:file_time]' data/test/ar019.0175.bun"
+          command: "show 'shards[\"eclipse\"][:time]' data/test/ar019.0175.bun"
         },
         {
           title:   "second shard time, indexed by name, field method",
-          command: "show 'shards[\"eclipse\"].file_time' data/test/ar019.0175.bun"
+          command: "show 'shards[\"eclipse\"].time' data/test/ar019.0175.bun"
         },
         {
           title:   "second shard size, indexed by name, field method",

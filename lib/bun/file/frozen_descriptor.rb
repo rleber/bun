@@ -28,7 +28,7 @@ module Bun
           :tape,
           :tape_path,
           :file_date,
-          :file_time,
+          :time,
           :updated,
         ]
         
@@ -153,10 +153,10 @@ module Bun
           file.catalog_time
         end
 
-        def file_time
+        def time
           Bun::Data.time(_update_date, _update_time_of_day)
         end
-        alias_method :updated, :file_time
+        alias_method :updated, :time
 
         def blocks
           word(6).value

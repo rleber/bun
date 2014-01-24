@@ -7,7 +7,7 @@
 :decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
 :description: ==> freeze file containing roff source for fass '77 script
 :digest: 70f558a692c0ff2b35067d2e787d0646
-:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:time: 1977-03-01 15:40:58.000000000 -05:00
 :first_block_size: 3869
 :format: :decoded
 :owner: fass

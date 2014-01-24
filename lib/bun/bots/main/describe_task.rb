@@ -9,7 +9,7 @@ no_tasks do
   end
 end
 
-STANDARD_FIELDS = %w{description catalog_time data digest format file_time
+STANDARD_FIELDS = %w{description catalog_time data digest format time
                      identifier owner path shards tape tape_path tape_size type }.map{|f| f.to_sym}
 
 SHARDS_ACROSS = 5
@@ -34,7 +34,7 @@ def describe(file)
   push_tbl preamble_table, "Owner", descriptor.owner
   push_tbl preamble_table, "Description", descriptor.description
   push_tbl preamble_table, "Catalog Date", catalog_time.strftime('%Y/%m/%d') if catalog_time
-  push_tbl preamble_table, "File Time", descriptor.file_time.strftime(TIME_FORMAT) if type==:frozen
+  push_tbl preamble_table, "File Time", descriptor.time.strftime(TIME_FORMAT) if type==:frozen
   push_tbl preamble_table, "Format", descriptor.format
   push_tbl preamble_table, "Size (Words)", descriptor.tape_size
   push_tbl preamble_table, "Type", type.to_s.sub(/^./) {|c| c.upcase}
@@ -66,7 +66,7 @@ def describe(file)
           column = [""]*(titles.size)
         else
           shard = descriptor[:shards][i]
-          column = [shard[:name], shard[:file_time].strftime(TIME_FORMAT), shard[:size]]
+          column = [shard[:name], shard[:time].strftime(TIME_FORMAT), shard[:size]]
         end
         table << column
         i += 1

@@ -20,7 +20,7 @@ module Bun
       def initialize(options={})
         options[:data] = Data.new(options) if options[:data] && !options[:data].is_a?(Bun::Data)
         super
-        descriptor.register_fields(:shards, :file_time)
+        descriptor.register_fields(:shards, :time)
         @line_correct = options[:line_correct]
       end
       
@@ -88,7 +88,7 @@ module Bun
         words.at(content_offset + 4)
       end
     
-      def file_time
+      def time
         Bun::Data.time(_update_date, _update_time_of_day)
       end
     

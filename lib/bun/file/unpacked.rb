@@ -179,8 +179,8 @@ module Bun
         descriptor.type
       end
       
-      def file_time
-        descriptor.file_time
+      def time
+        descriptor.time
       end
       
       BUN_IDENTIFIER = "Bun"
@@ -206,7 +206,7 @@ module Bun
           shards = shard_descriptors.map do |d|
             {
               :name      => d.name,
-              :file_time => d.file_time,
+              :time => d.time,
               :blocks    => d.blocks,
               :start     => d.start,
               :size      => d[:size], # Need to do it this way, because d.size is the builtin

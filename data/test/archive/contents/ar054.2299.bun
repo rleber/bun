@@ -5,7 +5,7 @@
 :catalog_time: 1981-02-05 00:00:00.000000000 -05:00
 :description: ''
 :digest: c155d430ac9dd18261b4b5e89276bc72
-:file_time: 1981-02-05 15:11:25.000000000 -05:00
+:time: 1981-02-05 15:11:25.000000000 -05:00
 :first_block_size: 973
 :format: :unpacked
 :owner: bstempleton
@@ -17,27 +17,27 @@
 :unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
 :shards:
 - :name: end
-  :file_time: 1980-11-25 15:49:46.000000000 -05:00
+  :time: 1980-11-25 15:49:46.000000000 -05:00
   :blocks: 0
   :start: 55
   :size: 129
 - :name: santa
-  :file_time: 1980-11-25 15:49:46.000000000 -05:00
+  :time: 1980-11-25 15:49:46.000000000 -05:00
   :blocks: 1
   :start: 184
   :size: 211
 - :name: disco
-  :file_time: 1980-11-25 16:09:15.000000000 -05:00
+  :time: 1980-11-25 16:09:15.000000000 -05:00
   :blocks: 0
   :start: 395
   :size: 261
 - :name: opening
-  :file_time: 1981-01-08 18:31:14.000000000 -05:00
+  :time: 1981-01-08 18:31:14.000000000 -05:00
   :blocks: 0
   :start: 656
   :size: 122
 - :name: brytside
-  :file_time: 1981-02-05 15:11:25.000000000 -05:00
+  :time: 1981-02-05 15:11:25.000000000 -05:00
   :blocks: 0
   :start: 778
   :size: 114

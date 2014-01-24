@@ -7,7 +7,7 @@
 :description: ''
 :digest: 112d684f1529592d2b428f06d7949a4e
 :file_grade: :decoded
-:file_time: 1978-12-19 15:19:07.000000000 -05:00
+:time: 1978-12-19 15:19:07.000000000 -05:00
 :owner: bjeroehl
 :path: bjeroehl/fass/bjthings
 :tape: ar082.0604
