@@ -4,16 +4,16 @@
 :block_padding_repairs: 10
 :description: ==> freeze file containing roff source for fass '77 script
 :digest: f875bf6d887c3392c339a676cc08876c
-:time: 1977-03-01 15:40:58.000000000 -05:00
 :first_block_size: 3869
 :format: :unpacked
 :owner: fass
 :path: fass/scripfrz
 :tape: ar004.0888
 :tape_size: 40058
+:time: 1977-03-01 15:40:58.000000000 -05:00
 :type: :frozen
-:unpack_time: 2014-01-23 13:31:12.453793000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
+:unpack_time: 2014-01-24 10:29:40.055525000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
 :shards:
 - :name: fasshole
   :time: 1977-02-10 16:44:55.000000000 -05:00

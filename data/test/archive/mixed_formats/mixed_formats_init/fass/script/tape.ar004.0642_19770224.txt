@@ -3,8 +3,8 @@
 :block_count: 19
 :block_padding_repairs: 18
 :catalog_time: 1977-02-24 00:00:00.000000000 -05:00
-:decode_time: 2014-01-23 13:38:29.469212000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
+:decode_time: 2014-01-24 10:36:40.563103000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
 :description: klisted final copy of fass '77 script
 :digest: d63f127d31a517648d558540d1cca409
 :first_block_size: 3863
@@ -16,8 +16,8 @@
 :tape_size: 70840
 :text_size: 241204
 :type: :text
-:unpack_time: 2014-01-23 13:31:09.687066000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
+:unpack_time: 2014-01-24 10:29:37.329545000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
 :content: ! "\t\n\t\n        FASS                   - 1 -           ACT I SCENE 0\tFASS
   \                      - 1 -               ACT I SCENE I\n\t\n\t\n\t\n        Act
   1 Scene 0\tAct 1, Scene 1 - Closing Song\n\t\n        (AN EXTENDED ROUTINE BEFORE

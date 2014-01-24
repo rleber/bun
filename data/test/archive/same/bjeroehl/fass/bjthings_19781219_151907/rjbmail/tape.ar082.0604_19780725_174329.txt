@@ -3,11 +3,10 @@
 :block_count: 4
 :block_padding_repairs: 3
 :catalog_time: 1982-12-22 00:00:00.000000000 -05:00
-:decode_time: 2014-01-23 13:44:50.973813000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
+:decode_time: 2014-01-24 10:42:36.521468000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
 :description: ''
 :digest: 0155d8bd75758b61b7a91a4dd4465b0a
-:time: 1978-12-19 15:19:07.000000000 -05:00
 :first_block_size: 3855
 :format: :decoded
 :owner: bjeroehl
@@ -15,9 +14,10 @@
 :tape: ar082.0604
 :tape_size: 14207
 :text_size: 634
+:time: 1978-12-19 15:19:07.000000000 -05:00
 :type: :frozen
-:unpack_time: 2014-01-23 13:32:58.896511000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
+:unpack_time: 2014-01-24 10:31:23.791555000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
 :content: ! "33 fass         Thu Jul  6 1978  21:08 *\nHi.  My name is Bernie -- I'm
   the guy that Rohan may have mentioned\nconcerning the tape of the Adventure program.
   \ I picked it up on my\nway through Toronto today (I'm here 'till Sunday from Montreal).

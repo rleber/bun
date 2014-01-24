@@ -1,10 +1,13 @@
 TODO
 _High Priority_
 Create watbun pull, translate
+--chronology (or history, calendar, or timetable) option for bun show
+--progress option for bun show
 More extensions to bun show
     --mark option (e.g. bun show expressions --mark foo saves the value of the expressions in a mark 'foo')
     Fully qualified path (e.g. for shards in frozen archives)
     Field_values (returns array of [field_name, value] pairs)
+    earliest_time
     Printer listing
         Largely printable
         Very few large runs
