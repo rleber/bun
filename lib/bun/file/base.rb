@@ -271,11 +271,12 @@ module Bun
       end
 
       def bake(path, to, options={})
+        scrub = options.delete(:scrub)
         case format(path)
         when :baked, :decoded
-          File.open(path, options) {|f| f.bake(to)}
+          File.open(path, options) {|f| f.bake(to, scrub: scrub)}
         else
-          File::Decoded.open(path, options.merge(promote: true)) {|f| f.bake(to)}
+          File::Decoded.open(path, options.merge(promote: true)) {|f| f.bake(to, scrub: scrub)}
         end
       end
      

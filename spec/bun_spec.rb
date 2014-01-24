@@ -157,6 +157,16 @@ def exec_test(descr, command, prefix, options={})
     end
 end
 
+def exec_test_hash(prefix, test)
+  exec_test(
+    test[:title], 
+    test[:command], 
+    prefix, 
+    allowed: test[:allowed]||[0],
+    fail: test[:fail]
+  )
+end
+
 shared_examples "command with file" do |descr, command, expected_stdout_file, output_file, expected_output_file|
   context descr do
     before :all do
@@ -507,13 +517,7 @@ describe Bun::Bot do
         :command=>"fields time -l"
       },
     ].each do |test|
-      exec_test(
-        test[:title], 
-        test[:command], 
-        "fields", 
-        allowed: test[:allowed]||[0],
-        fail: test[:fail]
-      )
+      exec_test_hash "fields", test
     end
   end
 
@@ -540,13 +544,7 @@ describe Bun::Bot do
         :command=>"traits c -o"
       },
     ].each do |test|
-      exec_test(
-        test[:title], 
-        test[:command], 
-        "traits", 
-        allowed: test[:allowed]||[0],
-        fail: test[:fail]
-      )
+      exec_test_hash "traits", test
     end
   end
 
@@ -756,13 +754,7 @@ describe Bun::Bot do
           fail:    true
         },
       ].each do |test|
-        exec_test(
-          test[:title], 
-          test[:command], 
-          "show_specific_test", 
-          allowed: test[:allowed]||[0],
-          fail: test[:fail]
-        )
+        exec_test_hash "show_specific_test", test
       end
     end
   end
@@ -1024,7 +1016,7 @@ describe Bun::Bot do
       context "and +0 shard argument" do
         before :all do
           exec("rm -rf output/test_actual/decode_ar004.0888_0")
-          exec("bun decode -s +0 #{TEST_ARCHIVE}/ar004.0888.bun \
+          exec("bun decode -S +0 #{TEST_ARCHIVE}/ar004.0888.bun \
                     >output/test_actual/decode_ar004.0888_0")
         end
         it "should match the expected output" do
@@ -1061,6 +1053,20 @@ describe Bun::Bot do
         after :all do
           backtrace
           exec_on_success("rm -rf output/test_actual/decode_ar004.0888_0")
+        end
+      end
+      context "and [name] shard syntax with --scrub" do
+        before :all do
+          exec("rm -rf output/test_actual/decode_ar074.1174_1.3b_scrub")
+          exec("bun decode --scrub data/test/ar074.1174.bun[1.3b] \
+                    >output/test_actual/decode_ar074.1174_1.3b_scrub")
+        end
+        it "should match the expected output" do
+          "decode_ar074.1174_1.3b_scrub".should match_expected_output_except_for(DECODE_PATTERNS)
+        end
+        after :all do
+          backtrace
+          exec_on_success("rm -rf output/test_actual/decode_ar074.1174_1.3b_scrub")
         end
       end
       context "and no shard argument" do
@@ -1140,6 +1146,8 @@ describe Bun::Bot do
   end
 
   describe "bake" do
+    # TODO bake should be tested with decoded files 
+    # TODO Bake should allow a shard specifier via -S
     context "with packed file" do
       before :all do
         exec("rm -f output/test_actual/bake_ar003.0698")
@@ -1167,6 +1175,63 @@ describe Bun::Bot do
         backtrace
         exec_on_success("rm -f output/test_actual/bake_ar003.0698")
       end
+    end
+    context "with unpacked file and --shard" do
+      before :all do
+        exec("rm -f output/test_actual/bake_ar074.1174_1.3b")
+        exec("bun bake --shard 1.3b data/test/ar074.1174.bun \
+                  >output/test_actual/bake_ar074.1174_1.3b")
+      end
+      it "should match the expected output" do
+        "bake_ar074.1174_1.3b".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/bake_ar074.1174_1.3b")
+      end
+    end
+    context "with unpacked file and --scrub" do
+      before :all do
+        exec("rm -f output/test_actual/bake_ar074.1174_1.3b_scrub")
+        exec("bun bake --scrub data/test/ar074.1174.bun[1.3b] \
+                  >output/test_actual/bake_ar074.1174_1.3b_scrub")
+      end
+      it "should match the expected output" do
+        "bake_ar074.1174_1.3b_scrub".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/bake_ar074.1174_1.3b_scrub")
+      end
+    end
+    context "with decoded file" do
+      before :all do
+        exec("rm -f output/test_actual/bake_decoded_file.txt")
+        exec("bun bake data/test/decoded_file.txt \
+                  >output/test_actual/bake_decoded_file.txt")
+      end
+      it "should match the expected output" do
+        "bake_decoded_file.txt".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/bake_decoded_file.txt")
+      end
+    end
+  end
+
+  describe "scrub" do
+    [
+      {
+        :title=>"basic",
+        :command=>"scrub data/test/scrub_test.txt"
+      },
+      {
+        :title=>"--tabs",
+        :command=>"scrub --tabs 20 data/test/scrub_test.txt"
+      },
+    ].each do |test|
+      exec_test_hash "scrub", test
     end
   end
 

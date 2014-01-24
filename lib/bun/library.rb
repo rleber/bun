@@ -57,7 +57,7 @@ module Bun
         else
           to_file = File.join(to_path,relative_leaf)
           success = begin
-            File.bake(leaf, to_file, promote: true)
+            File.bake(leaf, to_file, promote: true, scrub: options[:scrub])
             $stderr.puts "bake #{relative_leaf}" unless options[:quiet]
             true
           rescue File::CantDecodeError

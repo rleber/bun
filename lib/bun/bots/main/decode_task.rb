@@ -8,7 +8,8 @@ option 'asis',    :aliases=>'-a', :type=>'boolean', :desc=>"Do not attempt to un
 option "delete",  :aliases=>'-d', :type=>'boolean', :desc=>"Keep deleted lines (only with text files)"
 option "expand",  :aliases=>'-e', :type=>'boolean', :desc=>"Expand freezer archives into multiple files"
 option "inspect", :aliases=>'-i', :type=>'boolean', :desc=>"Display long format details for each line (only with text files)"
-option "shard",   :aliases=>'-s', :type=>'string',  :desc=>"Select shards with this pattern (only with frozen files)"
+option "shard",   :aliases=>'-S', :type=>'string',  :desc=>"Select shards with this pattern (only with frozen files)"
+option "scrub",   :aliases=>'-s', :type=>'boolean', :desc=>"Remove control characters from output"
 option "warn",    :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
 long_desc <<-EOT
 FILE may have some special formats: '+-nnn' (where nnn is an integer) denotes file number nnn. '-nnn' denotes the nnnth
@@ -27,12 +28,8 @@ def decode(file_name, out=nil)
   when :baked
     stop "!Can't decode file. It is already baked"
   when :decoded
-    case out
-    when nil, '-'
-      system(['cat',file_name].shelljoin)
-    else
-      system(['cp','-f',file_name,out].shelljoin) if out
-    end
+    out ||= '-'
+    File::Decoded.open(file_name) {|f| f.decode(out, options)}
   else
     File::Unpacked.open(file_name, :promote=>!options[:asis]) do |file|
       begin

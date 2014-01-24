@@ -32,6 +32,7 @@ module Bun
         # Output the ASCII content of a file
         def bake(path, to=nil, options={})
           # return unless unpacked?(path)
+          scrub = options.delete(:scrub)
           open(path, options) do |files|
             unless files.is_a?(Hash)
               files = {nil=>files}
@@ -39,7 +40,7 @@ module Bun
             files.each do |key, f|
               path = key ? File.join(to, File.basename(key)) : to
               f.descriptor.tape = options[:tape] if options[:tape]
-              f.bake(path)
+              f.bake(path, scrub: scrub)
             end
           end
         end
@@ -76,11 +77,13 @@ module Bun
         end
       end
       
-      def bake(to=nil)
+      def bake(to=nil, options={})
         shell = Shell.new
         shell.mkdir_p File.dirname(to) if to && to!='-'
-        shell.write to, data
-        data
+        text = data
+        text = data.scrub if options[:scrub]
+        shell.write to, text
+        text
       end
 
       # TODO DRY this up; see File::Baked, for instance
@@ -88,7 +91,9 @@ module Bun
         to = yield(self, 0) if block_given? # Block overrides "to"
         shell = Shell.new
         shell.mkdir_p(File.dirname(to)) unless to.nil? || to == '-'
-        shell.write(to, read) unless to.nil?
+        text = read
+        shell.write(to, text) unless to.nil?
+        text
       end
 
       def trait(test)

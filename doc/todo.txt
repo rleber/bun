@@ -1,7 +1,6 @@
 TODO
 _High Priority_
 Extend bun scrub to work on multiple files (or create bun archive scrub)
-Test bun scrub
 Create watbun pull, translate
 --order option for bun show
 More extensions to bun show

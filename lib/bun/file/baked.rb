@@ -20,7 +20,13 @@ module Bun
       def bake(to, options={})
         shell = Shell.new
         shell.mkdir_p(File.dirname(to)) unless to.nil? || to == '-'
-        shell.write(to, read) unless to.nil?
+        text = read
+        text = text.scrub if options[:scrub]
+        shell.write(to, text) unless to.nil?
+      end
+
+      def scrub(to)
+        bake(to, :scrub=>true)
       end
     end
   end

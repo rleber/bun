@@ -2,6 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 require 'digest/md5'
+require 'tempfile'
 
 class String
   class InvalidCheck < ArgumentError; end
@@ -208,6 +209,23 @@ class String
     self.gsub("\n","\n\005").gsub(' ',"\177")
   end
   
+  def scrub(options={})
+    column_width = options[:column_width] || 80
+    column_margin = options[:column_margin] || 20
+    tabs = options[:tabs] || [column_width + column_margin]
+    text = self.dup
+    text.gsub!(/_\x8/,'') # Remove underscores
+    text.gsub!(/(.)(?:\x8\1)+/,'\1') # Remove bolding
+    text.gsub!(/\xC/, options[:form_feed]||'') # Remove form feeds
+    text.gsub!(/\xB/, options[:vertical_tab]||'') # Remove vertical tabs
+    text.gsub!(/[[:cntrl:]&&[^\n\x8]]/,'') # Remove other control characters
+    t = Tempfile.new('string_scrub')
+    t.write(text)
+    t.close
+    tab_option = tabs.map{|t| t.to_s}.join(',')
+    %x{cat #{t.path} | expand -t #{tab_option}}
+  end
+
 end
 
 require 'lib/trait'
