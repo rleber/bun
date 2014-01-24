@@ -108,10 +108,12 @@ def show(*args)
     end.compact # Because next above will cause nils to be inserted
 
     value_list = value_list.sort do |traits1, traits2|
-      while v1.class.to_s =~/(Wrapper|Result)$/ do
+      v1 = traits1.last
+      while v1.respond_to?(:to_matrix) || v1.class.to_s =~/(Wrapper|Result)$/ do
         v1 = v1.value
       end
-      while v2.class.to_s =~/(Wrapper|Result)$/ do
+      v2 = traits2.last
+      while v2.respond_to?(:to_matrix) || v2.class.to_s =~/(Wrapper|Result)$/ do
         v2 = v2.value
       end
       # Sort nils at top
