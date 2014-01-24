@@ -43,7 +43,6 @@ class String
         end
 
         def coerce(foo)
-          debug "foo is a #{foo.class}, self is a #{self.class}"
           [foo, self.value]
         end
         

@@ -7,6 +7,7 @@ english            Calculate proportion of english words
 fields             List fields of the file
 file               File path of file
 legibility         Calculate proportion of readable characters
+listing            Does file appear to be a print listing?
 non_english_words  List non-english words
 overstruck         Does data contain backspaces?
 printable          Analyze printable vs. non-printable characters

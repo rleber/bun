@@ -10,6 +10,7 @@ english             Calculate proportion of english words
 fields              List fields of the file
 file                File path of file
 legibility          Calculate proportion of readable characters
+listing             Does file appear to be a print listing?
 non_english_words   List non-english words
   minimum             Only include occurrences with at least this minimum count
 overstruck          Does data contain backspaces?

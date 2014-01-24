@@ -671,6 +671,11 @@ describe Bun::Bot do
           allowed: [1]
         },
         {
+          title:    "listing with print file",
+          command: "show listing data/test/ar074.1174.bun[1.3b]",
+          allowed: [1]
+        },
+        {
           title:   "words with minimum 5", 
           command: "show 'words(minimum: 5)' data/test/ar003.0698.bun"
         },
