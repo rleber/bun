@@ -3,17 +3,6 @@ _High Priority_
 More extensions to bun show
     Fully qualified path (e.g. for shards in frozen archives)
     Field_values (returns array of [field_name, value] pairs)
-    Printer listing
-        Largely printable
-        Very few large runs
-        Overstruck
-        Tabbed
-    Object file
-        Very few large runs
-        Largely unreadable
-    Try determining type by comparing preamble contents:
-        Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
-            binary load module
 Create watbun pull, translate
 Bun compare (one file from each of two lists), e.g.
     bun compare EXPRESSIONS --in FILES... --vs FILES... --where CONDITION
@@ -72,6 +61,13 @@ Implement interactive (or stream) editor:
     Alternatively: check out the contents (in whatever format), edit, then check them back in again
 
 _Medium Priority_
+Other traits
+    Object file
+        Very few large runs
+        Largely unreadable
+    Try determining type by comparing preamble contents:
+        Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
+            binary load module
 bun catalog should be able to recatalog files of all grades
 Refactor match_expected_output_except_for, using a method, so we can do a series of separate tests
 Fix weird spacing in Thor long descriptions with fixed spacing  
