@@ -398,7 +398,8 @@ module Bun
         end
       end
       line = expand_substitutions(line, @insert_characters, insert_pattern, insert_escape_pattern) do |match|
-        value_of(match[2..-2]).to_s
+        v = value_of(match[2..-2])
+        v.nil? ? match : v.to_s
       end
       line = expand_substitutions(line, @insert_characters, page_number_pattern, insert_escape_pattern) do |match|
         page_number.to_s
