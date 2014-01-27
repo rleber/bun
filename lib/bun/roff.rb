@@ -721,43 +721,6 @@ module Bun
       _process_conditional(flag) { evaluate_condition(condition) }
     end
 
-    def evaluate_condition(condition)
-      syntax "!Bad .if condition" unless condition =~ /^(.*)(<|=|>|<=|>=|!=)(.*)$/
-      op1 = $1.strip
-      comparison = $2
-      op2 = $3.strip
-      op2 = convert_integer(op2, "Second comparison operang")
-      # TODO Should this depend on the quoting character?
-      if op1 =~ /^"(?:[^"]|"")*"$/ # op1 is a quoted string
-        tweaked_op1 = op1.gsub(/(?<!^)""/,'\\"')
-        op1 = begin
-          eval(tweaked_op1).size
-        rescue SyntaxError => e
-          syntax "bad string operand #{op1}"
-        end
-      elsif op1 =~ /^[+-]?\d+$/
-        op1 = op1.to_i
-      else
-        syntax "!Bad operand #{op1.inspect} in condition"
-      end
-      comparison = '==' if comparison=='='
-      begin
-        op1.send(comparison, op2)
-      rescue => e
-        raise e.class, "(evaluating condition: #{condition}) #{e.to_s}", e.backtrace
-      end
-    end
-
-    def _process_conditional(flag, &blk)
-      if yield
-        found = look_for_el_or_en(nil, flag) {|line| process_line(line) }
-        look_for_en("Skip to #{flag}", flag) if found=='el'
-      else
-        found = look_for_el_or_en("Skip to #{flag}", flag)
-        look_for_en(nil, flag) {|line| process_line(line) } if found=='el'
-      end
-    end
-
     # .in n
     # Set indent
     def in_command(ind)
@@ -828,6 +791,14 @@ module Bun
       self.push context_for_file(path)
     end
 
+    # .sp [N]
+    # Turn off justification (i.e. flowing text)
+    def sp_command(n=1)
+      line_count = convert_integer(n, "space count")
+      force_break
+      n.to_i.times { output_line '' }
+    end
+
     # .sq
     # Turn off justification (i.e. flowing text)
     def sq_command
@@ -872,6 +843,43 @@ module Bun
     # A comment
     def zz_command(*args)
       # Do nothing
+    end
+
+    def evaluate_condition(condition)
+      syntax "!Bad .if condition" unless condition =~ /^(.*)(<|=|>|<=|>=|!=)(.*)$/
+      op1 = $1.strip
+      comparison = $2
+      op2 = $3.strip
+      op2 = convert_integer(op2, "Second comparison operand")
+      # TODO Should this depend on the quoting character?
+      if op1 =~ /^"(?:[^"]|"")*"$/ # op1 is a quoted string
+        tweaked_op1 = op1.gsub(/(?<!^)""/,'\\"')
+        op1 = begin
+          eval(tweaked_op1).size
+        rescue SyntaxError => e
+          syntax "bad string operand #{op1}"
+        end
+      elsif op1 =~ /^[+-]?\d+$/
+        op1 = op1.to_i
+      else
+        syntax "!Bad operand #{op1.inspect} in condition"
+      end
+      comparison = '==' if comparison=='='
+      begin
+        op1.send(comparison, op2)
+      rescue => e
+        raise e.class, "(evaluating condition: #{condition}) #{e.to_s}", e.backtrace
+      end
+    end
+
+    def _process_conditional(flag, &blk)
+      if yield
+        found = look_for_el_or_en(nil, flag) {|line| process_line(line) }
+        look_for_en("Skip to #{flag}", flag) if found=='el'
+      else
+        found = look_for_el_or_en("Skip to #{flag}", flag)
+        look_for_en(nil, flag) {|line| process_line(line) } if found=='el'
+      end
     end
 
     def write_trace(flag="Execute", expanded_command)
