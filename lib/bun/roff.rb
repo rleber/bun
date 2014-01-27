@@ -660,7 +660,13 @@ module Bun
       # TODO Should this depend on the quoting character?
       # TODO This is temporarily scaffolded and should be fixed
       if op1 =~ /^"(?:[^"]|"")*"$/ # op1 is a quoted string
-        op1 = eval(op1.gsub(/""/,'\\"')).size
+        log "op1: #{op1.inspect}"
+        tweaked_op1 = op1.gsub(/(?<!^)""/,'\\"')
+        op1 = begin
+          eval(tweaked_op1).size
+        rescue SyntaxError => e
+          syntax "bad string operand #{op1}"
+        end
       # elsif op1 =~ /^[+-]?\d+$/
       else
         op1 = op1.to_i
