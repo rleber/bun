@@ -131,6 +131,7 @@ module Bun
     attr_accessor :translation
     attr_accessor :parameter_characters
     attr_accessor :parameter_escape
+    attr_accessor :expand_parameters
     attr_accessor :insert_characters
     attr_accessor :insert_escape
     attr_accessor :quote_characters
@@ -164,7 +165,8 @@ module Bun
       self.center = false
       @random = Random.new
       @translation = []
-      parameter_characters = parameter_escape = ''
+      @parameter_characters = @parameter_escape = ''
+      @expand_parameters = true
       @insert_characters = @insert_escape = ''
       @quote_characters = @quote_escape = ''
       @definitions = {}
@@ -390,18 +392,17 @@ module Bun
       page_number_pattern = self.page_number_pattern
       parameter_pattern = self.parameter_pattern
       parameter_escape_pattern = self.parameter_escape_pattern
+      if self.expand_parameters || options[:expand_parameters]
+        line = expand_substitutions(line, parameter_characters, parameter_pattern, parameter_escape_pattern) do |match|
+          macro_arguments[(match[1..-1].to_i)-1]
+        end
+      end
       line = expand_substitutions(line, @insert_characters, insert_pattern, insert_escape_pattern) do |match|
         value_of(match[2..-2]).to_s
       end
       line = expand_substitutions(line, @insert_characters, page_number_pattern, insert_escape_pattern) do |match|
         page_number.to_s
       end
-      unless options[:no_parameters]
-        line = expand_substitutions(line, parameter_characters, parameter_pattern, parameter_escape_pattern) do |match|
-          macro_arguments[(match[1..-1].to_i)-1]
-        end
-      end
-      info "Substitutions: #{original_line} => #{line}" unless original_line == line
       split_lines(line)
     end
 
@@ -443,7 +444,7 @@ module Bun
       if esc.to_s == ''
         /\Zx/ # Never matches
       else
-        /#{Regexp.escape(esc)}/
+        /(?<!#{Regexp.escape(esc[0])})#{Regexp.escape(esc)}/
       end
     end
     def display_match(match=$~)
@@ -472,14 +473,14 @@ module Bun
     end
 
     def process_command
-      write_trace
+      write_trace "Execute", ['.'+command,*command_arguments].join(' ')
       self.command_count += 1
       self.overridden_line_number = nil
       if self.respond_to?("process_#{command}")
         begin
           self.send("process_#{command}", *command_arguments)
         rescue ArgumentError => e
-          if e.to_s =~ /wrong number of arguments (\(\d+\s+for\s+\d+\))/
+          if !@debug && e.to_s =~ /wrong number of arguments (\(\d+\s+for\s+\d+\))/
             detail = " #{$1}"
           else
             raise
@@ -524,9 +525,19 @@ module Bun
       tag = name
       name = $1 if name=~/^\((.*)\)$/
       defn = define_macro name
-      look_for_en(tag) do |line|
-        defn[:lines] +=  expand(line, no_parameters: true)
+      self.expand_parameters = false
+      look_for_en(nil, tag) do |line|
+        expanded_lines = expand(line)
+        if @debug
+          expanded_lines.each.with_index do |l, i|
+            out = "#{defn[:lines].size+i+1}: #{l} <= #{line}"
+            out += " [part #{i+1}]" if expanded_lines.size>1
+            put_dump out, 4
+          end
+        end
+        defn[:lines] += expanded_lines
       end
+      self.expand_parameters = true
       defn[:lines].flatten!
     end
 
@@ -584,7 +595,7 @@ module Bun
       push_output_file(file)
       self.buffer_stack.push self.line_buffer
       self.line_buffer = []
-      look_for_en(flag) {|line| process_line(line: line) }
+      look_for_en(nil,flag) {|line| process_line(line: line) }
       self.line_buffer = self.buffer_stack.pop
       err "!Buffer stack underflow" unless self.line_buffer
       pop_output_file
@@ -659,7 +670,6 @@ module Bun
       op2 = convert_integer(op2, "Second comparison operang")
       # TODO Should this depend on the quoting character?
       if op1 =~ /^"(?:[^"]|"")*"$/ # op1 is a quoted string
-        log "op1: #{op1.inspect}"
         tweaked_op1 = op1.gsub(/(?<!^)""/,'\\"')
         op1 = begin
           eval(tweaked_op1).size
@@ -681,11 +691,11 @@ module Bun
 
     def _process_conditional(flag, &blk)
       if yield
-        found = look_for_el_or_en(flag) {|line| process_line(line: line) }
-        look_for_en(flag) if found=='el'
+        found = look_for_el_or_en(nil, flag) {|line| process_line(line: line) }
+        look_for_en("Skip to #{flag}", flag) if found=='el'
       else
-        found = look_for_el_or_en(flag)
-        look_for_en(flag) {|line| process_line(line: line) } if found=='el'
+        found = look_for_el_or_en("Skip to #{flag}", flag)
+        look_for_en(nil, flag) {|line| process_line(line: line) } if found=='el'
       end
     end
 
@@ -725,7 +735,6 @@ module Bun
     def process_mg
       next_line = get_line
       exit if next_line == /^\*+$/
-      self.overridden_line_number = self.next_line_number + 1
       self.merge_string = next_line||''
     end
 
@@ -757,7 +766,6 @@ module Bun
         path += '.txt'
         stop "!File #{original_file} does not exist" unless File.exists?(path)
       end
-      debug "file: #{file}, path: #{path}"
       self.push context_for_file(path)
     end
 
@@ -807,12 +815,17 @@ module Bun
       # Do nothing
     end
 
-    def write_trace
-      info "*Trace: #{stack_trace.first}"
+    def write_trace(flag="Execute", expanded_command)
+      position, original_command = stack_trace.first.split(/\s*:\s*/)
+      out = if expanded_command == original_command
+        expanded_command
+      else
+        "#{expanded_command} <= #{original_command}"
+      end
+      info "*#{'%-25s'%flag} #{'%-60s' % out} @ #{position}"
     end
 
     def unimplemented
-      info "!Command #{line} not implemented" unless IGNORED_COMMANDS.include?(command)
       unimplemented_commands << command
     end
 
@@ -876,24 +889,25 @@ module Bun
     end
 
     # Encapsulates a common pattern: look for an .en with a matching flag
-    def look_for_en(flag, &blk)
-      look_for_command('en', '.en', flag, &blk)
+    def look_for_en(description, flag, &blk)
+      look_for_command('en', description, flag, &blk)
     end
 
     # Encapsulates a common pattern: look for an .el with a matching flag
-    def look_for_el(flag, &blk)
-      look_for_command('el', '.el', flag, &blk)
+    def look_for_el(description, flag, &blk)
+      look_for_command('el', description, flag, &blk)
     end
 
     # Encapsulates a common pattern: look for an .el or .en with a matching flag
-    def look_for_el_or_en(flag, &blk)
-      look_for_command(/^el|en$/, '.el or .en', flag, &blk)
+    def look_for_el_or_en(description, flag, &blk)
+      look_for_command(/^el|en$/, description, flag, &blk)
     end
     alias_method :look_for_en_or_el, :look_for_el_or_en
 
     def look_for_command(pattern, description, flag, &blk)
+      flag = $1 if flag=~/^\((.*)\)$/
       while l = get_line do
-        info "Looking for #{description} with #{flag}: scanning #{l}"
+        write_trace description, l if description
         lines = expand(l)
         # TODO What happens if we match on the first part of a multi-line?
         lines.each do |l2|
@@ -904,7 +918,9 @@ module Bun
               when 0
                 syntax "Missing tag in .#{command}"
               when 1
-                if command_arguments[0] == flag || command_arguments[0] == "(#{flag})"
+                command_flag = command_arguments.first
+                command_flag = expand($1, expand_parameters: true)[0] if command_flag =~ /^\((.*)\)$/ 
+                if command_flag == flag
                   self.command_count += 1
                   return command
                 end

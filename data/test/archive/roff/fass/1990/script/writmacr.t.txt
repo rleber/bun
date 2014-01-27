@@ -263,6 +263,7 @@ first speech:
 .es
 .en fini
 .zz -- character macro
+.debug on
 .at ch
 .id @1_longname ch_endid
 ^(ex)
@@ -288,6 +289,9 @@ first speech:
 .ch @1
 .en ch_endid
 .en ch
+.debug off
+.dump ch
+.stop
 .zz -- character name in song
 .at sl
 .id @1_longname sl_endid
