@@ -455,5 +455,4 @@ Your campus will be plagued with ducks!
 (FLASH)
 .ld
 (LIGHTS DOWN)
-.show file 2
 .es

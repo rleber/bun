@@ -397,11 +397,11 @@ module Bun
     def invoke_pending_actions(line)
       (pending_actions.size-1).downto(0) do |i|
         action = pending_actions[i]
+        action[:count] -= 1
         if action[:count] <= 0
           action[:action].call(line)
           pending_actions.delete_at(i)
         else
-          action[:count] -= 1
         end
       end
     end
@@ -1025,7 +1025,8 @@ module Bun
         end
       else
         flush
-        put_line line
+        self.line_buffer = [line] # Do it this way to force centering, translation, etc.
+        flush
       end
       invoke_pending_actions(line)
     end
