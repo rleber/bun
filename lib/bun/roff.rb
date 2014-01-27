@@ -534,9 +534,9 @@ module Bun
       write_trace "Execute", ['.'+command,*(command_arguments.map{|a| command_escape(a)})].join(' ')
       self.command_count += 1
       self.overridden_line_number = nil
-      if self.respond_to?("process_#{command}")
+      if self.respond_to?("#{command}_command")
         begin
-          self.send("process_#{command}", *command_arguments)
+          self.send("#{command}_command", *command_arguments)
         rescue ArgumentError => e
           if !@debug && e.to_s =~ /wrong number of arguments (\(\d+\s+for\s+\d+\))/
             detail = " #{$1}"
@@ -558,7 +558,7 @@ module Bun
     #    n (numeric)  Set the named value to this value
     #    +n           Add n to the named value
     #    -n           Subtract n from the named value
-    def process_an(name, expression=nil)
+    def an_command(name, expression=nil)
       defn = get_definition(name)
       defn = define_value(name, nil) unless defn
       case expression
@@ -579,7 +579,7 @@ module Bun
     # .en NAME
     # Define a macro named NAME. "Invisible" macros (whatever that means), may be
     # surrounded by parentheses.
-    def process_at(name)
+    def at_command(name)
       tag = name
       name = $1 if name=~/^\((.*)\)$/
       defn = define_macro name
@@ -599,13 +599,13 @@ module Bun
 
     # .br
     # Line break
-    def process_br
+    def br_command
       force_break
     end
 
     # .ce n
     # Center the next n lines
-    def process_ce(n='1')
+    def ce_command(n='1')
       line_count = convert_integer(n, "Line count") if n
       if n
         save_fill = self.fill
@@ -625,7 +625,7 @@ module Bun
     # .cl n
     # Close file n
     # (Actually, this isn't necessary, the way file access is implemented here)
-    def process_cl(fn)
+    def cl_command(fn)
       get_file fn
       # No other action required
     end
@@ -633,7 +633,7 @@ module Bun
     # .debug [SETTING]
     # Set debug mode on or off
     # This is an extension to the original ROFF
-    def process_debug(flag='on')
+    def debug_command(flag='on')
       case flag.downcase
       when "off", "false", "0", "nil"
         @debug = false
@@ -646,7 +646,7 @@ module Bun
     # ...
     # .en flag
     # Divert output to file n (established by a previous .fa)
-    def process_dn(fn, flag)
+    def dn_command(fn, flag)
       file = get_file fn
       push_output_file(file)
       self.buffer_stack.push self.line_buffer
@@ -663,32 +663,32 @@ module Bun
     # .show TYPE NAME
     # Display the value of name. Type may be 'file', 'macro', 'value', 'stack'
     # This is an extension to original ROFF
-    def process_show(type, name=nil)
+    def show_command(type, name=nil)
       show_item(type, name)
     end
 
     # .el tag
     # Else clause of if/else conditional (e.g. .if, or .id). Should never occur by itself
-    def process_el(tag)
+    def el_command(tag)
       log "Unmatched .el found:" + stack_trace.first
     end
 
     # .en tag
     # End of block command (e.g. .if). Should never occur by itself
-    def process_en(tag)
+    def en_command(tag)
       log "Unmatched .en found:" + stack_trace.first
     end
 
     # .fa n name
     # Attach a file; n is the file number. File names starting with '*' are temporary files
-    def process_fa(fn, name)
+    def fa_command(fn, name)
       ix = convert_integer(fn, "!File number")
       @files[ix] = {name: name.sub(/^\*/,''), path: get_file_name(name), number: ix}
     end
 
     # .fi
     # Turn filling on (i.e. flow text, word by word)
-    def process_fi
+    def fi_command
       flush unless self.fill
       self.fill = true
       self.center = false
@@ -696,7 +696,7 @@ module Bun
 
     # .ic CHARS
     # Set insertion characters (e.g. ^^ )
-    def process_ic(chars='')
+    def ic_command(chars='')
       @insert_characters, @insert_escape = get_escape(chars)
     end
 
@@ -706,7 +706,7 @@ module Bun
     # ...
     # .en NAME
     # If name is defined, execute the first part. If it isn't, execute the else
-    def process_id(name, flag)
+    def id_command(name, flag)
       _process_conditional(flag) { @definitions[name] }
     end
 
@@ -717,7 +717,7 @@ module Bun
     # .en TAG
     # If the condition is true, execute the first part. If it isn't, execute the else
     # Conditions are very simple: of the form <operand><comparison><number>
-    def process_if(condition, flag)
+    def if_command(condition, flag)
       _process_conditional(flag) { evaluate_condition(condition) }
     end
 
@@ -760,21 +760,21 @@ module Bun
 
     # .in n
     # Set indent
-    def process_in(ind)
+    def in_command(ind)
       self.indent = self.next_indent = convert_relative_integer(self.indent, ind, "Indent")
     end
 
     # .ju
     # Turn justification on (i.e. even up right edges)
     # TODO Question -- should this force a flush?
-    def process_ju
+    def ju_command
       self.justify = true
       self.center = false
     end
 
     # .li
     # Treat the next line ltterally
-    def process_li
+    def li_command
       next_line = get_line
       self.next_line_number += 1
       put_line(next_line) if next_line
@@ -782,7 +782,7 @@ module Bun
 
     # .ll n
     # Treat the next line ltterally
-    def process_ll(len)
+    def ll_command(len)
       self.line_length = convert_relative_integer(self.line_length, len, "Line length")
     end
 
@@ -791,7 +791,7 @@ module Bun
     # Sets a mask which is merged with the text on output
     # I.e. the merge mask "shows through", wherever there's
     # a space in the output
-    def process_mg
+    def mg_command
       next_line = get_line
       exit if next_line == /^\*+$/
       self.merge_string = next_line||''
@@ -799,26 +799,26 @@ module Bun
 
     # .nf
     # Turn off filling (i.e. flowing text)
-    def process_nf
+    def nf_command
       force_break if self.fill
       self.fill = false
     end
 
     # .pc CHARS
     # Set parameter characters (e.g. @ )
-    def process_pc(chars='')
+    def pc_command(chars='')
       self.parameter_characters, self.parameter_escape = get_escape(chars)
     end
 
     # .qc CHARS
     # Set quote characters (e.g. " )
-    def process_qc(chars='')
+    def qc_command(chars='')
       @quote_characters, @quote_escape = get_escape(chars)
     end
 
     # .so FILE  or  .so *BUFFER
     # Source from a file or buffer
-    def process_so(file)
+    def so_command(file)
       original_file = file
       path = get_file_name(file)
       unless File.exists?(path)
@@ -830,7 +830,7 @@ module Bun
 
     # .sq
     # Turn off justification (i.e. flowing text)
-    def process_sq
+    def sq_command
       force_break if self.justify
       self.justify = false
     end
@@ -838,20 +838,20 @@ module Bun
     # .stop
     # Immediately halt processing
     # This is an extension to original ROFF
-    def process_stop(msg=nil)
+    def stop_command(msg=nil)
       stop msg
     end
 
     # .ti n
     # Set temporary indent
-    def process_ti(ind)
+    def ti_command(ind)
       self.next_indent = convert_relative_integer(self.next_indent, ind, "Indent")
     end
 
     # .tr CHARS
     # Set up a character translation
     # e.g.  .tr ABCD  would translate "A"s to "B"s and "C"s to "D"s
-    def process_tr(chars)
+    def tr_command(chars)
       tr1 = ''
       tr2 = ''
       chars.scan(/./).each_slice(2) do |c1, c2|
@@ -864,13 +864,13 @@ module Bun
 
     # .ze STUFF
     # Output a message on $stderr
-    def process_ze(*args)
+    def ze_command(*args)
       log args.join(' ')
     end
 
     # .zz STUFF
     # A comment
-    def process_zz(*args)
+    def zz_command(*args)
       # Do nothing
     end
 
