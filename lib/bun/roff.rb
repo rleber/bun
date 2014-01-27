@@ -1,6 +1,16 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+# TODO Items
+#   Props list line references aren't working. This is because expanding still isn't working quite right.
+#     It should expand a parameter reference or an insertion, but not both in the same text, I think. Also,
+#     that may mean that the settings for "don't expand" may not be set right, currently.
+#   Justification is generally turned off most of the time.
+#   Tildes ('~') in "has no speeches" warnings aren't being replaced
+#   Merging isn't working right (see character list)
+#   Tabs don't work
+#   Pagination, headers, and footers don't work
+
 module Bun
   class Roff
     class Thing < Hash 
@@ -166,6 +176,7 @@ module Bun
     attr_accessor :center
     attr_accessor :fill
     attr_accessor :justify
+    attr_accessor :line_spacing
     attr_accessor :translation
     attr_accessor :parameter_characters
     attr_accessor :parameter_escape
@@ -202,6 +213,7 @@ module Bun
       self.fill = true
       self.justify = false
       self.center = false
+      @line_spacing = 1
       @random = Random.new
       @translation = []
       @parameter_characters = @parameter_escape = ''
@@ -749,6 +761,14 @@ module Bun
       self.line_length = convert_relative_integer(self.line_length, len, "Line length")
     end
 
+    # .ls [N]
+    # Set line spacing
+    def ls_command(n=1)
+      line_count = convert_integer(n, "space count")
+      force_break
+      @line_spacing = line_count
+    end
+
     # .mg
     # <merge line>
     # Sets a mask which is merged with the text on output
@@ -792,7 +812,7 @@ module Bun
     end
 
     # .sp [N]
-    # Turn off justification (i.e. flowing text)
+    # Insert N blank lines
     def sp_command(n=1)
       line_count = convert_integer(n, "space count")
       force_break
@@ -1074,6 +1094,7 @@ module Bun
           line = @line_buffer.join
         end
         put_line((' '*total_indent) + transform(line))
+        (@line_spacing - 1).times { put_line '' }
       end
       @line_buffer = []
       self.next_indent = self.indent
