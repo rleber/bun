@@ -6,11 +6,12 @@ if $0 == 'irb'
 end
 
 # Use stop instead of abort, in case we're testing in irb
-def stop(msg)
+def stop(msg=nil)
   if $0 == 'irb'
-    warn msg
+    warn msg if msg
     raise Abort, msg
   else
-    abort msg
+    abort msg if msg
+    exit(1)
   end
 end

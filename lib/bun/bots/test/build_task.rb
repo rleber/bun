@@ -127,6 +127,10 @@ def build
   build_standard_directory "data/test/archive/catalog_source_init", :unpacked
   
   $stderr.puts "Not rebuilding data/test/archive/compact_files_init"
+
+  build_directory "data/test/archive/roff/fass/1990" do
+    _exec "cp -r #{ENV['HOME']}/fass_work/baked/fass/1990/script data/test/archive/roff/fass/1990/script"
+  end
   
   build_directory "data/test/archive/compact_source_init" do
     build_file "ar004.0888"

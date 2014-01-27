@@ -5,6 +5,12 @@ module Bun
 
   class File < ::File
     class Baked < ::File
+      class << self
+        def roff(from, to, options={})
+          Roff.process_file(from, to, options)
+        end
+      end
+
       def descriptor
         @descriptor ||= File::Descriptor::Base.from_hash(nil, format: :baked)
       end

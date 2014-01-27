@@ -109,10 +109,18 @@ module Bun
       end
       content
     end
+
+    def append(file, content, options={})
+      write(file, content, options.merge(mode: 'a'))
+    end
+
+    def puts(file, content, options={})
+      append(file, content+"\n", options)
+    end
     
     def log(file, message)
       file = $stderr if file == '-'
-      write file, "#{Time.now.strftime('%Y/%m/%d %H:%M:%S')} #{message}\n", :mode=>'a'
+      puts file, "#{Time.now.strftime('%Y/%m/%d %H:%M:%S')} #{message}"
     end
   end
 end
