@@ -658,7 +658,6 @@ module Bun
       op2 = $3.strip
       op2 = convert_integer(op2, "Second comparison operang")
       # TODO Should this depend on the quoting character?
-      # TODO This is temporarily scaffolded and should be fixed
       if op1 =~ /^"(?:[^"]|"")*"$/ # op1 is a quoted string
         log "op1: #{op1.inspect}"
         tweaked_op1 = op1.gsub(/(?<!^)""/,'\\"')
@@ -667,11 +666,10 @@ module Bun
         rescue SyntaxError => e
           syntax "bad string operand #{op1}"
         end
-      # elsif op1 =~ /^[+-]?\d+$/
-      else
+      elsif op1 =~ /^[+-]?\d+$/
         op1 = op1.to_i
-      # else
-      #   syntax "!Bad operand #{op1.inspect} in condition"
+      else
+        syntax "!Bad operand #{op1.inspect} in condition"
       end
       comparison = '==' if comparison=='='
       begin
@@ -1116,7 +1114,7 @@ module Bun
     end
 
     def dump_thing(name, indent=0)
-      if (f=@files.find {|file| file[:name]==name.sub(/^\*/,'')})
+      if (f=@files.find {|file| file && file[:name]==name.sub(/^\*/,'')})
         dump_file_from_defn(f, indent)
       elsif (defn=@definitions[name])
         case defn[:type]
