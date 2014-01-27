@@ -382,7 +382,7 @@ module Bun
 
     def expand(line, options={})
       macro_arguments = options[:macro_arguments] || self.macro_arguments || []
-      line = self.line.dup # So we don't change the original version of the line
+      line = line.dup # So we don't change the original version of the line
       original_line = line.dup
       # TODO could move these and only change them when the characters do
       insert_pattern = self.insert_pattern
@@ -524,7 +524,9 @@ module Bun
       tag = name
       name = $1 if name=~/^\((.*)\)$/
       defn = define_macro name
-      look_for_en(tag) {|line| defn[:lines] << expand(line, :no_parameters=>true) }
+      look_for_en(tag) do |line|
+        defn[:lines] +=  expand(line, no_parameters: true)
+      end
       defn[:lines].flatten!
     end
 

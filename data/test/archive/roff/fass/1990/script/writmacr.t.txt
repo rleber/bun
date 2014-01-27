@@ -42,14 +42,10 @@ FASSical Studies 1990
 .at warning
 .ze *** WARNING ^^(actr):^^(scen) -- @1
 .en warning
-.debug on
 .at squeeze_line
 .sq
 .sp
 .en squeeze_line
-.dump squeeze_line
-.stop
-.debug off
 .zz -- reset to normal
 .at ex
 ^(squeeze_line)
