@@ -54,14 +54,52 @@ module Bun
       #   File:   We are roffing from a file
       #   Macro:  We are roffing from a macro
       #   String: We are inserting a string (?)
+      attr_accessor :macro
+
+      def initialize(roff, options={})
+        super
+        @macro = options[:macro]
+      end
+
+      def at_bottom
+        false
+      end
+
+      def arguments
+        macro.arguments
+      end
+
       def context_type
         type.to_s.sub(/_context/,'').to_sym
       end
     end
 
+    class BaseContext  < Context
+      def macro
+        self
+      end
+
+      def at_bottom
+        true
+      end
+
+      def arguments
+        nil
+      end
+    end
     class FileContext  < Context; end
     class TextContext  < Context; end
-    class MacroContext < Context; end
+    class MacroContext < Context
+      attr_accessor :arguments
+      def initialize(roff, options={})
+        super
+        @arguments = options[:arguments]
+      end
+
+      def macro
+        self
+      end
+    end
 
     class << self
       # TODO Meaning of to should be:
@@ -132,6 +170,7 @@ module Bun
     attr_accessor :parameter_characters
     attr_accessor :parameter_escape
     attr_accessor :expand_parameters
+    attr_accessor :expand_substitutions
     attr_accessor :insert_characters
     attr_accessor :insert_escape
     attr_accessor :quote_characters
@@ -167,11 +206,12 @@ module Bun
       @translation = []
       @parameter_characters = @parameter_escape = ''
       @expand_parameters = true
+      @expand_substitutions = true
       @insert_characters = @insert_escape = ''
       @quote_characters = @quote_escape = ''
       @definitions = {}
       set_time
-      @context_stack = []
+      @context_stack = [BaseContext.new(self)]
       @unimplemented_commands = []
       @command_count = 0
       @merge_string = ''
@@ -217,7 +257,7 @@ module Bun
       define name, m
     end
 
-    def macro(name)
+    def macro_definition(name)
       defn = @definitions[name]
       defn && defn[:type]==:macro && defn # i.e. return the macro definitiion, if it exists
     end
@@ -251,11 +291,11 @@ module Bun
     end
 
     def eof?
-      stack_depth == 0
+      stack_depth == 0 || self.at_bottom
     end
 
     def stacked?
-      !eof?
+      stack_depth > 0
     end
 
     def ensure_stacked
@@ -269,19 +309,19 @@ module Bun
 
     def context_for_file(path)
       err "!File #{path} does not exist" unless File.exists?(path)
-      f = FileContext.new(self, path: path, lines: split_lines(File.read(path)), macro_arguments: [])
+      f = FileContext.new(self, path: path, lines: split_lines(File.read(path)), macro: self.macro)
       Roff.copy_state self, f if stacked?
       f
     end
 
     def context_for_text(text)
-      t = TextContext.new(self, lines: split_lines(text), macro_arguments: [])
+      t = TextContext.new(self, lines: split_lines(text), macro: self.macro)
       Roff.copy_state self, t if stacked?
       t
     end
 
     def context_for_macro(macro, *arguments)
-      MacroContext.new(self, macro: macro, name: macro.name, lines: macro.lines, macro_arguments: arguments)
+      MacroContext.new(self, macro: macro, name: macro.name, lines: macro.lines, arguments: arguments)
     end
 
     context_attr_accessor :line_number
@@ -299,7 +339,9 @@ module Bun
     context_attr_reader   :name
     context_attr_reader   :path
     context_attr_reader   :lines
-    context_attr_reader   :macro_arguments
+    context_attr_reader   :macro
+    context_attr_reader   :arguments
+    context_attr_reader   :at_bottom
 
     def split_lines(text)
       lines = text.to_s.split("\n")
@@ -311,8 +353,14 @@ module Bun
     def process(to='-', options={})
       push_output_file to
       self.next_line_number = 1
-      while get_line
-        process_line
+      while (self.line = get_line)
+        self.expanded_lines = expand(self.line)
+        expanded_lines.each.with_index do |expanded_line, i|
+          self.expanded_line_number = i+1
+          self.expanded_line = expanded_line
+          process_line(expanded_line)
+        end
+        self.expanded_lines = self.expanded_line = self.expanded_line_number = nil # This is in here in case it's useful for debugging
       end
       flush(justify: false)
     # Cause exceptions to be accompanied by a stack trace
@@ -321,24 +369,16 @@ module Bun
       log_stack_trace('    ')
       raise
     ensure
-      dump_summary if summary
-      dump_all if summary && @debug
+      show_summary if summary
+      show_all if summary && @debug
     end
 
-    def process_line(options={})
-      line = options[:line] || self.line
-      macro_arguments = options[:macro_arguments] || self.macro_arguments || []
-      self.expanded_lines = expand(line, macro_arguments: macro_arguments)
-      expanded_lines.each.with_index do |expanded_line, i|
-        self.expanded_line_number = i+1
-        self.expanded_line = expanded_line
-        if parse_command(expanded_line)
-          process_command
-        else
-          output_line(expanded_line)
-        end
+    def process_line(line)
+      if parse_command(line)
+        process_command
+      else
+        output_line(line)
       end
-      self.expanded_lines = self.expanded_line = self.expanded_line_number = nil # This is in here in case it's useful for debugging
     end
 
     def get_line
@@ -383,7 +423,7 @@ module Bun
     end
 
     def expand(line, options={})
-      macro_arguments = options[:macro_arguments] || self.macro_arguments || []
+      macro_arguments = self.arguments
       line = line.dup # So we don't change the original version of the line
       original_line = line.dup
       # TODO could move these and only change them when the characters do
@@ -392,22 +432,35 @@ module Bun
       page_number_pattern = self.page_number_pattern
       parameter_pattern = self.parameter_pattern
       parameter_escape_pattern = self.parameter_escape_pattern
-      if self.expand_parameters || options[:expand_parameters]
-        line = expand_substitutions(line, parameter_characters, parameter_pattern, parameter_escape_pattern) do |match|
+      changes = 0
+      if (self.expand_parameters || options[:expand_parameters]) \
+          && (options[:expand_parameters]!=false) \
+          && macro_arguments
+        line = expand_item(line, parameter_characters, parameter_pattern, parameter_escape_pattern) do |match|
+          changes += 1
           macro_arguments[(match[1..-1].to_i)-1]
         end
       end
-      line = expand_substitutions(line, @insert_characters, insert_pattern, insert_escape_pattern) do |match|
-        v = value_of(match[2..-2])
-        v.nil? ? match : v.to_s
+      if (self.expand_substitutions || options[:expand_substitutions]) \
+          && options[:expand_substitutions]!=false
+        line = expand_item(line, @insert_characters, insert_pattern, insert_escape_pattern) do |match|
+          v = value_of(match[2..-2])
+          if v.nil?
+            match
+          else
+            changes += 1
+            v.to_s
+          end
+        end
       end
-      line = expand_substitutions(line, @insert_characters, page_number_pattern, insert_escape_pattern) do |match|
+      line = expand_item(line, @insert_characters, page_number_pattern, insert_escape_pattern) do |match|
+        changes += 1
         page_number.to_s
       end
       split_lines(line)
     end
 
-    def expand_substitutions(line, chars, pat, escape_pat, &blk)
+    def expand_item(line, chars, pat, escape_pat, &blk)
       line.gsub(pat) {|match| yield(match) }.gsub(escape_pat, chars.to_s)
     end
 
@@ -445,7 +498,7 @@ module Bun
       if esc.to_s == ''
         /\Zx/ # Never matches
       else
-        /(?<!#{Regexp.escape(esc[0])})#{Regexp.escape(esc)}/
+        /#{Regexp.escape(esc)}/
       end
     end
     def display_match(match=$~)
@@ -473,8 +526,12 @@ module Bun
       end
     end
 
+    def command_escape(string)
+      string=~/\s/ ? string.inspect : string
+    end
+
     def process_command
-      write_trace "Execute", ['.'+command,*command_arguments].join(' ')
+      write_trace "Execute", ['.'+command,*(command_arguments.map{|a| command_escape(a)})].join(' ')
       self.command_count += 1
       self.overridden_line_number = nil
       if self.respond_to?("process_#{command}")
@@ -488,7 +545,7 @@ module Bun
           end
           syntax "Wrong number of arguments#{detail} (Arguments #{command_arguments.inspect})"
         end
-      elsif m = macro(command)
+      elsif m = macro_definition(command)
         m.invoke(*command_arguments)
       else
         unimplemented
@@ -526,19 +583,17 @@ module Bun
       tag = name
       name = $1 if name=~/^\((.*)\)$/
       defn = define_macro name
-      self.expand_parameters = false
       look_for_en(nil, tag) do |line|
         expanded_lines = expand(line)
         if @debug
           expanded_lines.each.with_index do |l, i|
             out = "#{defn[:lines].size+i+1}: #{l} <= #{line}"
             out += " [part #{i+1}]" if expanded_lines.size>1
-            put_dump out, 4
+            show out, 4
           end
         end
         defn[:lines] += expanded_lines
       end
-      self.expand_parameters = true
       defn[:lines].flatten!
     end
 
@@ -596,17 +651,17 @@ module Bun
       push_output_file(file)
       self.buffer_stack.push self.line_buffer
       self.line_buffer = []
-      look_for_en(nil,flag) {|line| process_line(line: line) }
+      look_for_en(nil,flag, expand_substitutions: false) {|line| output_line(line) }
       self.line_buffer = self.buffer_stack.pop
       err "!Buffer stack underflow" unless self.line_buffer
       pop_output_file
     end
 
-    # .dump NAME
-    # Dump the value of name
+    # .show TYPE NAME
+    # Display the value of name. Type may be 'file', 'macro', 'value', 'stack'
     # This is an extension to original ROFF
-    def process_dump(name)
-      dump_thing(name)
+    def process_show(type, name=nil)
+      show_item(type, name)
     end
 
     # .el tag
@@ -692,11 +747,11 @@ module Bun
 
     def _process_conditional(flag, &blk)
       if yield
-        found = look_for_el_or_en(nil, flag) {|line| process_line(line: line) }
+        found = look_for_el_or_en(nil, flag) {|line| process_line(line) }
         look_for_en("Skip to #{flag}", flag) if found=='el'
       else
         found = look_for_el_or_en("Skip to #{flag}", flag)
-        look_for_en(nil, flag) {|line| process_line(line: line) } if found=='el'
+        look_for_en(nil, flag) {|line| process_line(line) } if found=='el'
       end
     end
 
@@ -890,26 +945,31 @@ module Bun
     end
 
     # Encapsulates a common pattern: look for an .en with a matching flag
-    def look_for_en(description, flag, &blk)
-      look_for_command('en', description, flag, &blk)
+    def look_for_en(description, flag, options={}, &blk)
+      look_for_command('en', description, flag, options, &blk)
     end
 
     # Encapsulates a common pattern: look for an .el with a matching flag
-    def look_for_el(description, flag, &blk)
-      look_for_command('el', description, flag, &blk)
+    def look_for_el(description, flag, options={}, &blk)
+      look_for_command('el', description, flag, options, &blk)
     end
 
     # Encapsulates a common pattern: look for an .el or .en with a matching flag
-    def look_for_el_or_en(description, flag, &blk)
-      look_for_command(/^el|en$/, description, flag, &blk)
+    def look_for_el_or_en(description, flag, options={}, &blk)
+      look_for_command(/^el|en$/, description, flag, options, &blk)
     end
     alias_method :look_for_en_or_el, :look_for_el_or_en
 
-    def look_for_command(pattern, description, flag, &blk)
+    def look_for_command(pattern, description, flag, options={}, &blk)
       flag = $1 if flag=~/^\((.*)\)$/
+      expand_substitutions = options[:expand_substitutions]==true || (options[:expand_substitutions].nil? && self.expand_substitutions)
       while l = get_line do
         write_trace description, l if description
-        lines = expand(l)
+        if options[:no_expand]
+          lines = [l]
+        else
+          lines = expand(l, expand_substitutions: expand_substitutions)
+        end
         # TODO What happens if we match on the first part of a multi-line?
         lines.each do |l2|
           if parse_command(l2)
@@ -920,7 +980,8 @@ module Bun
                 syntax "Missing tag in .#{command}"
               when 1
                 command_flag = command_arguments.first
-                command_flag = expand($1, expand_parameters: true)[0] if command_flag =~ /^\((.*)\)$/ 
+                # Is this right?
+                command_flag = expand($1, expand_parameters: true, expand_substitutions: expand_substitutions)[0] if command_flag =~ /^\((.*)\)$/ 
                 if command_flag == flag
                   self.command_count += 1
                   return command
@@ -1107,21 +1168,21 @@ module Bun
       shell.puts(current_output_file, line)
     end
 
-    def dump_summary(indent=0)
+    def show_summary(indent=0)
       noteworthy_unimplemented_commands = unimplemented_commands - IGNORED_COMMANDS
       ignored_commands_not_encountered = IGNORED_COMMANDS - unimplemented_commands
       ignored_commands_encountered = IGNORED_COMMANDS - ignored_commands_not_encountered
 
-      put_dump ''
-      put_dump "Roff Execution Summary:", indent
-      put_dump "#{command_count} commands executed", indent+4
-      put_dump "Unimplemented commands:       " + printable_list(noteworthy_unimplemented_commands.uniq.sort),
+      show ''
+      show "Roff Execution Summary:", indent
+      show "#{command_count} commands executed", indent+4
+      show "Unimplemented commands:       " + printable_list(noteworthy_unimplemented_commands.uniq.sort),
         indent+4 \
         if noteworthy_unimplemented_commands.size > 0
-      put_dump "Ignored commands encountered: " + printable_list(ignored_commands_encountered.uniq.sort),
+      show "Ignored commands encountered: " + printable_list(ignored_commands_encountered.uniq.sort),
         indent+4  \
         if ignored_commands_encountered.size > 0
-      put_dump "Other ignored commands:       " + printable_list(ignored_commands_not_encountered.uniq.sort),
+      show "Other ignored commands:       " + printable_list(ignored_commands_not_encountered.uniq.sort),
         indent+4  \
         if ignored_commands_not_encountered.size > 0
     end
@@ -1130,102 +1191,116 @@ module Bun
       ary.map {|ary| ary.to_s}.join(' ')
     end
 
-    def dump_thing(name, indent=0)
-      if (f=@files.find {|file| file && file[:name]==name.sub(/^\*/,'')})
-        dump_file_from_defn(f, indent)
-      elsif (defn=@definitions[name])
-        case defn[:type]
-        when :macro
-          dump_macro(name, indent)
-        when :value
-          dump_value(name, indent)
+    def show_item(type, name=nil, indent=0)
+      case type.downcase  
+      when 'file'
+        err "Must include name" unless name
+        if name=~/^\d+$/
+          i = name.to_i
+          err "File ##{i} is not defined" if i<1 || i>=@files.size
+          show_file_from_defn(@files[i])
+        elsif (f=@files.find {|file| file && file[:name]==name.sub(/^\*/,'')})
+          show_file_from_defn(f, indent)
         else
-          dump_title "#{name} (Unknown type #{defn[:type].inspect})", indent
-          put_dump defn.inspect, indent+4
+          syntax "Bad file specifier: #{name}"
         end
+      when 'macro'
+        err "Must include name" unless name
+        if (defn=@definitions[name]) && defn[:type]==:macro
+          show_macro(name, indent)
+        else
+          err "Macro #{name} is not defined"
+        end
+      when 'value'
+        err "Must include name" unless name
+        if (defn=@definitions[name]) && defn[:type]==:value
+          show_value(name, indent)
+        else
+          err "Macro #{name} is not defined"
+        end
+      when 'stack'
+        log_stack_trace
       else
-        put_dump "Dump: #{name} not found", indent
-        put_dump "Files: #{@files.compact.map{|f| f[:name]}.sort.join(', ')}", indent+4
-        put_dump "Definitions: #{@definitions.keys.sort.join(', ')}", indent+4
+        syntax "Bad item type to show #{type}"
       end
     end
 
-    def dump_all(indent=0)
-      dump_all_files(indent)
-      put_dump ''
-      dump_all_macros(indent)
-      put_dump ''
-      dump_all_values(indent)
+    def show_all(indent=0)
+      show_all_files(indent)
+      show ''
+      show_all_macros(indent)
+      show ''
+      show_all_values(indent)
     end
 
-    def dump_all_files(indent=0)
-      dump_title "Files:", indent
-      @files.each {|file| dump_file_from_defn(file, indent+4) }
+    def show_all_files(indent=0)
+      show_title "Files:", indent
+      @files.each {|file| show_file_from_defn(file, indent+4) }
     end
 
-    def dump_file(name, indent=0)
+    def show_file(name, indent=0)
       fname = name.sub(/^\*/,'')
       return unless f = @files.find{|file| file[:name]==fname}
-      dump_file_from_defn(f, indent)
+      show_file_from_defn(f, indent)
     end
 
-    def dump_file_from_defn(file, indent=0)
+    def show_file_from_defn(file, indent=0)
       return unless file
       return if file[:name].nil?
       file_title = "#{file[:number]}: #{file[:name]}"
       file_title += " (#{file[:path]})" unless file[:path].nil? || file[:name]==file[:path]
       if file[:name] == '-'
-        dump_title file_title, indent
-        put_dump "STDOUT", indent+4
+        show_title file_title, indent
+        show "STDOUT", indent+4
       elsif File.exists?(file[:path])
-        dump_lines file_title, File.read(file[:path]), indent
+        show_lines file_title, File.read(file[:path]), indent
       else
-        dump_title file_title, indent
-        put_dump 'Does not exist', indent+4
+        show_title file_title, indent
+        show 'Does not exist', indent+4
       end
     end
 
-    def dump_all_macros(indent=0)
-      dump_title "Macros:", indent
+    def show_all_macros(indent=0)
+      show_title "Macros:", indent
       @definitions.to_a.select{|key, defn| defn[:type]==:macro}.sort_by{|key, defn| key}.each do |key, defn|
-        dump_macro(key, indent+4)
+        show_macro(key, indent+4)
       end
     end
 
-    def dump_macro(name, indent=0)
+    def show_macro(name, indent=0)
       return unless defn=@definitions[name]
       return unless defn[:type] == :macro
-      dump_lines defn[:name], defn[:lines], indent
+      show_lines defn[:name], defn[:lines], indent
     end
 
-    def dump_all_values(indent=0)
-      dump_title "Values:", indent
+    def show_all_values(indent=0)
+      show_title "Values:", indent
       @definitions.to_a.select{|key, defn| defn[:type]==:value}.sort_by{|key, defn| key}.each do |key, defn|
-        dump_value(key, indent+4)
+        show_value(key, indent+4)
       end
     end
 
-    def dump_value(name, indent=0)
+    def show_value(name, indent=0)
       return unless defn=@definitions[name]
       return unless defn[:type] == :value
-      put_dump "#{defn[:name]} = #{defn[:value].inspect}", indent
+      show "#{defn[:name]} = #{defn[:value].inspect}", indent
     end
 
-    def dump_lines(title, text, indent=0)
+    def show_lines(title, text, indent=0)
       text = text.split("\n") if text.is_a?(String)
-      dump_title title, indent
+      show_title title, indent
       line_number_width = text.size.to_s.size
       format_string = "%#{line_number_width}d"
-      text.each.with_index {|line, i| put_dump "#{format_string % (i+1)}  #{line}", indent+4 }
+      text.each.with_index {|line, i| show "#{format_string % (i+1)}  #{line}", indent+4 }
     end
 
-    def dump_title(title, indent=0)
-      put_dump title, indent
-      put_dump '-'*(title.size), indent
+    def show_title(title, indent=0)
+      show title, indent
+      show '-'*(title.size), indent
     end
 
 
-    def put_dump(text, indent=0)
+    def show(text, indent=0)
       log((' '*indent)+text)
     end
   end
