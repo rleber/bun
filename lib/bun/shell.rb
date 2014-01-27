@@ -104,7 +104,7 @@ module Bun
         file.write content
       else
         mode = options[:mode] || 'w'
-        ::File.open(file, mode) {|f| f.write content}
+        ::File.open(file, mode) {|f| f.write content }
         set_timestamp(file, options[:timestamp], options) if options[:timestamp]
       end
       content

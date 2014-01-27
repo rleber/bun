@@ -309,7 +309,7 @@ module Bun
 
     def context_for_file(path)
       err "!File #{path} does not exist" unless File.exists?(path)
-      f = FileContext.new(self, path: path, lines: split_lines(File.read(path)), macro: self.macro)
+      f = FileContext.new(self, path: path, lines: split_lines(::File.read(path)), macro: self.macro)
       Roff.copy_state self, f if stacked?
       f
     end
@@ -651,7 +651,10 @@ module Bun
       push_output_file(file)
       self.buffer_stack.push self.line_buffer
       self.line_buffer = []
-      look_for_en(nil,flag, expand_substitutions: false) {|line| output_line(line) }
+      look_for_en(nil,flag, expand_substitutions: false) do |line|
+        write_trace("Divert", line)
+        put_line(line)
+      end
       self.line_buffer = self.buffer_stack.pop
       err "!Buffer stack underflow" unless self.line_buffer
       pop_output_file
@@ -1143,8 +1146,11 @@ module Bun
         f = @files.find {|f_defn| f_defn && f_defn[:name]==f_label}
         return f[:path] if f
         f = Tempfile.new("roff_#{f_label}_")
-        f.close
+        f.close 
         f.path
+        # fname = ".roff_temp_#{f_label}.txt"
+        # ::File.open(fname, 'w') {|f| } # Create a null file
+        # fname
       else
         name
       end
@@ -1253,7 +1259,7 @@ module Bun
         show_title file_title, indent
         show "STDOUT", indent+4
       elsif File.exists?(file[:path])
-        show_lines file_title, File.read(file[:path]), indent
+        show_lines file_title, ::File.read(file[:path]), indent
       else
         show_title file_title, indent
         show 'Does not exist', indent+4

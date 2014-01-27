@@ -37,12 +37,7 @@ To choose which Goddess was the fairest
 .ad
 (Paris IS ONSTAGE WITH HIS SHEEP, Wool Rogers AND Fleece Irkus.
 ENTER THE THREE GODDESSES. Hera IS HOLDING A
-.show file 2
-.debug
 .prop "GOLDEN APPLE"
-.debug off
-.show file 2
-.stop
 )
 .ch her
 A Shepherd ? A SHEPHERD ? THAT is supposed to judge between US ?
