@@ -5,11 +5,13 @@
 #   Props list line references aren't working. This is because expanding still isn't working quite right.
 #     It should expand a parameter reference or an insertion, but not both in the same text, I think. Also,
 #     that may mean that the settings for "don't expand" may not be set right, currently.
-#   Justification is generally turned off most of the time.
-#   Tildes ('~') in "has no speeches" warnings aren't being replaced
+#   Justification is generally turned off most of the time. (Although this may be correct.)
 #   Merging isn't working right (see character list)
 #   Tabs don't work
 #   Pagination, headers, and footers don't work
+#   =prefix for disabling expansion
+#   inject method for injecting input lines; refactor multi-line expand using this and =
+#   Error messages should reference original file names and line numbers
 
 module Bun
   class Roff
@@ -177,6 +179,7 @@ module Bun
     attr_accessor :fill
     attr_accessor :justify
     attr_accessor :line_spacing
+    attr_accessor :page_length
     attr_accessor :translation
     attr_accessor :parameter_characters
     attr_accessor :parameter_escape
@@ -197,7 +200,8 @@ module Bun
     attr_accessor :files
 
     DEFAULT_LINE_LENGTH = 60
-    IGNORED_COMMANDS = ["af", "bf", "fs", "hc", "hy", "m1", "m2", "m3", "m4", "nd", "ne", "no", "sq"]
+    DEFAULT_PAGE_LENGTH = 66
+    IGNORED_COMMANDS = %w{af bf fs hc hy m1 m2 m3 m4 nc nd ne no po pw uc}
     PAGE_NUMBER_CHARACTER = '%'
     PAGE_NUMBER_ESCAPE = '%%'
 
@@ -214,6 +218,7 @@ module Bun
       self.justify = false
       self.center = false
       @line_spacing = 1
+      @page_length = DEFAULT_PAGE_LENGTH
       @random = Random.new
       @translation = []
       @parameter_characters = @parameter_escape = ''
@@ -761,10 +766,10 @@ module Bun
       self.line_length = convert_relative_integer(self.line_length, len, "Line length")
     end
 
-    # .ls [N]
+    # .ls N
     # Set line spacing
-    def ls_command(n=1)
-      line_count = convert_integer(n, "space count")
+    def ls_command(n)
+      line_count = convert_integer(n, "line spacing")
       force_break
       @line_spacing = line_count
     end
@@ -787,10 +792,22 @@ module Bun
       self.fill = false
     end
 
+    # .pa N
+    # Set page number
+    def pa_command(n)
+      @page_number = convert_integer(n, "page number")
+    end
+
     # .pc CHARS
     # Set parameter characters (e.g. @ )
     def pc_command(chars='')
       self.parameter_characters, self.parameter_escape = get_escape(chars)
+    end
+
+    # .pl N
+    # Set page length
+    def pl_command(n)
+      @page_length = convert_integer(n, "page length")
     end
 
     # .qc CHARS
@@ -856,7 +873,7 @@ module Bun
     # .ze STUFF
     # Output a message on $stderr
     def ze_command(*args)
-      log args.join(' ')
+      log translate(args.join(' '))
     end
 
     # .zz STUFF
@@ -1101,9 +1118,7 @@ module Bun
     end
 
     def transform(text)
-      text = merge(text, merge_string)
-      text = text.tr(*@translation) unless @translation.size == 0
-      text
+      translate(merge(text, merge_string))
     end
 
     def merge(text, background)
@@ -1116,6 +1131,10 @@ module Bun
         res += text_char==' ' ? background_char : text_char
       end
       res
+    end
+
+    def translate(text)
+      @translation.size==0 ? text : text.tr(*@translation)
     end
 
     def center_line(buffer)
