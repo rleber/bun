@@ -2,16 +2,20 @@
 # -*- encoding: us-ascii -*-
 
 # TODO Items
+#   Spacing on headings and footings (on the right) is a little short -- related to net_line_length
+#   I think tab stops are still a little off -- see, for instance '--NO LINES--' in speech summary at end
+#   Character list at beginning is formatting wrong
+#   Are we still spreading out spacing on final lines of paragraphs?
+#   Formatting of final props list isn't working
+#   Final line of '====' after final props list is indented too far
 #   Props list line references aren't working. This is because expanding still isn't working quite right.
 #     It should expand a parameter reference or an insertion, but not both in the same text, I think. Also,
 #     that may mean that the settings for "don't expand" may not be set right, currently.
+#   Improved line breaking: xxx', 'xxx, xxx), (xxx, hyphenation
 #   Justification is generally turned off most of the time. (Although this may be correct.)
-#   Merging isn't working right (see character list)
-#   Tabs don't work
-#   Pagination, headers, and footers don't work
+#   Error messages should reference original file names and line numbers
 #   =prefix for disabling expansion
 #   inject method for injecting input lines; refactor multi-line expand using this and =
-#   Error messages should reference original file names and line numbers
 
 module Bun
   class Roff
@@ -178,8 +182,17 @@ module Bun
     attr_accessor :center
     attr_accessor :fill
     attr_accessor :justify
+    attr_accessor :tabbed
     attr_accessor :line_spacing
     attr_accessor :page_length
+    attr_accessor :page_top_margin
+    attr_accessor :page_bottom_margin
+    attr_accessor :page_left_margin
+    attr_accessor :page_right_margin
+    attr_accessor :page_line_count
+    attr_accessor :page_headers
+    attr_accessor :page_footers
+    attr_accessor :pages_built
     attr_accessor :translation
     attr_accessor :parameter_characters
     attr_accessor :parameter_escape
@@ -192,6 +205,7 @@ module Bun
     attr_accessor :definitions
     attr_accessor :summary
     attr_accessor :unimplemented_commands
+    attr_accessor :processed_commands
     attr_accessor :command_count
     attr_accessor :merge_string
     attr_accessor :pending_actions
@@ -201,7 +215,9 @@ module Bun
 
     DEFAULT_LINE_LENGTH = 60
     DEFAULT_PAGE_LENGTH = 66
-    IGNORED_COMMANDS = %w{af bf fs hc hy m1 m2 m3 m4 nc nd ne no po pw uc}
+    DEFAULT_PAGE_HEADERS = [['','---- Header ----','']]
+    DEFAULT_PAGE_FOOTERS = [['','---- Footer ----','']]
+    IGNORED_COMMANDS = %w{bf fs hc hy nc nd no po pw uc}
     PAGE_NUMBER_CHARACTER = '%'
     PAGE_NUMBER_ESCAPE = '%%'
 
@@ -217,8 +233,17 @@ module Bun
       self.fill = true
       self.justify = false
       self.center = false
+      self.tabbed = false
       @line_spacing = 1
       @page_length = DEFAULT_PAGE_LENGTH
+      @page_top_margin = 0
+      @page_bottom_margin = 0
+      @page_left_margin = 0
+      @page_right_margin = 0
+      @page_line_count = 0
+      @pages_built = 0
+      @page_headers = DEFAULT_PAGE_HEADERS.compact
+      @page_footers = DEFAULT_PAGE_FOOTERS.compact
       @random = Random.new
       @translation = []
       @parameter_characters = @parameter_escape = ''
@@ -230,6 +255,7 @@ module Bun
       set_time
       @context_stack = [BaseContext.new(self)]
       @unimplemented_commands = []
+      @processed_commands = []
       @command_count = 0
       @merge_string = ''
       @pending_actions = []
@@ -380,10 +406,11 @@ module Bun
         self.expanded_lines = self.expanded_line = self.expanded_line_number = nil # This is in here in case it's useful for debugging
       end
       flush(justify: false)
+      end_page if @pages_built > 0
     # Cause exceptions to be accompanied by a stack trace
     rescue => e
       log "!Exception occurred: #{e}"
-      log_stack_trace('    ')
+      show_stack_trace('    ')
       raise
     ensure
       show_summary if summary
@@ -551,9 +578,13 @@ module Bun
       write_trace "Execute", ['.'+command,*(command_arguments.map{|a| command_escape(a)})].join(' ')
       self.command_count += 1
       self.overridden_line_number = nil
-      if self.respond_to?("#{command}_command")
+      meth = "#{command}_command"
+      if self.respond_to?(meth)
+        # send_arguments = command_arguments[0,self.method(meth).arity.abs]
+        send_arguments = command_arguments
         begin
-          self.send("#{command}_command", *command_arguments)
+          self.processed_commands << command
+          self.send(meth, *send_arguments)
         rescue ArgumentError => e
           if !@debug && e.to_s =~ /wrong number of arguments (\(\d+\s+for\s+\d+\))/
             detail = " #{$1}"
@@ -575,7 +606,7 @@ module Bun
     #    n (numeric)  Set the named value to this value
     #    +n           Add n to the named value
     #    -n           Subtract n from the named value
-    def an_command(name, expression=nil)
+    def an_command(name, expression=nil, *_)
       defn = get_definition(name)
       defn = define_value(name, nil) unless defn
       case expression
@@ -596,7 +627,7 @@ module Bun
     # .en NAME
     # Define a macro named NAME. "Invisible" macros (whatever that means), may be
     # surrounded by parentheses.
-    def at_command(name)
+    def at_command(name, *_)
       tag = name
       name = $1 if name=~/^\((.*)\)$/
       defn = define_macro name
@@ -616,33 +647,36 @@ module Bun
 
     # .br
     # Line break
-    def br_command
+    def br_command(*args)
       force_break
     end
 
     # .ce n
     # Center the next n lines
-    def ce_command(n='1')
+    def ce_command(n='1', *_)
       line_count = convert_integer(n, "Line count") if n
       if n
         save_fill = self.fill
         save_justify = self.justify
+        save_tabbed = self.tabbed
         push_pending_action(line_count) do |line|
           self.center = false
           self.fill = save_fill
           self.justify = save_justify
+          self.tabbed = save_tabbed
         end
       end
       force_break
       self.center = true
       self.fill = false
       self.justify = false
+      self.tabbed = false
     end
 
     # .cl n
     # Close file n
     # (Actually, this isn't necessary, the way file access is implemented here)
-    def cl_command(fn)
+    def cl_command(fn, *_)
       get_file fn
       # No other action required
     end
@@ -650,7 +684,7 @@ module Bun
     # .debug [SETTING]
     # Set debug mode on or off
     # This is an extension to the original ROFF
-    def debug_command(flag='on')
+    def debug_command(flag='on', *_)
       case flag.downcase
       when "off", "false", "0", "nil"
         @debug = false
@@ -663,7 +697,7 @@ module Bun
     # ...
     # .en flag
     # Divert output to file n (established by a previous .fa)
-    def dn_command(fn, flag)
+    def dn_command(fn, flag, *_)
       file = get_file fn
       push_output_file(file)
       self.buffer_stack.push self.line_buffer
@@ -677,43 +711,51 @@ module Bun
       pop_output_file
     end
 
-    # .show TYPE NAME
-    # Display the value of name. Type may be 'file', 'macro', 'value', 'stack'
-    # This is an extension to original ROFF
-    def show_command(type, name=nil)
-      show_item(type, name)
-    end
-
     # .el tag
     # Else clause of if/else conditional (e.g. .if, or .id). Should never occur by itself
-    def el_command(tag)
+    def el_command(tag, *_)
       log "Unmatched .el found:" + stack_trace.first
     end
 
     # .en tag
     # End of block command (e.g. .if). Should never occur by itself
-    def en_command(tag)
+    def en_command(tag, *_)
       log "Unmatched .en found:" + stack_trace.first
     end
 
     # .fa n name
     # Attach a file; n is the file number. File names starting with '*' are temporary files
-    def fa_command(fn, name)
+    def fa_command(fn, name, *_)
       ix = convert_integer(fn, "!File number")
       @files[ix] = {name: name.sub(/^\*/,''), path: get_file_name(name), number: ix}
     end
 
     # .fi
     # Turn filling on (i.e. flow text, word by word)
-    def fi_command
+    def fi_command(*_)
       flush unless self.fill
       self.fill = true
       self.center = false
+      self.tabbed = false
+    end
+
+    # .fo '...'...'...'
+    # Set page footer
+    # In the example above, "'" could be any character
+    def fo_command(*args)
+      @page_footers = [line_part_spec]
+    end
+
+    # .he '...'...'...'
+    # Set page heading
+    # In the example above, "'" could be any character
+    def he_command(*args)
+      @page_headers = [line_part_spec]
     end
 
     # .ic CHARS
     # Set insertion characters (e.g. ^^ )
-    def ic_command(chars='')
+    def ic_command(chars='', *_)
       @insert_characters, @insert_escape = get_escape(chars)
     end
 
@@ -723,7 +765,7 @@ module Bun
     # ...
     # .en NAME
     # If name is defined, execute the first part. If it isn't, execute the else
-    def id_command(name, flag)
+    def id_command(name, flag, *_)
       _process_conditional(flag) { @definitions[name] }
     end
 
@@ -734,41 +776,41 @@ module Bun
     # .en TAG
     # If the condition is true, execute the first part. If it isn't, execute the else
     # Conditions are very simple: of the form <operand><comparison><number>
-    def if_command(condition, flag)
+    def if_command(condition, flag, *_)
       _process_conditional(flag) { evaluate_condition(condition) }
     end
 
     # .in n
     # Set indent
-    def in_command(ind)
+    def in_command(ind, *_)
       self.indent = self.next_indent = convert_relative_integer(self.indent, ind, "Indent")
     end
 
     # .ju
     # Turn justification on (i.e. even up right edges)
     # TODO Question -- should this force a flush?
-    def ju_command
+    def ju_command(*_)
       self.justify = true
       self.center = false
     end
 
     # .li
     # Treat the next line ltterally
-    def li_command
+    def li_command(*_)
       next_line = get_line
       self.next_line_number += 1
-      put_line(next_line) if next_line
+      put_line_paginated(next_line) if next_line
     end
 
     # .ll n
     # Treat the next line ltterally
-    def ll_command(len)
+    def ll_command(len, *_)
       self.line_length = convert_relative_integer(self.line_length, len, "Line length")
     end
 
     # .ls N
     # Set line spacing
-    def ls_command(n)
+    def ls_command(n, *_)
       line_count = convert_integer(n, "line spacing")
       force_break
       @line_spacing = line_count
@@ -779,46 +821,83 @@ module Bun
     # Sets a mask which is merged with the text on output
     # I.e. the merge mask "shows through", wherever there's
     # a space in the output
-    def mg_command
+    def mg_command(*_)
       next_line = get_line
       exit if next_line == /^\*+$/
       self.merge_string = next_line||''
     end
 
+    # .m1 N
+    # Set m1 margin
+    def m1_command(n, *_)
+      @page_top_margin = convert_integer(n, "margin")
+    end
+
+    # .m2 N
+    # Set m2 margin
+    def m2_command(n, *_)
+      @page_bottom_margin = convert_integer(n, "margin")
+    end
+
+    # .m3 N
+    # Set m3 margin
+    def m3_command(n, *_)
+      @page_left_margin = convert_integer(n, "margin")
+    end
+
+    # .m4 N
+    # Set m4 margin
+    def m4_command(n, *_)
+      @page_right_margin = convert_integer(n, "margin")
+    end
+
+    # .ne N
+    # Ensure there are at least N lines left in the page
+    def ne_command(n, *_)
+      end_page if net_page_lines_left < convert_integer(n, "lines needed")
+    end
+
     # .nf
     # Turn off filling (i.e. flowing text)
-    def nf_command
+    def nf_command(*_)
       force_break if self.fill
       self.fill = false
     end
 
     # .pa N
     # Set page number
-    def pa_command(n)
+    def pa_command(n, *_)
       @page_number = convert_integer(n, "page number")
     end
 
     # .pc CHARS
     # Set parameter characters (e.g. @ )
-    def pc_command(chars='')
+    def pc_command(chars='', *_)
       self.parameter_characters, self.parameter_escape = get_escape(chars)
     end
 
     # .pl N
     # Set page length
-    def pl_command(n)
+    def pl_command(n, *_)
       @page_length = convert_integer(n, "page length")
     end
 
     # .qc CHARS
     # Set quote characters (e.g. " )
-    def qc_command(chars='')
+    def qc_command(chars='', *_)
       @quote_characters, @quote_escape = get_escape(chars)
+    end
+
+    # .show TYPE NAME
+    # Display the value of name. Type may be 'file', 'macro', 'value', 'stack'
+    # This is an extension to original ROFF
+    def show_command(type, name=nil, *_)
+      show_item(type, name)
     end
 
     # .so FILE  or  .so *BUFFER
     # Source from a file or buffer
-    def so_command(file)
+    def so_command(file, *_)
       original_file = file
       path = get_file_name(file)
       unless File.exists?(path)
@@ -830,7 +909,7 @@ module Bun
 
     # .sp [N]
     # Insert N blank lines
-    def sp_command(n=1)
+    def sp_command(n=1, *_)
       line_count = convert_integer(n, "space count")
       force_break
       n.to_i.times { output_line '' }
@@ -838,7 +917,7 @@ module Bun
 
     # .sq
     # Turn off justification (i.e. flowing text)
-    def sq_command
+    def sq_command(*_)
       force_break if self.justify
       self.justify = false
     end
@@ -846,20 +925,53 @@ module Bun
     # .stop
     # Immediately halt processing
     # This is an extension to original ROFF
-    def stop_command(msg=nil)
+    def stop_command(msg=nil, *_)
       stop msg
+    end
+
+    # .ta SPECS
+    # Set tab stops
+    # This is how the stops are specified:
+    #   Tab stop specifications are a series of the letters L, C, or R, or numbers (possibly with + or - signs)
+    #   If the first entry is numeric, then it's the indentation (as well as a tab stop, possibly)
+    #   An n means column n (zero-based)
+    #   A +n means n columns after the last tab
+    #   A -n means n columns before the next tab
+    #   The letter R means right stop; stop is at the first numeric to the right (e.g. R 53 )
+    #   The letter L means left stop; stop is at the last numeric to the left (e.g. 42 L )
+    #   The letterC means center stop; center between the nearest numerics to the right and left (e.g. 42 C 57 )
+    #   So, for example:
+    #
+    #     .ta 3 R +3 +2 L +8 L C R 51 R 57
+    #
+    #   Means "set tabs as follows:"
+    #     - Indent 3
+    #     - First tab stop is a right stop at 6 (3 + 3) -- i.e with its rightmost letter aligned in the seventh column)
+    #     - Next stop is a left stop at 8 (i.e. with its leftmost letter aligned in the ninth column)
+    #     - Then a left stop at 16
+    #     - Then a center stop at 33.5 (because (16+51)/2 = 33.5) -- i.e. with its middle letter aligned halfway
+    #       between the 34th and 35th columns (approximately)
+    #     - Then a right stop at 51
+    #     - Then a right stop at 57
+    def ta_command(*tabs)
+      stops = decode_tab_stops(*tabs)
+      flush if self.fill
+      @tab_stops = stops
+      @fill = false
+      @center = false
+      @tabbed = true
     end
 
     # .ti n
     # Set temporary indent
-    def ti_command(ind)
+    def ti_command(ind, *_)
       self.next_indent = convert_relative_integer(self.next_indent, ind, "Indent")
     end
 
     # .tr CHARS
     # Set up a character translation
     # e.g.  .tr ABCD  would translate "A"s to "B"s and "C"s to "D"s
-    def tr_command(chars)
+    def tr_command(chars, *_)
       tr1 = ''
       tr2 = ''
       chars.scan(/./).each_slice(2) do |c1, c2|
@@ -873,13 +985,20 @@ module Bun
     # .ze STUFF
     # Output a message on $stderr
     def ze_command(*args)
-      log translate(args.join(' '))
+      warn translate(args.join(' '))
     end
 
     # .zz STUFF
     # A comment
-    def zz_command(*args)
+    def zz_command(*_)
       # Do nothing
+    end
+
+    def line_part_spec
+      spec = self.line[/^\.\w+\s+(.*)$/,1].strip
+      ((spec.size==0 ? [] : spec[1..-1].split(spec[0])) + ['', '', ''])[0,3] \
+                .map{|p| expand(p)} \
+                .flatten
     end
 
     def evaluate_condition(condition)
@@ -941,14 +1060,18 @@ module Bun
       log msg if @debug
     end
 
+    def syntax(msg='')
+      err "!Syntax error: #{msg} in #{line}"
+    end
+
     def err(msg)
       log msg
-      log_stack_trace '    '
+      show_stack_trace '    '
       raise RuntimeError, "Error raised" if @debug
       stop
     end
 
-    def log_stack_trace(prefix='')
+    def show_stack_trace(prefix='')
       stack_trace.each do |context|
         log "#{prefix}#{context}"
       end
@@ -957,8 +1080,9 @@ module Bun
     # TODO Stack trace in macros should refer back to the line number in the original file
     def stack_trace
       trace = @context_stack.reverse.map do |context|
+        next if context.context_type == :base
         ['Line', context.line_number.to_s, 'in', context.context_type.to_s, context.path, context.name, ':', context.line].compact.join(' ')
-      end
+      end.compact
       if stacked? && expanded_lines && expanded_lines.size > 1
         trace.unshift ['Line', expanded_line_number, 'in', 'command expansion', ':', expanded_line].join(' ')
       end
@@ -988,8 +1112,76 @@ module Bun
       i 
     end
 
-    def syntax(msg='')
-      err "!Syntax error: #{msg} in #{line}"
+    def decode_tab_stops(*tabs)
+      tabs = remove_relative_stops(*tabs)
+      tabs.unshift(0) unless tabs[0].is_a?(Numeric)
+      tabs.push(line_length) unless tabs[-1].is_a?(Numeric)
+      left_stops, center_left_stops,  _           = look_for_previous_stops(*tabs)
+      _,          center_right_stops, right_stops = look_for_previous_stops(*tabs.reverse)
+      center_stops = merge_center_stops(center_left_stops, center_right_stops)
+      stops = merge_all_stops(left_stops, center_stops, right_stops)
+      stops.unshift [:indent, tabs[0]]
+    end
+
+    def remove_relative_stops(*tabs)
+      last_tab_stop = 0
+      # Replace '+nn' and 'nn' forms
+      # TODO Seems like there might be a way to DRY out these two repeated loops
+      tabs = tabs.map do |t|
+        t.downcase!
+        case t
+        when 'l', 'c', 'r'
+          t.to_sym
+        when /^\+\d+$/
+          last_tab_stop += t.to_i
+        when /^-\d$/
+          t # Leave these alone for now
+        when /^\d+$/
+          last_tab_stop = t.to_i
+        else
+          err "!Bad tab stop #{t}"
+        end
+      end
+      # Replace "-nn" forms
+      next_tab_stop = self.line_length
+      tabs.reverse.map do |t|
+        case t
+        when Integer
+          next_tab_stop = t
+        when /^-\d$/
+          next_tab_stop += t.to_i
+        else
+          t
+        end
+      end.reverse
+    end
+
+    def look_for_previous_stops(*tabs)
+      last_stop = nil
+      stops = {}
+      tabs.each do |t|
+        if t.is_a?(Numeric)
+          last_stop = t
+        else
+          stops[t] ||= []
+          stops[t] << last_stop
+        end
+      end
+      [stops[:l]||[], stops[:c]||[], stops[:r]||[]]
+    end
+
+    def merge_center_stops(left, right)
+      raise RuntimeError, "Should be an equal number of center-left and center-right stops" \
+        unless left.size == right.size
+      left.sort.zip(right.sort).map{|l,r| (l+r)/2.0}
+    end
+
+    def merge_all_stops(left, center, right)
+      (
+        left.map{|t| [:left, t] } +
+        center.map {|t| [:center, t] } +
+        right.map {|t| [:right, t] }
+      ).sort_by {|pair| pair[1]}
     end
 
     # Encapsulates a common pattern: look for an .en with a matching flag
@@ -1091,6 +1283,10 @@ module Bun
       line_length - total_indent
     end
 
+    def net_page_lines_left
+      page_lines_left - @page_top_margin - @page_bottom_margin
+    end
+
     def total_indent
       [next_indent, 0].max 
     end
@@ -1100,17 +1296,19 @@ module Bun
     end
 
     def flush(options={})
-      justify = (options[:justify] || self.justify)
+      justify = options[:justify]!=false && (options[:justify] || self.justify)
       @temporary_no_justify = false
       unless @line_buffer.size == 0
         if justify
           line = justify_line(@line_buffer)
         elsif self.center
-          line = center_line(@line_buffer)
+          line = center_buffer(@line_buffer)
+        elsif self.tabbed
+          line = tabbed_text(@line_buffer[0])
         else
           line = @line_buffer.join
         end
-        put_line((' '*total_indent) + transform(line))
+        put_line_paginated indent_text(transform(line), total_indent)
         (@line_spacing - 1).times { put_line '' }
       end
       @line_buffer = []
@@ -1121,14 +1319,17 @@ module Bun
       translate(merge(text, merge_string))
     end
 
-    def merge(text, background)
-      text ||= ''
-      background ||= ''
+    def merge(*strings)
       res = ''
-      [text.size, background.size].max.times do |i|
-        text_char = text[i]||' '
-        background_char = background[i]||' '
-        res += text_char==' ' ? background_char : text_char
+      strings.each do |string|
+        string ||= ''
+        new_res = ''
+        [res.size, string.size].max.times do |i|
+          res_char = res[i]||' '
+          string_char = string[i]||' '
+          new_res += res_char==' ' ? string_char : res_char
+        end
+        res = new_res
       end
       res
     end
@@ -1137,11 +1338,32 @@ module Bun
       @translation.size==0 ? text : text.tr(*@translation)
     end
 
-    def center_line(buffer)
+    def center_buffer(buffer, at=nil)
       trim_buffer buffer
-      return '' if buffer.size == 0
-      padding = net_line_length - buffer.join.size
-      (' '*(padding/2)) + buffer.join
+      center_text(buffer.join, at)
+    end
+
+    def center_text(text, at=nil)
+      at ||= net_line_length/2.0
+      return '' if text.size == 0
+      indent_text text, (at - text.size/2.0).to_i
+    end
+
+    def right_justify_text(text, at=nil)
+      at ||= net_line_length
+      indent_text text, at - text.size
+    end
+
+    def indent_text(text, indent=0)
+      padding(indent) + text
+    end
+
+    def left_justify_text(text, column=1)
+      indent_text(text, column-1)
+    end
+
+    def padding(pad)
+      (' '*[pad,0].max)
     end
 
     def justify_line(buffer)
@@ -1163,7 +1385,7 @@ module Bun
       space_counter = 0
       padded_buffer = buffer.map do |c| 
         if c=~/^\s+$/
-          c += (' '*pad1)
+          c += padding(pad1)
           c += ' ' if extra_locations.include?(space_counter)
           space_counter += 1
           c
@@ -1172,6 +1394,26 @@ module Bun
         end
       end
       padded_buffer.join
+    end
+
+    def tabbed_text(line)
+      line_parts = line.split(/\t/)
+      @tab_stops == [[:indent, @indent]] if @tab_stops.nil? || @tab_stops.size==0
+      tabbed_parts = line_parts.zip(@tab_stops).map do |part, stop|
+        if stop.nil?
+          ' ' + part
+        else
+          case stop[0]
+          when :center
+            center_text part, stop[1]+1
+          when :right
+            right_justify_text part, stop[1]+1
+          else
+            left_justify_text part, stop[1]+1
+          end
+        end
+      end
+      merge(*tabbed_parts)
     end
 
     def trim_buffer(buffer)
@@ -1217,27 +1459,76 @@ module Bun
       @output_file_stack[-1] || '-'
     end
 
-    # TODO We need a way to put_line to buffers
-    # TODO Question: what happens if we start to divert in the middle of a line?
+    def put_line_paginated(line)
+      start_page if @page_line_count == 0
+      put_line line
+      @page_line_count += @line_spacing
+    end
+
+    def start_page
+      put_page_break if @pages_built > 0
+      put_headers
+      @pages_built += 1
+    end
+
+    def end_page
+      put_footers
+      @page_line_count = 0
+      @page_number += 1
+    end
+
+    def put_page_break
+      put_line '-'*@line_length
+    end
+
+    def put_headers
+      @page_headers.each {|header| put_line_parts header }
+      (page_top_margin - @page_headers.size).times { put_line '' }
+    end
+
+    def put_footers
+      (page_bottom_margin - @page_footers.size).times { put_line '' }
+      @page_footers.each {|footer| put_line_parts footer }
+    end
+
+    def put_line_parts(parts)
+      parts = parts.map {|p| p.gsub('%', @page_number.to_s )}
+      put_line build_line_from_parts(parts)
+    end
+
+    def build_line_from_parts(parts)
+      merge(parts[0]||'', center_text(parts[1]||''),right_justify_text(parts[2]||''))
+    end
+
+    def page_lines_left
+      @page_length - @page_line_count
+    end
+
     def put_line(line)
       shell.puts(current_output_file, line)
     end
 
     def show_summary(indent=0)
+      unimplemented_commands = self.unimplemented_commands.uniq
+      processed_commands = self.processed_commands.uniq
       noteworthy_unimplemented_commands = unimplemented_commands - IGNORED_COMMANDS
-      ignored_commands_not_encountered = IGNORED_COMMANDS - unimplemented_commands
-      ignored_commands_encountered = IGNORED_COMMANDS - ignored_commands_not_encountered
+      ignored_commands_implemented = IGNORED_COMMANDS & processed_commands
+      ignored_commands_not_encountered = IGNORED_COMMANDS - unimplemented_commands - ignored_commands_implemented
+      ignored_commands_encountered = IGNORED_COMMANDS - ignored_commands_not_encountered - ignored_commands_implemented
 
-      show ''
-      show "Roff Execution Summary:", indent
-      show "#{command_count} commands executed", indent+4
-      show "Unimplemented commands:       " + printable_list(noteworthy_unimplemented_commands.uniq.sort),
+      warn ''
+      warn_with_indent "Roff Execution Summary:", indent
+      warn_with_indent "#{command_count} commands executed", indent+4
+      warn_with_indent "Unimplemented commands:       " + printable_list(noteworthy_unimplemented_commands.sort),
         indent+4 \
         if noteworthy_unimplemented_commands.size > 0
-      show "Ignored commands encountered: " + printable_list(ignored_commands_encountered.uniq.sort),
+      warn_with_indent "Ignored commands encountered: " + printable_list(ignored_commands_encountered.uniq.sort),
         indent+4  \
         if ignored_commands_encountered.size > 0
-      show "Other ignored commands:       " + printable_list(ignored_commands_not_encountered.uniq.sort),
+      warn_with_indent "Ignored commands implemented: " + printable_list(ignored_commands_implemented.uniq.sort),
+        indent+4  \
+        if ignored_commands_implemented.size > 0
+      warn_with_indent "Other ignored commands:       " + printable_list(ignored_commands_not_encountered.uniq.sort),
         indent+4  \
         if ignored_commands_not_encountered.size > 0
     end
@@ -1274,7 +1565,7 @@ module Bun
           err "Macro #{name} is not defined"
         end
       when 'stack'
-        log_stack_trace
+        show_stack_trace
       else
         syntax "Bad item type to show #{type}"
       end
@@ -1354,9 +1645,12 @@ module Bun
       show '-'*(title.size), indent
     end
 
-
     def show(text, indent=0)
-      log((' '*indent)+text)
+      log indent_text(text, indent)
+    end
+
+    def warn_with_indent(msg, indent=0)
+      warn indent_text(msg, indent)
     end
   end
 end
