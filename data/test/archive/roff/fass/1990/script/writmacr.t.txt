@@ -192,6 +192,7 @@ __________'##'
 Characters defined for this scene:
 .sp
 .nf
+.debug
 .ta 3 R +3 +2 L +8 L R 57
 .en bs
 .zz -- end a scene
@@ -235,12 +236,16 @@ first speech:
 	===  Total Speeches: ^^(speech_count)		Script Pages: ^^(save_page)  ===
 	===  Music Cues: ^^(music_count)	Light Cues: ^^(light_count)	Sound Cues: ^^(sound_count)  ===
 	===  Songs: ^^(song_count)    Special Effects: ^^(sfx_count)		Props: ^^(prop_count)  ===
+.show state
 	======================================================
 .mg
    ===                                                ===
 .in 8
 .ll -8
+.show state
 .fi
+.show state
+.show file *props
 .so *props
 .br
 .in 0

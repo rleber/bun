@@ -1,8 +1,15 @@
-FASS used a text formatting program similar to the modern TROFF to create formatted scripts,
-etc. This program was called Roff or Tf. Some of the files in this archive contain Roff/Tf 
-commands, which makes reading them a bit tricky.
+_Honeywell ROFF_
+
+The archives this software was designed to process were created at the University of Waterloo
+in Canada during the late 1970s and 1980s. Many of them were created by the writers of the amateur
+theatrical group, FASS. FASS used a text formatting program similar to the modern TROFF to create 
+formatted scripts, etc. This program was called Roff or Tf. Some of the files in this archive contain 
+Roff/Tf commands, which makes reading them a bit tricky.
 
 For a general tutorial for writers, take a look at doc/file_format/how_to_tf.txt
+
+Roff was similar to (but different from) the family of more modern text processing systems still found
+on many Unix systems, like roff, nroff, and troff.
 
 The way this works is, except for "commands" (discussed below), the text formatting program
 (which I'm going to refer to as Roff from here on, for sake of simplicity) flows the text
@@ -89,52 +96,28 @@ Primitives             Implemented  Description
 .po N                               Page offset
 .nd N                               Not sure
 
-Macros                              Description
---------------                      ------------------------------------
-.bs ACT SCENE NAME                  Begin a scene
-.es                                 End scene. Should be the last line of a scene.
-.na ABBREV LONG_NAME SHORT_NAME     Define the name of a character. A short and long name are defined.
-                                    "ABBREV" is used to define a macro which will be used to start 
-                                    speeches by this character. It may be 1-10 letters/digits. Each 
-                                    ABBREV must be unique. The long name is used in the script the first 
-                                    time each character speaks in a scene, and the short name is used 
-                                    for every line thereafter.
-.ch ABBREV                          Speech by a character (ABBREV from previous .na command)
-.xx NAME                            One off speech by a character (or characters)
-.sb SONG_NAME TO_THE_TUNE_OF        Begin a song
-.ve NUMBER_OF_LINES                 Begin a new verse
-.sl ABBREV                          Similar to .ch for songs
-.ss NAME                            Similar to .xx for songs
-.x1 .... :x2                        Surround a literal block (Really?)
-.ld                                 Begin lighting direction (Continues to the next chunk -- i.e. .ad, 
-                                    .sd, .ch, .xx, .sb, .ex)
-.ad                                 Actor direction (Again, continues to the next chunk.) Also use this
-                                    to describe items on-stage at the beginning of a scene.
-.sd                                 Sound direction (Again, continues to the next chunk.)
-.md                                 Music direction
-.ex                                 The previous actor's speech continues.
-.prop NAME                          Signals that a prop is being used
-.prip NAME                          Flags an "invisible" prop, which isn't mentioned in the script, but
-                                    which does appear on the prop list for the scene.
-.star                               A list of 60 asterisks (used by song titles)
+_Other Notes_
 
-_Variables used in the scripts:_
+* ^(NAME) expands the named macro. See .ic above
+* ^^ is the escape for '^'
+* %% is the escape for '%'
+* In macros, @1 is converted to the value of the first argument, @2 to the second, etc. Arguments which
+  were omitted have a value of ''. See .pc above
+* There are two versions of the macros: the "bulk macros" which produce simple scripts meant for mass
+  distribution to actors, and the "tech macros", which produce a much more complex script, with line
+  counts, etc.
+* In arguments, ^(...) works kind of like #{} in ruby or ${} in bash
+* Arithmetic operators and comparisons on quoted strings (e.g. "@n") seem to calculate the length of the 
+  string, so "@3"<1 asks if the length of @3 is less than one
+* ^(%) inserts page number in normal text; in headers and footnotes, it's enough to just say '%'
+* A string of more than one space in a line is interpreted as a tab character
+* There are several builtin fields, e.g. year, mon, day, hour, min (and probably sec)
 
-Variables          Type             Description
---------------     --------         -----------------------------------
-speech_count       Numeric          The total number of speeches so far
-chars_defined      Numeric          The number of characters defined so far
-chars_used         Numeric          Not sure -- maybe the number of characters who have lines?
-song_count         Numeric          The number of songs so far
-light_count        Numeric          The number of lighting directions
-music_count        Numeric          The number of musical directions
-prop_count         Numeric          The number of props
-sound_count        Numeric          The number of sound directions
-sfx_count          Numeric          The number of sound effect directions
-defined            File             List of defined characters
-props              File             List of defined props
+This version of Roff was similar to (but not exactly the same as) Unix TRoff. A copy of the TRoff User's
+Guide is available at http://www.kohala.com/start/troff/cstr54.ps. It's useful for clues.
 
 _Tab Stops_
+
 The .ta command uses a tab stop specifier to set tab stops for aligned text. These specifiers are a bit
 tricky to understand. Here's how they work:
 
@@ -168,21 +151,89 @@ tricky to understand. Here's how they work:
      - Then a right stop at 51
      - Then a right stop at 57
 
-_Other notes_
-* ^(NAME) expands the named macro. See .ic above
-* ^^ is the escape for '^'
-* %% is the escape for '%'
-* In macros, @1 is converted to the value of the first argument, @2 to the second, etc. Arguments which
-  were omitted have a value of ''. See .pc above
-* There are two versions of the macros: the "bulk macros" which produce simple scripts meant for mass
-  distribution to actors, and the "tech macros", which produce a much more complex script, with line
-  counts, etc.
-* In arguments, ^(...) works kind of like #{} in ruby or ${} in bash
-* Arithmetic operators and comparisons on quoted strings (e.g. "@n") seem to calculate the length of the 
-  string, so "@3"<1 asks if the length of @3 is less than one
-* ^(%) inserts page number in normal text; in headers and footnotes, it's enough to just say '%'
-* A string of more than one space in a line is interpreted as a tab character
-* There are several builtin fields, e.g. year, mon, day, hour, min (and probably sec)
+_FASS_
 
-This version of Roff was similar to (but not exactly the same as) Unix TRoff. A copy of the TRoff User's
-Guide is available at http://www.kohala.com/start/troff/cstr54.ps. It's useful for clues.
+The FASS theatrical troupe created some fairly powerful macros to simplify writing scripts and creating
+formatted versions for various purposes, such as use by the director, use by the actors, use by the props
+department, and final publication. 
+
+There were several different versions of the macro packages, depending on the purpose for which the script
+was being used. Since all of the macro packages shared versions of the same basic macros, this permitted 
+the writers to maintain one master script file, which could then be published in several different forms.
+
+Some of the common packages include:
+
+writmacr.t   Produce a script for use by the writers
+
+Please note: In porting these scripts to modern systems, in most cases a ".txt" prefix has been added to
+the name of the script files, so writmacr.t becomes writmacr.t.txt, for instance.
+
+_Macros used in FASS scriptwriting_
+
+Macros                              Description
+--------------                      ------------------------------------
+.bs ACT SCENE NAME                  Begin a scene
+.es                                 End scene. Should be the last line of a scene.
+.na ABBREV LONG_NAME SHORT_NAME     Define the name of a character. A short and long name are defined.
+                                    "ABBREV" is used to define a macro which will be used to start 
+                                    speeches by this character. It may be 1-10 letters/digits. Each 
+                                    ABBREV must be unique. The long name is used in the script the first 
+                                    time each character speaks in a scene, and the short name is used 
+                                    for every line thereafter.
+.ch ABBREV                          Speech by a character (ABBREV from previous .na command)
+.xx NAME                            One off speech by a character (or characters)
+.sb SONG_NAME TO_THE_TUNE_OF        Begin a song
+.ve NUMBER_OF_LINES                 Begin a new verse
+.sl ABBREV                          Similar to .ch for songs
+.ss NAME                            Similar to .xx for songs
+.x1 .... :x2                        Surround a literal block (Really?)
+.ld                                 Begin lighting direction (Continues to the next chunk -- i.e. .ad, 
+                                    .sd, .ch, .xx, .sb, .ex)
+.ad                                 Actor direction (Again, continues to the next chunk.) Also use this
+                                    to describe items on-stage at the beginning of a scene.
+.sd                                 Sound direction (Again, continues to the next chunk.)
+.md                                 Music direction
+.ex                                 The previous actor's speech continues.
+.prop NAME                          Signals that a prop is being used
+.prip NAME                          Flags an "invisible" prop, which isn't mentioned in the script, but
+                                    which does appear on the prop list for the scene.
+.star                               A list of 60 asterisks (used by song titles)
+
+_Variables used in FASS scriptwriting:_
+
+Variables          Type             Description
+--------------     --------         -----------------------------------
+speech_count       Numeric          The total number of speeches so far
+chars_defined      Numeric          The number of characters defined so far
+chars_used         Numeric          Not sure -- maybe the number of characters who have lines?
+song_count         Numeric          The number of songs so far
+light_count        Numeric          The number of lighting directions
+music_count        Numeric          The number of musical directions
+prop_count         Numeric          The number of props
+sound_count        Numeric          The number of sound directions
+sfx_count          Numeric          The number of sound effect directions
+defined            File             List of defined characters
+props              File             List of defined props
+
+_Extensions in This Version_
+
+This version of the Roff processor adds some extensions, for the convenience of the user:
+
+Command                             Description
+-------                             -----------------------------------
+.debug on                           Turn debugging mode on; display command trace, etc.
+.debug off                          Turn debugging mode off
+.show file NAME                     Display the contents of the named file. You may use '*name' to
+                                    display the contents of 'temporary' files (See .fa)
+.show file N                        Display the contents of file number N (See .fa, .dn)
+.show macro NAME                    Display the definition of the named macro
+.show value NAME                    Display the value of the named variable (i.e. from a .an command)
+.show stack                         Display the current macro call stack
+.show state                         Display key formatting states (e.g. fill mode, tab stops)
+.show all                           Display all of the above, for every file, macro, etc.
+.stop                               Immediately stop processing
+
+See also the command line options to the bun roff command
+
+The software is also built to be extensible. New commands can be added by adding a <name>_command method
+to the class Bun::Roff. (For example, if you add a method foo_command, roff will recognize .foo as a command.)

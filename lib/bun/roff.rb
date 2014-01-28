@@ -2,8 +2,6 @@
 # -*- encoding: us-ascii -*-
 
 # TODO Items
-#   Spacing on headings and footings (on the right) is a little short -- related to net_line_length
-#   I think tab stops are still a little off -- see, for instance '--NO LINES--' in speech summary at end
 #   Character list at beginning is formatting wrong
 #   Are we still spreading out spacing on final lines of paragraphs?
 #   Formatting of final props list isn't working
@@ -1304,7 +1302,7 @@ module Bun
         elsif self.center
           line = center_buffer(@line_buffer)
         elsif self.tabbed
-          line = tabbed_text(@line_buffer[0])
+          line = tabbed_buffer(@line_buffer)
         else
           line = @line_buffer.join
         end
@@ -1394,6 +1392,10 @@ module Bun
         end
       end
       padded_buffer.join
+    end
+
+    def tabbed_buffer(buffer)
+      tabbed_text(buffer.join(' '))
     end
 
     def tabbed_text(line)
@@ -1497,7 +1499,7 @@ module Bun
     end
 
     def build_line_from_parts(parts)
-      merge(parts[0]||'', center_text(parts[1]||''),right_justify_text(parts[2]||''))
+      merge(parts[0]||'', center_text(parts[1]||'', line_length/2.0),right_justify_text(parts[2]||'', line_length))
     end
 
     def page_lines_left
@@ -1539,6 +1541,8 @@ module Bun
 
     def show_item(type, name=nil, indent=0)
       case type.downcase  
+      when 'all'
+        show_all
       when 'file'
         err "Must include name" unless name
         if name=~/^\d+$/
@@ -1557,6 +1561,8 @@ module Bun
         else
           err "Macro #{name} is not defined"
         end
+      when 'state'
+        show_state(indent)
       when 'value'
         err "Must include name" unless name
         if (defn=@definitions[name]) && defn[:type]==:value
@@ -1572,11 +1578,31 @@ module Bun
     end
 
     def show_all(indent=0)
+      show_state(indent)
+      show ''
+      show_stack(indent)
+      show ''
       show_all_files(indent)
       show ''
       show_all_macros(indent)
       show ''
       show_all_values(indent)
+    end
+
+    def show_state(indent=0)
+      show 'Formatting state:', indent
+      show "          Tabbed? #{@tabbed.inspect}",       indent+4
+      show "          Filled? #{@filled.inspect}",       indent+4
+      show "       Justified? #{@justified.inspect}",    indent+4
+      show "     Line length: #{@line_length}",          indent+4
+      show "       Tab stops: #{@tab_stops.inspect}",    indent+4
+      show "          Indent: #{@indent}",               indent+4
+      show "Temporary indent: #{@next_indent}",          indent+4 if @next_indent!=@indent
+      show "     Page length: #{@page_length}",          indent+4
+      show "     Page number: #{@page_number}",          indent+4
+      show " Page line count: #{@page_line_count}",      indent+4
+      show "    Merge string: #{@merge_string.inspect}", indent+4
+      show "     Line buffer: #{@line_buffer.inspect}",  indent+4
     end
 
     def show_all_files(indent=0)
