@@ -3,8 +3,10 @@
 
 # TODO Items
 #   Props list is not working
-#   Are we still spreading out spacing on final lines of paragraphs?
 #   Final line of '====' after final props list is indented too far
+#   Are some music cues, i.e. [M-2], etc., missing?
+#   Should there be SFX and sound cues?
+#   Are we still spreading out spacing on final lines of paragraphs?
 #   Props list line references aren't working. This is because expanding still isn't working quite right.
 #     It should expand a parameter reference or an insertion, but not both in the same text, I think. Also,
 #     that may mean that the settings for "don't expand" may not be set right, currently.
@@ -663,7 +665,7 @@ module Bun
 
     # .ce n
     # Center the next n lines
-    def ce_command(n='1', *_)
+    def ce_command(n=nil, *_)
       line_count = convert_integer(n, "Line count") if n
       if n
         save_fill = self.fill
@@ -1493,7 +1495,7 @@ module Bun
     end
 
     def start_page
-      put_page_break if @pages_built > 0
+      break_page if @pages_built > 0
       put_headers
       @pages_built += 1
     end
@@ -1504,7 +1506,7 @@ module Bun
       @page_number += 1
     end
 
-    def put_page_break
+    def break_page
       put_line '-'*@line_length
     end
 
