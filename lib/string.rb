@@ -117,6 +117,7 @@ class String
   
   # Convert a string to its equivalent character set, e.g.
   # e.g. "abbbasssscc".positive_character_set => '[a-cs]'
+  # TODO Simplify using hyphenize: https://gist.github.com/melborne/1573258
   def character_set(options={})
     s = options[:case_insensitive] ? self.downcase : self
     chars = s.dup.force_encoding('ascii-8bit').split(//).sort.uniq

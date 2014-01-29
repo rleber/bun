@@ -3,7 +3,6 @@
 
 # TODO Items
 #   Props list is not working
-#   Final line of '====' after final props list is indented too far
 #   Are some music cues, i.e. [M-2], etc., missing?
 #   Should there be SFX and sound cues?
 #   Are we still spreading out spacing on final lines of paragraphs?
@@ -214,8 +213,8 @@ module Bun
 
     DEFAULT_LINE_LENGTH = 60
     DEFAULT_PAGE_LENGTH = 66
-    DEFAULT_PAGE_HEADERS = [['','---- Header ----','']]
-    DEFAULT_PAGE_FOOTERS = [['','---- Footer ----','']]
+    DEFAULT_PAGE_HEADERS = []
+    DEFAULT_PAGE_FOOTERS = []
     IGNORED_COMMANDS = %w{bf fs hc hy nc nd no po pw uc}
     PAGE_NUMBER_CHARACTER = '%'
     PAGE_NUMBER_ESCAPE = '%%'
@@ -747,8 +746,6 @@ module Bun
     def fi_command(*_)
       flush unless self.fill
       self.fill = true
-      self.center = false
-      self.tabbed = false
     end
 
     # .fo '...'...'...'
@@ -1319,8 +1316,12 @@ module Bun
       justify = options[:justify]!=false && (options[:justify] || self.justify)
       @temporary_no_justify = false
       unless @line_buffer.size == 0
-        info "flush! @line_buffer: #{@line_buffer.inspect}, options: #{options.inspect}, self.justify: #{self.justify.inspect}"
-        if justify
+        info "flush @line_buffer: #{@line_buffer.inspect}, options: #{options.inspect}"
+        show_state if @debug
+        if self.fill
+          info "Filled"
+          line = @line_buffer.join
+        elsif self.justify
           info "Justify?"
           line = justify_line(@line_buffer)
         elsif self.center
