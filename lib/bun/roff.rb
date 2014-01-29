@@ -2,9 +2,8 @@
 # -*- encoding: us-ascii -*-
 
 # TODO Items
-#   Character list at beginning is formatting wrong
+#   Props list is not working
 #   Are we still spreading out spacing on final lines of paragraphs?
-#   Formatting of final props list isn't working
 #   Final line of '====' after final props list is indented too far
 #   Props list line references aren't working. This is because expanding still isn't working quite right.
 #     It should expand a parameter reference or an insertion, but not both in the same text, I think. Also,
@@ -309,7 +308,11 @@ module Bun
       if defn[:type] == :macro
         defn[:lines].join("\n")
       else
-        defn[:value]
+        v = defn[:value]
+        if defn[:format]
+          v = merge(right_justify_text(v.to_s, defn[:format].size), defn[:format])
+        end
+        v
       end
     end
 
@@ -599,6 +602,15 @@ module Bun
       self.next_line_number = self.overridden_line_number || self.next_line_number
     end
 
+    # .af NAME FORMAT
+    # Assign format to variable
+    # Formats are as a mask, e.g. '001' would be a three character format, with leading zeroes
+    def af_command(name, format, *_)
+      err "!Variable #{name} not defined" unless @definitions[name]
+      err "!#{name} is not a variable" unless @definitions[name][:type] == :value
+      @definitions[name][:format] = format
+    end
+
     # .an NAME EXPRESSION
     # Set a value. Expression may be:
     #    n (numeric)  Set the named value to this value
@@ -784,6 +796,13 @@ module Bun
       self.indent = self.next_indent = convert_relative_integer(self.indent, ind, "Indent")
     end
 
+    # .info ARGS
+    # Display debugging information (only if .debug mode is on)
+    # This is an extension to basic roff
+    def info_command(*args)
+      info args.join(' ')
+    end
+
     # .ju
     # Turn justification on (i.e. even up right edges)
     # TODO Question -- should this force a flush?
@@ -957,6 +976,7 @@ module Bun
       @tab_stops = stops
       @fill = false
       @center = false
+      @justify = false
       @tabbed = true
     end
 
@@ -1297,13 +1317,18 @@ module Bun
       justify = options[:justify]!=false && (options[:justify] || self.justify)
       @temporary_no_justify = false
       unless @line_buffer.size == 0
+        info "flush! @line_buffer: #{@line_buffer.inspect}, options: #{options.inspect}, self.justify: #{self.justify.inspect}"
         if justify
+          info "Justify?"
           line = justify_line(@line_buffer)
         elsif self.center
+          info "Center?"
           line = center_buffer(@line_buffer)
         elsif self.tabbed
+          info "Tabbed"
           line = tabbed_buffer(@line_buffer)
         else
+          info "Default?"
           line = @line_buffer.join
         end
         put_line_paginated indent_text(transform(line), total_indent)
@@ -1591,18 +1616,19 @@ module Bun
 
     def show_state(indent=0)
       show 'Formatting state:', indent
-      show "          Tabbed? #{@tabbed.inspect}",       indent+4
-      show "          Filled? #{@filled.inspect}",       indent+4
-      show "       Justified? #{@justified.inspect}",    indent+4
-      show "     Line length: #{@line_length}",          indent+4
-      show "       Tab stops: #{@tab_stops.inspect}",    indent+4
-      show "          Indent: #{@indent}",               indent+4
-      show "Temporary indent: #{@next_indent}",          indent+4 if @next_indent!=@indent
-      show "     Page length: #{@page_length}",          indent+4
-      show "     Page number: #{@page_number}",          indent+4
-      show " Page line count: #{@page_line_count}",      indent+4
-      show "    Merge string: #{@merge_string.inspect}", indent+4
-      show "     Line buffer: #{@line_buffer.inspect}",  indent+4
+      show "          Tabbed? #{self.tabbed.inspect}",    indent+4
+      show "          Filled? #{self.fill.inspect}",      indent+4
+      show "       Justified? #{self.justify.inspect}",   indent+4
+      show "     Line length: #{@line_length}",           indent+4
+      show "       Tab stops: #{@tab_stops.inspect}",     indent+4
+      show "          Indent: #{@indent}",                indent+4
+      show "Temporary indent: #{@next_indent}",           indent+4 if @next_indent!=@indent
+      show "     Page length: #{@page_length}",           indent+4
+      show "     Page number: #{@page_number}",           indent+4
+      show " Page line count: #{@page_line_count}",       indent+4
+      show "    Merge string: #{@merge_string.inspect}",  indent+4
+      show "     Line buffer: #{@line_buffer.inspect}",   indent+4
+      show " Macro arguments: #{self.arguments.inspect}", indent+4
     end
 
     def show_all_files(indent=0)
