@@ -43,10 +43,10 @@ Primitives             Implemented  Description
                                       .an NAME +/-nn  Increments or decrements the named value
                                       .an NAME nn     Sets the named value to nn
                                       Treats undefined variables as zero
-.m1 N                               Margin (I think this is top of page)
-.m2 N                               Margin (I think this is bottom of page)
-.m3 N                               Margin (I think this is left page margin)
-.m4 N                               Margin (I think this is right page margin)
+.m1 N                               Number of blank lines before page header
+.m2 N                               Number of blank lines after page header
+.m3 N                               Number of blank lines before page footer
+.m4 N                               Number of blank lines after page footer
 .ze STUFF                           Issue a warning message (on the console)
 .if CONDITION TAG                   If/then/else construct
   .el TAG                           .el is optional
@@ -71,7 +71,8 @@ Primitives             Implemented  Description
   .el TAG                           .el is optional
   .en TAG
 .ti n                               Temporary indent by n
-.uc ... .nc                         Not sure; perhaps continuous underline?
+.uc ... .nc                         Convert input to upper case
+.lc ... .nc                         Convert input to lower case
 .no TAG                             Not sure; some kind of tag
 .pc [CHAR]                          Set parameter flag character (without CHAR, reset it)
 .tr abcd                            Translate a->b, c->d, etc.
@@ -113,8 +114,15 @@ _Other Notes_
 * A string of more than one space in a line is interpreted as a tab character
 * There are several builtin fields, e.g. year, mon, day, hour, min (and probably sec)
 
+Thinkage has a product called tf that is a descendant of Honeywell roff. Some documentation for tf is 
+available at http://www.thinkage.ca/english/gcos/expl/tf/expl.html
+
+There is a roff manual at http://www.informatica.co.cr/unix/research/acrobat/790110.pdf that appears to
+refer to a version of roff very close to that which was available on the Honeywell.
+
 This version of Roff was similar to (but not exactly the same as) Unix TRoff. A copy of the TRoff User's
-Guide is available at http://www.kohala.com/start/troff/cstr54.ps. It's useful for clues.
+Guide is available at http://www.kohala.com/start/troff/cstr54.ps. It's useful for clues. The book Unix 
+Document Processing and Typesetting by Balasubramaniam Srinivasan is also useful: http://books.google.com/books?id=VKPBHCWTCGEC
 
 _Tab Stops_
 
