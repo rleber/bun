@@ -1,5 +1,5 @@
 File  Character  Count
-/Users/richard/projects/bun/data/test/ar003.0698.bun  " "  1286
+/Users/richard/projects/bun/data/test/ar003.0698.bun  ' '  1286
   e  727
   t  570
   o  461
@@ -8,7 +8,7 @@ File  Character  Count
   r  384
   n  367
   a  358
-  [\n]  271
+  \n  271
   d  270
   c  224
   h  218
@@ -18,7 +18,7 @@ File  Character  Count
   m  141
   u  138
   p  120
-  [\t]  114
+  \t  114
   g  97
   b  90
   w  88
@@ -54,7 +54,7 @@ File  Character  Count
   x  10
   k  9
   4  8
-  [\"]  8
+  "  8
   F  8
   7  7
   /  7
@@ -78,7 +78,7 @@ File  Character  Count
   ]  1
   [  1
   G  1
-/Users/richard/projects/bun/data/test/ar019.0175.bun  " "  4448
+/Users/richard/projects/bun/data/test/ar019.0175.bun  ' '  4448
   e  2463
   t  1767
   o  1642
@@ -87,7 +87,7 @@ File  Character  Count
   s  1343
   i  1274
   r  1172
-  [\n]  1028
+  \n  1028
   h  985
   .  955
   l  810
@@ -141,7 +141,7 @@ File  Character  Count
   J  15
   ;  13
   1  9
-  [\"]  8
+  "  8
   Z  8
   #  6
   :  6

@@ -1,10 +1,10 @@
 File                                                                       Character  Count
-/Users/richard/projects/bun/data/test/archive/general_test/ar025.0634.bun  " "         2036
+/Users/richard/projects/bun/data/test/archive/general_test/ar025.0634.bun  ' '         2036
                                                                            e           1116
                                                                            o            686
                                                                            n            675
                                                                            a            673
-                                                                           [\n]         667
+                                                                           \n           667
                                                                            t            629
                                                                            s            618
                                                                            r            471
@@ -30,7 +30,7 @@ File                                                                       Chara
                                                                            _            132
                                                                            '            123
                                                                            I            120
-                                                                           [\"]         118
+                                                                           "            118
                                                                            ,            114
                                                                            A             98
                                                                            O             94
@@ -73,7 +73,7 @@ File                                                                       Chara
                                                                            7             13
                                                                            6             13
                                                                            =             12
-                                                                           [\b]          12
+                                                                           \b            12
                                                                            ?              9
                                                                            /              9
                                                                            <              9
@@ -85,8 +85,8 @@ File                                                                       Chara
                                                                            8              4
                                                                            J              3
                                                                            Q              2
-                                                                           [\t]           2
+                                                                           \t             2
                                                                            Z              2
                                                                            V              1
-                                                                           [\\]           1
+                                                                           \\             1
                                                                            `              1
