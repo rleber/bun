@@ -168,6 +168,14 @@ module Bun
       @page_headers = [line_part_spec]
     end
 
+    # .hy MODE
+    # Set hyphenation mode: 0 = no hyphenation, 1=explicit 2=minimal, 3=full
+    # Note: we ignore modes 1 and 2 and treat them the same as 3
+    def hy_command(mode, *_)
+      self.hyphenation_mode = convert_integer(mode, "hyphenation mode")
+      err "!#{mode} must be 0-3" unless (0..3).include?(self.hyphenation_mode)
+    end
+
     # .ic CHARS
     # Set insertion characters (e.g. ^^ )
     def ic_command(chars='', *_)

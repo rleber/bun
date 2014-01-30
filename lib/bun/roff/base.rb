@@ -26,6 +26,7 @@ module Bun
     attr_accessor :pages_built
     attr_accessor :translation
     attr_accessor :hyphenation_character
+    attr_accessor :hyphenation_mode
     attr_accessor :parameter_characters
     attr_accessor :parameter_escape
     attr_accessor :expand_parameters
@@ -44,6 +45,7 @@ module Bun
     attr_accessor :page_number
     attr_accessor :output_file_stack
     attr_accessor :files
+    attr_reader   :hyphenator 
 
     DEFAULT_LINE_LENGTH = 65
     DEFAULT_PAGE_LENGTH = 66
@@ -52,6 +54,7 @@ module Bun
     IGNORED_COMMANDS = %w{bf fs hc hy nc nd no po pw uc}
     PAGE_NUMBER_CHARACTER = '%'
     PAGE_NUMBER_ESCAPE = '%%'
+    HYPHEN = '-'
 
     def initialize(options={})
       @shell = Shell.new
@@ -78,7 +81,9 @@ module Bun
       @page_footers = DEFAULT_PAGE_FOOTERS.compact
       @random = Random.new
       @translation = []
+      @hyphenator = Hyphenator.create(:knuth)
       @hyphenation_character = ''
+      @hyphenation_mode = 
       @parameter_characters = @parameter_escape = ''
       @expand_parameters = true
       @expand_substitutions = true
@@ -717,10 +722,25 @@ module Bun
     end
 
     def put_piece(piece)
-      if @line_buffer.join.size + piece.size > net_line_length
+      return if @line_buffer.size==0 && piece=~/^\s+$/ # Don't start lines with spaces
+      next_buffer = @line_buffer + [piece]
+      next_buffer_size = temp_buffer.join.size
+      if next_buffer_size > net_line_length # Line overflow
+        if self.hyphenation_mode==0 || piece =~ /[^a-zA-Z]/
+          next_buffer = [piece]
+        else # Attempt to hyphenate
+          minimum_suffix_size = next_buffer_size - net_line_length - HYPHEN.size
+          hyphenation_suffix = self.hyphenator.sentence_suffix(next_buffer, minimum_suffix_size)
+          if hyphenation_suffix == ''
+            next_buffer = [piece]
+          else
+            @line_buffer << (piece[0...-(hyphenation_suffix.size)]+HYPHEN)
+            next_buffer = [hyphenation_suffix]
+          end
+        end
         flush
       end
-      @line_buffer << piece unless @line_buffer.size==0 && piece=~/^\s+$/
+      @line_buffer = next_buffer
     end
 
     def net_line_length
@@ -743,22 +763,16 @@ module Bun
       justify = options[:justify]!=false && (options[:justify] || self.justify)
       @temporary_no_justify = false
       unless @line_buffer.size == 0
-        info "flush @line_buffer: #{@line_buffer.inspect}, options: #{options.inspect}"
         show_state if @debug
         if self.fill
-          info "Filled"
           line = @line_buffer.join
         elsif self.justify
-          info "Justify?"
           line = justify_line(@line_buffer)
         elsif self.center
-          info "Center?"
           line = center_buffer(@line_buffer)
         elsif self.tabbed
-          info "Tabbed"
           line = tabbed_buffer(@line_buffer)
         else
-          info "Default?"
           line = @line_buffer.join
         end
         put_line_paginated indent_text(transform(line), total_indent)
