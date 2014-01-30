@@ -39,6 +39,9 @@ module Bun
       # Convert an eight-character Bun date "mm/dd/yy" to a Ruby Date
       def date(date)
         Date.strptime(date,"%m/%d/%y")
+      rescue ArgumentError => e 
+        raise unless e.to_s =~ /invalid date/
+        Time.now
       end
 
       # Convert a Bun timestamp to the time of day in hours (24 hour clock)
