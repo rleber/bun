@@ -1,0 +1,22 @@
+
+Odd       Head          1
+
+1234567890123456789012345
+A page break  should
+occur    immediately
+after this text
+
+Odd     Foot       1
+
+--------------------
+
+Even    Head       2
+
+Now is the time  for
+everyone,  including
+all good men, to  go
+down to the  sea  in
+ships again.
+
+Even    Foot       2
+

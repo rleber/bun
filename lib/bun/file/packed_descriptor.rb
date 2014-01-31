@@ -98,11 +98,13 @@ module Bun
           Bun::Data.internal_time(packed_update_date, packed_update_time_of_day)
         end
     
-        def shards
+        def shards(options={})
           return @shards if @shards
           @shards = Shards.new
           shard_count.times do |i|
-            @shards << Descriptor::Shard.new(self, i).to_hash
+            shard_hash = Descriptor::Shard.new(self, i, allow: !options[:strict]).to_hash
+            break unless shard_hash # Stop at bad descriptor
+            @shards << shard_hash
           end
           @shards
         end

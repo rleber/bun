@@ -4,7 +4,6 @@
 module Bun
   class Roff
     attr_accessor :context_stack
-    attr_reader   :shell
     attr_accessor :line_length
     attr_accessor :indent
     attr_accessor :next_indent
@@ -16,15 +15,16 @@ module Bun
     attr_accessor :tabbed
     attr_accessor :line_spacing
     attr_accessor :page_length
+    attr_accessor :page_header_margin
     attr_accessor :page_top_margin
+    attr_accessor :page_header_margin
+    attr_accessor :page_footer_margin
     attr_accessor :page_bottom_margin
-    attr_accessor :page_left_margin
-    attr_accessor :page_right_margin
-    attr_accessor :page_line_count
     attr_accessor :page_headers
     attr_accessor :page_footers
     attr_accessor :pages_built
     attr_accessor :translation
+    attr_accessor :control_character
     attr_accessor :hyphenation_character
     attr_accessor :hyphenation_mode
     attr_accessor :parameter_characters
@@ -42,19 +42,24 @@ module Bun
     attr_accessor :command_count
     attr_accessor :merge_string
     attr_accessor :pending_actions
+    attr_accessor :traps
+    attr_accessor :traps
     attr_accessor :page_number
     attr_accessor :output_file_stack
     attr_accessor :files
     attr_reader   :hyphenator 
+    attr_reader   :page_line_count
+    attr_reader   :shell
 
     DEFAULT_LINE_LENGTH = 65
     DEFAULT_PAGE_LENGTH = 66
-    DEFAULT_PAGE_HEADERS = []
-    DEFAULT_PAGE_FOOTERS = []
+    DEFAULT_PAGE_HEADERS = [[],[]]
+    DEFAULT_PAGE_FOOTERS = [[],[]]
     IGNORED_COMMANDS = %w{bf fs hc hy nc nd no po pw uc}
     PAGE_NUMBER_CHARACTER = '%'
     PAGE_NUMBER_ESCAPE = '%%'
     HYPHEN = '-'
+    RANDOM_SEED = 171356521420781904450221983666692326660
 
     def initialize(options={})
       @shell = Shell.new
@@ -66,22 +71,23 @@ module Bun
       @line_buffer = []
       @buffer_stack = []
       self.fill = true
-      self.justify = false
+      self.justify = true
       self.center = false
       self.tabbed = false
       @line_spacing = 1
       @page_length = DEFAULT_PAGE_LENGTH
-      @page_top_margin = 0
-      @page_bottom_margin = 0
-      @page_left_margin = 0
-      @page_right_margin = 0
+      @page_top_margin = 4
+      @page_header_margin = 2
+      @page_footer_margin = 1 
+      @page_bottom_margin = 4
       @page_line_count = 0
       @pages_built = 0
       @page_headers = DEFAULT_PAGE_HEADERS.compact
       @page_footers = DEFAULT_PAGE_FOOTERS.compact
-      @random = Random.new
+      @random = Random.new(seed=RANDOM_SEED) # Do this, so results are reproducible
       @translation = []
       @hyphenator = Hyphenator.create(:knuth)
+      @control_character = '.'
       @hyphenation_character = ''
       @hyphenation_mode = 
       @parameter_characters = @parameter_escape = ''
@@ -97,6 +103,7 @@ module Bun
       @command_count = 0
       @merge_string = ''
       @pending_actions = []
+      @traps = []
       @page_number = 1
       @output_file_stack = []
       push_output_file '-'
@@ -247,7 +254,7 @@ module Bun
         end
         self.expanded_lines = self.expanded_line = self.expanded_line_number = nil # This is in here in case it's useful for debugging
       end
-      flush(justify: false)
+      force_break
       end_page if @pages_built > 0
     # Cause exceptions to be accompanied by a stack trace
     rescue => e
@@ -294,6 +301,19 @@ module Bun
 
     def push_pending_action(count, &blk)
       self.pending_actions << {count: count, action: blk}
+    end
+
+    def set_trap(line, type=:temporary, &blk)
+      self.traps << {line: line, type: type, action: blk}
+    end
+
+    def invoke_traps(line)
+      -1.downto(-self.traps.size) do |i|
+        trap = self.traps[i]
+        next unless trap[:line] == line
+        trap[:action].call(line)
+        self.traps.delete_at(i) if trap[:type]==:temporary
+      end
     end
 
     def get_line_from_current_context
@@ -393,8 +413,8 @@ module Bun
 
     def parse_command(line)
       words = command_words(line)
-      if !@literal && words.size>0 && words[0]=~/^\.\S+/ && words
-        self.command = words.shift[/^\.(.*)/,1]
+      if !@literal && words.size>0 && words[0]=~/^#{Regexp.escape(@control_character)}\S+/
+        self.command = words.shift[/^#{Regexp.escape(@control_character)}(.*)/,1]
         self.command_arguments = words 
         self.command
       else
@@ -417,7 +437,7 @@ module Bun
     end
 
     def process_command
-      write_trace "Execute", ['.'+command,*(command_arguments.map{|a| command_escape(a)})].join(' ')
+      write_trace "Execute", [@control_character+command,*(command_arguments.map{|a| command_escape(a)})].join(' ')
       self.command_count += 1
       self.overridden_line_number = nil
       meth = "#{command}_command"
@@ -541,9 +561,7 @@ module Bun
     def convert_relative_integer(base_value, arg, name)
       v = convert_integer(arg, name)
       case arg
-      when /^-/
-        base_value - v
-      when /^\+/
+      when /^[+-]/
         base_value + v
       else
         v
@@ -706,11 +724,14 @@ module Bun
     def output_line(line)
       if self.fill
         pieces = break_line(line)
+        return if pieces.size == 0
+        force_break if pieces.first =~ /^\s/
         pieces.each do |piece|
           put_piece(piece)
         end
+        @line_buffer << (pieces.last =~ /[\.!?:]$/ ? '  ' : ' ') # Extra space after line ends
       else
-        flush
+        force_break if @line_buffer.size > 0
         self.line_buffer = [line] # Do it this way to force centering, translation, etc.
         flush
       end
@@ -718,20 +739,20 @@ module Bun
     end
 
     def break_line(text)
-      (text.strip + ' ').scan(/\w+|\s+|./).map {|piece| piece=~/^\s+$/ ? ' ' : piece }
+      text.rstrip.scan(/\w+|\s+|./).map {|piece| piece=~/^\s+$/ ? ' ' : piece }
     end
 
     def put_piece(piece)
       return if @line_buffer.size==0 && piece=~/^\s+$/ # Don't start lines with spaces
       next_buffer = @line_buffer + [piece]
-      next_buffer_size = temp_buffer.join.size
+      next_buffer_size = next_buffer.join.size
       if next_buffer_size > net_line_length # Line overflow
         if self.hyphenation_mode==0 || piece =~ /[^a-zA-Z]/
           next_buffer = [piece]
         else # Attempt to hyphenate
-          minimum_suffix_size = next_buffer_size - net_line_length - HYPHEN.size
+          minimum_suffix_size = next_buffer_size - net_line_length + HYPHEN.size
           hyphenation_suffix = self.hyphenator.sentence_suffix(next_buffer, minimum_suffix_size)
-          if hyphenation_suffix == ''
+          if hyphenation_suffix == '' || hyphenation_suffix == piece
             next_buffer = [piece]
           else
             @line_buffer << (piece[0...-(hyphenation_suffix.size)]+HYPHEN)
@@ -748,7 +769,13 @@ module Bun
     end
 
     def net_page_lines_left
-      page_lines_left - @page_top_margin - @page_bottom_margin
+      net_page_length - @page_line_count
+    end
+
+    def net_page_lines_left_at_spacing
+      lines, remainder = net_page_lines_left.divmod(@line_spacing)
+      lines += 1 if remainder > 0 && @page_line_count == 0 # Because we don't put blank lines at the top of a page
+      lines
     end
 
     def total_indent
@@ -761,24 +788,24 @@ module Bun
 
     def flush(options={})
       justify = options[:justify]!=false && (options[:justify] || self.justify)
-      @temporary_no_justify = false
       unless @line_buffer.size == 0
         show_state if @debug
-        if self.fill
-          line = @line_buffer.join
-        elsif self.justify
+        if justify
           line = justify_line(@line_buffer)
+        elsif self.fill
+          trim_buffer @line_buffer
+          line = @line_buffer.join
         elsif self.center
+          trim_buffer @line_buffer
           line = center_buffer(@line_buffer)
         elsif self.tabbed
           line = tabbed_buffer(@line_buffer)
         else
           line = @line_buffer.join
         end
+        @line_buffer = []
         put_line_paginated indent_text(transform(line), total_indent)
-        (@line_spacing - 1).times { put_line '' }
       end
-      @line_buffer = []
       self.next_indent = self.indent
     end
 
@@ -910,9 +937,6 @@ module Bun
         f = Tempfile.new("roff_#{f_label}_")
         f.close 
         f.path
-        # fname = ".roff_temp_#{f_label}.txt"
-        # ::File.open(fname, 'w') {|f| } # Create a null file
-        # fname
       else
         name
       end
@@ -931,10 +955,27 @@ module Bun
     end
 
     def put_line_paginated(line)
+      unless @page_line_count == 0 # Don't put extra spaces at the top of a page
+        (@line_spacing - 1).times { put_line_paginated_single_spaced '' }
+      end
+      put_line_paginated_single_spaced(line)
+    end
+
+    def net_page_length
+      @page_length - @page_top_margin - @page_header_margin - @page_footer_margin - @page_bottom_margin
+    end
+
+    def put_line_paginated_single_spaced(line)
       start_page if @page_line_count == 0
       put_line line
-      @page_line_count += @line_spacing
+      self.page_line_count = @page_line_count + 1
+      finish_page if @page_line_count >= net_page_length
     end
+
+    def page_line_count=(n)
+      @page_line_count = n
+      invoke_traps(n)
+    end    
 
     def start_page
       break_page if @pages_built > 0
@@ -942,24 +983,32 @@ module Bun
       @pages_built += 1
     end
 
+    def finish_page
+      end_page if @page_line_count>0
+    end
+
     def end_page
       put_footers
-      @page_line_count = 0
-      @page_number += 1
+      self.page_line_count = 0
     end
 
     def break_page
       put_line '-'*@line_length
+      @page_number += 1
     end
 
     def put_headers
-      @page_headers.each {|header| put_line_parts header }
-      (page_top_margin - @page_headers.size).times { put_line '' }
+      header_set = @page_number % 2
+      page_top_margin.times { put_line '' }
+      @page_headers[header_set].each {|header| put_line_parts header }
+      (page_header_margin - @page_headers[header_set].size).times { put_line '' }
     end
 
     def put_footers
-      (page_bottom_margin - @page_footers.size).times { put_line '' }
-      @page_footers.each {|footer| put_line_parts footer }
+      footer_set = @page_number % 2
+      (page_footer_margin - @page_footers[footer_set].size).times { put_line '' }
+      @page_footers[footer_set].each {|footer| put_line_parts footer }
+      page_bottom_margin.times { put_line '' }
     end
 
     def put_line_parts(parts)

@@ -62,7 +62,12 @@ module Bun
         seconds, frac = seconds.divmod(1.0)
         micro_seconds = (frac*1000000).to_i
         date = self.date(date)
-        Time.local(date.year, date.month, date.day, hours, minutes, seconds, micro_seconds)
+        begin        
+          Time.local(date.year, date.month, date.day, hours, minutes, seconds, micro_seconds)
+        rescue ArgumentError => e
+          raise unless e.to_s =~ /argument out of range/
+          Time.now
+        end
       end
   
       def content_offset(words)

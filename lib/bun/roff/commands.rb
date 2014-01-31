@@ -56,10 +56,23 @@ module Bun
       defn[:lines].flatten!
     end
 
+    # .bp
+    # Page break
+    def bp_command(*args)
+      force_break
+      finish_page
+    end
+
     # .br
     # Line break
     def br_command(*args)
       force_break
+    end
+
+    # .cc
+    # Set control character
+    def cc_command(c,*_)
+      self.control_character = c
     end
 
     # .ce n
@@ -122,6 +135,24 @@ module Bun
       pop_output_file
     end
 
+    # .ef '...'...'...'
+    # Set even page footer
+    # In the example above, "'" could be any character
+    def ef_command(*args)
+      n=0
+      spec = line_part_spec
+      @page_footers[0][n] = spec
+    end
+
+    # .eh '...'...'...'
+    # Set even page header
+    # In the example above, "'" could be any character
+    def eh_command(*args)
+      n=0
+      spec = line_part_spec
+      @page_headers[0][n] = spec
+    end
+
     # .el tag
     # Else clause of if/else conditional (e.g. .if, or .id). Should never occur by itself
     def el_command(tag, *_)
@@ -134,6 +165,16 @@ module Bun
       log "Unmatched .en found:" + stack_trace.first
     end
 
+    # .ep
+    # Start the next even page
+    def ep_command(*_)
+      force_break
+      end_page
+      until @page_number.odd? # Because if we stop on an odd page, the next one will be even
+        break_page
+      end
+    end
+
     # .fa n name
     # Attach a file; n is the file number. File names starting with '*' are temporary files
     def fa_command(fn, name, *_)
@@ -144,7 +185,7 @@ module Bun
     # .fi
     # Turn filling on (i.e. flow text, word by word)
     def fi_command(*_)
-      flush unless self.fill
+      force_break
       self.fill = true
     end
 
@@ -152,7 +193,9 @@ module Bun
     # Set page footer
     # In the example above, "'" could be any character
     def fo_command(*args)
-      @page_footers = [line_part_spec]
+      n=0
+      spec = line_part_spec
+      @page_footers[0][n] = @page_footers[1][n] = spec
     end
 
     # .hc CHAR
@@ -165,7 +208,9 @@ module Bun
     # Set page heading
     # In the example above, "'" could be any character
     def he_command(*args)
-      @page_headers = [line_part_spec]
+      n=0
+      spec = line_part_spec
+      @page_headers[0][n] = @page_headers[1][n] = spec
     end
 
     # .hy MODE
@@ -220,6 +265,7 @@ module Bun
     # Turn justification on (i.e. even up right edges)
     # TODO Question -- should this force a flush?
     def ju_command(*_)
+      force_break
       self.justify = true
       self.center = false
     end
@@ -228,7 +274,6 @@ module Bun
     # Treat the next line ltterally
     def li_command(*_)
       next_line = get_line
-      self.next_line_number += 1
       put_line_paginated(next_line) if next_line
     end
 
@@ -241,9 +286,20 @@ module Bun
     # .ls N
     # Set line spacing
     def ls_command(n, *_)
-      line_count = convert_integer(n, "line spacing")
+      line_count = convert_relative_integer(@line_spacing, n, "line spacing")
       force_break
       @line_spacing = line_count
+    end
+
+    # .lv N
+    # Leave a block of N blank lines
+    def lv_command(n, *_)
+      ct = convert_integer(n, "lines")
+      if net_page_lines_left_at_spacing < ct
+        set_trap(0) { ct.times { put_line_paginated '' } }
+      else
+        sp_command(n)
+      end
     end
 
     # .mg
@@ -266,25 +322,25 @@ module Bun
     # .m2 N
     # Set m2 margin
     def m2_command(n, *_)
-      @page_bottom_margin = convert_integer(n, "margin")
+      @page_header_margin = convert_integer(n, "margin")
     end
 
     # .m3 N
     # Set m3 margin
     def m3_command(n, *_)
-      @page_left_margin = convert_integer(n, "margin")
+      @page_footer_margin = convert_integer(n, "margin")
     end
 
     # .m4 N
     # Set m4 margin
     def m4_command(n, *_)
-      @page_right_margin = convert_integer(n, "margin")
+      @page_bottom_margin = convert_integer(n, "margin")
     end
 
     # .ne N
     # Ensure there are at least N lines left in the page
     def ne_command(n, *_)
-      end_page if net_page_lines_left < convert_integer(n, "lines needed")
+      finish_page if net_page_lines_left_at_spacing < convert_integer(n, "lines needed")
     end
 
     # .nf
@@ -294,10 +350,46 @@ module Bun
       self.fill = false
     end
 
+    # .nj
+    # Turn off justification
+    def nj_command(*_)
+      self.justify = false
+    end
+
+    # .of '...'...'...'
+    # Set odd page footer
+    # In the example above, "'" could be any character
+    def of_command(*args)
+      n=0
+      spec = line_part_spec
+      @page_footers[1][n] = spec
+    end
+
+    # .oh '...'...'...'
+    # Set odd page header
+    # In the example above, "'" could be any character
+    def oh_command(*args)
+      n=0
+      spec = line_part_spec
+      @page_headers[1][n] = spec
+    end
+
+    # .op
+    # Start the next odd page
+    def op_command(*_)
+      force_break
+      end_page
+      until @page_number.even? # Because if we stop on an even page, the next one will be odd
+        break_page
+      end
+    end
+
+
     # .pa N
     # Set page number
     def pa_command(n, *_)
-      @page_number = convert_integer(n, "page number")
+      bp_command
+      @page_number = convert_relative_integer(@page_number, n, "page number") - 1 # Becaue it will be incremented
     end
 
     # .pc CHARS
@@ -309,6 +401,7 @@ module Bun
     # .pl N
     # Set page length
     def pl_command(n, *_)
+      force_break
       @page_length = convert_integer(n, "page length")
     end
 
@@ -342,7 +435,10 @@ module Bun
     def sp_command(n=1, *_)
       line_count = convert_integer(n, "space count")
       force_break
-      n.to_i.times { output_line '' }
+      n.to_i.times do 
+        break if @page_line_count == 0
+        put_line_paginated ''
+      end
     end
 
     # .sq
@@ -385,7 +481,6 @@ module Bun
     #     - Then a right stop at 57
     def ta_command(*tabs)
       stops = decode_tab_stops(*tabs)
-      flush if self.fill
       @tab_stops = stops
       @fill = false
       @center = false

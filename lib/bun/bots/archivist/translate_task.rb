@@ -3,10 +3,12 @@
 
 desc "translate [OPTIONS] FROM TO", "Process an archive, start to finish"
 option "catalog",  :aliases=>'-c', :type=>'string',   :desc=>"Location of the catalog listing"
+option 'flatten', :aliases=>'-f', :type=>'boolean',   :desc=>"Flatten out intermediate /ar99 directories"
+option "links",    :aliases=>'-l', :type=>'string',   :desc=>"Prefix for symlinks"
 option "quiet",    :aliases=>'-q', :type=>'boolean',  :desc=>"Don't announce each step of the process"
 option "source",   :aliases=>'-S', :type=>'string',   :desc=>"Location of the original archive"
 option "steps",    :aliases=>'-s', :type=>'string',   :desc=>"What steps to perform?", :default=>'all'
-option "links",    :aliases=>'-l', :type=>'string',   :desc=>"Prefix for symlinks"
+option "strict",   :aliases=>'-C', :type=>'boolean',  :desc=>"Only unpack files of the form ar999.9999"
 option "tests",    :aliases=>'-T', :type=>'boolean',  :desc=>"Rebuild the test cases for this software"
 option "to",       :aliases=>'-t', :type=>'string',   :desc=>"Directory to contain the output archives"
 option "usage",    :aliases=>'-u', :type=>'boolean',  :desc=>"List the steps in the translation process"

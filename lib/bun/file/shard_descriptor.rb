@@ -44,7 +44,11 @@ module Bun
         end
   
         def to_hash
-          FIELDS.inject({}) {|hsh, f| hsh[f] = self.send(f) rescue nil; hsh }
+          if valid?
+            FIELDS.inject({}) {|hsh, f| hsh[f] = self.send(f) rescue nil; hsh }
+          else
+            nil
+          end
         end
 
         def offset(n=nil) # Offset of the descriptor from the beginning of the file content, in words

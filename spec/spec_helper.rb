@@ -21,6 +21,15 @@ def capture(*streams)
   sio.string
 end
 
+def captured
+  stdout_text = capture(:stdout) do
+    stderr_text = capture(:stderr) do
+      yield
+    end
+  end
+  [stdout_text, stderr_text]
+end
+
 def debug?
   ENV['BUN_TEST_DEBUG']
 end
@@ -226,12 +235,27 @@ end
 
 def exec(cmd, options={})
   save(cmd)
-  res = `#{cmd}`
+  # if cmd =~ /bun\s+roff.*creates_blank_space_on_the_next_page/
+  #   STDERR.puts cmd
+  #   words = cmd.split(/\s+/)
+  #   cp_command = "cp #{words[2]} ~/.roff_test"
+  #   STDERR.puts cp_command
+  #   system(cp_command)
+  #   revised_command = cmd.sub(/\s+>.*/,'')
+  #   STDERR.puts revised_command
+  #   system(revised_command)
+  #   exit
+  # else
+    res = `#{cmd}`
+  # end
   unless $?.exitstatus == 0
     allowed_codes = [options[:allowed] || []].flatten
     unless allowed_codes.include?(:all)
-      raise RuntimeError, "Command #{cmd} failed with exit status #{$?.exitstatus}" \
-          unless allowed_codes.include?($?.exitstatus)
+      unless allowed_codes.include?($?.exitstatus)
+        STDERR.puts "Output from failed command:"
+        STDERR.puts res      
+        raise RuntimeError, "Command #{cmd} failed with exit status #{$?.exitstatus}"
+      end
     end
   end
   res
@@ -339,13 +363,15 @@ end
 def exec_test(descr, command, prefix, options={})
   context descr do
     before :all do
-      @output_basename = prefix + "_" + descr.gsub(/\W/,'_').gsub(/_+/,'_')
+      @output_basename = (prefix + "_" + descr).gsub(/\W/,'_').gsub(/_+/,'_')
       @actual_output_file = File.join('output', 'test_actual', @output_basename)
       @expected_output_file = File.join('output', 'test_expected', @output_basename)
       @allowed_codes = options[:allowed] || [0]
       @allowed_codes << 1 if options[:fail]
       exec("rm -rf #{@actual_output_file}")
-      exec("bun #{command} >#{@actual_output_file} 2>&1", allowed: @allowed_codes)
+      exec_command = "bun #{command} >#{@actual_output_file}"
+      exec_command += " 2>&1" unless options[:trap_stderr]==false
+      exec(exec_command, allowed: @allowed_codes)
     end
     if options[:fail]
       it "should fail" do
@@ -368,7 +394,8 @@ def exec_test_hash(prefix, test)
     test[:command], 
     prefix, 
     allowed: test[:allowed]||[0],
-    fail: test[:fail]
+    fail: test[:fail],
+    trap_stderr: test[:trap_stderr]!=false
   )
 end
 

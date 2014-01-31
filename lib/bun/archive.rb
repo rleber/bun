@@ -72,7 +72,7 @@ module Bun
             warn "Unpack the files (from Honeywell binary format)" unless options[:quiet]
             clear_stage :unpacked
             clear_stage :cataloged
-            unpack @directories[:packed], @directories[:unpacked]
+            unpack @directories[:packed], @directories[:unpacked], flatten: options[:flatten], strict: options[:strict]
             build_symlink :unpacked if options[:links]
           when 'catalog'
             warn "Catalog the files (using a catalog file)" unless options[:quiet]
@@ -376,6 +376,10 @@ module Bun
       leaves.each do |tape|
         from_tape = relative_path(tape, from_wd: true)
         to_file = from_tape
+        if options[:flatten]
+          to_file = $1 if to_file =~ %r{^.*/(ar\d+\.\d+)$}
+        end
+        next if options[:strict] && to_file !~ /ar\d+\.\d+$/
         if to_file =~ /^(.*)(\.[a-zA-Z]+)$/
           case $2
           when Bun::DEFAULT_DECODED_FILE_EXTENSION, Bun::DEFAULT_BAKED_FILE_EXTENSION
