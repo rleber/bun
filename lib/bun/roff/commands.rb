@@ -272,9 +272,13 @@ module Bun
 
     # .li
     # Treat the next line ltterally
-    def li_command(*_)
-      next_line = get_line
-      put_line_paginated(next_line) if next_line
+    def li_command(n=1,*_)
+      ct = convert_integer(n, "line count")
+      force_break
+      ct.times do 
+        next_line = get_line
+        put_line_paginated(next_line) if next_line
+      end
     end
 
     # .ll n

@@ -99,4 +99,7 @@ describe Bun::Roff do
   roff_std ".ls 2", ".ls 2"
   roff_std ".ls plus 1", ".ls +1"
   roff_std ".ls minus 1", [".ls +1", "Here's some stuff that should be double-spaced.",".ls -1", "And single."]
+  roff_std ".li", ["This stuff should be justified, hyphenated, etc.",".li",".sp should be ignored and the rest taken literally","And we're back to being justified, as usual"]
+  roff_std ".li 2", ["This stuff should be justified, hyphenated, etc.",".li 2",".sp should be ignored and the rest taken literally",".fi should also be ignored", "And we're back to being justified, as usual"]
+  roff_std ".an foo", [".an foo","Foo (expecting 0): ^(foo)"]
 end

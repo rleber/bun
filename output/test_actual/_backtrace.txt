@@ -1,0 +1,11 @@
+rm -rf output/test_actual/roff_test_sp_does_not_create_blank_lines_at_the_top_of_the_page
+bun roff /var/folders/0_/nl0n1b1n3vz2r18d_d7999pm0000gn/T/roff_test_sp_does_not_create_blank_lines_at_the_top_of_the_page_20140130-16341-1fxdf8z >output/test_actual/roff_test_sp_does_not_create_blank_lines_at_the_top_of_the_page 2>&1
+rm -rf output/test_actual/roff_test_sp_does_not_create_blank_lines_at_the_top_of_the_page
+rm -rf output/test_actual/roff_test_lv_creates_blank_space_on_the_page
+bun roff /var/folders/0_/nl0n1b1n3vz2r18d_d7999pm0000gn/T/roff_test_lv_creates_blank_space_on_the_page_20140130-16341-1mv3a4c >output/test_actual/roff_test_lv_creates_blank_space_on_the_page 2>&1
+rm -rf output/test_actual/roff_test_lv_creates_blank_space_on_the_page
+rm -rf output/test_actual/roff_test_lv_creates_blank_space_on_the_next_page
+bun roff /var/folders/0_/nl0n1b1n3vz2r18d_d7999pm0000gn/T/roff_test_lv_creates_blank_space_on_the_next_page_20140130-16341-qr7dmd >output/test_actual/roff_test_lv_creates_blank_space_on_the_next_page 2>&1
+rm -rf output/test_actual/roff_test_lv_creates_blank_space_on_the_next_page
+rm -rf output/test_actual/roff_test_an_foo
+bun roff /var/folders/0_/nl0n1b1n3vz2r18d_d7999pm0000gn/T/roff_test_an_foo_20140130-16341-3fgyi1 >output/test_actual/roff_test_an_foo 2>&1
