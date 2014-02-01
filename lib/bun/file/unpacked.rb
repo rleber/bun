@@ -96,7 +96,7 @@ module Bun
                 t.close
                 # TODO redo this:
                 # super(fname, options) {|f| f.unpack(t.path, options)}
-                File.unpack(fname, t.path)
+                File.unpack(fname, t.path, force: true) # Need --force, tempfile exists
                 # puts "Unpacked file:" # debug
                 # system("cat #{t.path} | more")
                 File::Unpacked.open(t.path, options, &blk)
@@ -308,6 +308,10 @@ module Bun
           if block_given? || !to.nil?
             part = yield(self, index) if block_given? # Block overrides "to"
             shell.mkdir_p(File.dirname(part)) unless part.nil? || part=='-'
+            if !options[:force] && (part!='-' && !part.nil? && File.exists?(part))
+              warn "skipping decode; #{part} already exists" unless options[:quiet]
+              next
+            end
             shell.write(part, content) unless part.nil?
           end
         end

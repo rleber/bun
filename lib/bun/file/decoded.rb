@@ -40,7 +40,7 @@ module Bun
             files.each do |key, f|
               path = key ? File.join(to, File.basename(key)) : to
               f.descriptor.tape = options[:tape] if options[:tape]
-              f.bake(path, scrub: scrub)
+              f.bake(path, scrub: scrub, force: options[:force], quiet: options[:quiet])
             end
           end
         end
@@ -82,7 +82,11 @@ module Bun
         shell.mkdir_p File.dirname(to) if to && to!='-'
         text = data
         text = data.scrub if options[:scrub]
-        shell.write to, text
+        if !options[:force] && (to!='-' && !to.nil? && File.exists?(to))
+          warn "skipping bake: #{to} already exists" unless options[:quiet]
+        else
+          shell.write to, text
+        end
         text
       end
 
@@ -92,7 +96,11 @@ module Bun
         shell = Shell.new
         shell.mkdir_p(File.dirname(to)) unless to.nil? || to == '-'
         text = read
-        shell.write(to, text) unless to.nil?
+        if !options[:force] && (to!='-' && !to.nil? && File.exists?(to))
+          warn "skipping decode: #{to} already exists" unless options[:quiet]
+        else
+          shell.write(to, text) unless to.nil?
+        end
         text
       end
 

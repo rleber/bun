@@ -8,8 +8,6 @@
 # This grammar is finicky; mess with it at your peril
 
 # Future enhancement:
-#   - Change insertion sentence to nesteds sentence
-#   - Require balanced () in nested sentences
 #   - Recognize .requests
 #   - Set value of numbers to integer value
 #   - Store position range
@@ -19,11 +17,11 @@ module RoffInput
   include Treetop::Runtime
 
   def root
-    @root ||= :line
+    @root ||= :input
   end
 
-  module Line0
-    def parts
+  module Input0
+    def content
       elements[0]
     end
 
@@ -32,9 +30,179 @@ module RoffInput
     end
   end
 
-  module Line1
+  module Input1
+  		def expand
+  			content.elements.first.expand
+			end
+  end
+
+  def _nt_input
+    start_index = index
+    if node_cache[:input].has_key?(index)
+      cached = node_cache[:input][index]
+      if cached
+        cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
+        @index = cached.interval.end
+      end
+      return cached
+    end
+
+    i0, s0 = index, []
+    i1 = index
+    r2 = _nt_request
+    if r2
+      r1 = r2
+    else
+      r3 = _nt_line
+      if r3
+        r1 = r3
+      else
+        @index = i1
+        r1 = nil
+      end
+    end
+    s0 << r1
+    if r1
+      r4 = _nt_end_of_line
+      s0 << r4
+    end
+    if s0.last
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0.extend(Input0)
+      r0.extend(Input1)
+    else
+      @index = i0
+      r0 = nil
+    end
+
+    node_cache[:input][start_index] = r0
+
+    r0
+  end
+
+  module Request0
+    def request_word
+      elements[0]
+    end
+
+    def line
+      elements[1]
+    end
+  end
+
+  module Request1
+  		def expand
+  			request_word.expand + line.expand
+			end
+  end
+
+  def _nt_request
+    start_index = index
+    if node_cache[:request].has_key?(index)
+      cached = node_cache[:request][index]
+      if cached
+        cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
+        @index = cached.interval.end
+      end
+      return cached
+    end
+
+    i0, s0 = index, []
+    r1 = _nt_request_word
+    s0 << r1
+    if r1
+      r2 = _nt_line
+      s0 << r2
+    end
+    if s0.last
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0.extend(Request0)
+      r0.extend(Request1)
+    else
+      @index = i0
+      r0 = nil
+    end
+
+    node_cache[:request][start_index] = r0
+
+    r0
+  end
+
+  module RequestWord0
+    def command_character
+      elements[0]
+    end
+
+    def word
+      elements[1]
+    end
+  end
+
+  module RequestWord1
+  		def expand
+  			[{type: :request_word, value: text_value}]
+			end
+  end
+
+  def _nt_request_word
+    start_index = index
+    if node_cache[:request_word].has_key?(index)
+      cached = node_cache[:request_word][index]
+      if cached
+        cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
+        @index = cached.interval.end
+      end
+      return cached
+    end
+
+    i0, s0 = index, []
+    r1 = _nt_command_character
+    s0 << r1
+    if r1
+      r2 = _nt_word
+      s0 << r2
+    end
+    if s0.last
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0.extend(RequestWord0)
+      r0.extend(RequestWord1)
+    else
+      @index = i0
+      r0 = nil
+    end
+
+    node_cache[:request_word][start_index] = r0
+
+    r0
+  end
+
+  def _nt_command_character
+    start_index = index
+    if node_cache[:command_character].has_key?(index)
+      cached = node_cache[:command_character][index]
+      if cached
+        cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
+        @index = cached.interval.end
+      end
+      return cached
+    end
+
+    if has_terminal?(".", false, index)
+      r0 = instantiate_node(SyntaxNode,input, index...(index + 1))
+      @index += 1
+    else
+      terminal_parse_failure(".")
+      r0 = nil
+    end
+
+    node_cache[:command_character][start_index] = r0
+
+    r0
+  end
+
+  module Line0
 			def expand
-				parts.elements.flat_map{|e| e.expand} + end_of_line.expand
+				elements.flat_map{|e| e.expand}
 			end
   end
 
@@ -49,30 +217,17 @@ module RoffInput
       return cached
     end
 
-    i0, s0 = index, []
-    s1, i1 = [], index
+    s0, i0 = [], index
     loop do
-      r2 = _nt_sentence_part
-      if r2
-        s1 << r2
+      r1 = _nt_sentence_part
+      if r1
+        s0 << r1
       else
         break
       end
     end
-    r1 = instantiate_node(SyntaxNode,input, i1...index, s1)
-    s0 << r1
-    if r1
-      r3 = _nt_end_of_line
-      s0 << r3
-    end
-    if s0.last
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
-      r0.extend(Line0)
-      r0.extend(Line1)
-    else
-      @index = i0
-      r0 = nil
-    end
+    r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+    r0.extend(Line0)
 
     node_cache[:line][start_index] = r0
 

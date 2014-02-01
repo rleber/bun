@@ -39,11 +39,11 @@ module Bun
       end
      
       # Convert file from internal Bun binary format to YAML digest
-      def to_unpacked_file
+      def to_unpacked_file(options={})
         new_descriptor = data.descriptor.merge( :type=>data.type )
         tp = File.expand_path(data.tape_path)
         block_padding_repaired_data = Bun.cache(:repaired_data, tp) do
-          data.with_block_padding_repaired
+          data.with_block_padding_repaired(fix: options[:fix])
         end
         new_descriptor.merge!(
           block_padding_repairs: block_padding_repaired_data.block_padding_repairs,
@@ -69,8 +69,8 @@ module Bun
       end
       
       # TODO Redefine this: unpack(to, options={})
-      def unpack
-        to_unpacked_file
+      def unpack(options={})
+        to_unpacked_file(options)
       end
 
       def method_missing(meth, *args, &blk)

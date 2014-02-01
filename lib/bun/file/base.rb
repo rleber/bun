@@ -244,10 +244,16 @@ module Bun
       
       # Convert from packed format to unpacked (i.e. YAML)
       def unpack(path, to, options={})
+        if File.exists?(to)
+          unless options[:force]
+            warn "Skipping unpack: #{to} already exists" unless options[:quiet]
+            return
+          end
+        end
         case format(path)
         when :packed
           open(path) do |f|
-            cvt = f.unpack
+            cvt = f.unpack(fix: options[:fix])
             cvt.descriptor.tape = options[:tape] if options[:tape]
             cvt.descriptor.merge!(:unpack_time=>Time.now, :unpacked_by=>Bun.expanded_version)
             cvt.write(to)

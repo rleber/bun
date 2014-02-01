@@ -6,6 +6,7 @@
 desc "decode FILE [TO]", "Uncompress a frozen Honeywell file"
 option 'asis',    :aliases=>'-a', :type=>'boolean', :desc=>"Do not attempt to unpack file first"
 option "delete",  :aliases=>'-d', :type=>'boolean', :desc=>"Keep deleted lines (only with text files)"
+option "force",   :aliases=>'-f', :type=>'boolean', :desc=>"Overwrite existing files"
 option "expand",  :aliases=>'-e', :type=>'boolean', :desc=>"Expand freezer archives into multiple files"
 option "inspect", :aliases=>'-i', :type=>'boolean', :desc=>"Display long format details for each line (only with text files)"
 option "shard",   :aliases=>'-S', :type=>'string',  :desc=>"Select shards with this pattern (only with frozen files)"

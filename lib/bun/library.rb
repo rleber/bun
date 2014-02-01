@@ -56,6 +56,10 @@ module Bun
           $stderr.puts "bake #{relative_leaf}" unless options[:quiet]
         else
           to_file = File.join(to_path,relative_leaf)
+          if !options[:force] && (to_file!='-' && !to_file.nil? && File.exists?(to_file))
+            warn "skipping bake #{relative_leaf}; #{to_file} already exists" unless options[:quiet]
+            next
+          end
           success = begin
             File.bake(leaf, to_file, promote: true, scrub: options[:scrub])
             $stderr.puts "bake #{relative_leaf}" unless options[:quiet]

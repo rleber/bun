@@ -65,20 +65,23 @@ module Bun
           when 'pull'
             # TODO DRY this up
             warn "Pull files from the original archive" unless options[:quiet]
-            clear_stage :packed
-            pull from, @directories[:packed]
-            build_symlink :packed if options[:links]
+            clear_stage :packed, options
+            pull from, @directories[:packed], force: options[:force], quiet: options[:quiet]
+            build_symlink :packed if options[:links] && options[:force]
           when 'unpack'
             warn "Unpack the files (from Honeywell binary format)" unless options[:quiet]
-            clear_stage :unpacked
-            clear_stage :cataloged
-            unpack @directories[:packed], @directories[:unpacked], flatten: options[:flatten], strict: options[:strict]
-            build_symlink :unpacked if options[:links]
+            clear_stage :unpacked, options
+            clear_stage :cataloged, options
+            unpack @directories[:packed], @directories[:unpacked], 
+              flatten: options[:flatten], strict: options[:strict], fix: options[:fix], 
+              force: options[:force], quiet: options[:quiet]
+            build_symlink :unpacked if options[:links] && options[:force]
           when 'catalog'
             warn "Catalog the files (using a catalog file)" unless options[:quiet]
             raise MissingCatalog, "No catalog specified" unless options[:catalog]
-            clear_stage :cataloged
-            catalog @directories[:unpacked], @directories[:cataloged], :catalog=>options[:catalog]
+            clear_stage :cataloged, options
+            catalog @directories[:unpacked], @directories[:cataloged], :catalog=>options[:catalog], 
+              force: options[:force], quiet: options[:quiet]
             build_symlink :cataloged if options[:links]
           when 'decode'
             warn "Decode the files" unless options[:quiet]
@@ -87,23 +90,26 @@ module Bun
             else
               @directories[:unpacked]
             end
-            clear_stage :decoded
-            decode from, @directories[:decoded]
-            build_symlink :decoded if options[:links]
+            clear_stage :decoded, options
+            decode from, @directories[:decoded], force: options[:force], quiet: options[:quiet]
+            build_symlink :decoded if options[:links] && options[:force]
           when 'compress'
             warn "Compress the files" unless options[:quiet]
             from = @directories[:decoded]
-            clear_stage :compressed
-            compress @directories[:decoded], @directories[:compressed]
-            build_symlink :decoded if options[:links]
+            clear_stage :compressed, options
+            compress @directories[:decoded], @directories[:compressed], 
+              force: options[:force], quiet: options[:quiet]
+            build_symlink :decoded if options[:links] && options[:force]
           when 'bake'
             warn "Bake the files (i.e. remove metadata)" unless options[:quiet]
-            clear_stage :baked
-            bake @directories[:compressed], @directories[:baked]
-            build_symlink :baked if options[:links]
+            clear_stage :baked, options
+            bake @directories[:compressed], @directories[:baked], force: options[:force], quiet: options[:quiet]
+            build_symlink :baked if options[:links] && options[:force]
           when 'tests'
             warn "Rebuild test cases" unless options[:quiet]
-            system('bun test build')
+            cmd = 'bun test build'
+            cmd += ' --quiet' if options[:quiet]
+            system(cmd)
           else
             raise InvalidStep, "Unknown step #{step}"
           end
@@ -171,7 +177,8 @@ module Bun
         steps.sort_by{|step| step_numbers[step] }
       end
       
-      def clear_stage(stage)
+      def clear_stage(stage, options=[])
+        return if options[:force]
         `rm -f #{@symlinks[stage]}`
         `rm -rf #{@directories[stage]}`
       end
@@ -180,15 +187,14 @@ module Bun
       def copy(from, to, options={})
         expanded_to = File.expand_path(to)
         unless options[:force]
-          raise DirectoryConflict, "Directory #{expanded_to} already exists" \
-                  if File.exists?(expanded_to)
+          return if File.exists?(expanded_to)
         end
         system(['rm', '-rf', expanded_to].shelljoin)
         system(['cp', '-r', File.expand_path(from) + "/", expanded_to + "/"].shelljoin)
       end
       
       def pull(from, to, options={})
-        copy from, to, :force=>true
+        copy from, to, :force=>options[:force]
       end
       
       def unpack(from, to, options={})
@@ -198,7 +204,7 @@ module Bun
       def catalog(from, to=nil, options={})
         raise MissingCatalog, "options[:catalog] not supplied" unless options[:catalog]
         if to
-          copy from, to, :force=>true
+          copy from, to, :force=>options[:force]
         else
           to = from
         end
@@ -223,6 +229,10 @@ module Bun
         if options[:dryrun]
           dest = to
         elsif to
+          if !options[:force] && (to!='-' && !to.nil? && File.exists?(to))
+            warn "Skipping compress: #{to} already exists" unless options[:quiet]
+            return
+          end
           shell.rm_rf(to)
           shell.cp_r(from, to)
           dest = to
@@ -372,7 +382,7 @@ module Bun
         
     def unpack(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
-      FileUtils.rm_rf to_path unless options[:dryrun]
+      FileUtils.rm_rf to_path unless options[:dryrun] && !options[:force]
       leaves.each do |tape|
         from_tape = relative_path(tape, from_wd: true)
         to_file = from_tape
@@ -391,11 +401,17 @@ module Bun
             to_file += Bun::DEFAULT_UNPACKED_FILE_EXTENSION
         end
         to_file  = File.join(to_path, to_file)
+        unless options[:force]
+          if File.exists?(to_file)
+            warn "skip #{from_tape}; #{to_file} already exists" unless options[:quiet]
+            next
+          end
+        end
         warn "unpack #{from_tape} => #{to_file}" if options[:dryrun] || !options[:quiet]
         unless options[:dryrun]
           dir = File.dirname(to_file)
           FileUtils.mkdir_p dir
-          File.unpack(expand_path(from_tape), to_file) unless options[:dryrun]
+          File.unpack(expand_path(from_tape), to_file, fix: options[:fix]) unless options[:dryrun]
         end
       end
       to_archive = self.class.new(to_path)
@@ -405,7 +421,7 @@ module Bun
     # TODO Add glob capability?
     def decode(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
-      FileUtils.rm_rf to_path unless options[:dryrun]
+      FileUtils.rm_rf to_path if options[:force] && !options[:dryrun] 
       leaves.each do |tape_path|
         decode_options = options.merge(promote: true, expand: true, allow: true)
         File.decode(tape_path, nil, decode_options) do |file, index|
@@ -433,6 +449,7 @@ module Bun
             warn "Copying #{tape}" if options[:dryrun] || !options[:quiet]
             File.join(to_path, tape)
           end
+          to_tape_path = nil if !options[:force] && File.exists?(to_tape_path) # Avoid overwriting unless --force
           options[:dryrun] ? nil : to_tape_path # Force skipping of file if :dryrun
         end
       end

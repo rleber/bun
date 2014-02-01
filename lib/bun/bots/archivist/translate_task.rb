@@ -3,7 +3,9 @@
 
 desc "translate [OPTIONS] FROM TO", "Process an archive, start to finish"
 option "catalog",  :aliases=>'-c', :type=>'string',   :desc=>"Location of the catalog listing"
-option 'flatten', :aliases=>'-f', :type=>'boolean',   :desc=>"Flatten out intermediate /ar99 directories"
+option 'fix',      :aliases=>'-F', :type=>'boolean',  :desc=>"Attempt to repair errors"
+option 'flatten',  :aliases=>'-n', :type=>'boolean',  :desc=>"Flatten out subdirectories"
+option "force",    :aliases=>'-f', :type=>'boolean', :desc=>"Overwrite existing files"
 option "links",    :aliases=>'-l', :type=>'string',   :desc=>"Prefix for symlinks"
 option "quiet",    :aliases=>'-q', :type=>'boolean',  :desc=>"Don't announce each step of the process"
 option "source",   :aliases=>'-S', :type=>'string',   :desc=>"Location of the original archive"

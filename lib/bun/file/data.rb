@@ -295,7 +295,11 @@ module Bun
 
     def bad_bcw(offset, msg, options={})
       minidump(offset, 010) unless options[:quiet]
-      raise File::BadBlockError, msg
+      if options[:fix]
+        warn "!#{msg}: File truncated"
+      else
+        raise File::BadBlockError, msg
+      end
     end
 
     def get_bcw_from_hex(hex, offset, expected_index, options={})
@@ -303,17 +307,22 @@ module Bun
       return nil if bcw_words.first == 0
       actual_index, actual_max = get_bcw_at(bcw_words,0)
       unless actual_index == expected_index
-        bad_bcw offset, "Bad block sequence number at nybble #{location(offset)} #{actual_index} (expected #{expected_index})", quiet: options[:quiet]
+        bad_bcw offset, "Bad block sequence number at nybble #{location(offset)}:" + 
+          " #{actual_index} (expected #{expected_index})", quiet: options[:quiet], fix: options[:fix]
+        return nil
       end
       unless actual_max < MAXIMUM_BLOCK_SIZE
-        bad_bcw offset, "Block #{actual_index} length out of range at nybble #{location(offset)}: #{actual_max}(#{'%05o' % actual_max}", quiet: options[:quiet]
+        return nil if options[:fix]
+        bad_bcw offset, "Block #{actual_index} length out of range at nybble #{location(offset)}:" + 
+          " #{actual_max}(#{'%05o' % actual_max}", quiet: options[:quiet], fix: options[:fix]
+        return nil
       end
       actual_max
     end
 
     # This code removes an artifact of the file archiving, once transferred to 8-bit systems
     # See doc/file_format/llink_padding.md for a more extensive discussion
-    def block_padding_repaired_words
+    def block_padding_repaired_words(options={})
       nybbles_per_word = (Bun::Words.constituent_class.width / 4).ceil
       hex = data.to_hex
       offset = 0
@@ -321,7 +330,7 @@ module Bun
       @block_count = 0
       @block_padding_repairs = 0
       while offset < hex.size do
-        block_max = get_bcw_from_hex(hex, offset, blocks.size+1)
+        block_max = get_bcw_from_hex(hex, offset, blocks.size+1, fix: options[:fix])
         break unless block_max
         block_size = (block_max+1) * NYBBLES_PER_WORD
         unless @first_block_size
@@ -335,14 +344,14 @@ module Bun
         if offset < hex.size && block_size.odd?
           2.times do |i|
             begin
-              get_bcw_from_hex(hex, offset, blocks.size+1, quiet: true)
+              get_bcw_from_hex(hex, offset, blocks.size+1, quiet: true, fix: options[:fix])
               @block_padding_repairs += 1 if i>0 # Had to go to the second try
               break
             rescue File::BadBlockError
               if i==0
                 offset += 1
               else
-                get_bcw_from_hex(hex, offset, blocks.size+1)
+                get_bcw_from_hex(hex, offset, blocks.size+1, fix: options[:fix])
               end
             end
           end
@@ -352,9 +361,9 @@ module Bun
     end
     cache :block_padding_repaired_words
     
-    def with_block_padding_repaired
+    def with_block_padding_repaired(options={})
       res = self.dup
-      s = block_padding_repaired_words.export
+      s = block_padding_repaired_words(fix: options[:fix]).export
       repairs = self.block_padding_repairs
       res.load(s)
       res.block_padding_repairs = repairs # Necessary, because load will reset this to zero

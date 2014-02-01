@@ -3,6 +3,7 @@
 
 desc "compress ARCHIVE [TO]", "Compress files in an archive which match on a certain criterion"
 option 'dryrun',  :aliases=>'-d', :type=>'boolean', :desc=>"Dryrun; don't actually delete files"
+option "force",   :aliases=>'-f', :type=>'boolean', :desc=>"Overwrite existing to directory"
 option 'quiet',   :aliases=>'-q', :type=>'boolean', :desc=>"Quiet mode"
 
 long_desc <<-EOT

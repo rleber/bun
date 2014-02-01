@@ -5,19 +5,48 @@
 # This grammar is finicky; mess with it at your peril
 
 # Future enhancement:
-#   - Change insertion sentence to nesteds sentence
-#   - Require balanced () in nested sentences
 #   - Recognize .requests
 #   - Set value of numbers to integer value
 #   - Store position range
 #   - Recognize trailing sentence endings?
 
 grammar RoffInput
+	rule input
+  	content:(request / line) end_of_line
+  	{
+  		def expand
+  			content.elements.first.expand
+			end
+  	}
+	end
+
+  rule request
+  	request_word line
+  	{
+  		def expand
+  			request_word.expand + line.expand
+			end
+  	}
+	end
+
+	rule request_word
+  	command_character word
+  	{
+  		def expand
+  			[{type: :request_word, value: text_value}]
+			end
+  	}
+	end
+
+	rule command_character
+		"."
+	end
+
 	rule line
-		parts:(sentence_part*) end_of_line
+		sentence_part*
 		{
 			def expand
-				parts.elements.flat_map{|e| e.expand} + end_of_line.expand
+				elements.flat_map{|e| e.expand}
 			end
 		}
 	end
