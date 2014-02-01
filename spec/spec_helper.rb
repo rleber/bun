@@ -385,7 +385,7 @@ def exec_test(descr, command, prefix, options={})
       backtrace
       exec_on_success("rm -rf #{@actual_output_file}")
     end
-    end
+  end
 end
 
 def exec_test_hash(prefix, test)

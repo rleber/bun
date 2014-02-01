@@ -1,0 +1,210 @@
+# Treetop grammar for Roff input lines
+# Compile using:
+#   tt lib/bun/roff/expand.treetop -o lib/bun/roff/expand_treetop_parser.rb
+
+# This grammar is finicky; mess with it at your peril
+
+# Future enhancement:
+#   - Recognize .requests
+#   - Accumulate all text, in addition to value
+#   - Set value of numbers to integer value
+#   - Recognize trailing sentence endings?
+
+grammar RoffInput
+	rule line
+		parts:(sentence_part*) end_of_line
+		{
+			def expand
+				parts.elements.flat_map{|e| e.expand} + end_of_line.expand
+			end
+		}
+	end
+
+	rule sentence_part
+		(insertion_sentence_part / register_reference / paren / other_character) 1..1
+		{
+			def expand
+				elements.first.expand
+			end
+		}
+	end
+
+	rule paren
+		('(' / ')') 1..1
+		{
+			def expand
+				[{type: :other, value: text_value}]
+			end
+		}
+	end
+
+  rule quoted_string
+    quote_character quoted_string_atom* quote_character
+    {
+    	def expand
+    		[{type: :quoted_string, value: text_value}]
+    	end
+    }
+  end
+
+  rule quoted_string_atom
+  	escaped_quote / non_quote_character
+	end
+
+	rule escaped_quote
+		quote_character quote_character
+	end
+
+	rule non_quote_character
+		!quote_character !end_of_line .
+	end
+
+	# For future enhancement: Roff lets you change the quote character
+  rule quote_character
+  	'"'
+  end
+
+	rule register_reference
+		'(' word ')'
+		{
+			def expand
+				[{type: :register_reference, value: word.expand[0][:value]}]
+			end
+		}
+	end
+
+	rule number
+		[0-9]+
+		{
+			def expand
+				[{type: :number, value: text_value}]
+			end
+		}
+	end
+
+	rule word
+		# Actually, should be less than 32 characters; lets leave that to the semantics engine
+	  [a-zA-Z#%_] ([a-zA-Z0-9#%_] / hyphenation_character)*
+	  {
+	  	def expand
+	  		[{type: :word, value: text_value}]
+  		end
+	  }
+  end
+
+	rule parameter
+		parameter_character number
+		{
+			def expand
+	  		[{type: :parameter, value: text_value}]
+  		end
+		}
+	end
+
+	# For future enhancement: Roff lets you change the parameter control character
+	rule parameter_character
+	  '@'
+	end
+
+	rule insertion_escape
+		insertion_character insertion_character
+		{
+			def expand
+				[{type: :insertion_escape, value: text_value}]
+			end
+		}
+	end
+
+  rule insertion
+    insertion_character '(' insertion_sentence ')' 
+    {
+    	def expand
+    		[{type: :insertion, value: insertion_sentence.expand}]
+  		end
+    }
+	end
+
+	rule insertion_sentence
+		(insertion_sentence_parts)
+		{
+			def expand
+				insertion_sentence_parts.expand
+			end
+		}
+	end
+
+	rule insertion_sentence_parts
+		first:insertion_sentence_part remainder:insertion_sentence_part*
+		{
+			def expand
+				first.expand + remainder.elements.flat_map {|e| e.expand}
+			end
+		}
+	end
+
+	rule insertion_sentence_part
+		(whitespace / quoted_string / number / word / parameter / insertion_escape / insertion ) 1..1
+		{
+			def expand
+				elements.first.expand
+			end
+		}
+	end
+
+	# For future enhancement: Roff lets you change the insertion control character
+	rule insertion_character
+		'^'
+		{
+			def expand
+				[{type: :insertion_character, value: text_value}]
+			end
+		}
+	end
+
+	# For future enhancement: Roff doesn't automatically enable this, and allows you to change it
+	rule hyphenation_character
+		"`"
+		{
+			def expand
+				[{type: :hyphenation_character, value: text_value}]
+			end
+		}
+	end
+
+	rule whitespace
+		( [ \t] )+ 
+		{
+			def expand
+				[{type: :whitespace, value: text_value}]
+			end
+		}
+	end
+
+	rule end_of_line
+		"\n" 
+		{
+			def expand
+				[{type: :end_of_line, value: text_value}]
+			end
+		}
+	end
+
+	rule operator
+		[-+*/<=>]
+		{
+			def expand
+				[{type: :operator, value: text_value}]
+			end
+		}
+	end
+
+  rule other_character
+  	(!(insertion_character / quote_character / parameter_character / hyphenation_character / [-()a-zA-Z0-9%#_+*/<=> \t\n] )
+  	     .) 1..1
+  	{
+  		def expand
+  			[{type: :other, value: text_value}]
+			end
+  	}
+	end
+end
