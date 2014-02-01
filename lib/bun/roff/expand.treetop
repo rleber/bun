@@ -5,9 +5,11 @@
 # This grammar is finicky; mess with it at your peril
 
 # Future enhancement:
+#   - Change insertion sentence to nesteds sentence
+#   - Require balanced () in nested sentences
 #   - Recognize .requests
-#   - Accumulate all text, in addition to value
 #   - Set value of numbers to integer value
+#   - Store position range
 #   - Recognize trailing sentence endings?
 
 grammar RoffInput
@@ -21,7 +23,7 @@ grammar RoffInput
 	end
 
 	rule sentence_part
-		(insertion_sentence_part / register_reference / paren / other_character) 1..1
+		(register_reference / nested_sentence_part / paren / other_character) 1..1
 		{
 			def expand
 				elements.first.expand
@@ -106,35 +108,44 @@ grammar RoffInput
 	  '@'
 	end
 
-	rule insertion_escape
-		insertion_character insertion_character
+	rule escape
+		insertion_character !('(' / end_of_line) .
 		{
 			def expand
-				[{type: :insertion_escape, value: text_value}]
+				[{type: :escape, value: text_value}]
 			end
 		}
 	end
 
   rule insertion
-    insertion_character '(' insertion_sentence ')' 
+    insertion_character '(' nested_sentence ')' 
     {
     	def expand
-    		[{type: :insertion, value: insertion_sentence.expand}]
+    		[{type: :insertion, value: nested_sentence.expand}]
   		end
     }
 	end
 
-	rule insertion_sentence
-		(insertion_sentence_parts)
+	rule parenthesized_sentence
+		'(' nested_sentence ')'
 		{
 			def expand
-				insertion_sentence_parts.expand
+				[{type: :parenthesized_sentence, value: nested_sentence.expand}]
 			end
 		}
 	end
 
-	rule insertion_sentence_parts
-		first:insertion_sentence_part remainder:insertion_sentence_part*
+	rule nested_sentence
+		(nested_sentence_parts)
+		{
+			def expand
+				nested_sentence_parts.expand
+			end
+		}
+	end
+
+	rule nested_sentence_parts
+		first:nested_sentence_part remainder:nested_sentence_part*
 		{
 			def expand
 				first.expand + remainder.elements.flat_map {|e| e.expand}
@@ -142,8 +153,17 @@ grammar RoffInput
 		}
 	end
 
-	rule insertion_sentence_part
-		(whitespace / quoted_string / number / word / parameter / insertion_escape / insertion ) 1..1
+	rule nested_sentence_part
+		( parenthesized_sentence / nested_sentence_atom ) 1..1
+		{
+			def expand
+				elements.first.expand
+			end
+		}
+	end
+
+	rule nested_sentence_atom
+		(whitespace / quoted_string / number / word / parameter / escape / insertion ) 1..1
 		{
 			def expand
 				elements.first.expand

@@ -5,6 +5,16 @@
 # Compile using:
 #   tt lib/bun/roff/expand.treetop -o lib/bun/roff/expand_treetop_parser.rb
 
+# This grammar is finicky; mess with it at your peril
+
+# Future enhancement:
+#   - Change insertion sentence to nesteds sentence
+#   - Require balanced () in nested sentences
+#   - Recognize .requests
+#   - Set value of numbers to integer value
+#   - Store position range
+#   - Recognize trailing sentence endings?
+
 module RoffInput
   include Treetop::Runtime
 
@@ -89,11 +99,11 @@ module RoffInput
     s0, i0 = [], index
     loop do
       i1 = index
-      r2 = _nt_insertion_sentence_part
+      r2 = _nt_register_reference
       if r2
         r1 = r2
       else
-        r3 = _nt_register_reference
+        r3 = _nt_nested_sentence_part
         if r3
           r1 = r3
         else
@@ -662,26 +672,23 @@ module RoffInput
     r0
   end
 
-  module InsertionEscape0
-    def insertion_character1
+  module Escape0
+    def insertion_character
       elements[0]
     end
 
-    def insertion_character2
-      elements[1]
-    end
   end
 
-  module InsertionEscape1
+  module Escape1
 			def expand
-				[{type: :insertion_escape, value: text_value}]
+				[{type: :escape, value: text_value}]
 			end
   end
 
-  def _nt_insertion_escape
+  def _nt_escape
     start_index = index
-    if node_cache[:insertion_escape].has_key?(index)
-      cached = node_cache[:insertion_escape][index]
+    if node_cache[:escape].has_key?(index)
+      cached = node_cache[:escape][index]
       if cached
         cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
         @index = cached.interval.end
@@ -693,19 +700,54 @@ module RoffInput
     r1 = _nt_insertion_character
     s0 << r1
     if r1
-      r2 = _nt_insertion_character
+      i2 = index
+      i3 = index
+      if has_terminal?('(', false, index)
+        r4 = instantiate_node(SyntaxNode,input, index...(index + 1))
+        @index += 1
+      else
+        terminal_parse_failure('(')
+        r4 = nil
+      end
+      if r4
+        r3 = r4
+      else
+        r5 = _nt_end_of_line
+        if r5
+          r3 = r5
+        else
+          @index = i3
+          r3 = nil
+        end
+      end
+      if r3
+        r2 = nil
+      else
+        @index = i2
+        r2 = instantiate_node(SyntaxNode,input, index...index)
+      end
       s0 << r2
+      if r2
+        if index < input_length
+          r6 = instantiate_node(SyntaxNode,input, index...(index + 1))
+          @index += 1
+        else
+          terminal_parse_failure("any character")
+          r6 = nil
+        end
+        s0 << r6
+      end
     end
     if s0.last
       r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
-      r0.extend(InsertionEscape0)
-      r0.extend(InsertionEscape1)
+      r0.extend(Escape0)
+      r0.extend(Escape1)
     else
       @index = i0
       r0 = nil
     end
 
-    node_cache[:insertion_escape][start_index] = r0
+    node_cache[:escape][start_index] = r0
 
     r0
   end
@@ -715,7 +757,7 @@ module RoffInput
       elements[0]
     end
 
-    def insertion_sentence
+    def nested_sentence
       elements[2]
     end
 
@@ -723,7 +765,7 @@ module RoffInput
 
   module Insertion1
     	def expand
-    		[{type: :insertion, value: insertion_sentence.expand}]
+    		[{type: :insertion, value: nested_sentence.expand}]
   		end
   end
 
@@ -751,7 +793,7 @@ module RoffInput
       end
       s0 << r2
       if r2
-        r3 = _nt_insertion_sentence
+        r3 = _nt_nested_sentence
         s0 << r3
         if r3
           if has_terminal?(')', false, index)
@@ -779,16 +821,23 @@ module RoffInput
     r0
   end
 
-  module InsertionSentence0
+  module ParenthesizedSentence0
+    def nested_sentence
+      elements[1]
+    end
+
+  end
+
+  module ParenthesizedSentence1
 			def expand
-				insertion_sentence_parts.expand
+				[{type: :parenthesized_sentence, value: nested_sentence.expand}]
 			end
   end
 
-  def _nt_insertion_sentence
+  def _nt_parenthesized_sentence
     start_index = index
-    if node_cache[:insertion_sentence].has_key?(index)
-      cached = node_cache[:insertion_sentence][index]
+    if node_cache[:parenthesized_sentence].has_key?(index)
+      cached = node_cache[:parenthesized_sentence][index]
       if cached
         cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
         @index = cached.interval.end
@@ -796,14 +845,68 @@ module RoffInput
       return cached
     end
 
-    r0 = _nt_insertion_sentence_parts
+    i0, s0 = index, []
+    if has_terminal?('(', false, index)
+      r1 = instantiate_node(SyntaxNode,input, index...(index + 1))
+      @index += 1
+    else
+      terminal_parse_failure('(')
+      r1 = nil
+    end
+    s0 << r1
+    if r1
+      r2 = _nt_nested_sentence
+      s0 << r2
+      if r2
+        if has_terminal?(')', false, index)
+          r3 = instantiate_node(SyntaxNode,input, index...(index + 1))
+          @index += 1
+        else
+          terminal_parse_failure(')')
+          r3 = nil
+        end
+        s0 << r3
+      end
+    end
+    if s0.last
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0.extend(ParenthesizedSentence0)
+      r0.extend(ParenthesizedSentence1)
+    else
+      @index = i0
+      r0 = nil
+    end
 
-    node_cache[:insertion_sentence][start_index] = r0
+    node_cache[:parenthesized_sentence][start_index] = r0
 
     r0
   end
 
-  module InsertionSentenceParts0
+  module NestedSentence0
+			def expand
+				nested_sentence_parts.expand
+			end
+  end
+
+  def _nt_nested_sentence
+    start_index = index
+    if node_cache[:nested_sentence].has_key?(index)
+      cached = node_cache[:nested_sentence][index]
+      if cached
+        cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
+        @index = cached.interval.end
+      end
+      return cached
+    end
+
+    r0 = _nt_nested_sentence_parts
+
+    node_cache[:nested_sentence][start_index] = r0
+
+    r0
+  end
+
+  module NestedSentenceParts0
     def first
       elements[0]
     end
@@ -813,16 +916,16 @@ module RoffInput
     end
   end
 
-  module InsertionSentenceParts1
+  module NestedSentenceParts1
 			def expand
 				first.expand + remainder.elements.flat_map {|e| e.expand}
 			end
   end
 
-  def _nt_insertion_sentence_parts
+  def _nt_nested_sentence_parts
     start_index = index
-    if node_cache[:insertion_sentence_parts].has_key?(index)
-      cached = node_cache[:insertion_sentence_parts][index]
+    if node_cache[:nested_sentence_parts].has_key?(index)
+      cached = node_cache[:nested_sentence_parts][index]
       if cached
         cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
         @index = cached.interval.end
@@ -831,12 +934,12 @@ module RoffInput
     end
 
     i0, s0 = index, []
-    r1 = _nt_insertion_sentence_part
+    r1 = _nt_nested_sentence_part
     s0 << r1
     if r1
       s2, i2 = [], index
       loop do
-        r3 = _nt_insertion_sentence_part
+        r3 = _nt_nested_sentence_part
         if r3
           s2 << r3
         else
@@ -848,28 +951,82 @@ module RoffInput
     end
     if s0.last
       r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
-      r0.extend(InsertionSentenceParts0)
-      r0.extend(InsertionSentenceParts1)
+      r0.extend(NestedSentenceParts0)
+      r0.extend(NestedSentenceParts1)
     else
       @index = i0
       r0 = nil
     end
 
-    node_cache[:insertion_sentence_parts][start_index] = r0
+    node_cache[:nested_sentence_parts][start_index] = r0
 
     r0
   end
 
-  module InsertionSentencePart0
+  module NestedSentencePart0
 			def expand
 				elements.first.expand
 			end
   end
 
-  def _nt_insertion_sentence_part
+  def _nt_nested_sentence_part
     start_index = index
-    if node_cache[:insertion_sentence_part].has_key?(index)
-      cached = node_cache[:insertion_sentence_part][index]
+    if node_cache[:nested_sentence_part].has_key?(index)
+      cached = node_cache[:nested_sentence_part][index]
+      if cached
+        cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
+        @index = cached.interval.end
+      end
+      return cached
+    end
+
+    s0, i0 = [], index
+    loop do
+      i1 = index
+      r2 = _nt_parenthesized_sentence
+      if r2
+        r1 = r2
+      else
+        r3 = _nt_nested_sentence_atom
+        if r3
+          r1 = r3
+        else
+          @index = i1
+          r1 = nil
+        end
+      end
+      if r1
+        s0 << r1
+      else
+        break
+      end
+      if s0.size == 1
+        break
+      end
+    end
+    if s0.size < 1
+      @index = i0
+      r0 = nil
+    else
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0.extend(NestedSentencePart0)
+    end
+
+    node_cache[:nested_sentence_part][start_index] = r0
+
+    r0
+  end
+
+  module NestedSentenceAtom0
+			def expand
+				elements.first.expand
+			end
+  end
+
+  def _nt_nested_sentence_atom
+    start_index = index
+    if node_cache[:nested_sentence_atom].has_key?(index)
+      cached = node_cache[:nested_sentence_atom][index]
       if cached
         cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
         @index = cached.interval.end
@@ -900,7 +1057,7 @@ module RoffInput
               if r6
                 r1 = r6
               else
-                r7 = _nt_insertion_escape
+                r7 = _nt_escape
                 if r7
                   r1 = r7
                 else
@@ -931,10 +1088,10 @@ module RoffInput
       r0 = nil
     else
       r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
-      r0.extend(InsertionSentencePart0)
+      r0.extend(NestedSentenceAtom0)
     end
 
-    node_cache[:insertion_sentence_part][start_index] = r0
+    node_cache[:nested_sentence_atom][start_index] = r0
 
     r0
   end
