@@ -366,38 +366,172 @@ describe Bun::Archive do
   end
   
   context "bun archive unpack" do
-    before :all do
-      exec("rm -rf data/test/archive/general_test_packed_unpacked")
-      exec("rm -f output/test_actual/archive_unpack_files.txt")
-      exec("rm -f output/test_actual/archive_unpack_stdout.txt")
-      exec("rm -f output/test_actual/archive_unpack_stdout.txt")
-      exec("rm -rf data/test/archive/general_test_packed")
-      exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
-      exec("bun archive unpack data/test/archive/general_test_packed \
-              data/test/archive/general_test_packed_unpacked 2>output/test_actual/archive_unpack_stderr.txt \
-              >output/test_actual/archive_unpack_stdout.txt")
+    context "normal" do
+      before :all do
+        exec("rm -rf data/test/archive/general_test_packed_unpacked")
+        exec("rm -f output/test_actual/archive_unpack_files.txt")
+        exec("rm -f output/test_actual/archive_unpack_stdout.txt")
+        exec("rm -f output/test_actual/archive_unpack_stdout.txt")
+        exec("rm -rf data/test/archive/general_test_packed")
+        exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
+        exec("bun archive unpack data/test/archive/general_test_packed \
+                data/test/archive/general_test_packed_unpacked 2>output/test_actual/archive_unpack_stderr.txt \
+                >output/test_actual/archive_unpack_stdout.txt")
+      end
+      it "should create a new directory" do
+        file_should_exist "data/test/archive/general_test_packed_unpacked"
+      end
+      it "should write nothing on stdout" do
+        'output/test_actual/archive_unpack_stdout.txt'.should be_an_empty_file
+      end
+      it "should write file decoding messages on stderr" do
+        "archive_unpack_stderr.txt".should match_expected_output
+      end
+      it "should create the appropriate files" do
+        exec('find data/test/archive/general_test_packed_unpacked -print \
+                  >output/test_actual/archive_unpack_files.txt')
+        "archive_unpack_files.txt".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf data/test/archive/general_test_packed_unpacked")
+        exec_on_success("rm -rf data/test/archive/general_test_packed")
+        exec_on_success("rm -f output/test_actual/archive_unpack_files.txt")
+        exec_on_success("rm -f output/test_actual/archive_unpack_stderr.txt")
+        exec_on_success("rm -f output/test_actual/archive_unpack_stdout.txt")
+      end
     end
-    it "should create a new directory" do
-      file_should_exist "data/test/archive/general_test_packed_unpacked"
+    context "with --quiet" do
+      before :all do
+        exec("rm -rf data/test/archive/general_test_packed_unpacked")
+        exec("rm -f output/test_actual/archive_unpack_files.txt")
+        exec("rm -f output/test_actual/archive_unpack_stdout.txt")
+        exec("rm -f output/test_actual/archive_unpack_stderr.txt")
+        exec("rm -rf data/test/archive/general_test_packed")
+        exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
+        exec("bun archive unpack --quiet data/test/archive/general_test_packed \
+                data/test/archive/general_test_packed_unpacked 2>output/test_actual/archive_unpack_stderr.txt \
+                >output/test_actual/archive_unpack_stdout.txt")
+      end
+      it "should create a new directory" do
+        file_should_exist "data/test/archive/general_test_packed_unpacked"
+      end
+      it "should write nothing on stdout" do
+        'output/test_actual/archive_unpack_stdout.txt'.should be_an_empty_file
+      end
+      it "should write nothing on stderr" do
+        "archive_unpack_stderr.txt".should be_an_empty_file
+      end
+      it "should create the appropriate files" do
+        exec('find data/test/archive/general_test_packed_unpacked -print \
+                  >output/test_actual/archive_unpack_files.txt')
+        "archive_unpack_files.txt".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf data/test/archive/general_test_packed_unpacked")
+        exec_on_success("rm -rf data/test/archive/general_test_packed")
+        exec_on_success("rm -f output/test_actual/archive_unpack_files.txt")
+        exec_on_success("rm -f output/test_actual/archive_unpack_stderr.txt")
+        exec_on_success("rm -f output/test_actual/archive_unpack_stdout.txt")
+      end
     end
-    it "should write nothing on stdout" do
-      'output/test_actual/archive_unpack_stdout.txt'.should be_an_empty_file
+    context "to existing directory" do
+      before :all do
+        exec("rm -rf data/test/archive/general_test_packed_unpacked")
+        exec("rm -f output/test_actual/archive_unpack_existing_directory_files.txt")
+        exec("rm -f output/test_actual/archive_unpack_stdout.txt")
+        exec("rm -f output/test_actual/archive_unpack_stderr.txt")
+        exec("rm -rf data/test/archive/general_test_packed")
+        exec("mkdir data/test/archive/general_test_packed_unpacked")
+        exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
+        exec("bun archive unpack data/test/archive/general_test_packed \
+                data/test/archive/general_test_packed_unpacked 2>output/test_actual/archive_unpack_stderr.txt \
+                >output/test_actual/archive_unpack_stdout.txt", allowed: [1])
+        @exitstatus = $?.exitstatus
+        exec("find data/test/archive/general_test_packed_unpacked -print \
+                >output/test_actual/archive_unpack_existing_directory_files.txt")
+      end
+      it "should fail" do
+        @exitstatus.should == 1
+      end
+      it "should not create any files" do
+        'archive_unpack_existing_directory_files.txt'.should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf data/test/archive/general_test_packed_unpacked")
+        exec_on_success("rm -rf data/test/archive/general_test_packed")
+        exec_on_success("rm -f output/test_actual/archive_unpack_existing_directory_files.txt")
+        exec_on_success("rm -f output/test_actual/archive_unpack_stderr.txt")
+        exec_on_success("rm -f output/test_actual/archive_unpack_stdout.txt")
+      end
     end
-    it "should write file decoding messages on stderr" do
-      "archive_unpack_stderr.txt".should match_expected_output
+    context "to existing directory with --force" do
+      before :all do
+        exec("rm -rf data/test/archive/general_test_packed_unpacked")
+        exec("rm -f output/test_actual/archive_unpack_files.txt")
+        exec("rm -f output/test_actual/archive_unpack_stdout.txt")
+        exec("rm -f output/test_actual/archive_unpack_stderr.txt")
+        exec("rm -rf data/test/archive/general_test_packed")
+        exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
+        exec("mkdir data/test/archive/general_test_packed_unpacked")
+        exec("bun archive unpack --force data/test/archive/general_test_packed \
+                data/test/archive/general_test_packed_unpacked 2>output/test_actual/archive_unpack_stderr.txt \
+                >output/test_actual/archive_unpack_stdout.txt")
+      end
+      it "should write nothing on stdout" do
+        'output/test_actual/archive_unpack_stdout.txt'.should be_an_empty_file
+      end
+      it "should write file decoding messages on stderr" do
+        "archive_unpack_stderr.txt".should match_expected_output
+      end
+      it "should create the appropriate files" do
+        exec('find data/test/archive/general_test_packed_unpacked -print \
+                  >output/test_actual/archive_unpack_files.txt')
+        "archive_unpack_files.txt".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf data/test/archive/general_test_packed_unpacked")
+        exec_on_success("rm -rf data/test/archive/general_test_packed")
+        exec_on_success("rm -f output/test_actual/archive_unpack_files.txt")
+        exec_on_success("rm -f output/test_actual/archive_unpack_stderr.txt")
+        exec_on_success("rm -f output/test_actual/archive_unpack_stdout.txt")
+      end
     end
-    it "should create the appropriate files" do
-      exec('find data/test/archive/general_test_packed_unpacked -print \
-                >output/test_actual/archive_unpack_files.txt')
-      "archive_unpack_files.txt".should match_expected_output
-    end
-    after :all do
-      backtrace
-      exec_on_success("rm -rf data/test/archive/general_test_packed_unpacked")
-      exec_on_success("rm -rf data/test/archive/general_test_packed")
-      exec_on_success("rm -f output/test_actual/archive_unpack_files.txt")
-      exec_on_success("rm -f output/test_actual/archive_unpack_stderr.txt")
-      exec_on_success("rm -f output/test_actual/archive_unpack_stdout.txt")
+    context "with --flatten" do
+      before :all do
+        exec("rm -rf data/test/archive/general_test_packed_unpacked_flatten")
+        exec("rm -f output/test_actual/archive_unpack_flatten_files.txt")
+        exec("rm -f output/test_actual/archive_unpack_flatten_stdout.txt")
+        exec("rm -f output/test_actual/archive_unpack_flatten_stderr.txt")
+        exec("bun archive unpack --flatten data/test/archive/packed_with_subdirectories \
+                data/test/archive/general_test_packed_unpacked_flatten \
+                2>output/test_actual/archive_unpack_flatten_stderr.txt \
+                >output/test_actual/archive_unpack_flatten_stdout.txt")
+      end
+      it "should create a new directory" do
+        file_should_exist "data/test/archive/general_test_packed_unpacked_flatten"
+      end
+      it "should write nothing on stdout" do
+        'output/test_actual/archive_unpack_flatten_stdout.txt'.should be_an_empty_file
+      end
+      it "should write file decoding messages on stderr" do
+        "archive_unpack_flatten_stderr.txt".should match_expected_output
+      end
+      it "should create the appropriate files" do
+        exec('find data/test/archive/general_test_packed_unpacked_flatten -print \
+                  >output/test_actual/archive_unpack_flatten_files.txt')
+        "archive_unpack_flatten_files.txt".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf data/test/archive/general_test_packed_unpacked_flatten")
+        exec_on_success("rm -f output/test_actual/archive_unpack_flatten_files.txt")
+        exec_on_success("rm -f output/test_actual/archive_unpack_flatten_stderr.txt")
+        exec_on_success("rm -f output/test_actual/archive_unpack_flatten_stdout.txt")
+      end
     end
   end
 end

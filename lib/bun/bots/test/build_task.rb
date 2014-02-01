@@ -61,7 +61,7 @@ no_tasks do
     _exec "rm -rf #{at.safe}", options
     _exec "mkdir -p #{at.safe}", options
     $at = at
-    yield
+    yield if block_given?
   end
   
   def build_contents(at, format=:cataloged, options={})
@@ -156,6 +156,14 @@ def build
   
   build_general_test "data/test/archive/general_test", :cataloged, quiet: options[:quiet]
   build_general_test "data/test/archive/general_test_packed_init", :packed, quiet: options[:quiet]
+
+  build_directory("data/test/archive/packed_with_subdirectories", quiet: options[:quiet])
+  build_directory("data/test/archive/packed_with_subdirectories/ar003", quiet: options[:quiet]) do
+    build_file "ar003.0698", nil, :packed, quiet: options[:quiet]
+  end
+  build_directory("data/test/archive/packed_with_subdirectories/foo/bar", quiet: options[:quiet]) do
+    build_file "ar019.0175", nil, :packed, quiet: options[:quiet]
+  end
 
   build_directory("data/test/archive/init", quiet: options[:quiet]) do
     build_file "ar003.0698", nil, :packed, quiet: options[:quiet]

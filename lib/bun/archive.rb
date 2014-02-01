@@ -387,6 +387,16 @@ module Bun
         
     def unpack(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
+      if !options[:force] && File.exists?(to_path)
+        if options[:continue]
+          warn "!Skipping archive unpack; #{to_path} already exists" unless options[:quiet]
+          return
+        elsif options[:quiet]
+          stop
+        else
+          stop "!Skipping archive unpack; #{to_path} already exists"
+        end
+      end
       FileUtils.rm_rf to_path unless options[:dryrun] && !options[:force]
       leaves.each do |tape|
         from_tape = relative_path(tape, from_wd: true)
