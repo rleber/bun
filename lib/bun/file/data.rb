@@ -7,6 +7,7 @@ module Bun
 
   class Data
     include CacheableMethods
+    class BadTime < RuntimeError; end
 
     class << self
 
@@ -41,7 +42,7 @@ module Bun
         Date.strptime(date,"%m/%d/%y")
       rescue ArgumentError => e 
         raise unless e.to_s =~ /invalid date/
-        Time.now
+        raise BadTime, e.to_s
       end
 
       # Convert a Bun timestamp to the time of day in hours (24 hour clock)
@@ -66,7 +67,7 @@ module Bun
           Time.local(date.year, date.month, date.day, hours, minutes, seconds, micro_seconds)
         rescue ArgumentError => e
           raise unless e.to_s =~ /argument out of range/
-          Time.now
+          raise BadTime, e.to_s
         end
       end
   
@@ -294,7 +295,7 @@ module Bun
     end
 
     def bad_bcw(offset, msg, options={})
-      minidump(offset, 010) unless options[:quiet]
+      minidump(offset, 010) unless options[:quiet] || options[:fix]
       if options[:fix]
         warn "!#{msg}: File truncated"
       else

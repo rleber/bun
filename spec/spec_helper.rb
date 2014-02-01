@@ -51,7 +51,13 @@ end
 
 RSpec::Matchers.define :match_named_pattern do |name, pattern|
   match do |actual|
-    actual =~ pattern
+    res = actual =~ pattern
+    unless res
+      warn "failed test for #{name} pattern:"
+      warn "actual: #{actual.inspect}"
+      warn "pattern: #{pattern.inspect}"
+    end
+    res
   end
   failure_message_for_should do |actual|
     msg = "text does not match #{name} pattern"

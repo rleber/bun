@@ -143,7 +143,7 @@ class String
       def format_row(row)
         fields.map {|f| format_field(f,row) }
       end
-      alias_method :format, :format_row
+      alias_method :fmt, :format_row
 
       def make_value(x)
         Result.new(self,x)

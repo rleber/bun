@@ -7,7 +7,7 @@
 #   class Foo < String::Trait::Numeric
 #     def self.description; ... end
 #     def analysis; ... end
-#     def format(x); ... end
+#     def fmt(x); ... end
 #   end
 #
 #   analysis = "abcde".examine(:foo)

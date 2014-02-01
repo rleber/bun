@@ -14,7 +14,7 @@ module Bun
       encoding = options[:encoding] || 'ascii-8bit'
       return $stdin.read.force_encoding(encoding) if file == '-'
       return nil unless ::File.file?(file)
-      Bun::File.read(file, :encoding=>encoding)
+      ::File.read(file).force_encoding(encoding)
     end
     
     def convert_glob(pat)

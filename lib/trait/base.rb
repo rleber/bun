@@ -18,7 +18,7 @@ class String
         def to_s
           v = value
           v = value.value if v.class.to_s =~ /^String::Trait::.*::Result$/
-          trait.format(v)
+          trait.fmt(v)
         end
 
         def to_matrix
@@ -206,7 +206,7 @@ class String
         :left
       end
       
-      def format(x)
+      def fmt(x)
         x.to_s
       end
       
@@ -221,7 +221,7 @@ class String
       def to_s
         v = value
         v = value.value if v.class.to_s =~ /^String::Trait::.*::Result$/
-        format(v)
+        fmt(v)
       end
 
       def right_justified_columns

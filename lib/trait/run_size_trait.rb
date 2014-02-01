@@ -24,7 +24,7 @@ class String
         total_run_size*1.0 / total_runs
       end
       
-      def format(x)
+      def fmt(x)
         '%0.2f' % x
       end
     end

@@ -168,9 +168,11 @@ module Bun
         prefix == "---\n:identifier: Bun\n" # YAML prefix with identifier
       end
       
+      PACKED_FILE_SIGNATURE = "\x0\x0\x40" # Packed files always start with this
+
       def packed?(path)
         return false if nonpacked?(path)
-        if path.to_s =~ /^$|^-$|ar\d{3}\.\d{4}$/ # nil, '', '-' (all STDIN) or '...ar999.9999'
+        if ::File.read(path, PACKED_FILE_SIGNATURE.size).force_encoding('ascii-8bit') == PACKED_FILE_SIGNATURE 
           begin
             File::Packed.open(path, force: true)
           rescue => e

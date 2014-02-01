@@ -9,6 +9,7 @@ option "delete",  :aliases=>'-d', :type=>'boolean', :desc=>"Keep deleted lines (
 option "force",   :aliases=>'-f', :type=>'boolean', :desc=>"Overwrite existing files"
 option "expand",  :aliases=>'-e', :type=>'boolean', :desc=>"Expand freezer archives into multiple files"
 option "inspect", :aliases=>'-i', :type=>'boolean', :desc=>"Display long format details for each line (only with text files)"
+option "quiet",   :aliases=>'-q', :type=>'boolean', :desc=>"Quiet mode"
 option "shard",   :aliases=>'-S', :type=>'string',  :desc=>"Select shards with this pattern (only with frozen files)"
 option "scrub",   :aliases=>'-s', :type=>'boolean', :desc=>"Remove control characters from output"
 option "warn",    :aliases=>"-w", :type=>"boolean", :desc=>"Warn if bad data is found"
@@ -27,7 +28,11 @@ def decode(file_name, out=nil)
   # TODO The following should be a simple primitive operation
   case File.format(file_name)
   when :baked
-    stop "!Can't decode file. It is already baked"
+    if options[:quiet]
+      stop
+    else
+      stop "!Can't decode file. It is already baked"
+    end
   when :decoded
     out ||= '-'
     File::Decoded.open(file_name) {|f| f.decode(out, options)}
@@ -36,9 +41,13 @@ def decode(file_name, out=nil)
       begin
         file.decode(out, options.merge(:shard=>shard))
       rescue Bun::File::CantExpandError
-        stop "!Can't expand frozen archive. Provide --shard option or --expand and directory name"
+        if options[:quiet]
+          stop
+        else
+          stop "!Can't expand frozen archive. Provide --shard option or --expand and directory name"
+        end
       end
-      warn "Decoded with #{file.errors.count} decoding errors" if options[:warn] && file.errors > 0
+      warn "Decoded with #{file.errors.count} decoding errors" if !options[:quiet] && options[:warn] && file.errors > 0
     end
   end
 end

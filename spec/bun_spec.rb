@@ -52,9 +52,12 @@ describe Bun::Shell do
 end
 
 UNPACK_PATTERNS = {
-  :unpack_time=>/:unpack_time: \d{4}-\d\d-\d\d \d\d:\d\d:\d\d\.\d{9} [-+]\d\d:\d\d\n?/,
-  :unpacked_by=>/:unpacked_by:\s+Bun version \d+\.\d+\.\d+\s+\[.*?\]\n?/, 
+  :unpack_time=>/:unpack_time: \d{4}-\d\d-\d\d \d\d:\d\d:\d\d\.\d{9} [-+]\d\d:\d\d\s*\n?/,
+  :unpacked_by=>/:unpacked_by:\s+Bun version \d+\.\d+\.\d+\s+\[.*?\]\s*\n?/, 
 }
+UNPACK_AND_TIME_PATTERNS = UNPACK_PATTERNS.merge(
+  :time=>/:time: \d{4}-\d\d-\d\d \d\d:\d\d:\d\d\.\d{9} [-+]\d\d:\d\d\s*\n?/
+)
 
 describe Bun::File::Text do
   include_examples "simple", "ar119.1801"
@@ -70,6 +73,77 @@ end
 
 describe Bun::Archive do
   context "bun unpack" do
+    context "to a file that already exists" do
+      before :all do
+        exec("rm -f output/test_actual/unpack_ar003.0698")
+        exec("rm -f output/test_actual/unpack_ar003.0698_stderr")
+        exec("echo foo > output/test_actual/unpack_ar003.0698")
+        exec("rm -rf data/test/archive/general_test_packed")
+        exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
+        exec("bun unpack data/test/archive/general_test_packed/ar003.0698 output/test_actual/unpack_ar003.0698 \
+              2>output/test_actual/unpack_ar003.0698_stderr", 
+              allowed: [1])
+      end
+      it "should fail" do
+        $?.exitstatus.should == 1
+      end
+      it "should match the expected output on STDERR" do
+        "unpack_ar003.0698_stderr".should match_expected_output
+      end
+      it "should not overwrite the file" do
+        "output/test_actual/unpack_ar003.0698".should contain_content("foo")
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/unpack_ar003.0698")
+        exec_on_success("rm -f output/test_actual/unpack_ar003.0698_stderr")
+        exec_on_success("rm -rf data/test/archive/general_test_packed")
+      end
+    end
+    context "to a file that already exists with --quiet" do
+      before :all do
+        exec("rm -f output/test_actual/unpack_ar003.0698")
+        exec("rm -f output/test_actual/unpack_ar003.0698_stderr")
+        exec("echo foo > output/test_actual/unpack_ar003.0698")
+        exec("rm -rf data/test/archive/general_test_packed")
+        exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
+        exec("bun unpack --quiet data/test/archive/general_test_packed/ar003.0698 output/test_actual/unpack_ar003.0698 \
+              2>output/test_actual/unpack_ar003.0698_stderr", 
+              allowed: [1])
+      end
+      it "should fail" do
+        $?.exitstatus.should == 1
+      end
+      it "should write nothing on STDERR" do
+        "unpack_ar003.0698_stderr".should be_an_empty_file
+      end
+      it "should not overwrite the file" do
+        "output/test_actual/unpack_ar003.0698".should contain_content("foo")
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/unpack_ar003.0698")
+        exec_on_success("rm -f output/test_actual/unpack_ar003.0698_stderr")
+        exec_on_success("rm -rf data/test/archive/general_test_packed")
+      end
+    end
+    context "to a file that already exists with --force" do
+      before :all do
+        exec("rm -f output/test_actual/unpack_ar003.0698")
+        exec("rm -rf data/test/archive/general_test_packed")
+        exec("echo foo > output/test_actual/unpack_ar003.0698")
+        exec("cp -r data/test/archive/general_test_packed_init data/test/archive/general_test_packed")
+        exec("bun unpack --force data/test/archive/general_test_packed/ar003.0698 output/test_actual/unpack_ar003.0698")
+      end
+      it "should match the expected output" do
+        "unpack_ar003.0698".should match_expected_output_except_for(UNPACK_PATTERNS)
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/unpack_ar003.0698")
+        exec_on_success("rm -rf data/test/archive/general_test_packed")
+      end
+    end
     context "with a text file" do
       context "with output to '-'" do
         before :all do
@@ -191,6 +265,102 @@ describe Bun::Archive do
         backtrace
         exec_on_success("rm -f output/test_actual/unpack_ar003.0701")
         exec_on_success("rm -rf data/test/archive/general_test_packed")
+      end
+    end
+    context "with a file with a bad time" do
+      context "without --fix" do
+        before :all do
+          exec("rm -f output/test_actual/unpack_packed_with_bad_time")
+          exec("rm -f output/test_actual/unpack_packed_with_bad_time_stderr.txt")
+          exec("bun unpack data/test/packed_with_bad_time output/test_actual/unpack_packed_with_bad_time \
+                    2>output/test_actual/unpack_packed_with_bad_time_stderr.txt", 
+                allowed: [1])
+        end
+        it "should fail" do
+          $?.exitstatus.should == 1
+        end
+        it "should not create the file" do
+          file_should_not_exist("output/test_actual/unpack_packed_with_bad_time")
+        end
+        it "should write diagnostics on STDERR" do
+          "unpack_packed_with_bad_time_stderr.txt".should match_expected_output
+        end
+        after :all do
+          backtrace
+          exec_on_success("rm -f output/test_actual/unpack_packed_with_bad_time")
+          exec_on_success("rm -f output/test_actual/unpack_packed_with_bad_time_stderr.txt")
+        end
+      end
+      context "with --fix" do
+        before :all do
+          exec("rm -f output/test_actual/unpack_packed_with_bad_time")
+          exec("rm -f output/test_actual/unpack_packed_with_bad_time_stderr.txt")
+          @before_time = Time.now
+          exec("bun unpack --fix data/test/packed_with_bad_time output/test_actual/unpack_packed_with_bad_time \
+                    2>output/test_actual/unpack_packed_with_bad_time_stderr.txt")
+          @after_time = Time.now
+        end
+        it "should create the file" do
+          "unpack_packed_with_bad_time".should match_expected_output_except_for(UNPACK_AND_TIME_PATTERNS)
+        end
+        it "should have today's date" do
+          time_string = `bun show time output/test_actual/unpack_packed_with_bad_time`.chomp
+          file_date = Date.strptime(time_string[0,10])
+          file_date.should be >= @before_time.to_date
+          file_date.should be <= @after_time.to_date
+        end
+        it "should write nothing on STDERR" do
+          "output/test_actual/unpack_packed_with_bad_time_stderr.txt".should be_an_empty_file
+        end
+        after :all do
+          backtrace
+          exec_on_success("rm -f output/test_actual/unpack_packed_with_bad_time")
+          exec_on_success("rm -f output/test_actual/unpack_packed_with_bad_time_stderr.txt")
+        end
+      end
+    end
+    context "with a file with a bad bcw" do
+      context "without --fix" do
+        before :all do
+          exec("rm -f output/test_actual/unpack_packed_with_bad_bcw")
+          exec("rm -f output/test_actual/unpack_packed_with_bad_bcw_stderr.txt")
+          exec("bun unpack data/test/packed_with_bad_bcw output/test_actual/unpack_packed_with_bad_bcw \
+                    2>output/test_actual/unpack_packed_with_bad_bcw_stderr.txt", 
+                allowed: [1])
+        end
+        it "should fail" do
+          $?.exitstatus.should == 1
+        end
+        it "should not create the file" do
+          file_should_not_exist("output/test_actual/unpack_packed_with_bad_bcw")
+        end
+        it "should write diagnostics on STDERR" do
+          "unpack_packed_with_bad_bcw_stderr.txt".should match_expected_output
+        end
+        after :all do
+          backtrace
+          exec_on_success("rm -f output/test_actual/unpack_packed_with_bad_bcw")
+          exec_on_success("rm -f output/test_actual/unpack_packed_with_bad_bcw_stderr.txt")
+        end
+      end
+      context "with --fix" do
+        before :all do
+          exec("rm -f output/test_actual/unpack_packed_with_bad_bcw")
+          exec("rm -f output/test_actual/unpack_packed_with_bad_bcw_fix_stderr.txt")
+          exec("bun unpack --fix data/test/packed_with_bad_bcw output/test_actual/unpack_packed_with_bad_bcw \
+                    2>output/test_actual/unpack_packed_with_bad_bcw_fix_stderr.txt")
+        end
+        it "should create the file" do
+          "unpack_packed_with_bad_bcw".should match_expected_output_except_for(UNPACK_PATTERNS)
+        end
+        it "should write a message on STDERR" do
+          "unpack_packed_with_bad_bcw_fix_stderr.txt".should match_expected_output
+        end
+        after :all do
+          backtrace
+          exec_on_success("rm -f output/test_actual/unpack_packed_with_bad_bcw")
+          exec_on_success("rm -f output/test_actual/unpack_packed_with_bad_bcw_fix_stderr.txt")
+        end
       end
     end
   end
@@ -760,6 +930,52 @@ describe Bun::Bot do
   end
 
   describe "decode" do
+    context "with baked file" do
+      before :all do
+        exec("rm -f output/test_actual/decode_baked")
+        exec("rm -f output/test_actual/decode_baked_stderr")
+        exec("bun decode data/test/archive/mixed_formats/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt \
+                  2>output/test_actual/decode_baked_stderr \
+                  >output/test_actual/decode_baked", allowed: [1])
+      end
+      it "should fail" do
+        $?.exitstatus.should == 1
+      end
+      it "should not write output" do
+        "decode_baked".should be_an_empty_file
+      end
+      it "should write the expected message on STDERR" do
+        "decode_baked_stderr".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/decode_baked")
+        exec_on_success("rm -f output/test_actual/decode_baked_stderr")
+      end
+    end
+   context "with baked file and --quiet" do
+      before :all do
+        exec("rm -f output/test_actual/decode_baked")
+        exec("rm -f output/test_actual/decode_baked_stderr")
+        exec("bun decode --quiet data/test/archive/mixed_formats/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt \
+                  2>output/test_actual/decode_baked_stderr \
+                  >output/test_actual/decode_baked", allowed: [1])
+      end
+      it "should fail" do
+        $?.exitstatus.should == 1
+      end
+      it "should not write output" do
+        "decode_baked".should be_an_empty_file
+      end
+      it "should write nothing on STDERR" do
+        "decode_baked_stderr".should be_an_empty_file
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/decode_baked")
+        exec_on_success("rm -f output/test_actual/decode_baked_stderr")
+      end
+    end
     context "with text file" do
       context "without expand option" do
         before :all do
@@ -794,6 +1010,69 @@ describe Bun::Bot do
           exec("rm -f output/test_actual/decode_ar003.0698")
           exec("cat #{TEST_ARCHIVE}/ar003.0698.bun | bun decode - \
                     >output/test_actual/decode_ar003.0698")
+        end
+        it "should match the expected output" do
+          "decode_ar003.0698".should match_expected_output_except_for(DECODE_PATTERNS)
+        end
+        after :all do
+          backtrace
+          exec_on_success("rm -f output/test_actual/decode_ar003.0698")
+        end
+      end
+      context "with existing file" do
+        before :all do
+          exec("rm -f output/test_actual/decode_ar003.0698")
+          exec("rm -f output/test_actual/decode_ar003.0698_existing_stderr.txt")
+          exec("echo foo >output/test_actual/decode_ar003.0698")
+          exec("bun decode #{TEST_ARCHIVE}/ar003.0698.bun \
+                    output/test_actual/decode_ar003.0698 \
+                    2>output/test_actual/decode_ar003.0698_existing_stderr.txt", allowed: [1])
+        end
+        it "should fail" do
+          $?.exitstatus.should == 1
+        end
+        it "should not overwrite the existing file" do
+          "output/test_actual/decode_ar003.0698".should contain_content('foo')
+        end
+        it "should write appropriate messages on STDERR" do
+          "decode_ar003.0698_existing_stderr.txt".should match_expected_output
+        end
+        after :all do
+          backtrace
+          exec_on_success("rm -f output/test_actual/decode_ar003.0698")
+          exec_on_success("rm -f output/test_actual/decode_ar003.0698_existing_stderr.txt")
+        end
+      end
+      context "with existing file and --quiet" do
+        before :all do
+          exec("rm -f output/test_actual/decode_ar003.0698")
+          exec("rm -f output/test_actual/decode_ar003.0698_existing_stderr.txt")
+          exec("echo foo >output/test_actual/decode_ar003.0698")
+          exec("bun decode --quiet #{TEST_ARCHIVE}/ar003.0698.bun \
+                    output/test_actual/decode_ar003.0698 \
+                    2>output/test_actual/decode_ar003.0698_existing_stderr.txt", allowed: [1])
+        end
+        it "should fail" do
+          $?.exitstatus.should == 1
+        end
+        it "should not overwrite the existing file" do
+          "output/test_actual/decode_ar003.0698".should contain_content('foo')
+        end
+        it "should write nothing on STDERR" do
+          "output/test_actual/decode_ar003.0698_existing_stderr.txt".should be_an_empty_file
+        end
+        after :all do
+          backtrace
+          exec_on_success("rm -f output/test_actual/decode_ar003.0698")
+          exec_on_success("rm -f output/test_actual/decode_ar003.0698_existing_stderr.txt")
+        end
+      end
+      context "with existing file and --force" do
+        before :all do
+          exec("rm -f output/test_actual/decode_ar003.0698")
+          exec("echo foo >output/test_actual/decode_ar003.0698")
+          exec("bun decode --force #{TEST_ARCHIVE}/ar003.0698.bun \
+                    output/test_actual/decode_ar003.0698")
         end
         it "should match the expected output" do
           "decode_ar003.0698".should match_expected_output_except_for(DECODE_PATTERNS)
@@ -1015,6 +1294,68 @@ describe Bun::Bot do
         exec("rm -f output/test_actual/bake_decoded_file.txt")
         exec("bun bake data/test/decoded_file.txt \
                   >output/test_actual/bake_decoded_file.txt")
+      end
+      it "should match the expected output" do
+        "bake_decoded_file.txt".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/bake_decoded_file.txt")
+      end
+    end
+    context "with an existing file" do
+      before :all do
+        exec("rm -f output/test_actual/bake_decoded_file.txt")
+        exec("rm -f output/test_actual/bake_decoded_exists_stderr.txt")
+        exec("echo foo >output/test_actual/bake_decoded_file.txt")
+        exec("bun bake data/test/decoded_file.txt output/test_actual/bake_decoded_file.txt \
+                  2>output/test_actual/bake_decoded_exists_stderr.txt ", allowed: [1])
+        @exitstatus = $?.exitstatus
+      end
+      it "should fail" do
+        @exitstatus.should == 1
+      end
+      it "should not overwrite the existing file" do
+        "output/test_actual/bake_decoded_file.txt".should contain_content('foo')
+      end
+      it "should write the proper messages on STDERR" do
+        "bake_decoded_exists_stderr.txt".should match_expected_output
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/bake_decoded_file.txt")
+        exec_on_success("rm -f output/test_actual/bake_decoded_exists_stderr.txt")
+      end
+    end
+    context "with an existing file and --quiet" do
+      before :all do
+        exec("rm -f output/test_actual/bake_decoded_file.txt")
+        exec("rm -f output/test_actual/bake_decoded_exists_stderr.txt")
+        exec("echo foo >output/test_actual/bake_decoded_file.txt")
+        exec("bun bake --quiet data/test/decoded_file.txt output/test_actual/bake_decoded_file.txt \
+                  2>output/test_actual/bake_decoded_exists_stderr.txt ", allowed: [1])
+        @exitstatus = $?.exitstatus
+      end
+      it "should fail" do
+        @exitstatus.should == 1
+      end
+      it "should not overwrite the existing file" do
+        "output/test_actual/bake_decoded_file.txt".should contain_content('foo')
+      end
+      it "should write nothing on STDERR" do
+        "bake_decoded_exists_stderr.txt".should be_an_empty_file
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/bake_decoded_file.txt")
+        exec_on_success("rm -f output/test_actual/bake_decoded_exists_stderr.txt")
+      end
+    end
+    context "with an existing file and --force" do
+      before :all do
+        exec("rm -f output/test_actual/bake_decoded_file.txt")
+        exec("echo foo >output/test_actual/bake_decoded_file.txt")
+        exec("bun bake --force data/test/decoded_file.txt output/test_actual/bake_decoded_file.txt")
       end
       it "should match the expected output" do
         "bake_decoded_file.txt".should match_expected_output
@@ -1377,6 +1718,117 @@ describe Bun::Bot do
         exec("cp -r data/test/archive/compress_init data/test/archive/compress")
         exec("find data/test/archive/compress -print >output/test_actual/compress_files_before.txt")
         exec("bun compress data/test/archive/compress output/test_actual/compress \
+                  2>output/test_actual/compress_stderr.txt >output/test_actual/compress_stdout.txt")
+        exec("find output/test_actual/compress -print >output/test_actual/compress_files.txt")
+      end
+      it "should create the proper files" do
+        "compress_files.txt".should match_expected_output
+      end
+      it "should leave the original directory alone" do
+        "compress_files_before.txt".should match_expected_output
+      end
+      it "should write the proper messages on STDERR" do
+        "compress_stderr.txt".should match_expected_output
+      end
+      it "should write nothing on STDOUT" do
+        "output/test_actual/compress_stdout.txt".should be_an_empty_file
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf data/test/archive/compress")
+        exec_on_success("rm -rf output/test_actual/compress")
+        exec_on_success("rm -rf output/test_actual/compress_files.txt")
+        exec_on_success("rm -rf output/test_actual/compress_files_before.txt")
+        exec_on_success("rm -rf output/test_actual/compress_stdout.txt")
+        exec_on_success("rm -rf output/test_actual/compress_stderr.txt")
+      end
+    end
+    context "to a new directory --quiet" do
+      before :all do
+        exec("rm -rf data/test/archive/compress")
+        exec("rm -rf output/test_actual/compress")
+        exec("rm -rf output/test_actual/compress_files.txt")
+        exec("rm -rf output/test_actual/compress_files_before.txt")
+        exec("rm -rf output/test_actual/compress_stdout.txt")
+        exec("rm -rf output/test_actual/compress_stderr.txt")
+        exec("cp -r data/test/archive/compress_init data/test/archive/compress")
+        exec("find data/test/archive/compress -print >output/test_actual/compress_files_before.txt")
+        exec("bun compress data/test/archive/compress output/test_actual/compress \
+                  2>output/test_actual/compress_stderr.txt >output/test_actual/compress_stdout.txt")
+        exec("find output/test_actual/compress -print >output/test_actual/compress_files.txt")
+      end
+      it "should create the proper files" do
+        "compress_files.txt".should match_expected_output
+      end
+      it "should leave the original directory alone" do
+        "compress_files_before.txt".should match_expected_output
+      end
+      it "should write nothing on STDERR" do
+        "compress_stderr.txt".should be_an_empty_file
+      end
+      it "should write nothing on STDOUT" do
+        "output/test_actual/compress_stdout.txt".should be_an_empty_file
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf data/test/archive/compress")
+        exec_on_success("rm -rf output/test_actual/compress")
+        exec_on_success("rm -rf output/test_actual/compress_files.txt")
+        exec_on_success("rm -rf output/test_actual/compress_files_before.txt")
+        exec_on_success("rm -rf output/test_actual/compress_stdout.txt")
+        exec_on_success("rm -rf output/test_actual/compress_stderr.txt")
+      end
+    end
+    context "to an existing directory" do
+      before :all do
+        exec("rm -rf data/test/archive/compress")
+        exec("rm -rf output/test_actual/compress")
+        exec("rm -rf output/test_actual/compress_files_existing.txt")
+        exec("rm -rf output/test_actual/compress_stdout_existing.txt")
+        exec("rm -rf output/test_actual/compress_stderr_existing.txt")
+        exec("cp -r data/test/archive/compress_init data/test/archive/compress")
+        exec("mkdir output/test_actual/compress")
+        exec("bun compress data/test/archive/compress output/test_actual/compress \
+                  2>output/test_actual/compress_stderr_existing.txt \
+                  >output/test_actual/compress_stdout_existing.txt",
+                  allowed: [1])
+        @exitstatus = $?.exitstatus
+        exec("find output/test_actual/compress -print >output/test_actual/compress_files_existing.txt")
+      end
+      it "should fail" do
+        @exitstatus.should == 1
+      end
+      it "should not create any files" do
+        "compress_files_existing.txt".should match_expected_output
+      end
+      it "should write the proper messages on STDERR" do
+        "compress_stderr_existing.txt".should match_expected_output
+      end
+      it "should write nothing on STDOUT" do
+        "output/test_actual/compress_stdout_existing.txt".should be_an_empty_file
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf data/test/archive/compress")
+        exec_on_success("rm -rf output/test_actual/compress")
+        exec_on_success("rm -rf output/test_actual/compress_files.txt")
+        exec_on_success("rm -rf output/test_actual/compress_files_before.txt")
+        exec_on_success("rm -rf output/test_actual/compress_stdout.txt")
+        exec_on_success("rm -rf output/test_actual/compress_stderr.txt")
+      end
+    end
+    context "to an existing directory with --force" do
+      before :all do
+        exec("rm -rf data/test/archive/compress")
+        exec("rm -rf output/test_actual/compress")
+        exec("rm -rf output/test_actual/compress_files.txt")
+        exec("rm -rf output/test_actual/compress_files_before.txt")
+        exec("rm -rf output/test_actual/compress_stdout.txt")
+        exec("rm -rf output/test_actual/compress_stderr.txt")
+        exec("mkdir output/test_actual/compress")
+        exec("cp -r data/test/archive/compress_init data/test/archive/compress")
+        exec("find data/test/archive/compress -print >output/test_actual/compress_files_before.txt")
+        exec("bun compress --force data/test/archive/compress output/test_actual/compress \
                   2>output/test_actual/compress_stderr.txt >output/test_actual/compress_stdout.txt")
         exec("find output/test_actual/compress -print >output/test_actual/compress_files.txt")
       end

@@ -23,7 +23,7 @@ class String
         english_count*1.0 / total_count
       end
       
-      def format(x)
+      def fmt(x)
         '%0.2f%' % (x*100.0)
       end
     end

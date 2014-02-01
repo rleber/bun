@@ -180,6 +180,7 @@ module Bun
       end
       
       def time
+        debug "descriptor is a #{descriptor.class}"
         descriptor.time
       end
       
@@ -297,6 +298,10 @@ module Bun
       end
 
       def decode(to, options={}, &blk)
+        # Need to delete these, otherwise they'll end up in the file descriptor
+        force = options.delete(:force)
+        quiet = options.delete(:quiet)
+        continue = options.delete(:continue)
         parts = to_decoded_parts(to, options)
         unless parts
           yield(self, 0) if block_given? # In case some reporting needs to be done
@@ -308,8 +313,14 @@ module Bun
           if block_given? || !to.nil?
             part = yield(self, index) if block_given? # Block overrides "to"
             shell.mkdir_p(File.dirname(part)) unless part.nil? || part=='-'
-            if !options[:force] && (part!='-' && !part.nil? && File.exists?(part))
-              warn "skipping decode; #{part} already exists" unless options[:quiet]
+            if !force && (part!='-' && !part.nil? && File.exists?(part))
+              if continue
+                warn "skipping decode; #{part} already exists" unless quiet
+              elsif quiet
+                stop
+              else
+                stop "skipping decode; #{part} already exists"
+              end
               next
             end
             shell.write(part, content) unless part.nil?

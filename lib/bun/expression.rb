@@ -49,6 +49,10 @@ module Bun
         trait[:times].value[:earliest_time]
       end
 
+      def format
+        field[:format]
+      end
+
       def wrap(value)
         value
       end

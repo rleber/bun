@@ -40,7 +40,7 @@ class String
         res
       end
 
-      def format(x)
+      def fmt(x)
         x = x.value if x.is_a?(String::Trait::Base::Result)
         if self.respond_to?(:labels)
           labels(x ? 0: 1)

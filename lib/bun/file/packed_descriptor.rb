@@ -27,9 +27,12 @@ module Bun
           :path,
           :time,
         ]
+
+        attr_accessor :allow_bad_times
         
-        def initialize(*args)
-          super
+        def initialize(data, options={})
+          super(data)
+          @allow_bad_times = options[:allow_bad_times]
           if type == :frozen
             register_fields :shards, :time
           end
@@ -95,7 +98,12 @@ module Bun
     
         def time
           return nil unless type == :frozen
-          Bun::Data.internal_time(packed_update_date, packed_update_time_of_day)
+          begin
+            Bun::Data.internal_time(packed_update_date, packed_update_time_of_day)
+          rescue Bun::Data::BadTime
+            raise unless self.allow_bad_times
+            Time.now
+          end
         end
     
         def shards(options={})

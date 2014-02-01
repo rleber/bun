@@ -9,13 +9,22 @@ option "quiet",   :aliases=>'-q', :type=>'boolean', :desc=>"Quiet mode"
 option "tape",    :aliases=>'-t', :type=>'string',  :desc=>"Supply tape name (use with input from STDIN)"
 def unpack(file, to='-')
   check_for_unknown_options(file, to)
-  if File.exists?(to)
-    warn "!Skipping unpack: #{to} already exists" unless options[:quiet]
-    return
+  if !options[:force] && File.exists?(to)
+    if options[:quiet]
+      stop
+    else
+      stop "!Skipping unpack: #{to} already exists"
+    end
   end
   case g=File.format(file)
   when :packed
-    File.unpack(file, to, options)
+    begin
+      File.unpack(file, to, options)
+    rescue Bun::File::BadBlockError => e 
+      stop "!Found bad BCW block: #{e}. Use --fix to override"
+    rescue Bun::Data::BadTime => e
+      stop "!File contains a bad time field: #{e}. Use --fix to override"
+    end
   when :unpacked
     case to
     when nil,'-'

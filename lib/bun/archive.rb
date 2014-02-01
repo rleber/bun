@@ -230,8 +230,13 @@ module Bun
           dest = to
         elsif to
           if !options[:force] && (to!='-' && !to.nil? && File.exists?(to))
-            warn "Skipping compress: #{to} already exists" unless options[:quiet]
-            return
+            if options[:continue]
+              warn "Skipping compress: #{to} already exists" unless options[:quiet]
+            elsif options[:quiet]
+              stop
+            else
+              stop "Skipping compress: #{to} already exists"
+            end
           end
           shell.rm_rf(to)
           shell.cp_r(from, to)

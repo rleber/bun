@@ -174,7 +174,7 @@ no_tasks do
   def value_of(expr, file, options={})
     Bun::File.trait(file, expr, options).value(options)
   rescue Bun::Expression::EvaluationError => e 
-    stop "!Bad expression: #{e}"
+    stop "!Expression error: #{e}"
   end
 
   def output_values(formatter, values, options={})

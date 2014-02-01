@@ -1,5 +1,6 @@
 TODO
 _High Priority_
+Tests for bun archive translate
 More extensions to bun show
     Fully qualified path (e.g. for shards in frozen archives)
     Field_values (returns array of [field_name, value] pairs)
