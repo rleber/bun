@@ -180,6 +180,7 @@ __________'##'
 @2
 .en scen
 .ze >>> Now formatting ^^(actr):^^(scen)@4 -- @3 <<<
+
 .he "^^(actr):^^(scen)@4"^(title)"Page %"
 .fo "^^(actr):^^(scen)@4 Page %"^(production)"^(year)/^(mon)/^(day)-^(hour):^(min)"
 .sp
@@ -241,6 +242,7 @@ first speech:
 .in 8
 .ll -8
 .fi
+.so *props
 .br
 .in 0
 .mg

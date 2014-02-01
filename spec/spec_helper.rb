@@ -189,7 +189,7 @@ end
 RSpec::Matchers.define :contain_content do |expected_content|
   match do |file|
     Bun::Test.save_actual_output(file)
-    actual_output = Bun.readfile(file).chomp
+    actual_output = (Bun.readfile(file)||'').chomp
     actual_output.should == expected_content
   end
   failure_message_for_should do |file|
