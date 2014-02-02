@@ -128,6 +128,7 @@ def build
   build_standard_directory "data/test/archive/catalog_source_init", :unpacked, quiet: options[:quiet]
   
   $stderr.puts "Not rebuilding data/test/archive/compact_files_init" unless options[:quiet]
+  $stderr.puts "Not rebuilding data/test/archive/packed_with_bad_files_init" unless options[:quiet]
 
   build_directory("data/test/archive/roff/fass/1990", quiet: options[:quiet]) do
     _exec "cp -r #{ENV['HOME']}/fass_work/baked/fass/1990/script data/test/archive/roff/fass/1990/script", quiet: options[:quiet]
@@ -164,6 +165,9 @@ def build
   build_directory("data/test/archive/packed_with_subdirectories/foo/bar", quiet: options[:quiet]) do
     build_file "ar019.0175", nil, :packed, quiet: options[:quiet]
   end
+
+  _exec "cp -r data/test/archive/packed_with_bad_files_init data/test/archive/packed_with_bad_files",
+    quiet: options[:quiet]
 
   build_directory("data/test/archive/init", quiet: options[:quiet]) do
     build_file "ar003.0698", nil, :packed, quiet: options[:quiet]

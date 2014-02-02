@@ -106,6 +106,12 @@ data/test/archive/mv_init/directory/ar003.0698.bun
 data/test/archive/mv_init/directory/ar003.0701.bun
 data/test/archive/mv_init/directory/ar082.0605.bun
 data/test/archive/mv_init/directory/ar083.0698.bun
+data/test/archive/packed_with_subdirectories
+data/test/archive/packed_with_subdirectories/ar003
+data/test/archive/packed_with_subdirectories/ar003/ar003.0698
+data/test/archive/packed_with_subdirectories/foo
+data/test/archive/packed_with_subdirectories/foo/bar
+data/test/archive/packed_with_subdirectories/foo/bar/ar019.0175
 data/test/archive/rm_init
 data/test/archive/rm_init/ar003.0698.bun
 data/test/archive/rm_init/ar003.0701.bun
@@ -205,5 +211,7 @@ data/test/fass-index.txt
 data/test/mark_source_init.bun
 data/test/no_roff.txt
 data/test/packed_ar003.0698
+data/test/packed_with_bad_bcw
+data/test/packed_with_bad_time
 data/test/roff.txt
 data/test/scrub_test.txt

@@ -7,4 +7,3 @@ data/test/archive/general_test_packed_unpacked/ar025.0634.bun
 data/test/archive/general_test_packed_unpacked/ar082.0605.bun
 data/test/archive/general_test_packed_unpacked/ar083.0698.bun
 data/test/archive/general_test_packed_unpacked/ar145.2699.bun
-data/test/archive/general_test_packed_unpacked/foo_file

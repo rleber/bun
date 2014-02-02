@@ -1,3 +1,4 @@
+unpack ar003.0698 => /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked_fix/ar003.0698.bun
 unpack packed_with_bad_bcw => /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked_fix/packed_with_bad_bcw.bun
 !Bad block sequence number at nybble 3024(05720): 66918 (expected 2): File truncated
 unpack packed_with_bad_time => /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked_fix/packed_with_bad_time.bun

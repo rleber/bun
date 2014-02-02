@@ -112,6 +112,16 @@ mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
 cp -f /Users/richard/fass_work/packed/ar083.0698 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar083.0698
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
 cp -f /Users/richard/fass_work/packed/ar145.2699 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar145.2699
+rm -rf data/test/archive/packed_with_subdirectories
+mkdir -p data/test/archive/packed_with_subdirectories
+rm -rf data/test/archive/packed_with_subdirectories/ar003
+mkdir -p data/test/archive/packed_with_subdirectories/ar003
+mkdir -p /Users/richard/projects/bun/data/test/archive/packed_with_subdirectories/ar003
+cp -f /Users/richard/fass_work/packed/ar003.0698 /Users/richard/projects/bun/data/test/archive/packed_with_subdirectories/ar003/ar003.0698
+rm -rf data/test/archive/packed_with_subdirectories/foo/bar
+mkdir -p data/test/archive/packed_with_subdirectories/foo/bar
+mkdir -p /Users/richard/projects/bun/data/test/archive/packed_with_subdirectories/foo/bar
+cp -f /Users/richard/fass_work/packed/ar019.0175 /Users/richard/projects/bun/data/test/archive/packed_with_subdirectories/foo/bar/ar019.0175
 rm -rf data/test/archive/init
 mkdir -p data/test/archive/init
 mkdir -p /Users/richard/projects/bun/data/test/archive/init

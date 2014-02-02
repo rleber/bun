@@ -178,7 +178,7 @@ module Bun
       end
       
       def clear_stage(stage, options=[])
-        return if options[:force]
+        return unless options[:force]
         `rm -f #{@symlinks[stage]}`
         `rm -rf #{@directories[stage]}`
       end
@@ -387,17 +387,7 @@ module Bun
         
     def unpack(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
-      if !options[:force] && File.exists?(to_path)
-        if options[:continue]
-          warn "!Skipping archive unpack; #{to_path} already exists" unless options[:quiet]
-          return
-        elsif options[:quiet]
-          stop
-        else
-          stop "!Skipping archive unpack; #{to_path} already exists"
-        end
-      end
-      FileUtils.rm_rf to_path unless options[:dryrun] && !options[:force]
+      FileUtils.rm_rf to_path if !options[:dryrun] && options[:force]
       leaves.each do |tape|
         from_tape = relative_path(tape, from_wd: true)
         to_file = from_tape
@@ -426,7 +416,11 @@ module Bun
         unless options[:dryrun]
           dir = File.dirname(to_file)
           FileUtils.mkdir_p dir
-          File.unpack(expand_path(from_tape), to_file, fix: options[:fix]) unless options[:dryrun]
+          begin          
+            File.unpack(expand_path(from_tape), to_file, fix: options[:fix]) unless options[:dryrun]
+          rescue Bun::File::BadBlockError => e
+            stop "!Bad BCW found in file #{from_tape}: #{e}"
+          end
         end
       end
       to_archive = self.class.new(to_path)

@@ -172,7 +172,7 @@ module Bun
 
       def packed?(path)
         return false if nonpacked?(path)
-        if ::File.read(path, PACKED_FILE_SIGNATURE.size).force_encoding('ascii-8bit') == PACKED_FILE_SIGNATURE 
+        if File.read(path, PACKED_FILE_SIGNATURE.size).force_encoding('ascii-8bit') == PACKED_FILE_SIGNATURE 
           begin
             File::Packed.open(path, force: true)
           rescue => e

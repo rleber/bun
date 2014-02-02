@@ -199,7 +199,7 @@ RSpec::Matchers.define :contain_content do |expected_content|
     actual_output.should == expected_content
   end
   failure_message_for_should do |file|
-    "#{file} did not contain expected content (#{expected_content.inspect}"
+    "#{file} did not contain expected content (#{expected_content.inspect})"
   end
 end
 
