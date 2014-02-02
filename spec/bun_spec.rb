@@ -1681,45 +1681,295 @@ describe Bun::Bot do
   end
 
   describe "catalog" do
-    before :all do
-      exec("rm -rf data/test/archive/catalog_source")
-      exec("cp -r data/test/archive/catalog_source_init data/test/archive/catalog_source")
-      exec("bun archive catalog data/test/archive/catalog_source --catalog data/test/catalog.txt \
-                2>output/test_actual/archive_catalog_stderr.txt >output/test_actual/archive_catalog_stdout.txt")
-    end
-    it "should write nothing on stdout" do
-      'output/test_actual/archive_catalog_stdout.txt'.should be_an_empty_file
-    end
-    it "should write file decoding messages on stderr" do
-      "archive_catalog_stderr.txt".should match_expected_output
-    end
-    it "should not add or remove any files in the archive" do
-      exec('find data/test/archive/catalog_source -print >output/test_actual/archive_catalog_files.txt')
-      'archive_catalog_files.txt'.should match_expected_output
-    end
-    %w{ar003.0698.bun  ar003.0701.bun  ar082.0605.bun  ar083.0698.bun}.each do |file|
-      context file do
-        before :all do
-          @catalog_describe_basename = "catalog_describe_#{file}"
-          @catalog_describe_output_file = "output/test_actual/#{@catalog_describe_basename}"
-          exec("rm -rf #{@catalog_describe_output_file}")
-          exec("bun describe data/test/archive/catalog_source/#{file} >#{@catalog_describe_output_file}")
+    context "normal" do
+      before :all do
+        exec("rm -rf data/test/archive/catalog_source")
+        exec("cp -r data/test/archive/catalog_source_init data/test/archive/catalog_source")
+        exec("bun archive catalog data/test/archive/catalog_source --catalog data/test/catalog.txt \
+                  2>output/test_actual/archive_catalog_stderr.txt >output/test_actual/archive_catalog_stdout.txt")
+      end
+      it "should write nothing on stdout" do
+        'output/test_actual/archive_catalog_stdout.txt'.should be_an_empty_file
+      end
+      it "should write messages on stderr" do
+        "archive_catalog_stderr.txt".should match_expected_output
+      end
+      it "should not add or remove any files in the archive" do
+        exec('find data/test/archive/catalog_source -print >output/test_actual/archive_catalog_files.txt')
+        'archive_catalog_files.txt'.should match_expected_output
+      end
+      {
+        'ar003.0698.bun'  =>'should', 
+        'ar003.0701.bun' => 'should not',
+        'ar082.0605.bun' => 'should',
+        'ar083.0698.bun' => 'should'
+      }.each do |file, disposition|
+        context file do
+          before :all do
+            @catalog_describe_basename = "catalog_describe_#{file}"
+            @catalog_describe_output_file = "output/test_actual/#{@catalog_describe_basename}"
+            exec("rm -rf #{@catalog_describe_output_file}")
+            exec("bun describe data/test/archive/catalog_source/#{file} >#{@catalog_describe_output_file}")
+          end
+          it "#{disposition} change the catalog dates and incomplete_file fields" do 
+            @catalog_describe_basename.should match_expected_output_except_for(DESCRIBE_PATTERNS)
+          end
+          after :all do
+            backtrace
+            exec_on_success("rm -rf #{@catalog_describe_output_file}")
+          end
         end
-        it "should change the catalog dates and incomplete_file fields" do 
-          @catalog_describe_basename.should match_expected_output_except_for(DESCRIBE_PATTERNS)
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf data/test/archive/catalog_source")
+        exec_on_success("rm -f output/test_actual/archive_catalog_stderr.txt")
+        exec_on_success("rm -f output/test_actual/archive_catalog_stdout.txt")
+        exec_on_success("rm -f output/test_actual/archive_catalog_files.txt")
+      end
+    end
+    context "with --quiet" do
+      before :all do
+        exec("rm -rf data/test/archive/catalog_source")
+        exec("cp -r data/test/archive/catalog_source_init data/test/archive/catalog_source")
+        exec("bun archive catalog --quiet data/test/archive/catalog_source --catalog data/test/catalog.txt \
+                  2>output/test_actual/archive_catalog_stderr.txt >output/test_actual/archive_catalog_stdout.txt")
+      end
+      it "should write nothing on stdout" do
+        'output/test_actual/archive_catalog_stdout.txt'.should be_an_empty_file
+      end
+      it "should write nothing on stderr" do
+        "output/test_actual/archive_catalog_stderr.txt".should be_an_empty_file
+      end
+      it "should not add or remove any files in the archive" do
+        exec('find data/test/archive/catalog_source -print >output/test_actual/archive_catalog_files.txt')
+        'archive_catalog_files.txt'.should match_expected_output
+      end
+      {
+        'ar003.0698.bun'  =>'should', 
+        'ar003.0701.bun' => 'should not',
+        'ar082.0605.bun' => 'should',
+        'ar083.0698.bun' => 'should'
+      }.each do |file, disposition|
+        context file do
+          before :all do
+            @catalog_describe_basename = "catalog_describe_#{file}"
+            @catalog_describe_output_file = "output/test_actual/#{@catalog_describe_basename}"
+            exec("rm -rf #{@catalog_describe_output_file}")
+            exec("bun describe data/test/archive/catalog_source/#{file} >#{@catalog_describe_output_file}")
+          end
+          it "#{disposition} change the catalog dates and incomplete_file fields" do 
+            @catalog_describe_basename.should match_expected_output_except_for(DESCRIBE_PATTERNS)
+          end
+          after :all do
+            backtrace
+            exec_on_success("rm -rf #{@catalog_describe_output_file}")
+          end
+        end
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf data/test/archive/catalog_source")
+        exec_on_success("rm -f output/test_actual/archive_catalog_stderr.txt")
+        exec_on_success("rm -f output/test_actual/archive_catalog_stdout.txt")
+        exec_on_success("rm -f output/test_actual/archive_catalog_files.txt")
+      end
+    end
+    context "to a new directory" do
+      before :all do
+        exec("rm -rf data/test/archive/catalog_source")
+        exec("rm -rf output/test_actual/catalog_output_archive")
+        exec("rm -rf output/test_actual/archive_catalog_to_dir_stdout.txt")
+        exec("rm -rf output/test_actual/archive_catalog_to_dir_stderr.txt")
+        exec("rm -rf output/test_actual/archive_catalog_to_dir_files.txt")
+        exec("cp -r data/test/archive/catalog_source_init data/test/archive/catalog_source")
+        exec("bun archive catalog data/test/archive/catalog_source \
+                  output/test_actual/catalog_output_archive \
+                  --catalog data/test/catalog.txt \
+                  2>output/test_actual/archive_catalog_to_dir_stderr.txt >output/test_actual/archive_catalog_to_dir_stdout.txt")
+      end
+      it "should create the directory" do 
+        file_should_exist('output/test_actual/catalog_output_archive')
+      end
+      it "should write nothing on stdout" do
+        'output/test_actual/archive_catalog_to_dir_stdout.txt'.should be_an_empty_file
+      end
+      it "should write messages on stderr" do
+        "archive_catalog_to_dir_stderr.txt".should match_expected_output
+      end
+      it "should not add or remove any files in the original archive" do
+        exec('find data/test/archive/catalog_source -print >output/test_actual/archive_catalog_to_dir_files.txt')
+        'archive_catalog_to_dir_files.txt'.should match_expected_output
+      end
+      it "should copy all the files to the new archive" do
+        exec('find output/test_actual/catalog_output_archive -print >output/test_actual/archive_catalog_to_dir_new_files.txt')
+        'archive_catalog_to_dir_new_files.txt'.should match_expected_output
+      end
+      {
+        'ar003.0698.bun'  =>'should', 
+        'ar003.0701.bun' => 'should not',
+        'ar082.0605.bun' => 'should',
+        'ar083.0698.bun' => 'should'
+      }.each do |file, disposition|
+        context file do
+          context "in the new archive" do
+            before :all do
+              @catalog_describe_basename = "catalog_describe_after_#{file}"
+              @catalog_describe_output_file = "output/test_actual/#{@catalog_describe_basename}"
+              exec("rm -rf #{@catalog_describe_output_file}")
+              exec("bun describe output/test_actual/catalog_output_archive/#{file} >#{@catalog_describe_output_file}")
+            end
+            it "#{disposition} change the catalog dates and incomplete_file fields" do 
+              @catalog_describe_basename.should match_expected_output_except_for(DESCRIBE_PATTERNS)
+            end
+            after :all do
+              backtrace
+              exec_on_success("rm -rf #{@catalog_describe_output_file}")
+            end
+          end
+          context "in the original archive" do
+            before :all do
+              @catalog_describe_basename = "catalog_describe_before_#{file}"
+              @catalog_describe_output_file = "output/test_actual/#{@catalog_describe_basename}"
+              exec("rm -rf #{@catalog_describe_output_file}")
+              exec("bun describe data/test/archive/catalog_source/#{file} >#{@catalog_describe_output_file}")
+            end
+            it "should not change the catalog dates and incomplete_file fields" do 
+              @catalog_describe_basename.should match_expected_output_except_for(DESCRIBE_PATTERNS)
+            end
+            after :all do
+              backtrace
+              exec_on_success("rm -rf #{@catalog_describe_output_file}")
+            end
+          end
+        end
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -rf data/test/archive/catalog_source")
+        exec_on_success("rm -rf output/test_actual/catalog_output_archive")
+        exec_on_success("rm -rf output/test_actual/archive_catalog_to_dir_stdout.txt")
+        exec_on_success("rm -rf output/test_actual/archive_catalog_to_dir_stderr.txt")
+        exec_on_success("rm -f  output/test_actual/archive_catalog_to_dir_files.txt")
+        exec_on_success("rm -f  output/test_actual/archive_catalog_to_dir_new_files.txt")
+      end
+    end
+    context "to an existing directory" do
+      context "without --force" do
+        before :all do
+          exec("rm -rf data/test/archive/catalog_source")
+          exec("rm -rf output/test_actual/catalog_output_archive")
+          exec("mkdir output/test_actual/catalog_output_archive")
+          exec("rm -rf output/test_actual/archive_catalog_to_existing_dir_stdout.txt")
+          exec("rm -rf output/test_actual/archive_catalog_to_existing_dir_stderr.txt")
+          exec("rm -f output/test_actual/archive_catalog_existing_no_force_files.txt")
+          exec("cp -r data/test/archive/catalog_source_init data/test/archive/catalog_source")
+          exec("bun archive catalog data/test/archive/catalog_source \
+                    output/test_actual/catalog_output_archive \
+                    --catalog data/test/catalog.txt \
+                    2>output/test_actual/archive_catalog_to_existing_dir_stderr.txt \
+                    >output/test_actual/archive_catalog_to_existing_dir_stdout.txt",
+                    allowed: [1])
+        end
+        it "should fail" do
+          $?.exitstatus.should == 1
+        end
+        it "should write a message on stderr" do
+          "archive_catalog_to_existing_dir_stderr.txt".should match_expected_output
+        end
+        it "should not change the new archive" do
+          exec('find output/test_actual/catalog_output_archive -print >output/test_actual/archive_catalog_existing_no_force_files.txt')
+          'archive_catalog_existing_no_force_files.txt'.should match_expected_output
         end
         after :all do
           backtrace
-          exec_on_success("rm -rf #{@catalog_describe_output_file}")
+          exec_on_success("rm -rf data/test/archive/catalog_source")
+          exec_on_success("rm -rf output/test_actual/catalog_output_archive")
+          exec_on_success("rm -rf output/test_actual/archive_catalog_to_existing_dir_stdout.txt")
+          exec_on_success("rm -rf output/test_actual/archive_catalog_to_exising_dir_stderr.txt")
+          exec_on_success("rm -f output/test_actual/archive_catalog_existing_no_force_files.txt")
         end
       end
-    end
-    after :all do
-      backtrace
-      exec_on_success("rm -rf data/test/archive/catalog_source")
-      exec_on_success("rm -f output/test_actual/archive_catalog_stderr.txt")
-      exec_on_success("rm -f output/test_actual/archive_catalog_stdout.txt")
-      exec_on_success("rm -f output/test_actual/archive_catalog_files.txt")
+      context "with --force" do
+        before :all do
+          exec("rm -rf data/test/archive/catalog_source")
+          exec("rm -rf output/test_actual/catalog_output_archive")
+          exec("mkdir output/test_actual/catalog_output_archive")
+          exec("rm -rf output/test_actual/archive_catalog_to_dir_stdout.txt")
+          exec("rm -rf output/test_actual/archive_catalog_to_dir_stderr.txt")
+          exec("rm -rf output/test_actual/archive_catalog_to_dir_files.txt")
+          exec("cp -r data/test/archive/catalog_source_init data/test/archive/catalog_source")
+          exec("bun archive catalog --force data/test/archive/catalog_source \
+                    output/test_actual/catalog_output_archive \
+                    --catalog data/test/catalog.txt \
+                    2>output/test_actual/archive_catalog_to_dir_stderr.txt >output/test_actual/archive_catalog_to_dir_stdout.txt")
+        end
+        it "should create the directory" do 
+          file_should_exist('output/test_actual/catalog_output_archive')
+        end
+        it "should write nothing on stdout" do
+          'output/test_actual/archive_catalog_to_dir_stdout.txt'.should be_an_empty_file
+        end
+        it "should write messages on stderr" do
+          "archive_catalog_to_dir_stderr.txt".should match_expected_output
+        end
+        it "should not add or remove any files in the original archive" do
+          exec('find data/test/archive/catalog_source -print >output/test_actual/archive_catalog_files.txt')
+          'archive_catalog_files.txt'.should match_expected_output
+        end
+        it "should copy all the files to the new archive" do
+          exec('find output/test_actual/catalog_output_archive -print >output/test_actual/archive_catalog_to_dir_new_files.txt')
+          'archive_catalog_to_dir_new_files.txt'.should match_expected_output
+        end
+        {
+          'ar003.0698.bun'  =>'should', 
+          'ar003.0701.bun' => 'should not',
+          'ar082.0605.bun' => 'should',
+          'ar083.0698.bun' => 'should'
+        }.each do |file, disposition|
+          context file do
+            context "in the new archive" do
+              before :all do
+                @catalog_describe_basename = "catalog_describe_after_#{file}"
+                @catalog_describe_output_file = "output/test_actual/#{@catalog_describe_basename}"
+                exec("rm -rf #{@catalog_describe_output_file}")
+                exec("bun describe output/test_actual/catalog_output_archive/#{file} >#{@catalog_describe_output_file}")
+              end
+              it "#{disposition} change the catalog dates and incomplete_file fields" do 
+                @catalog_describe_basename.should match_expected_output_except_for(DESCRIBE_PATTERNS)
+              end
+              after :all do
+                backtrace
+                exec_on_success("rm -rf #{@catalog_describe_output_file}")
+              end
+            end
+            context "in the original archive" do
+              before :all do
+                @catalog_describe_basename = "catalog_describe_before_#{file}"
+                @catalog_describe_output_file = "output/test_actual/#{@catalog_describe_basename}"
+                exec("rm -rf #{@catalog_describe_output_file}")
+                exec("bun describe data/test/archive/catalog_source/#{file} >#{@catalog_describe_output_file}")
+              end
+              it "should not change the catalog dates and incomplete_file fields" do 
+                @catalog_describe_basename.should match_expected_output_except_for(DESCRIBE_PATTERNS)
+              end
+              after :all do
+                backtrace
+                exec_on_success("rm -rf #{@catalog_describe_output_file}")
+              end
+            end
+          end
+        end
+        after :all do
+          backtrace
+          exec_on_success("rm -rf data/test/archive/catalog_source")
+          exec_on_success("rm -rf output/test_actual/catalog_output_archive")
+          exec_on_success("rm -rf output/test_actual/archive_catalog_to_dir_stdout.txt")
+          exec_on_success("rm -rf output/test_actual/archive_catalog_to_dir_stderr.txt")
+          exec_on_success("rm -f output/test_actual/archive_catalog_to_dir_files.txt")
+          exec_on_success("rm -f output/test_actual/archive_catalog_to_dir_new_files.txt")
+        end
+      end
     end
   end
 

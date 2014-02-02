@@ -11,4 +11,6 @@ def catalog(at, to=nil)
   check_for_unknown_options(at, to)
   stop "!Missing --catalog" unless options[:catalog]
   Archive.catalog(at, to, options)
+rescue Bun::Archive::FileOverwriteError => e
+  stop "!#{e}"
 end

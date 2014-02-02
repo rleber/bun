@@ -14,6 +14,7 @@ module Bun
     class MissingCatalog < ArgumentError; end
     class DirectoryConflict < ArgumentError; end
     class TarError < RuntimeError; end
+    class FileOverwriteError < RuntimeError; end
 
     
     class << self
@@ -187,7 +188,7 @@ module Bun
       def copy(from, to, options={})
         expanded_to = File.expand_path(to)
         unless options[:force]
-          return if File.exists?(expanded_to)
+          raise FileOverwriteError, "File #{expanded_to} already exists" if File.exists?(expanded_to)
         end
         system(['rm', '-rf', expanded_to].shelljoin)
         system(['cp', '-r', File.expand_path(from) + "/", expanded_to + "/"].shelljoin)

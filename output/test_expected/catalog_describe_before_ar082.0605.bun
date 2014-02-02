@@ -2,7 +2,6 @@ Tape                   ar082.0605
 Directory              bjeroehl/fass/81script.f
 Owner                  bjeroehl
 Description            ""
-Catalog Date           1978/11/08
 File Time              1981/03/08 20:27:00
 Format                 :unpacked
 Size (Words)           36457
@@ -11,7 +10,6 @@ MD5 Digest             8c8e f1d2 f5b3 ac52 aa1c c592 2970 7d21
 Block Count            10
 Block Padding Repairs  0
 First Block Size       3856
-Incomplete File        true
 Unpack Time            2014-01-24 10:31:26 -0500
 Unpacked By            Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
 
