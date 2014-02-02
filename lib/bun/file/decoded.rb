@@ -49,9 +49,7 @@ module Bun
           if File.format(fname) != :decoded
             if options[:promote]
               paths = super(fname, options.merge(as_class: File::Unpacked)) do |f|
-                debug "decoding #{fname}"
                 parts = f.decode(nil, options.merge(expand: true))
-                debug "done decoding #{fname}"
                 raise Bun::File::CantExpandError, "Frozen file without :expand option" if parts.size >1 && !options[:expand]
                 t = Dir.mktmpdir("promoted_to_decoded_")
                 shell = Shell.new
