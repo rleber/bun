@@ -375,7 +375,12 @@ def exec_test(descr, command, prefix, options={})
       @allowed_codes = options[:allowed] || [0]
       @allowed_codes << 1 if options[:fail]
       exec("rm -rf #{@actual_output_file}")
-      exec_command = "bun #{command} >#{@actual_output_file}"
+      if command[0]=="\\"
+        command = command[1..-1]
+      else
+        command = 'bun ' + command
+      end
+      exec_command = "#{command} >#{@actual_output_file}"
       exec_command += " 2>&1" unless options[:trap_stderr]==false
       exec(exec_command, allowed: @allowed_codes)
     end

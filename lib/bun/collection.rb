@@ -365,7 +365,7 @@ module Bun
     private :_save_index_descriptor
     
     def descriptor(name)
-      exists?(name) && index_for(name)
+      exists?(name) && File.descriptor(name)
     end
     
     def exists?(name)
