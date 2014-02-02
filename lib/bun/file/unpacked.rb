@@ -311,7 +311,7 @@ module Bun
         parts.each.with_index do |pair, index|
           part, content = pair
           part = yield(self, index) if block_given? # Block overrides "to"
-          unless to.nil? || part.nil?
+          if !part.nil? && (block_given? || !to.nil?)
             if !force && (conflicting_part = File.conflicts?(part))
               if quiet
                 stop unless continue

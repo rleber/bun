@@ -198,6 +198,7 @@ module Bun
       # TODO Rename decode (Carefully: decode is used for a different meaning on some other methods)
       def thaw(n)
         words = shard_words(n)
+        return [] unless words
         line_offset = 0
         lines = []
         line_corrected = false
