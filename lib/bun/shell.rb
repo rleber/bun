@@ -4,6 +4,8 @@
 # Simple Shell interface
 # I created a separate class for this to encapsulate system dependencies
 
+require 'shellwords'
+
 module Bun
   class Shell
     attr_accessor :dryrun, :quiet
@@ -29,9 +31,8 @@ module Bun
     end
     private :_ex
 
-    # TODO Use Shellwords version
     def shell_quote(f)
-      f.inspect
+      Shellwords.escape(f)
     end
 
     def _run(command, *args)
