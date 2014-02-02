@@ -48,24 +48,26 @@ module Bun
     
     def bake(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
-      FileUtils.rm_rf to_path unless options[:dryrun]
+      FileUtils.rm_rf to_path if options[:force] && !options[:dryrun]
       leaves.each do |leaf|
         # file = File::Decoded.open(leaf)
         relative_leaf = relative_path(leaf)
         if options[:dryrun]
-          $stderr.puts "bake #{relative_leaf}" unless options[:quiet]
+          warn "bake #{relative_leaf}" unless options[:quiet]
         else
           to_file = File.join(to_path,relative_leaf)
-          if !options[:force] && (to_file!='-' && !to_file.nil? && File.exists?(to_file))
-            warn "skipping bake #{relative_leaf}; #{to_file} already exists" unless options[:quiet]
+          if !options[:force] && (conflicting_part=File.conflicts?(to_file))
+            conflicting_part.sub!(/^#{Regexp.escape(to_path)}\//,'')
+            conflicting_part = 'it' if conflicting_part == relative_leaf
+            warn "skipping bake #{relative_leaf}; #{conflicting_part} already exists" unless options[:quiet]
             next
           end
           success = begin
             File.bake(leaf, to_file, promote: true, scrub: options[:scrub])
-            $stderr.puts "bake #{relative_leaf}" unless options[:quiet]
+            warn "bake #{relative_leaf}" unless options[:quiet]
             true
           rescue File::CantDecodeError
-            $stderr.puts "unable to bake #{relative_leaf}" unless options[:quiet]
+            warn "unable to bake #{relative_leaf}" unless options[:quiet]
             false
             # Skip the file
           end

@@ -93,8 +93,11 @@ module Bun
           if File.format(path) == :baked
             [nil, read(path)]
           elsif File.type(path) == :frozen && !options[:shard]
+            debug "About to open #{path}"
             files = File::Decoded.open(path, :promote=>true, :expand=>true)
+            debug "File opened; about to cache data"
             data = Bun.cache(:baked_expanded_data, File.expand_path(path)) { files.values.map{|f| f.data}.join }
+            debug "Done caching data"
             [files.values.first, data]
           else
             f = File::Decoded.open(path, :promote=>true, :shard=>options[:shard])

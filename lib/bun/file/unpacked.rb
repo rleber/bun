@@ -298,6 +298,7 @@ module Bun
       end
 
       def decode(to, options={}, &blk)
+        debug "(#{to},#{options.inspect})"
         # Need to delete these, otherwise they'll end up in the file descriptor
         force = options.delete(:force)
         quiet = options.delete(:quiet)
@@ -310,9 +311,12 @@ module Bun
         shell = Shell.new
         parts.each.with_index do |pair, index|
           part, content = pair
+          original_part = part # debug
           part = yield(self, index) if block_given? # Block overrides "to"
+          debug "original_part=#{original_part} => #{part}"
           unless part.nil?
             if !force && (conflicting_part = File.conflicts?(part))
+              debug "conflict in decoding: to=#{to}, part=#{part}"
               if quiet
                 stop unless continue
               else
