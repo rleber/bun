@@ -11,6 +11,7 @@ module Bun
     class InvalidInputError < RuntimeError; end
     class CantExpandError < RuntimeError; end
     class CantDecodeError < RuntimeError; end
+    class SkippingFileError < RuntimeError; end
     
     class Unpacked < Bun::File
       class << self
@@ -302,6 +303,7 @@ module Bun
         force = options.delete(:force)
         quiet = options.delete(:quiet)
         continue = options.delete(:continue)
+        _raise = options.delete(:raise)
         parts = to_decoded_parts(to, options)
         unless parts
           yield(self, 0) if block_given? # In case some reporting needs to be done
@@ -318,7 +320,9 @@ module Bun
               else
                 conflicting_part = 'it' if conflicting_part == part
                 msg = "skipping decode of #{part}; #{conflicting_part} already exists"
-                if continue
+                if _raise
+                  raise SkippingFileError, msg
+                elsif continue
                   warn msg
                 else
                   stop msg

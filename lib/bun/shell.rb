@@ -104,7 +104,14 @@ module Bun
         file.write content
       else
         mode = options[:mode] || 'w'
-        ::File.open(file, mode) {|f| f.write content }
+        begin
+          ::File.open(file, mode) {|f| f.write content }
+        rescue => e 
+          debug "pwd: #{Dir.pwd}"
+          debug "file: #{file.inspect}"
+          debug "mode: #{mode.inspect}"
+          raise
+        end
         set_timestamp(file, options[:timestamp], options) if options[:timestamp]
       end
       content
