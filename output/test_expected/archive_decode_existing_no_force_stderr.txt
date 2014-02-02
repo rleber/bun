@@ -1,0 +1,8 @@
+Decoding ar003.0698.bun
+Decoding ar054.2299.bun[end]
+Decoding ar054.2299.bun[santa]
+skipping decode of /Users/richard/projects/bun/data/test/archive/decode_archive/bstempleton/fass_19810205/santa/tape.ar054.2299_19801125_154946.txt; it already exists
+Decoding ar054.2299.bun[disco]
+skipping decode of /Users/richard/projects/bun/data/test/archive/decode_archive/bstempleton/fass_19810205/disco/tape.ar054.2299_19801125_160915.txt; /Users/richard/projects/bun/data/test/archive/decode_archive/bstempleton/fass_19810205/disco already exists
+Decoding ar054.2299.bun[opening]
+Decoding ar054.2299.bun[brytside]

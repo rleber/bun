@@ -64,7 +64,7 @@ no_tasks do
     yield if block_given?
   end
   
-  def build_contents(at, format=:cataloged, options={})
+  def build_small_directory(at, format=:cataloged, options={})
     build_directory(at, options) do
       build_file "ar003.0698", nil, format, quiet: options[:quiet]
       build_file "ar054.2299", nil, format, quiet: options[:quiet]
@@ -152,8 +152,9 @@ def build
     build_file "ar126.0345", nil, :cataloged, quiet: options[:quiet]
   end
   
-  build_contents "data/test/archive/contents", :cataloged, quiet: options[:quiet]
-  build_contents "data/test/archive/contents_packed", :packed, quiet: options[:quiet]
+  build_small_directory "data/test/archive/contents", :cataloged, quiet: options[:quiet]
+  build_small_directory "data/test/archive/contents_packed", :packed, quiet: options[:quiet]
+  build_small_directory "data/test/archive/decode_existing_init", :cataloged, quiet: options[:quiet]
 
   build_standard_directory "data/test/archive/decode_source_init", :cataloged, quiet: options[:quiet]
   

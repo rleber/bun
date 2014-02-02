@@ -205,6 +205,7 @@ module Bun
       def catalog(from, to=nil, options={})
         raise MissingCatalog, "options[:catalog] not supplied" unless options[:catalog]
         if to
+          warn "Copying files to #{to} (this could take awhile)" unless options[:quiet]
           copy from, to, :force=>options[:force]
         else
           to = from
@@ -431,7 +432,7 @@ module Bun
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
       FileUtils.rm_rf to_path if options[:force] && !options[:dryrun] 
       leaves.each do |tape_path|
-        decode_options = options.merge(promote: true, expand: true, allow: true)
+        decode_options = options.merge(promote: true, expand: true, allow: true, continue: true)
         File.decode(tape_path, nil, decode_options) do |file, index|
           # Determine whether to decode tape, and if so, where to put it
           tape = relative_path(tape_path)
@@ -457,8 +458,8 @@ module Bun
             warn "Copying #{tape}" if options[:dryrun] || !options[:quiet]
             File.join(to_path, tape)
           end
-          to_tape_path = nil if !options[:force] && File.exists?(to_tape_path) # Avoid overwriting unless --force
-          options[:dryrun] ? nil : to_tape_path # Force skipping of file if :dryrun
+          to_tape_path = nil if options[:dryrun] # Skip quietly
+          to_tape_path
         end
       end
     end

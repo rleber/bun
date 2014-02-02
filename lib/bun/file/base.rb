@@ -312,6 +312,17 @@ module Bun
           [path, nil]
         end
       end
+
+      # Does this path (or any part of its directory structure) conflict with an existing file?
+      def conflicts?(path, options={})
+        return false if path.nil? # Signifies "no output"; therefore, no conflict
+        return false if path=='-' # Signifies STDOUT; never a conflict
+        return false if File.directory?(path) && options[:directories_okay]
+        return path  if File.exists?(path)
+        dir = File.dirname(path)
+        return false if dir=='.' || dir=='/'
+        return conflicts?(dir, directories_okay: true)
+      end
     end
     attr_reader :archive
     attr_reader :tape_path

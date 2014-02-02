@@ -1,3 +1,4 @@
+Copying files to output/test_actual/catalog_output_archive (this could take awhile)
 Set catalog time: ar003.0698.bun 1999/01/01 00:00:00
 Skipping ar003.0701.bun: not in catalog
 Set catalog time: ar082.0605.bun 1978/11/08 00:00:00

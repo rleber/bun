@@ -60,6 +60,9 @@ data/test/archive/contents/ar054.2299.bun
 data/test/archive/contents_packed
 data/test/archive/contents_packed/ar003.0698
 data/test/archive/contents_packed/ar054.2299
+data/test/archive/decode_existing_init
+data/test/archive/decode_existing_init/ar003.0698.bun
+data/test/archive/decode_existing_init/ar054.2299.bun
 data/test/archive/decode_source_init
 data/test/archive/decode_source_init/ar003.0698.bun
 data/test/archive/decode_source_init/ar003.0701.bun

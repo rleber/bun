@@ -310,20 +310,24 @@ module Bun
         shell = Shell.new
         parts.each.with_index do |pair, index|
           part, content = pair
-          if block_given? || !to.nil?
-            part = yield(self, index) if block_given? # Block overrides "to"
-            shell.mkdir_p(File.dirname(part)) unless part.nil? || part=='-'
-            if !force && (part!='-' && !part.nil? && File.exists?(part))
-              if continue
-                warn "skipping decode; #{part} already exists" unless quiet
-              elsif quiet
-                stop
+          part = yield(self, index) if block_given? # Block overrides "to"
+          unless part.nil?
+            if !force && (conflicting_part = File.conflicts?(part))
+              if quiet
+                stop unless continue
               else
-                stop "skipping decode; #{part} already exists"
+                conflicting_part = 'it' if conflicting_part == part
+                msg = "skipping decode of #{part}; #{conflicting_part} already exists"
+                if continue
+                  warn msg
+                else
+                  stop msg
+                end
               end
-              next
+            else
+              shell.mkdir_p(File.dirname(part)) unless part=='-'
+              shell.write(part, content)
             end
-            shell.write(part, content) unless part.nil?
           end
         end
         parts

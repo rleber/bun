@@ -1,0 +1,17 @@
+data/test/archive/decode_archive
+data/test/archive/decode_archive/bar
+data/test/archive/decode_archive/bstempleton
+data/test/archive/decode_archive/bstempleton/fass_19810205
+data/test/archive/decode_archive/bstempleton/fass_19810205/brytside
+data/test/archive/decode_archive/bstempleton/fass_19810205/brytside/tape.ar054.2299_19810205_151125.txt
+data/test/archive/decode_archive/bstempleton/fass_19810205/disco
+data/test/archive/decode_archive/bstempleton/fass_19810205/end
+data/test/archive/decode_archive/bstempleton/fass_19810205/end/tape.ar054.2299_19801125_154946.txt
+data/test/archive/decode_archive/bstempleton/fass_19810205/opening
+data/test/archive/decode_archive/bstempleton/fass_19810205/opening/tape.ar054.2299_19810108_183114.txt
+data/test/archive/decode_archive/bstempleton/fass_19810205/santa
+data/test/archive/decode_archive/bstempleton/fass_19810205/santa/tape.ar054.2299_19801125_154946.txt
+data/test/archive/decode_archive/fass
+data/test/archive/decode_archive/fass/idallen
+data/test/archive/decode_archive/fass/idallen/vector
+data/test/archive/decode_archive/fass/idallen/vector/tape.ar003.0698_19761122.txt

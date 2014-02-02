@@ -69,6 +69,12 @@ mkdir -p /Users/richard/projects/bun/data/test/archive/contents_packed
 cp -f /Users/richard/fass_work/packed/ar003.0698 /Users/richard/projects/bun/data/test/archive/contents_packed/ar003.0698
 mkdir -p /Users/richard/projects/bun/data/test/archive/contents_packed
 cp -f /Users/richard/fass_work/packed/ar054.2299 /Users/richard/projects/bun/data/test/archive/contents_packed/ar054.2299
+rm -rf data/test/archive/decode_existing_init
+mkdir -p data/test/archive/decode_existing_init
+mkdir -p /Users/richard/projects/bun/data/test/archive/decode_existing_init
+cp -f /Users/richard/fass_work/cataloged/ar003.0698.bun /Users/richard/projects/bun/data/test/archive/decode_existing_init/ar003.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/decode_existing_init
+cp -f /Users/richard/fass_work/cataloged/ar054.2299.bun /Users/richard/projects/bun/data/test/archive/decode_existing_init/ar054.2299.bun
 rm -rf data/test/archive/decode_source_init
 mkdir -p data/test/archive/decode_source_init
 mkdir -p /Users/richard/projects/bun/data/test/archive/decode_source_init
