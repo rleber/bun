@@ -423,8 +423,6 @@ module Bun
           end
         end
       end
-      to_archive = self.class.new(to_path)
-      to_archive.set_timestamps(:quiet=>true)
     end
 
     # TODO Add glob capability?

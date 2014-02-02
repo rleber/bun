@@ -106,6 +106,14 @@ data/test/archive/mv_init/directory/ar003.0698.bun
 data/test/archive/mv_init/directory/ar003.0701.bun
 data/test/archive/mv_init/directory/ar082.0605.bun
 data/test/archive/mv_init/directory/ar083.0698.bun
+data/test/archive/packed_with_bad_files
+data/test/archive/packed_with_bad_files/ar003.0698
+data/test/archive/packed_with_bad_files/packed_with_bad_bcw
+data/test/archive/packed_with_bad_files/packed_with_bad_time
+data/test/archive/packed_with_bad_files_init
+data/test/archive/packed_with_bad_files_init/ar003.0698
+data/test/archive/packed_with_bad_files_init/packed_with_bad_bcw
+data/test/archive/packed_with_bad_files_init/packed_with_bad_time
 data/test/archive/packed_with_subdirectories
 data/test/archive/packed_with_subdirectories/ar003
 data/test/archive/packed_with_subdirectories/ar003/ar003.0698

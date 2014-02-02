@@ -22,7 +22,10 @@ mkdir -p /Users/richard/projects/bun/data/test/archive/catalog_source_init
 cp -f /Users/richard/fass_work/unpacked/ar082.0605.bun /Users/richard/projects/bun/data/test/archive/catalog_source_init/ar082.0605.bun
 mkdir -p /Users/richard/projects/bun/data/test/archive/catalog_source_init
 cp -f /Users/richard/fass_work/unpacked/ar083.0698.bun /Users/richard/projects/bun/data/test/archive/catalog_source_init/ar083.0698.bun
-Not rebuilding data/test/archive/compact_files_init
+rm -rf data/test/archive/packed_with_bad_files_init
+mkdir -p data/test/archive/packed_with_bad_files_init
+cp data/test_init/packed_with_bad* data/test/archive/packed_with_bad_files_init
+cp data/test_init/ar003.0698 data/test/archive/packed_with_bad_files_init
 rm -rf data/test/archive/roff/fass/1990
 mkdir -p data/test/archive/roff/fass/1990
 cp -r /Users/richard/fass_work/baked/fass/1990/script data/test/archive/roff/fass/1990/script
@@ -122,6 +125,7 @@ rm -rf data/test/archive/packed_with_subdirectories/foo/bar
 mkdir -p data/test/archive/packed_with_subdirectories/foo/bar
 mkdir -p /Users/richard/projects/bun/data/test/archive/packed_with_subdirectories/foo/bar
 cp -f /Users/richard/fass_work/packed/ar019.0175 /Users/richard/projects/bun/data/test/archive/packed_with_subdirectories/foo/bar/ar019.0175
+cp -r data/test/archive/packed_with_bad_files_init data/test/archive/packed_with_bad_files
 rm -rf data/test/archive/init
 mkdir -p data/test/archive/init
 mkdir -p /Users/richard/projects/bun/data/test/archive/init
