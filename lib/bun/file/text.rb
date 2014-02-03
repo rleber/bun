@@ -15,12 +15,13 @@ module Bun
         end
       end
       
-      attr_accessor :keep_deletes
+      attr_accessor :keep_deletes, :strict
       attr_reader   :control_characters, :character_count
     
       # TODO do we ever instantiate a File::Text without reading a file? If not, refactor
       def initialize(options={})
         @keep_deletes = options[:keep_deletes]
+        @strict = options[:strict]
         options[:data] = Data.new(options) if options[:data] && !options[:data].is_a?(Bun::Data)
         super
       end
@@ -119,7 +120,7 @@ module Bun
           w = words.at(line_offset)
           break if w == eof_marker
           break if ((w>>27) & 0777 == 0) && (w & 0777 == 0600) # Line descriptor word
-          return nil if w.bytes.any? {|b| b>255}
+          return nil if @strict && w.bytes.any? {|b| b>255}
           line_offset += 1
         end
         line_offset
