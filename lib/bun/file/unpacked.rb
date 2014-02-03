@@ -283,16 +283,16 @@ module Bun
         allow = options.delete(:allow)
         if type!=:frozen || options[:shard]
           # Return a file
-          {to=>to_decoded_yaml(options)}
+          [{path: to, content: to_decoded_yaml(options), from: descriptor.tape_path, shard: nil}]
         elsif expand
           # Return multiple shards
-          parts = {}
+          parts = []
           shard_count.times do |shard_number|
             res = to_decoded_hash(options.merge(shard: shard_number))
             break unless res
             path = qualified_path_name(to, res[:shard_name])
             raise CantExpandError, "Must specify file name with :expand" if res[:shard_name] && to=='-'
-            parts[path] = res.to_yaml
+            parts << {path: path, content: res.to_yaml, from: descriptor.tape_path, shard: res[:shard_name]}
           end
           parts
         else
@@ -305,6 +305,7 @@ module Bun
         force = options.delete(:force)
         quiet = options.delete(:quiet)
         continue = options.delete(:continue)
+        to_path = options.delete(:to_path)
         _raise = options.delete(:raise)
         parts = to_decoded_parts(to, options)
         unless parts
@@ -312,20 +313,28 @@ module Bun
           return nil
         end
         shell = Shell.new
-        parts.each.with_index do |pair, index|
-          part, content = pair
+        parts.each.with_index do |part_hash, index|
+          part = part_hash[:path]
+          content = part_hash[:content]
           part = yield(self, index) if block_given? # Block overrides "to"
           if !part.nil? && (block_given? || !to.nil?)
             if !force && (conflicting_part = File.conflicts?(part))
               if quiet
                 stop unless continue
               else
-                conflicting_part = 'it' if conflicting_part == part
-                msg = "skipping decode of #{part}; #{conflicting_part} already exists"
+                message_part = File.basename(part_hash[:from])
+                message_part = message_part + "[#{part_hash[:shard]}]" if part_hash[:shard]
+                if to
+                  conflicting_part = 'it' if conflicting_part == to
+                else
+                  conflicting_part = File.relative_path(conflicting_part, relative_to: to_path)
+                end
+                msg = "Skipped #{message_part}: #{conflicting_part} already exists"
                 if _raise
                   raise SkippingFileError, msg
                 elsif continue
-                  warn msg
+                  message_path = part_hash[:shard] ? "#{::File.expand_path(part_hash[:from])}[#{part_hash[:shard]}]" : part_hash[:from]
+                  File.replace_messages message_path, msg
                 else
                   stop msg
                 end

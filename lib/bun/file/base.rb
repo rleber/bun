@@ -20,6 +20,62 @@ module Bun
       @@stdin_cache = nil  # Content of STDIN (we cache it, to allow rereading)
       @@last_read = nil    # Name of the last file read, except STDIN (we save it, to avoid rereading)
       @@last_content = nil # Content of the last file read (except STDIN)
+      @@messages = {}
+
+      def messages
+        @@messages
+      end
+
+      def clear_messages(path=nil)
+        if path
+          path = ::File.expand_path(path)
+          @@messages[path] = []
+        else
+          @@messages = {}
+        end
+      end
+
+      def add_message(path,msg=nil)
+        case msg
+        when nil
+          # Do nothing
+        when Array
+          msg.each {|m| add_msg(path, m)}
+        else
+          path = ::File.expand_path(path)
+          @@messages[path] ||= []
+          @@messages[path] << msg
+        end
+      end
+      alias_method :add_messages, :add_message
+
+      def replace_messages(path=nil,msg=nil)
+        clear_messages(path)
+        add_message path,msg
+      end
+
+      def all_messages(path=nil)
+        if path
+          path = ::File.expand_path(path)
+          @@messages[path] || []
+        else
+          @@messages.keys.sort.map {|path| @@messages[path]}.flatten
+        end
+      end
+
+      def message_count(path=nil)
+        if path
+          path = ::File.expand_path(path)
+          (@@messages[path]||[]).size
+        else
+          @@messages.values.map{|msgs| msgs.size}.sum
+        end
+      end
+
+      def warn_messages(path=nil)
+        return if message_count(path)==0
+        all_messages(path).each {|msg| warn msg}
+      end
       
       # Allows STDIN to be read multiple times
       def read(*args)
@@ -266,6 +322,7 @@ module Bun
       end
 
       def decode(path, to, options={}, &blk)
+        self.clear_messages
         case format(path)
         when :packed
           File::Unpacked.open(path, options.merge(promote: true)) do |f|

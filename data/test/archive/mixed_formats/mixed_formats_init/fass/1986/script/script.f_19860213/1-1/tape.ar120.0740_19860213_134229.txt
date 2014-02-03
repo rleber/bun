@@ -1,0 +1,621 @@
+.so fass/1986/macr.t
+.bs 1 1 "Class Cut-Up"
+.na bu MR.BURKE MR.BURKE
+.na ca CARRIE~DAWAY CARRIE
+.na ch CHRISTINE~CHAPEL CHRISTINE
+.na cu MR.CUJO MR.CUJO
+.na ha MR.HARE MR.HARE
+.na ja JASON~SANBORNE JASON
+.na jw JAWS~THREEDEE JAWS
+.na li LIONEL~TWAIN LIONEL
+.na no NORMAN~GREEN NORMAN
+.na sw SWEENEY~MEENY-MINEY-MO SWEENEY
+.na wi WILLARD~FILLMORE WILLARD
+.sd
+(WILDERNESS NIGHT SOUNDS -- CRICKETS.
+THE SET IS A GRAVEYARD; THE TRAP DOOR IS AN OPEN GRAVE.
+THE STAGE IS TOTALLY BLACK)
+.ld
+(SUDDENLY, A CAMPFIRE IS LIT.
+JASON IS LIGHTING THE FIRE WHILE WILLARD AND CHRISTINE WATCH.
+THEY HAVE PACKS AND SOME GEAR)
+.prip "Matches, Campfire, Graveyard Crosses, Camping Gear, Tender Vittles,"
+.ch ja
+It's lit.
+.ch wi
+Nobody even breathe.
+.ch ch
+This wilderness weekend is the stupidest idea since New Coke.
+.ch ja
+Oh Christine, you'll have fun once we start toasting marshmallows.
+Where are the marshmallows, Willard?
+.ch wi
+Well Jason, that's the funniest thing...
+.ch ch
+Mr.Junior Achievement forgot the marshmallows.
+.ch wi
+I was standing in line at the grocery store with a bag of marshmallows
+right in my hand...and there were these little packages of Tender Vittles
+outrageously cheap beside the check-out...and as God is my witness, I heard
+a voice say, "Buy now before the market catches on."
+.ad
+(HE PRODUCES A BAG OF TENDER VITTLES)
+.ch ch
+You bought cat food instead of marshmallows?
+.ch ja
+(EXAMINING VITTLES)
+Maybe they'd be good toasted over the fire.
+.sd
+(THUNDER)
+.ch ch
+Oh great, now it's going to rain and put out the fire.
+.ch wi
+Don't worry, Christine, I'll protect it with your body.
+.ch ja
+Come on, you two, what will it look like if the others find us fighting?
+.ch ch
+Normal.
+.ch ja
+Why don't we sing a campfire song to lift our spirits?
+.ch ch
+Why don't we jam pine needles under your fingernails?
+.ch ja
+Come on, guys.
+It'll be fun!
+.ad
+(JASON STARTS SINGING AND THE OTHERS FOLLOW, NATURALLY CREATING A ROUND.
+CAST MEMBERS COME DOWN INTO THE AISLES TO JOIN IN)
+.sb "FIRE'S BURNING" "FIRE'S BURNING"
+JASON:
+    Fire's burning, fire's burning,
+    Draw nearer, draw nearer,
+    In the gloaming, in the gloaming,
+    Come sing and be merry.
+.ad
+(CAST DISAPPEARS IN SPOOKY ENDING OF SONG.
+IN THE DARK, SWEENEY SNEAKS UP ON THE OTHERS.
+SUDDENLY, SHE LEAPS INTO THE MIDDLE OF THE GROUP AND YELLS.
+CHRISTINE SCREAMS)
+.ch ch
+Sweeney!
+What'd you do that for?
+.ch sw
+Kicks.
+How's the survival weekend so far?
+.ch wi
+I want to go home.
+.ch ch
+Me too.
+.ch wi
+Really?
+.ch ch
+Yes, I want you to go home.
+.ch ja
+(TO SWEENEY)
+Where are the others?
+.ad
+(CUJO ENTERS, DRILLING NORMAN, CARRIE, AND JAWS ON THE RUN.
+JAWS IS EXHAUSTED, CARRIE TRIPS A LOT, AND NORMAN IS CLUTCHING HIS
+TEDDY BEAR, LIONEL)
+.ch cu
+Left, right, left, right, left, right, right, right...
+.ad
+(TEEN-AGERS STUMBLE IN AN EFFORT TO GET CORRECT FEET)
+.ex
+Let that be a lesson to you all.
+The first rule of survival is "Always expect the unexpected."
+Jason, your report.
+.ch ja
+It's dark and it's going to rain.
+.ch cu
+So, you fell for
+.ul
+that,
+did you?
+I checked with Environment Canada this afternoon, and they say it's
+four o'clock and sunny.
+.ch sw
+What's this dark then, an eclipse?
+.ch cu
+Are you trying to insinuate something, punk?
+Like maybe I need glasses?
+Like maybe I'm really a four-eyes wimp whose mother locked him in the
+closet to prove there were no monsters?
+Or maybe I'm a bedwetter, is that what you're trying to say?
+.ch sw
+Not bad, but you left out gun-toting redneck sociopath.
+.ch cu
+Your kind makes me puke.
+Look at you all.
+Soft.
+Pampered.
+Babies.
+Blind to the dangers of hyperinflation and economic collapse.
+.ad
+(HE STUMBLES INTO A GRAVE MARKER AND IMMEDIATELY EMPTIES THE CLIP OF HIS
+PISTOL INTO THE CROSS)
+.prip "Gun with Infinite Number of Bullets,"
+.ch ch
+Mr.Cujo, what are you doing?
+.ch cu
+Pre-emptive self-defense.
+Survival rule number two:
+.ul
+They
+are everywhere.
+.sd
+(BULLFROG CROAKING)
+.ex
+Hit the dirt!
+.ad
+(HE EMPTIES HIS CLIP (AGAIN) INTO THE NIGHT)
+.ex
+Stick that up your Canada Pension Plan!
+.ch no
+(HOLDING UP HIS TEDDY BEAR)
+.prip "Lionel the teddy bear,"
+Mr.Cujo, Lionel has to go to the bathroom.
+.ch cu
+(SNAPPING TO ATTENTION)
+Who said that?
+.ad
+(HE APPROACHES NORMAN, WHO CRINGES BEHIND LIONEL.
+CUJO BUTTONHOLES LIONEL)
+.ex
+Was it you?
+(PAUSE)
+Too scared to talk, eh?
+Won't confess and take your punishment like a man.
+(SNIFFING)
+Is that quiche I smell on your breath?
+Eating a little of that old egg pie?
+.ad
+(SUDDENLY, HE GRABS THE BEAR BY THE SHOULDERS AND PULLS HIM UP, NOSE TO NOSE)
+.ex
+Down on the ground and give me 20, mister.
+Survival rule number seven: no pain, no gain.
+.ad
+(HE THROWS DOWN THE BEAR, FACE DOWN)
+.ex
+One, two, three...
+(TO NORMAN)
+You!
+See that he does them.
+In the meantime, the rest of us will get dinner.
+.ch jw
+Great.
+Who brought the food?
+.ad
+(SILENCE.
+CUJO LOOKS AROUND SLYLY)
+.ch cu
+We'll forage.
+Follow me.
+.sd
+(OFF HE GOES INTO THE NIGHT.
+AS HE DISAPPEARS, WE HEAR THE HOOT OF AN OWL, THEN THE SOUNDS
+OF CUJO SHOOTING IT)
+.ex
+That's what I think of your subsidized housing.
+.ch no
+(TO LIONEL)
+Fourteen, fifteen...
+(WINKING SLYLY)
+Okay Lionel, he's gone.
+(HE PICKS LIONEL UP)
+.ch ca
+Jaws, if you're hungry, I brought some food.
+.ad
+(SHE BEGINS RUMMAGING IN HER KNAPSACK)
+.ch wi
+(TO JAWS)
+You're not going to take food from The Jinx, are you?
+.ch jw
+There's nothing wrong with Carrie.
+.ad
+(CARRIE BEGINS TO HAND THINGS TO JAWS FROM KNAPSACK WITHOUT LOOKING)
+.ch ca
+Marshmallows...
+.ad
+(THE BOTTOM OF THE BAG OPENS AND THE MARSHMALLOWS FALL OUT)
+.ex
+Chips...
+.ad
+(JAWS DISCOVERS THAT THE BAG IS SQUASHED FLAT)
+.prip "Marshmallows, Crushed Chips, Shaken Pop Can,"
+.ex
+Pop...
+.ad
+(JAWS OPEN THE [WELL-SHAKEN] CAN AND GETS A FACEFUL.
+HE LICKS POP FROM HIS LIPS, POURS A LITTLE CHIP DUST INTO HIS MOUTH,
+AND EATS A MARSHMALLOW OFF THE GROUND)
+.ch jw
+See, Willard, no problem!
+.sd
+(SHOT FROM OFFSTAGE.
+A DEAD DUCK DROPS INTO THE MIDDLE OF THE GROUP.
+.prip "Dead duck,"
+CUJO REAPPEARS)
+.ch cu
+FREEZE!
+Don't touch it, it might be faking.
+.ad
+(HE WALKS UP, SHOOTS THE DUCK SEVERAL MORE TIMES)
+.ex
+All right...chow down!
+.ch ch
+I am
+.ul
+not
+going to eat that.
+.ch sw
+No way.
+.ch wi
+Me neither.
+.ch jw
+I might.
+.ch ch
+Forget it, Jaws; I'm going to the car and then to Swiss Chalet.
+.ch ca
+McDonalds.
+.ch ja
+Harveys.
+.ch no
+Burger King.
+.ch cu
+So...ganging up on me.
+Pulling
+.ul
+democracy.
+Trying to have it
+.ul
+your
+way.
+All right.
+I'm a reasonable man.
+Wait here while I clear the trail.
+.ad
+(HE EXITS.
+BRIEF SILENCE.
+FOUR RAPID SHOTS OFFSTAGE.
+HE REAPPEARS)
+.ex
+Sorry, there's a problem with the car.
+Four simultaneous blow-outs.
+Guess those steel-belted radials aren't so tough after all.
+.ch jw
+You mean we're stranded?
+.ch cu
+Without hope of rescue.
+.ch wi
+I wouldn't say that, sir.
+We could always look for a farmhouse...
+.ch sw
+Or go back to the road and flag down a car...
+.ch ja
+Or walk back to the last gas station...
+.sd
+(COW MOOING)
+.ch cu
+Sh!  Wolves.
+.ad
+(HE EXITS QUICKLY)
+.ch ca
+Well, I guess we're here for the night.
+.ch sw
+Who decided to camp in a graveyard?
+.ch wi
+Sweeney, do you know how much they charge for a regular campsite?
+This place was a steal.
+.ch ca
+But a real campsite has electricity!
+.ld
+(LIGHTNING)
+.ex
+And running water!
+.sd
+(RAIN)
+.ex
+And flush toilets!
+.ad
+(ALL MOVE AWAY FROM CARRIE)
+.ch no
+This could be a good chance for us to get to know each other.
+I'm Norman Green, and this is Lionel.
+Say something, Lionel.
+.ch li
+(FALSETTO)
+Don't be silly, Norman.
+Teddy bears can't talk.
+.ch jw
+I wish I had more food.
+.ch ch
+I wish you'd sit downwind.
+.ch ja
+Come on, guys, let's not squabble.
+Let's just warm ourselves by the fire and...I know, let's tell ghost stories.
+.ch jw
+In the middle of a graveyard?
+Are you nuts?
+.ch ja
+It'll be fun!
+.ch no
+Lionel has to go to the bathroom, guys.
+(LIONEL NODS)
+I'm not kidding.
+.ch ca
+(COVERING LIONEL'S MOUTH WITH HER HAND)
+Shh!
+I've got a story.
+.ad
+(SILENCE DESCENDS)
+.ex
+My sister had a friend who was a babysitter, right?
+And one night she got this phone call from this
+guy, who didn't say anything, just heavy breathing, you know?
+So she hangs up on him.
+A minute or two later, he calls again
+and this time, he says he has a meat cleaver.
+She gets scared and hangs up, then calls the cops.
+The police say they're going to trace the next call
+and she's supposed to keep him talking.
+So about half an hour later, he calls again.
+And he's saying how he just got out of prison,
+when suddenly the operator breaks in and says,
+"Get out of the house, he's on the upstairs extension!"
+The girl goes running out the door and he's after her with this big meat
+cleaver and he's getting closer and closer...
+.ld
+(LIGHTNING AND THUNDER.
+CUJO SUDDENLY SLAMS A BIG MEAT CLEAVER INTO A PIECE OF
+FIREWOOD IN THEIR MIDST)
+.prip "Meat Cleaver, Firewood,"
+.ch cu
+You'll need this to skin the duck.
+.ad
+(HE DISAPPEARS AGAIN.
+SILENCE)
+.ch no
+Lionel doesn't have to go to the bathroom anymore.
+.ch jw
+The scariest thing
+.ul
+I
+ever saw was once we snuck into the drive-in to
+see the Texas Chainsaw Massacre....
+.sd
+(CHAINSAW STARTS UP OFFSTAGE)
+.ch ca
+Is that you, Mr.Cujo?
+.ch cu
+(OFFSTAGE)
+Just cutting some more wood for the fire.
+.ch wi
+Don't you think a lot of noise will give away your position?
+.ad
+(SILENCE)
+.ch cu
+(QUIETLY)
+Right.
+.ch sw
+I have a story.
+There's a guy and girl out parking on a back road, and they hear on the radio
+that some maniac has escaped from an asylum and he's in the neighbourhood.
+He's called the Hook 'cause instead of a hand, he has this razor-sharp
+hook.
+The girl wants to go home, but the guy says, "Don't be scared, I'll
+protect you."
+After a while, they start necking until they hear this branch
+break in the woods.
+He says it's probably just a raccoon or something, but she says she's going
+to scream if they don't leave right away.
+The guy gets mad and just guns the car out of there.
+They get home and he gets out to open the door for her, and there, hanging
+from her door handle is this razor-sharp hook.
+.ld
+(THUNDER AND LIGHTNING.
+CUJO HAS REAPPEARED AGAIN.
+THE NEXT SPEECH IS DELIVERED DOWNSTAGE OF THE CAMPFIRE WITH HIS BACK TO THE
+KIDS SO THE AUDIENCE CAN SEE WHAT HE'S DOING BUT THE KIDS CAN'T)
+.ch cu
+Survival rule number 13: dead men tell no tales.
+You kids need a little lesson.
+First, offense.
+The best offense is a good defense and the best defense is a good goalie.
+.ad
+(HE DONS A "JASON-STYLE" GOALIE MASK)
+.prip "Goalie Mask,"
+.ex
+Conversely, the best defense is a good offense, and the best offense is light,
+portable, and razor-sharp.
+.ad
+(HE ATTACHES A HOOK INTO THE END OF HIS ARM)
+.prip "Hook for end of arm,"
+.ch jw
+Cut it out, Mr.Cujo.
+.ch cu
+(TURNING ON THEM)
+My intention, exactly.
+.ad
+(HE LUNGES FOR WHOMEVER IS CLOSEST)
+.ch wi
+Put out the fire -- he won't be able to see us.
+.ld
+(JASON PUTS OUT THE FIRE.
+PITCH BLACK)
+.ch cu
+(IN DARK)
+I can still hear you.
+.ch sw
+Everybody quiet!
+.ad
+(LONG SILENCE.
+SUDDENLY, THERE IS A GREAT CRASHING, AND LOUD THUMPS.
+SILENCE AGAIN)
+.ch ja
+Willard?  Christine?  Sweeney?
+.xx WILLARD,~CHRISTINE,~SWEENEY
+Yeah?
+.ch ja
+Norman, Carrie, Jaws?
+.xx NORMAN,~CARRIE,~AND~JAWS
+Uh huh?
+.ch ja
+Lionel?
+.ch li
+Here, Jason!
+.ch ja
+Whew!
+I got Cujo.
+Get a light.
+.ad
+(SOMEONE TURNS ON A FLASHLIGHT.
+JASON IS HOLDING A STICK OF FIREWOOD AND STANDING OVER CUJO'S BODY)
+.prip "Flashlight."
+.ch ja
+(STEPPING OVER THE BODY SO CUJO IS BEHIND HIM)
+Okay, pack up everything real fast.
+.sd
+(THE GROUP STARTS TO PACK.
+THUNDER)
+.ex
+There must be a farmhouse around here someplace.
+We'll go back to the road and start walking.
+Maybe we can hitch a ride...
+.sfx
+(AS HE TALKS, HE DOES NOT SEE CUJO RISE UP SILENTLY AND RAISE THE HOOK
+TO STAB HIM IN THE BACK.
+AT THE LAST MOMENT, CHRISTINE SEES CUJO AND SCREAMS.
+CUJO LAUGHS AND BEGINS THE DOWNSWING BUT AT THAT MOMENT, HE IS STRUCK BY
+LIGHTNING.
+HE FALLS)
+.ch no
+The lightning hit the hook...
+.ch jw
+Is he dead now?
+.ch wi
+(FAMOUS LAST WORDS)
+No one could have survived that.
+.ch ca
+What are we going to do with the corpse?
+.ad
+(BURKE AND HARE SUDDENLY POP THEIR HEADS OUT OF THE OPEN GRAVE)
+.xx BURKE~AND~HARE
+Did someone say "corpse"?
+.ad
+(CHRISTINE SCREAMS AGAIN)
+.ch sw
+Who are you?
+.ch ha
+This is Mr.Burke.
+.ch bu
+And this is Mr.Hare.
+.xx BURKE~AND~HARE
+Charmed.
+.ch wi
+What are you doing down in that grave?
+.xx BURKE~AND~HARE
+Picnicking.
+.ch ca
+(IN HORROR)
+On what?
+.ch bu
+Tuna.
+.ch ha
+And potato salad.
+.ch ca
+Oh good, for a second there I thought you guys were eating...
+.ch ha
+Never!
+.ch bu
+We're professionals.
+.ch sw
+Professional whats?
+.xx BURKE~AND~HARE
+Gravediggers.
+.ch jw
+You're digging a grave for someone?
+.ch ha
+No, just hoping.
+.ch bu
+And it worked out, didn't it?
+.ch ja
+Do you know where we can find a phone?
+.ch bu
+There's the old Jekyll House.
+.ch ha
+You can go there and hide.
+.ch bu
+Just follow the path.
+.ch ja
+Thanks.
+.ad
+(THE TEEN-AGERS TROOP OFF.
+BURKE AND HARE PICK UP CUJO'S BODY AND CARRY IT INTO THE GRAVE.
+THEY TALK AS THEY GO)
+.ch ha
+Do you know any ghost stories, Mr.Burke?
+.ch bu
+Only the ones about Jekyll House, Mr.Hare.
+.ch ha
+Does anyone survive in those stories, Mr.Burke?
+.ch bu
+Not a one, Mr.Hare.
+.ch ha
+I believe I feel a poem coming on:
+.sp
+.in 10
+.nf
+.ne 4
+Higgledy piggledy
+Ramshackle Jekyll House
+Isn't a place you
+Will live very long.
+.ch bu
+.br
+.nf
+.in 10
+.ne 4
+But if you're an expert in
+Parapsychology
+Ghoulies and ghosties
+You'll find in a throng.
+.xx BOTH
+And now it is time for the opening song.
+.ad
+(THE CAST FLOODS DOWN TO THE STAGE TO SING THE OPENING SONG.
+BURKE AND HARE CLOSE THE TRAP SO NO ONE FALLS IN DURING THE SONG)
+.sb "MYSTERY TONIGHT" "COMEDY TONIGHT"
+Something revealing, something revolting,
+Something for everyone, a Mystery tonight!
+Something suspicious, something pernicious,
+Something for everyone, a Mystery tonight!
+     Drop off your woes, drop off your cares,
+     Capture the music, laughter, and scares!
+We've got detectives, and their perspectives,
+Hoping to make the whole thing right!
+Clarity tomorrow, Mystery tonight!
+.ve 1
+(KEY CHANGE!)
+.ve 7
+Something exciting, or self-igniting,
+Something for everyone, a Mystery tonight!
+Something delightful, scarey and frightful,
+Something for everyone, a Mystery tonight!
+     Ready for tricks, ready for treats,
+     We'll have you on the edge of your seats!
+No more rehearsing, chapter and versing!
+Come on, let's get on with the show!
+Tragedy and sorrow,
+Beg, steal or borrow,
+Clarity tomorrow!
+Mystery (mystery! mystery!! mystery!!! mystery!!!!)
+TONIGHT!
+.ld
+(THE SONG ENDS AND THE CAST RUSHES OFFSTAGE TO THUNDEROUS APPLAUSE.
+THE LIGHTS DIM SLOWLY AS THE APPLAUSE DIES DOWN.
+WHEN THE DARKNESS IS ALMOST COMPLETE, THE TRAP SUDDENLY SLAMS OPEN WITH
+A BIG BANG.
+WE SEE CUJO BEGIN TO EMERGE MENACINGLY (PROBABLY JUST THE HOOK), THEN
+COMPLETE BLACK-OUT)
+.es

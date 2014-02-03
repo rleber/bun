@@ -8,6 +8,7 @@ module Bun
         include CacheableMethods
 
         class BadFileContentError < RuntimeError; end
+        class TreeTooDeepError < RuntimeError; end
 
         class TreeNode
           attr_accessor :left, :right, :array
@@ -85,14 +86,18 @@ module Bun
         end
 
         def make_tree
-          build_sub_tree(get_file_byte)
+          build_sub_tree(get_file_byte, 0)
         end
 
-        def build_sub_tree(ch)
+        RECURSION_LIMIT = 500
+
+        def build_sub_tree(ch, depth)
+          raise TreeTooDeepError, "Huffman tree too deep: more than #{RECURSION_LIMIT} bits in encoding" \
+            if depth > RECURSION_LIMIT
           if ch==0
             TreeNode.new(nil, get_file_byte)
           else
-            TreeNode.new(build_sub_tree(ch-1),build_sub_tree(get_file_byte))
+            TreeNode.new(build_sub_tree(ch-1, depth+1),build_sub_tree(get_file_byte, depth+1))
           end
         end
         private :build_sub_tree

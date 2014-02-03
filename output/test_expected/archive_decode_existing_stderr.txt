@@ -1,6 +1,6 @@
-Decoding ar003.0698.bun
-Decoding ar054.2299.bun[end]
-Decoding ar054.2299.bun[santa]
-Decoding ar054.2299.bun[disco]
-Decoding ar054.2299.bun[opening]
-Decoding ar054.2299.bun[brytside]
+Decoded ar003.0698.bun
+Decoded ar054.2299.bun[brytside]
+Decoded ar054.2299.bun[disco]
+Decoded ar054.2299.bun[end]
+Decoded ar054.2299.bun[opening]
+Decoded ar054.2299.bun[santa]

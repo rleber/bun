@@ -6,7 +6,8 @@ if $0 == 'irb'
 end
 
 # Use stop instead of abort, in case we're testing in irb
-def stop(msg=nil)
+def stop(msg=nil, options={})
+  msg = nil if options[:quiet]
   if $0 == 'irb'
     warn msg if msg
     raise Abort, msg

@@ -432,34 +432,43 @@ module Bun
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
       FileUtils.rm_rf to_path if options[:force] && !options[:dryrun] 
       leaves.each do |tape_path|
-        decode_options = options.merge(promote: true, expand: true, allow: true, continue: true)
-        File.decode(tape_path, nil, decode_options) do |file, index|
-          # Determine whether to decode tape, and if so, where to put it
-          tape = relative_path(tape_path)
-          to_tape_path = case file.descriptor.format
-          when :packed, :unpacked
-            case typ=file.type
-            when :frozen
-              descr = file.shard_descriptor(index)
-              shard_name = descr.name
-              warn "Decoding #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
-              timestamp = file.descriptor.timestamp
-              File.join(to_path, decode_path(file.path, timestamp), shard_name.sub(/\.+$/,''),
-                      decode_tapename(tape, descr.time))
-            when :text, :huffman
-              warn "Decoding #{tape}" if options[:dryrun] || !options[:quiet]
-              timestamp = file.descriptor.timestamp
-              File.join(to_path, file.path.sub(/\.+$/,''), decode_tapename(tape, timestamp))
+        begin
+          decode_options = options.merge(promote: true, expand: true, allow: true, continue: true, to_path: to_path)
+          File.decode(tape_path, nil, decode_options) do |file, index|
+            # Determine whether to decode tape, and if so, where to put it
+            tape = relative_path(tape_path)
+            case file.descriptor.format
+            when :packed, :unpacked
+              case typ=file.type
+              when :frozen
+                descr = file.shard_descriptor(index)
+                shard_name = descr.name
+                timestamp = file.descriptor.timestamp
+                to_tape_path = File.join(to_path, decode_path(file.path, timestamp), shard_name.sub(/\.+$/,''),
+                        decode_tapename(tape, descr.time))
+                File.add_message "#{tape_path}[#{shard_name}]", "Decoded #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
+              when :text, :huffman
+                timestamp = file.descriptor.timestamp
+                to_tape_path = File.join(to_path, file.path.sub(/\.+$/,''), decode_tapename(tape, timestamp))
+                File.add_message tape_path, "Decoded #{tape}" if options[:dryrun] || !options[:quiet]
+              else
+                File.replace_messages tape_path, "Skipped #{tape}: Unknown type (#{typ})" if options[:dryrun] || !options[:quiet]
+                to_tape_path = nil # Force skip file
+              end
             else
-              warn "Skipping #{tape}: Unknown type (#{typ})" if options[:dryrun] || !options[:quiet]
-              nil # Force skip file
+              File.add_message tape_path, "Copied #{tape}" if options[:dryrun] || !options[:quiet]
+              to_tape_path = File.join(to_path, tape)
             end
-          else
-            warn "Copying #{tape}" if options[:dryrun] || !options[:quiet]
-            File.join(to_path, tape)
+            to_tape_path = nil if options[:dryrun] # Skip quietly
+            to_tape_path
           end
-          to_tape_path = nil if options[:dryrun] # Skip quietly
-          to_tape_path
+        rescue Bun::File::Unpacked::Huffman::BadFileContentError => e
+          File.replace_messages tape_path, "Skipped #{relative_path(tape_path)}: Bad Huffman encoded file: #{e}" unless options[:quiet]
+        rescue Bun::File::Unpacked::Huffman::TreeTooDeepError => e
+          File.replace_messages tape_path, "Skipped #{relative_path(tape_path)}: Bad Huffman encoded file: #{e}" unless options[:quiet]
+        end
+        unless options[:quiet]
+          File.warn_messages
         end
       end
     end
