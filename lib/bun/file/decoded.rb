@@ -53,7 +53,9 @@ module Bun
                 raise Bun::File::CantExpandError, "Frozen file without :expand option" if parts.size >1 && !options[:expand]
                 t = Dir.mktmpdir("promoted_to_decoded_")
                 shell = Shell.new
-                parts.map do |part, content|
+                parts.map do |part_hash|
+                  part = part_hash[:path]
+                  content = part_hash[:content]
                   path = File.join(t, part||'part1')
                   shell.write(path, content)
                   path
