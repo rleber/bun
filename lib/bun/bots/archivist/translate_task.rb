@@ -39,12 +39,13 @@ Some convenience abbreviations are allowed:
     xxx...yyy                         Steps xxx to the step before yyy
 EOT
 long_desc DESC_TEXT.freeze_for_thor
-def translate(from, to)
+def translate(from=nil, to=nil)
   check_for_unknown_options(from, to)
   if options[:usage]
     puts Bun::Archive.translate_steps
     exit
   end
+  stop "!Must specify FROM and TO archives" unless from && to
   Bun::Archive.translate(from, to, options)
 rescue Archive::InvalidStep => e
   stop "!#{e}"
