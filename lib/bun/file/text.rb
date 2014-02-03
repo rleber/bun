@@ -5,6 +5,9 @@ module Bun
   class File < ::File
     class Text < Bun::File::Blocked
       include CacheableMethods
+
+      class DeletedLineFound < RuntimeError; end
+      class BadLineDescriptor < RuntimeError; end
       
       class << self
         def open(path, options={}, &blk)
@@ -68,13 +71,19 @@ module Bun
         if descriptor == eof_marker
           return {:status=>:eof, :start=>line_offset, :finish=>data.size-1, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
         elsif (descriptor >> 27) & 0777 == 0177
-          raise "Deleted"
+          raise DeletedLineFound, "Deleted line at #{line_offset}(0#{'%o'%line_offset})"
           deleted = true
           line_length = word_count
         elsif (descriptor >> 27) & 0777 == 0
-            line_length = descriptor.half_word(0)
-        else # Sometimes, there is ASCII in the descriptor word; In that case, capture it, and look for terminating "\177"
-          raise "ASCII in descriptor"
+          line_length = descriptor.half_word(0)
+        else # Sometimes, there is ASCII in the descriptor word; In that case, capture it, and look for terminating line descriptor
+          line_offset -= 1 # Back up so the descriptor word is included in the line we're trying to find
+          new_line_offset = find_next_line(words, line_offset+2) # Start looking in the second word of the line
+          unless new_line_offset
+            raise BadLineDescriptor, "Bad line at #{line_offset}(0#{'%o'%line_offset}): " + 
+                                  "#{'%013o'%descriptor} #{descriptor.characters.join.inspect}"
+          end
+          line_length = new_line_offset - line_offset - 1
         end
         offset = line_offset+1
         raw_line = words[offset,line_length].map{|w| w.characters}.join
@@ -102,6 +111,18 @@ module Bun
       def decoded_text(options={})
         self.keep_deletes = options[:delete]
         options[:inspect] ? self.inspect : self.text
+      end
+
+      def find_next_line(words, line_offset)
+        loop do
+          break if line_offset >= words.size
+          w = words.at(line_offset)
+          break if w == eof_marker
+          break if ((w>>27) & 0777 == 0) && (w & 0777 == 0600) # Line descriptor word
+          return nil if w.bytes.any? {|b| b>255}
+          line_offset += 1
+        end
+        line_offset
       end
     end
   end
