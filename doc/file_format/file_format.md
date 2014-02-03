@@ -132,6 +132,10 @@ Archive files have the following format:
 - The first line always appears to be a descriptor plus 20 words of 000s. It is ignored.
 - End of file markers are optional, but do apply if found. (See above.)
 
+Occasionally, these files can get messed up. In particular, a line descriptor may be missing, or 
+not in the expected place. In that case, this software attempts to find the next line descriptor
+word and interpret the intervening words as words of text.
+
 For additional clues, see doc/file_format/decode_help.txt, the source file lib/bun/file/text.rb or 
 run "bun dump"
 
@@ -166,6 +170,13 @@ The format for Honeywell Huffman-encoded files is as follows:
   text must be examined one bit at a time, traversing the Huffman tree from the top. At each bit, a "0" bit
   means take the left branch of the tree, and a "1" bit means take the right branch. When you reach a leaf,
   that's the encoded character. See the Wikipedia article for more information on the encoding algorithm.
+
+Note that the Huffman encoding algorithm doesn't care how many bits are in a "character". Because most
+Honeywell files were encoding as 8-bit characters stored in 9-bit bytes, this mostly is irrelevant. However,
+some files may include 9-bit characters encoded in Huffman format. When this is the case (which seems mostly
+to be object files of some kind), this software converts those 9-bit characters to a hex encoding. For
+example, if a file included a character 0777 (equivalent to 0x1FF), then it will be decoded as "\\x{1FF}".
+(There's just one backslash in the string.)
 
 Important note: I made several fits and starts trying to get this to work, but I finally succeeded. One 
 of the major detours I made was trying to use the algorithm in the huff.b.obsolete.txt program. (Obviously, it
