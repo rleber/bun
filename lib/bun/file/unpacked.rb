@@ -254,6 +254,7 @@ module Bun
       def to_decoded_hash(options={})
         llinks = self.llink_count rescue nil # Frozen and huffman files don't have llinks
         text = decoded_text(options)
+        return nil unless text
         text = text.scrub if options[:scrub]
         options = options.merge(
                     content:     text, 
@@ -288,6 +289,7 @@ module Bun
           parts = {}
           shard_count.times do |shard_number|
             res = to_decoded_hash(options.merge(shard: shard_number))
+            break unless res
             path = qualified_path_name(to, res[:shard_name])
             raise CantExpandError, "Must specify file name with :expand" if res[:shard_name] && to=='-'
             parts[path] = res.to_yaml
