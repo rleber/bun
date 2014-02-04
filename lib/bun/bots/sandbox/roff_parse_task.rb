@@ -13,9 +13,9 @@ def roff_parse
     $stdout.write "> "
     line = $stdin.gets.chomp
     break if line=='' || line=='exit'
-    if (res = roff.expand(line))
+    if (res = roff.ingest(line))
       puts res.inspect
-      puts res.expand.inspect
+      puts res.parse.inspect
     end
   end
 end

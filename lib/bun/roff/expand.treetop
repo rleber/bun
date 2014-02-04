@@ -6,7 +6,7 @@
 #   http://whitequark.org/blog/2011/09/08/treetop-typical-errors/
 
 # Compile using:
-#   tt lib/bun/roff/expand.treetop -o lib/bun/roff/expand_treetop_parser.rb
+#   tt lib/bun/roff/parse.treetop -o lib/bun/roff/parse_treetop_parser.rb
 
 # This grammar is finicky; mess with it at your peril
 
@@ -14,8 +14,8 @@ grammar RoffInput
 	rule input
   	content:(request / line) 1..1
   	{
-  		def expand
-  			content.elements.first.expand
+  		def parse
+  			content.elements.first.parse
 			end
   	}
 	end
@@ -23,19 +23,14 @@ grammar RoffInput
   rule request
   	request_word line
   	{
-  		def expand
-  			request_word.expand + line.expand
+  		def parse
+  			request_word.parse + line.parse
 			end
   	}
 	end
 
 	rule request_word
-  	control_character word
-  	{
-  		def expand
-  			[{type: :request_word, text: text_value, interval: interval, value: word.expand[0][:value]}]
-			end
-  	}
+  	control_character word <Bun::Roff::SyntaxNode::RequestWord>
 	end
 
 	rule control_character
@@ -46,45 +41,28 @@ grammar RoffInput
 	rule line
 		content:(sentence_part*) end_of_line
 		{
-			def expand
-				content.elements.flat_map{|e| e.expand}
+			def parse
+				content.elements.flat_map{|e| e.parse}
 			end
 		}
 	end
 
 	rule sentence_part
-		(register_reference / nested_sentence_part / paren / other_character) 1..1
+		(register_reference / nested_sentence_part / paren / other) 1..1
 		{
-			def expand
-				elements.first.expand
+			def parse
+				elements.first.parse
 			end
 		}
 	end
 
 	rule paren
-		('(' / ')') 1..1
-		{
-			def expand
-				[{type: :other, text: text_value, interval: interval, value: text_value}]
-			end
-		}
+		('(' / ')') 1..1 <Bun::Roff::SyntaxNode::Other>
 	end
 
 	# TODO Watch out for escapes
   rule quoted_string
-    quote_character quoted_string_atom* quote_character
-    {
-    	def expand
-    		[
-    			{
-    				type: :quoted_string, 
-    				text: text_value, 
-    				interval: interval, 
-    				value: eval(text_value.gsub('""','\"'))
-    			}
-    		]
-    	end
-    }
+    quote_character quoted_string_atom* quote_character <Bun::Roff::SyntaxNode::QuotedString>
   end
 
   rule quoted_string_atom
@@ -99,47 +77,26 @@ grammar RoffInput
 		!quote_character !end_of_line .
 	end
 
-	# For future enhancement: Roff lets you change the quote character
   rule quote_character
 		# Allows roff to selectively change (or even disable) the quote character
 		. &{|nodes| nodes.last.text_value == roff.quote_character }
   end
 
 	rule register_reference
-		'(' word ')'
-		{
-			def expand
-				res = [{type: :register_reference, text: text_value, value: word.expand[0][:value], interval: interval}]
-			end
-		}
+		'(' word ')' <Bun::Roff::SyntaxNode::RegisterReference>
 	end
 
 	rule number
-		[0-9]+
-		{
-			def expand
-				[{type: :number, text: text_value, interval: interval, value: text_value.to_i}]
-			end
-		}
+		[0-9]+ <Bun::Roff::SyntaxNode::Number>
 	end
 
 	rule word
 		# Actually, should be less than 32 characters; lets leave that to the semantics engine
-	  [a-zA-Z#%_] ([a-zA-Z0-9#%_] / hyphenation_character)*
-	  {
-	  	def expand
-	  		[{type: :word, text: text_value, interval: interval, value: text_value}]
-  		end
-	  }
+	  [a-zA-Z#%_] ([a-zA-Z0-9#%_] / hyphenation_character)* <Bun::Roff::SyntaxNode::Word>
   end
 
 	rule parameter
-		parameter_character number
-		{
-			def expand
-	  		[{type: :parameter, text: text_value, interval: interval, value: number.expand[0][:value]}]
-  		end
-		}
+		parameter_character number <Bun::Roff::SyntaxNode::Parameter>
 	end
 
 	rule parameter_character
@@ -148,37 +105,22 @@ grammar RoffInput
 	end
 
 	rule escape
-		insertion_character !('(' / end_of_line) .
-		{
-			def expand
-				[{type: :escape, text: text_value, interval: interval, value: text_value[1]}]
-			end
-		}
+		insertion_character !('(' / end_of_line) . <Bun::Roff::SyntaxNode::Escape>
 	end
 
   rule insertion
-    insertion_character '(' nested_sentence ')' 
-    {
-    	def expand
-    		[{type: :insertion, text: text_value, value: nested_sentence.expand, interval: interval}]
-  		end
-    }
+    insertion_character '(' nested_sentence ')' <Bun::Roff::SyntaxNode::Insertion>
 	end
 
 	rule parenthesized_sentence
-		'(' nested_sentence ')'
-		{
-			def expand
-				[{type: :parenthesized_sentence, text: text_value, value: nested_sentence.expand, interval: interval}]
-			end
-		}
+		'(' nested_sentence ')' <Bun::Roff::SyntaxNode::ParenthesizedSentence>
 	end
 
 	rule nested_sentence
 		(nested_sentence_parts)
 		{
-			def expand
-				nested_sentence_parts.expand
+			def parse
+				nested_sentence_parts.parse
 			end
 		}
 	end
@@ -186,8 +128,8 @@ grammar RoffInput
 	rule nested_sentence_parts
 		first:nested_sentence_part remainder:nested_sentence_part*
 		{
-			def expand
-				first.expand + remainder.elements.flat_map {|e| e.expand}
+			def parse
+				first.parse + remainder.elements.flat_map {|e| e.parse}
 			end
 		}
 	end
@@ -195,8 +137,8 @@ grammar RoffInput
 	rule nested_sentence_part
 		( parenthesized_sentence / nested_sentence_atom ) 1..1
 		{
-			def expand
-				elements.first.expand
+			def parse
+				elements.first.parse
 			end
 		}
 	end
@@ -204,66 +146,39 @@ grammar RoffInput
 	rule nested_sentence_atom
 		(whitespace / quoted_string / number / word / parameter / escape / insertion / operator ) 1..1
 		{
-			def expand
-				elements.first.expand
+			def parse
+				elements.first.parse
 			end
 		}
 	end
 
 	rule insertion_character
 		# Allows Roff to change or disable the insertion character
-		. &{|nodes| nodes.last.text_value == roff.insert_character }
-		{
-			def expand
-				[{type: :insertion_character, text: text_value, interval: interval, value: text_value}]
-			end
-		}
+		# TODO Is class reference necessary?
+		. &{|nodes| nodes.last.text_value == roff.insert_character } <Bun::Roff::SyntaxNode::InsertionCharacter>
 	end
 
 	rule hyphenation_character
 		# Allows Roff to change or disable the hyphenation character
-		. &{|nodes| nodes.last.text_value == roff.hyphenation_character }
-		{
-			def expand
-				[{type: :hyphenation_character, text: text_value, interval: interval, value: text_value}]
-			end
-		}
+		# TODO Is class reference necessary?
+		. &{|nodes| nodes.last.text_value == roff.hyphenation_character } <Bun::Roff::SyntaxNode::HyphenationCharacter>
 	end
 
 	rule whitespace
-		( [ \t] )+ 
-		{
-			def expand
-				[{type: :whitespace, text: text_value, interval: interval, value: text_value}]
-			end
-		}
+		( [ \t] )+ <Bun::Roff::SyntaxNode::Whitespace>
 	end
 
 	rule end_of_line
-		"\n" 
-		{
-			def expand
-				[{type: :end_of_line, text: text_value, interval: interval, value: text_value}]
-			end
-		}
+		"\n" <Bun::Roff::SyntaxNode::EndOfLine>
 	end
 
 	rule operator
-		[-+*/<=>]
-		{
-			def expand
-				[{type: :operator, text: text_value, interval: interval, value: text_value}]
-			end
-		}
+		[-+*/<=>] <Bun::Roff::SyntaxNode::Operator>
 	end
 
-  rule other_character
+  rule other
+  	# TODO Is this right, or should it be !(insertion / escape / quoted_string...)
   	(!(insertion_character / quote_character / parameter_character / hyphenation_character / [-()a-zA-Z0-9%#_+*/<=> \t\n] )
-  	     .) 1..1
-  	{
-  		def expand
-  			[{type: :other, text: text_value, interval: interval, value: text_value}]
-			end
-  	}
+  	     .) 1..1 <Bun::Roff::SyntaxNode::Other>
 	end
 end

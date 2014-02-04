@@ -25,7 +25,7 @@ module Bun
       attr_accessor :roff
     end
 
-    def expand(line, options={})
+    def ingest(line, options={})
       input = RoffInput.new(line+"\n")
       input.roff = self
       tree = parser.parse(input)

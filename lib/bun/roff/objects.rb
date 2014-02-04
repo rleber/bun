@@ -15,7 +15,7 @@ module Bun
       end
 
       def type
-        self.class.to_s.sub(/.*::/,'').gsub(/(?<!^)([A-Z])/,'_\1').downcase.to_sym
+        self.class.to_s.sub(/.*::/,'').underscore.to_sym
       end
 
       def method_missing(meth, *args, &blk)

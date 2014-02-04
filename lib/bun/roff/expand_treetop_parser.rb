@@ -9,7 +9,7 @@
 #   http://whitequark.org/blog/2011/09/08/treetop-typical-errors/
 
 # Compile using:
-#   tt lib/bun/roff/expand.treetop -o lib/bun/roff/expand_treetop_parser.rb
+#   tt lib/bun/roff/parse.treetop -o lib/bun/roff/parse_treetop_parser.rb
 
 # This grammar is finicky; mess with it at your peril
 
@@ -27,8 +27,8 @@ module RoffInput
   end
 
   module Input1
-  		def expand
-  			content.elements.first.expand
+  		def parse
+  			content.elements.first.parse
 			end
   end
 
@@ -100,8 +100,8 @@ module RoffInput
   end
 
   module Request1
-  		def expand
-  			request_word.expand + line.expand
+  		def parse
+  			request_word.parse + line.parse
 			end
   end
 
@@ -147,12 +147,6 @@ module RoffInput
     end
   end
 
-  module RequestWord1
-  		def expand
-  			[{type: :request_word, text: text_value, interval: interval, value: word.expand[0][:value]}]
-			end
-  end
-
   def _nt_request_word
     start_index = index
     if node_cache[:request_word].has_key?(index)
@@ -172,9 +166,8 @@ module RoffInput
       s0 << r2
     end
     if s0.last
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::RequestWord,input, i0...index, s0)
       r0.extend(RequestWord0)
-      r0.extend(RequestWord1)
     else
       @index = i0
       r0 = nil
@@ -243,8 +236,8 @@ module RoffInput
   end
 
   module Line1
-			def expand
-				content.elements.flat_map{|e| e.expand}
+			def parse
+				content.elements.flat_map{|e| e.parse}
 			end
   end
 
@@ -290,8 +283,8 @@ module RoffInput
   end
 
   module SentencePart0
-			def expand
-				elements.first.expand
+			def parse
+				elements.first.parse
 			end
   end
 
@@ -321,7 +314,7 @@ module RoffInput
           if r4
             r1 = r4
           else
-            r5 = _nt_other_character
+            r5 = _nt_other
             if r5
               r1 = r5
             else
@@ -351,12 +344,6 @@ module RoffInput
     node_cache[:sentence_part][start_index] = r0
 
     r0
-  end
-
-  module Paren0
-			def expand
-				[{type: :other, text: text_value, interval: interval, value: text_value}]
-			end
   end
 
   def _nt_paren
@@ -410,8 +397,7 @@ module RoffInput
       @index = i0
       r0 = nil
     else
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
-      r0.extend(Paren0)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::Other,input, i0...index, s0)
     end
 
     node_cache[:paren][start_index] = r0
@@ -427,19 +413,6 @@ module RoffInput
     def quote_character2
       elements[2]
     end
-  end
-
-  module QuotedString1
-    	def expand
-    		[
-    			{
-    				type: :quoted_string, 
-    				text: text_value, 
-    				interval: interval, 
-    				value: eval(text_value.gsub('""','\"'))
-    			}
-    		]
-    	end
   end
 
   def _nt_quoted_string
@@ -474,9 +447,8 @@ module RoffInput
       end
     end
     if s0.last
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::QuotedString,input, i0...index, s0)
       r0.extend(QuotedString0)
-      r0.extend(QuotedString1)
     else
       @index = i0
       r0 = nil
@@ -670,12 +642,6 @@ module RoffInput
 
   end
 
-  module RegisterReference1
-			def expand
-				res = [{type: :register_reference, text: text_value, value: word.expand[0][:value], interval: interval}]
-			end
-  end
-
   def _nt_register_reference
     start_index = index
     if node_cache[:register_reference].has_key?(index)
@@ -711,9 +677,8 @@ module RoffInput
       end
     end
     if s0.last
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::RegisterReference,input, i0...index, s0)
       r0.extend(RegisterReference0)
-      r0.extend(RegisterReference1)
     else
       @index = i0
       r0 = nil
@@ -722,12 +687,6 @@ module RoffInput
     node_cache[:register_reference][start_index] = r0
 
     r0
-  end
-
-  module Number0
-			def expand
-				[{type: :number, text: text_value, interval: interval, value: text_value.to_i}]
-			end
   end
 
   def _nt_number
@@ -759,8 +718,7 @@ module RoffInput
       @index = i0
       r0 = nil
     else
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
-      r0.extend(Number0)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::Number,input, i0...index, s0)
     end
 
     node_cache[:number][start_index] = r0
@@ -769,12 +727,6 @@ module RoffInput
   end
 
   module Word0
-  end
-
-  module Word1
-	  	def expand
-	  		[{type: :word, text: text_value, interval: interval, value: text_value}]
-  		end
   end
 
   def _nt_word
@@ -827,9 +779,8 @@ module RoffInput
       s0 << r2
     end
     if s0.last
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::Word,input, i0...index, s0)
       r0.extend(Word0)
-      r0.extend(Word1)
     else
       @index = i0
       r0 = nil
@@ -848,12 +799,6 @@ module RoffInput
     def number
       elements[1]
     end
-  end
-
-  module Parameter1
-			def expand
-	  		[{type: :parameter, text: text_value, interval: interval, value: number.expand[0][:value]}]
-  		end
   end
 
   def _nt_parameter
@@ -875,9 +820,8 @@ module RoffInput
       s0 << r2
     end
     if s0.last
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::Parameter,input, i0...index, s0)
       r0.extend(Parameter0)
-      r0.extend(Parameter1)
     else
       @index = i0
       r0 = nil
@@ -942,12 +886,6 @@ module RoffInput
 
   end
 
-  module Escape1
-			def expand
-				[{type: :escape, text: text_value, interval: interval, value: text_value[1]}]
-			end
-  end
-
   def _nt_escape
     start_index = index
     if node_cache[:escape].has_key?(index)
@@ -1002,9 +940,8 @@ module RoffInput
       end
     end
     if s0.last
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::Escape,input, i0...index, s0)
       r0.extend(Escape0)
-      r0.extend(Escape1)
     else
       @index = i0
       r0 = nil
@@ -1024,12 +961,6 @@ module RoffInput
       elements[2]
     end
 
-  end
-
-  module Insertion1
-    	def expand
-    		[{type: :insertion, text: text_value, value: nested_sentence.expand, interval: interval}]
-  		end
   end
 
   def _nt_insertion
@@ -1071,9 +1002,8 @@ module RoffInput
       end
     end
     if s0.last
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::Insertion,input, i0...index, s0)
       r0.extend(Insertion0)
-      r0.extend(Insertion1)
     else
       @index = i0
       r0 = nil
@@ -1089,12 +1019,6 @@ module RoffInput
       elements[1]
     end
 
-  end
-
-  module ParenthesizedSentence1
-			def expand
-				[{type: :parenthesized_sentence, text: text_value, value: nested_sentence.expand, interval: interval}]
-			end
   end
 
   def _nt_parenthesized_sentence
@@ -1132,9 +1056,8 @@ module RoffInput
       end
     end
     if s0.last
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::ParenthesizedSentence,input, i0...index, s0)
       r0.extend(ParenthesizedSentence0)
-      r0.extend(ParenthesizedSentence1)
     else
       @index = i0
       r0 = nil
@@ -1146,8 +1069,8 @@ module RoffInput
   end
 
   module NestedSentence0
-			def expand
-				nested_sentence_parts.expand
+			def parse
+				nested_sentence_parts.parse
 			end
   end
 
@@ -1180,8 +1103,8 @@ module RoffInput
   end
 
   module NestedSentenceParts1
-			def expand
-				first.expand + remainder.elements.flat_map {|e| e.expand}
+			def parse
+				first.parse + remainder.elements.flat_map {|e| e.parse}
 			end
   end
 
@@ -1227,8 +1150,8 @@ module RoffInput
   end
 
   module NestedSentencePart0
-			def expand
-				elements.first.expand
+			def parse
+				elements.first.parse
 			end
   end
 
@@ -1281,8 +1204,8 @@ module RoffInput
   end
 
   module NestedSentenceAtom0
-			def expand
-				elements.first.expand
+			def parse
+				elements.first.parse
 			end
   end
 
@@ -1367,12 +1290,6 @@ module RoffInput
   module InsertionCharacter0
   end
 
-  module InsertionCharacter1
-			def expand
-				[{type: :insertion_character, text: text_value, interval: interval, value: text_value}]
-			end
-  end
-
   def _nt_insertion_character
     start_index = index
     if node_cache[:insertion_character].has_key?(index)
@@ -1405,9 +1322,8 @@ module RoffInput
       s0 << r2
     end
     if s0.last
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::InsertionCharacter,input, i0...index, s0)
       r0.extend(InsertionCharacter0)
-      r0.extend(InsertionCharacter1)
     else
       @index = i0
       r0 = nil
@@ -1419,12 +1335,6 @@ module RoffInput
   end
 
   module HyphenationCharacter0
-  end
-
-  module HyphenationCharacter1
-			def expand
-				[{type: :hyphenation_character, text: text_value, interval: interval, value: text_value}]
-			end
   end
 
   def _nt_hyphenation_character
@@ -1459,9 +1369,8 @@ module RoffInput
       s0 << r2
     end
     if s0.last
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::HyphenationCharacter,input, i0...index, s0)
       r0.extend(HyphenationCharacter0)
-      r0.extend(HyphenationCharacter1)
     else
       @index = i0
       r0 = nil
@@ -1470,12 +1379,6 @@ module RoffInput
     node_cache[:hyphenation_character][start_index] = r0
 
     r0
-  end
-
-  module Whitespace0
-			def expand
-				[{type: :whitespace, text: text_value, interval: interval, value: text_value}]
-			end
   end
 
   def _nt_whitespace
@@ -1507,19 +1410,12 @@ module RoffInput
       @index = i0
       r0 = nil
     else
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
-      r0.extend(Whitespace0)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::Whitespace,input, i0...index, s0)
     end
 
     node_cache[:whitespace][start_index] = r0
 
     r0
-  end
-
-  module EndOfLine0
-			def expand
-				[{type: :end_of_line, text: text_value, interval: interval, value: text_value}]
-			end
   end
 
   def _nt_end_of_line
@@ -1534,8 +1430,7 @@ module RoffInput
     end
 
     if has_terminal?("\n", false, index)
-      r0 = instantiate_node(SyntaxNode,input, index...(index + 1))
-      r0.extend(EndOfLine0)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::EndOfLine,input, index...(index + 1))
       @index += 1
     else
       terminal_parse_failure("\n")
@@ -1545,12 +1440,6 @@ module RoffInput
     node_cache[:end_of_line][start_index] = r0
 
     r0
-  end
-
-  module Operator0
-			def expand
-				[{type: :operator, text: text_value, interval: interval, value: text_value}]
-			end
   end
 
   def _nt_operator
@@ -1565,8 +1454,7 @@ module RoffInput
     end
 
     if has_terminal?('\G[-+*/<=>]', true, index)
-      r0 = instantiate_node(SyntaxNode,input, index...(index + 1))
-      r0.extend(Operator0)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::Operator,input, index...(index + 1))
       @index += 1
     else
       r0 = nil
@@ -1577,19 +1465,13 @@ module RoffInput
     r0
   end
 
-  module OtherCharacter0
+  module Other0
   end
 
-  module OtherCharacter1
-  		def expand
-  			[{type: :other, text: text_value, interval: interval, value: text_value}]
-			end
-  end
-
-  def _nt_other_character
+  def _nt_other
     start_index = index
-    if node_cache[:other_character].has_key?(index)
-      cached = node_cache[:other_character][index]
+    if node_cache[:other].has_key?(index)
+      cached = node_cache[:other][index]
       if cached
         cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
         @index = cached.interval.end
@@ -1653,7 +1535,7 @@ module RoffInput
       end
       if s1.last
         r1 = instantiate_node(SyntaxNode,input, i1...index, s1)
-        r1.extend(OtherCharacter0)
+        r1.extend(Other0)
       else
         @index = i1
         r1 = nil
@@ -1671,11 +1553,10 @@ module RoffInput
       @index = i0
       r0 = nil
     else
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
-      r0.extend(OtherCharacter1)
+      r0 = instantiate_node(Bun::Roff::SyntaxNode::Other,input, i0...index, s0)
     end
 
-    node_cache[:other_character][start_index] = r0
+    node_cache[:other][start_index] = r0
 
     r0
   end

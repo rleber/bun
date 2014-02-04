@@ -114,7 +114,20 @@ class String
   def titleize
     split(/(\W)/).map(&:capitalize).join
   end
-  
+
+  def underscore
+    self.gsub(/::/, '/').
+         gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+         gsub(/([a-z\d])([A-Z])/,'\1_\2').
+         tr("-", "_").
+         downcase
+  end
+
+  def camel_case
+  return self if self !~ /_/ && self =~ /[A-Z]+.*/
+  split('_').map{|e| e.capitalize}.join
+  end
+
   # Convert a string to its equivalent character set, e.g.
   # e.g. "abbbasssscc".positive_character_set => '[a-cs]'
   # Thanks to https://gist.github.com/melborne/1573258 for the idea that inspired this refactoring (i.e. using chunk)
