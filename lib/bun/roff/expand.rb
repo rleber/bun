@@ -9,10 +9,22 @@
 require 'treetop'
 require 'lib/bun/roff/expand_treetop_parser'
 
+class Treetop::Runtime::SyntaxNode
+  def roff
+    input.roff
+  end
+end
+
 module Bun
   class Roff
+    class RoffInput < String
+      attr_accessor :roff
+    end
+
     def expand(line, options={})
-      tree = parser.parse(line+"\n")
+      input = RoffInput.new(line+"\n")
+      input.roff = self
+      tree = parser.parse(input)
       if tree.nil?
         parser.failure_reason =~ /^(Expected .+) at line \d+, (.+) after/m
         expectation = $1

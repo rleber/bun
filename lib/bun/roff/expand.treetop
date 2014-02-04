@@ -1,4 +1,10 @@
 # Treetop grammar for Roff input lines
+
+# Useful reference information abount Treetop and tips available at
+#		http://treetop.rubyforge.org/
+#   http://journal.missiondata.com/post/45128269264/treetop-grammars-cool
+#   http://whitequark.org/blog/2011/09/08/treetop-typical-errors/
+
 # Compile using:
 #   tt lib/bun/roff/expand.treetop -o lib/bun/roff/expand_treetop_parser.rb
 
@@ -27,6 +33,7 @@ grammar RoffInput
   	command_character word
   	{
   		def expand
+  			warn "roff page_number: #{roff.page_number.inspect}, year: #{roff.definitions['year'].inspect}"
   			[{type: :request_word, text: text_value, interval: interval, value: word.expand[0][:value]}]
 			end
   	}
