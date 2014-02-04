@@ -28,8 +28,6 @@ module Bun
       class Escape < Base; end
       class Insertion < Base; end
       class ParenthesizedSentence < Base; end
-      class InsertionCharacter < Base; end
-      class HyphenationCharacter < Base; end
       class Whitespace < Base; end
       class EndOfLine < Base; end
       class Operator < Base; end

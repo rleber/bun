@@ -6,7 +6,7 @@ module Bun
     class ParsedNode
       class << self
         def create(type, tt)
-          class_name = type.to_s.gsub(/_+/,' ').capitalize.gsub(/\s+/,'')
+          class_name = type.to_s.camelcase
           klass = const_defined?(class_name) ? const_get(class_name) : self
           klass.new(type, tt)
         end
@@ -16,6 +16,7 @@ module Bun
 
       def initialize(type, tt)
         @type = type
+        @tt = tt
         @text = tt.text_value
         @interval = tt.interval
       end
@@ -68,11 +69,18 @@ module Bun
         end
       end    
 
-      class ParenthesizedSentence < ParsedNode
+      class Nested < ParsedNode
         def value
-          tt.nested_sentence.expand
+          tt.nested_sentence.parse
+        end
+
+        def inspect
+          "#{type}(#{value.map{|v| v.inspect}.join(',')})"
         end
       end    
+
+      class Insertion < Nested; end
+      class ParenthesizedSentence < Nested; end
 
       class Whitespace < ParsedNode
         def value

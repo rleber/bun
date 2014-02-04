@@ -1322,7 +1322,7 @@ module RoffInput
       s0 << r2
     end
     if s0.last
-      r0 = instantiate_node(Bun::Roff::SyntaxNode::InsertionCharacter,input, i0...index, s0)
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
       r0.extend(InsertionCharacter0)
     else
       @index = i0
@@ -1369,7 +1369,7 @@ module RoffInput
       s0 << r2
     end
     if s0.last
-      r0 = instantiate_node(Bun::Roff::SyntaxNode::HyphenationCharacter,input, i0...index, s0)
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
       r0.extend(HyphenationCharacter0)
     else
       @index = i0

@@ -123,7 +123,7 @@ class String
          downcase
   end
 
-  def camel_case
+  def camelcase
   return self if self !~ /_/ && self =~ /[A-Z]+.*/
   split('_').map{|e| e.capitalize}.join
   end

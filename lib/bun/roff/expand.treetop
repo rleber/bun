@@ -155,13 +155,13 @@ grammar RoffInput
 	rule insertion_character
 		# Allows Roff to change or disable the insertion character
 		# TODO Is class reference necessary?
-		. &{|nodes| nodes.last.text_value == roff.insert_character } <Bun::Roff::SyntaxNode::InsertionCharacter>
+		. &{|nodes| nodes.last.text_value == roff.insert_character }
 	end
 
 	rule hyphenation_character
 		# Allows Roff to change or disable the hyphenation character
 		# TODO Is class reference necessary?
-		. &{|nodes| nodes.last.text_value == roff.hyphenation_character } <Bun::Roff::SyntaxNode::HyphenationCharacter>
+		. &{|nodes| nodes.last.text_value == roff.hyphenation_character }
 	end
 
 	rule whitespace
