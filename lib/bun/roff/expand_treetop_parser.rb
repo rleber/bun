@@ -8,10 +8,8 @@
 # This grammar is finicky; mess with it at your peril
 
 # Future enhancement:
-#   - Recognize .requests
 #   - Set value of numbers to integer value
 #   - Store position range
-#   - Recognize trailing sentence endings?
 
 module RoffInput
   include Treetop::Runtime
@@ -149,7 +147,7 @@ module RoffInput
 
   module RequestWord1
   		def expand
-  			[{type: :request_word, value: text_value}]
+  			[{type: :request_word, text: text_value, interval: interval, value: word.expand[0][:value]}]
 			end
   end
 
@@ -332,7 +330,7 @@ module RoffInput
 
   module Paren0
 			def expand
-				[{type: :other, value: text_value}]
+				[{type: :other, text: text_value, interval: interval, value: text_value}]
 			end
   end
 
@@ -408,7 +406,14 @@ module RoffInput
 
   module QuotedString1
     	def expand
-    		[{type: :quoted_string, value: text_value}]
+    		[
+    			{
+    				type: :quoted_string, 
+    				text: text_value, 
+    				interval: interval, 
+    				value: eval(text_value.gsub('""','\"'))
+    			}
+    		]
     	end
   end
 
@@ -619,7 +624,7 @@ module RoffInput
 
   module RegisterReference1
 			def expand
-				res = [{type: :register_reference, value: word.expand[0][:value]}]
+				res = [{type: :register_reference, text: text_value, value: word.expand[0][:value], interval: interval}]
 			end
   end
 
@@ -673,7 +678,7 @@ module RoffInput
 
   module Number0
 			def expand
-				[{type: :number, value: text_value}]
+				[{type: :number, text: text_value, interval: interval, value: text_value.to_i}]
 			end
   end
 
@@ -720,7 +725,7 @@ module RoffInput
 
   module Word1
 	  	def expand
-	  		[{type: :word, value: text_value}]
+	  		[{type: :word, text: text_value, interval: interval, value: text_value}]
   		end
   end
 
@@ -799,7 +804,7 @@ module RoffInput
 
   module Parameter1
 			def expand
-	  		[{type: :parameter, value: text_value}]
+	  		[{type: :parameter, text: text_value, interval: interval, value: number.expand[0][:value]}]
   		end
   end
 
@@ -868,7 +873,7 @@ module RoffInput
 
   module Escape1
 			def expand
-				[{type: :escape, value: text_value}]
+				[{type: :escape, text: text_value, interval: interval, value: text_value[1]}]
 			end
   end
 
@@ -952,7 +957,7 @@ module RoffInput
 
   module Insertion1
     	def expand
-    		[{type: :insertion, value: nested_sentence.expand}]
+    		[{type: :insertion, text: text_value, value: nested_sentence.expand, interval: interval}]
   		end
   end
 
@@ -1017,7 +1022,7 @@ module RoffInput
 
   module ParenthesizedSentence1
 			def expand
-				[{type: :parenthesized_sentence, value: nested_sentence.expand}]
+				[{type: :parenthesized_sentence, text: text_value, value: nested_sentence.expand, interval: interval}]
 			end
   end
 
@@ -1290,7 +1295,7 @@ module RoffInput
 
   module InsertionCharacter0
 			def expand
-				[{type: :insertion_character, value: text_value}]
+				[{type: :insertion_character, text: text_value, interval: interval, value: text_value}]
 			end
   end
 
@@ -1321,7 +1326,7 @@ module RoffInput
 
   module HyphenationCharacter0
 			def expand
-				[{type: :hyphenation_character, value: text_value}]
+				[{type: :hyphenation_character, text: text_value, interval: interval, value: text_value}]
 			end
   end
 
@@ -1352,7 +1357,7 @@ module RoffInput
 
   module Whitespace0
 			def expand
-				[{type: :whitespace, value: text_value}]
+				[{type: :whitespace, text: text_value, interval: interval, value: text_value}]
 			end
   end
 
@@ -1396,7 +1401,7 @@ module RoffInput
 
   module EndOfLine0
 			def expand
-				[{type: :end_of_line, value: text_value}]
+				[{type: :end_of_line, text: text_value, interval: interval, value: text_value}]
 			end
   end
 
@@ -1427,7 +1432,7 @@ module RoffInput
 
   module Operator0
 			def expand
-				[{type: :operator, value: text_value}]
+				[{type: :operator, text: text_value, interval: interval, value: text_value}]
 			end
   end
 
@@ -1460,7 +1465,7 @@ module RoffInput
 
   module OtherCharacter1
   		def expand
-  			[{type: :other, value: text_value}]
+  			[{type: :other, text: text_value, interval: interval, value: text_value}]
 			end
   end
 

@@ -4,12 +4,6 @@
 
 # This grammar is finicky; mess with it at your peril
 
-# Future enhancement:
-#   - Recognize .requests
-#   - Set value of numbers to integer value
-#   - Store position range
-#   - Recognize trailing sentence endings?
-
 grammar RoffInput
 	rule input
   	content:(request / line) 1..1
@@ -33,7 +27,7 @@ grammar RoffInput
   	command_character word
   	{
   		def expand
-  			[{type: :request_word, value: text_value}]
+  			[{type: :request_word, text: text_value, interval: interval, value: word.expand[0][:value]}]
 			end
   	}
 	end
@@ -64,16 +58,24 @@ grammar RoffInput
 		('(' / ')') 1..1
 		{
 			def expand
-				[{type: :other, value: text_value}]
+				[{type: :other, text: text_value, interval: interval, value: text_value}]
 			end
 		}
 	end
 
+	# TODO Watch out for escapes
   rule quoted_string
     quote_character quoted_string_atom* quote_character
     {
     	def expand
-    		[{type: :quoted_string, value: text_value}]
+    		[
+    			{
+    				type: :quoted_string, 
+    				text: text_value, 
+    				interval: interval, 
+    				value: eval(text_value.gsub('""','\"'))
+    			}
+    		]
     	end
     }
   end
@@ -99,7 +101,7 @@ grammar RoffInput
 		'(' word ')'
 		{
 			def expand
-				res = [{type: :register_reference, value: word.expand[0][:value]}]
+				res = [{type: :register_reference, text: text_value, value: word.expand[0][:value], interval: interval}]
 			end
 		}
 	end
@@ -108,7 +110,7 @@ grammar RoffInput
 		[0-9]+
 		{
 			def expand
-				[{type: :number, value: text_value}]
+				[{type: :number, text: text_value, interval: interval, value: text_value.to_i}]
 			end
 		}
 	end
@@ -118,7 +120,7 @@ grammar RoffInput
 	  [a-zA-Z#%_] ([a-zA-Z0-9#%_] / hyphenation_character)*
 	  {
 	  	def expand
-	  		[{type: :word, value: text_value}]
+	  		[{type: :word, text: text_value, interval: interval, value: text_value}]
   		end
 	  }
   end
@@ -127,7 +129,7 @@ grammar RoffInput
 		parameter_character number
 		{
 			def expand
-	  		[{type: :parameter, value: text_value}]
+	  		[{type: :parameter, text: text_value, interval: interval, value: number.expand[0][:value]}]
   		end
 		}
 	end
@@ -141,7 +143,7 @@ grammar RoffInput
 		insertion_character !('(' / end_of_line) .
 		{
 			def expand
-				[{type: :escape, value: text_value}]
+				[{type: :escape, text: text_value, interval: interval, value: text_value[1]}]
 			end
 		}
 	end
@@ -150,7 +152,7 @@ grammar RoffInput
     insertion_character '(' nested_sentence ')' 
     {
     	def expand
-    		[{type: :insertion, value: nested_sentence.expand}]
+    		[{type: :insertion, text: text_value, value: nested_sentence.expand, interval: interval}]
   		end
     }
 	end
@@ -159,7 +161,7 @@ grammar RoffInput
 		'(' nested_sentence ')'
 		{
 			def expand
-				[{type: :parenthesized_sentence, value: nested_sentence.expand}]
+				[{type: :parenthesized_sentence, text: text_value, value: nested_sentence.expand, interval: interval}]
 			end
 		}
 	end
@@ -205,7 +207,7 @@ grammar RoffInput
 		'^'
 		{
 			def expand
-				[{type: :insertion_character, value: text_value}]
+				[{type: :insertion_character, text: text_value, interval: interval, value: text_value}]
 			end
 		}
 	end
@@ -215,7 +217,7 @@ grammar RoffInput
 		"`"
 		{
 			def expand
-				[{type: :hyphenation_character, value: text_value}]
+				[{type: :hyphenation_character, text: text_value, interval: interval, value: text_value}]
 			end
 		}
 	end
@@ -224,7 +226,7 @@ grammar RoffInput
 		( [ \t] )+ 
 		{
 			def expand
-				[{type: :whitespace, value: text_value}]
+				[{type: :whitespace, text: text_value, interval: interval, value: text_value}]
 			end
 		}
 	end
@@ -233,7 +235,7 @@ grammar RoffInput
 		"\n" 
 		{
 			def expand
-				[{type: :end_of_line, value: text_value}]
+				[{type: :end_of_line, text: text_value, interval: interval, value: text_value}]
 			end
 		}
 	end
@@ -242,7 +244,7 @@ grammar RoffInput
 		[-+*/<=>]
 		{
 			def expand
-				[{type: :operator, value: text_value}]
+				[{type: :operator, text: text_value, interval: interval, value: text_value}]
 			end
 		}
 	end
@@ -252,7 +254,7 @@ grammar RoffInput
   	     .) 1..1
   	{
   		def expand
-  			[{type: :other, value: text_value}]
+  			[{type: :other, text: text_value, interval: interval, value: text_value}]
 			end
   	}
 	end

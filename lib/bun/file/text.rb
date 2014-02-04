@@ -74,7 +74,7 @@ module Bun
         elsif (descriptor >> 27) & 0777 == 0177
           # raise DeletedLineFound, "Deleted line at #{line_offset}(0#{'%o'%line_offset})"
           deleted = true
-          line_length = word_count
+          line_length = descriptor.half_word(0)
         elsif (descriptor >> 27) & 0777 == 0
           line_length = descriptor.half_word(0)
         else # Sometimes, there is ASCII in the descriptor word; In that case, capture it, and look for terminating line descriptor
