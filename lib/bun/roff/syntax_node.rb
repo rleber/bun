@@ -1,9 +1,19 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+require 'lib/string'
+
 module Bun
   class Roff
     module SyntaxNode
+      class << self
+        def recognize(*tokens)
+          tokens.each do |token|
+            class_name = token.to_s.downcase.camelcase
+            const_set class_name, Class.new(Base)
+          end
+        end
+      end
       class Base < Treetop::Runtime::SyntaxNode
         def rule
           self.class.to_s.sub(/^.*::/,'').underscore.to_sym
@@ -18,19 +28,18 @@ module Bun
         end
       end
 
-      class RequestWord < Base; end
-      class Other < Base; end
-      class QuotedString < Base; end
-      class RegisterReference < Base; end
-      class Number < Base; end
-      class Word < Base; end
-      class Parameter < Base; end
-      class Escape < Base; end
-      class Insertion < Base; end
-      class ParenthesizedSentence < Base; end
-      class Whitespace < Base; end
-      class EndOfLine < Base; end
-      class Operator < Base; end
+      recognize :request_word
+      recognize :quoted_string
+      recognize :register_reference
+      recognize :number
+      recognize :word 
+      recognize :parameter 
+      recognize :escape 
+      recognize :insertion 
+      recognize :parenthesized_sentence
+      recognize :whitespace 
+      recognize :end_of_line
+      recognize :operator
     end
   end
 end
