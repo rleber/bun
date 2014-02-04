@@ -138,7 +138,7 @@ module RoffInput
   end
 
   module RequestWord0
-    def command_character
+    def control_character
       elements[0]
     end
 
@@ -149,7 +149,6 @@ module RoffInput
 
   module RequestWord1
   		def expand
-  			warn "roff page_number: #{roff.page_number.inspect}, year: #{roff.definitions['year'].inspect}"
   			[{type: :request_word, text: text_value, interval: interval, value: word.expand[0][:value]}]
 			end
   end
@@ -166,7 +165,7 @@ module RoffInput
     end
 
     i0, s0 = index, []
-    r1 = _nt_command_character
+    r1 = _nt_control_character
     s0 << r1
     if r1
       r2 = _nt_word
@@ -186,10 +185,13 @@ module RoffInput
     r0
   end
 
-  def _nt_command_character
+  module ControlCharacter0
+  end
+
+  def _nt_control_character
     start_index = index
-    if node_cache[:command_character].has_key?(index)
-      cached = node_cache[:command_character][index]
+    if node_cache[:control_character].has_key?(index)
+      cached = node_cache[:control_character][index]
       if cached
         cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
         @index = cached.interval.end
@@ -197,15 +199,35 @@ module RoffInput
       return cached
     end
 
-    if has_terminal?(".", false, index)
-      r0 = instantiate_node(SyntaxNode,input, index...(index + 1))
+    i0, s0 = index, []
+    if index < input_length
+      r1 = instantiate_node(SyntaxNode,input, index...(index + 1))
       @index += 1
     else
-      terminal_parse_failure(".")
+      terminal_parse_failure("any character")
+      r1 = nil
+    end
+    s0 << r1
+    if r1
+      i2 = index
+      r3 = lambda {|nodes| nodes.last.text_value == roff.control_character }.call(s0)
+      if r3
+        @index = i2
+        r2 = instantiate_node(SyntaxNode,input, index...index)
+      else
+        r2 = nil
+      end
+      s0 << r2
+    end
+    if s0.last
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0.extend(ControlCharacter0)
+    else
+      @index = i0
       r0 = nil
     end
 
-    node_cache[:command_character][start_index] = r0
+    node_cache[:control_character][start_index] = r0
 
     r0
   end
@@ -594,6 +616,9 @@ module RoffInput
     r0
   end
 
+  module QuoteCharacter0
+  end
+
   def _nt_quote_character
     start_index = index
     if node_cache[:quote_character].has_key?(index)
@@ -605,11 +630,31 @@ module RoffInput
       return cached
     end
 
-    if has_terminal?('"', false, index)
-      r0 = instantiate_node(SyntaxNode,input, index...(index + 1))
+    i0, s0 = index, []
+    if index < input_length
+      r1 = instantiate_node(SyntaxNode,input, index...(index + 1))
       @index += 1
     else
-      terminal_parse_failure('"')
+      terminal_parse_failure("any character")
+      r1 = nil
+    end
+    s0 << r1
+    if r1
+      i2 = index
+      r3 = lambda {|nodes| nodes.last.text_value == roff.quote_character }.call(s0)
+      if r3
+        @index = i2
+        r2 = instantiate_node(SyntaxNode,input, index...index)
+      else
+        r2 = nil
+      end
+      s0 << r2
+    end
+    if s0.last
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0.extend(QuoteCharacter0)
+    else
+      @index = i0
       r0 = nil
     end
 
@@ -843,6 +888,9 @@ module RoffInput
     r0
   end
 
+  module ParameterCharacter0
+  end
+
   def _nt_parameter_character
     start_index = index
     if node_cache[:parameter_character].has_key?(index)
@@ -854,11 +902,31 @@ module RoffInput
       return cached
     end
 
-    if has_terminal?('@', false, index)
-      r0 = instantiate_node(SyntaxNode,input, index...(index + 1))
+    i0, s0 = index, []
+    if index < input_length
+      r1 = instantiate_node(SyntaxNode,input, index...(index + 1))
       @index += 1
     else
-      terminal_parse_failure('@')
+      terminal_parse_failure("any character")
+      r1 = nil
+    end
+    s0 << r1
+    if r1
+      i2 = index
+      r3 = lambda {|nodes| nodes.last.text_value == roff.parameter_character }.call(s0)
+      if r3
+        @index = i2
+        r2 = instantiate_node(SyntaxNode,input, index...index)
+      else
+        r2 = nil
+      end
+      s0 << r2
+    end
+    if s0.last
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0.extend(ParameterCharacter0)
+    else
+      @index = i0
       r0 = nil
     end
 
@@ -1297,6 +1365,9 @@ module RoffInput
   end
 
   module InsertionCharacter0
+  end
+
+  module InsertionCharacter1
 			def expand
 				[{type: :insertion_character, text: text_value, interval: interval, value: text_value}]
 			end
@@ -1313,12 +1384,32 @@ module RoffInput
       return cached
     end
 
-    if has_terminal?('^', false, index)
-      r0 = instantiate_node(SyntaxNode,input, index...(index + 1))
-      r0.extend(InsertionCharacter0)
+    i0, s0 = index, []
+    if index < input_length
+      r1 = instantiate_node(SyntaxNode,input, index...(index + 1))
       @index += 1
     else
-      terminal_parse_failure('^')
+      terminal_parse_failure("any character")
+      r1 = nil
+    end
+    s0 << r1
+    if r1
+      i2 = index
+      r3 = lambda {|nodes| nodes.last.text_value == roff.insert_character }.call(s0)
+      if r3
+        @index = i2
+        r2 = instantiate_node(SyntaxNode,input, index...index)
+      else
+        r2 = nil
+      end
+      s0 << r2
+    end
+    if s0.last
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0.extend(InsertionCharacter0)
+      r0.extend(InsertionCharacter1)
+    else
+      @index = i0
       r0 = nil
     end
 
@@ -1328,6 +1419,9 @@ module RoffInput
   end
 
   module HyphenationCharacter0
+  end
+
+  module HyphenationCharacter1
 			def expand
 				[{type: :hyphenation_character, text: text_value, interval: interval, value: text_value}]
 			end
@@ -1344,12 +1438,32 @@ module RoffInput
       return cached
     end
 
-    if has_terminal?("`", false, index)
-      r0 = instantiate_node(SyntaxNode,input, index...(index + 1))
-      r0.extend(HyphenationCharacter0)
+    i0, s0 = index, []
+    if index < input_length
+      r1 = instantiate_node(SyntaxNode,input, index...(index + 1))
       @index += 1
     else
-      terminal_parse_failure("`")
+      terminal_parse_failure("any character")
+      r1 = nil
+    end
+    s0 << r1
+    if r1
+      i2 = index
+      r3 = lambda {|nodes| nodes.last.text_value == roff.hyphenation_character }.call(s0)
+      if r3
+        @index = i2
+        r2 = instantiate_node(SyntaxNode,input, index...index)
+      else
+        r2 = nil
+      end
+      s0 << r2
+    end
+    if s0.last
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0.extend(HyphenationCharacter0)
+      r0.extend(HyphenationCharacter1)
+    else
+      @index = i0
       r0 = nil
     end
 

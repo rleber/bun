@@ -224,7 +224,7 @@ module Bun
     # .ic CHARS
     # Set insertion characters (e.g. ^^ )
     def ic_command(chars='', *_)
-      @insert_characters, @insert_escape = get_escape(chars)
+      @insert_character, @insert_escape = get_escape(chars)
     end
 
     # .id NAME
@@ -396,10 +396,11 @@ module Bun
       @page_number = convert_relative_integer(@page_number, n, "page number") - 1 # Becaue it will be incremented
     end
 
+    # TODO Fix this syntax -- it isn't right (also qc, etc.)
     # .pc CHARS
     # Set parameter characters (e.g. @ )
     def pc_command(chars='', *_)
-      self.parameter_characters, self.parameter_escape = get_escape(chars)
+      self.parameter_character, self.parameter_escape = get_escape(chars)
     end
 
     # .pl N
@@ -412,7 +413,7 @@ module Bun
     # .qc CHARS
     # Set quote characters (e.g. " )
     def qc_command(chars='', *_)
-      @quote_characters, @quote_escape = get_escape(chars)
+      @quote_character, @quote_escape = get_escape(chars)
     end
 
     # .show TYPE NAME

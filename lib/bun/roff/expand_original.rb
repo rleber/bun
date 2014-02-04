@@ -17,14 +17,14 @@ module Bun
       if (self.expand_parameters || options[:expand_parameters]) \
           && (options[:expand_parameters]!=false) \
           && macro_arguments
-        line = expand_item(line, parameter_characters, parameter_pattern, parameter_escape_pattern) do |match|
+        line = expand_item(line, parameter_character, parameter_pattern, parameter_escape_pattern) do |match|
           changes += 1
           macro_arguments[(match[1..-1].to_i)-1]
         end
       end
       if (self.expand_substitutions || options[:expand_substitutions]) \
           && options[:expand_substitutions]!=false
-        line = expand_item(line, @insert_characters, insert_pattern, insert_escape_pattern) do |match|
+        line = expand_item(line, @insert_character, insert_pattern, insert_escape_pattern) do |match|
           v = value_of(match[2..-2])
           if v.nil?
             match
@@ -34,7 +34,7 @@ module Bun
           end
         end
       end
-      line = expand_item(line, @insert_characters, page_number_pattern, insert_escape_pattern) do |match|
+      line = expand_item(line, @insert_character, page_number_pattern, insert_escape_pattern) do |match|
         changes += 1
         page_number.to_s
       end
@@ -46,11 +46,11 @@ module Bun
     end
 
     def insert_pattern
-      substitution_pattern(@insert_characters, @insert_escape, /\(([^)]*)\)/)
+      substitution_pattern(@insert_character, @insert_escape, /\(([^)]*)\)/)
     end
 
     def page_number_pattern
-      substitution_pattern(@insert_characters, @insert_escape, /\(#{Regexp.escape(PAGE_NUMBER_CHARACTER)}\)/)
+      substitution_pattern(@insert_character, @insert_escape, /\(#{Regexp.escape(PAGE_NUMBER_CHARACTER)}\)/)
     end
 
     def insert_escape_pattern
@@ -58,7 +58,7 @@ module Bun
     end
 
     def parameter_pattern
-      substitution_pattern(parameter_characters, parameter_escape, /(\d+)/)
+      substitution_pattern(parameter_character, parameter_escape, /(\d+)/)
     end
 
     def parameter_escape_pattern

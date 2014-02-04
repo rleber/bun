@@ -27,13 +27,13 @@ module Bun
     attr_accessor :control_character
     attr_accessor :hyphenation_character
     attr_accessor :hyphenation_mode
-    attr_accessor :parameter_characters
+    attr_accessor :parameter_character
     attr_accessor :parameter_escape
     attr_accessor :expand_parameters
     attr_accessor :expand_substitutions
-    attr_accessor :insert_characters
+    attr_accessor :insert_character
     attr_accessor :insert_escape
-    attr_accessor :quote_characters
+    attr_accessor :quote_character
     attr_accessor :quote_escape
     attr_accessor :definitions
     attr_accessor :summary
@@ -90,11 +90,11 @@ module Bun
       @control_character = '.'
       @hyphenation_character = ''
       @hyphenation_mode = 
-      @parameter_characters = @parameter_escape = ''
+      @parameter_character = @parameter_escape = ''
       @expand_parameters = true
       @expand_substitutions = true
-      @insert_characters = @insert_escape = ''
-      @quote_characters = @quote_escape = ''
+      @insert_character = @insert_escape = ''
+      @quote_character = @quote_escape = ''
       @definitions = {}
       set_time
       @context_stack = [BaseContext.new(self)]
@@ -225,7 +225,7 @@ module Bun
     context_attr_accessor :expanded_line_number
     context_attr_accessor :command
     context_attr_accessor :command_arguments
-    context_attr_accessor :parameter_characters
+    context_attr_accessor :parameter_character
     context_attr_accessor :parameter_escape
     context_attr_reader   :context_type
     context_attr_reader   :name
@@ -340,10 +340,10 @@ module Bun
     end
 
     def command_words(line)
-      if @quote_characters == ''
+      if @quote_character == ''
         line.split(/\s+/)
       else
-        q = Regexp.escape(@quote_characters)
+        q = Regexp.escape(@quote_character)
         words = line.scan(/(?:#{q}[^#{q}]*#{q}|\S+)+|\s+/).reject{|w| w=~/^\s+$/}
         words.map {|w| w=~/^#{q}([^#{q}]*)#{q}$/ ? $1 : w }
       end

@@ -31,7 +31,7 @@ module Bun
       end
 
       def copy_state(from, to)
-        to.parameter_characters = from.parameter_characters.to_s.dup
+        to.parameter_character = from.parameter_character.to_s.dup
         to.parameter_escape     = from.parameter_escape.to_s.dup
       end
 

@@ -15,6 +15,10 @@ class Treetop::Runtime::SyntaxNode
   end
 end
 
+class RoffInputParser < Treetop::Runtime::CompiledParser
+  attr_accessor :roff
+end
+
 module Bun
   class Roff
     class RoffInput < String
@@ -35,7 +39,11 @@ module Bun
     end
 
     def parser
-      @parser ||= RoffInputParser.new
+      unless @parser
+        @parser = RoffInputParser.new
+        @parser.roff = self
+      end
+      @parser
     end
   end
 end

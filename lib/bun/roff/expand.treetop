@@ -30,17 +30,17 @@ grammar RoffInput
 	end
 
 	rule request_word
-  	command_character word
+  	control_character word
   	{
   		def expand
-  			warn "roff page_number: #{roff.page_number.inspect}, year: #{roff.definitions['year'].inspect}"
   			[{type: :request_word, text: text_value, interval: interval, value: word.expand[0][:value]}]
 			end
   	}
 	end
 
-	rule command_character
-		"."
+	rule control_character
+		# Allows roff to selectively change (or even disable) the control character
+		. &{|nodes| nodes.last.text_value == roff.control_character }
 	end
 
 	rule line
@@ -101,7 +101,8 @@ grammar RoffInput
 
 	# For future enhancement: Roff lets you change the quote character
   rule quote_character
-  	'"'
+		# Allows roff to selectively change (or even disable) the quote character
+		. &{|nodes| nodes.last.text_value == roff.quote_character }
   end
 
 	rule register_reference
@@ -141,9 +142,9 @@ grammar RoffInput
 		}
 	end
 
-	# For future enhancement: Roff lets you change the parameter control character
 	rule parameter_character
-	  '@'
+		# Allows Roff to change or disable the parameter control character
+		. &{|nodes| nodes.last.text_value == roff.parameter_character }
 	end
 
 	rule escape
@@ -209,9 +210,9 @@ grammar RoffInput
 		}
 	end
 
-	# For future enhancement: Roff lets you change the insertion control character
 	rule insertion_character
-		'^'
+		# Allows Roff to change or disable the insertion character
+		. &{|nodes| nodes.last.text_value == roff.insert_character }
 		{
 			def expand
 				[{type: :insertion_character, text: text_value, interval: interval, value: text_value}]
@@ -219,9 +220,9 @@ grammar RoffInput
 		}
 	end
 
-	# For future enhancement: Roff doesn't automatically enable this, and allows you to change it
 	rule hyphenation_character
-		"`"
+		# Allows Roff to change or disable the hyphenation character
+		. &{|nodes| nodes.last.text_value == roff.hyphenation_character }
 		{
 			def expand
 				[{type: :hyphenation_character, text: text_value, interval: interval, value: text_value}]
