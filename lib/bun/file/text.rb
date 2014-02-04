@@ -72,7 +72,7 @@ module Bun
         if descriptor == eof_marker
           return {:status=>:eof, :start=>line_offset, :finish=>data.size-1, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
         elsif (descriptor >> 27) & 0777 == 0177
-          raise DeletedLineFound, "Deleted line at #{line_offset}(0#{'%o'%line_offset})"
+          # raise DeletedLineFound, "Deleted line at #{line_offset}(0#{'%o'%line_offset})"
           deleted = true
           line_length = word_count
         elsif (descriptor >> 27) & 0777 == 0
