@@ -40,6 +40,8 @@ module Bun
       recognize :whitespace 
       recognize :end_of_line
       recognize :operator
+      recognize :sentence_ending
+      recognize :other
     end
   end
 end

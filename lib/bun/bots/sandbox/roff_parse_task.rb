@@ -11,7 +11,6 @@ def roff_parse
     break if line=='' || line=='exit'
     if (res = roff.ingest(line))
       puts res.inspect
-      puts res.parse.inspect
     end
   end
 end
