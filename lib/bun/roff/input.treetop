@@ -6,7 +6,7 @@
 #   http://whitequark.org/blog/2011/09/08/treetop-typical-errors/
 
 # Compile using:
-#   tt lib/bun/roff/parse.treetop -o lib/bun/roff/parse_treetop_parser.rb
+#   tt lib/bun/roff/input.treetop -o lib/bun/roff/treetop_parser.rb
 
 # This grammar is finicky; mess with it at your peril
 

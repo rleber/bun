@@ -7,7 +7,7 @@
 #   http://thingsaaronmade.com/blog/a-quick-intro-to-writing-a-parser-using-treetop.html
 
 require 'treetop'
-require 'lib/bun/roff/expand_treetop_parser'
+require 'lib/bun/roff/treetop_parser'
 
 class Treetop::Runtime::SyntaxNode
   def roff
