@@ -17,7 +17,7 @@ module Bun
         parser.failure_reason =~ /^(Expected .+) at line \d+, (.+) after/m
         expectation = $1
         location = $2
-        err "!Parse error: #{expectation.gsub("\n", '\\n')} at #{location}:\n    #{line}\n    #{' ' * (parser.failure_column - 1)}^"
+        warn "!Parse error: #{expectation.gsub("\n", '\\n')} at #{location}:\n    #{line}\n    #{' ' * (parser.failure_column - 1)}^"
       end
       tree
     end

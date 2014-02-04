@@ -12,7 +12,7 @@
 
 grammar RoffInput
 	rule input
-  	content:(request / line) end_of_line
+  	content:(request / line) 1..1
   	{
   		def expand
   			content.elements.first.expand
@@ -43,10 +43,10 @@ grammar RoffInput
 	end
 
 	rule line
-		sentence_part*
+		content:(sentence_part*) end_of_line
 		{
 			def expand
-				elements.flat_map{|e| e.expand}
+				content.elements.flat_map{|e| e.expand}
 			end
 		}
 	end
@@ -99,7 +99,7 @@ grammar RoffInput
 		'(' word ')'
 		{
 			def expand
-				[{type: :register_reference, value: word.expand[0][:value]}]
+				res = [{type: :register_reference, value: word.expand[0][:value]}]
 			end
 		}
 	end
@@ -192,7 +192,7 @@ grammar RoffInput
 	end
 
 	rule nested_sentence_atom
-		(whitespace / quoted_string / number / word / parameter / escape / insertion ) 1..1
+		(whitespace / quoted_string / number / word / parameter / escape / insertion / operator ) 1..1
 		{
 			def expand
 				elements.first.expand

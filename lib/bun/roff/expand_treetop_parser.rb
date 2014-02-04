@@ -24,10 +24,6 @@ module RoffInput
     def content
       elements[0]
     end
-
-    def end_of_line
-      elements[1]
-    end
   end
 
   module Input1
@@ -48,24 +44,37 @@ module RoffInput
     end
 
     i0, s0 = index, []
-    i1 = index
-    r2 = _nt_request
-    if r2
-      r1 = r2
-    else
-      r3 = _nt_line
+    s1, i1 = [], index
+    loop do
+      i2 = index
+      r3 = _nt_request
       if r3
-        r1 = r3
+        r2 = r3
       else
-        @index = i1
-        r1 = nil
+        r4 = _nt_line
+        if r4
+          r2 = r4
+        else
+          @index = i2
+          r2 = nil
+        end
+      end
+      if r2
+        s1 << r2
+      else
+        break
+      end
+      if s1.size == 1
+        break
       end
     end
-    s0 << r1
-    if r1
-      r4 = _nt_end_of_line
-      s0 << r4
+    if s1.size < 1
+      @index = i1
+      r1 = nil
+    else
+      r1 = instantiate_node(SyntaxNode,input, i1...index, s1)
     end
+    s0 << r1
     if s0.last
       r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
       r0.extend(Input0)
@@ -201,8 +210,18 @@ module RoffInput
   end
 
   module Line0
+    def content
+      elements[0]
+    end
+
+    def end_of_line
+      elements[1]
+    end
+  end
+
+  module Line1
 			def expand
-				elements.flat_map{|e| e.expand}
+				content.elements.flat_map{|e| e.expand}
 			end
   end
 
@@ -217,17 +236,30 @@ module RoffInput
       return cached
     end
 
-    s0, i0 = [], index
+    i0, s0 = index, []
+    s1, i1 = [], index
     loop do
-      r1 = _nt_sentence_part
-      if r1
-        s0 << r1
+      r2 = _nt_sentence_part
+      if r2
+        s1 << r2
       else
         break
       end
     end
-    r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
-    r0.extend(Line0)
+    r1 = instantiate_node(SyntaxNode,input, i1...index, s1)
+    s0 << r1
+    if r1
+      r3 = _nt_end_of_line
+      s0 << r3
+    end
+    if s0.last
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0.extend(Line0)
+      r0.extend(Line1)
+    else
+      @index = i0
+      r0 = nil
+    end
 
     node_cache[:line][start_index] = r0
 
@@ -587,7 +619,7 @@ module RoffInput
 
   module RegisterReference1
 			def expand
-				[{type: :register_reference, value: word.expand[0][:value]}]
+				res = [{type: :register_reference, value: word.expand[0][:value]}]
 			end
   end
 
@@ -1220,8 +1252,13 @@ module RoffInput
                   if r8
                     r1 = r8
                   else
-                    @index = i1
-                    r1 = nil
+                    r9 = _nt_operator
+                    if r9
+                      r1 = r9
+                    else
+                      @index = i1
+                      r1 = nil
+                    end
                   end
                 end
               end
