@@ -155,11 +155,16 @@ module Bun
     end
 
     def value_of(name)
+      name = name.value unless name.is_a?(String)
       defn = @definitions[name]
       return nil unless defn
-      v = defn[:lines].join("\n")
-      if defn[:format]
-        v = merge(right_justify_text(v.to_s, defn[:format].size), defn[:format])
+      if defn[:data_format] == :number
+        v = defn[:value].to_s
+        if defn[:format]
+          v = merge(right_justify_text(v.to_s, defn[:format].size), defn[:format])
+        end
+      else
+        v = defn[:lines].join("\n")
       end
       v
     end
@@ -213,7 +218,7 @@ module Bun
     end
 
     def context_for_register(register, *arguments)
-      MacroContext.new(self, register: register, name: register.name, lines: register.lines, arguments: arguments)
+      RegisterContext.new(self, register: register, name: register.name, lines: register.lines, arguments: arguments)
     end
 
     context_attr_accessor :line_number

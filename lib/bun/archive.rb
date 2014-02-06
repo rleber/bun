@@ -556,9 +556,12 @@ module Bun
             new_file = group
             new_file += File.extname(file) unless File.extname(new_file)==File.extname(file)
             if conflict = File.conflicts?(new_file)
-              rel_conflict = relative_path(conflict)
-              rel_new_file = relative_path(new_file)
-              raise CompressConflictError, "Can't compact #{rel_file}=>#{rel_new_file}: conflict at #{rel_conflict}"
+              file_count = Dir[File.join(conflict, '**', '*')].count { |file| File.file?(file) }
+              if file_count > 1
+                rel_conflict = relative_path(conflict)
+                rel_new_file = relative_path(new_file)
+                raise CompressConflictError, "Can't compact #{rel_file}=>#{rel_new_file}: conflict at #{rel_conflict}"
+              end
             end
             warn "Compact #{rel_file} => #{rel_group}" unless options[:quiet]
             temp_file = group+".tmp"
@@ -579,9 +582,12 @@ module Bun
             rel_file = relative_path(file)
             rel_new_file = relative_path(new_file)
             if conflict = File.conflicts?(new_file)
-              rel_conflict = relative_path(conflict)
-              rel_new_file = relative_path(new_file)
-              raise CompressConflictError, "Can't compact #{rel_file}=>#{rel_new_file}: conflict at #{rel_conflict}"
+              file_count = Dir[File.join(conflict, '**', '*')].count { |file| File.file?(file) }
+              if file_count > 1
+                rel_conflict = relative_path(conflict)
+                rel_new_file = relative_path(new_file)
+                raise CompressConflictError, "Can't compact #{rel_file}=>#{rel_new_file}: conflict at #{rel_conflict}"
+              end
             end
             shell.mkdir_p(File.dirname(new_file))
             shell.cp(file, new_file)

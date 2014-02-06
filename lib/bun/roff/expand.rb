@@ -9,9 +9,10 @@ module Bun
       original_line = line.dup
       # TODO could move these and only change them when the characters do
       expanded_line = []
-      line.tokens.each do |token|
-        case token.type
-        when :insertion
+      toks = line.tokens.dup
+      while toks.size > 0
+        token = toks.shift
+        if token.type == :insertion
           if (self.expand_substitutions || options[:expand_substitutions]) \
               && options[:expand_substitutions]!=false
             # Expand insertion
@@ -23,23 +24,8 @@ module Bun
             register = call.shift
             syntax "Expected register name, found #{register.inspect}" unless register.type==:word
             defn = get_definition(register)
-            defn.invoke(*call)
-            debug "defn: #{defn.inspect}"
-
-            expanded_line += invoke(token)
+            toks = defn.invoke(*call) + toks
           end
-        when :parameter 
-          if (self.expand_parameters || options[:expand_parameters]) \
-              && (options[:expand_parameters]!=false) \
-              && register_arguments        
-              # Expand parameter
-            a = register_arguments[token.value-1]
-            expanded_line += parse(a.value.to_s) if a
-          else
-            expanded_line << token
-          end
-        when :escape
-          expanded_line << parse(token.value)
         else
           expanded_line << token
         end

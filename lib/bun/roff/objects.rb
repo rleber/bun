@@ -34,9 +34,28 @@ module Bun
     class Register < Thing
       # TODO Wrong approach: push the Register onto the stack of sources
       def invoke(*arguments)
-        register_context = roff.context_for_register(self, *arguments)
-        Roff.copy_state self, register_context
-        roff.push register_context
+        debug "defn: #{self.inspect}"
+        debug "data_type: #{self[:data_type].inspect}"
+        if self[:data_type] == :number
+          v = self[:value].to_s
+          if self[:format]
+            v = merge(right_justify_text(v.to_s, self[:format].size), self[:format])
+          end
+          [ParsedNode.new(:word, text: v, value: v, interval: self[:interval])]
+        else
+          register_context = roff.context_for_register(self, *arguments)
+          Roff.copy_state self, register_context
+          roff.push register_context
+          tokens = self[:lines].flatten.map do |token|
+            if token.type == :parameter 
+              arguments[token.value-1]
+            else
+              token
+            end
+          end
+          roff.pop
+          tokens
+        end
       end
     end
 
@@ -89,7 +108,7 @@ module Bun
     end
     class FileContext  < Context; end
     class TextContext  < Context; end
-    class MacroContext < Context
+    class RegisterContext < Context
       attr_accessor :arguments
       def initialize(roff, options={})
         super
