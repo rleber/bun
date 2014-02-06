@@ -5,20 +5,24 @@ module Bun
   class Roff
     class ParsedNode
       class << self
-        def create(type, tt)
+        def create_from_syntax_node(type, syntax_node)
+          create(type, text: syntax_node.text_value, interval: syntax_node.interval, syntax_node: syntax_node)
+        end
+
+        def create(type, options={})
           class_name = type.to_s.camelcase
           klass = const_defined?(class_name) ? const_get(class_name) : self
-          klass.new(type, tt)
+          klass.new(type, options)
         end
       end
 
-      attr_reader :tt, :type, :text, :interval
+      attr_reader :syntax_node, :type, :text, :interval
 
-      def initialize(type, tt)
+      def initialize(type, options={})
         @type = type
-        @tt = tt
-        @text = tt.text_value
-        @interval = tt.interval
+        @syntax_node = options[:syntax_node]
+        @text = options[:text]
+        @interval = options[:interval]
       end
 
       def inspect
@@ -30,7 +34,7 @@ module Bun
       end
 
       def compressed
-        value
+        self
       end
 
       class RequestWord < ParsedNode
@@ -70,8 +74,20 @@ module Bun
       end    
 
       class Nested < ParsedNode
+        attr_accessor :nested_sentence
+        def initialize(type, options={})
+          super
+          self.nested_sentence = if options[:nested_sentence]
+            options[:nested_sentence]
+          elsif options[:syntax_node]
+            options[:syntax_node].nested_sentence.parse
+          else
+            raise ArgumentError, "Must specify :nested_sentence or :syntax_node option"
+          end
+        end
+
         def value
-          tt.nested_sentence.parse
+          nested_sentence
         end
 
         def inspect
@@ -93,7 +109,9 @@ module Bun
       end    
 
       class EndOfLine < Whitespace
-        # TODO Improve this to look for end of sentence on value?
+        def value
+          ' '
+        end
       end    
     end
   end

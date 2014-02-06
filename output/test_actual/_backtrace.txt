@@ -1,0 +1,10 @@
+rm -rf data/test/archive/compress
+rm -rf output/test_actual/compress
+rm -rf output/test_actual/compress_files.txt
+rm -rf output/test_actual/compress_files_before.txt
+rm -rf output/test_actual/compress_stdout.txt
+rm -rf output/test_actual/compress_stderr.txt
+cp -r data/test/archive/compress_init data/test/archive/compress
+find data/test/archive/compress -print >output/test_actual/compress_files_before.txt
+bun compress data/test/archive/compress output/test_actual/compress                 2>output/test_actual/compress_stderr.txt >output/test_actual/compress_stdout.txt
+find output/test_actual/compress -print >output/test_actual/compress_files.txt

@@ -1,0 +1,2 @@
+ERROR: bun translate was called with arguments ["/Users/richard/watbun_archive", "/Users/richard/watbun_work", "/Users/richard/.watbun_compress.txt"]
+Usage: "bun translate [OPTIONS] FROM TO".

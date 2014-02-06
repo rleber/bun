@@ -2,8 +2,9 @@
 Odd       Head          1
 
 1234567890123456789012345
-Foo (expecting 0): ^
-(foo)  Now  is   the
+Foo
+[word("expecting"), whitespace(" "), number("0")]
+: ^foo) Now  is  the
 time  for  everyone,
 including  all  good
 men, to go  down  to

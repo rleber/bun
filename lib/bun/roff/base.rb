@@ -37,9 +37,9 @@ module Bun
     attr_accessor :quote_escape
     attr_accessor :definitions
     attr_accessor :summary
-    attr_accessor :unimplemented_commands
-    attr_accessor :processed_commands
-    attr_accessor :command_count
+    attr_accessor :unimplemented_requests
+    attr_accessor :processed_requests
+    attr_accessor :request_count
     attr_accessor :merge_string
     attr_accessor :pending_actions
     attr_accessor :traps
@@ -55,7 +55,7 @@ module Bun
     DEFAULT_PAGE_LENGTH = 66
     DEFAULT_PAGE_HEADERS = [[],[]]
     DEFAULT_PAGE_FOOTERS = [[],[]]
-    IGNORED_COMMANDS = %w{bf fs hc hy nc nd no po pw uc}
+    IGNORED_REQUESTS = %w{bf fs hc hy nc nd no po pw uc}
     PAGE_NUMBER_CHARACTER = '%'
     PAGE_NUMBER_ESCAPE = '%%'
     HYPHEN = '-'
@@ -98,9 +98,9 @@ module Bun
       @definitions = {}
       set_time
       @context_stack = [BaseContext.new(self)]
-      @unimplemented_commands = []
-      @processed_commands = []
-      @command_count = 0
+      @unimplemented_requests = []
+      @processed_requests = []
+      @request_count = 0
       @merge_string = ''
       @pending_actions = []
       @traps = []
@@ -221,10 +221,11 @@ module Bun
     context_attr_accessor :overridden_line_number
     context_attr_accessor :line
     context_attr_accessor :expanded_lines
+    context_attr_accessor :parsed_line
     context_attr_accessor :expanded_line
     context_attr_accessor :expanded_line_number
-    context_attr_accessor :command
-    context_attr_accessor :command_arguments
+    context_attr_accessor :request
+    context_attr_accessor :request_arguments
     context_attr_accessor :parameter_character
     context_attr_accessor :parameter_escape
     context_attr_reader   :context_type
@@ -234,6 +235,21 @@ module Bun
     context_attr_reader   :macro
     context_attr_reader   :arguments
     context_attr_reader   :at_bottom
+
+    def split_parsed_lines(parsed_text)
+      split_tokens_at(parsed_text) {|t| t.type==:end_of_line}
+    end
+
+    def split_tokens_at(parsed_text, &blk)
+      lines = []
+      parsed_text.each do |token|
+        lines << [] if lines.size == 0
+        lines.last << token
+        lines << [] if yield(token)
+      end
+      lines.pop if parsed_text.size > 0 && parsed_text.last.type == :end_of_line
+      lines
+    end
 
     def split_lines(text)
       lines = text.to_s.split("\n")
@@ -246,7 +262,8 @@ module Bun
       push_output_file to
       self.next_line_number = 1
       while (self.line = get_line)
-        self.expanded_lines = expand(self.line)
+        self.parsed_line = parse(self.line)
+        self.expanded_lines = expand(self.parsed_line)
         expanded_lines.each.with_index do |expanded_line, i|
           self.expanded_line_number = i+1
           self.expanded_line = expanded_line
@@ -257,6 +274,8 @@ module Bun
       force_break
       end_page if @pages_built > 0
     # Cause exceptions to be accompanied by a stack trace
+    rescue BadExpression => e
+      log e
     rescue => e
       log "!Exception occurred: #{e}"
       show_stack_trace('    ')
@@ -267,8 +286,8 @@ module Bun
     end
 
     def process_line(line)
-      if parse_command(line)
-        process_command
+      if parse_request(line)
+        process_request
       else
         output_line(line)
       end
@@ -328,41 +347,31 @@ module Bun
       line
     end
 
-    def parse_command(line)
-      words = command_words(line)
-      if !@literal && words.size>0 && words[0]=~/^#{Regexp.escape(@control_character)}\S+/
-        self.command = words.shift[/^#{Regexp.escape(@control_character)}(.*)/,1]
-        self.command_arguments = words 
-        self.command
+    def parse_request(line)
+      words = request_words(line)
+      if words.size>0 && words[0].type == :request_word
+        self.request = words.shift
+        self.request_arguments = words 
+        self.request
       else
-        self.command = self.command_arguments = nil
+        self.request = self.request_arguments = nil
       end
     end
 
-    def command_words(line)
-      if @quote_character == ''
-        line.split(/\s+/)
-      else
-        q = Regexp.escape(@quote_character)
-        words = line.scan(/(?:#{q}[^#{q}]*#{q}|\S+)+|\s+/).reject{|w| w=~/^\s+$/}
-        words.map {|w| w=~/^#{q}([^#{q}]*)#{q}$/ ? $1 : w }
-      end
+    def request_words(line)
+      line.map{|word| word.compressed }.compact
     end
 
-    def command_escape(string)
-      string=~/\s/ ? string.inspect : string
-    end
-
-    def process_command
-      write_trace "Execute", [@control_character+command,*(command_arguments.map{|a| command_escape(a)})].join(' ')
-      self.command_count += 1
+    def process_request
+      write_trace "Execute", [request.text,*(request_arguments.map{|a| a.text })].join(' ')
+      self.request_count += 1
       self.overridden_line_number = nil
-      meth = "#{command}_command"
+      meth = "#{request.value}_request"
       if self.respond_to?(meth)
-        # send_arguments = command_arguments[0,self.method(meth).arity.abs]
-        send_arguments = command_arguments
+        # send_arguments = request_arguments[0,self.method(meth).arity.abs]
+        send_arguments = request_arguments
         begin
-          self.processed_commands << command
+          self.processed_requests << request
           self.send(meth, *send_arguments)
         rescue ArgumentError => e
           if !@debug && e.to_s =~ /wrong number of arguments (\(\d+\s+for\s+\d+\))/
@@ -370,10 +379,10 @@ module Bun
           else
             raise
           end
-          syntax "Wrong number of arguments#{detail} (Arguments #{command_arguments.inspect})"
+          syntax "Wrong number of arguments#{detail} (Arguments #{request_arguments.inspect})"
         end
-      elsif m = macro_definition(command)
-        m.invoke(*command_arguments)
+      elsif m = macro_definition(request)
+        m.invoke(*request_arguments)
       else
         unimplemented
       end
@@ -381,10 +390,13 @@ module Bun
     end
 
     def line_part_spec
-      spec = self.line[/^\.\w+\s+(.*)$/,1].strip
-      ((spec.size==0 ? [] : spec[1..-1].split(spec[0])) + ['', '', ''])[0,3] \
-                .map{|p| expand(p)} \
-                .flatten
+      line_parts = expanded_line
+      line_parts.shift
+      line_parts.shift while line_parts.size > 0 && line_parts.first.type==:whitespace
+      delimiter = line_parts.first
+      parts = split_tokens_at(line_parts) {|t| t.type==delimiter.type && t.value == delimiter.value}
+      parts.shift
+      (parts.map{|part| part[0..-2].map{|t| t.value}.join } + ['', '', ''])[0,3] \
     end
 
     def evaluate_condition(condition)
@@ -424,22 +436,22 @@ module Bun
       end
     end
 
-    def write_trace(flag="Execute", expanded_command)
-      position, original_command = stack_trace.first.split(/\s*:\s*/)
-      out = if expanded_command == original_command
-        expanded_command
+    def write_trace(flag="Execute", expanded_request)
+      position, original_request = stack_trace.first.split(/\s*:\s*/)
+      out = if expanded_request == original_request
+        expanded_request
       else
-        "#{expanded_command} <= #{original_command}"
+        "#{expanded_request} <= #{original_request}"
       end
       info "*#{'%-25s'%flag} #{'%-60s' % out} @ #{position}"
     end
 
     def unimplemented
-      unimplemented_commands << command
+      unimplemented_requests << request
     end
 
     def log(msg)
-      puts msg 
+      warn msg 
     end
 
     def info(msg)
@@ -470,30 +482,97 @@ module Bun
         ['Line', context.line_number.to_s, 'in', context.context_type.to_s, context.path, context.name, ':', context.line].compact.join(' ')
       end.compact
       if stacked? && expanded_lines && expanded_lines.size > 1
-        trace.unshift ['Line', expanded_line_number, 'in', 'command expansion', ':', expanded_line].join(' ')
+        trace.unshift ['Line', expanded_line_number, 'in', 'request expansion', ':', expanded_line].join(' ')
       end
       trace
     end
 
-    def convert_relative_integer(base_value, arg, name)
-      v = convert_integer(arg, name)
-      case arg
-      when /^[+-]/
-        base_value + v
+    def convert_expression(base_value, *args)
+      tokens = args.shift
+      return tokens if tokens.is_a?(Integer) # Allow easy default value setting
+      tokens = [tokens] unless tokens.is_a?(Array)
+      label = args.shift || "?"
+      ensure_not_end_of_line tokens, BadExpression, "Empty expression in #{label}"
+      if tokens.first.type == :operator
+        value = base_value
       else
-        v
+        value = get_expression_value(tokens.first)
+        tokens.shift
+      end
+      while tokens.size >0 && tokens.first.type != :end_of_line
+        input_error BadExpression, "Expecting operator in #{label}, found #{tokens.first.type} #{tokens.first.text.inspect}", at: tokens.first.interval.begin \
+          unless tokens.first.type==:operator
+        operator = tokens.shift
+        ensure_not_end_of_line tokens, BadExpression, "Empty expression in #{label}"
+        value = perform_operator(value, operator, get_expression_value(tokens.first, label), label)
+        tokens.shift
+      end
+      value
+    end
+
+    def get_expression_value(arg, label="?")
+      case arg.type
+      when :number
+        arg.value
+      when :quoted_string
+        arg.value.size
+      else
+        raise BadExpression, "Invalid operand in #{label}: #{arg.text}"
+      end
+    end
+
+    def perform_operator(value1, operator, value2, label="?")
+      case operator.value.to_s
+      when "+"
+        value1 + value2
+      when "-"
+        value1 - value2
+      when "*"
+        value1 * value2
+      when "/"
+        value1 / value2
+      else
+        input_error BadExpression, "Unexpected operator in #{label}: #{operator}", at: operator.interval.begin
       end
     end
 
     def convert_integer(arg, name)
-      err "!#{name} must be an integer" unless arg.to_s=~/^[+-]?\d+$/
-      arg.to_i
-    end
-
-    def convert_positive_integer(arg, name)
-      i = convert_integer(arg, name)
+      return arg if arg.is_a?(Integer) # Allow easy default value setting
+      err "!#{name} must be an integer" unless arg.type == :number
+      i = arg.value
       err "!#{name} can't be negative" if i<0
       i 
+    end
+
+    def ensure_not_end_of_line(*args)
+      tokens = args.shift
+      if tokens.size == 0
+        at = self.line.size
+      elsif tokens.first.type == :end_of_line
+        at = tokens.first.interval.begin 
+      else
+        return
+      end
+      input_error(*args, at: at)
+    end
+
+    def input_error(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      case args.size
+      when 0
+        klass = RuntimeError
+        msg = ""
+      when 1
+        klass = RuntimeError
+        msg = args[0]
+      else
+        klass = args[0]
+        msg = args[1]
+      end
+      msg += "\n" if msg.size>0
+      msg += "    #{line}"
+      msg += "\n    #{' '*options[:at]}^" if options[:at]
+      raise klass, msg
     end
 
     def decode_tab_stops(*tabs)
@@ -570,49 +649,50 @@ module Bun
 
     # Encapsulates a common pattern: look for an .en with a matching flag
     def look_for_en(description, flag, options={}, &blk)
-      look_for_command('en', description, flag, options, &blk)
+      look_for_request('en', description, flag, options, &blk)
     end
 
     # Encapsulates a common pattern: look for an .el with a matching flag
     def look_for_el(description, flag, options={}, &blk)
-      look_for_command('el', description, flag, options, &blk)
+      look_for_request('el', description, flag, options, &blk)
     end
 
     # Encapsulates a common pattern: look for an .el or .en with a matching flag
     def look_for_el_or_en(description, flag, options={}, &blk)
-      look_for_command(/^el|en$/, description, flag, options, &blk)
+      look_for_request(/^el|en$/, description, flag, options, &blk)
     end
     alias_method :look_for_en_or_el, :look_for_el_or_en
 
-    def look_for_command(pattern, description, flag, options={}, &blk)
+    def look_for_request(pattern, description, flag, options={}, &blk)
       flag = $1 if flag=~/^\((.*)\)$/
       expand_substitutions = options[:expand_substitutions]==true || (options[:expand_substitutions].nil? && self.expand_substitutions)
       while l = get_line do
+        parsed_line = parse(l)
         write_trace description, l if description
         if options[:no_expand]
-          lines = [l]
+          lines = [parsed_line]
         else
-          lines = expand(l, expand_substitutions: expand_substitutions)
+          lines = expand(parsed_line, expand_substitutions: expand_substitutions)
         end
         # TODO What happens if we match on the first part of a multi-line?
         lines.each do |l2|
-          if parse_command(l2)
-            case command
+          if parse_request(l2)
+            case request
             when pattern # Do it this way, so pattern can be a string or regular expression
-              case command_arguments.size
+              case request_arguments.size
               when 0
-                syntax "Missing tag in .#{command}"
+                syntax "Missing tag in .#{request}"
               when 1
-                command_flag = command_arguments.first
+                request_flag = request_arguments.first
                 # Is this right?
-                command_flag = expand($1, expand_parameters: true, expand_substitutions: expand_substitutions)[0] if command_flag =~ /^\((.*)\)$/ 
-                if command_flag == flag
-                  self.command_count += 1
-                  return command
+                request_flag = expand($1, expand_parameters: true, expand_substitutions: expand_substitutions)[0] if request_flag =~ /^\((.*)\)$/ 
+                if request_flag == flag
+                  self.request_count += 1
+                  return request
                 end
                 yield(l2) if block_given?
               else
-                syntax "Extra arguments in .#{command}"
+                syntax "Extra arguments in .#{request}"
               end
             else
               yield(l2) if block_given?
@@ -640,39 +720,46 @@ module Bun
 
     def output_line(line)
       if self.fill
-        pieces = break_line(line)
-        return if pieces.size == 0
-        force_break if pieces.first =~ /^\s/
-        pieces.each do |piece|
-          put_piece(piece)
+        return if line.size == 0
+        force_break if line.first.type == :whitespace
+        line.each do |piece|
+          fill_piece(piece)
         end
-        @line_buffer << (pieces.last =~ /[\.!?:]$/ ? '  ' : ' ') # Extra space after line ends
       else
         force_break if @line_buffer.size > 0
-        self.line_buffer = [line] # Do it this way to force centering, translation, etc.
+        self.line_buffer = line.map{|piece| piece.value.to_s } # Do it this way to force centering, translation, etc.
         flush
       end
       invoke_pending_actions(line)
     end
 
-    def break_line(text)
-      text.rstrip.scan(/\w+|\s+|./).map {|piece| piece=~/^\s+$/ ? ' ' : piece }
-    end
+    LINE_ENDINGS = ['.', ':', '!', '?']
 
-    def put_piece(piece)
-      return if @line_buffer.size==0 && piece=~/^\s+$/ # Don't start lines with spaces
-      next_buffer = @line_buffer + [piece]
+    def fill_piece(piece)
+      case piece.type
+      when :whitespace
+        return if @line_buffer.size==0 # Don't start lines with spaces
+        chunk = ' '
+      when :end_of_line
+        return if @line_buffer.size==0 # Don't start lines with spaces
+        return if @line_buffer.last==' ' # Not necessary to add to spacing
+        chunk = LINE_ENDINGS.include?(@line_buffer.last) ? '  ' : ' '
+      else
+        chunk = piece.value.to_s 
+      end
+      next_buffer = @line_buffer + [chunk]
       next_buffer_size = next_buffer.join.size
       if next_buffer_size > net_line_length # Line overflow
-        if self.hyphenation_mode==0 || piece =~ /[^a-zA-Z]/
-          next_buffer = [piece]
+        if self.hyphenation_mode==0 || piece.type != :word
+          next_buffer = [chunk]
+        # TODO Check for hyphenation character
         else # Attempt to hyphenate
           minimum_suffix_size = next_buffer_size - net_line_length + HYPHEN.size
           hyphenation_suffix = self.hyphenator.sentence_suffix(next_buffer, minimum_suffix_size)
-          if hyphenation_suffix == '' || hyphenation_suffix == piece
-            next_buffer = [piece]
+          if hyphenation_suffix == '' || hyphenation_suffix == chunk
+            next_buffer = [chunk]
           else
-            @line_buffer << (piece[0...-(hyphenation_suffix.size)]+HYPHEN)
+            @line_buffer << (chunk[0...-(hyphenation_suffix.size)]+HYPHEN)
             next_buffer = [hyphenation_suffix]
           end
         end
@@ -707,11 +794,13 @@ module Bun
       justify = options[:justify]!=false && (options[:justify] || self.justify)
       unless @line_buffer.size == 0
         show_state if @debug
-        if justify
-          line = justify_line(@line_buffer)
-        elsif self.fill
-          trim_buffer @line_buffer
-          line = @line_buffer.join
+        if self.fill
+          if justify
+            line = justify_line(@line_buffer)
+          else
+            trim_buffer @line_buffer
+            line = @line_buffer.join
+          end
         elsif self.center
           trim_buffer @line_buffer
           line = center_buffer(@line_buffer)
@@ -781,6 +870,7 @@ module Bun
       trim_buffer buffer
       return '' if buffer.size == 0
       padding = net_line_length - buffer.join.size
+      return buffer.join if padding < 0
       spaces = buffer.select{|c| c=~/^\s+$/}.size
       return buffer.join if spaces==0
       pad1, remainder = padding.divmod(spaces)
@@ -832,9 +922,17 @@ module Bun
     end
 
     def trim_buffer(buffer)
+      left_trim_buffer buffer
+      right_trim_buffer buffer
+    end
+
+    def left_trim_buffer(buffer)
       while buffer.size>0 && buffer.first =~ /^\s*$/
         buffer.delete_at(0)
       end
+    end
+
+    def right_trim_buffer(buffer)
       while buffer.size>0 && buffer.last =~ /^\s*$/
         buffer.delete_at(-1)
       end
@@ -942,32 +1040,32 @@ module Bun
     end
 
     def put_line(line)
-      shell.puts(current_output_file, line)
+      shell.puts(current_output_file, line.rstrip)
     end
 
     def show_summary(indent=0)
-      unimplemented_commands = self.unimplemented_commands.uniq
-      processed_commands = self.processed_commands.uniq
-      noteworthy_unimplemented_commands = unimplemented_commands - IGNORED_COMMANDS
-      ignored_commands_implemented = IGNORED_COMMANDS & processed_commands
-      ignored_commands_not_encountered = IGNORED_COMMANDS - unimplemented_commands - ignored_commands_implemented
-      ignored_commands_encountered = IGNORED_COMMANDS - ignored_commands_not_encountered - ignored_commands_implemented
+      unimplemented_requests = self.unimplemented_requests.uniq
+      processed_requests = self.processed_requests.uniq
+      noteworthy_unimplemented_requests = unimplemented_requests - IGNORED_REQUESTS
+      ignored_requests_implemented = IGNORED_REQUESTS & processed_requests
+      ignored_requests_not_encountered = IGNORED_REQUESTS - unimplemented_requests - ignored_requests_implemented
+      ignored_requests_encountered = IGNORED_REQUESTS - ignored_requests_not_encountered - ignored_requests_implemented
 
       warn ''
       warn_with_indent "Roff Execution Summary:", indent
-      warn_with_indent "#{command_count} commands executed", indent+4
-      warn_with_indent "Unimplemented commands:       " + printable_list(noteworthy_unimplemented_commands.sort),
+      warn_with_indent "#{request_count} requests executed", indent+4
+      warn_with_indent "Unimplemented requests:       " + printable_list(noteworthy_unimplemented_requests.sort),
         indent+4 \
-        if noteworthy_unimplemented_commands.size > 0
-      warn_with_indent "Ignored commands encountered: " + printable_list(ignored_commands_encountered.uniq.sort),
+        if noteworthy_unimplemented_requests.size > 0
+      warn_with_indent "Ignored requests encountered: " + printable_list(ignored_requests_encountered.uniq.sort),
         indent+4  \
-        if ignored_commands_encountered.size > 0
-      warn_with_indent "Ignored commands implemented: " + printable_list(ignored_commands_implemented.uniq.sort),
+        if ignored_requests_encountered.size > 0
+      warn_with_indent "Ignored requests implemented: " + printable_list(ignored_requests_implemented.uniq.sort),
         indent+4  \
-        if ignored_commands_implemented.size > 0
-      warn_with_indent "Other ignored commands:       " + printable_list(ignored_commands_not_encountered.uniq.sort),
+        if ignored_requests_implemented.size > 0
+      warn_with_indent "Other ignored requests:       " + printable_list(ignored_requests_not_encountered.uniq.sort),
         indent+4  \
-        if ignored_commands_not_encountered.size > 0
+        if ignored_requests_not_encountered.size > 0
     end
 
     def printable_list(ary)

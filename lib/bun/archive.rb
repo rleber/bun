@@ -15,7 +15,7 @@ module Bun
     class DirectoryConflict < ArgumentError; end
     class TarError < RuntimeError; end
     class FileOverwriteError < RuntimeError; end
-
+    class CompressConflictError < RuntimeError; end
     
     class << self
       def enumerator_class
@@ -553,14 +553,19 @@ module Bun
           unless file == group
             rel_file = relative_path(file)
             rel_group = relative_path(group)
-            warn "Compact #{rel_file} => #{rel_group}" unless options[:quiet]
             new_file = group
             new_file += File.extname(file) unless File.extname(new_file)==File.extname(file)
+            if conflict = File.conflicts?(new_file)
+              rel_conflict = relative_path(conflict)
+              rel_new_file = relative_path(new_file)
+              raise CompressConflictError, "Can't compact #{rel_file}=>#{rel_new_file}: conflict at #{rel_conflict}"
+            end
+            warn "Compact #{rel_file} => #{rel_group}" unless options[:quiet]
             temp_file = group+".tmp"
             shell.mkdir_p(File.dirname(temp_file))
             shell.cp(file, temp_file)
             shell.rm_rf(file)
-            shell.rm_rf(group)
+            # shell.rm_rf(group)
             shell.cp(temp_file, new_file)
             shell.rm_rf(temp_file)
           end
@@ -571,11 +576,16 @@ module Bun
             suffix = ".v#{index+1}"
             new_file = group + suffix
             new_file += File.extname(file) unless File.extname(new_file)==File.extname(file)
+            rel_file = relative_path(file)
+            rel_new_file = relative_path(new_file)
+            if conflict = File.conflicts?(new_file)
+              rel_conflict = relative_path(conflict)
+              rel_new_file = relative_path(new_file)
+              raise CompressConflictError, "Can't compact #{rel_file}=>#{rel_new_file}: conflict at #{rel_conflict}"
+            end
             shell.mkdir_p(File.dirname(new_file))
             shell.cp(file, new_file)
             shell.rm_rf(file)
-            rel_file = relative_path(file)
-            rel_new_file = relative_path(new_file)
             warn "Move #{rel_file} => #{rel_new_file}" unless options[:quiet]
           end
           shell.rm_rf(group)

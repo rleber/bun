@@ -237,7 +237,7 @@ module RoffInput
 
   module Line1
 			def parse
-				content.elements.flat_map{|e| e.parse}
+				content.elements.flat_map{|e| e.parse} + end_of_line.parse
 			end
   end
 

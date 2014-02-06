@@ -20,11 +20,11 @@ module Bun
         end
 
         def create(type, tt)
-          Bun::Roff::ParsedNode.create(type, tt)
+          Bun::Roff::ParsedNode.create_from_syntax_node(type, tt)
         end
 
         def parse
-          [ Bun::Roff::ParsedNode.create(rule, self) ]
+          [ create(rule, self) ]
         end
       end
 

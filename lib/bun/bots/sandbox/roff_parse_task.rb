@@ -9,7 +9,7 @@ def roff_parse
     $stdout.write "> "
     line = $stdin.gets.chomp
     break if line=='' || line=='exit'
-    if (res = roff.ingest(line))
+    if (res = roff.parse(line))
       puts res.inspect
     end
   end

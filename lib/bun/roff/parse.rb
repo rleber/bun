@@ -30,12 +30,20 @@ module Bun
         s = super
         self.class.to_s.sub(/^.*::/,'') + s
       end
+
+      def to_a
+        Array.new(self)
+      end
+
+      def tokens
+        self.to_a
+      end
     end
 
     class ParsedText < ParsedLine; end
     class ParsedRequest < ParsedLine; end
 
-    def ingest(line, options={})
+    def parse(line, options={})
       input = RoffInput.new(line+"\n")
       input.roff = self
       tree = parser.parse(input)

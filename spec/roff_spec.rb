@@ -7,26 +7,19 @@ def roff(title, text, options={})
   prefix = "roff test"
   context title do
     before :all do
-      if options[:keep]
-        path = File.join(ENV['HOME'],'.roff_test')
-        exec("rm -rf path")
-        ::File.open(path, 'w') {|f| f.write text}
-        @command = "roff #{path}"
-      else
-        tempfile_prefix = "roff_test_#{title.gsub(/\s+/,'_').gsub(/_+/,'_').gsub(/[^a-zA-Z0-9_]/,'')}_"
-        t = Tempfile.new("roff_test_#{title.gsub(/\s+/,'_').gsub(/_+/,'_').gsub(/[^a-zA-Z0-9_]/,'')}_")
-        t.write(text)
-        t.close
-        command = "roff #{t.path}"
-      end
+      path = File.join(ENV['HOME'],'.roff_test')
+      exec("rm -rf path")
+      ::File.open(path, 'w') {|f| f.write text}
+      command = "roff #{path}"
       @output_basename = (prefix + "_" + title).gsub(/\W/,'_').gsub(/_+/,'_')
       @actual_output_file = File.join('output', 'test_actual', @output_basename)
       @expected_output_file = File.join('output', 'test_expected', @output_basename)
       @allowed_codes = options[:allowed] || [0]
       @allowed_codes << 1 if options[:fail]
       exec("rm -rf #{@actual_output_file}")
-      exec_command = "bun #{command} >#{@actual_output_file}"
-      exec_command += " 2>&1" unless options[:trap_stderr]==false
+      option_string = $debug ? '--debug ' : ''
+      exec_command = "bun #{command} #{option_string}>#{@actual_output_file}"
+      exec_command += " 2>&1" unless $debug || options[:trap_stderr]==false
       exec(exec_command, allowed: @allowed_codes)
     end
     if options[:fail]
@@ -60,12 +53,12 @@ def roff_std(title, commands, options={})
 .li
 1234567890123456789012345
 .ll 20
-.ll 20
 #{commands}
 Now is the time for everyone, including all 
 good men, to go down to the sea 
 in ships again.
 EOT
+  warn text if options[:debug]
   roff(title, text, options)
 end
 
@@ -102,4 +95,10 @@ describe Bun::Roff do
   roff_std ".li", ["This stuff should be justified, hyphenated, etc.",".li",".sp should be ignored and the rest taken literally","And we're back to being justified, as usual"]
   roff_std ".li 2", ["This stuff should be justified, hyphenated, etc.",".li 2",".sp should be ignored and the rest taken literally",".fi should also be ignored", "And we're back to being justified, as usual"]
   roff_std ".an foo", [".an foo","Foo (expecting 0): ^(foo)"]
+  # TODO Should not break lines between a word and a concluding punctuation mark (e.g. [-.,;:!?)\]}])
+  # TODO Should not end a line on opening punctuation marks (e.g. [(\[{])
+  # TODO Should handle quoted strings properly in normal text (e.g. "Hello, how are you?")
+  # TODO Should not break a line on contractions
+  # TODO Should handle hyphenation at hyphens
+  # TODO Should handle hyphenation at hyphenation marks
 end

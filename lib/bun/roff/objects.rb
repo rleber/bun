@@ -4,6 +4,7 @@
 module Bun
   class Roff
     class StackUnderflow < RuntimeError; end
+    class BadExpression < RuntimeError; end
 
     class Thing < Hash 
       attr_accessor :roff

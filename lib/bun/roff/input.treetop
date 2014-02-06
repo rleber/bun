@@ -42,7 +42,7 @@ grammar RoffInput
 		content:(sentence_part*) end_of_line
 		{
 			def parse
-				content.elements.flat_map{|e| e.parse}
+				content.elements.flat_map{|e| e.parse} + end_of_line.parse
 			end
 		}
 	end
