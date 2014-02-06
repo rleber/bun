@@ -17,9 +17,7 @@ module Bun
               && options[:expand_substitutions]!=false
             # Expand insertion
             invocation = token.value
-            debug "invocation: #{invocation.inspect}"
             call = request_words(invocation)
-            debug "call: #{call.inspect}"
             syntax "Missing request name" if call.size == 0
             register = call.shift
             syntax "Expected register name, found #{register.inspect}" unless register.type==:word

@@ -127,8 +127,6 @@ module Bun
 
     def defined?(name)
       name = name.value unless name.is_a?(String)
-      debug "name: #{name.inspect}"
-      debug "definitions: #{definitions.keys}"
       @definitions[name]
     end
     alias_method :get_definition, :defined?
@@ -733,6 +731,21 @@ module Bun
     LINE_ENDINGS = ['.', ':', '!', '?']
 
     def fill_piece(piece)
+      case piece.type
+      when :quoted_string
+        save_quote_character = quote_character
+        self.quote_character = nil
+        parts = parse(piece.text)
+        self.quote_character = save_quote_character
+        parts.each {|token| fill_piece(token)}
+      when :parenthesized_sentence
+        piece.value.each {|token| fill_piece(token)}
+      else
+        fill_atom(piece)
+      end
+    end
+
+    def fill_atom(piece)
       case piece.type
       when :whitespace
         return if @line_buffer.size==0 # Don't start lines with spaces

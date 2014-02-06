@@ -34,8 +34,6 @@ module Bun
     class Register < Thing
       # TODO Wrong approach: push the Register onto the stack of sources
       def invoke(*arguments)
-        debug "defn: #{self.inspect}"
-        debug "data_type: #{self[:data_type].inspect}"
         if self[:data_type] == :number
           v = self[:value].to_s
           if self[:format]
