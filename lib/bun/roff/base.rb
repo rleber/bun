@@ -112,56 +112,56 @@ module Bun
 
     def set_time
       now = Time.now
-      define_value 'year', now.year
-      define_value 'mon',  now.month
-      define_value 'day',  now.day
-      define_value 'hour', now.hour
-      define_value 'min',  now.min
-      define_value 'sec',  now.sec
+      define_register 'year', now.year
+      define_register 'mon',  now.month
+      define_register 'day',  now.day
+      define_register 'hour', now.hour
+      define_register 'min',  now.min
+      define_register 'sec',  now.sec
     end
 
     def define(name, obj)
+      name = name.value unless name.is_a?(String)
       @definitions[name] = obj
     end
 
     def defined?(name)
+      name = name.value unless name.is_a?(String)
+      debug "name: #{name.inspect}"
+      debug "definitions: #{definitions.keys}"
       @definitions[name]
     end
     alias_method :get_definition, :defined?
 
-    def define_value(name, value, options={})
-      v = Value.new(self)
+    def define_register(name, lines=[], options={})
+      v = Register.new(self)
+      name = name.value unless name.is_a?(String)
       v.name = name
-      v.value = value
+      if lines.is_a?(Integer)
+        v.lines = nil
+        v.value = lines
+        v.data_type = :number
+      else
+        v.lines = lines
+        v.value = nil
+        v.data_type = :text
+      end
       v.merge!(options)
       define name, v
     end
 
-    def define_macro(name, lines=[])
-      m = Macro.new(self)
-      m.name = name
-      m.lines = lines
-      Roff.copy_state self, m
-      define name, m
-    end
-
-    def macro_definition(name)
-      defn = @definitions[name]
-      defn && defn[:type]==:macro && defn # i.e. return the macro definitiion, if it exists
+    def register_definition(name)
+      @definitions[name]
     end
 
     def value_of(name)
       defn = @definitions[name]
       return nil unless defn
-      if defn[:type] == :macro
-        defn[:lines].join("\n")
-      else
-        v = defn[:value]
-        if defn[:format]
-          v = merge(right_justify_text(v.to_s, defn[:format].size), defn[:format])
-        end
-        v
+      v = defn[:lines].join("\n")
+      if defn[:format]
+        v = merge(right_justify_text(v.to_s, defn[:format].size), defn[:format])
       end
+      v
     end
 
     # Set additional values for a definition. values should be a hash
@@ -201,19 +201,19 @@ module Bun
 
     def context_for_file(path)
       err "!File #{path} does not exist" unless File.exists?(path)
-      f = FileContext.new(self, path: path, lines: split_lines(::File.read(path)), macro: self.macro)
+      f = FileContext.new(self, path: path, lines: split_lines(::File.read(path)), register: self.register)
       Roff.copy_state self, f if stacked?
       f
     end
 
     def context_for_text(text)
-      t = TextContext.new(self, lines: split_lines(text), macro: self.macro)
+      t = TextContext.new(self, lines: split_lines(text), register: self.register)
       Roff.copy_state self, t if stacked?
       t
     end
 
-    def context_for_macro(macro, *arguments)
-      MacroContext.new(self, macro: macro, name: macro.name, lines: macro.lines, arguments: arguments)
+    def context_for_register(register, *arguments)
+      MacroContext.new(self, register: register, name: register.name, lines: register.lines, arguments: arguments)
     end
 
     context_attr_accessor :line_number
@@ -232,7 +232,7 @@ module Bun
     context_attr_reader   :name
     context_attr_reader   :path
     context_attr_reader   :lines
-    context_attr_reader   :macro
+    context_attr_reader   :register
     context_attr_reader   :arguments
     context_attr_reader   :at_bottom
 
@@ -374,14 +374,14 @@ module Bun
           self.processed_requests << request
           self.send(meth, *send_arguments)
         rescue ArgumentError => e
-          if !@debug && e.to_s =~ /wrong number of arguments (\(\d+\s+for\s+\d+\))/
+          if !@debug && e.to_s =~ /`#{Regexp.escape(meth.to_s)}'.*wrong number of arguments (\(\d+\s+for\s+\d+\))/
             detail = " #{$1}"
           else
             raise
           end
           syntax "Wrong number of arguments#{detail} (Arguments #{request_arguments.inspect})"
         end
-      elsif m = macro_definition(request)
+      elsif m = register_definition(request)
         m.invoke(*request_arguments)
       else
         unimplemented
@@ -475,7 +475,7 @@ module Bun
       end
     end
 
-    # TODO Stack trace in macros should refer back to the line number in the original file
+    # TODO Stack trace in registers should refer back to the line number in the original file
     def stack_trace
       trace = @context_stack.reverse.map do |context|
         next if context.context_type == :base
@@ -534,6 +534,11 @@ module Bun
       else
         input_error BadExpression, "Unexpected operator in #{label}: #{operator}", at: operator.interval.begin
       end
+    end
+
+    def convert_string(arg, name)
+      return arg if arg.is_a?(String) # Allow easy default value setting
+      arg.value.to_s
     end
 
     def convert_integer(arg, name)
@@ -703,19 +708,6 @@ module Bun
         end
       end
       stop "!Missing #{description} #{flag}"
-    end
-
-    def get_escape(characters)
-      case characters.size
-      when 0
-        ['', '']
-      when 1
-        [characters, '']
-      when 2
-        [characters[-1], characters]
-      else
-        err "!Special character sequence should be 0-2 characters"
-      end
     end
 
     def output_line(line)
@@ -1087,12 +1079,12 @@ module Bun
         else
           syntax "Bad file specifier: #{name}"
         end
-      when 'macro'
+      when 'register'
         err "Must include name" unless name
-        if (defn=@definitions[name]) && defn[:type]==:macro
-          show_macro(name, indent)
+        if (defn=@definitions[name]) && defn[:type]==:register
+          show_register(name, indent)
         else
-          err "Macro #{name} is not defined"
+          err "Register #{name} is not defined"
         end
       when 'state'
         show_state(indent)
@@ -1101,7 +1093,7 @@ module Bun
         if (defn=@definitions[name]) && defn[:type]==:value
           show_value(name, indent)
         else
-          err "Macro #{name} is not defined"
+          err "Register #{name} is not defined"
         end
       when 'stack'
         show_stack_trace
@@ -1117,26 +1109,26 @@ module Bun
       show ''
       show_all_files(indent)
       show ''
-      show_all_macros(indent)
+      show_all_registers(indent)
       show ''
       show_all_values(indent)
     end
 
     def show_state(indent=0)
       show 'Formatting state:', indent
-      show "          Tabbed? #{self.tabbed.inspect}",    indent+4
-      show "          Filled? #{self.fill.inspect}",      indent+4
-      show "       Justified? #{self.justify.inspect}",   indent+4
-      show "     Line length: #{@line_length}",           indent+4
-      show "       Tab stops: #{@tab_stops.inspect}",     indent+4
-      show "          Indent: #{@indent}",                indent+4
-      show "Temporary indent: #{@next_indent}",           indent+4 if @next_indent!=@indent
-      show "     Page length: #{@page_length}",           indent+4
-      show "     Page number: #{@page_number}",           indent+4
-      show " Page line count: #{@page_line_count}",       indent+4
-      show "    Merge string: #{@merge_string.inspect}",  indent+4
-      show "     Line buffer: #{@line_buffer.inspect}",   indent+4
-      show " Macro arguments: #{self.arguments.inspect}", indent+4
+      show "            Tabbed? #{self.tabbed.inspect}",    indent+4
+      show "            Filled? #{self.fill.inspect}",      indent+4
+      show "         Justified? #{self.justify.inspect}",   indent+4
+      show "       Line length: #{@line_length}",           indent+4
+      show "         Tab stops: #{@tab_stops.inspect}",     indent+4
+      show "            Indent: #{@indent}",                indent+4
+      show "  Temporary indent: #{@next_indent}",           indent+4 if @next_indent!=@indent
+      show "       Page length: #{@page_length}",           indent+4
+      show "       Page number: #{@page_number}",           indent+4
+      show "   Page line count: #{@page_line_count}",       indent+4
+      show "      Merge string: #{@merge_string.inspect}",  indent+4
+      show "       Line buffer: #{@line_buffer.inspect}",   indent+4
+      show "Register arguments: #{self.arguments.inspect}", indent+4
     end
 
     def show_all_files(indent=0)
@@ -1166,16 +1158,16 @@ module Bun
       end
     end
 
-    def show_all_macros(indent=0)
+    def show_all_registers(indent=0)
       show_title "Macros:", indent
-      @definitions.to_a.select{|key, defn| defn[:type]==:macro}.sort_by{|key, defn| key}.each do |key, defn|
-        show_macro(key, indent+4)
+      @definitions.to_a.select{|key, defn| defn[:type]==:register}.sort_by{|key, defn| key}.each do |key, defn|
+        show_register(key, indent+4)
       end
     end
 
-    def show_macro(name, indent=0)
+    def show_register(name, indent=0)
       return unless defn=@definitions[name]
-      return unless defn[:type] == :macro
+      return unless defn[:type] == :register
       show_lines defn[:name], defn[:lines], indent
     end
 

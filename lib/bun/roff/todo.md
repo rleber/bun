@@ -74,7 +74,7 @@ Change .stop to .ab for compatibility
 Add optional N to .mg (Nth merge mask)
 Add optional N to .he and .fo (Nth header or footnote)
 Implement improved formatting ("i", "I", "a", "A", "o", "O", "z+1")
-Eliminate distinction between macros and values (called "registers" in tf)
+Eliminate distinction between registers and values (called "registers" in tf)
 Improved line breaking: xxx', 'xxx, xxx), (xxx, hyphenation
 Justification is generally turned off most of the time. (Although this may be correct.)
 Error messages should reference original file names and line numbers
@@ -99,7 +99,7 @@ Additional commands, e.g.
   .ix n                .in without line break
   .ln, .n0, .n1, .n2   Line numbering
   .ro, .ar             Roman and Arabic page numbering
-  .zt NAME             Delete macro
+  .zt NAME             Delete register
   .cs CHAR             Set case escape character (overrides .uc and .lc)
   .db CHAR             Use CHAR as a padding character for proportional spacing
   .dc CHAR N [STRING]  Sets the width of CHAR in proportional spacing; replace CHAR with STRING on output

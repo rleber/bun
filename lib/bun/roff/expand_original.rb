@@ -4,7 +4,7 @@
 module Bun
   class Roff
     def expand(line, options={})
-      macro_arguments = self.arguments
+      register_arguments = self.arguments
       line = line.dup # So we don't change the original version of the line
       original_line = line.dup
       # TODO could move these and only change them when the characters do
@@ -16,10 +16,10 @@ module Bun
       changes = 0
       if (self.expand_parameters || options[:expand_parameters]) \
           && (options[:expand_parameters]!=false) \
-          && macro_arguments
+          && register_arguments
         line = expand_item(line, parameter_character, parameter_pattern, parameter_escape_pattern) do |match|
           changes += 1
-          macro_arguments[(match[1..-1].to_i)-1]
+          register_arguments[(match[1..-1].to_i)-1]
         end
       end
       if (self.expand_substitutions || options[:expand_substitutions]) \

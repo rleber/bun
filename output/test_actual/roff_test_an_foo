@@ -1,15 +1,100 @@
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: request_word(".m1")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: whitespace(" ")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: number("1")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: end_of_line("\n")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: request_word(".m2")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: whitespace(" ")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: number("2")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: end_of_line("\n")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: request_word(".m3")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: whitespace(" ")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: number("2")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: end_of_line("\n")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: request_word(".m4")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: whitespace(" ")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: number("1")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: end_of_line("\n")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: request_word(".eh")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: whitespace(" ")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: word("Even")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: word("Head")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: word("%")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: end_of_line("\n")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: request_word(".ef")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: whitespace(" ")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: word("Even")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: word("Foot")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: word("%")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: end_of_line("\n")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: request_word(".oh")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: whitespace(" ")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: word("Odd")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: word("Head")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: word("%")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: end_of_line("\n")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: request_word(".of")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: whitespace(" ")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: word("Odd")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: word("Foot")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: word("%")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("'")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: end_of_line("\n")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: request_word(".ll")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: whitespace(" ")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: number("25")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: end_of_line("\n")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: request_word(".li")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: end_of_line("\n")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: request_word(".ll")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: whitespace(" ")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: number("20")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: end_of_line("\n")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: request_word(".an")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: whitespace(" ")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: word("foo")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: end_of_line("\n")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: request_word(".ic")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: whitespace(" ")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("^")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: other("^")
+Debug in /Users/richard/projects/bun/lib/bun/roff/expand.rb:13:in `block in expand': token: end_of_line("\n")
+!Exception occurred: undefined method `size' for other("^"):Bun::Roff::ParsedNode
+    Line 14 in file /Users/richard/.roff_test : .ic ^^
+/Users/richard/projects/bun/lib/bun/roff/base.rb:697:in `get_escape': undefined method `size' for other("^"):Bun::Roff::ParsedNode (NoMethodError)
+	from /Users/richard/projects/bun/lib/bun/roff/requests.rb:220:in `ic_request'
+	from /Users/richard/projects/bun/lib/bun/roff/base.rb:363:in `process_request'
+	from /Users/richard/projects/bun/lib/bun/roff/base.rb:278:in `process_line'
+	from /Users/richard/projects/bun/lib/bun/roff/base.rb:258:in `block in process'
+	from /Users/richard/projects/bun/lib/bun/roff/base.rb:255:in `each'
+	from /Users/richard/projects/bun/lib/bun/roff/base.rb:255:in `with_index'
+	from /Users/richard/projects/bun/lib/bun/roff/base.rb:255:in `process'
+	from /Users/richard/projects/bun/lib/bun/roff/class_methods.rb:29:in `block in process_context'
+	from /Users/richard/projects/bun/lib/bun/roff/class_methods.rb:26:in `chdir'
+	from /Users/richard/projects/bun/lib/bun/roff/class_methods.rb:26:in `process_context'
+	from /Users/richard/projects/bun/lib/bun/roff/class_methods.rb:13:in `process_file'
+	from /Users/richard/projects/bun/lib/bun/file/baked.rb:10:in `roff'
+	from /Users/richard/projects/bun/lib/bun/bots/main/roff_task.rb:16:in `roff'
+	from /Users/richard/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems/thor-0.18.1/lib/thor/command.rb:27:in `run'
+	from /Users/richard/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems/thor-0.18.1/lib/thor/invocation.rb:120:in `invoke_command'
+	from /Users/richard/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems/thor-0.18.1/lib/thor.rb:363:in `dispatch'
+	from /Users/richard/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems/thor-0.18.1/lib/thor/base.rb:439:in `start'
+	from /Users/richard/projects/bun/src/bun:10:in `<main>'
 
 Odd       Head          1
 
 1234567890123456789012345
-Foo
-[word("expecting"), whitespace(" "), number("0")]
-: ^foo) Now  is  the
-time  for  everyone,
-including  all  good
-men, to go  down  to
-the  sea  in   ships
-again.
-
-Odd     Foot       1
-

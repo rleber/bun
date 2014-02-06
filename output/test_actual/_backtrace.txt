@@ -1,0 +1,3 @@
+rm -rf path
+rm -rf output/test_actual/roff_test_an_foo
+bun roff /Users/richard/.roff_test >output/test_actual/roff_test_an_foo 2>&1

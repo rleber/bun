@@ -31,16 +31,13 @@ module Bun
       end
     end
 
-    class Macro < Thing
-      # TODO Wrong approach: push the Macro onto the stack of sources
+    class Register < Thing
+      # TODO Wrong approach: push the Register onto the stack of sources
       def invoke(*arguments)
-        macro_context = roff.context_for_macro(self, *arguments)
-        Roff.copy_state self, macro_context
-        roff.push macro_context
+        register_context = roff.context_for_register(self, *arguments)
+        Roff.copy_state self, register_context
+        roff.push register_context
       end
-    end
-
-    class Value < Thing
     end
 
     class Context < Thing
@@ -48,20 +45,20 @@ module Bun
       #   Current input line
       #   Current input line number
       #   Type of the frame
-      #   Name of the frame (e.g. macro name)
+      #   Name of the frame (e.g. register name)
       #   Original file source
       #   Starting line number in source file (for error messages)
       #   Arguments
       # There are several kinds of stack frames, e.g.
-      #   Text:   We are roffing from text (not a file)
-      #   File:   We are roffing from a file
-      #   Macro:  We are roffing from a macro
-      #   String: We are inserting a string (?)
-      attr_accessor :macro
+      #   Text:     We are roffing from text (not a file)
+      #   File:     We are roffing from a file
+      #   Register: We are roffing from a register
+      #   String:   We are inserting a string (?)
+      attr_accessor :register
 
       def initialize(roff, options={})
         super
-        @macro = options[:macro]
+        @register = options[:register]
       end
 
       def at_bottom
@@ -69,7 +66,7 @@ module Bun
       end
 
       def arguments
-        macro.arguments
+        register.arguments
       end
 
       def context_type
@@ -78,7 +75,7 @@ module Bun
     end
 
     class BaseContext  < Context
-      def macro
+      def register
         self
       end
 
@@ -99,7 +96,7 @@ module Bun
         @arguments = options[:arguments]
       end
 
-      def macro
+      def register
         self
       end
     end

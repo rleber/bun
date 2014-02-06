@@ -17,31 +17,24 @@ module Bun
     #    n (numeric)  Set the named value to this value
     #    +n           Add n to the named value
     #    -n           Subtract n from the named value
-    def an_request(name, expression=nil, *_)
+    def an_request(name, *expression)
       defn = get_definition(name)
-      defn = define_value(name, nil) unless defn
-      case expression
-      when nil
-        # Do nothing; just define value -- which is already done
-      when /^\d+$/
-        defn.value = expression.to_i
-      when /^[+-]\d+$/
-        v = defn.value || 0
-        defn.value = v + expression.to_i
+      defn = define_register(name, 0) unless defn
+      if expression.size==0
+        defn.value = 0
       else
-        syntax "Bad arithmetic expression #{expression.inspect}"
+        defn.value = convert_expression(defn.value, expression, "expression")
       end
     end
 
     # .at NAME
     # ...
     # .en NAME
-    # Define a macro named NAME. "Invisible" macros (whatever that means), may be
-    # surrounded by parentheses.
+    # Define a register named NAME.
     def at_request(name, *_)
       tag = name
       name = $1 if name=~/^\((.*)\)$/
-      defn = define_macro name
+      defn = define_register name
       look_for_en(nil, tag) do |line|
         expanded_lines = expand(line)
         if @debug
@@ -224,7 +217,7 @@ module Bun
     # .ic CHARS
     # Set insertion characters (e.g. ^^ )
     def ic_request(chars='', *_)
-      @insert_character, @insert_escape = get_escape(chars)
+      @insert_character, @insert_escape = convert_string(chars, "insertion character")
     end
 
     # .id NAME
@@ -400,7 +393,7 @@ module Bun
     # .pc CHARS
     # Set parameter characters (e.g. @ )
     def pc_request(chars='', *_)
-      self.parameter_character, self.parameter_escape = get_escape(chars)
+      self.parameter_character, self.parameter_escape = convert_string(chars, "parameter character")
     end
 
     # .pl N
@@ -413,11 +406,11 @@ module Bun
     # .qc CHARS
     # Set quote characters (e.g. " )
     def qc_request(chars='', *_)
-      @quote_character, @quote_escape = get_escape(chars)
+      @quote_character, @quote_escape = convert_string(chars, "quotation character")
     end
 
     # .show TYPE NAME
-    # Display the value of name. Type may be 'file', 'macro', 'value', 'stack'
+    # Display the value of name. Type may be 'file', 'register', 'value', 'stack'
     # This is an extension to original ROFF
     def show_request(type, name=nil, *_)
       show_item(type, name)
