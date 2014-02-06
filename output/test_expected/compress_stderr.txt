@@ -12,10 +12,14 @@ Compact bjeroehl/fass/bjthings_19781219_151907/countess.txt => bjeroehl/fass/bjt
 Compact bjeroehl/fass/bjthings_19781219_151907/rjbmail.txt => bjeroehl/fass/bjthings/rjbmail.txt
 Delete fass/scripfrz_19770301_154058/1zero
 Delete fass/scripfrz_19770301_154058
+Delete fass/one/zero
 Delete fass/bjeroehl/bjthings_19781219_151907/rjbmail
 Delete fass/bjeroehl/bjthings_19781219_151907/addinde
 Delete fass/bjeroehl/bjthings_19781219_151907
 Delete fass/bjeroehl
+Delete bjeroehl/fass/bjthings_19781219_151907/rjbmail
+Delete bjeroehl/fass/bjthings_19781219_151907/countess
+Delete bjeroehl/fass/bjthings_19781219_151907/addinde
 Delete bjeroehl/fass/bjthings_19781219_151907
 Delete bjeroehl/fass/77script.f_19770301_154058/1zero
 Delete bjeroehl/fass/77script.f_19770301_154058
