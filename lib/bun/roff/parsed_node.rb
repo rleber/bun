@@ -33,6 +33,10 @@ module Bun
         self.text
       end
 
+      def output_text
+        value
+      end
+
       def compressed
         self
       end
@@ -51,13 +55,21 @@ module Bun
 
       class RegisterReference < ParsedNode
         def value
-          text[1..-1]
+          text[1..-2]
+        end
+
+        def output_text
+          text
         end
       end    
 
       class Number < ParsedNode
         def value
           text.to_i
+        end
+
+        def output_text
+          text
         end
       end    
 

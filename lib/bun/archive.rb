@@ -594,7 +594,7 @@ module Bun
             shell.rm_rf(file)
             warn "Move #{rel_file} => #{rel_new_file}" unless options[:quiet]
           end
-          shell.rm_rf(group)
+          # shell.rm_rf(group)
         end
       end
     end

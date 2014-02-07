@@ -22,7 +22,13 @@ module Bun
             register = call.shift
             syntax "Expected register name, found #{register.inspect}" unless register.type==:word
             defn = get_definition(register)
-            toks = defn.invoke(*call) + toks
+            if defn.nil?
+              warn "#{register.value} is not defined"
+              new_tok = ParsedNode.new(:number, text: "0", interval: register.interval)
+              toks.unshift new_tok
+            else
+              toks = defn.invoke(*call) + toks
+            end
           end
         else
           expanded_line << token
