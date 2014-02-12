@@ -518,13 +518,13 @@ module Bun
         end
       end
 
-      # Phase II: Remove tape files, if there's no difference between them
-      compact_groups(options) {|path| File.dirname(path) }
-      
-      # Phase III: Compress dated freeze file archives
-      compact_groups(options) {|path| path.sub(/_\d{8}(?:_\d{6})?(?=\/)/,'') }
+      # Phase II: Compress dated freeze file archives and dated tape files
+      compact_files(options) do |path|
+        path.sub(/_\d{8}(?:_\d{6})?(?=\/)/,'')
+            .sub(/(?:\.v\d+)?\/tape[\._]ar\d+\.\d+_\d{8}(?:_\d{6})?((?:\.\w+)?)$/,'\1')
+      end
 
-      # Phase IV: Remove empty directories
+      # Phase III: Remove empty directories
       # Thanks to http://stackoverflow.com/questions/1290670/ruby-how-do-i-recursively-find-and-remove-empty-directories
       all.select { |d| File.directory?(d)} \
          .reverse_each do |d| 
@@ -540,61 +540,32 @@ module Bun
       Archive.duplicates(trait, leaves.to_a, options)
     end
 
-    def compact_groups(options={}, &blk)
+    def compact_files(options={}, &blk)
       shell = Shell.new
       groups = leaves.to_a.group_by {|path| yield(path) }
-      # puts groups.inspect
       groups.each do |group, files|
-        case files.size
-        when 0
-          # Shouldn't happen
-        when 1
-          file = files.first
-          unless file == group
-            rel_file = relative_path(file)
-            rel_group = relative_path(group)
-            new_file = group
-            new_file += File.extname(file) unless File.extname(new_file)==File.extname(file)
-            if conflict = File.conflicts?(new_file)
-              file_count = Dir[File.join(conflict, '**', '*')].count { |file| File.file?(file) }
-              if file_count > 1
-                rel_conflict = relative_path(conflict)
-                rel_new_file = relative_path(new_file)
-                raise CompressConflictError, "Can't compact #{rel_file}=>#{rel_new_file}: conflict at #{rel_conflict}"
-              end
+        next if File.expand_path(group) == File.expand_path(at)
+        primary_file = compacted_file = files.first
+        compacted_file = nil if files.size > 1
+        dest = group
+        dest += File.extname(primary_file) unless File.extname(dest)==File.extname(primary_file)
+        conflict_set = File.conflicting_files(dest)
+        # TODO Should not conflict with ancestor directories of file that's being moved?
+        files += conflict_set
+        files.uniq!
+        shell.merge_files(files, dest) do |move| # Messaging block
+          unless options[:quiet]
+            from = move[:from]
+            to = move[:to]
+            rel_from = relative_path(from)
+            rel_to = relative_path(to)
+            if from==compacted_file
+              warn "Compact #{rel_from} => #{rel_to}"
+            else
+              warn "Move #{rel_from} => #{rel_to}"
             end
-            warn "Compact #{rel_file} => #{rel_group}" unless options[:quiet]
-            temp_file = group+".tmp"
-            shell.mkdir_p(File.dirname(temp_file))
-            shell.cp(file, temp_file)
-            shell.rm_rf(file)
-            # shell.rm_rf(group)
-            shell.cp(temp_file, new_file)
-            shell.rm_rf(temp_file)
+            true # Continue moving
           end
-        else
-          sorted_files = files.map {|file| [file, File.timestamp(file)] }.sort_by {|file, date| date }
-          sorted_files.each.with_index do |file_data, index|
-            file, date = file_data
-            suffix = ".v#{index+1}"
-            new_file = group + suffix
-            new_file += File.extname(file) unless File.extname(new_file)==File.extname(file)
-            rel_file = relative_path(file)
-            rel_new_file = relative_path(new_file)
-            if conflict = File.conflicts?(new_file)
-              file_count = Dir[File.join(conflict, '**', '*')].count { |file| File.file?(file) }
-              if file_count > 1
-                rel_conflict = relative_path(conflict)
-                rel_new_file = relative_path(new_file)
-                raise CompressConflictError, "Can't compact #{rel_file}=>#{rel_new_file}: conflict at #{rel_conflict}"
-              end
-            end
-            shell.mkdir_p(File.dirname(new_file))
-            shell.cp(file, new_file)
-            shell.rm_rf(file)
-            warn "Move #{rel_file} => #{rel_new_file}" unless options[:quiet]
-          end
-          # shell.rm_rf(group)
         end
       end
     end

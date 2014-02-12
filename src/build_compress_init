@@ -1,0 +1,11 @@
+rm -rf data/test/archive/compress_conflict_init
+mkdir -p data/test/archive/compress_conflict_init
+cd data/test/archive/compress_conflict_init
+cp ~/fass_work/compressed/1985/fass/songs.f/1978.txt xxx.txt
+mkdir xxx
+cp ~/fass_work/compressed/bjeroehl/fass/77script.f/3two.txt xxx/tape_ar99.9999_19990101_120000.txt
+cp ~/fass_work/compressed/fass/1986/script/tfed.f/2.1.txt yyy.v1.txt
+cp ~/fass_work/compressed/fass/bj/dense.txt yyy.v2.txt
+mkdir yyy_20120314
+cp ~/fass_work/compressed/fass/idallen/roffinit.txt yyy_20120314/tape_ar99.9999_19990101_120000.txt
+cd -

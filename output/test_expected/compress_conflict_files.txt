@@ -1,0 +1,6 @@
+output/test_actual/compress_conflict
+output/test_actual/compress_conflict/xxx.v1.txt
+output/test_actual/compress_conflict/xxx.v2.txt
+output/test_actual/compress_conflict/yyy.v1.txt
+output/test_actual/compress_conflict/yyy.v2.txt
+output/test_actual/compress_conflict/yyy.v3.txt

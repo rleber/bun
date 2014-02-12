@@ -7,7 +7,7 @@ option 'no_redirect', :aliases=>'-n', :type=>'boolean', :desc=>"Don't redirect t
 option 'quiet',       :aliases=>'-q', :type=>'boolean', :desc=>"Quiet mode"
 def redo(n=-1)
   n = n.to_i
-  trace = Bun::Test.backtrace(range: n)
+  trace = Bun::Test.backtrace(range: n..n)
   command = trace.last
   stop "!Command number out of range" unless command
   command = command.gsub(/\d?(?:<|\||>|>>)(?:&\d|[\w:\/\\\.]+)/,'') if options[:no_redirect]

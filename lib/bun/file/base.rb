@@ -380,7 +380,66 @@ module Bun
         return false if dir=='.' || dir=='/'
         return conflicts?(dir, directories_okay: true)
       end
-    end
+
+      # Note: returns an array of files that conflict with a proposed new file f. The
+      # set will always include at least one element (i.e. f)
+      def conflicting_files(f)
+        ext = File.extname(f)
+        conflict_base = f.sub(/#{Regexp.escape(ext)}$/,'')
+        pat = /^#{Regexp.escape(conflict_base)}(?:\.v\d+)?(?:#{Regexp.escape(ext)})?$/
+        Dir.glob(conflict_base+'*')
+           .select {|file| file =~ pat }
+           .flat_map {|file| File.directory?(file) ? Dir.glob(file+"/**/*") : file}
+      end
+
+      # Create a set of moves that will merge a set of files to a destination without conflicts.
+      # Where necessary, add version numbers to the files to avoid stomping any file
+      #
+      # This method returns an array of moves that avoids conflicts. Each element in the array is 
+      # a hash in the form {:from=>from_file, :to=>to_file, :version=>99}. The moves MUST be executed
+      # in the order specified to guarantee avoiding conflicts!
+      #
+      # If there is no conflict, this method returns [{from: file, to: new_file, version: nil}]
+      #
+      # Rules for moving files
+      #   1. a/b/c/d (without extension) moves to a/b/c/d.v1 (but see below)
+      #   2. a/b/c/d...y.ext (with extension) moves to a/b/c/d...y.v99.ext (but see below)
+      #   3. a/b/c/d...v3.ext doesn't move
+      #   4. Version numbers are always assigned in ascending order of file date
+      #
+      # Arguments:
+      #   files is an array of (fully qualified) file names
+      #   dest is the name of where you want to move them to. 
+      #
+      # TODO More general pattern for version numbering
+      def moves_to_merge(files, dest)
+        case files.size
+        when 0
+          return []
+        when 1
+          return [] if files.first == dest
+          return [{from: files.first, to: dest, version: nil}]
+        end
+        dest = re_version_file(dest, nil) # Remove .v999 from dest, if any
+        version_count = 0
+        files.map {|f| [f, File.timestamp(f)] } # Fetch file versions only once
+             .sort_by {|f, timestamp| timestamp} # Sort oldest files first
+             .map do |f, timestamp| # Reset versions in order by file date
+                    version_count += 1
+                    {from: f, version: version_count, to: re_version_file(dest, version_count)}
+                  end
+             .reject {|spec| spec[:from] == spec[:to]} # Remove any "no-op" moves
+             .sort_by {|spec| -spec[:version]} # Move highest versions first
+      end
+
+      def re_version_file(f, version)
+        f =~ /^(.*?)((?:\.v\d+)?)((?:\.[\w\d_]*)?)$/ # May already have a .v999 prefix
+        version = version ? ".v#{version}" : ""
+        "#{$1}#{version}#{$3}"
+      end
+
+    end # File class methods
+
     attr_reader :archive
     attr_reader :tape_path
 

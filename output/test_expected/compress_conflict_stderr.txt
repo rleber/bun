@@ -1,0 +1,6 @@
+Move xxx.txt => xxx.v2.txt
+Move xxx/tape_ar99.9999_19990101_120000.txt => xxx.v1.txt
+Move yyy.v1.txt => yyy.v3.txt
+Compact yyy_20120314/tape_ar99.9999_19990101_120000.txt => yyy.v1.txt
+Delete yyy_20120314
+Delete xxx

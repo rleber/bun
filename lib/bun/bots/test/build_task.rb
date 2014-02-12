@@ -61,7 +61,7 @@ no_tasks do
     _exec "rm -rf #{at.safe}", options
     _exec "mkdir -p #{at.safe}", options
     $at = at
-    yield if block_given?
+    yield(at) if block_given?
   end
   
   def build_small_directory(at, format=:cataloged, options={})
@@ -115,6 +115,7 @@ end
 desc "build", "Build test files"
 option "quiet",    :aliases=>'-q', :type=>'boolean',  :desc=>"Quiet mode"
 def build
+  # TODO This could use some serious refactoring to avoid all the quiet: options[:quiet] stuff
   build_file "ar003.0698", "data/test_init", :cataloged, quiet: options[:quiet]
   build_file "ar004.0642", "data/test_init", :cataloged, quiet: options[:quiet]
   build_file "ar019.0175", "data/test_init", :cataloged, quiet: options[:quiet]

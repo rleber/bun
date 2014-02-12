@@ -183,4 +183,47 @@ describe "compress" do
       exec_on_success("rm -rf output/test_actual/compress_stderr_inplace.txt")
     end
   end
+  context "with conflicts" do
+    # Archive data/test/archive/compress_conflict_init should contain
+    #   xxx.txt
+    #   xxx/tape... (which will conflict with above)
+    #   yyy.v1.txt
+    #   yyy.v2.txt
+    #   yyy_ddmmyy_hhmmss/tape... (which will conflict with all of the above)
+    before :all do
+      exec("rm -rf data/test/archive/compress_conflict")
+      exec("rm -rf output/test_actual/compress_conflict")
+      exec("rm -rf output/test_actual/compress_conflict_files.txt")
+      exec("rm -rf output/test_actual/compress_conflict_files_before.txt")
+      exec("rm -rf output/test_actual/compress_conflict_stdout.txt")
+      exec("rm -rf output/test_actual/compress_conflict_stderr.txt")
+      exec("cp -r data/test/archive/compress_conflict_init data/test/archive/compress_conflict")
+      exec("find data/test/archive/compress_conflict -print >output/test_actual/compress_conflict_files_before.txt")
+      exec("bun compress data/test/archive/compress_conflict output/test_actual/compress_conflict \
+                2>output/test_actual/compress_conflict_stderr.txt \
+                >output/test_actual/compress_conflict_stdout.txt")
+      exec("find output/test_actual/compress_conflict -print >output/test_actual/compress_conflict_files.txt")
+    end
+    it "should create the proper files" do
+      "compress_conflict_files.txt".should match_expected_output
+    end
+    it "should leave the original directory alone" do
+      "compress_conflict_files_before.txt".should match_expected_output
+    end
+    it "should write the proper messages on STDERR" do
+      "compress_conflict_stderr.txt".should match_expected_output
+    end
+    it "should write nothing on STDOUT" do
+      "output/test_actual/compress_conflict_stdout.txt".should be_an_empty_file
+    end
+    after :all do
+      backtrace
+      exec_on_success("rm -rf data/test/archive/compress_conflict")
+      exec_on_success("rm -rf output/test_actual/compress_conflict")
+      exec_on_success("rm -rf output/test_actual/compress_conflict_files.txt")
+      exec_on_success("rm -rf output/test_actual/compress_conflict_files_before.txt")
+      exec_on_success("rm -rf output/test_actual/compress_conflict_stdout.txt")
+      exec_on_success("rm -rf output/test_actual/compress_conflict_stderr.txt")
+    end
+  end
 end

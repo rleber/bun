@@ -75,6 +75,27 @@ module Bun
       _run "cp -r", from, to, options
     end
     
+    def mv(from, to, options={})
+      _run "mv", from, to, options
+    end
+    
+    def mv_p(from, to, options={})
+      mkdir_p File.dirname(to), options
+      mv from, to, options
+    end
+
+    # Move file, avoiding possible conflicts by moving conflicting files using "versioning"
+    # Block is invoked before every move; this allows messaging etc. Block must return non-nil,
+    # or moves are suspended
+    def merge_files(files, to, &blk)
+      File.moves_to_merge(files, to).each do |move|
+        continue = true
+        continue = yield(move) if block_given?
+        break unless continue
+        mv_p move[:from], move[:to]
+      end
+    end
+    
     # TODO Is this used?
     def decode(*args)
       options = {}

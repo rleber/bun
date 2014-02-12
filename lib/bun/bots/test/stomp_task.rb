@@ -9,8 +9,7 @@ option 'quiet',  :aliases=>'-q', :type=>'boolean', :desc=>"Quiet mode"
 option 'redo',   :aliases=>'-r', :type=>'boolean', :desc=>"Stomp the file by rerunning the command"
 def stomp(file=nil)
   stop "!Bad value for --number: #{options[:number].inspect}" unless options[:number] =~ /^[+-]\d+$/
-  n = options[:number].to_i
-  trace = Bun::Test.backtrace(range: n)
+  trace = Bun::Test.backtrace(range: options[:number])
   stop "!No backtrace available" if trace.size < 1
   if options[:last]
     stop "!Can't use --last and specify file name" if file

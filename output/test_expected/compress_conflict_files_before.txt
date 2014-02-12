@@ -1,0 +1,8 @@
+data/test/archive/compress_conflict
+data/test/archive/compress_conflict/xxx
+data/test/archive/compress_conflict/xxx/tape_ar99.9999_19990101_120000.txt
+data/test/archive/compress_conflict/xxx.txt
+data/test/archive/compress_conflict/yyy.v1.txt
+data/test/archive/compress_conflict/yyy.v2.txt
+data/test/archive/compress_conflict/yyy_20120314
+data/test/archive/compress_conflict/yyy_20120314/tape_ar99.9999_19990101_120000.txt

@@ -1,3 +1,0 @@
-rm -rf path
-rm -rf output/test_actual/roff_test_insertion_in_request
-bun roff /Users/richard/.roff_test >output/test_actual/roff_test_insertion_in_request 2>&1
