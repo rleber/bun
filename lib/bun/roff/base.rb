@@ -265,8 +265,11 @@ module Bun
       push_output_file to
       self.next_line_number = 1
       while (self.line = get_line)
+        # debug "self.line: #{self.line.inspect}"
         self.parsed_line = parse(self.line)
+        # debug "self.parsed_line: #{self.parsed_line.inspect}"
         self.expanded_lines = expand(self.parsed_line)
+        # debug "self.expanded_lines: #{self.expanded_lines.inspect}"
         expanded_lines.each.with_index do |expanded_line, i|
           self.expanded_line_number = i+1
           self.expanded_line = expanded_line

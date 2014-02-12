@@ -16,12 +16,13 @@ module Bun
         end
       end
 
-      attr_reader :syntax_node, :type, :text, :interval
+      attr_reader :syntax_node, :type, :text, :interval, :value
 
       def initialize(type, options={})
         @type = type
         @syntax_node = options[:syntax_node]
         @text = options[:text]
+        @value = options[:value] || calculate_value
         @interval = options[:interval]
       end
 
@@ -29,7 +30,7 @@ module Bun
         "#{type}(#{text.inspect})"
       end
 
-      def value
+      def calculate_value
         self.text
       end
 
@@ -42,19 +43,19 @@ module Bun
       end
 
       class RequestWord < ParsedNode
-        def value
+        def calculate_value
           text[1..-1]
         end
       end
 
       class QuotedString < ParsedNode
-        def value
+        def calculate_value
           text[1..-2].gsub('""','\"')
         end
       end
 
       class RegisterReference < ParsedNode
-        def value
+        def calculate_value
           text[1..-2]
         end
 
@@ -64,7 +65,7 @@ module Bun
       end    
 
       class Number < ParsedNode
-        def value
+        def calculate_value
           text.to_i
         end
 
@@ -74,13 +75,13 @@ module Bun
       end    
 
       class Parameter < ParsedNode
-        def value
+        def calculate_value
           text[1..-1].to_i
         end
       end    
 
       class Escape < ParsedNode
-        def value
+        def calculate_value
           text[1,1]
         end
       end    
@@ -88,7 +89,6 @@ module Bun
       class Nested < ParsedNode
         attr_accessor :nested_sentence
         def initialize(type, options={})
-          super
           self.nested_sentence = if options[:nested_sentence]
             options[:nested_sentence]
           elsif options[:syntax_node]
@@ -96,14 +96,15 @@ module Bun
           else
             raise ArgumentError, "Must specify :nested_sentence or :syntax_node option"
           end
+          super
         end
 
-        def value
+        def calculate_value
           nested_sentence
         end
 
         def inspect
-          "#{type}(#{value.map{|v| v.inspect}.join(',')})"
+          "#{type}(#{self.value ? self.value.map{|v| v.inspect}.join(',') : 'nil'})"
         end
       end    
 
@@ -111,7 +112,7 @@ module Bun
       class ParenthesizedSentence < Nested; end
 
       class Whitespace < ParsedNode
-        def value
+        def calculate_value
           ' '
         end
 
@@ -121,7 +122,7 @@ module Bun
       end    
 
       class EndOfLine < Whitespace
-        def value
+        def calculate_value
           ' '
         end
       end    

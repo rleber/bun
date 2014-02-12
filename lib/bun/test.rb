@@ -42,9 +42,18 @@ module Bun
       def trace_range(r)
         all = 0..-1
         n = r || all
-        n = begin
-          n.is_a?(String) ? eval(n) : n
-        rescue
+        n = case n
+        when String
+          begin
+            trace_range(eval(n))
+          rescue
+            nil
+          end
+        when Integer
+          n..n
+        when Range
+          n
+        else
           nil
         end
       end

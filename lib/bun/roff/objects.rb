@@ -39,7 +39,7 @@ module Bun
           if self[:format]
             v = merge(right_justify_text(v.to_s, self[:format].size), self[:format])
           end
-          [ParsedNode.new(:word, text: v, value: v, interval: self[:interval])]
+          [ParsedNode.new(:number, text: v, value: self[:value], interval: self[:interval])]
         else
           register_context = roff.context_for_register(self, *arguments)
           Roff.copy_state self, register_context
