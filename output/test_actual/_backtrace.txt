@@ -1,0 +1,7 @@
+rm -rf data/test/archive/compress_conflict
+rm -rf output/test_actual/compress_conflict
+rm -rf output/test_actual/compress_conflict_files.txt
+rm -rf output/test_actual/compress_conflict_files_before.txt
+rm -rf output/test_actual/compress_conflict_stdout.txt
+rm -rf output/test_actual/compress_conflict_stderr.txt
+cp -r data/test/archive/compress_conflict_init data/test/archive/compress_conflict
