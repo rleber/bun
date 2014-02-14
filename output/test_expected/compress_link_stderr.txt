@@ -7,6 +7,10 @@ Compact fass/bjeroehl/bjthings_19781219_151907/addinde/tape.ar020.1140_19780620_
 Compact fass/bjeroehl/bjthings_19781219_151907/rjbmail/tape.ar020.1140_19780725_174329.txt => fass/bjeroehl/bjthings/rjbmail.txt
 Compact fass/one/zero/tape.ar003.2557_19770118.txt => fass/one/zero.txt
 Compact fass/scripfrz_19770301_154058/1zero/tape.ar004.0888_19770210_164752.txt => fass/scripfrz/1zero.txt
+Link fass/bjeroehl/bjthings/addinde.txt to bjeroehl/fass/bjthings/addinde.txt
+Link fass/bjeroehl/bjthings/rjbmail.txt to bjeroehl/fass/bjthings/rjbmail.txt
+Link bjeroehl/fass/77script.f/1zero.txt to fass/one/zero.txt
+Link fass/scripfrz/1zero.txt to fass/one/zero.txt
 Delete fass/scripfrz_19770301_154058/1zero
 Delete fass/scripfrz_19770301_154058
 Delete fass/one/zero

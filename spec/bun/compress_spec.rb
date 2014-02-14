@@ -11,16 +11,16 @@ describe "compress" do
       exec("rm -rf output/test_actual/compress_stdout.txt")
       exec("rm -rf output/test_actual/compress_stderr.txt")
       exec("cp -r data/test/archive/compress_init data/test/archive/compress")
-      exec("find data/test/archive/compress -print >output/test_actual/compress_files_before.txt")
       exec("bun compress data/test/archive/compress output/test_actual/compress \
                 2>output/test_actual/compress_stderr.txt >output/test_actual/compress_stdout.txt")
+      exec("find data/test/archive/compress -print >output/test_actual/compress_files_before.txt")
       exec("find output/test_actual/compress -print >output/test_actual/compress_files.txt")
-    end
-    it "should create the proper files" do
-      "compress_files.txt".should match_expected_output
     end
     it "should leave the original directory alone" do
       "compress_files_before.txt".should match_expected_output
+    end
+    it "should create the proper files" do
+      "compress_files.txt".should match_expected_output
     end
     it "should write the proper messages on STDERR" do
       "compress_stderr.txt".should match_expected_output
@@ -47,16 +47,16 @@ describe "compress" do
       exec("rm -rf output/test_actual/compress_stdout.txt")
       exec("rm -rf output/test_actual/compress_stderr.txt")
       exec("cp -r data/test/archive/compress_init data/test/archive/compress")
-      exec("find data/test/archive/compress -print >output/test_actual/compress_files_before.txt")
       exec("bun compress data/test/archive/compress output/test_actual/compress \
                 2>output/test_actual/compress_stderr.txt >output/test_actual/compress_stdout.txt")
+      exec("find data/test/archive/compress -print >output/test_actual/compress_files_before.txt")
       exec("find output/test_actual/compress -print >output/test_actual/compress_files.txt")
-    end
-    it "should create the proper files" do
-      "compress_files.txt".should match_expected_output
     end
     it "should leave the original directory alone" do
       "compress_files_before.txt".should match_expected_output
+    end
+    it "should create the proper files" do
+      "compress_files.txt".should match_expected_output
     end
     it "should write nothing on STDERR" do
       "compress_stderr.txt".should be_an_empty_file
@@ -72,6 +72,86 @@ describe "compress" do
       exec_on_success("rm -rf output/test_actual/compress_files_before.txt")
       exec_on_success("rm -rf output/test_actual/compress_stdout.txt")
       exec_on_success("rm -rf output/test_actual/compress_stderr.txt")
+    end
+  end
+  context "to a new directory --delete" do
+    before :all do
+      exec("rm -rf data/test/archive/compress")
+      exec("rm -rf output/test_actual/compress")
+      exec("rm -rf output/test_actual/compress_delete_files.txt")
+      exec("rm -rf output/test_actual/compress_files_before.txt")
+      exec("rm -rf output/test_actual/compress_delete_stdout.txt")
+      exec("rm -rf output/test_actual/compress_delete_stderr.txt")
+      exec("cp -r data/test/archive/compress_init data/test/archive/compress")
+      exec("bun compress --delete data/test/archive/compress output/test_actual/compress \
+                2>output/test_actual/compress_delete_stderr.txt \
+                >output/test_actual/compress_delete_stdout.txt")
+      exec("find data/test/archive/compress -print >output/test_actual/compress_files_before.txt")
+      exec("find output/test_actual/compress -print >output/test_actual/compress_delete_files.txt")
+    end
+    it "should leave the original directory alone" do
+      "compress_files_before.txt".should match_expected_output
+    end
+    it "should create the proper files" do
+      "compress_delete_files.txt".should match_expected_output
+    end
+    it "should write the proper messages on STDERR" do
+      "compress_delete_stderr.txt".should match_expected_output
+    end
+    it "should write nothing on STDOUT" do
+      "output/test_actual/compress_delete_stdout.txt".should be_an_empty_file
+    end
+    after :all do
+      backtrace
+      exec_on_success("rm -rf data/test/archive/compress")
+      exec_on_success("rm -rf output/test_actual/compress")
+      exec_on_success("rm -rf output/test_actual/compress_delete_files.txt")
+      exec_on_success("rm -rf output/test_actual/compress_files_before.txt")
+      exec_on_success("rm -rf output/test_actual/compress_delete_stdout.txt")
+      exec_on_success("rm -rf output/test_actual/compress_delete_stderr.txt")
+    end
+  end
+  context "to a new directory --link" do
+    before :all do
+      exec("rm -rf data/test/archive/compress")
+      exec("rm -rf output/test_actual/compress")
+      exec("rm -rf output/test_actual/compress_link_files.txt")
+      exec("rm -rf output/test_actual/compress_link_links.txt")
+      exec("rm -rf output/test_actual/compress_files_before.txt")
+      exec("rm -rf output/test_actual/compress_link_stdout.txt")
+      exec("rm -rf output/test_actual/compress_link_stderr.txt")
+      exec("cp -r data/test/archive/compress_init data/test/archive/compress")
+      exec("bun compress --link data/test/archive/compress output/test_actual/compress \
+                2>output/test_actual/compress_link_stderr.txt \
+                >output/test_actual/compress_link_stdout.txt")
+      exec("find data/test/archive/compress -print >output/test_actual/compress_files_before.txt")
+      exec("find output/test_actual/compress -print >output/test_actual/compress_link_files.txt")
+      exec("ls -l `find output/test_actual/compress -type l -print` | sed 's/^.*:[0-9][0-9] output/output/' >output/test_actual/compress_link_links.txt")
+    end
+    it "should leave the original directory alone" do
+      "compress_files_before.txt".should match_expected_output
+    end
+    it "should create the proper files" do
+      "compress_link_files.txt".should match_expected_output
+    end
+    it "should create the proper links" do
+      "compress_link_links.txt".should match_expected_output
+    end
+    it "should write the proper messages on STDERR" do
+      "compress_link_stderr.txt".should match_expected_output
+    end
+    it "should write nothing on STDOUT" do
+      "output/test_actual/compress_link_stdout.txt".should be_an_empty_file
+    end
+    after :all do
+      backtrace
+      exec_on_success("rm -rf data/test/archive/compress")
+      exec_on_success("rm -rf output/test_actual/compress")
+      exec_on_success("rm -rf output/test_actual/compress_link_files.txt")
+      exec_on_success("rm -rf output/test_actual/compress_link_links.txt")
+      exec_on_success("rm -rf output/test_actual/compress_files_before.txt")
+      exec_on_success("rm -rf output/test_actual/compress_link_stdout.txt")
+      exec_on_success("rm -rf output/test_actual/compress_link_stderr.txt")
     end
   end
   context "to an existing directory" do
@@ -158,7 +238,7 @@ describe "compress" do
       exec("rm -rf output/test_actual/compress_stderr_inplace.txt")
       exec("cp -r data/test/archive/compress_init data/test/archive/compress")
       exec("find data/test/archive/compress -print >output/test_actual/compress_files_before.txt")
-      exec("bun compress data/test/archive/compress \
+      exec("bun compress --delete data/test/archive/compress \
                 2>output/test_actual/compress_stderr_inplace.txt >output/test_actual/compress_stdout_inplace.txt")
       exec("find data/test/archive/compress -print >output/test_actual/compress_files_inplace.txt")
     end
@@ -199,7 +279,7 @@ describe "compress" do
       exec("rm -rf output/test_actual/compress_conflict_stderr.txt")
       exec("cp -r data/test/archive/compress_conflict_init data/test/archive/compress_conflict")
       exec("find data/test/archive/compress_conflict -print >output/test_actual/compress_conflict_files_before.txt")
-      exec("bun compress data/test/archive/compress_conflict output/test_actual/compress_conflict \
+      exec("bun compress --delete data/test/archive/compress_conflict output/test_actual/compress_conflict \
                 2>output/test_actual/compress_conflict_stderr.txt \
                 >output/test_actual/compress_conflict_stdout.txt")
       exec("find output/test_actual/compress_conflict -print >output/test_actual/compress_conflict_files.txt")

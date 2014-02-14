@@ -2,18 +2,20 @@
 # -*- encoding: us-ascii -*-
 
 desc "translate [OPTIONS] FROM TO", "Process an archive, start to finish"
-option "catalog",  :aliases=>'-c', :type=>'string',   :desc=>"Location of the catalog listing"
-option 'fix',      :aliases=>'-F', :type=>'boolean',  :desc=>"Attempt to repair errors"
-option 'flatten',  :aliases=>'-n', :type=>'boolean',  :desc=>"Flatten out subdirectories"
-option "force",    :aliases=>'-f', :type=>'boolean', :desc=>"Overwrite existing files"
-option "links",    :aliases=>'-l', :type=>'string',   :desc=>"Prefix for symlinks"
-option "quiet",    :aliases=>'-q', :type=>'boolean',  :desc=>"Don't announce each step of the process"
-option "source",   :aliases=>'-S', :type=>'string',   :desc=>"Location of the original archive"
-option "steps",    :aliases=>'-s', :type=>'string',   :desc=>"What steps to perform?", :default=>'all'
-option "strict",   :aliases=>'-C', :type=>'boolean',  :desc=>"Only unpack files of the form ar999.9999"
-option "tests",    :aliases=>'-T', :type=>'boolean',  :desc=>"Rebuild the test cases for this software"
-option "to",       :aliases=>'-t', :type=>'string',   :desc=>"Directory to contain the output archives"
-option "usage",    :aliases=>'-u', :type=>'boolean',  :desc=>"List the steps in the translation process"
+option "catalog",    :aliases=>'-c', :type=>'string',   :desc=>"Location of the catalog listing"
+option 'delete',     :aliases=>'-d', :type=>'boolean',  :desc=>"Delete all duplicate files?"
+option 'fix',        :aliases=>'-F', :type=>'boolean',  :desc=>"Attempt to repair errors"
+option 'flatten',    :aliases=>'-n', :type=>'boolean',  :desc=>"Flatten out subdirectories"
+option "force",      :aliases=>'-f', :type=>'boolean',  :desc=>"Overwrite existing files"
+option 'link',       :aliases=>'-l', :type=>'boolean',  :desc=>"Create symlinks for duplicate files?"
+option "prefix",     :aliases=>'-p', :type=>'string',   :desc=>"Prefix for symlinks to archive directories"
+option "quiet",      :aliases=>'-q', :type=>'boolean',  :desc=>"Don't announce each step of the process"
+option "source",     :aliases=>'-S', :type=>'string',   :desc=>"Location of the original archive"
+option "steps",      :aliases=>'-s', :type=>'string',   :desc=>"What steps to perform?", :default=>'all'
+option "strict",     :aliases=>'-C', :type=>'boolean',  :desc=>"Only unpack files of the form ar999.9999"
+option "tests",      :aliases=>'-T', :type=>'boolean',  :desc=>"Rebuild the test cases for this software"
+option "to",         :aliases=>'-t', :type=>'string',   :desc=>"Directory to contain the output archives"
+option "usage",      :aliases=>'-u', :type=>'boolean',  :desc=>"List the steps in the translation process"
 
 DESC_TEXT = <<-EOT
 Process an archive of Honeywell binary backup tapes, from start to finish. \\
@@ -37,6 +39,8 @@ Some convenience abbreviations are allowed:
     xxx.. (or xxx...)                 All steps beginning with xxx
     xxx..yyy                          Steps xxx to yyy
     xxx...yyy                         Steps xxx to the step before yyy
+
+See bun help compress for description of the --delete and --link parameters
 EOT
 long_desc DESC_TEXT.freeze_for_thor
 def translate(from=nil, to=nil)

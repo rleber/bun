@@ -83,8 +83,10 @@ module Bun
     # This prevents mv a=>b from creating b/a if b exists and is a directory
     # IT WILL CLOBBER FILES
     def mv_f(from, to, options={})
+      temp = File.temporary_file_name('mv_f_')
+      mv from, temp, options
       rm_rf to, options
-      mv from, to, options
+      mv temp, to, options
     end
     
     # Move with creating any necessary directories first

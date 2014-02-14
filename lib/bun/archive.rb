@@ -99,6 +99,7 @@ module Bun
             from = @directories[:decoded]
             clear_stage :compressed, options
             compress @directories[:decoded], @directories[:compressed], 
+              delete: options[:delete], link: options[:link],
               force: options[:force], quiet: options[:quiet]
             build_symlink :decoded if options[:links] && options[:force]
           when 'bake'
@@ -510,7 +511,13 @@ module Bun
       
       # Phase I: Remove duplicates
       duplicates('digest').each do |key, files|
-        duplicate_files = files[1..-1]
+        if options[:delete] # Remove ALL duplicates, even if their target files aren't the same
+          duplicate_files = files[1..-1]
+        else # Keep duplicates (except remove duplicate copies with the same target source path)
+          duplicate_files = files.group_by {|f| target_file(f)} # Group by target files
+                                 .map {|g, files| files[1..-1]} # Delete all but the first file in each group
+                                 .flatten
+        end
         duplicate_files.each do |file|
           rel_file = relative_path(file)
           warn "Delete #{rel_file}" unless options[:quiet]
@@ -519,15 +526,26 @@ module Bun
       end
 
       # Phase II: Compress dated freeze file archives and dated tape files
-      compact_files(options) do |path|
-        path_without_dated_directory = path.sub(/_\d{8}(?:_\d{6})?(?=\/)/,'')
-        ext = File.extname(path_without_dated_directory)
-        path_without_dates = path_without_dated_directory.sub(/(?:\.v\d+)?((?:#{Regexp.escape(ext)})?)\/tape[\._]ar\d+\.\d+_\d{8}(?:_\d{6})?#{Regexp.escape(ext)}$/,'\1')
-        path_without_dates += ext unless File.extname(path_without_dates) == ext
-        path_without_dates
+      compact_files(options) {|path| target_file(path) }
+
+      # Phase III: Link duplicate files to the oldest original (if options[:link])
+      if options[:link]
+        duplicates('digest').each do |key, files|
+          next unless files.size > 1
+          to = files.first
+          rel_to = relative_path(to)
+          files[1..-1].each do |file|
+            rel_file = relative_path(file)
+            warn "Link #{rel_file} to #{rel_to}" unless options[:quiet]
+            unless options[:dryrun]
+              shell.rm_rf(file)
+              shell.ln_s(to, file)
+            end
+          end
+        end
       end
 
-      # Phase III: Remove empty directories
+      # Phase IV: Remove empty directories
       # Thanks to http://stackoverflow.com/questions/1290670/ruby-how-do-i-recursively-find-and-remove-empty-directories
       all.select { |d| File.directory?(d)} \
          .reverse_each do |d| 
@@ -543,7 +561,16 @@ module Bun
       Archive.duplicates(trait, leaves.to_a, options)
     end
 
+    def target_file(path)
+      path_without_dated_directory = path.sub(/_\d{8}(?:_\d{6})?(?=\/)/,'')
+      ext = File.extname(path_without_dated_directory)
+      path_without_dates = path_without_dated_directory.sub(/(?:\.v\d+)?((?:#{Regexp.escape(ext)})?)\/tape[\._]ar\d+\.\d+_\d{8}(?:_\d{6})?#{Regexp.escape(ext)}$/,'\1')
+      path_without_dates += ext unless File.extname(path_without_dates) == ext
+      path_without_dates
+    end
+
     def compact_files(options={}, &blk)
+      # TODO What if a file is the target of a symlink? Currently, this will create a lot of dangling links
       shell = Shell.new
       groups = leaves.to_a.group_by {|path| yield(path) }
       groups.each do |group, files|
