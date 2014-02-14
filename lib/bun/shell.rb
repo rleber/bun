@@ -78,10 +78,19 @@ module Bun
     def mv(from, to, options={})
       _run "mv", from, to, options
     end
+
+    # "Forced" move: delete existing file, if any, first
+    # This prevents mv a=>b from creating b/a if b exists and is a directory
+    # IT WILL CLOBBER FILES
+    def mv_f(from, to, options={})
+      rm_rf to, options
+      mv from, to, options
+    end
     
+    # Move with creating any necessary directories first
     def mv_p(from, to, options={})
       mkdir_p File.dirname(to), options
-      mv from, to, options
+      mv_f from, to, options
     end
 
     # Move file, avoiding possible conflicts by moving conflicting files using "versioning"

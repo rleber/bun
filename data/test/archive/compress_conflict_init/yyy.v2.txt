@@ -1,0 +1,67 @@
+---
+:identifier: Bun
+:block_count: 1
+:block_padding_repairs: 0
+:catalog_time: 1984-04-06 00:00:00.000000000 -05:00
+:decode_time: 2014-01-24 10:44:09.374088000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
+:description: ''
+:digest: c4994e1c497136b07d0a5ab90891fc79
+:first_block_size: 334
+:format: :decoded
+:llink_count: 2
+:owner: fass
+:path: fass/bj/dense
+:tape: ar106.2532
+:tape_size: 334
+:text_size: 825
+:type: :text
+:unpack_time: 2014-01-24 10:32:13.863066000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
+:content: ! '.so 84macr.t
+
+  .bs 1 1 "Dense Packman"
+
+  .sd
+
+  (FLIGHT OF THE VALKYRIES)
+
+  .xx ANNOUNCER
+
+  And now, a brand new video game for your Safari computer.  You''ve
+
+  played PAC-MAN, you''ve played Ms. PAC-MAN and you''ve played Baby PAC-MAN.
+
+  But have you got what it takes for....
+
+  .ce
+
+  DENSE PAC-MAN!!
+
+  Now we adds a new dimension to video games by combining
+
+  TWO popular games, PAC-MAN and Missile Command, into one.
+
+  In DENSE PAC-MAN, you get 100, count ''em, 100 Power Pills.  But!  They''re
+
+  all in one place.  And any attempt to use them blows up the video game.
+
+  It''s tough, but exciting.  Get DENSE PAC-MAN wherever land-based video
+
+  games are sold.
+
+  .ld
+
+  (LIGHTS DOWN)
+
+  .ad
+
+  (NEEDS GOOD VISUAL EFFECTS ON VIDEO SCREEN; IDEALLY WE WOULD ALSO HAVE
+
+  A SHOT OF A MUSHROOM CLOUD
+
+  RISING IN A VACANT LOT BETWEEN TWO BUILDINGS WHERE A VIDEO ARCADE USED
+
+  TO BE)
+
+'

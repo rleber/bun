@@ -520,8 +520,11 @@ module Bun
 
       # Phase II: Compress dated freeze file archives and dated tape files
       compact_files(options) do |path|
-        path.sub(/_\d{8}(?:_\d{6})?(?=\/)/,'')
-            .sub(/(?:\.v\d+)?\/tape[\._]ar\d+\.\d+_\d{8}(?:_\d{6})?((?:\.\w+)?)$/,'\1')
+        path_without_dated_directory = path.sub(/_\d{8}(?:_\d{6})?(?=\/)/,'')
+        ext = File.extname(path_without_dated_directory)
+        path_without_dates = path_without_dated_directory.sub(/(?:\.v\d+)?((?:#{Regexp.escape(ext)})?)\/tape[\._]ar\d+\.\d+_\d{8}(?:_\d{6})?#{Regexp.escape(ext)}$/,'\1')
+        path_without_dates += ext unless File.extname(path_without_dates) == ext
+        path_without_dates
       end
 
       # Phase III: Remove empty directories
@@ -550,6 +553,8 @@ module Bun
         dest = group
         dest += File.extname(primary_file) unless File.extname(dest)==File.extname(primary_file)
         conflict_set = File.conflicting_files(dest)
+        file_parents = files.map{|f| File.dirname(f)}
+        conflict_set.reject!{|f| file_parents.include?(f) }
         files += conflict_set
         files.uniq!
         shell.merge_files(files, dest) do |move| # Messaging block

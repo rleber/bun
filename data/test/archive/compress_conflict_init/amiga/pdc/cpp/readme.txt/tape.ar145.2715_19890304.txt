@@ -1,0 +1,75 @@
+---
+:identifier: Bun
+:block_count: 1
+:block_padding_repairs: 0
+:catalog_time: 1989-03-04 00:00:00.000000000 -05:00
+:decode_time: 2014-02-04 09:50:37.592289000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:e839a0ef95c6cc2e8ab1ac28a0f587fc393d85ee]
+:description: ''
+:digest: ca51885331268681469ea2beeb181dfe
+:first_block_size: 1618
+:format: :decoded
+:llink_count: 2
+:owner: rhosler
+:path: rhosler/amiga/pdc/cpp/readme.txt
+:tape: ar145.2715
+:tape_size: 1618
+:text_size: 4421
+:type: :text
+:unpack_time: 2014-02-01 21:13:35.359639000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:89e6db96f9aa2f50326aea8c9847f5ce77400e24]
+:content: ! "\nDecus cpp is a public-domain implementation of the C preprocessor.\nIt
+  runs on VMS native (Vax C), VMS compatibilty mode (Decus C),\nRSX-11M, RSTS/E, P/OS,
+  and RT11, as well as on several varieties\nof Unix, including Ultrix.  Decus cpp
+  attempts to implement features\nin the Draft ANSI Standard for the C language.  It
+  should be noted,\nhowever, that this standard is under active development:  the
+  current\ndraft of the standard explicitly states that \"readers are requested\nnot
+  to specify or claim conformance to this draft.\"  Thus readers\nand users of Decus
+  cpp should not assume that it conforms to the\ndraft standard, or that it will conform
+  to the actual C language\nstandard.\n\nThese notes describe how to extract the cpp
+  source files, configure it\nfor your needs, and mention a few design decisions that
+  may be of interest\nto maintainers.\n\n\t\t\tInstallation\n\nBecause the primary
+  development of cpp was not on Unix, it\nis distributed using the Decus C archive
+  program (quite similar\nto the archiver published in Kernighan and Plauger's Software\nTools).
+  \ To extract the files from the net.sources distribution,\nsave this message as
+  cpp1.arc and the other two distribution\nfiles as cpp2.arc and cpp3.arc.  Then,
+  using your favorite editor,\nlocate the archx.c program, just following the line
+  beginning with\n\"-h- archx.c\" -- the format of the distribution is just:\n\n    -h-
+  readme.txt\n      ... this file\n    -h- cpp.mem\n      ... description of cpp\n
+  \   -h- archx.c\n      ... archx.c program -- extracts archives\n    -h- archc.c\n
+  \     ... archc.c program -- creates archives\n\nCompile archx.c -- it shouldn't
+  require any special editing.\nThen run it as follows:\n\n    archx *.arc\n\nYou
+  do not need to remove mail headers from the saved messages.\n\nYou should then read
+  through cppdef.h to make sure the HOST and\nTARGET (and other implementation-specific)
+  definitions are set\ncorrectly for your machine, editing them as needed.\n\nYou
+  may then copy makefile.txt to Makefile, editing it as needed\nfor your particular
+  system.  On Unix, cpp should be compiled\nby make without further difficulty.  On
+  other operating systems,\nyou should compile the six source modules, linking them
+  together.\nNote that, on Decus C based systems, you must extend the default\nstack
+  allocation.  The Decus C build utility will create the\nappropriate command file.\n\n\t\t\tSupport
+  Notes\n\nThe USENET distribution kit was designed to keep all submissions around\n50,000
+  bytes:\n\ncpp1.arc:\n\treadme.txt\tThis file\n\tcpp.mem\t\tDocumentation page (see
+  below)\n\tarchx.c\t\tArchive extraction program\n\tarchc.c\t\tArchive construction
+  program\n\tcpp.rno\t\tSource for cpp.mem (see below)\n\tmakefile.txt\tUnix makefile
+  -- copy to Makefile\n\tcpp.h\t\tMain header file (structure def's and globals)\n\tcppdef.h\tConfiguration
+  file (host and target definitions)\n\ncpp2.arc:\n\tcpp1.c\t\tMainline code, documentation
+  master sources\n\tcpp2.c\t\tmost #control processing\n\tcpp3.c\t\tfilename stuff
+  and command line parsing\ncpp3.arc:\n\tcpp4.c\t\t#define processor\n\tcpp5.c\t\t#if
+  <expr> processor\n\tcpp6.c\t\tSupport code (symbol table and I/O routines)\n\t\nCpp
+  intentionally does not rely on the presence of a full-scale\nmacro preprocessor,
+  it does require the simple parameter substitution\npreprocessor capabilities of
+  Unix V6 and Decus C.  If your C\nlanguage lacks full preprocessing, you should make
+  sure \"nomacargs\"\nis #define'd in cpp.h.  (This is done automatically by the Decus
+  C\ncompiler.)\n\nThe documentation (manual page) for cpp is included as cpp.mem\nand
+  cpp.rno.  Cpp.rno is in Dec Runoff format, built by a Decus C\nutility (getrno)
+  from original source which is embedded in cpp1.c.\nTo my knowledge, there is no
+  equivalent program that creates\nthe nroff source appropriate for Unix.\n\nI would
+  be happy to receive fixes to any problems you encounter.\nAs I do not maintain distribution
+  kit base-levels, bare-bones\ndiff listings without sufficient context are not very
+  useful.\nIt is unlikely that I can find time to help you with other\ndifficulties.\n\n\t\t\tAcknowledgements\n\nI
+  received a great deal of help from many people in debugging cpp.\nAlan Feuer and
+  Sam Kendall used \"state of the art\" run-time code\ncheckers to locate several
+  errors.  Ed Keiser found problems when\ncpp was used on machines with different
+  int and pointer sizes.\nDave Conroy helped with the initial debugging, while Arthur
+  Olsen\nand George Rosenberg found (and solved) several problems in the\nfirst USENET
+  release.\n\nMartin Minow\ndecvax!minow\n\n"

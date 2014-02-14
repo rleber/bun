@@ -1,0 +1,216 @@
+---
+:identifier: Bun
+:block_count: 9
+:block_padding_repairs: 8
+:catalog_time: 1986-10-30 00:00:00.000000000 -05:00
+:decode_time: 2014-01-24 10:46:52.091508000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
+:description: ''
+:digest: 4d3da72850ff9e217b56a70ec6bfae4f
+:first_block_size: 3857
+:format: :decoded
+:owner: jagardner
+:path: 1985/fass/songs.f
+:tape: ar126.0527
+:tape_size: 34276
+:text_size: 15267
+:time: 1986-04-30 12:29:23.000000000 -04:00
+:type: :frozen
+:unpack_time: 2014-01-24 10:33:24.936439000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
+:content: ! ".so macr.t\n.bs 0 1978 \"SONGS\"\n.sb \"OPENING SONG\" \"THE MUPPETS
+  THEME\"\nIt's time to put on make-up\nIt's time to light the lights\nIt's time to
+  raise the curtain\nOn the FASS show tonight.\n.ve 5\nThis year the script's all
+  written - WOW!\nThis year the work's all done - Uh-Huh\nThis year the songs are
+  easy\nSo we're out to have some fun.\n.ve 5\nThe folks have paid their money\nThe
+  lights are going down\nThe ushers block the doors\nAs the treasurer blows town.\n.ve
+  5\nLet's knock up all the sets now\nLet's knock up all the cast\nLet's take it from
+  the bottom\nAnd take the money fast.\n.ve 5\nCan't say we didn't warn you.\nCan't
+  say the time's not right.\nCan't say it isn't worth it\nOn the FASS show tonight!!!!!!\n.ex\n.sb
+  \"SERGEANT FRIDAY'S CEMENT GALOSHES GANG\" \"SERGEANT PEPPER'S\"\nIt was twenty
+  years ago today\nProhibition in the U.S.A.\nGave all the gangs their winning style\nAnd
+  the morals of a crocodile\nSo let us entertain for you,\nThe Thugs you've known
+  for all these years\nSergeant Friday's Cement Galoshes Gang!!!\n.ve 6\nWe're Sergeant
+  Friday's Cement Galoshes Gang\nWe hope you will enjoy the show\nSergeant Friday's
+  Intransigent Cement Galoshes Gang\nWe hope that you have lots of dough\nSergeant
+  Friday's Cement, Sergeant Friday's Cement\nSergeant Friday's Cement Galoshes Gang.\n.ve
+  3\n  It's wonderful to be here, it's certainly a gas\n  We hope you play the tables\n
+  \ And we hope you lose your ass...ets\n.ve 6\nWe're Sergeant Friday's Cement Galoshes
+  Gang\nWe rape and steal and loot and kill\nWe're Sergeant Friday's Cement Galoshes
+  Gang\nOur good points...are practically nil;\nSergeant Friday's Cement, Sergeant
+  Friday's Cement,\nSergeant Friday's Cement Galoshes Gaaaaannnnnngggggg!!!!\n.ex\n.sb
+  \"SHINE ON HARVEST MOON\" \"EVERY DISCO SONG IN THE WORLD\"\nShine on, Shine on,
+  Shine on harvest moon,\n(Up in the sky) Shine on, Shine on harvest moon\n(For me
+  and my gal)\n.ve 5\nI ain't had no lovin'\n(He ain't had no lovin')\nI ain't had
+  no lovin' \nSince January February June or July\n(Come on baby and shine on)\n.ve
+  5\nAhh, shine on, shine on, shine on,\nShine on, shine on tonight Harvest Moon (dooo,
+  dooo)\nGet up and Shine on, get up and shine on\nShine shine shine; shine shine
+  shine,\nShine on Moonie, Shine on Moonie,\n.ve 7\nShine on, shine on, shine on Harvest
+  Moon\nAin't no, ain't no, ain't no time to spoon\n(Or knife and fork)\nShine on,
+  shine on Harvest Moon\nShine on (STAR WARS) Harvest moon....\nShine shine shine
+  shine shine shine shine\nHarvest Moon.\n.ex\n.sb \"GET DOWN FUNKY MAMA\" \"SOMETHING
+  BARBERSHOPPISH\"\nI had a teddy bear\nHis name was Funky Wunky.\nBut one day Mama,
+  you put him away,\nYou said he was too junky.\n.ve 5\nI saw him in the closet\nAs
+  high as he could be\nOh Mama, I miss Funky\nPlease get him down for me, me, meeeeee\n(Get
+  him down for me)\n.ve 4\n  Oh get down Funky, Mama\n  From that high old, high old
+  shelf,\n  Please get down Funky, Mama\n  Or I'll try to do it myself.\n.ve 4\nI
+  climbed a rocking chair\nThe hall door open wide\nI'd get down Funky myself Mama\nSo
+  I'd be satisfied.\n.ve 5\nI knew that I could do it\nCould do it, do it, do it,\nYes,
+  do it, do it, do it,\nTill I was satisfied....\n(Oh so very very satisfied)\n.ve
+  1\n   CHORUS\n.ex\n.sb  \"I LOVE ROLLING IN THE SCUM\" \"I LOVE LITTLE BABY DUCKS\"\nI
+  love rolling in the scum\nStaring at the sun\nBurning out my eyes\nAnd flies.\n.ve
+  5\nI love eating ciggie butts\nPuking up my guts\nPunching out my mom\nAnd bombs.\nBut
+  I sure hate you.\n.ve 4\nI love wearing bits of junk\nBeing called a punk\nSlashing
+  up my wrists\nAnd fists.\n.ve 5\nI love eating squirmy frogs,\nMaiming puppy dogs,\nHitting
+  folks with eggs\nAnd Plagues.\nBut I sure hate you.\n.ve 4\nI love telling awful
+  puns\nMaking fun of nuns\nPounding out the pope\nAnd dope.\n.ve 5\nI love setting
+  fire to cats\nSquashing ladies' hats\nLooking really sleazy\nAnd cheesies.\nBut
+  I sure hate you.\n.ex\n.sb \"TIGHTS AND WHITE SATIN\" \"NIGHTS IN WHITE SATIN\"\nTights
+  and White Satin\nNever seeming to yield\nTwirling my baton\nPlaying the field\n.ve
+  6\nBeauties I envy\nBecause I'm a bore\nJust what my gender is\nI can't say anymore....\n
+  \ 'Cause I'm ugly....\n  Yes I'm ugly, Oh how I'm ugly.....\n.ex\n.sb \"DANIELLE
+  BOOMBOOM\" \"DANIEL BOONE\"\nDanielle Boomboom was a man,\nBut a cute man,\nWith
+  a face like a beagle\nAnd a nose like a fountain was he.\n.ve 6\n  From the coonskin
+  wig\n  On the top of old Dan\n  To the tip of his high-heeled shoes\n  He's the
+  bounciest, flounciest,\n  Jounciest man,\n  The casino ever knew...\n.ex\n.sb \"I'M
+  A GREAT BIG CENTIPEDE\" \"NOTHING COULD BE FINER\"\nI'm a great big centipede\nAnd
+  I'm about to have a feed\nIn Oshawa\nStomping down the 401\nTo Oshawa to have some
+  fun\nName's Joshua\nI'll tromp all over GM\nAnd then I'll do it again\nI'll knock
+  down all the steeples\nAnd I'll pulverise the people\nThere in Oshawa.\n.ex\n.sb
+  \"WHO'S AFRAID OF A LITTLE BEER\" \"WHO'S AFRAID OF THE BIG BAD WOLF\"\nWho's afraid
+  of a little beer\nA little beer, a little beer\nI'm as good as an engineer\nAn engineer
+  or worse\n.ve 4\nThe studio's filling quickly\nBut I don't care no more\n'cause
+  this will make it easy\nI can drink it off the floor\n.ve 4\nI think I must be German\nI
+  can really hold my beer\nI'm certain that I'm German\nOr else an engineer\n.ve 4\nI
+  know it's not October\nBut this could be handled best\nIf we play like it's October\nAnd
+  hold Oktoberfest\n.ve 4\nThere's going to be a flood soon\nThat'll make a sticky
+  mess\nWe all may end up drowned then\nBut we'll die in happiness\n.ve 4\n.ve 4\nI
+  tried to warn him early\nBut he wouldn't listen to me\nIt's too late to escape now\nBut
+  at least the beer is free\n.ve 1\nCHORUS\n.ex\n.sb \"SCARBOROUGH FAIR/DEBACLE\"
+  \"SCARBOROUGH FAIR/CANTICLE\"\nObi: Do you want to do it or not?\n     You had best
+  respond with a yes\n     Remember we don't tolerate failure\n     Louse this up,
+  and You'll be a mess.\n.ve 9\nNun: We've decided to give you a job\nRic: (There
+  won't be a foul-up)\nNun: Do it right, and you will be praised\nRic: (I'll free
+  them then lead them to Acme's back room)\nNun: But do it wrong, and Babe it's so
+  long\nRic: (There their two necromancers\n      Will drag from them some answers)\nNun:
+  Down so low, you'll never be raised.\nRic: (Give us the info on their expose)\n.ve
+  10\nN&O: Leave us now, and follow the plan\nR&B: (Yes sir boss, sure thing boss,
+  right boss)\nN&O: Do it fast, we haven't much thyme\nR&B: (Yes sir boss, sure thing\n
+  \     the mission's accomplished before it's begun)\nN&O: Just free the two, you
+  know what to do\nR&B: (We'll free the two, yes we know just exactly,\n      we know
+  just what to do ...)\nN&O: Else this job will be your last crime\nR&B: (Breakouts
+  from prison are oodles of fun)\n.ex\n.sb \"You Mess Up My Life\" \"You Light Up
+  My Life\"\nRocko: Just when I think everything's rosy,\n       You come along and
+  screw up the works.\nChuck: Time after time, I go off on a mission,\n       Only
+  to find, that you got there first.\n.ve 4\nBoth : Oh, you mess up my life,\n       You
+  make me want to call it quits.\n       You are a blight,\n       And fill my nights
+  with fits.\n.ve 4\nRocko: Thinking of you, always butt-ing in,\n       is almost
+  enough to make me choke.\nChuck: Rage overcomes me, and I blow my cool,\n       You
+  make me want to give you a poke.\n.ve 4\nBoth:  Oh, you mess up my life,\n       You
+  make me want to call it quits.\n       You are a blight,\n       And fill my nights
+  with fits.\n.ve 7\n       Yes, you mess up my life,\n       You make me want to
+  call it quits.\n       You are a blight,\n       And fill my nights with fits.\n
+  \      It can't be right when it feels so wrong,\n       Cause, you___\n       You
+  mess up my life.\n.ex\n.sb \"Answer-the-door Song\" \"Toreador Song\"\nSTAN: Answer
+  the door, Beauregard!\n      Answer the door,\n      Answer the door.     \n.ve
+  4\nBEAU: I'm coming, hold your horses, I implore!\n      Please don't break down
+  the door!\n      I'm trying to open it, just wait a bit;\n      I'm trying to o-pen
+  it.\n.ex\n.sb \"Mozzarella Rockefeller\" \"Cinderella Rockefeller\"\nMOTT: Mozzarella,
+  Mozzarella is my name.\nBEAU: Pleased to meet ya, Mozzarella.\nMOTT: Have a crack
+  at interrogatin' this dame.\nBEAU: Sure thing fella, Mozzarella.\n.ve 6\nMOTT: My
+  name's Mozzarella.\nBEAU: Pleased to meet ya, fella.\nBOTH: Oh, o-o-oh.\nMOTT: I
+  gotta split,\n      Back in a bit,\n      I gotta split.\n.ex\n.sb \"WHO'S KNOCKING?\"
+  \"BARNACLE BILL\"\nSTAN: Who's that knocking at my door?\n      Who's that knocking
+  at my door?\n      Who's that knocking at my door?\n.ex\n(MADEIRA TEARS OPEN THE
+  DOOR, ABRUPTLY ENDING THE SONG. NO GREAT LOSS.\n.sb \"Interrogation Song\" \"Typewriter
+  Song\"\n.in -5\nBEAU: We've - got - sev'ral little questions\n          that we'd
+  like to ask of you,\n      Sev'ral questions that we'd like some answers for.\n.ve
+  3\nSTAN: Your cooperation's needed,\n          we'll make sure you're not mistreated;\n
+  \     Information's what we want and nothing more.\n.ve 3\nBEAU: If you're not exactly
+  willing,\n          we've got ways, bizarre and thrilling\n      Of convincing you
+  with methods you'll deplore:\n.ve 7\nSTAN: First we'll hit you and we'll beat you\n
+  \     Then we'll smash you and mistreat you\n      Then we'll fight you and defeat
+  you\n      We'll ignite you and we'll cheat you\n      We will shake your hands
+  and greet you\n      Then we'll rape you and we'll eat you - \n      You won't like
+  it much, of that I'm very sure.\n.ex\n.sb \"WAITING FOR GODOT\" \"AMERICA\"\n.in
+  -5\nSTAN: Pass me a torniquet; (PRONOUNCED \"TUR-NI-KET\")\n      I think there's
+  one on the table.\nBEAU: Can't find a thing, could we do it with string?\n.ve 5\nSTAN:
+  This kid's got no vessels.\nBEAU:                        His arm is a mess.\nBOTH:
+  \                                      And we're\n      Searching in vain for an
+  artery.\n      Searching in vain for an artery.\n.ex\n.sb \"I'll Beat Up Your Wife\"
+  \"You Light Up My Life\"\n.in -5\nBEAU: So many times we've asked you to help us,\n
+  \     Giving you questions whose answers we lack.\n.ve 3\nSTAN: So many threats
+  we haven't tried using;\n      We've been holding back,\n                     now
+  it's time to attack.\n.ve 5\nBEAU: And we'll beat up your wife.\nSTAN: we'll make
+  her wish she'd never been born.\nBEAU: We'll louse up her days\n      And fill her
+  nights\nBOTH:                     With pain.\n.ex\n.sb \"Nail and Tooth\" \"Heart
+  and Soul\"\n      Nail and tooth,\n      We fought to finish it\n      Nail and
+  tooth,\n      You won't diminish it.\n      Never\n      Will we confide in you.\n.ex\n.sb
+  \"Play it again\" \"Sam\"\n      Nail and tooth,\n      That's what the lady said.\n
+  \     Vile and ruth-\n      less villains we won't dread\n      Ever.\n      We'll
+  not reveal a word.\n.ex\n.sb \"Dynamite\" \"Silhouettes\"\n.in -5\nBEAU: We'll take
+  a walk around your house\nBOTH: Late some night.\nBEAU: Keeping quiet as a mouse.\nBOTH:
+  Out of sight.\n.ve 6\nBEAU: While you're sleeping we will plant\n      Some dynamite
+  at your door.\nSTAN: Terribly messy.\nBEAU: Dynamite\nSTAN:          Dynamite\nBOTH:
+  \                  At your door.\n.ve 10\nBEAU: We will ring the bell and then\nBOTH:
+  Run and hide.\nBEAU: You'll come down and pull your door\nBOTH: Open wide.\nBEAU:
+  Than we'll detonate and you'll\n      Be splattered across your door.\nSTAN: Terribly
+  messy.\nBEAU: Splattered a-\nSTAN:               Splattered a-\nBOTH:                             Cross
+  your door.\n.ve 10\nBEAU: Splattered a-\nSTAN:         Splattered a-\nBEAU:                 Splattered
+  a-\nSTAN:                         Splattered a-\nBEAU: Splattered a-\nSTAN:         Splattered
+  a-\nBOTH:                             Cross your door.\nSTAN: Terribly messy.\nBOTH:
+  Splattered across your door.\n.ve 6\nLOTUS:We aren't scared, we feel no fear.\nBEAU:
+  We've got threats to last a year.\nJIMMY:You can't hurt us.\nSTAN:                     Yes,
+  we\nS & B:                            Ca - a - a - an!\n.ex\n.sb \"What a friend
+  we have in Hitler\" \"Gotterdammerung\"\n    REPRISE\n.ex\n.sb \"Logoff\" \"Little
+  Darlin'\"\nSTAN: Boom,boom,boom,boom she ronna-ronna (etc)\nBEAU: When-a,\n      When-a
+  are-a you-a,\n      Gonna tell-a\n      All-a you-a can?\n.ve 5\n      If-a you-a
+  wait-a\n      Too-a much-a longer\n      I'll become\n      A vis-a-cious-a man.\nSTAN:
+  A-oo-a-oo-a-oo-a\n.ve 9\nBEAU: You'll-a find-a\n      That-a my-a partner\n      Can
+  be\n      A-vis-a-cious-a too,\n      And-a I-a\n      Can-a guar-a-an-a-tee-a\n
+  \     You-a won't-a like\n      The things-a we'll-a do.\nBOTH: Oo-oo,oo-oo-ooooh.\n.ve
+  10\nBEAU: (SPOKEN)\n      Now, Lotus and Jimmy,\n        I think we've been too
+  kind.\n      Soon things will be unpleasant,\n        As I'm sure you'll shortly
+  find.\n      You see, we took it easy,\n        Though now I wonder why,\n      For
+  now, my poor unfortunates,\n        The jokes are gonna fly.\n      The jokes are
+  gonna fly.\n.ex\n.sb \"The Punchline\" \"The Time Warp\"\nSTAN: It's astounding.\n
+  \     Jokes are sounding.\n      Humour takes its toll.\n      So listen closely,\nBEAU:
+  Not for very much longer.\nSTAN: I've got to keep control.\n.ve 5\n      I remember\n
+  \     Wearing the pork pie,\n      Telling a boffer when\n      The laughter would
+  hit me\n      And my partner'd be calling\n.ve 2\nBOTH: Let's try the punchline
+  again!\n      Let's try the punchline again!\n.ve 6\nBEAU: We'll relax you\n      Until
+  it attacks you,\n      Then it wracks you with fear and dread.\n      First the
+  lights will start dimming,\n      Soon your minds will be swimming\n      As humour
+  infests your head.\n.ve 5\nSTAN: You may think that your mind's fine,\nBEAU: Then
+  we'll tell you the punchline,\n      And slowly you'll start to go insane.\n      You'll
+  start tearing your hair for\nSTAN: These words fill you with terror:\n.ve 2\nBOTH:
+  Let's try the punchline again!\n      Let's try the punchline again!\n.ve 8\n      CHORUS:
+  First we make fun of the left,\n              And then we laugh at the right.\n
+  \             We tell political jokes\n              Where others pick a fight.\n
+  \             You need a sense of humour\n              To understand us when we
+  say\n              Let's try the punchline again!\n              Let's try the punchline
+  again!\n.ve 12\nSTAN: Well I was talkin' to a real\n           revolutionary\n      'Cause
+  I was tired of chattin'\n           with the bourgeoise.\n      He lectured a while,\n
+  \          he sounded mighty wise,\n      I said, \"Well, thank you, Sir!\"\n           and
+  got a big surprise:\n      The strangest thing,\n           it's one of Nature's
+  quirks;\n      His ears don't hear,\n           it's just his mouth that works!\n.ve
+  2\nBOTH: Let's try the punchline again!\n      Let's try the punchline again!\n.ex\n.sb
+  \"CLOSING SONG\" \"BROTHER LOVE'S TRAVELLING SALVATION SHOW\"\nSoooo\nWe say good-bye
+  with a tear in our eye\nAs we watch them all die on the stage.\nThe ex....\n..pose
+  was a fake, was a fatal mistake,\nBut they're certain to make the front page.\n.ve
+  4\nWell, it's sad to see\nBut that's how things go\nWe've got no one left\nSo that's
+  it for the show\n.ve 5\nAnd it's been FASS, yes it has, and what a gas\nThis is
+  the end of our show\nIt's time for the curtain and you can be certain\nWe're sorry
+  to go, but we have to you know\nThat's it for the show.\n.ve 6\nLights .....\nComing
+  down and they turn down the sound\nAnd we all go downtown for a beer\nStage...\nCrew
+  calls it a day, with the props put away\nIn the places they'll stay for a year.\n.ve
+  4\nBut when winter comes\nAround next time\nWe'll be back again\nWith FASS seventy-nine!\n.ve
+  5\nAnd it's been FASS, yes it has, and what a gas\nThis is the end of our show\nIt's
+  time for the curtain and you can be certain\nWe're sorry to go, but we have to you
+  know,\nThat's it for the show.\n.ex\n"
+:shard_number: 3
+:shard_name: '1978'
+:shard_time: 1986-04-11 11:38:06.000000000 -05:00
+:shard_blocks: 54
+:shard_start: 14352
+:shard_size: 3486
