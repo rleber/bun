@@ -796,36 +796,85 @@ module Bun
     end
 
     def fill_atom(piece)
-      case piece.type
-      when :whitespace
+      if [:whitespace, :end_of_line].include?(piece.type)
         return if @line_buffer.size==0 # Don't start lines with spaces
-        chunk = ' '
-      when :end_of_line
-        return if @line_buffer.size==0 # Don't start lines with spaces
-        return if @line_buffer.last==' ' # Not necessary to add to spacing
-        chunk = LINE_ENDINGS.include?(@line_buffer.last) ? '  ' : ' '
-      else
-        chunk = piece.output_text 
+        if [:whitespace, :end_of_line].include?(@line_buffer.last.type) # Not necessary to add to spacing
+          @line_buffer[-1] = piece
+          return
+        end
       end
-      next_buffer = @line_buffer + [chunk]
-      next_buffer_size = next_buffer.join.size
-      if next_buffer_size > net_line_length # Line overflow
-        if self.hyphenation_mode==0 || piece.type != :word
-          next_buffer = [chunk]
-        # TODO Check for hyphenation character
-        else # Attempt to hyphenate
+      if piece_type == :end_of_line
+        ws = ParsedNode.create(:whitespace, text: ' ', interval: piece.interval)
+        @line_buffer.pop
+        if @line_buffer.size>0 && LINE_ENDINGS.include?(@line_buffer[-1].output_text)
+          @line_buffer.push ws
+        end
+        @line_buffer.push ws
+      else
+        @line_buffer << [piece]
+      end
+      line_buffer_size = @line_buffer.map {|piece| piece.output_text }.join.size
+      if line_buffer_size > net_line_length 
+        return unless [:whitespace, :end_of_line].include?(piece.type) # Only break at whitespace
+        output_buffer_head
+      end
+    end
+
+    def flush(options={})
+      output_buffer_head
+      flush_remainder(options)
+    end
+
+    # Output as much of the buffer as you can
+    # Buffer should be longer than a line at this point; break it where you can
+    # If there's an exceptionally long word in there, this may take more than one line
+    def output_buffer_head
+      # Drop trailing hyphenation
+      while @line_buffer.size > 0
+        break unless @line_buffer.last.type == :whitespace
+        @line_buffer.pop
+      end
+      line_size = 0
+      parts = @line_buffer.group_by do |part|
+        line_size += part.output_text
+        line_size <= net_line_length
+      end
+      fits = parts[true]
+      overflows = parts[false]
+      if overflows.size > 0
+        if self.hyphenation_mode>0 && overflows[0].type == :word # Attempt to hyphenate
+          atom = overflows[0].output_text
+          next_buffer = fits + [overflows[0]]
+          next_buffer_text = next_buffer.map {|p| p.output_text }
+          next_buffer_size = next_buffer_text.map {|p| p.size }.sum
           minimum_suffix_size = next_buffer_size - net_line_length + HYPHEN.size
-          hyphenation_suffix = self.hyphenator.sentence_suffix(next_buffer, minimum_suffix_size)
-          if hyphenation_suffix == '' || hyphenation_suffix == chunk
-            next_buffer = [chunk]
+          hyphenation_suffix = self.hyphenator.sentence_suffix(next_buffer_text, minimum_suffix_size)
+          if hyphenation_suffix == '' || hyphenation_suffix == atom
+            next_buffer = overflows
           else
-            @line_buffer << (chunk[0...-(hyphenation_suffix.size)]+HYPHEN)
-            next_buffer = [hyphenation_suffix]
+            fits << (atom[0...-(hyphenation_suffix.size)]+HYPHEN)
+            hyphenation_suffix_interval = overflows[0].interval.dup
+            hyphenation_suffix_interval.begin += (atom.size - hyphenation_suffix.size)
+            next_buffer = [ParseNode.create(:word, text: hyphenation_suffix, interval: hyphenation_suffix_interval)]
           end
         end
-        flush
       end
-      @line_buffer = next_buffer
+
+      if piece.type == :whitespace
+        next_buffer = []
+      elsif self.hyphenation_mode==0 || piece.type != :word
+        next_buffer = [atom]
+      # TODO Check for hyphenation character
+      else # Attempt to hyphenate
+        minimum_suffix_size = next_buffer_size - net_line_length + HYPHEN.size
+        hyphenation_suffix = self.hyphenator.sentence_suffix(next_buffer, minimum_suffix_size)
+        if hyphenation_suffix == '' || hyphenation_suffix == atom
+          next_buffer = [atom]
+        else
+          @line_buffer << (atom[0...-(hyphenation_suffix.size)]+HYPHEN)
+          next_buffer = [hyphenation_suffix]
+        end
+      end
     end
 
     def net_line_length
@@ -850,7 +899,7 @@ module Bun
       flush(justify: false)
     end
 
-    def flush(options={})
+    def flush_remainder(options={})
       justify = options[:justify]!=false && (options[:justify] || self.justify)
       unless @line_buffer.size == 0
         show_state if @debug

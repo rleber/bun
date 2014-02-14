@@ -8,3 +8,8 @@ cp ~/fass_work/compressed/fass/1986/script/tfed.f/2.1.txt yyy.v1.txt
 cp ~/fass_work/compressed/fass/bj/dense.txt yyy.v2.txt
 mkdir yyy_20120314
 cp ~/fass_work/compressed/fass/idallen/roffinit.txt yyy_20120314/tape_ar99.9999_19990101_120000.txt
+mkdir -p a/s/ze.b
+cp ~/watbun_work/decoded/aangold/a/s/ze.b/tape.ar059.0073_19810519.txt a/s/ze.b/tape.ar059.0073_19810519.txt
+mkdir -p a/t4
+cp ~/watbun_work/decoded/aangold/a/t4/tape.ar058.3075_19810519.txt a/t4/tape.ar058.3075_19810519.txt
+cp ~/watbun_work/decoded/aangold/a/tape.ar056.1698_19810331.txt a/tape.ar056.1698_19810331.txt

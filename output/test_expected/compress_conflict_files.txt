@@ -1,4 +1,9 @@
 output/test_actual/compress_conflict
+output/test_actual/compress_conflict/a
+output/test_actual/compress_conflict/a/s
+output/test_actual/compress_conflict/a/s/ze.b.txt
+output/test_actual/compress_conflict/a/t4.txt
+output/test_actual/compress_conflict/a.txt
 output/test_actual/compress_conflict/xxx.v1.txt
 output/test_actual/compress_conflict/xxx.v2.txt
 output/test_actual/compress_conflict/yyy.v1.txt

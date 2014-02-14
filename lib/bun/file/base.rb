@@ -382,14 +382,12 @@ module Bun
       end
 
       # Note: returns an array of files that conflict with a proposed new file f. The
-      # set will always include at least one element (i.e. f)
       def conflicting_files(f)
         ext = File.extname(f)
         conflict_base = f.sub(/#{Regexp.escape(ext)}$/,'')
-        pat = /^#{Regexp.escape(conflict_base)}(?:\.v\d+)?(?:#{Regexp.escape(ext)})?$/
+        pat = /^#{Regexp.escape(conflict_base)}(?:\.v\d+)?#{Regexp.escape(ext)}$/
         Dir.glob(conflict_base+'*')
            .select {|file| file =~ pat }
-           .flat_map {|file| File.directory?(file) ? Dir.glob(file+"/**/*") : file}
       end
 
       # Create a set of moves that will merge a set of files to a destination without conflicts.

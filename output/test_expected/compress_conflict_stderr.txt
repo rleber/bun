@@ -1,6 +1,11 @@
+Compact a/s/ze.b/tape.ar059.0073_19810519.txt => a/s/ze.b.txt
+Compact a/t4/tape.ar058.3075_19810519.txt => a/t4.txt
+Compact a/tape.ar056.1698_19810331.txt => a.txt
 Move xxx.txt => xxx.v2.txt
 Move xxx/tape_ar99.9999_19990101_120000.txt => xxx.v1.txt
 Move yyy.v1.txt => yyy.v3.txt
 Compact yyy_20120314/tape_ar99.9999_19990101_120000.txt => yyy.v1.txt
 Delete yyy_20120314
 Delete xxx
+Delete a/t4
+Delete a/s/ze.b

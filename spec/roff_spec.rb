@@ -119,6 +119,8 @@ describe Bun::Roff do
   roff_std "undefined insertion", [".ic ^^", "Foo (expecting 0): ^(foo)"]
   roff_std "insertion in text", [".ic ^^", ".an (xx) 5", "Five is equal to ^(xx)"]
   roff_std "insertion in request", [".ic ^^", ".an (xx) 5", ".sp ^(xx)"]
+  roff_std "break after tight concluding punctuation", ["The ] coming up should appear at the end of xxx the line]"]
+  roff_std "break before word and concluding punctuation", ["The ] coming up should not appear at start of the xx line]"]
   # TODO Should not break lines between a word and a concluding punctuation mark (e.g. [-.,;:!?)\]}])
   # TODO Should not end a line on opening punctuation marks (e.g. [(\[{])
   # TODO Should handle quoted strings properly in normal text (e.g. "Hello, how are you?")

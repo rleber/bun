@@ -1,4 +1,11 @@
 data/test/archive/compress_conflict
+data/test/archive/compress_conflict/a
+data/test/archive/compress_conflict/a/s
+data/test/archive/compress_conflict/a/s/ze.b
+data/test/archive/compress_conflict/a/s/ze.b/tape.ar059.0073_19810519.txt
+data/test/archive/compress_conflict/a/t4
+data/test/archive/compress_conflict/a/t4/tape.ar058.3075_19810519.txt
+data/test/archive/compress_conflict/a/tape.ar056.1698_19810331.txt
 data/test/archive/compress_conflict/xxx
 data/test/archive/compress_conflict/xxx/tape_ar99.9999_19990101_120000.txt
 data/test/archive/compress_conflict/xxx.txt

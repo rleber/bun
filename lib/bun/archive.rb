@@ -550,7 +550,6 @@ module Bun
         dest = group
         dest += File.extname(primary_file) unless File.extname(dest)==File.extname(primary_file)
         conflict_set = File.conflicting_files(dest)
-        # TODO Should not conflict with ancestor directories of file that's being moved?
         files += conflict_set
         files.uniq!
         shell.merge_files(files, dest) do |move| # Messaging block
