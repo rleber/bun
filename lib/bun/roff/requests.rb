@@ -194,7 +194,7 @@ module Bun
     # .hc CHAR
     # Set hyphenation marker. Roff will attempt to hyphenate words here
     def hc_request(char, *_)
-      @hyphenation_character = char
+      @hyphenation_character = char.text
     end
 
     # .he '...'...'...'

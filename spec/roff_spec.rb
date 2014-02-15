@@ -120,11 +120,17 @@ describe Bun::Roff do
   roff_std "insertion in text", [".ic ^^", ".an (xx) 5", "Five is equal to ^(xx)"]
   roff_std "insertion in request", [".ic ^^", ".an (xx) 5", ".sp ^(xx)"]
   roff_std "break after tight concluding punctuation", ["The ] coming up should appear at the end of xxx the line]"]
+  roff_std "break in a word with contraction", ["This should not break thee word isn't"]
   roff_std "break before word and concluding punctuation", ["The ] coming up should not appear at start of the xx line]"]
-  # TODO Should not break lines between a word and a concluding punctuation mark (e.g. [-.,;:!?)\]}])
-  # TODO Should not end a line on opening punctuation marks (e.g. [(\[{])
-  # TODO Should handle quoted strings properly in normal text (e.g. "Hello, how are you?")
-  # TODO Should not break a line on contractions
-  # TODO Should handle hyphenation at hyphens
-  # TODO Should handle hyphenation at hyphenation marks
+  roff_std "break before word and preceding punctuation", ["The [ coming up should appear at start of the next [line"]
+  roff_std "break quoted strings", ['.qc "', 'This text should break the quoted string, "Hello, how are you doing today?"']
+  roff_std "hyphenation mode on", ['There should be hyphenation in this text']
+  roff_std "hyphenation mode off", ['.hy 0', "There shldn't be hyphenation in this text"]
+  roff_std "hyphenate long word", ['.hy 0', "This should break the word supercalifragilisticexpialidocious"]
+  roff_std "hyphenate long word 2", ['.hy 0', "This should break the word fddddddddddddddddddddddddddddddddd"]
+  roff_std "hyphenate long string", ['.hy 0', "This should break the text 012345678901234567890123456789"]
+  roff_std "hyphenate long string 2", ['.hy 0', "This should break the text ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]"]
+  roff_std "hyphenate at hyphen", ["This should break the.. text long-winded at the hyphen"]
+  roff_std "hyphenate at hyphenation mark disabled", ["This shouldnt break the text. fdd`dddd`ddd at the mark"]
+  roff_std "hyphenate at hyphenation mark", ['.hc `', "This should break the.. text. fdd`dddd`ddd at the mark"]
 end

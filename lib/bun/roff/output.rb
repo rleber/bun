@@ -55,12 +55,12 @@ module Bun
       line_buffer_size = @line_buffer.map {|piece| piece.output_text }.join.size
       if line_buffer_size > net_line_length 
         return unless [:whitespace, :end_of_line].include?(piece.type) # Only break at whitespace
-        output_buffer_head
+        fill_buffer
       end
     end
 
     def flush(options={})
-      output_buffer_head if self.fill
+      fill_buffer(options) if self.fill
       flush_buffer(@line_buffer, options)
       @line_buffer = []
     end
@@ -68,8 +68,10 @@ module Bun
     # Output as much of the buffer as you can
     # Buffer should be longer than a line at this point; break it where you can
     # If there's an exceptionally long word in there, this may take more than one line
-    def output_buffer_head
+    def fill_buffer(options={})
       next_line = []
+      unplaced_tokens = []
+      # Repeat line-by-line until the whole buffer is placed (a tail end may remain)
       loop do
         # Drop leading whitespace in a line
         while @line_buffer.size > 0
@@ -78,52 +80,111 @@ module Bun
         end
         break if @line_buffer.size == 0
         line_size = 0
-        overflow = []
-        hyphenated = false
-        hyphenated_count = 0
-        target_line_length = net_line_length
+        unplaced_tokens_size = 0
         last_interval_end = nil
+        tokens_placed = false
+        # Place tokens in unplaced_tokens; move them to line when they fit, breaking only at whitespace
         loop do
-          next_token = @line_buffer.first
-          next_line_size = line_size + next_token.output_text.size
-          if next_line_size > target_line_length
-            case next_token.type
-            when :whitespace, :end_of_line
-              overflow << next_token
-              break
-            when :word
-              break if overflow.size > 0
-              break if hyphenated
-              hyphenated = true
-              hyphenated_count = 0
-              syllables = hyphenate(@line_buffer.shift)
-              @line_buffer = syllables + @line_buffer
-              target_line_length = net_line_length - HYPHEN.size
-              next
+          next_token = @line_buffer.shift
+          next_output_text = next_token.output_text
+          line_size += next_output_text.size
+          unplaced_tokens_size += next_output_text.size
+          unplaced_tokens << next_token
+          if [:whitespace, :end_of_line].include?(next_token.type) 
+            if line_size - next_output_text.size <= net_line_length
+              next_line += unplaced_tokens
+              unplaced_tokens = []
+              unplaced_tokens_size = 0
+              tokens_placed = true
             else
-              overflow << next_token
+              break
             end
           end
-          next_line << @line_buffer.shift
-          last_interval_end = next_line[-1].interval.end
-          line_size = next_line_size
-          hyphenated_count += 1 if hyphenated
-          if @line_buffer.size == 0
-            @line_buffer = next_line
-            return
+          last_interval_end = next_token.interval.end
+          break if @line_buffer.size == 0
+        end
+        # At this point: 
+        # - @line_buffer has had several (possibly all) tokens shifted out of it,
+        # - next_line has some (possibly zero) tokens in it, all of which will fit in the next line
+        # - unplaced_tokens contains a set of tokens (possibly none) waiting to be placed; they may overflow the line
+        # - line_size contains the combined lengths of the tokens in next_line and unplaced_tokens
+        # - unplaced_tokens_size contains the combined length of the tokens in unplaced_tokens
+        break if line_size < net_line_length
+        hyphenated_tokens = unplaced_tokens.flat_map {|token| hyphenate(token)}
+        unplaced_tokens = []
+        unplaced_tokens_size = 0
+        target_line_length = net_line_length - HYPHEN.size
+        hyphenated_syllable_count = 0
+        while hyphenated_tokens.size > 0
+          token = hyphenated_tokens.last # Go in reverse
+          break if token.type==:word && hyphenated_syllable_count > 0 && line_size <= target_line_length
+          if token.output_text == "-" && hyphenated_syllable_count > 0 && line_size <= target_line_length
+            hyphenated_tokens.pop
+            break
+          end
+          unplaced_tokens.unshift(hyphenated_tokens.pop)
+          token_size = token.output_text.size
+          unplaced_tokens_size += token_size
+          line_size -= token_size
+          hyphenated_syllable_count = token.type == :word ? hyphenated_syllable_count + 1 : 0
+        end
+        if hyphenated_tokens.size > 0
+          next_line += hyphenated_tokens
+          next_line << ParsedNode.create(:other, text: HYPHEN, interval: Range.new(last_interval_end, last_interval_end, true)) \
+            if hyphenated_syllable_count > 0
+        else
+          if !tokens_placed && unplaced_tokens.size > 0 # Didn't place anything
+            if unplaced_tokens.first.output_text.size > net_line_length
+              long_token = unplaced_tokens.first
+              target_line_length = net_line_length
+              target_line_length -= HYPHEN.size if long_token.type==:word
+              next_line << ParsedNode.create(
+                             long_token.type,
+                             text: long_token.output_text[0, target_line_length],
+                             interval: Range.new(long_token.interval.begin, long_token.interval.begin+target_line_length, true)
+                           )
+              next_line << ParsedNode.create(
+                             :other,
+                             text: HYPHEN,
+                             interval: Range.new(long_token.interval.begin+target_line_length, long_token.interval.begin+target_line_length, true)
+                           ) if long_token.type == :word
+              unplaced_tokens[0] = ParsedNode.create(
+                                     long_token.type,
+                                     text: long_token.output_text[target_line_length..-1],
+                                     interval: Range.new(long_token.interval.begin+target_line_length, long_token.interval.end, true)
+                                   )
+            else
+              while unplaced_tokens.size > 0 do
+                token = unplaced_tokens.first
+                token_size = token.output_text.size
+                break if line_size + token_size > net_line_length
+                next_line << unplaced_tokens.shift
+                line_size += token_size
+              end
+            end
           end
         end
-        next_line << ParsedNode.create(:other, text: HYPHEN, interval: Range.new(last_interval_end, last_interval_end, true)) if hyphenated && hyphenated_count > 0
-        flush_buffer(next_line)
-        next_line = overflow
+        if unplaced_tokens.size==0 && @line_buffer.size==0
+          flush_buffer(next_line, options)
+        else
+          flush_buffer(next_line)
+        end
+        next_line = unplaced_tokens
+        unplaced_tokens = []
       end
-      @line_buffer = next_line
+      @line_buffer = next_line + unplaced_tokens
     end
 
     def hyphenate(word)
-      return [word] if self.hyphenation_mode ==0 || word.type != :word
+      return [word] if word.type != :word
+      return [word] if self.hyphenation_mode ==0 && word.output_text.size <= net_line_length
       start = word.interval.begin
-      self.hyphenator.hyphenate(word.output_text).map do |part|
+      if @hyphenation_character.to_s!="" && (s=word.output_text.split(@hyphenation_character)).size>1
+        parts = s
+      else
+        parts = self.hyphenator.hyphenate(word.output_text)
+      end 
+      parts.map do |part|
         part_range = Range.new(start, start+part.size, true)
         start += part.size
         ParsedNode.create(:word, text: part, interval: part_range)
