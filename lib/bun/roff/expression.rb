@@ -107,7 +107,7 @@ module Bun
 
     def convert_integer(arg, name)
       return arg if arg.is_a?(Integer) # Allow easy default value setting
-      err "!#{name} must be an integer" unless arg.type == :number
+      err "!#{name} must be an integer. Found #{arg.inspect}" unless arg.type == :number
       i = arg.value
       err "!#{name} can't be negative" if i<0
       i 

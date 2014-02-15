@@ -121,10 +121,7 @@ module Bun
         end
       end    
 
-      class EndOfLine < ParsedNode
-        def calculate_value
-          ' '
-        end
+      class EndOfLine < Whitespace
       end    
     end
   end

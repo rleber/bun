@@ -12,7 +12,7 @@ module Bun
         end
       else
         force_break if @line_buffer.size > 0
-        self.line_buffer = line.map{|piece| piece.output_text } # Do it this way to force centering, translation, etc.
+        self.line_buffer = line # Do it this way to force centering, translation, etc.
         flush
       end
       invoke_pending_actions(line)
@@ -43,15 +43,14 @@ module Bun
           return
         end
       end
-      if piece_type == :end_of_line
+      if piece.type == :end_of_line
         ws = ParsedNode.create(:whitespace, text: ' ', interval: piece.interval)
-        @line_buffer.pop
         if @line_buffer.size>0 && LINE_ENDINGS.include?(@line_buffer[-1].output_text)
           @line_buffer.push ws
         end
         @line_buffer.push ws
       else
-        @line_buffer << [piece]
+        @line_buffer << piece
       end
       line_buffer_size = @line_buffer.map {|piece| piece.output_text }.join.size
       if line_buffer_size > net_line_length 
@@ -61,59 +60,73 @@ module Bun
     end
 
     def flush(options={})
-      output_buffer_head
-      flush_remainder(options)
+      output_buffer_head if self.fill
+      flush_buffer(@line_buffer, options)
+      @line_buffer = []
     end
 
     # Output as much of the buffer as you can
     # Buffer should be longer than a line at this point; break it where you can
     # If there's an exceptionally long word in there, this may take more than one line
     def output_buffer_head
-      # Drop trailing hyphenation
-      while @line_buffer.size > 0
-        break unless @line_buffer.last.type == :whitespace
-        @line_buffer.pop
-      end
-      line_size = 0
-      parts = @line_buffer.group_by do |part|
-        line_size += part.output_text
-        line_size <= net_line_length
-      end
-      fits = parts[true]
-      overflows = parts[false]
-      if overflows.size > 0
-        if self.hyphenation_mode>0 && overflows[0].type == :word # Attempt to hyphenate
-          atom = overflows[0].output_text
-          next_buffer = fits + [overflows[0]]
-          next_buffer_text = next_buffer.map {|p| p.output_text }
-          next_buffer_size = next_buffer_text.map {|p| p.size }.sum
-          minimum_suffix_size = next_buffer_size - net_line_length + HYPHEN.size
-          hyphenation_suffix = self.hyphenator.sentence_suffix(next_buffer_text, minimum_suffix_size)
-          if hyphenation_suffix == '' || hyphenation_suffix == atom
-            next_buffer = overflows
-          else
-            fits << (atom[0...-(hyphenation_suffix.size)]+HYPHEN)
-            hyphenation_suffix_interval = overflows[0].interval.dup
-            hyphenation_suffix_interval.begin += (atom.size - hyphenation_suffix.size)
-            next_buffer = [ParseNode.create(:word, text: hyphenation_suffix, interval: hyphenation_suffix_interval)]
+      next_line = []
+      loop do
+        # Drop leading whitespace in a line
+        while @line_buffer.size > 0
+          break unless [:whitespace, :end_of_line].include?(@line_buffer[0].type)
+          @line_buffer.shift
+        end
+        break if @line_buffer.size == 0
+        line_size = 0
+        overflow = []
+        hyphenated = false
+        hyphenated_count = 0
+        target_line_length = net_line_length
+        last_interval_end = nil
+        loop do
+          next_token = @line_buffer.first
+          next_line_size = line_size + next_token.output_text.size
+          if next_line_size > target_line_length
+            case next_token.type
+            when :whitespace, :end_of_line
+              overflow << next_token
+              break
+            when :word
+              break if overflow.size > 0
+              break if hyphenated
+              hyphenated = true
+              hyphenated_count = 0
+              syllables = hyphenate(@line_buffer.shift)
+              @line_buffer = syllables + @line_buffer
+              target_line_length = net_line_length - HYPHEN.size
+              next
+            else
+              overflow << next_token
+            end
+          end
+          next_line << @line_buffer.shift
+          last_interval_end = next_line[-1].interval.end
+          line_size = next_line_size
+          hyphenated_count += 1 if hyphenated
+          if @line_buffer.size == 0
+            @line_buffer = next_line
+            return
           end
         end
+        next_line << ParsedNode.create(:other, text: HYPHEN, interval: Range.new(last_interval_end, last_interval_end, true)) if hyphenated && hyphenated_count > 0
+        flush_buffer(next_line)
+        next_line = overflow
       end
+      @line_buffer = next_line
+    end
 
-      if piece.type == :whitespace
-        next_buffer = []
-      elsif self.hyphenation_mode==0 || piece.type != :word
-        next_buffer = [atom]
-      # TODO Check for hyphenation character
-      else # Attempt to hyphenate
-        minimum_suffix_size = next_buffer_size - net_line_length + HYPHEN.size
-        hyphenation_suffix = self.hyphenator.sentence_suffix(next_buffer, minimum_suffix_size)
-        if hyphenation_suffix == '' || hyphenation_suffix == atom
-          next_buffer = [atom]
-        else
-          @line_buffer << (atom[0...-(hyphenation_suffix.size)]+HYPHEN)
-          next_buffer = [hyphenation_suffix]
-        end
+    def hyphenate(word)
+      return [word] if self.hyphenation_mode ==0 || word.type != :word
+      start = word.interval.begin
+      self.hyphenator.hyphenate(word.output_text).map do |part|
+        part_range = Range.new(start, start+part.size, true)
+        start += part.size
+        ParsedNode.create(:word, text: part, interval: part_range)
       end
     end
 
@@ -139,26 +152,27 @@ module Bun
       flush(justify: false)
     end
 
-    def flush_remainder(options={})
+    def flush_buffer(buffer, options={})
       justify = options[:justify]!=false && (options[:justify] || self.justify)
-      unless @line_buffer.size == 0
+      unless buffer.size == 0
+        buffer = buffer.map {|token| token.output_text }
         show_state if @debug
         if self.fill
           if justify
-            line = justify_line(@line_buffer)
+            line = justify_line(buffer)
           else
-            trim_buffer @line_buffer
-            line = @line_buffer.join
+            trim_buffer buffer
+            line = buffer.join
           end
         elsif self.center
-          trim_buffer @line_buffer
-          line = center_buffer(@line_buffer)
+          trim_buffer buffer
+          line = center_buffer(buffer)
         elsif self.tabbed
-          line = tabbed_buffer(@line_buffer)
+          line = tabbed_buffer(buffer)
         else
-          line = @line_buffer.join
+          line = buffer.join
         end
-        @line_buffer = []
+        buffer = []
         put_line_paginated indent_text(transform(line), total_indent)
       end
       self.next_indent = self.indent
