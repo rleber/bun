@@ -51,10 +51,7 @@ module Bun
       defn = @definitions[name]
       return nil unless defn
       if defn[:data_format] == :number
-        v = defn[:value].to_s
-        if defn[:format]
-          v = merge(right_justify_text(v.to_s, defn[:format].size), defn[:format])
-        end
+        v = defn.formatted
       else
         v = defn[:lines].join("\n")
       end

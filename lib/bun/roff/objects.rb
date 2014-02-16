@@ -1,6 +1,63 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+class Fixnum
+  ROMAN_NUMBERS = {
+    1000 => "M",  
+     900 => "CM",  
+     500 => "D",  
+     400 => "CD",
+     100 => "C",  
+      90 => "XC",  
+      50 => "L",  
+      40 => "XL",  
+      10 => "X",  
+        9 => "IX",  
+        5 => "V",  
+        4 => "IV",  
+        1 => "I",  
+        0 => "",  
+  }
+
+  def _roman
+    return '' if self == 0
+    av = abs
+    ROMAN_NUMBERS.each do |value, letter|
+      return ( letter * (av / value)) << (av % value)._roman if value <= av
+    end
+    (av % value)._roman
+  end
+  protected :_roman
+
+  def roman
+    return '0' if self == 0
+    text = abs._roman
+    text = '-' + text if self<0
+    text
+  end  
+
+  def ordinal
+    av = abs
+    tens, digits = av.divmod(10)
+    tens = tens % 10
+    suffix = if tens == 1
+      "th" # tenth, eleventh, twelfth... nineteenth
+    else
+      %w{th st nd rd th th th th th th}[digits]
+    end
+    self.to_s + suffix
+  end
+
+  def alphabetic
+    return '0' if self==0
+    av = abs
+    repeat, char = (av-1).divmod(26)
+    text = ('a'.ord + char).chr * (repeat+1)
+    text = '-' + text if self < 0
+    text
+  end
+end
+
 module Bun
   class Roff
     class StackUnderflow < RuntimeError; end
@@ -35,10 +92,7 @@ module Bun
       # TODO Wrong approach: push the Register onto the stack of sources
       def invoke(*arguments)
         if self[:data_type] == :number
-          v = self[:value].to_s
-          if self[:format]
-            v = merge(right_justify_text(v.to_s, self[:format].size), self[:format])
-          end
+          v = self.formatted
           [ParsedNode.create(:number, text: v, value: self[:value], interval: 0...0)]
         else
           register_context = roff.context_for_register(self, *arguments)
@@ -53,6 +107,30 @@ module Bun
           end
           roff.pop
           tokens
+        end
+      end
+
+      def formatted
+        v = self[:value]
+        case f=self[:format]
+        when /^(0+)1$/
+          "%0#{$1.size+1}d" % v
+        when /^(z+)1$/
+          "%#{$1.size+1}d" % v
+        when "o","O" # Ordinal numbers
+          text = v.ordinal
+          text.upcase! if f=="O"
+          text
+        when "i", "I" # Roman numerals
+          text = v.roman
+          text.downcase! if f=="i"
+          text
+        when "a", "A" # Alphabetic
+          text = v.alphabetic
+          text.upcase! if f=="A"
+          text
+        else
+          v.to_s
         end
       end
     end

@@ -63,11 +63,17 @@ EOT
 end
 
 describe Bun::Roff do
+  # Basic formatting and text flow
   roff_std "base", ""
   roff_std "no justify", ".nj"
   roff_std "justify", [".nj","This is some unjustified text, which should be followed by some justified text.",".ju"]
   roff_std "no fill", ".nf"
   roff_std "break", ["A break should occur immediately after this text.", ".br"]
+  roff_std ".cc", ["The next line should begin no_fill",".cc $", "$nf", ".nj"]
+  roff_std ".li", ["This stuff should be justified, hyphenated, etc.",".li",".sp should be ignored and the rest taken literally","And we're back to being justified, as usual"]
+  roff_std ".li 2", ["This stuff should be justified, hyphenated, etc.",".li 2",".sp should be ignored and the rest taken literally",".fi should also be ignored", "And we're back to being justified, as usual"]
+
+  # Page breaks, headers and footers
   roff_std "page break", ["A page break should occur immediately after this text", ".bp"]
   roff_std "odd page (from odd)", ["A page break and a blank page should follow this one", ".op"]
   roff_std "odd page (from even)", ["A page break should follow this", ".bp", "And another should follow this", ".op"]
@@ -76,6 +82,8 @@ describe Bun::Roff do
   roff_std "pa", ["This should be followed by a page break, then page 10", ".pa 10"]
   roff_std "sl 0 (no impact)", ["Page break, no form feed character", ".sl 0", ".bp"]
   roff_std "sl 1 (no impact)", ["Page break, no form feed character (because .sl is not implemented)", ".sl 1", ".bp"]
+
+  # Spacing
   roff_std "line break on leading space", ["A line break should appear next"," << before this"]
   roff_std "double space after sentence", [".nj", "There should be two spaces after this next word."]
   roff_std "double space after question", [".nj", "There should be two spaces after this next word?"]
@@ -86,14 +94,13 @@ describe Bun::Roff do
   roff_std ".sp 2", ["Two blank lines should follow this", ".sp 2"]
   roff_std ".sp", ["One blank line should follow this", ".sp"]
   roff_std ".sp does not create blank lines at the top of the page", [".pl 10", "Only one blank line after this", ".sp 5"]
-  roff_std ".cc", ["The next line should begin no_fill",".cc $", "$nf", ".nj"]
   roff_std ".lv creates blank space on the page", ["Three blank lines after this", ".lv 3"]
   roff_std ".lv creates blank space on the next page", [".pl 10", "Only one blank line after this", ".lv 3"]
   roff_std ".ls 2", ".ls 2"
   roff_std ".ls plus 1", ".ls +1"
   roff_std ".ls minus 1", [".ls +1", "Here's some stuff that should be double-spaced.",".ls -1", "And single."]
-  roff_std ".li", ["This stuff should be justified, hyphenated, etc.",".li",".sp should be ignored and the rest taken literally","And we're back to being justified, as usual"]
-  roff_std ".li 2", ["This stuff should be justified, hyphenated, etc.",".li 2",".sp should be ignored and the rest taken literally",".fi should also be ignored", "And we're back to being justified, as usual"]
+
+  # Numeric registers and expressions
   roff_std ".an foo", [".an foo",".ic ^^", "Foo (expecting 0): ^(foo)"]
   roff_std ".an foo with no ic", [".an foo", "Foo (expecting no substitution): ^(foo)"]
   roff_std ".an foo n", [".an foo 12",".ic ^^", "Foo (expecting 12): ^(foo)"]
@@ -116,9 +123,13 @@ describe Bun::Roff do
   roff_std ".an foo 2 l 3", [".ic ^^", ".an foo 2l3", "Foo (expecting 3): ^(foo)"]
   roff_std ".an foo 2 s 3", [".ic ^^", ".an foo 2s3", "Foo (expecting 2): ^(foo)"]
   roff_std ".an foo string", [".ic ^^", '.qc "', '.an foo "abcd efg"', "Foo (expecting 8): ^(foo)"]
+
+  # Insertions
   roff_std "undefined insertion", [".ic ^^", "Foo (expecting 0): ^(foo)"]
   roff_std "insertion in text", [".ic ^^", ".an (xx) 5", "Five is equal to ^(xx)"]
   roff_std "insertion in request", [".ic ^^", ".an (xx) 5", ".sp ^(xx)"]
+
+  # Hyphenation and line breaks
   roff_std "break after tight concluding punctuation", ["The ] coming up should appear at the end of xxx the line]"]
   roff_std "break in a word with contraction", ["This should not break thee word isn't"]
   roff_std "break before word and concluding punctuation", ["The ] coming up should not appear at start of the xx line]"]
@@ -133,4 +144,26 @@ describe Bun::Roff do
   roff_std "hyphenate at hyphen", ["This should break the.. text long-winded at the hyphen"]
   roff_std "hyphenate at hyphenation mark disabled", ["This shouldnt break the text. fdd`dddd`ddd at the mark"]
   roff_std "hyphenate at hyphenation mark", ['.hc `', "This should break the.. text. fdd`dddd`ddd at the mark"]
+
+  # Formatting
+  roff_std "no format", ['.nf', '.ic ^^', '.an foo 0', "^(foo)"] + ['.an foo +1', '^(foo)']*20
+  roff_std "format 1", ['.nf', '.ic ^^', '.an foo 0', '.af foo 1', "^(foo)"] + ['.an foo +1', '^(foo)']*20
+  roff_std "format 01", ['.nf', '.ic ^^', '.an foo 0', '.af foo 01', "^(foo)"] + ['.an foo +1', '^(foo)']*20
+  roff_std "format 001", ['.nf', '.ic ^^', '.an foo 0', '.af foo 001', "^(foo)"] + ['.an foo +1', '^(foo)']*20
+  roff_std "format 0001", ['.nf', '.ic ^^', '.an foo 0', '.af foo 0001', "^(foo)"] + ['.an foo +1', '^(foo)']*20
+  roff_std "format z1", ['.nf', '.ic ^^', '.an foo 0', '.af foo z1', "^(foo)"] + ['.an foo +1', '^(foo)']*20
+  roff_std "format zz1", ['.nf', '.ic ^^', '.an foo 0', '.af foo zz1', "^(foo)"] + ['.an foo +1', '^(foo)']*20
+  roff_std "format zzz1", ['.nf', '.ic ^^', '.an foo 0', '.af foo zzz1', "^(foo)"] + ['.an foo +1', '^(foo)']*20
+  roff_std "format o", ['.nf', '.ic ^^', '.an foo 0', '.af foo o', "^(foo)"] + ['.an foo +1', '^(foo)']*30
+  roff_std "format capital O", ['.nf', '.ic ^^', '.an foo 0', '.af foo O', "^(foo)"] + ['.an foo +1', '^(foo)']*30
+  roff_std "format i", ['.nf', '.ic ^^', '.an foo1 0',  '.an foo2 0', '.af foo2 i', "^(foo1) ^(foo2)"] + 
+                  ['.an foo1 +1', '.an foo2 +1', '^(foo1) ^(foo2)']*30 +
+                  [40,50,100,400,500,900,1000].flat_map{|n| (-2..2).to_a.map{|i| n+i} }.flat_map {|n| [".an foo1 #{n}", ".an foo2 #{n}", '^(foo1) ^(foo2)']}
+  roff_std "format capital I", ['.nf', '.ic ^^', '.an foo1 0',  '.an foo2 0', '.af foo2 I', "^(foo1) ^(foo2)"] + 
+                  ['.an foo1 +1', '.an foo2 +1', '^(foo1) ^(foo2)']*30 +
+                  [40,50,100,400,500,900,1000].flat_map{|n| (-2..2).to_a.map{|i| n+i} }.flat_map {|n| [".an foo1 #{n}", ".an foo2 #{n}", '^(foo1) ^(foo2)']}
+  roff_std "format a", ['.nf', '.ic ^^', '.an foo1 0',  '.an foo2 0', '.af foo2 a', "^(foo1) ^(foo2)"] + 
+                  ['.an foo1 +1', '.an foo2 +1', '^(foo1) ^(foo2)']*60
+  roff_std "format capital A", ['.nf', '.ic ^^', '.an foo1 0',  '.an foo2 0', '.af foo2 A', "^(foo1) ^(foo2)"] + 
+                  ['.an foo1 +1', '.an foo2 +1', '^(foo1) ^(foo2)']*60
 end

@@ -7,9 +7,10 @@ module Bun
     # Assign format to variable
     # Formats are as a mask, e.g. '001' would be a three character format, with leading zeroes
     def af_request(name, format, *_)
-      err "!Variable #{name} not defined" unless @definitions[name]
-      err "!#{name} is not a variable" unless @definitions[name][:type] == :value
-      @definitions[name][:format] = format
+      defn = get_definition(name)
+      err "!Variable #{name.text} not defined" unless defn
+      err "!#{name.text} is not a numeric register" unless defn[:data_type] == :number
+      defn[:format] = format.text
     end
 
     # .an NAME EXPRESSION
