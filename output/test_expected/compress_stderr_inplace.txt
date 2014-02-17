@@ -1,0 +1,22 @@
+Delete fass/bjeroehl/bjthings_19781219_151907/addinde/tape.ar020.1140_19780620_175438.txt
+Delete fass/bjeroehl/bjthings_19781219_151907/rjbmail/tape.ar020.1140_19780725_174329.txt
+Delete fass/one/zero/tape.ar004.0495_19770210.txt
+Delete bjeroehl/fass/77script.f_19770301_154058/1zero/tape.ar082.0603_19770210_164752.txt
+Delete fass/scripfrz_19770301_154058/1zero/tape.ar004.0888_19770210_164752.txt
+Compact bjeroehl/fass/bjthings_19781219_151907/addinde/tape.ar082.0604_19780620_175438.txt => bjeroehl/fass/bjthings/addinde.txt
+Compact bjeroehl/fass/bjthings_19781219_151907/countess/tape.ar082.0604_19780630_182833.txt => bjeroehl/fass/bjthings/countess.txt
+Compact bjeroehl/fass/bjthings_19781219_151907/rjbmail/tape.ar082.0604_19780725_174329.txt => bjeroehl/fass/bjthings/rjbmail.txt
+Compact fass/one/zero/tape.ar003.2557_19770118.txt => fass/one/zero.txt
+Delete fass/scripfrz_19770301_154058/1zero
+Delete fass/scripfrz_19770301_154058
+Delete fass/one/zero
+Delete fass/bjeroehl/bjthings_19781219_151907/rjbmail
+Delete fass/bjeroehl/bjthings_19781219_151907/addinde
+Delete fass/bjeroehl/bjthings_19781219_151907
+Delete fass/bjeroehl
+Delete bjeroehl/fass/bjthings_19781219_151907/rjbmail
+Delete bjeroehl/fass/bjthings_19781219_151907/countess
+Delete bjeroehl/fass/bjthings_19781219_151907/addinde
+Delete bjeroehl/fass/bjthings_19781219_151907
+Delete bjeroehl/fass/77script.f_19770301_154058/1zero
+Delete bjeroehl/fass/77script.f_19770301_154058

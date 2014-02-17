@@ -2,6 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 require 'digest/md5'
+require 'tempfile'
 
 class String
   class InvalidCheck < ArgumentError; end
@@ -10,7 +11,7 @@ class String
     self.inspect[1..-2]
   end
   
-  class Examination; end # Defined elsewhere
+  class Trait; end # Defined elsewhere
   
   VALID_CONTROL_CHARACTER_HASH = {
     line_feed:       "\n", 
@@ -76,12 +77,12 @@ class String
   end
   
   def counts(*character_sets)
-    counter = String::Examination::Base.new(self, character_sets)
+    counter = String::Trait::Base.new(self, character_sets)
     counter.counts
   end
   
   def count_hash(*character_sets)
-    counter = String::Examination::Base.new(self, character_sets)
+    counter = String::Trait::Base.new(self, character_sets)
     counter.character_counts
   end
 
@@ -97,14 +98,15 @@ class String
     self.force_encoding('ascii-8bit') =~ /\x8/
   end
   
-  def examination(analysis, options={})
-    examiner = String::Examination.create(analysis, self, options)
+  def trait(analysis, options={})
+    examiner = String::Trait.create(analysis, options)
+    examiner.attach :string, self
     examiner
   end
   
   # Options should include :file, :path, :expression
-  def formula(options=[])
-    evaluator = Bun::Formula.new(options)
+  def expression(options=[])
+    evaluator = Bun::Expression.new(options)
     evaluator.data = self
     evaluator
   end
@@ -112,65 +114,93 @@ class String
   def titleize
     split(/(\W)/).map(&:capitalize).join
   end
-  
+
+  def underscore
+    self.gsub(/::/, '/').
+         gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+         gsub(/([a-z\d])([A-Z])/,'\1_\2').
+         tr("-", "_").
+         downcase
+  end
+
+  def camelcase
+  return self if self !~ /_/ && self =~ /[A-Z]+.*/
+  split('_').map{|e| e.capitalize}.join
+  end
+
   # Convert a string to its equivalent character set, e.g.
   # e.g. "abbbasssscc".positive_character_set => '[a-cs]'
+  # Thanks to https://gist.github.com/melborne/1573258 for the idea that inspired this refactoring (i.e. using chunk)
   def character_set(options={})
-    s = options[:case_insensitive] ? self.downcase : self
-    chars = s.dup.force_encoding('ascii-8bit').split(//).sort.uniq
-    runs = [{from: '', to: ''}]
-    last_asc = -999
-    last_runnable = false
-    chars.each do |ch|
-      ch_asc = ch[0].ord
-      ch_runnable = ch.escaped=~/^\\x|^[a-zA-Z0-9]/
-      if !ch_runnable ||
-         !last_runnable ||
-         ch =~ /[aA0\x00]/ ||  # Don't allow a-z to run into A-Z, etc.
-         ch_asc != last_asc + 1
-        runs << {:from=>ch, to: ch}
-      else # Add to a run
-        runs[-1][:to] = ch
-      end
-      last_asc = ch_asc
-      last_runnable = ch_runnable
-    end
-    runs_string = runs.map do |run|
-      from = run[:from]
-      to = run[:to]
-      if from==to
-        from.set_escaped
-      else
-        res1="#{from.set_escaped(no_ctrl: true)}-#{to.set_escaped(no_ctrl: true)}"
-        res2=(from..to).map {|ch| ch.set_escaped(no_ctrl:true)}.join
-        res1.size < res2.size ? res1 : res2
-      end
-    end.join
-    runs_string = "-#{$1}#{$2}" if runs_string =~ /(.*)\\-(.*)/
-    runs_string = "#{$1}^" if runs_string =~ /^\^(.*)/
-    
-    delimiters = parse_character_set_delimiters(options[:delimiters])
-    if runs_string.size > 1 || !options[:single_as_string]
-      runs_output = delimiters[0] + 
-                    runs_string + 
-                    delimiters[1]
-    end
-    runs_output
-  end
-  
-  def parse_character_set_delimiters(delimiters)
-    delimiters ||= '[]'
-    delimiters = case delimiters.size
-    when 0
-      ['','']
-    when 1
-      delimiters*2
+    groups = self.dup
+                 .force_encoding('ascii-8bit')
+                 .split(//) # Split into individual characters
+                 .map {|ch| (options[:case_insensitive] ? downcase(ch) : ch).ord } # Convert to ASCII codes
+                 .inject([]) {|ary, n| ary[n] = n; ary } # Convert to a membership array (ary[i]=i iff i is in string)
+                 .chunk {|n| n.nil? ? nil : n.chr.character_type(flag_dashes: true) } # The clever bit: chunk removes chunks labelled nil
+                 .to_a
+    contains_dash = false
+    if options[:single_as_string] || (groups.size==1 && groups.first.size==1)
+      char = groups.first[1].first.chr
+      encoding = char.printable
     else
-      delimiters[0,2].split(//)
+      encoding = groups.map {|typ, group| [typ, group.map{|n| n.chr}.join]}
+                       .map {|typ, group| 
+                              case typ
+                              when :other
+                                group.set_escaped
+                              when :dash
+                                contains_dash = true
+                                next
+                              else
+                                group.size > 1 ? group.minimal_set_encoding : group.set_escaped
+                              end
+                            }
+                       .compact
+                       .join
+      encoding = '-' + encoding if contains_dash
+      delimiters = (options[:delimiters]||'[]').make_delimiters
+      encoding = "#{delimiters[0]}#{encoding}#{delimiters[1]}"
     end
-    delimiters
+    encoding
   end
-  private :parse_character_set_delimiters
+
+  # Identify character type of a character
+  # Only uses the first character
+  # Option :flag_dashes separates '-' into its own class (which is useful for set encoding)
+  def character_type(options={})
+    case self.escaped
+    when /^\\x/
+      :control
+    when /^[a-zA-Z0-9]/
+      :alphanumeric
+    when '-'
+      options[:flag_dashes] ? :dash : :other
+    else
+      :other
+    end
+  end
+
+  # Return whichever is shorter, the a-z or abc encoding for a group of characters
+  # CAREFUL: Assumes string is actually a valid group. so "AbcdE".minimal_set_encoding => 'A-E'
+  def minimal_set_encoding
+    res1=self.hyphenated_set_encoding
+    res2=self.set_escaped
+    res1.size < res2.size ? res1 : res2
+  end
+
+  # Return the hyphenated set encoding for a string
+  # CAREFUL: Assumes string is actually a valid group. so "AbcdE".hyphenated_set_encoding => 'A-E'
+  def hyphenated_set_encoding
+    "#{self[0].set_escaped(no_ctrl: true)}-#{self[-1].set_escaped(no_ctrl: true)}"
+  end
+
+  # Splits a delimiter specification into an array of [opening_delimiter, closing_delimiter]
+  # Assumes string is 0-2 characters (ignores the rest)
+  #   "".make_delimiters => ['','']
+  def make_delimiters
+    ((self).split(//)*2+['',''])[0,2] # *2 doubles up single delimiters
+  end
   
   def safe
     if self =~ /^[\w\d.\/]*$/
@@ -182,6 +212,32 @@ class String
   
   def escaped
     inspect[1..-2]
+  end
+
+  def printable
+    quote_for = []
+    escaped = self.split(//)
+                  .map {|ch|
+                         case ch
+                         when ' ','"',"'"
+                           quote_for << ch
+                           ch
+                         else
+                           ch.escaped
+                         end
+                       }
+                  .join
+    quotes = case quote_for.uniq.sort.join
+    when '','"',"'" # No quotes
+      ['','']
+    when " ",' "'
+      ["'","'"] # Single quotes
+    when " '"
+      ['"', '"'] # Double quotes
+    else
+      ['%q{', '}'] # Maximum quotes
+    end
+    quotes[0] + escaped + quotes[1]
   end
   
   # Escaping for use inside ranges, e.g. a-z
@@ -205,7 +261,24 @@ class String
     self.gsub("\n","\n\005").gsub(' ',"\177")
   end
   
+  def scrub(options={})
+    column_width = options[:column_width] || 80
+    column_margin = options[:column_margin] || 20
+    tabs = options[:tabs] || [column_width + column_margin]
+    text = self.dup
+    text.gsub!(/_\x8/,'') # Remove underscores
+    text.gsub!(/(.)(?:\x8\1)+/,'\1') # Remove bolding
+    text.gsub!(/\xC/, options[:form_feed]||'') # Remove form feeds
+    text.gsub!(/\xB/, options[:vertical_tab]||'') # Remove vertical tabs
+    text.gsub!(/[[:cntrl:]&&[^\n\x8]]/,'') # Remove other control characters
+    t = Tempfile.new('string_scrub')
+    t.write(text)
+    t.close
+    tab_option = tabs.map{|t| t.to_s}.join(',')
+    %x{cat #{t.path} | expand -t #{tab_option}}
+  end
+
 end
 
-require 'lib/examination'
-require 'lib/bun/formula'
+require 'lib/trait'
+require 'lib/bun/expression'

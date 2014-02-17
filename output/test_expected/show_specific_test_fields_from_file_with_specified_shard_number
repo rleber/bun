@@ -1,0 +1,1 @@
+[:block_count, :block_padding_repairs, :catalog_time, :description, :digest, :first_block_size, :format, :identifier, :owner, :path, :shard_blocks, :shard_name, :shard_number, :shard_size, :shard_start, :shard_time, :tape, :tape_path, :tape_size, :time, :type, :unpack_time, :unpacked_by]

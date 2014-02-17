@@ -39,6 +39,6 @@ data/test/archive/decode_archive/fass/1983/programme/actors
 data/test/archive/decode_archive/fass/1983/programme/actors/tape.ar083.0698_19830128.txt
 data/test/archive/decode_archive/fass/idallen
 data/test/archive/decode_archive/fass/idallen/huffhart
-data/test/archive/decode_archive/fass/idallen/huffhart/tape.ar003.0701.txt
+data/test/archive/decode_archive/fass/idallen/huffhart/tape.ar003.0701_19761122.txt
 data/test/archive/decode_archive/fass/idallen/vector
-data/test/archive/decode_archive/fass/idallen/vector/tape.ar003.0698.txt
+data/test/archive/decode_archive/fass/idallen/vector/tape.ar003.0698_19761122.txt

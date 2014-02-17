@@ -1,0 +1,23 @@
+rm -rf data/test/archive/compress_conflict_init
+mkdir -p data/test/archive/compress_conflict_init
+cd data/test/archive/compress_conflict_init
+cp ~/fass_work/compressed/1985/fass/songs.f/1978.txt xxx.txt
+mkdir xxx
+cp ~/fass_work/compressed/bjeroehl/fass/77script.f/3two.txt xxx/tape_ar99.9999_19990101_120000.txt
+cp ~/fass_work/compressed/fass/1986/script/tfed.f/2.1.txt yyy.v1.txt
+cp ~/fass_work/compressed/fass/bj/dense.txt yyy.v2.txt
+mkdir yyy_20120314
+cp ~/fass_work/compressed/fass/idallen/roffinit.txt yyy_20120314/tape_ar99.9999_19990101_120000.txt
+mkdir -p a/s/ze.b
+cp ~/watbun_work/decoded/aangold/a/s/ze.b/tape.ar059.0073_19810519.txt a/s/ze.b/tape.ar059.0073_19810519.txt
+mkdir -p a/t4
+cp ~/watbun_work/decoded/aangold/a/t4/tape.ar058.3075_19810519.txt a/t4/tape.ar058.3075_19810519.txt
+cp ~/watbun_work/decoded/aangold/a/tape.ar056.1698_19810331.txt a/tape.ar056.1698_19810331.txt
+mkdir -p amiga/pdc/cpp/readme.txt
+cp ~/watbun_work/decoded/rhosler/amiga/pdc/cpp/readme.txt/tape.ar145.2715_19890304.txt amiga/pdc/cpp/readme.txt/tape.ar145.2715_19890304.txt
+mkdir -p amiga/pdc/cpp/readme
+cp ~/watbun_work/decoded/rhosler/amiga/pdc/cpp/cpp.mem/tape.ar145.2714_19890304.txt amiga/pdc/cpp/readme/tape.ar145.2714_19890304.txt
+mkdir -p amiga/pdc/cpp/readme.v3
+cp ~/watbun_work/decoded/rhosler/amiga/pdc/bin/ccc2/tape.ar145.2712_19890304.txt amiga/pdc/cpp/readme.v3/tape.ar145.2712_19890304.txt
+mkdir -p amiga/pdc/cpp/readme.v3.txt
+cp ~/watbun_work/decoded/rhosler/amiga/pdc/bin/ccc/tape.ar145.2711_19890304.txt amiga/pdc/cpp/readme.v3.txt/tape.ar145.2711_19890304.txt

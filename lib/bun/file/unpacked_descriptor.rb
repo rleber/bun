@@ -25,7 +25,7 @@ module Bun
           :errors,
           :decoded,
           :tape_size,
-          :tape_type,
+          :type,
           :tape,
           :tape_path,
           :original_tape,
@@ -80,11 +80,11 @@ module Bun
       
         # TODO This isn't really relevant for non-frozen files; File::Frozen should really subclass this
         def updated
-          file_time = self.file_time rescue nil
-          if file_time && catalog_time
-            [catalog_time, file_time].min
-          elsif file_time
-            file_time
+          time = self.time rescue nil
+          if time && catalog_time
+            [catalog_time, time].min
+          elsif time
+            time
           elsif catalog_time
             catalog_time
           else

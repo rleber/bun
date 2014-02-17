@@ -1,0 +1,2 @@
+File                                                                       Fields
+/Users/richard/projects/bun/data/test/archive/general_test/ar003.0698.bun  [:block_count, :block_padding_repairs, :catalog_time, :description, :digest, :first_block_size, :format, :identifier, :owner, :path, :tape, :tape_path, :tape_size, :type, :unpack_time, :unpacked_by]

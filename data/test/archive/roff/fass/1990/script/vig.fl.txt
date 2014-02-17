@@ -1,0 +1,229 @@
+.so fass/1990/script/bulkmacr.t
+.bs I a/b:Fl "Intro of Course and I:i"
+.na pro Professor Professor
+.ad
+(Professor ENTERS AND GOES TO LECTERN.)
+.ch pro
+Good evening, class. 
+This course is FASSical Studies, or as some of my students last year
+called it: Hunks o' History.
+.ex
+You all have the course outline in front of you (HOLDS UP
+PROGRAM). If you turn to page 3 you will see that 40% of
+the course will be studied before the midterm and 30%
+afterwards. There is no final, and bribing the professor
+is encouraged.
+.ex
+Call me old fashioned but I ask that you do not bring
+food or drinks to lectures as I find them distracting.
+The same can be said for cigarettes. Cameras and tape
+recorders are also forbidden, as the course is available
+from Correspondence already and I don't want to cut down
+on my royalty income.
+.ex
+This course is an examination of the creation and evolu-
+tion of the University of Waterloo and its parallels with
+the evolution of western civilization, if the term
+civilization can be given to a society that includes
+engineering.
+.ex
+I will be making extensive use of audio-visual aids in
+teaching this course. I may also take advantage of the
+wide variety of experts on faculty by bringing in guest
+lecturers.
+.ex
+As time is short, let's get started right away, shall we?
+.ex
+What is it that separates man from the rest of the animal
+kingdom?  There are many answers to that question. Some
+say it is man's interest in the arts. I believe it is
+man's intellect. Intelligence is one of the paradoxes of
+our evolution. Knowledge threw us out of the Garden of
+Eden, yet knowledge is what lets us enter a university.
+In this first lecture I will show how man developed
+language and, as a result, became the grand creature he
+was destined to be!
+.ad
+(EXIT Professor)
+.es
+.bs I c:Fl "Intro of I:ii"
+.na pro Professor Professor
+.ch pro
+Thus the first of the universities was
+founded. In their early years universities were violent
+and self-serving places. "Every man for himself" was the
+prevalent attitude. People thought nothing of stabbing
+colleagues in the back and taking credit for their work.
+Come to think of it, not much has changed.  And it all
+seems rather silly, doesn't it, when you realize that
+university politics are so vicious because the stakes are
+so small. Now, the fighting was not restricted to within
+the campus. Universities fought each other on the field
+of battle.  Again not much has changed except that the
+war is now fought on the football field.  One of the
+Great Wars was fought between Troy and Athens, or as we
+know them today, Waterloo and Wilfrid Laurier.  Let us
+take a look at the causes of this epic struggle.
+.es
+.bs I d:Fl "Intro of I:iii - Phil Eastman"
+.na pro Professor Professor
+.na st1 Student~1 Student~1
+.na st2 Student~2 Student~2
+.na sci Phil~Eastman Eastman
+.ch pro
+The Dark Ages were characterised by great ignorance and nothing very
+important happening.
+.ad
+(CURTAIN OPENS ON A DARK STAGE)
+.ch st1
+How many students does it take to change a light bulb?
+.ch st2
+A what?
+.ad
+(CURTAIN CLOSES)
+.ch pro
+For the next lecture I would like to introduce Dr. Phil Eastman
+from the Physics Department.
+Dr. Eastman is a longtime supporter of FASSical Studies and
+we are honoured by his presence tonight.
+.ch sci
+Arthur C. Clarke, an author of several science type books,
+once said, "any sufficiently advanced science is indistinguishable
+from magic."
+I guess this is why I was asked to give the lecture on
+Merlin, King Arthur and the Round Table.
+I approached this task with trepidation until I realized
+that the corollary of that statement is also true.
+In those days, science was simply sufficiently advanced magic.
+While much had been lost in the Dark Ages
+(misplaced in the dark, I suppose)
+it was all being rediscovered.
+It must have been an exciting time.
+Universities were gaining more stucture as an academic
+hierarchy developed to parallel the nobility:
+deans and professors on top, under-graduates on the bottom
+or to put it another way,
+under-graduates under graduates.
+Here, now, a typical day in the Faculty of Science, sorry, Magic.
+.es
+.bs I e:Fl "Intro of I:iv"
+.na pro Professor Professor
+.ch pro
+One of the great achievements of man is the
+ability to communicate ideas in many ways: art, poetry,
+and language.  The Renaissance was a rebirth of these
+forms of expression, which is why, I suppose, it is
+called the Renaissance.
+.ex
+A vital focus of student life came to be the campus
+newspaper, giving students a voice through which to ex-
+press their concerns. This tradition reached its zenith
+during the Renaissance when the beauty of language
+bloomed in its fullest flower. There existed one campus
+blessed with two such journals, the Imprint and the
+Gazette, two papers both alike in infamy. We observe
+here the doings of the Imprint office on a hectic
+Thursday before their Friday deadline.
+.es
+.bs I f:Fl "Intro of Intermission"
+.na pro Professor Professor
+.ch pro
+All right, as we are having a double lecture
+tonight I think this is an appropriate time for a break.
+We'll be starting again in 10 minutes. Please be prompt
+in returning.
+.es
+.bs II a:Fe "Intro to II:i - John Capindale"
+.na pro Professor Professor
+.na capin John~Capindale Capindale
+.ch pro
+Now, if we're all QUITE ready?
+My next guest is Professor John Capindale who praticipated
+in the first offering of FASSical Studies in 1963.
+.ch capin
+Good evening.
+Some of you know that I am from the Faculty of Science.
+When I was approached about taking part in FASS this year,
+I asked if the scene I was introducing had anything to do
+with my field: chemistry.  
+I was told, and I quote, "well, yes, it's bio-chemistry".
+I guess it depends on your definition of bio-chemisrty.
+This scene deals with student life, you know, the
+boy meets girl type of biochemistry.
+As my student days happened over... ten... years ago
+I don't feel I have much to add to the discussion.
+So, here now, the Campus Centre as it was in the late 1700's.
+.es
+.bs II b:Fl "Intro to II:ii - Alex Kordics"
+.na pro Professor Professor
+.na kord Alex~Kordics Kordics
+.ch pro
+And now a longtime expert on the building where our
+next scene takes place, theatre technician Alex Kordics.
+.ch kord
+We now jump to an era when society attempted
+to enforce morality on the university campus.  In the
+1920's Prohibition was declared. As we all know, when
+something is banned there is automatically a source of
+income in suppling that thing illicitly. Organised crime
+set up speakeasies to quench the thirst of the public.
+The universities did not escape the gangland violence
+that soon followed. At Waterloo the speakeay was in
+the Grad Club and the gang was called the
+Mathia.
+.es
+.bs II c:Fl "Intro of II:iii - Bill Pearson"
+.na pro Professor Professor
+.na st1 Student~1 Student~1
+.na st2 Student~2 Student~2
+.na sci Bill~Pearson Pearson
+.ch pro
+We now come to the present day which, in my humble opinion is characterised by
+great ignorance and nothing very important happening.
+.ad
+(CURTAIN OPENS ON A DARK STAGE)
+.ch st1
+How much power does it take to change a light bulb?
+.ch st2
+A Watt!
+.ad
+(CURTAIN CLOSES)
+.ch pro
+For this last lecture I would like to look at the future of universities
+in general and the University of Waterloo in particular.  
+In order to do this, I have asked
+an ancient professor from the Faculty of Science to address you.
+Unfortunalty, he has to be in Germany tonight,
+so with a little help from Audio-Visual:  Bill Pearson.
+.ch sci
+That's better.
+When I was a young prof, I couldn't afford the good stuff.
+I had to drink beer, Australian stuff.
+Naah, not that Fosters.
+It was called Boomerang, because it always kept coming
+back to you.
+.ex
+Oh fish, poor fish,
+alone in your bowl
+.xx VOICE
+Excuse me, this is FASS '90, not FASS '78.
+Next page in the script.
+.ch sci
+Good evening. While science fiction has very little to do with science,
+I have always liked to speculate on the future.
+What new advances will technology bring us?
+Will we reach the stars?
+If so, will we arrive in time to appologize
+for all those reruns of "Gilligan's Island"?
+Will scientists find a cheap way to turn gold into 
+lead for our space age batteries?
+Will they tell anyone?
+The University will be affected by these discoveries, but many
+forces will remain the same, economics and politics for example.
+What will the University of Waterloo be like in the years to come?
+And why am I asking so many questions?
+That's
+.ul
+your
+job.
+.es

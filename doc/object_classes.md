@@ -100,20 +100,20 @@ Slicr::Slice::Accessor (mixes in Indexable::Basic)
 Slicr::Slice::Definition
 Slicr::Slice::DSL
 Slicr::Sliceable
-String::Examination
-String::Examination::Base
-    String::Examination::AnalysisBase
-        String::Examination::CharacterClass
-            String::Examination::Chars
-            String::Examination::Classes
-            String::Examination::Controls
-            String::Examination::Printable
-    String::Examination::Boolean
-        String::Examination::Clean
-        String::Examination::Overstruck
-        String::Examination::Roff
-        String::Examination::Tabbed
-    String::Examination::Legibility
+String::Trait
+String::Trait::Base
+    String::Trait::AnalysisBase
+        String::Trait::CharacterClass
+            String::Trait::Chars
+            String::Trait::Classes
+            String::Trait::Controls
+            String::Trait::Printable
+    String::Trait::Boolean
+        String::Trait::Clean
+        String::Trait::Overstruck
+        String::Trait::Roff
+        String::Trait::Tabbed
+    String::Trait::Legibility
 
 As with the data classes, the source for these classes is contained in either the lib/slicr directory (for the 
 Slicr classes), or in the lib or lib/bun directories.

@@ -13,32 +13,98 @@ module Bun
     
     class BadFileGrade < RuntimeError; end
     class BadBlockError < RuntimeError; end
+    class ReadError < ArgumentError; end
 
     class << self
       
-      @@stdin_cache = nil # Name of the tempfile caching STDIN (if it exists)
+      @@stdin_cache = nil  # Content of STDIN (we cache it, to allow rereading)
+      @@last_read = nil    # Name of the last file read, except STDIN (we save it, to avoid rereading)
+      @@last_content = nil # Content of the last file read (except STDIN)
+      @@messages = {}
+
+      def messages
+        @@messages
+      end
+
+      def clear_messages(path=nil)
+        if path
+          path = ::File.expand_path(path)
+          @@messages[path] = []
+        else
+          @@messages = {}
+        end
+      end
+
+      def add_message(path,msg=nil)
+        case msg
+        when nil
+          # Do nothing
+        when Array
+          msg.each {|m| add_msg(path, m)}
+        else
+          path = ::File.expand_path(path)
+          @@messages[path] ||= []
+          @@messages[path] << msg
+        end
+      end
+      alias_method :add_messages, :add_message
+
+      def replace_messages(path=nil,msg=nil)
+        clear_messages(path)
+        add_message path,msg
+      end
+
+      def all_messages(path=nil)
+        if path
+          path = ::File.expand_path(path)
+          @@messages[path] || []
+        else
+          @@messages.keys.sort.map {|path| @@messages[path]}.flatten
+        end
+      end
+
+      def message_count(path=nil)
+        if path
+          path = ::File.expand_path(path)
+          (@@messages[path]||[]).size
+        else
+          @@messages.values.map{|msgs| msgs.size}.sum
+        end
+      end
+
+      def warn_messages(path=nil)
+        return if message_count(path)==0
+        all_messages(path).each {|msg| warn msg}
+      end
       
       # Allows STDIN to be read multiple times
       def read(*args)
+        options = args.last.is_a?(Hash) ? args.pop : {}
         path = args.shift
-        path = if path != '-'
-          path
-        elsif @@stdin_cache
-          @@stdin_cache
+        text = if path == '-'
+          Bun.cache(:read_stdin, :stdin) { $stdin.read.force_encoding('ascii-8bit') }
         else
-          cache_stdin
+          Bun.cache(:read_path, File.expand_path(path)) do
+            stop "!File #{path} does not exist" unless File.exists?(path)
+            Bun.cache(:read_path, path) do
+              (::File.read(path) || '').force_encoding('ascii-8bit') # We cache entire file
+            end
+          end
         end
-        stop "!File #{path} does not exist" unless File.exists?(path)
-        text = ::File.read(path, *args) || ''
-        text.force_encoding('ascii-8bit')
-      end
-      
-      # Read STDIN and save it to a tempfile
-      def cache_stdin
-        tempfile = Tempfile.new('stdin')
-        tempfile.write($stdin.read)
-        tempfile.close
-        @@stdin_cache = tempfile.path
+        case args.size
+        when 0
+          # Do nothing
+        when 1 # Read length specified
+          raise ReadError, "Unable to handle read parameter #{args[0].inspect}" unless args[0].is_a?(Numeric)
+          text = text[0,args[0]]
+        when 2 # Read length and offset specified
+          raise ReadError, "Unable to handle first read parameter #{args[0].inspect}" unless args[0].is_a?(Numeric)
+          raise ReadError, "Unable to handle second read parameter #{args[1].inspect}" unless args[1].is_a?(Numeric)
+          text = text[args[1], args[0]]
+        else
+          raise ReadError, "Unable to handle first read parameters #{args.inspect}"
+        end
+        text
       end
 
       def relative_path(*f)
@@ -80,15 +146,45 @@ module Bun
       
       def baked_file_and_data(path, options={})
         if options[:promote]
-          if File.file_grade(path) == :baked
-            [nil, File.read(path)]
+          if File.format(path) == :baked
+            [nil, read(path)]
+          elsif File.type(path) == :frozen && !options[:shard]
+            files = File::Decoded.open(path, :promote=>true, :expand=>true)
+            data = Bun.cache(:baked_expanded_data, File.expand_path(path)) { files.values.map{|f| f.data}.join }
+            [files.values.first, data]
           else
-            f = File::Decoded.open(path, :promote=>true)
-            [f, f.data]
+            f = File::Decoded.open(path, :promote=>true, :shard=>options[:shard])
+            data = Bun.cache(:baked_unexpanded_data, [File.expand_path(path), options[:shard]]) { f.data }
+            [f, data]
           end
         else
           [nil, read(path)]
         end
+      end
+
+      def file_for_expression(path, options={})
+        case File.format(path)
+        when :packed, :unpacked
+          f = if options[:promote]
+            File::Unpacked.open(path, :promote=>true)
+          else
+            File::Packed.open(path)
+          end
+          merge_shard_descriptor(f, options[:shard]) if options[:shard]
+          f
+        else
+          File.open(path)
+        end
+      end
+
+      def merge_shard_descriptor(f, shard)
+        shard_entry = f.descriptor.shards[shard]
+        shard_entry.keys.each do |key|
+          new_key = "shard_#{key}".to_sym
+          f.descriptor.merge!(new_key=>shard_entry[key])
+        end
+        f.descriptor.delete(:shards)
+        f.descriptor.delete('shards')
       end
       
       def baked_data(path, options={})
@@ -96,77 +192,46 @@ module Bun
         data
       end
       
-      def examination(file, options={})
-        if options[:exam]
-          examination = Bun::File.create_examination(file, options[:exam], promote: options[:promote])
-          # TODO Change this to range
-          examination.minimum = options[:min] if examination.respond_to?(:minimum)
-          examination.case_insensitive = options[:case] if examination.respond_to?(:case_insensitive)
-          {
-            result: examination,
-            code:   examination.code,
-            tag:    options[:tag] || "exam:#{options[:exam]}",
-          }
-        elsif options[:field]
-          value = File.open(file) do |f|
-            value = f.descriptor[options[:field]] || nil rescue nil
-          end
-          {
-            result: value,
-            tag: options[:field]
-          }
-        elsif options[:formula]
-          # TODO allow other parameters to the formula, from the command line
-          formula = Bun::File.create_formula(file, options[:formula], promote: options[:promote])
-          {
-            # TODO Use .value?
-            result: formula.value,
-            tag:    options[:tag],
-          }
-        elsif options[:match]
-          regexp = Regexp.new(options[:match])
-          if options[:case]
-            regexp = Regexp.new(options[:match], Regexp::IGNORECASE)
-          else
-            regexp = Regexp.new(options[:match])
-          end
-          res = baked_data(file, options) =~ regexp
-          { result: res, code: res.nil? ? 1 : 0 }
-        elsif options[:text]
-          { result: baked_data(file, promote: true)||'', code: 0 }
-        end
+      def trait(file, trait, options={})
+        Bun::File.create_expression(file, trait, 
+          promote: options[:promote], shard: options[:shard], raise: options[:raise])
       end
       
       def create_examination(path, analysis, options={})
-        baked_data(path, options).examination(analysis, file: path)
+        examiner = String::Trait.create(analysis, options)
+        examiner.attach(:string) { baked_data(path, options) } # Lazy evaluation of file contents
+        examiner.attach(:file, self)
+        examiner
       end
       protected :create_examination
       
-      def create_formula(path, expression, options={})
-        file, data = baked_file_and_data(path, options)
-        data.formula(options.merge(
-                            expression: expression,
-                            file: file,
-                            path: path))
+      def create_expression(path, expression, options={})
+        expression_options = options.merge(expression: expression, path: path, raise: options[:raise])
+        evaluator = Bun::Expression.new(expression_options)
+        evaluator.attach(:file) { file_for_expression(path, options) }
+        evaluator.attach(:data) { baked_data(path, options) }
+        evaluator
       end
-      protected :create_formula
+      protected :create_expression
   
       def binary?(path)
         prefix = File.read(path, 4)
         prefix != "---\n" # YAML prefix; one of the unpacked formats
       end
       
-      def unpacked?(path)
+      def nonpacked?(path)
         prefix = File.read(path, 21)
-        prefix != "---\n:identifier: Bun\n" # YAML prefix with identifier
+        prefix == "---\n:identifier: Bun\n" # YAML prefix with identifier
       end
       
+      PACKED_FILE_SIGNATURE = "\x0\x0\x40" # Packed files always start with this
+
       def packed?(path)
-        return false if !unpacked?(path)
-        if path.to_s =~ /^$|^-$|ar\d{3}\.\d{4}$/ # nil, '', '-' (all STDIN) or '...ar999.9999'
+        return false if nonpacked?(path)
+        if File.read(path, PACKED_FILE_SIGNATURE.size).force_encoding('ascii-8bit') == PACKED_FILE_SIGNATURE 
           begin
             File::Packed.open(path, force: true)
-          rescue 
+          rescue => e
             false
           end
         else
@@ -175,8 +240,8 @@ module Bun
       end
       
       def open(path, options={}, &blk)
-        # TODO But file_grade opens and reads the file, too...
-        case grade = file_grade(path)
+        # TODO But format opens and reads the file, too...
+        case fmt = format(path)
         when :packed
           File::Packed.open(path, options, &blk)
         when :unpacked, :cataloged
@@ -187,36 +252,38 @@ module Bun
           File::Baked.open(path, &blk)
         else
           # TODO Why not?
-          raise BadFileGrade, "Can't open file of this grade: #{grade.inspect}"
+          raise BadFileGrade, "Can't open file of this format: #{fmt.inspect}"
         end
       end
       
-      def tape_type(path)
+      def type(path)
         # return :packed if packed?(path)
         begin
           f = File::Unpacked.open(path, promote: true) 
-          f.tape_type
+          f.type
         rescue
           :unknown
         end
       end
       
-      def file_grade(path)
-        if packed?(path)
+      def format(path)
+        res = if packed?(path)
           :packed
         elsif binary?(path)
           :baked
         else
-          File::Unpacked.build_descriptor_from_file(path).file_grade
+          d = File::Unpacked.build_descriptor_from_file(path)
+          d.format
         end
+        res
       end
       
-      def file_grade_level(grade)
-        [:packed, :unpacked, :decoded, :baked].index(grade)
+      def format_level(fmt)
+        [:packed, :unpacked, :decoded, :baked].index(fmt)
       end
 
       def file_outgrades?(path, level)
-        file_grade_level(file_grade(path)) > file_grade_level(level)
+        format_level(format(path)) > format_level(level)
       end
       
       def descriptor(path, options={})
@@ -235,10 +302,16 @@ module Bun
       
       # Convert from packed format to unpacked (i.e. YAML)
       def unpack(path, to, options={})
-        case file_grade(path)
+        if File.exists?(to)
+          unless options[:force]
+            warn "Skipping unpack: #{to} already exists" unless options[:quiet]
+            return
+          end
+        end
+        case format(path)
         when :packed
           open(path) do |f|
-            cvt = f.unpack
+            cvt = f.unpack(fix: options[:fix])
             cvt.descriptor.tape = options[:tape] if options[:tape]
             cvt.descriptor.merge!(:unpack_time=>Time.now, :unpacked_by=>Bun.expanded_version)
             cvt.write(to)
@@ -249,7 +322,8 @@ module Bun
       end
 
       def decode(path, to, options={}, &blk)
-        case file_grade(path)
+        self.clear_messages
+        case format(path)
         when :packed
           File::Unpacked.open(path, options.merge(promote: true)) do |f|
             f.decode(to, options, &blk)
@@ -262,18 +336,108 @@ module Bun
       end
 
       def bake(path, to, options={})
-        case file_grade(path)
+        scrub = options.delete(:scrub)
+        case format(path)
         when :baked, :decoded
-          File.open(path, options) {|f| f.bake(to)}
+          File.open(path, options) {|f| f.bake(to, scrub: scrub)}
         else
-          File::Decoded.open(path, options.merge(promote: true)) {|f| f.bake(to)}
+          File::Decoded.open(path, options.merge(promote: true)) {|f| f.bake(to, scrub: scrub)}
         end
       end
-     
+
+      SCRUB_COLUMN_WIDTH = 60
+      SCRUB_FORM_FEED    = %q{"\n" + "-"*column_width + "\n"}
+      SCRUB_VERTICAL_TAB = %q{"\n"}
+
+      def scrub(from, to, options={})
+        column_width = options[:width] || SCRUB_COLUMN_WIDTH
+        form_feed = options[:ff] || eval(SCRUB_FORM_FEED)
+        vertical_tab = options[:vtab] || eval(SCRUB_VERTICAL_TAB)
+        text = File.read(from)
+        scrubbed_text = text.scrub(:column_width=>column_width, :form_feed=>form_feed, :vertical_tab=>vertical_tab)
+        Shell.new.write(to, scrubbed_text)
+      end
+
       def expand_path(path, relative_to=nil)
         path == '-' ? path : super(path, relative_to)
       end
-    end
+
+      def get_shard(path)
+        if path =~ /^(.*?)\[(.*)\]$/ # Has shard specifier
+          [$1, $2]
+        else
+          [path, nil]
+        end
+      end
+
+      # Does this path (or any part of its directory structure) conflict with an existing file?
+      def conflicts?(path, options={})
+        return false if path.nil? # Signifies "no output"; therefore, no conflict
+        return false if path=='-' # Signifies STDOUT; never a conflict
+        return false if File.directory?(path) && options[:directories_okay]
+        return path  if File.exists?(path)
+        dir = File.dirname(path)
+        return false if dir=='.' || dir=='/'
+        return conflicts?(dir, directories_okay: true)
+      end
+
+      # Note: returns an array of files that conflict with a proposed new file f. The
+      def conflicting_files(f)
+        ext = File.extname(f)
+        conflict_base = f.sub(/#{Regexp.escape(ext)}$/,'')
+        pat = /^#{Regexp.escape(conflict_base)}(?:\.v\d+)?#{Regexp.escape(ext)}$/
+        Dir.glob(conflict_base+'*')
+           .select {|file| file =~ pat }
+      end
+
+      # Create a set of moves that will merge a set of files to a destination without conflicts.
+      # Where necessary, add version numbers to the files to avoid stomping any file
+      #
+      # This method returns an array of moves that avoids conflicts. Each element in the array is 
+      # a hash in the form {:from=>from_file, :to=>to_file, :version=>99}. The moves MUST be executed
+      # in the order specified to guarantee avoiding conflicts!
+      #
+      # If there is no conflict, this method returns [{from: file, to: new_file, version: nil}]
+      #
+      # Rules for moving files
+      #   1. a/b/c/d (without extension) moves to a/b/c/d.v1 (but see below)
+      #   2. a/b/c/d...y.ext (with extension) moves to a/b/c/d...y.v99.ext (but see below)
+      #   3. a/b/c/d...v3.ext doesn't move
+      #   4. Version numbers are always assigned in ascending order of file date
+      #
+      # Arguments:
+      #   files is an array of (fully qualified) file names
+      #   dest is the name of where you want to move them to. 
+      #
+      # TODO More general pattern for version numbering
+      def moves_to_merge(files, dest)
+        case files.size
+        when 0
+          return []
+        when 1
+          return [] if files.first == dest
+          return [{from: files.first, to: dest, version: nil}]
+        end
+        dest = re_version_file(dest, nil) # Remove .v999 from dest, if any
+        version_count = 0
+        files.map {|f| [f, File.timestamp(f)] } # Fetch file versions only once
+             .sort_by {|f, timestamp| timestamp} # Sort oldest files first
+             .map do |f, timestamp| # Reset versions in order by file date
+                    version_count += 1
+                    {from: f, version: version_count, to: re_version_file(dest, version_count)}
+                  end
+             .reject {|spec| spec[:from] == spec[:to]} # Remove any "no-op" moves
+             .sort_by {|spec| -spec[:version]} # Move highest versions first
+      end
+
+      def re_version_file(f, version)
+        f =~ /^(.*?)((?:\.v\d+)?)((?:\.[\w\d_]*)?)$/ # May already have a .v999 prefix
+        version = version ? ".v#{version}" : ""
+        "#{$1}#{version}#{$3}"
+      end
+
+    end # File class methods
+
     attr_reader :archive
     attr_reader :tape_path
 
@@ -329,7 +493,7 @@ module Bun
     end
     
     def mark(tag_name, tag_value)
-      descriptor.set_field(tag_name, tag_value)
+      descriptor.set_field(tag_name, tag_value, :user=>true) # Allow only unregistered field names
     end
   
     def updated

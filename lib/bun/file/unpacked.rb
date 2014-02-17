@@ -11,19 +11,22 @@ module Bun
     class InvalidInputError < RuntimeError; end
     class CantExpandError < RuntimeError; end
     class CantDecodeError < RuntimeError; end
+    class SkippingFileError < RuntimeError; end
     
     class Unpacked < Bun::File
       class << self
         
         def read_information(fname)
-          input = begin
-            YAML.load(Bun::File.read(fname))
-          rescue => e
-            raise InvalidInput, "Error reading #{fname}: #{e}"
+          Bun.cache(:unpacked_yaml, File.expand_path(fname)) do
+            input = begin
+              YAML.load(Bun::File.read(fname))
+            rescue => e
+              raise InvalidInputError, "Error reading #{fname}: #{e}"
+            end
+            raise InvalidInputError "Expected #{fname} to be a Hash, not a #{input.class}" \
+              unless input.is_a?(Hash)
+            input
           end
-          raise InvalidInput, "Expected #{fname} to be a Hash, not a #{input.class}" \
-            unless input.is_a?(Hash)
-          input
         end
         
         def build_data(input, options={})
@@ -52,14 +55,18 @@ module Bun
           end
         end
 
+        attr_accessor :content, :data, :descriptor
+
+        # TODO Woof! This is getting really smelly
         def forced_open(fname, options={}, &blk)
           input = read_information(fname)
           input.merge!(tape_path: fname)
-          build_data(input, options)
-          build_descriptor(input)
-          options = options.merge(:data=>@data, :descriptor=>@descriptor, :tape_path=>options[:fname])
-          if options[:type] && @descriptor[:tape_type]!=options[:type]
-            msg = "Expected file #{fname} to be a #{options[:type]} file, not a #{descriptor[:tape_type]} file"
+          klass = options[:as_class] || self # So that File::Decoded can force open as File::Unpacked
+          klass.build_data(input, options)
+          klass.build_descriptor(input)
+          options = options.merge(:data=>klass.data, :descriptor=>klass.descriptor, :tape_path=>options[:fname])
+          if options[:type] && klass.descriptor[:type]!=options[:type]
+            msg = "Expected file #{fname} to be a #{options[:type]} file, not a #{klass.descriptor[:type]} file"
             # TODO Remove this option; use exception handling, instead
             if options[:graceful]
               stop "!#{msg}"
@@ -67,7 +74,6 @@ module Bun
               raise UnexpectedTapeTypeError, msg
             end
           end
-          klass = options[:as_class] || self # So that File::Decoded can force open as File::Unpacked
           file = klass.create(options)
           if block_given?
             begin
@@ -84,14 +90,14 @@ module Bun
         def open(fname, options={}, &blk)
           if options[:force]
             forced_open(fname, options, &blk)
-          elsif (grade = File.file_grade(fname)) != :unpacked
+          elsif (fmt = File.format(fname)) != :unpacked
             if options[:promote]
-              if File.file_grade_level(grade) < File.file_grade_level(:unpacked)
+              if File.format_level(fmt) < File.format_level(:unpacked)
                 t = Tempfile.new('promoted_to_unpacked_')
                 t.close
                 # TODO redo this:
                 # super(fname, options) {|f| f.unpack(t.path, options)}
-                File.unpack(fname, t.path)
+                File.unpack(fname, t.path, force: true) # Need --force, tempfile exists
                 # puts "Unpacked file:" # debug
                 # system("cat #{t.path} | more")
                 File::Unpacked.open(t.path, options, &blk)
@@ -108,8 +114,8 @@ module Bun
         
         def create(options={})
           descriptor = options[:descriptor]
-          tape_type = options[:force_type] || descriptor[:tape_type]
-          case tape_type
+          type = options[:force_type] || descriptor[:type]
+          case type
           when :text
             File::Unpacked::Text.new(options)
           when :frozen
@@ -118,7 +124,7 @@ module Bun
             File::Unpacked::Huffman.new(options)
           else
             if options[:strict]
-              raise UnknownFileTypeError,"!Unknown file type: #{descriptor.tape_type.inspect}"
+              raise UnknownFileTypeError,"!Unknown file type: #{descriptor.type.inspect}"
             else
               File::Unpacked::Text.new(options)
             end
@@ -170,12 +176,13 @@ module Bun
         @header
       end
       
-      def tape_type
-        descriptor.tape_type
+      def type
+        descriptor.type
       end
       
-      def file_time
-        descriptor.file_time
+      def time
+        debug "descriptor is a #{descriptor.class}"
+        descriptor.time
       end
       
       BUN_IDENTIFIER = "Bun"
@@ -194,14 +201,14 @@ module Bun
         fields = descriptor.to_hash
         fields.delete(:data)
         fields.delete(:shards)
-        file_grade = options.delete(:file_grade)
-        fields[:file_grade] = file_grade || :unpacked
+        format = options.delete(:format)
+        fields[:format] = format || :unpacked
         fields[:digest]  = content.digest
-        if tape_type == :frozen
+        if type == :frozen
           shards = shard_descriptors.map do |d|
             {
               :name      => d.name,
-              :file_time => d.file_time,
+              :time => d.time,
               :blocks    => d.blocks,
               :start     => d.start,
               :size      => d[:size], # Need to do it this way, because d.size is the builtin
@@ -217,6 +224,7 @@ module Bun
         hash[:content] = content
         hash.delete(:promote)
         hash.delete(:tape_path)
+        hash.delete(:fields)
         # debug "Caller: #{caller[0,2].inspect}"
         # debug hash.inspect
         hash
@@ -244,37 +252,47 @@ module Bun
       end
       
       def to_decoded_hash(options={})
+        llinks = self.llink_count rescue nil # Frozen and huffman files don't have llinks
+        text = decoded_text(options)
+        return nil unless text
+        text = text.scrub if options[:scrub]
         options = options.merge(
-                    content: decoded_text(options), 
-                    file_grade: :decoded,
+                    content:     text, 
+                    format:  :decoded,
                     decode_time: Time.now,
-                    decoded_by:  Bun.expanded_version
+                    decoded_by:  Bun.expanded_version,
+                    text_size:   text.size,
                   )
+        options[:llink_count] = llinks if llinks
         to_hash(options)
       end
       
       def to_decoded_yaml(options={})
-        to_decoded_hash(options).to_yaml
+        hash = to_decoded_hash(options)
+        raise "contains :fields: #{hash.inspect}" if hash.keys.map{|k| k.to_s}.include?('fields')
+        hash.to_yaml
       end
 
       def qualified_path_name(to, shard=nil)
-        to ? (shard ? File.join(to, shard) : to) : shard      end
+        to ? (shard ? File.join(to, shard) : to) : shard      
+      end
 
-      # TODO Could this be refactored to Frozen and other subclasses?
       def to_decoded_parts(to, options)
+      # TODO Could this be refactored to Frozen and other subclasses?
         expand = options.delete(:expand)
         allow = options.delete(:allow)
-        if tape_type!=:frozen || options[:shard]
+        if type!=:frozen || options[:shard]
           # Return a file
-          {to=>to_decoded_yaml(options)}
+          [{path: to, content: to_decoded_yaml(options), from: descriptor.tape_path, shard: nil}]
         elsif expand
           # Return multiple shards
-          parts = {}
+          parts = []
           shard_count.times do |shard_number|
             res = to_decoded_hash(options.merge(shard: shard_number))
+            break unless res
             path = qualified_path_name(to, res[:shard_name])
             raise CantExpandError, "Must specify file name with :expand" if res[:shard_name] && to=='-'
-            parts[path] = res.to_yaml
+            parts << {path: path, content: res.to_yaml, from: descriptor.tape_path, shard: res[:shard_name]}
           end
           parts
         else
@@ -283,17 +301,49 @@ module Bun
       end
 
       def decode(to, options={}, &blk)
+        # Need to delete these, otherwise they'll end up in the file descriptor
+        force = options.delete(:force)
+        quiet = options.delete(:quiet)
+        continue = options.delete(:continue)
+        to_path = options.delete(:to_path)
+        _raise = options.delete(:raise)
         parts = to_decoded_parts(to, options)
         unless parts
           yield(self, 0) if block_given? # In case some reporting needs to be done
           return nil
         end
         shell = Shell.new
-        parts.each.with_index do |pair, index|
-          part, content = pair
+        parts.each.with_index do |part_hash, index|
+          part = part_hash[:path]
+          content = part_hash[:content]
           part = yield(self, index) if block_given? # Block overrides "to"
-          shell.mkdir_p(File.dirname(part)) unless part.nil? || part=='-'
-          shell.write(part, content) unless part.nil?
+          if !part.nil? && (block_given? || !to.nil?)
+            if !force && (conflicting_part = File.conflicts?(part))
+              if quiet
+                stop unless continue
+              else
+                message_part = File.basename(part_hash[:from])
+                message_part = message_part + "[#{part_hash[:shard]}]" if part_hash[:shard]
+                if to
+                  conflicting_part = 'it' if conflicting_part == to
+                else
+                  conflicting_part = File.relative_path(conflicting_part, relative_to: to_path)
+                end
+                msg = "Skipped #{message_part}: #{conflicting_part} already exists"
+                if _raise
+                  raise SkippingFileError, msg
+                elsif continue
+                  message_path = part_hash[:shard] ? "#{::File.expand_path(part_hash[:from])}[#{part_hash[:shard]}]" : part_hash[:from]
+                  File.replace_messages message_path, msg
+                else
+                  stop msg
+                end
+              end
+            else
+              shell.mkdir_p(File.dirname(part)) unless part=='-'
+              shell.write(part, content)
+            end
+          end
         end
         parts
       end

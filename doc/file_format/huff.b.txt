@@ -1,644 +1,355 @@
-/*  
- *	Huffman encode text. 
- *	Copyright (c) 1978, Alex White   
- *  ccng.wheeler
- */ 
-
-
-%b/manif/.bset  
-optable[] { 
-	"Overstrike", DASH_KWD,
-	"Runlength", NVAL_KWD, 
-	"Usetable", SVAL_KWD,  
-	"Table", SVAL_KWD, 
-	"noHuff", DASH_KWD,
-	"Size", DASH_KWD,  
-	"STatisticalfile", SVAL_KWD,   
-	-1 
-};  
-.process 0; 
-FILE		=	0;  
-OVERSTRIKE	=	1; 
-RUNLENGTH	=	2;  
-USETABLE	=	3;   
-TABLEFILE	=	4;  
-NOHUFFING	=	5;  
-FILESIZE	=	6;   
-STATISTICS	=	7; 
-REDIRECTION	=	8;
-
-
-stats		0;   
-tty		0; 
-stdin	=	0;  
-stdout	=	1; 
-s_sector=	64;	/* words per sector */
-s_word	=	36;	/* number of bits per word */  
-s_printer=	136;	/* number of print positions (for overstrikes) */   
-hashtab;
-sorted; 
-count		0;   
-RAW_FLAG=	0600000000000;	/* Small table */  
-items		1;	/* always at least eof */ 
-RPT	=	0777776; /* Repeated character */ 
-rpt_no		5;  
-EOF	=	0777777; /* EOF will be huffman encoded */
-extern	=	extrn; 
-int	=	auto; 
-char	=	auto;
-s_hash	=	5;	/* size of hash table entry */  
-.char	=	[0];	/* The character(s) */ 
-.fwd	=	[1];	/* next item in hash table */   
-
-
-.cnt	=	[2];	/* count of this item */
-.bits	=	[3];	/* number of bits in code */   
-.code	=	[4];	/* The huffman code */ 
-s_tree	=	4;	/* size of huffman tree */  
-.item	=	[0];	/* The character(s) */ 
-.prob	=	[1];	/* Probability (really count) */   
-.conc	=	[2];	/* pointer in huff tree */ 
-.bit	=	[3];	/* one bit of huff code */  
-
-
-main(argc, argv) {  
-	extern rpt_no, tty;
-	extern .argtyp, sector;
-	extern incr, puthuf, stats;
-	int size, nohuff, overstr; 
-	int f, j, i;   
-	int table, outfile, usertable; 
-
-
-	size = 0;  
-	nohuff = 0;
-	table = 0; 
-	usertable = 0; 
-	overstr = 1;   
-	/* 
-	 *	Parse args. 
-	 */
-	f = getvec(argc);  
-	j = 0; 
-	for(i=1 ; argv[i] != -1 ; ++i) {   
-		switch(argv[i]>>18) { 
-		case STATISTICS:  
-			if(stats)
-				usage();
-			stats = open(argv[i], "wd"); 
-			break;   
-		case FILESIZE:
-			size = !size;
-			break;   
-		case NOHUFFING:   
-			nohuff = !nohuff;
-			break;   
-		case OVERSTRIKE:  
-			overstr = !overstr;  
-			break;   
-		case RUNLENGTH:   
-			rpt_no = *argv[i];   
-			break;   
-		case FILE:
-			f[j++] = argv[i];
-			break;   
-		case REDIRECTION: 
-			if(.argtyp[i] == '>')
-
-
-
-				open(stdout, outfile=re(argv[i]), "wbdn");  
-			else if(.argtyp[i] == '<')   
-				f[j++] = re(argv[i]);   
-			else 
-				usage();
-			break;   
-		case USETABLE:
-			if(usertable)
-				usage();
-			usertable = argv[i]; 
-			break;   
-		case TABLEFILE:   
-			if(table)
-				usage();
-			table = argv[i]; 
-			break;   
-		} 
-	}  
-	if(usertable && table) 
-		usage();  
-	/* 
-	 *	Pass 1: make occurance counts   
-	 */
-	init();
-	if(!usertable) {   
-		for(i=0 ; i<j ; ++i) {
-			open(stdin, f[i], "rd"); 
-			if(overstr)  
-				over(incr); 
-			else 
-				raw(incr);  
-			close(stdin);
-		} 
-		if(j == 0) {  
-			tty = 1; 
-			open(stdout, f[0]="(stdout)", "w");  
-			if(overstr)  
-				over(incr); 
-			else 
-				raw(incr);  
-			close(stdout);   
-			++j; 
-			tty = 0; 
-		} 
-		/*
-		 *	Compute the huff codes.
-		 */   
-		huffcode();   
-	} else {   
-		open(stdin, usertable, "rbd");
-		gettab(); 
-		close(stdin); 
-		putword('huff');  
-	}  
-	if(table)  
-		open(stdout, table, "wbdn");  
-	if(!usertable) 
-		puttab(overstr ? 0 : RAW_FLAG);   
-	if(table) {
-		if(size)  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			printf(-4, "%s is %d sectors*n", table, sector+1);   
-		wflush(); 
-		close(stdout);
-		.write(stdout);   
-		putword('huff');  
-	}  
-	/* 
-	 *	Pass 2: Convert the files   
-	 */
-	if(!nohuff) {  
-		putword(0);   
-		putword('text');  
-		if(j==0)  
-			f[(j=1)-1] = ""; 
-		for(i=0 ; i<j ; ++i) {
-			open(stdin, f[i], "rd"); 
-			if(overstr)  
-				over(puthuf);   
-			else 
-				raw(puthuf);
-			close(stdin);
-		} 
-		puthuf(EOF);  
-	}  
-	if(size)   
-		printf(-4, "%s is %d sectors*n", outfile, sector+1);  
-	wflush();  
-	close(stdout); 
-}   
-
-
-usage() {   
-	error("Usage: huff [-noHuff] [-Table] [-Overstrike] [Repeat=n] [infile]***n"); 
-}   
-
-
-/*  
- *	Process each character on a line.
- */ 
-processline(line, fun) {
-	extern hashtab, items; 
-	extern rpt_no; 
-	int i, j, k;   
-
-
-	for(j = 135 ; j>=0 ; j--)  
-		if(line[j])   
-			break;   
-	if(j>=0)   
-		line[++j] = '*n'; 
-	else   
-		line[j=0] = '*n'; 
-	for(i = 0 ; i<=j ; ++i) {  
-		if(!line[i])  
-			line[i] = ' ';   
-		for(k=1 ; i+k<=j && line[i+k]==line[i] ; ++k);
-		if(k > rpt_no) {  
-			i += k-1;
-			fun(RPT, k); 
-		} 
-		fun(line[i]); 
-	}  
-
-}   
-
-
-/*  
- *	Increment the occurance count for a character.   
- */ 
-incr(c) {   
-	extern hashtab, items; 
-	int h; 
-
-
-	for(h=hashtab[hash(c)] ;   
-		 h .fwd && h .char != c; h=h .fwd);   
-	if(h .char == c)   
-		++h .cnt; 
-	else { 
-		if(h .char != 0) {
-			h .fwd = getvec(s_hash); 
-			h = h .fwd;  
-		} 
-		++items;  
-		h .fwd = 0;   
-		h .cnt = 1;   
-		h .char = c;  
-	}  
-}   
-
-
-/*  
- *	Turn the hash table into a sequential table. 
- */ 
-table() {   
-	int i, h;  
-	extern hashtab, count, sorted, items;  
-
-
-	sorted = getmatrix(items<<1, s_tree);  
-	count = 0; 
-	for(i=0 ; i<256 ; ++i) {   
-		if(!hashtab[i].char)  
-			next;
-		for(h=hashtab[i] ; h  &&  h .char ; h=h .fwd) {   
-			sorted[count].item = h .char;
-			sorted[count].prob = h .cnt; 
-			sorted[count++].conc = -1;   
-		} 
-	}  
-}   
-
-
-/*  
- *	Compare function for sorting huff list.  
- *	'Used' items get put at end. 
- */ 
-comp(a, b) {
-	if(a .conc != -1  &&  b .conc != -1)   
-		return(0);
-	if(a .conc != -1)  
-		return(1);
-	if(b .conc != -1)  
-		return(-1);   
-	return(a .prob > b .prob ? 1 : (a .prob < b .prob ? -1 : 0));  
-
-}   
-
-
-/*  
- *	Compute the huffman codes for each item. 
- */ 
-huffcode() {
-	extern stats;  
-	extern sorted, count, comp, hashtab;   
-	int i, j, k, h;
-	int chars, totbits;
-
-
-	table();   
-	for(j=count-1 ; j>0 ; j--) {   
-		shellsort(sorted, count-1, comp); 
-		sorted[1].bit = 1;
-		sorted[0].bit = 0;
-		sorted[1].conc = sorted[0].conc = sorted[count];  
-		sorted[count].prob = sorted[0].prob + sorted[1].prob; 
-		sorted[count].item = 0;   
-		sorted[count].conc = -1;  
-		++count;  
-	}  
-	chars = totbits = 0;   
-	for(i=0 ; i<count ; ++i) { 
-		if(!sorted[i].item)   
-			next;
-		for(h=hashtab[hash(sorted[i].item)] ; 
-			h .fwd && h .char != sorted[i].item ; h=h .fwd); 
-		h .code = h .bits = 0;
-		for(k=sorted[i] ; k .conc != -1 ; k=k .conc) {
-			h .code = (h .code>>1) | (k .bit<<35);   
-			++h .bits;   
-		} 
-		if(h .bits > s_word)  
-			error("%d is a lot of bits!*n",h .bits); 
-		h .code >>= s_word - h .bits; 
-		if(stats) {   
-			printf(stats, "'%c'*t",h .char); 
-			for(j=h .bits-1 ; j>=0 ; j--)
-				printf(stats, "%d", (h .code>>j)&01);   
-			printf(stats, "*t%d*n", h .bits);
-			totbits += h .bits * h .cnt; 
-			chars += h .cnt; 
-		} 
-
-	}  
-	if(stats)  
-		printf(stats, "Average bits: %d.%d*n", totbits/chars, 
-			 (totbits%chars)*100/chars); 
-}   
-
-
-init() {
-	extern hashtab;
-	int i; 
-
-
-	hashtab = getmatrix(256, s_hash);  
-	for(i=0 ; i<256 ; ++i) 
-		hashtab[i].fwd = hashtab[i].cnt = hashtab[i].char = 0;
-	/* end of file flag! */
-	hashtab[0].char = EOF; 
-	hashtab[0].cnt = 1;
-}   
-
-
-/*  
- *	Change each overstruck line. 
- */ 
-over(funlin) {  
-	extern tty;
-	int i; 
-	char line[s_printer], c;   
-
-
-	for(i=0 ; i<s_printer ; ++i)   
-		line[i] = 0;  
-	i = 0; 
-	while(c=getchar()) {   
-		if(tty)   
-			putchar(c);  
-		switch(c) {   
-		case '*b':
-			--i; 
-			break;   
-		case '*n':
-			processline(line, funlin);   
-			for(i=0 ; i<s_printer ; ++i) 
-				line[i] = 0;
-			i = 0;   
-			next;
-		case ' ': 
-			++i; 
-			break;   
-		case '*r':
-			i = 0;   
-			next;
-		default:  
-			line[i] = line[i]<<9 | c;
-			++i; 
-		} 
-		if(i > s_printer  ||  i < 0)  
-			error("that's a strange line!*n");   
-	}  
-}   
-
-
-
-
-/*  
- *	Don't look at the text for overstrikes.  
- */ 
-raw(fun) {  
- 	extern tty, rpt_no;   
-
-
-
-
-	char c, oldc;  
-	int count; 
-
-
-	oldc = count = 0;  
-	while(c=getchar()) {   
-		if(tty)   
-			putchar(c);  
-		if(c == oldc) {   
-			++count; 
-			next;
-		} else {  
-			if(count > rpt_no) { 
-				fun(RPT, count);
-				fun(oldc);  
-			} else { 
-				while(count--)  
-					fun(oldc); 
-			}
-			oldc = c;
-			count = 1;   
-		} 
-	}  
-	if(count > rpt_no) {   
-		fun(RPT, count);  
-		fun(oldc);
-	} else 
-		while(count--)
-			fun(oldc);   
-}   
-
-
-/*  
- *	Hash the item
- */ 
-hash(c) 
-	return((c&0377) ^ ((c>>9)&0377) ^ ((c>>18)&0377) ^ ((c>>27)&0377));
-
-
-/*  
- *	Put out the huffman code table at the start. 
- */ 
-puttab(flags) { 
-	extern hashtab, items; 
-	int i, j, h;   
-
-
-	putword('huff');   
-	putword(flags);	/* leave room for llinks later */  
-	putword('tabl');   
-	putword(items);
-	for(i=0 ; i<256 ; ++i) {   
-		if(!hashtab[i].char)  
-			next;
-		for(h=hashtab[i] ; h ; h=h .fwd) {
-			if(flags & RAW_FLAG) 
-				putword((h .char << 18) | h .bits); 
-			else {   
-				putword(h .char);   
-				putword(h .bits);   
-			}
-			putword(h .code);
-		} 
-	}  
-	putword(0);
-}   
-
-
-/*  
-
-
- *	Get a huffman table. 
- */ 
-gettab() {  
-	extern hashtab, items; 
-	int h, small;  
-	char c;
-
-
-	if(getword() != 'huff')
-		error("not a huffman encoded file*n");
-	small = getword() & RAW_FLAG;  
-	if(getword() != 'tabl')
-		error("no tables*n"); 
-	items = getword(); 
-	while(c=getword()) {   
-		for(h=hashtab[hash(c)] ; h .fwd ; h=h .fwd);  
-		if(h .char != 0) {
-			h .fwd = getvec(s_hash); 
-			h = h .fwd;  
-		} 
-		h .fwd = 0;   
-		if(small) {   
-			h .char = c>>18; 
-			h .bits = c&0177777; 
-		} else {  
-			h .char = c; 
-			h .bits = getword(); 
-		} 
-		h .code = getword();  
-	}  
-}   
-
-
-/*  
- *	Put out the huffman encoding for a character.
- */ 
-puthuf(c, k) {  
-	extern hashtab;
-	int i, h;  
-
-
-	for(h=hashtab[hash(c)] ;   
-		h .fwd && h .char != c ; h=h .fwd);   
-	if(h .char != c)   
-		error("no code for '%c'*n", c);   
-	for(i=h .bits ; i ; i--)   
-		putbit((h .code >> (i-1)) & 01);  
-	if(c == RPT)   
-		putcnt(k);
-}   
-
-
-/*  
- *	Put out an eight bit repeat count.   
- */ 
-putcnt(i) { 
-	int j; 
-
-
-	for(j=7 ; j>=0 ; j--)  
-		putbit((i>>j) & 01);  
-}   
-
-
-/*  
-
-
-
-
- *	put out one binary bit.  
- */ 
-buffer	0;   
-pos	0;  
-putbit(b) { 
-	extern buffer, pos;
-
-
-	buffer = (buffer<<1) | b;  
-	if(++pos > 35) {   
-		putword(buffer);  
-		buffer = pos = 0; 
-	}  
-}   
-
-
-sector 0;   
-buf[s_sector];  
-bpos 0; 
-putword(c) {
-	extern buf, bpos, sector;  
-
-
-	buf[bpos++] = c;   
-	if(bpos > s_sector-1) {
-		write(stdout, buf, sector++, s_sector);   
-		bpos = 0; 
-	}  
-}   
-
-
-wflush() {  
-	extern buf, bpos;  
-	extern buffer, pos;
-	extern hashtab, sector;
-
-
-	if(pos != 0) { 
-		buffer <<= s_word-pos;
-		putword(buffer);  
-	}  
-	if(bpos != 0)  
-		write(stdout, buf, sector, bpos); 
-	read(stdout, buf, 0, s_sector);
-	buf[1] |= (sector+5)/5;
-	write(stdout, buf, 0, s_sector);   
-	bpos = 0;  
-	sector = 0;
-}   
-
-
-re(a) { 
-	auto b[64];
-
-
-	movelr(b, 0, a, 1, length(a)); 
-	movelr(a, 0, b, 0, length(b)+1);   
-	return(a); 
-}   
-
-
-rbuffer[s_sector];  
-rpos s_sector;  
-rsector 0;  
-getword() { 
-	extern rbuffer, rpos, rsector; 
-
-
-	if(rpos > s_sector-1) {
-		read(stdin, rbuffer, rsector++, s_sector);
-		rpos = 0; 
-	}  
-	return(rbuffer[rpos++]);   
-
-}   
+/*
+!b  cmdlib/s/huff  cmdlib/huff  n
+*/
+main(){
+		/*  Huffman encoding of files **********/
+
+	auto inrc[10], rec[ 30 ], freq[ 10 ], i, j ;
+	extrn in.opts, in.des, in.tot, in.atual, in.tab, in.ptr, in.refr, in.sk, in.tal, in.of;
+	extrn out.opts, out.des, outtab, out.ptr, out.refr, out.max, outrec;
+	extrn wd1, out.sk, huf.opn, acc.fil, huf.rd, chaget, huf.rew, hufrrw;
+	extrn huf.get, hufsop;
+
+	/* initialise random input */
+	huf.opn = acc.fil;
+	huf.rd = chaget;
+	huf.rew =hufrrw;
+	wd1 = 0;
+
+	reread();
+	getstr( rec );
+	i = getarg( freq, rec, 0 );
+	i = getarg( inrc, rec, i, " *t(;" );
+	if( char( rec, i-1 ) == '(' ){
+		i = getarg( freq, rec, i, " *t;" );
+		if( (char( freq, 0 )| ' ' ) == 'a'){
+			huf.opn = hufsop;
+			huf.rd = huf.get;
+			huf.rew= hufsop;
+			wd1 = 0400000000000; }
+		else	in.tot = gnumber( freq, 0 ); }
+	else	in.tot = 0;
+
+	in.atual = 0;
+	i= getarg( freq, rec, i );
+	huf.opn( inrc, in.opts, in.des ); /*opening files */
+	acc.fil( freq, out.opts, out.des );
+	if( !in.tot & !wd1 ) in.tot= (in.des[4] & 07777 ) *
+		( ( in.des[4] &0400000 ) == 0 ? 12 : 1 );
+	out.max = ( out.des[4] & 07777 ) * ( (out.des[4] & 0400000 ) == 0 ? 60 :5 );
+
+	/* initialise i/o tallies */
+
+	cleanb( in.tab );
+	cleanb( outtab );
+	out.ptr = out.refr; /* output starts with empty buffer */
+
+	/* generate table of frequencies and encodings */
+
+	i = huffgen(  tblgen() ) ;
+
+	/* to rewind input file */
+
+	huf.rew( inrc );
+
+	encode( i );
+	for( j=0; j<=7; ++j) putbit( 0 ); /* flushing bit bucket */
+	writeb( ); /* flushing buffer */
+
+	out.des[2] = 0;
+	ran.rd( out.des, outrec );
+	outrec[0]= 'huff';
+	outrec[1]= wd1 | (out.sk/5); /*plug this files size */
+	out.des[2] = 0;
+	ran.wr( out.des, outrec );
+	printf( "*n %c%c is %d llinks*n",
+		out.des[0], out.des[1], out.sk/5);
+	if(wd1 > 0)	if( ( in.des[ 4 ] & 040000 ) != 0 ) retfil( in.des );
+	if( ( out.des[ 4 ] & 040000 ) != 0 ) retfil( out.des );
+	exit();
+/* end of main */ }
+tblgen(){
+
+	extrn comp.w;
+	auto i,freq;
+
+	freq = getvec(512);
+	for( i=0; i <= 511; ++i) freq[ i ] = i;
+	while( ( i= huf.rd() ) >= 0 ){
+		freq[ i ]=+ 01000;
+		/* end of while */ }
+	shellsort(freq, 512,comp.w );
+	return( freq );
+/* end of tblgen */ }
+
+
+comp.w( a, b)
+
+	/*shell's sort compare */
+	return( a>b ? -1: 1 );
+
+
+chaget(){
+
+extrn in.ptr, in.of, in.tal;
+
+	if( in.ptr > in.of ) /* new buffer is needed */
+		if( readb() < 0 ) return( -1 ); /* to read new buffer */
+	return( @in.tal );
+/* end of chaget */ }
+
+
+readb(){
+
+	extrn in.des, in.sk, in.atual, in.tot, in.rec, io.stats, in.ptr, in.refr;
+
+	in.des[ 2 ] = in.sk;
+	in.sk =+5;
+	if( ++in.atual  > in.tot ) return(-1);
+	ran.rd( in.des, in.rec );
+	if( ( io.stats & 0170000000000) == 0170000000000 ) return(-1);
+	in.ptr = in.refr;
+	return(0);
+/* end of readb*/}
+
+huf.get(){
+	auto i;
+	if((i = getcha())=='*e')return(-1);
+	return(i); }
+
+
+
+hufrrw(){
+	auto rec[2];
+	extrn in.ptr, in.of, in.sk, in.des, in.atual;
+
+	in.ptr = in.of + 1;
+	in.sk = 0;
+	if( ( in.des[4] & 0200000) == 0 ) drl.drl( 012 /*rew*/, (in.des <<18| rec));
+	in.atual =0;
+/* end of hufrrw */ }
+
+hufsop( file ) /* ignoring next 2 args */ openr(2, file);
+
+
+writeb(){
+	extrn out.des, out.sk, outrec, out.ptr, out.refr, io.stat, out.max;
+
+	/* check addrs is outside file*/
+
+	if( out.sk >= out.max ){
+		auto xxx[160];
+		drl.gro( out.des, xxx );
+		if( ( io.stat & 0377700000000 ) != 0){
+			printf("%c%c file error %12o *n",out.des[0],out.des[1],io.stat);
+			exit(); }
+		
+		/* update out.max */
+
+		out.max =+ (out.des[4] &0100000 ) == 0 ? 60 : 5; }
+	out.des[ 2 ] = out.sk;
+	out.sk =+ 5;
+	ran.wr( out.des, outrec );
+	out.ptr= out.refr;
+/* end of writeb */ }
+
+
+chaput( chart ){
+
+	extrn out.ptr, out.tal, out.of, out.refr;
+
+	@out.tal = chart;
+	if( out.ptr > out.of ){   /* buffer is full */
+		writeb();
+		}
+/* end of chaput */ }
+
+
+
+putbit( bit ){
+
+	extrn biting ;
+
+	if( (biting = ( biting << 1 ) | bit ) >= 01000 ) {
+		chaput( biting );
+		biting = 1; }
+/* end of putbit */ }
+
+
+outtb( c, last ){
+
+	if( *last == 0 ){
+		chaput( c );
+		chaput( last[ 1 ] ); }
+	else {
+		outtb( ++c, *last );
+		outtb( 0, last[ 1 ] ); }
+/* end of outtb */ }
+
+
+
+walk( head ){
+
+	auto encod, siz;
+	extrn encd, work, wrkpos, wrkrefr, wrksc, wrkscr;
+
+	if( !head[ 0] ){
+
+		/* character found */
+
+		siz = ( wrkpos >> 18 ) - work ;
+		@wrksc = 2; /* signalling end of encoding */
+		encod = getvec( siz );
+		copy( encod, work, siz );
+		@wrkscr = @wrkscr = 3; /* to back tally */
+		encd[ head[ 1 ] ] = encod; /* store heading */
+		return ; }
+
+	@wrksc = 0;
+	walk( head[ 0 ] ) ;
+	@wrksc = 1;
+	walk( head[ 1 ] );
+	@wrkscr = 4;
+	return;
+/* end of walk */ }
+
+
+
+
+
+putenc( head ){
+
+	auto c;
+	extrn wrkhd, wrkhsc;
+
+	wrkhd= head << 18 ;
+	while( (c = @wrkhsc ) <= 1 ) putbit( c );
+	return ;
+/* end of putenc */ }
+
+encode( i ){
+
+	auto c;
+	extrn encd, work, wrkhd, wrkpos, wrkrefr, wrksc, wrkscr, wrkhsc;
+
+	/* first gen encodings */
+
+	wrksc = ( &wrkpos << 18 ) | 052;
+	wrkhsc = ( &wrkhd << 18 ) | 052;
+	wrkscr = ( &wrkpos << 18 ) | 045;
+	wrkrefr = ( work ) << 18 ;
+	wrkpos = wrkrefr;
+
+	/* walk on tree */
+
+	walk( i );
+	while( ( c = huf.rd() ) >= 0 ) putenc( encd[ c ] );
+/* end of encode */ }
+
+
+
+cleanb( table ){
+
+	auto i;
+
+	table++; /*compiler bug */
+	table[ 2 ] = i = getvec( 320 );  /* the record buffer */
+	table[ 1 ] = ( table  << 18 ) | 052 ; /* sc tally */
+	table[ 3 ] = 0;
+	table[ 4 ] = ( i << 18 ) | 040; /* the tally itself */
+	table[ 5 ] = ( ( i + 320 ) << 18 ) | 040 ; /* the overflow tally */
+	table[ 0 ] = table[ 5 ] + 1; /* current tally is exausted */
+/* end of cleanb */ }
+
+
+huffgen( table ){
+
+	auto i, leaves, j, k, l, hd;
+	extrn in.des, wd1;
+
+	for( i = 511; i >= 0; --i ) if( table[ i ] > 01000 ) break;
+
+	leaves = getvec( i );
+	for( j =0; j <= i; ++j ){
+		k = leaves[j] = getvec( 1 );
+		k[ 0] = 0;
+		k[ 1] = table[ j ] & 0777;
+		table[ j ] =>> 9; }
+
+	for( j =i; j>0; j ){
+		hd = getvec(1);
+		hd[0] = leaves[ j-1 ] ;
+		hd[1] = leaves[ j ] ;
+		leaves[ j-1 ] = hd;
+		table[ j-1 ] =+ table[ j ];
+		--j;
+
+		for( k= j; k > 0; --k )      /* bubble */
+			if( table[ k ] > table[ k-1 ] ){
+				l = table[ k ];
+				table[ k ] = table[ k-1 ];
+				table[ k-1 ] = l;
+
+				l = leaves[ k ];
+				leaves[ k ] = leaves[ k-1 ];
+				leaves[ k-1 ] = l ; }
+			else  break;
+
+	/* end of for */ }
+
+	/* k is the head of tree */
+
+	wd1 =| (table[0])<<18; /* size in llinks */
+	wd1 =| ( in.des[4] &0200000)<<1; /* file mode */
+	for( k=0; k<=7; ++k)chaput(0); /* skip two words */
+
+	outtb( 0, hd ); /*        print table in output file */
+	rlsevec( leaves, i );
+	return( hd );
+/* end of huffgen */ }
+
+
+
+
+	/* externals */
+huf.rd;
+huf.rew;
+huf.opn;
+huf.wr;  /* these words are for switchin b/i/o &ran/i/o  */
+in.tab [];
+	in.ptr;
+	in.tal;
+	in.rec;
+	in.sk;
+	in.refr;
+	in.of;
+	in.tot;
+	in.atual;
+	in.opts[ 3 ] 0400000000000, 1, 1, 1;
+	in.des [ 4 ] ;
+
+outtab [];
+	out.ptr;
+	out.tal;
+	outrec;
+	out.sk;
+	out.refr;
+	out.of;
+	out.max;
+	out.opts[ 3 ] 0600000000001, 1, 1, 1;
+	out.des [ 4 ];
+
+biting 1 ; 
+
+work[ 84 ];
+	wrksc;
+	wrkscr;
+	wrkpos;
+	wrkhd;
+	wrkhsc;
+	wrkrefr;
+
+encd[ 512 ];
+wd1;
+
+/* end of externals */

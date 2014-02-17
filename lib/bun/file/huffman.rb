@@ -8,6 +8,7 @@ module Bun
         include CacheableMethods
 
         class BadFileContentError < RuntimeError; end
+        class TreeTooDeepError < RuntimeError; end
 
         class TreeNode
           attr_accessor :left, :right, :array
@@ -42,7 +43,7 @@ module Bun
         def initialize(options={})
           options[:data] = Data.new(options) if options[:data] && !options[:data].is_a?(Bun::Data)
           super
-          raise BadFileContentError, "Does not appear to be a Huffman file" unless file_type_code == "huff"
+          raise BadFileContentError, "Does not appear to be a Huffman file: file type word=#{file_type_code.inspect} (should be 'huff')" unless file_type_code == "huff"
           reset_position
         end
 
@@ -85,19 +86,23 @@ module Bun
         end
 
         def make_tree
-          build_sub_tree(get_byte)
+          build_sub_tree(get_file_byte, 0)
         end
 
-        def build_sub_tree(ch)
+        RECURSION_LIMIT = 500
+
+        def build_sub_tree(ch, depth)
+          raise TreeTooDeepError, "Huffman tree too deep: more than #{RECURSION_LIMIT} bits in encoding" \
+            if depth > RECURSION_LIMIT
           if ch==0
-            TreeNode.new(nil, get_byte.chr)
+            TreeNode.new(nil, get_file_byte)
           else
-            TreeNode.new(build_sub_tree(ch-1),build_sub_tree(get_byte))
+            TreeNode.new(build_sub_tree(ch-1, depth+1),build_sub_tree(get_file_byte, depth+1))
           end
         end
         private :build_sub_tree
 
-        def get_byte
+        def get_file_byte
           @file_position ||= 0
           @current_byte = tree_byte(@file_position)
           @file_position += 1
@@ -107,7 +112,7 @@ module Bun
         def get_bit
           @bit_position ||= 0
           if @bit_position >= Bun::Data::BITS_PER_BYTE
-            get_byte
+            get_file_byte
             @bit_position = 0
           end
           if @current_byte
@@ -119,7 +124,7 @@ module Bun
           @current_bit
         end
 
-        def get_char
+        def get_decoded_byte
           reset unless @tree
           if @characters_left <= 0
             @current_character = nil
@@ -144,13 +149,20 @@ module Bun
           end
         end
 
-        def text
+        def decoded_bytes
           reset
-          s = ""
-          while ch = get_char
+          s = []
+          while ch = get_decoded_byte
             s << ch
           end
           s
+        end
+        cache :decoded_bytes
+
+        def text
+          decoded_bytes.map do |byte|
+            byte > 255 ? "\\x{#{'%X'%byte}}" : byte.chr
+          end.join
         end
         cache :text
 

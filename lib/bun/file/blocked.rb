@@ -10,10 +10,12 @@ module Bun
       attr_accessor :status
       attr_accessor :strict
       attr_reader   :good_blocks
+      attr_reader   :llink_count
       
       def initialize(options={}, &blk)
         super
         @strict = options[:strict]
+        @llink_count = nil
         # descriptor.register_fields(:blocks, :good_blocks, :status)
       end
 
@@ -92,9 +94,18 @@ module Bun
           offset = next_link
           link_number += 1
         end
+        @llink_count = link_number
         Bun::Words.new(deblocked_content)
       end
       cache :deblocked_content
+
+      def llink_count
+        unless @llink_count
+          _ = deblocked_content
+          descriptor.merge!(llink_count: @llink_count)
+        end
+        @llink_count
+      end
     end
   end
 end

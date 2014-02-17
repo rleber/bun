@@ -146,33 +146,33 @@ Let's examine Alan's comments further:
   - 15,260 9-bit bytes
   - 138,240 bits
   - 17,280 8-bit bytes
-- The archival tapes were created in segments. Let's call each such segment a "chunk". 
-  Each chunk contains the data for one link.
+- The archival tapes were created in segments. Let's call each such segment a "block". 
+  Each block contains the data for one link.
 - During the process of transferring the tape, it was transferred to modern 8-bit systems
   in a process that encoded the data as 8-bit bytes.
-- Each chunk contains a prefix, followed by an encoding of the data for the link. The 
+- Each block contains a prefix, followed by an encoding of the data for the link. The 
   prefix is variable in length, containing information such as the length of the data,
   the time of the archive, and descriptive data provided by the user.
-- The data in the prefix repeats for every chunk on the tape. Since most of the data is
-  constant throughout the tape, the length of the prefix is constant for every chunk on
+- The data in the prefix repeats for every block on the tape. Since most of the data is
+  constant throughout the tape, the length of the prefix is constant for every block on
   the tape.
-- The first word of each chunk is the Block Control Word (BCW). It contains:
+- The first word of each block is the Block Control Word (BCW). It contains:
   - The block number (numbering starts at 1) in the top 18 bits
   - The number of words in the tape block (not including the BCW) in the bottom 18 bits
 - The second word in each block contains the offset of the start of the data in its 
   bottom 18 bits (e.g. 023 in Alan's example)
-- The length of the prefix for each chunk may be an even or odd number of 36-bit words.
-  Therefore, the length of the entire chunk may also be an even or odd number of 36-bit 
+- The length of the prefix for each block may be an even or odd number of 36-bit words.
+  Therefore, the length of the entire block may also be an even or odd number of 36-bit 
   words.
-  - If the chunk contains an even number of 36-bit words, then it is also a whole number
-    of 8 bit bytes. In this case, the chunk fits exactly into the 8-bit bytes created
+  - If the block contains an even number of 36-bit words, then it is also a whole number
+    of 8 bit bytes. In this case, the block fits exactly into the 8-bit bytes created
     during the transfer.
-  - If the length of each chunk is an odd number of 36-bit words, then it is not a whole
+  - If the length of each block is an odd number of 36-bit words, then it is not a whole
     number of 8-bit bytes: there are 4 extra bits left over. During the transfer process,
-    the chunk was padded with 4 zero bits to make a whole number of 8-bit bytes. The last
+    the block was padded with 4 zero bits to make a whole number of 8-bit bytes. The last
     8-bit byte of the transferred chuck therefore contains the 4 left-over bits from the
     last 36-bit word, followed by four extra zero bits.
-- Within each chunk, the data for each link is encoded as a series of llinks. Similarly
+- Within each block, the data for each link is encoded as a series of llinks. Similarly
   to the encoding of links, each llink is preceded by a BCW for the llink.
   - The top 18 bits are the llink number (again, starting with 1). The llink numbers run
   	progressively for the whole file. That is, they don't start over at 1 in the second
@@ -180,7 +180,7 @@ Let's examine Alan's comments further:
   - The bottom 18 bits are the # of words in the llink, not counting the BCW
 
 This software handles this problem as follows:
-- The "unpack" process examines each chunk, and removes the extra four zero bits, if they
+- The "unpack" process examines each block, and removes the extra four zero bits, if they
   exist. Therefore, packed files may contain extra bits; unpacked files do not.
 - The "decode" process handles links and llinks, and removes the prefix information as the
   files are decoded. Therefore, packed and unpacked files contain links and llinks, and their

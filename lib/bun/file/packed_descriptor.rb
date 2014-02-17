@@ -21,17 +21,20 @@ module Bun
         FIELDS = [
           :description,
           :tape_size,
-          :tape_type,
+          :type,
           :tape,
           :owner,
           :path,
-          :file_time,
+          :time,
         ]
+
+        attr_accessor :allow_bad_times
         
-        def initialize(*args)
-          super
-          if tape_type == :frozen
-            register_fields :shards, :file_time
+        def initialize(data, options={})
+          super(data)
+          @allow_bad_times = options[:allow_bad_times]
+          if type == :frozen
+            register_fields :shards, :time
           end
         end
       
@@ -74,11 +77,11 @@ module Bun
         
               
         def shard_count
-          tape_type == :frozen ? words.at(content_offset+1).half_words.at(1).to_i : 0
+          type == :frozen ? words.at(content_offset+1).half_words.at(1).to_i : 0
         end
         
         def tape_size
-          tape_type == :frozen ? data.frozen_tape_size : data.tape_size
+          type == :frozen ? data.frozen_tape_size : data.tape_size
         end
       
         # Reference to all_characters is necessary here, because characters isn't
@@ -93,30 +96,33 @@ module Bun
         end
         private :packed_update_time_of_day
     
-        def file_time
-          return nil unless tape_type == :frozen
-          Bun::Data.time(packed_update_date, packed_update_time_of_day)
+        def time
+          return nil unless type == :frozen
+          begin
+            Bun::Data.internal_time(packed_update_date, packed_update_time_of_day)
+          rescue Bun::Data::BadTime
+            raise unless self.allow_bad_times
+            Time.now
+          end
         end
     
-        def shards
+        def shards(options={})
           return @shards if @shards
-          @shards = []
+          @shards = Shards.new
           shard_count.times do |i|
-            @shards << Descriptor::Shard.new(self, i).to_hash
+            shard_hash = Descriptor::Shard.new(self, i, allow: !options[:strict]).to_hash
+            break unless shard_hash # Stop at bad descriptor
+            @shards << shard_hash
           end
           @shards
         end
 
-        def tape_type
-          data.tape_type
+        def type
+          data.type
         end
 
-        def file_grade
+        def format
           :packed
-        end
-
-        def data_format
-          :raw
         end
       end
     end

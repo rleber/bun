@@ -1,0 +1,18 @@
+Compact a/s/ze.b/tape.ar059.0073_19810519.txt => a/s/ze.b.txt
+Compact a/t4/tape.ar058.3075_19810519.txt => a/t4.txt
+Compact a/tape.ar056.1698_19810331.txt => a.txt
+Move amiga/pdc/cpp/readme.v3.txt/tape.ar145.2711_19890304.txt => amiga/pdc/cpp/readme.v4.txt
+Move amiga/pdc/cpp/readme.v3/tape.ar145.2712_19890304.txt => amiga/pdc/cpp/readme.v3.txt
+Move amiga/pdc/cpp/readme.txt/tape.ar145.2715_19890304.txt => amiga/pdc/cpp/readme.v2.txt
+Move amiga/pdc/cpp/readme/tape.ar145.2714_19890304.txt => amiga/pdc/cpp/readme.v1.txt
+Move xxx.txt => xxx.v2.txt
+Move xxx/tape_ar99.9999_19990101_120000.txt => xxx.v1.txt
+Move yyy.v1.txt => yyy.v3.txt
+Compact yyy_20120314/tape_ar99.9999_19990101_120000.txt => yyy.v1.txt
+Delete yyy_20120314
+Delete xxx
+Delete amiga/pdc/cpp/readme.v3
+Delete amiga/pdc/cpp/readme.txt
+Delete amiga/pdc/cpp/readme
+Delete a/t4
+Delete a/s/ze.b

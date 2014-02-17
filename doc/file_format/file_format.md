@@ -21,11 +21,11 @@ If you are looking for more details on the file formats beyond what I have writt
 refer to the other files in the doc/file_format directory of this project. These files include:
 
 - decode_help.txt  Some dialog about the characteristics of Honeywell files
-- free.b.txt       A program to decode Honeywell's freeze file format, written in B, an ancestor of C
-- huff.b.txt       A program to decode Huffman encoded files, also written in B. THIS FILE IS OBSOLETE, AND
-                   DOES NOT MATCH THE ENCODING USED IN THESE FILES.
-- huff.v2.b.txt    A program to encode Huffman coded files
-- puff.b.txt       A program to decode Huffman coded files (huff and puff, get it?)
+- free.b.txt           A program to decode Honeywell's freeze file format, written in B, an ancestor of C
+- huff.b.txt           A program to encode Huffman coded files
+- huff.b.obsolete.txt  A program to decode Huffman encoded files, also written in B. THIS FILE IS OBSOLETE, AND
+                       DOES NOT MATCH THE ENCODING USED IN THESE FILES.
+- puff.b.txt           A program to decode Huffman coded files (huff and puff, get it?)
 
 The "bun dump" and "bun freezer dump" commands are available to display the contents of files in octal 
 and ASCII, and may be useful for exploring files.
@@ -71,7 +71,7 @@ In what follows:
 
 _All Files_
 
-All files were stored in tape archives. The tape archives were created in "chunks", with each chunk 
+All files were stored in tape archives. The tape archives were created in "blocks", with each block 
 corresponding to a "link" of data. (Once again, a link is 12 "llinks", each of which is 320 36-bit words.)
 Each llink in the file has a "preamble", which contains general information about the archived file: its
 name, format, description, owner, etc.
@@ -132,6 +132,10 @@ Archive files have the following format:
 - The first line always appears to be a descriptor plus 20 words of 000s. It is ignored.
 - End of file markers are optional, but do apply if found. (See above.)
 
+Occasionally, these files can get messed up. In particular, a line descriptor may be missing, or 
+not in the expected place. In that case, this software attempts to find the next line descriptor
+word and interpret the intervening words as words of text.
+
 For additional clues, see doc/file_format/decode_help.txt, the source file lib/bun/file/text.rb or 
 run "bun dump"
 
@@ -142,7 +146,7 @@ compressing files. This scheme results in a minimal-length encoding through the 
 using a translation table (a binary tree, actually), and a variable number of bits per encoded character
 (with the fewest bits for the most common characters, etc.). See http://en.wikipedia.org/wiki/Huffman_coding for general information on Huffman encoding.
 
-The original source for the Honeywell's encoding algorithms is contained in the doc/huff.v2.b.txt and
+The original source for the Honeywell's encoding algorithms is contained in the doc/huff.b.txt and
 puff.b.txt files.
 
 The format for Honeywell Huffman-encoded files is as follows:
@@ -167,8 +171,17 @@ The format for Honeywell Huffman-encoded files is as follows:
   means take the left branch of the tree, and a "1" bit means take the right branch. When you reach a leaf,
   that's the encoded character. See the Wikipedia article for more information on the encoding algorithm.
 
+Note that the Huffman encoding algorithm doesn't care how many bits are in a "character". Because most
+Honeywell files were encoding as 8-bit characters stored in 9-bit bytes, this mostly is irrelevant. However,
+some files may include 9-bit characters encoded in Huffman format. When this is the case (which seems mostly
+to be object files of some kind), this software converts those 9-bit characters to a hex encoding. For
+example, if a file included a character 0777 (equivalent to 0x1FF), then it will be decoded as "\\x{1FF}".
+(There's just one backslash in the string.)
+
 Important note: I made several fits and starts trying to get this to work, but I finally succeeded. One 
-of the major detours I made was trying to use the algorithm in the huff.b.txt program. This turns out NOT to be the format used in these files. DO NOT USE HUFF.B.TXT, it is obsolete. Look at puff.b.txt, instead.
+of the major detours I made was trying to use the algorithm in the huff.b.obsolete.txt program. (Obviously, it
+wasn't originally named that!) This program turns out NOT to be the one that encoded these files. DO NOT USE IT.
+Look at puff.b.txt, instead.
 
 _Freeze Files_
 

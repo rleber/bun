@@ -1,20 +1,76 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
+require 'lib/bun/file/descriptor_fields'
+
 module Bun
   class File < ::File
     module Descriptor
       class Base
+        undef_method :format
         class << self
           def from_hash(data, h)
             d = new(data)
             d.from_hash(h)
           end
+
+          def valid_fields
+            @valid_fields ||= field_definitions.keys.sort
+          end
+
+          def all_fields
+            all_field_definitions.keys.sort
+          end
+
+          def field_valid?(name)
+            VALID_FIELDS.keys.include?(name.to_sym)
+          end
+
+          def field_definitions
+            VALID_FIELDS
+          end
+
+          def synthetic_field_definitions
+            SYNTHETIC_FIELDS 
+          end
+
+          def all_field_definitions
+            @all_field_definitions ||= field_definitions.merge(synthetic_field_definitions)
+          end
+
+          def field_definition_array
+            field_definitions.to_a.map{|key, defn| [key, defn.is_a?(Hash) ? defn[:desc] : defn]}.sort
+          end
+
+          def field_defaults
+            @field_defaults ||=
+              all_field_definitions.to_a.select{|key, defn| defn.is_a?(Hash) && defn[:default]} \
+                .inject({}) {|hsh, pair| key, defn = pair; hsh[key] = defn[:default]; hsh}
+          end
+
+          def field_default_for(name)
+            field_defaults[name.to_sym]
+          end
+
+          def all_field_definition_array
+            all_field_definitions.to_a.map{|key, defn| [key, defn.is_a?(Hash) ? defn[:desc] : defn]}.sort
+          end
+
+          def all_field_definition_table
+            ([%w{Field Description}] + all_field_definition_array) \
+              .justify_rows \
+              .map{|row| row.join('  ')} \
+              .join("\n")
         end
+
+        end
+
+        class InvalidField < ArgumentError; end
+
         FIELDS = [
           :description,
           :tape_size,
-          :tape_type,
+          :type,
           :tape,
           :owner,
           :path,
@@ -41,20 +97,31 @@ module Bun
           set_field(field, nil) unless @fields.include?(field)
         end
         
-        def set_field(name, value)
+        def set_field(name, value, options={})
           name = name.to_sym
-          return if name==:digest
-          _set_field name, value
-          set_digest if name == :data
+          _set_field name, value, options
+          set_digest if name == :data # If the data changes, so should the digest
         end
         
-        def _set_field(name, value)
-          raise "Bad field #{name.inspect}" if %w{catalog fname promote}.include?(name.to_s)
+        def _set_field(name, value, options={})
+          if options[:user]
+            name = "user_#{name}" unless name =~ /^user_/
+          else
+            raise InvalidField, "Bad field #{name.inspect}" unless name =~ /^user_/ || self.class.field_valid?(name)
+          end
           @fields << name unless @fields.include?(name)
+          value = Shards.new(value) if name.to_s == 'shards' && !value.nil?
           instance_variable_set("@#{name}", value)
         end
         private :_set_field
-        
+
+        def delete(field)
+          field = field.to_sym
+          return unless @fields.include?(field)
+          remove_instance_variable("@#{field}")
+          @fields.delete(field)
+        end
+
         def set_digest
           return unless @data
           data = @data
@@ -105,7 +172,7 @@ module Bun
         end
         
         def timestamp
-          t1 = fields.include?(:catalog_time) ? [file_time, catalog_time].compact.min : file_time
+          t1 = fields.include?(:catalog_time) ? [time, catalog_time].compact.min : time
           fields.include?(:shard_time) ? [shard_time, t1].compact.min : t1
         end
               

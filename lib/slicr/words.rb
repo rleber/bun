@@ -117,6 +117,7 @@ module Slicr
       end
 
       def read(file, options={})
+        warn "Slicr.read!"
         if file.is_a?(String)
           stop "!File #{file} does not exist (in Slicr::Words.read)" unless File.exists?(file)
           file = File.open(file, 'rb')

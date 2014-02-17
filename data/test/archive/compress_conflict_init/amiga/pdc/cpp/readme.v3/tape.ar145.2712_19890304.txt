@@ -1,0 +1,31 @@
+---
+:identifier: Bun
+:block_count: 1
+:block_padding_repairs: 0
+:catalog_time: 1989-03-04 00:00:00.000000000 -05:00
+:decode_time: 2014-02-04 09:50:37.403487000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:e839a0ef95c6cc2e8ab1ac28a0f587fc393d85ee]
+:description: ''
+:digest: 37894f3adfaab14763f8c9e0e37c6e7a
+:first_block_size: 336
+:format: :decoded
+:llink_count: 2
+:owner: rhosler
+:path: rhosler/amiga/pdc/bin/ccc2
+:tape: ar145.2712
+:tape_size: 336
+:text_size: 812
+:type: :text
+:unpack_time: 2014-02-01 21:13:34.983790000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:89e6db96f9aa2f50326aea8c9847f5ce77400e24]
+:content: ! "#!/bin/csh -f\nset bindir  = /homes/petersen/amiga/bin\nset cppfile =
+  /tmp/pdc$$.c\nset asmfile = /tmp/pdc$$.s\nset cfiles =\nset PdcFlags = \nset CppFlags
+  =\nset extra = \n#\nforeach i ($*)\n\tswitch ($i)\n\t\tcase -[AaLlNnFf]*:\n\t\t\tset
+  PdcFlags = \"$PdcFlags $i\"\n\t\t\tbreaksw\n\t\tcase -[IDU]*:\n\t\t\tset CppFlags
+  = \"$CppFlags $i\"\n\t\t\tbreaksw\n\t\tcase *.c:\n\t\t\tset cfiles = \"$cfiles $i\"\n\t\t\tbreaksw\n\t\tdefault:\n\t\t\tset
+  extra = \"$extra $i\"\n\t\t\tbreaksw\n\tendsw\nend\n#\nforeach i ($cfiles)\n    echo
+  ------------- $i\n    set safile = $i:r.sa2\n    set scfile = $i:r.s\n    set ofile
+  = $i:r.oa2\n\t${bindir}/Cpp ${CppFlags} $i >! ${cppfile}\n\t${bindir}/Pdc ${PdcFlags}
+  ${cppfile}\n\tif ($status == 0) then\n\t  mv  ${asmfile} ${safile}\n      ${bindir}/amiga2sun
+  < ${safile} >! ${scfile}\n   \t  as -o ${ofile} ${scfile} \n\tendif\n\trm -f ${cppfile}
+  ${asmfile}\nend\n"

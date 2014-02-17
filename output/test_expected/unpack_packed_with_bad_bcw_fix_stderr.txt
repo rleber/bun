@@ -1,0 +1,1 @@
+!Bad block sequence number at nybble 3024(05720): 66918 (expected 2): File truncated

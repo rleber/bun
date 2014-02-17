@@ -1,0 +1,2 @@
+unpack ar003/ar003.0698 => /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked_flatten/ar003.0698.bun
+unpack foo/bar/ar019.0175 => /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked_flatten/ar019.0175.bun

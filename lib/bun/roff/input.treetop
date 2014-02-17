@@ -1,0 +1,188 @@
+# Treetop grammar for Roff input lines
+
+# Useful reference information abount Treetop and tips available at
+#		http://treetop.rubyforge.org/
+#   http://journal.missiondata.com/post/45128269264/treetop-grammars-cool
+#   http://whitequark.org/blog/2011/09/08/treetop-typical-errors/
+
+# Compile using:
+#   tt lib/bun/roff/input.treetop -o lib/bun/roff/parser.rb
+
+# This grammar is finicky; mess with it at your peril
+
+grammar RoffInput
+	rule input
+  	content:(request / line) 1..1
+  	{
+  		def parse
+  			content.elements.first.parse
+			end
+  	}
+	end
+
+  rule request
+  	request_word line
+  	{
+  		def parse
+  			request_word.parse + line.parse
+			end
+  	}
+	end
+
+	rule request_word
+  	control_character word <Bun::Roff::SyntaxNode::RequestWord>
+	end
+
+	rule control_character
+		# Allows roff to selectively change (or even disable) the control character
+		. &{|nodes| nodes.last.text_value == roff.control_character }
+	end
+
+	rule line
+		content:(sentence_part*) end_of_line
+		{
+			def parse
+				content.elements.flat_map{|e| e.parse} + end_of_line.parse
+			end
+		}
+	end
+
+	rule sentence_part
+		(register_reference / nested_sentence_part / paren / sentence_ending / other) 1..1
+		{
+			def parse
+				elements.first.parse
+			end
+		}
+	end
+
+	rule paren
+		('(' / ')') 1..1 <Bun::Roff::SyntaxNode::Other>
+	end
+
+	# TODO Watch out for escapes
+  rule quoted_string
+    quote_character quoted_string_atom* quote_character <Bun::Roff::SyntaxNode::QuotedString>
+  end
+
+  rule quoted_string_atom
+  	escaped_quote / non_quote_character
+	end
+
+	rule escaped_quote
+		quote_character quote_character
+	end
+
+	rule non_quote_character
+		!quote_character !end_of_line .
+	end
+
+  rule quote_character
+		# Allows roff to selectively change (or even disable) the quote character
+		. &{|nodes| nodes.last.text_value == roff.quote_character }
+  end
+
+	rule register_reference
+		'(' word ')' <Bun::Roff::SyntaxNode::RegisterReference>
+	end
+
+	rule number
+		[0-9]+ <Bun::Roff::SyntaxNode::Number>
+	end
+
+	rule word
+		# Actually, should be less than 32 characters; lets leave that to the semantics engine
+	  [a-zA-Z#%_] ([a-zA-Z0-9#%_] / hyphenation_character)* <Bun::Roff::SyntaxNode::Word>
+  end
+
+	rule parameter
+		parameter_character number <Bun::Roff::SyntaxNode::Parameter>
+	end
+
+	rule parameter_character
+		# Allows Roff to change or disable the parameter control character
+		. &{|nodes| nodes.last.text_value == roff.parameter_character }
+	end
+
+	rule escape
+		insertion_character !('(' / end_of_line) . <Bun::Roff::SyntaxNode::Escape>
+	end
+
+  rule insertion
+    insertion_character '(' nested_sentence ')' <Bun::Roff::SyntaxNode::Insertion>
+	end
+
+	rule parenthesized_sentence
+		'(' nested_sentence ')' <Bun::Roff::SyntaxNode::ParenthesizedSentence>
+	end
+
+	rule nested_sentence
+		(nested_sentence_parts)
+		{
+			def parse
+				nested_sentence_parts.parse
+			end
+		}
+	end
+
+	rule nested_sentence_parts
+		first:nested_sentence_part remainder:nested_sentence_part*
+		{
+			def parse
+				first.parse + remainder.elements.flat_map {|e| e.parse}
+			end
+		}
+	end
+
+	rule nested_sentence_part
+		( parenthesized_sentence / nested_sentence_atom ) 1..1
+		{
+			def parse
+				elements.first.parse
+			end
+		}
+	end
+
+	rule nested_sentence_atom
+		(whitespace / quoted_string / number / word / parameter / escape / insertion / operator ) 1..1
+		{
+			def parse
+				elements.first.parse
+			end
+		}
+	end
+
+	rule insertion_character
+		# Allows Roff to change or disable the insertion character
+		# TODO Is class reference necessary?
+		. &{|nodes| nodes.last.text_value == roff.insert_character }
+	end
+
+	rule hyphenation_character
+		# Allows Roff to change or disable the hyphenation character
+		# TODO Is class reference necessary?
+		. &{|nodes| nodes.last.text_value == roff.hyphenation_character }
+	end
+
+	rule whitespace
+		( [ \t] )+ <Bun::Roff::SyntaxNode::Whitespace>
+	end
+
+	rule end_of_line
+		"\n" <Bun::Roff::SyntaxNode::EndOfLine>
+	end
+
+	rule operator
+		[-+*/<=>] <Bun::Roff::SyntaxNode::Operator>
+	end
+
+	rule sentence_ending
+		[.:!?] <Bun::Roff::SyntaxNode::SentenceEnding>
+	end
+
+  rule other
+  	# TODO Is this right, or should it be !(insertion / escape / quoted_string...)
+  	(!(insertion_character / quote_character / parameter_character / hyphenation_character / sentence_ending /
+  		[-()a-zA-Z0-9%#_+*/<=> \t\n] ) .) 1..1 <Bun::Roff::SyntaxNode::Other>
+	end
+end

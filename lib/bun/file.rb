@@ -5,6 +5,7 @@
 
 require 'lib/bun/word'
 require 'lib/bun/file/data'
+require 'lib/bun/file/shards_descriptor'
 require 'lib/bun/file/descriptor'
 require 'lib/bun/file/packed_descriptor'
 require 'lib/bun/file/shard_descriptor'

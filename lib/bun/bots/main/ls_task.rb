@@ -16,37 +16,37 @@ SORT_FIELDS = {
   :file        => :path,
   :size        => :tape_size,
   :tape        => :tape,
-  :type        => :tape_type,
-  :updated     => :file_time,
+  :type        => :type,
+  :updated     => :time,
 }
 TYPE_VALUES = %w{all frozen text huff}
 DATE_FORMAT = '%Y/%m/%d'
 TIME_FORMAT = DATE_FORMAT + ' %H:%M:%S'
 FIELD_CONVERSIONS = {
-  :file_time   => lambda {|f| f.nil? ? 'n/a' : f.strftime(f.is_a?(Time) ? TIME_FORMAT : DATE_FORMAT) },
-  :tape_type   => lambda {|f| f.to_s.sub(/^./) {|m| m.upcase} },
+  :time   => lambda {|f| f.nil? ? 'n/a' : f.strftime(f.is_a?(Time) ? TIME_FORMAT : DATE_FORMAT) },
+  :type   => lambda {|f| f.to_s.sub(/^./) {|m| m.upcase} },
   :shard_count => lambda {|f| f==0 ? '' : f },
 }
 FIELD_HEADINGS = {
   :description   => 'Description',
   :tape_size     => 'Size',
-  :tape_type     => 'Type',
+  :type     => 'Type',
   :path          => 'File',
   :shard_count   => 'Shards',
   :tape          => 'Tape',
   :tape_path     => 'Tape',
-  :file_time     => 'Updated',
+  :time     => 'Updated',
 }
 DEFAULT_VALUES = {
   :tape_size   => 0,
   :shard_count => 0,
-  :file_time   => Time.now,
+  :time   => Time.now,
 }
 SHARD_FIELDS = {
   :tape_size     => :size,
   :shard_count   => '',
-  :tape_type     => 'Shard',
-  # :updated       => :file_time,
+  :type     => 'Shard',
+  # :updated       => :time,
 }
 
 # TODO --recursive option
@@ -81,8 +81,8 @@ def ls(*paths)
 
   fields =  options[:path] ? [:tape_path] : [:tape]
   fields += [:path] unless options[:onecolumn]
-  fields += [:tape_type] if options[:type]
-  fields += [:tape_type, :file_time, :tape_size] if options[:long]
+  fields += [:type] if options[:type]
+  fields += [:type, :time, :tape_size] if options[:long]
   fields += [:shard_count] if options[:long]
   fields += [:description] if options[:descr]
   fields = fields.uniq
@@ -124,8 +124,8 @@ def ls(*paths)
       value = case f
       when :shard_count
         file_descriptor[:shards] && file_descriptor[:shards].count
-      when :file_time
-        [file_descriptor[:catalog_time], file_descriptor[:file_time]].compact.min
+      when :time
+        [file_descriptor[:catalog_time], file_descriptor[:time]].compact.min
       else 
         file_descriptor[f]
       end
@@ -133,7 +133,7 @@ def ls(*paths)
       hsh
     end
     file_info << file_row
-    if options[:frozen] && file_descriptor.tape_type == :frozen
+    if options[:frozen] && file_descriptor.type == :frozen
       file_descriptor.shards.each do |d|
         file_info << fields.inject({}) do |hsh, f|
           new_f = SHARD_FIELDS[f] || f
@@ -150,7 +150,7 @@ def ls(*paths)
     end
   end
   
-  file_info = file_info.select{|file| file[:tape_type].to_s=~type_pattern && file[:path]=~file_pattern }
+  file_info = file_info.select{|file| file[:type].to_s=~type_pattern && file[:path]=~file_pattern }
   sorted_info = file_info.sort_by do |fi|
     sort_fields.map{|f| fi[f].nil? ? DEFAULT_VALUES[f]||'' : fi[f] }
   end
@@ -163,7 +163,7 @@ def ls(*paths)
   end
 
   table = []
-  fields -= [:tape_type] unless options[:long]
+  fields -= [:type] unless options[:long]
   headings = FIELD_HEADINGS.values_at(*fields)
   table << headings
   formatted_info.each do |entry|

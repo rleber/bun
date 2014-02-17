@@ -32,6 +32,7 @@ class Array
   def justify_rows(options={})
     self.normalized_transpose.justify_columns(options).transpose
   end
+  alias_method :justify, :justify_rows
   
   def row_sizes
     self.map{|row| row.size}
@@ -48,6 +49,34 @@ class Array
       source = self
     end
     source.transpose
+  end
+
+  def normalize
+    normalized_transpose.transpose
+  end
+
+  # Join a set of 2-dimensional arrays of rows with appropriate padding, e.g.
+  #
+  #       ["a", "b", "c"]      ["d", "e"]                      ["a", "b", "c", "d", "e"]
+  #   [ [ ["i", "j", "k"] ] ,[ ["l", "m"] ] ].matrix_join => [ ["i", "j", "k", "l", "m"] ]
+  #       ["n", "o", "p"]      ["q", "r"]                      ["n", "o", "p", "q", "r"]
+  #       ["s", "t", "u"]                                      ["s", "t", "u", "",  "" ]
+  #
+  def matrix_join
+    return self.dup if size == 0 # Deal with the trivial case
+    normalized_matrixes = self.map{|matrix| matrix.normalize } # Ensure component matrixes are squared up
+    row_counts = normalized_matrixes.map {|matrix| matrix.size }
+    column_counts = normalized_matrixes.map {|matrix| matrix.row_sizes.max || 0 }
+    result_rows = row_counts.max
+    padded_matrixes = normalized_matrixes.map.with_index do |matrix, i|
+      matrix + [[""]*column_counts[i]]*(result_rows-matrix.size)
+    end
+    result = []
+    result_rows.times do |i|
+      joined_row = padded_matrixes.map{|matrix| matrix[i]}.flatten
+      result << joined_row
+    end
+    result
   end
   
   def sum
