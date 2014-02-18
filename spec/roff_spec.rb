@@ -158,10 +158,16 @@ describe Bun::Roff do
   roff_std "format capital O", ['.nf', '.ic ^^', '.an foo 0', '.af foo O', "^(foo)"] + ['.an foo +1', '^(foo)']*30
   roff_std "format i", ['.nf', '.ic ^^', '.an foo1 0',  '.an foo2 0', '.af foo2 i', "^(foo1) ^(foo2)"] + 
                   ['.an foo1 +1', '.an foo2 +1', '^(foo1) ^(foo2)']*30 +
-                  [40,50,100,400,500,900,1000].flat_map{|n| (-2..2).to_a.map{|i| n+i} }.flat_map {|n| [".an foo1 #{n}", ".an foo2 #{n}", '^(foo1) ^(foo2)']}
+                  [40,50,100,400,500,900,1000].flat_map{|n| (-2..2).map{|i| n+i} }
+                                                                   .flat_map {|n| [".an foo1 #{n}", 
+                                                                                   ".an foo2 #{n}", 
+                                                                                   '^(foo1) ^(foo2)']}
   roff_std "format capital I", ['.nf', '.ic ^^', '.an foo1 0',  '.an foo2 0', '.af foo2 I', "^(foo1) ^(foo2)"] + 
                   ['.an foo1 +1', '.an foo2 +1', '^(foo1) ^(foo2)']*30 +
-                  [40,50,100,400,500,900,1000].flat_map{|n| (-2..2).to_a.map{|i| n+i} }.flat_map {|n| [".an foo1 #{n}", ".an foo2 #{n}", '^(foo1) ^(foo2)']}
+                  [40,50,100,400,500,900,1000].flat_map{|n| (-2..2).map{|i| n+i} }
+                                                                   .flat_map {|n| [".an foo1 #{n}", 
+                                                                                   ".an foo2 #{n}", 
+                                                                                   '^(foo1) ^(foo2)']}
   roff_std "format a", ['.nf', '.ic ^^', '.an foo1 0',  '.an foo2 0', '.af foo2 a', "^(foo1) ^(foo2)"] + 
                   ['.an foo1 +1', '.an foo2 +1', '^(foo1) ^(foo2)']*60
   roff_std "format capital A", ['.nf', '.ic ^^', '.an foo1 0',  '.an foo2 0', '.af foo2 A', "^(foo1) ^(foo2)"] + 
