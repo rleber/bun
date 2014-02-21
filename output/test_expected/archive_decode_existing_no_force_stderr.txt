@@ -3,4 +3,4 @@ Decoded ar054.2299.bun[brytside]
 Skipped ar054.2299.bun[disco]: bstempleton/fass_19810205/disco already exists
 Decoded ar054.2299.bun[end]
 Decoded ar054.2299.bun[opening]
-Skipped ar054.2299.bun[santa]: bstempleton/fass_19810205/santa/tape.ar054.2299_19801125_154946.txt already exists
+Skipped ar054.2299.bun[santa]: bstempleton/fass_19810205/santa/tape.ar054.2299_19801125_154946 already exists

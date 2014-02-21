@@ -1,7 +1,7 @@
 #!/usr/bin/env rvm-ruby 1.9.3
 # -*- encoding: us-ascii -*-
 
-describe "bun unpack" do
+describe "unpack" do
   context "to a file that already exists" do
     before :all do
       exec("rm -f output/test_actual/unpack_ar003.0698")

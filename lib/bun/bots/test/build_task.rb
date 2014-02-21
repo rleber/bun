@@ -12,9 +12,11 @@ no_tasks do
   end
 
   def copy_file(from, to, options={})
+    orig_from = from
     from = File.expand_path(from)
     to = File.expand_path(to)
-    stop "!Source file #{from.safe} does not exist" unless File.exists?(from)
+    from += '.txt' unless File.exists?(from)
+    stop "!Source file #{orig_from.safe} does not exist" unless File.exists?(from)
     cmd = "mkdir -p #{File.dirname(to).safe}"
     _exec cmd, options
     cmd = "cp -f #{from.safe} #{to.safe}"
@@ -53,6 +55,7 @@ no_tasks do
     file_with_extension = file
     file_with_extension += extension unless File.extname(file_with_extension) == extension
     source_file = File.join(File.expand_path(from),file_with_extension)
+    source_file += '.txt' unless File.exists?(source_file)
     target_file = File.join(File.expand_path(at),file_with_extension)
     copy_file(source_file, target_file, quiet: options[:quiet])
   end
@@ -96,18 +99,18 @@ no_tasks do
   def build_compress_test_directory(at, options={})
     build_directory(at, options) do
       # These two files are identical
-      build_file "bjeroehl/fass/bjthings_19781219_151907/addinde/tape.ar082.0604_19780620_175438.txt", nil, :decoded, quiet: options[:quiet]
-      build_file "fass/bjeroehl/bjthings_19781219_151907/addinde/tape.ar020.1140_19780620_175438.txt", nil, :decoded, quiet: options[:quiet]
+      build_file "bjeroehl/fass/bjthings_19781219_151907/addinde/tape.ar082.0604_19780620_175438", nil, :decoded, quiet: options[:quiet]
+      build_file "fass/bjeroehl/bjthings_19781219_151907/addinde/tape.ar020.1140_19780620_175438", nil, :decoded, quiet: options[:quiet]
       # These two files are identical
-      build_file "bjeroehl/fass/bjthings_19781219_151907/rjbmail/tape.ar082.0604_19780725_174329.txt", nil, :decoded, quiet: options[:quiet]
-      build_file "fass/bjeroehl/bjthings_19781219_151907/rjbmail/tape.ar020.1140_19780725_174329.txt", nil, :decoded, quiet: options[:quiet]
+      build_file "bjeroehl/fass/bjthings_19781219_151907/rjbmail/tape.ar082.0604_19780725_174329", nil, :decoded, quiet: options[:quiet]
+      build_file "fass/bjeroehl/bjthings_19781219_151907/rjbmail/tape.ar020.1140_19780725_174329", nil, :decoded, quiet: options[:quiet]
       # This file isn't identical to anything else
-      build_file "bjeroehl/fass/bjthings_19781219_151907/countess/tape.ar082.0604_19780630_182833.txt", nil, :decoded, quiet: options[:quiet]
+      build_file "bjeroehl/fass/bjthings_19781219_151907/countess/tape.ar082.0604_19780630_182833", nil, :decoded, quiet: options[:quiet]
       # These four files are identical
-      build_file "fass/one/zero/tape.ar003.2557_19770118.txt", nil, :decoded, quiet: options[:quiet]
-      build_file "fass/one/zero/tape.ar004.0495_19770210.txt", nil, :decoded, quiet: options[:quiet]
-      build_file "bjeroehl/fass/77script.f_19770301_154058/1zero/tape.ar082.0603_19770210_164752.txt", nil, :decoded, quiet: options[:quiet]
-      build_file "fass/scripfrz_19770301_154058/1zero/tape.ar004.0888_19770210_164752.txt", nil, :decoded, quiet: options[:quiet]
+      build_file "fass/one/zero/tape.ar003.2557_19770118", nil, :decoded, quiet: options[:quiet]
+      build_file "fass/one/zero/tape.ar004.0495_19770210", nil, :decoded, quiet: options[:quiet]
+      build_file "bjeroehl/fass/77script.f_19770301_154058/1zero/tape.ar082.0603_19770210_164752", nil, :decoded, quiet: options[:quiet]
+      build_file "fass/scripfrz_19770301_154058/1zero/tape.ar004.0888_19770210_164752", nil, :decoded, quiet: options[:quiet]
     end
   end
 end
@@ -187,11 +190,14 @@ def build
     build_file "ar003.0698", nil, :packed, quiet: options[:quiet]
     build_file "ar003.0701", nil, :cataloged, quiet: options[:quiet]
     build_file "fass/script/tape.ar004.0642_19770224", nil, :decoded, quiet: options[:quiet]
-    copy_file "~/fass_work/baked/fass/1986/script/script.f/1-1.txt", 
-              "data/test/archive/mixed_formats_init/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt",
+    copy_file "~/fass_work/baked/fass/1986/script/script.f/1-1", 
+              "data/test/archive/mixed_formats_init/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229",
               quiet: options[:quiet]
   end
 
   build_compress_test_directory "data/test/archive/compress_init", quiet: options[:quiet]
   build_compress_test_directory "data/test/archive/same", quiet: options[:quiet]
+
+  # Build compress conflict test -- # This depends on watbun files!
+  _exec "build_compress_conflict_test"
 end

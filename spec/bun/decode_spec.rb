@@ -8,7 +8,7 @@ describe "decode" do
       exec("rm -f output/test_actual/decode_baked_stderr")
       exec("rm -rf data/test/archive/mixed_formats")
       exec("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
-      exec("bun decode data/test/archive/mixed_formats/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt \
+      exec("bun decode data/test/archive/mixed_formats/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229 \
                 2>output/test_actual/decode_baked_stderr \
                 >output/test_actual/decode_baked", allowed: [1])
     end
@@ -32,7 +32,7 @@ describe "decode" do
     before :all do
       exec("rm -f output/test_actual/decode_baked")
       exec("rm -f output/test_actual/decode_baked_stderr")
-      exec("bun decode --quiet data/test/archive/mixed_formats/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt \
+      exec("bun decode --quiet data/test/archive/mixed_formats/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229 \
                 2>output/test_actual/decode_baked_stderr \
                 >output/test_actual/decode_baked", allowed: [1])
     end

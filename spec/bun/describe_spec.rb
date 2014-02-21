@@ -81,34 +81,34 @@ describe "describe" do
       exec_on_success("rm -rf output/test_actual/mixed_formats_describe_ar003.0701.bun")
     end      
   end
-  context "decoded file (fass/script/tape.ar004.0642_19770224.txt)" do
+  context "decoded file (fass/script/tape.ar004.0642_19770224)" do
     before :all do
       exec("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
-      exec("rm -rf output/test_actual/mixed_formats_describe_fass_script_tape.ar004.0642_19770224.txt")
-      exec("bun describe data/test/archive/mixed_formats/fass/script/tape.ar004.0642_19770224.txt >output/test_actual/mixed_formats_describe_fass_script_tape.ar004.0642_19770224.txt")
+      exec("rm -rf output/test_actual/mixed_formats_describe_fass_script_tape.ar004.0642_19770224")
+      exec("bun describe data/test/archive/mixed_formats/fass/script/tape.ar004.0642_19770224 >output/test_actual/mixed_formats_describe_fass_script_tape.ar004.0642_19770224")
     end
     it "should match the expected output" do
-      "mixed_formats_describe_fass_script_tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DESCRIBE_WITH_DECODE_PATTERNS)
+      "mixed_formats_describe_fass_script_tape.ar004.0642_19770224".should match_expected_output_except_for(DESCRIBE_WITH_DECODE_PATTERNS)
     end
     after :all do
       backtrace
       exec_on_success("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
-      exec_on_success("rm -rf output/test_actual/mixed_formats_describe_fass_script_tape.ar004.0642_19770224.txt")
+      exec_on_success("rm -rf output/test_actual/mixed_formats_describe_fass_script_tape.ar004.0642_19770224")
     end      
   end
-  context "baked file (fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt)" do
+  context "baked file (fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229)" do
     before :all do
       exec("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
-      exec("rm -rf output/test_actual/mixed_formats_describe_clean_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt")
-      exec("bun describe data/test/archive/mixed_formats/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt >output/test_actual/mixed_formats_describe_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt")
+      exec("rm -rf output/test_actual/mixed_formats_describe_clean_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229")
+      exec("bun describe data/test/archive/mixed_formats/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229 >output/test_actual/mixed_formats_describe_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229")
     end
     it "should match the expected output" do
-      "mixed_formats_describe_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt".should match_expected_output
+      "mixed_formats_describe_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229".should match_expected_output
     end
     after :all do
       backtrace
       exec_on_success("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
-      exec_on_success("rm -rf output/test_actual/mixed_formats_describe_clean_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229.txt")
+      exec_on_success("rm -rf output/test_actual/mixed_formats_describe_clean_fass_1986_script_script.f_19860213_1-1_tape.ar120.0740_19860213_134229")
     end      
   end
 end  

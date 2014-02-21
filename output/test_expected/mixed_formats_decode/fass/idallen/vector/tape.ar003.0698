@@ -2,8 +2,8 @@
 :identifier: Bun
 :block_count: 1
 :block_padding_repairs: 0
-:decode_time: 2014-01-23 12:53:01.631190000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
+:decode_time: 2014-02-17 21:59:50.115951000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/improved_file_naming:24efdbe58b4070b08e603559988dc1779929262b]
 :description: ==>files for idallen
 :digest: db455f97b98b77cc0f99c1a81159c0fb
 :first_block_size: 2582
@@ -15,8 +15,8 @@
 :tape_size: 2582
 :text_size: 8568
 :type: :text
-:unpack_time: 2014-01-23 12:53:01.545026000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
+:unpack_time: 2014-02-17 21:59:50.017722000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/improved_file_naming:24efdbe58b4070b08e603559988dc1779929262b]
 :content: ! ".po10\n.sp22\n.ce\n.ul\nTHE VECTOR MACHINE\n.sp5\n.ce\n.ul\nAuthors:\n.sp\n.ce\nCal
   Blackshaw 73202658 Math\n.ce\nIan Allen 74210779 Arts\n.sp17\n.nf\n.ss\n.ta 60R\nCOMPUTER
   SCIENCE\tCAL BLACKSHAW\nCS-342\tIAN ALLEN\nOCTOBER 22, 1976\tNORTH 5, VILLAGE 1\n.m1+2\n.pa1\n.fi\n.in0\n.ds\n.he

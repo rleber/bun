@@ -2,9 +2,9 @@ data/test/archive/compress
 data/test/archive/compress/bjeroehl
 data/test/archive/compress/bjeroehl/fass
 data/test/archive/compress/bjeroehl/fass/bjthings
-data/test/archive/compress/bjeroehl/fass/bjthings/addinde.txt
-data/test/archive/compress/bjeroehl/fass/bjthings/countess.txt
-data/test/archive/compress/bjeroehl/fass/bjthings/rjbmail.txt
+data/test/archive/compress/bjeroehl/fass/bjthings/addinde
+data/test/archive/compress/bjeroehl/fass/bjthings/countess
+data/test/archive/compress/bjeroehl/fass/bjthings/rjbmail
 data/test/archive/compress/fass
 data/test/archive/compress/fass/one
-data/test/archive/compress/fass/one/zero.txt
+data/test/archive/compress/fass/one/zero

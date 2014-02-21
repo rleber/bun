@@ -75,7 +75,7 @@ describe "archive decode" do
         exec("mkdir data/test/archive/decode_archive")
         exec("echo foo > data/test/archive/decode_archive/bar")
         exec("mkdir -p data/test/archive/decode_archive/bstempleton/fass_19810205/santa")
-        exec("echo baz > data/test/archive/decode_archive/bstempleton/fass_19810205/santa/tape.ar054.2299_19801125_154946.txt")
+        exec("echo baz > data/test/archive/decode_archive/bstempleton/fass_19810205/santa/tape.ar054.2299_19801125_154946")
         exec("echo blat > data/test/archive/decode_archive/bstempleton/fass_19810205/disco")
         exec("cp -r data/test/archive/decode_existing_init data/test/archive/decode_existing")
         exec("bun archive decode data/test/archive/decode_existing \
@@ -91,7 +91,7 @@ describe "archive decode" do
         'archive_decode_existing_no_force_files.txt'.should match_expected_output
       end
       it "should not overwrite existing files" do
-        'data/test/archive/decode_archive/bstempleton/fass_19810205/santa/tape.ar054.2299_19801125_154946.txt'.should contain_content('baz')
+        'data/test/archive/decode_archive/bstempleton/fass_19810205/santa/tape.ar054.2299_19801125_154946'.should contain_content('baz')
         'data/test/archive/decode_archive/bstempleton/fass_19810205/disco'.should contain_content('blat')
       end
       it "should write nothing on stdout" do
@@ -164,11 +164,11 @@ describe "archive decode" do
       'mixed_formats_archive_decode.txt'.should match_expected_output
     end
     it "should write the proper content" do
-      "mixed_formats_decode/fass/idallen/vector/tape.ar003.0698.txt".should match_expected_output_except_for(DECODE_PATTERNS)
-      "mixed_formats_decode/fass/idallen/huffhart/tape.ar003.0701_19761122.txt".should match_expected_output_except_for(DECODE_PATTERNS)
-      "mixed_formats_decode/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+      "mixed_formats_decode/fass/idallen/vector/tape.ar003.0698".should match_expected_output_except_for(DECODE_PATTERNS)
+      "mixed_formats_decode/fass/idallen/huffhart/tape.ar003.0701_19761122".should match_expected_output_except_for(DECODE_PATTERNS)
+      "mixed_formats_decode/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229".should \
           match_expected_output
-      "mixed_formats_decode/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DECODE_PATTERNS)
+      "mixed_formats_decode/fass/script/tape.ar004.0642_19770224".should match_expected_output_except_for(DECODE_PATTERNS)
     end
     after :all do
       backtrace

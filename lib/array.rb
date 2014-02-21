@@ -4,6 +4,8 @@
 require 'pp'
 # TODO Move this to a Gem
 class Array
+  class CyclesInTopologicalSort < RuntimeError; end
+
   # Take an array of columns and justify each column so that they're all the same width
   # TODO What if columns aren't all the same size?
   # TODO print_table
@@ -81,5 +83,30 @@ class Array
   
   def sum
     self.inject(0) {|s, e| s+e }
+  end
+
+  # Topological sort. See http://en.wikipedia.org/wiki/Topological_sorting
+  # Takes a block, which expects two elements: an array of elements, and the index of an element in it,
+  # and which returns an array of the dependencies for that element
+  # Assumes all nodes are unique in some regard
+  def topological_sort(&blk)
+    processed_nodes = []
+    unprocessed_allowable_nodes = (0...self.size).map{|i| yield(self, i).size==0 ? self[i] : nil }.compact
+    while unprocessed_allowable_nodes.size > 0
+      node = unprocessed_allowable_nodes.pop
+      processed_nodes.push node
+      new_nodes = []
+      self.each.with_index do |node, i|
+        next if processed_nodes.include?(node) || unprocessed_allowable_nodes.include?(node)
+        dependencies = yield(self, i)
+        dependencies.reject! {|j| processed_nodes.include?(self[j])}
+        if dependencies.size == 0
+          unprocessed_allowable_nodes << node
+        end
+      end
+    end
+    raise CyclesInTopologicalSort, "Can't do topological sort on Array; it has cycles" \
+      unless processed_nodes.size == self.size
+    processed_nodes
   end
 end

@@ -281,9 +281,9 @@ describe "archive unpack" do
     it "should write the proper content" do
       "mixed_formats_unpack/ar003.0698.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
       "mixed_formats_unpack/ar003.0701.bun".should match_expected_output_except_for(UNPACK_PATTERNS)
-      "mixed_formats_unpack/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+      "mixed_formats_unpack/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.bun".should \
           match_expected_output
-      "mixed_formats_unpack/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output_except_for(DECODE_PATTERNS)
+      "mixed_formats_unpack/fass/script/tape.ar004.0642_19770224.bun".should match_expected_output_except_for(DECODE_PATTERNS)
     end
     after :all do
       backtrace

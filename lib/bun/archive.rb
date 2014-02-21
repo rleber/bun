@@ -476,10 +476,22 @@ module Bun
     
     EXTRACT_DATE_FORMAT = "%Y%m%d_%H%M%S"
     EXTRACT_TAPE_PREFIX = 'tape.'
-    EXTRACT_TAPE_SUFFIX = '.txt'
+    EXTRACT_TAPE_SUFFIX = ''
 
     def decode_path(path, date)
-      path = path.sub(/#{DEFAULT_UNPACKED_FILE_EXTENSION}$/,'').sub(/\.+$/,'')
+      path_parts = path.split("/")
+      path_parts = path_parts.map do |part|
+        case part
+        when "."
+          "DOT"
+        when ".."
+          "DOTDOT"
+        else
+          part
+        end
+      end
+      path = path_parts.join("/") 
+      path = path.sub(/#{DEFAULT_UNPACKED_FILE_EXTENSION}$/,'')
       if date
         date_to_s = date.strftime(EXTRACT_DATE_FORMAT)
         date_to_s = $1 if date_to_s =~ /^(.*)_000000$/
@@ -563,14 +575,13 @@ module Bun
 
     def target_file(path)
       path_without_dated_directory = path.sub(/_\d{8}(?:_\d{6})?(?=\/)/,'')
-      ext = File.extname(path_without_dated_directory)
-      path_without_dates = path_without_dated_directory.sub(/(?:\.v\d+)?((?:#{Regexp.escape(ext)})?)\/tape[\._]ar\d+\.\d+_\d{8}(?:_\d{6})?#{Regexp.escape(ext)}$/,'\1')
+      ext = File.nondate_extname(path_without_dated_directory)
+      path_without_dates = path_without_dated_directory.sub(/(?:\.V\d+)?((?:#{Regexp.escape(ext)})?)\/tape[\._]ar\d+\.\d+_\d{8}(?:_\d{6})?#{Regexp.escape(ext)}$/,'\1')
       path_without_dates += ext unless File.extname(path_without_dates) == ext
       path_without_dates
     end
 
     def compact_files(options={}, &blk)
-      # TODO What if a file is the target of a symlink? Currently, this will create a lot of dangling links
       shell = Shell.new
       groups = leaves.to_a.group_by {|path| yield(path) }
       groups.each do |group, files|
@@ -578,10 +589,10 @@ module Bun
         primary_file = compacted_file = files.first
         compacted_file = nil if files.size > 1
         dest = group
-        dest += File.extname(primary_file) unless File.extname(dest)==File.extname(primary_file)
+        dest += File.nondate_extname(primary_file) unless File.nondate_extname(dest)==File.nondate_extname(primary_file)
         conflict_set = File.conflicting_files(dest)
         file_parents = files.map{|f| File.dirname(f)}
-        conflict_set.reject!{|f| file_parents.include?(f) }
+        conflict_set.reject!{|f| file_parents.include?(f) && File.directory_count(f)==1 }
         files += conflict_set
         files.uniq!
         shell.merge_files(files, dest) do |move| # Messaging block

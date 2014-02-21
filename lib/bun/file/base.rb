@@ -295,9 +295,17 @@ module Bun
       end
 
       def timestamp(file)
-        descr = File::Unpacked.build_descriptor_from_file(file) rescue nil
-        time = descr && descr.timestamp
+        time = if directory?(file)
+          leaves(file).map{|f| timestamp(f)}.min
+        else
+          descr = File::Unpacked.build_descriptor_from_file(file) rescue nil
+          descr && descr.timestamp
+        end
         time || Time.now
+      end
+
+      def leaves(path)
+        Dir[join(path, '**', '*')].reject{|f| directory?(f)}
       end
       
       # Convert from packed format to unpacked (i.e. YAML)
@@ -383,11 +391,37 @@ module Bun
 
       # Note: returns an array of files that conflict with a proposed new file f. The
       def conflicting_files(f)
-        ext = File.extname(f)
+        ext = File.nondate_extname(f)
         conflict_base = f.sub(/#{Regexp.escape(ext)}$/,'')
-        pat = /^#{Regexp.escape(conflict_base)}(?:\.v\d+)?#{Regexp.escape(ext)}$/
+        pat = /^#{Regexp.escape(conflict_base)}(?:\.V\d+)?#{Regexp.escape(ext)}$/
         Dir.glob(conflict_base+'*')
            .select {|file| file =~ pat }
+      end
+
+      def nondate_extname(path)
+        ext = File.extname(path)
+        ext = "" if ext =~ /^\.\d{4}(?:_\d{8})?(?:_\d{6})?$/ # Date suffix doesn't count as an extension
+        ext
+      end
+
+      def directory_count(path)
+        Dir[join(path, '*')].size
+      end
+
+      def path_heirarchy(path)
+        case path.to_s
+        when ""
+          return []
+        when ".", "/"
+          return [path]
+        end
+        return path_heirarchy(dirname(path)) + [path]
+      end
+
+      def ancestor_directories(path)
+        h = path_heirarchy(path)
+        h.pop
+        h
       end
 
       # Create a set of moves that will merge a set of files to a destination without conflicts.
@@ -418,21 +452,36 @@ module Bun
           return [] if files.first == dest
           return [{from: files.first, to: dest, version: nil}]
         end
-        dest = re_version_file(dest, nil) # Remove .v999 from dest, if any
+        dest = re_version_file(dest, nil) # Remove .V999 from dest, if any
         version_count = 0
-        files.map {|f| [f, File.timestamp(f)] } # Fetch file versions only once
+        unsorted_moves = files.map {|f| [f, File.timestamp(f)] } # Fetch file versions only once
              .sort_by {|f, timestamp| timestamp} # Sort oldest files first
              .map do |f, timestamp| # Reset versions in order by file date
                     version_count += 1
                     {from: f, version: version_count, to: re_version_file(dest, version_count)}
                   end
              .reject {|spec| spec[:from] == spec[:to]} # Remove any "no-op" moves
-             .sort_by {|spec| -spec[:version]} # Move highest versions first
+        # Calculate dependencies
+        unsorted_moves.each.with_index do |move, i|
+          move[:index] = i
+          move[:depends_on] = []
+        end
+        unsorted_moves.each.with_index do |move, i|
+          unsorted_moves.each do |move2|
+            next if move2[:index]==move[:index]
+            move[:depends_on] << move2[:index] \
+              if move2[:from] == move[:to] || ancestor_directories(move2[:from]).include?(move[:from])
+          end
+        end
+        unsorted_moves.topological_sort do |moves, i|
+          move = moves[i]
+          move[:depends_on].map {|ix| moves.find_index {|move2| move2[:index]==ix}}.compact
+        end
       end
 
       def re_version_file(f, version)
-        f =~ /^(.*?)((?:\.v\d+)?)((?:\.[\w\d_]*)?)$/ # May already have a .v999 prefix
-        version = version ? ".v#{version}" : ""
+        f =~ /^(.*?)((?:\.V\d+)?)((?:\.[\w\d_]*)?)$/ # May already have a .v999 prefix
+        version = version ? ".V#{version}" : ""
         "#{$1}#{version}#{$3}"
       end
 

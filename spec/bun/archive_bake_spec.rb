@@ -23,9 +23,9 @@ describe "archive bake" do
     it "should write the proper content" do
       "mixed_formats_bake/ar003.0698".should match_expected_output
       "mixed_formats_bake/ar003.0701.bun".should match_expected_output
-      "mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+      "mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229".should \
           match_expected_output
-      "mixed_formats_bake/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output
+      "mixed_formats_bake/fass/script/tape.ar004.0642_19770224".should match_expected_output
     end
     it "should write nothing on STDOUT" do 
       "output/test_actual/archive_bake_stdout.txt".should be_an_empty_file
@@ -65,9 +65,9 @@ describe "archive bake" do
     it "should write the proper content" do
       "mixed_formats_bake/ar003.0698".should match_expected_output
       "mixed_formats_bake/ar003.0701.bun".should match_expected_output
-      "mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+      "mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229".should \
           match_expected_output
-      "mixed_formats_bake/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output
+      "mixed_formats_bake/fass/script/tape.ar004.0642_19770224".should match_expected_output
     end
     it "should write nothing on STDOUT" do 
       "output/test_actual/archive_bake_quiet_stdout.txt".should be_an_empty_file
@@ -97,7 +97,7 @@ describe "archive bake" do
         exec("rm -f output/test_actual/archive_bake_stderr.txt")
         exec("mkdir output/test_actual/mixed_formats_bake")
         exec("mkdir -p output/test_actual/mixed_formats_bake/fass/1986/script/script.f_19860213/1-1")
-        exec("echo foo >output/test_actual/mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt")
+        exec("echo foo >output/test_actual/mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229")
         exec("echo bar >output/test_actual/mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/xyzzy")
         exec("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
         exec("bun archive bake --force data/test/archive/mixed_formats \
@@ -112,9 +112,9 @@ describe "archive bake" do
       it "should write the proper content" do
         "mixed_formats_bake/ar003.0698".should match_expected_output
         "mixed_formats_bake/ar003.0701.bun".should match_expected_output
-        "mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should \
+        "mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229".should \
             match_expected_output
-        "mixed_formats_bake/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output
+        "mixed_formats_bake/fass/script/tape.ar004.0642_19770224".should match_expected_output
       end
       it "should write nothing on STDOUT" do 
         "output/test_actual/archive_bake_stdout.txt".should be_an_empty_file
@@ -143,7 +143,7 @@ describe "archive bake" do
         exec("rm -f output/test_actual/archive_bake_existing_no_force_stderr.txt")
         exec("mkdir output/test_actual/mixed_formats_bake")
         exec("mkdir -p output/test_actual/mixed_formats_bake/fass/1986/script/script.f_19860213/1-1")
-        exec("echo foo >output/test_actual/mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt")
+        exec("echo foo >output/test_actual/mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229")
         exec("echo bar >output/test_actual/mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/xyzzy")
         exec("cp -r data/test/archive/mixed_formats_init data/test/archive/mixed_formats")
         exec("bun archive bake data/test/archive/mixed_formats \
@@ -158,10 +158,10 @@ describe "archive bake" do
       it "should write the proper content to the non-conflicted files" do
         "mixed_formats_bake/ar003.0698".should match_expected_output
         "mixed_formats_bake/ar003.0701.bun".should match_expected_output
-        "mixed_formats_bake/fass/script/tape.ar004.0642_19770224.txt".should match_expected_output
+        "mixed_formats_bake/fass/script/tape.ar004.0642_19770224".should match_expected_output
       end
       it "should not overwrite existing files" do
-        "output/test_actual/mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229.txt".should contain_content('foo')
+        "output/test_actual/mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229".should contain_content('foo')
         "output/test_actual/mixed_formats_bake/fass/1986/script/script.f_19860213/1-1/xyzzy".should contain_content('bar')
       end
       it "should write nothing on STDOUT" do 
