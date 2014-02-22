@@ -579,14 +579,10 @@ module Bun
         dest = group
         dest += File.nondate_extname(primary_file) unless File.nondate_extname(dest)==File.nondate_extname(primary_file)
         conflict_set = File.conflicting_files(dest)
-        # debug "dest: #{dest}"
-        # debug "conflict_set: #{conflict_set.inspect}"
         directory_counts = files.map{|f| File.dirname(f)}.inject({}) {|hsh, f| hsh[f] ||= 0; hsh[f] += 1; hsh}
-        # debug "directory_counts: #{directory_counts.inspect}"
         conflict_set.reject!{|f| directory_counts[f] && File.directory_count(f)-directory_counts[f] <= 0 }
         files += conflict_set
         files.uniq!
-        # debug "files: #{files.inspect}"
         shell.merge_files(files, dest) do |move| # Messaging block
           unless options[:quiet]
             from = move[:from]
