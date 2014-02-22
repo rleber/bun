@@ -199,9 +199,4 @@ def build
 
   build_compress_test_directory "data/test/archive/compress_init", quiet: options[:quiet]
   build_compress_test_directory "data/test/archive/same", quiet: options[:quiet]
-
-  # Build compress conflict test
-  build_directory("data/test/archive/compress_conflict_init", quiet: options[:quiet]) do |dir|
-    _exec "cp -rf data/test_init/compress_conflict #{at.safe}"
-  end
 end

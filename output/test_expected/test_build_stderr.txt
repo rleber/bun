@@ -250,9 +250,3 @@ mkdir -p /Users/richard/projects/bun/data/test/archive/same/bjeroehl/fass/77scri
 cp -f /Users/richard/fass_work/decoded/bjeroehl/fass/77script.f_19770301_154058/1zero/tape.ar082.0603_19770210_164752 /Users/richard/projects/bun/data/test/archive/same/bjeroehl/fass/77script.f_19770301_154058/1zero/tape.ar082.0603_19770210_164752
 mkdir -p /Users/richard/projects/bun/data/test/archive/same/fass/scripfrz_19770301_154058/1zero
 cp -f /Users/richard/fass_work/decoded/fass/scripfrz_19770301_154058/1zero/tape.ar004.0888_19770210_164752 /Users/richard/projects/bun/data/test/archive/same/fass/scripfrz_19770301_154058/1zero/tape.ar004.0888_19770210_164752
-build_compress_conflict_test
-cp: /Users/richard/fass_work/compressed/bjeroehl/fass/77script.f/3two.txt: No such file or directory
-cp: /Users/richard/fass_work/compressed/1985/fass/songs.f/1978.txt: No such file or directory
-cp: /Users/richard/fass_work/compressed/fass/1986/script/tfed.f/2.1.txt: No such file or directory
-cp: /Users/richard/fass_work/compressed/fass/bj/dense.txt: No such file or directory
-cp: /Users/richard/fass_work/compressed/fass/idallen/roffinit.txt: No such file or directory
