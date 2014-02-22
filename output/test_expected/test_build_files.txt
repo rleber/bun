@@ -13,6 +13,7 @@ data/test/archive/catalog_source_init/ar003.0698.bun
 data/test/archive/catalog_source_init/ar003.0701.bun
 data/test/archive/catalog_source_init/ar082.0605.bun
 data/test/archive/catalog_source_init/ar083.0698.bun
+data/test/archive/catalog_source_init/ar103.1065.bun
 data/test/archive/compact_source_init
 data/test/archive/compact_source_init/ar004.0888.bun
 data/test/archive/compact_source_init/ar009.2622.bun
@@ -90,6 +91,7 @@ data/test/archive/decode_source_init/ar003.0698.bun
 data/test/archive/decode_source_init/ar003.0701.bun
 data/test/archive/decode_source_init/ar082.0605.bun
 data/test/archive/decode_source_init/ar083.0698.bun
+data/test/archive/decode_source_init/ar103.1065.bun
 data/test/archive/general_test
 data/test/archive/general_test/ar003.0698.bun
 data/test/archive/general_test/ar003.0701.bun
@@ -126,11 +128,13 @@ data/test/archive/mv_init/ar003.0698.bun
 data/test/archive/mv_init/ar003.0701.bun
 data/test/archive/mv_init/ar082.0605.bun
 data/test/archive/mv_init/ar083.0698.bun
+data/test/archive/mv_init/ar103.1065.bun
 data/test/archive/mv_init/directory
 data/test/archive/mv_init/directory/ar003.0698.bun
 data/test/archive/mv_init/directory/ar003.0701.bun
 data/test/archive/mv_init/directory/ar082.0605.bun
 data/test/archive/mv_init/directory/ar083.0698.bun
+data/test/archive/mv_init/directory/ar103.1065.bun
 data/test/archive/packed_with_bad_files
 data/test/archive/packed_with_bad_files/ar003.0698
 data/test/archive/packed_with_bad_files/packed_with_bad_bcw
@@ -150,6 +154,7 @@ data/test/archive/rm_init/ar003.0698.bun
 data/test/archive/rm_init/ar003.0701.bun
 data/test/archive/rm_init/ar082.0605.bun
 data/test/archive/rm_init/ar083.0698.bun
+data/test/archive/rm_init/ar103.1065.bun
 data/test/archive/roff
 data/test/archive/roff/fass
 data/test/archive/roff/fass/1990
@@ -209,6 +214,7 @@ data/test/archive/rv_init/directory/ar003.0698.bun
 data/test/archive/rv_init/directory/ar003.0701.bun
 data/test/archive/rv_init/directory/ar082.0605.bun
 data/test/archive/rv_init/directory/ar083.0698.bun
+data/test/archive/rv_init/directory/ar103.1065.bun
 data/test/archive/same
 data/test/archive/same/bjeroehl
 data/test/archive/same/bjeroehl/fass

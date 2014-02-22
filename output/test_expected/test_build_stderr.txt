@@ -22,6 +22,8 @@ mkdir -p /Users/richard/projects/bun/data/test/archive/catalog_source_init
 cp -f /Users/richard/fass_work/unpacked/ar082.0605.bun /Users/richard/projects/bun/data/test/archive/catalog_source_init/ar082.0605.bun
 mkdir -p /Users/richard/projects/bun/data/test/archive/catalog_source_init
 cp -f /Users/richard/fass_work/unpacked/ar083.0698.bun /Users/richard/projects/bun/data/test/archive/catalog_source_init/ar083.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/catalog_source_init
+cp -f /Users/richard/fass_work/unpacked/ar103.1065.bun /Users/richard/projects/bun/data/test/archive/catalog_source_init/ar103.1065.bun
 rm -rf data/test/archive/packed_with_bad_files_init
 mkdir -p data/test/archive/packed_with_bad_files_init
 cp data/test_init/packed_with_bad* data/test/archive/packed_with_bad_files_init
@@ -85,6 +87,8 @@ mkdir -p /Users/richard/projects/bun/data/test/archive/decode_source_init
 cp -f /Users/richard/fass_work/cataloged/ar082.0605.bun /Users/richard/projects/bun/data/test/archive/decode_source_init/ar082.0605.bun
 mkdir -p /Users/richard/projects/bun/data/test/archive/decode_source_init
 cp -f /Users/richard/fass_work/cataloged/ar083.0698.bun /Users/richard/projects/bun/data/test/archive/decode_source_init/ar083.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/decode_source_init
+cp -f /Users/richard/fass_work/cataloged/ar103.1065.bun /Users/richard/projects/bun/data/test/archive/decode_source_init/ar103.1065.bun
 rm -rf data/test/archive/general_test
 mkdir -p data/test/archive/general_test
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
@@ -146,6 +150,8 @@ mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init
 cp -f /Users/richard/fass_work/cataloged/ar082.0605.bun /Users/richard/projects/bun/data/test/archive/mv_init/ar082.0605.bun
 mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init
 cp -f /Users/richard/fass_work/cataloged/ar083.0698.bun /Users/richard/projects/bun/data/test/archive/mv_init/ar083.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init
+cp -f /Users/richard/fass_work/cataloged/ar103.1065.bun /Users/richard/projects/bun/data/test/archive/mv_init/ar103.1065.bun
 rm -rf data/test/archive/mv_init/directory
 mkdir -p data/test/archive/mv_init/directory
 mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init/directory
@@ -156,6 +162,8 @@ mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init/directory
 cp -f /Users/richard/fass_work/cataloged/ar082.0605.bun /Users/richard/projects/bun/data/test/archive/mv_init/directory/ar082.0605.bun
 mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init/directory
 cp -f /Users/richard/fass_work/cataloged/ar083.0698.bun /Users/richard/projects/bun/data/test/archive/mv_init/directory/ar083.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init/directory
+cp -f /Users/richard/fass_work/cataloged/ar103.1065.bun /Users/richard/projects/bun/data/test/archive/mv_init/directory/ar103.1065.bun
 rm -rf data/test/archive/rm_init
 mkdir -p data/test/archive/rm_init
 mkdir -p /Users/richard/projects/bun/data/test/archive/rm_init
@@ -166,6 +174,8 @@ mkdir -p /Users/richard/projects/bun/data/test/archive/rm_init
 cp -f /Users/richard/fass_work/cataloged/ar082.0605.bun /Users/richard/projects/bun/data/test/archive/rm_init/ar082.0605.bun
 mkdir -p /Users/richard/projects/bun/data/test/archive/rm_init
 cp -f /Users/richard/fass_work/cataloged/ar083.0698.bun /Users/richard/projects/bun/data/test/archive/rm_init/ar083.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/rm_init
+cp -f /Users/richard/fass_work/cataloged/ar103.1065.bun /Users/richard/projects/bun/data/test/archive/rm_init/ar103.1065.bun
 rm -rf data/test/archive/rv_init/directory
 mkdir -p data/test/archive/rv_init/directory
 mkdir -p /Users/richard/projects/bun/data/test/archive/rv_init/directory
@@ -176,6 +186,8 @@ mkdir -p /Users/richard/projects/bun/data/test/archive/rv_init/directory
 cp -f /Users/richard/fass_work/cataloged/ar082.0605.bun /Users/richard/projects/bun/data/test/archive/rv_init/directory/ar082.0605.bun
 mkdir -p /Users/richard/projects/bun/data/test/archive/rv_init/directory
 cp -f /Users/richard/fass_work/cataloged/ar083.0698.bun /Users/richard/projects/bun/data/test/archive/rv_init/directory/ar083.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/rv_init/directory
+cp -f /Users/richard/fass_work/cataloged/ar103.1065.bun /Users/richard/projects/bun/data/test/archive/rv_init/directory/ar103.1065.bun
 rm -rf data/test/archive/mixed_formats_init
 mkdir -p data/test/archive/mixed_formats_init
 mkdir -p /Users/richard/projects/bun/data/test/archive/mixed_formats_init

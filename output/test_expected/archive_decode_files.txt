@@ -42,3 +42,7 @@ data/test/archive/decode_archive/fass/idallen/huffhart
 data/test/archive/decode_archive/fass/idallen/huffhart/tape.ar003.0701_19761122
 data/test/archive/decode_archive/fass/idallen/vector
 data/test/archive/decode_archive/fass/idallen/vector/tape.ar003.0698_19761122
+data/test/archive/decode_archive/jagardner
+data/test/archive/decode_archive/jagardner/DOTDOT
+data/test/archive/decode_archive/jagardner/DOTDOT/fassmac.t
+data/test/archive/decode_archive/jagardner/DOTDOT/fassmac.t/tape.ar103.1065_19831027

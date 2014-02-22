@@ -61,7 +61,7 @@ module Bun
               .justify_rows \
               .map{|row| row.join('  ')} \
               .join("\n")
-        end
+          end
 
         end
 

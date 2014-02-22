@@ -80,6 +80,7 @@ no_tasks do
       build_file "ar003.0701", nil, format, quiet: options[:quiet]
       build_file "ar082.0605", nil, format, quiet: options[:quiet]
       build_file "ar083.0698", nil, format, quiet: options[:quiet]
+      build_file "ar103.1065", nil, format, quiet: options[:quiet]
     end
   end
   

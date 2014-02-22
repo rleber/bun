@@ -479,18 +479,6 @@ module Bun
     EXTRACT_TAPE_SUFFIX = ''
 
     def decode_path(path, date)
-      path_parts = path.split("/")
-      path_parts = path_parts.map do |part|
-        case part
-        when "."
-          "DOT"
-        when ".."
-          "DOTDOT"
-        else
-          part
-        end
-      end
-      path = path_parts.join("/") 
       path = path.sub(/#{DEFAULT_UNPACKED_FILE_EXTENSION}$/,'')
       if date
         date_to_s = date.strftime(EXTRACT_DATE_FORMAT)
