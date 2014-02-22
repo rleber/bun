@@ -61,6 +61,8 @@ Implement interactive (or stream) editor:
     Alternatively: check out the contents (in whatever format), edit, then check them back in again
 
 _Medium Priority_
+Refine topological sorting: one pass through for precedences; version with {|node1, node2| ... } block
+Move topological sorting to its own gem
 Other traits
     Object file
         Very few large runs
