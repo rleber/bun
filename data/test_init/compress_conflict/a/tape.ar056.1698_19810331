@@ -1,0 +1,147 @@
+---
+:identifier: Bun
+:block_count: 1
+:block_padding_repairs: 0
+:catalog_time: 1981-03-31 00:00:00.000000000 -05:00
+:decode_time: 2014-02-03 15:11:27.271798000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:7cff5852b2f0e9fe5a06a73de49988b500f828dc]
+:description: ''
+:digest: df60e2c3f569dc79272ffc5d16d9418f
+:first_block_size: 652
+:format: :decoded
+:llink_count: 2
+:owner: aangold
+:path: aangold/a
+:tape: ar056.1698
+:tape_size: 652
+:text_size: 1947
+:type: :text
+:unpack_time: 2014-02-02 04:19:51.343087000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:571c93836cf64052fc370341e55bff0a71bae2ba]
+:content: ! '.nf
+
+  .ll 125
+
+  .ta 1l 12l 16l 19l 22l 27l 32l 35l 38l 53l 68l 80l 84l 100l 110l 125l
+
+  .tc^
+
+  Chimera^8d8^2^l^8/16^30^CE^4^Lion''s bite 3d6^50+ roll^
+
+  ^^^^^^^^Goat''s horns^dragon''s head^
+
+  ^^^^^^^^1d6 each^will breathe^
+
+  ^^^^^^^^^fire 3d8 damage^
+
+  Centipede^1d6^7^s^12^^N^1^1d4 bite^weak poison^
+
+  ^^^^^^^^^bite +4 to hit^
+
+  Giant Frog^2d8^6^m^18^^^3^jump on player^
+
+  ^^^^^^^^for 1d8 damage^
+
+  ^^^^^^^^tongue (+4 hit)^
+
+  ^^^^^^^^& bite. Glue ^
+
+  ^^^^^^^^like tongue^
+
+  ^^^^^^^^draws creature^
+
+  ^^^^^^^^forward but^
+
+  ^^^^^^^^creature can^
+
+  ^^^^^^^^try to hit it.^
+
+  ^^^^^^^^If he does then^
+
+  ^^^^^^^^the frog^
+
+  ^^^^^^^^withdraws and^
+
+  ^^^^^^^^will not use^
+
+  ^^^^^^^^again.ST vs^
+
+  ^^^^^^^^strong poison^
+
+  ^^^^^^^^for tongue^
+
+  ^^^^^^^^However if pc^
+
+  ^^^^^^^^does not hit^
+
+  ^^^^^^^^then takes max^
+
+  ^^^^^^^^from bite 1d10^
+
+  Pegasus^4^3^m^12/20^n^3^1 bite 1d10^^^invisibility^^carr-^
+
+  ^^^^^^^^2 claws 1d6^^^^etherealness^^ies rider^
+
+  ^^^^^^^^^^^^L4^^into eth-^
+
+  ^^^^^^^^^^^^^^ereal or in^
+
+  ^^^^^^^^^^^^^^visible as^
+
+  ^^^^^^^^^^^^^^well.Rider^
+
+  ^^^^^^^^^^^^^^and dragon^
+
+  ^^^^^^^^^^^^^^are tele-^
+
+  ^^^^^^^^^^^^^^pathically^
+
+  ^^^^^^^^^^^^^^connected^
+
+  Homonculous^3d8^0^s^3/10^20^ce^1^Bite 1d8 +^^^^Dimension^
+
+  ^^^2''^^^^^sleep poison^^^Door every^
+
+  ^^^^^^^^^^^^other mr^
+
+  Imp^5d8^-2^s^4/11^25^ce^1^Tail 1d8 +^animate^REG 1pt/mr^+^L5^
+
+  ^^^^^^^^lethal poison^opponent''s^IMM to^^Darkness^
+
+  ^^^^^^^^^wpn against him^fire^^Silence^
+
+  ^^^^^^^^^for 1d4 MR''s^^^Blur^
+
+  ^^^^^^^^^^^^Invisible^
+
+  ^^^^^^^^^^^^Dimension^
+
+  ^^^^^^^^^^^^door^
+
+  ^^^^^^^^^^^^Wall of fire^
+
+  Quasit^3d8^0^m^8^25^ce^2^2 claws 1d6^Burning itch^REG 1pt/MR^+^L6^
+
+  ^^^^^^^^^ST vs poison or^IMM to ^^Temporial^
+
+  ^^^^^^^^^lose 1pt from^hold,cold^Stasis^
+
+  ^^^^^^^^^dex perm^sleep,^
+
+  ^^^^^^^^^^charm^
+
+  Aerial^4d8^4^l^9/15^20^lg^1^Punch 1d8^^^^L5^^Carries up^
+
+  Servant^^^^^^^^^^^^Gust of Wind^^to 10,000 gp^
+
+  ^^^^^^^^^^^^Invisibility^^can create^
+
+  ^^^^^^^^^^^^Etherealness^^& water for^
+
+  ^^^^^^^^^^^^Spectral force^^up to 6 ^
+
+  ^^^^^^^^^^^^^^people^
+
+  ^^^^^^^^^^^^^^once a day^
+
+'

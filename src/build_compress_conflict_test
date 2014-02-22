@@ -1,6 +1,8 @@
-rm -rf data/test/archive/compress_conflict_init
-mkdir -p data/test/archive/compress_conflict_init
-cd data/test/archive/compress_conflict_init
+# Build data/test_init directory for test of bun compress with conflicts
+# Caution: Depends on decoded FASS and Watbun archive files!
+rm -rf data/test_init/compress_conflict
+mkdir -p data/test_init/compress_conflict
+cd data/test_init/compress_conflict
 mkdir xxx
 cp ~/fass_work/compressed/bjeroehl/fass/77script.f/3two.txt xxx/tape_ar99.9999_19990101_120000
 cp ~/fass_work/compressed/1985/fass/songs.f/1978.txt xxx/xxx.txt
