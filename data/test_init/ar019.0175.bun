@@ -13,8 +13,8 @@
 :tape_size: 7228
 :time: 1978-11-08 14:15:17.000000000 -05:00
 :type: :frozen
-:unpack_time: 2014-01-24 10:29:49.709961000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
+:unpack_time: 2014-02-21 20:09:35.982593000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/improved_file_naming:b6c0fc87028dd69445f9dd232dbaba432c382bd5]
 :shards:
 - :name: temacro
   :time: 1978-11-08 14:15:17.000000000 -05:00

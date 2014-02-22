@@ -17,3 +17,12 @@ Decoded ar082.0605.bun[81macros]
 Decoded ar082.0605.bun[bulkmacr]
 Decoded ar083.0698.bun
 Decoded ar103.1065.bun
+Decoded ar126.0527.bun[1978]
+Decoded ar126.0527.bun[1979]
+Decoded ar126.0527.bun[1980]
+Decoded ar126.0527.bun[1981]
+Decoded ar126.0527.bun[1982]
+Decoded ar126.0527.bun[1983]
+Decoded ar126.0527.bun[1984]
+Decoded ar126.0527.bun[1985]
+Decoded ar126.0527.bun[1986]

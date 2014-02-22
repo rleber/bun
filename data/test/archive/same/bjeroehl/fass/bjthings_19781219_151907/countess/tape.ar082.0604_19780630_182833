@@ -3,8 +3,8 @@
 :block_count: 4
 :block_padding_repairs: 3
 :catalog_time: 1982-12-22 00:00:00.000000000 -05:00
-:decode_time: 2014-01-24 10:42:35.763834000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
+:decode_time: 2014-02-21 20:24:12.874013000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/improved_file_naming:b6c0fc87028dd69445f9dd232dbaba432c382bd5]
 :description: ''
 :digest: 112d684f1529592d2b428f06d7949a4e
 :first_block_size: 3855
@@ -16,8 +16,8 @@
 :text_size: 1974
 :time: 1978-12-19 15:19:07.000000000 -05:00
 :type: :frozen
-:unpack_time: 2014-01-24 10:31:23.791555000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
+:unpack_time: 2014-02-21 20:10:55.109905000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/improved_file_naming:b6c0fc87028dd69445f9dd232dbaba432c382bd5]
 :content: ! "Greetings once again, Countess Katya!\n     The script Mr. Lee refers
   to is at least two or three years old.  It is \nneither this past year's show, nor
   (I suspect) the previous year's.  As you\nmay (or may not) recall, this past year's

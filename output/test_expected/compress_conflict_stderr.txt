@@ -1,13 +1,23 @@
+Delete jagardner/DOTDOT/fassmac.t/tape.ar112.0475_19850320
+Delete jagardner/DOTDOT/fassmac.t/tape.ar118.0363_19850612
+Delete jagardner/DOTDOT/fassmac.t/tape.ar126.0111_19851220
+Delete jagardner/DOTDOT/fassmac.t/tape.ar126.0345_19851220
+Delete jagardner/DOTDOT/fassmac.t/tape.ar108.2439_19831027
 Compact a/s/ze.b/tape.ar059.0073_19810519 => a/s/ze.b
 Compact a/t4/tape.ar058.3075_19810519 => a/t4
 Compact a/tape.ar056.1698_19810331 => a.V1
 Move a => a.V2
 Move amiga/pdc/cpp/readme.V3/tape.ar145.2712_19890304 => amiga/pdc/cpp/readme.V2
 Move amiga/pdc/cpp/readme/tape.ar145.2714_19890304 => amiga/pdc/cpp/readme.V1
+Move jagardner/DOTDOT/fassmac.t/tape.ar120.1248_19851220 => jagardner/DOTDOT/fassmac.V4.t
+Move jagardner/DOTDOT/fassmac.t/tape.ar116.2131_19850612 => jagardner/DOTDOT/fassmac.V3.t
+Move jagardner/DOTDOT/fassmac.t/tape.ar112.0026_19850320 => jagardner/DOTDOT/fassmac.V2.t
+Move jagardner/DOTDOT/fassmac.t/tape.ar103.1065_19831027 => jagardner/DOTDOT/fassmac.V1.t
 Compact xxx/tape_ar99.9999_19990101_120000 => xxx.V1
 Move xxx => xxx.V2
 Move yyy.V1 => yyy.V3
 Compact yyy_20120314/tape_ar99.9999_19990101_120000 => yyy.V1
 Delete yyy_20120314
+Delete jagardner/DOTDOT/fassmac.t
 Delete amiga/pdc/cpp/readme.V3
 Delete amiga/pdc/cpp/readme

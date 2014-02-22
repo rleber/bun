@@ -7,7 +7,8 @@ def subpaths(*files)
     f = File::Packed.open(file)
     subpath = f.descriptor.subpath
     path = f.descriptor.path
+    type = f.type
     f.close
-    puts "#{file}: #{subpath} => #{path}"
+    puts "#{file}: #{type} #{subpath} => #{path}"
   end
 end

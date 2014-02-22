@@ -53,7 +53,7 @@ no_tasks do
     end
     at = $at unless at
     file_with_extension = file
-    file_with_extension += extension unless File.extname(file_with_extension) == extension
+    file_with_extension += extension unless File.nondate_extname(file_with_extension) == extension
     source_file = File.join(File.expand_path(from),file_with_extension)
     source_file += '.txt' unless File.exists?(source_file)
     target_file = File.join(File.expand_path(at),file_with_extension)
@@ -81,6 +81,7 @@ no_tasks do
       build_file "ar082.0605", nil, format, quiet: options[:quiet]
       build_file "ar083.0698", nil, format, quiet: options[:quiet]
       build_file "ar103.1065", nil, format, quiet: options[:quiet]
+      build_file "ar126.0527", nil, format, quiet: options[:quiet]
     end
   end
   

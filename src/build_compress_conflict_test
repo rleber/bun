@@ -17,3 +17,4 @@ mkdir -p amiga/pdc/cpp/readme
 cp ~/watbun_work/decoded/rhosler/amiga/pdc/cpp/cpp.mem/tape.ar145.2714_19890304.txt amiga/pdc/cpp/readme/tape.ar145.2714_19890304
 mkdir -p amiga/pdc/cpp/readme.V3
 cp ~/watbun_work/decoded/rhosler/amiga/pdc/bin/ccc2/tape.ar145.2712_19890304.txt amiga/pdc/cpp/readme.V3/tape.ar145.2712_19890304
+cp -r ~/fass_work/sandbox/jagardner jagardner

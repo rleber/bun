@@ -3,8 +3,8 @@
 :block_count: 11
 :block_padding_repairs: 0
 :catalog_time: 1982-12-22 00:00:00.000000000 -05:00
-:decode_time: 2014-01-24 10:41:58.462956000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
+:decode_time: 2014-02-21 20:23:16.949307000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/improved_file_naming:b6c0fc87028dd69445f9dd232dbaba432c382bd5]
 :description: ''
 :digest: 2f51bd97948363e796b8fa8c1227425f
 :first_block_size: 3856
@@ -16,8 +16,8 @@
 :text_size: 314
 :time: 1977-03-01 15:40:58.000000000 -05:00
 :type: :frozen
-:unpack_time: 2014-01-24 10:31:22.646970000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
+:unpack_time: 2014-02-21 20:10:54.224867000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/improved_file_naming:b6c0fc87028dd69445f9dd232dbaba432c382bd5]
 :content: ! ".so fass/fasshole\n.he 'FASS'- % -'ACT I SCENE 0'\n.FO 'ACT I SCENE 0''FASS'\nAct
   1 Scene 0\n\n(AN EXTENDED ROUTINE BEFORE THE OPENING OF THE SHOW - A PERSON\nAPPEARS
   ON STAGE GIVING THE IMPRESSION THAT HE HAS AN ANNOUNCEMENT \nTO MAKE - WHEN HE HAS
