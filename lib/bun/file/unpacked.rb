@@ -40,7 +40,7 @@ module Bun
         end
         
         def build_descriptor(input)
-          @descriptor = Descriptor::Base.from_hash(@content,input)
+          @descriptor = Descriptor::File.from_hash(@content,input)
         end
 
         # TODO How is this different from File.descriptor?

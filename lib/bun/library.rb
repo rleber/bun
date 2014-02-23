@@ -26,7 +26,7 @@ module Bun
     end
     
     def compact_leaves!
-      leaves.chunk {|leaf| leaf =~ /^(.*)\.(\d{8}(?:_\d{6})?)\.txt$/ && "#{$1}.txt" } \
+      leaves.chunk {|leaf| leaf =~ /^(.*)\.(\d{8}(?:_\d{6})?)(?:\.txt)?$/ && $1 } \
             .reject{|set, leaves| set.nil?} \
             .each do |set, leaves|
               leaves.map {|leaf| [leaf, (fd=descriptor(leaf)) && fd.updated]} \

@@ -1,11 +1,9 @@
 TODO
 _High Priority_
-Tests for bun archive translate
-Why does collection_enumerator:177 invoke build_index?
+Make bun test build and build_compress... independent of FASS and watbun archives (i.e copy source files)
 More extensions to bun show
     Fully qualified path (e.g. for shards in frozen archives)
     Field_values (returns array of [field_name, value] pairs)
-Create watbun pull, translate
 Bun compare (one file from each of two lists), e.g.
     bun compare EXPRESSIONS --in FILES... --vs FILES... --where CONDITION
       e.g. --where 'file1.digest == file2.digest && file1.text != file2.digest'
@@ -63,6 +61,8 @@ Implement interactive (or stream) editor:
     Alternatively: check out the contents (in whatever format), edit, then check them back in again
 
 _Medium Priority_
+Refine topological sorting: one pass through for precedences; version with {|node1, node2| ... } block
+Move topological sorting to its own gem
 Other traits
     Object file
         Very few large runs

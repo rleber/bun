@@ -1,0 +1,311 @@
+---
+:identifier: Bun
+:block_count: 16
+:block_padding_repairs: 15
+:catalog_time: 1986-03-18 00:00:00.000000000 -05:00
+:decode_time: 2014-02-22 11:05:49.679912000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/improved_file_naming:dd12bbc7313b349045e232bb30662042d631a0b3]
+:description: ''
+:digest: 83919c4cf446c025b0e77d7cf8743731
+:first_block_size: 3855
+:format: :decoded
+:owner: bdparsons
+:path: bdparsons/fass/1986.f
+:tape: ar120.1521
+:tape_size: 60114
+:text_size: 23398
+:time: 1986-01-14 16:34:15.000000000 -05:00
+:type: :frozen
+:unpack_time: 2014-02-22 10:45:24.556991000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/improved_file_naming:dd12bbc7313b349045e232bb30662042d631a0b3]
+:content: ! "\n\nI:3                    The Screamplay                 Page 1\n\n\n\x01#
+  \         I\bI\bIt\bt\bt's\bs\bs M\bM\bMy\by\by P\bP\bPa\ba\bar\br\brt\bt\bty\by\by,
+  A\bA\bAn\bn\bnd\bd\bd I\bI\bI'l\bl\bll\bl\bl D\bD\bDi\bi\bie\be\be I\bI\bIf\bf\bf
+  I\bI\bI W\bW\bWa\ba\ban\bn\bnt\bt\bt T\bT\bTo\bo\bo\n\n\n\x01\x17C\bC\bCh\bh\bha\ba\bar\br\bra\ba\bac\bc\bct\bt\bte\be\ber\br\brs\bs\bs
+  d\bd\bde\be\bef\bf\bfi\bi\bin\bn\bne\be\bed\bd\bd f\bf\bfo\bo\bor\br\br t\bt\bth\bh\bhi\bi\bis\bs\bs
+  s\bs\bsc\bc\bce\be\ben\bn\bne\be\be:\n\n    1. <ad>    ACOLYTE DEXTER  . . . . .
+  . . . . (DEXTER)\n    2. <as>    ACOLYTE SINISTER  . . . . . . . (SINISTER)\n    3.
+  <at>    ARTERIOSCLEROSIS  . . . (ARTERIOSCLEROSIS)\n    4. <bi>    BILLY BUTLER
+  \ . . . . . . . . . .  (BILLY)\n    5. <bo>    BORIS BADINOV . . . . . . . . . .
+  \ (BORIS)\n    6. <ca>    CARRIE  . . . . . . . . . . . . . (CARRIE)\n    7. <ch>
+  \   CHRISTINE . . . . . . . . . .  (CHRISTINE)\n    8. <dg>    DIAGNOSIS . . . .
+  . . . . . .  (DIAGNOSIS)\n    9. <di>    DIMITRI DISCH . . . . . . . . .  (DIMITRI)\n
+  \  10. <gh>    GRASSHOPPER . . . . . . . .  (GRASSHOPPER)\n   11. <hl>    HALITOSIS
+  . . . . . . . . . .  (HALITOSIS)\n   12. <hy>    HYPNOSIS  . . . . . . . . . . .
+  (HYPNOSIS)\n   13. <ja>    JASON . . . . . . . . . . . . . .  (JASON)\n   14. <jw>
+  \   JAWS  . . . . . . . . . . . . . . . (JAWS)\n   15. <ln>    LIONEL  . . . . .
+  . . . . . . . . (LIONEL)\n   16. <ma>    MASTER  . . . . . . . . . . . . . (MASTER)\n
+  \  17. <me>    MEIOSIS . . . . . . . . . . . .  (MEIOSIS)\n   18. <mt>    MITOSIS
+  . . . . . . . . . . . .  (MITOSIS)\n   19. <no>    NORMAN  . . . . . . . . . . .
+  . . (NORMAN)\n   20. <np>    NATASHA PAVLOVANOVA . . . . . .  (NATASHA)\n   21.
+  <nu>    NEUROSIS  . . . . . . . . . . . (NEUROSIS)\n   22. <os>    OSMOSIS . . .
+  . . . . . . . . .  (OSMOSIS)\n   23. <pg>    PROGNOSIS . . . . . . . . . .  (PROGNOSIS)\n
+  \  24. <rh>    RHETT BUTLER  . . . . . . . . . .  (RHETT)\n   25. <sa>    SALESMAN
+  \ . . . . . . . . . . . (SALESMAN)\n   26. <sc>    SCARLETT BUTLER . . . . . . .
+  . (SCARLETT)\n   27. <sl>    SILICOSIS . . . . . . . . . .  (SILICOSIS)\n   28.
+  <su>    SUSIE BUTLER  . . . . . . . . . .  (SUSIE)\n   29. <sw>    SWEENEY . . .
+  . . . . . . . . .  (SWEENEY)\n   30. <tb>    TUBERCULOSIS  . . . . . . . (TUBERCULOSIS)\n
+  \  31. <vl>    VLADIMIR TEPES  . . . . . . . . (VLADIMIR)\n   32. <wi>    WINTHROP
+  \ . . . . . . . . . . . (WINTHROP)\n   33. <wl>    WILLARD . . . . . . . . . . .
+  .  (WILLARD)\n\n[L-1]  (LIGHTS  UP  ON  THE  ENTRANCE  HALL OF JEKYLL HOUSE. L\nTHERE
+  IS A LOT OF FURNITURE SHROUDED IN SHEETS.  JASON OPENS\nA DOOR FROM OFFSTAGE AND
+  CALLS INSIDE)\n\n1\b1\b1-J\bJ\bJA\bA\bAS\bS\bSO\bO\bON\bN\bN:  Hello?  Is anybody
+  home?\n\n(ENTER ALL TEEN-AGERS)\n\n2\b2\b2-W\bW\bWI\bI\bIL\bL\bLL\bL\bLA\bA\bAR\bR\bRD\bD\bD:
+  \ I don't think anyone lives here.\n\n(HE POINTS TO SHROUDED FURNITURE)\n\n3\b3\b3-N\bN\bNO\bO\bOR\bR\bRM\bM\bMA\bA\bAN\bN\bN:
+  \ Is it safe to go in then?\n\n4\b4\b4-C\bC\bCH\bH\bHR\bR\bRI\bI\bIS\bS\bST\bT\bTI\bI\bIN\bN\bNE\bE\bE:
+  \ As long as Carrie doesn't say anything.\n\n\nI:3 Page 1               FASS 1986
+  \           86/01/12-23:17\n\f\n\nI:3       It's My Party, And I'll Die If I Want
+  To    Page 2\n\n5\b5\b5-S\bS\bSW\bW\bWE\bE\bEE\bE\bEN\bN\bNE\bE\bEY\bY\bY:  Or Jaws
+  doesn't sit on the furniture.\n\n6-JASON:   I  vote  we  go exploring!  It's a big
+  house, the\n   owners could  be  anywhere.   Let's  split  up  and  look\n   around.\n\n(WILLARD
+  AND JASON AND CHRISTINE EXIT)\n\n7-SWEENEY:   You  two  stay here; Norman and I
+  will take the\n   basement.\n\n8-NORMAN:  Lionel's afraid of the dark.\n\n9-SWEENEY:
+  \ Do what I say or I'll bite the bear's head off.\n\n(SWEENEY AND NORMAN EXIT)\n\n1\b1\b10\b0\b0-C\bC\bCA\bA\bAR\bR\bRR\bR\bRI\bI\bIE\bE\bE:
+  \ I'm sorry, Jaws.\n\n1\b1\b11\b1\b1-J\bJ\bJA\bA\bAW\bW\bWS\bS\bS:  Huh?  Sorry
+  for what?\n\n12-CARRIE:  For getting everybody into this.\n\n13-JAWS:  You didn't
+  do anything.\n\n14-CARRIE:  Yes I did -- I'm a jinx.  I mean,  if  I  hadn't\n   signed
+  \ up for this wilderness weekend, things would have\n   gone right for the  rest
+  \ of  you.   No  rain;  no  wacko\n   teachers; no simultaneous blow-outs.\n\n15-JAWS:
+  \ Carrie, Mr.Cujo shot the tires.\n\n16-CARRIE:   You're just saying that to make
+  me feel better.\n   You would never have gone on this trip if you knew I  was\n
+  \  going.\n\n17-JAWS:  The only reason I went on this trip was you.\n\n18-CARRIE:
+  \ It was?\n\n(TIME FOR A SONG.  THROUGHOUT THE SONG, THEY WILL BE DOING A\nLITTLE
+  DANCE.  JAWS WILL GET STOMPED A LOT AND  THINGS  WILL\nFALL ON HIM)\n\n************************************************************\n*****
+  \                  LUCKY IN LOVE                  *****\n*****                 (to
+  the tune of:)                *****\n*****                RAINBOW CONNECTION                *****\n************************************************************\n\n
+  \  CARRIE:\n   Why are there so many love songs for winners?\n   Why can't the losers
+  sing too?\n   Fat people fall in love,\n   Jinxes get lucky.\n   Maybe our dreams
+  can come true.\n\nI:3 Page 2               FASS 1986            86/01/12-23:17\n\f\n\nI:3
+  \      It's My Party, And I'll Die If I Want To    Page 3\n\n   Surely my birthday
+  was Friday the thirteenth\n   An unlucky star was above\n   But now that I've found
+  you\n   I have a suspicion\n   That maybe I'm lucky in love.\n\n   JAWS:\n   I've
+  had a life that is heavily laden\n   My problems are weighty indeed.\n   Friendships
+  were rarities\n   School was just rotten\n   But I had more food than I need.\n
+  \  Now I'm expressing things I was suppressing\n   It's taken a load off my mind\n
+  \  Cuz now that I've found you\n   I have a suspicion\n   You're what I was \"weighting\"
+  to find.\n\n   TOGETHER:\n   Why are there so many love songs for winners?\n   When
+  you're in love it's so clear:\n   JAWS:\n   You have provided a taste of good fortune\n
+  \  CARRIE:\n   I'm lucky whenever you're near.\n   JAWS:\n   Your kisses so tender\n
+  \  Make me feel more slender\n   CARRIE:\n   You're the fat chance that I need.\n
+  \  BOTH:\n   Cuz now that I've found you\n   I have a suspicion\n   That love's
+  made a winner of me.\n\n(CARRIE AND JAWS EMBRACE TENDERLY.  ENTER JASON, WILLARD
+  AND\nCHRISTINE)\n\n19-WILLARD:  Well, well, well...what are you two doing?\n\n20-JAWS:
+  \ Surely that's obvious even to you.\n\n(JAWS AND CARRIE LEAVE ARM IN ARM.  PAUSE)\n\n21-WILLARD:
+  \ Oh yeah?  Sez who?\n\n(ENTER NORMAN AND SWEENEY)\n\n22-NORMAN:  Hey, guys -- look
+  what Lionel found!\n\n(ALL  GATHER  AROUND.   NORMAN  IS HOLDING A PIECE OF PAPER.\nWILLARD
+  GRABS IT FROM HIM)\n\n23-WILLARD:  It's some sort of poem.  (READS)\n\n\n\nI:3 Page
+  3               FASS 1986            86/01/12-23:17\n\f\n\nI:3       It's My Party,
+  And I'll Die If I Want To    Page 4\n\n          Higgledy piggledy\n          Sorrow
+  and tragedy\n          Flow through the Jekyll House\n          Shrouded in white\n\n
+  \         Yet pleasure and treasure may\n          Coincidentally\n          Come
+  to the takers\n          Who stay for the night.\n\n24-CHRISTINE:  What does that
+  mean?\n\n25-WILLARD:   Christine,  it  said  \"treasure  comes  to the\n   takers
+  who stay for the night\".\n\n26-CHRISTINE:  So?\n\n27-WILLARD:  So  I'm  staying
+  \ for  the  night  to  get  the\n   treasure!\n\n28-NORMAN:  What treasure?\n\n29-WILLARD:
+  \ Who cares?\n\n[S-1] (FOOTSTEPS)                                            S\n\n30-NORMAN:
+  \ Someone's coming!\n\n31-WILLARD:  Let's hide!\n\n32-SWEENEY:  Why?\n\n33-WILLARD:
+  \  So  we  don't  get  kicked  out  and  lose the\n   treasure.  In here!\n\n[S-2]
+  \ (ALL  TEEN-AGERS  EXIT  THROUGH  ONE   DOOR.    ENTER S\nWINTHROP,  WHO  PROCEEDS
+  \ TO  HANG  A  FEW  MORBID  BIRTHDAY\nDECORATIONS, E.G. BLACK  BALLOONS  AND  BLACK
+  \ CREPE  PAPER.\nDOORBELL  RINGS.  WINTHROP GOES TO DOOR AND OPENS IT.  ENTER\nRHETT,
+  SCARLETT, SUSIE  AND  BILLY.   BILLY  DRAGS  A  LARGE\nWICKER HAMPER)\n\n3\b3\b34\b4\b4-R\bR\bRH\bH\bHE\bE\bET\bT\bTT\bT\bT
+  B\bB\bBU\bU\bUT\bT\bTL\bL\bLE\bE\bER\bR\bR:   Good  thing we found your place.  Got
+  any\n   rooms for the night?\n\n3\b3\b35\b5\b5-B\bB\bBI\bI\bIL\bL\bLL\bL\bLY\bY\bY
+  B\bB\bBU\bU\bUT\bT\bTL\bL\bLE\bE\bER\bR\bR:  Daddy, I gotta go wee!\n\n3\b3\b36\b6\b6-S\bS\bSU\bU\bUS\bS\bSI\bI\bIE\bE\bE
+  B\bB\bBU\bU\bUT\bT\bTL\bL\bLE\bE\bER\bR\bR:  Me too.\n\n37-RHETT:  Didn't you go
+  before we left?\n\n38-SUSIE:  That was Tuesday!\n\n39-RHETT:  Quiet!\n\n\n\nI:3
+  Page 4               FASS 1986            86/01/12-23:17\n\f\n\nI:3       It's My
+  Party, And I'll Die If I Want To    Page 5\n\n4\b4\b40\b0\b0-W\bW\bWI\bI\bIN\bN\bNT\bT\bTH\bH\bHR\bR\bRO\bO\bOP\bP\bP:
+  \  Do  come  in.   We  would  be pleased to have\n   guests for the night.  Somehow,
+  they  never  stay  longer\n   than that...\n\n[S-3] (OMINOUS THUNDER.  YOU'LL HEAR
+  A LOT OF THIS)          S\n\n41-RHETT:   Some  weather,  huh?  I love Canada.  Me
+  and the\n   family are just up to club some seals,  exploit  the  na-\n   tives,
+  \ and  strip  mine  Algonquin park.  By the way, my\n   name's Rhett Butler, and
+  this is the little woman,  Scar-\n   lett.\n\n4\b4\b42\b2\b2-S\bS\bSC\bC\bCA\bA\bAR\bR\bRL\bL\bLE\bE\bET\bT\bTT\bT\bT
+  B\bB\bBU\bU\bUT\bT\bTL\bL\bLE\bE\bER\bR\bR:   (OBNOXIOUS  BRONX BIMBO VOICE) Pleased\n
+  \  ta meetcha.  Say hello to the help, Susie.\n\n(SUSIE GIVES WINTHROP THE RAZZBERRY)\n\n43-WINTHROP:
+  \ (WIPING FACE WITH HANDKERCHIEF) Charmed.   You\n   may call me Winthrop.\n\n44-SCARLETT:
+  \  And  Billy's  the brains of the family.  He's\n   into gene splicing.\n\n45-BILLY:
+  \ Hey, mister, wanna see Herbie?\n\n(BILLY MOVES TO OPEN THE HAMPER.  RHETT SMACKS
+  HIM AND SLAMS\nTHE LID)\n\n   Mom, he hit me!\n\n46-SCARLETT:  Frankly, my dear,
+  I don't give a damn.\n\n[S-4] (A LONG CRASHING SOUND THAT ENDS IN A TINKLE)          S\n\n47-SCARLETT:
+  \ What was that?\n\n48-WINTHROP:  Oh, Madam's...cats.  Madam loves cats.\n\n[S-5]
+  (ROAR OF SOME KIND)                                    S\n\n49-RHETT:   I  see.
+  \  (TO BILLY AND SUSIE) You kids move and\n   you're puppy chow.  Your mother and
+  I are  going  to  get\n   the luggage.\n\n[S-6] (EXIT RHETT AND SCARLETT.  DOORBELL
+  RINGS AGAIN)       S\n\n50-WINTHROP:  Ah, more visitors.  Madam will be so pleased.\n\n51-BILLY:
+  \ Madam?  Who's Madam?\n\n52-WINTHROP:  Harriet Jekyll, 101 years young today!\n\n[S-7]
+  \ (THUNDER.   WINTHROP  GOES  TO  THE  DOOR  AND ADMITS S\nDIMITRI, BORIS, NATASHA,
+  AND VLADIMIR.  THEY ARE DRESSED  IN\nTYPICAL TOURIST CLOTHES, INCLUDING UGLY FLOWERED
+  SHIRTS)\n\n\nI:3 Page 5               FASS 1986            86/01/12-23:17\n\f\n\nI:3
+  \      It's My Party, And I'll Die If I Want To    Page 6\n\n5\b5\b53\b3\b3-D\bD\bDI\bI\bIM\bM\bMI\bI\bIT\bT\bTR\bR\bRI\bI\bI
+  D\bD\bDI\bI\bIS\bS\bSC\bC\bCH\bH\bH:   Good  time  of  day,  most honoured gen-\n
+  \  tleman.  Our motorized transport facility  has  been  af-\n   flicted with mechanical
+  trouble.  Our tires have suffered\n   four simultaneous blow-outs.  Could you provide
+  \ us  with\n   assistance?\n\n54-WINTHROP:  We have no mechanic here.\n\n55-DIMITRI:
+  \ Bojemoi!\n\n56-WINTHROP:   However,  Madam  will be pleased to offer you\n   rooms
+  for the night.  You will, of course,  be  departing\n   before morning...\n\n[S-8]
+  (THUNDER)                                              S\n\n57-DIMITRI:   Is being
+  not problem.  Please to permit us in-\n   troducing selves.  I am Dimitri, head
+  of official tourist\n   delegation, and this is Vladimir, Boris, and Natasha.  We\n
+  \  are here as spies...\n\n5\b5\b58\b8\b8-B\bB\bBO\bO\bOR\bR\bRI\bI\bIS\bS\bS B\bB\bBA\bA\bAD\bD\bDI\bI\bIN\bN\bNO\bO\bOV\bV\bV:
+  \ Nyet!\n\n59-DIMITRI:  Tourists.  We are here as tourists, and we have\n   come
+  to infiltrate...\n\n60-BORIS:  Nyet!\n\n61-DIMITRI:   ...come  to  visit  your decadent
+  capitalistic\n   society...\n\n62-BORIS:  Nyet!\n\n63-DIMITRI:  ...your lovely little
+  country.\n\n\x01\x1C6\b6\b64\b4\b4-A\bA\bAL\bL\bLL\bL\bL C\bC\bCO\bO\bOM\bM\bMM\bM\bMU\bU\bUN\bN\bNI\bI\bIS\bS\bST\bT\bTS\bS\bS
+  E\bE\bEX\bX\bXC\bC\bCE\bE\bEP\bP\bPT\bT\bT D\bD\bDI\bI\bIM\bM\bMI\bI\bIT\bT\bTR\bR\bRI\bI\bI:
+  \ Da!  Da!\n\n65-SUSIE:  You're not communists, are you?\n\n\x01 6\b6\b66\b6\b6-A\bA\bAL\bL\bLL\bL\bL
+  C\bC\bCO\bO\bOM\bM\bMM\bM\bMU\bU\bUN\bN\bNI\bI\bIS\bS\bST\bT\bTS\bS\bS E\bE\bEX\bX\bXC\bC\bCE\bE\bEP\bP\bPT\bT\bT
+  D\bD\bDI\bI\bIM\bM\bMI\bI\bIT\bT\bTR\bR\bRI\bI\bI:  Nyet!  Nyet!\n\n67-DIMITRI:
+  \ No, we are peace-loving friendly folks who  en-\n   joy  a little vodka, some
+  soft balalaika music and then a\n   little re-education of political prisoners...\n\n\x01
+  6\b6\b68\b8\b8-A\bA\bAL\bL\bLL\bL\bL C\bC\bCO\bO\bOM\bM\bMM\bM\bMU\bU\bUN\bN\bNI\bI\bIS\bS\bST\bT\bTS\bS\bS
+  E\bE\bEX\bX\bXC\bC\bCE\bE\bEP\bP\bPT\bT\bT D\bD\bDI\bI\bIM\bM\bMI\bI\bIT\bT\bTR\bR\bRI\bI\bI:
+  \ Nyet!  Nyet!\n\n69-BORIS:  (TO DIMITRI) Fool!  You'll give us all away!  (TO\n
+  \  WINTHROP  AND  CHILDREN)  We  are  on our way to baseball\n   game!  (TO OTHER
+  COMMUNISTS) Okay!\n\n\x01\x0F7\b7\b70\b0\b0-A\bA\bAL\bL\bLL\bL\bL C\bC\bCO\bO\bOM\bM\bMM\bM\bMU\bU\bUN\bN\bNI\bI\bIS\bS\bST\bT\bTS\bS\bS
+  E\bE\bEX\bX\bXC\bC\bCE\bE\bEP\bP\bPT\bT\bT B\bB\bBO\bO\bOR\bR\bRI\bI\bIS\bS\bS:
+  \ Okay!\n\n71-BORIS:  Blue Jays!\n\n\n\nI:3 Page 6               FASS 1986            86/01/12-23:17\n\f\n\nI:3
+  \      It's My Party, And I'll Die If I Want To    Page 7\n\n\x01\x147\b7\b72\b2\b2-A\bA\bAL\bL\bLL\bL\bL
+  C\bC\bCO\bO\bOM\bM\bMM\bM\bMU\bU\bUN\bN\bNI\bI\bIS\bS\bST\bT\bTS\bS\bS E\bE\bEX\bX\bXC\bC\bCE\bE\bEP\bP\bPT\bT\bT
+  B\bB\bBO\bO\bOR\bR\bRI\bI\bIS\bS\bS:  Blue Jays!\n\n73-BORIS:  Let's...\n\n\x01\x127\b7\b74\b4\b4-A\bA\bAL\bL\bLL\bL\bL
+  C\bC\bCO\bO\bOM\bM\bMM\bM\bMU\bU\bUN\bN\bNI\bI\bIS\bS\bST\bT\bTS\bS\bS E\bE\bEX\bX\bXC\bC\bCE\bE\bEP\bP\bPT\bT\bT
+  B\bB\bBO\bO\bOR\bR\bRI\bI\bIS\bS\bS:  Let's...\n\n75-BORIS:  ...play...\n\n\x01\x147\b7\b76\b6\b6-A\bA\bAL\bL\bLL\bL\bL
+  C\bC\bCO\bO\bOM\bM\bMM\bM\bMU\bU\bUN\bN\bNI\bI\bIS\bS\bST\bT\bTS\bS\bS E\bE\bEX\bX\bXC\bC\bCE\bE\bEP\bP\bPT\bT\bT
+  B\bB\bBO\bO\bOR\bR\bRI\bI\bIS\bS\bS:  ...play...\n\n7\b7\b77\b7\b7-A\bA\bAL\bL\bLL\bL\bL
+  C\bC\bCO\bO\bOM\bM\bMM\bM\bMU\bU\bUN\bN\bNI\bI\bIS\bS\bST\bT\bTS\bS\bS:  ...ball!
+  \ Hoi!\n\n************************************************************\n*****          IT'S
+  GOT TO BE A COMMUNIST PLOT         *****\n*****                 (to the tune of:)
+  \               *****\n*****        YOU'VE GOT TO PICK A POCKET OR TWO        *****\n************************************************************\n\n\n
+  \  The whole world is afraid,\n   For the plans that they've laid.\n   Anything
+  wrong, they sing this song:\n   \"It's got to be a Communist Plot!\"\n   It's got
+  to be a Communist Plot, Com-rades!\n   Gotta be a Communist Plot!\n\n        They
+  decide without much thought:\n        \"It's got to be a Communist Plot!\"\n\n   Price
+  of stock, cost of beef,\n   We're the cause of their grief.\n   The U. S. is quite
+  a mess:\n   \"It's got to be a Communist Plot!\"\n   It's got to be a Communist
+  Plot, Com-rades!\n   Gotta be a Communist Plot!\n\n        When the Dow Jones starts
+  to drop:\n        \"It's got to be a Communist Plot!\"\n\n   Fire or flood, rain
+  or shine,\n   Whether foul, whether fine.\n   All the same we'll take the blame:\n
+  \  \"It's got to be a Communist Plot!\"\n   It's got to be a Communist Plot, Com-rades!\n
+  \  Gotta be a Communist Plot.\n\n        We make weather cold or hot:\n        \"It's
+  got to be a Communist Plot!\"\n\n   Never mind what the crime,\n   We're at fault
+  half the time.\n   Pravda too declares it's true:\n   \"It's got to be a Communist
+  Plot!\"\n   It's got to be a Communist Plot, Com-rades!\n   Gotta be a Communist
+  Plot!\n\n\nI:3 Page 7               FASS 1986            86/01/12-23:17\n\f\n\nI:3
+  \      It's My Party, And I'll Die If I Want To    Page 8\n\n        Children everywhere
+  are taught:\n        \"It's got to be a Communist Plot!\"\n\n\n78-WINTHROP:   Well,
+  \ Madam  and I are glad to have you with\n   us.  We don't often receive visitors
+  from  another  coun-\n   try.  Not for very long, at any rate...\n\n[S-9] (THUNDER)
+  \                                             S\n\n79-DIMITRI:   We  will  not  be
+  \ staying very long.  We tour\n   famous historical structures to compile  information
+  \ for\n   secret police.\n\n80-BORIS:  Nyet!\n\n81-DIMITRI:    Tourist   brochure.
+  \  Vladimir  is...official\n   photographer.\n\n8\b8\b82\b2\b2-V\bV\bVL\bL\bLA\bA\bAD\bD\bDI\bI\bIM\bM\bMI\bI\bIR\bR\bR
+  T\bT\bTE\bE\bEP\bP\bPE\bE\bES\bS\bS:  Say \"borscht\".\n\n(VLADIMIR STEPS UP AND
+  TAKES PICTURE OF  WINTHROP,  BLINDING\nHIM WITH FLASH)\n\n83-DIMITRI:   ...and  Natasha
+  is official historian and wine\n   critic.\n\n(NATASHA PRODUCES BOTTLE, TAKES SWIG
+  AND HICCUPS)\n\n84-WINTHROP:  What does Mr. Boris do?\n\n85-BORIS:  I am undercover
+  military advisor.\n\n86-DIMITRI:  Nyet!\n\n87-BORIS:  ...simple Lada repairman.\n\n(NATASHA
+  SPEAKS IN GIBBERISH TO DIMITRI)\n\n88-DIMITRI:  Natasha wants to know about history
+  of house.\n\n89-WINTHROP:  The original owner of this cheery mansion  was\n   Dr.
+  Henry Jekyll.\n\n[X-1]   (INDICATES  PORTRAIT.   THE  PORTRAIT  CHANGES  FROM X\nDR.JEKYLL
+  TO MR.HYDE)\n\n90-BILLY:  Wasn't there an inventor named Jekyll?\n\n91-WINTHROP:
+  \  That  would  be  Uncle  Cedric.    (INDICATES\n   PORTRAIT)  He invented the
+  heavier-than-air balloon.  His\n   first flight was a smashing success.\n\n92-DIMITRI:
+  \ Excuse us, comrades.   We  must  go  and  bring\n   transmitter.\n\n\nI:3 Page
+  8               FASS 1986            86/01/12-23:17\n\f\n\nI:3       It's My Party,
+  And I'll Die If I Want To    Page 9\n\n93-BORIS:  Nyet!\n\n94-DIMITRI:  Luggage.\n\n(EXIT
+  ALL COMMUNISTS)\n\n95-WINTHROP:  I'll prepare some rooms.\n\n(HE LAYS OUT A NEWSPAPER
+  AND EYES BILLY AND SUSIE)\n\n   I trust you're paper trained?\n\n(EXIT  WINTHROP.
+  \  ENTER  MASTER,  ACOLYTE  DEXTER,  ACOLYTE\nSINISTER, MEIOSIS, MITOSIS, OSMOSIS,
+  AND  GRASSHOPPER.   ALL\nWEAR TOGA-LIKE ROBES)\n\n9\b9\b96\b6\b6-M\bM\bMA\bA\bAS\bS\bST\bT\bTE\bE\bER\bR\bR:
+  \ 664, 665, 666.  Aha!  Moon Units!\n\n(MOON UNITS RESPOND, CLUSTER IN, ETC)\n\n
+  \  You  have  read the prophecies: now is the time foretold;\n   here is the place
+  foretold.   We  need  but  perform  the\n   rituals and we'll all become filthy
+  stinking rich.\n\n9\b9\b97\b7\b7-M\bM\bMO\bO\bOO\bO\bON\bN\bN U\bU\bUN\bN\bNI\bI\bIT\bT\bTS\bS\bS:
+  \  (AS  IF  FINGERING  MONEY) Praise be to the\n   profit.\n\n9\b9\b98\b8\b8-A\bA\bAC\bC\bCO\bO\bOL\bL\bLY\bY\bYT\bT\bTE\bE\bE
+  S\bS\bSI\bI\bIN\bN\bNI\bI\bIS\bS\bST\bT\bTE\bE\bER\bR\bR:  Look, Master!  More converts!\n\n99-MASTER:
+  \ (TO BILLY AND SUSIE) Where are your parents?\n\n100-SUSIE:  Out getting the luggage.\n\n101-MASTER:
+  \ Abandoned.  Come, we can give you the love  and\n   attention you've been lacking.
+  \ Stare into my eyes.\n\n(THEY STARE INTO HIS EYES AND ARE HYPNOTIZED)\n\n102-MASTER:
+  \ You are loved.\n\n1\b1\b10\b0\b03\b3\b3-B\bB\bBI\bI\bIL\bL\bLL\bL\bLY\bY\bY A\bA\bAN\bN\bND\bD\bD
+  S\bS\bSU\bU\bUS\bS\bSI\bI\bIE\bE\bE:  We are loved.\n\n104-MASTER:  You are part
+  of the fold.\n\n(BILLY AND SUSIE BLEAT LIKE SHEEP)\n\n105-MASTER:  (TURNING TO HIS
+  LEFT) Acolyte Sinister?\n\n106-SINISTER:  (ON MASTER'S RIGHT) Yes Master?\n\n107-MASTER:
+  \  (DOUBLE-TAKING)  Place  the  candles.  Acolyte\n   Dexter, produce the Great
+  Ledger.   Grasshopper,  prepare\n   the mystic pentagram.  Children, why don't you
+  two go lie\n   under that sharp knife?\n\n\n\nI:3 Page 9               FASS 1986
+  \           86/01/12-23:17\n\f\n\nI:3       It's My Party, And I'll Die If I Want
+  To   Page 10\n\n(WINTHROP ENTERS, SEES CHILDREN UNDER KNIFE)\n\n108-WINTHROP:  Excuse
+  me; do carry on.\n\n(HE EXITS)\n\n109-MASTER:  Moon Units, begin the chant!\n\n(UNDER
+  \ THE  DIRECTION OF SINISTER, GRASSHOPPER USES MASKING\nTAPE TO LAY OUT WHAT HE
+  THINKS IS A PENTAGRAM BUT IS  REALLY\nA  PENTAGON  WITH LINES EXTENDING FROM EACH
+  OF THE POINTS TO\nTHE CENTER.  THEY ALSO PLACE CANDLES AT EACH  POINT  OF  THE\nPENTAGON.
+  \ ACOLYTE DEXTER GIVES THE BOOK TO THE MASTER.  THE\nMASTER OPENS IT AND BEGINS
+  TO READ)\n\n   In the beginning, the books were balanced.\n\n1\b1\b11\b1\b10\b0\b0-M\bM\bMO\bO\bOO\bO\bON\bN\bN-U\bU\bUN\bN\bNI\bI\bIT\bT\bTS\bS\bS:
+  \ (STILL PRODUCING THE PENTAGON AND  CHANTING\n   UNDERNEATH MASTER)\n         O
+  Money Padme Hum.\n         Buy low, sell high.\n         Supply side, trickle down.\n
+  \        A is A, Either/Or.\n         Breath mint, candy mint.\n         Tastes
+  great, less filling.\n         Gum gum, flavour flavour.\n\n111-MASTER:  Then unto
+  the world came the altruistic collec-\n   tivists.    They   introduced   hyperinflation,
+  \ currency\n   speculation and the government deficit.\n\n[X-2] (WEIRD MUSIC AND
+  LIGHTING EFFECTS BEGIN)               X\n\n   The time has come for the strong  to
+  \ inherit.   Let  the\n   demon rise.  Demonus Vene, Beelzebub!\n\n[L-2]  (LIGHTS
+  \ FOCUS  ON  THE  GEOMETRIC  SHAPE,  WHICH  IS L\nOBVIOUSLY THE LOGO FOR CHRYSLER)\n\n\x01\x021\b1\b11\b1\b12\b2\b2-A\bA\bAC\bC\bCO\bO\bOL\bL\bLY\bY\bYT\bT\bTE\bE\bE
+  D\bD\bDE\bE\bEX\bX\bXT\bT\bTE\bE\bER\bR\bR:  Wait, Master!  That's _\bn_\bo_\bt
+  a pentagram!\n\n113-MASTER:  Grasshopper, you idiot!\n\n[X-3] (EXTREMELY MIND-BOGGLING
+  PYROTECHNIC DISPLAY.  A  USED X\nCAR  SALESMAN  WEARING  DEMON HORNS APPEARS IN
+  THE CENTRE OF\nTHE PENTAGON)\n\n1\b1\b11\b1\b14\b4\b4-S\bS\bSA\bA\bAL\bL\bLE\bE\bES\bS\bSM\bM\bMA\bA\bAN\bN\bN:
+  \ Anybody wanna buy a Chrysler?\n\n(CULTISTS SCREAM IN HORROR)\n\n115-MASTER:  Do
+  something!\n\n116-DEXTER:  Radials or white-walls?\n\n\n\nI:3 Page 10              FASS
+  1986            86/01/12-23:17\n\f\n\nI:3       It's My Party, And I'll Die If I
+  Want To   Page 11\n\n117-MASTER:  Sinister, consult the Great Ledger!\n\n(ACOLYTE
+  \ SINISTER  FRANTICALLY BEGINS SEARCHING THROUGH THE\nBOOK.  RE-ENTER RHETT AND
+  SCARLETT)\n\n118-SCARLETT:  Look, dear, the children have made  some  new\n   friends.\n\n119-SALESMAN:
+  \  Well  look, I say, lookit what we have here,\n   Mr. and Mrs. America.  Come
+  on  over  and  let's  have  a\n   chit-chat.  What kind of car do you drive, son?\n\n120-RHETT:
+  \ A Mazda sedan.\n\n121-SALESMAN:   A  Mazda!  Listen here, boy.  Status, I say,\n
+  \  status is proportional to gas consumption.  Pay attention\n   when  I'm  talking
+  to you, son.  Nice kid but his brain's\n   only firing  on  three  cylinders.   Haven't
+  \ you  always\n   wanted to own a Chrysler?\n\n122-RHETT:  Aren't they expensive?\n\n123-SALESMAN:
+  \  Expensive, he says!  Boy's got the mind of a\n   beetle, VW that is.  That's
+  a joke,  son.   I  will  give\n   you, I say, _\bg_\bi_\bv_\be you a brand new Cordoba
+  free.\n\n124-SCARLETT:  Free?\n\n125-SALESMAN:   My  mouth  is  talking  but your
+  ears aren't\n   listening.  Free I say, and all you gotta do is trade  in\n   your
+  soul.\n\n126-RHETT:  My soul?\n\n127-SALESMAN:   You  auditionin'  for  an echo,
+  son?  I want\n   your soul.  What, I say, what are you using it  for  any-\n   way?
+  \ You only use it on Sundays.\n\n128-SINISTER:   (TO  OTHER CULTISTS) I've found
+  it -- in the\n   section on Repossession.  Look!\n\n(MASTER TAKES BOOK)\n\n129-MASTER:
+  \ We'll need everyone's  help.   Join  hands  and\n   repeat after me.\n\n130-SALESMAN:
+  \  (TO  RHETT)  Look  at me when I'm talking at\n   you, son, this is for your own
+  good.  Never mind, I  say,\n   never  mind  those people, they're just setting up
+  for an\n   exorcism.  (DOUBLE TAKE) Exorcism?\n\n131-MASTER:  Moon Units, zap 'em!\n\n1\b1\b13\b3\b32\b2\b2-A\bA\bAL\bL\bLL\bL\bL
+  C\bC\bCU\bU\bUL\bL\bLT\bT\bTI\bI\bIS\bS\bST\bT\bTS\bS\bS:  (ADVANCING MENACINGLY
+  ON SALESMAN)\n         You've got it, Pontiac.\n         Way to go, Chevy.\n\nI:3
+  Page 11              FASS 1986            86/01/12-23:17\n\f\n\nI:3       It's My
+  Party, And I'll Die If I Want To   Page 12\n\n         All you really need is a
+  Datsun.\n         Oh what a feeling, Toyota!\n\n[X-4] (ALL JUMP.  SALESMAN SCREAMS
+  IN UTTER TERROR.  ANOTHER X\nIMPRESSIVE  PYROTECHNIC  DISPLAY.  SALESMAN DISAPPEARS.
+  \ ALL\nFALL OVER.  ENTER RUSSIANS,  WEARING  OKTOBERFEST  HATS  AND\nCARRYING A
+  SUITCASE WITH ANTENNAE STICKING OUT)\n\n133-DIMITRI:   Decadent  capitalist  swine
+  \ lying  about  in\n   drunken stupor!\n\n1\b1\b13\b3\b34\b4\b4-N\bN\bNA\bA\bAT\bT\bTA\bA\bAS\bS\bSH\bH\bHA\bA\bA
+  P\bP\bPA\bA\bAV\bV\bVL\bL\bLO\bO\bOV\bV\bVA\bA\bAN\bN\bNO\bO\bOV\bV\bVA\bA\bA:  Party
+  time!\n\n\x01\x111\b1\b13\b3\b35\b5\b5-A\bA\bAL\bL\bLL\bL\bL O\bO\bOT\bT\bTH\bH\bHE\bE\bER\bR\bR
+  C\bC\bCO\bO\bOM\bM\bMM\bM\bMU\bU\bUN\bN\bNI\bI\bIS\bS\bST\bT\bTS\bS\bS:  Zicke zacke,
+  \ zicke  zacke,  hoi,\n   hoi, hoi!\n\n(ENTER  WINTHROP,  PUSHING  WHEELCHAIR  CONTAINING
+  MADAM WHO\nWEARS A BLACK VEIL)\n\n136-WINTHROP:  Ah, candles!  How kind  of  you
+  \ to  remember\n   it's Madam's birthday!\n\n1\b1\b13\b3\b37\b7\b7-E\bE\bEV\bV\bVE\bE\bER\bR\bRY\bY\bYO\bO\bON\bN\bNE\bE\bE:
+  \ (WITH WINTHROP LEADING AND CONDUCTING)\n         Happy birthday to you!\n         Happy
+  birthday to you!\n         Happy birthday, dear...\n      WINTHROP:\n         Harriet.\n
+  \     ALL:\n         Harriet!\n         Happy birthday to you!\n\n[S-10]  (SONG
+  \ ENDS ON MINOR CHORD.  WINTHROP LIFTS THE VEIL S\nAS ANOTHER THUNDERCLAP IS HEARD.
+  \ MADAM IS  OBVIOUSLY  VERY,\nVERY  DEAD.   HER  FACE IS BLUE, HER TONGUE IS STICKING
+  OUT,\nHER EYES ARE WIDE  OPEN  AND  DRIPPING  BLOOD  (I.E.,  TOTAL\nGROSSOUT).   EVERYONE
+  EXCEPT WINTHROP SCREAMS IN TERROR AS A\nDRAMATIC CHORD IS PLAYED)\n\n[L-3] (LIGHTS
+  DOWN)                                          L\n\n                          -
+  fin -\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI:3 Page 12              FASS 1986            86/01/12-23:17\n\f\n"
+:shard_number: 2
+:shard_name: '1.3'
+:shard_time: 1986-01-12 23:19:26.000000000 -05:00
+:shard_blocks: 81
+:shard_start: 7404
+:shard_size: 5244

@@ -1,0 +1,95 @@
+---
+:identifier: Bun
+:block_count: 1
+:block_padding_repairs: 0
+:catalog_time: 1985-12-20 00:00:00.000000000 -05:00
+:decode_time: 2014-02-21 20:30:30.933449000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/improved_file_naming:b6c0fc87028dd69445f9dd232dbaba432c382bd5]
+:description: ''
+:digest: 933bbce6ba58033612c15b590acc5705
+:first_block_size: 2255
+:format: :decoded
+:llink_count: 2
+:owner: jagardner
+:path: jagardner/DOTDOT/fassmac.t
+:tape: ar126.0345
+:tape_size: 2256
+:text_size: 6369
+:type: :text
+:unpack_time: 2014-02-21 20:12:30.654690000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/improved_file_naming:b6c0fc87028dd69445f9dd232dbaba432c382bd5]
+:content: ! ".ic ^^\n.tr ~\n.hc `\n.qc \"\n.pc @\n.fs '____________________'''\n.pl
+  66\n.pw 68\n.nd 1\n.in 0\n.po 0\n.ll 60\n.ls 1\n.m1 4\n.m2 2\n.m3 2\n.m4 2\n.hy
+  3\n.fi\n.ju\n.id skip_all_macros skip_all_macros\n.an skip_all_macros +1\n.ic %%\n.ze
+  >>> Macro package used more than once.  Use #%(skip_all_macros) ignored. <<<\n.ic
+  ^^\n.el skip_all_macros\n.an skip_all_macros 1\n.ze >>> Writers Macros. Use correct
+  o= value for slis, otherwise klist <<<\n.zz The production is the organization doing
+  the script.\n.at production\nFASS 1986\n.en production\n.zz The title is the title
+  of the script.\n.at title\nMystery\n.en title\n.af mon 01\n.af day 01\n.af min 01\n.af
+  hour 01\n.zz -- Print a warning message with act and scene number\n.at warning\n.ze
+  *** WARNING ^^(actr):^^(scen) -- @1\n.en warning\n.at squeeze_line\n.sq\n.sp\n.en
+  squeeze_line\n.zz -- reset to normal\n.at ex\n^(squeeze_line)\n.fi\n.in 3\n.ne 2\n.en
+  ex\n.zz -- actor direction\n.at ad\n^(ex)\n.in 0\n.en ad\n.zz -- Define a character
+  abbreviation for use by .ch\n.at define_name\n.an chars_defined +1\n.an @1_number
+  0^^(chars_defined)\n.an @1_speechcount 0\n.an @1_firstspeech 0\n.at @1_longname\n@2\n.en
+  (@1_longname)\n.at @1_shortname\n@3\n.en (@1_shortname)\n.dn 1 divert\n.if ^^^^(@1_speechcount)=0
+  defined\n\t^^(@1_number).\t<@1>\t^^(@1_longname)~\t\t~--NO~LINES--~~~~\n.warning
+  \"^^(@1_longname) <@1> has no speeches in this scene\"\n.el defined\n\t^^(@1_number).\t<@1>\t^^(@1_longname)~\t~^^^^(@1_speechcount)~\t~^@^^^^(@1_firstspeech)\n.en
+  defined\n.en divert\n.en define_name\n.zz -- Define a character abbreviation and
+  print a cast of characters\n.at na\n.mg\n                 . . . . . . . . . . .
+  . . . . . . .\n.if \"@2\"<1 endif2\n.warning \"'.na @1' needs long and short character
+  names\"\n.define_name \"@1\" \"<@1>--UNDEFINED\" \"<@1>\"\n\t^^(@1_number).\t<@1>\t--NO~LONG~NAME--~\t~(--NO~SHORT~NAME--)\n.el
+  endif2\n.if \"@3\"<1 endif3\n.warning \"'.na @1' needs a third argument (short name)\"\n.define_name
+  \"@1\" \"@2\" \"@2\"\n\t^^(@1_number).\t<@1>\t^^(@1_longname)~\t~(--NO~SHORT~NAME--)\n.el
+  endif3\n.define_name \"@1\" \"@2\" \"@3\"\n\t^^(@1_number).\t<@1>\t^^(@1_longname)~\t~(^^(@1_shortname))\n.en
+  endif3\n.en endif2\n.mg\n\n.zz\n.en na\n.zz -- one-use character macro\n.at xx\n.an
+  ##_speechcount 0\n.at ##_number\n.en ##_number\n.at ##_longname\n@1\n.en ##_longname\n.at
+  ##_shortname\n__________'##'\n.en ##_shortname\n.ch ##\n.an chars_used -1\n.en xx\n.at
+  star\n************************************************************\n.en star\n.zz
+  -- song begin\n.at sb\n^(ex)\n.if \"@1\">48 sb_endif\n.warning \"Title of song is
+  more than 48 characters wide\"\n.warning \"Title: '@1'\"\n.en sb_endif\n.if \"@2\">48
+  sb_endif\n.warning \"Title of tune is more than 48 characters wide\"\n.warning \"Title:
+  '@2'\"\n.en sb_endif\n.an song_count +1\n.in 0\n.nf\n.ne 12\n^(star)\n.mg\n*****
+  \                                                 *****\n.ce 3\n~@1~\n~to~the~tune~of~\n~@2~\n.mg\n\n^(star)\n.sp\n.in
+  3\n.en sb\n.zz -- verse separator\n.at ve\n^(ex)\n.nf\n.ne @1 5\n.en ve\n.zz --
+  song end\n.at se\n.warning \".se macro is obsolete.  Use .ex or nothing.\"\n.ex\n.en
+  se\n.zz -- begin a scene\n.at bs\n.pa 1\n.an speech_count 0\n.an chars_defined 0\n.an
+  chars_used 0\n.an song_count 0\n.an light_count 0\n.an prop_count 0\n.an sound_count
+  0\n.an sfx_count 0\n.zz -- Divert list of character names defined to this file.\n.fa
+  1 *defined\n.fa 2 *props\n.an act @1\n.an actr @1\n.af actr II\n.an scen @2\n.ze
+  >>> Now formatting Act ^^(actr) Scene ^^(scen): @3 <<<\n.he \"^^(actr):^^(scen)\"^(title)\"Page
+  %\"\n.fo \"^^(actr):^^(scen) Page %\"^(production)\"^(year)/^(mon)/^(day)-^(hour):^(min)\"\n.sp\n.ce\n.bf\n@3\n.sp
+  2\n.he \"^^(actr):^^(scen)\"@3\"Page %\"\n.bf\nCharacters defined for this scene:\n.sp\n.nf\n.ta
+  3 R +3 +2 L +8 L R 57\n.en bs\n.zz -- end a scene\n.at es\n.zz -- Close diverted
+  list of character names for use later.\n.cl 1\n.cl 2\n.m3 1\n.m4 0\n.sp\n.in 0\n.ce\n-~fin~-\n.br\n.m3
+  2\n.m4 2\n.an save_page ^^(%)\n.pa 0\n.in 0\n.sp 2\n.bf\n.ce\nStatistics: Act ^^(actr)
+  Scene ^^(scen) --- ^(year)/^(mon)/^(day)-^(hour):^(min)\n.sp\n.fi\nList of characters,
+  with total number of speeches and line number of\nfirst speech:\n.sp\n.nf\n.ta 3
+  R +3 +2 L +8 L R 51 R 57\n.mg\n                . . . . . . . . . . . . . . .\n.so
+  *defined\n.mg\n\n.sp\n.ta 4 L C R 57\n\t======================================================\n\t===\tCharacters
+  Defined/Used: ^^(chars_defined) / ^^(chars_used)\t===\n\t======================================================\n\t===
+  \ Total Speeches: ^^(speech_count)\t\tScript Pages: ^^(save_page)  ===\n\t===  Sound
+  Cues: ^^(sound_count)\tLight Cues: ^^(light_count)\tSongs: ^^(song_count)  ===\n\t===
+  \ Special Effects: ^^(sfx_count)\t\tProps: ^^(prop_count)  ===\n\t======================================================\n.mg\n
+  \  ===                                                ===\n.in 8\n.ll -8\n.fi\n.so
+  *props\n.br\n.in 0\n.mg\n\n.nf\n\t======================================================\n.if
+  ^^(light_count)<2 es_endif\n.warning \"Too few light directions.  Minimum is two,
+  ^^(light_count) used.\"\n.sp\n*** WARNING: Too few lighting directions.  Need at
+  least two.\n.en es_endif\n.ze >>> Pages=^^(save_page) Speeches=^^(speech_count)
+  Characters=^^(chars_used) Songs=^^(song_count) Sound=^^(sound_count) Light=^^(light_count)
+  <<<\n.ze >>> Special Effects=^^(sfx_count) Props=^^(prop_count) <<<\n.en es\n.zz
+  -- end a scene\n.at fini\n.warning \"FINI macro is obsolete.  Use .es\"\n.es\n.en
+  fini\n.zz -- character macro\n.at ch\n.id @1_longname ch_endid\n^(ex)\n.ti 0\n.an
+  speech_count +1\n.an @1_speechcount +1\n.if ^^(@1_speechcount)=1 ch_endif\n.bf\n.uc\n^^(speech_count)-^^(@1_longname)(1):\n.nc\n.an
+  @1_firstspeech ^^(speech_count)\n.an chars_used +1\n.el ch_endif\n.uc\n^^(speech_count)-^^(@1_shortname)(^^(@1_speechcount)):\n.nc\n.en
+  ch_endif\n.el ch_endid\n.warning \"'.ch @1' abbreviation used but not defined by
+  .na\"\n.warning \"at speech ^^(speech_count).  Temporary definition created.\"\n.define_name
+  \"@1\" \"<@1>--TEMPORARY\" \"<@1>\"\n.ch @1\n.en ch_endid\n.en ch\n.zz -- sound
+  direction\n.at sd\n^(ad)\n.an sound_count +1\n[S-^^(sound_count)]\n.zz TECH: .no
+  [S-^^(sound_count)]\n.no S\n.en sd\n.zz -- lighting direction\n.at ld\n^(ad)\n.an
+  light_count +1\n[L-^^(light_count)]\n.zz TECH: .no [L-^^(light_count)]\n.no L\n.en
+  ld\n.zz -- special effects direction\n.at sfx\n^(ad)\n.an sfx_count +1\n[X-^^(sfx_count)]\n.zz
+  TEXT: .no [X-^^(sfx_count)]\n.no X\n.en sfx\n.zz -- Props macro (invisible)\n.at
+  (prip)\n.an prop_count +1\n.dn 2 divert\n@1\n.en divert\n.en (prip)\n.zz -- Props
+  macro (visible)\n.at (prop)\n.prip \"@1\"\n@1\n.en (prop)\n.zz -- Turn off parameter
+  character.\n.pc\n.zz -- Skip to here if macro package already defined.\n.en skip_all_macros\n"

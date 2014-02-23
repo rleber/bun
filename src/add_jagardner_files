@@ -1,0 +1,6 @@
+cp ~/fass_work/compressed/bdparsons/fass/1986.f/1.1  data/test_init/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar999.9999_20140101
+cp ~/fass_work/compressed/bdparsons/fass/1986.f/1.1b data/test_init/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar999.9999_20140102
+cp ~/fass_work/compressed/bdparsons/fass/1986.f/1.2  data/test_init/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar999.9999_20140103
+cp ~/fass_work/compressed/bdparsons/fass/1986.f/1.2b data/test_init/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar999.9999_20140104
+cp ~/fass_work/compressed/bdparsons/fass/1986.f/1.3  data/test_init/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar999.9999_20140105
+cp ~/fass_work/compressed/bdparsons/fass/1986.f/1.3b data/test_init/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar999.9999_20140106

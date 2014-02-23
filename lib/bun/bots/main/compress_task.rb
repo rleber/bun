@@ -14,8 +14,8 @@ Removes files in an archive which have identical content, and compresses directo
 path/to/file_<DATETIME>/tape... to path/to/file, provided there's only one tape.
 
 If the compression of tapes described above results in more than one version of the target file,
-then they are named path/to/file.v1, path/to/file.v2, etc. (If the file has an extension -- usually
-.txt -- this is appended after the "v1", etc.)
+then they are named path/to/file.V1, path/to/file.V2, etc. (If the file has an extension, this is
+appended after the "v1", etc.)
 
 The --delete parameter controls what files are flagged as duplicates, and how they are handled. 
 With --delete, ALL files with duplicate content are deleted, except for the oldest one, regardless

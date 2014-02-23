@@ -1,0 +1,267 @@
+---
+:identifier: Bun
+:block_count: 16
+:block_padding_repairs: 15
+:catalog_time: 1986-03-18 00:00:00.000000000 -05:00
+:decode_time: 2014-02-22 11:05:45.074449000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/improved_file_naming:dd12bbc7313b349045e232bb30662042d631a0b3]
+:description: ''
+:digest: 41830266b4136f81773b0686b04fadb0
+:first_block_size: 3855
+:format: :decoded
+:owner: bdparsons
+:path: bdparsons/fass/1986.f
+:tape: ar120.1521
+:tape_size: 60114
+:text_size: 19938
+:time: 1986-01-14 16:34:15.000000000 -05:00
+:type: :frozen
+:unpack_time: 2014-02-22 10:45:24.556991000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/improved_file_naming:dd12bbc7313b349045e232bb30662042d631a0b3]
+:content: ! "\n\nI:1                    The Screamplay                 Page 1\n\n\n
+  \                       C\bC\bCl\bl\bla\ba\bas\bs\bss\bs\bs C\bC\bCu\bu\but\bt\bt-U\bU\bUp\bp\bp\n\n\n\x01\x17C\bC\bCh\bh\bha\ba\bar\br\bra\ba\bac\bc\bct\bt\bte\be\ber\br\brs\bs\bs
+  d\bd\bde\be\bef\bf\bfi\bi\bin\bn\bne\be\bed\bd\bd f\bf\bfo\bo\bor\br\br t\bt\bth\bh\bhi\bi\bis\bs\bs
+  s\bs\bsc\bc\bce\be\ben\bn\bne\be\be:\n\n    1. <bu>    MR.BURKE  . . . . . . . .
+  . . . (MR.BURKE)\n    2. <ca>    CARRIE DAWAY  . . . . . . . . . . (CARRIE)\n    3.
+  <ch>    CHRISTINE CHAPEL  . . . . . .  (CHRISTINE)\n    4. <cu>    MR.CUJO . . .
+  . . . . . . . . .  (MR.CUJO)\n    5. <ha>    MR.HARE . . . . . . . . . . . .  (MR.HARE)\n
+  \   6. <ja>    JASON SANBORNE  . . . . . . . . .  (JASON)\n    7. <jw>    JAWS THREEDEE
+  . . . . . . . . . . . (JAWS)\n    8. <li>    LIONEL TWAIN  . . . . . . . . . . (LIONEL)\n
+  \   9. <no>    NORMAN GREEN  . . . . . . . . . . (NORMAN)\n   10. <sw>    SWEENEY
+  MEENY-MINEY-MO  . . . .  (SWEENEY)\n   11. <wi>    WILLARD FILLMORE  . . . . . .
+  .  (WILLARD)\n\n[S-1]  (WILDERNESS  NIGHT  SOUNDS -- CRICKETS.  THE SET IS A S\nGRAVEYARD;
+  THE TRAP DOOR IS AN OPEN  GRAVE.   THE  STAGE  IS\nTOTALLY BLACK)\n\n[L-1]  (SUDDENLY,
+  \ A CAMPFIRE IS LIT.  JASON IS LIGHTING THE L\nFIRE WHILE WILLARD AND CHRISTINE
+  WATCH.  THEY HAVE PACKS AND\nSOME GEAR)\n\n1\b1\b1-J\bJ\bJA\bA\bAS\bS\bSO\bO\bON\bN\bN
+  S\bS\bSA\bA\bAN\bN\bNB\bB\bBO\bO\bOR\bR\bRN\bN\bNE\bE\bE:  It's lit.\n\n2\b2\b2-W\bW\bWI\bI\bIL\bL\bLL\bL\bLA\bA\bAR\bR\bRD\bD\bD
+  F\bF\bFI\bI\bIL\bL\bLL\bL\bLM\bM\bMO\bO\bOR\bR\bRE\bE\bE:  Nobody even breathe.\n\n3\b3\b3-C\bC\bCH\bH\bHR\bR\bRI\bI\bIS\bS\bST\bT\bTI\bI\bIN\bN\bNE\bE\bE
+  C\bC\bCH\bH\bHA\bA\bAP\bP\bPE\bE\bEL\bL\bL:    This   wilderness   weekend   is
+  \ the\n   stupidest idea since New Coke.\n\n4-JASON:  Oh  Christine,  you'll  have
+  \ fun  once  we  start\n   toasting  marshmallows.  Where are the marshmallows,
+  Wil-\n   lard?\n\n5-WILLARD:  Well Jason, that's the funniest thing...\n\n6-CHRISTINE:
+  \ Mr.Junior Achievement forgot the marshmallows.\n\n7-WILLARD:  I was standing in
+  line at the grocery store with\n   a  bag  of marshmallows right in my hand...and
+  there were\n   these little  packages  of  Tender  Vittles  outrageously\n   cheap
+  \ beside the check-out...and as God is my witness, I\n   heard a voice say, \"Buy
+  now  before  the  market  catches\n   on.\"\n\n(HE PRODUCES A BAG OF TENDER VITTLES)\n\n8-CHRISTINE:
+  \ You bought cat food instead of marshmallows?\n\n9-JASON:   (EXAMINING  VITTLES)
+  Maybe they'd be good toasted\n   over the fire.\n\n\n\nI:1 Page 1               FASS
+  1986            86/01/12-23:04\n\f\n\nI:1                     Class Cut-Up                  Page
+  2\n\n[S-2] (THUNDER)                                              S\n\n10-CHRISTINE:
+  \  Oh great, now it's going to rain and put out\n   the fire.\n\n11-WILLARD:  Don't
+  worry, Christine, I'll  protect  it  with\n   your body.\n\n12-JASON:   Come  on,
+  you two, what will it look like if the\n   others find us fighting?\n\n13-CHRISTINE:
+  \ Normal.\n\n14-JASON:  Why don't we sing a campfire  song  to  lift  our\n   spirits?\n\n15-CHRISTINE:
+  \  Why  don't  we  jam  pine needles under your\n   fingernails?\n\n16-JASON:  Come
+  on, guys.  It'll be fun!\n\n(JASON STARTS  SINGING  AND  THE  OTHERS  FOLLOW,  NATURALLY\nCREATING
+  A ROUND.  CAST MEMBERS COME DOWN INTO THE AISLES TO\nJOIN IN)\n\n************************************************************\n*****
+  \                 FIRE'S BURNING                  *****\n*****                 (to
+  the tune of:)                *****\n*****                  FIRE'S BURNING                  *****\n************************************************************\n\n
+  \  JASON:\n       Fire's burning, fire's burning,\n       Draw nearer, draw nearer,\n
+  \      In the gloaming, in the gloaming,\n       Come sing and be merry.\n\n(CAST
+  DISAPPEARS IN SPOOKY ENDING OF  SONG.   IN  THE  DARK,\nSWEENEY  SNEAKS  UP ON THE
+  OTHERS.  SUDDENLY, SHE LEAPS INTO\nTHE MIDDLE OF THE GROUP AND YELLS.  CHRISTINE
+  SCREAMS)\n\n17-CHRISTINE:  Sweeney!  What'd you do that for?\n\n\x01\x111\b1\b18\b8\b8-S\bS\bSW\bW\bWE\bE\bEE\bE\bEN\bN\bNE\bE\bEY\bY\bY
+  M\bM\bME\bE\bEE\bE\bEN\bN\bNY\bY\bY-M\bM\bMI\bI\bIN\bN\bNE\bE\bEY\bY\bY-M\bM\bMO\bO\bO:
+  \  Kicks.   How's   the   survival\n   weekend so far?\n\n19-WILLARD:  I want to
+  go home.\n\n20-CHRISTINE:  Me too.\n\n21-WILLARD:  Really?\n\n22-CHRISTINE:  Yes,
+  I want you to go home.\n\n23-JASON:  (TO SWEENEY) Where are the others?\n\n\nI:1
+  Page 2               FASS 1986            86/01/12-23:04\n\f\n\nI:1                     Class
+  Cut-Up                  Page 3\n\n(CUJO  ENTERS, DRILLING NORMAN, CARRIE, AND JAWS
+  ON THE RUN.\nJAWS IS  EXHAUSTED,  CARRIE  TRIPS  A  LOT,  AND  NORMAN  IS\nCLUTCHING
+  HIS TEDDY BEAR, LIONEL)\n\n2\b2\b24\b4\b4-M\bM\bMR\bR\bR.C\bC\bCU\bU\bUJ\bJ\bJO\bO\bO:
+  \  Left,  right, left, right, left, right, right,\n   right...\n\n(TEEN-AGERS STUMBLE
+  IN AN EFFORT TO GET CORRECT FEET)\n\n   Let that be a lesson to you all.  The first
+  rule of  sur-\n   vival  is  \"Always  expect  the  unexpected.\" Jason, your\n
+  \  report.\n\n25-JASON:  It's dark and it's going to rain.\n\n26-MR.CUJO:  So, you
+  fell for _\bt_\bh_\ba_\bt, did you?  I checked with\n   Environment Canada this
+  afternoon, and they say it's four\n   o'clock and sunny.\n\n27-SWEENEY:  What's
+  this dark then, an eclipse?\n\n28-MR.CUJO:  Are you trying to  insinuate  something,
+  \ punk?\n   Like maybe I need glasses?  Like maybe I'm really a four-\n   eyes wimp
+  whose mother locked him in the closet to  prove\n   there  were  no  monsters?   Or
+  maybe I'm a bedwetter, is\n   that what you're trying to say?\n\n29-SWEENEY:  Not
+  bad, but you left  out  gun-toting  redneck\n   sociopath.\n\n30-MR.CUJO:   Your
+  \ kind  makes  me  puke.  Look at you all.\n   Soft.   Pampered.   Babies.   Blind
+  \ to  the  dangers  of\n   hyperinflation and economic collapse.\n\n(HE STUMBLES
+  INTO A GRAVE MARKER AND IMMEDIATELY EMPTIES THE\nCLIP OF HIS PISTOL INTO THE CROSS)\n\n31-CHRISTINE:
+  \ Mr.Cujo, what are you doing?\n\n32-MR.CUJO:  Pre-emptive self-defense.  Survival
+  rule number\n   two:  _\bT_\bh_\be_\by are everywhere.\n\n[S-3] (BULLFROG CROAKING)
+  \                                   S\n\n   Hit the dirt!\n\n(HE EMPTIES HIS CLIP
+  (AGAIN) INTO THE NIGHT)\n\n   Stick that up your Canada Pension Plan!\n\n3\b3\b33\b3\b3-N\bN\bNO\bO\bOR\bR\bRM\bM\bMA\bA\bAN\bN\bN
+  G\bG\bGR\bR\bRE\bE\bEE\bE\bEN\bN\bN:   (HOLDING  UP  HIS  TEDDY  BEAR)  Mr.Cujo,\n
+  \  Lionel has to go to the bathroom.\n\n34-MR.CUJO:  (SNAPPING TO ATTENTION) Who
+  said that?\n\n\n\nI:1 Page 3               FASS 1986            86/01/12-23:04\n\f\n\nI:1
+  \                    Class Cut-Up                  Page 4\n\n(HE  APPROACHES  NORMAN,
+  \ WHO  CRINGES  BEHIND LIONEL.  CUJO\nBUTTONHOLES LIONEL)\n\n   Was it you?  (PAUSE)
+  Too scared to talk, eh?  Won't  con-\n   fess  and take your punishment like a man.
+  \ (SNIFFING) Is\n   that quiche I smell on your breath?  Eating a  little  of\n
+  \  that old egg pie?\n\n(SUDDENLY,  HE GRABS THE BEAR BY THE SHOULDERS AND PULLS
+  HIM\nUP, NOSE TO NOSE)\n\n   Down on the ground and give me 20, mister.  Survival
+  rule\n   number seven: no pain, no gain.\n\n(HE THROWS DOWN THE BEAR, FACE DOWN)\n\n
+  \  One,  two,  three...   (TO NORMAN) You!  See that he does\n   them.  In the meantime,
+  the rest of us will get dinner.\n\n3\b3\b35\b5\b5-J\bJ\bJA\bA\bAW\bW\bWS\bS\bS T\bT\bTH\bH\bHR\bR\bRE\bE\bEE\bE\bED\bD\bDE\bE\bEE\bE\bE:
+  \ Great.  Who brought the food?\n\n(SILENCE.  CUJO LOOKS AROUND SLYLY)\n\n36-MR.CUJO:
+  \ We'll forage.  Follow me.\n\n[S-4] (OFF HE GOES INTO THE NIGHT.   AS  HE  DISAPPEARS,
+  \ WE S\nHEAR  THE  HOOT  OF AN OWL, THEN THE SOUNDS OF CUJO SHOOTING\nIT)\n\n   That's
+  what I think of your subsidized housing.\n\n37-NORMAN:   (TO  LIONEL)  Fourteen,
+  \ fifteen...    (WINKING\n   SLYLY) Okay Lionel, he's gone.  (HE PICKS LIONEL UP)\n\n3\b3\b38\b8\b8-C\bC\bCA\bA\bAR\bR\bRR\bR\bRI\bI\bIE\bE\bE
+  D\bD\bDA\bA\bAW\bW\bWA\bA\bAY\bY\bY:   Jaws,  if  you're  hungry, I brought some\n
+  \  food.\n\n(SHE BEGINS RUMMAGING IN HER KNAPSACK)\n\n39-WILLARD:  (TO JAWS) You're
+  not going to  take  food  from\n   The Jinx, are you?\n\n40-JAWS:  There's nothing
+  wrong with Carrie.\n\n(CARRIE  BEGINS TO HAND THINGS TO JAWS FROM KNAPSACK WITHOUT\nLOOKING)\n\n41-CARRIE:
+  \ Marshmallows...\n\n(THE BOTTOM OF THE BAG OPENS AND THE MARSHMALLOWS FALL OUT)\n\n
+  \  Chips...\n\n(JAWS DISCOVERS THAT THE BAG IS SQUASHED FLAT)\n\n\n\nI:1 Page 4
+  \              FASS 1986            86/01/12-23:04\n\f\n\nI:1                     Class
+  Cut-Up                  Page 5\n\n   Pop...\n\n(JAWS  OPEN  THE  [WELL-SHAKEN]  CAN
+  AND GETS A FACEFUL.  HE\nLICKS POP FROM HIS LIPS, POURS A LITTLE CHIP DUST  INTO
+  \ HIS\nMOUTH, AND EATS A MARSHMALLOW OFF THE GROUND)\n\n42-JAWS:  See, Willard,
+  no problem!\n\n[S-5]  (SHOT  FROM  OFFSTAGE.   A  DEAD  DUCK DROPS INTO THE S\nMIDDLE
+  OF THE GROUP.  CUJO REAPPEARS)\n\n43-MR.CUJO:  FREEZE!  Don't touch it, it might
+  be faking.\n\n(HE WALKS UP, SHOOTS THE DUCK SEVERAL MORE TIMES)\n\n   All right...chow
+  down!\n\n44-CHRISTINE:  I am _\bn_\bo_\bt going to eat that.\n\n45-SWEENEY:  No
+  way.\n\n46-WILLARD:  Me neither.\n\n47-JAWS:  I might.\n\n48-CHRISTINE:  Forget
+  it, Jaws; I'm going  to  the  car  and\n   then to Swiss Chalet.\n\n49-CARRIE:  McDonalds.\n\n50-JASON:
+  \ Harveys.\n\n51-NORMAN:  Burger King.\n\n52-MR.CUJO:   So...ganging  up  on  me.
+  \  Pulling _\bd_\be_\bm_\bo_\bc_\br_\ba_\bc_\by.\n   Trying to have it _\by_\bo_\bu_\br
+  way.  All right.  I'm a reasonable\n   man.  Wait here while I clear the trail.\n\n(HE
+  \ EXITS.   BRIEF SILENCE.  FOUR RAPID SHOTS OFFSTAGE.  HE\nREAPPEARS)\n\n   Sorry,
+  there's a problem with the car.  Four simultaneous\n   blow-outs.   Guess  those
+  \ steel-belted radials aren't so\n   tough after all.\n\n53-JAWS:  You mean we're
+  stranded?\n\n54-MR.CUJO:  Without hope of rescue.\n\n55-WILLARD:  I wouldn't say
+  that, sir.  We could always look\n   for a farmhouse...\n\n56-SWEENEY:  Or go back
+  to the road and flag down a car...\n\n57-JASON:  Or walk back to the last gas station...\n\n\nI:1
+  Page 5               FASS 1986            86/01/12-23:04\n\f\n\nI:1                     Class
+  Cut-Up                  Page 6\n\n[S-6] (COW MOOING)                                           S\n\n58-MR.CUJO:
+  \ Sh!  Wolves.\n\n(HE EXITS QUICKLY)\n\n59-CARRIE:  Well, I guess we're here for
+  the night.\n\n60-SWEENEY:  Who decided to camp in a graveyard?\n\n61-WILLARD:  Sweeney,
+  do you know how much they charge for a\n   regular campsite?  This place was a steal.\n\n62-CARRIE:
+  \ But a real campsite has electricity!\n\n[L-2] (LIGHTNING)                                            L\n\n
+  \  And running water!\n\n[S-7] (RAIN)                                                 S\n\n
+  \  And flush toilets!\n\n(ALL MOVE AWAY FROM CARRIE)\n\n63-NORMAN:  This could be
+  a good chance for  us  to  get  to\n   know  each  other.  I'm Norman Green, and
+  this is Lionel.\n   Say something, Lionel.\n\n6\b6\b64\b4\b4-L\bL\bLI\bI\bIO\bO\bON\bN\bNE\bE\bEL\bL\bL
+  T\bT\bTW\bW\bWA\bA\bAI\bI\bIN\bN\bN:  (FALSETTO) Don't be silly, Norman.   Teddy\n
+  \  bears can't talk.\n\n65-JAWS:  I wish I had more food.\n\n66-CHRISTINE:  I wish
+  you'd sit downwind.\n\n67-JASON:   Come  on,  guys, let's not squabble.  Let's just\n
+  \  warm ourselves by the fire and...I know, let's tell ghost\n   stories.\n\n68-JAWS:
+  \ In the middle of a graveyard?  Are you nuts?\n\n69-JASON:  It'll be fun!\n\n70-NORMAN:
+  \ Lionel has to go to the bathroom, guys.  (LIONEL\n   NODS) I'm not kidding.\n\n71-CARRIE:
+  \ (COVERING LIONEL'S MOUTH  WITH  HER  HAND)  Shh!\n   I've got a story.\n\n(SILENCE
+  DESCENDS)\n\n   My  sister had a friend who was a babysitter, right?  And\n   one
+  night she got this phone  call  from  this  guy,  who\n   didn't  say anything,
+  just heavy breathing, you know?  So\n   she hangs up on him.  A minute or  two  later,
+  \ he  calls\n\nI:1 Page 6               FASS 1986            86/01/12-23:04\n\f\n\nI:1
+  \                    Class Cut-Up                  Page 7\n\n   again  and this
+  time, he says he has a meat cleaver.  She\n   gets scared and hangs  up,  then  calls
+  \ the  cops.   The\n   police say they're going to trace the next call and she's\n
+  \  supposed to keep him talking.   So  about  half  an  hour\n   later,  he  calls
+  again.  And he's saying how he just got\n   out of prison, when suddenly the operator
+  breaks  in  and\n   says,  \"Get out of the house, he's on the upstairs exten-\n
+  \  sion!\" The girl goes running out the door and he's  after\n   her  with  this
+  \ big meat cleaver and he's getting closer\n   and closer...\n\n[L-3] (LIGHTNING
+  AND THUNDER.  CUJO  SUDDENLY  SLAMS  A  BIG L\nMEAT CLEAVER INTO A PIECE OF FIREWOOD
+  IN THEIR MIDST)\n\n72-MR.CUJO:  You'll need this to skin the duck.\n\n(HE DISAPPEARS
+  AGAIN.  SILENCE)\n\n73-NORMAN:   Lionel  doesn't  have  to  go  to  the bathroom\n
+  \  anymore.\n\n74-JAWS:  The scariest thing _\bI ever saw was  once  we  snuck\n
+  \  into the drive-in to see the Texas Chainsaw Massacre....\n\n[S-8] (CHAINSAW STARTS
+  UP OFFSTAGE)                          S\n\n75-CARRIE:  Is that you, Mr.Cujo?\n\n76-MR.CUJO:
+  \  (OFFSTAGE) Just cutting some more wood for the\n   fire.\n\n77-WILLARD:  Don't
+  you think a lot of noise will  give  away\n   your position?\n\n(SILENCE)\n\n78-MR.CUJO:
+  \ (QUIETLY) Right.\n\n79-SWEENEY:   I  have  a  story.  There's a guy and girl out\n
+  \  parking on a back road, and they hear on the  radio  that\n   some  maniac  has
+  \ escaped from an asylum and he's in the\n   neighbourhood.  He's called the Hook
+  'cause instead of  a\n   hand, he has this razor-sharp hook.  The girl wants to
+  go\n   home, but the guy says, \"Don't be  scared,  I'll  protect\n   you.\"  After
+  \ a while, they start necking until they hear\n   this branch break in the woods.
+  \ He  says  it's  probably\n   just  a raccoon or something, but she says she's
+  going to\n   scream if they don't leave right away.  The guy gets  mad\n   and just
+  guns the car out of there.  They get home and he\n   gets out to open the door for
+  \ her,  and  there,  hanging\n   from her door handle is this razor-sharp hook.\n\n[L-4]
+  \ (THUNDER  AND  LIGHTNING.  CUJO HAS REAPPEARED AGAIN. L\nTHE NEXT SPEECH IS DELIVERED
+  DOWNSTAGE OF THE CAMPFIRE  WITH\nHIS BACK TO THE KIDS SO THE AUDIENCE CAN SEE WHAT
+  HE'S DOING\nBUT THE KIDS CAN'T)\n\nI:1 Page 7               FASS 1986            86/01/12-23:04\n\f\n\nI:1
+  \                    Class Cut-Up                  Page 8\n\n80-MR.CUJO:   Survival
+  \ rule  number  13:  dead  men tell no\n   tales.  You kids need a little lesson.
+  \  First,  offense.\n   The  best  offense is a good defense and the best defense\n
+  \  is a good goalie.\n\n(HE DONS A \"JASON-STYLE\" GOALIE MASK)\n\n   Conversely,
+  the best defense is a good offense,  and  the\n   best offense is light, portable,
+  and razor-sharp.\n\n(HE ATTACHES A HOOK INTO THE END OF HIS ARM)\n\n81-JAWS:  Cut
+  it out, Mr.Cujo.\n\n82-MR.CUJO:  (TURNING ON THEM) My intention, exactly.\n\n(HE
+  LUNGES FOR WHOMEVER IS CLOSEST)\n\n83-WILLARD:  Put out the fire -- he won't be
+  able to see us.\n\n[L-5] (JASON PUTS OUT THE FIRE.  PITCH BLACK)                L\n\n84-MR.CUJO:
+  \ (IN DARK) I can still hear you.\n\n85-SWEENEY:  Everybody quiet!\n\n(LONG  SILENCE.
+  \  SUDDENLY,  THERE  IS A GREAT CRASHING, AND\nLOUD THUMPS.  SILENCE AGAIN)\n\n86-JASON:
+  \ Willard?  Christine?  Sweeney?\n\n\x01\v8\b8\b87\b7\b7-W\bW\bWI\bI\bIL\bL\bLL\bL\bLA\bA\bAR\bR\bRD\bD\bD,
+  C\bC\bCH\bH\bHR\bR\bRI\bI\bIS\bS\bST\bT\bTI\bI\bIN\bN\bNE\bE\bE, S\bS\bSW\bW\bWE\bE\bEE\bE\bEN\bN\bNE\bE\bEY\bY\bY:
+  \ Yeah?\n\n88-JASON:  Norman, Carrie, Jaws?\n\n8\b8\b89\b9\b9-N\bN\bNO\bO\bOR\bR\bRM\bM\bMA\bA\bAN\bN\bN,
+  C\bC\bCA\bA\bAR\bR\bRR\bR\bRI\bI\bIE\bE\bE, A\bA\bAN\bN\bND\bD\bD J\bJ\bJA\bA\bAW\bW\bWS\bS\bS:
+  \ Uh huh?\n\n90-JASON:  Lionel?\n\n91-LIONEL:  Here, Jason!\n\n92-JASON:  Whew!
+  \ I got Cujo.  Get a light.\n\n(SOMEONE TURNS ON A FLASHLIGHT.  JASON IS HOLDING
+  A STICK OF\nFIREWOOD AND STANDING OVER CUJO'S BODY)\n\n93-JASON:   (STEPPING  OVER
+  \ THE BODY SO CUJO IS BEHIND HIM)\n   Okay, pack up everything real fast.\n\n[S-9]
+  (THE GROUP STARTS TO PACK.  THUNDER)                   S\n\n   There must be a farmhouse
+  around here  someplace.   We'll\n   go  back  to  the  road  and start walking.
+  \ Maybe we can\n   hitch a ride...\n\n\n\nI:1 Page 8               FASS 1986            86/01/12-23:04\n\f\n\nI:1
+  \                    Class Cut-Up                  Page 9\n\n[X-1]  (AS  HE  TALKS,
+  HE DOES NOT SEE CUJO RISE UP SILENTLY X\nAND RAISE THE HOOK TO STAB HIM IN THE  BACK.
+  \  AT  THE  LAST\nMOMENT,  CHRISTINE  SEES  CUJO AND SCREAMS.  CUJO LAUGHS AND\nBEGINS
+  THE DOWNSWING BUT AT THAT MOMENT,  HE  IS  STRUCK  BY\nLIGHTNING.  HE FALLS)\n\n94-NORMAN:
+  \ The lightning hit the hook...\n\n95-JAWS:  Is he dead now?\n\n96-WILLARD:   (FAMOUS
+  LAST WORDS) No one could have survived\n   that.\n\n97-CARRIE:  What are we going
+  to do with the corpse?\n\n(BURKE AND HARE SUDDENLY POP THEIR HEADS  OUT  OF  THE
+  \ OPEN\nGRAVE)\n\n9\b9\b98\b8\b8-B\bB\bBU\bU\bUR\bR\bRK\bK\bKE\bE\bE A\bA\bAN\bN\bND\bD\bD
+  H\bH\bHA\bA\bAR\bR\bRE\bE\bE:  Did someone say \"corpse\"?\n\n(CHRISTINE SCREAMS
+  AGAIN)\n\n99-SWEENEY:  Who are you?\n\n1\b1\b10\b0\b00\b0\b0-M\bM\bMR\bR\bR.H\bH\bHA\bA\bAR\bR\bRE\bE\bE:
+  \ This is Mr.Burke.\n\n1\b1\b10\b0\b01\b1\b1-M\bM\bMR\bR\bR.B\bB\bBU\bU\bUR\bR\bRK\bK\bKE\bE\bE:
+  \ And this is Mr.Hare.\n\n1\b1\b10\b0\b02\b2\b2-B\bB\bBU\bU\bUR\bR\bRK\bK\bKE\bE\bE
+  A\bA\bAN\bN\bND\bD\bD H\bH\bHA\bA\bAR\bR\bRE\bE\bE:  Charmed.\n\n103-WILLARD:  What
+  are you doing down in that grave?\n\n1\b1\b10\b0\b04\b4\b4-B\bB\bBU\bU\bUR\bR\bRK\bK\bKE\bE\bE
+  A\bA\bAN\bN\bND\bD\bD H\bH\bHA\bA\bAR\bR\bRE\bE\bE:  Picnicking.\n\n105-CARRIE:
+  \ (IN HORROR) On what?\n\n106-MR.BURKE:  Tuna.\n\n107-MR.HARE:  And potato salad.\n\n108-CARRIE:
+  \  Oh good, for a second there I thought you guys\n   were eating...\n\n109-MR.HARE:
+  \ Never!\n\n110-MR.BURKE:  We're professionals.\n\n111-SWEENEY:  Professional whats?\n\n1\b1\b11\b1\b12\b2\b2-B\bB\bBU\bU\bUR\bR\bRK\bK\bKE\bE\bE
+  A\bA\bAN\bN\bND\bD\bD H\bH\bHA\bA\bAR\bR\bRE\bE\bE:  Gravediggers.\n\n113-JAWS:
+  \ You're digging a grave for someone?\n\n114-MR.HARE:  No, just hoping.\n\n\n\nI:1
+  Page 9               FASS 1986            86/01/12-23:04\n\f\n\nI:1                     Class
+  Cut-Up                 Page 10\n\n115-MR.BURKE:  And it worked out, didn't it?\n\n116-JASON:
+  \ Do you know where we can find a phone?\n\n117-MR.BURKE:  There's the old Jekyll
+  House.\n\n118-MR.HARE:  You can go there and hide.\n\n119-MR.BURKE:  Just follow
+  the path.\n\n120-JASON:  Thanks.\n\n(THE  TEEN-AGERS  TROOP  OFF.  BURKE AND HARE
+  PICK UP CUJO'S\nBODY AND CARRY IT INTO THE GRAVE.  THEY TALK AS THEY GO)\n\n121-MR.HARE:
+  \ Do you know any ghost stories, Mr.Burke?\n\n122-MR.BURKE:  Only the ones about
+  Jekyll House, Mr.Hare.\n\n123-MR.HARE:   Does  anyone  survive   in   those   stories,\n
+  \  Mr.Burke?\n\n124-MR.BURKE:  Not a one, Mr.Hare.\n\n125-MR.HARE:  I believe I
+  feel a poem coming on:\n\n          Higgledy piggledy\n          Ramshackle Jekyll
+  House\n          Isn't a place you\n          Will live very long.\n\n126-MR.BURKE:\n
+  \         But if you're an expert in\n          Parapsychology\n          Ghoulies
+  and ghosties\n          You'll find in a throng.\n\n1\b1\b12\b2\b27\b7\b7-B\bB\bBO\bO\bOT\bT\bTH\bH\bH:
+  \ And now it is time for the opening song.\n\n(THE CAST FLOODS DOWN TO THE STAGE
+  TO SING THE OPENING SONG.\nBURKE  AND HARE CLOSE THE TRAP SO NO ONE FALLS IN DURING
+  THE\nSONG)\n\n************************************************************\n*****
+  \                 MYSTERY TONIGHT                 *****\n*****                 (to
+  the tune of:)                *****\n*****                  COMEDY TONIGHT                  *****\n************************************************************\n\n
+  \  Something revealing, something revolting,\n   Something for everyone, a Mystery
+  tonight!\n   Something suspicious, something pernicious,\n   Something for everyone,
+  a Mystery tonight!\n        Drop off your woes, drop off your cares,\n        Capture
+  the music, laughter, and scares!\n   We've got detectives, and their perspectives,\n\nI:1
+  Page 10              FASS 1986            86/01/12-23:04\n\f\n\nI:1                     Class
+  Cut-Up                 Page 11\n\n   Hoping to make the whole thing right!\n   Clarity
+  tomorrow, Mystery tonight!\n\n   (KEY CHANGE!)\n\n   Something exciting, or self-igniting,\n
+  \  Something for everyone, a Mystery tonight!\n   Something delightful, scarey and
+  frightful,\n   Something for everyone, a Mystery tonight!\n        Ready for tricks,
+  ready for treats,\n        We'll have you on the edge of your seats!\n   No more
+  rehearsing, chapter and versing!\n   Come on, let's get on with the show!\n   Tragedy
+  and sorrow,\n   Beg, steal or borrow,\n   Clarity tomorrow!\n   Mystery (mystery!
+  mystery!! mystery!!! mystery!!!!)\n   TONIGHT!\n\n[L-6] (THE  SONG  ENDS  AND  THE
+  \ CAST  RUSHES  OFFSTAGE  TO L\nTHUNDEROUS  APPLAUSE.  THE LIGHTS DIM SLOWLY AS
+  THE APPLAUSE\nDIES DOWN.  WHEN THE DARKNESS IS ALMOST COMPLETE,  THE  TRAP\nSUDDENLY
+  \ SLAMS  OPEN WITH A BIG BANG.  WE SEE CUJO BEGIN TO\nEMERGE MENACINGLY (PROBABLY
+  JUST THE  HOOK),  THEN  COMPLETE\nBLACK-OUT)\n\n                          - fin
+  -\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI:1 Page 11              FASS
+  1986            86/01/12-23:04\n\f\n"
+:shard_number: 0
+:shard_name: '1.1'
+:shard_time: 1986-01-12 23:05:52.000000000 -05:00
+:shard_blocks: 70
+:shard_start: 225
+:shard_size: 4527

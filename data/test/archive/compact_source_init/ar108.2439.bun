@@ -8,12 +8,12 @@
 :first_block_size: 1935
 :format: :unpacked
 :owner: jagardner
-:path: fassmac.t
+:path: jagardner/DOTDOT/fassmac.t
 :tape: ar108.2439
 :tape_size: 1936
 :type: :text
-:unpack_time: 2014-01-24 10:32:22.861793000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
+:unpack_time: 2014-02-22 10:44:23.661272000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/improved_file_naming:dd12bbc7313b349045e232bb30662042d631a0b3]
 :content: !binary |-
   AABAeOAABAAPABsAmHCfybMCCdqPTmAAAAAAkAAAAGNRhM5hORkNxlOQAAAA
   AAAAAAF4uFwvMxhOZzNphMYuOgAAE6AABAE/AAUAIAAAAAAAAAAAAAAAAAAA

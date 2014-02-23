@@ -3,3 +3,5 @@ output/test_actual/catalog_output_archive/ar003.0698.bun
 output/test_actual/catalog_output_archive/ar003.0701.bun
 output/test_actual/catalog_output_archive/ar082.0605.bun
 output/test_actual/catalog_output_archive/ar083.0698.bun
+output/test_actual/catalog_output_archive/ar103.1065.bun
+output/test_actual/catalog_output_archive/ar126.0527.bun
