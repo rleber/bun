@@ -7,11 +7,13 @@ Waterloo, vintage mid- to late 1980s. This machine used several particular forma
 imperfectly. Some salient features:
 
 - The Honeywell machine (known affectionately as the "'bun", as in "Honeybun") used 36 bit words.
-- The files store most signifcant bits first, and most significant bytes first
-- There are at least three formats of archive: 
-    text:    archives one text file
-    huffman: archives one text file with compression by Huffman encoding
-    frozen:  archives a collection of files (much like modern tar or zip)
+- The files store most significant bits first, and most significant bytes first
+- There are at least four formats of archive: 
+    Type        Contents
+    text        One text file
+    huffman     One text file with compression by Huffman encoding
+    frozen      A collection of files (much like modern tar or zip)
+    executable  A Honeywell executable file 
   
 Because these formats are old and my understanding is imperfect, I make no warranty of the absolutely
 correctness of these notes. I encourage you to explore -- you may discover elements of the format which
@@ -95,7 +97,6 @@ Eac archived file is then composed of a series of such links. In some cases, a l
 may occur. This signifies end of file. Additionally, it _may_ be the case (I have some doubt), that a word
 containing 0xf000 (Octal 0170000) may mark the end of some files.
 
-
 _Text Archive Files_
 
 Archive files have the following format:
@@ -166,8 +167,9 @@ The format for Honeywell Huffman-encoded files is as follows:
     reusing the byte that began the description of its parent, minus one. Once you have decoded the
     left subtree, the description of the right subtree begins with the next byte in sequence.
   - If the above isn't clear, look at File::Unpacked::Huffman#make_tree
-- The next 9-bit byte following the tree begins the encoded text. Since Huffman encoding works bit-by-bit, the
-  text must be examined one bit at a time, traversing the Huffman tree from the top. At each bit, a "0" bit
+- The next 9-bit byte following the tree is ignored. I'm not sure what it contains, but it isn't text.
+- Then, the next 9-bit byte begins the encoded text. Since Huffman encoding works bit-by-bit, the text 
+  must be examined one bit at a time, traversing the Huffman tree from the top. At each bit, a "0" bit
   means take the left branch of the tree, and a "1" bit means take the right branch. When you reach a leaf,
   that's the encoded character. See the Wikipedia article for more information on the encoding algorithm.
 
@@ -226,3 +228,13 @@ Freeze files have the following format:
 
 For additional clues, see doc/file_format/decode_help.txt, the source file lib/frozen_file.rb or 
 run "bun dump" or "bun freezer dump".
+
+_Executable Files_
+
+I really don't know much about these. There's only one of them in the FASS archive, and relatively
+few in the larger Watbun archive. I haven't been able to decode them, and I'm not currently planning
+on spending much time or effort on it, since I have no way of executing the program anyway.
+
+Here's what I do know:
+- They contain links
+- They do not contain valid llinks
