@@ -61,7 +61,7 @@ module Bun
         end
 
         def number_of_characters
-          (file_size_word >> 18).to_i
+          (file_size_word >> 18 & 0377777).to_i
         end
 
         def tree_offset

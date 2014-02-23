@@ -195,7 +195,7 @@ no_tasks do
       end
       titles = values.map{|value| value.titles || ['Value']}.flatten
       formatter.right_justified_columns = right_columns
-      formatter.titles = titles if options[:titles] || column_count > 1
+      formatter.titles = titles if options[:titles] || (column_count > 1 && options[:titles] != false)
     end
     m = matrixes.matrix_join
     m.each {|row| formatter << row }

@@ -47,7 +47,7 @@ def decode(file_name, out=nil)
       rescue Bun::File::CantExpandError
         stop "!Can't expand frozen archive. Provide --shard option or --expand and directory name", quiet: options[:quiet]
       end
-      warn "Decoded with #{file.errors.count} decoding errors" if !options[:quiet] && options[:warn] && file.errors > 0
+      warn %Q{Decoded with #{file.errors.count} decoding errors:\n#{file.errors.join("\n")}} if !options[:quiet] && options[:warn] && file.errors.size > 0
     end
   end
 end
