@@ -3,8 +3,8 @@
 :block_count: 11
 :block_padding_repairs: 10
 :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
-:decode_time: 2014-02-22 10:48:46.158369000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/improved_file_naming:dd12bbc7313b349045e232bb30662042d631a0b3]
+:decode_time: 2014-02-23 12:41:03.808113000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/huffman_bug_fix:fc6b47699c1aadbfb0865acd1d1d406ab4508a81]
 :description: ==> freeze file containing roff source for fass '77 script
 :digest: 2f51bd97948363e796b8fa8c1227425f
 :first_block_size: 3869
@@ -16,8 +16,8 @@
 :text_size: 314
 :time: 1977-03-01 15:40:58.000000000 -05:00
 :type: :frozen
-:unpack_time: 2014-02-22 10:41:40.140639000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/improved_file_naming:3f4d9d81221b168799711c9e1e62364845ad29c7]
+:unpack_time: 2014-02-23 12:34:57.826648000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/huffman_bug_fix:fc6b47699c1aadbfb0865acd1d1d406ab4508a81]
 :content: ! ".so fass/fasshole\n.he 'FASS'- % -'ACT I SCENE 0'\n.FO 'ACT I SCENE 0''FASS'\nAct
   1 Scene 0\n\n(AN EXTENDED ROUTINE BEFORE THE OPENING OF THE SHOW - A PERSON\nAPPEARS
   ON STAGE GIVING THE IMPRESSION THAT HE HAS AN ANNOUNCEMENT \nTO MAKE - WHEN HE HAS
