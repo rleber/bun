@@ -452,13 +452,14 @@ module Bun
           return [] if files.first == dest
           return [{from: files.first, to: dest, version: nil}]
         end
+        digits = files.size.to_s.size # How many digits in the version numbers?
         dest = re_version_file(dest, nil) # Remove .V999 from dest, if any
         version_count = 0
         unsorted_moves = files.map {|f| [f, File.timestamp(f)] } # Fetch file versions only once
              .sort_by {|f, timestamp| timestamp} # Sort oldest files first
              .map do |f, timestamp| # Reset versions in order by file date
                     version_count += 1
-                    {from: f, version: version_count, to: re_version_file(dest, version_count)}
+                    {from: f, version: version_count, to: re_version_file(dest, version_count, digits: digits)}
                   end
              .reject {|spec| spec[:from] == spec[:to]} # Remove any "no-op" moves
         # Calculate dependencies
@@ -479,10 +480,11 @@ module Bun
         end
       end
 
-      def re_version_file(f, version)
-        f =~ /^(.*?)((?:\.V\d+)?)((?:\.[\w\d_]*)?)$/ # May already have a .v999 prefix
-        version = version ? ".V#{version}" : ""
-        "#{$1}#{version}#{$3}"
+      def re_version_file(f, version, options={})
+        digits = options[:digits] || 1
+        f =~ /^(.*?)((?:\.V\d+)?)$/ # May already have a .v999 prefix
+        version = version ? %Q{.V#{"%0#{digits}d" % version}} : ""
+        "#{$1}#{version}"
       end
 
     end # File class methods

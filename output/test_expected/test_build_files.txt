@@ -56,6 +56,12 @@ data/test/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar118.0
 data/test/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar120.1248_19851220
 data/test/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar126.0111_19851220
 data/test/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar126.0345_19851220
+data/test/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar999.9999_20140101
+data/test/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar999.9999_20140102
+data/test/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar999.9999_20140103
+data/test/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar999.9999_20140104
+data/test/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar999.9999_20140105
+data/test/archive/compress_conflict_init/jagardner/DOTDOT/fassmac.t/tape.ar999.9999_20140106
 data/test/archive/compress_conflict_init/xxx
 data/test/archive/compress_conflict_init/xxx/tape_ar99.9999_19990101_120000
 data/test/archive/compress_conflict_init/xxx/xxx.txt

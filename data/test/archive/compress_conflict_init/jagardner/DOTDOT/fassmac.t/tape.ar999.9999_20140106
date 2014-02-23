@@ -1,0 +1,55 @@
+---
+:identifier: Bun
+:block_count: 16
+:block_padding_repairs: 15
+:catalog_time: 1986-03-18 00:00:00.000000000 -05:00
+:decode_time: 2014-02-22 11:06:17.004558000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/improved_file_naming:dd12bbc7313b349045e232bb30662042d631a0b3]
+:description: ''
+:digest: 955c5e93ff234d797a28f663f29789c9
+:first_block_size: 3855
+:format: :decoded
+:owner: bdparsons
+:path: bdparsons/fass/1986.f
+:tape: ar120.1521
+:tape_size: 60114
+:text_size: 2398
+:time: 1986-01-14 16:34:15.000000000 -05:00
+:type: :frozen
+:unpack_time: 2014-02-22 10:45:24.556991000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/improved_file_naming:dd12bbc7313b349045e232bb30662042d631a0b3]
+:content: ! "\n\nI:3b                   The Screamplay                 Page 1\n\n\n\x01\x1A
+  \             S\bS\bSp\bp\bpo\bo\bor\br\brt\bt\bt B\bB\bBr\br\bri\bi\bin\bn\bng\bg\bgs\bs\bs
+  T\bT\bTh\bh\bhe\be\be W\bW\bWo\bo\bor\br\brl\bl\bld\bd\bd T\bT\bTo\bo\bog\bg\bge\be\bet\bt\bth\bh\bhe\be\ber\br\br\n\n\n\x01\x17C\bC\bCh\bh\bha\ba\bar\br\bra\ba\bac\bc\bct\bt\bte\be\ber\br\brs\bs\bs
+  d\bd\bde\be\bef\bf\bfi\bi\bin\bn\bne\be\bed\bd\bd f\bf\bfo\bo\bor\br\br t\bt\bth\bh\bhi\bi\bis\bs\bs
+  s\bs\bsc\bc\bce\be\ben\bn\bne\be\be:\n\n    1. <fp>    RAGNAR OK . . . . . . . .
+  . . . . (RAGNAR)\n    2. <pg>    PIERRE GROUP  . . . . . . . . . . (PIERRE)\n\n[L-1]
+  (LIGHTS UP ON RAGNAR AND PIERRE)                       L\n\n1\b1\b1-R\bR\bRA\bA\bAG\bG\bGN\bN\bNA\bA\bAR\bR\bR
+  O\bO\bOK\bK\bK:  Please to excuse me, honoured man.  I  am  not\n   speaking  the
+  \ English  so long, and was not knowing some\n   words the play said.\n\n2\b2\b2-P\bP\bPI\bI\bIE\bE\bER\bR\bRR\bR\bRE\bE\bE
+  G\bG\bGR\bR\bRO\bO\bOU\bU\bUP\bP\bP:  Pardonez-moi?\n\n3-RAGNAR:  I do not think
+  the English so fast and need aid.\n\n4-PIERRE:  Aide?\n\n5-RAGNAR:  Yes.  What is
+  this hokay Blue Jay object?\n\n6-PIERRE:  Excusez-moi, mais je ne parle pas l'anglais.\n\n7-RAGNAR:
+  \ Please to speak slower.  I am not born with  your\n   tongue.  What is it the
+  Blue Jay?\n\n8-PIERRE:   Blue  Jay?   Maudits anglais equipe de baseball.\n   (HE
+  SPITS)\n\n9-RAGNAR:  Sloooow-er.  Modee...\n\n10-PIERRE:  Anglais...\n\n11-RAGNAR:
+  \ Ahn-glay...\n\n12-PIERRE:  Equipe...\n\n13-RAGNAR:  Ay-keep...\n\n14-PIERRE:  De
+  baseball.\n\n15-RAGNAR:  Duh bazzball.\n\n(BOTH SPIT IN UNISON)\n\n16-RAGNAR:  Thank
+  you.  I will look up words in later  time.\n   Wait,  is  bazzball  not  sport?
+  \ I love sport.  Canadian\n   friends are taking me to  hockey  game  in  Toronto
+  \ next\n   week.\n\n17-PIERRE:  Hockey?\n\n18-RAGNAR:  Hockey.\n\n\nI:3b Page 1
+  \             FASS 1986            86/01/13-10:46\n\f\n\nI:3b          Sport Brings
+  The World Together         Page 2\n\n19-PIERRE:  Hey!  Vive...\n\n20-RAGNAR:  Veeve...\n\n21-PIERRE:
+  \ Les Canadiens!\n\n22-RAGNAR:  Lay Canadyen!\n\n23-PIERRE:  Maple...\n\n24-RAGNAR:
+  \ Maple...\n\n25-PIERRE:  Leafs...\n\n26-RAGNAR:  Leafs...\n\n27-PIERRE:  Suck.\n\n28-RAGNAR:
+  \ Suck.  Maple Leafs!  Is cheer for Toronto hockey\n   team, yes?  Vive les Canadiens,
+  Maple Leafs suck!\n\n29-PIERRE:  Bon!\n\n30-RAGNAR:  Oh, it will be great surprise
+  to show friends  I\n   know special team yell.  The crowds, they will eat me up.\n\n31-PIERRE:
+  \ Bien sur.\n\n[L-2] (LIGHTS DOWN)                                          L\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI:3b
+  Page 2              FASS 1986            86/01/13-10:46\n\f\n"
+:shard_number: 14
+:shard_name: 1.3b
+:shard_time: 1986-01-13 10:48:18.000000000 -05:00
+:shard_blocks: 9
+:shard_start: 53810
+:shard_size: 576
