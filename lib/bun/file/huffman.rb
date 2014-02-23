@@ -85,6 +85,11 @@ module Bun
                             # That is the start of the encoded text.
         end
 
+        def start_text
+          reset
+          get_file_byte # Not sure what the next byte contains, but it's not text
+        end
+
         def make_tree
           build_sub_tree(get_file_byte, 0)
         end
@@ -102,19 +107,34 @@ module Bun
         end
         private :build_sub_tree
 
+        def tree_table(tree, bits="")
+          if tree.left
+            tree_table(tree.left, bits+"0").merge(tree_table(tree.right, bits+"1"))
+          else
+            {tree.right.chr=>bits}
+          end
+        end
+
+        def dump_tree(tree, options={})
+          stream = options[:to] || $stdout
+          tbl = tree_table(tree)
+          key_len = tbl.keys.map{|key| key.inspect.size}.max
+          tbl.keys.sort.each do |key|
+            stream.puts %Q{#{"%-#{key_len+1}s" % (key.inspect+':')} #{tbl[key]}}
+          end
+        end
+
         def get_file_byte
           @file_position ||= 0
           @current_byte = tree_byte(@file_position)
           @file_position += 1
+          @bit_position = 0
           @current_byte
         end
 
         def get_bit
           @bit_position ||= 0
-          if @bit_position >= Bun::Data::BITS_PER_BYTE
-            get_file_byte
-            @bit_position = 0
-          end
+          get_file_byte if @bit_position >= Bun::Data::BITS_PER_BYTE
           if @current_byte
             @current_bit = (@current_byte >> (Bun::Data::BITS_PER_BYTE - @bit_position - 1)) & 01
             @bit_position += 1
@@ -124,8 +144,36 @@ module Bun
           @current_bit
         end
 
+        def dump_bits(options={})
+          start = options[:start] || [@file_position, @bit_position]
+          limit = options[:limit]
+          width = options[:width] || 80
+          stream = options[:to] || $stdout
+          save_file_position = @file_position
+          save_bit_position = @bit_position
+          save_current_byte = @current_byte
+          @file_position, @bit_position = start
+          bits = ""
+          bit_count = 0
+          stream.puts "Bits at position #{@file_position}:#{@bit_position} ".rpad(width, "-")
+          loop do
+            bit = get_bit
+            bit_count += 1 if bit
+            if bits.size >= width || bit.nil? || (limit && bit_count >= limit)
+              stream.puts bits
+              bits = ""
+            end
+            break unless bit
+            break if limit && bit_count >= limit
+            bits += bit == 0 ? "0" : "1"
+          end
+          @file_position = save_file_position
+          @bit_position = save_bit_position
+          @current_byte = save_current_byte
+        end
+
         def get_decoded_byte
-          reset unless @tree
+          start_text unless @tree
           if @characters_left <= 0
             @current_character = nil
           else
@@ -150,7 +198,7 @@ module Bun
         end
 
         def decoded_bytes
-          reset
+          start_text
           s = []
           while ch = get_decoded_byte
             s << ch
