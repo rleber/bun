@@ -62,10 +62,7 @@ module Bun
       # end
     
       def method_missing(name, *args, &blk)
-        if File::Descriptor::Base.field_valid?(name)
-          raise NoMethodError, "Method #{name} not defined" if args.size>0 || block_given?
-          field[name]
-        elsif trait.has_trait?(name)
+        if trait.has_trait?(name)
           raise NoMethodError, "Method #{name} not defined" if args.size>1 || block_given?
           options = args[0] || {}
           this_trait = trait[name]
@@ -78,6 +75,9 @@ module Bun
             end
           end
           this_trait
+        elsif File::Descriptor::Base.field_valid?(name) || File::Descriptor::Base.valid_file_field?(name)
+          raise NoMethodError, "Method #{name} not defined" if args.size>0 || block_given?
+          field[name]
         else
           raise NoMethodError, "Method #{name} not defined"
         end
@@ -104,11 +104,13 @@ module Bun
         end
 
         def has_field?(name)
-          file_object.descriptor.fields.map{|f| f.to_sym}.include?(name.to_sym)
+          file_object.descriptor.fields.map{|f| f.to_sym}.include?(name.to_sym) || File::Descriptor::Base.file_fields[name.to_sym]
         end
       
         def [](field_name)
-          value = if has_field?(field_name)
+          value = if File::Descriptor::Base.file_fields[field_name.to_sym]
+            file_object.send(field_name)
+          elsif has_field?(field_name)
             file_object.descriptor[field_name.to_sym]
           else
             File::Descriptor::Base.field_default_for(field_name)

@@ -48,6 +48,11 @@ module Bun
           :text                  => "The decoded text for the file",
           :earliest_time         => "The earliest recorded date for a file",
         }
+
+        FILE_FIELDS = {
+          :media_codes           => "Media codes for this file (only meaningful for text files)",
+          :multi_segment         => "File contains lines split across blocks",
+        }
       end
     end
   end

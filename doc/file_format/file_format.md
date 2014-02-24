@@ -117,13 +117,26 @@ Archive files have the following format:
   conceptually simpler to think of the used words of each block running into the used words of the
   next llink (i.e. ignoring the block control word and any unused words at the end of llinks).
 - The content is encoded as a series of lines of ASCII text.
-- Lines do not cross llink boundaries, and always take an integral number of words.
-- Each line is prefixed with line descriptor word that includes:
-  - Byte 0: Always 0
-  - Byte 1: The length of the data in the line in words (not including the descriptor word)
-  - Byte 2: A flag word. The valid values seem to be 000, 0200, 0400, and 0600. I have no idea
-            what these flag bits signify
-  - Byte 3: Always 0600
+- Lines do not cross llink boundaries, and always take an integral number of words. (Except, see "segmented"
+  record discussion below. This software currently does nothing with segmented records.)
+- Each line is prefixed with line descriptor word that includes (see email in doc/file_format/decode_help.txt):
+  - Bits 0-17:  Length of record/segment (must be non-zero)
+  - Bits 18-19: # of bytes of data in last word of record (media types 4 & 6)
+  - Bits 20-23: EOF type (when length in bits 0-17 is zero)
+  - Bits 24-25: Segment marker
+      0->not segmented
+      1->first segment of record split across blocks
+      2->Intermediate segment
+      3->last segment
+  - For segment markers 0 or 1:
+    - Bits 26-29: Media code. The only media code this software understands currently is media code 6: ASCII
+        1->Unknown
+        2->Unknown
+        6->ASCII
+        7->Print listing(?)
+    - Bits 30-35: Report code
+  - For segment markers 2 or 3:
+    - Bits 26-35: Segment number (zero origin)
 - The line descriptor word is followed by the character data for the line:
   - The number of words of character data is specified in the length field of the line descriptor word
   - Characters are packed 4 to a word, one per 9-bit byte. No more than 7 bits/character are used.

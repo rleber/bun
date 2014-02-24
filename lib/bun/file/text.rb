@@ -108,6 +108,53 @@ module Bun
         end
         inspect_lines.join("\n")
       end
+
+      def media_codes
+        self.lines.inject([]) do |ary, line|
+          flags = line_flags(line)
+          ary << flags[:media_code]
+        end.compact.uniq.sort
+      end
+
+      def multi_segment
+        self.lines.any? {|line| flags = line_flags(line); flags[:segment_marker]>0}
+      end
+
+      def line_flags(line)
+        descriptor = line[:descriptor]
+        length = descriptor.half_word[0].to_i
+        flags  = descriptor.half_word[1].to_i
+        if length == 0
+          eof_type = (flags>>12) & 017
+        else
+          eof_type = nil
+        end
+        segment_marker = (flags>>10) & 03
+        if segment_marker < 2
+          @last_media_code = media_code = (flags>>6) & 017
+          @last_report_code = report_code = flags & 077
+          segment_number = 0
+        else
+          media_code = @last_media_code
+          report_code = @last_report_code
+          segment_number = flags & 01777
+        end
+        if media_code == 4 || media_code == 6
+          final_bytes = flags>>16
+          byte_count = length*4 + final_bytes - 4
+        else
+          byte_count = final_bytes = nil
+        end
+        {
+          eof_type: eof_type,
+          length: length, 
+          byte_count: byte_count,
+          segment_marker: segment_marker, 
+          segment_number: segment_number,
+          media_code: media_code,
+          report_code: report_code,
+        }
+      end
       
       def decoded_text(options={})
         self.keep_deletes = options[:delete]

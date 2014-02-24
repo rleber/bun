@@ -14,6 +14,8 @@ format
 identifier
 incomplete_file
 llink_count
+media_codes
+multi_segment
 owner
 path
 shard_blocks

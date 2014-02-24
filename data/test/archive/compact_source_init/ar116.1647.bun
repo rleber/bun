@@ -12,8 +12,8 @@
 :tape: ar116.1647
 :tape_size: 978
 :type: :text
-:unpack_time: 2014-02-23 12:37:27.158021000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/huffman_bug_fix:fc6b47699c1aadbfb0865acd1d1d406ab4508a81]
+:unpack_time: 2014-02-23 17:02:07.691846000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:96e5fb35af290c0822a0d0833fed0a4c3c8830b4]
 :content: !binary |-
   AABAPQAABAARAB0AZvChKGIQCgg90zAAAAAAkAAAADNphOhoNxvN5zAAAAAA
   AAAAAAF5mORvOZoF5mMJzOYgIxBKZTEBiNh1ORiAAAAABAE7AAUAIAAAAAAA

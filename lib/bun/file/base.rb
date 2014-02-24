@@ -554,5 +554,13 @@ module Bun
     def copy_descriptor(to, new_settings={})
       descriptor.copy(to, new_settings)
     end
+
+    def media_codes
+      []
+    end
+
+    def multi_segment
+      false
+    end
   end
 end

@@ -23,7 +23,7 @@ module Bun
           end
 
           def field_valid?(name)
-            VALID_FIELDS.keys.include?(name.to_sym)
+            VALID_FIELDS[name.to_sym]
           end
 
           def field_definitions
@@ -34,8 +34,17 @@ module Bun
             SYNTHETIC_FIELDS 
           end
 
+          def file_fields
+            FILE_FIELDS
+          end
+
+          def valid_file_field?(name)
+            FILE_FIELDS[name.to_sym]
+          end
+
           def all_field_definitions
             @all_field_definitions ||= field_definitions.merge(synthetic_field_definitions)
+                                                        .merge(file_fields)
           end
 
           def field_definition_array
