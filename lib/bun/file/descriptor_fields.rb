@@ -21,6 +21,8 @@ module Bun
           :identifier            => "Identifies this file as a bun file",
           :incomplete_file       => "This file was flagged as incomplete in the catalog",
           :llink_count           => "Number of llinks in the file (decoded text files only)",
+          :media_codes           => "Media codes for this file (text files only)",
+          :multi_segment         => "File contains lines split across blocks (text files only)",
           :owner                 => "The Honeywell username of the person who 'owned' this file",
           :path                  => "The relative path of the original file on the Honeywell",
           :shards                => {
@@ -50,8 +52,8 @@ module Bun
         }
 
         FILE_FIELDS = {
-          :media_codes           => "Media codes for this file (only meaningful for text files)",
-          :multi_segment         => "File contains lines split across blocks",
+          :media_codes           => "Media codes for this file (text files only)",
+          :multi_segment         => "File contains lines split across blocks (text files only)",
         }
       end
     end

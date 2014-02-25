@@ -117,14 +117,14 @@ module Bun
           deleted = flags[:deleted]
           # raise DeletedLineFound, "Deleted line at #{line_offset}(0#{'%o'%line_offset})" if deleted
           line_length = flags[:length]
-          raw_line = words[line_offset+1,line_length].map{|w| w.to_i}
+          raw_line = words[line_offset+1,line_length]
           case flags[:media_code]
           when 0,2,3,9 # BCD
             line = bcd_translate(words[line_offset+1,line_length]) + "\n"
           when 5,6,7,10,13 # ASCII
-            line = raw_line[0,flags[:bytes]] + "\n"
+            line = raw_line.map{|w| w.characters}.join[0,flags[:bytes]] + "\n"
           else # Binary
-            line = %Q[\\o{#{raw_line.map{|w| '%012o' % w }.join}}] + "\n"
+            line = %Q[\\o{#{raw_line.map{|w| '%012o' % (w.to_i) }.join}}] + "\n"
           end
         else # Sometimes, there is ASCII in the descriptor word; In that case, capture it, and look for terminating line descriptor
           line_offset -= 1 # Back up so the descriptor word is included in the line we're trying to find
@@ -134,7 +134,7 @@ module Bun
                                   "#{'%013o'%descriptor} #{descriptor.characters.join.inspect}"
           end
           line_length = new_line_offset - line_offset - 1
-          raw_line = words[line_offset+1,line_length].map{|w| w.characters}.join
+          raw_line = words[line_offset+1,line_length]
           line = raw_line.sub(/\177+$/,'') + "\n"
         end
         flags.merge(:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>line_offset+line_length, :content=>line, :raw=>raw_line, :words=>words.at(line_offset+line_length), :descriptor=>descriptor)

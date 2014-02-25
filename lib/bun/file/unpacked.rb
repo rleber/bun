@@ -257,11 +257,13 @@ module Bun
         return nil unless text
         text = text.scrub if options[:scrub]
         options = options.merge(
-                    content:     text, 
-                    format:  :decoded,
-                    decode_time: Time.now,
-                    decoded_by:  Bun.expanded_version,
-                    text_size:   text.size,
+                    content:       text, 
+                    format:        :decoded,
+                    decode_time:   Time.now,
+                    decoded_by:    Bun.expanded_version,
+                    text_size:     text.size,
+                    media_codes:   media_codes,
+                    multi_segment: multi_segment,
                   )
         options[:llink_count] = llinks if llinks
         to_hash(options)
