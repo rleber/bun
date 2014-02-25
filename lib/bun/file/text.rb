@@ -13,6 +13,48 @@ module Bun
         def open(path, options={}, &blk)
           File::Unpacked.open(path, options.merge(:type=>:text), &blk)
         end
+  
+        def line_flags(descriptor)
+          length = descriptor.half_word[0].to_i
+          flags  = descriptor.half_word[1].to_i
+          if eof=(length == 0)
+            eof_type = (flags>>12) & 017
+          else
+            eof_type = nil
+          end
+          top_byte = (length >> 9) & 0777
+          deleted = top_byte == 0177
+          segment_marker = (flags>>10) & 03
+          if segment_marker < 2
+            @last_media_code = media_code = (flags>>6) & 017
+            @last_report_code = report_code = flags & 077
+            segment_number = 0
+          else
+            media_code = @last_media_code
+            report_code = @last_report_code
+            segment_number = flags & 01777
+          end
+          if media_code == 4 || media_code == 6 || media_code == 7
+            final_bytes = flags>>16
+            final_bytes = 4 if final_bytes==0
+          else
+            final_bytes = 4
+          end
+          bytes = length*4 + final_bytes - 4
+          {
+            eof: eof,
+            eof_type: eof_type,
+            top_byte: top_byte,
+            deleted: deleted,
+            length: length, 
+            final_bytes: final_bytes,
+            bytes: bytes,
+            segment_marker: segment_marker, 
+            segment_number: segment_number,
+            media_code: media_code,
+            report_code: report_code,
+          }
+        end
       end
       
       attr_accessor :keep_deletes, :strict
@@ -36,7 +78,7 @@ module Bun
       end
     
       def text
-        res = lines.map{|l| l[:content]}.join
+        res = lines.reject{|l| l[:media_code]==8}.map{|l| l[:content]}.join
         @character_count = res.size
         res
       end
@@ -49,7 +91,6 @@ module Bun
         n = 0
         while line_offset < content.size
           line = unpack_line(content, line_offset)
-          line[:status] = :ignore if n==0
           case line[:status]
           when :eof     then break
           when :okay    then lines << line
@@ -69,14 +110,15 @@ module Bun
         raw_line = ""
         okay = true
         descriptor = words.at(line_offset)
-        if descriptor == eof_marker
-          return {:status=>:eof, :start=>line_offset, :finish=>data.size-1, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
-        elsif (descriptor >> 27) & 0777 == 0177
-          # raise DeletedLineFound, "Deleted line at #{line_offset}(0#{'%o'%line_offset})"
-          deleted = true
-          line_length = descriptor.half_word(0)
-        elsif (descriptor >> 27) & 0777 == 0
-          line_length = descriptor.half_word(0)
+        flags = line_flags(descriptor)
+        if flags[:eof]
+          return {:status=>:eof, :eof_type=>flags[:eof_type], :start=>line_offset, :finish=>data.size-1, :content=>nil, :raw=>nil, :words=>nil, :descriptor=>descriptor}
+        elsif flags[:deleted] || flags[:top_byte] == 0
+          deleted = flags[:deleted]
+          # raise DeletedLineFound, "Deleted line at #{line_offset}(0#{'%o'%line_offset})" if deleted
+          line_length = flags[:length]
+          raw_line = words[line_offset+1,line_length].map{|w| w.characters}.join
+          line = raw_line[0,flags[:bytes]] + "\n"
         else # Sometimes, there is ASCII in the descriptor word; In that case, capture it, and look for terminating line descriptor
           line_offset -= 1 # Back up so the descriptor word is included in the line we're trying to find
           new_line_offset = find_next_line(words, line_offset+2) # Start looking in the second word of the line
@@ -85,11 +127,10 @@ module Bun
                                   "#{'%013o'%descriptor} #{descriptor.characters.join.inspect}"
           end
           line_length = new_line_offset - line_offset - 1
+          raw_line = words[line_offset+1,line_length].map{|w| w.characters}.join
+          line = raw_line.sub(/\177+$/,'') + "\n"
         end
-        offset = line_offset+1
-        raw_line = words[offset,line_length].map{|w| w.characters}.join
-        line = raw_line.sub(/\177+$/,'') + "\n"
-        {:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>line_offset+line_length, :content=>line, :raw=>raw_line, :words=>words.at(line_offset+line_length), :descriptor=>descriptor}
+        flags.merge(:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>line_offset+line_length, :content=>line, :raw=>raw_line, :words=>words.at(line_offset+line_length), :descriptor=>descriptor)
       end
       
       # TODO Is this necessary any more?
@@ -110,49 +151,15 @@ module Bun
       end
 
       def media_codes
-        self.lines.inject([]) do |ary, line|
-          flags = line_flags(line)
-          ary << flags[:media_code]
-        end.compact.uniq.sort
+        self.lines.map{|line| line[:media_code]}.compact.uniq.sort
       end
 
       def multi_segment
-        self.lines.any? {|line| flags = line_flags(line[:descriptor]); flags[:segment_marker]>0}
+        self.lines.any? {|line| line[:segment_marker]>0}
       end
 
       def line_flags(descriptor)
-        length = descriptor.half_word[0].to_i
-        flags  = descriptor.half_word[1].to_i
-        if length == 0
-          eof_type = (flags>>12) & 017
-        else
-          eof_type = nil
-        end
-        segment_marker = (flags>>10) & 03
-        if segment_marker < 2
-          @last_media_code = media_code = (flags>>6) & 017
-          @last_report_code = report_code = flags & 077
-          segment_number = 0
-        else
-          media_code = @last_media_code
-          report_code = @last_report_code
-          segment_number = flags & 01777
-        end
-        if media_code == 4 || media_code == 6
-          final_bytes = flags>>16
-          byte_count = length*4 + final_bytes - 4
-        else
-          byte_count = final_bytes = nil
-        end
-        {
-          eof_type: eof_type,
-          length: length, 
-          byte_count: byte_count,
-          segment_marker: segment_marker, 
-          segment_number: segment_number,
-          media_code: media_code,
-          report_code: report_code,
-        }
+        self.class.line_flags(descriptor)
       end
       
       def decoded_text(options={})

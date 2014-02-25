@@ -2,12 +2,13 @@
 # -*- encoding: us-ascii -*-
 
 desc "dump FILE", "Dump the contents of a Honeywell backup tape"
-option "escape",    :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
-option "frozen",    :aliases=>'-f', :type=>'boolean', :desc=>'Display characters in frozen format (i.e. 5 per word)'
-option "length",    :aliases=>'-L', :type=>'string',  :desc=>'Limit dump to this many words'
-option "lines",     :aliases=>'-l', :type=>'string',  :desc=>'How many lines of the dump to show'
-option "offset",    :aliases=>'-o', :type=>'string',  :desc=>'Start at word n (zero-based index; octal/hex values allowed)'
-option "spaces",    :aliases=>'-s', :type=>'boolean', :desc=>'Display spaces unchanged'
+option "escape",     :aliases=>'-e', :type=>'boolean', :desc=>'Display unprintable characters as hex digits'
+option "frozen",     :aliases=>'-f', :type=>'boolean', :desc=>'Display characters in frozen format (i.e. 5 per word)'
+option "length",     :aliases=>'-L', :type=>'string',  :desc=>'Limit dump to this many words'
+option "lines",      :aliases=>'-l', :type=>'string',  :desc=>'How many lines of the dump to show'
+option "offset",     :aliases=>'-o', :type=>'string',  :desc=>'Start at word n (zero-based index; octal/hex values allowed)'
+option "spaces",     :aliases=>'-s', :type=>'boolean', :desc=>'Display spaces unchanged'
+option "structured", :aliases=>'-S', :type=>'boolean', :desc=>'Use structured dump format'
 # TODO Deblock option
 def dump(file_name)
   check_for_unknown_options(file_name)
@@ -33,7 +34,11 @@ def dump(file_name)
     archived_file = "--unknown--" unless archived_file
     puts "#{File.expand_path(file.descriptor.tape_path)} (#{archived_file}):"
     puts_options "  Options: "
-    lc = Dump.dump(file.data, opts)
+    lc = if options[:structured]
+      Dump.structured_dump(file.data, opts)
+    else
+      Dump.dump(file.data, opts)
+    end
     puts "No data to dump" if lc == 0
   end
 end

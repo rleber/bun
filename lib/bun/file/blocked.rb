@@ -74,6 +74,7 @@ module Bun
             break if words.at(offset) == 0
             block_size = words.at(offset).byte(3)
             unless words.at(offset).half_word[0] == block_number
+              # stop "Bad block_number at #{'%013o' % (offset+content_offset)}: #{'%013o' % words.at(offset)}, block_number: #{block_number}"
               if strict
                 raise "Llink out of sequence in #{location} at #{'%#o' % (offset+content_offset)}: expected #{'%07o' % block_number}; got #{file_content[offset].half_word[0]}"
               else
