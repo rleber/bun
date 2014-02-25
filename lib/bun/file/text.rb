@@ -117,11 +117,10 @@ module Bun
       end
 
       def multi_segment
-        self.lines.any? {|line| flags = line_flags(line); flags[:segment_marker]>0}
+        self.lines.any? {|line| flags = line_flags(line[:descriptor]); flags[:segment_marker]>0}
       end
 
-      def line_flags(line)
-        descriptor = line[:descriptor]
+      def line_flags(descriptor)
         length = descriptor.half_word[0].to_i
         flags  = descriptor.half_word[1].to_i
         if length == 0
