@@ -24,7 +24,7 @@ It is my intent to provide the source for this software on Github, when I get ar
 I'll update this note with the address.
 
 The software was developed on an Apple MacBook Pro, running Mac OS X version 10.9.1 and using Ruby version
-1.9.1. I can't think of any reason why it shouldn't be portable to other operating systems or versions
+1.9.3. I can't think of any reason why it shouldn't be portable to other operating systems or versions
 of Ruby, including version 2.0, but I haven't tested it, and I make no guarantees.
 
 _Installing this software_
