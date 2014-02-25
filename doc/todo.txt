@@ -1,5 +1,8 @@
 TODO
 _High Priority_
+Fix bug in decode complex file
+Create bun dump --structured (or some such), which breaks out BCWs, LLINKS, RCWs, etc.
+Save media_codes and multi_segment flags in decoded file formats (careful of impact on bun show!)
 Make bun test build and build_compress... independent of FASS and watbun archives (i.e copy source files)
 More extensions to bun show
     Fully qualified path (e.g. for shards in frozen archives)

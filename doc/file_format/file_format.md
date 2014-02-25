@@ -90,7 +90,9 @@ name, format, description, owner, etc.
                 sequence number of the link (starting at sequence number 1). The lower half-word contains 
                 the size of the link in words, excluding the BCW.
 - Word 1:       The upper half-word contains 1. The lower half-word contains the size of the preamble 
-                (which contains the file name, etc.)
+                (which contains the file name, etc.). This length includes the BCW and this word. (In other
+                words the length is the offset from the BCW marking where the data begins.)
+- Words 2-6:    Flags and stuff. I don't know what they signify.
 - Words 7-10:   Contain the archive name (generally the same as the user name of the file owner), as a
                 null-delimited string
 - Words 11-end: The name of the archived file, and a description, as a null-delimited string. Everything
@@ -125,24 +127,31 @@ have the following format:
     - The upper half word is the llink number (starting at 1 for the first llink). Note: llink numbers are
       sequential throughout the entire file -- the llinks don't start over at llink #1 in the second or
       subsequent links.
-    - The lower half word is the number of bytes used in the llink. That is, if an llink starts at
-      word w, and has a size marker s, then word w+s is the last used word in the llink. Words after
-      this word (i.e. words w+s+1... w+319) should be ignored
+    - The lower half word is the number of words used in the llink, excluding the BCW. That is, if an 
+      llink starts at word w, and has a size marker s, then s words of data follow the BCW. Therefore,
+      word w+1 is the first word of data, and word w+s is the last word of data in the llink. Words 
+      after this (i.e. words w+s+1... w+319) should be ignored.
 - The data of the file is encoded within the used words in the sequence of llinks. It may be
   conceptually simpler to think of the used words of each block running into the used words of the
   next llink (i.e. ignoring the block control word and any unused words at the end of llinks).
-- The content is encoded as a series of lines of ASCII text.
-- Lines do not cross llink boundaries, and always take an integral number of words. (Except, see "segmented"
-  record discussion below. This software currently does nothing with segmented records.)
-- Each line is prefixed with line descriptor word that includes (see email in doc/file_format/decode_help.txt):
-  - Bits 0-17:  Length of record/segment (must be non-zero)
-  - Bits 18-19: # of bytes of data in last word of record (media types 4 & 6)
-  - Bits 20-23: EOF type (when length in bits 0-17 is zero)
-  - Bits 24-25: Segment marker
-      0->not segmented
-      1->first segment of record split across blocks
-      2->Intermediate segment
-      3->last segment
+- The content is encoded as a series of records of data. Usually (see media codes below), this is lines 
+  of ASCII text.
+- Records always take an integral number of words. Usually, they do not cross llink boundaries. When they
+  do, they are broken into "segments", which don't cross llink boundaries. This software currently does 
+  not understan segmented records.
+- Each record is prefixed with a record descriptor word (RCW) that includes flags describing the data
+  in that record (for more details, see emails in doc/file_format/):
+    Bits   Name            Description
+     0-17  length          Length of record/segment (must be non-zero)
+    18-19  final_bytes     # of bytes of data in last word of record (media types 4 & 6)
+                                A value of zero is interpreted to mean 4 bytes
+    20-23  eof_type        EOF type (when length in bits 0-17 is zero)
+    24-25  segment_marker  Segment marker, distinguishes multi-segment records
+                             0: Not segmented, this is the first and only segment
+                             1: First segment of record split across blocks
+                             2: Intermediate segment
+                             3: Last segment
+    26-35  segment_info    Interpretation depends on the value of segment marker
   - For segment markers 0 or 1:
     - Bits 26-29: Media code. 
       For a more complete explanation, see http://www.thinkage.ca/english/gcos/expl/medi.html
@@ -169,13 +178,15 @@ have the following format:
     - Bits 30-35: Report code
   - For segment markers 2 or 3:
     - Bits 26-35: Segment number (zero origin)
-- The line descriptor word is followed by the character data for the line:
+- The record descriptor word is followed by the data for the record. For ASCII (media code 6) records,
+  that data is encoded as follows:
   - The number of words of character data is specified in the length field of the line descriptor word
   - Characters are packed 4 to a word, one per 9-bit byte. No more than 7 bits/character are used.
-  - No CR or LF characters are included; they are assumed
-  - The end of the line may be padded with bytes containing 0177. These should be ignored.
+  - No CR or LF characters are included; they are assumed at the end of each line.
+  - The end of the line may be padded with bytes containing 0177. These should be ignored. (Technically,
+    you should actually use the final_bytes field, though)
   - Some control characters may be found, e.g. backspace, tab
-- The first line always appears to be a descriptor plus 20 words of 000s. It is ignored.
+- In ASCII files, the first line always appears to be a descriptor plus 20 words of 000s. It is ignored.
 - End of file markers are optional, but do apply if found. (See above.)
 
 Occasionally, these files can get messed up. In particular, a line descriptor may be missing, or 
