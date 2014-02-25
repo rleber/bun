@@ -5,6 +5,15 @@ to access files from the University of Waterloo (http://uwaterloo.ca/), specific
 student theatrical group FASS. (The name is from the Honeywell's affectionate nickname -- the 'bun. For
 Honeybun. Get it?)
 
+Thinkage Ltd., in Waterloo, Ontario, Canada maintains the only modern tools for extracting GCOS information
+and emulating the GCOS system (that I'm aware of, anyway). Many thanks are due to them, and particularly
+to Alan Bowler, who helped greatly in explaining some of the more opaque parts of the GCOS system and file
+structures. You can find them on the web at http://www.thinkage.ca/english/index.shtml. For information
+about GCOS specifically, check out http://www.thinkage.ca/english/gcos/index.shtml, and particularly the
+explain files at http://www.thinkage.ca/english/gcos/expl/masterindex.html
+
+Thanks are also due to Ian! Allen, for his input, suggestions, access to the archives, and encouragement.
+
 _About the software_
 
 This software was written in the Ruby programming language (http://ruby-lang.org/), by Richard LeBer in 
@@ -14,9 +23,9 @@ in this package for details. You may contact the author at mailto://richard.lebe
 It is my intent to provide the source for this software on Github, when I get around to it. When I do,
 I'll update this note with the address.
 
-The software was developed on an Apple MacBook Pro, running Mac OS X version ___ and using Ruby version
-1.8.7. I can't think of any reason why it shouldn't be portable to other operating systems or versions
-of Ruby, including version 1.9, but I haven't tested it, and I make no guarantees.
+The software was developed on an Apple MacBook Pro, running Mac OS X version 10.9.1 and using Ruby version
+1.9.1. I can't think of any reason why it shouldn't be portable to other operating systems or versions
+of Ruby, including version 2.0, but I haven't tested it, and I make no guarantees.
 
 _Installing this software_
 

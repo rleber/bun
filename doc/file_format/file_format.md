@@ -10,7 +10,7 @@ imperfectly. Some salient features:
 - The files store most significant bits first, and most significant bytes first
 - There are at least four formats of archive: 
     Type        Contents
-    text        One text file
+    text        One file, usually ASCII text (although see below)
     huffman     One text file with compression by Huffman encoding
     frozen      A collection of files (much like modern tar or zip)
     executable  A Honeywell executable file 
@@ -35,6 +35,15 @@ and ASCII, and may be useful for exploring files.
 It may also be helpful to explore online. Wikipedia has an entry about GCOS, which was the operating
 system on the Honeywell, and later on Groupe Bull machines: 
   http://en.wikipedia.org/wiki/General_Comprehensive_Operating_System
+
+Thinkage Ltd., in Waterloo, Ontario, Canada maintains the only modern tools for extracting GCOS information
+and emulating the GCOS system (that I'm aware of, anyway). Many thanks are due to them, and particularly
+to Alan Bowler, who helped greatly in explaining some of the more opaque parts of the GCOS system and file
+structures. You can find them on the web at http://www.thinkage.ca/english/index.shtml. For information
+about GCOS specifically, check out http://www.thinkage.ca/english/gcos/index.shtml, and particularly the
+explain files at http://www.thinkage.ca/english/gcos/expl/masterindex.html
+
+Thanks are also due to Ian! Allen, for his input, suggestions, access to the archives, and encouragement.
 
 _Some Notes On Terminology and Conventions_
 
@@ -99,8 +108,14 @@ containing 0xf000 (Octal 0170000) may mark the end of some files.
 
 _Text Archive Files_
 
-Archive files have the following format:
+While these archive files are most often text, they aren't always. (I should really rename this file type.
+The Honeywell system referred to them as GFRC files. "General" might be a better name.) Text archive files 
+have the following format:
 - The files follow the normal link structure. Content of the file is encoded within that structure.
+- Data is usually ASCII text, although some files also contain printer control characters, and in rare
+  cases files may contain binary data (e.g. object files or data). I am even told that some archives
+  may contain more than one file, with the first llink of the second file following immediately after
+  the EOF marker of the first file, etc. I have yet to discover any files of this kind.
 - Data may also be terminated by an end of file marker at any time. This is a word containing 0170000. 
   (Actually, I have some doubt about this...)
 - Following the preamble, as described above, each link in the file is organized as a sequence of 320-word
@@ -129,11 +144,28 @@ Archive files have the following format:
       2->Intermediate segment
       3->last segment
   - For segment markers 0 or 1:
-    - Bits 26-29: Media code. The only media code this software understands currently is media code 6: ASCII
-        1->Unknown
-        2->Unknown
-        6->ASCII
-        7->Print listing(?)
+    - Bits 26-29: Media code. 
+      For a more complete explanation, see http://www.thinkage.ca/english/gcos/expl/medi.html
+      The only media code this software understands currently is media code 6: ASCII
+        0: Variable length BCD text
+        1: Binary data, variable length or card image. Used for object "decks" (remember, this
+             software was originally created in an era when people did everything with 80-column
+             punch cards!), and compressed source decks. When records contain binary card images,
+             they are always 27 words long.
+        2: Card image BCD. Records are always 14 words long.
+        3: Print image BCD. Records always contain printer control codes.
+        4: User-specified format. Used by University of Waterloo B programs for output of binary
+             streams. Other formats may exist, but translation is not guaranteed.
+        5: "Old format" TSS ASCII. Not used and not supported.
+        6: Standard ASCII text. This is the only media code this software currently understands.
+        7: Print image ASCII. Standard ASCII, but containing printer control codes.
+        8: The media control code of the file header of most media 6 (ASCII) files. Records are
+             always 20 words.
+        9: Special print image BCD. Like media code 3, but the first two bytes of each record
+             contain an extended report code (which the Thinkage software ignores).
+        10: Card image ASCII.
+        13: Special print image ASCII. Like media code 7, but the first two bytes of each record
+             contain an extended report code (which the Thinkage software ignores).
     - Bits 30-35: Report code
   - For segment markers 2 or 3:
     - Bits 26-35: Segment number (zero origin)
