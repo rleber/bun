@@ -257,13 +257,6 @@ class String
     unpack('H*').first
   end
 
-  def rpad(len, pad=" ")
-    pad = pad.to_s
-    pad = " " if pad==""
-    len = 0 if len<=0
-    self + (pad*([len-self.size, 0].max))[0,len]
-  end
-  
   def freeze_for_thor
     self.gsub("\n","\n\005").gsub(' ',"\177")
   end

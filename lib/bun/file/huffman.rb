@@ -155,7 +155,7 @@ module Bun
           @file_position, @bit_position = start
           bits = ""
           bit_count = 0
-          stream.puts "Bits at position #{@file_position}:#{@bit_position} ".rpad(width, "-")
+          stream.puts "Bits at position #{@file_position}:#{@bit_position} ".ljust(width, "-")
           loop do
             bit = get_bit
             bit_count += 1 if bit
