@@ -62,6 +62,9 @@ In what follows:
   Generally, I use octal when discussing bit/byte/word values, because it fits well with 36-bit words.
 - Unless otherwise noted, characters are stored one per 9-bit byte, left-to-right, in ASCII. Generally
   it appears that the 'bun used only 7-bit ASCII for character encoding.
+- In some cases (see the discussion of media codes below), data was stored as BCD. This uses a 6-bit
+  encoding to pack 6 characters into a word. The character set is weird (EBCDIC-like), and is described
+  at http://www.thinkage.ca/english/gcos/expl/bcd.html
 - Dates are stored as eight 9-bit ASCII characters "dd/mm/yy"
 - Times are stored as 36-bit unsigned integers, in some format I have yet to decipher, although there's
   some relevant code in the B programs
@@ -155,7 +158,7 @@ have the following format:
   - For segment markers 0 or 1:
     - Bits 26-29: Media code. 
       For a more complete explanation, see http://www.thinkage.ca/english/gcos/expl/medi.html
-      The only media code this software understands currently is media code 6: ASCII
+      This software has a rudimentary understanding of media codes other than 6 and 7
         0: Variable length BCD text
         1: Binary data, variable length or card image. Used for object "decks" (remember, this
              software was originally created in an era when people did everything with 80-column
@@ -186,7 +189,8 @@ have the following format:
   - The end of the line may be padded with bytes containing 0177. These should be ignored. (Technically,
     you should actually use the final_bytes field, though)
   - Some control characters may be found, e.g. backspace, tab
-- In ASCII files, the first line always appears to be a descriptor plus 20 words of 000s. It is ignored.
+- In ASCII files, the first line always appears to be a file header with a descriptor (media code 8),
+  plus 20 words of 000s. It is ignored.
 - End of file markers are optional, but do apply if found. (See above.)
 
 Occasionally, these files can get messed up. In particular, a line descriptor may be missing, or 

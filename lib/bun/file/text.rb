@@ -8,7 +8,7 @@ module Bun
 
       class DeletedLineFound < RuntimeError; end
       class BadLineDescriptor < RuntimeError; end
-      
+
       class << self
         def open(path, options={}, &blk)
           File::Unpacked.open(path, options.merge(:type=>:text), &blk)
@@ -117,8 +117,15 @@ module Bun
           deleted = flags[:deleted]
           # raise DeletedLineFound, "Deleted line at #{line_offset}(0#{'%o'%line_offset})" if deleted
           line_length = flags[:length]
-          raw_line = words[line_offset+1,line_length].map{|w| w.characters}.join
-          line = raw_line[0,flags[:bytes]] + "\n"
+          raw_line = words[line_offset+1,line_length].map{|w| w.to_i}
+          case flags[:media_code]
+          when 0,2,3,9 # BCD
+            line = bcd_translate(words[line_offset+1,line_length]) + "\n"
+          when 5,6,7,10,13 # ASCII
+            line = raw_line[0,flags[:bytes]] + "\n"
+          else # Binary
+            line = %Q[\\o{#{raw_line.map{|w| '%012o' % w }.join}}] + "\n"
+          end
         else # Sometimes, there is ASCII in the descriptor word; In that case, capture it, and look for terminating line descriptor
           line_offset -= 1 # Back up so the descriptor word is included in the line we're trying to find
           new_line_offset = find_next_line(words, line_offset+2) # Start looking in the second word of the line
@@ -131,6 +138,13 @@ module Bun
           line = raw_line.sub(/\177+$/,'') + "\n"
         end
         flags.merge(:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>line_offset+line_length, :content=>line, :raw=>raw_line, :words=>words.at(line_offset+line_length), :descriptor=>descriptor)
+      end
+
+      BCD_SET = "0123456789[#\@:>? abcdefghi&.](<\\^jklmnopqr-$*);'+/stuvwxyz_,%=\"!"
+      BCD_TRANSLATION = BCD_SET.split(//)
+
+      def bcd_translate(words)
+        words.flat_map{|word| word.bcds}.map{|i| BCD_TRANSLATION[i.to_i]}.join
       end
       
       # TODO Is this necessary any more?

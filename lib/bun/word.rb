@@ -28,6 +28,11 @@ module Bun
       offset 1
       string
     end
+
+    slice :bcd do
+      width 6
+      string
+    end
     
     slice :bit do
       width 1

@@ -105,15 +105,16 @@ module Bun
       stream.puts "#{address}#{pad} LINK #{'%013o'%bcw} ##{link_number} words #{link_length}"
       lc = 1
       offset += 1
+      return [offset, 0, true] unless link_length > 0
       eof = false
       dump_options = options.merge(address_width: address_width, indent: indent+2)
       offset, lc_incr = dump_preamble(data, offset, dump_options)
       lc += lc_incr
       loop do
+        break if offset >= link_limit
         offset, lc_incr, eof = dump_llink(data, offset, dump_options)
         lc += lc_incr
         break if eof
-        break if offset >= link_limit
       end
       [offset, lc, eof]
     end
@@ -152,12 +153,13 @@ module Bun
       stream.puts "#{address}#{pad} LLINK #{'%013o'%bcw} ##{llink_number} words #{llink_length}"
       lc = 1
       offset += 1
+      return [offset, 0, true] unless llink_length > 0
       eof = false
       loop do
+        break if offset >= llink_limit
         offset, lc_incr, eof = dump_record(data, offset, options.merge(address_width: address_width, indent: indent+2))
         lc += lc_incr
         break if eof
-        break if offset >= llink_limit
       end
       [next_llink, lc, eof]
     end
