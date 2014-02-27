@@ -60,6 +60,10 @@ module Bun
           word(content_offset+1)
         end
 
+        def binary
+          decoded_bytes.any? {|byte| byte > 255 }
+        end
+
         def number_of_characters
           (file_size_word >> 18 & 0377777).to_i
         end
@@ -208,9 +212,18 @@ module Bun
         cache :decoded_bytes
 
         def text
-          decoded_bytes.map do |byte|
-            byte > 255 ? "\\o{#{'%o'%byte}}" : byte.chr
-          end.join
+          if binary
+            stop "!Encoding binary Huffman file"
+            w = Bun::Words.new
+            decoded_bytes.each_slice(4) do |bytes|
+              w << Bun::Word.pack_bytes(*bytes)
+            end
+            w.pack
+          else
+            decoded_bytes.map do |byte|
+              byte > 255 ? "\\o{#{'%o'%byte}}" : byte.chr
+            end.join
+          end
         end
         cache :text
 

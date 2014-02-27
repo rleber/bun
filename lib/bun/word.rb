@@ -58,11 +58,26 @@ module Bun
     def bcd_string
       self.bcds.map{|bcd| bcd.ascii_string }.join
     end
+
+    def self.pack_bytes(*bytes)
+      bytes = (bytes.flatten + [0]*4)[0,4]
+      v = 0
+      bytes.each do |byte|
+        v = v<<9 + byte
+      end
+      self.new(v)
+    end
   end
   
   class Words < Slicr::Words(Bun::Word)
     def bcd_string
       map {|word| word.bcd_string}.join
+    end
+
+    def pack
+      hex = self.map{|word| '%09X' % word }.join
+      hex += '0' if hex.size.odd?
+      [hex].pack('H*')
     end
   end
 end  

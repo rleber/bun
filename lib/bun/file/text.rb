@@ -55,12 +55,6 @@ module Bun
             report_code: report_code,
           }
         end
-
-        def pack_words(words)
-          hex = words.map{|word| '%09X' % word }.join
-          hex += '0' if hex.size.odd?
-          [hex].pack('H*')
-        end
       end
       
       attr_accessor :keep_deletes, :strict
@@ -93,6 +87,7 @@ module Bun
       def lines
         line_offset = 0
         lines = []
+        @binary = false
         warned = false
         n = 0
         while line_offset < content.size
@@ -109,6 +104,11 @@ module Bun
         lines
       end
       cache :lines
+
+      def binary
+        lines unless @binary
+        @binary
+      end
     
       # TODO simplify
       def unpack_line(words, line_offset)
@@ -130,8 +130,8 @@ module Bun
           when 5,6,7,10,13 # ASCII
             line = raw_line.map{|w| w.characters}.join[0,flags[:bytes]].sub(/\177+$/,'') + "\n"
           else # Binary
-            line = self.class.pack_words(raw_line) + "\n"
-            # line = %Q[\\o{#{raw_line.map{|w| '%012o' % (w.to_i) }.join}}] + "\n"
+            @binary = true
+            line = raw_line.pack + "\n"
           end
         else # Sometimes, there is ASCII in the descriptor word; In that case, capture it, and look for terminating line descriptor
           line_offset -= 1 # Back up so the descriptor word is included in the line we're trying to find

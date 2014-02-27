@@ -65,6 +65,10 @@ module Bun
       def header_size
         content_offset + preamble_size
       end
+
+      def binary
+        false
+      end
       
       def descriptors_size
         preamble_size - File::Frozen::Descriptor.offset
