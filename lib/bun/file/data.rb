@@ -421,6 +421,10 @@ module Bun
       block_content_sizes.map{|content_size| content_size.div(WORDS_PER_SECTOR) }.sum
     end
 
+    # Extract module names from an executable (Q* format) file
+    # Also serves as a test that a file is a Q* executable
+    # See doc/file_formats folder for relevant documentation (files l-code.c, qstar.c and qstar-layout.pdf)
+    # Many thanks to Alan Bowler of Thinkage Ltd. (www.thinkage.ca) for documentation and assistance
     def executable_module_names
       catalog_header = content[0]
       first_space_block = catalog_header.half_word[0].to_i
