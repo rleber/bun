@@ -209,7 +209,7 @@ module Bun
 
         def text
           decoded_bytes.map do |byte|
-            byte > 255 ? "\\x{#{'%X'%byte}}" : byte.chr
+            byte > 255 ? "\\o{#{'%o'%byte}}" : byte.chr
           end.join
         end
         cache :text

@@ -3,13 +3,15 @@
 :block_count: 14
 :block_padding_repairs: 13
 :catalog_time: 1982-04-06 00:00:00.000000000 -05:00
-:decode_time: 2014-01-24 14:45:50.612610000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:4a054fd80f72ad070812f214984669de2ea556af]
+:decode_time: 2014-02-25 16:55:23.869000000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/executable_decode:a6a476393675278ad1e4133c446369886310938b]
 :description: ==> FASS 1982 Alice in Wonderloo -or- Through the Looking FASS.  TF
   output (formatted).
 :digest: ca55c1ee1ab3dd8125ec0f26f34a2f2c
 :first_block_size: 3877
 :format: :decoded
+:media_codes: []
+:multi_segment: false
 :owner: fass
 :path: fass/1982/tffed.f
 :scrub: true
@@ -18,8 +20,8 @@
 :text_size: 12650
 :time: 1982-04-03 22:03:48.000000000 -05:00
 :type: :frozen
-:unpack_time: 2014-01-24 10:30:59.396794000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
+:unpack_time: 2014-02-23 17:00:48.521827000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:96e5fb35af290c0822a0d0833fed0a4c3c8830b4]
 :content: ! "\n\nI:3                  Alice in Wonderloo               Page 1\n\n\n
   \                Better Holmes and Gardens\n\n\nCast of Characters:\n\n   MATT HATTER
   \ . . . . . . . . . . . . . . . . . . (MATT)\n   SQUEAKY FROMME . . . . . . . .

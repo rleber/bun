@@ -236,8 +236,8 @@ The format for Honeywell Huffman-encoded files is as follows:
 Note that the Huffman encoding algorithm doesn't care how many bits are in a "character". Because most
 Honeywell files were encoding as 8-bit characters stored in 9-bit bytes, this mostly is irrelevant. However,
 some files may include 9-bit characters encoded in Huffman format. When this is the case (which seems mostly
-to be object files of some kind), this software converts those 9-bit characters to a hex encoding. For
-example, if a file included a character 0777 (equivalent to 0x1FF), then it will be decoded as "\\x{1FF}".
+to be object files of some kind), this software converts those 9-bit characters to an octal encoding. For
+example, if a file included a character 0777 (equivalent to 0x1FF), then it will be decoded as "\\o{777}".
 (There's just one backslash in the string.)
 
 Important note: I made several fits and starts trying to get this to work, but I finally succeeded. One 

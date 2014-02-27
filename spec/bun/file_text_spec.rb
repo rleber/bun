@@ -9,6 +9,7 @@ describe Bun::File::Text do
     infile = 'ar004.0642'
     source_file = infile + Bun::DEFAULT_UNPACKED_FILE_EXTENSION
     outfile = File.join("output", "test_expected", infile)
-    decode_and_scrub(source_file, :tabs=>'80').should == rstrip(Bun.readfile(outfile))
+    res = decode_and_scrub(source_file, :tabs=>'80')
+    res.should == rstrip(Bun.readfile(outfile))
   end
 end

@@ -274,8 +274,9 @@ def backtrace(options={})
     if $saved_commands && $saved_commands.size > 0
       ::File.open(Bun::Test::BACKTRACE_FILE, 'w') {|f| f.write($saved_commands.join("\n")) }
       unless options[:quiet]
+        trace_count = [$saved_commands.size, $backtrace].min
         $stderr.puts "Command backtrace:"
-        system("bun test trace -i 2 #{$backtrace}")
+        system("bun test trace -i 2 #{$trace_count}")
       end
     end
   else
