@@ -1,4 +1,4 @@
-_LLINK PADDING_
+_LINK PADDING_
 
 There is an issue in the original files which this software was created to solve, related to how
 the original archive tapes were processed while they were being transferred from a Honeywell computer

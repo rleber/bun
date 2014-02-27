@@ -126,7 +126,7 @@ module Bun
           raw_line = words[line_offset+1,line_length]
           case flags[:media_code]
           when 0,2,3,9 # BCD
-            line = bcd_translate(words[line_offset+1,line_length]) + "\n"
+            line = words[line_offset+1,line_length].bcd_string + "\n"
           when 5,6,7,10,13 # ASCII
             line = raw_line.map{|w| w.characters}.join[0,flags[:bytes]].sub(/\177+$/,'') + "\n"
           else # Binary
@@ -145,13 +145,6 @@ module Bun
           line = raw_line.sub(/\177+$/,'') + "\n"
         end
         flags.merge(:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>line_offset+line_length, :content=>line, :raw=>raw_line, :words=>words.at(line_offset+line_length), :descriptor=>descriptor)
-      end
-
-      BCD_SET = "0123456789[#\@:>? abcdefghi&.](<\\^jklmnopqr-$*);'+/stuvwxyz_,%=\"!"
-      BCD_TRANSLATION = BCD_SET.split(//)
-
-      def bcd_translate(words)
-        words.flat_map{|word| word.bcds}.map{|i| BCD_TRANSLATION[i.to_i]}.join
       end
       
       # TODO Is this necessary any more?

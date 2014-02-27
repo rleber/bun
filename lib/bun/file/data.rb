@@ -76,6 +76,8 @@ module Bun
       end
     end
 
+    WORDS_PER_SECTOR = 64
+    SECTOR_CHECKSUM_OFFSET = WORDS_PER_SECTOR-1
     CHARACTERS_PER_WORD = characters_per_word
     BITS_PER_WORD = Bun::Word::WIDTH
     BYTES_PER_WORD = bytes_per_word
@@ -85,6 +87,8 @@ module Bun
     ARCHIVE_NAME_POSITION = 7 # words
     SPECIFICATION_POSITION = 11 # words
     DESCRIPTION_PATTERN = /\s+(.*)/
+    EXECUTABLE_MODULE_CATALOG_OFFSET = 2
+    EXECUTABLE_MODULE_CATALOG_SIZE = 4
 
     attr_reader :all_characters
     attr_reader :all_packed_characters
@@ -325,6 +329,7 @@ module Bun
       blocks = []
       @block_count = 0
       @block_padding_repairs = 0
+      @block_maximums = []
       while offset < hex.size do
         block_max = begin
           get_bcw_from_hex(hex, offset, blocks.size+1, fix: options[:fix])
@@ -336,6 +341,7 @@ module Bun
           raise
         end
         break unless block_max
+        @block_maximums << block_max
         block_size = (block_max+1) * NYBBLES_PER_WORD
         unless @first_block_size
           @first_block_size = block_max + 1
@@ -398,6 +404,75 @@ module Bun
         _ = block_padding_repaired_words
       end
       @first_block_size
+    end
+
+    def block_maximums
+      unless @block_maximums
+        _ = block_padding_repaired_words
+      end
+      @block_maximums
+    end
+
+    def block_content_sizes
+      block_maximums.map {|bmax| bmax + 1 - content_offset }
+    end
+
+    def sectors
+      block_content_sizes.map{|content_size| content_size.div(WORDS_PER_SECTOR) }.sum
+    end
+
+    def executable_module_names
+      catalog_header = content[0]
+      first_space_block = catalog_header.half_word[0].to_i
+      return nil unless first_space_block == 1
+      next_catalog_block = catalog_header.half_word[1].to_i
+      sectors = self.sectors
+      return nil unless next_catalog_block < sectors
+      available_space_block_offset = WORDS_PER_SECTOR
+      available_space_block_header = content[available_space_block_offset]
+      return nil unless available_space_block_header.half_word[0].to_i == 0
+      next_available_spack_block = available_space_block_header.half_word[1].to_i
+      return nil unless next_available_spack_block < sectors
+      return nil unless compare_executable_checksum(0)
+      return nil unless compare_executable_checksum(available_space_block_offset)
+      modules = []
+      (EXECUTABLE_MODULE_CATALOG_OFFSET...(WORDS_PER_SECTOR-EXECUTABLE_MODULE_CATALOG_SIZE)).step(EXECUTABLE_MODULE_CATALOG_SIZE) do |i|
+        module_name = content[i].bcd_string
+        flag_word = content[i+1]
+        type, blocks, first_block = self.class.split_executable_module_flag(flag_word)
+        end_block = first_block + blocks
+        return nil if type > 3
+        return nil if end_block > sectors
+        modules << module_name if blocks > 0
+      end
+      modules
+    end
+
+  def executable?
+    executable_module_names
+  end
+
+  def self.split_executable_module_flag(word)
+    [(word.byte[0] >> 3).to_i, (word.half_word[0] & 07777).to_i, word.half_word[1].to_i]
+  end
+
+  def compare_executable_checksum(offset)
+    start_offset = content_offset + offset
+    calculated_checksum = executable_checksum(start_offset...start_offset+SECTOR_CHECKSUM_OFFSET)
+    stored_checksum = content[offset+SECTOR_CHECKSUM_OFFSET]
+    return calculated_checksum == stored_checksum
+  end
+
+    def executable_checksum(range)
+      sum = 0
+      carry = 0
+      words[range].each do |word|
+        sum += carry + word.to_i
+        carry, sum = sum.divmod(1<<36)
+      end
+      sum += carry
+      sum = sum % (1<<36)
+      sum
     end
   end
 end
