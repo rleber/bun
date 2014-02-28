@@ -81,12 +81,15 @@ module Bun
       address_width = options[:address_width] || ('%o' % (display_offset+limit)).size+1
       lc = 0
       dump_options = options.merge(address_width: address_width, indent: indent+2)
+      i = 0
       loop do
+        dump_options.merge!(link_count: i)
         offset, lc_incr, eof = dump_link(data, offset, dump_options)
         lc += lc_incr
         break if eof
         break if options[:lines] && lc >= options[:limit]
         break if offset >= limit
+        i += 1
       end
       lc
     end
@@ -99,7 +102,7 @@ module Bun
       bcw = data.words.at(offset)
       link_number = bcw.half_word[0].to_i
       link_length = bcw.half_word[1].to_i
-      link_limit = offset + 1 + link_length
+      link_limit = offset + link_length
       address_width = options[:address_width] || ('%o' % (display_offset+link_limit)).size+1
       address = "%0#{address_width}o" % (offset + display_offset)
       stream.puts "#{address}#{pad} LINK #{'%013o'%bcw} ##{link_number} words #{link_length}"
@@ -110,11 +113,28 @@ module Bun
       dump_options = options.merge(address_width: address_width, indent: indent+2)
       offset, lc_incr = dump_preamble(data, offset, dump_options)
       lc += lc_incr
-      loop do
-        break if offset >= link_limit
-        offset, lc_incr, eof = dump_llink(data, offset, dump_options)
+      case data.type
+      when :frozen
+        if options[:link_count] == 0
+          shard_count = data.words.at(offset+1).to_i
+          offset, lc_incr, eof = dump_frozen_information_block(data, offset, dump_options)
+          lc += lc_incr
+          shard_count.times do |shard_index|
+            offset, lc_incr, eof = dump_frozen_shard_descriptor(data, offset, dump_options)
+            lc += lc_incr
+          end
+        end
+        offset, lc_incr, eof = dump_frozen_link(data, offset, dump_options.merge(link_limit: link_limit))
         lc += lc_incr
-        break if eof
+      when :text
+        loop do
+          break if offset >= link_limit
+          offset, lc_incr, eof = dump_llink(data, offset, dump_options)
+          lc += lc_incr
+          break if eof
+        end
+      else
+        stop "!Can't dump #{data.type} files"
       end
       [offset, lc, eof]
     end
@@ -196,9 +216,50 @@ module Bun
         end
         segments << "words #{flags[:length]}"
         segments << "bytes #{flags[:bytes]}"
-        segments << "(final_bytes #{flags[:final_bytes]})" unless flags[:final_bytes]==4
+        segments << "(final_bytes #{flags[:final_bytes]})" unless flags[:final_bytes]==4 || flags[:final_bytes]==flags[:bytes]
       end
       segments.join(' ')
+    end
+
+    def self.dump_frozen_information_block(data, offset, options={})
+      stream = options[:to] || $stdout
+      display_offset = (options[:display_offset] || offset) - offset
+      indent = options[:indent] || 0
+      pad = ' '*indent
+      address_width = options[:address_width] || ('%o'%(offset+5+display_offset)).size+1
+      address = "%0#{address_width}o" % (offset + display_offset)
+      stream.puts "#{address}#{pad} FIB"
+      lc = 1
+      lc += dump(data, options.merge(offset: offset, length: 5, indent: indent+2, address_width: address_width))
+      [offset+5, lc, false]
+    end
+
+    def self.dump_frozen_shard_descriptor(data, offset, options={})
+      stream = options[:to] || $stdout
+      display_offset = (options[:display_offset] || offset) - offset
+      indent = options[:indent] || 0
+      pad = ' '*indent
+      address_width = options[:address_width] || ('%o'%(offset+10+display_offset)).size+1
+      address = "%0#{address_width}o" % (offset + display_offset)
+      stream.puts "#{address}#{pad} SHARD_INDEX"
+      lc = 1
+      lc += dump(data, options.merge(offset: offset, length: 10, indent: indent+2, address_width: address_width))
+      [offset+10, lc, false]
+    end
+
+    def self.dump_frozen_link(data, offset, options={})
+      stream = options[:to] || $stdout
+      display_offset = (options[:display_offset] || offset) - offset
+      indent = options[:indent] || 0
+      pad = ' '*indent
+      link_limit = options[:link_limit]
+      address_width = options[:address_width] || ('%o'%(link_limit+display_offset)).size+1
+      address = "%0#{address_width}o" % (offset + display_offset)
+      stream.puts "#{address}#{pad} CONTENT"
+      lc = 1
+      lc += dump(data, options.merge(offset: offset, length: link_limit-offset+1, frozen: true,
+                                     indent: indent+2, address_width: address_width))
+      [link_limit+1, lc, false]
     end
   end
 end
