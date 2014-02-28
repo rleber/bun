@@ -1,3 +1,4 @@
+binary
 block_count
 block_padding_repairs
 catalog_time
@@ -8,6 +9,7 @@ decoded_by
 description
 digest
 earliest_time
+executable
 file
 first_block_size
 format

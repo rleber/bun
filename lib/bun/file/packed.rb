@@ -10,7 +10,7 @@ module Bun
       class << self
         def open(fname, options={}, &blk)
           if !options[:force] && (fmt = File.format(fname)) != :packed
-            raise BadFileGrade, "#{fname} is a #{fmt} format file, which can't be converted to packed"
+            raise BadFileFormat, "#{fname} is a #{fmt} format file, which can't be converted to packed"
           else
             path = fname
             path = expand_path(fname) unless fname == '-'

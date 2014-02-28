@@ -12,7 +12,7 @@ def compare_dates(at)
   archive = Archive.new(at)
   file_update_dates = {}
   tape_types = if %w{* all}.include?(options[:type])
-                 [:text, :frozen, :huffman]
+                 [:text, :frozen, :huffman, :executable]
                else
                  options[:type].split(',').map(&:to_sym)
                end

@@ -65,12 +65,14 @@ option "type",      :aliases=>"-T", :type=>'string',  :default=>TYPE_VALUES.firs
 def ls(*paths)
   check_for_unknown_options(*paths)
   type_pattern = case options[:type].downcase
+    when 'e', 'exec', 'executable'
+      /^executable$/i
     when 'f', 'frozen'
       /^(frozen|shard)$/i
-    when 't', 'text'
-      /^text$/i
     when 'h', 'huff', 'huffman'
       /^huffman$/i
+    when 't', 'text'
+      /^text$/i
     when '*','a','all'
       //
     else

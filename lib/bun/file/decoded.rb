@@ -70,7 +70,7 @@ module Bun
                 return_file
               end
             else
-              raise BadFileGrade, "#{fname} is not a decoded file"
+              raise BadFileFormat, "#{fname} is not a decoded file"
             end
           else
             # Ooh, this smells

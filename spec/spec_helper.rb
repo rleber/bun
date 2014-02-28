@@ -276,7 +276,7 @@ def backtrace(options={})
       unless options[:quiet]
         trace_count = [$saved_commands.size, $backtrace].min
         $stderr.puts "Command backtrace:"
-        system("bun test trace -i 2 #{$trace_count}")
+        system("bun test trace -i 2 #{-trace_count}..-1")
       end
     end
   else

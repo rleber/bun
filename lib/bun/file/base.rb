@@ -11,7 +11,7 @@ module Bun
 
   class File < ::File
     
-    class BadFileGrade < RuntimeError; end
+    class BadFileFormat < RuntimeError; end
     class BadBlockError < RuntimeError; end
     class ReadError < ArgumentError; end
 
@@ -232,6 +232,7 @@ module Bun
           begin
             File::Packed.open(path, force: true)
           rescue => e
+            raise
             false
           end
         else
@@ -252,7 +253,7 @@ module Bun
           File::Baked.open(path, &blk)
         else
           # TODO Why not?
-          raise BadFileGrade, "Can't open file of this format: #{fmt.inspect}"
+          raise BadFileFormat, "Can't open file of this format: #{fmt.inspect}"
         end
       end
       

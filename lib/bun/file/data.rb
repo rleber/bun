@@ -102,6 +102,8 @@ module Bun
     attr_reader :archive
     attr_reader :tape
     attr_reader :tape_path
+    attr_reader :first_block_size
+    attr_reader :block_count
 
     def initialize(options={})
       @archive = options[:archive]
@@ -113,9 +115,7 @@ module Bun
     def load(data)
       @data = data
       self.words = self.class.import(@data)
-      @block_count = nil
       @block_padding_repairs = 0
-      @first_block_size = nil
       @data
     end
 
@@ -127,7 +127,16 @@ module Bun
       @words = Bun::Words.new(w)
       if @words.nil?
         @all_characters = @characters = @bytes = @packed_characters = @descriptor = nil
+        @first_block_size = 0
+        @block_count = 0
       else
+        if @words.size == 0
+          @first_block_size = 0
+          @block_count = 0
+        else
+          @first_block_size = @words.at(0).half_word[1].to_i + 1
+          @block_count = (@words.size.to_f/@first_block_size).ceil
+        end
         @descriptor = Bun::File::Descriptor::Packed.new(self)
         @all_characters = LazyArray.new(@words.size*characters_per_word) do |n|
           @words.characters.at(n)
@@ -264,6 +273,8 @@ module Bun
         :frozen
       elsif (word(content_offset).characters || ['']).join == 'huff'
         :huffman
+      elsif executable
+        :executable
       else
         :text
       end
@@ -343,9 +354,6 @@ module Bun
         break unless block_max
         @block_maximums << block_max
         block_size = (block_max+1) * NYBBLES_PER_WORD
-        unless @first_block_size
-          @first_block_size = block_max + 1
-        end
         @block_count += 1
         block = hex[offset, block_size]
         blocks << block
@@ -369,7 +377,6 @@ module Bun
       end
       @block_padding_repaired_words = Bun::Words.import([blocks.join].pack('H*'))
     end
-    cache :block_padding_repaired_words
     
     def with_block_padding_repaired(options={})
       res = self.dup
@@ -379,13 +386,6 @@ module Bun
       res.load(s)
       res.block_padding_repairs = repairs # Necessary, because load will reset this to zero
       res
-    end
-
-    def block_count
-      unless @block_count
-        _ = block_padding_repaired_words
-      end
-      @block_count
     end
 
     def block_padding_repairs=(value)
@@ -399,16 +399,12 @@ module Bun
       @block_padding_repairs
     end
 
-    def first_block_size
-      unless @first_block_size
-        _ = block_padding_repaired_words
-      end
-      @first_block_size
-    end
-
     def block_maximums
       unless @block_maximums
-        _ = block_padding_repaired_words
+        begin
+          _ = block_padding_repaired_words
+        rescue File::BadBlockError
+        end
       end
       @block_maximums
     end
@@ -418,42 +414,43 @@ module Bun
     end
 
     def sectors
-      block_content_sizes.map{|content_size| content_size.div(WORDS_PER_SECTOR) }.sum
+      (words.size - block_count*content_offset)/WORDS_PER_SECTOR
     end
 
     # Extract module names from an executable (Q* format) file
     # Also serves as a test that a file is a Q* executable
     # See doc/file_formats folder for relevant documentation (files l-code.c, qstar.c and qstar-layout.pdf)
     # Many thanks to Alan Bowler of Thinkage Ltd. (www.thinkage.ca) for documentation and assistance
-    def executable_module_names
-      catalog_header = content[0]
+    def modules
+      content_offset = self.content_offset
+      catalog_header = self.words[content_offset+0]
       first_space_block = catalog_header.half_word[0].to_i
       return nil unless first_space_block == 1
       next_catalog_block = catalog_header.half_word[1].to_i
       sectors = self.sectors
       return nil unless next_catalog_block < sectors
       available_space_block_offset = WORDS_PER_SECTOR
-      available_space_block_header = content[available_space_block_offset]
+      available_space_block_header = self.words[content_offset+available_space_block_offset]
       return nil unless available_space_block_header.half_word[0].to_i == 0
       next_available_spack_block = available_space_block_header.half_word[1].to_i
       return nil unless next_available_spack_block < sectors
       return nil unless compare_executable_checksum(0)
       return nil unless compare_executable_checksum(available_space_block_offset)
-      modules = []
+      mods = []
       (EXECUTABLE_MODULE_CATALOG_OFFSET...(WORDS_PER_SECTOR-EXECUTABLE_MODULE_CATALOG_SIZE)).step(EXECUTABLE_MODULE_CATALOG_SIZE) do |i|
-        module_name = content[i].bcd_string
-        flag_word = content[i+1]
+        module_name = self.words[content_offset+i].bcd_string
+        flag_word = self.words[content_offset+i+1]
         type, blocks, first_block = self.class.split_executable_module_flag(flag_word)
         end_block = first_block + blocks
         return nil if type > 3
         return nil if end_block > sectors
-        modules << module_name if blocks > 0
+        mods << module_name if blocks > 0
       end
-      modules
+      mods
     end
 
-  def executable?
-    executable_module_names
+  def executable
+    !!modules
   end
 
   def self.split_executable_module_flag(word)
@@ -463,7 +460,7 @@ module Bun
   def compare_executable_checksum(offset)
     start_offset = content_offset + offset
     calculated_checksum = executable_checksum(start_offset...start_offset+SECTOR_CHECKSUM_OFFSET)
-    stored_checksum = content[offset+SECTOR_CHECKSUM_OFFSET]
+    stored_checksum = words[content_offset+offset+SECTOR_CHECKSUM_OFFSET]
     return calculated_checksum == stored_checksum
   end
 

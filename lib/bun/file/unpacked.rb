@@ -97,15 +97,15 @@ module Bun
                 t.close
                 # TODO redo this:
                 # super(fname, options) {|f| f.unpack(t.path, options)}
-                File.unpack(fname, t.path, force: true) # Need --force, tempfile exists
+                File.unpack(fname, t.path, force: true, fix: options[:fix]) # Need --force, tempfile exists
                 # puts "Unpacked file:" # debug
                 # system("cat #{t.path} | more")
                 File::Unpacked.open(t.path, options, &blk)
               else
-                raise BadFileGrade, "#{fname} can't be converted to unpacked"
+                raise BadFileFormat, "#{fname} is a #{fmt} format file, and can't be converted to unpacked"
               end
             else
-              raise BadFileGrade, "#{fname} is not an unpacked file"
+              raise BadFileFormat, "#{fname} is a #{fmt} format file, not an unpacked file"
             end
           else
             forced_open(fname, options, &blk)
@@ -122,6 +122,8 @@ module Bun
             File::Unpacked::Frozen.new(options)
           when :huffman
             File::Unpacked::Huffman.new(options)
+          when :executable
+            File::Unpacked::Executable.new(options)
           else
             if options[:strict]
               raise UnknownFileTypeError,"!Unknown file type: #{descriptor.type.inspect}"
@@ -181,7 +183,6 @@ module Bun
       end
       
       def time
-        debug "descriptor is a #{descriptor.class}"
         descriptor.time
       end
       
@@ -234,10 +235,10 @@ module Bun
         to_hash(options).to_yaml
       end
       
-      def write(to=nil)
+      def write(to=nil, options={})
         to ||= descriptor.tape_path
         shell = Shell.new
-        output = to_yaml
+        output = to_yaml(options)
         shell.write to, output
         output
       end

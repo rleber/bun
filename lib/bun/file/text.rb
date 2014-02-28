@@ -129,6 +129,8 @@ module Bun
             line = words[line_offset+1,line_length].bcd_string + "\n"
           when 5,6,7,10,13 # ASCII
             line = raw_line.map{|w| w.characters}.join[0,flags[:bytes]].sub(/\177+$/,'') + "\n"
+          when 8 # File header for text file
+            line = raw_line.pack + "\n"
           else # Binary
             @binary = true
             line = raw_line.pack + "\n"

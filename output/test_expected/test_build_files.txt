@@ -2,6 +2,7 @@ data/test
 data/test/ar003.0698
 data/test/ar003.0698.bun
 data/test/ar004.0642.bun
+data/test/ar010.1307
 data/test/ar019.0175.bun
 data/test/ar047.1383.bun
 data/test/ar074.1174.bun

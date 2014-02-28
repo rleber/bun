@@ -92,7 +92,7 @@
 
 desc "executable", "Test if a file is a Honeywell Q* executable"
 def executable(file)
-  res = File::Unpacked.open(file) {|f| f.data.executable? }
+  res = File::Unpacked.open(file) {|f| f.data.executable }
   if res
     puts "#{file} is an executable"
     exit 0

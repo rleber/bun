@@ -115,6 +115,18 @@ describe "show" do
         command: "show text data/test/ar003.0698.bun"
       },
       {
+        title:   "type for executable file", 
+        command: "show type data/test/ar010.1307"
+      },
+      {
+        title:   "executable for text file", 
+        command: "show executable data/test/ar003.0698.bun"
+      },
+      {
+        title:   "executable for executable file", 
+        command: "show executable data/test/ar010.1307"
+      },
+      {
         title:   "file", 
         command: "show file data/test/ar003.0698.bun"
       },

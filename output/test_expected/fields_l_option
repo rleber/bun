@@ -1,4 +1,5 @@
 Field                  Description
+binary                 Does this file contain binary (non-ASCII) data?
 block_count            The number of blocks in the file (one block contains 3,840 words)
 block_padding_repairs  How many repairs of extra bits padding between blocks were made?
 catalog_time           The date and time of last update of the file (per the archive index)
@@ -9,6 +10,7 @@ decoded_by             An identifier of the version of the bun software that dec
 description            Description of file (from Honeywell archive)
 digest                 The MD5 checksum digest of the content of this file
 earliest_time          The earliest recorded date for a file
+executable             Is this file a Honeywell executable?
 file                   The path of this file
 first_block_size       The size of the first block in this file (in 36-bit words)
 format                 The format of this file (e.g. :packed, :unpacked, :decoded, :baked)
@@ -32,6 +34,6 @@ tape_size              The size of the archival tape file (in 36-bit words)
 text                   The decoded text for the file
 text_size              The size of the decoded text (only for decoded files)
 time                   The date and time of last update of the file (frozen files only)
-type                   The type of Honeywell file contained in this file (i.e. :text, :frozen, :huffman)
+type                   The type of Honeywell file contained in this file (i.e. :text, :frozen, :huffman, :executable)
 unpack_time            The date and time at which this file was unpacked
 unpacked_by            An identifier of the version of the bun software that unpacked this file
