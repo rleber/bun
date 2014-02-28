@@ -51,8 +51,9 @@ In what follows:
 - A "word" is 36 bits
 - A "half-word" is 18 bits
 - A "byte is 9 bits (there are therefore four bytes in a word)
-- An "llink" (short for little link) was the fundamental unit of storage for disk files on the Honeywell.
-  Each llink containss 320 words
+- A "sector" was the smallest unit of disk storage. Each sector is 64 words.
+- The next largest unit of disk storage was the "llink" (short for little link). Each llink contains 
+  5 sectors, or 320 words
 - A "link" was the fundamental unit of storage in tape archival files. Each link contains 12 llinks.
 - Bit order is assumed to be most significant bit first
 - Byte order is assumed to be most significant byte first
@@ -66,8 +67,8 @@ In what follows:
   encoding to pack 6 characters into a word. The character set is weird (EBCDIC-like), and is described
   at http://www.thinkage.ca/english/gcos/expl/bcd.html
 - Dates are stored as eight 9-bit ASCII characters "dd/mm/yy"
-- Times are stored as 36-bit unsigned integers, in some format I have yet to decipher, although there's
-  some relevant code in the B programs
+- Times are stored as 36-bit unsigned integers. If you are interested in the details, I suggest you look
+  at the code in lib/bun/file/data.rb (the Bun::Data.time_of_day method)
 - Integers were stored as signed 36-bit words, with a leading sign bit, and using two's complement format
 - Quantities like line length fields, etc. are generally unsigned
 - Also a word containing 0170000 is an end-of-file marker. Subsequent data in the file should be ignored.
@@ -87,8 +88,8 @@ _All Files_
 
 All files were stored in tape archives. The tape archives were created in "blocks", with each block 
 corresponding to a "link" of data. (Once again, a link is 12 "llinks", each of which is 320 36-bit words.)
-Each llink in the file has a "preamble", which contains general information about the archived file: its
-name, format, description, owner, etc.
+Each block in the file has a "preamble", which contains general information about the archived file: its
+name, format, description, owner, etc. This information is repeated in each block of the file.
 - Word 0:       This word is the Block Control Word (BCW) for the link. Its upper half-word contains the 
                 sequence number of the link (starting at sequence number 1). The lower half-word contains 
                 the size of the link in words, excluding the BCW.
@@ -110,6 +111,13 @@ The format of the content of each link depend on the format of the file. See bel
 Eac archived file is then composed of a series of such links. In some cases, a link with a BCW of all zeros
 may occur. This signifies end of file. Additionally, it _may_ be the case (I have some doubt), that a word
 containing 0xf000 (Octal 0170000) may mark the end of some files.
+
+So far, I have encountered four types of files (there may well be others). Each has a distinctively different
+content and format. These file types are:
+- Text files
+- Huffman coded files
+- Freeze files
+- Executable files
 
 _Text Archive Files_
 
@@ -165,7 +173,7 @@ have the following format:
              punch cards!), and compressed source decks. When records contain binary card images,
              they are always 27 words long.
         2: Card image BCD. Records are always 14 words long.
-        3: Print image BCD. Records always contain printer control codes.
+        3:  
         4: User-specified format. Used by University of Waterloo B programs for output of binary
              streams. Other formats may exist, but translation is not guaranteed.
         5: "Old format" TSS ASCII. Not used and not supported.
@@ -187,8 +195,15 @@ have the following format:
   - Characters are packed 4 to a word, one per 9-bit byte. No more than 7 bits/character are used.
   - No CR or LF characters are included; they are assumed at the end of each line.
   - The end of the line may be padded with bytes containing 0177. These should be ignored. (Technically,
-    you should actually use the final_bytes field, though)
+    this should be accounted for by the final_bytes field, except in the case where the line has zero
+    characters in it. In this case, I have generally found that the line is encoded as one word, with
+    final_bytes set to 1 (because zero would mean 4 bytes), and the first byte of the line is 0177.)
   - Some control characters may be found, e.g. backspace, tab
+  - In the case of BCD data, this software converts it to ASCII
+  - In the case of binary data, this software converts it to binary (i.e. an whole number of 8-bit bytes
+    of binary data), followed by a carriage return. (This may not be exactly right, but it's what the
+    software does, right now.) Because 9-bit bytes may not fit evenly into 8-bit bytes, the line may
+    be padded with zero bits at the end, before the carriage return.
 - In ASCII files, the first line always appears to be a file header with a descriptor (media code 8),
   plus 20 words of 000s. It is ignored.
 - End of file markers are optional, but do apply if found. (See above.)
@@ -236,9 +251,11 @@ The format for Honeywell Huffman-encoded files is as follows:
 Note that the Huffman encoding algorithm doesn't care how many bits are in a "character". Because most
 Honeywell files were encoding as 8-bit characters stored in 9-bit bytes, this mostly is irrelevant. However,
 some files may include 9-bit characters encoded in Huffman format. When this is the case (which seems mostly
-to be object files of some kind), this software converts those 9-bit characters to an octal encoding. For
-example, if a file included a character 0777 (equivalent to 0x1FF), then it will be decoded as "\\o{777}".
-(There's just one backslash in the string.)
+to be object files of some kind), this software outputs the decoded file in binary format. To be more specific,
+if ANY character in the file is more than 8 bits, every character is treated as 9 bits, which are combined
+into 36-bit words and then output in binary format. (Note: 36-bit words may not fit evenly into 8-bit bytes.
+Because of this, the resulting output may have 4 additional zero bits appended to the end of it, to fill
+out the last byte.)
 
 Important note: I made several fits and starts trying to get this to work, but I finally succeeded. One 
 of the major detours I made was trying to use the algorithm in the huff.b.obsolete.txt program. (Obviously, it
@@ -291,10 +308,15 @@ run "bun dump" or "bun freezer dump".
 
 _Executable Files_
 
-I really don't know much about these. There's only one of them in the FASS archive, and relatively
-few in the larger Watbun archive. I haven't been able to decode them, and I'm not currently planning
-on spending much time or effort on it, since I have no way of executing the program anyway.
+I have done a little bit of work on this format. The only example in the FASS archive is ar010.1307.
+There are some files in the doc/file_format directory (qstar-format.pdf, qstar.c and l-code.c) that
+will give you a clue. Also worth referencing is the code in Bun::Data#modules. This code is enough
+to allow this software to distinguish executable files from non-executable ones. Beyond that, I know
+little. (And since I have no way to execute the executables, I'm not working that hard to find out.)
 
 Here's what I do know:
 - They contain links
 - They do not contain valid llinks
+- They contain a series of named modules
+- They're organized in sectors
+- The data is binary.
