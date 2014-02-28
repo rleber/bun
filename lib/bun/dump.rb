@@ -7,6 +7,10 @@ module Bun
     WORDS_PER_LINE = 4
     FROZEN_CHARACTERS_PER_WORD = 5
     UNFROZEN_CHARACTERS_PER_WORD = 4
+    BCD_CHARACTERS_PER_WORD = 6
+    BCD_MEDIA_CODES = [0,2,3,9]
+    BINARY_MEDIA_CODES = [1,8]
+    SECTOR_SIZE = Bun::Data::WORDS_PER_SECTOR
     
     # TODO Dump should understand frozen file sizes
     # TODO Dump should be able to dump frozen file preambles 4 chars/word, then 5 chars/word for the remainder
@@ -29,6 +33,9 @@ module Bun
       if options[:frozen]
         characters = data.all_packed_characters
         character_block_size = FROZEN_CHARACTERS_PER_WORD
+      elsif options[:bcd]
+        characters = data.words.bcd_string.split(//)
+        character_block_size = BCD_CHARACTERS_PER_WORD
       else
         characters = data.all_characters
         character_block_size = UNFROZEN_CHARACTERS_PER_WORD
@@ -120,7 +127,7 @@ module Bun
           offset, lc_incr, eof = dump_frozen_information_block(data, offset, dump_options)
           lc += lc_incr
           shard_count.times do |shard_index|
-            offset, lc_incr, eof = dump_frozen_shard_descriptor(data, offset, dump_options)
+            offset, lc_incr, eof = dump_frozen_shard_descriptor(data, offset, dump_options.merge(shard_index: shard_index))
             lc += lc_incr
           end
         end
@@ -128,11 +135,18 @@ module Bun
         lc += lc_incr
       when :text
         loop do
-          break if offset >= link_limit
+          break if offset > link_limit
           offset, lc_incr, eof = dump_llink(data, offset, dump_options)
           lc += lc_incr
           break if eof
         end
+      when :executable
+        if options[:link_count] == 0
+          offset, lc_incr, eof = dump_executable_catalog_block(data, offset, dump_options)
+          lc += lc_incr
+        end
+        offset, lc_incr, eof = dump_executable_link(data, offset, dump_options.merge(link_limit: link_limit))
+        lc += lc_incr
       else
         stop "!Can't dump #{data.type} files"
       end
@@ -195,8 +209,9 @@ module Bun
       address = "%0#{address_width}o" % (offset + display_offset)
       stream.puts "#{address}#{pad} #{format_rcw(descriptor)}"
       lc = 1
-      lc += dump(data, options.merge(offset: offset+1, length: flags[:length], indent: indent+2, address_width: address_width)) \
-        unless flags[:eof]
+      dump_options = options.merge(offset: offset+1, length: flags[:length], indent: indent+2, address_width: address_width)
+      dump_options.merge!(bcd: true) if BCD_MEDIA_CODES.include?(flags[:media_code])
+      lc += dump(data, dump_options) unless flags[:eof]
       [offset+flags[:length]+1, lc, flags[:eof]]
     end
 
@@ -209,6 +224,8 @@ module Bun
         segments << "deleted" if flags[:deleted]
         segments << "top_byte #{'%07o'%flags[:top_byte]}" unless flags[:top_byte]==0
         segments << "media_code #{flags[:media_code]}"
+        segments << "bcd" if BCD_MEDIA_CODES.include?(flags[:media_code])
+        segments << "binary" if BINARY_MEDIA_CODES.include?(flags[:media_code])
         segments << "report_code #{flags[:report_code]}" unless flags[:report_code]==0
         if flags[:segment_marker] != 0
           segments << "segment_marker #{flags[:segment_marker]}"
@@ -241,7 +258,7 @@ module Bun
       pad = ' '*indent
       address_width = options[:address_width] || ('%o'%(offset+10+display_offset)).size+1
       address = "%0#{address_width}o" % (offset + display_offset)
-      stream.puts "#{address}#{pad} SHARD_INDEX"
+      stream.puts "#{address}#{pad} SHARD #{options[:shard_index]}"
       lc = 1
       lc += dump(data, options.merge(offset: offset, length: 10, indent: indent+2, address_width: address_width))
       [offset+10, lc, false]
@@ -260,6 +277,52 @@ module Bun
       lc += dump(data, options.merge(offset: offset, length: link_limit-offset+1, frozen: true,
                                      indent: indent+2, address_width: address_width))
       [link_limit+1, lc, false]
+    end
+
+    def self.dump_executable_catalog_block(data, offset, options={})
+      stream = options[:to] || $stdout
+      display_offset = (options[:display_offset] || offset) - offset
+      indent = options[:indent] || 0
+      pad = ' '*indent
+      address_width = options[:address_width] || ('%o'%(offset+SECTOR_SIZE+display_offset)).size+1
+      address = "%0#{address_width}o" % (offset + display_offset)
+      stream.puts "#{address}#{pad} CATALOG"
+      lc = 1
+      lc += dump(data, options.merge(offset: offset, length: SECTOR_SIZE, indent: indent+2, address_width: address_width))
+      [offset+SECTOR_SIZE, lc, false]
+    end
+
+    def self.dump_executable_link(data, offset, options={})
+      stream = options[:to] || $stdout
+      display_offset = (options[:display_offset] || offset) - offset
+      indent = options[:indent] || 0
+      pad = ' '*indent
+      link_limit = options[:link_limit]
+      address_width = options[:address_width] || ('%o'%(link_limit+display_offset)).size+1
+      dump_options = options.merge(offset: offset, indent: indent, address_width: address_width)
+      lc=0
+      eof=false
+      loop do
+        break if offset > link_limit
+        offset, lc_incr, eof = dump_executable_block(data, offset, dump_options.merge(length: [link_limit-offset+1, SECTOR_SIZE].min))
+        lc += lc_incr
+        break if eof
+      end
+      [options[:link_limit]+1, lc, eof]
+    end
+
+    def self.dump_executable_block(data, offset, options={})
+      stream = options[:to] || $stdout
+      display_offset = (options[:display_offset] || offset) - offset
+      indent = options[:indent] || 0
+      pad = ' '*indent
+      address_width = options[:address_width] || ('%o'%(offset + options[:length] - 1 + display_offset)).size+1
+      address = "%0#{address_width}o" % (offset + display_offset)
+      stream.puts "#{address}#{pad} BLOCK"
+      lc = 1
+      lc += dump(data, options.merge(offset: offset, length: options[:length],
+                                     indent: indent+2, address_width: address_width))
+      [offset + options[:length], lc, false]
     end
   end
 end
