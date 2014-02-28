@@ -173,7 +173,7 @@ have the following format:
              punch cards!), and compressed source decks. When records contain binary card images,
              they are always 27 words long.
         2: Card image BCD. Records are always 14 words long.
-        3:  
+        3: Print image BCD. Records always contain printer control codes.
         4: User-specified format. Used by University of Waterloo B programs for output of binary
              streams. Other formats may exist, but translation is not guaranteed.
         5: "Old format" TSS ASCII. Not used and not supported.
