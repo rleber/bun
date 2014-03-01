@@ -1,10 +1,22 @@
 TODO
 _High Priority_
+File type text should be renamed normal
+Change show text to show content
+bun bake --to-original-destination
+Indexes from bake
+- Optionally, from bun bake
+- Optionally, from bun archive bake
+Fields should include content_start
+Bun describe should include sectors, block_count, media_codes, content_start
+What does dump do with decoded or baked files?
 BCD flag
+More extensions to bun show
+    Fully qualified path (e.g. for shards in frozen archives)
+    Field_values (returns array of [field_name, value] pairs)
 Additional tests
 - Executable files are binary
-- Binary Huffman files: flag and decoding
-- Text files are not binary
+- Text normal files are not binary
+- Binary normal files are binary
 - Frozen files are not binary
 - BCD files
 - BCD print listings
@@ -13,6 +25,7 @@ Additional tests
 - Block count
 - First block size
 - Media_codes
+- content
 - Dump -S
    - Text: ar003.0704
    - Frozen: ar019.0175
@@ -23,22 +36,9 @@ Additional tests
    - Decode
    - Compress
    - Bake
-Indexes from bake
-- Optionally, from bun bake
-- Optionally, from bun archive bake
-Fields should include content_start
-Bun describe should include sectors, block_count, media_codes, content_start
-What does dump do with decoded or baked files?
-File type text should be renamed normal
-
-
-Fix bug in decode complex file
-Create bun dump --structured (or some such), which breaks out BCWs, LLINKS, RCWs, etc.
-Save media_codes and multi_segment flags in decoded file formats (careful of impact on bun show!)
+Rebuild FASS and Watbun archives
+Test binary Huffman files: flag and decoding
 Make bun test build and build_compress... independent of FASS and watbun archives (i.e copy source files)
-More extensions to bun show
-    Fully qualified path (e.g. for shards in frozen archives)
-    Field_values (returns array of [field_name, value] pairs)
 Bun compare (one file from each of two lists), e.g.
     bun compare EXPRESSIONS --in FILES... --vs FILES... --where CONDITION
       e.g. --where 'file1.digest == file2.digest && file1.text != file2.digest'

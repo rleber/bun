@@ -10,9 +10,9 @@
 :path: port/tla/cli/htu
 :tape: packed_with_bad_bcw
 :tape_size: 350
-:type: :text
-:unpack_time: 2014-02-01 12:38:17.386537000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:76a994389886bdff9e56a624fcc039b7d5c2ddaf]
+:type: :normal
+:unpack_time: 2014-03-01 08:23:36.648089000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:a84881c8c9dedebac64357ce2b7d31394812729c]
 :content: !binary |-
   AABAFPAABAAPAAIAqXCSIrwJCSIrwJAAAAAAAAAAABOBvOR0AAAAAAAAAAAA
   AAAAAAF50NhhF5jNhpF5oOh1AAAAAAAABAA7AAUAIAAAAAAAAAAAAAAAAAAA

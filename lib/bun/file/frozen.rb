@@ -232,7 +232,7 @@ module Bun
         lines
       end
     
-      # TODO Refactor like File::Text#unpack_line
+      # TODO Refactor like File::Normal#unpack_line
       def thaw_line(n, words, line_offset)
         line = ""
         line_length = words.size

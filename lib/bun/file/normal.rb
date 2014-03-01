@@ -3,7 +3,7 @@
 
 module Bun
   class File < ::File
-    class Text < Bun::File::Blocked
+    class Normal < Bun::File::Blocked
       include CacheableMethods
 
       class DeletedLineFound < RuntimeError; end
@@ -11,7 +11,7 @@ module Bun
 
       class << self
         def open(path, options={}, &blk)
-          File::Unpacked.open(path, options.merge(:type=>:text), &blk)
+          File::Unpacked.open(path, options.merge(:type=>:normal), &blk)
         end
   
         def line_flags(descriptor)
@@ -60,7 +60,7 @@ module Bun
       attr_accessor :keep_deletes, :strict
       attr_reader   :control_characters, :character_count
     
-      # TODO do we ever instantiate a File::Text without reading a file? If not, refactor
+      # TODO do we ever instantiate a File::Normal without reading a file? If not, refactor
       def initialize(options={})
         @keep_deletes = options[:keep_deletes]
         @strict = options[:strict]
@@ -129,7 +129,7 @@ module Bun
             line = words[line_offset+1,line_length].bcd_string + "\n"
           when 5,6,7,10,13 # ASCII
             line = raw_line.map{|w| w.characters}.join[0,flags[:bytes]].sub(/\177+$/,'') + "\n"
-          when 8 # File header for text file
+          when 8 # File header for normal file
             line = raw_line.pack + "\n"
           else # Binary
             @binary = true

@@ -119,7 +119,7 @@ describe "show" do
         command: "show type data/test/ar010.1307"
       },
       {
-        title:   "executable for text file", 
+        title:   "executable for normal file", 
         command: "show executable data/test/ar003.0698.bun"
       },
       {

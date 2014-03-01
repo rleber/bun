@@ -51,7 +51,7 @@ describe "decode" do
       exec_on_success("rm -f output/test_actual/decode_baked_stderr")
     end
   end
-  context "with text file" do
+  context "with normal file" do
     context "without expand option" do
       before :all do
         exec("rm -f output/test_actual/decode_ar003.0698")

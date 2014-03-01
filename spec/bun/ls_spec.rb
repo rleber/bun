@@ -11,7 +11,7 @@ describe "ls" do
                    "ls -o #{TEST_ARCHIVE}", 
                    "ls_o"
   include_examples "command", 
-                   "ls -ldr with text file (ar003.0698)", 
+                   "ls -ldr with normal file (ar003.0698)", 
                    "ls -ldr #{TEST_ARCHIVE}/ar003.0698.bun", 
                    "ls_ldr_ar003.0698"
   include_examples "command", 

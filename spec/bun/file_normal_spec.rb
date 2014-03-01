@@ -1,7 +1,7 @@
 #!/usr/bin/env rvm-ruby 1.9.3
 # -*- encoding: us-ascii -*-
 
-describe Bun::File::Text do
+describe Bun::File::Normal do
   include_examples "simple", "ar119.1801"
   include_examples "simple", "ar003.0698"
   

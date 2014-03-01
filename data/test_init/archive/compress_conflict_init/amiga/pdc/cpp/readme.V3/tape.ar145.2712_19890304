@@ -15,7 +15,7 @@
 :tape: ar145.2712
 :tape_size: 336
 :text_size: 812
-:type: :text
+:type: :normal
 :unpack_time: 2014-02-01 21:13:34.983790000 -05:00
 :unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:89e6db96f9aa2f50326aea8c9847f5ce77400e24]
 :content: ! "#!/bin/csh -f\nset bindir  = /homes/petersen/amiga/bin\nset cppfile =

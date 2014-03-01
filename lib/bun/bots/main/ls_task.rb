@@ -19,7 +19,7 @@ SORT_FIELDS = {
   :type        => :type,
   :updated     => :time,
 }
-TYPE_VALUES = %w{all frozen text huff}
+TYPE_VALUES = %w{all frozen normal huff}
 DATE_FORMAT = '%Y/%m/%d'
 TIME_FORMAT = DATE_FORMAT + ' %H:%M:%S'
 FIELD_CONVERSIONS = {
@@ -55,7 +55,7 @@ desc "ls FILE...", "Display an index of archived files"
 option "descr",     :aliases=>"-d", :type=>'boolean',                              :desc=>"Include description"
 option "files",     :aliases=>"-f", :type=>'string',  :default=>'',                :desc=>"Show only files that match this Ruby Regexp, e.g. 'f.*oo\\.rb$'"
 option "frozen",    :aliases=>"-r", :type=>'boolean',                              :desc=>"Recursively include contents of freeze files"
-option "long",      :aliases=>"-l", :type=>'boolean',                              :desc=>"Display long format (incl. text vs. frozen)"
+option "long",      :aliases=>"-l", :type=>'boolean',                              :desc=>"Display long format (incl. normal vs. frozen)"
 option 'path',      :aliases=>'-p', :type=>'boolean',                              :desc=>"Display paths for tape files"
 option 'onecolumn', :aliases=>'-o', :type=>'boolean',                              :desc=>"Display tape names only"
 option "sort",      :aliases=>"-s", :type=>'string',  :default=>SORT_VALUES.first, :desc=>"Sort order(s) for files (#{SORT_VALUES.join(', ')})"
@@ -71,8 +71,8 @@ def ls(*paths)
       /^(frozen|shard)$/i
     when 'h', 'huff', 'huffman'
       /^huffman$/i
-    when 't', 'text'
-      /^text$/i
+    when 'n', 'normal', 't', 'text'
+      /^normal$/i
     when '*','a','all'
       //
     else

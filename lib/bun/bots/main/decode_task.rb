@@ -8,7 +8,7 @@ option 'asis',    :aliases=>'-a', :type=>'boolean', :desc=>"Do not attempt to un
 option "delete",  :aliases=>'-d', :type=>'boolean', :desc=>"Keep deleted lines (only with text files)"
 option "force",   :aliases=>'-f', :type=>'boolean', :desc=>"Overwrite existing files"
 option "expand",  :aliases=>'-e', :type=>'boolean', :desc=>"Expand freezer archives into multiple files"
-option "inspect", :aliases=>'-i', :type=>'boolean', :desc=>"Display long format details for each line (only with text files)"
+option "inspect", :aliases=>'-i', :type=>'boolean', :desc=>"Display long format details for each line (only with normal files)"
 option "quiet",   :aliases=>'-q', :type=>'boolean', :desc=>"Quiet mode"
 option "shard",   :aliases=>'-S', :type=>'string',  :desc=>"Select shards with this pattern (only with frozen files)"
 option "scrub",   :aliases=>'-s', :type=>'boolean', :desc=>"Remove control characters from output"

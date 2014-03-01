@@ -15,7 +15,7 @@
 :tape: ar058.3075
 :tape_size: 4507
 :text_size: 14618
-:type: :text
+:type: :normal
 :unpack_time: 2014-02-02 04:35:37.885964000 -05:00
 :unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:571c93836cf64052fc370341e55bff0a71bae2ba]
 :content: ! "\n  /* MANIFESTS  */\n\n  U='u';\n  V='v';\n  W='w';\n  X='x';\n  Y='_';\n

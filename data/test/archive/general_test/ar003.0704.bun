@@ -11,9 +11,9 @@
 :path: fass/idallen/abnpsych
 :tape: ar003.0704
 :tape_size: 6444
-:type: :text
-:unpack_time: 2014-02-23 16:59:24.129591000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/executable_decode:96e5fb35af290c0822a0d0833fed0a4c3c8830b4]
+:type: :normal
+:unpack_time: 2014-03-01 10:39:40.849888000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:a84881c8c9dedebac64357ce2b7d31394812729c]
 :content: !binary |-
   AABA8UAABAAVAADALACQoUs0CQoUs0AAAAAAAAAAAUMxhOZzAAAAAAAAAAAA
   AAAAAAF5pMhhNhsMpuF5hMRuOBzPJjNAgEA9Ho+MxpNhlOYgMxvOQgNJkMJs

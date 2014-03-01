@@ -1,7 +1,7 @@
 ---
 :description: ==>files for idallen
 :tape_size: 2582
-:type: :text
+:type: :normal
 :tape: ar003.0698
 :owner: fass
 :path: fass/idallen/vector

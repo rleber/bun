@@ -146,7 +146,7 @@ module Bun
         end
         offset, lc_incr, eof = dump_frozen_link(data, offset, dump_options.merge(link_limit: link_limit))
         lc += lc_incr
-      when :text
+      when :normal
         loop do
           break if offset > link_limit
           offset, lc_incr, eof = dump_llink(data, offset, dump_options)
@@ -228,7 +228,7 @@ module Bun
       indent = options[:indent] || 0
       pad = ' '*indent
       descriptor = data.words.at(offset)
-      flags = File::Text.line_flags(descriptor)
+      flags = File::Normal.line_flags(descriptor)
       address_width = options[:address_width] || ('%o'%(flags[:length]+display_offset)).size+1
       address = "%0#{address_width}o" % (offset + display_offset)
       stream.puts "#{address}#{pad} #{format_rcw(descriptor)}"
@@ -240,7 +240,7 @@ module Bun
     end
 
     def self.format_rcw(rcw)
-      flags = File::Text.line_flags(rcw)
+      flags = File::Normal.line_flags(rcw)
       segments = ["RCW #{'%013o'%rcw}"]
       if flags[:eof]
         segments << "EOF #{flags[:eof_type]}" if flags[:eof]

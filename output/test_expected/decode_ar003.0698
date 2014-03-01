@@ -3,8 +3,8 @@
 :block_count: 1
 :block_padding_repairs: 0
 :catalog_time: 1976-11-22 00:00:00.000000000 -05:00
-:decode_time: 2014-02-25 16:47:09.642410000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/executable_decode:a6a476393675278ad1e4133c446369886310938b]
+:decode_time: 2014-03-01 09:13:05.668746000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/executable_decode:a84881c8c9dedebac64357ce2b7d31394812729c]
 :description: ==>files for idallen
 :digest: db455f97b98b77cc0f99c1a81159c0fb
 :first_block_size: 2582
@@ -19,7 +19,7 @@
 :tape: ar003.0698
 :tape_size: 2582
 :text_size: 8568
-:type: :text
+:type: :normal
 :unpack_time: 2014-02-23 16:59:23.137110000 -05:00
 :unpacked_by: Bun version 0.3.0 [feature/executable_decode:96e5fb35af290c0822a0d0833fed0a4c3c8830b4]
 :content: ! ".po10\n.sp22\n.ce\n.ul\nTHE VECTOR MACHINE\n.sp5\n.ce\n.ul\nAuthors:\n.sp\n.ce\nCal

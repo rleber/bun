@@ -116,19 +116,19 @@ module Bun
           descriptor = options[:descriptor]
           type = options[:force_type] || descriptor[:type]
           case type
-          when :text
-            File::Unpacked::Text.new(options)
+          when :normal
+            File::Normal.new(options)
           when :frozen
-            File::Unpacked::Frozen.new(options)
+            File::Frozen.new(options)
           when :huffman
-            File::Unpacked::Huffman.new(options)
+            File::Huffman.new(options)
           when :executable
-            File::Unpacked::Executable.new(options)
+            File::Executable.new(options)
           else
             if options[:strict]
               raise UnknownFileTypeError,"!Unknown file type: #{descriptor.type.inspect}"
             else
-              File::Unpacked::Text.new(options)
+              File::Normal.new(options)
             end
           end
         end
@@ -198,6 +198,10 @@ module Bun
         #  6. :shards
         #  7. :content
         content = options.delete(:content)
+        if data.is_a?(String)
+          debug "caller\n" + caller.join("\n")
+          stop "!Boom"
+        end
         content ||= data.data
         fields = descriptor.to_hash
         fields.delete(:data)

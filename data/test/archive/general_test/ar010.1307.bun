@@ -11,9 +11,9 @@
 :path: fass/idallen/shell
 :tape: ar010.1307
 :tape_size: 4850
-:type: :text
-:unpack_time: 2014-02-23 16:59:42.231658000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/executable_decode:96e5fb35af290c0822a0d0833fed0a4c3c8830b4]
+:type: :executable
+:unpack_time: 2014-03-01 10:39:58.744054000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:a84881c8c9dedebac64357ce2b7d31394812729c]
 :content: !binary |-
   AABA8XAABAAYAAKAUbCSnRPFCSnRPFAAAAAAAABAAPMxhOZzAAAAAAAAAAAA
   AAAAAAF5pMhhNhsMpuF5zNBlNhsEA9Ho+EBpMJuE5zEBjMJ0MJsN5nOplEBh

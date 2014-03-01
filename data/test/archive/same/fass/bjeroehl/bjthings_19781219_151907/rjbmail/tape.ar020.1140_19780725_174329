@@ -3,12 +3,14 @@
 :block_count: 4
 :block_padding_repairs: 3
 :catalog_time: 1978-12-22 00:00:00.000000000 -05:00
-:decode_time: 2014-02-23 17:07:15.459418000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/executable_decode:96e5fb35af290c0822a0d0833fed0a4c3c8830b4]
+:decode_time: 2014-03-01 15:28:00.443628000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/executable_decode:a84881c8c9dedebac64357ce2b7d31394812729c]
 :description: Bernie's Odds and Ends freezefile
 :digest: 0155d8bd75758b61b7a91a4dd4465b0a
 :first_block_size: 3865
 :format: :decoded
+:media_codes: []
+:multi_segment: false
 :owner: fass
 :path: fass/bjeroehl/bjthings
 :tape: ar020.1140
@@ -16,8 +18,8 @@
 :text_size: 634
 :time: 1978-12-19 15:19:07.000000000 -05:00
 :type: :frozen
-:unpack_time: 2014-02-23 16:59:51.853938000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/executable_decode:96e5fb35af290c0822a0d0833fed0a4c3c8830b4]
+:unpack_time: 2014-03-01 10:40:08.577433000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:a84881c8c9dedebac64357ce2b7d31394812729c]
 :content: ! "33 fass         Thu Jul  6 1978  21:08 *\nHi.  My name is Bernie -- I'm
   the guy that Rohan may have mentioned\nconcerning the tape of the Adventure program.
   \ I picked it up on my\nway through Toronto today (I'm here 'till Sunday from Montreal).

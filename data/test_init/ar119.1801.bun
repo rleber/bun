@@ -1,6 +1,6 @@
 ---
 :identifier: Bun
-:block_count: 1
+:block_count: 2
 :block_padding_repairs: 0
 :catalog_time: 1985-09-03 00:00:00.000000000 -04:00
 :description: ''
@@ -11,9 +11,9 @@
 :path: fass/1986/skit.t
 :tape: ar119.1801
 :tape_size: 1936
-:type: :text
-:unpack_time: 2014-02-23 17:02:36.670752000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/executable_decode:96e5fb35af290c0822a0d0833fed0a4c3c8830b4]
+:type: :normal
+:unpack_time: 2014-03-01 10:42:47.592285000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:a84881c8c9dedebac64357ce2b7d31394812729c]
 :content: !binary |-
   AABAeOAABAAPAB3AcJCh/Kx+ChJbNmAAAAAAkAAAAGMxhOZzAAAAAAAAAAAA
   AAAAAAF4xHI4GwvOZrNJ0Fx0AAAAAAAABAE1AAUAIAAAAAAAAAAAAAAAAAAA

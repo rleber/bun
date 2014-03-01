@@ -3,21 +3,25 @@
 :block_count: 19
 :block_padding_repairs: 18
 :catalog_time: 1977-02-24 00:00:00.000000000 -05:00
-:decode_time: 2014-02-23 17:05:35.370331000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/executable_decode:96e5fb35af290c0822a0d0833fed0a4c3c8830b4]
+:decode_time: 2014-03-01 15:26:22.329339000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/executable_decode:a84881c8c9dedebac64357ce2b7d31394812729c]
 :description: klisted final copy of fass '77 script
 :digest: d63f127d31a517648d558540d1cca409
 :first_block_size: 3863
 :format: :decoded
 :llink_count: 20
+:media_codes:
+- 6
+- 8
+:multi_segment: false
 :owner: fass
 :path: fass/script
 :tape: ar004.0642
 :tape_size: 70840
 :text_size: 241204
-:type: :text
-:unpack_time: 2014-02-23 16:59:37.670067000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/executable_decode:96e5fb35af290c0822a0d0833fed0a4c3c8830b4]
+:type: :normal
+:unpack_time: 2014-03-01 10:39:53.776527000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:a84881c8c9dedebac64357ce2b7d31394812729c]
 :content: ! "\t\n\t\n        FASS                   - 1 -           ACT I SCENE 0\tFASS
   \                      - 1 -               ACT I SCENE I\n\t\n\t\n\t\n        Act
   1 Scene 0\tAct 1, Scene 1 - Closing Song\n\t\n        (AN EXTENDED ROUTINE BEFORE

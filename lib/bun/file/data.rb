@@ -276,7 +276,7 @@ module Bun
       elsif executable
         :executable
       else
-        :text
+        :normal
       end
     end
     
