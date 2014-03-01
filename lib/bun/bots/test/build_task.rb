@@ -88,10 +88,13 @@ no_tasks do
   def build_general_test(at, format=:cataloged, options={})
     build_directory(at, options) do
       build_file "ar003.0698", nil, format, quiet: options[:quiet]
+      build_file "ar003.0704", nil, format, quiet: options[:quiet]
       build_file "ar003.0701", nil, format, quiet: options[:quiet]
       build_file "ar004.0888", nil, format, quiet: options[:quiet]
+      build_file "ar010.1307", nil, format, quiet: options[:quiet]
       build_file "ar019.0175", nil, format, quiet: options[:quiet]
       build_file "ar025.0634", nil, format, quiet: options[:quiet]
+      build_file "ar047.1383", nil, format, quiet: options[:quiet]
       build_file "ar082.0605", nil, format, quiet: options[:quiet]
       build_file "ar083.0698", nil, format, quiet: options[:quiet]
       build_file "ar145.2699", nil, format, quiet: options[:quiet]

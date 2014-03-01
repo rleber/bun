@@ -230,9 +230,9 @@ The format for Honeywell Huffman-encoded files is as follows:
   not use the llink structure contained in text files.
 - The file contains first the Huffman encoding translation table/tree, followed by the encoded text.
 - The first word after the preamble of the first link should contain 'huff'
-- The next word contains the number of characters in the encoded text (allegedly) in the upper 18 bits
-  of the word. There's some information encoded in the remainder of the word, too, but I can't figure 
-  out what it means.
+- The next word contains the number of characters in the encoded text in bits 1-17. (Bit 0 encodes
+  something, but I'm not sure what.) There's some information encoded in the remainder of the word, too, 
+  but I can't figure out what it means.
 - After the first two words begins the Huffman encoding tree. Taking each 9-bit byte in turn, they
   encode a binary tree, using the following algorithm:
   - Examine a byte. If it is zero, then you are at a leaf of the tree, and the next byte contains the 

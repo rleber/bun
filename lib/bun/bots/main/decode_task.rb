@@ -40,9 +40,9 @@ def decode(file_name, out=nil)
     File::Unpacked.open(file_name, :promote=>!options[:asis]) do |file|
       begin
         file.decode(out, options.merge(:shard=>shard))
-      rescue Bun::File::Unpacked::Huffman::BadFileContentError => e
+      rescue Bun::HuffmanData::BadFileContentError => e
         stop "!Bad Huffman encoded file: #{e}", quiet: options[:quiet]
-      rescue Bun::File::Unpacked::Huffman::TreeTooDeepError => e
+      rescue Bun::HuffmanData::TreeTooDeepError => e
         stop "!Bad Huffman encoded file: #{e}", quiet: options[:quiet]
       rescue Bun::File::CantExpandError
         stop "!Can't expand frozen archive. Provide --shard option or --expand and directory name", quiet: options[:quiet]

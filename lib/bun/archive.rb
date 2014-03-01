@@ -463,9 +463,9 @@ module Bun
             to_tape_path = nil if options[:dryrun] # Skip quietly
             to_tape_path
           end
-        rescue Bun::File::Unpacked::Huffman::BadFileContentError => e
+        rescue Bun::HuffmanData::BadFileContentError => e
           File.replace_messages tape_path, "Skipped #{relative_path(tape_path)}: Bad Huffman encoded file: #{e}" unless options[:quiet]
-        rescue Bun::File::Unpacked::Huffman::TreeTooDeepError => e
+        rescue Bun::HuffmanData::TreeTooDeepError => e
           File.replace_messages tape_path, "Skipped #{relative_path(tape_path)}: Bad Huffman encoded file: #{e}" unless options[:quiet]
         end
         unless options[:quiet]

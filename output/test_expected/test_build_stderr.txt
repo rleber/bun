@@ -98,13 +98,19 @@ mkdir -p data/test/archive/general_test
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
 cp -f /Users/richard/fass_work/cataloged/ar003.0698.bun /Users/richard/projects/bun/data/test/archive/general_test/ar003.0698.bun
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
+cp -f /Users/richard/fass_work/cataloged/ar003.0704.bun /Users/richard/projects/bun/data/test/archive/general_test/ar003.0704.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
 cp -f /Users/richard/fass_work/cataloged/ar003.0701.bun /Users/richard/projects/bun/data/test/archive/general_test/ar003.0701.bun
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
 cp -f /Users/richard/fass_work/cataloged/ar004.0888.bun /Users/richard/projects/bun/data/test/archive/general_test/ar004.0888.bun
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
+cp -f /Users/richard/fass_work/cataloged/ar010.1307.bun /Users/richard/projects/bun/data/test/archive/general_test/ar010.1307.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
 cp -f /Users/richard/fass_work/cataloged/ar019.0175.bun /Users/richard/projects/bun/data/test/archive/general_test/ar019.0175.bun
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
 cp -f /Users/richard/fass_work/cataloged/ar025.0634.bun /Users/richard/projects/bun/data/test/archive/general_test/ar025.0634.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
+cp -f /Users/richard/fass_work/cataloged/ar047.1383.bun /Users/richard/projects/bun/data/test/archive/general_test/ar047.1383.bun
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
 cp -f /Users/richard/fass_work/cataloged/ar082.0605.bun /Users/richard/projects/bun/data/test/archive/general_test/ar082.0605.bun
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
@@ -116,13 +122,19 @@ mkdir -p data/test/archive/general_test_packed_init
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
 cp -f /Users/richard/fass_work/packed/ar003.0698 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar003.0698
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
+cp -f /Users/richard/fass_work/packed/ar003.0704 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar003.0704
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
 cp -f /Users/richard/fass_work/packed/ar003.0701 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar003.0701
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
 cp -f /Users/richard/fass_work/packed/ar004.0888 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar004.0888
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
+cp -f /Users/richard/fass_work/packed/ar010.1307 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar010.1307
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
 cp -f /Users/richard/fass_work/packed/ar019.0175 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar019.0175
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
 cp -f /Users/richard/fass_work/packed/ar025.0634 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar025.0634
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
+cp -f /Users/richard/fass_work/packed/ar047.1383 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar047.1383
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
 cp -f /Users/richard/fass_work/packed/ar082.0605 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar082.0605
 mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init

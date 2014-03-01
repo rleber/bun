@@ -1,5 +1,37 @@
 TODO
 _High Priority_
+BCD flag
+Additional tests
+- Executable files are binary
+- Binary Huffman files: flag and decoding
+- Text files are not binary
+- Frozen files are not binary
+- BCD files
+- BCD print listings
+- Media codes in non-text files
+- Sectors
+- Block count
+- First block size
+- Media_codes
+- Dump -S
+   - Text: ar003.0704
+   - Frozen: ar019.0175
+   - BCD/binary text: ar047.1383
+   - Huffman: ar003.0701
+   - Executable: ar010.1307
+- Executables:
+   - Decode
+   - Compress
+   - Bake
+Indexes from bake
+- Optionally, from bun bake
+- Optionally, from bun archive bake
+Fields should include content_start
+Bun describe should include sectors, block_count, media_codes, content_start
+What does dump do with decoded or baked files?
+File type text should be renamed normal
+
+
 Fix bug in decode complex file
 Create bun dump --structured (or some such), which breaks out BCWs, LLINKS, RCWs, etc.
 Save media_codes and multi_segment flags in decoded file formats (careful of impact on bun show!)

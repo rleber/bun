@@ -56,17 +56,30 @@ module Bun
         end
         chars = chars.join
         chunk = ((chunk.map{|w| '%012o'%w }) + ([' '*12] * WORDS_PER_LINE))[0,WORDS_PER_LINE]
+        octal = chunk.join
+        if options[:skip_characters] && line_count==0
+          sc = options[:skip_characters]
+          octal[0,sc*3] = ' '*(sc*3)
+        end
         if options[:escape]
           chars = (chars + ' '*(WORDS_PER_LINE*character_block_size))[0,WORDS_PER_LINE*character_block_size]
           chars = chars.inspect[1..-2].scan(/\\\d{3}|\\[^\d\\]|\\\\|[^\\]/).map{|s| (s+'   ')[0,4]}.join
+          if options[:skip_characters] && line_count==0
+            sc = options[:skip_characters]
+            chars[0,sc*4] = ' '*(sc*4)
+          end
         else
           chars = chars.gsub(/[[:cntrl:]]/, '~')
           chars = chars.gsub(/_/, '~').gsub(/\s/,'_') unless options[:spaces]
           chars = (chars + ' '*(WORDS_PER_LINE*character_block_size))[0,WORDS_PER_LINE*character_block_size]
+          if options[:skip_characters] && line_count==0
+            sc = options[:skip_characters]
+            chars[0,sc] = ' '*sc
+          end
           chars = chars.scan(/.{1,#{character_block_size}}/).join(' ')
         end
         address = "%0#{address_width}o" % (i + display_offset)
-        stream.puts "#{address}#{pad} #{chunk.join(' ')} #{chars}"
+        stream.puts "#{address}#{pad} #{octal.scan(/.{12}/).join(' ')} #{chars}"
         line_count += 1
         i += WORDS_PER_LINE
       end
@@ -146,6 +159,17 @@ module Bun
           lc += lc_incr
         end
         offset, lc_incr, eof = dump_executable_link(data, offset, dump_options.merge(link_limit: link_limit))
+        lc += lc_incr
+      when :huffman
+        if options[:link_count] == 0
+          offset, lc, eof = dump_huffman_definitions(data, offset, options.merge(offset: offset, length: 2,
+                                                  indent: indent, address_width: address_width))
+          skip = data.content_start % 4
+        else
+          skip = 0
+        end
+        offset, lc_incr, eof = dump_huffman_link(data, offset, dump_options.merge(link_limit: link_limit, 
+                                  skip_characters: skip))
         lc += lc_incr
       else
         stop "!Can't dump #{data.type} files"
@@ -323,6 +347,44 @@ module Bun
       lc += dump(data, options.merge(offset: offset, length: options[:length],
                                      indent: indent+2, address_width: address_width))
       [offset + options[:length], lc, false]
+    end
+
+    def self.dump_huffman_definitions(data, offset, options={})
+      stream = options[:to] || $stdout
+      display_offset = (options[:display_offset] || offset) - offset
+      indent = options[:indent] || 0
+      pad = ' '*indent
+      limit = data.content_offset + 1 + (data.content_start/4.0).ceil
+      address_width = options[:address_width] || ('%o'%(limit+display_offset)).size+1
+      address = "%0#{address_width}o" % (offset + display_offset)
+      stream.puts "#{address}#{pad}   FLAGS"
+      lc = 1
+      lc +=  dump(data, options.merge(offset: offset, length: 2,
+                                      indent: indent+4, address_width: address_width))
+      offset += 2
+      stream.puts "#{address}#{pad}   TREE"
+      lc += 1
+      last_word = data.content_start % 4
+      lc +=  dump(data, options.merge(offset: offset, length: limit-offset+1, last_word: last_word,
+                                      indent: indent+4, address_width: address_width))
+      offset = limit + 1
+      offset -= 1 if data.content_start % 4 > 0
+      [offset, lc, false]
+    end
+
+    def self.dump_huffman_link(data, offset, options={})
+      stream = options[:to] || $stdout
+      display_offset = (options[:display_offset] || offset) - offset
+      indent = options[:indent] || 0
+      pad = ' '*indent
+      link_limit = options[:link_limit]
+      address_width = options[:address_width] || ('%o'%(link_limit+display_offset)).size+1
+      address = "%0#{address_width}o" % (offset + display_offset)
+      stream.puts "#{address}#{pad} CONTENT"
+      lc = 1
+      lc += dump(data, options.merge(offset: offset, length: link_limit-offset+1,
+                                     indent: indent+2, address_width: address_width))
+      [link_limit+1, lc, false]
     end
   end
 end
