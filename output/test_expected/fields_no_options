@@ -1,8 +1,10 @@
+bcd
 binary
 block_count
 block_padding_repairs
 catalog_time
 content
+content_start
 data
 decode_time
 decoded_by
@@ -20,6 +22,7 @@ media_codes
 multi_segment
 owner
 path
+sectors
 shard_blocks
 shard_name
 shard_number

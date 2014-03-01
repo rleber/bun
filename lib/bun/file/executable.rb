@@ -27,6 +27,14 @@ module Bun
       def executable
         true
       end
+
+      def binary
+        true
+      end
+
+      def bcd
+        false
+      end
     end
   end
 end

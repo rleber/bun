@@ -1,15 +1,9 @@
 TODO
 _High Priority_
-File type text should be renamed normal
-Change show text to show content
-bun bake --to-original-destination
 Indexes from bake
 - Optionally, from bun bake
 - Optionally, from bun archive bake
-Fields should include content_start
-Bun describe should include sectors, block_count, media_codes, content_start
-What does dump do with decoded or baked files?
-BCD flag
+bun describe should include sectors, content_start
 More extensions to bun show
     Fully qualified path (e.g. for shards in frozen archives)
     Field_values (returns array of [field_name, value] pairs)
@@ -26,16 +20,7 @@ Additional tests
 - First block size
 - Media_codes
 - content
-- Dump -S
-   - Text: ar003.0704
-   - Frozen: ar019.0175
-   - BCD/binary text: ar047.1383
-   - Huffman: ar003.0701
-   - Executable: ar010.1307
-- Executables:
-   - Decode
-   - Compress
-   - Bake
+- bun bake with executables
 Rebuild FASS and Watbun archives
 Test binary Huffman files: flag and decoding
 Make bun test build and build_compress... independent of FASS and watbun archives (i.e copy source files)
@@ -96,6 +81,7 @@ Implement interactive (or stream) editor:
     Alternatively: check out the contents (in whatever format), edit, then check them back in again
 
 _Medium Priority_
+bun bake --to-original-destination
 Refine topological sorting: one pass through for precedences; version with {|node1, node2| ... } block
 Move topological sorting to its own gem
 Other traits

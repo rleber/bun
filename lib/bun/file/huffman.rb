@@ -22,6 +22,10 @@ module Bun
         data.binary
       end
 
+      def bcd
+        data.bcd
+      end
+
       def decoded_text(options={})
         data.text
       end

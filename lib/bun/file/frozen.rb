@@ -69,6 +69,10 @@ module Bun
       def binary
         false
       end
+
+      def bcd
+        false
+      end
       
       def descriptors_size
         preamble_size - File::Frozen::Descriptor.offset

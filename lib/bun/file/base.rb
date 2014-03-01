@@ -563,5 +563,9 @@ module Bun
     def multi_segment
       false
     end
+
+    def content_start
+      0
+    end
   end
 end

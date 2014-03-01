@@ -56,6 +56,10 @@ module Bun
       decoded_bytes.any? {|byte| byte > 255 }
     end
 
+    def bcd
+      false
+    end
+
     def number_of_characters
       (file_size_word >> 18 & 0377777).to_i
     end

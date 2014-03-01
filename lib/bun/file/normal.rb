@@ -88,6 +88,7 @@ module Bun
         line_offset = 0
         lines = []
         @binary = false
+        @bcd = false
         warned = false
         n = 0
         while line_offset < content.size
@@ -106,8 +107,13 @@ module Bun
       cache :lines
 
       def binary
-        lines unless @binary
+        lines if @binary.nil?
         @binary
+      end
+
+      def bcd
+        lines if @bcd.nil?
+        @bcd
       end
     
       # TODO simplify
@@ -126,6 +132,7 @@ module Bun
           raw_line = words[line_offset+1,line_length]
           case flags[:media_code]
           when 0,2,3,9 # BCD
+            @bcd = true
             line = words[line_offset+1,line_length].bcd_string + "\n"
           when 5,6,7,10,13 # ASCII
             line = raw_line.map{|w| w.characters}.join[0,flags[:bytes]].sub(/\177+$/,'') + "\n"
