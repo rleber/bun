@@ -65,7 +65,9 @@ In what follows:
   it appears that the 'bun used only 7-bit ASCII for character encoding.
 - In some cases (see the discussion of media codes below), data was stored as BCD. This uses a 6-bit
   encoding to pack 6 characters into a word. The character set is weird (EBCDIC-like), and is described
-  at http://www.thinkage.ca/english/gcos/expl/bcd.html
+  at http://www.thinkage.ca/english/gcos/expl/bcd.html. Some of the formats also provide for "escape 
+  sequences" to embed printer control codes in the BCD. This is explained in more detail in the file 
+  doc/file_format/bcd_printer_codes.txt
 - Dates are stored as eight 9-bit ASCII characters "dd/mm/yy"
 - Times are stored as 36-bit unsigned integers. If you are interested in the details, I suggest you look
   at the code in lib/bun/file/data.rb (the Bun::Data.time_of_day method)
@@ -173,7 +175,8 @@ have the following format:
              punch cards!), and compressed source decks. When records contain binary card images,
              they are always 27 words long.
         2: Card image BCD. Records are always 14 words long.
-        3: Print image BCD. Records always contain printer control codes.
+        3: Print image BCD. Records always contain printer control codes. See doc/file_formats/
+           bcd_printer_codes.txt for an explanation of these printer control codes.
         4: User-specified format. Used by University of Waterloo B programs for output of binary
              streams. Other formats may exist, but translation is not guaranteed.
         5: "Old format" TSS ASCII. Not used and not supported.
@@ -199,7 +202,8 @@ have the following format:
     characters in it. In this case, I have generally found that the line is encoded as one word, with
     final_bytes set to 1 (because zero would mean 4 bytes), and the first byte of the line is 0177.)
   - Some control characters may be found, e.g. backspace, tab
-  - In the case of BCD data, this software converts it to ASCII
+  - In the case of BCD data, this software converts it to ASCII. It does not make any attempt to convert
+    printer control codes to ASCII control characters (or perform any other conversion on them).
   - In the case of binary data, this software converts it to binary (i.e. an whole number of 8-bit bytes
     of binary data), followed by a carriage return. (This may not be exactly right, but it's what the
     software does, right now.) Because 9-bit bytes may not fit evenly into 8-bit bytes, the line may

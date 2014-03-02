@@ -1,9 +1,10 @@
 TODO
 _High Priority_
+bun describe should include sectors, content_start
+baking should not strip metadata from executables(?)
 Indexes from bake
 - Optionally, from bun bake
 - Optionally, from bun archive bake
-bun describe should include sectors, content_start
 More extensions to bun show
     Fully qualified path (e.g. for shards in frozen archives)
     Field_values (returns array of [field_name, value] pairs)
@@ -82,6 +83,7 @@ Implement interactive (or stream) editor:
 
 _Medium Priority_
 bun bake --to-original-destination
+Convert BCD printer control codes
 Refine topological sorting: one pass through for precedences; version with {|node1, node2| ... } block
 Move topological sorting to its own gem
 Other traits
