@@ -196,6 +196,24 @@ describe "unpack" do
       exec_on_success("rm -rf data/test/archive/general_test_packed")
     end
   end
+  context "with an undecodable file" do
+    context "with output to '-'" do
+      before :all do
+        exec("rm -f output/test_actual/unpack_ar010.1307")
+        exec("cp -r data/test/archive/general_test_packed_init \
+                    data/test/archive/general_test_packed")
+        exec("bun unpack data/test/ar010.1307 - \
+                  >output/test_actual/unpack_ar010.1307")
+      end
+      it "should match the expected output" do
+        "unpack_ar010.1307".should match_expected_output_except_for(UNPACK_PATTERNS)
+      end
+      after :all do
+        backtrace
+        exec_on_success("rm -f output/test_actual/unpack_ar010.1307")
+      end
+    end
+  end
   context "with a file with a bad time" do
     context "without --fix" do
       before :all do

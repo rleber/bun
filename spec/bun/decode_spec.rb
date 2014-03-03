@@ -172,7 +172,7 @@ describe "decode" do
       exec_on_success("rm -f output/test_actual/decode_ar003.0701")
     end
   end
-  context "with frozen file" do
+  context "with a frozen file" do
     context "and +0 shard argument" do
       before :all do
         exec("rm -rf output/test_actual/decode_ar004.0888_0")
@@ -301,6 +301,20 @@ describe "decode" do
           end
         end
       end
+    end
+  end
+  context "with an undecodable file" do
+    before :all do
+      exec("rm -f output/test_actual/decode_ar010.1307")
+      exec("bun decode data/test/ar010.1307.bun \
+                >output/test_actual/decode_ar010.1307")
+    end
+    it "should match the expected output" do
+      "decode_ar010.1307".should match_expected_output_except_for(DECODE_PATTERNS)
+    end
+    after :all do
+      backtrace
+      exec_on_success("rm -f output/test_actual/decode_ar010.1307")
     end
   end
 end

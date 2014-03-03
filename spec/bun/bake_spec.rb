@@ -155,4 +155,18 @@ describe "bake" do
       exec_on_success("rm -f output/test_actual/bake_decoded_file.txt")
     end
   end
+  context "with an undecodable file" do
+    before :all do
+      exec("rm -f output/test_actual/bake_undecodable_file.txt")
+      exec("bun bake data/test/undecodable_decoded_file \
+                >output/test_actual/bake_undecodable_file.txt")
+    end
+    it "should match the expected output" do
+      "bake_undecodable_file.txt".should match_expected_output
+    end
+    after :all do
+      backtrace
+      exec_on_success("rm -f output/test_actual/bake_undecodable_file.txt")
+    end
+  end
 end
