@@ -7,14 +7,19 @@ Format                 :decoded
 Size (Words)           70840
 Type                   Normal
 MD5 Digest             d63f 127d 31a5 1764 8d55 8540 d1cc a409
+BCD                    false
+Binary                 false
 Block Count            19
 Block Padding Repairs  18
-Decode Time            2014-03-01 11:19:50 -0500
-Decoded By             Bun version 0.3.0 [feature/executable_decode:a84881c8c9dedebac64357ce2b7d31394812729c]
+Content Start          0
+Decodable              true
+Decode Time            2014-03-03 16:51:02 -0500
+Decoded By             Bun version 0.3.0 [feature/executable_decode:7e31b24f4c84602dfec725fd3ca3b2c6b982ac01]
 First Block Size       3863
 Llink Count            20
 Media Codes            [6, 8]
-Multi Segment          false
+Multi-segment          false
+Sectors                1100
 Text Size              241204
-Unpack Time            2014-03-01 10:39:53 -0500
-Unpacked By            Bun version 0.3.0 [feature/executable_decode:a84881c8c9dedebac64357ce2b7d31394812729c]
+Unpack Time            2014-03-03 16:45:30 -0500
+Unpacked By            Bun version 0.3.0 [feature/executable_decode:7e31b24f4c84602dfec725fd3ca3b2c6b982ac01]

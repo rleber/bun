@@ -1,10 +1,14 @@
 ---
 :identifier: Bun
+:bcd: false
+:binary: false
 :block_count: 4
 :block_padding_repairs: 3
 :catalog_time: 1982-12-22 00:00:00.000000000 -05:00
-:decode_time: 2014-03-01 16:50:44.801721000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/executable_decode:52f8cc890274aa85caa8920cea5c85d1d20bf4a4]
+:content_start: 0
+:decodable: true
+:decode_time: 2014-03-03 16:59:44.326033000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/executable_decode:7e31b24f4c84602dfec725fd3ca3b2c6b982ac01]
 :description: ''
 :digest: 008c0d5eda808207c7ecc39efaeca09d
 :first_block_size: 3855
@@ -13,13 +17,14 @@
 :multi_segment: false
 :owner: bjeroehl
 :path: bjeroehl/fass/bjthings
+:sectors: 225
 :tape: ar082.0604
 :tape_size: 14207
 :text_size: 2630
 :time: 1978-12-19 15:19:07.000000000 -05:00
 :type: :frozen
-:unpack_time: 2014-03-01 16:38:04.910238000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/executable_decode:52f8cc890274aa85caa8920cea5c85d1d20bf4a4]
+:unpack_time: 2014-03-03 16:46:56.382835000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:7e31b24f4c84602dfec725fd3ca3b2c6b982ac01]
 :content: ! 'copy fass/addinde to at:t0(ebcdic,fb=80,blksize=800)
 
   copy fass/bjeroehl/assign5;2.1 to at:t0(ebcdic,fb=80,blksize=800)

@@ -12,6 +12,11 @@ end
 STANDARD_FIELDS = %w{description catalog_time data digest format time
                      identifier owner path shards tape tape_path tape_size type }.map{|f| f.to_sym}
 
+FIELD_TRANSLATIONS = {
+  bcd: "BCD",
+  multi_segment: "Multi-segment",
+}
+
 SHARDS_ACROSS = 5
 desc "describe FILE", "Display description information for a tape"
 def describe(file)
@@ -41,9 +46,8 @@ def describe(file)
   push_tbl preamble_table, "MD5 Digest", descriptor.digest.scan(/..../).join(' ')
   
   (descriptor.fields.map{|f| f.to_sym} - STANDARD_FIELDS).sort_by{|f| f.to_s }.each do |f|
-    push_tbl preamble_table,
-             f.to_s.gsub(/_/,' ').gsub(/\b[a-z]/) {|c| c.upcase},
-             descriptor[f.to_sym].to_s
+    fname = FIELD_TRANSLATIONS[f.to_sym] || f.to_s.gsub(/_/,' ').gsub(/\b[a-z]/) {|c| c.upcase}
+    push_tbl preamble_table, fname, descriptor[f.to_sym].to_s
   end
   
   puts preamble_table.justify_rows.map {|row| row.join('  ')}
