@@ -19,9 +19,13 @@ module Bun
         super
       end
 
+      def decodable
+        false
+      end
+
       # Executables don't decode; they just copy
       def decoded_text(options={})
-        descriptor.data.data
+        raise File::Unpacked::UndecodableError, "Attempt to decode undecodable file"
       end
 
       def executable

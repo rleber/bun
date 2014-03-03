@@ -12,6 +12,7 @@ module Bun
     class CantExpandError < RuntimeError; end
     class CantDecodeError < RuntimeError; end
     class SkippingFileError < RuntimeError; end
+    class UndecodableError < RuntimeError; end
     
     class Unpacked < Bun::File
       class << self
@@ -59,11 +60,11 @@ module Bun
 
         # TODO Woof! This is getting really smelly
         def forced_open(fname, options={}, &blk)
-          input = read_information(fname)
-          input.merge!(tape_path: fname)
+          input_hash = read_information(fname)
+          input_hash.merge!(tape_path: fname)
           klass = options[:as_class] || self # So that File::Decoded can force open as File::Unpacked
-          klass.build_data(input, options)
-          klass.build_descriptor(input)
+          klass.build_data(input_hash, options)
+          klass.build_descriptor(input_hash)
           options = options.merge(:data=>klass.data, :descriptor=>klass.descriptor, :tape_path=>options[:fname])
           if options[:type] && klass.descriptor[:type]!=options[:type]
             msg = "Expected file #{fname} to be a #{options[:type]} file, not a #{klass.descriptor[:type]} file"
@@ -74,7 +75,7 @@ module Bun
               raise UnexpectedTapeTypeError, msg
             end
           end
-          file = klass.create(options)
+          file = klass.create(options.merge(input_hash: input_hash))
           if block_given?
             begin
               yield(file)
@@ -158,6 +159,7 @@ module Bun
 
       attr_reader :data
       attr_reader :descriptor
+      attr_reader :input_hash
 
       # Create a new File
       # Options:
@@ -170,6 +172,7 @@ module Bun
         @header = options[:header]
         @descriptor = options[:descriptor]
         @data = options[:data]
+        @input_hash = options[:input_hash]
         # self.words = self.class.get_words(options[:limit], options)
         super
       end
@@ -230,6 +233,7 @@ module Bun
         hash.delete(:promote)
         hash.delete(:tape_path)
         hash.delete(:fields)
+        hash.delete(:index)
         # debug "Caller: #{caller[0,2].inspect}"
         # debug hash.inspect
         hash
@@ -258,7 +262,11 @@ module Bun
       
       def to_decoded_hash(options={})
         llinks = self.llink_count rescue nil # Frozen and huffman files don't have llinks
-        text = decoded_text(options)
+        if decodable
+          text = decoded_text(options)
+        else
+          text = descriptor.data.data
+        end
         return nil unless text
         text = text.scrub if options[:scrub]
         options = options.merge(
@@ -269,6 +277,11 @@ module Bun
                     text_size:     text.size,
                     media_codes:   media_codes,
                     multi_segment: multi_segment,
+                    content_start: content_start,
+                    sectors:       sectors,
+                    decodable:     decodable,
+                    binary:        binary,
+                    bcd:           bcd,
                   )
         options[:llink_count] = llinks if llinks
         to_hash(options)
@@ -305,6 +318,10 @@ module Bun
         else
           raise CantExpandError, "Must specify either :shard or :expand"
         end
+      end
+
+      def decodable
+        true
       end
 
       def decode(to, options={}, &blk)

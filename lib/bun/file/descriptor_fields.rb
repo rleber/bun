@@ -7,15 +7,20 @@ module Bun
       class Base
         VALID_FIELDS = {
         # :field_name   => "Field description",
+          :bcd                   => "Does this file contain BCD data?",
+          :binary                => "Does this file contain binary (non-ASCII) data?",
           :block_count           => "The number of blocks in the file (one block contains 3,840 words)",
           :block_padding_repairs => "How many repairs of extra bits padding between blocks were made?",
           :catalog_time          => "The date and time of last update of the file (per the archive index)",
           :content               => "The content of this file (in external formats only)",
+          :content_start         => "Where does the content start (Huffman files only)",
           :data                  => "The content of this file in binary form",
+          :decodable             => "Is the file decodable? (Mostly true, except for executable files.)",
           :decode_time           => "The date and time at which this file was decoded",
           :decoded_by            => "An identifier of the version of the bun software that decoded this file",
           :description           => "Description of file (from Honeywell archive)",
           :digest                => "The MD5 checksum digest of the content of this file",
+          :executable            => "Is this file a Honeywell executable?",
           :first_block_size      => "The size of the first block in this file (in 36-bit words)",
           :format                => "The format of this file (e.g. :packed, :unpacked, :decoded, :baked)",
           :identifier            => "Identifies this file as a bun file",
@@ -25,6 +30,7 @@ module Bun
           :multi_segment         => "File contains lines split across blocks (text files only)",
           :owner                 => "The Honeywell username of the person who 'owned' this file",
           :path                  => "The relative path of the original file on the Honeywell",
+          :sectors               => "How many sectors (64 words) in the file?",
           :shards                => {
                                       :desc=>"The description of the shards of a frozen file", 
                                       :default=>[]
@@ -51,6 +57,8 @@ module Bun
           :earliest_time         => "The earliest recorded date for a file",
         }
 
+        # Note several of these duplicate VALID_FIELDS. If that happens, the software looks first in the descriptor,
+        # and will store the information permanently there, if it's available. If not, it looks in the file
         FILE_FIELDS = {
           :bcd                   => "Does this file contain BCD data?",
           :binary                => "Does this file contain binary (non-ASCII) data?",

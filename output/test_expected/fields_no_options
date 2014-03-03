@@ -6,6 +6,7 @@ catalog_time
 content
 content_start
 data
+decodable
 decode_time
 decoded_by
 description

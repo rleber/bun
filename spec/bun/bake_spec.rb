@@ -74,6 +74,25 @@ describe "bake" do
       exec_on_success("rm -f output/test_actual/bake_decoded_file.txt")
     end
   end
+  context "with decoded file and --index" do
+    before :all do
+      exec("rm -f output/test_actual/bake_decoded_file.txt")
+      exec("rm -f output/test_actual/bake_decoded_file_index.yml")
+      exec("bun bake data/test/decoded_file.txt --index output/test_actual/bake_decoded_file_index.yml \
+                >output/test_actual/bake_decoded_file.txt")
+    end
+    it "should match the expected output" do
+      "bake_decoded_file.txt".should match_expected_output
+    end
+    it "should create the expected index file" do
+      "bake_decoded_file_index.yml".should match_expected_output
+    end
+    after :all do
+      backtrace
+      exec_on_success("rm -f output/test_actual/bake_decoded_file.txt")
+      exec_on_success("rm -f output/test_actual/bake_decoded_file_index.yml")
+    end
+  end
   context "with an existing file" do
     before :all do
       exec("rm -f output/test_actual/bake_decoded_file.txt")
