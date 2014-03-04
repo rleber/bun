@@ -105,7 +105,8 @@ module Bun
           when 'bake'
             warn "Bake the files (i.e. remove metadata)" unless options[:quiet]
             clear_stage :baked, options
-            bake @directories[:compressed], @directories[:baked], force: options[:force], quiet: options[:quiet]
+            bake @directories[:compressed], @directories[:baked], force: options[:force], quiet: options[:quiet],
+              index: options[:index]
             build_symlink :baked if options[:links] && options[:force]
           when 'tests'
             warn "Rebuild test cases" unless options[:quiet]

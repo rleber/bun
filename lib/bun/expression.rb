@@ -49,6 +49,14 @@ module Bun
         trait[:times].value[:earliest_time]
       end
 
+      def full_path
+        if field[:shard_name]
+          File.join(field[:path], field[:shard_name])
+        else
+          field[:path]
+        end
+      end
+
       def format
         field[:format]
       end

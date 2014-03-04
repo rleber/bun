@@ -7,6 +7,7 @@ option 'delete',     :aliases=>'-d', :type=>'boolean',  :desc=>"Delete all dupli
 option 'fix',        :aliases=>'-F', :type=>'boolean',  :desc=>"Attempt to repair errors"
 option 'flatten',    :aliases=>'-n', :type=>'boolean',  :desc=>"Flatten out subdirectories"
 option "force",      :aliases=>'-f', :type=>'boolean',  :desc=>"Overwrite existing files"
+option "index",      :aliases=>'-i', :type=>'string',   :desc=>"Create index directory", :default=>Bun::DEFAULT_BAKED_INDEX_DIRECTORY
 option 'link',       :aliases=>'-l', :type=>'boolean',  :desc=>"Create symlinks for duplicate files?"
 option "prefix",     :aliases=>'-p', :type=>'string',   :desc=>"Prefix for symlinks to archive directories"
 option "quiet",      :aliases=>'-q', :type=>'boolean',  :desc=>"Don't announce each step of the process"

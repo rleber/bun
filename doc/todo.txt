@@ -1,8 +1,7 @@
 TODO
 _High Priority_
-un describe with baked files should look for .INDEX
+bun describe with baked files should look for .INDEX
 More extensions to bun show
-    Fully qualified path (e.g. for shards in frozen archives)
     Field_values (returns array of [field_name, value] pairs)
 Rebuild Watbun archives
 Test binary Huffman files: flag and decoding

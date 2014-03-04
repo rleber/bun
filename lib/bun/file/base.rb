@@ -228,6 +228,9 @@ module Bun
 
       def packed?(path)
         return false if nonpacked?(path)
+        if path !~ /(?:^|\/)ar\d{3}\.\d{4}$/
+        
+        end
         if File.read(path, PACKED_FILE_SIGNATURE.size).force_encoding('ascii-8bit') == PACKED_FILE_SIGNATURE 
           begin
             File::Packed.open(path, force: true)
@@ -377,6 +380,14 @@ module Bun
         else
           [path, nil]
         end
+      end
+
+      def shards(file)
+        File.open(file) {|f| f.descriptor.shards || [] }
+      end
+
+      def shard_names(file)
+        shards(file).map {|shard| shard.name }
       end
 
       # Does this path (or any part of its directory structure) conflict with an existing file?
