@@ -64,10 +64,6 @@ module Bun
       def wrap(value)
         value
       end
-
-      # def fields
-      #   wrap(@file.descriptor.fields)
-      # end
     
       def method_missing(name, *args, &blk)
         if trait.has_trait?(name)
@@ -113,6 +109,10 @@ module Bun
 
         def has_field?(name)
           file_object.descriptor.fields.map{|f| f.to_sym}.include?(name.to_sym) || File::Descriptor::Base.file_fields[name.to_sym]
+        end
+
+        def names
+          (file_object.descriptor.fields.map{|f| f.to_sym} + File::Descriptor::Base.file_fields.keys).uniq
         end
       
         def [](field_name)

@@ -55,6 +55,7 @@ module Bun
           :file                  => "The path of this file",
           :text                  => "The decoded text for the file",
           :earliest_time         => "The earliest recorded date for a file",
+          :full_path             => "File path plus shard name (if applicable)",
         }
 
         # Note several of these duplicate VALID_FIELDS. If that happens, the software looks first in the descriptor,
@@ -64,7 +65,6 @@ module Bun
           :binary                => "Does this file contain binary (non-ASCII) data?",
           :content_start         => "Where does the content start (Huffman files only)",
           :executable            => "Is this file a Honeywell executable?",
-          :full_path             => "File path plus shard name (if applicable)",
           :media_codes           => "Media codes for this file (text files only)",
           :multi_segment         => "File contains lines split across blocks (text files only)",
           :sectors               => "How many sectors (64 words) in the file?",
