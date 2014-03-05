@@ -16,6 +16,7 @@ executable
 file
 first_block_size
 format
+full_path
 identifier
 incomplete_file
 llink_count

@@ -46,8 +46,10 @@ class String
         end
       end
 
-      def self.description
-        "Count different control characters"
+      class << self
+        def description
+          "Display a table of all fields and their values"
+        end
       end
 
       # Designed be overridden in subclasses
@@ -59,6 +61,8 @@ class String
       def right_justified_columns
         []
       end
+
+      undef :minimum
 
       def field_names
         (file.descriptor.fields.map{|f| f.to_sym} + Bun::File::Descriptor::Base.file_fields.keys).uniq

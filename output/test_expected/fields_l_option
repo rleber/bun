@@ -17,6 +17,7 @@ executable             Is this file a Honeywell executable?
 file                   The path of this file
 first_block_size       The size of the first block in this file (in 36-bit words)
 format                 The format of this file (e.g. :packed, :unpacked, :decoded, :baked)
+full_path              File path plus shard name (if applicable)
 identifier             Identifies this file as a bun file
 incomplete_file        This file was flagged as incomplete in the catalog
 llink_count            Number of llinks in the file (decoded text files only)

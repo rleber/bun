@@ -86,7 +86,11 @@ class String
 
         def option(name, options={})
           options_store
-          @options_store[name] = {name: name}.merge(options)
+          if options
+            @options_store[name] = {name: name}.merge(options)
+          else
+            @options_store.delete(name)
+          end
         end
 
         def help

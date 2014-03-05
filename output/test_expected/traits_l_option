@@ -4,6 +4,7 @@ classes            Count major classes of characters
 clean              Test if data contains unreadable characters
 controls           Count different control characters
 english            Calculate proportion of english words
+field_values       Display a table of all fields and their values
 fields             List fields of the file
 file               File path of file
 legibility         Calculate proportion of readable characters
