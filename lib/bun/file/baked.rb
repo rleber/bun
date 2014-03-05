@@ -9,10 +9,30 @@ module Bun
         def roff(from, to, options={})
           Roff.process_file(from, to, options)
         end
+
+        def open(path, options={}, &blk)
+          index_file = Bun::File.index_file_for(path)
+          descriptor_hash = {format: :baked}
+          descriptor_hash.merge!(File::Unpacked.read_information(index_file)) if index_file
+          descriptor = File::Descriptor::Base.from_hash(nil, descriptor_hash)
+          f = new(path, options.merge(descriptor: descriptor))
+          if block_given?
+            begin
+              yield(f)
+            ensure
+              f.close
+            end
+          else
+            f
+          end
+        end
       end
 
-      def descriptor
-        @descriptor ||= File::Descriptor::Base.from_hash(nil, format: :baked)
+      attr_reader :descriptor
+
+      def initialize(path, options={})
+        super
+        @descriptor = options[:descriptor]
       end
 
       # TODO DRY this up; see File::Decoded, for instance

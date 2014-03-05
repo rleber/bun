@@ -226,18 +226,28 @@ module Bun
       
       PACKED_FILE_SIGNATURE = "\x0\x0\x40" # Packed files always start with this
 
+      def index_file_for(path)
+        dir = File.dirname(path)
+        path = File.basename(path)
+        loop do
+          index_file_path = File.join(dir, Bun::DEFAULT_BAKED_INDEX_DIRECTORY, path+Bun::INDEX_FILE_EXTENSION)
+          return index_file_path if File.exists?(index_file_path)
+          break if dir == "/" || dir == "."
+          path = File.join(File.basename(dir), path)
+          dir = File.dirname(dir)
+        end
+        nil
+      end
+
       def packed?(path)
         return false if nonpacked?(path)
-        if path !~ /(?:^|\/)ar\d{3}\.\d{4}$/
-        
-        end
         if File.read(path, PACKED_FILE_SIGNATURE.size).force_encoding('ascii-8bit') == PACKED_FILE_SIGNATURE 
-          begin
+          res = begin
             File::Packed.open(path, force: true)
           rescue => e
-            raise
             false
           end
+          index_file_for(path) ? false : res # If .INDEX... exists, then it's baked, not packed
         else
           false
         end

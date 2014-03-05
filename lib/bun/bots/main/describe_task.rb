@@ -23,8 +23,8 @@ def describe(file)
   check_for_unknown_options(file)
   # TODO Move logic to File class
 
-  if File.format(file) == :baked
-    puts "#{file} is baked. No description available."
+  if File.format(file) == :baked && !File.index_file_for(file)
+    puts "#{file} is baked and has no index. No description available."
     exit
   end
 

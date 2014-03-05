@@ -113,7 +113,7 @@ module Bun
     end
 
     def load(data)
-      @data = data
+      @data = data || ''
       self.words = self.class.import(@data)
       @block_padding_repairs = 0
       @data
