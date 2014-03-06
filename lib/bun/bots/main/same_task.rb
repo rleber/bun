@@ -49,7 +49,6 @@ def same(*args)
   
   stop "!Must provide at least one file " unless files.size > 0
 
-
   opts = options.dup # Weird behavior of options here
   asis = opts.delete(:asis)
   options = opts.merge(promote: !asis)

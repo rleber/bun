@@ -40,7 +40,7 @@ def describe(file)
   push_tbl preamble_table, "Description", descriptor.description
   push_tbl preamble_table, "Catalog Date", catalog_time.strftime('%Y/%m/%d') if catalog_time
   push_tbl preamble_table, "File Time", descriptor.time.strftime(TIME_FORMAT) if type==:frozen
-  push_tbl preamble_table, "Format", descriptor.format
+  push_tbl preamble_table, "Format", descriptor.format.to_s.sub(/^./) {|c| c.upcase}
   push_tbl preamble_table, "Size (Words)", descriptor.tape_size
   push_tbl preamble_table, "Type", type.to_s.sub(/^./) {|c| c.upcase}
   push_tbl preamble_table, "MD5 Digest", descriptor.digest.scan(/..../).join(' ')

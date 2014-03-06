@@ -4,15 +4,15 @@ Owner                  fass
 Description            "===> Songs from Fass '79 (roff source frz)"
 Catalog Date           1979/04/13
 File Time              1979/04/08 13:02:33
-Format                 :unpacked
+Format                 Unpacked
 Size (Words)           3751
 Type                   Frozen
 MD5 Digest             ed68 94b6 6259 a80e dc7e 598b 5cd4 cced
 Block Count            2
 Block Padding Repairs  1
 First Block Size       3865
-Unpack Time            2014-01-21 18:42:00 -0500
-Unpacked By            Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+Unpack Time            2014-03-05 22:11:05 -0500
+Unpacked By            Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]
 
 Shards
   Name          opening              harold               albania              drink                master

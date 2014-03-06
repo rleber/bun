@@ -2,12 +2,12 @@ Tape                   ar003.0701
 File                   fass/idallen/huffhart
 Owner                  fass
 Description            ==>files for idallen
-Format                 :unpacked
+Format                 Unpacked
 Size (Words)           662
 Type                   Huffman
 MD5 Digest             c432 253b c6b1 94ed ab16 ff86 46d9 8e8d
 Block Count            1
 Block Padding Repairs  0
 First Block Size       662
-Unpack Time            2014-01-21 18:41:24 -0500
-Unpacked By            Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+Unpack Time            2014-03-05 22:10:24 -0500
+Unpacked By            Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]
