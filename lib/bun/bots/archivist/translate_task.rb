@@ -2,8 +2,8 @@
 # -*- encoding: us-ascii -*-
 
 desc "translate [OPTIONS] FROM TO", "Process an archive, start to finish"
+option 'aggressive', :aliases=>'-a', :type=>'boolean',  :desc=>"Aggressive mode: compress identical files even if they don't have the same paths"
 option "catalog",    :aliases=>'-c', :type=>'string',   :desc=>"Location of the catalog listing"
-option 'delete',     :aliases=>'-d', :type=>'boolean',  :desc=>"Delete all duplicate files?"
 option 'fix',        :aliases=>'-F', :type=>'boolean',  :desc=>"Attempt to repair errors"
 option 'flatten',    :aliases=>'-n', :type=>'boolean',  :desc=>"Flatten out subdirectories"
 option "force",      :aliases=>'-f', :type=>'boolean',  :desc=>"Overwrite existing files"
@@ -41,7 +41,7 @@ Some convenience abbreviations are allowed:
     xxx..yyy                          Steps xxx to yyy
     xxx...yyy                         Steps xxx to the step before yyy
 
-See bun help compress for description of the --delete and --link parameters
+See bun help compress for description of the --aggressive and --link parameters
 EOT
 long_desc DESC_TEXT.freeze_for_thor
 def translate(from=nil, to=nil)

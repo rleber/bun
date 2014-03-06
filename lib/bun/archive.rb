@@ -99,7 +99,7 @@ module Bun
             from = @directories[:decoded]
             clear_stage :compressed, options
             compress @directories[:decoded], @directories[:compressed], 
-              delete: options[:delete], link: options[:link],
+              aggressive: options[:aggressive], link: options[:link],
               force: options[:force], quiet: options[:quiet]
             build_symlink :decoded if options[:links] && options[:force]
           when 'bake'
@@ -512,7 +512,7 @@ module Bun
       
       # Phase I: Remove duplicates
       duplicates('digest').each do |key, files|
-        if options[:delete] # Remove ALL duplicates, even if their target files aren't the same
+        if options[:aggressive] # Remove ALL duplicates, even if their target files aren't the same
           duplicate_files = files[1..-1]
         else # Keep duplicates (except remove duplicate copies with the same target source path)
           duplicate_files = files.group_by {|f| target_file(f)} # Group by target files

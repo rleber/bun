@@ -1,6 +1,5 @@
 TODO
 _High Priority_
-bun describe with baked files should look for .INDEX
 Rebuild Watbun archives
 Test binary Huffman files: flag and decoding
 Test other media codes
