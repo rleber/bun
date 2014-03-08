@@ -191,7 +191,6 @@ module Bun
 
           def text
             if binary
-              stop "!Encoding binary Huffman file"
               w = Bun::Words.new
               decoded_bytes.each_slice(4) do |bytes|
                 w << Bun::Word.pack_bytes(*bytes)

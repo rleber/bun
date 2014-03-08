@@ -8,12 +8,18 @@ imperfectly. Some salient features:
 
 - The Honeywell machine (known affectionately as the "'bun", as in "Honeybun") used 36 bit words.
 - The files store most significant bits first, and most significant bytes first
-- There are at least four formats of archive: 
-    Type        Contents
-    text        One file, usually ASCII text (although see below)
-    huffman     One text file with compression by Huffman encoding
-    frozen      A collection of files (much like modern tar or zip)
-    executable  A Honeywell executable file 
+- Each archive file contains one file from an archival tape. Tapes were numbered in sequence, and many of 
+  them had thousands of files archived on them. Their names are in the form ar999.9999, where the "999" is
+  the sequence number of the archival tape, and the "9999" is the sequence number of the archived file on
+  that tape
+- There are at least five formats of archived file: 
+    Type          Contents
+    text          One file, usually ASCII text (although see below)
+    huffman       One text file with compression by Huffman encoding
+    huffman_plus  An extended version of Huffman encoded file, with features for encoding
+                  runs of repeated characters, and overstruck characters from printer output
+    frozen        A collection of files (much like modern tar or zip)
+    executable    A Honeywell executable file 
   
 Because these formats are old and my understanding is imperfect, I make no warranty of the absolutely
 correctness of these notes. I encourage you to explore -- you may discover elements of the format which
@@ -25,8 +31,7 @@ refer to the other files in the doc/file_format directory of this project. These
 - decode_help.txt  Some dialog about the characteristics of Honeywell files
 - free.b.txt           A program to decode Honeywell's freeze file format, written in B, an ancestor of C
 - huff.b.txt           A program to encode Huffman coded files
-- huff.b.obsolete.txt  A program to decode Huffman encoded files, also written in B. THIS FILE IS OBSOLETE, AND
-                       DOES NOT MATCH THE ENCODING USED IN THESE FILES.
+- huff.plus.b.txt      A program to encode Huffman plus format files, also written in B. 
 - puff.b.txt           A program to decode Huffman coded files (huff and puff, get it?)
 
 The "bun dump" and "bun freezer dump" commands are available to display the contents of files in octal 
@@ -43,7 +48,8 @@ structures. You can find them on the web at http://www.thinkage.ca/english/index
 about GCOS specifically, check out http://www.thinkage.ca/english/gcos/index.shtml, and particularly the
 explain files at http://www.thinkage.ca/english/gcos/expl/masterindex.html
 
-Thanks are also due to Ian! Allen, for his input, suggestions, access to the archives, and encouragement.
+Thanks are especially due to my former classmate, Fass Theatre Group friend, and partner in crime, Ian! Allen,
+for his input, suggestions, access to the archives, and encouragement.
 
 _Some Notes On Terminology and Conventions_
 
@@ -74,8 +80,8 @@ In what follows:
 - Integers were stored as signed 36-bit words, with a leading sign bit, and using two's complement format
 - Quantities like line length fields, etc. are generally unsigned
 - Also a word containing 0170000 is an end-of-file marker. Subsequent data in the file should be ignored.
-  I am sure this is true of text files. I have never seen it used in frozen files, and I don't think it
-  applies to Huffman-coded files.
+  I am sure this is true of text files. I have never seen it used in frozen files, and it does not apply
+  to Huffman or Huffman Plus files.
 - Dates were stored as 8 ascii (9-bit) characters, in the sequence "YYYYMMDD"
 - Times were stored as a single 36-bit word, counting the number of "ticks" since midnight. It's easier
   to explain this with an algorithm than in words: see the function Bun::Data.time_of_day in 
@@ -114,10 +120,11 @@ Eac archived file is then composed of a series of such links. In some cases, a l
 may occur. This signifies end of file. Additionally, it _may_ be the case (I have some doubt), that a word
 containing 0xf000 (Octal 0170000) may mark the end of some files.
 
-So far, I have encountered four types of files (there may well be others). Each has a distinctively different
-content and format. These file types are:
+So far, I have encountered five types of files (there may well be others). Each has a distinctively different
+content and format. As discussed above, these file types are:
 - Text files
 - Huffman coded files
+- Huffman Plus format files
 - Freeze files
 - Executable files
 
@@ -261,10 +268,75 @@ into 36-bit words and then output in binary format. (Note: 36-bit words may not 
 Because of this, the resulting output may have 4 additional zero bits appended to the end of it, to fill
 out the last byte.)
 
-Important note: I made several fits and starts trying to get this to work, but I finally succeeded. One 
-of the major detours I made was trying to use the algorithm in the huff.b.obsolete.txt program. (Obviously, it
-wasn't originally named that!) This program turns out NOT to be the one that encoded these files. DO NOT USE IT.
-Look at puff.b.txt, instead.
+_Huffman Plus Files_
+
+These files are encoded with an extended Huffman encoding format, which also has features for run-length
+compression and handling overstruck characters (see the sidenote below, if this is a confusing concept for
+you). The "Huffman Plus" name is my own, but it seems to fit.
+
+Like regular Huffman files, Huffman Plus files begin with a Huffman encoding tree. However, the tree is 
+stored in a different format in the file. In addition to the Huffman compression, the format provides for
+overstriking of up to four characters, and also for compressing runs of identical characters.
+
+The format works as follows:
+- As with Huffman files, the normal link structure is followed, but llinks and RCWs are not used.
+- The file contains first the Huffman encoding translation table/tree, followed by the encoded text.
+- The first word after the preamble of the first link should contain 'huff'
+- Unlike the normal Huffman format, the next word primarily contains the number of links in the lower
+  word (I think -- although my software ignores it), and a "small tree/overstrike" flag in the top two
+  bits of the word. More specifically, if the top two bits of the word are both ones, then the small
+  tree format is used, and overstruck characters are not encoded; otherwise, they are.
+- The next word should contain 'tabl'. Again, this is different from the normal Huffman format
+- The next word should contain the number of characters encoded in the Huffman encoding tree.
+- Then, there follows the nodes describing the encoding, one for each encoding. Depending on the
+  setting of the "small tree" flag described above, each node is either 2 or 3 words long.
+  - If the "small tree" flag is set, each node is two words long
+    - The file does not provide for overstruck characters
+    - Each node describes one character encoded in the file
+    - Bits 0-17 of word 0 are the character (which could theoretically therefore be 18 bits, but
+      which I haven't found an example of)
+    - Bits 18-19 of word 0 aren't used
+    - Bits 20-35 of word 0 contain the number of bits in the encoding
+    - Word 1 of the node contains the encoding in its lowest bits (i.e. nn..35)
+  - If the "small tree" flag is not set, then each node is three words long
+    - Word 0 contains the characters. Up to four characters may be included in the word, one in each
+      9-bit byte. Unused characters contain binary zeros. If more than one character is included, that
+      means that they were overstruck. For instance, a word containing (in 9-bit encoding) "\0\0C_"
+      would be for the encoding of an underlined capital "C". In practice, the characters always seem
+      to be in the lowest order bytes of the word, padded with zeros at the top.
+    - Word 1 contains the number of bits in the encoding
+    - Word 2 contains the encoding in its lowest bits (i.e. nn..35)
+- After the tree may come a few zero words, which are ignored
+- Then there should be a word containing 'text', followed immediately by the encoded text
+- Unlike the basic Huffman encoding format, there is no "number of characters" field. Instead, the
+  text includes a special EOF character. Once that character is encountered (in its Huffman encoded
+  form), that marks the end of the file. This EOF character is represented by the 18 bits 0777777,
+  although (of course) after Huffman encoding, it might be any arbitrary assigned sequence of bits.
+- The encoded text also contains provisions for compressing runs of identical characters. This is
+  represented in the encoded text as a special REPEAT character (encoded, as with the EOF character).
+  The unencoded value of the REPEAT character is the 18 bit sequence 0777776. After this character
+  is found (in encoded form) in the text, it should immediately be followed by:
+  - 8 bits encoding the number of times the repeated character repeats (i.e. 0-255 times). Because
+    Huffman encoding uses a variable number of bits, these 8 bits are the next immediate 8 bits after
+    the end of the encoded REPEAT character, regardless of byte boundaries, etc.
+  - After the repeat count should appear a Huffman encoded character, which represents the character
+    to be repeated. This might be an overstruck character, as described above.
+  - As an example, if RPT is the sequence of bits representing the REPEAT character in the Huffman
+    encoding and 11 encodes a space, then RPT 00010001 11 encodes a string of 17 repeated spaces
+- Other than ending at an EOF character, the encoded text works in exactly the same manner as with
+  basic Huffman encoded files
+- A sidenote about overstriking:
+  - These files were created in the days before dot matrix, inkjet and laser printers. Most printers
+    worked by physically hammering type face elements into an ink tape and pressing ink from the tape 
+    onto paper, in a similar manner to a typewriter
+  - Because of this, there were no "fonts", and the characters available were limited by the physical
+    print elements in the printer.
+  - To create more diverse printing (for example underlined characters), many printers used overstriking:
+    that is, they printed more than one character onto the same space on the paper
+  - This was signified either by using the CR character to return to the start of the same line on
+    the paper and print it again, or by the BS character to back up to the previous print position
+  - This software encodes overstrikes using the BS character. So an underscore printed over a "C"
+    would be encoded as "C\b_" (or perhaps "_\bC")
 
 _Freeze Files_
 
