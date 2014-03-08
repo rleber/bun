@@ -29,7 +29,14 @@ def dump(file_name)
   end
   opts = options.to_hash.inject({}) {|hsh, pair| key,value = pair; hsh[key.to_sym] = value; hsh}
   opts.merge!(offset: offset, length: length, lines: lines)
-  force_type = File.type(file_name) == :huffman ? :huffman : :normal
+  force_type = case File.type(file_name)
+  when :huffman
+    :huffman
+  when :huffword
+    :huffword
+  else
+    :normal
+  end
   Bun::File::Unpacked.open(file_name, :promote=>true, :force_type=>force_type, :fix=>true) do |file|
     archived_file = file.path
     archived_file = "--unknown--" unless archived_file

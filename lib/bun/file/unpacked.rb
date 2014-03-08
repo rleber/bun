@@ -122,7 +122,9 @@ module Bun
           when :frozen
             File::Frozen.new(options)
           when :huffman
-            File::Huffman.new(options)
+            File::Huffman::Byte.new(options)
+          when :huffword
+            File::Huffman::Word.new(options)
           when :executable
             File::Executable.new(options)
           else

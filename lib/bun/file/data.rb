@@ -272,7 +272,13 @@ module Bun
       if frozen?
         :frozen
       elsif (word(content_offset).characters || ['']).join == 'huff'
-        :huffman
+        if (word(content_offset+2).characters || ['']).join == 'tabl'
+        # if (word(content_offset+2).characters || ['']).join == 'tabl' &&
+        #    word(content_offset+1).half_word[0] & 0177777 == 0
+          :huffword # Word-oriented Huffman format
+        else
+          :huffman # Byte-oriented Huffman format
+        end
       elsif executable
         :executable
       else

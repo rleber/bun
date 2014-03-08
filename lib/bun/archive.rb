@@ -449,7 +449,7 @@ module Bun
                 to_tape_path = File.join(to_path, decode_path(file.path, timestamp), shard_name.sub(/\.+$/,''),
                         decode_tapename(tape, descr.time))
                 File.add_message "#{tape_path}[#{shard_name}]", "Decoded #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
-              when :normal, :huffman, :executable
+              when :normal, :huffman, :huffword, :executable
                 timestamp = file.descriptor.timestamp
                 to_tape_path = File.join(to_path, file.path.sub(/\.+$/,''), decode_tapename(tape, timestamp))
                 File.add_message tape_path, "Decoded #{tape}" if options[:dryrun] || !options[:quiet]
@@ -464,9 +464,9 @@ module Bun
             to_tape_path = nil if options[:dryrun] # Skip quietly
             to_tape_path
           end
-        rescue Bun::HuffmanData::BadFileContentError => e
+        rescue Bun::File::Huffman::Data::Base::BadFileContentError => e
           File.replace_messages tape_path, "Skipped #{relative_path(tape_path)}: Bad Huffman encoded file: #{e}" unless options[:quiet]
-        rescue Bun::HuffmanData::TreeTooDeepError => e
+        rescue Bun::File::Huffman::Data::Base::TreeTooDeepError => e
           File.replace_messages tape_path, "Skipped #{relative_path(tape_path)}: Bad Huffman encoded file: #{e}" unless options[:quiet]
         end
         unless options[:quiet]

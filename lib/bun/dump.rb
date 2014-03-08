@@ -171,6 +171,8 @@ module Bun
         offset, lc_incr, eof = dump_huffman_link(data, offset, dump_options.merge(link_limit: link_limit, 
                                   skip_characters: skip))
         lc += lc_incr
+      when :huffword
+        stop "!Dump -S for huffword files is not implemented"
       else
         stop "!Can't dump #{data.type} files"
       end

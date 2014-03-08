@@ -276,6 +276,7 @@ module Bun
           f = File::Unpacked.open(path, promote: true) 
           f.type
         rescue
+          raise
           :unknown
         end
       end
