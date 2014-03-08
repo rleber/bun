@@ -32,8 +32,8 @@ def dump(file_name)
   force_type = case File.type(file_name)
   when :huffman
     :huffman
-  when :huffword
-    :huffword
+  when :huffman_plus
+    :huffman_plus
   else
     :normal
   end

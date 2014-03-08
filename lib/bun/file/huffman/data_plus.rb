@@ -5,7 +5,7 @@ module Bun
   class File < ::File
     module Huffman
       module Data
-        class Word < Base
+        class Plus < Base
 
           def initialize(options={})
             super

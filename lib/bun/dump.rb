@@ -171,8 +171,17 @@ module Bun
         offset, lc_incr, eof = dump_huffman_link(data, offset, dump_options.merge(link_limit: link_limit, 
                                   skip_characters: skip))
         lc += lc_incr
-      when :huffword
-        stop "!Dump -S for huffword files is not implemented"
+      when :huffman_plus
+        if options[:link_count] == 0
+          offset, lc, eof = dump_huffman_plus_definitions(data, offset, options.merge(offset: offset, length: 2,
+                                                  indent: indent, address_width: address_width))
+          skip = data.content_start % 4
+        else
+          skip = 0
+        end
+        offset, lc_incr, eof = dump_huffman_plus_link(data, offset, dump_options.merge(link_limit: link_limit, 
+                                  skip_characters: skip))
+        lc += lc_incr
       else
         stop "!Can't dump #{data.type} files"
       end
@@ -375,6 +384,44 @@ module Bun
     end
 
     def self.dump_huffman_link(data, offset, options={})
+      stream = options[:to] || $stdout
+      display_offset = (options[:display_offset] || offset) - offset
+      indent = options[:indent] || 0
+      pad = ' '*indent
+      link_limit = options[:link_limit]
+      address_width = options[:address_width] || ('%o'%(link_limit+display_offset)).size+1
+      address = "%0#{address_width}o" % (offset + display_offset)
+      stream.puts "#{address}#{pad} CONTENT"
+      lc = 1
+      lc += dump(data, options.merge(offset: offset, length: link_limit-offset+1,
+                                     indent: indent+2, address_width: address_width))
+      [link_limit+1, lc, false]
+    end
+
+    def self.dump_huffman_plus_definitions(data, offset, options={})
+      stream = options[:to] || $stdout
+      display_offset = (options[:display_offset] || offset) - offset
+      indent = options[:indent] || 0
+      pad = ' '*indent
+      limit = data.content_offset + 1 + (data.content_start/4.0).ceil
+      address_width = options[:address_width] || ('%o'%(limit+display_offset)).size+1
+      address = "%0#{address_width}o" % (offset + display_offset)
+      stream.puts "#{address}#{pad}   FLAGS"
+      lc = 1
+      lc +=  dump(data, options.merge(offset: offset, length: 2,
+                                      indent: indent+4, address_width: address_width))
+      offset += 2
+      stream.puts "#{address}#{pad}   TREE"
+      lc += 1
+      last_word = data.content_start % 4
+      lc +=  dump(data, options.merge(offset: offset, length: limit-offset+1, last_word: last_word,
+                                      indent: indent+4, address_width: address_width))
+      offset = limit + 1
+      offset -= 1 if data.content_start % 4 > 0
+      [offset, lc, false]
+    end
+
+    def self.dump_huffman_plus_link(data, offset, options={})
       stream = options[:to] || $stdout
       display_offset = (options[:display_offset] || offset) - offset
       indent = options[:indent] || 0

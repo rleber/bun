@@ -4,14 +4,14 @@
 module Bun
   class File < ::File
     module Huffman
-      class Byte < ::Bun::File::Huffman::Base
+      class Plus < ::Bun::File::Huffman::Base
         class << self
           def open_type
-            :huffman
+            :huffman_plus
           end
 
           def data_type
-            Bun::File::Huffman::Data::Byte
+            Bun::File::Huffman::Data::Plus
           end
         end
       end

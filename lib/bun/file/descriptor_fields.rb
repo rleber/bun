@@ -46,7 +46,7 @@ module Bun
           :tape_size             => "The size of the archival tape file (in 36-bit words)",
           :time                  => "The date and time of last update of the file (frozen files only)",
           :text_size             => "The size of the decoded text (only for decoded files)",
-          :type                  => "The type of Honeywell file contained in this file (i.e. :text, :frozen, :huffman, :huffword, :executable)",
+          :type                  => "The type of Honeywell file contained in this file (i.e. :text, :frozen, :huffman, :huffman_plus, :executable)",
           :unpack_time           => "The date and time at which this file was unpacked",
           :unpacked_by           => "An identifier of the version of the bun software that unpacked this file",
         }

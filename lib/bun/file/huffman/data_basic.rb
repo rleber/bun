@@ -5,7 +5,7 @@ module Bun
   class File < ::File
     module Huffman
       module Data
-        class Byte < Base
+        class Basic < Base
 
           class BadFileContentError < RuntimeError; end
           class TreeTooDeepError < RuntimeError; end

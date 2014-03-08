@@ -449,7 +449,7 @@ module Bun
                 to_tape_path = File.join(to_path, decode_path(file.path, timestamp), shard_name.sub(/\.+$/,''),
                         decode_tapename(tape, descr.time))
                 File.add_message "#{tape_path}[#{shard_name}]", "Decoded #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
-              when :normal, :huffman, :huffword, :executable
+              when :normal, :huffman, :huffman_plus, :executable
                 timestamp = file.descriptor.timestamp
                 to_tape_path = File.join(to_path, file.path.sub(/\.+$/,''), decode_tapename(tape, timestamp))
                 File.add_message tape_path, "Decoded #{tape}" if options[:dryrun] || !options[:quiet]

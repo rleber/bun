@@ -196,6 +196,19 @@ describe "unpack" do
       exec_on_success("rm -rf data/test/archive/general_test_packed")
     end
   end
+  context "with a huffman plus file" do
+    before :all do
+      exec("rm -f output/test_actual/unpack_ar020.0937")
+      exec("bun unpack data/test/ar020.0937 output/test_actual/unpack_ar020.0937")
+    end
+    it "should match the expected output" do
+      "unpack_ar020.0937".should match_expected_output_except_for(UNPACK_PATTERNS)
+    end
+    after :all do
+      backtrace
+      exec_on_success("rm -f output/test_actual/unpack_ar020.0937")
+    end
+  end
   context "with an undecodable file" do
     context "with output to '-'" do
       before :all do

@@ -275,7 +275,7 @@ module Bun
         if (word(content_offset+2).characters || ['']).join == 'tabl'
         # if (word(content_offset+2).characters || ['']).join == 'tabl' &&
         #    word(content_offset+1).half_word[0] & 0177777 == 0
-          :huffword # Word-oriented Huffman format
+          :huffman_plus # Word-oriented Huffman format
         else
           :huffman # Byte-oriented Huffman format
         end

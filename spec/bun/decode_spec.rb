@@ -172,6 +172,19 @@ describe "decode" do
       exec_on_success("rm -f output/test_actual/decode_ar003.0701")
     end
   end
+  context "with a huffman plus file" do
+    before :all do
+      exec("rm -f output/test_actual/decode_ar020.0937")
+      exec("bun decode data/test/ar020.0937.bun output/test_actual/decode_ar020.0937")
+    end
+    it "should match the expected output" do
+      "decode_ar020.0937".should match_expected_output_except_for(DECODE_PATTERNS)
+    end
+    after :all do
+      backtrace
+      exec_on_success("rm -f output/test_actual/decode_ar020.0937")
+    end
+  end
   context "with a frozen file" do
     context "and +0 shard argument" do
       before :all do
