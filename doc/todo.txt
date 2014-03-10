@@ -1,10 +1,13 @@
 TODO
 _High Priority_
+Rename todo.txt
+Review and revise documentation
 Rebuild Watbun archives
 Test binary Huffman files: flag and decoding
 Test other media codes
 Look for other undecodable files
 Rename roff as tf?
+Performance improvement
 Make bun test build and build_compress... independent of FASS and watbun archives (i.e copy source files)
 Bun compare (one file from each of two lists), e.g.
     bun compare EXPRESSIONS --in FILES... --vs FILES... --where CONDITION
@@ -16,6 +19,9 @@ Major rewrite:
         No packed file object(?) (except as needed to unpack files)
     No file descriptor object
     No Data object (except as needed to unpack files)
+    Simpler translate process?
+        Fewer steps (e.g. combine unpack and decode, and even possibly bake)
+        With file indexes, is there really any need for a Decoded file format?
     Limited distinction (if any), between file types
         Possibly File::Decoded, File::Text, and File::Frozen
         File::Text and File::Frozen should be File::Unpacked::Text and File::Unpacked::Frozen
@@ -60,6 +66,7 @@ Implement interactive (or stream) editor:
 _Medium Priority_
 bun bake --to-original-destination
 Convert BCD printer control codes
+Convert line printer art (e.g. ar020.0937) to graphics
 Refine topological sorting: one pass through for precedences; version with {|node1, node2| ... } block
 Move topological sorting to its own gem
 Other traits
