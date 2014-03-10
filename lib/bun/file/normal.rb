@@ -151,7 +151,7 @@ module Bun
           end
           line_length = new_line_offset - line_offset - 1
           raw_line = words[line_offset+1,line_length]
-          line = raw_line.sub(/\177+$/,'') + "\n"
+          line = raw_line.pack.sub(/\177+$/,'') + "\n"
         end
         flags.merge(:status=>(okay ? :okay : :error), :start=>line_offset, :finish=>line_offset+line_length, :content=>line, :raw=>raw_line, :words=>words.at(line_offset+line_length), :descriptor=>descriptor)
       end
