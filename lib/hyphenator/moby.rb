@@ -3,6 +3,7 @@
 
 module Hyphenator
   class Moby < Base
+    # TODO Archive this: It isn't really used
     HYPHENATION_LIBRARY = File.join(Bun.project_path(__FILE__), "data/mhyph/mhyph.txt")
     HYPHENATION_MARKER = "\xA5"
 

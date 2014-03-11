@@ -1,5 +1,5 @@
 # Copyright 2013, Richard LeBer
-# Copied from extract/fass/1982/how.to.roff/howrof.r/tape.ar070.0435_19810901.txt
+# Copied from extract/fass/1982/how.to.roff/howrof.r/tape.ar070.0435_19810901
 # I removed extraneous Roff commands from this, for readability
 
 Basic ROFF Information

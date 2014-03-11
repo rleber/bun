@@ -2,12 +2,25 @@ TODO
 _High Priority_
 Rename todo.txt
 Review and revise documentation
+Is Bun::File::Deblocked used anywhere?
+Is Bun::File::Library used anywhere?
+Are the following tasks useful anymore?
+    bun archive classify
+    bun archive compare_dates
+    bun archive scrub
+    bun archive timestamp
+Shouldn't bun compress be bun archive compress?
+Clean up bun sandbox
 Rebuild Watbun archives
 Test binary Huffman files: flag and decoding
 Test other media codes
 Look for other undecodable files
 Rename roff as tf?
+Eliminate bun config, or actually use it (e.g. for index directories)
 Performance improvement
+    Avoid rereading file content and redecoding it: pass files around as objects
+    Why is it necessary to read a whole file to decide if the decoded version already exists?
+    Performance profiling
 Make bun test build and build_compress... independent of FASS and watbun archives (i.e copy source files)
 Bun compare (one file from each of two lists), e.g.
     bun compare EXPRESSIONS --in FILES... --vs FILES... --where CONDITION

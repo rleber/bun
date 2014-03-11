@@ -28,11 +28,11 @@ I haven't figured out yet. If so, please let me know.
 If you are looking for more details on the file formats beyond what I have written here, I suggest you
 refer to the other files in the doc/file_format directory of this project. These files include:
 
-- decode_help.txt  Some dialog about the characteristics of Honeywell files
-- free.b.txt           A program to decode Honeywell's freeze file format, written in B, an ancestor of C
-- huff.b.txt           A program to encode Huffman coded files
-- huff.plus.b.txt      A program to encode Huffman plus format files, also written in B. 
-- puff.b.txt           A program to decode Huffman coded files (huff and puff, get it?)
+- decode_help.txt       Some dialog about the characteristics of Honeywell files
+- programs/free.b       A program to decode Honeywell's freeze file format, written in B, an ancestor of C
+- programs/huff.b       A program to encode Huffman coded files
+- programs/huff.plus.b  A program to encode Huffman plus format files, also written in B. 
+- programs/puff.b       A program to decode Huffman coded files (huff and puff, get it?)
 
 The "bun dump" and "bun freezer dump" commands are available to display the contents of files in octal 
 and ASCII, and may be useful for exploring files.
@@ -233,8 +233,8 @@ compressing files. This scheme results in a minimal-length encoding through the 
 using a translation table (a binary tree, actually), and a variable number of bits per encoded character
 (with the fewest bits for the most common characters, etc.). See http://en.wikipedia.org/wiki/Huffman_coding for general information on Huffman encoding.
 
-The original source for the Honeywell's encoding algorithms is contained in the doc/huff.b.txt and
-puff.b.txt files.
+The original source for the Honeywell's encoding algorithms is contained in the doc/file_formats/programs/huff.b
+puff.b files.
 
 The format for Honeywell Huffman-encoded files is as follows:
 - The files follow the normal link structure. Content of the file is encoded within that structure. They do
@@ -356,7 +356,7 @@ Freeze files have the following format:
     - Words 2 and 3: The date of last update of the shard (see above for format)
     - Word 4: The time of last update of the shard (see above for format)
     - Word 5: Always the ASCII characters 'asc ' (note the space)
-    - Word 6: According to free.b.txt, "The number of 64-word blocks contained in the file."
+    - Word 6: According to free.b, "The number of 64-word blocks contained in the file."
         I can find no evidence of this being the case, nor have I found it necessary to use
         this data.
     - Word 7: Starting word index of the contents of the shard (zero-based offset, relative
