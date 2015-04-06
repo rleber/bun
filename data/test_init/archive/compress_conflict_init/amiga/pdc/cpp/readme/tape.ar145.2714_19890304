@@ -15,7 +15,7 @@
 :tape: ar145.2714
 :tape_size: 3538
 :text_size: 12112
-:type: :text
+:type: :normal
 :unpack_time: 2014-02-01 21:13:35.245259000 -05:00
 :unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:89e6db96f9aa2f50326aea8c9847f5ce77400e24]
 :content: ! "\n\n\n\n        1.0  C Pre-Processor\n\n\n\n                                    *******\n

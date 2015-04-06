@@ -11,7 +11,7 @@ class String
   class Trait
     class Invalid < ArgumentError; end
 
-    USAGE_FILE = ::File.join(Bun.project_path(__FILE__), Bun.project_relative_path('doc/exam_usage.md'))
+    USAGE_FILE = ::File.join(Bun.project_path(__FILE__), Bun.project_relative_path('doc/expression_usage.md'))
     
     class << self
       def trait_class(analysis)

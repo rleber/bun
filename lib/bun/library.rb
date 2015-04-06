@@ -63,7 +63,9 @@ module Bun
             next
           end
           success = begin
-            File.bake(leaf, to_file, promote: true, scrub: options[:scrub])
+            opts = {promote: true, scrub: options[:scrub]}
+            opts[:index] = File.join(to_path, options[:index], relative_leaf+ Bun::INDEX_FILE_EXTENSION) if options[:index].to_s != ''
+            File.bake(leaf, to_file, opts)
             warn "bake #{relative_leaf}" unless options[:quiet]
             true
           rescue File::CantDecodeError

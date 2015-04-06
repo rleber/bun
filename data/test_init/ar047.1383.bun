@@ -11,9 +11,9 @@
 :path: fass/eksiegerman/pause
 :tape: ar047.1383
 :tape_size: 670
-:type: :text
-:unpack_time: 2014-02-23 12:35:41.914226000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/huffman_bug_fix:fc6b47699c1aadbfb0865acd1d1d406ab4508a81]
+:type: :normal
+:unpack_time: 2014-03-05 22:11:41.390433000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]
 :content: !binary |-
   AABAKdAABAAeAAvAVnCYB+yNCXPCC0AAAAAAgAAAACMxhOZzAAAAAAAAAAAA
   AAAAAAF5lNZzNJlM5lORtMJuF5wMJ1OZlEA9Ho+EBFORpMYgKZpMpnMpyNph

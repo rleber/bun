@@ -25,15 +25,19 @@ describe "show" do
   %w{ar003.0698 ar025.0634}.each do |file|
     context "all tests on #{file}" do
       String::Trait.traits.each do |trait|
-        @current_exam = trait
-        context @current_exam do
+        context trait do
           before :all do
             @show_result_file = "show_#{trait}_#{file}"
+            @current_exam = trait
             exec("rm -rf output/test_actual/#{@show_result_file}")
             exec("bun show file #{trait} --raise -j --titles --in #{TEST_ARCHIVE}/#{file}.bun >output/test_actual/#{@show_result_file}", :allowed=>[0,1])
           end
           it "should produce the proper output" do
-            @show_result_file.should match_expected_output
+            if @current_exam == "field_values"
+              @show_result_file.should match_expected_output_except_for(UNPACK_PATTERNS)
+            else
+              @show_result_file.should match_expected_output
+            end
           end
           after :all do
             backtrace
@@ -113,6 +117,18 @@ describe "show" do
       {
         title:   "text", 
         command: "show text data/test/ar003.0698.bun"
+      },
+      {
+        title:   "type for executable file", 
+        command: "show type data/test/ar010.1307"
+      },
+      {
+        title:   "executable for normal file", 
+        command: "show executable data/test/ar003.0698.bun"
+      },
+      {
+        title:   "executable for executable file", 
+        command: "show executable data/test/ar010.1307"
       },
       {
         title:   "file", 

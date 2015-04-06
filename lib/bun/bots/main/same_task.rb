@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 # -*- encoding: us-ascii -*-
 
-desc "same [OPTIONS] EXAMINATIONS... FILES...", "Group files which match on a certain criterion"
+desc "same [OPTIONS] TRAITS... FILES...", "Group files which match on a certain criterion"
 option 'asis',    :aliases=>'-a', :type=>'boolean', :desc=>"Do not attempt to decode files"
 option 'case',    :aliases=>'-c', :type=>'boolean', :desc=>"Case insensitive"
 option 'format',  :aliases=>'-F', :type=>'string',  :desc=>"Use other formats", :default=>'text'
-option 'inspect', :aliases=>'-I', :type=>'boolean', :desc=>"Just echo back the value of --trait as received"
+option 'inspect', :aliases=>'-I', :type=>'boolean', :desc=>"Just echo back the value of the traits as received"
 option 'justify', :aliases=>'-j', :type=>'boolean', :desc=>"Justify the rows"
 option 'min',     :aliases=>'-m', :type=>'numeric', :desc=>"For counting traits: minimum count"
 option 'text',    :aliases=>'-x', :type=>'boolean', :desc=>"Based on the text in the file"
@@ -15,15 +15,13 @@ option 'value',   :aliases=>'-v', :type=>'string',  :desc=>"Set the return code 
 long_desc <<-EOT
 Group files which match on certain criteria.
 
-Analyses are available via the --trait parameter. Available analyses include:\x5
+Available traits include all file fields, arbitrary Ruby expressions, and the following traits:\x5
 
 #{String::Trait.trait_definition_table.freeze_for_thor}
 
-The command also allows for evaluating arbitrary Ruby expressions.
+If you are using more than one trait, separate the traits from the files with the --in parameter.
 
-TODO Explain expression syntax
-TODO Explain how --value works
-
+See the bun help show for more details on traits.
 EOT
 def same(*args)
   # Check for separator ('--in') between traits and files
@@ -50,7 +48,6 @@ def same(*args)
   end
   
   stop "!Must provide at least one file " unless files.size > 0
-
 
   opts = options.dup # Weird behavior of options here
   asis = opts.delete(:asis)

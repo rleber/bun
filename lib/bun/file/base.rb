@@ -11,7 +11,7 @@ module Bun
 
   class File < ::File
     
-    class BadFileGrade < RuntimeError; end
+    class BadFileFormat < RuntimeError; end
     class BadBlockError < RuntimeError; end
     class ReadError < ArgumentError; end
 
@@ -226,14 +226,28 @@ module Bun
       
       PACKED_FILE_SIGNATURE = "\x0\x0\x40" # Packed files always start with this
 
+      def index_file_for(path)
+        dir = File.dirname(path)
+        path = File.basename(path)
+        loop do
+          index_file_path = File.join(dir, Bun::DEFAULT_BAKED_INDEX_DIRECTORY, path+Bun::INDEX_FILE_EXTENSION)
+          return index_file_path if File.exists?(index_file_path)
+          break if dir == "/" || dir == "."
+          path = File.join(File.basename(dir), path)
+          dir = File.dirname(dir)
+        end
+        nil
+      end
+
       def packed?(path)
         return false if nonpacked?(path)
         if File.read(path, PACKED_FILE_SIGNATURE.size).force_encoding('ascii-8bit') == PACKED_FILE_SIGNATURE 
-          begin
+          res = begin
             File::Packed.open(path, force: true)
           rescue => e
             false
           end
+          index_file_for(path) ? false : res # If .INDEX... exists, then it's baked, not packed
         else
           false
         end
@@ -252,7 +266,7 @@ module Bun
           File::Baked.open(path, &blk)
         else
           # TODO Why not?
-          raise BadFileGrade, "Can't open file of this format: #{fmt.inspect}"
+          raise BadFileFormat, "Can't open file of this format: #{fmt.inspect}"
         end
       end
       
@@ -262,6 +276,7 @@ module Bun
           f = File::Unpacked.open(path, promote: true) 
           f.type
         rescue
+          raise
           :unknown
         end
       end
@@ -347,9 +362,9 @@ module Bun
         scrub = options.delete(:scrub)
         case format(path)
         when :baked, :decoded
-          File.open(path, options) {|f| f.bake(to, scrub: scrub)}
+          File.open(path, options) {|f| f.bake(to, scrub: scrub, index: options[:index])}
         else
-          File::Decoded.open(path, options.merge(promote: true)) {|f| f.bake(to, scrub: scrub)}
+          File::Decoded.open(path, options.merge(promote: true)) {|f| f.bake(to, scrub: scrub, index: options[:index])}
         end
       end
 
@@ -376,6 +391,14 @@ module Bun
         else
           [path, nil]
         end
+      end
+
+      def shards(file)
+        File.open(file) {|f| f.descriptor.shards || [] }
+      end
+
+      def shard_names(file)
+        shards(file).map {|shard| shard.name }
       end
 
       # Does this path (or any part of its directory structure) conflict with an existing file?
@@ -553,6 +576,18 @@ module Bun
   
     def copy_descriptor(to, new_settings={})
       descriptor.copy(to, new_settings)
+    end
+
+    def media_codes
+      []
+    end
+
+    def multi_segment
+      false
+    end
+
+    def content_start
+      0
     end
   end
 end

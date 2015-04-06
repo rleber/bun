@@ -1,23 +1,30 @@
 ---
 :identifier: Bun
+:bcd: false
+:binary: false
 :block_count: 11
 :block_padding_repairs: 10
 :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
-:decode_time: 2014-01-24 09:12:54.146127000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:d444703df8114a0d5fc1c8ae480814b61c3387b1]
+:content_start: 0
+:decodable: true
+:decode_time: 2014-03-02 18:11:11.422506000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/executable_decode:ffe678c3ca4a1831ae373411e1107d1e6a6dad1e]
 :description: ==> freeze file containing roff source for fass '77 script
 :digest: df718981f9cc6ed41b3a70bd9405d670
 :first_block_size: 3869
 :format: :decoded
+:media_codes: []
+:multi_segment: false
 :owner: fass
 :path: fass/scripfrz
+:sectors: 630
 :tape: ar004.0888
 :tape_size: 40058
 :text_size: 371
 :time: 1977-03-01 15:40:58.000000000 -05:00
 :type: :frozen
-:unpack_time: 2014-01-23 13:31:12.453793000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:906253f9fd7609cd0a966c3d2a354bf35839776b]
+:unpack_time: 2014-03-01 16:36:38.451036000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:52f8cc890274aa85caa8920cea5c85d1d20bf4a4]
 :content: ! '.so fass/fasshole
 
   .he''FASS''- % -''ACT III SCENE XI''

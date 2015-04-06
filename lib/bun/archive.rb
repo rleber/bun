@@ -99,13 +99,14 @@ module Bun
             from = @directories[:decoded]
             clear_stage :compressed, options
             compress @directories[:decoded], @directories[:compressed], 
-              delete: options[:delete], link: options[:link],
+              aggressive: options[:aggressive], link: options[:link],
               force: options[:force], quiet: options[:quiet]
             build_symlink :decoded if options[:links] && options[:force]
           when 'bake'
             warn "Bake the files (i.e. remove metadata)" unless options[:quiet]
             clear_stage :baked, options
-            bake @directories[:compressed], @directories[:baked], force: options[:force], quiet: options[:quiet]
+            bake @directories[:compressed], @directories[:baked], force: options[:force], quiet: options[:quiet],
+              index: options[:index]
             build_symlink :baked if options[:links] && options[:force]
           when 'tests'
             warn "Rebuild test cases" unless options[:quiet]
@@ -448,7 +449,7 @@ module Bun
                 to_tape_path = File.join(to_path, decode_path(file.path, timestamp), shard_name.sub(/\.+$/,''),
                         decode_tapename(tape, descr.time))
                 File.add_message "#{tape_path}[#{shard_name}]", "Decoded #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
-              when :text, :huffman
+              when :normal, :huffman, :huffman_plus, :executable
                 timestamp = file.descriptor.timestamp
                 to_tape_path = File.join(to_path, file.path.sub(/\.+$/,''), decode_tapename(tape, timestamp))
                 File.add_message tape_path, "Decoded #{tape}" if options[:dryrun] || !options[:quiet]
@@ -463,9 +464,9 @@ module Bun
             to_tape_path = nil if options[:dryrun] # Skip quietly
             to_tape_path
           end
-        rescue Bun::File::Unpacked::Huffman::BadFileContentError => e
+        rescue Bun::File::Huffman::Data::Base::BadFileContentError => e
           File.replace_messages tape_path, "Skipped #{relative_path(tape_path)}: Bad Huffman encoded file: #{e}" unless options[:quiet]
-        rescue Bun::File::Unpacked::Huffman::TreeTooDeepError => e
+        rescue Bun::File::Huffman::Data::Base::TreeTooDeepError => e
           File.replace_messages tape_path, "Skipped #{relative_path(tape_path)}: Bad Huffman encoded file: #{e}" unless options[:quiet]
         end
         unless options[:quiet]
@@ -511,7 +512,7 @@ module Bun
       
       # Phase I: Remove duplicates
       duplicates('digest').each do |key, files|
-        if options[:delete] # Remove ALL duplicates, even if their target files aren't the same
+        if options[:aggressive] # Remove ALL duplicates, even if their target files aren't the same
           duplicate_files = files[1..-1]
         else # Keep duplicates (except remove duplicate copies with the same target source path)
           duplicate_files = files.group_by {|f| target_file(f)} # Group by target files

@@ -51,7 +51,7 @@ describe "decode" do
       exec_on_success("rm -f output/test_actual/decode_baked_stderr")
     end
   end
-  context "with text file" do
+  context "with normal file" do
     context "without expand option" do
       before :all do
         exec("rm -f output/test_actual/decode_ar003.0698")
@@ -172,7 +172,20 @@ describe "decode" do
       exec_on_success("rm -f output/test_actual/decode_ar003.0701")
     end
   end
-  context "with frozen file" do
+  context "with a huffman plus file" do
+    before :all do
+      exec("rm -f output/test_actual/decode_ar020.0937")
+      exec("bun decode data/test/ar020.0937.bun output/test_actual/decode_ar020.0937")
+    end
+    it "should match the expected output" do
+      "decode_ar020.0937".should match_expected_output_except_for(DECODE_PATTERNS)
+    end
+    after :all do
+      backtrace
+      exec_on_success("rm -f output/test_actual/decode_ar020.0937")
+    end
+  end
+  context "with a frozen file" do
     context "and +0 shard argument" do
       before :all do
         exec("rm -rf output/test_actual/decode_ar004.0888_0")
@@ -301,6 +314,20 @@ describe "decode" do
           end
         end
       end
+    end
+  end
+  context "with an undecodable file" do
+    before :all do
+      exec("rm -f output/test_actual/decode_ar010.1307")
+      exec("bun decode data/test/ar010.1307.bun \
+                >output/test_actual/decode_ar010.1307")
+    end
+    it "should match the expected output" do
+      "decode_ar010.1307".should match_expected_output_except_for(DECODE_PATTERNS)
+    end
+    after :all do
+      backtrace
+      exec_on_success("rm -f output/test_actual/decode_ar010.1307")
     end
   end
 end

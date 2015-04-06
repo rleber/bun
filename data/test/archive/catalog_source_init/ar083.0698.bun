@@ -1,6 +1,6 @@
 ---
 :identifier: Bun
-:block_count: 1
+:block_count: 2
 :block_padding_repairs: 0
 :description: ==> TROFF source for FASS 1983 Programme
 :digest: eb74bf8edbcf87cc04cf35ed36ec6398
@@ -10,9 +10,9 @@
 :path: fass/1983/programme/actors
 :tape: ar083.0698
 :tape_size: 1628
-:type: :text
-:unpack_time: 2014-02-23 12:36:32.909643000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/huffman_bug_fix:fc6b47699c1aadbfb0865acd1d1d406ab4508a81]
+:type: :normal
+:unpack_time: 2014-03-05 22:12:41.985470000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]
 :content: !binary |-
   AABAZaAABAAbABTAK6CcRRCsCcQjBJAAAAAAgAAAAFMxhOZzAAAAAAAAAAAA
   AAAAAAF4xHI4GYvOByN5nORhNptMovMJjOhvORzEA9Ho+EBUKRPIxGEBzN51

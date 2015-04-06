@@ -3,6 +3,7 @@
 
 desc "show [OPTIONS] EXPRESSIONS... FILES...", "Analyze the contents of files"
 option 'asis',    :aliases=>'-a', :type=>'boolean', :desc=>"Do not attempt to decode file"
+option 'expand',  :aliases=>'-e', :type=>'boolean', :desc=>"Expand frozen archives into their shards"
 option 'format',  :aliases=>'-F', :type=>'string',  :desc=>"Use other formats", :default=>'text'
 option 'if',      :aliases=>'-i', :type=>'string',  :desc=>"Only show the result for files which match this expression"
 option 'inspect', :aliases=>'-I', :type=>'boolean', :desc=>"Just echo back the value of --trait as received"
@@ -74,6 +75,8 @@ def show(*args)
     stop "!File #{file} does not exist" unless File.exists?(file) || file=='-'
     res = if File.directory?(file)
       Archive.new(file).leaves.to_a
+    elsif options[:expand] && !shard && File.type(file)==:frozen
+      File.shard_names(file).map {|name| "#{file}[#{name}]" }
     else
       [file]
     end
@@ -195,7 +198,7 @@ no_tasks do
       end
       titles = values.map{|value| value.titles || ['Value']}.flatten
       formatter.right_justified_columns = right_columns
-      formatter.titles = titles if options[:titles] || column_count > 1
+      formatter.titles = titles if options[:titles] || (column_count > 1 && options[:titles] != false)
     end
     m = matrixes.matrix_join
     m.each {|row| formatter << row }

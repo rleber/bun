@@ -1,6 +1,6 @@
 _OBJECT CLASSES IN THE BUN PROJECT_
 
-The Bun project uses several different kinds of classes to represent data objects as well as methods of 
+The Bun project uses many different kinds of classes to represent data objects as well as methods of 
 operating on them. The primary categories of these objects are Bots, Files, Data, and Other classes.
 
 _BOTS_
@@ -27,6 +27,7 @@ Thor
         Bun::Bots::Config
         Bun::Bots::Freezer
         Bun::Bots::Sandbox
+        Bun::Bots::Test
 
 _Files_
 There is a hierarchy of File and related classes:
@@ -35,19 +36,26 @@ There is a hierarchy of File and related classes:
         Bun::File::Packed
         Bun::File::Unpacked
             Bun::File::Blocked
-                Bun::File::Text
+                Bun::File::Normal
+                Bun::File::Huffman::Base
+                    Bun::File::Huffman::Basic
+                    Bun::File::Huffman::Plus
+            Bun::File::Executable
             Bun::File::Frozen
-            Bun::File::Header
-            Bun::File::Huffman
-            Bun::File::PackedHeader
-        Bun::File::Extracted
+        Bun::File::Decoded
         Bun::File::Library
+    Bun::File::Baked (Note that this does not descend from Bun::File)
+    Bun::File::Descriptor::Packed
+    Bun::File::Descriptor::Unpacked
         
-Bun::File::Descriptor
-    Bun::File::Descriptor::Base
-        Bun::File::Descriptor::Unpacked
+Bun::File::Descriptor::Base
+    Bun::File::Descriptor::File
+    Bun::File::Descriptor::Shard
         
-Bun::File::Frozen::Descriptor (note that this does not descend from Bun::File::Descriptor)
+Bun::File::Frozen::Descriptor (note that this does not descend from Bun::File::Descriptor::Base)
+
+::Array
+    Bun::File::Descriptor::Shards
 
 Generally, the source files for these classes are found within the lib/bun/file directory, with a source file
 name that is derived in a common-sense way from the Class name. So, for instance, Bun::File::Unpacked is in
@@ -55,6 +63,11 @@ lib/bun/file/archived.rb, and Bun::File::Descriptor::Unpacked is defined in lib/
 
 _Data Classes_
 These classes define various data types and structures:
+
+Bun::Data
+    Bun::File::Huffman::Data::Base
+        Bun::File::Huffman::Data::Basic
+        Bun::File::Huffman::Data::Plus
 
 Bun::Collection (mixes in Enumerable and CacheableMethods)
     Bun::Archive
@@ -88,9 +101,14 @@ _Other Modules and Classes_
 These classes define various miscellaneous objects and methods, such as:
 
 Bun
+Bun::Catalog
 Bun::Dump
+Bun::Expression
+Bun::Expression::Context
+Bun::Formatter
 Bun::Script::Cleaner
 Bun::Shell
+Bun::Test
 CacheableMethods
 Indexable::Basic
 Indexable::Simple
@@ -102,18 +120,42 @@ Slicr::Slice::DSL
 Slicr::Sliceable
 String::Trait
 String::Trait::Base
-    String::Trait::AnalysisBase
-        String::Trait::CharacterClass
-            String::Trait::Chars
-            String::Trait::Classes
-            String::Trait::Controls
-            String::Trait::Printable
     String::Trait::Boolean
         String::Trait::Clean
+        String::Trait::Listing
         String::Trait::Overstruck
         String::Trait::Roff
         String::Trait::Tabbed
-    String::Trait::Legibility
+    String::Trait::Fields
+    String::Trait::File
+    String::Trait::Numeric
+        String::Trait::English
+        String::Trait::Legibility
+        String::Trait::RunSize
+    String::Trait::StatHash
+        String::Trait::CountTable
+            String::Trait::CharacterClass
+                String::Trait::Chars
+                String::Trait::Classes
+                String::Trait::Controls
+                String::Trait::Printable
+        String::Trait::FieldValues
+        String::Trait::NonEnglishWords
+        String::Trait::Runs
+            String::Trait::Words
+        String::Trait::Stats
+        String::Trait::Times
+    String::Trait::Wrapper
+        String::Trait::FieldWrapper
+String::Trait::Base::Result
+    String::Trait::Boolean::Result
+    String::Trait::Numeric::Result
+String::Trait::CharacterPatterns
+String::Trait::EnglishCheck
+
+::Array
+    String::Trait::CountTable::Result
+    String::Trait::FieldValues::Result
 
 As with the data classes, the source for these classes is contained in either the lib/slicr directory (for the 
 Slicr classes), or in the lib or lib/bun directories.
@@ -122,10 +164,17 @@ Slicr classes), or in the lib or lib/bun directories.
     Bun::Collection::Enumerator
         Bun::Archive::Enumerator
 
+There are also a variety of Exception classes, which for reasons of simplicity (and ease of maintaining 
+documentation), I will not include here.
+
 _Other notes_
+The ROFF/TF program has a large complement of its own classes, which are documented elsewhere
+
 The Bun project makes a few changes to Ruby core classes, as well:
+Array
 Class
 Date
+Hash
 Kernel
 Object
 String

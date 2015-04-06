@@ -65,6 +65,14 @@ module Bun
       def header_size
         content_offset + preamble_size
       end
+
+      def binary
+        false
+      end
+
+      def bcd
+        false
+      end
       
       def descriptors_size
         preamble_size - File::Frozen::Descriptor.offset
@@ -228,7 +236,7 @@ module Bun
         lines
       end
     
-      # TODO Refactor like File::Text#unpack_line
+      # TODO Refactor like File::Normal#unpack_line
       def thaw_line(n, words, line_offset)
         line = ""
         line_length = words.size

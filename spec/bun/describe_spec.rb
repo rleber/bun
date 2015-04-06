@@ -2,7 +2,7 @@
 # -*- encoding: us-ascii -*-
 
 describe "describe" do
-  describe "with text file" do
+  describe "with normal file" do
     before :all do
       exec("rm -rf output/test_actual/describe_ar003.0698")
       exec("bun describe #{TEST_ARCHIVE}/ar003.0698.bun >output/test_actual/describe_ar003.0698")

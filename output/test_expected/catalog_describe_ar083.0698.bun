@@ -3,12 +3,12 @@ File                   fass/1983/programme/actors
 Owner                  fass
 Description            ==> TROFF source for FASS 1983 Programme
 Catalog Date           1985/09/03
-Format                 :unpacked
+Format                 Unpacked
 Size (Words)           1628
-Type                   Text
+Type                   Normal
 MD5 Digest             eb74 bf8e dbcf 87cc 04cf 35ed 36ec 6398
-Block Count            1
+Block Count            2
 Block Padding Repairs  0
 First Block Size       1627
-Unpack Time            2014-01-21 18:43:34 -0500
-Unpacked By            Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+Unpack Time            2014-03-05 22:12:41 -0500
+Unpacked By            Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]

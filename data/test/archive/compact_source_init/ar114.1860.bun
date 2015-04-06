@@ -1,6 +1,6 @@
 ---
 :identifier: Bun
-:block_count: 1
+:block_count: 2
 :block_padding_repairs: 0
 :catalog_time: 1981-02-16 00:00:00.000000000 -05:00
 :description: ''
@@ -13,8 +13,8 @@
 :tape_size: 727
 :time: 1980-05-26 13:32:47.000000000 -04:00
 :type: :frozen
-:unpack_time: 2014-02-23 12:37:27.043990000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/huffman_bug_fix:fc6b47699c1aadbfb0865acd1d1d406ab4508a81]
+:unpack_time: 2014-03-05 22:13:40.873548000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]
 :shards:
 - :name: list
   :time: 1980-05-26 13:25:38.000000000 -04:00

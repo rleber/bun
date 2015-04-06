@@ -1,6 +1,6 @@
 ---
 :identifier: Bun
-:block_count: 1
+:block_count: 2
 :block_padding_repairs: 0
 :catalog_time: 1983-10-27 00:00:00.000000000 -04:00
 :description: ''
@@ -11,9 +11,9 @@
 :path: jagardner/DOTDOT/fassmac.t
 :tape: ar108.2439
 :tape_size: 1936
-:type: :text
-:unpack_time: 2014-02-23 12:37:20.032961000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/huffman_bug_fix:fc6b47699c1aadbfb0865acd1d1d406ab4508a81]
+:type: :normal
+:unpack_time: 2014-03-05 22:13:33.433822000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]
 :content: !binary |-
   AABAeOAABAAPABsAmHCfybMCCdqPTmAAAAAAkAAAAGNRhM5hORkNxlOQAAAA
   AAAAAAF4uFwvMxhOZzNphMYuOgAAE6AABAE/AAUAIAAAAAAAAAAAAAAAAAAA

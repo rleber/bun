@@ -1,0 +1,164 @@
+Email from Richard LeBer to Alan Bowler, 2/23/2014
+
+Alan,
+
+Hi!
+
+As you heard from Ian!, I've had pretty good success decoding the FASS archives. Now that we're looking at the Watbun archive, though, more edge cases are arising which didn't occur in the smaller FASS archive. (For instance, almost all of the FASS archive files are media code 6, and none of them have multi-segment lines.) This raises some fiddly little questions I've mostly ignored so far.
+
+From an email you sent Ian! in February 2012, describing RCWs in archived files:
+
+      000006   00-17, length of record/segment (must be non-zero)
+           2   18-19  # bytes in last word (0 -> 4) (media 4 & 6)
+          00   20-23  EOF type (only when length is zero)
+           0   24-25  Segment marker
+                        0->not segmented
+                        1->first segment of record split across blocks
+                        2->Intermediate segment
+                        3->last segment
+          06   26-29  media code (6->ascii)
+          00   30-35  report code
+The media and report codes are only in the first segment of
+a record (segment marker 0 or 1).  For the intermediate and final
+segments bits 26-35 give the segment number (origin 0)
+
+I wonder if you could clarify:
+1. How can bits 18-19 represent a 4, since it's only two bits? I understand 0-3, but not 4. Generally so far, I've been relying on the unused final bytes in a line containing 0177. Is this not safe?
+2. What happens with bits 18-19 in a multi-segment record (i.e. when the segment marker equals 2 or 3)? I assume you have to remember the media code from the first segment to determine if this field has any meaning.
+3. What happens (if anything) with bits 18-19 if media code isn't 4 or 6?
+4. Are the values and meanings of "EOF types" important? If so, do you have a list of the codes and what they mean?
+5. Do you have a list of "media codes"? So far, it appears to me that 6 means "ASCII text file", and 7 means "print listing". One archive in the FASS files (ar047.1383) uses media codes 1 and 2; I have no idea what this means, but the file is described as a "Catalog" and appears to contain binary data.
+6. What is the meaning and relevance of the "report codes"?
+
+Thanks for any additional information!
+
+Reply from Alan Bowler, 2/24/2014
+
+to me, idallen 
+> From: Richard LeBer [mailto:richard.leber@gmail.com]
+> Sent: February 23, 2014 7:11 PM
+> To: Alan Bowler
+> Cc: Ian D. Allen
+> Subject: Nuances of Honeywell Record Control Words
+> 1.    How can bits 18-19 represent a 4, since it's only two bits? I
+> understand 0-3, but not 4.
+
+I meant the "->" to read as "implies".  So a zero means that
+there are 4 bytes used in the last word.  1 means 1 byte used.
+
+> Generally so far, I've been relying on the
+> unused final bytes in a line containing 0177. Is this not safe?
+
+Occasionally, I've seen some non-Waterloo based software
+that had spaces, or NULs (000).  The problem was that the original
+GFRC routines just took a length in words and so it was up to
+the actual programmer to get the byte details right.
+
+> 2.    What happens with bits 18-19 in a multi-segment record (i.e. when
+> the segment marker equals 2 or 3)? I assume you have to remember the
+> media code from the first segment to determine if this field has any
+> meaning.
+
+Yes you so need to remember the media code.
+By definition, the first and intermediate segments (segment codes 1 and 2)
+will fill the last word of the segment so bits 18-19 will be 00.
+The last segment (code 3) might not fill the last word so bits 18-19
+must be interpreted the same as they would be for an unsegmented record
+(code 0).
+
+> 3.    What happens (if anything) with bits 18-19 if media code isn't 4 or
+> 6?
+
+They are ignored (but really should be 00).
+
+> 4.    Are the values and meanings of "EOF types" important? If so, do you
+> have a list of the codes and what they mean?
+
+You will only see 017, on the archive files.  See the "history"
+discussion below.
+
+> 5.    Do you have a list of "media codes"? So far, it appears to me that
+> 6 means "ASCII text file", and 7 means "print listing".
+
+See:
+   http://www.thinkage.ca/english/gcos/expl/medi.html
+
+Note that media 7 and 3 have code sequences that mean things
+like skip N lines, or M move n spaces that were interpreted
+by the printer controller.
+
+> One archive in
+> the FASS files (ar047.1383) uses media codes 1 and 2; I have no idea
+> what this means, but the file is described as a "Catalog" and appears to
+> contain binary data.
+
+The "Catalog" is from the comment given by the person that submitted
+the archiving request.  He would have typed something like:
+  archive save /eksiegerman "Eric Seigerman Catalog, last touched June 1980"
+
+and you will probably find the same comment all 6 files
+from fass/ekseigerman
+
+The actual file is an object deck for a strange looking
+batch program that needed privilege.  Why Eric put it there
+I don't know, it certainly had nothing to do with FASS.
+
+> 6.    What is the meaning and relevance of the "report codes"?
+
+This is intended primarily as support for programs that generate
+multiple reports in parallel (likely in one pass over the
+input data).  In most systems you would need to:
+  write them each to separate temp files until processing was done;
+  close and rewind the files;
+  and then copy each one in order to the print spool.
+Possibly doing each copy in a separate job step (requiring
+coding more JCL etc.)
+With Gcos the program can write the separate reports directly to
+the system spooler in parallel, and when it gets a free printer
+the spooler will use the report codes to print out the reports
+one at a time.  The most common case people see are the Bull
+compilers that write program listings to 74 and copy error
+messages to 73, so you can quickly see a summary of all the
+errors.  (Remember this all evolved in the days where users
+submitted punched card decks).
+
+The Cobol report writer also demands that the system supply some
+way to accomplish this (the CODE clause of the RD description),
+but is does not specify whether this is done in the Cobol library
+or the some system program like the unspooler.
+
+History.
+   Tapes use a special hardware recognizable short record
+to mark the boundary between files of data records.  Some tape
+systems allowed 1 character to be specified for these file marks.
+A value of 017 was standard for 7 track tapes and 023 for
+nine track tapes,  These marks were standard across the
+industry.  The GE drives did allow other values to specified
+and GECOS (later GCOS) could use 00 file marks to delineate
+a program checkpoint written onto the output data tape.
+A program reading this tape would see the special file mark
+and skip over until it got to the actual data records.
+Cobol does allow you to specify that a checkpoint be done
+every N records, or every time a tape file is continued onto
+a new reel.
+
+   Any other file mark code was non-standard, and if it was
+ever used it would have some site/programmer chosen meaning,
+
+   Anyway, it was felt at some point that the same sort
+of thing should be supported when migrating from tape processing
+to disk files.  I think some stuff was supposed to support
+00 in and EOF RCW to mark checkpoint images within an output
+disk file.  I don't know of any cases where this used by the
+time Waterloo got a GCOS system.  We never ran any jobs
+that really need checkpoint, and usual practice elsewhere
+was to put checkpoints into a separate disk file.
+
+   However the EOF type field in the EOF RCW was there,
+and there is a miniscule possibility that some programmer
+at some place other than Waterloo, decided to use it for something.
+I'm certain you won't find anything other than 017 in the
+archive files.  There are some files with multiple logical
+files within a single physical disk file.  (ie. a new file
+starting in the next llink after the EOF RCW.)  However,
+probably NOT in any of the FASS files.

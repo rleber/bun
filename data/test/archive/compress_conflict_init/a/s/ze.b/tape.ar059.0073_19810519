@@ -15,7 +15,7 @@
 :tape: ar059.0073
 :tape_size: 654
 :text_size: 1284
-:type: :text
+:type: :normal
 :unpack_time: 2014-02-02 04:35:43.879972000 -05:00
 :unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:571c93836cf64052fc370341e55bff0a71bae2ba]
 :content: ! "/*\n * Driver to interface TYPE to the Photon Econosetter.\n */\n\n/*\n

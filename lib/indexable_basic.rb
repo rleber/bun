@@ -187,7 +187,8 @@ module Indexable
       when :nil
         return nil
       when :empty
-        return []
+        klass = self.index_array_class || self.class
+        return klass.new([])
       end
       res = (@index_range[:start]..@index_range[:end]).map {|i| at(i) }
       @index_range[:class] = self.class.name

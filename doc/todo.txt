@@ -1,30 +1,30 @@
 TODO
 _High Priority_
+Rename todo.txt
+Review and revise documentation
+Is Bun::File::Deblocked used anywhere?
+Is Bun::File::Library used anywhere?
+Are the following tasks useful anymore?
+    bun archive classify
+    bun archive compare_dates
+    bun archive scrub
+    bun archive timestamp
+Shouldn't bun compress be bun archive compress?
+Clean up bun sandbox
+Rebuild Watbun archives
+Test binary Huffman files: flag and decoding
+Test other media codes
+Look for other undecodable files
+Rename roff as tf?
+Eliminate bun config, or actually use it (e.g. for index directories)
+Performance improvement
+    Avoid rereading file content and redecoding it: pass files around as objects
+    Why is it necessary to read a whole file to decide if the decoded version already exists?
+    Performance profiling
 Make bun test build and build_compress... independent of FASS and watbun archives (i.e copy source files)
-More extensions to bun show
-    Fully qualified path (e.g. for shards in frozen archives)
-    Field_values (returns array of [field_name, value] pairs)
 Bun compare (one file from each of two lists), e.g.
     bun compare EXPRESSIONS --in FILES... --vs FILES... --where CONDITION
-      e.g. --where 'file1.digest == file2.digest && file1.text != file2.digest'
-Allow decoding and baking frozen archives to STDOUT
-    Insert separators
-        Allow separators to be overridden
-    bun decode should work
-    bun bake should work
-    bun archive decode should work
-    bun archive bake should work
-bun file editor
-    Checkout/checking (or in-place edit)
-    Produce multiple synchronized lines
-        9-bit ASCII
-        8-bit ASCII
-        7-bit ASCII
-        hex
-        octal
-        decimal
-    Look for edit marks (or a separate edit line)
-        [...] {...} / \ dddd i
+      e.g. --where 'file1.digest == file2.digest && file1.text != file2.text'
 Release version 1.0
 Major rewrite:
     All files are just Hashie::Mashes
@@ -32,6 +32,9 @@ Major rewrite:
         No packed file object(?) (except as needed to unpack files)
     No file descriptor object
     No Data object (except as needed to unpack files)
+    Simpler translate process?
+        Fewer steps (e.g. combine unpack and decode, and even possibly bake)
+        With file indexes, is there really any need for a Decoded file format?
     Limited distinction (if any), between file types
         Possibly File::Decoded, File::Text, and File::Frozen
         File::Text and File::Frozen should be File::Unpacked::Text and File::Unpacked::Frozen
@@ -44,6 +47,19 @@ Major rewrite:
     Separate bun show logic into a separate class/gem, loosely coupled to File characteristics
     Separate Slicr gem
     Separate Bots gem?
+bun file editor
+    Checkout/checking (or in-place edit)
+    Produce multiple synchronized lines
+        9-bit ASCII
+        8-bit ASCII
+        7-bit ASCII
+        hex
+        octal
+        decimal
+        BCD
+        Huffman (but how?)
+    Look for edit marks (or a separate edit line)
+        [...] {...} / \ dddd i
 Complete tests:
     archive compare_dates
     archive pull
@@ -61,6 +77,9 @@ Implement interactive (or stream) editor:
     Alternatively: check out the contents (in whatever format), edit, then check them back in again
 
 _Medium Priority_
+bun bake --to-original-destination
+Convert BCD printer control codes
+Convert line printer art (e.g. ar020.0937) to graphics
 Refine topological sorting: one pass through for precedences; version with {|node1, node2| ... } block
 Move topological sorting to its own gem
 Other traits

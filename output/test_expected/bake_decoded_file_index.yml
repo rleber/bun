@@ -1,0 +1,28 @@
+---
+:identifier: Bun
+:block_count: 14
+:block_padding_repairs: 13
+:catalog_time: 1982-04-06 00:00:00.000000000 -05:00
+:decode_time: 2014-01-24 14:58:08.176078000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:4a054fd80f72ad070812f214984669de2ea556af]
+:description: ==> FASS 1982 Alice in Wonderloo -or- Through the Looking FASS.  TF
+  output (formatted).
+:digest: 533c29cf2f2a21da3928766428d81535
+:first_block_size: 3877
+:format: :baked
+:owner: fass
+:path: fass/1982/tffed.f
+:tape: ar074.1174
+:tape_size: 53648
+:text_size: 15485
+:time: 1982-04-03 22:03:48.000000000 -05:00
+:type: :frozen
+:unpack_time: 2014-01-24 10:30:59.396794000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
+:shard_number: 21
+:shard_name: 1.3b
+:shard_time: 1982-04-03 22:03:48.000000000 -05:00
+:shard_blocks: 54
+:shard_start: 50155
+:shard_size: 3456
+:tape_path: data/test/decoded_file.txt

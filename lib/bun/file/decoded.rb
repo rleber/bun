@@ -40,7 +40,7 @@ module Bun
             files.each do |key, f|
               path = key ? File.join(to, File.basename(key)) : to
               f.descriptor.tape = options[:tape] if options[:tape]
-              f.bake(path, scrub: scrub, force: options[:force], quiet: options[:quiet], continue: options[:continue])
+              f.bake(path, index: options[:index], scrub: scrub, force: options[:force], quiet: options[:quiet], continue: options[:continue])
             end
           end
         end
@@ -70,7 +70,7 @@ module Bun
                 return_file
               end
             else
-              raise BadFileGrade, "#{fname} is not a decoded file"
+              raise BadFileFormat, "#{fname} is not a decoded file"
             end
           else
             # Ooh, this smells
@@ -93,9 +93,25 @@ module Bun
             stop "skipping bake: #{to} already exists"
           end
         else
+          to += Bun::UNDECODABLE_EXTENSION unless self.decodable
           shell.write to, text
         end
+        if options[:index]
+          index_to = options[:index]
+          index_to += Bun::UNDECODABLE_EXTENSION if !self.decodable && index_to != '-'
+          write_index(index_to)
+        end
         text
+      end
+
+      def write_index(to)
+        return unless to
+        shell = Shell.new
+        index = self.input_hash.dup
+        index.delete(:content)
+        index[:format] = :baked
+        shell.mkdir_p File.dirname(to) if to!='-'
+        shell.write to, index.to_yaml
       end
 
       # TODO DRY this up; see File::Baked, for instance

@@ -15,7 +15,7 @@
 :tape: ar056.1698
 :tape_size: 652
 :text_size: 1947
-:type: :text
+:type: :normal
 :unpack_time: 2014-02-02 04:19:51.343087000 -05:00
 :unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:571c93836cf64052fc370341e55bff0a71bae2ba]
 :content: ! '.nf

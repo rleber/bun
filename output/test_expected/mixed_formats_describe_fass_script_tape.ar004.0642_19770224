@@ -3,16 +3,23 @@ File                   fass/script
 Owner                  fass
 Description            "klisted final copy of fass '77 script"
 Catalog Date           1977/02/24
-Format                 :decoded
+Format                 Decoded
 Size (Words)           70840
-Type                   Text
+Type                   Normal
 MD5 Digest             d63f 127d 31a5 1764 8d55 8540 d1cc a409
+BCD                    false
+Binary                 false
 Block Count            19
 Block Padding Repairs  18
-Decode Time            2014-01-21 18:48:51 -0500
-Decoded By             Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+Content Start          0
+Decodable              true
+Decode Time            2014-03-05 22:17:33 -0500
+Decoded By             Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]
 First Block Size       3863
 Llink Count            20
+Media Codes            [6, 8]
+Multi-segment          false
+Sectors                1100
 Text Size              241204
-Unpack Time            2014-01-21 18:41:40 -0500
-Unpacked By            Bun version 0.3.0 [feature/expanded_examine_v2:ade0c18a99fd4d7224b9eab227c1320875f82abc]
+Unpack Time            2014-03-05 22:10:43 -0500
+Unpacked By            Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]

@@ -274,8 +274,9 @@ def backtrace(options={})
     if $saved_commands && $saved_commands.size > 0
       ::File.open(Bun::Test::BACKTRACE_FILE, 'w') {|f| f.write($saved_commands.join("\n")) }
       unless options[:quiet]
+        trace_count = [$saved_commands.size, $backtrace].min
         $stderr.puts "Command backtrace:"
-        system("bun test trace -i 2 #{$backtrace}")
+        system("bun test trace -i 2 #{-trace_count}..-1")
       end
     end
   else
@@ -305,7 +306,7 @@ end
 def decode(file_name)
   archive = Bun::Archive.new(TEST_ARCHIVE)
   expanded_file = File.join("data", "test", file_name)
-  file = Bun::File::Text.open(expanded_file)
+  file = Bun::File::Normal.open(expanded_file)
   file.text
 end
 
@@ -333,10 +334,11 @@ def rstrip(text)
 end
 
 shared_examples "simple" do |source|
-  it "decodes a simple text file (#{source})" do
+  it "decodes a simple normal file (#{source})" do
     source_file = source + Bun::DEFAULT_UNPACKED_FILE_EXTENSION
     expected_output_file = File.join("output", "test_expected", source)
     actual_output = decode(source_file)
+    File.open(File.join("output", "test_actual", source), 'w') {|f| f.write actual_output }
     expected_output = Bun.readfile(expected_output_file)
     actual_output.should == expected_output
   end
@@ -346,6 +348,7 @@ shared_examples "command" do |descr, command, expected_stdout_file, options={}|
   it "handles #{descr} properly" do
     # warn "> bun #{command}"
     res = exec("bun #{command} 2>&1", options).force_encoding('ascii-8bit')
+    File.open(File.join("output", "test_actual", expected_stdout_file), 'w') {|f| f.write res }
     expected_stdout_file = File.join("output", "test_expected", expected_stdout_file) \
         unless expected_stdout_file =~ %r{/}
     raise "!Missing expected output file: #{expected_stdout_file.inspect}" \

@@ -15,7 +15,7 @@
 :tape: ar103.1065
 :tape_size: 1936
 :text_size: 5637
-:type: :text
+:type: :normal
 :unpack_time: 2014-02-21 20:11:28.619033000 -05:00
 :unpacked_by: Bun version 0.3.0 [feature/improved_file_naming:b6c0fc87028dd69445f9dd232dbaba432c382bd5]
 :content: ! ".ic ^^\n.tr ~\n.hc `\n.qc \"\n.pc @\n.fs '____________________'''\n.pl

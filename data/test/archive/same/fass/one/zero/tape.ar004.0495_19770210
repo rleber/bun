@@ -1,23 +1,32 @@
 ---
 :identifier: Bun
+:bcd: false
+:binary: false
 :block_count: 1
 :block_padding_repairs: 0
 :catalog_time: 1977-02-10 00:00:00.000000000 -05:00
-:decode_time: 2014-02-23 12:40:54.066786000 -05:00
-:decoded_by: Bun version 0.3.0 [feature/huffman_bug_fix:fc6b47699c1aadbfb0865acd1d1d406ab4508a81]
+:content_start: 0
+:decodable: true
+:decode_time: 2014-03-05 22:17:30.018984000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]
 :description: ==> star travesty script 1977 (to be roffed)
 :digest: 2f51bd97948363e796b8fa8c1227425f
 :first_block_size: 346
 :format: :decoded
 :llink_count: 2
+:media_codes:
+- 6
+- 8
+:multi_segment: false
 :owner: fass
 :path: fass/one/zero
+:sectors: 5
 :tape: ar004.0495
 :tape_size: 346
 :text_size: 314
-:type: :text
-:unpack_time: 2014-02-23 12:34:48.100336000 -05:00
-:unpacked_by: Bun version 0.3.0 [feature/huffman_bug_fix:fc6b47699c1aadbfb0865acd1d1d406ab4508a81]
+:type: :normal
+:unpack_time: 2014-03-05 22:10:33.266988000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]
 :content: ! ".so fass/fasshole\n.he 'FASS'- % -'ACT I SCENE 0'\n.FO 'ACT I SCENE 0''FASS'\nAct
   1 Scene 0\n\n(AN EXTENDED ROUTINE BEFORE THE OPENING OF THE SHOW - A PERSON\nAPPEARS
   ON STAGE GIVING THE IMPRESSION THAT HE HAS AN ANNOUNCEMENT \nTO MAKE - WHEN HE HAS

@@ -138,3 +138,42 @@ _Extensions_
   Generalized Ruby expressions
   Allow spaces after control character
   Mode setting comment
+
+_From Evernote_
+
+
+
+Implement .po, .pb
+Other output formats
+- HTML
+- XML
+- .docx (or open source equivalent)
+- Wiki
+- Markdown
+- Doctext
+- Manpage
+- YAML
+- Ruby
+- JSON
+- Other markup languages 
+Extensions
+- Command line option to load extensions
+- Hooks
+   - Before command
+   - After command
+   - Before expansion
+   - After expansion
+- Access to variables
+- Ability to insert or alter text in the flow
+"Fass" mode:
+- Understand authoring commands natively (but which version?)
+"Modern" mode:
+- More mnemonic command names
+- Better arithmetic
+   - Arbitrary Ruby
+   - Override String.== to allow string size comparison
+   - Change = to ==
+- Modern comments: #.... (or \"... and .\"... )
+- Allow white space after "." before commands
+- .push, .pop state
+- .to FILE

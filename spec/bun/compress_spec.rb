@@ -74,7 +74,7 @@ describe "compress" do
       exec_on_success("rm -rf output/test_actual/compress_stderr.txt")
     end
   end
-  context "to a new directory --delete" do
+  context "to a new directory --aggressive" do
     before :all do
       exec("rm -rf data/test/archive/compress")
       exec("rm -rf output/test_actual/compress")
@@ -83,7 +83,7 @@ describe "compress" do
       exec("rm -rf output/test_actual/compress_delete_stdout.txt")
       exec("rm -rf output/test_actual/compress_delete_stderr.txt")
       exec("cp -r data/test/archive/compress_init data/test/archive/compress")
-      exec("bun compress --delete data/test/archive/compress output/test_actual/compress \
+      exec("bun compress --aggressive data/test/archive/compress output/test_actual/compress \
                 2>output/test_actual/compress_delete_stderr.txt \
                 >output/test_actual/compress_delete_stdout.txt")
       exec("find data/test/archive/compress -print >output/test_actual/compress_files_before.txt")
@@ -238,7 +238,7 @@ describe "compress" do
       exec("rm -rf output/test_actual/compress_stderr_inplace.txt")
       exec("cp -r data/test/archive/compress_init data/test/archive/compress")
       exec("find data/test/archive/compress -print >output/test_actual/compress_files_before.txt")
-      exec("bun compress --delete data/test/archive/compress \
+      exec("bun compress --aggressive data/test/archive/compress \
                 2>output/test_actual/compress_stderr_inplace.txt >output/test_actual/compress_stdout_inplace.txt")
       exec("find data/test/archive/compress -print >output/test_actual/compress_files_inplace.txt")
     end
@@ -279,7 +279,7 @@ describe "compress" do
       exec("rm -rf output/test_actual/compress_conflict_stderr.txt")
       exec("cp -r data/test/archive/compress_conflict_init data/test/archive/compress_conflict")
       exec("find data/test/archive/compress_conflict -print >output/test_actual/compress_conflict_files_before.txt")
-      exec("bun compress --delete data/test/archive/compress_conflict output/test_actual/compress_conflict \
+      exec("bun compress --aggressive data/test/archive/compress_conflict output/test_actual/compress_conflict \
                 2>output/test_actual/compress_conflict_stderr.txt \
                 >output/test_actual/compress_conflict_stdout.txt")
       exec("find output/test_actual/compress_conflict -print >output/test_actual/compress_conflict_files.txt")
