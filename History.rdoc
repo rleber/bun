@@ -1,3 +1,7 @@
+=== 0.4.1 2015-04-06
+
+* Fix README.rdoc
+
 === 0.4.0 2015-04-06
 
 * Ran out of development time; releasing as-is to github
