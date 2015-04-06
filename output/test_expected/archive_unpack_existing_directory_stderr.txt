@@ -1,0 +1,11 @@
+unpack ar003.0698 => /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked/ar003.0698.bun
+unpack ar003.0701 => /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked/ar003.0701.bun
+unpack ar003.0704 => /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked/ar003.0704.bun
+skip ar004.0888; /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked/ar004.0888.bun already exists
+unpack ar010.1307 => /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked/ar010.1307.bun
+unpack ar019.0175 => /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked/ar019.0175.bun
+unpack ar025.0634 => /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked/ar025.0634.bun
+unpack ar047.1383 => /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked/ar047.1383.bun
+unpack ar082.0605 => /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked/ar082.0605.bun
+unpack ar083.0698 => /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked/ar083.0698.bun
+unpack ar145.2699 => /Users/richard/projects/bun/data/test/archive/general_test_packed_unpacked/ar145.2699.bun

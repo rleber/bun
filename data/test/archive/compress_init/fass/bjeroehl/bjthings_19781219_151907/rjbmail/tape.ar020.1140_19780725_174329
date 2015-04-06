@@ -1,0 +1,41 @@
+---
+:identifier: Bun
+:bcd: false
+:binary: false
+:block_count: 4
+:block_padding_repairs: 3
+:catalog_time: 1978-12-22 00:00:00.000000000 -05:00
+:content_start: 0
+:decodable: true
+:decode_time: 2014-03-05 22:19:29.183004000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]
+:description: Bernie's Odds and Ends freezefile
+:digest: 0155d8bd75758b61b7a91a4dd4465b0a
+:first_block_size: 3865
+:format: :decoded
+:media_codes: []
+:multi_segment: false
+:owner: fass
+:path: fass/bjeroehl/bjthings
+:sectors: 225
+:tape: ar020.1140
+:tape_size: 14217
+:text_size: 634
+:time: 1978-12-19 15:19:07.000000000 -05:00
+:type: :frozen
+:unpack_time: 2014-03-05 22:11:02.263525000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]
+:content: ! "33 fass         Thu Jul  6 1978  21:08 *\nHi.  My name is Bernie -- I'm
+  the guy that Rohan may have mentioned\nconcerning the tape of the Adventure program.
+  \ I picked it up on my\nway through Toronto today (I'm here 'till Sunday from Montreal).
+  \ I\nhave given the tape to a friend of mine named Rob White (RJWHITE).\nWe tried
+  compiling it, but got a lot of error messages.  I understand\nfrom Rohan that you
+  would be interested in having it on the GAMES li-\nbrary, which may be necessary
+  since the file is about 150 llinks.\nPlease contact me at your earliest opportunity
+  with more information.\nThanks.\n                            --Bernie\n\n"
+:shard_number: 23
+:shard_name: rjbmail
+:shard_time: 1978-07-25 17:43:29.000000000 -04:00
+:shard_blocks: 0
+:shard_start: 8612
+:shard_size: 135

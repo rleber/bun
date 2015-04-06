@@ -9,8 +9,8 @@ module Bun
     class Packed < Bun::File
       class << self
         def open(fname, options={}, &blk)
-          if !options[:force] && (grade = File.file_grade(fname)) != :packed
-            raise BadFileGrade, "#{fname} can't be converted to packed"
+          if !options[:force] && (fmt = File.format(fname)) != :packed
+            raise BadFileFormat, "#{fname} is a #{fmt} format file, which can't be converted to packed"
           else
             path = fname
             path = expand_path(fname) unless fname == '-'
@@ -39,19 +39,30 @@ module Bun
       end
      
       # Convert file from internal Bun binary format to YAML digest
-      def to_unpacked_file
-        new_descriptor = data.descriptor.merge(
-                              :data_format=>:raw, 
-                              :tape_type=>data.tape_type,
-                            )
+      def to_unpacked_file(options={})
+        allow_bad_times = options.delete(:fix)
+        fix_bcw = allow_bad_times
+        data.descriptor.allow_bad_times = allow_bad_times
+        new_descriptor = data.descriptor.merge( :type=>data.type )
+        new_descriptor.allow_bad_times = allow_bad_times
+        tp = File.expand_path(data.tape_path)
+        block_padding_repaired_data = Bun.cache(:repaired_data, tp) do
+          data.with_block_padding_repaired(fix: fix_bcw)
+        end
+        new_descriptor.merge!(
+          block_padding_repairs: block_padding_repaired_data.block_padding_repairs,
+          block_count:           block_padding_repaired_data.block_count,
+          first_block_size:      block_padding_repaired_data.first_block_size,
+        )
+
         f = File::Unpacked.create(
-          :data=>data.deblocked,
+          :data=>block_padding_repaired_data,
           :archive=>archive,
           :tape=>File.basename(tape),
           :tape_path=>tape_path,
           :descriptor=>new_descriptor,
         )
-        if data.tape_type == :frozen
+        if data.type == :frozen
           f.descriptor.merge!(:shards=>f.shard_descriptors)
         end
         f
@@ -62,8 +73,8 @@ module Bun
       end
       
       # TODO Redefine this: unpack(to, options={})
-      def unpack
-        to_unpacked_file
+      def unpack(options={})
+        to_unpacked_file(options)
       end
 
       def method_missing(meth, *args, &blk)

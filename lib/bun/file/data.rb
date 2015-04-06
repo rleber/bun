@@ -6,6 +6,8 @@ require 'date'
 module Bun
 
   class Data
+    include CacheableMethods
+    class BadTime < RuntimeError; end
 
     class << self
 
@@ -38,6 +40,9 @@ module Bun
       # Convert an eight-character Bun date "mm/dd/yy" to a Ruby Date
       def date(date)
         Date.strptime(date,"%m/%d/%y")
+      rescue ArgumentError => e 
+        raise unless e.to_s =~ /invalid date/
+        raise BadTime, e.to_s
       end
 
       # Convert a Bun timestamp to the time of day in hours (24 hour clock)
@@ -53,12 +58,17 @@ module Bun
       end
 
       # Convert a Bun date and time into a Ruby Time
-      def time(date, timestamp)
+      def internal_time(date, timestamp)
         hours, minutes, seconds = time_of_day(timestamp)
         seconds, frac = seconds.divmod(1.0)
         micro_seconds = (frac*1000000).to_i
         date = self.date(date)
-        Time.local(date.year, date.month, date.day, hours, minutes, seconds, micro_seconds)
+        begin        
+          Time.local(date.year, date.month, date.day, hours, minutes, seconds, micro_seconds)
+        rescue ArgumentError => e
+          raise unless e.to_s =~ /argument out of range/
+          raise BadTime, e.to_s
+        end
       end
   
       def content_offset(words)
@@ -66,6 +76,8 @@ module Bun
       end
     end
 
+    WORDS_PER_SECTOR = 64
+    SECTOR_CHECKSUM_OFFSET = WORDS_PER_SECTOR-1
     CHARACTERS_PER_WORD = characters_per_word
     BITS_PER_WORD = Bun::Word::WIDTH
     BYTES_PER_WORD = bytes_per_word
@@ -75,6 +87,8 @@ module Bun
     ARCHIVE_NAME_POSITION = 7 # words
     SPECIFICATION_POSITION = 11 # words
     DESCRIPTION_PATTERN = /\s+(.*)/
+    EXECUTABLE_MODULE_CATALOG_OFFSET = 2
+    EXECUTABLE_MODULE_CATALOG_SIZE = 4
 
     attr_reader :all_characters
     attr_reader :all_packed_characters
@@ -88,6 +102,8 @@ module Bun
     attr_reader :archive
     attr_reader :tape
     attr_reader :tape_path
+    attr_reader :first_block_size
+    attr_reader :block_count
 
     def initialize(options={})
       @archive = options[:archive]
@@ -97,8 +113,9 @@ module Bun
     end
 
     def load(data)
-      @data = data
+      @data = data || ''
       self.words = self.class.import(@data)
+      @block_padding_repairs = 0
       @data
     end
 
@@ -110,7 +127,16 @@ module Bun
       @words = Bun::Words.new(w)
       if @words.nil?
         @all_characters = @characters = @bytes = @packed_characters = @descriptor = nil
+        @first_block_size = 0
+        @block_count = 0
       else
+        if @words.size == 0
+          @first_block_size = 0
+          @block_count = 0
+        else
+          @first_block_size = @words.at(0).half_word[1].to_i + 1
+          @block_count = (@words.size.to_f/@first_block_size).ceil
+        end
         @descriptor = Bun::File::Descriptor::Packed.new(self)
         @all_characters = LazyArray.new(@words.size*characters_per_word) do |n|
           @words.characters.at(n)
@@ -218,7 +244,7 @@ module Bun
       self.class.time_of_day content.at(tape)
     end
 
-    def time(date_tape, time_tape)
+    def internal_time(date_tape, time_tape)
       self.class.time date(date_tape), time_of_day(time_tape)
     end
 
@@ -242,13 +268,21 @@ module Bun
       File::Frozen::Descriptor.frozen?(self)
     end
 
-    def tape_type
+    def type
       if frozen?
         :frozen
-      elsif word(content_offset).characters.join == 'huff'
-        :huffman
+      elsif (word(content_offset).characters || ['']).join == 'huff'
+        if (word(content_offset+2).characters || ['']).join == 'tabl'
+        # if (word(content_offset+2).characters || ['']).join == 'tabl' &&
+        #    word(content_offset+1).half_word[0] & 0177777 == 0
+          :huffman_plus # Word-oriented Huffman format
+        else
+          :huffman # Byte-oriented Huffman format
+        end
+      elsif executable
+        :executable
       else
-        :text
+        :normal
       end
     end
     
@@ -266,7 +300,7 @@ module Bun
       split_word(words.at(offset))
     end
 
-    MAXIMUM_CHUNK_SIZE = 320*12 + 100
+    MAXIMUM_BLOCK_SIZE = 320*12 + 100
 
     def location(at)
       "#{at}(0#{'%o' % at})"
@@ -282,7 +316,7 @@ module Bun
     end
 
     def bad_bcw(offset, msg, options={})
-      minidump(offset, 010) unless options[:quiet]
+      minidump(offset, 010) unless options[:quiet] || options[:fix]
       raise File::BadBlockError, msg
     end
 
@@ -291,77 +325,161 @@ module Bun
       return nil if bcw_words.first == 0
       actual_index, actual_max = get_bcw_at(bcw_words,0)
       unless actual_index == expected_index
-        bad_bcw offset, "Bad block sequence number at nybble #{location(offset)} #{actual_index} (expected #{expected_index})", quiet: options[:quiet]
+        bad_bcw offset, "Bad block sequence number at nybble #{location(offset)}: " + 
+          "#{actual_index} (expected #{expected_index})", 
+          quiet: options[:quiet], fix: options[:fix]
       end
-      unless actual_max < MAXIMUM_CHUNK_SIZE
-        bad_bcw offset, "Block #{chunk_number} length out of range at nybble #{location(offset)}: #{chunk_max}(#{'%05o' % chunk_max}", quiet: options[:quiet]
+      unless actual_max < MAXIMUM_BLOCK_SIZE
+        bad_bcw offset, "Block #{actual_index} length out of range at nybble #{location(offset)}: " + 
+          "#{actual_max}(#{'%05o' % actual_max}", 
+          quiet: options[:quiet], fix: options[:fix]
       end
       actual_max
     end
 
     # This code removes an artifact of the file archiving, once transferred to 8-bit systems
     # See doc/file_format/llink_padding.md for a more extensive discussion
-    def deblocked_words
+    def block_padding_repaired_words(options={})
       nybbles_per_word = (Bun::Words.constituent_class.width / 4).ceil
       hex = data.to_hex
       offset = 0
-      chunks = []
+      blocks = []
+      @block_count = 0
+      @block_padding_repairs = 0
+      @block_maximums = []
       while offset < hex.size do
-        chunk_max = get_bcw_from_hex(hex, offset, chunks.size+1)
-        break unless chunk_max
-        chunk_size = (chunk_max+1) * NYBBLES_PER_WORD
-        chunk = hex[offset, chunk_size]
-        chunks << chunk
-        offset += chunk_size
-        # Check next chunk -- look for extraneous nybble
-        if offset < hex.size && chunk_size.odd?
+        block_max = begin
+          get_bcw_from_hex(hex, offset, blocks.size+1, fix: options[:fix])
+        rescue File::BadBlockError => e
+          if options[:fix]
+            warn "!#{e}: File truncated" unless options[:quiet]
+            break
+          end
+          raise
+        end
+        break unless block_max
+        @block_maximums << block_max
+        block_size = (block_max+1) * NYBBLES_PER_WORD
+        @block_count += 1
+        block = hex[offset, block_size]
+        blocks << block
+        offset += block_size
+        # Check next block -- look for extraneous nybble
+        if offset < hex.size && block_size.odd?
           2.times do |i|
             begin
-              get_bcw_from_hex(hex, offset, chunks.size+1, quiet: true)
+              get_bcw_from_hex(hex, offset, blocks.size+1, quiet: true)
+              @block_padding_repairs += 1 if i>0 # Had to go to the second try
               break
             rescue File::BadBlockError
               if i==0
                 offset += 1
               else
-                get_bcw_from_hex(hex, offset, chunks.size+1)
+                get_bcw_from_hex(hex, offset, blocks.size+1)
               end
             end
           end
         end
       end
-      # chunk_words = chunks.map{|chunk| Bun::Words.import([chunk].pack('H*'))}
-      # chunk_words.each.with_index do |chunk, index|
-      #   this_chunk_prefix = chunk.at(0).to_i
-      #   this_chunk_index, this_chunk_max = split_word(this_chunk_prefix)
-      #   this_preamble_prefix = chunk.at(1).to_i
-      #   this_preamble_index, this_preamble_offset = split_word(this_preamble_prefix)
-      #   raise BadBlockError,"!Bad chunk (##{index+1}): Chunk index out of sequence (#{'%013o' % this_chunk_prefix})" \
-      #     unless this_chunk_index==(index+1)
-      #   unless index==chunks.size-1 # Last chunk may be truncated
-      #     raise BadBlockError,"!Bad chunk (##{index+1}): Unexpected chunk size (#{'%013o' % this_chunk_prefix})" \
-      #       unless this_chunk_max==chunk_max
-      #   end
-      #   raise BadBlockError,"!Bad chunk (##{index+1}): Preamble index not 1 (#{'%013o' % this_preamble_prefix})" \
-      #     unless this_preamble_index==1
-      #   raise BadBlockError,"!Bad chunk (##{index+1}): Unexpected preamble length (#{'%013o' % this_preamble_prefix})" \
-      #     unless this_preamble_prefix===first_preamble_prefix
-      #   first_data_word = chunk.at(this_preamble_offset)
-      #   if index > 0
-      #     removed_words = chunk_words[index].slice!(0,this_preamble_offset)
-      #     removed_words.each.with_index do |w, i|
-      #       debug "#{i}: #{'%013o' % w}"
-      #     end
-      #     debug "Data: #{'%013o' % chunk_words[index].at(0)}"
-      #     raise BadBlockError,"!Unexpected result of truncation" unless first_data_word == chunk_words[index].at(0)
-      #   end
-      # end
-      Bun::Words.import([chunks.join].pack('H*'))
+      @block_padding_repaired_words = Bun::Words.import([blocks.join].pack('H*'))
+    end
+    
+    def with_block_padding_repaired(options={})
+      res = self.dup
+      w = block_padding_repaired_words(fix: options[:fix])
+      s = w.export
+      repairs = self.block_padding_repairs
+      res.load(s)
+      res.block_padding_repairs = repairs # Necessary, because load will reset this to zero
+      res
     end
 
-    def deblocked
-      res = self.dup
-      res.load(deblocked_words.export)
-      res
+    def block_padding_repairs=(value)
+      @block_padding_repairs = value
+    end
+
+    def block_padding_repairs
+      unless @block_padding_repairs
+        _ = block_padding_repaired_words
+      end
+      @block_padding_repairs
+    end
+
+    def block_maximums
+      unless @block_maximums
+        begin
+          _ = block_padding_repaired_words
+        rescue File::BadBlockError
+        end
+      end
+      @block_maximums
+    end
+
+    def block_content_sizes
+      block_maximums.map {|bmax| bmax + 1 - content_offset }
+    end
+
+    def sectors
+      (words.size - block_count*content_offset)/WORDS_PER_SECTOR
+    end
+
+    # Extract module names from an executable (Q* format) file
+    # Also serves as a test that a file is a Q* executable
+    # See doc/file_formats folder for relevant documentation (files l-code.c, qstar.c and qstar-layout.pdf)
+    # Many thanks to Alan Bowler of Thinkage Ltd. (www.thinkage.ca) for documentation and assistance
+    def modules
+      content_offset = self.content_offset
+      catalog_header = self.words[content_offset+0]
+      first_space_block = catalog_header.half_word[0].to_i
+      return nil unless first_space_block == 1
+      next_catalog_block = catalog_header.half_word[1].to_i
+      sectors = self.sectors
+      return nil unless next_catalog_block < sectors
+      available_space_block_offset = WORDS_PER_SECTOR
+      available_space_block_header = self.words[content_offset+available_space_block_offset]
+      return nil unless available_space_block_header.half_word[0].to_i == 0
+      next_available_spack_block = available_space_block_header.half_word[1].to_i
+      return nil unless next_available_spack_block < sectors
+      return nil unless compare_executable_checksum(0)
+      return nil unless compare_executable_checksum(available_space_block_offset)
+      mods = []
+      (EXECUTABLE_MODULE_CATALOG_OFFSET...(WORDS_PER_SECTOR-EXECUTABLE_MODULE_CATALOG_SIZE)).step(EXECUTABLE_MODULE_CATALOG_SIZE) do |i|
+        module_name = self.words[content_offset+i].bcd_string
+        flag_word = self.words[content_offset+i+1]
+        type, blocks, first_block = self.class.split_executable_module_flag(flag_word)
+        end_block = first_block + blocks
+        return nil if type > 3
+        return nil if end_block > sectors
+        mods << module_name if blocks > 0
+      end
+      mods
+    end
+
+  def executable
+    !!modules
+  end
+
+  def self.split_executable_module_flag(word)
+    [(word.byte[0] >> 3).to_i, (word.half_word[0] & 07777).to_i, word.half_word[1].to_i]
+  end
+
+  def compare_executable_checksum(offset)
+    start_offset = content_offset + offset
+    calculated_checksum = executable_checksum(start_offset...start_offset+SECTOR_CHECKSUM_OFFSET)
+    stored_checksum = words[content_offset+offset+SECTOR_CHECKSUM_OFFSET]
+    return calculated_checksum == stored_checksum
+  end
+
+    def executable_checksum(range)
+      sum = 0
+      carry = 0
+      words[range].each do |word|
+        sum += carry + word.to_i
+        carry, sum = sum.divmod(1<<36)
+      end
+      sum += carry
+      sum = sum % (1<<36)
+      sum
     end
   end
 end

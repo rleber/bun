@@ -1,0 +1,33 @@
+---
+:identifier: Bun
+:bcd: false
+:binary: false
+:block_count: 1
+:block_padding_repairs: 0
+:catalog_time: 1977-01-18 00:00:00.000000000 -05:00
+:content_start: 0
+:decodable: true
+:decode_time: 2014-03-05 22:17:25.848019000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]
+:description: ==> 1977 fass - star trek satire - act one
+:digest: 2f51bd97948363e796b8fa8c1227425f
+:first_block_size: 346
+:format: :decoded
+:llink_count: 2
+:media_codes:
+- 6
+- 8
+:multi_segment: false
+:owner: fass
+:path: fass/one/zero
+:sectors: 5
+:tape: ar003.2557
+:tape_size: 346
+:text_size: 314
+:type: :normal
+:unpack_time: 2014-03-05 22:10:26.530506000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]
+:content: ! ".so fass/fasshole\n.he 'FASS'- % -'ACT I SCENE 0'\n.FO 'ACT I SCENE 0''FASS'\nAct
+  1 Scene 0\n\n(AN EXTENDED ROUTINE BEFORE THE OPENING OF THE SHOW - A PERSON\nAPPEARS
+  ON STAGE GIVING THE IMPRESSION THAT HE HAS AN ANNOUNCEMENT \nTO MAKE - WHEN HE HAS
+  THE AUDIENCE'S ATTENTION (AND WAITS A BEAT)\nHE LEAVES IN SILENCE)\n\nfin\n"

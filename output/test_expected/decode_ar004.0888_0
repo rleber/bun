@@ -1,20 +1,30 @@
 ---
 :identifier: Bun
+:bcd: false
+:binary: false
+:block_count: 11
+:block_padding_repairs: 10
 :catalog_time: 1977-03-02 00:00:00.000000000 -05:00
-:data_format: :raw
-:decode_time: 2014-01-01 19:24:02.577455000 -05:00
-:decoded_by: Bun version 0.1.0 [feature/mark_option:fac108cb905e2921c9f8e9e2fd55475eb4b730d4]
+:content_start: 0
+:decodable: true
+:decode_time: 2014-03-02 18:01:07.097345000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/executable_decode:ffe678c3ca4a1831ae373411e1107d1e6a6dad1e]
 :description: ==> freeze file containing roff source for fass '77 script
 :digest: 70f558a692c0ff2b35067d2e787d0646
-:file_grade: :decoded
-:file_time: 1977-03-01 15:40:58.000000000 -05:00
+:first_block_size: 3869
+:format: :decoded
+:media_codes: []
+:multi_segment: false
 :owner: fass
 :path: fass/scripfrz
+:sectors: 630
 :tape: ar004.0888
 :tape_size: 40058
-:tape_type: :frozen
-:unpack_time: 2014-01-01 18:20:31.563902000 -05:00
-:unpacked_by: Bun version 0.1.0 [feature/mark_option:fac108cb905e2921c9f8e9e2fd55475eb4b730d4]
+:text_size: 37
+:time: 1977-03-01 15:40:58.000000000 -05:00
+:type: :frozen
+:unpack_time: 2014-03-01 16:36:38.451036000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:52f8cc890274aa85caa8920cea5c85d1d20bf4a4]
 :content: ! '.pa1
 
   .in 8

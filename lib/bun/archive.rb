@@ -14,16 +14,17 @@ module Bun
     class MissingCatalog < ArgumentError; end
     class DirectoryConflict < ArgumentError; end
     class TarError < RuntimeError; end
-
+    class FileOverwriteError < RuntimeError; end
+    class CompressConflictError < RuntimeError; end
     
     class << self
       def enumerator_class
         Archive::Enumerator
       end
       
-      FETCH_STEPS = %w{pull unpack catalog decode compress bake bake:compressed tests}
-      def fetch_steps
-        FETCH_STEPS
+      TRANSLATE_STEPS = %w{pull unpack catalog decode compress bake tests}
+      def translate_steps
+        TRANSLATE_STEPS
       end
 
       # Steps:
@@ -31,7 +32,7 @@ module Bun
       # unpack                    Unpack the files (from Honeywell binary format)
       # catalog                   Catalog the files (using a catalog file)
       # decode                    Decode the files
-      # classify                  Classify the decoded files into clean and dirty
+      # compress                  Compress the baked library (e.g. remove duplicates)
       # bake                      Bake the files (i.e. remove metadata)
       # tests                     Rebuild the test cases for the bun software
       # all                       Run all the steps
@@ -52,126 +53,123 @@ module Bun
       #   :links     Prefix pattern for symlink names
       #   :tests     Boolean: rebuild test cases?
       #   :to        Directory to output archives to
-      def fetch(*args)
-        options = args.last.is_a?(Hash) ? args.pop : {}
+      def translate(from, to, options={})
         stages = %w{packed unpacked cataloged decoded compressed baked compressed_baked}
-        base_directory = options[:to]
         @directories = {}
         @symlinks = {}
         stages.each do |stage|
-          @directories[stage.to_sym] = File.expand_path(File.join(base_directory, stage))
-          @symlinks[stage.to_sym] = options[:links] + '_' + stage
+          @directories[stage.to_sym] = File.expand_path(File.join(to, stage))
+          @symlinks[stage.to_sym] = options[:links] + '_' + stage if options[:links]
         end
-        process_steps(*args, options).each do |step|
+        do_translate_steps(options).each do |step|
           case step
           when 'pull'
-            warn "Pull files from the original archive" if options[:announce]
-            clear_stage :packed
-            pull options[:source], @directories[:packed]
-            build_symlink :packed
+            # TODO DRY this up
+            warn "Pull files from the original archive" unless options[:quiet]
+            clear_stage :packed, options
+            pull from, @directories[:packed], force: options[:force], quiet: options[:quiet]
+            build_symlink :packed if options[:links] && options[:force]
           when 'unpack'
-            warn "Unpack the files (from Honeywell binary format)" if options[:announce]
-            clear_stage :unpacked
-            clear_stage :cataloged
-            unpack @directories[:packed], @directories[:unpacked]
-            build_symlink :unpacked
+            warn "Unpack the files (from Honeywell binary format)" unless options[:quiet]
+            clear_stage :unpacked, options
+            clear_stage :cataloged, options
+            unpack @directories[:packed], @directories[:unpacked], 
+              flatten: options[:flatten], strict: options[:strict], fix: options[:fix], 
+              force: options[:force], quiet: options[:quiet]
+            build_symlink :unpacked if options[:links] && options[:force]
           when 'catalog'
-            warn "Catalog the files (using a catalog file)" if options[:announce]
+            warn "Catalog the files (using a catalog file)" unless options[:quiet]
             raise MissingCatalog, "No catalog specified" unless options[:catalog]
-            clear_stage :cataloged
-            catalog @directories[:unpacked], @directories[:cataloged], :catalog=>options[:catalog]
-            build_symlink :cataloged
+            clear_stage :cataloged, options
+            catalog @directories[:unpacked], @directories[:cataloged], :catalog=>options[:catalog], 
+              force: options[:force], quiet: options[:quiet]
+            build_symlink :cataloged if options[:links]
           when 'decode'
-            warn "Decode the files" if options[:announce]
+            warn "Decode the files" unless options[:quiet]
             from = if File.exists?(@directories[:cataloged])
               @directories[:cataloged]
             else
               @directories[:unpacked]
             end
-            clear_stage :decoded
-            decode from, @directories[:decoded]
-            build_symlink :decoded
-          # when 'classify'
-          #   warn "Classify the decoded files into clean and dirty" if options[:announce]
-          #   clear_stage :classified
-          #   classify @directories[:decoded], @directories[:classified]
-          #   build_symlink :classified
+            clear_stage :decoded, options
+            decode from, @directories[:decoded], force: options[:force], quiet: options[:quiet]
+            build_symlink :decoded if options[:links] && options[:force]
           when 'compress'
-            warn "Compress the files" if options[:announce]
+            warn "Compress the files" unless options[:quiet]
             from = @directories[:decoded]
-            clear_stage :compressed
-            compress @directories[:decoded], @directories[:compressed]
-            build_symlink :decoded
+            clear_stage :compressed, options
+            compress @directories[:decoded], @directories[:compressed], 
+              aggressive: options[:aggressive], link: options[:link],
+              force: options[:force], quiet: options[:quiet]
+            build_symlink :decoded if options[:links] && options[:force]
           when 'bake'
-            warn "Bake the files (i.e. remove metadata)" if options[:announce]
-            clear_stage :baked
-            bake @directories[:decoded], @directories[:baked]
-            build_symlink :baked
-          when 'bake:compressed'
-            warn "Bake the files (i.e. remove metadata)" if options[:announce]
-            clear_stage :compressed_baked
-            bake @directories[:compressed], @directories[:compressed_baked]
-            build_symlink :compressed_baked
+            warn "Bake the files (i.e. remove metadata)" unless options[:quiet]
+            clear_stage :baked, options
+            bake @directories[:compressed], @directories[:baked], force: options[:force], quiet: options[:quiet],
+              index: options[:index]
+            build_symlink :baked if options[:links] && options[:force]
           when 'tests'
-            warn "Rebuild test cases" if options[:announce]
-            system('bun test build')
+            warn "Rebuild test cases" unless options[:quiet]
+            cmd = 'bun test build'
+            cmd += ' --quiet' if options[:quiet]
+            system(cmd)
           else
-            raise InvalidStep, "Unknown process step #{step}"
+            raise InvalidStep, "Unknown step #{step}"
           end
         end
       end
 
-      def process_steps(*args)
-        options = args.last.is_a?(Hash) ? args.pop : {}
+      def do_translate_steps(options={})
         test = options[:tests]
-        all_steps = FETCH_STEPS + %w{all}
+        all_steps = TRANSLATE_STEPS + %w{all}
 
         # Convert all steps to lowercase, unabbreviated
-        args = args.map do |orig_arg|
-          arg = orig_arg.to_s.strip.downcase
-          if arg =~ /^((?:\.\.\.?|not[-_]?)?)(\w)((?:\.\.\.?)?)$/
+        steps = options[:steps] || 'all'
+        steps = steps.split(',') do |orig_step|
+          step = orig_step.strip.downcase
+          if step =~ /^((?:\.\.\.?|not[-_]?)?)(\w)((?:\.\.\.?)?)$/
             ix = all_steps.index($2)
-            raise InvalidStep, "Unknown process step #{orig_arg.inspect}" unless ix
-            arg = $1 + all_steps[ix] + $3
+            raise InvalidStep, "Unknown step #{orig_step.inspect}" unless ix
+            step = $1 + all_steps[ix] + $3
           end
-          arg
+          step
         end
         
-        if args.size==0 || (args.size==1 && args.first =~ /^not/)
+        if steps.size==0 || (steps.size==1 && steps.first =~ /^not/)
           args.unshift 'all'
         end
         
         # Expand shorthands and check argument validity
-        steps = args.inject([]) do |ary, arg|
-          case arg
+        steps = steps.inject([]) do |ary, step|
+          case step
           when '..all', 'all..', /^not[-_]?all/
-            raise InvalidStep, "Step #{arg} is not allowed"
+            raise InvalidStep, "Step #{step} is not allowed"
           when 'all'
-            ary += FETCH_STEPS
+            ary += TRANSLATE_STEPS
           when /^not[-_]?(\w+)$/
             ary -= [$1]
           when /^(\w*)(\.\.\.?)(\w*)$/
-            ix1 = $1=='' ? 0 : FETCH_STEPS.index($1)
-            raise InvalidStep, "Unknown process step #{$1}" unless ix1
-            ix2 = $3=='' ? -1 : FETCH_STEPS.index($3)
-            raise InvalidStep, "Unknown process step #{$2}" unless ix2
+            ix1 = $1=='' ? 0 : TRANSLATE_STEPS.index($1)
+            raise InvalidStep, "Unknown step #{$1}" unless ix1
+            ix2 = $3=='' ? -1 : TRANSLATE_STEPS.index($3)
+            raise InvalidStep, "Unknown step #{$2}" unless ix2
             if $2 == '..' || ix2 == -1
-              ary += FETCH_STEPS[ix1..ix2]
+              ary += TRANSLATE_STEPS[ix1..ix2]
             else
-              ary += FETCH_STEPS[ix1...ix2]
+              ary += TRANSLATE_STEPS[ix1...ix2]
             end
           else
-            raise InvalidStep, "Unknown process step #{arg}" unless FETCH_STEPS.index(arg)
-            ary << arg
+            raise InvalidStep, "Unknown step #{step}" unless TRANSLATE_STEPS.index(step)
+            ary << step
           end
           ary
         end
 
         steps << 'tests' if options[:tests] # Test isn't automatically part of the sequence
-                                          # This syntax allows process --tests all
+                                            # This syntax allows translate --tests all
         steps = steps.uniq
         index = 0
-        step_numbers = FETCH_STEPS.inject({}) do |hsh, step|
+        step_numbers = TRANSLATE_STEPS.inject({}) do |hsh, step|
           hsh[step] = index
           index += 1
           hsh
@@ -179,10 +177,11 @@ module Bun
         if steps.include?('unpack') && !steps.include?('catalog')
           warn "Steps include unpack, but not catalog -- be careful! Cataloged directory will be erased"
         end
-        steps.sort_by{|arg| step_numbers[arg] }
+        steps.sort_by{|step| step_numbers[step] }
       end
       
-      def clear_stage(stage)
+      def clear_stage(stage, options=[])
+        return unless options[:force]
         `rm -f #{@symlinks[stage]}`
         `rm -rf #{@directories[stage]}`
       end
@@ -191,15 +190,14 @@ module Bun
       def copy(from, to, options={})
         expanded_to = File.expand_path(to)
         unless options[:force]
-          raise DirectoryConflict, "Directory #{expanded_to} already exists" \
-                  if File.exists?(expanded_to)
+          raise FileOverwriteError, "File #{expanded_to} already exists" if File.exists?(expanded_to)
         end
         system(['rm', '-rf', expanded_to].shelljoin)
         system(['cp', '-r', File.expand_path(from) + "/", expanded_to + "/"].shelljoin)
       end
       
       def pull(from, to, options={})
-        copy from, to, :force=>true
+        copy from, to, :force=>options[:force]
       end
       
       def unpack(from, to, options={})
@@ -209,7 +207,8 @@ module Bun
       def catalog(from, to=nil, options={})
         raise MissingCatalog, "options[:catalog] not supplied" unless options[:catalog]
         if to
-          copy from, to, :force=>true
+          warn "Copying files to #{to} (this could take awhile)" unless options[:quiet]
+          copy from, to, :force=>options[:force]
         else
           to = from
         end
@@ -234,6 +233,15 @@ module Bun
         if options[:dryrun]
           dest = to
         elsif to
+          if !options[:force] && (to!='-' && !to.nil? && File.exists?(to))
+            if options[:continue]
+              warn "Skipping compress: #{to} already exists" unless options[:quiet]
+            elsif options[:quiet]
+              stop
+            else
+              stop "Skipping compress: #{to} already exists"
+            end
+          end
           shell.rm_rf(to)
           shell.cp_r(from, to)
           dest = to
@@ -273,7 +281,7 @@ module Bun
           res=false
           begin
             if !File.directory?(file)
-              result = Bun::File.examination(file, options)
+              result = Bun::File.trait(file, options)
               code = result[:code] || 0
               if options[:value]
                 code = test_value == result[:result] ? 0 : 1
@@ -289,48 +297,47 @@ module Bun
           rescue Formula::EvaluationError => e
             warn "!Evaluation error: #{e}" unless options[:quiet]
             res = nil
-          rescue String::Examination::Invalid => e
-            warn "!Invalid analysis: #{options[:exam]}" unless options[:quiet]
+          rescue String::Trait::Invalid => e
+            warn "!Invalid analysis: #{options[:trait]}" unless options[:quiet]
             res = nil
           end
           res
         end
       end
         
-      def examine_map(files, options={}, &blk)
+      def examine_map(expr, files, options={}, &blk)
         glob_all(files).map do |file|
           begin
             if !File.directory?(file)
-              result = Bun::File.examination(file, options)
-              code = result[:code] || 0
-              res = result[:result]
+              trait = Bun::File.trait(file, expr, options)
+              code = trait.code || 0
+              res = trait.value(raise: options[:raise])
               res = res ? 'match' : 'no_match' if options[:match]
               if options[:value]
                 code = options[:value] == res ? 0 : 1
               end
-              result = {file: file, code: result[:code], result: res}
+              result = {file: file, code: trait.code, result: res}
               result = yield(result) if block_given?
               result
             end
-          rescue Formula::EvaluationError => e
+          rescue Expression::EvaluationError => e
             warn "!Evaluation error: #{e}" unless options[:quiet]
             {file: file, result: nil, code: 0}
-          rescue String::Examination::Invalid => e
-            warn "!Invalid analysis: #{options[:exam]}" unless options[:quiet]
+          rescue String::Trait::Invalid => e
+            warn "!Invalid analysis: #{options[:trait]}" unless options[:quiet]
             {file: file, result: nil, code: 0}
           end
         end
       end
 
-      def duplicates(files, options={})
+      def duplicates(trait, files, options={})
         table = []
-        examine_map(files, options) do |result| 
-          last_result = result[:result]
-          if result[:result].respond_to?(:value) && result[:result].value.class < Hash
-            row = [result[:file], result[:result].value.values].flatten
-          else
-            row = [result[:file], result[:result]].flatten
-          end
+        examine_map(trait, files, options) do |result| 
+          res = result[:result]
+          res = res.value if res.class.to_s =~ /Wrapper/ # A bit smelly
+          res = res.value if res.class.to_s =~ /Wrapper/ # A bit smelly
+          last_result = res
+          row = [result[:file], res].flatten
           table << row
         end
         
@@ -368,7 +375,7 @@ module Bun
       contents = []
       each do |tape|
         file = open(tape)
-        if file.tape_type == :frozen
+        if file.type == :frozen
           file.shard_count.times do |i|
             contents << "#{tape}[#{file.shard_name(i)}]"
           end
@@ -384,10 +391,14 @@ module Bun
         
     def unpack(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
-      FileUtils.rm_rf to_path unless options[:dryrun]
+      FileUtils.rm_rf to_path if !options[:dryrun] && options[:force]
       leaves.each do |tape|
         from_tape = relative_path(tape, from_wd: true)
         to_file = from_tape
+        if options[:flatten]
+          to_file = $1 if to_file =~ %r{^.*/(ar\d+\.\d+)$}
+        end
+        next if options[:strict] && to_file !~ /ar\d+\.\d+$/
         if to_file =~ /^(.*)(\.[a-zA-Z]+)$/
           case $2
           when Bun::DEFAULT_DECODED_FILE_EXTENSION, Bun::DEFAULT_BAKED_FILE_EXTENSION
@@ -399,85 +410,74 @@ module Bun
             to_file += Bun::DEFAULT_UNPACKED_FILE_EXTENSION
         end
         to_file  = File.join(to_path, to_file)
+        unless options[:force]
+          if File.exists?(to_file)
+            warn "skip #{from_tape}; #{to_file} already exists" unless options[:quiet]
+            next
+          end
+        end
         warn "unpack #{from_tape} => #{to_file}" if options[:dryrun] || !options[:quiet]
         unless options[:dryrun]
           dir = File.dirname(to_file)
           FileUtils.mkdir_p dir
-          File.unpack(expand_path(from_tape), to_file) unless options[:dryrun]
+          begin          
+            File.unpack(expand_path(from_tape), to_file, fix: options[:fix]) unless options[:dryrun]
+          rescue Bun::File::BadBlockError => e
+            stop "!Bad BCW found in file #{from_tape}: #{e}"
+          end
         end
       end
-      to_archive = self.class.new(to_path)
-      to_archive.set_timestamps(:quiet=>true)
     end
 
     # TODO Add glob capability?
     def decode(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
-      FileUtils.rm_rf to_path unless options[:dryrun]
+      FileUtils.rm_rf to_path if options[:force] && !options[:dryrun] 
       leaves.each do |tape_path|
-        decode_options = options.merge(promote: true, expand: true, allow: true)
-        File.decode(tape_path, nil, decode_options) do |file, index|
-          # Determine whether to decode tape, and if so, where to put it
-          tape = relative_path(tape_path)
-          to_tape_path = case file.descriptor.file_grade
-          when :packed, :unpacked
-            case typ=file.tape_type
-            when :frozen
-              descr = file.shard_descriptor(index)
-              shard_name = descr.name
-              warn "Decoding #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
-              timestamp = file.descriptor.timestamp
-              File.join(to_path, decode_path(file.path, timestamp), shard_name,
-                      decode_tapename(tape, descr.file_time))
-            when :text, :huffman
-              warn "Decoding #{tape}" if options[:dryrun] || !options[:quiet]
-              timestamp = file.descriptor.timestamp
-              File.join(to_path, file.path, decode_tapename(tape, timestamp))
+        begin
+          decode_options = options.merge(promote: true, expand: true, allow: true, continue: true, to_path: to_path)
+          File.decode(tape_path, nil, decode_options) do |file, index|
+            # Determine whether to decode tape, and if so, where to put it
+            tape = relative_path(tape_path)
+            case file.descriptor.format
+            when :packed, :unpacked
+              case typ=file.type
+              when :frozen
+                descr = file.shard_descriptor(index)
+                shard_name = descr.name
+                timestamp = file.descriptor.timestamp
+                to_tape_path = File.join(to_path, decode_path(file.path, timestamp), shard_name.sub(/\.+$/,''),
+                        decode_tapename(tape, descr.time))
+                File.add_message "#{tape_path}[#{shard_name}]", "Decoded #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
+              when :normal, :huffman, :huffman_plus, :executable
+                timestamp = file.descriptor.timestamp
+                to_tape_path = File.join(to_path, file.path.sub(/\.+$/,''), decode_tapename(tape, timestamp))
+                File.add_message tape_path, "Decoded #{tape}" if options[:dryrun] || !options[:quiet]
+              else
+                File.replace_messages tape_path, "Skipped #{tape}: Unknown type (#{typ})" if options[:dryrun] || !options[:quiet]
+                to_tape_path = nil # Force skip file
+              end
             else
-              warn "Skipping #{tape}: Unknown type (#{typ})" if options[:dryrun] || !options[:quiet]
-              nil # Force skip file
+              File.add_message tape_path, "Copied #{tape}" if options[:dryrun] || !options[:quiet]
+              to_tape_path = File.join(to_path, tape)
             end
-          else
-            warn "Copying #{tape}" if options[:dryrun] || !options[:quiet]
-            File.join(to_path, tape)
+            to_tape_path = nil if options[:dryrun] # Skip quietly
+            to_tape_path
           end
-          options[:dryrun] ? nil : to_tape_path # Force skipping of file if :dryrun
+        rescue Bun::File::Huffman::Data::Base::BadFileContentError => e
+          File.replace_messages tape_path, "Skipped #{relative_path(tape_path)}: Bad Huffman encoded file: #{e}" unless options[:quiet]
+        rescue Bun::File::Huffman::Data::Base::TreeTooDeepError => e
+          File.replace_messages tape_path, "Skipped #{relative_path(tape_path)}: Bad Huffman encoded file: #{e}" unless options[:quiet]
         end
-        # file = open(tape)
-        # case file.tape_type
-        # when :frozen
-        #   file.shard_count.times do |i|
-        #     descr = file.shard_descriptor(i)
-        #     shard_name = descr.name
-        #     warn "decode #{tape}[#{shard_name}]" if options[:dryrun] || !options[:quiet]
-        #     unless options[:dryrun]
-        #       timestamp = file.descriptor.timestamp
-        #       f = File.join(to_path, decode_path(file.path, timestamp), shard_name,
-        #             decode_tapename(tape, descr.file_time))
-        #       dir = File.dirname(f)
-        #       FileUtils.mkdir_p dir
-        #       file.decode f, :shard=>shard_name
-        #     end
-        #   end
-        # when :text
-        #   warn "decode #{tape}" if options[:dryrun] || !options[:quiet]
-        #   unless options[:dryrun]
-        #     timestamp = file.descriptor.timestamp
-        #     f = File.join(to_path, file.path, decode_tapename(tape, timestamp))
-        #     dir = File.dirname(f)
-        #     FileUtils.mkdir_p dir
-        #     file.decode f
-        #   end
-        # else
-        #   warn "skipping #{tape}: unknown type (#{file.tape_type})" \
-        #         if options[:dryrun] || !options[:quiet]
-        # end
+        unless options[:quiet]
+          File.warn_messages
+        end
       end
     end
     
     EXTRACT_DATE_FORMAT = "%Y%m%d_%H%M%S"
     EXTRACT_TAPE_PREFIX = 'tape.'
-    EXTRACT_TAPE_SUFFIX = '.txt'
+    EXTRACT_TAPE_SUFFIX = ''
 
     def decode_path(path, date)
       path = path.sub(/#{DEFAULT_UNPACKED_FILE_EXTENSION}$/,'')
@@ -511,8 +511,14 @@ module Bun
       shell = Shell.new
       
       # Phase I: Remove duplicates
-      duplicates(field: :digest).each do |key, files|
-        duplicate_files = files[1..-1]
+      duplicates('digest').each do |key, files|
+        if options[:aggressive] # Remove ALL duplicates, even if their target files aren't the same
+          duplicate_files = files[1..-1]
+        else # Keep duplicates (except remove duplicate copies with the same target source path)
+          duplicate_files = files.group_by {|f| target_file(f)} # Group by target files
+                                 .map {|g, files| files[1..-1]} # Delete all but the first file in each group
+                                 .flatten
+        end
         duplicate_files.each do |file|
           rel_file = relative_path(file)
           warn "Delete #{rel_file}" unless options[:quiet]
@@ -520,56 +526,77 @@ module Bun
         end
       end
 
-      # Phase II: Remove tape files, if there's no difference between them
-      compact_groups(options) {|path| File.dirname(path) }
-      
-      # Phase III: Compress dated freeze file archives
-      compact_groups(options) {|path| path.sub(/_\d{8}(?:_\d{6})?(?=\/)/,'') }
+      # Phase II: Compress dated freeze file archives and dated tape files
+      compact_files(options) {|path| target_file(path) }
+
+      # Phase III: Link duplicate files to the oldest original (if options[:link])
+      if options[:link]
+        duplicates('digest').each do |key, files|
+          next unless files.size > 1
+          to = files.first
+          rel_to = relative_path(to)
+          files[1..-1].each do |file|
+            rel_file = relative_path(file)
+            warn "Link #{rel_file} to #{rel_to}" unless options[:quiet]
+            unless options[:dryrun]
+              shell.rm_rf(file)
+              shell.ln_s(to, file)
+            end
+          end
+        end
+      end
+
+      # Phase IV: Remove empty directories
+      # Thanks to http://stackoverflow.com/questions/1290670/ruby-how-do-i-recursively-find-and-remove-empty-directories
+      all.select { |d| File.directory?(d)} \
+         .reverse_each do |d| 
+            if ((Dir.entries(d) - %w[ . .. ]).empty?)
+              rel_directory = relative_path(d)
+              warn "Delete #{rel_directory}" unless options[:quiet]
+              Dir.rmdir(d)
+            end
+          end
     end
 
-    def duplicates(options={})
-      Archive.duplicates(leaves.to_a, options)
+    def duplicates(trait, options={})
+      Archive.duplicates(trait, leaves.to_a, options)
     end
 
-    def compact_groups(options={}, &blk)
+    def target_file(path)
+      path_without_dated_directory = path.sub(/_\d{8}(?:_\d{6})?(?=\/)/,'')
+      ext = File.nondate_extname(path_without_dated_directory)
+      path_without_dates = path_without_dated_directory.sub(/(?:\.V\d+)?((?:#{Regexp.escape(ext)})?)\/tape[\._]ar\d+\.\d+_\d{8}(?:_\d{6})?#{Regexp.escape(ext)}$/,'\1')
+      path_without_dates += ext unless File.extname(path_without_dates) == ext
+      path_without_dates
+    end
+
+    def compact_files(options={}, &blk)
       shell = Shell.new
       groups = leaves.to_a.group_by {|path| yield(path) }
-      # puts groups.inspect
       groups.each do |group, files|
-        case files.size
-        when 0
-          # Shouldn't happen
-        when 1
-          file = files.first
-          unless file == group
-            rel_file = relative_path(file)
-            rel_group = relative_path(group)
-            warn "Compact #{rel_file} => #{rel_group}" unless options[:quiet]
-            new_file = group
-            new_file += File.extname(file) unless File.extname(new_file)==File.extname(file)
-            temp_file = group+".tmp"
-            shell.mkdir_p(File.dirname(temp_file))
-            shell.cp(file, temp_file)
-            shell.rm_rf(file)
-            shell.rm_rf(group)
-            shell.cp(temp_file, new_file)
-            shell.rm_rf(temp_file)
+        next if File.expand_path(group) == File.expand_path(at)
+        primary_file = compacted_file = files.first
+        compacted_file = nil if files.size > 1
+        dest = group
+        dest += File.nondate_extname(primary_file) unless File.nondate_extname(dest)==File.nondate_extname(primary_file)
+        conflict_set = File.conflicting_files(dest)
+        directory_counts = files.map{|f| File.dirname(f)}.inject({}) {|hsh, f| hsh[f] ||= 0; hsh[f] += 1; hsh}
+        conflict_set.reject!{|f| directory_counts[f] && File.directory_count(f)-directory_counts[f] <= 0 }
+        files += conflict_set
+        files.uniq!
+        shell.merge_files(files, dest) do |move| # Messaging block
+          unless options[:quiet]
+            from = move[:from]
+            to = move[:to]
+            rel_from = relative_path(from)
+            rel_to = relative_path(to)
+            if from==compacted_file
+              warn "Compact #{rel_from} => #{rel_to}"
+            else
+              warn "Move #{rel_from} => #{rel_to}"
+            end
+            true # Continue moving
           end
-        else
-          sorted_files = files.map {|file| [file, File.timestamp(file)] }.sort_by {|file, date| date }
-          sorted_files.each.with_index do |file_data, index|
-            file, date = file_data
-            suffix = ".v#{index+1}"
-            new_file = group + suffix
-            new_file += File.extname(file) unless File.extname(new_file)==File.extname(file)
-            shell.mkdir_p(File.dirname(new_file))
-            shell.cp(file, new_file)
-            shell.rm_rf(file)
-            rel_file = relative_path(file)
-            rel_new_file = relative_path(new_file)
-            warn "Move #{rel_file} => #{rel_new_file}" unless options[:quiet]
-          end
-          shell.rm_rf(group)
         end
       end
     end

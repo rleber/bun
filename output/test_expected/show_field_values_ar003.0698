@@ -1,0 +1,24 @@
+File                                                                       Field                   Value
+/Users/richard/projects/bun/data/test/archive/general_test/ar003.0698.bun  :bcd                    nil
+                                                                           :binary                 nil
+                                                                           :block_count            1
+                                                                           :block_padding_repairs  0
+                                                                           :catalog_time           1976-11-22 00:00:00 -0500
+                                                                           :content_start          nil
+                                                                           :description            "==>files for idallen"
+                                                                           :digest                 "9e140aad691eba04afdf22ef2e33b575"
+                                                                           :executable             false
+                                                                           :first_block_size       2582
+                                                                           :format                 :unpacked
+                                                                           :identifier             "Bun"
+                                                                           :media_codes            nil
+                                                                           :multi_segment          nil
+                                                                           :owner                  "fass"
+                                                                           :path                   "fass/idallen/vector"
+                                                                           :sectors                40
+                                                                           :tape                   "ar003.0698"
+                                                                           :tape_path              "/Users/richard/projects/bun/spec/../data/test/archive/general_test/ar003.0698.bun"
+                                                                           :tape_size              2582
+                                                                           :type                   :normal
+                                                                           :unpack_time            2014-03-03 16:45:16 -0500
+                                                                           :unpacked_by            "Bun version 0.3.0 [feature/executable_decode:7e31b24f4c84602dfec725fd3ca3b2c6b982ac01]"

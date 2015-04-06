@@ -1,0 +1,4 @@
+output/test_actual/compress/bjeroehl/fass/77script.f/1zero -> /Users/richard/projects/bun/output/test_actual/compress/fass/one/zero
+output/test_actual/compress/fass/bjeroehl/bjthings/addinde -> /Users/richard/projects/bun/output/test_actual/compress/bjeroehl/fass/bjthings/addinde
+output/test_actual/compress/fass/bjeroehl/bjthings/rjbmail -> /Users/richard/projects/bun/output/test_actual/compress/bjeroehl/fass/bjthings/rjbmail
+output/test_actual/compress/fass/scripfrz/1zero -> /Users/richard/projects/bun/output/test_actual/compress/fass/one/zero

@@ -17,7 +17,7 @@ module Bun
         DESCRIPTOR_END_MARKER = 0777777777777
         FIELDS = [
           :tape_size,
-          :tape_type,
+          :type,
           :catalog_time,
           :control_characters,
           :character_count,
@@ -28,7 +28,7 @@ module Bun
           :tape,
           :tape_path,
           :file_date,
-          :file_time,
+          :time,
           :updated,
         ]
         
@@ -117,7 +117,7 @@ module Bun
           file.owner
         end
   
-        def tape_type
+        def type
           :shard
         end
 
@@ -153,10 +153,10 @@ module Bun
           file.catalog_time
         end
 
-        def file_time
-          Bun::Data.time(_update_date, _update_time_of_day)
+        def time
+          Bun::Data.internal_time(_update_date, _update_time_of_day)
         end
-        alias_method :updated, :file_time
+        alias_method :updated, :time
 
         def blocks
           word(6).value

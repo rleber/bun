@@ -1,0 +1,264 @@
+mkdir -p /Users/richard/projects/bun/data/test_init
+cp -f /Users/richard/fass_work/cataloged/ar003.0698.bun /Users/richard/projects/bun/data/test_init/ar003.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test_init
+cp -f /Users/richard/fass_work/cataloged/ar004.0642.bun /Users/richard/projects/bun/data/test_init/ar004.0642.bun
+mkdir -p /Users/richard/projects/bun/data/test_init
+cp -f /Users/richard/fass_work/cataloged/ar019.0175.bun /Users/richard/projects/bun/data/test_init/ar019.0175.bun
+mkdir -p /Users/richard/projects/bun/data/test_init
+cp -f /Users/richard/fass_work/cataloged/ar119.1801.bun /Users/richard/projects/bun/data/test_init/ar119.1801.bun
+mkdir -p /Users/richard/projects/bun/data/test_init
+cp -f /Users/richard/fass_work/cataloged/ar047.1383.bun /Users/richard/projects/bun/data/test_init/ar047.1383.bun
+mkdir -p /Users/richard/projects/bun/data/test_init
+cp -f /Users/richard/fass_work/cataloged/ar074.1174.bun /Users/richard/projects/bun/data/test_init/ar074.1174.bun
+rm -rf data/test
+cp -rf data/test_init data/test
+rm -rf data/test/archive/catalog_source_init
+mkdir -p data/test/archive/catalog_source_init
+mkdir -p /Users/richard/projects/bun/data/test/archive/catalog_source_init
+cp -f /Users/richard/fass_work/unpacked/ar003.0698.bun /Users/richard/projects/bun/data/test/archive/catalog_source_init/ar003.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/catalog_source_init
+cp -f /Users/richard/fass_work/unpacked/ar003.0701.bun /Users/richard/projects/bun/data/test/archive/catalog_source_init/ar003.0701.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/catalog_source_init
+cp -f /Users/richard/fass_work/unpacked/ar082.0605.bun /Users/richard/projects/bun/data/test/archive/catalog_source_init/ar082.0605.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/catalog_source_init
+cp -f /Users/richard/fass_work/unpacked/ar083.0698.bun /Users/richard/projects/bun/data/test/archive/catalog_source_init/ar083.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/catalog_source_init
+cp -f /Users/richard/fass_work/unpacked/ar103.1065.bun /Users/richard/projects/bun/data/test/archive/catalog_source_init/ar103.1065.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/catalog_source_init
+cp -f /Users/richard/fass_work/unpacked/ar126.0527.bun /Users/richard/projects/bun/data/test/archive/catalog_source_init/ar126.0527.bun
+rm -rf data/test/archive/packed_with_bad_files_init
+mkdir -p data/test/archive/packed_with_bad_files_init
+cp data/test_init/packed_with_bad* data/test/archive/packed_with_bad_files_init
+cp data/test_init/ar003.0698 data/test/archive/packed_with_bad_files_init
+rm -rf data/test/archive/roff/fass/1990
+mkdir -p data/test/archive/roff/fass/1990
+cp -r /Users/richard/fass_work/baked/fass/1990/script data/test/archive/roff/fass/1990/script
+rm -rf data/test/archive/compact_source_init
+mkdir -p data/test/archive/compact_source_init
+mkdir -p /Users/richard/projects/bun/data/test/archive/compact_source_init
+cp -f /Users/richard/fass_work/cataloged/ar004.0888.bun /Users/richard/projects/bun/data/test/archive/compact_source_init/ar004.0888.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/compact_source_init
+cp -f /Users/richard/fass_work/cataloged/ar009.2622.bun /Users/richard/projects/bun/data/test/archive/compact_source_init/ar009.2622.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/compact_source_init
+cp -f /Users/richard/fass_work/cataloged/ar010.0006.bun /Users/richard/projects/bun/data/test/archive/compact_source_init/ar010.0006.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/compact_source_init
+cp -f /Users/richard/fass_work/cataloged/ar013.0560.bun /Users/richard/projects/bun/data/test/archive/compact_source_init/ar013.0560.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/compact_source_init
+cp -f /Users/richard/fass_work/cataloged/ar019.0175.bun /Users/richard/projects/bun/data/test/archive/compact_source_init/ar019.0175.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/compact_source_init
+cp -f /Users/richard/fass_work/cataloged/ar019.1842.bun /Users/richard/projects/bun/data/test/archive/compact_source_init/ar019.1842.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/compact_source_init
+cp -f /Users/richard/fass_work/cataloged/ar077.0633.bun /Users/richard/projects/bun/data/test/archive/compact_source_init/ar077.0633.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/compact_source_init
+cp -f /Users/richard/fass_work/cataloged/ar103.1065.bun /Users/richard/projects/bun/data/test/archive/compact_source_init/ar103.1065.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/compact_source_init
+cp -f /Users/richard/fass_work/cataloged/ar108.2439.bun /Users/richard/projects/bun/data/test/archive/compact_source_init/ar108.2439.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/compact_source_init
+cp -f /Users/richard/fass_work/cataloged/ar114.1860.bun /Users/richard/projects/bun/data/test/archive/compact_source_init/ar114.1860.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/compact_source_init
+cp -f /Users/richard/fass_work/cataloged/ar116.1647.bun /Users/richard/projects/bun/data/test/archive/compact_source_init/ar116.1647.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/compact_source_init
+cp -f /Users/richard/fass_work/cataloged/ar119.1124.bun /Users/richard/projects/bun/data/test/archive/compact_source_init/ar119.1124.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/compact_source_init
+cp -f /Users/richard/fass_work/cataloged/ar126.0345.bun /Users/richard/projects/bun/data/test/archive/compact_source_init/ar126.0345.bun
+rm -rf data/test/archive/contents
+mkdir -p data/test/archive/contents
+mkdir -p /Users/richard/projects/bun/data/test/archive/contents
+cp -f /Users/richard/fass_work/cataloged/ar003.0698.bun /Users/richard/projects/bun/data/test/archive/contents/ar003.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/contents
+cp -f /Users/richard/fass_work/cataloged/ar054.2299.bun /Users/richard/projects/bun/data/test/archive/contents/ar054.2299.bun
+rm -rf data/test/archive/contents_packed
+mkdir -p data/test/archive/contents_packed
+mkdir -p /Users/richard/projects/bun/data/test/archive/contents_packed
+cp -f /Users/richard/fass_work/packed/ar003.0698 /Users/richard/projects/bun/data/test/archive/contents_packed/ar003.0698
+mkdir -p /Users/richard/projects/bun/data/test/archive/contents_packed
+cp -f /Users/richard/fass_work/packed/ar054.2299 /Users/richard/projects/bun/data/test/archive/contents_packed/ar054.2299
+rm -rf data/test/archive/decode_existing_init
+mkdir -p data/test/archive/decode_existing_init
+mkdir -p /Users/richard/projects/bun/data/test/archive/decode_existing_init
+cp -f /Users/richard/fass_work/cataloged/ar003.0698.bun /Users/richard/projects/bun/data/test/archive/decode_existing_init/ar003.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/decode_existing_init
+cp -f /Users/richard/fass_work/cataloged/ar054.2299.bun /Users/richard/projects/bun/data/test/archive/decode_existing_init/ar054.2299.bun
+rm -rf data/test/archive/decode_source_init
+mkdir -p data/test/archive/decode_source_init
+mkdir -p /Users/richard/projects/bun/data/test/archive/decode_source_init
+cp -f /Users/richard/fass_work/cataloged/ar003.0698.bun /Users/richard/projects/bun/data/test/archive/decode_source_init/ar003.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/decode_source_init
+cp -f /Users/richard/fass_work/cataloged/ar003.0701.bun /Users/richard/projects/bun/data/test/archive/decode_source_init/ar003.0701.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/decode_source_init
+cp -f /Users/richard/fass_work/cataloged/ar082.0605.bun /Users/richard/projects/bun/data/test/archive/decode_source_init/ar082.0605.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/decode_source_init
+cp -f /Users/richard/fass_work/cataloged/ar083.0698.bun /Users/richard/projects/bun/data/test/archive/decode_source_init/ar083.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/decode_source_init
+cp -f /Users/richard/fass_work/cataloged/ar103.1065.bun /Users/richard/projects/bun/data/test/archive/decode_source_init/ar103.1065.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/decode_source_init
+cp -f /Users/richard/fass_work/cataloged/ar126.0527.bun /Users/richard/projects/bun/data/test/archive/decode_source_init/ar126.0527.bun
+rm -rf data/test/archive/general_test
+mkdir -p data/test/archive/general_test
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
+cp -f /Users/richard/fass_work/cataloged/ar003.0698.bun /Users/richard/projects/bun/data/test/archive/general_test/ar003.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
+cp -f /Users/richard/fass_work/cataloged/ar003.0704.bun /Users/richard/projects/bun/data/test/archive/general_test/ar003.0704.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
+cp -f /Users/richard/fass_work/cataloged/ar003.0701.bun /Users/richard/projects/bun/data/test/archive/general_test/ar003.0701.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
+cp -f /Users/richard/fass_work/cataloged/ar004.0888.bun /Users/richard/projects/bun/data/test/archive/general_test/ar004.0888.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
+cp -f /Users/richard/fass_work/cataloged/ar010.1307.bun /Users/richard/projects/bun/data/test/archive/general_test/ar010.1307.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
+cp -f /Users/richard/fass_work/cataloged/ar019.0175.bun /Users/richard/projects/bun/data/test/archive/general_test/ar019.0175.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
+cp -f /Users/richard/fass_work/cataloged/ar025.0634.bun /Users/richard/projects/bun/data/test/archive/general_test/ar025.0634.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
+cp -f /Users/richard/fass_work/cataloged/ar047.1383.bun /Users/richard/projects/bun/data/test/archive/general_test/ar047.1383.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
+cp -f /Users/richard/fass_work/cataloged/ar082.0605.bun /Users/richard/projects/bun/data/test/archive/general_test/ar082.0605.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
+cp -f /Users/richard/fass_work/cataloged/ar083.0698.bun /Users/richard/projects/bun/data/test/archive/general_test/ar083.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test
+cp -f /Users/richard/fass_work/cataloged/ar145.2699.bun /Users/richard/projects/bun/data/test/archive/general_test/ar145.2699.bun
+rm -rf data/test/archive/general_test_packed_init
+mkdir -p data/test/archive/general_test_packed_init
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
+cp -f /Users/richard/fass_work/packed/ar003.0698 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar003.0698
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
+cp -f /Users/richard/fass_work/packed/ar003.0704 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar003.0704
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
+cp -f /Users/richard/fass_work/packed/ar003.0701 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar003.0701
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
+cp -f /Users/richard/fass_work/packed/ar004.0888 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar004.0888
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
+cp -f /Users/richard/fass_work/packed/ar010.1307 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar010.1307
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
+cp -f /Users/richard/fass_work/packed/ar019.0175 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar019.0175
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
+cp -f /Users/richard/fass_work/packed/ar025.0634 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar025.0634
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
+cp -f /Users/richard/fass_work/packed/ar047.1383 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar047.1383
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
+cp -f /Users/richard/fass_work/packed/ar082.0605 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar082.0605
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
+cp -f /Users/richard/fass_work/packed/ar083.0698 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar083.0698
+mkdir -p /Users/richard/projects/bun/data/test/archive/general_test_packed_init
+cp -f /Users/richard/fass_work/packed/ar145.2699 /Users/richard/projects/bun/data/test/archive/general_test_packed_init/ar145.2699
+rm -rf data/test/archive/packed_with_subdirectories
+mkdir -p data/test/archive/packed_with_subdirectories
+rm -rf data/test/archive/packed_with_subdirectories/ar003
+mkdir -p data/test/archive/packed_with_subdirectories/ar003
+mkdir -p /Users/richard/projects/bun/data/test/archive/packed_with_subdirectories/ar003
+cp -f /Users/richard/fass_work/packed/ar003.0698 /Users/richard/projects/bun/data/test/archive/packed_with_subdirectories/ar003/ar003.0698
+rm -rf data/test/archive/packed_with_subdirectories/foo/bar
+mkdir -p data/test/archive/packed_with_subdirectories/foo/bar
+mkdir -p /Users/richard/projects/bun/data/test/archive/packed_with_subdirectories/foo/bar
+cp -f /Users/richard/fass_work/packed/ar019.0175 /Users/richard/projects/bun/data/test/archive/packed_with_subdirectories/foo/bar/ar019.0175
+cp -r data/test/archive/packed_with_bad_files_init data/test/archive/packed_with_bad_files
+rm -rf data/test/archive/init
+mkdir -p data/test/archive/init
+mkdir -p /Users/richard/projects/bun/data/test/archive/init
+cp -f /Users/richard/fass_work/packed/ar003.0698 /Users/richard/projects/bun/data/test/archive/init/ar003.0698
+rm -rf data/test/archive/mv_init
+mkdir -p data/test/archive/mv_init
+mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init
+cp -f /Users/richard/fass_work/cataloged/ar003.0698.bun /Users/richard/projects/bun/data/test/archive/mv_init/ar003.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init
+cp -f /Users/richard/fass_work/cataloged/ar003.0701.bun /Users/richard/projects/bun/data/test/archive/mv_init/ar003.0701.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init
+cp -f /Users/richard/fass_work/cataloged/ar082.0605.bun /Users/richard/projects/bun/data/test/archive/mv_init/ar082.0605.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init
+cp -f /Users/richard/fass_work/cataloged/ar083.0698.bun /Users/richard/projects/bun/data/test/archive/mv_init/ar083.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init
+cp -f /Users/richard/fass_work/cataloged/ar103.1065.bun /Users/richard/projects/bun/data/test/archive/mv_init/ar103.1065.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init
+cp -f /Users/richard/fass_work/cataloged/ar126.0527.bun /Users/richard/projects/bun/data/test/archive/mv_init/ar126.0527.bun
+rm -rf data/test/archive/mv_init/directory
+mkdir -p data/test/archive/mv_init/directory
+mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init/directory
+cp -f /Users/richard/fass_work/cataloged/ar003.0698.bun /Users/richard/projects/bun/data/test/archive/mv_init/directory/ar003.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init/directory
+cp -f /Users/richard/fass_work/cataloged/ar003.0701.bun /Users/richard/projects/bun/data/test/archive/mv_init/directory/ar003.0701.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init/directory
+cp -f /Users/richard/fass_work/cataloged/ar082.0605.bun /Users/richard/projects/bun/data/test/archive/mv_init/directory/ar082.0605.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init/directory
+cp -f /Users/richard/fass_work/cataloged/ar083.0698.bun /Users/richard/projects/bun/data/test/archive/mv_init/directory/ar083.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init/directory
+cp -f /Users/richard/fass_work/cataloged/ar103.1065.bun /Users/richard/projects/bun/data/test/archive/mv_init/directory/ar103.1065.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/mv_init/directory
+cp -f /Users/richard/fass_work/cataloged/ar126.0527.bun /Users/richard/projects/bun/data/test/archive/mv_init/directory/ar126.0527.bun
+rm -rf data/test/archive/rm_init
+mkdir -p data/test/archive/rm_init
+mkdir -p /Users/richard/projects/bun/data/test/archive/rm_init
+cp -f /Users/richard/fass_work/cataloged/ar003.0698.bun /Users/richard/projects/bun/data/test/archive/rm_init/ar003.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/rm_init
+cp -f /Users/richard/fass_work/cataloged/ar003.0701.bun /Users/richard/projects/bun/data/test/archive/rm_init/ar003.0701.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/rm_init
+cp -f /Users/richard/fass_work/cataloged/ar082.0605.bun /Users/richard/projects/bun/data/test/archive/rm_init/ar082.0605.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/rm_init
+cp -f /Users/richard/fass_work/cataloged/ar083.0698.bun /Users/richard/projects/bun/data/test/archive/rm_init/ar083.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/rm_init
+cp -f /Users/richard/fass_work/cataloged/ar103.1065.bun /Users/richard/projects/bun/data/test/archive/rm_init/ar103.1065.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/rm_init
+cp -f /Users/richard/fass_work/cataloged/ar126.0527.bun /Users/richard/projects/bun/data/test/archive/rm_init/ar126.0527.bun
+rm -rf data/test/archive/rv_init/directory
+mkdir -p data/test/archive/rv_init/directory
+mkdir -p /Users/richard/projects/bun/data/test/archive/rv_init/directory
+cp -f /Users/richard/fass_work/cataloged/ar003.0698.bun /Users/richard/projects/bun/data/test/archive/rv_init/directory/ar003.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/rv_init/directory
+cp -f /Users/richard/fass_work/cataloged/ar003.0701.bun /Users/richard/projects/bun/data/test/archive/rv_init/directory/ar003.0701.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/rv_init/directory
+cp -f /Users/richard/fass_work/cataloged/ar082.0605.bun /Users/richard/projects/bun/data/test/archive/rv_init/directory/ar082.0605.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/rv_init/directory
+cp -f /Users/richard/fass_work/cataloged/ar083.0698.bun /Users/richard/projects/bun/data/test/archive/rv_init/directory/ar083.0698.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/rv_init/directory
+cp -f /Users/richard/fass_work/cataloged/ar103.1065.bun /Users/richard/projects/bun/data/test/archive/rv_init/directory/ar103.1065.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/rv_init/directory
+cp -f /Users/richard/fass_work/cataloged/ar126.0527.bun /Users/richard/projects/bun/data/test/archive/rv_init/directory/ar126.0527.bun
+rm -rf data/test/archive/mixed_formats_init
+mkdir -p data/test/archive/mixed_formats_init
+mkdir -p /Users/richard/projects/bun/data/test/archive/mixed_formats_init
+cp -f /Users/richard/fass_work/packed/ar003.0698 /Users/richard/projects/bun/data/test/archive/mixed_formats_init/ar003.0698
+mkdir -p /Users/richard/projects/bun/data/test/archive/mixed_formats_init
+cp -f /Users/richard/fass_work/cataloged/ar003.0701.bun /Users/richard/projects/bun/data/test/archive/mixed_formats_init/ar003.0701.bun
+mkdir -p /Users/richard/projects/bun/data/test/archive/mixed_formats_init/fass/script
+cp -f /Users/richard/fass_work/decoded/fass/script/tape.ar004.0642_19770224 /Users/richard/projects/bun/data/test/archive/mixed_formats_init/fass/script/tape.ar004.0642_19770224
+mkdir -p "/Users/richard/projects/bun/data/test/archive/mixed_formats_init/fass/1986/script/script.f_19860213/1-1"
+cp -f "/Users/richard/fass_work/baked/fass/1986/script/script.f/1-1" "/Users/richard/projects/bun/data/test/archive/mixed_formats_init/fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229"
+rm -rf data/test/archive/compress_init
+mkdir -p data/test/archive/compress_init
+mkdir -p /Users/richard/projects/bun/data/test/archive/compress_init/bjeroehl/fass/bjthings_19781219_151907/addinde
+cp -f /Users/richard/fass_work/decoded/bjeroehl/fass/bjthings_19781219_151907/addinde/tape.ar082.0604_19780620_175438 /Users/richard/projects/bun/data/test/archive/compress_init/bjeroehl/fass/bjthings_19781219_151907/addinde/tape.ar082.0604_19780620_175438
+mkdir -p /Users/richard/projects/bun/data/test/archive/compress_init/fass/bjeroehl/bjthings_19781219_151907/addinde
+cp -f /Users/richard/fass_work/decoded/fass/bjeroehl/bjthings_19781219_151907/addinde/tape.ar020.1140_19780620_175438 /Users/richard/projects/bun/data/test/archive/compress_init/fass/bjeroehl/bjthings_19781219_151907/addinde/tape.ar020.1140_19780620_175438
+mkdir -p /Users/richard/projects/bun/data/test/archive/compress_init/bjeroehl/fass/bjthings_19781219_151907/rjbmail
+cp -f /Users/richard/fass_work/decoded/bjeroehl/fass/bjthings_19781219_151907/rjbmail/tape.ar082.0604_19780725_174329 /Users/richard/projects/bun/data/test/archive/compress_init/bjeroehl/fass/bjthings_19781219_151907/rjbmail/tape.ar082.0604_19780725_174329
+mkdir -p /Users/richard/projects/bun/data/test/archive/compress_init/fass/bjeroehl/bjthings_19781219_151907/rjbmail
+cp -f /Users/richard/fass_work/decoded/fass/bjeroehl/bjthings_19781219_151907/rjbmail/tape.ar020.1140_19780725_174329 /Users/richard/projects/bun/data/test/archive/compress_init/fass/bjeroehl/bjthings_19781219_151907/rjbmail/tape.ar020.1140_19780725_174329
+mkdir -p /Users/richard/projects/bun/data/test/archive/compress_init/bjeroehl/fass/bjthings_19781219_151907/countess
+cp -f /Users/richard/fass_work/decoded/bjeroehl/fass/bjthings_19781219_151907/countess/tape.ar082.0604_19780630_182833 /Users/richard/projects/bun/data/test/archive/compress_init/bjeroehl/fass/bjthings_19781219_151907/countess/tape.ar082.0604_19780630_182833
+mkdir -p /Users/richard/projects/bun/data/test/archive/compress_init/fass/one/zero
+cp -f /Users/richard/fass_work/decoded/fass/one/zero/tape.ar003.2557_19770118 /Users/richard/projects/bun/data/test/archive/compress_init/fass/one/zero/tape.ar003.2557_19770118
+mkdir -p /Users/richard/projects/bun/data/test/archive/compress_init/fass/one/zero
+cp -f /Users/richard/fass_work/decoded/fass/one/zero/tape.ar004.0495_19770210 /Users/richard/projects/bun/data/test/archive/compress_init/fass/one/zero/tape.ar004.0495_19770210
+mkdir -p /Users/richard/projects/bun/data/test/archive/compress_init/bjeroehl/fass/77script.f_19770301_154058/1zero
+cp -f /Users/richard/fass_work/decoded/bjeroehl/fass/77script.f_19770301_154058/1zero/tape.ar082.0603_19770210_164752 /Users/richard/projects/bun/data/test/archive/compress_init/bjeroehl/fass/77script.f_19770301_154058/1zero/tape.ar082.0603_19770210_164752
+mkdir -p /Users/richard/projects/bun/data/test/archive/compress_init/fass/scripfrz_19770301_154058/1zero
+cp -f /Users/richard/fass_work/decoded/fass/scripfrz_19770301_154058/1zero/tape.ar004.0888_19770210_164752 /Users/richard/projects/bun/data/test/archive/compress_init/fass/scripfrz_19770301_154058/1zero/tape.ar004.0888_19770210_164752
+rm -rf data/test/archive/same
+mkdir -p data/test/archive/same
+mkdir -p /Users/richard/projects/bun/data/test/archive/same/bjeroehl/fass/bjthings_19781219_151907/addinde
+cp -f /Users/richard/fass_work/decoded/bjeroehl/fass/bjthings_19781219_151907/addinde/tape.ar082.0604_19780620_175438 /Users/richard/projects/bun/data/test/archive/same/bjeroehl/fass/bjthings_19781219_151907/addinde/tape.ar082.0604_19780620_175438
+mkdir -p /Users/richard/projects/bun/data/test/archive/same/fass/bjeroehl/bjthings_19781219_151907/addinde
+cp -f /Users/richard/fass_work/decoded/fass/bjeroehl/bjthings_19781219_151907/addinde/tape.ar020.1140_19780620_175438 /Users/richard/projects/bun/data/test/archive/same/fass/bjeroehl/bjthings_19781219_151907/addinde/tape.ar020.1140_19780620_175438
+mkdir -p /Users/richard/projects/bun/data/test/archive/same/bjeroehl/fass/bjthings_19781219_151907/rjbmail
+cp -f /Users/richard/fass_work/decoded/bjeroehl/fass/bjthings_19781219_151907/rjbmail/tape.ar082.0604_19780725_174329 /Users/richard/projects/bun/data/test/archive/same/bjeroehl/fass/bjthings_19781219_151907/rjbmail/tape.ar082.0604_19780725_174329
+mkdir -p /Users/richard/projects/bun/data/test/archive/same/fass/bjeroehl/bjthings_19781219_151907/rjbmail
+cp -f /Users/richard/fass_work/decoded/fass/bjeroehl/bjthings_19781219_151907/rjbmail/tape.ar020.1140_19780725_174329 /Users/richard/projects/bun/data/test/archive/same/fass/bjeroehl/bjthings_19781219_151907/rjbmail/tape.ar020.1140_19780725_174329
+mkdir -p /Users/richard/projects/bun/data/test/archive/same/bjeroehl/fass/bjthings_19781219_151907/countess
+cp -f /Users/richard/fass_work/decoded/bjeroehl/fass/bjthings_19781219_151907/countess/tape.ar082.0604_19780630_182833 /Users/richard/projects/bun/data/test/archive/same/bjeroehl/fass/bjthings_19781219_151907/countess/tape.ar082.0604_19780630_182833
+mkdir -p /Users/richard/projects/bun/data/test/archive/same/fass/one/zero
+cp -f /Users/richard/fass_work/decoded/fass/one/zero/tape.ar003.2557_19770118 /Users/richard/projects/bun/data/test/archive/same/fass/one/zero/tape.ar003.2557_19770118
+mkdir -p /Users/richard/projects/bun/data/test/archive/same/fass/one/zero
+cp -f /Users/richard/fass_work/decoded/fass/one/zero/tape.ar004.0495_19770210 /Users/richard/projects/bun/data/test/archive/same/fass/one/zero/tape.ar004.0495_19770210
+mkdir -p /Users/richard/projects/bun/data/test/archive/same/bjeroehl/fass/77script.f_19770301_154058/1zero
+cp -f /Users/richard/fass_work/decoded/bjeroehl/fass/77script.f_19770301_154058/1zero/tape.ar082.0603_19770210_164752 /Users/richard/projects/bun/data/test/archive/same/bjeroehl/fass/77script.f_19770301_154058/1zero/tape.ar082.0603_19770210_164752
+mkdir -p /Users/richard/projects/bun/data/test/archive/same/fass/scripfrz_19770301_154058/1zero
+cp -f /Users/richard/fass_work/decoded/fass/scripfrz_19770301_154058/1zero/tape.ar004.0888_19770210_164752 /Users/richard/projects/bun/data/test/archive/same/fass/scripfrz_19770301_154058/1zero/tape.ar004.0888_19770210_164752

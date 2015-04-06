@@ -1,0 +1,192 @@
+---
+:identifier: Bun
+:block_count: 2
+:block_padding_repairs: 1
+:catalog_time: 1981-05-19 00:00:00.000000000 -04:00
+:decode_time: 2014-02-03 15:21:10.348701000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:7cff5852b2f0e9fe5a06a73de49988b500f828dc]
+:description: ''
+:digest: 43a3ed2b18fda107d3b8cbe6f42ac6d2
+:first_block_size: 3853
+:format: :decoded
+:llink_count: 3
+:owner: aangold
+:path: aangold/a/t4
+:tape: ar058.3075
+:tape_size: 4507
+:text_size: 14618
+:type: :normal
+:unpack_time: 2014-02-02 04:35:37.885964000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:571c93836cf64052fc370341e55bff0a71bae2ba]
+:content: ! "\n  /* MANIFESTS  */\n\n  U='u';\n  V='v';\n  W='w';\n  X='x';\n  Y='_';\n
+  \ Z=' ';\n VL=260;\n\nevalstat ( s, lev )\n\n/* evaluate one statement */\n/*\n\tEvalstat
+  may work at two different levels:\nlevel\t0 -\tTop level, called from parser, evaluates
+  all statements,\nlevel\t1 -\tInternal level, internal evaluation of statements,\n\t\t\tsave
+  is not allowed.\t*/\n\n{auto b, by, from, i, l, name, p, r, rhs, t, to, twows[1],
+  var;\nextrn cons0, cons1, consm1, ininame, puttab, displac;\nextrn echo, yydebug,
+  printlevel, dot;\n\n/* error trap (any error or interrupt at deeper levels returns
+  here) */\nif (setexit())\treturn(cons0);\n\ndebug(s,\"enter evalstat\");\nif (s==VOID)\treturn(VOID);\nswitch(
+  ID(s) ){\ncase ASSIGN:\n\tname = evalname(s[1]);\n\trhs = simpl(eval(s[2]));\n\tif
+  ( ID(name)!=NAME)\tuserror(\"unevaluated lhs in assignment\");\n\tif (name==rhs)\tname[1]
+  = 0;\n\t\telse name[1] = rhs;\n\t/* test for switches and options */\n\tif (equal(name+2,\"yydebug\"))\tyydebug
+  = eq(rhs,1);\n\tif (equal(name+2,\"echo\"))\t{echo = eq(rhs,1);\n\t\tif (echo)\topen(5,\".echo.\",\"cfwu\");}\n\tif
+  (equal(name+2,\"printlevel\") && smallint(rhs))\n\t\tif (eq(rhs,0))\tprintlevel
+  = 0;\n\t\t\telse printlevel += rhs[1];\n\tfor (i=2; i>0; i--)\tininame[i][1] = ininame[i-1][1];\n\tininame[0][1]
+  = rhs;\n    if (printlevel-lev>=0) {prt(s,0);  endline();}\n\treturn(rhs);\n\ncase
+  FOR:\n\tif (s[1]==VOID)\tvar = VOID;\n\t\telse var = evalname(s[1]);\n\tfrom = simpl(eval(s[2]));\n\tby
+  = simpl(eval(s[3]));\n\tif (s[4]==VOID)\tto = VOID;\n\telse to = simpl(eval(s[4]));\n\t/*
+  test whether it can evaluate or not */\n\tif ( (var!=VOID && ID(var)!=NAME) ||\n\t\t!constant(from)
+  || !constant(by) || \n\t\t(to!=VOID && !constant(to)) )\n\t\tif (lev==0)\tuserror(\"unable
+  to execute for statement\");\n\t\t\telse return(new(FOR,var,from,by,to,s[5],s[6]));\n\tt
+  = VOID;\n\tif (var==VOID)\tvar = &twows;\n\tvar[1] = from;\n\twhile (TRUE)\t{\n\t\tif
+  (to!=VOID && consneg(mul(sub(to,var[1]),by)))\tbreak;\n\t\tif ( !evalbool(s[5]))\tbreak;\n\t\tt
+  = evalstat(s[6],1);\n\t\tvar[1] = add(var[1],by);}\n\tif (printlevel-lev>=0)\t{prt(t,0);\tendline();}\n\treturn(t);\n\n\ncase
+  IF:\n\tif (evalbool(s[1]))\tt = evalstat(s[2],1);\n\t\telse t = evalstat(s[3],1);\n\tif
+  (printlevel-lev>=0)\t {prt(t,0);\tendline();}\n\treturn(t);\n\ncase PRINT:\n\tif
+  (printlevel-lev>=-2)\n\t\t{t = evalname(s[1]);\n\t\tfor (i=1; i<LENGTH(t); i++)\t{\n\t\t\tif
+  (ID(t[i])==NAME && t[i][1]!=0)\n\t\t\t\tprt(t[i][1],0);\telse prt(t[i],0);\n\t\t\tprintf(\"
+  \  \");}\tendline();}\n\treturn(VOID);\n\ncase READ:\tcase FILE:\n\tif ( open(0,s+1,\"fr\")<0
+  )\tuserror(\"unable to open\");\n\tif (ID(s)==FILE)\t{puttab = inithash(0);\n\t\tdisplac
+  = 9999999;\n\t\twhile (getws(&t,0)>=0)\tget(t);\n\t\tcloshash(puttab);}\n\treturn;\n\ncase
+  SAVE:\tcase SAVEI:\n\tif (open(1,s+1,\"cfw\")<0)\tuserror(\"unable to open\");\n\tif
+  (ID(s)==SAVEI)\t{puttab = inithash(0);\n\t\t\tdisplac = 10000000;\n\t\t\tloopname(1);\n\t\t\tcloshash(puttab);}\n\t\telse
+  loopname(2);\n\tclose(1);\n\treturn;\n\ncase SOLVE:\n\treturn( solve( simpl(new(SUM,eval(s[1]),cons1,eval(s[2]),consm1)),\n\t\tcons0,
+  evalname(s[3]) ));\n\ncase STATSEQ:\n\tfor (i=1; i<LENGTH(s); i++)\tr = evalstat(s[i],1);\n\treturn(r);\n\ncase
+  STOP:\n\texit();\n\ndefault:\n\tt = simpl(eval(s));\n\tfor (i=2; i>0; i--)\tininame[i][1]
+  = ininame[i-1][1];\n\tininame[0][1] = t;\n\tif (equal(t+2,\"keepdot\"))\tdot = \".\";\n\tif
+  (printlevel-lev>=0)\t{prt(t,0);\tendline();}\n\treturn(t);\n}}\n\nstatement ( s
+  )\n/* Test whether s is a statement or not */\n{auto id;\nid = ID(s);\nreturn( id==ASSIGN
+  || id==FOR || id==STATSEQ || id==SAVE || id==SAVEI || id==FILE ||\n\tid ==READ ||
+  id==SOLVE || id==IF || id==LOCAL || id==PRINT);}\n\nloopname ( ind )\n/* Loop through
+  name table performing different outputs */\n{auto i, t;\nextrn nametab, ininame;\nfor
+  (i=2; i<HASHSIZE+2; i++)\tif (nametab[i]!=0)\n\tfor (t=nametab[i]+1; t[0]!=0; t+=2)\n\t\tif
+  (t[1]>ininame+1000)\tswitch ( ind )\t{\n\t\t\t/* internal output */\n\t\t\tcase
+  1:\tif (t[1][1]!=0)\tput(t[1]);\tbreak;\n\t\t\t/* external output */\n\t\t\tcase
+  2:\tif (t[1][1]!=0)\n\t\t\t{printf(\"%s := \",t[1]+2); prt(t[1][1],0); printf(\";*n\");}\n\t\t\tbreak;\n\t\t\t/*
+  3 - variables, 4 - indeterminates */\n\t\t\tcase 3:\tcase 4:\n\t\t\tif ( (t[1][1]==0)
+  ^ (ind==3))\tprintf(\"%s  \",t[1]+2);\n\t\t\tbreak;}\n}\n   prt(s,parlev)\n   /*
+  calls a routine that formats the print expressions.\n      it also dynamically creates
+  vectors used for different\n      lines of the expression.               */\n\n
+  \  { auto pline,ppos;\n\n     if (s == VOID) return;\n     ppos = 5;  \n     initialise(&pline);
+  \ \n     format(s,parlev,pline,&ppos);\n     prtrtn(pline);  \n     return;\n   }\n\n\n\n\n\nformat
+  ( s, parlev , p,pos)\n\n/* format a general expression */\n/* the parenthesis level
+  is handled as follows:\n\tlevel\t\tafter symbol\n\t0\t\t= ( '\n\t1\t\t+\n\t2\t\t-\n\t3\t\t*\n\t4\t\t/\n\t5\t\t**\n\t6\t\t.\t\t*/\n{auto
+  l, i,  ll,  n,name,rhs,f,a;\nextrn yydebug;\nl = LENGTH(s);\nif (l<=1) \n           return;\n
+  \         \nswitch( ID(s) ){\ncase SUM:\n\tif (parlev==0 || (parlev==1 && !consneg(s[2])))\t{\n\t\tif
+  (eq(s[2],1)) {\tformat(s[1],0,p,pos); }\n\t\telse if (eq(s[2],-1))\n            {
+  doprt(&p,U,\"-\",pos);\n              format(s[1],2,p,pos); \n            }\n            else
+  {\n                 format(s[2],0,p,pos); \n                 format(s[1],3,p,pos);
+  \n                 }\n            for (i=3;i<l;i+=2) {\n                if (eq(s[i+1],1))
+  {\n                   doprt(&p,U,\"+\",pos);\n                   format(s[i],1,p,pos);
+  \ \n                   }\n                else if (eq(s[i+1],-1)) {\n                       doprt(&p,U,\"-\",pos);\n
+  \                     format(s[i],2,p,pos); \n                     }\n                     else
+  if (consneg(s[i+1])) {\n                             format(s[i+1],0,p,pos); \n
+  \                            format(s[i],3,p,pos); \n                             }\n
+  \                          else {\n                              doprt(&p,U,\"+\",pos);\n
+  \                             format(s[i+1],1,p,pos); \n                              format(s[i],3,p,pos);
+  \n                              }\n                   }\n             }\n             else
+  prinpar(s,p,pos); \n             return;\n\n\n   case PROD:\n      n=p[2]; a=*pos;\n
+  \     if (parlev<3 || (parlev==3 && !consneg(s[2])))\n         { if (eq(s[2],1))
+  { format(s[1],3,p,pos);   }\n           else if (eq(s[2],-1)) { doprt(&p,V,1,pos);\n
+  \                 f=1; cdiv(s[1],5,&p,pos,0,f,n,a); }\n                else { format(s[1],5,p,pos);\n
+  \                       f=1; cpw(s[2],5,&p,pos,0,f); }\n           for (i=3;i<l;i+=2)
+  {\n              if (eq(s[i+1],1))  {\n                  format(s[i],3,p,pos);   }\n
+  \                else if (eq(s[i+1],-1))  {\n                        f=1; cdiv(s[i],4,&p,pos,0,f,n,a);}\n
+  \                     else {\n                           format(s[i],5,p,pos);  \n
+  \                          f=1; cpw(s[i+1],5,&p,pos,0,f);}\n                      }\n
+  \               }\n                else prinpar(s,p,pos);\n                return;\n\n\n
+  \  case ASSIGN:\n      name=evalname(s[1]); rhs=simpl(eval(s[2])); doprt(&p,U,name+2,pos);\n
+  \     doprt(&p,U,\":=\",pos);\n       format(rhs,0,p,pos); \n       return;\n\n\n
+  \  case CATENATE:\n       format(s[1],6,p,pos); \n       doprt(&p,U,\".\",pos);
+  format(s[2],6,p,pos);   return;\n\n\n   case CONS:\n       if (consneg(s)) {\n           if
+  (parlev>0) { prinpar(s,p,pos);   }\n           else  {\n                 n=p[2];
+  a=*pos;\n                  doprt(&p,V,s[1],pos);  \n                if (s[2]!=1)
+  {\n                              f=0; cdiv(s[2],0,&p,pos,V,f,n,a);}\n                }\n
+  \             }\n             else if (s[2]!=1) {\n                     if (parlev>3)
+  {prinpar(s,p,pos);  }\n                     else {\n                           n=p[2];
+  a=*pos;\n                           doprt(&p,V,s[1],pos);\n                           f=0;
+  cdiv(s[2],0,&p,pos,V,f,n,a);}\n                   }\n                   else doprt(&p,V,s[1],pos);
+  \n                return;\n\n   case CONSNEG:\n       n=p[2]; a=*pos;\n       if
+  (parlev>0)  prinpar(s,p,pos);  \n       else {  doprt(&p,U,\"-\",pos);     doprt(&p,W,s+1,pos);\n
+  \              if (s[s[1]+2]!=1 || s[s[1]+3]!=1) {\n                    f=0; cdiv(s+s[1]+2,0,&p,pos,W,f,n,a);}\n
+  \            }\n       return;\n\n\n  case CONSPOS:\n      n=p[2]; a=*pos;\n      if
+  (parlev>3) prinpar(s,p,pos);  \n      else  {  doprt(&p,W,s+1,pos);\n              if
+  (s[s[1]+2]!=1 || s[s[1]+3]!=1) {\n                    f=0; cdiv(s+s[1]+2,0,&p,pos,W,f,n,a);}\n
+  \            }\n       return;\n\n   case DIFF:\n       doprt(&p,U,\"diff(\",pos);
+  \ format(s[1],0,p,pos);\n       doprt(&p,U,\",\",pos);\n        format(s[2],0,p,pos);
+  \ doprt(&p,U,\")\",pos);  return;\n\n   case EXPSEQ:   case NAMESEQ:\n       if
+  (parlev>0)  prinpar(s,p,pos);  \n       else {format(s[1],0,p,pos); \n             for(i=2;i<l;i++)
+  { doprt(&p,U,\",\",pos); format(s[i],0,p,pos);  \n               }\n             }\n
+  \      return;\n\n\n   case FILE:  case READ:\n   doprt(&p,U,\"(read \",pos);doprt(&p,U,s+1,pos);doprt(&p,U,\")\",pos);\n
+  \      return;\n\n\n   case FOR:\n           if (s[1]!=0)  { doprt(&p,U,\"for \",pos);
+  format(s[1],0,p,pos);  \n                          }\n      if (!eq(s[2],1))  {
+  doprt(&p,U,\" from \",pos); format(s[2],0,p,pos);  \n                         }\n
+  \    if (!eq(s[3],1))  { doprt(&p,U,\"  by \",pos); format(s[3],0,p,pos);  \n                       }\n
+  \      if (s[4]!=0)  { doprt(&p,U,\" to \",pos);  format(s[4],0,p,pos);  \n                        }\n
+  \      if (s[5]==FALSE)  doprt(&p,U,\" while FALSE \",pos);\n     else if (s[5]!=TRUE){doprt(&p,U,\"
+  while \",pos); format(s[5],0,p,pos);  \n                          }\n      doprt(&p,U,\"
+  do \",pos); format(s[6],0,p,pos);\n      doprt(&p,U,\" od\",pos);\n      return;\n\n\n
+  \   case FUNCTION:\n        format(s[1],parlev,p,pos); \n        prinpar(s[2],p,pos);\n
+  \       return;\n\n\n   case IF:\n        doprt(&p,U,\"if \",pos);\n      nestif:\n
+  \          if (s[1]==TRUE) doprt(&p,U,\"TRUE\",pos);\n           else if (s[1]==FALSE)
+  doprt(&p,U,\"FALSE\",pos);\n                else format(s[1],0,p,pos); \n           doprt(&p,U,\"
+  then \",pos); format(s[2],0,p,pos); \n           if (s[3]==0)  { doprt(&p,U,\" fi\",pos);
+  return;}\n            else if (ID(s[3])==IF)\n                  { doprt(&p,U,\"
+  elif \",pos); s=s[3]; goto nestif; }\n                 else { doprt(&p,U,\" else
+  \",pos); format(s[3],0,p,pos);  \n                      \n                        doprt(&p,U,\"
+  fi\",pos);  return; }\n\n\n   case LOCAL: \n       doprt(&p,U,\"local\",pos); prinpar(s[1],p,pos);
+  \  return;\n\n\n   case NAME:\n       doprt(&p,U,s+2,pos);  return;\n\n\n   case
+  POLYNOM:\n       if (parlev>1) prinpar(s,p,pos);  \n       else  for (i=2;i<l;i+=2)
+  {\n               if (i>2) { doprt(&p,U,\"+\",pos);  }                    \n               n=p[2];
+  a=*pos;\n               format(s[i],3,p,pos); \n              if (s[i+1]!=0) {\n
+  \                             format(s[1],3,p,pos);\n                            \n
+  \                          }\n               if (s[i+1]<0) {\n                             ll=-s[i+1];f=0;\n
+  \                             cdiv(ll,0,&p,pos,V,f,n,a);}\n               if (s[i+1]>1)
+  {\n                              f=0; cpw(s[i+1],0,&p,pos,V,f);}\n                  }\n
+  \      return;\n\n\n   case POWER:\n        if (parlev>4) prinpar(s,p,pos);  \n
+  \       else {\n        format(s[1],5,p,pos);  \n        f=1; cpw(s[2],5,&p,pos,0,f);\n
+  \            }\n        return;\n\n\n\n   case SOLVE:\n     doprt(&p,U,\"solve(\",pos);
+  format(s[1],0,p,pos);\n     doprt(&p,U,\"=\",pos);\n    format(s[2],0,p,pos); doprt(&p,U,\",\",pos);\n
+  \   format(s[3],0,p,pos);\n       doprt(&p,U,\")\",pos);  return;\n\n\n   case STATSEQ:\n
+  \      doprt(&p,U,\"(\",pos);\n       for (i=1;i<l;i++) {\n          if (i!=1)  doprt(&p,U,\";\",pos);
+  \ format(s[i],0,p,pos);  }\n       doprt(&p,U,\")\",pos);  return;\n\n\n   case
+  TAYLOR:\n    doprt(&p,U,\"taylor(\",pos); format(s[1],0,p,pos);\n    doprt(&p,U,\",\",pos);\n
+  \    format(s[2],0,p,pos); doprt(&p,U,\"=\",pos);\n     format(s[3],0,p,pos);\n
+  \      doprt(&p,U,\",\",pos); format(s[4],0,p,pos);  \n       doprt(&p,U,\")\",pos);
+  \ return;\n\n\n   case UNEVAL:\n        doprt(&p,U,\"'\",pos);  format(s[1],0,p,pos);\n
+  \       doprt(&p,U,\"'\",pos);\n        return;\n   default:\n     if (yydebug)
+  printf(\"%d=%d,%d,%d||\",s,s[0],s[1],s[2]); /* debug line */\n     printf(\"----unable
+  to print----\");\n   }\n }\n endline()\n { printf(\"*n\");}\n\n\n  prinpar(s,lptr,ps)\n
+  \ /* print with parenthesis */\n  {\n\n    doprt(&lptr,U,\"(\",ps);\n    format(s,0,lptr,ps);\n
+  \   doprt(&lptr,U,\")\",ps);\n  }\n\n\n   doprt(line,type,dat,poss)\n\n   /* stores
+  data pointers if data is a character string\n    or       data itself if decimal
+  constant \n     in the vector line      */\n\n   { \n     auto len,a,b,c,d,e,f;\n\n
+  \    if ((type==U) || (type==X)) len=length(dat);\n     else { if (type==V) len=.nwidth(dat);\n
+  \           else { f=BASE-1; c=.nwidth(f); d=.nwidth(dat[dat[0]]);\n                   e=dat[0]-1;
+  \ len=e*c+d;  }\n          }\n     len+=1; a=*line; a+=2;\n     b=*a;  b+=len;  *a=b;\n
+  \  \n    b=*line; a=*poss;  *(b+ a++)=type;    \n     if (type!=X)\n           *(b+
+  a++)=dat;\n     *poss=a;\n     return;\n   }\n\n\n\n    prtrtn(lines)\n\n    /*
+  recursively prints the different lines per expression  */\n\n    {  auto i;\n\n
+  \      if (lines[0]!=0) prtrtn(lines[0]);\n       for (i=5; i<lines[2];)\n           {
+  if (lines[i]==U) printf(\"%c%s\", Z,lines[++i]);\n             else {\n                    if
+  (lines[i]==V) printf(\"%c%d\",Z,lines[++i]);\n                      else  {\n                         if
+  (lines[i]==W)  { printf(\"%c\",Z);\n                                               prtl(lines[++i]);\n
+  \                                            }\n                         else {\n
+  \                               if (lines[i]==X) printf(\"%c\",Y);\n                                else
+  printf(\"%c\",Z);\n                               }\n                            }\n
+  \                  }\n             i+=1;\n           }\n       endline();\n       rlsevec(lines,VL);\n
+  \      if (lines[1]!=0) prtrtn(lines[1]);\n       return;\n     }\n\n\n\n\n\n  initialise(adres)\n
+  \ \n  /* sets up the printline vectors  */\n\n {\n  auto j, x;\n\n  x=getvec(VL);\n
+  \ x[0]=0; x[1]=0;\n  x[2]=5;\n  x[3]=0; x[4]=5;\n  for (j=5;j<=VL;j+=1)\n   x[j]=Z;\n
+  \ *adres=x;\n  return;\n }\n\n\n   cdiv(es,pl,p,pos,t,f,n,las)\n\n    {\n     auto
+  a,b,c,old, new,ll,u,y,z,d;\n\n      a=*p;\n      u=las+1;\n      d=*pos;\n      if
+  (a[1]==0) initialise(&a[1]);\n      if (a[1][1]==0) {initialise(&(a[1][1])); }\n
+  \     *pos=a[4]+n-a[1][1][2];\n      a[1][2]=n; a[1][1][2]=n; \n      if (f==1)
+  format(es,pl,a[1][1],pos);\n      else doprt(&(a[1][1]),t,es,pos);\n      c=a[2];
+  b=a[1][1][2];  a[4]=*pos;\n      ll=max(b,c);\n      for(*pos=n+1;*pos<ll;)\n        doprt(&a[1],X,Y,pos);\n
+  \     a[2]=ll; a[1][2]=ll; a[1][1][2]=ll;\n     ll=ll-n-1; u=u+ll;  *pos=max(d,u);\n
+  \     return;\n    }\n\n\n   cpw(es,pl,p,pos,t,f)\n   {\n     auto a,b,x,old,ll,new,y,z;\n
+  \    old=*pos; a=*p;\n     if(a[0]==0) {initialise(&a[0]); }\n     z=a[3];\n     x=a[2]-1;
+  *pos=x-z; b=*pos+1; a[0][2]=x;\n     if(f==1)format(es,pl,a[0],pos);\n      else
+  doprt(&a[0],t,es,pos);\n     ll=a[0][2]-x-1; new=*pos;*pos=old+ll;y=b+ll-new;a[2]+=ll;\n
+  \   z+=y; a[3]=z;\n     return;\n   }\n\n"

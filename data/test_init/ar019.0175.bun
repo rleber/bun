@@ -1,30 +1,33 @@
 ---
 :identifier: Bun
-:data_format: :raw
+:block_count: 2
+:block_padding_repairs: 1
+:catalog_time: 1978-11-08 00:00:00.000000000 -05:00
 :description: ==> Total Eclipse Episode 6 - CKMS Radio Theatre
 :digest: befdfb3812c8d797ba6b31450806b2f5
-:file_grade: :unpacked
-:file_time: 1978-11-08 14:15:17.000000000 -05:00
+:first_block_size: 3867
+:format: :unpacked
 :owner: fass
 :path: fass/totleclips.f
 :tape: ar019.0175
 :tape_size: 7228
-:tape_type: :frozen
-:unpack_time: 2014-01-15 17:09:04.185832000 -05:00
-:unpacked_by: Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]
+:time: 1978-11-08 14:15:17.000000000 -05:00
+:type: :frozen
+:unpack_time: 2014-03-05 22:10:56.930819000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]
 :shards:
 - :name: temacro
-  :file_time: 1978-11-08 14:15:17.000000000 -05:00
+  :time: 1978-11-08 14:15:17.000000000 -05:00
   :blocks: 0
   :start: 35
   :size: 125
 - :name: eclipse
-  :file_time: 1978-11-08 14:15:17.000000000 -05:00
+  :time: 1978-11-08 14:15:17.000000000 -05:00
   :blocks: 1
   :start: 160
   :size: 6614
 - :name: sounds
-  :file_time: 1978-11-08 14:15:17.000000000 -05:00
+  :time: 1978-11-08 14:15:17.000000000 -05:00
   :blocks: 2
   :start: 6774
   :size: 427

@@ -1,0 +1,46 @@
+---
+:identifier: Bun
+:block_count: 16
+:block_padding_repairs: 15
+:catalog_time: 1986-03-18 00:00:00.000000000 -05:00
+:decode_time: 2014-02-22 11:06:12.358385000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/improved_file_naming:dd12bbc7313b349045e232bb30662042d631a0b3]
+:description: ''
+:digest: fcd5eb4e655d6643a8798410e0ee415e
+:first_block_size: 3855
+:format: :decoded
+:owner: bdparsons
+:path: bdparsons/fass/1986.f
+:tape: ar120.1521
+:tape_size: 60114
+:text_size: 1641
+:time: 1986-01-14 16:34:15.000000000 -05:00
+:type: :frozen
+:unpack_time: 2014-02-22 10:45:24.556991000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/improved_file_naming:dd12bbc7313b349045e232bb30662042d631a0b3]
+:content: ! "\n\nI:1b                   The Screamplay                 Page 1\n\n\n
+  \                       C\bC\bCh\bh\bhe\be\bea\ba\bap\bp\bp S\bS\bSh\bh\bho\bo\bot\bt\bts\bs\bs\n\n\n\x01\x17C\bC\bCh\bh\bha\ba\bar\br\bra\ba\bac\bc\bct\bt\bte\be\ber\br\brs\bs\bs
+  d\bd\bde\be\bef\bf\bfi\bi\bin\bn\bne\be\bed\bd\bd f\bf\bfo\bo\bor\br\br t\bt\bth\bh\bhi\bi\bis\bs\bs
+  s\bs\bsc\bc\bce\be\ben\bn\bne\be\be:\n\n    1. <ma>    HIM . . . . . . . . . . .
+  . . . . .  (HIM)\n    2. <fe>    HER . . . . . . . . . . . . . . . .  (HER)\n\n[L-1]
+  (SCENE STARTS IN DARKNESS.  LIGHTS COME ON  SLOWLY  AS L\nTHE TWO TALK)\n\n1\b1\b1-H\bH\bHI\bI\bIM\bM\bM:
+  \  I  don't  get  it.   Which  one  of  the kids is an\n   engineer?\n\n2\b2\b2-H\bH\bHE\bE\bER\bR\bR:
+  \ They're high school students.\n\n3-HIM:  Then how can one of them be an engineer?\n\n4-HER:
+  \ None of them is an engineer!\n\n5-HIM:  They _\bh_\ba_\bv_\be to make  engineering
+  \ jokes  --  my  whole\n   Electrical class is here.\n\n6-HER:   My whole Anthro
+  class is here, and you don't see me\n   asking for Artsie jokes.\n\n7-HIM:  That's
+  because Artsies have no sense of humour.\n\n8-HER:  An engineer's idea of humour
+  is making  fart  noises\n   with his armpit.\n\n9-HIM:   Artsies  don't  understand
+  \ anything  tougher  than\n   knock-knock jokes.\n\n10-HER:  Engineers are so stupid,
+  they have to study  for  a\n   urine test.\n\n11-HIM:   If  brains  were dynamite,
+  an artsie couldn't blow\n   his nose.\n\n12-HER:  Engineers eat their dead.\n\n13-HIM:
+  \ Artsies grow moss on their north sides.\n\n14-HER:  Oh yeah?\n\n15-HIM:  Yeah!\n\n(PAUSE)\n\n16-HER:
+  \ I'm _\bg_\bl_\ba_\bd FASS isn't stooping to cheap shots at  the\n   faculties.\n\n17-HIM:
+  \  (GRUMBLING)  This script must have been written by\n   mathies.\n\nI:1b Page
+  1              FASS 1986            86/01/13-10:45\n\f\n"
+:shard_number: 12
+:shard_name: 1.1b
+:shard_time: 1986-01-13 10:48:18.000000000 -05:00
+:shard_blocks: 5
+:shard_start: 52962
+:shard_size: 378

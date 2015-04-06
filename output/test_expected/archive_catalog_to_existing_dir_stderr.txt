@@ -1,0 +1,2 @@
+Copying files to output/test_actual/catalog_output_archive (this could take awhile)
+!File /Users/richard/projects/bun/output/test_actual/catalog_output_archive already exists

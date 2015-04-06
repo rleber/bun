@@ -12,13 +12,13 @@ def compare_dates(at)
   archive = Archive.new(at)
   file_update_dates = {}
   tape_types = if %w{* all}.include?(options[:type])
-                 [:text, :frozen, :huffman]
+                 [:normal, :frozen, :huffman, :huffman_plus, :executable]
                else
                  options[:type].split(',').map(&:to_sym)
                end
   archive.each do |tape|
     descriptor = archive.descriptor(tape, :build=>options[:build])
-    next unless tape_types.include?(descriptor.tape_type)
+    next unless tape_types.include?(descriptor.type)
     path = descriptor.path
     file_update_dates[path] ||= []
     file_update_dates[path] << {
@@ -33,7 +33,7 @@ def compare_dates(at)
     columns = []
     file_update_dates[path].sort_by{|d| d[:date_string]}.each do |entry|
       new_column = [entry[:tape], entry[:date_string]]
-      new_column += [''] + entry[:descriptor].shards.map{|s| s.name}.sort if entry[:descriptor].tape_type == :frozen
+      new_column += [''] + entry[:descriptor].shards.map{|s| s.name}.sort if entry[:descriptor].type == :frozen
       columns << new_column
     end
     cols = ([['  ']*columns.first.size] + columns)

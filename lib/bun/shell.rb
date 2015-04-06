@@ -4,6 +4,8 @@
 # Simple Shell interface
 # I created a separate class for this to encapsulate system dependencies
 
+require 'shellwords'
+
 module Bun
   class Shell
     attr_accessor :dryrun, :quiet
@@ -29,9 +31,8 @@ module Bun
     end
     private :_ex
 
-    # TODO Use Shellwords version
     def shell_quote(f)
-      f.inspect
+      Shellwords.escape(f)
     end
 
     def _run(command, *args)
@@ -74,6 +75,38 @@ module Bun
       _run "cp -r", from, to, options
     end
     
+    def mv(from, to, options={})
+      _run "mv", from, to, options
+    end
+
+    # "Forced" move: delete existing file, if any, first
+    # This prevents mv a=>b from creating b/a if b exists and is a directory
+    # IT WILL CLOBBER FILES
+    def mv_f(from, to, options={})
+      temp = File.temporary_file_name('mv_f_')
+      mv from, temp, options
+      rm_rf to, options
+      mv temp, to, options
+    end
+    
+    # Move with creating any necessary directories first
+    def mv_p(from, to, options={})
+      mkdir_p File.dirname(to), options
+      mv_f from, to, options
+    end
+
+    # Move file, avoiding possible conflicts by moving conflicting files using "versioning"
+    # Block is invoked before every move; this allows messaging etc. Block must return non-nil,
+    # or moves are suspended
+    def merge_files(files, to, &blk)
+      File.moves_to_merge(files, to).each do |move|
+        continue = true
+        continue = yield(move) if block_given?
+        break unless continue
+        mv_p move[:from], move[:to]
+      end
+    end
+    
     # TODO Is this used?
     def decode(*args)
       options = {}
@@ -104,15 +137,30 @@ module Bun
         file.write content
       else
         mode = options[:mode] || 'w'
-        ::File.open(file, mode) {|f| f.write content}
+        begin
+          ::File.open(file, mode) {|f| f.write content }
+        rescue => e 
+          debug "pwd: #{Dir.pwd}"
+          debug "file: #{file.inspect}"
+          debug "mode: #{mode.inspect}"
+          raise
+        end
         set_timestamp(file, options[:timestamp], options) if options[:timestamp]
       end
       content
     end
+
+    def append(file, content, options={})
+      write(file, content, options.merge(mode: 'a'))
+    end
+
+    def puts(file, content, options={})
+      append(file, content+"\n", options)
+    end
     
     def log(file, message)
       file = $stderr if file == '-'
-      write file, "#{Time.now.strftime('%Y/%m/%d %H:%M:%S')} #{message}\n", :mode=>'a'
+      puts file, "#{Time.now.strftime('%Y/%m/%d %H:%M:%S')} #{message}"
     end
   end
 end

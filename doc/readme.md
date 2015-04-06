@@ -5,6 +5,15 @@ to access files from the University of Waterloo (http://uwaterloo.ca/), specific
 student theatrical group FASS. (The name is from the Honeywell's affectionate nickname -- the 'bun. For
 Honeybun. Get it?)
 
+Thinkage Ltd., in Waterloo, Ontario, Canada maintains the only modern tools for extracting GCOS information
+and emulating the GCOS system (that I'm aware of, anyway). Many thanks are due to them, and particularly
+to Alan Bowler, who helped greatly in explaining some of the more opaque parts of the GCOS system and file
+structures. You can find them on the web at http://www.thinkage.ca/english/index.shtml. For information
+about GCOS specifically, check out http://www.thinkage.ca/english/gcos/index.shtml, and particularly the
+explain files at http://www.thinkage.ca/english/gcos/expl/masterindex.html
+
+Thanks are also due to Ian! Allen, for his input, suggestions, access to the archives, and encouragement.
+
 _About the software_
 
 This software was written in the Ruby programming language (http://ruby-lang.org/), by Richard LeBer in 
@@ -14,9 +23,9 @@ in this package for details. You may contact the author at mailto://richard.lebe
 It is my intent to provide the source for this software on Github, when I get around to it. When I do,
 I'll update this note with the address.
 
-The software was developed on an Apple MacBook Pro, running Mac OS X version ___ and using Ruby version
-1.8.7. I can't think of any reason why it shouldn't be portable to other operating systems or versions
-of Ruby, including version 1.9, but I haven't tested it, and I make no guarantees.
+The software was developed on an Apple MacBook Pro, running Mac OS X version 10.9.1 and using Ruby version
+1.9.3. I can't think of any reason why it shouldn't be portable to other operating systems or versions
+of Ruby, including version 2.0, but I haven't tested it, and I make no guarantees.
 
 _Installing this software_
 
@@ -46,8 +55,9 @@ Many commands are organized as subcommands:
 - bun catalog
 - bun config
 - bun freezer
-- bun libray
+- bun library
 - bun sandbox
+- bun test
 
 Use "help" with subcommands, as well. For instance "bun archive" lists all the subcommands. One of those 
 subcommands is "bun archive index". "bun archive help index" lists help information for that subcommand.
@@ -86,20 +96,35 @@ are included in the doc/file_format directory of this project.
 
 _Process_
 1. Set up configuration. The "bun config" commands are useful for this. 
-2. Use "bun archive fetch" to fetch the repository into the archive.
-3. Use "bun archive unpack" to unpack the repository files into an ASCII format (YAML, actually)
-4. You can use "bun ls" to list tapes.
-5. Optionally, use "bun archive catalog" to apply "last updated" dates from a catalog file.
-6. Optionally, use "bun archive text_status" to check the quality of the archived text files.
-7. There are a variety of commands you can use to work on individual files:
-   - "bun check"    Check if a file is clean
-   - "bun describe" Describe a file in the archive
-   - "bun dump"     Dump the undecoded contents of a file
-   - "bun freezer"  A collection of commands for frozen file archives:
-     - "bun freezer dump" Dump the contents of a frozen file
-     - "bun freezer ls"   List the contents of the frozen file
-   - "bun scrub"    Clean up tabs etc.
-   - "bun decode"   Decode a file
-8. Use "bun archive decode" to decode files from the archive and place them in a library.
-9. Use the "bun library" commands to reorganize the decoded files
+2. Use "bun archive pull" to fetch the repository into the archive.
+3. Use the "bun translate" program to translate the archive, or for finder control:
+  a. Use "bun archive unpack" to unpack the repository files into an ASCII format (YAML, actually)
+  b. Optionally, use "bun archive catalog" to apply "last updated" dates from a catalog file.
+  c. Use "bun achive timestamp"  to et the system timestamp for the files in the archive (bun archive catalog
+     also does this)
+  c. Use "bun archive decode" to decode the unpacked (and possibly cataloged files) into a readable format
+  d. Use "bun compress" to remove redundant files
+  e. Use "bun archive bake" to remove metadata, create an index, and produce final files
+5. Optionally, you can use "bun archive tar" to bundle up a set of files into a tarfile
+4. There are a variety of commands you can use to work on individual files:
+   - "bun ls"              List files in an archive
+   - "bun describe"        Describe a file in the archive
+   - "bun dump"            Dump the undecoded contents of a file
+   - "bun freezer"         A collection of commands for frozen file archives:
+     - "bun freezer dump"  Dump the contents of a frozen file
+     - "bun freezer ls"    List the contents of the frozen file
+   - "bun unpack"          Unpack a file
+   - "bun decode"          Decode a file
+   - "bun bake"            Bake a file
+   - "bun scrub"           Clean up tabs etc.
+   - "bun fields"          List the fields in a file
+   - "bun traits"          List available "traits" of a file (a trait is a predefined query)
+   - "bun format"          List the format (e.g. unpacked) of a file
+   - "bun type"            List the type (e.g. "Frozen") of a file
+   - "bun show"            Run arbitrary queries on the content and metadata of a group of files
+   - "bun same"            Show files which match each other, based on content or metadata
+   - "bun mark"            Make a permanent mark in the metadata for a file
+   - "bun roff"            Run a ROFF/TF emulator
+   - "bun version"         List the version of this software
+   - "bun readme"          List this text
 

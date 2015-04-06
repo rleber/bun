@@ -7,6 +7,7 @@ module Bun
 
   class File < ::File
     class Library < Bun::File
+      # TODO Is this class used anywhere?
       attr_accessor :descriptor
       attr_accessor :library
       

@@ -10,7 +10,7 @@ def ls(pat=nil)
   tasks = config.all_keys.sort
   pat ||= '*'
   pat = Bun.convert_glob(pat)
-  selected_tasks = tasks.select {|task| task =~ pat && task != :places }
+  selected_tasks = tasks.select {|task| task =~ pat }
   if selected_tasks.size > 0
     table = selected_tasks.map do |task|
       [task, config.setting[task].inspect]

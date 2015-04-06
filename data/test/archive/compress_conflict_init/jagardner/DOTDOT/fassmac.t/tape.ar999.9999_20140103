@@ -1,0 +1,168 @@
+---
+:identifier: Bun
+:block_count: 16
+:block_padding_repairs: 15
+:catalog_time: 1986-03-18 00:00:00.000000000 -05:00
+:decode_time: 2014-02-22 11:05:47.492555000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/improved_file_naming:dd12bbc7313b349045e232bb30662042d631a0b3]
+:description: ''
+:digest: 39f8f0a267630da3620e986187304044
+:first_block_size: 3855
+:format: :decoded
+:owner: bdparsons
+:path: bdparsons/fass/1986.f
+:tape: ar120.1521
+:tape_size: 60114
+:text_size: 11570
+:time: 1986-01-14 16:34:15.000000000 -05:00
+:type: :frozen
+:unpack_time: 2014-02-22 10:45:24.556991000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/improved_file_naming:dd12bbc7313b349045e232bb30662042d631a0b3]
+:content: ! "\n\nI:2                    The Screamplay                 Page 1\n\n\n\x01\x18
+  \           W\bW\bWh\bh\bhe\be\ber\br\bre\be\be T\bT\bTh\bh\bhe\be\ber\br\bre\be\be's\bs\bs
+  A\bA\bA W\bW\bWi\bi\bil\bl\bll\bl\bl, T\bT\bTh\bh\bhe\be\ber\br\bre\be\be's\bs\bs
+  A\bA\bA W\bW\bWa\ba\bay\by\by\n\n\n\x01\x17C\bC\bCh\bh\bha\ba\bar\br\bra\ba\bac\bc\bct\bt\bte\be\ber\br\brs\bs\bs
+  d\bd\bde\be\bef\bf\bfi\bi\bin\bn\bne\be\bed\bd\bd f\bf\bfo\bo\bor\br\br t\bt\bth\bh\bhi\bi\bis\bs\bs
+  s\bs\bsc\bc\bce\be\ben\bn\bne\be\be:\n\n    1. <be>    BELLA DONNA . . . . . . .
+  . . . .  (BELLA)\n    2. <di>    DIANE GOTOHEAVEN  . . . . . . . .  (DIANE)\n    3.
+  <ej>    ESTHER JONES  . . . . . . . . . . (ESTHER)\n    4. <gu>    GUIDO . . . .
+  . . . . . . . . . .  (GUIDO)\n    5. <ha>    HARRY FENWICK . . . . . . . . . .  (HARRY)\n
+  \   6. <hj>    HESTER JONES  . . . . . . . . . . (HESTER)\n    7. <ma>    MAX MILK
+  \ . . . . . . . . . . . . .  (MAX)\n    8. <ro>    ROCKY . . . . . . . . . . . .
+  . .  (ROCKY)\n    9. <tm>    TERRY MASON . . . . . . . . . . .  (TERRY)\n   10.
+  <vi>    VIRGINIA SLIMS  . . . . . . . . (VIRGINIA)\n   11. <vl>    V.L. SCALLOPINI
+  . . . . . . . . . . (V.L.)\n\n[L-1]  (LIGHTS UP DIMLY ON A LAWYER'S OFFICE -- DESK,
+  CHAIR, L\nSAFE, LARGE WINDOW, AND A DOOR WITH \"TERRY  MASON,  ATTORNEY\nAT  LAW\"
+  \ WRITTEN  BACKWARDS  ON  THE  GLASS.  MAX AND DIANE\nAPPEAR OUTSIDE THE WINDOW.
+  \ THEY SHINE FLASHLIGHTS INTO  THE\nROOM TO LOOK AROUND, THEN OPEN THE WINDOW STEALTHILY)\n\n[L-2]
+  \ (SUDDENLY,  HARRY COMES THROUGH THE DOOR AND TURNS ON L\nTHE LIGHT.  INSTINCTIVELY,
+  MAX BOLTS BACK  OUT  THE  WINDOW,\nBUT  HE  IS  ABLE  TO  GRAB THE SILL SO HE IS
+  LEFT DANGLING.\nMEANWHILE, DIANE WHIPS OUT A SMALL PISTOL AND ALMOST  SHOOTS\nHARRY
+  BEFORE REALIZING WHO HE IS)\n\n1\b1\b1-H\bH\bHA\bA\bAR\bR\bRR\bR\bRY\bY\bY F\bF\bFE\bE\bEN\bN\bNW\bW\bWI\bI\bIC\bC\bCK\bK\bK:
+  \ Hi Diane.  Hi Max.\n\n2\b2\b2-D\bD\bDI\bI\bIA\bA\bAN\bN\bNE\bE\bE G\bG\bGO\bO\bOT\bT\bTO\bO\bOH\bH\bHE\bE\bEA\bA\bAV\bV\bVE\bE\bEN\bN\bN:
+  \ Harry!\n\n(SHE TAKES A COUPLE OF QUICK STEPS TOWARDS HIM, THEN STOPS)\n\n   Harry
+  Fenwick, I could have killed you!\n\n3\b3\b3-M\bM\bMA\bA\bAX\bX\bX M\bM\bMI\bI\bIL\bL\bLK\bK\bK:
+  \ Another golden opportunity wasted.  Pull me in!\n\n(DIANE  STRUGGLES  TO HELP
+  MAX AS HARRY CALMLY WALKS OVER TO\nTHE CHAIR BEHIND THE DESK AND SITS DOWN)\n\n4-DIANE:
+  \ Why...oof...why weren't you behind us, Harry?\n\n5-HARRY:  There are eight million
+  stories in the naked city,\n   Diane.  Why should I climb 32 of them?\n\n6-MAX:
+  \  (INSIDE  NOW)  Come  on, Diane, let's get this safe\n   open.\n\n(MAX AND DIANE
+  GO TO THE SAFE AND LAY OUT VARIOUS TOOLS)\n\n   Sandpaper.\n\n\n\nI:2 Page 1               FASS
+  1986            86/01/12-23:13\n\f\n\nI:2         Where There's A Will, There's
+  A Way       Page 2\n\n7-DIANE:  (HANDING HIM SANDPAPER) Sandpaper.\n\n8-MAX:  Stethoscope.\n\n9-DIANE:
+  \ (HANDING HIM STETHOSCOPE) Stethoscope.\n\n10-HARRY:  Schooner.\n\n11-DIANE:  (HANDING
+  HARRY BEER) Schooner.\n\n(PAUSE.  MAX AND DIANE LOOK AT THE BEER, THEN AT EACH OTHER,\nTHEN
+  AT HARRY)\n\n12-MAX:  Just how did you get past the night watchman,  Har-\n   ry?\n\n13-HARRY:
+  \  I  told  him I was here to clean out the office.\n   Let's start with the safe.
+  \ Get cracking.\n\n14-DIANE:  Why don't you keep a watch  outside  the  office?\n
+  \  Someone could come in if we aren't careful.\n\n15-HARRY:   (SWINGING FEET ONTO
+  DESK) No problem, Diane.  If\n   anyone happens to walk in, then I--\n\n(ENTER BELLA,
+  \ VIRGINIA,  ESTHER,  AND  HESTER,  BLUE-HAIRED\nLADIES  LADEN  WITH  SHOPPING  BAGS.
+  \  HESTER AND ESTHER ARE\nIDENTICAL TWINS)\n\n   --want this mess cleaned  up  immediately!
+  \  (TO  LADIES)\n   Sorry  for the inconvenience, but tradesmen keep such odd\n
+  \  hours.\n\n(MAX AND DIANE QUICKLY PACK UP THEIR TOOLS AND EXIT.   HARRY\nHOLDS
+  OUT HIS HAND TO LADIES)\n\n   Good evening, I'm...uh...\n\n(HE QUICKLY PICKS UP
+  THE NAMEPLATE ON DESK AND READS IT)\n\n   Terry Mason, Attorney at Law.\n\n1\b1\b16\b6\b6-H\bH\bHE\bE\bES\bS\bST\bT\bTE\bE\bER\bR\bR
+  J\bJ\bJO\bO\bON\bN\bNE\bE\bES\bS\bS:  (GIGGLE) I'm Hester.\n\n1\b1\b17\b7\b7-E\bE\bES\bS\bST\bT\bTH\bH\bHE\bE\bER\bR\bR
+  J\bJ\bJO\bO\bON\bN\bNE\bE\bES\bS\bS:  (GIGGLE) I'm Esther.\n\n1\b1\b18\b8\b8-H\bH\bHE\bE\bES\bS\bST\bT\bTE\bE\bER\bR\bR
+  A\bA\bAN\bN\bND\bD\bD E\bE\bES\bS\bST\bT\bTH\bH\bHE\bE\bER\bR\bR:  (GIGGLE AND CURTSEY)
+  How do you do?\n\n19-HARRY:  What can I do for you _\bl_\bo_\bv_\be_\bl_\by young
+  ladies?\n\n2\b2\b20\b0\b0-B\bB\bBE\bE\bEL\bL\bLL\bL\bLA\bA\bA D\bD\bDO\bO\bON\bN\bNN\bN\bNA\bA\bA:
+  \ Well, you can call me Bella!\n\n2\b2\b21\b1\b1-V\bV\bVI\bI\bIR\bR\bRG\bG\bGI\bI\bIN\bN\bNI\bI\bIA\bA\bA
+  S\bS\bSL\bL\bLI\bI\bIM\bM\bMS\bS\bS:  And you can call me anytime!\n\n(HESTER AND
+  ESTHER GIGGLE)\n\n\nI:2 Page 2               FASS 1986            86/01/12-23:13\n\f\n\nI:2
+  \        Where There's A Will, There's A Way       Page 3\n\n22-BELLA:  Virginia!\n\n23-HESTER:
+  \ Just because there's snow on the roof--\n\n24-ESTHER:  --doesn't mean there's
+  no fire in the furnace!\n\n25-HARRY:   Business  before pleasure.  What brings you
+  here\n   tonight?\n\n26-BELLA:  We were surprised to see a lawyer's  office  open\n
+  \  during the Midnight Madness Sale!\n\n27-HARRY:   Justice  never  sleeps.  So
+  you're looking for a\n   lawyer?\n\n28-VIRGINIA:  Bingo, sweetcheeks.\n\n(SHE GOOSES
+  HIM)\n\n29-BELLA:  We want to plan for when we...\"depart\".\n\n30-HARRY:   Depart?
+  \ No  problem.   I  highly  recommend  my\n   brother's agency, Fly-By-Night Travel.\n\n31-VIRGINIA:
+  \ No, no, we mean when we \"buy the farm\".\n\n32-HARRY:   I  have  a  real estate
+  friend who can get you a\n   first-class dairy operation.\n\n33-BELLA:  When we
+  \"bite the big one\"!\n\n34-HARRY:  Dentist pal uptown?\n\n35-VIRGINIA:  We want
+  our loved ones to be cared for when we\n   DIE!\n\n(HARRY REACTS VIOLENTLY TO THE
+  WORD)\n\n36-HESTER:   There,  there,  dearie.   The natural finale to\n   Life is
+  D----\n\n37-HARRY:  Don't say that word!\n\n38-ESTHER:  You mean D----\n\n39-HARRY:
+  \ Uh uh uh!\n\n40-HESTER:  But surely you deal every day with D----\n\n41-HARRY:
+  \ Uh!\n\n42-ESTHER:   ...with the D-word!\n\n43-HARRY:  (WALKING AWAY) I'm sorry,
+  but it's a problem I've\n   had ever since...ever since...\n\n\nI:2 Page 3               FASS
+  1986            86/01/12-23:13\n\f\n\nI:2         Where There's A Will, There's
+  A Way       Page 4\n\n(HE DEVELOPS A LIMP)\n\n   ...the War.  I can't face...the
+  D-word.\n\n44-VIRGINIA:   We're sorry.  All the same, we've come to you\n   about
+  the parakeets.\n\n45-HARRY:  I beg your pardon?\n\n46-BELLA:  When we're...\n\n(HARRY
+  WINCES)\n\n   ...gone, we want to know that our beloved  parakeets  are\n   well
+  looked after.\n\n47-HARRY:   No  problem.  There's a standard will for situa-\n
+  \  tions where a thoughtful owner wants to assure the future\n   of his pet.\n\n(HE
+  \ RUMMAGES THROUGH DESK OR FILING CABINET AND PULLS OUT A\nFOLDER)\n\n   We call
+  it the...Leave It To Beaver Package.\n\n48-BELLA:  How clever!  (READING FORM) \"I,
+  insert name here,\n   being of sound mind -- \" Yes, Virginia, there is a sanity\n
+  \  clause!\n\n49-HESTER:  Oh what a lovely will!\n\n50-ESTHER:  We'll take two.\n\n51-VIRGINIA:
+  \ And here's a little something extra for  your-\n   self.\n\n(SHE  TUCKS  MONEY
+  \ INTO  HIS  POCKET  WITH  A PERSONAL PAT.\nLADIES EXIT)\n\n52-HARRY:  Max, get
+  back in here!\n\n(ENTER MAX, CARRIED BY ROCKY AND GUIDO.  V.L. FOLLOWS)\n\n53-MAX:
+  \ Some gentlemen to see you, boss.\n\n5\b5\b54\b4\b4-V\bV\bV.L\bL\bL. S\bS\bSC\bC\bCA\bA\bAL\bL\bLL\bL\bLO\bO\bOP\bP\bPI\bI\bIN\bN\bNI\bI\bI:
+  \ Rocky!\n\n(HE SNAPS HIS FINGERS.  ROCKY DROPS MAX)\n\n   Guido!\n\n(HE SNAPS HIS
+  FINGERS.  GUIDO DROPS MAX)\n\n   You Mason, the lawyer?\n\n\n\nI:2 Page 4               FASS
+  1986            86/01/12-23:13\n\f\n\nI:2         Where There's A Will, There's
+  A Way       Page 5\n\n55-HARRY:  Maybe.\n\n56-V.L.:   I'm V.L. Scallopini, and I
+  wanna \"talk\" to youse.\n   You been givin' us trouble and I wannit stopped.\n\n5\b5\b57\b7\b7-R\bR\bRO\bO\bOC\bC\bCK\bK\bKY\bY\bY:
+  \ Trouble!\n\n5\b5\b58\b8\b8-G\bG\bGU\bU\bUI\bI\bID\bD\bDO\bO\bO:  Wannit stopped!\n\n59-V.L.:
+  \ If you don't toe da line, I'm gonna hafta  ask  my\n   boys to rough youse up!\n\n60-ROCKY:
+  \ Toe da line!\n\n61-GUIDO:  Rough youse up!\n\n62-V.L.:  So maybe we'd better have
+  a little talk!  Nice and\n   private-like!\n\n63-ROCKY:  A little talk!\n\n64-GUIDO:
+  \ Private-like!\n\n[S-1] (V.L. SNAPS TWICE AND INDICATES MAX.  ROCKY AND  GUIDO
+  S\nCASUALLY  TOSS  MAX  OUT THE WINDOW TO THE SOUND OF BREAKING\nGLASS AND FADING
+  SCREAMS.  WHEN THE SOUND DIES,  V.L.  SNAPS\nTWICE  AGAIN  AND  ROCKY AND GUIDO
+  RETREAT MENACINGLY TO THE\nDOOR, OUT OF EARSHOT)\n\n65-V.L.:  Gotta will, Mason?\n\n66-HARRY:
+  \ Hail, Mary, full of grace...  The  Lord  is  with\n   thee--\n\n67-V.L.:   Not
+  \ for you, Mason, for me.  The rough stuff was\n   just to impress the boys.  Let's
+  talk.\n\n68-HARRY:  Talk?  Like talk-talk?\n\n69-V.L.:  I wanna write a will.\n\n70-HARRY:
+  \ No problem.\n\n71-V.L.:  Leavin' everything to my...fish.\n\n(HARRY LAUGHS.  V.L.
+  GLARES.  HARRY COVERS WITH COUGH)\n\n72-HARRY:  Your fish?\n\n73-V.L.:  I wanna
+  see to it that my goldfish Dillinger  gets\n   some protection when I'm \"gone\".\n\n74-HARRY:
+  \ Dillinger?\n\n75-V.L.:   I've  seen  that worried look in his bulgy little\n   eyes.\n\nI:2
+  Page 5               FASS 1986            86/01/12-23:13\n\f\n\nI:2         Where
+  There's A Will, There's A Way       Page 6\n\n76-HARRY:  (GETTING PAPERS) Sign here.\n\n77-V.L.:
+  \  (SIGNING)  I  don't  want him worrying his little\n   orange head when I'm D--\n\n78-HARRY:
+  \ (INTERRUPTS QUICKLY) Cash or cheque?\n\n79-V.L.:  Cheque.\n\n(HE BEGINS WRITING
+  A CHEQUE)\n\n80-HARRY:  Payable to Harry Fenwick.  That's my  accountant.\n   Do
+  you have two pieces of identification?\n\n(V.L.  SNAPS  FINGERS.   ROCKY  STEPS
+  \ FORWARD.   V.L. SNAPS\nFINGERS AGAIN.  GUIDO STEPS FORWARD.  HARRY LOOKS UP.  LOOKS\nWAAAAAY
+  UP)\n\n   Yeah.   Well.   That's  fine,  Mr.  Scallopini.  Pleasure\n   doing business
+  with you.\n\n81-DIANE:  (ENTERS) Mr.Mason, could I speak with you  for  a\n   moment
+  please?\n\n82-HARRY:  I'll be through here shortly, Diane.\n\n83-DIANE:  It's urgent,
+  Mr.Mason.\n\n84-HARRY:  I said I'll be right with you!\n\n85-DIANE:  It's _\bM_\bs.
+  \ Mason, Mr.Mason!\n\n86-HARRY:  Mr.Scallopini was just leaving.\n\n87-V.L.:  Got
+  a little trouble with the missus, eh?  Want me\n   to arrange a little \"vacation\"
+  for her?\n\n88-HARRY:  (DISTRACTED) No, thanks, I've got a brother who's\n   a travel
+  agent.\n\n89-V.L.:  Boys!\n\n(V.L.  SNAPS  TWICE.  DIANE ESCORTS THUGS OUT.  TERRY
+  PASSES\nTHEM ON HER WAY IN, BUT SHE IS ABSORBED IN  READING  A  FILE\nAND  DOESN'T
+  GIVE THEM A SECOND GLANCE.  SHE IS SITTING DOWN\nBEFORE SHE NOTICES HARRY)\n\n9\b9\b90\b0\b0-T\bT\bTE\bE\bER\bR\bRR\bR\bRY\bY\bY
+  M\bM\bMA\bA\bAS\bS\bSO\bO\bON\bN\bN:  Uhh, good evening, Mr...\n\n91-HARRY:  Harry
+  Fenwick.  And you're Terry Mason, attorney-\n   at-law?\n\n92-TERRY:  What are you
+  doing in my office at this hour?\n\n93-HARRY:  I've come to...make out a will.\n\n\nI:2
+  Page 6               FASS 1986            86/01/12-23:13\n\f\n\nI:2         Where
+  There's A Will, There's A Way       Page 7\n\n94-TERRY:   It's  ten o'clock at night.
+  \ What made you think\n   someone would be here?\n\n95-HARRY:  Ms. Mason, you have
+  quite a  reputation  in  this\n   town.\n\n96-TERRY:  As someone who has nothing
+  better to do at night?\n\n97-HARRY:  That's not what I meant.\n\n98-TERRY:  I'll
+  have you know, I just came here to pick up a\n   few things from the safe.\n\n99-HARRY:
+  \ What a coincidence...\n\n100-TERRY:  I have a great social  life!   Maybe  there
+  \ are\n   other lawyers in town who bury their noses in books night\n   and day,
+  but not me.  I go out, see  people,  do  things,\n   have fun!\n\n101-HARRY:  I'm
+  sure.\n\n102-TERRY:   _\bI  can  relate  to others in a non-professional\n   capacity.\n\n103-HARRY:
+  \ Undoubtedly.\n\n104-TERRY:  I'm a dynamite conversationalist.\n\n105-HARRY:  Absolutely.\n\n106-TERRY:
+  \ Damned right.\n\n(LONG PAINFUL PAUSE)\n\n   So.  You said something about a will?\n\n107-HARRY:
+  \ Yes.\n\n108-TERRY:  (THROWING HIM A FORM) Read that.\n\n109-HARRY:  If you don't
+  want to talk business, we can  chat\n   for a while.\n\n110-TERRY:  Just shut up
+  and read.\n\n[L-3] (LIGHTS DOWN)                                          L\n\n
+  \                         - fin -\n\n\n\n\n\n\n\n\nI:2 Page 7               FASS
+  1986            86/01/12-23:13\n\f\n"
+:shard_number: 1
+:shard_name: '1.2'
+:shard_time: 1986-01-12 23:14:52.000000000 -05:00
+:shard_blocks: 41
+:shard_start: 4752
+:shard_size: 2652

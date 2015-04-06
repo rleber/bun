@@ -1,0 +1,4 @@
+bake ar003.0698
+bake ar003.0701.bun
+skipping bake fass/1986/script/script.f_19860213/1-1/tape.ar120.0740_19860213_134229; it already exists
+bake fass/script/tape.ar004.0642_19770224

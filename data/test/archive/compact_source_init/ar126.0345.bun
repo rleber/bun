@@ -1,16 +1,19 @@
 ---
 :identifier: Bun
-:data_format: :raw
+:block_count: 2
+:block_padding_repairs: 0
+:catalog_time: 1985-12-20 00:00:00.000000000 -05:00
 :description: ''
 :digest: feaef3d6efe33f9641a32e414aeb4789
-:file_grade: :unpacked
+:first_block_size: 2255
+:format: :unpacked
 :owner: jagardner
-:path: fassmac.t
+:path: jagardner/DOTDOT/fassmac.t
 :tape: ar126.0345
 :tape_size: 2256
-:tape_type: :text
-:unpack_time: 2014-01-15 17:43:45.705667000 -05:00
-:unpacked_by: Bun version 0.2.0 [feature/extra_bits:578996219b117d813962db2b6ad6188952bebc2c]
+:type: :normal
+:unpack_time: 2014-03-05 22:14:26.306143000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:857e797275baa7bfa2f2b9bbc5d3e0d351c57c28]
 :content: !binary |-
   AABAjOAABAAPAB+AFZCjQPUeChs+W1AAAAAAgAAAAHNRhM5hORkNxlOQAAAA
   AAAAAAF4uFwvMxhOZzNphMYuOgAAE1AABAE/AAUAIAAAAAAAAAAAAAAAAAAA

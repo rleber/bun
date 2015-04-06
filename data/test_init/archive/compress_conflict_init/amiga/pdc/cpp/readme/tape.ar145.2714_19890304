@@ -1,0 +1,162 @@
+---
+:identifier: Bun
+:block_count: 1
+:block_padding_repairs: 0
+:catalog_time: 1989-03-04 00:00:00.000000000 -05:00
+:decode_time: 2014-02-04 09:50:37.537459000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:e839a0ef95c6cc2e8ab1ac28a0f587fc393d85ee]
+:description: ''
+:digest: 4c84c9ed891d2f07a312c65991a5bf5e
+:first_block_size: 3537
+:format: :decoded
+:llink_count: 2
+:owner: rhosler
+:path: rhosler/amiga/pdc/cpp/cpp.mem
+:tape: ar145.2714
+:tape_size: 3538
+:text_size: 12112
+:type: :normal
+:unpack_time: 2014-02-01 21:13:35.245259000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:89e6db96f9aa2f50326aea8c9847f5ce77400e24]
+:content: ! "\n\n\n\n        1.0  C Pre-Processor\n\n\n\n                                    *******\n
+  \                                   * cpp *\n                                    *******\n\n\n\n
+  \       NAME:   cpp -- C Pre-Processor\n\n        SYNOPSIS:\n\n                cpp
+  [-options] [infile [outfile]]\n\n        DESCRIPTION:\n\n                CPP reads
+  a C source file, expands  macros  and  include\n                files,  and writes
+  an input file for the C compiler.  If\n                no file arguments are given,
+  CPP reads  from  stdin  and\n                writes  to  stdout.   If  one file
+  argument is given, it\n                will define the input file,  while  two  file
+  \ arguments\n                define  both  input and output files.  The file name
+  \"-\"\n                is a synonym for stdin or stdout as appropriate.\n\n                The
+  following options are  supported.   Options  may  be\n                given in either
+  case.\n\n                -C              If set, source-file comments are written\n
+  \                               to  the  output  file.   This allows the\n                                output
+  of CPP to be used as the input to\n                                a  program,  such
+  \ as lint, that expects\n                                commands embedded in specially-formatted\n
+  \                               comments.\n\n                -Dname=value    Define
+  the name  as  if  the  programmer\n                                wrote\n\n                                    #define
+  name value\n\n                                at the start  of  the  first  file.
+  \  If\n                                \"=value\"  is  not  given, a value of \"1\"\n
+  \                               will be used.\n\n                                On
+  non-unix systems, all alphabetic text\n                                will be forced
+  to upper-case.\n\n                -E              Always return \"success\" to the
+  operating\n                                system,  even  if  errors were detected.\n
+  \                               Note that some fatal errors, such  as  a\n                                missing
+  \ #include  file,  will terminate\n                                CPP, returning
+  \"failure\" even if the  -E\n                                option is given.\n\f\n
+  \                                                                         Page 2\n
+  \       cpp     C Pre-Processor\n\n\n                -Idirectory     Add  this  directory
+  \ to  the  list   of\n                                directories  searched for
+  #include \"...\"\n                                and #include <...> commands.  Note
+  \ that\n                                there  is  no space between the \"-I\" and\n
+  \                               the directory string.  More than one  -I\n                                command
+  \  is   permitted.   On  non-Unix\n                                systems   \"directory\"
+  \  is   forced   to\n                                upper-case.\n\n                -N
+  \             CPP  normally  predefines  some  symbols\n                                defining
+  \  the   target   computer   and\n                                operating system.
+  \ If -N  is  specified,\n                                no symbols will be predefined.
+  \ If -N -N\n                                is  specified,  the   \"always   present\"\n
+  \                               symbols,    __LINE__,    __FILE__,   and\n                                __DATE__
+  are not defined.\n\n                -Stext          CPP normally assumes that  the
+  \ size  of\n                                the  target  computer's  basic  variable\n
+  \                               types is the same as the size  of  these\n                                types
+  \ of  the host computer.  (This can\n                                be  overridden
+  \ when  CPP  is  compiled,\n                                however.)  The  -S option
+  allows dynamic\n                                respecification of these values.
+  \ \"text\"\n                                is  a  string  of  numbers, separated
+  by\n                                commas, that  specifies  correct  sizes.\n                                The
+  sizes must be specified in the exact\n                                order:\n\n
+  \                                   char short int long float double\n\n                                If
+  you specify the option as  \"-S*text\",\n                                pointers
+  \  to   these   types   will  be\n                                specified.   -S*
+  \ takes  one  additional\n                                argument  for  pointer
+  to function (e.g.\n                                int (*)())\n\n                                For
+  \  example,    to    specify    sizes\n                                appropriate
+  \ for  a  PDP-11,  you  would\n                                write:\n\n                                       c
+  s i l f d func\n                                     -S1,2,2,2,4,8,\n                                    -S*2,2,2,2,2,2,2\n\n
+  \                               Note that all values must be specified.\n\n                -Uname
+  \         Undefine the name as if\n\n                                    #undef
+  name\n\n                                were given.  On non-Unix systems, \"name\"\n
+  \                               will be forced to upper-case.\n\f\n                                                                          Page
+  3\n        cpp     C Pre-Processor\n\n\n                -Xnumber        Enable debugging
+  code.  If no  value  is\n                                given,  a value of 1 will
+  be used.  (For\n                                maintenence of CPP only.)\n\n\n
+  \       PRE-DEFINED VARIABLES:\n\n                When CPP begins processing, the
+  following variables will\n                have been defined (unless the -N option
+  is specified):\n\n                Target computer (as appropriate):\n\n                    pdp11,
+  vax, M68000 m68000 m68k\n\n                Target operating system (as appropriate):\n\n
+  \                   rsx, rt11, vms, unix\n\n                Target compiler (as
+  appropriate):\n\n                    decus, vax11c\n\n                The implementor
+  may add definitions to this  list.   The\n                default  definitions  match
+  \ the  definition of the host\n                computer, operating system, and C
+  compiler.\n\n                The following are always available unless undefined
+  \ (or\n                -N was specified twice):\n\n                    __FILE__
+  \   The  input  (or  #include)  file   being\n                                compiled
+  (as a quoted string).\n\n                    __LINE__    The line number being compiled.\n\n
+  \                   __DATE__    The date and time of  compilation  as  a\n                                Unix
+  \ ctime  quoted string (the trailing\n                                newline is
+  removed).  Thus,\n\n                                    printf(\"Bug at line %s,\",
+  __LINE__);\n                                    printf(\" source file %s\", __FILE__);\n
+  \                                   printf(\" compiled on %s\", __DATE__);\n\n\n
+  \       DRAFT PROPOSED ANSI STANDARD CONSIDERATIONS:\n\n                The current
+  \ version  of  the  Draft  Proposed  Standard\n                explicitly  states
+  \ that  \"readers  are requested not to\n                specify or claim conformance
+  to this draft.\" Readers and\n                users  of  Decus  CPP  should  not
+  assume that Decus CPP\n                conforms to the standard, or that it will
+  conform to the\n                actual C Language Standard.\n\n                When
+  CPP is itself compiled, many features of the  Draft\n                Proposed  Standard
+  \ that  are incompatible with existing\n\f\n                                                                          Page
+  4\n        cpp     C Pre-Processor\n\n\n                preprocessors may be  disabled.
+  \  See  the  comments  in\n                CPP's source for details.\n\n                The
+  latest version of the Draft  Proposed  Standard  (as\n                reflected
+  in Decus CPP) is dated November 12, 1984.\n\n                Comments are removed
+  from the input text.   The  comment\n                is  replaced by a single space
+  character.  The -C option\n                preserves comments, writing them to the
+  output file.\n\n                The '$' character is considered to be a letter.
+  \ This is\n                a permitted extension.\n\n                The following
+  new features of C are processed by CPP:\n\n                    #elif expression
+  (#else #if)\n                    '\\xNNN' (Hexadecimal constant)\n                    '\\a'
+  (Ascii BELL)\n                    '\\v' (Ascii Vertical Tab)\n                    #if
+  defined NAME 1 if defined, 0 if not\n                    #if defined (NAME) 1 if
+  defined, 0 if not\n                    #if sizeof (basic type)\n                    unary
+  +\n                    123U, 123LU Unsigned ints and longs.\n                    12.3L
+  Long double numbers\n                    token#token Token concatenation\n                    #include
+  token Expands to filename\n\n                The Draft Proposed Standard has  extended
+  \ C,  adding  a\n                constant string concatenation operator, where\n\n
+  \                   \"foo\" \"bar\"\n\n                is regarded as the single
+  string \"foobar\".   (This  does\n                not  affect  CPP's  processing
+  but does permit a limited\n                form of macro argument substitution into
+  strings as will\n                be discussed.)\n\n                The Standard
+  Committee plans to add token  concatenation\n                to  #define command
+  lines.  One suggested implementation\n                is as follows:  the sequence
+  \"Token1#Token2\" is  treated\n                as  if  the programmer wrote \"Token1Token2\".
+  \ This could\n                be used as follows:\n\n                    #line 123\n
+  \                   #define ATLINE foo#__LINE__\n\n                ATLINE would
+  be defined as foo123.\n\n                Note that \"Token2\" must either have  the
+  \ format  of  an\n                identifier or be a string of digits.  Thus, the
+  string\n\n                    #define ATLINE foo#1x3\n\f\n                                                                          Page
+  5\n        cpp     C Pre-Processor\n\n\n                generates two tokens:  \"foo1\"
+  and \"x3\".\n\n                If the tokens T1 and T2 are concatenated into  T3,
+  \ this\n                implementation operates as follows:\n\n                  1.
+  Expand T1 if it is a macro.\n                  2. Expand T2 if it is a macro.\n
+  \                 3. Join the tokens, forming T3.\n                  4. Expand T3
+  if it is a macro.\n\n                A macro formal parameter  will  be  substituted
+  \ into  a\n                string or character constant if it is the only component\n
+  \               of that constant:\n\n                    #define VECSIZE 123\n                    #define
+  vprint(name, size) \\\n                      printf(\"name\" \"[\" \"size\" \"]
+  = {\\n\")\n                      ... vprint(vector, VECSIZE);\n\n                expands
+  (effectively) to\n\n                      vprint(\"vector[123] = {\\n\");\n\n                Note
+  that  this  will  be  useful  if  your  C  compiler\n                supports  the
+  \ new  string concatenation operation noted\n                above.  As implemented
+  here, if you write\n\n                    #define string(arg) \"arg\"\n                      ...
+  string(\"foo\") ...\n\n                This implementation generates  \"foo\",  rather
+  \ than  the\n                strictly  correct  \"\"foo\"\" (which will probably
+  generate\n                an error message).  This is, strictly speaking, an error\n
+  \               in CPP and may be removed from future releases.\n\n        ERROR
+  MESSAGES:\n\n                Many.  CPP prints warning or error messages if  you
+  \ try\n                to     use     multiple-byte     character     constants\n
+  \               (non-transportable) if you #undef a symbol that was  not\n                defined,
+  \ or  if  your  program  has  potentially nested\n                comments.\n\n
+  \       AUTHOR:\n\n                Martin Minow\n\n        BUGS:\n\n                The
+  #if expression processor uses signed integers  only.\n                I.e, #if 0xFFFFu
+  < 0 may be TRUE.\n\n"

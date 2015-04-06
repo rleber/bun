@@ -1,0 +1,190 @@
+---
+:identifier: Bun
+:bcd: false
+:binary: false
+:block_count: 14
+:block_padding_repairs: 13
+:catalog_time: 1982-04-06 00:00:00.000000000 -05:00
+:content_start: 0
+:decodable: true
+:decode_time: 2014-03-02 18:08:48.040532000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/executable_decode:ffe678c3ca4a1831ae373411e1107d1e6a6dad1e]
+:description: ==> FASS 1982 Alice in Wonderloo -or- Through the Looking FASS.  TF
+  output (formatted).
+:digest: ca55c1ee1ab3dd8125ec0f26f34a2f2c
+:first_block_size: 3877
+:format: :decoded
+:media_codes: []
+:multi_segment: false
+:owner: fass
+:path: fass/1982/tffed.f
+:scrub: true
+:sectors: 840
+:tape: ar074.1174
+:tape_size: 53648
+:text_size: 12650
+:time: 1982-04-03 22:03:48.000000000 -05:00
+:type: :frozen
+:unpack_time: 2014-03-01 16:37:44.726868000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/executable_decode:52f8cc890274aa85caa8920cea5c85d1d20bf4a4]
+:content: ! "\n\nI:3                  Alice in Wonderloo               Page 1\n\n\n
+  \                Better Holmes and Gardens\n\n\nCast of Characters:\n\n   MATT HATTER
+  \ . . . . . . . . . . . . . . . . . . (MATT)\n   SQUEAKY FROMME . . . . . . . .
+  . . . . . . .  (SQUEAKY)\n   SNAPPER MOCKY  . . . . . . . . . . . . . . .  (SNAPPER)\n
+  \  TWEEDLE-DUM  . . . . . . . . . . . . . . . . . .  (DUM)\n   TWEEDLE-INCREDIBLY-STUPID
+  \ . . . . . . . . . . (STUPID)\n   DINAH    . . . . . . . . . . . . . . . . . .
+  .  (DINAH)\n   BETTER HOLMES  . . . . . . . . . . . . . . . . (HOLMES)\n   MARVIN
+  GARDENS . . . . . . . . . . . . . . .  (GARDENS)\n   HANK THE HERALD  . . . . .
+  . . . . . . . . . . . (HANK)\n   APRIL SHOWERS  . . . . . . . . . . . . . . . .
+  \ (APRIL)\n   MAY FLOWERS  . . . . . . . . . . . . . . . . . .  (MAY)\n   JUNE BUG
+  . . . . . . . . . . . . . . . . . . . . (JUNE)\n\n(SCENE  OPENS  WITH MATT, DINAH,
+  SNAPPER, AND SQUEAKY SEATED\nABOUT  ONE  OF  AT  LEAST  TWO  TABLES  IN  THE   FRONT
+  \  OF\nA.L.I.C.E.'S  RESTAURANT.   WAITRESSES  APRIL, MAY, AND JUNE\nARE WORKING
+  IN THE BACKGROUND.)\n\nMATT HATTER:  ...and so  when  they  found  out  that  their\n
+  \  shingles  weren't  painted  blue,  they  ate macaroni and\n   cranberry sauce
+  till the rooster crowed twice on the hil-\n   lside.   And that's why to this day
+  the Lions' club has a\n   heart fund.\n\n(AT THIS EVERYONE BUT SQUEAKY LAUGHS AT
+  THE JOKE.)\n\nDINAH:  (STILL  LAUGHING)   Ah,  that  was  very  witty, Mr.\n   Hatter.\n\nSQUEAKY
+  FROMME:   Yes, if I hear Matt tell another joke like\n   that one, I'll turn into
+  a frog and croak.\n\nSNAPPER MOCKY:  Oh, please don't do that, Squeaky.\n\nDINAH:
+  \ Ms.Fromme is just being vulgar.   Here,  Miss Mocky,\n   have some more of this
+  excellent tea.\n\nSNAPPER:  Well... if you really want me to...\n\nMATT:   Of  course,
+  \ she does!  How you got to be so indeci-\n   sive, only your hair dresser knows
+  for  sure.   What  are\n   you  anyway,  Snapper,  a  man or a mock?  (LOOKS AT
+  HIM)\n   Oh, never mind.  What we need is a plan!\n\nSNAPPER:  (HESITANTLY) A p-
+  p- plan?\n\nMATT:  Yes, we need a plan to rescue our  good  friend Alice\n   from
+  \ prison  where  the  his and her highnesses have un-\n   fairly placed her.\n\n\nI:3
+  Page 1             F.A.S.S. 1982          82/04/01-06:33\n\n\nI:3              Better
+  Holmes and Gardens            Page 2\n\nDINAH:  Isn't it horrible?  My Alice could
+  \ never  have kid-\n   napped  the  princess.   Just  thinking about it makes my\n
+  \  back fur curl all the way to my armpits.\n\nSQUEAKY:  Now who's being vulgar?\n\nSNAPPER:
+  \ B-But, I thought we were just  going  to celebrate\n   the  Oktoberfest  Tea  and
+  \ Biscuit  Festival.   Breaking\n   people out of prisons is dangerous!\n\nSQUEAKY:
+  \ You're such a coward, Snapper.  And  a  moron too.\n   I  don't  think  there
+  \ could be anyone more moronic than\n   you.\n\n(RIGHT ON CUE, THE TWEEDLES ENTER
+  THE RESTAURANT.)\n\nBOTH TWEEDLES:  Hallo!\n\nTWEEDLE-DUM:  Tweedle-Dum...\n\nTWEEDLE-INCREDIBLY-STUPID:
+  \    ...and    Tweedle-Incredibly-\n   Stupid...\n\nBOTH TWEEDLES:  (BOWING) ...at
+  your service!\n\nDINAH:  Where have you two been?  You and the Duchess should\n
+  \  have been here half an hour ago.  What held you up?\n\nDUM:  A masked man in
+  a clam costume.\n\nSQUEAKY:  (ASIDE TO DINAH) You should  know  better  than to\n
+  \  ask Dum and Incredibly-Stupid questions.\n\nSTUPID:   No,  really,  a bivalve
+  wearing a tacky black mask\n   really did hold us up.\n\nDUM:  Poor man must have
+  been shy.\n\nSTUPID:  I'd be shy too if I wore a clam costume.\n\nSQUEAKY:  Get
+  on with the story, you idiots!\n\nDUM:  Righto!  Anyway this poor sole desired all
+  \ the pearls\n   that  the  Duchess  possessed,  apparently  just  for the\n   halibut...\n\nSTUPID:
+  \ It looked like  we  were  in  a  pickerel,  but the\n   Duchess  smelt  something
+  fishy and positively refused to\n   give them up.\n\nDUM:  The chips were down,
+  but he took heart and squirted us\n   with quick drying tartar sauce to clam us
+  up.\n\nMATT:   Sounds  like you were in a pretty kettle of fish.  I\n   suppose
+  this clam-person just sat there and  watched  the\n   sauce harden about you, waiting
+  with baited breath.\n\nI:3 Page 2             F.A.S.S. 1982          82/04/01-06:33\n\n\nI:3
+  \             Better Holmes and Gardens            Page 3\n\nDINAH:  Baited breath?\n\nMATT:
+  \ Maybe he'd been eating worms.\n\nSTUPID:  No, as a matter of  fact  that's  just
+  \ what didn't\n   happen.   Just  as  we were about to become the Village's\n   Friday
+  special, two caped crusaders arrived on the scene,\n   released  us,  and  chased
+  \ the clam off into the horizon\n   where they no doubt banged their heads.\n\nDUM:
+  \ The poor Duchess was in a dreadful state.\n\nMATT:  Minnesota?\n\nDUM:  She kept
+  saying over and over,  \"Who  was  that masked\n   clam?\".  We had to hospitalize
+  the poor dear.\n\nDINAH:   How  shocking!   Mr. Hatter, aren't you shocked and\n
+  \  appalled at these goings-on?\n\nMATT:  Not at all, m'dear Dinah.  The same thing
+  happened to\n   me last week.\n\n(HOLMES  AND GARDENS ENTER THE RESTAURANT AND MAKE
+  THEIR WAY\nTO A TABLE.)\n\nMARVIN GARDENS:  Gosh, Holmes, it  sure  is  good  to
+  \ relax\n   after that bout with Oysterman.\n\nBETTER HOLMES:   Yes,  the  commissioner
+  can handle him now.\n   It'll be some time before he causes trouble for us again.\n\nGARDENS:
+  \ Why do they do it, Holmes?\n\nHOLMES:  The criminal mind... works in strange ways,
+  Marvin.\n   We  must always be alert against evil-doers.  Crime knows\n   no holiday.\n\nGARDENS:
+  \ He's sick, that's what  he  is.   I  can't imagine\n   ever  wanting to steal.
+  \ Yuck, phooey.  It was sure lucky\n   for us that we were wearing our grease-repellant
+  costumes\n   when he tried to deep-fry us.\n\nHOLMES:   Yes,  it would have been
+  a filet worse than death.\n   But enough of such batters.  It was an excellent  sugges-\n
+  \  tion  of  yours  to visit a restaurant.  Now, if we could\n   just attract the
+  attention of one of these waitresses...\n\n(DURING THE NEXT CONVERSATION BETWEEN
+  THE WAITRESSES, HOLMES\nAND GARDENS ATTEMPT TO ATTRACT THEIR ATTENTION.)\n\nAPRIL
+  SHOWERS:   Isn't  this the most boring job you've ever\n   had?\n\nMAY FLOWERS:
+  \ I've had one that's more boring.\n\n\nI:3 Page 3             F.A.S.S. 1982          82/04/01-06:33\n\n\nI:3
+  \             Better Holmes and Gardens            Page 4\n\nJUNE BUG:  What?\n\nMAY:
+  \ Registrar at the Chevron School of Journalism.\n\nJUNE:  I used to have a boring
+  job too.\n\nAPRIL:  What was that?\n\nJUNE:  Student at the Chevron School of Journalism.\n\nAPRIL:
+  \ I still wish we could liven things up around here.\n\nJUNE:  How be if we take
+  someone's order?\n\nAPRIL:  Hey, that's a good idea!\n\n(THEY GO TO HOLMES AND GARDENS.)\n\n
+  \  Hi handsome, what'll ya have?\n\nHOLMES:  I'll have a chicken salad sandwich.\n\nGARDENS:
+  \ And I'll have an egg salad sandwich.\n\n(ALL THREE WAITRESSES WRITE THIS DOWN.)\n\nMAY:
+  \ One chicken, one egg...  Anything to drink, sirs?\n\nHOLMES:  No, thank you.  Liquor
+  dulls the mind  and inhibits\n   the rational processes.\n\nJUNE:  That explains
+  engineers!\n\nHOLMES:  You can all go away now.\n\n(WAITRESSES WALK AWAY TOWARDS
+  ORDER WINDOW.)\n\nJUNE:  Egg salad and chicken salad!  How dull can you get?\n\nMAY:
+  \  I  know  how  we  can  liven things up -- we'll order\n   something different.\n\nAPRIL:
+  \ Sure!  (SHOUTING OUT  ORDER  WINDOW)  Ordering roast\n   trunk of tree-dwelling
+  elephant with ecstasy sauce.\n\nMAY:    Ordering   jellied   armadillo   brains
+  \ with unborn\n   mushrooms!\n\nJUNE:  Ordering souffle of gnat's kidneys on the
+  half-shell.\n\n(HANK THE HERALD ENTERS, CARRYING  A  SCROLL.   HE  PLAYS  A\nFANFARE
+  ON A TRUMPET, OPENS HIS SCROLL, AND SINGS.)\n\nHANK THE HERALD:\n\n\n\nI:3 Page
+  4             F.A.S.S. 1982          82/04/01-06:33\n\n\nI:3              Better
+  Holmes and Gardens            Page 5\n\n************************************************************\n*****
+  \                 Hank the Herald                 *****\n*****                 (to
+  the tune of:)                *****\n*****           Hark, the Herald Angels Sing
+  \          *****\n************************************************************\n\n\n
+  \  Hank the Herald, page boy sings\n   Declarations from your king.\n   Count Paul
+  Bearer's statue, golden,\n   Just this hour has been stolen.\n   If you catch this
+  unjust thief --\n   All he left were these false teeth --\n   You will get your
+  just reward:\n   Knightship from his vorpal sword.\n   Riches, titles offers he.\n
+  \  And a Loblaws' shopping spree.\n\n(HANK EXITS)\n\nGARDENS:  The fiend!\n\nHOLMES:
+  \ We know only too well who would  leave  false teeth\n   at  a  robbery.  It can
+  only be our arch-nemesis, the In-\n   visible Cat Burglar!\n\nGARDENS:  Holy hand
+  grenade, Holmes!\n\nMATT:  Do my eyes deceive me or is  that  the  famous Holmes\n
+  \  and Gardens at the next table?\n\nHOLMES:   No  doubt your eyes do deceive you,
+  therefore it's\n   the latter.\n\nDINAH:  Oh, this is such a piece of luck.  We
+  do  so  need a\n   detective to prove Alice's innocence.\n\nHOLMES:   I'm  sorry,
+  but as you have just heard, Count Paul\n   Bearer's statue has been stolen.   I
+  \ must  recover  that\n   before I take on any other cases.\n\nGARDENS:  (RUBBING
+  HANDS) We have to get that fiend!\n\nMATT:   But  we  were  so hoping that you could
+  help us free\n   Alice.\n\nHOLMES:  Gee, I hate to see anyone  so  disappointed.
+  \ Let's\n   see what I can do.  Marvin, hand me a placemat.\n\nGARDENS:  There's
+  no placemat, Holmes.\n\nHOLMES:  Then I'll just have to make do.\n\n(HE  GRABS  THE
+  \ HANDKERCHIEF  FROM  SNAPPER'S HANDS, WRITES\nSOMETHING ON IT, AND GIVES IT TO
+  MATT.)\n\n\nI:3 Page 5             F.A.S.S. 1982          82/04/01-06:33\n\n\nI:3
+  \             Better Holmes and Gardens            Page 6\n\n   Here's my secretary's
+  number.  I should  be  available  a\n   few scenes from now.\n\nSQUEAKY:  That might
+  be too late.  Why don't we help you get\n   the statue, and then you can help us
+  free Alice?\n\nMATT:  I've got a better idea: why don't  you  help  us free\n   Alice
+  after we help you get the statue?\n\n(WAITRESSES  APPROACH  FROM  ORDER  WINDOW,
+  \ TWO OF WHOM ARE\nCARRYING SANDWICHES TO HOLMES' TABLE.)\n\nSQUEAKY:  Oh yes, that's
+  a much better idea.\n\n(THE WAITRESSES PLACE THE SANDWICHES ON THE TABLE  AND  HEAD\nBACK
+  FOR THE KITCHEN.)\n\nHOLMES:  Then it's agreed.  (TURNS TO WAITRESSES) Hey, you!\n\n(WAITRESSES
+  \ TURN  AROUND  AND  STOP.   HOLMES POINTS TO HIS\nTABLE.)\n\n   Which came first...
+  the chicken or the egg?\n\nAPRIL:  Neither of 'em, they're both  limburger  and
+  sauerk-\n   raut.\n\nTWEEDLES:  Oh boy, our favourite!  (THEY RUSH TO THE TABLE)\n\nHOLMES:
+  \ What do you make of this, Marvin?\n\nGARDENS:   Limburger  starts  with  limb
+  which is on a tree,\n   which is held up by roots,  which  was  written  by  Alex\n
+  \  Haley,  and  that leads to Haley's Comet, which goes past\n   the sun, whose
+  antonym is moon, which is  made  of  green\n   cheese.   Limburger  is a cheese!
+  \ Great Calculus!  We're\n   right back where we started.  Now we're in hot water.\n\nHOLMES:
+  \ In hot water?\n\nGARDENS:  Yes, we're in trouble.\n\nHOLMES:  With a capital 'T'.\n\nGARDENS:
+  \ And that rhymes with 'P'.\n\nHOLMES:  And that stands for pool.\n\nGARDENS:  Heated
+  pool!  Oh no, hot water again.\n\nHOLMES:  Wait!  What can you make with hot water?\n\nGARDENS:
+  \  Coffee  and  tea...coffee  and tea...c-a-t...cat!\n   Why  this  is a message
+  from the diabolical Invisible Cat\n   Burglar!\n\n\nI:3 Page 6             F.A.S.S.
+  1982          82/04/01-06:33\n\n\nI:3              Better Holmes and Gardens            Page
+  7\n\nHOLMES:   Correct!   It  seems  our   suspicions   have been\n   verified.
+  \  And  how do you understand the second half of\n   the puzzle?\n\nGARDENS:  Sauerkraut...he's
+  saying he's  a  sour puss...he's\n   mad at somebody...  another victim...kraut...Holy
+  Gott im\n   Himmel!  That means German!\n\nHOLMES:  And that starts with -G...\n\nGARDENS:
+  \ (IMPRESSED BY HOLMES' LOGIC) Gee...\n\nHOLMES:  Precisely! And how many g's are
+  there  in  'The Ar-\n   gyle gargoyle gargles Gershwin gorgeously'?\n\nGARDENS:
+  \    Hmm...let    me   count...wait!  Count...German\n   count...Holey Swiss Cheese!
+  \ He's going to  attack  Count\n   Paul Bearer, the justice of the teeth from Transylvania!\n\nHOLMES:
+  \  Exactly  as  I  deduced  it.   The  Count has more\n   ivories than a grand piano.
+  \ That villainous feline would\n   give up his eye teeth for those suckers.\n\nSNAPPER:
+  \ H- How are we going to get to the Count's castle?\n\nDINAH:  I have a station-wagon
+  parked out back.\n\nHOLMES:   Right,  we  have no time to lose.  To the cat car,\n
+  \  Marvin!\n\n(HOLMES THROWS SOME MONEY DOWN ON THE TABLE.  ALL  RUSH  OUT\nEXCEPT
+  \ THE  TWEEDLES AND THE WAITRESSES.  THE TWEEDLES PICK\nUP THE MONEY HOLMES THREW.)\n\nTWEEDLES:
+  \ Gee, thanks.\n\n(THEY GO OUT UNDER  THE  GLARING  EYES  OF  THE  WAITRESSES.\nLIGHTS
+  DOWN.)\n\n                          - fin -\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI:3
+  Page 7             F.A.S.S. 1982          82/04/01-06:33\n\n"
+:shard_number: 21
+:shard_name: 1.3b
+:shard_time: 1982-04-03 22:03:48.000000000 -05:00
+:shard_blocks: 54
+:shard_start: 50155
+:shard_size: 3456

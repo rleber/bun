@@ -1,0 +1,303 @@
+---
+:identifier: Bun
+:block_count: 1
+:block_padding_repairs: 0
+:catalog_time: 1977-12-12 00:00:00.000000000 -05:00
+:decode_time: 2014-01-24 10:37:13.131708000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
+:description: ==> ian's catalogue as of fall 77
+:digest: 45f463d24722c71660f1f052e23c854d
+:first_block_size: 665
+:format: :decoded
+:llink_count: 2
+:owner: fass
+:path: fass/idallen/roffinit
+:tape: ar010.1309
+:tape_size: 666
+:text_size: 1068
+:type: :normal
+:unpack_time: 2014-01-24 10:29:42.939848000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:9d6fe01fbe4ee4eee7f4b34a65f6bf8f40c787fd]
+:content: ! '.ll60
+
+  .in0
+
+  .ss
+
+  .fi
+
+  .ju
+
+  .po0
+
+  .ic ^^
+
+  .ig (^(dexn))
+
+  .en (0)
+
+  .an (dexn) 1
+
+  .sy echo ***don''t forget to use -o10 when slisting roffed file***
+
+  .fs ''____________________________________________________________''
+
+  .tr~
+
+  .hc`
+
+  .qc"
+
+  .pc#
+
+  .so roff/month
+
+  .af (mon) 01
+
+  .af (day) 01
+
+  .af (min) 01
+
+  .af (hour) 01
+
+  .at(pb)
+
+  .sp
+
+  .ne3
+
+  .ti10
+
+  .en(pb)
+
+  .at(qb)
+
+  .sp2
+
+  .ss
+
+  .an (ind) +#1
+
+  .in+#1
+
+  .ll-#1
+
+  .ne5
+
+  .en(qb)
+
+  .at(qe)
+
+  .sp
+
+  .ds
+
+  .in-^^(ind)
+
+  .ll+^^(ind)
+
+  .an (ind) 0
+
+  .en(qe)
+
+  .at(bb)
+
+  .sp
+
+  .ne5
+
+  .ti-10 20
+
+  .en(bb)
+
+  .at(h7)
+
+  .sp
+
+  .ne4
+
+  .bf
+
+  .ti0 10
+
+  #1
+
+  .ix
+
+  ~~~~~#2\^^%
+
+  .en
+
+  .en(h7)
+
+  .at(h6)
+
+  .sp
+
+  .ne4
+
+  .ul
+
+  .ti0 10
+
+  #1
+
+  .ix
+
+  ~~~~~#2\^^%
+
+  .en
+
+  .en(h6)
+
+  .at(h5)
+
+  .sp
+
+  .ne4
+
+  .bf
+
+  #1
+
+  .ix
+
+  ~~~~~#1\^^%
+
+  .en
+
+  .en(h5)
+
+  .at(h4)
+
+  .sp
+
+  .ne4
+
+  .ul
+
+  #1
+
+  .ix
+
+  ~~~~~#1\^^%
+
+  .en
+
+  .en(h4)
+
+  .at(h3)
+
+  .sp
+
+  .ne6
+
+  .bf
+
+  #1
+
+  .sp
+
+  .ix
+
+  ~~~#1\^^%
+
+  .en
+
+  .en(h3)
+
+  .at(h2)
+
+  .sp
+
+  .ne6
+
+  .ul
+
+  #1
+
+  .sp
+
+  .ix
+
+  ~~~#1\^^%
+
+  .en
+
+  .en(h2)
+
+  .at(h1)
+
+  .sp2
+
+  .ne8
+
+  .ce
+
+  .bf
+
+  #1
+
+  .sp2
+
+  .ix
+
+  #1\^^%
+
+  .en
+
+  .en(h1)
+
+  .at(h0)
+
+  .sp2
+
+  .ne8
+
+  .ce
+
+  .ul
+
+  #1
+
+  .sp2
+
+  .ix
+
+  #1\^^%
+
+  .en
+
+  .en(h0)
+
+  .ix
+
+  .so fass/idallen/roffinit
+
+  .tc\
+
+  .nf
+
+  .ds
+
+  .sp8
+
+  .ce
+
+  .ul
+
+  Contents
+
+  .sp2
+
+  .ta54R
+
+  .mg
+
+  . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+  .en
+
+  .en (1)
+
+'

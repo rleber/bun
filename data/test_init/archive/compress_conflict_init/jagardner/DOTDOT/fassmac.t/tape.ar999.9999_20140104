@@ -1,0 +1,52 @@
+---
+:identifier: Bun
+:block_count: 16
+:block_padding_repairs: 15
+:catalog_time: 1986-03-18 00:00:00.000000000 -05:00
+:decode_time: 2014-02-22 11:06:14.750217000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/improved_file_naming:dd12bbc7313b349045e232bb30662042d631a0b3]
+:description: ''
+:digest: be0b73c3982c4eb38d1a423887bb61c2
+:first_block_size: 3855
+:format: :decoded
+:owner: bdparsons
+:path: bdparsons/fass/1986.f
+:tape: ar120.1521
+:tape_size: 60114
+:text_size: 2104
+:time: 1986-01-14 16:34:15.000000000 -05:00
+:type: :frozen
+:unpack_time: 2014-02-22 10:45:24.556991000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/improved_file_naming:dd12bbc7313b349045e232bb30662042d631a0b3]
+:content: ! "\n\nI:2b                   The Screamplay                 Page 1\n\n\n
+  \                    T\bT\bTh\bh\bhe\be\be G\bG\bGo\bo\boo\bo\bod\bd\bd O\bO\bOl\bl\bld\bd\bd
+  D\bD\bDa\ba\bay\by\bys\bs\bs\n\n\n\x01\x17C\bC\bCh\bh\bha\ba\bar\br\bra\ba\bac\bc\bct\bt\bte\be\ber\br\brs\bs\bs
+  d\bd\bde\be\bef\bf\bfi\bi\bin\bn\bne\be\bed\bd\bd f\bf\bfo\bo\bor\br\br t\bt\bth\bh\bhi\bi\bis\bs\bs
+  s\bs\bsc\bc\bce\be\ben\bn\bne\be\be:\n\n    1. <gd>    GRANDDAD  . . . . . . . .
+  . . . (GRANDDAD)\n    2. <to>    TOMMY . . . . . . . . . . . . . .  (TOMMY)\n\n[L-1]
+  (LIGHTS UP ON GRANDDAD AND TOMMY.   GRANDDAD  IS  WARM L\nAND WISE, AND PLAYED COMPLETELY
+  STRAIGHT)\n\n1\b1\b1-T\bT\bTO\bO\bOM\bM\bMM\bM\bMY\bY\bY:  Granddad?\n\n2\b2\b2-G\bG\bGR\bR\bRA\bA\bAN\bN\bND\bD\bDD\bD\bDA\bA\bAD\bD\bD:
+  \ Yes, Tommy.\n\n3-TOMMY:  What did all this lawyer stuff have to do with the\n
+  \  first scene?\n\n4-GRANDDAD:  Well, Tommy, that's a good question.  To answer\n
+  \  it, I think I'll tell you a little story.\n\n5-TOMMY:  I hate your stories, Granddad.\n\n6-GRANDDAD:
+  \  A  long time ago, when I was about your age, I\n   lived in a two-room log  cabin
+  \ heated  by  a  woodstove.\n   Twice  a  day,  I'd  have to go out and chop wood
+  for the\n   fire, and whenever I did, I'd  always  face  towards  the\n   little
+  \ pond beside the forest, where a couple of beavers\n   had built a dam.  Those
+  beavers were named Marge and  An-\n   dy, and they were good friends of Gracey and
+  Maureen, our\n   two cows.  On winter mornings, I'd go out to milk  Gracey\n   and
+  \ Maureen  and  I'd have to thaw out their udders with\n   boiled linseed oil that
+  I  bought  with  money  I  earned\n   delivering  the  Globe and Mail.  We were
+  too poor to af-\n   ford any toilet paper of our own, but we were part  of  a\n
+  \  co-operative  that  shared  an Eatons catalog, and once a\n   month, while I
+  was on my rounds sharpening scissors,  I'd\n   share  a  cup  of  tea with the neighbours
+  and tell them,\n   \"Some day I'll move to the city.\"\n\n7-TOMMY:  Granddad, what
+  did that have to do with the show?\n\n8-GRANDDAD:  Well, Tommy, that's a good question.
+  \ To answer\n   it, I think I'll tell you a little story.\n\n9-TOMMY:  The show's
+  starting again.\n\n\n\n\n\n\n\n\n\n\nI:2b Page 1              FASS 1986            86/01/13-10:46\n\f\n"
+:shard_number: 13
+:shard_name: 1.2b
+:shard_time: 1986-01-13 10:48:18.000000000 -05:00
+:shard_blocks: 7
+:shard_start: 53340
+:shard_size: 470

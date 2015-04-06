@@ -1,6 +1,6 @@
 ---
 :identifier: Bun
-:data_format: :raw
+:format: :raw
 :description: ==>files for idallen
 :digest: 9e140aad691eba04afdf22ef2e33b575
 :file_grade: :unpacked
@@ -8,7 +8,7 @@
 :path: fass/idallen/vector
 :tape: ! '-'
 :tape_size: 2582
-:tape_type: :text
+:type: :text
 :unpack_time: 2014-01-02 07:40:14.768124000 -05:00
 :unpacked_by: Bun version 0.1.0 [feature/promote_file_grades:c076c8f1bad71004f61985f51ec64919000ef053]
 :content: !binary |-

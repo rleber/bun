@@ -9,8 +9,13 @@ no_tasks do
   end
 end
 
-STANDARD_FIELDS = %w{description catalog_time data data_format digest file_grade file_time
-                     identifier owner path shards tape tape_path tape_size tape_type }.map{|f| f.to_sym}
+STANDARD_FIELDS = %w{description catalog_time data digest format time
+                     identifier owner path shards tape tape_path tape_size type }.map{|f| f.to_sym}
+
+FIELD_TRANSLATIONS = {
+  bcd: "BCD",
+  multi_segment: "Multi-segment",
+}
 
 SHARDS_ACROSS = 5
 desc "describe FILE", "Display description information for a tape"
@@ -18,13 +23,13 @@ def describe(file)
   check_for_unknown_options(file)
   # TODO Move logic to File class
 
-  if File.file_grade(file) == :baked
-    puts "#{file} is baked. No description available."
+  if File.format(file) == :baked && !File.index_file_for(file)
+    puts "#{file} is baked and has no index. No description available."
     exit
   end
 
   descriptor    = File.descriptor(file, :graceful=>true)
-  type          = descriptor.tape_type
+  type          = descriptor.type
   shards        = descriptor.shards || []
   catalog_time  = descriptor.catalog_time
   
@@ -34,17 +39,15 @@ def describe(file)
   push_tbl preamble_table, "Owner", descriptor.owner
   push_tbl preamble_table, "Description", descriptor.description
   push_tbl preamble_table, "Catalog Date", catalog_time.strftime('%Y/%m/%d') if catalog_time
-  push_tbl preamble_table, "File Time", descriptor.file_time.strftime(TIME_FORMAT) if type==:frozen
-  push_tbl preamble_table, "File Grade", descriptor.file_grade
+  push_tbl preamble_table, "File Time", descriptor.time.strftime(TIME_FORMAT) if type==:frozen
+  push_tbl preamble_table, "Format", descriptor.format.to_s.sub(/^./) {|c| c.upcase}
   push_tbl preamble_table, "Size (Words)", descriptor.tape_size
   push_tbl preamble_table, "Type", type.to_s.sub(/^./) {|c| c.upcase}
-  push_tbl preamble_table, "Data Format", descriptor.data_format.to_s.sub(/^./) {|c| c.upcase}
   push_tbl preamble_table, "MD5 Digest", descriptor.digest.scan(/..../).join(' ')
   
   (descriptor.fields.map{|f| f.to_sym} - STANDARD_FIELDS).sort_by{|f| f.to_s }.each do |f|
-    push_tbl preamble_table,
-             f.to_s.gsub(/_/,' ').gsub(/\b[a-z]/) {|c| c.upcase},
-             descriptor[f.to_sym].to_s
+    fname = FIELD_TRANSLATIONS[f.to_sym] || f.to_s.gsub(/_/,' ').gsub(/\b[a-z]/) {|c| c.upcase}
+    push_tbl preamble_table, fname, descriptor[f.to_sym].to_s
   end
   
   puts preamble_table.justify_rows.map {|row| row.join('  ')}
@@ -67,7 +70,7 @@ def describe(file)
           column = [""]*(titles.size)
         else
           shard = descriptor[:shards][i]
-          column = [shard[:name], shard[:file_time].strftime(TIME_FORMAT), shard[:size]]
+          column = [shard[:name], shard[:time].strftime(TIME_FORMAT), shard[:size]]
         end
         table << column
         i += 1

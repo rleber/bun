@@ -1,0 +1,10 @@
+output/test_actual/compress
+output/test_actual/compress/bjeroehl
+output/test_actual/compress/bjeroehl/fass
+output/test_actual/compress/bjeroehl/fass/bjthings
+output/test_actual/compress/bjeroehl/fass/bjthings/addinde
+output/test_actual/compress/bjeroehl/fass/bjthings/countess
+output/test_actual/compress/bjeroehl/fass/bjthings/rjbmail
+output/test_actual/compress/fass
+output/test_actual/compress/fass/one
+output/test_actual/compress/fass/one/zero

@@ -1,0 +1,37 @@
+---
+:identifier: Bun
+:block_count: 1
+:block_padding_repairs: 0
+:catalog_time: 1981-05-19 00:00:00.000000000 -04:00
+:decode_time: 2014-02-03 15:21:13.426388000 -05:00
+:decoded_by: Bun version 0.3.0 [feature/expanded_examine_v2:7cff5852b2f0e9fe5a06a73de49988b500f828dc]
+:description: ''
+:digest: 75a1f3d164491ddf61d59d19017740cf
+:first_block_size: 654
+:format: :decoded
+:llink_count: 2
+:owner: aangold
+:path: aangold/a/s/ze.b
+:tape: ar059.0073
+:tape_size: 654
+:text_size: 1284
+:type: :normal
+:unpack_time: 2014-02-02 04:35:43.879972000 -05:00
+:unpacked_by: Bun version 0.3.0 [feature/expanded_examine_v2:571c93836cf64052fc370341e55bff0a71bae2ba]
+:content: ! "/*\n * Driver to interface TYPE to the Photon Econosetter.\n */\n\n/*\n
+  * Commands.\n */\nCLEAD = 5;\nCMOVE = 4;\nCPOINT = 3;\nCDIR = 2;\nCFACE = 1;\n\npt
+  10;\t\t\t\t\t/* Current pointsize */\nft -1;\t\t\t\t\t/* Current font */\n\n/*\n
+  * Lead down the given amount.\n */\nzspace(n)\n{\n\tif(n < 0) {\n\t\twhile(n < -64)
+  {\n\t\t\tzput(CLEAD);\n\t\t\tzput(-64);\n\t\t\tn += 64;\n\t\t}\n\t\tzput(CLEAD);\n\t\tzput(n);\n\t}
+  else {\n\t\twhile(n > 63) {\n\t\t\tzput(CLEAD);\n\t\t\tzput(63);\n\t\t\tn -= 63;\n\t\t}\n\t\tzput(CLEAD);\n\t\tzput(n);\n\n\t}\n}\n\n/*\n
+  * Change font\n */\nzfont(f)\n{\n\textrn ft;\n\n\tif(f != ft) {\n\t\tzput(CFACE);\n\t\tzput(ft=f);\n\t}\n}\n\n/*\n
+  * Move over the required amount.\n */\nzmove(n)\n{\n\tif(n < 0) {\n\t\twhile(n <
+  -64) {\n\t\t\tzput(CMOVE);\n\t\t\tzput(-64);\n\t\t\tn += 64;\n\t\t}\n\t\tzput(CMOVE);\n\t\tzput(n);\n\t}
+  else {\n\t\twhile(n > 63) {\n\t\t\tzput(CMOVE);\n\t\t\tzput(63);\n\t\t\tn -= 63;\n\t\t}\n\t\tzput(CMOVE);\n\t\tzput(n);\n\t}\n}\n\n/*\n
+  * Change point size.\n */\nzpoint(p)\n{\n\textrn pt;\n\tauto i;\n\n\tif(p != pt)
+  {\n\t\tswitch(p) {\n\t\tcase 8:\n\t\t\ti = 0;\n\t\t\tbreak;\n\t\tcase 10:\n\t\t\ti
+  = 1;\n\t\t\tbreak;\n\t\tcase 14:\n\t\t\ti = 2;\n\t\t\tbreak;\n\t\tcase 18:\n\t\t\ti
+  = 3;\n\t\t\tbreak;\n\t\tdefault:\n\t\t\terror(\"Illegal point size*n\");\n\t\t}\n\t\tpt
+  = p;\n\t\tzput(CPOINT);\n\t\tzput(i);\n\t}\n}\n\n/*\n * Put out a character.\n */\nzput(c)
+  {\n\tc &= 0177;\n\tif(c == 021)\n\t\tc = 0221;\n\tputchar(c|0400);\n}\n\n/*\n *
+  Put out a character.\n */\nzcput(c)\n{\n\tzput(c+16);\n}\n"

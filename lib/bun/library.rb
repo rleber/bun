@@ -26,7 +26,7 @@ module Bun
     end
     
     def compact_leaves!
-      leaves.chunk {|leaf| leaf =~ /^(.*)\.(\d{8}(?:_\d{6})?)\.txt$/ && "#{$1}.txt" } \
+      leaves.chunk {|leaf| leaf =~ /^(.*)\.(\d{8}(?:_\d{6})?)(?:\.txt)?$/ && $1 } \
             .reject{|set, leaves| set.nil?} \
             .each do |set, leaves|
               leaves.map {|leaf| [leaf, (fd=descriptor(leaf)) && fd.updated]} \
@@ -48,20 +48,28 @@ module Bun
     
     def bake(to, options={})
       to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
-      FileUtils.rm_rf to_path unless options[:dryrun]
+      FileUtils.rm_rf to_path if options[:force] && !options[:dryrun]
       leaves.each do |leaf|
         # file = File::Decoded.open(leaf)
         relative_leaf = relative_path(leaf)
         if options[:dryrun]
-          $stderr.puts "bake #{relative_leaf}" unless options[:quiet]
+          warn "bake #{relative_leaf}" unless options[:quiet]
         else
           to_file = File.join(to_path,relative_leaf)
+          if !options[:force] && (conflicting_part=File.conflicts?(to_file))
+            conflicting_part.sub!(/^#{Regexp.escape(to_path)}\//,'')
+            conflicting_part = 'it' if conflicting_part == relative_leaf
+            warn "skipping bake #{relative_leaf}; #{conflicting_part} already exists" unless options[:quiet]
+            next
+          end
           success = begin
-            File.bake(leaf, to_file, promote: true)
-            $stderr.puts "bake #{relative_leaf}" unless options[:quiet]
+            opts = {promote: true, scrub: options[:scrub]}
+            opts[:index] = File.join(to_path, options[:index], relative_leaf+ Bun::INDEX_FILE_EXTENSION) if options[:index].to_s != ''
+            File.bake(leaf, to_file, opts)
+            warn "bake #{relative_leaf}" unless options[:quiet]
             true
           rescue File::CantDecodeError
-            $stderr.puts "unable to bake #{relative_leaf}" unless options[:quiet]
+            warn "unable to bake #{relative_leaf}" unless options[:quiet]
             false
             # Skip the file
           end
@@ -74,6 +82,18 @@ module Bun
         end
       end
     end
+
+    def scrub(to, options={})
+      to_path = expand_path(to, :from_wd=>true) # @/foo form is allowed
+      FileUtils.rm_rf to_path unless options[:dryrun]
+      leaves.each do |leaf|
+        # file = File::Decoded.open(leaf)
+        relative_leaf = relative_path(leaf)
+        to_file = File.join(to_path,relative_leaf)
+        File.scrub(leaf, to_file, options)
+        $stderr.puts "scrub #{relative_leaf}" unless options[:quiet]
+      end
+    end
     
     def classify(to, options={})
       no_move = options[:dryrun] || !to
@@ -84,7 +104,7 @@ module Bun
 
       leaves.each do |old_file|
         f = relative_path(old_file)
-        status = Bun::File::Decoded.examination(old_file, test).to_s
+        status = Bun::File::Decoded.trait(old_file, test).to_s
         warn "#{f} is #{status}" unless options[:quiet]
         unless no_move
           new_file = File.join(to, status, f)

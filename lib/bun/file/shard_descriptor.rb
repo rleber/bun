@@ -15,7 +15,7 @@ module Bun
         DESCRIPTOR_END_MARKER = 0777777777777
         FIELDS = [
           :name,
-          :file_time,
+          :time,
           :blocks,
           :start,
           :size,
@@ -44,7 +44,11 @@ module Bun
         end
   
         def to_hash
-          FIELDS.inject({}) {|hsh, f| hsh[f] = self.send(f) rescue nil; hsh }
+          if valid?
+            FIELDS.inject({}) {|hsh, f| hsh[f] = self.send(f) rescue nil; hsh }
+          else
+            nil
+          end
         end
 
         def offset(n=nil) # Offset of the descriptor from the beginning of the file content, in words
@@ -82,8 +86,8 @@ module Bun
         end
         private :packed_update_time_of_day
 
-        def file_time
-          Bun::Data.time(packed_update_date, packed_update_time_of_day)
+        def time
+          Bun::Data.internal_time(packed_update_date, packed_update_time_of_day)
         end
 
         def blocks

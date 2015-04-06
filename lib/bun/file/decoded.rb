@@ -9,7 +9,7 @@ module Bun
       class << self
         def create(options={})
           descriptor = options[:descriptor]
-          tape_type = options[:force] || descriptor[:tape_type]
+          type = options[:force] || descriptor[:type]
           new(options)
         end
         
@@ -21,17 +21,18 @@ module Bun
         def build_descriptor(input)
           @descriptor = Hashie::Mash.new(input)
           @descriptor.fields = @descriptor.keys
-          @descriptor.shard_count = 1 if @descriptor.tape_type == :frozen
+          @descriptor.shard_count = 1 if @descriptor.type == :frozen
         end
         
-        def examination(path, test)
+        def trait(path, test)
           f = open(path)
-          f.examination(test)
+          f.trait(test)
         end
     
         # Output the ASCII content of a file
         def bake(path, to=nil, options={})
           # return unless unpacked?(path)
+          scrub = options.delete(:scrub)
           open(path, options) do |files|
             unless files.is_a?(Hash)
               files = {nil=>files}
@@ -39,20 +40,22 @@ module Bun
             files.each do |key, f|
               path = key ? File.join(to, File.basename(key)) : to
               f.descriptor.tape = options[:tape] if options[:tape]
-              f.bake(path)
+              f.bake(path, index: options[:index], scrub: scrub, force: options[:force], quiet: options[:quiet], continue: options[:continue])
             end
           end
         end
         
         def open(fname, options={}, &blk)
-          if File.file_grade(fname) != :decoded
+          if File.format(fname) != :decoded
             if options[:promote]
               paths = super(fname, options.merge(as_class: File::Unpacked)) do |f|
                 parts = f.decode(nil, options.merge(expand: true))
                 raise Bun::File::CantExpandError, "Frozen file without :expand option" if parts.size >1 && !options[:expand]
                 t = Dir.mktmpdir("promoted_to_decoded_")
                 shell = Shell.new
-                parts.map do |part, content|
+                parts.map do |part_hash|
+                  part = part_hash[:path]
+                  content = part_hash[:content]
                   path = File.join(t, part||'part1')
                   shell.write(path, content)
                   path
@@ -67,7 +70,7 @@ module Bun
                 return_file
               end
             else
-              raise BadFileGrade, "#{fname} is not a decoded file"
+              raise BadFileFormat, "#{fname} is not a decoded file"
             end
           else
             # Ooh, this smells
@@ -76,11 +79,39 @@ module Bun
         end
       end
       
-      def bake(to=nil)
+      def bake(to=nil, options={})
         shell = Shell.new
         shell.mkdir_p File.dirname(to) if to && to!='-'
-        shell.write to, data
-        data
+        text = data
+        text = data.scrub if options[:scrub]
+        if !options[:force] && (to!='-' && !to.nil? && File.exists?(to))
+          if options[:continue]
+            warn "skipping bake: #{to} already exists" unless options[:quiet]
+          elsif options[:quiet]
+            stop
+          else
+            stop "skipping bake: #{to} already exists"
+          end
+        else
+          to += Bun::UNDECODABLE_EXTENSION unless self.decodable
+          shell.write to, text
+        end
+        if options[:index]
+          index_to = options[:index]
+          index_to += Bun::UNDECODABLE_EXTENSION if !self.decodable && index_to != '-'
+          write_index(index_to)
+        end
+        text
+      end
+
+      def write_index(to)
+        return unless to
+        shell = Shell.new
+        index = self.input_hash.dup
+        index.delete(:content)
+        index[:format] = :baked
+        shell.mkdir_p File.dirname(to) if to!='-'
+        shell.write to, index.to_yaml
       end
 
       # TODO DRY this up; see File::Baked, for instance
@@ -88,11 +119,23 @@ module Bun
         to = yield(self, 0) if block_given? # Block overrides "to"
         shell = Shell.new
         shell.mkdir_p(File.dirname(to)) unless to.nil? || to == '-'
-        shell.write(to, read) unless to.nil?
+        text = read
+        if !options[:force] && (to!='-' && !to.nil? && File.exists?(to))
+          if options[:continue]
+            warn "skipping decode: #{to} already exists" unless options[:quiet]
+          elsif options[:quiet]
+            stop
+          else
+            stop "skipping decode: #{to} already exists"
+          end
+        else
+          shell.write(to, text) unless to.nil?
+        end
+        text
       end
 
-      def examination(test)
-        data.examination(test)
+      def trait(test)
+        data.trait(test)
       end
       
       def decoded_text(options={})

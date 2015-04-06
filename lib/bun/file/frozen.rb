@@ -20,7 +20,7 @@ module Bun
       def initialize(options={})
         options[:data] = Data.new(options) if options[:data] && !options[:data].is_a?(Bun::Data)
         super
-        descriptor.register_fields(:shards, :file_time)
+        descriptor.register_fields(:shards, :time)
         @line_correct = options[:line_correct]
       end
       
@@ -65,6 +65,14 @@ module Bun
       def header_size
         content_offset + preamble_size
       end
+
+      def binary
+        false
+      end
+
+      def bcd
+        false
+      end
       
       def descriptors_size
         preamble_size - File::Frozen::Descriptor.offset
@@ -88,8 +96,8 @@ module Bun
         words.at(content_offset + 4)
       end
     
-      def file_time
-        Bun::Data.time(_update_date, _update_time_of_day)
+      def time
+        Bun::Data.internal_time(_update_date, _update_time_of_day)
       end
     
       def shard_descriptors
@@ -184,8 +192,11 @@ module Bun
       def shards
         s = []
         shard_count.times do |i|
+          sd = shard_descriptors.at(i)
+          break unless sd
+          break unless shard_lines.at(i)
           text = shard_lines.at(i).map{|l| l[:content]}.join
-          shard_descriptors.at(i).character_count    = text.size
+          sd.character_count = text.size
           s << text
         end
         s
@@ -198,6 +209,7 @@ module Bun
       # TODO Rename decode (Carefully: decode is used for a different meaning on some other methods)
       def thaw(n)
         words = shard_words(n)
+        return [] unless words
         line_offset = 0
         lines = []
         line_corrected = false
@@ -224,7 +236,7 @@ module Bun
         lines
       end
     
-      # TODO Refactor like File::Text#unpack_line
+      # TODO Refactor like File::Normal#unpack_line
       def thaw_line(n, words, line_offset)
         line = ""
         line_length = words.size
@@ -317,6 +329,7 @@ module Bun
       
       def to_decoded_hash(options={})
         base_hash = super(options)
+        return nil unless base_hash
         base_hash.delete(:shards)
         index = shard_index(options.delete(:shard))
         base_hash.delete(:shard)

@@ -1,10 +1,52 @@
 TODO
 _High Priority_
-Release version
-Tests for bun compress, bun same
-Find duplicates
-    Same file name
-    Absolutely identical
+Rename todo.txt
+Review and revise documentation
+Is Bun::File::Deblocked used anywhere?
+Is Bun::File::Library used anywhere?
+Are the following tasks useful anymore?
+    bun archive classify
+    bun archive compare_dates
+    bun archive scrub
+    bun archive timestamp
+Shouldn't bun compress be bun archive compress?
+Clean up bun sandbox
+Rebuild Watbun archives
+Test binary Huffman files: flag and decoding
+Test other media codes
+Look for other undecodable files
+Rename roff as tf?
+Eliminate bun config, or actually use it (e.g. for index directories)
+Performance improvement
+    Avoid rereading file content and redecoding it: pass files around as objects
+    Why is it necessary to read a whole file to decide if the decoded version already exists?
+    Performance profiling
+Make bun test build and build_compress... independent of FASS and watbun archives (i.e copy source files)
+Bun compare (one file from each of two lists), e.g.
+    bun compare EXPRESSIONS --in FILES... --vs FILES... --where CONDITION
+      e.g. --where 'file1.digest == file2.digest && file1.text != file2.text'
+Release version 1.0
+Major rewrite:
+    All files are just Hashie::Mashes
+        File.unpack(<packed file>) unpacks a packed file
+        No packed file object(?) (except as needed to unpack files)
+    No file descriptor object
+    No Data object (except as needed to unpack files)
+    Simpler translate process?
+        Fewer steps (e.g. combine unpack and decode, and even possibly bake)
+        With file indexes, is there really any need for a Decoded file format?
+    Limited distinction (if any), between file types
+        Possibly File::Decoded, File::Text, and File::Frozen
+        File::Text and File::Frozen should be File::Unpacked::Text and File::Unpacked::Frozen
+    No distinction between libraries and archives
+        Archives don't care how they're organized
+    Simpler model for file promotion, using inheritance
+    Is there really any meaningful distinction between field traits and other traits?
+    Collapse archive/library as much as possible
+    Sensible caching, less file rereading; cache at object or class level, not globally
+    Separate bun show logic into a separate class/gem, loosely coupled to File characteristics
+    Separate Slicr gem
+    Separate Bots gem?
 bun file editor
     Checkout/checking (or in-place edit)
     Produce multiple synchronized lines
@@ -14,92 +56,18 @@ bun file editor
         hex
         octal
         decimal
+        BCD
+        Huffman (but how?)
     Look for edit marks (or a separate edit line)
         [...] {...} / \ dddd i
-Consolidate exam, field, formula in bun find, map, and examine
-    Allow exam: (etc.) syntax
-    Allow <field_or_exam_name> without e[] or f[] syntax
-    Prescan formulas to check for simple references to fields or exams (for speed) ?
-    Allow multiple fields somehow
-    Is the -e/f option required at all?
---where (or --if) option to bun map (i.e. include only files which match a condition)
---unless (or --not) option for bun find, map
-More extensions to bun examine
-    Chunking, padding (can then eliminate bun sandbox find_large_files)
-        Size greater than one chunk
-        Padded (e.g. odd # of 36-bit words in a chunk)
-    Extended fields (pre-defined, e.g. tape basename, etc.)
-        File name (with subfiles, etc.)
-        File basename
-    Printer listing
-        Largely printable
-        Very few large runs
-        Overstruck
-    Object file
-        Very few large runs
-        Largely unreadable
-    Try determining type by comparing preamble contents:
-        Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
-            binary load module
-Should bun find be called bun grep?
-Make catalog :remove the default; rename --keep?
-Implement bun library clean
-    Find duplicates
-        Same file name
-        Same MD5 hash
-        Absolutely identical
-    Remove unclean files
-    Possible --tag option (place a tag saying what happened to files which were removed)
-Implement bun library organize
-    Keep a .bun_spec.yml file in decoded archives showing how the archive is organized?
-    Option to turn off inclusion of file modification date in unpacked or decoded file names
-    Option to turn off resetting file modification dates for unpacked or decoded files
-Allow decoding and baking frozen archives to STDOUT
-    Insert separators
-        Allow separators to be overridden
-    bun decode should work
-    bun bake should work
-    bun archive decode should work
-    bun archive bake should work
-Release version 1.0
-Major rewrite:
-    All files are just Hashie::Mashes
-        File.unpack(<packed file>) unpacks a packed file
-        No packed file object(?) (except as needed to unpack files)
-    No file descriptor object
-    No Data object (except as needed to unpack files)
-    Limited distinction (if any), between file types
-        Possibly File::Decoded, File::Text, and File::Frozen
-        File::Text and File::Frozen should be File::Unpacked::Text and File::Unpacked::Frozen
-    No distinction between libraries and archives
-        Archives don't care how they're organized
-    Simpler model for file promotion, using inheritance
-Alternate data storage formats: raw, binary, octal, hex
 Complete tests:
-    archive catalog (check descriptor 'catalog_time' has been changed; test --remove)
     archive compare_dates
     archive pull
     archive text_status
     config *
-    library compact (complete tests)
-        For all files:
-            collapse tape names to the oldest if the content is identical
-            collapse tape name entirely if there's only one version
-        For text files:
-            Collapse dates to the oldest, if the content is identical
-            If there's only one date, collapse the date altogether (?)
-            If there's more than one date, collapse the HHMMSS unless the YYMMDD is identical
-        For frozen shards:
-            Above rules apply within a frozen file
-            For frozen files, similar rules apply:
-                Collapse dates to the oldest, if the content is identical
-                If there's only one date, collapse the date altogether
-                If there's more than one date, collapse the HHMMSS unless the YYMMDD is identical
     library classify
-    library put
-    library push
+    archive tar
 Create bun library (or archive) push
-Combine archive, library
 Document new process: pull, unpack, catalog, decode, find, list/describe, clean, organize, extract, push
 Check out lib/clean.rb
 Implement interactive (or stream) editor:
@@ -109,6 +77,30 @@ Implement interactive (or stream) editor:
     Alternatively: check out the contents (in whatever format), edit, then check them back in again
 
 _Medium Priority_
+bun bake --to-original-destination
+Convert BCD printer control codes
+Convert line printer art (e.g. ar020.0937) to graphics
+Refine topological sorting: one pass through for precedences; version with {|node1, node2| ... } block
+Move topological sorting to its own gem
+Other traits
+    Object file
+        Very few large runs
+        Largely unreadable
+    Try determining type by comparing preamble contents:
+        Words 0..6, and 0..3 after specification; spec.last + 3 = 0333333 may mean
+            binary load module
+bun catalog should be able to recatalog files of all grades
+Refactor match_expected_output_except_for, using a method, so we can do a series of separate tests
+Fix weird spacing in Thor long descriptions with fixed spacing  
+--progress option for bun show
+Other output formats, e.g. xls, html
+Better audit trail mechanism: Where did a file come from?
+    Unpack should record where unpacked from/to
+    Decode should record where decoded from/to
+    Compress should record where moved from/to (where?)
+    Better syntax for reverse find: i.e., where did a baked file come from?
+bun dump pre-block padding repair
+bun dump with or without block preambles and llink preambles
 Symlink readme and todo in top directory
 Review miscellaneous TODOs in the source files
 Encapsulize test pattern: should create output, with this format, etc.

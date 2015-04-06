@@ -161,7 +161,10 @@ module Bun
       if f.last.is_a?(Hash)
         options = f.pop
       end
-      options.merge!(:relative_to=>File.expand_path(at)) unless options[:relative_to]
+      unless options[:relative_to]
+        base = File.directory?(at) ? at : File.dirname(at)
+        options.merge!(:relative_to=>File.expand_path(base)) 
+      end
       File.relative_path(*f, options)
     end
     
@@ -229,7 +232,7 @@ module Bun
       shell = Bun::Shell.new(options)
       each do |tape|
         if descr = descriptor(tape)
-          timestamp = [descr[:catalog_time], descr[:file_time]].compact.min
+          timestamp = [descr[:catalog_time], descr[:time]].compact.min
           if timestamp
             warn "Set timestamp: #{tape} #{timestamp.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
             set_timestamp(tape, timestamp, :shell=>shell) unless options[:dryrun]
@@ -249,9 +252,10 @@ module Bun
 
     def apply_catalog(catalog_path, options={})
       shell = Bun::Shell.new(options)
+      cat = catalog(catalog_path)
       leaves do |tape_path|
         tape = relative_path(tape_path, from_wd: true)
-        case File.file_grade(tape_path)
+        case File.format(tape_path)
         when :packed
           # TODO Refactor using built-in file promotion capability
           new_tape_path = tape_path.sub(/#{DEFAULT_PACKED_FILE_EXTENSION}$/,'') + DEFAULT_UNPACKED_FILE_EXTENSION
@@ -264,10 +268,10 @@ module Bun
         else
           next
         end
-        ct = catalog(catalog_path).time_for(tape)
-        if ct
-          warn "Set catalog time: #{tape} #{ct.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
-          set_catalog_time(tape, ct, :shell=>shell) unless options[:dryrun]
+        cat_entry = cat[tape]
+        if cat_entry
+          warn "Set catalog time: #{tape} #{cat_entry.time.strftime('%Y/%m/%d %H:%M:%S')}" unless options[:quiet]
+          set_catalog_time(tape, cat_entry, :shell=>shell) unless options[:dryrun]
         elsif options[:remove]
           warn "Remove #{tape} (not in catalog)" unless options[:quiet]
           remove(tape) unless options[:dryrun]
@@ -277,13 +281,14 @@ module Bun
       end
     end
     
-    def set_catalog_time(tape, catalog_time, options={})
+    def set_catalog_time(tape, catalog_entry, options={})
       file = open(tape)
       file = file.unpack
       descr = file.descriptor
-      descr.merge!(:catalog_time=>catalog_time)
+      descr.merge!(:catalog_time=>catalog_entry.time)
+      descr.merge!(:incomplete_file=>true) if catalog_entry.incomplete
       file.write
-      timestamp = [descr.catalog_time, descr.file_time].compact.min
+      timestamp = [descr.catalog_time, descr.time].compact.min
       set_timestamp(tape, timestamp, :shell=>options[:shell])
     end
     
@@ -360,7 +365,7 @@ module Bun
     private :_save_index_descriptor
     
     def descriptor(name)
-      exists?(name) && index_for(name)
+      exists?(name) && File.descriptor(name)
     end
     
     def exists?(name)

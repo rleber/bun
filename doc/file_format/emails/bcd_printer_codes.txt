@@ -1,0 +1,74 @@
+Richard LeBer <richard.leber@gmail.com>	 Fri, Feb 28, 2014 at 4:33 PM
+To: Alan Bowler <atbowler@thinkage.ca>
+Cc: "Ian D. Allen" <idallen@idallen.ca>
+The Media Codes page says the following about media code 3:
+print image BCD. Media3 records always contain printer control codes
+
+I found the BCD character set page at http://www.thinkage.ca/english/gcos/expl/bcd.html
+
+However, this character set makes no provision for "printer control codes". How was that accomplished?
+
+-------------------------------------------------------------------------------------------------------
+
+Alan Bowler <atbowler@thinkage.ca>	 Fri, Feb 28, 2014 at 6:54 PM
+To: Richard LeBer <richard.leber@gmail.com>
+Cc: "Ian D. Allen" <idallen@idallen.ca>
+> From: Richard LeBer [mailto:richard.leber@gmail.com]
+> Sent: February 28, 2014 4:34 PM
+> Subject: A (simpler, I hope) question
+[Quoted text hidden]
+The printer hardware took ? (017 ignore) and ! (077 escape)
+as having special meanings:
+
+17 ignore this and don't print anything
+   This allowed a programmer to align the things he wanted to change
+   on word boundaries easily.  e.g.
+       a?????b????? would print just "ab" (only two columns).
+20 print 1 space (as you would expect)
+
+777717 (!!?) print a single question mark "?"
+777777 (!!!) print a single exclamation mark "!"
+7777nn  where nn is not 17 or 77.
+        for printers that had upper/lower toggle case
+        and print the character.  Maintain the case state
+        until end of record or next shift sequence.
+        Waterloo convention is that BCD starts out as lower case.
+The other escape sequences are all 77nn, and do blank and slew
+insertion.
+nn 00->17 Slew by countdown
+          slew nn lines. so "!0" advances zero lines and allows
+          overprinting the same line (read as a CR "\r").
+          "!1" is would be a newline "\n" and "!4" would
+          4 newlines ("\n\n\n\n")
+   20     Slew to top of page (formfeed "\f")
+   21->37 Slew to channel (nn & 017).  Slew until a matching
+          4 bit pattern is found punched on the VFC tape (or
+          in the VFC virtual image.  Note when punching
+          a VFC tape or defining a virtual VFC it was important
+          to make sure you defined all 15 patterns or the
+          printer could try to empty a whole box of paper in minutes.
+   40->57 Relative tab, Insert ((nn & 017) << 3) spaces.
+             I.e. multiply lower 4 bits by 8 and print
+          that many spaces (8->120)
+   60->76 Same as 7777.  Doubt this was ever used.
+
+A slew sequence ends the record, and anything following is
+ignored.  Normally the rest of the words are padded with
+spaces, zeros or ignores ("?"s).  However, if there
+isn't a slew, the line continues on the next record.
+Cobol would handle the "AFTER ADVANCING n LINES" by
+putting out 1 word slew record, followed by the
+a record with no slew, and just the line image.
+
+GE's invention of slew by countdown basically made slew
+to channel obsolete.  If you used slew by countdown the
+operator usually did not need to change the VFC for
+special jobs.  However the convention was buried into
+so many Cobol and Fortran programs that it needed to
+be supported.  We never used it at Waterloo, so all our
+software just reads any slew to channel in media 3 as slew to
+top of page (FF).
+
+It seems we have a bug in our media3 reader and it is treating
+7760nn->7776nn the same as 1717nn.  I.e. just ignoring the
+the two characters.

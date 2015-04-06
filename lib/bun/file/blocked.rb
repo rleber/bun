@@ -10,10 +10,12 @@ module Bun
       attr_accessor :status
       attr_accessor :strict
       attr_reader   :good_blocks
+      attr_reader   :llink_count
       
       def initialize(options={}, &blk)
         super
         @strict = options[:strict]
+        @llink_count = nil
         # descriptor.register_fields(:blocks, :good_blocks, :status)
       end
 
@@ -72,6 +74,7 @@ module Bun
             break if words.at(offset) == 0
             block_size = words.at(offset).byte(3)
             unless words.at(offset).half_word[0] == block_number
+              # stop "Bad block_number at #{'%013o' % (offset+content_offset)}: #{'%013o' % words.at(offset)}, block_number: #{block_number}"
               if strict
                 raise "Llink out of sequence in #{location} at #{'%#o' % (offset+content_offset)}: expected #{'%07o' % block_number}; got #{file_content[offset].half_word[0]}"
               else
@@ -92,9 +95,18 @@ module Bun
           offset = next_link
           link_number += 1
         end
+        @llink_count = link_number
         Bun::Words.new(deblocked_content)
       end
       cache :deblocked_content
+
+      def llink_count
+        unless @llink_count
+          _ = deblocked_content
+          descriptor.merge!(llink_count: @llink_count)
+        end
+        @llink_count
+      end
     end
   end
 end

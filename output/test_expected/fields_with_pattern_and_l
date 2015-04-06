@@ -1,0 +1,7 @@
+Field          Description
+catalog_time   The date and time of last update of the file (per the archive index)
+decode_time    The date and time at which this file was decoded
+earliest_time  The earliest recorded date for a file
+shard_time     The date and time this file was originally created (decoded shards only)
+time           The date and time of last update of the file (frozen files only)
+unpack_time    The date and time at which this file was unpacked
