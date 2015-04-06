@@ -1,23 +1,34 @@
 = prototype
 
-* http://github.com/#{github_username}/#{project_name}
+* http://github.com/rleber/bun
 
 == DESCRIPTION:
 
-FIX (describe your package)
+Software to retrieve and read files archived from the Honeywell GCOS system.
+
+Created to process archives from the University of Waterloo Honeywell archives, especially the scripts from the 
+FASS amateur theatrical shows.
+
+Origin of the name:
+Honeywell => Honeybun => bun
+'nuff said
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+* Has problems with certain (uncommon) classes of multiple versions of files with weird names. These weird classes 
+  happen, unfortunately, occur occasionally within g
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+See doc/readme.md for overall synopsis.
+
+See other files in doc directory for more detailed help, descriptions of Honeywell file formats and how to decode
+them, descriptions of Ruby classes, etc.
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+Ruby
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+See doc/readme.md
