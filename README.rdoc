@@ -15,8 +15,9 @@ Honeywell => Honeybun => bun
 
 == FEATURES/PROBLEMS:
 
-* Has problems with certain (uncommon) classes of multiple versions of files with weird names. These weird classes 
-  happen, unfortunately, occur occasionally within g
+* Has problems with certain (uncommon) situations where multiple versions of files with weird names create ambiguous
+  duplicate file names. These weird situations happen, unfortunately, occur occasionally within the Waterloo Honeywell 
+  archives.
 
 == SYNOPSIS:
 
